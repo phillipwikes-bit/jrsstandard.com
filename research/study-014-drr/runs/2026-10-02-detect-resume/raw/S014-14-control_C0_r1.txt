@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the bases for the Agency's conclusion: the Inspector's fact-finding report stating claims could not be substantiated due to evidence being 'conjecture,' corroborating witness statements from coworkers, and CW1's denial with consistent affidavit testimony."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable from initial complaint (February 2, 2021) through two successive investigations (Manager appointment, then Inspector appointment after objection), to the January 22, 2021 fact-finding report, to Agency's final decision under 29 C.F.R. § 1614.110(b)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the sequence of events is documented, a cold reviewer would struggle to reconstruct the Agency's actual reasoning for dismissal because the record presents Complainant's criticisms of the investigation (bias, artificiality, missing security footage) without the Agency's explicit written response to these methodological challenges."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the conclusion that claims were unsubstantiated (conflicting witness accounts, inability to verify details), but does not document whether the Agency adequately addressed Complainant's specific procedural objections regarding investigator impartiality, scope limitations, or evidence gaps when issuing its final decision."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates and intervals are consistently documented: November 24, 2020 (initial incident), complaints on November 24 and 28, December 21 (Manager appointment), December 30 (alleged hostile conduct), December 31 (objection to Manager), January 5 (Inspector appointment), January 22 (fact-finding report), February 2, 2021 (EEO complaint filed), and final Agency decision thereafter."
+    }
+  },
+  "remediation_note": "The record requires explicit documentation of the Agency's reasoned response to Complainant's procedural objections regarding investigator bias and investigative gaps (security footage, meeting attendance records) in its final decision. The Agency should also articulate why the Inspector's reliance on 'conjecture' rationale is legally sufficient to reject discrimination and retaliation claims, particularly given the EEOC's prior reversal on failure-to-state grounds.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support",
+    "compliant_version": "A compliant record would include: (1) the Agency's written final decision explicitly addressing each of Complainant's challenges to investigative methodology and impartiality; (2) documented justification for why witness account conflicts resolved in the Agency's favor despite Complainant's proposed corroborating evidence (security footage); and (3) clear analysis of whether the facts, viewed most favorably to Complainant, could support a discrimination or retaliation finding, with citation to applicable legal standards."
+  }
+}
+```

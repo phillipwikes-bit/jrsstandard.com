@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies bases for each major claim: salary negotiations (discriminatory pay), pay band restrictions (barred from advancement), reorganization timing (June 2018), separate strategic plan requirements, contractor treatment timeline (June 2018–February 2019), resource access procedures, and the May 5, 2019 tweet omission."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces evidence to allegations (e.g., April 2018 wage review → no remedial action → January 2019 instruction to 'tamper escalation'), but the summary does not explain the AJs' reasoning for granting summary judgment or how they evaluated each claim against the evidence presented."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can identify the allegations and some supporting facts (salary negotiation statements, reorganization date, contractor engagement restrictions), but cannot reconstruct why summary judgment was warranted without access to the AJs' decisions, investigative findings, or the Agency's responses to each claim."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents Complainants' allegations and procedural steps but does not include the investigative conclusions, the AJs' reasoning for summary judgment, or the Agency's evidence refuting the claims, making it impossible to assess whether the record alone sufficiently supports the final dismissal."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: October 2015 (hire), April 2018 (wage review), June 2018 (reorganization), January 2019 (escalation instruction), May 5, 2019 (tweet), June 13, 2019 (complaint filing), and subsequent hearing/appeal process."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must include the investigative findings (conclusions on each allegation), the AJs' written decisions with reasoning on summary judgment, and a summary of the Agency's factual defenses. The basis for dismissal must be explicitly tied to the evidence and legal standard applied.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would include (1) the investigator's findings on each claim with supporting evidence and reasoning; (2) the AJs' summary judgment orders with explicit analysis of whether material facts were in dispute and how the evidence failed to meet the burden of proof for discrimination/retaliation; (3) a summary of the Agency's factual responses and defenses to each allegation; and (4) clear cross-references between allegations, evidence, findings, and legal conclusions to enable a cold reviewer to reconstruct the decision path years later."
+  }
+}
+```

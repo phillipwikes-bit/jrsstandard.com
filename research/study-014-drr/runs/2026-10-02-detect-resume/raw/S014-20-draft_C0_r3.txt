@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The AJ's basis for each finding is explicitly stated: Claims 1–2 rest on absence of genetic-information allegations; Claim 3 rests on articulated legitimate reasons (prior assistance, parcel criteria, vehicle capacity, timeline factors)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces the AJ's logic (affidavit lacks genetic-information content → no prima facie case; supervisor stated reasons → pretext burden on complainant) but does not detail how the AJ evaluated complainant's factual assertions or what evidence the AJ reviewed to conclude the stated reasons were genuine."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can identify what claims were made and what the AJ concluded, but the record does not reproduce the affidavit, investigation findings, or supervisor's contemporaneous statements, limiting reconstruction of the evidentiary foundation."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record states the AJ's conclusions and the reasons offered by the supervisor, but does not cite or quote the investigation report, complainant's sworn statements, witness testimony, or documentary evidence (timesheets, denial letters, contemporaneous notes) that would independently support the sufficiency finding."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: allegations span January 5, 2018–present and April 25, 2018–present (Claims 1–2), with Claim 3 dated December 14, 2018; procedural steps (investigation, report, hearing request, summary judgment, appeal) are sequenced but not precisely dated."
+    }
+  },
+  "remediation_note": "To remediate, the record must incorporate or reference the investigation report summary, key excerpts from the complainant's affidavit, the supervisor's contemporaneous statement(s) or deposition, and relevant documentary evidence (pay records, overtime logs, package criteria documentation). The AJ's summary judgment order should articulate which specific evidence supports the finding that the stated reasons were not pretextual.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include (a) direct quotations or detailed paraphrasing from the investigation file, affidavit, and supervisor's account; (b) documentary exhibits (payroll, denial correspondence, package lists) or explicit reference to them; (c) the AJ's articulated assessment of credibility and evidence weight; and (d) explicit citation of the regulatory framework (GINA, burden-shifting, pretext standards) applied to each fact."
+  }
+}
+```

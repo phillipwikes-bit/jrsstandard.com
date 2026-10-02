@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each major allegation (a–j) is anchored to specific factual assertions: training denial tied to Commander statements, client reassignments linked to dates and personnel, October 5 meeting documented, performance evaluation grounded in 15-metric standard with specific 'Met' and 'Exceed' ratings."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces complainant's allegations and management responses sequentially, but the path from individual incidents to the AJ's ultimate conclusion that conduct was 'non-discriminatory' and not 'severe and pervasive' relies on credibility determinations and inferences not fully articulated in the investigative reasoning itself."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can identify who said what and when, but reconstructing why certain conflicting accounts (e.g., Captain's denial of changes vs. Complainant's assertion) were credited requires inference beyond what the record explicitly states about investigative methodology or evidence evaluation."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is voluminous (affidavits, emails, IG report, performance evaluation metrics), but the sufficiency to support the AJ's finding that no severe and pervasive hostile work environment existed is challenged by Complainant's detailed factual submissions and the IG's own finding of a 'disruptive environment' and recommendation to reassign her."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Timeline is clear: September 2014 (start), November 28, 2014 (first grievance), October 5–13, 2016 (meetings and IG complaints), November 12, 2016 (performance evaluation), November 15, 2016 (IG report), December 6, 2016 (IG contact), December 21, 2016 (return to work), January 4–27, 2017 (reassignment and counseling), January 31, 2022 (AJ decision)."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit articulation of how the investigator weighed conflicting testimony (e.g., Complainant's allegation of hostile tone vs. managers' denial) and from clearer statement of the evidentiary standard and burden applied to hostile work environment analysis. Documentation of specific investigative steps, interview protocols, and credibility findings would strengthen traceability.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, and accountability_support—the record narrates facts and presents opposing accounts but does not fully expose the investigative decision-making process or the analytical steps that led from voluminous conflicting evidence to the conclusion that no unlawful conduct occurred.",
+    "compliant_version": "A compliant record would include: (1) explicit statement of investigative standard and burden of proof; (2) documented credibility assessment for each key witness conflict; (3) analysis of how alleged incidents (derogatory comments, client reassignments, exclusion from meetings) either meet or fail to meet legal thresholds; (4) specific refutation of Complainant's factual submissions with evidentiary reasoning; and (5) articulation of why the IG's finding of a 'disruptive environment' does not constitute or contribute to a hostile work environment claim."
+  }
+}
+```

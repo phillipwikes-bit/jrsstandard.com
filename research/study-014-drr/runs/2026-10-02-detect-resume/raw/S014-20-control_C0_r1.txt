@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies bases for each conclusion: claims 1–2 lack genetic information allegations (GINA requirement), claim 3 denial rests on supervisor's stated criteria (vehicle capacity, mail truck timing, volume assessment)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The AJ's decision pathway is traceable: prima facie test applied to GINA claims with reference to affidavit content; legitimate nondiscriminatory reasons articulated for claim 3 denial with burden-shifting framework evident."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can reconstruct the AJ's logic and Agency reasoning, but the record lacks specific dates of the investigation completion, the investigative report itself is not attached, and the temporal gap between complaint filing and summary judgment issuance is not provided."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The supervisor's stated reasons for claim 3 denial are documented, but the record does not include direct evidence (e.g., routing records, parcel weights, vehicle capacity specifications) to independently verify the nondiscriminatory justifications offered."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Key dates are missing: the investigation conclusion date, notice of investigation completion date, date the Notice of Proposed Summary Judgment was issued, the deadline and actual date Complainant failed to object, and the date the final order was issued are not specified."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record must include: (1) complete timeline with investigation closure, summary judgment notice issuance, objection deadline, and final order dates; (2) attachment or reference to the full investigative report; and (3) supporting documentation for the supervisor's nondiscriminatory reasons (e.g., vehicle capacity data, parcel criteria application records).",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "temporal_reconstructability and accountability_support; cold_reviewer_clarity secondarily implicated",
+    "compliant_version": "Revise to include: investigation completion date and report summary; explicit dates for Notice of Proposed Summary Judgment, objection deadline, and final order issuance; attach or incorporate key investigative findings; provide documentary support for supervisor's stated criteria and their application to the December 14, 2018 request; clarify any investigative findings regarding whether genetic information was raised or investigated."
+  }
+}
+```

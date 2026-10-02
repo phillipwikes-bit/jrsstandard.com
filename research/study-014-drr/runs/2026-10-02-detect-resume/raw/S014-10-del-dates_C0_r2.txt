@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., Privacy Officer letter, Privacy Investigation Report, witness statements) but multiple critical factual determinations lack clear evidentiary anchoring: the Agency's finding that S1 did not disclose medical information rests primarily on coworker denials and Complainant's admission of self-disclosure, yet S1's own account is presented as assertion rather than documented testimony."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's decision-path is partially traceable for claims 1, 2, and 3 (disparate treatment analysis with cited evidence), but the hostile work environment conclusion jumps from witness credibility attacks to failure of proof without explicit articulation of the legal standards applied or systematic evaluation of each alleged incident against disability-based animus criteria."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would struggle to reconstruct the chronology and severity of events: dates are vague ('at one point,' 'November or at one point'), witness identities are obscured ('Witness 1,' 'Coworker 1'), and the relationship between the November surgery-disclosure incident and the broader harassment narrative is unclear; the record does not establish when Complainant's disability became known to S1."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence sufficiency is uneven: the Privacy Investigation Report and discipline letters provide objective support for privacy violations, but the Agency's rejection of the surgery-disclosure claim (claim 2) rests heavily on coworker denials and lacks documentation of S1's statement contemporaneously recorded, and the Agency discredits Witness 1 based on 2018 departure without addressing whether that affects the weight of his account."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical dates are absent or vague: the surgery cancellations and the 'fourth time' event are placed only as 'November or at one point,' the three-year SPAR report is undated, the privacy investigation timeline is unclear, and the hostile work environment allegations span an indeterminate period without interval markers or sequence documentation."
+    }
+  },
+  "remediation_note": "The record requires: (1) explicit dates or date ranges for all material events, particularly the surgery disclosures and harassment incidents; (2) identification of witnesses by role/position or redacted name consistent throughout; (3) contemporaneous documentation (emails, attendance logs, shift records) or marked deposition/testimony transcripts for disputed oral statements, especially S1's alleged hallway disclosure and Witness 1's account; (4) articulation of the legal standard for hostile work environment and systematic evaluation of whether each incident, individually or collectively, was based on Complainant's disability status.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity, temporal_reconstructability, and reasoning_traceability",
+    "compliant_version": "A compliant record would (a) establish a dated chronology with specific incident dates, document references, and witness timelines; (b) preserve or summarize contemporaneous evidence (S1's actual words, Witness 1's written statement, Privacy Office reports with completion dates) rather than paraphrased accounts; (c) systematically apply the Rehabilitation Act and Title VII hostile work environment framework to each alleged incident with explicit findings on whether each was disability-based; and (d) transparently disclose credibility assessments (e.g., Witness 1's 2018 departure) without collapsing evidentiary weight into conclusory language."
+  }
+}
+```

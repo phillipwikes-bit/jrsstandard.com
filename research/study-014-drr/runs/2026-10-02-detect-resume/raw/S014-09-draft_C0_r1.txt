@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific factual bases for each allegation (e.g., 70% wage cap, April 2018 review, June 2018 reorganization, May 5 tweet) but does not clearly state the evidentiary standard applied by the AJs or the reasoning linking facts to legal conclusions of discrimination or retaliation."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record summarizes allegations and procedural steps but does not include the AJs' written decisions, their application of the McDonnell Douglas burden-shifting framework (or equivalent), or how they weighed comparator evidence, temporal proximity, or pretext arguments."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with this matter cannot reconstruct from this summary alone why summary judgment was appropriate, what evidence was undisputed, what inferences the AJs drew, or whether material factual disputes existed regarding intent, causation, or protected class animus."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents numerous specific incidents (wage cap, reorganization, resource restrictions, tweet) and Complainants' EEO filings, but does not show the complete investigative findings, AJ credibility assessments, or analysis of whether comparators were similarly situated and whether legitimate, non-discriminatory reasons were adequately rebutted."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record clearly establishes dates for key events: October 2015 hire, June 2018 reorganization and contractor report, April 2018 pay review, January 2019 'tamper' instruction, June 13, 2019 complaint filing, May 5, 2019 tweet, and hearing/appeal sequence."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must include the full text or detailed summary of each AJ's written decision, including findings of fact, credibility rulings, application of the applicable burden-shifting legal framework, and explicit analysis of pretext, temporal proximity, and comparator similarity. The record must also incorporate or cross-reference the investigative findings report and any discovery disputes.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include the complete AJ decisions with structured factual findings, explicit legal reasoning under Title VII and 5 U.S.C. § 2302(b)(1) standards, analysis of each comparator group, rebuttal of Complainants' pretext arguments with documented evidence, and clear explanation of why summary judgment was appropriate despite the allegations' specificity and temporal clustering."
+  }
+}
+```

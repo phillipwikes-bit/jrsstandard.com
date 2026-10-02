@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific incidents (November 24, 2020 flower placement; December 30, 2020 manager confrontation) and cites investigation findings, but the basis for the Agency's final non-discrimination conclusion is not explicitly stated in the record excerpt provided."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision pathway from evidence to the Agency's final determination is obscured; the record shows investigation findings of 'conjecture' and inability to substantiate, but does not trace how these findings led to the specific legal conclusion of no discrimination or repriyal."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the incidents and investigation steps, but would struggle to reconstruct the Agency's decisional logic, as the final decision reasoning is summarized rather than elaborated within this record."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents competing factual narratives (Complainant's versus CW1's account), coworker testimony limited to acknowledging a conversation without confirming substance, and the Inspector's finding of mostly 'conjecture,' but does not explain how these specific evidentiary gaps support rejection of discrimination and reprisal claims."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly traceable: November 24, 2020 (initial incident); November 24 and 28, 2020 (complaints); December 21, 2020 (investigation appointment); December 30, 2020 (alleged manager confrontation); December 31, 2020 (Complainant's objection); January 5, 2021 (new investigator appointed); January 22, 2021 (fact-finding report); February 2, 2021 (EEO complaint filed); July 22, 2021 (EEOC reversal); dates are consistent and intervals identifiable."
+    }
+  },
+  "remediation_note": "The record must explicitly articulate the Agency's legal reasoning connecting the Inspector's factual findings (disputed accounts, coworker inability to confirm substance, 'conjecture' characterization) to the conclusion that no discrimination or reprisal occurred, and must address Complainant's pattern-of-treatment argument and security-footage concerns with specific analytical steps.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include the Agency's articulated legal standard for discrimination and reprisal claims, explicit findings on each element (hostile work environment, protected activity, temporal proximity, retaliation nexus), application of those findings to the disputed facts, and a detailed explanation of why the disputed nature of the November 24 incident and the December 30 confrontation does not constitute discrimination or reprisal—with specific responses to Complainant's pattern-of-discipline allegation and rationale for not obtaining security footage."
+  }
+}
+```

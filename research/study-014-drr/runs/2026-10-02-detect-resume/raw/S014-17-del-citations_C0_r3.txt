@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for agency actions (e.g., TECS policy violations, failure to perform duties, potluck tradition) but the basis for discrimination findings relies heavily on absence of evidence (no comparators, no affidavit submitted) rather than affirmative factual findings."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The investigative decision traces from alleged incidents through agency explanations to conclusions, but the causal chain for why harassment/reprisal claims fail depends on Complainant's failure to submit an affidavit, creating a gap between investigative process and evidentiary assessment."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the chronology of events and agency responses, but would struggle to assess the adequacy of investigation because the record does not clearly explain what factual gaps remained after Complainant declined to submit his affidavit or why those gaps were fatal to his claims."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record supports agency actions on policy/performance grounds (TECS violations, duty performance) but the discrimination conclusion rests significantly on Complainant's non-submission of an affidavit and absence of comparator evidence, leaving unclear whether the investigation was sufficiently proactive in establishing nondiscriminatory reasons or testing discriminatory intent."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes clear dates for harassment allegations (May 31, 2018 through June 2019), removal (March 8, 2020), investigation timeline (affidavit deadline September 28, 2020 with extension), and appeal sequence, allowing full chronological reconstruction."
+    }
+  },
+  "remediation_note": "The record requires explicit documentation of investigative steps taken to establish nondiscriminatory reasons independent of Complainant's affidavit submission, and clear articulation of what specific factual findings (rather than absences) support the discrimination conclusion, including investigator assessment of comparator evidence or lack thereof.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) affirmative factual findings by the investigator on each alleged incident with credibility assessments; (2) documented search for and evaluation of comparator employees (same protected class, different treatment); (3) explicit investigative findings on whether stated nondiscriminatory reasons were pretextual; (4) clear rationale for why Complainant's failure to submit an affidavit was dispositive, with notation of what evidence investigator had independently gathered; and (5) written analysis distinguishing between insufficient evidence and findings that contradict discrimination claims."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record presents 17 claims with scattered incident dates and supervisory relationships, but does not identify which specific evidence (witness statements, emails, performance reviews, medical records) supports the Agency's dismissal determinations or 'no discrimination' findings on the remaining claims."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The Agency's rationale for dismissing claims 6–11 on timeliness grounds is stated but not traced; the record does not explain the counseling initiation date (July 27, 2017) relative to each incident or how the 180/300-day rule applied to multi-year allegations, nor does it trace the 'no discrimination' conclusion on claims 1–5 and 12–17 to specific factual findings."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with this matter cannot reconstruct the investigation from this summary alone: the Agency's investigative report, witness interviews, documentary evidence, and the Administrative Judge's remand order are not reproduced or clearly referenced, making independent verification impossible."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record lists detailed allegations (derogatory comments, reassignment, exclusion, medical disclosure, retaliation timing) but does not present the evidentiary analysis—corroboration, credibility determinations, or refutation—that would establish whether the Agency adequately investigated or supported its dismissal and no-discrimination conclusions."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are provided (complaint filed November 8, 2017; counseling July 27, 2017; promotion May 2013; incidents spanning 2009–2018), but the 'Note for file' signals internal inconsistencies regarding the FAD's issuance date and the AJ's 60-day deadline, and the record does not clarify the investigation timeline, remand date, or final decision issuance relative to the appeal filing."
+    }
+  },
+  "remediation_note": "This record functions as a narrative summary of allegations and procedural outcomes but lacks the investigative basis, evidentiary analysis, and decision reasoning required for JRS compliance. To remedy gaps, the record must explicitly reference or reproduce the investigative report (including witness statements and documentary evidence), articulate the Agency's factual findings on each claim, trace timeliness dismissals to the counseling date and applicable statute, and clarify the FAD issuance date and appeal timeline to resolve the internal inconsistency flagged in the footnote.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support, temporal_reconstructability—all critically compromised by the absence of investigative detail, evidentiary analysis, and decision logic.",
+    "compliant_version": "A compliant record would include: (1) the Agency's investigative findings on each claim, supported by cited evidence (witness statements, documents, expert analysis); (2) explicit application of the timeliness rule to claims 6–11, with dates showing when counseling was initiated relative to when each incident occurred; (3) the Agency's factual determinations on the remaining claims (credibility assessments, corroboration, refutation of allegations) that ground the 'no discrimination' conclusion; (4) a clear, dated timeline showing complaint filing, counseling initiation, investigation completion, AJ remand, FAD issuance, and appeal filing; and (5) resolution of the inconsistency regarding whether a FAD was issued before or after the appeal was filed."
+  }
+}
+```

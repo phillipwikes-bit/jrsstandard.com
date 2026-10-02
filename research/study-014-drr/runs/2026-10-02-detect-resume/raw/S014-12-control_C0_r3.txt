@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies the factual basis for the December 11, 2020 incident (head wound, supervisor's statement) and the AJ's reasoning (single incident, facially neutral language, unprofessional but not harassing), but the basis for Complainant's later allegations (Obama comments, confederate flag images) remains unsubstantiated in the record itself."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision pathway is traceable (Notice → party responses → final decision incorporating Notice), but the disconnect between Complainant's claim that he 'provided investigators a list of incidents' and the record's statement that background allegations 'were never included in the EEO Counselor Report, the formal complaint, or Complainant's affidavit' creates ambiguity about what evidence was actually presented and when."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer examining only this record cannot independently verify whether Complainant did provide incident lists and witness names to investigators, nor can they access the content of those alleged lists, the ROI itself, or determine what 'vital information' the Agency allegedly withheld about Supervisor's history."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The evidence supporting the December 11 incident conclusion is present, but the record lacks documentation of the alleged prior incidents, the purported investigator lists, witness statements, or any evidence addressing Supervisor's alleged pattern of racial animus (Obama comments, confederate flag), leaving Complainant's discrimination claim insufficiently evidenced in the record."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: December 11, 2020 (incident) → May 25, 2021 (EEO complaint filed) → January 21, 2022 (Notice of Proposed Summary Judgment) → February 25, 2022 (AJ decision without hearing) with documented response opportunities between each step."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must either incorporate or clearly reference the ROI, the EEO Counselor Report, Complainant's affidavit, any investigator-compiled incident lists, witness statements, and the Agency's response to the Notice; alternatively, the decision must explicitly document what evidence was considered and what was not available for review, including whether alleged 'vital information' about Supervisor was actually withheld or simply not produced.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would either attach or summarize the ROI, EEO Counselor Report, formal complaint, and affidavit; document all incident allegations and witness names Complainant claims to have provided; explicitly state whether the Agency produced or withheld specific evidence about Supervisor's conduct history; and explain the AJ's reasoning for excluding or discounting unsubstantiated allegations introduced post-complaint, with clear findings of fact on each alleged prior incident rather than blanket dismissal based on procedural timing alone."
+  }
+}
+```

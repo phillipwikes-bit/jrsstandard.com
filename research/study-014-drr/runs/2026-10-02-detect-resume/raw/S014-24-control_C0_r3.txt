@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation in the EEO complaint (claims 1-11) is traced to specific dates, statements, or actions with documentary support cited (e.g., 'ROI at 127,' 'Id. at 157-58')."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Final Agency Decision states conclusions (e.g., 'no evidence to corroborate,' 'not severe or pervasive enough') but does not systematically explain how the ROI evidence was weighed or why witness credibility determinations favored respondents over complainant."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later would find detailed factual allegations and witness statements in the ROI but would struggle to reconstruct the decision-maker's analytical framework for dismissing corroborating witness testimony (e.g., Senior Budget Analyst's weekly venting reports) as insufficient for hostile work environment."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The FAD asserts 'insufficient evidence' for sexual harassment despite multiple coworkers attesting to complainant's emotional distress, reports of inappropriate touching, and shoulder massage behavior, yet provides no analysis of why direct witness observation of every incident is required when harassment may occur in private settings."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Events are sequenced chronologically from October 2013 through January 2015, with specific dates provided for each allegation, performance actions, and the complaint filing (April 8, 2014)."
+    }
+  },
+  "remediation_note": "The FAD requires explicit analysis of why corroborating witness testimony (weekly venting, observed distress, reports of touching) does not suffice to establish the alleged conduct when direct observation of every incident is unavailable. The decision-maker must articulate the evidentiary standard applied and explain how the FAD's credibility findings align with the pattern of consistent complainant reports across multiple coworkers.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support and reasoning_traceability—the FAD concludes 'insufficient evidence' for sexual harassment and hostile work environment without transparently weighing corroborating witness accounts against respondent denials or explaining why the pattern of complainant distress and peer reports does not meet the legal threshold.",
+    "compliant_version": "A compliant version would include: (1) explicit statement of the evidentiary burden (preponderance of the evidence); (2) detailed analysis of each witness account, credibility factors, and consistency across accounts; (3) application of the hostile-work-environment legal standard (frequency, severity, pervasiveness) to the specific facts; (4) acknowledgment of why direct observation may be unavailable in workplace harassment contexts; (5) explanation of how the agency weighed corroborating testimony against denials; and (6) clear articulation of what additional evidence would have altered the conclusion."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion—disparate treatment, hostile work environment, lack of comparators, insufficient evidence—is tied to specific factual findings: missed deadlines, canceled events, staffing failures, gossip, fear of retaliation, funds mismanagement, and lack of corroboration for racial bias claims."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's logic chain is generally traceable (prima facie case assumed, then legitimate reasons found, then comparators evaluated), but the record does not explain why summary judgment without hearing was granted despite Complainant's objections or how the prima facie case was characterized."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A later reviewer can reconstruct the disparate treatment and hostile work environment analyses, but the record lacks detail on what evidence specifically supported the finding that verbal counseling was 'ordinary workplace tribulations' and does not explain the AJ's threshold for severity or pervasiveness in hostile work environment doctrine."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record cites specific misconduct (missed deadlines, canceled events, gossip, funds mismanagement) and explains why comparators were inapt (different positions, different circumstances), but does not document the actual evidence presented (affidavits, testimony, exhibits) or the weight assigned to Complainant's race/color speculation versus the coworker affidavit's second-hand allegations."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates and sequence are clearly marked: verbal counseling (May 31, July 3, July 16, 2018), Letter of Reprimand (October 18, 2018), alleged false statements (Feb.–Apr. 2019), Notice of Proposed Removal (April 25, 2019), Decision to Remove (June 28, 2019), CAC discovery (October 22, 2019)."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit citation to evidentiary exhibits and witness testimony supporting the characterization of Complainant's conduct as misconduct, and a clear articulation of the legal threshold for summary judgment over Complainant's objection. Documentation of the AJ's reasoning for finding the coworker affidavit confusing and uncorroborated would strengthen accountability.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support—the decision process is traceable but lacks granular evidentiary grounding and explicit legal thresholds for summary judgment and severity standards.",
+    "compliant_version": "A compliant version would include: (1) specific reference to transcripts, exhibits, or affidavits underlying each factual finding; (2) explicit discussion of why summary judgment was appropriate despite Complainant's objection and how the record supported or rebutted a prima facie case; (3) detailed explanation of what made the coworker affidavit 'confusing' and 'uncorroborated'; and (4) articulation of the legal standard for 'severe or pervasive' hostile work environment and application of that standard to the facts."
+  }
+}
+```

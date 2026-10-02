@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific dates, alleged incidents, and witness responses, but the Agency's reasoning for discrediting Complainant's account and dismissing Claim 4 despite corroborating distress testimony lacks explicit evidentiary citation."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The Agency conclusion on Claim 4 states 'insufficient evidence' and 'no witness observed it,' but does not trace how witness testimony of Complainant's distress, fear, and secondary harassment accounts were weighed or rejected against the no-direct-observation standard applied."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct from this record alone why witness testimony that Complainant was 'crying, shaking,' reported harassment to multiple supervisors, and feared retaliation was found insufficient to establish sexual harassment under applicable law."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents conflicting evidence (witness corroboration of distress and fear vs. denial by S1 and Management Officer), but the Agency's weighing of credibility and sufficiency is stated conclusorily without articulated standards or analysis of witness reliability."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record clearly sequences events from 2006 forward, with specific dates for incidents (10/28/2013, 1/9/2014, 1/13/2014), complaint filing (4/8/2014), performance actions (5/2014–1/2015), and reassignment (12/12/2014)."
+    }
+  },
+  "remediation_note": "The record must articulate the legal standard applied to each claim (e.g., hostile work environment threshold, sexual harassment burden of proof), explicitly address why witness corroboration of Complainant's distress and reported complaints does not support Claim 4, and document the credibility assessment methodology for conflicting denials. Performance-related claim reasoning would benefit from clear differentiation between legitimate business rationale and pretext analysis.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support—particularly the dismissal of Claim 4 sexual harassment despite witness testimony of distress and reported complaints.",
+    "compliant_version": "A compliant record would: (1) identify the legal standard for 'sufficient evidence' of sexual harassment; (2) explicitly analyze each witness account (distress, fear, Secondary harassment, personal space encroachment) against that standard and explain why absence of direct observation of physical contact overrides or discounts corroboration of impact and Complainant's credibility; (3) document credibility findings for S1 and Management Officer denials of receiving reports, weighted against multiple witness statements; (4) articulate the pretext analysis for performance claims with reference to comparative treatment or temporal proximity to protected activity; and (5) include dates and decision-maker signatures to anchor accountability."
+  }
+}
+```

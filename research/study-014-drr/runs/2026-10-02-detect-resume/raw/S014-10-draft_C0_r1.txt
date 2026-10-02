@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each claim conclusion is tied to specific evidentiary findings: Claim 1 grounded in schedule records and lack of discriminatory motive; Claim 2 in witness statements about overhearing; Claim 3 in Privacy Act scope; Claim 12 in investigation promptness and discipline records."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The causal chain from evidence to discrimination finding is present but compressed: the record shows privacy violations occurred (six unauthorized accesses, two intentional), discipline was imposed, and coworkers' motives were documented, yet the leap from 'motives unrelated to disability' to 'no discrimination' lacks explicit articulation of how disability-nexus was ruled out for the hostile environment claim."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct facts (dates, accessed records, discipline imposed, witness credibility findings), but would struggle with the analytical framework: why was Coworker 3's motive (schedule avoidance) deemed non-discriminatory, and why does the record not explain whether avoidance of a disabled colleague constitutes disability-based animus under the Rehabilitation Act."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports discrete findings (privacy violations occurred; S1 did not disclose; coworkers accessed records) but accountability for the discrimination question is incomplete: the record identifies that two coworkers acted improperly and were disciplined, yet does not fully explain whether their conduct—intentional access motivated by avoidance—or the resulting hostile environment constitutes disability-based discrimination."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical dates are missing or ambiguous: Complainant alleged shift demand in 'late 2017' but later moved it to May 2018, the surgery disclosure timing is not specified, the privacy investigation initiation date is not stated, and the interval between unauthorized access discovery and discipline is not documented."
+    }
+  },
+  "remediation_note": "The record requires explicit dating of the privacy investigation and discipline timeline, and must articulate the analytical standard for whether disability-based animus is inferred from the conduct patterns (avoidance-motivated access, group knowledge of surgery, overall staff hostility) or requires direct evidence of discriminatory intent.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "temporal_reconstructability (missing dates and intervals); reasoning_traceability (disability-nexus analysis underdeveloped); cold_reviewer_clarity (implicit legal framework for inferring disability animus not made explicit)",
+    "compliant_version": "A compliant version would: (1) establish precise dates for the surgery disclosure, privacy investigation launch, unauthorized access discovery, and discipline imposition; (2) explicitly state the legal standard for disability discrimination (direct or circumstantial evidence of disability-based motive); (3) analyze whether coworkers' stated motives (schedule avoidance, group gossip) and their access to medical records, combined with the overall hostile environment allegations, constitute circumstantial evidence of disability-based animus; (4) explain why discipline of two coworkers and management's prompt response negates or supports a finding of agency acquiescence; and (5) clarify whether the Rehabilitation Act confidentiality claims were analyzed separately from the disability discrimination nexus."
+  }
+}
+```

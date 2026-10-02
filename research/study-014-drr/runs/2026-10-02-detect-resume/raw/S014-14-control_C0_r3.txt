@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is clearly identified with specific dates, actors, and claimed conduct: November 24, 2020 flower incident; November 24-28 complaints to management; December 30, 2020 manager confrontation; and exclusion from meetings."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The investigative process is documented (December 21 memorandum appointing Manager, December 31 recusal objection, January 5 appointment of Inspector), but the Inspector's January 22 report summary relies heavily on 'conjecture' notation without detailing which specific evidentiary gaps led to non-substantiation."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the sequence of events and claims are comprehensible, critical gaps exist: the Inspector's fact-finding report is summarized but not fully reproduced, the Agency's final decision is referenced but not included, and the basis for concluding 'conjecture' versus credible evidence is not transparently explained."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence exists (witness statements, CW1's affidavit, coworker accounts, Inspector's interviews), but the record does not sufficiently document why conflicting accounts were resolved in one party's favor, nor does it address Complainant's request for security footage or explain its unavailability."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology is established: November 24, 2020 (incident and first complaint); November 28, 2020 (second complaint); December 21, 2020 (Manager appointed); December 30, 2020 (confrontation); December 31, 2020 (recusal request); January 5, 2021 (Inspector appointed); January 22, 2021 (report issued); February 2, 2021 (EEO complaint filed)."
+    }
+  },
+  "remediation_note": "A compliant record must include or explicitly reference the Inspector's full fact-finding report with line-by-line credibility determinations, the Agency's final decision with reasoned explanations for each allegation, and documented responses to specific evidence gaps (e.g., security footage availability and why it was or was not obtained).",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The record should embed the complete fact-finding report or append it as an exhibit, explicitly map how witness testimony was weighed against conflicting claims, document the Agency's analysis of each substantiation standard applied, and address material evidence requests (security footage, meeting records, email chains) with clear justification for inclusion or exclusion, enabling a reviewer years later to independently assess whether the non-substantiation conclusion was supported."
+  }
+}
+```

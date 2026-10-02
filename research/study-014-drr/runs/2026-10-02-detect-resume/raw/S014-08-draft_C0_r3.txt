@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each major allegation (training denial, client transfers, October meetings, evaluation, IG findings, reassignment) is explicitly tied to specific dates, individuals, and documented management responses or investigative conclusions."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces a clear evidentiary path: complaint → prior grievance outcome → IG investigation → EEO investigation → AJ's reasoned decision applying hostile work environment and discrimination standards to specific findings."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the summary is well-organized, a future reviewer would struggle to reconstruct the full investigative record (witness statements, documentary evidence, email exchanges) from this case summary alone; the summary compresses competing narratives without reproducing the underlying evidence itself."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The AJ's findings are grounded in specific factual determinations: performance evaluation ratings with examples, IG report findings on harassment and unlawful recording, management explanations for client transfers, and meeting summaries documenting denials of hostility."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: November 2014 grievance → January 2015 resolution → September 2014–January 2017 allegation period → October 5 and 12, 2016 meetings → November 12, 2016 evaluation → January 4 and 27, 2017 reassignment and counseling → October 2021 motion → January 2022 AJ decision."
+    }
+  },
+  "remediation_note": "The record adequately supports the AJ's decision for purposes of administrative review. To enhance cold-reviewer clarity and evidentiary transparency, append key documentary exhibits (performance evaluation form, IG report conclusions, sample witness statements, and the October 5 and 12 meeting notes) as appendices to anchor the summary's factual assertions.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity—the summary synthesizes competing accounts and legal conclusions effectively but omits the primary investigative documents that would allow independent verification years later.",
+    "compliant_version": "Retain this structured narrative summary as the cover document, but link or append: (1) the IG report findings page; (2) the November 2016 performance evaluation with rater comments; (3) management's written responses to each key allegation (training, transfers, meetings); and (4) the AJ's full reasoned decision. This preserves summary utility while enabling cold reconstruction of the evidentiary foundation."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the AJ's conclusions: lack of prima facie case for claims 3, 4, 7, 8, 11, 13, 14, 16; failure to meet minimum qualifications (FAC-C certifications) for claims 3, 4, 7, 11, 13, 16; legitimate nondiscriminatory reasons articulated by Agency for claims 1, 2, 5, 6, 8, 19, 15, 17-20; and failure to establish pretext."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The decision traces reasoning from legal framework (prima facie case, pretext analysis) to specific claim outcomes, but lacks detail on how the AJ weighed evidence within each claim or reconciled conflicting factual assertions (e.g., Complainant's assertion that C1 rejected training versus Agency's articulated reason for denial)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record catalogues 20 claims with dates and outcomes, a reviewer years later would struggle to reconstruct the evidentiary basis: the investigation report is referenced but not summarized, witness testimony or documents supporting the AJ's findings are not detailed, and the specific evidence contradicting Complainant's systemic discrimination allegation is not expressly stated."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record states conclusions (e.g., 'failed to establish prima facie case,' 'articulated legitimate, nondiscriminatory reasons') but does not attach or summarize the investigation report, personnel files, or selection criteria that would substantiate whether those conclusions are factually grounded in the administrative record."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are consistently provided for each claim (ranging from May 15, 2015 through August 29, 2016 for incidents, with decision timeline: complaint filed August 25, 2015, accepted November 23, 2015, motion granted March 22, 2018, decision issued September 23, 2020), allowing chronological reconstruction of events and procedural milestones."
+    }
+  },
+  "remediation_note": "The record would benefit from a condensed synthesis of the investigation report findings, explicit citation to or summary of personnel records and selection criteria that support the AJ's qualification determinations, and a more granular analysis of how the Agency's stated nondiscriminatory reasons were tested against Complainant's pretext allegations—particularly regarding the FAC-C certification decisions and systemic pattern claims.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would incorporate or explicitly reference the investigation report summary, detail the qualifications and FAC-C certification standards applied, document the selection panel's written criteria and scorings for each contested promotion, summarize any evidence of similar treatment of comparators, and articulate the specific factual findings that rebut the systemic discrimination and pretext arguments raised on appeal."
+  }
+}
+```

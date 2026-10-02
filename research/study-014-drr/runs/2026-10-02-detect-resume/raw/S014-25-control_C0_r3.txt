@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the AJ's conclusions: disciplinary actions are traced to documented performance deficiencies (missed deadlines, event cancellations, staff management failures), and harassment claims are evaluated against protected class nexus requirements."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision chain is traceable from evidence (coworker affidavit, verbal counseling practice, comparative employee positions) through legal framework (prima facie case, legitimate nondiscriminatory reasons, hostile work environment standards) to final conclusions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the AJ's logic is transparent, a cold reviewer would struggle to verify the seven specific performance reasons cited in the Notice of Proposed Removal letter, as the record summarizes rather than excerpts the actual letter, and does not attach documentary evidence of the performance deficiencies."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the AJ's legal conclusions but relies heavily on the Agency's characterization of reasons (via letter summary) and the Chief HR Officer's affidavit regarding verbal counseling practice, without independent corroboration of the underlying performance incidents themselves."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology is established: May–July 2018 verbal counselings, October 2018 Letter of Reprimand, February–April 2019 staff statements, April 2019 Notice of Proposed Removal, June 2019 removal decision, October 2019 CAC discovery, followed by investigation report and appeal."
+    }
+  },
+  "remediation_note": "To achieve full compliance, attach or excerpt the actual Notice of Proposed Removal letter listing all seven performance bases, documentary evidence of each missed deadline or cancelled event, and written summaries of the staff statements dated February–April 2019. Additionally, identify by name or role the subordinates who provided statements and the Chief HR Officer's full affidavit to support the verbal counseling practice assertion.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support — the record synthesizes investigative findings and legal conclusions without embedding sufficient primary-source documentation.",
+    "compliant_version": "A compliant version would include exhibits of the three counseling notices (or certification that none were created per policy), the Letter of Reprimand text, the dated staff statements, the full Notice of Proposed Removal letter with each allegation, the removal decision letter, and the Chief HR Officer's affidavit, allowing an independent reviewer years later to verify both the factual predicate and the AJ's application of law to fact."
+  }
+}
+```

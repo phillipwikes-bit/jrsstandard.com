@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the 15 allegations is tied to specific dates, supervisors, and alleged discriminatory statements or actions (e.g., 'on September 13, 2019, Supervisor 1 told Complainant that she did not want to work with her, and that Complainant was a liability due to her health issues')."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents allegations and states a final conclusion ('Complainant failed to prove that the Agency subjected her to discrimination') but does not detail the investigative findings, analysis of each allegation, comparator evidence, or the logical steps by which the Agency reached its disparate-treatment conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the 15 allegations are clearly enumerated with dates and circumstances, a reviewer without prior knowledge cannot reconstruct how the Agency evaluated each allegation, what evidence was found, or why the Agency rejected the discrimination claims without access to the underlying investigation report and decision rationale."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents the allegations in detail but the final conclusion ('failed to prove discrimination') lacks evidentiary support within the record itself—the investigation report, witness statements, and analysis of comparators are referenced but not included or summarized."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The sequence of events is clear and chronologically ordered from September 8, 2019, through February 6, 2020, with specific dates and intervals provided for each allegation."
+    }
+  },
+  "remediation_note": "The record must include or summarize the investigative findings for each of the 15 allegations, identify any comparator employees and their treatment, and explicitly trace the reasoning by which the Agency concluded disparate treatment was not established. Without the investigation report or a detailed decision explaining how the evidence addressed each claim, accountability and cold-reviewer reconstruction are compromised.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The record should include the full report of investigation (or detailed findings summary) addressing each allegation, the identity and treatment of comparator employees, the supervisor statements and context, and the explicit reasoning by which the Agency determined Complainant failed to establish a prima facie case of discrimination or pretext; alternatively, integrate key investigation conclusions and comparator analysis directly into the decision narrative to enable reconstruction without external documents."
+  }
+}
+```

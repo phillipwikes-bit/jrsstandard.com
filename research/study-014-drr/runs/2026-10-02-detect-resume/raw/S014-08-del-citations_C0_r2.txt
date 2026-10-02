@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each major allegation (a–j) is anchored to specific dates, individuals, and documented events (e.g., October 5, 2016 staff meeting; November 12, 2016 performance evaluation; December 21, 2016 client reassignments), with cross-references to investigation report pages."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces investigative findings and AJ reasoning (e.g., Lieutenant Colonel's findings on unintentional transfers, IG report conclusions on no harassment/discrimination evidence, AJ's pretext analysis), but the causal links between specific conduct and final determinations are sometimes implicit rather than explicitly reasoned step-by-step."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct the factual sequence and key determinations, but the record conflates complainant's characterization of events with investigated facts and relies heavily on footnoted references to a separate ROI document (Part 1, Part 2) not fully quoted here, creating dependency on external documentation."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The record documents countervailing evidence from multiple named officials (Lieutenant Colonel, Lieutenant, Chief, NCOIC, Nurse Practitioner, Social Services Assistant) whose affidavits and statements directly address and dispute each allegation, providing a factual foundation for the AJ's conclusion that non-discriminatory reasons were set forth."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly marked: September 2014 (start of employment), November 28, 2014 (first grievance filed), October 2016 (IG complaint), November 15, 2016 (IG report), December 21, 2016 (return from sick leave), January 27, 2017 (developmental counseling), October 18, 2021 (Agency Motion), January 31, 2022 (AJ decision), permitting full sequence reconstruction."
+    }
+  },
+  "remediation_note": "The record functions as a hybrid analysis and narrative of an EEO complaint investigation and adjudication. To strengthen compliance, explicitly state the investigator's reasoning for credibility determinations (e.g., why official denials outweighed complainant assertions on specific facts), and embed or attach the full ROI findings rather than cross-reference them, ensuring a standalone cold-reviewer reconstruction.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability and cold_reviewer_clarity",
+    "compliant_version": "Include in-line summaries of key investigative findings and evidentiary bases for each factual conclusion (e.g., 'The Lieutenant Colonel's investigation found the October 5 client transfer was unintentional and the client was returned—documented at ROI 436—whereas Complainant alleged intentional reassignment; the record reflects [named witness] corroborated the unintentional nature'). Consolidate or fully excerpt the Report of Investigation findings rather than relying on page citations, and explicitly articulate the logical steps by which the AJ moved from finding no material factual disputes to concluding non-discriminatory reasons were not pretext."
+  }
+}
+```

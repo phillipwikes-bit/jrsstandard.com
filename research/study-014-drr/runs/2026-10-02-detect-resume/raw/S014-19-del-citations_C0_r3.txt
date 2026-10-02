@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for factual findings (e.g., medical restrictions from July 2, 2019 letter, dates of non-work period, CBA grievance filing), but the Agency's ultimate conclusion of 'no discrimination' rests partly on an assumed-without-finding disability status, leaving the logical basis for that critical framing element incomplete."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The decision path from evidence to conclusion is traceable for the 'unqualified without accommodation' finding (medical restrictions → essential functions analysis), but the chain breaks on why the medical documentation request—framed by S2 and HRM as necessary to draft an accommodation—constitutes a legitimate basis for non-work rather than evidence of deliberate indifference."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct the timeline and factual sequence clearly (June 11 request → July 2 submission → July 5–31 non-work period → July 25 revised offer → August 1 return), but cannot fully reconstruct from the record alone why S2's decision to exclude Complainant was procedurally sound, because HRM Manager's post-hoc statement that 'he was not aware why' is present but unresolved."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The evidentiary record supports that Complainant submitted inadequate medical documentation and that management sought clarification, but does not substantiate that withholding work (rather than offering interim accommodation or expedited re-evaluation) was a necessary and proportionate response, nor does it clearly assign responsibility for the work exclusion decision."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates and intervals are explicit and traceable: January 18, 2011 (prior note) → June 11, 2019 (first request) → June 15, 2019 (grievance) → June 21, 2019 (repeated request) → July 2, 2019 (submission) → July 5–31, 2019 (non-work period) → July 22, 2019 (review letter) → July 25, 2019 (revised offer) → August 1, 2019 (return and new assignment)."
+    }
+  },
+  "remediation_note": "The record requires clarification of who authorized the work exclusion, under what authority, and why interim limited-duty work was not offered pending medical documentation clarification—these gaps undermine accountability for the adverse action. Additionally, the Agency's assumption of disability without explicit finding should be replaced with a clear factual determination.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would: (1) explicitly state whether Complainant met the disability definition and cite the basis; (2) document who made the decision to exclude Complainant from work and the date; (3) explain why interim work was not offered or why the medical documentation request necessitated complete work exclusion; (4) trace the causal link between the refusal to submit medical documentation and each adverse employment action; and (5) include a contemporaneous contemporaneous record (not post-hoc affidavit) from HRM Manager explaining the work exclusion rationale and his role in authorizing it."
+  }
+}
+```

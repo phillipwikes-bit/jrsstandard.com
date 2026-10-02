@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies evidentiary bases (Sensitive Patient Access Report, witness statements, S1's account) but does not consistently cite specific dates, interview summaries, or documentary references for each factual assertion, particularly regarding claim 1's timeline shift and the 'vague remark' characterization in claim 2."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The path from evidence to conclusion is partially traceable (e.g., access report → two coworkers disciplined; witnesses questioned → no animus found) but lacks explicit reasoning chains for why witness credibility was discounted, how the 'vague remark' standard was applied, or how the Agency distinguished between Privacy Act violations and discrimination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct the full factual record years later because the summary omits specific dates (except 'late 2017' and 'May 2018'), does not identify interviewed individuals by role or anonymized reference, and does not quote or describe the 'vague remark' or the surgical disclosure allegation in sufficient detail."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence suffices for some conclusions (privacy violations disciplined; S1 initiated prompt inquiry) but is thin for others (claim 1 supported only by 'stayed on 8-hour schedule throughout' with no contemporaneous scheduling records cited; claim 2 rests on 'no one overheard' without documenting all potential witnesses interviewed)."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "The chronology is fragmented: claim 1 timeline was corrected mid-investigation ('late 2017, not May 2018'), the privacy incident date is unstated, discipline dates and EEO investigation duration are absent, and the sequence from privacy complaint → investigation → final decision lacks concrete timestamps and intervals."
+    }
+  },
+  "remediation_note": "The record conflates procedural steps with factual findings and omits granular documentary support and interview summaries. To achieve compliance, attach or reference specific dated evidence (access logs, interview transcripts, scheduling records, witness identities), clearly distinguish between Privacy Act and discrimination analysis, and construct a detailed chronology with decision points marked by date.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "cold_reviewer_clarity, temporal_reconstructability, accountability_support",
+    "compliant_version": "A compliant record would include: (1) dated Sensitive Patient Access Report excerpt; (2) full names or anonymized identifiers and interview dates for all witnesses; (3) verbatim or substantially complete quote of the alleged 'vague remark'; (4) contemporaneous scheduling records proving claim 1; (5) explicit timeline (privacy incident date → discovery date → investigation start → discipline dates → final decision date); (6) separate analytical sections for Rehabilitation Act confidentiality versus discrimination under Title VII or the Rehabilitation Act; and (7) documented credibility assessment with specific contradictions for each witness."
+  }
+}
+```

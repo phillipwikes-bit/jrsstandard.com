@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record fails to identify the basis for the core decision to keep Complainant out of work July 5–31: S2 states HRM found the July 2 letter inadequate, the HRM Manager claims he did not know why she was kept out, and no written directive or reasoned explanation is documented."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The causal chain from medical documentation requests (June 11, 21) through S2's instruction not to return, the July 5 submission, the alleged inadequacy finding, and the 26-day exclusion cannot be traced; critical decision points lack documented reasoning."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct why Complainant remained excluded after submitting a July 2 note on July 5, because the record does not explain who decided it was inadequate, what criteria were used, or why a revised version was required before return."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The Agency's FAD findings assume disability status and cite failure to provide medical documentation, but the record does not clearly establish whether Complainant's July 2 and subsequent revised notes satisfied the legitimate request or why the July 2 note alone did not suffice to draft a modified assignment."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (June 15, 11, 21; July 2, 5, 22, 25, 31; August 1), but the sequence of events between July 5 (submission) and July 31 (exclusion end) lacks intermediate documentation—no date for HRM's adequacy determination, no date for S2's request for revision, and no explanation of the 26-day interval."
+    }
+  },
+  "remediation_note": "The record requires documented explanation of who made the decision to exclude Complainant, the specific deficiencies in the July 2 note, the date and criteria for the adequacy determination, and the justification for the duration of exclusion. Internal communications between S2, HRM, and the HRM Manager must be produced or their absence acknowledged.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity—the record tells a sequence of events but does not explain the critical decision to exclude or its justification.",
+    "compliant_version": "A compliant record would include: (1) written statement from S2 or HRM documenting the specific inadequacies found in the July 2 note and the date of that determination; (2) contemporaneous correspondence showing the request for revision and Complainant's response; (3) explanation from the HRM Manager of his role and knowledge (or lack thereof) in the exclusion decision; (4) identification of the decision-maker and the criteria applied; (5) a timeline showing decision dates and intervals; and (6) clarification of whether the July 2 note, the revised note, or both satisfied the medical documentation requirement to draft a compliant modified assignment."
+  }
+}
+```

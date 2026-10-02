@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Specific allegations are enumerated (pay discrimination, resource access, hostile work environment), but the evidentiary basis—documents, dates, witness statements, comparator details—is largely absent or redacted, making it unclear what evidence the investigator examined."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents allegations and outcomes but does not trace how investigative findings were reached; no discussion of how each claim was evaluated, what contradictions were resolved, or why conclusions were drawn."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "Temporal references are vague or redacted ('at one point,' 'at one point,' '[number removed]'), preventing a reviewer years later from reconstructing the chronology, causation, or context of events without external documents."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Multiple serious allegations are detailed (wage suppression, retaliation, resource denial, contractor abuse), but the record does not explain what documentary or testimonial evidence was presented to support or refute each claim, leaving sufficiency unclear."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Dates and intervals are heavily redacted or omitted ('at one point,' 'between at one point and at one point,' '[number removed]'), making it impossible to establish the sequence, duration, or causal timing of alleged events."
+    }
+  },
+  "remediation_note": "Restore specific dates, witness identifications, and investigative findings to each allegation. Explicitly state what evidence was examined, what contradictions existed, and how the investigator arrived at each conclusion regarding discrimination, retaliation, and agency failure to act.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, temporal_reconstructability",
+    "compliant_version": "A compliant record would include (1) unredacted dates and intervals for all events; (2) specific names or identifiers for comparators and decision-makers; (3) a detailed investigative findings section that tracks each allegation to documents reviewed, interviews conducted, and conclusions reached with explanation; (4) a timeline appendix showing sequence of events; and (5) explicit discussion of contradictory statements (e.g., Senior Director's denial vs. Supervisor 1's assertion) and how the investigator resolved them."
+  }
+}
+```

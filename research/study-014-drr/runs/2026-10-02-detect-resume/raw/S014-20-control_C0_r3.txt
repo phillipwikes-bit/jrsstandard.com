@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each claim (1, 2, 3) is explicitly identified with dates, alleged violations (GINA discrimination, pay denial, package assistance denial), and the basis for each conclusion is stated in the record."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The AJ's reasoning chain is traceable: prima facie failure for claims 1 and 2 due to no genetic information allegation, and claim 3 denial supported by supervisor's stated legitimate nondiscriminatory criteria (prior assistance received, package volume, vehicle capacity, risk assessment)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the AJ's conclusions are clear, a reviewer years later would have difficulty reconstructing the factual basis for claim 2's temporal scope shift (April 25, 2018 to present) and how it relates to the overtime/holiday distinction, particularly given Complainant's later strike-through of 'holiday' in her affidavit."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the AJ's summary judgment conclusions on claims 1 and 2 (no genetic information alleged) and claim 3 (supervisor's stated reasons provided), but the evidentiary sufficiency rests entirely on the supervisor's averment without documented contemporaneous records, wage calculation data, or route adjustment evidence for claims 1 and 2."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical dates are present (January 5, 2018; April 25, 2018; December 14, 2018; investigation completion; notice issuance; objection deadline missed) but the record does not specify when the complaint was filed, when the investigation concluded, when the Notice of Proposed Summary Judgment was issued, or the required objection deadline, making full chronological reconstruction impossible."
+    }
+  },
+  "remediation_note": "Add investigation completion date, notice issuance date, and explicit objection deadline to establish full chronology. Include contemporaneous wage records, route adjustment documentation, and dated supervisor communications to support evidentiary sufficiency for claims 1 and 2; clarify Complainant's claim 2 scope through a signed amendment or supplemental statement addressing the holiday/overtime distinction.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "temporal_reconstructability (missing key procedural dates and deadlines); accountability_support (reliance on supervisor averment without corroborating documentation for financial claims); cold_reviewer_clarity (ambiguity regarding claim 2 scope following Complainant's strike-through).",
+    "compliant_version": "A compliant record would include: (1) indexed timeline with investigation initiation, completion, and all notice/objection dates; (2) attached wage records and route adjustment documents supporting the January 5, 2018 start date for claim 1; (3) timestamped supervisor communications or contemporaneous logs for the December 14, 2018 package assistance denial; (4) Complainant's signed clarification statement resolving the holiday/overtime scope of claim 2; (5) explanatory narrative linking each piece of evidence to the AJ's reasoning on prima facie failure and pretext analysis."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is tied to specific dates, meetings, and actors (Captain, Lieutenant Colonel, IG, NCOIC), and management's stated bases for decisions are documented (e.g., budget constraints for training, client statements about caseload preferences)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision pathway is clear (adequately developed record → legitimate reasons → no pretext shown → not severe/pervasive), but the record does not fully trace how the investigator weighed competing accounts (e.g., Complainant's perception of aggression vs. Captain's claim of her aggression) or how the AJ reconciled conflicting testimony."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A later reviewer can identify the allegations and management responses, but the record conflates Complainant's subjective experiences (felt attacked, disrespected) with objective findings (IG found no harassment, AJ found conduct not severe/pervasive), without clear explanation of the evidentiary standard applied or how perception differs from documented harm."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Management provides specific rebuttals (e.g., budget limits, one transfer reversed, evaluation ratings with examples, IG finding of no harassment), but Complainant's allegations of ongoing isolation, nitpicking, and undermined authority lack detailed documentary support in the record, making it unclear whether the evidence fully supports either party's narrative."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record follows a clear timeline from September 2014 through January 2017 (initial period), with key dates marked: November 2014 grievance, October 5 and 12, 2016 meetings, November 12, 2016 evaluation, December 21, 2016 transfers, January 27, 2017 counseling, and November 15, 2016 IG report; the procedural history adds October 18, 2021 motion and January 31, 2022 AJ decision."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit citation to the investigative file (interview summaries, documents reviewed) and articulation of the AJ's reasoning on how management rebutted each allegation category (harassment, discrimination, hostile environment) with reference to the evidentiary record. A reconstructed version should map each allegation to specific evidence (documentary or testimonial) on both sides and explain the factual or legal conclusion drawn.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) detailed findings on each allegation category with reference to interview summaries and documentary evidence; (2) explicit reconciliation of conflicting accounts (e.g., whose aggression is documented); (3) application of the legal standard for hostile work environment (severity and pervasiveness) with specific examples of conduct assessed; (4) explanation of how the IG's finding of no harassment and recommendation to reassign factored into the discrimination and reprisal analysis; and (5) a statement of the investigator's conclusion on each allegation with supporting evidence cited, not merely a summary of management's denials."
+  }
+}
+```

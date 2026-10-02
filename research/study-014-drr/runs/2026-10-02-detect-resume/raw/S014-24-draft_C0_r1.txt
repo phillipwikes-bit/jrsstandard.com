@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies factual allegations and witness statements but does not explicitly link specific evidence to each of the Agency's conclusions about what was or was not corroborated; the basis for rejecting Complainant's account versus accepting denials is implicit rather than stated."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record presents allegations, denials, and witness observations but does not articulate the logical steps or evidentiary thresholds by which the Agency weighed credibility, determined corroboration, or applied legal standards (e.g., why witness distress and coworker reports were insufficient for Claim 4)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge would struggle to understand why coworker testimony of Complainant's distress, reports to multiple officials, and one witness observation of personal-space encroachment did not meet the threshold for sexual harassment investigation, or how the Agency determined the performance plans were genuinely unrelated to alleged harassment."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record asserts 'no evidence corroborated Complainant's account' for Claims 1–3 and 5, but coworker testimony that Complainant confided in them and was distressed, plus one witness observation of encroachment in Claim 4, are documented; the record does not explain why these do not constitute corroboration or how they were discounted."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides specific dates for allegations (10/28/2013, 1/9/2014, 1/13/2014), management actions (5/2014, 7/28/2014, 9/22/2014, 10/16/2014, 12/12/2014, 1/29/2015), and the complaint filing (4/8/2014), enabling a chronological reconstruction of events."
+    }
+  },
+  "remediation_note": "The record requires explicit documentation of credibility determinations, the evidentiary standard applied to each claim, and a reasoned explanation of how witness testimony of distress, multiple reports, and behavioral observations were evaluated against legal thresholds. The Agency's conclusion that no evidence corroborated Complainant's account must be supported by a documented credibility analysis and articulated reasoning for distinguishing between corroboration and credible hearsay.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support, reasoning_traceability, cold_reviewer_clarity—the record presents conclusions without sufficiently transparent evidentiary reasoning or credibility analysis.",
+    "compliant_version": "A compliant version would document (1) the standard of proof applied (preponderance, clear and convincing, etc.); (2) explicit credibility findings for each witness and Complainant; (3) a reasoned explanation of why coworker testimony of distress and reports to officials do or do not constitute corroboration; (4) the legal threshold for 'severe or pervasive' hostile work environment and how the alleged conduct measured against it; (5) analysis of whether performance actions post-dated or were causally linked to reported harassment; and (6) a line-by-line reconciliation of allegations with evidence, explaining gaps and contradictions."
+  }
+}
+```

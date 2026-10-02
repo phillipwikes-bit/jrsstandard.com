@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is explicitly identified with specific factual bases: discriminatory pay tied to hire-date salary negotiations and Pay Band placement, barred senior positions tied to Pay Band V eligibility, reorganization to June 2018, contractor treatment from June 2018–February 2019, and the May 5, 2019 tweet."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record states that AJs issued summary judgment decisions but does not reproduce their reasoning, evidence weighing, or legal analysis—only that they 'found no discrimination or unlawful retaliation,' making it unclear how findings connected to the factual record."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the allegations and parties, but cannot reconstruct the decisional basis without access to the actual AJ decisions, investigation files, or evidentiary record referenced but not detailed in this summary."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents specific allegations (salary negotiations, Pay Band placement, reorganization dates, contractor conduct period, tweet date) but does not include the investigative findings, witness testimony, documentary evidence, or AJ analysis needed to assess whether evidence supports or contradicts the conclusions of no discrimination."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clear: hire (October 2015), April 2018 pay review, June 2018 reorganization, June 13, 2019 complaint filing, January 2019 'tamper' instruction, June 2018–February 2019 contractor treatment period, and May 5, 2019 tweet."
+    }
+  },
+  "remediation_note": "The record functions as a pleading or case outline rather than a complete justification document. To meet JRS standards, it must incorporate or reference the AJs' written decisions with their reasoning chains, the investigation report findings, key evidentiary items (e.g., salary documentation, reorganization memos, contractor conduct records), and how those pieces support or refute each allegation.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support—the record summarizes parties, allegations, and procedural posture but omits the decisional reasoning and evidentiary analysis needed to justify the no-discrimination and no-retaliation conclusions.",
+    "compliant_version": "A compliant version must include or attach the AJs' written decisions with explicit findings on each allegation (discriminatory pay, barred positions, reorganization, strategic plans, contractor treatment, resource access, tweet), reference or summarize the key evidence (salary records, promotion criteria, reorganization documentation, witness statements on contractor conduct, tweet record), and trace how that evidence was weighed against the legal standards for discrimination and retaliation, including any rebuttals of Complainants' comparator claims."
+  }
+}
+```

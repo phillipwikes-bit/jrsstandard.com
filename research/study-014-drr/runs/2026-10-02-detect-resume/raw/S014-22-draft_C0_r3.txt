@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record states the Agency 'found no discrimination on the remaining claims' but provides no articulated basis, evidence analysis, or reasoned explanation for each of the 6 claims (1–5, 12–17) that survived the timeliness bar."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "No decision logic connects specific evidence (e.g., exclusion from projects, reassignment, photograph removal, website delisting) to statutory discrimination or reprisal standards, making it impossible to trace how the Agency evaluated intent, causation, or comparators."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct why 6 detailed allegations—including documented exclusion, reassignment, and medical-information disclosure—resulted in no-discrimination findings without explicit analysis of each claim against the operative legal standard."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The dismissal of claims 6–11 on timeliness grounds is stated without citation to the investigation record or explanation of why the 300-day rule or continuing-violation doctrine did not toll; the no-discrimination findings on claims 1–5, 12–17 rest on no evidentiary discussion."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are provided (e.g., EEO counseling July 27, 2017; yelling incident May 12, 2017; appeal filed after AJ remand; FAD status inquiry May 20, 2020), but the footnote flag that the record text contradicts the appeal's timing regarding FAD issuance creates ambiguity about the actual chronology of Agency action."
+    }
+  },
+  "remediation_note": "The record must supply: (1) explicit findings on each of claims 1–5 and 12–17 analyzing evidence against Title VII and 5 U.S.C. § 2302(b)(9) standards; (2) a detailed timeliness analysis for claims 6–11 citing investigation materials and applicable equitable doctrines; and (3) reconciliation of the FAD-issuance discrepancy to establish whether the appeal was timely and whether post-remand delay constitutes reversible error.",
+      "finding": {
+        "ai_function": "summarization",
+        "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+        "compliant_version": "The final decision must identify and analyze each surviving claim individually, cite to specific investigation findings (witness statements, documentary evidence, comparators), apply the operative statutory standard (discrimination based on protected class and causal nexus; reprisal based on protected activity and adverse action), explain why proffered legitimate, non-discriminatory reasons are or are not credible, note any conflicts in witness testimony, and separately address the timeliness dismissals by reference to the investigation chronology and applicable continuing-violation or equitable-tolling doctrine. The decision must also clarify the sequence and date of FAD issuance and the timeliness of appeal."
+      }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., Supervisor's nondiscriminatory reasons for schedule denial, training exclusion from AUO), but the evidentiary foundation for the Agency's ultimate finding that Complainant 'failed to prove' discrimination lacks explicit citation to specific record evidence disproving each element of the prima facie case."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency applies McDonnell Douglas framework and harassment standards, but the decision does not explicitly trace how Complainant's evidence was weighed against Supervisor's counter-assertions, nor does it show the analytical steps connecting evidence to the conclusion that proffered reasons were not pretextual."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with the case cannot reconstruct why the Agency credited Supervisor's account over Complainant's on contested facts (e.g., whether schedule denial was discriminatory) because the record presents conflicting statements without explicit findings on credibility or weight."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The Agency's conclusion that Complainant failed to prove discrimination lacks sufficient evidentiary detail; the record shows Supervisor's statements and Complainant's allegations but does not document what additional evidence was sought, examined, or found wanting to sustain the burden of proof."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Events are clearly dated: July 26–27, 2018 (schedule denial), August 28, 2018 (training and AUO claims), October 1–4, 2018 (pay discrepancy awareness), October 12, 2018 (PWP review and EEO contact), June 2019 (complaint filed), and June–August 2021 (hearing dismissal and FAD)."
+    }
+  },
+  "remediation_note": "The record must include explicit credibility findings for contested facts, a detailed reconciliation of conflicting evidence for each claim element under McDonnell Douglas, and specific citations showing what evidence the Agency examined and why it found Complainant's proof insufficient—particularly regarding whether Supervisor's proffered nondiscriminatory reasons were pretextual.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant FAD would: (1) identify which specific pieces of evidence (witness statements, documents, dates) support each factual finding; (2) explicitly address why Supervisor's account was credited over Complainant's where facts were disputed; (3) analyze each proffered nondiscriminatory reason element-by-element to show it was not pretextual; (4) document what comparative evidence was examined for other employees (DO 1, DO 2) and how it bore on discrimination claims; and (5) explain the sufficiency of evidence at each step, not merely state conclusions."
+  }
+}
+```

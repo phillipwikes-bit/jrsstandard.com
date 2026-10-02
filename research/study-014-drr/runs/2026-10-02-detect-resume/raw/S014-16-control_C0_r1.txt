@@ -1,0 +1,33 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each contested action (concert denial, return-to-work request, pay discrepancy notification, PWP review) is tied to specific ROI page citations and dated factual assertions by both Complainant and Supervisor."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces the Agency's analytical pathway: articulation of legitimate nondiscriminatory reasons under McDonnell Douglas, followed by pretext analysis, then hostile-work-environment analysis under Title VII harassment standards."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the sequence of events is documented, conflicting factual accounts (e.g., Supervisor's assertion that Complainant 'decided to report to work' versus Complainant's claim of denial) remain unresolved in the narrative; a cold reviewer cannot definitively reconstruct what occurred on July 27, 2018 without independent investigation."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The Agency's conclusion that Complainant 'failed to prove' discrimination rests partly on Supervisor's denials (e.g., 'Supervisor denied that he treated Complainant differently'), but the record does not indicate whether Supervisor was subjected to cross-examination or whether documentary evidence (e.g., text messages, training records, pay stubs) independently corroborated either party's version."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly established: July 26–27, 2018 (concert/schedule requests), August 28, 2018 (training), October 1, 2018 (pay discrepancy awareness), October 12, 2018 (PWP review and EEO contact), June 6, 2019 (complaint filed), June 2021 (AJ proceedings), August 10, 2021 (FAD issued)."
+    }
+  },
+  "remediation_note": "The record requires clarification of evidentiary weight afforded to conflicting assertions (Supervisor's denials versus Complainant's assertions) and documentation of whether documentary evidence (schedules, texts, pay records, training rosters) was reviewed to corroborate or impeach either party's account. The record would benefit from explicit analysis of whether Supervisor's failure to provide the affidavit was analyzed under a different standard than Complainant's, given that the AJ sanctioned Complainant's non-compliance but proceeded with the Agency's FAD.",
+    "finding": {
+      "ai_function": "analysis",
+      "condition_triggered": "accountability_support and cold_reviewer_clarity",
+      "compliant_version": "A compliant version would: (1) explicitly state which documents (text messages, training attendance sheets, pay adjustment records) were examined to corroborate or contradict Supervisor's assertions; (2) identify the evidentiary standard applied to each party's uncontroverted versus contested factual claims; (3) explain whether and how the AJ's sanction (dismissal for non-compliance) affected the Agency's burden of proof in the FAD; and (4) specify whether the Agency's conclusion that Complainant 'failed to prove' discrimination reflects insufficient evidence, credibility determinations, or legal insufficiency under the three-part test."
+    }
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each claim is explicitly tied to a specific date, supervisor action, and complainant allegation; the FAD articulates its legal framework (McDonnell Douglas) and applies it to each claim."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The FAD states conclusions (e.g., 'no pretext') but does not detail how specific evidence (supervisor's account vs. complainant's allegations) was weighed, compared, or reconciled to reach each conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the claims and legal test applied, but would struggle to reconstruct why the supervisor's explanations were credited over the complainant's without explicit analysis of credibility, corroboration, or evidentiary gaps."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record contains supervisor denials and some documentary support (time records for Claim 2, training records for Claim 3) but lacks explicit weighing of conflicting accounts or explanation of why supervisor credibility prevails on claims that rest partly on intent and pattern (e.g., disclosure to DO 2 before correction)."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "All four claims are dated (July 26, July 27, October 1, October 12, 2018); EEO contact (Oct 12, 2018) and formal complaint (June 6, 2019) are timestamped; procedural milestones (AJ orders, dismissal June 22, 2021; FAD Aug 10, 2021) establish clear sequence."
+    }
+  },
+  "remediation_note": "The FAD must explicitly compare the complainant's allegations to the supervisor's account for each claim, explain why documentary evidence (time records, training logs) and witness statements support or contradict each party, and address whether the timing of disclosure (Claim 3) or pattern of conduct across claims suggests discriminatory intent despite individual nondiscriminatory explanations.",
+  "finding": {
+    "ai_function": "recommendation",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "For each of the four claims, the FAD should: (1) state the complainant's allegation explicitly, (2) present the supervisor's account and any corroborating evidence or witnesses, (3) analyze credibility and consistency (e.g., why the supervisor's explanation of the schedule adjustment is credited despite the complainant's claim that he took leave), (4) apply McDonnell Douglas or hostile-work-environment standards step-by-step with specific reference to the evidence, and (5) explain why any inferences of pretext or discriminatory motive are not supported by the record. For Claim 3, address whether the disclosure to DO 2 and the subsequent pay correction constitute a pattern or whether it is an isolated administrative correction. Include explicit findings on whether the complainant's protected characteristics (Romanian national origin, age, prior EEO activity) are connected to the adverse actions."
+  }
+}
+```

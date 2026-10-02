@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies bases for the termination decision: performance deficiencies in payroll processing and new hire onboarding documented in June 17, 2021 memorandum, June 2021 emails, progress review, and supervisor affidavits citing specific errors causing delayed employee pay and new hire resignations."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision traces from prima facie case assumption through articulation of legitimate nondiscriminatory reasons (performance issues) to rebuttal analysis (distinguishing AS's limited supervisory scope from three supervisors' convergent testimony on payroll/onboarding deficiencies), concluding pretext was not established."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A future reviewer can independently reconstruct the factual record: employment dates (January 17–July 28, 2021), probationary status, specific performance failures documented in June 2021, supervisor names and roles, the termination letter basis, and the Agency's reasoning distinguishing AS's testimony from converging accounts of three other supervisors."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents supervisor affidavits and a June 17 memorandum but does not include the full text of performance review, emails, or termination letter itself, limiting independent verification that evidence sufficiently supports the performance-based termination conclusion without access to primary documents."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: employment began January 17, 2021; progress review June 15, 2021; June 2021 emails and June 17 memorandum documenting performance issues; S1 supervision began early July 2021; termination effective July 28, 2021; complaint filed August 24, 2021."
+    }
+  },
+  "remediation_note": "Attach or incorporate the full text of the June 15, 2021 progress review, three June 2021 emails, June 17, 2021 memorandum, and July 28, 2021 termination letter to permit cold-reviewer verification. Consider explicit documentation of what telework schedule was approved and when, to strengthen the rebuttal of retaliation claims regarding S3's alleged opposition.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support (partial gap on primary document inclusion)",
+    "compliant_version": "Incorporate full text of all cited performance documents, supervisor affidavits, and the termination letter as exhibits; explicitly state whether reasonable accommodation was formally approved and its terms; document the Agency's contemporaneous comparison of Complainant's telework schedule against others in his cohort to establish non-pretextual evenhandedness."
+  }
+}
+```

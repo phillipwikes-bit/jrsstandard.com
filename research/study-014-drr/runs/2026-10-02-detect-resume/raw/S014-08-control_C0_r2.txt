@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation (a through j) is grounded in specific dates, named individuals, meeting types, or document references (e.g., 'October 5, 2016, in a staff meeting'; 'ROI1 at 431'; 'IG report dated November 15, 2016')."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces complainant's claims, countervailing testimony from named officials, investigator findings, and IG conclusions systematically, permitting reconstruction of how the AJ reached his non-discrimination determination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While dates and names are provided, the record conflates multiple investigation phases, referee positions, and IG policy abstractions (e.g., 'internal IG policy is that if the Agency is taking action, then the IG Office abstains') that may obscure coherent narrative reconstruction without institutional familiarity."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Testimonial evidence from complainant, supervisors, staff, and investigators is documented; IG findings and performance evaluation metrics (eleven 'Exceed', four 'Met' ratings) are detailed; the AJ's application of pretext analysis and hostile work environment legal standards is explicit."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Events are sequenced chronologically from September 2014 through January 27, 2017 (and beyond to January 31, 2022 AJ decision), with specific dates for complaints, meetings, evaluations, and administrative actions."
+    }
+  },
+  "remediation_note": "The record would benefit from a consolidated chronology table and explicit clarification of IG abstention rationale and its bearing on investigative completeness, to reduce reliance on institutional context for interpreting evidentiary gaps.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity (moderate); basis_identification and accountability_support are robust but depend on prior knowledge of military health-care chain-of-command, EEO procedure, and German employment law to fully reconstruct investigative reasoning.",
+    "compliant_version": "Insert a preliminary chronology table listing all key dates, actors, and event types; add a separate section synthesizing the IG's abstention determination and its effect on the investigative scope; and append a decision matrix showing how each allegation (a–j) was resolved, the evidence relied upon, and the legal standard applied."
+  }
+}
+```

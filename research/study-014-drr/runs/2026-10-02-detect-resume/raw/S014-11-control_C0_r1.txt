@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each discrimination claim is grounded in specific factual allegations with identifiable bases: pay band assignments tied to hiring practices (1a-b), documented review of wage disparities (1c-g), reorganization timing (3), differential task assignments (4), and resource access restrictions (6a-d)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces allegations from event to complaint filing (June 13, 2019) and through investigation and hearing stages, but the investigative reasoning and how investigators evaluated evidence against each claim are not documented in this record."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the complainants' positions from the detailed enumeration of seven numbered claims with specific subparts, dates (October 2015 hiring, April 2018 review, June 2018 reorganization, January 2019 acknowledgment), and named positions (Executive Director, Senior Director, Supervisor 1, Supervisor 2)."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents complainants' allegations with supporting details (e.g., 70% wage offer, May 31, 2018 telephone conversation contradiction, January 2019 email instruction), but does not document the Agency's factual responses or the investigative findings that led to the AJs' no-discrimination conclusions."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Events are sequenced with specific dates: October 2015 (hiring), April 2018 (review directed), May 31, 2018 (phone call), June 15, 2018 (Deputy CAO inquiry), June 2018 (reorganization), July 2018 (Supervisor 2 inquiry), January 2019 (Executive Director acknowledgment), February 2019 (end of hostile treatment period), May 5, 2019 (tweet), and June 13, 2019 (complaint filed)."
+    }
+  },
+  "remediation_note": "The record functions primarily as a narrative statement of complainant allegations. To satisfy JRS conditions, a compliant version must document the investigator's reasoning process, the evidence examined for each claim, the Agency's factual responses, and the basis for investigative conclusions—not merely the allegations themselves.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability and accountability_support",
+    "compliant_version": "Include investigative findings section documenting: (1) evidence evaluated for each of the seven claims; (2) Agency responses to each allegation with supporting documentation; (3) investigator's analysis explaining how evidence was weighed; (4) explicit connection between investigative conclusions and the AJs' summary judgment decisions; and (5) identification of which allegations were accepted versus rejected and why."
+  }
+}
+```

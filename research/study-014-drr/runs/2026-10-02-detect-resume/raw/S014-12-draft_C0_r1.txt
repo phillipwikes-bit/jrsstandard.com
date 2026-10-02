@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific bases for the AJ's decision (single incident, facially neutral language, absence of background allegations from formal complaint), but Complainant's contradictory claims about providing investigators with lists and prior allegations lack documentary corroboration within this record."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's reasoning path is traceable (professionalism concern → single incident analysis → comparison to harassment standard), but the record does not explain how the AJ weighed or rejected Complainant's stipulated facts about Supervisor's history, Obama comments, or Confederate imagery, creating a gap in decision-process transparency."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot determine from this record alone whether Complainant actually provided investigators with the list of incidents and witnesses he later claimed, whether those materials exist in separate investigative files, or why they were excluded from the formal complaint if they existed."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the finding that the December 11 incident occurred and Supervisor used profane language, and documents the Agency's discipline, but does not present the full investigative file, witness statements, or Supervisor's contemporaneous response to establish whether the evidentiary record as a whole is sufficient to rule out harassment."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Clear dates are provided: incident (December 11, 2020), complaint filed (May 25, 2021), EEOC notice of proposed summary judgment (January 21, 2022), AJ decision (February 25, 2022), and decision sequence is reconstructible."
+    }
+  },
+  "remediation_note": "The record must include or reference the full investigative file, document whether Complainant submitted the claimed list of incidents and witnesses to investigators (with dates and method), and articulate how the AJ weighed Complainant's stipulated background allegations against the harassment standard, including specific factual findings on each claimed incident.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Add: (1) factual determination on whether Complainant submitted incident list to investigators and when; (2) summary of investigative findings on each background allegation (Obama comments, Confederate imagery, differential treatment of other African-Americans); (3) explicit AJ reasoning on why stipulated facts did not alter the harassment analysis; (4) copies or page references to investigative reports, witness statements, and Supervisor's responses; (5) explanation of why summary judgment was appropriate despite disputed material facts regarding Supervisor's historical conduct."
+  }
+}
+```

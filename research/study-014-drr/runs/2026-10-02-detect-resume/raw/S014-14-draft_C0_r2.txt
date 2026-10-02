@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "Claim 2 is explicitly noted as missing or garbled, and the Agency's final decision rationale for dismissing Claims 1–4 is not detailed in this summary, leaving the specific evidentiary or legal grounds for the no-discrimination finding unidentifiable."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The summary documents the investigation process and competing accounts but does not trace how the Inspector or Agency weighed the disputed facts, credibility determinations, or legal standards to reach the no-discrimination conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer unfamiliar with the case could understand the allegations and procedural history but could not reconstruct why the Inspector labeled evidence 'conjecture' or why credibility was assigned to one party's account over another's without the underlying fact-finding analysis or Agency decision reasoning."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "While witness statements and CW1's affidavit are documented, the record does not show whether documentary evidence (scheduling records, door-blocking or intimidation witnesses, security footage, investigation notes) was obtained or analyzed to support or refute Complainant's allegations."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly established: Nov. 24, 2020 (initial incident); Nov. 28, 2020 (report to management); Dec. 21, 2020 (initial investigator appointed); Dec. 31, 2020 (objection filed); Jan. 5, 2021 (reassignment); Jan. 22, 2021 (fact-finding report); Feb. 2, 2021 (EEO complaint filed); final decision issued thereafter."
+    }
+  },
+  "remediation_note": "To achieve compliance, the Agency's final decision must be included and must explicitly state the evidentiary basis, credibility findings, and legal reasoning for each claim; Claim 2 must be recovered and documented; and the fact-finding report must be attached or summarized in sufficient detail to allow reconstruction of how evidence was evaluated.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) the full text of all four claims; (2) the Agency's final decision letter with explicit statement of findings on each claim, citing the evidence considered (witness statements, documents, investigator conclusions) and credibility determinations; (3) the Inspector's complete fact-finding report or a detailed summary showing how disputed facts were assessed; (4) documentation of any documentary evidence sought, obtained, or rejected (e.g., scheduling records, door video, investigator authorization memo); and (5) explicit legal analysis addressing whether the evidence, viewed favorably to Complainant, would support a prima facie case of discrimination or reprisal under applicable standards."
+  }
+}
+```

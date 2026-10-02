@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each alleged adverse action: May 31, 2018 counseling memorandum based on TECS policy violations (stated twice per CID Chief); June 2019 schedule change tied to optional potluck attendance; March 8, 2020 removal based on failure to perform expedited case assistance per Watch Commander request."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces investigation findings and agency rationale but the chain from complainant's protected class status to alleged differential treatment is incomplete; footnotes reference ROI pages but the investigative conclusions linking evidence to discrimination findings are summarized rather than fully documented in the body."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify complainant's protected classes (age, prior EEO activity) and the eight alleged incidents with dates, but would struggle to reconstruct whether comparator employees received different treatment because the record states only that the agency found 'no evidence' of differential treatment without naming or analyzing specific comparators."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record cites agency-provided explanations for each action (CID Chief's rationale for counseling, SCBPO-1's account of potluck procedures, CID Chief's explanation of removal) but does not substantiate whether those explanations are factually accurate or whether complainant's rebuttal evidence was adequately weighed; complainant's failure to submit an affidavit is noted but not explained as to whether opportunity and resources were genuinely equal."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology from May 31, 2018 through March 8, 2020 removal, with specific dates for counseling (May 31, 2018), alleged incidents (April 17, June 3, June 19, August 16, 2019), removal (March 8, 2020), and investigative milestones (September 28, 2020 extension granted)."
+    }
+  },
+  "remediation_note": "To remedy gaps, the record must document specific comparator analysis (naming employees outside protected classes who committed similar conduct and their discipline outcomes), fully articulate the investigator's credibility determinations between complainant's allegations and respondent accounts, and explain whether complainant's request for administrative/sick leave to prepare his affidavit was approved or denied and on what basis.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support and cold_reviewer_clarity; the record summarizes investigation conclusions without sufficiently anchoring comparator findings or explaining investigator credibility choices that a cold reviewer could independently verify.",
+    "compliant_version": "Must include: (1) explicit identification of comparator employees and their conduct/discipline outcomes with explanation of why they are or are not similarly situated; (2) detailed investigator findings on credibility of each account (complainant vs. respondent) with reference to corroborating evidence; (3) clarification of whether complainant was granted or denied the leave request for affidavit preparation and the impact on his ability to respond; (4) full text or binding summary of investigative conclusions rather than paraphrased references."
+  }
+}
+```

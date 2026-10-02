@@ -170,192 +170,192 @@
  "part2": {
   "A": {
    "deletion_hit": [
-    5,
-    5,
+    23,
+    26,
     [
-     0.566,
+     0.71,
+     0.96
+    ]
+   ],
+   "draft_hit": [
+    19,
+    19,
+    [
+     0.832,
+     1.0
+    ]
+   ],
+   "control_flag_rate": {
+    "dates": [
+     12,
+     26
+    ],
+    "citations": [
+     21,
+     26
+    ],
+    "attributions": [
+     13,
+     26
+    ]
+   },
+   "outcomes": {
+    "ok": 229,
+    "parse_error": 0,
+    "failed": 82
+   }
+  },
+  "B": {
+   "deletion_hit": [
+    25,
+    25,
+    [
+     0.867,
      1.0
     ]
    ],
    "draft_hit": [
-    2,
-    2,
+    19,
+    19,
     [
-     0.342,
+     0.832,
      1.0
+    ]
+   ],
+   "control_flag_rate": {
+    "dates": [
+     24,
+     26
+    ],
+    "citations": [
+     26,
+     26
+    ],
+    "attributions": [
+     19,
+     26
+    ]
+   },
+   "outcomes": {
+    "ok": 228,
+    "parse_error": 0,
+    "failed": 84
+   }
+  },
+  "C": {
+   "deletion_hit": [
+    25,
+    25,
+    [
+     0.867,
+     1.0
+    ]
+   ],
+   "draft_hit": [
+    19,
+    19,
+    [
+     0.832,
+     1.0
+    ]
+   ],
+   "control_flag_rate": {
+    "dates": [
+     25,
+     26
+    ],
+    "citations": [
+     26,
+     26
+    ],
+    "attributions": [
+     22,
+     26
+    ]
+   },
+   "outcomes": {
+    "ok": 228,
+    "parse_error": 0,
+    "failed": 84
+   }
+  },
+  "D": {
+   "deletion_hit": [
+    25,
+    25,
+    [
+     0.867,
+     1.0
+    ]
+   ],
+   "draft_hit": [
+    16,
+    19,
+    [
+     0.624,
+     0.945
+    ]
+   ],
+   "control_flag_rate": {
+    "dates": [
+     24,
+     26
+    ],
+    "citations": [
+     23,
+     26
+    ],
+    "attributions": [
+     13,
+     26
+    ]
+   },
+   "outcomes": {
+    "ok": 226,
+    "parse_error": 0,
+    "failed": 88
+   }
+  },
+  "C0": {
+   "deletion_hit": [
+    12,
+    25,
+    [
+     0.3,
+     0.665
+    ]
+   ],
+   "draft_hit": [
+    11,
+    19,
+    [
+     0.363,
+     0.769
     ]
    ],
    "control_flag_rate": {
     "dates": [
      1,
-     5
-    ],
-    "citations": [
-     3,
-     5
-    ],
-    "attributions": [
-     2,
-     5
-    ]
-   },
-   "outcomes": {
-    "ok": 42,
-    "parse_error": 0,
-    "failed": 228
-   }
-  },
-  "B": {
-   "deletion_hit": [
-    5,
-    5,
-    [
-     0.566,
-     1.0
-    ]
-   ],
-   "draft_hit": [
-    2,
-    2,
-    [
-     0.342,
-     1.0
-    ]
-   ],
-   "control_flag_rate": {
-    "dates": [
-     4,
-     5
-    ],
-    "citations": [
-     5,
-     5
-    ],
-    "attributions": [
-     3,
-     5
-    ]
-   },
-   "outcomes": {
-    "ok": 42,
-    "parse_error": 0,
-    "failed": 228
-   }
-  },
-  "C": {
-   "deletion_hit": [
-    5,
-    5,
-    [
-     0.566,
-     1.0
-    ]
-   ],
-   "draft_hit": [
-    2,
-    2,
-    [
-     0.342,
-     1.0
-    ]
-   ],
-   "control_flag_rate": {
-    "dates": [
-     4,
-     5
-    ],
-    "citations": [
-     5,
-     5
-    ],
-    "attributions": [
-     3,
-     5
-    ]
-   },
-   "outcomes": {
-    "ok": 42,
-    "parse_error": 0,
-    "failed": 228
-   }
-  },
-  "D": {
-   "deletion_hit": [
-    4,
-    4,
-    [
-     0.51,
-     1.0
-    ]
-   ],
-   "draft_hit": [
-    0,
-    2,
-    [
-     0.0,
-     0.658
-    ]
-   ],
-   "control_flag_rate": {
-    "dates": [
-     3,
-     5
-    ],
-    "citations": [
-     3,
-     5
-    ],
-    "attributions": [
-     3,
-     5
-    ]
-   },
-   "outcomes": {
-    "ok": 39,
-    "parse_error": 0,
-    "failed": 231
-   }
-  },
-  "C0": {
-   "deletion_hit": [
-    5,
-    5,
-    [
-     0.566,
-     1.0
-    ]
-   ],
-   "draft_hit": [
-    2,
-    2,
-    [
-     0.342,
-     1.0
-    ]
-   ],
-   "control_flag_rate": {
-    "dates": [
-     0,
-     5
+     26
     ],
     "citations": [
      0,
-     5
+     26
     ],
     "attributions": [
-     0,
-     5
+     3,
+     26
     ]
    },
    "outcomes": {
-    "ok": 40,
-    "parse_error": 0,
-    "failed": 230
+    "ok": 224,
+    "parse_error": 4,
+    "failed": 88
    }
   }
  },
  "part2_complete": {
-  "ok": 205,
+  "ok": 1135,
   "planned": 1350
  }
 }

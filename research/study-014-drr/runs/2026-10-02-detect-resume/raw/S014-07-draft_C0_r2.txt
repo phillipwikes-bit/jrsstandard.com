@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the final decision (assumed comment, lack of persuasive evidence for incidents 2–4, internal inquiry findings) but does not explain why the Agency assumed S1 made incident 1 or what evidentiary standard was applied to characterize claims as 'uncorroborated.'"
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The Agency's reasoning for rejecting incidents 2–4 lacks intermediate steps: no explanation of what evidence was examined, how 'persuasive evidence' was defined, or how the internal inquiry's non-substantiation was weighted against Complainant's account and timeline."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct why accent-related comments were treated as non-discriminatory, or why supervisor inaction (S2's alleged 'lack of support') was not analyzed as a separate harassment or retaliation claim within the decision itself."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports findings on timing and procedural compliance but lacks documentary evidence (emails, witness statements, internal inquiry details, or calendar records) explicitly cited to support the conclusion that incidents 2–4 were not based on protected status."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: June 2020–July 2021 (alleged conduct), November 4, 2021 (complaint filed), November 16, 2021 (accepted), investigation conducted, report issued with notice of hearing rights, no hearing request within 29 C.F.R. § 1614.108(f), final decision under § 1614.110(b), and appeal pending."
+    }
+  },
+  "remediation_note": "The record functions as a summary-narrative of procedural steps and competing positions but lacks the analytic rigor required to support accountability. A compliant version must: (1) identify and cite the specific evidence examined for each incident; (2) articulate the legal standard for 'persuasive evidence' of discrimination and how it was applied; (3) explicitly address whether S2's inaction constitutes separate unlawful conduct; (4) document how credibility was assessed; and (5) explain the Agency's reasons for distinguishing accent-related remarks from national-origin harassment.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (a) a detailed findings section for each incident citing specific evidence (witness statements, documentary records, dates); (b) an explicit statement of the legal standard for discrimination and hostile work environment; (c) a line-by-line analysis of how each piece of evidence was weighed; (d) a separate analysis of S2's response to Complainant's request for supervisor change, with explanation of whether inaction constitutes constructive knowledge or acquiescence; (e) citation to or summary of the internal anti-harassment inquiry with explanation of how its findings were reconciled with Complainant's account; and (f) a reasoned explanation for why accent-directed comments do not establish national-origin discrimination."
+  }
+}
+```

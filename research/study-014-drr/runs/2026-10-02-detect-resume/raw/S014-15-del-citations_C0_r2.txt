@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for key conclusions: medical restrictions documented in ROI affidavits, modified job offer dated June 22, 2016, manager testimony regarding medical documentation, and specific dates of alleged violations (June 26, 2016 onward; October 4, 2016; unspecified dates for 204-B denial)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision traces from evidence to conclusions for reasonable accommodation and 204-B denial claims, but the reasoning for clock-ring deletion and payment failure findings relies heavily on the Agency's explanations (facility transition, manual timecard loss, poor organization) without full evidentiary support for which explanation applies to which deletion date."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the reasonable accommodation analysis and 204-B denial reasoning, but the clock-ring and payment-failure analysis references multiple overlapping causes (July 18–28 coding error, October 4 discovery, manual timecard loss, facility transition) without clear mapping of which error occurred when or who caused it."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports conclusions on reasonable accommodation (job offer documents, medical restrictions, offered alternatives) and 204-B denial (manager testimony on operational need and reliability concerns), but evidence for payment/clock-ring errors is circumstantial and based on Agency explanations rather than investigative verification of the actual mechanism of deletion."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Chronology is clear for major events (injury May 10, 2014; offer June 22, 2016; start July 18, 2016; August 29 walking claim; October 4 discovery; November 14, 2016 paperwork visits), but clock-ring deletion dates (July 18–28) and payment failure timeline lack specificity, and 'unspecified dates' for the 204-B denial prevent full temporal reconstruction."
+    }
+  },
+  "remediation_note": "The record would benefit from a summary table correlating each alleged clock-ring deletion and payment failure to specific dates, documented causes, and investigative findings (not mere Agency assertion). The 204-B denial requires a stated date or date range when the request was made and refused, with explicit documentation of the manager's stated reason at that time, separate from post-hoc testimony.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "temporal_reconstructability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would include: (1) a timeline table listing each alleged payroll error and clock-ring deletion with the specific date it occurred, the date it was discovered, the documented cause, and the investigation finding; (2) explicit date(s) when Complainant requested the 204-B detail and date when it was denied, with the manager's contemporaneous stated reason; (3) investigative verification (not mere assertion) that manual timecards were lost and which dates they covered; and (4) clear attribution of each error to a single cause with supporting evidence, rather than listing multiple potential causes without resolution."
+  }
+}
+```

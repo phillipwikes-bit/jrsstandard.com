@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Factual bases for individual incidents are identifiable (dates, actions, actors), but the logical connection between each incident and the alleged protected-class discrimination is largely absent; the record documents what happened but not why it is attributed to age, race, or prior EEO activity."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents agency explanations for each action (TECS policy violation, automated reminders, voluntary potluck, performance failure) but does not trace how the investigator or decision-maker evaluated whether these explanations were pretextual or whether discriminatory intent was present or absent."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can identify the incidents and dates clearly, but cannot reconstruct from the record alone why the investigator concluded there was 'no evidence' of discriminatory animus—no summary of comparative evidence, no documented analysis of temporal proximity, or stated reasons for crediting agency accounts over complainant's narrative."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record notes that Complainant requested administrative leave to prepare his affidavit, was granted an extension, but never submitted it; this absence of affidavit evidence is cited as grounds for dismissal, yet the record does not explain whether the complainant's failure to submit—after requesting and receiving leave—was adequately explored or whether it supports inference of weak evidence or procedural burden."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology of events is provided from May 31, 2018 through March 8, 2020, with specific dates for each alleged incident, and the investigation and decision dates are documented."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must explicitly document the investigative analysis of each allegation against the prima facie burden (similarly situated comparators, temporal proximity to protected activity, pretext indicators) and articulate the reasoning by which agency explanations were credited and discriminatory animus was found absent. The record should also explain the consequences of Complainant's failure to submit an affidavit in context of his administrative leave request.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, basis_identification, accountability_support",
+    "compliant_version": "A compliant version must include: (1) for each allegation, documented comparison of treatment to similarly situated non-protected employees; (2) explicit analysis of temporal proximity between protected activity and adverse action; (3) investigator notes evaluating whether agency proffered reasons are contradicted by evidence; (4) explanation of how the investigator weighed Complainant's assertions of discriminatory motive against agency denials; (5) documented discussion of the affidavit gap and whether it was the product of procedure, burden, or substantive weakness; and (6) a reasoned statement of how the totality of evidence supports or refutes a prima facie case and pretext."
+  }
+}
+```

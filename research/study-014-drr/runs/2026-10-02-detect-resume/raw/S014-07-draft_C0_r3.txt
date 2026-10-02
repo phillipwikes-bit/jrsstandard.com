@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., 'no persuasive evidence' for incidents 2–4, internal inquiry did not substantiate) but the Agency's characterization of incident 1 as 'assumed' and its dismissal of S1's comments as non-discriminatory lack explicit evidentiary grounding."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The pathway from specific evidence to the final discrimination finding is incomplete; the record does not trace which investigation findings, witness statements, or documentary evidence led to conclusions about each incident, particularly the determination that comments about accent did not reflect national origin."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct the investigative basis for dismissing incidents 2–4 or the evidentiary standards applied to distinguish 'insensitive remarks' from discriminatory conduct; the record summarizes conclusions rather than presenting the underlying investigative record."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is cited for some findings (internal inquiry, separation in July 2021, no further contact reported) but the record does not present the substance of S1's alleged comments, S2's response, or investigation notes that would support the conclusion that mocking an accent and national origin are unrelated."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are documented: complaint filed November 4, 2021; accepted November 16, 2021; harassment period June 2020–July 2021; escalation in late July 2021; separation thereafter; appeal pending."
+    }
+  },
+  "remediation_note": "The record must include or reference the investigator's findings on what S1 actually said about Complainant's accent, why those remarks were deemed unrelated to national origin, and the specific evidence and reasoning supporting dismissal of incidents 2–4 as non-discriminatory. The record should document S2's documented response (or lack thereof) to the harassment report and the evidentiary basis for characterizing the overall conduct as non-severe or non-pervasive.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would present the investigation report findings verbatim or by detailed reference, quote the alleged comments about accent, document witness and complainant statements, articulate the legal standard for national-origin discrimination and why the evidence does or does not meet it, and explain the investigator's assessment of severity and pervasiveness with supporting detail. It would also include contemporaneous documentation of Complainant's reports to S2 and S2's documented response."
+  }
+}
+```

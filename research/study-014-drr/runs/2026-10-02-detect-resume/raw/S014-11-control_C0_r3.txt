@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation (claims 1-7) is grounded in specific factual events: salary negotiations (claim 1a), pay band comparisons (1b), April 2018 review directive (1c), May 31, 2018 conversation (1d), June 15, 2018 inquiry (1e), July 2018 supervisor inquiry (1f), January 2019 acknowledgment (1g), reorganization (claim 3), strategic plan tasking (claim 4), contractor treatment (claim 5), resource access restrictions (claim 6a-d), and May 5, 2019 tweet omission (claim 7)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record chains events and document references (April 2018 review, May 31, 2018 phone call, June 15, 2018 inquiry, January 2019 email) but does not explicitly state the investigative findings, AJ reasoning, or the evidentiary basis upon which the AJs rejected or accepted each claim, making it difficult to trace the decisional logic from evidence to the no-discrimination conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct the complainants' allegations and timeline of events, but cannot independently verify or understand the investigative outcome or AJ decisions because the record presents allegations and procedural posture without detailing investigative conclusions, witness testimony summaries, or the grounds for the summary judgment findings."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record documents seven detailed categories of alleged discriminatory conduct with specific dates and statements (e.g., 'take it or leave it' offer, January 2019 email instruction to 'tamper any escalation'), but provides no summary of investigative findings, corroboration analysis, witness credibility determinations, or evidentiary rebuttal that would support the AJs' conclusion of no discrimination."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: October 2015 (hire), June 13, 2019 (complaints filed), April 2018 (review), May 31, 2018 (phone call), June 15, 2018 (inquiry), June 2018 (reorganization), July 2018 (supervisor inquiry), January 2019 (acknowledgment), February 2019 (last hostile conduct date), May 5, 2019 (tweet), and investigation/hearing/appeal sequence thereafter."
+    }
+  },
+  "remediation_note": "The record must include the investigative findings for each claim, the factual basis for the AJs' summary judgment determinations, and a point-by-point reconciliation of alleged discriminatory conduct against investigation conclusions and supporting evidence or rationale for rejection.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would append or incorporate: (1) a summary of investigative findings for claims 1–7, including witness interviews, document review outcomes, and credibility assessments; (2) the AJs' reasoning for denying summary judgment or granting it, with explicit reference to evidence and legal standards; (3) a table or narrative reconciling each allegation against the investigative conclusion; and (4) identification of any documentary evidence (emails, pay records, reorganization charts) that was reviewed or rejected in support of the no-discrimination finding."
+  }
+}
+```

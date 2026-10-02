@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases (race, national origin, retaliation) and specific incidents (pay negotiations, pay band disparity review, reorganization, resource access restrictions), but critical evidentiary details—such as who conducted pay comparisons, what the completed review concluded, and documentary support for factual assertions—are either absent or referenced only by date placeholders."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record documents complainant allegations and procedural history but does not trace how the AJs reached their no-discrimination conclusions; the investigative findings, the basis for summary judgment, and the logical pathway from evidence to adjudication are absent from this record."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior access to investigative files, the AJs' written decisions, or the Agency's personnel records cannot reconstruct the factual record or the reasoning that supported the summary judgment rulings; critical evidence and findings are referenced but not included."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents complainant allegations with specificity (salary negotiation demands, pay band mismatches, review denial, resource gatekeeping) but does not include the Agency's responses, investigative conclusions, or documentary evidence (e.g., hiring records, the wage review itself, communications) necessary to assess whether the no-discrimination finding is evidentially supported."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Multiple critical dates and intervals are redacted or replaced with 'at one point' placeholders, obscuring the timeline of discriminatory acts, the timing of the wage review, the reorganization, and the sequence of escalations to senior leadership."
+    }
+  },
+  "remediation_note": "The record requires inclusion of the AJs' written decision summaries (findings of fact, legal conclusions, and rationale for rejecting each claim element), a reconstructed or redacted timeline with actual dates rather than 'at one point' references, and incorporation or clear cross-reference to key documentary evidence (hiring records, pay band comparisons, the wage review, and senior leadership communications) to enable cold review and traceability.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, temporal_reconstructability",
+    "compliant_version": "A compliant record would include: (1) the AJs' substantive decisions with explicit findings of fact and reasoning on each claim and subpart; (2) a complete chronology with unredacted dates and intervals showing the sequence of hiring, pay setting, the wage review, denial of action, reorganization, and alleged harassment; (3) incorporation of or clear reference to investigative file summaries and documentary evidence (hiring materials, pay records, written communications from leadership); and (4) the Agency's factual responses and any counter-evidence, enabling a subsequent reviewer to independently assess whether the no-discrimination determination was supported by the record."
+  }
+}
+```

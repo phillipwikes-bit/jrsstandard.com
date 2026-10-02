@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies bases for each key conclusion: witness statements (ROI page citations), documentary evidence (PAP, PIP, performance reviews with dates), and the complainant's own allegations with specific dates and incidents."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's final decision states its conclusions (discrimination not established) but does not fully explain the analytical steps connecting witness credibility determinations, demeanor assessments, or temporal gaps to the rejection of specific claims; the decision asserts insufficient evidence but does not detail why corroborating witness accounts were deemed insufficient for sexual harassment claims."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can identify witness names, incidents, and dates, but the record does not articulate the decision-maker's reasoning for preferring the Deputy Director's and S1's denials over multiple corroborating witness accounts and complainant's detailed, specific narrative."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record documents extensive witness testimony that complainant confided in coworkers about sexual harassment (Senior Budget Analyst witnessed behavior weekly, Team Lead heard reports, Public Health Advisor corroborated similar conduct by same supervisor), yet the Agency conclusion that 'no witnesses specifically observed the sexual harassment' appears to conflate non-observation of the touching itself with absence of corroboration of the overall harassment pattern."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record presents a clear chronology: October 28, 2013 (first alleged comment), December 12, 2013 (Christmas party incident), January 9, 2014 (overheard comment), May 4, 2014 (PAP), September 22, 2014 (PIP), October 16, 2014 (counseling memo), December 12, 2014 (transfer), January 29, 2015 (year-end review), with investigation completion and FAD issuance thereafter."
+    }
+  },
+  "remediation_note": "The record requires explicit articulation of how credibility was assigned when complainant's detailed, dated allegations were corroborated by multiple independent witnesses who reported complainant's distress and specific details (touching leg, personal space invasion, dinner invitations), versus categorical denials from the accused and their allies. The decision must distinguish between 'no direct observation of touching' and 'no evidence of harassment pattern,' and explain whether witness reluctance to come forward (as noted by Public Health Advisor) affected credibility assessment.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support and reasoning_traceability—the Agency's rejection of sexual harassment claims rests on an evidentiary distinction (direct observation vs. corroborated pattern) that is neither explained in the record nor sufficiently justified given multiple witness accounts of complainant's emotional distress tied to specific allegations.",
+    "compliant_version": "The FAD must explicitly weigh complainant's specific, dated allegations against witness corroboration (frequency, consistency, emotional impact noted), address why multiple independent witness accounts of complainant's reports and distress do not constitute sufficient corroboration of the underlying conduct, articulate the standard applied to sexual harassment 'pervasiveness,' and explain how the decision-maker resolved conflicts between complainant's narrative and accused parties' denials, particularly where witnesses confirmed complainant's version of her own disclosures even if they did not witness the primary conduct."
+  }
+}
+```

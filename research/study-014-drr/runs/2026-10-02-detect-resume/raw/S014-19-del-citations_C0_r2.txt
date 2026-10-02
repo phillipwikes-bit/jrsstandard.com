@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for individual actions (e.g., HRM's request for updated medical documentation, S2's decision not to allow work), but the ultimate basis for the no-discrimination finding relies on an unstated assumption rather than explicit identification of the evaluative framework applied."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The causal chain from evidence (Complainant's refusal to submit medical documentation, HRM's determination of inadequacy, S2's work restriction) to the no-discrimination conclusion is partially traceable but interrupted by unexplained gaps (e.g., who ultimately decided the July 2 note was inadequate, what specific documentation standard was applied)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would struggle to reconstruct why the Agency's reasoning that 'Complainant did not submit the medical documentation management requested' defeats a discrimination claim, particularly when the record shows a document was submitted, deemed inadequate by HRM without stated criteria, and then the work restriction was imposed by S2 without HRM awareness."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The evidentiary sufficiency is compromised by the HRM Manager's admission that he was unaware why Complainant was not allowed to work and that S2 made the decision—yet the FAD attributes the outcome to Complainant's failure to submit adequate documentation without clarifying who determined adequacy or by what standard."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record clearly establishes the chronology: June 11 and 21 (HRM requests), June 15 (union grievance), July 2 (doctor's letter submitted), July 5–31 (work restriction period), July 22 (HRM letter), July 25 (new Modified Assignment offer), August 1 (return to work)."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must explicitly identify the standard(s) applied to evaluate medical documentation adequacy, document who made each decision and when, and explain how the refusal or failure to submit compliant documentation severs the causal link required to establish discrimination. The unexplained gap between HRM's post-hoc awareness and S2's autonomous work-restriction decision must be resolved through clarified delegation or decision-authority records.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) explicit documentation of the medical documentation standard HRM applied and the date/method by which that standard was communicated to Complainant; (2) a detailed memo or contemporaneous note from the decision-maker (HRM or S2) stating the factual basis for deeming the July 2 letter inadequate; (3) a documented decision chain showing who authorized the work restriction, on what date, and based on which specific deficiency; (4) clarification of whether the restriction was remedial (pending adequate documentation) or punitive, and if remedial, the specific steps required for reinstatement; and (5) a discrimination analysis that explicitly addresses whether similarly situated employees outside the protected class who failed to submit medical documentation received different treatment, or whether the documentation requirement itself was applied discriminatorily."
+  }
+}
+```

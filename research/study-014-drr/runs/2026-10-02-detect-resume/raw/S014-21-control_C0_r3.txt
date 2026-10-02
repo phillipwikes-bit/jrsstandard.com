@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for each major conclusion: reasonable accommodation denial is grounded in Complainant's failure to provide requested medical documentation (Coordinator statements, multiple email requests documented); AWOL charging is based on Coordinator's suggestion and Complainant's eight-month absence without required documentation."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is traceable: interactive process initiated March 5, 2020; Agency prepared accommodations (dictation software, ergonomic equipment, laptop); Complainant requested 100% telework; Agency requested medical documentation on March 25, 2020; Coordinator made repeated requests June 2020; case closed August 7, 2020 for non-compliance; AWOL charged August 10, 2020 based on Coordinator suggestion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct the accommodation process and documentation requests, but the record lacks clarity on whether Complainant's submitted medical statements (DR1, DR2 documents) actually addressed the specific gaps the Coordinator identified or why they were deemed insufficient."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents that medical documentation was requested multiple times and the Coordinator closed the case for non-compliance, but does not explain precisely which medical elements (diagnosis, duration, functional capacity for telework/patient examination) were missing from the statements Complainant did provide (DR2's April, May, June, July 2020 statements)."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is well-established: July 12, 2019 (initial injury, no accommodation request); December 2019 (aggravation, notification); February 25, 2020 (verbal request, FMLA submission); March 2, 2020 (return with restrictions); March 5, 2020 (interactive process meeting); March 25, 2020 (medical documentation request); June–August 2020 (repeated Coordinator requests); August 7, 2020 (case closure); August 10, 2020 (AWOL charge); January 22, 2021 (termination)."
+    }
+  },
+  "remediation_note": "The record would require explicit documentation of how each submitted medical statement was evaluated against the Coordinator's specific requests, including which functional capacity or durational elements remained absent, and whether Complainant was given a final written summary of deficiencies before case closure.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support and cold_reviewer_clarity",
+    "compliant_version": "Add a reconciliation table or written analysis comparing the Coordinator's documented requests (e.g., 'diagnosis of condition,' 'duration—temporary or permanent,' 'ability to perform patient examination via telemedicine,' 'ability to use computer with ergonomic support') against the dates and content of each medical statement provided by Complainant, with explicit notation of which gaps remained unresolved before case closure on August 7, 2020."
+  }
+}
+```

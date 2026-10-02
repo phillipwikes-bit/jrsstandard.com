@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the AJ's decision: the December 11, 2020 incident with facially neutral language, Supervisor's performance concerns, Complainant's own concession that the incident was not race or age-based, and the absence of prior allegations in official EEO documentation."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The decision pathway is traceable through the Notice and final order, but the record does not explain the AJ's reasoning for rejecting the newly introduced allegations (Obama comments, confederate flag images) or adequately document what Complainant claims he provided to investigators regarding prior incidents."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the AJ determined the background allegations were improperly introduced for the first time at the response stage, nor can they verify whether Complainant's claims of providing investigator lists and witness names are accurately reflected in the investigative record attached to this document."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the AJ's conclusion regarding the single December 11 incident but does not comprehensively document the evidentiary foundation for dismissing the newly alleged racial comments and symbols, which Complainant disputes having raised earlier."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The timeline is clearly established: December 11, 2020 (incident), May 25, 2021 (complaint filed), January 21, 2022 (Notice issued), February 25, 2022 (final decision), with identifiable response deadlines and procedural sequence."
+    }
+  },
+  "remediation_note": "The record requires supplementation with the investigative report, the EEO Counselor Report, the formal complaint, and Complainant's affidavit to allow a reviewer to assess whether background allegations were actually presented earlier and whether the investigator documented the claimed incidents and witness list. The AJ's reasoning for the timeliness ruling on new allegations must be explicitly stated with citation to procedural authority.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support—specifically the gap between Complainant's assertion that he provided prior allegations and witness lists versus the record's documentation of what appears in formal EEO filings.",
+    "compliant_version": "A compliant version would attach or reference the complete investigative file, explicitly compare allegations in the original complaint and affidavit against those raised at summary judgment response, document why new allegations were or were not considered, and state the AJ's legal basis for the timeliness determination, allowing full reconstruction of whether procedural or evidentiary defects barred the new claims."
+  }
+}
+```

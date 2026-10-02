@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each disciplinary action and the AJ's findings: undocumented verbal counseling, Letter of Reprimand for leaving library unattended, acceptance of subordinate statements, Notice of Proposed Removal citing failure to meet deadlines and other management failures, and ultimate removal."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable from Complainant's allegations through the AJ's analysis: the AJ explicitly addresses each claim, applies legal standards (prima facie case, disparate treatment, hostile work environment), identifies the Agency's articulated reasons, and explains why evidence was insufficient."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer without prior knowledge can reconstruct the complaint sequence, the Agency's documented reasons for removal, the Complainant's allegations, and the AJ's fact-based findings and legal conclusions from the record text alone."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the AJ's conclusions on disparate treatment and comparators, but the harassment analysis relies heavily on characterizing incidents as 'ordinary tribulations' and finding an affidavit 'confusing' without detailed documentation of why secondhand accounts of racial animus statements were insufficient beyond lack of corroboration."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are provided for all material events: May 31–July 16, 2018 (verbal counseling claims), October 18, 2018 (Letter of Reprimand), February–April 2019 (subordinate statements accepted), April 25, 2019 (Notice of Proposed Removal), June 28, 2019 (Decision to Remove), and October 22, 2019 (CAC discovery)."
+    }
+  },
+  "remediation_note": "The record would benefit from more explicit documentation of the AJ's evaluation of the coworker affidavit—specifically, what aspects were 'confusing,' whether the secondhand nature of the allegations was dispositive under the applicable standard, and whether the Agency's failure to investigate the alleged racial animus statements was addressed. The characterization of events as 'ordinary tribulations' should be more closely tied to the pervasiveness and severity prong of hostile work environment analysis.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support—the record reaches conclusions on harassment and affidavit credibility that would benefit from more granular evidentiary documentation and reasoning.",
+    "compliant_version": "A compliant version would explicitly detail which aspects of the affidavit were unclear and why, apply the 'severe and pervasive' standard with reference to each alleged incident's timing and intensity, and explain whether the Agency's failure to investigate alleged statements by staff members about racial preferences was a procedural or substantive gap that affected liability analysis."
+  }
+}
+```

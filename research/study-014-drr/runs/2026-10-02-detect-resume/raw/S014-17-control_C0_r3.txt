@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for Agency actions: TECS policy violations (Memorandum of Counseling), automated system reminders (TECS access expiration), workplace tradition (potluck participation), and job performance failure (failure to respond to Watch Commander request)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the Agency articulates reasons for individual actions, the record does not clearly trace how the CID Chief's decision to remove Complainant from the detail connects causally to the specific Watch Commander incident or whether comparable performance issues by non-protected employees were treated differently."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify what happened and when, but would struggle to reconstruct whether the Agency's stated nondiscriminatory reasons were pretextual without documentary evidence of comparative treatment or direct evidence of discriminatory intent, which the record notes was absent."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record contains Agency explanations for each action (TECS violations, automated reminders, optional potluck, performance failure) but lacks comparative evidence showing non-protected employees received different discipline for similar conduct, leaving the sufficiency of evidence to support the nondiscriminatory conclusion contested."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronological sequence is clear from May 31, 2018 through March 8, 2020, with specific dates for each alleged incident, Agency responses, investigation timeline, and final decision progression through appeal."
+    }
+  },
+  "remediation_note": "The record requires supplementation with comparative disciplinary data for non-protected employees facing similar TECS violations, performance issues, or potluck participation refusals to establish whether Agency treatment was truly nondiscriminatory. The record should also document the Watch Commander's specific request, Complainant's response (or lack thereof), and any performance evaluations of similarly situated employees.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, and accountability_support—the investigative narrative recounts events and Agency explanations but does not establish evidentiary foundation for the pretext analysis or provide documentary comparators.",
+    "compliant_version": "A compliant version would include: (1) documentary evidence of comparative discipline (e.g., prior Memoranda of Counseling issued to non-protected employees for TECS violations); (2) the Watch Commander's written request and documentation of Complainant's response timeline; (3) performance records for similarly situated ITU officers; (4) explicit investigator findings on whether the stated reasons align with documented Agency practice; and (5) direct testimony or written statements from decision-makers addressing why the stated bases, if true, were applied uniformly across protected and non-protected classes."
+  }
+}
+```

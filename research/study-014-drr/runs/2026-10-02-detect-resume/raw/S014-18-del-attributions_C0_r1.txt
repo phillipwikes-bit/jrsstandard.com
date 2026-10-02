@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the 15 specific allegations includes dates, named supervisors, alleged statements, and actions that ground the basis for the hostile work environment and discrimination claims."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record documents allegations and a final agency conclusion ('failed to prove discrimination' and 'failed to show disparate treatment') but provides no explanation of the investigative reasoning, evidence evaluation, or comparative analysis that led to that conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer can reconstruct the alleged events and dates from the complaint narrative, but cannot reconstruct the agency's investigative process, what evidence was gathered, or how supervisory conduct was assessed against discrimination standards without access to the underlying investigation report referenced but not detailed here."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents allegations and a conclusion, but does not disclose the evidence the agency examined (witness statements, supervisor responses, medical records, comparative discipline data, or temporal proximity analysis) to support the finding that complainant failed to prove her case."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology of events is clearly traceable from September 8, 2019, through February 6, 2020, with specific dates for most material incidents, permitting reconstruction of the sequence and intervals."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must disclose the investigative findings regarding each allegation (witness credibility, corroboration, supervisor explanations), the evidence and analysis supporting the conclusion that no disparate treatment occurred, and comparative evidence (how similarly situated non-disabled, younger, or male employees were treated under similar circumstances).",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, accountability_support, cold_reviewer_clarity",
+    "compliant_version": "A compliant record would retain the detailed allegation narrative but append a section documenting: (1) investigative findings for each allegation cluster; (2) the evidence reviewed (interviews, documents, prior discipline records); (3) explicit analysis of whether conduct was pretextual or justified; (4) comparative treatment of similarly situated employees; and (5) explicit application of disparate treatment burden-shifting (prima facie case, legitimate reason, pretext) with evidentiary support for each step."
+  }
+}
+```

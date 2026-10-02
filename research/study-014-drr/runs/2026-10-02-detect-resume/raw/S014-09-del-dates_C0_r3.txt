@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for conclusions (pay discrimination, hostile work environment, retaliation) but the evidentiary chain supporting each allegation is fragmented across narrative claims without explicit citation to investigative findings, witness statements, or documentary evidence."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents allegations and procedural history but does not trace the decision logic from evidence through investigative review to the AJs' summary judgment conclusions; the basis for the AJs' finding of 'no discrimination' is absent."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct why the AJs concluded no discrimination was established, as the investigative file contents, witness credibility determinations, and the application of legal standards to specific facts are not documented in this record."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "Multiple specific allegations (pay band disparity, Executive Director's review and contradictory statements, Supervisor 2's email exchange, contractor hostility, resource denial) are asserted but the record contains no summary of investigative findings, corroborating evidence, or refutation that would support the adjudicatory conclusion."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The record uses numerous 'in or around at one point' placeholders and 'at one point between [redacted] and [redacted]' constructions, obscuring the chronological sequence of events, decision points, and remedial actions necessary to assess timeliness and causation."
+    }
+  },
+  "remediation_note": "The record requires integration of investigative findings (witness statements, document summaries, factual determinations) and explicit application of the legal standard for discrimination to each allegation, coupled with restoration of temporal markers and the reasoning chain from evidence to the AJs' adverse conclusions.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support, temporal_reconstructability",
+    "compliant_version": "A compliant record would preserve the full investigative narrative with dated events, identify and summarize witness testimony and documentary evidence for each allegation, explicitly state the AJs' factual findings and legal reasoning for each claim element, restore redacted dates to enable temporal sequence reconstruction, and cross-reference evidence to conclusions so a subsequent reviewer can verify the sufficiency of support without access to external files."
+  }
+}
+```

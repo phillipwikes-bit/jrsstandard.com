@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Bases for individual findings are stated (e.g., IG report conclusions, performance evaluation metrics, AJ reasoning), but the record conflates complainant allegations with investigated findings without consistently distinguishing which facts were established versus alleged."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision pathway is traceable (Motion filed, inferences drawn in complainant's favor, pretext analysis applied), but the underlying IG investigation reasoning—particularly how it concluded no harassment despite documented reassignments, client removals, and tone complaints—is compressed and partially opaque."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would struggle to reconstruct the decisional basis: the record presents layered allegations, parallel IG and EEO investigations with divergent scopes, competing affidavits (e.g., Captain vs. Complainant on October 5 meeting tenor), and an AJ decision that rests heavily on 'pretext' analysis without detailed evidentiary parsing."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is present for disputed facts (e.g., performance evaluation ratings, IG findings of unlawful recording, patient complaint dates), but the record lacks granular support for the AJ's inference that complainant's claims constitute merely 'personal grievances' rather than pattern conduct—the basis for rejecting hostile environment severity and pervasiveness."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is traceable: September 2014 onwards, specific incidents dated (October 5–7, 2016; December 6, 2016; January 4, 2017; IG report November 15, 2016; AJ decision January 31, 2022), with intervals between grievance (November 28, 2014), mediation remedy (January 30, 2015), and later complaints marked."
+    }
+  },
+  "remediation_note": "The record would benefit from a structured findings matrix separating alleged conduct, investigated findings, and evidentiary conclusions for each claim category (discrimination, harassment, hostile environment, retaliation). The AJ's hostile-environment and pretext reasoning requires detailed case-by-case analysis linked to specific evidence, rather than a summary dismissal as 'personal grievances.'",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would separate (1) complainant's allegations by category and date, (2) investigative findings with explicit evidentiary citation for each allegation, (3) the AJ's pretext and hostile-environment analysis with point-by-point factual support (e.g., for each reassignment, the stated reason and evidence it was or was not pretextual), and (4) a clear statement of which facts were established, which were disputed, and how disputes were resolved, enabling a cold reviewer to reconstruct the decision independent of case memory."
+  }
+}
+```

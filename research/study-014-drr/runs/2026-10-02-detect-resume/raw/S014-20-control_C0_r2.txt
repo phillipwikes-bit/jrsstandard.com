@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each conclusion: claims 1–2 lack genetic information allegations (GINA basis), claim 3 denial rests on documented supervisor criteria (package volume, vehicle capacity, mail truck timing)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision chain is traceable: complaint filed → investigation → AJ summary judgment reasoning explicitly stated → appeal finding that Complainant's affidavit edits and supervisor explanations form the evidentiary path to conclusions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the AJ's reasoning is articulated, a reviewer years later would need to consult the affidavit itself and the supervisor's original explanation document to independently verify whether genetic information was truly absent and whether the supervisor's criteria were consistently applied; the record summarizes but does not reproduce these sources."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Claims 1–2 support is adequate (affidavit lack of genetic information references); claim 3 support depends on the supervisor's averments and the criteria listed, but the record does not include the full documentation of how those criteria were applied to other employees or prior requests for comparison."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are present: January 5, 2018 (route pay issue start), April 25, 2018 (overtime/holiday pay issue start), December 14, 2018 (package assistance denial), and the summary judgment and appeal sequence are sequenced, though investigation completion and hearing request dates are not specified."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should append or reference the Complainant's signed affidavit (particularly the holiday definition edit), the supervisor's complete written explanation and contemporaneous application of assistance criteria, and dates of investigation completion and hearing request to eliminate reliance on external documents.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Reproduce the affidavit with the Complainant's edit in facsimile, append the supervisor's signed explanation detailing the three criteria (vehicle capacity, mail truck timing, volume merit) as applied on December 14, 2018, and include dates for investigation conclusion and hearing request to allow a future reviewer to reconstruct the full factual and procedural record without external sources."
+  }
+}
+```

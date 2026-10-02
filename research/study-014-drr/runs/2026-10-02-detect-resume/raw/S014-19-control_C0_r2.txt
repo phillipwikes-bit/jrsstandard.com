@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Bases for conclusions are scattered across multiple affidavits, exhibits, and dated communications (HRM letters June 11/21, July 2/22/25, doctor's note), but the record does not explicitly state which evidence substantiates the Agency's key factual finding that 'HRM found the updated doctor's letter to be inadequate because the limitations were unclear'—this is attributed to S2's statement without independent corroboration in the record."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The decision path from non-submission of medical documentation to the July 5–31 work restriction is traceable through S2 and S1 affidavits, but the critical intermediary reasoning—why HRM deemed the July 2 letter 'inadequate'—is reported secondhand by S2 and not directly documented by HRM itself."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge would struggle to reconstruct why, after Complainant submitted the July 2 doctor's letter on July 5, she was told not to return to work: the record contains S2's characterization that HRM found it inadequate, but no contemporaneous HRM analysis, memo, or explanation of the specific inadequacy."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports that a medical note was requested (June 11/21 HRM letters, Affidavit A), that Complainant submitted one (July 2), and that work restrictions applied July 5–31; however, the evidentiary basis for the Agency's assertion that the July 2 note was inadequate is secondhand hearsay from S2 rather than direct HRM documentation."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates and intervals are clearly marked throughout: June 15 grievance, June 11/21 HRM requests, July 2 doctor's letter submitted July 5, July 5–31 work restriction period, July 22 and July 25 HRM letters, August 1 return to work, and post-July 31 submission of revised note."
+    }
+  },
+  "remediation_note": "The record requires a direct contemporaneous HRM memorandum or email dated on or shortly after July 5, 2019, that articulates specifically which medical restrictions in the July 2 letter were deemed unclear and by what standard. Without this primary evidence, the factual basis for the work restriction relies solely on S2's recollection, compromising accountability.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Insert into the record a dated HRM communication (or direct HRM affidavit sworn statement) that explicitly identifies which limitation(s) in the July 2, 2019 doctor's letter were found inadequate, the clinical or administrative reason why, and the specific request made to Complainant to cure the deficiency; alternatively, obtain S2's contemporaneous notes or emails from July 5–22 documenting his communications with HRM and the substance of HRM's feedback."
+  }
+}
+```

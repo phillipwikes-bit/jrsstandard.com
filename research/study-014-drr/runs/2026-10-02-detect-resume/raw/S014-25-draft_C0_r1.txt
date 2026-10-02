@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion—disparate treatment, hostile work environment, lack of comparators—is anchored to specific evidentiary findings or legal standards (e.g., 'nondiscriminatory reasons for removal' linked to missed deadlines, scheduling failures, funds management)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's pathway from evidence to conclusions is generally clear (prima facie case → legitimate reasons → no similarly situated comparators), but the standard applied to 'ordinary workplace tribulations' and the threshold for 'severe or pervasive' are asserted without explicit reference to case law or regulatory standards."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A later reviewer can reconstruct the factual bases and outcomes, but the record lacks detail on what evidence the AJ examined (e.g., which affidavits, documents, or testimony informed the 'confusing' and 'uncorroborated' characterization of the coworker's statement)."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports conclusions on disparate treatment and the absence of comparators, but the hostile work environment finding rests partly on characterization ('confusing,' 'speculation,' 'uncorroborated') without explicit citation to the record content or weight-of-evidence analysis."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: verbal counseling (May–July 2018), Letter of Reprimand (October 2018), alleged acceptance of incorrect statements (Feb.–Apr. 2019), Notice of Proposed Removal (April 25, 2019), Removal Decision (June 28, 2019), and CAC discovery (October 22, 2019)."
+    }
+  },
+  "remediation_note": "To strengthen compliance, the record should explicitly cite the legal standard for 'severe or pervasive' hostile work environment, detail which specific evidence was found 'confusing' or 'uncorroborated' and why, and clarify the evidentiary foundation for the 'ordinary workplace tribulations' characterization. Claim 6 (CAC status) should either be addressed substantively or the record should explicitly state whether it was abandoned or procedurally barred.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The record should include (1) explicit citation to the legal standard and controlling authority for each element of the discrimination and hostile work environment claims; (2) detailed enumeration of which evidence items the AJ examined and how they were weighed (e.g., 'Affidavit X, dated [date], stated [fact]; the AJ found it uncorroborated because [specific reason] and therefore assigned it [weight]'); (3) a clear statement of the burden and preponderance standard applied; and (4) resolution of Claim 6 or explicit acknowledgment of its procedural status."
+  }
+}
+```

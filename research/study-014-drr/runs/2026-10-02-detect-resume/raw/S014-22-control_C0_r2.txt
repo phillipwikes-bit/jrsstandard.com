@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is grounded in specific dates, actor identities, and described actions (e.g., 'On or about June 13, 2017, the Section Chief did not conduct a scheduled meeting'; 'On May 5, 2017, he excluded her from a project')."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record enumerates allegations and procedural actions (investigation, dismissal for timeliness, appeal filing) but does not explain the Agency's reasoning for finding no discrimination on remaining claims or the basis for the 15-month delay in issuing the FAD."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer can reconstruct the complaint allegations and timeline of procedural events, but the Agency's investigative findings, legal analysis, and rationale for conclusions are absent from this narrative; only the outcome is stated."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents Complainant's allegations in detail but does not document the Agency's evidence, witness interviews, corroborating or contradicting statements, or the evidentiary basis for its conclusion of no discrimination on the non-dismissed claims."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Events are dated chronologically from 2009 through April 2018, with specific dates for key incidents (e.g., June 13, 2017; July 27, 2017 EEO counseling; May 20, 2020 status inquiry); the procedural timeline (investigation, remand, appeal, 15-month delay) is also traceable."
+    }
+  },
+  "remediation_note": "The record must include the Agency's investigative report with witness statements, documentary evidence reviewed, factual findings on each non-dismissed allegation, and explicit legal reasoning for the no-discrimination conclusions. The FAD itself, showing the Agency's reasoned decision and explanation for the 15-month delay, is essential to establish accountability and permit appellate review.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include the full investigative report (ROI) with detailed findings of fact on each non-dismissed allegation, summaries of witness interviews, Agency responses to Complainant's evidence, the legal standard applied, analysis of whether Agency actions were motivated by protected characteristics or reprisal, an explanation of the 15-month delay, and the formal Final Agency Decision with all conclusions and remedies specified."
+  }
+}
+```

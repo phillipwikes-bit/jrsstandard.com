@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies the basis for each allegation through numbered claims (1-17) with specific dates, actors, and alleged conduct, though some dates are approximate or disputed between parties."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces from complaint filing (November 8, 2017) through investigation and AJ remand to dismissal decision, but the Agency's final decision reasoning is not reproduced here—only its conclusions (dismissed claims 6–11 for untimeliness; found no discrimination on remaining claims) without articulated reasoning."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the factual allegations from the numbered claims and footnoted disputes, but the Agency's investigative findings, analysis, and final decision rationale are absent from this record, preventing full reconstruction of the decision basis."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record documents allegations and timelines but does not include the Agency's evidentiary findings, witness statements, or the investigative basis for dismissing or crediting each claim, leaving accountability for the final conclusions unsupported in the record itself."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Dates are present for many events (June 2017, July 27, 2017 counseling initiation, May 2020 appeal status inquiry) but several are approximate ('on or about,' 'late May or June,' 'December 2013 or 2014'), and the timeline from AJ remand to FAD delay (15+ months after 60-day deadline) lacks documented milestones."
+    }
+  },
+  "remediation_note": "The record must include the Agency's investigative report (or ROI findings), the AJ's remand decision, the Agency's final decision with articulated reasoning for each dismissal and no-discrimination finding, and documented timeline entries showing the FAD delay. Footnote disputes about dates should be resolved or clearly marked as unresolved in the final record.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "accountability_support, reasoning_traceability, cold_reviewer_clarity",
+    "compliant_version": "A compliant record would include (1) the full text of the Agency's Final Agency Decision with explicit reasoning for each claim dismissal and discrimination finding; (2) summarized investigative findings on credibility, evidence, and legal analysis for each allegation; (3) dated milestones documenting the remand-to-FAD timeline and any delays; (4) resolved or explicitly disputed dates for ambiguous incidents; and (5) references to specific investigation exhibits (ROI, witness statements, documentary evidence) supporting each conclusion."
+  }
+}
+```

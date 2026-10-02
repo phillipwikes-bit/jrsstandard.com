@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies the factual basis for the AJ's decision (single incident on December 11, 2020, with specific quoted language) but does not document the investigative basis for rejecting Complainant's later-added allegations about confederate flag imagery, Obama comments, or claimed witness lists."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's reasoning for excluding late allegations is traceable (they were absent from EEO Counselor Report, formal complaint, and affidavit) but the record does not explicitly trace how or whether the investigator evaluated Complainant's claimed provision of 'a list of incidents' and 'a list of witnesses' during investigation."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot determine from this record whether Complainant actually provided investigative details about alleged prior incidents and witnesses, what those details contained, or why the ROI did not address them; the record only shows their absence from formal submissions."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record does not include the actual ROI, the EEO Counselor Report, Complainant's affidavit, or documentation of what Complainant allegedly told investigators, making it impossible to verify whether the evidentiary foundation for summary judgment is sufficient or whether material facts were overlooked."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: December 11, 2020 (incident), May 25, 2021 (complaint filed), January 21, 2022 (Notice of Proposed Summary Judgment), February 25, 2022 (decision without hearing), with investigation and response periods documented."
+    }
+  },
+  "remediation_note": "The record requires incorporation of or explicit reference to the ROI, the EEO Counselor Report, and Complainant's original affidavit to establish what evidence was actually before the investigator and why late allegations were excluded. A supplemental statement documenting whether Complainant provided investigator details about prior incidents and witnesses, and the investigator's findings thereon, is essential to support the basis for summary judgment.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would attach or incorporate the full ROI with investigator findings on all alleged prior incidents; attach the EEO Counselor Report and Complainant's affidavit showing what was known at each stage; include a summary table comparing allegations raised at investigation, in the formal complaint, in the affidavit, and in post-Notice stipulations; and document the investigator's specific findings on whether Complainant provided witness names and incident details and whether those were investigated. The AJ's reasoning for summary judgment would then rest on a visible, complete evidentiary record rather than the current narrative gaps."
+  }
+}
+```

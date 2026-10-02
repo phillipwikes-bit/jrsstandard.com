@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies bases for the AJ's conclusions: specific disciplinary dates (May 31, July 3, July 16, October 18, 2018, etc.), stated reasons for removal (failure to meet deadlines, cancelling events, staff management issues, funds management), and alleged discriminatory bases (race, sex, color, age)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable from evidence (coworker affidavits, verbal counseling claims, HR policy on documentation, disciplinary letters) through legal framework (prima facie case, legitimate nondiscriminatory reasons, nexus requirement) to conclusions (no genuine issue of material fact, no protected-class nexus, not severe and pervasive)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the logic chain is clear, repeated use of 'someone' as placeholder for names and titles obscures identities; a cold reviewer cannot definitively reconstruct which individuals held which positions or whether S1 and the decision-maker were the same person without external reference."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Evidence is sufficient for the AJ's conclusions: documented disciplinary actions, HR testimony on documentation policy, affidavit analysis showing hearsay and lack of corroboration, and legal standards applied appropriately to each claim."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clearly established with specific dates for each event (May 31, 2018 through October 22, 2019), investigation completion, summary judgment decision, appeal filing, and final order sequence."
+    }
+  },
+  "remediation_note": "Replace all redacted names and titles with consistent identifiers (e.g., S1, HR Officer A) to preserve cold-reviewer reconstructability without compromising anonymity. Clarify whether the supervisor who issued verbal counseling is the same individual who signed the removal decision, as this affects liability analysis.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity — identity redaction impairs reconstruction without affecting reasoning or evidentiary sufficiency",
+    "compliant_version": "Maintain current structure and reasoning chain while replacing 'someone' with persistent placeholder identifiers (e.g., 'S1 [First-Level Supervisor]') throughout, ensuring a reviewer can track each actor's role and decisions chronologically without ambiguity about personnel involved."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific dates and incidents (e.g., May 31, 2018 counseling, June 2019 knife display, March 8, 2020 removal) but the basis for concluding each incident was discriminatory or retaliatory is stated only in conclusory form without evidentiary linkage to protected class membership or prior protected activity."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents allegations, Agency rebuttals, and a final decision outcome, but does not trace how the investigator evaluated comparative evidence, temporal proximity to protected activity, or discriminatory motive beyond noting Complainant's failure to submit an affidavit."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A later reviewer can identify what happened (incidents, dates, positions) and what the Agency concluded, but cannot reconstruct from this record alone why each incident was or was not deemed linked to age, prior EEO activity, or reprisal without access to the investigator's reasoning in the underlying report."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents Agency explanations for each incident (TECS policy violation, automated reminder, voluntary potluck tradition, performance failure) but does not document the evidence supporting those explanations or explain how they rebut the discriminatory motive allegations."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: YOB 1954 context, May 31, 2018 counseling, February–June 2019 harassment allegations, June 2019 knife incident, June 19, 2019 schedule change, August 16, 2019 reassignment rumors, March 8, 2020 removal, September 28, 2020 affidavit extension, and appeal decision."
+    }
+  },
+  "remediation_note": "The record must document the investigator's analysis linking (or failing to link) each incident to Complainant's protected class and prior protected EEO activity, including comparative treatment of non-protected employees and evaluation of temporal proximity to protected conduct. The Agency's rebuttals must be supported by cited documentary or witness evidence, not bare assertion.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, accountability_support",
+    "compliant_version": "A compliant version would include: (1) explicit findings on whether each incident occurred as alleged; (2) documented comparative evidence showing how similarly situated non-protected employees were treated; (3) investigator analysis of temporal relationship between alleged protected activity (prior EEO complaint, age) and each adverse action; (4) credibility resolution and source documentation for Agency explanations (e.g., TECS policy records, email evidence, witness statements); and (5) reasoned explanation of why the totality of incidents does or does not support an inference of discriminatory or retaliatory motive."
+  }
+}
+```

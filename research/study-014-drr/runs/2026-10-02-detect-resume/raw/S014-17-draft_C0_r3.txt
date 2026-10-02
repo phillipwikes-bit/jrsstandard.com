@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The Agency states reasons for each adverse action (TECS policy violation, automated reminder, optional event, performance failure) but the record does not identify what evidence established these facts or how the investigator verified them against Complainant's contrary assertions."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The Agency's finding of no prima facie case and no discriminatory animus lacks documented analysis of the temporal proximity between protected activity (age, prior EEO filing) and adverse actions, or explanation of why comparators outside protected classes were or were not applicable."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A later reviewer can identify the claims, accepted incidents, and Agency's stated reasons, but cannot reconstruct from this record alone why the investigator rejected Complainant's account of the knife display, the Branch Chief's alleged inaction on bullying, or the pattern of June 2019 incidents without access to investigative notes, witness statements, or evidentiary analysis."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents the Agency's narrative for each incident but does not show corroborating documentation (email chains, TECS logs, witness interviews, or Complainant's evidence) that would ground the conclusion that incidents were non-discriminatory in fact, leaving the evidentiary foundation unclear."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology of events from May 31, 2018 through March 8, 2020, with specific dates (Feb.–June 2019, June 3, 2019, Aug. 2019, Sept. 23–24, 2020) enabling sequence reconstruction."
+    }
+  },
+  "remediation_note": "The record must include the investigator's factual findings supported by documentary evidence and witness statements, a documented comparison of treatment of similarly situated non-protected employees, and explicit analysis of temporal proximity and pattern evidence. The Agency's final decision must articulate why Complainant's contrary evidence was rejected and address the prima facie case elements under the applicable burden-shifting framework.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, accountability_support",
+    "compliant_version": "Attach the investigative report showing (1) documentary evidence for each factual assertion (TECS policy guidance, automated email logs, event sign-up sheets, performance evaluations); (2) witness statements from SCBPO-1, Branch Chief, and coworkers; (3) Complainant's affidavit or investigative interview; (4) a side-by-side comparison of treatment of non-protected employees in similar circumstances; and (5) an explicit four-part McDonnell Douglas analysis documenting the investigator's reasoning at each step, including why temporal proximity or pattern evidence does or does not support discriminatory intent."
+  }
+}
+```

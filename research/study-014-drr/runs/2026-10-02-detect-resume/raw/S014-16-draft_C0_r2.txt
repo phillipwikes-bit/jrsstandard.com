@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the four claims is grounded in specific dates, alleged actions, and supervisory responses documented in the ROI; the Agency's FAD explicitly applies McDonnell Douglas framework and identifies legitimate nondiscriminatory reasons for each personnel action."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The FAD articulates a legal standard and supervisory explanations but does not explicitly trace how evidence (e.g., Complainant's time records, training attendance logs, PWP documentation) was evaluated to reject pretext or establish that protected-class status played no role in specific decisions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer without prior knowledge could identify the four claims and supervisory rebuttals, but the record does not attach or fully cite the PWP itself, the August 28 training attendance record, or the original text message exchange regarding the schedule adjustment, leaving gaps in documentary foundation."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The FAD cites legitimate reasons (operational scheduling, training exclusion, PWP alignment) and notes Complainant did not prove pretext, but does not detail comparative evidence (e.g., how DO 1 and DO 2 were treated under identical circumstances) or address the allegation that Supervisor disclosed the pay discrepancy to DO 2 before correcting it."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: incidents in July–October 2018, EEO contact October 12, 2018, complaint June 6, 2019, investigation, June–August 2021 AJ orders and dismissal, and August 10, 2021 FAD, with specific dates for each action."
+    }
+  },
+  "remediation_note": "The FAD should explicitly attach or reference key documentary evidence (PWP, training records, time sheets, text exchanges) and provide comparative analysis of how similarly situated employees without protected characteristics were treated under identical circumstances. The record should also address whether disclosure of the pay discrepancy to DO 2 constitutes adverse action or contributes to a hostile environment.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, and accountability_support",
+    "compliant_version": "A compliant FAD would include: (1) direct citations to or attachments of the PWP, training-completion documentation, time records, and communications; (2) explicit comparative analysis of how DO 1 and DO 2 were treated under the same scheduling, pay-audit, and rating policies; (3) a point-by-point evaluation of pretext factors (temporal proximity, deviation from policy, disparate application); and (4) clear reasoning on whether Supervisor's disclosure of the discrepancy to DO 2 was consensual workplace discussion or improper conduct actionable under the discrimination or retaliation theory."
+  }
+}
+```

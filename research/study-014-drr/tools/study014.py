@@ -299,10 +299,13 @@ def cmd_detect(name, drafts_run, runs=3, resume_from=None):
     if resume_from:
         # Resume (added 2026-10-02 after the account ran out of credit mid-run): same items, verified by hash; only the
         # (item, arm, run) jobs that did not return "ok" in the earlier run are sent. The earlier run is not modified.
-        prev = os.path.join(ROOT, "runs", resume_from)
-        if json.load(open(os.path.join(prev, "ITEMS.json"))) != json.load(open(os.path.join(d, "ITEMS.json"))):
-            sys.exit("items differ from " + resume_from + "; not a resume")
-        done = {(r["item"], r["arm"], r["run"]) for r in map(json.loads, open(os.path.join(prev, "results.jsonl"))) if r["status"] == "ok"}
+        # resume_from may list several earlier runs, comma-separated, so a second resume does not re-send the first run's work
+        done = set()
+        for prev_name in resume_from.split(","):
+            prev = os.path.join(ROOT, "runs", prev_name)
+            if json.load(open(os.path.join(prev, "ITEMS.json"))) != json.load(open(os.path.join(d, "ITEMS.json"))):
+                sys.exit("items differ from " + prev_name + "; not a resume")
+            done |= {(r["item"], r["arm"], r["run"]) for r in map(json.loads, open(os.path.join(prev, "results.jsonl"))) if r["status"] == "ok"}
         jobs = [j for j in jobs if (j[0]["item"], j[1], j[2]) not in done]
         print(f"resume: {len(done)} done in {resume_from}, {len(jobs)} to send")
     def fn(job):

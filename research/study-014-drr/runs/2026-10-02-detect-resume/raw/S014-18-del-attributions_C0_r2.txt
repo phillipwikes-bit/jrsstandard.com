@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is tied to specific dates, individuals (Supervisor 1, Supervisor 2), protected characteristics (sex, disability, age), and concrete actions (duty assignments, statements, schedule changes)."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record documents allegations and the Agency's conclusion but does not explain the Agency's reasoning for finding no discrimination or disparate treatment, preventing traceability from evidence to conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can identify what Complainant alleged and when, but cannot reconstruct why the Agency rejected these allegations without access to the underlying investigation report or decision rationale referenced but not detailed here."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents Complainant's allegations in detail but does not provide the evidence the Agency relied upon to conclude failure to prove discrimination, making it impossible to assess evidentiary sufficiency from this record alone."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Events are anchored to specific dates from September 8, 2019, through February 6, 2020, with intervals and sequence clearly marked, allowing reconstruction of the chronology."
+    }
+  },
+  "remediation_note": "The record must include a summary of the Agency's investigative findings, the evidence examined for each allegation, and the explicit reasoning that supported the conclusion of no disparate treatment. A compliant version would document the comparator analysis, legitimate non-discriminatory reasons for challenged actions, and analysis of each protected basis allegation.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, accountability_support, cold_reviewer_clarity",
+    "compliant_version": "Insert the Agency's written analysis for each of the 15 numbered allegations, including: (1) identification of comparators or legitimate business reasons for each action; (2) evidence the Agency obtained from interviews or documents; (3) explicit findings on whether each action was taken because of or despite the protected characteristic; and (4) summary reasoning for the overall conclusion that Complainant failed to establish disparate treatment."
+  }
+}
+```

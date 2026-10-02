@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for conclusions through explicit reference to witness testimony, documentary evidence (PAP, PIP, performance evaluations, counseling memorandum), complainant allegations, and management responses."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the record documents allegations and responses, the final agency decision's reasoning for rejecting sexual harassment claims (claim 4) lacks explicit logical steps—it notes witness devastation and venting but does not articulate why corroboration of the specific touching incidents was required or how the absence of direct observation defeats the claim given complainant's detailed account and multiple witness reports of her distress."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct the factual allegations and management's factual findings, but the decision's evidentiary standard for sexual harassment—particularly the weight given to indirect (distress) versus direct (observed touching) evidence—is not sufficiently explained within the record itself."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record provides substantial evidence supporting complainant's allegations (multiple corroborating witnesses to her reports of harassment, observed emotional distress, detailed accounts of touching and unwanted advances), but the final decision dismisses the sexual harassment claim partly on the absence of direct witness observation despite complainant's specific, repeated allegations and circumstantial corroboration."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record clearly establishes a chronology: October 28, 2013 (S1 comments), December 12, 2013 (Christmas party incident), January 9, 2014 (coworker comments), January 13, 2014 (S1 office incident), May 4, 2014 (PAP), July 28, 2014 (mid-year review), September 22, 2014 (PIP), October 16, 2014 (Counseling Memorandum), December 12, 2014 (transfer), January 29, 2015 (end-of-year evaluation), and April 8, 2014 (EEO complaint filing date)."
+    }
+  },
+  "remediation_note": "The record requires explicit articulation of the evidentiary standard applied to sexual harassment claims and the rationale for privileging direct observation over complainant testimony corroborated by multiple witnesses' reports of her emotional distress and statements about the conduct. The final decision should explain why indirect corroboration (frequent venting, crying, witness accounts of complainant's allegations) does not meet the burden of proof for hostile work environment or sexual harassment given the nature of the alleged conduct (private touching, office meetings, lunch invitations).",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The final decision must explicitly identify the legal standard for sexual harassment and hostile work environment claims, explain how the evidence (direct and circumstantial) was weighed against that standard, articulate why the absence of direct witness observation of touching is dispositive when complainant provided specific, detailed allegations and multiple witnesses corroborated her reports of the conduct and its impact, and document the specific performance deficiencies in claims 6–11 with reference to the documentary record (PAP, PIP, evaluation criteria) to support the nondiscriminatory reasons."
+  }
+}
+```

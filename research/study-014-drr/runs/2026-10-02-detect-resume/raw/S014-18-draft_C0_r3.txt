@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record states the Agency 'found that Complainant did not prove she was subjected to discrimination' and 'failed to show disparate treatment,' but contains no articulation of what evidence the Agency examined, what comparators were applied, or what factual findings underpin the legal conclusion."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision-process pathway from the 15 documented incidents (with dates, statements, and alleged protected characteristics) to the conclusion of no discrimination is entirely absent; no analysis links specific claims to evidence or explains rejection of particular allegations."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with this case could not reconstruct from this record alone why the supervisors' statements ('liability,' 'nonproductive worthless person,' exclusion from duties), the pattern of reassignments, or the hostile conduct allegations failed to constitute discrimination or disparate treatment."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents detailed allegations with temporal markers and protected-class references but provides no evidentiary analysis, credibility findings, witness statements, or comparator documentation to support the Agency's conclusory rejection of the discrimination claim."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The complaint filing date (April 13, 2020), incident range (September 2019 to February 2020), Weingarten notice date (February 6, 2020), and procedural election (pre-decision hearing waiver) are clearly marked."
+    }
+  },
+  "remediation_note": "The Agency decision must include explicit findings of fact addressing each claim or group of claims, articulate the legal standard applied (e.g., disparate treatment framework), identify comparators or explain why none exist, and document how evidence and credibility determinations led to rejection of the discrimination allegations.",
+  "finding": {
+    "ai_function": "recommendation",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant final decision would state: (1) which of the 15 incidents the Agency credits or disputes; (2) findings on whether each protected characteristic (sex, disability, age) was a motivating factor in any adverse action; (3) identification of any similarly situated non-protected comparators and why treatment differed or did not; (4) analysis of the temporal proximity between protected-status disclosures and adverse actions; (5) explanation of how the pattern, if any, was evaluated; and (6) specific response to each major allegation type (duty assignments, verbal conduct, reassignments, shift changes, disciplinary notice)."
+  }
+}
+```

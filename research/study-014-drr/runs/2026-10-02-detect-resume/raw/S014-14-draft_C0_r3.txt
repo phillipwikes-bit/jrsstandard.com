@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies factual bases for individual allegations (Nov. 24 flower incident, Dec. 30 manager confrontation, exclusion from meetings) and cites the investigator's conclusion that claims were unsubstantiated, but does not explicitly state the Agency's reasoning or legal standard applied in reaching its final discrimination/reprisal finding."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record describes investigation steps and disputed facts but provides no chain from evidence to the Agency's final legal conclusion; the investigator's 'unsubstantiated' determination is noted, but the Agency's own analysis of pretext, comparators, or reprisal causation is absent."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later could reconstruct what happened (flower, confrontation, meetings) but could not determine from this record alone why those facts led to a finding of 'no discrimination' rather than a finding of liability, because the Agency's decision logic is not documented."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents witness statements and the investigator's judgment that claims were unsubstantiated, but does not present the Agency's independent weighing of evidence, address of Complainant's pattern-of-treatment theory, or response to his specific objections (bias, missing video evidence, Claim 2 omission)."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are provided for key events (Nov. 24 and 28, Dec. 21, 30, 31, Jan. 5, 22, Feb. 2) and procedural steps (dismissal, remand, investigation appointment, fact-finding, final decision), allowing chronological reconstruction."
+    }
+  },
+  "remediation_note": "The Agency's final decision document must be appended to establish the explicit legal reasoning, burden allocation, credibility assessment, and response to Complainant's discrimination-pattern and procedural-bias arguments. Claim 2 must be verified and included in full to ensure the record is complete and reviewable.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A complete case summary must include (1) the text of the Agency's final decision with articulated legal standards applied (McDonnell Douglas burden-shifting or Gross retaliation framework); (2) explicit findings on credibility and weight given to conflicting witness accounts; (3) analysis of Complainant's comparative treatment and pattern theory with identified comparators; (4) response to procedural objections (recusal of initial Manager, adequacy of investigation scope); (5) the full text of Claim 2; and (6) identification of any evidence considered but not relied upon (e.g., requested video footage)."
+  }
+}
+```

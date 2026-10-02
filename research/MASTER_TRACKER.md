@@ -3144,3 +3144,7 @@ Only four line groups differ between v7 and v8.
     - B-022: API credit. The owner adds about USD 22 at console.anthropic.com, Billing, in a phone browser.
     - B-023: no sealed private set while the repository is public.
 - 2026-10-02 (**OWNER ASKED: CAN I ADD MORE CREDIT**): yes. Phone-browser steps given (console.anthropic.com, Settings, Billing, buy credits; about USD 25 recommended, as the two runs are estimated at about USD 22), plus making a new key and deleting the old one on the same site. No file changed except this line.
+- 2026-10-02 (**OWNER ADDED CREDIT; RUNS FINISHED OR STOPPED**): the owner pasted the same key as before (not rotated). Spend this round USD 20.27.
+  - **Confirmatory run** (174 drafts, USD 3.20): **H4c FAILED** on the pre-registered automatic count (Sonnet P4 tied P2 at 1.00; P4 had more automatic flags than P1 for both models). Every P4 flag was an extractor error on manual reading (4 new source forms). Retention pattern replicated. `CONFIRMATORY_RESULTS.md`.
+  - **Part 2** (1,135 of 1,350 calls; credit ran out again): **provisional.** Codebook-prompted reviewers flag nearly every intact record, so H2 is uninformative and H3 is not met. The production Engine caught 10/10 date deletions with 1/26 false flags. `PART2_RESULTS.md`. About USD 4 is needed to finish.
+  - Resume bug fixed: a second resume now counts the work of every earlier run.

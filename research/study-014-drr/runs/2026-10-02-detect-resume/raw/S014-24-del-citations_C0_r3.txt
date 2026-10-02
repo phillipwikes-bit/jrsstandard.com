@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for conclusions through explicit citation to ROI pages, witness statements, complainant assertions, and agency findings tied to specific regulatory standards (disparate treatment, hostile work environment, sexual harassment)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the FAD states conclusions (e.g., 'failed to prove discrimination'), the trace from evidence to legal conclusion is compressed; the record shows what witnesses said and what complainant alleged, but does not articulate the step-by-step application of burden-of-proof or prima facie framework that connects evidence gaps to ultimate findings."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the allegations and witness statements, but would struggle to reconstruct why corroboration by Senior Budget Analyst, Team Lead, and Resource Management Team Lead regarding Deputy Director's behavior was deemed insufficient for sexual harassment without explicit articulation of what evidence threshold was applied."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents contradictory accounts (complainant vs. S1, Management Officer, and some witnesses) and identifies witness support for complainant's distress, but the FAD finding that 'no witnesses specifically observed the sexual harassment' elides the distinction between direct observation and corroboration of complainant's credibility and emotional state."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are consistently provided for all material events (October 28, 2013; December 12, 2013; January 9, 2014; May 4/5, 2014; July 28, 2014; September 22, 2014; October 16, 2014; December 12, 2014; January 29, 2015), allowing chronological reconstruction."
+    }
+  },
+  "remediation_note": "The FAD would benefit from explicit articulation of the legal standard applied to each claim (e.g., the prima facie burden for hostile work environment or quid pro quo sexual harassment), detailed explanation of why witness corroboration of complainant's emotional distress and repeated reports to management did not meet the evidentiary threshold, and analysis of whether the complainant's credibility was assessed and on what basis.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability and cold_reviewer_clarity are most vulnerable; the record conflates evidentiary sufficiency with legal sufficiency without transparently bridging from facts to law.",
+    "compliant_version": "A compliant FAD would: (1) state the legal standard for each claim type; (2) identify the elements required to establish the claim; (3) separately analyze complainant's prima facie case (including what witnesses corroborated); (4) address respondent's articulated legitimate reasons; (5) explicitly evaluate pretext or discriminatory motive with reference to specific evidence; and (6) state which element(s) complainant failed to prove and why, allowing a cold reviewer to follow the decision pathway without inferring missing steps."
+  }
+}
+```

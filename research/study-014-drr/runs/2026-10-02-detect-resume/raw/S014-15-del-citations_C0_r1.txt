@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each major conclusion (denial of reasonable accommodation, payment errors, 204-B detail denial) is grounded in identified evidence: medical restrictions documented in affidavits, modified job offer dated June 22/July 1 2016, Manager's testimony regarding leave code errors, and Manager's stated rationale for 204-B denial."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces the decision process from facts (e.g., Complainant's documented restrictions, van assignment offered, clock ring deletions discovered) through intermediate findings (e.g., errors attributable to facility transition and manual timecards) to conclusions (no discrimination, no reasonable accommodation denial)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the narrative is detailed, a later reviewer would struggle to independently assess the reasonableness of the Agency's accommodation offers because the record lacks side-by-side comparison of Complainant's actual restrictions against the van-shuttle task demands (e.g., stooping to enter van vs. restriction on stooping is noted but not formally analyzed)."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports payment/clock-ring errors and 204-B denial reasoning, but accountability for the errors themselves is diffuse—attributed variously to facility transition, loss of manual timecards, and poor organization—without clear assignment of responsibility or corrective action."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clear: injury May 10, 2014; medical restrictions documented; assignment offered June 22, 2016; signed July 1, 2016; work began ~July 18, 2016; clock rings deleted July 18–28, 2016; grievance filed September 14, 2016; 204-B request ~November 14, 2016; investigation and AJ decision follow."
+    }
+  },
+  "remediation_note": "To reach full compliance, the record should include a formal medical restrictions reconciliation document (restriction-by-task matrix) comparing documented restrictions to actual job duties assigned, and should clarify which entity bears accountability for the administrative errors (payment, timecards) with documented corrective steps taken.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support",
+    "compliant_version": "A compliant version would explicitly map each documented medical restriction (e.g., 'walking limited to 30 minutes') against each assigned task (e.g., 'express delivery on August 29, 2016 involved one hour of walking') with supporting evidence; clarify which supervisor or system failure caused the clock-ring deletion and timekeeping errors, with documented remediation; and include a summary reconciliation showing how the Agency's offered accommodations were or were not reasonably designed to meet the stated restrictions."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for the termination decision: performance deficiencies in payroll processing and new hire onboarding documented through progress reviews, supervisor emails, memoranda, and affidavits from S1, S3, and AS."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is traceable from prima facie case assumption through articulation of legitimate nondiscriminatory reasons (payroll/onboarding errors) to pretext analysis (distinguishing AS's limited supervision scope from three supervisors' confirmations of deficiencies)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the logical structure is clear, critical temporal markers are absent or vague—the progress review is dated 'at one point,' S1 became supervisor 'in early at one point,' and the specific dates of the three emails from S3 and the memorandum are not provided, limiting reconstruction of the sequence."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Evidence supporting termination is substantial: documented performance issues (pay delays, new hire resignations, unresolved errors post-retraining), multiple supervisor corroboration, and a formal termination letter citing specific deficiencies."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical dates are missing or obscured (progress review date, S1 start date, email dates, memorandum date, accommodation request date), and the interval between retraining and termination is not specified, preventing reliable chronological reconstruction."
+    }
+  },
+  "remediation_note": "Insert specific dates for all events (progress review, supervisor transitions, emails, memoranda, accommodation request, termination letter) and clarify the timeline between retraining and subsequent performance failures. Provide explicit dates for pay period deficiencies and new hire departures.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "temporal_reconstructability, cold_reviewer_clarity",
+    "compliant_version": "A compliant version would replace all vague temporal references ('at one point,' 'in early') with calendar dates, specify the interval between retraining and continued errors, and date each supervisory communication and performance document, enabling a reviewer years later to reconstruct the full sequence of events leading to termination without external sources."
+  }
+}
+```

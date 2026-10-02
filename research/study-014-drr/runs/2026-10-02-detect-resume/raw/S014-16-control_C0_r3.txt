@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each procedural action and investigative finding is anchored to specific ROI page citations, dates, and direct quotes from Supervisor and Complainant statements."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces the decision path from initial complaint allegations through ROI investigation to Agency application of McDonnell Douglas framework and hostile-work-environment analysis, with explicit rejection of pretext."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While chronology and allegations are clear, a reviewer unfamiliar with the case would struggle to independently verify the factual disputes (e.g., whether Supervisor actually admonished Complainant in the PWP) without access to the underlying ROI and PWP documents referenced but not reproduced."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The Agency cites Supervisor's denials and assertions but does not detail how the investigator tested competing versions (e.g., comparing text messages, reviewing the actual PWP document, or corroborating witness accounts) to support its finding that Complainant failed to prove discrimination."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronological sequence: July 26–27, 2018 (schedule/concert request and return-to-work incident), August 28, 2018 (training), October 1, 2018 (pay discrepancy awareness), October 12, 2018 (PWP review and EEO initiation), June 6, 2019 (complaint filed), and June–August 2021 (EEOC/FAD proceedings)."
+    }
+  },
+  "remediation_note": "The record functions as a narrative summary of investigative findings and legal conclusions but lacks granular evidentiary detail (text messages, PWP document excerpts, witness summaries) that would allow independent verification of the Agency's factual determinations and pretext analysis. A compliant version would reproduce key documentary evidence, detail investigator methodology, and explicitly address how conflicting statements were resolved.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support",
+    "compliant_version": "Include within the record (or by clear reference) the actual text exchange from July 27, 2018; the full Performance Work Plan and Supervisor's ratings; investigator notes on how competing accounts were tested; and explicit findings on documentary evidence (e.g., pay records, training attendance logs) that corroborate or refute each allegation, particularly regarding the PWP admonishment claim."
+  }
+}
+```

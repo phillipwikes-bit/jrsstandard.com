@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the Agency's conclusions (denials by respondents, lack of direct observation, legitimate performance reasons) but does not clearly document the evidentiary weight assigned to corroborating witness accounts of Complainant's distress, the Deputy Director's yelling/throwing behavior, or the single witness observation of personal-space encroachment."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision does not explain how the Agency resolved conflicts between Complainant's account, multiple witnesses' testimony of her distress and the Deputy Director's documented behavior, and respondents' denials; the logical path from evidence presentation to the no-discrimination conclusion is not transparent."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct whether the Agency applied the McDonnell Douglas burden-shifting framework, evaluated Complainant's prima facie case, assessed pretext, or simply applied a credibility choice in favor of denying respondents without documented reasoning."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "For Claims 1–3, 5, and 6–11, the record supports the finding (denials, lack of corroboration, legitimate reasons); for Claim 4, the record notes 'insufficient evidence' despite multiple witnesses attesting to Complainant's distress and the Deputy Director's observable hostile behavior, creating tension between the evidentiary sufficiency articulated and the witnesses cited."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are provided for each alleged incident (10/28/2013, 1/9/2014, 1/13/2014, etc.) and for each management action (May 2014 PAP, 9/22/2014 PIP, 12/12/2014 reassignment, 1/29/2015 rating), permitting chronological reconstruction."
+    }
+  },
+  "remediation_note": "The record must explicitly document the Agency's credibility assessment methodology, the weight assigned to corroborating witness testimony of Complainant's distress and the Deputy Director's aggressive conduct, and the application of the legal standard for hostile work environment and retaliation—particularly for Claim 4, where the sufficiency conclusion conflicts with the witness accounts summarized.",
+  "finding": {
+    "ai_function": "summary",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, and accountability_support (Claim 4)",
+    "compliant_version": "A compliant version would include: (1) explicit citation to the burden-shifting framework applied; (2) documented credibility findings explaining why respondents' denials overcome witness accounts of distress and observed hostile behavior; (3) a detailed analysis of whether Complainant established a prima facie case of sexual harassment and retaliation, and if so, why the Agency's legitimate-reason defense was not pretextual; (4) a reasoned explanation of how 'insufficient evidence' was determined despite multiple witnesses confirming Complainant's emotional state and the Deputy Director's aggressive conduct; and (5) clear dates and intervals showing the timeline of reported complaints and alleged retaliation."
+  }
+}
+```

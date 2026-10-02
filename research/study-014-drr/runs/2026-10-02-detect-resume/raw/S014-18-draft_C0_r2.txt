@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record states the Agency 'found that Complainant did not prove she was subjected to discrimination' and 'failed to show disparate treatment,' but provides no articulation of what evidence, comparators, or legal standard the Agency applied to reach this conclusion."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "No analysis is visible connecting the 15 documented incidents (with dates, statements, and witnesses) to the legal framework for hostile work environment or disparate treatment claims; the decision-path from allegation to finding is opaque."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer with no prior knowledge cannot reconstruct why 15 specific incidents—including public yelling, disability-related comments ('no weapon,' 'Light Duty,' health issues), age-related context (age 56), and sex-specific treatment—failed to meet the burden, because the Agency's reasoning is absent from the record."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record documents detailed allegations with temporal markers and attributed statements but offers no corresponding evidentiary rebuttal, witness findings, credibility determinations, or legal analysis that would support the Agency's conclusion of no discrimination."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The 15 incidents are anchored to a clear window (September 2019 to February 2020), the complaint date is specified (April 13, 2020), the Weingarten notice is dated (February 6, 2020), and the procedural sequence is traceable."
+    }
+  },
+  "remediation_note": "The Agency decision must include a substantive analysis addressing each protected class (sex, disability, age), applying the applicable burden-shifting test (McDonnell Douglas or equivalent), identifying comparators or rebuttal evidence, and explaining why the 15 documented incidents—particularly those with disability-related or age-coded language—do not constitute a hostile work environment or disparate treatment. Without this reasoning, the decision cannot survive judicial review or internal appeal.",
+  "finding": {
+    "ai_function": "recommendation",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant final decision would: (1) summarize the legal standard for hostile work environment and disparate treatment under Title VII and the ADA; (2) address each of the 15 incidents by category (disability-related comments, age references, sex-based treatment); (3) identify any comparators or evidence the Agency relied on to conclude no discrimination occurred; (4) explain findings on credibility or witness corroboration; (5) apply the burden-shifting framework explicitly; and (6) document how the Agency evaluated the temporal clustering and attributed motivations of the supervisors' conduct."
+  }
+}
+```

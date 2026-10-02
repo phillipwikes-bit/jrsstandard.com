@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the AJ's decision (single incident, facially neutral language, background allegations absent from formal complaint) but does not document what evidence was actually before the AJ at summary judgment or what Complainant's investigators received versus what was submitted."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's logic (unprofessional conduct ≠ harassment; facially neutral yelling ≠ discrimination) is stated, but the decision path from evidence presented at or before summary judgment to conclusion is obscured by conflicting claims about what Complainant submitted and when."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct from this record alone whether Complainant's claims about providing investigators a list of incidents, witnesses, and prior discrimination allegations are documented in investigation files, and whether the AJ reviewed them before issuing summary judgment without a hearing."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record does not attach or reference the investigation report, Complainant's affidavit, the EEO Counselor Report, or the AJ's written decision itself, making it impossible to verify whether evidence sufficiently supports the finding that background allegations were absent from the formal complaint and investigative record."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided (December 11, 2020 incident; May 25, 2021 complaint filed; January 21, 2022 summary judgment notice; February 25, 2022 AJ decision; Agency suspension and disciplinary actions noted), allowing chronological reconstruction of procedural events."
+    }
+  },
+  "remediation_note": "The record must attach or explicitly reference the underlying investigation file, EEO Counselor Report, Complainant's formal complaint, any investigator summaries of incidents and witnesses alleged, Complainant's affidavit, and the AJ's full written decision (including findings of fact and legal reasoning). This will ground basis identification, reasoning traceability, and accountability in documentary evidence rather than narrative summary.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would include (1) the full AJ decision with detailed findings of fact and reasoning; (2) the investigation report or affidavit of the investigator documenting what evidence Complainant provided (list of incidents, witnesses, prior discrimination claims) and when; (3) the formal EEO complaint and any amendments; (4) the EEO Counselor Report; and (5) explicit citations linking each finding to the specific record evidence reviewed, so a later reviewer can independently verify whether background allegations were or were not part of the investigative and formal complaint record at the time summary judgment was issued."
+  }
+}
+```

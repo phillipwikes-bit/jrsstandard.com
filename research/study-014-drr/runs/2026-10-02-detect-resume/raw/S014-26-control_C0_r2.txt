@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies the basis for the AJ's findings: lack of prima facie case on claims 3, 4, 7, 8, 11, 13, 14, 16; failure to meet minimum qualifications (Level II/III FAC-C); legitimate nondiscriminatory reasons articulated for claims 1, 2, 5, 6, 8, 15, 17–20; selectee comparison data for claim 14; and lack of severity/pervasiveness for claim 12."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision traces reasoning from evidence (e.g., Complainant did not apply for claim 8; selectee demographics for claim 14; no sexual aspect or severe/pervasive conduct for claim 12) through legal framework (prima facie case, pretext analysis, hostile work environment) to conclusions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the basis by following the 20 enumerated claims, the AJ's framing, the specific factual findings on each claim, and the legal reasoning applied, without requiring external knowledge of prior proceedings."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "While the AJ articulates conclusions on each claim, the record does not detail the investigative findings, witness testimony, or documentary evidence that substantiate whether Complainant in fact lacked FAC-C certifications or whether the Agency's stated reasons are factually supported beyond assertion."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides explicit dates for all 20 claims (May 15–August 29, 2016), the formal complaint filing (August 25, 2015), Agency acceptance (November 23, 2015), motion for summary judgment (March 22, 2018), and AJ decision (September 23, 2020), allowing chronological reconstruction."
+    }
+  },
+  "remediation_note": "The record demonstrates strong documentation of procedural history, claim framing, and legal conclusions, but lacks sufficient evidentiary detail to verify whether the AJ's factual predicates (e.g., Complainant's actual qualifications, the Agency's actual approval of Level II certification, and comparative qualifications of selectees) are supported by investigation findings, witness statements, or documentary evidence in the file.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support—the record presents decision outcomes and reasoning but does not expose the underlying investigative findings or evidence that anchor the AJ's factual assertions.",
+    "compliant_version": "A compliant record would cite and summarize key investigative findings (e.g., 'The investigator found that [Official Name] approved [specific course] on [date], as evidenced by [document/testimony]'; 'Complainant's personnel file shows [qualification status]'), cross-reference evidence by exhibit, and explain how each piece of evidence supports or refutes the AJ's factual conclusions on claims 1–20, particularly regarding FAC-C certification decisions and selectee qualifications."
+  }
+}
+```

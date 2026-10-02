@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each major conclusion (reasonable accommodation met, pay issues nondiscriminatory, 204-B denial justified, no pretext) is anchored to specific evidentiary bases: the job offer document, the Manager's stated knowledge limitations, facility transfer protocols, and the absence of discriminatory animus evidence."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's path from evidence to summary judgment is logical but compressed; the record does not fully explain how the 'reasonable accommodation' conclusion accounts for Complainant's later claim that the assignment exceeded restrictions (August 29 walking incident), creating a gap between the on-paper assessment and the lived experience narrative."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer with no prior context can follow the three claims and the Agency's factual responses, but cannot easily reconstruct why the Manager's lack of medical documentation did not trigger a reasonable-accommodation duty, or why Complainant's post-assignment complaint about actual working conditions was not revisited in the AJ analysis."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports dismissal of the 204-B detail claim (Manager stated reason; no discriminatory motive shown) and provides plausible explanations for pay/clock issues (facility transfer, code error, lost timecards), but offers limited documentary evidence of the actual work Complainant performed on August 29, 2016, or medical confirmation that she could not perform the job with or without accommodation."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are clearly marked: May 2014 (injury), July 1 (offer signed), July 18 (assignment began), July 18–28 (clock rings deleted), August 29 (walking incident), September 14 (grievance filed), October 4 (clock rings deleted), November 14 (204-B detail not offered), creating a traceable chronology."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should explicitly document the AJ's reasoning for why Complainant's August 29 walking incident and subsequent assertion that the assignment exceeded her restrictions did not rebut the on-paper analysis, and should cite medical or administrative evidence supporting the finding that her restrictions were so severe as to preclude job performance with or without accommodation.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Revise the 'Reasonable Accommodation' section to: (1) acknowledge the temporal mismatch between the signed July 1 offer and the August 29 complaint; (2) explain whether post-assignment medical evidence or operational observation addressed whether actual conditions exceeded stated restrictions; (3) explicitly state whether the Agency revisited the accommodation analysis after August 29 or rested solely on the pre-assignment job description; and (4) cite specific documentation (medical reports, facility transfer records, or witness statements) supporting the conclusion that restrictions were job-prohibitive."
+  }
+}
+```

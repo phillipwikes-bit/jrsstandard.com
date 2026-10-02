@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "While the record identifies specific claims (1-14) and supporting documents (Privacy Investigation Report, discipline letters, ORM Notice), the bases for the Agency's final conclusions on claims 1, 2, and 12 rest heavily on credibility determinations (e.g., 'S1 stated she only discussed...privately') and witness statements without contemporaneous documentation of the underlying events themselves."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's decision-process is traceable through the ORM's partial acceptance, the privacy investigation, and the final decision's point-by-point claim analysis, but the chain from evidence (witness interviews, S1's testimony) to credibility conclusions (e.g., rejecting Complainant's account of the hallway statement) lacks explicit evidentiary reasoning or citation to interview transcripts."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would struggle to reconstruct why the Agency credited S1's uncorroborated private-conversation account over Complainant's identification of two named witnesses (Witness 1, Witness 13) to the alleged public hallway disclosure, as the record does not document what those witnesses actually said or why their accounts were discounted."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The Agency concludes 'six coworkers...all confirmed that S1 did not disclose any information' but does not identify which six coworkers were interviewed, what their actual statements were, or how Witness 1 and Witness 13 (specifically identified by Complainant as hearing the statement) fit into that group."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical events are dated only as 'at one point' or 'in November or at one point' (claim 1, the hallway disclosure, the discipline letters, and the Privacy Officer letter), preventing reconstruction of the sequence, causation, or timeliness of the Agency's response and discipline decisions."
+    }
+  },
+  "remediation_note": "The record requires insertion of: (1) explicit identification and summary of all witness statements, particularly Witness 1 and Witness 13's accounts of the alleged hallway disclosure; (2) specific dates for all key events (shift-demand incident, hallway statement, privacy investigation, discipline decisions); (3) citation to or excerpts from S1's testimony and the privacy investigation interview notes; and (4) documented reasoning for any credibility determinations that reject named witness accounts in favor of S1's version.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support, temporal_reconstructability",
+    "compliant_version": "A compliant record would include dated, attributed summaries of each witness interview conducted by the Privacy Officer; full identification of the 'six coworkers' confirmed to have learned of surgery from Complainant directly, with their roles and statements; explicit analysis of Witness 1 and Witness 13's credibility and relevance; specific dates for the alleged hallway disclosure, the privacy investigation, and both discipline decisions; and a reasoned explanation of why S1's characterization of a private conversation overrides the named witnesses' accounts."
+  }
+}
+```

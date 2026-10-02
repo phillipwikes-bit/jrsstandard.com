@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for conclusions through documented supervisor statements, medical certifications, meeting summaries, and regulatory requirements (e.g., telework agreements, medical documentation requests)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the chain of accommodation requests and denials is traceable, the critical reasoning gap occurs at the AWOL determination: the Coordinator 'suggested' AWOL was reasonable, management 'decided' to charge AWOL, but no documented analysis of the legal or factual basis for that specific decision appears in the record."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct most events (injury dates, accommodation requests, medical submissions), but cannot independently verify why the Coordinator believed AWOL was 'reasonable' after closure, or what policy supported charging AWOL during approved LWOP status through August 10, 2020."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record contains extensive evidence of accommodation requests and medical documentation exchanges, but lacks sufficient evidentiary support for the August 10, 2020 AWOL decision—no documented legal analysis, no written justification from the decision-maker, and no clear basis distinguishing approved LWOP from AWOL status."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: injury (July 12, 2019), aggravation (December 2019), return to work (March 2, 2020), accommodation requests (February 25, April 21, June 2020), LWOP periods (February–August 2020), closure (August 7, 2020), AWOL charge (August 10, 2020), and termination (January 22, 2021), with specific dates throughout."
+    }
+  },
+  "remediation_note": "The record requires a documented written decision memo explaining the legal and factual basis for charging AWOL status commencing August 10, 2020, including why approved LWOP ended and under what authority the transition to AWOL occurred. Additionally, a written accommodation denial or closure order should be placed in the record, signed by the decision-maker, with specific reference to the regulatory standard unmet by the employee.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support, reasoning_traceability — the AWOL determination and its justification",
+    "compliant_version": "A compliant record would include: (1) a signed written decision by the Reasonable Accommodation Coordinator or management explaining the closure of the accommodation request and citing the specific regulatory or policy standard requiring medical documentation; (2) a separate written decision by the manager or HR official authorizing the transition from LWOP to AWOL status as of August 10, 2020, with explicit reasoning and legal authority; (3) notification to the employee of the AWOL charge with opportunity to respond; and (4) a summary of the interactive process showing where the employee failed to provide required information and when the Agency notified her of that failure."
+  }
+}
+```

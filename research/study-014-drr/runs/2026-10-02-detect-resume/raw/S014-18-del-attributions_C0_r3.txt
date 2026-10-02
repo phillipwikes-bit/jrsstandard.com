@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the complaint: sex (female), disability (cervical myelopathy, cervical fusion with limited neck movement), and age (56), with each allegation linked to one or more bases."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record states the Agency's conclusion ('Complainant failed to prove that someone subjected her to discrimination') but provides no explanation of the evidentiary reasoning, comparator analysis, or legal standards applied to reach that conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the Agency rejected the discrimination claim from this record alone; the decision mechanism, factual findings on each allegation, and application of legal standards are absent."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "While the record details 15 specific incidents with dates and supervisory conduct, the Agency provides no analysis of whether comparators were identified, no rebuttal of the temporal or contextual clustering of conduct, and no reasoned engagement with the prima facie case elements."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronological sequence from September 8, 2019, through February 6, 2020, with specific dates attached to nearly all 15 incidents and supervisory actions."
+    }
+  },
+  "remediation_note": "The record must include the Agency's factual findings on each of the 15 incidents, identification of any comparators or contrasting treatment, analysis of pretext, and explicit application of the burden-shifting framework under McDonnell Douglas or similar standards to each protected basis.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include a detailed Statement of Facts addressing each allegation, analysis of whether the complainant established a prima facie case of discrimination, identification and comparison of non-protected employees in similar circumstances, evaluation of proffered legitimate reasons for each action, assessment of pretext, and a reasoned conclusion specific to each protected basis, with sufficient detail to permit appellate or judicial review and allow a cold reviewer to understand the Agency's decision-making process."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each claim category (discriminatory pay, barred advancement, reorganization, strategic plans, contractor treatment, resource access, tweet) is explicitly identified with specific factual allegations and dates."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents allegations and procedural outcomes but does not document the investigative reasoning, evidence evaluation, or the logic chain by which investigators or AJs reached their no-discrimination conclusions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can identify what was alleged and the procedural sequence, but cannot reconstruct why the summary judgment findings were granted without access to the underlying investigative reports, witness statements, or decision documents cited as justification."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record summarizes complaints and notes that AJs issued summary judgment decisions finding no discrimination, but does not reproduce the evidence, testimony, or reasoned analysis supporting those conclusions."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are clearly marked: hire date (October 2015), April 2018 pay review, January 2019 alleged instruction, June 2018 reorganization, June 13, 2019 complaint filing, May 5, 2019 tweet, and February 2019 end of contractor hostility period."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must include the investigative narrative, witness interview summaries, documentary evidence evaluated, and the AJs' reasoned decision documents—not merely the complaint allegations and procedural history. The absence of the underlying investigative analysis and decision rationale creates a gap in evidentiary sufficiency and prevents cold-reviewer traceability of the fact-finding process.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, accountability_support, cold_reviewer_clarity",
+    "compliant_version": "A complete record must include the full investigative report with findings of fact, credibility determinations, evidence cited for each allegation, and the AJs' written decisions explaining which claims were substantiated, which were not, and why—with citations to the evidentiary record supporting each conclusion."
+  }
+}
+```

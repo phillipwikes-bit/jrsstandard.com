@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each claim is linked to specific dates, positions, and documented Agency responses (e.g., July 1 offer, October 4 clock deletion, November 14 detail denial)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's logic chain from evidence to summary judgment is stated but the record does not detail how specific evidence was weighed or rejected (e.g., no explicit analysis of why Complainant's August 29 walking account was discounted or why the Manager's claim of no medical documentation overrides the job offer itself)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can reconstruct the main claims and Agency defenses, but the summary lacks documentary exhibits (medical restrictions text, clock deletion logs, 204-B selection criteria, grievance filing proof) that would allow independent verification."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record states the AJ's conclusions (no discrimination, no pretext) but does not present the full evidentiary record—e.g., the actual job offer terms, medical documentation cited by the Agency, or contemporaneous communications about the clock rings."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided in sequence: injury (May 2014), offer (July 1, 2016), start (July 18), clock deletion (July 18–28, October 4), walking incident (August 29), grievance (September 14), detail denial (November 14), and final order."
+    }
+  },
+  "remediation_note": "To meet full JRS compliance, the record should explicitly cite or attach the medical restrictions document, describe the job offer terms side-by-side with restrictions, log the clock-ring deletion incidents with contemporaneous evidence, and set out the AJ's point-by-point evidentiary analysis (what evidence was credited, what was rejected, and why) rather than conclusory findings alone.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would include: (1) verbatim text or exhibit of the medical restrictions and job offer; (2) explicit AJ findings on each factual dispute (e.g., whether Complainant actually walked an hour on August 29 and whether the van assignment required stooping/twisting); (3) documentary evidence of clock-ring deletion and pay corrections; (4) identification of which evidence supported or contradicted each Agency defense; and (5) specific analysis of pretext (e.g., whether the Manager's claim of no medical documentation is contradicted by the job offer itself, or whether the 204-B criteria were applied consistently)."
+  }
+}
+```

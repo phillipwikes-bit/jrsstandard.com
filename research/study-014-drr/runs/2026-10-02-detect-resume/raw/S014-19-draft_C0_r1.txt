@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record fails to clearly identify who decided to exclude Complainant from work July 5–31: S2 is credited with the decision by HRM Manager, but HRM Manager simultaneously states he 'did not know why she was kept out,' creating an unresolved contradiction at the foundation of the Agency's justification."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The causal chain from medical documentation requests (June 11, 21) to work exclusion (July 5–31) to new assignment offer (July 25) is fragmented; the record does not explain why the July 2 letter was deemed 'unclear and inadequate' or what specific deficiencies prompted S2 to exclude her rather than request clarification in writing."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct from this record alone whether the exclusion was a disciplinary measure, a medical clearance hold, a CBA-compliance action, or administrative necessity, because no single authority owns the decision and the HRM Manager's denial of knowledge leaves the justification orphaned."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The FAD rests on the assumption that Complainant was not qualified because she could not perform unmodified duties, but the record does not establish that an unmodified Mail Handler role was ever the job at issue—she held a Modified Assignment, and the Agency's own July 25 offer accommodated her with restrictions identical to her July 2 letter."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Dates are present (June 15, 11, 21; July 2, 5, 22, 25, 31; August 1; January 18, 2011) but the sequence does not clearly show when each party learned what, when the exclusion decision was made, and whether HRM's July 22 notification of assignment review was the trigger or a parallel event."
+    }
+  },
+  "remediation_note": "The record requires clarification of decision authority (who excluded Complainant and on what grounds), explicit written reasons for rejecting the July 2 letter, and a coherent timeline linking the CBA grievance, medical documentation requests, work exclusion, and new assignment offer. The note about garbled text and inconsistencies signals the record itself is incomplete and must be reconstructed or supplemented before finalization.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, temporal_reconstructability",
+    "compliant_version": "A compliant record would identify the single decision-maker for the July 5–31 exclusion with a contemporaneous written decision memo; specify which aspects of the July 2 letter were deficient and why; provide a clear timeline with decision dates, medical submission dates, and communication records; and explain the relationship between the union grievance, the assignment review, and the exclusion—enabling a cold reviewer to reconstruct the Agency's rationale and assess whether the exclusion was a necessary administrative hold pending clarification or a disguised disciplinary or discriminatory action."
+  }
+}
+```

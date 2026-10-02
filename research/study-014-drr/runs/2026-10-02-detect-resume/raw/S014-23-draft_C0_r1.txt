@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the AJ's conclusion: the Agency's articulated reasons (misrepresentation, credentialing failure, failure to initiate renewals), credibility findings regarding Complainant and witnesses, and the late emergence of the interracial-relationship theory."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision traces from evidence (testimony, written statements, affidavits, EEO counseling records) through credibility assessment to the conclusion that pretext was not proven and legitimate nondiscriminatory reasons existed."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the sequence of events and key findings are clear, the record lacks detail on the specific content of the provider's written statement, the exact nature of the 'inappropriate conduct at Leesburg conference,' and the timing/evidence supporting the 'wrongly believed grievance' theory—details necessary for independent reconstruction."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the finding that legitimate reasons were articulated and some (misrepresentation, credentialing failure) were substantiated by provider testimony, but the treatment of the 'similarly situated employee' comparator is underdeveloped—no detail on why that employee's situation was or was not truly similar."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided: termination (August 2, 2018), EEO complaint filing (November 8, 2018), May 2018 knowledge of interracial relationship, three-year delay before theory surfaced, and the 40-day Agency final-order deadline."
+    }
+  },
+  "remediation_note": "To strengthen compliance, the record should include a detailed description of the provider's written statement, explicit documentation of the comparator analysis (name, discipline, outcome, factual distinctions), and a summary of the 'inappropriate conduct' allegation with dates and any contemporaneous records.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support—the record summarizes conclusions but omits evidentiary detail necessary for independent fact-reconstruction and comparator sufficiency.",
+    "compliant_version": "A compliant version would attach or quote the provider's written statement, provide a side-by-side comparator table with the similarly situated employee's role, performance metrics, renewal timeliness, and disciplinary outcome, and document the Leesburg conference allegations with dates and any contemporaneous complaint or warning."
+  }
+}
+```

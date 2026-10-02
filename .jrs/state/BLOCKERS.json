@@ -515,7 +515,8 @@
       "next_action_by": "OWNER",
       "next_action_basis": "Payment is an owner action.",
       "status": "OPEN",
-      "opened": "2026-10-02"
+      "opened": "2026-10-02",
+      "addendum_2026_10_02_resume": "Owner added credit. The confirmatory run completed (174 calls). The Part 2 resume ran 930 calls before the credit ran out again: 1,135 of 1,350 are now done and 215 remain (211 refused, 4 unparsed). About USD 4 more completes Part 2 (Inference). Still OPEN."
     },
     {
       "blocker_id": "B-023",

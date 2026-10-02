@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for the termination decision: performance deficiencies in payroll processing and new hire onboarding documented through progress reviews, emails, memoranda, and supervisor affidavits."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's reasoning from evidence to conclusion is traceable (prima facie case assumed, legitimate reasons articulated, pretext analysis applied), but the specific evidentiary weights assigned to conflicting supervisor accounts (S3/S1 vs. AS) lack explicit reconciliation logic."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the factual dispute (three supervisors attesting to payroll/onboarding errors vs. one supervisor reporting no observed performance issues in her domain), but temporal gaps (\"at one point,\" unnamed dates for progress review and S1's assumption of supervision) obscure precise sequence reconstruction."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record contains supervisor affidavits and contemporaneous documents (emails, memoranda, termination letter) supporting the performance-based termination, but AS's contradictory statement and the Agency's dismissal of it as limited-scope supervision could warrant deeper analysis of whether all relevant performance domains were adequately documented."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical dates are missing or vague: progress review is undated (\"at one point\"), S1's supervision start date is vague (\"early at one point\"), pay period references lack specific calendar dates, and the interval between termination and appeal is not stated."
+    }
+  },
+  "remediation_note": "Insert specific dates for all supervisory transitions, performance reviews, payroll incidents, and the termination decision; clarify which performance domains each supervisor directly observed and document the evidentiary basis for limiting AS's credibility to her assigned domain only.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "temporal_reconstructability, cold_reviewer_clarity, reasoning_traceability",
+    "compliant_version": "Replace temporal placeholders with calendar dates and day-of-year intervals; add a table or timeline reconciling the scope of each supervisor's observation (payroll/onboarding vs. Missing Documents Project); explicitly state the Agency's reasoning for weighing three supervisors' testimony against one, citing the specific scope-limitation principle; provide complete citation to investigation report and administrative record exhibits referenced."
+  }
+}
+```

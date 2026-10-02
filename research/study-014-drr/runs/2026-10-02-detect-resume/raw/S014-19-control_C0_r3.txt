@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies bases for conclusions: (1) the grievance filed June 15, 2019 citing craft-crossing violation, supported by Exhibits 4, 7 and Affidavit C; (2) HRM's June 11 and June 21 requests for updated medical documentation, documented in Affidavit A; (3) the July 2, 2019 doctor's letter and HRM's finding of inadequacy; (4) the July 25, 2019 Modified Assignment offer with identical restrictions."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The decision path from evidence to conclusion is largely traceable (grievance→request for medical docs→refusal→work stoppage→revised offer) but a critical gap exists: 'According to S2, HRM found the updated doctor's letter to be inadequate' lacks direct HRM documentation or affidavit explaining the specific inadequacies, creating a second-hand attribution without primary evidentiary support."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can reconstruct most facts (dates, positions, document submissions, final offer) but cannot independently verify why HRM deemed the July 2 letter 'inadequate' because the record relies on S2's representation of HRM's position rather than an HRM affidavit or written determination."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports the sequence of events and the Modified Assignment offer, but the core factual predicate—whether HRM actually deemed the July 2 letter inadequate or whether that was S2's characterization—lacks sufficient direct testimony or documentation to definitively establish the Agency's justification for the July 5–31 work suspension."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is fully reconstructible: June 11/21 (medical requests), June 15 (grievance), July 2 (doctor letter submitted), July 5 (work stoppage begins), July 22 (review letter), July 25 (offer issued), July 31 (suspension ends), August 1 (return to work), with all dates and intervals clearly stated."
+    }
+  },
+  "remediation_note": "Add a direct affidavit or written statement from the HRM Manager explaining specifically which aspects of the July 2, 2019 doctor's letter HRM deemed inadequate and why, or clarify whether S2 made an independent judgment rather than relaying HRM's view. This will resolve the second-hand attribution gap and strengthen evidentiary sufficiency.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability and accountability_support—the record narrates events chronologically but relies on indirect testimony regarding HRM's medical-adequacy determination",
+    "compliant_version": "Include a signed statement from the HRM Manager documenting the specific deficiencies identified in the July 2 letter, when that determination was made, and confirmation that HRM (not just S2) directed Complainant to resubmit, or explicitly state that S2 independently made the adequacy judgment and on what authority."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies factual bases for accepted and dismissed claims with dates and incident descriptions, but the Agency's reasoning for finding 'no prima facie case' lacks explicit citation to comparator analysis, McDonnell Douglas burden-shifting steps, or articulation of which prong(s) failed."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The path from evidence (Complainant's TECS entries, SCBPO-1's email, shift change, detail removal) to conclusion (no discrimination proven) is partially traceable, but the Agency's rebuttal of each accepted claim's causal link to protected status is asserted rather than demonstrated with supporting detail or factual analysis."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the Agency found no comparator similarly situated but treated better, what alternative explanations were considered for the timing and clustering of incidents in 2018–2020, or whether temporal proximity to prior EEO activity was weighed as circumstantial evidence of retaliation."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents the Agency's stated reasons for the Memorandum of Counseling, TECS email, and detail removal, but does not provide documentary evidence (e.g., TECS policy text, watch commander request, task delegation records) or witness statements to support factual disputes raised by Complainant's appeal."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology of incidents from May 31, 2018, through August 2019, with specific dates for the Memorandum of Counseling (May 31, 2018), verbal reprimand (Apr. 17, 2019), knife incident (June 2019), email reprimand (June 3, 2019), schedule change (June 19, 2019), detail removal (Mar. 8, 2020), and investigation milestones (affidavit deadline Sept. 23–24, 2020)."
+    }
+  },
+  "remediation_note": "The record must explicitly apply McDonnell Douglas burden-shifting framework, identify specific comparators with documented differential treatment, and provide documentary or testimonial support for factual assertions regarding TECS policy compliance, task delegation authority, and the legitimacy of the stated reasons. The Agency's response to Complainant's challenge that reasons are 'untrue' requires factual development, not assertion.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) explicit identification of prima facie elements and any failed prong; (2) named comparators with itemized differences in treatment and protected-class status; (3) documentary evidence or sworn testimony supporting each stated nondiscriminatory reason (e.g., TECS policy memo, watch commander email, delegation records); (4) analysis of temporal clustering of incidents and Complainant's prior EEO activity as circumstantial retaliation evidence; and (5) the Agency's point-by-point rebuttal of Complainant's factual challenges with citation to the administrative record."
+  }
+}
+```

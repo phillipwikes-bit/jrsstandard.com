@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the AJ's decision (single incident, facially neutral language, absence of background allegations from prior filings) but does not document what specific evidence the AJ weighed against Complainant's stipulated facts or how the Agency's responsive evidence was evaluated."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's logic chain from incident (yelling on Dec 11, 2020) to conclusion (not harassment, not discrimination) is outlined, but the decision does not trace how Complainant's later-added allegations (Obama comments, Confederate imagery, history of hatred) were systematically rejected or what evidentiary standard applied to unsupported stipulations."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the core facts (bleeding wound, yelling, suspension imposed) and the AJ's reasoning framework, but would struggle to reconstruct why Complainant's claim that he 'gave investigators a list of racially motivated incidents' contradicts the record's statement that background allegations were absent from all prior filings."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record states the AJ found conduct 'unprofessional and unacceptable' yet ruled it non-discriminatory, but does not document the investigative findings, witness statements, or documentary evidence (e.g., any list Complainant claims to have provided, Supervisor's personnel file contents, or hangar imagery) necessary to support the conclusion that discrimination was not proven."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: incident on December 11, 2020; complaint filed May 25, 2021; Notice of Proposed Summary Judgment January 21, 2022; AJ decision February 25, 2022; appeal pending—dates and sequence are traceable."
+    }
+  },
+  "remediation_note": "A compliant record must document the investigative file summary, itemize which background allegations Complainant claims were submitted and when, attach or reference Supervisor's personnel history, and require the AJ decision to explicitly address each material factual dispute (e.g., whether Obama comments or Confederate imagery occurred) with citation to supporting or rebutting evidence, rather than relying on absence-from-prior-filings as dispositive.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "accountability_support and reasoning_traceability",
+    "compliant_version": "A revised record would include: (1) a detailed investigative summary naming each witness interviewed and substance of their statements; (2) Supervisor's complete personnel and disciplinary history; (3) explicit findings on each background allegation with evidentiary cites; (4) reconciliation of Complainant's appeal claim that he 'gave investigators a list' against the record showing such list absent from formal filings; (5) the AJ's reasoning on why summary judgment was appropriate despite factual disputes about racist remarks and imagery; and (6) identification of what 'vital information' the Agency allegedly withheld and grounds for its withholding or production."
+  }
+}
+```

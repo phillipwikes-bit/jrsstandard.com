@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the four claims is grounded in specific dates (July 26–October 12, 2018) and discrete factual allegations; the Agency's FAD cites *McDonnell Douglas* framework and articulates legitimate nondiscriminatory reasons for each action."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The FAD applies a legal standard (*McDonnell Douglas*) but does not explicitly trace how the Supervisor's proffered reasons (schedule inflexibility, training overlap, PWP alignment) rebut Complainant's protected-class theory or distinguish treatment of comparators (DO 1, DO 2) on fact."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify claims and outcomes, but the record lacks detail on why Supervisor's account (e.g., DO 1 parity on schedule denial, presence of DO 2 during pay review) overcomes inference of discrimination without comparative analysis of how similarly situated non-Romanian, younger, or non-prior-EEO employees were treated."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record cites Supervisor's statements and pay records but does not systematically compare the treatment of Complainant (Romanian, 48, prior EEO filer) to DO 1 (YOB 1982), DO 2 (YOB 1969), or other employees on schedule requests, pay adjustments, or PWP ratings to support a finding of nondiscriminatory motive."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A chronology is discernible: July 26–October 12, 2018 (incidents), October 12, 2018 (EEO contact), June 6, 2019 (formal complaint), May–June 2021 (procedural defaults and AJ dismissal), August 10, 2021 (FAD)."
+    }
+  },
+  "remediation_note": "The FAD should explicitly compare Complainant's treatment to that of similarly situated non-protected-class employees on each claim and articulate why Supervisor's reasons are facially legitimate and why Complainant's evidence does not support an inference of pretext or discriminatory motive. Documentation of comparator treatment and a detailed rebuttal of each disparate-treatment and harassment theory would strengthen evidentiary sufficiency.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The FAD should include a structured comparative analysis for each claim—identifying similarly situated non-Romanian, younger, or non-prior-EEO employees and explaining why their treatment differed or was identical—followed by an explicit statement of why Supervisor's articulated reasons are not pretextual and why Complainant's circumstantial evidence (temporal proximity, protected-class status, prior EEO filing) does not raise a genuine dispute of material fact. Each PWP rating and pay adjustment should be cross-referenced to policy and training records to demonstrate legitimate application."
+  }
+}
+```

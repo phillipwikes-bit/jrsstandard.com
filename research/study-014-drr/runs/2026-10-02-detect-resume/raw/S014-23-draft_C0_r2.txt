@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies discrete bases for the termination decision: misrepresentation regarding the provider's request for privileges, failure to follow credentialing process, and failure to initiate renewals within 90 days, each traceable to specific documented incidents and supervisor action."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The AJ's decision pathway is clearly laid out: Agency articulated reasons → Complainant's hearing theory introduced race-based motivation → AJ assessed credibility of witnesses and complainant → AJ compared to similarly situated employees → AJ concluded no pretext shown, establishing a followable chain from evidence to conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the AJ's credibility findings are stated, the record does not explain in detail the specific inconsistencies between Complainant's three successive theories (conference misconduct, grievance belief, interracial relationship) or the temporal gaps that led to the credibility assessments; a reviewer years later would need supplemental materials to fully understand the basis for finding lack of candor."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The record cites the provider's written statement corroborating misrepresentation, identifies the credentialing process failure, references comparator employee data on renewals, and documents the AJ's credibility determinations; these sufficiently support the conclusion that nondiscriminatory reasons existed."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (May 2018 relationship disclosure, August 2, 2018 termination, November 8, 2018 complaint filing, hearing three years later), but the record does not clearly establish when the credentialing error occurred, when the provider complained, when S2 obtained the written statement, or the precise interval between the conference incident and termination decision."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should detail the specific dates and intervals of each alleged discriminatory event, the credentialing errors, and supervisor actions; it should also explicitly set out the inconsistencies between Complainant's successive theories with documentary support for why each was absent from earlier filings.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity and temporal_reconstructability; the decision rests heavily on credibility findings and temporal sequence (three-year delay in surfacing interracial-relationship theory, prior omissions from EEO counseling and affidavits) that require fuller explication",
+    "compliant_version": "A compliant record would include a detailed chronology table showing: (1) date of each alleged event (conference, relationship disclosure, credentialing error, provider complaint, supervisor action, termination notice); (2) side-by-side comparison of Complainant's three theories with citations to the EEO counseling record, investigative affidavit, and hearing testimony showing what was and was not alleged at each stage; (3) explicit findings on why the omission from earlier submissions undermines the credibility of the interracial-relationship theory; and (4) documentary evidence (dates, provider statement, renewal records, comparator data) keyed to the AJ's assessment of nondiscriminatory reasons."
+  }
+}
+```

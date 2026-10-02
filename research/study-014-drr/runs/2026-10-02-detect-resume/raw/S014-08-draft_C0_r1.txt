@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each major allegation (training denial, client transfers, meetings, evaluation, IG findings, reassignment) is tied to specific dates, persons, and documented events or statements."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision logic is stated (legitimate reasons given, pretext not shown, conduct not severe/pervasive) but the record does not fully trace how specific evidence rebuts each allegation—for example, the connection between the Lieutenant Colonel's reversal of one transfer and the December 21 transfers remains implicit rather than explicit."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct the allegations and outcomes, but lacks the actual October 5 and October 12 meeting notes, the full evaluation documentation with supporting examples, and the complete IG report text—summaries are provided but source documents are not quoted or attached."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Management rebuttals and IG findings are included, but the record does not uniformly present complainant's contemporaneous evidence (e.g., the recording she made, emails, or witness statements supporting her account of October 5 and October 12 meetings)."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are clearly marked for allegations (September 2014–January 2017), grievance resolution (November 2014–January 2015), key meetings (October 5 and 12, 2016), evaluation (November 12, 2016), IG report (November 15, 2016), reassignment (January 4, 2017), and procedural milestones (October 18, 2021 motion; January 31, 2022 decision)."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should attach or quote key source documents (IG report, evaluation details, meeting notes, complainant's contemporaneous complaints) and explicitly trace how each piece of evidence supports the AJ's conclusion on pretext, severity, and pervasiveness. The reasoning connecting the reversal of one transfer to the unintentional nature of others should be made explicit.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include full quotations or attachments of the IG report findings, evaluation documentation, meeting summaries (or complainant's account thereof), and the Agency's contemporaneous responses, with explicit chains of reasoning that show how each item of evidence supports or rebuts each allegation and the AJ's ultimate conclusion on discrimination, retaliation, and hostile work environment."
+  }
+}
+```

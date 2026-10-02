@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies a specific incident (December 11, 2020) and supervisor conduct, but Complainant's later allegations of pattern discrimination lack identified evidentiary sources within the record itself (referenced 'list of incidents' and 'list of witnesses' are mentioned but not substantiated in the document)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision path is traceable through the Notice and final order, but the reasoning for excluding late-added allegations (Obama comments, confederate flag) rests partly on procedural timing rather than evidentiary evaluation, making the analytical chain incomplete."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would struggle to assess the merit of Complainant's pattern-discrimination claim because the 'list of incidents' and witness list are referenced but never documented, attached, or summarized in the record."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record supports the single-incident finding but lacks documentary evidence (incident lists, witness statements, or investigative notes) needed to evaluate whether background allegations or alleged pattern conduct actually occurred or were investigated."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Clear dates establish sequence: December 11, 2020 (incident), May 25, 2021 (complaint filed), January 21, 2022 (Notice issued), February 25, 2022 (decision without hearing), with response deadlines specified."
+    }
+  },
+  "remediation_note": "The record must attach or summarize the alleged incident lists, witness identifications, and investigator findings referenced in Complainant's submissions and appeals. The AJ's reasoning for distinguishing procedural omission from evidentiary insufficiency must be made explicit, and any withholding or unavailability of Supervisor background information must be documented and justified.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include appendices or exhibits documenting: (1) the specific incidents Complainant claims he reported to investigators with dates and descriptions; (2) the witness list and their identifying information; (3) the EEO Counselor Report and formal complaint as filed; (4) investigative notes reflecting whether pattern allegations were explored; (5) the AJ's explicit findings on whether late-added allegations (Obama comments, confederate flag) were investigated and what evidence exists; (6) documentation of any Agency records on Supervisor's prior conduct or complaints; and (7) a reasoned explanation of why summary judgment was appropriate given potential gaps in the investigative record."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the Agency's decision (no persuasive evidence for incidents 2–4, assumed comments in incident 1) but does not explicitly document the investigative findings, witness statements, or evidentiary materials that support the characterization of claims as 'uncorroborated.'"
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The decision pathway from evidence to conclusion is partially traceable for incident 1 (assumption acknowledged) but opaque for incidents 2–4, where the record asserts lack of 'persuasive evidence' without detailing what evidence was examined or why it failed to persuade."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct the factual predicate for the 'no discrimination' finding because the record summarizes conclusions (e.g., 'uncorroborated,' 'not based on protected classes') without attaching or citing the investigation report, witness interviews, or documentary evidence."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record offers sufficient framing of legal standards (discrimination, hostile work environment, severity/pervasiveness) but does not establish evidentiary sufficiency by presenting the investigator's findings, comparative evidence, or credibility determinations that would support the rejection of Complainant's account."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly established: harassment period (June 2020–July 2021), complaint filing (November 4, 2021), acceptance (November 16, 2021), investigation, final decision, and pending appeal; management response in late July 2021 is also dated."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must attach or summarize the investigation report in sufficient detail to show what evidence was examined for each incident, why Complainant's accounts were deemed uncorroborated, and how the investigator evaluated motive and context. Findings on S2's conduct and the adequacy of the Agency's response must be grounded in documented facts, not characterizations like 'appears' or 'lack of support.'",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The final decision should incorporate or append a detailed summary of the investigation report, including: (1) a list of witnesses interviewed and their pertinent statements; (2) documentary evidence examined (calendar entries, emails, inventory lists, casework records); (3) the investigator's factual findings on each incident, with support; (4) analysis of whether each finding supports or refutes discrimination based on the legal standard (including motive, nexus to protected class, and severity/pervasiveness); (5) explicit findings on S1's role, S2's knowledge and response, and the timeline of the Agency's corrective action; and (6) a reasoned explanation of why the internal anti-harassment inquiry result informs but does not control the EEO investigative conclusion."
+  }
+}
+```

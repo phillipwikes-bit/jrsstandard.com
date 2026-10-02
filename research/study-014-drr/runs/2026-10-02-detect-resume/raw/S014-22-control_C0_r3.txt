@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is grounded in specific incidents with dates, actor identification, and claimed discriminatory basis (race, national origin, sex, disability, reprisal)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces complainant's allegations and factual assertions but does not explicitly document the Agency's investigative reasoning, evidentiary analysis, or the analytical path from evidence to dismissal conclusions on the remanded claims."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the factual allegations and timeline, but the investigative findings, witness statements, and Agency's counter-evidence are summarized opaquely; the dismissal rationale for timeliness on claims 6–11 is stated conclusorily without showing the counseling-initiation analysis."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record asserts dismissal and no-discrimination findings but provides no citation to specific evidence, witness testimony, documentary findings, or Agency responses that support these conclusions; the 60-day remand deadline and 15-month delay are noted but no remedial investigation results are documented."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates and intervals are consistently provided for allegations (2009–2018), promotion timeline (May 2013), EEO counseling initiation (July 27, 2017), and post-counseling actions; footnotes clarify discrepancies in Agency definitions versus complainant recollection."
+    }
+  },
+  "remediation_note": "The record functions as a detailed narrative complaint and procedural summary but lacks investigative findings, evidentiary support, and reasoned conclusions necessary for accountability. A compliant version must document the Agency's investigation findings, witness statements, documentary evidence analysis, and explicit reasoned conclusions for each claim, with particular attention to the timeliness dismissals and the basis for no-discrimination findings on remaining claims.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Insert structured Report of Investigation findings including: (1) for each timely claim, documented evidence (witness interviews, emails, performance records, comparator data), Agency response or counter-evidence, and analytical conclusions on each protected basis; (2) for claims dismissed as untimely, explicit timeliness analysis showing counseling-initiation date, applicable statute of limitations, and first-occasion determination; (3) explicit factual findings on harassment, retaliation, and failure-to-promote claims with reference to documentary or testimonial support; (4) final agency decision signed and dated, with explanation of any deviations from the remand instructions or investigative timeline."
+  }
+}
+```

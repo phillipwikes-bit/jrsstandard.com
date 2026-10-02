@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Bases for discrimination claims (race, national origin, retaliation) are stated, but the record conflates alleged facts with investigative conclusions without clearly separating which facts were established, disputed, or remain unresolved in the underlying investigations."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record describes complaints and AJ decisions but does not trace the investigative reasoning, evidence evaluation, or the logical path from specific evidence to the AJs' no-discrimination finding, making the decision process opaque."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer reading only this record years later would struggle to reconstruct: what evidence the investigators found, which allegations were substantiated or rejected, on what grounds the AJs ruled, or what documents supported each conclusion—critical details are absent or embedded in footnote references."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents numerous detailed allegations (pay disparities, wage review concealment, resource denial, contractor hostility) but does not evidence what investigation findings, witness testimony, or documentary proof either supported or refuted each claim, limiting assessment of evidentiary sufficiency."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The record uses phrases like 'in or around at one point,' 'on an ongoing basis since at least at one point,' and 'between at one point and at one point,' with actual dates redacted or omitted, preventing precise chronological reconstruction of the sequence and duration of alleged conduct."
+    }
+  },
+  "remediation_note": "The record must include a clear factual findings section documenting which allegations were investigated, what evidence was obtained for each claim, the investigator's or AJ's factual determinations on each element, and explicit reasoning for acceptance or rejection of allegations. Temporal references must be replaced with actual dates or at minimum clear intervals (e.g., 'January 2019 to June 2021') to enable reconstructability.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, temporal_reconstructability",
+    "compliant_version": "A compliant record would organize findings by claim number; for each claim, state the alleged facts, the evidence obtained (witness statements, documents, timelines), the investigative or judicial factual determinations, and the explicit legal or factual reasoning for each conclusion; replace all temporal redactions with actual dates or reconstructible intervals; and separate uncontested background facts from disputed allegations and their resolutions."
+  }
+}
+```

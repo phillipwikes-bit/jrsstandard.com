@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the basis for the AJ's no-discrimination finding: lack of medical documentation, failure to engage in interactive process, unsubstantiated telework capability, and essential duty requirements."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable from complainant's requests → Agency's documentation demands → complainant's non-response → closure of accommodation request → AWOL charge → AJ's finding of non-engagement in interactive process."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the sequence is generally clear, the phrase 'sent it to a higher authority (the then Agency Secretary)' introduces ambiguity about what affidavit was excluded from the ROI and whether the complainant's later submission to the AJ was the same document or different; the basis for the AJ's authority to decide without a hearing is cited but not explained."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Medical documentation is sparse (three brief statements, each recommending reassessment in six weeks, one stating discharge); the record notes the Agency prepared accommodations but does not document whether those offers were formally presented with dates or complainant's written responses; the AWOL charge rationale (eight months without work, no documentation) is stated but lacks detail on prior warnings or procedural notice."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided: injury December 2019, return March 2, 2020, interactive meeting March 5, accommodation requests through June 2020, closure August 7, AWOL charge August 10, termination January 22, 2021, and appeal timeline."
+    }
+  },
+  "remediation_note": "To fully comply, the record should clarify what affidavit was withheld from the ROI and why; document all formal accommodation offers with dates and complainant's written responses; provide the medical documentation timeline with specific gaps and Agency requests; and explain the procedural basis for the AJ's decision without hearing.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support",
+    "compliant_version": "A compliant record would attach or summarize the medical statements with dates and specific restrictions; document each accommodation offer (including dictation software, ergonomic equipment, telework agreement) with presentation dates and complainant's written response or refusal; detail all Agency requests for documentation with dates and by whom; clarify the affidavit discrepancy; and cite the regulatory basis for the AJ's authority to decide without hearing, including whether complainant waived or declined the hearing opportunity."
+  }
+}
+```

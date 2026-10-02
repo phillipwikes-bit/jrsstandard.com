@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies bases for each major conclusion: medical restrictions documented in physician notes and job offer (claim 1), deleted clock rings confirmed in ROI Affidavit A with dates July 18-28, 2016 (claim 2), and Manager's stated reason for denying 204-B detail—lack of need and concerns about punctuality/reliability (claim 3)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision traces evidence to conclusions (e.g., accommodation offered and declined, legitimate nondiscriminatory reasons articulated), but the causal chain for payment errors is fragmented across multiple explanations (supervisor unawareness, facility switch, manual timecards lost, Manager's poor organization) without clear determination of which factors actually caused each failure."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the core facts (medical restrictions, job assignments, deleted clock rings with dates, 204-B denial), but the narrative conflates administrative findings with factual reconstruction, and the payment-failure causation remains ambiguous—multiple plausible explanations are presented without definitive determination of what actually occurred."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports the existence of medical restrictions, modified job offers, and deleted clock rings; however, the record provides explanations for errors (facility transition, manual timecards, Manager's organization) rather than documentary evidence (e.g., timecard submission records, supervisor communications at receiving facility, logs of workers' compensation coding changes) to fully substantiate the root causes."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are documented: injury diagnosed May 10, 2014; medical restrictions imposed; modified job offer June 22, 2016; position accepted July 1, 2016; assignment began July 18, 2016; extended leave in July-August; August 29, 2016 walking incident; clock rings deleted July 18–28, 2016; October 4, 2016 and November 14, 2016 return visits; 204-B denial November 14, 2016; grievance filed September 14, 2016."
+    }
+  },
+  "remediation_note": "The record requires clarification of the causal chain for payment and clock-ring failures by inserting contemporaneous documentation (timecard logs, facility transition communications, workers' compensation coding records) and explicit determination of which explanation applies to which error. The reasoning for the 204-B denial should separately distinguish between operational need and performance concerns to isolate any pretextual motive.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability and accountability_support",
+    "compliant_version": "A compliant record would present a single, documented sequence of who was responsible for timekeeping at each facility, when the transition occurred, what communications or system records show whether Lenox Hill Station received notice of Complainant's return, what digital or manual timecard records exist for each disputed period, and a clear determination of whether errors were attributable to facility administrative failure, system design, or Complainant's own actions—supported by documentary evidence rather than post-hoc inference. The 204-B denial would separately document the Manager's operational assessment (number of supervisory positions needed, staffing plan) and any performance concerns, with evidence of when and how these conclusions were formed."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each major conclusion (reasonable accommodation offered, payment errors explained, 204-B denial justified) is grounded in specific documentary evidence: the modified job offer (ROI at 196, 233), affidavits from Manager and Complainant (ROI Affidavits B and C2), and testimony regarding facility transition and timecard submission practices (ROI at 197-198)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable from evidence through intermediate findings to conclusions: medical restrictions documented → modified assignments offered → Complainant's performance/complaints → Manager's explanations for errors → AJ's evaluation of pretext → final dismissal of discrimination claims."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record documents what happened, critical evidentiary details are scattered across multiple ROI exhibit references (Affidavits A, B, C2) and page numbers without full reproduction of those affidavits or medical documentation itself in the narrative, requiring external document retrieval to fully reconstruct the factual basis years later."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The record contains sufficient evidence to support the AJ's findings: specific job offer terms with restrictions alignment (ROI at 196, 233), documented medical restrictions (ROI at 191), Manager's stated reasons for denial (ROI Affidavit B), and explanation of administrative errors (facility transition, lost manual timecards, leave code mismatch)."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are clearly sequenced: injury date (May 10, 2014), modified job offer (June 22, 2016), signature (July 1, 2016), start date (July 18, 2016), complaint filing (September 14, 2016), clock ring deletion discovery (October 4, 2016), 204-B request (November 14, 2016), investigation completion, and AJ decision, establishing a coherent chronology."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should embed or summarize the actual medical restrictions document, Manager's affidavit substantive statements, and the Complainant's affidavit findings directly rather than relying solely on ROI page citations. Additionally, clarify the timeline and substance of the two competing modified assignment offers (van shuttle vs. lobby attendant) to eliminate ambiguity about whether they were genuinely equivalent accommodations.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support tension: while current evidence supports the AJ's conclusions, a reviewer without access to the underlying ROI exhibits cannot independently verify the sufficiency or accuracy of the factual findings that underpin the legal conclusions regarding reasonable accommodation and pretext.",
+    "compliant_version": "Embed or reproduce summaries of the key affidavits (Manager's explanation of leave code error and facility transition, Complainant's medical restrictions list, Complainant's testimony on the job offer discussion), cite specific date ranges for timecard deletion with receiving station responsibility analysis, and explicitly compare the substantive task demands of both modified assignments to clarify why the AJ found them equivalent or why Complainant's declination was unforced."
+  }
+}
+```

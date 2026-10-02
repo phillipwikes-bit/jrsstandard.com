@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for conclusions through specific witness statements, documentary evidence (ROI citations, PAP/PIP documents, performance evaluations), and explicit agency findings tied to evidentiary standards (corroboration requirement, witness testimony)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The agency's decision articulates a reasoning pathway (allegations vs. witness corroboration; severity/pervasiveness test; pretextuality analysis), but the traceability is hindered by the absence of explicit analysis showing *why* specific witness accounts were deemed insufficient or how the agency weighed conflicting testimony."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the allegations and some evidentiary support (witness accounts of venting, crying; performance documents), but lacks clarity on the investigative process itself—how witness interviews were conducted, what specific questions were asked, and whether investigators pressed witnesses on direct observation versus hearsay."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents witness statements that corroborate Complainant's distress and her reports to coworkers of harassment, but the agency's conclusion that 'no witnesses specifically observed the sexual harassment' rests on a narrow evidentiary gate (direct observation requirement) that is asserted rather than justified against the substantial circumstantial support."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology of events from October 28, 2013 through January 29, 2015, with specific dates for alleged incidents, reports, performance actions, and the transfer, enabling a later reviewer to follow the sequence."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit articulation of the investigative methodology, the evidentiary standard applied to circumstantial evidence and witness credibility determinations, and detailed comparative analysis of witness accounts that conflicts with agency conclusions. A compliant version would document the investigator's assessment of why corroborating testimony of Complainant's distress and reported harassment does not meet the agency's threshold for a substantiated claim.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability and accountability_support; the agency performs a legal analysis (hostile work environment test, pretext framework) but does not transparently explain why circumstantial evidence and multiple credible witness corroborations of Complainant's account are insufficient.",
+    "compliant_version": "A compliant record would include: (1) explicit statement of the evidentiary standard applied (preponderance of evidence, direct vs. circumstantial weight); (2) detailed findings on witness credibility and why witness statements of Complainant's reported harassment and observed distress do not constitute corroboration under the agency's standard; (3) articulation of investigative steps taken to verify or refute specific allegations; (4) comparative analysis of conflicting accounts with reasoning for preferring one version over another; and (5) application of discrimination law elements to each fact finding, showing how facts do or do not support each required prong."
+  }
+}
+```

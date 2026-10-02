@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Bases for complaints are nominally identified (race, national origin, reprisal) but the record conflates investigative findings, AJ decisions, and procedural posture without clearly separating the evidentiary basis that supports any single organizational conclusion."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents complaint allegations and procedural outcomes but does not trace how investigative evidence led to the AJs' no-discrimination findings or what reasoning justified rejection of the consolidated complaints."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would struggle to reconstruct which specific evidence was examined, what weight was assigned to competing accounts (e.g., Senior Director's denial vs. Supervisor 1's statement), or why particular allegations succeeded or failed without access to investigative files and AJ findings referenced but not detailed."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidentiary sufficiency is unclear: the record recounts allegations and acknowledges that subparts 1(c)–1(g) involve management inaction after a pay-band review, but does not itemize what evidence confirmed or contradicted these claims in the investigative file."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Timeline contains multiple vague temporal markers ('at one point,' 'in or around at one point,' 'on multiple occasions between at one point and at one point') that prevent precise sequencing of events and intervals between alleged discriminatory acts and responses."
+    }
+  },
+  "remediation_note": "The record functions as a procedural and complaint-narrative summary rather than a documented decision record. To achieve compliance, it must include a separate findings section that itemizes each allegation, the evidence examined, the reasoning applied to each piece of evidence, explicit conclusions with dates, and reconciliation of conflicting accounts (e.g., Senior Director's knowledge of the pay-band review).",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support, temporal_reconstructability",
+    "compliant_version": "A compliant record would separate (1) complaint allegations with exact dates, (2) investigative evidence with source attribution, (3) analytical findings that connect evidence to each allegation, (4) explicit conclusions on discrimination and retaliation with supporting reasoning, and (5) a chronology with ISO dates or specific intervals, enabling independent reconstruction and audit of the decision without reference to external files."
+  }
+}
+```

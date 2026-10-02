@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Bases are stated (national origin, age, reprisal) and tied to four discrete allegations, but the factual record conflates Complainant's assertions with Supervisor's contradictory statements without explicit reconciliation or evidentiary weight assignments."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency applies McDonnell Douglas and hostile environment standards correctly in structure, but does not explicitly trace which evidence supported finding pretext absent or discriminatory animus absent for each claim."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer lacking prior knowledge would struggle to reconstruct the temporal sequence (July 26 vs. July 27 date discrepancy for concert denial, unclear when pay discovery occurred relative to August 28 training) and could not determine which factual disputes were resolved in favor of management without additional reasoning."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The Agency cites witness statements and documentary evidence (PWP, text records, training schedule) but does not explain why Supervisor's accounts were credited over Complainant's or whether corroborating evidence existed for material factual disagreements."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical dates are provided but sequencing is obscured: the concert request date appears both as July 26 and July 27; the October 1 pay discrepancy awareness lacks context relative to Supervisor's October 4 explanation and August 28 training; the interval between investigation and FAD issuance is clear but intermediate procedural steps are undated."
+    }
+  },
+  "remediation_note": "The record requires explicit factual findings resolving conflicts between Complainant's and Supervisor's accounts (with evidentiary basis), clarification of chronology including corrected dates and intervals, and articulation of which evidence negated discriminatory intent or pretext for each claim.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity, temporal_reconstructability, accountability_support",
+    "compliant_version": "A compliant version would include: (1) a reconciled chronology with all dates verified and intervals labeled; (2) explicit factual findings for each disputed point (e.g., 'Complainant claims X; Supervisor claims Y; the record shows Z, credited because [credibility basis]'); (3) for each claim, documented evidence that addressed the first prong of McDonnell Douglas (prima facie case) before concluding pretext was not established; and (4) citation to specific documentary or testimonial evidence negating discriminatory animus or linkage to protected status."
+  }
+}
+```

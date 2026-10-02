@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific factual bases for the Agency's conclusion: June 2021 performance review, three June emails from S3, June 17 memorandum on payroll failures, S1's affidavit on late pay and resignations, and the July 28 termination letter citing unacceptable probationary performance in payroll and onboarding."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision traces a clear logical path: presumed prima facie case → Agency articulates legitimate nondiscriminatory reasons (performance deficiencies documented in June) → Agency addresses pretext by distinguishing AS's limited supervisory scope from three supervisors' corroborating observations → conclusion that Complainant's subjective belief is unsupported."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the summary structure is clear, a cold reviewer would need access to the actual June 15 review document, the three June emails, and the June 17 memorandum to independently verify the claimed performance deficiencies; the record describes their existence but does not quote or detail their specific content."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the termination through performance documentation and multiple supervisor accounts, but the evidentiary sufficiency for *rebutting* pretext depends on unexamined details: whether S3's accommodation stance is truly documented, whether the telework schedule for other Administrative Technicians is fully substantiated, and whether the causal timing (accommodation request → performance review → termination in one month) is adequately distinguished from retaliatory intent."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: January 17, 2021 (probation begins) → June 15, 2021 (performance review) → June 2021 (emails and payroll issues) → June 17, 2021 (memorandum) → July 28, 2021 (termination) → August 24, 2021 (EEO complaint filed)."
+    }
+  },
+  "remediation_note": "To strengthen the record, the Agency should attach or quote verbatim from the June 15 performance review, the three June emails, and the June 17 memorandum; provide documentary evidence of S3's stated position on the accommodation and telework schedule; and explicitly address why the compressed timeline (accommodation request to termination within one month during probation) does not itself support an inference of retaliation.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support—the record summarizes but does not fully exhibit the underlying documentary evidence, and the pretext analysis, while logically structured, relies on factual details not independently verifiable from the record alone.",
+    "compliant_version": "Append the June 15 progress review, the three June 2021 emails, and the June 17 memorandum; document S3's explicit statements or emails regarding the accommodation request and telework policy; and add a detailed statement explaining the probationary-period context and why the timing does not itself establish retaliatory motive, supported by policy or precedent regarding performance-based terminations within probation."
+  }
+}
+```

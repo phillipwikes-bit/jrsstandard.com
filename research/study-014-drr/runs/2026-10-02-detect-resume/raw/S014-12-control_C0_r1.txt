@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the AJ's decision (single incident, facially neutral language, lack of protected-class nexus per Complainant's own concession) but the record does not document what specific 'list of incidents' or 'list of witnesses' Complainant claims to have provided investigators, making verification of that claim impossible."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's reasoning from evidence to conclusion is traceable for the summary judgment decision itself, but the record does not trace how or why the background allegations (Obama comments, Confederate flag images) were excluded from the EEO Counselor Report and formal complaint—a critical gap in the investigative chain."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct whether Complainant's claimed 'list of incidents' and 'list of witnesses' exist in the investigation file, what they contained, or why they do not appear in the EEO Counselor Report, formal complaint, or affidavit; the record references but does not preserve these materials."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record does not provide the ROI itself, the EEO Counselor Report, Complainant's formal complaint, his affidavit, or investigator notes that would substantiate whether incidents, witness lists, and protected-class allegations were actually documented and reported before summary judgment."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are sequenced clearly: December 11, 2020 (incident), May 25, 2021 (EEO complaint), January 21, 2022 (Notice of Proposed Summary Judgment), February 25, 2022 (AJ decision), with Supervisor's suspension and reassignment documented as occurring after the incident."
+    }
+  },
+  "remediation_note": "The record must preserve and reference the ROI, EEO Counselor Report, formal complaint, affidavit, and any documented lists of prior incidents or witnesses that Complainant alleges were provided to investigators. The investigation file should document when and to whom each alleged prior incident was reported, why certain allegations did not appear in earlier pleadings, and what investigative steps were taken to corroborate or exclude background claims.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would (1) quote or attach the actual investigative findings regarding prior incidents, (2) explain with documentary evidence why allegations of Obama comments and Confederate flag displays were or were not included in the formal complaint and affidavit, (3) reference specific witness statements or investigator notes supporting conclusions about what Complainant did or did not report before summary judgment, and (4) preserve the investigative file itself so that a later reviewer can independently verify the factual dispute about whether Complainant raised background allegations during investigation or only after the Notice of Proposed Summary Judgment."
+  }
+}
+```

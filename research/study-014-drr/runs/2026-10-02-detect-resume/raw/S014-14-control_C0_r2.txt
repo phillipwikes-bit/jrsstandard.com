@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the bases for Complainant's allegations: sex discrimination (male) and reprisal for prior protected EEO activity, with four specific incidents detailed by date and actor."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the chronology of investigative steps is clear (Manager appointment, Complainant objection, Inspector appointment, fact-finding report, EEOC reversal, final Agency decision), the Agency's ultimate reasoning for finding no discrimination or reprisal is stated as conclusion only without explicit analysis of how evidence was weighed against discrimination/reprisal standards."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the factual disputes (Complainant's account vs. CW1's account vs. coworker observations) and procedural steps, but the Agency's final decision lacks detailed analysis of why the disputed facts do not constitute discrimination or reprisal, making the basis for the no-cause finding opaque."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record contains conflicting accounts and the Inspector noted most evidence was 'conjecture,' but the Agency's final decision does not explicitly address how it resolved these conflicts or why Complainant's pattern-of-treatment argument (men disciplined more harshly than women) was rejected."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are provided throughout: November 24, 2020 (initial incident); November 24 and 28, 2020 (complaints); December 21, 2020 (Manager appointed); December 30, 2020 (alleged intimidating conduct); December 31, 2020 (objection); January 5, 2021 (Inspector appointed); January 22, 2021 (fact-finding report); February 2, 2021 (EEO complaint filed); July 22, 2021 (EEOC reversal)."
+    }
+  },
+  "remediation_note": "The record would benefit from an Agency final decision that explicitly analyzes each allegation against applicable discrimination/reprisal standards, addresses the conflicting factual accounts with reasoned findings, and explains why the disputed facts do not meet the legal threshold for unlawful conduct.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support—the decision-making logic for the no-cause determination is not sufficiently documented",
+    "compliant_version": "A compliant final decision would: (1) explicitly state findings of fact on each disputed material point (e.g., whether CW1 backed Complainant into a corner, whether Manager deliberately obscured the screen); (2) apply the relevant legal standards for discrimination and reprisal to those findings; (3) address Complainant's pattern-of-treatment argument with specific evidence of how men and women were treated differently; and (4) explain how the Inspector's reliance on 'conjecture' and disputed evidence does not support a finding of no discrimination."
+  }
+}
+```

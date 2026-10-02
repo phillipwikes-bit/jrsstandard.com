@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Specific dates and incident descriptions are provided (November 24, December 21, December 30, January 22, 2021), but the basis for key conclusions—such as why the Inspector 'could not substantiate' claims or why coworker testimony was deemed insufficient—relies on characterizations like 'conjecture' without detailed evidentiary itemization."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The pathway from conflicting witness accounts (Complainant vs. CW1 vs. coworkers) to the Inspector's negative finding is identified but not fully traced; the record states evidence was 'in dispute' and 'most was conjecture,' but does not explain which specific pieces of evidence led to rejection of each allegation."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with the case would struggle to reconstruct why the December 30 incident (Manager blocking door, refusing to show memorandum) was resolved or unresolved, and the record conflates Complainant's identity with 'someone' repeatedly, obscuring factual clarity."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents that interviews occurred and reports were issued, but the evidentiary weight assigned to disputed facts (e.g., who initiated the conversation, whether CW1 backed Complainant into a corner) and the sufficiency of coworker non-confirmation to negate Complainant's account is asserted rather than forensically explained."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology is maintained: November 24 incident, November 24 and 28 complaints, December 21 investigation appointment, December 30 incident, December 31 objection, January 5 reinvestigation appointment, January 22 fact-finding report, and February 2, 2021 EEO complaint filing."
+    }
+  },
+  "remediation_note": "The record requires explicit documentation of how each piece of conflicting evidence was weighed and why witness testimony deemed 'conjecture' was insufficient to corroborate Complainant's account. Additionally, the status of unresolved allegations (e.g., the December 30 door-blocking incident and the December 21–30 exclusion from meetings) must be separately adjudicated with stated reasoning, not left as part of an undifferentiated 'not substantiated' finding.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would separately itemize each factual dispute (who initiated the November 24 conversation, whether physical contact occurred, whether coworker testimony constituted corroboration or merely acknowledged a conversation without confirming substance), assign evidentiary weight to each witness category, explain why 'conjecture' standard was applied and how it satisfied the burden of proof applicable to discrimination claims, and independently resolve each of the four numbered allegations with distinct findings and reasoning, including explicit disposition of the December 30 and December 21–30 incidents."
+  }
+}
+```

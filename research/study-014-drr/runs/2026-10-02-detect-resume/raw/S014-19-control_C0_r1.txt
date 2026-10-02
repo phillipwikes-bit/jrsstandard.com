@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Bases for conclusions are identified through explicit references to affidavits, exhibits, and investigative findings (e.g., 'ROI, Affidavit C, at 3, ¶ 15, Bates No. 146' supports the statement that S2 requested medical documentation to draft a compliant modified assignment)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The sequence from evidence to conclusion is partially traceable but fragmented: the Agency's decision rests on Complainant's failure to submit adequate medical documentation, yet the record shows conflicting accounts about whether HRM or S2 made the non-work decision, and the standard for 'inadequacy' is not explicitly defined."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later would struggle to reconstruct the precise chain of custody for the medical documentation requirement: the June 11 and June 21 requests are documented, but the criteria for rejecting the July 2 letter as 'inadequate' and the instruction for a revised note lack clear justification or supporting analysis."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record states 'HRM found the updated doctor's letter to be inadequate because the limitations were unclear' but provides no substantive analysis, medical expertise citation, or explicit statement from HRM explaining why the July 2 letter's restrictions (lifting, pushing/pulling, reaching above shoulder not to exceed 20lbs, standing/walking average 20 minutes) were actually inadequate for a modified assignment decision."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clear and detailed: June 11 (initial request), June 15 (grievance filed), June 21 (repeated request), July 2 (doctor letter submitted), July 5 (Complainant arrives with letter; placed on non-work status), July 22 (HRM letter), July 25 (new offer), July 31 (end of non-work period), August 1 (return to work)."
+    }
+  },
+  "remediation_note": "The record requires explicit documentation from HRM detailing the specific deficiencies in the July 2 medical letter and the objective criteria used to determine inadequacy, with reasoned analysis of why the stated restrictions could not support any modified assignment within Complainant's Mail Handler role or other available positions. Clarification is also needed on whether S2 or HRM made the July 5 non-work decision and under what authority.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support and reasoning_traceability; the record narrates events chronologically but does not substantiate the critical judgment that the July 2 medical restrictions were inadequate",
+    "compliant_version": "A compliant record would include a formal memo from HRM or a designated medical reviewer documenting: (1) the specific medical restriction language that was unclear; (2) the type of additional information needed (e.g., frequency, duration, frequency of rest); (3) reference to applicable medical or ADA standards for adequacy; (4) the date and method of communicating the deficiency to Complainant; and (5) an explicit statement of decision-maker identity and the rationale for the July 5–July 31 non-work status."
+  }
+}
+```

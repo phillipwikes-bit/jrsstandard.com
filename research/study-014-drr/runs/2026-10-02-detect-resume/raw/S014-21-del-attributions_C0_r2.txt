@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the AJ's finding: Complainant's failure to provide medical documentation of disability diagnosis, duration, and functional capacity; her refusal to sign medical release authorizations; and her demonstrated inability to perform essential duties (patient examination, computer use) without subsequent evidence of improvement."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable from evidence (medical statements, accommodation requests, LWOP records, AWOL placement) through the interactive process to the AJ's conclusion that Complainant failed to establish the Agency denied reasonable accommodation because she failed to provide requested medical documentation."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the chronology and evidence are detailed, the record uses multiple unattributed references ('Someone indicated,' 'Someone stated') that obscure the identity of decision-makers and witnesses, making it difficult for a reviewer years later to independently verify who made critical determinations regarding medical documentation requests and accommodation decisions."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents the Agency's requests for medical documentation and Complainant's failures to provide it, but lacks explicit documentation of whether the specific medical statements submitted (DR1 and DR2 reports) were actually received and reviewed by the Reasonable Accommodation Coordinator before the August 7, 2020 closure, or whether they were considered insufficient at that time."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: injury July 12, 2019; aggravation December 2019; verbal request February 25, 2020; return to work March 2, 2020; interactive process March 5, 2020; accommodation case closed August 7, 2020; AWOL charged August 10, 2020; termination January 22, 2021; EEO complaint filed August 2, 2021, with appeal pending."
+    }
+  },
+  "remediation_note": "The record must replace anonymous references with identified personnel (titles and names where appropriate) and explicitly document the date and manner each medical statement was received and the specific basis for finding each submission insufficient before the accommodation case was closed on August 7, 2020.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support",
+    "compliant_version": "Rewrite the record to identify all decision-makers by role and name; explicitly state the date each medical document was received by the Reasonable Accommodation Coordinator; document the specific deficiencies found in each medical submission before the August 7, 2020 closure; and clarify whether the June 22, 2020 and July 15–30, 2020 medical statements from DR2 were reviewed and rejected, or arrived after the case was closed."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the termination decision: performance deficiencies in payroll processing and new hire onboarding documented in the June 15, 2021 progress review, June 2021 emails from S3, the June 17, 2021 memorandum, and the July 28, 2021 termination letter."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable: allegation → investigation conclusion → prima facie case assumption → articulation of legitimate nondiscriminatory reasons → pretext analysis comparing supervisor accounts → final determination that AS's limited-scope supervision did not rebut the Agency's explanation."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A later reviewer can reconstruct the full sequence from this record alone: employment start date, probationary status, documented performance issues by date, accommodation request context, competing supervisor observations, and the Agency's reasoning for why AS's account was discounted."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "While performance deficiencies are documented and three supervisors attest to them, the record does not include Complainant's contemporaneous responses to the June 17 memorandum, copies of specific payroll errors, or details of the accommodation request timing and Agency response, which would strengthen evidentiary sufficiency for the pretext analysis."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are consistently provided: employment began January 17, 2021; progress review June 15, 2021; emails and memorandum June 2021; S1 became supervisor early July 2021; termination July 28, 2021; complaint filed August 24, 2021; intervals and sequence are clear."
+    }
+  },
+  "remediation_note": "Add Complainant's contemporaneous written responses to performance documents and clarify the exact timing, content, and Agency response to the accommodation request to strengthen the evidentiary foundation for the pretext rebuttal analysis. Include specific examples or documentation of the payroll errors and new-hire resignation causality cited by S1.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support (partial gap in competing evidence documentation and accommodation timeline detail)",
+    "compliant_version": "A compliant record would include: (1) Complainant's written response to the June 17 memorandum if provided; (2) the exact date, content, and form of the accommodation request; (3) evidence of the Agency's contemporaneous response or non-response to that request; (4) specific payroll error examples with supporting payroll records; (5) documentation linking new-hire resignations to processing delays; and (6) explicit factual findings addressing why the temporal proximity between accommodation request and termination does not support retaliation inference."
+  }
+}
+```

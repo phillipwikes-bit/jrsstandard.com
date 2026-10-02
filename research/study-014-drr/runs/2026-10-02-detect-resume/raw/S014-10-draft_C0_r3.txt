@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each claim conclusion identifies supporting evidence: claim 1 cites payroll records showing 8-hour schedule; claim 2 references lack of eyewitness corroboration; claim 3 notes coworkers' non-disability motives; claim 12 documents prompt investigation and discipline."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The causal chain from evidence to conclusion is visible for individual claims, but the hostile work environment finding aggregates 14 claims into a single disability-nexus determination without explicitly showing how the cumulative effect was weighed or why no single claim, even if accepted as true, crossed the threshold."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct findings on discrete claims (1, 2, 3, 12) from specific evidence, but the hostile work environment conclusion lacks sufficient detail on how the Agency evaluated the pattern and severity of the alleged conduct or why credibility findings about witnesses affected the overall hostile work environment determination."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is sufficient for individual claims (payroll records, witness interviews, privacy audit results), but the record does not explicitly address why Complainant's own disclosure of surgery undermines a hostile work environment claim rooted in that disclosure, nor does it document the standard applied to evaluate whether the aggregate conduct, even if non-discriminatory in motive, rose to the level of severity and pervasiveness required."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "The record contains only one specific date ('late 2017' for claim 1, contradicting an alleged May 2018 date) and references 'promptly' for the investigation, but lacks documented dates for coworker access, discipline, witness interviews, or the investigation timeline, making sequence reconstruction incomplete."
+    }
+  },
+  "remediation_note": "The record would benefit from: (1) explicit timeline with dates for key events (access incidents, interviews, discipline, investigation closure); (2) documented hostile work environment legal standard and application showing how the Agency weighed cumulative allegations despite non-discriminatory individual motives; (3) reasoned explanation of how credibility findings affected each claim versus the overall pattern analysis.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "temporal_reconstructability (critical gap), reasoning_traceability (hostile work environment analysis), cold_reviewer_clarity (pattern evaluation)",
+    "compliant_version": "A compliant final decision would include: a chronological table of access dates, interview dates, and discipline dates; explicit statement of the legal threshold for hostile work environment claims and documentation of how the Agency applied it to the aggregate conduct; reasoned explanation of whether credibility determinations applied uniformly across claims or selectively; and a findings-of-fact section isolating non-discriminatory versus disability-related motives with supporting evidence for each."
+  }
+}
+```

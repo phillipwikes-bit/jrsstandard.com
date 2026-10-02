@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The AJ's basis for each finding is explicitly stated: Claims 1–2 failed because the affidavit contained no reference to genetic information and no allegation of genetic-information-based motivation; Claim 3 failed because legitimate nondiscriminatory reasons (prior assistance, parcel criteria, vehicle capacity, mail truck risk, volume assessment) were articulated and pretext was not shown."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable: investigation → report issued → hearing requested → AJ sua sponte determined hearing unwarranted → summary judgment proposed → no objection filed within deadline → summary judgment issued → Agency adopted → appeal filed; the AJ's legal framework (prima facie case, pretext) is applied to each claim."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the AJ's conclusions are clear, the record does not reproduce the complaint's original allegations, the affidavit text itself, the investigation report, or the supervisor's specific documented justifications for the package-assistance denial, requiring a reader to infer substantive detail."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The AJ cites absence of genetic-information allegations and affidavit content, but the record does not quote or attach the affidavit, investigation findings, or supervisor communications that would allow independent verification of those factual predicates."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are present and sequenced: January 5, 2018 (pay issue start), April 25, 2018 (overtime claim start), December 14, 2018 (package-assistance denial), investigation completion, hearing request, summary judgment motion, AJ ruling, appeal filing; intervals are reconstructible."
+    }
+  },
+  "remediation_note": "To meet the cold-reviewer standard, the record should attach or quote the complainant's original EEO complaint, her affidavit, relevant excerpts from the investigation report, and the supervisor's contemporaneous written explanation for the package-assistance denial. This would ground each factual assertion in documentary evidence and enable independent verification of the AJ's findings.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support; the record summarizes conclusions but does not embed or reference the underlying evidence documents necessary for a reviewer years later to reconstruct the factual basis independently.",
+    "compliant_version": "Attach or incorporate by reference (with page citations) the complaint, affidavit, investigation report, supervisor's package-assistance justification memo, and any relevant pay records or overtime documentation; ensure each factual premise in the AJ's ruling is linked to a specific document and quotation so that a cold reviewer can verify the foundation without external archive searches."
+  }
+}
+```

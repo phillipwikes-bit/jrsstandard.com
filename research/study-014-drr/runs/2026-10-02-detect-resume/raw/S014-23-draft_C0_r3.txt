@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the termination decision: misrepresentation regarding provider credentialing requests, failure to follow credentialing process, and delay in provider application processing, all supported by the provider's written statement and the AJ's credibility findings."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable: Agency articulated nondiscriminatory reasons → AJ evaluated Complainant's pretext theory (interracial relationship) against credibility findings → AJ found late emergence of theory, absence from earlier records, and lack of explanation → AJ concluded pretext not proven → Agency action sustained."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the termination bases are clear, a cold reviewer would need additional detail on the specifics of the misrepresentation (what exactly was promised vs. what occurred), the timeline of the provider's complaint, and the precise nature of the 'inappropriate conduct at Leesburg conference' to fully reconstruct the underlying facts independent of the AJ's credibility judgments."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the termination reasons with the provider's written statement and documented credentialing process failures, but lacks contemporaneous documentation of S2's decision-making process itself (e.g., notes, emails, or statements explaining why S2 selected termination over discipline for a probationary employee's first documented conduct issues)."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided: May 2018 (alleged relationship disclosure), August 2, 2018 (termination), November 8, 2018 (EEO complaint filed), three years later (interracial-relationship theory surfaces), and the reference to the 40-day final order deadline under 29 C.F.R. § 1614.109(i) anchors procedural timing."
+    }
+  },
+  "remediation_note": "To strengthen the record, document S2's contemporaneous reasoning for selecting termination as the remedy, detail the specific misrepresentations with dates and affected parties, and clarify the probationary status and any prior discipline history. A cold reviewer would benefit from a timeline matrix showing when each reason became known to decision-makers.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support—the record analyzes pretext but lacks granular reconstruction of the supervisor's contemporaneous decision-making and the full scope of the underlying conduct",
+    "compliant_version": "A compliant version would include: (1) S2's documented rationale for the termination decision with contemporaneous notes or emails, (2) detailed findings of fact on each misrepresentation with dates and evidence, (3) a comparison of Complainant's conduct to similarly situated non-probationary employees' discipline, and (4) explicit acknowledgment of what investigative steps did or did not uncover regarding the alleged May 2018 relationship disclosure and S1's warnings."
+  }
+}
+```

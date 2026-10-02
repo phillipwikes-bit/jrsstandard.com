@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the termination decision: performance deficiencies in payroll processing and new hire onboarding documented through progress reviews, emails, memoranda, and supervisor affidavits."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's reasoning path from evidence to conclusion is traceable but incomplete; the record shows how performance issues were identified and how the Agency distinguished AS's limited observation from other supervisors' broader testimony, yet lacks explicit analysis of why telework accommodation denial was not found to be retaliatory."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer can follow the factual sequence and termination logic, but critical details are vague: the progress review date is omitted ('dated at one point'), S1's supervision start date is unclear ('in early at one point'), and the specific content of the reasonable accommodation request is not documented in the record."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports the performance-based termination (three supervisors, documented errors, new hire resignences), but the record provides no contemporaneous documentation of the accommodation request itself, S3's response to it, or evidence that the telework arrangement was actually granted to other Administrative Technicians during the relevant period."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical dates are omitted or obscured ('at one point,' 'in early at one point,' unspecified progress review date), making it impossible to establish whether accommodation was requested before, during, or after performance issues arose, or whether the termination followed a causal sequence supporting retaliation."
+    }
+  },
+  "remediation_note": "The record must include specific dates for the progress review, S1's assumption of supervisory duties, the accommodation request submission, S3's response (or lack thereof), the start and end dates of any telework arrangement, and contemporaneous documentation of the accommodation denial or approval. Additionally, explicit findings addressing whether timing supports a retaliation nexus should be included.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "temporal_reconstructability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would: (1) restore all redacted or vague dates in full month-year format; (2) include or reference the actual accommodation request document and S3's documented response; (3) provide evidence of when and to whom the telework schedule was granted for comparative employees; (4) explicitly state whether accommodation preceded or followed performance documentation; and (5) separately analyze the temporal relationship between accommodation request and adverse action to address the retaliation prong independently from discrimination."
+  }
+}
+```

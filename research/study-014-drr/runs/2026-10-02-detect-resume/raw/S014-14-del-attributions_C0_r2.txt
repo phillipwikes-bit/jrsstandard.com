@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific incidents (November 24, December 30, December 21 memorandum, January 5 appointment, January 22 report) and names roles (Interim Director, Manager, Inspector, CW1), but the basis for the Agency's final finding of no discrimination is stated only as conclusion without explicit reasoning tied to evidence."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The Inspector's fact-finding report notes evidence as 'conjecture' and acknowledges disputed details, but the record does not trace how the Agency moved from the Inspector's equivocal findings to a definitive conclusion of no discrimination, nor does it explain how the EEOC Commission's reversal in Norman S. was addressed in the final decision."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the complaint, incidents, and investigation steps, but would struggle to reconstruct the Agency's final reasoning because the decisional logic connecting disputed evidence (contentious conversation details, management conduct during investigation, pattern-of-discipline claim) to the no-discrimination finding is absent or implicit."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record shows the Inspector could not substantiate claims and cited conjecture, but does not explain how this evidentiary insufficiency was weighed against Complainant's specific allegations of December 30 conduct (pacing, standing over, blocking door), the December 21 investigation authorization dispute, or the pattern-based sex discrimination theory."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: November 24, 2020 (initial incident), November 24 and 28 complaints, December 21 memorandum, December 30 manager confrontation, December 31 objection email, January 5 Inspector appointment, January 22 fact-finding report, February 2, 2021 EEO complaint filing, and subsequent final decision."
+    }
+  },
+  "remediation_note": "The final decision must explicitly address each of Complainant's four claims by reference to the evidentiary record, explain how disputed facts were resolved (particularly the December 30 manager conduct and investigation authorization dispute), and articulate the logical connection between the Inspector's findings and the no-discrimination conclusion. The decision should also specifically address how the EEOC Commission's reversal in Norman S. affected the Agency's reconsideration.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, accountability_support, and cold_reviewer_clarity—the record narrates events and investigation steps but fails to construct the decisional reasoning that connects evidence to outcome.",
+    "compliant_version": "The Agency's final decision must include: (1) a structured analysis of each claim (voodoo incident, management response failure, meeting exclusion, December 30 confrontation) with findings of fact tied to witness statements and documentary evidence; (2) explicit treatment of the disputed facts (conversation substance, manager conduct during investigation, pattern evidence) with explanation of how credibility or weight was assessed; (3) a bridge between the Inspector's 'conjecture' notation and the final no-discrimination ruling; (4) specific engagement with Complainant's pattern-of-discipline argument; and (5) acknowledgment of the Norman S. reversal and how the remanded processing informed the final determination."
+  }
+}
+```

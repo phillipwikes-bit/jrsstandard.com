@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific evidentiary bases for the AJ's conclusion: the provider's testimony about pre-submission discussion with Complainant, the written statement from the provider to S2, Complainant's acknowledgment of inaccurate guidance, and the temporal discrepancy between the initial complaint narrative (Leesburg conference) and the hearing theory (interracial relationship prejudice)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The AJ's decision pathway is traceable: credibility determination → theory evaluation (direct evidence found unreliable) → articulation of legitimate nondiscriminatory reason (misrepresentation regarding provider request and failure to follow process) → comparison of similarly situated employees → conclusion that pretext not proven."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer with no prior knowledge can reconstruct the factual and legal basis from the record: specific dates (August 2, 2018 termination; November 8, 2018 complaint filing; May 2018 relationship awareness), the credentialing incident details, witness testimony summaries, affidavit content discrepancies, and the AJ's reasoning for rejecting the interracial relationship theory."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The evidence supports the termination reason through the provider's testimony that Complainant discussed the application with him before submission and based his application on her instructions, contrasted against Complainant's denial and the inaccuracy of her guidance she acknowledged."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: May 2018 (relationship awareness) → August 2, 2018 (termination) → November 8, 2018 (EEO complaint) → investigation with affidavit collection → hearing held → AJ decision issued → forty-day period for Agency final order → appeal."
+    }
+  },
+  "remediation_note": "No remediation required. This record demonstrates strong documentation of investigative findings, witness testimony, credibility assessments with explicit reasoning, and legal conclusions grounded in evidentiary support and regulatory compliance (29 C.F.R. § 1614.109(i)).",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "None; all five conditions satisfied.",
+    "compliant_version": "This record is compliant as drafted. It provides a comprehensive narrative account of the EEO complaint process, the AJ's fact-finding and reasoning, the basis for rejecting the discrimination theory, and the articulation of the legitimate nondiscriminatory reason, all with sufficient evidentiary grounding and chronological clarity for reconstruction and accountability."
+  }
+}
+```

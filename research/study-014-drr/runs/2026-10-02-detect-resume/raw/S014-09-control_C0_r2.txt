@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the seven numbered claims contains specific factual allegations with dates, names of officials, and documented actions (e.g., 'June 13, 2019' formal complaints, 'April 2018' review, 'May 31, 2018' telephone conversation)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces allegations from hiring through investigation and adjudication, but does not explicitly document the AJs' reasoning for denying discrimination claims or how evidence was weighed against each allegation, particularly claims 1(c)–1(g) regarding management inaction after the wage review."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the factual sequence and allegations, but the record does not include the investigative findings, the summary judgment decisions themselves, or the evidentiary basis upon which the AJs concluded no discrimination was established; only the appeal structure and final agency action are documented."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents Complainants' allegations but does not include the Agency's responses, investigative conclusions, or the AJs' evidentiary analysis supporting their no-discrimination findings, leaving unclear whether the record supports the final dismissal conclusions."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is traceable: employment began October 2015, complaints filed June 13, 2019, with intermediate events dated (April 2018 review, May 31, 2018 conversation, June 2018 reorganization, January 2019 executive acknowledgment, May 5, 2019 tweet omission)."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record must incorporate the investigative file summaries, the AJs' written decisions with reasoning on each claim element, the Agency's factual responses to allegations, and explicit linkage between evidence presented and conclusions reached on discrimination and retaliation.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "accountability_support and reasoning_traceability",
+    "compliant_version": "A compliant record would include: (1) the full text or summary of each AJ's decision with point-by-point analysis of the prima facie elements of discrimination/retaliation for each numbered claim; (2) the investigative findings and evidence considered; (3) the Agency's documented response to each allegation; (4) explicit findings of fact supporting the no-discrimination conclusion; and (5) cross-references linking evidentiary items in the investigative file to the conclusions."
+  }
+}
+```

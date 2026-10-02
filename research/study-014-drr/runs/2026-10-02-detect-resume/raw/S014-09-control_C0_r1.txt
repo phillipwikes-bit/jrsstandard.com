@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each complaint allegation is numbered and sub-indexed (1a through 7), with specific factual predicates identified (e.g., June 13, 2019 filing date, April 2018 review, May 31, 2018 telephone conversation)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record documents what complainants alleged and management's stated responses, but does not explain the AJs' reasoning for their summary judgment decisions, creating a gap between evidence presentation and judicial conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can identify the complaint allegations and timeline, but cannot independently reconstruct why summary judgment was appropriate without access to the AJs' decision logic or the complete investigative files referenced but not detailed in this record."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents complainants' allegations and some management responses (e.g., Executive Director's January 2019 acknowledgment, denial of knowledge in July 2018), but lacks contemporaneous documentary evidence, witness statements, or comparative pay records needed to fully support or refute discrimination claims."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology from October 2015 (hiring) through June 13, 2019 (complaint filing), with dated events including April 2018 review, May 31, 2018 conversation, June 2018 reorganization, January 2019 email, and May 5, 2019 tweet omission."
+    }
+  },
+  "remediation_note": "The record requires inclusion of the AJs' summary judgment reasoning and findings of fact to establish the evidentiary and analytical basis for dismissal. Documentary evidence (pay schedules, comparable position data, email chains, contractor communications) should be incorporated or explicitly referenced to enable cold review of discrimination support.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, accountability_support, cold_reviewer_clarity",
+    "compliant_version": "A compliant version would include: (1) the AJs' written decisions with explicit findings on each numbered allegation and the evidence rejected or credited; (2) summary or incorporation of key investigative documents (pay comparisons, witness statements, email exchanges); (3) explicit analysis of how the evidence did or did not establish a prima facie case and pretext; and (4) explanation of why consolidation motions were denied or not addressed, with impact on the record's sufficiency."
+  }
+}
+```

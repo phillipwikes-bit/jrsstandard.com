@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The basis for the Agency's no-discrimination finding is not explicit in this record; the fact-finding report's reasoning and the Agency's adoption or rejection of its conclusions are not shown."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record does not trace how the Agency moved from the Inspector's fact-finding (which described evidence as 'conjecture' and found accounts disputed) to its final decision; the Agency's legal analysis and evidentiary weighting are absent."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the investigative timeline and witness statements, but could not independently understand the Agency's rationale for rejecting Complainant's claims without access to the final decision document itself."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents disputed factual findings and witness statements, but does not establish whether the Agency applied the correct burden of proof, addressed Complainant's pattern-of-treatment argument, or explained why security footage was or was not obtained."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: Nov. 24 and 28, 2020 (reports); Dec. 21 and 30–31, 2020 (investigation and objection); Jan. 5 and 22, 2021 (reassignment and report); Feb. 2, 2021 (complaint filed); final decision issued thereafter."
+    }
+  },
+  "remediation_note": "The record must include or reference the Agency's final decision document, showing its legal conclusions, burden-of-proof analysis, and explicit rationale for credibility determinations and pattern-of-treatment allegations. Claim 2 text must be recovered and inserted.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version must incorporate the full text of the Agency's final decision (not merely the fact-finding report), including: (1) explicit statement of the legal standard applied; (2) analysis of each claim with citation to supporting or contradicting evidence; (3) credibility findings and their justification; (4) response to the pattern-of-treatment theory; (5) explanation of why supervisor-misconduct allegations were or were not substantiated; and (6) correction of the missing Claim 2 text. The summary should then clearly map the decision's reasoning to enable appeal-stage review."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific dates and incidents (e.g., May 31, 2018 harassment start, March 8, 2020 removal), but the evidentiary basis for Agency conclusions—particularly the finding of 'no prima facie case' and 'no discriminatory animus'—relies on unspecified comparator analysis and investigative findings not detailed in this excerpt."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The Agency's decision chain from evidence to conclusion is partially opaque: the record states the Agency 'found no prima facie case because no similarly situated employees outside his protected classes were treated differently' but provides no names, job functions, or comparative conduct records to permit a later reviewer to retrace that logic."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer decades later could identify the incidents and procedural steps, but could not reconstruct why the Agency rejected the harassment and removal claims without access to the underlying investigative file, witness statements, and the identity and treatment of comparators."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents competing narratives (e.g., whether the TECS entries were corrective or discriminatory, whether the knife display was threatening harassment or benign discussion) without resolving factual disputes through documented investigation findings, witness credibility assessments, or corroborating evidence."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record clearly sequences events from May 2018 through August 2019 (harassment incidents), March 8, 2020 (removal), and September 2020 (affidavit deadline), permitting a timeline to be reconstructed."
+    }
+  },
+  "remediation_note": "The record must include the Agency's comparative analysis (names and treatment of non-protected comparators), the full text of investigative findings on each incident, and either the Complainant's affidavit or a documented explanation of its absence. The Agency's conclusions on discriminatory animus require grounding in specific evidence—either evidence of similarly situated better treatment or direct statements—not merely absence of proof.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, accountability_support, cold_reviewer_clarity",
+    "compliant_version": "A compliant record would include: (1) the names and job titles of all comparators, the conduct for which they were disciplined, and the discipline imposed, with an explanation of material differences; (2) investigative findings on each incident, including witness statements and credibility rulings; (3) the Complainant's affidavit or a declaration of its non-receipt; (4) explicit factual findings on disputed matters (e.g., whether the knife display constituted threatening conduct); and (5) a reasoned analysis linking those findings to the conclusion that no discriminatory animus is evident."
+  }
+}
+```

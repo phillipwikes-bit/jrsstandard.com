@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the 14 enumerated claims (and sub-claims) identifies a discrete alleged event with date, actor, and nature of conduct; the Agency's final decision explicitly traces its conclusions back to specific claims and evidence."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The Agency's decision documents the logical path from accepted claims through investigation findings to legal conclusions (e.g., claim 2: statement → witness interviews → finding of no overheard disclosure → conclusion of no Rehabilitation Act violation)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record is detailed, critical evidentiary findings depend on witness credibility assessments and S1's uncorroborated denials (e.g., 'discussed surgery privately' vs. Complainant's account); a future reviewer must infer weight given to each without explicit credibility findings stated in advance of conclusions."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The Agency dismisses the hostile work environment claim by finding Complainant presented 'no evidence she was singled out' and cites Witness 1's statement as 'vague' and 'contradicted,' but does not detail why the March 5, 2019 'mental patient' comment (claim 5) and May 1, 2019 supervisor backing the harasser (claim 6) do not constitute a pattern of disability-based treatment absent explicit nexus analysis per claim."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology from November/December 2017 (claim 1, reassigned to claim 2) through August 20, 2019 (claim 13), with specific dates for critical events (June 18, 2019 email, July 1, 2019 Privacy Officer letter, September 4–5, 2019 discipline decisions)."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit credibility findings addressing the conflict between Complainant's eyewitness account of S1's public statement (November/December 2017) and S1's denial, and from a documented nexus analysis connecting specific alleged conduct (claims 5, 6) to disability-based discrimination rather than concluding no pattern by reference only to witness credibility disputes.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support and cold_reviewer_clarity",
+    "compliant_version": "The Agency's final decision should include: (1) an explicit credibility determination as between Complainant's account of the hallway statement and S1's private-conversation account, with reasoned basis; (2) a documented analysis of why claims 5 (mental patient comment) and 6 (supervisor endorsement of harasser) do not establish a hostile work environment based on disability, addressing whether the pattern and timing suggest discriminatory motive; and (3) clarification of whether the Privacy Act violations by two coworkers, once substantiated and disciplined, support an inference of disability-based animus or whether they are treated as independent administrative failures unrelated to the discrimination claims."
+  }
+}
+```

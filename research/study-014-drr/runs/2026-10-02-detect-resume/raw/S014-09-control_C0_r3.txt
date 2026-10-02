@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation (claims 1–7) identifies a specific factual basis: salary negotiation directives, pay band assignments, documented April 2018 review, May 31, 2018 telephone conversation, June 15, 2018 inquiry, July 2018 supervisor inquiry, January 2019 executive director acknowledgment, June 2018 reorganization, June 2018–February 2019 hostile treatment, resource access restrictions, and May 5, 2019 tweet omission."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record documents factual events and allegations but does not explicitly trace the investigative reasoning, evidentiary weighing, or the AJs' decision logic; it reports that summary judgment decisions found no discrimination but does not reconstruct the reasoning from evidence to that conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer unfamiliar with the case can reconstruct the complainants' positions, key events, dates, and organizational actors (Executive Director, Senior Director, Supervisors 1 and 2, Deputy Chief Administrative Officer, contractor representatives) from the record alone."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record establishes specific factual allegations (e.g., April 2018 review commissioned, January 2019 executive director acknowledgment, May 5, 2019 tweet) but does not detail the evidence examined by investigators or AJs, making it difficult to assess whether the evidence substantively supports or refutes the discrimination and retaliation claims."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly documented: October 2015 (hire date), June 13, 2019 (EEO complaints filed), April 2018 (review directed), May 31, 2018 (telephone conversation), June 15, 2018 (inquiry), July 2018 (supervisor inquiry), January 2019 (executive director acknowledgment), June 2018–February 2019 (ongoing hostile treatment), and May 5, 2019 (tweet omission); intervals and sequences are traceable."
+    }
+  },
+  "remediation_note": "The record must include a detailed synthesis of the investigative findings—what evidence was examined, how it was evaluated against each allegation, and the reasoning by which the investigators and AJs reached their summary judgment conclusions—to enable independent review of the decision logic and evidentiary sufficiency.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability and accountability_support",
+    "compliant_version": "Augment the record with an investigator's summary report and the AJs' decision rationale that explicitly maps each factual allegation (e.g., April 2018 review, January 2019 acknowledgment) to evidence collected, witness statements, documentary findings, and the legal or factual conclusion drawn; include analysis of how evidence was weighed and why it was deemed sufficient or insufficient to establish discrimination or retaliation."
+  }
+}
+```

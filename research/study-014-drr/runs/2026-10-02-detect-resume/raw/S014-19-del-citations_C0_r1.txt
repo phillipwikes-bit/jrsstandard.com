@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for key conclusions: the June 15, 2019 union grievance (Exh. 4), HRM's June 11 and June 21 requests for updated medical documentation (Affidavit A), S2's direction not to return to work pending submission of updated note (Affidavit A, ¶15), and the July 2, 2019 doctor's letter establishing medical restrictions."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The causal chain from medical documentation requests to work restriction is traceable (HRM request → Complainant refusal → S2 directive → July 5 return with letter → HRM finding inadequacy → further requests → July 31 end date), but the HRM Manager's statement that he 'was not aware why Complainant was not allowed to work' creates ambiguity about decision authority and reasoning at a critical juncture."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the factual sequence, but the delegated authority for the July 5–31 work prohibition is unclear: S2 is attributed the decision (by HRM Manager's retrospective statement) yet HRM Manager also states he learned of it after the fact without knowing the reason, leaving the decision-maker's rationale and authorization pathway reconstructible only inferentially."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports that (1) medical documentation was requested and refused, (2) a work prohibition occurred July 5–31, and (3) a revised assignment was offered August 1; however, evidence for why HRM found the July 2 letter 'inadequate' is attributed only to S2's statement with no independent documentation of HRM's specific grounds for rejection."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly marked: June 11 and June 21 requests, June 15 union grievance, July 2 doctor's letter, July 5 return to work, July 22 HRM letter on review, July 25 offer of modified assignment, July 31 end of prohibition, August 1 return to work; intervals are identifiable, though causation between July 5 presentation and July 31 resolution lacks explicit dated steps."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit documentation of HRM's specific grounds for finding the July 2 doctor's letter inadequate (e.g., a memo or email from HRM stating the deficiency), clarification of who authorized the July 5–31 work prohibition and when, and a dated sequence of any follow-up requests for additional medical information between July 5 and July 31.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would include: (1) dated correspondence or a contemporaneous notation from HRM specifying why the July 2, 2019 medical letter was deemed inadequate (not retrospectively attributed to S2); (2) explicit authorization and date of the decision to prohibit work July 5–31, with documented rationale; (3) a dated record of each request for revised documentation and the basis for each rejection; and (4) S2's and HRM Manager's contemporaneous positions documented in real time rather than in post-hoc affidavits, to establish accountability for the decision and render the chain of reasoning reconstructible by a cold reviewer."
+  }
+}
+```

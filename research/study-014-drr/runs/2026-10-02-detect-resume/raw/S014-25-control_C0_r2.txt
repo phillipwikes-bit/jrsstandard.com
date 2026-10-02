@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each conclusion: the AJ's findings rest on documented disciplinary actions (Letters of Reprimand, Notice of Proposed Removal, Decision to Remove), the Agency's stated nondiscriminatory reasons (failure to meet deadlines, unauthorized cancellations, inadequate staff management), and evidentiary sufficiency determinations grounded in affidavit statements and comparative employee analysis."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable from prima facie framework through legitimate nondiscriminatory reasons to failure of comparator analysis; the AJ's reasoning on hostile work environment follows a structured path from alleged incidents to protected-class nexus to severity/pervasiveness analysis."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer decades later could reconstruct the AJ's analysis: six specific claims enumerated, disciplinary timeline provided with dates, Agency's articulated reasons clearly stated, and the comparative-employee analysis explicitly documented with explanation of why coworkers were not similarly situated."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "While the AJ's conclusions are supported by the record on discriminatory treatment claims, the hostile work environment finding rests partly on characterization of incidents as 'ordinary tribulations' rather than substantive rebuttal of the uncorroborated coworker affidavit regarding staff statements about disliking an African American supervisor, which leaves some evidentiary gaps in the harassment analysis."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: verbal counselings (May 31, July 3, July 16, 2018), Letter of Reprimand (October 18, 2018), alleged false statements (February–April 2019), Notice of Proposed Removal (April 25, 2019), Decision to Remove (June 28, 2019), and CAC discovery (October 22, 2019), with administrative proceedings dates specified."
+    }
+  },
+  "remediation_note": "The record functions as a legal narrative/analysis framing an appeal decision and requires minimal remediation. However, the hostile work environment analysis would benefit from explicit documentation of whether and how the Agency investigated or responded to the coworker's affidavit assertions regarding staff statements about racial animus, to strengthen the evidentiary sufficiency of the rejection of that claim.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support—the hostile work environment claim analysis relies on characterization of incidents as routine rather than on substantive investigation or rebuttal of specific uncorroborated allegations of racial animus.",
+    "compliant_version": "Add a section documenting the Agency's investigation response to the coworker affidavit, including: (1) whether statements attributed to unnamed staff were separately corroborated or denied, (2) the date and method by which such statements were ruled inadmissible or insufficient, and (3) explicit cross-reference to any Agency records addressing the 'African American supervisor' complaint or the 'predecessor did better job' comparison, to establish that the AJ's dismissal rests on evidentiary insufficiency rather than interpretive recharacterization alone."
+  }
+}
+```

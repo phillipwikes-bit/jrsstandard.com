@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for the AJ's no-discrimination finding: lack of medical documentation, failure to provide diagnosis/duration, no physician release, absence of evidence that telework was feasible given stated functional limitations, and non-engagement in the interactive process."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable: accommodation requests → Agency requests for medical documentation → Complainant's limited submissions → AJ's evaluation of sufficiency of documentation against the interactive process standard and the essential duty requirement."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the timeline and major facts are clear, a cold reviewer would benefit from explicit dates for each accommodation request, the specific medical statements provided, and clearer delineation of what 'approved LWOP' status meant between March 2 and August 10, 2020."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The AJ's finding rests on Complainant's failure to provide medical documentation, but the record does not detail the Agency's specific written requests, their deadlines, whether extensions were offered, or whether the Agency itself attempted to contact the physician after Complainant declined to authorize release."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided: appointment (March 3, 2019), injury (December 2019), return to work (March 2, 2020), interactive meeting (March 5, 2020), June 2020 laptop acquisition, July 30, 2020 physician statement (discharge), accommodation request closure (August 7, 2020), AWOL charge (August 10, 2020), termination (January 22, 2021), and appeal filing (August 2, 2021)."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should explicitly document each written accommodation request with dates and deadlines, itemize all medical statements submitted and their limitations, and clarify whether the Agency made direct inquiries to the physician or relied solely on Complainant's voluntary cooperation. The record should also explain why closure on August 7 preceded the AWOL charge by three days and whether that sequencing implies the Agency's view that Complainant had abandoned the accommodation request.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support and cold_reviewer_clarity; the record analyzes Complainant's engagement (or lack thereof) in the interactive process but incompletely documents the Agency's affirmative steps, timelines, and reasoning for its requests and the closure decision.",
+    "compliant_version": "A compliant record would include a timeline exhibit showing each accommodation request (date, method, content), each Agency request for medical documentation (date, specifics, deadline), each response or non-response, the reasons for the August 7 closure, and the explicit decision rule applied (e.g., 'absence of medical documentation after X days of notice precludes finding of failure to accommodate'). It should also clarify the status of Complainant's leave and work hours from March 2 through August 10, 2020, and explain the causal and temporal relationship between the closure and the AWOL charge."
+  }
+}
+```

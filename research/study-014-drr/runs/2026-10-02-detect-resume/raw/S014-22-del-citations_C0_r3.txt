@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for conclusions through specific dates, names, incident descriptions, and reference to investigative exhibits (ROI, affidavits, Bates numbers)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's remand decision and Agency dismissal rationale are stated (failure to timely initiate EEO counseling for claims 6–11; no discrimination found on remaining claims), but the underlying analytical steps connecting evidence to those conclusions are not detailed in the record excerpt."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reader unfamiliar with the case can identify allegations and timeline, but cannot reconstruct from this record alone why the Agency found no discrimination on claims 1–5 or why the AJ's remand rationale was applied without access to the remand order or final decision reasoning."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record documents extensive allegations and procedural history but does not supply the Agency's evidentiary analysis, rebuttals, or detailed findings that would justify dismissal of claims 1–5 or the no-discrimination conclusions."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record supplies dates for nearly all material events (promotion in May 2013, EEO filing November 8, 2017, incidents spanning 2009–2018, AJ remand, and May 20, 2020 appeal status inquiry), allowing chronological reconstruction."
+    }
+  },
+  "remediation_note": "The record must include the Agency's written final decision explaining the evidentiary basis for each conclusion on claims 1–5 and the rationale for the no-discrimination findings; the AJ's remand order and criteria must also be attached or summarized. Additionally, the Agency's response to the tardiness argument and any post-remand procedural history should be documented with dates and determinations.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) the Agency's Final Agency Decision or remand-responsive decision with detailed factual findings on each claim; (2) the AJ's remand order identifying deficiencies; (3) point-by-point analysis of evidence versus each allegation; (4) documented dates of all procedural milestones after the remand (investigation completion, decision drafting, issuance); and (5) Agency's written response to the tardiness sanction argument, supported by explanatory circumstances and timeline."
+  }
+}
+```

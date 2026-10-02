@@ -1,0 +1,36 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the termination decision: June 15, 2021 performance review, June 2021 emails from S3, June 17 memorandum on payroll failures, S1's affidavit on late payments and resignations, and the July 28, 2021 termination letter citing unacceptable probationary performance in payroll and onboarding."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable: prima facie case assumed → legitimate nondiscriminatory reasons articulated (performance deficiencies documented in contemporaneous emails and review) → pretext analysis applied (AS's limited supervisory scope addressed, multiple supervisors confirmed deficiencies, telework accommodations shown as provided) → conclusion that Complainant's belief was subjective and unsupported."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record provides performance evidence and the Agency's reasoning, it does not explain how or when the accommodation request was made, what accommodation was requested, or whether it was granted or denied—facts essential for a reviewer to independently assess whether reprisal occurred or whether the accommodation and termination were temporally or causally linked."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record provides performance evidence and the Agency's reasoning, it does not explain how or when the accommodation request was made, what accommodation was requested, or whether it was granted or denied—facts essential for a reviewer to independently assess whether reprisal occurred or whether the accommodation and termination were temporally or causally linked."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports performance-based termination through contemporaneous documents and corroborating supervisors, but AS's observation that she witnessed no performance problems and her account of tension over work schedule/disability are summarized rather than detailed, potentially limiting evidentiary weight assessment and making it unclear whether AS's alternative explanation received adequate rebuttal."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: employment began January 17, 2021; performance issues documented June 15–17, 2021; termination July 28, 2021; EEO complaint filed August 24, 2021; investigation completed and final decision issued; appeal filed—all dates provided."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record must document the nature, date, and outcome of any accommodation request(s) and explain AS's observations in greater detail so a reviewer can independently assess pretext and reprisal claims. The record should also clarify how the Agency addressed potential temporal proximity between accommodation requests and termination.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support—specifically, the accommodation request and AS's factual observations lack sufficient detail",
+    "compliant_version": "A revised record would include: (1) the exact date, nature, and content of each accommodation request; (2) the Agency's response (grant, denial, delay); (3) a detailed account or affidavit from AS describing the specific performance issues (or lack thereof) she observed, the timeline, and the substance of tension with S3; (4) analysis of temporal proximity between any accommodation request and termination; and (5) explicit rebuttal of AS's alternative explanation showing why her limited supervisory scope and observations do not undermine the decision."
+  }
+}
+```

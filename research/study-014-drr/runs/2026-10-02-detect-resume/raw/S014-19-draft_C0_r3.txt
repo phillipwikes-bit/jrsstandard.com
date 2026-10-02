@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record fails to identify who made the critical decision to keep Complainant out of work July 5–31; the HRM Manager states he 'did not know why she was kept out,' and S2's role is unclear, leaving the basis for the exclusion unattributed."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The sequence from medical documentation request (June 11, 21) → July 2 letter submission → HRM finding it 'unclear and inadequate' → S2's request for revision → her removal from work is stated but lacks explicit causal links or documented reasoning for each step."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the July 2 doctor's letter was rejected as inadequate, what specific deficiency S2 identified, or why the revised note (submitted after July 31) satisfied the requirement that the original did not."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The Agency cites failure to provide adequate medical documentation as a basis for non-qualification, but the record does not evidence what made the July 2 note inadequate or demonstrate that the July 5–31 exclusion was a direct response to medical insufficiency rather than a discretionary administrative decision."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Dates are present (June 11, 15, 21; July 2, 5, 22, 25, 31; August 1) but intervals lack explanation—notably, HRM's July 22 notification about the arbitration award's effect comes after her exclusion began (July 5), and the causal timing between the union grievance (June 15) and the medical documentation requests (June 11, 21) is ambiguous."
+    }
+  },
+  "remediation_note": "The record must identify the decision-maker(s) and document the specific deficiencies in each medical submission, with explicit dates and reasons for rejection or acceptance. A compliant version would trace the causal chain from union grievance through medical documentation requests to exclusion, clarifying whether the July 5–31 removal was a medical accommodation process, a disciplinary measure, or an administrative consequence of the CBA violation.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, temporal_reconstructability",
+    "compliant_version": "A revised record would name the decision-maker(s) responsible for each action; document the HRM Manager's specific findings regarding adequacy of the July 2 letter with reference to job-related restrictions or accommodation standards; explain the temporal relationship between the union grievance, medical requests, and removal; and establish whether the exclusion July 5–31 was justified by medical insufficiency, compliance with arbitration direction, or another Agency basis, with supporting evidence in the file."
+  }
+}
+```

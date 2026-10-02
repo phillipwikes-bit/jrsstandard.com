@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Bases for discrimination claims are stated (race, national origin, reprisal) and specific incidents are enumerated, but the record conflates procedural findings with evidentiary support, and critical temporal markers are redacted or vague ('at one point,' '[number removed]')."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record summarizes allegations and notes that AJs issued summary judgment decisions finding no discrimination, but does not articulate the AJs' reasoning, the evidence each considered, or how conclusions were reached from that evidence."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct the factual or legal basis for the summary judgment outcomes because the record is a complaint narrative and procedural summary, not a decision record that lays out findings of fact or legal analysis."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record contains detailed allegations with some corroborating details (supervisor statements, executive director acknowledgments, email contradictions) but lacks the adjudicative findings, witness testimony summaries, or documentary evidence needed to assess whether the summary judgment conclusions are supported."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Multiple events are dated only as 'at one point' or '[number removed],' and intervals between pay actions, reorganization, and resource denials are not established, preventing chronological reconstruction."
+    }
+  },
+  "remediation_note": "This record functions as a complaint narrative and procedural summary rather than a decision or analysis record. To meet JRS standards, a compliant version must include the AJs' written decisions with findings of fact, legal conclusions, and citation to evidence; restore temporal markers (dates and intervals); and clearly distinguish between allegations asserted and evidence found.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, temporal_reconstructability",
+    "compliant_version": "A redacted but complete AJ decision or administrative record memorandum that (1) restores non-sensitive dates or relative chronology; (2) states findings of fact with reference to evidence; (3) explains how each allegation was evaluated and why summary judgment was warranted; and (4) provides sufficient detail that a successor reviewer could audit the reasoning without access to case files."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion is anchored to specific ROI citations and documented statements (e.g., Supervisor's assertion at ROI 77-80, Complainant's claim at ROI 13-14); bases are consistently identified throughout."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway from evidence (supervisor denials, complainant assertions, training schedule conflict) through legal framework (McDonnell Douglas three-part test, Title VII hostile environment standard) to conclusion (failure to prove pretext or discriminatory animus) is traceable and logically sequenced."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While ROI citations are abundant, the record relies heavily on parties' uncorroborated assertions without clear synthesis of which facts were verified independently; a reviewer years later would struggle to determine which claims were substantiated versus merely alleged."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents competing narratives (Supervisor vs. Complainant on July 27 schedule request, concert denial, pay discrepancy timing) but does not clearly document investigative steps taken to corroborate either party's account, leaving evidentiary support incomplete."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is well-established: July 26-27, 2018 (concert/schedule requests), August 28, 2018 (training), October 1-4-12, 2018 (pay discrepancies and PWP review), October 12, 2018 (EEO contact), June 2019 (complaint filed), June 2021 (AJ orders and dismissal), August 2021 (FAD issued)."
+    }
+  },
+  "remediation_note": "The record functions as a narrative decision document but lacks independent investigative corroboration and synthesis of competing factual assertions. To achieve compliance, the record should explicitly document which investigative methods were employed (interviews of DO 1, training records review, text message preservation, payroll audit), which facts were independently verified, and why uncontroborated assertions were credited or rejected.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity; accountability_support",
+    "compliant_version": "A compliant record would include: (1) explicit documentation of investigative steps taken for each allegation; (2) independent verification of key facts (training attendance, schedule requests, pay discrepancy discovery and notification sequence); (3) analysis of corroborating or contradictory evidence; (4) reasoned explanation for credibility determinations where accounts conflict; and (5) clear identification of gaps or unresolved factual disputes before applying legal standards."
+  }
+}
+```

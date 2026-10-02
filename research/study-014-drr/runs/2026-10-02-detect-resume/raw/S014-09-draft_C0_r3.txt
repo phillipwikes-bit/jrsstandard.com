@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record summarizes seven distinct allegations but does not identify the evidentiary basis (witness statements, documents, dates, specific policies) that supports or refutes any single allegation; the summary presents claims and Agency responses without grounding either in cited evidence."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record describes procedural steps (investigation, hearing requests, AJ decisions) and summary judgment outcomes but does not trace the analytical pathway from evidence to the AJs' findings of no discrimination or retaliation, making it impossible to follow how pay data, reorganization records, or contractor communications were evaluated."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the complaint categories and procedural timeline, but could not reconstruct the substance of the AJs' reasoning, the content of the investigative file, or the factual record on which summary judgment rested without access to the underlying AJ decisions and investigation report."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The summary states conclusions (two AJs found no discrimination or retaliation) but provides no detail on the evidence each AJ weighed—no wage analysis, no reorganization documentation, no contemporaneous records of the June 2018 review, no contractor communications—leaving the evidentiary sufficiency of the decisions opaque."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: October 2015 (hire), April 2018 (wage review), June 2018 (reorganization and alleged directive), January 2019 (Executive Director instruction), February 2019 (contractor hostility reports end), May 5, 2019 (tweet), June 13, 2019 (complaints filed), and subsequent hearing and appeal stages."
+    }
+  },
+  "remediation_note": "The record functions as a high-level case summary rather than a decision-support document. To meet JRS standards, it must either embed or reference the substantive findings of the AJ decisions (pay analysis, reorganization rationale, policy comparisons, contractor engagement records) and articulate the reasoning chain linking evidence to conclusions on each of the seven allegations.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, accountability_support",
+    "compliant_version": "A compliant record would include: (1) for each allegation, a summary of the key evidence examined (e.g., pay band assignment letters, April 2018 wage review document, reorganization chart with dates, contractor complaint logs, tweet image); (2) the AJs' specific findings on each allegation with the reasoning (e.g., 'pay discrimination: comparator analysis of Band IV and Band V roles showed X; no evidence of race-based pay-setting because Y'); (3) citations to investigative file sections or AJ decision paragraphs; and (4) clear statement of what evidence was found sufficient or insufficient to support each conclusion."
+  }
+}
+```

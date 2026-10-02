@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Bases for individual conclusions are identifiable (e.g., witness statements, Privacy Investigation Report, discipline letters, S1's testimony) but scattered across the narrative without explicit cross-reference to specific findings; the connection between evidence and each Agency determination requires assembly by the reader."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's decision logic is traceable for major claims (1, 2, 3, 12, hostile environment) with stated evidentiary premises, but intermediate steps—such as how credibility determinations affected the hostile environment finding—lack explicit reasoning bridges."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with the case would struggle to reconstruct the factual record from this narrative: key dates are replaced with 'at one point' or 'unspecified dates'; witness names are generalized (Witness 1, 2, 12, 13); employee identities are redacted or marked as 'Employee 1,' 'Employee 2,' 'Coworker 1–6'; and the chronology of overlapping allegations is nonlinear."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence exists for privacy violations (Privacy Investigation Report, discipline letters, SPAR printout) and for S1's private statement (Complainant's testimony plus two witnesses), but the Agency's rejection of Complainant's claim that S1 made a public disclosure rests heavily on the absence of corroborating witness statements rather than positive evidence that the public disclosure did not occur."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical dates are omitted or vague ('at one point,' 'unspecified dates,' 'November or at one point'); surgery cancellations are referenced as 'four times' without dates; privacy accesses span '2018 and 2019' and 'three years' without precise intervals; and the sequence of complaints, investigations, and decisions cannot be reliably reconstructed."
+    }
+  },
+  "remediation_note": "The record conflates a complaint summary with an agency final decision, rendering it difficult to separate original allegations from investigated facts from legal conclusions. To meet JRS standards, the record should employ consistent dating (or justified redaction with ranges), anchor each finding to a specific piece of evidence, identify all witnesses and employees by stable labels tied to a legend, and separate the chronology of events from the chronology of the investigation and Agency response.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity, temporal_reconstructability, basis_identification",
+    "compliant_version": "A compliant record would include: (1) a factual narrative with precise dates or date ranges for each alleged incident and investigation step; (2) a consistent labeling key for all witnesses and employees; (3) explicit citation of evidence (e.g., 'Privacy Investigation Report, dated [date], p. [page], states that Coworker 4 accessed records on [date(s)]'); (4) separate sections for (a) Complainant's allegations, (b) Agency investigation findings, and (c) legal conclusions with reasoned connection to evidence; and (5) clear delineation of which claims were dismissed pre-investigation versus investigated but not credited."
+  }
+}
+```

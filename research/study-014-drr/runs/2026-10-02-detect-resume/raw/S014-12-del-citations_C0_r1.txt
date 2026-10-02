@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific bases for the AJ's decision (single incident, facially neutral language, unprofessional but not harassing), but the factual foundation for rejecting the background allegations is unclear—the record states allegations were 'never included' in prior documents but does not explain why this absence bars consideration of later-submitted evidence."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's logic from evidence to conclusion on the December 11, 2020 incident is traceable, but the decision pathway regarding Complainant's post-Notice allegations (Obama comments, Confederate flag) and the Agency's failure to respond to the Notice is not clearly explained."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge would struggle to understand why allegations presented for the first time in response to the Notice (Obama comments, Confederate flag, alleged pattern of mistreatment) were excluded from consideration without documented reasoning about timeliness, notice, or procedural bars."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports rejection of the single December 11 incident as non-discriminatory, but does not provide sufficient evidentiary analysis of whether the background allegations, if credited, would establish a hostile work environment pattern independent of the AJ's temporal objection."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: December 11, 2020 (incident), May 25, 2021 (complaint filed), January 21, 2022 (Notice issued), February 25, 2022 (decision issued), with identified response windows and actions by each party."
+    }
+  },
+  "remediation_note": "The record requires explicit documentation of the procedural basis for excluding post-Notice allegations (estoppel, waiver, failure to exhaust administrative remedies, or other rule), and a substantive evidentiary analysis of whether the later-submitted allegations, even if time-barred from the formal complaint, would independently establish discriminatory pattern and hostile environment under the totality of circumstances.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would explicitly state the procedural rule(s) governing late-filed allegations in EEO proceedings; analyze each background allegation (Obama comment, Confederate flag) on the merits or clearly reject it on procedural grounds with citation to authority; explain why the Agency's failure to respond to the Notice did not entitle Complainant to a hearing; and document whether the AJ considered the totality of circumstances (including unrefuted background allegations) under the hostile work environment standard before summary judgment."
+  }
+}
+```

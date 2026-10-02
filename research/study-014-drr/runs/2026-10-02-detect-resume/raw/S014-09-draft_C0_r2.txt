@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies factual bases for each allegation (e.g., salary negotiation statement, April 2018 pay review, June 2018 reorganization, contractor reports), but does not explicitly state which evidence the AJs relied upon to reach their no-discrimination conclusions, leaving the analytical foundation partially opaque."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record summarizes allegations and procedural posture but contains no documented reasoning chain showing how the AJs evaluated comparators, causation, pretext, or retaliation elements; summary judgment decisions are referenced but their analytic steps are not reproduced or traced."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with the case cannot reconstruct why the AJs rejected pay discrimination claims despite allegations of explicit 70% cap and non-Native comparators, or why contractor hostility reports and resource restrictions did not support harassment or retaliation; the record is a complaint summary, not a decision with findings of fact and law."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record alleges detailed factual support for discrimination and retaliation claims (named supervisor statements, dates of escalation attempts, specific resource barriers), but does not document whether the AJs' decisions addressed these specifics or explained why evidence was insufficient, creating uncertainty about evidentiary sufficiency assessment."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronological spine: October 2015 hires, June 13, 2019 complaint filing, April 2018 pay review, June 2018 reorganization, January 2019 tampering instruction, May 5, 2019 tweet, and dual AJ proceedings leading to appeal."
+    }
+  },
+  "remediation_note": "This record is a complaint narrative, not a finalized investigative or adjudicative decision. To comply with JRS standards, the record must include the AJs' written decisions with explicit findings of fact, legal conclusions on each element of discrimination and retaliation, identification of comparator evidence evaluated, and documented reasoning for rejecting or accepting each allegation.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, basis_identification",
+    "compliant_version": "A compliant final record would include: (1) the full AJ decisions with statement of facts found or not found; (2) explicit discussion of non-Native comparators and their pay, promotion, and resource access; (3) analysis of temporal proximity between protected activity and adverse action; (4) explanation of why evidence of contractor hostility reports, the 70% salary cap statement, and the January 2019 tampering instruction did not establish discrimination or retaliation; and (5) clear citation of which allegations survived or failed summary judgment and on what basis."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies the basis for each conclusion: the AJ's findings cite specific reasons for removal (failure to meet deadlines, cancelling events without permission, staff management issues, fund management lapses), the legal standard applied (prima facie case, legitimate nondiscriminatory reason, nexus to protected class), and supporting evidence (affidavits, statements in removal letters)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision-process pathway is fully traceable: complainant's allegations → AJ's analysis of whether prima facie case established → AJ's examination of agency's articulated reasons → AJ's determination of nexus to protected bases → AJ's conclusion on each element, with specific citations to evidence at each step."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the entire basis: the record names the position (Library Director), supervisor (S1), and facility (Joint Base Andrews); documents specific disciplinary actions with dates; identifies the legal claims (race, sex, color, age discrimination and hostile work environment); and explains why each failed under applicable law."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence sufficiency is mixed: the agency's articulated reasons for removal are clearly stated, but some allegations of discriminatory conduct (unnamed staff statements, second-hand accounts from coworker affidavit) lack direct corroboration, though the AJ explicitly acknowledged and rejected these as insufficient rather than ignoring them."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is complete and followable: verbal counseling dates (May 31, July 3, July 16, 2018) → Letter of Reprimand (October 18, 2018) → alleged incorrect statements from subordinates (February–April 2019) → Notice of Proposed Removal (April 25, 2019) → Removal Decision (June 28, 2019) → CAC discovery (October 22, 2019) → investigation → hearing request → summary judgment decision."
+    }
+  },
+  "remediation_note": "The record functions as a complete appeal-level decision narrative and exceeds JRS standards; no remediation required. However, if this record is to serve as a standalone justification document for future reference, explicitly index the specific evidence rejecting each harassment allegation (e.g., 'uncorroborated second-hand statement per coworker affidavit') to ensure cold-reviewer clarity on evidentiary gaps.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support (uneven corroboration of discriminatory conduct allegations)",
+    "compliant_version": "A compliant version would add marginal citations or a summary table cross-referencing each discrimination allegation to the specific evidence offered, the basis for its rejection (hearsay, lack of nexus, failure to meet severity standard), and the legal standard applied, ensuring a future reviewer can independently verify the sufficiency determination without reconstructing the AJ's reasoning."
+  }
+}
+```

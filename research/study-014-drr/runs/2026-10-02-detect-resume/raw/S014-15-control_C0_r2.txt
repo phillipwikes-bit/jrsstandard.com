@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each major conclusion is anchored to specific record citations: medical restrictions to ROI at 191, modified assignment dates to ROI at 196/233, clock ring deletions to ROI Affidavit A, and 204-B denial to ROI Affidavit B."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway from evidence to conclusion is explicit: factual findings (e.g., job offer met restrictions on paper, Complainant declined lobby attendant) flow directly to legal determinations (e.g., no denial of accommodation, no pretext)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the full dispute from the record alone: Complainant's specific restrictions are listed, the offered assignments and her responses are documented, and the Agency's explanations for administrative errors are all stated."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is substantial for factual findings (medical restrictions, job offers, clock ring deletions, 204-B request) but the AJ's conclusion that Complainant's restrictions were 'so severe' she could not perform even with accommodation relies on inference rather than explicit medical opinion or expert analysis in the record."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Timeline is complete and clear: injury May 10, 2014; job offer June 22, 2016; signed July 1, 2016; began assignment July 18, 2016; incident August 29, 2016; grievance September 14, 2016; clock ring discovery before EEO filing; 204-B request November 14, 2016; ROI completed and hearing requested thereafter."
+    }
+  },
+  "remediation_note": "To strengthen accountability_support, the record should explicitly document medical provider or occupational health assessment affirming whether the Complainant's documented restrictions were medically incompatible with modified duty assignments, rather than relying on the AJ's inference. All other conditions are adequately documented.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support (medical causation) and reasoning_traceability (pretext analysis)",
+    "compliant_version": "Insert a certified medical assessment or affidavit (from Complainant's physician or occupational health) explicitly stating whether the medical restrictions preclude performance of the two offered modified assignments, and expand the pretext analysis to address Complainant's specific allegations regarding how the Manager's conduct (poor organization, delayed responses) might conceal discriminatory intent, rather than treating administrative error and discretionary judgment as dispositive."
+  }
+}
+```

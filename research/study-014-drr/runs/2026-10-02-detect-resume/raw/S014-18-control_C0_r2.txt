@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies the bases for each allegation: sex (female), disability (cervical myelopathy, cervical fusion with limited neck movement), and age (56), with fifteen numbered incidents tied to specific supervisory actions."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents allegations and a final conclusion ('failed to prove discrimination' and 'failed to show disparate treatment') but does not explain the Agency's reasoning, evidence evaluation, or comparator analysis that led to that conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A later reviewer can reconstruct the factual allegations from detailed incident narratives, but cannot reconstruct the investigative findings, witness statements, or the analytical basis for the Agency's disparate-treatment determination without access to the underlying investigation report."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record documents extensive alleged misconduct by supervisors but does not include the investigation report findings, evidence weighed, or justification for why these facts did not support a discrimination conclusion, leaving the evidentiary sufficiency of the decision opaque."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology from September 8, 2019 through February 6, 2020, with specific dates (April 13, 2020 complaint filing), intervals between incidents, and final decision issuance referenced by regulation."
+    }
+  },
+  "remediation_note": "The record must incorporate or reference the investigation report findings, including comparator analysis, witness credibility assessments, and the Agency's explanation of why the documented incidents and protected-class nexus did not satisfy the burden for discrimination. Summary statements of legal conclusions without supporting analytical detail create an accountability gap.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would embed or attach the investigation report with explicit findings on each incident, comparator evidence (treatment of similarly situated employees outside the protected class), witness statements addressing discriminatory intent, and a structured disparate-treatment analysis showing why the temporal and circumstantial proximity of protected-class disclosure and adverse action did not establish causation or pretext."
+  }
+}
+```

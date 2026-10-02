@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for termination (payroll processing failures, new-hire onboarding deficiencies) documented in June 15 performance review, three June 2021 emails, and July 28 termination letter; the record also identifies the basis for rejecting pretext (limited scope of AS's supervision versus three supervisors' corroboration)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The causal chain from evidence to conclusion is largely traceable (deficiencies → termination → pretext analysis), but the Agency's treatment of S1's affidavit as direct evidence of causation lacks intermediate steps explaining how pay delays and resignations were definitively attributed to Complainant rather than systemic factors, and the reconciliation of 'tension' over work schedule with the stated performance bases is underdeveloped."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct the prima facie case, legitimate reasons, and pretext analysis framework, but would struggle to independently verify whether the June payroll and onboarding problems were actually resolved post-retraining, whether S3's accommodation stance was genuinely neutral, or whether the 'two days per week telework' claim applies uniformly to all Administrative Technicians or only some, as the record does not cite the underlying documentation."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence of performance deficiencies (June review, emails, memorandum) and supervisor corroboration (S1's affidavit, three supervisors' accounts) supports the legitimate reason, but the record does not cite specific payroll records, dates of late payments, names or departure dates of resigned new hires, or training completion records to fully support the claim that deficiencies persisted after retraining."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: January 17, 2021 (hire), June 15, 2021 (review), June 2021 (emails and memorandum), July 28, 2021 (termination), August 24, 2021 (complaint), and final decision issued before appeal, though intervals between alleged retraining and re-evaluation are not specified."
+    }
+  },
+  "remediation_note": "The record should cite or attach the June 15 performance review, the three June 2021 emails, and the June 17 memorandum with specific examples of unprocessed payroll items or missed onboarding steps. The record should also specify whether retraining occurred, when, and document whether the identified deficiencies recurred post-retraining, and should clarify the telework policy scope (which Administrative Technicians, during which periods) to address the Agency's response to the 'tension over work schedule' allegation.",
+      "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support and cold_reviewer_clarity; the record synthesizes evidence into a discrimination-analysis framework but relies on summary references to underlying documentation rather than sufficient evidentiary detail to withstand independent verification or reconstruction.",
+    "compliant_version": "Attach or fully cite all performance documentation (June 15 review, June emails, June 17 memorandum) with specific payroll and onboarding errors; provide dates, employee names, and payment delay amounts; document the timing and content of any retraining and post-retraining performance observations; clarify the telework policy for all Administrative Technicians by supervisor and time period; and explain whether S3's accommodation response (if any) is documented in the accommodation request record or correspondence."
+  }
+}
+```

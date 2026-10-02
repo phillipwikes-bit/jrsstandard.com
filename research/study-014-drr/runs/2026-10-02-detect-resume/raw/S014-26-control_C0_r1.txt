@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for the AJ's conclusions: lack of minimum qualifications (FAC-C certifications), applicant pool comparators of same protected class, absence of knowledge of EEO activity, and non-severe/non-pervasive conduct regarding claim 12."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the AJ's reasoning pathway is stated (prima facie case framework, legitimate reasons, pretext analysis), the record does not detail the evidentiary record itself—what testimony, documents, or comparator analysis specifically supported each finding, making independent tracing difficult."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the legal framework and conclusions, but the record lacks specific facts about who approved the 17-hour course, OPM guidance on Level II requirements, comparative qualifications of other applicants, and the identity/protected status of selectees for most claims, leaving gaps in reconstructability."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record states conclusions (e.g., 'Complainant did not meet minimum qualifications') but does not consistently cite or quote the investigation report, decision documents, or specific evidence (job descriptions, official certifications, selectee credentials) needed to verify those conclusions are adequately supported."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: complaint filed August 25, 2015; accepted November 23, 2015; motion for summary judgment March 22, 2018; AJ decision September 23, 2020; specific incident dates range from May 2015 to May 2018, with intervals traceable."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit citation to the investigation report and underlying evidence (course approvals, OPM guidance, selectee qualifications, comparator analysis) supporting each factual premise of the AJ's decision, and clearer documentation of what evidence was considered and rejected regarding systemic bias allegations and C1's decision-making authority.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include or reference the full investigation report with evidentiary detail; explicit factual findings (with citations) regarding who approved the 17-hour training, what OPM or Agency policy governed Level II certification requirements, the protected class and qualifications of selectees for each promotion claim, and how the record addressed the systemic bias allegation; and a clear rebuttal to Complainant's alternative narrative about C1's role and motivation."
+  }
+}
+```

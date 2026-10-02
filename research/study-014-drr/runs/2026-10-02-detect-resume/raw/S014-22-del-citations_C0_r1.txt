@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies bases for each allegation through numbered claims (1-17) paired with specific dates, statements, and actions attributed to named individuals (Section Chief Ireland, Lab Chief)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces Agency investigation and dismissal decisions (14 claims dismissed for untimely counseling, remaining claims found without discrimination), but does not detail the investigative reasoning, evidence weighting, or witness findings that supported those conclusions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify what was alleged and when, but lacks the investigative findings, credibility assessments, corroborating evidence, and AJ reasoning that would allow independent reconstruction of why specific claims succeeded or failed."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents complainant's allegations with dates and specificity, but does not present the Agency's evidentiary response, witness statements, or documentary evidence sufficient to evaluate whether findings of 'no discrimination' are supported by evidence or merely by procedural dismissal."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology from June 2017 incidents through April 2018 actions, with specific dates for the EEO counseling initiation (July 27, 2017), AJ remand, delayed FAD (over 15 months post-remand), and appeal filed before FAD."
+    }
+  },
+  "remediation_note": "The record requires inclusion of the Agency's investigative findings, evidence considered for each claim, credibility determinations, and explicit reasoning why claims 1–5 and 12–17 were found to lack discrimination despite detailed factual allegations. A compliant version must document the evidentiary basis and decision logic, not merely the outcome and procedural posture.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Include the Report of Investigation findings and analysis for each claim; document witness statements, corroborating or rebutting evidence, credibility assessments, and the legal/factual reasoning applied to conclude no discrimination; separately explain the procedural dismissal of claims 6–11 by reference to counseling timeliness; and address the 15-month FAD delay and default-judgment argument with factual explanation."
+  }
+}
+```

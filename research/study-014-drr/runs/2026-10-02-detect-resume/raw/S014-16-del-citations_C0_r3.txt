@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., Supervisor's statement regarding schedule denial, training exclusion from AUO), but the evidentiary support for the Agency's ultimate discrimination findings is largely conclusory rather than explicitly tied to record evidence."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces application of McDonnell Douglas framework and hostile work environment standard, but the path from specific evidence to the conclusion that Complainant 'failed to prove by a preponderance' lacks detailed articulation of which evidence was credited or rejected."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer without prior knowledge can follow the complaint allegations and legal standards applied, but cannot easily reconstruct why specific pieces of Complainant's evidence (e.g., DO 2's earlier notification of pay discrepancy) were found insufficient without explicit analysis in the record."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents Supervisor's counterclaims and the Agency's application of legal standards, but does not systematically evaluate the probative weight of conflicting evidence (e.g., Complainant's text message request versus Supervisor's recollection of the response)."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are consistently provided throughout: July 26–27, 2018 (schedule dispute), August 28, 2018 (training), October 1–4 and October 12, 2018 (pay and PWP issues), October 12, 2018 (EEO contact), and June 6, 2019 (formal complaint filing), with subsequent procedural dates clearly marked."
+    }
+  },
+  "remediation_note": "The record would require explicit articulation of which specific evidence was found credible, which was rejected, and why Complainant's proffered evidence of comparator treatment and temporal proximity was insufficient to survive McDonnell Douglas burden-shifting or the hostile work environment test. Evidentiary conflicts (text messages versus oral accounts) should be resolved on the record with reasoned findings.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant final agency decision would include: (1) detailed findings on each factual dispute (e.g., whether Complainant's text request constitutes protected communication or evidence of animus); (2) explicit comparison of treatment of similarly-situated employees (DO 1 and DO 2) with citation to specific record evidence; (3) reasoned rejection of Complainant's pretext theory with reference to the temporal proximity and pattern evidence he offered; and (4) articulation of why the sequence and content of allegedly adverse actions (denial, recall, pay adjustment, PWP admonishment) do or do not support an inference of discriminatory intent or retaliation."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation (a through j) is grounded in specific factual assertions: dates, named individuals, actions, and complainant's characterization of events are identifiable throughout the record."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision invokes 'all reasonable inferences in favor of Complainant' and 'no material facts in dispute,' but the path from evidence presented to pretext determination and hostile work environment rejection is compressed; the specific evidentiary contradictions that led to each conclusion are not fully traced."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can identify complainant's claims and agency responses, but the record compresses investigative findings into narrative summary without systematically laying out which allegations were contradicted by whom and on what basis, making independent reconstruction of the reasoning difficult."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supporting agency actions is present (e.g., performance evaluation metrics, IG findings of no harassment/discrimination, affidavits from supervisors), but complainant's evidence—subjective characterizations of tone, facial expressions, and felt isolation—is documented only as allegation, not tested or weighed explicitly against contradictory evidence in the record."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology with specific dates from September 2014 onward, including key events (October 5 & 12, 2016, November 12, December 6, 21, January 4, 27, 2017, and final AJ decision January 31, 2022), allowing sequence reconstruction."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should explicitly document how each of the complainant's subjective allegations (disrespect, undermining, isolation, negative facial expressions) was weighed against agency witnesses' denials and contradictory evidence, and the AJ should articulate the specific factual findings on which the pretext and hostile work environment conclusions rest, rather than relying on compressed summary.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would include a detailed findings-of-fact section itemizing each allegation, the evidence supporting it (with witness accounts and documentary support), the evidence contradicting it, and an explicit statement of which evidence was credited and why; the AJ's decision would then trace its pretext and hostile work environment conclusions to those specific factual determinations, making the logic transparent to a later reviewer without prior knowledge of the case."
+  }
+}
+```

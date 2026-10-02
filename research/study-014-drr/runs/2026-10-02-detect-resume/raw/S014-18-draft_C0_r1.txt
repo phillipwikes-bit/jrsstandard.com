@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record states a conclusion ('failed to show disparate treatment') but does not identify which specific evidence, comparator, or analytical framework was used to reach it."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "No documented analysis linking the 15 incidents, supervisor statements, or protected-class nexus to the disparate treatment conclusion; the decision path from allegations to finding is opaque."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later could not reconstruct why the Agency rejected allegations of reassignment, demeaning language, shift changes, and public reprimand without documented evaluation of each claim against the alleged bases (sex, disability, age)."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record provides detailed factual allegations but no articulation of what evidence the Agency weighed, what it rejected, or why the evidence was insufficient to support discrimination findings."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology of incidents from September 2019 through February 2020, with a complaint date of April 13, 2020, and reference to a final decision under 29 C.F.R. § 1614.110(b)."
+    }
+  },
+  "remediation_note": "The record must include the Agency's explicit findings on each of the 15 incidents, analysis of comparators (if any), evaluation of the causal connection between protected characteristics and adverse actions, and specific reasons for rejecting or accepting each allegation. A reasoned final decision articulating the investigative conclusions and legal analysis is required.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The Agency must issue a final decision that: (1) restates each material allegation; (2) identifies the evidence supporting or contradicting it; (3) applies the relevant legal standard (e.g., comparator analysis for disparate treatment, nexus between disability and adverse action); (4) explicitly states whether the allegation is sustained or rejected and why; and (5) documents any determinations regarding credibility, witness statements, and temporal relationships to protected-class disclosures."
+  }
+}
+```

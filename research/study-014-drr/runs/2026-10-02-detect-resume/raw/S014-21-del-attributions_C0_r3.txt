@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each key conclusion: accommodation denial is grounded in Complainant's failure to provide requested medical documentation (Coordinator's requests documented in emails June 2020, closure August 7, 2020); AWOL charge is grounded in eight months of absence without medical support and Coordinator's suggestion after closure."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable from evidence to conclusion: medical documentation requests (March 25, June 2020) → Complainant's non-compliance → Coordinator's repeated requests → case closure (August 7, 2020) → AWOL designation (August 10, 2020) → AJ's findings of insufficient disability evidence."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the chronology is detailed, multiple instances of 'someone' replace actual names (S1, S2, Coordinator identity, supervisor identity), forcing a reviewer to reconstruct actor roles from context rather than explicit identification, and the record does not clearly state why the affidavit routing issue (sent to Secretary rather than investigator) did not affect evidentiary completeness until the AJ stage."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports denial of accommodation request (repeated documentation requests, non-compliance documented) and supports AWOL charge temporally, but the record does not provide Complainant's substantive responses to documentation requests, her stated reasons for non-compliance, or contemporaneous written explanation for the affidavit routing, limiting transparency of why the Agency's requests were reasonable or unreasonable."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are consistently provided for injury (July 12, 2019, December 2019 aggravation), accommodation requests (February 25, March 5, April 21, 2020), medical statements (January 13, February 10, February 25, April 21, May 19, June 22, July 30, 2020), leave periods (December 2019–August 10, 2020), and formal actions (case closure August 7, 2020, AWOL August 10, 2020, termination January 22, 2021, complaint filed August 2, 2021)."
+    }
+  },
+  "remediation_note": "Replace all instances of 'someone' and 'S1/S2' with actual names or consistent role identifiers; add explicit documentation of Complainant's responses to medical documentation requests and any contemporaneous statements explaining non-compliance, and clarify why the affidavit routing error did not constitute a procedural defect affecting investigative completeness.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support—the record constructs a detailed temporal narrative but obscures actor accountability through anonymization and omits Complainant's contemporaneous explanations or objections to Agency requests.",
+    "compliant_version": "A compliant version would: (1) replace anonymized references with identifiable role titles and consistent naming convention; (2) include Complainant's written responses or documented reasons for each failure to provide documentation or sign agreements; (3) explicitly address whether the affidavit routing issue constituted an investigative procedural failure and how it was remedied; (4) document whether Complainant was notified of the consequences of non-compliance before the case was closed; and (5) add a summary section clearly stating the evidentiary standard applied and how the record satisfies or fails each element."
+  }
+}
+```

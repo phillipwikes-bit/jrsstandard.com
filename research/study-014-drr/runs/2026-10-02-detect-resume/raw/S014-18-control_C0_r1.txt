@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the 15 allegations is anchored to specific dates, supervisors, and claimed actions (e.g., 'on September 13, 2019, Supervisor 1 told Complainant that she did not want to work with her'), making the factual bases identifiable."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents allegations and a conclusion ('failed to prove discrimination') but does not explain the Agency's reasoning, evidentiary findings, or how specific allegations were evaluated or rejected."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the factual allegations are clear and detailed, a reviewer years later could not reconstruct why the Agency rejected the discrimination claim without access to the investigation report, comparator data, or articulated legal analysis that is not included in this record."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record states a conclusion ('failed to show disparate treatment') but provides no evidentiary analysis, no comparator groups, no rebuttal of individual allegations, and no citation of the investigation report's findings to support the conclusion."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The sequence of events is clearly traceable: complaints filed April 13, 2020; incidents dated from September 8, 2019, through February 6, 2020; investigation conducted; final decision issued in accordance with 29 C.F.R. § 1614.110(b)."
+    }
+  },
+  "remediation_note": "The record must include a summary of the Agency's investigation findings, articulated reasoning for rejection of each material allegation (particularly the pattern of conduct and protected characteristics), and explicit analysis of comparator treatment or legitimate, non-discriminatory explanations for the challenged actions. A compliant version should cite the investigation report findings and apply the McDonnell Douglas burden-shifting framework or similar legal standard.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, accountability_support, cold_reviewer_clarity",
+    "compliant_version": "A compliant record must document the investigation findings for each allegation, explain how the Agency evaluated whether the challenged conduct was motivated by sex, disability, or age (or was instead explained by legitimate, non-discriminatory reasons), provide any comparator evidence or rebuttals, and state the legal standard applied and how the evidence satisfied or failed to satisfy each element of the discrimination claim. The Agency's reasoning from evidence to conclusion must be explicit and sufficient for a later reviewer to understand and potentially audit the decision."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the AJ's conclusions (lack of genetic information allegations, supervisor's stated reasons for denial), but the factual predicate for Complainant's original claims—why she believed discrimination occurred—is largely absent from the record itself."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The AJ's decision-process is traceable: prima facie test applied to claims 1–2, legitimate non-discriminatory reasons identified for claim 3, with Complainant's failure to rebut pretext clearly stated."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the AJ's legal reasoning and conclusions, but would lack detail on what Complainant actually asserted in her affidavit beyond the AJ's characterization that she did not mention genetic information."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The supervisor's explanation for denying package assistance is documented with multiple criteria (prior help received, vehicle capacity, mail truck timing, volume justification), but Complainant's evidence or counter-evidence regarding those facts is not detailed in the record."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided: January 5, 2018 (payment claim origin), April 25, 2018 (overtime/holiday claim origin), December 14, 2018 (package assistance denial), and the procedural sequence (investigation completion, summary judgment notice, failure to object, summary judgment issuance, final order, appeal)."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit citation to or quotation from Complainant's affidavit substantiating what she actually alleged regarding the basis for her discrimination claims, and a more detailed account of Complainant's factual assertions (or lack thereof) regarding genetic information, pay methodology, and the circumstances of the package assistance denial.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would include (1) substantive excerpts from or detailed paraphrases of Complainant's affidavit showing exactly what factual allegations she made; (2) explicit documentation of the evidence Complainant presented to rebut the supervisor's legitimate reasons (if any); and (3) a clear record of what Complainant asserted regarding genetic information, pay calculation, and overtime, to allow independent assessment of the prima facie and pretext analyses."
+  }
+}
+```

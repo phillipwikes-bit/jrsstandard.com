@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for each major conclusion: S1's statements, privacy access logs, discipline records, witness interviews, and the Privacy Investigation Report establish factual grounds for Agency findings on claims 1-3 and 12."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's reasoning pathway from evidence to conclusion is traceable for claims 2-3 and 12 (privacy violations, witness interviews, discipline), but claim 1 lacks explicit documentation of how the 'undisputed evidence showed Complainant remained on her eight-hour tour of duty at all times' was established or sourced."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the privacy violations and discipline decisions from the SPAR printout, Privacy Investigation Report, and dated discipline letters, but the absence of underlying timekeeping records for claim 1, names in discipline letters (marked only 'Employee 1' and 'Employee 2'), and reliance on vague witness credibility assessments ('personal complaints') limits full reconstruction of the discrimination analysis."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence sufficiently supports findings on privacy violations (SPAR report, investigation findings, discipline records), but the hostile work environment claim rests partly on credibility determinations (Witness 1's 'vague statement' contradicted by S1, Witness 2 expressing 'personal complaints') without documented contemporaneous notes or recorded statements to verify these characterizations."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: November/December 2017 (claim 1), May 2018 (claim 2 and Complainant's surgery June 26, 2018), January 2019 (claim 3), March-June 2019 (claims 4-12), April 2019 SPAR request, June 18, 2019 Complainant's email, July 1, 2019 Privacy Officer letter, September 2019 discipline decisions, and final Agency decision post-withdrawal of hearing request."
+    }
+  },
+  "remediation_note": "The record functions as a narrative reconstruction of a discrimination complaint with embedded analysis but lacks transparent source documentation for claim 1 timekeeping and credibility assessments. A compliant version would cite specific timekeeping records, provide full names or consistent anonymization in discipline records, attach witness statements verbatim, and explicitly document the basis for witness credibility findings.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support—the decision path on the hostile work environment claim and claim 1 relies on credibility judgments and evidentiary exclusions without documented contemporaneous support.",
+    "compliant_version": "Include timekeeping records or system documentation for claim 1; provide full witness statement transcripts or contemporaneous interview notes with dates; redact or identify discipline recipients consistently; and document the factual basis for each credibility determination (e.g., dates of witness employment separation, specific statements contradicted with sources) to enable independent verification."
+  }
+}
+```

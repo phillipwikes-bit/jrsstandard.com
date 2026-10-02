@@ -1,0 +1,29 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the factual bases for each conclusion: supervisor statements regarding accommodation requests, medical documentation submitted, specific dates of LWOP approval and AWOL designation, and AJ reasoning tied to Complainant's failure to provide medical documentation and sign releases."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable from initial accommodation request (February 25, 2020) through interactive process meetings (March 5, 2020), repeated requests for medical documentation (June 2020 emails), closure of accommodation case (August 7, 2020), AWOL designation (August 10, 2020), and AJ's final finding, with documented reasons at each step."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the chronological narrative is detailed, a reviewer years later would struggle with the interplay between approved LWOP statuses (conflicting accounts: 'March 4–August 10, 2020' vs. explicit grant records showing March 26–August 7, 2020) and the precise trigger moment for AWOL designation, as the record does not clearly explain why LWOP ended on August 7 but AWOL began August 10."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The record provides sufficient evidence to support the AJ's conclusion: multiple documented requests for medical documentation from June 2020 forward, Complainant's admission she could not use pen or computer on March 4, 2020, absence of physician authorization for full telework, and Complainant's refusal to sign medical release or telework agreement."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Most dates are clear (initial injury July 12, 2019; requests February 25, 2020; LWOP grants; closure August 7, 2020; AWOL August 10, 2020; termination January 22, 2021), but the record contains an internal discrepancy—Complainant claims LWOP 'March 4–August 10, 2020' while Agency records show approved LWOP ending August 7, 2020—creating ambiguity about the three-day interval before AWOL commenced."
+    }
+  },
+  "remediation_note": "Clarify the precise LWOP end date and explicitly document the three-day interval between LWOP closure (August 7) and AWOL commencement (August 10), including whether any transition communication or notice was issued. Verify the conflicting account of Complainant's approved LWOP duration and confirm whether the Reasonable Accommodation Coordinator's suggestion to charge AWOL was formally documented as the decision basis.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "temporal_reconstructability; cold_reviewer_clarity—the record conflates two timelines (Complainant's stated LWOP period vs. Agency's documented grant records) and does not adequately explain the procedural bridge from accommodation case closure to AWOL designation.",
+    "compliant_version": "A compliant version would: (1) resolve the LWOP end-date discrepancy by citing the controlling approval record; (2) explicitly state whether Complainant was notified of LWOP expiration on August 7 and given notice before AWOL commenced August 10; (3) document the Reasonable Accommodation Coordinator's suggestion and management's formal decision to designate AWOL status as a separate, dated action item; (4) clarify whether any grace period, warning, or remedial opportunity was offered; and (5) cite any policy or regulation authorizing the transition from unapproved leave to

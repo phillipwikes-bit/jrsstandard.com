@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion (no disparate treatment, no hostile work environment, claim 6 procedurally forfeited) is explicitly tied to evidentiary findings: legitimate nondiscriminatory reasons stated, comparator analysis detailed, and affidavit credibility issues identified."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable: prima facie case assumed, burden shifts to agency to articulate legitimate reasons, complainant's rebuttal (comparators, speculation, uncorroborated allegations) evaluated, and preponderance standard applied throughout."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the legal framework and outcomes, but the record lacks specificity on what statements in the coworker affidavit were deemed confusing or second-hand, and does not detail which deadlines were missed or which events were canceled without permission."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record adequately supports rejection of hostile work environment claims via undocumented counseling (HR Chief's statement provided), but the nondiscriminatory reasons for removal rely on conclusory descriptions (e.g., 'gossip,' 'staff fear') without citation to specific dates, documents, or witness corroboration in the investigative record."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: verbal counseling (May 31, July 3, July 16, 2018), Letter of Reprimand (Oct. 18, 2018), alleged supervisor misconduct (Feb.–Apr. 2019), Notice of Proposed Removal (Apr. 25, 2019), Removal Decision (June 28, 2019), CAC discovery (Oct. 22, 2019), and procedural milestones (summary judgment, appeal) are all dated."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should expand factual findings supporting each nondiscriminatory reason for removal (specific missed deadlines, dates of unauthorized event cancellations, documented staff complaints) and should explicitly detail which portions of the coworker affidavit were hearsay and from what source, allowing a cold reviewer to independently assess credibility.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Integrate investigative exhibits (email chains, event calendars, HR records documenting specific performance failures, dated witness statements underlying 'staff fear') and annotate the coworker affidavit with marginal notes identifying each claimed hearsay chain and primary source; cite specific dates and document identifiers for each element of the removal rationale so that appellate or post-award review can independently verify the evidentiary foundation."
+  }
+}
+```

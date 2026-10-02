@@ -1,0 +1,29 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the basis for each conclusion: the Agency's reasonable accommodation denial rests on Complainant's failure to provide requested medical documentation; the AWOL charge rests on eight months of absence without work and the closure of the accommodation case."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "A sequential narrative traces the decision pathway from initial accommodation request (February 25, 2020) through multiple documentation requests, the interactive process meeting (March 5, 2020), the decision to offer temporary telework with conditions (June 2, 2020), Complainant's refusal to sign the telework agreement, the closure of the accommodation case (August 7, 2020), and the subsequent AWOL designation (August 10, 2020)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later could reconstruct the full administrative sequence, including specific dates of medical certifications, supervisor communications, accommodation coordinator requests, and the factual predicate for each agency decision without external knowledge."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the Agency's factual position that Complainant failed to provide medical documentation addressing job-specific functional capacity (especially regarding telework's suitability and the requirement for in-person patient examination), but does not document the Agency's analysis of whether the requests themselves were reasonable under the ADA or whether a modified accommodation short of year-long full telework was explored in adequate depth."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are provided throughout: injury (July 12, 2019; December 2019), accommodation request (February 25, 2020), interactive meeting (March 5, 2020), return to work (March 2, 2020), subsequent requests (April 21, 2020, June 2020), accommodation closure (August 7, 2020), AWOL designation (August 10, 2020), termination (January 22, 2021), and medical certifications with reevaluation intervals are documented."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit documentation of the Agency's analysis of whether temporary partial telework (e.g., the proposed one-to-three month arrangement with medical update) constituted a genuine effort to accommodate, and whether the refusal to grant indefinite 100% telework absent permanent medical justification was reasonable given the position's core duty of in-person patient examination. Additionally, formal closure of the accommodation request should reference the specific legal standard applied and the exhaustiveness of alternative accommodations considered.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support—while the factual chronology is complete and traceable, the record lacks analysis of whether the Agency's evidentiary demands and accommodation decisions satisfied the interactive process obligation and the duty to provide reasonable accommodation absent undue hardship; the AJ's decision concludes Complainant failed to engage but does not articulate the Agency's burden to demonstrate that her requested accommodation was categorically impossible or that proffered alternatives were genuinely explored.",
+    "compliant_version": "A compliant record would include: (1) explicit statement of the functional limitations established by medical evidence at each stage; (2) documented Agency analysis of whether temporary or partial telework could reasonably be extended based on medical progress; (3) articulation of why the core duty of in-person examination could not be performed even in a modified or part-time capacity; (4) analysis of whether the request for medical documentation was narrowly tailored to assess job-specific functional capacity rather than general diagnosis; and (5) a closing determination that explicitly finds either approval, conditional approval with defined path to uncondit

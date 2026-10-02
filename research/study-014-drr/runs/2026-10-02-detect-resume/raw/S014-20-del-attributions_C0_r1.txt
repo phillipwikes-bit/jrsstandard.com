@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each claim: GINA discrimination for claims 1-2, denial of package assistance for claim 3, with supervisor's stated reasons (prior assistance received, parcel criteria unmet, volume assessment) documented."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The AJ's decision logic is traceable: prima facie failure on claims 1-2 because no genetic information was alleged; claim 3 rejected because supervisor provided legitimate, nondiscriminatory reasons that were not rebutted as pretext."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the AJ's reasoning is present, a future reviewer lacks direct access to Complainant's affidavit responses, the supervisor's full explanations, or documentation of what 'applicable criteria' entailed, requiring inference from summary statements rather than original evidence."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports rejection of claims 1-2 on facial grounds (no genetic information alleged) and claim 3 on supervisor's stated legitimate reasons, but does not include the affidavit itself, supervisor's detailed declaration, or pay records that would independently verify the factual predicate of the discrimination allegations."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clear: January 5, 2018 (pay issue onset), April 25, 2018 (overtime/holiday work unpaid), December 14, 2018 (package assistance denied), investigation completed, summary judgment issued after Complainant's failure to object within required timeframe, final order and appeal followed."
+    }
+  },
+  "remediation_note": "A compliant version would attach or summarize Complainant's affidavit responses in full, the supervisor's detailed written explanation of the package assistance denial criteria and their application on December 14, 2018, and relevant pay records or timesheets covering the January–April 2018 period. This would enable cold review of the factual disputes underlying the discrimination claims rather than reliance on the AJ's characterization alone.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Include primary evidence exhibits (Complainant affidavit, supervisor declaration, pay records, package assistance denial documentation) with citations to specific passages supporting each finding, organized by claim, to permit independent verification of whether prima facie case elements were genuinely absent and whether pretext was adequately rebutted."
+  }
+}
+```

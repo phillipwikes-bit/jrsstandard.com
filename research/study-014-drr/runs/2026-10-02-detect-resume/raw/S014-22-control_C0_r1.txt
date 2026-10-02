@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation (claims 1–17) is grounded in specific incidents with dates, actors, and actions (e.g., 'On or about June 13, 2017, the Section Chief did not conduct a scheduled meeting'; 'On May 12, 2017, he yelled at her')."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The investigative pathway is partially traceable—complaint filed, investigation conducted, AJ remanded for final decision, claims dismissed for untimeliness—but the reasoning for the Agency's dismissal of claims 6–11 and the 'no discrimination' finding on remaining claims is not articulated within this record excerpt."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct the factual allegations and timeline of events, but cannot reconstruct why the Agency concluded no discrimination occurred, because the decisional rationale for the FAD is absent from this record."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents alleged discriminatory conduct and temporal proximity to EEO activity, but does not include the Agency's evidentiary analysis, burden-shifting framework application, or rebuttal of causation, leaving the sufficiency of evidence to support the 'no discrimination' finding undemonstrated."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology emerges from the record: promotions (May 2013), alleged misconduct spanning 2009–2017, EEO counseling initiation (July 27, 2017), post-counseling retaliation (through April 2018), complaint filing (November 8, 2017), investigation, AJ remand, delayed FAD (beyond 60 days; status checked May 20, 2020)."
+    }
+  },
+  "remediation_note": "The record presents a detailed factual narrative of 17 allegations with chronological and evidentiary anchors, but lacks the Agency's decisional reasoning, legal analysis, and rebuttal evidence. A compliant version must include the Final Agency Decision with explicit findings on each claim, application of McDonnell Douglas burden-shifting or equivalent framework, assessment of pretext, and documented justification for the 'no discrimination' conclusions.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Include within the record or append the complete Final Agency Decision (FAD) that articulates: (1) the legal standard applied to each allegation or cluster of claims; (2) the Agency's findings on prima facie case elements (protected class/activity, adverse action, temporal proximity, comparator treatment); (3) explanation of why claims 6–11 were time-barred, with citation to date-of-knowledge rule; (4) the Agency's response to Complainant's evidence on remaining claims; (5) specific factual findings on pretext (e.g., whether the work assignment change, exclusion from projects, and delayed promotion were pretextual); and (6) address the untimely FAD and Complainant's sanctions argument with substantive reply, demonstrating the basis for any waiver or tolling of the 60-day deadline."
+  }
+}
+```

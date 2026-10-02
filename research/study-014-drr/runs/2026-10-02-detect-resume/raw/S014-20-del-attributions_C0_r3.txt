@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the AJ's conclusions (lack of genetic information allegations, supervisor's stated operational reasons), but the original basis for Complainant's claims themselves—what factual predicates she actually asserted—remains partially obscured by procedural narrative rather than direct citation to her statements."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The AJ's decision logic is traceable: prima facie standard → genetic information requirement → Complainant's affidavit lacked such allegations → summary judgment for claims 1 and 2; for claim 3, supervisor's reasons documented → Complainant failed to rebut pretext → judgment for Agency."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could follow the AJ's analytical framework, but would struggle to reconstruct exactly what Complainant alleged in her affidavit without accessing that document itself, as the record summarizes it only negatively (what she did not allege)."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports conclusions about what Complainant failed to prove (genetic information nexus, pretext), but the evidentiary foundation for the supervisor's stated reasons rests on the supervisor's own averments without corroborating documentation of the package criteria or vehicle capacity assessments cited."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clear: January 5, 2018 (pay complaint start), April 25, 2018 (overtime/holiday complaint start), December 14, 2018 (package assistance denial), followed by investigation, notice of proposed summary judgment, failure to object, summary judgment, final order, and appeal."
+    }
+  },
+  "remediation_note": "The record should explicitly quote or attach Complainant's affidavit statements to ground the AJ's findings that she failed to allege genetic information; for claim 3, contemporaneous documentation (route volume records, vehicle capacity specifications, package criteria worksheets) should be cited to support the supervisor's operational justifications and enable meaningful pretext review.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, cold_reviewer_clarity, accountability_support—the record narrates procedural outcomes and AJ reasoning but under-documents the evidentiary substrate of both Complainant's original allegations and the Agency's proffered justifications.",
+    "compliant_version": "Attach or quote verbatim the Complainant's affidavit and her specific allegations regarding each claim; cite contemporaneous supervisory records, package assistance logs, vehicle capacity documentation, and route volume data that support the supervisor's stated reasons; clearly delineate which evidence contradicts Complainant's pretext theory and why it is dispositive, enabling a reviewer to independently assess sufficiency and logic."
+  }
+}
+```

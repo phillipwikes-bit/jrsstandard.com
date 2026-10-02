@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is grounded in specific incidents: hiring salary negotiations (Complainant 1), pay band disparities with peer comparison, April 2018 review directive, May 31, 2018 telephone conversation, June 15, 2018 inquiry, July 2018 supervisor inquiry, January 2019 Executive Director acknowledgment, June 2018 reorganization, June 2018–February 2019 hostile contractor treatment, resource access restrictions, and May 5, 2019 tweet omission."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces a causal chain from initial hiring discrimination through documented management awareness (April 2018 review), deliberate non-action (January 2019 acknowledgment with refusal to act), reorganization (June 2018), and ongoing differential treatment, with each step anchored to dates and actor roles."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While specific dates and incidents are provided, the record conflates investigative findings with appellate framing—it does not clearly distinguish what was alleged, what was investigated, what evidence emerged, or what the AJs' reasoning was, making independent reconstruction difficult without access to underlying investigative and AJ files."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents complainants' allegations and identifies management actions (salary offers, pay band assignments, review orders, emails, reorganization), but does not present the Agency's contemporaneous response, the investigative evidence gathered, or the evidentiary basis for the AJs' summary judgment conclusions, leaving sufficiency indeterminate."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology emerges: October 2015 hire, June 13, 2019 EEO filing, with intermediate milestones at April 2018 (review), May 31, 2018 (Senior Director call), June 15, 2018 (CAO inquiry), June 2018 (reorganization), July 2018 (new supervisor inquiry), January 2019 (Executive Director acknowledgment), February 2019 (end of hostile contractor period), and May 5, 2019 (tweet)."
+    }
+  },
+  "remediation_note": "A compliant record would segregate allegation, investigation, and decision layers; explicitly present the evidentiary record and its sources; and articulate the AJs' reasoning for rejection rather than merely asserting summary judgment outcomes. The record currently functions as an appellate synopsis rather than a standalone justification document.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support",
+    "compliant_version": "Expand the record to include: (1) a summary of investigative findings organized by allegation; (2) the Agency's factual responses and evidence submitted; (3) explicit citation to or quotation from the AJs' reasoning on each claim; (4) any exculpatory or contesting evidence; and (5) a clear distinction between allegations accepted for investigation, allegations dismissed, and the factual record supporting or refuting each."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record states the Agency 'found no discrimination on the remaining claims' but provides no evidentiary basis, factual findings, or reasoning for that conclusion within the narrative."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "No chain of reasoning is present: the record summarizes allegations and procedure but does not trace how evidence was evaluated or why conclusions were reached."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct the Agency's decision logic because no analysis of individual claims, witness testimony, documentary evidence, or credibility determinations is recorded."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record asserts dismissal and no-discrimination findings but does not cite or quote the evidence, testimony, or analysis that supports those conclusions."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (counseling July 27, 2017; complaint November 8, 2017; remand; FAD timing disputed; May 20, 2020 status inquiry), but the note flags an internal inconsistency between the FAD reference and the appeal's assertion that no FAD had issued, creating ambiguity about the procedural timeline."
+    }
+  },
+  "remediation_note": "The record is a summary or narrative of complaint allegations and bare procedural outcomes, not a decision document. A compliant version must include the Agency's factual findings on each claim, the evidence considered, credibility assessments, and the reasoning that links evidence to the no-discrimination conclusion—particularly for claims 1–5, 12–17, and the reprisal allegation.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A formal Final Agency Decision that (1) states the factual record for each of the 17 claims (or claim groups) with citation to evidence; (2) addresses each element of the discrimination and reprisal statutes; (3) explains why the Agency credited or discredited evidence and witness accounts; (4) applies the legal standard (pretext analysis, comparator evidence, temporal proximity for reprisal); and (5) concludes with explicit findings of fact and law for each claim, tied to the analysis above. The procedural timeline and FAD issuance date must be reconciled."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the basis for each key conclusion: witness statements, performance documentation (PAP, PIP, counseling memo), investigation findings, and the Agency's final decision articulates its reasoning for rejecting each allegation category."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the Agency's final decision articulates conclusions (e.g., 'no corroboration,' 'not severe or pervasive,' 'insufficient evidence'), the decision does not explicitly trace how specific evidence was weighed or why corroborating witness testimony about Complainant's distress and repeated disclosures was deemed insufficient to support sexual harassment claims."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the factual allegations and witness positions, but would struggle to understand the Agency's evidentiary standard for what constitutes 'corroboration' of sexual harassment when multiple witnesses confirmed Complainant's reports of unwanted touching and that she was emotionally devastated by the conduct."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record contains substantial evidence of Complainant's contemporaneous disclosures to multiple coworkers, observed distress (shaking, crying), witness confirmation she reported touching and inappropriate advances, and the Deputy Director's documented volatile behavior, yet the Agency's conclusion that there is 'insufficient evidence' to show sexual harassment is not adequately supported by reasoned analysis of this corroborative evidence."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly established with specific dates for each incident (October 28, 2013; December 12, 2013; January 9, 2014; sexual harassment from 2006 onward; performance actions May 4, 2014 through January 29, 2015), and the sequence of administrative actions and complaint filing is traceable."
+    }
+  },
+  "remediation_note": "The record requires explicit analysis of how witness corroboration of Complainant's emotional response, repeated disclosures, and descriptions of unwanted touching and advances was evaluated against the legal standard for sexual harassment. The final decision should articulate why contemporaneous complaints to management and peer testimony of Complainant's distress do not constitute sufficient circumstantial corroboration when direct observation was limited.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support and reasoning_traceability—the Agency's evidentiary sufficiency conclusion lacks transparent articulation of how available corroborative testimony was weighed and why it fell short of the standard",
+    "compliant_version": "The final decision would need to explicitly address each category of corroborative evidence (witness testimony of Complainant's reports, observed distress indicators, Deputy Director's documented volatile behavior, management's failure to investigate reported touching), state the legal threshold for sufficiency, and explain point-by-point why each piece of evidence did or did not meet that threshold, rather than concluding 'insufficient evidence' in summary form."
+  }
+}
+```

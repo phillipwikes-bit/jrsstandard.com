@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The AJ's factual bases are explicitly stated: lack of genetic information allegations (Claims 1–2) and legitimate nondiscriminatory reasons articulated by the Supervisor (Claim 3)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ applied prima facie and pretext frameworks, but the record does not show how evidence in the investigation report was weighed or whether contradictory evidence was addressed, making the decision chain partially opaque."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the legal standard and conclusions, but lacks access to the underlying investigation evidence, witness statements, or documentary support needed to independently verify the factual findings."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The summary does not cite specific investigative findings, witness testimony, or documentary evidence (e.g., pay records, email denying assistance, vehicle capacity data) that support the AJ's factual conclusions about payment and package assistance."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided: January 5, 2018 (payment began), April 25, 2018 (overtime claim start), December 14, 2018 (assistance denied), and procedural milestones (investigation, hearing request, summary judgment, appeal)."
+    }
+  },
+  "remediation_note": "The record must include or reference the investigation report findings, specific evidence supporting each factual determination (pay stubs, supervisor communications, vehicle specifications), and an explanation of how contradictory evidence was treated. The AJ's reasoning on the pretext analysis for Claim 3 must be more fully developed.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support, reasoning_traceability, cold_reviewer_clarity",
+    "compliant_version": "A compliant record would embed or attach the investigation report's evidence (witness statements, documents reviewed, pay records examined), explicitly cite evidentiary support for each factual finding, show how the prima facie and pretext frameworks were applied to that evidence, and explain why alleged comparators or timing was or was not probative of retaliation."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each major allegation (a–j) is grounded in specific incidents, dates, or documented actions (e.g., October 5, 2016 staff meeting; November 12, 2016 performance evaluation; December 21, 2016 client reassignment)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The investigative record traces evidence (affidavits, emails, IG reports, performance metrics) to conclusions, but the record conflates complainant's characterization of events with investigator findings; for example, 'felt she was being attacked' (allegation) versus Lieutenant Colonel's denial of hostility (finding) without clear synthesis of how the investigator weighed competing narratives."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct most factual events but would struggle to discern the investigator's reasoning for rejecting harassment/discrimination claims, as the record presents allegations and rebuttals sequentially without explicit analysis of credibility, pattern, or temporal weight."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is voluminous (affidavits, performance evaluations, IG findings, ICE complaints) but the record does not clearly establish whether the investigator examined the cumulative pattern alleged or addressed each countervailing explanation (e.g., training denial, client reassignments) against the discrimination theory."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clear and well-marked: September 2014 (start date), October–December 2016 (key incidents), January 2017 (reassignment), November 2016 IG report, October 2021 Motion, January 2022 AJ decision; intervals and sequence are traceable."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should include an explicit investigator's analysis section that addresses each allegation against each rebuttal, articulates the credibility determinations and evidentiary standard applied, and explains how the investigator reached the conclusion that no harassment, discrimination, or pretext occurred despite the complainant's documented pattern of incidents spanning 27 months.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Insert a structured 'Investigator's Findings and Analysis' section that separately addresses: (1) credibility assessments of complainant, supervisors, and corroborating witnesses with stated rationale; (2) element-by-element rebuttal of each discrimination, harassment, and hostile work environment claim; (3) explicit acknowledgment of temporal clustering (October–December 2016) and any pattern analysis; (4) justification for why individual rebuttals (e.g., 'transfer was unintentional') sufficiently negate the cumulative allegation; and (5) the legal standard and threshold applied to conclude 'severe and pervasive' was not met."
+  }
+}
+```

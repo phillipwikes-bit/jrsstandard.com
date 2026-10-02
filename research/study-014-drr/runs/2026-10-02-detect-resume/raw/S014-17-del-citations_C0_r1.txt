@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Factual allegations are itemized with dates and actors, but the nexus between specific incidents and protected class status is asserted rather than demonstrated through the record itself; discriminatory intent is largely attributed to Agency's articulated reasons rather than traced to contemporaneous evidence of motive."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The decision process moves from allegations to Agency explanations to conclusion of no prima facie case, but the comparative treatment analysis and discriminatory animus assessment lack intermediate reasoning showing how specific incidents were evaluated against the comparators or evidence of animus actually present in the record."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would find detailed incident descriptions but insufficient explanation of why each incident does or does not support a discrimination claim, and the record does not clearly identify which evidence—if any—directly supports or contradicts the Agency's nondiscriminatory explanations."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents Agency explanations for each action (e.g., TECS noncompliance, performance failure, potluck tradition) but does not establish whether comparable non-protected employees received identical treatment under identical circumstances, leaving the sufficiency of evidence for the comparative prong uncertain."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides specific dates for most allegations (May 31, 2018 through June 2019 harassment; March 8, 2020 removal; investigation timeline including September 28, 2020 extension), allowing chronological reconstruction of the dispute."
+    }
+  },
+  "remediation_note": "The record must include explicit comparative treatment analysis showing how similarly situated non-protected employees were treated in analogous circumstances, and must document contemporaneous evidence of discriminatory animus (statements, patterns, timing correlations) rather than relying solely on Agency post-hoc explanations. Complainant's affidavit, if submitted, would need to be included or its absence explicitly explained.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, and accountability_support—the record assembles facts and agency responses but does not transparently build the comparative and discriminatory intent foundations required to support a prima facie discrimination finding or its rejection.",
+    "compliant_version": "Document side-by-side comparisons of Complainant's treatment against non-protected comparators in identical or nearly identical circumstances; identify and excerpt any contemporaneous statements reflecting protected-class animus; explicitly state what evidence was examined to assess discriminatory intent and why it was found sufficient or insufficient; include or summarize Complainant's affidavit response; and trace the decision logic from each incident through comparability and animus analysis to the ultimate conclusion."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for the AJ's no-discrimination finding: complainant's failure to provide medical documentation, limited doctor statements, absence of diagnosis/duration, lack of signed release, no showing of telework capability, and non-engagement in interactive process."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The AJ's logic chain is traceable—from evidentiary gaps (no medical records, no consent form, July 30 discharge statement) through essential job duties (physical exams) to the conclusion that complainant did not engage in the interactive process and failed to establish failure to accommodate."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A cold reviewer can follow the accommodation request sequence and AJ reasoning, but the record does not clarify whether the Agency formally denied the requests before August 7 closure or whether closure without explicit denial constitutes constructive denial—critical to complainant's first claim."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the conclusion that complainant did not supply requested documentation, but is less clear on whether the Agency's June 2020 requests were sufficiently specific, timely followed up, or whether the July 30 physician discharge constituted a material change triggering obligation to revisit the request before August 7 closure."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are provided for injury (December 2019), return (March 2, 2020), interactive meeting (March 5), medical requests (June 2020), laptop acquisition (June 2), physician discharge (July 30), accommodation closure (August 7), AWOL charge (August 10), and termination (January 22, 2021)."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit documentation of whether the Agency issued formal denials of the specific accommodation requests (100% telework, 20 hours/week modified duty) before or concurrent with the August 7 closure, and whether the July 30 discharge statement was evaluated by the Agency as triggering a duty to reopen interactive discussion.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Supplement the record with: (1) a dated Agency letter formally responding to each accommodation request (approval, denial, or deferral pending documentation), (2) evidence that the Agency reviewed and acted on the July 30 physician discharge or explicitly determined it did not change the evidentiary posture, and (3) clarification of whether the interactive meeting was closed or remained open pending complainant's submission, so a future reviewer can assess whether the Agency met its burden before the August 10 AWOL charge."
+  }
+}
+```

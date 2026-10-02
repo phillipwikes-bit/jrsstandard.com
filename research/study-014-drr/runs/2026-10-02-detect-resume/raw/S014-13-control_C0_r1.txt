@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the termination decision: performance deficiencies in payroll processing and new hire onboarding documented through progress reviews (June 15, 2021), supervisor emails (June 2021), a memorandum (June 17, 2021), and affidavits from S3, S1, and AS."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is traceable: prima facie case assumed, legitimate nondiscriminatory reasons articulated (probationary-period performance failures), pretext analysis conducted by examining conflicting supervisor accounts (AS's limited-scope observations versus three supervisors' consistent documentation of payroll/onboarding deficiencies), and conclusion that conflicting testimony did not rebut the Agency's explanation."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record contains sufficient detail for reconstruction, the temporal relationship between the disability disclosure/accommodation request and documented performance issues remains implicit rather than explicit, and the specific nature of S3's 'tension' observation versus documented performance metrics could be more clearly delineated."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The record supports the termination conclusion through contemporaneous documentation (June 15 progress review, June 17 memorandum, June 2021 emails) of specific performance failures prior to July 28, 2021 termination, corroborated by multiple supervisors' affidavits."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly established: employment began January 17, 2021; progress review June 15, 2021; memorandum and emails June 2021; S1 supervision began early July 2021; termination July 28, 2021; complaint filed August 24, 2021; final decision issued thereafter."
+    }
+  },
+  "remediation_note": "To strengthen cold-reviewer clarity, the record should explicitly document the date and nature of the disability disclosure and reasonable accommodation request, and should more clearly distinguish between AS's limited supervisory scope (Missing Documents Project) and the full scope of performance issues (payroll/onboarding) that formed the basis for termination.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity—implicit rather than explicit temporal relationship between protected activity (accommodation request) and documented performance deficiencies; scope limitations of conflicting supervisor testimony not sharply delineated.",
+    "compliant_version": "A compliant record would include: (1) explicit date and documentation of when the disability disclosure and accommodation request were made; (2) a clear statement that performance documentation (June 15 review, June 17 memorandum, June emails) pre-dated or post-dated that request; (3) explicit notation of AS's supervisory scope limitations in the decision text itself; and (4) a structured comparison table showing which performance issues fell within AS's purview versus S3/S1's purview, enabling a cold reviewer to independently assess whether AS's lack of observed problems was probative."
+  }
+}
+```

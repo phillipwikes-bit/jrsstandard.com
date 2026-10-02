@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the basis for the AJ's decision: the termination letter cited specific misconduct (misrepresentation about provider privileges request and failure to initiate timely renewal), and the AJ's reasoning grounds each finding in articulated evidence (witness testimony about the provider discussion, credibility assessments, comparison to similarly situated employees)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "A later reviewer can trace the decision pathway: complaint alleged race discrimination → prior theories (Leesburg event, grievance misattribution) → new theory at hearing (interracial relationship prejudice) → AJ credibility assessment → finding of pretextual claims unsupported → conclusion that legitimate reason was proven and pretext not demonstrated."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer without prior knowledge could reconstruct the basis entirely from this record: the specific credentialing incident is described, the provider's testimony is summarized, the earlier inconsistent theories are documented, and the AJ's reasoning for credibility determinations is explicit."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the core termination reason (misrepresentation to provider) through provider testimony and credibility findings, but the pretext analysis regarding the 90-day renewal failure is somewhat underdeveloped—the AJ states it would show pretext 'if it were the only reason' but provides minimal factual detail about the similarly situated employee's renewal violations."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates and sequence are clearly established: termination August 2, 2018 → complaint filed November 8, 2018 → investigation and affidavits during investigation → hearing held (date not specified) → AJ decision issued → forty-day Agency response period expired, making AJ decision final."
+    }
+  },
+  "remediation_note": "To strengthen accountability_support, the record should include specific dates of the similarly situated employee's renewal expirations, documentation of when they fell below the 90-day threshold, and explicit findings about whether that employee received discipline or termination. This would fully substantiate the pretext analysis on the secondary termination ground.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support (minor gap on pretext analysis specificity)",
+    "compliant_version": "Add factual particulars on the similarly situated employee comparison: include dates of her renewal expiration notices, duration of non-compliance with the 90-day rule, and explicit statement of whether she was disciplined or retained, to fully support the AJ's conditional pretext finding."
+  }
+}
+```

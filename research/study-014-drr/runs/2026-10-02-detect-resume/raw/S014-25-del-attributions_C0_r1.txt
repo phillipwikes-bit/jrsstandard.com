@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies bases for the AJ's conclusions: the Notice of Proposed Removal letter itemizes specific reasons (failure to meet deadlines, cancelling events without permission, staff management failures, gossip allegations, fund management errors), and the AJ's reasoning traces to these documented statements."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is traceable from evidence (affidavits, personnel actions, coworker statements) through legal standards (prima facie case, legitimate nondiscriminatory reasons, severe-and-pervasive harassment test) to conclusions on each claim."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the reasoning is articulate, redaction of actual names leaves generic placeholders ('someone,' 'S1') that obscure specific individuals involved; a reviewer years later would struggle to reconstruct which person held which role without reference documents."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The evidentiary record supports conclusions: documented disciplinary actions (Letter of Reprimand, Notice of Proposed Removal), affidavits from supervisors and HR officers, and the AJ's detailed rebuttal of Complainant's comparator and harassment arguments are all grounded in record materials."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear and dated: verbal counseling claims (May 31, July 3, July 16, 2018), Letter of Reprimand (October 18, 2018), subordinate statements (February–April 2019), Notice of Proposed Removal (April 25, 2019), removal decision (June 28, 2019), CAC discovery (October 22, 2019), and subsequent appeal process."
+    }
+  },
+  "remediation_note": "To achieve full compliance, restore actual names or use consistent role-based identifiers in place of 'someone' and 'S1' throughout the record, and ensure redacted versions include a key or legend for reconstruction by later reviewers. The record as structured is otherwise sound in supporting evidentiary accountability.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity — redaction pattern ('someone,' 'S1') impairs standalone reconstructability without external reference.",
+    "compliant_version": "Retain all substantive reasoning and evidence citation (which is robust), but either unredact names and titles or provide a persistent legend (e.g., 'S1 = [Title, Grade]') that allows a future reviewer to independently verify role relationships and decision authority without external documents."
+  }
+}
+```

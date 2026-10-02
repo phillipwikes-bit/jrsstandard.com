@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies bases for each key conclusion: modified job offer documents (dated June 22, 2016, signed July 1, 2016), medical restrictions from physician records, affidavits from Manager and Complainant, and ROI exhibits establish the foundation for findings on accommodation, pay errors, and 204-B denial."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision traces from evidence to conclusion systematically: job offer specifications are compared against medical restrictions, facility transfer and timecard loss are linked to payment errors, and Manager's stated operational needs are tied to 204-B denial, with each step documented in the ROI and AJ reasoning."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the factual sequence is clear, critical gaps impede full reconstruction: the 'unspecified dates' for clock ring deletion, the specific content of medical documentation the Manager claims not to have received, and the actual performance evaluation criteria used to assess Complainant's 'punctuality and reliability' are not fully detailed in the record."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The record supports the three main conclusions with sufficient evidence: modified duty assignments with documented terms, corroborating accounts of payment errors tied to facility transition and manual timecards, and Manager's articulated operational rationale for 204-B denial."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is traceable: injury date May 10, 2014; extended leave period; job offer June 22, 2016; assignment start July 18, 2016; clock ring deletion July 18–28, 2016; grievance September 14, 2016; 204-B request date November 14, 2016; hearing request and AJ decision follow, establishing a clear timeline."
+    }
+  },
+  "remediation_note": "To fully satisfy cold_reviewer_clarity, the record should specify the exact dates of clock ring deletion beyond the July 18–28 range, identify what medical documentation was or should have been provided to the Manager, and detail the specific performance deficiencies (punctuality, reliability) cited to justify 204-B denial.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity; the record synthesizes investigation findings and applies legal standards to three discrete claims, but relies on implied or partially documented evidentiary foundations that would require supplemental reference materials to reconstruct independently.",
+    "compliant_version": "A compliant version would enumerate all clock ring deletion dates with supporting documentation, attach or summarize the medical restrictions letter with date issued, provide a written or summarized performance record comparing Complainant's attendance/reliability metrics to posted supervisor standards, and explicitly state whether the Manager received medical documentation and on what date—ensuring a cold reviewer could validate each factual predicate without external files."
+  }
+}
+```

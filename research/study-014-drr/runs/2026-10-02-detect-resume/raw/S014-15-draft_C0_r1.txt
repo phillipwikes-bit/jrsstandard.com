@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion—reasonable accommodation, pay/clock-ring errors, 204-B denial, and absence of pretext—is anchored to specific evidence: the job offer terms, facility transfer records, the Manager's testimony about supervision needs, and the lack of discriminatory animus documentation."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's path from evidence to summary judgment is clear for accommodation and 204-B claims, but the pay/clock-ring reasoning conflates multiple explanations (facility transfer, workers' comp return, lost timecards, poor organization) without isolating which caused each deletion or failure, making the causal chain less traceable."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can follow the accommodation and 204-B logic, but the pay/clock-ring section presents overlapping Agency explanations without timeline correlation—it is unclear which explanation applies to July 18–28 deletions versus other dates, or whether 'plain error' admits liability despite nondiscriminatory cause."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports dismissal of discrimination and reprisal claims through documented restrictions, declined offers, and absence of animus, but evidence of the Agency's own 'plain error' in pay/clock-ring administration is stated but not parsed as to scope, frequency, or remedy, potentially weakening evidentiary sufficiency for the full resolution."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are explicit—May 2014 injury, July 1 offer, July 18 assignment start, July 18–28 deleted clock rings, August 29 walking claim, September 14 grievance, October 4 and other deletions, November 14 204-B denial, and hearing/final order—allowing a sequence to be traced."
+    }
+  },
+  "remediation_note": "The record should segregate each pay/clock-ring deletion or payment failure by date, state which specific Agency explanation applies to each incident, and clarify whether 'plain error' findings support a remedial obligation or merely explain the nondiscriminatory cause. Tighten the reasoning traceability by correlating timeline to explanation.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would create a timeline table mapping each clock-ring deletion and payment failure to the specific cause (facility transfer, leave-code error, lost timecard, Manager's organization), specify dates affected, state the corrective action taken or recommended, and explicitly distinguish between nondiscriminatory explanation and evidentiary sufficiency to support the dismissal of the pay/clock-ring claim."
+  }
+}
+```
