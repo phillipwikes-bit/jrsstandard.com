@@ -19,6 +19,8 @@
 
 **One correction to send to the editor before print (*Observed*).** The copy edit changed the third monitoring indicator from "The rate at which records can be independently reconstructed by reviewers with no direct knowledge of the underlying events" to **"The rate at which reviewers can be independently reconstruct records..."**, which is ungrammatical. The fix is "The rate at which reviewers can independently reconstruct records with no direct knowledge of the underlying events."
 
+> **WITHDRAWN, 2026-10-02 (owner correction).** OLD FINDING: send the editor a fix for "reviewers can be independently reconstruct records". NEW EVIDENCE: the owner states that he had already decided, with my agreement, to accept the editor's version and not to correct it. That earlier agreement is not in this repository or this session's transcript (searched), so it probably happened in another session; the owner's statement governs. CORRECTED STATUS: **no correction is to be sent; the editor's version stands.** EXPLANATION: the review was written without checking for an existing decision. The original text above is kept for the record.
+
 **Facts checked.** The SEC's 2022 sweep charged "15 broker-dealers and one affiliated investment adviser" (SEC press release 2022-174), and J.P. Morgan Securities paid USD 125 million in December 2021 (SEC press release 2021-262). Both match the article. The DOJ and NIST quotations were not re-checked today.
 
 **Commercial reading (*Inference*).**
