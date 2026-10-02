@@ -1,0 +1,29 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each major decision: the AJ's finding of no discrimination rests on Complainant's failure to provide medical documentation and refusal to sign a release; the AWOL charge rests on eight months of absence without work or medical documentation after the accommodation case closed; and the accommodation denial rests on Complainant's failure to provide physician statements showing ability to perform essential functions."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable from evidence through intermediate steps to conclusions: initial accommodation request → interactive process meeting (March 5, 2020) → multiple requests for medical documentation → Complainant's repeated failures to provide documentation or sign releases → accommodation case closure (August 7, 2020) → AWOL placement (August 10, 2020) → AJ finding of no discrimination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer can reconstruct the factual narrative and chronology, but ambiguities remain: the record does not clearly explain why the Agency's requests for medical documentation ceased after August 7, 2020, or whether Complainant was explicitly informed of consequences of non-compliance; the distinction between LWOP status (allegedly through August 10) and AWOL placement (starting August 10) lacks precise demarcation and explanation of procedural notice."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the factual predicates (medical documentation requests, Complainant's failures to provide them, the accommodation case closure) but the evidentiary sufficiency for the AWOL charge is incomplete: there is no documented evidence that Complainant received explicit notice of the consequences of failing to provide documentation, the Coordinator's informal suggestion to charge AWOL lacks a formal recommendation or directive, and the transition from approved LWOP to AWOL lacks a documented decision memorandum with reasoned justification."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates and intervals are clearly recorded throughout: injury on July 12, 2019; December 2019 aggravation; February 25, 2020 accommodation request; March 5, 2020 interactive process meeting; June 2, 2020 laptop delivery; August 7, 2020 accommodation case closure; August 10, 2020 AWOL placement; January 22, 2021 termination; and August 2, 2021 EEO complaint filing, enabling complete chronological reconstruction."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record must include a formal written decision on the accommodation request with explicit citation to the regulatory basis for closure, documented notice to Complainant of the consequences of non-compliance with documentation requests, and a contemporaneous decision memorandum authorizing the AWOL charge that articulates the factual and legal justification rather than relying on an informal coordinator suggestion.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support and cold_reviewer_clarity—specifically the gap between informal intermediate recommendations (the Coordinator's suggestion to charge AWOL) and final administrative action (the AWOL placement), and the absence of explicit procedural notice to the employee of the consequences of non-compliance with documentation requests.",
+    "compliant_version": "A compliant record would include: (1) a formal written accommodation decision dated August 7, 2020, citing 29 C.F.R. § 1614.203 and explaining why closure without approval or denial was appropriate given Complainant's failure to provide medical documentation despite multiple requests; (2) a documented prior notice to Complainant, dated no later than late July 2

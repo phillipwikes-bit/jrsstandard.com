@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies bases for discrimination alleged: race (African-American), sex (male), age (49), and reprisal for prior protected EEO activity, with specific dates (October 22, 2015) and incidents (mid-year review content, location, presence of S2)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's reasoning is traceable from evidence (S1 and S2 affidavits, complainant's affidavit, the September 2015 letter) to findings, but the logical chain connecting S2's presence to legitimate monitoring purposes relies on assertions in S2's affidavit without detailed analysis of why abusive/caustic conduct necessitated real-time supervision at a mid-year review specifically."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the factual allegations and AJ's summary judgment reasoning, but would lack the original affidavits themselves, investigative file details, and the full record of disciplinary history referenced to evaluate whether the AJ's credibility determinations and factual conclusions were adequately grounded."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the AJ's findings on mid-year review procedure (no rating of record given, conference room for privacy), but the evidentiary basis for concluding S2's presence was justified by legitimate monitoring need and not pretextual is asserted rather than demonstrated with specific prior incidents or management documentation of the claimed abusive/caustic misconduct."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: June 2014 (hire), September 2015 (defendant letter), October 22, 2015 (mid-year review), November 5, 2015 (Complaint 2 filed), with reference to separate prior Complaint 1 and subsequent AJ motion ruling and appeal."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit inclusion or citation to the management affidavits, prior disciplinary records, and specific examples of the alleged abusive/caustic conduct between Complainant and S1 to substantiate the AJ's reasoning for S2's presence. Additionally, the AJ's analysis of whether S2's admission of differential treatment creates a genuine factual dispute about pretext should be more thoroughly addressed rather than incorporated obliquely in the appeal discussion.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would attach or quote key investigative affidavits (particularly S1 and S2), cite specific disciplinary incidents or prior documented conduct justifying S2's monitoring role, and include an explicit AJ analysis addressing whether S2's admission of differential treatment constitutes a material fact dispute precluding summary judgment—rather than requiring a reader to infer these elements from the narrative summary."
+  }
+}
+```

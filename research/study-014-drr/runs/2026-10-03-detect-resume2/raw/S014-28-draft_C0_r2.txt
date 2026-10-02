@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific factual bases for each alleged retaliatory act (e.g., DD-1's position description review, Coworker's account of the affidavit deletion, AD's June 29 statement), but the logical connection between each act and the conclusion of non-discrimination is stated as outcome rather than reasoned."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The final decision states 'no proof of discrimination' but does not explain how the Agency weighed competing accounts (e.g., Coworker's claim of M-61 access versus Complainant's M-60 screenshot, or AD's denial of the 'everyone is out to get you' statement) or applied the reprisal burden of proof framework."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer reading only this summary would understand the allegations and Agency responses but lacks the underlying ROI, exhibits, and analysis that would permit independent reconstruction of why each factual dispute was resolved in the Agency's favor."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents Agency denials and explanations for each act but does not explicitly address whether Complainant established temporal proximity, protected activity, or knowledge of that activity by decision-makers, nor does it assess credibility or corroboration systematically."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology: 2016 EEO complaint, February 2017 position description refusal, June 2017 affidavit posting, June 29 2018 meeting comment, July 2018 telework and certification issues, July or August 2018 reassignment denial, September 2018 panel denial, October 2, 2018 reprisal complaint filing."
+    }
+  },
+  "remediation_note": "The record must include or reference the complete ROI with credibility assessments, explicit application of the prima facie case framework and burden-shifting analysis, direct responses to Complainant's pretext arguments, and documented resolution of key factual conflicts (e.g., the affidavit posting location, the exact phrasing of the June 29 comment).",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, and accountability_support; the summary presents facts and outcomes but omits the analytical bridge from evidence to legal conclusion.",
+    "compliant_version": "A compliant record would include: (1) the full investigative report with witness statements and exhibits; (2) a findings section that explicitly addresses each element of the prima facie case for reprisal (protected activity, decision-maker knowledge, adverse action, temporal proximity); (3) a pretext analysis that evaluates whether each stated non-retaliatory reason is supported by contemporaneous documentation and is inconsistent with the timing or severity of the alleged acts; (4) explicit credibility findings where accounts conflict; and (5) a conclusion that traces from those findings to the final determination."
+  }
+}
+```

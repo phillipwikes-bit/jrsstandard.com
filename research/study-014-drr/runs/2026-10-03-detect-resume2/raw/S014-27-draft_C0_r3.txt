@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "Claim 1 is explicitly noted as incomplete in the record text; the basis for the 2019 MPP rating comparison lacks sufficient documentary foundation to trace."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's findings assert legitimate reasons for the MPP rating and S2's denial of reasoning, but the record does not detail the investigative steps, witness statements, or documentary evidence linking those assertions to the conclusion of no discrimination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later cannot reconstruct why the MPP evaluation was lower without the actual rating documents, S2's stated justifications, or the prior supervisor's 2018 evaluation; the record summarizes conclusions rather than preserving evidentiary detail."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "Complainant alleges an 'Outstanding' 2019–2020 appraisal conflicts with a lower MPP rating three months later, but the record does not present either document or explain the methodological or timing basis for the discrepancy, undermining the sufficiency of the Agency's nondiscriminatory reason."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record documents complaint filing (January 2, 2020), Agency acceptance (March 11, 2020), alleged incidents (September 1, 10, 13, 2019), Complainant's request for final decision (July 10, 2020), and appeal filing, permitting chronological reconstruction of the procedural timeline."
+    }
+  },
+  "remediation_note": "The record must include the actual MPP evaluation documents (2018 and 2019), the 'Outstanding' annual appraisal, S2's documented reasons for his decisions, ROI investigative notes, and witness statements—particularly from S2 and the management official who did not respond—to establish an evidentiary foundation. Claim 1's incomplete text must be completed and cross-referenced to the supporting evaluation records.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, accountability_support, cold_reviewer_clarity",
+    "compliant_version": "A compliant record would include verbatim or exact quotations from the MPP evaluation criteria and ratings, the comparative 2018 and 2019 evaluation forms, the contemporaneous notes documenting S2's stated basis for each decision (Sept. 10 and Sept. 13 incidents), the ROI investigator's interview summaries, and an explanation reconciling the 'Outstanding' annual appraisal with the lower MPP rating, ensuring that a subsequent reviewer can independently assess whether the Agency's stated reasons are pretextual."
+  }
+}
+```

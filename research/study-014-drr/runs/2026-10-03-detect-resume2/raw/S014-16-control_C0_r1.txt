@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion is grounded in specific ROI page citations, supervisor statements, or documentary evidence (e.g., PWP ratings, email records, AUO claims)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces the decision path from complaint allegations through ROI findings, McDonnell Douglas analysis, pretext evaluation, and hostile work environment analysis with clear logical steps."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the substantive dispute, but record density, competing narratives (Complainant vs. Supervisor on July 27 events, AUO eligibility, PWP scope), and parenthetical demographic data create interpretive friction; cross-referencing ROI pages would be necessary."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports conclusions on disparate treatment and hostile work environment findings, but the record conflates Complainant's assertions with Supervisor's denials (especially on July 27 work-return timing and PWP admonishment) without explicit credibility findings or weighing methodology."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided in sequence: July 26–27, 2018 (concert/schedule); August 28, 2018 (training); October 1–4, 2018 (pay discrepancy discovery); October 12, 2018 (PWP review/EEO contact); June 2019 complaint filing; June 2021 AJ orders; August 2021 FAD."
+    }
+  },
+  "remediation_note": "Add explicit findings on which party's testimony was credited regarding July 27 events (work-return request) and PWP admonishment. Clarify the evidentiary threshold applied to distinguish Supervisor's proffered reasons from pretext, and document the analysis of similarly situated comparators (DO 1, DO 2) with specificity on their protected-class status and actual treatment.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support, cold_reviewer_clarity",
+    "compliant_version": "A compliant version would include: (1) explicit credibility rulings or factual findings resolving material disputes (e.g., whether Supervisor asked Complainant to return on July 27); (2) comparative evidence showing how DO 1 and DO 2 were treated under identical or materially similar circumstances, with documented outcomes; (3) a documented pretext analysis explaining why Supervisor's stated reasons are or are not found to be pretextual, rather than assuming failure-to-prove as the default; (4) a hostile work environment analysis that either identifies discriminatory animus by name or explains why the plaintiff's proffered evidence does not support it; and (5) any findings regarding Complainant's EEO compliance failures separate from the merits."
+  }
+}
+```

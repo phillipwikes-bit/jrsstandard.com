@@ -1,60 +1,61 @@
-# Study 014 Part 2: detection results (PROVISIONAL, 84% complete)
+# Study 014 Part 2: detection results (FINAL)
 
-**Run 2026-10-02.**
-- 1,135 of 1,350 planned calls returned; 1,131 were parsed.
-- The API credit ran out a second time, after 930 calls in the resume. The 211 missing calls fall on the last 15 items.
-- Spend for Part 2 was USD 20.68 (3.61 + 17.07).
-- Scoring is modal across the 3 runs per arm, as pre-registered, and done by `tools/study014.py score ... 2026-10-02-detect,2026-10-02-detect-resume`.
-- **These figures may change when the remaining calls are run.**
+**Run 2026-10-02 and 2026-10-03, in three folders.** The API credit ran out twice, and each resume sent only the calls that had not returned.
+- `runs/2026-10-02-detect`: 205 calls.
+- `runs/2026-10-02-detect-resume`: 930 returned, 215 not.
+- `runs/2026-10-03-detect-resume2`: 213 returned, 2 unparsed.
+
+**1,348 of 1,350 planned calls were usable.** All 90 items have a modal answer for all five arms. Spend for Part 2 was USD 24.47.
+
+Scoring is modal across the 3 runs per arm, as pre-registered: `tools/study014.py score 2026-10-02-draft 2026-10-02-cloze 2026-10-02-detect,2026-10-02-detect-resume,2026-10-03-detect-resume2`.
 
 ## Pre-registered rules, applied as written
-| Hypothesis | Rule | Result (provisional) |
+| Hypothesis | Rule | Result |
 |---|---|---|
-| H2 | B, C and D have a higher deletion-hit rate than A, with the control flag rate reported alongside | **Met by the letter:** B, C and D 25/25 against A 23/26. **But not informative**, because B and C name the deleted type on nearly every unaltered record too (next table) |
-| H3 | C beats B and D | **Not met:** C ties B (25/25) and D (25/25) |
+| H2 | B, C and D have a higher deletion-hit rate than A, with the control flag rate reported alongside | **Met by the letter:** B, C and D 30/30 against A 27/30. **Not informative:** B and C name the deleted type on nearly every intact record as well (next table) |
+| H3 | C beats B and D | **Not met:** C ties both at 30/30 |
 
-## The table that matters: hits on deletions against false flags on unaltered records
-"del" is the number of deletion items on which the arm named the deleted type. "ctrl" is the number of the 26 unaltered sources on which it named that same type.
+## The table that matters: hits on deletions against false flags on intact records
+The first number in each cell is deletions caught, out of 10 per type. The second is intact sources on which the same type was named, out of 30.
 
-| Arm | Dates: del / ctrl | Citations: del / ctrl | Attributions: del / ctrl |
+| Arm | Dates | Citations | Attributions |
 |---|---|---|---|
-| A, generic prompt (Sonnet) | 10/10 / 12/26 | 6/9 / 21/26 | 7/7 / 13/26 |
-| B, Codebook text (Sonnet) | 10/10 / 24/26 | 9/9 / 26/26 | 6/6 / 19/26 |
-| C, Engine v0.2 evaluation build (Sonnet) | 10/10 / 25/26 | 9/9 / 26/26 | 6/6 / 22/26 |
-| D, Codebook text (Opus) | 10/10 / 24/26 | 9/9 / 23/26 | 6/6 / 13/26 |
-| **C0, production Engine prompt (Haiku)** | **10/10 / 1/26** | 0/9 / 0/26 (*structural*) | 2/6 / 3/26 |
+| A, generic prompt (Sonnet 5.5) | 10/10 · 15/30 | 7/10 · 24/30 | 10/10 · 15/30 |
+| B, Codebook text (Sonnet 5.5) | 10/10 · 28/30 | 10/10 · 30/30 | 10/10 · 22/30 |
+| C, Engine v0.2 evaluation build (Sonnet 5.5) | 10/10 · 29/30 | 10/10 · 30/30 | 10/10 · 25/30 |
+| D, Codebook text (Opus 5.5) | 10/10 · 28/30 | 10/10 · 26/30 | 10/10 · 15/30 |
+| **C0, production Engine prompt (Haiku 4.5)** | **10/10 · 2/30** | 0/10 · 0/30 (*structural*) | 4/10 · 4/30 |
 
-### Findings (FACT unless labelled)
-1. **The Codebook-prompted reviewers (B, C) flag nearly everything.**
-   - They named dates as missing on 24 and 25 of 26 unaltered records, and citations on 26 of 26.
-   - A reviewer that always says "missing" scores perfectly on deletions, so their deletion hits show nothing about detection.
-   - *Inference:* the Codebook framing makes a model more critical across the board. It does not make it better at telling a damaged record from an intact one.
-2. **The production Engine (C0) separates date deletions cleanly.** It caught 10 of 10 and wrongly flagged 1 of 26 unaltered records. No other arm comes close on that type.
-3. **C0 cannot report citations by design.**
-   - Its production output has no condition that the pre-registered mapping turns into `record_citations`. Its 0/9 is a property of the mapping, not a measured failure.
-   - Its attribution detection is weak: 2 of 6 caught, against 3 of 26 false flags.
-4. **The generic reviewer (A) discriminates moderately on dates and attributions, but not on citations.** It flagged citations on 21 of 26 unaltered records.
-5. **The larger model (D, Opus) is more selective on attributions than B or C** (13/26 false flags against 19 and 22). It is no better on dates.
+## Findings (FACT unless labelled)
+1. **Codebook prompting on its own does not improve detection.**
+   - B and C named dates as missing on 28 and 29 of 30 intact records, and citations on 30 of 30.
+   - A reviewer that nearly always says "missing" cannot tell a damaged record from an intact one, so their perfect deletion scores carry no information.
+   - *Inference:* the Codebook framing makes a model more critical across the board, not more discerning.
+2. **The production JRS Review Engine is specific on dates.** It caught 10 of 10 date deletions and flagged 2 of 30 intact records. No other arm comes close on any type.
+3. **The production Engine cannot report missing citations,** because its output has no condition that maps to them (0/10 is structural). On attributions it caught 4 of 10, against 4 of 30 false flags. That is weak.
+4. **The generic reviewer (A) is moderately discerning** on dates and attributions (10/10 caught against 15/30 false flags), and not on citations (7/10 against 24/30).
+5. **The larger model with the Codebook (D)** matches A on attributions (15/30 false flags), against 22 and 25 for B and C. On dates it over-flags like B and C.
+6. **Draft hits** (P1 drafts that lost at least one type, 24 drafts):
+   - A, B and C hit 24/24; D 21/24; C0 13/24.
+   - For A, B and C this is expected from their control flag rates whether or not they detect anything.
 
-### Draft hits (P1 Sonnet drafts that lost at least one type)
-- A, B and C name a lost type on all 19.
-- D names one on 16 of 19, and C0 on 11 of 19.
-- Given the control flag rates above, high draft-hit rates for A, B and C are expected whether or not the reviewer detects anything.
-
-## What may be said (provisional)
-- "In a controlled test, the production JRS Review Engine identified every record from which dates had been removed (10 of 10), while flagging 1 of 26 intact records."
-  - It must be paired with: "It did not detect removed citations, which its output format cannot express, and detected 2 of 6 removed attributions."
-  - Also add: "Reviewers prompted with the JRS Codebook text flagged missing material on nearly every record, intact or not."
-- No claim that JRS prompting improves detection in general. The data point the other way for the Codebook-only arms.
+## What may be said
+- "In a controlled test on 30 EEOC decision backgrounds, the production JRS Review Engine identified all 10 records from which dates had been removed, while flagging 2 of 30 intact records."
+  - It **must** be paired with: "It did not detect removed record citations, which its output format does not express, and detected 4 of 10 records with attributions removed."
+- "Reviewers given the JRS Codebook text flagged missing material on nearly every record, intact or not."
+- **Not allowed:**
+  - that JRS prompting improves AI review in general;
+  - that the Engine detects missing information in general;
+  - any accuracy, certification or compliance claim.
 
 ## Limits
-- 84% complete; the last 15 items are missing.
-- 10, 9 and 6 deletion items per type, so the intervals are wide.
-- All arms except D use one provider's mid-size models.
-- The deletions are synthetic.
-- The C0 mapping was fixed before the run (`PROTOCOL.md`), but it is coarse.
+- 10 deletion items per type. The intervals are wide: 10/10 has a 95% interval of about 0.72 to 1.00.
+- The deletions are synthetic, made by rule.
+- The C0 mapping (`PROTOCOL.md`) is coarse, and it is the reason citations cannot be scored for C0.
+- One text family.
+- Arms A to C share one model, and D is from the same provider.
 
-## To complete
-- About USD 4 more credit (*Inference*, from the cost of this run).
-- Then run `python3 tools/study014.py detect-resume 2026-10-03-detect-resume2 2026-10-02-draft 2026-10-02-detect,2026-10-02-detect-resume`.
-- Then score with all three run folders.
+## Product implications (INFERENCE; for the owner)
+- The Engine's value is **specificity** (few false alarms) on chronology. Thoroughness is not the selling point.
+- An Engine v0.3 that expresses missing record citations and attributions as conditions would close the two measured gaps. It would need its own pre-registered test.
+- The "JRS Codebook in a prompt" product shape is not supported by this test.

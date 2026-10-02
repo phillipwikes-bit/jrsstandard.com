@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies the basis for the removal decision: profanity directed at management, failure to follow instructions, physical violence (punching wall), and violation of zero-tolerance policy, with prior discipline cited as context."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable from alleged conduct (August 19, 2015) → pre-disciplinary interview (August 24) → supervisory recommendation (August 31) → removal notice (September 11) → AJ analysis of nondiscriminatory justification and prima facie discrimination claims."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the factual narrative is detailed, conflicting witness accounts exist (some say 'sorry ass,' others 'This is bullshit'; Complainant's own recollection is uncertain), and the record does not resolve which version was relied upon for the removal decision."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence of conduct is documented via ROI citations and witness statements, but the record does not explicitly state which specific profane statements or the wall-punching incident alone formed the dispositive basis for removal versus the combination with prior discipline."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are clear and sequential: August 19 (incident), August 24 (pre-disciplinary interview), August 31 (supervisory recommendation), September 4 and 11 (removal notice references), April 24, 2017 (motion for decision without hearing), August 21, 2020 (AJ decision)."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit resolution of conflicting witness statements about what was said, and a clear articulation of which conduct violation(s) independently justified removal versus whether the cumulative effect with prior discipline was determinative. The absence of hearing proceedings forecloses Complainant's opportunity to challenge factual disputes on the record.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support—conflicting factual accounts in the ROI and unclear weighting of multiple violations in the removal rationale",
+    "compliant_version": "A compliant record would (1) explicitly resolve or document the source of conflicting witness statements about Complainant's specific utterances; (2) separately articulate which conduct violations independently met the removal threshold and why; (3) clarify whether prior discipline was a factor in the removal decision or solely contextual; and (4) document why a hearing was not held despite the factual disputes present in the ROI."
+  }
+}
+```

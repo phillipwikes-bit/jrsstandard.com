@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is grounded in specific ROI citations and witness statements; for example, the position description dispute is traced to DD-1's February 6, 2017 meeting (ROI at 139) and the shared drive incident to Coworker's account and DD-1's response (ROI at 538-540)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces decision pathways from evidence to conclusions, such as DD-1's review of the position description with HR and her determination of accuracy (ROI at 139), and AD's denial of the panel request based on OSPE's limited Agile adoption (ROI at 169-70, 501-06)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record is detailed, internal contradictions (e.g., Coworker states M-61 access; Complainant screenshot shows M-60; Complainant initially stated she was detailed to M, then clarified she was not) require a reviewer to resolve ambiguities without explicit clarification in the narrative itself."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is sufficient for some allegations (position description review, shared drive incident) but contested or weak for others (micromanagement claims rely on Complainant's characterization vs. management's operational justifications; FAC-P/PM-IT denial supported by policy documents but Complainant disputes relevance)."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology is reconstructible: February 6, 2017 (position description meeting), June 2017 (affidavit incident), June 29, 2018 (AD meeting), July 1, 2018 (new telework SOP), July 8, 2018 (FAC-P/PM-IT denial), August 7, 2018 (reassignment request denied), September 2018 (W2DOT documentation request), and October 2, 2018 (EEO complaint filed)."
+    }
+  },
+  "remediation_note": "The record functions primarily as a narrative summary of an investigation with conflicting witness accounts; it would benefit from explicit resolution or flagging of material contradictions (e.g., which shared drive received the affidavit, and what the clarification of the detail arrangement means for retaliation analysis). A compliant version should annotate unresolved discrepancies and state whether they affect the basis for the Agency's reprisal conclusion.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity; accountability_support",
+    "compliant_version": "Restate disputed facts with explicit notation of which account the decision-maker credits and why; clarify internal contradictions (M-60 vs. M-61, detail vs. no detail) in a consolidated factual findings section; document the investigation's handling of Complainant's failure to submit requested documents and whether that affected the evidentiary record; segregate the investigator's factual findings from the Agency's legal conclusions about discrimination, so a cold reviewer can assess whether evidence adequately supports the reprisal determination."
+  }
+}
+```

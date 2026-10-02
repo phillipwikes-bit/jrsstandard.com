@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record identifies claims and Agency responses but obscures material actors with generic labels like 'someone' and '[S2]', making it impossible to identify who made specific factual determinations or on what evidentiary basis."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision chain is opaque: the Agency's investigative findings and legal reasoning are summarized without citation to ROI findings, witness statements, or documentary evidence, preventing reconstruction of how conclusions were reached."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reader years later cannot determine which named individuals made which statements, what evidence supported the 'legitimate, nondiscriminatory reasons' for the MPP SE rating, or how the Agency weighed conflicting claims about QC duty assignment."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record summarizes Agency positions (e.g., 'Complainant was restored to mentoring duties,' 'various factors are taken into consideration') but does not present the underlying evidence (communications, performance records, comparative qualifications) sufficient to support a no-discrimination finding."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (January 2, 2020 complaint; March 11, 2020 acceptance; July 10, 2020 final decision request) but the interval between investigation completion and final decision issuance is not stated, and the sequence of events prior to September 1, 2019 is unclear."
+    }
+  },
+  "remediation_note": "The record must restore identities of all decision-makers and witnesses, cite specific ROI findings and evidence (witness statements, documents, comparator data) that support each factual conclusion, and provide explicit dates for investigation completion and final decision issuance to permit accountability and cold review.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would name each witness and investigator, quote or cite specific findings from the ROI regarding the MPP SE rating and comparative qualifications for QC duties, provide copies or citations to performance evaluations and assignment communications, identify the individual(s) making the no-discrimination determination, and establish a clear chronology with explicit dates and intervals between complaint, investigation, and final decision."
+  }
+}
+```

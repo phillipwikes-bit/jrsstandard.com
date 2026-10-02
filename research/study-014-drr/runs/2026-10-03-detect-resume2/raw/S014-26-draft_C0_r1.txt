@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each AJ finding explicitly identifies the legal or factual basis: no prima facie case (lack of minimum qualifications, no application, selectee demographics), legitimate nondiscriminatory reasons (articulated and supported), and failure to show pretext or severity for hostile-environment claim."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's logic is traceable for individual claims, but the record does not explain how summary judgment was granted without a hearing despite Complainant's timely objection, nor does it detail the evidentiary record (investigation findings, exhibits, or witness statements) that supported each finding of no pretext."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can identify which claims were dismissed and on what ground, but cannot independently verify whether the factual assertions (e.g., 'Complainant did not apply,' 'C1 was unaware of EEO activity') are supported by documents in the investigative file, as the record summarizes conclusions rather than presenting underlying evidence."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "Critical findings lack evidentiary anchoring: the assertion that Complainant 'lacked required Level II/III FAC-C certifications' is not tied to job descriptions or qualification standards, and the claim that C1 was 'unaware of EEO activity' rests on unstated evidence; pretext analysis is conclusory rather than grounded in temporal or inconsistency evidence."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: complaint filed August 25, 2015; investigation accepted November 23, 2015; claims span 2015–2018; summary judgment motion March 22, 2018; AJ decision September 23, 2020; final order and appeal follow."
+    }
+  },
+  "remediation_note": "The record requires insertion of investigative findings, job descriptions, qualification standards, and specific evidence (e.g., certification records, communications showing pretext or awareness) to anchor conclusions. Summary judgment reasoning and the evidentiary record supporting each no-pretext finding must be articulated explicitly, not merely asserted.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "accountability_support, cold_reviewer_clarity, reasoning_traceability",
+    "compliant_version": "A compliant record would present the investigative findings section referencing specific exhibits (job descriptions, FAC-C certification standards, application records, emails, and witness statements); articulate the summary judgment standard applied and explain why material facts were not in dispute; for each pretext analysis, cite temporal inconsistencies, comparator evidence, or policy deviations; and trace the logical path from evidence to conclusion on qualification, awareness, and systemic intent claims."
+  }
+}
+```

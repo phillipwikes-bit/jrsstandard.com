@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for discrimination alleged: race (African-American), sex (male), age (49), and reprisal for prior protected EEO activity, with two distinct complaint dates and factual predicates clearly stated."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The AJ's decision path is traceable: allegations identified → summary judgment motion filed → AJ analyzed each claim element (mid-year review content, submission of letter, location/witness presence) → AJ applied findings of fact to legal conclusions → Agency adopted decision."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record documents allegations and the AJ's reasoning, critical evidentiary gaps exist: the actual mid-year review document text is paraphrased rather than quoted verbatim, S1's and S2's affidavits are referenced but not reproduced, and the defendant's letter itself is not attached, requiring a reviewer to rely on intermediary descriptions."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports some conclusions (e.g., that mid-year reviews do not receive ratings of record, that conference room provided privacy) but the AJ's finding that S2's presence was justified by Complainant's prior 'abusive and caustic' misconduct relies on characterizations in affidavits not independently verified in this record, weakening evidentiary sufficiency on that pivotal point."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clear: Complainant hired June 2014, mid-year review October 22, 2015, Complaint 2 filed November 5, 2015, ROI completed, summary judgment motion granted, AJ decision issued, and appeal filed thereafter."
+    }
+  },
+  "remediation_note": "The record requires attachment of primary documents (the actual mid-year review narrative, S1 and S2 affidavits, and the defendant's complimentary letter) and explicit evidentiary findings regarding prior misconduct allegations cited to justify S2's presence, rather than conclusory references to 'abusive and caustic' conduct. The AJ's summary judgment reasoning would benefit from more detailed analysis of whether Complainant's factual disputes regarding differential treatment and the sufficiency of S2's justification are genuinely immaterial as a matter of law.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support; the record summarizes rather than reproduces key evidence, and relies on affidavit characterizations without independent substantiation or full integration into the written record.",
+    "compliant_version": "Attach or fully quote the October 22, 2015 mid-year review document, the S1 and S2 investigatory affidavits (or summarize with specific citations to statements), the defendant's September 2015 letter, and Complainant's rebuttal affidavit; explicitly cite prior misconduct findings supporting S2's monitoring role; and detail the AJ's reasoning for why Complainant's factual dispute regarding differential treatment does not preclude summary judgment, rather than assuming immateriality."
+  }
+}
+```

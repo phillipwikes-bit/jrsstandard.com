@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "Claim 1 rationale is explicitly incomplete ('The record text for this claim is incomplete'), and the Agency's stated reason (S2 did not complete the 2018–2019 MPP evaluation) does not clearly explain why a lower 2019 rating was issued or by whom."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's logic for Claims 2(a)–(b) (restoration to mentoring and consideration for QC) and Claim 2(c) (S2's denial of exclusion) lacks documented evidence; S2's statement is reported but not supported by contemporaneous emails, schedules, or assignment records."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct whether Complainant was actually excluded from assignments or how the 2019 MPP rating was assigned, because the record provides only conclusory denials and assertions rather than documentary evidence or investigation findings."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The Agency's no-discrimination finding rests on S2's oral denial of exclusion and assertion he never consulted Complainant, but the record contains no work assignment logs, email chains, or testimony from the WFO examiner or other officials to corroborate or contradict those claims."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (Sept. 1, Sept. 10, Sept. 13, 2019; Jan. 2, March 11, July 10, 2020), but the intervals between Complainant's request for a hearing and issuance of the final decision lack clarity, and the chronology of assignment decisions and the prior EEO final decision's compliance status are not detailed."
+    }
+  },
+  "remediation_note": "The record must include the complete rationale for the 2019 MPP rating, documented evidence of work assignments (logs, emails, schedules), S2's formal statement or deposition with specifics, investigation findings addressing each allegation, and a timeline showing when compliance with the prior EEO final decision was assessed. The Agency's final decision should cite the evidence supporting each finding, not merely assert denials.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, accountability_support, cold_reviewer_clarity",
+    "compliant_version": "A compliant record would separate the investigation's factual findings (witness interviews, documentary evidence, timeline of assignments) from the Agency's legal conclusions; would document why the 2019 MPP rating differed from 2018 (naming the rater and citing the evaluation criteria applied); would include assignment records showing whether Complainant was or was not bypassed for WFO work; and would explicitly state what evidence rebutted each allegation, with citations to investigation exhibits."
+  }
+}
+```

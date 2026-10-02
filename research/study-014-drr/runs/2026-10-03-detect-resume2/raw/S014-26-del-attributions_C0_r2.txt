@@ -1,0 +1,29 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for the AJ's conclusions: lack of prima facie case (claims 3, 4, 7, 8, 11, 13, 14, 16), failure to meet minimum qualifications (FAC-C certifications), selectee comparators sharing protected characteristics (claim 14), and legitimate nondiscriminatory reasons articulated by the Agency (claims 1, 2, 5, 6, 8, 19, 15, 17–20)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces reasoning from evidence (e.g., Complainant did not apply for claim 8; selectee was same national origin and older for claim 14) to conclusions, but the AJ's reasoning on systemic pattern allegations and the sufficiency of the 17-hour class for Level II certification is not detailed, making full traceability incomplete."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer without prior knowledge could reconstruct the AJ's individual claim findings and the Agency's articulated reasons, but critical analytical gaps remain: the record does not show how the AJ addressed Complainant's systemic discrimination allegation, C1's authority to override OPM certification standards, or comparative evidence on whether similarly situated non-Native Americans received different treatment."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports findings on individual claims (e.g., non-application for claim 8, qualifications gap for claims 3, 4, 7, 11, 13, 16) and the Agency's articulated reasons, but does not document comparative analysis of promotion and training denial patterns across protected and non-protected groups, or factual support for C1's independent determination that 17 hours was insufficient for Level II certification."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: complaint filed August 25, 2015; accepted November 23, 2015; AJ motion granted March 22, 2018; summary judgment decision issued September 23, 2020; specific incident dates for each claim (May 15/June 3, June 2, June 8, September 10, October 20, November 30, April 4, May 2, May 13, May 16, June 9, August 29, 2016, and April 18, 2017)."
+    }
+  },
+  "remediation_note": "The record requires factual development of systemic pattern evidence (comparative data on promotions and training denials by race/national origin), explicit findings on whether C1 possessed authority to modify OPM certification standards, and detailed analysis of how the AJ addressed the Complainant's allegation that qualifications barriers were pretextually imposed. A compliant version must address the appeal's central assertion—that Native Americans were systematically denied advancement—with clear evidentiary support or explicit rejection.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The record must include: (1) explicit findings on whether the AJ considered Complainant's systemic discrimination allegation and, if so, the evidence and reasoning supporting rejection; (2) factual documentation of C1's authority and decision-making process regarding Level II certification standards and the 17-hour class determination; (3) comparative analysis of promotion and training approval rates for Native Americans and non-Native Americans to support the conclusion that race/national origin did not motivate the denials; and (4) detailed analysis of each claim linking evidence to the prima fa

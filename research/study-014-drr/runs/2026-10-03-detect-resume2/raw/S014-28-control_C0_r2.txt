@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is grounded in specific ROI page citations (e.g., ROI at 115 for position description inaccuracies, ROI at 116 for shared drive incident, ROI at 117 for June 29, 2018 meeting) that identify evidentiary locations."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces from complainant's assertion through management's response and investigator's documentation (e.g., affidavit placement: complaint allegation → coworker explanation → DD-1 directive → screenshot evidence at ROI at 64) to support comparative assessment."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer without prior knowledge can reconstruct each disputed event from complainant's statement, respondent's counter-statement, and investigator's documentary evidence (screenshot, email dates, policy documents) without external context."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports some factual findings (shared drive incident resolved, telework grandfathered) but leaves contested credibility determinations unresolved (whether AD said 'everyone is out to get you,' whether panel denial was pretextual) with insufficient objective documentary support for the latter."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are sequentially documented: February 6, 2017 (DD-1 meeting), June 2017 (affidavit incident), June 29, 2018 (AD meeting), July 8, 2018 (FAC-P/PM-IT denial), August 7, 2018 (reassignment denial), September 2018 (W2DOT approval delay), October 2, 2018 (complaint filed), enabling clear event reconstruction."
+    }
+  },
+  "remediation_note": "The record demonstrates solid factual documentation and chronology but lacks structured analysis of credibility conflicts on contested statements (AD's alleged comment, panel denial rationale). A compliant version would require explicit credibility findings or demeanor notes on disputed oral statements, and more detailed explanation of why certain evidence was deemed insufficient to support reprisal claims.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support—credibility determinations on material contested statements lack sufficient documentary corroboration or explicit analytical foundation",
+    "compliant_version": "Expand investigator's statement-to-statement comparisons with: (1) explicit credibility assessment criteria applied to each disputed claim (demeanor, consistency with corroborating evidence, motive to fabricate); (2) documentary evidence ruling out each allegation (e.g., email trails showing AD's stated rationale for panel denial, telework policy application records); (3) reasoned explanation of why management's nondiscriminatory explanations are or are not credited; (4) structured analysis of temporal proximity and causal connection between protected activity (2016 complaint) and each adverse action (2017–2018 events) to support or rebut prima facie elements."
+  }
+}
+```

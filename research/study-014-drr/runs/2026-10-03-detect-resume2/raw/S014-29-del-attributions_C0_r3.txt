@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies bases for each conclusion: profanity use, failure to follow instructions, wall damage, prior discipline history, zero-tolerance policy violation, and lack of discriminatory animus are all clearly stated as grounds for removal."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision chain is traceable from alleged conduct (August 19, 2015 incident), through investigation and pre-disciplinary interview, to recommendation (August 31, 2015), removal notice (September 11, 2015), and AJ decision (August 21, 2020) with explicit reasoning at each stage."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the incident sequence is clear, the record contains conflicting or inconsistent accounts of Complainant's exact statements (e.g., 'This is bullshit' versus profanity-laden statements, and Complainant's own lack of memory about what he said while being escorted out), which could obscure reconstruction by a future reviewer unfamiliar with context."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The record cites ROI page references for each factual assertion regarding conduct, prior discipline, and the AJ's findings, providing evidentiary anchoring sufficient to support the removal decision and discrimination dismissal."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is complete and traceable: August 19, 2015 (incident), August 24, 2015 (pre-disciplinary interview), August 31, 2015 (removal recommendation), September 11, 2015 (removal notice), April 24, 2017 (motion for decision without hearing), and August 21, 2020 (AJ decision)."
+    }
+  },
+  "remediation_note": "To address the cold-reviewer clarity gap, the record should explicitly reconcile conflicting witness accounts of Complainant's statements (noting whether discrepancies were resolved or remain unresolved) and clarify Complainant's own acknowledgments versus denials regarding specific utterances during the escort phase.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity—conflicting or inconsistent narratives about what Complainant actually said during the August 19, 2015 incident introduce ambiguity for downstream reviewers.",
+    "compliant_version": "A compliant version would explicitly document each conflicting account by source (e.g., 'Supervisor stated X, but Complainant recalled Y'), note whether the discrepancy was material to the removal decision, and explain the evidentiary weight assigned to each account in reaching the conclusion."
+  }
+}
+```

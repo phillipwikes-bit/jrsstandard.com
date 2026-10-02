@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies the basis for each conclusion: prima facie failure (lack of application or certification), legitimate nondiscriminatory reasons (articulated by selecting officials), and absence of pretext or hostile-environment severity."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's summary-judgment decision permits tracing from claimed discrimination to articulated reasons, but the record does not detail the AJ's evaluation of Complainant's pretext arguments (e.g., why C1's certification denial was not pretextual) or how the summary-judgment standard was applied to mixed-motive or systemic allegations."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the claims, the AJ's categorical findings, and the Agency's stated reasons, but would struggle to reconstruct the factual record underlying the certification denials, the selectee comparisons, or the evidence of C1's intent without access to the full investigative file and motion-hearing record."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record cites legitimate reasons (lack of certification, failure to apply, selectee's shared protected characteristics) but does not quote or summarize the evidence presented at the summary-judgment motion stage or explain how the AJ weighed Complainant's contrary evidence or systemic-discrimination argument."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates and intervals are clearly marked: complaint filed August 25, 2015, accepted November 23, 2015, motion granted March 22, 2018, summary judgment issued September 23, 2020, with specific dates for training denials and leave issues."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should detail the evidentiary basis for each prima facie or pretext finding, summarize Complainant's counter-evidence and systemic allegations as presented in opposition to summary judgment, and explain the AJ's application of summary-judgment law to mixed-motive and pattern-and-practice claims.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support—the record summarizes conclusions and dates but omits the decisional reasoning and evidentiary detail needed to reconstruct or audit the AJ's pretext analysis and systemic-discrimination rulings.",
+    "compliant_version": "A compliant record would include: (1) a summary of Complainant's evidence supporting each claim, including allegations of C1's bias and systemic exclusion; (2) the AJ's explicit findings on whether Complainant met the prima facie burden for each claim, with reference to the record; (3) for claims where the Agency articulated a reason, a statement of the evidence supporting that reason and the AJ's reasoning for rejecting (or accepting) Complainant's pretext argument; (4) the AJ's rationale for granting summary judgment, including whether any genuine disputes of material fact existed; and (5) a brief reconciliation of any conflicting evidence (e.g., the two officials' differing views on the Analyzing Contract Costs course)."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "Bases for Agency findings are stated (e.g., 'legitimate, nondiscriminatory reasons' for MPP rating, S2's denial of exclusion) but lack citation to specific evidence, comparator data, or documented justifications in the record itself."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision path from evidence to no-discrimination finding is opaque; the record summarizes conclusions (S2 'stated' he did not exclude Complainant) without showing how conflicting evidence was weighed or how the Agency determined credibility between Complainant's allegations and management's denials."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with the case cannot reconstruct why the 2019 MPP rating was lower, what specific QC/mentoring assignments were at issue, or how assignment decisions were made, because supporting documentation (MPP evaluation narratives, assignment logs, witness statements) is not integrated into the summary."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents competing factual claims (Complainant excluded vs. S2's denial of exclusion, MPP rating justified vs. Complainant's 'Outstanding' appraisal three months prior) without documented evidence (assignment records, testimony transcripts, or contemporaneous communications) sufficient to support the no-discrimination conclusion."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided: Jan. 2, 2020 (complaint filed), Mar. 11, 2020 (acceptance), Sept. 1, 10, 13, 2019 (alleged reprisal acts), and July 10, 2020 (request for final decision), allowing a general chronology to be followed."
+    }
+  },
+  "remediation_note": "The record must integrate or reference the underlying ROI, documented management justifications for the MPP rating, assignment logs, witness testimony (particularly from S2 and the unnamed official), and side-by-side comparison of the 2019 MPP evaluation and 2019–2020 annual appraisal to establish evidentiary support. Explicit credibility findings and reasoning for resolving factual conflicts must be articulated.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) full text or reasoned summary of the ROI with findings of fact and credibility determinations; (2) documentary evidence of the MPP evaluation rationale, the annual appraisal, and assignment records; (3) explicit citation to testimony or statements resolving the central factual dispute (whether S2 excluded Complainant); (4) documented comparison of Complainant's treatment to similarly situated non-protected comparators; and (5) a decision narrative that traces each conclusion back to specific evidence and explains how conflicting evidence was evaluated."
+  }
+}
+```

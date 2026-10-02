@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the AJ's summary judgment findings (no rating at mid-year, letter scope, privacy rationale, disciplinary history) but does not clearly articulate what evidence the AJ relied upon to conclude Complainant's rebuttal affidavit 'did not rebut' the explanations regarding S2's presence or abusive conduct."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The path from evidence to the summary judgment conclusion is partially traceable (e.g., no rating existed, so rebuttal letter irrelevant), but the decision to credit S2's disciplinary-justification explanation over Complainant's denial lacks explicit reasoning showing how the AJ weighed competing factual assertions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with this case cannot reconstruct why summary judgment was granted on the Complaint 1 description (noted as 'incomplete'), what specific 'documented abusive and caustic conduct' occasioned S2's presence, or how the AJ differentiated between pretextual and legitimate reasons for the conference-room setting."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is cited for some conclusions (no mid-year rating, defendant letter scope, privacy acknowledgment) but the record does not supply the underlying disciplinary documentation, contemporaneous complaints about Complainant's conduct, or detailed comparison of how similarly situated employees' reviews were conducted."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided: October 22, 2015 (review date), November 5, 2015 (Complaint 2 filing), September 2015 (defendant letter), and the sequence of investigation, summary judgment, and appeal is clear."
+    }
+  },
+  "remediation_note": "The record must supply the complete text of Complaint 1, itemize the 'documented abusive and caustic conduct' with dates and sources, and include a detailed written explanation of the AJ's reasoning for crediting the Agency's non-discriminatory explanations over Complainant's factual denials—particularly why S2's acknowledged deviation from standard review procedure was not treated as evidence of pretext.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) the full text of both complaints; (2) copies of the disciplinary incidents cited as justification for S2's presence, with dates; (3) a comparative analysis of how reviews for other employees with similar disciplinary histories were conducted; (4) the AJ's point-by-point rebuttal of Complainant's affidavit, showing which specific assertions were credited and why; and (5) explicit findings addressing whether the deviation from standard procedure (conference room, S2 present) was sufficient to create a genuine dispute of material fact on pretext, before summary judgment was granted."
+  }
+}
+```

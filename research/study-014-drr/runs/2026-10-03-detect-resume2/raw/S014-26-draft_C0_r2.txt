@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the 20 claims is tied to specific allegations (non-selections, training denials, leave approvals, hostile environment), and the AJ's findings explicitly identify the basis for dismissal or rejection of each (lack of prima facie case, legitimate nondiscriminatory reason, no pretext, single non-severe act)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the AJ articulates conclusions and cites prima facie doctrine, the record does not detail the evidentiary submissions (testimony, documents, expert reports) that underpin findings on comparator qualifications, C1's knowledge of EEO activity, or why the 17-hour course was deemed insufficient—making full tracing of the decision path difficult without access to the underlying investigation file."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer unfamiliar with the case could identify the claims and outcomes but would struggle to reconstruct why the 17-hour course was insufficient for Level II, what evidence showed C1's lack of knowledge of EEO activity for claim 14, or the comparator analysis for non-selection claims without reference to the underlying investigative record."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The AJ cites legal standards (prima facie case, pretext analysis) and identifies reasons (lack of qualification, selectee shared protected characteristics), but the summary does not quote or reference specific evidence (comparator qualifications, hiring records, training decisions, or testimony) that substantiates findings on disputed factual questions such as C1's intent or systemic denial claims."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: complaint filed August 25, 2015; accepted November 23, 2015; investigation conducted; summary judgment motion granted and decision issued September 23, 2020; final order adopted; appeal initiated—with specific claim dates (2015–2016 non-selections, May 2016 hug, April 2017 leave, etc.) identifiable."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record must incorporate or reference specific evidence underlying key factual findings: (1) the training and qualification standards applied to the 17-hour course, with documentation of approval and denial decisions; (2) relevant portions of comparator hiring records and qualifications; (3) testimony or documentary evidence addressing C1's knowledge of Complainant's EEO activity and intent; and (4) the investigative findings on the systemic discrimination allegation.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version must either (a) embed representative extracts from investigative findings, hearing testimony, and documentary evidence (training records, selection rationales, organizational data) sufficient to permit a cold reviewer to verify the basis for each major factual conclusion without external reference, or (b) clearly cross-reference with page citations to a complete investigative or hearing record appended to or filed contemporaneously with the decision, ensuring that the chain from evidence to conclusion on disputed questions (intent, qualifications, systemic pattern) is transparent and auditable by appellate review."
+  }
+}
+```

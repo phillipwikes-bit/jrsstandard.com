@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the 20 claims is identified with specific dates, job announcements, or actions (e.g., 'On or about May 15 and June 3, 2015, someone was denied FAC-C Level II training'), and the AJ's reasoning for each finding cites either lack of qualifications, failure to apply, or legitimate nondiscriminatory reasons."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision logic is generally traceable (e.g., claims 3, 4, 7, 11, 13, 16 denied because Complainant lacked required FAC-C certifications), but the causal chain linking FAC-C denial to later promotion denials relies on conclusory statements about 'minimum qualifications' without detailed evidence of policy or certification requirements shown in the record itself."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the AJ's holdings and basic chronology of events, but would struggle to independently verify the FAC-C certification requirement, the legitimacy of C1's decision to deny the 17-hour class, or whether the selectees in comparative claims truly met qualifications, as the underlying evidence and policy documents are not summarized or cited in detail."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents the AJ's conclusions but does not include the investigation report, witness statements, or documentary evidence (FAC-C policy, hiring criteria, selectee qualifications) needed to independently assess whether the stated legitimate reasons are genuinely supported or pretextual."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The sequence of events is clearly chronological from August 25, 2015 (EEO complaint filed) through May 16, 2016 and beyond, with specific dates attached to each claim, motion (March 22, 2018), and decision (September 23, 2020)."
+    }
+  },
+  "remediation_note": "The record requires incorporation of the underlying investigation report, FAC-C certification policy documents, and comparative selectee qualifications to support the AJ's determinations of lack of prima facie case and legitimate nondiscriminatory reasons. The systemic discrimination allegation and implicit bias arguments also demand explicit evidentiary findings on hiring patterns and C1's decision-making authority that are not detailed here.",
+  "finding": {
+    "ai_function": "summary|analysis",
+    "condition_triggered": "accountability_support, cold_reviewer_clarity, reasoning_traceability",
+    "compliant_version": "A compliant record would attach or fully summarize: (1) the investigation report and exhibits; (2) FAC-C policy and certification standards in effect during the relevant period; (3) qualifications and demographic data for selectees in comparable positions; (4) evidence of C1's authority to establish Level II requirements; and (5) explicit findings on whether Complainant's protected activity was known to decision-makers for each promotion denial, with fact-specific analysis of pretext rather than reliance on conclusory statements about minimum qualifications."
+  }
+}
+```

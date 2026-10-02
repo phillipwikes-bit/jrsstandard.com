@@ -170,192 +170,192 @@
  "part2": {
   "A": {
    "deletion_hit": [
-    23,
-    26,
+    27,
+    30,
     [
-     0.71,
-     0.96
+     0.744,
+     0.965
     ]
    ],
    "draft_hit": [
-    19,
-    19,
+    24,
+    24,
     [
-     0.832,
+     0.862,
      1.0
     ]
    ],
    "control_flag_rate": {
     "dates": [
-     12,
-     26
+     15,
+     30
     ],
     "citations": [
-     21,
-     26
+     24,
+     30
     ],
     "attributions": [
-     13,
-     26
+     15,
+     30
     ]
    },
    "outcomes": {
-    "ok": 229,
+    "ok": 270,
     "parse_error": 0,
-    "failed": 82
+    "failed": 0
    }
   },
   "B": {
    "deletion_hit": [
-    25,
-    25,
+    30,
+    30,
     [
-     0.867,
+     0.886,
      1.0
     ]
    ],
    "draft_hit": [
-    19,
-    19,
+    24,
+    24,
     [
-     0.832,
+     0.862,
      1.0
     ]
    ],
    "control_flag_rate": {
     "dates": [
-     24,
-     26
+     28,
+     30
     ],
     "citations": [
-     26,
-     26
+     30,
+     30
     ],
     "attributions": [
-     19,
-     26
+     22,
+     30
     ]
    },
    "outcomes": {
-    "ok": 228,
+    "ok": 270,
     "parse_error": 0,
-    "failed": 84
+    "failed": 0
    }
   },
   "C": {
    "deletion_hit": [
-    25,
-    25,
+    30,
+    30,
     [
-     0.867,
+     0.886,
      1.0
     ]
    ],
    "draft_hit": [
-    19,
-    19,
+    24,
+    24,
     [
-     0.832,
+     0.862,
      1.0
     ]
    ],
    "control_flag_rate": {
     "dates": [
-     25,
-     26
+     29,
+     30
     ],
     "citations": [
-     26,
-     26
+     30,
+     30
     ],
     "attributions": [
-     22,
-     26
+     25,
+     30
     ]
    },
    "outcomes": {
-    "ok": 228,
+    "ok": 270,
     "parse_error": 0,
-    "failed": 84
+    "failed": 0
    }
   },
   "D": {
    "deletion_hit": [
-    25,
-    25,
+    30,
+    30,
     [
-     0.867,
+     0.886,
      1.0
     ]
    ],
    "draft_hit": [
-    16,
-    19,
+    21,
+    24,
     [
-     0.624,
-     0.945
+     0.69,
+     0.957
     ]
    ],
    "control_flag_rate": {
     "dates": [
-     24,
-     26
+     28,
+     30
     ],
     "citations": [
-     23,
-     26
+     26,
+     30
     ],
     "attributions": [
-     13,
-     26
+     15,
+     30
     ]
    },
    "outcomes": {
-    "ok": 226,
+    "ok": 270,
     "parse_error": 0,
-    "failed": 88
+    "failed": 0
    }
   },
   "C0": {
    "deletion_hit": [
-    12,
-    25,
+    14,
+    30,
     [
-     0.3,
-     0.665
+     0.302,
+     0.639
     ]
    ],
    "draft_hit": [
-    11,
-    19,
+    13,
+    24,
     [
-     0.363,
-     0.769
+     0.351,
+     0.721
     ]
    ],
    "control_flag_rate": {
     "dates": [
-     1,
-     26
+     2,
+     30
     ],
     "citations": [
      0,
-     26
+     30
     ],
     "attributions": [
-     3,
-     26
+     4,
+     30
     ]
    },
    "outcomes": {
-    "ok": 224,
-    "parse_error": 4,
-    "failed": 88
+    "ok": 268,
+    "parse_error": 3,
+    "failed": 3
    }
   }
  },
  "part2_complete": {
-  "ok": 1135,
+  "ok": 1348,
   "planned": 1350
  }
 }

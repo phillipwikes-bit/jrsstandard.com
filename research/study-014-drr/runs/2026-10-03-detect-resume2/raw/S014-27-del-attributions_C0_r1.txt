@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record identifies claims but fails to establish who made specific findings, determinations, or assertions—pronouns and bracketed references replace identifiable decision-makers throughout."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision path from evidence to conclusion is obscured by unattributed statements ('someone asserts', 'someone stated') that prevent tracing how the Agency or AJ reached its finding of no discrimination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer with no prior knowledge cannot reconstruct the Agency's reasoning because critical witness identities, evidentiary details, and the logical chain connecting facts to conclusions are omitted or redacted into illegibility."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record summarizes Agency responses to each claim but provides no detail on what evidence supported those responses or how responses refuted the complainant's allegations of discrimination."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (January 2, 2020; March 11, 2020; September 10, 2019; July 10, 2020) but intervals between alleged adverse actions and responses, and the investigation timeline itself, are not clearly sequenced."
+    }
+  },
+  "remediation_note": "This record requires complete de-redaction or re-drafting to identify all decision-makers, witnesses, and respondents by name or role; insertion of specific factual findings and documentary evidence underlying each claim determination; and explicit statement of the logical reasoning connecting evidence to the no-discrimination conclusion. The appeal-stage assertions must also be attributed and addressed with particularity.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity",
+    "compliant_version": "A compliant record would name the investigator, the decision-making official, and all respondents; cite specific documentary or testimonial evidence for each finding on claims (1), (2a), (2b), and (2c); explain step-by-step why that evidence did or did not support discrimination; identify all witnesses and their statements; and sequence the timeline of events, investigation completion, and final decision issuance with stated reasons for any delay."
+  }
+}
+```

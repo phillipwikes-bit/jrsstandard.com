@@ -3,8 +3,8 @@
 **Run 2026-10-02, against the protocol fixed in commit `b184ca6` (`PROTOCOL.md`).**
 
 - Parts 1 and 3 are complete.
-- **Part 2 is incomplete: 205 of 1,350 calls.** The owner's API account ran out of credit mid-run.
-- Spend was USD 9.20: drafting 4.99, cloze 0.59, detection 3.61. Failed calls are not billed.
+- **Part 2 is complete: 1,348 of 1,350 calls**, after two credit top-ups and two resumes.
+- Spend for the main study was USD 30.05: drafting 4.99, cloze 0.59, detection 24.47 over three runs. The confirmatory run added USD 3.20, for USD 33.25 in all. Failed calls are not billed.
 - Scores are in `runs/SCORES.json`; the raw outputs are in `runs/`.
 
 Labels follow CLAUDE.md Rule 2.
@@ -20,10 +20,10 @@ Labels follow CLAUDE.md Rule 2.
    - Under the corrected extractor (v1.2), P4 drafts contain **0** unsupported dates, citations or quotations, for both drafters.
    - This is a post-hoc finding. It needs a confirmatory run on unseen texts before it can support any claim (see "Next").
 4. **H5, reconstruction loss (FACT).** A reader answered 96.7% of masked facts from the source and 77.3% from a concise Sonnet summary (P1), a loss of 19.4 points. From a JRS-guided draft (P4) it answered 97.3%, a loss of -0.6 points, which is within noise.
-5. **H2 and H3 (provisional, 84% complete; see `PART2_RESULTS.md`; updated after the resume).**
-   - H2 is met by the letter but is not informative: the Codebook-prompted reviewers flag missing material on nearly every intact record too.
+5. **H2 and H3 (FINAL; see `PART2_RESULTS.md`).**
+   - H2 is met by the letter (B, C and D 30/30 against A 27/30) but is not informative: Codebook-prompted reviewers flag nearly every intact record too.
    - H3 is not met.
-   - The production Engine caught 10 of 10 date deletions while flagging 1 of 26 intact records. It cannot report citations by design.
+   - The production Engine caught 10 of 10 date deletions while flagging 2 of 30 intact records. It cannot report citations by design, and it caught 4 of 10 attribution deletions.
 
 ## Part 1: drafting (240 drafts; 239 ended normally; Haiku P3 on S014-24 hit the 4,000-token limit and is scored as delivered)
 Median retention across 30 texts, pre-registered extractor v1.0. Citations are over the texts that contain them.

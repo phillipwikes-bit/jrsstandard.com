@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The basis for removal is clearly identified: profanity, failure to follow instructions, wall damage, and prior discipline history; the basis for dismissal of discrimination claims is stated as failure to establish prima facie case and lack of evidence of discriminatory motive."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's reasoning on the nondiscriminatory rationale is traceable, but the record does not detail the AJ's step-by-step analysis of why Complainant failed to establish prima facie GINA protection eligibility or what specific evidence was weighed on the GINA inference element."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can reconstruct the core facts and outcome, but cannot fully understand from this summary alone why the GINA claim failed at the prima facie stage without access to the AJ's full opinion and the record of what evidence Complainant presented."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports removal based on eyewitness accounts of the August 19 incident and prior discipline, but the summary does not detail what evidence Complainant presented to rebut the nondiscriminatory reasons or to support his GINA claim, limiting assessment of evidentiary sufficiency."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "The record contains an unresolved discrepancy between the stated removal effective date (September 2015, unspecified day) and the AJ's holding (September 11, 2015 implied), and the interval between Pre-Disciplinary Interview (Aug. 24) and Supervisor recommendation (Aug. 31) is clear but the decision lag (April 2017 motion, August 2020 decision) spans nearly three years without explanation of delays."
+    }
+  },
+  "remediation_note": "Verify and reconcile the removal effective date; insert the complete AJ reasoning on the GINA prima facie elements and evidentiary findings; and clarify the timeline gaps between motion and final decision, particularly any tolling or procedural delays.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "temporal_reconstructability, cold_reviewer_clarity, reasoning_traceability",
+    "compliant_version": "A compliant summary would (1) reconcile the removal date discrepancy, (2) include the AJ's articulated reasoning on each element of the GINA prima facie case and inference analysis, (3) detail what evidence Complainant presented and why it failed to rebut the nondiscriminatory rationale, (4) explain material procedural delays or tolling between April 2017 and August 2020, and (5) reference the source document page numbers for the AJ's full opinion to enable cold-review reconstruction."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for individual factual findings (e.g., DD-1 review of position description, Coworker's account of affidavit deletion) but does not explicitly connect those findings to the ultimate legal conclusion of 'no proof of discrimination,' leaving the inferential step opaque."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The Agency's final decision applies the legal standard (proof of discrimination) but does not articulate how the factual findings rebut Complainant's prima facie elements (protected activity, adverse action, temporal proximity, causal connection) or address pretext, making the decision process non-traceable."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct from this summary alone why the Agency rejected each of the seven alleged retaliatory acts or how the contradictions between Complainant's and Agency officials' accounts were resolved in favor of the Agency."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is present for many factual disputes (affidavit placement, certification requirements, telework grandfathering, Agile panel rationale) but the record does not show which evidence was weighted more heavily or why agency denials were credited over Complainant's allegations in contested matters."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology: 2016 EEO complaint, February 2017 position description refusal, June 2017 affidavit posting, June 29 2018 June 29 meeting, July 2018 certification denial and micromanagement, September 2018 panel denial, and October 2, 2018 reprisal complaint filing."
+    }
+  },
+  "remediation_note": "The record must articulate the legal standard applied (prima facie case + pretext or causal connection for reprisal under Title VII), map each factual finding to the elements of reprisal liability, and explicitly explain why agency denials of contested statements override Complainant's contrary testimony. The decision should separately address the allegation of an incomplete record and the admissibility of post-investigation evidence.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, and accountability_support—the record assembles evidence and findings but does not transparently connect them through the legal framework or explain evidentiary choices.",
+    "compliant_version": "A revised final decision would (1) state the reprisal standard explicitly; (2) identify which acts Complainant alleged are protected and which are adverse; (3) for each act, state whether temporal proximity exists and whether Complainant established a prima facie case; (4) for acts satisfying prima facie, explain which agency reasons are credible and why competing testimony was credited or rejected; (5) address whether the aggregate pattern suggests retaliation even if individual acts do not; (6) rule on the completeness of the investigative record and the status of new evidence; and (7) provide sufficient detail that a reviewing body can assess whether legal error occurred."
+  }
+}
+```

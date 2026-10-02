@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is grounded in specific factual assertions: position description inaccuracies traced to February 2017 meeting with DD-1; affidavit posting tied to June 2017 discovery; micromanagement linked to September 2018 W2DOT documentation requests; telework restrictions referenced to July 1, 2018 SOP implementation; FAC-P/PM-IT denial dated July 8, 2018; supervisory reassignment request dated August 7, 2018; Agile panel denial to July 2018 timeframe."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record presents competing narratives (Complainant vs. management accounts) with documented counterfactuals—e.g., Coworker states no M-60 access but Complainant's screenshot contradicts this—yet the investigator's reasoning for accepting one account over another is not explicitly articulated in this record excerpt."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer months later could identify the seven alleged incidents and supporting/contradicting statements, but would struggle to reconstruct why management accounts were credited over Complainant's (e.g., why DD-1's 'accidental save' explanation prevailed despite the screenshot evidence) without access to investigator notes or burden-of-proof analysis."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence exists for most factual predicates (meetings dated, policies cited, emails referenced, screenshots produced), but the record conflates evidentiary sufficiency with investigative conclusion—the investigator states 'Complainant failed to prove discrimination' without systematically addressing whether each factual allegation was established and, if so, whether temporal proximity and protected activity nexus support causation."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Clear chronology: prior EEO complaint (2016), February 2017 position description meeting, June 2017 affidavit incident, June 2018 AD assignment, June 29, 2018 interrogation meeting, July 1, 2018 SOP, July 8, 2018 FAC-P/PM-IT denial, July 19, 2018 EEO counselor contact, August 7, 2018 reassignment denial, September 2018 W2DOT requests, October 2, 2018 complaint filing."
+    }
+  },
+  "remediation_note": "The record requires explicit investigative findings on each factual allegation (established/not established) and documented reasoning for credibility determinations, particularly where evidence conflicts (screenshot vs. Coworker account). A compliant version must separately address the prima facie retaliation framework: protected activity, manager knowledge, adverse action, temporal proximity, and pretext analysis.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The final decision must include a section-by-section investigation finding for each of the seven allegations, stating whether each factual predicate was established by clear and convincing evidence, identifying contradictory evidence and the investigator's credibility rationale, and then applying the McDonnell Douglas burden-shifting framework (prima facie case, legitimate nondiscriminatory reason, pretext) with explicit reasoning for whether reprisal causation was proven or not; all investigative interview notes and documentary evidence cited must be referenced by exhibit number or date."
+  }
+}
+```

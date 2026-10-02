@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The removal basis is clearly identified: profanity, failure to follow instructions, punching a wall, and violations of zero-tolerance and workplace violence policies, with specific prior discipline cited (10-day and 14-day suspensions)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path is traceable from alleged conduct (August 19 incident), through Pre-Disciplinary Interview (August 24), recommendation (August 31), ROI review, AJ motion and decision (August 21, 2020), to final agency order, with ROI page citations provided throughout."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the sequence is clear, a cold reviewer would struggle to independently assess credibility because conflicting accounts exist (Complainant's 'This is bullshit' vs. witness statements of profanity) without direct access to ROI pages 19–24, 78–90 or witness interview details."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents the Agency's articulated reasons and the AJ's legal findings on discrimination claims, but does not fully surface the evidentiary basis for resolving the factual dispute between Complainant's and witnesses' accounts of what was actually said or the wall contact."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is complete: August 19, 2015 (incident), August 24, 2015 (pre-disciplinary), August 31, 2015 (removal recommendation), September 4 or 11, 2015 (notice issued), April 24, 2017 (motion for decision without hearing), August 21, 2020 (AJ decision), with final agency order following."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should either include summaries of disputed factual findings from the ROI (e.g., which witness accounts were credited and why), or explicitly state that credibility determinations favor the Agency's witnesses. A brief statement resolving the Complainant's account conflict would strengthen accountability_support.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity and accountability_support",
+    "compliant_version": "Supplement the record with: (1) a summary table of witness statements and Complainant's conflicting account, with citation to ROI page ranges; (2) a one-paragraph statement of which accounts were credited and on what basis (demeanor, corroboration, etc.); (3) explicit findings on each factual element of the removal decision (profanity, insubordination, violence) with supporting ROI reference."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for each conclusion: Agency's legitimate nondiscriminatory reasons (confrontational conduct, zero-tolerance violation) and AJ's analysis of prima facie elements for each discrimination claim."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's rejection of the GINA claim is traced through prima facie framework, but the record does not detail what evidence Complainant presented or why it failed to meet each element, limiting full traceability of the analytical path."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the discrimination framework applied, but would struggle to assess the sufficiency of evidence because specific testimony, documents, or witness statements cited by the AJ are not reproduced or clearly summarized in this summary."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the nondiscriminatory reasons (incident details, prior discipline, zero-tolerance policy) and the prima facie analysis structure, but does not explicitly address whether Complainant's size-based GINA theory had any record foundation or whether the AJ considered alternative explanations for the removal timing or severity."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "A critical discrepancy exists: the opening states removal was effective September 2015, but the note flags conflicting dates (September 4 vs. September 11, 2015), and the procedural timeline (Aug. 19 incident → Aug. 24 PDI → Aug. 31 recommendation → removal notice date unstated → April 24, 2017 motion → August 21, 2020 decision) is incomplete without the removal notice date and the EEOC hearing request date."
+    }
+  },
+  "remediation_note": "Resolve the removal date discrepancy by cross-reference to source documents, and append the AJ's citation to specific evidence (testimony excerpts, exhibits, witness accounts) that supported the prima facie and pretext analysis for each claim. Include the removal notice date and EEOC hearing request date to complete the chronology.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "temporal_reconstructability, reasoning_traceability, cold_reviewer_clarity",
+    "compliant_version": "A compliant version would: (1) reconcile and state the single removal effective date with source confirmation; (2) provide the full procedural timeline including removal notice issuance and EEOC complaint/hearing request dates; (3) cite specific evidence (e.g., 'Tr. p. 15, witness X testified…' or 'Ex. 7, email from Manager dated…') that the AJ weighed in rejecting each discrimination claim; (4) explicitly summarize why Complainant's size-based GINA theory lacked legal or factual foundation; and (5) note any countervailing evidence Complainant offered and why it did not rebut the legitimate reasons."
+  }
+}
+```

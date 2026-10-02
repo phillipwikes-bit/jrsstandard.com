@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies factual bases for each allegation (position description audit, shared drive incident, June 29 meeting, telework schedule, certification requirements, reassignment denial, panel exclusion) but does not explicitly identify which evidentiary items the Agency relied upon to conclude 'no proof of discrimination' or how each piece of evidence was weighted in that legal conclusion."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents Agency and Complainant positions on each factual dispute but does not show the investigator's or decision-maker's reasoning chain from disputed facts (e.g., who actually posted the affidavit, what was said on June 29) to the legal conclusion that reprisal was not proven; the final decision rationale is not reconstructed in the summary."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer reading this summary years later would understand the allegations and some denials, but would not have sufficient detail to independently assess credibility, determine which account of contested events (affidavit posting, June 29 comment, telework practice) the investigator credited, or understand the investigator's application of the burden of proof to each element."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents factual assertions by multiple parties but does not clearly establish what documentary or testimonial evidence supports the Agency's legal finding; for example, it is unclear whether the investigator reviewed the W2DOT schedule request, obtained records of the telework practice before July 2018, or reviewed contemporaneous email regarding the Agile panel decision."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides specific dates for most events (2016 desk audit, February 2017 position description refusal, June 2017 affidavit posting, June 29 2018 meeting, July 8 2018 certification denial, July/August 2018 reassignment denial, September 2018 panel denial, July 19 2018 EEO contact, October 2 2018 complaint filing) and identifies the procedural sequence through withdrawal and final decision."
+    }
+  },
+  "remediation_note": "To achieve compliance, the final Agency decision (or the investigative record summarized here) must explicitly state which factual accounts the investigator credited, cite the specific documents or testimony supporting each factual finding, apply the legal standard for reprisal (protected activity, adverse action, causal nexus, pretext) element-by-element with evidentiary support, and explain how uncontroverted facts (e.g., timing of complaints and adverse actions) were evaluated for temporal proximity.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability and accountability_support",
+    "compliant_version": "A compliant version would include the investigator's credibility findings on contested facts (e.g., 'the investigator credited DD-1's account that the affidavit was saved inadvertently because [documentary evidence X and corroborating testimony Y]'), citation to documentary exhibits supporting each factual conclusion, explicit analysis of each prima facie element (protected activity occurred on [date], adverse action was [specific action] on [date], temporal proximity/causal connection inferred from [evidence]), rebuttal of pretext arguments with specific reference to comparator conduct or business records, and explanation of any gaps in the investigative record and their impact on the conclusions."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is grounded in specific ROI citations (e.g., 'ROI at 115' for position description claims, 'ROI at 116' for shared drive incident, 'ROI at 117' for June 29, 2018 meeting), establishing identifiable evidentiary sources."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces from Complainant's factual assertions through investigator documentation of witness statements (DD-1, AD, Coworker) to supporting evidence (screenshot at ROI 64), enabling reconstruction of investigative conclusions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer unfamiliar with the case can follow the narrative: employment status, prior 2016 EEO complaint, seven specific retaliatory acts alleged with dates, investigator interviews, and competing accounts (e.g., Coworker's accidental vs. intentional save, AD's characterization of the June 29 meeting)."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is voluminous and detailed but contains internal conflicts (Coworker denies M-60 access yet Complainant's screenshot shows affidavit there; competing characterizations of DD-1 and AD's motives) that the record does not fully resolve before final Agency determination."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clearly marked: prior 2016 complaint, February 6, 2017 meeting, June 2017 shared drive incident, June 29, 2018 AD meeting, July 1, 2018 SOP implementation, July 8, 2018 certification denial, August 7, 2018 reassignment denial, September 2018 W2DOT request, July 19, 2018 EEO counselor contact, October 2, 2018 complaint filing."
+    }
+  },
+  "remediation_note": "The record achieves strong documentation of factual assertions and temporal sequence but falters at the accountability stage: conflicting witness accounts (particularly on the shared drive origin and June 29 meeting characterization) are preserved without investigative resolution, leaving the evidentiary sufficiency for the final determination unclear. A compliant version would require either explicit investigator findings resolving these conflicts or transparent acknowledgment that they remain unresolved.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support — the record documents allegations and evidence comprehensively but does not resolidify competing factual claims before the Agency's final conclusion that Complainant failed to prove discrimination.",
+    "compliant_version": "Supplement the final decision with explicit investigator findings on: (1) whether the affidavit was intentionally or inadvertently posted to M-60 (resolving Coworker's conflicting statements via forensic analysis or corroborating evidence); (2) the substantive content of the June 29, 2018 meeting (determining whether AD's characterization or Complainant's is supported); (3) whether the W2DOT schedule requests were unreasonably delayed; and (4) whether telework and panel restrictions were applied uniformly or targeted to Complainant specifically—each grounded in documentary or witness credibility findings."
+  }
+}
+```

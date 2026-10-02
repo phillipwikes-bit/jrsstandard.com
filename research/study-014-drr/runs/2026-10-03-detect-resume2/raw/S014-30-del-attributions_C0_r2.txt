@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the mid-year review critiques (Customer Service, record-keeping, teamwork) and management's explanations (privacy, monitoring due to prior misconduct), but the factual basis supporting S1's specific criticisms as 'falsely critical' remains asserted rather than documented with contemporaneous evidence."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's reasoning from evidence to conclusion is partially traceable (e.g., no mid-year rating of record exists; letter concerns defendant, not attorneys), but the causal chain connecting S2's presence to legitimate monitoring versus discriminatory motive relies on affidavit assertions that Complainant disputed without full evidentiary development."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would struggle to independently reconstruct the substance of S1's performance criticisms, the specifics of Complainant's 'misconduct' and 'disciplinary issues' cited as justification for S2's presence, or the full content of affidavits referenced only by citation and paraphrase."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supporting the mid-year review conclusions (the review narrative itself and management affidavits) is cited but the record does not contain or fully detail contemporaneous performance documentation, prior disciplinary records, or attorney feedback that would substantiate the criticisms leveled."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided (June 2014 hire, September 2015 letter, October 22, 2015 mid-year review, November 5, 2015 complaint filing, with investigation and appeal sequence following), allowing chronological reconstruction of events."
+    }
+  },
+  "remediation_note": "The record must include or attach the full mid-year review document, management affidavits in their entirety, prior disciplinary records relevant to the claimed 'abusive and caustic' misconduct, and contemporaneous performance documentation (attorney complaints, call logs, case file audits) that substantiate S1's specific criticisms. Doing so would enable a cold reviewer to verify whether the performance concerns were genuine and whether S2's presence was investigatively justified rather than pretextual.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support, basis_identification—the record narrates events and reasoning but omits primary documentation required to reconstruct or verify the factual predicates for both the performance evaluation and management's justification for altered review procedures",
+    "compliant_version": "Attach the complete mid-year review form with all narrative entries; include full investigatory affidavits of S1, S2, and the third management official; cite or append documentation of Complainant's prior disciplinary history and the specific 'abusive and caustic' misconduct cited as trigger for S2's monitoring; and provide any contemporaneous contemporaneous attorney feedback, case-file audits, or phone-return records contemporaneous with the October 2015 review period to ground S1's performance assessments in verifiable fact."
+  }
+}
+```

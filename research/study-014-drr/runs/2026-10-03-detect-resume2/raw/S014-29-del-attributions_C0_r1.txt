@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record explicitly identifies the basis for removal: profanity, failure to follow instructions, wall damage, prior discipline history, and violation of zero-tolerance policy, with specific ROI citations."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is traceable from investigative findings (August 19 incident details) through pre-disciplinary interview (August 24), supervisor recommendation (August 31), and AJ determination (August 21, 2020), with ROI page references throughout."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the factual sequence is clear, the record conflates multiple witness accounts of Complainant's statements without clear resolution (e.g., 'sorry ass' vs. direct quotes vs. 'This is bullshit'), and Complainant's own recollection is noted as incomplete, creating ambiguity about what was actually said and by whom."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports the primary conclusions (confrontation, profanity, wall damage, prior discipline), but witness testimony is inconsistent on exact statements, and the record notes Complainant 'did not remember exactly what he said' and acknowledged only 'a swipe' rather than full admission of the described punching."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Clear chronology: August 19, 2015 (incident), August 24, 2015 (pre-disciplinary interview), August 31, 2015 (supervisor recommendation), September 11, 2015 (removal notice), April 24, 2017 (AJ motion), August 21, 2020 (AJ decision)."
+    }
+  },
+  "remediation_note": "The record requires clarification of conflicting witness accounts regarding Complainant's exact statements and explicit reconciliation of discrepancies between what witnesses reported versus Complainant's own recollection. A compliant version should include a finding section that explicitly resolves or documents the basis for crediting one account over another.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support—witness statement conflicts and incomplete complainant recollection create reconstructability and evidentiary sufficiency gaps.",
+    "compliant_version": "Add explicit credibility findings reconciling witness accounts of statements made (e.g., 'The investigator credited Supervisor and Manager's account of [specific statement] based on [basis], superseding Complainant's statement that he did not remember' or 'Someone's account at ROI 23 that Complainant said \"This is bullshit\" differs from other accounts; [Agency finding on weight]'). For the wall contact, explicitly state whether the evidence supports 'punched' or 'swiped' and the basis for that finding. Document any prior investigation files or discipline records formally incorporated into this record by reference."
+  }
+}
+```

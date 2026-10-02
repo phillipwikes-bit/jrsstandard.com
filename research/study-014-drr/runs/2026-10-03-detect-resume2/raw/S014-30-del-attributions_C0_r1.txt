@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record conflates multiple review dates (mid-year, mid-term) and presents findings without clear identification of which evidence supports which conclusion—e.g., the basis for finding S2's presence was for 'close monitoring' versus discriminatory purpose is asserted rather than traced to specific testimony."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision-making process is partially traceable (e.g., 'AJ found' statements), but critical inferences (S2's motivation, Complainant's 'misconduct' characterization, and why the letter was inadmissible) lack explicit logical steps or citation to underlying evidence."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with the case would struggle to reconstruct the factual disputes: the record names affiant positions but not their content, asserts conflicting characterizations (review location as privacy-protective versus discriminatory) without presenting the actual testimony, and uses pronouns ('someone') instead of names."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence is cited to ROI bates numbers and affidavits, but the record does not reproduce the testimony itself, limiting independent verification that the cited evidence actually supports the conclusions drawn (e.g., that S2's presence was justified by Complainant's prior 'abusive and caustic' conduct)."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided (June 2014 hire, September 2015 letter, October 22, 2015 review, November 5, 2015 complaint filing, summary judgment, appeal), allowing a rough chronological sequence, though the interval between events and decision-making is not explicit."
+    }
+  },
+  "remediation_note": "The record must: (1) identify all witnesses and affiants by name, not pronouns; (2) summarize or quote directly the material testimony on which factual findings rest, particularly regarding S2's stated reason for attendance and Complainant's prior conduct; (3) explicitly articulate the logical chain from evidence to each conclusion, especially the discrimination-versus-legitimate-reason analysis.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, cold_reviewer_clarity, reasoning_traceability",
+    "compliant_version": "A compliant version would name all parties and witnesses, present a chronological summary of material testimony with direct quotes or paraphrasing keyed to source documents, explicitly state the AJ's factual findings on disputed points (e.g., 'S2 testified that he attended because [exact reason], which the AJ credited because [evidentiary basis]'), and separately address each discrimination theory with a clear analytical framework connecting evidence to conclusion."
+  }
+}
+```

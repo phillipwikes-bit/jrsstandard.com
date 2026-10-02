@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is grounded in specific factual assertions: position description inaccuracies are tied to February 2017 meeting with DD-1; affidavit exposure is documented with screenshot evidence; micromanagement claims reference specific W2DOT Program requests and telework policy dates; FAC-P/PM-IT denial is dated July 8, 2018."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record presents competing factual accounts (e.g., Coworker's account of accidental M-61 vs. Complainant's M-60 screenshot; AD's interrogation characterization vs. AD's meeting summary) but does not explicitly trace how the investigator weighed contradictions or reached intermediary conclusions before final determination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer lacking prior knowledge would understand the core facts and timeline but would struggle to reconstruct the investigator's evidentiary analysis, burden allocation, or application of the prima facie/pretext framework to each allegation without access to the underlying investigation report."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents allegations and management responses but does not explicitly state what evidence the investigator credited, what weight was assigned, or how the conclusion that 'Complainant failed to prove discrimination' was supported by the evidence matrix presented."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clearly reconstructable: February 2017 (position description meeting), June 2017 (affidavit incident), July 19, 2018 (EEO counselor contact), June 29, 2018 (AD meeting), July 8, 2018 (FAC-P/PM-IT denial), August 7, 2018 (reassignment request denial), October 2, 2018 (complaint filed), with dates and intervals preserved throughout."
+    }
+  },
+  "remediation_note": "The record documents factual allegations and responses adequately but lacks explicit investigative reasoning—the investigator's findings on factual disputes, evidentiary weight, credibility determinations, and application of the prima facie/pretext burden framework are not visible in this summary. A compliant record would include the investigator's analysis of conflicting evidence (e.g., affidavit location, AD's tone during June 29 meeting) and articulation of how each element of the discrimination standard was addressed.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Add investigator's explicit findings on each factual dispute (e.g., 'The investigator credited X over Y because Z'), articulate the burden and framework applied (prima facie elements, pretext analysis), state which allegations met or failed each element with citation to evidence, and include the investigator's credibility assessments and weight assigned to competing accounts before the final non-discrimination conclusion."
+  }
+}
+```

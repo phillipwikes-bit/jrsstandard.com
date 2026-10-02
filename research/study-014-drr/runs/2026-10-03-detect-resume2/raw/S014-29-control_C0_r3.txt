@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The removal basis is explicitly stated: profanity use, failure to follow instructions, wall damage, and prior discipline violations, with specific ROI citations anchoring each factual element."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decisional path is traceable from investigative findings (ROI pages cited) through Pre-Disciplinary Interview (August 24) to supervisor recommendation (August 31) to removal notice (September 11) to AJ decision (August 21, 2020)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the sequence and bases are documented, a cold reviewer would need to obtain the ROI itself to verify the specific profanity quotes and witness accounts, as the record summarizes but does not fully reproduce the investigative evidence."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "The record supplies sufficient evidence—multiple witness-corroborated statements, prior discipline records, and investigative documentation—to support the removal decision and the AJ's rejection of discrimination claims."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Clear chronology: August 19, 2015 (incident), August 24 (Pre-Disciplinary Interview), August 31 (removal recommendation), September 11 (removal notice), April 24, 2017 (motion for decision without hearing), August 21, 2020 (AJ decision)."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should either reproduce the key ROI excerpts directly or confirm they are attached and cross-indexed, ensuring a reviewer decades later can reconstruct the factual basis without external document retrieval. The record is otherwise well-documented.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "cold_reviewer_clarity—dependency on external ROI document rather than self-contained justification record",
+    "compliant_version": "A compliant version would embed or directly reference all critical investigative findings (witness statements, profanity quotes, prior discipline records) within the removal justification document itself, with full citations and dates, so that the record stands alone for future audits and reconstructions."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific bases for the AJ's summary judgment ruling (no rating given at mid-year, letter concerned only courtroom interaction, privacy and conduct documentation), but the factual predicates for those bases—particularly S2's 'documented abusive and caustic conduct' and 'disciplinary issues'—are asserted without citation to supporting evidence in the record."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's logic chain from evidence to conclusion is traceable for some elements (e.g., rebuttal letter scope), but critical steps are opaque: how the AJ concluded S2's presence was justified relies on characterizations ('documented abusive and caustic conduct') whose evidentiary foundation is not shown."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why S2's documented concerns about Complainant's behavior were sufficiently serious to warrant departure from normal review procedures, as those concerns are described in conclusory terms without reference to specific incidents, dates, or prior disciplinary records."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The AJ's conclusion that S2's presence was not discriminatory is supported by the stated rationale (protection of S1 from documented conduct), but the sufficiency of that rationale depends on evidence (the nature and severity of prior conduct) that the record does not fully exhibit."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided (October 22, 2015, review date; September 2015, defendant's letter; November 5, 2015, Complaint 2 filed), allowing a sequence to be followed, although the timing and interval of alleged prior disciplinary issues are not specified."
+    }
+  },
+  "remediation_note": "The record must attach or summarize the specific prior disciplinary actions, behavioral incidents, and documented concerns that formed the basis for S2's presence at the review; absent that, the reasonableness of the deviation from standard procedure cannot be verified. Additionally, the evidentiary record underlying the summary judgment motion should be cited explicitly so that a cold reviewer can assess whether genuine disputes of material fact exist regarding Complainant's conduct and the Agency's justification.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would: (1) reference or attach exhibits showing the nature, dates, and severity of prior disciplinary actions and conduct complaints against Complainant; (2) cite the specific evidence upon which the AJ relied to conclude that S2's presence was remedial rather than pretextual; (3) clearly distinguish between assertions made in agency affidavits and those supported by documentary evidence; (4) explicitly address whether the record contained sufficient evidence to permit the AJ to grant summary judgment, including analysis of whether Complainant's rebuttal affidavit raised genuine disputes on the question of discriminatory intent; and (5) document the AJ's reasoning for rejecting Complainant's contention that differential treatment of reviews creates an inference of discrimination."
+  }
+}
+```

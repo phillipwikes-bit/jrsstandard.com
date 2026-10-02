@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for Agency conclusions (e.g., 'legitimate, nondiscriminatory reasons for MPP SE,' 'S2 asserted' regarding exclusion) but does not present the underlying factual findings or evidence that support these bases within the document itself."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents Agency assertions and Complainant's rebuttals without disclosing the investigative reasoning, findings of fact, or the logic chain connecting evidence to the Agency's no-discrimination conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct the discrimination analysis from this record alone because the Report of Investigation content, witness statements, documentary evidence, and the Agency's analytical framework are not included or summarized."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record asserts conclusions (no discrimination, restoration to mentoring, eligibility for QC) but does not provide sufficient evidentiary detail—such as comparative performance data, dates of duty assignments, or contemporaneous communications—to independently verify that the evidence genuinely supports each finding."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are documented: complaint filed January 2, 2020; accepted March 11, 2020; request for final decision July 10, 2020; alleged incidents dated September 1, 10, and 13, 2019; performance ratings for 2018, 2019–2020, and 2019–2020 MPP SE periods are referenced."
+    }
+  },
+  "remediation_note": "The record functions as a procedural summary of claims and assertions rather than a documented investigation. To achieve compliance, the Agency's final decision must incorporate or reference the key factual findings from the ROI, the comparative evidence supporting each claim determination, and the explicit reasoning connecting discriminatory intent or impact analysis to the no-discrimination conclusion.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) a summary of material facts found by the investigator (e.g., specific dates, communications, and duty assignments); (2) the Agency's step-by-step rebuttal of each discrimination claim with reference to evidence; (3) a temporal narrative of events showing how the Agency distinguished between protected activity and legitimate performance or administrative reasons; (4) explicit comparison of Complainant's treatment to similarly situated non-complaining employees; and (5) documented responses to Complainant's appeal arguments, grounding each response in investigative findings or legal standard rather than assertion alone."
+  }
+}
+```

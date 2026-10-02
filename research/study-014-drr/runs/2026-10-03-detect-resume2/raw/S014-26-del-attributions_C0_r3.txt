@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the AJ's conclusions: lack of prima facie case, failure to meet minimum qualifications (FAC-C certifications), legitimate nondiscriminatory reasons articulated by the Agency, and failure to establish pretext."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's reasoning pathway is partially traceable (e.g., 'did not have Level II FAC-C certifications therefore did not qualify'), but the record lacks detail on how the FAC-C requirement itself was evaluated for discriminatory intent or how the selective application of that requirement was analyzed."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the factual posture and holdings, but would struggle to independently verify whether the FAC-C certification denial (claims 1, 5, 9) was properly investigated as the alleged discriminatory predicate act, since the record does not detail the investigation findings on those threshold claims."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record does not contain the underlying investigation report, the AJ's full written decision with detailed factual findings, or evidence addressing Complainant's appeal argument that C1 unilaterally imposed FAC-C Level II requirements without OPM approval to reduce Native American hiring—a central discrimination theory."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: complaint filed August 25, 2015; investigation accepted November 23, 2015; motion for summary judgment March 22, 2018; AJ decision September 23, 2020; with specific dates for each alleged adverse action between May 2015 and May 2018."
+    }
+  },
+  "remediation_note": "The record must incorporate or reference the full AJ decision, the investigation report findings on whether FAC-C denials were discriminatory, and factual analysis of whether the FAC-C requirement was applied disparately or imposed without proper authority as alleged. Critical gaps exist around the predicate FAC-C claims (1, 5, 9) that underpin Complainant's qualification theory for downstream promotion denials.",
+  "finding": {
+    "ai_function": "summary",
+    "condition_triggered": "accountability_support and cold_reviewer_clarity",
+    "compliant_version": "A compliant record would include the full text of the AJ's decision with detailed findings of fact on each claim, the investigation report's conclusions regarding the FAC-C certification denials, evidence of whether C1's unilateral FAC-C policy existed and was applied selectively, comparative qualifications and selection rationale for comparator applicants, and explicit analysis of whether the FAC-C requirement itself was pretextual or was applied with discriminatory intent—allowing a future reviewer to independently assess whether the predicate factual determinations support the legal conclusions."
+  }
+}
+```

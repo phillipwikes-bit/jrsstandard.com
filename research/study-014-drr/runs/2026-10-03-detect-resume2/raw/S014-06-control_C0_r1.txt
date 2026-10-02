@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., bid denial tied to lack of updated medical documentation per supervisor affidavit and CBA), but the Agency's dismissal of pre-November 10, 2021 claims lacks explicit citation to counseling contact dates or decision logic."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The decision pathway is partially traceable for the bid denial (CBA requirement → missing documentation → denial), but the reasoning for why the Agency did not request documentation, and the gap between September 2021 clearance and November 2021 LWOP placement, cannot be traced through Agency statements or decision records."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the Agency took 12 months to move Complainant (September 2019 incident to July 2021 reassignment), what the 'modified assignment' entailed, or whether accommodation efforts occurred post-September 2021, as the record explicitly states 'There is no explanation or documentation in the record of Complainant's new position' and 'no statement from any Agency official confirming any effort was made.'"
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The Agency's final decision rests on Complainant's failure to submit medical documentation, but the record shows no evidence that Complainant was formally requested to provide such documentation (per her statement and the CBA's discretionary language), undermining the evidentiary basis for the dismissal."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (September 2019 assault, April 2020 clearance, June 2020 knee injury, July 2021 reassignment, August 16, 2021 COVID leave, September 21, 2021 return-to-work clearance, November 21, 2021 LWOP begins, January 24, 2022 bid denial, May 13, 2022 complaint, December 6, 2022 agency decision), but intervals and causal connections—particularly the 12-month gap before reassignment and the rationale for LWOP initiation—lack explanation."
+    }
+  },
+  "remediation_note": "The record functions as a narrative complaint summary overlaid with administrative dismissal findings, but lacks sufficient Agency documentation of accommodation requests, decision rationales, and contemporaneous communications. A compliant version must include dated requests for medical documentation, explicit Agency reasoning for each denial or delay, and statements from Agency officials addressing post-September 2021 accommodation efforts and the basis for LWOP placement.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support, temporal_reconstructability",
+    "compliant_version": "The record should include: (1) dated Agency correspondence requesting updated medical documentation and explicitly citing CBA authority; (2) documented explanation for the 12-month delay in reassignment with decision-maker statements; (3) contemporaneous Agency affidavits or memos from September 2021 onward describing accommodation search efforts, positions considered, and reasons each was rejected; (4) clear chronology linking each event (clearance date, LWOP initiation date, gap rationale) with supporting documentation; and (5) Agency's response to Complainant's assertion that no request for medical documentation was made."
+  }
+}
+```

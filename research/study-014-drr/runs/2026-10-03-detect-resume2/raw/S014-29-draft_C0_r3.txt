@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for removal (profanity, failure to follow instructions, wall damage) and for the discrimination findings (no evidence of race/gender animus, failure to establish GINA prima facie case)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's decision path from evidence to conclusion is stated but lacks granular evidentiary detail; the summary does not explain which witness accounts or documents supported the credibility determination that Complainant used profanity or the inference that discrimination did not occur."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the complainant's allegations and the AJ's legal framework, but cannot independently verify the factual predicate (what was actually said, who witnessed it, or what documentary evidence exists) from this summary alone."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record states conclusions (confrontational conduct, violent behavior) but does not detail the evidence presented—witness statements, security recordings, photographs of wall damage, or Complainant's testimony—needed to assess whether the preponderance standard was properly met."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "A critical chronological discrepancy exists: the opening paragraph states removal was effective September 2015, but the AJ's holding references September 11, 2015; the Pre-Disciplinary Interview (Aug. 24) and Supervisor's recommendation (Aug. 31) dates are clear, but the final removal date is ambiguous, and the record does not explain the 22-month gap between the motion for summary decision (April 2017) and AJ decision (August 2020)."
+    }
+  },
+  "remediation_note": "The record requires correction of the removal date discrepancy and inclusion of a factual foundation—witness statements, documentary evidence, and credibility assessments—to support the AJ's findings. The procedural timeline should clarify reasons for the extended delay between motion and decision.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "temporal_reconstructability, accountability_support, cold_reviewer_clarity",
+    "compliant_version": "A compliant record would (1) reconcile the removal effective date across all sections; (2) cite specific exhibits (witness interviews, security records, photographs, Complainant's responses) and explain how the AJ credited or rejected each; (3) articulate the credibility determination—why Complainant's account was not believed regarding the words used or the wall punch; (4) document the procedural timeline including reasons for the 22-month delay; and (5) ground each legal conclusion (prima facie case failure, preponderance standard) in identified evidence from the administrative file."
+  }
+}
+```

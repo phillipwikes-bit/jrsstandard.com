@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the bases for each conclusion: accommodation denial is grounded in Complainant's failure to provide medical documentation despite repeated requests; AWOL charging is based on the Coordinator's suggestion and eight months of absence without documentation."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable through documented steps: initial accommodation request (February 25, 2020), interactive process meeting (March 5, 2020), multiple requests for medical documentation (June 2020 onward), case closure (August 7, 2020), and AWOL placement (August 10, 2020)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer without prior knowledge can reconstruct the dispute from the record alone: the sequence of accommodation requests, the Agency's specific documentation demands, Complainant's failure to comply, and the rationale for denial are all documented with dates and participant statements."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports the accommodation denial (documented requests for medical documentation and Complainant's non-compliance), but the record does not fully support the AWOL charge; the Coordinator's suggestion is noted, but no documented policy or decision rationale for the AWOL placement itself is included, only the fact that it was decided after the case closure."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear with specific dates: injury (July 12, 2019), aggravation (December 2019), accommodation request (February 25, 2020), interactive meeting (March 5, 2020), multiple documentation requests (March–June 2020), case closure (August 7, 2020), and AWOL placement (August 10, 2020), through termination (January 22, 2021)."
+    }
+  },
+  "remediation_note": "The record's primary gap is the absence of explicit documented rationale for the AWOL determination itself—the Coordinator's suggestion is noted but not formalized. To achieve full compliance, the Agency should have included a memo or decision documenting the specific policy basis, supervisory approval, and alternative considerations for the AWOL placement, rather than relying on the inference that it followed automatically from case closure.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support—partial evidentiary sufficiency for AWOL charge",
+    "compliant_version": "Add a dated memo or decision document signed by S1 and S2 explicitly stating the rationale for AWOL placement, citing relevant leave policy, documenting consideration of alternative statuses, and confirming that the Coordinator's suggestion was reviewed and adopted as Agency policy. Include a copy of the leave accounting and any applicable regulatory or Agency directive governing the transition from LWOP to AWOL."
+  }
+}
+```

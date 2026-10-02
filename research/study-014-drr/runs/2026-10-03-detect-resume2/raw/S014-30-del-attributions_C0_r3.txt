@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record conflates multiple evidentiary sources (ROI, affidavits, AJ findings) without consistently attributing specific conclusions to their supporting evidence, making it unclear which fact supports which legal conclusion."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The AJ's decision pathway from evidence to summary judgment is not transparent; the record does not explain the legal standard applied (e.g., prima facie case, pretext analysis) or how each element of the discrimination claim was evaluated."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reader unfamiliar with the case cannot easily reconstruct why S2's presence and the location change, conceded as different from normal practice, did not survive summary judgment as circumstantial evidence of discrimination or retaliation."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record acknowledges that Complainant received different treatment in two material respects (conference room vs. office, S2's presence) but provides only supervisory explanations (privacy, monitoring) without documented contemporaneous justification or consistent corroboration of the claimed monitoring need."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are clearly marked (June 2014 hire, September 2015 letter, October 22, 2015 review, November 5, 2015 complaint filing), allowing chronological reconstruction of events."
+    }
+  },
+  "remediation_note": "The record must explicitly map each element of the discrimination/retaliation prima facie case and pretext analysis to the evidence supporting or defeating it. The AJ's reasoning for finding no genuine dispute of material fact—particularly regarding why different treatment and potential mixed-motive circumstances do not warrant a hearing—must be stated with reference to the applicable legal framework and specific record citations.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would state the legal standard for summary judgment in an EEO discrimination/retaliation case; identify each element of Complainant's prima facie case (protected class/activity, adverse action, similarly situated comparators, temporal proximity); explain how the evidence does or does not satisfy each element; address whether Complainant raised a genuine dispute on pretext or mixed-motive; and justify why documented different treatment (location, S2 presence) does not preclude summary judgment, with explicit citation to the record evidence of the stated supervisory rationales."
+  }
+}
+```

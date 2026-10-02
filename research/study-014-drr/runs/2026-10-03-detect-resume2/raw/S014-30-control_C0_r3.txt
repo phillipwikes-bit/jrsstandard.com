@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the bases for discrimination alleged: race (African-American), sex (male), age (49), and reprisal for prior protected EEO activity under Title VII, ADEA, and Rehabilitation Act."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the AJ's reasoning for granting summary judgment is articulated (e.g., mid-year reviews carry no rating of record; the letter would not refute communication concerns; S2's presence was for monitoring due to documented misconduct), the chain from evidence to summary judgment conclusion lacks explicit analysis of whether genuine disputes of material fact existed on discriminatory intent or causation."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer months or years later can identify what occurred (mid-year review, S2's presence, the submitted letter), but the record does not clearly explain why the AJ determined no factual dispute existed on the critical question of whether disparate treatment or discriminatory intent was proven or presumed."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The AJ's findings on specific facts (e.g., no rating given at mid-year, S2's responsibility to monitor) are supported, but the evidentiary leap from those facts to the conclusion that summary judgment was warranted lacks explicit analysis of whether Complainant had presented enough circumstantial evidence (different treatment + protected characteristics) to survive summary judgment under the burden-shifting framework."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: June 2014 (hire), September 2015 (compliment letter), October 22, 2015 (mid-year review and alleged incidents), November 5, 2015 (EEO complaint filing), investigations, motion for summary judgment, AJ decision, and appeal."
+    }
+  },
+  "remediation_note": "The record would benefit from explicit articulation of the legal standard applied (burden-shifting framework or summary judgment standard under Federal Rule of Civil Procedure 56 equivalent), a clear analysis of whether Complainant raised a prima facie case or genuine dispute of material fact, and rebuttal of the inference of discrimination flowing from the acknowledged differential treatment (conference room location, S2's presence, letter rejection).",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The AJ decision should explicitly state: (1) the legal standard for summary judgment and prima facie discrimination; (2) whether Complainant established a prima facie case of discrimination (protected class member, subjected to adverse action, similarly situated comparators treated differently, inference of discrimination); (3) if so, whether the Agency articulated a legitimate, non-discriminatory reason; and (4) whether Complainant's rebuttal evidence (different treatment admissions, temporal proximity to protected activity, pattern) created a genuine dispute of material fact precluding summary judgment, with specific rebuttal of each point."
+  }
+}
+```

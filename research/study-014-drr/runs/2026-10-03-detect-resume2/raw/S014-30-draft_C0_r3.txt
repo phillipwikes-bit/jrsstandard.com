@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The bases for the AJ's summary judgment decision are stated (no discrimination found; S2's presence justified by documented conduct; rebuttal letter insufficient), but the record does not clearly identify which evidence supports each specific basis—for example, what documentation of 'abusive and caustic conduct' exists, or how 'documented' disciplinary issues are reflected in the file."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's path from the mid-year review content and S2's stated justification to 'no discrimination' is traceable in outline, but critical steps are missing: how did the AJ weigh Complainant's rebuttal affidavit against S2's explanation, and on what record evidence did the AJ conclude the affidavit 'did not rebut' the explanations?"
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot independently verify the 'documented abusive and caustic conduct' or disciplinary issues because the record summarizes rather than cites them, and the affidavits themselves (whose specific claims are mentioned but not fully quoted or analyzed) are not transparently connected to the evidence they purport to address."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The finding that S2's presence was justified rests on conduct allegedly documented, but the record does not include or reference the documentation itself, making it difficult to assess whether the evidentiary foundation is actually sufficient or merely asserted."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are identified (October 22, 2015 events; November 5, 2015 Complaint 2 filing; September 2015 praising letter; mid-year review timing), and the sequence of complaint, investigation, summary judgment, and appeal is clear."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must cite or attach the specific documents evidencing 'documented abusive and caustic conduct' and disciplinary issues, quote and rebut Complainant's affidavit point-by-point rather than summarily, and explain the logical link between each piece of evidence and the conclusion that S2's presence was non-discriminatory rather than merely justified by assertion.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, cold_reviewer_clarity, accountability_support—the record performs case analysis (weighing evidence to reach a no-discrimination conclusion) but fails to ground that analysis in transparent, citable evidence, leaving the inferential and evidentiary chain incomplete for independent verification.",
+    "compliant_version": "A compliant version would: (1) attach or quote in full the documents establishing the 'documented abusive and caustic conduct' and prior disciplinary record; (2) set out Complainant's rebuttal affidavit allegations verbatim and address each claim with specific counterevidence; (3) explain how the absence of a rating at mid-year, the review content, and the rebuttal letter together defeat the discrimination claim; and (4) separately justify S2's presence by reference to dated incident reports or disciplinary records rather than paraphrasing."
+  }
+}
+```

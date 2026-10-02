@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The Agency's bases for rejecting claims are stated (legitimate nondiscriminatory reasons for MPP SE, restoration to mentoring, eligibility for QC, S2's denial of exclusionary conduct) but lack documentary specificity—e.g., what those 'legitimate reasons' are, how restoration was approved, what 'various factors' govern QC selection."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents conclusions (e.g., 'no discrimination,' 'minimal delay') without connecting them to investigative findings, witness statements, or evidentiary analysis; a later reviewer cannot follow how the ROI led to the final decision."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "Critical details are absent or opaque: the content of the 2019 MPP SE rating, the specific factual findings on each claim, whether S2's assertions about communication were corroborated, and what 'restoration' to mentoring entailed in practice."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record references an ROI but does not include its findings or methodology; Complainant's specific allegations (e.g., three-month drop from 'Outstanding' to lower MPP rating, prior case remedies not implemented) are not addressed with evidence."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are present and sequenced: January 2, 2020 (complaint filed), March 11, 2020 (accepted), July 10, 2020 (final decision requested), September dates for alleged obstructions, and reference to 2018–2020 performance periods."
+    }
+  },
+  "remediation_note": "The record must incorporate or summarize the ROI's actual investigative findings, S2's documented responses to each allegation with supporting evidence, and the Agency's written justifications for MPP SE ratings compared to annual appraisal ratings. A compliant version requires explicit analysis of the temporal and contextual relationship between Complainant's prior EEO activity and the challenged personnel actions, with documentary evidence for each claim resolution.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A final decision record must include or annex the ROI executive summary and key findings; provide the actual 2019 MPP SE rating and documented evaluation criteria applied; cite specific witness statements or documentary evidence for each claim (e.g., S2's written account of communication practices, approval documentation for mentoring restoration); and explicitly connect any temporal proximity between Complainant's January 2020 EEO filing and the September 2019–2020 personnel actions to rebut or credit the reprisal allegation. The record must also address Complainant's cross-claim regarding non-implementation of a prior final decision remedy and document the Agency's response."
+  }
+}
+```

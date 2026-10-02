@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record repeatedly uses anonymous placeholders ('[S2]', '[someone]', '[another Agency official]') without identifying the actual parties, making it impossible to identify the concrete basis for any conclusion."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision pathway is obscured by assertions attributed to unnamed speakers; no clear chain from evidence to finding is visible (e.g., 'someone asserts that Complainant was restored' lacks identification of who asserts this or what evidence supports it)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct the factual record because witness identities, testimony contents, and documentary evidence are either redacted or stated only in vague attributed form without sufficient detail."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record presents conflicting naked assertions (e.g., Complainant claims exclusion from communications; an unnamed official denies it) with no evidentiary foundation—documents, witness statements, or analysis—to arbitrate them."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (January 2, 2020 complaint; March 11, 2020 acceptance; July 10, 2020 final decision request), but the sequence of events supporting the discrimination claims (September 1–13, 2019 incidents) lacks granularity and evidentiary anchoring."
+    }
+  },
+  "remediation_note": "This record must be redacted or reconstructed to eliminate placeholder names and restore full identification of complainants, respondents, witnesses, and decision-makers. Every assertion attributed to 'someone' must be traced to a named official with specific testimony, document references, or analysis.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would identify all parties by name (with legal redaction where required), cite specific documents and witness statements by reference, present findings grounded in named evidence, and articulate the reasoning by which each claim was accepted or rejected—enabling a future reviewer to follow the decision logic and verify it against the underlying facts."
+  }
+}
+```
