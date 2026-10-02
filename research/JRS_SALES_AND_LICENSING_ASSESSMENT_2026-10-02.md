@@ -459,6 +459,9 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | 27 | Define the unit of review: a final decision record or a whole investigation file (8,000-character limit) | OPEN |
 | 28 | Add an evaluation mode with no JRS telemetry, for any non-synthetic pilot | OPEN |
 | 29 | Study 013 feasibility round: 30 hidden records, arms A to D; needs owner approval for outside contributors and paid calls | OPEN |
+| 30 | Decide whether a one-time train-the-trainer session delivered by you is an allowed exception to the 26 August "no owner-hour engagements" decision | OPEN |
+| 31 | Confirm or correct the STA figures in C.3 (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | OPEN |
+| 32 | Analyze and report Study 012 (JRS-structured against unaided expert review); it is the evidence the curriculum licence needs | OPEN |
 
 ## C. Research credibility (parallel; affects buyer diligence)
 | # | Item | Status |
@@ -517,7 +520,36 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | Per-participant licence or materials fee | USD 20 to 35 per participant | MRT USD 27; about 5 to 15% of USD 175 to 650 refresher prices |
 | Flat annual licence to one provider | USD 2,500 to 7,500 a year | No direct comparable; a test figure |
 
-**Still the best evidence: your own past licences.** The record names Second Thought Alternatives (2003 to 2018) but holds no terms. Your prices, models and renewal history would anchor this better than any source above.
+### C.3 Your own licensing history: Second Thought Alternatives (STA)
+
+**Source and status.** These figures come from a reconstructed conversation the owner pasted on 2026-10-02, which attributes them to "the records and your recollection". **None of it is in this repository** (searched: "DRAMA Club", "Tony Myers", "Second Thought"), and no public record was found by web search. Class: owner-supplied, **SOURCE_REPORTED, pending your confirmation**. Amounts are from 2003 to 2018 and are not adjusted for inflation.
+
+| STA offering (DRAMA Club and related programs) | Historical amount |
+|---|---|
+| Participant workbook | about USD 25 each |
+| Facilitator Guide | about USD 15 each; later made free |
+| Institutional facilitator training (two days) | about USD 1,500, sometimes discounted |
+| Individual facilitator training | about USD 250 per person |
+| Annual licence or renewal | **None** |
+| Later revenue | Training more staff, workbooks, consultation, expansion |
+| Delivery | You and Tony Myers trained and certified facilitators; the customer's own staff then ran the program |
+| Later | Programs made available free as a community service, with copyright kept |
+
+**How it lines up with the verified market (*Inference*):**
+- **The structure matches MRT almost exactly:** paid facilitator certification, per-participant materials, and delivery by the customer's own staff.
+- **The participant price matches closely:** STA about USD 25 historically; MRT USD 27 today (VERIFIED).
+- **Facilitator training cost more at MRT:** USD 680 today against STA's USD 250, which suggests today's level for an individual facilitator is higher than STA's.
+
+**The resulting JRS curriculum structure (*Judgment*, replacing the options in C.2 for this purpose):**
+- **One JRS Organizational Implementation Licence, one-time, with no mandatory annual renewal.** Further revenue comes when more reviewers are trained or new units adopt it, which is the STA pattern.
+- **Institutional facilitator training (customer's trainers): USD 1,500 to 3,000** per session. Anchors: STA USD 1,500 historical; MRT's current individual rate.
+- **Individual facilitator certification: USD 250 to 700.** Anchors: STA USD 250; MRT USD 680.
+- **No charge for participant materials,** because the guides and training are free permanently (25 August). Unlike STA and MRT, JRS has no paid per-participant item unless D8 creates one.
+
+**Two decisions this raises (Appendix B, items 30 and 31):**
+1. **Facilitator training is delivered by you, so it uses your hours.** Your 26 August decision dropped fixed-scope engagements that sell your hours. A short, one-time train-the-trainer session that transfers capability (the STA model) may be a reasonable exception, but that is your decision, not mine.
+2. **Confirm or correct the STA figures above,** so they become a recorded attestation rather than a reconstruction.
+
 
 **Constraints (Appendix A):** free-permanently and D8; FELTG belongs to the channel closed on 23 August, and the other providers do not; exclude CEP text (SCCE-owned) and CCI material (co-author approval).
 
@@ -669,6 +701,51 @@ The owner pasted an adversarial plan, written elsewhere, for testing whether the
 - Manuscripts: the four uploads (hashes in section 1); `research/aie_submission_2026-09-01/01_Blinded_Manuscript.md` and `02_Title_Page.md`; `research/rmj_submission_2026-09-01/`; `research/Employment_Records_Article_ISACA_2026-08-21.md`; `research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md`; `research/Backup_Article_EDPACS_DRR_Control.md`; `research/BusinessEthics_Article_Draft.md`.
 - Records: `research/MASTER_TRACKER.md` (2026-07-16 V-AI-17 withdrawal; 2026-08-29 affiliation change; 2026-09-01 JOCI decline); the uploaded Evidence Ledger (E-042 to E-044) and Buyer Readiness Checklist (RS-03, RS-04).
 - Web, retrieved 2 October 2026: [SEC press release 2022-174](https://www.sec.gov/newsroom/press-releases/2022-174); [SEC press release 2021-262](https://www.sec.gov/newsroom/press-releases/2021-262); [Write for SCCE](https://corporatecompliance.org/publications/write-scce).
+
+---
+
+## Appendix F. Examination of the reconstructed commercialization conversation (owner-supplied, 2026-10-02)
+
+The owner pasted a long response from another assistant that reconstructs an earlier commercialization discussion. It says itself that parts are "a reconstruction rather than a word-for-word transcript". It was checked against this repository and against the evidence gathered in this report.
+
+### F.1 Where it agrees with the evidence (kept)
+1. **Do not charge for what is already free.** "Public JRS teaches the methodology. Paid JRS would have to institutionalize it." This matches section 3 and the 25 August decision.
+2. **Keep three commercial layers separate:**
+   - methodology and organizational implementation;
+   - the Review Engine;
+   - vendor or embedded licensing.
+3. **Vendor embedding is the most scalable long-term route.** This matches section 3 and risk R5: vendors already sell "defensible" documentation.
+4. **The central objection is "why not give our own AI the public JRS?"** The tests are A against B against C (and D). This matches Appendix E.
+5. **AI makes training documents cheap to reproduce,** so any paid package must rest on what is hard to copy: validation, governance, versioning, official status and a maintained implementation. This is a sound addition.
+6. **Measure "reconstructability", not "legal defensibility".** This matches the prose rules and the claim register.
+
+### F.2 Where it is wrong, unsupported or incomplete
+| Statement in the response | Finding |
+|---|---|
+| STA figures and history ("the records ... established") | **Not in this repository and not found publicly.** Recorded as owner-supplied, pending confirmation (C.3) |
+| "Your research provides meaningful evidence that [JRS] is" a substantive methodology | **Overstated as worded.** Detection 83.9% is real (E-037). But the reliability criterion was not met (E-038), the corpus is constructed, the studies were creator-run, and the flagship paper was rejected on 23 September (Appendix D). The support is "preliminary", not "meaningful" without those limits |
+| The final decision framework: if AI + JRS roughly equals the Engine and roughly equals generic AI, "neither licensing strategy has strong empirical differentiation" | **Conflates two different evidence bases.** The curriculum licence sells human reviewer capability, so its test is human: reviewers using JRS against reviewers without it. That is Study 012 (the comparison arm, 20 completers, closed 15 August), whose result is not reported anywhere in this report. An AI comparison cannot decide the curriculum question. **Study 012's analysis is the missing evidence for the curriculum licence** |
+| "Benchmark contamination: do not use the existing 24-record corpus as definitive" | **Correct, and worse than stated.** The corpus and its answer key are public on GitHub (B-018), so it cannot serve as held-out data at all |
+| "Organizational Implementation Licence" including your facilitator training | **Conflicts with the 26 August decision** (licensing only; owner-hour engagements dropped) unless you make an exception (C.3, decision 1) |
+| Paid "train-the-trainer materials, LMS packages, assessment banks, implementation governance" | **These do not exist yet.** Building them is work and cost, and it should wait until a buyer asks |
+| Revenue example: 40 participants at USD 25 makes USD 1,000 in workbooks | **Does not transfer.** JRS participant materials are free (25 August); there is no per-participant item |
+| A "Practice License" for individual practitioners | Correctly reconsidered as weak in the response itself. Consistent with this report |
+
+### F.3 What it leaves out that this report has found
+- **The strongest demand evidence:** EEOC MD-110's mandatory 8 hours a year for every federal EEO investigator, sold at USD 175 to 650 per person (C.2, two prices verified).
+- **The constraints a curriculum licence must respect:**
+  - CEP text belongs to SCCE (signed 21 July);
+  - the CCI article needs co-author approval;
+  - contributor consents are scoped to study publications;
+  - FELTG belongs to the closed referral channel.
+- **The privacy blockers to fix before any outreach:** B-018, B-020 and B-021.
+- **The Engine's model lifecycle and its rewrite feature** (Appendix E).
+- **Real reach with no ask:** about 80 guide downloads a month, the Reviewer Reference the most-downloaded file (578), and Broida's mention aimed at investigators (sections 2.3 and 2.4).
+
+### F.4 Net effect on the report
+- **Curriculum licence:** now anchored in your own STA structure and the verified MRT structure. It is one-time, not annual, with training and certification as the paid part. Two decisions remain (C.3).
+- **The evidence the curriculum licence needs is Study 012,** not an AI benchmark. Analyzing and reporting Study 012 becomes a preparation item (Appendix B, item 32).
+- **The Engine licence** stays conditional on Appendix E.
 
 ---
 
