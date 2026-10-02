@@ -94,6 +94,39 @@ I read `programme-status-9872fb93cc94.html` live (byte-identical to `main`) and 
 - Make the repository private, which hides the address.
 - Then rotate the page and feed addresses together, which is what CLAUDE.md 36.3 prescribes when an address leaks.
 
+### 2.4 The Investigator Guides and the interest from Peter Broida (Dewey Publications)
+*Omitted from the first draft of this revision. Added at the owner's request.*
+
+**Investigator Guide downloads (*Observed*, owner-page feed `geo-stats`, 2026-10-02):**
+| Measure | Figure |
+|---|---|
+| Downloads of the three guides | **219 from 19 countries**: EEO 82, International 70, Fair Housing 67. The combined guide adds a further 104 |
+| Trend | July (from the 17th) 54, August 83, September 78. **Last 30 days 82, previous 30 days 81: steady, with no promotion behind it** |
+| Where they come from | Guides page 150, other site pages 59, audit 9. **None arrived through the link made for Dewey's investigation-book authors** (`src=dewey`) |
+| Countries | US 125, Singapore 22, Canada 17, Poland 10, then 15 others |
+| Caution | On 16 of 50 active days all three guides had identical counts (96 of the 219 downloads), so many are one visitor taking all three at once. People are fewer than downloads. Counting began on 17 July, **after** the Dewey mentions, so any July effect from Broida is not measured |
+
+**What Peter Broida did (*Recorded*, IP_SALE_TRACKER s5 and s6; MASTER_TRACKER 2026-07-10 to 2026-08-23):**
+1. He mentioned JRS on the Dewey Publications podcast (6 July 2026, site in the episode notes). On air he also said: "I'm not endorsing it, nor is Dewey."
+2. He named JRS and the Field Guide as an "Extra Credit Reading Assignment" in Dewey's *News and Case Alert* #18-07 (10 July 2026).
+3. He forwarded the site to Dewey's investigation-book authors ("glad to be of help").
+4. Dewey declined the founding training-access offer (15 July) because it publishes and does not distribute training. He closed warmly: "You've got something to offer the civil service world. I am reasonably sure each of the organizations I mentioned offers training for investigators."
+5. He referred three federal-sector training organizations (FELTG, Gilbert Training Group, LRP) that "might well be interested in having you as a **trainer**."
+
+**What happened next (*Recorded*):**
+- Emails went to all three organizations on 16 July. None replied.
+- The record's own review (13 August) found two reasons:
+  - Each email ended "NO REPLY NEEDED".
+  - The emails offered free guides and training instead of asking to **teach**, which was the door he had opened. Two of the three also went to general inboxes.
+- On 23 August you closed the channel ("they are not at all interested, Broida was just blowing me off"), and the tracker marks it **"CLOSED ... Not to be reopened"**.
+
+**What it means (*Inference*):**
+- **It is the only unsolicited third-party recognition JRS has.** It came from a publisher whose readers (federal civil-service and EEO practitioners) match the most-downloaded guide, the EEO edition. It is citable, strictly as a **mention, not an endorsement**. The prospectus already treats it that way.
+- **The trainer referral was never actually tested.** No one was asked the question he suggested. The silence is real, but it answers a different question. Your determination stands as recorded, and I have not reopened it. Reopening is your call (decision D6).
+- **Steady guide downloads with no promotion are the clearest organic interest in the estate.** They point to investigators, especially in civil-rights and EEO work, as people who use the material. This is a use signal, not a buying signal: guides are free, and no download has turned into a lead.
+- **For selling:** this supports adding a fifth outreach segment, **investigator training providers and civil-service investigation units**, with a training or licensed-curriculum offer rather than software. That is consistent with your exit objective, because a training provider runs the delivery.
+- **Next contact with Broida:** the tracker's standing rule is "hold to November CEP publication; must be a give". The November CEP issue is about a month away and is the natural moment for a short note that asks for nothing.
+
 ## 3. What does a buyer get that the public cannot download?
 
 Your checklist asks for one honest paragraph. Here it is.
@@ -187,9 +220,11 @@ Your checklist asks for one honest paragraph. Here it is.
 | D3 | **Rotate the API key** | Yes, 5 minutes | None |
 | D4 | **The detection co-author's deferral** | Re-decide the trigger. "Until publication" may now be many months away. One option is to tie the narrow confirmation to the resubmission, which he must approve anyway | Asking earlier risks seeming transactional. Asking later leaves the thinnest file in the estate open |
 | D5 | **Resubmission route** | Take the editor's transfer suggestion or a ranked alternative; clean contact and provenance first | Time; a further rejection is possible |
+| D6 | **The Broida trainer referral** | Your call. If reopened: one email per organization, to a named training lead, offering to **teach** a JRS session for investigators, sent only after the November CEP issue | Reopening goes against your 23 August determination; leaving it closed leaves the only warm channel untested |
+| D7 | **The note to Peter Broida when CEP publishes** | Yes: a short give, sending him the article with no ask (the tracker's standing rule) | Very low risk; keeps the only third-party mention warm |
 
 ### Phase 1. Weeks 1 and 2 (mostly Claude; owner reviews)
-1. A target list of 40 organizations across four segments: HR and investigation platforms, GRC and AI-governance vendors, internal investigations and compliance teams, and investigation consultancies. Each entry names a role and why it fits. **Kept out of the public repository** until D1 is done.
+1. A target list of 40 organizations across five segments: HR and investigation platforms; GRC and AI-governance vendors; internal investigations and compliance teams; investigation consultancies; and **investigator training providers and civil-service investigation units**, where the guide downloads and the Dewey mentions show use. Each entry names a role and why it fits. **Kept out of the public repository** until D1 is done.
 2. A one-page discovery script: five questions, no price, no claims beyond the evidence.
 3. A two-page limitations brief for buyers: what was tested, what was not, and the rejection explained plainly. Honesty here is a selling point to a diligence-minded buyer.
 4. Correct the stale prospectus wording before anyone is sent it: "A turnkey asset" (rights are unsettled), "Manuscript in preparation" for a paper that was submitted and rejected, and "role-gated paths" (the training is ungated). This is a production change, so it needs your approval.
