@@ -481,7 +481,8 @@
       "next_action_by": "OWNER",
       "next_action_basis": "Visibility, history rewriting and any notification to contributors are owner decisions (CLAUDE.md sections 12, 16 and 26). Claude cannot change repository visibility and must not force-push or contact contributors.",
       "status": "OPEN",
-      "opened": "2026-10-02"
+      "opened": "2026-10-02",
+      "addendum_2026_10_02": "Also tracked on public GitHub: 27 personal certificate PDFs (9 reviewer, 15 Records Review Study, 2 honor, 1 reviewer-evaluation), each naming the person in the filename and on the page. Same remedy: repository private, then the history decision."
     },
     {
       "blocker_id": "B-021",

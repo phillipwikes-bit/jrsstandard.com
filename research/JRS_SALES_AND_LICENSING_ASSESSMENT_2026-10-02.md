@@ -90,6 +90,8 @@ I read `programme-status-9872fb93cc94.html` live (byte-identical to `main`) and 
 
 **Reading (*Inference*).** The funnel has a wide top and no middle. Thousands of downloads in 51 countries, mostly reached through LinkedIn, turned into one registration, one survey response, no leads and no organizational pilots. That pattern points to **no ask**, not no interest: the paid offers are retired and pilots were never offered. It supports private outreach (Option B), because the reach shows the topic travels while the site cannot turn readers into conversations. "Downloaded in 51 countries" is usable in outreach only with its basis stated (downloads, not people).
 
+**The August checkout clicks can no longer be verified (*Observed*).** The database now holds only the 6 September clicks. The 13 August clicks (USD 500 and USD 750 intent) recorded on 25 August are gone, most likely in the 54 "dead rows" deleted at your request on 6 September (MASTER_TRACKER). Your checklist says those figures need their original records before being cited, and the originals no longer exist. **Cite them as recorded history only, never as current evidence.** Separately, the owner page's `checkout_intent` counter reads 0 while its leads panel lists the 6 September clicks, so the page contradicts itself on this point.
+
 **A further privacy finding (blocker B-021, CRITICAL).** The owner page's people feed now returns **33 email addresses with names and organizations to anyone who has its address**. 15 of those rows belong to people who did not consent to public listing. Its address is written in `CLAUDE.md` on public GitHub. You accepted that risk for your own page when the passwords came off, but the data belongs to contributors and trainees. Two remedies respect your no-password rule:
 - Make the repository private, which hides the address.
 - Then rotate the page and feed addresses together, which is what CLAUDE.md 36.3 prescribes when an address leaks.
@@ -126,6 +128,37 @@ I read `programme-status-9872fb93cc94.html` live (byte-identical to `main`) and 
 - **Steady guide downloads with no promotion are the clearest organic interest in the estate.** They point to investigators, especially in civil-rights and EEO work, as people who use the material. This is a use signal, not a buying signal: guides are free, and no download has turned into a lead.
 - **For selling:** this supports adding a fifth outreach segment, **investigator training providers and civil-service investigation units**, with a training or licensed-curriculum offer rather than software. That is consistent with your exit objective, because a training provider runs the delivery.
 - **Next contact with Broida:** the tracker's standing rule is "hold to November CEP publication; must be a give". The November CEP issue is about a month away and is the natural moment for a short note that asks for nothing.
+
+### 2.5 The training already built, and the people who completed it
+*Also omitted from the first draft of this revision. Added at the owner's request.*
+
+**What exists (*Observed* on the live site and in the repository):**
+- A six-module reviewer training (`training.html`), open to everyone, with role paths, simulations, a codebook, a 19-page desk reference, a rapid review card, the Investigator Guides and a reference library.
+- Certificates are issued in a person's name on request.
+- Enrollment records with consent capture: 8 of 8 enrollees consented to contact and to transfer to a successor.
+
+**Who has completed what (*Observed*, owner-page feeds and repository, 2026-10-02):**
+| Group | Number | What the certificate means |
+|---|---|---|
+| Training enrollments | **8 people, 5 organizations** | Enrollments dated 14 July to 20 August |
+| Training completions | **7, across 5 countries** (4 recorded in the app, 14 to 27 July; the others attested by you on 25 August as completed before tracking began) | Completed the six modules |
+| Research-study certificates issued | **27 personal certificate PDFs**: 9 reviewer Certificates of Completion (detection panel), 15 Records Review Study certificates (comparison study), 2 honor certificates (co-authors) and 1 reviewer-evaluation certificate | Completed a study task, such as reading all 24 records. **A completion certificate, not a test of competence** |
+| Certificate views | 19 (honor 8, reviewer 11) | Views, not new certificates |
+| Confirmed contributors | 33 of 42, from **29 organizations** | Consented to use and to successor transfer, scoped to study publications |
+
+**Two facts that limit this (*Recorded*):**
+1. **Your decision of 25 August: "guides and training stay free, permanently."** The training is therefore not a revenue line from individuals.
+2. **Your data-use commitment of 15 July:** the enrollment list is "NOT used for marketing". Permitted uses are certificate delivery, honest project and research updates, the adoption story for diligence, and transfer to an acquirer for those who consented.
+
+**And one trend (*Observed*):** no enrollment since 20 August and no recorded completion since 27 July, although the training has been open to all since then. Uptake stalled once active invitation stopped.
+
+**What it is worth (*Inference*):**
+- **To a buyer, it is the most transferable part of the estate.** A working curriculum with an assessment, a certificate system and a consented, transferable participant list saves a buyer months. Your Exit Strategy's "training" asset class is not a plan; it already runs. It also fits your aim of not operating a business, because a training provider or platform would run it after a transfer.
+- **The numbers are small, so cite them exactly.** About 34 people hold a training or study completion (7 trainees and 27 study certificates, with some overlap). Say "completed the JRS training" or "completed the JRS study", never "certified JRS reviewers" as if it were a credential. The certificates themselves say "Certificate of Completion".
+- **"Free" can still produce revenue, but only by your decision (D8).** Free self-study for individuals does not rule out paid work around it: a training provider licensing the curriculum to deliver under its own name, an employer buying instructor-led sessions for its investigators (the route Broida pointed to), or the curriculum as part of an asset sale. Whether licensing it to a provider fits "free, permanently" is your interpretation to make.
+- **The people who completed the training and the studies are the warmest contacts JRS has:** 33 confirmed contributors from 29 organizations, plus 7 trainees. Your data-use commitment rules out a sales pitch to them. It allows an honest research update ("the CCI article is out, CEP is in November, here is what comes next"), and such an update could carry one optional line, such as "if your organization would find this useful, reply and I will send details." Whether to include that line is your decision (D9).
+
+**A further privacy note.** The 27 certificate PDFs, each with a person's name in its filename and on the page, are also tracked on public GitHub. They are covered by the same remedy as B-020 (repository private, D1).
 
 ## 3. What does a buyer get that the public cannot download?
 
@@ -222,6 +255,8 @@ Your checklist asks for one honest paragraph. Here it is.
 | D5 | **Resubmission route** | Take the editor's transfer suggestion or a ranked alternative; clean contact and provenance first | Time; a further rejection is possible |
 | D6 | **The Broida trainer referral** | Your call. If reopened: one email per organization, to a named training lead, offering to **teach** a JRS session for investigators, sent only after the November CEP issue | Reopening goes against your 23 August determination; leaving it closed leaves the only warm channel untested |
 | D7 | **The note to Peter Broida when CEP publishes** | Yes: a short give, sending him the article with no ask (the tracker's standing rule) | Very low risk; keeps the only third-party mention warm |
+| D8 | **Can the free training be licensed to training providers or delivered in paid sessions?** | Yes, I recommend reading "free, permanently" as free self-study for individuals, with paid licensed delivery allowed. Your call | Keeps your free-access promise to individuals while opening the training line Broida pointed to |
+| D9 | **An honest research update to contributors and trainees, with one optional "reply if useful" line** | Yes, once, after CEP publishes, and only to people who consented to contact | Stays within your 15 July commitment; anything more would break it |
 
 ### Phase 1. Weeks 1 and 2 (mostly Claude; owner reviews)
 1. A target list of 40 organizations across five segments: HR and investigation platforms; GRC and AI-governance vendors; internal investigations and compliance teams; investigation consultancies; and **investigator training providers and civil-service investigation units**, where the guide downloads and the Dewey mentions show use. Each entry names a role and why it fits. **Kept out of the public repository** until D1 is done.
