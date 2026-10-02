@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011Cfdci2yJPoJbbpJE9861L",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The harassment findings can be traced to the witness affidavits, such as the C3 and S1 accounts of the letter-to-the-editor comments, but the remedial-action conclusion rests on 'some sort of investigation' with no documented content or outcome, and it conflicts with the decision's own Lulverne footnote and its finding that S2 halted the inquiry.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to named witnesses ('averred,' 'stated,' with ROI cited), but the agency's statement that several officials conducted investigations, and the results of S4's fact-finding, are not tied to any identified documents or findings, and claim 6 (C3's May 19, 2015 disclosure) has no attributed testimony in the summary.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key events and procedural dates are ordered (Jan. 25, Mar. 16-17, Apr. 8, 13, 16, 29, May 21, June 15, June 23, July 29, 2015), but conflicts are left unreconciled: S5's visit is placed in May (Complainant) versus June 18-19 (S5), S2's knowledge is given only as 'April or May,' and the date S2 stopped investigating, the ROI completion date, and the final decision date are absent.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The decision states its criteria (the severe-or-pervasive standard and the prompt remedial action defense) and shows that conflicting testimony was weighed, but the decision-maker is unidentified, there is no record that Complainant's responses or rebuttal were considered, and the discontinued investigation and deferred discipline of C1 are not reconciled with the cited standard that the remedial duty is independent of the EEO process.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The factual record on C1's conduct is developed well enough for independent evaluation, but the thin and internally inconsistent documentation of the agency's remedial response, together with the unresolved chronology conflicts, keeps the record from fully standing on its own as support for the final decision.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5709,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1687,
+   "output_tokens_details": {
+    "thinking_tokens": 989
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

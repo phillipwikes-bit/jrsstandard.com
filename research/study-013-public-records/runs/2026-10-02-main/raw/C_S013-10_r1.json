@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbrNa7pstgh5X9FmUNY",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the Agency's conclusion that Complainant 'failed to prove' discrimination, but the analysis linking evidence to that conclusion is absent, and the ROI is noted as lacking the DRAD file, the leave record, and the FMLA file.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many characterizations are attributed to named sources (Complainant's affidavit, S1A, S1B, EOD testimony), but others rest on unattributed phrases such as 'the record shows,' 'it appeared from the testimonial record,' and 'it is undisputed,' and the underlying documents are not in the file.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated (e.g., December 21, 2017 request, June 7, 2018 leave restriction, August 20, 2018 email), but the narrative is not strictly sequential, the review period is not identified, and dates conflict or are unclear (FMLA request June vs. August 2018; PIP on September 22, 2017 vs. leave restriction on June 7, 2018; 'on the same day' with no antecedent).\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the final determination or what criteria applied, and it shows conflicting accounts of who decided the June 7, 2018 leave restriction (S1A says consultation with EOD and S1B, while S1B says HR decided).\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the reasoning path, source documents, decision-maker, and criteria are missing or inconsistent, an independent reviewer could not assess from this record alone whether the conclusion is supported by the documented evidence.\"}},\"remediation_note\":\"The record would need the Agency's written analysis tying each claim to cited evidence, plus the missing source documents (DRAD file, leave records, FMLA file, PIP and leave-restriction notices). It would also need a consolidated dated chronology that resolves the date conflicts, and documentation of the decision-maker, the applicable criteria, and how Complainant's responses were considered.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 9829,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1338,
+   "output_tokens_details": {
+    "thinking_tokens": 651
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

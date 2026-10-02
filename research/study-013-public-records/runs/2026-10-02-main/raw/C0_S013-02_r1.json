@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011Cfdc7iiW7riHKaR51U3So",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each of the ten claims is paired with specific factual bases: dates (or explicit notation of 'unspecified'), supervisor statements, complainant statements, medical documentation, procedural records (e.g., October 21, 2019 training completion), and third-party corroboration (HR Officer, RA Coordinator, EEO Specialist).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record traces investigation steps from complaint receipt (November 20, 2020) through evidence gathering (supervisor interviews, medical records, training logs, accommodation coordinator statements) to factual findings on each claim, enabling a reviewer to follow how conclusions were reached.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"pass\",\n      \"note\": \"A reviewer years later can reconstruct the sequence of events, complainant's disability (Fibromyalgia, diagnosed 1996, with documented work restrictions), the accommodation request pathway (inquiry to Employee Labor Relations, no formal RA Coordinator engagement), training dates (September 29–November 6, 2019), performance issues (February 25, 2020 meeting), and termination (May 20–21, 2020) solely from the text.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"Evidence is strong for operational facts (training dates, medical records, supervisor denials) and reasonable accommodation non-processing (RA Coordinator's explicit statement of no record), but allegations of hostile conduct (screaming, threats, degrading language on 'unspecified dates') rest on conflicting accounts without contemporaneous documentation, corroborating witnesses, or temporal specificity to support or refute the harassment claims.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Chronology is clearly reconstructed: hire date September 29, 2019; training completion October 21–November 6, 2019; performance meeting February 25, 2020; workload increase March 2020; termination notice May 20, 2020; involuntary resignation May 21, 2020; and complaint filing November 20, 2020, with specific reference to accommodation request timing (December 2019–January 2020 mentioned in RA Coordinator statement).\"\n    }\n  },\n  \"remediation_note\": \"The record excels in chronology, basis identification, and traceability of procedural facts but is vulnerable on hostile conduct allegations because they lack contemporaneous evidence or temporal specificity. A compliant version would either require dated incident reports, corroborating witness statements, or contemporaneous written complaints; alternatively, it would explicitly note the investigative limitation and the consequent evidentiary insufficiency for those claims.\",\n  \"finding\": {\n    \"ai_function\": \"analysis\",\n    \"condition_triggered\": \"accountability_support—the record presents strong documentary evidence for operational and accommodation-processing facts but relies on unsubstantiated, unspecified allegations of harassment without contemporaneous corroboration or precision dating.\",\n    \"compliant_version\": \"For allegations of hostile conduct on unspecified dates, insert either (a) dated contemporaneous written complaints, email records, or incident reports; (b) names and statements of corroborating witnesses; or (c) an explicit statement that complainant provided no dates or witnesses and that the investigator found no supporting documentary evidence in agency records, personnel files, or email, thereby placing the burden transparently on the complainant's credibility against the supervisor's denial.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3921,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 843,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

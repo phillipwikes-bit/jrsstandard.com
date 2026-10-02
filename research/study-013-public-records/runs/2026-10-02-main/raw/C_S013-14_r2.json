@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbtwAEgFAQ8E7VptDYW",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The Agency's conclusion that Complainant failed to prove discrimination is stated, but the underlying evidence (ROI, testimony, interview results, rating documents) is absent, so the path from evidence to conclusion cannot be traced from this record, and the references to claims B7 and B17 do not match the listed claims.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Allegations are attributed to Complainant and findings to the Agency's FAD, but the findings (e.g., that Complainant 'did not demonstrate at the interview' he was more qualified, or that the level 3 rating was 'fair') cite no specific ROI exhibit, witness, or document.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most alleged incidents carry dates, but the filing date, EEO contact, ROI, hearing request and FAD dates are not given (the 'late filing date' is referenced without a date), and the sequence of prior interventions is not set out.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The framework is named (McDonnell Douglas, severe or pervasive standard) and management's legitimate nondiscriminatory reasons are noted, but the individual reviewers behind the FAD are not identified and the record does not show how Complainant's responses were weighed before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the evidence, source attribution, a complete timeline, and reviewer identity are missing or incomplete, an independent reviewer could not assess from this record alone whether the conclusion is supported.\"}},\"remediation_note\":\"The record would need the ROI and exhibits tied to each finding, a dated event timeline (EEO contact, complaint filing, acceptance, ROI, FAD), and identification of the FAD decision-maker and how Complainant's rebuttal was considered. It should also correct the claim-number mismatches (e.g., B6/B7, B17) so each finding maps to the claim it addresses.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5000,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1191,
+   "output_tokens_details": {
+    "thinking_tokens": 543
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

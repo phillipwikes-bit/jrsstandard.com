@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdc572M61TS37HsBSvR2",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The final conclusion that Complainant 'failed to prove that the Agency had subjected him to discrimination' appears with no stated reasoning, and the accommodation denial rationale is internally unsettled (essential functions versus undue hardship, which RMO4 'chose not to delineate').\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most statements are tied to role-labeled officials, dated emails, or evaluations, but some are unattributed or secondhand, such as RMO1's 'track record' research, RMO2 testifying to 'information she heard,' and the 'lowest of any full-time employee' productivity claim with no data cited.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events from 2015 to 2017 are dated and ordered, but the 2016 cross-training plan date is not given, the FY2015 evaluation is absent, the telework history is unclear, and RMO6's August 2018 testimony is placed after the February 2018 FAD request without explanation.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The FAD decision-maker and applicable criteria are not identified, the individual assessment is only a guess ('may have been' the FOHS assessment), and Complainant's Miami reassignment alternatives went unanswered and RMO6 was not interviewed, so consideration of responsive information is not documented.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"With the FAD rationale missing, the FY2015 evaluation not in the record, the undue hardship basis undelineated, and the decision-process elements unclear, an independent reviewer could not assess whether the conclusion is supported without outside context.\"}},\"remediation_note\":\"The record would need the FAD's stated reasoning and decision-maker, the criteria applied to the accommodation denials (including the individual assessment and the undue hardship or essential-function analysis), and the response to Complainant's alternative-placement proposals. It would also need source documents for the productivity and performance characterizations (including the FY2015 evaluation) and a consolidated, dated timeline covering the investigation and testimony dates.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 8187,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1316,
+   "output_tokens_details": {
+    "thinking_tokens": 622
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

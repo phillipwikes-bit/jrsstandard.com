@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbscEArc96dmxywrvYZ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The Agency's conclusion that Complainant 'failed to prove that he was subjected to discrimination' is stated without any analysis or evidence linking the cited allegations to that finding, and claims (a)-(j) are referenced but not set out.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Some characterizations cite the Report of Investigation by page (e.g., 'ROI at 246-7' and '49-51'), but the allegations in items k)-q) are Complainant's assertions and the source of the 'witness' report to the Inspector General is unidentified.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Allegations k)-q) carry dates running from April 15, 2018 to August 10, 2018, but they are listed in reverse order, the dates of the EEO counseling, investigation, hearing request/withdrawal, final decision, and appeal are absent, and the review period is not stated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the Agency's final decision or what standard was applied beyond a reference to 29 C.F.R. § 1614.110(b), and it does not show whether Complainant's or SHSS's responses were weighed before the conclusion.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"The record omits claims (a)-(j), the ROI content, the Agency's analysis, and key dates, so an independent reviewer could not assess whether the conclusion is supported without outside context.\"}},\"remediation_note\":\"The record would need the full list of claims with their sources, the dated procedural sequence from counseling through final decision and appeal, and the decision-maker's identity, applicable criteria, and documented analysis of the evidence and responses. It should also attach or specifically cite the ROI evidence supporting each material finding.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2769,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 591,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

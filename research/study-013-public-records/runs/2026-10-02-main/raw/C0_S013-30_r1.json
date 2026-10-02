@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcLpD1FM6U8NhDJtzB6",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record identifies the basis for the complaint through specific dates (March 25, 2022 harassment incident; May 2, 2022 non-selections; May 3, 2022 complaint initiation; June 29, 2022 EEO filing) and clearly states the two discrimination allegations (age and reprisal).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The record documents the factual sequence and complainant's stated grounds, but does not disclose the Agency's investigative reasoning, findings of fact, or the basis for the conclusion that discrimination was not proven—only that a final decision was issued.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A reviewer years later can understand the complaint allegations and timeline, but cannot reconstruct why the Agency rejected the discrimination claim without access to the full ROI analysis, witness statements, or comparator evidence referenced only by page number (238, 61).\"\n    },\n    \"accountability_support\": {\n      \"status\": \"gap\",\n      \"note\": \"The record presents complainant's allegations and the Agency's conclusion but does not include or summarize the evidentiary support for the final decision, making it impossible to assess whether evidence sufficient to deny the claim was actually developed.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The chronology is clear and complete: March 25, 2022 (harassment), May 2, 2022 (non-selections learned), May 3, 2022 (complaint initiated), June 29, 2022 (EEO complaint filed), with investigation and final decision following.\"\n    }\n  },\n  \"remediation_note\": \"To achieve full compliance, the record must include or reference a summary of the Agency's investigative findings regarding age, temporal proximity, and reprisal elements, along with the specific evidence (comparator qualifications, selection panel notes, prior EEO complaints) that supported the conclusion that discrimination was not proven.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"reasoning_traceability, cold_reviewer_clarity, accountability_support\",\n    \"compliant_version\": \"A compliant version would integrate the key findings and reasoning from the ROI into the background section or append a findings-of-fact summary stating: (1) the age and protected-activity bases asserted; (2) the evidence developed (e.g., qualifications of selected candidates, non-selection rationales); (3) the Agency's factual conclusions on each element (legitimate, non-discriminatory reason; burden-shifting analysis); and (4) the nexus analysis addressing temporal proximity and pretext for the reprisal claim—enabling a cold reviewer to understand both the record and the investigative logic.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1004,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 691,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

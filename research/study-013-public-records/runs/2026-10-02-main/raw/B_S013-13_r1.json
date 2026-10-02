@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbcapRcsRrtfcfDQbD8",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The record cites the policy, both Form 50s, resumes and testimony, but it ends with a bare conclusion that Complainant 'failed to prove' discrimination and never explains why Coworker got 8% and Complainant 5% within the policy's 3%-8% band.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations carry ROI or brief page cites, but the Manager's reason for approving 8% ('HR knowledge and experience') comes only through Business Partner's account, and the Manager's own statement and any contemporaneous approval document are not identified.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (policy June 13, 2015; 2019 prior selection; effective date July 17, 2021; EEO contact August 31, 2021; complaint November 17, 2021), but the dates of the Manager's approval, the ROI, the hearing notice and the FAD, and the dates of Coworker's detail and training, are missing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who decided the FAD, what standard or analysis was applied, or whether Complainant's claims about experience, education and training, or the budget and approval statements attributed to Business Partner, were weighed before the conclusion was reached.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess from this record alone whether the conclusion is supported, because the decision-making rationale for the 5% versus 8% difference and the FAD's reasoning are absent, so outside context would be needed.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3934,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1352,
+   "output_tokens_details": {
+    "thinking_tokens": 835
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

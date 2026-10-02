@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbpPEVmQvDhJ98Tkkdc",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Claim 2 path from the ROI-cited emails and testimony to the Agency's finding that accommodation was not denied can be followed, but the Claim 1 dismissal rests on a legal rationale with no cited evidence of the August 1, 2018 email's content about a midyear review (the August 1 email described concerns leave and medical notes).\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most Claim 2 characterizations are attributed to named roles or ROI pages (e.g., ROI pp. 179-192, 199), but the comparator testimony, the 'record reflects' statement about Comparator 2, and the Claim 1 allegation lack specific source citations.\"},\"rc3\":{\"status\":\"review\",\"note\":\"The August-September 2018 accommodation sequence is well dated, but the investigation and ROI dates are missing, the 2020 to April 25, 2022 gap before the final decision is unexplained, and the telework grant dates conflict (September 7 vs. September 10, and a September 7 to 20 period versus other stated dates).\"},\"rc4\":{\"status\":\"review\",\"note\":\"The applicable criteria are named (29 C.F.R. § 1614.107(a)(1), § 1614.110(b), prima facie standard), but the individuals who reached the Agency final decision and the AJ's motion ruling are not identified, and the AJ's reasoning for partly denying the motion is not recorded.\"},\"rc5\":{\"status\":\"review\",\"note\":\"An independent reviewer could assess Claim 2 reasonably well from this summary, but the Claim 1 basis, the retaliation question, comparators 3 and 4, and the removed outcome text mean outside context is still needed to evaluate the full record.\"}},\"remediation_note\":\"The record would need the specific evidence and decision rationale supporting the Claim 1 dismissal, the dates of the investigation and ROI, and identification of the deciding officials and the reasoning behind the AJ's ruling. It would also need reconciliation of the conflicting telework dates and source citations for the comparator testimony.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6404,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1621,
+   "output_tokens_details": {
+    "thinking_tokens": 931
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

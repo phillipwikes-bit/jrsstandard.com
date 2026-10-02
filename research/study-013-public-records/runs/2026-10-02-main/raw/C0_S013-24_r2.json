@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcJ3vgWf3qf5KnEKhgd",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record identifies bases for key conclusions through dated emails, personnel statements, and documented actions: Person B's May 9 statement that removal was discussed 'during settlement proceedings,' Person C's May 19 assertion of verbal resignation agreement, the May 18, 2015 medical examination cited as showing inability to work, and the July 13 authorization to process resignation.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The decision-process chain from evidence to conclusion is partially traceable (settlement approval → removal request → authorization to process resignation), but critical gaps exist: Person D's May 19 request for 'a copy of the entire settlement agreement' and disability documentation is never answered in the record, and Person C's claim about an attached medical examination (May 19) references a document not provided, making the evidentiary basis for the disability conclusion incomplete.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"gap\",\n      \"note\": \"A reviewer with no prior knowledge cannot fully reconstruct the factual basis because the alleged settlement agreement text itself is absent, the independent medical examination Person C claims to have attached on May 19 is not in the record despite being central to the disability determination, and Person C's statements about what Complainant 'verbally agreed' during unrecorded settlement negotiations lack corroboration.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"gap\",\n      \"note\": \"The record does not contain sufficient evidence to support the Agency's conclusion that Complainant 'agreed to resign': the settlement agreement is not attached, the verbal agreement is attested only by Person C (who had incentive to enforce it), Complainant explicitly asked on May 4 about part-time positions and on June 9 whether he needed to resign first before accommodation, and Person D noted on June 27 that EO found 'the resignation is not part of the settlement agreement, it is not enforceable.'\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The chronology is clearly traceable: on-the-job injury March 15, 2010; no return after April 14, 2014; March 14–17, 2016 removal inquiry; March 29, 2016 OWCP settlement approval; May 3–June 27, 2016 escalating resignation demands; July 28, 2016 effective resignation date; August 8, 2016 EEO complaint filed; March 25, 2020 final Agency decision.\"\n    }\n  },\n  \"remediation_note\": \"The record must include the complete text of the OWCP settlement agreement executed March 29, 2016, and the independent medical examination dated May 18, 2015 (or a sworn certification explaining its absence), to establish whether a resignation term was actually documented and whether disability was medically substantiated. Person C's claims about oral agreements should be supported by contemporaneous notes, witness statements, or corroborating evidence from settlement counsel.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support\",\n    \"compliant_version\": \"A compliant record would attach the complete negotiated settlement agreement and medical documentation referenced by Agency personnel; explicitly document the content and date of any verbal resignation agreement (e.g., settlement conference notes or attorney memoranda); clarify why Complainant's May 4 and June 9 emails seeking accommodation and part-time work do not contradict the resignation claim; and provide Person D's independent legal analysis responding to the May 19 request for disability determination evidence, so that a future reviewer can verify whether the factual predicate for forced resignation existed and was properly documented at the time.\"\n  }"
+   }
+  ],
+  "container": null,
+  "stop_reason": "max_tokens",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3780,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 900,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

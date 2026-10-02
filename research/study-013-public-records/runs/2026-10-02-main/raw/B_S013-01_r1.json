@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbXXV7KSQspajQHjmdT",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"Evidence for claims 1, 3 and 4 is laid out and linked to the stated reasons (panel interview findings, S1's assessment of the Group Lead interview, DEMO benchmarks), but the Agency's final conclusion is stated in one sentence with no reasoning, and claim 2 and the reprisal and age elements are not tied to the evidence.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to named roles (PM1, PM2, PM3, S1, S2, S3, Complainant), but the underlying documents (resume, interview notes, scoring, DEMO benchmarks, team feedback) are only described and not cited, and S3's reconsideration finding that Complainant was 'adequately compensated' has no stated basis.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Dates for the December 2018 events and the January 2019 notices are given, but claim 1 is the Manager vacancy (August 2018 application) with no selection date, the FY2018 review period is not defined, the dates of prior counseling are missing, and the 'previous EEO complaint' is undated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"Panel and selecting officials are named, but the criteria for DEMO payout and reconsideration are not documented, S3's investigation is not described, whether Complainant's responses were considered is unclear, and the Agency FAD gives no reasoning on who decided or what standard was applied.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"The record does not stand alone because the FAD conclusion has no analysis, the claim numbering and vacancy descriptions are inconsistent (claim 1 as chastising versus the Manager selection narrative, A42 versus A44), and the closing statement about the cybersecurity classes lacks context, so an independent reviewer needs outside information to assess support.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4628,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 624,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcR7vUvWaUkPN5rMjLH",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"Claim 2 can be traced from the cited ROI emails (pp. 179-199) to the finding that the accommodation was approved once documentation arrived, but Claim 1's dismissal rests only on a legal characterization with no factual development of the August 1 email, and the retaliation basis has no evidence-to-conclusion path at all.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most Claim 2 characterizations carry ROI page citations, but the Claim 1 midyear email is not sourced, the Comparator 1 and Comparator 2 characterizations rest only on supervisor testimony, two of the four identified comparators are not addressed, and conflicting accounts are left unreconciled (physician letter running through August 20 vs. September 20; telework approved September 10 vs. September 7).\"},\"rc3\":{\"status\":\"review\",\"note\":\"The August 1 to September 7, 2018 accommodation sequence is dated and ordered, but internal date conflicts remain, the AJ closed the case without a formal dismissal order, and the roughly two-year gap between the March 27, 2020 FAD request and the April 25, 2022 final decision is unexplained.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The final decision does not identify an individual reviewer, cites the dismissal authority as '20 C.F.R. § 1614.107(a)(1)', and the retaliation basis clearly alleged in counseling and the complaint was omitted from the acceptance letter and never investigated ('He was not asked about the basis of his reprisal claim'), so consideration of all raised matters is not documented.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could assess the Claim 2 accommodation finding from the cited ROI, but could not evaluate the retaliation basis, the Claim 1 dismissal, or the unaddressed comparators without outside context, so the record does not stand on its own for the full complaint.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6350,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1490,
+   "output_tokens_details": {
+    "thinking_tokens": 840
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

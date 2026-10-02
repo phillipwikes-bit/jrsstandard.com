@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbmRJvgQHE4h7eucDy1",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Agency's final conclusion that Complainant failed to show preponderant evidence of motivation by protected class is stated, but the record does not connect the cited testimony to that conclusion, and no reasoning for the final decision appears.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to named roles (HR Supervisor, HR Officer, RA Coordinator, Complainant, Complainant's doctor), but the Complainant's account of her own claims (e.g., threats, accommodation requests) lacks any documented source such as an affidavit, and the 'S1' reference is not defined.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Some events are dated (hired September 29, 2019; March 19, 2020 meeting; February 25, 2020 meeting; May 20 letter; May 21, 2020 resignation), but claims 2-7 are repeatedly 'unspecified dates' and medical documents dated 2005 are not tied to the 2019-2020 period, so the sequence cannot be fully followed.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record names the HR Supervisor as recommending termination and the HR Officer as issuing the May 20, 2020 letter, but it does not document the criteria or probationary standard applied, any review of Complainant's responses, or who reviewed the matter before the final agency decision was issued.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the record presents largely uncorroborated, conflicting statements (e.g., accommodation request versus no record of receipt), omits the decision's reasoning, and leaves many dates unspecified, an independent reviewer could not assess support for the conclusion without outside context.\"}},\"remediation_note\":\"The record would need dated documentary evidence (e.g., accommodation request, performance counseling, termination recommendation) linked to each claim, and an explicit statement of the reviewer, criteria applied, and reasoning connecting the evidence to the final conclusion. It would also need specific dates or an explanation for undated incidents and attributed sources for the Complainant's own allegations.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6710,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 699,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

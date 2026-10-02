@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbcFkx8EPkrgSCP14w7",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record lists claims (k)-(q) and states the Agency concluded Complainant failed to prove discrimination, but no evidence, findings, or reasoning linking the two is included, so the conclusion cannot be reconstructed.\"},\"rc2\":{\"status\":\"gap\",\"note\":\"Characterizations are attributed only to Complainant's allegations, with a single stray reference to 'ROI at 246-7' and 'ROI at 49-51' and an unidentified witness, so no incident is tied to an identified evidentiary source such as affidavits or documents.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Dated incidents from April 15, 2018 through July 10, 2018 are listed (in reverse order) and procedural steps are described, but the dates of complaint, counseling, ROI, hearing withdrawal, and final decision are absent and the Inspector General report is undated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who authored the final decision, what standard or analysis was applied to each claim, or whether Complainant's or SHSS's responses were weighed before the Agency concluded he failed to prove discrimination.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"With no evidence, attribution, decision rationale, or complete chronology, an independent reviewer could not assess whether the Agency's conclusion is supported without consulting the full ROI.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2715,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 469,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

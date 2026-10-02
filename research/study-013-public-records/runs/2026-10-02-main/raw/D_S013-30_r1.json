@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcmXrSn5V1u9oCmqeLr",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSgAsKEAgSGAI4AUIIdGhpbmtpbmcSDPCoYWobvJ5m7LKGZxoMfFeEtuIW4c2wapbgIjDkRivAXVrzF9S3RRwqVrUgo0cqqknNyKNO3d7XkX1naoF+hUl2M+lsqBirqiKUDZEqnQpaWBXFf3Y1k0pGRsjKagrB6d/+uStLO1AmPN8eGOM1aA6OLwvh5MEs2sbu459hg4PQAtbuz9JYLs5RxIm7/4ZQ9VfH2xyOj058twoK2X1qp2RjeE8ryrpdL73jrZrr7rR+x3PwSVCHT0/EYxdQWeFsJekIN7yzVt805/dn94Z+E+GsF/ryFxFtNeCDXD1dF+CDocBx+95rgqTJlEI0eLMmAIv3qXTuAQzY4JCWh9hNTPNjmhUpD2E1DqdIkxVba2jLGa+QgX5w1zLfUVS6yLxJiQi5nkTjsbXc0Z7eRBJO2Vpa7WrbzDJe9YQhyJT1Ak750XOZdJ7teSeEHV4XR6ZHQsuE2AdqWllOk5GNTpY7IL8JNJJu1JUNe2Ez5RNDqicj/Ie010gArmar7H++zKX0p+1dF9A/yvlMJaSf7h3071XyPqRTgf+KbjyGIJJu/cxWA9MywYOw8f1VtEDY8FUzSudPbmZBtFuBqHreWCAehgFbvkialTDvLOhHVUy9sThg45GIUo6w5AR7G4UVvS7NFMRnEp4IuIksyL8jeXzyxrQ+Y3CMLZ6y1wod0SFZ+udoPQmEv0C/sFchUZBpGFsIUSP4tbqOKAir1SCBhccHWJhULlFHbDIYgc0io7kD0uXYcEPiWPZL9QCqRujuO4JlaKnOZ+BEUMHoxSFN0WXYrsC3tZMLMs9PlMUDs0J7/us0NVLlk5XzRGUWlRFw5wo10ET5ESwrNWS4W5PFpUVsavuoJ40YoBasyeoiXn7Zmt8NK6D/zP0wCifCRHvKn0B6DDDoAbj5CNmfQiIQN7G9ztb619qmXbrseHkS0jKFVcHb3Qm6PJsb5JL7EUiNXaV8bGaMqCvFuVxCX0m+rMGJTgrKd1ZQXXlhezDo8TyiJsAKtEurPe3hVKdLsVTsDBWkDjXInNG4jcBsXu6Ti0JRxEqTpuLd4LZ7kTZ34k1qY+Ofley80bMr8lLx4xWeQSD6oB54BncJv8l2PdEL43sF7D8vGbBVAnJnAac33jMAkcexygNr4OPDNLZddJIja+yaPjGQNia4e3539SIKIkePfqpOOykkY3vri7cvu1z+H4QnSGruc02ORtx96PYErgfO1vHkvkqm4S5BeZDOoBUVAI/3rHsm45c9G4u72omQ6o3vcW8oUYvNTQbFw9MOl56p0WNtIk/dKInRgWEIB9yI2es5PKOcf4mX7BCZNNIdlChPPOkpzWgI57HvR3zp0knc4jwFXPELaKruTEb/Iozo/G2PLCt+x3TyM6P+CK9J/VupbSa8skRMjoMyuHFToCZGWGm1eYc9cvMD3hTSFGk93rCASdKXNOqjDfNR4afAesEs0Yk//43fCe3O26DkdKEaCpnRe+KDeWHomZUTIp0pPd3tG3DvwXx3kwhoEDtPKD15M553Pa0ffRT2oK2RgCie8PKS7NzSPm1YhLR8pUluQEBKM9CCwbGNOGr43MpWr8E7gA730sqF8lFCNi38wV/GIcQf/C9uJxAirZEpj1H1ts3zNGvHEYvZW8b2OJs1cOhiYC4z+CLDQw3VZ76hRyyHYGC785onNA23CcXfmb4PWKCP9mywlO4qUTzTwaQwBdFozLkDxwwuTV4aO77syDPwjwnewX+JDg/tX2kKwZrjiqXMY9J90tQKhQUdfnUuQr68qhluW7S4y7InFIUma5O8PMwmSniSRNGFE79s8JTmpieqBmvWNgZzIkgQ4A2a8koLYcq70cKGTTRUG5W+GAE="
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the final decision's conclusion that Complainant 'failed to prove that she was subjected to discrimination' but documents no evidence or reasoning on the two non-selections, so the path from evidence to conclusion cannot be traced.\"},\"rc2\":{\"status\":\"review\",\"note\":\"The harassment report and the Coworker's transfer are tied to 'ROI at 238, 61', but the non-selection claims have no cited source, and no selecting official's statement or selection-file evidence is identified.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (March 25, 2022 report; May 2 notice of non-selection; May 3 initiation; June 29 filing), but the dates of the selection decisions, the close of the investigation, the ROI transmittal and the final decision are not stated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify the selecting officials, the Agency decision-maker, the legal standard or criteria applied to the age and reprisal claims, or whether any Agency explanation or Complainant rebuttal was considered before the final decision.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the record lacks the evidence on the non-selections, the Agency's stated reasons and any analysis, an independent reviewer could not tell from this record alone whether the no-discrimination conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2345,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 746,
+   "output_tokens_details": {
+    "thinking_tokens": 288
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

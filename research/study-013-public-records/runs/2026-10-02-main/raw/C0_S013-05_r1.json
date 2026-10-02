@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011Cfdc91f1DAUcGRq6qEctG",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each major allegation (reclassification denial, harassment incidents, meeting exclusions, favoritism) is grounded in specific dates, witness statements, and documentary references (e.g., IR 203, 212, 238, 273).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record traces a clear evidentiary chain: Complainant's assertions → specific incidents with dates → S2's responses → corroborating or contradicting witness testimony → investigator synthesis, enabling a later reviewer to follow how conclusions were reached.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"While the record is detailed and chronological, a reviewer years later would struggle to understand the ultimate investigative conclusion (outcome redacted) and the precise weight assigned to conflicting evidence (e.g., CCSB's vivid allegations of racial bias vs. DD's 20-year professional assessment of both parties).\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"Evidence for harassment allegations is fragmentary and temporally inconsistent (incidents November 2016–March 2017 vs. alleged onset August 10, 2017); reclassification denial is well-documented but S2's defense (higher-level approvals required, no GS-15 duty performance) is substantiated; favoritism claims rest heavily on the CCSB's hearsay and unverified oral statements about S2's alleged remarks.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record provides a clear chronology: August 10, 2017 (start of alleged harassment), November 2, 2017 (complaint filed), with specific dates for incidents (January 20, May 3, July 18, November 1, 2017) and witness employment timelines (DD departed January 2017, CCSB left May 2016).\"\n    }\n  },\n  \"remediation_note\": \"The record requires explicit summary of the investigative findings and the evidentiary basis for rejecting or accepting each allegation category. Specifically, the investigator must articulate how S2's documented role limitations, corroborating denials, and higher-level approval requirements weigh against the CCSB's allegations and Complainant's narrative, with clear identification of which evidence was credible, probative, or insufficient.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"cold_reviewer_clarity, accountability_support\",\n    \"compliant_version\": \"A compliant record must include: (1) an explicit investigative conclusion on each allegation (reclassification, harassment, exclusions, favoritism) with stated confidence level; (2) documented resolution of material conflicts (e.g., between CCSB's hearsay allegations and DD's professional observation); (3) explanation of why favoritism claims succeeded or failed despite reclassifications to non-Complainant employees; and (4) clear statement of the investigator's credibility assessments and the evidentiary standard applied to each element, ensuring a future reviewer can reconstruct the decision without the outcome section.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6832,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 780,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

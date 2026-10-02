@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbaUpDAukFNqFFcwd7K",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"Most steps from evidence to conclusion are traceable (e.g., Selectee 1 four years as Acting SDUSM, Complainant ranked fifth; Selectee 2 serving at GS-14, ranked seventh of 12), but the cut-off scores for the non-certified vacancies and the link between the testing errors and the 64.4 score are asserted rather than documented, and the 'two of 13 not applied' vacancies are not itemized.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many characterizations are attributed (Proctor, Chief DUSM, Assistant Chief, Branch Chief, testing consultant), but several are summarized without a cited document, such as the testing consultant's confirmation of full time, the 'skin of his teeth' remark, and the assertion that the Proctor patted down all candidates, with no affidavits or exhibits identified.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are present (August 31, 2017 exam; September 11, 2017 meeting; November 2, 2017 selections; June 2019 and June 2021 decisions), but the text of the pat-down-of-other-candidates timing ('a week before') is relative, and the dates of the HR complaint, the retest denial, the EEO contact, and the Best Qualified List creation are not given.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The Career Board Presenter, Branch Chief, and Assistant Chief roles and the Agency's pretext analysis are described, and Complainant's responses were considered, but the record does not show who made the final selection decisions, the cut-off score thresholds applied, or the specific criteria the Career Board used, and the retest denial decision-maker is unnamed.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record largely stands alone for the narrative and the Agency's reasoning, but gaps in source documentation, score cut-offs, key dates, and decision-maker identification mean an independent reviewer would need outside context (the underlying report of investigation) to fully assess whether the conclusion on discrimination and reprisal is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4690,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 700,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcDYtZU7988NYXLZ5Ww",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each of 25 alleged incidents is explicitly numbered and dated (or temporally bounded), with named parties and specific allegations clearly stated (e.g., 'On April 5, 2017 and May 25, 2017, Complainant was notified he was not selected...').\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The Agency's conclusions cite McDonnell Douglas framework and provide stated reasons (e.g., 'non-selection occurred because he did not demonstrate...he was more qualified'), but the record does not show the investigative evidence—witness statements, interview notes, or documentary support—that led the Agency to those conclusions.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"gap\",\n      \"note\": \"A reviewer years later could reconstruct the allegations and the Agency's stated rationale, but cannot verify the basis of findings without the underlying investigative report (ROI), which is referenced but not included in this summary.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"The Agency states conclusions and cites legal standards, but this summary does not reproduce the investigative evidence (testimony, documents, comparators) necessary to independently assess whether the stated reasons are supported by fact.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record presents a clear chronological sequence from April 5, 2017 through June 2018, with specific dates for 25 incidents, allowing a reviewer to follow the timeline of alleged events and Agency response.\"\n    }\n  },\n  \"remediation_note\": \"To achieve full compliance, the record must include or reference the complete Report of Investigation (ROI) containing witness statements, documentary evidence, and the specific factual findings that support the Agency's conclusions under McDonnell Douglas. A summary of key evidentiary findings (comparator data, witness credibility determinations, document analysis) for at least the primary claims would also strengthen cold-reviewer reconstructability and accountability support.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"reasoning_traceability, cold_reviewer_clarity, accountability_support\",\n    \"compliant_version\": \"The record must either embed key excerpts from the ROI (e.g., witness statements on qualifications comparison, supervisor testimony on performance standards, analysis of whether comparable employees received different treatment) or state explicitly where the full investigative evidence is located and how it supports each material finding. At minimum, for claims A, B17, and C1, the record should articulate the specific facts (e.g., interview scores, qualifications matrix, rating criteria met/unmet) that led to the 'legitimate nondiscriminatory reason' conclusion.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2808,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 672,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

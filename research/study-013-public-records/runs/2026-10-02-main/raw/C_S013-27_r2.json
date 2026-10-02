@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdc4Gtdsqncz1jrAVcKz",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Agency's reasoning (nine incidents in 21 months, only two direct contacts, not severe or pervasive) is stated, but the nine incidents are never listed and the finding of 'no sufficient basis to hold management liable' has no stated supporting steps.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Complainant's statements are attributed to his formal complaint, but the 'witness statements' said to corroborate him, the 'employee' who reported the June/July 2018 remark, and the ROI contents are not identified or tied to the record.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Several incidents are dated (December 11 and 13, 2017; January 25, 2018; complaint filed June 27, 2018), but the four CEO reports, Complainant's requests for an incident report, his prior complaints to management, and the ROI and FAD dates are undated, and the 'June or July 2018' incident cannot be placed relative to the June 27 filing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record says only 'the Agency' made the determinations, with no named reviewer, no cited legal standard or threshold beyond the phrase 'severe or pervasive', and no indication that the CEO's or Deputy Director's responses were considered before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess whether the conclusion is supported without the ROI, the witness statements, and the incident-level findings, because the record is a narrative summary that depends on outside documents.\"}},\"remediation_note\":\"The record would need the ROI and witness statements attached or cross-referenced, an itemized and dated list of the nine incidents with their sources, and a dated timeline of management notice and responses. It would also need to name the deciding official and the standard applied, and to document how management's responses and the liability determination were considered.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3255,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1273,
+   "output_tokens_details": {
+    "thinking_tokens": 660
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

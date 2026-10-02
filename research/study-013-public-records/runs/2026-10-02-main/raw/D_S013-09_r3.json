@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcUQGaLGWyxUrpSA5Gk",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The path from evidence to conclusion can be traced for claims 1, 2, 3 and 12. For the hostile work environment claim, however, the Agency gives only a summary finding that she was not 'singled out' and never addresses the other incidents (e.g., the 'mental patient' remark, the misconduct accusations, the August 2019 article).\"},\"rc2\":{\"status\":\"gap\",\"note\":\"Several material characterizations lack a traceable source in the record. The Agency says 'all six coworkers confirmed' S1 did not disclose information, but the Privacy Investigation Report says only that 'no evidence was found.' The 'undisputed evidence' on claim 1 is uncited, the Privacy Officer's letter names 'Ms. [blank],' and the discipline letters go to unidentified addressees marked only 'Employee 1/2', with no link to Coworkers 3 and 4.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events are dated, but the timeline conflicts: claim 2 is dated May 2018 while the supplemental affidavit places it in November or December 2017. The records-access request appears as April 2019, April 8, April 9 and an April 12 SPAR, a June 18 email names three coworkers versus the six originally flagged, and claim 14 has no dates.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The record shows the ORM partial dismissal, a final decision under 29 C.F.R. § 1614.110(b), the disparate-treatment and harassment framing, and consideration of S1's responses. However, no deciding official is identified, and there is no indication that statements were obtained from Witnesses 12 and 13, whom Complainant named, or that they were considered.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Given the sourcing gaps, the unresolved date conflicts, the unidentified discipline recipients and the unaddressed harassment incidents, an independent reviewer could not determine from this record alone whether the final decision is supported by the documented evidence.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6531,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1519,
+   "output_tokens_details": {
+    "thinking_tokens": 844
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

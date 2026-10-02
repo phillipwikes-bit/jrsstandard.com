@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcC4EriGSYtwBSoxwXi",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each alleged incident is identified with a specific date or date range and attributed to a named actor (SHSS, HSS, Chief), with the basis for complaint stated explicitly (e.g., scrubs restriction, false statement to supervisor, schedule changes).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The record traces which claims were accepted (a, b, k-q), dismissed (g), and treated as background only (c-f, h-j), but does not articulate the reasoning for these triage decisions beyond procedural timeliness or counseling-stage requirements.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A later reviewer can identify the allegations and their dates, but lacks the full investigative findings, evidence evaluation, or agency's factual conclusions necessary to understand the basis for final dismissal, since the outcome text is removed.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"gap\",\n      \"note\": \"The record presents allegations and dates but omits the investigative findings, witness testimony summaries, and evidentiary assessment that would support the agency's conclusion that Complainant failed to prove discrimination.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"A clear chronological sequence is evident: April 15, 2018 (initial incident) through August 10, 2018 (end of alleged surveillance period), with intermediate dated incidents (May 1, June 19, June 21, June 25, July 10, 2018) providing traceable intervals.\"\n    }\n  },\n  \"remediation_note\": \"To achieve compliance, the record must restore the investigative findings section, summarizing witness testimony and evidence related to each accepted claim, and must include the agency's factual conclusions and reasoning for rejection of the discrimination allegation. A brief statement of the burden-shifting analysis applied would also strengthen accountability.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"accountability_support, reasoning_traceability, cold_reviewer_clarity\",\n    \"compliant_version\": \"The full record must include: (1) a summary of investigation findings for each accepted claim (a, b, k-q), including witness testimony and documentary evidence examined; (2) the agency's factual conclusions on whether each alleged act occurred and whether it was discriminatory; (3) explicit reasoning for why the evidence was found insufficient to prove discrimination; and (4) a closure statement documenting the administrative judge withdrawal outcome and final agency decision authority.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1257,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 632,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

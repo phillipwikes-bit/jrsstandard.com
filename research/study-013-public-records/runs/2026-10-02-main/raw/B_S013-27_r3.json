@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbk8HTsgLAdSZnzHm7v",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The FAD's path from corroborated incidents to the 'not severe or pervasive' and 'no basis for management liability' conclusions is stated but thinly reasoned, and the summary never links the nine counted incidents or the management-liability finding to specific evidence.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Some sources are named (Complainant's formal complaint, Business Office Manager's instant message, 'witness statements corroborated'), but the witnesses are not identified, the June/July 2018 account comes from an unnamed 'employee', and several incidents are hearsay with no ROI citations.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (August 2016, Dec 11 and 13 2017, Jan 25 2018, June 27 2018 complaint), but the four CEO reports, the nine incidents, the June/July 2018 incident and management's responses are not dated, so the 21-month count and the sequence of management notice and action cannot be followed.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the FAD determinations or which criteria beyond the generic severe-or-pervasive standard were applied, and it does not show that the CEO's or Deputy Director's responses, or the failure to provide the incident report, were considered before the liability finding.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because management's knowledge and response, the identity and content of witness evidence, the nine-incident inventory and the disability-basis finding are not documented, an independent reviewer could not assess from this record alone whether the conclusions are supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3201,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 533,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

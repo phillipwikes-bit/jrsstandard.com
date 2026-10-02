@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbpS88WnXrMjBeuVaRS",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Claim 2 path from ROI emails and testimony to the Agency's finding that no accommodation was denied can be followed, but Claim 1 (no midyear review) has no cited evidence beyond the allegation and the dismissal rationale, and the record does not show how the Agency weighed the conflicting testimony.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many Claim 2 characterizations carry ROI page cites (e.g., ROI pp. 179, 183-185, 192, 199), but testimony is attributed only by witness role without citation, and the Comparator 2 parenthetical ('The record reflects...') and the Claim 1 email have no identified source.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events are dated in order (Aug 1 to Sept 7, 2018; Dec 27, 2018 complaint; May 16, 2019 hearing request; Mar 27, 2020 withdrawal; Apr 25, 2022 decision), but the ROI date, the investigation period, and the two-year gap before the final decision are not shown, and the dates conflict (telework approved Sept 7 vs. Sept 10-20; Sept 4 office return while the supervisor was on leave).\"},\"rc4\":{\"status\":\"review\",\"note\":\"The criteria applied are named (29 C.F.R. § 1614.110(b), the § 1614.107(a)(1) failure-to-state-a-claim standard, prima facie case, preponderance), but the individual who decided is not identified, and the record does not show that the Complainant's responses were considered or that the omitted retaliation basis was addressed.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record does not stand alone as an evidentiary document: the outcome text is removed, the ROI exhibits are only summarized, Claim 1 lacks any factual basis, and the retaliation basis and the comparator evidence are incompletely documented.\"}},\"remediation_note\":\"The record would need the underlying ROI exhibits or pinpoint cites for all testimony, including the Aug 1 midyear-review email for Claim 1, and a reconciled timeline with the investigation dates and the 2020-2022 interval. It would also need the decision-maker's identity and a documented account of how the Complainant's responses and the unaddressed retaliation basis were considered.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6404,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1620,
+   "output_tokens_details": {
+    "thinking_tokens": 846
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

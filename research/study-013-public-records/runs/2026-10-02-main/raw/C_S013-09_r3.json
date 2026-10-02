@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbrEzTbg9hsBwGp45H6",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Agency's reasoning on claims 1, 2, 3, 12 and hostile work environment is linked to cited statements and the Privacy Investigation Report, but claims 4-11, 13 and 14 have no stated findings and the appellate conclusion is removed, so the full path from evidence to conclusion cannot be traced.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed (Complainant, S1, the Privacy Investigation Report, the July 1, 2019 letter), but the underlying interview statements are only summarized, \\\"Witness 2\\\" is never introduced, an \\\"unnamed employee\\\" is cited, and the discipline letters have unidentified addressees and a blank name.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated, but claim 14 has \\\"unspecified dates\\\", claim 1 moves from May 2018 to November or December 2017, the privacy-request dates conflict (April 8, April 9, April 12, June 18, 2019), and the complaint filing, ORM acceptance and final decision dates are absent.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The Agency's criteria (disparate treatment, discriminatory animus, hostile work environment) and its weighing of S1's and the witnesses' responses and credibility are recorded, but the individual reviewers and decision-makers are not named or dated and the acceptance and dismissal rationale is only summarized.\"},\"rc5\":{\"status\":\"review\",\"note\":\"Substantial narrative detail is present, but the record is a secondary summary with the outcome removed, the underlying exhibits are described rather than included, and the open gaps in RC 1-4 mean an independent reviewer would need outside context to evaluate the conclusion.\"}},\"remediation_note\":\"The record would need the underlying exhibits (report of investigation, privacy report, interview statements, and discipline letters with identified addressees) and a single dated chronology that resolves the date conflicts. It would also need the named decision-makers with dates, and stated findings for each accepted claim, including claims 4-11, 13 and 14.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6585,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1670,
+   "output_tokens_details": {
+    "thinking_tokens": 968
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

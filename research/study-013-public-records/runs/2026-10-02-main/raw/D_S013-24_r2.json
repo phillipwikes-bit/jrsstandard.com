@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcgPcUGuLvvdL9TJaFj",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The email trail from March to July 2016 is documented, but the decisive link is never in the file: the record shows no written resignation term, and the 'physically unable to work' attachment is absent, so the path from evidence to the resignation processing and to the 'not qualified' finding cannot be fully reconstructed.\"},\"rc2\":{\"status\":\"gap\",\"note\":\"The central characterization that Complainant 'verbally agreed to resign' rests only on Person C's assertion. Person A found it absent from the settlement, Person C conceded it was 'not in the agreement,' and the cited medical attachment 'is not in the record.' The accepted claims also attribute the May 10 email to 'Person A, NAF Services Claims Examiner' and the June emails to 'Person B, FSS/NAF HRO,' reversing the roles shown in the narrative.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Events are dated and largely in order, but there are unreconciled discrepancies: the record shows a resignation 'effective July 28, 2016' while claim 4a cites an August 1, 2016 'Termination' form, and the 2010 injury date sits alongside a stated last-work date of April 14, 2014 with no explanation of the interval.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The final decision's date, regulatory basis (29 C.F.R. § 1614.110(b)) and criteria ('failure to state a claim,' 'collateral attack,' 'qualified individual') are stated. However, the record does not identify who made the decision or why no hearing occurred, nor does it show that Complainant's June 13 accommodation request or Person D's documented doubts about the authority for removal were considered.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer cannot judge from the record alone whether the outcome is supported. The record lacks the claimed oral resignation term and the referenced medical attachment, and it contains inconsistent attributions and dates, so outside context would be needed to evaluate the conclusion.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6330,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1511,
+   "output_tokens_details": {
+    "thinking_tokens": 837
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

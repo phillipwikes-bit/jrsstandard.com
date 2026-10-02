@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcHnYTMueR2tzyLNs7m",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record identifies specific bases for conclusions: two dated disciplinary incidents (June 16 and June 23, 2021), the reprimand date (July 20, 2021), comparative PACS ratings (3.0 vs. 4.5), supervisor denials grounded in standard practices, and regulatory citations (29 C.F.R. § 1614.108(f) and § 1614.110(b)) for procedural conclusions.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The record presents complainant allegations, supervisor responses, and procedural milestones, but does not explicitly trace investigative reasoning—how evidence was weighed, what witness interviews occurred, or how the Agency reached its discrimination/reprisal determination.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A later reviewer can reconstruct the factual allegations and supervisor rebuttals, but cannot independently assess the investigation's quality, methodology, or evidentiary foundation because the investigative logic and supporting documents are not included in this summary.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"The record documents allegations, management responses, and the final determination outcome, but does not present the underlying investigative evidence (witness statements, documentary records, comparative treatment data) needed to independently support the 'no discrimination/reprisal' conclusion.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record establishes a clear chronology: June 16, 2021 (first incident), June 23, 2021 (second incident), July 20, 2021 (reprimand), November 11, 2021 (EEO complaint filed), with FY 2019 and FY 2021 PACS ratings referenced for temporal comparison.\"\n    }\n  },\n  \"remediation_note\": \"To achieve full compliance, the record should incorporate a summary of the investigative methodology, key documentary evidence (email exchanges, performance records, witness statements with dates), and explicit reasoning explaining how the evidence supported the Agency's no-discrimination/reprisal conclusion. The investigative findings section must be included or referenced to enable cold-reviewer reconstruction.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"reasoning_traceability, cold_reviewer_clarity, accountability_support\",\n    \"compliant_version\": \"A compliant record would retain all factual allegations and dates but add: (1) investigator's methodology and scope; (2) summaries of witness interviews and documentary evidence (with exhibit references); (3) explicit comparative analysis addressing discrimination bases; (4) step-by-step reasoning connecting evidence to the no-discrimination determination; and (5) reference to or integration of the full investigation report to enable independent verification by any later reviewer.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1204,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 706,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

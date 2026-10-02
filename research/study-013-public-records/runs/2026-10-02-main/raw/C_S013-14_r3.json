@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbueebAZzWfFqvXi6gT",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the Agency's conclusions (e.g., non-selection because Complainant 'did not demonstrate at the interview that he was more qualified') but does not include the interview, qualification, or rating evidence, and the appellate conclusion itself is removed, so the path from evidence to conclusion cannot be traced from the file.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Allegations are attributed to Complainant and findings to the Agency/FAD, but the underlying ROI, sworn statements, and witness accounts are not identified, and some references are inconsistent (e.g., the Colonel 1 comment is claim B6 yet the Agency finding cites B7; B17 is described as a supervisor's refusal to change a rating).\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most incidents carry specific dates (April 2017 through July 2018), but the complaint-filing, investigation, FAD, and appeal dates and the review period are absent, the 'late filing date' is mentioned without any date, and claims are not listed in strict date order.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The framework applied (McDonnell Douglas, 'severe or pervasive' standard) is named, but the individual reviewers who made the FAD and appellate determinations are identified only as 'the Agency' or 'we,' and the record does not show whether Complainant's responses were considered before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess whether the Agency's findings were supported without the ROI, the decision-maker's analysis, and the removed outcome text, so the record depends on outside context.\"}},\"remediation_note\":\"The record would need the underlying ROI evidence (interview/selection records, performance rating documentation, witness statements) linked to each finding, plus a dated procedural timeline and identified decision-makers with documentation of how Complainant's responses were considered. Corrected claim cross-references and the full appellate reasoning would also be needed for the record to stand alone.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5000,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1542,
+   "output_tokens_details": {
+    "thinking_tokens": 872
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

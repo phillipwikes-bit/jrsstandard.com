@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbdrhwEtZeVpjoxDgov",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"Most of the Agency's conclusions trace to cited ROI pages (e.g., the IPO's single use of the term, the Feb 25 meeting, the May 2020 tasks), but the finding that mediation produced changes (FAD at 29) is described without supporting evidence, and the finding of a written IPO apology conflicts with the record, so the path from evidence to conclusion is not fully connected.\"},\"rc2\":{\"status\":\"pass\",\"note\":\"Nearly every characterization is attributed to an identified source with ROI page cites (Complainant, the IPO, HR-1, Subordinate-1, the Jan 31 and Feb 25 memoranda), and disputed accounts are labeled as the declarant's own.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are documented (Oct 2019 complaints, Jan 31, Feb 24-25, March follow-up, May 13-15, June 15, May 31 complaint, June 3, 2021 decision), but the date of HR-1's phone call is unknown, the Jan 31 memo's contents are inconsistent with accounts of what was said, and the timing of mediation and of Subordinate-2's departure is unclear.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The decision does not record who drafted or reviewed it, and it does not address the omissions Complainant raised on April 19, 2021 (Subordinate-2, Subordinate-3, HR-2 not interviewed); the email exchange of April 22-27 is noted without any documented resolution.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"The investigative file lacks interviews of Subordinate-2, Subordinate-3, and HR-2, whom the Agency's own findings rely on as to the term's use and management response, and the unaddressed omissions plus the apparent factual error about a written apology mean an independent reviewer could not assess support for the decision from the record alone.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 8793,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 642,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

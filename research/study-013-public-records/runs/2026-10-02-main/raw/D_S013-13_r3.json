@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcXLtFLyXa3VG7ReHH7",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record documents the evidence (the 2015 policy, the Form 50s, the resumes, Business Partner's explanation), but the FAD states only that Complainant 'failed to prove' discrimination, with no recorded reasoning linking that evidence to the conclusion, including how an 8% raise justified by 'HR knowledge and experience' fits a policy said to allow no justification beyond two factors.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations carry ROI page cites, but the Form 50 remarks are sourced to Complainant's Appeal Brief rather than the ROI, Manager's rationale for the 8% approval appears only secondhand through Business Partner with no Manager statement, and the assertion that ages were 'readily known' to management has no cited source.\"},\"rc3\":{\"status\":\"pass\",\"note\":\"Key events are dated and in order: the June 13, 2015 policy, the 2019 prior selection, the July 17, 2021 promotions, EEO contact on August 31, 2021, and the complaint on November 17, 2021, though the ROI transmittal and the FAD itself are undated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record identifies the governing policy and names Business Partner and Manager as pay decision-makers, but it does not identify who reviewed the matter and issued the FAD, and it does not show whether Complainant's rebuttal (her superior education and experience, the training disparity, and the policy's two-factor limit) or the reprisal basis tied to the instant complaint was weighed before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the decision's reasoning, a direct Manager account, and any consideration of Complainant's rebuttal are absent, an independent reviewer could not determine from this record alone whether the no-discrimination conclusion is supported by the documented evidence.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3934,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1338,
+   "output_tokens_details": {
+    "thinking_tokens": 713
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcSgcGLMvufsNDqHYMr",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record lists fifteen allegations and states the Agency's conclusion that Complainant failed to prove discrimination or disparate treatment, but it does not describe the investigative evidence or the reasoning from evidence to conclusion.\"},\"rc2\":{\"status\":\"review\",\"note\":\"The characterizations are traceable to Complainant's April 13, 2020 complaint as her allegations, but the record does not identify any source (witness statements, management responses, light-duty documentation, or the report of investigation's contents) for the findings.\"},\"rc3\":{\"status\":\"pass\",\"note\":\"The allegations run in order from September 8, 2019 through February 6, 2020, followed by the April 13, 2020 complaint, the report of investigation, and the final decision, so the review period and sequence can be followed, though the dates of the report and final decision are not given.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record cites 29 C.F.R. § 1614.110(b) as the procedural basis but does not identify the decision-maker, the legal framework applied, or whether management's explanations or Complainant's responses were weighed, and the stated finding addresses only disparate treatment, not the hostile work environment claim.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the record gives no evidence, reasoning, or decision process behind the conclusion, an independent reviewer could not assess from this record alone whether the finding of no discrimination is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3316,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1003,
+   "output_tokens_details": {
+    "thinking_tokens": 521
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

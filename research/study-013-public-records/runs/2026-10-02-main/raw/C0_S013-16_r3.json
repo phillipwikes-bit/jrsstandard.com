@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcERdXux91Mmoxjro8n",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each major allegation (alcohol policy violation, sex discrimination, harassment, retaliation) is tied to specific ROI page citations and witness identifications, establishing documentary grounding.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record traces from Complainant's allegations through investigative findings (witness testimony, medical provider statement, management testimony) to the Agency's legal conclusions (prima facie test, pretext analysis, hostile environment standard).\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"While the narrative is chronologically organized and references are cited, critical details supporting the final determination (e.g., the substance of witness testimony corroborating intoxication, the content of management testimony rebutting similarly-situated comparators) are summarized rather than directly evidenced in the record excerpt itself.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"The record supports findings on the alcohol policy violations and retaliation claims but relies heavily on assertions that witness testimony was 'consistent' and that Complainant 'provided no evidence' for harassment claims without reproducing or directly referencing the evidentiary gaps.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Clear date sequence is established: October 24, 2020 (Manager conversation), December 2020 (meeting with Subordinate), December 3, 2020 and May 5, 2021 (alleged alcohol violations), May 13, 2021 (SOT), May 14, 2021 (Letter of Reprimand), with ROI page anchors.\"\n    }\n  },\n  \"remediation_note\": \"A compliant version must include or directly reference the substance of witness statements regarding intoxication, management testimony on comparator discipline, and Medical Provider records to close evidentiary gaps in the harassment and retaliation findings. Summaries alone do not satisfy cold-reviewer reconstruction.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"cold_reviewer_clarity and accountability_support\",\n    \"compliant_version\": \"Retain all chronological anchors and ROI citations, but append or reference verbatim excerpts of witness testimony on the two alleged intoxication incidents, management testimony on discipline of similarly-situated male employees, and Medical Provider records for the May 6, 2021 allegation to allow independent verification of the 'consistent testimony' and 'no evidence' conclusions.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1638,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 628,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

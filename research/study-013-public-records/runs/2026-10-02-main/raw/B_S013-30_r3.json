@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbm16eUy2PGUmffth5g",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the final decision's conclusion (no discrimination proven) but contains no evidence about the non-selections, selection criteria, selectees, or reasoning linking evidence to that conclusion.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Only the harassment incident is tied to sources (ROI at 238, 61, Complainant's averments), while the non-selection characterizations and the agency's conclusion have no identified source or testimony.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Dates are given for the March 25, 2022 incident, May 2, 2022 notice of non-selection, May 3 and June 29, 2022 filings, but the date of the prior protected activity, vacancy timelines, the investigation, and the final decision are absent, and the May 3 versus June 29 complaint dates are confusingly stated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify the selecting officials, the selection criteria, the decision-maker for the final decision, or whether Complainant's or management's responses were considered; only the procedural default to a 1614.110(b) decision is noted.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"With the evidentiary basis, selection process, and reasoning missing and the prior EEO activity unspecified, an independent reviewer could not assess whether the no-discrimination conclusion is supported without outside context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2345,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 465,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

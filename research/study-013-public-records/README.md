@@ -1,6 +1,6 @@
 # Study 013 feasibility round: public-record case set
 
-**Built 2026-10-02 in Claude Code. No model call has been made. Status: case set BUILT; protocol FIXED; runner BUILT and tested offline (21/21, and 3 of 3 fault copies caught); live run BLOCKED (no `ANTHROPIC_API_KEY` in this environment); owner review of the cases PENDING.**
+**Built 2026-10-02 in Claude Code. MAIN RUN DONE 2026-10-02 (450 calls, USD 9.60); results in `RESULTS.md`. Earlier status line, kept for history: case set BUILT; protocol FIXED; runner BUILT and tested offline (21/21, and 3 of 3 fault copies caught); live run BLOCKED (no `ANTHROPIC_API_KEY` in this environment); owner review of the cases PENDING.**
 
 ## What is here
 | Path | What |
@@ -65,3 +65,4 @@ node tools/score-study.mjs runs/2026-10-xx-main
 ## Run log
 - **2026-10-02, shape check (not part of the study; not scored).** One call per arm on a synthetic record. That record was not a study case, so no study case was exposed before the main run. All 5 arms returned HTTP 200, `end_turn`, and parsed. Observed cost USD 0.0455. The key was the owner's own, pasted in chat under the CLAUDE.md section 22 override and passed only as a process variable. It appears in no file.
 - **2026-10-02, main run started:** `runs/2026-10-02-main` (450 calls).
+- **2026-10-02, main run finished:** 450/450 calls, USD 9.6022. Scored by `tools/score-study.mjs`; results in `RESULTS.md`. Blinded worksheet built (75 rows). A key scan of `runs/` found no key.

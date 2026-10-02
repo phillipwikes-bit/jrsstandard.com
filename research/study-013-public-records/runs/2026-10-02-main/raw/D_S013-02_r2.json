@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcNVeMYsLHWErwmxxni",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSxRIKEAgSGAI4AUIIdGhpbmtpbmcSDI8/Omul3c3Vvus8KhoMcDlUwWFRvuH6cIMzIjBeX3l3C0CjXQ4fUtO++wENLT8SNbXTrTrBYlJU24sqzA+lbtxPxDuBZORgiOyHz1kq4hFSo+NjByi4AwVXg+I2kpOBBXC4h9fjIATo8+VCLV7yCDug2GVuDx9juBHqkRPOuY3hvsPItICNJGnVELM7ChHcT4uBeoJ0mqxvJRRl4/8zlDwrdLgtRAySWaDfQxR+6ermv4wsKZWH1BzOAx/0jzwNrjdE1JW4Ep6JxHigq6GDMCL10K6LPUv5a7S293V120PASsSRsqvVKawvlnZDAnsUUHOGXdG/An97PuTnqjvf7JkQBt67KcnIT/Ms4ybyWMewWogLuHGyUHgm6sR8YJZMrmZb/ljPmDKIkSAvm3JxyO0IW7Yt/aWyfnAsjseDrMV5Eru0vFoTAIji6ep9K8ah1WbLVA5bZVR5IN99+U1QAU89N37LuDJCyLfIujKcAWXGhgaL/5Ab9PlXSn355DPc8MFPOe21DiB89PPcjj1fD6aXN4GoW/+r61BEVVRfUCp2tDnC0OVyYzfYwcSxaWllSZl/tisfH6pCzlkL1arLJu/b+Fv1FTJQd6KrfnogMY8xhQvdMiMiyU8V6UMOihaYCw5W3vx6EQXSl4tmtVtIA9VIW9m1vGFrMNlQyQx1rd6sJFe9SV6zY8kOjgVvrQaqnzKYplxs50x/RCen24bweZzfExEe3HviWvty6fwnZRgFkmR67TAYlAEzIBPTFevHdNLG9qbDc22dpKlWQOr5zQZkbtreeEFUvZWB22rvj0jC2syIKBKP9F0pMjDWOB+6qG8IXg0HFh9x1I8wDMhzpsGY+SIRD7i+mJkfmXKlNlrjuD8ev0Bxvyg5vdWuEDVi7ThQ/Bbk+tG5kezAhkQGYV7UjSQyQEI1gR353OIJuidIjfqw4Lvp1r4qElT7SglVnNvljS9VfK1MB+Bk5N8B03WOni/ZY5haWZPNIoWg6KFuBVB8bAjWUvdJdk4Ss7L5Izq6o7TswHwUIaNrXBZiYl0DqoPFE8ldy7UVBr//0hOiqEfr19eR5RPUoL2yNLKw2ItaTwjSi7DzSvgiIPFqb5eINRVe2xRzR22t19vVemnZj8pu5OiEhUwnJplbKZqQS621vSXMMM1t2wxlwJeT26qIzkbN0AGPd9mAimKgDZhYehSgzbmNf3aE27nXw85AfUHrU+PgfeMeDHlaX9i203WewNsINlVlr0e6CXgxSfVBEdwLNyEO3mRgZfGTBTomHke4l8sl8OkKJ8N06iUfw7Nn3eQdufdqbCt1EGTEl7CJ/2ipg3IsPoutm7Ed3j4JWc4yt+8i/2z7YghvlFlBSh9X1NdzbyiO1SeBvdedDUzOEAGTHVksV2PpfNJCgda4trpaj4rQm1hfgUmKx/iFiU8EXRx+j3p07t+SIBVPN5Y/pDEhaBKs1B8CbOTp+6bfrDk80YZhRruFGJFzDNj1qKfrqpKMRe7bQO3YDtjjsMgnwN/C6YZRqAds/hFs7aGFOeof7YJHDkMKCv1RrmFzWcqOjKfwbFdGGJnx663u3rp8GjpmE4MbdbIHb182sNHkKqe4HDMG85/nfZHblWBdk9n+tqR/aef6MU9oHAQPptNgw3inJPnxHFEjExnyezBeZhAHP+ELRNRd4vJHZPHTwMbSR0XM0g11TGTL1lAYgKK+oeWST3cDpKKIqxA+53UmsF7lHWbhiUJ5xg/fdDJKMkMYyftozhiT0C4ST7ATMWBY3m8+s52NX48OZQc/+eGaIdlD3jWdhFVbJwJ2S6TvXmXZ5jrkktkmzxbJznkFcp6MI9xBREOHUSYO36EMxDEUFQpdDrReSQJj6bxWb3ullrCw1eU1QU2fDaoKyZKbGkFD1DdWwxM0fhLE/lZVhIEr4voqv4tfPLM1XTrkJmfwH8OHv1JbEz44kzWLX23XalTpDk7eTc2WSv3HHeE0kiSdugIhmUVPY0aBbIPt22kUGS7STv8QZjO2al/jhqSJsTV7bvs017YDQqieeePcjUxoeh8mlyBYw/va8ylsPUYQPk7vm2g3SnyfqVBwa45qZWJxixGxe7y7Fi6K2bmk4IXHO3l9awGphmenvRLl6jPMTjGVIYVHMxgvBtmn8rl0dvclZkFmPRM6Rmh3Yen1bXOtFs/jYY4kwBSMboBjYyGu44ApZqbNbCE1Ijvs6y4tNFajPwyoki7wPGbr6NH73fadknGO51dVOtqvHm840Z9c0irb5JbXbpukZLw4/rH2UUXySM6kCQ/Qcg4Jyx+DtCJQDgUBMJnwzJAeK6nI3PUZEgE1fgTZeqmyNgMxh1OvBtfJxsS3P1pCxvfC060l8xQ+ybRLwwmB9ZUYONXL/L1Hixa4GwjKGLiz4yr/hirwOkl3wQ1lXsSDWfrkhuxQgATtxrLdhPWF3Rfk9g/JRiGQ99PHU+c7x2xJ40wYPZKN38zwu4W4NnLrKf2g7WvFv+x7j+JUuXHOAOvfrZoMCeG/jVfCnC6vQCm51kRU3ptkI6Pgyn7IXdHDcldzh60LMIrv92qEinRvx621jAtLyKgkJ6k94J5lvDSzb+Pcbz6A34gDbHkOqbTgwFuzXsbhyqXqbJueHTT5Lsf+GyMq4xTHYqWG1LiVlni9fEW5vLzHf8CNIaw/hRiBOYkF2tl1euZfnUT87AftAaU5FZnRAdp4EIRYgGEsgoVEpAeb5iAE1lsJvnhZFcC7R0Q/y7xxtrdV8nGc0bHgExyt0ZY3tuWUQKP0A6mYJ+J8+TjikNQe8bd7vRLWkT6312EPy20DHzuLQE/qWx7ZKduKN07Rjl4B5zkQ6D5V1/Yy98kmptQRA877/78n4cVBPU0VoZucGfcZB/+RCCqSvvPjl7WzniebYtyK4V8FPw0qHEe1c8n+GSCtap2xgJqMy3jjQbg9ryvhHhAI8qKS5DPUxeSwJFUbJg630gbsG9eFUl9p1HqZX119QOX1QQUqHoFHuimB3LGinQLIvC5TYPRAdRueiU4QONLhItoCE4ZiZZEs/bFkjwH6lI4d+MQ4Cz64WIil9bgm6FJOKFwUPVn+G++J83URS7X9kecl/AVn+/2mnSsPWtJg1TsZhBUEqBodJeQDe5yZJSwYAQ=="
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The final decision says only that Complainant 'failed to demonstrate' unlawful harassment and failed to show motive, with no documented steps linking the evidence to that finding. The record does not show how the reasonable-accommodation claim (claim 9) or the termination and involuntary-resignation claim (claim 10) were resolved, beyond being folded into the harassment conclusion.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Management accounts are attributed to named roles (HR Supervisor, HR Officer, RA Coordinator, EEO Specialist), but several gaps remain: Complainant's own account of claims 1–8 is absent, the doctor is unnamed, the medical documentation dates from 2005 rather than 2019–2020, and one statement is attributed to an undefined 'S1'.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are in order (hire 9/29/2019, training 10/2019–11/6/2019, performance meeting 2/25/2020, voice-raising incident around 3/19–20/2020, termination letter 5/20/2020, separation 5/21/2020, complaint 11/20/2020). However, claims 1–7 occur on 'unspecified dates', the dates of the accommodation requests are not fixed, and EEO counselor contact, the report of investigation and the final decision are undated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who issued the final agency decision or what legal framework was applied to the accommodation claim. It also does not show whether Complainant's rebuttal or her accommodation evidence (the request for an ergonomic chair, footrest and screen glare protector, and the Vocational Rehabilitation assessment) was weighed, and the footnoted 'modifications' to the accepted claims are not explained.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"With unsupported reasoning, a largely one-sided evidentiary basis, undated allegations and an unidentified decision process, an independent reviewer could not assess from this record alone whether the harassment, accommodation and termination conclusions are supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6656,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1327,
+   "output_tokens_details": {
+    "thinking_tokens": 624
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbjoAGx83dzNPvKUESZ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The FAD's finding of \\\"nine incidents in a 21-month period\\\" cannot be traced to the evidence summarized, which lists only a few dated incidents and never enumerates the nine, and the conclusion that there was \\\"no sufficient basis to hold management liable\\\" is stated with no evidence or reasoning linking it to the CEO's or Deputy Director's actions.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Some sources are named (Complainant, the Business Office Manager's instant message, an unnamed employee), but the FAD's reliance on unspecified \\\"witness statements [that] corroborated Complainant's testimony\\\" does not identify which witnesses supported which incident, and the Business Office Manager's account reaches us only through Complainant.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Several events are dated (Dec 11 and 13, 2017; Jan 25, 2018; June 27, 2018 filing), but the four CEO reports and the June/July 2018 remark are undated or approximate, the 21-month window (Aug 2016 to Jan 2018) excludes the later incident, and the timing of Complainant's complaints to management and any management response is absent.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The FAD names the severe-or-pervasive standard, but the record does not identify who decided, whether management's response or the CEO's failure to provide the requested incident report was considered, or how the \\\"not physically threatening or humiliating\\\" finding was reached given the quoted threats.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the incident count, witness sourcing, chronology of management notice and response, and the decision-maker's process are not documented, an independent reviewer could not assess from this record alone whether the conclusion on severity and management liability is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3201,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1139,
+   "output_tokens_details": {
+    "thinking_tokens": 539
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

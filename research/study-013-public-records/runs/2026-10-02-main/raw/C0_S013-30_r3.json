@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcMCqnYQAd1Jz9tXRJp",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record identifies specific bases for conclusions: the March 25, 2022 harassment incident with exact quote, the two job selections on May 2, 2022 with vacancy announcement numbers, and the June 29, 2022 EEO complaint filing date with explicit allegations of age and reprisal discrimination.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"gap\",\n      \"note\": \"The record presents facts and dates but omits the Agency's reasoning process for its final discrimination conclusion; it states the Agency 'concluded that Complainant failed to prove' discrimination without documenting what evidence was evaluated, what standard was applied, or how that standard was not met.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A reviewer can reconstruct the complaint timeline and factual allegations, but cannot reconstruct the investigative findings or the Agency's evidentiary assessment that led to the discrimination determination, as the ROI content is summarized only through page citations (238, 61) without substantive investigation conclusions.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"gap\",\n      \"note\": \"The record provides complainant's allegations and the Agency's final conclusion, but does not document what investigative evidence was gathered regarding selection panel composition, scoring criteria, comparators, temporal proximity between the harassment report and non-selection, or other factors necessary to support a discrimination finding or rejection.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The chronology is complete and clear: March 25, 2022 (harassment incident), May 2, 2022 (two non-selections learned), May 3, 2022 (complaint initiated), June 29, 2022 (EEO complaint filed), investigation concluded, and final decision issued after no hearing request received.\"\n    }\n  },\n  \"remediation_note\": \"The record requires incorporation of the Agency's investigative findings, the evidence examined to reach each material conclusion, and explicit reasoning linking evidence to the determination that complainant failed to prove discrimination. Specifically, articulate what was investigated regarding causation, temporal proximity, qualifications, and comparator analysis.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"reasoning_traceability, accountability_support, cold_reviewer_clarity\",\n    \"compliant_version\": \"A compliant record would include a substantive investigation findings section documenting: (1) the evidence obtained regarding each selection decision (panel composition, scoring, interview notes, qualifications compared to selected candidates); (2) the temporal analysis between the March 2022 protected activity and May 2022 adverse actions; (3) comparator analysis addressing whether similarly-situated individuals outside the protected class received more favorable treatment; (4) specific findings on each element of the discrimination claim; and (5) explicit reasoning connecting the evidence to the conclusion that discrimination was not proven, including what would have been required to meet the burden.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1004,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 718,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

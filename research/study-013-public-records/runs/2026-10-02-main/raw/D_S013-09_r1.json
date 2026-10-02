@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcTTzX7Q6FeVmGJ6XgQ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Agency's reasoning on claims 1, 2, 3 and 12 can be traced to documented items such as S1's statements, the Privacy Investigation Report and the suspension letters, but the hostile work environment conclusion does not address claims 4–11, 13 and 14 individually. The garbled claim list (for example, the 12-hour-shift explanation appended to claim 13) also obscures which evidence supports which finding.\"},\"rc2\":{\"status\":\"gap\",\"note\":\"Several material characterizations lack an identified source: the Agency states that all six interviewed coworkers confirmed S1 disclosed nothing, yet the report only cites 'Coworker 4 and other employees'; no statements from Witnesses 12 or 13 appear; 'Witness 2' is never introduced; the privacy letter contains a '[blank]' name; and the discipline letters have unidentified addressees with only handwritten 'Employee 1/2' notations.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most claims are dated, but the record is internally inconsistent on key dates: claim 2 is placed in May 2018 and then November or December 2017, the SPAR request is dated April 8 and April 12, S1 cites an April 9 email, and the letter cites a June 18 email; claim 14 has unspecified dates.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The record shows the applicable frameworks (partial acceptance, disparate treatment and harassment analyses, a final decision under 29 C.F.R. § 1614.110(b)) and some weighing of Complainant's supplemental affidavit and witness credibility, but no deciding official is identified. It also both affirms dismissal of part of claim 7 and says that claim was accepted into the harassment claim without reconciling the two.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer would need outside context to resolve the unsourced witness confirmations, unidentified disciplined employees, conflicting dates and misnumbered claims. The Agency's statement that both coworkers accessed records 'to find out when she would be out for surgery' also does not match the report's documented reasons, so the record does not stand on its own.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6531,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1504,
+   "output_tokens_details": {
+    "thinking_tokens": 774
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

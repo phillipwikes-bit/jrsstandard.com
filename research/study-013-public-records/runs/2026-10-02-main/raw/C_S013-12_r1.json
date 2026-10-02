@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbswa1sVv9cNYvQXtwK",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record ends with 'The FAD concluded that Complainant failed to prove that the Agency subjected him to discrimination as alleged' but gives no analysis or findings connecting the listed evidence (OPR Bluebook Report, Division Chief's account, Complainant's allegations) to that conclusion.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many characterizations are attributed (e.g., 'According to Complainant', 'Division Chief maintains', the OPR Bluebook Report of October 30, 2018), but the opening description of an 'off the books' investigation is stated without a source, and the ROI and discovery evidence are referenced only generally.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Numerous dates are given (June 2017 to June 2018, April 11 and May 24, 2018, October 30, 2018), but the order is hard to follow: a stray JOA/dismissal fragment interrupts the transfer narrative, the October 2017 resignation appears out of sequence, Complainant's May 24 notice conflicts with the Division Chief's June 1 date, and the dates of the EEO contact, ROI and FAD are not stated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who issued the FAD, the standard or criteria applied, or whether the FAD considered Complainant's listed documents, 15 named individuals, and the Administrator's Audit Report, and it names the OPR interviewers only generically.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the conclusion's reasoning, decision-maker, and criteria are absent and some chronology and sourcing is unclear, an independent reviewer could not judge from this record alone whether the FAD conclusion is supported.\"}},\"remediation_note\":\"The record would need the FAD's stated findings and criteria, the identity and role of the decision-maker, and an explicit account of how Complainant's evidence and the OPR report were weighed. It would also need a clean dated timeline (including the EEO contact, ROI, and FAD dates) with cited source documents for each material finding.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4663,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1207,
+   "output_tokens_details": {
+    "thinking_tokens": 510
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

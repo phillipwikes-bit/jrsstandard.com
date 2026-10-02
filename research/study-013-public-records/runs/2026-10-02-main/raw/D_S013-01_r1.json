@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcMR5VNVrJCJFrQYgxb",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The FAD states only that Complainant 'failed to prove' discrimination or reprisal, with no analysis linking the testimony to that conclusion, and the record discusses an ND-05 A42 Branch Head non-selection under 'claim (1)' that does not appear among the accepted claims, which skip from 1 to 3.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to named roles (S1, S2, S3, PM1–PM3), but key points have no visible source: S3's finding that Complainant was 'adequately compensated' cites an undocumented 'investigation,' the team's negative feedback is unsupported, and S2 is never tied to the supervisory chain.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Several events are dated (Dec 3, 11, 17 and 20, 2018; Jan 4 and 30, 2019), but the ND-05 non-selection date is missing, the prior EEO activity is placed only in 'the previous year,' and the formal complaint's January 4, 2019 filing predates the January 30, 2019 denial it challenges, without explanation.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who issued the FAD, what legal framework or criteria were applied (e.g., age comparators, management's knowledge of the prior EEO activity), or whether Complainant's rebuttal and the dangling statement about cybersecurity classes awarded in a prior EEO complaint were considered.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Given the inconsistent claim numbering, the unaddressed reprisal nexus, the unexplained footnote fragment and the conclusory FAD, an independent reviewer could not assess from this record alone whether the conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4628,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1110,
+   "output_tokens_details": {
+    "thinking_tokens": 513
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

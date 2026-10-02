@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbg6TDtmBvDms8DYCZj",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Agency's conclusion that Complainant failed to prove discrimination is linked to cited gaps (no corroboration, missing affidavit, no dates or frequency), but the steps from the thin evidence to the finding that management 'took whatever action it could' are not shown, and no specific management action is documented.\"},\"rc2\":{\"status\":\"pass\",\"note\":\"Most characterizations are attributed to an identified source with ROI page cites (Complainant at ROI 8-11, S1 at 116, Lead Manager at 130, ROI 64), and the Agency's observations are clearly labeled as the Agency's own.\"},\"rc3\":{\"status\":\"gap\",\"note\":\"Key chronology is unclear: harassment is alleged 'since March 2017' but the PS-13 was given to S1 in October 2018, the date of the Lead Manager's separation of the parties is not given, and no timeline of management responses exists, although the August 7, 2018 interview, the November 16, 2018 complaint, and the September 2019 AJ orders are dated.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The AJ's procedural steps and the Agency's reasoning are documented, but the record does not name the Agency decision-maker, state whether the anti-harassment policy standard was applied, or show that the PS-13, the Lead Manager's separation action, or the conflicting statements about what was reported were weighed before the decision.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Conflicting accounts (S1 forwarded the PS-13, the Lead Manager says the rumor was not reported), missing dates for management's response, no complainant affidavit, and no witness statements from C1 or others leave an independent reviewer unable to assess the merits without outside context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3163,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 583,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

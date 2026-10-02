@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcCLVusU6EgWdjTvmZD",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record identifies bases for conclusions through specific allegations (off-the-books investigation June 2017–June 2018, two nonselection claims with dates and JOA numbers, OPR investigation with case number, and OPR Bluebook Report conclusion of 'unfounded').\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The record traces evidence (witness interviews, Complainant's lists of documents and 15 individuals, travel vouchers, field reports) to OPR's conclusion of 'unfounded,' but does not explain the reasoning chain from specific evidence to that conclusion or how denials were weighed against allegations.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A reviewer years later can identify what was alleged and investigated, but cannot reconstruct why OPR concluded allegations were 'unfounded' without access to the Bluebook Report itself or details of how specific witness denials addressed specific allegations.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"gap\",\n      \"note\": \"The record documents allegations, identifies witnesses and potential corroborating documents (travel vouchers, field reports, email monitoring audit), but does not present the substantive content of those documents or explain how OPR's nine interviews and witness denials constitute sufficient evidentiary support for the 'unfounded' conclusion.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record establishes a clear chronology: detail July 2016, detail end October 2016, transfer September 2017, Supervisor's transfer to BIC June 2017, investigation June 2017–June 2018, nonselection April 11 and May 24, 2018, EEO complaint May 2018, OPR notification August 2018, OPR Bluebook Report October 30, 2018, assignment to Sandusky Bay September 2018.\"\n    }\n  },\n  \"remediation_note\": \"The record requires inclusion of the OPR Bluebook Report's reasoning (how specific witness statements addressed each allegation) and clarification of why identified corroborating documents (travel vouchers, email audit reports, field intelligence reports) were not produced or were found insufficient. A compliant version must explicitly link evidence to the unfounded conclusion to enable future reconstruction of the investigative basis.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"accountability_support, reasoning_traceability, cold_reviewer_clarity\",\n    \"compliant_version\": \"Include or reference the complete OPR Bluebook Report reasoning; explicitly state which documents Complainant identified were reviewed and why they did or did not support allegations; detail how each witness denial specifically countered each allegation (e.g., 'Agent X denied telling Complainant of surveillance; no communication records were produced'); and explain the evidentiary standard applied to conclude allegations unfounded despite Complainant's inability to access underlying investigation records.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2528,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 737,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

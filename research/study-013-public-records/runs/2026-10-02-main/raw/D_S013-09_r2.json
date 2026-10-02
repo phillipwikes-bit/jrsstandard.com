@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcUBSeZ5KNfUdXS1kTc",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The path from evidence to conclusion can be traced for some claims, such as claim 1's 'undisputed evidence' that Complainant stayed on an eight-hour tour, but not for others. The claim 3 finding that coworkers accessed records 'to find out when she would be out for surgery' does not match the Privacy Investigation Report's stated reasons. The harassment claims 4–11, 13 and 14 are not individually connected to evidence.\"},\"rc2\":{\"status\":\"gap\",\"note\":\"Several material sources are unidentified or incomplete. The Privacy Officer letter names 'Ms. [Coworker 4], Ms. [blank]', and the discipline letters go to 'unidentified addressee[s]' marked only 'Employee 1/2'. The Agency's statement that six coworkers 'all confirmed' S1 made no disclosure is not tied to any interview record. The statements of named Witnesses 12 and 13 do not appear.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events carry dates, but the timeline has conflicts. Claim 2 is dated May 2018, yet the supplemental affidavit places it in November or December 2017. The privacy request appears variously as April 8, April 9, April 12 and June 18, 2019. The 12-hour-shift note is appended to claim 13 rather than to the claim it concerns, which makes the sequence hard to follow.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The record states the legal frameworks applied (disparate treatment, Rehabilitation Act confidentiality, hostile work environment) and considers some responsive material, such as S1's testimony and the witnesses' credibility. It does not identify the individual decision-maker. It also does not show that Witness 13's account was considered before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not reliably assess the decision from the record alone because of compounding problems. These include unresolved conflicts between the Privacy Officer letter and the Privacy Investigation Report over which coworkers were found culpable, anonymized disciplinary letters, absent witness statements, and harassment claims that are not individually analyzed.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6531,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1600,
+   "output_tokens_details": {
+    "thinking_tokens": 873
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

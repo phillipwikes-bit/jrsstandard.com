@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbfibphub5R421utwCy",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The final decision's path from evidence to conclusion is not connected: it says claim 3 reassignment was due to the doctor's note, yet the record shows S1 proposed reassignment on Feb 16 and the Nurse Manager called the decision 'suspicious and unjustified'; the decision summary also states no conclusion or reasoning for claim 4.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most facts carry ROI page cites (e.g., ROI at 106-109, 197, 399-400), but the AWOL notice, the Employee Health release slip, the 'prior protected EEO activity' and the Agency's articulated reasons have no identified source.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Events from Dec 12, 2017 to Mar 5, 2018 are dated in order and the leave review period is stated, but the prior EEO activity is undated, the 'March 1, 2019' date conflicts with the 2018 timeline, and the date of the final decision is absent.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the final decision, and it shows no consideration of the May 14, 2018 fact-finding finding that S1 falsely accused Complainant or of the Nurse Manager's comparator statement before the decision was finalized.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess whether the no-discrimination conclusion is supported without outside context, because conflicting evidence goes unreconciled, claim 4 is unaddressed, and the reasoning and decision-maker are undocumented.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4442,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1260,
+   "output_tokens_details": {
+    "thinking_tokens": 725
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

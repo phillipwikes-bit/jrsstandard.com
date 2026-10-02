@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbZqGzpzQKGnXVF34fe",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The path from evidence to conclusion can be traced for Claim 2 through the dated ROI emails and testimony, but for Claim 1 the record contains no evidence about the midyear-review email (the August 1 email described concerns leave and medical notes) and the dismissal rationale is only stated, not tied to cited facts.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most Claim 2 characterizations carry testimony attribution or ROI page cites (e.g., ROI pp. 179-192, 199), but the Claim 1 email, the Comparator 2 parenthetical ('The record reflects'), and the comparators' status have no cited source.\"},\"rc3\":{\"status\":\"review\",\"note\":\"The August to September 2018 accommodation sequence is largely dated and ordered, but the telework approval dates conflict (Sept 7 per ROI p. 199, Sept 10 per Complainant) and the two-year gap between the March 2020 withdrawal and the April 25, 2022 final decision is not explained.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the final decision or whether Complainant's responses were considered, it cites a wrong regulation ('20 C.F.R. § 1614.107(a)(1)'), and it omits the retaliation basis and the denied amendment claims from the stated criteria.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Claim 1 lacks any factual support, retaliation was never investigated ('not asked about the basis of his reprisal claim'), two of four comparators are not addressed, and the decision process is undocumented, so an independent reviewer could not assess the merits without outside context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6350,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1401,
+   "output_tokens_details": {
+    "thinking_tokens": 841
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

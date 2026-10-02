@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbW5uwtCkY19u39WyLn",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The record has material gaps that should be filled before a merits decision. Its own text notes the key IME that Person C said showed Complainant was \\\"physically unable to work\\\" is missing, and the only IME is dated May 2015. The Agency found no medical evidence of qualification, but nothing shows it sought updated medical information or ran the interactive process, even though Person A asked about Complainant's status and Person D suggested requesting documents and assessing accommodation. Complainant's repeated requests for part-time or accommodated work apparently went unexamined, and there is no vacancy search for reassignment. The written settlement agreement does not contain the resignation term; the claimed oral agreement rests only on emails among Agency and insurer staff with no statements from Complainant, his attorney, or the OWCP side. The record has no affidavits from the named responsible officials, no comparator or age-related evidence, and no rations card explanation beyond the assertion that he was no longer an employee. The termination was processed as a resignation despite Complainant's resistance and the EO contact, yet the record does not show how the Agency resolved that conflict. The Agency's decision rests on a lack of evidence that the investigation itself should have gathered.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5247,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 399,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

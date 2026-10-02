@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbqM639D4SLa3mD3QKD",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSoRYKEAgSGAI4AUIIdGhpbmtpbmcSDA7pNzZblaQSKUIIdBoMpnlHYWV0hYePHe0OIjCIBRc9i4WAGXZqSfcTlxvPBD8r46FyUZxublp8xy9svkvqAIeqA+fPzc0TZavQl7MqvhWMYG944T4SrF5y1klCrZS6Uo7EnbXKnxnihM7M7W2GpPCIVIpBG3L4GkvaGBA+tCqKpIDa/EDnyX2R/uIR7+LKfp1eypWzJu4OxJvOGTmvVSCGfy56caYeQ6Qv2W2Wbzxv08LRyZd1DNkQup9Nkc4BQ7WElAQu1lw1h1EbT1RhaI7o74dCeNPAucz6XLMHYrxDVXf7uVnz/E5CjGeffDKp8fdFZsflhNWhuQTyGdGSSK9JK9wJ0Kbg6VntFrou5VY/w8NJ3lgA4a/XUcbPv2hAv6TrnufwtdeRFhLB1OCr4fP4PaC606P7NIF7oykcu7Y51+KKU3e0BBc7eLXL9rEeHtNtszEkM9wVPJpUX80IfIFmCZWHjjUvVHvQb9wnKP5guzFFXkphpCOBE0X1iw92G2htkSHQDCbjzgtt1CksSv5pMvODiRV/dUyL5URODpU8ba9wwnUyQ1nlnWJCpKq3MQyY+acC7/wtwADaQVWESBv4PAb5Onanw6jrFPaCigyi4UugtlhNih61pp/A33ZBNP7NU29AhMakbb/oBco69OM7QTxljErID/FudFJWZi9tOKFvv19BXT66rXukOo8TwaUou8tx6kpZ4JcgTydxf2FbVkJEkAAvKasMUQdisIfUUxud87IYV8q0U7VeBXfP+QYZ81bCGkbbldE5UpC9M7KeAh1C+T9hRLkaWYqSl6myHXQyHFND8zhHemtHP0k1GLjdUO6Sj/LKVle/IiktcQTcgL+RrUSUqKp8P9Z6sWjiSITphs3aaqHPjNxuP3tDrESRWD2QZHQwmaTZMSLMNn/XMRJK5ja6UK2TVveqmb1z9bcB15oK4KJAfJ2oIhOY5np33MyC8F9aVfEe5Y5WoMslHcGWTm6OY2R3Puor5IL3nPLadDc2yF8pZ80rxCra4ZU0w9feo/YZQmtiwcqZWMRFtU0xGLMe0k4mETFbcIBpjdPiVs4nwwWirZFqH17bdSRh1fUZptilpD/0ltpiXPOz0yRKwlSJrCctW5Y+m/lZzBe0kmH3jdani0dReT4z+eRUfxOCtFI9xBpFdMVYuVxWVSYhBIs1Rya7OJCqOTHuT+dY7to84ma76pYKxmbBGFrbd9PXndPBYSwfp6ATZ6JSWBzWOoEqugfrsNFVMYBwTwDJIueZR2lE/iathbBQ6JUVJ4gKEeDckpEdU4aFn9iEGKAPUVTI0Hu+RixEvS3LxyVybAzH5pkOEbJ47sdZQecKnc2j6ySpZK76NJcscHfk2RpaU/AvMoX7JBZkRpRIKmVesNguxwnY8Wv379dVaurNSlraNo/4GxLZjsHdTukpc3tLeDtjefX7ziQc0sDUNKTKokDZs93zTQ3eEr1zhWo9Clfm1jnNap6sGhY2aqEoTQqVqRxxsKqK6iljKUGzpsMDKSb1QKYApxoVXfaneOcZXx4gShUAJFSAKntjQrQGhWnCWxm0ZEgVXKPN4M8KUby1PhQNMQKdTEGc7TURXvkm20wd/sSiTzSaN3B4pQpVQJM+N2NFrqXKjXVuAHsSdR3IblO09NNrQX4zvetaMsGR5HwaIGnHJF2R2GPitNQAh1s4lMcL9y8HzeZZPcSEvVDjwOYkBVbDuO2GLhB/pVQYlOhhq2jnA6XGzl2VTlvzG3lxuN3rqLHwVYKlVD+qTN2evkI71RQD6uEpRgZYq/geqwb6DV6hXTcJyN671xskRn9H/NgQsjcasd7I3wirPWwZOyDSCtv4qfh9w8OZcah83sGBbiIdJ0gGjj+pqMoRT7Jj/LX22LSKGIGfsW7BNHdSe1UUmiC/U1zOtkTaULFWnDUh7aL+I7Vl+uOT5psPzGZ92P2vuu51abDpM7qZGM9yWT135zBTmg3dBp/gY0ahhJgNTfm4431s7fW87hS8B63DX2dpsTKYt+1za/E9mHZfKOl9mW2pczBP4dLc31PtZTJMyQocP2r2eXo3+3MKL8FPaiPWMGvFgjRCPYtB/tMYH3NIaK1H5do3bsKuz1xO/XcN5Cio6LjEHRWFdI7cR3Pe5wdtXTUxWC6hhKCkv3xqSOOKOc0r5qCULrkOKnOLlVwn8+Nl9w2SfeswLBttmCAIlpyVnMNY+lgo4DfegPTwoNMBNRjSbjAuA/7WiK7+5iiCjBaot0hrM6xaMzobhZMPse5deOqPm0Xs92yGm/eNeyDWiSc9Y8tCvQSMHLHhMFIIjjWjqsjQNq1+nNTzwY7tQz47jmQesX4tT4NGsYsPlMpHI1bHpWHxC8+A7yvZn6/2l3bQd/bV2woBxnTLRBpVubtTdbClA6Fr3wLnXkJQ5smIFrwrxoanMZJZD6ePV8ZLIIzRnus9ZhFAX+feHRFjKCd6quNHRmG59rpp3w+4cZAq5aDDDIArZYEQUHFra/XFJYPRC0Oo384g6Xmp4T/lioCU8ajMU5UpZaOtX3E8oKhag1oSQVcQULt92A7ZR2L0uwAYjtRM0RSHJue2hG/0IhBhBNDApWYLqmJN6+frMDdOmWCDfqcQECwXgtIGg4FJ7R3l7J4myahVK+zlIGdvRfLgveUjpYPr0wIA23jOmpQRsLoEZsqW9tHtM+RtS1okRHwKj8PnNm2QpsRxtGTc/V/TGKa5mmjymmsMpXNnf61NlfEr9OfPUASedCKv6CEiOFmaDvoRE30AaOb6+eHhp17z9p3sXmxESD2KBEC6f+HpWUghBng5JQYZzhXXRqXbPNSGro5YO4E/wq2ecOIdDE5A8jkW4KuzHX04hT8CF1WtTIMDAn8ftfKaY3uFgjXykK/ElpJE0iYANnFMqYm1DayQMMWDDo2bepjiFp6DeF1HrhTMxy1xg2795Ntm8HXTngZq59GnfzIvn5t3bAv0kwIh/MdG1KV/yfbrLgH2HPIsUGzzf3aCATryaaVK32ubESDUyIS3L2y9KRykecH6IatxMSLoh2l4uuwk8musX9WstYQl9+6pp35a/vNZShw4KsmaLsph7Jhr+YHx0bvfIaIVSaJxK9gS3J4oXsudSqy8QIQ2RkmwSsMIFD9MepqQFG2jEThmQaZhxmSosqr8RXSjxCoxMQkL7YQBUTQopnixLWnLekSYBH+t/xsQKcT25eRXHE2YT8TwDrEjIKECB8bJkBhtTB7IJ4OwDMwHPMUfpVSs3XwoQHhIbL+goaM7hTgHC/8kD4xeWWjD62/qRwuwtyTZaLlhJWuIXfnugQiQotnwMawQFFO5vEBT0vT1OZRwb8vKJhVT3jcH1gSpJhoMy0H+wmb5pKwZ7EYQ6J65NN6y91Zf2c8khuN3vPOSbcXaBcBdM2FKyvtKytXgoH4u8oiiqtk83rJUtcvtrc1Ug8Wv83h7aV97nIMvP29Pk9NzzZt0sdLps2KHVWiq3x/L3S6es1lplmGjckRrMgbbjgmT3J1NpEcmPS7Kb9LhchCwouPxA+9mhASo9fi+yirANKC3w32+56IKb583QuxhumUEu1KjfjynxDktIzrOXkLt1hm6oX21hXOON7fBjyH/gaByEsRHsOmz4QXAIp4zZFnp2rnY3nOPi/x+qM7OrEMNg2f2TJ56Cg0JI8QJogZ1PsNIRQME1/7wa9vmJFJzIlI1Th0oidVqs0RLXXjq1YylfkQLhh7efkMlNOIjRrk3MTCbtwGhixrXZ5DEaYBITAGT/EElPRgB"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Agency's conclusion that the selectees were better qualified and that there was no discriminatory animus is traceable to summarized testimony and rankings (fifth of the Best Qualified candidates, seventh of 12, score of 64.4), but the underlying exhibits and the cut-off scores are not in the file, so the path from evidence to conclusion depends on the summary's wording.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many statements are attributed (the Proctor explained, the Chief DUSM averred, the Branch Chief testified, the testing consultant confirmed), but others are unattributed or secondhand, such as 'The Proctor contacted the test administrator,' the pat-downs of a White and a Hispanic candidate, and 'the record showed' he did not apply for two of 13 announcements.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (August 31, 2017; September 11, 2017; November 2, 2017; June 2019; June 2021), but the dates of the EEO complaint, the HR complaint, the retest denial, the Chief's instruction to stop pat-downs, the interrogatory and the final decision are missing, and the narrative jumps out of order.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The record shows the Agency applied a legitimate-reason/pretext/preponderance analysis and recorded management's responses to Complainant's claims, but the final decision-maker is not named, the retest denial is attributed only to 'senior leadership,' and the score cut-offs that triggered the non-selections are not stated.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record is a secondary background summary with the outcome text removed, so an independent reviewer could follow the general account but could not verify the evidence or the decision basis without the report of investigation, testimony, score data and the full decision.\"}},\"remediation_note\":\"Attach or cite the underlying exhibits (affidavits, testing-consultant confirmation, assessment guidelines, score cut-offs, Best Qualified Lists and Career Board records) and add a dated timeline that includes the complaint filing, the HR complaint, the retest denial and the final decision. Identify the named decision-makers and the criteria they applied, and attribute each material factual statement to a specific source.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4744,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1562,
+   "output_tokens_details": {
+    "thinking_tokens": 805
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

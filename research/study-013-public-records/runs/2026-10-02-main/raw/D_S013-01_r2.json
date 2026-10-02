@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcMdNuubERtn8jfs2fD",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The FAD states only that Complainant 'failed to prove' discrimination or reprisal, with no documented steps from the evidence to that conclusion, and the record's labeling of the Manager/A42 Branch Head non-selection as 'claim (1)' contradicts the enumerated claim 1, the December 17, 2018 chastisement, breaking the evidence-to-claim linkage.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to named sources (S1, S2, S3, PM1–PM3, Complainant), but several are not: the statement that Complainant was 'counseled' throughout the year, S3's finding that he was 'adequately compensated,' and the closing assertion that the cybersecurity classes were awarded in a prior EEO complaint.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated (December 3, 11, 17 and 20, 2018; January 4 and 30, 2019), but no date is given for the A42/Manager non-selection, the claim says notice came December 17 while the narrative says December 11, and the timing of the prior EEO activity is only loosely stated as 'the previous year.'\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The selection and pay processes identify their reviewers and criteria, but the record does not say who decided the FAD, what legal framework or threshold was applied to the age and reprisal claims, or whether Complainant's qualification and reprisal assertions were weighed before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Given the unreasoned FAD conclusion, the claim-numbering mismatch, the date inconsistencies and the unattributed statements, an independent reviewer could not assess from this record alone whether the conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4628,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1399,
+   "output_tokens_details": {
+    "thinking_tokens": 804
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

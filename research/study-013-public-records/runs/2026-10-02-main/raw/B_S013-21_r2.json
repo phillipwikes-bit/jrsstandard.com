@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbgamp2a1EMVFyxufDA",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The Agency's Claim 1 conclusion rests on Complainant not reporting the slurs before EEO contact, yet the decision does not address the conflicting accounts of CO1, CO2, LT1 and LT2, and the Threat Assessment Committee report, CO1's memo and LT2's photographs are not in the file, so the path from evidence to conclusion cannot be traced; the Claim 2 finding of no 'retaliatory animus' is stated with no analysis.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most statements are attributed to named sources (Complainant's interrogatory answers, CAPT, HRM, CO1, CO2, LT1, LT2), but the committee's finding that the assault was unsubstantiated is known only through CAPT's recollection, and the police officers' alleged 'psychologically unstable' remark is attributed only to Complainant.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated (Nov. 17 and 23, 2022; Jan. 9, Mar. 2-3, Aug. 3, 2023), but the Threat Assessment Committee is placed only 'the following day', the dates of the reassignment and reminder letters are missing, the narrative runs out of order (Aug. 3 before Apr. 10), and the date of Complainant's alleged prior discrimination complaints is not given.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the final decision, the Threat Assessment Committee's members or criteria, or the standard applied to the AWOL coding and welfare check beyond general references to 'OPM rules' and 'standard procedure', and it does not show that Complainant's responses or the contradicting statements were weighed before the decision was finalized.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Key documents (committee report, memos, photographs) were never obtained, the conclusions are not linked to the conflicting testimony, and an independent reviewer could not assess whether the evidence supports either finding without outside context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6334,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1328,
+   "output_tokens_details": {
+    "thinking_tokens": 649
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

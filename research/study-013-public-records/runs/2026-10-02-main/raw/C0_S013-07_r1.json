@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011Cfdc9xVHLj8riVJcLMpEh",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each of the 15 alleged incidents is identified with specific dates, actors (Supervisor 1, Supervisor 2), and substantive claims (e.g., assignment of duties despite Light Duty status, verbal statements, schedule changes).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"gap\",\n      \"note\": \"The record presents allegations and final conclusions ('failed to prove discrimination,' 'failed to show disparate treatment') but omits the investigative reasoning, evidence evaluation, comparator analysis, or intermediate findings that would connect factual allegations to the conclusion.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A reviewer years later can identify what was alleged and when, but cannot reconstruct why the Agency rejected the claims without access to the investigation report referenced but not included in this background section.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"gap\",\n      \"note\": \"The record does not present witness statements, supervisor responses to allegations, evidence of non-discriminatory reasons for assignments or discipline, or analysis of whether comparators were treated differently, all necessary to assess whether the conclusion is supported.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Events are sequenced chronologically from September 8, 2019, through February 6, 2020, with specific dates for each incident, and the complaint filing date (April 13, 2020) and investigation conclusion are identified.\"\n    }\n  },\n  \"remediation_note\": \"This record functions as a complaint summary, not a complete investigative record. To meet JRS standards, it must include: the full investigation report with witness interviews, Agency responses to each allegation, analysis of pretext and comparator treatment, articulation of non-discriminatory reasons for each action, and explicit findings of fact addressing the nexus between protected status and adverse action.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"reasoning_traceability, accountability_support\",\n    \"compliant_version\": \"Append the investigative findings section documenting: (1) each witness account; (2) Agency explanation for each assignment, schedule change, and disciplinary reference; (3) comparative treatment analysis (were non-disabled, younger, or male officers assigned similar duties while on light duty); (4) explicit findings on pretext; and (5) reasoned conclusion linking or distinguishing evidence from the legal standard for discrimination.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1737,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 604,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

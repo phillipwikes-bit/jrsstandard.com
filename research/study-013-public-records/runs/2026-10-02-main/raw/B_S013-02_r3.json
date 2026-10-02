@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbY6VEEP5qhMVGjLwzh",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The termination reasoning (failure to comprehend the work's complexity, delays in onboarding) is stated, but the record cites no documented performance errors, dates of specific delays, or work product to connect the evidence to that conclusion, and the final decision's link from evidence to its finding on unlawful harassment is only summarized.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many characterizations are attributed to named witnesses (HR Supervisor, HR Officer, RA Coordinator, Complainant's doctor), but the performance-error assertions rest solely on HR Supervisor's account with no underlying documents, and the doctor's reports date from 2005 with no current medical documentation.\"},\"rc3\":{\"status\":\"gap\",\"note\":\"Claims 2-7 are all dated only as 'unspecified dates', the accommodation request timing is not established (Nov 2019 to May 2020 alleged, no request date documented), and the 2005 medical letters are not tied to the 2019-2020 period.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The termination letter shows HR Supervisor recommended and HR Officer decided, but the record does not state the probationary-termination criteria or threshold, whether Complainant's responses or mitigating information were considered, or the basis on which the agency weighed conflicting accounts.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"The aggregate record cannot stand alone because the reviewer must rely on uncorroborated denials, undated allegations, a disputed accommodation request with no documentary trail, and unexplained 'modifications' to the accepted claims, so an independent reviewer could not assess whether the decision is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6656,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 560,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

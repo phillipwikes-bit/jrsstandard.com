@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcASnsZdDQzrjd6zAyj",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each major conclusion (testing irregularities occurred, Proctor's stated reasons, non-discriminatory selection criteria) is anchored to specific documented facts: text message timing, pat-down search incidents, computer malfunction, Best Qualified List rankings, and selectee qualifications.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The decision pathway is traceable: alleged irregularities → documented events → Proctor's explanations → management acknowledgment of procedural errors → determination of non-discriminatory intent → application to non-selection outcomes.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"pass\",\n      \"note\": \"A reviewer unfamiliar with the case can reconstruct the full chronology from the record: August 31, 2017 assessment date, September 11, 2017 meeting with Assistant Chief, November 2, 2017 announcements, June 2019 initial decision, June 2021 re-issued decision, with specific vacancy announcement numbers and ranking positions documented.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"Evidence supports the finding that irregularities occurred (pat-down, reduced arrival time, computer issue) and that non-discriminatory reasons existed for non-selections (superior qualifications, prior acting experience, test performance); however, the record does not include direct evidence that the testing irregularities did not materially impact the Complainant's assessment score or that the score-based exclusion from other certificates was not linked to the procedural errors.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Clear sequence established: assessment day (August 31, 2017), management follow-up meeting (September 11, 2017), vacancy announcements and selections (November 2, 2017), initial decision (June 2019), class action determination and re-issuance (June 2021), with intervals between events identifiable.\"\n    }\n  },\n  \"remediation_note\": \"To strengthen accountability_support, the record should include expert analysis or statistical data addressing whether the documented irregularities (reduced preparation time, pat-down distraction, computer malfunction and recovery) plausibly affected the final assessment score of 64.4, and whether that score's impact on certificate eligibility was proportionate to the procedural deviations. Additionally, documentation of why the Proctor's conduct on other candidates (two prior pat-downs) was not retained as comparative evidence in the final determination would clarify the evidentiary foundation.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"accountability_support: The record narrates factual findings but does not provide quantitative or expert analysis linking the documented procedural irregularities to the claimed impact on test performance and downstream non-selection outcomes.\",\n    \"compliant_version\": \"A compliant version would include: (1) testing consultant affidavit explicitly addressing whether the three procedural deviations (20 vs. 30 minutes arrival, pat-down search, and computer exit/recovery) typically correlate with score depression in the GS-13 assessment; (2) side-by-side comparison of Complainant's score (64.4) against historical performance distributions for candidates who experienced no documented irregularities; (3) documented reason why the Proctor's prior conduct on the White and Hispanic candidates was not retained as comparative evidence; and (4) explicit analysis of whether Complainant's voluntary choice to continue the same day, after having already been distressed by the pat-down, constitutes valid waiver of the procedural defect or whether the choice was made under coercive conditions.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2629,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 879,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

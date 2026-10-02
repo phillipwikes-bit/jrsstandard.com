@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcPmyuEtzsqGEiQAj3V",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states only that the Agency 'concluded that Complainant failed to prove' discrimination, with no evidence or reasoning linking the allegations to that conclusion.\"},\"rc2\":{\"status\":\"gap\",\"note\":\"The only sourced fact is RMO awareness of race and color ('ROI at 101'); the allegations (e.g., the 'U.S. Marshals' threat, monitoring by Witness 1, the job-abandonment basis) are not tied to testimony, documents, or management responses.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (termination September 18, 2020; complaint October 9, 2020; FAD March 3, 2022), but items 1c and 1e are undated, and the September 18 termination conflicts with the September 19 policy accusation and stay-away email and the September 24 separation email citing no-shows since September 18.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who decided the FAD, what legal standard or burden-shifting framework was applied, or whether management's explanations and Complainant's rebuttal were weighed; it notes only that no hearing was requested.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Without documented evidence, analysis, a decision-maker, or a coherent termination chronology, an independent reviewer could not tell from this record whether the no-discrimination finding is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2609,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 860,
+   "output_tokens_details": {
+    "thinking_tokens": 393
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

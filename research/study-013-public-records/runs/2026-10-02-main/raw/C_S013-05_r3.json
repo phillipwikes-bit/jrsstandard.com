@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdboaBHyNM2e6rfYnM4F",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record sets out extensive witness evidence, but the only conclusion stated is that Complainant 'failed to prove that the Agency subjected her to discrimination as alleged,' with no steps linking the evidence to that finding.\"},\"rc2\":{\"status\":\"pass\",\"note\":\"Nearly every characterization is tied to a named or coded source (Complainant, S1, S2, DD, CW1-CW5, CCSB) and to specific IR page citations, e.g., 'IR 258-59' and 'IR 302-306'.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many incidents are dated, but the record gives retirement as both November 2017 and November 2018, lists a reclassification on 'December 26, 2018,' places S2 as Acting Director only from January 2017 while citing November and December 2016 incidents, and omits dates for the investigation, the IR, the hearing election and the final decision.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the Agency final decision, what standard or criteria were applied, or how S2's responses and the conflicting witness statements were weighed before the decision was finalized.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"With the reasoning path and decision process undocumented and the chronology inconsistent, an independent reviewer could not assess from this record alone whether the conclusion is supported by the evidence.\"}},\"remediation_note\":\"The record would need the Agency decision's analysis linking specific evidence to the conclusion, plus the identity of the decision-maker, the criteria applied, and how the competing accounts were weighed. It would also need a reconciled timeline that corrects the date inconsistencies and gives the dates of the investigation, IR, hearing election and final decision.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 10079,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1406,
+   "output_tokens_details": {
+    "thinking_tokens": 822
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

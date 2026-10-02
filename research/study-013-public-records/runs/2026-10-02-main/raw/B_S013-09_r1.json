@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbamSqPDg5fmdkbiWMQ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The paths for claims 2, 3 and 12 can be traced to the Privacy Investigation Report, S1's statement and coworker interviews, but claims 4-11, 13 and 14 get no claim-specific analysis, and claim 1's finding that Complainant stayed on eight-hour shifts rests on 'undisputed evidence' with no cited source.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many characterizations are attributed (Privacy Investigation Report, July 1, 2019 letter, S1 affidavit, Complainant testimony), but the discipline letters have unidentified addressees, the July 1 letter has a blank employee name, Witness 2 is introduced without identification, and the six interviewed coworkers are not individually tied to their statements.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events are dated (April 2019 SPAR request, June 15 and June 26, 2018, July 1 and Sept 4-5, 2019), but the claim 1 timing shifts between 2017 and May 2018, the SPAR request appears as April 8, 9 and 12, claim 14 is undated, and the privacy report date and the order of the investigation and discipline steps are not clear.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not name who decided the matter, gives no criteria beyond a general disparate-treatment framing, and does not show how Witness 13, the claims left unanalyzed, or the inconsistency between Witness 1 and S1 were weighed before the final decision.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer would need outside context to evaluate the decision, because RC4 is not met, several claims are never analyzed, key documents lack identified addressees or names, and testimony is credibility-discounted without detail.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6531,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1405,
+   "output_tokens_details": {
+    "thinking_tokens": 802
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011Cfdc7GCoC7zpPP3Fzwork",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each of the four claims (Manager position non-selection, Group Lead non-selection, DEMO pay denial, professional development chastisement) is grounded in specific documented actions: vacancy announcement records, interview panel findings, pay adjustment notices, and email communications with dated evidence.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The decision process is traceable through multiple levels: interview panel assessments with specific panel member explanations (PM1, PM2, PM3 comments on qualifications gaps), S1/S2/S3 rationale for each action, and documented criteria (Mission Assurance focus, leadership experience requirements, DEMO benchmarks, AT process alignment).\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"While substantive detail is present, the record lacks explicit statement of investigation methodology, scope of evidence reviewed, witness interview dates, or whether Complainant's allegations were independently verified versus relying on management's oral explanations and email statements.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"pass\",\n      \"note\": \"Evidence supporting the non-selection and pay decisions is substantial: panel members articulated specific performance gaps (Complainant failed to answer questions, limited branch knowledge, program vs. line management background), S1 documented DEMO criteria and feedback sources (Group Lead, AT subject matter expert), and S3 provided reconsideration rationale.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Events are sequenced with dates: August 2018 (position application), December 3, 2018 (Group Lead posting), December 11, 2018 (DEMO notification), December 17, 2018 (meeting and chastisement allegation), December 20, 2018 (Group Lead rejection and DEMO email), January 4, 2019 (complaint filing), January 30, 2019 (reconsideration denial).\"\n    }\n  },\n  \"remediation_note\": \"The record would strengthen by documenting the investigation process itself—dates of witness interviews, specific questions asked of Complainant and management, and independent verification steps taken—and by explicitly stating whether comparator evidence (how similarly situated employees were treated) was considered or evaluated.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"cold_reviewer_clarity—the record reconstructs events and management reasoning clearly but does not transparently document the investigative methodology or scope of review applied to test discrimination and reprisal allegations.\",\n    \"compliant_version\": \"A compliant version would add an investigation methodology section identifying: (1) witnesses interviewed and dates, (2) documents reviewed (performance files, training records, compensation records), (3) comparator candidates (age, reprisal history) analyzed for disparate treatment, (4) timeline of investigator activities, and (5) explicit finding statements on whether each allegation was investigated fully or what evidence was insufficient to pursue further.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2563,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 731,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

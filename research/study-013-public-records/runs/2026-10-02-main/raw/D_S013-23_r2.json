@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011Cfdcfw14owxhXSgeNqU8j",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the final decision's conclusion that Complainant 'was not subjected to discrimination or reprisal as alleged' but documents no analysis linking the competing accounts (e.g., S1's denials versus Complainant's differential-treatment claims) to that finding.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to Complainant, S1, or the reprimand's specifications, but the 'prior protected EEO activity,' the 'other CTEs' used for comparison, who issued the PACS rating, and the evidence supporting the 'two-hour work delay' are not tied to identified sources.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key events are dated (June 16 and June 23, 2021 incidents; July 20, 2021 reprimand; November 11, 2021 complaint; FY2019 and FY2021 ratings), but the record omits dates for EEO Counselor contact, the prior EEO activity, the investigation report, the hearing-request deadline, and the final decision, as well as the untimely allegation and its timing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The decision is attributed only to 'the Agency,' with procedural citations (29 C.F.R. § 1614.108(f), § 1614.110(b)) but no identified decision-maker, no stated legal standard or threshold for the discrimination, reprisal, harassment, or timeliness determinations, and no indication that Complainant's responses were weighed.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the reasoning, the decision-maker and criteria, the comparator and protected-activity evidence, and several procedural dates are absent, an independent reviewer could not assess from this record alone whether the no-discrimination finding and the untimeliness dismissal are supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2660,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1063,
+   "output_tokens_details": {
+    "thinking_tokens": 457
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

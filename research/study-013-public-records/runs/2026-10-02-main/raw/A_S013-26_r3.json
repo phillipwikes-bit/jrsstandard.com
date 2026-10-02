@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbWXTboMLxfmwSDxfBs",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"ready\",\"reason\":\"The record is adequate for a merits decision. The ROI covers the complainant, the alleged harasser (C1), the supervisors who learned of the conduct (S1, S2, S3, S4, S5), and the coworker witnesses (C2, C3). Each of the six accepted incidents is addressed with competing accounts, and the Agency made specific credibility findings on which statements were preponderantly supported. The record also covers the employer-response issue: when each official learned of the conduct, what was done, and that S2 halted the inquiry and delayed discipline. The Agency's legal analysis may be questionable (severity or pervasiveness, and the adequacy of remedial action), but those are matters of correctness. The factual record is sufficient to evaluate them.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4626,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 255,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

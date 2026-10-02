@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011Cfdccij3abnL34UVbCB9L",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The final decision's path cannot be fully traced: it is silent on accepted claim 4 (harassment), and its reprisal and pretext findings do not engage evidence in the file, such as the Nurse Manager's comparator testimony (ROI 197), the fact-finding report concluding that S1 falsely accused Complainant (ROI 399-400), and the Employee Health release slip.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most facts carry ROI page cites, but several material items do not, including the Employee Health release slip (\\\"According to Complainant\\\"), the March 5, 2018 automated AWOL notice, the phone-room refusal, the medical-retirement remark, the March 13, 2018 EEO contact, and the management testimony behind the Agency's articulated reasons.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Events are largely dated and in order, but the AWOL notice cites \\\"March 1, 2019\\\" while claim 2 says March 1, 2018, the claim 4 remarks are undated beyond January 8, and the dates of the ROI, the hearing-rights notice, and the final decision are absent.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who decided the matter, and although it names the legal framework (prima facie case and pretext under 29 C.F.R. § 1614.110(b)), it shows no consideration of the comparator evidence, the fact-finding report, whether Complainant's February 14 grievance accusations of retaliation could count as protected opposition, or claim 4.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"With unaddressed claims, unexamined contrary evidence, and an undocumented decision-maker, an independent reviewer could not judge from this record alone whether the no-discrimination conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4442,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1285,
+   "output_tokens_details": {
+    "thinking_tokens": 681
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

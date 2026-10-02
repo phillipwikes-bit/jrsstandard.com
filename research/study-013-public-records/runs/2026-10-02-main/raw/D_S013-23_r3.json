@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcgEGtaKy5dEcg6rHEr",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record sets out Complainant's allegations and S1's denials, then states that the Agency found no discrimination or reprisal, but documents no analysis connecting the evidence to that conclusion (e.g., comparator treatment of other CTEs, pretext, or severity/pervasiveness).\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to Complainant ('alleged') or S1 ('asserted,' 'denied'), but the record identifies no witness statements, corroborating documents, comparator data, or PACS rating documentation beyond the reprimand's specifications, and the 'additional allegation' dismissed as untimely is never described.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (June 16 and 23, July 20, and November 11, 2021, plus the FY2019 and FY2021 ratings), but the record omits the dates of EEO Counselor contact, the prior protected activity, the PACS rating's issuance, the reports to the union and management, the report of investigation, and the final decision.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The final decision is attributed only to 'the Agency' under 29 C.F.R. § 1614.110(b), with no identified decision-maker, no stated legal standard for the discrimination, reprisal, or hostile environment claims, and no indication of how S1's explanations and Complainant's allegations were weighed.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the record lacks the evidence-to-conclusion reasoning, the decision-maker, the applicable criteria, and key evidentiary sources and dates, an independent reviewer could not assess from this record alone whether the no-discrimination finding is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2660,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1055,
+   "output_tokens_details": {
+    "thinking_tokens": 474
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

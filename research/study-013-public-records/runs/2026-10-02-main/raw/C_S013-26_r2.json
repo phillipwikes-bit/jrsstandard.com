@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdc3L57jYQtZJA1mrdQg",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"Testimony and the Agency's findings are both present, but the record does not connect them where accounts conflict, for example why the Fairbanks comment was not found by a preponderance despite Complainant's and S1's statements, or why C1 'inexplicably refused' to include Complainant.\"},\"rc2\":{\"status\":\"pass\",\"note\":\"Most characterizations are tied to named role-holders (Complainant, C1, C2, C3, S1, S4, S5) and the counselor's description cites ROI at 43, though the Agency's findings carry no ROI citations.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated (Jan 25, Mar 16-18, Apr 8, Apr 13, Jun 15, Jun 23, Jul 29, 2015), but some are imprecise or inconsistent, such as S5's visit in 'May' versus June 18-19, S2 learning in 'April or May', and undated investigation steps, and the Agency's decision date is missing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record states the Agency's criteria (severe or pervasive; prompt, appropriate remedial action) but does not identify who issued the final decision or show how C1's denials and the conflicting statements were weighed before it was finalized.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record cannot stand alone because it relies on the unattached ROI and an unexplained resolution of contested facts, and the appellate outcome is removed, so an independent reviewer would need outside context.\"}},\"remediation_note\":\"The record would need the Agency decision-maker's identity and date, an explicit statement of how each contested fact was resolved with citations to the specific ROI testimony relied on, and a reconciled timeline of the investigative steps, the S5 visit, and when S2 stopped his inquiry.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5763,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1641,
+   "output_tokens_details": {
+    "thinking_tokens": 1032
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

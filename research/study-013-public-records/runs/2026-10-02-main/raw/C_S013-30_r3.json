@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdc72NMDp1D7e8Fdc6r8",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the Agency's conclusion that Complainant 'failed to prove that she was subjected to discrimination,' but it contains no evidence or reasoning about the two non-selections (such as selection criteria, candidates, or comparators) linking to that conclusion.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Some characterizations are attributed to Complainant ('averred,' 'noted') and one cites 'ROI at 238, 61,' but the sources for the non-selection facts, the prior protected EEO activity, and the Coworker's relocation are not otherwise identified.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Dates are given for the March 25, 2022 incident, the May 2 non-selections, the May 3 initiation, and the June 29 filing, but the prior protected EEO activity, the investigation period, the ROI issuance, and the date of the final decision are not dated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record cites 29 C.F.R. § 1614.110(b) as the basis for the final decision, but it does not identify who reviewed the matter, what criteria were applied to the non-selections, or whether Complainant's responses were considered before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"The record is a background summary with outcome text removed, so an independent reviewer could not assess whether the conclusion is supported without the ROI and other outside material.\"}},\"remediation_note\":\"The record would need the underlying ROI evidence on the two non-selections, including the selection criteria and the selecting official's decision process. It would also need a dated chronology covering the prior EEO activity, the investigation, and the final decision, and the identity and reasoning of the decision-maker with any consideration of Complainant's responses.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2399,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 939,
+   "output_tokens_details": {
+    "thinking_tokens": 353
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

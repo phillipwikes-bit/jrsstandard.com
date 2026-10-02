@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbt5bxZV4nJ9RS5JSvd",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record cites extensive evidence (Form 50s, policy table, resumes, ROI pages) but ends with the FAD finding that Complainant 'failed to prove' discrimination, with no stated reasoning linking that evidence to the conclusion.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed ('According to Complainant,' 'According to Business Partner,' ROI page cites), but some material statements, such as ages being 'readily known to the Responsible Management Officials' and Complainant being told she would receive 5%, carry no source.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (July 17, 2021 effective date, August 31, 2021 EEO contact, November 17, 2021 complaint, the 2019 prior selection), but the dates of the investigation, ROI delivery, hearing deadline, FAD and appeal are missing, and the '32 months' stated for July 3, 2004 to March 30, 2007 does not clearly match the dates.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who issued the FAD, the standard or criteria applied, or whether Complainant's and Business Partner's responses were weighed, and the 'named individual' whose approval was needed is not identified.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the reasoning, reviewer and decision criteria behind the FAD conclusion are absent, an independent reviewer could not assess whether the conclusion is supported without outside context.\"}},\"remediation_note\":\"The record would need the FAD's analysis connecting the cited evidence to its conclusion, the identity of the deciding official and the standard applied, and a note on how the parties' responses were considered. It would also need a dated timeline of the investigation, ROI delivery, hearing window, FAD and appeal, with source cites for the unattributed statements.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3988,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1510,
+   "output_tokens_details": {
+    "thinking_tokens": 883
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

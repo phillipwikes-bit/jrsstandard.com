@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbkZ9gsUMs1dSAJj2NE",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"Evidence is cited with IR page references and the agency's conclusion is stated, but the link from evidence to conclusion is partly missing, e.g., the finding of no similarly situated comparators and the assertion that the March 18, 2021 threat was not credited are not tied to specific record evidence, and the conflicting colleague statements are never reconciled.\"},\"rc2\":{\"status\":\"pass\",\"note\":\"Nearly every characterization is attributed to an identified source (Complainant, S1, S2, colleagues, HR email at IR 424, physician note at IR 213) with IR page cites.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (June 2020 rating, Aug 20, 2020 HR email, March 4, 12, 18, 2021), but the order is muddled (the March 18, 2021 threat is embedded in the incident list), the letters of warning and counseling are undated, and the FY2021 appraisal period and the grievance dates are not identified.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The record identifies S2 as the reviewer who changed the rating and cites HR guidance, but it does not document who drafted the final agency decision, what criteria were applied to the comparator or knowledge findings, or whether Complainant's responses were weighed, and the agency's stated reason for the rating change (HR said a PIP was required) conflicts with S2's account (insufficient documentation).\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record is mostly self-contained but unresolved conflicts (S1's claimed lack of EEO awareness vs. the grievance outcome, differing explanations for the rating change, and the unsupported comparator finding) mean an independent reviewer could not fully assess the agency's conclusion without further context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4471,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 592,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

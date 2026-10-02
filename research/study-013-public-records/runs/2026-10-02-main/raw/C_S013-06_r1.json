@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbojb5NUynYiXt9ruTB",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Claim 2 path from dated ROI-cited emails and testimony to the Agency's finding that the request was not denied can largely be traced, but Claim 1 (no midyear review) has no supporting evidence in the Factual Background and its dismissal rationale is only asserted.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many characterizations carry ROI page cites (e.g., ROI pp. 179, 183-185, 192), but others are attributed only to unsourced testimony, such as the comparators' circumstances, the 'approved within three days' statement, and the Sept 7 versus Sept 10 telework dates.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events from August 1 to September 7, 2018 and the procedural steps are dated in order, but the record has inconsistent telework dates (Sept 7 vs. Sept 10), no date for when Comparator 2's request was made, and an unexplained gap between the March 2020 withdrawal and the April 25, 2022 final decision.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record cites criteria (29 C.F.R. § 1614.107(a)(1), prima facie case, preponderance of evidence) but does not identify who made the final agency decision or show how Complainant's responses were weighed, and it notes the Agency omitted retaliation from its acceptance letter without explanation.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because Claim 1 lacks evidentiary support, the decision-maker is unidentified, and the comparator and date details are inconsistent or unattributed, an independent reviewer could not assess whether the conclusions are supported without the underlying ROI and decision text.\"}},\"remediation_note\":\"The record would need the evidence on Claim 1 (the August 1, 2018 email and the basis for the dismissal), the identity and role of the final-decision reviewer, and a documented link between each finding and its source. It would also need a reconciled timeline (including the 2020-2022 interval and the telework dates) and attribution for the comparator facts.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6404,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1374,
+   "output_tokens_details": {
+    "thinking_tokens": 687
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

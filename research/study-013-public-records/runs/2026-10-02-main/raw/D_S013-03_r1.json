@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcNzJXMweivkefBwZZc",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The FAD's conclusion that Complainant 'failed to prove' discrimination or retaliation is stated without any reasoning, and the record cannot support it because the investigator did not question Complainant on claims 1-3 and 5-9 and the Supervisor's responses (ROI at 146-162) are not summarized.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Complainant's assertions and the management and HR statements are tied to specific ROI pages, but the factual basis for the warning letter in claim 4 and the substance of the Supervisor's responses are not described, and the six named witnesses were never interviewed, leaving key characterizations unsourced or uncorroborated.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Each claim is dated and the complaint, acceptance, and accommodation dates are given, but the record conflicts with itself: the resignation was effective February 8, 2019, yet Complainant is said to be in her 'last week of employment' and transferring facilities on March 18, 2019, and claim 9 (blocked computer access) is dated February 20, 2019.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the final decision, what legal standard or analysis was applied to the hostile work environment and discrete claims, or whether Complainant's responses were weighed, and the investigator gives no reason for not contacting the six witnesses Complainant listed.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because of the one-sided investigation, the missing witness affidavits, the unexplained conclusion, and the unresolved chronology conflicts, an independent reviewer could not tell from this record alone whether the decision is supported by the documented evidence.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4472,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 967,
+   "output_tokens_details": {
+    "thinking_tokens": 397
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

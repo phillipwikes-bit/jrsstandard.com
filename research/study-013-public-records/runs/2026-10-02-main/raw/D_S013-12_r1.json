@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcWNcQiSU1qwBQXHeNd",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record ends with a bare statement that 'The FAD concluded that Complainant failed to prove that the Agency subjected him to discrimination,' with no documented reasoning linking the OPR Bluebook Report, the selection records, or the testimony to that conclusion on any of the four claims.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Some characterizations are attributed, such as Complainant's accounts, the Division Chief's June 1, 2018 statement, and OPR's 'unfounded' finding, but the witness denials appear only through OPR's summary of nine interviews, and no selecting-official or HRM statement is cited as the basis for the Claim 2 nonselection or the Claim 3 'not selected' notice.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events are dated, including the July 2016 detail, the June 2017–June 2018 alleged investigation, the January 19 and April 11, 2018 HRM notices, the May 24, 2018 notice, and the October 30, 2018 OPR report, but the date of initial EEO contact is not given, the dismissed-claim citation is misplaced inside the transfer narrative, and placing the October 2017 resignation is confusing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who issued or reviewed the FAD, what legal standard or burden was applied to the harassment, nonselection, and reprisal claims, or whether the Complainant's identified evidence was obtained or considered: travel vouchers, field intelligence reports, the Administrator's Audit Report, and a list of 15 individuals.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer cannot tell whether the conclusion is supported, because the decision's reasoning is absent and it is unclear whether the specific documents and witnesses Complainant identified were gathered beyond OPR's own interview summary.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4609,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1082,
+   "output_tokens_details": {
+    "thinking_tokens": 446
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

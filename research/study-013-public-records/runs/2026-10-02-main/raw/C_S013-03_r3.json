@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbndJ2b3ppLUaWHjAoh",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states that the Agency 'determined that Complainant failed to prove' discrimination or retaliation, but it gives no findings or reasoning linking the cited ROI evidence to that conclusion, and the Supervisor's responses (ROI 146-162) are referenced without content.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most complainant assertions carry ROI pin cites (e.g., ROI at 62, 73-74) and the Associate Chief, Chief and HR Specialist statements are attributed, but the Supervisor's response to each claim is not characterized and several assertions (e.g., Coworker 4 being warned) rest only on Complainant's account.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Claim dates, the March 13, 2019 complaint and the May 8, 2019 acceptance are dated, but the investigation dates, the report of investigation and hearing-election dates, and the FAD date are missing, and events on Feb 11-20 and the March 18 'last week of employment' are not reconciled with a resignation effective February 8, 2019.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The FAD's reviewer, the standard or threshold applied beyond the citation to 29 C.F.R. § 1614.110(b), and any consideration of the Supervisor's responses or Complainant's evidence before finalization are not documented, and the record notes that the six listed witnesses were not contacted with no reason given.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess whether the FAD conclusion is supported without the outside ROI and decision text, since the conclusion's basis, dates and decision process are missing and the unexplained absence of witness affidavits leaves the evidentiary base incomplete.\"}},\"remediation_note\":\"The record would need the FAD's stated findings and reasoning tied to specific ROI evidence, including the Supervisor's responses, plus the identity of the decision-maker, the criteria applied, and the full dated sequence from investigation through FAD. It should also document why the listed witnesses were not interviewed and reconcile the resignation and employment end dates.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4526,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1185,
+   "output_tokens_details": {
+    "thinking_tokens": 471
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

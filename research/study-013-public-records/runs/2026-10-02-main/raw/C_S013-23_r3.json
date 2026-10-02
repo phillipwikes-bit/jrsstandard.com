@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdc1k8uStju16w576FhZ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the Agency's conclusion that no discrimination or reprisal occurred but cites no evidence from the report of investigation and no reasoning linking the evidence to that finding, so the conclusion cannot be reconstructed from the file.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Some characterizations are attributed (S1's denials and explanations, Complainant's allegations and reports to the union and management), but the reprimand specifications and the 3.0 versus 4.5 PAC ratings are stated without any identified underlying document, witness, or affidavit.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (June 16 and 23, 2021 incidents, July 20, 2021 reprimand, November 11, 2021 EEO complaint), but the PACS rating issuance date, the dates of the union and management reports, the investigation and decision dates, the hearing-request window, and the timing of the dismissed untimely allegation are missing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record identifies S1 as supervisor and names the regulatory provisions (29 C.F.R. § 1614.108(f), § 1614.110(b)), but does not identify who made the Agency's final determination, what standard was applied to the merits, or how S1's responses were weighed before the decision was finalized.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the evidence-to-conclusion path, source attribution, full chronology, and decision process are incomplete, an independent reviewer could not assess from this record alone whether the Agency's finding is supported.\"}},\"remediation_note\":\"The record would need to attach or cite the report of investigation evidence (affidavits, the reprimand, PAC rating documents), a dated timeline including the investigation and final decision, and a documented statement of the deciding official, the standard applied, and how S1's responses were weighed, linked to the conclusion reached.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2714,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 637,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

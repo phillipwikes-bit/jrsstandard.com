@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcRyitNsBeSByBfVkdr",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states only that the Agency 'concluded that Complainant failed to prove' discrimination and 'failed to show... disparate treatment,' without any documented evidence or reasoning connecting the 15 allegations to that conclusion.\"},\"rc2\":{\"status\":\"gap\",\"note\":\"The fifteen incidents are attributed to Complainant's allegations, but the summary cites no witness statements, management responses, or ROI exhibits as a basis for the Agency's findings.\"},\"rc3\":{\"status\":\"review\",\"note\":\"The alleged incidents are dated and ordered from September 8, 2019, through February 6, 2020, and the complaint filing date (April 13, 2020) is given, but the ROI issuance, the hearing election, and the final decision are undated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record cites only 29 C.F.R. § 1614.110(b) as the procedural basis; it does not identify the decision-maker or the legal standards applied, does not show whether management's or Complainant's responses were weighed, and does not show that the hostile work environment claim was analyzed separately from disparate treatment.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the summary presents allegations and a bare conclusion with no documented evidence, reasoning, or decision process, an independent reviewer could not assess from this record alone whether the final decision is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3316,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 859,
+   "output_tokens_details": {
+    "thinking_tokens": 393
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

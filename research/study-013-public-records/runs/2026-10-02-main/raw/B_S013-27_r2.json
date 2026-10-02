@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbjxgGXMKBbFsdjPzF4",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The FAD's conclusion (nine incidents in 21 months, not severe or pervasive, no basis for management liability) is stated, but the record does not list the nine incidents or show how the evidence led to that count or to the liability finding.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Some sources are named (Complainant's testimony, the Business Office Manager's instant message, an unnamed employee, 'witness statements'), but the FAD does not identify which witnesses corroborated which incidents, and several accounts are relayed secondhand.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Dated events are given (Aug 2016 start, Dec 11 and 13 2017, Jan 25 2018, June/July 2018, June 27 2018 complaint), but the CEO's four reports, Complainant's requests for an incident report, and any management response or escalation have no dates, and the 'nine incidents' are not placed in sequence.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not show who at the Agency reviewed the matter or what steps management took on Complainant's reports, and it does not show whether the CEO's or Deputy Director's responses were considered before the liability finding.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess the merits from this record alone, because the incident inventory, witness attribution, management's response, and the basis for the liability and severity findings are missing or summarized.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3201,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 483,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

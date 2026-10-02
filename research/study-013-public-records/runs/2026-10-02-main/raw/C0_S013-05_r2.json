@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011Cfdc95sFeB2ChuJxqXAUL",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each major allegation (reclassification denial, harassment incidents, meeting exclusions, favoritism) is anchored to specific dates, witness statements, and documentary references (e.g., 'IR 203, 212' for reclassification requests; 'IR 205-06' for harassment incidents).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The investigative summary presents extensive conflicting testimony (Complainant vs. S2, S1, DD, CCSB, CW1, subordinate) but does not explicitly document the investigator's reasoning for how the Agency reconciled contradictions or weighted evidence to reach the conclusion that 'Complainant failed to prove discrimination.'\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A future reviewer can identify allegations, dates, and witness positions clearly, but the final investigative report outcome text is absent ('outcome text removed'), preventing reconstruction of the investigator's analytical methodology or findings without consulting the underlying IR document itself.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"Substantial corroborating testimony exists (CCSB's 'vanilla-chocolate swirl' pattern, subordinate's account of exclusions, CW1's observations of S2's abrupt behavior), but the record does not show how the investigator weighed this third-party evidence against S2's denials or non-recalls to reach the stated conclusion.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record maintains clear chronology: reorganization (Jan 2017), reclassification requests (Apr, Jun, Jul 2017), harassment/exclusion incidents (Nov 2016–Nov 2017), with specific dates and sequencing enabling a timeline to be reconstructed.\"\n    }\n  },\n  \"remediation_note\": \"To achieve compliance, the investigator's written findings must explicitly document (1) how contradictory statements were evaluated and weighted, (2) the analytical framework applied to pattern-of-conduct claims (e.g., CCSB's 'vanilla-chocolate swirl' testimony), and (3) a line-by-line conclusion addressing each allegation category with reference to the evidence that supported or refuted it.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"reasoning_traceability, cold_reviewer_clarity, accountability_support\",\n    \"compliant_version\": \"A compliant record must include an explicit 'Findings' or 'Analysis' section that traces the investigator's evaluation of each allegation type (reclassification, harassment, exclusions, favoritism) against witness testimony and documentary evidence, documents how contradictions were resolved, identifies which evidence was deemed credible and why, and concludes with determinations tied directly to the preponderance-of-evidence standard or applicable legal burden, ensuring that a reviewer years later can understand not just what was alleged but how the investigator's conclusions were reached.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6832,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 741,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcTFQEdRF2iC5QdJJQi",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The path from evidence to the no-discrimination conclusion is largely traceable (the Proctor's explanations, pat-downs of White and Hispanic candidates, the testing consultant's confirmation of full time, the 64.4 score below cut-offs, and selectee qualifications), but the record never identifies the protected bases alleged other than reprisal, so the comparative and animus analysis cannot be fully reconstructed.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to named roles (the Proctor explained, the Branch Chief testified, the Chief DUSM averred, the Career Board Presenter explained), but several material statements are unattributed, including 'Two more qualified candidates were selected,' the absence of any proctor-contact requirement, Complainant's fifth and seventh rankings, and the unstated score cut-offs.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are present (the August 31, 2017 exam, the September 11, 2017 meeting, the November 2, 2017 selections, and the June 2019 and June 2021 decisions), but the dates of Complainant's EEO contact, complaint filing, and the Branch Chief's interrogatory are missing, which leaves the reprisal-knowledge timeline unclear, and the procedural history is interleaved out of sequence.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The decision framework (legitimate nondiscriminatory reasons and pretext) and some consideration of Complainant's assertions are documented, but the final decision is attributed only to 'the Agency' with no identified decision-maker, the actual selecting official versus Career Board recommender is not clearly stated, and Complainant's distraction and impairment argument is not expressly weighed.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record is substantially self-contained and attributed, but the missing protected bases, unstated cut-off scores, unattributed qualification judgments, absent EEO-activity dates, and unnamed decision-maker mean an independent reviewer would need some outside context to fully assess support for the conclusion.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4690,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1510,
+   "output_tokens_details": {
+    "thinking_tokens": 804
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

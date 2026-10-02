@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcPDWXYaXUYqYQC2NiB",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The FAD's conclusion that Complainant failed to prove discrimination or retaliation cannot be traced from the record, because the investigator did not question Complainant on claims 1-3 and 5-9 (ROI at 70-72), the content of the Supervisor's responses (ROI at 146-162) is not described, and no reasoning connects the evidence to the finding.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most of Complainant's assertions are tied to specific ROI pages, but some rely on her appellate statement rather than the ROI, with ambiguous 'Id.' citations following it, and the Supervisor's characterizations of each claim are referenced only as a page range without stating what she said.\"},\"rc3\":{\"status\":\"review\",\"note\":\"The nine claims are dated from January 23 to February 20, 2019, and the filing (March 13) and acceptance (May 8) dates are given, but the record conflicts on employment status (resignation effective February 8 versus a March 18 'last week of employment' and a transfer), does not date the conversation about Coworker 1, and gives no dates for the ROI or the FAD.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who issued the FAD, what legal standard or threshold was applied, or how Complainant's evidence was weighed against the Supervisor's responses, and it states that the six named witnesses were never contacted with no explanation given.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Given the uninvestigated claims, the absence of all six identified witness affidavits, and the unexplained FAD reasoning, an independent reviewer could not assess from this record alone whether the no-discrimination conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4472,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1118,
+   "output_tokens_details": {
+    "thinking_tokens": 548
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

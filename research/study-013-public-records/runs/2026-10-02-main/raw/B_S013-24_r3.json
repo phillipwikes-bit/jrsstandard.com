@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbi5oawDYJCr6sMytKQ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The email chain shows the demand to resign and the later processing as an oral resignation, but the oral agreement is not in the written settlement, the attachment cited as showing Complainant was 'physically unable to work' is missing (the only IME in the record is dated May 18, 2015), and the finding of no age motivation cites no evidence.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most emails are tied to named senders and dates, but the oral resignation promise comes only secondhand from Person C, and the accepted claims misattribute actors (the May 10 and June 13 emails are credited to Person A as 'Claims Examiner' and to Person B, while the emails show Person A as HR Specialist and Person B as Claims Examiner).\"},\"rc3\":{\"status\":\"pass\",\"note\":\"Dated events run in order from the March 2016 emails through the March 29, 2016 OWCP order, the May-July 2016 exchanges, the July 28, 2016 resignation, the August 8, 2016 complaint, the March 25, 2020 decision and the July 6, 2020 appeal brief, with only minor date inconsistencies (July 28 effective date vs. August 1 form).\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The final decision does not identify who made the determination, and it does not show that the oral-resignation question, EO's view that the resignation was unenforceable, Person D's questions about missing disability documentation, or Complainant's repeated requests for accommodation and return to work were weighed before the findings.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess the conclusion from this record alone because the oral resignation is unverified, the key medical attachment is missing, no ROI evidence such as affidavits or comparator data is described, and the decision's reasoning on qualified-individual status and harassment rests on asserted absence of evidence.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6330,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1485,
+   "output_tokens_details": {
+    "thinking_tokens": 858
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

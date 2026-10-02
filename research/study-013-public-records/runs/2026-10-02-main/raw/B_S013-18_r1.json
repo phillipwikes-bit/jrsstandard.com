@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbejx9jxzB9YYBLMvQu",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The record cites the doctor's letter, daughter's letter, and S1/C1 statements, but the final decision merely states Complainant 'failed to prove' discrimination without showing how the evidence was weighed against each of the four claims.\"},\"rc2\":{\"status\":\"pass\",\"note\":\"Characterizations are mostly attributed to identified sources such as Complainant, S1, C1, the April 30, 2018 doctor's letter, and the daughter's letter, though S1's description of the video is her own account rather than the post itself.\"},\"rc3\":{\"status\":\"gap\",\"note\":\"The chronology is internally inconsistent: the transfer request is dated both April 30, 2018 and June 30, 2018, the Oklahoma City request is tied to Sept 10, 2018 with a stray '2018' fragment, the claim period starts Sept 27, 2017, the protected activity is a '2019' complaint cited for 2018 events, and the approval and no-vacancy dates are not given.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who decided the final decision, what standards or thresholds were applied to each claim, or whether Complainant's responses and the medical evidence were considered, and the administrative leave rationale rests only on S1's statement of consultation with unnamed 'appropriate offices'.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because of the date conflicts, the undocumented basis for the decision, and the missing handling of the accommodation, harassment, and leave claims (the video itself, the leave dates, and the interactive process steps), an independent reviewer could not assess whether the conclusion is supported without outside context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4000,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 553,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbrk5BWBBqqAYsjprpQ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the Agency's conclusion that Complainant 'failed to prove that the Agency subjected her to discrimination' but contains no analysis connecting the competing accounts of Complainant, S1A, S1B and EOD to that conclusion, and the outcome text is removed.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to named sources (Complainant's affidavit, S1A, S1B, EOD, the Aug 20, 2018 email), but others rest on unattributed phrasing such as 'the record shows,' 'it appears from the record,' 'undisputed,' and staff viewing Complainant as 'unreliable,' while the ROI lacks the DRAD file, leave record, and FMLA file that would support them.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated (Dec 21, 2017 request; Feb 9 and 21, 2018; June 7, 2018 leave restriction; Aug 20, 2018 email), but the narrative is not in order and has unresolved inconsistencies, such as the Sept 22, 2017 PIP versus the June 2018 leave restriction, FMLA denial in June versus receipt in August, and S1A/S1B supervisory change timing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record gives conflicting accounts of who decided the June 7, 2018 leave restriction (S1A cites consultation with EOD and S1B, while S1B says HR decided), and it does not document the reviewer, criteria, or consideration of Complainant's responses for the Agency's final decision.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the reasoning path, decision-maker and criteria, and key underlying documents (DRAD file, leave records, FMLA file) are missing or inconsistent, an independent reviewer could not assess from this record alone whether the conclusion is supported.\"}},\"remediation_note\":\"The record would need the Agency's explicit findings linking cited evidence to each claim's conclusion, along with the underlying documents (DRAD file, leave records, FMLA file, PIP and leave-restriction notices). It would also need a single reconciled chronology and a documented identification of the decision-makers, criteria applied, and consideration of Complainant's responses.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 9829,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1396,
+   "output_tokens_details": {
+    "thinking_tokens": 633
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

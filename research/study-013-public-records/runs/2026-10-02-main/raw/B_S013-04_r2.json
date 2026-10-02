@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbYbmsRtAEzxxZe1XjC",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the FAD conclusion that Complainant failed to prove discrimination, but it cites no evidence (witness statements, emails, termination rationale) and no reasoning linking any evidence to that conclusion.\"},\"rc2\":{\"status\":\"gap\",\"note\":\"Apart from a single ROI cite (ROI at 101) for the RMOs' awareness of race and color, the characterizations (e.g., the accusation about reimbursing an employee, the 'run' incident, the job abandonment claim) are attributed to no identified source or witness testimony.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (Sept 18 termination, Sept 19 and 24 emails, Oct 9 complaint, Mar 3, 2022 FAD), but the termination date of Sept 18 precedes the Sept 24 separation email and Sept 19 events, the incident in 1c and the training monitoring in 1e have no dates, and there is no prior-steps timeline or review period.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who decided the FAD, what criteria or standard was applied beyond the bare conclusion, or whether the agency's explanations or Complainant's responses were considered before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the record lacks evidence, source attribution, a full chronology and decision-process documentation, an independent reviewer could not assess whether the FAD conclusion is supported without outside context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2609,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 500,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

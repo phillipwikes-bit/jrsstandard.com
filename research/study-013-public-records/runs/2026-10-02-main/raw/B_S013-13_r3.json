@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbd6aLgKMsLeWUBS18E",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The policy, both Form 50s and the 5% versus 8% outcomes are present and cited, but the record does not connect them to the FAD's conclusion that Complainant failed to prove discrimination, and nothing documents why Coworker's 8% fell within the 3% to 8% range while Complainant's 5% did not.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most statements carry ROI page cites, but the Form 50 remarks are sourced to Complainant's Appeal Brief rather than the ROI, the Manager's 8% approval rests only on Business Partner's account (ROI at 77, 79), the Responsible Management Officials' knowledge of age is asserted without a cite, and the named approver is unidentified.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (July 17, 2021 effective date, August 31, 2021 EEO contact, November 17, 2021 complaint, 2015 policy, 2019 comparator selection), but the record lacks dates for the ROI, the hearing notice, the hearing-request deadline and the FAD, as well as for the detail periods and the prior EEO activity.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who issued the FAD, what analytic framework or threshold was applied, or whether Complainant's claims about experience, education, training and the budget statement were weighed, and the Manager's approval and rationale are not documented firsthand.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the FAD reasoning, decision-maker and consideration of Complainant's rebuttals are absent and the Manager's 8% rationale is unsupported by a direct source, an independent reviewer could not assess from this record alone whether the conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3934,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1271,
+   "output_tokens_details": {
+    "thinking_tokens": 681
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

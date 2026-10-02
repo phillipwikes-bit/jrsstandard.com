@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdc2Bn1uJr2SeQ2KXoys",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The narrative links the cited testimony and medical note to the $26,500 figure ($25,000 plus $1,500 from the Israel F. comparator), but the $25,000 amount rests on unspecified 'case law' and the underlying affidavits and records are only summarized, not included.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations name a source (Complainant's affidavit, statements from his wife, sister and mother, the 'Note From Hawaii Pacific Health'), but the March 2020 statement to the General Foreman has no cited source and the cited EEOC decisions have their numbers removed.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are ordered (June-December 2020 events, December 30, 2020 complaint, August 17, 2021 FAD, August 17, 2023 EEOC decision, October 10, 2023 investigation report), but the date of the Agency's final damages decision and the specific October 2020 AWOL date are not stated.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The Agency's weighing factors (nature, severity and duration of harm, similar awards) and its consideration of Complainant's submissions are described, but no individual reviewer or deciding official is identified, only 'the Agency'.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record largely explains its own reasoning, but it is a background summary with outcome text removed and without the underlying evidence, comparator citations or decision-maker identity, so an independent reviewer could not fully evaluate support for the conclusion without outside context.\"}},\"remediation_note\":\"The record would need the underlying evidence (affidavits, the medical note, the cited comparator decisions with citations) and the date and signatory of the Agency's final damages decision attached or referenced. It should also state the basis for the $25,000 figure and the source of the March 2020 General Foreman statement.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5764,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1470,
+   "output_tokens_details": {
+    "thinking_tokens": 843
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

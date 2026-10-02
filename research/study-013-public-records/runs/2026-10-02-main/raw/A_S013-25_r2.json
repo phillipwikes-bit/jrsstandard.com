@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbWJqKpQz5XFEPkxFoZ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"ready\",\"reason\":\"The record is adequate for a compensatory damages decision. Complainant submitted his own affidavit and statements from his spouse, sister and mother, plus the medical documents, and the Agency addressed each item. It explained why the pecuniary claim failed for lack of receipts, bills or loan evidence. It separated causes unrelated to the retaliation (financial strain beginning in 2019, marriage counseling before the events, pre-existing alopecia, EEO-process distress). It also cited a comparator award (Israel F.) for the AWOL charge. The $26,500 figure rests on identified factors, so the reasoning can be evaluated. The thin evidence is the complainant's own shortfall, not an investigative gap.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4627,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 246,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

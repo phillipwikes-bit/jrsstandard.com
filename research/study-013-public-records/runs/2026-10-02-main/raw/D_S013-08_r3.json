@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcTKbkvi4PGy9SSacXr",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The path from management's explanations (20-minute arrival, mistaken pat-down belief, full exam time, selectees' superior qualifications, score of 64.4 below cut-offs) to the no-discrimination conclusion can largely be traced, but the record never states the protected bases alleged, and it leaves unreconciled Complainant's claim that he had no prohibited items with the Proctor's discovery of his personal cell phone.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to named roles (Proctor, Chief DUSM, Assistant Chief, Branch Chief, Career Board Presenter, testing consultant), but several are stated without a source, including that the assessment has no requirement authorizing physical contact, the Proctor's certification, that the 'two more qualified candidates' were selected, and the specific score cut-offs.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (August 31, 2017 exam; September 11, 2017 meeting; November 2, 2017 selections; June 2019 decision withdrawn and June 2021 re-issuance), but the EEO contact and filing dates are missing despite their relevance to the reprisal claim, the retest request and HR complaint are undated, and the procedural history is inserted out of sequence within the factual narrative.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The final decision applies a legitimate-nondiscriminatory-reason and pretext analysis and addresses Complainant's arguments, but the record does not identify who decided the matter, does not state the bases of discrimination, and does not show that the comparator pat-downs (White and Hispanic candidates) or the claimed effect of the irregularities on the score were weighed.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record supplies substantial attributed evidence on both claims, but the unstated protected bases, the missing EEO activity timeline, the undocumented cut-off scores, and the unresolved factual inconsistency would require outside context for an independent reviewer to fully assess whether the conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4690,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1434,
+   "output_tokens_details": {
+    "thinking_tokens": 740
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

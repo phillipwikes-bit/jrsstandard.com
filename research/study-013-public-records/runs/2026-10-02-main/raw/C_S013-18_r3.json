@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbxQf47kh4eVmmk9XPL",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record ends with the Agency's conclusion that Complainant 'failed to prove' discrimination, but the analysis linking the cited statements and letters to that conclusion was removed, so the path from evidence to conclusion cannot be traced.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed ('Complainant stated,' 'S1 stated,' 'C1 stated,' the April 30, 2018 doctor's letter), but 'Management believed' and 'The record shows C1 used to sit near Complainant' name no source, and the underlying investigative exhibits are only summarized.\"},\"rc3\":{\"status\":\"gap\",\"note\":\"The timeline is internally inconsistent and incomplete: the '2018' transfer request has no month and is described as preceding a June 30, 2018 request, the prior EEO activity is dated 2019 although the complaint was filed in October 2018, and the dates of the investigation and final decision are absent.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The Agency decision-maker is not identified, no criteria or standard applied to the final decision are stated, and the 'appropriate offices' S1 consulted before the administrative leave are unnamed, so consideration of the responsive information is undocumented.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because reconstructability, chronology, and decision-process traceability are not met, an independent reviewer could not assess from this record alone whether the conclusion is supported.\"}},\"remediation_note\":\"The record would need the Agency's reasoning connecting specific evidence to each of the four claims, plus the identity and role of the final decision-maker and the standard applied. It would also need a corrected, dated chronology covering the requests, the complaint and amendment, the investigation, and the final decision, with each characterization tied to a named source or exhibit.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4054,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1283,
+   "output_tokens_details": {
+    "thinking_tokens": 669
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

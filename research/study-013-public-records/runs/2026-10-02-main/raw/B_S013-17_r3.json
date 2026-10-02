@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbeix8NoF5efVG3GVbg",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS1xwKEAgSGAI4AUIIdGhpbmtpbmcSDMZETsb0K13KpaGrOxoMdNn4rYXXgMWh2D9HIjAMH+/x3C7FBJMjFg7p4P42n8Y64ShvQdGRCpK2llFmKYCmNM/Xzz9arAwByKD0x/8q9Bvz/WAFOLdjPxrWAFV9ivNkI0L4boY78JSuGSVenNgIcSArZ2Pnr5TM7rhYdbmU9Q2lpdsjvey3cU96Aq6JJXN4XV37mLj9chyeY2D46TIYN7SVXSSCi9w8g/b+yfNUXZxP9v5AIsKH5W1pNVSdtrlUsmjPHY8lLgi0+o8Q20mYps/36E7W107tBaoQtcB1okVou32gg0El48jbaWYZcRinFZ3xG5wFyEBS4mKhBxecCOlIsVibuONXinDnYjHSo3SUZxLveZAWdMO6wuPtu3gjT1Q2ZGZDfbQWp4wH2bj8o7QvTQe3CX+sircmqw4AytDHyHRigNlwg2KfyzxkILI+/ztXR6pLVWaX1kJ/4JaOvD/g3POXJLUgm8dKk2qZgUFApdA8CD8sGq5OqPxR7D38T9EoTLM03UBMp4W3mm+RS1GLt8fuRljQsYK4JdhnHDXj0waiKlE3UeQSaHMi0mNUflI2vuDDNhTwn/HFZmgYhr08sThXL1Wy8jukDO+vUBS0AuP7R1cbj6RgFxQDfOdzi5goUbNSnhOCgdJL1ScgPziXn3HEuxXzqshp7sZzlOymHAUo+O4HaxIVOGjgRsLDyICkhaohnp15g3PIGaugLPi6Q3w75FFeqt+NkM7vFxGlk8X777Gp8pOSZywxtEhQNvRCq0DWAnLz0xOMkJBAOoDJgNCyRwyBrJNOgCLRWsfQkImT0Re9+mqe3KU0nKd32J3oL1L4nEQQ80ZthpP7OM7ILd76LBWxDrcCNgG5XIt2t+XRdJauPcRIHM0IDiipYD8TV9shzaQ+LzXSWWeVP6QM8hnPTHoWP0eCbv27Fd/+ZMoXuWeB2eICVxWjGib3gFSsofbjqYmCzccXYK+hvPW+BvqGnwJ3d5+9cSx6L/5fj/mZixeiIfkqmpo5ukP0JmKR3huZkXKDqtp9xmIzEmSzT93KSzCEaDP0/Bf8cnbsTtYC/nj3kMx45rc37Sr/zoto0L81RAqScSAqpKbH8EHd503TIu2LNOeBqe9ttQ9NflLYUHubJ1tGEIrbw8/FKO+W752Qmt7dRwqTE++xQvO0f+Xhowhuu6N8CrV5cjO7+ftGQN/fiGAmw/irS0IAKooehARg0VFM2OL4UjVoSrtURYwvcu+di663bkMHA55pidefrv0Lth6xToMqc7m3bvBnEpMC37AaXBgTfmZkxQf5xtfq6rr2+Lj6AwXICI1c1suXAIIzHoWUihEuxpunAwWlW7VHajvwkW3WVGg5Oy4Dd/87Fk9x1ZM1i1MPM/IpvyV+IgdkU0hTBYgcFJuAPRbdSVSV0RrslLt8847mMyhOKMWGuMjOWgq6XxLGoQ4usviirKfq02G7I1ixpeH2R6qb58ULhMVko6AWzUomTbzU60TPoLod2OwP6rJ3FWAEwhE683kwsr0E1lhQCfMOre8AHt6+b14klqTJ3kFh58LMpZ9z7CvgkQdzH9jjJftrHr2QVJIKX/yGFE67765V/NOIgP8bzITeObEkBsM2P30GmpVvnaTPfrsaBO3O5APrGKCe8nInS8qbHbEQjOBCZXtFUC/HTG7s1w69sWnONGVt3fmoSm/sS4HoBZpraw4XN8Kp+XastuTRhDzFdpU/nT9orpDxzCe37eMSBrp0oIEtcTUsS9+eCIxowxZ0kMD3gjJEVGnxc/MkpnvF8KmE06HlqOhBAl9mMl7vzG7yXlunsroq/LuRGXTF5neg/ur8o8r7jfd8sqyLfpfqMYUzp+UVYiTVQuWz0HJ0Ef7OKB6oYxwSEz/cWWWtUX7IrWM3qUMOvFXU8GvMuksn50r1El5zUgoQ95D7dD62aHUaIjLExERPGkxepRt4kcFlGuQ8dBpTNfcpQJouOjDm55kHGMIXe0EzpM6qJ+2mRDWAt5bIvXoNSSCjfbHHCPcbeBkVx/z3rslFc2dMiKsb0m5YMgbod4iT3d9T/dXrDYbHVFD17oKcwsErQ/qlt9fTXjWedW2HpjAP5NqsT/57SmiQxNAi2YEc254xeUouLay6zauOzmh+SQSCJdRghZtFEu4G6V5+cFU033OTZNOFj6zVlYVS0udTOyaG5XSy6qFnxtgeY0fx9VafBlyatBcTtKtcy/gUfZNUWFh5wifdsWZ7zm0UtyLzU3d0hg5dkf/70ib6vgMqZY3ADfCkWw4Vz1moZq64Wk04e/f0880HGX5DBqFkknZD5sCIIStw+iNp0nNNiWmxOb8QmiUlB6i3zbGoCYkInB6oiEwFy2GJ0BZ3hS6L5Z4o2cIX7sU4ROOGJAiMTW2aciJpMcZjYPO6vKf6XW0Hp0IbvR3Q2uEA4h247savZbsOxH+CRWtxDIGbVTcTovfNJQeNZxyDSzpk5VjYBQ9MgnVJM/7okQ98QbtMBkaSlxSYmMLFznKN/t3Tm13UgHBKjGR3ORZbk9Ni+E9HUwyZqSkZHJABvCUvBreodUVGWX1/BoGrudrpKLuB1NsTU66CaNqw/rRWjvjJMDJ5zyA2jeF4pBx+zoBnPxSjzp8GfEau/K+5vRiLk558givh73tWq+jMeQO9twrBElpmqVcKJP5YtP9Q4LrlbdDR3d94p9VKS6bg5N+kEf4oJvwsInMcdl+LzgtdhDOaKNXE0WYgZLV6jTcKdo0v79v07pQdmU6HhttKLr5T2+7ZmKApi9vZg3UIWfukASDy1NSX/R4xsNJe47K1Gf5fe+VGA8zGI8nREn3C8ZP8dUUWyCX3t5hyZanzyHZ2P8GlasV5UnfXiqhu2T70qkGOKgetJ3fuig4+W9ZpT/YQ4n+8PZB4A4YS9/7dfOxf6TaUuYRyZm6Kv7irEReMWDMs/BK4SmYR9bFr/H/ntfnp/QHKDcY7Yjo7R5j2JSn9gcGrmes00+FzcYTq5ISXlN0vzFQC204tZFeTVW9/+TymQpsiQKm+zxKpeWE4gxYMtr+e1UddJaFnmCre0IZjPjlB9xXqMfSIYK1B3n1BDXktfr4CHZ/hPe8TiioU96I42+bnWLvU16Wl4JuXxj2rizActqfuxznUXuchvsV7+7Wx6QRDf6rKMel+EGEB0oaLj5+oGzXYWL3Hq21fJx2S5OpYoj+nOO2AyXKSavg9E2lJ0Xh5w71zSaUFMktYgG6UvBI9AL3MbfSS+Z/oXpSx15/QahYNjSCaum3957wo3lsU+6fYT/Brmd3PRWzB+Od/i6UoAtzDl7t8ygiZZBaPE1/eDSB2045AqYMNAxtFsUQF9HSMsgyjlkVhxn3LlicfafPP7yxsaa6xrVYjHoCvXucziZrEq9HaBJ9HqVKEVWriM6082SGqDLhn3IJOakvalM2l4GuGnMw/0qtOfkGaxPRnwMiOqXiKLZ363mGHsmb/EaaxT5JlLE2FpO+S4lPdSlYeVEy3VoZfkyMzA0OuNHMWU229aZCngHsZk+aRtUn4+0TLr19NX+O9pyQuLGROvUTE2+hYr1/k3tE7lxOlG2ImGoPFOZxBAIHu7zEsQWX64mgZnesrrUywglh2bqUUJsQiw+3rPHceKrNiJnvpoSVtH3DziEqIVxdfQVVJHjYI6SVVD7/II9hoepqp6NjKH8Wz8ptzTwrgjD/OROBsShVhXM8E+CGsN7InbwSceo91AgeAXQUNeJdrNs/sKMvEuHF/plBPKDWWCapg0Jkc+GBWveI3Oy4tMVdgX/htMUEJsZpTOvvMvEe5DE0xrjdJBG0Na42qjDaHOmB9el+W7fwrIXXyIWnFhgl6Np6+nWDUFiXjJ14ZHa6xjN2pySXCYBjEmk2hvB31PKs13vn/P0fpLP8OpIkOyz0T6OFQamL1V4wSkbmbHqybukXax4TwGFZ9qECMxNPtbKCxS0ERY+iyNRj3yYau2+TFIj9I7m9UgPBk7fkr23pVshNdg8t+TyY+6XFuul9O48D4z2yUBUZvLtl38UDXpgJvmVvEThsuvbMQBbz5BV3SShus0AMxKd4kkRT0PkAdLkvSITeIOhqGwuraRoG/QlzhJQctob7iuRh4e89sNZdtdoTjT8RLdUq+J5dcQKOKzZzqxNhiMX5+n/s46aLTJyyqvjhG1ILVyqMFVWjjXYrsa75EZWKBoVLfzo30uQ/aowVHyL2In46mCV0EDid7zRgYRaa5QgL/2l2lK6HzcR1xxFY7++AQYdnnIWBRl6hhMzrPgFOzCOqUXWN9Slj8CuRo8GsBcJG7/j1XCq2M6aZ9z/ID2kNGJKchNyJCz14qVA93EnhJqAw2jLnq8F7cNOsymOisa1GGN4K6x3pYUHME0sal9cFrddDJM6KH0XlayUeV7gdFoxXzHlAE6iuD6NS/M4uPSJwO4/5F8tzNhvzRzEYQ2flQfODIFpvWaZNHvVgVt/7xPOt4XwfaHTaO3Q4shluc3TDbTacR4ERyO1BKntlKnOGYb973u/TdaA9HXNzRsJ5rHddBQ5VQprhxWrhb7nIlHvhncadNbRXO8HXJXP1VBQLcE9fEOQvPXE5hrJXgloWYLmMk1CrpaZMuLDhsQWO0Xj7de3W4Lb1B4JdUOnb/gULTiSng66u2A8oZN8jl+U4AwxO9wDC+3dzUdwPrCeU9alh/v55U/Y4Hzk4cnT91VTBhfqg2C+7J2u0XsgSK/vC6Us4T7JLTY2xUyODZcb3N4ia3U8o4xeP8bJmIC/2Hx2WTH03jQ8cY7NZi3XfyXoaSr6fdnsV32ti3Y/5n9b1oqKkZML/5Vhf3YjPnpOCLNAdNjOwp8gboZghaXFmIjZyCwkwmI6+ymK2RpRgB"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The EPA analysis of claims 10 and 11 traces salary figures and the full-performance-level and federal-service-tenure rationale to a conclusion, but the findings of no discriminatory animus and no severe or pervasive conduct on claims 1-9 are stated without any evidence-to-conclusion steps.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most factual assertions carry ROI Bates cites (e.g., ROI 415-416, 450, 478, 160-163), but the Agency's own findings, such as CW1 having already reached full performance level and the Branch Supervisor agreeing the work was the same, cite no ROI source, and 'it was reported' for the quality concerns names no source.\"},\"rc3\":{\"status\":\"pass\",\"note\":\"Events from the January 11, 2017 mid-year review through the October 2017 PDA, its October 26 suspension, the March 18, 2018 transfer, and the 2018 pay discoveries are dated and ordered, and the rating period ending June 30, 2017 is identified, though the claim list is not strictly chronological and the final status of the PDA is not stated.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the final Agency decision or what standard was applied to claims 1-9, and it does not show that Complainant's rebuttals (the emailed PDA documents blocked by technical issues, her evidence of excellent performance, the CW3 comparison) were considered before the decision was finalized.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the hostile-environment finding is conclusory, the Agency's findings are largely uncited, and consideration of Complainant's responses is not documented, an independent reviewer could not assess whether the no-discrimination conclusion is supported without going to the underlying ROI.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6167,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1722,
+   "output_tokens_details": {
+    "thinking_tokens": 1116
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

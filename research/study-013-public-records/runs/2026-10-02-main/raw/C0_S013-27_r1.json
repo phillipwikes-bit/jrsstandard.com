@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcKW93UCmywf5pxsUxB",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record explicitly identifies the basis for the Agency's conclusion: specific incident counts (nine incidents over 21 months), frequency analysis, severity assessment (non-physical, non-humiliating), and direct-contact ratio (two of nine incidents).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The decision pathway is traceable from alleged facts (specific dates, quotations, witness reports) through intermediate findings (incidents corroborated, E1's conduct established) to legal framework application (severe-or-pervasive standard under hostile work environment law) and final conclusion.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"pass\",\n      \"note\": \"A reviewer without prior knowledge can reconstruct the Agency's reasoning: nine documented incidents spanning August 2016–January 2018, frequency insufficient per case law, severity assessment against legal standard, and management liability finding all explicitly stated.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"While the record details incidents and the Agency's legal test application, the evidentiary record supporting the 'not severe or pervasive' determination is summarized rather than fully shown (e.g., witness statements are referenced but not reproduced, disability-based determination lacks stated reasoning).\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Chronology is clear: employment began August 2016, incidents documented through January 2018 (nine total), complaint filed June 27, 2018, with specific incident dates (December 11, 2017; December 13, 2017; January 25, 2018; June/July 2018) identifiable.\"\n    }\n  },\n  \"remediation_note\": \"The record meets four of five conditions fully. To address accountability_support, the final version should either append summaries of key witness statements corroborating the incident count and severity assessment, or explicitly reference the ROI document and cite specific evidentiary findings supporting the 'not severe or pervasive' conclusion and the disability-claim dismissal.\",\n  \"finding\": {\n    \"ai_function\": \"analysis\",\n    \"condition_triggered\": \"accountability_support (moderate); evidentiary sufficiency of hostile work environment legal test application is stated but underlying witness and investigative detail is not reproduced in the summary itself.\",\n    \"compliant_version\": \"Retain all existing incident detail and chronology; add one section citing the types and substance of witness corroboration (e.g., 'The Business Officer Manager testified to [specific fact]; the June/July 2018 hearsay report came from [named witness]; other employees confirmed [detail]'); explicitly state the Agency's reasoning for finding severity insufficient (e.g., 'No incident involved direct threats to safety, termination, demotion, or pay reduction; isolation of only two direct-contact incidents from nine over 21 months weighed against frequency thresholds established in [case citation]'); and explain the disability-based dismissal with a sentence addressing why the record did not support orientation-neutral animus.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1585,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 748,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

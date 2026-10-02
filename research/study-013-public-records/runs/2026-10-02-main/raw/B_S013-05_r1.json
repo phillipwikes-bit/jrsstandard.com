@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbYpVLvCYDuBG9p8ihq",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The evidence is extensively summarized with IR cites, but the decision's only stated conclusion is that Complainant 'failed to prove' discrimination, with no reasoning linking the evidence to that outcome.\"},\"rc2\":{\"status\":\"pass\",\"note\":\"Nearly every characterization is tied to a named affiant (Complainant, S1, S2, DD, CW1-CW5, CCSB) and to specific IR page cites, though a few attributions are muddled, such as CCSB Q17 referring to S1 instead of S2.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most incidents are dated (e.g., Nov. 17, 2016 through Nov. 1, 2017), but the record has inconsistencies: the complaint says retirement was in November 2017 while the reclassification section says November 2018, CW4's reclassification is dated December 26, 2018, and the stated period of harassment (from Aug. 10, 2017) doesn't match the earlier incidents.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the final decision, what analytical standard or threshold was applied, or how S2's responses and the conflicting testimony were weighed before finalizing.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The underlying testimony is detailed and sourced, but the missing decisional rationale and the date inconsistencies mean an independent reviewer cannot assess whether the conclusion is supported without going to the full IR or outside context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 10025,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1259,
+   "output_tokens_details": {
+    "thinking_tokens": 758
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbd9t1eokv18WEd8zLR",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states the FAD's conclusions (e.g., non-selection because Complainant 'did not demonstrate at the interview that he was more qualified' than the selectees) but cites no interview scores, qualifications comparison, or testimony that would let a reviewer trace evidence to conclusion, and most of the 28 incidents have no stated reasoning at all.\"},\"rc2\":{\"status\":\"gap\",\"note\":\"Findings such as 'management had provided legitimate nondiscriminatory reasons' and that Colonel 1 and the former supervisor 'agreed' the rating was fair are not tied to any identified affidavit, ROI exhibit, or document, and the ROI contents are never described.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Incident dates are listed in detail (April 2017 through June 2018) and the FAD's issuance under 1614.110(b) is noted, but the complaint filing, acceptance, investigation, and FAD dates are absent, and the claim B7 finding about an 'all hands meeting' conflicts with the framing of B7 as a calendar request while the Colonel comment was B6.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who drafted the FAD or reviewed the matter, never explains how 28 incidents were narrowed to specific findings, and does not document whether Complainant's rebuttal or responsive information was considered, beyond citing the McDonnell Douglas framework and a generic 'not severe or pervasive' conclusion.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because traceability, sourcing, and process documentation are lacking and many claims (B1-B6, B9-B14, B16, B18-B25, C2) receive no stated finding, an independent reviewer could not assess from this record alone whether the FAD's conclusions are supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4946,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 615,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

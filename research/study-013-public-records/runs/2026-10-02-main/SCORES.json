@@ -1,0 +1,2118 @@
+{
+ "dir": "/home/user/jrsstandard.com/research/study-013-public-records/runs/2026-10-02-main",
+ "arms": {
+  "A": {
+   "calls": 90,
+   "usd": 1.0428,
+   "outcomes": {
+    "ok": 90
+   },
+   "primary_flag": {
+    "sensitivity": [
+     15,
+     15,
+     [
+      0.796,
+      1
+     ]
+    ],
+    "specificity": [
+     3,
+     15,
+     [
+      0.07,
+      0.452
+     ]
+    ]
+   },
+   "secondary_strict": {
+    "sensitivity": [
+     14,
+     15,
+     [
+      0.702,
+      0.988
+     ]
+    ],
+    "specificity": [
+     5,
+     15,
+     [
+      0.152,
+      0.583
+     ]
+    ]
+   },
+   "stability": [
+    28,
+    30
+   ],
+   "unscored_cases": [],
+   "bands": {
+    "short_text": {
+     "sensitivity": [
+      9,
+      9,
+      [
+       0.701,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      6,
+      [
+       0,
+       0.39
+      ]
+     ]
+    },
+    "long_text": {
+     "sensitivity": [
+      6,
+      6,
+      [
+       0.61,
+       1
+      ]
+     ],
+     "specificity": [
+      3,
+      9,
+      [
+       0.121,
+       0.646
+      ]
+     ]
+    },
+    "posted_before_2023": {
+     "sensitivity": [
+      7,
+      7,
+      [
+       0.646,
+       1
+      ]
+     ],
+     "specificity": [
+      1,
+      7,
+      [
+       0.026,
+       0.513
+      ]
+     ]
+    },
+    "posted_2023_on": {
+     "sensitivity": [
+      8,
+      8,
+      [
+       0.676,
+       1
+      ]
+     ],
+     "specificity": [
+      2,
+      8,
+      [
+       0.071,
+       0.591
+      ]
+     ]
+    },
+    "health_sector_agency": {
+     "sensitivity": [
+      4,
+      4,
+      [
+       0.51,
+       1
+      ]
+     ],
+     "specificity": [
+      1,
+      4,
+      [
+       0.046,
+       0.699
+      ]
+     ]
+    }
+   },
+   "route_counts": {
+    "gap": 24,
+    "review": 3,
+    "ready": 3
+   }
+  },
+  "B": {
+   "calls": 90,
+   "usd": 1.6858,
+   "outcomes": {
+    "ok": 90
+   },
+   "primary_flag": {
+    "sensitivity": [
+     15,
+     15,
+     [
+      0.796,
+      1
+     ]
+    ],
+    "specificity": [
+     0,
+     15,
+     [
+      0,
+      0.204
+     ]
+    ]
+   },
+   "secondary_strict": {
+    "sensitivity": [
+     15,
+     15,
+     [
+      0.796,
+      1
+     ]
+    ],
+    "specificity": [
+     2,
+     15,
+     [
+      0.037,
+      0.379
+     ]
+    ]
+   },
+   "stability": [
+    28,
+    30
+   ],
+   "unscored_cases": [],
+   "bands": {
+    "short_text": {
+     "sensitivity": [
+      9,
+      9,
+      [
+       0.701,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      6,
+      [
+       0,
+       0.39
+      ]
+     ]
+    },
+    "long_text": {
+     "sensitivity": [
+      6,
+      6,
+      [
+       0.61,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      9,
+      [
+       0,
+       0.299
+      ]
+     ]
+    },
+    "posted_before_2023": {
+     "sensitivity": [
+      7,
+      7,
+      [
+       0.646,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      7,
+      [
+       0,
+       0.354
+      ]
+     ]
+    },
+    "posted_2023_on": {
+     "sensitivity": [
+      8,
+      8,
+      [
+       0.676,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      8,
+      [
+       0,
+       0.324
+      ]
+     ]
+    },
+    "health_sector_agency": {
+     "sensitivity": [
+      4,
+      4,
+      [
+       0.51,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      4,
+      [
+       0,
+       0.49
+      ]
+     ]
+    }
+   },
+   "route_counts": {
+    "gap": 28,
+    "review": 2
+   }
+  },
+  "C": {
+   "calls": 90,
+   "usd": 2.1392,
+   "outcomes": {
+    "ok": 90
+   },
+   "primary_flag": {
+    "sensitivity": [
+     15,
+     15,
+     [
+      0.796,
+      1
+     ]
+    ],
+    "specificity": [
+     0,
+     15,
+     [
+      0,
+      0.204
+     ]
+    ]
+   },
+   "secondary_strict": {
+    "sensitivity": [
+     12,
+     15,
+     [
+      0.548,
+      0.93
+     ]
+    ],
+    "specificity": [
+     6,
+     15,
+     [
+      0.198,
+      0.643
+     ]
+    ]
+   },
+   "stability": [
+    21,
+    30
+   ],
+   "unscored_cases": [],
+   "bands": {
+    "short_text": {
+     "sensitivity": [
+      9,
+      9,
+      [
+       0.701,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      6,
+      [
+       0,
+       0.39
+      ]
+     ]
+    },
+    "long_text": {
+     "sensitivity": [
+      6,
+      6,
+      [
+       0.61,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      9,
+      [
+       0,
+       0.299
+      ]
+     ]
+    },
+    "posted_before_2023": {
+     "sensitivity": [
+      7,
+      7,
+      [
+       0.646,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      7,
+      [
+       0,
+       0.354
+      ]
+     ]
+    },
+    "posted_2023_on": {
+     "sensitivity": [
+      8,
+      8,
+      [
+       0.676,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      8,
+      [
+       0,
+       0.324
+      ]
+     ]
+    },
+    "health_sector_agency": {
+     "sensitivity": [
+      4,
+      4,
+      [
+       0.51,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      4,
+      [
+       0,
+       0.49
+      ]
+     ]
+    }
+   },
+   "route_counts": {
+    "gap": 21,
+    "review": 9
+   }
+  },
+  "C0": {
+   "calls": 90,
+   "usd": 0.6049,
+   "outcomes": {
+    "ok": 86,
+    "truncated": 3,
+    "parse_error": 1
+   },
+   "primary_flag": {
+    "sensitivity": [
+     15,
+     15,
+     [
+      0.796,
+      1
+     ]
+    ],
+    "specificity": [
+     3,
+     15,
+     [
+      0.07,
+      0.452
+     ]
+    ]
+   },
+   "secondary_strict": {
+    "sensitivity": [
+     6,
+     15,
+     [
+      0.198,
+      0.643
+     ]
+    ],
+    "specificity": [
+     14,
+     15,
+     [
+      0.702,
+      0.988
+     ]
+    ]
+   },
+   "stability": [
+    13,
+    30
+   ],
+   "unscored_cases": [],
+   "bands": {
+    "short_text": {
+     "sensitivity": [
+      9,
+      9,
+      [
+       0.701,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      6,
+      [
+       0,
+       0.39
+      ]
+     ]
+    },
+    "long_text": {
+     "sensitivity": [
+      6,
+      6,
+      [
+       0.61,
+       1
+      ]
+     ],
+     "specificity": [
+      3,
+      9,
+      [
+       0.121,
+       0.646
+      ]
+     ]
+    },
+    "posted_before_2023": {
+     "sensitivity": [
+      7,
+      7,
+      [
+       0.646,
+       1
+      ]
+     ],
+     "specificity": [
+      1,
+      7,
+      [
+       0.026,
+       0.513
+      ]
+     ]
+    },
+    "posted_2023_on": {
+     "sensitivity": [
+      8,
+      8,
+      [
+       0.676,
+       1
+      ]
+     ],
+     "specificity": [
+      2,
+      8,
+      [
+       0.071,
+       0.591
+      ]
+     ]
+    },
+    "health_sector_agency": {
+     "sensitivity": [
+      4,
+      4,
+      [
+       0.51,
+       1
+      ]
+     ],
+     "specificity": [
+      1,
+      4,
+      [
+       0.046,
+       0.699
+      ]
+     ]
+    }
+   },
+   "route_counts": {
+    "ready": 3,
+    "review": 20,
+    "gap": 7
+   }
+  },
+  "D": {
+   "calls": 90,
+   "usd": 4.1296,
+   "outcomes": {
+    "ok": 90
+   },
+   "primary_flag": {
+    "sensitivity": [
+     15,
+     15,
+     [
+      0.796,
+      1
+     ]
+    ],
+    "specificity": [
+     0,
+     15,
+     [
+      0,
+      0.204
+     ]
+    ]
+   },
+   "secondary_strict": {
+    "sensitivity": [
+     13,
+     15,
+     [
+      0.621,
+      0.963
+     ]
+    ],
+    "specificity": [
+     4,
+     15,
+     [
+      0.109,
+      0.52
+     ]
+    ]
+   },
+   "stability": [
+    28,
+    30
+   ],
+   "unscored_cases": [],
+   "bands": {
+    "short_text": {
+     "sensitivity": [
+      9,
+      9,
+      [
+       0.701,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      6,
+      [
+       0,
+       0.39
+      ]
+     ]
+    },
+    "long_text": {
+     "sensitivity": [
+      6,
+      6,
+      [
+       0.61,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      9,
+      [
+       0,
+       0.299
+      ]
+     ]
+    },
+    "posted_before_2023": {
+     "sensitivity": [
+      7,
+      7,
+      [
+       0.646,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      7,
+      [
+       0,
+       0.354
+      ]
+     ]
+    },
+    "posted_2023_on": {
+     "sensitivity": [
+      8,
+      8,
+      [
+       0.676,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      8,
+      [
+       0,
+       0.324
+      ]
+     ]
+    },
+    "health_sector_agency": {
+     "sensitivity": [
+      4,
+      4,
+      [
+       0.51,
+       1
+      ]
+     ],
+     "specificity": [
+      0,
+      4,
+      [
+       0,
+       0.49
+      ]
+     ]
+    }
+   },
+   "route_counts": {
+    "gap": 24,
+    "review": 6
+   }
+  }
+ },
+ "paired": {
+  "A_vs_B": {
+   "both_right": 15,
+   "only_first_right": 3,
+   "only_second_right": 0,
+   "both_wrong": 12
+  },
+  "B_vs_C": {
+   "both_right": 15,
+   "only_first_right": 0,
+   "only_second_right": 0,
+   "both_wrong": 15
+  },
+  "C_vs_D": {
+   "both_right": 15,
+   "only_first_right": 0,
+   "only_second_right": 0,
+   "both_wrong": 15
+  },
+  "C0_vs_C": {
+   "both_right": 15,
+   "only_first_right": 3,
+   "only_second_right": 0,
+   "both_wrong": 12
+  }
+ },
+ "median_words": 1459,
+ "case_routes": {
+  "A": {
+   "S013-02": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-01": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-03": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-04": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-06": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-05": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-07": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-08": {
+    "route": "ready",
+    "stable": true,
+    "runs": [
+     "ready",
+     "ready",
+     "ready"
+    ]
+   },
+   "S013-09": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-10": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-11": {
+    "route": "gap",
+    "stable": false,
+    "runs": [
+     "gap",
+     "gap",
+     "review"
+    ]
+   },
+   "S013-12": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-13": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-14": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "review",
+     "gap"
+    ]
+   },
+   "S013-15": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-16": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-17": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-18": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-19": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-20": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-21": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-22": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-23": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-24": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-25": {
+    "route": "ready",
+    "stable": true,
+    "runs": [
+     "ready",
+     "ready",
+     "ready"
+    ]
+   },
+   "S013-26": {
+    "route": "ready",
+    "stable": true,
+    "runs": [
+     "ready",
+     "ready",
+     "ready"
+    ]
+   },
+   "S013-27": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-28": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-29": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-30": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   }
+  },
+  "B": {
+   "S013-01": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-02": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-03": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-04": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-05": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-06": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-07": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-08": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "review",
+     "gap"
+    ]
+   },
+   "S013-09": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-10": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-11": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-12": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-13": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-14": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-15": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-16": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-18": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-17": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-19": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-20": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-22": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-21": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-23": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-25": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-24": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-26": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-27": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-28": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-29": {
+    "route": "gap",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-30": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   }
+  },
+  "C": {
+   "S013-02": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-01": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-03": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-04": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-05": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-06": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "gap",
+     "review",
+     "review"
+    ]
+   },
+   "S013-07": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-08": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "review",
+     "gap"
+    ]
+   },
+   "S013-09": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "gap",
+     "review",
+     "review"
+    ]
+   },
+   "S013-10": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-11": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-12": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-13": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-14": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-15": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "gap",
+     "review",
+     "review"
+    ]
+   },
+   "S013-16": {
+    "route": "gap",
+    "stable": false,
+    "runs": [
+     "gap",
+     "review",
+     "gap"
+    ]
+   },
+   "S013-17": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-18": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-19": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-20": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "review"
+    ]
+   },
+   "S013-21": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-22": {
+    "route": "gap",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-23": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-24": {
+    "route": "gap",
+    "stable": false,
+    "runs": [
+     "gap",
+     "gap",
+     "review"
+    ]
+   },
+   "S013-25": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-26": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "review"
+    ]
+   },
+   "S013-27": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-28": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-29": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-30": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   }
+  },
+  "C0": {
+   "S013-01": {
+    "route": "ready",
+    "stable": false,
+    "runs": [
+     "ready",
+     "review",
+     "ready"
+    ]
+   },
+   "S013-02": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-03": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-04": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-05": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-06": {
+    "route": "ready",
+    "stable": false,
+    "runs": [
+     "ready",
+     "ready",
+     "review"
+    ]
+   },
+   "S013-07": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-08": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "ready",
+     "review",
+     "review"
+    ]
+   },
+   "S013-09": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-10": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     null
+    ]
+   },
+   "S013-11": {
+    "route": "gap",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-12": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-13": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-14": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "review",
+     "gap"
+    ]
+   },
+   "S013-15": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "review"
+    ]
+   },
+   "S013-16": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-17": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "ready",
+     "review",
+     "review"
+    ]
+   },
+   "S013-18": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-20": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-19": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "review",
+     "gap"
+    ]
+   },
+   "S013-21": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-22": {
+    "route": "gap",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-23": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "review"
+    ]
+   },
+   "S013-24": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "gap",
+     "review",
+     null
+    ]
+   },
+   "S013-25": {
+    "route": "ready",
+    "stable": false,
+    "runs": [
+     "ready",
+     "review",
+     "ready"
+    ]
+   },
+   "S013-26": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     null,
+     "review",
+     "review"
+    ]
+   },
+   "S013-27": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-28": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "review"
+    ]
+   },
+   "S013-29": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "review",
+     null
+    ]
+   },
+   "S013-30": {
+    "route": "gap",
+    "stable": false,
+    "runs": [
+     "review",
+     "gap",
+     "gap"
+    ]
+   }
+  },
+  "D": {
+   "S013-01": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-02": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-03": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-04": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-05": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-07": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-06": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-08": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-09": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-10": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-11": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-12": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-13": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-14": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-15": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-16": {
+    "route": "gap",
+    "stable": false,
+    "runs": [
+     "gap",
+     "gap",
+     "review"
+    ]
+   },
+   "S013-17": {
+    "route": "review",
+    "stable": false,
+    "runs": [
+     "review",
+     "review",
+     "gap"
+    ]
+   },
+   "S013-18": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-19": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-20": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-21": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-22": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-23": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-24": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-25": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-26": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   },
+   "S013-27": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-28": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-30": {
+    "route": "gap",
+    "stable": true,
+    "runs": [
+     "gap",
+     "gap",
+     "gap"
+    ]
+   },
+   "S013-29": {
+    "route": "review",
+    "stable": true,
+    "runs": [
+     "review",
+     "review",
+     "review"
+    ]
+   }
+  }
+ }
+}

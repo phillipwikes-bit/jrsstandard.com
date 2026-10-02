@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcL731oR1Yj7F9RoGiJ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each management decision (relocation order, accommodation denial, performance ratings) is traceable to a named RMO with stated reasoning documented in the record.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The decision path from evidence to accommodation denial is partially traceable, but the undue hardship analysis is acknowledged as incomplete—RMO4 'chose not to delineate the additional factors necessary to justify a denial pursuant to an undue hardship analysis,' limiting reconstruction of that specific reasoning.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A later reviewer can reconstruct most facts and timelines clearly, but critical gaps remain: the FOHS doctor's apparent pressure (noted by Complainant but not investigated), the basis for claiming seven essential functions could not be performed from Florida (despite prior successful performance), and the absence of contemporaneous undue hardship documentation weaken independent reconstructability.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"gap\",\n      \"note\": \"The evidentiary support for the core denial is insufficient: no written undue hardship analysis exists; management's assertion that functions could not be performed from Florida contradicts the record showing Complainant successfully performed them while in Miami; and the FOHS assessment was corrected mid-review without explanation of how the doctor's conclusion was influenced.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Dates and intervals are consistently documented from August 2009 (diagnosis) through October 5, 2017 (final evaluation), with specific decision dates (September 27, 2016; January 24, 2017; June 22, 2017) clearly marked.\"\n    }\n  },\n  \"remediation_note\": \"To achieve compliance, the record must include contemporaneous written undue hardship analysis detailing which essential functions truly require Washington, D.C. presence post-realignment, with evidence distinguishing this from prior performance in Miami. Additionally, documentation of the FOHS assessment review process and any communications influencing the doctor's position change must be added to clarify the accommodation evaluation.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"reasoning_traceability, accountability_support, and cold_reviewer_clarity are most weakened by incomplete decisional documentation and the acknowledged gap in undue hardship analysis.\",\n    \"compliant_version\": \"A compliant version would require: (1) a contemporaneous written undue hardship assessment signed by the decision-maker, itemizing essential functions and explaining why each cannot be performed from Miami despite prior successful performance; (2) documented evidence of the FOHS review process, including any management communications that preceded the doctor's second opinion; (3) a formal individual assessment memo evaluating the specific accommodation request against operational requirements; and (4) explicit findings on whether the two-day telework offer was truly sufficient as an alternative accommodation or why not, with citation to relevant job duties.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5122,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 723,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

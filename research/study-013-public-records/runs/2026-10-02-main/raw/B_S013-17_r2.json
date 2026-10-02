@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbeSaeBU7UqaUjLgWXX",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The Agency's conclusions (no animus, not severe or pervasive, pay gap due to back-fill and time in service) are not connected to cited ROI evidence, and the record shows no pay-setting documents or analysis of the 11 claims, including the unaddressed CW3 comparison and claim 9.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most factual assertions carry ROI Bates cites attributed to Complainant, the Branch Supervisor or the Deputies, but the Agency's findings, such as CW1 having already reached full performance level, have no cited source, and the Deputy of Logistics relies on what 'was reported' without naming who reported it.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events are dated (Jan 11, 2017 through Sept 2018), but the order and consistency are unclear: Claim 10 (Apr 5, 2018) precedes Claim 9 and 11, the transfer is described as to Code 41250 and to the Afloat Networks Branch on the same date, and the 'mid-year' reviews fall in January 2017 and February 2018.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The Agency's 1614.110(b) decision and the supervisors' explanations of the PDA trigger (rating below expected, 4.0 vs 5.1) are documented, but the reviewer of the pay decisions, who set CW1's and CW2's pay, and the criteria applied are not identified, and the record does not show that Complainant's rebuttals (such as the email technical issue) were weighed.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess whether the findings are supported without the underlying ROI, because the Agency's key rationales are asserted rather than evidenced and the rating scales (5.1/4.0 vs 9/7) are unexplained.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6167,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1529,
+   "output_tokens_details": {
+    "thinking_tokens": 908
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

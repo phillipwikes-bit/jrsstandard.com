@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbXWRcsB3Q96XeoDaiv",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"The summary describes the claims (non-selection for two Food Inspector vacancies based on age and reprisal) but shows no evidence on the merits. It does not identify the selecting officials or their reasons, the selectees and their ages or qualifications, the applicant rankings or certificates, or whether the selecting officials knew of the March 2022 harassment report. Nothing explains why the Agency found no discrimination. The harassment report is background only, and the record does not show whether it was investigated or tied to the non-selections. Without that evidence, the Agency's no-discrimination conclusion cannot be evaluated.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1262,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 208,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

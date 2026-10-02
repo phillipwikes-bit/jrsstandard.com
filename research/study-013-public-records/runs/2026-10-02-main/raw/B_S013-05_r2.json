@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbYvC9Az1Un1uhbpqXi",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSxxEKEAgSGAI4AUIIdGhpbmtpbmcSDDJSkyfLdajzBAr//RoM+p3o+B+4wu43aUM1IjCVdf1aJprp0UF/XOsVd1s+gYo6s/mY9twZjW6CpUh+PfNjzf1OtxQoLeogReZKjCAq5BCgK+ySKZ0/x5Av4Rj4hjiYoJLSebumP7AA4Vy4DnbgkFEQ21Un3zHqTtBE6J5t0RYmwqwnzAYFGplB+hASD4fcPM1iwdkztwHMHzTPYMBcv+cpPZMghTOamSXCTLP6vFdOnlBJIYVqTzVXWUk8UjEVQ7Gg5oG18Ico+IMiDRDy/RkzG2I5Wx8QePTk/0/Ri0qmwzVs970uCuQPP+4JnW8b1Jq4V0in0Vr2EoVAN7Oj10nrWGb90EEAUtVS7xwA3jp514hSCLcZc8QIJzxUSmvALvIBuKcVoSQY9PUxFs/IsyrfXm9MIwG+2GPGVgTXPcgkKRyHilThk4azgj/yOV8xiq5y2k/IYxM1GKAIr+O7LKs+VqIXOL497ds7Jb+RPorioLWjTepqLrhMXKOwp3B/bsPUyUp5kSIdLYwBFxcoVX+e5+8WiBQq0T9cRyzcv2krIC8EeR5lIveC/oUMxHTWFSCwKrKrr0yBQHSXk9+elZZxcI0AD4TpWIAoD+yyKpU0HN0p8myQlZuGo4tW0bY3pE8FprO64NEMBTgXD4ZYkNgH0vAiFGX/s/yhL57N2UcwAXAdJgPsFb9JV5WrjT7u15PPx2L2dz6dR7xCZ58SlznAtxZ/VgLQSdqpoQZav42rEl9XNPwHGmoTC1Vf79xIhfi8GogemOSJoBOkX5iCJdZQvNEGGbv8e+mngcsK/BcQoFnbs9FmHQXsiL5O/+GjHznH0QuW5LWBYPOl/dmOl5sBQv9/bk3je/qscu2kcoKDt1ELFxG8sFBMx7uvQ20xXX5nxSlmjspAdM+Kjs7TRLY7TIBVOs8WK9JY8py8sAuZQgRF4BIDeJZEBYvCnOlmZYS21cfSMaGobhClye31J7gVILaWtsW7gnIjbuhEXA5qYpgk5slid2YVxfRWxTd1PYNtJTwK1EDYZW2/vOZ/B04LNuK2rcWf2oyFwZmUcgvwycmItJohhe/KxMD27iApARFbQOCZTQp3HnovxLam2GZTNjFrs8wvKnAM/EQU1/7tqVloCEAS9Lq+hFPNZOVRsRf7J1X9UqAK39N7SNOaGflmaQ/qIg4fkwktkHL1e1fDyl49QSGgRM9bsvRTOyR5thUbuJiBTOsyZUtmVVC3uOGywbl+mAsn/dDCa/9tOuKpKDoYfE+sg4ecF8NwzTeGUR1IIzBbBg9cKpgKjomTvA+U20lIYduMKKy0rbMZ05O/wbBXfkDQ1D8ryATz8dXq3B7NRHOj1zPA290bJfnrV7Jf4avjj15cr+gteBiW+VriFCZBvgkIJ0vbqahilJqph8BkBY9w63tDSsiHdZpv8qgyCJGEBmcKAz8RVcUdHYGTCQcBhXfy6PgC25EaR/JwhWXg5dVHmxZorjiEiNspfKuTnV5imUfdWXKkZyFNk2bskNuX9tBcEcv31V/v3qClqK74EX5RHgQd9/fDgYVmzMHUpdNGjfgNCJtCNKHzRclYt9WxfmSyBViEikwnkmfA0KV1ehYeZOO0Ankl/zF8fuGp3LnwjJFnD490RgJ5EagrV9pEcMcIOpk0FnCSBO+/bXagstbsm7vydAb87DUuSnoauYAoppUF+OFu+RAkYwe7ybxOo5CPor2LZB20N488VUGVNHOfcj6PylZUeIAnJSugntb4WSGdBKIRH3Nlxm76lAldeJ+agfEbuse0hNkAvRZ2eUneiRgjqSOlgSa4x/QjtXE7iynfOoOk7ZUDhLe5hnpYz8nVlUDjav2p5VWcFbqrzrd7CnD05NKe0539SfWYYK4Vs2LiL9bdhizWVkBbMOkhkCauo0A+HsV/fa+Y0O4cm1rVJmHL05R++lsRXZByeJtLL33weBcuynWSvuWyj+vlDcihvOfXWG+btikYtDGRV4HcHDqhCT6gv5YPJK6mXPt+GMjFWj1alVueki/zdW7giMqL0FrZ/tKdECgnEHn4R/Zk6ecaFQSYCo6oW9TwI6+1pM3lZe+NWbZi3r+UN4TfpDz1pb4ViUKvz1jVUouUFG/ByPMlOD/hiAe337CL8eewqGBeUorLRio5Oa0a62owKnh3il/OS9hnPFv6aKYAfxqGOpRZXFybRNPZjCdfa0fB0blXI6nBywRFcY+P6cQzllOIIAgFUHA4Wg7fTWU7haNKd9pwmfEDMNf3tss37Sr7iLHoUX3DZRodr7W0R6wPhHdIRNFtxLC2LEtzY61wSN5nZCYaGSIjnZcOj/Iw9MtcEqxZw0VGB+i0pPy0mKU9g7GQ/1M/gPijhZRH4yV2FxQHwU9HkOHVsAdsaUtHWzXiCd5OzQsDzy7n3VXOutwoL3F8W5PalFY1ni1FLtTyBpiJgQNmFclDJTfgvt5F3UGDZjLKJq45FcAqBQ0io6YcmnqGOwj33TwH6uthmIB68kIrRJsduDemjVOzi7D+8xYbPyCSnEKEkOlEBJtMbogCxgdhy2z0U7VL0TliVBLJihxA3jFBz1XaHptrrGNL0PsAucxJ3x91m4g6e971GYPHEYBLugy7Cql5FUKqE+NlP37ZYvyM/0QllIbZN0veOUJMcdwIGdSGAvBGDrYzAMrYD8t+8aypfF1SfMvtBi0pvbVKIAG0ZPahQ392yqet2oVQYjxjFUOFsskYt0KHNAAHaPZypjH42xiBaGXlnlvwaUEeSlYdC/i7DAtt1Q/j/s7kriYagXHzfeJLlj6SCFACfg18IZmt6jby/1pVsb9EMKVrfTodZHql4UnCR1eskHf6j4mcyi3g3hnETPidZT319do87Z3SG+fIoVqFv1SrUXvL83RgM0tdjmMsMU9wZAgq/uddpS+rtTQQxOFgyXnDNxty+A2UmkUXN/lDi4ikA3kaDqVkikk7NCBFZugO8FcYAQ=="
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record sets out detailed testimony and alleged incidents, but the decision is stated only as 'Complainant failed to prove that the Agency subjected her to discrimination' with no findings or reasoning connecting the evidence to that conclusion.\"},\"rc2\":{\"status\":\"pass\",\"note\":\"Nearly every characterization is tied to a named witness and an IR page cite (e.g., S2 at IR 238-42, CW1 at IR 272-74, CCSB at IR 298-306), although some statements such as CW1's 'rash of females leaving' lack supporting detail.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated, but the sequence has conflicts: the claim is framed as beginning August 10, 2017 while incidents start November 2016, retirement is given as both November 2017 and November 2018, CW4's reclassification is dated December 26, 2018, and S2's role starts January 2017 though he is alleged to act as supervisor in 2016.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The summary does not identify who made the final agency decision, what standard or criteria were applied, or whether the witness responses and Complainant's rebuttals were weighed before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess whether the conclusion is supported without outside context, because the decision reasoning and decision-maker are missing and the date and role inconsistencies (including S1/S2 in CCSB Q17) are unresolved.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 10025,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1133,
+   "output_tokens_details": {
+    "thinking_tokens": 625
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

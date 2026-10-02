@@ -2,6 +2,13 @@
 
 **Prepared 2026-10-02, on the owner's request** to review the study and make it a companion piece for four of the November publishing targets (assessment section 7, D10). **DRAFT. Nothing has been sent, submitted or published.** Before anything goes out it needs the publication review in CLAUDE.md section 23 and the owner's approval.
 
+## 0. Result, 2026-10-02 (see `RESULTS.md`)
+The run is done (450 calls, USD 9.60). **No arm separated adequate from inadequate records; all of them over-flagged.** The Engine prompt did not beat the public JRS text, and a stronger model was as good and more stable. This changes the AI sections of every piece below:
+- They now report a **negative, vendor-neutral finding**: "AI reviewers applied a stricter bar than the adjudicator." The pieces must not claim that AI or JRS detects inadequate investigations.
+- The deficiency coding (section 2) and the training exercise do not depend on the AI result and stand as they are.
+- For Dewey and IAOHRA/NFHTA, the practical message holds: here is what the EEOC actually orders, so check for it before closing.
+- For SCCE and HCCA, the useful lesson is about governance: an AI documentation reviewer can look rigorous while failing to tell adequate files from inadequate ones. Test it on independently labelled cases before relying on it.
+
 ## 1. Review: what the study already gives these audiences, and what it lacked
 | Question | Before this review | Now |
 |---|---|---|

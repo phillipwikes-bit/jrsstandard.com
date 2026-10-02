@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011Cfdc7m3tTY2ivtEbYb585",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each allegation (Claims 1–10) is grounded in specific factual statements: HR Supervisor's account of COVID-19 procedural changes for I-9 signing, documented training timelines (October 10–November 6, 2019), workload assignments to named departments, and the February 25 and May 20, 2020 performance meetings.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record traces from Complainant's statements through HR Supervisor's responses, corroborating supervisor statements, and RA Coordinator denials to a chronological sequence: hiring (Sept 29, 2019), training completion (Nov 6, 2019), performance meeting (Feb 25, 2020), termination notice (May 20, 2020), resignation (May 21, 2020).\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"While most claims are documented with dates and named individuals, Claims 2–7 rely heavily on denials and 'unspecified dates,' and the record does not explain how or when Complainant communicated her accommodation request to HR channels, making independent reconstruction of the reasonable accommodation timeline uncertain.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"Evidence supports some allegations (training provided, workload increases documented, termination during probation confirmed) but lacks direct documentation of Complainant's written accommodation request, the specific content of the March 19, 2020 meeting notes, or whether Complainant ever formally notified HR Supervisor of her disability before resignation.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"A clear timeline is established: employment from September 29, 2019 to May 21, 2020; training dates October 10–November 6, 2019; performance meeting February 25, 2020; termination notice May 20, 2020; complaint filed November 20, 2020; with intervals and sequences traceable throughout.\"\n    }\n  },\n  \"remediation_note\": \"The record adequately documents the sequence of events and supervisor responses but would benefit from explicit documentary evidence of when and how Complainant formally requested accommodation, confirmation of the March 19, 2020 meeting content, and clarification of whether Complainant ever disclosed her disability and work restrictions to her supervisor in writing before the termination decision.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"cold_reviewer_clarity and accountability_support are constrained by unspecified dates for six allegations and absence of Complainant's documented accommodation request submission to the record.\",\n    \"compliant_version\": \"Incorporate dated records of any written accommodation request submitted by Complainant (email, form, or written note to HR Supervisor or RA Coordinator), meeting notes or witness statements from the March 19, 2020 performance discussion, and evidence confirming when and to whom Complainant disclosed her Fibromyalgia diagnosis and work restrictions during employment.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3921,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 755,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

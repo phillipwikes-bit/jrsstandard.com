@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbtstJ5nN8LgCvnH4Az",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record sets out evidence (Form 50s, the 2015 promotional pay policy, the parties' resumes and statements) but ends with the FAD's conclusion that Complainant 'failed to prove' discrimination, with no reasoning linking that evidence to the conclusion.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are tied to ROI page cites or attributed to Complainant or Business Partner, but statements such as the ages being 'readily known to the Responsible Management Officials' and the policy providing no 'other justification' carry no source.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are present (July 17, 2021 effective date, August 31, 2021 EEO contact, November 17, 2021 complaint, June 13, 2015 policy, 2019 prior selection), but the dates of the investigation, ROI issuance, hearing-request deadline, and FAD are missing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who issued the FAD, what standard or criteria were applied, or whether Complainant's evidence was weighed, and the 'named individual' who had to approve an 8% raise is not identified.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the FAD rationale and reviewer are absent and the outcome text is removed, an independent reviewer could not assess from this record alone whether the conclusion is supported by the documented evidence.\"}},\"remediation_note\":\"The record would need the FAD's stated reasoning linked to specific evidence, the identity and role of the deciding official, and the criteria applied, including how Complainant's comparative qualifications and the unattributed assertions were considered. It would also need the dates of the investigation, ROI delivery, hearing-request deadline, and FAD, and source citations for the unattributed statements.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3988,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1300,
+   "output_tokens_details": {
+    "thinking_tokens": 690
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbhPShSZxiawKGkHCkz",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The final decision's path from evidence to conclusion is only partly traceable: it asserts 'no evidence of discriminatory animus' and a workload-rebalancing rationale, yet the record shows S1's own statements about Complainant's GLIFAA membership and sexual orientation, and the rebalancing explanation rests on S2's account alone with no workload documentation cited.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to Complainant, S2, or C2, but the record has no documents or testimony from S1 (no longer employed) or C1, and the 'generalized allegations' and 'rebalancing of workload' findings lack identified supporting sources.\"},\"rc3\":{\"status\":\"pass\",\"note\":\"The record gives a detailed dated sequence from the April 2018 interview through the April 27, May 2, 3, 8, 9, 10 and 11 events, the June 2018 leave and reassignment on June 21, and the August 14, 2018 complaint filing.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The decision names the framework (prima facie case, legitimate nondiscriminatory reason, pretext, severe or pervasive) and the decision-maker is the Agency, but no individual reviewer is identified and there is no sign that Complainant's responsive evidence, such as S1's yelling, C2's conflicting account, or the affinity-group activity, was weighed.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"The record does not stand on its own for a merits decision because S1 and C1 were not interviewed, there is no comparator information on C1, no workload data supports the rebalancing claim, and the conflicting accounts of May 8 were not resolved.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5054,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 573,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbyAv5m8ngYW5j6Kvp2",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Agency's reasoning steps are laid out (no corroborating statements, missing details, 'neither severe nor pervasive'), but the underlying evidence exists only as ROI pinpoint cites not included in the file, and the decision text was removed.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are tied to ROI pages and to named roles (Complainant at 8-11, S1 at 116, Lead Manager at 130), but the Agency's observation that Complainant and C1 'lived together' has no cited source and the Acting Lead Manager and Plant Manager accounts are not attributed.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (March 2017, August 7, 2018, October 2018, November 16, 2018, September 12 and 16, 2019), but the dates of the ROI, the dismissal order, the Agency decision, and the management 'separation' are missing, and the narrative is not in chronological order.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The 'severe or pervasive' criterion and consideration of Complainant's non-response and management's actions are documented, but no named reviewer or decision-maker is identified and the Agency's final decision process is described only generically as 'the Agency'.\"},\"rc5\":{\"status\":\"review\",\"note\":\"An independent reviewer could follow the broad outline but would need the ROI, the AJ orders, and the removed outcome text to judge whether the conclusion is supported, so the record does not fully stand alone.\"}},\"remediation_note\":\"The record would need the underlying ROI excerpts or exhibits attached, a source for the cohabitation finding, and a dated timeline that includes the ROI, the dismissal order, the Agency decision, and management's separation of the parties. It would also need to name the Agency decision-maker and state the criteria applied.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3217,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1254,
+   "output_tokens_details": {
+    "thinking_tokens": 642
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

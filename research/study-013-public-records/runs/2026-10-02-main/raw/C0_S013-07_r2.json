@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011Cfdc9zXZpRAwnj9XuZYkk",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each of the 15 alleged incidents is grounded in specific dates, actors (Supervisor 1, Supervisor 2), locations (El Paso POE), and factual claims (e.g., 'yelled at Complainant,' 'accused her of,' 'threatened to give').\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"gap\",\n      \"note\": \"The record presents allegations and concludes 'failed to prove discrimination' and 'failed to show disparate treatment,' but does not trace the investigative reasoning, evidence evaluation, or comparative analysis that led to that conclusion.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A reviewer years later can identify what was alleged and when, but cannot reconstruct why the Agency rejected the claims without access to investigative findings, witness statements, or Agency responses not included in this summary.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"gap\",\n      \"note\": \"The record documents 15 detailed allegations with dates and named supervisors, but provides no evidentiary support (witness statements, corroborating documents, Agency explanations, or comparative data on treatment of non-disabled or younger employees) for the conclusion of no discrimination.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The sequence of events is clear: incidents span September 8, 2019, through February 6, 2020, with specific dates for each major allegation, investigation notice, and final decision issuance.\"\n    }\n  },\n  \"remediation_note\": \"To achieve compliance, the record must include the investigative findings (summary of evidence obtained, witness interviews, Agency responses to each allegation), the comparative analysis or factual basis for the disparate treatment determination, and the reasoning chain from evidence to the conclusion of failure to prove discrimination. The current document functions as a narrative complaint summary with a conclusory outcome but lacks the evidentiary and analytical support needed for accountability and reconstructability.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"reasoning_traceability, accountability_support, cold_reviewer_clarity\",\n    \"compliant_version\": \"Include a section titled 'Investigative Findings' that documents (a) the Agency's response to each of the 15 allegations; (b) summaries of witness interviews conducted; (c) relevant documentary evidence reviewed (schedules, duty assignments, personnel records); (d) for the disparate treatment analysis, explicit comparison showing how similarly situated employees without disability or of different ages were treated in analogous circumstances; and (e) the logical chain connecting this evidence to the conclusion that Complainant 'failed to prove' discrimination, with specific factual gaps or credibility determinations identified.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1737,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 675,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

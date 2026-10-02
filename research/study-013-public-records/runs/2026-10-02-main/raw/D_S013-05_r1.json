@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcQTNVYYT2GhWcxRkmi",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record states only that the final decision 'concluded that Complainant failed to prove' discrimination, with no reasoning linking the cited evidence (e.g., the CCSB's account of S2's 'no one that looks like you' remark, the denials by S1, S2 and the DD) to that conclusion, so the path from evidence to outcome cannot be reconstructed.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations carry specific IR page citations to named affiants, but some attributions are muddled, notably CCSB Q17, which attributes the 'not to hire anyone who looked like you' remark to S1 while the answer and Complainant's affidavit attribute it to S2.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated, but the timeline contains unresolved contradictions: retirement is given as both November 2017 and November 2018, CW4's reclassification is dated December 26, 2018 (after retirement), and the harassment claim period begins August 10, 2017 while the cited incidents run from November 2016, before S2 became Acting Director in January 2017.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who issued or reviewed the final decision under 29 C.F.R. § 1614.110(b), what legal standard or threshold was applied, or whether supporting witness statements and conflicting evidence (such as CW4 affirming she is Caucasian, contrary to Complainant's description of her as Hispanic) were weighed before finalization.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Although the investigative evidence is extensively cited, the missing decisional reasoning, the unidentified decision-maker and standard, and the unresolved chronological and attribution inconsistencies mean an independent reviewer could not assess from the record alone whether the 'failed to prove' conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 10025,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1365,
+   "output_tokens_details": {
+    "thinking_tokens": 741
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

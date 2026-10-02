@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcfA6LkyK9kR4syD1Vu",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The decision's finding that no male or gay employee was treated more favorably cannot be traced to documented evidence: the investigator did not interview C1, the recipient of the portfolio, and the file has no demographic information on C1's sex, sexual orientation, or prior protected activity.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most statements are attributed to a source (Complainant, S2, C2), but S2's 'general rebalancing of the recruitment workload' rests only on his assertion with no workload data, and S1's own account of the 'gay' comment and the event requests is missing because he was never interviewed.\"},\"rc3\":{\"status\":\"pass\",\"note\":\"Key events are dated in order: the April 23 and April 27, 2018 hire and assignment, the May 2–11 exchanges and reassignment, June leave and transfer, and the August 14, 2018 complaint; only the 10-day run of S1's event requests and the investigation and decision dates are left undated.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The decision states its legal criteria (prima facie case, pretext, severe or pervasive), but it does not name the official who decided, and it rejected the comparator and harassment claims without S1's or C1's testimony, so it is unclear how the conflicting accounts were weighed.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"The investigator did not interview S1, the alleged actor, or C1, the comparator, and the file has no workload documentation, so an independent reviewer cannot judge from the record alone whether the conclusion of no discrimination is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5054,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1223,
+   "output_tokens_details": {
+    "thinking_tokens": 694
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

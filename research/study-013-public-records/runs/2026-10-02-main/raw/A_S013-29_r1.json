@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbX3EjpwYxAppezahWZ",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"gap\",\"reason\":\"Material gaps remain on key issues. The record does not show whether the FY2021 \\\"1\\\" threat was addressed beyond S1's denial and S2's agreement, and no witness to the March 18 appraisal meeting is identified. No comparator evidence appears for the March 4 meeting or the performance ratings, though the Agency's prima facie finding turns on comparators. Knowledge of EEO activity rests on S1's denial, and the grievance to the Commander (S2) was not explored for whether S1 knew of it. The Agency's stated reason for the \\\"1\\\" rating (no PIP, per HR guidance) differs from S2's explanation (insufficient documentation), and the inconsistency is not examined. Colleague accounts of Complainant's performance conflict and are not reconciled. Evidence on the claimed hostile work environment is thin. The two subordinates said to have been asked for doctor's notes are not documented in the cited record, and the timekeeping request is only loosely tied to the policy. The conclusion therefore cannot be reliably evaluated from this record.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3388,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 360,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

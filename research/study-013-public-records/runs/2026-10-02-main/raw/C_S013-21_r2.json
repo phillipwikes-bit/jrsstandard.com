@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbywagA8pYcjbTcMyRr",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The summary contains the parties' accounts and the Agency's stated conclusions, but the link from evidence to conclusion is thin: Claim 1 turns on Complainant not reporting the slurs before EEO contact, and Claim 2 states only that he 'failed to establish retaliatory animus' with no analysis.\"},\"rc2\":{\"status\":\"pass\",\"note\":\"Most characterizations are attributed to named sources (e.g., 'According to his answers to EEO interrogatories,' 'CAPT stated,' 'HRM stated,' 'LT2 stated'), although the Threat Assessment Committee findings and photographs are known only through CAPT's testimony.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated (Nov. 17, 2022; Jan. 9, 2023; Mar. 2-3, 2023), but the Threat Assessment Committee ('following day'), the investigation reports, the hearing request, and the final Agency decision are undated, and the narrative runs out of order (Aug. 3, 2023 appears before Apr. 10, 2023).\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The final Agency decision does not identify who decided it, what standard was applied, or whether the supplemental statements from CO1, CO2, LT1 and LT2 were considered, and the Threat Assessment Committee's membership and criteria are not documented.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess whether the conclusions are supported without outside material, because the Threat Assessment Committee report, witness memos, photographs and the final Agency decision's reasoning are referenced but not in the record, and the outcome text has been removed.\"}},\"remediation_note\":\"The record would need the underlying Threat Assessment Committee report, witness memos, and LT2's photographs, plus a dated chronology covering the committee, the investigation reports, and the final Agency decision. It would also need an identified decision-maker, the standard applied, and a documented explanation of how each claim's conclusion followed from the evidence and the responsive statements.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6388,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1686,
+   "output_tokens_details": {
+    "thinking_tokens": 988
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

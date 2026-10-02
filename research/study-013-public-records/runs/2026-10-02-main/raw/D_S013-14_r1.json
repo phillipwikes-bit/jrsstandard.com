@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcXQTZVCPey6UzLNJ6J",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The FAD conclusions (e.g., non-selection because Complainant 'did not demonstrate at the interview that he was more qualified') are stated without the underlying evidence, and the claim cross-references appear wrong ('claim B7' is used for Colonel 1's comments, which are B6, and 'claim B17' for a rating-change denial resembling C1), so the path from evidence to conclusion cannot be traced.\"},\"rc2\":{\"status\":\"gap\",\"note\":\"No affidavits, interview scores, panel members, emails, or other ROI exhibits are identified as the source for management's articulated reasons or for findings such as the 'fair' level 3 rating, so material characterizations cannot be tied to identified sources.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Each of the 28 incidents is dated from April 2017 to June 2018, but the dates of the prior EEO activity, EEO contact, formal complaint, ROI, hearing election, and FAD are missing, and a garbled fragment ('activity under Title VII...') plus a reference to a late appeal obscure the procedural sequence.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record names the McDonnell Douglas framework and 29 C.F.R. § 1614.110(b) but does not identify who prepared or approved the FAD, does not address most of the 28 claims or the reprisal and 'Caucasian' race/color bases individually, and shows no consideration of Complainant's rebuttal or pretext evidence.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"With unsourced management reasons, apparently misnumbered claim references, and most harassment incidents disposed of by a blanket 'not severe or pervasive' and 'not aggrieved' finding, an independent reviewer could not assess from this record alone whether the no-discrimination conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4946,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1151,
+   "output_tokens_details": {
+    "thinking_tokens": 527
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

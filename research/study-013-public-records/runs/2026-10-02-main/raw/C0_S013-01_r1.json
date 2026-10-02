@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011Cfdc798uZPw17pC78uaVf",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each of the four claims is explicitly grounded in specific dated events (Dec 17, 2018 chastisement; Dec 20, 2018 non-selection; Jan 30, 2019 DEMO denial; prior Dec 17, 2018 DEMO notification) with identified actors and documentary evidence cited throughout.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record traces decision-making from evidence to conclusion: interview panel findings → S2 recommendation → S3 selection; supervisor assessments of interview performance; DEMO reconsideration review of self-assessment, feedback, and benchmarks → S3 denial, with specific rationales documented at each step.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"pass\",\n      \"note\": \"A reviewer years later can reconstruct the factual basis without external knowledge: organizational hierarchy is defined, positions and vacancy announcements are identified, interview panel members provide specific critiques (failed questions, limited branch history, program vs. line management experience), and supervisor rationales for non-selection and DEMO denial are documented in detail.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"pass\",\n      \"note\": \"Evidence suffices to support the Agency's conclusions: three panel members provide independent assessments of interview performance gaps; S1 documents DEMO reasoning by reference to self-assessment, feedback, and benchmarks; Group Lead selection rationales contrast candidate responses directly; supervisor denials of chastisement are explicit.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Chronology is fully reconstructable: Aug 2018 application, Dec 3 Group Lead announcement, Dec 11 DEMO notice, Dec 17 chastisement meeting and revised DEMO discussion, Dec 20 DEMO email and Group Lead selection email, Jan 4 formal complaint, Jan 30 reconsideration denial, with investigative and FAD issuance following.\"\n    }\n  },\n  \"remediation_note\": \"No remediation required. This record meets all five JRS conditions: bases are identifiable; reasoning is traceable through documented decision steps; a cold reviewer can reconstruct facts independently; evidence sufficiently supports conclusions; and temporal sequence is complete with dates and intervals.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"None; all conditions satisfied.\",\n    \"compliant_version\": \"Record is compliant as submitted. It functions as a comprehensive investigative narrative documenting factual findings, witness statements, and Agency rationales, with sufficient granularity to withstand later appellate or judicial scrutiny without reliance on external knowledge or undisclosed deliberations.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2563,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 665,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

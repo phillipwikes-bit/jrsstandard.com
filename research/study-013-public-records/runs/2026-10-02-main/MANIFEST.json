@@ -27,5 +27,9 @@
  "runs_per_case": 3,
  "cases": 30,
  "planned_calls": 450,
- "eval_char_limit": 40000
+ "eval_char_limit": 40000,
+ "finished_utc": "2026-10-02T15:06:09.995Z",
+ "calls_made": 450,
+ "observed_usd": 9.6022,
+ "stopped": null
 }

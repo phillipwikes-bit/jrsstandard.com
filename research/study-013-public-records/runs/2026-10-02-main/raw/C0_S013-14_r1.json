@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcDDDdM7NQLMZ8Gor3z",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record explicitly identifies the legal framework (Title VII, ADEA), the investigative standard applied (McDonnell Douglas three-part test), and the Agency's stated reasons for each determination (e.g., non-selection based on comparative qualifications, performance ratings based on supervisor authority and objective performance).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"While the record traces the Agency's conclusions through the McDonnell Douglas framework, the investigative process itself—how the 28 incidents were evaluated, what evidence was weighed, and how factual findings were reached—is not detailed; only the Agency's final rationale is presented.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A reviewer could reconstruct the claims and Agency conclusions from the record, but lacks visibility into the underlying investigative findings, witness statements, documentary evidence, or credibility assessments that would enable full independent evaluation of the basis for each determination.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"The record supports the Agency's stated legitimate nondiscriminatory reasons but does not explicitly document the evidentiary record (interview notes, performance data, selection panel materials) that would establish sufficiency of support for each conclusion.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record provides a clear chronology of alleged incidents from April 2017 through June 2018, with specific dates for each claim, and notes the timing of the Agency's investigation, ROI issuance, and FAD decision.\"\n    }\n  },\n  \"remediation_note\": \"To achieve full compliance, the record should incorporate or reference the Report of Investigation findings (factual determinations, evidence evaluated, and credibility assessments for each of the 28 incidents) and explicitly document how the Agency applied the McDonnell Douglas burden-shifting analysis to each claim category, including findings on pretext.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"reasoning_traceability, cold_reviewer_clarity, accountability_support\",\n    \"compliant_version\": \"A compliant record would include a background section (as present) plus an Investigative Findings section that summarizes, for each claim or claim category, the material factual findings from the ROI (who said what, when, to whom, and with what corroboration), the evidence considered, and the logical connection between those findings and the Agency's application of the McDonnell Douglas test, enabling a subsequent reviewer to verify whether the conclusions follow from the evidence without access to the full investigative file.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2808,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 649,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

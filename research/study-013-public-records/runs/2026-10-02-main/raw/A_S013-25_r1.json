@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbWCjDhVWnrgXYKPPuD",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"ready\",\"reason\":\"The record is adequate for a compensatory damages decision. Complainant's affidavit and statements from his spouse, sister and mother were gathered and addressed. The Agency evaluated pecuniary and non-pecuniary claims separately, including financial distress, alopecia, PTSD and medical records, and it reasoned about causation, timing and pre-existing conditions. It identified missing evidence (no receipts, bills or loan documentation) as a failure of Complainant's proof rather than a gap in the Agency's inquiry. It also cited comparator awards (Israel F.) and showed how it reached $26,500. Any disagreement over the amount goes to the merits, not the record's adequacy.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4627,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 238,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

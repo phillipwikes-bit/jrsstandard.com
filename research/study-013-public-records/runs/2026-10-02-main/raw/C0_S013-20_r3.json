@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcGLjAZbKfJy8jhNUbq",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record identifies bases for conclusions through explicit citations to ROI pages, witness statements (S1, Lead Manager), dates of key events (March 2017 onset, October 2018 PS-13 submission, August 7 2018 interview, November 16 2018 complaint filing, September 2019 AJ orders), and the Agency's stated reasoning for dismissal.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The decision-process chain is traceable: complaint filed → ROI conducted → parties interviewed → affidavit required by AJ order → affidavit not provided → hearing request dismissed → Agency concluded insufficient evidence of discrimination, citing specific gaps (no corroboration, lack of detail on propositions, timing of rumors, context of disclosures).\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A future reviewer can reconstruct the factual dispute (Complainant's account vs. Lead Manager's denial that she received child-molester allegation) and the procedural posture, but the record does not summarize what the ROI actually found regarding corroboration, investigative steps taken, or witness interviews beyond S1 and Lead Manager.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"The Agency's conclusion that allegations were 'neither severe nor pervasive' is supported by identified gaps in Complainant's specificity, but the record does not substantiate whether the Agency's own investigation was thorough; the affidavit requirement dismissal may have foreclosed full evidentiary development, creating ambiguity about the sufficiency of the investigative process itself.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Key dates are explicit and sequenced: March 2017 (harassment onset), October 2018 (PS-13 presented), August 7 2018 (investigative interview), November 16 2018 (complaint filed), September 12 and 16 2019 (AJ Show Cause Order and deadline), and subsequent dismissal—allowing a clear chronological narrative.\"\n    }\n  },\n  \"remediation_note\": \"To fully comply, the record should include a summary of the actual investigative findings (which employees were interviewed, what they corroborated or refuted, and what documentary evidence was reviewed) and clarify whether the affidavit dismissal was procedurally sound or whether it impeded factual development germane to the hostile-work-environment claim.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"cold_reviewer_clarity and accountability_support—the record summarizes competing narratives and procedural outcomes but does not transparently document the scope or results of the underlying investigation, risking a future reviewer's inability to assess whether the Agency's process was adequate.\",\n    \"compliant_version\": \"Add a detailed section describing (1) all investigative interviews and their summaries, (2) documentary evidence reviewed, (3) witness corroboration (or lack thereof) on each allegation element, and (4) an explicit finding on whether the affidavit dismissal was justified or whether it resulted in an incomplete record.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1552,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 787,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

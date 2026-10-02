@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbXbNXSBQQPpyWzcuLD",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"For claims 3 and 4 the record links evidence (interview performance, feedback, DEMO benchmarks) to the stated reasons, but the FAD conclusion is only a one-line statement with no reasoning tying the evidence to the finding of no discrimination or reprisal, and no comparative evidence on the age or reprisal bases appears.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many characterizations are attributed to named roles (S1, PM1, PM2, PM3, S2, S3, Complainant), but the supporting documents are not cited, such as the interview notes, the DEMO benchmarks, the negative team feedback, and the counseling S1 describes, and the 'previous EEO complaint' sentence has no source.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Dates for the key events are given (Dec 3, 11, 17, 20, 2018; Jan 4 and Jan 30, 2019), but the December 17 chastising date conflicts with the account, claim 1 is narrated as a vacancy from August 2018 with no dates for interviews or selection, the 'counseling throughout the year' has no dates, and the investigation and FAD dates are absent.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the FAD or which standard it applied, and S3's reconsideration finding that Complainant was 'adequately compensated' is stated with no criteria or mention of whether Complainant's responses were considered; the summary also does not say whether his rebuttals were weighed before the FAD.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"The record has internal inconsistencies, including claim numbering that does not match the narrative (claim 1 is described as a Branch Head vacancy while the chastising allegation is labeled claim 2), an unexplained statement about a prior EEO complaint, and an unreasoned FAD conclusion, so an independent reviewer could not assess whether the conclusion is supported without outside context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4628,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 661,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

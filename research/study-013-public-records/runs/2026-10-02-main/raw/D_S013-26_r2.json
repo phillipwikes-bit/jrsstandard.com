@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdciR17DqfFNFuTdXEhf",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The severe-or-pervasive conclusion can be traced to stated findings, but the remedial-action conclusion does not follow from the cited evidence: the record says only that officials conducted 'some sort of investigation,' that S2 discontinued it, that S4's fact-finding was not focused on C1, and that discipline was deferred, and it cites Lulverne without reconciling that authority with the finding of 'immediate, appropriate, and effective action.'\"},\"rc2\":{\"status\":\"review\",\"note\":\"Witness accounts are consistently attributed to named individuals (Complainant, S1, C1, C2, C3, S4, S5, S2), but some material characterizations lack a visible source: no witness testimony supports accepted claim 6 (C3's May 19, 2015 statement to Complainant), the officials and investigations behind 'several officials... conducted some sort of investigation' are not identified, and the Agency's generalization about what sexual-orientation hostile environments 'tend to include' cites no authority.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events are dated in sequence from October 2014 to the July 29, 2015 transfer, but unresolved inconsistencies remain: Complainant places S5's visit in May while S5 says June 18–19, the Agency says S2 learned of the matter 'April or May' although Complainant dates her report to April 29, the date S2 halted his inquiry is unclear (May 21 contact or June 23 complaint), and the ROI and final decision are undated.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The applicable standards (severe or pervasive; prompt and effective remedial action) are stated and conflicting testimony was weighed into findings, but the deciding official is not identified, the severity threshold is asserted without cited criteria, and the record does not show that S1's and S2's documented inaction or the deferred discipline of C1 was considered before finalization.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record is rich in attributed testimony, but because of the unsupported remedial-action reasoning, gaps in sourcing for claim 6, chronological inconsistencies, and an unidentified decision-maker, an independent reviewer would need further context to judge whether the final decision is supported by the documented evidence.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5709,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1801,
+   "output_tokens_details": {
+    "thinking_tokens": 1047
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

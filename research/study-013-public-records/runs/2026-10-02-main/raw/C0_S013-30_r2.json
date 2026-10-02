@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcLs8sMv1Bz6HhYFtNj",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record identifies specific bases for each allegation: sexual harassment incident (dated March 25, 2022, with quoted statement), reporting chain (Supervisor 1 conflict, report to Supervisor 2), two job selection decisions (both dated May 2, 2022, with vacancy announcement numbers), and protected activity (opposition to discrimination and harassment).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The record documents what was alleged and investigated (ROI citations at 238, 61) but does not explicitly trace how the Agency's investigative conclusions were derived from evidence or what specific findings of fact supported the final determination of discrimination failure.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A reviewer years later can reconstruct the complaint facts, facility location, parties involved, and timeline, but cannot independently verify the investigative logic or evidentiary weight from this summary alone, as the ROI itself is referenced but not reproduced.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"The record states the Agency concluded Complainant 'failed to prove' discrimination but does not set forth the evidence evaluated, witness findings, or comparative analysis that would explain why the harassment report and proximate job denials were insufficient to establish causation or nexus.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The record provides a clear chronology: March 25, 2022 (harassment incident), May 2, 2022 (job selection notices), May 3, 2022 (complaint initiation), June 29, 2022 (EEO complaint filed), and final decision issued after no hearing request was received.\"\n    }\n  },\n  \"remediation_note\": \"To meet all five conditions, the record must include a substantive findings section that documents the investigator's evaluation of evidence, credibility determinations, and the specific reasoning linking (or distinguishing) the protected activity, temporal proximity, and job selection decisions. Reference to the ROI must be supplemented with summary of key findings of fact and application of relevant legal standards.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"reasoning_traceability, accountability_support, cold_reviewer_clarity\",\n    \"compliant_version\": \"A compliant version would include: (1) explicit findings of fact on whether the sexual harassment occurred and was reported; (2) documented evidence from the selection files (interview scores, qualifications comparison, panel rationales) with explanation of why temporal proximity and protected activity did not establish causation; (3) analysis of whether the Supervisor 1 conflict created a reporting barrier that supported retaliation; and (4) reference or incorporation of key ROI excerpts that support the conclusion, not merely citation to page numbers.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1004,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 695,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

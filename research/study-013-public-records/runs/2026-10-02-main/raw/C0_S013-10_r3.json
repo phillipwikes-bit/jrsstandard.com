@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcBhPygPjqrsmLMUN8D",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record identifies bases for each major conclusion: accommodation denial rests on S1A's February 6-8, 2018 statements about operational needs; leave denial rests on May 18, 2018 email and leave balance exhaustion; leave restriction rests on June 7, 2018 placement citing erratic attendance; FMLA denial rests on documentation mismatch and leave-restriction status; harassment claims rest on specific incidents (C1 comments, S1A Uber remark, exclusion from meetings, S1B 'second chance' statement).\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"Supervisory reasoning is documented for accommodation and leave decisions but gaps exist: the ROI does not contain the DRAD medical file, FMLA documentation, or Complainant's leave records, making it difficult to trace the full evidentiary chain; contradictions between S1A (who states she did not deny leave) and Complainant's perception complicate reconstruction of the May 18 decision process.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A reviewer years later could follow the general arc of events (November 2016 hire through August 2018 EEOC notice) but would face opacity regarding medical documentation, formal leave records, and the precise content of DRAD discussions, as the ROI explicitly does not contain these files; the record is narrative-heavy on Complainant's account but supervisory documentation is partial.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"The record contains supervisory testimony and email evidence for operational concerns and attendance issues but lacks contemporaneous documentation of Complainant's medical submissions to DRAD, her FMLA form content, and detailed leave-balance records; without these core evidentiary items, the sufficiency of support for denials is incomplete, even if the reasoning is articulated.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The chronology is well-established with specific dates: November 2016 (hire), April 2017 (mother's illness onset), June 2017 (first accommodation discussion), December 21, 2017 (accommodation request), February 6-9, 2018 (telework denial), May 18, 2018 (leave request), June 7, 2018 (leave restriction), June 15, 2018 (FMLA denial), August 20, 2018 (EEOC notice); intervals and sequences are traceable.\"\n    }\n  },\n  \"remediation_note\": \"The record requires integration of the missing DRAD file (medical documentation, interactive process notes), FMLA form and medical evidence, and Complainant's leave balance/attendance records to satisfy basis identification and accountability support. Supervisory decision documentation should be contemporaneous and explicit about the factual predicates for each denial to enable cold-reviewer clarity and reasoning traceability.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"reasoning_traceability, cold_reviewer_clarity, and accountability_support—the record is a narrative reconstruction of events and testimony, not a contemporaneous decision file with integrated supporting documentation.\",\n    \"compliant_version\": \"A compliant version would attach or reference: (1) the complete DRAD file including all medical submissions and interactive process correspondence; (2) Complainant's leave balance statements and full attendance records as of each decision date; (3) the FMLA form, medical certification, and HR's written reason for any initial denial with dates; (4) contemporaneous memoranda from supervisors documenting the factual basis, analysis, and approval/denial rationale for each contested decision"
+   }
+  ],
+  "container": null,
+  "stop_reason": "max_tokens",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6448,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 900,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011Cfdca9EbkpcM5AmKt2CSj",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The path from evidence to conclusion can be followed for the alcohol-policy reprimand and SOT. It cannot be followed for the others: the final decision rules on numbered 'claims 9 and 10,' 'incidents 1-4, and 6-11,' and 'event 7' (a Medical Provider visit on May 6, 2021), but the record never lists or describes most of these claims.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Complainant's allegations and the alcohol incidents carry ROI page cites (e.g., ROI at 124-5, 147, 248-9). However, key findings have no attribution: that 'management officials testified' no other officers behaved similarly, that they lacked awareness of her EEO activity, and the Medical Provider's testimony. The witnesses to her intoxication are also unnamed.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Several dates are given (Oct 24, 2020; Dec 2020; Dec 3, 2020; May 5, 2021; May 13-14, 2021), but the sequence has problems. The SOT dated May 13 is described as 'subsequent' to the May 14 reprimand. The dates of her prior EEO activity and of her report to Witness 2 are not stated.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The analytic framework (prima facie case, pretext, hostile environment) is identified, and her claim that the Manager drank without discipline was considered. However, the deciding official is not identified. The finding that she raised no concerns until May 14, 2021 is not reconciled with her reported earlier complaint to Witness 2 and Witness 1's corroborating remark.\"},\"rc5\":{\"status\":\"review\",\"note\":\"An independent reviewer could assess the alcohol-reprimand claims from this record. The harassment and retaliation conclusions, however, depend on an undefined claim list, unattributed testimony, and an unresolved conflict over when the Manager's comments were first reported, so outside context would be needed.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3313,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1229,
+   "output_tokens_details": {
+    "thinking_tokens": 561
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

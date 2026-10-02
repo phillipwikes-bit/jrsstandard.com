@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011Cfdcd3p1Sfcs3CosrDbC8",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The path to the finding on the harassment and medical-information claims rests mainly on the absence of detail and of an affidavit, but the record never links any evidence to a conclusion on claim 2 (the August 7, 2018 investigative interview), and the finding that management 'took whatever action it could' is not tied to documented actions.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Complainant's, S1's and the Lead Manager's statements carry ROI page cites, but several facts the Agency relied on have no stated source, including that Complainant and C1 lived together, that no corroborating evidence existed, and the claim-3 assertion about disclosure of medical information.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are present (March 2017 onset, August 7, 2018 interview, October 2018 PS-13, November 16, 2018 complaint, September 12 and 16, 2019 AJ orders), but the dates of Complainant's other reports to management, the separation of the parties, the Motion to Dismiss, the hearing dismissal and the final decision are not given, and claim 3 is undated.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The AJ's dismissal steps and the 'severe or pervasive' standard are documented, but the person who made the final agency decision is not identified, and the record does not show that the conflict between Complainant's account and the Lead Manager's denial, or Complainant's apparent ROI statements at 8-11, were weighed against the stated lack of an affidavit.\"},\"rc5\":{\"status\":\"review\",\"note\":\"An independent reviewer can follow the general outcome, but the record does not stand on its own because of unsourced facts, the missing analysis of claim 2, undated management responses, and the unexplained tension between Complainant's cited ROI statements and the finding that his evidence was insufficient for lack of an affidavit.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3163,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1381,
+   "output_tokens_details": {
+    "thinking_tokens": 759
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

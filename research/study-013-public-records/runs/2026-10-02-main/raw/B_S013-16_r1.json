@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbdzGMGeZ5HWwgnxAUL",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The path from evidence to conclusion is partly traceable (ROI page cites, witness testimony, pretext analysis), but several findings such as the Manager's drinking being unsupported by preponderant evidence and the claim that incidents 1-4 and 6-11 lacked a protected-class link are stated without the underlying evidence being shown.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many characterizations carry ROI page cites and named roles (Witness 1, Witness 2, Medical Provider), but the intoxication accounts are attributed only to unnamed 'witnesses' and the claim that 'management officials testified' no similar conduct existed names no declarant or ROI page.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates are given (Oct 24, 2020; Dec 2020; Dec 3, 2020 and May 5, 2021 violations; May 13 SOT; May 14 reprimand) but the order is muddled, with the May 14 reprimand described before the May 13 SOT, and the dates of the complaint, investigation, hearing withdrawal and final decision are missing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who authored the Agency decision or how the numbered claims 1-11 map to the incidents, and it never shows whether the Manager's alleged conduct or the Witness 1 and 2 reports were considered or whether Complainant's denial was weighed beyond the deciding official's belief that she did not accept responsibility.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"A reviewer without outside context could not evaluate the conclusion, since claims 1-11 are never enumerated, the alleged comparators and the Manager's drinking are not documented, and the prior EEO activity and the officials' lack of knowledge of it are asserted rather than shown.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3313,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 615,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

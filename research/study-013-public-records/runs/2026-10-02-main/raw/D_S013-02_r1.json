@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcMpCHkQCG98NCnytDF",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSnxcKEAgSGAI4AUIIdGhpbmtpbmcSDBmwfndeKQaA8BjizhoMvh9HfDx4wXJ8hP9MIjACJTM8yOrzt1A6ekCZo/XeKUVY03zQ/J95iL8WdBtbffZHgP5fTe53NCO98m+oc78qvBZMwGAj4bnawu+jBXtk9f8zdTZJmZTHeP44HzzRTQWvFrPF807fVjTc6Dkzb/jbbVFKA6ESz9fqgwyeMH02OnoTB4/kR8YylxTYasVxjBHgoeEoFPebUbT60zU0fr+ldr8o0V1dPyZiP9+DOvUen7Q3cw90upMekJT/ln8AkHVM6Q3Scgv7VZhhAlRlYLM01yBH3jmRE6IVqsiMjYTFLCi+gVyYR885dnKii28RNQlHko+HNk/gp6M6qcKShw8VChNOgf8CmSQqWPzvCs+5jvuxz20ntn5sNnxWBPMDqQqqfTBSQ/lTfyzS0Iw9sVnuoUbuFWy8ToN9ilS1TtLP2dFe8UCfxAG88zwtdg/DAkEvhXwoIYV3n0vKrEf+seLW0/3rwUbobIc5yN02CTE9U5ORZ1sFBhPxhv5ZS4JyU4ttWUwNp7RUwViRytITg9dnUCD0dpaqf4CLWAGGnpyo3kIERuqkurouk9K6aiZ6TyImU9hlRcjMYCf3/Wmm0pzFKWFIHaH4GGq2LsSScN8QlCD+bMEDz/uEpQxVnOp9G7by2vhsy429BRuupSBfyX86a2YWZDbAISJ4zKU/gp1fUDxYsjsVfArfMF/pYaCF+/TikMNlVzqHwYDTncDe83lWSeUs6OFS8u3BwwUub2PR7jMKt4b/+wH6rIcl9dc1HQb+nZQ7Bv61i9kgxho7bR0UO5JZVuy7T0XpHAA5D4HZXC/zZQJ+hE4OeTP46xm6Hc9oT4WWUPsuI6qbj/KDD9+5pWu95TEeMXDN0ZpCHtuiriLXRK2gLIYrnrPfu+lDJKC/nlPmWrdWgJfCRiQt5dsm+Arhlm+LvzjG2SDNXnB3bJSo7PhLwAnRCRp1p5AswKspk0ZhBGxK/hJcJRyMaLxF9ceTivNk1Al1j8/fZXk3E0D8STO46QmImgxLtYRz2n6lDcUxaXyCxaeV6NQYSsYt0Gi4Xb1uH/jwszqf+bk6gCptbDrYXKztjU8TDW3CIzOmvG/CW5qN1nOIPliJpIeChRWl1gkYHPRhY0kFJqJCdAjYrgy452Z1mP3iSopZoVszs8vBmKj4mS9G7vH37MBgYU1tSNqBCxNxN9fpN41E2F3XHUaQAku3k+HGLDlVhg6eDz0rE6C5nDqxGEj2bu849Z1PjpuQCXaMNmdh1fwO7baP243tKammXPNzCBONd+/2ClVWWYAPfe+KgqOLArrjY/enIBTDz7+BJb/XTL7BLTV8GtELAwhCjbKEVYSpqzWz+UPRsrl2gt5BheGFjyoEKUi3rBnUY8YhpUDpGqjy+EJHkLt3eiiY8l8RmZ+z0wQoKT5DzRKVw1FtwkRe/o0CBx1s3gLnq3+sdjKir4FuhfjfsMtiwEoclU8ZhYF2RYBZvbDkBF1RfN4gW7FWdZwq46Rts+OAxn1frty2CnjzQ2xfM/Pg8TWo0L99OMasDn8dd6ecoVZ+5znbR4c8DSAnyBfNmdWu4deq+qVFiaC0y7Gte3FY8qTGUJ37qUQRvOfO8Zf2gFa71q/7XRh6HC5q0Zd8XVaNw8BPPxxjdfV0YUw9CJPfsVbCnoDafxRghHnxdKbTgQRXZboOgogrQWIVda84a6KTGtsVi0oVQS7ki7nXzBmobl2O1rhjonBjTFn5pY/fraDxr3kECfHo9l3/JLluA7u7R98rxW/QEYy6v86FYFCeeCvTPOpiby27p0/XXG2GaNKkKDILnlj3Wfj+yYcwWK2Em/FYgq6yqzLP6S3TiuBQL6MsjPhjlSqGo4+1KMUKFVk97ngxognBz4VAEFOCitdKddZFpsh8ENkLbMO4rI6J9g0Lk2rYoQf2lY6ZXWBaTcTtsNp7vv3fDkvMxJ/NjdEFhBSQ3F/tXWitfj6dtpyF7cU/oFlf/l7aeYO9lPXscAphAS039qlGhnkadPhQZctPFshhPUQnLS85EkZFZc5kY6NF+0T4zYLAn4SPUq1FJ8gXOPVVvqEPJnIfmUhcPuQfypIYQjCkkB8YtIKu4Zq3Z/GPX9IiPkfVMRloFPPgRkx1ID7jZjl3OYz29WjBp/RQ+iSdwd24hJrZx2MUNP9ENewIjf5FEbBGYXcbEavDOXTAq9QPGseyDt7RhQvQIfy+GTqTzCDZlVSeJfanQ5bwgilq02YvgNxWYjXWUTfsjZI3OaIihHUdU3UAUUeeSscx1K+E26BfsBftr2h1D6lLdTNlTCNeiZhQC3GMP2OMZVOUjL/ufv0PIIyMflPOQRAeuugFfR1kkTS/lnVf0YDwwkk8t5o86GuhtZHkvIqaY7nSvg4QXiXOBS612e0pdBM4JALM9ude5SyKEjyPiOMW2GJEcmIyswho/U5OjNN8YTxhfLHFMfVHZzV+OGxWDFQzhhlq3vUx8WEAfvHGa1fiLRLCRMxZYElAuX4gycj2UI61Pz+OTbmInPqlRHK8vT+pJodXvr541sOHUiYadVuZfpqyQB3yowh0FULCPFQX0Q72q5g5dW4strWlvsLKFXsjRumVJSentYVLeqlZM1cZgTAnoYLeihcGu58Y3XPHavzj03nJqmZobNdwngSJYf1W9WrmucUY8pZ8kf1o/O2Uahi79omC3scv3JD/clI6v8jAxhZojR8/ifgTP7CTJBBJAHbAZaXyfKOl4jmKenWedwTvA8Vl8/iHjB6ebcNrglb0PAWDs1L1uMwGszp+wZvjY8RFox8BZ/qNyokX7t7gWIZMzAffIVHohtTjcRwH2jMkYUZjYjVgwAwmIzOAg+pJ7xS6Kj7UNtAYXB8xELVMUuhlCyr2XtBliL8mH2OvKqSnHuYnq/zTR8AKK5o7Vcu9Ey36ZaV7hdoZY4+yEIRqvWgl7sq6OiMknVZKds7cyYp0W+h8hH30bEbgrOC+D3FtMSCh9EBDpqzyjmqI3mmaO0jiHHsqh6NFgYEkJCSWMGyKI1vymBjSkwpiKbayaiMGQNFBQxa+8yZa3o46pg24cSlJUtvVRpcqw9ZAiNG9Cvu6c8eHNCl4ufCRlm+/h/xdKEourbYtJkZB5djpwmx4RO0X4WdvXqQ2U370tAobkDLVCLkSVzKNAvF4JE6Jr9e96eo0ZCtuh9/IFi3Hkelzimp+jyJ/eHnZSTGo2ZGcrVe6fEPVg3U+y6DLO+WR8vAOYEY80wsBcgaWqikstIvFWRkG58Xm7qQBwH8xA1v/VPhssc1oF1hNXUlDMoB8mvjCOUG7wfOkBoRr/A/D91nktKnQW/2QlI/swaFaqqPHqTHRssqD5wHUSe+xNovJabq1zWHjzbeu7AsjOqdWvgQwyvb8L0RR3k27QRJYQEHW6jA1TqYuQItuCoeU5VNJCvPu69xvf2kIDCVBX0V7K+cnWVLZ35+uLpOZi+tmYXTJy/QthTD0k3ztQbnPwjpV+mGQ8Md024MjmjT0LRZ2FM+NENu6Y90qyY2N70J6lcgzJtQBIlptYdIHJPzColmxqon9ODBMKjdMfIIvfkRmNh23OHa9PnX6rhU9dM6rwCpk0tvxzhbVBOsVifkyycaSdQ6XaW8T+Df6YB2Uf/Tb2r88Lhdpre26e8/GOPmSwVo2FVeahpNLQ9PeVR+psTyed9h+M8iP6H59KKzNZg8CT6o+Z32vQ2+NHz1yfy5scY+FhvlSqMDEWJagKM1jTofVRGz/oH2wRf1Zi0t8hGVBA0GijdIGzcUWhm0Injy5UJSGhjOa96AwUDQYSBXA2esRlPuLjURFFu/6UO6DPcq4zmoxKIo5LzZlEjrJlEHtVxzBu+Lk38BziMY3GTcz8xkZ6+ibBegizB9YN4uCLLbpd/0Mfcg5AavdnF94VL99soxFyTvmzWbxESnHmxgB"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The record documents management's explanations for each claim, but the final decision states only that Complainant failed to show harassment or protected-class motivation, with no stated steps linking the evidence to that conclusion. The reasonable accommodation denial (claim 9) and the termination (claim 10) are not separately resolved.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to named roles (HR Supervisor, HR Officer, RA Coordinator, Complainant's doctor), but Complainant's own account of claims 2–8 is largely absent. An unexplained 'S1' appears, and the source documenting the February 25, 2020 meeting and some medical reports is not identified.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key dates appear (hire 9/29/2019, training in Oct–Nov 2019, meetings on 2/25/2020 and 3/19/2020, termination letter 5/20/2020, complaint filed 11/20/2020), but claims 1–7 occurred on 'unspecified dates.' The dates of the accommodation request, EEO counselor contact, investigation and final decision are missing, and the 2005 medical letters are not placed in relation to the 2019–2020 period.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The final decision is attributed only to 'the Agency' under 29 C.F.R. § 1614.110(b), with no identified decision-maker and no articulated harassment, accommodation or termination standards beyond 'preponderant evidence.' There is no indication that Complainant's rebuttal or the conflicting accommodation evidence was weighed, and the footnote on modifying the accepted claims is not explained.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Although the investigative evidence is substantial, an independent reviewer cannot assess whether the conclusion is supported. Complainant's side is thin, the accommodation and termination claims receive no distinct analysis, and the decision-process documentation is missing, so the record does not stand on its own.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6656,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1532,
+   "output_tokens_details": {
+    "thinking_tokens": 854
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

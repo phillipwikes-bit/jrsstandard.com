@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbxmUSRtSvrLRMSBq9Q",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The Agency's conclusion (no discrimination proven; legitimate reasons for the AWOL charge and the MSA reassignment) is stated with its reasoning, but the record does not show how that conclusion was reconciled with the Nurse Manager's statement that the reassignment appeared 'suspicious and unjustified' or with the Preliminary Fact-Finding Report's finding that S1 falsely accused Complainant of assault.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Many characterizations carry ROI pin cites (e.g., 'ROI, at 106-109', 'Id. at 197'), but others have no identified source, such as the Employee Health release slip ('According to Complainant'), the March 5 automated notice, Complainant's declining the phone room, and the Agency's final-decision findings.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Most events are dated and in order from December 12, 2017 through the June 7, 2018 partial dismissal, but the notice refers to 'March 1, 2019' (apparently 2018), and the dates of the ROI issuance, the hearing-right notice, and the final decision are not given.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The final decision is attributed only to 'the Agency' with no named reviewer, and although the prima facie and legitimate-nondiscriminatory-reason framework is mentioned, the record does not show that the fact-finding report or the Nurse Manager's statement was considered before the decision was finalized, nor what criteria S1 applied in reassigning Complainant.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record is detailed and mostly sequenced, but an independent reviewer would need the underlying ROI pages and the final decision itself to assess support for the conclusion, given the unattributed items, the date inconsistency, and the unresolved conflicting evidence.\"}},\"remediation_note\":\"The record would need the final decision's date and decision-maker identified, a reconciliation of the conflicting evidence (Nurse Manager statement, fact-finding report) with the stated conclusion, and the ROI excerpts or source identification for the uncited characterizations. The March 1 date discrepancy should also be corrected or explained.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4496,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1753,
+   "output_tokens_details": {
+    "thinking_tokens": 1014
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbcVAMz9DTN1jGTPEGp",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"gap\",\"note\":\"The record ends with the bare statement that the FAD found Complainant 'failed to prove' discrimination, with no analysis linking the OPR report, the claimed documents, or the nonselection facts to that conclusion.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Some sources are named (the OPR Bluebook Report of 9 interviews, Complainant's statements, the Division Chief's account), but the witness denials are summarized collectively and the reasons for the two nonselections have no identified source.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Many events are dated (April 11 and May 24, 2018 notices, the OPR report on October 30, 2018), but the date of Complainant's EEO contact is missing, and the record is inconsistent on when the Sandusky Bay assignment occurred (June 1, 2018 vs. September 2018) and on the resignation timing (October 2017).\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who made the FAD decision or the nonselection decisions, what standard or criteria were applied, or whether the unretrieved documents Complainant listed (travel vouchers, Administrator's Audit Report) were considered before the decision.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because the reasoning, reviewer, criteria and handling of Complainant's identified evidence are not documented, an independent reviewer could not assess from this record whether the FAD conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4609,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 948,
+   "output_tokens_details": {
+    "thinking_tokens": 457
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

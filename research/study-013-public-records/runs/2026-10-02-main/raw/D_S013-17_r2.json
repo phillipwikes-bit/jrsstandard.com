@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcaqACk1q1d9GgLXYQN",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The factual narrative is tied to ROI pages, but the Agency's hostile-environment conclusion is stated without linking it to specific incidents, and its EPA defense (CW1's full-performance status, the 'intra-agency cooperation' rationale) is asserted without traceable evidence.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most allegations and management responses carry Bates citations (e.g., ROI at 415-416, 449-454, 478, 480), but the Deputy of Logistics' account and the Agency's EPA findings are uncited: who said CW1 had reached full performance, CW2's 1990 service date, and the Branch Supervisor's agreement that duties were equal.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Events from January 11, 2017 through the September 3, 2018 complaint are dated and ordered, but the March 18, 2018 transfer is described inconsistently (Code 41250 at ROI 466-467 vs. Afloat Networks Branch at ROI 197), the PDA is dated both October 17 and October 18, and claim 9 (August 22, 2018) has no factual development.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The legal frameworks applied (severe or pervasive harassment; EPA prima facie case and factor-other-than-sex defense) and the 1614.110(b) final decision are documented, but the individual decision-maker is not identified and the decision does not address Complainant's rebuttals (her 17 years of service without reaching the band top, CW3's salary, the email technical-issue explanation).\"},\"rc5\":{\"status\":\"review\",\"note\":\"An independent reviewer can follow much of the record, but uncited EPA defense findings, unaddressed counter-evidence and claims, and branch/date inconsistencies prevent the record from fully standing on its own to support a merits decision.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6167,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1494,
+   "output_tokens_details": {
+    "thinking_tokens": 871
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcAb9fX4qTXFNn55oFh",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"Each substantive conclusion—regarding the proctor's pat-down rationale, the assessment timing and completion, and the selection decisions—is anchored to specific testimony or documented facts in the record.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The decision traces from evidence (proctor testimony, testing consultant confirmation, Career Board Presenter statements on candidate qualifications) through intermediate findings (no discriminatory animus, voluntary continuation of assessment, superior qualifications of selectees) to final conclusions on each claim.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"pass\",\n      \"note\": \"A reviewer unfamiliar with the case can reconstruct the full factual and procedural posture from the record: dates of key events (August 31, 2017 assessment; November 2, 2017 selections; September 11, 2017 meeting), description of irregularities, and detailed justifications for agency decisions.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"pass\",\n      \"note\": \"The evidentiary foundation is substantial: proctor's own explanation of electronic-device search procedure, testing consultant's confirmation of full time provided, Assistant Chief's acknowledgment that pat-downs should not occur, and detailed comparative qualifications of selectees versus complainant.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"The chronology is clear and dates are explicit: August 31, 2017 (assessment), September 11, 2017 (Assistant Chief meeting), November 2, 2017 (selections announced), June 2019 (initial decision withdrawn), June 2021 (decision re-issued).\"\n    }\n  },\n  \"remediation_note\": \"Record meets all five JRS conditions and requires no remediation. Documentation is thorough, evidence is traceable, reasoning is transparent, and temporal sequence is preserved for future reconstruction.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"None; all conditions satisfied.\",\n    \"compliant_version\": \"This record is already compliant. It exemplifies a well-documented investigative summary with explicit factual findings, attributed testimony, documented procedural steps, and clear chronological sequencing suitable for appellate review and long-term institutional record retention.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2629,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 575,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

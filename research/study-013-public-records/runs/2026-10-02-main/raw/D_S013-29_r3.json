@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcmLqv9SmwqqSXhJ4Eq",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The evidence, the McDonnell Douglas steps, and the no-discrimination conclusion are all present, but the prima facie findings cannot be fully reconstructed: the record names no comparator for the 'similarly situated' finding and does not explain whether a temporary torn meniscus was assessed as a disability.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most party and witness statements carry Investigative Report page cites (e.g., IR 73-74, 82-91, 110-128, 213), but the final decision relies on uncited S1 assertions, namely the inappropriate-attire counseling, HR guidance on a PIP, and two subordinates also asked for doctor's notes, and the HR-guidance explanation conflicts with S2's cited account (IR 91) that the rating changed for lack of documentation.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Key events are dated (June 2020 rating, August 20, 2020 HR email, and the March 4, 12, and 18, 2021 incidents), but the dates of EEO contact, formal complaint, investigation, and final decision are absent, the letters of warning are undated, and the claim numbering is garbled ('Additionally… 2… 3' with no item 1).\"},\"rc4\":{\"status\":\"review\",\"note\":\"The applicable framework (prima facie case, legitimate nondiscriminatory reasons, pretext under 29 C.F.R. § 1614.110(b)) is stated, but the decision-maker is identified only as 'the Agency,' and the record does not show consideration of the complainant's specific rebuttals, including the lack of feedback or a PIP, the denied telework option, the favorable colleague statements, and S1's evident awareness of the successful FY2020 grievance.\"},\"rc5\":{\"status\":\"review\",\"note\":\"The record is substantially documented with IR citations, but the uncited and internally inconsistent final-decision rationale, the unidentified comparators, the unresolved disability and protected-activity questions, and the missing procedural dates mean an independent reviewer would need outside context to judge whether the conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 4471,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1291,
+   "output_tokens_details": {
+    "thinking_tokens": 587
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

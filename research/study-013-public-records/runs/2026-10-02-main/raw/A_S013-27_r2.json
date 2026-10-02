@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011CfdbWkecQArAVLyDfU9ZX",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"route\":\"review\",\"reason\":\"The record gathered the key evidence: witness statements corroborated Complainant's account, and the Agency found E1 engaged in nine incidents based on sexual orientation. The summary does not show what the CEO and Deputy Director said about the four reports Complainant made, whether any incident report or corrective action existed, or what management did to respond. Those facts are central to the liability finding, yet the FAD concluded there was no basis to hold management liable and gave no reasoning that can be evaluated. The summary also does not show how the disability basis was investigated beyond a conclusory finding. Because it is a summary, the gaps could be in the description rather than the ROI, so a human should check the full ROI for management-response evidence before relying on the decision.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 2118,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 246,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

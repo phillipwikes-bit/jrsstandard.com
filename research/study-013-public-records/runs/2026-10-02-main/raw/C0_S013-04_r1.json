@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011Cfdc8XhyyrFNyF2TTMP15",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"review\",\n      \"note\": \"The record identifies specific RMOs and dates for most allegations (Sept 18-24, 2020), but one incident lacks temporal specificity ('unspecified date' for IT harassment and training monitoring), limiting complete traceability of evidentiary basis.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"gap\",\n      \"note\": \"The record presents allegations and procedural history but contains no investigative findings, factual determinations, or reasoning explaining how the Agency reached its conclusion that discrimination was not proved; the ROI content is referenced but not disclosed.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"gap\",\n      \"note\": \"A reviewer with no prior knowledge cannot reconstruct the investigative analysis or decision logic from this summary alone, as it omits investigative findings, witness statements, management responses, and the evidentiary basis for the final determination.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"gap\",\n      \"note\": \"The record states a conclusion ('failed to prove discrimination') but provides no evidence, comparators, temporal analysis, or investigative detail to support how that conclusion was reached or whether allegation-specific findings were made.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"review\",\n      \"note\": \"Dates are provided for termination (Sept 18), complaint filing (Oct 9), and formal decision (Mar 3, 2022), but intervals between investigative steps are absent, and multiple allegations lack specific dates, preventing full chronological reconstruction.\"\n    }\n  },\n  \"remediation_note\": \"This record is a background summary stripped of investigative substance and reasoning. A compliant version must include the ROI findings (or summary thereof), factual determinations on each allegation, articulated reasoning linking evidence to conclusions, and specific dates or date ranges for all incidents and investigative steps.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"reasoning_traceability, cold_reviewer_clarity, accountability_support\",\n    \"compliant_version\": \"Include investigative findings and conclusions on each allegation; cite specific evidence (witness statements, emails, testimony) supporting the determination that discrimination was not proved; explain the analytical standard applied (burden of proof, comparator analysis, temporal proximity); and disclose dates or date ranges for all investigative actions and incidents with temporal specificity.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1202,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 580,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

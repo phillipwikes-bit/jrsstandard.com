@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011Cfdcjqp8YheY8SU5Xj481",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The severe-or-pervasive reasoning can be partly traced, but the FAD relies on 'nine incidents in a 21-month period' when the record describes only about five, and it states there was 'no sufficient basis to hold management liable' without documenting any steps from evidence to that conclusion.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Some sources are identified, such as Complainant's statements and the Business Office Manager's instant message, but the FAD's 'witness statements corroborated' names no witnesses, the June/July 2018 report comes from an unidentified 'employee,' and the CEO's four reports of E1's remarks have no documented source statement.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Several incidents are dated (Dec 11 and 13, 2017; Jan 25, 2018; complaint filed June 27, 2018), but the CEO's four notifications and Complainant's requests for incident reports are undated, the claim period is internally inconsistent ('since January 16, 2018' vs. 'since August 2016'), and the ROI and FAD dates are absent.\"},\"rc4\":{\"status\":\"review\",\"note\":\"The record shows a FAD under 29 C.F.R. § 1614.110(b) applying a severe-or-pervasive standard, but it does not identify the deciding official, does not state the criteria used for the management-liability finding, and does not show that the CEO's or Deputy Director's responses, or any rebuttal by Complainant, were considered.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"The claim targets the CEO's and Deputy Director's failure to act, yet the record contains no documented management testimony or response actions, no enumeration of the nine incidents, and no disability-related facts, so an independent reviewer cannot assess whether the conclusion is supported without outside context.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3201,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1619,
+   "output_tokens_details": {
+    "thinking_tokens": 1010
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-opus-5-5",
+ "response": {
+  "model": "claude-opus-5-5",
+  "id": "msg_011CfdcYxQhbRrUCPGB7eEtP",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS9xEKEAgSGAI4AUIIdGhpbmtpbmcSDFS6MY5EqNumIwkNaBoMXmgGjXJHW28od7q0IjBrbghNeizWGVST1W+qd7ta+D4UY5BqeeTLSjraI+Gxg+6bEB25HgWTM+7El0bx6OsqlBEaLc5dVUtuQooMstYp/t+eu6Oqddu2HGaAxblYSsorvNx7R1hhsxPQupZvVTTSzhGvdzHR6gNIX6SGqERUoLl8q0+EySG29qrT7Xz+lz1ePydTYIUy7Lf0YqY68pju8Oq39RTnatgAQIrMAtGTgf0Dzs+hXBuRuWkDWBbf+QqKNfNBAXs255nJTPKjKK8zjxMQf6V5hGPSqUMyKAxBk1pb51O/FtyMJqfl+5KFsamXNr05hN/D1WGgno/8BOzJPT7NzH0z1Wp5vsw1piodePBHwF1cUqGybMadkQKwX/t7EVsBrgqDc5az0nJsVLOvYsx3c6eeLdtB4pB7NJyATZKcV2RLFUu95yNg9jKknBCe6Mle8ij2pzYpGyhc5RC9ASgyIiVSG1WjI8VUYa641M/j72ZV+DZyhBcMsUedz03qok4CC8Nn9oJRq4x5cRcvhHBnjMNkxTVJ1zh+lBYRc2/FTnH9dXdvwcFJLNPXEAp81OqiNK4YiEzXVOD3xnO1yfitExgyWUTcaQnF0iq2i6uYVF5/m7zboLbM7hChSlQKVvxzhcUYnu156cWVBXgUxAVgEnbuHMR6L55+qOv8NHoX/ZAUphdPJX4WqcdaboLNdln8xJx1A0bQjh1C4rE+cwqD8dxIvcnQl+WAOSvhfWFBBHvWUOsxkXfDmm1NGDSWCaNPdyaDpEgc46pEKusG+BXbUp/NsnKepg3OodBVFW0/tQ3mHqn0rRxH7u39wjFg7ECpPOrujM4CRNmmBlPyv4qelxqJEmJx3DXYCDv4QMPNJ2Fkv4j1YiZUM50HFO1/islwKluz0l+Y141aJbX4Rymn/dTM5WrFk5YVwGAXtBS8Qx2cGtyAbSfL+bCys82G64oTzurCxDizCAALJoVQy8NWzvjmCMbPWHhIopgpO5l4BZKexBxjoRh/aHYZVJATi8GpSOmvTq8HyZ2x6EujuqKh0gtntLK0u2vrMYMtJ1rQ255mQc+EASzzpIVW3nBuD4ZZU/HwGjUPgEJEd+2HN4ueulBizvXCr52JAlupYqmKkVhmI2c2KTcAoHrkryqVaWebx239DKfyfKFays3tJ8lvkVyltsQjal22fCu1tg6Pa53sIo2eOVolwXAG+aqikBmz4fc+4SnkZlX5zbKK3MmQ8K81Gf+hom0KeNMia/H+jfO5lryWMPuFo22BLd6DGQhzb4U7d/6do0L6P+Fu+69HUEwoI0UqKDRQfBvwNDgmEs548aC02nb/zOgUpy0OlaGlfH4Bk9zb5G31O6O/mJlAb6Sanwut12PBfPqm/1qRSjGWiCAekEogXr+2oGBmw7uc/wQIu/9YsZRwVcdzQXEhACEnMy/BeEwnYDJxgpE7wkxXVcUeqTiquZbuz36ejpPqsSpir7IFPxxBtWGEmH438Th1gZFse9FVhk2wr77D+hbD9C7UPRpLXEaiPoPnjaqyOQ1D2n8ZswPnMIULAh8NzKC7w/ict5dRbAF7IJjbLxJVk0OtglXwWhFrqKM7z3R/R7gN8B+HuJZw3nyFofHmd49hd0oRd4QUinCX9tPSbtXDLXLu3BLLt27325CSrQWl4NBnbUu+w7aXTrj55XmG2lQHRBhQztHqgeHnZ2LmC7+w9CkbJiRNRbw4eImKFSHKa9FUzpsROrgpNOGr4F21Qdpr0UmaPm4wbU6BJdIiOI5Zzg7J4FqaetwlDdxkPQ0iWJ5XjuNX20RAbqWb2LqTgjGgEw5yYB0VOnAGMPtt5cz9ftgPyPK7i8rJc7cktYAQ+S1fCEBjDo8gzpreNGsSJD4HrafuBQ6/wizdfKaZiBPDkzQq24Fts3E4rfHJu6RxtPldxFbGknEnL6alh3HcduhDMZtZvElQcckuAwiyGepZB6xjaMw/LiMi+isKYpl7WeSob1qDogmsVn93ds2DtGkM4aW9of4Jp37tYiWEa4vK80OkdcqlhnxFdbIiHLZ5KHiIhlkqt0Opb7stcxUwG4OBxTAZLnI+wnIelA24qj74P2XXDeiNTg2BVNX3ItY4Pno/Dfezcg8YntYSGKgUk8BuPO+755m9NRX5keUMDqq4PrAalgmn57TRcIYIOxgIB6FQpjn2DlMtK8RSJPMThkefNu/yyzwofcik6HYzl7wQATljk9Rpxt6IhSoetvGDhyXDYKn+98vKlfCriWRzKQffhHCFphZinbtnEAOqWXwAIdD/XPhEh8hapmDZcNN5PGGW+9QOGKOZyu4UKZHcbQpMvR80VvqZK6HXbH649Umi6hu7KxobcXVWXfuD7MUkdsUh/7ypsC4xsQ2LPj6hjrWkYHnkPgVPt1+5om12n5em8ElwChLh8YcOctaruTixQ5zo0oLR+opY2OFnuYjiFQm0wQeNPoLuSWxr1Aev0IN0MjyGWE5zNj6guzdRo2Wtn6o4Noa3EeNVtGTYrubrq2qxn2OJEZ+naY+Cmvk//IzZ24Cr+4/VfH/GOhvAGESqtPu+9muXsHevzNyK966WWy5R4nYsUq4hRPqk0pMkI74yF9Og1PJpG+MDcER7DiaNRAk3VScifZRayr8ITwCKBqHINtiSmGEuAB+8eSCGbVIv+QJUkVTC0bC2VKH1LRnGNB+3AHHNCbIVP4uDDej4l2gS53thI7A3ahuk7+ehb35nys3nji5TjYm6ChdKFanxtQcn6AIgQ9RiIWL++kMwIg3uB8dfTh3NkUUGQEfIL6fW9OwaK5PjHSYQ4ztEqT9JM94ZX8grWCNP6RJl26I4DYL0qtO+J9uQxMOtxi9uNfWzib6c9lOSvkKM0jeJuwxnN+k/RjP37bchnoWsrTLt2ZXVemsHnnRTkqzJ5lSXuOvj6N98dzWejC2MfM7vXUhU6e8TcY9bUHRNqH+Bv6Om3LSEjsmzxnr3pPDWAnprGvyroLlcB6QruVC0Yyr0jXZcbB4YAQ=="
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The path from evidence to the FAD's conclusions can be partly traced through ROI citations, but key findings conflict with the record: the FAD says only Subordinate-1 and Subordinate-2 used 'mothering' and the IPO used it once, while the IPO's own January 31 memo (ROI at 118) records complaints about 'mothering' from all three subordinates, including Subordinate-3.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations carry specific ROI page cites, but some FAD-relied points lack a visible evidentiary source: the mediation-driven changes ('allegedly', FAD at 29) and the written apology from the IPO that Complainant disputes.\"},\"rc3\":{\"status\":\"pass\",\"note\":\"The sequence is followable from dated events (late October 2019 complaints, January 31 and February 24-25, 2020 meetings, March follow-up, May 13-15 taskings, May 31 complaint, June 15 transfer, April 19, 2021 request, June 3, 2021 FAD), though the HR-1 phone call is undated and the four-month bypassing period is described only loosely.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The FAD's legal criteria are stated (prima facie reprisal, severe or pervasive harassment, imputed liability), but the decision-maker is not identified, and nothing shows that Complainant's April 19, 2021 objection about uninterviewed witnesses (Subordinate-2, Subordinate-3, HR-2) was considered or resolved before finalization beyond an April 22-27 email exchange.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer cannot assess the conclusion from the record alone, because material witnesses Complainant identified were never interviewed, the omission objection was left unaddressed, and the FAD's 'used only once' and apology findings are not reconciled with the ROI evidence.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 8793,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1313,
+   "output_tokens_details": {
+    "thinking_tokens": 666
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

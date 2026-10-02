@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcBDbeHvoL16bydQHEo",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record identifies bases for each major conclusion: reasonable accommodation denials cite operational needs and job function requirements; leave denials cite leave balance exhaustion and coverage conflicts; harassment claims are grounded in specific incidents (C1 comments, S1A statements, exclusion from meetings) with dates and quoted language.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"review\",\n      \"note\": \"The investigative summary traces evidence to intermediate conclusions (e.g., telework denial tied to S1A's February 2018 assessment of office coverage needs), but the path from assembled facts to the final discrimination determination is absent—the record states 'outcome text removed,' obscuring how findings were weighed against discrimination standards.\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"A reviewer could reconstruct factual sequences and supervisor rationales from the record, but critical evidentiary files are documented as missing: the DRAD file with medical records (referenced as 'does not contain'), FMLA request files, and the leave record itself, all of which are essential to independent verification of accommodation and leave decisions.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"The record supports some conclusions with specifics (S1A's February 2018 emails on telework hardship, S1B's testimony on coverage strain) but lacks supporting documentation for contested facts (Complainant's medical documentation, actual leave balance records, FMLA form completeness assessments, and the content of the alleged HR voicemail recording).\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Chronology is well-documented: position start (November 2016), first accommodation request (December 21, 2017), multiple decision dates (February 2018, June 7, 2018, August 20, 2018), supervisor transitions, and leave incidents are sequenced with specific dates and intervals clearly marked.\"\n    }\n  },\n  \"remediation_note\": \"To achieve full compliance, the record must include or reference the missing DRAD file (with medical documentation), FMLA forms and medical evidence, and leave balance records to permit independent verification of accommodation and leave denials. The final discrimination determination must be explicitly documented to show how evidence was weighed against statutory standards.\",\n  \"finding\": {\n    \"ai_function\": \"narrative\",\n    \"condition_triggered\": \"reasoning_traceability, cold_reviewer_clarity, accountability_support—the investigative summary reports facts and supervisor testimony but omits the final analytical step (outcome removed) and critical supporting documents (DRAD file, FMLA records, leave ledgers), preventing reconstruction of how discrimination was ruled out.\",\n    \"compliant_version\": \"A compliant version would (1) include or append the DRAD accommodation file with all medical documentation and DRAD decisional correspondence, (2) attach or summarize FMLA request forms, medical certifications, and HR's documented basis for any incompleteness finding, (3) provide Complainant's leave balance record as of each contested leave date, (4) restore the final determination section with explicit analysis of each claim against applicable discrimination law, and (5) note whether any alleged HR voicemail recording exists in the investigative file or was ruled inadmissible.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 6448,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 797,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

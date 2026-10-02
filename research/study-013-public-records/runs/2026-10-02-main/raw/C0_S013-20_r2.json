@@ -1,0 +1,32 @@
+{
+ "request_model": "claude-haiku-4-5-20251001",
+ "response": {
+  "model": "claude-haiku-4-5-20251001",
+  "id": "msg_011CfdcGLH7m4FN5kXmJXfjb",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"conditions\": {\n    \"basis_identification\": {\n      \"status\": \"pass\",\n      \"note\": \"The record clearly identifies the basis for the Agency's conclusion: lack of corroborating evidence, minimal specificity in allegations, failure to provide ordered affidavit, and the Lead Manager's attestation that Complainant did not report the specific rumor about child molestation.\"\n    },\n    \"reasoning_traceability\": {\n      \"status\": \"pass\",\n      \"note\": \"The decision pathway is traceable from evidence (ROI statements, S1 and Lead Manager attestations, lack of corroboration) through intermediate findings (allegations neither severe nor pervasive) to the final conclusion (no discrimination proven).\"\n    },\n    \"cold_reviewer_clarity\": {\n      \"status\": \"review\",\n      \"note\": \"While major elements are documented, a reviewer would struggle to understand the full factual record because key documentary evidence (the PS-13 form, specific coworker statements, investigation details) is referenced but not reproduced, and the record conflates Complainant's narrative with management's characterizations without clear segregation.\"\n    },\n    \"accountability_support\": {\n      \"status\": \"review\",\n      \"note\": \"The record documents management's reliance on lack of corroboration and specificity, but does not substantively explain the actual investigative steps taken in response to the October 2018 PS-13 report or why the initial March 2017 reports generated no contemporaneous record.\"\n    },\n    \"temporal_reconstructability\": {\n      \"status\": \"pass\",\n      \"note\": \"Key dates are provided: March 2017 (initial reports), August 7, 2018 (investigative interview), October 2018 (PS-13 submission), November 16, 2018 (EEO complaint filing), September 12–16, 2019 (affidavit order), and order dismissal, permitting sequence reconstruction.\"\n    }\n  },\n  \"remediation_note\": \"The record would benefit from explicit incorporation or attachment of the PS-13 form, the ROI investigation notes referenced at specific page numbers, and a separate chronology documenting management's response at each reporting stage. Additionally, management's investigative steps in October–November 2018 should be itemized with dates and outcomes, and the conflict between S1's and the Lead Manager's accounts of what was reported should be explicitly resolved or documented as unresolved.\",\n  \"finding\": {\n    \"ai_function\": \"summarization\",\n    \"condition_triggered\": \"cold_reviewer_clarity and accountability_support—the record summarizes positions and conclusions but omits or references rather than incorporates critical underlying documentation, and does not fully detail the investigative actions Agency management undertook in response to reported harassment.\",\n    \"compliant_version\": \"A compliant version would attach or fully reproduce key documents (PS-13, relevant ROI sections, interview notes); provide a separate investigative timeline showing each allegation, the date reported, to whom, and the specific action taken in response; and explicitly resolve factual conflicts (e.g., what Complainant actually told the Lead Manager) with citations to sworn statements or contemporaneous records.\"\n  }\n}\n```"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 1552,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 735,
+   "service_tier": "standard",
+   "inference_geo": "not_available"
+  },
+  "diagnostics": null
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdc4M4B74QYXs7WWcRFt",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The FAD's conclusion (nine incidents in 21 months, not severe or pervasive) is stated, but the underlying ROI and witness statements are not in the file and only about five incidents are described, so the nine-incident count cannot be traced.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Complainant is identified as the source of most characterizations, but the corroborating \\\"witness statements\\\" are unnamed, the June/July 2018 report comes from an unidentified \\\"employee\\\", and the Business Office Manager's account is relayed second-hand through Complainant.\"},\"rc3\":{\"status\":\"review\",\"note\":\"Several events are dated (December 11 and 13, 2017; January 25, 2018; June 27, 2018 complaint), but the four CEO notifications, the \\\"June or July 2018\\\" incident, the investigation, and the ROI and FAD dates are missing or vague, and a possible June/July 2018 incident is not clearly placed relative to the June 27, 2018 filing.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The FAD decision-maker is not identified, the severe-or-pervasive standard is applied only implicitly, and the record does not show whether management's or E1's responses were considered, including the CEO's alleged failure to provide an incident report.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"An independent reviewer could not assess whether the FAD conclusion is supported without the ROI, the witness statements, the incident list, and the FAD itself, because the record is a narrative summary that relies on outside context.\"}},\"remediation_note\":\"The record would need the ROI and witness statements attached or cited by identified source, with a dated incident-by-incident list supporting the nine-incident count. It would also need the FAD decision-maker named, the criteria applied stated, and the documented management and E1 responses and prior escalation steps placed in dated order.\"}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 3255,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 1306,
+   "output_tokens_details": {
+    "thinking_tokens": 685
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}

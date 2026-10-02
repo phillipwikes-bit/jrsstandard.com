@@ -1,0 +1,35 @@
+{
+ "request_model": "claude-sonnet-5-5",
+ "response": {
+  "model": "claude-sonnet-5-5",
+  "id": "msg_011Cfdbh2qDuW62vZ6igW6D7",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+   {
+    "type": "text",
+    "text": "{\"conditions\":{\"rc1\":{\"status\":\"review\",\"note\":\"The final decision's conclusions (no prima facie case, nondiscriminatory workload rebalancing, no nexus or severity) are stated, but the path from evidence to them is thin: the rebalancing rationale rests on S2's account alone, S1 was not interviewed, C1 was not interviewed, and no comparator data exists to support the 'no more favorable treatment' finding.\"},\"rc2\":{\"status\":\"review\",\"note\":\"Most characterizations are attributed to Complainant, S2, or C2, but the workload-rebalancing rationale (10 specialists, 20+ portfolios) has no documentary source, and the Agency's 'generalized allegations' finding is not tied to identified evidence.\"},\"rc3\":{\"status\":\"pass\",\"note\":\"Events are dated and ordered from the April 2018 interview through the May 2, 3, 8, 9, 10 and 11 events, the June 2018 leave and reassignment, and the August 14, 2018 complaint filing, so the sequence and period are followable.\"},\"rc4\":{\"status\":\"gap\",\"note\":\"The record does not identify who drafted the final decision or what evidence was weighed, and it does not show that S1's or C1's accounts were considered; the dismissal of reprisal as not protected activity also overlooks Complainant's alleged opposition to assignments based on assumed protected status.\"},\"rc5\":{\"status\":\"gap\",\"note\":\"Because S1, the key actor, and C1, the comparator, were never interviewed, demographic and comparator information is missing, and the workload-rebalancing explanation is uncorroborated, an independent reviewer could not assess from this record alone whether the conclusion is supported.\"}}}"
+   }
+  ],
+  "container": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "stop_details": null,
+  "usage": {
+   "input_tokens": 5054,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "cache_creation": {
+    "ephemeral_5m_input_tokens": 0,
+    "ephemeral_1h_input_tokens": 0
+   },
+   "output_tokens": 561,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "service_tier": "standard",
+   "inference_geo": "global"
+  },
+  "diagnostics": null
+ }
+}
