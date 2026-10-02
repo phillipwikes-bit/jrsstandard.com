@@ -3164,3 +3164,9 @@ Only four line groups differ between v7 and v8.
   - Study 014 draft and marketing assessment no longer depend on or cite Study 013; Study 014 builds its own corpus.
   Earlier tracker lines are left as written (append-only log).
 - 2026-10-02 (**OWNER: NO NOTES TO COUNSEL**): the counsel flag on the Study 013 withdrawal was removed from the report (E.4 and E.5 note), from IP_SALE_TRACKER row 71, and from the previous tracker entry. The report keeps one withdrawal note with no results.
+- 2026-10-02 (**PREVENTION NICHE RESEARCHED**): `research/PREVENTION_NICHE_RESEARCH_2026-10-02.md`. The niche is reconstruction-preserving AI drafting.
+  - **Verified demand signals:** California SB 524 (signed 13 October 2025; AI police reports must disclose AI use, retain the first draft and identify the creator and source footage); the EFF finding that Axon Draft One keeps no draft; at least USD 145,000 in Q1 2026 sanctions for AI-fabricated citations (EDRM, secondary). NARA AC 11.2026 page opened; guidance text not read.
+  - **Fit:** SB 524's remedies map to RC2, RC4 and RC1; HR and investigation records have no equivalent rule.
+  - **Product shapes:** a free drafting specification; a licensed conformance test suite (primary revenue, *Judgment*); a free policy kit; the Engine reframed as a pre-finalization checker.
+  - **Key cautions:** "prevents" is a banned word under section 24 until established; no evidence yet that the approach works, so H4 is proposed for Study 014; copyability; trademark and conformance language.
+  Nothing sent.
