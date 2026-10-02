@@ -65,3 +65,14 @@ attestation is not a weak document; it is a different thing. It is the strongest
 available evidence for a proposition only the owner holds, and no evidence at all
 for a proposition that requires an instrument. **Neither entry moves any rights
 finding.**
+
+————————————————————————————
+
+**External sequence divergence, recorded 2026-10-02. No new E-ID is assigned here.** On 2026-10-02 the owner supplied revised Word and PDF estate documents (dated 2026-10-01) that describe a **45-entry** sequence. In it, canonical E-040 is the source-grounding engineering candidate, E-041 is Manifest provenance, E-042 to E-044 are the AI and Ethics editor decision of 2026-09-23 and two author replies, and E-045 is offline evaluation tooling. That sequence also carries an older 42-entry Word alias numbering. **This ledger has 39 entries and ends at E-039.**
+
+Checked 2026-10-02:
+- None of GitHub's 16 branches holds the candidate branch `codex/manifest-x9-release`, and GitHub returns "No commit found" for its commit `35de1c3862f659a6965b121cde6d735c851c8616`.
+- The four files cited for E-045 exist in no fetched branch and not on the working machine.
+- The supplied checklist itself describes those branches as local and unpushed.
+
+**Disposition:** E-040 to E-045 are an external sequence held outside this repository. They must not be cited here by number alone, and no number is to be reused for a different subject. They are merged only after their original records are inspected (CLAUDE.md section 5; blocker B-019). The editor decision and replies are restricted correspondence and are not reproduced.

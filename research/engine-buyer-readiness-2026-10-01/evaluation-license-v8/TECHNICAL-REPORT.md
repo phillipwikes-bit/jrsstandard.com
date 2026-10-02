@@ -49,13 +49,13 @@ Revision 1 marked most execution facts "not independently checked", because the 
 ### 1.3 Not confirmed here
 | Revision 1 statement | Finding in this repository |
 |---|---|
-| An available `0.1.1-validation` candidate with quotation anchors | **Not present.** The only Engine source is `0.1.0-validation`; no branch or commit contains `0.1.1-validation` (*Observed*, `git log --all -S`). It remains *source-reported* from records produced outside this repository |
-| Ledger entry E-045, citing `test-execution.json`, `final-execution-record.json`, `approval-and-safety-execution-record.json` and `ENGINEERING-EVIDENCE-REPORT.md` | **Not present** in this repository. This repository's `EVIDENCE_LEDGER.md` ends at E-039. *Source-reported* only |
+| An available `0.1.1-validation` candidate with quotation anchors | **Confirmed absent from GitHub (2026-10-02).** None of GitHub's 16 branches is a `codex/` branch. GitHub returns "No commit found" for the candidate commit the uploaded documents name (`35de1c3862f659a6965b121cde6d735c851c8616`), and `git fetch` of it is refused ("not our ref"). The uploaded checklist itself records that branch, and `codex/buyer-readiness-execution-2026-09-29` at `9790f4c`, as **local and unpushed**. Their recorded base, `855ccfdc…`, does exist on GitHub. Conclusion: the candidate exists, if at all, only in the owner's local working copy. It remains *source-reported* until it is pushed or uploaded |
+| Ledger entry E-045, citing `test-execution.json`, `final-execution-record.json`, `approval-and-safety-execution-record.json` and `ENGINEERING-EVIDENCE-REPORT.md` | **Confirmed absent.** None of the four files exists in any GitHub branch, in the fetched history or on this machine's disk (searched by name, 2026-10-02). This repository's `EVIDENCE_LEDGER.md` ends at E-039, so the uploaded 45-entry sequence (E-040 to E-045) is recorded as an external sequence, not merged (see the ledger note of 2026-10-02 and blocker B-019). *Source-reported* only |
 | Manifest page "served 1.0.1, local 1.0.2" | This repository's `manifest.html` states schema revision 1.0.1, and no 1.0.2 exists here. The 1.0.2 copy is on another working copy that was not supplied |
 | Engine endpoint GET returns 405 | Confirmed 2026-10-02T06:52Z on `/api/v1/review-engine` and `/api/review-engine` (*Observed*). A 405 on GET shows that the route exists and refuses that method. It says nothing about authenticated inference |
 
 ### 1.4 A defect in Revision 1 itself
-Revision 1 names two contributors in section 12. The redacted audit-bundle builder (`tools/build-audit-bundle.mjs`) refuses any included file that contains contributor names. Revision 1 therefore could not be shipped in a buyer or third-party audit bundle. This revision refers to contributors by role only.
+Revision 1 names two contributors in section 12. **Confirmed by running the actual builder** (`tools/build-audit-bundle.mjs`) on a scratch copy of this directory with Revision 1 in place: `BUNDLE REFUSED`, matching the patterns for both names (exit 1). The same run with Revision 2 succeeded (exit 0). **Resolved:** this revision refers to contributors by role only, and the shareable bundle was rebuilt with it (section 9).
 
 ## 2. Intended use and human authority
 
@@ -152,7 +152,7 @@ In the customer-run package, record text goes to the model provider under the bu
 
 Support receives no raw records. Any bundle sent to ChatGPT or another third party is a transmission: use the redacted `AUDIT-BUNDLE.zip` (which withholds the Engine source, the system prompt, the answer key, credentials, restricted slugs and contributor names), and keep owner-only files separate. A hash checks bytes; it does not establish authorship, permission or custody.
 
-The `AUDIT-BUNDLE.zip` dated 2026-10-02 contains the **original** report. It was not rebuilt for this revision, and its own checksums still verify.
+`AUDIT-BUNDLE.zip` was **rebuilt on 2026-10-02 with this revision** (38 included files; its hash is in `SHA256SUMS.txt`). Inside it, the checksums verify, both validator self-tests pass, and no contributor name or key pattern appears (*Observed*). The earlier bundle, which carried the original report and its superseded 6/6 figure, is preserved unchanged at `history/AUDIT-BUNDLE_2026-10-02_with-original-report.zip`. The zip container is not byte-reproducible between builds, because directory entries carry build-time timestamps; the contents and their checksums are.
 
 ## 10. Demonstration and commercial gates
 
@@ -204,7 +204,8 @@ A new live run is a new stochastic sample, not a replay. It needs its own call a
 | "Nothing goes to JRS" | Scope of the offline tests | True of the tested configuration only | Revision 1 point accepted |
 | Key "should be rotated" | No rotation evidence | Exposed until rotation is evidenced | Revision 1 point accepted |
 | Revision 1: run artifacts unavailable | Present; checksums verify | Execution facts *Observed* | Revision 1 lacked the files |
-| Revision 1: 0.1.1 candidate available | Not in this repository | *Source-reported* only | Exists, if at all, outside this repository |
+| Revision 1: 0.1.1 candidate available | Not on GitHub; candidate commit not found; the uploaded checklist calls it unpushed | *Source-reported* only, pending push or upload | Exists, if at all, in the owner's local working copy |
+| Original bundle carried the 6/6 report | Bundle rebuilt | Shareable bundle now carries Revision 2; old bundle preserved in `history/` | Keeps the buyer-shareable copy consistent with the corrected figures |
 
 ## 16. References
 
