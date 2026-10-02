@@ -88,3 +88,11 @@ This supersedes `PROTOCOL_DRAFT.md`, which is kept for history. Where this docum
 - **Outputs:** never overwritten; raw responses saved.
 - **Retries:** up to 2, on 429, 529 and 5xx only.
 - No refusal fallback.
+
+## Implementation note 1, 2026-10-02 (before any model call; after corpus counts were seen)
+The corpus has record citations in only 11 of 30 sources, so the deletion rotation is fixed as follows, by source ID order:
+- the first 10 sources with at least one citation get the **citations** deletion;
+- the next 10 remaining sources get the **dates** deletion;
+- the last 10 get the **attributions** deletion.
+
+The Codebook text is re-extracted, word for word, to `engine/codebook-conditions.json`.
