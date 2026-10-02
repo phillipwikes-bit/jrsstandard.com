@@ -419,6 +419,7 @@ One line per settled decision: date, decision, source. **Read this first, before
 | 2026-10-02 | Keep the signed SCCE copyright form in the repository, on main | Owner, 2026-10-02; main 044c7af |
 | 2026-10-02 | Review the sales and licensing assessment point by point, then issue one clean revised report (not layered revisions) | Owner, 2026-10-02 |
 | 2026-10-02 | STA was built on the same fundamentals as CCI's MRT; STA figures confirmed (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | Owner, 2026-10-02 |
+| 2026-10-02 | D8: the curriculum (training, guides, Reviewer Reference) remains free; consider giving it to Dewey (Broida) or SCCE to publish | Owner, 2026-10-02 |
 | 2026-10-01 | First evaluation workflow: non-HR supplier-access exception approvals, fixture-only (O-01); error weights as in v8 s16 (O-02); USD 5 smoke ceiling (O-04); HOLD sending until a minimum sendable package exists, then the owner names one recipient (O-05); trackers stay on the working branch (O-07). O-08 NOT ANSWERED | V8 decision sheet |
 | 2026-10-02 | Assessment point 1 settled: first-sale candidates are two licences, (1) the Engine trial, ready now at the USD 1,000 test price, and (2) a curriculum licence, pending D8; the review engagement is removed | Owner, 2026-10-02 |
 
@@ -585,6 +586,39 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 - Institutional facilitator training: USD 1,500 to 3,000.
 - Individual facilitator certification: USD 250 to 700.
 - One-time, with no annual renewal.
+
+### C.5 Owner direction, 2026-10-02: keep the training free; consider giving it to Dewey (Broida) or SCCE to publish
+
+**Owner's words:** "I think it should remain free but if I give it to broida for free publication or SCCE handbook?" Recorded as the owner's direction on D8: **the curriculum stays free.** C.4's paid curriculum licence is therefore **set aside**. Its market test is replaced by a publishing route.
+
+**What free publication would gain (*Inference*):**
+- **Third-party imprimatur.** A Dewey or SCCE imprint is a credential a buyer or licensee can check, which a self-published PDF is not.
+- **Distribution to the exact audiences:**
+  - Dewey reaches federal EEO investigators, attorneys and agency representatives (its catalog includes the *EEO Counselors' and Investigators' Manual*; checked 2 October).
+  - SCCE reaches 7,000+ compliance professionals, and you are already an accepted SCCE author.
+- **Consistency with your history:** STA made its programs free as a community service and kept the copyright.
+
+**The one thing that would cost you: rights.**
+- **SCCE (VERIFIED for magazine articles):** your signed CEP form transferred "full ownership of the copyright ... in all forms and media ... throughout the world" to SCCE & HCCA. **If a handbook were published on those same terms, SCCE would own the text.** It would then:
+  - leave the JRS estate, so it could not be part of a later sale or licence;
+  - need SCCE's permission before you could keep it free on jrsstandard.com or change it.
+- **SCCE's book terms are UNKNOWN:** the book-proposal page returned HTTP 403 on 2 October. They may differ from the article form; ask before submitting.
+- **Dewey:** terms **UNKNOWN**. A commercial publisher normally sells what it publishes, so "free publication" through Dewey most likely means a chapter in a sold manual, a free newsletter feature, or a free eBook if Dewey agrees. Ask.
+
+**Recommendation:**
+1. **Offer a non-exclusive licence, never a copyright transfer.** You keep the copyright. The publisher gets the right to publish its edition. JRS stays free on your site, and the work stays transferable with the estate.
+2. **Write the terms down before any submission:**
+   - non-exclusive;
+   - you keep the copyright and can keep the material free online;
+   - you may update and relicense it;
+   - the agreement can be assigned to a future owner;
+   - attribution "Justification Review Standard (JRS), Phillip Wikes".
+3. **If a publisher requires a full copyright transfer, offer an adapted edition instead,** such as a federal-investigator edition of the Reviewer Reference, so the core JRS standard, codebook and training stay with you.
+4. **Exclude content you don't control:** CEP text (SCCE-owned) and CCI material (co-author approval).
+5. **Describe AI assistance accurately,** because publishers ask authors to warrant originality and sole authorship (the CEP form did).
+6. **Sequence for Broida:** the November CEP issue first, with a give-only note (D7). Then one well-formed offer to Dewey (his one-ask cadence rule). For SCCE, ask Bill Anholzer or the book editor for book terms after the November issue.
+
+**Effect on the sale (*Inference*):** a free, publisher-imprinted JRS raises the value of what can be sold (the standard, research, brand, training system and your credibility as its author), provided the copyright stays with you. It earns little or no direct income, which is consistent with your choice to keep it free.
 
 **Two decisions this raises (Appendix B, items 30 and 31):**
 1. **Facilitator training is delivered by you, so it uses your hours.** Your 26 August decision dropped fixed-scope engagements that sell your hours. A short, one-time train-the-trainer session that transfers capability (the STA model) may be a reasonable exception, but that is your decision, not mine.
