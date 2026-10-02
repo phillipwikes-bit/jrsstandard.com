@@ -15,8 +15,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-10-02 (rev 47) |
-| **Revisions** | 47 |
+| **Last revised** | 2026-10-02 (rev 48) |
+| **Revisions** | 48 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -179,6 +179,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 48 | 2026-10-02 | **Owner floated offering co-author Ubayet Hossain a test of the Engine plus 50% of profit. Advice only; nothing offered.** Recommended: invite him to test (blind labels from a methodology co-author are the strongest evidence currently available, disclosed as co-author, not independent). Do not offer 50% of profit now. It would give him an economic stake that undercuts his labels as evidence, create a co-ownership claim any buyer must clear, raise parity expectations among other contributors (rev 22 recorded that nobody is owed money), and need a lawyer-drafted agreement defining profit. Alternatives: a fixed honorarium for labelling, or a defined, time-limited commission on deals he introduces. **No change to sale status or probability estimates.** |
 | 47 | 2026-10-02 | **Post-publication message to co-author Ubayet Hossain drafted, not sent** (`research/Ubayet_PostPublication_Message_DRAFT_2026-10-02.md`). It follows the recorded owner decision to defer this contact until publication (register section 12) and asks for three written confirmations: paid or licensed use, successor transfer, and personal capacity (register section 21 notes a KPMG India context). It closes the factual limb of CT-1; the legal limb stays with the lawyer review (B-004). It does not imply that the article validates the Engine, and it promises no payment. **No change to sale status or probability estimates.** |
 | 46 | 2026-10-02 | **First live Engine run done. 11 of 13 evaluation-licence gates now pass; the remaining three are owner decisions.** 10 calls on five fictional records, USD 0.035. Every result matched the expectations frozen before the run: the complete record passed, the thin and attack records were flagged, and no prompt or key text leaked. Fixture behavior only, n = 5. Remaining: D5 (owner approves the demo), L7 (payment method and selling party), L8 (owner release decision). The owner overrode the CLAUDE.md rule on chat-pasted keys for his own key; the key should still be rotated. **No change to sale status or probability estimates.** |
 | 45 | 2026-10-02 | **Engine evaluation licence: Track B built as far as the owner-side blockers allow.** Built and tested: a deterministic customer-run package (`jrs-eval-0.1.0-eval-d73ceb8066.tar.gz`, clean install 9/9, runner 35/35), an agreement draft (needs one lawyer review before signature), an order form with a validator, invoice and activation steps, a procurement index, a buyer data checklist, a claim register, and a redacted audit bundle. Gates: L1, L2 and L6 PASS; L3 to L5 wait on the live run (provider key absent); L7 waits on the owner choosing a payment method and the selling party; L8 waits on the owner release decision. Also this turn: all owner-route passwords were removed on the owner's rule and deployed to production, byte-verified (commits 7dec748 and edd67e4). Leads: 0. **No change to sale status or probability estimates.** |
