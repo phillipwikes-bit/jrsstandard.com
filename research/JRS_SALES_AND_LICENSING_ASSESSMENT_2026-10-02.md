@@ -418,6 +418,7 @@ One line per settled decision: date, decision, source. **Read this first, before
 | 2026-10-02 | Keep the editor's CEP wording; send no correction | Owner, 2026-10-02 (earlier agreement not found in the repository) |
 | 2026-10-02 | Keep the signed SCCE copyright form in the repository, on main | Owner, 2026-10-02; main 044c7af |
 | 2026-10-02 | Review the sales and licensing assessment point by point, then issue one clean revised report (not layered revisions) | Owner, 2026-10-02 |
+| 2026-10-02 | STA was built on the same fundamentals as CCI's MRT (facilitator training and certification, participant materials, delivery by the customer's staff); figures still to confirm | Owner, 2026-10-02 |
 | 2026-10-01 | First evaluation workflow: non-HR supplier-access exception approvals, fixture-only (O-01); error weights as in v8 s16 (O-02); USD 5 smoke ceiling (O-04); HOLD sending until a minimum sendable package exists, then the owner names one recipient (O-05); trackers stay on the working branch (O-07). O-08 NOT ANSWERED | V8 decision sheet |
 | 2026-10-02 | Assessment point 1 settled: first-sale candidates are two licences, (1) the Engine trial, ready now at the USD 1,000 test price, and (2) a curriculum licence, pending D8; the review engagement is removed | Owner, 2026-10-02 |
 
@@ -534,6 +535,8 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | Later revenue | Training more staff, workbooks, consultation, expansion |
 | Delivery | You and Tony Myers trained and certified facilitators; the customer's own staff then ran the program |
 | Later | Programs made available free as a community service, with copyright kept |
+
+**Owner confirmation, 2026-10-02:** "our business was based on same fundamentals as CCI's MRT." **The structure is confirmed by the owner:** facilitator training and certification, participant materials, and delivery by the customer's own staff. The individual dollar figures still await confirmation (Appendix B, item 31).
 
 **How it lines up with the verified market (*Inference*):**
 - **The structure matches MRT almost exactly:** paid facilitator certification, per-participant materials, and delivery by the customer's own staff.
