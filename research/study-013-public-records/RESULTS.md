@@ -29,6 +29,9 @@ Brackets are Wilson 95% intervals. "Flagged" means the modal route across the 3 
 2. **Summaries, not records.** Every text is the EEOC's condensed background section. A summary leaves out detail by design, so a reviewer looking for documentation will find "missing" items in almost any summary.
 3. Under both readings, the result says little about the Engine on real investigative files. It says a lot about using AI documentation review as a stand-in for adjudicative adequacy: **AI reviewers applied a stricter bar than the adjudicator.**
 
+## Bias review (added 2026-10-02)
+See `BIAS_REVIEW.md`. The main bias: reviewers judged the EEOC's summaries as if they were the records, so missing sources and bare conclusions (features of the summary format) were read as record gaps. In the first run of each case, 21 to 23 of 30 notes from each JRS arm raised them, against 9 for arm A. The narrow result stands. Broader readings, including "JRS made the model worse", are not supported.
+
 ## What this does and does not support
 - **Supports:** on these 30 public summaries, none of the five arms could tell adequate from inadequate records; all of them over-flag. The Engine prompt did not outperform the public JRS text, and a stronger model was as good and more stable.
 - **Does not support:** any accuracy claim, any claim that JRS "detects" inadequate investigations, or any claim of Engine superiority. It does not show that JRS is wrong: the construct mismatch (point 1) remains open.

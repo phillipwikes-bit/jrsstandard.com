@@ -3144,3 +3144,11 @@ Only four line groups differ between v7 and v8.
   - The E.2 point 7 stop rule is met at feasibility level.
   - Likely explanation (*Inference*): the JRS documentation bar differs from the EEOC's adequate-to-decide bar, and summaries are not records.
   RESULTS.md, assessment E.5, companion plan section 0 and item 29 updated. Blinded worksheet (75 rows) ready for owner scoring. Owner should delete the pasted key.
+- 2026-10-02 (**OWNER ASKED WHETHER STUDY 013 IS BIASED, BY ANALOGY TO JUDGING AGAINST AN EMPTY RECORD**; the owner's pasted text concerns a private matter and is deliberately not stored, because the repository is public): `BIAS_REVIEW.md` added. Yes, there is a measurement bias toward over-flagging.
+  1. **Summary treated as the record.** In first-run notes, JRS arms raised missing-source or bare-conclusion complaints in 21 to 23 of 30 cases, against 9 for A; these are artifacts of the summary format and interact with RC1 and RC2. Large.
+  2. Two different bars (*Inference*).
+  3. Stripping asymmetry: 7 "supplemental" sentences removed from PASS cases against 2 from GAP, including S013-28's own record development. Small.
+  4. LLM-judge negativity bias (literature, search results only).
+  5. Label meaning: burden-of-proof wording in 14 of 15 PASS and 15 of 15 GAP, so it does not separate them.
+  6. Designer bias: low for this result, since the result went against JRS.
+  The narrow result stands; "JRS made it worse" is not supported. Next step: a free, decisive check where a human JRS reviewer scores the same 30 summaries blind. RESULTS.md updated.
