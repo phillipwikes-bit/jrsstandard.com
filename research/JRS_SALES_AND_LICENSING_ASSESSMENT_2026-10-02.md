@@ -449,6 +449,7 @@ One line per settled decision: date, decision, source. **Read this first, before
 | 2026-10-02 | Keep the signed SCCE copyright form in the repository, on main | Owner, 2026-10-02; main 044c7af |
 | 2026-10-02 | Review the sales and licensing assessment point by point, then issue one clean revised report (not layered revisions) | Owner, 2026-10-02 |
 | 2026-10-02 | STA was built on the same fundamentals as CCI's MRT; STA figures confirmed (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | Owner, 2026-10-02 |
+| 2026-10-02 | **The owner works from a phone only and has no computer.** Never give instructions that need a computer. For keys, the owner pastes in chat under the CLAUDE.md section 22 override: used only as a process environment variable, never written to a file, commit, log or tracker | Owner, 2026-10-02 (stated repeatedly) |
 | 2026-10-02 | Study 013: use real public records instead of outside case writers; Claude selects normal and edge cases | Owner, 2026-10-02 |
 | 2026-10-02 | Study 013 spending: "Spend whatever for study" (no cap set by the owner) | Owner, 2026-10-02 |
 | 2026-10-02 | Five strong November publishing targets: Dewey (Broida), SCCE, HCCA, AWI Journal, IAOHRA/NFHTA; other survey rows not pursued | Owner, 2026-10-02 |
