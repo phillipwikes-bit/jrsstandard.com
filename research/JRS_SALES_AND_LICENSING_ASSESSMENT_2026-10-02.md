@@ -618,6 +618,13 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 5. **Describe AI assistance accurately,** because publishers ask authors to warrant originality and sole authorship (the CEP form did).
 6. **Sequence for Broida:** the November CEP issue first, with a give-only note (D7). Then one well-formed offer to Dewey (his one-ask cadence rule). For SCCE, ask Bill Anholzer or the book editor for book terms after the November issue.
 
+**SCCE's handbook, checked 2026-10-02 (search results and SCCE and PR Newswire release listings; pages not opened):**
+- SCCE's flagship handbook is ***The Complete Compliance and Ethics Manual*.** It is **updated every year** (a 2026 edition exists), is written by **more than 80 practitioner authors**, runs to about **1,100 pages**, and is sold as a two-volume print set or an online subscription.
+- It already carries investigation chapters, including "Creating an Organizational Investigations Program and Conducting Effective Workplace Investigations".
+- *Inference:* the realistic SCCE route is **one contributed chapter in a future annual edition** (for example, on reconstructable records and AI-assisted documentation), not a standalone JRS handbook.
+- **Contributor rights terms are UNKNOWN.** If they follow the CEP form, SCCE would own the chapter text, so write the chapter as an adapted contribution and keep the core JRS materials outside it.
+- SCCE also publishes standalone books (for example *Compliance 101*) through its book-proposal process.
+
 **Effect on the sale (*Inference*):** a free, publisher-imprinted JRS raises the value of what can be sold (the standard, research, brand, training system and your credibility as its author), provided the copyright stays with you. It earns little or no direct income, which is consistent with your choice to keep it free.
 
 **Two decisions this raises (Appendix B, items 30 and 31):**
