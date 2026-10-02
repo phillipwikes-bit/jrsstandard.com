@@ -176,7 +176,7 @@ I read `programme-status-9872fb93cc94.html` live (byte-identical to `main`) and 
 | "Decision Reconstruction Risk: A Record-Level Control", *EDPACS* | You, single author | 2,878 words | **Backup draft**, no co-author dependency | *Observed* | **The fastest submission available**, but it uses stale figures ("15 professionals... 82.8 percent"). Update it to 16 reviewers and 83.9% before submitting |
 | Three LinkedIn articles (2 June, 11 June and 2 July 2026) | You | short | Self-published | *Recorded* (E-025 to E-027) | Priority dates for JRS and DRR. Not peer review; never cite them as such |
 
-**Full manuscript review, added after the owner uploaded four manuscripts:** `research/MANUSCRIPT_REVIEW_2026-10-02.md`. Its key findings:
+**Full manuscript review, added after the owner uploaded four manuscripts:** Appendix D. Its key findings:
 1. **The CEP copy edit introduced an error** ("reviewers can be independently reconstruct records"). Send the editor the fix before print. The article also never names JRS.
 2. **The uploaded detection file is the 18 August version.** It still lists the co-author at KPMG India, which he asked to be removed on 28 August. Its consent sentence also contradicts the submitted title page about a withdrawn panel member. Both must be settled before resubmission, given the editor's identity and provenance grounds.
 3. **The ISACA article cannot go out until its first author has read it**, and it recycles the CEP article's practitioner content.
@@ -396,6 +396,242 @@ These three assets rest on **your practitioner credibility**: 13 years as a Lead
 - Web, retrieved 2 October 2026 (vendor marketing, not independent evidence): [HR Acuity documentation](https://www.hracuity.com/platform/documentation/); [HR Acuity employee relations AI](https://www.hracuity.com/platform/employee-relations-ai/); [AllVoices AI for employee relations](https://www.allvoices.co/blog/ai-for-employee-relations); [Case IQ 2026 benchmark summary](https://www.caseiq.com/resources/articles/biggest-year-over-year-changes-in-investigations-what-the-2026-benchmark-report-means-for-leaders); [Gartner investigation management reviews](https://www.gartner.com/reviews/market/investigation-management-software).
 - Publishing and training routes, retrieved 2 October 2026 (publisher and association pages): [Dewey Publications, EEO titles](https://deweypub.com/store/EEO.html); [Dewey eBooks](https://deweypub.com/store/eBooks.html); [SCCE, submit a book proposal](https://www.corporatecompliance.org/publications/write-scce/submit-your-book-proposal); [Write for SCCE](https://corporatecompliance.org/publications/write-scce); [AWI Training Institute](https://www.awi.org/news/586941/AWI-Training-Institute-for-Workplace-Investigators--Register-Today.htm); [About AWI](https://www.awi.org/page/about_AWI).
 - Manuscripts read: `research/aie_submission_2026-09-01/01_Blinded_Manuscript.md`; `research/rmj_submission_2026-09-01/01_RMJ_Manuscript_ANONYMOUS.docx`; `research/Employment_Records_Article_ISACA_2026-08-21.md`; `research/Backup_Article_EDPACS_DRR_Control.md`; `research/BusinessEthics_Article_Draft.md`; `research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md`; `research/foil_resubmission_2026-09-01/ASSESSMENT_AND_NEXT_STEPS.md`; `research/Reply_Hekim_Publication_Terms_2026-08-05.md`; `research/Broida_Interaction_Summary_2026-09-06.md`; guide and Reference PDFs (page and word counts).
+
+---
+
+## Appendix A. Owner decisions log (read before raising any point)
+
+One line per settled decision: date, decision, source. **Read this first, before raising any point with the owner**, then search MASTER_TRACKER, IP_SALE_TRACKER, the decision registers and the article change logs. Started 2026-10-02 on the owner's instruction, to stop settled matters being raised again.
+
+| Date decided | Decision | Source |
+|---|---|---|
+| 2026-07-15 | The enrollment list is not used for marketing; permitted uses are certificate delivery, honest updates, diligence narrative, and transfer for those who consented | MASTER_TRACKER 2026-07-15 |
+| 2026-07-21 | CEP article copyright transferred to SCCE & HCCA (signed form) | `research/evidence/scce_copyright_2026-07-21/` |
+| 2026-08-15 | Paid offers stay off the public site until the research programme is complete | IP_SALE_TRACKER rev 14 |
+| 2026-08-18 | Trade articles are vendor-neutral and non-promotional (no URL or cross-promotion) | CCI change log 2026-08-18; owner confirmation 2026-10-02 |
+| 2026-08-23 | The federal training referral channel (FELTG, Gilbert, LRP) is closed, not to be reopened | IP_SALE_TRACKER s5 |
+| 2026-08-25 | Guides and training stay free, permanently | MASTER_TRACKER 2026-08-25 |
+| 2026-08-26 | Revenue model is B2B licensing only (SaaS and API); fixed-scope owner-hour engagements dropped | MASTER_TRACKER 2026-08-26 |
+| (register s12) | Contact with Ubayet Hossain about commercial use is deferred until publication | Master Register s12 |
+| 2026-10-01 | USD 1,000 approved as an unvalidated test price for the evaluation, with 2 hours of support | V8 decision sheet O-03 |
+| 2026-10-02 | No passwords or tokens on the owner page, ever | Owner instruction; commits 7dec748, edd67e4 |
+| 2026-10-02 | Keep the editor's CEP wording; send no correction | Owner, 2026-10-02 (earlier agreement not found in the repository) |
+| 2026-10-02 | Keep the signed SCCE copyright form in the repository, on main | Owner, 2026-10-02; main 044c7af |
+| 2026-10-02 | Review the sales and licensing assessment point by point, then issue one clean revised report (not layered revisions) | Owner, 2026-10-02 |
+| 2026-10-01 | First evaluation workflow: non-HR supplier-access exception approvals, fixture-only (O-01); error weights as in v8 s16 (O-02); USD 5 smoke ceiling (O-04); HOLD sending until a minimum sendable package exists, then the owner names one recipient (O-05); trackers stay on the working branch (O-07). O-08 NOT ANSWERED | V8 decision sheet |
+| 2026-10-02 | Assessment point 1 settled: first-sale candidates are two licences, (1) the Engine trial, ready now at the USD 1,000 test price, and (2) a curriculum licence, pending D8; the review engagement is removed | Owner, 2026-10-02 |
+
+## Appendix B. Preparation checklist before any outreach or sale
+
+Started 2026-10-02 at the owner's request: "take care of every possible preparation item before executing." Work it one item at a time; record each outcome in Appendix A. Status values: OPEN, DONE, BLOCKED.
+
+## A. Only the owner can do or decide
+| # | Item | Why it matters | Status |
+|---|---|---|---|
+| 1 | Make the GitHub repository private (B-018) | Stops public access to contributor emails via the owner feed (B-021), the reviewer rosters and certificates (B-020), the answer key and the sale strategy | OPEN |
+| 2 | After 1: approve rotating the owner-page and feed addresses (B-021) | The current addresses are written in public files | OPEN |
+| 3 | Decide whether to remove the rosters and certificates from Git history (B-020) | Copies already taken cannot be recalled; history removal is a force push | OPEN |
+| 4 | Rotate the Anthropic API key pasted in chat | It counts as exposed | OPEN |
+| 5 | Confirm or change the price (USD 1,000) and the 2 support hours | The price has no market basis (see the origin below) | OPEN |
+| 6 | L7: choose a payment method and the selling party (you personally or an entity) | Nothing can be paid for without it | OPEN |
+| 7 | D5: approve the recorded demo | Demo gate | OPEN |
+| 8 | L8: release decision for the evaluation package | Release gate | OPEN |
+| 9 | O-08: was the v8 prompt pasted into ChatGPT or another service? | If yes, the confidential buyer-page addresses should be rotated | OPEN |
+| 10 | D8: does "free, permanently" allow licensing the curriculum to a training provider? | Decides whether the second first-sale candidate exists | OPEN |
+| 11 | Engage one lawyer, with a fee cap, to review the evaluation agreement draft | Before the first agreement is signed | OPEN |
+| 12 | Push the codex branches or upload the 0.1.1 and E-045 files (B-019) | Needed before any claim about the newer Engine | OPEN |
+| 13 | D4: when to ask the detection co-author for written confirmation | His "after publication" trigger may be far off | OPEN |
+
+## B. Claude can prepare now (the owner approves before any use or send)
+| # | Item | Status |
+|---|---|---|
+| 14 | Two-page limitations brief for buyers (what was tested, what was not, the journal history stated plainly) | OPEN |
+| 15 | Short discovery message and question script, no price, vendor-neutral | OPEN |
+| 16 | Target list of 40 organizations, kept outside the public repository until item 1 is done | OPEN |
+| 17 | Prospectus wording fixes ("turnkey", "manuscript in preparation", "role-gated"): a production change, needs approval to deploy | OPEN |
+| 18 | Check the training, guides and Reference for any CEP wording (SCCE now owns that text) | OPEN |
+| 19 | Curriculum-licence preparation: a rights schedule of the training content (excluding CEP and CCI text) and a one-page term sheet; only if D8 allows | OPEN |
+| 20 | ED-05 (record text sent without delimiters): prepare a fix; testing it needs a small paid-call allowance and owner approval | OPEN |
+| 21 | Update the stale `scripts/publication_status.py` | OPEN |
+
+## C. Research credibility (parallel; affects buyer diligence)
+| # | Item | Status |
+|---|---|---|
+| 22 | Detection paper: confirm which files went to AI and Ethics; settle the consent sentence; get an ethics exemption or review; handle the paired-test sentence | OPEN |
+| 23 | EDPACS article: update to 16 reviewers and 83.9% before submission | OPEN |
+
+## Where the USD 1,000 price came from (recorded)
+1. **The v8 master prompt you supplied** (section 13, line 192) told me to "prepare a proposed USD 1,000 evaluation fee". It called this "a test price selected for the draft offer, not verified willingness to pay, a comparable transaction, or an established valuation."
+2. **Its rationale** (v8, line 487) was the weak earlier interest at USD 750 and USD 500 on different offers. Those August checkout records have since been deleted from the database, so they survive only as tracker history. Its cost example (line 496): 3 hours at USD 100 an hour plus a 5% reserve leaves USD 650.
+3. **My decision sheet** (O-03, 1 October) recommended approving it as an unvalidated test price, with 2 support hours.
+4. **You approved** with "For 2 whatever you recommend" and "Yes to all 6" (gate L1 record).
+5. **There is no market basis for the figure.** No buyer, comparable licence or price test supports it.
+
+## Appendix C. Pricing evidence for the two licence candidates
+
+**2 October 2026.** Requested by the owner: "a price point supported by market evidence for both licenses." Web sources retrieved today. Most are vendor pages, review aggregators or vendor blogs, so they show **ranges and norms, not a precise comparable**: no source prices a narrow, unvalidated, solo-developed review module or a new investigator curriculum. Labels: *Observed* (read today), *Inference* (my reasoning), *Judgment* (my number, not calibrated).
+
+### 1. The Engine evaluation licence (currently USD 1,000)
+
+**Market evidence (*Observed*):**
+| Evidence | Figure | Source |
+|---|---|---|
+| HR Acuity (employee relations and investigations platform), entry price | from about USD 10,000 a year; quote-based | Capterra |
+| Case IQ (investigation case management), basic plan | about USD 20,000 a year (an aggregator estimate, not official) | review aggregators |
+| AllVoices, small-company minimum | USD 5,000 to 10,000 a year | Vendr marketplace |
+| Paid pilot norm for enterprise SaaS | 10 to 30% of annual contract value, usually credited to the contract if the buyer converts | Monetizely |
+| Paid pilot norm for early-stage SaaS | 5 to 15% of target annual value, or 1 to 2 months of list price | DoWhatMatter |
+
+**Reading (*Inference*):**
+- Those prices are for whole platforms. A single-function, unvalidated add-on would sit below their entry prices. A realistic first annual licence for the Engine is about **USD 5,000 to 10,000** (*Judgment*).
+- At the 10 to 20% pilot norm, that gives a paid evaluation of **USD 500 to 2,000**.
+
+**Result:** USD 1,000 is **consistent with the evidence** (about 10 to 20% of a USD 5,000 to 10,000 licence). It is not contradicted by anything found.
+- An evidence-consistent alternative is **USD 1,500, credited in full to a first annual licence** signed within 60 to 90 days, which is the norm the pilot sources describe.
+- The buyer also pays their own model-provider costs (about USD 0.0035 per record review on the tested run).
+
+## 2. The curriculum licence (no price yet)
+
+**Market evidence (*Observed*):**
+| Evidence | Figure | Source |
+|---|---|---|
+| **Federal rule:** every federal EEO investigator must complete 32 hours of training when new and **8 hours every year** after that (EEOC Management Directive 110) | A recurring, compliance-driven demand | EEOC; U.S. DOT MD-110 Q&A |
+| 8-hour EEO investigator refresher, EEOC | USD 450 per person | EEOC training page |
+| FELTG refresher (June 2026) | USD 550 to 650 for 1 day; USD 995 to 1,095 for 2 days | FELTG |
+| Spectrum EEO, self-paced 8-hour refresher | USD 220 | Spectrum EEO |
+| Trusted EEO Solutions, 8-hour refresher | USD 250 | Trusted EEO Solutions |
+| DJCPA Academy, 8-hour refresher | USD 175 | DJCPA Academy |
+| AWI Training Institute (4 days, accredited certificate) | USD 3,350 to 3,500 per student (2024) | AWI |
+| Train-the-trainer licensing (vendor blog, enterprise level) | facilitator certification USD 15,000 to 45,000, plus USD 45 to 125 per participant a year | Monetizely-type source |
+| Individual train-the-trainer programmes | USD 700 to 5,000 per person | Hard Hat Training; R1 Learning; Sources of Strength |
+
+**Reading (*Inference*):**
+- **The strongest evidence is the mandatory 8-hour annual refresher.** Providers already charge USD 175 to 650 per person for it. A JRS module on AI-drafted and reconstructable records could be licensed to those providers as a refresher module, but **whether it would count toward the MD-110 refresher has not been verified**.
+- **Evidence covers what participants pay, not what content owners receive.** No source found states a royalty share for licensed content. The train-the-trainer figure (USD 45 to 125 per seat) is enterprise-level and comes from a vendor blog.
+
+**Price options (*Judgment*, to test, not market-proven):**
+1. **Per-participant royalty:** USD 25 to 50 per participant who takes the JRS module. That is about 10 to 25% of the USD 175 to 450 per-person refresher prices.
+2. **Flat annual licence to one provider:** USD 2,500 to 7,500 a year, unlimited delivery within that provider.
+3. **Facilitator licence** (you certify a provider's trainers): far below the USD 15,000 to 45,000 enterprise figure until JRS has a track record. USD 1,500 to 3,000 per facilitator is a starting test.
+
+**The best evidence available is your own:** the curriculum you licensed through Second Thought Alternatives (2003 to 2018). The records name the company and your role, but contain **no licensing terms or prices**. Your past prices, models and buyers would anchor this better than any web source.
+
+**Constraints (from Appendix A):**
+- Guides and training are free permanently (25 Aug); whether licensing to providers fits is decision D8.
+- FELTG belongs to the referral channel you closed on 23 August. The other refresher providers do not.
+- The curriculum must exclude CEP text (SCCE owns it) and CCI material (co-author approval).
+
+## Sources (retrieved 2026-10-02)
+- Engine: [HR Acuity on Capterra](https://www.capterra.com/p/111531/HR-Acuity-On-Demand/); [Case IQ on Capterra](https://www.capterra.com/p/73201/Case-IQ/); [AllVoices on Vendr](https://www.vendr.com/marketplace/allvoices); [Monetizely pilot pricing](https://www.getmonetizely.com/articles/how-to-structure-enterprise-pilot-program-pricing-effective-proof-of-concept-strategies); [DoWhatMatter pilot pricing](https://dowhatmatter.com/guides/pilot-pricing-seed-saas).
+- Curriculum: [EEOC refresher](https://www.eeoc.gov/training/2023/09/eeo-refresher-training-investigators-virtual); [DOT MD-110 Q&A](https://www.transportation.gov/civil-rights/civil-rights-awareness-enforcement/questions-and-answers-new-management-directive-110); [FELTG refresher](https://feltg.com/event/eeo-counselor-and-investigator-refresher-training-june-3-4-2026/); [Spectrum EEO](https://spectrumeeo.talentlms.com/catalog); [Trusted EEO refresher](https://www.trustedeeosolutions.com/course/eeo-investigator-refresher); [DJCPA refresher](https://djcpas-academy.thinkific.com/courses/equal-employment-opportunity-eeo-continuing-investigator-training); [AWI Training Institute](https://www.awi.org/events/EventDetails.aspx?id=1806381); [Ruzuku B2B training pricing](https://www.ruzuku.com/learn/articles/how-to-price-training-courses); [Hard Hat Training](https://www.hardhattraining.com/train-the-trainer-cost/); [R1 Learning](https://store.r1learning.com/collections/r1-training/products/r1-train-the-trainer-program-see-pricing-tiers); [Sources of Strength](https://sourcesofstrength.org/pricing/).
+
+## Appendix D. Manuscript review (four uploaded papers and the portfolio)
+
+**2 October 2026. Advice, not peer review and not a legal opinion.** Requested by the owner after he uploaded four manuscripts and asked whether the articles had actually been analyzed. Summarized in section 2.6.
+
+**Labels.** *Observed*: read or computed in this session. *Recorded*: in a repository record, not re-checked. *Source-reported*: in the owner's uploaded estate documents only. *Inference*: my reasoning.
+
+**Status correction first.** The Corporate Compliance Insights article ("That AI-Drafted Termination Memo Could Become Evidence", Colpan and Wikes) **is published** (29 September 2026). The assessment says so. The only place that still says "to submit" is `scripts/publication_status.py`, which is stale and was not edited.
+
+### 1. Which version did you upload? (*Observed*)
+
+| Upload | Compared with | Result |
+|---|---|---|
+| `01_RMJ_Manuscript.docx` | `research/rmj_submission_2026-09-01/01_RMJ_Manuscript_R9.docx` | **Same text** (0 word differences); different file bytes |
+| `cep-202611-A5-when-the-record_CLEAN.docx` | `research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.docx` | **The magazine's copy-edited final.** 144 word-level changes, all editorial style. **One introduces an error** (section 2) |
+| `Employment_Records_Article_ISACA.docx` | `research/Employment_Records_Article_ISACA_2026-08-21.docx` | **Byte-identical** |
+| `Detection_Article_Submission_FINAL5_2026-08-18.docx` | The repository's FINAL5 and the AI and Ethics package (`research/aie_submission_2026-09-01/`) | **An older file**, built on 18 August. It predates the co-author's 28 August instruction to remove his employer (section 4.1) |
+
+## 2. CEP Magazine: "When the record cannot speak for itself" (accepted; November 2026 issue)
+
+**One correction to send to the editor before print (*Observed*).** The copy edit changed the third monitoring indicator from "The rate at which records can be independently reconstructed by reviewers with no direct knowledge of the underlying events" to **"The rate at which reviewers can be independently reconstruct records..."**, which is ungrammatical. The fix is "The rate at which reviewers can independently reconstruct records with no direct knowledge of the underlying events."
+
+> **WITHDRAWN, 2026-10-02 (owner correction).** OLD FINDING: send the editor a fix for "reviewers can be independently reconstruct records". NEW EVIDENCE: the owner states that he had already decided, with my agreement, to accept the editor's version and not to correct it. That earlier agreement is not in this repository or this session's transcript (searched), so it probably happened in another session; the owner's statement governs. CORRECTED STATUS: **no correction is to be sent; the editor's version stands.** EXPLANATION: the review was written without checking for an existing decision. The original text above is kept for the record.
+
+**Facts checked.** The SEC's 2022 sweep charged "15 broker-dealers and one affiliated investment adviser" (SEC press release 2022-174), and J.P. Morgan Securities paid USD 125 million in December 2021 (SEC press release 2021-262). Both match the article. The DOJ and NIST quotations were not re-checked today.
+
+**Commercial reading (*Inference*).**
+- **The article never names JRS, DRR or the website.** The only link to the estate is the email address `info@jrsstandard.com` in the bio. It builds your personal authority, not the brand.
+- If SCCE's style allows it at proof stage, a bio line such as "creator of the Justification Review Standard (jrsstandard.com)" would connect readers to the estate. That is a request for you to make, and the editor may decline it.
+> **WITHDRAWN, 2026-10-02 (owner correction).** OLD FINDING: the article never names JRS; ask the editor to add a JRS line to the bio. NEW EVIDENCE: the estate's recorded standard for trade articles is vendor-neutral and non-promotional. The CCI article had its URL, cross-promotion and differentiation claims removed (`research/Evidentiary_Deficit_Article_CCI_CHANGE_LOG_2026-08-18.md`), and the CEP prep outline keeps the "bio line as printed in the accepted piece" (`cep-article-prep/OUTLINE_Detection_Feature.md`). CORRECTED STATUS: **no bio change is to be requested; the neutral article is as intended.** EXPLANATION: I contradicted my own earlier recommendation because I did not search the record before raising the point.
+- **Rights: CONFIRMED by owner evidence, 2026-10-02.** The owner signed the SCCE CEP Magazine Copyright Transfer Form on 7/21/2026. It transfers **full ownership of the article's copyright** to SCCE & HCCA, worldwide and in all media (register, F-4 correction). The CEP text is therefore SCCE & HCCA's. Reuse needs their permission or their Author Permissions Policy (to obtain). This makes the text-recycling finding in section 5 more serious: wording shared with CEP is now someone else's copyright.
+- *Original note, kept:* the SCCE author agreement is not in the repository. SCCE gives authors "a copyrighted PDF" to share (SCCE site), which suggests SCCE holds copyright. Until the agreement is read, do not reuse the article's text in a book, the training or other articles.
+
+## 3. Records Management Journal version: "Can Public-Records Determinations Be Independently Reconstructed?" (Stacyann Young, first author)
+
+**What it shows.**
+- **Design:** 32 public cases from 32 sources (New York and Connecticut, 2005 to 2026). The read and its basis note were recorded before the outcome. 10 cases were blind re-read by an outside reader.
+- **Results:** concordance with Comptroller audits in **5 of 5**. Basis notes stating that the basis could not be rebuilt: **6 of 7** Needs-work cases against **0 of 17** Ready cases. Reads split by structural source class (p = 0.00466). **No association with appellate outcome** (p = 1.000). Blind re-read agreement **70%** (unweighted kappa 0.474; linear weighted 0.559; AC1 0.582).
+
+**Strengths.** A real-world, public, citable corpus. Reads and basis notes were recorded before outcomes. An independent blind second reader. A null result reported plainly. Unusually candid limitations. Two Records Management Journal papers are cited, so the venue choice was deliberate.
+
+**What a reviewer will press on (*Inference*):**
+1. **The 5-of-5 audit concordance is partly built in.** All five audits are programme-level reports that themselves describe missing records, and Gap appears only in that class (p = 0.000005). The paper concedes that class and read are not independent, but a reviewer may still discount the headline.
+2. **The unit read is the published decision or audit, not the agency's own record.** For a records-management claim, this is the central validity gap. The paper states it in one line (section 9); it deserves a fuller treatment.
+3. **The structural comparison (7 against 7) was defined on a subset** (14 of 27 case-level sources). Unless the grouping was fixed in advance, say plainly that it was not.
+4. **Over-precise p-values** ("0.0000520") read as statistical showmanship. Report them as p < 0.001.
+5. **A branded instrument plus the developer's competing interest** in a records journal invites a "promotional" reading. Lead with "reconstructability" and keep JRS in the methods.
+
+**Status and next step.**
+- **Status:** Journal of Civic Information desk-declined on fit on 1 September (*recorded*). The checklist reports a Records Management Journal decline (grounds unknown) and a Journal of Contemporary Archival Studies presubmission decline on 23 September (*source-reported*).
+- **Next step:** the first author decides the next venue (recorded rule). Fix items 2 to 5 before any resubmission. Item 1 needs only a sentence of honest framing.
+
+## 4. Detection study, *AI and Ethics* (with Ubayet Hossain): the flagship
+
+### 4.1 Two discrepancies to resolve before any resubmission (*Observed*; human review required)
+1. **Co-author affiliation.**
+   - Your uploaded file (18 August) lists him as "Associate Director, Model Validation, KPMG India".
+   - On 28 August he asked, in writing, that the KPMG name be removed and that he be listed as "Independent Financial Risk & Model Validation Professional" (MASTER_TRACKER, 2026-08-29).
+   - The repository's FINAL5 and the AI and Ethics title page carry the corrected wording.
+   - The editor's rejection cited **author-contact identity and provenance** (*source-reported*). *Inference, not established:* if any submitted file, form or system field carried the old KPMG affiliation alongside a personal email, the mismatch could have contributed to the editor's concern.
+   - **Action:** confirm exactly which files and metadata were uploaded to the journal. Delete or archive the 18 August file so it cannot be sent again. Make the affiliation, email and ORCID identical everywhere in the resubmission.
+2. **The consent statement contradicts itself across versions.**
+   - The 18 August file says one panel member withdrew "and her judgments remain in the analysis unnamed at her election".
+   - The submitted title page says "no contributor has done so".
+   - The record shows reviewer V-AI-17 withdrew on 16 July 2026 and asked not to be listed and to have personal data removed (MASTER_TRACKER).
+   - **Which statement is true, and whether any of her judgments are in the analysis, must be settled from the database before resubmission.** An inaccurate consent statement is exactly the kind of provenance problem an editor acts on.
+
+### 4.2 Substance (submitted version, `01_Blinded_Manuscript.md`, 11,930 words)
+**What it shows.**
+- 16 reviewers from 11 countries graded 24 constructed records (12 grounded, 12 unsupported), producing 384 judgments.
+- Mean accuracy **83.9%** (95% CI 72.7 to 95.1); sensitivity 87.0%; specificity 80.7%. Both pre-registered parts of the criterion were met.
+- Reviewer range 37.5% to 100%.
+- The separate reliability criterion **failed** on its lower-bound leg, and the paper reports that openly.
+
+**Strengths.** Pre-registration; blinding; a reference classification reproduced independently; heterogeneity reported as a finding; a failed criterion disclosed; a long, honest limitations section.
+
+**What a reviewer will press on (*Inference*):**
+1. **Author-built, bimodal corpus (limitations 8.1, 8.2).** Twelve clearly grounded against twelve clearly unsupported records invites the reply that detection was easy. This is the main scientific weakness. A transfer submission should say what a harder, graded corpus would show and why this study comes first.
+2. **No ethics review** (section 4.8, declared). Many journals now require approval or a documented exemption even for expert-opinion studies. Get a written exemption determination or an independent ethics review **before** resubmitting. This is more likely to cause another desk decision than the statistics are.
+3. **"The paired data were not retained in a form that supports [a paired test]"** (section 6.4). Per-reviewer sensitivity and specificity are reported, so a paired test looks possible. Either run it or explain precisely why not. As written, it raises data-management doubts.
+4. **Length** (about 12,000 words) and the commercial interest of the instrument's creator. Both are disclosed; both cost goodwill.
+5. **The answer key and corpus are public on GitHub** (blocker B-018). This does not affect the completed study, but a reviewer who finds it will ask about corpus reuse.
+
+**Next step.** The repair is mostly administrative, not scientific: discrepancies 4.1 (1) and (2), an ethics determination, and the paired-test sentence. Then use the editor's transfer suggestion. The co-author must approve the resubmission, which is the natural moment for the narrow written confirmation (decision D4).
+
+## 5. ISACA Journal: "When a Defensible Decision Becomes an Indefensible File" (Tanvi Pokhriyal, first author)
+
+**What it shows.** 20 adjudicated employment matters across six forums and two countries. Reads were recorded before outcomes: 12 Ready, 5 Needs work, 3 Gap. Adverse outcomes followed in 75.0% of incomplete reads against 16.7% of Ready reads (p = 0.0194), labelled exploratory. The article names the circularity objection itself (the decision narrates the outcome) and declines to treat it as answered. That is rare and to its credit.
+
+**Problems that block submission (*Observed* and *Inference*):**
+1. **The first author "has not seen any version"** (recorded). It cannot be submitted under her name until she has read and approved it. This is an authorship-ethics requirement, not a formality.
+2. **Text recycling.** Its three failure patterns, the "unverified draft material" control, the system-of-record boundary and the claim-support indicators also appear in the CEP article (in print in November) and the Business Ethics draft (*Observed*, phrase search). Journals generally expect original, unpublished work, and ISACA Journal's author guidelines should be checked on this point (not checked today). Rewrite the practitioner half or cite CEP, and do the same for any later paper.
+3. **One reviewer, outcome visible in the source, no reliability test.** These are disclosed. They are fine for a practitioner journal, but describe it as a field pilot (it already does).
+
+## 6. The portfolio as a whole (*Inference*)
+
+| Finding | Consequence | Action |
+|---|---|---|
+| No peer-reviewed acceptance; four declines, none known to be on merit | The research credential rests on trade press for now | Two priorities only: repair and transfer the detection paper; update and submit the single-author EDPACS article (its figures are stale: "15 professionals, 82.8 percent", now 16 and 83.9%) |
+| The same practitioner content appears in CEP, ISACA, Business Ethics and partly EDPACS | Duplicate-publication risk, plus a possible SCCE rights problem once CEP prints | One canonical practitioner text (CEP); every other paper cites it and uses different material |
+| Version sprawl (five "FINAL" detection files; RMJ R2 to R9; stale copies in your hands) | Old files get sent, as the 18 August detection file shows | One submission folder per paper, older versions archived, a single "current" file named in the tracker |
+| Five of seven papers depend on co-authors | Timing you do not control | Leave co-authored papers to their first authors; do not retitle or reframe their work around JRS without consent (recorded rule) |
+| `scripts/publication_status.py` is stale | It misstates CCI and the detection paper | Update it from the corrected table in assessment section 2.6 (a small, separate task) |
+
+## 7. Sources
+- Manuscripts: the four uploads (hashes in section 1); `research/aie_submission_2026-09-01/01_Blinded_Manuscript.md` and `02_Title_Page.md`; `research/rmj_submission_2026-09-01/`; `research/Employment_Records_Article_ISACA_2026-08-21.md`; `research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md`; `research/Backup_Article_EDPACS_DRR_Control.md`; `research/BusinessEthics_Article_Draft.md`.
+- Records: `research/MASTER_TRACKER.md` (2026-07-16 V-AI-17 withdrawal; 2026-08-29 affiliation change; 2026-09-01 JOCI decline); the uploaded Evidence Ledger (E-042 to E-044) and Buyer Readiness Checklist (RS-03, RS-04).
+- Web, retrieved 2 October 2026: [SEC press release 2022-174](https://www.sec.gov/newsroom/press-releases/2022-174); [SEC press release 2021-262](https://www.sec.gov/newsroom/press-releases/2021-262); [Write for SCCE](https://corporatecompliance.org/publications/write-scce).
 
 ---
 
