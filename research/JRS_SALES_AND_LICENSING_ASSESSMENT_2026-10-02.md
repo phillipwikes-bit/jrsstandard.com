@@ -489,7 +489,7 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | 26 | Remove or disable the `compliant_version` rewrite for evaluation and benchmark use | OPEN |
 | 27 | Define the unit of review: a final decision record or a whole investigation file (8,000-character limit) | OPEN |
 | 28 | Add an evaluation mode with no JRS telemetry, for any non-synthetic pilot | OPEN |
-| 29 | Study 013 feasibility round: 30 hidden records, arms A to D; needs owner approval for outside contributors and paid calls | OPEN |
+| 29 | Study 013 feasibility round: 30 hidden records, arms A to D; needs owner approval for outside contributors and paid calls. **Where it runs (2026-10-02):** in Claude Code, through the existing adapter (`run-smoke.mjs`, database writes off) and scorer (`score-run.mjs`), after items 24 to 28. Arms A to C must call the Engine's model on Anthropic, which ChatGPT cannot do. ChatGPT can serve as arm D, the cross-vendor model. It must not write the records, the answer key or the scores, because the plan requires human case writers and no LLM grading the headline result | OPEN |
 | 30 | Decide whether a one-time train-the-trainer session delivered by you is an allowed exception to the 26 August "no owner-hour engagements" decision | OPEN |
 | 31 | Confirm or correct the STA figures in C.3 (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | DONE: owner confirmed, 2026-10-02 |
 | 32 | Analyze and report Study 012 (JRS-structured against unaided expert review); it is the evidence the curriculum licence needs | OPEN |
