@@ -41,6 +41,8 @@ You said the earlier answers were hasty. Measured against the six documents and 
 
 **These numbers move on evidence, not effort** (section 7). A reply rate, a stated budget owner or one signed evaluation is worth more than any further document.
 
+**A second, more achievable track: publishing and training (section 6A).** The Investigator Guides, the training and the Reviewer Reference rest on your 13 years as a civil-rights officer and 16 years of training design, not on journal validation. A Dewey chapter or eBook, an SCCE handbook, a continuing-education webinar or a curriculum licence are each more reachable within 12 months than a licence or a sale. They pay little directly, but they add credibility and distribution and make the estate more transferable. Your free-permanently decision limits only how they are packaged.
+
 **Holding is a legitimate choice.** Your checklist says so explicitly (AG-03, AG-05). If you hold, record it as a decision with a re-entry trigger, not as drift.
 
 ## 2. The evidence, sorted
@@ -160,6 +162,26 @@ I read `programme-status-9872fb93cc94.html` live (byte-identical to `main`) and 
 
 **A further privacy note.** The 27 certificate PDFs, each with a person's name in its filename and on the page, are also tracked on public GitHub. They are covered by the same remedy as B-020 (repository private, D1).
 
+### 2.6 The research articles, analyzed (not just counted)
+*Revision 1 and the first draft of this revision listed publications without analyzing the manuscripts. This section corrects that.* I read each manuscript's abstract or opening and its recorded submission history. `scripts/publication_status.py` is **stale**: it still shows CCI as "to submit" and the detection paper as unsubmitted. This table replaces it.
+
+| Manuscript | Authors | Size | Status | Evidence | What it is worth |
+|---|---|---|---|---|---|
+| "When the Record Cannot Speak for Itself", *CEP Magazine* (SCCE) | You, single author | 1,731 words | **Accepted** 16 July; November 2026 issue | *Recorded* (editor's acceptance and copy-editing in the tracker) | **The strongest commercial credential.** It reaches 7,000+ compliance professionals, the buyer population. The publisher agreement was not located, so reuse rights in a book or the training are **unknown** |
+| "That AI-Drafted Termination Memo Could Become Evidence", *Corporate Compliance Insights* | Hekim Colpan (first-named) and you | about 1,800 words | **Published** 29 September 2026 | *Recorded*; card on `resources.html` *Observed* | Second trade credential. **Your written terms give him prior approval over use of the article or his contribution in commercial, training or certification material**, binding future holders. Keep it out of any training or book unless he approves |
+| Detection study ("Detectability of Decision Reconstruction Risk..."), *AI and Ethics* | You and Ubayet Hossain | 11,930 words | **Rejected** 22/23 September on author-contact identity and provenance grounds; editor suggested a transfer; both authors replied | *Source-reported* (uploaded ledger E-042 to E-044); not in the repository | **The flagship research asset.** 16 reviewers in 11 countries; 83.9% accuracy (95% CI 72.7 to 95.1); sensitivity 87.0%; specificity 80.7%; pre-registered. No merit criticism is recorded. Repairing it matters more than any other paper |
+| Public-records study ("A Documentation Quality Read for Public-Records Determinations"), 32 cases | Stacyann Young (first author) and you | 5,271 to 5,752 words | Journal of Civic Information **desk-declined on fit** 1 September (2.5 hours, no review). A Records Management Journal version was built (R9 plus an anonymous copy). The checklist reports an RMJ decline (grounds unknown) and a Journal of Contemporary Archival Studies presubmission decline on 23 September | JOCI *Recorded*; RMJ and JCAS *source-reported* only | Real-world corpus: agreement with government auditors in 5 of 5 comparable cases, plus a significant association with reconstructability. **Three declines on fit, not merit, suggest a venue problem.** The next venue is the first author's decision as much as yours (recorded) |
+| Employment-records article, *ISACA Journal* | Tanvi Pokhriyal (first author) and you | 3,776 words | **To submit**; the first author "has not seen any version" | *Recorded* | 20 adjudicated matters across six forums. Blocked on the first author |
+| "Documentation Governance in AI-Assisted Decision-Making", *Journal of Business Ethics* | You and a co-author who has not accepted | 3,225 words | **Draft**; the abstract still reads "write last" | *Recorded* | Not viable near term. Park it |
+| "Decision Reconstruction Risk: A Record-Level Control", *EDPACS* | You, single author | 2,878 words | **Backup draft**, no co-author dependency | *Observed* | **The fastest submission available**, but it uses stale figures ("15 professionals... 82.8 percent"). Update it to 16 reviewers and 83.9% before submitting |
+| Three LinkedIn articles (2 June, 11 June and 2 July 2026) | You | short | Self-published | *Recorded* (E-025 to E-027) | Priority dates for JRS and DRR. Not peer review; never cite them as such |
+
+**Honest reading (*Inference*):**
+- **Scholarly record: no peer-reviewed acceptance yet, and four declines** (one recorded, three source-reported). None is known to be on merit: one desk decline on scope, one presubmission decline, one administrative or provenance rejection, and one with unknown grounds.
+- **Trade-press record: two for two** (CEP accepted, CCI published). For selling, trade press reaches buyers directly and is worth more than the journals. The journals matter mainly for diligence credibility (risk R2).
+- **The portfolio is spread too thin for one part-time author:** seven manuscripts, five with co-author dependencies, and repeated rebuilds (the AIE file went through five "FINAL" versions, the RMJ through R2 to R9).
+- **Recommendation:** concentrate on two moves. (1) Repair and transfer the detection paper with clean contact and provenance records (decisions D4 and D5). (2) Update and submit the single-author EDPACS article. Leave the co-authored papers to their first authors' timing, and start no new manuscripts until both of the first two are out.
+
 ## 3. What does a buyer get that the public cannot download?
 
 Your checklist asks for one honest paragraph. Here it is.
@@ -243,6 +265,64 @@ Your checklist asks for one honest paragraph. Here it is.
 
 **Recommendation: B, then C, with A running in parallel** (resubmission does not compete with outreach for the same hours, and it repairs R2). **D only after one evaluation exists. Not E now.** None of this requires a public paid offer, so your 15 August decision stands untouched.
 
+## 6A. Alternatives for the Investigator Guides, the training and the Reviewer Reference
+
+These three assets rest on **your practitioner credibility**: 13 years as a Lead Civil Rights Officer at the Maryland Commission on Civil Rights (2012 to 2025), and 16 years designing structured programmes and training practitioners (2003 to 2018), both recorded. They do not depend on peer-reviewed validation, so the journal rejections touch them far less than the Engine or a sale. That makes this the **most achievable near-term track**, though not the most lucrative one.
+
+### What exists today (*Observed*)
+| Asset | Size and version | Use | Constraint |
+|---|---|---|---|
+| Investigator Field Guides: general, EEO, Fair Housing and International | 9 pages and about 1,800 words each; v1.1, July 2026; byline "Phillip Wikes, Former Lead Civil Rights Officer" | 219 downloads of the three editions plus 104 of the general guide; steady about 80 a month; quoted by Broida in Dewey's newsletter | **Free, permanently** (your decision, 25 August) |
+| Six-module reviewer training | Online, open, certificate of completion | 8 enrolled, 7 completed; stalled since August | **Free, permanently**; enrollees not marketed to (15 July) |
+| Documentation Review Reference (the "Reviewer Reference") | 19 pages, 8,080 words, v1.0, May 2026 | **The most-downloaded file in the estate: 578** | Free |
+| Rapid Review Card | 2 pages | 241 downloads | Free |
+
+### Alternatives, asset by asset
+| Asset | Alternative | What it would take | What you get | Main risk |
+|---|---|---|---|---|
+| **Investigator Guides** | G1. Keep free as the credibility and distribution layer (status quo) | Nothing | Reach | None |
+| | **G2. Contribute a chapter or supplement on AI-drafted records to the next edition of Dewey's *EEO Counselors' and Investigators' Manual*** (Dewey's catalog lists a 2023 edition) | One well-formed proposal to Dewey after the November give-note, honoring the one-ask cadence rule | Distribution to federal EEO investigators through the publisher that already mentioned you; the free guides stay free | Dewey says no; the publisher may want rights in the chapter text |
+| | G3. An expanded paid eBook for federal investigators (15,000 to 25,000 words), built from the EEO guide, the Reference and training module 5; Dewey sells PDF eBooks | 2 to 3 months of writing; D8 decision | Small royalty; a citable published work | Conflicts with "free" if it duplicates the free guide; rights encumbrance |
+| | G4. Licensed custom editions for an agency or firm, adapted to their procedures | Your time per edition | Fee per edition | Owner time; it is a service |
+| **Training** | T1. Keep free and restart distribution (it stalled once invitations stopped): the honest update (D9) and the guide pages linking to it | Low | More completions; a larger transferable list | None |
+| | **T2. A continuing-education webinar through a professional body**: SCCE (CEP relationship; CCB credits) or the Association of Workplace Investigators (AWI), which runs training and a learning center | One session abstract; a 60 to 90 minute session | Credibility, an audience of buyers, a small honorarium; free training stays free | Their scheduling cycles are slow |
+| | T3. Paid instructor-led sessions for agency or employer investigation units (the "trainer" route Broida described) | Direct outreach to units, or D6 if you reopen the referral | Revenue per session; proof of use | Your time; contradicts your no-operating-business aim if it grows |
+| | T4. License the curriculum to a training provider to deliver under its own name | D8; a clean rights schedule (exclude co-authored content) | Annual or per-seat fee; the provider runs delivery, which fits your exit aim | Must not be sold as a professional "certification": AWI already offers an internationally accredited certificate, and JRS certificates mean completion only |
+| **Reviewer Reference** | R1. Keep free | Nothing | Reach | None |
+| | **R2. Propose a practitioner handbook to SCCE.** SCCE has a book editor and a published proposal process, and you are already an accepted SCCE author | A proposal: outline, sample chapter from the Reference, audience, author bio | A published book in front of the compliance profession; it fits the non-HR compliance scope of the Engine evaluation as well | Publisher rights terms; months of writing |
+| | R3. A federal-investigator desk reference with Dewey | Overlaps G3; choose one so the same text is not sold twice | As G3 | As G3 |
+| | R4. Self-publish with an ISBN (print on demand) | Formatting and an ISBN | **You keep every right**, the cleanest option for a later sale | Little credibility gain; no distribution |
+
+### Rules that protect the sale (apply to any publishing contract)
+1. **License only the expanded text, never the standard.** Keep the five conditions, the codebook, the Engine and the free short versions outside the grant.
+2. **Prefer non-exclusive, or a limited term and field.** Make sure the contract can be assigned to a future acquirer. An exclusive copyright grant to a publisher would remove that text from anything you could later sell.
+3. **Keep co-authored and third-party content out**, unless approved: the CCI article and Hekim's contribution (his prior-approval terms), the CEP article (SCCE's agreement was not located), and contributor quotes.
+4. **Disclose AI assistance accurately.** Publishers require authors to warrant authorship. The estate records substantial AI-assisted drafting under your direction (E-029), so the warranty must be worded to match.
+5. **Have one capped legal review of the first contract you are offered.** This is the one place a lawyer earns their fee early.
+
+### Odds for this track (*Judgment*, uncalibrated)
+| Outcome | Estimate | Condition |
+|---|---|---|
+| A publishing agreement (Dewey chapter or eBook, or SCCE book) within 12 months | **15 to 30%** | Proposals sent; at least two publishers approached |
+| A continuing-education webinar slot (SCCE or AWI) within 6 months | **20 to 35%** | An abstract submitted |
+| Paid training revenue (sessions or a curriculum licence) within 6 months | **10 to 20%** | Direct outreach to units or providers |
+| Income from this track | **Small** | Its value is credibility, distribution and a stronger transferable asset, not royalties |
+
+### Assumptions to test
+- **P1:** a publisher wants a short, practical work on AI-drafted records. Dewey's catalog is federal-sector legal and practical, so the fit is plausible but untested.
+- **P2:** free short versions and a paid expanded edition can coexist. This is common practice, but it needs your D8 decision.
+- **P3:** your practitioner credentials carry weight independent of the journals. The Broida quote supports this ("a former civil rights officer, offers good guidance on proper assembly and quality controls for investigations").
+- **P4:** training providers will license a curriculum without a credential attached. This is untested.
+
+### Next steps for this track
+| When | Step | Who |
+|---|---|---|
+| This week | D8: decide what "free, permanently" covers | You |
+| Weeks 1 to 3 | Draft the SCCE book proposal; a 2-page Dewey concept (held back until after the November note); one webinar abstract for SCCE and AWI; the EDPACS update; a one-page publishing-contract checklist built from the rules above | Claude drafts; you approve |
+| November (CEP issue) | Give-only note to Broida (D7); honest update to contributors and trainees (D9); you send the SCCE proposal and the webinar abstract | You |
+| December to January | The single Dewey proposal (one ask, per the cadence rule) | You |
+| Stop rule | Two publisher declines: switch to R4 (self-publish) or park the track; no further rebuilding | You |
+
 ## 7. The plan, with triggers, metrics and stop rules
 
 ### Phase 0. This week: decisions only (about 2 owner hours)
@@ -307,6 +387,8 @@ Your checklist asks for one honest paragraph. Here it is.
 - Repository: `research/IP_SALE_TRACKER.md` (header, s6, s9, rev 14, rev 20); `docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md` (F-4, F-5, F-8, F-11, s12); `docs/enterprise-diligence/EVIDENCE_LEDGER.md` (E-004, E-014, E-025 to E-027, E-037 to E-039); `research/Contributor_Credit_List_2026-08-29.md`; `research/engine-buyer-readiness-2026-10-01/evaluation-license-v8/` (Technical Report Revision 2; gates); `.jrs/state/BLOCKERS.json` (B-018 to B-020); `acquisition-9f3c2a7d4b.html` (wording checked today); the live owner page `programme-status-9872fb93cc94.html` and its feeds `access-stats`, `asset-stats`, `contributor-stats`, `enroll-stats`, `gate-stats`, `geo-stats`, `offer-info`, `orgpilot-stats`, `panel-stats`, `people-*`, `support-stats` and `leads-*`, read 2026-10-02 07:24 UTC (personal data counted, not copied).
 - Owner-supplied, 1 to 2 October 2026: Buyer Readiness Checklist (current revision, AG-01 to AG-05, B1 to B12); Exit Strategy (current revision and the historical plan); Evidence Ledger, Master Asset Register and Chain of Title Status (revised); the external Technical Report Revision 1.
 - Web, retrieved 2 October 2026 (vendor marketing, not independent evidence): [HR Acuity documentation](https://www.hracuity.com/platform/documentation/); [HR Acuity employee relations AI](https://www.hracuity.com/platform/employee-relations-ai/); [AllVoices AI for employee relations](https://www.allvoices.co/blog/ai-for-employee-relations); [Case IQ 2026 benchmark summary](https://www.caseiq.com/resources/articles/biggest-year-over-year-changes-in-investigations-what-the-2026-benchmark-report-means-for-leaders); [Gartner investigation management reviews](https://www.gartner.com/reviews/market/investigation-management-software).
+- Publishing and training routes, retrieved 2 October 2026 (publisher and association pages): [Dewey Publications, EEO titles](https://deweypub.com/store/EEO.html); [Dewey eBooks](https://deweypub.com/store/eBooks.html); [SCCE, submit a book proposal](https://www.corporatecompliance.org/publications/write-scce/submit-your-book-proposal); [Write for SCCE](https://corporatecompliance.org/publications/write-scce); [AWI Training Institute](https://www.awi.org/news/586941/AWI-Training-Institute-for-Workplace-Investigators--Register-Today.htm); [About AWI](https://www.awi.org/page/about_AWI).
+- Manuscripts read: `research/aie_submission_2026-09-01/01_Blinded_Manuscript.md`; `research/rmj_submission_2026-09-01/01_RMJ_Manuscript_ANONYMOUS.docx`; `research/Employment_Records_Article_ISACA_2026-08-21.md`; `research/Backup_Article_EDPACS_DRR_Control.md`; `research/BusinessEthics_Article_Draft.md`; `research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md`; `research/foil_resubmission_2026-09-01/ASSESSMENT_AND_NEXT_STEPS.md`; `research/Reply_Hekim_Publication_Terms_2026-08-05.md`; `research/Broida_Interaction_Summary_2026-09-06.md`; guide and Reference PDFs (page and word counts).
 
 ---
 
