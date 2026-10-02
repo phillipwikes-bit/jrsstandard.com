@@ -441,7 +441,7 @@
       "owner": "Phillip Wikes",
       "status": "OPEN - OWNER DECISION REQUIRED",
       "created": "2026-10-01",
-      "note": "Claude Code, v8.0 execution (CLAUDE.md section 16 stop condition: sensitive information may be exposed; public disclosure may affect IP rights)",
+      "note": "Claude Code, v8.0 execution (CLAUDE.md section 16 stop condition: sensitive information may be exposed; public disclosure may affect IP rights) 2026-10-02: confirmed that the detection-study answer key is among the publicly readable files on origin/main; the benchmark package needs a fresh, private held-out set.",
       "next_action_by": "OWNER",
       "next_action_basis": "Repository visibility is an account setting only the owner can change; the choice also decides how Tracks B and C are scoped."
     }
