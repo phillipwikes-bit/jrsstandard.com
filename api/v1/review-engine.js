@@ -1,6 +1,7 @@
 export const config = { runtime: 'edge' };
 import { jrsModel } from '../_model.js';
 import { manifestFromEngineResponse } from '../_manifest/from-engine.js';
+import { anchorProfile } from '../_anchors.js';
 
 // ============================================================
 // JRS Review Engine API   (MIRROR of api/review-engine.js — keep both in sync;
@@ -23,7 +24,7 @@ import { manifestFromEngineResponse } from '../_manifest/from-engine.js';
 // claim is made.
 // ============================================================
 
-const ENGINE_VERSION = '0.1.0-validation';
+const ENGINE_VERSION = '0.3.0-validation';
 const API_VERSION = 'v1';
 const MODEL = jrsModel();
 const SB_URL = 'https://pjzxkeviouofdseagvpf.supabase.co';
@@ -39,6 +40,11 @@ const CONDITION_KEYS = [
   'temporal_reconstructability',
 ];
 
+// 0.3.0: what the record lacks, from a fixed list. Additive: it never changes a condition status
+// or the determination, which stay derived from the five conditions alone. Added after Study 014
+// Part 2 found the Engine could not report missing record citations (research/study-014-drr/PART2_RESULTS.md).
+const MISSING_KEYS = ['dates', 'record_citations', 'attributions', 'decision_maker', 'criteria', 'responses_considered'];
+
 const SYSTEM_PROMPT = `You are the JRS (Justification Review Standard) Review Engine. You examine a single organizational record BEFORE it is finalized and assess it against exactly five documentation review conditions:
 
 1. basis_identification, Basis Identification: Is the basis for each conclusion identifiable within the record?
@@ -51,6 +57,8 @@ For each condition assign a status of exactly "pass", "review", or "gap", with a
 
 Then produce a structured finding: the AI function the record most resembles (summarization | recommendation | analysis | narrative), the condition(s) most triggered, and what a compliant version would require.
 
+Then list what the record lacks, choosing only from: dates, record_citations, attributions, decision_maker, criteria, responses_considered. Name record_citations when factual statements are not tied to a document, exhibit, page or other place in the record. Name attributions when statements or accounts are not tied to the person who made them. Name an item only when the record itself lacks it, and return an empty list when it lacks none of them.
+
 You evaluate, examine, identify, and surface. You do not guarantee, certify, or validate. Respond with STRICT JSON only, no prose, in exactly this shape:
 {
   "conditions": {
@@ -61,6 +69,7 @@ You evaluate, examine, identify, and surface. You do not guarantee, certify, or 
     "temporal_reconstructability": {"status":"pass|review|gap","note":"..."}
   },
   "remediation_note": "one or two sentences",
+  "missing": ["dates|record_citations|attributions|decision_maker|criteria|responses_considered"],
   "finding": {
     "ai_function": "summarization|recommendation|analysis|narrative",
     "condition_triggered": "...",
@@ -120,7 +129,7 @@ async function oneRun(text, key) {
     headers: { 'x-api-key': key, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
     body: JSON.stringify({
       model: MODEL,
-      max_tokens: 900,
+      max_tokens: 1000,
       system: SYSTEM_PROMPT,
       messages: [{ role: 'user', content: 'Examine this record against the five JRS conditions:\n\n' + text }],
     }),
@@ -138,10 +147,13 @@ async function oneRun(text, key) {
   });
   const determination = deriveDetermination(conditions);
   const finding = parsed.finding || {};
+  // Unknown or repeated entries are dropped rather than refused, so a malformed list never fails the review.
+  const missing = MISSING_KEYS.filter(function (k) { return Array.isArray(parsed.missing) && parsed.missing.indexOf(k) !== -1; });
   return {
     conditions: conditions,
     determination: determination,
     remediation_note: String(parsed.remediation_note || '').slice(0, 600),
+    missing: missing,
     finding: {
       ai_function: String(finding.ai_function || '').slice(0, 40),
       condition_triggered: String(finding.condition_triggered || '').slice(0, 300),
@@ -165,7 +177,7 @@ function computeVariance(runs) {
     overall_consistency: Number(overall.toFixed(3)),
     runs_detail: runs.map(function (r) {
       var st = {}; CONDITION_KEYS.forEach(function (k) { st[k] = r.conditions[k].status; });
-      return { conditions: st, determination: r.determination };
+      return { conditions: st, determination: r.determination, missing: r.missing };
     }),
   };
 }
@@ -286,7 +298,7 @@ export default async function handler(req) {
 
   try {
     var results = await Promise.all(Array.from({ length: runs }, function () { return oneRun(text, KEY); }));
-    var out = Object.assign({}, meta, { result: results[0] });
+    var out = Object.assign({}, meta, { result: results[0], anchor_profile: anchorProfile(text) });
     if (runs > 1) out.variance = computeVariance(results);
     if (body.include_manifest === true) {
       const linked = await manifestFromEngineResponse(
