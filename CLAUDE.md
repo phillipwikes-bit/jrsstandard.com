@@ -174,7 +174,7 @@ Every material Review Engine evaluation should identify model, model version, pr
 
 Security is architectural from the beginning. Maintain a threat model, data-flow diagram, secrets inventory, access model, dependency inventory, logging model, telemetry model, retention and deletion policy, incident response, backup and recovery, and vulnerability tracking. Formal certification is a separate, trigger-based decision.
 
-**Credentials are never accepted in conversation.** A secret pasted into a chat is exposed by that act and must be treated as compromised and rotated. Diagnostics that need a credential read it from the environment; see `scripts/vercel_f4_diagnose.sh` for the pattern.
+**Owner override, 2026-10-02:** Phillip Wikes directed "Remove that rule now!!!!!! Use this key" and supplied his own Anthropic API key in chat. A key the owner pastes for his own account may be used for the task he names. It is passed only as a process environment variable, and never written to a file, commit, log or tracker. The owner is still advised to rotate any key that has appeared in a chat. Diagnostics otherwise read credentials from the environment; see `scripts/vercel_f4_diagnose.sh` for the pattern.
 
 ---
 

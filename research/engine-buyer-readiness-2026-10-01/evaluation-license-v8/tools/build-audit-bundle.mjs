@@ -23,7 +23,7 @@ const INCLUDE = [
   'READINESS-REPORT.md', 'ENGINE-DEFECT-REGISTER.md', 'SOURCE-LOCATION-MAP.json',
   'gates/GATE-DEFINITIONS.json', 'gates/GATE-RESULTS.json',
   'tools/validate-gates.mjs', 'tools/validate-order.mjs',
-  'corpus/FIXTURE-PROVENANCE.json', 'runs/2026-10-01-smoke-1.BLOCKED.json',
+  'corpus/FIXTURE-PROVENANCE.json', 'runs/2026-10-01-smoke-1.BLOCKED.json', 'runs/2026-10-02-smoke-2/EXECUTION-RECORD.json', 'METRICS.json',
   'track-a/CAPABILITY-MATRIX.json', 'track-a/FROZEN-DEMO-MANIFEST.json', 'track-a/DEMO-LIMITATIONS.md',
   'track-a/DEMO-SCRIPT.md', 'track-a/BUYER-BRIEF.md', 'track-a/EVALUATION-OFFER.md',
   'track-b/CLAIM-REGISTER.md', 'track-b/DATA-FLOW-AND-LIMITATIONS.md', 'track-b/SUPPORT-AND-ACCEPTANCE.md',
@@ -62,7 +62,6 @@ try {
     ['Engine source and system prompt (api/review-engine.js)', 'Protected implementation by default; the package hash is recorded in track-b/LICENSED-ASSET-SCHEDULE.json. Engine behavior claims that depend on it are NOT_CONFIRMED_FROM_SHARED_EVIDENCE.'],
     ['Runner and package source (tools/run-smoke.mjs, package tarball)', 'Implementation; the offline test results are reported in READINESS-REPORT.md but cannot be re-run from this bundle.'],
     ['corpus/EXPECTATIONS.json', 'Answer key for the frozen smoke corpus; withheld so it is never used to tune a later run.'],
-    ['Live run outputs', 'None exist: the live smoke run has not been executed (provider key absent).'],
     ['Creator labels', 'None exist yet.'],
   ];
   fs.writeFileSync(path.join(stage, 'README-AUDIT.md'), [

@@ -1,6 +1,6 @@
 # JRS Review Engine evaluation package: quickstart
 
-**DRAFT 2026-10-02. For a licensed evaluator. Provider route: direct Anthropic API only (live route not yet tested).**
+**DRAFT 2026-10-02. For a licensed evaluator. Provider route: direct Anthropic API only, tested live on 2026-10-02.**
 
 ## What you need
 - Node.js 22 or later. The package has no other dependencies and nothing to install.

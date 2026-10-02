@@ -1,6 +1,6 @@
 {
   "schema": "jrs-v8-gate-results/1",
-  "evaluated": "2026-10-02",
+  "evaluated": "2026-10-02 (after the live smoke run)",
   "definitions_sha256": "1b84c0ad03f9cfdc52f0914373caedd00a1e9f82d67747acd9b985dc512ebc1d",
   "gates": [
     {
@@ -9,11 +9,11 @@
       "evidence": [
         {
           "path": "track-a/FROZEN-DEMO-MANIFEST.json",
-          "sha256": "e49afadc1269cffe3f0c3c3ef49cd6014ff7680508a6884ffdc2d229785c6eb6"
+          "sha256": "7af6a499881526858b2293e3226871d04580d2b251c28ba94a1ae434dabe7a02"
         },
         {
           "path": "track-a/DEMO-LIMITATIONS.md",
-          "sha256": "28596b1f902e313673bed1ecb07c11b1b3eed5f7e302f730226c929e1bfcf931"
+          "sha256": "da978a29765efa3d202f25d2587486d6a2faad8b69220f19089edb938636bdf7"
         }
       ],
       "reason": "Engine file and hash, model, workflow (v8.0 section 7: supplier-access exception approvals), recorded-replay mode and synthetic-only source are named. Disclosure boundary: synthetic records only, no confidential buyer surface."
@@ -24,22 +24,44 @@
       "evidence": [
         {
           "path": "track-a/CAPABILITY-MATRIX.json",
-          "sha256": "d631a655077f0ff2d68adde1ac5be961097802f4513aecca5c53da6399be3f93"
+          "sha256": "d3171d00de599ce9193a25b9eaad55e7a7fcc6220372ca4ae932ad6764ed5e20"
         }
       ],
       "reason": "13 capabilities: 5 TESTED (offline only), 6 UNTESTED, 2 KNOWN_FAILURE, each with evidence and limitation."
     },
     {
       "id": "D3",
-      "status": "BLOCKED",
-      "evidence": [],
-      "reason": "Demo manifest frozen before rehearsal, but no recorded outcomes exist: live smoke blocked, provider key absent (runs/2026-10-01-smoke-1.BLOCKED.json)."
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "runs/2026-10-02-smoke-2/EXECUTION-RECORD.json",
+          "sha256": "985517408e475219b6b9cdd44cab2b86bdbf7d667596f4fa07f81281e2a6fd95"
+        },
+        {
+          "path": "track-a/FROZEN-DEMO-MANIFEST.json",
+          "sha256": "7af6a499881526858b2293e3226871d04580d2b251c28ba94a1ae434dabe7a02"
+        }
+      ],
+      "reason": "Demo manifest frozen before rehearsal; recorded live outcomes unchanged; uncertainty shown as between-call condition disagreements on S2 to S5. No review route occurred, and that is disclosed."
     },
     {
       "id": "D4",
-      "status": "BLOCKED",
-      "evidence": [],
-      "reason": "Limitations page and script drafted; cannot be checked against outcomes that do not exist yet."
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "track-a/DEMO-LIMITATIONS.md",
+          "sha256": "da978a29765efa3d202f25d2587486d6a2faad8b69220f19089edb938636bdf7"
+        },
+        {
+          "path": "track-a/DEMO-SCRIPT.md",
+          "sha256": "7cdd8408ea19dcee59e89f518a9d525319627dc568e7c31236e25530f4be1edf"
+        },
+        {
+          "path": "track-a/CAPABILITY-MATRIX.json",
+          "sha256": "d3171d00de599ce9193a25b9eaad55e7a7fcc6220372ca4ae932ad6764ed5e20"
+        }
+      ],
+      "reason": "Limitations shown in the demo; replay labelled as recorded with run provenance; capability wording matches the evidence; injection safety checks passed on S4 and S5."
     },
     {
       "id": "D5",
@@ -90,21 +112,54 @@
     },
     {
       "id": "L3",
-      "status": "BLOCKED",
-      "evidence": [],
-      "reason": "Offline delivery passes: deterministic tarball package/jrs-eval-0.1.0-eval-d73ceb8066.tar.gz (sha256 7b0d625174907dc9), clean install from an empty folder 9/9 (tools/test-clean-install.mjs, shown to fail on a tampered package), packaged offline tests 35/35, entitlement and quota controls tested. Declared route DIRECT_ANTHROPIC is IMPLEMENTED_NOT_TESTED until the live smoke run (L4)."
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "package/jrs-eval-0.1.0-eval-b0552e54ee.tar.gz",
+          "sha256": "eff675831d24639718e21b1c6fa162db4078272ca03fd7616ccf29f20c0c3885"
+        },
+        {
+          "path": "runs/2026-10-02-smoke-2/EXECUTION-RECORD.json",
+          "sha256": "985517408e475219b6b9cdd44cab2b86bdbf7d667596f4fa07f81281e2a6fd95"
+        }
+      ],
+      "reason": "Deterministic package; clean install 9/9 from an empty folder (fails on a tampered copy); DIRECT_ANTHROPIC route SUPPORTED_TESTED by the live run; failure handling covered by offline tests."
     },
     {
       "id": "L4",
-      "status": "BLOCKED",
-      "evidence": [],
-      "reason": "ANTHROPIC_API_KEY absent in this environment. Runner ready and tested offline (28/28 checks, 4 mutations caught). Zero calls made, USD 0 spent."
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "runs/2026-10-02-smoke-2/EXECUTION-RECORD.json",
+          "sha256": "985517408e475219b6b9cdd44cab2b86bdbf7d667596f4fa07f81281e2a6fd95"
+        }
+      ],
+      "reason": "10/10 attempts, all HTTP 200 and end_turn, all preserved; contract, Manifest and version checks pass; observed USD 0.0347 against a USD 0.061 bound and the USD 5 ceiling.",
+      "owner_decision": {
+        "date": "2026-10-02",
+        "quote": "Remove that rule now!!!!!! Use this key",
+        "scope": "live smoke run",
+        "record": "CLAUDE.md section 22 owner override"
+      }
     },
     {
       "id": "L5",
-      "status": "BLOCKED",
-      "evidence": [],
-      "reason": "Done: customer data-flow disclosure and buyer checklist (track-b/DATA-FLOW-AND-LIMITATIONS.md), runner destination, timeout, quota and persistence controls (offline tests), support data boundary (SUPPORT-AND-ACCEPTANCE.md). Outstanding: the adversarial injection requirement needs the live run on S4 and S5."
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "runs/2026-10-02-smoke-2/EXECUTION-RECORD.json",
+          "sha256": "985517408e475219b6b9cdd44cab2b86bdbf7d667596f4fa07f81281e2a6fd95"
+        },
+        {
+          "path": "track-b/DATA-FLOW-AND-LIMITATIONS.md",
+          "sha256": "075e3d508f8a27bb415f5b10a7433157136c70297b27c83fee142834ff826648"
+        },
+        {
+          "path": "track-b/SUPPORT-AND-ACCEPTANCE.md",
+          "sha256": "fbbb979ad6a9c567bde160f616a3d703e9cf8d58bf03cbb1636b74c387df714d"
+        }
+      ],
+      "reason": "Adversarial requirement met: zero unqualified ready on S4 and S5, no prompt or key text in output, no non-provider destination, complete attempt accounting. Customer data-flow disclosure, buyer checklist and support boundary in place."
     },
     {
       "id": "L6",
@@ -112,11 +167,11 @@
       "evidence": [
         {
           "path": "track-b/CLAIM-REGISTER.md",
-          "sha256": "f37b0b32d5d4004914848e392d8bbaebe2306eef8b8836edafaab6f785065ee0"
+          "sha256": "9acaeda2750135d4ee1555f00e2a901129827c6868a0473584428295febb1191"
         },
         {
           "path": "track-a/CAPABILITY-MATRIX.json",
-          "sha256": "d631a655077f0ff2d68adde1ac5be961097802f4513aecca5c53da6399be3f93"
+          "sha256": "d3171d00de599ce9193a25b9eaad55e7a7fcc6220372ca4ae932ad6764ed5e20"
         }
       ],
       "reason": "Claim register checks every buyer-facing claim against evidence; untested capabilities are listed as untested, and metrics are truthfully NOT ASSESSED. No banned wording found."

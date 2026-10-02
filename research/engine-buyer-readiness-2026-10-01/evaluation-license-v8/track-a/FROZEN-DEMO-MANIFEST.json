@@ -4,7 +4,7 @@
   "frozen_before_rehearsal": true,
   "rehearsed": false,
   "mode": "RECORDED REPLAY of the v8 smoke run (decision sheet E-05). No separate live demo budget.",
-  "source_run": "runs/2026-10-01-smoke-<n> (NOT YET EXECUTED: provider key absent)",
+  "source_run": "runs/2026-10-02-smoke-2/EXECUTION-RECORD.json",
   "engine": {
     "path": "api/review-engine.js",
     "sha256": "97176e22a6c075f2b7eac2d510d3e22366b9c2c38b418442c36af1b1621c6344",
@@ -43,5 +43,7 @@
     "calls": 10,
     "usd_ceiling": 5,
     "shared_with_smoke": true
-  }
+  },
+  "source_run_sha256": "985517408e475219b6b9cdd44cab2b86bdbf7d667596f4fa07f81281e2a6fd95",
+  "outcome_note": "Recorded 2026-10-02. No review route occurred; between-call condition disagreements occurred on S2 to S5 and are the uncertainty shown in the demo (frozen rule: shown as they are)."
 }

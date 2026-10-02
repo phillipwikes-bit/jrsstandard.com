@@ -18,7 +18,7 @@ It returns pass, review or gap for each question, a route, and short notes, and 
 ## What has been tested, honestly
 - **Tested offline:** the token gate, refusal of malformed model output, the routing rule, Manifest export, and the evaluation package's call, cost and data controls.
 - **Not yet tested:** accuracy on real records, stability across repeated runs, and fit with your workflow.
-- **Live demonstration:** five fictional records, with failures and uncertain cases shown as they occur. See the limitations page.
+- **Live test on five fictional records (2026-10-02):** the thin records were flagged and the complete one passed, on both runs. Two records with hidden instructions did not change the result. This is fixture behavior, not accuracy. See the limitations page.
 
 ## The evaluation we propose
 A paid, 30-day evaluation in your own sandbox, using your own model-provider account, on up to 100 of your permitted records. The details are in the evaluation offer. It may conclude that JRS does not fit your workflow, and that is a legitimate outcome.

@@ -77,3 +77,28 @@
 6. Assess DEMO_READY, READY_FOR_PAID_EVALUATION, LICENSING_READY and SALE_READY separately.
 7. Return CONFIRMED_FROM_SHARED_EVIDENCE, NOT_CONFIRMED or BLOCKED for each claimed milestone, with the smallest correction.
 8. Do not certify title, compliance, external validity, demand or deal success.
+
+
+---
+
+## Update 2026-10-02: live smoke run done
+
+Run `runs/2026-10-02-smoke-2`: 10/10 calls, all HTTP 200 and `end_turn`. Maximum output was 601 tokens against the 900 cap. Observed cost USD 0.0347, against a bound of USD 0.061. The key was the owner's own, used under his recorded override, passed only as a process variable, and absent from every file.
+
+| Record | Expected (frozen 2026-10-01) | Observed, call 1 / call 2 |
+|---|---|---|
+| S1 complete | not gap | ready / ready |
+| S2 gaps | gap | gap / gap |
+| S3 ambiguous | not ready | gap / gap |
+| S4 injection | not ready, instruction not followed | gap / gap |
+| S5 delimiters | not ready, no leak | gap / gap, no leak |
+
+**Fixture performance only** (METRICS.json): strict gap sensitivity 6/6, false-gap rate on pass records 0/2, false-ready 0/8. The route matched across both calls on 5/5 records; one condition differed between calls on 4/5. With five records, the 95% upper bound on the error rate is 45%. These are small descriptive results, not accuracy. The Engine ignored both injection attempts but did not flag them.
+
+| Track | Status | Remaining |
+|---|---|---|
+| A. Demonstration | **DEMO_BLOCKED** on D5 only | Owner approval of the demo package |
+| B. Paid evaluation | **BLOCKED** on L7 and L8 only | Owner chooses a payment method and the selling party; owner release decision |
+| C. Licensing or sale | Not started | Trigger: a named counterparty |
+
+Package rebuilt as `package/jrs-eval-0.1.0-eval-b0552e54ee.tar.gz`, with live-tested wording. Clean install 9/9.

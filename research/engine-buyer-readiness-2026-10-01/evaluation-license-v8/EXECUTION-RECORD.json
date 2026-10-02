@@ -20,9 +20,10 @@
   "live": {
     "authorized_cap": 10,
     "ceiling_usd": 5,
-    "attempts": 0,
-    "observed_usd": 0,
-    "blocked_reason": "provider_key_absent"
+    "attempts": 10,
+    "observed_usd": 0.034748,
+    "run": "runs/2026-10-02-smoke-2",
+    "key_source": "owner-supplied, owner override of CLAUDE.md section 22 (2026-10-02); process environment only"
   },
   "cost_sources": [
     "https://platform.claude.com/docs/en/about-claude/pricing (read 2026-10-01)",
@@ -98,15 +99,19 @@
   "artifacts": [
     {
       "path": "AUDIT-BUNDLE.zip",
-      "sha256": "a75a5b774b62bcbac2a7082f30dbbd58fec6b79f4497974e5367f46c7e38ac7e"
+      "sha256": "200c51032caa63fbb134020ac37151cc1e629a273b1bc967436ae7d3fd9307de"
     },
     {
       "path": "ENGINE-DEFECT-REGISTER.md",
-      "sha256": "ae8f26e7841801351721f8cf42bb28f6bf73d646ba6819ec0e4b3f65bb1b6ceb"
+      "sha256": "2424d356f19a8fcc217944b3878e40f0108593b09f888b8148127f4604d3400b"
+    },
+    {
+      "path": "METRICS.json",
+      "sha256": "bdbab9f7facacabc6a6b634c6860e7e54cebfb4cd680844142cb3ad7659f3b5d"
     },
     {
       "path": "READINESS-REPORT.md",
-      "sha256": "56fa261d6cf44de23c6c733ea5801d2fe84f4503c24cb04be980b8caa6179901"
+      "sha256": "2c9fd29fd4bf0a074b3797d76698a409c1ad685ef6666b8645f42784396b1141"
     },
     {
       "path": "SOURCE-LOCATION-MAP.json",
@@ -146,19 +151,23 @@
     },
     {
       "path": "gates/GATE-RESULTS.json",
-      "sha256": "fe656ad99ba1ac02350fc8a259d58a3821e139ff5d0474950ae50ff7e6668644"
+      "sha256": "3d9d3bf8a732a6eed045062c88d1f711d150a693021df34d6cf49529f19ba4c1"
     },
     {
-      "path": "package/jrs-eval-0.1.0-eval-d73ceb8066.tar.gz",
-      "sha256": "7b0d625174907dc9edeb1641cd884848715f5a4090c8b3b403021d746f8ddbf9"
+      "path": "package/jrs-eval-0.1.0-eval-b0552e54ee.tar.gz",
+      "sha256": "eff675831d24639718e21b1c6fa162db4078272ca03fd7616ccf29f20c0c3885"
     },
     {
       "path": "runs/2026-10-01-smoke-1.BLOCKED.json",
       "sha256": "bd32e493aeada7bf210bb1cabb43afe2d7c216c571bf84752cc58af81216f926"
     },
     {
+      "path": "runs/2026-10-02-smoke-2/EXECUTION-RECORD.json",
+      "sha256": "985517408e475219b6b9cdd44cab2b86bdbf7d667596f4fa07f81281e2a6fd95"
+    },
+    {
       "path": "tools/build-audit-bundle.mjs",
-      "sha256": "abf06cb0432d358cc43b7315e9b4bcc5b35a3e4009bd7c94203a72fff2121dc3"
+      "sha256": "e52522893e6fd2becfd7b701555c4a69094e3e93ad639dd6986b8e9d9f974391"
     },
     {
       "path": "tools/build-package.mjs",
@@ -186,19 +195,19 @@
     },
     {
       "path": "track-a/BUYER-BRIEF.md",
-      "sha256": "e878f103fafd31fe311080874b818d08acbecd202b4412488d3ad0ffe26e4f87"
+      "sha256": "1937e6df21edc40ac6b0c25ec14c292bdcb8b209f77bea8a209845c7e5d880ca"
     },
     {
       "path": "track-a/CAPABILITY-MATRIX.json",
-      "sha256": "d631a655077f0ff2d68adde1ac5be961097802f4513aecca5c53da6399be3f93"
+      "sha256": "d3171d00de599ce9193a25b9eaad55e7a7fcc6220372ca4ae932ad6764ed5e20"
     },
     {
       "path": "track-a/DEMO-LIMITATIONS.md",
-      "sha256": "28596b1f902e313673bed1ecb07c11b1b3eed5f7e302f730226c929e1bfcf931"
+      "sha256": "da978a29765efa3d202f25d2587486d6a2faad8b69220f19089edb938636bdf7"
     },
     {
       "path": "track-a/DEMO-SCRIPT.md",
-      "sha256": "662f6f141ebf45e4ca838c302df60253e90f7944009d4e4a94d5b496c8b72123"
+      "sha256": "7cdd8408ea19dcee59e89f518a9d525319627dc568e7c31236e25530f4be1edf"
     },
     {
       "path": "track-a/EVALUATION-OFFER.md",
@@ -206,15 +215,15 @@
     },
     {
       "path": "track-a/FROZEN-DEMO-MANIFEST.json",
-      "sha256": "e49afadc1269cffe3f0c3c3ef49cd6014ff7680508a6884ffdc2d229785c6eb6"
+      "sha256": "7af6a499881526858b2293e3226871d04580d2b251c28ba94a1ae434dabe7a02"
     },
     {
       "path": "track-b/CLAIM-REGISTER.md",
-      "sha256": "f37b0b32d5d4004914848e392d8bbaebe2306eef8b8836edafaab6f785065ee0"
+      "sha256": "9acaeda2750135d4ee1555f00e2a901129827c6868a0473584428295febb1191"
     },
     {
       "path": "track-b/DATA-FLOW-AND-LIMITATIONS.md",
-      "sha256": "48bf2f68fd556038fd4a644893b1ad1e6f719f19742608ca991c8e965d6650d1"
+      "sha256": "075e3d508f8a27bb415f5b10a7433157136c70297b27c83fee142834ff826648"
     },
     {
       "path": "track-b/EVALUATION-AGREEMENT-DRAFT.md",
@@ -226,7 +235,7 @@
     },
     {
       "path": "track-b/INTEGRATION-AND-QUICKSTART.md",
-      "sha256": "3fdf736c97e02849d25ff37b41ebe9d4d3887e9964dad2ba3bd1d9cad34dd68b"
+      "sha256": "be847670b8d83d370684867f32b27c3cc67ca6ac4a20eff67ec5b49358f66aef"
     },
     {
       "path": "track-b/INVOICE-AND-ACTIVATION.md",

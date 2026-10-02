@@ -36,4 +36,4 @@
 ## What JRS has not checked
 - The buyer's Anthropic account terms, retention settings, region or limits.
 - Any provider route other than the direct Anthropic API. AWS Bedrock and Google Vertex are not implemented.
-- Live behavior of any kind. The live smoke run has not yet happened; the provider key is absent in the JRS test environment.
+- Live behavior beyond the one 10-call test run on five fictional records (2026-10-02).
