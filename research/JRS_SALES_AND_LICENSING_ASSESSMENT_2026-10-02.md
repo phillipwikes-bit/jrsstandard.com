@@ -297,12 +297,13 @@ These three assets rest on **your practitioner credibility**: 13 years as a Lead
 | **Reviewer Reference** | R1. Keep free | Nothing | Reach | None |
 | | **R2. Propose a practitioner handbook to SCCE.** SCCE has a book editor and a published proposal process, and you are already an accepted SCCE author | A proposal: outline, sample chapter from the Reference, audience, author bio | A published book in front of the compliance profession; it fits the non-HR compliance scope of the Engine evaluation as well | Publisher rights terms; months of writing |
 | | R3. A federal-investigator desk reference with Dewey | Overlaps G3; choose one so the same text is not sold twice | As G3 | As G3 |
+| **Articles (added 2026-10-02)** | **A1. A new, healthcare-tailored article for HCCA's *Compliance Today*.** Editor Scott Moe deferred to "after this article appears in CEP" (MASTER_TRACKER, 20 July) | A new article, not a reuse: the CEP text now belongs to SCCE & HCCA (transfer signed 7/21/2026) | A third trade credential, in healthcare compliance | Must be original; SCCE and HCCA are one publisher family |
 | | R4. Self-publish with an ISBN (print on demand) | Formatting and an ISBN | **You keep every right**, the cleanest option for a later sale | Little credibility gain; no distribution |
 
 ### Rules that protect the sale (apply to any publishing contract)
 1. **License only the expanded text, never the standard.** Keep the five conditions, the codebook, the Engine and the free short versions outside the grant.
 2. **Prefer non-exclusive, or a limited term and field.** Make sure the contract can be assigned to a future acquirer. An exclusive copyright grant to a publisher would remove that text from anything you could later sell.
-3. **Keep co-authored and third-party content out**, unless approved: the CCI article and Hekim's contribution (his prior-approval terms), the CEP article (SCCE's agreement was not located), and contributor quotes.
+3. **Keep co-authored and third-party content out**, unless approved: the CCI article and Hekim's contribution (his prior-approval terms); the CEP article, **whose copyright you transferred to SCCE & HCCA on 7/21/2026**; and contributor quotes.
 4. **Disclose AI assistance accurately.** Publishers require authors to warrant authorship. The estate records substantial AI-assisted drafting under your direction (E-029), so the warranty must be worded to match.
 5. **Have one capped legal review of the first contract you are offered.** This is the one place a lawyer earns their fee early.
 

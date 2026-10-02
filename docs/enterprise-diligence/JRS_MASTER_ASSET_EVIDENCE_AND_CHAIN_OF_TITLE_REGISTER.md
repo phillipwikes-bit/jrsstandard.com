@@ -624,3 +624,16 @@ of the record, not evidence that the owner failed to review, direct or accept th
 ## Final assessment for this consolidation pass
 
 **CURRENT JRS FACTUAL EVIDENCE PACKAGE COMPLETE.**
+
+————————————————————————————
+
+## Correction to F-4, 2026-10-02: one executed signed instrument now located (outbound)
+
+OLD FINDING: F-4, "No executed signed instrument exists anywhere."
+NEW EVIDENCE: the owner supplied a photograph of the **CEP Magazine Copyright Transfer Form** (SCCE), title "When the Record Cannot Speak for Itself", printed name Phillip Wikes, signed, dated **7/21/2026**. The image sha256 is `db3f35d2998126778ee0d5efb26290c06009f0a00e7e1c5e8dda9cf23490b2d7`. It is held in the owner's upload and **deliberately not committed**, because this repository is public (B-018) and the image carries a signature.
+CORRECTED STATUS: **one Level A executed instrument exists, and it conveys rights out of the estate.** As written, it transfers to SCCE & HCCA "full ownership of the copyright, and all of the rights comprised therein, in all forms and media ... throughout the world, in all languages" in that article. It also contains author warranties: sole author and sole proprietor; original; not previously published; no infringement; facts true or reasonably researched. SCCE & HCCA "will provide ... a Publications Author Permissions Policy" (not located). F-4 remains true for every **inbound** right: no signed assignment or licence to the owner or an entity from any contributor or co-author has been located.
+EXPLANATION: the form was referred to as pending on 2026-07-21 (MASTER_TRACKER) and had never been filed. Effect, stated as facts and questions only, not legal conclusions (CLAUDE.md Rule 8):
+- The CEP article's text is not an estate asset and cannot be sold or licensed with JRS.
+- Reusing its wording in other articles, the training, guides or a book requires SCCE & HCCA permission, or whatever their Author Permissions Policy allows. **Obtain that policy.**
+- Whether a copyright transfer in one article's text reaches the methods or ideas it describes is a **counsel question**. *Inference:* copyright ordinarily covers expression, not ideas.
+- The sole-authorship and originality warranties should be read by counsel against the recorded AI-assisted drafting account (E-029). **REQUIRES HUMAN REVIEW.**
