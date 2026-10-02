@@ -96,3 +96,6 @@ The corpus has record citations in only 11 of 30 sources, so the deletion rotati
 - the last 10 get the **attributions** deletion.
 
 The Codebook text is re-extracted, word for word, to `engine/codebook-conditions.json`.
+
+## Implementation note 2, 2026-10-02 (before any model call)
+The attribution deletion is strengthened. The speaker of every attributed statement (a role followed by a speech verb) is replaced with "someone", so no attributed statement keeps its source. The first version only replaced numbered roles and left "Complainant", "Supervisor" and similar speakers in place.
