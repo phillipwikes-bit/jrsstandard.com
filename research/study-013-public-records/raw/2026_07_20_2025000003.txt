@@ -1,0 +1,233 @@
+           U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                          Office of Federal Sector
+                              P.O. Box 77960
+                          Washington, DC 20013
+
+
+                                   Tanya D., 1
+                                  Complainant,
+
+                                        v.
+
+                              Douglas A. Collins,
+                                  Secretary,
+                         Department of Veterans Affairs,
+                                   Agency.
+
+                             Appeal No. 2025000003
+
+                      Agency No. 200H-10N1-2023-151188
+
+                                   DECISION
+
+Complainant filed an appeal with the Equal Employment Opportunity Commission
+(EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s
+September 4, 2024, final decision concerning her equal employment opportunity
+(EEO) complaint of employment discrimination in violation of Title VII of the Civil
+Rights Act of 1964 (Title VII), as amended, 42 U.S.C. § 2000e et seq. and the Equal
+Pay Act of 1963, as amended, 29 U.S.C. § 206(d) et seq. For the following reasons,
+the Commission AFFIRMS the Agency’s final decision.
+
+At the time of events giving rise to this complaint, Complainant worked as a
+Healthcare Engineer (Energy Manager), GS-12, at the Agency’s VA Medical Center
+in Providence, Rhode Island. Complainant’s facility was part of the Veterans
+Integrated Service Network (VISN)1 region.
+
+
+
+1
+  This case has been randomly assigned a pseudonym which will replace
+Complainant’s name when the decision is published to non-parties and the
+Commission’s website.
+                                        2                                2025000003
+
+
+On May 8, 2023, Complainant filed an EEO complaint alleging that the Agency
+discriminated against her based on sex (female) when she learned that a male
+coworker (CW1) was assigned to the GS-13 grade level, while she remained in a
+GS-12 position, and management denied her request for promotion to the GS-13
+grade level.2
+
+At the conclusion of the investigation, the Agency provided Complainant with a
+copy of the report of investigation (ROI) and notice of her right to request a hearing
+before an EEOC Administrative Judge or a final decision from the Agency. In
+accordance with Complainant’s request, the Agency issued a final decision pursuant
+to 29 C.F.R. § 1614.110(b). While the Agency found that Complainant established
+a prima facie case of discrimination under the EPA, the Agency found that
+Complainant’s EPA claim failed because the Agency articulated a sex-neutral factor
+based on seniority for CW1’s higher pay grade, namely that, unlike CW1,
+Complainant was hired after the VISN1 Rating Board reclassified the Healthcare
+Engineer position and downgraded its promotion potential from a GS-13 to a GS-
+12. Regarding the claim that the Agency failed to promote Complainant to a GS-13
+grade level, while the Agency acknowledged that other VISN regions had Healthcare
+Engineers with promotion potential up to GS-13, the Agency explained that
+Complainant did not qualify for the GS-13 paygrade because her position did not
+require her to perform at least 25 percent of her duties at the VISN or national level.
+The Agency ultimately concluded that Complainant failed to prove that the Agency
+subjected her to discrimination as alleged. Complainant then filed the instant appeal.
+
+As an initial matter, we find Complainant’s challenges to the integrity of the
+investigative process unpersuasive. Here, Complainant argues that the supplemental
+investigation is missing from the file, that two key witnesses were not interviewed,
+and that one witness failed to respond to a request for an affidavit.
+
+2
+  Complainant originally raised a claim of failure to engage in alternative dispute
+resolution, which was dismissed for failure to state a claim, and additional claims of
+denied promotions, which were dismissed for untimely contact with an EEO
+counselor. Complainant does not challenge these dismissals on appeal. We exercise
+our discretion to review only those issues specifically raised in an appeal and will
+not address those claims in this decision. See EEOC Management Directive for 29
+C.F.R. Part 1614, (MD-110), Chap. 9, § IV.A. (Aug. 5, 2015).
+                                       3                                2025000003
+
+
+However, we note that Complainant elected to request a final decision from the
+Agency without a hearing and chose to forgo her opportunity to develop the record
+through discovery or examination of witnesses. See Irene W. v. Dep’t of Vet. Affs.,
+EEOC Appeal No. 2021003834 (Mar. 9, 2023). Furthermore, the supplemental
+investigation that Complainant argues is missing is, in fact, included in the appeal
+record. Thus, we find the investigative record is adequately developed and provides
+sufficient facts on which to issue a decision by summary judgment.
+
+The U.S. Supreme Court articulated the requirements for establishing a prima facie
+case of discrimination under the EPA in Corning Glass Works v. Brennan, 417 U.S.
+188 (1974). To establish a prima facie case of a violation under the EPA, a
+complainant must show that she or he received less pay than an individual of the
+opposite sex for equal work, requiring equal skill, effort, and responsibility, under
+similar working conditions within the same establishment. Sheppard v. Equal Emp’t
+Opportunity Comm’n, EEOC Appeal No. 01A02919 (Sept. 12, 2000), req. for
+recons. den., EEOC Request No. 05A10076 (Aug. 12, 2003).
+
+Once a complainant has met the burden of establishing a prima facie case, an
+employer may avoid liability only by showing that the difference in pay is justified
+under one of the four affirmative defenses set forth in the EPA: (1) a seniority
+system; (2) a merit system; (3) a system which measures earnings by quantity or
+quality of production of work (also referred to as an incentive or piecework system);
+or (4) a differential based on any factor other than sex. EEOC Compliance Manual,
+Number 915.003, Section 10(IV): Compensation Discrimination (Dec. 5, 2000).
+
+Here, it is undisputed that Complainant established a prima facie case of
+discrimination under the EPA. As such, we only need to address the Agency’s
+affirmative defenses. Upon review, we find that the alleged difference in pay was
+justified by a factor other than sex. Specifically, the record reveals that in 2006,
+VISN1 reclassified Complainant’s position and downgraded its promotion potential
+from a GS-13 to a GS-12. As Complainant was hired in 2013, her full promotion
+level was GS-12. CW1, in contrast, was “grandfathered in” and kept his GS-13 grade
+level because he was hired prior to the reclassification.
+
+Complainant argues that there is no merit to the Agency’s affirmative defense, as the
+Agency has been advertising vacant Healthcare Engineer positions across the nation
+at the GS-13 level since 2022.
+                                         4                                 2025000003
+
+
+However, we do not find these positions to be similarly situated to Complainant’s
+position. As noted in the Agency’s response to Complainant’s appeal, Complainant’s
+position did not qualify for the GS-13 Healthcare Engineer position because the GS-
+13 grade level required incumbents to perform at least 25 percent of their duties at
+the VISN or national level. Complainant’s duties, however, were exclusively at the
+local level. While Complainant disputes the Agency’s explanation and emphasizes
+that she and her colleagues were required to support multiple VA facilities, she does
+not, however, dispute the Agency’s assertion that male Healthcare Engineers at her
+facility who were hired after the reclassification had the same GS-12 promotion
+potential as her. Indeed, by Complainant’s own admission, “the VISN1 Rating Board
+downgraded ALL newly hired Energy Engineers. [emphasis original]” ROI at 616.
+As such, we conclude that Complainant cannot prevail on her EPA claim.
+
+Complainant also claims that she was subjected to disparate treatment based on sex
+when she was deemed not eligible for promotion to the GS-13 grade level. While we
+certainly understand Complainant’s frustration regarding her inability to be
+promoted to the GS-13 grade level like Healthcare Engineers at other VISNs, we
+find that the Agency articulated legitimate, nondiscriminatory reasons for denying
+Complainant’s request as discussed above. Even considering Complainant’s
+arguments in support of her appeal, we nevertheless remain unpersuaded.
+Accordingly, we AFFIRM the Agency’s final decision.
+
+                     STATEMENT OF RIGHTS - ON APPEAL
+                         RECONSIDERATION (M1125)
+The Commission may, in its discretion, reconsider this appellate decision if
+Complainant or the Agency submits a written request that contains arguments or
+evidence that tend to establish that:
+      1. The appellate decision involved a clearly erroneous interpretation of
+         material fact or law; or
+      2. The appellate decision will have a substantial impact on the policies,
+         practices, or operations of the agency.
+
+Requests for reconsideration must be filed with EEOC’s Office of Federal Sector
+(OFS) within thirty (30) calendar days of receipt of this decision. If the party
+requesting reconsideration elects to file a statement or brief in support of the request,
+that statement or brief must be filed together with the request for
+                                        5                                 2025000003
+
+
+reconsideration. A party shall have twenty (20) calendar days from receipt of
+another party’s request for reconsideration within which to submit a brief or
+statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment Opportunity
+Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+
+Complainant should submit their request for reconsideration, and any statement or
+brief in support of their request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx. Alternatively, Complainant can
+submit their request and arguments to the Director, Office of Federal Sector, Equal
+Employment Opportunity Commission, via regular mail addressed to P.O. Box
+77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s
+request to reconsider shall be deemed timely filed if OFS receives it by mail within
+five days of the expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the
+EEOC’s Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either
+party’s request and/or statement or brief in opposition must also include proof of
+service on the other party, unless Complainant files their request via the EEOC
+Public Portal, in which case no proof of service is required.
+Failure to file within the 30-day time period will result in dismissal of the party’s
+request for reconsideration as untimely, unless extenuating circumstances prevented
+the timely filing of the request. Any supporting documentation must be submitted
+together with the request for reconsideration. The Commission will consider
+requests for reconsideration filed after the deadline only in very limited
+circumstances. See 29 C.F.R. § 1614.604(f).
+
+        COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0124)
+
+You have the right to file a civil action in an appropriate United States District Court
+within ninety (90) calendar days from the date that you receive this decision. If
+you file a civil action, you must name as the defendant in the complaint the person
+who is the official Agency head or department head, identifying that person by their
+full name and official title. Failure to do so may result in the dismissal of your case
+in court.
+                                        6                                 2025000003
+
+
+“Agency” or “department” means the national organization, and not the local office,
+facility or department in which you work. If you file a request to reconsider and also
+file a civil action, filing a civil action will terminate the administrative processing
+of your complaint.
+
+                    RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so,
+you may request permission from the court to proceed with the civil action without
+paying these fees or costs. Similarly, if you cannot afford an attorney to represent
+you in the civil action, you may request the court to appoint an attorney for you. You
+must submit the requests for waiver of court costs or appointment of an
+attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests. Such requests do not alter the
+time limits for filing a civil action (please read the paragraph titled Complainant’s
+Right to File a Civil Action for the specific time limits).
+
+
+FOR THE COMMISSION:
+
+
+
+
+                            Chaudhry’s signature
+Gul Chaudhry, Acting Director
+Office of Federal Sector
+
+
+June 11, 2026
+Date
+

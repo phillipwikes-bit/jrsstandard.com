@@ -34,3 +34,10 @@ The decision's BACKGROUND section only, which describes the investigation and th
 - The two pools are chosen by different queries, so their wording may differ in ways a model could pick up on. The owner's review of the stripped texts (Appendix E.4, control 7) checks for this.
 - Rights: works of the US federal government are generally not protected by copyright (17 U.S.C. 105). REQUIRES HUMAN REVIEW; not a legal conclusion.
 - The repository is public (B-018), so the key is public. The outcomes are public on eeoc.gov anyway. Models get no web access during the run.
+
+## Amendment 1, 2026-10-02 (before any candidate was classified or read)
+**Reason:** the first harvest returned only counts. Q1 gave 20 candidates posted in 2026 and Q2 gave 4, so the PASS pool cannot fill 15. No decision text had been read.
+**Change:** queries added. Q1 and Q2 are unchanged.
+- Q3 (pass pool): `"did not request a hearing" AFFIRM`
+- Q4 (pass pool): `"requested a final agency decision" AFFIRMS`
+- Q5 (gap pool): `"supplemental investigation" "adequately developed"`

@@ -1,0 +1,305 @@
+           U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                          Office of Federal Sector
+                              P.O. Box 77960
+                          Washington, DC 20013
+
+
+                                    Porter P., 1
+                                   Complainant,
+
+                                         v.
+
+                              Douglas A. Collins,
+                                  Secretary,
+                         Department of Veterans Affairs,
+                                   Agency.
+
+                             Appeal No. 2025002381
+
+                          Hearing No. 450-2024-00277X
+
+                       Agency No. 2003-674-2023-152925
+
+                                    DECISION
+
+Complainant filed an appeal with the Equal Employment Opportunity Commission
+(EEOC or Commission), pursuant to 29 C.F.R. § 1614.403(a), from the Agency’s
+March 10, 2025, final order concerning his equal employment opportunity (EEO)
+complaint of employment discrimination in violation of Title VII of the Civil Rights
+Act of 1964 (Title VII), as amended. For the following reasons, the Commission
+VACATES the Agency’s final order and REMANDS the matter for further
+processing.
+
+At the time of events giving rise to this complaint, Complainant worked as a Motor
+Vehicle Operator at the Central Texas VA Health Care System in Waco, Texas. On
+August 3, 2023, Complainant filed an EEO complaint alleging that the Agency
+discriminated against him on the bases of race (Caucasian) and in reprisal for prior
+1
+ This case has been randomly assigned a pseudonym which will replace
+Complainant’s name when the decision is published to non-parties and the
+Commission’s website.
+                                          2                              2025002381
+
+protected EEO activity when on June 16, 2023, the Maintenance and Repair
+Supervisor denied his request to voluntarily step down from Wage Grade (WG)-08
+to WG-06.
+
+At the conclusion of the investigation, the Agency provided Complainant with a
+copy of the report of investigation and notice of his right to request a hearing before
+an EEOC Administrative Judge (AJ). Complainant timely requested a hearing. The
+Agency filed a motion for summary judgment. Over Complainant’s objections, the
+AJ determined that the complaint did not warrant a hearing and issued a decision
+without a hearing.
+
+The AJ found that Complainant failed to establish a genuine issue of material fact
+regarding his claims of race discrimination and reprisal. The AJ determined that the
+Agency articulated a legitimate, nondiscriminatory reason for denying
+Complainant’s request to voluntarily downgrade to WG-06, namely a critical
+shortage of WG-08 drivers. Complainant argued that this was pretext and asserted
+that Coworker-1 (African American) was allowed to step down, despite
+Complainant making his request first. The AJ, however, found that although
+Coworker-1 had been permitted to step down, management acknowledged that doing
+so was a mistake. The AJ concluded that this did not establish pretext. As to reprisal,
+the AJ found that Complainant’s prior EEO activity occurred approximately 18
+months before the challenged action and was too remote, without additional
+evidence, to support an inference of reprisal. Consequently, the AJ granted the
+Agency’s motion and entered judgment in favor of the Agency. The Agency
+subsequently issued a final order implementing the AJ’s finding that the Agency did
+not subject him to discrimination as alleged. The instant appeal followed.
+
+On appeal, Complainant argues that the AJ improperly granted summary judgment
+by resolving disputed issues of material fact and credibility without a hearing.
+Specifically, Complainant contends that the AJ failed to fully analyze his arguments,
+misunderstood his comparator evidence, improperly accepted the Agency’s staffing
+shortage explanation without considering evidence that management created the
+shortage, and failed to recognize that he established prima facie cases of race
+discrimination and reprisal. Complainant argues that management’s explanation for
+denying his request based on staffing concerns was pretextual because his facility
+has never been fully staffed and management’s concerns about staffing were
+historically addressed by employing contractors to cover the shortage.
+                                          3                              2025002381
+
+Complainant asserts that witness statements support his allegation that his request to
+voluntarily demote was submitted before that of Coworker-1, who was then later
+granted the same request, thereby raising a genuine issue regarding whether the
+Agency’s proffered explanation was pretext for discrimination. He argues that
+management’s refusal to allow him to downgrade to the WG-06 level caused him
+significant harm due to all the overtime he was required to work as a WG-08 worker.
+The Agency reiterates prior statements and requests that the Commission affirm the
+final Agency decision.
+
+                                    ANALYSIS
+
+We must determine whether the AJ appropriately issued the decision without a
+hearing. The Commission’s regulations allow an AJ to issue a decision without a
+hearing upon finding that there is no genuine issue of material fact. 29 C.F.R.
+§ 1614.109(g). EEOC’s decision without a hearing regulation follows the summary
+judgment procedure from federal court. Fed. R. Civ. P. 56. The U.S. Supreme Court
+held summary judgment is appropriate where a judge determines no genuine issue
+of material fact exists under the legal and evidentiary standards. Anderson v. Liberty
+Lobby, Inc., 477 U.S. 242, 255 (1986). In ruling on a summary judgment motion,
+the judge is to determine whether there are genuine issues for trial, as opposed to
+weighing the evidence. Id. at 249. At the summary judgment stage, the judge must
+believe the non-moving party’s evidence and must draw justifiable inferences in the
+non-moving party’s favor. Id. at 255. A “genuine issue of fact” is one that a
+reasonable judge could find in favor for the non-moving party. Celotex v. Catrett,
+477 U.S. 317, 322-23 (1986); Oliver v. Digital Equip. Corp., 846 F.2d 103, 105 (1st
+Cir. 1988). A “material” fact has the potential to affect the outcome of a case.
+
+Having reviewed the record, we find that a hearing is warranted because the record
+does not clearly establish the chronology of the relevant events. Specifically, the
+record does not identify when Coworker-1 requested to voluntarily step down,
+whether his request was made before or after Complainant's, or whether staffing
+levels were already deemed critical at the time of Coworker-1’s request and/or
+approval.
+
+Complainant also identifies Coworker-2 (Pacific Islander) and Coworker-3
+(identified as Hispanic) as similarly situated employees who were permitted to
+voluntarily step down. Like Coworker-1, the record does not establish when these
+employees requested or were approved to step down.
+                                         4                             2025002381
+
+Although the record suggests that Coworker-2 and Coworker-3 were approved
+before staffing levels became critical, it does not establish when they requested to
+voluntarily step down in relation to Coworker-1 or Complainant, and whether their
+requests were evaluated under circumstances comparable to Complainant's.
+
+We find the chronology material to this case because it bears directly on the
+credibility of the Agency’s proffered legitimate, nondiscriminatory reason. If
+Coworker-2 and Coworker-3 stepping down created a staffing shortage, as asserted
+by the Agency, then a reasonable factfinder could conclude that the Agency’s
+explanation warrants closer scrutiny if, as Complainant alleges, management
+nevertheless approved Coworker 1’s later request despite the staffing shortage, and
+then used the same shortage to deny Complainant’s earlier request.
+
+Conversely, if the record establishes that Coworker-1 requested to step down before
+Complainant, and that approval of his request then caused staffing levels to become
+critically low, or that the requests were not similarly situated, such evidence may
+support the Agency’s stated rationale. On the present record, however, these factual
+questions remain unresolved. Accordingly, we find that summary judgment was not
+appropriate. See also Wiley G. v. Dep’t of the Navy, EEOC Appeal No. 0120152601
+(Nov. 8, 2017) (the Commission reversed and remanded for a hearing because there
+were genuine issues of material fact at issue).
+
+We emphasize that we express no opinion regarding whether Complainant
+ultimately can establish pretext. Rather, we conclude only that the
+investigative record is inadequate and needs to be supplemented so that a well-
+reasoned determination on the merits of Complainant’s complaint can be
+made. See generally, Stewart v. Dep’t of Homeland Sec., EEOC Request No.
+0520070124 (Nov. 14, 2011) (inadequate investigation); O'Neill v. Dep’t of
+State, EEOC Appeal No. 0120083597 (Jan. 15, 2009) (inadequate investigation).
+
+                                 CONCLUSION
+
+Accordingly, we VACATE the Agency’s decision and REMAND the matter for
+supplemental investigation and further processing in accordance with the ORDER
+set forth below.
+                                          5                              2025002381
+
+
+                                      ORDER
+
+Within fifteen (15) calendar days of the date this decision is issued, the Agency
+shall submit a renewed request for a hearing on Complainant’s behalf, a copy of this
+appellate decision, and the complaint file through FedSEP. The Agency shall
+provide notification to the Commission as set forth below in the section entitled
+“Implementation of the Commission’s Decision” that the complaint file has been
+transmitted to the Hearings Unit. Thereafter, the AJ should supplement the record
+and direct the Agency to provide the following information:
+
+         1. When Complainant requested to voluntarily step down;
+         2. When the three comparators, as identified by Complainant on page 53
+            of the Report of Investigation, requested to voluntarily step down;
+         3. When each request was approved or denied;
+         4. The decision-making process governing those requests;
+         5. Any documentary evidence reflecting the requests or approvals,
+            including emails, personnel actions, vacancy records, or other relevant
+            documentation; and
+         6. Any additional evidence deemed relevant to clarify the chronology and
+            decision-making process.
+
+The AJ shall then conduct further proceedings as necessary under 29 C.F.R. §
+1614.109, including holding a hearing, if the supplemented record demonstrates that
+genuine issues of material fact remain. Thereafter, the Agency shall take final action
+on the matter in accordance with § 1614.110.
+
+      IMPLEMENTATION OF THE COMMISSION’S DECISION (K0719)
+
+Under 29 C.F.R. § 1614.405(c) and §1614.502, compliance with the Commission’s
+corrective action is mandatory. Within seven (7) calendar days of the completion of
+each ordered corrective action, the Agency shall submit via the Federal Sector EEO
+Portal (FedSEP) supporting documents in the digital format required by the
+Commission, referencing the compliance docket number under which compliance
+was being monitored. Once all compliance is complete, the Agency shall submit via
+FedSEP a final compliance report in the digital format required by the Commission.
+See 29 C.F.R. § 1614.403(g).
+                                           6                               2025002381
+
+The Agency’s final report must contain supporting documentation when previously
+not uploaded, and the Agency must send a copy of all submissions to the
+Complainant and his/her representative.
+
+If the Agency does not comply with the Commission’s order, the Complainant may
+petition the Commission for enforcement of the order. 29 C.F.R. § 1614.503(a).
+The Complainant also has the right to file a civil action to enforce compliance with
+the Commission’s order prior to or following an administrative petition for
+enforcement. See 29 C.F.R. §§ 1614.407, 1614.408, and 29 C.F.R. § 1614.503(g).
+Alternatively, the Complainant has the right to file a civil action on the underlying
+complaint in accordance with the paragraph below entitled “Right to File a Civil
+Action.” 29 C.F.R. §§ 1614.407 and 1614.408. A civil action for enforcement or a
+civil action on the underlying complaint is subject to the deadline stated in 42 U.S.C.
+2000e-16(c) (1994 & Supp. IV 1999). If the Complainant files a civil action, the
+administrative processing of the complaint, including any petition for
+enforcement, will be terminated. See 29 C.F.R. § 1614.409.
+
+Failure by an agency to either file a compliance report or implement any of the orders
+set forth in this decision, without good cause shown, may result in the referral of this
+matter to the Office of Special Counsel pursuant to 29 C.F.R. § 1614.503(f) for
+enforcement by that agency.
+                     STATEMENT OF RIGHTS - ON APPEAL
+                         RECONSIDERATION (M1125)
+The Commission may, in its discretion, reconsider this appellate decision if
+Complainant or the Agency submits a written request that contains arguments or
+evidence that tend to establish that:
+      1. The appellate decision involved a clearly erroneous interpretation of
+         material fact or law; or
+      2. The appellate decision will have a substantial impact on the policies,
+         practices, or operations of the agency.
+Requests for reconsideration must be filed with EEOC’s Office of Federal Sector
+(OFS) within thirty (30) calendar days of receipt of this decision. If the party
+requesting reconsideration elects to file a statement or brief in support of the request,
+that statement or brief must be filed together with the request for
+reconsideration.
+                                          7                              2025002381
+
+A party shall have twenty (20) calendar days from receipt of another party’s request
+for reconsideration within which to submit a brief or statement in opposition. See
+29 C.F.R. § 1614.405; Equal Employment Opportunity Management Directive for
+29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B (Aug. 5, 2015).
+Complainant should submit their request for reconsideration, and any statement or
+brief in support of their request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx. Alternatively, Complainant can
+submit their request and arguments to the Director, Office of Federal Sector, Equal
+Employment Opportunity Commission, via regular mail addressed to P.O. Box
+77960, Washington, DC 20013, or by certified mail addressed to 131 M Street, NE,
+Washington, DC 20507. In the absence of a legible postmark, a complainant’s
+request to reconsider shall be deemed timely filed if OFS receives it by mail within
+five days of the expiration of the applicable filing period. See 29 C.F.R. § 1614.604.
+
+An agency’s request for reconsideration must be submitted in digital format via the
+EEOC’s Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g). Either
+party’s request and/or statement or brief in opposition must also include proof of
+service on the other party, unless Complainant files their request via the EEOC
+Public Portal, in which case no proof of service is required.
+Failure to file within the 30-day time period will result in dismissal of the party’s
+request for reconsideration as untimely, unless extenuating circumstances prevented
+the timely filing of the request. Any supporting documentation must be
+submitted together with the request for reconsideration. The Commission will
+consider requests for reconsideration filed after the deadline only in very limited
+circumstances. See 29 C.F.R. § 1614.604(f).
+
+        COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (R0124)
+
+This is a decision requiring the Agency to continue its administrative processing of
+your complaint. However, if you wish to file a civil action, you have the right to file
+such action in an appropriate United States District Court within ninety (90)
+calendar days from the date that you receive this decision. In the alternative, you
+may file a civil action after one hundred and eighty (180) calendar days of the
+date you filed your complaint with the Agency, or filed your appeal with the
+Commission. If you file a civil action, you must name as the defendant in the
+complaint the person who is the official Agency head or department head,
+identifying that person by their full name and official title.
+                                           8                              2025002381
+
+Failure to do so may result in the dismissal of your case in court. “Agency” or
+“department” means the national organization, and not the local office, facility or
+department in which you work. Filing a civil action will terminate the
+administrative processing of your complaint.
+
+                    RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so,
+you may request permission from the court to proceed with the civil action without
+paying these fees or costs. Similarly, if you cannot afford an attorney to represent
+you in the civil action, you may request the court to appoint an attorney for you. You
+must submit the requests for waiver of court costs or appointment of an
+attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests. Such requests do not alter the
+time limits for filing a civil action (please read the paragraph titled Complainant’s
+Right to File a Civil Action for the specific time limits).
+
+
+
+FOR THE COMMISSION:
+
+
+
+
+                            Chaudhry’s signature
+Gul Chaudhry, Acting Director
+Office of Federal Sector
+
+
+July 23, 2026
+Date
+

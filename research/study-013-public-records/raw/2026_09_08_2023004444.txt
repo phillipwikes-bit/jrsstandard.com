@@ -1,0 +1,567 @@
+          U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION
+                       Office of Federal Sector
+                           P.O. Box 77960
+                       Washington, DC 20013
+
+
+                                   Marti F., 1
+                                  Complainant,
+
+                                        v.
+
+                              Markwayne Mullin,
+                                   Secretary,
+                        Department of Homeland Security
+                        (Customs and Border Protection),
+                                    Agency.
+
+                            Appeal No. 2023004444
+
+                         Hearing No. 450-2022-00238X
+
+                        Agency No. HS-CBP-00282-2021
+
+                                   DECISION
+
+On August 3, 2023, Complainant filed an appeal with the Equal Employment
+Opportunity Commission (EEOC or Commission), pursuant to 29 C.F.R. §
+1614.403(a), from the Agency’s July 10, 2023, final decision concerning her equal
+employment opportunity (EEO) complaint alleging employment discrimination in
+violation of Title VII of the Civil Rights Act of 1964 (Title VII), as amended, 42
+U.S.C. § 2000e et seq. For the following reasons, the Commission AFFIRMS the
+Agency’s final decision.
+
+                                BACKGROUND
+
+
+1
+ This case has been randomly assigned a pseudonym which will replace
+Complainant’s name when the decision is published to non-parties and the
+Commission’s website.
+                                         2                              2023004444
+
+At the time of events giving rise to this complaint, Complainant worked as a
+Mission Support Assistant at the Agency’s Santa Teresa Port of Entry in Santa
+Teresa, New Mexico. Complainant’s first-level supervisor was a Santa Teresa Port
+of Entry Supervisory Officer (Supervisor-1).
+
+On January 19, 2021, Complainant filed an EEO complaint alleging the Agency
+subjected her to discrimination and harassment. Complainant requested to amend
+her formal complaint to include like or related issues on March 26, April 27, June
+11, and October 1, 2021. Complainant amended the formal complaint on June 17,
+2022, to add the additional basis of religion. The Agency accepted a total of 45
+claims, enumerated in the Agency’s June 23, 2022, Amended Acceptance Letter.
+ROI, Vol. 1 at 322-26. In the Agency’s final decision, the Agency reframed the
+claims to succinctly identify the allegations, differentiate between live allegations
+and background information; and eliminate redundancies. The Agency’s final
+decision framed the claims as follows:
+
+Whether the Agency subjected Complainant to discrimination and harassment
+based on sex (female), religion (Christian), and reprisal (participation) when:
+
+      1.     From 2018, the Santa Teresa Port of Entry Assistant Port Director
+             (Assistant Port Director) and Supervisor-1 disregarded Complainant’s
+             complaints about workplace violations;
+
+      2.     From July 2018, Assistant Port Director and the Santa Teresa Port of
+             Entry Port Director disregarded or failed to act on Complainant’s
+             allegations of discrimination and harassment;
+
+      3.     In approximately September 2020,              Supervisor-1     required
+             Complainant to attend a two-hour meeting;
+
+      4.     From September 2020, Supervisor-1 did not allow Complainant to
+             work overtime at Complainant’s discretion;
+
+      5.     From September 2020, Supervisor-1 circumscribed Complainant’s
+             access to Agency’s Overtime Scheduling System (or COSS);
+                                  3                            2023004444
+
+6.    During the period September through November 2020, Supervisor-1
+      referred to Complainant as “Mr. [Complainant’s last name]” in three
+      email messages;
+
+7.    During the period September 2020 through November 2020,
+      Complainant’s overtime time tickets were purposefully deleted; and
+      the Agency took up to two months to approve overtime payment;
+
+8.    From November 2020, the Port of Entry did not authorize
+      Complainant to telework – or change previously scheduled telework
+      days – at Complainant’s discretion, the Port of Entry decreased the
+      degree to which Complainant was authorized to telework overall, and
+      the Port of Entry implemented administrative-type telework reporting
+      requirements;
+
+9.    From November 2020, Supervisor-1 assigned duties to Complainant.
+      Relatedly, on November 17, 2020, Supervisor-1 ordered Complainant
+      off Port of Entry premises; and on November 18, 2020, Supervisor-1
+      convened a meeting with Complainant and, among others, a second
+      Supervisory Officer (Supervisory Officer-2);
+
+10.   From November 2020, Supervisor-1 prohibited Complainant from
+      tasking Agency trainees and National Guard personnel with
+      assignments; Supervisor-1 prohibited Complainant from directly
+      texting National Guard personnel; and Supervisor-1 required
+      Complainant to copy Supervisor-1 on all email messages Complainant
+      sent to National Guard personnel;
+
+11.   On November 29, 2020, Complainant learned that several of her
+      nominations for Fiscal Year (FY) 2020 Joint Awards Committee
+      awards were denied;
+
+12.   On November 29, 2020, Supervisor-1 removed Complainant’s access
+      to, or facilitated removal of Complainant’s access to, a Port of Entry
+      managers’ network drive;
+
+13.   On December 10, 2020, Supervisor-1 notified Complainant that
+      Complainant would be scheduled to work holidays in the future;
+                                 4                           2023004444
+
+
+14.   On December 10, 2020, Supervisor-1 obtained barcoded equipment
+      (an Agency radio) from Complainant’s office. Subsequently,
+      Supervisor-1 and Assistant Port Director required Complainant to
+      document the same on an Agency document;
+
+15.   On December 15, 2020, Supervisor-1 requested that two Agency
+      trainees provide a copy of their text communications with
+      Complainant, which Complainant believes was a “fishing” attempt to
+      find her at fault;
+
+16.   On December 15, 2020, Port Director issued a Memorandum of
+      Instruction to Complainant. Subsequently, the Port of Entry did not
+      clarify the allegations of misconduct referenced in the Memorandum
+      of Instruction;
+
+17.   On December 15, 2020, Supervisor-1 discarded a used and dirty pair
+      of gloves in Complainant’s office;
+
+18.   From February 2021, the Port of Entry directed Complainant to access
+      Complainant’s work schedule in COSS;
+
+19.   On or about April 12, 2021, the Agency changed the procedure by
+      which Complainant requested sick leave;
+
+20.   In May 2021, APD commented Complainant is "not a real chaplain”;
+
+21.   On May 6, 2021, a Supervisory Officer (Supervisory Officer-3)
+      directed Complainant to cease referring to Supervisor-1 by
+      Supervisor-1’s surname only;
+
+22.   From May 2021, Complainant's coworker and Assistant Port Director
+      interfered with Complainant’s chaplain duties;
+
+23.   From May 2021, the Port of Entry denied Complainant Physical
+      Fitness Program time;
+                                        5                           2023004444
+
+      24.   On or around September 20, 2021, Complainant learned that the
+            Agency did not select her for the position of a Mission Support
+            Assistant, GS-0303-07, El Paso, Texas, advertised under Job
+            Opportunity Announcement number USBP- IMP-11105033- CJH;
+            and,
+
+      25.   On or around September 21, 2021, Complainant learned that the
+            Agency determined Complainant was ineligible for the position of
+            Correspondence Analyst, GS-0301-12, advertised under Job
+            Opportunity Announcement number OFO-IMP-11207145-CCZ.
+
+On January 6, 2022, the Agency provided Complainant with notice of her right to
+request a hearing before an Equal Employment Opportunity Commission
+Administrative Judge (AJ) because the investigation of the complaint had not been
+completed within the 180-day regulatory time frame. Complainant requested a
+hearing on June 21, 2022.
+
+Complainant submitted a motion for a show cause order and sanctions for the
+Agency’s failure to timely investigate the formal complaint. Complainant
+requested the issuance of a Show Cause Order and that the Agency be sanctioned
+by a default judgment being entered in Complainant’s favor. The Agency uploaded
+a Record of Investigation (ROI) to FedSep. However, the ROI did not address
+Complainant’s claims. The issue was briefed by the parties, and the Agency stated
+it expected to complete the investigation by September 30, 2022. When the
+Agency failed to upload a completed investigation, the AJ issued an Order to
+Supplement ROI on February 13, 2023, ordering the Agency to upload a complete
+ROI no later than February 28, 2023. In the Order, the AJ notified the Agency it
+would be sanctioned, up to and including a default judgment against the Agency if
+the Agency failed to comply with the Order. The Agency complied with the AJ’s
+Order.
+
+On May 15, 2023, Complainant withdrew her hearing request and requested a final
+Agency decision. Consequently, the Agency issued a final decision pursuant to 29
+C.F.R. § 1614.110(b). The decision concluded that Complainant failed to prove
+that the Agency subjected her to discrimination as alleged.
+
+Complainant filed the instant appeal.
+                                         6                              2023004444
+
+                          CONTENTIONS ON APPEAL
+
+On appeal, Complainant requests that the Commission sanction the Agency and
+issue a default judgment in Complainant’s favor due to the Agency’s delay in
+completing the investigation. In the alternative, if the Commission declines to issue
+a default judgment, Complainant argues that the Commission should find she was
+subjected to retaliation with respect to the originally enumerated claims 3, 12, 24,
+39, 41, 42, 43. Additionally, Complainant argues that Claims 3 and 24 constitute
+per se reprisal.
+
+The Agency submitted a brief in response to the instant appeal. The Agency argues
+that the AJ properly exercised her discretion and authority when she ordered the
+Agency to upload the complete ROI no later than February 28, 2023. The Agency
+complied with the order when it uploaded the three volume, 1759-page ROI by the
+due date. The Agency noted the Investigator’s single-spaced summary of the
+originally enumerated 45 claims from Complainant’s formal complaint and four
+subsequent amendments, was 131 pages.
+
+Next, the Agency addressed the 7 originally numerated claims at issue in the
+instant appeal. First the Agency clarified which originally numerated claims
+correspond to the claims enumerated in the FAD’s decision, listed below:
+
+                   Originally                Issue in the FAD
+                   Enumerated Claim          Addressing the
+                                             Original Allegation
+                   3                         3
+                   12                        9
+                   24                        16
+                   39                        23
+                   41                        9 and 12
+                   42                        8
+                   43                        23
+
+
+The Agency argues management officials had a legitimate, non-discriminatory
+reasons for their actions and Complainant failed to establish that the Agency’s
+reasons for its actions were pretext for discrimination. The Agency notes that
+Complainant raises for the first time on appeal, that the Agency subjected her to
+                                         7                              2023004444
+
+per se reprisal in the originally enumerated claims 3 and 24. The Agency argues
+that nothing in record establishes that managements actions or comments
+intimidated Complainant or that the conduct was reasonably likely to have a
+chilling effect on Complainant or a reasonable employee from engaging in, or
+pursuing, protected activity.
+                                    ANALYSIS
+
+First, we address Complainant’s argument that a default judgment should be
+ordered in Complainant’s favor because of the Agency’s delay investigating
+Complainant’s complaint. We find that the AJ did not abuse her discretion when
+she did not impose sanctions on the Agency for the delay. The AJ appropriately
+ordered the Agency to upload a complete ROI on February 28, 2023. The Agency
+was warned that failure to comply with the order would result in sanctions being
+imposed on the Agency, including a default judgment. The Agency complied with
+the AJ’s order, therefore, the AJ did not impose sanctions on the Agency.
+
+Next, we address the claims at issue in this appeal. To prevail in a disparate
+treatment claim, Complainant must satisfy the three-part evidentiary scheme
+fashioned by the Supreme Court in McDonnell Douglas Corp. v. Green, U.S. 792
+(1973). Complainant must initially establish a prima facie case of reprisal
+discrimination by presenting facts that, if unexplained, reasonably give rise to an
+inference of discrimination. Shapiro v. Soc. Sec. Admin., EEOC Request No.
+05960403 (Dec. 6, 1996) (citing McDonnell Douglas); see also Homer B. v. Dep't
+of Interior, EEOC Appeal No. 2019005980 (Dec. 21, 2020). Once Complainant
+has established a prima facie case, the burden then shifts to the Agency to
+articulate a legitimate, nondiscriminatory reason for its actions. Tex. Dep't of
+Cmty. Affs. v. Burdine, 450 U.S. 248, 253 (1981). If the Agency is successful, the
+burden reverts back to Complainant to demonstrate by a preponderance of the
+evidence that the Agency's reason(s) for its action was a pretext for discrimination.
+
+For her claim of reprisal, 2 Complainant must show that: (1) she engaged in a
+protected activity; (2) the agency was aware of the protected activity; (3)
+subsequently, she was subjected to adverse treatment by the agency; and (4) a
+
+
+2
+  Complainant’s appeal brief only addresses the basis of reprisal and raises no
+arguments concerning the bases of sex or religion. Therefore, we will only address
+the basis of reprisal in this decision.
+                                          8                              2023004444
+
+nexus exists between the protected activity and the adverse treatment. Whitmire v.
+Dep't of the Air Force, EEOC Appeal No. 01A00340 (Sept. 25, 2000).
+
+Assuming arguendo that Complainant established a prima facie case of reprisal, the
+Agency articulated legitimate, nondiscriminatory reasons for its actions. In
+originally enumerated Claim 3 (FAD Claim 3), Complainant alleged that on
+September 2020, Supervisor-1 held a meeting with Complainant and another
+Mission Support Assistant (Coworker-1) where they were advised not to vent their
+frustrations to male management officials, because it would be used against them
+later. Both Supervisor-1 and Coworker-1 explained that the purpose of the meeting
+was about the chain of command. If either Complainant or Coworker-1 had an
+issue, to discuss it with Supervisor-1 before going to the other supervisors.
+Coworker-1 stated that Supervisor-1’s instructions were not directed to anybody
+personally. Rather the meeting was directed to them as a group.
+
+In the originally numerated Claim 12 (FAD Claim 9), Complainant alleged that on
+November 17, 2020, Supervisor-1 ordered Complainant off Agency premises.
+Complainant alleged that she could not report to cash deposit training because she
+had a full agenda her one day in office. Complainant alleged that Supervsior-1
+came to her work location to write her up for not attending training. When
+Complainant would not step into her office, Supervisor-1 ordered Complainant off
+the premises for failure to follow a direct and lawful order. Supervisor-1 stated that
+Complainant, Coworker-1, and another coworker were scheduled to cross-train
+each other’s duties due to the Covid-19 pandemic because each reported to the
+office on different days. The three were cross-training on cash count duties because
+all three needed to learn how to process money deposit, since money deposit was
+required to be done daily. Supervisor-1 instructed Complainant to attend cash
+deposit duties, which Complainant refused to do, which is why Supervisor-1
+instructed Complainant to leave the premises on administrative leave.
+
+With regards to the originally numerated Claim 24 (FAD Claim 16) Complainant
+alleged that she was issued a Memorandum of Instruction, which notified
+Complainant that she was the subject of an allegation of misconduct, specifically
+that she was creating a hostile work environment towards Supervisor-1. The
+Memorandum of Instruction advised Complainant that if she had engaged in the
+conduct alleged, to cease and desist such conduct. Supervisor-1 stated she filed a
+complaint due to harassment she was receiving from Complainant and other
+                                        9                             2023004444
+
+officers at the Port of Entry. Supervisor-1 stated that being issued a Memorandum
+of Instruction is standard protocol when someone files a complaint.
+
+In the originally enumerated Claim 39 and Claim 43 (FAD Claim 23),
+Complainant alleged that from May 12, 2021, to the present, the Agency denied
+her physical fitness time, and from September 14, 2021, to the present, Supervisor-
+1 and the Assistant Port Director denied Complainant preassigned physical fitness
+time. Agency policy regarding the physical fitness program stated that physical
+fitness time was subject to supervisory approval based on operational requirements
+and program eligibility. Supervisor-1 stated that physical fitness time was being
+denied to all employees until the beginning of fiscal year 2022.
+
+With regards to the originally enumerated Claim 41 (FAD Claim 9), Complainant
+alleged that the Agency, through Supervisor-1, assigned Complainant new duties.
+Complainant alleged that Supervisor-1 assigned her new duties as much as
+possible, such as quarterly key inventory, cash deposits, and CMIR reports (the
+record does not define the acronym). Regarding quarterly key inventory, also
+alleged in originally enumerated Claim 20, Supervisor-1 explained that
+Complainant was responsible for Key Management. Complainant stated she did a
+yearly Key Management report, however, Supervisor-1 changed the requirement to
+a quarterly report. Supervisor-1 explained that she had requested an updated report
+of Key Management from Complainant on April 1, 2020. The most recent report
+Complainant provided in response to this request was for fiscal year 2017.
+Supervisor-1 stated she had Trainees conduct a report in May 2020. Supervisor-1
+explained that since Complainant’s Key Management records were not accurate, to
+help her upkeep the Trainees report from May 2020, and for accurate reporting, she
+instructed Complainant to complete key inventory on a quarterly basis.
+
+Supervisor-1 assigned cash deposits to Complainant, and others, because it was a
+daily task, and each reported to the office on different days. Complainant and her
+coworkers were cross-trained on cash count duties because they needed to learn
+how to process money deposit, since money deposit was required to be done daily.
+With regards to the additional duty of digital CMIR submissions, Complainant
+stated that she had never been responsible for CMIR reports and had not been
+trained to complete CMIR reports. On August 18, 2021, Supervisor-1 sent an
+email to administrative personnel, stating that all CMIRs must be completed and
+submitted daily. Supervisor-1 stated that she sent an email to all administrative
+personnel because all personnel were cross-training. She explained Complainant
+                                        10                             2023004444
+
+was included in the email so she would be aware, but that Complainant was not
+assigned a new duty.
+
+Regarding the originally enumerated Claim 42, (FAD Claim 8), Complainant
+alleged that Supervisor-1 revoked Complainant’s telework on August 30, 2021.
+Complainant alleged her telework was revoked completely even thought the field
+office was trying to maximize telework to reduce exposure to Covid-19.
+Supervisor-1 explained that telework was approved for the Covid-19 pandemic, but
+denied having the ability to implement or revoke telework. Prior to Covid-19,
+administrative personnel were not authorized to telework, however, during the
+Covid-19 pandemic, administrative personnel, including Complainant, were
+authorized to telework on an unscheduled basis. Complainant did not have a
+telework agreement. However, administrative personnel were gradually required to
+return back to the office.
+
+Complainant failed to establish that that the Agency’s reasons for its actions, as
+described above, were pretext for discrimination. Aside from Complainant’s
+assertions and subjective belief, the record does not establish that the Agency’s
+actions were motivated by retaliatory animus. Complainant alleged incidents that
+pertained to all employees, or included other administrative personnel. For
+example, cross-training administrative staff on duties such as monetary deposit, not
+authorizing Physical Fitness Program time for any employee, and telework
+policies. Moreover, an agency has broad discretion to set policies and carry out
+personnel decisions and should not be second-guessed by the reviewing authority,
+absent evidence of unlawful motivation. See Burdine, 450 U.S. at 259; Vanek v.
+Dep't of the Treasury, EEOC Request No. 05940906 (Jan 16, 1997). We find that
+Complainant failed to establish he was subjected to discrimination based on
+reprisal.
+
+Retaliatory Harassment
+
+To establish a prima facie case of harassment, Complainant must prove, by a
+preponderance of the evidence, the existence of five elements: (1) that she is a
+member of a statutorily protected class; (2) that she was subjected to unwelcome
+conduct related to her protected class; (3) that the harassment complained of was
+based on her protected class; (4) that the harassment had the purpose or effect of
+unreasonably interfering with her work performance and/or creating an
+intimidating, hostile, or offensive work environment; and (5) that there is a basis
+                                         11                             2023004444
+
+for imputing liability to the employer. See Celine B. v. Dep't of Navy, EEOC
+Appeal No. 2019001961 (Sept. 21, 2020); Humphrey v. U.S. Postal Serv., EEOC
+Appeal No. 01965238 (Oct. 16, 1998). See also Henson v. City of Dundee, 682
+F.2d 897 (11th Cir. 1982), approved in Meritor Savings Bank v. Vinson, 477 U.S.
+57, 66-67 (1986); Flowers v. Southern Reg'l Physician Serv. Inc., 247 F.3d 229
+(5th Cir. 2001). The harasser's conduct should be evaluated from the objective
+viewpoint of a reasonable person in the victim's circumstances. Oncale v.
+Sundowner Offshore Servs., Inc., 523 U.S. 75, 81 (1998).
+
+The threshold for establishing retaliatory harassment is different than for
+discriminatory hostile work environment. Retaliatory harassing conduct can be
+challenged under the Burlington Northern standard even if it is not severe or
+pervasive enough to alter the terms and conditions of employment. If the conduct
+would be sufficiently material to deter protected activity in the given context, even
+if it were insufficiently severe or pervasive to create a hostile work environment,
+there would be actionable retaliation.” EEOC Enforcement Guidance on
+Retaliation and Related Issues, No. 915.004, Sect. II.B, e.g. 17; see also
+Burlington N. & Santa Fe Ry. Co v. White, 548 U.S. 53 (2006); see e.g., Martinelli
+v. Penn Millers Ins. Co., 269 F. App'x 226, 230 (3d Cir. 2008) (ruling that after
+Burlington Northern, an employee claiming “retaliation by workplace harassment”
+is “no longer required to show that the harassment was severe or pervasive”).
+
+Here, we find that aside from Complainant’s assertions, the record evidence does
+not establish that the alleged incidents were based on her protected EEO activity.
+The Commission has held that routine work assignments, instructions, and
+admonishments, such as the ones described above, do not rise to the level of
+harassment because they are common workplace occurrences. See Gray v. U.S.
+Postal Serv., EEOC Appeal No. 0120091101 (May 13, 2010). Further, the
+Commission has long held that “[p]articipation in the EEO process does not shield
+employees from uniformly applied standards of conduct and performance; nor are
+the statutory anti-retaliatory provisions a license for employees to engage in
+misconduct.” Berkner v. Dep't of Commerce, EEOC Petition No. 0320110022
+(June 23, 2011). We find that Complainant failed to establish that he was subjected
+to retaliatory harassment as alleged.
+                                         12                             2023004444
+
+Per Se Reprisal
+
+As a general matter, the Commission has held that the actions of a supervisor may
+constitute per se reprisal when the supervisor intimidates an employee and
+interferes with the employee's EEO activity in any manner. See Israel F. v. U.S.
+Postal Serv., EEOC Appeal No. 0120181863 (Sept. 26, 2019) (citing Binseel v.
+Dep't of the Army, EEOC Request No. 05970584 (Oct. 8, 1998). Comments that,
+on their face, discourage an employee from participating in the EEO process
+violate the letter and spirit of the EEOC regulations and evidence a per se violation
+of the law. Id. Central to a finding of per se reprisal is that the conduct is
+reasonably likely to have a chilling effect on the complainant or a reasonable
+employee from engaging in, or pursuing, protected activity. Id. (citing Christeen H.
+v. U.S. Postal Serv., EEOC Appeal No. 0120162478 (June 14, 2018)).
+
+Complainant alleged on appeal that she was subjected to per se reprisal regarding
+the incidents in originally numerated Claim 3 (FAD Claim 3) and Claim 24 (FAD
+Claim 16). Regarding Claim 3, we find that Complainant failed to demonstrate that
+Supervisor-1’s comments happened as alleged. Coworker-1’s statements in her
+affidavit do not persuasively support Complainant’s allegation that Supervisor-1
+told Complainant and Coworker-1 not to complain to male managers because they
+would be seen as whiny and emotional and that it would be used against them later.
+Coworker-1 confirmed Supervisor-1’s explanation that the meeting was about
+using their chain of command and coming to Supervisor-1 first to address issues.
+Complainant did not show by a preponderance of the evidence that Supervisor-1’s
+behavior had or reasonably could have had a potentially chilling effect on the use
+of the EEO complaint process.
+
+With regards to originally numerated Claim 24 (FAD Claim 16), Complainant
+asserts that upon alleging that Supervisor-1 was creating a hostile work
+environment, Supervisor-1 filed a complaint that she was being harassed by
+Complainant. Complainant alleges that the Agency’s issuance of the Memorandum
+of Instruction to Complainant constitutes per se reprisal. The record shows upon
+Complainant filing a complaint alleging Supervisor-1 was harassing her, Port
+Director issued a Memorandum of Instruction to Supervisor-1 on November 19,
+2020. Likewise, after Supervisor-1 filed a complaint alleging Complainant and
+others were harassing her, Port Director issued a Memorandum of Instruction to
+Complainant on December 15, 2020. As described above, the Memorandum of
+Instruction was standard procedure, issued to employees that have had an
+                                       13                           2023004444
+
+allegation of harassment or misconduct made against them. Complainant was
+issued a standardized memo. The memo’s language states it is instructional in
+nature, it is not disciplinary, and no opinion regarding the allegation has been
+taken. Complainant has failed to establish that being issued the Memorandum of
+Instruction was made to intimidate her or interfere with her EEO activity.
+
+We find that Complainant has failed to demonstrate that Supervisor’s comments in
+Claim 3 and the issuance of the Memorandum of Instruction in Claim 24
+established a per se violation of reprisal.
+
+                                CONCLUSION
+
+Based on a thorough review of the record and the contentions on appeal, including
+those not specifically addressed herein, we AFFIRM the Agency’s final decision
+finding Complainant was not subjected to discrimination.
+
+                   STATEMENT OF RIGHTS - ON APPEAL
+                       RECONSIDERATION (M1125)
+The Commission may, in its discretion, reconsider this appellate decision if
+Complainant or the Agency submits a written request that contains arguments or
+evidence that tend to establish that:
+      1. The appellate decision involved a clearly erroneous interpretation of
+         material fact or law; or
+      2. The appellate decision will have a substantial impact on the policies,
+         practices, or operations of the agency.
+Requests for reconsideration must be filed with EEOC’s Office of Federal Sector
+(OFS) within thirty (30) calendar days of receipt of this decision. If the party
+requesting reconsideration elects to file a statement or brief in support of the
+request, that statement or brief must be filed together with the request for
+reconsideration. A party shall have twenty (20) calendar days from receipt of
+another party’s request for reconsideration within which to submit a brief or
+statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment
+Opportunity Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at
+Chap. 9 § VII.B (Aug. 5, 2015).
+                                           14                              2023004444
+
+Complainant should submit their request for reconsideration, and any statement or
+brief in support of their request, via the EEOC Public Portal, which can be found at
+https://publicportal.eeoc.gov/Portal/Login.aspx. Alternatively, Complainant can
+submit their request and arguments to the Director, Office of Federal Sector, Equal
+Employment Opportunity Commission, via regular mail addressed to P.O. Box
+77960, Washington, DC 20013, or by certified mail addressed to 131 M Street,
+NE, Washington, DC 20507. In the absence of a legible postmark, a complainant’s
+request to reconsider shall be deemed timely filed if OFS receives it by mail within
+five days of the expiration of the applicable filing period. See 29 C.F.R. §
+1614.604.
+An agency’s request for reconsideration must be submitted in digital format via the
+EEOC’s Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g).
+Either party’s request and/or statement or brief in opposition must also include
+proof of service on the other party, unless Complainant files their request via the
+EEOC Public Portal, in which case no proof of service is required.
+Failure to file within the 30-day time period will result in dismissal of the party’s
+request for reconsideration as untimely, unless extenuating circumstances
+prevented the timely filing of the request. Any supporting documentation must
+be submitted together with the request for reconsideration. The Commission
+will consider requests for reconsideration filed after the deadline only in very
+limited circumstances. See 29 C.F.R. § 1614.604(f).
+
+        COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0124)
+
+You have the right to file a civil action in an appropriate United States District
+Court within ninety (90) calendar days from the date that you receive this
+decision. If you file a civil action, you must name as the defendant in the complaint
+the person who is the official Agency head or department head, identifying that
+person by their full name and official title. Failure to do so may result in the
+dismissal of your case in court. “Agency” or “department” means the national
+organization, and not the local office, facility or department in which you work. If
+you file a request to reconsider and also file a civil action, filing a civil action will
+terminate the administrative processing of your complaint.
+                                          15                              2023004444
+
+                    RIGHT TO REQUEST COUNSEL (Z0815)
+
+If you want to file a civil action but cannot pay the fees, costs, or security to do so,
+you may request permission from the court to proceed with the civil action without
+paying these fees or costs. Similarly, if you cannot afford an attorney to represent
+you in the civil action, you may request the court to appoint an attorney for you.
+You must submit the requests for waiver of court costs or appointment of an
+attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests. Such requests do not alter the
+time limits for filing a civil action (please read the paragraph titled Complainant’s
+Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+
+
+
+__________________________ Chaudhry’s signature
+Gul Chaudhry, Acting Director
+Office of Federal Sector
+
+
+August 13, 2026
+Date
+

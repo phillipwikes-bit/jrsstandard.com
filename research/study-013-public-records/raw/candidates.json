@@ -1,0 +1,2458 @@
+{
+ "run_utc": "2026-10-02T12:55:35Z",
+ "queries": {
+  "Q1": {
+   "query": "\"supplemental investigation\" inadequate",
+   "pages_read": 50,
+   "pdf_hits_2026": 20
+  },
+  "Q2": {
+   "query": "\"final agency decision\" AFFIRM \"investigative record\"",
+   "pages_read": 31,
+   "pdf_hits_2026": 4
+  },
+  "Q3": {
+   "query": "\"did not request a hearing\" AFFIRM",
+   "pages_read": 59,
+   "pdf_hits_2026": 159
+  },
+  "Q4": {
+   "query": "\"requested a final agency decision\" AFFIRMS",
+   "pages_read": 59,
+   "pdf_hits_2026": 41
+  },
+  "Q5": {
+   "query": "\"supplemental investigation\" \"adequately developed\"",
+   "pages_read": 22,
+   "pdf_hits_2026": 2
+  }
+ },
+ "candidates": [
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023003009.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023003009",
+   "sha256": "2b4751247a240f987774d1b5e31010ac50c26aab4b020ada1c47c0105ef79fa1",
+   "text_file": "raw/2026_03_19_2023003009.txt",
+   "words": 2111
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023004311.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023004311",
+   "sha256": "f7b00acc730d3105caf260e4d7de152a13b8c6a74408ef3174244f492a0e3bfd",
+   "text_file": "raw/2026_03_19_2023004311.txt",
+   "words": 1410
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023004340.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023004340",
+   "sha256": "d1894f8187175f6903ff5df43b914797f4232ccb917f7256f28912bec4219bef",
+   "text_file": "raw/2026_03_19_2023004340.txt",
+   "words": 1259
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023004383.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023004383",
+   "sha256": "8b6b485d07181e0e3cdc0decec1d257fc437553562f7557a58c906d51e9c1c62",
+   "text_file": "raw/2026_03_19_2023004383.txt",
+   "words": 1341
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023004440.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023004440",
+   "sha256": "30003c9c80d5053ea3b39f3817138f197510255ba6478bad47f329eec874ab48",
+   "text_file": "raw/2026_03_19_2023004440.txt",
+   "words": 1489
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023004443.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023004443",
+   "sha256": "cf861f65863e39a946355293853ff0b8c374a4a09f8120308e17126a0843b97c",
+   "text_file": "raw/2026_03_19_2023004443.txt",
+   "words": 1180
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023004539.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023004539",
+   "sha256": "b8e61e75a598e04d6d6307cd6c3015abcd2a4139b609c973125e40051d4f47a3",
+   "text_file": "raw/2026_03_19_2023004539.txt",
+   "words": 1183
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023004753.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2023004753",
+   "sha256": "e94013a91ea157b62f8e19f2d737081043ec29949d0d65e5c2782800f6cecad7",
+   "text_file": "raw/2026_03_19_2023004753.txt",
+   "words": 1744
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023005002%20DEC.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2023005002",
+   "sha256": "ba1d4a1bc67c7d62282ad62dfc41a756a4f6a51d3aae69939826032f712fcc16",
+   "text_file": "raw/2026_03_19_2023005002.txt",
+   "words": 1689
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023005205%20DEC.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023005205",
+   "sha256": "295b1db81a37f268ca16463bd7005df5d2e2f718448eea0389ae5f1f3da52442",
+   "text_file": "raw/2026_03_19_2023005205.txt",
+   "words": 1180
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023005328.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023005328",
+   "sha256": "928e327d5dc5500455452098346e423bb7e150e2888ac12166e57604ee756ef7",
+   "text_file": "raw/2026_03_19_2023005328.txt",
+   "words": 1463
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023005333.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2023005333",
+   "sha256": "0309d20638ba5a13729d3f6d3424a3cb6e6b21cc224f149f6d5b1fa36b765ea6",
+   "text_file": "raw/2026_03_19_2023005333.txt",
+   "words": 1629
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2023005334.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2023005334",
+   "sha256": "53ec8f6987a1443f8d320ba84eba9662611caaf6d3dc069062bb8a9efde958f2",
+   "text_file": "raw/2026_03_19_2023005334.txt",
+   "words": 2687
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024000354.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024000354",
+   "sha256": "75100f0c79ac6cd1c99dca5414bc54deb3c377881b875ee26c7b4a4b78bafb0b",
+   "text_file": "raw/2026_03_19_2024000354.txt",
+   "words": 1349
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024000541.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024000541",
+   "sha256": "350fa2456e18f71a6dac0fdace3b3289c15d3dbbe184b72959f4ff3c5332b50f",
+   "text_file": "raw/2026_03_19_2024000541.txt",
+   "words": 1131
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024000715.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024000715",
+   "sha256": "8dde755ee5db303bda604f33684d451430f46e2141052eac38aa344d966018a3",
+   "text_file": "raw/2026_03_19_2024000715.txt",
+   "words": 1374
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024000809%20DEC.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024000809",
+   "sha256": "3be12c4a2c8f56652f9ed386bf2e50131b0115eebb93003f181240535d83be29",
+   "text_file": "raw/2026_03_19_2024000809.txt",
+   "words": 1219
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024000821%20DEC.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2024000821",
+   "sha256": "76f98cb58535733e275276b7a7954b446aaceb10d643ac4d675fc1a5e8662b97",
+   "text_file": "raw/2026_03_19_2024000821.txt",
+   "words": 1485
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024000905%20DEC.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024000905",
+   "sha256": "9a0ac5b2fa01365f5a8f1140f1e76cde021fe3847d78924c8804b98136b69270",
+   "text_file": "raw/2026_03_19_2024000905.txt",
+   "words": 1515
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024000912%20DEC.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024000912",
+   "sha256": "aa1a6e907a3fd64feb5453d7f48bc98311394f673e08fe45e187a68e8c82f4a7",
+   "text_file": "raw/2026_03_19_2024000912.txt",
+   "words": 1405
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024001588.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024001588",
+   "sha256": "45b2f317bb229fa8584956ad7c56978dcaa85ff070ba924acb26ef5a2ef7f7f2",
+   "text_file": "raw/2026_03_19_2024001588.txt",
+   "words": 1837
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024001594.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024001594",
+   "sha256": "c4f6e28f3e70d10a608a293e9d1d6dd8c88b22723f9ecd15054a3a9efb9b7e80",
+   "text_file": "raw/2026_03_19_2024001594.txt",
+   "words": 1348
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024001608.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024001608",
+   "sha256": "6f78a2802ab053607bb1165283bb7394708a41a4f70878644f043c2e78bcc9d9",
+   "text_file": "raw/2026_03_19_2024001608.txt",
+   "words": 1227
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024001634%20DEC.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024001634",
+   "sha256": "21903832c90b5fa35eabf1028793ec8acd45d0a0b10402313942c917cf31687d",
+   "text_file": "raw/2026_03_19_2024001634.txt",
+   "words": 1336
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024001690.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024001690",
+   "sha256": "a9b4d21fbb4b7aaab61a9789d9917cc485a838e264ebf068cb12c90d0909d81c",
+   "text_file": "raw/2026_03_19_2024001690.txt",
+   "words": 1215
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024001929.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024001929",
+   "sha256": "a14d140e474f39d73629f871e269d7387d78d86fe21edb85ff8357e10979683a",
+   "text_file": "raw/2026_03_19_2024001929.txt",
+   "words": 1285
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024001937.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024001937",
+   "sha256": "82e85bc6b367ea48588f97c6a4755a94edc6dccbd99bf64dbde46bedd8886056",
+   "text_file": "raw/2026_03_19_2024001937.txt",
+   "words": 1101
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_19/2024001995.pdf",
+   "folder": "2026_03_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024001995",
+   "sha256": "2ad003b0054aad715b294ff9f50074dca382ea936e2ecedc0165b8b23b4e6bde",
+   "text_file": "raw/2026_03_19_2024001995.txt",
+   "words": 1053
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2021002312%20DEC%204Q%20%281%29_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q1",
+    "Q2"
+   ],
+   "appeal": "2021002312",
+   "sha256": "edb1c9e1e98672223d3effc0f26b36f29b0b7c352be849a8a91444868a63ef4d",
+   "text_file": "raw/2026_03_20_2021002312.txt",
+   "words": 11504
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002025.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002025",
+   "sha256": "be336842300e95de1d4409084ae3490dbf1e0d4881bce5c472aab3ff03af0e81",
+   "text_file": "raw/2026_03_20_2024002025.txt",
+   "words": 1164
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002047%20DEC.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002047",
+   "sha256": "427f8f2726c28d5c197332f5b76007ba205b8363e3cf3c821fc59e16c9c2902c",
+   "text_file": "raw/2026_03_20_2024002047.txt",
+   "words": 1255
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002260.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002260",
+   "sha256": "2c4a0ab907f9b0a93709f064e0c9d5edff92b02b681762310bf8dfefc3c98ca7",
+   "text_file": "raw/2026_03_20_2024002260.txt",
+   "words": 1150
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002268.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002268",
+   "sha256": "5c6cba6eb0799824e5184f5a1b159cc5700e731e5311b45a0a631b732b7644d7",
+   "text_file": "raw/2026_03_20_2024002268.txt",
+   "words": 1383
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002278%20DEC.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002278",
+   "sha256": "674183cb0d5319f82d1273fb2d6cf29bad3cd8f2c9499104b5d4e904f8f29d51",
+   "text_file": "raw/2026_03_20_2024002278.txt",
+   "words": 1251
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002284.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002284",
+   "sha256": "94d2c86b546f2a28b807b041df03fbddeb2686c5f00bcd7b9db7ca4d2cbf444a",
+   "text_file": "raw/2026_03_20_2024002284.txt",
+   "words": 1388
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002294.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002294",
+   "sha256": "b0163fa62b77a68a7e9b372b3dfc5bf678568c357ec4f39d81cc7b6c74b4e067",
+   "text_file": "raw/2026_03_20_2024002294.txt",
+   "words": 1326
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002311.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002311",
+   "sha256": "81d8cf2e5c9276a11e776cecca8f91e06d65fed41f9b2fbbfb5e4a2c04ca3009",
+   "text_file": "raw/2026_03_20_2024002311.txt",
+   "words": 1325
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002346.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002346",
+   "sha256": "2c3e578eda62ba80cc058e481ac9ff479c3f30a4051a699207dfd6986bf80cf0",
+   "text_file": "raw/2026_03_20_2024002346.txt",
+   "words": 1323
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002402.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002402",
+   "sha256": "e7a1cd57fde5b559da97d04fee6f63285a89ede523b82bc37e1e1dd3e4b55e32",
+   "text_file": "raw/2026_03_20_2024002402.txt",
+   "words": 1422
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002416.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002416",
+   "sha256": "0c1f62f6ae823909f82cb3ae148522943ffe5ec2ede61edf6fe979a63672912c",
+   "text_file": "raw/2026_03_20_2024002416.txt",
+   "words": 1267
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002591.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002591",
+   "sha256": "e5e4b7754efdd5e6ff7b586f241e8b924e28cbdf7eb58a80f9d6fbbe3993120a",
+   "text_file": "raw/2026_03_20_2024002591.txt",
+   "words": 3212
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002591_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002591",
+   "sha256": "e5e4b7754efdd5e6ff7b586f241e8b924e28cbdf7eb58a80f9d6fbbe3993120a",
+   "text_file": "raw/2026_03_20_2024002591.txt",
+   "words": 3212
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002597.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2024002597",
+   "sha256": "59e45c665a25c13d2ed2f88ccbf20ac743c58927e3669032895a3de10650c052",
+   "text_file": "raw/2026_03_20_2024002597.txt",
+   "words": 1863
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002597_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2024002597",
+   "sha256": "59e45c665a25c13d2ed2f88ccbf20ac743c58927e3669032895a3de10650c052",
+   "text_file": "raw/2026_03_20_2024002597.txt",
+   "words": 1863
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002639.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002639",
+   "sha256": "f0359b08737c2843af55781b27102e05359384bdebd3a4180bb5923865075356",
+   "text_file": "raw/2026_03_20_2024002639.txt",
+   "words": 1572
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002639_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002639",
+   "sha256": "f0359b08737c2843af55781b27102e05359384bdebd3a4180bb5923865075356",
+   "text_file": "raw/2026_03_20_2024002639.txt",
+   "words": 1572
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002760.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002760",
+   "sha256": "e9ea591ab1b2b6045a46ed892f7c51038f49948b193688651949e9f959cf70ce",
+   "text_file": "raw/2026_03_20_2024002760.txt",
+   "words": 1165
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002760_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002760",
+   "sha256": "e9ea591ab1b2b6045a46ed892f7c51038f49948b193688651949e9f959cf70ce",
+   "text_file": "raw/2026_03_20_2024002760.txt",
+   "words": 1165
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002768.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002768",
+   "sha256": "df203f58ef4aff3e8231a0c9b9a6b64ae86a98ecccc01cf94d2eff666388be9a",
+   "text_file": "raw/2026_03_20_2024002768.txt",
+   "words": 1239
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002768_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002768",
+   "sha256": "df203f58ef4aff3e8231a0c9b9a6b64ae86a98ecccc01cf94d2eff666388be9a",
+   "text_file": "raw/2026_03_20_2024002768.txt",
+   "words": 1239
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002779.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002779",
+   "sha256": "faea06dea57d138227e9b70b3e014c1b945fb88c40d6cf18c448de8c7f7843a0",
+   "text_file": "raw/2026_03_20_2024002779.txt",
+   "words": 1352
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002779_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002779",
+   "sha256": "faea06dea57d138227e9b70b3e014c1b945fb88c40d6cf18c448de8c7f7843a0",
+   "text_file": "raw/2026_03_20_2024002779.txt",
+   "words": 1352
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002805.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002805",
+   "sha256": "1259aa2906c94c46af3d2d84795b83e9353f14782db2afc7cb04d93913aff1bb",
+   "text_file": "raw/2026_03_20_2024002805.txt",
+   "words": 1265
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002826%20DEC.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002826",
+   "sha256": "94a4d4a040f0bcf2c314838a418ec247ef88f10b7997373876d1eebf5c637211",
+   "text_file": "raw/2026_03_20_2024002826.txt",
+   "words": 1113
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002872%20DEC.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002872",
+   "sha256": "c70960910d07d4de5571ea282f20eb62675675d739d2be71dc4c83834123e849",
+   "text_file": "raw/2026_03_20_2024002872.txt",
+   "words": 2047
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002882.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002882",
+   "sha256": "ff0d73e2e7678601ea9754df2f419541245ee9bc0f029d8a366ab0c6061ca0f1",
+   "text_file": "raw/2026_03_20_2024002882.txt",
+   "words": 1249
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002934.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002934",
+   "sha256": "73555d362032e425a60793e45ccbf3e2c0f0f697c0f98e02e510b579ad41e9ca",
+   "text_file": "raw/2026_03_20_2024002934.txt",
+   "words": 1347
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024002961.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002961",
+   "sha256": "9451c36644fdf80f4cf811600b8134d84d5fe26f12f4d7c6d6e46dcf14525101",
+   "text_file": "raw/2026_03_20_2024002961.txt",
+   "words": 1488
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003199%20DEC.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003199",
+   "sha256": "0c59902785afe58b3573da9571579b35304fbebc868d7964a4fbf805c5f67bde",
+   "text_file": "raw/2026_03_20_2024003199.txt",
+   "words": 1164
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003295%20DEC.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003295",
+   "sha256": "d34453d3f21415f45e7b1421999de9a37d969da67539d63c326618152c07ed71",
+   "text_file": "raw/2026_03_20_2024003295.txt",
+   "words": 1297
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003316%20DEC.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003316",
+   "sha256": "dd5d4d6085075638f0fb0081a67d93445c2d407f8e048a22eb047df357a656bb",
+   "text_file": "raw/2026_03_20_2024003316.txt",
+   "words": 1266
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003319%20DEC.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003319",
+   "sha256": "11c63f4a3866a8359e625519e57940ecaf06dc6238ca0b8bb72ac338068eda64",
+   "text_file": "raw/2026_03_20_2024003319.txt",
+   "words": 1461
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003326%20DEC.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003326",
+   "sha256": "f5f6e69665feb1d1f250fa72f46a1dcd523bce34f1e2b046cc1bf4ad7d2da76f",
+   "text_file": "raw/2026_03_20_2024003326.txt",
+   "words": 1365
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003559%20DEC_2.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003559",
+   "sha256": "841f85af330b42a30537ab6df805d50726a5b05f4baca31c267b7c6b84fe8faf",
+   "text_file": "raw/2026_03_20_2024003559.txt",
+   "words": 2076
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003565%20DEC_2.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003565",
+   "sha256": "72126b5feeec3c55d132dc7067b5ae22083074b27c7c6414fbc663ae4fbe4256",
+   "text_file": "raw/2026_03_20_2024003565.txt",
+   "words": 2699
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003623_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003623",
+   "sha256": "cb41caed0634ba73277409858270d0547aeb56b088b633e05ece7e333fd086c6",
+   "text_file": "raw/2026_03_20_2024003623.txt",
+   "words": 1184
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003652%20DEC_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003652",
+   "sha256": "fd8edc0c9b184a8808eb81356136ffe3c64561d78c4487a7bfde969651220aed",
+   "text_file": "raw/2026_03_20_2024003652.txt",
+   "words": 1302
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003734%20DEC_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003734",
+   "sha256": "c74710beced63a2d6d089bb4b9650b3b3d55fa3a7805c18e009789e606da7021",
+   "text_file": "raw/2026_03_20_2024003734.txt",
+   "words": 1098
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003756%20DEC_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003756",
+   "sha256": "0a6ff2938efca09867725aa1b6653385fbbe6bda884b8938996aa1c31706c3cc",
+   "text_file": "raw/2026_03_20_2024003756.txt",
+   "words": 1369
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003816%20DEC_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003816",
+   "sha256": "6852305e59b3d0e3f174d81a333ba2cce43373b88c7a55520bd810790ba0a295",
+   "text_file": "raw/2026_03_20_2024003816.txt",
+   "words": 1168
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003847%20DEC_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003847",
+   "sha256": "8c33426e810d0845118943d9898278bc022b449c52c4e0129adbd9077452922b",
+   "text_file": "raw/2026_03_20_2024003847.txt",
+   "words": 1183
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003902%20DEC_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003902",
+   "sha256": "9d6fdd70dfde6f71b2691399b8dd205a52d91c43bbe5445e30eefcacc92c8fad",
+   "text_file": "raw/2026_03_20_2024003902.txt",
+   "words": 1194
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024003923%20DEC_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003923",
+   "sha256": "0c64a6355fd29a053a8ef686f8720e3e427e11975dbebb669acb335b7c2954e6",
+   "text_file": "raw/2026_03_20_2024003923.txt",
+   "words": 1125
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004009%20DEC_1.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004009",
+   "sha256": "e966a07afd50a68630a07eea9276effd8332abeac599791088c70578b3f952ff",
+   "text_file": "raw/2026_03_20_2024004009.txt",
+   "words": 1279
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004052%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004052",
+   "sha256": "e6c0a29b64534ab3f5a45d17c3f0e18a2f764a2567e7686f5c085e235e8b271d",
+   "text_file": "raw/2026_03_20_2024004052.txt",
+   "words": 1278
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004059%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004059",
+   "sha256": "cf801e2a9c8a808539c5e2f08211f63fb381dfcc5d0022a6856dba569ce1b339",
+   "text_file": "raw/2026_03_20_2024004059.txt",
+   "words": 1153
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004095%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2024004095",
+   "sha256": "b998bdd87069e1a8c8bb779b6ea66cc6f8e22bc99c24db31af4f821760c05c1a",
+   "text_file": "raw/2026_03_20_2024004095.txt",
+   "words": 1402
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004136%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004136",
+   "sha256": "ecba2f3060fcab1ab9df15918f83c5500ca578f99af9a0b2f0f787b54852c4af",
+   "text_file": "raw/2026_03_20_2024004136.txt",
+   "words": 1369
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004164%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004164",
+   "sha256": "be1be412ac92da39621c6d5d63131e2bdf39624189db3675565e2ba1692400a1",
+   "text_file": "raw/2026_03_20_2024004164.txt",
+   "words": 1348
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004173_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004173",
+   "sha256": "3ce41d13d663d9bdae385ab076ffdcf9e83e372c367467b2852ddd4401220837",
+   "text_file": "raw/2026_03_20_2024004173.txt",
+   "words": 1179
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004197_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004197",
+   "sha256": "ffe544a9b68e881549131321e14d3b7a29ea6c8a9791f91c36ee5572e1921e18",
+   "text_file": "raw/2026_03_20_2024004197.txt",
+   "words": 1341
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004535%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004535",
+   "sha256": "9f7355db6b5e7ab5ad88d526f0b2a004ac824eb7283a2f8eed704a7470d5c68c",
+   "text_file": "raw/2026_03_20_2024004535.txt",
+   "words": 1259
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004594%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004594",
+   "sha256": "0d03ceb9dd67c5753f3fba87b093bf13cd1c060ea8746933b46ff1acc66a3c47",
+   "text_file": "raw/2026_03_20_2024004594.txt",
+   "words": 1253
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004607%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004607",
+   "sha256": "d0bf0bd25f78ace377b81e5c06c27ffccc517c95ef4de68bc6e5b2e1568bb2fc",
+   "text_file": "raw/2026_03_20_2024004607.txt",
+   "words": 1198
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004647%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004647",
+   "sha256": "c40516babb5d347295eeb33720313f63c4bba8beb3c49851cd15fda1f88c75d9",
+   "text_file": "raw/2026_03_20_2024004647.txt",
+   "words": 1329
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004671_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004671",
+   "sha256": "80d0267c21e81fab57822ac0518abdd226e81eeb21c2ff45a3db3982531aaccb",
+   "text_file": "raw/2026_03_20_2024004671.txt",
+   "words": 1182
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004721%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004721",
+   "sha256": "b4061f0c85b44fc39fd3f25eb93d9473ffd212b6024b9534c83f10c6cdf60a33",
+   "text_file": "raw/2026_03_20_2024004721.txt",
+   "words": 1277
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004732_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004732",
+   "sha256": "41e259b5cd06e4b7f1fa833013516b08b0e30e791593e12ac140529bb2ff1141",
+   "text_file": "raw/2026_03_20_2024004732.txt",
+   "words": 1208
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004784%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004784",
+   "sha256": "c35a181f02b52b2563da59deb577ff1a3e010abd5e8722726ff570a8f060ddea",
+   "text_file": "raw/2026_03_20_2024004784.txt",
+   "words": 1257
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004887%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004887",
+   "sha256": "cc65efff60edb437628dad1fad1e949799a1d49acf82059e002d7e09649ff359",
+   "text_file": "raw/2026_03_20_2024004887.txt",
+   "words": 1261
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024004940_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2024004940",
+   "sha256": "78abcdb809315b46da3fe32941496ad14b4a20c589db96d198fd427e2903b40d",
+   "text_file": "raw/2026_03_20_2024004940.txt",
+   "words": 2096
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2024005273_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024005273",
+   "sha256": "882f12340b92938a30885813cad5ef152dc66998b4ce531658d5e9d380a6f9fd",
+   "text_file": "raw/2026_03_20_2024005273.txt",
+   "words": 3102
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2025000084%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q5"
+   ],
+   "appeal": "2025000084",
+   "sha256": "d519e33ca15cb6ea5a0be45d205708374cf0fa3c61f7c6660ff58e58abdb6b7a",
+   "text_file": "raw/2026_03_20_2025000084.txt",
+   "words": 2023
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2025000246_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025000246",
+   "sha256": "9b19dce1f4eb510cc89fe178af02863a49c2a49cc04f25fb3905828ca6fb6455",
+   "text_file": "raw/2026_03_20_2025000246.txt",
+   "words": 1118
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2025000563_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025000563",
+   "sha256": "3ae903699499692318626353b89c9b2fdd5f656cc0e7bb43ea9867e60a7ac297",
+   "text_file": "raw/2026_03_20_2025000563.txt",
+   "words": 1264
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2025000727_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025000727",
+   "sha256": "d197c2d0bee016116f9eaf96e763343e5dfe9c37f848b0869a75d2bccd2f1fda",
+   "text_file": "raw/2026_03_20_2025000727.txt",
+   "words": 2003
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2025000761%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q1",
+    "Q4"
+   ],
+   "appeal": "2025000761",
+   "sha256": "d458b41c6c74f246dd4a3278ca16cd8dee218bdcd5954e40ab57a31dabb8f829",
+   "text_file": "raw/2026_03_20_2025000761.txt",
+   "words": 3758
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_03_20/2025002472%20DEC_0.pdf",
+   "folder": "2026_03_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025002472",
+   "sha256": "a2d562e1a7da4d5e60c2b14abdb2e949117ad5addafed06506ea597c06547c01",
+   "text_file": "raw/2026_03_20_2025002472.txt",
+   "words": 1390
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_08/2024002876%20DEC.pdf",
+   "folder": "2026_05_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002876",
+   "sha256": "8988e4ea57ac681dc56f7c4b35b55ec2ed2b325bd5d522e0330d9c91fb87d3bb",
+   "text_file": "raw/2026_05_08_2024002876.txt",
+   "words": 1320
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_08/2024004041%20DEC.pdf",
+   "folder": "2026_05_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004041",
+   "sha256": "42616f525a8edccb9174b6d38586c914a8e84e6dc42a279fcb4144855f37507d",
+   "text_file": "raw/2026_05_08_2024004041.txt",
+   "words": 1260
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_11/2024002872%20DEC_0.pdf",
+   "folder": "2026_05_11",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002872",
+   "sha256": "b0ada7387da8e4acd5b7219778c58064cdd7a6696ce0e278792127893a839d15",
+   "text_file": "raw/2026_05_11_2024002872.txt",
+   "words": 2047
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_11/2024003199%20DEC_0.pdf",
+   "folder": "2026_05_11",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003199",
+   "sha256": "dd391a9236e8f4659f7472571856f3b3b3e6a875bdb639fdca2c58d7fbb04338",
+   "text_file": "raw/2026_05_11_2024003199.txt",
+   "words": 1164
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_11/2024003565%20DEC_3.pdf",
+   "folder": "2026_05_11",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003565",
+   "sha256": "93f019bd2d41b0791beaa400ad1acd6d23377589db19dc0c6213efd8068d8a79",
+   "text_file": "raw/2026_05_11_2024003565.txt",
+   "words": 2699
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_11/2024003734%20DEC_2.pdf",
+   "folder": "2026_05_11",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003734",
+   "sha256": "39273850f086bfc57ff8c6ddd934e8dcb2f182b72184db0600e6091cb12dccdd",
+   "text_file": "raw/2026_05_11_2024003734.txt",
+   "words": 1098
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_11/2024003839%20DEC.pdf",
+   "folder": "2026_05_11",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003839",
+   "sha256": "c013a945a1d8446b0af05bcf440fe99acf1d1c4b6630a38aaaf84e1e3b3e15aa",
+   "text_file": "raw/2026_05_11_2024003839.txt",
+   "words": 1226
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_11/2024003859%20DEC.pdf",
+   "folder": "2026_05_11",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003859",
+   "sha256": "b7b9046dc03d8131e001a7349b7532e2391078867f81ae80df11f73d4a9ff91f",
+   "text_file": "raw/2026_05_11_2024003859.txt",
+   "words": 1241
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_11/2024003902%20DEC_2.pdf",
+   "folder": "2026_05_11",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003902",
+   "sha256": "6936efefd89c32dd1d5d0723e4adbb5893c4114d12d0f8590992b428f1247f44",
+   "text_file": "raw/2026_05_11_2024003902.txt",
+   "words": 1194
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_13/2024003719%20DEC.pdf",
+   "folder": "2026_05_13",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003719",
+   "sha256": "6a94b0599c5bd475a54198797d2122c740fb1cc7cf95849a13266efc186d890f",
+   "text_file": "raw/2026_05_13_2024003719.txt",
+   "words": 1238
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_13/2024004028%20DEC.pdf",
+   "folder": "2026_05_13",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004028",
+   "sha256": "0a4fd26a2ad1dfe553962a90a9a9fa34e5ce5715689e937ef82ece8611b6e802",
+   "text_file": "raw/2026_05_13_2024004028.txt",
+   "words": 2382
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_13/2024004534%20DEC.pdf",
+   "folder": "2026_05_13",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004534",
+   "sha256": "b252ea4318e4ddd133ec3d3b6e4f325c06fe5f49d81dea9cd17686ff6358d687",
+   "text_file": "raw/2026_05_13_2024004534.txt",
+   "words": 1318
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_13/2024004629%20DEC.pdf",
+   "folder": "2026_05_13",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2024004629",
+   "sha256": "3b71fb6440434ccd28b9d7e54c56433670c060d13cd0067d529655bdc4e7cc18",
+   "text_file": "raw/2026_05_13_2024004629.txt",
+   "words": 1147
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_13/2024004772%20DEC.pdf",
+   "folder": "2026_05_13",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004772",
+   "sha256": "a1e6a457a25bfbd7a0d9c41a08987391447679641f0ae681e4a2c0811500da9c",
+   "text_file": "raw/2026_05_13_2024004772.txt",
+   "words": 1136
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_13/2024004828%20DEC.pdf",
+   "folder": "2026_05_13",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004828",
+   "sha256": "d2fff6124c82f8441e5504bc5c1d04a724af2b9d279d2584400490241b04c8a6",
+   "text_file": "raw/2026_05_13_2024004828.txt",
+   "words": 1285
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_13/2024004971%20DEC.pdf",
+   "folder": "2026_05_13",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004971",
+   "sha256": "5d0f3e55b30f2c9a340fbe3dadbcc580fe964a4c2336479e72685f192817e8a5",
+   "text_file": "raw/2026_05_13_2024004971.txt",
+   "words": 1201
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_13/2025002746%20DEC.pdf",
+   "folder": "2026_05_13",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025002746",
+   "sha256": "0018901ab53c4e5025c2dbc2ecd170951e3818453527eefae7ff979665508f8b",
+   "text_file": "raw/2026_05_13_2025002746.txt",
+   "words": 4397
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_19/2023003009%20DEC.pdf",
+   "folder": "2026_05_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023003009",
+   "sha256": "1ec9164bb74f3613388b38424f28bf9d55b03d1b89f4f310584cb26ffcbe3c1b",
+   "text_file": "raw/2026_05_19_2023003009.txt",
+   "words": 2111
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_19/2024003620%20DEC.pdf",
+   "folder": "2026_05_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003620",
+   "sha256": "b72760f14b3ae1d187c9160c216462a9cf38509a5ce43012b5dca40d5ecc6081",
+   "text_file": "raw/2026_05_19_2024003620.txt",
+   "words": 1126
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_19/2024004671%20DEC.pdf",
+   "folder": "2026_05_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004671",
+   "sha256": "ecb6ebd37e3f91aecb3af0340ac6ec3807433d210ae29b975260b7a4d46bd663",
+   "text_file": "raw/2026_05_19_2024004671.txt",
+   "words": 1182
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_19/2024004787%20DEC.pdf",
+   "folder": "2026_05_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004787",
+   "sha256": "ef669d2c6101752c3158d8553fe80f3165bb59921e7f1f8f9d40e24e63cfa04e",
+   "text_file": "raw/2026_05_19_2024004787.txt",
+   "words": 1287
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_19/2025000246%20DEC.pdf",
+   "folder": "2026_05_19",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025000246",
+   "sha256": "58605d0472b4201dda0cd2256b38e12cf202a2e94e30630b3d0867dea32ce176",
+   "text_file": "raw/2026_05_19_2025000246.txt",
+   "words": 1118
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_19/2025003096%20DEC.pdf",
+   "folder": "2026_05_19",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025003096",
+   "sha256": "f11ab1da1c274c7ae552a0899bf739b2be92934d3ffc20647811920538aea1c7",
+   "text_file": "raw/2026_05_19_2025003096.txt",
+   "words": 867
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2024002639%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002639",
+   "sha256": "c41a521dbc5e4b035e85c492192b8e5c8561e55599984994fd51b17a2e55febb",
+   "text_file": "raw/2026_05_20_2024002639.txt",
+   "words": 1572
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2024002919%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024002919",
+   "sha256": "5c088f8b6b8039064440204a59bd814ec155aba7e0359fd7ac88ebdcbcc82d95",
+   "text_file": "raw/2026_05_20_2024002919.txt",
+   "words": 1450
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2024003735%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003735",
+   "sha256": "63c39a4a0f1ce089c19c5d92c5bd83c620ce6640ca12b2cbf19b4cd7db2d2f99",
+   "text_file": "raw/2026_05_20_2024003735.txt",
+   "words": 1251
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2024005010%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024005010",
+   "sha256": "f15f561a53dd2b932229fdfea38fa37226cb6138cf5f42f7a9034a75d1355014",
+   "text_file": "raw/2026_05_20_2024005010.txt",
+   "words": 1297
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2024005273%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024005273",
+   "sha256": "f5c6e67ea05725a91c39dd98a29c82ee86dac784888bc77857d2026c4f862ee5",
+   "text_file": "raw/2026_05_20_2024005273.txt",
+   "words": 3102
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2025000259%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025000259",
+   "sha256": "c85b4acad519c70a3c94d0a71fa1caf97b6385bce4d4d36d92613facd84e3bac",
+   "text_file": "raw/2026_05_20_2025000259.txt",
+   "words": 1388
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2025000563%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025000563",
+   "sha256": "574fd620f0b6e182736aaa02653c167b4e928b18c92e49b7b3fc4fb7de2e7d10",
+   "text_file": "raw/2026_05_20_2025000563.txt",
+   "words": 1264
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2025000569%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025000569",
+   "sha256": "b99a656f6a378ebe8925b5679614a9e0ab542259e3dbe5dfdc0a0f2d4aae1627",
+   "text_file": "raw/2026_05_20_2025000569.txt",
+   "words": 1286
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2025003384%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025003384",
+   "sha256": "ad0fe7f1919dfadbfbb7fe8823ad1472140ad305b6652ad70472f82aef1499da",
+   "text_file": "raw/2026_05_20_2025003384.txt",
+   "words": 1024
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_20/2025003477%20DEC.pdf",
+   "folder": "2026_05_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025003477",
+   "sha256": "9cbe36b2c92f36039589f09de1556a80f89301403acc1e1043bbd59ec798f941",
+   "text_file": "raw/2026_05_20_2025003477.txt",
+   "words": 1477
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_21/2023001349%20DEC.pdf",
+   "folder": "2026_05_21",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023001349",
+   "sha256": "324c5b7d383c207d2d0d029af6fe2997aeb3da0bea8ff9143369bfcc48a1461f",
+   "text_file": "raw/2026_05_21_2023001349.txt",
+   "words": 1322
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_21/2023001707%20DEC.pdf",
+   "folder": "2026_05_21",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2023001707",
+   "sha256": "6a7fe76837ead079a150ca1f18fca70145ec78fa2bc3e3418cf7a36ae94d94ee",
+   "text_file": "raw/2026_05_21_2023001707.txt",
+   "words": 1121
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_21/2024001472%20DEC.pdf",
+   "folder": "2026_05_21",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2024001472",
+   "sha256": "705fb32315e991be2a1cd3e9ec65bb8c83751d2e29c0d76dde0bf811301eda7c",
+   "text_file": "raw/2026_05_21_2024001472.txt",
+   "words": 1988
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_21/2024003741%20DEC.pdf",
+   "folder": "2026_05_21",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003741",
+   "sha256": "c6081fa61757b755ddb64d891056edabd7c724a8d11b5e47df7711cb0db25de7",
+   "text_file": "raw/2026_05_21_2024003741.txt",
+   "words": 1106
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_21/2025000761%20DEC_1.pdf",
+   "folder": "2026_05_21",
+   "queries": [
+    "Q1",
+    "Q4"
+   ],
+   "appeal": "2025000761",
+   "sha256": "374cfcc6e0af0b3896c2a3621f6b289f391b4142bea383f065d18dc2aab0317f",
+   "text_file": "raw/2026_05_21_2025000761.txt",
+   "words": 3758
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_21/2025003918%20DEC.pdf",
+   "folder": "2026_05_21",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025003918",
+   "sha256": "5eac441fb4073b30b21359756af158cec2299abaaef0c1fe64687231fecc429e",
+   "text_file": "raw/2026_05_21_2025003918.txt",
+   "words": 789
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_27/2023001104%20DEC.pdf",
+   "folder": "2026_05_27",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2023001104",
+   "sha256": "cbcecfe218b3885f733655b4ae7330dcda138e43a883f2d20b0ea7f1360b4a39",
+   "text_file": "raw/2026_05_27_2023001104.txt",
+   "words": 2120
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_27/2025000633%20DEC.pdf",
+   "folder": "2026_05_27",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2025000633",
+   "sha256": "d1538f2fa2480a2fe927ac656c0c0784f902a7c7661ad0cb917b65ed33194a89",
+   "text_file": "raw/2026_05_27_2025000633.txt",
+   "words": 1585
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_27/2025000977%20DEC.pdf",
+   "folder": "2026_05_27",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025000977",
+   "sha256": "8e745f488dfc8ad68dc91c86c98168fd795cf5b8d169bc4c0c7417df7e78a91e",
+   "text_file": "raw/2026_05_27_2025000977.txt",
+   "words": 1238
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_27/2025001160%20DEC.pdf",
+   "folder": "2026_05_27",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001160",
+   "sha256": "171951133fccf6abf53420d37c79fdc387e18b14d0cc85802a22861ea6bc4bba",
+   "text_file": "raw/2026_05_27_2025001160.txt",
+   "words": 1141
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_27/2025001578%20DEC.pdf",
+   "folder": "2026_05_27",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001578",
+   "sha256": "629fdf614bdf81d782d8c5b5b5e56351e7e83e22dd10278981dfbe4177bbad12",
+   "text_file": "raw/2026_05_27_2025001578.txt",
+   "words": 999
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_27/2025004638%20DEC.pdf",
+   "folder": "2026_05_27",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025004638",
+   "sha256": "1db4d398f042ff146c35032f70312d2e739947ebe51a4dfa8f35517689b3faa0",
+   "text_file": "raw/2026_05_27_2025004638.txt",
+   "words": 1516
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_27/2026000097%20DEC.pdf",
+   "folder": "2026_05_27",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2026000097",
+   "sha256": "849cb2e32611e8a5c09eeeee232d4b7e561e8e8e9e4d7160961e90667db49eda",
+   "text_file": "raw/2026_05_27_2026000097.txt",
+   "words": 774
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_05_27/2026001050%20DEC.pdf",
+   "folder": "2026_05_27",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026001050",
+   "sha256": "c7d51f6549797cbac5ccda5277018fde488c5851a83aee97b99e329264648b63",
+   "text_file": "raw/2026_05_27_2026001050.txt",
+   "words": 973
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025000540%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025000540",
+   "sha256": "9415ae50bfd80a8f87a89870a55a2f8e2c43b29259f7e066b6e21790e72e5aed",
+   "text_file": "raw/2026_06_04_2025000540.txt",
+   "words": 1165
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025000618%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025000618",
+   "sha256": "25af8da3cbf2800252f07760b98d2518edf8dd93deafef59b1368c8a79902e9a",
+   "text_file": "raw/2026_06_04_2025000618.txt",
+   "words": 1034
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025001339%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q2"
+   ],
+   "appeal": "2025001339",
+   "sha256": "5b675fc402aa3845125a7f67b7c4f4c83b198b8dd40e98c4dc3e6b4ba47967ee",
+   "text_file": "raw/2026_06_04_2025001339.txt",
+   "words": 2394
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025001699%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001699",
+   "sha256": "1a5d0886656b70b2ed85b1157f6a57b5b23f8ed44558090ca3e18b79498b3c11",
+   "text_file": "raw/2026_06_04_2025001699.txt",
+   "words": 1180
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025001711%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025001711",
+   "sha256": "506e888a8098fa04eb521c8645029df34ba2420a74f3e68b849a9a1b314a7460",
+   "text_file": "raw/2026_06_04_2025001711.txt",
+   "words": 1775
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025001716%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2025001716",
+   "sha256": "90ca1a69de1f4f196bfd0a4d5f0e69e77548a150b3443897fccb387ba542f3e2",
+   "text_file": "raw/2026_06_04_2025001716.txt",
+   "words": 1281
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025001775%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001775",
+   "sha256": "e5666b6e2e41fdd077367d113f2b6b8289a0849a05bcb7e278c5e8b0262f7ee6",
+   "text_file": "raw/2026_06_04_2025001775.txt",
+   "words": 1068
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025001893%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001893",
+   "sha256": "5295eaec17c9436663fa36e6345f674fa4963eda02e014dd1e211465e0e7e3de",
+   "text_file": "raw/2026_06_04_2025001893.txt",
+   "words": 1933
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025001923%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025001923",
+   "sha256": "33418d1e7fa36bfe0cec620a96199f28141978c5ade5fb2112eb4b79ebdcf0b9",
+   "text_file": "raw/2026_06_04_2025001923.txt",
+   "words": 2330
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025002816%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2025002816",
+   "sha256": "6cf6114dd923c6de3cb21f8a14925a0cd1ae4790ff4514f014825e44233a63e0",
+   "text_file": "raw/2026_06_04_2025002816.txt",
+   "words": 3724
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025004249%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025004249",
+   "sha256": "e2073cea805e131b26709243f1539ec32ad97e96d3042c4e3538be6a323fe7dc",
+   "text_file": "raw/2026_06_04_2025004249.txt",
+   "words": 1049
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025004448%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025004448",
+   "sha256": "f8879a4c1c18a91d8ebee703ab14c4e94b5e46327404c3abe2e5aa326ff02582",
+   "text_file": "raw/2026_06_04_2025004448.txt",
+   "words": 1717
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025004517%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025004517",
+   "sha256": "6a5c808701ca74aa9978a6f839c3b08f28c16da4ce35db553b435556ea07f87f",
+   "text_file": "raw/2026_06_04_2025004517.txt",
+   "words": 1069
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2025004558%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025004558",
+   "sha256": "59764db1f4a968d21922dae4daaed3da65d73d63f6c76bee53ba29888138deca",
+   "text_file": "raw/2026_06_04_2025004558.txt",
+   "words": 1141
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2026000033%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2026000033",
+   "sha256": "6a04217aa2819322705260d182174b2e2474affcdaa61040e8c1ab28021a122e",
+   "text_file": "raw/2026_06_04_2026000033.txt",
+   "words": 1580
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2026000152%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026000152",
+   "sha256": "5fef3f7a05a5709fb88146b0abbe48b00efc1c48af083752ab5cb8720b1c2645",
+   "text_file": "raw/2026_06_04_2026000152.txt",
+   "words": 1649
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2026000557%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2026000557",
+   "sha256": "178682bc0ff1ebd2ead7cfdc698f16cf4993e03f4ecec707eabf69d24d54d352",
+   "text_file": "raw/2026_06_04_2026000557.txt",
+   "words": 2263
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2026000594%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2026000594",
+   "sha256": "4673b8db1beab49ed35746279adf8bec4888c07f40c9e61b32e432727bced234",
+   "text_file": "raw/2026_06_04_2026000594.txt",
+   "words": 2071
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_04/2026001136%20DEC.pdf",
+   "folder": "2026_06_04",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026001136",
+   "sha256": "aa0c48612daec090ba367a4857018344349d29aefa0bbbc05ecff99d0bf08166",
+   "text_file": "raw/2026_06_04_2026001136.txt",
+   "words": 1054
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2024001718%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2024001718",
+   "sha256": "2e7f136e2266793e19cfb9905d2029114c4918d88e7bf9c3d61a598d6bcceb5c",
+   "text_file": "raw/2026_06_26_2024001718.txt",
+   "words": 2276
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2025000255%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025000255",
+   "sha256": "473ba2c71aadd9d5500215c36c28150956bdeb96302130c76e4c6cb96ada8837",
+   "text_file": "raw/2026_06_26_2025000255.txt",
+   "words": 6046
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2025000682%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025000682",
+   "sha256": "ff0f3a09273a4a239d2fa60b7c5b94ce53345c348454cd870fed7efb92ed45b8",
+   "text_file": "raw/2026_06_26_2025000682.txt",
+   "words": 1221
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2025000858%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025000858",
+   "sha256": "5d669b71134b4bcb61a97390cbb3c65c457ed6db902d05e9f4b43a966a629193",
+   "text_file": "raw/2026_06_26_2025000858.txt",
+   "words": 1171
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2025001455%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001455",
+   "sha256": "ed728559e956b00fb01961b01f9dbcf828956a90bc16a799e62c4dd3a7b753d7",
+   "text_file": "raw/2026_06_26_2025001455.txt",
+   "words": 1262
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2025001557%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001557",
+   "sha256": "f9075256c23f2ed56f7a19084ab109bb0d974a391f050e9fad7b014092ad620f",
+   "text_file": "raw/2026_06_26_2025001557.txt",
+   "words": 1313
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2025001814%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001814",
+   "sha256": "fbe07d873654a2801d71bb7a060d6f0b980787c1011bfe6df94479fc3d89a54f",
+   "text_file": "raw/2026_06_26_2025001814.txt",
+   "words": 1336
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2026000583%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2026000583",
+   "sha256": "567ce53d05ba31ecb7a7601588b0bcbc62ffc853235001f710910d820ed287ec",
+   "text_file": "raw/2026_06_26_2026000583.txt",
+   "words": 2473
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2026001020%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026001020",
+   "sha256": "ea9b17e66bf39c552ac59c7b155dfa822a443b16923e7a56d74b6304cc55fde5",
+   "text_file": "raw/2026_06_26_2026001020.txt",
+   "words": 2166
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/2026001036%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026001036",
+   "sha256": "61749cf0940e5b5606e035522b1760dae00f4c2b08ee1492ee89970fed81359e",
+   "text_file": "raw/2026_06_26_2026001036.txt",
+   "words": 1229
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_06_26/202601436%20DEC.pdf",
+   "folder": "2026_06_26",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "202601436",
+   "sha256": "ccd7547035f20e7bbf86b25f5f5a363669694c273f47797aac13bd3574789256",
+   "text_file": "raw/2026_06_26_202601436.txt",
+   "words": 4842
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2023002994%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2023002994",
+   "sha256": "9f8b103f14c87b65f6ca46c8ab99211f9e4bd84e0f1fc8d0469a050093554417",
+   "text_file": "raw/2026_07_20_2023002994.txt",
+   "words": 3057
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2024001517.2024001768%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2024001517",
+   "sha256": "f73884226bddaea5809e75a7da3a12ef40bda4fcbf631c552e4c9a4d55e5b56d",
+   "text_file": "raw/2026_07_20_2024001517.txt",
+   "words": 7238
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2025000003%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q5"
+   ],
+   "appeal": "2025000003",
+   "sha256": "8f728d487514da258fcff64b054a8c9d504db3f91bcaa49f0556fdcfced1aef1",
+   "text_file": "raw/2026_07_20_2025000003.txt",
+   "words": 1934
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2025001127%20DEC_0.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001127",
+   "sha256": "298dfca85e6bdaa94d1fbbedb83d2010527b3f027925e6b455b5fc04de32f2e7",
+   "text_file": "raw/2026_07_20_2025001127.txt",
+   "words": 1360
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2025001317%20DEC_0.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2025001317",
+   "sha256": "98341c6a9c9b167d046d411c74bd7e4d51a4ca6d9e35082934949689ba23420e",
+   "text_file": "raw/2026_07_20_2025001317.txt",
+   "words": 2911
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2025001668%20DEC_0.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001668",
+   "sha256": "4402cf240d5e4282ba83783398d7741b608136a093690b5435c28f567e7de1d6",
+   "text_file": "raw/2026_07_20_2025001668.txt",
+   "words": 1599
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2025002764%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025002764",
+   "sha256": "99fa4eb85cb939ac6463c3ddecaaddfb1800e757d3cd316b8df63cbcc570eca6",
+   "text_file": "raw/2026_07_20_2025002764.txt",
+   "words": 1383
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2025002845%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025002845",
+   "sha256": "8ae27eac6cab787f33736f0c7b4c97e2ce535270e3f5f7e551ff808bf6359da2",
+   "text_file": "raw/2026_07_20_2025002845.txt",
+   "words": 1296
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2025003484%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025003484",
+   "sha256": "bf8b753bd3bd657d5b3a771b3e318b72af6d07968eac38c37e2bf25d0864e65b",
+   "text_file": "raw/2026_07_20_2025003484.txt",
+   "words": 1594
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2026000820%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2026000820",
+   "sha256": "534c82afc4f079e610dd3ccd2df219157aacb07fc39eec93506fc894caea766a",
+   "text_file": "raw/2026_07_20_2026000820.txt",
+   "words": 1497
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2026000928%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026000928",
+   "sha256": "ef1ffc7e2f6794edec326bed3d9d90620eb83d6dc6a5dffb62e7d0aff99c3d91",
+   "text_file": "raw/2026_07_20_2026000928.txt",
+   "words": 1272
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2026001006%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2026001006",
+   "sha256": "b18580f92542b871cc5cfb4534881c9b5439125b897dab6c8b468c0b1f347bc4",
+   "text_file": "raw/2026_07_20_2026001006.txt",
+   "words": 2773
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2026001263%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026001263",
+   "sha256": "8d717709bf53b402854f882680ba59c569dd5386e7e325e54c3d4031f3189ab8",
+   "text_file": "raw/2026_07_20_2026001263.txt",
+   "words": 1118
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2026001323%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026001323",
+   "sha256": "d5f9c0bde721bea5a1da9b548fb84ab99b32cd26bc3ad8d35fdbd10fec993d4f",
+   "text_file": "raw/2026_07_20_2026001323.txt",
+   "words": 1082
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2026001383%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2026001383",
+   "sha256": "1c609c42de3ee94ec5e2e35e60e312f591755e750e00212f4a20f9fec096ea21",
+   "text_file": "raw/2026_07_20_2026001383.txt",
+   "words": 1035
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2026001538%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026001538",
+   "sha256": "412d90440711c2a7dff2ac87d316a10d9521da5f07d58d590f156b027f7b4949",
+   "text_file": "raw/2026_07_20_2026001538.txt",
+   "words": 1377
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2026001690%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026001690",
+   "sha256": "222c613311637b2dde9e4dfd3cafa74582dd8ce3dc48d3b39cefcc8eca8f7386",
+   "text_file": "raw/2026_07_20_2026001690.txt",
+   "words": 1231
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_20/2026001709%20DEC_1.pdf",
+   "folder": "2026_07_20",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2026001709",
+   "sha256": "d731b1df21486ef07c7fabb6759f1d13a4bfe70313fa2186549a5978d70d0aaa",
+   "text_file": "raw/2026_07_20_2026001709.txt",
+   "words": 999
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_07_29/2023003566.pdf",
+   "folder": "2026_07_29",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2023003566",
+   "sha256": "ccd7547035f20e7bbf86b25f5f5a363669694c273f47797aac13bd3574789256",
+   "text_file": "raw/2026_07_29_2023003566.txt",
+   "words": 4842
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2023004209%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2023004209",
+   "sha256": "e7adf5959d89d1e26a06b4924a3d32268d169ff53c01bfcce8b75e178e6d7bd1",
+   "text_file": "raw/2026_09_08_2023004209.txt",
+   "words": 2444
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2023004444%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2023004444",
+   "sha256": "e35c9f4b1d2c179cb039cf71a4ed3ff79d14f4b03080d12544603cb158fec198",
+   "text_file": "raw/2026_09_08_2023004444.txt",
+   "words": 4645
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2024000342%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2024000342",
+   "sha256": "5c095b31bc0ff96cdf4dd4fa4ce6a9132194859cdaec686a54f82f7abac341b0",
+   "text_file": "raw/2026_09_08_2024000342.txt",
+   "words": 2717
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2024001153%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2024001153",
+   "sha256": "3af2e4d1c7cd032d007791483e89dfcd4f8ed2dca472b782ae821824406a420b",
+   "text_file": "raw/2026_09_08_2024001153.txt",
+   "words": 1891
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2024003100%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2024003100",
+   "sha256": "c7298eaa1f392964ba465e2d5fedf9d6a54c77e8574d2e6cb34e245c448a176c",
+   "text_file": "raw/2026_09_08_2024003100.txt",
+   "words": 3442
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2024003431%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024003431",
+   "sha256": "5cd66aff2ff2232aa77f42792a0d2d1206c12c431ed637feb236bf10c6081149",
+   "text_file": "raw/2026_09_08_2024003431.txt",
+   "words": 3781
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2024004986%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2024004986",
+   "sha256": "10ce3e2f3bf0b60689ed2110ce5e931967a676572d1a4ceaa25a6c3ddf5bcc0c",
+   "text_file": "raw/2026_09_08_2024004986.txt",
+   "words": 1296
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025001469%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001469",
+   "sha256": "dbbf92f41a2b3452cf50cc804fe24fa43df1d7581530014e579c7f020077412b",
+   "text_file": "raw/2026_09_08_2025001469.txt",
+   "words": 1394
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025001665%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001665",
+   "sha256": "821d2185e2974283cd01c63abaf177277f25c369aef186c842fb38821550f9ed",
+   "text_file": "raw/2026_09_08_2025001665.txt",
+   "words": 1317
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025001709%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q1",
+    "Q2"
+   ],
+   "appeal": "2025001709",
+   "sha256": "d739c26b36f46da947e5e0a5165ceb0d1113b9d812eef9fae807522b49882e42",
+   "text_file": "raw/2026_09_08_2025001709.txt",
+   "words": 4726
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025001795%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025001795",
+   "sha256": "02114d7e930e37c5b2abebcdfc5d8f0351a23ccd9fd143c576cdf66140022960",
+   "text_file": "raw/2026_09_08_2025001795.txt",
+   "words": 1388
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025002258%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025002258",
+   "sha256": "f81f334f79d009a15d6dc4eb1d848f08e79b723e05c424394a92629cc13fb583",
+   "text_file": "raw/2026_09_08_2025002258.txt",
+   "words": 1255
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025002339%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025002339",
+   "sha256": "28981846dc117006631b60e7bf94d7b0e40fe2432b271b295a6775c2dc0e0bcc",
+   "text_file": "raw/2026_09_08_2025002339.txt",
+   "words": 1222
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025002381%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q1",
+    "Q2"
+   ],
+   "appeal": "2025002381",
+   "sha256": "6c22948d9318d87f4aecd210aff0a3c4675d95e3d9e887f2d1328292b541e77f",
+   "text_file": "raw/2026_09_08_2025002381.txt",
+   "words": 2555
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025002567%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q1"
+   ],
+   "appeal": "2025002567",
+   "sha256": "eb90495e8680091b3d641560d6490aaec8e39da5008447fe9dbe5eba7b2d706b",
+   "text_file": "raw/2026_09_08_2025002567.txt",
+   "words": 4997
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025002718%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025002718",
+   "sha256": "da663c96556395ccd4c37ef1c4ce46b0a2b1c07dc2a91f4309eff2afbe7475d0",
+   "text_file": "raw/2026_09_08_2025002718.txt",
+   "words": 1315
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025003200%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025003200",
+   "sha256": "ea7c2b558d2ad288c1dd9e424b7d3a07025a2bdeb88aa1a7a9d5b4fb2b570689",
+   "text_file": "raw/2026_09_08_2025003200.txt",
+   "words": 1322
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025003358%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025003358",
+   "sha256": "b9c73d552f897ae7f5f7acb0ac2772e10c3702c9adc9f7b1a18063b73b8932fc",
+   "text_file": "raw/2026_09_08_2025003358.txt",
+   "words": 3204
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025003498%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025003498",
+   "sha256": "92a087878012ce4b53c7238b38fee9d08c9fa27424032915323e17f6ce41e007",
+   "text_file": "raw/2026_09_08_2025003498.txt",
+   "words": 3403
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025003933%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2025003933",
+   "sha256": "41eebaa054106e4e8d8ed84922c897d65cc2a8307ea8157f3d03b1ba226ce9dd",
+   "text_file": "raw/2026_09_08_2025003933.txt",
+   "words": 4424
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2025004033%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2025004033",
+   "sha256": "2924bf74e1473a61e7a4da9b4ec4e54f8a655dffdb8a591ff960948c7aa37bd4",
+   "text_file": "raw/2026_09_08_2025004033.txt",
+   "words": 1352
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2026002040%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2026002040",
+   "sha256": "724c237ada6775fadb08709f3272a711f9b5b632b745879793adf68e61aa61ac",
+   "text_file": "raw/2026_09_08_2026002040.txt",
+   "words": 908
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2026002198%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026002198",
+   "sha256": "743e9ad19d0f2b0c4a8c68e3550b7dc65d81f2632e7f7a6b10f21b3bc74844b1",
+   "text_file": "raw/2026_09_08_2026002198.txt",
+   "words": 1209
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2026002262%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3"
+   ],
+   "appeal": "2026002262",
+   "sha256": "e479564b25f4dc09e6814102a80668c671aae0435db411d3b178d859e17ac4d4",
+   "text_file": "raw/2026_09_08_2026002262.txt",
+   "words": 1192
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2026002278%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q3",
+    "Q4"
+   ],
+   "appeal": "2026002278",
+   "sha256": "74458fc3ad22d936827901c532836d75b448c05263f89601d4c854efaa1ae2a6",
+   "text_file": "raw/2026_09_08_2026002278.txt",
+   "words": 1042
+  },
+  {
+   "url": "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2026002341%20DEC.pdf",
+   "folder": "2026_09_08",
+   "queries": [
+    "Q4"
+   ],
+   "appeal": "2026002341",
+   "sha256": "66d4e370683fddacf9a8fcdf6c7731c72ced26d200b0f65ea55cbb8337ce0087",
+   "text_file": "raw/2026_09_08_2026002341.txt",
+   "words": 1851
+  }
+ ]
+}
