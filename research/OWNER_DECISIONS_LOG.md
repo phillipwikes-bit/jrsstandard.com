@@ -17,3 +17,5 @@ One line per settled decision: date, decision, source. **Read this first, before
 | 2026-10-02 | Keep the editor's CEP wording; send no correction | Owner, 2026-10-02 (earlier agreement not found in the repository) |
 | 2026-10-02 | Keep the signed SCCE copyright form in the repository, on main | Owner, 2026-10-02; main 044c7af |
 | 2026-10-02 | Review the sales and licensing assessment point by point, then issue one clean revised report (not layered revisions) | Owner, 2026-10-02 |
+| 2026-10-01 | First evaluation workflow: non-HR supplier-access exception approvals, fixture-only (O-01); error weights as in v8 s16 (O-02); USD 5 smoke ceiling (O-04); HOLD sending until a minimum sendable package exists, then the owner names one recipient (O-05); trackers stay on the working branch (O-07). O-08 NOT ANSWERED | V8 decision sheet |
+| 2026-10-02 | Assessment point 1 settled: first-sale candidates are two licences, (1) the Engine trial, ready now at the USD 1,000 test price, and (2) a curriculum licence, pending D8; the review engagement is removed | Owner, 2026-10-02 |
