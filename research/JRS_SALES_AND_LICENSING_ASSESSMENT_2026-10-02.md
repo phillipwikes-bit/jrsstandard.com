@@ -342,7 +342,8 @@ These three assets rest on **your practitioner credibility**: 13 years as a Lead
 | D5 | **Resubmission route** | Take the editor's transfer suggestion or a ranked alternative; clean contact and provenance first | Time; a further rejection is possible |
 | D6 | **The Broida trainer referral** | Your call. If reopened: one email per organization, to a named training lead, offering to **teach** a JRS session for investigators, sent only after the November CEP issue | Reopening goes against your 23 August determination; leaving it closed leaves the only warm channel untested |
 | D7 | **The note to Peter Broida when CEP publishes** | Yes: a short give, sending him the article with no ask (the tracker's standing rule) | Very low risk; keeps the only third-party mention warm |
-| D8 | **Can the free training be licensed to training providers or delivered in paid sessions?** | Yes, I recommend reading "free, permanently" as free self-study for individuals, with paid licensed delivery allowed. Your call | Keeps your free-access promise to individuals while opening the training line Broida pointed to |
+| D8 | **Can the free training be licensed to training providers or delivered in paid sessions?** | **DECIDED by the owner, 2026-10-02: the curriculum stays free** (Appendix A; C.5). My earlier recommendation to allow paid licensed delivery is set aside | Little direct income from the curriculum; its value comes through credibility and publication (D10) |
+| D10 | **Free publication through a third-party publisher (Dewey/Broida, SCCE)** | **Yes, on a non-exclusive licence only, under the publishing track below** | A slower route than self-publishing, and some publishers will refuse anything short of a copyright transfer |
 | D9 | **An honest research update to contributors and trainees, with one optional "reply if useful" line** | Yes, once, after CEP publishes, and only to people who consented to contact | Stays within your 15 July commitment; anything more would break it |
 
 ### Phase 1. Weeks 1 and 2 (mostly Claude; owner reviews)
@@ -350,6 +351,25 @@ These three assets rest on **your practitioner credibility**: 13 years as a Lead
 2. A one-page discovery script: five questions, no price, no claims beyond the evidence.
 3. A two-page limitations brief for buyers: what was tested, what was not, and the rejection explained plainly. Honesty here is a selling point to a diligence-minded buyer.
 4. Correct the stale prospectus wording before anyone is sent it: "A turnkey asset" (rights are unsettled), "Manuscript in preparation" for a paper that was submitted and rejected, and "role-gated paths" (the training is ungated). This is a production change, so it needs your approval.
+
+### Publishing track (D10). Owner direction 2026-10-02; nothing sent to anyone
+**Recommendation (*Judgment*), in this order:**
+1. **Offer a non-exclusive licence, never a copyright transfer.** You keep ownership. The publisher gets the right to publish its edition, and JRS stays free on jrsstandard.com.
+2. **Get these terms in writing before anything is submitted:**
+   - the licence is non-exclusive;
+   - you keep the copyright and may keep the material free online;
+   - you may update it;
+   - the agreement can pass to a future owner;
+   - the credit reads "Justification Review Standard (JRS), Phillip Wikes".
+3. **If a publisher insists on owning the copyright, give it an adapted edition instead,** such as a federal-investigator version of the Reviewer Reference. The core standard and the training stay with you.
+4. **Leave out anything you don't control:** the CEP article text (SCCE owns it under the signed form of 21 July) and the CCI material (it needs co-author approval).
+5. **Order of contact:**
+   - **Broida:** in November, once the CEP issue is out, send a thank-you with no request (D7). Later, send one Dewey offer, following his one-ask rule.
+   - **SCCE:** after the November issue, ask Bill Anholzer about the Manual's contributor terms, **and who at SCCE handles Manual chapters.** He is a magazine editor; nothing found shows he edits or publishes the Manual (C.5).
+
+**Stop rule:** if every publisher asked requires a full transfer of the core materials, stop. JRS stays self-published and free.
+
+**Effect on a future sale (*Inference*):** published and free, JRS gains credibility. That raises the value of what can be sold (the standard, the research, the name, the training system and your standing as its author), as long as you keep the copyright. It brings in little direct income, which fits your decision to keep the curriculum free.
 
 ### Phase 2. Weeks 2 to 7 (owner 3 to 5 hours a week)
 - 20 to 30 private messages, citing the CCI article and the November CEP acceptance. Every reply goes in an inquiry log (checklist TX-08).
@@ -616,7 +636,7 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 3. **If a publisher requires a full copyright transfer, offer an adapted edition instead,** such as a federal-investigator edition of the Reviewer Reference, so the core JRS standard, codebook and training stay with you.
 4. **Exclude content you don't control:** CEP text (SCCE-owned) and CCI material (co-author approval).
 5. **Describe AI assistance accurately,** because publishers ask authors to warrant originality and sole authorship (the CEP form did).
-6. **Sequence for Broida:** the November CEP issue first, with a give-only note (D7). Then one well-formed offer to Dewey (his one-ask cadence rule). For SCCE, ask Bill Anholzer or the book editor for book terms after the November issue.
+6. **Sequence for Broida:** the November CEP issue first, with a give-only note (D7). Then one well-formed offer to Dewey (his one-ask cadence rule). For SCCE, ask Bill Anholzer for the Manual's contributor terms, and for the name of whoever handles Manual chapters, after the November issue. This recommendation is restated as the publishing track in section 7 (D10).
 
 **SCCE's handbook, checked 2026-10-02 (search results and SCCE and PR Newswire release listings; pages not opened):**
 - SCCE's flagship handbook is ***The Complete Compliance and Ethics Manual*.** It is **updated every year** (a 2026 edition exists), is written by **more than 80 practitioner authors**, runs to about **1,100 pages**, and is sold as a two-volume print set or an online subscription.
@@ -624,6 +644,13 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 - *Inference:* the realistic SCCE route is **one contributed chapter in a future annual edition** (for example, on reconstructable records and AI-assisted documentation), not a standalone JRS handbook.
 - **Contributor rights terms are UNKNOWN.** If they follow the CEP form, SCCE would own the chapter text, so write the chapter as an adapted contribution and keep the core JRS materials outside it.
 - SCCE also publishes standalone books (for example *Compliance 101*) through its book-proposal process.
+
+**Is Bill Anholzer the Manual's publisher? No. Checked 2026-10-02:**
+- **The publisher is SCCE, the organization itself** (*Observed*: PR Newswire release for the 2024 edition, opened). The release names no editor. Its only contact is Margaret Eggenberger, SCCE & HCCA press contact.
+- **Bill Anholzer's role is magazine editor:** he edits *CEP Magazine*, *Ethikos* and *Corporate Compliance Weekly News*, and was previously Senior Copyeditor (*Source-reported*: his LinkedIn profile as shown in search results, not opened; it agrees with the tracker entries of 16 and 21 July).
+- **The Manual's current editor is NOT ESTABLISHED.** The 2014 edition lists six practitioner editors (Banks, Essrig, Childers, Kuca, Triguba, Walker), from an Amazon listing seen only in search results. SCCE's own book page and its 2025 product catalog both returned HTTP 403.
+- *Inference:* Bill is not the decision-maker for the Manual, but he is your working contact at SCCE and the right first person to ask who is.
+- Sources: [PR Newswire, 2024 edition release](https://www.prnewswire.com/news-releases/scce-releases-new-2024-edition-of-the-complete-compliance-and-ethics-manual-302031797.html) (opened); [Bill Anholzer, LinkedIn](https://www.linkedin.com/in/billanholzer/) (search result only); [2014 edition, Amazon](https://www.amazon.com/Complete-Compliance-Ethics-Manual-2014/dp/0979221099) (search result only); [SCCE books](https://www.corporatecompliance.org/publications/books) (403).
 
 **Effect on the sale (*Inference*):** a free, publisher-imprinted JRS raises the value of what can be sold (the standard, research, brand, training system and your credibility as its author), provided the copyright stays with you. It earns little or no direct income, which is consistent with your choice to keep it free.
 
