@@ -366,7 +366,14 @@ These three assets rest on **your practitioner credibility**: 13 years as a Lead
 5. **Order of contact:**
    - **Broida:** in November, once the CEP issue is out, send a thank-you with no request (D7). Later, send one Dewey offer, following his one-ask rule.
    - **SCCE:** after the November issue, ask Bill Anholzer about the Manual's contributor terms, **and who at SCCE handles Manual chapters.** He is a magazine editor; nothing found shows he edits or publishes the Manual (C.5).
-   - **Other venues** (handbook survey in C.5, H1 to H12): HCCA's manual is the same organization as SCCE, so offer one SCCE & HCCA chapter at first, not two. The AWI Journal is the strongest workplace-investigator fit. For civil-rights agency investigators, IAOHRA and NFHTA are training routes, not book routes. All of these come after the November issue, one at a time.
+   - **The five November targets (owner decision, 2026-10-02):**
+     1. **Dewey Publications** (via Broida): the *EEO Counselors' and Investigators' Manual*. Thank-you note first, offer later.
+     2. **SCCE:** a chapter in *The Complete Compliance and Ethics Manual*. Ask Bill Anholzer about the terms first.
+     3. **HCCA:** the *Complete Healthcare Compliance Manual*. Same organization as SCCE, so ask about both in the same conversation and offer one chapter between them at first.
+     4. **AWI:** an article in the *AWI Journal* for workplace investigators.
+     5. **IAOHRA and NFHTA:** free training or a webinar for civil-rights and fair-housing agency investigators. A training route, not a book.
+   - **Not pursued:** the other survey rows (C.5: H5 to H8, H10 to H12) stay as reference only.
+   - **Pacing:** November starts the sequence; it is not five messages at once. Broida's one-ask rule applies to Dewey, and SCCE and HCCA are one conversation. All five are on a non-exclusive licence only.
 
 **Stop rule:** if every publisher asked requires a full transfer of the core materials, stop. JRS stays self-published and free.
 
@@ -440,6 +447,7 @@ One line per settled decision: date, decision, source. **Read this first, before
 | 2026-10-02 | Keep the signed SCCE copyright form in the repository, on main | Owner, 2026-10-02; main 044c7af |
 | 2026-10-02 | Review the sales and licensing assessment point by point, then issue one clean revised report (not layered revisions) | Owner, 2026-10-02 |
 | 2026-10-02 | STA was built on the same fundamentals as CCI's MRT; STA figures confirmed (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | Owner, 2026-10-02 |
+| 2026-10-02 | Five strong November publishing targets: Dewey (Broida), SCCE, HCCA, AWI Journal, IAOHRA/NFHTA; other survey rows not pursued | Owner, 2026-10-02 |
 | 2026-10-02 | D8: the curriculum (training, guides, Reviewer Reference) remains free; consider giving it to Dewey (Broida) or SCCE to publish | Owner, 2026-10-02 |
 | 2026-10-01 | First evaluation workflow: non-HR supplier-access exception approvals, fixture-only (O-01); error weights as in v8 s16 (O-02); USD 5 smoke ceiling (O-04); HOLD sending until a minimum sendable package exists, then the owner names one recipient (O-05); trackers stay on the working branch (O-07). O-08 NOT ANSWERED | V8 decision sheet |
 | 2026-10-02 | Assessment point 1 settled: first-sale candidates are two licences, (1) the Engine trial, ready now at the USD 1,000 test price, and (2) a curriculum licence, pending D8; the review engagement is removed | Owner, 2026-10-02 |

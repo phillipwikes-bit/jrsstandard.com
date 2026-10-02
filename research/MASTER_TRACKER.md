@@ -3103,3 +3103,4 @@ Only four line groups differ between v7 and v8.
   - CLEAR NCIT; HUD Title VIII Handbook, NFHTA and IAOHRA CFHI (training routes, not book routes); ATIXA;
   - Worklogic, Workplace Investigations (Wolters Kluwer Australia); SHRM, Investigating Workplace Harassment.
   LRP, FELTG and Gilbert are excluded (channel closed 23 August). The section 7 publishing track now sends one SCCE & HCCA chapter at first. Contributor terms are unknown for every row. Nothing sent.
+- 2026-10-02 (**OWNER: ADD ONLY AWI, HCCA AND IAOHRA/NFHTA, FOR FIVE STRONG NOVEMBER TARGETS**): recorded in Appendix A and in the section 7 publishing track. The five targets are Dewey (Broida), SCCE, HCCA, AWI Journal and IAOHRA/NFHTA; the other survey rows are reference only. Pacing note: SCCE and HCCA are one organization, so one conversation; contacts are sequenced, not sent together. Nothing sent.
