@@ -102,7 +102,6 @@ The reading was done by Claude Code, a model, and has not been checked by a pers
 5. **One draft per condition, so no sampling variance is measured.** One text family (EEOC federal-sector decisions). Two drafters, both from one provider.
 6. **The P4 instruction was written by the study's author.** The test shows what this instruction does with these models. It does not show that a vendor's product would behave the same way.
 
-## Next
-1. **Owner:** add API credit, a phone browser step at console.anthropic.com, Settings, Billing. About USD 22 covers both runs.
-2. Resume Part 2 (about USD 20).
-3. **Confirmatory run of extractor v1.2:** Sonnet and Haiku, P1 and P4, on the 29 held-out texts, about USD 2. Frozen before the drafts exist. If P4 again shows no unsupported anchors, the H4 sentence can be stated for that run.
+## Next (updated 2026-10-02, after the confirmatory run)
+- The confirmatory run is done: **H4c failed** on the automatic count, while the manual reading found only extractor errors in P4. See `CONFIRMATORY_RESULTS.md`.
+- Part 2 resumed after the owner added credit; its results are reported in `PART2_RESULTS.md` when complete.

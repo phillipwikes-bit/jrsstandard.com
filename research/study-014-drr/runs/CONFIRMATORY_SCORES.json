@@ -1,0 +1,163 @@
+{
+ "claude-sonnet-5-5|P1": {
+  "drafts": 29,
+  "median_retention": {
+   "date": 0.7777777777777778,
+   "citation": 0.0,
+   "attribution": 0.5,
+   "quote": 0.0
+  },
+  "median_pooled": 0.3684210526315789,
+  "unsupported": {
+   "date": 1,
+   "citation": 0,
+   "quote": 1
+  },
+  "unsupported_total": 2,
+  "unsupported_by_text": {
+   "P014-19": {
+    "quote": 1
+   },
+   "P014-23": {
+    "date": 1
+   }
+  }
+ },
+ "claude-sonnet-5-5|P2": {
+  "drafts": 29,
+  "median_retention": {
+   "date": 1.0,
+   "citation": 1.0,
+   "attribution": 1.0,
+   "quote": 0.6666666666666666
+  },
+  "median_pooled": 1.0,
+  "unsupported": {
+   "date": 2,
+   "citation": 0,
+   "quote": 6
+  },
+  "unsupported_total": 8,
+  "unsupported_by_text": {
+   "P014-01": {
+    "quote": 1
+   },
+   "P014-18": {
+    "quote": 2
+   },
+   "P014-19": {
+    "quote": 1
+   },
+   "P014-23": {
+    "date": 1
+   },
+   "P014-24": {
+    "date": 1,
+    "quote": 1
+   },
+   "P014-29": {
+    "quote": 1
+   }
+  }
+ },
+ "claude-sonnet-5-5|P4": {
+  "drafts": 29,
+  "median_retention": {
+   "date": 1.0,
+   "citation": 1.0,
+   "attribution": 0.6666666666666666,
+   "quote": 1.0
+  },
+  "median_pooled": 1.0,
+  "unsupported": {
+   "date": 3,
+   "citation": 0,
+   "quote": 1
+  },
+  "unsupported_total": 4,
+  "unsupported_by_text": {
+   "P014-23": {
+    "date": 2,
+    "quote": 1
+   },
+   "P014-24": {
+    "date": 1
+   }
+  }
+ },
+ "claude-haiku-4-5-20251001|P1": {
+  "drafts": 29,
+  "median_retention": {
+   "date": 0.45454545454545453,
+   "citation": 0.0,
+   "attribution": 0.25,
+   "quote": 0.0
+  },
+  "median_pooled": 0.21052631578947367,
+  "unsupported": {
+   "date": 0,
+   "citation": 0,
+   "quote": 0
+  },
+  "unsupported_total": 0,
+  "unsupported_by_text": {}
+ },
+ "claude-haiku-4-5-20251001|P2": {
+  "drafts": 29,
+  "median_retention": {
+   "date": 0.7,
+   "citation": 0.0,
+   "attribution": 0.6666666666666666,
+   "quote": 0.23809523809523808
+  },
+  "median_pooled": 0.5714285714285714,
+  "unsupported": {
+   "date": 1,
+   "citation": 0,
+   "quote": 0
+  },
+  "unsupported_total": 1,
+  "unsupported_by_text": {
+   "P014-23": {
+    "date": 1
+   }
+  }
+ },
+ "claude-haiku-4-5-20251001|P4": {
+  "drafts": 29,
+  "median_retention": {
+   "date": 1.0,
+   "citation": 1.0,
+   "attribution": 0.8333333333333334,
+   "quote": 1.0
+  },
+  "median_pooled": 1.0,
+  "unsupported": {
+   "date": 1,
+   "citation": 0,
+   "quote": 1
+  },
+  "unsupported_total": 2,
+  "unsupported_by_text": {
+   "P014-23": {
+    "quote": 1
+   },
+   "P014-24": {
+    "date": 1
+   }
+  }
+ },
+ "H4c": {
+  "by_drafter": {
+   "claude-sonnet-5-5": {
+    "retention": false,
+    "unsupported": false
+   },
+   "claude-haiku-4-5-20251001": {
+    "retention": true,
+    "unsupported": false
+   }
+  },
+  "holds": false
+ }
+}

@@ -47,7 +47,11 @@ Python 3.8 or later, standard library only. No network access, no model calls.
 The values are medians across the 30 texts; citations are taken over the 13 texts that contain them. Cloze reconstruction, read by Sonnet 5.5: source 0.967; P1 draft 0.773; P4 draft 0.973; no document 0.113. The full table is in `BASELINES.json` and `research/study-014-drr/RESULTS.md`.
 
 ## Known limits (v0.9)
-1. **The scorer was corrected after the data were seen.** v1.1 and v1.2 fix extractor errors found by reading every flagged item in Study 014. v1.2 passes a self-consistency check on the 29 held-out private texts, but it has not yet been used on drafts it was not tuned on. That confirmatory run is a condition of v1.0.
+1. **The scorer was corrected after the data were seen, and its unsupported-additions count is not yet reliable.**
+   - v1.1 and v1.2 fix extractor errors found by reading every flagged item in Study 014.
+   - The confirmatory run on the 29 held-out texts (`research/study-014-drr/CONFIRMATORY_RESULTS.md`) found four more source forms that v1.2 misses.
+   - Every flag on the JRS-guided drafts there was an extractor error.
+   - Until v1.3 is confirmed on new texts, the automatic count is a screening step: each flag is read by hand (`HARNESS_SPEC.md` section 3.4) and labelled before it is reported.
 2. **The private set is reproducible from the public rule.** The 29 held-out texts are the next texts the published selection rule yields, so anyone can rebuild them. They guard against tuning a scorer, not against a vendor tuning a tool. v1.0 needs a private set drawn by a rule that is not published (for example, a sealed random draw).
 3. **One text family.** Every text is an EEOC federal-sector decision background. Results may not carry over to workplace investigation reports, police reports or audit files.
 4. **Small set.** 30 texts; intervals are wide.
@@ -56,7 +60,7 @@ The values are medians across the 30 texts; citations are taken over the 13 text
 7. **Cloze needs a reader model.** The reader is a variable; the suite fixes the instruction and scoring but not the reader.
 
 ## Path to v1.0
-- A confirmatory run of frozen v1.2 on drafts of the held-out texts (needs API credit; see B-022).
+- Extractor v1.3 (the four forms in `CONFIRMATORY_RESULTS.md`), confirmed on texts not yet used. Both earlier sets are now spent.
 - A sealed private set drawn by an unpublished rule, kept outside this public repository (B-018).
 - Study 014 Part 2 completed (detection; 205 of 1,350 calls done).
 - Licence terms reviewed by the owner.
