@@ -26,7 +26,7 @@ Not chosen. Each vendor's public contact or partnership form is the neutral rout
 >
 > We have built a test suite that measures this for AI drafting tools. It scores whether a drafted summary or report keeps the dates, record citations, quotations and "who said what" from the source, and whether a reader can still answer factual questions from the draft. In our first study, a plain "concise summary" prompt on current models kept a median of 0 to 7 percent of quotations and none of the record citations. A drafting instruction built on JRS kept nearly all of them.
 >
-> Because [product] drafts case reports, we are offering one or two vendors a free 90-day private beta. You run [product] on 30 public practice records, and we return a full scored report, kept confidential to you. We ask for feedback on the process. No certification or mark is involved at this stage.
+> Because [product] drafts case reports, we are offering one or two vendors a free 90-day private beta. You run [product] on 30 public practice records, and we return a full scored report, kept confidential to you. The practice records are U.S. federal-sector EEOC decision backgrounds, not workplace investigation files, so the scores show what your tool keeps from that kind of record; we have not yet tested whether they predict results on your customers' files. We ask for feedback on the process. No certification or mark is involved at this stage.
 >
 > Would someone on your product or AI team be open to a short exchange about it?
 >
@@ -38,3 +38,5 @@ Not chosen. Each vendor's public contact or partnership form is the neutral rout
 - "Nearly all" refers to the P4 medians of 1.0 for both drafters; Sonnet's attribution median was 0.67.
 - No "prevents", "eliminates", "certified" or "compliant".
 - The message makes no claim about the vendor's product.
+- **Scope line added 2026-10-03 (owner approval):** the practice set is federal-sector EEOC text, and its relevance to HR investigation files is not established (`research/DRR_STUDY014_INTEGRATION_DRAFT_2026-10-03.md` section 3).
+- **Still not sent.** Contact needs "approve contact: <vendor>".
