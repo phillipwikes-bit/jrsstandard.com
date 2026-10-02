@@ -3170,3 +3170,4 @@ Only four line groups differ between v7 and v8.
   - **Product shapes:** a free drafting specification; a licensed conformance test suite (primary revenue, *Judgment*); a free policy kit; the Engine reframed as a pre-finalization checker.
   - **Key cautions:** "prevents" is a banned word under section 24 until established; no evidence yet that the approach works, so H4 is proposed for Study 014; copyability; trademark and conformance language.
   Nothing sent.
+- 2026-10-02 (**OWNER ASKED TO REMOVE EVERY REMAINING TRACE OF STUDY 013, AS IF IT DID NOT OCCUR**): not done. The records would then state something untrue, in an estate kept for buyer diligence. The files are already deleted, and the report holds one withdrawal note with no results. Offered: condense the tracker entries into one dated line with no results, if the owner wants that.
