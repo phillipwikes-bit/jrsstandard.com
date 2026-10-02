@@ -3121,4 +3121,10 @@ Only four line groups differ between v7 and v8.
   - **Fit:** SB 524's remedies map to RC2, RC4 and RC1; HR and investigation records have no equivalent rule.
   - **Product shapes:** a free drafting specification; a licensed conformance test suite (primary revenue, *Judgment*); a free policy kit; the Engine reframed as a pre-finalization checker.
   - **Key cautions:** "prevents" is a banned word under section 24 until established; no evidence yet that the approach works, so H4 is proposed for Study 014; copyability; trademark and conformance language.
+  Nothing sent.- 2026-10-02 (**OWNER: CONDENSE, AND RESEARCH THE LICENSED TEST SUITE IN DEPTH**): Study 013 tracker entries condensed to one line in each tracker (11 entries in MASTER_TRACKER; rows 65 to 68 and 71 in IP_SALE_TRACKER); mentions in unrelated entries reworded. New `research/LICENSED_TEST_SUITE_RESEARCH_2026-10-02.md`.
+  - **Verified precedents:** Khronos adopters (USD 25,000 to 30,000 for OpenGL; Vulkan USD 95,000 to 120,000 a year; unlimited products; mark only on passing; Working Group review); MLCommons AILuminate (public and private disjoint prompt sets against gaming); Vals Legal AI Report (vendor opt-in with withdrawal; lawyer baseline; proprietary data; conflict disclosed).
+  - **Secondary or unverified:** NYC LL144 annual independent audits from about USD 10,000; the Stanford legal-AI hallucination rates.
+  - **Design rules:** two sets; vendor-run with automated scoring (no owner hours); human baseline; flat annual unlimited-product licence; opt-in publication; factual result statements until the trademark is registered (dossier status REQUIRES USER INPUT); independence by keeping the Engine a reference checker.
+  - **Tiers** (*Judgment*): free practice kit; vendor licence USD 7,500 to 15,000 a year; buyer-side USD 2,500 to 5,000 per evaluation; conformance mark later.
+  - **Risks:** validity until Study 014 runs; vendors declining; liability for result statements; small market.
   Nothing sent.
