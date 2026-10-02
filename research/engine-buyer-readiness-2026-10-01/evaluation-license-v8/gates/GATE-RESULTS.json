@@ -1,6 +1,6 @@
 {
   "schema": "jrs-v8-gate-results/1",
-  "evaluated": "2026-10-01 (revised after owner decisions)",
+  "evaluated": "2026-10-02",
   "definitions_sha256": "1b84c0ad03f9cfdc52f0914373caedd00a1e9f82d67747acd9b985dc512ebc1d",
   "gates": [
     {
@@ -90,9 +90,9 @@
     },
     {
       "id": "L3",
-      "status": "NOT ASSESSED",
+      "status": "BLOCKED",
       "evidence": [],
-      "reason": "No delivery package or clean-install run yet. MINIMUM_SENDABLE comes first (v8.0 section 26)."
+      "reason": "Offline delivery passes: deterministic tarball package/jrs-eval-0.1.0-eval-d73ceb8066.tar.gz (sha256 7b0d625174907dc9), clean install from an empty folder 9/9 (tools/test-clean-install.mjs, shown to fail on a tampered package), packaged offline tests 35/35, entitlement and quota controls tested. Declared route DIRECT_ANTHROPIC is IMPLEMENTED_NOT_TESTED until the live smoke run (L4)."
     },
     {
       "id": "L4",
@@ -104,25 +104,34 @@
       "id": "L5",
       "status": "BLOCKED",
       "evidence": [],
-      "reason": "Spend, destination, timeout and persistence controls pass offline. The injection criterion needs the live run (S4, S5). Customer checklist not yet written."
+      "reason": "Done: customer data-flow disclosure and buyer checklist (track-b/DATA-FLOW-AND-LIMITATIONS.md), runner destination, timeout, quota and persistence controls (offline tests), support data boundary (SUPPORT-AND-ACCEPTANCE.md). Outstanding: the adversarial injection requirement needs the live run on S4 and S5."
     },
     {
       "id": "L6",
-      "status": "NOT ASSESSED",
-      "evidence": [],
-      "reason": "No metrics: no live output and no creator labels."
+      "status": "PASS",
+      "evidence": [
+        {
+          "path": "track-b/CLAIM-REGISTER.md",
+          "sha256": "f37b0b32d5d4004914848e392d8bbaebe2306eef8b8836edafaab6f785065ee0"
+        },
+        {
+          "path": "track-a/CAPABILITY-MATRIX.json",
+          "sha256": "d631a655077f0ff2d68adde1ac5be961097802f4513aecca5c53da6399be3f93"
+        }
+      ],
+      "reason": "Claim register checks every buyer-facing claim against evidence; untested capabilities are listed as untested, and metrics are truthfully NOT ASSESSED. No banned wording found."
     },
     {
       "id": "L7",
-      "status": "NOT ASSESSED",
+      "status": "BLOCKED",
       "evidence": [],
-      "reason": "No agreement, invoice or procurement disposition yet."
+      "reason": "Done: owner-approved price and support (O-03), agreement draft pending one lawyer review, order form with validator (8/8 self-test), activation and closeout steps, procurement index. Outstanding owner decision: a payment method (no authorized process exists) and the selling party (personal or an entity)."
     },
     {
       "id": "L8",
-      "status": "NOT ASSESSED",
+      "status": "BLOCKED",
       "evidence": [],
-      "reason": "No release, audit bundle or encumbrance register yet. Open material defects: ED-01, ED-02 (mitigated in the runner, not upstream)."
+      "reason": "Done: versioned tarball with checksums, redacted audit bundle, empty encumbrance register. ED-01 and ED-02 are mitigated in the package by the runner. Outstanding: the owner release decision, after the live smoke run."
     }
   ],
   "evidence_gates": {

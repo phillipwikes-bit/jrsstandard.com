@@ -1,0 +1,51 @@
+{
+  "schema": "jrs-v8-procurement-index/1",
+  "date": "2026-10-02",
+  "items": [
+    {
+      "item": "Seller legal name and signing authority",
+      "status": "NOT_HELD",
+      "note": "No entity recorded (IP_SALE_TRACKER rev 20). Owner decision: sign personally or form an entity."
+    },
+    {
+      "item": "Security questionnaire answers",
+      "status": "DRAFT",
+      "note": "Answerable from DATA-FLOW-AND-LIMITATIONS.md; no SOC 2 or other certification is held."
+    },
+    {
+      "item": "Data-processing role summary",
+      "status": "DRAFT",
+      "note": "Customer-run: JRS receives no records (DATA-FLOW-AND-LIMITATIONS.md). A DPA is likely not needed for that reason; the buyer decides."
+    },
+    {
+      "item": "Provider route and model matrix",
+      "status": "AVAILABLE_VERIFIED",
+      "note": "Direct Anthropic only, claude-haiku-4-5-20251001; live route untested."
+    },
+    {
+      "item": "Insurance certificate",
+      "status": "NOT_HELD",
+      "note": "Do not imply cover exists. Required only if a buyer asks."
+    },
+    {
+      "item": "W-9 or other tax form",
+      "status": "NOT_HELD",
+      "note": "Only from owner-supplied legal and tax details. Never included in any bundle."
+    },
+    {
+      "item": "Invoice and payment process",
+      "status": "NOT_HELD",
+      "note": "See INVOICE-AND-ACTIVATION.md."
+    },
+    {
+      "item": "Software version, licence scope, fee and credit terms",
+      "status": "DRAFT",
+      "note": "Package tarball, LICENSED-ASSET-SCHEDULE.json, EVALUATION-AGREEMENT-DRAFT.md."
+    },
+    {
+      "item": "Release evidence",
+      "status": "DRAFT",
+      "note": "Offline tests and clean install pass; live smoke not run."
+    }
+  ]
+}

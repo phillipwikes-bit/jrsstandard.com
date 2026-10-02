@@ -1,0 +1,33 @@
+{
+  "schema": "jrs-v8-order-form/1",
+  "note": "Template. Null fields are transaction inputs that must come from the real buyer and the owner. tools/validate-order.mjs refuses to mark an order issuable while any required field is null or a placeholder.",
+  "fixed_terms": {
+    "grant": "non-exclusive, non-transferable internal evaluation",
+    "term_days": 30,
+    "max_evaluators": 3,
+    "max_records": 100,
+    "max_provider_attempts": 300,
+    "fee_usd": 1000,
+    "support_hours": 2,
+    "provider_route": "DIRECT_ANTHROPIC",
+    "agreement": "track-b/EVALUATION-AGREEMENT-DRAFT.md"
+  },
+  "required_inputs": {
+    "licensor_legal_name": { "value": null, "authority": "owner" },
+    "licensor_address": { "value": null, "authority": "owner" },
+    "licensor_signatory": { "value": null, "authority": "owner" },
+    "licensee_legal_name": { "value": null, "authority": "buyer" },
+    "licensee_address": { "value": null, "authority": "buyer" },
+    "licensee_signatory_and_title": { "value": null, "authority": "buyer" },
+    "workflow": { "value": null, "authority": "buyer and owner" },
+    "named_evaluators": { "value": null, "authority": "buyer" },
+    "activation_date": { "value": null, "authority": "set at activation" },
+    "package_id_and_sha256": { "value": null, "authority": "release record" },
+    "governing_law": { "value": null, "authority": "owner, after legal review" },
+    "payment_method": { "value": null, "authority": "owner" },
+    "tax_treatment": { "value": null, "authority": "owner or tax adviser" },
+    "agreement_reviewed_by_lawyer": { "value": null, "authority": "owner" },
+    "signed_agreement_reference": { "value": null, "authority": "both parties" },
+    "payment_received_reference": { "value": null, "authority": "owner" }
+  }
+}

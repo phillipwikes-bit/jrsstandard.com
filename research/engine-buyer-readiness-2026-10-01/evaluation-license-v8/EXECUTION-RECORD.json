@@ -63,20 +63,50 @@
       "cmd": "python3 scripts/check_zero_drift.py",
       "exit": 1,
       "result": "164 checks, 9 failed, 1 skipped (pre-existing; see ENGINE-DEFECT-REGISTER.md)"
+    },
+    {
+      "cmd": "node tools/test-run-smoke.mjs",
+      "exit": 0,
+      "result": "35 checks, 0 failed (2026-10-02, adds entitlement, quota and ledger checks)"
+    },
+    {
+      "cmd": "node tools/build-package.mjs (twice)",
+      "exit": 0,
+      "result": "jrs-eval-0.1.0-eval-d73ceb8066; tarball byte-identical across two builds"
+    },
+    {
+      "cmd": "node tools/test-clean-install.mjs package/*.tar.gz",
+      "exit": 0,
+      "result": "9 checks, 0 failed; tampered package caught (1 FAIL)"
+    },
+    {
+      "cmd": "node tools/validate-order.mjs --selftest",
+      "exit": 0,
+      "result": "8 checks, 0 failed"
+    },
+    {
+      "cmd": "node tools/build-audit-bundle.mjs",
+      "exit": 0,
+      "result": "35 files; planted slug refused (exit 1); replay from a fresh folder: checksums ok, gates recomputed, self-tests 6/6 and 8/8"
     }
   ],
   "corrections": [
-    "test-run-smoke.mjs check 11 first tested an arbitrary USD 0.10 threshold and failed at USD 0.101; corrected to the governing USD 5 ceiling, with the history kept in a code comment."
+    "test-run-smoke.mjs check 11 first tested an arbitrary USD 0.10 threshold and failed at USD 0.101; corrected to the governing USD 5 ceiling, with the history kept in a code comment.",
+    "2026-10-02: an unfilled entitlement template would never expire, because a placeholder date compares as later than any real date. Fixed with strict validation and two tests before the package was released."
   ],
   "approvals_recorded": "2026-10-01: owner approved every decision sheet Part 2 recommendation (\"For 2 whatever you recommend.\"), O-08 unanswered. L1 now PASS. L2 attestation prepared, unsigned. 2026-10-01: owner attestation \"Yes to all 6, I am the owner and creator\" recorded; L2 PASS for the evaluation grant only.",
   "artifacts": [
+    {
+      "path": "AUDIT-BUNDLE.zip",
+      "sha256": "a75a5b774b62bcbac2a7082f30dbbd58fec6b79f4497974e5367f46c7e38ac7e"
+    },
     {
       "path": "ENGINE-DEFECT-REGISTER.md",
       "sha256": "ae8f26e7841801351721f8cf42bb28f6bf73d646ba6819ec0e4b3f65bb1b6ceb"
     },
     {
       "path": "READINESS-REPORT.md",
-      "sha256": "d528dc59cd2f560fa7a177589cf00fb0ff630e5c19405b4f993c326850248693"
+      "sha256": "56fa261d6cf44de23c6c733ea5801d2fe84f4503c24cb04be980b8caa6179901"
     },
     {
       "path": "SOURCE-LOCATION-MAP.json",
@@ -116,23 +146,43 @@
     },
     {
       "path": "gates/GATE-RESULTS.json",
-      "sha256": "d7352cf0a5f5e6e56793c843e319dc0fd927a5173e5bf669e085772075ce5932"
+      "sha256": "fe656ad99ba1ac02350fc8a259d58a3821e139ff5d0474950ae50ff7e6668644"
+    },
+    {
+      "path": "package/jrs-eval-0.1.0-eval-d73ceb8066.tar.gz",
+      "sha256": "7b0d625174907dc9edeb1641cd884848715f5a4090c8b3b403021d746f8ddbf9"
     },
     {
       "path": "runs/2026-10-01-smoke-1.BLOCKED.json",
       "sha256": "bd32e493aeada7bf210bb1cabb43afe2d7c216c571bf84752cc58af81216f926"
     },
     {
+      "path": "tools/build-audit-bundle.mjs",
+      "sha256": "abf06cb0432d358cc43b7315e9b4bcc5b35a3e4009bd7c94203a72fff2121dc3"
+    },
+    {
+      "path": "tools/build-package.mjs",
+      "sha256": "397aec03197c9537ba9616acce5138a5ad4cdeed610b7c16780d681d8a4970a6"
+    },
+    {
       "path": "tools/run-smoke.mjs",
-      "sha256": "19f77b7258a7d81d9415b4ec179ee7dcae4cee08df5ef8e7143ed9750164aa9a"
+      "sha256": "b9e78ab9c8c250b34168241c53713d0dc699736ef7931017923e41f564f5ff5a"
+    },
+    {
+      "path": "tools/test-clean-install.mjs",
+      "sha256": "d941f2122cbbcfd67ed2edb5c1c61f0403e81fd5e5c6b191c6f001443bd086b6"
     },
     {
       "path": "tools/test-run-smoke.mjs",
-      "sha256": "58a814da543ce3d59427b457972ca57bd0a1ea13d759a985820ab40c552f68af"
+      "sha256": "0fd61e60ca5c60b6eec1f118c34b6662fab6afc468d54470de3f32d30388362b"
     },
     {
       "path": "tools/validate-gates.mjs",
       "sha256": "5f6d887bc6a9bd95da077f643da85190862cc751167ec26e4a87dfd488dabac8"
+    },
+    {
+      "path": "tools/validate-order.mjs",
+      "sha256": "d86f9f15c9fda799f2d9e6c12c9766a6d3742e6437cda439021dc2160de3f86f"
     },
     {
       "path": "track-a/BUYER-BRIEF.md",
@@ -159,17 +209,57 @@
       "sha256": "e49afadc1269cffe3f0c3c3ef49cd6014ff7680508a6884ffdc2d229785c6eb6"
     },
     {
+      "path": "track-b/CLAIM-REGISTER.md",
+      "sha256": "f37b0b32d5d4004914848e392d8bbaebe2306eef8b8836edafaab6f785065ee0"
+    },
+    {
+      "path": "track-b/DATA-FLOW-AND-LIMITATIONS.md",
+      "sha256": "48bf2f68fd556038fd4a644893b1ad1e6f719f19742608ca991c8e965d6650d1"
+    },
+    {
+      "path": "track-b/EVALUATION-AGREEMENT-DRAFT.md",
+      "sha256": "f39e3b57a8337a3a9624b890d370306cf0a4892c7e46782dda48745d1bc95043"
+    },
+    {
+      "path": "track-b/EVALUATION-PROTOCOL.md",
+      "sha256": "24e5cc4ad5ca7707fcb2976970dae59b01b1a404592a4b0d506c4e6d9778f8a6"
+    },
+    {
+      "path": "track-b/INTEGRATION-AND-QUICKSTART.md",
+      "sha256": "3fdf736c97e02849d25ff37b41ebe9d4d3887e9964dad2ba3bd1d9cad34dd68b"
+    },
+    {
+      "path": "track-b/INVOICE-AND-ACTIVATION.md",
+      "sha256": "9c124246060b63eae65dfcaf0ea27e29198b85a92a41a7ca0ced85049bbc6c04"
+    },
+    {
       "path": "track-b/L2-RIGHTS-WITHOUT-COUNSEL.md",
       "sha256": "26218c9d769163e88cd645539d197b10715c7916fddcd270d207db2aa69a6868"
+    },
+    {
+      "path": "track-b/LICENSE-ENCUMBRANCE-REGISTER.json",
+      "sha256": "ff2d380a192c78ee88b167f64cd8907a862d9fd54f8a8a5cbd3e424b178bc6ec"
     },
     {
       "path": "track-b/LICENSED-ASSET-SCHEDULE.json",
       "sha256": "35507e93f870a7cd1ff5ea89817943ef4b88857871787841b4c352af94690eaa"
     },
     {
+      "path": "track-b/ORDER-FORM-SPEC.json",
+      "sha256": "afc28eaf4806962a88c0f8cdfa16c892a359b5d71defb29371249c3ad41c71b6"
+    },
+    {
       "path": "track-b/OWNER-ATTESTATION-2026-10-01.json",
       "sha256": "0c8715cb0be86bfe12b8d41d0b327977297dfe0116bb439eb2b95fc44f57d960"
+    },
+    {
+      "path": "track-b/PROCUREMENT-INDEX.json",
+      "sha256": "61b92908fc61e751c8cd7c2c23c8a8b306caeabff6b5162aa01cf7aad6584ba1"
+    },
+    {
+      "path": "track-b/SUPPORT-AND-ACCEPTANCE.md",
+      "sha256": "fbbb979ad6a9c567bde160f616a3d703e9cf8d58bf03cbb1636b74c387df714d"
     }
   ],
-  "stop_condition": "2026-10-01: CLAUDE.md section 16 stop. The repository is public (blocker B-018). Package, audit bundle and agreement work paused pending owner decision."
+  "stop_condition": "2026-10-01: CLAUDE.md section 16 stop. The repository is public (blocker B-018). Package, audit bundle and agreement work paused pending owner decision. 2026-10-02: owner directed \"Finish the rest of the engine\"; commercial drafts resumed under that instruction, and B-018 stays open."
 }

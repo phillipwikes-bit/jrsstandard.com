@@ -157,5 +157,43 @@ function mockProvider(behaviour) {
   check('worst-case ten calls at 8,000 characters stay under the USD 5 ceiling', bound < LIMITS.ceilingUsd, 'bound=' + bound);
 }
 
+// 12. Entitlement: expiry, quota and ledger accounting for the delivered package.
+{
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'jrs-v8-ent-'));
+  const entFile = path.join(dir, 'entitlement.json');
+  const write = (o) => fs.writeFileSync(entFile, JSON.stringify(Object.assign({ licensee: 'Example Org', expires_on: '2099-12-31', max_attempts: 300, ledger: 'ledger.json' }, o)));
+  const p = mockProvider(() => okResponse());
+
+  write({ expires_on: '2026-01-01' });
+  let r = await runSmoke({ corpusDir: CORPUS, outDir: tmpOut(), key: 'k', fetchImpl: p, entitlementFile: entFile });
+  check('expired entitlement blocks before any call', r.code === 3 && r.record.blocked_reason === 'entitlement_expired' && p.seen.length === 0);
+
+  write({ max_attempts: 10 });
+  fs.writeFileSync(path.join(dir, 'ledger.json'), JSON.stringify({ attempts_used: 10, runs: [] }));
+  r = await runSmoke({ corpusDir: CORPUS, outDir: tmpOut(), key: 'k', fetchImpl: p, entitlementFile: entFile });
+  check('exhausted quota blocks before any call', r.code === 3 && r.record.blocked_reason === 'quota_exhausted' && p.seen.length === 0);
+
+  fs.writeFileSync(path.join(dir, 'ledger.json'), JSON.stringify({ attempts_used: 7, runs: [] }));
+  r = await runSmoke({ corpusDir: CORPUS, outDir: tmpOut(), key: 'k', fetchImpl: p, entitlementFile: entFile });
+  check('remaining quota smaller than the planned calls blocks the run', r.code === 3 && r.record.blocked_reason === 'budget_bound_exceeded' && p.seen.length === 0);
+
+  write({ max_attempts: 300 });
+  fs.writeFileSync(path.join(dir, 'ledger.json'), JSON.stringify({ attempts_used: 0, runs: [] }));
+  r = await runSmoke({ corpusDir: CORPUS, outDir: tmpOut(), key: 'k', fetchImpl: p, entitlementFile: entFile, limits: Object.assign({}, LIMITS, { callCap: 300 }) });
+  const led = JSON.parse(fs.readFileSync(path.join(dir, 'ledger.json'), 'utf8'));
+  check('ledger records every attempt of a licensed run', r.code === 0 && led.attempts_used === 10 && led.runs.length === 1);
+
+  write({ licensee: '' });
+  let threw = false; try { await runSmoke({ corpusDir: CORPUS, outDir: tmpOut(), key: 'k', fetchImpl: p, entitlementFile: entFile }); } catch (e) { threw = /entitlement_field_missing:licensee/.test(e.message); }
+  check('entitlement with a missing field is refused', threw);
+
+  write({ licensee: 'REPLACE: organization name', expires_on: 'REPLACE: YYYY-MM-DD' });
+  threw = false; try { await runSmoke({ corpusDir: CORPUS, outDir: tmpOut(), key: 'k', fetchImpl: p, entitlementFile: entFile }); } catch (e) { threw = /entitlement_not_filled_in/.test(e.message); }
+  check('unfilled template entitlement is refused', threw);
+  write({ expires_on: 'REPLACE: YYYY-MM-DD' });
+  threw = false; try { await runSmoke({ corpusDir: CORPUS, outDir: tmpOut(), key: 'k', fetchImpl: p, entitlementFile: entFile }); } catch (e) { threw = /entitlement_invalid:expires_on/.test(e.message); }
+  check('placeholder expiry date is refused (it would otherwise never expire)', threw);
+}
+
 console.log('\n' + passed + ' checks, ' + failed + ' failed');
 process.exit(failed ? 1 : 0);

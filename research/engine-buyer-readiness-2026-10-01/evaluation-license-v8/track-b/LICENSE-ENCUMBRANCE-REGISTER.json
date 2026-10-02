@@ -1,0 +1,18 @@
+{
+  "schema": "jrs-v8-licence-encumbrance-register/1",
+  "date": "2026-10-02",
+  "grants": [],
+  "note": "No evaluation licence has been offered, signed or activated. An empty list means no grant is recorded in this repository; it is not a legal conclusion that no other grant exists.",
+  "fields_per_grant": [
+    "licensee",
+    "scope",
+    "term",
+    "assignee_rights",
+    "exclusivity",
+    "credit_and_window",
+    "support_owed",
+    "data_and_diligence_permissions",
+    "survival",
+    "status"
+  ]
+}

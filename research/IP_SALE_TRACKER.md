@@ -15,8 +15,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-10-01 (rev 44) |
-| **Revisions** | 44 |
+| **Last revised** | 2026-10-02 (rev 45) |
+| **Revisions** | 45 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -179,6 +179,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 45 | 2026-10-02 | **Engine evaluation licence: Track B built as far as the owner-side blockers allow.** Built and tested: a deterministic customer-run package (`jrs-eval-0.1.0-eval-d73ceb8066.tar.gz`, clean install 9/9, runner 35/35), an agreement draft (needs one lawyer review before signature), an order form with a validator, invoice and activation steps, a procurement index, a buyer data checklist, a claim register, and a redacted audit bundle. Gates: L1, L2 and L6 PASS; L3 to L5 wait on the live run (provider key absent); L7 waits on the owner choosing a payment method and the selling party; L8 waits on the owner release decision. Also this turn: all owner-route passwords were removed on the owner's rule and deployed to production, byte-verified (commits 7dec748 and edd67e4). Leads: 0. **No change to sale status or probability estimates.** |
 | 44 | 2026-10-01 | **STOP: the GitHub repository is public (blocker B-018, CRITICAL).** GitHub reports visibility public. `.vercelignore` only keeps files off the website, so every tracked file, including this tracker, is readable on GitHub by anyone. **Bears directly on the sale:** the Engine cannot be sold or licensed as confidential know-how while it is published. The rev 42 basis (licence rests on confidentiality) is corrected under Rule 10. Package, audit bundle and agreement work paused pending the owner's choice: make the repository private, or keep it public and re-scope. **Sale probability estimates not revised in this entry; the decision changes them.** |
 | 43 | 2026-10-01 | **Owner attestation recorded: "Yes to all 6, I am the owner and creator". Gate L2 now PASS for the narrow evaluation licence only.** This is an owner assertion, not a signed third-party instrument and not a legal determination of title; register F-4 and F-11 stand. A licensed-asset schedule now lists the six Engine and Manifest files, the adapter and the limitations page, with hashes; everything else is excluded. Open: the AI tool list for question 4 was not supplied, and the OpenAI terms remain unread. Not valid for Track C (exclusive licence or sale). Track B remaining blockers: L4 live smoke (provider key), L3, L5 to L8. **Sale probability estimates unchanged.** |
 | 42 | 2026-10-01 | **Owner approved every decision-sheet recommendation ("For 2 whatever you recommend."). Price set: USD 1,000 evaluation as an unvalidated test price, with 2 hours of support. Gate L1 now PASS.** O-08 (has the v8.0 prompt been pasted elsewhere) is unanswered. The owner has no attorney, so L2 has a written path: proceed on an owner attestation for a narrow evaluation licence written not to over-claim, with one paid review of the final agreement before the first signature. A full sale or exclusive licence is not acceptable without a lawyer. Evidence read today: Anthropic Commercial Terms section B (customer owns Outputs; Anthropic assigns its rights, if any) and Consumer Terms section 4 (same assignment). OpenAI terms returned 403 and are NOT ESTABLISHED. The copyrightability of AI-generated code is the open issue, so the licence rests on contract terms. Track statuses unchanged: A DEMO_BLOCKED, B BLOCKED. **Sale probability estimates unchanged.** |

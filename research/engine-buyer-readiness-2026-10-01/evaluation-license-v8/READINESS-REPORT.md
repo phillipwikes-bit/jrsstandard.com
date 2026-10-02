@@ -43,3 +43,37 @@
 [Pending technical debt] ED-01 to ED-08; guard re-anchoring after commit `3b9b790`
 [Production deployment status] NOT APPLICABLE: no production-facing file changed. `research/` is excluded by `.vercelignore`
 [Next trigger] provider key present, then the smoke run; owner decision-sheet reply
+
+---
+
+## Update 2026-10-02: Track B package, documents and audit bundle
+
+| Gate | Status | Basis |
+|---|---|---|
+| L1 OFFER_SCOPE | PASS | Owner decisions 2026-10-01 |
+| L2 COMMERCIAL_AUTHORITY | PASS (evaluation grant only) | Owner attestation; not a third-party instrument |
+| L3 EXECUTABLE_DELIVERY | BLOCKED | Clean install 9/9 offline; live route untested |
+| L4 LIVE_SMOKE | BLOCKED | `ANTHROPIC_API_KEY` absent |
+| L5 DATA_SPEND_AND_INJECTION | BLOCKED | Checklist and controls done; injection needs the live run |
+| L6 EVIDENCE_AND_CLAIMS | PASS | Claim register; untested items disclosed |
+| L7 COMMERCIAL_OPERATIONS | BLOCKED | Owner to choose a payment method and the selling party |
+| L8 AUDIT_AND_RELEASE | BLOCKED | Owner release decision after the live run |
+
+**Built:**
+- Package `package/jrs-eval-0.1.0-eval-d73ceb8066.tar.gz`. It is deterministic: two builds were byte-identical. It holds 18 files, each a byte copy of its maintained source.
+- Clean-install test: 9/9 passing, and shown to fail on a tampered package.
+- Runner tests: 35/35. These now include expiry, quota, ledger, and refusal of an unfilled entitlement. That refusal was a real gap: a placeholder expiry date compared as later than any real date, so it would never have expired. Fixed before release.
+- Track B documents: data flow with a buyer checklist, support and acceptance terms, the evaluation protocol, the claim register, the agreement draft (not for signature without one lawyer review), the order form with its validator (8/8), invoice and activation steps, a procurement index and the licence register.
+- `AUDIT-BUNDLE.zip`. The build refuses if any restricted slug, contributor name, credential pattern or Engine system-prompt text appears. Tested by planting a leak.
+
+**Still needed, all owner-side:** (1) the provider key in the environment, then the 10-call live run; (2) a payment method and the selling party; (3) the release decision; (4) blocker B-018, repository visibility.
+
+## Instructions for an outside reviewer (v8.0 section 30)
+1. Inspect the evidence before accepting this narrative.
+2. Recalculate the counts, gate aggregation and hashes (`node tools/validate-gates.mjs`, `sha256sum -c SHA256SUMS.txt`).
+3. Check the demo, offer, claims, rights scope and agreement draft for contradictions.
+4. Review failures, skips, missing evidence and the withheld items in README-AUDIT.md.
+5. Distinguish proposed from actual approvals, labels, sharing, agreements, payments and transfers. None of the last four has occurred.
+6. Assess DEMO_READY, READY_FOR_PAID_EVALUATION, LICENSING_READY and SALE_READY separately.
+7. Return CONFIRMED_FROM_SHARED_EVIDENCE, NOT_CONFIRMED or BLOCKED for each claimed milestone, with the smallest correction.
+8. Do not certify title, compliance, external validity, demand or deal success.

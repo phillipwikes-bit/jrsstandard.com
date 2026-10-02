@@ -34,8 +34,12 @@ import crypto from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
-const REPO = path.resolve(HERE, '../../../..');
-const ENGINE_PATH = path.join(REPO, 'api/review-engine.js');
+// Package mode: the delivered package carries the Engine under engine/api/.
+// Repository mode: the Engine is the maintained api/review-engine.js.
+const PACKAGED_ENGINE = path.resolve(HERE, '../engine/api/review-engine.js');
+export const ENGINE_PATH = fs.existsSync(PACKAGED_ENGINE)
+  ? PACKAGED_ENGINE
+  : path.join(path.resolve(HERE, '../../../..'), 'api/review-engine.js');
 const PROVIDER_URL = 'https://api.anthropic.com/v1/messages';
 
 export const LIMITS = Object.freeze({
@@ -107,10 +111,41 @@ export function guardFetch(innerFetch, ledger, opts) {
   };
 }
 
-export async function runSmoke({ corpusDir, outDir, key, fetchImpl, callsPerRecord = 2, limits = LIMITS }) {
+// Entitlement and quota accounting for the delivered package. These are
+// management controls a cooperative licensee runs; a recipient who edits the
+// delivered code can remove them, and the licence terms, not this code, are
+// what bind the licensee.
+export function readEntitlement(file) {
+  const e = JSON.parse(fs.readFileSync(file, 'utf8'));
+  for (const k of ['licensee', 'expires_on', 'max_attempts', 'ledger']) {
+    if (e[k] === undefined || e[k] === null || e[k] === '') throw new Error('entitlement_field_missing:' + k);
+  }
+  // An unfilled template must not pass: a placeholder date compares as later than
+  // any real date, so expiry would never trigger.
+  if (/^REPLACE/i.test(String(e.licensee))) throw new Error('entitlement_not_filled_in:licensee');
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(String(e.expires_on)) || isNaN(Date.parse(e.expires_on))) throw new Error('entitlement_invalid:expires_on');
+  if (!Number.isInteger(e.max_attempts) || e.max_attempts < 1) throw new Error('entitlement_invalid:max_attempts');
+  const ledgerPath = path.resolve(path.dirname(file), e.ledger);
+  const ledger = fs.existsSync(ledgerPath) ? JSON.parse(fs.readFileSync(ledgerPath, 'utf8')) : { attempts_used: 0, runs: [] };
+  return { e, ledgerPath, ledger };
+}
+
+export async function runSmoke({ corpusDir, outDir, key, fetchImpl, callsPerRecord = 2, limits = LIMITS, entitlementFile = null, now = new Date() }) {
+  let ent = null;
+  if (entitlementFile) {
+    ent = readEntitlement(entitlementFile);
+    const remaining = ent.e.max_attempts - ent.ledger.attempts_used;
+    if (now.toISOString().slice(0, 10) > ent.e.expires_on) {
+      return { code: 3, record: { status: 'BLOCKED', blocked_reason: 'entitlement_expired', attempts: [], cost: {} } };
+    }
+    if (remaining <= 0) {
+      return { code: 3, record: { status: 'BLOCKED', blocked_reason: 'quota_exhausted', attempts: [], cost: {} } };
+    }
+    limits = Object.assign({}, limits, { callCap: Math.min(limits.callCap, remaining) });
+  }
   const record = {
     runner: 'run-smoke.mjs', runner_sha256: sha256(fs.readFileSync(fileURLToPath(import.meta.url), 'utf8')),
-    engine_path: 'api/review-engine.js', engine_sha256: sha256(fs.readFileSync(ENGINE_PATH, 'utf8')),
+    engine_path: ENGINE_PATH === PACKAGED_ENGINE ? 'engine/api/review-engine.js' : 'api/review-engine.js', engine_sha256: sha256(fs.readFileSync(ENGINE_PATH, 'utf8')),
     started_at: new Date().toISOString(), limits, status: 'STARTED', blocked_reason: null,
     corpus: [], calls: [], attempts: [], refused: [], cost: {},
   };
@@ -189,19 +224,44 @@ export async function runSmoke({ corpusDir, outDir, key, fetchImpl, callsPerReco
   record.cost.observed_usd_from_usage = Number(((used.in * limits.inputUsdPerMTok + used.out * limits.outputUsdPerMTok) / 1e6).toFixed(6));
   record.cost.note = 'Computed from response usage at list price; attempts without usage are covered only by the upper bound.';
   record.attempt_count = record.attempts.length;
+  if (ent) {
+    // Every attempt counts against the licence quota, including failures and timeouts.
+    ent.ledger.attempts_used += record.attempts.length;
+    ent.ledger.runs.push({ at: record.started_at, out: path.basename(outDir), attempts: record.attempts.length });
+    fs.writeFileSync(ent.ledgerPath, JSON.stringify(ent.ledger, null, 2) + '\n');
+    record.entitlement = { licensee: ent.e.licensee, expires_on: ent.e.expires_on, max_attempts: ent.e.max_attempts, attempts_used_after_run: ent.ledger.attempts_used };
+  }
   return finish(incomplete ? 'INCOMPLETE' : 'COMPLETED', incomplete ? 2 : 0);
 }
 
 // CLI
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   const args = process.argv.slice(2);
-  const outIdx = args.indexOf('--out');
-  if (!args.includes('--live') || outIdx === -1 || !args[outIdx + 1]) { console.error('usage: node run-smoke.mjs --live --out <new-dir>'); process.exit(4); }
-  const outDir = path.resolve(args[outIdx + 1]);
-  const { code, record } = await runSmoke({
-    corpusDir: path.join(HERE, '../corpus/records'), outDir,
-    key: process.env.ANTHROPIC_API_KEY || '',
-  });
+  const opt = (name) => { const i = args.indexOf(name); return i === -1 ? null : args[i + 1]; };
+  const outDir = opt('--out');
+  if (!args.includes('--live') || !outDir) {
+    console.error('usage: node run-smoke.mjs --live --out <new-dir> [--records <dir>] [--calls-per-record N] [--entitlement <file>] [--usd-ceiling N]');
+    process.exit(4);
+  }
+  const perRecord = opt('--calls-per-record') ? parseInt(opt('--calls-per-record'), 10) : 2;
+  const ceiling = opt('--usd-ceiling') ? Number(opt('--usd-ceiling')) : LIMITS.ceilingUsd;
+  if (!(perRecord >= 1 && perRecord <= 5) || !(ceiling > 0)) { console.error('invalid --calls-per-record or --usd-ceiling'); process.exit(4); }
+  const ent = opt('--entitlement');
+  let result;
+  try {
+    result = await runSmoke({
+      corpusDir: path.resolve(opt('--records') || path.join(HERE, '../corpus/records')),
+      outDir: path.resolve(outDir),
+      key: process.env.ANTHROPIC_API_KEY || '',
+      callsPerRecord: perRecord,
+      limits: Object.assign({}, LIMITS, { ceilingUsd: ceiling }, ent ? { callCap: 300 } : {}),
+      entitlementFile: ent ? path.resolve(ent) : null,
+    });
+  } catch (e) {
+    console.log(JSON.stringify({ status: 'BLOCKED', blocked_reason: String(e && e.message || e), attempts: 0 }, null, 2));
+    process.exit(3);
+  }
+  const { code, record } = result;
   console.log(JSON.stringify({ status: record.status, blocked_reason: record.blocked_reason, attempts: record.attempts.length, upper_bound_usd: record.cost.upper_bound_usd, observed_usd: record.cost.observed_usd_from_usage }, null, 2));
   process.exit(code);
 }
