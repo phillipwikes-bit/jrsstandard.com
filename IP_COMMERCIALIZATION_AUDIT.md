@@ -277,3 +277,14 @@ Asset index built by grep across 45 public HTML files, 36 API endpoints and the 
 - This is a packaging audit, not a valuation or a legal opinion.
 
 **Provenance (Revision 3):** `git` against `origin/main` on 2026-10-02 (84 public HTML pages); `api/_offer-config.js`; live `/api/panel-stats` (generated 2026-10-02T06:34Z: 36 completers, 16 countries, 58 reviewers) and `/api/asset-stats`; Supabase read-only queries on `pilot_contacts`, `interaction_events` and `study_runs`; `research/IP_SALE_TRACKER.md` revisions 14 to 51; `research/engine-buyer-readiness-2026-10-01/evaluation-license-v8/`.
+
+## R6. Correction to R4, 2026-10-02 (owner query)
+
+The owner asked whether R4 changes the recommendation that outreach waits for published research. Checked against the record:
+
+- **Recorded owner decision, 2026-08-15** (IP_SALE_TRACKER revision 14): the paid offer is withdrawn from the public site "until the research programme is complete". **R4 steps 2 and 3, re-launching a paid offer on the public site with a payment link, conflict with that decision.** They are withdrawn from this revision's recommendations. A public re-launch happens only if the owner reverses the 2026-08-15 decision.
+- **Recorded owner decision** (register section 12): contact with Ubayet Hossain about commercial use is deferred until publication. Unchanged.
+- **Recorded advice:** `research/Path_to_Sale_Action_Plan.md` says "Do not wait until publications are out. Start now", with private, exploratory conversations and no pitch (Stage 1). IP_SALE_TRACKER section 3 (2026-08-13) withdrew every gate on buyer conversations.
+- **No recorded decision** holds private buyer conversations until publication. If the owner made one outside the record, it governs, and it should be written down.
+
+**Corrected R4:** keep the public site as a research programme, per the 2026-08-15 decision. Do the preparation work now (repository private; target list). Private, one-to-one conversations remain the recorded advice, but their timing is the owner's decision.
