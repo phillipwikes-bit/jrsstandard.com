@@ -1,0 +1,75 @@
+# Case File Summary: Investigation Record
+
+## 1. Background
+
+When the events underlying this complaint occurred, Complainant worked as a Customs and Border Protection Officer (CBPO) at the Agency's San Ysidro Port of Entry in San Ysidro, California. The record identifies his age (year of birth 1954) and reprisal for prior protected EEO activity under Title VII of the Civil Rights Act of 1964 and the Age Discrimination in Employment Act of 1967 as the bases of the complaint. The source text is incomplete at this point, so any other alleged bases are not shown.
+
+## 2. Claims Accepted for Investigation
+
+**Claim 1: Harassment beginning May 31, 2018, and continuing.** Complainant cited the following incidents:
+
+- a. On May 31, 2018, the Branch Chief refused to rescind a Memorandum of Counseling about the Treasury Enforcement Communication System (TECS).
+- b. From February 2019 to June 2019, the Branch Chief knew that the Supervisory CBP Officer (SCBPO-1) bullied and harassed Complainant but took no corrective action.
+- c. On April 17, 2019, SCBPO-1 verbally reprimanded Complainant for missing a morning training class.
+- d. In June 2019, SCBPO-1 showed a knife to Complainant and another CBPO (CBPO-2) and said he brings his knife collection to work in his backpack.
+- e. On June 3, 2019, SCBPO-1 reprimanded Complainant by email about the expiration of his TECS access.
+- f. On June 19, 2019, SCBPO-1 changed Complainant's schedule from 2:00 p.m. to 1:00 p.m.–9:00 p.m. so he could attend the Chief's birthday celebration, and solicited $20 from him for the party.
+- g. On or around August 16, 2019, SCBPO-1 and another SCBPO (SCBPO-2) told Complainant's coworkers that he would be reassigned and would leave the Intelligence Targeting Unit (ITU) effective September 1, 2019. He was not reassigned at that time.
+- h. On or around August 16, 2019, SCBPO-1 and SCBPO-2 told Complainant that his request for leave in September 2019 would not be approved. After Complainant questioned them, the leave was approved.
+
+**Claim 2: Removal from detail.** Effective March 8, 2020, Complainant was removed from his detail in the ITU.
+
+## 3. Claims Dismissed by the Agency
+
+The Agency dismissed two claims:
+
+- That on December 23, 2018, Complainant learned he had not received a year-end monetary award.
+- That on April 21, 2019, SCBPO-1 charged Complainant with hours of Leave Without Pay for untimely counselor contact. The number of hours is garbled in the source text.
+
+The Agency also dismissed three claims alleging that SCBPO-1 was unprofessional in speaking ill of three coworkers. It dismissed these for failure to state a claim, because Complainant did not show he was aggrieved by comments about other employees. (Report of Investigation (ROI) at 150-57.)
+
+## 4. Agency Explanations from the Investigation
+
+**Memorandum of Counseling (Claim 1a).** The Branch Chief said she asked that the memorandum be issued after Complainant was twice told not to enter the terms "E/O if not in vehicle" on a TECS record, because doing so creates a violation. Complainant kept doing it. The Intelligence Division Chief (CID Chief) gave a consistent account. He said Complainant asked CBPOs to "exempt" travelers on primary inspection who had links to illegal activity or whom Complainant had targeted. In effect, he was asking CBPOs to violate TECS policy. The CID Chief approved the memorandum because Complainant did not follow instructions even after being asked twice. (ROI at 259.)
+
+**TECS access email (Claim 1e).** SCBPO-1 explained that TECS sends automated periodic reminders starting 30 days before a user's recertification due date. He said he received an automated email stating that Complainant had lost access. He then emailed Complainant to counsel him on the loss and remind him that he must maintain TECS access. (ROI at 223-24.)
+
+**Schedule change and $20 solicitation (Claim 1f).** SCBPO-1 said the ITU traditionally holds "potlucks" or arranges catering for certain occasions and announces them as optional. He told ITU employees the potluck would be at 1:00 p.m. and that the 2:00 p.m. shift could come in an hour early to attend. Each employee was asked to donate $10 if they wished to. SCBPO-1 said CBPO-1 gave him $20 to cover himself and Complainant after Complainant told him verbally that he wanted to participate. (ROI at 224.)
+
+**Removal from detail (Claim 2).** The CID Chief said he removed Complainant because Complainant failed to perform his basic duties as an ITU officer. The Watch Commander had contacted Complainant to request help on a particular case and asked for an expeditious response. Complainant did not perform the task and instead delegated it to other members of the Tactical Terrorism Response Team. (ROI at 260.)
+
+The excerpt contains no stated Agency explanations for incidents 1b, 1c, 1d, 1g, and 1h.
+
+## 5. Procedural History
+
+At the end of the investigation, the Agency gave Complainant a copy of the ROI and notice of his right to request a hearing before an EEOC Administrative Judge (AJ). Complainant timely requested a hearing but later withdrew the request. The Agency then issued a final decision under 29 C.F.R. § 1614.110(b).
+
+## 6. The Affidavit Issue
+
+The investigator gave Complainant two weeks to submit his affidavit. Complainant responded by asking for two weeks of administrative or sick leave to complete it. (ROI at 198.) The record states that on September 28, 2020, "the day before Complainant's affidavit was originally due," the investigator gave him an extension. He was also told he had been approved for 16 hours of administrative leave for September 23-24, 2020. (ROI at 198.) Complainant never submitted an affidavit.
+
+## 7. The Agency's Final Decision
+
+The final decision made the following findings:
+
+- Complainant did not establish a prima facie case of discrimination, because nothing showed that employees outside his protected classes were treated differently.
+- Even if he had, the Agency articulated legitimate, nondiscriminatory reasons for its actions, and Complainant offered no evidence of discriminatory animus.
+- Complainant did not show that any of the alleged harassment incidents were motivated by his protected classes.
+
+The Agency therefore concluded that Complainant had not proven he was subjected to discrimination as alleged.
+
+## 8. Appeal
+
+Complainant appealed. He argues that the investigation was inadequate and asks that the case be sent to an AJ for further investigation. He also argues that the Agency's stated reasons are untrue.
+
+The Agency responds that Complainant had adequate time to submit an affidavit and did not do so. It also notes that he submitted no evidence supporting his claims of discriminatory animus.
+
+## 9. Items for Investigator Follow-Up
+
+- The statement of the complaint's bases is truncated. Confirm the full list against the formal complaint.
+- The number of Leave Without Pay hours in the dismissed April 21, 2019 claim is unclear.
+- The chronology of the affidavit extension is internally inconsistent. The extension is dated September 28, 2020, yet it is described as granted the day before the original deadline and tied to administrative leave on September 23-24, 2020. Verify against ROI at 198.
+- CBPO-1, who gave SCBPO-1 the $20, is not otherwise identified in the excerpt.
+- The meaning of "E/O if not in vehicle" is not explained.
+- The sentence describing the Watch Commander's contact with Complainant is garbled in the source. Check the original wording at ROI at 260.
+- The excerpt contains no Agency explanations for incidents 1b, 1c, 1d, 1g, and 1h. Check the full ROI for them.

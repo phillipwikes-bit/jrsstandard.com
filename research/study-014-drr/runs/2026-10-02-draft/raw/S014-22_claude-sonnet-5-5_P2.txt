@@ -1,0 +1,95 @@
+# FINDINGS
+
+**Matter:** Complainant v. National Institute on Aging, Laboratory of Neurogenetics (EEO complaint filed Nov. 8, 2017, as amended)
+
+**Basis for findings:** This section rests only on the procedural and factual summary in the record provided. The underlying evidence (ROI exhibits, affidavits, witness statements) was not available for review. Where a finding depends on that evidence, I say so.
+
+---
+
+## I. Findings of Fact
+
+**A. Parties and employment**
+1. Complainant was a Biologist, GS-0401-11, and was promoted to GS-12 in May 2013. She worked in the Neuromuscular Disease Research Section, Laboratory of Neurogenetics, National Institute on Aging, in Bethesda, Maryland.
+2. Her first-line supervisor was the Section Chief (Caucasian, male). Her second-line supervisor was the Lab Chief (British, Caucasian, male).
+3. Complainant identifies as African American/Black (race/color), Guyanese (national origin), and female (sex).
+4. Complainant reports the following conditions: bipolar disorder (diagnosed 2009, re-diagnosed as PTSD in 2017), generalized anxiety disorder, benign mitral valve prolapse, and fibroid tumors. She had surgery for the fibroids on December 18, 2013, with a five-day hospital stay and six weeks of home recovery.
+5. Whether each condition meets the definition of disability, and when the Section Chief knew of each, is not established by the record provided.
+
+**B. Protected activity**
+6. Complainant initiated EEO counseling on July 27, 2017, and filed a formal complaint on November 8, 2017.
+7. Claim 9 alleges that the Section Chief referred to Complainant's EEO complaints in 2013 and April 2017. This suggests earlier protected activity, but the complaint identifies only the July 27, 2017 counseling contact as the basis for reprisal.
+
+**C. Accepted claims**
+The complaint, as amended, comprises 17 numbered claims, summarized below.
+
+| Claim | Period | Subject |
+|---|---|---|
+| 1 | June 13, 2017 | Section Chief did not hold a scheduled meeting |
+| 2 | June 15, 2017 | Reassigned to making DNA plates |
+| 3 | After July 27, 2017 | Excluded from a major project |
+| 4 | After July 27, 2017 | No communication on work assignments |
+| 5 | Ongoing | No projects assigned (alleged reprisal) |
+| 6(a)–(t) | 2009–May 2017 | Hostile work environment (20 sub-incidents) |
+| 7 | 2010 | Findings submitted to journal without her writing (duplicates 6c) |
+| 8 | 2013 | Disclosure of medical information to a colleague |
+| 9 | 2013, April 2017 | Told to avoid a colleague because of her EEO complaints |
+| 10(a)–(f) | 2013–2017 | Hostile work environment (computer, delayed promotion, May 12, 2017 remark, Christmas-day remarks, political-affiliation questioning, comment on her writing) |
+| 11 | Feb. 23, 2018 | Non-promotion |
+| 12 | Feb. 2018 | Reassigned to report to Lab Chief |
+| 13 | Mar. 2018 | Photograph moved in breakroom |
+| 14 | Mar. 14, 2018 | No communication on collaborative project |
+| 15 | Apr. 5, 2018 | Staff told she no longer reported to Section Chief |
+| 16 | Apr. 2018 | Name removed from website staff listing |
+| 17 | Apr. 23, 2018 | Lab Chief copied on all emails to her |
+
+**D. Clarifications of date from the record**
+8. Claim 9: Complainant recalled two incidents, the second in April 2017 (ROI Ex. F-1, Bates 123).
+9. Claim 10b: Complainant was notified of an indefinite hiring freeze in February 2017 (ROI Ex. F-1, Bates 127).
+10. Claim 10f: The record reflects the remark occurred in December 2013 or early 2014 (ROI Ex. F-1, Bates 120–121, 129).
+
+**E. Medical-disclosure allegation (Claim 8)**
+11. A colleague stated that he expressed concern about Complainant's well-being to the Section Chief, who said she had a heart condition.
+12. Complainant states she never disclosed a heart condition to the Section Chief or Lab Chief. She believes he said this to avoid disclosing her medical information.
+13. The record does not show how the Section Chief learned of any heart condition, and he did not necessarily act in bad faith. This must be resolved from the Section Chief's affidavit and related evidence.
+
+---
+
+## II. Procedural Findings
+
+1. The Agency investigated the complaint and produced a Report of Investigation.
+2. An Administrative Judge (AJ) remanded the matter to the Agency for a final decision and set a 60-day time limit.
+3. The record states the Agency dismissed Claims 6–11 for failure to timely initiate EEO counseling, and found no discrimination on the remaining claims.
+4. Complainant appealed before a FAD was issued. She asserts that more than 15 months had passed beyond the AJ's 60-day limit.
+5. She submitted documentation that she asked the EEO office about the FAD's status on May 20, 2020.
+6. She requests a default judgment against the Agency as a sanction for the delay.
+7. The Agency did not respond to the appeal.
+
+**Findings:**
+- **Delay.** On the information provided, the Agency did not issue its decision within the AJ's 60-day limit, and Complainant followed up in writing. The Agency's non-response to the appeal leaves her delay assertions uncontested.
+- **Sanction.** Whether the delay warrants default judgment or a lesser sanction is a legal question for the adjudicating authority, not a factual finding. The record does not show prejudice to Complainant from the delay beyond the delay itself.
+
+---
+
+## III. Findings on Record Deficiencies and Inconsistencies
+
+1. **Sequence of the decision.** The record says the Agency dismissed and decided the claims, but also says the appeal was filed before the FAD. The date the FAD issued, or whether it issued at all, must be confirmed.
+2. **Timeliness dismissal of Claims 6–11.** The stated ground is untimely counseling contact (counseling began July 27, 2017). This ground fits the 2009–2013 incidents. It does not obviously fit Claims 10c–10e (May–June 2017) or Claim 11 (Feb. 23, 2018, after counseling began). The record also does not show whether the Agency considered the continuing-violation (hostile environment) theory, under which the claim is timely if at least one act falls within the filing period. The 45-day calculation should be verified incident by incident.
+3. **Duplicate claims.** Claim 7 repeats Claim 6c. The May 12, 2017 remark appears in both 6t and 10c. These should be consolidated or explained to avoid inconsistent treatment.
+4. **Mismatch between dates and dismissal.** Claim 11 and the later claims (12–17) arose in 2018, after the formal complaint was filed. The record does not state how or when they were added by amendment, or whether the Agency treated them as like or related.
+5. **Absent evidence.** The record contains no witness statements on the merits, no comparator information, no Agency explanations for the actions, and no information on the Section Chief's knowledge of Complainant's disabilities or EEO history. No finding on discriminatory motive, causation, or pretext can be made on this record.
+
+---
+
+## IV. Conclusions on the Present Record
+
+- **Established:** The employment background, the procedural history, the dates in Part I.D, and the Agency's failure to meet the AJ's time limit as asserted and unopposed.
+- **Not established:** Whether any alleged act occurred as described, whether it was based on a protected category or reprisal, and whether it was severe or pervasive enough for a hostile work environment. These depend on the full ROI.
+- **Open questions:** The correctness of the Agency's timeliness dismissal, and the appropriate remedy for the delay.
+
+## V. Recommended Follow-Up
+1. Obtain the full ROI, including Exhibit F-1 and the Section Chief's, Lab Chief's, and colleagues' affidavits.
+2. Confirm the dates of the AJ remand order, the FAD (if any), and the appeal.
+3. Prepare a claim-by-claim timeliness chart against the 45-day counseling deadline.
+4. Identify comparators for Claims 1–5, 10a, 11, and 12–17.
+5. Establish the Section Chief's knowledge of each disability and of prior EEO activity, and the source of his heart-condition statement.
+6. Obtain the Agency's articulated reasons for the 2018 actions (non-promotion, reporting change, photograph, website listing, email copying).

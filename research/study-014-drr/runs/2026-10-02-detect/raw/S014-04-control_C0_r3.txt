@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the five claims is grounded in specific dated incidents (August 30, September 14, September 20, September 24, November 1, 2022) with identifiable factual bases drawn from complainant and supervisor affidavits."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway from evidence to AJ conclusion is traceable: affidavits establish nondiscriminatory reasons (time-wasting, safety violations, insubordination), complainant provides no comparative evidence of younger workers treated more favorably, and AJ concludes age discrimination not proven."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer unfamiliar with the case can reconstruct the investigative findings, the factual disputes, the Agency's stated justifications, and the AJ's reasoning entirely from the record without external knowledge."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence of nondiscriminatory reasons is present and unrebutted (seatbelt violations, time-wasting, insubordination), but the record does not document whether comparator analysis—younger employees disciplined less severely for identical conduct—was adequately explored during investigation."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: incidents dated August 30 through November 1, 2022; investigation completed; ROI provided to complainant; AJ motion granted December 14, 2023; decision issued January 4, 2024; final order issued thereafter."
+    }
+  },
+  "remediation_note": "The record supports the AJ's finding that complainant failed to produce comparator evidence or refute the Agency's stated nondiscriminatory bases. To strengthen evidentiary sufficiency, the investigation should have explicitly documented whether the investigator inquired into disciplinary histories of younger carriers for identical violations and whether complainant was afforded adequate opportunity to identify and present such comparators.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support—the investigative record establishes nondiscriminatory reasons but does not fully document the depth of comparator analysis performed or opportunities afforded to complainant to present such evidence.",
+    "compliant_version": "A compliant record would include investigator notes showing: (1) specific inquiry into whether younger employees received discipline for seatbelt violations, time-wasting, or insubordination; (2) identification and interview of any comparators; (3) documented explanation to complainant of his right to identify comparators and the timeline for doing so; and (4) explicit findings distinguishing why any identified comparators were not similarly situated."
+  }
+}
+```

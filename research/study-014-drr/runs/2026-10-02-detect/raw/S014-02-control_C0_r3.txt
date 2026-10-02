@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each allegation: disability discrimination under the Rehabilitation Act, with nine dated incidents tied to work restrictions, harassment, reassignments, and accommodation denial."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces dismissal reasoning for the dog-attack claim (collateral OWCP jurisdiction) and identifies the gravamen as Rehabilitation Act violation, but does not trace the Agency's or AJ's reasoning for the final discrimination conclusion that Complainant failed to prove discrimination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can reconstruct the complaint allegations and procedural posture, but cannot reconstruct from this record alone why the Agency concluded no discrimination occurred, as the substantive investigative findings and evidentiary basis are not summarized."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record states Complainant failed to prove discrimination but does not present the evidence examined, witness accounts, or factual findings that support this conclusion; the Report of Investigation is referenced but not detailed."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology: events spanning November 7, 2020 through April 15, 2021, complaint filed April 17, 2021, investigation, ROI issuance, hearing denial as sanction, remand, and final Agency decision."
+    }
+  },
+  "remediation_note": "The record must include a summary of the Report of Investigation findings, the evidence considered for each allegation, and the Agency's explicit reasoning for rejecting each claim. The final decision should detail what evidence Complainant failed to produce or what facts the investigator found contrary to her allegations.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "accountability_support, reasoning_traceability, cold_reviewer_clarity",
+    "compliant_version": "A compliant record would incorporate or attach findings from the ROI that detail: (1) witness statements addressing each incident; (2) documentary evidence regarding leave requests, medical restrictions, and work assignments; (3) factual determinations about whether the Manager's actions violated accommodation obligations; and (4) explicit analysis of how each piece of evidence supports or refutes the discrimination allegations, with the final decision explaining which claims lack sufficient proof and why."
+  }
+}
+```

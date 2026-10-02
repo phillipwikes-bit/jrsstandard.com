@@ -1,0 +1,26 @@
+# FINDINGS
+
+## I. Background
+
+The Complainant was employed as a Rural Carrier at the Agency's Acton Station in Granbury, Texas. She filed a complaint alleging three distinct claims of discrimination: (1) incorrect compensation for route work since January 5, 2018, following a route count and adjustment; (2) non-payment for overtime work from April 25, 2018, forward; and (3) denial of a request for package assistance on December 14, 2018.
+
+The Complainant alleged discrimination under the Genetic Information Nondiscrimination Act (GINA) for Claims 1 and 2. The matter proceeded through investigation, and the Agency provided the Complainant with a copy of the investigation report and notice of her right to request a hearing before an EEOC Administrative Judge (AJ). The Complainant exercised this right. The AJ subsequently issued a Notice of Proposed Summary Judgment without holding a hearing. Upon the Complainant's failure to timely object, the AJ issued a decision by summary judgment in favor of the Agency. A final order was issued fully implementing the AJ's findings. This appeal followed.
+
+## II. Analysis of Claims 1 and 2 (GINA Allegations)
+
+The AJ concluded that for Claims 1 and 2, the Complainant failed to establish a prima facie case of discrimination under GINA. Specifically, the AJ found that the Complainant did not allege any facts related to genetic information as the basis for the alleged discriminatory compensation practices. The AJ noted that the Complainant's affidavit contained no reference to genetic information, and the Complainant failed to allege that management was motivated by genetic information or used genetic information as a basis for the Agency's actions regarding her compensation.
+
+## III. Analysis of Claim 3 (Package Assistance Denial)
+
+Regarding Claim 3, the AJ found that on December 14, 2018, the Complainant requested additional package assistance from her supervisor in Customer Service, which was denied. The supervisor provided a legitimate, nondiscriminatory business justification for the denial, explaining that:
+
+- The Complainant had already received assistance earlier that day;
+- Only one additional parcel met the criteria for additional assistance, and that package was ultimately removed from the route;
+- The remaining packages for which assistance was requested did not satisfy the applicable assistance criteria, including considerations regarding vehicle capacity, mail truck departure schedules, and overall daily volume; and
+- The day's volume did not warrant additional assistance.
+
+The AJ concluded that the Agency had articulated legitimate, nondiscriminatory reasons for the denial and that the Complainant failed to present evidence rebutting these reasons as pretext for retaliation or discrimination.
+
+## IV. Clarification of Claim 2
+
+Upon review of the Complainant's affidavit in the report of investigation, the Complainant crossed out and initialed the word "holiday" in the definition of Claim 2. Accordingly, Claim 2 is limited to allegations regarding unpaid overtime work only, and does not include allegations concerning holiday hours.

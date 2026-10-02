@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for conclusions: discriminatory denials of overtime (June 25, 2021), verbal abuse without remedial action (July 19, 2021), micromanagement (August 1, 2021), and schedule change denial (August 31, 2021), each with specific dates and alleged protected statuses."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The procedural decision-path is traceable (investigation completed, ROI transmitted April 5/May 17, case closed May 1, final decision June 2, appeal June 15), but the Agency's substantive reasoning for concluding no discrimination is not disclosed in this record excerpt."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer could reconstruct the complaint allegations, dates, and procedural sequence from the record, but cannot reconstruct the Agency's investigative findings, conclusions on each allegation, or the evidentiary basis supporting the 'no discrimination' determination without access to the ROI itself."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record documents procedural steps and complainant's allegations but does not include the Agency's investigative ROI findings, witness statements, or evidence evaluated; the substantive determination of no discrimination lacks disclosed evidentiary support within this record."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: complaint filed November 18, 2021; four dated incidents June–August 2021; investigation completed; ROI transmitted April 5 and May 17, 2022; case closed May 1, 2022; final decision June 2, 2022; hearing request received June 6/10, 2022; appeal filed June 15, 2022; AJ dismissal November 29, 2022."
+    }
+  },
+  "remediation_note": "To achieve compliance, the record must include or reference the complete ROI with explicit findings on each allegation, the evidence reviewed for each basis (sex, disability, reprisal), and the Agency's reasoning for rejecting each claim. The procedural closure sequence (especially the May 1, 2022, closure and subsequent communications) requires clarification regarding whether complainant received actual notice of closure and ROI availability before the hearing deadline.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support and cold_reviewer_clarity",
+    "compliant_version": "The record should incorporate or explicitly cross-reference the full ROI, including the Agency's specific factual findings on the July 19 verbal abuse incident, the overtime denial basis, micromanagement evidence, and schedule denial reasoning, with clear traceability of which evidence supported or refuted each discrimination allegation under Title VII and the Rehabilitation Act, and should clarify the actual delivery and receipt of ROI by complainant prior to the hearing deadline."
+  }
+}
+```

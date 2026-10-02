@@ -1,0 +1,21 @@
+**Case Summary**
+
+**Parties/Position:** Complainant was an Administrative Technician (GS-0303-05) at the Agency's Chicago Regional Office (Oak Brook, IL). He began probationary employment on January 17, 2021, after earlier service as an Administrative Manager during the decennial census.
+
+**Claim:** On August 24, 2021, Complainant filed an EEO complaint alleging disability discrimination (diabetes and liver fibrosis) and reprisal for prior protected activity (requesting a reasonable accommodation). The claim concerned his termination, effective July 28, 2021.
+
+**Procedural History:** After the investigation, Complainant received the report of investigation and notice of his right to a hearing. At his request, the Agency issued a final decision under 29 C.F.R. § 1614.110(b), finding no discrimination. Complainant appealed.
+
+**Agency Findings:**
+- Complainant was an individual with a disability and was qualified.
+- The Agency assumed a prima facie case of discrimination and reprisal, and found legitimate, nondiscriminatory reasons for termination that Complainant did not show to be pretext.
+
+**Key Evidence:**
+- *Performance deficiencies:* A June 15, 2021 progress review rated Complainant below fully successful. Three June 2021 emails from S3 and a June 17 memorandum ("Failure to Follow Up on Payroll Issues") identified problems with payroll processing and new-hire status.
+- *S1's affidavit:* Complainant's errors caused employees to be paid late, and some new hires resigned. Unresolved pay issues continued after retraining.
+- *Termination letter (July 28, 2021):* S3 cited unacceptable probationary performance, specifically failure to ensure timely onboarding and tracking of new hires and failure to process payroll on time.
+- *Contrary evidence (AS):* AS supervised Complainant only on the Missing Documents Project, not payroll or timekeeping. She observed no performance problems and believed the termination was based on disability and accommodation requests, citing tension between Complainant and S3 over his work schedule.
+
+**Agency Reasoning on Pretext:** AS's statements did not undermine the Agency's explanation because she supervised only one aspect of Complainant's work, while three supervisors confirmed deficiencies in payroll and onboarding. No evidence showed S3 opposed the accommodation or telework schedule, and all Administrative Technicians S3 supervised teleworked two days per week for at least part of the period. The Agency concluded that Complainant's belief of discrimination or reprisal was subjective and unsupported.
+
+**Outcome:** The Agency found no discrimination or retaliation. The matter is now on appeal.

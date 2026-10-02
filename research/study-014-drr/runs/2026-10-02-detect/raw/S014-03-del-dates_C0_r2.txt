@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record lacks explicit citation to or quotation of the regulatory basis for the Agency's closure determination and does not clearly identify which specific evidence supports the 'failure to prove discrimination' conclusion."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision-process pathway from investigation evidence through ROI to final Agency decision is obscured by unclear email delivery status, missing delivery confirmations, and an intervening closure without documented notice, preventing clear traceability of how the Agency reached its conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would struggle to reconstruct whether Complainant actually received the ROI or timely notice of closure, given two separate email delivery failures and conflicting accounts of a phone call to the EEO Services Analyst."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents the four underlying allegations and some investigative responses (Acting Supervisor affidavits), but does not present the complete ROI findings, analysis, or evidentiary determinations on each claim needed to support the 'failure to prove' conclusion."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Dates appear for mailing receipt (CF at 40, 42) and email attempts (CF at 98-103, 82-83), but the timeline of ROI completion, closure notification, Complainant's phone call, and the final decision lacks specific dates, making interval sequence difficult to verify."
+    }
+  },
+  "remediation_note": "The record requires explicit documentation of: (1) the complete ROI with findings on each allegation; (2) proof of actual receipt of closure notice by Complainant; (3) dated evidence of the decision-process reasoning; and (4) clarification of whether the 30-day download period constitutes adequate notice under 29 C.F.R. § 1614.108(f).",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, temporal_reconstructability",
+    "compliant_version": "A compliant record would include the full ROI with dated investigative findings and reasoned conclusions on each discrimination claim, certified proof of Complainant's receipt of closure notice and hearing-rights notification, explicit cross-references from the final decision to supporting evidence in the ROI, and a complete timeline with specific dates for each material step from complaint to closure."
+  }
+}
+```

@@ -1,0 +1,100 @@
+# Case File Summary: Complainant's Reprisal Complaint
+
+## 1. Background
+- Complainant was a GS-0343-13 Management Analyst in the Acquisitions Policy Oversight and Business Strategies Division, Office of the Senior Procurement Executive (OSPE), Office of the Secretary (OST), Washington, D.C. (ROI at 210-16).
+- She filed a prior EEO complaint in 2016 and alleges ongoing retaliation since then (ROI at 112).
+
+## 2. Procedural History
+- **July 19, 2018:** Complainant initiated EEO counselor contact.
+- **October 2, 2018:** She filed a formal complaint alleging reprisal for prior protected EEO activity under Title VII when:
+  1. In or around February 2017, DD-1 refused to discuss inaccuracies or corrections in her position description.
+  2. In or around June 2017, an affidavit from her prior EEO complaint was posted on the shared drive.
+  3. On June 29, 2018, AD referenced the prior complaint, stating, "you think everyone is out to get you."
+  4. During July 2018, management subjected her to excessive micromanagement, over-management, and telework restrictions.
+  5. On July 8, 2018, AD did not approve her FAC-P/PM-IT certification application.
+  6. In July or August 2018, her request for a supervisory reassignment was denied. The claim as framed says she was instead detailed to M and assigned execution of program and project management efforts for M-60. During the investigation, Complainant clarified that she was not detailed to M (ROI at 120-21).
+  7. In or around September 2018, her request to participate in the Agile panel was denied.
+- At the close of the investigation, the Agency gave Complainant the ROI and notice of her right to request a hearing before an EEOC Administrative Judge. She timely requested a hearing but later withdrew it.
+- The Agency then issued a final decision under 29 C.F.R. § 1614.110(b), concluding that Complainant failed to prove discrimination as alleged.
+
+## 3. Evidence by Claim
+
+**Claim 1: Position description**
+- **Complainant:**
+  - The Agency completed a desk audit in 2016 and found the position properly graded at GS-13. She alleges the position description is inaccurate under "Scope and Effect" and "Supervisory Controls" (ROI at 115, 218-28).
+  - She says she raised these inaccuracies repeatedly beginning in February 2017, to no avail (ROI at 115).
+  - She avers that DD-1 and AD, both new to OSPE, did not know her actual duties and were not qualified to assess the description (ROI at 127). AD became her supervisor in June 2018.
+- **DD-1 (OSPE Deputy Director):** She met with Complainant on February 6, 2017, as Complainant was returning from a detail. After Complainant asked her to look at inaccuracies, she reviewed the description with Human Resources and determined that it accurately reflected the position's duties (ROI at 139).
+
+**Claim 2: Affidavit on shared drive**
+- **Complainant:**
+  - The M-60 shared drive is used by employees and contractors to archive non-personnel work documentation (ROI at 116).
+  - In June 2017 she noticed that Coworker had saved her investigative affidavit from the prior EEO complaint to the M-60 drive. She alleges it was posted to harm her reputation (ROI at 116).
+  - She took a screenshot, deleted the affidavit, and reported it to DD-1.
+  - She alleges DD-1 should have disciplined Coworker (ROI at 127).
+- **DD-1:** Coworker inadvertently saved the affidavit, and DD-1 directed her to delete it immediately once it was brought to her attention (ROI at 139-40).
+- **Coworker:** She accidentally saved the affidavit to the M-61 shared drive, not M-60. She meant to save it to her personal "H" drive and did not realize it was on the shared "S" drive until DD-1 raised it (ROI at 538). She also stated that she has no access to the M-60 drive (ROI at 538).
+- **Conflict in the record:** Complainant's screenshot shows the affidavit on the M-60 drive (ROI at 64). The record contains a footnote ("2") at the M-61 reference, but its text is not included.
+
+**Claim 3: June 29, 2018 comment**
+- **Complainant:**
+  - She told AD several times that she needed to speak with her attorney before providing information about the Digital IT Acquisition Program, because it related to her prior EEO complaint (ROI at 117).
+  - On June 29, 2018, AD questioned her "as though it was an interrogation." She received another email from AD within minutes of returning to her cubicle. When she asked AD at her doorway why she was doing this, AD said Complainant believed everyone was out to get her (ROI at 117).
+- **AD:**
+  - Complainant said she could not complete an assignment because her attorney had advised her not to respond.
+  - When AD asked why during the June 29, 2018 meeting, Complainant said she had a pending EEO complaint related to the assignment's topic (ROI at 163).
+  - Complainant said she had not enjoyed working for prior supervisors, whom she thought had treated her unfairly. AD told her she had no intention of treating her unfairly, and says her remark referred to Complainant's perceived unfair treatment in the office (ROI at 165).
+  - AD denied saying that Complainant thought everyone was out to get her (ROI at 165).
+- The record also cites ROI at 163, 172. Its placement in the source text is unclear, so it is noted here only as a citation in the record.
+
+**Claim 4: Micromanagement and telework**
+- **Complainant:**
+  - She alleges micromanagement, over-management, and telework restrictions (ROI at 117-18, 128-29).
+  - In September 2018, DD-1 and AD requested additional documentation for managerial approvals for the Warrior to DOT Contracting Intern Program (W2DOT Program) and then did not respond to her emails seeking approval of W2DOT initiatives (ROI at 121-22, 128-29).
+  - The new telework policy was more restrictive for employees with "ad hoc" agreements, allowing one day per week with supervisory notification and consideration of extenuating circumstances (ROI at 117-18).
+- **DD-1:**
+  - She asked multiple times for a consolidated W2DOT program/project schedule. Complainant complained of micromanagement and never produced an adequate schedule (ROI at 140).
+  - Complainant had a "very liberal ad hoc telework schedule," generally arriving around 8:30 or 9:00, leaving at 3:00, and teleworking the rest of the day (ROI at 141).
+  - She placed no restrictions on Complainant's telework, even after implementing the OSPE Timekeeping and Telework SOP on July 1, 2018 (ROI at 140-41).
+- **AD:** Complainant's telework schedule was "grandfathered" in because it predated the new SOP (ROI at 165-66).
+
+**Claim 5: FAC-P/PM-IT certification**
+- **Complainant:**
+  - She is the Agency's acquisition workforce program manager, responsible for system administrative support, configurations, controls, workflows, user interface issues, and technical support (ROI at 118).
+  - She completed all required training, but AD denied her application without explaining what was missing (ROI at 118-19).
+  - She approves bureau-level FAC-P/PM-IT applications before they go to the IT Office (ROI at 119).
+  - She avers that AD marginalizes her work and is wrong that the position is not inherently an IT position (ROI at 130).
+- **AD and DD-1:** Complainant is not required or expected to hold this certification for her position (ROI at 142, 166-67).
+- **AD:** Agency policy reserves this specialized certification primarily for those responsible for IT investment acquisition. Complainant does not have that responsibility, and her application did not document the minimum two years of experience (ROI at 166-68, 403-10).
+
+**Claim 6: Supervisory reassignment and detail**
+- **Complainant:**
+  - She asked to be reassigned to a supervisor outside the chain of command of DD-1 and AD, and the request was denied (ROI at 119-20).
+  - In summer 2018 she requested a detail to the Assistant Secretary for Administration (M). She says DD-1 denied it for inadequate resources to cover her duties (ROI at 120-21).
+  - She states DD-1 should not have handled the request, since she was asking to move away from DD-1's chain of command (ROI at 131).
+- **DD-1:**
+  - Complainant asked to report directly to DD-1's supervisor, the Senior Procurement Executive (SPE), and SPE denied the request (ROI at 143, 492).
+  - Complainant proposed two alternative supervisors. On August 7, 2018, DD-1 told her neither was a logical option given her duties and urged her to improve her working relationship with AD, who had been her supervisor for about one month (ROI at 142-44, 147-49, 472-92).
+
+**Claim 7: Agile panel**
+- **Complainant:** A coach invited her to speak on an Agile panel, but AD marginalized the event and would not let her speak (ROI at 121, 131-32, 498-506).
+- **AD:** She denied the request because OSPE had done little to adopt Agile practices beyond a few limited-scope events. She told Complainant she could attend as an audience member (ROI at 169-70, 501-06, 170).
+- **DD-1:** A contractor organized the panel to discuss changes for federal employees as agencies adopted Agile Unleashed. Because OSPE had implemented no Agile initiatives outside technology, Complainant had no Agency-specific knowledge to contribute (ROI at 144-45).
+
+## 4. Positions on Appeal
+- **Complainant:**
+  - The investigative record is incomplete, and the Agency should be sanctioned for the inadequacy.
+  - She submits new evidence with her appeal.
+  - She established a prima facie case of reprisal, and the Agency's legitimate, nondiscriminatory reasons were pretextual.
+  - She asks the Commission to find in her favor and allow her to submit evidence of damages.
+- **Agency (opposing):**
+  - The record is not incomplete, and Complainant cannot raise this on appeal because she failed to submit documents the EEO investigator requested.
+  - She did not notify the Agency of perceived deficiencies after reviewing the record.
+  - She withdrew her hearing request the day before discovery began.
+  - Her new evidence was reasonably available during the investigation and should not be considered.
+  - The Commission should affirm the final decision.
+
+## 5. Decision-Maker, Criteria, and Outcome
+- **Decision-maker:** The Agency issued the final decision under 29 C.F.R. § 1614.110(b) after Complainant withdrew her hearing request. It found that she failed to prove discrimination as alleged.
+- **Criteria:** The only analytical framework in the record is Complainant's own appeal argument, which invokes a prima facie case of reprisal, legitimate nondiscriminatory reasons, and pretext. The record does not state the standard the Agency applied or any standard the Commission applied.
+- **Commission's decision:** The record ends with the parties' appeal arguments and contains no Commission analysis or disposition.

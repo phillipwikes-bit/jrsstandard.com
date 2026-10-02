@@ -1,0 +1,72 @@
+# FINDINGS
+
+## 1. Scope and Basis of Findings
+
+These findings rest only on the procedural history and the parties' positions in the record provided. The record does not include the Report of Investigation exhibits, sworn affidavits, witness statements, or the internal anti-harassment inquiry file. Where a finding depends on evidence not in the record, it is flagged as such. Bracketed items are placeholders for exhibit citations or for facts to be confirmed.
+
+## 2. Findings of Fact
+
+### A. Established or Undisputed
+
+1. During the relevant period, Complainant was a Taxpayer Advocate with the Agency in Laguna Niguel, California.
+2. On November 4, 2021, Complainant filed a formal EEO complaint alleging discrimination based on race (Hispanic) and national origin (Mexican).
+3. By letter dated November 16, 2021, the Agency accepted the complaint and framed the claim as whether an OJI/Lead (identified in the briefing as S1) harassed Complainant based on race/national origin on multiple occasions from June 2020 through July 2021. The incidents were:
+   - (1) making fun of Complainant's accent and saying she disliked speaking to Complainant;
+   - (2) attempting to sabotage Complainant's work by creating a list of inventory late actions and expired casework, and by giving her misinformation on case processing;
+   - (3) filling Complainant's calendar with unrealistic appointments; and
+   - (4) advising Complainant's manager to have her process a fraudulent tax return.
+4. The Agency investigated, issued the Report of Investigation with notice of the right to request a hearing, and received no hearing request within the period in 29 C.F.R. § 1614.108(f).
+5. The Agency then issued a final decision under 29 C.F.R. § 1614.110(b) finding no discrimination. Complainant appealed.
+6. In the final decision, the Agency assumed for analysis that S1 made the accent-related comments in incident (1). It stated that such comments "would be unwelcome verbal conduct based on Complainant's protected categories of race/national origin/ethnicity" (FAD at 12).
+7. The Agency found no persuasive evidence that incidents 2, 3, and 4 were based on a protected class. It characterized Complainant's assertions of discriminatory motive as uncorroborated. It also noted that an internal anti-harassment inquiry did not substantiate her claims (FAD at 13).
+8. The Agency states that after Complainant raised the harassment in late July 2021, S4 separated Complainant and S1, and that Complainant reported no further contact with S1 afterward.
+
+### B. Disputed or Unresolved
+
+1. **S1's role.** The accepted claim describes S1 as a co-worker serving as OJI and Lead. On appeal, Complainant asserts that S1 was initially her manager before becoming her Lead/OJI, and that the FAD did not account for this. The record does not show S1's supervisory status, dates in each role, or authority over Complainant's work, assignments, or evaluations.
+2. **Content and nature of the accent comments.** Complainant states that S1 made derogatory comments about her accent from her first day of employment. The Agency's brief argues that, even if true, the comments did not show mockery of her accent or reference her Mexican descent, and at most expressed difficulty communicating. The actual words, frequency, and context are not in the record provided.
+3. **Notice to management.** Complainant asserts that she told S2 about S1's conduct, asked for a change of supervisor, and that S2 took no action. The Agency responds that it "appears" Complainant expressed only a "lack of support." The date, content, and form of this communication are not in the record.
+4. **Timing of the Agency's response.** The Agency says it acted promptly once harassment was raised in late July 2021. Complainant says she gave earlier notice to S2. Which date triggered the Agency's duty to act depends on resolving the preceding dispute.
+5. **Motive behind incidents 2, 3, and 4.** The record contains no direct or comparator evidence on whether S1's work-related actions (the late-action list, case-processing instructions, calendar assignments, and advice about the tax return) were connected to Complainant's race or national origin. Whether these events occurred as alleged is also not established in the record provided.
+
+## 3. Analysis
+
+Harassment requires that (1) Complainant belongs to a protected class, (2) she was subjected to unwelcome conduct, (3) the conduct was based on a protected class, (4) it was sufficiently severe or pervasive to alter the conditions of employment, and (5) there is a basis for imputing liability to the Agency.
+
+### Element 1: Protected class
+Established. Complainant is Hispanic and of Mexican national origin.
+
+### Element 2: Unwelcome conduct
+Met as to incident (1) on the Agency's own assumption in the FAD. Not resolved as to incidents 2–4, which are work-related actions. Whether those actions occurred is not established in the record provided.
+
+### Element 3: Based on protected class
+- **Incident (1):** The FAD assumed a protected-class basis. The Agency's brief now argues the opposite, that the comments did not reflect national origin. These positions are in tension. Comments directed at an employee's accent can be connected to national origin, and the answer depends on the actual words and context, which must be taken from the witness statements.
+- **Incidents 2–4:** The record contains no evidence linking these acts to race or national origin beyond Complainant's own assertion. As presented, the record does not support a finding of a protected-class basis. This finding is limited to the evidence provided and should be revisited if the investigative exhibits contain comparator information or contemporaneous statements.
+
+### Element 4: Severity or pervasiveness
+Not determinable on the record provided. Complainant alleges accent-related comments from her first day through July 2021, which would suggest repeated conduct over roughly a year. The Agency argues the conduct was insufficiently severe. Resolution requires the frequency, content, and context of the comments, and whether they were combined with the work-related acts, if those are shown to be connected. S1's authority over Complainant at the relevant times will also bear on this element.
+
+### Element 5: Imputing liability
+- If S1 was Complainant's supervisor during the period, a different liability standard may apply than for a co-worker. This turns on S1's actual authority, which is unresolved.
+- If S1 acted as a co-worker or Lead, the question is whether the Agency knew or should have known of the conduct and failed to take prompt, appropriate corrective action.
+- The Agency took action through S4's separation of the two after late July 2021, and Complainant reports no further contact with S1. That supports a finding of effective corrective action from that point forward.
+- Whether the Agency was on notice earlier, through S2, is disputed. If Complainant's account is credited, the response was not prompt for the intervening period. The Agency's use of "appears" suggests it has not confirmed what S2 was told.
+- The internal anti-harassment inquiry did not substantiate the claims. Its scope, witnesses, and reasoning are not in the record, so the weight to give it cannot be assessed.
+
+## 4. Summary of Findings
+
+1. The procedural history is established and not contested.
+2. The Agency assumed in the FAD that the accent-related comments in incident (1) were unwelcome and based on protected class. Its later brief takes a contrary position, which is an inconsistency to note.
+3. The record does not contain evidence tying incidents 2, 3, and 4 to race or national origin.
+4. The record is not sufficient to determine whether the conduct was severe or pervasive, or whether the Agency is liable.
+5. Corrective action after late July 2021 is supported by the Agency's account and Complainant's report of no further contact.
+6. Whether the Agency had earlier notice through S2 is unresolved and material.
+
+## 5. Evidentiary Gaps and Recommended Follow-Up
+
+1. Obtain S1's, S2's, S4's, and Complainant's sworn statements. Confirm S1's roles and dates (manager, then Lead/OJI) and the reporting lines.
+2. Establish the exact words, dates, and witnesses for the accent comments.
+3. Identify what Complainant told S2, when, and how, including any written communication or request for a supervisor change, and what S2 did in response.
+4. Obtain the anti-harassment inquiry file, including its scope and conclusions.
+5. For incidents 2–4, obtain the late-action list, case-processing instructions, calendar records, comparator workloads, and any record of the advice about the allegedly fraudulent tax return.
+6. Confirm the date and manner of the separation ordered by S4 and any later contact between Complainant and S1.

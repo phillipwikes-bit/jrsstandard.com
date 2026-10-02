@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies nine specific allegations and references an ROI, but the basis for the final discrimination finding—that Complainant 'failed to prove' discrimination—is asserted without exposition of which evidence was weighed or rejected."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision states a conclusion but does not trace how the Agency evaluated each of the nine allegations against Rehabilitation Act standards, the evidence presented, or the investigative findings cited in the ROI."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later could identify the allegations and procedural posture but could not reconstruct from this record alone why the Agency concluded Complainant failed to prove discrimination on any specific allegation."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record cites an ROI (pages 71–75) but does not summarize, quote, or engage with the investigative findings or evidence that would support the conclusion that discrimination was not established."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The record establishes procedural sequence (complaint filed, investigation completed, ROI provided, hearing requested, sanction imposed, remand, final decision) but does not date discrete events or the investigative period, limiting chronological reconstruction of the underlying conduct."
+    }
+  },
+  "remediation_note": "The final decision must explicitly summarize the investigative evidence on each allegation, state the applicable legal standard (Rehabilitation Act burden of proof), and explain how the Agency's findings align with or contradict that evidence to support the discrimination conclusion.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would include a point-by-point analysis of each allegation, cite specific evidence from the ROI or witness testimony, apply Rehabilitation Act elements (disability, qualified, adverse action, causation), and explain why that evidence does or does not satisfy Complainant's burden, with dates anchoring the sequence of conduct and Agency response."
+  }
+}
+```

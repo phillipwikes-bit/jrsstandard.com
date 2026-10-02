@@ -1,0 +1,72 @@
+# CASE FILE SUMMARY
+
+**Parties:** Complainant v. Agency
+
+**Complainant's Position:** Contract Specialist-GS-11 at Agency facility in Gallup, New Mexico
+
+**Complaint Filing:** August 25, 2015 - Formal EEO complaint alleging discrimination based on race (Native American), national origin (Native American), age, and reprisal for protected activity
+
+**Agency Acceptance:** November 23, 2015 - Agency accepted formal complaint for investigation
+
+**Procedural History:**
+- Agency conducted investigation and provided Complainant with report of investigation and notice of right to request hearing before EEOC Administrative Judge (AJ)
+- Complainant timely requested hearing
+- Over Complainant's objections, AJ granted Agency's motion for decision without a hearing dated March 22, 2018
+- AJ issued decision by summary judgment on September 23, 2020
+
+**Claims as Framed by AJ:**
+
+1. May 15 and June 3, 2015 - Denial of FAC-C Level II training and certification
+2. Denial of May 15 and June 3, 2015 training/certification impaired ability to qualify for advancement and promotion (affecting claims 3, 4, 7-8, 10-11, 13-17)
+3. On or about June 2, 2015 - Denial of promotion to Job Announcement No. CV-15-PQ-1406482(MP), Contract Specialist, GS-1102-11/13
+4. June 8, 2015 - Not selected for Job Announcement No. CV-15-PQ1360171(MP), Contract Specialist, GS-1102-11/13
+5. On or about September 10, 2015 - Denial of FAC-C Level II training and certification
+6. Denial of September 10, 2015 training/certification impaired ability to qualify for advancement and promotion (affecting claims 3, 4, 7-8, 10-11, 13-17)
+7. On or about October 20, 2015 - Not selected for Job Announcement No. 1507681
+8. On or about November 30, 2015 - Not selected for Job Announcement Number CV-16-PQ1538101(MP)
+9. On or about April 4, 2016 - FAC-C certification and warrant not renewed
+10. On or about April 4, 2016 - Not selected for Job Announcement Number CV-16-PQ11624675(MP)
+11. On or about April 4, 2016 - Not referred for Job Announcement Number CV-16-PQ1651114(MP)
+12. On or about May 2, 2016 - [C1], an officer of the Agency, subjected Complainant to harassment by hugging her without permission in presence of other Agency personnel
+13. On or about May 13, 2016 - Not selected for Job Announcement Number CV-16-PQ1671191(MP)
+14. On or about May 16, 2016 - Not selected for position in Albuquerque, New Mexico, Announcement Number CRPA 78/16
+15. On or about May 16, 2016 - Not selected for position in Gallup, New Mexico, Announcement Number CRPA 81/16
+16. On or about June 9, 2016 - Not selected for two vacancies in Reston, Virginia, Job Announcement Numbers CV-16PQ1696209(MP) and CV-16-PQ1696241(MP)
+17. On or about August 29, 2016 - Not selected for Contract Specialist vacancy in Reston, Virginia Job Announcement Number PQ1719227
+18. On or about April 18, 2017 - Denied permission to attend training (CON 290, Contract Administration and Negotiation Techniques, scheduled for April 24, 2017-May 5, 2017, at BIA Southwest Region, Albuquerque, New Mexico)
+19. April 18, 2017-May 4, 2018 - Delayed approval of leave requests, with approval made contingent on completing certain work
+20. On or about April 18, 2017 - Informed Complainant she would not be permitted to obtain Level II FAC-C warrant without [Bureau Procurement Chief's (C1's)] approval
+
+**Background:** The FAC-C program established education, experience, and training standards for the federal government acquisition workforce.
+
+**AJ's Findings:**
+
+*Prima Facie Case Failures (Claims 3, 4, 7, 8, 11, 13, 14, and 16):*
+- Claim 8: Complainant did not apply and submit an application for the position
+- Claims 3, 4, 7, 11, 13, and 16: Complainant did not meet minimum qualifications because she did not have Level II and Level III FAC-C certifications
+- Claim 14: Complainant did not establish prima facie case of discrimination/retaliation because:
+  - Selectee was of same national origin and sex as Complainant
+  - Selectee was older than Complainant
+  - No evidence that selecting official was aware of Complainant's EEO activity
+
+*Legitimate, Nondiscriminatory Reasons and Failure to Establish Pretext (Claims 1, 2, 5, 6, 8, 15, 17-20, and 19):*
+- Agency articulated legitimate, nondiscriminatory reasons for its actions
+- Complainant failed to establish pretext
+
+*Claim 12 (Harassment by C1 - Hugging):*
+- Complainant did not claim sexual aspects of the hug
+- No evidence that Complainant's protected classes motivated the hug
+- Single act not sufficiently severe or pervasive to create hostile work environment
+
+**Agency's Final Order:** Adopted AJ's finding that Complainant failed to prove Agency subjected her to discrimination as alleged
+
+**Complainant's Appeal Arguments:**
+
+- Agency systemically denied promotions to qualified Native Americans
+- C1 decided Complainant's 17-hour class on Analyzing Contract Costs was insufficient for Level II certification, even though another named Agency official approved it
+- C1 decided, without OPM approval, that future contracting jobs would require Level II certification
+- These actions were taken to reduce hiring of Native Americans
+- Regarding Claim 10: Agency failed to articulate legitimate, nondiscrimination reasons for its action
+- Regarding Claim 12: C1's hug could "support an inference that [C1] has at least implicit bias that Native American women are inferior, like children, for whom an embrace from her is a gift. This is quite a different attitude that the equal respect that is normal among professionals." (Complainant's Brief at 25)
+
+**Agency's Response:** Requests affirmation of final order implementing AJ's decision without a hearing finding no discrimination

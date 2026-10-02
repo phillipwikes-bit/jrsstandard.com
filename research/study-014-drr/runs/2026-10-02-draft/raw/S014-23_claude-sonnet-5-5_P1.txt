@@ -1,0 +1,22 @@
+**Case Summary**
+
+**Parties and Position:** Complainant, an African-American probationary Credentials Assistant (GS-0303-07) at Naval Medical Center Portsmouth, VA, was terminated on August 2, 2018.
+
+**Claim:** On November 8, 2018, Complainant filed an EEO complaint alleging race discrimination in her termination.
+
+**Procedural History:** After the investigation, Complainant requested an EEOC hearing. The Administrative Judge (AJ) ruled for the Agency. The Agency did not issue a final order within 40 days, so the AJ's decision became the final action under 29 C.F.R. § 1614.109(i). Complainant appealed.
+
+**Complainant's Hearing Theory:** Complainant testified that her second-level supervisor (S2) decided to terminate her after learning in May 2018 that her partner was White. She said her first-level supervisor (S1) had warned her to keep the relationship from S2. A coworker (CW) testified that S2 made remarks about her husband's bias against interracial relationships and other race-related comments. Both said S1 warned them about S2's prejudice. S1 denied making such comments.
+
+**AJ's Credibility Findings:**
+- The AJ found Complainant and CW not credible. The interracial-relationship theory was absent from the EEO counseling records, Complainant's investigative affidavit, and CW's affidavit. It first surfaced about three years after the termination.
+- Complainant's earlier theories were that S2 distrusted her after alleged inappropriate conduct at a Leesburg, VA conference and that S2 wrongly believed she had filed a grievance. The AJ found these had no apparent connection to race.
+- Complainant gave no explanation on cross-examination for the omission.
+
+**Agency's Stated Reasons:**
+- **Misrepresentation and credentialing failure:** The Notice of Termination cited Complainant's failure to follow the credentialing process and her misrepresentation to leadership that a provider had requested certain privileges when she had in fact prompted the request. Her inaccurate guidance delayed the provider's application until his existing privileges were about to expire. The provider complained to her supervisors. S2 obtained his written statement and concluded Complainant had misrepresented what happened. At the hearing, the AJ found the provider credible and Complainant not credible.
+- **Failure to initiate renewals within 90 days:** The AJ found this reason untrue, because a similarly situated employee with renewals under 90 days was not terminated. However, the AJ held this alone would show pretext only if it were the sole reason, and it was not.
+
+**AJ's Conclusion:** The Agency articulated legitimate, nondiscriminatory reasons. Complainant failed to prove pretext, and her lack of candor was part of the reason for termination, which made her credibility especially important. The AJ found no discrimination.
+
+**Status:** The matter is on appeal from the Agency's final action adopting the AJ's decision.

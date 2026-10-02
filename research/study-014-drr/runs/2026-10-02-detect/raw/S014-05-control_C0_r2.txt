@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion rests on identifiable evidence: alleged statements are documented with dates, witness affidavits (A–D) are cited, and the Manager's denial and Supervisor 2's partial corroboration are explicitly attributed."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision chain is traceable: Complainant alleges specific dated incidents, investigation gathers four affidavits with differing accounts, Complainant fails to appear at hearing, and the AJ remands for final Agency decision based on the ROI record."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later could reconstruct the claim and investigative findings from the record alone: six specific allegations are documented with dates, four witness positions are summarized, and the investigative gaps (Manager denial, Supervisor 2 partial denial) are explicit."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "While the record documents allegations and denials, the investigative findings supporting the no-discrimination conclusion are not explicitly stated in this narrative; the ROI contents are summarized but the Agency's evidentiary reasoning for rejecting Complainant's claims is not detailed here."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clear: alleged incidents span late January through March 3, 2022; complaint filed April 4, 2022; investigation conducted; AJ order October 24, 2022; hearing scheduled November 24, 2022; dismissal January 19, 2023; final Agency decision thereafter."
+    }
+  },
+  "remediation_note": "The record would strengthen if the Agency's final decision explicitly restated the investigative findings and the evidentiary basis (credibility assessments, corroboration gaps, witness reliability) for concluding no discrimination was established. This would move condition 4 from 'review' to 'pass' by making the decision logic transparent.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support (condition 4)",
+    "compliant_version": "The final decision should include a summary of the investigation's credibility findings, e.g., 'The Manager's affidavit denying receipt of any report, corroborated in part by Supervisor 2's statement that Complainant declined to report to the Manager, undercuts Complainant's allegation of inaction by management. Supervisor's unequivocal denial, absent corroborating witnesses, creates factual dispute unresolved by the evidence.' This explicit reasoning would allow any reviewer to assess whether the no-discrimination conclusion is sufficiently grounded."
+  }
+}
+```

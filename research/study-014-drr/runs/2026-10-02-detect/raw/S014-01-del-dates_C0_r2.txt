@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion (leave denial, case reassignment, reasonable accommodation denial, official time denial) is supported by identifiable evidence: payroll audits, supervisor emails, accommodation coordinator records, and investigator documentation."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is traceable from evidence (e.g., leave balance calculations, case assignment spreadsheet, medical documentation gaps, official time hours granted) through intermediate findings (e.g., AJ summary judgment) to final conclusions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While substantive evidence exists, the record contains multiple redacted dates ('at one point,' 'at one point,' etc.) that obscure the precise chronology and timeline necessary for independent reconstruction without the original files."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Documentary evidence—payroll audits, spreadsheets, accommodation meeting notes, email records, and the AJ's reasoned decision—sufficiently supports each factual finding and conclusion about Agency compliance."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "The record lacks specific dates in critical places ('at one point,' 'on various dates'), making it impossible to reconstruct the precise sequence of leave denials, reassignments, and accommodation requests without reference to external case files."
+    }
+  },
+  "remediation_note": "Restore all redacted dates and event timestamps throughout the record to enable full chronological reconstruction. Ensure all referenced spreadsheets, emails, and payroll audit reports are explicitly linked or attached so a reviewer years later can verify the evidentiary chain.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "temporal_reconstructability, cold_reviewer_clarity",
+    "compliant_version": "Unredact all dates and intervals (replace 'at one point' with specific calendar dates); include a chronological table of events (complaint filing, leave requests, accommodation meetings, official time grants, AJ decision, final order); attach or fully reference all documentary exhibits (spreadsheets, audit reports, letters, emails) with exhibit numbers; and add a brief timeline narrative that walks a new reviewer through the sequence without requiring access to the complete case file."
+  }
+}
+```

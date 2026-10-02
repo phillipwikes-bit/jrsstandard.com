@@ -1,0 +1,72 @@
+# FINDINGS
+
+## I. Procedural Findings
+
+1. During the period at issue, Complainant was a Contract Specialist, GS-11, at the Agency's facility in Gallup, New Mexico.
+2. On August 25, 2015, Complainant filed a formal EEO complaint alleging discrimination based on race (Native American), national origin (Native American), age, and reprisal for protected activity (the instant EEO complaint).
+3. By letter dated November 23, 2015, the Agency accepted the complaint for investigation.
+4. After the investigation, the Agency gave Complainant the report of investigation and notice of her right to request a hearing before an EEOC Administrative Judge (AJ). Complainant timely requested a hearing.
+5. On March 22, 2018, the Agency moved for a decision without a hearing. Over Complainant's objections, the AJ granted the motion and issued a summary judgment decision on September 23, 2020.
+6. The Agency then issued a final order adopting the AJ's finding that Complainant had not proven discrimination as alleged. Complainant appealed through counsel, and the Agency asks that its final order be affirmed.
+
+## II. Claims as Framed by the AJ
+
+| No. | Date | Action alleged |
+|---|---|---|
+| 1 | May 15 and June 3, 2015 | Denied FAC-C Level II training and certification |
+| 2 | May 15 and June 3, 2015 | Denial in claim 1 impaired ability to qualify for advancement and promotion (including claims 3, 4, 7-8, 10-11, 13-17) |
+| 3 | June 2, 2015 | Denied promotion, Job Announcement CV-15-PQ-1406482(MP), Contract Specialist GS-1102-11/13 |
+| 4 | June 8, 2015 | Learned of non-selection, Job Announcement CV-15-PQ1360171(MP), GS-1102-11/13 |
+| 5 | Sept. 10, 2015 | Denied FAC-C Level II training and certification |
+| 6 | Sept. 10, 2015 | Denial in claim 5 impaired ability to qualify for advancement and promotion |
+| 7 | Oct. 20, 2015 | Non-selection, Job Announcement 1507681 |
+| 8 | Nov. 30, 2015 | Non-selection, Job Announcement CV-16-PQ1538101(MP) |
+| 9 | Apr. 4, 2016 | FAC-C certification and warrant not renewed |
+| 10 | Apr. 4, 2016 | Non-selection, Job Announcement CV-16-PQ11624675(MP) |
+| 11 | Apr. 4, 2016 | Not referred, Job Announcement CV-16-PQ1651114(MP) |
+| 12 | May 2, 2016 | Harassment: C1 hugged Complainant without permission in the presence of other personnel |
+| 13 | May 13, 2016 | Non-selection, Job Announcement CV-16-PQ1671191(MP) |
+| 14 | May 16, 2016 | Non-selection, Albuquerque, Announcement CRPA 78/16 |
+| 15 | May 16, 2016 | Non-selection, Gallup, Announcement CRPA 81/16 |
+| 16 | June 9, 2016 | Non-selection for two Reston, VA vacancies, CV-16PQ1696209(MP) and CV-16-PQ1696241(MP) |
+| 17 | Aug. 29, 2016 | Non-selection, Reston, VA Contract Specialist, PQ1719227 |
+| 18 | Apr. 18, 2017 | Denied permission to attend CON 290 (Apr. 24-May 5, 2017, Albuquerque) |
+| 19 | Apr. 18, 2017-May 4, 2018 | Leave approvals delayed and made contingent on completing work |
+| 20 | Apr. 18, 2017 | Told she could not obtain a Level II FAC-C warrant without C1's approval |
+
+## III. Findings of the AJ
+
+**A. No prima facie case (claims 3, 4, 7, 8, 11, 13, 14, and 16).** The AJ found that Complainant did not establish a prima facie case of discrimination or reprisal on these claims, for the following reasons:
+- **Claim 8:** Complainant did not apply for the position.
+- **Claims 3, 4, 7, 11, 13, and 16:** Complainant did not meet the minimum qualifications because she lacked Level II and Level III FAC-C certifications.
+- **Claim 14:** The selectee was of the same national origin and sex as Complainant and was older than she. There was also no evidence that the selecting official knew of Complainant's EEO activity.
+
+**B. Legitimate, nondiscriminatory reasons and no pretext (claims 1, 2, 5, 6, 8, 15, 17, 18, 19, and 20).** The AJ found that the Agency articulated legitimate, nondiscriminatory reasons for its actions and that Complainant did not show these reasons were pretext. The record available to this report does not state those reasons.
+
+**C. Harassment (claim 12).** The AJ found that:
+- Complainant did not claim the hug had any sexual aspect.
+- There was no evidence that her protected classes motivated the hug.
+- A single hug was not sufficiently severe or pervasive to create a hostile work environment.
+
+**D. Agency action.** The Agency's final order adopted the AJ's conclusion that Complainant did not prove discrimination.
+
+## IV. Contentions on Appeal
+
+**Complainant** (through counsel) asserts that:
+1. The Agency systemically denied promotions to qualified Native Americans.
+2. C1 decided that Complainant's 17-hour class on Analyzing Contract Costs was insufficient for Level II certification, although another named Agency official had approved it.
+3. C1 decided, without OPM approval, that future contracting jobs would require Level II certification. Complainant asserts these actions were taken to reduce the hiring of Native Americans.
+4. On claim 10, the Agency failed to articulate a legitimate, nondiscriminatory reason.
+5. On claim 12, C1's hug could "support an inference that [C1] has at least implicit bias that Native American women are inferior, like children, for whom an embrace from her is a gift," which differs from "the equal respect that is normal among professionals." (Complainant's Brief at 25.)
+
+**The Agency** asks that its final order implementing the AJ's decision without a hearing be affirmed.
+
+## V. Observations and Open Items for Review
+
+1. **Claims 9 and 10.** The record summary does not show an AJ finding on either claim. Claim 10 is raised on appeal, and the file should be checked for the AJ's treatment of both.
+2. **Claim 8.** The AJ's findings list it under both "no prima facie case" (Complainant did not apply) and "legitimate reasons/no pretext." The decision should be reviewed to clarify the basis.
+3. **Claim 14.** The AJ's reasoning refers to the selectee's sex, but sex is not among the alleged bases. The decision should be checked to confirm the reasoning.
+4. **Claims 2 and 6.** These are framed as consequences of the training denials in claims 1 and 5, not as independent actions, and are best analyzed together with those claims.
+5. **Qualification issue.** The AJ's rulings on claims 3, 4, 7, 11, 13, and 16 depend on the Level II/III FAC-C certification requirement. Complainant's appeal contends that C1 imposed this requirement, and rejected her coursework, for discriminatory reasons. This overlaps with claims 1, 2, 5, 6, and 20 and bears on whether the lack of certification can serve as a neutral explanation. The record does not show whether the AJ considered it.
+6. **Missing evidence.** The record does not include the Agency's stated reasons, the affidavits or ROI exhibits, or the evidence on the other official's approval of the 17-hour course or on OPM approval of the certification requirement. These should be obtained before any conclusion is drawn on the appeal's merits.
+7. **Standard of review.** Because the AJ decided the case without a hearing, the review question is whether any genuine issue of material fact required a hearing, with the evidence viewed in the light most favorable to Complainant. This report makes no independent finding on that question.

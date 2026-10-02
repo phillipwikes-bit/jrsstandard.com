@@ -1,0 +1,40 @@
+**Case File Summary**
+
+**Parties and position.** At the time of the events, Complainant was a Supervisory Transportation Security Officer (SV-1802-G Band) at Hartsfield-Jackson Atlanta International Airport, Atlanta, Georgia.
+
+**Complaint.** On February 2, 2021, Complainant filed an EEO complaint alleging discrimination and a hostile work environment based on sex (male) and reprisal for prior protected EEO activity. The claims as stated in the record are:
+1. On November 24, 2020, a co-worker (CW1) claimed to do Voodoo and placed a flower on Complainant's body.
+2. *(The text of Claim 2 does not appear in the record provided.)*
+3. Sometime after November 24, 2020, management failed to address Complainant's concerns about the CW1 incident and prevented him from attending management meetings and scheduling operational meetings.
+4. On December 30, 2020, a manager (Manager) paced back and forth, stood over Complainant, and blocked the door when he tried to leave.
+
+**Complainant's statements.**
+- On Claims 1 and 2, Complainant said he asked CW1 to step back and stay away, but she would not, and that CW1 backed him into a corner.
+- He said he complained to management on November 24 and 28, 2020, and that no action was taken.
+- On Claim 4, he said Manager demanded answers about his allegations against CW1 and refused to show him the authorization to investigate. Manager offered to show the memorandum on his computer but "would click off the screen to prevent [Complainant's] view of it." Complainant added that Manager would not let him leave without answering questions.
+- He testified that he believed the events showed a discriminatory pattern, because CW1 and other women are not disciplined while men are treated more harshly.
+- He stated that "[a] fact finding inquiry was conducted, but this did not address [his] concerns, and did not prevent or lessen the acts of discrimination and retaliation, including subjecting [him] to a hostile work environment."
+- He criticized the investigation as biased and artificial and suggested security footage would have corroborated his claims.
+
+**Management's response and the internal inquiry.**
+- In a December 21, 2020 memorandum, the Interim Federal Security Director (Interim Director) appointed Manager to investigate Complainant's claims.
+- Manager denied each allegation against him, including the claim that Complainant was excluded from meetings.
+- On December 31, 2020, Complainant emailed Manager objecting to his role in the investigation because Manager was part of Complainant's management chain. Later emails from Complainant to the Interim Director were to similar effect.
+- The Interim Director forwarded the concerns to the Federal Security Director (Director). On January 5, 2021, Director appointed a Transportation Security Inspector (Inspector) to continue the investigation. Complainant agreed to be interviewed.
+- On January 22, 2021, Inspector issued a fact-finding report that did not substantiate Complainant's claims. Inspector interviewed Complainant, CW1, and several employees who worked in the same area as both of them.
+- Inspector acknowledged a "contentious conversation" between Complainant and CW1 but said the details were in dispute. He noted that most of the evidence he discovered was "conjecture."
+- The record states that Complainant "alleged that CW1 asked to speak with him privately and backed her into a corner." This wording appears to be an error in the record, since elsewhere Complainant says CW1 backed *him* into a corner.
+- CW1 said Complainant initiated the conversation and questioned her about her relationship with another employee, which upset her.
+- Coworkers confirmed a conversation took place but could not confirm what was said.
+
+**Procedural history.**
+- The Agency initially dismissed the complaint for failure to state a claim. In *Norman S. v. Dep't of Homeland Sec.*, EEOC [number removed] (July 22, 2021), the Commission reversed and remanded for further processing.
+- In the investigation on remand, CW1 gave an affidavit denying Complainant's version of events, consistent with her statement to Inspector. Coworker statements in the record were consistent with their statements to Inspector: the two had a contentious conversation, but the coworkers could not hear what was said or see what was done.
+- The Agency gave Complainant the report of investigation and notice of his right to request a hearing before an EEOC Administrative Judge (AJ). At Complainant's request, it instead issued a final decision under 29 C.F.R. § 1614.110(b).
+- In that decision, the Agency found that Complainant was not subjected to discrimination or reprisal as alleged. The instant appeal followed.
+
+**Gaps in the record provided.**
+- The text of Claim 2 is missing.
+- The record gives no ROI page numbers or exhibit citations. The only citations are 29 C.F.R. § 1614.110(b) and the *Norman S.* decision, whose number was removed.
+- The final decision is attributed only to "the Agency," with no individual decision-maker named.
+- The record does not state what legal standard or criteria the Agency applied in finding no discrimination or reprisal. The only criteria mentioned are the procedural basis under § 1614.110(b) and the Inspector's evidentiary assessment that the claims could not be substantiated.

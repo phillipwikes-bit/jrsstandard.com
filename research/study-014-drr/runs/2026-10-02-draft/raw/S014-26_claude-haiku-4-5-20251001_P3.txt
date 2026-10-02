@@ -1,0 +1,39 @@
+# INVESTIGATION CASE FILE RECORD
+
+## CASE SUMMARY AND BACKGROUND
+
+This case involves allegations of employment discrimination filed by a Contract Specialist at the Grade-11 level (GS-11) employed at the Agency's facility located in Gallup, New Mexico. On August 25, 2015, the Complainant initiated formal proceedings by filing an Equal Employment Opportunity (EEO) complaint with the Agency, alleging unlawful discrimination based on multiple protected characteristics and status. Specifically, the complaint asserted discrimination based on race (Native American), national origin (Native American), age, and alleged retaliation for engaging in protected EEO activity.
+
+The Agency accepted the formal complaint for investigation by letter dated November 23, 2015, thereby initiating the investigative process required under applicable federal employment discrimination statutes and regulations. Following completion of the investigation, the Agency provided the Complainant with copies of the investigative report and formal notice of her statutory right to request a hearing before an Administrative Judge (AJ) of the Equal Employment Opportunity Commission (EEOC). In accordance with her rights under the applicable regulatory framework, the Complainant timely requested an administrative hearing on her claims.
+
+## ADMINISTRATIVE PROCEEDINGS
+
+The assigned Administrative Judge granted the Agency's motion for summary judgment decision without holding a hearing, despite objections raised by the Complainant. This motion was filed on March 22, 2018, and the AJ issued her summary judgment decision on September 23, 2020, approximately two years following the motion filing. The AJ's decision addressed twenty distinct claims of discrimination and retaliation, each involving specific employment actions allegedly taken against the Complainant between May 2015 and May 2018.
+
+## ENUMERATED CLAIMS
+
+The Administrative Judge systematically framed the allegations as follows: Claims 1 and 5 involved denials of Federal Acquisition Certification-Contracting (FAC-C) Level II training and certification occurring on May 15, June 3, and September 10, 2015, respectively. Claims 2 and 6 addressed how these training denials purportedly impaired the Complainant's ability to qualify for advancement and promotion opportunities. Claims 3 through 4, 7 through 8, and 10 through 11 involved non-selection for various contract specialist positions at multiple grade levels across several geographic locations and time periods. The FAC-C program, referenced throughout the proceedings, establishes education, experience, and training standards applicable to the federal government acquisition workforce.
+
+Additional claims addressed the non-renewal of the Complainant's FAC-C certification and warrant on April 4, 2016 (Claim 9); non-referral for position opportunities (Claim 11); alleged harassment involving unwanted physical contact by an Agency officer designated as C1 occurring on May 2, 2016 (Claim 12); denial of permission to attend contract administration training scheduled for April 24, 2017 through May 5, 2017 (Claim 18); and delays in approval of leave requests from April 18, 2017 through May 4, 2018, with approvals made contingent upon completion of specified work assignments (Claim 19). The final claim alleged that the Agency informed the Complainant she could not obtain a Level II FAC-C warrant without approval from the Bureau Procurement Chief, identified as C1 (Claim 20).
+
+## ADMINISTRATIVE JUDGE'S FINDINGS
+
+The Administrative Judge's analysis resulted in findings of no discrimination or retaliation across the majority of claims. Regarding Claim 8, the AJ determined that the Complainant failed to establish even a prima facie case of discrimination because she had not submitted an application for the position in question. For Claims 3, 4, 7, 11, 13, and 16, the AJ found that the Complainant lacked the minimum qualifications for these positions, specifically because she did not possess the required Level II and Level III FAC-C certifications.
+
+With respect to Claim 14, the AJ noted that the selected candidate shared the same national origin and gender as the Complainant and was older in age. Additionally, the AJ found no evidence that the selecting official was aware of the Complainant's prior EEO activity, thereby undermining any inference of retaliation. Regarding Claims 1, 2, 5, 6, 8, 15, 17, 18, 19, and 20, the AJ determined that the Agency had articulated legitimate, nondiscriminatory reasons for its actions and that the Complainant had failed to demonstrate these reasons were pretextual.
+
+Concerning Claim 12, involving the alleged unwanted physical contact, the AJ noted that the Complainant had not characterized the contact as possessing sexual aspects. The AJ concluded that no evidence demonstrated that the Complainant's protected class status motivated the physical contact and that a single incident, even if unwelcome, was insufficient to establish a hostile work environment.
+
+## FINAL ORDER AND APPEAL
+
+The Agency subsequently issued a final order adopting in its entirety the Administrative Judge's findings and conclusions, determining that the Complainant had failed to prove the Agency subjected her to discrimination as alleged. This final order prompted the instant appeal.
+
+## APPELLANT'S CONTENTIONS
+
+On appeal, through counsel, the Complainant advances several arguments. She contends that the Agency has engaged in systematic denial of promotions to qualified Native Americans. The Complainant asserts that the Agency official designated C1 determined that a seventeen-hour class on analyzing contract costs was insufficient for Level II certification, despite another Agency official's approval of that training. She further contends that C1 unilaterally decided, without Office of Personnel Management approval, that future contracting positions would require Level II certification, allegedly to reduce hiring of Native Americans.
+
+Regarding Claim 10, the Complainant argues the Agency failed to articulate any legitimate, nondiscriminatory reason for its action. Concerning the unwanted physical contact allegation (Claim 12), the Complainant provides alternative characterization, suggesting that C1's embrace could support an inference of implicit bias, arguing the conduct reflects an attitude viewing Native American women as inferior individuals unworthy of professional respect.
+
+## AGENCY RESPONSE
+
+The Agency requests affirmation of the final order implementing the Administrative Judge's decision, maintaining that no discrimination occurred and requesting dismissal of all claims.

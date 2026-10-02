@@ -1,0 +1,29 @@
+**Case Summary**
+
+**Parties and setting:** Complainant, a Registered Nurse on the 4 East Medical-Surgical Unit at the VA Medical Center in West Los Angeles, alleged disability-based discrimination and a hostile work environment. Her first-level supervisor was the Nurse Manager (S1).
+
+**Claims accepted for investigation (14 total):** Key claims include:
+- S1 demanded she work 12-hour shifts (claim 1). Complainant later said this occurred in late 2017, not May 2018.
+- S1 disclosed her confidential medical information by loudly telling her to go elsewhere for surgery (claim 2).
+- Coworkers improperly accessed her medical records (claim 3).
+- Management interfered with the privacy investigation (claim 12).
+- Other claims covered sick leave delays, a coworker calling her a "50-year-old mental patient," misconduct accusations, S1 pacing near her work area, an article about nurses with mental disabilities, and S1 "splitting the staff."
+
+ORM dismissed part of claim 7 (a coworker's accusation that she was harassing) for failure to state a claim. That allegation was still considered as part of the overall harassment claim. Claims 2, 3, and 12 were investigated as discrete Rehabilitation Act confidentiality claims, not as HIPAA or Privacy Act claims.
+
+**Key evidence:**
+- A Sensitive Patient Access Report identified six coworkers who accessed her records. The Privacy Office found two (including Coworker 3 and Coworker 4) accessed them improperly and intentionally. Coworker 3 wanted to check schedules to avoid working with Complainant. Coworker 4 said "everyone was talking about" the surgery.
+- The two employees were disciplined, with suspensions of seven days (upheld) and one day (mitigated from seven), and were told to retake privacy training.
+- The privacy investigation found no evidence that S1 disclosed surgery information. Interviewed coworkers said they learned of the surgery from Complainant herself.
+- S1 said she discussed the surgery only privately with Complainant, and that she promptly initiated the privacy inquiry.
+- S1 stated she was unaware of any disability.
+- Witness statements did not show discriminatory animus. Both witnesses had personal complaints about S1, which the Agency found reduced their credibility.
+
+**Procedural history:** After the EEO investigation, Complainant requested an EEOC hearing but withdrew the request. The Agency then issued a final decision under 29 C.F.R. § 1614.110(b).
+
+**Agency's final decision:** The Agency found no discrimination or harassment.
+- **Claim 1:** Unsupported, because Complainant stayed on an 8-hour schedule throughout, and there was no evidence of discriminatory motive.
+- **Claim 2:** No evidence anyone overheard the statement, and the vague remark did not disclose confidential medical information.
+- **Claim 3:** Privacy Act violations fall outside EEOC purview absent evidence of discrimination. The coworkers' motives were unrelated to disability.
+- **Claim 12:** No evidence of resistance by coworkers or of discriminatory animus. The Agency noted prompt investigation and discipline.
+- **Hostile work environment:** Even accepting the allegations as true, Complainant showed no evidence she was targeted because of disability.

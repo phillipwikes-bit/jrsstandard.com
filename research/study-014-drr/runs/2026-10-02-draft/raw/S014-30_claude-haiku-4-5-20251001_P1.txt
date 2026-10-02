@@ -1,0 +1,27 @@
+# CASE FILE SUMMARY
+
+**Complainant:** Legal Assistant (Court), GS-0986-08, Orlando Immigration Court
+
+**Allegations:** Discrimination and hostile work environment based on race (African-American), sex (male), age (49), and reprisal for prior protected EEO activity under Title VII, ADEA, and the Rehabilitation Act
+
+**Incident Date:** October 22, 2015
+
+**Key Events:**
+- Complainant received a mid-year review with critical feedback on customer service, record management, and workplace conduct
+- Review conducted in a conference room (rather than supervisor's office) with second-line supervisor present
+- Complainant attempted to submit a complimentary letter from a defendant but was told it lacked credibility
+
+**Administrative Judge Finding:**
+- Granted Agency's motion for summary judgment without hearing
+- Found no discrimination, determining:
+  - Mid-year reviews do not result in ratings of record, so criticism could not affect formal evaluation
+  - Conference room location was for privacy purposes
+  - Second-line supervisor's presence was justified due to documented prior misconduct issues
+  - Complimentary letter would not refute feedback regarding attorney communication
+
+**Appeal Arguments:**
+- Complainant contends he received disparate treatment (different meeting location and supervisor presence)
+- Questions impartiality based on race of Agency counsel and AJ
+- Asserts genuine factual disputes warrant a hearing
+
+**Status:** Appeal pending

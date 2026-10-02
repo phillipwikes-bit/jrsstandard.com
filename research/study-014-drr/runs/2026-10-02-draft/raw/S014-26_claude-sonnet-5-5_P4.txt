@@ -1,0 +1,59 @@
+**Case File Summary: EEO Complaint, Contract Specialist GS-11, Gallup, New Mexico**
+
+**Procedural history**
+- Complainant, a Contract Specialist GS-11 at the Agency's Gallup, New Mexico facility, filed a formal EEO complaint on August 25, 2015.
+- She alleged discrimination based on race (Native American), national origin (Native American), and age, and reprisal for protected activity (the instant EEO complaint).
+- By letter dated November 23, 2015, the Agency accepted the complaint for investigation.
+- After the investigation, the Agency gave Complainant the report of investigation and notice of her right to request a hearing before an EEOC Administrative Judge (AJ). She timely requested a hearing.
+- Over her objections, the AJ granted the Agency's March 22, 2018 motion for a decision without a hearing. The AJ issued a summary judgment decision on September 23, 2020.
+- The Agency then issued a final order adopting the AJ's finding that Complainant did not prove discrimination as alleged. Complainant appealed.
+
+**Claims as framed by the AJ**
+1. On or about May 15 and June 3, 2015, Complainant was denied FAC-C Level II training and certification.
+2. That denial impaired her ability to qualify for advancement and promotion, including those asserted in claims 3, 4, 7-8, 10-11, and 13-17.
+3. On or about June 2, 2015, she was denied promotion under Job Announcement CV-15-PQ-1406482(MP), Contract Specialist, GS-1102-11/13.
+4. On June 8, 2015, she learned she was not selected under Job Announcement CV-15-PQ1360171(MP), Contract Specialist, GS-1102-11/13.
+5. On or about September 10, 2015, she was denied FAC-C Level II training and certification.
+6. That denial impaired her ability to qualify for advancement and promotion, including those in claims 3, 4, 7-8, 10-11, and 13-17.
+7. On or about October 20, 2015, she was not selected under Job Announcement No. 1507681.
+8. On or about November 30, 2015, she was not selected under Job Announcement CV-16-PQ1538101(MP).
+9. On or about April 4, 2016, her FAC-C certification and warrant were not renewed.
+10. On or about April 4, 2016, she was not selected under Job Announcement CV-16-PQ11624675(MP). The record notes that the FAC-C program established education, experience, and training standards for the federal government acquisition workforce.
+11. On or about April 4, 2016, she was not referred for Job Announcement CV-16-PQ1651114(MP).
+12. On or about May 2, 2016, C1, an officer of the Agency, allegedly harassed her by hugging her without permission in the presence of other Agency personnel.
+13. On or about May 13, 2016, she was not selected under Job Announcement CV-16-PQ1671191(MP).
+14. On or about May 16, 2016, she was not selected for a position in Albuquerque, New Mexico, Announcement CRPA 78/16.
+15. On or about May 16, 2016, she was not selected for a position in Gallup, New Mexico, Announcement CRPA 81/16.
+16. On or about June 9, 2016, she was not selected for two Reston, Virginia vacancies, Announcements CV-16PQ1696209(MP) and CV-16-PQ1696241(MP).
+17. On or about August 29, 2016, she was not selected for a Contract Specialist vacancy in Reston, Virginia, Announcement PQ1719227.
+18. On or about April 18, 2017, she was denied permission to attend CON 290, Contract Administration and Negotiation Techniques, scheduled for April 24–May 5, 2017, at BIA Southwest Region, Albuquerque, New Mexico.
+19. From April 18, 2017 to May 4, 2018, the Agency delayed approval of her leave requests and then made approval contingent on completing certain work.
+20. On or about April 18, 2017, the Agency told her she could not obtain a Level II FAC-C warrant without the approval of the Bureau Procurement Chief (C1).
+
+**Decision-maker and criteria applied**
+The AJ decided the case on summary judgment, and the Agency adopted that decision in its final order. The AJ applied three standards.
+
+*Prima facie case.* The AJ found Complainant failed to establish a prima facie case of discrimination and/or reprisal on claims 3, 4, 7, 8, 11, 13, 14, and 16.
+- **Claim 8:** She did not apply for the position.
+- **Claims 3, 4, 7, 11, 13, and 16:** She did not meet the minimum qualifications because she lacked the Level II and Level III FAC-C certifications.
+- **Claim 14:** The selectee was of the same national origin and sex as Complainant and was older than she was. There was also no evidence that the selecting official knew of her EEO activity.
+
+*Legitimate reasons and pretext.* The AJ found the Agency articulated legitimate, nondiscriminatory reasons and Complainant failed to establish pretext on claims 1, 2, 5, 6, 8, 19, 15, and 17-20.
+
+*Harassment (claim 12).* The AJ noted Complainant did not claim any sexual aspect to the hug and found no evidence that her protected classes motivated it. The AJ also found that this single act was not severe or pervasive enough to create a hostile work environment.
+
+**Responses considered on appeal**
+- **Complainant (through her attorney):**
+  - The Agency systemically denied promotions to qualified Native Americans.
+  - **In her brief:** C1 decided her 17-hour class on Analyzing Contract Costs was insufficient for Level II certification, though another named Agency official approved it.
+  - **In her brief:** C1 decided, without OPM approval, that future contracting jobs would require Level II certification.
+  - She asserts these actions were taken to reduce hiring of Native Americans.
+  - **Claim 10:** the Agency failed to articulate a legitimate, nondiscriminatory reason.
+  - **Claim 12:** C1's hug could "support an inference that [C1] has at least implicit bias that Native American women are inferior, like children, for whom an embrace from her is a gift. This is quite a different attitude that the equal respect that is normal among professionals." (Complainant's Brief at 25.)
+- **Agency:** It asks that its final order implementing the AJ's decision without a hearing, finding no discrimination, be affirmed.
+
+**Notes for the file**
+- The record contains no ROI page citations or exhibit numbers. The only citation is Complainant's Brief at 25.
+- The record does not state the appellate outcome.
+- Claim 8 appears in both the prima facie and the legitimate-reason/pretext findings, as in the record.
+- Claims 9 and 10 do not appear in either of the AJ's findings lists as presented here.

@@ -500,6 +500,38 @@
       "next_action_basis": "The owner set the no-password rule and must choose among the remedies that respect it. Repository visibility is an owner-only setting, and slug rotation changes the owner's own bookmark and is a production deployment (CLAUDE.md section 26).",
       "status": "OPEN",
       "opened": "2026-10-02"
+    },
+    {
+      "blocker_id": "B-022",
+      "severity": "HIGH",
+      "category": "VALIDATION",
+      "description": "The owner's Anthropic API account ran out of credit during Study 014 Part 2. 205 of 1,350 detection calls returned; 1,145 were refused ('Your credit balance is too low'). H2 and H3 are NOT ESTABLISHED. The suite v0.9 extractor (v1.2) also awaits its confirmatory run on unseen drafts, which needs API calls.",
+      "evidence_refs": [
+        "research/study-014-drr/runs/2026-10-02-detect/results.jsonl (1,145 http_400 credit refusals)",
+        "research/study-014-drr/RESULTS.md, Part 2"
+      ],
+      "affected_assets": "Study 014 Part 2; DRR Test Suite v1.0 readiness; private beta timing",
+      "required_action": "Owner adds credit (phone browser: console.anthropic.com, Settings, Billing; about USD 22 estimated). Then Claude runs detect-resume (about USD 20) and the v1.2 confirmatory run on the 29 held-out texts (about USD 2).",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Payment is an owner action.",
+      "status": "OPEN",
+      "opened": "2026-10-02"
+    },
+    {
+      "blocker_id": "B-023",
+      "severity": "MEDIUM",
+      "category": "IP",
+      "description": "DRR Test Suite v0.9 has no sealed private set. The 29 held-out texts are reproducible from the published selection rule, and the repository is public (B-018), so there is nowhere to keep a secret set. A private set that a vendor can rebuild cannot prevent tuning to the test.",
+      "evidence_refs": [
+        "research/drr-suite-v0.9/README.md, Known limits 2",
+        "research/drr-suite-v0.9/VERSION.json private_set"
+      ],
+      "affected_assets": "Integrity of v1.0 scores; value of the vendor licence (private-set runs are what Tier 1 sells)",
+      "required_action": "Owner decides where a sealed set lives (a private repository or private storage, never this public repository). Claude then draws it by a rule that is not published, for example a sealed random draw, and records only hashes here.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Choosing private storage and repository visibility are owner settings.",
+      "status": "OPEN",
+      "opened": "2026-10-02"
     }
   ],
   "_decisions_recorded_2026_09_15": {

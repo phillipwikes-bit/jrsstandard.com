@@ -1,0 +1,63 @@
+# Investigation Record Summary
+
+## Procedural Background
+
+During the period at issue, Complainant worked as a Contract Specialist, GS-11, at the Agency's facility in Gallup, New Mexico. On August 25, 2015, she filed a formal EEO complaint alleging that the Agency discriminated against her based on race (Native American), national origin (Native American), and age, and in reprisal for protected activity (the instant EEO complaint). By letter dated November 23, 2015, the Agency accepted the complaint for investigation. After the investigation, the Agency gave Complainant a copy of the report of investigation and notice of her right to request a hearing before an EEOC Administrative Judge (AJ). Complainant made a timely hearing request.
+
+On March 22, 2018, the Agency moved for a decision without a hearing. Over Complainant's objections, the AJ granted the motion and issued a summary judgment decision on September 23, 2020. The Agency then issued a final order adopting the AJ's finding that Complainant had not proven that the Agency discriminated against her as alleged. Complainant filed the present appeal.
+
+## Claims as Framed by the AJ
+
+The FAC-C program established education, experience, and training standards for the federal government acquisition workforce. The AJ framed the claims as follows.
+
+**Training and certification**
+
+1. On or about May 15 and June 3, 2015, Complainant was denied FAC-C Level II training and certification.
+2. That denial impaired her ability to qualify for advancement and promotion, including the matters in claims 3, 4, 7-8, 10-11, and 13-17.
+5. On or about September 10, 2015, Complainant was denied FAC-C Level II training and certification.
+6. That denial likewise impaired her ability to qualify for advancement and promotion, including the matters in claims 3, 4, 7-8, 10-11, and 13-17.
+9. On or about April 4, 2016, her FAC-C certification and warrant were not renewed.
+18. On or about April 18, 2017, she was denied permission to attend CON 290, Contract Administration and Negotiation Techniques, scheduled for April 24 to May 5, 2017, at BIA Southwest Region, Albuquerque, New Mexico.
+20. On or about April 18, 2017, she was told she could not obtain a Level II FAC-C warrant without the approval of the Bureau Procurement Chief (C1).
+
+**Non-selections and non-referral**
+
+3. On or about June 2, 2015, she was denied promotion under Job Announcement No. CV-15-PQ-1406482(MP), Contract Specialist, GS-1102-11/13.
+4. On June 8, 2015, she learned she was not selected under Job Announcement No. CV-15-PQ1360171(MP), Contract Specialist, GS-1102-11/13.
+7. On or about October 20, 2015, she was not selected under Job Announcement No. 1507681.
+8. On or about November 30, 2015, she was not selected under Job Announcement No. CV-16-PQ1538101(MP).
+10. On or about April 4, 2016, she was not selected under Job Announcement No. CV-16-PQ11624675(MP).
+11. On or about April 4, 2016, she was not referred under Job Announcement No. CV-16-PQ1651114(MP).
+13. On or about May 13, 2016, she was not selected under Job Announcement No. CV-16-PQ1671191(MP).
+14. On or about May 16, 2016, she was not selected for a position in Albuquerque, New Mexico, Announcement No. CRPA 78/16.
+15. On or about May 16, 2016, she was not selected for a position in Gallup, New Mexico, Announcement No. CRPA 81/16.
+16. On or about June 9, 2016, she was not selected for two vacancies in Reston, Virginia, Job Announcement Nos. CV-16PQ1696209(MP) and CV-16-PQ1696241(MP).
+17. On or about August 29, 2016, she was not selected for a Contract Specialist vacancy in Reston, Virginia, Job Announcement No. PQ1719227.
+
+**Harassment and leave**
+
+12. On or about May 2, 2016, C1, an Agency officer, harassed Complainant by hugging her without permission in the presence of other Agency personnel.
+19. From April 18, 2017, to May 4, 2018, the Agency delayed approving her leave requests and then made approval contingent on her completing certain work.
+
+## The AJ's Findings
+
+**No prima facie case.** The AJ found that Complainant failed to establish a prima facie case of discrimination or reprisal on claims 3, 4, 7, 8, 11, 13, 14, and 16. The reasoning varied by claim:
+
+- Claim 8: Complainant did not apply for the position.
+- Claims 3, 4, 7, 11, 13, and 16: Complainant did not meet the minimum qualifications because she lacked the Level II and Level III FAC-C certifications.
+- Claim 14: the selectee shared Complainant's national origin and sex and was older than Complainant. The AJ also found no evidence that the selecting official knew of Complainant's EEO activity.
+
+**Legitimate reasons and no pretext.** The AJ found that the Agency articulated legitimate, nondiscriminatory reasons for its actions and that Complainant failed to show pretext on claims 1, 2, 5, 6, 8, 15, 17, 18, 19, and 20. (The decision lists claim 8 under both findings. As summarized, it does not state the AJ's specific disposition of claims 9 and 10.)
+
+**Hostile work environment.** On claim 12, the AJ noted that Complainant did not claim the hug had any sexual aspect. The AJ found no evidence that Complainant's protected classes motivated the hug and concluded that this single act was not severe or pervasive enough to create a hostile work environment.
+
+## Arguments on Appeal
+
+**Complainant.** Through her attorney, Complainant asserts that the Agency systemically denied promotions to qualified Native Americans. Her brief makes the following specific points:
+
+- C1 decided that her 17-hour class on Analyzing Contract Costs was insufficient for Level II certification, even though another named Agency official had approved it.
+- C1 decided, without Office of Personnel Management (OPM) approval, that future contracting jobs would require Level II certification. Complainant asserts these actions were taken to reduce the hiring of Native Americans.
+- On claim 10, the Agency failed to articulate a legitimate, nondiscriminatory reason for its action.
+- On claim 12, C1's hug could "support an inference that [C1] has at least implicit bias that Native American women are inferior, like children, for whom an embrace from her is a gift. This is quite a different attitude that the equal respect that is normal among professionals." (Complainant's Brief at 25.)
+
+**Agency.** The Agency asks that its final order implementing the AJ's decision without a hearing, which found no discrimination, be affirmed.

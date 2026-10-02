@@ -1,0 +1,361 @@
+{
+ "part1": {
+  "claude-sonnet-5-5|P1": {
+   "drafts": 30,
+   "median_retention": {
+    "date": 0.7321428571428572,
+    "citation": 0.0,
+    "attribution": 0.3333333333333333,
+    "quote": 0.07142857142857142
+   },
+   "median_pooled": 0.3333333333333333,
+   "fabricated_total": {
+    "date": 19,
+    "citation": 0,
+    "quote": 6
+   },
+   "median_length_ratio": 0.47255092748813193
+  },
+  "claude-sonnet-5-5|P2": {
+   "drafts": 30,
+   "median_retention": {
+    "date": 1.0,
+    "citation": 1.0,
+    "attribution": 0.6666666666666666,
+    "quote": 0.8
+   },
+   "median_pooled": 0.975,
+   "fabricated_total": {
+    "date": 11,
+    "citation": 9,
+    "quote": 21
+   },
+   "median_length_ratio": 1.2302231105181418
+  },
+  "claude-sonnet-5-5|P3": {
+   "drafts": 30,
+   "median_retention": {
+    "date": 1.0,
+    "citation": 1.0,
+    "attribution": 0.7083333333333333,
+    "quote": 1.0
+   },
+   "median_pooled": 1.0,
+   "fabricated_total": {
+    "date": 7,
+    "citation": 0,
+    "quote": 15
+   },
+   "median_length_ratio": 0.9893743380746183
+  },
+  "claude-sonnet-5-5|P4": {
+   "drafts": 30,
+   "median_retention": {
+    "date": 1.0,
+    "citation": 1.0,
+    "attribution": 0.6666666666666666,
+    "quote": 1.0
+   },
+   "median_pooled": 1.0,
+   "fabricated_total": {
+    "date": 4,
+    "citation": 22,
+    "quote": 12
+   },
+   "median_length_ratio": 0.9398901906419703
+  },
+  "claude-haiku-4-5-20251001|P1": {
+   "drafts": 30,
+   "median_retention": {
+    "date": 0.4772727272727273,
+    "citation": 0.0,
+    "attribution": 0.29166666666666663,
+    "quote": 0.0
+   },
+   "median_pooled": 0.08846153846153847,
+   "fabricated_total": {
+    "date": 24,
+    "citation": 0,
+    "quote": 2
+   },
+   "median_length_ratio": 0.21817248459958932
+  },
+  "claude-haiku-4-5-20251001|P2": {
+   "drafts": 30,
+   "median_retention": {
+    "date": 0.7386363636363636,
+    "citation": 0.0,
+    "attribution": 0.6666666666666666,
+    "quote": 0.1111111111111111
+   },
+   "median_pooled": 0.5714285714285714,
+   "fabricated_total": {
+    "date": 10,
+    "citation": 0,
+    "quote": 13
+   },
+   "median_length_ratio": 0.6232866993955561
+  },
+  "claude-haiku-4-5-20251001|P3": {
+   "drafts": 30,
+   "median_retention": {
+    "date": 0.950956937799043,
+    "citation": 0.0,
+    "attribution": 0.6666666666666666,
+    "quote": 0.2857142857142857
+   },
+   "median_pooled": 0.6666666666666666,
+   "fabricated_total": {
+    "date": 22,
+    "citation": 0,
+    "quote": 14
+   },
+   "median_length_ratio": 0.9743784705421534
+  },
+  "claude-haiku-4-5-20251001|P4": {
+   "drafts": 30,
+   "median_retention": {
+    "date": 1.0,
+    "citation": 1.0,
+    "attribution": 1.0,
+    "quote": 1.0
+   },
+   "median_pooled": 1.0,
+   "fabricated_total": {
+    "date": 5,
+    "citation": 7,
+    "quote": 12
+   },
+   "median_length_ratio": 0.8762987584749493
+  }
+ },
+ "part3": {
+  "source": {
+   "correct": 145,
+   "items": 150,
+   "rate": 0.967,
+   "ci": [
+    0.924,
+    0.986
+   ]
+  },
+  "P1_sonnet": {
+   "correct": 116,
+   "items": 150,
+   "rate": 0.773,
+   "ci": [
+    0.7,
+    0.833
+   ]
+  },
+  "P4_sonnet": {
+   "correct": 146,
+   "items": 150,
+   "rate": 0.973,
+   "ci": [
+    0.933,
+    0.99
+   ]
+  },
+  "null": {
+   "correct": 17,
+   "items": 150,
+   "rate": 0.113,
+   "ci": [
+    0.072,
+    0.174
+   ]
+  }
+ },
+ "part2": {
+  "A": {
+   "deletion_hit": [
+    5,
+    5,
+    [
+     0.566,
+     1.0
+    ]
+   ],
+   "draft_hit": [
+    2,
+    2,
+    [
+     0.342,
+     1.0
+    ]
+   ],
+   "control_flag_rate": {
+    "dates": [
+     1,
+     5
+    ],
+    "citations": [
+     3,
+     5
+    ],
+    "attributions": [
+     2,
+     5
+    ]
+   },
+   "outcomes": {
+    "ok": 42,
+    "parse_error": 0,
+    "failed": 228
+   }
+  },
+  "B": {
+   "deletion_hit": [
+    5,
+    5,
+    [
+     0.566,
+     1.0
+    ]
+   ],
+   "draft_hit": [
+    2,
+    2,
+    [
+     0.342,
+     1.0
+    ]
+   ],
+   "control_flag_rate": {
+    "dates": [
+     4,
+     5
+    ],
+    "citations": [
+     5,
+     5
+    ],
+    "attributions": [
+     3,
+     5
+    ]
+   },
+   "outcomes": {
+    "ok": 42,
+    "parse_error": 0,
+    "failed": 228
+   }
+  },
+  "C": {
+   "deletion_hit": [
+    5,
+    5,
+    [
+     0.566,
+     1.0
+    ]
+   ],
+   "draft_hit": [
+    2,
+    2,
+    [
+     0.342,
+     1.0
+    ]
+   ],
+   "control_flag_rate": {
+    "dates": [
+     4,
+     5
+    ],
+    "citations": [
+     5,
+     5
+    ],
+    "attributions": [
+     3,
+     5
+    ]
+   },
+   "outcomes": {
+    "ok": 42,
+    "parse_error": 0,
+    "failed": 228
+   }
+  },
+  "D": {
+   "deletion_hit": [
+    4,
+    4,
+    [
+     0.51,
+     1.0
+    ]
+   ],
+   "draft_hit": [
+    0,
+    2,
+    [
+     0.0,
+     0.658
+    ]
+   ],
+   "control_flag_rate": {
+    "dates": [
+     3,
+     5
+    ],
+    "citations": [
+     3,
+     5
+    ],
+    "attributions": [
+     3,
+     5
+    ]
+   },
+   "outcomes": {
+    "ok": 39,
+    "parse_error": 0,
+    "failed": 231
+   }
+  },
+  "C0": {
+   "deletion_hit": [
+    5,
+    5,
+    [
+     0.566,
+     1.0
+    ]
+   ],
+   "draft_hit": [
+    2,
+    2,
+    [
+     0.342,
+     1.0
+    ]
+   ],
+   "control_flag_rate": {
+    "dates": [
+     0,
+     5
+    ],
+    "citations": [
+     0,
+     5
+    ],
+    "attributions": [
+     0,
+     5
+    ]
+   },
+   "outcomes": {
+    "ok": 40,
+    "parse_error": 0,
+    "failed": 230
+   }
+  }
+ },
+ "part2_complete": {
+  "ok": 205,
+  "planned": 1350
+ }
+}

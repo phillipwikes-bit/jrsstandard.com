@@ -1,0 +1,64 @@
+# FINDINGS
+
+## Overview
+This investigation examined complaints of discrimination and harassment filed by a Customs and Border Protection Officer (CBPO) at the San Ysidro Port of Entry, alleging violations of Title VII of the Civil Rights Act of 1964 and the Age Discrimination in Employment Act of 1967 (ADEA) occurring between May 2018 and March 2020.
+
+## Procedural Findings
+
+1. **Investigation Completion**: The Agency conducted a thorough investigation and provided Complainant with a complete Report of Investigation (ROI), notice of hearing rights, and opportunity to request an administrative hearing before an Equal Employment Opportunity Commission Administrative Judge.
+
+2. **Complainant's Opportunity to Respond**: Complainant was afforded adequate time to submit an affidavit in support of his claims. The investigator initially provided a two-week submission window. When Complainant requested additional time, an extension was granted, and he was approved for 16 hours of administrative leave on September 23-24, 2020 to prepare his response. Despite these accommodations, Complainant did not submit an affidavit.
+
+3. **Hearing Request Withdrawal**: Complainant timely requested a hearing before an Administrative Judge but subsequently withdrew that request.
+
+## Substantive Findings
+
+### Alleged Harassment Incidents (May 2018 - June 2019)
+
+The investigation examined the following alleged incidents:
+
+1. **TECS Memorandum of Counseling (May 31, 2018)**: The Branch Chief requested issuance of the memorandum after Complainant was instructed twice not to use improper TECS coding ("E/O if not in vehicle") and continued to violate this directive.
+
+2. **Supervisory Behavior (February-June 2019)**: The investigation found that while the Supervisory CBPO Officer (SCBPO-1) engaged in various interactions with Complainant, the Agency's position was that corrective actions were not warranted based on the circumstances.
+
+3. **Training Session Reprimand (April 17, 2019)**: SCBPO-1 verbally reprimanded Complainant for missing a morning training class.
+
+4. **Knife Display (June 2019)**: SCBPO-1 informed Complainant and another CBPO about his personal knife collection that he kept in his backpack.
+
+5. **TECS Access Reprimand (June 3, 2019)**: SCBPO-1 sent an email counseling Complainant regarding his expired TECS access. The SCBPO-1 explained that the TECS system automatically reminds users of recertification requirements 30 days prior to expiration, and he merely relayed this automated notification.
+
+6. **Schedule Change and Birthday Event (June 19, 2019)**: SCBPO-1 changed Complainant's schedule and solicited $20 for a birthday potluck. Investigation revealed that the ITU had a tradition of organizing voluntary potluck events, shifts were invited to participate early if desired, participation was optional, and the standard donation was $10 (CBPO-2 provided the additional $20 per Complainant's request to cover both employees).
+
+7. **Reassignment Announcement (August 16, 2019)**: SCBPO-1 and another Supervisory CBPO informed coworkers of Complainant's intended reassignment effective September 1, 2019, though the reassignment did not occur at that time.
+
+8. **Leave Request (August 16, 2019)**: Initial denial of Complainant's September 2019 leave request was reversed upon Complainant's inquiry.
+
+### Removal from Detail (March 8, 2020)
+
+The Intelligence Division Chief (CID Chief) removed Complainant from his ITU detail due to performance deficiencies. Specifically, the Watch Commander requested Complainant's assistance on a particular case with an expectation of expeditious response, which Complainant failed to provide and instead delegated to other Tactical Terrorism Response Team members. The CID Chief cited Complainant's failure to perform basic ITU officer duties as the basis for removal.
+
+### Dismissed Claims
+
+The Agency dismissed the following claims for lack of merit:
+- December 23, 2018: Non-receipt of year-end monetary award
+- April 21, 2019: Charge of leave without pay for untimely counselor contact
+- Comments by SCBPO-1 about three coworkers (failure to state a claim; Complainant showed no personal aggrievement)
+
+## Evidentiary Findings
+
+1. **Prima Facie Case**: The Agency's final decision concluded that Complainant did not establish a prima facie case of discrimination, as no evidence demonstrated that similarly situated employees outside Complainant's protected classes (age) were treated differently under comparable circumstances.
+
+2. **Legitimate, Nondiscriminatory Reasons**: The Agency articulated legitimate, nondiscriminatory reasons for all contested actions:
+   - TECS counseling: Failure to comply with policy instructions after two warnings
+   - TECS access reprimand: Automated system notification and standard administrative reminder
+   - Schedule change: Routine accommodation for voluntary social event
+   - Reassignment discussion: Standard workplace communication
+   - Removal from detail: Performance failure and task delegation contrary to supervisor's request
+
+3. **Absence of Discriminatory Animus**: Complainant submitted no evidence establishing discriminatory animus based on his age or prior protected EEO activity. The investigation found no comparative evidence that younger employees or employees without prior EEO complaints received more favorable treatment under similar circumstances.
+
+4. **Failure to Establish Causal Connection**: Complainant did not establish that any of the alleged harassment incidents were motivated by his protected class status.
+
+## Conclusion
+
+The investigation substantiated the Agency's position that Complainant failed to prove discrimination as alleged. All contested personnel actions were supported by legitimate, nondiscriminatory reasons grounded in policy compliance, performance deficiency, or routine administrative matters. The absence of comparative evidence, discriminatory statements, or proof of causal nexus to protected class status precluded a finding of discrimination.

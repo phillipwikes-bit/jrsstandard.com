@@ -1,0 +1,72 @@
+# FINDINGS
+
+## I. Scope and Basis
+
+These findings rest on the record as summarized, including the Report of Investigation (ROI) citations, the Agency's Final Agency Decision (FAD) of August 10, 2021, and the procedural history before the EEOC Administrative Judge (AJ). Complainant never gave a completed investigative affidavit. His account therefore comes only from the statements and materials cited at ROI 13-14, 47, and 120. Supervisor's account is sworn and detailed (ROI 76-110). Neither party submitted an appeal statement, so there are no contentions on appeal to weigh.
+
+## II. Undisputed or Documented Facts
+
+1. Complainant was a Deportation Officer (DO), GS-12, at the Agency's San Bernardina, California office. His first-line supervisor was the Supervisory Detention and Deportation Officer (Supervisor).
+2. **Protected-class information.**
+   - Complainant is Romanian, born in 1971 (age 48 at the time of filing), with prior EEO activity (HS-ICE-21417-2012 and HS-ICE-22663-2012).
+   - Supervisor is Vietnamese, born in 1977, with no prior EEO activity.
+   - DO 1 was born in 1982, with no prior EEO activity and unknown national origin.
+   - DO 2 was born in 1969, with prior EEO activity and unknown national origin.
+3. On August 28, 2018, Complainant attended an all-day Defensive Tactics training class from 8:00 a.m. to 4:00 p.m.
+4. On October 12, 2018, Supervisor reviewed Complainant's Performance Work Plan (PWP) with him. Complainant initiated EEO contact the same day.
+5. On the day in claim 2, Complainant claimed hours from 0500 to 1900: eight hours of regular pay and six hours of Administratively Uncontrollable Overtime (AUO) (ROI 91, 137).
+6. The PWP documents show Supervisor rated Complainant on five elements: Plans and Conducts Arrest, Custody Operations, Deportation, Partnering, and Prepares Reports and Other Correspondence (ROI 86-87, 98-110).
+
+## III. Findings by Claim
+
+### Claim 1: Denial of request to attend a concert with Complainant's daughter (July 26, 2018)
+
+- Complainant alleges Supervisor denied his request. He also alleges Supervisor treated him differently from DO 1, whose schedule was adjusted (ROI 13-14, 47, 120).
+- Supervisor states that on July 27, 2018, Complainant texted a request to change his schedule to 0500-1300 to attend a recreational event. Supervisor says he replied that the earliest start time was 0600 or that Complainant could take annual leave. Supervisor recalls Complainant said he would take leave but then reported to work (ROI 77-80, 90).
+- **Finding:** Supervisor gave a legitimate, nondiscriminatory explanation: a start-time limit with annual leave as the alternative. The record contains no evidence that the explanation is false or that it is a pretext for national origin, age, or reprisal discrimination. Complainant's claim of disparate treatment relative to DO 1 is unsupported by anything in the record beyond his assertion. The record does not show the terms on which DO 1's schedule was adjusted or whether DO 1 was similarly situated.
+- **Record discrepancy:** The claim is dated July 26, while Supervisor's account places the text exchange on July 27. The record does not resolve the difference. It is not material to the outcome.
+
+### Claim 2: Request to return to work after Complainant had left for the day (July 27, 2018)
+
+- Complainant alleges Supervisor asked him to return after he had already left (ROI 13-14).
+- Supervisor states he asked Complainant to come to his office during Complainant's duty hours. Complainant then finished his remaining hours and worked overtime from 4:30 p.m. to 7:00 p.m. (ROI 80-82, 91).
+- **Finding:** Complainant's own time claim (0500-1900, with six hours of AUO) is consistent with Supervisor's account and does not corroborate an after-hours recall. The record contains no evidence that the request was connected to Complainant's national origin, age, or prior EEO activity. The request, as described, is an ordinary supervisory request that is not facially discriminatory.
+
+### Claim 3: Pay discrepancies (Complainant became aware on October 1, 2018)
+
+- Complainant alleges Supervisor made pay discrepancies. He also alleges Supervisor told DO 2 of DO 2's AUO discrepancy before correcting DO 2's pay, but did not do the same for him (ROI 13-14, 47, 120).
+- Supervisor states that on October 4, 2018, Complainant and the Union President came to his office and claimed Complainant had worked AUO from 3:00 p.m. to 5:00 p.m. on August 28, 2018. Supervisor explained that the 3:00-4:00 p.m. hour fell within training time and was excludable from AUO, and he adjusted the pay accordingly (ROI 83-85, 93).
+- Supervisor states DO 2 was in the office when he found DO 2's discrepancy, so he could discuss it with DO 2 directly. He denies treating Complainant differently because of his protected classes (ROI 84-85).
+- **Finding:** The record supports that the adjustment resulted from the training-hour AUO exclusion, which is a legitimate, nondiscriminatory reason. It also supports that DO 2's availability explains any difference in how the two corrections were communicated. Complainant offered no evidence of pretext. DO 2 shares Complainant's prior EEO activity, so DO 2 does not serve as a comparator outside Complainant's protected group on the reprisal basis. DO 2's national origin is unknown, and DO 2 is older than Complainant.
+- **Gap:** The record does not state who made the original pay entry or how the error arose. It is also unclear whether Complainant is challenging the correction or the original discrepancy.
+
+### Claim 4: Admonishment in the PWP and rating on an element not in the PWP (October 12, 2018)
+
+- Complainant alleges Supervisor admonished him several times in the PWP and rated him in an area not in his official PWP (ROI 13, 47).
+- Supervisor denies both allegations. He states Complainant became upset and walked away, which ended any discussion (ROI 86-87, 98-110).
+- **Finding:** The PWP documents in the record show ratings only on the five listed elements, and Complainant did not identify the element he says was improper. The record contains no PWP language identified as an admonishment. Complainant's allegation is unsupported, and no evidence of pretext or discriminatory motive appears.
+
+## IV. Hostile Work Environment
+
+- Claim 2 is a non-discrete allegation. The Agency analyzed it together with the discrete acts in the other claims under the harassment standard.
+- **Finding:** To establish harassment, Complainant had to show unwelcome conduct based on a protected class that was sufficiently severe or pervasive to alter the conditions of employment. The record shows a limited set of interactions over about three months (July to October 2018). Each has a documented, non-discriminatory explanation. Nothing in the record links Supervisor's conduct to Complainant's national origin, age, or prior EEO activity. The incidents as described are not severe or pervasive. Complainant did not establish harassment.
+
+## V. Procedural Findings
+
+1. Complainant filed his formal complaint on June 6, 2019. The Agency investigated, and Complainant timely requested a hearing.
+2. Complainant did not provide a completed investigative affidavit despite multiple requests from the EEO investigator and an AJ order of May 11, 2021.
+3. The AJ issued an Order to Show Good Cause on June 7, 2021, with a response due June 17. Complainant's June 21 email, which was late, apologized but supplied no affidavit.
+4. On June 22, 2021, the AJ dismissed the matter from the hearing process as a sanction and remanded it to the Agency. The Agency issued its FAD on August 10, 2021, under 29 C.F.R. § 1614.110(b).
+5. No appeal statement was filed by either party.
+
+## VI. Items for Investigator Follow-Up
+
+- **Timeliness:** Claims 1 and 2 (July 26-27, 2018) predate the October 12, 2018 EEO contact by more than 45 days. The summarized record does not show that the Agency addressed timeliness.
+- **Supervisor's knowledge:** The record does not establish whether Supervisor knew of Complainant's 2012 EEO activity. That knowledge is necessary to a reprisal finding.
+- **Missing comparator data:** The record has no information on DO 1's schedule adjustment or on DO 2's national origin.
+- **Complainant's account:** Without a sworn affidavit, his allegations rest on the statements cited at ROI 13-14, 47, and 120.
+- **Citation and date inconsistencies:** The claim 1 date (July 26 vs. July 27), the ROI citations (e.g., "13-4"), and the location name ("San Bernardina") should be checked against source documents.
+
+## VII. Summary Conclusion
+
+On this record, Complainant did not establish by a preponderance of the evidence that the Agency discriminated against him based on national origin, age, or reprisal. He also did not establish that he was subjected to a hostile work environment. Management gave legitimate, nondiscriminatory reasons for each challenged action, and the record contains no evidence of pretext or discriminatory motive. The Agency's FAD is consistent with the evidence summarized above.

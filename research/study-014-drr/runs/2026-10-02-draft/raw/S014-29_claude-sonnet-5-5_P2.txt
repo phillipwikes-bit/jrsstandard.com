@@ -1,0 +1,75 @@
+# FINDINGS
+
+*Draft prepared from the record provided. Bracketed items flag gaps or inconsistencies to resolve before finalizing.*
+
+## 1. Background
+
+At the time of the events at issue, Complainant was a Mail Handler at the Agency's Incoming Mail Processing & Distribution Center in Linthicum, Maryland. His first-line supervisor ("Supervisor") and second-line supervisor ("Manager") were involved in the August 19, 2015 incident. Complainant was removed from employment following that incident. He alleges the removal was discriminatory based on race, gender, and genetic information (size, under GINA). [Complainant's specific race and sex are not stated in the record. Insert them.]
+
+## 2. Findings of Fact
+
+### A. The August 19, 2015 incident
+
+**Facts supported by the record:**
+
+1. After a meeting with mail handlers about mistaken labels on containers, Complainant called Manager "sorry" and/or "a sorry ass." (ROI 19-24, 78, 85, 89-90)
+2. Complainant did not immediately leave the work floor when Manager told him to. (ROI 21, 78)
+3. After Manager threatened to call the police, Complainant walked with Supervisor to the conference room. (ROI 78)
+4. In the conference room, Complainant said of Manager, "He's a Bitch! He's a Bitch!" (ROI 78-79, 84, 90)
+5. On the way to the work floor to retrieve his belongings, Complainant yelled, "Manager is a Bitch—Bitch Ass!" (ROI 79, 84, 90)
+6. While being escorted out of the building, Complainant punched a hole in a wall and said, "[Manager] is a Bitch—Fuck Him!" (ROI 80, 90)
+7. Management placed Complainant on Emergency Placement status as a result. (ROI 23-24)
+
+**Complainant's account:**
+
+- Complainant stated that on the way to the conference room he said, "This is bullshit," rather than the statements attributed to him. (ROI 23)
+- He did not remember exactly what he said to himself while being escorted out, but acknowledged taking "a swipe" at a wall. (ROI 23-24)
+
+**Assessment:** Complainant's account partly corroborates the Agency's. He acknowledges contact with the wall and does not specifically deny the earlier remarks to Manager or the delay in leaving the floor. He disputes only the wording of his statements on the way to the conference room and does not recall his words during the escort. The Agency's version is supported by multiple ROI citations (pp. 78-80, 84-85, 89-90). On this record, the preponderance of the evidence supports a finding that the conduct occurred substantially as the Agency described. [Confirm whether the cited ROI pages are witness statements from persons other than Supervisor and Manager. If so, identify them, since that would strengthen the finding.]
+
+### B. Disciplinary process
+
+1. On August 24, 2015, Complainant attended a Pre-Disciplinary Interview with his union representative, Supervisor, and Supervisor 2. Supervisor stated that the Agency would recommend removal. (ROI 25, 79)
+2. On August 31, 2015, Supervisor recommended removal to the Labor Manager. (ROI 83-86)
+3. Supervisor issued the removal notice, citing profanity, failure to follow instructions, and punching a hole in a wall. She also noted prior discipline: a 10-day suspension for Failure of Obedience to Orders and a 14-day suspension for violating the Workplace Violence Zero Tolerance Policy.
+4. The Agency charged improper conduct, violation of the zero-tolerance policy, and violation of the joint statement on violence and behavior in the workplace.
+
+**Items to reconcile:**
+- The record gives both September 4, 2015 and September 11, 2015 in connection with the removal. The first appears in a truncated sentence. The AJ's decision refers to a Notice of Removal issued September 11, 2015. Confirm the issuance date and the effective date of removal.
+- The record does not cite the underlying documents for the prior suspensions or state when they were issued. Obtain and cite them.
+
+### C. Procedural history
+
+1. The Agency accepted the complaint for investigation. At the close of the investigation, it gave Complainant the ROI and notice of his right to request a hearing before an EEOC Administrative Judge.
+2. Complainant timely requested a hearing.
+3. The Agency moved for a decision without a hearing on April 24, 2017. Complainant did not object.
+4. The AJ granted the motion and issued a decision without a hearing on August 21, 2020. [The roughly three-year interval between motion and decision may warrant a note in the case file.]
+5. The Agency issued a final order adopting the AJ's findings.
+
+## 3. Findings on the Allegations
+
+### A. Race and gender
+
+- The Agency articulated legitimate, nondiscriminatory reasons for the removal: confrontational, disrespectful, and violent conduct in violation of the Zero Tolerance Policy, failure to follow instructions, and the prior disciplinary history.
+- The record contains no evidence, and Complainant offered none, that race or gender played any role in the decision. No comparator evidence or other indication of pretext appears in the record. [Confirm whether any comparator information was sought during the investigation.]
+- **Finding:** The record does not establish that the removal was motivated by race or gender.
+
+### B. Genetic information (size) under GINA
+
+- The AJ found that Complainant could not establish a prima facie case because he did not show that he is entitled to protection under the statute, that he suffered an adverse employment action, or that the action supports an inference of discrimination based on genetic information.
+- [Note a discrepancy: removal is plainly an adverse employment action. The AJ's reasoning, as summarized, appears to say otherwise in the GINA context. Verify the AJ's exact language before relying on this part of the summary.]
+- **Finding:** The record does not establish that the removal was based on genetic information. Size or physical stature is not, without more, "genetic information" as the statute defines it, and no evidence connects the Agency's decision to Complainant's size.
+
+### C. Overall conclusion
+
+Viewing the evidence in the light most favorable to Complainant, he did not prove by a preponderance of the evidence that he was discriminated against on the basis of race, gender, or genetic information when he was issued the Notice of Removal. The Agency's final order adopting the AJ's decision is consistent with the record.
+
+## 4. Open Items Before Finalization
+
+1. Complainant's race and sex.
+2. Date of the Notice of Removal (September 4 vs. September 11, 2015) and effective date of removal.
+3. Source documents for the prior 10-day and 14-day suspensions.
+4. Identity and role of the witnesses behind the ROI citations.
+5. Whether comparator evidence exists.
+6. The AJ's exact reasoning on the GINA claim.
+7. The complete text of the truncated sentence at the start of the record describing the removal charges.

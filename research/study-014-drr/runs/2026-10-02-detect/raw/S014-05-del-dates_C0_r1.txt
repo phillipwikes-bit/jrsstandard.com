@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion regarding alleged harassment is anchored to specific statements: Complainant's detailed account of six distinct incidents with attributed quotes, Supervisor's denial, Manager's denial of receiving reports, and Supervisor 2's partial corroboration of one threat (without racial content)."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The investigative structure is present (affidavits collected, denials documented), but the record does not explicitly trace how credibility determinations were reached or why Supervisor 2's partial corroboration did not trigger further investigation or reconcile his account with Complainant's broader allegations."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can identify what was alleged and by whom, but cannot determine from the record alone why the Agency's final decision rejected Complainant's account without articulated findings on witness credibility, consistency of her narrative, or evidentiary weight assigned to competing statements."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence of conflicting accounts exists (Complainant vs. Supervisor; Complainant vs. Manager; Supervisor 2's partial acknowledgment of one threat), but the record does not show what investigative steps were taken to reconcile these conflicts, whether corroborating witnesses were sought, or what standard was applied to resolve the credibility dispute."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "The record contains only 'late January/early at one point' for the alleged incidents, undated investigative affidavits, and vague references to 'at one point' for the AJ's orders and conference date, rendering chronological reconstruction of when events occurred and when investigative steps were completed impossible."
+    }
+  },
+  "remediation_note": "The record requires explicit documentation of investigative methodology (witnesses contacted, documents reviewed, timeline of inquiry), articulated credibility findings with reasoning, and complete dates for all material events and procedural milestones. The temporal gaps ('at one point') must be replaced with specific dates or at minimum month-year designations to enable later reconstruction.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "temporal_reconstructability, reasoning_traceability, and accountability_support are materially compromised by missing dates, unexplained credibility determinations, and incomplete investigative documentation.",
+    "compliant_version": "A revised record must include: (1) specific dates or month-year for all alleged incidents and investigative steps; (2) documented analysis of how credibility was assessed between Complainant's detailed account and Supervisor's flat denial, including consideration of Supervisor 2's corroboration of the threat element; (3) identification of all witnesses contacted and those not contacted with explanation; (4) explicit findings on whether the threshold for harassment was met under applicable law, applying the evidence to legal standards; and (5) a clear decision trail showing how the Agency moved from conflicting evidence to its no-discrimination conclusion."
+  }
+}
+```

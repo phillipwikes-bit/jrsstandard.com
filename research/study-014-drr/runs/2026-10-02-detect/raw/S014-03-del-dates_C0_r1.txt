@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record conflates procedural timeline facts with substantive discrimination findings without clearly identifying which basis supports the Agency's final conclusion that Complainant 'failed to prove discrimination'—procedural closure or merits review."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The causal chain from ROI investigation findings to the Agency's final decision is absent; the record documents delivery attempts and affidavit amendments but does not trace how the Agency evaluated the four discrimination allegations or applied legal standards."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer months or years later cannot reconstruct from this record alone whether the final decision rests on untimely hearing request dismissal, substantive lack of discrimination evidence, or both, due to narrative organization that interleaves procedural and investigative facts without clear separation or conclusion synthesis."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record provides evidence of investigation completion, notice attempts, and affidavit revisions, but does not include the ROI findings themselves or the Agency's substantive analysis of the four alleged discrimination bases, limiting ability to assess evidentiary sufficiency for the merits conclusion."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Specific dates are sparse (only case docket number and 30-day download windows cited); the sequence of complaint filing, ROI completion, affidavit submissions, notice attempts, hearing request receipt, and final decision issuance can be partially ordered but lacks precise timestamps or intervals to fully reconstruct chronology."
+    }
+  },
+  "remediation_note": "The record must clearly separate procedural findings (timeliness of hearing request) from substantive investigation conclusions (whether discrimination occurred on each of four bases), cite the actual ROI, and present the Agency's reasoning for each allegation with specific dates and decision rationale before finalization.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support, temporal_reconstructability",
+    "compliant_version": "A compliant record would: (1) segregate procedural timeline with exact dates of ROI completion, all notice transmissions, hearing request receipt, and final decision issuance; (2) summarize the ROI's findings and conclusions on each of the four discrimination allegations (overtime denial, verbal abuse response, micromanagement, schedule request denial) with evidentiary citations; (3) explain the Agency's legal reasoning for each finding (causation, temporal proximity, comparator analysis, retaliation nexus); (4) state explicitly whether the final decision rests on procedural grounds (untimely hearing request under 29 C.F.R. § 1614.108(f)) or merits dismissal, or both; and (5) include a chronology table with all key dates and decision makers identified."
+  }
+}
+```

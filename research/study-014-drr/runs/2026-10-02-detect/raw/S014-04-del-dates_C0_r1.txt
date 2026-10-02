@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion rests on identifiable evidentiary bases: affidavits from Complainant, PM, S1, S2, policy citations (Handbook M-41 Section 812), medical documentation, OHM guidance, and the investigative record."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is traceable from specific incidents (five claims) through investigator affidavits, supervisory accounts, policy review, to AJ findings of nondiscriminatory justification grounded in unrebutted operational facts."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the full case: complaint allegations are itemized (Claims 1–5), evidence from each party is documented verbatim in affidavits, policy standards are cited, and the AJ's reasoning connects predicates (phone use, seatbelt violations, insubordination) to discipline without age reference."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the nondiscriminatory findings on procedural grounds (affidavits, policy alignment, lack of comparative evidence by Complainant), but does not deeply probe whether the supervisor conduct itself—particularly the locker-room confrontation and repeated bathroom monitoring—could constitute harassment independent of discriminatory motivation, nor does it document whether comparators existed in the Agency's actual workforce."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The sequence of five incidents is clear and chronological, but the record lacks specific dates for each incident, the investigation timeline, and the interval between complaint filing and investigative completion, limiting precise temporal reconstruction."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should: (1) include incident dates and investigation milestones for temporal precision; (2) document whether Agency records were searched for comparator employees and what methodology was used; (3) separately address whether supervisor conduct (bathroom follow, locker-room confrontation) constitutes hostile-environment harassment independent of age animus, with explicit findings on that distinct theory.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support and temporal_reconstructability",
+    "compliant_version": "A compliant version would timestamp each incident and investigation phase; conduct and document a formal comparator search by age cohort and disciplinary history; separately analyze whether the supervisory conduct alleged constitutes per se harassment or requires proof of discriminatory motive; and explicitly resolve any tension between the policy-compliant discipline rationale and the alleged pattern of aggressive monitoring specific to Complainant."
+  }
+}
+```

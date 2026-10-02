@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies nine specific dated incidents and two legal bases: Rehabilitation Act violation for harassment based on disability and forced work outside medical restrictions, plus procedural dismissal under 29 C.F.R. §1614.107(a)(1) for OWCP collateral attack."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces the procedural path (complaint filed, ROI conducted, dismissal affirmed, hearing denied, final decision issued) but does not detail the investigative findings, evidence examined, or the logical connection between specific incidents and the conclusion that discrimination was not proved."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the Agency concluded Complainant failed to prove discrimination without access to the ROI findings, witness statements, documentation reviewed, or analysis of each of the nine incidents against the Rehabilitation Act standard."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record states a conclusion ('failed to prove discrimination') but provides no evidentiary detail—no summary of what the investigation found regarding the Manager's actions, medical restrictions, harassment claims, or the mail cart denial—making it impossible to assess whether the conclusion is supported."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record clearly establishes dates for each alleged incident (November 7, 2020 through April 15, 2021), the complaint filing date (April 17, 2021), and the procedural sequence (ROI, hearing denial, final decision), allowing chronological reconstruction."
+    }
+  },
+  "remediation_note": "The record must incorporate or reference key investigative findings—specifically, evidence or reasoning regarding each dated incident, the Manager's stated justifications, medical documentation reviewed, and analysis of whether actions fell outside medical restrictions—to support the discrimination conclusion. Without this, the final decision lacks the evidentiary foundation required for accountability and cold-reviewer reconstruction.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support, cold_reviewer_clarity, reasoning_traceability",
+    "compliant_version": "The record should include a summary of investigative findings for each incident (e.g., what evidence showed regarding the AWOL charge, leave request approval status, mail cart denial, and harassment claims), the Agency's stated rationale for each action, and explicit analysis of how the evidence does or does not establish failure to accommodate or harassment based on disability under the Rehabilitation Act, enabling a later reviewer to understand and evaluate the conclusion independently."
+  }
+}
+```

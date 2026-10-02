@@ -1,0 +1,81 @@
+# FINDINGS
+
+## I. Overview
+
+This investigation examined allegations of discrimination, harassment, and privacy violations brought by a Registered Nurse employed at the Veterans Affairs Medical Center (VAMC) in West Los Angeles, California. The complainant alleged that her supervisor, the Nurse Manager for the 4 East Medical-Surgical Unit (S1), and various coworkers subjected her to discriminatory treatment based on her disability, made unauthorized disclosures of her confidential medical information, and created a hostile work environment.
+
+## II. Claim 1: Demand to Work Twelve-Hour Shifts
+
+The complainant alleged that S1 demanded she work twelve-hour shifts, which she refused. The Agency's investigation found undisputed evidence that the complainant remained on her eight-hour tour of duty at all times. Consequently, this claim was not supported by the record. The Agency further noted that even if the complaint were credited as true, there was no indication of discriminatory motive. This claim is **not substantiated**.
+
+## III. Claim 2: Unauthorized Disclosure of Medical Information
+
+The complainant alleged that in May 2018 (later clarified as November or December 2017), S1 publicly disclosed her confidential medical information regarding her surgery by stating in the hallway that she should seek surgery at another hospital, thereby violating the Rehabilitation Act.
+
+**S1's Account:** S1 stated she discussed the complainant's surgery privately with the complainant to offer emotional support and denied making any public disclosure of confidential medical information.
+
+**Witness Statements:** The Agency interviewed six coworkers identified by the complainant as potential witnesses. All six coworkers confirmed that S1 did not disclose any information about the complainant's surgery or other confidential medical information to them. Instead, the witnesses reported learning of the complainant's surgery from the complainant herself.
+
+**Complainant's Admissions:** The complainant acknowledged in her testimony that she told at least one coworker about her planned surgery and its cancellations.
+
+**Agency Findings:** The Agency concluded that the complainant failed to demonstrate that S1 improperly disclosed her confidential medical information. The Agency found no credible evidence beyond the complainant's subjective testimony that anyone overheard the alleged statement. The Agency noted that even if crediting the complainant's version of events and assuming others overheard the statement (for which no evidence exists), the vague reference to another facility does not constitute a meaningful disclosure of confidential medical information. This claim is **not substantiated**.
+
+## IV. Claim 3: Unauthorized Access to Medical Records
+
+The complainant alleged that during January 2019, she was required to work with coworkers who had improperly accessed her confidential medical records without authorization.
+
+**Background:** In April 2019, the complainant requested a Sensitive Patient Access Report (SPAR) from the Privacy Office covering the prior three years. Upon review, she identified six coworkers she believed had improperly accessed her records and requested investigation.
+
+**Privacy Investigation Findings:** The Privacy Office investigation determined that:
+
+- **Coworker 4** improperly accessed the complainant's medical records on June 15, 2018, without valid justification. Coworker 4 stated she accessed the records because "everyone was talking about [the complainant's] surgery" and attempted to check the complainant's schedule. The investigation confirmed this access was intentional and without valid reason.
+
+- **Coworker 3** accessed the complainant's medical records six times throughout 2018 and 2019 without valid justification. Coworker 3 stated she wanted to check the schedule because the complainant had written her up on several occasions, and she did not want to work the same shift as the complainant. The investigation confirmed this access was intentional and without valid reason.
+
+- The other four coworkers identified by the complainant accessed her records within their job responsibilities and for valid purposes.
+
+**Disciplinary Action:** Following the privacy investigation, two employees (Employee 1 and Employee 2) received disciplinary action. Employee 1 received a seven-day suspension for Privacy Act Violation. Employee 2 received a one-day suspension (mitigated from seven days) for Privacy Act Violation.
+
+**Agency Analysis:** The Agency acknowledged that privacy violations occurred but noted that such violations do not constitute unlawful discrimination under the EEOC's purview absent evidence of discriminatory animus based on a protected characteristic. The complainant provided no evidence that the privacy violations resulted from discrimination based on her disability. The investigation indicated that the coworkers accessed her records for personal reasons unrelated to her disability (to determine her schedule and to avoid working with her). The Agency further noted that S1 promptly reported the complainant's privacy concern to the Privacy Office, a thorough investigation was conducted, and appropriate disciplinary action was taken.
+
+**Regarding Claim 12 (Interference with Privacy Investigation):** The complainant alleged that an unnamed employee interfered with her privacy violation investigation on June 6, 2019. The Agency found no indication of any resistance or interference from complainant's coworkers during the Privacy Investigation. The Agency noted that a thorough investigation was completed with all identified employees interviewed and appropriate discipline imposed. This allegation is **not substantiated**.
+
+## V. Claim 4: Failure to Resolve Sick Leave Issues
+
+The complainant alleged that during January 2019, management failed to resolve her sick leave issues in a timely manner. The record does not contain sufficient detailed findings regarding this allegation. Based on available documentation, the Agency's position on this claim is unclear from the provided record.
+
+## VI. Remaining Allegations: Hostile Work Environment
+
+The complainant asserted multiple incidents creating a hostile work environment based on her disability:
+
+- **March 5, 2019:** A coworker referred to the complainant as "a 50-year-old mental patient."
+
+- **May 1, 2019:** S1 told a coworker who allegedly was bullying the complainant not to worry and that she "had her back."
+
+- **May 1, 2019:** The complainant was accused of being intimidating and aggressive by a coworker.
+
+- **May 3, 2019:** The complainant was accused of sending an email from another employee's account; S1 requested she sign a misconduct form.
+
+- **May 28, 2019:** S1 paced in front of the complainant's work area and accused her of misconduct.
+
+- **August 20, 2019:** An article about nurses with mental disabilities was posted on the report table, which the complainant believed was directed at her.
+
+- **Unspecified dates:** S1 "split the staff against each other" and failed to properly resolve floor issues.
+
+**Agency Findings on Hostile Work Environment Claim:**
+
+The Agency found that the complainant failed to establish a prima facie case of unlawful harassment based on disability. Key findings include:
+
+1. **No Evidence of Disability-Based Animus:** The Agency noted that S1 was unaware the complainant had a disability. S1 was only aware that the complainant had taken bereavement leave following a parent's death, which S1 did not associate with any mental or other disability.
+
+2. **Credibility of Witnesses:** Witness 1 provided only a vague statement that S1 allegedly told him the complainant was having "mental issues." This statement was contradicted by S1's testimony. Notably, Witness 1 has not worked for the Agency since 2018. Both witnesses who provided statements expressed personal complaints about S1, which the Agency found rendered their statements less credible.
+
+3. **Lack of Nexus to Protected Characteristic:** Even accepting the complainant's allegations as true, she presented no evidence she was singled out for treatment based on her disability. The incidents cited appear to relate to workplace conduct, management decisions, and interpersonal conflicts rather than disability-based discrimination.
+
+4. **Temporal Connection:** The incidents occurred over an extended time period with varying contexts and participants, suggesting they do not form a cohesive pattern of disability-based harassment.
+
+**Agency Conclusion:** The Agency concluded that the complainant failed to show that she was subjected to unlawful harassment based on her disability. **These claims are not substantiated**.
+
+## VII. Overall Conclusion
+
+The Agency found that the complainant did not establish a credible basis for any of the primary discrimination and harassment allegations. While the investigation confirmed that unauthorized access to the complainant's medical records occurred and that appropriate disciplinary action was taken, no evidence supported that such violations resulted from discriminatory animus based on the complainant's disability. The Agency concluded that the complainant failed to establish unlawful discrimination or harassment in violation of applicable law.

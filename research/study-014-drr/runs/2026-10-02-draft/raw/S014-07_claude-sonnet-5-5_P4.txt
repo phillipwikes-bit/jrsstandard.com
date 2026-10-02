@@ -1,0 +1,35 @@
+**Case File Summary: Investigation Record (EEO Harassment Complaint)**
+
+**Parties and position:** Complainant was a Taxpayer Advocate with the Agency in Laguna Niguel, California, during the period at issue.
+
+**Complaint and acceptance**
+- On November 4, 2021, Complainant filed a formal EEO complaint alleging discrimination based on race (Hispanic) and national origin (Mexican).
+- By letter dated November 16, 2021, the Agency accepted the complaint for investigation. It framed the issue as whether a co-worker who was an On-the-Job Instructor (OJI) and a Lead subjected Complainant to harassment based on race/national origin (Hispanic/Mexican) on multiple occasions from June 2020 through July 2021. The alleged incidents, among other matters, were that the OJI/Lead:
+  1. Made fun of Complainant's accent and said she disliked speaking to Complainant.
+  2. Tried to sabotage Complainant's work by creating a list of inventory late actions and expired casework, and purposely gave her misinformation on processing cases.
+  3. Filled Complainant's calendar with unrealistic appointments that not even experienced employees could complete.
+  4. Advised Complainant's manager to have her process a fraudulent tax return.
+
+**Procedural history**
+- After the investigation, the Agency gave Complainant the report of investigation and notice of her right to request a hearing before an EEOC Administrative Judge.
+- Complainant did not request a hearing within the time frame in 29 C.F.R. § 1614.108(f).
+- The Agency then issued a final decision (FAD) under 29 C.F.R. § 1614.110(b), finding no discrimination. The Agency is the decision-maker for the FAD.
+
+**Agency's final decision (criteria and reasoning)**
+- On incident 1, the Agency determined that "assuming [Complainant's initial supervisor, S1] made these and other similar comments," the statements would be unwelcome verbal conduct based on Complainant's protected categories of race/national origin/ethnicity. FAD at 12.
+- On incidents 2, 3, and 4, the Agency found that Complainant "has produced no persuasive evidence" that management's actions were harassment based on her protected classes. It found her "uncorroborated statements" of discriminatory motive insufficient to meet her burden of showing harassment. FAD at 13.
+- The Agency also noted that Complainant's allegations were addressed through an internal anti-harassment inquiry, which did not substantiate her claims. FAD at 13.
+
+**Appeal: Complainant's contentions**
+- The FAD did not properly state that the alleged harasser was initially her former manager, before serving as her Lead and OJI.
+- S1 made derogatory comments about her accent from her first day of employment.
+- She notified S2 about S1's behavior and requested a change of supervisor, but S2 ignored the harassment and let it continue.
+
+**Appeal: Agency's response**
+- The Agency asks that its final decision finding no discrimination be affirmed, and reiterates that Complainant failed to establish harassment.
+- On the accent comments, the Agency argues: "[a]ssuming the truth of Complainant's allegations, nothing in S1's comments indicate she mocked Complainant's accent or that the comments were based on her being of Mexican descent. At best, [S1] indicated she expressed difficulty in communicating with Complainant. At worst, S1's comments were the type of insensitive, hurtful comments that the Commission has declined to find as discriminatory." Agency Response Brief at 11.
+- The Agency asserts that the claims fall short of the severity and pervasiveness required for a hostile work environment.
+- The Agency states that management promptly separated Complainant and S1. After Complainant raised the harassment issue in late July 2021, S4 separated the two, and Complainant stated she had no further contact with S1 afterward.
+- As to Complainant raising the matter with S2, the Agency says it "appears" she only expressed a "lack of support." Agency Response Brief at 17-18.
+
+**Note on the record:** The excerpt ends with the parties' positions on appeal. It contains no appellate determination, no ROI page citations, and no exhibit citations. The only record citations are FAD at 12 and 13 and Agency Response Brief at 11 and 17-18. The record does not define the roles of S2 and S4 beyond what is stated above.

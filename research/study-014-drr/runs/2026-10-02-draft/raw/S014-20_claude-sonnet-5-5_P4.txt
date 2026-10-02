@@ -1,0 +1,29 @@
+**Case File Summary**
+
+**Parties and position:** At the time of the events, Complainant was a Rural Carrier at the Agency's Acton Station in Granbury, Texas.
+
+**Claims as defined:**
+1. Since on or about January 5, 2018, to present, and after the route count and adjustment, Complainant was not paid correctly for working her route.
+2. From April 25, 2018, to present, Complainant was not paid for overtime and/or holiday work.
+3. On December 14, 2018, her request for package assistance on her route was denied.
+
+**Procedural history:**
+- At the end of the investigation, the Agency gave Complainant a copy of the report of investigation and notice of her right to request a hearing before an EEOC Administrative Judge (AJ). Complainant requested a hearing.
+- The AJ decided *sua sponte* that the complaint did not warrant a hearing and issued a Notice of Proposed Summary Judgment.
+- Complainant did not object to the Notice within the required timeframe. The AJ then issued a decision by summary judgment for the Agency.
+- The Agency issued a final order fully implementing the AJ's finding that Complainant failed to prove discrimination as alleged. This appeal followed.
+
+**Decision-maker and findings:**
+- **Claims 1 and 2 (GINA):** The AJ concluded that Complainant did not establish a prima facie case because she alleged no facts related to the basis of genetic information. The AJ reasoned that Complainant's affidavit responses did not address genetic information. She also did not allege that management was motivated by, or otherwise used, genetic information as a basis for its actions.
+- **Claim 3:** The AJ found that on December 14, 2018, Complainant asked one of her supervisors, the Supervisor Customer Service, for package assistance, and the supervisor denied the request. The supervisor's statements, as averred, were:
+  - Complainant had already received some help that day but asked for more, even though only one additional parcel met the requirements for additional assistance.
+  - That package was taken away from Complainant, so it did not need to be delivered that day.
+  - The other packages did not meet the applicable criteria.
+
+  **Criteria applied to the package request:** Complainant's vehicle could accommodate the volume, she was not at risk of missing the mail truck, and the day's volume did not merit additional assistance.
+
+  The AJ concluded that the Agency gave legitimate, nondiscriminatory reasons for the denial, and that Complainant failed to rebut them as pretext for retaliation.
+
+**Scope of claim 2:** In her affidavit in the report of investigation, Complainant crossed out and initialed the word "holiday" in the definition of this claim. The appellate decision therefore found that her claim does not include allegations about holiday hours.
+
+**Note on the record:** The record contains no ROI page numbers or exhibit citations, and none are supplied here. It also does not state the final outcome of the appeal.

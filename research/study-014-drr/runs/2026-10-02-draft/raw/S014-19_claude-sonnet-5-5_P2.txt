@@ -1,0 +1,60 @@
+# FINDINGS
+
+## I. Scope and Basis
+
+These findings rest on the Report of Investigation (ROI) exhibits and affidavits cited below: Affidavit A (Complainant), Affidavit B (first-line supervisor, "S1"), Affidavit C (second-line supervisor, "S2"), and the Health & Resource Management (HRM) Manager's statements. Bates numbers are given where the record supplies them.
+
+**Record gap:** The statement of the accepted claim is incomplete in the source material. It begins mid-sentence ("…lumbosacral sprain) when, from July 5, 2019 through July 31, 2019, it did not allow her to work"). The claim should be confirmed against the original acceptance letter before this section is finalized. As written, the claim is that the Agency did not allow Complainant to work from July 5 through July 31, 2019.
+
+## II. Findings of Fact
+
+### A. Complainant's Position
+1. During the relevant period, Complainant was a Mail Handler in a Modified Assignment (Limited Duty), PS 4/P, at the Church Street Station, New York, New York.
+2. Complainant does not contest that her modified assignment included Clerk Craft duties.
+
+### B. The Union Grievance
+3. On June 15, 2019, the American Postal Workers Union, AFL-CIO, filed a Step 2 grievance. It alleged that Complainant's performance of Clerk Craft duties violated the collective bargaining agreement because someone outside the Clerk Craft was performing Clerk Craft work. The union also requested a list of her Modified Assignment duties. (ROI, Exhs. 4, 7; Affidavit C at 3, ¶ 15; Bates Nos. 180, 207, 146.)
+
+### C. Request for Updated Medical Documentation
+4. On June 11, 2019, HRM informed Complainant that her most recent medical note on file was dated January 18, 2011. HRM asked her to submit an updated note from her doctor stating her medical restrictions. HRM repeated the request on June 21, 2019. (ROI, Affidavit A at 16, Bates No. 21.)
+5. S2 stated the request was made so the Agency could draft a new Offer of Modified Assignment within her current restrictions that did not cross crafts. (Affidavit C at 3, ¶ 15, Bates No. 146.) S1 gave the same explanation. (Affidavit B at 3, ¶ 15, Bates No. 138.)
+6. Complainant did not submit a note in response to the June requests. She believed it was unnecessary.
+7. At a date not established in the record, S2 told Complainant not to return to work until she submitted an updated doctor's note describing her restrictions. (Affidavit A at 3, ¶ 15, Bates No. 92.) Complainant expected to be allowed to work once she provided the note.
+
+### D. The July 2, 2019 Doctor's Letter
+8. On July 5, 2019, Complainant reported to work with a doctor's letter dated July 2, 2019. It stated, in pertinent part: "Above mentioned patient physical requirements are lifting, pushing/pulling reaching above shoulder not to exceed 20lbs [sic.], standing and walking average time 20 minutes."
+9. According to S2, HRM found the letter inadequate because the limitations were unclear, and S2 asked Complainant to submit another letter. S1 stated that S2 told him this, but S1 did not refer to HRM as the source. (Affidavit C at 4, ¶ 15, Bates No. 147.)
+10. Complainant was not allowed to work from July 5 through July 31, 2019. She submitted a revised note after July 31, 2019 and returned to work on August 1, 2019.
+11. Complainant alleged that the period began July 4, 2019. That date was a paid holiday for her, so the period at issue began July 5, 2019.
+
+### E. Decision-Maker and HRM's Involvement
+12. The HRM Manager stated that S2 decided not to allow Complainant to work. He learned of the decision only after S2 made it, and he was not aware why Complainant was kept from her limited-duty assignment between July 5 and July 31, 2019.
+
+### F. Agency Review and New Offer
+13. On July 22, 2019, the HRM Manager wrote to Complainant that the Agency was reviewing her Modified Assignment to determine whether a revision was needed following an arbitration award concerning "non-APWU Clerk craft employees performing clerk craft duty assignments." He stated that management would search for available work within her July 2, 2019 restrictions and, if work was found, offer a revised assignment.
+14. By letter dated July 25, 2019, the HRM Manager offered Complainant a Modified Assignment (Limited Duty), effective August 1, 2019, as a Modified Mail Handler (indefinite duration) at the James A. Farley Retail Local Operation Center. The duties differed from her prior assignment. The letter stated they were within the restrictions in her "treating doctor [letter] dated July 2, 2019." (ROI, Bates Nos. 25-26.)
+15. The restrictions listed in the offer are identical to those in the July 2, 2019 doctor's letter. (ROI, Ex. 8 at 2, Bates No. 199.)
+
+## III. Observations on the Evidence
+
+1. **Reason for the July 2 letter's rejection.** S2 said HRM found the July 2 letter unclear. The HRM Manager said he did not know why Complainant was kept from work. On July 25, 2019, the Agency issued an offer expressly based on the same July 2 letter, with identical restrictions. The record does not explain why the letter was inadequate to permit Complainant to work but adequate to support a new offer. This conflict is unresolved.
+2. **Source of the "unclear" determination.** Only S2 attributes the determination to HRM, and S1's statement is secondhand from S2. No HRM witness or document in the record confirms it.
+3. **Timing of the work bar.** The date S2 told Complainant not to return is not established. The record does not show how long she was kept from work before July 5, or what pay or leave status applied from July 5 through July 31.
+4. **Date of the revised note.** The record establishes only that it was submitted "after July 31, 2019."
+5. **Citation inconsistencies.** Affidavit A is cited at both "at 16, Bates No. 21" and "at 3, ¶ 15, Bates No. 92." These appear to be different documents or pages within the same exhibit and should be verified.
+6. **Undisputed matters.** Complainant performed Clerk Craft duties. She did not submit updated medical documentation until July 5, 2019, despite requests on June 11 and June 21. She was not allowed to work between July 5 and July 31, 2019.
+
+## IV. Procedural History
+
+1. Following the investigation, Complainant requested a hearing before an EEOC Administrative Judge (AJ). She later withdrew the request, and the AJ ordered the Agency to issue a final agency decision (FAD).
+2. In the FAD, the Agency found no discrimination. It assumed, without finding, that Complainant was an individual with a disability. It found she was not a qualified individual because she could not perform the essential functions of the unmodified Mail Handler position, with or without accommodation. It further reasoned that, even if she were otherwise qualified, she had not provided the medical documentation management requested to offer a new modified assignment. On disparate treatment, it found that Complainant identified no comparators who were treated differently.
+3. On appeal, Complainant argues she was discriminated against. The Agency asks that the FAD be affirmed.
+4. Complainant raised allegations on appeal that were not part of the underlying EEO complaint. Those allegations are outside the scope of this review and were not considered.
+
+## V. Items Recommended for Follow-Up
+
+- Obtain the full text of the accepted claim.
+- Interview or obtain a statement from an HRM official, other than the HRM Manager, who reviewed the July 2 letter.
+- Establish the date S2 instructed Complainant not to return, and Complainant's pay or leave status from July 5 through July 31.
+- Obtain the date and content of the revised doctor's note, and compare it with the July 2 letter.
+- Reconcile the Bates and page citations for Affidavit A.

@@ -1,0 +1,27 @@
+# FINDINGS
+
+## Background
+
+Complainant was employed as a Full-time Mail Handler Equipment Operator at the Agency's Morgan Processing and Distribution Center facility in New York, New York. On November 18, 2021, she filed an EEO complaint alleging discrimination on the bases of sex (female), disability (physical), and reprisal for prior protected EEO activity under Title VII and the Rehabilitation Act. The allegations included: (1) denial of overtime work within her limitations beginning June 25, 2021; (2) verbal abuse by a coworker on July 19, 2021, with no corrective action; (3) micromanagement and restricted work assignments beginning August 1, 2021; and (4) denial of a temporary schedule change request on August 31, 2021.
+
+## Investigation and Transmission of ROI
+
+The Agency conducted an investigation into the complaint. On April 5, 2022, the Agency transmitted the Report of Investigation (ROI) to Complainant and her non-attorney representative via email, stating that the copy would be available for download for 30 days. However, the record reflects that the destination server did not send a delivery notification confirming receipt. On the same date, the Agency provided additional documents for inclusion in the investigative file, including an Acting Supervisor's affidavit dated March 28, 2022, in which the Acting Supervisor stated he had no organizational relationship to Complainant at the relevant time and was not present on July 20, 2021.
+
+On May 17, 2022, the Agency again emailed Complainant and her representative with notice that an electronic copy of the ROI would be available for download for 30 days. Again, the destination server did not send a delivery notification.
+
+## Complainant's Response and Case Closure
+
+On May 18, 2022, Complainant contacted an EEO Services Analyst by telephone to dispute the Acting Supervisor's affidavit. During this conversation, the Analyst informed Complainant that her case had been closed on May 1, 2022. Complainant questioned how her case could be closed without proper notification or receipt of the ROI. The Analyst advised Complainant that she could request a hearing and suggested she attach a letter explaining when she learned of the case closure.
+
+On May 31, 2022, Complainant mailed a hearing request to both the Agency and the Commission's New York District Office. The Agency received and stamped the hearing request as received on June 6, 2022. Complainant's accompanying May 28, 2022, letter requested refutation of the Acting Supervisor's affidavit and asked for copies of his Employee Everything Report.
+
+On June 2, 2022, the Agency issued a final decision, citing 29 C.F.R. § 1614.110(b) and concluding that Complainant failed to request a hearing within the required timeframe under 29 C.F.R. § 1614.108(f). The Agency concluded that Complainant failed to prove the alleged discrimination.
+
+## Subsequent Proceedings
+
+The EEOC's New York District Office received Complainant's hearing request on June 10, 2022, and docketed it as Hearing No. 520-2022-00326X. On June 15, 2022, Complainant filed an appeal of the Agency's final decision.
+
+On July 6, 2022, the Agency provided an updated affidavit from the Acting Supervisor, dated June 7, 2022. This updated affidavit contradicted the March 28, 2022, affidavit, stating that the Acting Supervisor's organizational relationship to Complainant during the complaint timeframe was Acting Supervisor. He reiterated that he was not present during the July 19, 2021, incident and stated he did not know whether Complainant or anyone acting on her behalf reported the harassment.
+
+On November 29, 2022, an EEOC Administrative Judge issued an order dismissing Complainant's hearing request on the grounds that the Agency had already issued a final decision, which Complainant had appealed.

@@ -1,0 +1,81 @@
+# FINDINGS
+
+## I. Scope and Basis
+
+These findings rest solely on the record provided: the Report of Investigation (ROI) affidavits of Complainant (Aff. A), Supervisor (Aff. B), Manager (Aff. C), and Supervisor 2 (Aff. D), and the procedural history. No documents, logs, schedules, or witness statements beyond those summarized were available. Footnotes 2–4 of the source record were not included and have not been considered.
+
+## II. Undisputed Facts
+
+1. During the relevant period, Complainant worked as a PSE Sales and Services Distribution Associate (Grade 06 P) at the Cape Central Post Office in Cape Coral, Florida.
+2. Complainant identifies as White. Supervisor, her first-line supervisor, is African American. Manager is Caucasian, as is Supervisor 2.
+3. On April 4, 2022, Complainant filed a formal EEO complaint alleging ongoing harassment based on race. She alleged that in and around February 2022, Supervisor made racial slurs and threatened to physically assault her, and that management did nothing when she reported it.
+4. The Agency accepted the complaint and investigated.
+5. Complainant originally also alleged retaliation but withdrew that claim during the investigation. Only the racial harassment claim remained.
+6. Agency management has apparently since reassigned Complainant to a different supervisor. Complainant did not raise the reassignment as a claim.
+7. After the investigation, Complainant received the ROI and notice of her right to request a hearing, and she requested one.
+8. Complainant did not respond to the Administrative Judge's (AJ) October 24, 2022 order to submit preliminary case information. She also did not appear at the initial conference set for November 24, 2022.
+9. On January 19, 2023, the AJ dismissed the hearing request and remanded the complaint to the Agency for a final decision.
+10. The Agency issued a final decision under 29 C.F.R. § 1614.110(b) finding that discrimination was not established. Complainant appealed.
+
+## III. Disputed Allegations
+
+Complainant alleged the following incidents, and Supervisor denied all of them:
+
+| Date | Alleged statement or context | Nature |
+|---|---|---|
+| Late Jan./early Feb. 2022 | After being told not to clock out for lunch because of overtime, Complainant asked if Supervisor would input her hours. He allegedly said, "I'll slap the shit out of you." | Threat (no express racial content) |
+| Late Jan./early Feb. 2022 | When she asked for a break, Supervisor allegedly said, "people shouldn't be allowed breaks, Black people used to be slaves." | Racially-referenced remark |
+| Feb. 3, 2022 | When she asked for clarification of instructions, Supervisor allegedly said, "I'll slap the shit out of you if you don't catch on." | Threat (no express racial content) |
+| Feb. 5, 2022 | When she said a package was too heavy to lift, Supervisor allegedly said she was "full of shit. You can't lift that?" | Crude remark (no express racial content) |
+| Feb. 8, 2022 | After being told to bring the wagons around, Supervisor allegedly said, "You need to do it because you're White…" | Racially-referenced remark |
+| Feb. 24, 2022 | When she said "huh?" because she did not hear him, Supervisor allegedly said, "What do you mean huh? I'll slap the shit out of you." | Threat (no express racial content) |
+| Mar. 3, 2022 | As she left the housekeeping closet with disposable gloves, Supervisor allegedly yelled, "White people don't steal, they buy their own shit." | Racially-referenced remark |
+
+Complainant also stated that she reported the comments and threats to Manager and to the union and that nothing was done.
+
+## IV. Evidence Relating to the Allegations
+
+**A. Supervisor (Aff. B).** He unequivocally denied making any of the alleged statements. He stated that he believed he and Complainant had a good working relationship until the complaint was filed.
+
+**B. Manager (Aff. C).** She affirmatively stated that Complainant never reported any of the alleged comments to her.
+
+**C. Supervisor 2 (Aff. D).**
+- He stated that Complainant once told him Supervisor said he would "slap her upside the head."
+- He stated that he told her to report the matter to Manager.
+- He denied that Complainant told him of any racial comments by Supervisor.
+- He stated that Complainant told him she did not want to report the matter to Manager.
+
+**D. Complainant (Aff. A).** Her account is detailed, with approximate or specific dates and context for each alleged statement. The record does not show that any witness observed the statements or that any document, message, or recording supports them.
+
+## V. Analysis and Findings
+
+1. **Conflict in the evidence.** The central facts, whether Supervisor made the racial remarks and threats, rest on Complainant's sworn account against Supervisor's categorical denial. The record contains no eyewitness testimony, contemporaneous documentation, or other independent evidence resolving the conflict.
+
+2. **Partial corroboration of a threat.** Supervisor 2's statement is the only evidence tending to support any part of Complainant's account. It indicates that Complainant told a supervisor, at some point, that Supervisor had threatened to "slap her upside the head." This supports, at most, that Complainant made a contemporaneous or near-contemporaneous complaint of a threat. It does not establish that the threat was made. The wording differs from the alleged "slap the shit out of you" statements, and the record does not state when the conversation occurred. It also does not corroborate any racial remark, and Supervisor 2 expressly denied that any were reported to him.
+
+3. **Reporting to management.** The record does not establish that Complainant reported the alleged racial slurs to Manager. Manager denies any report. Supervisor 2 states he directed Complainant to report to Manager and that she declined. The record contains no information about the union report Complainant described, such as when it was made, to whom, or what followed. The finding that management ignored her complaints therefore is not supported by the present record, subject to the gaps noted below.
+
+4. **Nature of the alleged conduct, if credited.**
+   - Three alleged statements (Feb. 8 and Mar. 3, and the "Black people used to be slaves" comment) contain express references to race.
+   - Three alleged statements are threats of physical violence with no express racial content, and one is a crude remark with no racial content. Whether these were race-based would depend on the surrounding evidence, and the record contains none.
+   - The record does not show any physical contact, any tangible employment action, or any effect on pay, hours, or status attributable to the alleged conduct.
+
+5. **Credibility.** The record contains no finding by an AJ, because Complainant's failure to respond to the AJ's order and to appear at the initial conference resulted in dismissal of the hearing request before any hearing or credibility assessment. The Agency's final decision on the existing record found discrimination not established. Based on the materials provided, no independent evidence supports a finding that the alleged statements were made, or that they were made because of Complainant's race.
+
+6. **Retaliation.** The retaliation claim was withdrawn and is not before the reviewer. The Agency's final decision nonetheless refers to a finding of no unlawful retaliation, a mismatch with the single remaining claim.
+
+7. **Reassignment.** Complainant's apparent reassignment to a different supervisor was not raised as a claim. The record does not state who initiated it, when, or why. It is noted as background only.
+
+## VI. Conclusion
+
+On the record provided, the investigation did not produce evidence sufficient to establish that Supervisor made the alleged racial remarks or threats. Complainant's account is specific but uncorroborated and is directly contradicted by Supervisor. Supervisor 2's statement shows only that Complainant reported one threat, with no racial component, to a supervisor. It does not confirm that the threat was made or that race was involved. The record also does not establish that management had notice of the alleged racial remarks and failed to act.
+
+## VII. Open Items and Record Gaps
+
+- The dates and content of Complainant's alleged reports to Manager and the union, and any union records of them.
+- The date of Complainant's conversation with Supervisor 2.
+- Statements from coworkers who may have been present on the dates alleged, plus work schedules, clock records, and overtime and break records for those dates.
+- Any prior complaints or discipline involving Supervisor.
+- Who initiated Complainant's reassignment, when, and why.
+- The text of footnotes 2–4 and the Agency's final decision.
+- The reason the Agency's final decision addressed retaliation after the claim was withdrawn.

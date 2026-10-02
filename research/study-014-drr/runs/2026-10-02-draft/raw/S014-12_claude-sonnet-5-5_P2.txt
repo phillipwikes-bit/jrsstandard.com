@@ -1,0 +1,68 @@
+# FINDINGS
+
+## I. Parties and Reporting Relationships
+
+1. At the relevant time, Complainant was an Aircraft Mechanic in the Agency's Aircraft Maintenance Squadron at Robins Air Force Base, Georgia.
+2. The Aircraft Overhaul Supervisor ("Supervisor") was Complainant's first-level supervisor at the time of the incident (ROI at 161-62).
+3. The Production Team Lead ("Team Lead") was Complainant's second-level supervisor (ROI at 169).
+
+## II. The Claim
+
+4. On May 25, 2021, Complainant filed a formal EEO complaint alleging a hostile work environment based on race (African-American), color (Black), and age (52).
+5. The complaint concerns a single event on December 11, 2020. Complainant alleges that Supervisor (a) refused to render first aid for a bleeding head wound and (b) verbally assaulted him by screaming, "Get your ass back on the plane, you do not do shit every day, I want you off my fucking team immediately, and I am tired of your shit."
+
+## III. Findings of Fact Regarding the December 11, 2020 Incident
+
+6. **Undisputed.** Complainant had an accident that caused him to bleed from the head.
+7. **Undisputed.** While Complainant was looking for a band-aid, Supervisor saw him away from his work area and yelled at him. Supervisor did not deny yelling at Complainant.
+8. **Supervisor's explanation.** Supervisor stated that he had numerous performance concerns about Complainant.
+9. **Complainant's initial position.** Complainant conceded that he did not believe the incident was based on age or race. He added that Supervisor treated him differently because of his protected classes, citing past, unspecified incidents. He did not raise those incidents with Supervisor.
+10. **Agency response.** After the incident, Complainant contacted Team Lead and another Agency official. The Agency then:
+    - suspended Supervisor without pay for 10 days;
+    - reassigned Supervisor to day shift;
+    - barred Supervisor from supervising anyone for 90 days.
+11. Supervisor's role as Complainant's supervisor ended immediately after the incident (ROI at 162).
+
+## IV. Procedural History
+
+12. After the investigation, the Agency gave Complainant the Report of Investigation and notice of his right to request a hearing before an EEOC Administrative Judge ("AJ"). Complainant timely requested a hearing.
+13. **January 21, 2022.** The AJ issued a Notice of Proposed Summary Judgment, set out the relevant facts, and gave both parties an opportunity to respond. The AJ stated an intent to issue a decision without a hearing in the Agency's favor, finding that:
+    - Supervisor's conduct was unprofessional and unacceptable but did not rise to the level of harassment;
+    - it was a single incident in which Supervisor lost his temper and used facially neutral language;
+    - even considering the background allegations, the totality of the circumstances did not show a work environment permeated with hostility, and the cursing was not sufficiently severe.
+14. **Complainant's response.** Complainant submitted stipulations of fact that, for the first time, added allegations:
+    - Supervisor has a history of hatred toward him and of mistreating other African-Americans at work;
+    - Supervisor made comments about President Obama;
+    - Supervisor displayed images of the Confederate flag in the hangar.
+
+    Complainant offered no supporting evidence for these assertions.
+15. **Agency's response.** The Agency did not respond to the Notice by the deadline. It did submit Supervisor's suspension paperwork to the AJ.
+16. **February 25, 2022.** Over Complainant's objections, the AJ issued a decision without a hearing, incorporating the Notice. The AJ additionally noted that:
+    - Complainant initially reported that he believed the incident was not due to race or age;
+    - the background allegations did not appear in the EEO Counselor's Report, the formal complaint, or Complainant's affidavit.
+
+    The AJ concluded that, under the totality of the circumstances, Complainant did not prove discrimination as alleged.
+17. The Agency issued a final order adopting the AJ's finding of no discrimination. Complainant then filed this appeal.
+
+## V. Positions on Appeal
+
+18. **Complainant** contends that:
+    - he was "humiliated, intimidated, bullied and exposed to racist comments and treatment by [Supervisor]";
+    - he gave investigators a list of racially motivated incidents and a list of witnesses;
+    - he raised race, color, and age discrimination several times before summary judgment;
+    - the Agency withheld "vital information" about Supervisor, and summary judgment kept him from obtaining it, information he says "will prove a history of racial discrimination [of Supervisor] towards African Americans."
+19. **The Agency** contends that the AJ's summary judgment decision was proper and should be upheld.
+
+## VI. Summary of Findings
+
+20. The record establishes that on December 11, 2020, Supervisor yelled and cursed at Complainant, who was injured and looking for a band-aid. The Agency treated the conduct as serious misconduct and disciplined Supervisor.
+21. The record does not establish a link between the incident and Complainant's race, color, or age. Complainant initially disclaimed such a link, and the later background allegations were unsupported by evidence and absent from the counseling, complaint, and affidavit stages.
+22. The incident was isolated. Supervisor's supervisory relationship with Complainant ended immediately afterward.
+
+## VII. Open Items and Record Gaps
+
+- **Complainant's lists.** Complainant says he gave investigators a list of incidents and witnesses. The record excerpt does not show whether such a list is in the ROI. Confirm this against the full ROI.
+- **First-aid allegation.** The AJ's summary does not make a specific finding on whether Supervisor "refused" first aid. It says only that Complainant was looking for a band-aid when Supervisor yelled at him. Check the ROI testimony on this point.
+- **Withheld information.** The record does not identify what information about Supervisor Complainant claims was withheld, or whether he requested it in discovery.
+- **Agency non-response.** The reason for the Agency's missed deadline is not stated.
+- **Disposition.** The excerpt does not include the outcome of the appeal.

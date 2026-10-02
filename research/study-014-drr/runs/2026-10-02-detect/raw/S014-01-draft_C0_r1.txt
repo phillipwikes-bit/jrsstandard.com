@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the five claims is explicitly identified with dates, specific allegations, and the factual basis for denial (e.g., leave exhaustion, alphabetical case assignment, lack of medical support, directed investigator referral)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces from allegation through investigation finding to adjudication logic: FMLA exhaustion → AWOL/LWOP placement → audit → retroactive grant; case reassignment → alphabetical assignment policy → spreadsheet documentation; accommodation denial → lack of medical evidence and existing low caseload; official time denial → two remaining questions and investigator referral directive."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the complainant's five distinct claims, the agency's factual responses (with dates), the prior AJ decision, the appeal outcome, and the final order rationale without external knowledge."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports denial of most claims (leave ultimately granted, assignments documented, accommodation requests lacked medical support), but the record does not detail what specific documents (medical records, policy directives, email chains denying the accommodation appeal) were reviewed to support the August 24, 2021 appeal denial or the investigator referral authority."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology: February 2021 FMLA exhaustion, June 19 case reassignment, August 3 leave denial, August 5 audit request, August 24 appeal denial, October 20–21 and October 25 official time grants, October 26 official time denial, September 17 complaint filing, and May 25, 2022 prior AJ decision."
+    }
+  },
+  "remediation_note": "The record is well-structured and factually comprehensive. To strengthen accountability support, add citations to or summaries of the August 24, 2021 Director's appeal decision letter and clarify the authority or policy basis for the investigator referral directive.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "accountability_support (minor gap in evidentiary detail for appeal denial and official time denial rationale)",
+    "compliant_version": "Retain all five-claim structure and chronology; append or reference the substantive text of the August 24, 2021 appeal denial decision and the internal directive or policy that mandated referral to the investigator for extension requests, so that a reviewer can independently verify the factual and legal bases for each adverse decision."
+  }
+}
+```

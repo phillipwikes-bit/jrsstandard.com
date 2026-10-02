@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies nine specific allegations and cites regulatory dismissal authority (29 C.F.R. §1614.107(a)(1)), but does not identify the evidentiary basis (witness statements, documents, dates, or findings) supporting the conclusion that Complainant 'failed to prove' discrimination."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record states a final conclusion but does not trace how the Agency evaluated each of the nine allegations against the evidence, nor does it explain the logical path from investigation findings to the failure-of-proof determination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct why Complainant's allegations were rejected because the record provides no summary of investigation results, credibility findings, or evidentiary analysis—only the complaint elements and the final dismissal."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record asserts that Complainant 'failed to prove discrimination' but supplies no investigation findings, witness statements, documentary evidence, or reasoned evaluation of the evidence that would support this conclusion."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The record establishes a procedural timeline (complaint filed, investigation conducted, ROI issued, hearing requested, hearing denied, final decision issued) but does not date the alleged discriminatory acts or the intervals between them, preventing reconstruction of the sequence of workplace events."
+    }
+  },
+  "remediation_note": "A compliant record must include a summary of investigation findings (witness interviews, documentary evidence, agency responses), explicit evaluation of each allegation against that evidence, reasoned explanations for credibility and fact determinations, and dated sequences of the alleged discriminatory acts. The record should also cite the specific evidence contradicting Complainant's claims rather than stating only the conclusion.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support, temporal_reconstructability",
+    "compliant_version": "The final decision must summarize the Report of Investigation findings, identify which allegations were supported or contradicted by specific evidence, explain why the Agency rejected each element of the discrimination claim, date each alleged discriminatory act and the corresponding management response, and provide a reasoned analysis of how the evidence does or does not satisfy the legal burden of proof under the Rehabilitation Act."
+  }
+}
+```

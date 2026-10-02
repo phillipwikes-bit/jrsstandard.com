@@ -1,0 +1,32 @@
+**Case Summary**
+
+**Parties and position:** Complainant was a GS-15 Primary Care Physician at the East Orange VA Medical Center (East Orange, NJ). She was appointed March 3, 2019, subject to a two-year probationary period.
+
+**Claims:**
+1. The Agency denied her repeated requests for reasonable accommodation from April 21, 2020, until her termination on January 22, 2021.
+2. The Agency charged her AWOL from August 10, 2020, until her termination.
+
+**Procedural history:**
+- Complainant requested a hearing before an EEOC Administrative Judge (AJ) after the investigation.
+- She did not provide the affidavit the investigator requested. She said she sent it to a "higher authority" (the then Agency Secretary), so it is not in the Report of Investigation. She did provide it to the AJ.
+- The AJ issued a decision without a hearing, finding no discrimination. The Agency issued no final order, so the AJ's decision became its final action (29 C.F.R. § 1614.109(i)).
+- Complainant appealed and submitted additional documents, including later doctors' statements.
+- A separate EEO complaint about her termination, filed August 2, 2021, was decided by the Agency as no discrimination. It is pending before the Commission on appeal.
+
+**Key facts:**
+- Complainant reported a right shoulder injury in December 2019. She said she could not lift her right arm, use a keyboard or mouse, write, or perform physical exams.
+- She was on leave from December 2019 and returned March 2, 2020, with a part-time schedule (4 hours of work, 4 hours LWOP). She did not see patients or complete required training. On March 4 she declined to see a waiting patient because of her shoulder.
+- On March 5, management and the Reasonable Accommodation Coordinator held an interactive meeting. She said she could not examine patients, complete paperwork, or use a computer for more than a few minutes. The Agency granted continued LWOP for six weeks for rehabilitation.
+- She later requested 100% telework, then 20 hours per week with modified duties for a year or permanently. The Agency asked for medical documentation, including on the effectiveness of telework, the duration of the condition, and consent to contact her physician. It made numerous requests, including several emails in June 2020. She did not provide this information.
+- The Agency prepared accommodations including dictation software, ergonomic chairs, and an ergonomic mouse and keyboard. A laptop was secured June 2, 2020. It offered a one-to-three-month telework agreement, which she never signed.
+- The doctors' statements she supplied were limited. They recommended light or part-time duty and telework, but each stated the condition would be reassessed in about six weeks. A July 30, 2020 statement said her shoulder symptoms were "well controlled" and she was discharged.
+- On August 7, 2020, the Coordinator closed the accommodation request, noting it would reopen if documentation was provided.
+- Management then charged her AWOL from August 10, 2020, citing nearly eight months without work and no requested documentation. She remained AWOL until termination. Complainant says she was in approved LWOP through August 10.
+
+**AJ's findings:**
+- Complainant did not establish a failure to accommodate. She provided limited documentation, no diagnosis or duration, and no release for the Agency or the investigator to obtain medical information.
+- She did not show she could work from home, since she said she could not use a pen or computer unaided. The requested telework would increase computer use.
+- Physical patient examination is an essential duty, even for telework clinicians, and she never documented that she could perform it.
+- She did not engage in the interactive process, which led the Agency to close the case without approving or denying it.
+
+**Status:** The matter is on appeal before the Commission, with Complainant contesting the no-discrimination finding.

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for individual claims (e.g., seatbelt violation for Claim 2, time-wasting for Claim 1) but does not explicitly identify which evidence supports the AJ's conclusion that no discrimination occurred across all five claims."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's leap from 'unrebutted facts established nondiscriminatory reasons' to 'no reasonable factfinder could find age bias' lacks intermediate steps explaining why absence of explicit comparators or age-based comments defeats a circumstantial discrimination case."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with the case cannot reconstruct why the cluster of five escalating disciplinary actions, timing, and Complainant's stated age-related physical limitations do not survive even a prima facie burden under McDonnell Douglas, or why disability was dismissed without analysis despite doctor's notes and OHM involvement."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents nondiscriminatory reasons but does not analyze whether those reasons are pretextual or whether Complainant's comparator arguments (younger carriers with similar infractions) were properly rebutted with specificity and dates."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are provided for each claim (August 30, September 14, 20, 24, November 1) and procedural milestones (February 25 complaint, December 14 motion, January 4 decision), allowing the sequence to be followed."
+    }
+  },
+  "remediation_note": "The record must articulate the evidentiary framework applied (e.g., McDonnell Douglas burden-shifting), explicitly address Complainant's comparator evidence and why similarly situated younger employees are not identified, and analyze the temporal clustering of five discipline actions and the disconnect between stated violations (seatbelt, overtime refusal) and suspension charges (only 'failure to follow instructions') to support the conclusion that no reasonable factfinder could infer discrimination.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The decision must: (1) name the legal standard (e.g., Title VII burden-shifting); (2) confirm whether Complainant established a prima facie case of age discrimination under each claim; (3) identify specific comparators Complainant proposed and explain with dates and job codes why each is or is not similarly situated; (4) separately analyze the pretext question—explaining why the stated nondiscriminatory reasons are not pretextual despite the mismatch between violations and charges, the timing cluster, and the unwritten seatbelt rule; and (5) address disability briefly if doctor's notes or physical restrictions appear in the record."
+  }
+}
+```

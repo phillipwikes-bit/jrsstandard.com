@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each claim (1-5) is grounded in specific dates, events, and documented actions: FMLA denials tied to leave balance calculations (February 26, 2021 letter), casework reassignment linked to retirement and email notification (June 2021), reasonable accommodation requests dated May 6 and May 18, 2021, and official time requests documented October 20-26, 2021."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces decision logic across multiple levels: supervisor explains leave exhaustion, audit confirms paid leave availability, accommodation coordinator documents interactive meeting and denial rationale, Director's August 24, 2021 denial references specific rejected accommodation (portable printer), and AJ's summary judgment articulates reasoned conclusions for each claim."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the full complaint arc: complainant identity and position stated upfront, five distinct claims enumerated with dates, administrative judge's prior decision cited (May 25, 2022), factual bases for each denial documented (leave audit results, spreadsheet of case assignments, accommodation meeting notes, official time accounting), and final AJ decision with detailed reasoning provided."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Each conclusion is supported by evidentiary anchors: leave denials supported by February 26 letter and payroll audit; casework reassignment justified by supervisor explanation and case-assignment spreadsheet; accommodation denial grounded in complainant's admission that impairment does not limit essential duties and AJ finding of already-reduced caseload (25 cases); official time denial supported by 18-hour record and investigator's instruction to seek extension directly."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Chronology is clearly sequenced across the entire record: February 2021 leave depletion, May 6, 2021 accommodation request, May 18, 2021 amendment, May 21, 2021 interactive meeting, June 19, 2021 casework reassignment, August 3, 2021 leave denial (later corrected by audit), August 24, 2021 accommodation appeal denial, September 17, 2021 complaint filing, October 20-26, 2021 official time requests, May 25, 2022 prior AJ decision, and final Agency order adoption."
+    }
+  },
+  "remediation_note": "No remediation required; the record fully satisfies all five JRS conditions with comprehensive factual anchors, documented reasoning at each decision point, and clear temporal sequencing that permits later reconstruction by an uninformed reviewer.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "None; all five conditions satisfied.",
+    "compliant_version": "This record is compliant as written. It functions as a complete analytical decision document that integrates prior adjudication, factual investigation, reasoned denial of five distinct claims, and final administrative affirmance, with sufficient documentary support (letters, spreadsheets, meeting notes, audit results) and explicit temporal markers to enable accountability review."
+  }
+}
+```

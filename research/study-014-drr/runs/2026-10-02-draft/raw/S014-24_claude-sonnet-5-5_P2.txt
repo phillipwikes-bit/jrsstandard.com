@@ -1,0 +1,144 @@
+# FINDINGS
+
+*DRAFT, prepared from the record as provided. Bracketed items require the investigator's confirmation or decision before finalization.*
+
+## 1. Scope and Standard
+
+These findings address the eleven allegations accepted in the EEO complaint. Complainant alleges discrimination and harassment based on race (Caucasian), national origin (German, Persian), sex (female), religion (Jehovah's Witness, Jewish), and reprisal. Each allegation is assessed on a preponderance-of-the-evidence standard: whether the event is more likely than not to have occurred as alleged, and, if so, whether the evidence shows it was motivated by a protected basis or was sufficiently severe or pervasive to create a hostile work environment.
+
+"Not substantiated" means the evidence does not establish the allegation by a preponderance. It does not mean the event is found not to have occurred.
+
+## 2. Summary of Findings
+
+| # | Allegation | Finding |
+|---|---|---|
+| 1 | 10/28/2013: S1 told Complainant to get out of the Agency and the union | Not substantiated (uncorroborated; denied) |
+| 2 | 12/12/2013: Support Specialist berated Complainant over the Christmas party | Not substantiated as alleged (uncorroborated; denied) |
+| 3 | 1/9/2014: coworker comment ("built like a Black girl") | Not substantiated (denied by C1; C2 does not recall) |
+| 4 | Sexual harassment and retaliatory treatment by Deputy Director | [Substantiated in part / unresolved. See § 3.4] |
+| 5 | 1/13/2014: S1 told Complainant to "get the hell out of my office" | Not substantiated on the current record [confirm; see § 3.5] |
+| 6–9, 11 | Mid-year review, PAP, PIP, Counseling Memorandum, year-end rating | Legitimate reasons documented; evidence of discriminatory motive not established on the current record, subject to open items in § 3.6 |
+| 10 | 12/12/2014: reassignment away from S1 | Not an adverse action on this record; Complainant described it as beneficial |
+
+## 3. Findings by Allegation
+
+### 3.1 Allegation 1: Statements by S1 (October 28, 2013)
+
+Complainant states that S1 told her in a meeting to get out of the Agency because upper management disliked her and the Management Officer was "out to get her," and to get out of the "god damn" Union. S1 denies making the statements and denies that the meeting occurred. The record identifies no witness, document, or contemporaneous report corroborating Complainant's account.
+
+**Finding:** The allegation is not substantiated. The record presents a direct conflict between two accounts with nothing to resolve it. [If a calendar entry, attendee list, or email for 10/28/2013 exists, it should be checked and noted here.]
+
+### 3.2 Allegation 2: Christmas Party Exchange
+
+Complainant states that the Support Specialist asked why she was not attending the party and whether she celebrated Christmas. Complainant replied that she is a Jehovah's Witness. She says the Support Specialist "looked at her as if she had a disease" and rolled her eyes. The Support Specialist does not recall any interaction that day and says the incident did not occur as alleged.
+
+Complainant's own account describes questions and a facial reaction. It does not describe the "berating" stated in the framed allegation. No witness corroborates either version.
+
+**Finding:** Not substantiated. Even if the questions were asked, the record does not show hostile or derogatory words, and the alleged conduct as described would be an isolated incident.
+
+### 3.3 Allegation 3: Overheard Comment (January 9, 2014)
+
+Complainant states that she overheard C1 tell C2 that Complainant "thinks she is cute because she is built like a Black girl" and "is bad news and not your friend." She says similar comments were made repeatedly in hallways and the elevator. C1 states she does not know who Complainant is and denies the comment. C2 does not recall C1 making it. No other witness to the 1/9/2014 comment or the alleged repeated comments is identified.
+
+**Finding:** Not substantiated. [Note for the investigator: C1's claim not to know Complainant is a factual assertion that could be tested, for example by checking whether the two share a floor, elevator, or workgroup.]
+
+### 3.4 Allegation 4: Sexual Harassment and Retaliatory Treatment by the Deputy Director
+
+**Alleged conduct.** Complainant alleges that the Deputy Director:
+- stared at her chest;
+- twice placed his hand on her left leg and "rolled" it down during staff meetings (she "scooted over" the first time and left the second meeting midway);
+- put his hands on her shoulders in a massaging manner in her cubicle;
+- leaned over her at her computer, invading her space; and
+- repeatedly asked her to lunch or dinner.
+
+She states that she told him to stop. She alleges that after she rebuffed him, he assigned extra duties, refused training, assigned work outside her position description, and yelled and cursed at her about travel processing. She also alleges that he called her into his office to vent loudly and throw pens and pencils.
+
+**Evidence bearing on the allegation.**
+- *No eyewitness to physical contact.* No witness directly observed the alleged touching, staring, or invitations.
+- *Consistent contemporaneous disclosures.* At least seven coworkers state that Complainant told them of the conduct. The accounts are specific and come from different people:
+  - The Senior Budget Analyst states that Complainant came to her almost weekly to vent about the Deputy Director violating her personal space, asking her out, and making inappropriate comments, and that she sometimes came in crying.
+  - The Team Lead states that Complainant told him the Deputy Director touched her inappropriately in a meeting and that she had scheduled a meeting with the Management Officer about it.
+  - The Public Health Advisor Supervisor states that Complainant said the Deputy Director touched her leg and asked her to dinner.
+  - The Resource Management Team Lead states that Complainant described extreme discomfort.
+  - Another Team Lead and two other employees report similar disclosures.
+- *Partial direct observation.*
+  - The Senior Budget Analyst saw the Deputy Director throw tantrums and yell at Complainant as if she were his "soundboard."
+  - The Resource Management Team Lead saw him in Complainant's work area many times and perceived an unusual encroachment on her personal space, though not touching or inappropriate remarks.
+- *Pattern evidence.* The Public Health Advisor states that the Deputy Director harassed her in the past and that she did not report it because she would have been the first to come forward and he was highly regarded within the Agency. This is uncorroborated, and its weight should be assessed in light of the Deputy Director's response.
+- *Deputy Director's response.* [His statement is not included in the record provided. It must be reviewed and summarized here before any finding is finalized.]
+
+**Analysis.** Disclosures to coworkers do not independently prove the underlying events, but they are relevant to credibility. They are numerous and consistent, were made over time, and came with observed emotional distress. The absence of an eyewitness is not dispositive, because the conduct alleged (touching under a table, one-on-one remarks, private invitations) is of a kind that often has no third-party witness. The Agency's final decision treated the lack of eyewitnesses as a reason to find insufficient evidence. That reasoning gives little weight to the corroborative evidence described above.
+
+**Finding (investigator to select):**
+- *Option A:* The preponderance of the evidence supports that the Deputy Director engaged in unwelcome conduct of a sexual nature toward Complainant, and that he engaged in angry, volatile conduct toward her, including yelling and throwing objects. The latter is directly witnessed.
+- *Option B:* The record is insufficient to resolve the allegation until the Deputy Director and the Director are interviewed or their statements are located. The yelling and throwing of objects is substantiated by a witness. Whether it was linked to Complainant's rebuffing of him is unresolved.
+
+**Retaliatory-treatment component.** The record contains no documents, such as training requests and denials, assignment records, or the position description, showing extra duties, denied training, or out-of-scope assignments. [These should be obtained.] A causal link between any such actions and the alleged rebuffing is not yet established.
+
+**Notice to management.** Complainant states she reported the conduct to the Director, S1, the Management Officer, and a Consultant, and that nothing was done. S1 and the Management Officer deny that she reported it. The Team Lead's statement that Complainant told him of a meeting with the Management Officer, and later of the Management Officer's lack of concern, is consistent with Complainant's account but is secondhand. The statements of the Director and the Consultant are [not in the record provided]. Whether management knew, or should have known, and whether it took prompt corrective action remains **unresolved** pending those statements.
+
+### 3.5 Allegation 5: January 13, 2014 Statement by S1
+
+Complainant alleges that S1 told her to "get the hell out of my office" when she explained she had not been trained on travel-processing procedures. The record provided contains no testimony on this incident from S1 or any witness. The Agency found it not established. [Confirm S1's response in the ROI and whether any witness was identified.]
+
+**Finding:** Not substantiated on the current record, subject to review of S1's statement.
+
+### 3.6 Allegations 6–9 and 11: Performance Evaluations, PAP, PIP, and Counseling Memorandum
+
+**Undisputed facts.** S1 issued the following:
+- a mid-year review with an unsatisfactory rating (2.06);
+- a PAP dated May 4, 2014, citing untimely responses to customers about travel tickets and failure to edit travel reports for accuracy and completeness;
+- a PIP dated September 22, 2014, rating Complainant "Achieved Unsatisfactory Results" in Customer Service. It cites failure to document and resolve complaints without peer assistance, untimely task completion, failure to keep customers updated, more than three customer complaints, and a complaint from the Senior FATA. In one example, Complainant needed constant peer assistance to correct a travel voucher the Senior FATA requested; and
+- a Counseling Memorandum dated October 16, 2014, describing Complainant's conduct at the PIP meeting as loud, rude, verbally abusive, and uncontrolled. It also records her statement that she was being retaliated against and her complaint that S1 allowed peers to call her a "wigger."
+
+Complainant received a 2 on her end-of-year evaluation from S1 on January 29, 2015, after her transfer.
+
+**Legitimate reasons.** S1 articulated documented, performance-based reasons for each action. The specific deficiencies are recorded in the PAP and PIP.
+
+**Evidence bearing on motive.**
+- *Race-based remarks.* Complainant states that S1 made comments such as "Stop trying to act Black," "Are you sure you're not Black?" and "Don't worry, we all know you're Black." [S1's response to these remarks is not in the record provided and must be confirmed. They are not among the enumerated allegations.] If made, they would be evidence of race-related bias by the same official who issued the ratings and plans.
+- *Distress attributed to S1.* The Support Services Specialist observed Complainant shaking and in extreme distress, said she thought an ambulance might be needed, and said Complainant attributed the distress to S1's treatment. This is relevant to the working environment but does not address the accuracy of the evaluations.
+- *"Wigger" remark.* The record does not show whether S1 or management examined Complainant's complaint that peers used this term.
+- *Training.* Complainant told S1 she had not been trained on travel-processing procedures (Allegation 5). Whether training was provided, and whether any training denial under Allegation 4 bears on the performance deficiencies cited, has not been examined.
+- *Retaliation.* The record identifies Complainant's EEO complaint (filed April 8, 2014), which preceded the PAP (May 2014), mid-year review, PIP, Counseling Memorandum, and year-end rating. [The "prior protected EEO activity" cited in the complaint is not identified in the record, and S1's awareness of any protected activity and its date is not shown.]
+
+**Finding:** The record does not establish that the actions were motivated by Complainant's race, national origin, sex, religion, or protected activity. The stated performance reasons are documented. This finding is conditional on:
+- S1's response to the alleged race-based remarks;
+- verification of the underlying performance data (customer complaints, the Senior FATA complaint, comparative treatment of peers); and
+- confirmation of S1's knowledge of protected activity.
+
+[Comparator evidence, meaning how other employees with similar performance were treated, is not in the record provided.]
+
+### 3.7 Allegation 10: Reassignment (December 12, 2014)
+
+Complainant was told she would move to another team under a different supervisor "so she could get a new start." She stated the move was good for her and that she noticed a more positive working environment.
+
+**Finding:** Not substantiated as an adverse action. The record indicates a change Complainant considered beneficial. The transfer is relevant as evidence that management recognized a problem in the S1 working relationship.
+
+## 4. Hostile Work Environment
+
+Allegations 1–3 and 5 are not established as alleged. Considered together, the remaining established events (the documented performance actions) are supported by stated legitimate reasons and are not linked to a protected basis on the present record. On that basis, the non-sexual-harassment claims do not meet the severe-or-pervasive threshold.
+
+The sexual-harassment claim (Allegation 4), if substantiated under Option A, involves repeated physical contact, repeated invitations after rebuffing, and a continuing pattern. Those facts, if proven, would meet the severe-or-pervasive threshold. Employer liability would then turn on the unresolved notice and corrective-action questions in § 3.4.
+
+## 5. Credibility Observations
+
+- On Allegations 1–3 and 5, the conflicting accounts are individually uncorroborated, so credibility could not be resolved in Complainant's favor.
+- On Allegation 4, Complainant's account is supported by the consistent, independent statements of multiple coworkers and by observed distress. These weigh in favor of her credibility.
+- S1 and the Management Officer both deny being told of the harassment. Their denials conflict with Complainant's account and with the Team Lead's secondhand account.
+
+## 6. Open Items Affecting Final Determination
+
+1. Statements of the Deputy Director, the Director, and the Consultant [confirm whether they exist in the ROI].
+2. S1's response to the alleged race-based remarks (ROI at 139).
+3. Documents relating to the alleged extra duties, denied training, and out-of-scope assignments.
+4. Performance data supporting the PAP and PIP, and comparator treatment.
+5. Date and nature of the prior protected EEO activity, and S1's knowledge of it.
+6. Whether Complainant's complaint about the "wigger" remark was reported or examined.
+7. Record discrepancies:
+   - The EEO complaint is dated April 8, 2014, yet it lists events through January 2015. [Confirm whether it was amended.]
+   - Allegation 7 gives the PAP date as May 5, 2014, while the PAP itself is dated May 4, 2014.
+   - The mid-year review is dated July 28, 2014, after the PAP, which is an unusual sequence.
+   - The PIP is dated September 22, 2014, but the Counseling Memorandum says it was presented on September 25, 2014.
+   - The Christmas party exchange is dated December 12, 2013, and the transfer notice is dated December 12, 2014.
+   - The mid-year rating is given as both "2.06" and "2."

@@ -1,0 +1,128 @@
+# FINDINGS
+
+*Draft for investigator review. Record citations are as they appear in the source material. Items marked **[VERIFY]** need confirmation against the underlying file before finalization.*
+
+---
+
+## I. Scope and Background
+
+Complainant was a Counseling Psychologist/Licensed Marriage and Family Therapist at the Agency's Health Clinic in Baumholder, Germany. She alleges that from September 2014 through January 2017 the Agency subjected her to a hostile work environment and discrete adverse actions, in the form of harassment and reprisal. The record excerpt does not identify her protected bases. **[VERIFY: insert protected bases and any prior protected activity.]**
+
+**Titles used in this report.** The record identifies officials differently across documents. This report uses the labels Complainant used.
+- **Lieutenant Colonel:** Deputy Chief of Clinical Services and Chief Nursing Officer (ROI1 at 431).
+- **Lieutenant:** Commander for the Baumholder and Kaiserslautern Clinics (ROI1 at 444).
+- **Commander:** a different individual, Commander for the Baumholder, Landstuhl and Kaiserslautern Clinics (ROI2 at 96).
+
+**Prior grievance.** On November 28, 2014, Complainant filed an administrative grievance raising many of the concerns in this complaint (ROI1 at 203). On January 30, 2015, she was notified that her requested remedy, formal mediation to improve the work environment, was granted and the grievance was closed (ROI1 at 209). The record excerpt does not show whether mediation took place or what resulted.
+
+---
+
+## II. Findings by Allegation
+
+### Claim (a): Ongoing treatment from September 2014 (lack of training, derogatory comments, undermining of authority, etc.)
+
+**Training.** The record shows two training requests, and both were limited by funding.
+- Complainant asked to attend a non-military professional development session on suicide and military personnel. The Commander told her the Agency could not fund personal research but that he could grant time without pay. He denied refusing her training opportunities (ROI2 at 98).
+- The Lieutenant approved Complainant's request to attend suicide prevention training in Vicenza, Italy, but no funds were available. The training was ultimately cancelled (ROI1 at 447).
+
+**Other conduct (derogatory comments, interrogations, nitpicking, facial expressions, overruling of decisions, isolation, lack of recognition).** The excerpt contains no witness statement or document corroborating specific incidents. When the Lieutenant Colonel and the Lieutenant asked Complainant for examples of the hostility she alleged, she did not provide specifics (ROI1 at 437, 448). Complainant's overall performance rating was "Excellent," with eleven "Exceed" ratings (ROI1 at 438), which is inconsistent with her claim that she was not rewarded. The IG found no evidence of harassment or discrimination (ROI1 at 217).
+
+**Finding:** The record shows funding-based reasons for the training outcomes. It does not contain specific, corroborated evidence of the remaining conduct alleged in claim (a).
+
+### Claim (b): Clients rescheduled with other providers on unspecified dates
+
+- On September 20, 2016, Complainant emailed the Chief alleging that the Nurse Practitioner told two patients they were being transferred and told another that Complainant no longer worked in the clinic (ROI1 at 232).
+- The Social Services Assistant and the Nurse Practitioner stated that Complainant had said she worked only with Marriage and Family counseling patients, which led to some transfers and limited the patients she could see (ROI2 at 113, 143).
+- The Lieutenant Colonel stated that he investigated and resolved the matter. In one instance he found the transfer was unintentional and the client was switched back (cited as ROI2 at 436 **[VERIFY: likely ROI1 at 436]**).
+
+**Finding:** At least one transfer occurred. The record attributes the transfers to Complainant's self-described patient limitations or to inadvertence, not to a retaliatory or discriminatory purpose. The record does not quantify the transfers or show whether all were reviewed.
+
+### Claim (c): October 5, 2016, staff meeting; Captain made decisions about her clients without her input
+
+- The meeting was a standard High-Risk meeting. The Captain raised concerns about two of Complainant's patients (ROI2 at 6).
+- The Captain denied making changes. He stated the meeting addressed care plans, as it does for every provider (ROI2 at 11).
+- The Social Services Assistant said the meetings exist so providers can coordinate care. Everyone offers a perspective, and no one tells anyone how to do their job (ROI2 at 110).
+- The Captain stated that Complainant afterward was aggressive, spoke loudly about the patients within earshot of others, and recorded him without consent (ROI2 at 6). The IG report of November 15, 2016, found that Complainant violated German law by recording the conversation without the other party's consent (ROI1 at 225).
+- Complainant then told the Lieutenant Colonel she no longer wished to attend the meetings and requested reassignment (ROI1 at 437).
+- Two patient ICE complaints about Complainant's standard of care were submitted to the IG on October 5 and 7, 2016 (ROI1 at 217).
+
+**Finding:** The meeting occurred. The weight of the evidence indicates it was a routine care-coordination meeting in which no decisions were imposed on Complainant's clients. The record contains no contrary witness account.
+
+### Claim (d): October 12, 2016, meeting with the Lieutenant Colonel and the Lieutenant
+
+- The meeting was held to discuss Complainant's request to be removed from the Baumholder Team.
+- Complainant felt attacked because of tone of voice. Both officials denied being aggressive, said they did not want to continue if she was uncomfortable, and offered to have a neutral party present (ROI1 at 455).
+- Both stated that Complainant repeatedly called the environment hostile but gave no specifics when asked (ROI1 at 437, 448).
+
+**Finding:** The meeting occurred. The only evidence of disrespect is Complainant's subjective perception of tone. Both officials denied it, and the record contains no corroboration. The record refers once to the "Lieutenant Colonel and Colonel" as the officials Complainant said were hostile (ROI1 at 447) **[VERIFY: identity of "Colonel" versus Lieutenant]**.
+
+### Claim (e): November 12, 2016, performance evaluation
+
+- The Lieutenant Colonel rated Complainant on 15 metrics: eleven "Exceed" and four "Met," with an overall rating of **Excellent** (ROI1 at 438).
+- The four "Met" ratings were in collaboration with staff. The Lieutenant Colonel provided examples, including that he observed no collaboration with staff for most of May through October 31, 2016 (ROI1 at 439).
+- The Lieutenant, as second-line rater, concurred (ROI1 at 456).
+- The IG's November 15, 2016, findings of a disruptive environment and contentious interactions with the Behavioral Health staff (ROI1 at 217) are consistent with the collaboration ratings.
+
+**Finding:** The evaluation was favorable overall. The Agency articulated specific, documented reasons for the "Met" ratings, and the excerpt contains no evidence showing those reasons were inaccurate. The record does not show which statements in the evaluation Complainant disputes. **[VERIFY]**
+
+### Claim (f): December 21, 2016, two clients removed from schedule after sick leave on December 19–20
+
+- Complainant alleged two clients were redirected to other providers.
+- The Lieutenant Colonel, the Colonel, and the Chief each attested that they were unaware of any issues on that date.
+
+**Finding:** The record contains no scheduling records or statements from schedulers or providers who took over the clients. Neither the alleged removal nor the reason for it is established. The possibility that the clients were rescheduled during her two-day absence has not been addressed. **[VERIFY: whether scheduling records were requested.]**
+
+### Claim (g): Staff refused to engage her to help cover cases during holiday provider shortage
+
+The excerpt contains no testimony or documents addressing this allegation. **Finding: Unable to make a finding on the present record.** **[VERIFY: whether this was investigated.]**
+
+### Claim (h): NCOIC did not introduce her to a new staff member
+
+- Complainant stated she does not know who the new staff member is. She acknowledged that she did not leave her office to introduce herself and did not tell the NCOIC or anyone else about the matter (ROI1 at 398–99).
+- The EEO Investigator contacted the NCOIC, but he had been reassigned and did not respond (ROI2 at 173).
+
+**Finding:** The facts are essentially undisputed. The omission occurred, Complainant did not raise it, and the NCOIC's explanation is unknown because he was not interviewed. The record contains no evidence that the omission was motivated by discriminatory or retaliatory animus.
+
+### Claim (i): IG complaint and the Sergeant First Class's follow-up
+
+- Complainant contacted the Regional Health Command-Europe IG in October 2016. A complaint alleging discrimination, harassment, and abuse of authority is documented as submitted October 13, 2016 (ROI1 at 219).
+- The IG issued its report November 15, 2016, based on the October 5, 7, and 13 complaints. It found no evidence of harassment or discrimination, found a disruptive environment attributable to Complainant, and recommended her removal from the Baumholder clinic (ROI1 at 217–26).
+- On December 6, 2016, the Sergeant First Class contacted Complainant about her complaint of discrimination and reprisal. She proposed a meeting during Counsel's visit to Germany the week of January 9, 2017.
+- **Conflict in the record.** The formal complaint states the Sergeant First Class never answered Counsel's inquiry. In her affidavit, Complainant stated that the Sergeant First Class did respond, but by then Counsel was no longer in Germany (ROI1 at 400).
+- The IG Office, including the Sergeant First Class, told the EEO Investigator that IG policy is to abstain from involvement when the Agency is taking action. The IG report is nevertheless part of the record (ROI2 at 173; ROI1 at 217).
+
+**Finding:** The IG received and investigated Complainant's complaints and issued a report. The meeting did not occur. Complainant's own accounts differ on whether the Sergeant First Class responded, and the Agency's explanation is a policy of abstention. The record does not establish that the missed meeting was retaliatory.
+
+### Claim (j): January 27, 2017, developmental counseling about temporary reassignment
+
+- Complainant was temporarily assigned to Landstuhl Regional Medical Center on January 4, 2017 (ROI1 at 459).
+- The Chief stated the January 27 session was standard counseling with nothing negative in it (ROI1 at 459).
+
+**Finding:** The counseling occurred. The only explanation in the record is that it was routine and non-disciplinary. The record does not show that it affected the terms or conditions of Complainant's employment. The reassignment is consistent with the IG's recommendation. **[VERIFY: who decided the reassignment and when.]**
+
+---
+
+## III. Hostile Work Environment (Claims a–j Considered Together)
+
+The incidents largely consist of disputed perceptions (tone, facial expressions, exclusion) and discrete administrative or clinical decisions for which the Agency offered explanations. Complainant did not give specific examples when management asked, and the IG found no evidence of harassment or discrimination. The record excerpt contains no evidence that the conduct was based on a protected characteristic or was sufficiently severe or pervasive to alter the conditions of employment. The record instead points to workplace conflict, which the IG attributed in significant part to Complainant's interactions with staff.
+
+---
+
+## IV. Procedural Disposition
+
+- At the conclusion of the investigation, the Agency provided Complainant the report of investigation and notice of her right to request a hearing before an EEOC Administrative Judge (AJ). She timely requested a hearing.
+- On October 18, 2021, the Agency moved for a decision without a hearing. Complainant responded.
+- On January 31, 2022, the AJ granted the motion. He found the record adequately developed and, drawing all reasonable inferences for Complainant, found no genuine dispute of material fact. He found that the Agency articulated non-discriminatory reasons and Complainant did not show pretext, and that the conduct was not severe or pervasive enough to constitute a hostile work environment. He characterized the complaint as essentially reflecting dissatisfaction and personal grievances with coworkers and management.
+- The Agency did not issue a final action, so the AJ's decision became the Agency's final action by operation of law. See 29 C.F.R. § 1614.110.
+
+---
+
+## V. Record Limitations and Items Requiring Follow-Up
+
+1. The protected bases and any prior EEO activity are not stated in the excerpt.
+2. The NCOIC was not interviewed, and the Sergeant First Class was not interviewed (ROI2 at 173).
+3. There is no evidence in the excerpt regarding claim (g), and none beyond management's lack of awareness regarding claim (f).
+4. Complainant's two accounts of the Sergeant First Class's response conflict (claim i).
+5. Citation irregularities: ROI2 at 436 (likely ROI1); the "Colonel" reference versus the Lieutenant; and ROI2 at 96 versus ROI1 at 444 for the Commander and the Lieutenant. These should be confirmed.
+6. The Nurse Practitioner's alleged statements to patients appear in a truncated passage of the source record and should be checked against ROI1 at 232.
+7. It is unknown whether the 2015 mediation occurred or whether the 2014 grievance concerns recurred afterward.

@@ -1,0 +1,79 @@
+# FINDINGS
+
+## I. Scope and Basis
+
+These findings rest only on the record provided: the complaint and its accepted claims, the December 21, 2020 appointment memorandum, Complainant's emails of December 31, 2020 and after, the Inspector's January 22, 2021 fact-finding report, the affidavits and statements in the record, and the procedural history. Where the record is silent, the finding says so. Nothing is inferred beyond what the record supports.
+
+## II. Claims Addressed
+
+Complainant, a Supervisory Transportation Security Officer (SV-1802-G) at Hartsfield-Jackson Atlanta International Airport, alleges discrimination and a hostile work environment based on sex (male) and reprisal for prior protected EEO activity. The accepted claims are:
+
+1. On November 24, 2020, CW1 claimed to do Voodoo and placed a flower on Complainant's body.
+2. *[Text of Claim 2 does not appear in the record provided. See Section V.]*
+3. After November 24, 2020, management failed to address Complainant's concerns about the incident with CW1 and prevented him from attending management meetings and scheduling operational meetings.
+4. On December 30, 2020, Manager paced, stood over Complainant, and blocked the door when Complainant tried to leave.
+
+## III. Undisputed Facts
+
+1. Complainant complained to management about CW1 on November 24 and 28, 2020.
+2. On December 21, 2020, the Interim Director appointed Manager to investigate Complainant's claims.
+3. On December 31, 2020, Complainant objected in writing to Manager's role because Manager was in his management chain. He sent similar emails to the Interim Director afterward.
+4. The Interim Director forwarded the concerns to the Director. On January 5, 2021, the Director appointed a Transportation Security Inspector to continue the investigation.
+5. Complainant agreed to be interviewed by the Inspector.
+6. The Inspector interviewed Complainant, CW1, and several coworkers from the area where both worked. On January 22, 2021, he issued a fact-finding report that did not substantiate Complainant's claims.
+7. Complainant and CW1 had a "contentious conversation." The participants dispute its substance.
+8. Complainant filed his formal EEO complaint on February 2, 2021. The Agency initially dismissed it for failure to state a claim. The Commission reversed on July 22, 2021 and remanded for processing.
+9. After the investigation, the Agency gave Complainant the report of investigation and notice of his right to request a hearing. At his request, it issued a final decision under 29 C.F.R. § 1614.110(b), finding no discrimination or reprisal. Complainant appealed.
+
+## IV. Findings by Claim
+
+### Claims 1 and 2: Interaction with CW1 on November 24, 2020
+
+**Complainant's account.** He asked CW1 to step back and stay away, but she did not, and she backed him into a corner. He says CW1 claimed to do Voodoo and placed a flower on his body.
+
+**CW1's account.** In her affidavit, which is consistent with her statement to the Inspector, CW1 denied Complainant's version. She stated that Complainant started the conversation and questioned her about her relationship with another employee, which upset her.
+
+**Other witnesses.** Coworkers, in the investigation and in their later statements, confirmed that a contentious conversation occurred. None could hear what was said or see what was done.
+
+**Finding.** The conversation occurred, but the record contains no independent evidence of what was said or done. The statements of Complainant and CW1 conflict directly, and no witness corroborates either. The Inspector characterized most of the evidence as "conjecture." On this record, the allegations that CW1 claimed to practice Voodoo, placed a flower on Complainant, and physically cornered him are **not corroborated**.
+
+The record also does not show whether CW1 was specifically asked about the Voodoo statement or the flower. CW1's denial is described only generally.
+
+Complainant stated that security footage would have corroborated his claims. The record does not show whether footage existed, was requested, or was reviewed.
+
+### Claim 3: Management's Response and Exclusion from Meetings
+
+**Response to Complainant's concerns.** Complainant says he complained on November 24 and 28, 2020 and that no action followed. The record shows that management appointed an investigator on December 21, 2020, about four weeks after the first complaint. After Complainant objected to Manager's role, a different investigator was appointed within about five days (January 5, 2021). The fact-finding report issued on January 22, 2021.
+
+**Finding.** The record shows no action between November 28 and December 21, 2020, and it does not explain the interval. It also shows that management did investigate, replaced the investigator at Complainant's request, and completed a fact-finding report. The allegation that management took no action is **contradicted in part** by the documents. Complainant's dissatisfaction is that the inquiry did not address his concerns, did not prevent or lessen the alleged conduct, and was biased and artificial. The record does not substantiate bias in the inquiry.
+
+**Exclusion from meetings.** Complainant alleges he was kept from management meetings and from scheduling operational meetings. Manager denied this. The record contains no meeting schedules, attendance records, invitations, or witness statements on the point. This allegation is **unsubstantiated**.
+
+### Claim 4: Conduct of Manager on December 30, 2020
+
+**Complainant's account.** Manager demanded answers about the allegations against CW1 and refused to show Complainant his authority to investigate. Manager offered to show the memorandum on his computer but "would click off the screen" whenever Complainant looked. Manager would not let Complainant leave without answering questions, paced, stood over him, and blocked the door.
+
+**Manager's account.** Manager denied each allegation.
+
+**Finding.** Manager had been appointed to investigate and had a legitimate reason to speak with Complainant, as the December 21, 2020 memorandum shows. The record contains no witness, recording, or documentary evidence of how the December 30 meeting went. The physical conduct alleged (pacing, standing over Complainant, blocking the door, withholding the memorandum) rests only on Complainant's account and is **not corroborated**. Complainant's objection to Manager's role was documented the next day, and the Director addressed it within a week.
+
+### Bases: Sex and Reprisal
+
+**Sex.** Complainant believes the events show a pattern: CW1 and other women are not disciplined while men are treated more harshly. The record identifies no specific comparators, discipline records, or statements by any responsible official referring to Complainant's sex. The sex-based allegation is **unsupported by specific evidence in the record**.
+
+**Reprisal.** The record does not identify Complainant's prior EEO activity, when it occurred, or whether the responsible officials knew of it. It contains no evidence connecting any alleged act to that activity. The reprisal allegation is **unsupported by specific evidence in the record**.
+
+**Hostile work environment.** The only incidents with documentary support are the November 24 conversation, whose substance is disputed, and the investigative steps management took. The more serious alleged conduct is uncorroborated. The record does not establish that the alleged conduct occurred as described, or that it was based on sex or reprisal.
+
+## V. Record Gaps and Discrepancies for Investigator Follow-Up
+
+1. **Claim 2 is missing.** The claims list jumps from 1 to 3, yet the narrative refers to "Claims (1) and (2)." Confirm the text of Claim 2 against the accepted-claims letter.
+2. **Pronoun inconsistency.** The Inspector's findings say Complainant alleged CW1 "backed *her* into a corner." Elsewhere Complainant says CW1 backed *him* into a corner. Verify against the fact-finding report.
+3. **Voodoo and flower.** Confirm whether CW1 and the coworkers were asked about these allegations specifically, and obtain their responses.
+4. **Security footage.** Determine whether footage of the area for November 24 and December 30, 2020 existed, was preserved, and was requested or reviewed. Document the answer.
+5. **Gap from November 28 to December 21, 2020.** Obtain management's explanation for the interval before the investigator was appointed.
+6. **Meeting exclusion.** Obtain meeting rosters, calendar invitations, and attendance records for the period after November 24, 2020. Interview other attendees if needed.
+7. **December 30 meeting.** Identify anyone nearby, and check for door logs, office layout, or other corroborating information.
+8. **Comparators.** Obtain discipline and complaint-handling records for similarly situated male and female employees, if the claim is to be tested.
+9. **Prior EEO activity.** Document its nature and date, and the responsible officials' knowledge of it.
+10. **Chronology.** The procedural history is out of order in the source (the Commission's July 22, 2021 remand appears mid-narrative). Confirm dates and sequence against the file.

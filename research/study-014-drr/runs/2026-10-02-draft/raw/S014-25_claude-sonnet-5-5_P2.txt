@@ -1,0 +1,78 @@
+# FINDINGS
+
+## I. Basis and Limits of These Findings
+
+These findings are drawn solely from the record provided, which summarizes the procedural history of the complaint and the Administrative Judge's (AJ) decision. The underlying Report of Investigation (ROI), affidavits, and exhibits were not available for this draft. Where a finding below reflects the AJ's determination rather than an independently verified fact, it is attributed to the AJ.
+
+## II. Background
+
+Complainant was a Library Director, NF-1410-IV, at the Agency's Joint Base Andrews, Prince George's County, Maryland. Her first-level supervisor (S1) was the Force Development Flight Chief, GS-0301-13. Complainant alleged discrimination based on race, sex, color, and age. She originally included a reprisal claim for prior EEO activity but withdrew it during a conference before the AJ. Reprisal is therefore not at issue.
+
+## III. Claims Presented
+
+1. On May 31, July 3, and July 16, 2018, S1 claimed to have verbally counseled Complainant, but no documentation was placed in her personnel file.
+2. On October 18, 2018, S1 issued Complainant a Letter of Reprimand.
+3. On February 12, March 14, March 21, April 2, and April 3, 2019, S1 accepted incorrect statements from Complainant's subordinates.
+4. On April 25, 2019, Complainant received a Notice of Proposed Removal signed by S1.
+5. On or about June 28, 2019, Complainant was mailed a Decision to Remove letter, dated and signed by S1 on June 28, 2019.
+6. On October 22, 2019, Complainant learned her Common Access Card (CAC) remained active after her removal, which could allow others to modify her existing work.
+
+## IV. Procedural History
+
+- The Agency provided Complainant the ROI and notice of her right to request a hearing before an EEOC AJ. Complainant requested a hearing.
+- Over Complainant's objection, the AJ granted the Agency's motion for a decision without a hearing and issued summary judgment for the Agency.
+- The Agency issued a final order fully implementing the AJ's finding that Complainant did not prove discrimination as alleged. Complainant appealed.
+
+## V. Findings
+
+### A. Claim 6 (CAC)
+
+The AJ analyzed Claim 6 and found no discrimination. Complainant did not list this claim in her appeal brief and does not dispute that finding. It is not addressed further.
+
+### B. Disparate Treatment (Claims 4 and 5)
+
+1. **Prima facie case.** The AJ assumed, without deciding, that Complainant could establish a prima facie case for the proposed removal and removal.
+
+2. **Legitimate, nondiscriminatory reasons.** The AJ found that the Agency articulated legitimate, nondiscriminatory reasons. The Notice of Proposed Removal cited:
+   - failure to meet suspenses (deadlines) in a timely manner;
+   - cancelling scheduled events without permission from leadership;
+   - not staggering schedules to meet the needs of events and patrons;
+   - not relieving staff for lunches or breaks;
+   - not conducting staff planning meetings for events;
+   - staff accusations that Complainant gossiped and released privileged employee information;
+   - staff fear of retaliation, bad feedback, and appraisals if they spoke up; and
+   - lack of attention to detail in funds management.
+
+3. **Comparators.** The AJ found that Complainant did not identify similarly situated employees treated more favorably. Complainant cited two coworkers who were not disciplined for a fight in front of patrons. The AJ found that Complainant "was terminated for an entirely different set of circumstances and reasons" and that "both women hold a different type of position than Complainant." They were therefore not adequately similar.
+
+### C. Hostile Work Environment / Harassment
+
+Complainant's harassment allegations were:
+- S1's statement in the Notice of Proposed Removal that she gave verbal counseling on three occasions that was not documented in the personnel file (Claim 1);
+- the Letter of Reprimand for leaving the library unattended to deal with a personal issue, which blocked a summer intern from the building (Claim 2);
+- S1's acceptance, without further investigation, of allegedly inaccurate statements about Complainant's conduct from her White subordinates (Claim 3); and
+- the proposed removal and removal (Claims 4 and 5).
+
+The AJ found that Complainant did not meet her burden, on two independent grounds.
+
+**1. No nexus to protected bases.**
+- *Sex and age:* The AJ found that Complainant offered no evidence tying her age or sex to any of the events beyond her own conclusory statements.
+- *Race and color:* The AJ found that Complainant's speculation that she was Black while her supervisor and subordinates were not, and that there was therefore a conspiracy to remove her, "does not, by itself, show racial animus."
+- *Coworker affidavit:* A coworker supported Complainant's contention of a racially hostile environment. He averred that unnamed staff said they disliked being supervised by an African American, and that a subordinate coworker and S1 complained Complainant lacked experience and that her Caucasian predecessor did a better job. The AJ found the affidavit "very confusing" and found that the coworker appeared to have learned of these instances second- or third-hand rather than witnessing them. Because no other evidence corroborated the statements, the AJ found they did not establish racial animus on the part of S1 or the subordinates.
+
+**2. Insufficient severity or pervasiveness.**
+- The AJ found that Complainant did not show unwelcome verbal or physical conduct severe or pervasive enough to change her conditions of employment into an abusive working environment.
+- The Chief Human Resources Officer (GS-0201-12) stated in her affidavit that verbal counseling need not be added to personnel files. This bears on Claim 1.
+- The AJ characterized the events as "no more than ordinary tribulations of the workplace," including disagreements with supervisors, supervisory attempts to manage the office, communication problems, and implementation of progressive discipline.
+
+## VI. Conclusion
+
+Viewing the ROI evidence in the light most favorable to Complainant, the AJ found no genuine issue of material fact and concluded that Complainant did not prove by a preponderance of the evidence that the Agency subjected her to disparate treatment or a hostile work environment based on race, sex, color, or age. The Agency's final order adopted that conclusion.
+
+## VII. Notes for the Investigator (Not Findings)
+
+- **Missing source material.** Verify the findings above against the ROI, particularly the coworker's affidavit, the HR officer's affidavit, and the comparator evidence.
+- **Reference to "footnote 3."** The record contains a stray "3" after the verbal-counseling allegation, apparently a footnote marker whose text was not provided.
+- **Claim 3.** The record characterizes the subordinates as White, but it does not identify which statements were allegedly inaccurate or whether S1 investigated them. The AJ's analysis of this claim appears only within the harassment discussion.
+- **Claim 2 and the reprimand.** The record does not state whether the AJ made a separate finding on the Letter of Reprimand's stated basis beyond the general harassment analysis.
+- **Complainant's age and sex.** These are not stated in the record, though Complainant is referred to with female pronouns.

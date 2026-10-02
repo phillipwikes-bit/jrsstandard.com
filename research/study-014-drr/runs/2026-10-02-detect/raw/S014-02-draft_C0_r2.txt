@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies nine accepted claims with approximate dates and specific allegations (e.g., 'Yelled at and embarrassed before coworkers (Dec. 23, 2020)'), but does not explicitly state the evidentiary basis—witness statements, documents, or investigative findings—that led to accepting each claim."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record states the Agency found Complainant 'did not prove discrimination as alleged' but provides no explanation of how the investigative evidence was weighed, how the nine accepted claims were assessed against the discrimination standard, or what specific findings led to the no-discrimination conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer examining this record years later would see accepted claims and a no-discrimination finding but could not reconstruct why accepted factual allegations (e.g., being yelled at, moved off route, marked AWOL despite approved leave) did not constitute actionable discrimination."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record accepts nine factual claims but does not demonstrate how the investigation substantiated each claim or what evidence supported the conclusion that the Manager's actions, though accepted as occurring, were not discriminatory or not causally linked to disability."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronological sequence from November 7, 2020 through April 15, 2021, with specific dates for each accepted claim and procedural milestones (complaint filed April 17, 2021; AJ hearing denial; final Agency decision)."
+    }
+  },
+  "remediation_note": "The record must articulate the investigative findings supporting each accepted claim and explain the logical chain connecting those facts to the no-discrimination conclusion—specifically, why the Manager's documented actions (yelling, reassignment, AWOL marking despite approved leave) were not motivated by or causally related to disability, or why they did not breach the Rehabilitation Act's reasonable accommodation or non-discrimination obligations.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, and accountability_support",
+    "compliant_version": "A compliant version must include: (1) explicit reference to the investigative evidence (statements, documents, timelines) that substantiated each of the nine accepted claims; (2) a reasoned analysis explaining how the Manager's conduct—marked as factually occurring—either lacked discriminatory motive, was not based on disability, or was justified by legitimate operational need; (3) a clear statement of the legal standard applied (e.g., Rehabilitation Act burden-shifting) and how the evidence met or failed to meet that standard; and (4) explanation of any gap between accepted facts and the final determination, so a future reviewer can understand the distinction between what happened and why it was or was not unlawful."
+  }
+}
+```

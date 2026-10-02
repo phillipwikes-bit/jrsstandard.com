@@ -1,0 +1,75 @@
+# Case File Summary: Investigation Record
+
+## Parties and Background
+- **Complainant:** Deportation Officer (DO), GS-12, at the Agency's San Bernardina, California office. He alleges discrimination on the bases of national origin (Romanian), age (48; YOB 1971), and reprisal for prior EEO activity (HS-ICE-21417-2012 and HS-ICE-22663-2012), under Title VII and the ADEA. He also alleges a hostile work environment.
+- **First-line supervisor:** Supervisory Detention and Deportation Officer (Vietnamese; YOB 1977; no prior EEO activity). ROI at 76.
+- **Comparators named by Complainant:**
+  - DO 1: YOB 1982; no prior EEO activity; national origin unknown.
+  - DO 2: YOB 1969; prior EEO activity; national origin unknown.
+  - *Note:* The record text describing DO 1 appears garbled or incomplete, so the exact comparator allegation for DO 1 should be checked against the original ROI.
+
+## Procedural History
+- **October 12, 2018:** Complainant initiated EEO contact.
+- **June 6, 2019:** Complainant filed the EEO complaint.
+- The Agency investigated and gave Complainant the report of investigation (ROI) and notice of his right to request a hearing before an EEOC Administrative Judge (AJ). Complainant timely requested a hearing.
+- **May 11, 2021:** The AJ issued an order directing Complainant to file an investigative affidavit. Complainant did not comply, despite the EEO investigator's multiple requests.
+- **June 7, 2021:** The AJ issued an Order to Show Good Cause. Complainant was to state by June 17, 2021 why he had good cause for not submitting the affidavit.
+- **June 21, 2021:** Complainant emailed the AJ with apologies but still provided no affidavit.
+- **June 22:** The AJ dismissed the complaint from the hearing process and remanded it to the Agency for a Final Agency Decision (FAD), as a sanction for noncompliance with the AJ's orders.
+- **August 10, 2021:** The Agency issued the FAD under 29 C.F.R. § 1614.110(b).
+- Complainant then appealed. Neither Complainant nor the Agency submitted an appeal statement.
+
+## Claims and the Evidence in the Record
+
+**Claim 1 – July 26, 2018: Supervisor denied Complainant's request to attend a concert with his daughter.**
+- *Complainant* (ROI at 13-14, 47, 120): Supervisor denied the request. He also alleged disparate treatment relative to DO 1 regarding schedule adjustment.
+- *Supervisor* (ROI at 77-80, 90):
+  - On July 27, 2018, Complainant texted a request to adjust his schedule to 0500-1300 to attend a recreational event.
+  - Supervisor replied that the earliest Complainant could start was 0600, or he could use Annual Leave.
+  - Complainant texted that he would take leave but then decided to report to work.
+
+**Claim 2 – July 27, 2018: Supervisor asked Complainant to return to work after he had already left for the day.**
+- *Complainant* (ROI at 13-4): He had already left for the day when Supervisor asked him to return.
+- *Supervisor* (ROI at 80-2, 91): He asked Complainant to come to his office during Complainant's duty hours. Complainant continued working the remaining hours, then worked overtime from 4:30 p.m. to 7:00 p.m.
+- *Record* (ROI at 91, 137): On that date Complainant claimed work hours from 0500 to 1900, consisting of eight hours of regular pay and six hours of AUO.
+
+**Claim 3 – October 1, 2018: Complainant became aware of pay discrepancies made by Supervisor.**
+- *Complainant* (ROI at 13-4, 47, 120): Supervisor told DO 2 of DO 2's Administrative Uncontrollable Overtime (AUO) pay discrepancy before correcting DO 2's pay.
+- *Supervisor* (ROI at 83-5, 93):
+  - On October 4, 2018, Complainant and the Union President came to his office claiming Complainant had worked AUO from 3:00 p.m. to 5:00 p.m. on August 28, 2018.
+  - On that date Complainant was in all-day Defensive Tactics training, scheduled from 8:00 a.m. to 4:00 p.m.
+  - Supervisor explained that the 3-4 p.m. training hour was excludable from AUO, and he made the pay adjustment accordingly.
+
+**Claim 4 – October 12, 2018: Supervisor admonished Complainant several times in his Performance Work Plan (PWP) and rated him in an area not in his official PWP.**
+- *Complainant* (ROI at 13, 47): Supervisor admonished him several times in the PWP and rated him on an area not in his official PWP.
+- *Supervisor* (ROI at 86-7, 98-110):
+  - He reviewed the PWP with Complainant on October 12, 2018.
+  - Complainant became upset and walked away, which ended any opportunity for discussion.
+  - Supervisor rated Complainant only on elements in his PWP: Plans and Conducts Arrest, Custody Operations, Deportation, Partnering, and Prepares Reports and Other Correspondence.
+  - The record also showed these were the elements rated (ROI at 86-7, 98-110).
+
+## Agency Decision (FAD, August 10, 2021)
+**Decision-maker:** The Agency, issuing the FAD after the AJ's remand. **Finding:** Complainant failed to prove discrimination as alleged.
+
+**Disparate treatment (claims 1, 3, 4):**
+- **Criteria:** The three-part evidentiary scheme of *McDonnell Douglas Corp. v. Green*, 411 U.S. 792 (1973).
+- **Conclusion:** Management articulated legitimate, nondiscriminatory reasons. Complainant did not prove by a preponderance of the evidence that these were pretext, and he provided no evidence that the actions were based on his protected classes.
+- **Responses considered:**
+  - Claim 1: Supervisor's statement that Complainant did not request time off but decided to report to work, and that Complainant was not treated differently than DO 1 (ROI at 77-80).
+  - Claim 3: Supervisor's assertion that DO 2 was available in the office when the AUO discrepancy was found, so Supervisor could discuss the change with DO 2. Supervisor denied treating Complainant differently based on his protected classes (ROI at 84-5).
+  - Claim 4: Supervisor's assertion that he did not admonish Complainant in the PWP or rate him in areas not in his PWP.
+
+**Harassment / hostile work environment (claim 2 as a non-discrete allegation, plus the discrete acts in the other claims):**
+- **Criteria:** The legal standard for harassment.
+- **Conclusion:** Complainant failed to prove an unlawful, discriminatory hostile work environment.
+- **Reasoning:**
+  - The record contained no evidence that management's actions were motivated by discriminatory intent or that Complainant was subjected to unwelcome conduct based on a protected class.
+  - The allegations did not amount to the severe or pervasive harassment Title VII was designed to prevent.
+  - Management's actions bore no relationship to the claimed protected bases.
+  - There was no evidence that the alleged conduct was based on those bases, and no discriminatory animus.
+
+## Notes for the File
+- The record gives no year for the AJ's June 22 dismissal.
+- The record gives no date for the appeal.
+- Claim 1 is dated July 26, 2018 in the complaint, but Supervisor's account of the schedule request refers to July 27, 2018.
+- The FAD's analysis of claim 4 cites no ROI pages in the record.

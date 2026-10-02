@@ -1,0 +1,60 @@
+# Investigation Record Summary
+
+## Background and Complainant's Account
+
+When the events underlying this complaint occurred, Complainant was a Mail Processing Clerk at the Agency's Atlanta Processing and Distribution Center in Atlanta, Georgia. In her affidavit for the present EEO complaint, she stated that she had filed an earlier EEO complaint in September 2018. That complaint was still pending before an EEOC Administrative Judge (AJ) when she gave the affidavit. (Report of Investigation (ROI) at 97.)
+
+Complainant reported that she has post-traumatic stress disorder (PTSD) and depression resulting from sexual harassment by a co-worker, who was the subject of her earlier complaint. She also reported back, foot, and knee problems. These prevent her from standing or walking for extended periods and from climbing or descending stairs, and they restrict her bending, stooping, and lifting. (ROI at 97-98.) She stated that, because of the PTSD caused by the co-worker's sexual assault, her doctor determined she can no longer work in the same facility as him. (ROI at 98-99.)
+
+According to Complainant, the harassment or assault occurred in September 2019, after which she went on Family and Medical Leave Act (FMLA) leave. In April 2020 she was released to return to work at a facility different from her harasser's. When she arrived, however, the harasser was still there. (ROI at 100.)
+
+Complainant further alleged that she injured her knee at work in June 2020 and submitted documentation about the injury to the Agency in July 2020, but received no response. She stated that the Agency's Reasonable Accommodation Committee asked for additional documentation she had already provided. She also stated that the Committee disregarded her PTSD-related need to be moved away from her harasser and focused only on the physical restrictions from her knee injury. (ROI at 100.)
+
+In July 2021, she stated, she was finally given a modified assignment at a different location that accommodated her physical restrictions. She went on COVID leave on August 16, 2021, and was later hospitalized with sepsis. She was not cleared to return to work until September 21, 2021. Complainant stated that she has not been returned to work since then. She says the Agency has refused to accommodate her restrictions and that management has told her only that no work is available within them. (ROI at 100-105.)
+
+The record contains no explanation or documentation of Complainant's new position. It also does not explain why the Agency took a full year to move her to a facility apart from her harasser. In addition, no Agency official has stated that any effort was made to accommodate her restrictions from September 2021 onward, or that such an effort was unsuccessful.
+
+Complainant also alleged that she should not have been placed on leave without pay (LWOP) beginning November 21, 2021, because she could not work only because the Agency had failed to accommodate her restrictions. In January 2022, she was denied a bid position. It went to an employee with less seniority, and she was marked "ineligible" without explanation. (ROI at 105, 108-09.)
+
+## The EEO Complaint
+
+On May 13, 2022, Complainant filed an EEO complaint under Title VII of the Civil Rights Act of 1964 and Section 501 of the Rehabilitation Act of 1973. She alleged discrimination on the following bases:
+
+- Race (African-American/Native American/Cuban)
+- Sex (female)
+- Color (Brown)
+- Disability (physical and mental)
+- Reprisal for prior protected EEO activity
+
+She raised three claims:
+
+1. Since November 10, 2021, the Agency has not accommodated her medical restrictions.
+2. From November 10, 2021, to the present, she has been charged LWOP.
+3. On January 24, 2022, she was denied a bid position.
+
+## Agency Explanation for the Bid Denial
+
+In her affidavit, the Supervisor of Distribution Operations stated that Complainant's bid was denied because she did not provide updated medical documentation showing she could fully perform the duties within six months. (ROI at 152.) Nothing in the record shows that Complainant was asked for such documentation or told she needed to provide it. Complainant stated she was given no explanation for the denial.
+
+The Collective Bargaining Agreement provides that "management may, at the time of the submission of the bid or at any time thereafter, request that the employee provide medical certification indicating that the employee will be able to fully perform the duties of the bid for position within six months of the bid." (ROI at 337.)
+
+## Additional Claims and Procedural History
+
+The complaint also included three further claims:
+
+- Between April 2020 and November 9, 2021, she was not accommodated per her medical restrictions.
+- On unspecified dates, her leave was not properly coded as workers' compensation (OWCP) leave.
+- On unspecified dates, she was denied insurance benefits.
+
+Complainant had moved to amend her pre-existing complaint to add the denial-of-accommodation claim for the period from April 2020 onward. The AJ assigned to that case denied the motion, finding that the claim was not sufficiently like or related to the existing claims. The AJ also noted that the time limits for EEO counseling were tolled from November 11, 2021, the date she filed the motion. (ROI at 17-20.)
+
+The Agency dismissed the denial-of-accommodation claim for the period before November 10, 2021, under 29 C.F.R. § 1614.107(a)(1), citing untimely contact with an EEO counselor. (ROI at 62-63.) It dismissed the OWCP leave-coding and insurance-benefit claims as collateral attacks on the workers' compensation adjudicatory process. (ROI at 63-65.) The record's discussion of the Agency's handling of these two claims breaks off mid-sentence ("We find that the Agency's affirmance of the claims regarding Complainant's leave not being properly coded as OWCP leave and the denial of insurance benefits were"), so the finding is incomplete in the source text.
+
+## Final Agency Decision
+
+On December 6, 2022, the Agency issued a final decision under 29 C.F.R. § 1614.110(b). It found that Complainant had not submitted the medical documentation required to support her reasonable accommodation request, or to show she could perform the bid position's duties within six months. It also determined that she had not shown pretext for discrimination. It concluded that she had not proven the Agency discriminated against her as alleged. Complainant then filed the instant appeal.
+
+## Investigator's Notes
+
+- The source text ends the sentence about the OWCP and insurance claims abruptly, and stray footnote numbers (2 through 5) appear in the body. Both should be checked against the original document.
+- The record has no evidence of an Agency effort to accommodate Complainant after September 2021. It also has no evidence that she was asked for updated medical documentation before the bid denial.

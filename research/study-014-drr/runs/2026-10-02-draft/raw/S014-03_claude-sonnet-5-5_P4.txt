@@ -1,0 +1,48 @@
+# Case File Summary
+
+## Parties and Claims
+- **Complainant:** Full-time Mail Handler Equipment Operator, Agency's Morgan Processing and Distribution Center, New York, New York.
+- **Complaint filed:** November 18, 2021. Complainant alleged discrimination based on sex (female), disability (physical), and reprisal for prior protected EEO activity, under Title VII and the Rehabilitation Act.
+- **Claims:**
+  1. On June 25, 2021, and ongoing, she was denied overtime work within her limitations.
+  2. On July 19, 2021, a coworker verbally abused her and no action was taken.
+  3. Beginning August 1, 2021, and ongoing, she was micromanaged, assigned to either the rewrap section or city manual section, and/or confronted about her job duties.
+  4. On August 31, 2021, her request for a temporary schedule change was denied.
+
+## Claim 2 Clarification
+- The Agency initially accepted the claim as: "On July 20, 2021, you were verbally abused by a supervisor and no action was taken." (CF at 60.)
+- Complainant clarified during the investigation that the incident occurred on July 19, 2021, that a coworker was the abuser, and that supervisors did nothing when she reported it. (CF at 205-08.)
+
+## Transmission of the ROI
+- **Agency's account:** The Agency indicated that on April 5, 2022, it sent Complainant and her non-attorney representative the report of investigation (ROI) and notice of the right to request a hearing before an EEOC AJ.
+- **April 5, 2022 email:** The Agency said the final ROI was available for download for 30 days and asked for confirmation of receipt. (CF at 98-103.) A message dated April 5, 2022, shows the email was relayed but the destination server sent no delivery notification. (CF at 97.)
+- **May 17, 2022 email:** The Agency again emailed both, saying an electronic ROI copy would be available for 30 days. (CF at 82-83.) The May 17, 2022 message shows it was relayed but no delivery notification was sent. (CF at 84.)
+
+## Supplemental Documents
+- **April 5, 2022:** The Agency also sent Complainant and her representative documents submitted after the investigative file was completed, asking that they be added to her copy. (CF at 85-96.) They appear to have been sent by first class mail. (CF at 85.) The documents are:
+  - The Acting Supervisor's investigative affidavit, completed March 28, 2022.
+  - The Acting Supervisor's Litigation Hold Notice, signed March 31, 2022. (CF at 86-95.)
+- **Acting Supervisor's statement (March 28, 2022 affidavit):** He said he had no organizational relationship to Complainant during the relevant time and was not at the facility on July 20, 2021. (CF at 86-93.)
+- **July 6, 2022:** The Agency sent a further document, an updated affidavit from the Acting Supervisor dated June 7, 2022. (CF at 1-10.) In it, the Acting Supervisor stated:
+  - His organizational relationship with Complainant during the complaint timeframe was Acting Supervisor. (CF at 2.)
+  - He was not present when the coworker verbally abused Complainant on July 19, 2021.
+  - He did not know whether Complainant or anyone on her behalf reported harassment. (CF at 4-9.)
+
+## Hearing Request
+- **May 31, 2022:** Complainant mailed a hearing request to the Agency and to the Commission's New York District Office. (CF at 40-42.)
+- **Receipt:** The Agency stamped the envelope and the request form as received June 6, 2022. (CF at 40, 42.) The EEOC New York District Office received the request June 10, 2022, and docketed it as Hearing No. 520-2022-00326X.
+- **Complainant's May 28, 2022 letter (CF at 41):**
+  - After receiving the Acting Supervisor's affidavit in April 2022, she wanted to refute his statement that he was not present on the date of the incident. She requested his Employee Everything Report from the Agency.
+  - By her account, on May 18, 2022, she called an EEO Services Analyst to refute the statement. The Analyst told her the case had been closed on May 1, 2022.
+  - She said she asked how the case could be closed when she and her representative had not been notified of or received the ROI.
+  - She said the Analyst told her she could request a hearing but should attach a letter stating she learned on May 18, 2022, that the case was closed.
+
+## Decisions
+- **Agency final decision (June 2, 2022):** The Agency issued it under 29 C.F.R. § 1614.110(b), stating that Complainant did not request a hearing within the time frame in 29 C.F.R. § 1614.108(f). It concluded Complainant failed to prove discrimination as alleged. The record names no individual decision-maker.
+- **Appeal:** Complainant filed the instant appeal on June 15, 2022.
+- **EEOC AJ order (November 29, 2022):** An EEOC AJ dismissed the hearing request, noting that the Agency had already issued a final decision, which Complainant had appealed.
+
+## Notes for the File
+- The record does not state the Agency's reasoning on Complainant's hearing request or any response to her May 28, 2022 letter. It also does not state the outcome of the appeal.
+- The record shows no delivery notifications for either email transmission of the ROI (CF at 97, 84).
+- The Acting Supervisor's two affidavits differ on his organizational relationship to Complainant.

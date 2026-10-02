@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the five claims is grounded in specific factual bases: FMLA denials tied to leave balance calculations, case reassignment explained by job duty and alphabetical distribution, reasonable accommodation denials supported by medical documentation gaps and caseload data, and official time denial justified by hours already granted and investigator availability for extensions."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is traceable from evidence (leave audits, spreadsheets, medical records, interactive meeting notes, email exchanges) through supervisory explanations and the AJ's legal analysis to each conclusion, with explicit citations to missing comparators and contradictions in Complainant's positions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record presents substantial detail, critical dates are redacted as 'at one point,' obscuring the chronological relationship between leave requests, reassignments, accommodation requests, and their dispositions; a reviewer years later would struggle to reconstruct the precise timeline without access to unredacted dates."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Documentary evidence supports each conclusion: payroll audits confirm leave balances, spreadsheets show case distribution methodology, medical records establish absence of functional limitations, and email and meeting records document accommodation offers and rejections with stated rationales."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Temporal sequence is severely compromised by systematic redaction of dates ('at one point,' 'at one point,' 'on various dates') making it impossible to determine the chronological relationship between events, concurrent claims, or the interval between requests and responses."
+    }
+  },
+  "remediation_note": "To achieve compliance, unredact all dates and intervals to permit reconstruction of the event sequence across five years of proceedings. Clarify the timeline between the initial EEO complaint, the prior AJ decision on leave, the accommodation requests (including the 2018 reference), the case reassignment, the instant complaint, and the final AJ decision.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "temporal_reconstructability; cold_reviewer_clarity",
+    "compliant_version": "Reproduce the record with all dates, month-year intervals, and event sequences visible (including February dates, leave expiration windows, accommodation request dates, and the pendency period of the Rehabilitation Act appeal). Retain explanatory detail but present events in strict chronological order with elapsed time noted between key decision points and appeals."
+  }
+}
+```

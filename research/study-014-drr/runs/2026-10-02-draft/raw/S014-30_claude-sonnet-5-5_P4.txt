@@ -1,0 +1,64 @@
+# Case File Summary
+
+**Note on the record:** The excerpt begins mid-sentence. The number and filing date of Complaint 1, and the date of the AJ's decision, are not in the record and are not supplied here.
+
+## Parties and Position
+- Complainant was a Legal Assistant (Court), GS-0986-08, at the Orlando Immigration Court, Orlando, Florida.
+- S1 is his first-line supervisor (Hispanic, female, Supervisory Legal Assistant).
+- S2 is his second-line supervisor (Caucasian, male, Court Administrator).
+
+## Claims
+**Complaint 1** alleged discrimination based on race (African-American), sex (male), and reprisal (prior protected EEO activity under Title VII, the ADEA, and the Rehabilitation Act). Complainant claimed that on October 22, 2015:
+- S1 gave him a mid-year review that negatively and falsely characterized his professionalism and customer service, using "a list of untrue and twisted distortions."
+- He was not permitted to give evidence refuting the review.
+
+**Complaint 2** (EOI-2016-00061) was filed November 5, 2015. It alleged discrimination and a hostile work environment on the same bases plus age (49). Complainant claimed that on October 22, 2015:
+- His mid-year review was held in a conference room rather than in S1's office.
+- S2 was present in the conference room.
+
+## Procedural History
+- The two complaints were investigated separately.
+- Complainant requested a hearing on each before an EEOC Administrative Judge (AJ), and the complaints were later joined.
+- The Agency moved for summary judgment, and Complainant opposed.
+- The **AJ** (the decision-maker) granted the motion and found no discrimination without a hearing.
+- The Agency adopted that decision in its final order.
+- Complainant appealed.
+
+## AJ's Findings
+**Content of the review**
+- In the mid-term review, S1 assessed Complainant's performance as "at a successful level or higher."
+- Complainant contended he unfairly did not receive a rating of Excellent or Outstanding.
+- The AJ found it uncontroverted that EOIR employees do not receive a rating of record at the mid-year review.
+- S1's narrative comments:
+  - Customer Service: communicate with attorneys and return telephone calls.
+  - Establish, Update, Maintain and Process Record of Proceedings and Case Records: keep up with motions rather than holding them, and do not sign orders or let them sit overnight on his desk.
+  - Legal and Technical Support: be a team player by limiting cell phone and internet usage.
+  - S1 also wrote that he should continue his hard work and continue to strive for excellence.
+- The AJ found that Complainant contested only the Customer Service assessment.
+
+**The letter**
+- Complainant relied on a September 2015 letter from a defendant to an immigration judge. The letter complimented her handling of his case over nearly five years and expressed, without a name, "thankfulness… to your direct assistant, who was always very friendly and correct in handling my affairs."
+- Complainant began assisting this judge in June 2014, when EOIR hired him.
+- Complainant alleged that on October 22, 2015, S2 refused to accept the letter, explaining it "failed… as creditable" evidence. Citation: ROI Complaint 1, Bates No. 10 (EEO complaint); Bates Nos. 90–91, ¶¶ 24–27 (Complainant's affidavit).
+- The AJ found that, even assuming Complainant tried to submit it, the letter:
+  - would not have changed his rating, since none is given at the mid-year review; and
+  - did not refute the need to communicate better with attorneys and return telephone calls, since it concerned only his interaction with a defendant in court.
+
+**Conference room and S2's presence**
+- Mid-year reviews are typically held in the first-line supervisor's office. Complainant's was held in a lower conference room away from peers and others, which gave privacy, and Complainant acknowledged this.
+- The AJ found that management chose the conference room to assure privacy, not to harass or discriminate.
+- Typically only the evaluator (S1) and the employee are present. The AJ found that S2 attended because he had a responsibility to closely monitor interactions between Complainant and S1, given Complainant's misconduct toward S1 (described as abusive and caustic) and his disciplinary issues.
+
+## Responses Considered
+- In his rebuttal investigatory affidavit, written after reviewing the affidavits of S1, S2, and a third management official, Complainant said those affidavits contained lies and inconsistent statements.
+- The AJ found this did not rebut the explanations S1 and S2 gave for S2's presence at the review.
+
+## Appeal
+- **Complainant argues:**
+  - S2 admitted treating him differently. He cites S2's investigatory affidavit, which acknowledges that reviews are normally done in the evaluator's office with only the evaluator (S1) and the employee present, and that Complainant was treated differently on these points.
+  - He "respectfully questions" whether there can be equal justice where Agency counsel and the AJ are white.
+  - Genuine issues of material fact entitle him to a hearing, citing S2's admission of different treatment as an example.
+- **The Agency argues** that its final order should be affirmed.
+
+## Criteria
+The record states no legal standard beyond the summary-judgment disposition (decision without a hearing). Complainant's appeal argument refers to "genuine issues of material fact." The record gives no appellate decision or outcome.

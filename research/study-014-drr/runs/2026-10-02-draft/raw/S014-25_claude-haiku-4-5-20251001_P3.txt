@@ -1,0 +1,47 @@
+# CASE FILE INVESTIGATION RECORD
+
+## CASE SUMMARY AND BACKGROUND
+
+This investigation concerns employment discrimination allegations filed by a former Library Director, position classification NF-1410-IV, who was employed at the Agency's Joint Base Andrews facility located in Prince George's County, Maryland. The complainant initially asserted a claim of reprisal based on prior Equal Employment Opportunity (EEO) activity; however, this reprisal allegation was voluntarily withdrawn during a pre-hearing conference conducted before the EEOC Administrative Judge assigned to the matter.
+
+## CHRONOLOGY OF EVENTS
+
+The complaint encompasses six distinct incidents spanning an eighteen-month period:
+
+**First Instance - May through July 2018:** On three separate occasions (May 31, 2018; July 3, 2018; and July 16, 2018), the complainant's first-level supervisor, a Force Development Flight Chief with civil service rank GS-0301-13, asserted that verbal counseling had been administered to the complainant. Notably, despite these claimed counseling sessions, no written documentation was generated or placed in the complainant's official personnel file.
+
+**Second Instance - October 2018:** On October 18, 2018, the first-level supervisor issued a formal Letter of Reprimand to the complainant.
+
+**Third Instance - February through April 2019:** Between February 12, 2019, and April 3, 2019, across five separate dates (February 12, March 14, March 21, April 2, and April 3), the first-level supervisor received and accepted statements from the complainant's direct subordinates that the complainant characterized as factually inaccurate, without conducting independent verification or supplemental investigation.
+
+**Fourth Instance - April 2019:** On April 25, 2019, the complainant was furnished a Notice of Proposed Removal letter, formally signed by the first-level supervisor.
+
+**Fifth Instance - June 2019:** Approximately June 28, 2019, the complainant received a Decision to Remove letter, also dated June 28, 2019, and bearing the signature of the first-level supervisor. This letter effected the complainant's termination from federal service.
+
+**Sixth Instance - October 2019:** On October 22, 2019, the complainant discovered that her Common Access Card (CAC), required for facility access and system authorization, remained in active status despite her removal from the Agency's payroll and employment. This posed a security concern, as the active credentials could theoretically permit unauthorized individuals to access systems and modify the complainant's work files without authorization.
+
+## INVESTIGATION CONCLUSION AND ADMINISTRATIVE PROCEEDINGS
+
+Upon completing the investigation, the Agency furnished the complainant with a copy of the investigative report and provided formal notice of her right to request a hearing before an EEOC Administrative Judge. The complainant timely requested such a hearing. Despite the complainant's objections and contrary to her preference for a full evidentiary hearing, the assigned Administrative Judge granted the Agency's motion for summary judgment and issued a decision without conducting a hearing. In this decision, the Administrative Judge determined that the complainant had failed to establish discrimination based on race, sex, color, or age. The Agency subsequently issued a final order implementing the Administrative Judge's findings in their entirety. The complainant subsequently filed an appeal of this decision.
+
+## ADMINISTRATIVE JUDGE'S FINDINGS
+
+The Administrative Judge's analysis proceeded from the principle that all facts presented in the investigation report would be viewed most favorably to the complainant. Nevertheless, the Administrative Judge concluded that the complainant failed to establish a genuine issue of material fact sufficient to support discrimination claims based on any protected class status.
+
+**Note on Claim Six:** Although the Administrative Judge technically addressed the complaint regarding the active CAC status as part of the overall decision, the complainant did not include this claim in her appellate brief and did not dispute the Administrative Judge's finding on this matter. Consequently, Claim Six was not addressed in subsequent appellate review.
+
+## ANALYSIS OF REMAINING CLAIMS
+
+**Claims 1, 2, and 3 (Disciplinary Actions):** Regarding the undocumented verbal counseling, Letter of Reprimand, and acceptance of unverified subordinate statements, the Administrative Judge found that the complainant could not demonstrate disparate treatment or discriminatory harassment. An Agency Human Resources officer affirmed in her sworn statement that verbal counseling is not required to be documented in personnel files under Agency policy.
+
+**Claims 4 and 5 (Proposed Removal and Termination):** Assuming arguendo that the complainant could establish a prima facie case of discrimination regarding these claims, the Administrative Judge found that the Agency had articulated legitimate, nondiscriminatory reasons for removal. The first-level supervisor's stated basis for the termination decision included: failure to meet operational deadlines, unauthorized cancellation of scheduled events, inadequate schedule management to serve patron needs, failure to provide staff break and lunch relief, absence of formal staff planning meetings, employee allegations of gossip and disclosure of confidential personnel information, staff reports expressing fear of retaliation for speaking candidly, and inadequate attention to detail in financial management.
+
+The complainant was unable to identify similarly situated employees who received more favorable treatment. The complainant referenced coworkers who were not disciplined for an altercation occurring in front of patrons; however, the Administrative Judge rejected this comparison, noting that the coworkers held different positions and faced entirely different circumstances and conduct violations than the complainant.
+
+**Hostile Work Environment Claims:** The Administrative Judge analyzed whether the complainant established harassment based on protected characteristics. The complainant's hostile work environment allegations centered on: the undocumented verbal counseling referenced in the removal notice, the Letter of Reprimand regarding an unattended library, the acceptance of allegedly inaccurate statements from non-minority subordinates, and the removal and termination itself.
+
+The Administrative Judge determined that the complainant failed to establish a nexus between these incidents and protected class status. With respect to age and sex, the Administrative Judge found insufficient evidence beyond the complainant's conclusory statements. Regarding race and color, the Administrative Judge concluded that speculation based solely on racial composition did not demonstrate racial animus.
+
+An affidavit from a supporting coworker referenced unnamed staff members allegedly expressing preference for non-minority supervision and comparisons favoring the complainant's Caucasian predecessor. However, the Administrative Judge found this affidavit unreliable, noting that the affiant apparently obtained this information indirectly rather than through personal observation, and that no corroborating evidence substantiated these allegations.
+
+The Administrative Judge further determined that the complainant failed to establish severe and pervasive harassment that altered the conditions of employment into an abusive environment. The events described constituted ordinary workplace interactions, including supervisory disagreements, management decisions, communication issues, and progressive disciplinary implementation rather than unlawful harassment.

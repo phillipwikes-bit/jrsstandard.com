@@ -1,0 +1,92 @@
+# Summary of Investigation Record
+
+## I. Background
+
+When the events giving rise to this complaint occurred, Complainant was a GS-0343-13 Management Analyst in the Agency's Acquisitions Policy Oversight and Business Strategies Division, Office of the Senior Procurement Executive (OSPE), Office of the Secretary (OST), in Washington, D.C. Report of Investigation (ROI) at 210-16. Complainant filed a prior EEO complaint in 2016. She alleges that she has been subjected to ongoing retaliation since then. ROI at 112.
+
+The individuals referenced in this record are:
+
+- **DD-1**: the OSPE Deputy Director.
+- **AD**: the Associate Director of the Acquisition Policy Oversight and Business Strategies Division, who became Complainant's supervisor in June 2018.
+- **Coworker**: an employee who provided an affidavit in the prior EEO complaint.
+- **SPE**: the Senior Procurement Executive, DD-1's supervisor.
+- **M**: the Assistant Secretary for Administration.
+
+## II. Evidence Developed During the Investigation
+
+### A. Position Description (Allegation 1)
+
+Complainant stated that the Agency completed a desk audit of her position in 2016 and found it properly graded at the GS-13 level. She alleged, however, that her position description contained inaccuracies in the "Scope and Effect" and "Supervisory Controls" sections. She said she raised these inaccuracies with management repeatedly beginning in February 2017, without result. ROI at 115, 218-28. She further averred that neither DD-1 nor AD knew her actual duties because both were new to OSPE, and that they were therefore unqualified to assess her position description. ROI at 127.
+
+DD-1 stated that she met with Complainant on February 6, 2017, as Complainant was preparing to return to OSPE from a detail. According to DD-1, Complainant asked her to look at inaccuracies in the position description. DD-1 then reviewed it with Human Resources and concluded that it accurately reflected the responsibilities and duties of the position. ROI at 139.
+
+### B. Affidavit on the Shared Drive (Allegation 2)
+
+Complainant described the M-60 shared drive as one used by employees and contractors to archive non-personnel-related work documentation. ROI at 116. She stated that in June 2017 she noticed Coworker had saved Coworker's investigative affidavit from Complainant's prior EEO complaint to that drive. She alleged it was posted there to harm her reputation by making it visible to everyone in the office. ROI at 116. Complainant averred that she took a screenshot of the affidavit, deleted it from the drive, and reported the matter to DD-1. She also alleged that DD-1 should have disciplined Coworker. ROI at 127.
+
+DD-1 stated that Coworker inadvertently saved a copy of the affidavit to the shared drive. She said she directed Coworker to delete it immediately once the matter was brought to her attention. ROI at 139-40.
+
+Coworker averred that she accidentally saved the affidavit to the M-61 shared drive. She said she meant to save it to her personal "H" drive and did not realize she had saved it to the shared "S" drive until DD-1 raised the matter. Coworker also stated that she does not have access to the M-60 shared drive. ROI at 538. Complainant, however, provided a screenshot showing the affidavit on the M-60 shared drive. ROI at 64.
+
+### C. The June 29, 2018 Meeting (Allegation 3)
+
+Complainant stated that she told AD several times that she needed to speak with her attorney before providing information about the Digital IT Acquisition Program, because that program was related to her prior EEO complaint. ROI at 117. She averred that AD met with her about the matter on June 29, 2018, and questioned her as though conducting an interrogation. Complainant said she returned to her cubicle and received another email from AD within minutes. She alleged that when she went to AD's doorway and asked why AD was doing this, AD responded that Complainant believed everyone was out to get her. ROI at 117.
+
+AD stated that Complainant had indicated she could not complete a work assignment because her attorney had advised her not to respond. ROI at 163, 172. According to AD, when she asked why Complainant could not complete the assignment, Complainant said she had a pending EEO complaint related to the topic. ROI at 163. AD averred that Complainant also said during the meeting that she had not enjoyed working for her previous supervisors because she thought they had treated her unfairly. AD stated that she told Complainant she had no intention of treating her unfairly, but that her comment referred to Complainant's perceived unfair treatment in the office. AD denied telling Complainant that she thought everyone was out to get her. ROI at 165.
+
+### D. Micromanagement, Overmanagement, and Telework (Allegation 4)
+
+Complainant alleged that she was micromanaged and overmanaged and that she faced telework restrictions. ROI at 117-18, 128-29. As an example, she stated that in September 2018 DD-1 and AD requested additional documentation for managerial approvals for the Warrior to DOT Contracting Intern Program (W2DOT Program). She said they then failed to respond to her emails requesting approval for W2DOT Program initiatives. ROI at 121-22, 128-29. On telework, Complainant averred that the new telework policy was more restrictive for employees with "ad hoc" agreements. Such employees were allowed to telework only one day per week, with supervisory notification and consideration of extenuating circumstances. ROI at 117-18.
+
+DD-1 stated that she asked Complainant multiple times to produce a consolidated program/project schedule for the W2DOT Program. According to DD-1, Complainant complained of being micromanaged but never produced an adequate schedule. ROI at 140. DD-1 described Complainant as on a "very liberal ad hoc telework schedule": generally arriving around 8:30 or 9:00, leaving at 3:00, and teleworking the rest of the day. ROI at 141. DD-1 averred that she placed no restrictions on Complainant's telework, even after implementing the OSPE Timekeeping and Telework Standard Operating Procedure (SOP) on July 1, 2018. ROI at 140-41. AD likewise stated that Complainant's telework schedule was "grandfathered" in because it predated the SOP. ROI at 165-66.
+
+### E. FAC-P/PM-IT Certification (Allegation 5)
+
+According to Complainant, she is the Agency's acquisition workforce program manager. She is responsible for Agency system administrative support, system configurations, controls, and workflows, and for all aspects of user interface issues and technical support. ROI at 118. She alleged that she completed all required training for the Federal Acquisition Certification for Program and Project Managers Information Technology Core-Plus Specialization (FAC-P/PM-IT), yet AD denied her application without explaining what was missing. ROI at 118-19. Complainant averred that she approves bureau-level FAC-P/PM-IT applications before they go to the IT Office for approval. ROI at 119. She also averred that AD marginalizes her work and is incorrect that Complainant's position is not inherently an IT position. ROI at 130.
+
+AD and DD-1 stated that Complainant is neither required nor expected to hold this certification for her position. ROI at 142, 166-67. AD averred that Agency policy reserves the specialized certification primarily for those primarily responsible for acquiring IT investments. In AD's account, Complainant has no such responsibility in her position, and her application did not document the minimum two years of experience. ROI at 166-68, 403-10.
+
+### F. Request for Supervisory Reassignment and Detail (Allegation 6)
+
+Complainant stated that she asked to be reassigned to a supervisor outside the chain of command of DD-1 and AD, and that the request was denied. ROI at 119-20. She also averred that she requested a detail to M during the summer of 2018, and that DD-1 denied it because of inadequate resources to cover Complainant's duties. ROI at 120-21. She stated that DD-1 should not have handled her request for a new supervisor, since she was seeking reassignment away from DD-1's chain of command. ROI at 131. During the investigation, Complainant clarified that she was not in fact detailed to M. ROI at 120-21.
+
+DD-1 stated that Complainant asked to report directly to SPE, who denied the request. ROI at 143, 492. According to DD-1, Complainant proposed two alternative supervisors. On August 7, 2018, DD-1 told Complainant that neither was a logical option given her duties. DD-1 urged Complainant to improve her working relationship with AD, noting that AD had been her supervisor for only about a month. ROI at 142-44, 147-49, 472-92.
+
+### G. The Agile Panel (Allegation 7)
+
+Complainant averred that a coach invited her to speak on a panel on Agile initiatives, but that AD marginalized the event and would not allow her to speak. ROI at 121, 131-32, 498-506.
+
+AD stated that she denied the request because OSPE had done little to adopt Agile practices beyond hosting a few limited-scope events. She said she told Complainant she could attend as an audience member. ROI at 169-70, 501-06. DD-1 averred that a contractor organized the panel to discuss changes for federal employees as various agencies adopted Agile Unleashed. Because OSPE had not implemented Agile initiatives outside of technology, DD-1 said, Complainant had no Agency-specific knowledge to contribute. ROI at 144-45.
+
+## III. Procedural History
+
+Complainant contacted an EEO counselor on July 19, 2018. On October 2, 2018, she filed a formal EEO complaint alleging that the Agency discriminated against her on the basis of reprisal for prior protected EEO activity under Title VII of the Civil Rights Act of 1964 when:
+
+1. In or around February 2017, DD-1 refused to discuss inaccuracies or corrections regarding her position description.
+2. In or around June 2017, an affidavit from her prior EEO complaint was posted on the shared drive.
+3. On June 29, 2018, AD referenced her prior EEO complaint, stating, "you think everyone is out to get you."
+4. During July 2018, management subjected her to excessive micromanagement, over-management, and telework restrictions.
+5. On July 8, 2018, AD did not approve her FAC-P/PM-IT certification application.
+6. In July or August 2018, her request for a supervisory reassignment was denied and, instead, she was detailed to M and assigned the execution of program and project management efforts for M-60. (As noted above, Complainant clarified during the investigation that she was not detailed to M.)
+7. In or around September 2018, her request to participate in the Agile panel was denied.
+
+At the conclusion of the investigation, the Agency gave Complainant a copy of the report of investigation and notice of her right to request a hearing before an Equal Employment Opportunity Commission Administrative Judge (AJ). Complainant timely requested a hearing but later withdrew the request. The Agency accordingly issued a final decision under 29 C.F.R. § 1614.110(b), concluding that Complainant had not proven that the Agency subjected her to discrimination as alleged.
+
+## IV. Positions on Appeal
+
+**Complainant.** Complainant contends that the investigative record is incomplete and that the Agency should be sanctioned for its inadequacy. She submits new evidence in support of her appeal. She further argues that she established a prima facie case of reprisal and that the Agency's legitimate, nondiscriminatory reasons were pretextual. She asks the Commission to find in her favor and to allow her to submit evidence of her damages.
+
+**Agency.** The Agency contends that the record is not incomplete. It argues that Complainant should not be permitted to claim otherwise on appeal because she:
+
+- failed to submit documents requested by the EEO investigator;
+- failed to notify the Agency of any perceived deficiencies after reviewing the investigative record; and
+- withdrew her hearing request the day before discovery was to begin.
+
+The Agency also suggests that the evidence Complainant submitted on appeal was reasonably available during the investigation and should not be considered. It asks the Commission to affirm its final decision.
+
+## V. Notes for the Case File
+
+- **Shared drive discrepancy.** The record contains conflicting accounts of which drive held the affidavit. Coworker referred to M-61 and denied having access to M-60. Complainant's screenshot shows the affidavit on M-60 (ROI at 64). The Agency's response to this discrepancy is not stated in the record.
+- **Allegation 6.** The complaint as framed refers to a detail to M. Complainant later clarified that no such detail occurred, so the accepted wording of this allegation differs from the facts she described.
+- **Date inconsistencies.** Allegation 4 is framed as occurring in July 2018, but the example Complainant gave concerning the W2DOT Program is dated September 2018. Allegation 5 gives July 8, 2018, as the date of the certification denial.
+- **Record on appeal.** Whether the investigative record is complete, and whether Complainant's new evidence may be considered, are disputed issues raised by the parties.

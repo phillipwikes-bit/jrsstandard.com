@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies the basis for the no-discrimination finding through explicit citation to investigation affidavits (A–D) documenting Supervisor's denials, Manager's statement of no report received, and Supervisor 2's partial corroboration, supporting the Agency's conclusion."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is traceable: complaint filed → investigation conducted with multiple witness statements → findings of contradicted allegations → Complainant's failure to appear at AJ hearing → remand to Agency → final decision citing no discrimination established."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the factual dispute and evidentiary basis from the detailed allegations (with dates and statements) juxtaposed against the denials and counter-statements preserved in the record."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "While the record presents contradictory evidence (Complainant's detailed allegations vs. Supervisor's denials and Manager's statement), it does not explicitly document the Agency's analysis or credibility findings that led to rejection of Complainant's account, leaving the sufficiency of evidence support somewhat implicit rather than reasoned."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear: late January/early February 2022 (initial incidents) → February 3, 5, 8, 24 → March 3 → April 4, 2022 (complaint filed) → investigation → October 24, 2022 (AJ order) → November 24, 2022 (missed hearing) → January 19, 2023 (dismissal and remand) → final Agency decision."
+    }
+  },
+  "remediation_note": "The record would strengthen accountability if the Agency's final decision explicitly stated its credibility assessments, reasoning for preferring Supervisor's and Manager's denials over Complainant's detailed allegations, and specific analysis of whether Supervisor 2's partial corroboration (the \"slap\" threat) affected the overall findings.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support—the record presents competing narratives (complaint allegations vs. denials) but lacks explicit reasoned adjudication by the Agency of why the denials prevail",
+    "compliant_version": "A compliant version would include a written analysis section in the Agency's final decision stating: (1) credibility findings with respect to each witness; (2) assessment of the specific dates, statements, and alleged witnesses to each incident; (3) explanation of how Supervisor 2's acknowledgment of the 'slap' threat was reconciled with Supervisor's blanket denial and the Agency's ultimate finding; and (4) application of the burden of proof and evidentiary standard to each allegation."
+  }
+}
+```

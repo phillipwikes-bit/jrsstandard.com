@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the five claims is supported by specific factual bases: affidavits from Complainant, supervisors S1 and S2, and the Postmaster, with documented policy references (Handbook M-41 Section 812) and procedural records (EP placements, suspension letters, OHM guidance)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The investigative pathway is traceable: allegations → affidavits from all parties → Agency findings → AJ decision reasoning (nondiscriminatory justifications, lack of comparator evidence, absence of biased statements) → final order adoption."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the full dispute from the record alone: five distinct claims are laid out with parallel structure (Complainant allegation, supervisor response, investigative findings), policy citations are explicit, and the AJ's rationale for each rejection is clearly stated."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents nondiscriminatory reasons (policy violations, time-wasting, safety infractions, insubordination) and notes Complainant's lack of comparator evidence, but does not include evidentiary depth on whether supervisors applied the same standards uniformly to younger workers or whether the investigator independently verified S1 and S2's factual claims about Complainant's conduct."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The record describes a sequence of events (EP placement, suspension, bathroom incidents, seatbelt incident, escort) but lacks specific dates, times, or intervals between events, making it difficult to reconstruct precise chronology or whether incidents overlapped or escalated over a defined period."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should include: (1) specific dates and times for each incident and investigative action; (2) documented verification or corroboration of supervisor factual claims (e.g., contemporaneous notes, video, third-party witnesses); and (3) explicit findings on whether younger employees received different discipline under identical or similar factual circumstances, rather than relying solely on Complainant's unsupported assertion that no comparators exist.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support and temporal_reconstructability",
+    "compliant_version": "A compliant version would add: dated incident logs for each of the five claims with times and supervisor identifiers; contemporaneous documentary evidence (safety reports, OHM records, union correspondence) rather than post-hoc affidavits alone; a discrete comparative analysis naming specific younger employees and showing their discipline outcomes under materially identical policy violations; and a detailed chronology table or timeline showing intervals between incidents, investigative interviews, placements, and final disposition, with explicit findings on whether the investigator tested for age-based pattern or disparate treatment."
+  }
+}
+```

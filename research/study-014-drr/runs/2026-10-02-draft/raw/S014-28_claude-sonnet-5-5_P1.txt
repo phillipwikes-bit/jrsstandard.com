@@ -1,0 +1,29 @@
+**Case Summary: Complainant v. Agency (EEO Reprisal Complaint, Appeal of Final Agency Decision)**
+
+**Parties and Position:** Complainant is a GS-0343-13 Management Analyst in the Acquisitions Policy Oversight and Business Strategies Division, OSPE, Office of the Secretary, Department of Transportation (Washington, D.C.). Key officials are DD-1 (OSPE Deputy Director), AD (Associate Director and Complainant's supervisor from June 2018), and Coworker.
+
+**Claim:** On October 2, 2018 (EEO contact July 19, 2018), Complainant alleged reprisal under Title VII for a 2016 EEO complaint. She alleged ongoing retaliation, specifically:
+1. In February 2017, DD-1 refused to discuss inaccuracies in her position description.
+2. In June 2017, her affidavit from the prior EEO complaint was posted on a shared drive.
+3. On June 29, 2018, AD said "you think everyone is out to get you."
+4. In July 2018, she was subjected to micromanagement, over-management, and telework restrictions.
+5. On July 8, 2018, AD did not approve her FAC-P/PM-IT certification application.
+6. In July or August 2018, her request for reassignment to a different supervisor was denied. (She clarified during the investigation that she was not detailed to M.)
+7. In September 2018, her request to speak on an Agile panel was denied.
+
+**Key Evidence:**
+- **Position description:** A 2016 desk audit confirmed the GS-13 grade. DD-1 reviewed the description with HR and found it accurate.
+- **Shared drive:** Coworker and DD-1 said the affidavit was saved inadvertently and deleted promptly. Coworker said she saved it to the M-61 drive and has no access to M-60, but Complainant's screenshot shows it on M-60.
+- **June 29 meeting:** Complainant described it as an interrogation. AD denied saying "everyone is out to get you" and said she was referring to Complainant's perceived unfair treatment.
+- **Micromanagement and telework:** DD-1 said she asked for a consolidated W2DOT schedule that was never adequately produced. She also said Complainant kept a liberal ad hoc telework schedule that was never restricted. AD said it was grandfathered in under the July 2018 SOP.
+- **Certification:** DD-1 and AD said the certification is not required for Complainant's position. AD said the application also did not document the minimum two years of experience.
+- **Reassignment:** SPE denied the request to report directly to him. DD-1 said the proposed alternative supervisors were not logical given Complainant's duties and urged her to improve her working relationship with AD.
+- **Agile panel:** AD and DD-1 said OSPE had little Agile experience beyond technology and Complainant had no Agency-specific knowledge to contribute. AD offered attendance as an audience member.
+
+**Procedural History:** Complainant requested an EEOC hearing but withdrew the request. The Agency then issued a final decision under 29 C.F.R. § 1614.110(b) finding no proof of discrimination.
+
+**Appeal Arguments:**
+- **Complainant:** The investigative record is incomplete and the Agency should be sanctioned. She submits new evidence, argues she established a prima facie case of reprisal and that the Agency's stated reasons were pretextual, and requests a finding in her favor and the opportunity to submit damages evidence.
+- **Agency:** The record is complete. Complainant failed to provide requested documents, did not raise deficiencies after reviewing the ROI, and withdrew her hearing request the day before discovery. The new evidence was reasonably available during the investigation and should not be considered. The Agency asks the Commission to affirm its decision.
+
+**Status:** The appeal is pending before the Commission.

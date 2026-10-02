@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each allegation: disability discrimination under the Rehabilitation Act, with enumerated incidents (harassment, work restrictions, route changes, AWOL charge, accommodation denial) tied to dates between November 2020 and April 2021."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the record traces the procedural path (complaint filed → investigation conducted → ROI issued → hearing requested → hearing denied as sanction → remanded → final decision), it does not articulate the Agency's or AJ's reasoning for the ultimate conclusion that Complainant failed to prove discrimination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would know what was alleged and the procedural outcome, but would lack the investigative findings, evidence evaluated, witness statements, or management's responses documented in the ROI itself—none of which are summarized here."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record states the Agency 'concluded that Complainant failed to prove discrimination' but provides no evidentiary support, such as witness credibility findings, document analysis, or refutation of specific allegations, making it impossible to assess whether the conclusion is adequately supported."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: incidents November 7, 2020 through April 15, 2021; complaint filed April 17, 2021; investigation completed; hearing request made; hearing denied; final decision issued—with sufficient date markers to reconstruct sequence."
+    }
+  },
+  "remediation_note": "The record requires incorporation or summary of the Report of Investigation findings, the Agency's factual determinations on each allegation, the evidence considered, and explicit reasoning for the conclusion that discrimination was not proven. The AJ's rationale for the sanction and remand should also be articulated to support the final decision.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would include: (1) a summary of key investigative findings from the ROI for each of the nine allegations; (2) Agency and Complainant positions on material facts; (3) explicit findings of fact on whether work restrictions were enforced, whether approval was given for leave, whether accommodation was requested and denied, and whether harassment occurred; (4) the Agency's legal reasoning for concluding no discrimination (e.g., why restrictions were medically justified, why AWOL was properly charged, why mail cart denial did not violate the Rehabilitation Act); and (5) clarification of the AJ's sanction rationale and how remand affected the evidentiary record."
+  }
+}
+```

@@ -1,0 +1,33 @@
+# FINDINGS
+
+## Background and Procedural History
+
+The Complainant, a Native American female employed as a Contract Specialist-GS-11 at the Agency's Gallup, New Mexico facility, filed a formal Equal Employment Opportunity (EEO) complaint on August 25, 2015, alleging discrimination and reprisal based on race (Native American), national origin (Native American), age, and protected activity. The Agency accepted the complaint for investigation on November 23, 2015. Following investigation, the Agency provided the Complainant with the investigation report and notice of her right to request a hearing before an EEOC Administrative Judge (AJ). The Complainant timely requested a hearing. Without holding a hearing, the AJ issued a decision by summary judgment on September 23, 2020, finding no discrimination. The Agency subsequently issued a final order adopting the AJ's decision, prompting this appeal.
+
+## Claims Addressed
+
+The complaint encompassed twenty enumerated claims spanning the period from May 2015 through May 2018, including: (1) denial of FAC-C Level II training and certification on multiple occasions; (2) non-selection for various promotions and job announcements; (3) denial of permission to attend training; (4) delayed approval of leave requests; and (5) harassment allegedly based on protected class status.
+
+## Administrative Judge's Analysis and Determinations
+
+The AJ made the following key determinations:
+
+**Promotion and Selection Claims (3, 4, 7, 8, 11, 13, 14, 16):** The AJ found that the Complainant failed to establish a prima facie case of discrimination regarding these claims. With respect to claims 3, 4, 7, 11, 13, and 16, the AJ determined that the Complainant did not meet minimum qualifications because she lacked the required FAC-C Level II and Level III certifications. Regarding claim 8, the AJ noted that the Complainant did not submit an application. For claim 14, the AJ found that the selectee shared the Complainant's protected characteristics (national origin and sex) and was older, and that no evidence demonstrated the selecting official's awareness of the Complainant's EEO activity.
+
+**Training Denial and Certification Claims (1, 2, 5, 6, 18, 19, 20):** The AJ found that the Agency articulated legitimate, nondiscriminatory reasons for these actions and that the Complainant failed to establish pretext.
+
+**Harassment Claim (12):** Regarding the allegation that an Agency officer hugged the Complainant without permission, the AJ found that the Complainant did not characterize the hug as having sexual aspects, no evidence demonstrated that protected class membership motivated the conduct, and the isolated incident was insufficient to establish a hostile work environment.
+
+## Complainant's Appeal Arguments
+
+On appeal, the Complainant, through counsel, advances the following assertions:
+
+1. The Agency systemically denied promotions to qualified Native Americans;
+2. An Agency officer (C1) determined that the Complainant's 17-hour course on Analyzing Contract Costs was insufficient for Level II certification despite another official's approval;
+3. The same official unilaterally imposed a Level II certification requirement for future contracting positions without Office of Personnel Management (OPM) approval, allegedly to reduce Native American hiring;
+4. Regarding claim 10, the Agency failed to articulate legitimate, nondiscriminatory reasons for its action;
+5. Regarding claim 12, the hug incident could support an inference of implicit bias against Native American women, reflecting an attitude of paternalism rather than professional respect.
+
+## Agency Response
+
+The Agency requests affirmance of the final order based on the AJ's finding of no discrimination.

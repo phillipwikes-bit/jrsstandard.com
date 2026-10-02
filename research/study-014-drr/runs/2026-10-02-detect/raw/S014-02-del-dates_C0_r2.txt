@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies nine specific allegations and cites regulatory dismissal authority (29 C.F.R. §1614.107(a)(1)) and precedent (Janiece H.), but does not explicitly state the factual or legal basis supporting the final conclusion that Complainant 'failed to prove' discrimination."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record lacks a traceable chain from evidence (investigation findings, hearing denial rationale, specific facts rebutting each allegation) to the final discrimination conclusion; the decision jumps to outcome without articulating how the Manager's documented actions were evaluated against Rehabilitation Act standards."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the nine allegations—including documented harassment, work-restriction violations, and denial of accommodations—were deemed unproven without the investigation findings, evidence summaries, or credibility assessments referenced but not detailed in this record."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record asserts a conclusion but does not present the investigation findings, witness statements, documentary evidence, or analysis of the Manager's actions against each allegation necessary to support a determination that discrimination was not proven."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The record uses relative temporal markers ('Beginning and ongoing,' 'continuing') and procedural sequence (complaint filed, investigation, hearing request denied, remanded, final decision) but lacks specific dates for individual allegations, work restrictions, or management actions."
+    }
+  },
+  "remediation_note": "The final decision must include a detailed findings-and-analysis section addressing each of the nine allegations with specific investigation findings, evidence cited, and reasoned explanation of why Complainant failed to establish discrimination or a Rehabilitation Act violation. Dates of incidents, communications documenting approval/denial of accommodations, and any witness or medical records relied upon should be referenced.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A final decision that incorporates or cross-references the Report of Investigation (ROI), summarizes key factual findings (with dates and evidence citations), applies the Rehabilitation Act framework to the Manager's challenged actions (harassment, work-restriction violations, accommodation denials), rebuts or sustains each allegation with explicit reasoning, and explains how the totality of evidence failed to meet the burden of proof."
+  }
+}
+```

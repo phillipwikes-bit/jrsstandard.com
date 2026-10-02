@@ -1,0 +1,60 @@
+# FINDINGS
+
+## I. Background
+
+At the time of the events in this complaint, Complainant worked as a Rural Carrier at the Agency's Acton Station in Granbury, Texas.
+
+## II. Claims Accepted for Investigation
+
+1. Since on or about January 5, 2018, to the present, and after the route count and adjustment, Complainant has not been paid correctly for working her route.
+2. From April 25, 2018, to the present, Complainant has not been paid for overtime work. (See Finding B below regarding the "holiday" language.)
+3. On December 14, 2018, Complainant's request for package assistance on her route was denied.
+
+## III. Procedural History
+
+- The Agency gave Complainant a copy of the report of investigation and notice of her right to request a hearing before an EEOC Administrative Judge (AJ).
+- Complainant requested a hearing.
+- The AJ determined sua sponte that the complaint did not warrant a hearing and issued a Notice of Proposed Summary Judgment.
+- Complainant did not object to the Notice within the required timeframe.
+- The AJ then issued a decision by summary judgment in favor of the Agency.
+- The Agency issued a final order fully implementing the AJ's finding that Complainant had not proved discrimination as alleged.
+- Complainant filed the present appeal.
+
+## IV. Findings
+
+### A. Claims 1 and 2: Pay Claims (Genetic Information / GINA)
+
+Complainant alleged that the pay-related actions in Claims 1 and 2 were discrimination based on genetic information under GINA. The AJ found that Complainant did not establish a prima facie case, for these reasons:
+
+- Complainant alleged no facts connecting the challenged actions to genetic information.
+- Her affidavit responses did not address genetic information.
+- She did not allege that management was motivated by genetic information or used it as a basis for its actions.
+
+**Finding:** The record contains no evidence or allegation linking the pay actions in Claims 1 and 2 to the claimed basis of genetic information. The AJ's conclusion that no prima facie case was established is supported by the record.
+
+### B. Scope of Claim 2: Holiday Work
+
+In her affidavit in the report of investigation, Complainant crossed out and initialed the word "holiday" in the definition of Claim 2.
+
+**Finding:** Claim 2 does not include allegations regarding holiday hours. It is limited to overtime work.
+
+### C. Claim 3: Denial of Package Assistance (December 14, 2018)
+
+The AJ found that on December 14, 2018, Complainant asked one of her supervisors, a Supervisor, Customer Service, for package assistance, and the supervisor denied the request. The supervisor gave the following account:
+
+- Complainant had already received some help that day but was asking for more.
+- Only one additional parcel met the requirements for additional assistance. That package was taken away from Complainant, so it did not need to be delivered that day.
+- The other packages for which she requested assistance did not meet the applicable criteria. Her vehicle could accommodate the volume, she was not at risk of missing the mail truck, and the day's volume did not merit additional assistance.
+
+**Finding:** The Agency articulated legitimate, nondiscriminatory reasons for denying the request. Complainant did not present evidence that these reasons were a pretext for retaliation. The AJ's conclusion on Claim 3 is supported by the record.
+
+### D. Overall Finding
+
+Complainant did not show that the Agency subjected her to discrimination or retaliation as alleged in Claims 1, 2, or 3. Her failure to object to the Notice of Proposed Summary Judgment left the AJ's proposed findings unchallenged below.
+
+## V. Items for Investigator Review
+
+- **Claim numbering:** The record reads "2 and 3." immediately before the description of Claim 3. This appears to be a footnote marker or transcription artifact. Confirm against the source document.
+- **Basis for Claim 3:** The record refers to retaliation but does not identify the protected activity, the responsible officials' knowledge of it, or the timing. Confirm these from the full file before relying on this finding.
+- **Bases for Claims 1 and 2:** The record addresses only genetic information. Confirm whether any other bases were accepted.
+- **Disposition of the appeal:** The record does not state the outcome. No conclusion on that point is drawn here.

@@ -749,6 +749,18 @@ The owner pasted an adversarial plan, written elsewhere, for testing whether the
 Study 013, a public-record feasibility round, was **deleted from the working tree on the owner's instruction on 2026-10-02**. Its files remain recoverable in git history on branch `claude/engine-eval-v8-2026-10-01`. It was never on `main` or deployed.
 - The successor study is Study 014 (`research/study-014-drr/`), which builds its own corpus.
 
+### E.6 Study 014 results and the test suite (2026-10-02)
+- **Results** (`research/study-014-drr/RESULTS.md`):
+  - H1 held.
+  - H4 was not met under the pre-registered rule. The cause was the extractor; corrected scoring shows 0 unsupported anchors in JRS-guided drafts, but this is post-hoc and needs confirmation.
+  - The cloze loss was 19 points for concise summaries and none for JRS-guided drafts.
+  - Detection is incomplete because the API credit ran out (B-022).
+- **What it changes here (*Inference*):**
+  - The prevention niche now has its first evidence in this estate. With the JRS-guided instruction, current models kept nearly every anchor, while ordinary summaries lost most of them.
+  - This supports the licensed test suite as the lead product, ahead of the Engine trial.
+  - It does not yet support any claim about a vendor's product.
+- **Suite v0.9** (`research/drr-suite-v0.9/`) is built. A beta with one or two vendors is drafted and **not sent**. v1.0 is gated on B-022, B-023, the confirmatory run and the owner's review of the licence terms.
+
 ## Appendix D. Manuscript review (four uploaded papers and the portfolio)
 
 **2 October 2026. Advice, not peer review and not a legal opinion.** Requested by the owner after he uploaded four manuscripts and asked whether the articles had actually been analyzed. Summarized in section 2.6.

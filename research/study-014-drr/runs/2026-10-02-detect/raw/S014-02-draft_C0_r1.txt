@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies nine accepted claims with specific dates and alleged discriminatory acts, but the final Agency decision lacks articulation of which evidence was weighed against each claim or why specific facts were found insufficient to support discrimination."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record does not trace how the Agency moved from the nine accepted claims and investigation findings to the conclusion that 'Complainant did not prove discrimination'; the logical chain from evidence (what the ROI contained) to final decision reasoning is absent."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the claims and procedural posture but cannot reconstruct why those claims failed without access to the ROI findings, the AJ's remand rationale, or the Agency's articulated analysis of causation, intent, or comparator treatment."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record establishes a timeline of alleged misconduct and a procedural history but does not document what evidence the Agency found credible, whether witness statements supported or contradicted allegations, or how the Agency addressed the temporal proximity between the disability disclosure and the challenged actions."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a detailed chronology from November 2020 through April 2021, with specific dates for each claimed incident (Nov. 7, Nov. 9, Dec. 23, Feb. 1, Mar. 23, Apr. 2, Apr. 15, and complaint filing Apr. 17, 2021)."
+    }
+  },
+  "remediation_note": "The final Agency decision must incorporate findings from the ROI (credibility determinations, witness accounts, documentary evidence), articulate how each accepted claim was analyzed for discrimination (pretext, causation, comparators), and explain the legal or factual basis for the conclusion that Complainant did not prove discrimination. The remand decision should also clarify whether the AJ's sanction and remand affected the sufficiency of the record.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, accountability_support, and basis_identification",
+    "compliant_version": "A compliant final Agency decision would include: (1) a summary of ROI findings on each of the nine claims (witness credibility, document authenticity, and corroborating evidence); (2) application of the burden-shifting framework (prima facie case, legitimate non-discriminatory reason, pretext) to each claim; (3) specific analysis of temporal proximity between disability disclosure and adverse actions; (4) explanation of how comparators were selected and compared; and (5) explicit statement of why the evidence, taken as a whole, did not establish discrimination or retaliation under the Rehabilitation Act."
+  }
+}
+```

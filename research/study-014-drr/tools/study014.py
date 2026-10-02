@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Study 014 runner (PROTOCOL.md). Subcommands: draft, cloze, detect, score.
+"""Study 014 runner (PROTOCOL.md). Subcommands: draft, cloze, detect, detect-resume, score.
 
 Raw HTTP to api.anthropic.com only (destination lock). Key read from ANTHROPIC_API_KEY, never written.
 MOCK=1 runs an offline mock provider for tests. Output directories are never overwritten.
@@ -289,13 +289,22 @@ def c0_missing(conds):
     return sorted(out)
 
 
-def cmd_detect(name, drafts_run, runs=3):
+def cmd_detect(name, drafts_run, runs=3, resume_from=None):
     if not PROD_SHA.startswith("97176e22"): sys.exit("api/review-engine.js changed; C0 would not be the reviewed production Engine")
     d = outdir(name)
     items = detection_items(drafts_run)
     json.dump([{k: v for k, v in it.items() if k != "text"} | {"text_sha256": hashlib.sha256(it["text"].encode()).hexdigest()} for it in items],
               open(os.path.join(d, "ITEMS.json"), "w"), indent=1)
     jobs = [(it, arm, r) for it in items for arm in ARMS for r in (1, 2, 3)[:runs]]
+    if resume_from:
+        # Resume (added 2026-10-02 after the account ran out of credit mid-run): same items, verified by hash; only the
+        # (item, arm, run) jobs that did not return "ok" in the earlier run are sent. The earlier run is not modified.
+        prev = os.path.join(ROOT, "runs", resume_from)
+        if json.load(open(os.path.join(prev, "ITEMS.json"))) != json.load(open(os.path.join(d, "ITEMS.json"))):
+            sys.exit("items differ from " + resume_from + "; not a resume")
+        done = {(r["item"], r["arm"], r["run"]) for r in map(json.loads, open(os.path.join(prev, "results.jsonl"))) if r["status"] == "ok"}
+        jobs = [j for j in jobs if (j[0]["item"], j[1], j[2]) not in done]
+        print(f"resume: {len(done)} done in {resume_from}, {len(jobs)} to send")
     def fn(job):
         it, arm, r = job
         model, system, sk = ARMS[arm]
@@ -358,7 +367,10 @@ def cmd_score(drafts_run, cloze_run, detect_run):
         k = sum(r["correct"] for r in rs); n = sum(r["n"] for r in rs)
         out["part3"][cond] = {"correct": k, "items": n, "rate": round(k / n, 3) if n else None, "ci": wilson(k, n)}
     # Part 2
-    rows = [json.loads(l) for l in open(os.path.join(ROOT, "runs", detect_run, "results.jsonl"))]
+    rows = [json.loads(l) for dr_ in detect_run.split(",") for l in open(os.path.join(ROOT, "runs", dr_, "results.jsonl"))]
+    rows = [r for r in rows if r["status"] == "ok"] + [r for r in rows if r["status"] != "ok" and not any(
+        o["status"] == "ok" and (o["item"], o["arm"], o["run"]) == (r["item"], r["arm"], r["run"]) for o in rows)]
+    out["part2_complete"] = {"ok": sum(1 for r in rows if r["status"] == "ok"), "planned": len(ARMS) * 3 * 90}
     TYPEMAP = {"date": {"dates"}, "citation": {"record_citations"}, "attribution": {"attributions", "sources"}}
     DELMAP = {"dates": {"dates"}, "citations": {"record_citations"}, "attributions": {"attributions", "sources"}}
     for arm in ARMS:
@@ -384,7 +396,8 @@ def cmd_score(drafts_run, cloze_run, detect_run):
                 if want: drn += 1; drh += bool(named & want)
         out["part2"][arm] = {"deletion_hit": [dh, dn_, wilson(dh, dn_)], "draft_hit": [drh, drn, wilson(drh, drn)],
                              "control_flag_rate": {k: [v[0], v[1]] for k, v in ctrl.items()},
-                             "outcomes": {s: sum(1 for r in rows if r["arm"] == arm and r["status"] == s) for s in {r["status"] for r in rows}}}
+                             "outcomes": {s: sum(1 for r in rows if r["arm"] == arm and (r["status"] if r["status"] in ("ok", "parse_error") else "failed") == s)
+                                          for s in ("ok", "parse_error", "failed")}}
     json.dump(out, open(os.path.join(ROOT, "runs", "SCORES.json"), "w"), indent=1, default=list)
     print(json.dumps(out, indent=1, default=list)[:6000])
 
@@ -395,4 +408,5 @@ if __name__ == "__main__":
     if c == "draft": cmd_draft(sys.argv[2])
     elif c == "cloze": cmd_cloze(sys.argv[2], sys.argv[3])
     elif c == "detect": cmd_detect(sys.argv[2], sys.argv[3])
+    elif c == "detect-resume": cmd_detect(sys.argv[2], sys.argv[3], resume_from=sys.argv[4])
     elif c == "score": cmd_score(sys.argv[2], sys.argv[3], sys.argv[4])

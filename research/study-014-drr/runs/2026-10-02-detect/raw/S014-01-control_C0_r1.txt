@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each conclusion rests on identifiable evidence: leave exhaustion supported by February 26, 2021 letter and payroll audit; case reassignment justified by supervisor explanation and spreadsheet; reasonable accommodation denial grounded in medical records lacking essential-function limitation and agency policy; official time denial based on 18-hour grant and investigator instruction."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The record traces decision pathways from evidence through intermediate findings to final conclusions: e.g., Supervisor1's leave calculations → February 26 letter → August 5 audit → retroactive correction → AJ summary judgment; interactive meeting → medical insufficiency → accommodation denial → appeal → Director denial → AJ affirmance."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the administrative record, factual findings, and legal standards applied: comparator-employee analysis, essential-function testing, hostile-work-environment severity threshold, and accommodation-denial rationale all documented with specific dates and documentary evidence cited."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Evidence supporting each adverse finding is substantial: prior EEOC Administrative Judge decision on AWOL/LWOP; contemporaneous payroll documentation; spreadsheet of case assignments; medical records confirming no essential-function limitation; 18 hours of granted official time; supervisory explanations with operational justifications."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates and intervals are explicit throughout: complaint filed September 17, 2021; FMLA denial period February 2021–present; reassignment June 19, 2021; August 3 leave denial; August 24 accommodation appeal denial; October 20–26 official-time sequence; May 25, 2022 prior AJ decision; final Agency order after AJ summary judgment."
+    }
+  },
+  "remediation_note": "This record requires no remediation. All five conditions are met: bases are identifiable, decision pathways traceable, reconstruction possible, evidence sufficient, and chronology clear.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "none—all conditions pass",
+    "compliant_version": "The record is already compliant. It documents a multi-claim EEO investigation with factual findings, legal standards, evidentiary support, and reasoned AJ decision-making captured in sufficient detail for administrative review and judicial appeal."
+  }
+}
+```

@@ -1,0 +1,71 @@
+# FINDINGS
+
+## Background and Complaint Allegations
+
+At the time of the events giving rise to this complaint, Complainant was employed as a Deportation Officer (DO), GS-12, at the Agency's San Bernardino, California office. Complainant's first-line supervisor was a Supervisory Detention and Deportation Officer of Vietnamese national origin born in 1977, with no prior EEO activity.
+
+On June 6, 2019, Complainant filed an EEO complaint alleging discrimination and a hostile work environment based on national origin (Romanian), age (48 years old), and reprisal for prior protected EEO activity (HS-ICE-21417-2012 and HS-ICE-22663-2012) under Title VII of the Civil Rights Act of 1964 and the Age Discrimination in Employment Act of 1967. The complaint identified four discrete incidents:
+
+1. **July 26, 2018**: Supervisor denied Complainant's request to adjust his schedule to attend a concert with his daughter;
+2. **July 27, 2018**: Supervisor asked Complainant to return to work after Complainant had already left for the day;
+3. **October 1, 2018**: Complainant became aware of pay discrepancies in his Administrative Uncontrollable Overtime (AUO);
+4. **October 12, 2018**: Supervisor admonished Complainant in his Performance Work Plan (PWP) and rated him in areas not included in his official PWP.
+
+## Procedural History
+
+The Agency conducted an investigation and provided Complainant with the Report of Investigation and notice of his right to request a hearing before an Equal Employment Opportunity Commission Administrative Judge (AJ). Complainant timely requested a hearing.
+
+On June 7, 2021, the AJ issued an Order to Show Good Cause because Complainant failed to provide a completed investigative affidavit despite multiple requests from the EEO investigator and an order issued on May 11, 2021. When Complainant failed to comply with the June 17, 2021 deadline, submitting only an email apology on June 21, 2021 without the required affidavit, the AJ dismissed the complaint from the EEOC hearing process on June 22, 2021, and remanded it to the Agency as a sanction for non-compliance.
+
+On August 10, 2021, the Agency issued a Final Agency Decision (FAD) pursuant to 29 C.F.R. § 1614.110(b).
+
+## Factual Findings
+
+### Incident 1: Schedule Adjustment Request (July 26-27, 2018)
+
+Supervisor stated that on July 27, 2018, Complainant requested via text to adjust his schedule from the standard 0500 to 1300 hours to 0600 to 1300 hours to attend a recreational event. Supervisor responded that the earliest adjustment available was 0600 or Complainant could use Annual Leave. According to Supervisor, Complainant indicated he would take leave but ultimately decided to report to work at his regular time.
+
+### Incident 2: Request to Return to Work (July 27, 2018)
+
+Regarding the request to return to work, Supervisor stated he asked Complainant to come to his office during Complainant's duty hours. Supervisor explained that Complainant continued working his remaining regular hours and subsequently worked overtime from 4:30 p.m. to 7:00 p.m. The record reflected that Complainant claimed work hours from 0500 to 1900—eight hours of regular pay and six hours of AUO.
+
+### Incident 3: Pay Discrepancy (October 1-4, 2018)
+
+On August 28, 2018, Complainant participated in an all-day Defensive Tactics training class scheduled from 8:00 a.m. to 4:00 p.m. On October 1, 2018, Complainant became aware of pay discrepancies in his AUO compensation. On October 4, 2018, Complainant and the Union President met with Supervisor regarding the discrepancy. Supervisor explained that Complainant could not claim AUO for the hour he was in training from 3:00 p.m. to 4:00 p.m., as that time was excludable from AUO calculations. Consequently, Supervisor had adjusted Complainant's pay accordingly.
+
+Complainant also claimed that Supervisor had informed a second coworker (DO 2) of DO 2's AUO pay discrepancy prior to correcting DO 2's pay. Supervisor asserted that DO 2 had been available in the office when Supervisor discovered the AUO discrepancy, allowing Supervisor to discuss the change with DO 2 before implementing the correction.
+
+### Incident 4: Performance Work Plan Review (October 12, 2018)
+
+On October 12, 2018, Supervisor reviewed Complainant's PWP with him. Complainant asserted that Supervisor admonished him multiple times in the PWP and rated him in areas not included in his official PWP. Supervisor stated that Complainant became upset and walked away, which precluded further discussion. The record showed that Supervisor rated Complainant on the following elements: Plans and Conducts Arrest, Custody Operations, Deportation, Partnering, and Prepares Reports and Other Correspondence. Supervisor maintained that all rated elements were included in Complainant's official PWP.
+
+## Legal Analysis
+
+### Disparate Treatment Claims (Incidents 1, 3, and 4)
+
+The Agency analyzed Complainant's disparate treatment allegations under the three-part evidentiary framework established in *McDonnell Douglas Corp. v. Green*, 411 U.S. 792 (1973). The Agency found that:
+
+1. **Legitimate Nondiscriminatory Reasons**: Supervisor articulated nondiscriminatory reasons for each challenged action:
+   - For the schedule adjustment denial, Supervisor noted that Complainant did not request time off in advance and was not treated differently than other similarly situated employee DO 1.
+   - For the pay discrepancy, Supervisor asserted that the AUO adjustment was made in accordance with regulatory exclusions for training time and that Complainant was not treated differently based on protected class membership.
+   - For the PWP review, Supervisor asserted that all rated elements were included on the official PWP and no elements outside the PWP were used in the evaluation.
+
+2. **Lack of Pretext**: Complainant failed to prove by a preponderance of the evidence that Supervisor's legitimate, nondiscriminatory reasons were pretextual or that the actions were motivated by discriminatory intent based on national origin or age.
+
+### Hostile Work Environment Claims (All Incidents)
+
+The Agency analyzed all remaining claims, including the non-discrete allegation in Incident 2, under the legal standard for harassment. The Agency found:
+
+1. Complainant failed to establish that management's actions were motivated by discriminatory intent or that he was subjected to unwelcome conduct based on his protected class membership (national origin, age, or prior protected EEO activity).
+
+2. The alleged conduct did not constitute the severe or pervasive harassment that Title VII was designed to prevent.
+
+3. The record contained no evidence demonstrating that the alleged harassing conduct was based on Complainant's protected bases or was motivated by discriminatory animus.
+
+## Agency Conclusions
+
+The Agency concluded that Complainant failed to prove that the Agency:
+- Subjected him to discrimination based on national origin, age, or prior protected EEO activity;
+- Treated him differently than similarly situated employees without a protected class membership;
+- Subjected him to an unlawful, discriminatory, hostile work environment; or
+- Took any actions bearing a relationship to his claimed protected bases.

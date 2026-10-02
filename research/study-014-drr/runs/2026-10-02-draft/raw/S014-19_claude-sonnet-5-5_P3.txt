@@ -1,0 +1,43 @@
+# Investigation Record Summary
+
+## Complainant's Position and the Claim
+
+During the period at issue, Complainant was employed by the Agency as a Mail Handler (Modified Assignment – Limited Duty), PS 4/P, at the Church Street Station in New York, New York. The portion of the record describing the claim is incomplete. The surviving text suggests Complainant alleged that the Agency discriminated against her on the basis of disability, apparently involving a lumbosacral sprain, when it did not allow her to work from July 5, 2019 through July 31, 2019. The Agency accepted the complaint for investigation. *[Note: the source text is garbled at this point and should be checked against the original complaint.]*
+
+## Union Grievance
+
+On June 15, 2019, the American Postal Workers Union, AFL-CIO, filed a Step 2 grievance. It alleged that Complainant's performance of Clerk Craft duties in her Modified Assignment violated the collective bargaining agreement (CBA) because it crossed crafts, meaning someone outside the Clerk Craft was performing Clerk Craft work. The record supports this at Report of Investigation (ROI) Exhs. 4 (Step 2 grievance) and 7 (Union request for a list of Complainant's Modified Assignment duties), and in Affidavit C, at 3, ¶ 15, from the Manager of Customer Services, Complainant's second-line supervisor ("S2") (Bates Nos. 180, 207, 146). Complainant does not contest that she performed Clerk Craft duties.
+
+## Request for Updated Medical Documentation
+
+On June 11, 2019, Agency Health & Resource Management (HRM) told Complainant that her most recent medical note on file was dated January 18, 2011. HRM asked her to submit an updated note from her doctor stating her medical restrictions, and repeated the request on June 21, 2019. ROI, Affidavit A, at 16, Bates No. 21.
+
+S2 stated that the request was made so the Agency could draft a new Offer of Modified Assignment within Complainant's current restrictions that did not cross crafts. ROI, Affidavit C, at 3, ¶ 15, Bates No. 146. The Supervisor of Customer Services, Complainant's first-line supervisor ("S1"), gave the same explanation. Affidavit B, at 3, ¶ 15, Bates No. 138.
+
+Complainant, believing it unnecessary, refused to submit a note describing her current restrictions. At some point, S2 told her not to return to work until she provided an updated doctor's note. Affidavit A (Complainant's affidavit), at 3, ¶ 15, Bates No. 92. Complainant expected to be allowed to work once she brought in the note.
+
+## The July 2019 Doctor's Letter
+
+On July 5, 2019, Complainant reported to work with a doctor's letter dated July 2, 2019. It stated, in relevant part: "Above mentioned patient physical requirements are lifting, pushing/pulling reaching above shoulder not to exceed 20lbs [sic.], standing and walking average time 20 minutes."
+
+According to S2, HRM found the letter inadequate because the limitations were unclear, and he asked Complainant to submit another updated letter. S1 attested that S2 told him this, but S1 did not refer to HRM. Complainant submitted a revised note after July 31, 2019, and returned to work on August 1, 2019. ROI, Affidavit C, at 4, ¶ 15 (continued from prior page), Bates No. 147.
+
+Complainant erroneously alleged that the period began on July 4, 2019, which was a paid holiday for her.
+
+## Decision-Maker and Agency Response
+
+The HRM Manager stated that S2 decided not to allow Complainant to work. He said he learned of the decision only after S2 made it, and that he did not know why Complainant was kept from her limited duty assignment between July 5 and July 31, 2019.
+
+On July 22, 2019, the HRM Manager wrote to Complainant that the Agency was reviewing her Modified Assignment (Limited Duty) to determine whether a revision was necessary following an arbitration award concerning "non-APWU Clerk craft employees performing clerk craft duty assignments." He said management would search for adequate, available work and, if any was found, would offer her a revised Modified Assignment within her July 2, 2019 medical restrictions.
+
+By letter dated July 25, 2019, the HRM Manager presented Complainant an Offer of Modified Assignment (Limited Duty), effective August 1, 2019. It was for the position of Modified Handler (Modified Assignment – indefinite duration) at the James A. Farley Retail Local Operation Center. ROI, Bates Nos. 25–26. The duties differed from her prior assignment, and the letter stated they were within the restrictions in her "treating doctor [letter] dated July 2, 2019." The restrictions listed in the Offer are identical to those in the July 2 letter. ROI, Ex. 8, at 2, Bates No. 199.
+
+## Procedural History and Final Agency Decision
+
+After the investigation, Complainant requested a hearing before an EEOC Administrative Judge (AJ). She later withdrew the request, and the AJ ordered the Agency to issue a final agency decision (FAD).
+
+The FAD found no discrimination. The Agency assumed, without finding, that Complainant was an individual with a disability. It then found she was not qualified, because she could not perform the essential functions of her unmodified Mail Handler position with or without reasonable accommodation. The Agency reasoned further that, even if she were otherwise qualified, she had not submitted the medical documentation management requested to offer her a new modified assignment within her limitations. It also concluded that she did not prove disparate treatment, noting for example that she identified no comparative employees who were treated differently.
+
+## Appeal
+
+Complainant appealed, arguing generally that she was discriminated against. The Agency replied that the FAD should be affirmed. Complainant also raised allegations on appeal that were not part of the EEO complaint before the Commission, and those claims will not be considered in this decision.

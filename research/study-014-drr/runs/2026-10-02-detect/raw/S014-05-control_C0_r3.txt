@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the basis for the no-discrimination finding: Supervisor denied all statements, Manager denied receiving any report, and Supervisor 2 corroborated only a non-racial threat while contradicting Complainant's account of reporting racial comments."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The investigative pathway is traceable: complaint filed → investigation conducted → four affidavits collected (Complainant, Supervisor, Manager, Supervisor 2) → credibility determinations implicit in affidavit citations → final decision of no discrimination issued."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record presents competing accounts, it does not explicitly state the Agency's reasoning for crediting Supervisor's and Manager's denials over Complainant's allegations or what weight was given to corroborating evidence of threats versus racial slurs."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents conflicting testimony but does not articulate the evidentiary standard applied, the credibility assessment methodology, or why the Agency found the denials sufficiently weighty to overcome six specific dated allegations with temporal detail."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Dates are consistently provided: alleged incidents span late January through March 3, 2022; complaint filed April 4, 2022; investigation conducted; hearing ordered October 24, 2022; initial conference November 24, 2022; dismissal January 19, 2023; final Agency decision thereafter."
+    }
+  },
+  "remediation_note": "The record must explicitly document the Agency's credibility assessment rationale and the evidentiary standard used to resolve the conflicting accounts between Complainant's dated, specific allegations and the categorical denials of Supervisor and Manager. The final decision should articulate whether preponderance of the evidence or another standard was applied and why the denials were found dispositive despite Supervisor 2's partial corroboration of threatening conduct.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support, reasoning_traceability",
+    "compliant_version": "The Agency's final decision must include a explicit findings section that: (1) acknowledges the conflicting accounts and states the credibility resolution (e.g., 'We found Supervisor's and Manager's testimony more credible because...'); (2) applies a named evidentiary standard; (3) explains how corroborating evidence of non-racial threats affects the assessment of racial slur allegations; (4) documents whether witness interviews or documentary evidence beyond affidavits were obtained; and (5) addresses why Complainant's temporal specificity and Supervisor 2's partial corroboration were insufficient to establish a preponderance."
+  }
+}
+```

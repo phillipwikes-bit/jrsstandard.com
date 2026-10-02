@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record does not identify the basis for the June 2 final decision's finding that Complainant 'had not proven discrimination'—no investigation findings, witness interviews, or analysis of the four alleged incidents are documented."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "No chain of reasoning connects evidence to the discrimination conclusion; the record contains procedural dates and affidavits but no documented investigative findings, credibility assessments, or legal analysis supporting the merits finding."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the Agency rejected the discrimination claims from this record alone, as the investigative work product (witness statements, policy review, comparator analysis) is absent or not summarized."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The Acting Supervisor's affidavits appear contradictory (first denying organizational relationship and presence on July 20; second confirming Acting Supervisor role), but the record does not explain how these inconsistencies were resolved or weighed against Complainant's allegations."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record clearly documents incident dates (June 25, July 19, August 1, August 31, 2021), procedural milestones (April 5 ROI, May 17 re-send, May 18 closure notice, May 28/31 hearing request, June 2 final decision, June 10 EEOC receipt, November 29 dismissal), and intervals between events."
+    }
+  },
+  "remediation_note": "The record must include or reference the investigation file containing witness interviews, analysis of each of the four alleged incidents against legal standards (discrimination, reprisal, failure to accommodate), credibility findings, and the reasoned conclusion on the merits. Additionally, the Agency must clarify the discrepancies in the Acting Supervisor's affidavits and document how notice and timeliness of the hearing request were determined.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The case summary must be supplemented with or replaced by a complete investigation report that: (1) summarizes the complainant's allegations with dates and legal theories; (2) documents investigative steps, witness interviews, and documentary evidence reviewed; (3) applies each fact to the relevant legal standard (Title VII discrimination, Rehabilitation Act accommodation, reprisal); (4) resolves contradictory evidence (e.g., the Acting Supervisor's two affidavits) with explicit findings; (5) reaches a reasoned conclusion on each claim with citations to the evidentiary basis; and (6) explains the Agency's determination of notice and timeliness in light of the email delivery gaps and May 18 closure notice."
+  }
+}
+```

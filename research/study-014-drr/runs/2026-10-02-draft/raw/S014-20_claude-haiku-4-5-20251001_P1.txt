@@ -1,0 +1,19 @@
+# CASE FILE SUMMARY
+
+**Complainant:** Rural Carrier, USPS Acton Station, Granbury, Texas
+
+**Allegations:**
+1. Incorrect pay for route work since January 5, 2018
+2. Unpaid overtime since April 25, 2018
+3. Denial of package assistance request on December 14, 2018
+
+**Discrimination Basis Alleged:** Genetic Information Nondiscrimination Act (GINA)
+
+**Administrative Judge (AJ) Findings:**
+- **Claims 1 & 2 (GINA):** Complainant failed to establish prima facie case; no facts or evidence presented regarding genetic information or management motivation based on genetic information.
+- **Claim 3 (Package Assistance Denial):** Agency provided legitimate, nondiscriminatory reasons for denial, including prior assistance received that day, insufficient package volume qualifying for assistance, and available vehicle capacity. Complainant failed to rebut as pretext.
+
+**Procedural History:** 
+After investigation, Complainant requested hearing before AJ. AJ issued Notice of Proposed Summary Judgment sua sponte. Complainant failed to timely object. AJ issued summary judgment in favor of Agency. Agency issued final order implementing AJ's decision.
+
+**Outcome:** Complainant's appeal followed Agency's final order rejecting all discrimination allegations.

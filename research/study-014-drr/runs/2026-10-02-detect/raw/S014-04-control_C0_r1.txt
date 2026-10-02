@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The basis for each conclusion is explicitly identified: Emergency Placement on August 30, 2022 justified by failure to follow instructions; suspension on September 14, 2022 justified by seatbelt and engine-running violations; bathroom incident on September 20, 2022 addressed through supervisor denial and performance concerns; September 24, 2022 seatbelt instruction tied to safety policy interpretation; November 1, 2022 escorting justified by refusal to follow supervisor instructions despite OHM guidance."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process from evidence to conclusion is traceable through affidavits (Complainant, PM, S1, S2), documented policy citations (Handbook M-41 Section 812), OHM guidance, and the AJ's explicit findings that nondiscriminatory reasons (time-wasting, safety violations, insubordination) justified each action."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer with no prior knowledge can reconstruct the full basis from the record: sequential affidavits from all parties, specific policy references, medical documentation transmission to OHM, and the AJ's reasoning that Complainant failed to prove age bias or disparate treatment of younger workers."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports the nondiscriminatory justifications offered by supervisors and OHM, but the record lacks comparative data on discipline or reassignment of younger employees under identical circumstances, which limits the evidentiary sufficiency to rebut Complainant's implicit disparate-treatment theory."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology is clear with specific dates: August 30, 2022 (EP and first incident), September 14, 2022 (suspension notice issued), September 20, 2022 (bathroom incident), September 24, 2022 (seatbelt instruction), November 1, 2022 (doctor's note and escort), November 2, 2022 (EP effective), December 14, 2023 (motion filed), and January 4, 2024 (AJ decision)."
+    }
+  },
+  "remediation_note": "The record demonstrates strong chronological and evidentiary documentation of supervisory actions and stated nondiscriminatory rationales. To address the accountability_support gap, the record would benefit from explicit comparative analysis showing whether younger employees received identical or different discipline for analogous conduct, or documentation that such comparators do not exist in the record.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support (comparative evidence sufficiency) and reasoning_traceability (implicit reliance on absence of favorable comparators)",
+    "compliant_version": "A fully compliant version would include a documented comparative-employee analysis addressing whether similarly situated younger carriers committed equivalent violations (time-wasting, seatbelt non-compliance, insubordination) and received materially different discipline, with explicit findings as to availability and non-availability of such comparators, to support the legal burden under disparate-treatment frameworks."
+  }
+}
+```

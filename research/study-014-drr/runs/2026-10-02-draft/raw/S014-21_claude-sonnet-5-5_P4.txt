@@ -1,0 +1,77 @@
+# Case File Summary
+
+**Note on citations:** The record contains no ROI page numbers or exhibit citations. The only legal citation is 29 C.F.R. § 1614.109(i). The record also has stray footnote markers (1, 2, 3) with no footnote text, so I have not described their content.
+
+## Parties and Claims
+- Complainant was a GS-15 Primary Care Physician at the Agency's East Orange VA Medical Center in East Orange, New Jersey. She was appointed March 3, 2019, subject to a two-year probationary period.
+- Claim 1: She was denied her repeated request for reasonable accommodation from April 21, 2020, to her termination on January 22, 2021.
+- Claim 2: She was charged Absent Without Leave (AWOL) from August 10, 2020, to her termination on January 22, 2021.
+- After the investigation, Complainant requested a hearing before an EEOC Administrative Judge (AJ).
+
+## Procedural History
+- **Affidavit:** An investigator noted in the report of investigation that Complainant did not provide a requested affidavit. When asked on several occasions, she said she sent it to a "higher authority." Complainant indicates she sent it to the then Secretary of the Agency. The affidavit was not in the Report of Investigation, but the record indicates she provided it to the AJ.
+- **Decision-maker:** The AJ issued a decision without a hearing, finding no discrimination.
+- **Final action:** The Agency did not issue a final order, so the AJ's decision effectively became its final action under 29 C.F.R. § 1614.109(i). The record nonetheless describes Complainant as appealing "from the Agency's final order," contesting the finding of no discrimination.
+- **Appeal submissions:** On appeal, Complainant submits numerous documents, including subsequent doctors' statements.
+- **Related matter:** The Commission's records ("Our records indicate") show that on August 2, 2021, Complainant filed a separate EEO complaint about her January 22, 2021 termination, which the Professional Standards Board recommended. The Agency found no discrimination, and Complainant's appeal is pending before the Commission.
+
+## Essential Duties and Medical Background
+- **Duties:** Interviewing and examining patients daily (typically 12), in person and virtually; examining patients present for face-to-face visits; documenting visits in the electronic medical record; and ordering consults, labs, and medications through it.
+- **Injuries:** Complainant indicated she sustained a shoulder injury on July 12, 2019. The record notes she did not claim she notified supervisors or requested accommodation then. She indicated that in December 2019 she aggravated a prior right shoulder injury and notified supervisors shortly after.
+- **Claimed limitations:** She claimed she could not lift her right arm, use a mouse or keyboard, or write. She said this left her unable to perform physical examinations or document notes, and unable to use a computer for more than a few minutes at a time.
+
+## Claim 1 – Reasonable Accommodation (chronology by source)
+- **S1 (supervisor):**
+  - He became aware of the shoulder condition in December 2019.
+  - On February 25, 2020, Complainant made a verbal accommodation request and submitted FMLA paperwork. It requested no lifting, no prolonged fine manipulation with the right arm/hand, part-time light duty (20 hours per week), no grabbing, and computer assistance as needed.
+  - On March 25, 2020, S1 requested physician documentation of her ability to perform essential functions after she asked for 100% telework.
+  - S1 said the Agency could not offer unconditional 100% telework for at least a year because she failed to provide medical documentation.
+  - He also said the hospital had a physician shortage, some providers were ill with COVID-19, and her patients were being covered by others.
+  - The Agency therefore offered a telework agreement for one to three months, dependent on updated medical documentation.
+- **Return to work:** After being on leave since December 2019, Complainant returned March 2, 2020, with her requested shift restrictions (four hours per day worked, four hours LWOP, five days per week). She was to complete online Talent Management System training and see two or three patients by week's end if needed. She did neither.
+- **Medical Assistant:** On March 4, 2020, Complainant declined to see a patient in the waiting room who had waited months. She said her shoulder was bothering her and she could barely hold a pen.
+- **March 5, 2020 meeting:** S1, S2 (second-level supervisor), and the Reasonable Accommodation Coordinator held an interactive-process meeting. Complainant made clear she could not perform patient examinations or paperwork, or use a computer for more than a few minutes. Because of concern that part-time work would worsen her condition, the Agency granted her alternative accommodation of continued LWOP for six weeks to rehabilitate.
+- **Complainant:** She says she remained in approved LWOP from March 4, 2020, through August 10, 2020. About two weeks after the meeting she requested 100% telework.
+- **Equipment efforts:** During COVID-19, non-urgent appointments were cancelled and physician telework was ad hoc (50% alternating weeks).
+  - The Agency prepared dictation software and two ergonomic chairs.
+  - It shipped an ergonomic mouse and keyboard to her home and delivered a second set to her office.
+  - A laptop approved March 3, 2020, was delayed by equipment shortage.
+  - S1's second laptop request through the Computer/Electronic Accommodation program (CAP) was denied. During the "Needs Assessment," Complainant did not submit sufficient medical documentation or a telework agreement.
+  - The Agency secured a laptop on June 2, 2020, but Complainant never signed a telework agreement and did not accept the offered one.
+- **Reasonable Accommodation Coordinator:**
+  - Complainant made several requests, including one on April 21, 2020, for 100% telework, 20 hours per week, and modified assignments for one year to permanent.
+  - The Coordinator stated, and the record reflects, numerous requests for medical documentation, including several emails in June 2020. These sought documentation on the effectiveness of telework/telemedicine with her condition, the duration of the condition, and consent to contact her physician. Complainant did not provide it.
+  - On August 7, 2020, the Coordinator closed the request, saying it would be reopened if documentation was provided.
+
+### Medical documentation in the record
+- **DR1:** Return to Work statements dated January 13, 2020 (may return after follow-up on February 10, 2020) and February 10, 2020 (may return March 2, 2020).
+- **DR2:**
+  - February 25, 2020: light duty, part-time, no lifting, computer assistance, and reevaluation in six weeks.
+  - April 21, 2020: continued light duty, work from home via laptop and telemedicine, and reevaluation May 19, 2020.
+  - Two statements dated May 19, 2020: dexterity issues, continued physical therapy and telemedicine, able to use a computer and mouse with ergonomic support, and reevaluation in six weeks.
+  - June 22, 2020 (submitted July 15, 2020): work from home via telemedicine, maximum 20 hours weekly, pain, dexterity and gripping issues, able to use a computer and mouse with ergonomic support, and reevaluation in six weeks.
+  - July 30, 2020: reiterated the prior statement, recommended evaluation with a back specialist, and stated her "shoulder symptoms are well controlled and is discharged at this time."
+
+## Claim 2 – AWOL
+- **S1 and S2:** After the accommodation case closed, the Coordinator suggested it was reasonable to charge AWOL. Given that suggestion and that Complainant had not worked for nearly eight months without providing requested medical documentation, management placed her in AWOL starting August 10, 2020.
+- **Agency (leave history):**
+  - She used all annual and sick leave from December 20, 2019, through February 6, 2020.
+  - She was then granted LWOP on February 7–29, 2020 (80 hours), March 2–26, 2020 (480 hours), and March 26–August 7, 2020 (421 hours).
+- **Complainant:** She indicated she was in approved LWOP from March 4 through August 10, 2020. She remained in AWOL status from August 10, 2020.
+
+## AJ's Findings and Reasoning
+The AJ found no discrimination on either claim.
+- **Accommodation:** Complainant did not establish that the Agency failed to accommodate her, because she did not provide the requested documentation showing she could perform her duties, specifically physically examining patients.
+- **Medical documentation:** The AJ found:
+  - Complainant "has provided limited documentation to support having any disability," and all of it said the physician would reassess in weeks.
+  - Despite repeated requests, she offered no diagnosis or duration (temporary or permanent).
+  - She did not sign a release for the Agency to obtain medical information, nor one authorizing disclosure to the investigator.
+- **Telework:**
+  - The AJ found Complainant had not shown she could work from home, since by her own admission she could not use a pen or computer on her own.
+  - Permanent telework would require more computer use, so she was not qualified for it.
+  - Even as a telework clinician, a Primary Care Physician must examine patients physically. She said she could not do so on March 4, 2020, and never documented that she could.
+- **Closure:** Complainant refused to engage with the Agency by not providing documentation, which caused the Agency to close her case without a denial or approval.
+
+## Criteria and Responses Considered
+- **Criteria applied (as stated):** whether Complainant provided requested medical documentation (diagnosis, duration, release), whether she could perform the essential duty of physical patient examination, and whether she was qualified for the requested telework.
+- **Responses considered:** Agency witness statements (S1, S2, the Coordinator, the Medical Assistant), Complainant's statements, DR1 and DR2 documentation, and the record of Agency accommodation efforts. The only legal authority cited is 29 C.F.R. § 1614.109(i).

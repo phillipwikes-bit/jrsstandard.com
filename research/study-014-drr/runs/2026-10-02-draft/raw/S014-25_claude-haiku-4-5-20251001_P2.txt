@@ -1,0 +1,63 @@
+# FINDINGS
+
+## Background and Jurisdiction
+
+At the time of the events at issue, the Complainant was employed as a Library Director, NF-1410-IV, at the Agency's Joint Base Andrews facility in Prince George's County, Maryland. The Complainant initially filed a discrimination complaint that included a claim of reprisal for prior EEO activity; however, she withdrew the reprisal claim prior to the hearing before the EEOC Administrative Judge. The case proceeded to an investigation, following which the Agency provided the Complainant with a copy of the investigative report and notice of her right to request a hearing before an Administrative Judge. The Complainant requested a hearing, but the Administrative Judge granted the Agency's motion for summary judgment, finding no genuine issue of material fact to support discrimination claims based on race, sex, color, or age.
+
+## Factual Findings
+
+The record established the following material facts:
+
+1. Between May 31, 2018 and July 16, 2018, the Complainant's first-level supervisor (S1), a Force Development Flight Chief, GS-0301-13, claimed to have provided three verbal counselings to the Complainant; no written documentation was generated or placed in the Complainant's personnel file regarding these counselings.
+
+2. On October 18, 2018, the Complainant received a Letter of Reprimand from S1.
+
+3. Between February 12, 2019 and April 3, 2019, S1 accepted statements from the Complainant's White subordinates regarding the Complainant's conduct without conducting further independent investigation.
+
+4. On April 25, 2019, the Complainant received a Notice of Proposed Removal letter, signed by S1.
+
+5. On or about June 28, 2019, the Complainant was issued a Decision to Remove letter.
+
+6. On October 22, 2019, the Complainant discovered her Common Access Card remained active after her removal from federal service.
+
+## Analysis of Discrimination Claims
+
+### Disparate Treatment and Legitimate Nondiscriminatory Reasons
+
+The Administrative Judge found that, even assuming the Complainant could establish a prima facie case of discrimination regarding the proposed removal and termination (Claims 4 and 5), the Agency articulated legitimate, nondiscriminatory reasons for the employment actions. Specifically, S1 documented the following reasons for the removal decision:
+
+- Failure to meet deadlines in a timely manner
+- Cancelling scheduled events without permission from leadership
+- Failure to stagger schedules to meet patron and event needs
+- Failure to relieve staff members for lunches or breaks
+- Failure to conduct staff planning meetings for events
+- Staff allegations that the Complainant engaged in gossip and disclosed privileged employee information
+- Staff concerns regarding potential retaliation, negative feedback, and unfavorable performance appraisals
+- Lack of attention to detail in funds management
+
+The Administrative Judge further determined that the Complainant failed to identify similarly situated employees who received more favorable treatment. The Complainant cited two coworkers who were not disciplined for a physical altercation in front of patrons; however, the Administrative Judge found these individuals were not adequately comparable, as they held different positions and the Complainant's termination was based on an entirely different set of circumstances and reasons.
+
+### Hostile Work Environment and Harassment Claims
+
+The Complainant alleged a hostile work environment based on the following incidents:
+
+1. S1's undocumented verbal counselings and subsequent reference to them in the Notice of Proposed Removal
+2. S1's issuance of a Letter of Reprimand regarding the Complainant leaving the library unattended for a personal matter
+3. S1's acceptance of allegedly inaccurate statements from subordinates without further investigation
+4. The Complainant's proposed removal and ultimate termination
+
+#### Failure to Establish Nexus to Protected Bases
+
+The Administrative Judge found that the Complainant failed to establish any nexus between the alleged incidents and her protected bases of race, sex, color, or age. With respect to sex and age, the Administrative Judge determined that the Complainant offered only conclusory statements without evidentiary support. Regarding race and color, the Administrative Judge found that mere speculation based on the racial composition of the workplace—without additional evidence of racial animus—was insufficient to establish a discriminatory motive.
+
+The Administrative Judge acknowledged an affidavit from a coworker supporting the existence of racial hostility, which included allegations that unnamed staff members expressed dislike of being supervised by an African American and that both a subordinate and S1 criticized the Complainant's experience level compared to her Caucasian predecessor. However, the Administrative Judge found the affidavit "very confusing" and noted that the coworker had obtained this information secondhand or thirdhand rather than through personal observation. The Administrative Judge concluded that absent corroboration of these allegations, the uncorroborated statement alone was insufficient to establish racial animus.
+
+#### Failure to Establish Severity and Pervasiveness
+
+The Administrative Judge further found that the Complainant failed to establish that she was subjected to severe and pervasive harassment sufficient to alter her employment conditions and create an abusive working environment. The Administrative Judge characterized the incidents as ordinary workplace disputes, including disagreements with supervisors, supervisory management attempts, communication problems, and the implementation of progressive discipline.
+
+An Agency Chief Human Resources Officer stated in an affidavit that verbal counseling is not required to be documented in personnel files, supporting the conclusion that S1's undocumented counselings did not constitute a violation of Agency policy or grounds for harassment findings.
+
+## Conclusions
+
+The Administrative Judge concluded that the Complainant failed to prove by a preponderance of the evidence that she was subjected to employment discrimination or a hostile work environment based on race, sex, color, or age. The Agency articulated legitimate, nondiscriminatory reasons for the employment actions, and the Complainant provided insufficient evidence to establish that these reasons were pretextual or that she was treated differently based on a protected characteristic.

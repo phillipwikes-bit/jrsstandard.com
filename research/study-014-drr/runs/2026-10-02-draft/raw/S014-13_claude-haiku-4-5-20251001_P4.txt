@@ -1,0 +1,91 @@
+# CASE FILE SUMMARY
+
+**COMPLAINANT POSITION & LOCATION:**
+Administrative Technician, GS-0303-05, Agency's Chicago Regional Office in Oak Brook, Illinois
+
+**COMPLAINT FILING DATE:**
+August 24, 2021
+
+**ALLEGED BASES OF DISCRIMINATION:**
+- Disability (diabetes and liver fibrosis)
+- Reprisal for prior protected EEO activity (requesting a reasonable accommodation)
+
+**ALLEGED ACTION:**
+Termination, effective July 28, 2021
+
+**COMPLAINANT'S CHALLENGE:**
+Complainant does not challenge the framing of the complaint.
+
+**PROCEDURAL HISTORY:**
+- Agency provided Complainant with copy of report of investigation and notice of right to request hearing before EEOC Administrative Judge
+- Agency issued final decision pursuant to 29 C.F.R. § 1614.110(b), in accordance with Complainant's request
+- Instant appeal followed
+
+---
+
+## FINAL DECISION FINDINGS
+
+**Decision-Maker:** The Agency
+
+**Agency's Conclusions:**
+1. Complainant was an individual with a disability and qualified within the meaning of the Rehabilitation Act
+2. Assuming Complainant established a prima facie case of discrimination and retaliation, the Agency articulated legitimate, nondiscriminatory reasons
+3. Complainant failed to prove that the Agency subjected him to discrimination as alleged
+4. Complainant failed to rebut the Agency's reasons as pretextual
+
+---
+
+## EMPLOYMENT HISTORY
+
+**Employment Start Date:** January 17, 2021
+
+**Appointment Type:** Competitive-Career Conditional Appointment (required one-year probationary period)
+
+**Prior Agency Service:** Administrative Manager (Excepted Service Appointment) during decennial census
+
+---
+
+## PERFORMANCE DOCUMENTATION & SUPERVISORY STATEMENTS
+
+**Progress Review, June 15, 2021:**
+- Source: First-level supervisor (unnamed)
+- Finding: Complainant was not performing at the fully successful level 3 or above
+- Areas for improvement cited: becoming familiarized with onboarding and payroll processes; timely completion of assignments
+
+**Emails from June 2021:**
+- Source: S3 (third level supervisor, Program Coordinator)
+- Issues raised: partial or missing pay for two employees in Complainant's service area; payroll processing for pay period 11; status of several new hires
+
+**Memorandum, June 17, 2021:**
+- Source: S3
+- Title: "Failure to Follow Up on Payroll Issues"
+- Content: Outlined performance deficiencies
+
+**Affidavit Statement:**
+- Source: S1 (Administrative Officer, first-level supervisor)
+- Statement: Complainant had errors and issues with his work that caused several people not to receive their pay on time, which resulted in new hires resigning. S1, who became Complainant's supervisor in early July 2021, retrained the staff upon learning of these errors. S1 stated that even after retraining, Complainant "continued to have unresolved pay issues for the new hires he was responsible for."
+
+**Termination Letter, July 28, 2021:**
+- Source: S3
+- Reasons cited: Unacceptable performance during probationary period; failed to ensure timely onboarding of new hires and tracking them through the hiring process; failed to successfully process payroll in a timely manner
+
+**Affidavit Statement:**
+- Source: Administrative Specialist (AS)
+- Supervision: Assigned Complainant tasks related to Census Investigative Service Missing Documents Project (not payroll/timekeeping)
+- Statement: AS did not observe any unacceptable job performance issues concerning Complainant and that no such issues were brought to her attention regarding his involvement in the Missing Documents Project. AS believed Complainant was terminated based on his disabilities and for requesting a reasonable accommodation based on her observation of "tension between the Complainant and [S3] regarding his work schedule."
+
+---
+
+## DECISION RATIONALE & CRITERIA APPLIED
+
+**Legitimate, Nondiscriminatory Reasons Identified by Agency:**
+Performance issues in processing payroll and new hire onboarding, which Complainant often failed to complete without errors or on time
+
+**Pretext Analysis:**
+The Agency addressed whether Complainant established pretext by considering AS's affidavit, where she stated she did not observe any performance problems while Complainant was under her supervision. The Agency determined that AS only supervised one aspect of Complainant's work (the Missing Documents Project), not timekeeping and processing of new hires. Because three of Complainant's supervisors (S3, S1, and an unnamed first-level supervisor) confirmed his deficiencies in the payroll and new hire areas, the Agency found that AS's statements did not cast doubt on the Agency's explanation.
+
+**Regarding Retaliation Claim:**
+The Agency reasoned that there was no evidence that S3 voiced opposition to Complainant's reasonable accommodation or his telework schedule, especially given that all of the Administrative Technicians S3 supervised teleworked two days per week for at least a portion of the period at issue.
+
+**Conclusion on Pretext:**
+The Agency concluded Complainant could not show management's reasons were pretext for discrimination or reprisal, beyond Complainant's subjective belief.

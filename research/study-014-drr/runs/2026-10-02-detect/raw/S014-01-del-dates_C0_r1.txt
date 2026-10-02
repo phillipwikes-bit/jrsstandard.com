@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation (Claims 1-5) is grounded in specific factual bases: leave calculations supported by payroll audit, case reassignment methodology documented via spreadsheet, reasonable accommodation requests with coordinator records, and official time grants with email documentation."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is explicit: for each claim, the record traces from Complainant's allegation through Agency response, documentary evidence, Administrative Judge analysis, and final order adoption, with reasoning articulated at each step."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While the record is comprehensive, critical dates are redacted as 'at one point' throughout, preventing a reviewer years later from reconstructing precise chronology of leave depletion, reassignments, and official time requests without access to underlying files."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Evidence sufficiency is demonstrated: payroll audit confirmed leave balance calculations, spreadsheet evidenced case-splitting methodology, accommodation coordinator notes documented interactive meeting, and official time logs showed 18-hour grant, each supporting the Agency's contested conclusions."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "The record is severely compromised by systematic redaction of specific dates ('at one point,' 'various dates,' 'on other dates') making it impossible to reconstruct the sequence and duration of events—particularly critical for leave exhaustion, case reassignment timing, and official time chronology."
+    }
+  },
+  "remediation_note": "Replace all redacted temporal markers ('at one point', 'various dates') with actual dates or date ranges to enable chronological reconstruction and cold review. Ensure spreadsheet case assignments and payroll audit reports are referenced with sufficient specificity that a later reviewer can access or verify them.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "temporal_reconstructability and cold_reviewer_clarity",
+    "compliant_version": "A compliant version would unredact or explicitly restore all dates (February 2023, October 20, etc.), identify payroll audit and spreadsheet documents by title and date, and preserve sufficient factual anchors that a reviewer without prior knowledge could independently verify the sequence of leave exhaustion, case reassignment, accommodation requests, and official time grants across the complaint period."
+  }
+}
+```

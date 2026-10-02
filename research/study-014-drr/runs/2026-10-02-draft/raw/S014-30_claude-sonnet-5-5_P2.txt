@@ -1,0 +1,96 @@
+# FINDINGS
+
+**DRAFT: for investigator review. Findings are limited to what the record states. Items needing verification are bracketed or listed at the end.**
+
+## I. Matters Examined
+
+**Complaint 1** (number not stated in the record). Complainant alleges discrimination based on race (African-American), sex (male), and reprisal (prior EEO activity under Title VII, the ADEA, and the Rehabilitation Act). On October 22, 2015:
+1. His first-line supervisor (S1) gave him a mid-year review that allegedly characterized his professionalism and customer service falsely and with distortions.
+2. He was not permitted to submit evidence refuting the review.
+
+**Complaint 2** (EOI-2016-00061, filed November 5, 2015). Complainant alleges discrimination and a hostile work environment based on race, sex, reprisal, and age (49). On October 22, 2015:
+1. His mid-year review was held in a conference room rather than S1's office.
+2. His second-line supervisor (S2) was present.
+
+## II. Background Facts
+
+- Complainant was a Legal Assistant (Court), GS-0986-08, at the Orlando Immigration Court. He began assisting an immigration judge in June 2014, when he was hired by EOIR.
+- S1 is a Hispanic female Supervisory Legal Assistant. S2 is a Caucasian male Court Administrator.
+- After separate EEO investigations, Complainant requested a hearing on each complaint, and the complaints were joined.
+- The Agency moved for summary judgment, and Complainant opposed. The AJ granted the motion without a hearing and found no discrimination. The Agency adopted that decision in its final order, and Complainant appealed.
+
+## III. Findings
+
+### A. Content of the mid-year review (Complaint 1, Allegation 1)
+
+1. **Overall assessment.** S1 assessed Complainant's performance as "at a successful level or higher." Complainant contends he should have received an Excellent or Outstanding rating. The AJ found it uncontroverted that EOIR employees do not receive a rating of record at the mid-year review, so no such rating was issued or withheld.
+
+2. **Narrative content.** S1's narrative stated the following:
+   - *Customer Service:* Complainant needed to communicate with attorneys and return telephone calls.
+   - *Establish, Update, Maintain and Process Record of Proceedings and Case Records:* He needed to keep up with motions rather than hold them, and not sign or leave orders sitting overnight on his desk.
+   - *Legal and Technical Support:* He needed to be a team player by limiting cell phone and internet usage.
+   - The review also encouraged him to continue his hard work and strive for excellence.
+
+3. **Scope of the dispute.** The AJ found that Complainant contested only the Customer Service assessment.
+
+4. **Complainant's evidence.** Complainant offered a September 2015 letter from a defendant to the immigration judge. The letter complimented her handling of the defendant's case over nearly five years and thanked her "direct assistant, who was always very friendly and correct in handling my affairs." The letter did not name Complainant.
+
+5. **Weight of the evidence.** The AJ found the letter concerned only Complainant's interaction with a defendant in court. It therefore did not refute the critique that he needed to communicate better with attorneys and return telephone calls. The record contains no other evidence offered by Complainant to show the narrative was false.
+
+**Finding:** The record does not establish that the narrative was false or distorted. The offered letter does not address the specific concern S1 raised. The review was also favorable overall, since it found performance at a successful level or higher, and it carried no rating or other formal consequence.
+
+### B. Refusal to accept evidence (Complaint 1, Allegation 2)
+
+1. Complainant alleges that on October 22, 2015, S2 refused to accept the letter, saying it "failed… as creditable" evidence. (ROI Complaint 1, Bates No. 10 and Bates Nos. 90–91, ¶¶ 24–27.)
+2. The AJ assumed for purposes of decision that Complainant tried to submit the letter. The record does not show that S2's alleged statement was resolved as a factual matter.
+3. The AJ found the letter would not have changed the outcome, for two reasons:
+   - No rating is given at the mid-year review.
+   - The letter did not rebut the communication concerns.
+
+**Finding:** Even assuming the letter was refused, the record does not show that the refusal affected the review or caused Complainant a material consequence.
+
+### C. Location of the review (Complaint 2, Allegation 1)
+
+1. Mid-year reviews are typically held in the first-line supervisor's office. Complainant's review was held in a lower-level conference room away from his peers and others.
+2. Complainant acknowledged that the conference room provided privacy.
+3. The AJ found management chose the room to ensure privacy, not to harass or discriminate.
+
+**Finding:** The review departed from the usual location. The record supports a privacy-related explanation that Complainant himself acknowledged, and it contains no evidence that the choice was motivated by a protected basis.
+
+### D. Presence of S2 (Complaint 2, Allegation 2)
+
+1. Mid-year reviews are typically conducted with only the evaluator (S1) and the employee present. S2's affidavit acknowledges this norm and that Complainant's review departed from it.
+2. S1 and S2 explained that S2 attended because he had a responsibility to closely monitor interactions between Complainant and S1. They cited Complainant's conduct toward S1, which they described as abusive and caustic, and his disciplinary issues.
+3. In his rebuttal affidavit, Complainant asserted that the management affidavits (S1, S2, and a third official) contained lies and inconsistent statements. The AJ found this assertion did not rebut the explanation for S2's presence.
+
+**Finding:** S2's presence was a departure from typical practice, and S2 acknowledged it. A non-discriminatory explanation was given, and Complainant's general assertions of dishonesty did not specifically contradict it.
+
+### E. Complainant's contentions on appeal
+
+1. Complainant argues that S2 "admitted" treating him differently, citing S2's acknowledgment of the normal review practice. The record confirms S2 acknowledged the deviation. The acknowledgment concerns a difference in procedure, and S2 coupled it with the monitoring rationale. It is not an admission that the difference was based on race, sex, age, or reprisal.
+2. Complainant "respectfully questions" whether there can be equal justice where Agency counsel and the AJ are white. The record contains no facts about any conduct by the AJ or Agency counsel showing bias, so this contention is not supported by evidence in the record.
+3. Complainant argues genuine issues of material fact entitle him to a hearing, citing the alleged admission. Based on the findings above, the facts he identifies as disputed (the differing treatment) are not in dispute, and the unresolved matters (such as whether S2 refused the letter) were assumed in his favor without changing the result.
+4. The Agency asks that its final order be affirmed.
+
+## IV. Hostile Work Environment
+
+The only incidents identified are the review's content, the refusal of the letter, the conference room, and S2's presence, all on a single day. The record shows no other conduct, no harassing language, and no link to a protected basis. The incidents are explained by legitimate, non-discriminatory reasons.
+
+## V. Summary of Findings
+
+| Allegation | Finding |
+|---|---|
+| Review falsely characterized professionalism and customer service | Not supported; letter did not address the cited concern; no rating issued |
+| Not permitted to submit refuting evidence | Assumed true for analysis; no effect on outcome |
+| Review held in conference room | Departure from norm; privacy rationale, acknowledged by Complainant |
+| S2 present | Departure from norm; monitoring rationale, unrebutted by specifics |
+| Hostile work environment | Not supported |
+
+## VI. Gaps and Items for Verification
+
+- The record does not include the Complaint 1 number or filing date.
+- The record does not state the outcome of the appeal, so no disposition should be inferred.
+- The record does not show whether S2 actually refused the letter or what he said.
+- The third management official is unnamed, and the specific inconsistencies Complainant alleges in the affidavits are not described.
+- The record does not identify comparators, how other employees' reviews were handled, or the nature and dates of Complainant's prior EEO activity and disciplinary history. Verify these before relying on the "abusive and caustic" characterization.
+- The sentence beginning the record ("on his race…") appears truncated. Confirm the opening of the Complaint 1 description against the source.

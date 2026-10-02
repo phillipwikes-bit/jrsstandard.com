@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record does not identify the basis for the Agency's June 2, 2022 final decision finding no discrimination; it states only the procedural ground (untimely hearing request) without reference to the merits investigation, witness interviews, or factual findings on the four substantive claims."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "No investigative chain of reasoning is present—no investigator notes, no interview summaries, no analysis of whether the June 2021 to August 2021 events meet the elements of discrimination or retaliation under Title VII or the Rehabilitation Act."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer five years hence cannot reconstruct why the Agency concluded no discrimination occurred, because the ROI content, factual findings, or merits analysis is not summarized or attached to this case summary."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents procedural steps and the Acting Supervisor's affidavits, but the evidence supporting or refuting the four substantive claims (denial of overtime, verbal abuse, micromanagement, denial of schedule change) is not presented or weighed, making it unclear whether the merits conclusion is supported by the investigation."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology from June 2021 through November 2022 is traceable with specific dates: complaint filed November 18, 2021; alleged incidents June–August 2021; ROI sent April 5 and May 17, 2022; case closed May 1, 2022 (per Complainant); final decision June 2, 2022; hearing request received June 10, 2022; AJ dismissal November 29, 2022."
+    }
+  },
+  "remediation_note": "The record is a procedural narrative that documents timelines and service attempts but omits the investigative substance. A compliant version must attach or summarize the ROI with factual findings, witness statements, and the Agency's analysis of each claim against the applicable legal standard, so that the basis for the no-discrimination conclusion is identifiable and traceable.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Integrate the ROI investigation summary, including: (1) findings of fact on each of the four claims (overtime denial, July 19 verbal abuse, micromanagement, schedule change denial), (2) investigator's analysis of whether each fact satisfies the elements of discrimination or retaliation, (3) response from the Agency and relevant witnesses (including reconciliation of the Acting Supervisor's two conflicting affidavits), and (4) explicit statement of the legal and factual basis for concluding no discrimination occurred. If the case was closed on May 1 before the hearing deadline and reopened, clarify the reason and its effect on timeliness. Confirm delivery of the ROI via signed receipt or system log, not reliance on email download links without confirmation."
+  }
+}
+```

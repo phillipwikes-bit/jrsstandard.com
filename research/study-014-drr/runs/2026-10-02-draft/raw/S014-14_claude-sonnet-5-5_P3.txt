@@ -1,0 +1,44 @@
+# Investigation Record Summary
+
+## Background and Claims
+
+At the time of the events in this complaint, Complainant was a Supervisory Transportation Security Officer (SV-1802-G Band) at Hartsfield-Jackson Atlanta International Airport in Atlanta, Georgia. On February 2, 2021, he filed an EEO complaint alleging that the Agency discriminated against him and subjected him to a hostile work environment based on sex (male) and in reprisal for prior protected EEO activity. The complaint raised the following claims:
+
+1. On November 24, 2020, a co-worker (CW1) claimed to do Voodoo and placed a flower on Complainant's body.
+2. *[The text of Claim 2 does not appear in the record as provided.]*
+3. Sometime after November 24, 2020, management failed to address Complainant's concerns about the incident with CW1. It also prevented him from attending management meetings and scheduling operational meetings.
+4. On December 30, 2020, a manager (Manager) paced back and forth, stood over Complainant, and blocked the door when Complainant tried to leave.
+
+## Procedural History
+
+The Agency first dismissed the complaint for failure to state a claim. In *Norman S. v. Dep't of Homeland Sec.*, EEOC [number removed] (July 22, 2021), the Commission reversed that decision and remanded the matter for further processing. After the investigation, the Agency gave Complainant a copy of the report of investigation and notice of his right to request a hearing before an EEOC Administrative Judge (AJ). Complainant instead requested a final agency decision, and the Agency issued one under 29 C.F.R. § 1614.110(b). It found that Complainant had not been subjected to discrimination or reprisal as alleged. This appeal followed.
+
+## Complainant's Account
+
+On Claims (1) and (2), Complainant stated that he asked CW1 to step back and stay away from him, but she would not, and that CW1 backed him into a corner. He said he complained to Agency management on November 24 and 28, 2020, and no action was taken.
+
+On Claim (4), Complainant stated that Manager approached him and demanded answers to questions about his allegations against CW1. According to Complainant, Manager refused to show him authorization to investigate. Manager offered to display the authorizing memorandum on his computer, but each time Complainant tried to look, Manager "would click off the screen to prevent [Complainant's] view of it." Complainant added that Manager would not let him leave without answering the questions.
+
+Manager denied all of Complainant's allegations against him, including the claim that Complainant was excluded from meetings.
+
+Complainant testified that the sequence of events showed a discriminatory pattern, because CW1 and other women are not disciplined while men are treated more harshly. He stated, "[a] fact finding inquiry was conducted, but this did not address [his] concerns, and did not prevent or lessen the acts of discrimination and retaliation, including subjecting [him] to a hostile work environment." He criticized the investigation as biased and artificial and suggested that security footage would have corroborated his claims.
+
+## Agency Inquiry
+
+In a December 21, 2020 memorandum, the Interim Federal Security Director (Interim Director) appointed Manager to investigate Complainant's claims. On December 31, 2020, Complainant emailed Manager and objected to his role because Manager was part of Complainant's management chain. The record contains later emails from Complainant to the Interim Director to the same effect. The Interim Director forwarded his concerns to the Federal Security Director (Director).
+
+On January 5, 2021, Director appointed a different individual, a Transportation Security Inspector (Inspector), to continue the investigation. Complainant agreed to be interviewed by the Inspector. The Inspector also interviewed CW1 and several employees who worked in the same area as both Complainant and CW1.
+
+On January 22, 2021, the Inspector issued a fact-finding report that did not substantiate Complainant's claims. He acknowledged that Complainant and CW1 had a "contentious conversation" but found that its details were disputed. According to the record, Complainant alleged that CW1 asked to speak with him privately and "backed her into a corner." This appears to be a drafting error, since Complainant elsewhere alleges that CW1 backed *him* into a corner. CW1 responded that Complainant initiated the conversation and questioned her about her relationship with another employee, which upset her. Coworkers confirmed that a conversation took place but could not confirm what was said. The Inspector noted that most of the evidence he found was "conjecture."
+
+## Affidavit and Witness Statements
+
+In her affidavit, CW1 denied Complainant's version of events. Her testimony was consistent with the statement she gave the Inspector.
+
+The record also contains statements from Complainant's coworkers that repeat what they told the Inspector. They said Complainant and CW1 had a contentious conversation, but they could not hear what was said or see what was done.
+
+## Note on Record Gaps
+
+- The text of Claim 2 is missing, though Claims (1) and (2) are later discussed together.
+- The pronoun error noted above should be checked against the source documents.
+- The record does not say whether security footage exists or was reviewed.

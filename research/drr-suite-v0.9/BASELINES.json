@@ -1,0 +1,206 @@
+{
+ "_provenance": "Study 014 Part 1 drafts (research/study-014-drr/runs/2026-10-02-draft), one draft per text, scored by score.py with extractor v1.2 on 2026-10-02. Reference points, not pass marks. Drafters: claude-sonnet-5-5 and claude-haiku-4-5-20251001, no tools, no retrieval. Prompts P1-P4 are in research/study-014-drr/tools/study014.py.",
+ "reference": {
+  "claude-haiku-4-5-20251001-P1": {
+   "scored": 30,
+   "median_retention": {
+    "date": 0.4772727272727273,
+    "citation": 0.0,
+    "attribution": 0.29166666666666663,
+    "quote": 0.0
+   },
+   "median_pooled_retention": 0.07417582417582418,
+   "unsupported_total": {
+    "date": 0,
+    "citation": 0,
+    "quote": 1
+   },
+   "kept_anchors_total": 165,
+   "unsupported_per_100_kept": 0.61,
+   "median_length_ratio": 0.2185
+  },
+  "claude-haiku-4-5-20251001-P2": {
+   "scored": 30,
+   "median_retention": {
+    "date": 0.7386363636363636,
+    "citation": 0.0,
+    "attribution": 0.6666666666666666,
+    "quote": 0.1111111111111111
+   },
+   "median_pooled_retention": 0.5584415584415584,
+   "unsupported_total": {
+    "date": 1,
+    "citation": 0,
+    "quote": 0
+   },
+   "kept_anchors_total": 340,
+   "unsupported_per_100_kept": 0.29,
+   "median_length_ratio": 0.623
+  },
+  "claude-haiku-4-5-20251001-P3": {
+   "scored": 30,
+   "median_retention": {
+    "date": 0.950956937799043,
+    "citation": 0.0,
+    "attribution": 0.6666666666666666,
+    "quote": 0.3333333333333333
+   },
+   "median_pooled_retention": 0.6666666666666666,
+   "unsupported_total": {
+    "date": 1,
+    "citation": 0,
+    "quote": 3
+   },
+   "kept_anchors_total": 421,
+   "unsupported_per_100_kept": 0.95,
+   "median_length_ratio": 0.9744999999999999
+  },
+  "claude-haiku-4-5-20251001-P4": {
+   "scored": 30,
+   "median_retention": {
+    "date": 1.0,
+    "citation": 1.0,
+    "attribution": 1.0,
+    "quote": 1.0
+   },
+   "median_pooled_retention": 1.0,
+   "unsupported_total": {
+    "date": 0,
+    "citation": 0,
+    "quote": 0
+   },
+   "kept_anchors_total": 677,
+   "unsupported_per_100_kept": 0.0,
+   "median_length_ratio": 0.8765000000000001
+  },
+  "claude-sonnet-5-5-P1": {
+   "scored": 30,
+   "median_retention": {
+    "date": 0.7321428571428572,
+    "citation": 0.0,
+    "attribution": 0.3333333333333333,
+    "quote": 0.07142857142857142
+   },
+   "median_pooled_retention": 0.3333333333333333,
+   "unsupported_total": {
+    "date": 0,
+    "citation": 0,
+    "quote": 0
+   },
+   "kept_anchors_total": 285,
+   "unsupported_per_100_kept": 0.0,
+   "median_length_ratio": 0.473
+  },
+  "claude-sonnet-5-5-P2": {
+   "scored": 30,
+   "median_retention": {
+    "date": 1.0,
+    "citation": 1.0,
+    "attribution": 0.6666666666666666,
+    "quote": 0.8
+   },
+   "median_pooled_retention": 1.0,
+   "unsupported_total": {
+    "date": 0,
+    "citation": 0,
+    "quote": 3
+   },
+   "kept_anchors_total": 583,
+   "unsupported_per_100_kept": 0.51,
+   "median_length_ratio": 1.2305000000000001
+  },
+  "claude-sonnet-5-5-P3": {
+   "scored": 30,
+   "median_retention": {
+    "date": 1.0,
+    "citation": 1.0,
+    "attribution": 0.7083333333333333,
+    "quote": 1.0
+   },
+   "median_pooled_retention": 1.0,
+   "unsupported_total": {
+    "date": 0,
+    "citation": 0,
+    "quote": 0
+   },
+   "kept_anchors_total": 678,
+   "unsupported_per_100_kept": 0.0,
+   "median_length_ratio": 0.9895
+  },
+  "claude-sonnet-5-5-P4": {
+   "scored": 30,
+   "median_retention": {
+    "date": 1.0,
+    "citation": 1.0,
+    "attribution": 0.6666666666666666,
+    "quote": 1.0
+   },
+   "median_pooled_retention": 1.0,
+   "unsupported_total": {
+    "date": 0,
+    "citation": 0,
+    "quote": 0
+   },
+   "kept_anchors_total": 659,
+   "unsupported_per_100_kept": 0.0,
+   "median_length_ratio": 0.9395
+  },
+  "source": {
+   "scored": 30,
+   "median_retention": {
+    "date": 1.0,
+    "citation": 1.0,
+    "attribution": 1.0,
+    "quote": 1.0
+   },
+   "median_pooled_retention": 1.0,
+   "unsupported_total": {
+    "date": 0,
+    "citation": 0,
+    "quote": 0
+   },
+   "kept_anchors_total": 717,
+   "unsupported_per_100_kept": 0.0,
+   "median_length_ratio": 1.0
+  }
+ },
+ "cloze_reference": {
+  "_provenance": "Study 014 Part 3, reader claude-sonnet-5-5, 150 items (5 per text)",
+  "source": {
+   "correct": 145,
+   "items": 150,
+   "rate": 0.967,
+   "ci": [
+    0.924,
+    0.986
+   ]
+  },
+  "P1_sonnet": {
+   "correct": 116,
+   "items": 150,
+   "rate": 0.773,
+   "ci": [
+    0.7,
+    0.833
+   ]
+  },
+  "P4_sonnet": {
+   "correct": 146,
+   "items": 150,
+   "rate": 0.973,
+   "ci": [
+    0.933,
+    0.99
+   ]
+  },
+  "null": {
+   "correct": 17,
+   "items": 150,
+   "rate": 0.113,
+   "ci": [
+    0.072,
+    0.174
+   ]
+  }
+ }
+}

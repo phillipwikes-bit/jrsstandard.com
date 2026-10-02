@@ -1,0 +1,46 @@
+**Case-File Summary: EEO Complaint, Probationary Credentials Assistant, Naval Medical Center Portsmouth**
+
+**Note on citations:** The record contains no ROI page numbers or exhibit references. The only legal citation is 29 C.F.R. § 1614.109(i), which appears below. The record also gives no hearing date and no date for the AJ's decision.
+
+**Background**
+- Complainant was a probationary Credentials Assistant, GS-0303-07, at the Agency's Naval Medical Center in Portsmouth, Virginia.
+- On November 8, 2018, she filed an EEO complaint alleging race discrimination (African-American) based on her termination from the probationary position on August 2, 2018.
+- After the investigation, the Agency gave her the report of investigation and notice of her right to request a hearing before an EEOC Administrative Judge (AJ). She requested a hearing.
+
+**Decision-maker and criteria**
+- The AJ held the hearing and issued a decision in favor of the Agency.
+- The AJ assessed the direct-evidence theory and the witnesses' credibility. The AJ then considered whether the Agency articulated a legitimate, nondiscriminatory reason and whether Complainant proved pretext.
+- S2 (Department Head, GS-0301-12, Complainant's second-level supervisor) made the termination decision, according to Complainant's testimony. The record also says S2 concluded Complainant had misrepresented the incident.
+
+**Complainant's direct-evidence theory (hearing testimony)**
+- Complainant testified that S2 decided to terminate her after learning her "significant other" was White. She said S2 learned of the relationship in May 2018 and that their relationship changed afterward.
+- Complainant also testified that S1 (Professional Affairs Coordinator/Assistant Department Head, GS-0301-11, her first-level supervisor) warned her not to let S2 know she was dating a White man.
+- CW (Program Analyst, GS-0303-07) testified that S2 openly said S2's husband was extremely biased against interracial relationships and that she was surprised Complainant was dating a White man. CW claimed she heard S2 make other race-related remarks.
+- Complainant and CW both testified that S1 had warned them about S2's prejudice.
+- S1 testified at the hearing and denied making any comments about S2 being racist.
+
+**AJ's credibility findings**
+- The AJ found neither Complainant nor CW credible and found the direct-evidence theory unreliable.
+- The AJ cited the "glaring omission" of any interracial-relationship theory from Complainant's complaint, EEO counseling records, and investigative affidavit. The AJ reasoned that such evidence, if credible, would not have surfaced for the first time about three years after the termination.
+- In counseling and in her affidavit, Complainant instead attributed the termination to events at a work conference in Leesburg, Virginia, where S2 allegedly behaved inappropriately and S2 "did not trust [her] to not share what happened." She also said S2 wrongly believed she had filed a grievance, which another employee had filed. The AJ noted these theories "have no apparent connection to her race."
+- On cross-examination by Agency counsel, Complainant gave no explanation for not raising the theory earlier.
+- CW's investigative affidavit likewise omitted any reference to S2's prejudice against interracial relationships. It mentioned the Leesburg events and CW's belief that "Complainant was discriminated against because she was an African-American with more experience than management." It also said S1 made racially inappropriate remarks. It did not mention Complainant's partner being White or S2's opposition.
+
+**Agency's articulated reason**
+- The Notice of Termination stated that Complainant failed to "follow the privileging/credentialing process when [she] misrepresented to [her] leadership that a provider had specifically requested privileges when in fact [Complainant] made the request."
+- The provider said Complainant tried to convince him to apply for privileges he did not previously hold.
+- The provider's application listed incorrect privileges, based on Complainant's mistaken belief about the protocol for credentialing contract providers. Complainant acknowledged at the time that her guidance was inaccurate.
+- The guidance delayed the application until the day his then-current privileges were to expire. The provider then contacted Complainant's supervisors to express frustration, saying she had given him incorrect guidance.
+- Complainant told S1 that the provider had already submitted an application requesting privileges he did not hold and that her guidance was based on it.
+- S2 obtained a written statement from the provider and concluded Complainant had misrepresented what happened. This was part of the basis for the termination.
+
+**Pretext analysis**
+- The provider testified at the hearing, and the AJ found him credible. He said he and Complainant discussed the application before he submitted it and that he submitted it based on her instructions.
+- The AJ found Complainant "not credible" in testifying that she never spoke to the provider before he submitted the first application. The AJ found her testimony "simply unreliable" and said her "credibility is doubly important in this case because her lack of candor was part of why she was terminated."
+- The AJ concluded that Complainant failed to prove pretext because there was no evidence the similarly situated employee she named "was involved in a similar episode, or that she was dishonest with her managers."
+- The Notice of Termination also said Complainant "failed to initiate the renewal privileging/credentialing process within 90 days as required." The AJ found this untrue. The AJ also found that a similarly situated employee had several renewals nearing expiration with under 90 days remaining and was not terminated. The AJ stated: "If this were the only reason for Complainant's termination, she would be able to demonstrate pretext. But it was not."
+- The AJ found the Agency had not discriminated against Complainant as alleged.
+
+**Final action and appeal**
+- The Agency did not issue a final order within forty days of receiving the AJ's decision. Under 29 C.F.R. § 1614.109(i), the AJ's decision therefore became the Agency's final action.
+- Complainant then filed the instant appeal.

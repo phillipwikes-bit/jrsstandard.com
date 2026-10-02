@@ -1,0 +1,73 @@
+# Investigation Record Summary
+
+## I. Claims and Employment Background
+
+At the time of the events giving rise to this complaint, Complainant worked as a City Carrier Technician, A-02/Q, at the Agency's Village Station in New York, New York. The complaint raises three claims:
+
+1. Since June 26, 2016, and continuing, management assigned Complainant work outside her medical restrictions and failed to pay her properly and/or on time.
+2. On October 4, 2016, and other unspecified dates, her clock rings were deleted.
+3. On unspecified dates, her request to be detailed as a 204-B was not granted.
+
+The Report of Investigation (ROI) shows that Complainant was assigned to the Village Station (ROI, Affidavit A at 190, Exhibit 1). A Carrier Technician cases and delivers mail for several carrier routes. The duties include pushing, lifting, and simple grasping for eight hours a day (ROI, Affidavit C2).
+
+## II. Medical Condition and Restrictions
+
+Complainant attributes her medical conditions to a recurrence of an on-the-job injury. Her physician recorded May 10, 2014, as the date of the injury and the date of first diagnosis (ROI at 64-65). Complainant stated that her conditions are a back sprain, displacement of a lumbar intervertebral disc without myelopathy, and a hernia, which was repaired after the injury (ROI, Complainant's Affidavit, at 191).
+
+Her restrictions are:
+
+- Sitting: three hours.
+- Walking: limited to 30 minutes.
+- Standing: 10 minutes.
+- Avoiding reaching above the shoulder, twisting, bending, stooping, pushing, pulling, lifting, squatting, kneeling, and climbing.
+- A 15-minute break every hour (ROI at 191).
+
+## III. The Modified Assignment (Claim 1)
+
+Complainant had been on leave for an extended period. When she returned, she was assigned to the Lenox Hill Station. On June 22, 2016, the Agency offered her a limited duty modified assignment at the Lenox Hill South Station, from 10:00 a.m. to 2:00 p.m. The position was not a vacant, funded position. It involved two tasks:
+
+- Shuttling carriers by van to and from their routes, for up to four hours a day.
+- Delivering express mail weighing under five pounds, for up to 30 minutes.
+
+On paper, the assignment met Complainant's restrictions. She signed the offer on July 1, 2016, and began work on or about July 18, 2016 (ROI at 196, 233). Although she felt the assignment would be too much for her, she told her Manager she would try it and would tell him if she could not handle it. He agreed (ROI at 196).
+
+The Manager testified that he learned of Complainant's medical condition through the job offer. He denied receiving or having any medical documentation for her.
+
+The record also shows that the Agency offered Complainant a second light duty job, as a lobby attendant. She declined it because she believed it exceeded what she could do given her restrictions.
+
+It is undisputed that the Manager instructed Complainant to make an express delivery, which he believed conformed to her restrictions (ROI at 196). Complainant claimed that on August 29, 2016, she walked for an hour, with breaks, although she was not supposed to walk more than 30 minutes. She stated that she was not permitted to use the van. She explained that using the van, as the modified job offer contemplated, would require her to stoop and twist to get into the vehicle. She added that even picking up a dropped envelope would violate her restriction against stooping (ROI at 196). The record also shows that Complainant was out on leave for significant periods in July and August 2016.
+
+The Agency dismissed an additional claim for failure to state a claim. Complainant raised no challenge to that dismissal, and the Commission found no basis to disturb it.
+
+## IV. Pay Errors and Deleted Clock Rings (Claim 2)
+
+Some of Complainant's clock rings were deleted for July 18 through July 28, 2016, and her time for those dates was coded as full workers' compensation. Complainant stated that she had just started at the Lenox Hill Station and that the receiving station should have entered her time (ROI, Affidavit A). The Manager stated that Complainant had an incorrect leave code in the system (ROI, Affidavit B).
+
+Complainant did not return to work until October 4, 2016, when she came in to complete workers' compensation paperwork. She returned again on November 14, 2016, to complete additional paperwork.
+
+As further background, Complainant had recently returned from full-time workers' compensation. Because she moved from the Village Station to Lenox Hill, there is insufficient evidence that the supervisor at the receiving facility realized she had come back from workers' compensation leave. Complainant also asserted that her Manager's poor organization contributed to the errors (ROI at 197-198 (209-210)).
+
+The record also shows that manual timecards were submitted and then lost. Complainant cited the errors and said they may have been caused by the Agency's lack of a disk that would have let her log her hours automatically rather than manually.
+
+The deleted clock rings were discovered before the EEO filing at issue in this appeal. On September 14, 2016, Complainant filed a grievance about the payment failures and the deleted clock rings. The Agency maintained that the payment failures resulted from plain error.
+
+## V. The 204-B Request (Claim 3)
+
+Complainant stated that she asked to serve as an acting supervisor (204-B) over the carriers. On or about November 14, 2016, the Manager did not offer her a 204-B detail as a reasonable accommodation. He stated that he did not need any acting supervisors for his operations. He also said he believed supervisors must be punctual and reliable, and that he had not observed those attributes in Complainant (ROI, Affidavit B).
+
+## VI. Procedural History and the AJ's Decision
+
+At the conclusion of the investigation, the Agency gave Complainant a copy of the ROI and notice of her right to request a hearing before an EEOC Administrative Judge (AJ). Complainant timely requested a hearing. The AJ issued a summary judgment decision for the Agency, finding that Complainant was not subjected to discrimination or reprisal as alleged.
+
+**Claim 1 (reasonable accommodation).** The AJ found that Complainant was not denied a reasonable accommodation. The AJ determined that she was given a modified limited duty assignment, shuttling carriers by van and delivering express mail, that fell within her documented medical restrictions. Complainant simply believed the job was too much for her. The Agency also offered the lobby attendant assignment, which she declined. The AJ noted that Complainant claimed another assignment, one that was offered and then rescinded, would have met her needs, but that position involved tasks similar to those of the lobby attendant job she declined. The AJ found no evidence that Complainant was forced to work outside her restrictions. The AJ further observed that her restrictions were so severe that she appeared unable to perform her job with or without a reasonable accommodation. The AJ therefore concluded there was no violation of the Rehabilitation Act.
+
+**Claim 2 (pay and clock rings).** The AJ determined that the Agency articulated legitimate, nondiscriminatory reasons for its actions. Agency officials explained that the errors had several causes:
+
+- Complainant had returned to full-time duty from workers' compensation, so supervisors at the other facility may not have realized she was back at work.
+- She had transferred from one facility to another.
+- Manual timecards were submitted and lost, whereas digital submission would have prevented the problem.
+- Complainant herself acknowledged that the Manager had poor organizational skills, which contributed to the errors.
+
+**Claim 3 (204-B detail).** Complainant claimed that the Manager and another manager "brushed her off," and that she raised the detail as a way to be accommodated. The Manager had offered her the two positions discussed above as accommodations. Complainant stated that, instead of being trained for a 204-B position, she was told she could apply for a city-wide position that would take time to obtain. The AJ determined that Complainant wanted a manager to promote her on the spot rather than actually applying for the detail. The AJ found that she failed to show the denial resulted from discriminatory or retaliatory animus.
+
+**Conclusion.** The AJ concluded that Complainant failed to show that the Agency's reasons were pretextual and found that she was not subjected to discrimination or reprisal as alleged. The Agency then issued a final order fully adopting the AJ's decision. This appeal followed.

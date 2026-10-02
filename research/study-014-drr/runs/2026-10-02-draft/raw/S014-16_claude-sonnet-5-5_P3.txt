@@ -1,0 +1,106 @@
+# Case File Summary: Investigation Record
+
+## 1. Background and Parties
+
+When the events underlying this complaint occurred, Complainant was a Deportation Officer (DO), GS-12, at the Agency's San Bernardina, California office. His first-line supervisor was a Supervisory Detention and Deportation Officer ("Supervisor"). The record identifies Supervisor as Vietnamese, born in 1977, with no prior EEO activity. (Report of Investigation (ROI) at 76.)
+
+Two coworkers are referenced as comparators:
+
+- **DO 1:** born in 1982, no prior EEO activity, national origin unknown.
+- **DO 2:** born in 1969, with prior EEO activity, national origin unknown.
+
+*Note to file: The source text for the first allegation is garbled. It appears to say that Complainant claimed Supervisor denied his concert request while allowing DO 1 to adjust a schedule, but the sentence is incomplete. The ROI (at 13-14, 47, and 120) should be checked to confirm.*
+
+## 2. Chronology of Events
+
+### July 2018: Schedule Request and Return to Work
+
+According to Complainant, Supervisor denied his request to attend a concert with his daughter and treated him differently from DO 1 on schedule adjustments.
+
+Supervisor stated that on July 27, 2018, Complainant texted a request to change his schedule to 0500–1300 hours so he could attend a recreational event. Supervisor said he replied that the earliest Complainant could start was 0600, or that Complainant could take annual leave. Supervisor recalled that Complainant texted back that he would take leave but then decided to report to work. (ROI at 77-80, 90.)
+
+*Note to file: The accepted claim dates the denial July 26, 2018, while Supervisor's account places the request on July 27. This discrepancy is not explained in the record.*
+
+Complainant separately stated that on July 27, 2018, Supervisor asked him to return to work after he had already left for the day. (ROI at 13-4.) Supervisor said he asked Complainant to come to his office during Complainant's duty hours. According to Supervisor, Complainant then worked the rest of his regular hours and overtime from 4:30 p.m. to 7:00 p.m. The record shows that Complainant claimed 0500 to 1900 hours that day: eight hours of regular pay and six hours of Administrative Uncontrollable Overtime (AUO). (ROI at 80-2, 91, 137.)
+
+### August–October 2018: AUO Pay Discrepancy
+
+On August 28, 2018, Complainant attended an all-day Defensive Tactics training class scheduled from 8:00 a.m. to 4:00 p.m.
+
+Complainant asserted that on October 1, 2018, he learned of pay discrepancies caused by Supervisor. He also claimed that Supervisor told DO 2 about an AUO pay discrepancy before correcting DO 2's pay. (ROI at 13-4, 47, 120.)
+
+Supervisor stated that on October 4, 2018, Complainant and the Union President came to his office. They claimed Complainant had worked AUO from 3:00 p.m. to 5:00 p.m. on August 28, 2018. Supervisor said he explained that Complainant could not claim AUO for the hour from 3:00 to 4:00 p.m. because he was in training, and that time is excluded from AUO. He then made the pay adjustment. (ROI at 83-5, 93.)
+
+### October 2018: Performance Work Plan Review
+
+On October 12, 2018, Supervisor reviewed Complainant's Performance Work Plan (PWP) with him. Complainant asserted that Supervisor admonished him several times in the PWP and rated him on an area not in his official PWP. (ROI at 13, 47.)
+
+Supervisor stated that Complainant became upset and walked away, which ended any opportunity for discussion. (ROI at 86-7, 98-110.) Supervisor said, and the record showed, that he rated Complainant on these elements:
+
+- Plans and Conducts Arrest
+- Custody Operations
+- Deportation
+- Partnering
+- Prepares Reports and Other Correspondence
+
+Supervisor maintained that he did not rate Complainant on any element absent from the PWP. (ROI at 86-7, 98-110.)
+
+## 3. Procedural History
+
+### EEO Complaint
+
+Complainant initiated EEO contact on October 12, 2018. On June 6, 2019, he filed a formal complaint. It alleged discrimination and a hostile work environment based on:
+
+- national origin (Romanian);
+- age (48; YOB 1971); and
+- reprisal for prior protected EEO activity (HS-ICE-21417-2012 and HS-ICE-22663-2012).
+
+The complaint was brought under Title VII of the Civil Rights Act of 1964 and the Age Discrimination in Employment Act of 1967. It identified four claims:
+
+1. On July 26, 2018, Supervisor denied Complainant's request to attend a concert with his daughter.
+2. On July 27, 2018, Supervisor asked Complainant to return to work after he had already left for the day.
+3. On October 1, 2018, Complainant became aware of pay discrepancies made by Supervisor.
+4. On October 12, 2018, Supervisor admonished Complainant several times in his PWP and rated him in an area not in his official PWP.
+
+### Investigation and Hearing Stage
+
+The Agency investigated and gave Complainant the report of investigation along with notice of his right to request a hearing before an EEOC Administrative Judge (AJ). Complainant timely requested a hearing.
+
+On June 7, 2021, the AJ issued an Order to Show Good Cause. Complainant had not provided a completed investigative affidavit despite the EEO investigator's multiple requests. According to the AJ, he had also failed to file the affidavit as required by the AJ's May 11, 2021 order. The AJ directed Complainant to submit, by June 17, 2021, a statement showing good cause for the failure.
+
+On June 21, 2021, Complainant emailed the AJ with apologies but still submitted no affidavit. On June 22, the AJ dismissed the complaint from the EEOC hearing process as a sanction for noncompliance with the AJ's orders. The AJ remanded it to the Agency for a Final Agency Decision (FAD).
+
+## 4. Final Agency Decision (August 10, 2021)
+
+The Agency issued its FAD under 29 C.F.R. § 1614.110(b). It concluded that Complainant had not proven discrimination as alleged.
+
+### Disparate Treatment (Claims 1, 3, and 4)
+
+The Agency applied the three-part framework of *McDonnell Douglas Corp. v. Green*, 411 U.S. 792 (1973). It determined that management had articulated legitimate, nondiscriminatory reasons for each action:
+
+- **Claim 1:** The Agency noted Supervisor's statement that Complainant did not request time off but chose to report to work, and that Complainant was not treated differently from DO 1. (ROI at 77-80.)
+- **Claim 3:** The Agency noted Supervisor's assertion that DO 2 was in the office when Supervisor found the AUO discrepancy, so he was able to discuss the change with DO 2. Supervisor denied treating Complainant differently because of his protected classes. (ROI at 84-5.)
+- **Claim 4:** The Agency noted Supervisor's assertion that he neither admonished Complainant in the PWP nor rated him on areas not in the PWP.
+
+The Agency found that Complainant did not show by a preponderance of the evidence that these reasons were pretext. It also found no evidence that the actions were based on his protected classes.
+
+### Harassment / Hostile Work Environment
+
+The Agency analyzed the non-discrete allegation in claim 2, together with the discrete acts in the other claims, under the harassment standard. It found that Complainant did not prove an unlawful, discriminatory hostile work environment, for these reasons:
+
+- The record contained no evidence that management acted with discriminatory intent.
+- The record contained no evidence that Complainant was subjected to unwelcome conduct because of his protected class.
+- The allegations did not amount to the severe or pervasive harassment Title VII is designed to prevent.
+- Management's actions bore no demonstrated relationship to the claimed bases.
+- The Agency did not subject Complainant to a hostile work environment based on discriminatory animus.
+
+## 5. Appeal Status
+
+Complainant appealed the FAD. Neither Complainant nor the Agency submitted an appeal statement.
+
+## 6. Items for Follow-Up
+
+- Verify the garbled DO 1 comparator allegation against ROI at 13-14, 47, and 120.
+- Reconcile the July 26 claim date with Supervisor's July 27 account.
+- Note that Complainant never provided an investigative affidavit, so his account rests on the EEO complaint and the ROI rather than sworn testimony.
+- Confirm the ROI page citations, since some (e.g., "13-4") appear abbreviated or possibly mistyped.

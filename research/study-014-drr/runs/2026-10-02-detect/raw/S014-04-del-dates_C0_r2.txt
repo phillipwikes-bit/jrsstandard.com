@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the five claims has identifiable bases: affidavit statements from Complainant and supervisors (S1, S2, PM), documentary evidence (Notice of 14-Day Suspension Letter, medical documentation, handbook references), and investigative findings tied to specific incidents."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision process is traceable from evidence through intermediate findings (nondiscriminatory reasons for each action) to final conclusion (failure to prove age discrimination), with the AJ explicitly citing specific unrebutted facts (arguing with supervisors, time-wasting, seatbelt violations) as nondiscriminatory justifications."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer without prior knowledge can reconstruct the factual record from the investigative affidavits, supervisor statements, documentary evidence, and the AJ's reasoning, which systematically addresses each of the five claims and explains why comparator evidence was absent."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "While affidavits and incident descriptions provide evidentiary support for nondiscriminatory reasons, the record lacks objective corroboration for several contested facts (e.g., whether PM actually leaned over Complainant to intimidate, whether S2 actually yelled in the bathroom, whether OHM's guidance was timely documented), creating accountability gaps where credibility determinations were made without independent verification."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The record describes five distinct incidents but provides minimal temporal specificity (no dates for individual incidents, no timeline showing intervals between Emergency Placements, suspension notice, and escort removal), making it difficult to reconstruct the sequence of events or assess whether actions were connected or escalatory."
+    }
+  },
+  "remediation_note": "To achieve full compliance, the record should include objective corroboration or contemporaneous documentation of contested factual disputes (e.g., facility security footage, witness statements, contemporaneous notes by supervisors), explicit dates and times for each incident, and clearer documentation of the interval between events and administrative actions. The record should also specify whether comparator evidence was affirmatively searched for and why none was located, rather than relying solely on Complainant's failure to provide examples.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support and temporal_reconstructability; the record functions as a chronological narrative of contested events and administrative responses, but lacks the temporal precision and objective corroboration needed to fully support conclusions about sequence, causation, or discriminatory motive.",
+    "compliant_version": "A compliant version would add: (1) explicit dates and times for each of the five incidents and corresponding administrative actions; (2) contemporaneous documentation or objective evidence (e.g., dispatch records, facility logs, video) for physically verifiable facts; (3) a documented search for comparator employees with explicit names, job classifications, and specific disciplinary outcomes; (4) separate notation of which factual disputes were resolved against which party and on what evidentiary basis; and (5) clear indication of which facts were undisputed versus which were determined by credibility assessment."
+  }
+}
+```

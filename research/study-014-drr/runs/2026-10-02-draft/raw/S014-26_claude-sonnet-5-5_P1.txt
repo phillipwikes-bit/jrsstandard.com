@@ -1,0 +1,30 @@
+**Case Summary**
+
+**Parties/Position:** Complainant, a Contract Specialist (GS-11) at the Agency's Gallup, New Mexico facility, alleged discrimination based on race and national origin (Native American), age, and reprisal for EEO activity.
+
+**Procedural History:**
+- Formal EEO complaint filed August 25, 2015; accepted for investigation November 23, 2015.
+- After the investigation, Complainant timely requested an EEOC hearing.
+- Over Complainant's objections, the Administrative Judge (AJ) granted the Agency's March 22, 2018 motion and issued summary judgment (decision without a hearing) for the Agency on September 23, 2020.
+- The Agency issued a final order adopting the AJ's finding of no discrimination. Complainant appealed.
+
+**Claims (20 total, as framed by the AJ):** Primarily non-selections for numerous Contract Specialist vacancies (2015–2016); denial of FAC-C Level II training and certification (May, June, Sept. 2015) and its alleged effect on advancement; non-renewal of FAC-C certification and warrant (Apr. 2016); denial of CON 290 training (Apr. 2017); delayed and conditioned leave approvals (Apr. 2017–May 2018); a restriction on obtaining a Level II warrant without C1's approval; and a hostile-environment claim based on an unwanted hug by C1, the Bureau Procurement Chief (May 2, 2016).
+
+**AJ's Findings:**
+- *No prima facie case (claims 3, 4, 7, 8, 11, 13, 14, 16):*
+  - Claim 8: Complainant did not apply.
+  - Claims 3, 4, 7, 11, 13, 16: Complainant lacked the required Level II/III FAC-C certifications and so did not meet the minimum qualifications.
+  - Claim 14: The selectee shared Complainant's national origin and sex and was older, and the selecting official was unaware of her EEO activity.
+- *Legitimate, nondiscriminatory reasons articulated, and no pretext shown (claims 1, 2, 5, 6, 8, 15, 17–20, and 19).*
+- *Claim 12 (hug):* There was no sexual aspect, no evidence that a protected class motivated it, and a single act was not severe or pervasive enough to create a hostile work environment.
+
+**Contentions on Appeal:**
+- *Complainant (through counsel):*
+  - The Agency systemically denied promotions to qualified Native Americans.
+  - C1 found her 17-hour Analyzing Contract Costs course insufficient for Level II certification, though another official approved it.
+  - C1 required Level II certification for future contracting jobs without OPM approval, allegedly to reduce hiring of Native Americans.
+  - For claim 10, the Agency failed to articulate a legitimate reason.
+  - The hug could support an inference of implicit bias against Native American women.
+- *Agency:* Requests that the final order implementing the AJ's decision be affirmed.
+
+**Status:** Appeal pending; the issue is whether the AJ properly granted summary judgment and found no discrimination.

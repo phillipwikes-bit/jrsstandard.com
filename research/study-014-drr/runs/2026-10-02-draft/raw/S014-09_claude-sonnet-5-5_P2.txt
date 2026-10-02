@@ -1,0 +1,69 @@
+# FINDINGS
+
+## I. Basis and Limits of These Findings
+
+These findings rest only on the procedural and background summary in the record. The record contains the claims as framed and the procedural history. It contains no witness statements, documents, pay or grade data, or the AJs' reasoning. The findings below therefore separate:
+
+- **Established facts**, which are procedural and background facts stated in the record without qualification.
+- **Allegations**, which are Complainants' assertions and are not findings that the events occurred.
+- **Open questions**, where the record is insufficient to reach a conclusion.
+
+No finding is made on whether discrimination or reprisal occurred.
+
+## II. Findings of Fact
+
+### A. Employment Background
+1. Complainants were Emergency Management Specialists (Regional and National Tribal Government Liaisons) at the Agency's First Responder Network Authority.
+2. They worked remotely, one from Pauma Valley, California and the other from Thousand Palms, California.
+3. Both were hired in October 2015 at the Pay Band IV level.
+
+### B. Procedural History
+4. Beginning June 13, 2019, each Complainant filed a formal EEO complaint.
+5. The complaints alleged discrimination and harassment based on race (Native American), national origin (Native American), and sex, and reprisal for prior protected EEO activity.
+6. Complainants withdrew their sex-discrimination claims during the hearing process. Sex is therefore no longer a basis at issue.
+7. After the investigations, Complainants received the investigative files and requested EEOC hearings.
+8. The complaints were assigned to two different AJs in the Washington Field Office.
+9. Complainants' shared attorney moved to consolidate the complaints before each AJ, and the Agency opposed. One AJ denied the motion. The other did not address it.
+10. Each AJ issued a separate summary judgment decision finding that neither discrimination nor unlawful retaliation was established.
+11. The Agency's final actions implemented the AJs' decisions, and both Complainants appealed.
+
+### C. Scope of Accepted Claims
+12. The Agency accepted Claim 1 with subparts (a) through (g).
+13. One AJ's Case Management Order did not list the subparts. It consolidated them and framed Claim 1 as including the allegation that management took no remedial action after reviewing wage and pay band disparities.
+14. Subparts 1(c) through 1(g) are treated as falling within that allegation.
+
+### D. Claims at Issue (Allegations Only)
+
+| Claim | Summary of Allegation |
+|---|---|
+| 1(a) | **Pay at hiring.** Complainant 1 alleged he was told the Agency was obligated to offer only 70% of his prior wages ("take it or leave it") and that non-Natives were not treated this way. Complainant 2 alleged the Agency did not account for changes in her prior salary or teaching wages and offered only a salary commensurate with her tribal salary. |
+| 1(b) | **Pay band placement.** Complainants allege they did the same work as peers hired at Pay Band V but were hired at Pay Band IV and paid at the lowest level. |
+| 1(c)–(g) | **No remedial action after pay review.** Complainants allege the following: <br>• In April 2018 the Executive Director directed Supervisor 1 to review wage and pay band disparities. The Executive Director and a Senior Director allegedly took no action and did not acknowledge the review. <br>• On May 31, 2018, the Senior Director said he was unaware of the review, though Supervisor 1 later said he was "very well aware." <br>• On June 15, 2018, the Deputy Chief Administrative Officer allegedly said the Agency "does not have personnel policies and practices" and did not tell Complainants of their EEO rights. <br>• In July 2018, Supervisor 2 asked about the review and the Executive Director and Senior Director allegedly denied knowledge of committing to it. <br>• In January 2019, the Executive Director allegedly acknowledged receiving the review but said he felt no obligation to act. He allegedly told Supervisor 2 to "tamper any escalation of [HR] issues for the tribal team," then said in a later email that Supervisor 2 had misunderstood. |
+| 2 | **Exclusion from senior positions.** Pay Band IV placement allegedly barred Complainants from senior leadership positions open only to Pay Band V employees. |
+| 3 | **Reorganization (June 2018).** Complainants allege they were "buried deeper" in the organization to provoke resignation and to "limit any HR escalations from [the] tribal team." |
+| 4 | **Separate strategic plans.** Since at least June 2018, Complainants were allegedly required to create separate strategic plans that non-Tribal peers were not. |
+| 5 | **Contractor hostility.** Between June 2018 and February 2019, Complainants and other officials allegedly reported hostile and discriminatory treatment by Agency contractor officials. Senior leadership allegedly condoned it and kept placing the team in hostile situations. |
+| 6(a)–(d) | **Unequal access to resources.** Complainants allege they were required to use a separate process to reach resources and non-federal shareholders, to work through a "gatekeeper," to attend only limited types of meetings, and to have a Contracting Officer's Representative join daily contractor engagements. |
+| 7 | **May 5, 2019 tweet.** The Agency allegedly failed to acknowledge the Tribal team in a tweet thanking local, state, and federal workers. |
+
+## III. Findings on the Merits
+
+The record contains no evidence on the following questions, so no determination is made on them:
+
+1. Whether the pay-setting and pay band placement in Claims 1(a)–(b) and 2 resulted from race or national origin, or from other factors such as prior salary, qualifications, or position requirements.
+2. Whether Complainants and the Pay Band V peers performed substantially equal work.
+3. Whether the statements and inaction attributed to the Executive Director, Senior Director, and Deputy Chief Administrative Officer occurred as alleged, and whether they reflect discriminatory or retaliatory motive.
+4. Whether the 2018 reorganization, strategic plan requirements, resource-access arrangements, and tweet (Claims 3, 4, 6, 7) were motivated by protected status or EEO activity.
+5. Whether the conduct in Claim 5 was sufficiently severe or pervasive to constitute a hostile work environment, and whether the Agency responded adequately.
+6. What the "prior protected EEO activity" was, and when it occurred. The record does not identify it.
+
+The only conclusion in the record is that both AJs found, on summary judgment, that discrimination and unlawful retaliation were not established. The record does not show their reasoning, and this section neither adopts nor disputes it.
+
+## IV. Record Gaps and Items to Verify
+
+- **Source text issues.** The text has garbled passages, including a footnote inserted mid-sentence in Claim 1(e) and "[number removed]" placeholders. Verify against the original that the Deputy Chief Administrative Officer allegation is stated correctly.
+- **Subpart framing.** Confirm which AJ's Case Management Order consolidated the subparts. The record does not say whether the other AJ's order differs.
+- **Consolidation.** One AJ denied consolidation and the other did not rule. Determine whether this affected the evidentiary record available to each AJ.
+- **Individual versus joint allegations.** Several allegations are pleaded jointly. Confirm which facts apply to each Complainant, such as the pay negotiation details in 1(a).
+- **Identities and roles.** Supervisor 1, Supervisor 2, the Executive Director, the Senior Director, and the Deputy Chief Administrative Officer are unnamed. Names and tenures are needed for witness identification.
+- **Missing evidence.** Obtain the 2018 pay review, relevant emails, pay band and comparator data, reorganization records, and contractor complaint records before any merits finding is made.

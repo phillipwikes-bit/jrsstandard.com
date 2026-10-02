@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies factual bases for each claim (e.g., seatbelt violation, locker room time, bathroom access) and supervisory explanations, but does not explicitly identify the evidentiary standard applied to comparative evidence or why absence of named comparators was dispositive for age discrimination."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The AJ's logic moves from 'unrebutted facts' to 'no reasonable factfinder could find age bias,' but does not trace how the absence of comparator evidence satisfies the burden-shifting framework or whether pretext was adequately addressed for each disciplinary action."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later would struggle to understand whether the AJ applied McDonnell Douglas, why Complainant's medical restrictions and requests for accommodation were not separately analyzed, and what standard determined that Complainant's age-linked factual assertions (overburdened routes, bathroom breaks, recovery time) were insufficient to raise an inference of discrimination."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record asserts that facts were 'undisputed' and 'unrebutted,' but does not show whether Complainant contested the characterization of his conduct or offered evidence that the stated reasons were pretextual; the grant of motion for decision without hearing forecloses further factual development."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology from August 30, 2022 (EP placement) through November 1, 2022 (escort out), the February 25, 2023 complaint filing, ROI issuance, December 14, 2023 motion, and January 4, 2024 AJ decision."
+    }
+  },
+  "remediation_note": "The record requires explicit articulation of the legal standard applied (burden-shifting framework, pretext analysis), systematic tracing of how each piece of evidence rebuts or fails to establish a prima facie case, and analysis of whether medical restrictions or age-linked working conditions created a separate duty to accommodate or investigate that was overlooked.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support—the decision conflates factual credibility findings (supervisor denials, absence of stated comparators) with legal conclusions (no reasonable factfinder could find discrimination) without showing the step-by-step application of discrimination doctrine.",
+    "compliant_version": "A compliant record would (1) state the applicable burden-shifting standard explicitly; (2) identify whether Complainant established a prima facie case (protected status, qualification, adverse action, and circumstantial evidence or comparators); (3) separately analyze whether the Agency's stated reasons for each action were legitimate and nondiscriminatory; (4) assess whether Complainant rebutted pretext with evidence that reasons were false, applied inconsistently, or pretextual; (5) address why age-linked factual assertions (bathroom access, route assignment, recovery time) did not, in combination, raise an inference; and (6) explain why the motion for decision without hearing did not deprive the record of necessary testimonial or documentary evidence."
+  }
+}
+```

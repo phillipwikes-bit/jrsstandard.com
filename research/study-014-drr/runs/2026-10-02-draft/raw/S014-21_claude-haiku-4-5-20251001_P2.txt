@@ -1,0 +1,80 @@
+# FINDINGS
+
+## Factual Background
+
+Complainant was employed as a GS-15 Primary Care Physician at the Agency's East Orange Veterans Affairs Medical Center, beginning March 3, 2019, subject to a two-year probationary period. Her essential duties included conducting daily patient interviews and examinations (typically 12 patients), documenting visits in the electronic medical record system, and ordering consults, labs, and medications.
+
+Complainant sustained an initial shoulder injury on July 12, 2019, which she did not report to supervisors at that time. In December 2019, she aggravated a prior right shoulder injury and notified supervisors shortly thereafter. She claimed this condition prevented her from lifting her right arm, using a mouse or keyboard, writing, performing physical examinations, documenting notes, or using a computer for extended periods.
+
+## Claim 1: Denial of Reasonable Accommodation
+
+**Request and Initial Processing**
+
+Complainant's supervisor became aware of her shoulder condition in December 2019. On February 25, 2020, Complainant made a verbal reasonable accommodation request, requesting no lifting, no prolonged upper extremity fine manipulation, part-time (20 hours per week) light duties, no grabbing, and assistance with computer tasks. Complainant returned to work on March 2, 2020, under the approved restriction of four hours per day with four hours Leave Without Pay (LWOP), five days per week. She was required to complete online training modules and see two to three patients by week's end.
+
+Complainant failed to complete either requirement. On March 4, 2020, she declined to see a waiting patient, citing shoulder pain and inability to write notes.
+
+**Interactive Process**
+
+On March 5, 2020, the supervisor, second-level supervisor, and Reasonable Accommodation Coordinator initiated an interactive process. During this meeting, Complainant stated she could not perform patient examinations, complete patient paperwork, or use a computer for more than a few minutes. The Agency decided to grant LWOP for six weeks to allow injury rehabilitation.
+
+Two weeks later, Complainant requested 100% telework. The Agency took the following steps to accommodate her:
+
+- Prepared dictation software for installation
+- Ordered two ergonomic chairs for exam rooms
+- Shipped ergonomic mouse and keyboard to her home with duplicates for the office
+- Approved a laptop on March 3, 2020 (delivery delayed due to equipment shortage)
+- Submitted a second laptop request through the Computer/Electronic Accommodation (CAP) program, which was denied because Complainant failed to provide sufficient medical documentation during the needs assessment
+- Secured a laptop for Complainant by June 2, 2020
+
+The Agency offered telework for one to three months, contingent upon medical documentation justifying the need. This offer required Complainant to sign a telework agreement; Complainant refused.
+
+**Medical Documentation Requests**
+
+On April 21, 2020, Complainant made another accommodation request for 100% telework, 20 hours per week, and modified work assignments (one year to permanent). The Reasonable Accommodation Coordinator made numerous requests—including several emails in June 2020—for medical documentation of Complainant's disability and requested information regarding:
+
+- The effectiveness of telework/telemedicine accommodation relative to her medical condition
+- The duration of her medical condition
+- Consent to contact her physician
+
+Complainant failed to provide such documentation.
+
+**Medical Records Provided**
+
+The record reflects Complainant provided the following medical documentation:
+
+- **DR1 (January 13, 2020)**: Clearance to return to work after February 10, 2020 follow-up
+- **DR1 (February 10, 2020)**: Clearance to return to work on March 2, 2020
+- **DR2 (February 25, 2020)**: Light duty, part-time work, no lifting, computer assistance needed; six-week reevaluation
+- **DR2 (April 21, 2020)**: Light duty, work from home via laptop and telemedicine; reevaluation on May 19, 2020
+- **DR2 (May 19, 2020)**: Two statements indicating dexterity issues, continued physical therapy, ability to use computer with ergonomic support; six-week reevaluation
+- **DR2 (June 22, 2020, submitted July 15)**: Maximum 20 hours weekly telework, pain, dexterity and gripping issues, continued physical therapy, ability to use computer with ergonomic support; six-week reevaluation
+- **DR2 (July 30, 2020)**: Reiterated previous statement, recommended back specialist evaluation, shoulder symptoms "well controlled," and patient "discharged"
+
+**Closure of Accommodation Request**
+
+On August 7, 2020, the Reasonable Accommodation Coordinator closed Complainant's reasonable accommodation request, informing her the case would reopen if requested documentation was provided.
+
+## Claim 2: AWOL Charge
+
+After Complainant's reasonable accommodation case was closed, the Coordinator suggested it was reasonable to charge Complainant with Absent Without Leave. Management decided to place her in AWOL status beginning August 10, 2020. The record reflects Complainant had not worked for nearly eight months.
+
+The Agency documented that Complainant:
+- Used all annual and sick leave from December 20, 2019 through February 6, 2020
+- Received LWOP: February 7-29, 2020 (80 hours); March 2-26, 2020 (480 hours); and March 26-August 7, 2020 (421 hours)
+
+Complainant remained in AWOL status from August 10, 2020 through her termination on January 22, 2021.
+
+## Administrative Judge's Decision
+
+The Administrative Judge found no discrimination. The AJ determined that Complainant failed to establish that the Agency denied reasonable accommodation because she failed to provide medical documentation demonstrating her ability to perform essential position duties, specifically physical patient examinations.
+
+The AJ noted:
+
+- Complainant provided limited disability documentation; all documentation indicated reassessments would occur within weeks
+- Despite repeated requests, Complainant failed to provide medical diagnosis, condition duration, or whether the condition was temporary or permanent
+- Complainant failed to sign a release authorizing the Agency to obtain medical information or authorize disclosure to the investigator
+- By Complainant's own admission on March 4, 2020, she could not use a pen or computer independently
+- Telework, the permanent accommodation requested, would require increased computer use, contrary to her stated limitations
+- As a Primary Care Physician, Complainant must perform physical patient examinations, even as a telework clinician, which she stated she was unable to do on March 4, 2020, and never subsequently provided documentation showing capability
+- Complainant refused to engage with the Agency by failing to provide requested medical documentation, causing closure of her accommodation case without approval or denial

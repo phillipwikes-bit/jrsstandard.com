@@ -1,0 +1,55 @@
+# FINDINGS
+
+## Background and Procedural History
+
+At the time of the events giving rise to this complaint, the Complainant was employed as a GS-0343-13 Management Analyst in the Agency's Acquisitions Policy Oversight and Business Strategies Division, Office of the Senior Procurement Executive, Office of the Secretary in Washington, D.C. Complainant filed a prior EEO complaint in 2016 and subsequently filed the subject complaint on October 2, 2018, alleging reprisal for protected EEO activity under Title VII of the Civil Rights Act of 1964.
+
+## Factual Findings
+
+### Position Description Inaccuracies (February 2017)
+
+A desk audit completed by the Agency in 2016 determined that Complainant's position was properly graded at the GS-13 level. However, Complainant identified inaccuracies in the "Scope and Effect" and "Supervisory Controls" sections of her position description. Beginning in February 2017, Complainant repeatedly raised these inaccuracies with management.
+
+The OSPE Deputy Director (DD-1) met with Complainant on February 6, 2017, reviewed the position description with Human Resources, and determined that the position description accurately reflected Complainant's responsibilities and duties. Complainant disputed this assessment, arguing that DD-1 and the Associate Director (AD), Complainant's supervisor as of June 2018, were not sufficiently familiar with her actual job duties to make an informed determination, as both were relatively new to OSPE.
+
+### Affidavit Posted on Shared Drive (June 2017)
+
+In June 2017, Complainant discovered that a coworker (Coworker) had saved Complainant's investigative affidavit from her prior EEO complaint to the M-60 shared drive. Complainant alleged the affidavit was intentionally posted to harm her reputation by making it visible to all office employees.
+
+The investigation revealed a factual discrepancy. Coworker stated she does not have access to the M-60 shared drive and that she accidentally saved the affidavit to the M-61 shared drive, intending to save it to her personal "H" drive. However, Complainant provided a screenshot showing the affidavit on the M-60 shared drive. DD-1 stated that Coworker inadvertently saved the affidavit and that she immediately directed Coworker to delete it upon learning of the matter. Complainant alleged DD-1 should have disciplined Coworker for this incident.
+
+### June 29, 2018 Meeting Between Complainant and AD
+
+Complainant alleged that on June 29, 2018, AD questioned her regarding the Digital IT Acquisition Program in an interrogatory manner after Complainant repeatedly stated she needed to consult her attorney before providing information, as the program was related to her prior EEO complaint. Complainant further alleged that AD responded to her inquiry about the subsequent email by stating, "you think everyone is out to get you."
+
+AD provided a different account, stating that Complainant had indicated she was unable to complete a work assignment because her attorney had advised her not to respond. AD stated that during the meeting, Complainant disclosed she had a pending EEO complaint related to the assignment topic and expressed that she had not enjoyed working for previous supervisors due to perceived unfair treatment. AD denied making the statement attributed to her and stated instead that she was referencing Complainant's perceived unfair treatment in the office generally.
+
+### Micromanagement, Over-management, and Telework Restrictions (July 2018)
+
+Complainant alleged she was subjected to excessive micromanagement and over-management, citing the example that in September 2018, DD-1 and AD requested additional documentation for approvals regarding the Warrior to DOT Contracting Intern Program (W2DOT Program) and subsequently failed to respond to Complainant's approval requests.
+
+DD-1 stated that she repeatedly requested Complainant produce a consolidated program/project schedule for the W2DOT Program, which Complainant complained was micromanagement but never adequately provided.
+
+Regarding telework, Complainant alleged the new telework policy was more restrictive for employees with "ad hoc" telework agreements, limiting them to one day per week with supervisory notification. DD-1 stated that Complainant maintained a "very liberal ad hoc telework schedule" and that no restrictions were placed on her telework following implementation of the OSPE Timekeeping and Telework Standard Operating Procedure on July 1, 2018. AD confirmed that Complainant's pre-existing telework schedule was "grandfathered" in under the new policy.
+
+### FAC-P/PM-IT Certification Application Denial (July 8, 2018)
+
+Complainant alleged that although she completed all required training for the Federal Acquisition Certification for Program and Project Managers Information Technology Core-Plus Specialization (FAC-P/PM-IT), AD denied her application without explanation.
+
+AD and DD-1 stated that FAC-P/PM-IT certification is not required for Complainant's position. According to Agency policy, this specialized certification is intended primarily for those responsible for acquisition of IT investments. AD averred that Complainant's position does not entail such responsibility and that the application did not document the required minimum two years of relevant experience.
+
+### Request for Supervisory Reassignment (July-August 2018)
+
+Complainant requested reassignment to a supervisor outside the chain of command of DD-1 and AD, and subsequently requested a detail assignment to the Assistant Secretary for Administration (M) during summer 2018. Both requests were denied—the latter based on inadequate resources to fulfill Complainant's duties.
+
+Complainant later clarified that she was not detailed to M, contrary to one of her original allegations. DD-1 stated that Complainant requested to directly report to the Senior Procurement Executive (SPE), but the SPE denied this request. DD-1 noted that Complainant proposed two alternative supervisors, but on August 7, 2018, advised her that neither was a logical option given her duties and urged her to improve her working relationship with AD, noting that AD had been her supervisor for only approximately one month. Complainant contended that DD-1 should not have been involved in reviewing her request for reassignment away from DD-1's chain of command.
+
+### Request to Participate in Agile Panel (September 2018)
+
+Complainant alleged that after being invited to speak on a panel regarding Agile initiatives, AD marginalized the event and prevented Complainant from participating as a speaker.
+
+AD stated she denied Complainant's request to speak because OSPE had not undertaken substantial Agile initiatives beyond limited-scope events and offered Complainant the opportunity to participate as an audience member. DD-1 stated the panel was organized by a contractor to discuss changes for federal employees as agencies adopted Agile Unleashed, and that because OSPE had implemented no Agency-specific Agile initiatives beyond technology, Complainant lacked relevant Agency-specific knowledge to contribute.
+
+## Procedural Issues on Appeal
+
+Complainant challenges the adequacy of the investigative record and requests sanctions against the Agency. The Agency counters that the record is complete and notes that Complainant failed to submit requested documents to the investigator, failed to raise deficiencies upon reviewing the investigative record, and withdrew her hearing request the day before discovery was scheduled to commence. The Agency asserts that evidence Complainant provided on appeal was reasonably available during the investigation and should not be considered.

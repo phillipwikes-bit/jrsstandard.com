@@ -1,0 +1,81 @@
+# FINDINGS
+
+*Draft prepared from the record as provided. Bracketed items need to be completed or verified against the underlying file before finalizing.*
+
+## I. Basis and Limits of These Findings
+
+These findings rest on the procedural history and the parties' stated positions in the record. The record contains no exhibits, affidavits, the ROI itself, the MPP SE documents, or the Agency's final decision, so findings of fact are limited to what the record states. Where the record reports only a party's assertion, the finding says so and does not treat the assertion as established.
+
+## II. Findings of Fact
+
+**A. Employment and complaint history**
+
+1. During the relevant period, Complainant was a Senior Special Agent, Polygraph Examiner in the Forensic Services Division, Washington, D.C.
+2. On January 2, 2020, Complainant filed a formal EEO complaint alleging reprisal for prior protected EEO activity.
+3. By letter dated March 11, 2020, the Agency accepted the complaint for investigation.
+4. After the investigation, the Agency gave Complainant the ROI and notice of his right to request a hearing before an EEOC Administrative Judge.
+5. Complainant asked for a final decision instead. The Agency issued a final decision under 29 C.F.R. § 1614.110(b) finding no discrimination, and Complainant appealed.
+
+**B. Accepted claims**
+
+- **Claim 1:** Complainant alleges his 2019 MPP Supervisory Evaluation was discriminatory in that he was not rated as well as his prior supervisor had rated him in 2018. *[The claim text in the record is truncated. Confirm the full wording from the March 11, 2020 acceptance letter.]*
+- **Claim 2:** Complainant alleges a retaliatory hostile work environment, based on three incidents:
+  - **2(a):** On or about September 10, 2019, S2 obstructed Complainant's return to Quality Control (QC) and mentor duties.
+  - **2(b):** On or about September 13, 2019, S2 denied Complainant's request for reconsideration of the denial of QC and mentor duties.
+  - **2(c):** From September 1, 2019 to the present, S2 and another Agency official delegated assignments directly to the Washington Field Office (WFO) examiner and excluded Complainant from those communications. Complainant alleges this circumvented him as the designated Senior Polygraph Examiner/Polygraph Backup.
+
+## III. Findings by Claim
+
+**Claim 1: 2019 MPP Supervisory Evaluation**
+
+- *Agency position (final decision):* The Agency articulated legitimate, nondiscriminatory reasons for the rating. *[The record does not state those reasons. Insert from the final decision or ROI.]*
+- *Agency position (appeal response):* The MPP SE is a process separate and distinct from the annual performance evaluation. S2 did not complete Complainant's 2018-2019 MPP SE.
+- *Complainant's position:* The 2019-2020 MPP SE continues the reprisal. Three months before the MPP SE, he was rated "Outstanding" on his 2019-2020 annual appraisal. *[Verify the dates and appraisal cycle. The sequence as stated is unclear.]*
+- *Finding:* The existence of the "Outstanding" appraisal and the identity of the MPP SE rater are undisputed or uncontradicted in the record. Whether the two evaluations are comparable, and whether the Agency's stated reasons are credible or pretextual, cannot be resolved without the evaluation documents and rating-official testimony.
+
+**Claims 2(a) and 2(b): Mentor and QC duties**
+
+- *Agency position (final decision):* Complainant was restored to mentoring duties and was under consideration for QC duties.
+- *Agency position (appeal response):* Complainant was approved to resume mentoring duties. He remains eligible for QC duties, but S2 states that various factors are considered in selecting QC personnel.
+- *Complainant's position:* Less qualified employees are being selected for mentoring and QC collateral duties.
+- *Finding:* The Agency's account is that mentoring was restored. The record does not give the date of restoration, so it does not show whether Complainant was denied mentoring duties between September 2019 and restoration. The record does not identify the "various factors" for QC selection, who was selected, or their qualifications. Complainant's comparative-qualification claim is unsupported by evidence in the record as provided.
+
+**Claim 2(c): Exclusion from assignment communications**
+
+- *Agency position (final decision):* S2 asserted that he never consulted with Complainant or any other WFO examiner regarding assignments and did not exclude Complainant from communications.
+- *Agency position (appeal response):* Complainant has not been treated differently from other examiners.
+- *Complainant's position:* Assignments were delegated directly to the WFO examiner, bypassing him as the designated Senior Polygraph Examiner/Polygraph Backup.
+- *Finding:* The Agency's position rests on S2's own assertion. The record does not show whether Complainant's designated role entitled him to be included in assignment communications, or whether any documentary evidence (emails, assignment logs) supports or refutes either account. There is also an apparent tension: S2 states he never consulted WFO examiners, while the claim concerns direct delegation to a WFO examiner. *[Review the ROI affidavit to see whether this is an inconsistency or a drafting issue in the summary.]*
+
+## IV. Procedural Findings
+
+**A. Timeliness of the final decision and request for default judgment**
+
+- Complainant states he requested a final decision on July 10, 2020 and that the Agency's decision was untimely. He asks for default judgment as a sanction.
+- The Agency concedes a delay but characterizes it as minimal and argues sanctions are not warranted.
+- *Finding:* A delay is acknowledged by the Agency. The record does not give the date the final decision was issued, so the length of the delay cannot be calculated. *[Insert the issuance date and compute the delay against the applicable regulatory deadline.]* Whether sanctions are warranted depends on that length and on any prejudice to Complainant. The record identifies no prejudice other than the delay itself.
+
+**B. Adequacy of the investigation**
+
+- Complainant asserts the ROI was inadequate, and specifically that one management official did not respond to a request to provide testimony.
+- *Finding:* The record does not identify the official, the nature of the request, the date, or what efforts the Agency made to obtain the testimony. Without that information, whether the ROI is adequate cannot be determined. If that official's testimony bears on a material issue, supplemental investigation may be needed.
+
+**C. Prior EEO decision and non-compliance allegation**
+
+- Complainant asserts that in a prior EEO case the Agency was ordered to reassign him to QC and to provide EEO training to specified management officials, and that it has not done so.
+- *Finding:* This allegation concerns compliance with a prior final decision and is not among the accepted claims in this complaint. The record contains no information on the prior case, the order, or the Agency's compliance. It may be relevant as background (including to prior protected activity and to the QC claims) and should be referred to the appropriate compliance process. *[Obtain the prior case number and order.]*
+
+## V. Summary and Open Items
+
+1. **Established by the record:** Complainant's position and complaint history, the accepted claims, the procedural path, and the parties' contentions.
+2. **Not established:** Whether any action was taken because of protected activity. The record contains no evidence of the responsible officials' knowledge of the activity, the timing, or pretext, and no evidence showing whether the alleged incidents were sufficiently severe or pervasive to constitute a hostile work environment.
+3. **Documents and information needed:**
+   - The complete text of Claim 1 and the acceptance letter
+   - The ROI, including all affidavits
+   - The 2018 and 2019 MPP SEs and the 2019-2020 annual appraisal
+   - The Agency's stated reasons for the MPP SE rating
+   - The date mentoring duties were restored and the QC selection criteria and selectees
+   - Communications and assignment records relevant to Claim 2(c)
+   - The date of the final decision
+   - The identity of the non-responding official and any follow-up efforts
+   - The prior EEO decision and compliance records

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for each alleged discriminatory act: sex (female), disability (physical), and reprisal, with four distinct incidents dated June 25, 2021; July 19, 2021; August 1, 2021; and August 31, 2021."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the Agency's procedural steps are documented (ROI transmission dates, email notifications, affidavits), the record does not trace the Agency's investigative reasoning from evidence collection through to its conclusion that Complainant failed to prove discrimination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the complaint allegations and procedural timeline but would struggle to understand the substantive investigative findings, witness interviews, or factual analysis underlying the Agency's discrimination conclusion, as these are referenced only as 'ROI' without detail."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record documents that an ROI was completed and transmitted but does not include the investigative findings, witness statements, or evidentiary analysis needed to assess whether the Agency's conclusion that discrimination was not proven is adequately supported."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology is established with specific dates for complaint filing (November 18, 2021), incidents (June 25–August 31, 2021), ROI transmissions (April 5, 2022; May 17, 2022), hearing request (May 31, 2022 mailed; June 6, 2022 received), final decision (June 2, 2022), and appeal (June 15, 2022)."
+    }
+  },
+  "remediation_note": "The record is procedurally complete but substantively opaque; a compliant version must incorporate the actual investigative findings, factual analysis, and evidence upon which the discrimination determination rests, not merely reference the existence of an ROI.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support, cold_reviewer_clarity, reasoning_traceability",
+    "compliant_version": "Include or summarize the report of investigation findings, document specific witness statements and credibility determinations, trace how evidence for each allegation (overtime denial, verbal abuse incident, micromanagement, schedule request denial) was evaluated against the discrimination bases claimed, and explain the factual and legal reasoning for concluding each allegation was not proven."
+  }
+}
+```

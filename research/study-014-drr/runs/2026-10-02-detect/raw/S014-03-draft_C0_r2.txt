@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record does not identify the factual or legal basis for the Agency's June 2 final decision finding no discrimination; it states only the procedural ground (untimely hearing request) without analyzing the merits of the underlying discrimination claims."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The chain of reasoning from evidence (ROI delivery attempts, email without confirmation, mailing dates, Complainant's May 18 call, and May 28 hearing request) to the June 2 closure decision is incomplete and does not clearly show how timeliness was determined or why the May 18 notice of case closure did not reset the deadline."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later would struggle to reconstruct whether the Agency met its burden to prove receipt of the April 5 ROI and hearing-rights notice, given the absence of email delivery confirmation and the unclear status of first-class mail delivery."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The evidentiary support is insufficient: the record contains no email delivery logs, no certified mailing receipts for the April 5 package, no affidavit of Agency personnel regarding mailing or receipt procedures, and no explanation of how the May 18 case-closure notice affects the timeliness analysis."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The chronology of events (complaint filed November 18, 2021; alleged incidents June 25 through August 31, 2021; ROI attempts April 5 and May 17, 2022; case closure May 1; call May 18; hearing request May 28/31; final decision June 2; appeal June 15; EEOC receipt June 10; AJ dismissal November 29) is clearly laid out with dates and intervals."
+    }
+  },
+  "remediation_note": "The record requires: (1) documentary evidence of actual receipt or non-receipt of the April 5 ROI package (email delivery logs or certified mail receipts); (2) a detailed explanation of how the May 18 case-closure notice affects the timeliness of the May 28/31 hearing request, including citation to applicable regulatory language and the Agency's own procedures; and (3) a substantive analysis of the discrimination claims on the merits or a clear statement that the procedural defect precludes such analysis.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, accountability_support",
+    "compliant_version": "A compliant record would state: (a) the specific facts establishing or disputing timely receipt of the ROI notice (with email delivery confirmation or certified mail receipts); (b) the regulatory provision governing the timeliness clock and how the May 18 case-closure notice relates to it; (c) the Agency's reasoning whether the May 28/31 hearing request was timely under the circumstances; (d) if the Agency relies on a procedural bar, an acknowledgment of the conflicting evidence and a clear holding on the factual predicate; and (e) if dismissing on procedural grounds, an explicit statement whether the merits of the discrimination claims are being addressed or reserved."
+  }
+}
+```

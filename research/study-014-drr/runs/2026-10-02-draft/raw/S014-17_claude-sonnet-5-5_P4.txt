@@ -1,0 +1,64 @@
+# Case File Summary
+
+## Parties and Setting
+Complainant was a Customs and Border Protection Officer (CBPO) at the Agency's San Ysidro Port of Entry, San Ysidro, California, at the time of the events. The record lists the bases as age (YOB 1954) and reprisal for prior protected EEO activity under Title VII and the ADEA. The opening of the claim statement is truncated, so any other bases are not shown.
+
+## Accepted Claims
+**Claim 1: Harassment, beginning May 31, 2018 and continuing**
+- a. May 31, 2018: the Branch Chief refused to rescind a Memorandum of Counseling about the Treasury Enforcement Communication System (TECS).
+- b. February 2019 to June 2019: the Branch Chief knew SCBPO-1 bullied and harassed Complainant and took no corrective action.
+- c. April 17, 2019: SCBPO-1 verbally reprimanded Complainant for missing a morning training class.
+- d. June 2019: SCBPO-1 showed a knife to Complainant and CBPO-2 and said he brings his knife collection to work in his backpack.
+- e. June 3, 2019: SCBPO-1 reprimanded Complainant by email about his TECS access expiring.
+- f. June 19, 2019: SCBPO-1 changed Complainant's schedule from 2:00 p.m. to 1:00 p.m. to 9:00 p.m. to celebrate the Chief's birthday and solicited $20 from him for the party.
+- g. On or around August 16, 2019: SCBPO-1 and SCBPO-2 told coworkers that Complainant would be reassigned and leave the Intelligence Targeting Unit (ITU) effective September 1, 2019. He was not reassigned at that time.
+- h. On or around August 16, 2019: SCBPO-1 and SCBPO-2 told Complainant his September 2019 leave request would not be approved. After he questioned them, the leave was approved.
+
+**Claim 2:** Effective March 8, 2020, Complainant was removed from his detail in the ITU.
+
+## Dismissed Claims (ROI at 150-57)
+- Complainant learned on December 23, 2018 that he had not received a year-end monetary award.
+- On April 21, 2019, SCBPO-1 charged Complainant with Leave Without Pay for untimely counselor contact. The number of hours is garbled in the record.
+- Three claims alleging SCBPO-1 was unprofessional in speaking ill of three coworkers. These were dismissed for failure to state a claim because Complainant did not show he was aggrieved by comments about other employees.
+
+## Agency Explanations (Sources as Stated in the Record)
+- **Branch Chief (Memorandum of Counseling):** She stated she asked that the Memorandum be issued after Complainant was twice instructed not to put "E/O if not in vehicle" on a TECS record, because it creates a violation, and he continued not to comply. The citation appears to be ROI at 205, but it is split by a footnote in the record.
+- **Intelligence Division Chief (CID Chief), Memorandum of Counseling:**
+  - He explained that Complainant asked CBPOs to "exempt" travelers on primary who had illegal-activity links or ties, or whom he had targeted. He said this was essentially asking CBPOs to violate TECS policy.
+  - He approved the Memorandum because Complainant did not follow instructions even after being asked twice. ROI at 259.
+- **SCBPO-1, TECS access (ROI at 223-24):**
+  - TECS sends automated periodic reminders starting 30 days before a user's recertification due date.
+  - SCBPO-1 stated he received an automated email saying Complainant had lost access.
+  - He then emailed Complainant to counsel him on the loss and remind him that he must maintain TECS access.
+- **SCBPO-1, potluck and schedule (ROI at 224):**
+  - The ITU traditionally organized optional "potlucks" or catering.
+  - He stated he announced the potluck for 1:00 p.m. and told the 2:00 p.m. shift they could come in an hour early to participate.
+  - Each employee was asked to donate $10 if they wished.
+  - He stated that CBPO-1 gave him $20 to cover himself and Complainant after Complainant verbally said he wished to participate.
+- **CID Chief, removal from detail (ROI at 260):**
+  - He stated he removed Complainant for failure to perform basic ITU officer duties.
+  - The Watch Commander contacted Complainant to request assistance on a particular case and asked for an expeditious response.
+  - Complainant did not perform the task and delegated it to other members of the Tactical Terrorism Response Team.
+
+## Procedural History
+- The Agency gave Complainant the report of investigation (ROI) and notice of his right to a hearing before an EEOC Administrative Judge (AJ). He timely requested a hearing and later withdrew the request.
+- The Agency then issued a final decision under 29 C.F.R. § 1614.110(b).
+- **Affidavit (ROI at 198):**
+  - The investigator gave Complainant two weeks to submit an affidavit. He responded by asking for two weeks of administrative or sick leave to complete it.
+  - On September 28, 2020, the day before the affidavit was originally due, the investigator gave an extension. Complainant was told he was approved for 16 hours of administrative leave for September 23-24, 2020. The record does not explain why these leave dates precede September 28.
+  - Complainant did not submit an affidavit.
+
+## Agency Final Decision: Criteria Applied and Findings
+- Complainant did not establish a prima facie case, because there was no evidence that employees outside his protected classes were treated differently.
+- Even so, the Agency articulated legitimate, nondiscriminatory reasons for its actions, and Complainant submitted no evidence of discriminatory animus.
+- Complainant did not establish that any alleged harassment incident was due to his protected classes.
+- The Agency concluded he failed to prove discrimination as alleged.
+
+## Appeal
+- **Complainant:** He contends the investigation was inadequate and asks that the case be referred to an AJ for additional investigation. He also contends the Agency's reasons are untrue.
+- **Agency:** It contends Complainant had adequate time to submit his affidavit but did not, and that he submitted no evidence supporting his assertions of discriminatory animus.
+
+## Gaps in the Record
+- The date of the Agency's final decision and the date of the appeal are not stated.
+- The appellate decision-maker and the disposition of the appeal are not stated.
+- The Agency's explanations for several sub-claims (1b, 1c, 1d, 1g, 1h) are not included in the excerpt.

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each allegation is grounded in specific affidavits (Complainant, PM, S1, S2) and documented incidents with dates, locations, and named actors."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision pathway is explicit: investigative affidavits document facts, AJ evaluates them against nondiscriminatory rationales (policy violations, safety breaches, insubordination), and concludes age-based discrimination unproven due to lack of comparator evidence and biased comments."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer years later can reconstruct the factual basis, evidentiary conflicts (e.g., intimidation claim vs. COVID distance claim), and the AJ's logic linking each disciplinary action to documented policy violations independent of age."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "Evidence supports nondiscriminatory rationales but record does not include comparative discipline data (whether younger employees received different treatment for identical violations) or documentary confirmation that seatbelt and time-wasting policies were uniformly enforced."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Timeline is complete: August 30 (Emergency Placement), September 14 (suspension), September 20 (bathroom incident), September 24 (seatbelt dispute), November 1 (doctor's note/escort), November 2 (EP effective), December 14, 2023 (motion), January 4, 2024 (AJ decision)."
+    }
+  },
+  "remediation_note": "To achieve full accountability support, the record should include comparative discipline records showing how similarly situated younger employees were disciplined (or not) for identical infractions, and documentary evidence (memoranda, emails) confirming Agency-wide policy enforcement on seatbelt and locker-room conduct standards.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "accountability_support: while the record establishes nondiscriminatory justifications for each action, it lacks comparative evidentiary data to rule out pretextual application of policies along protected-class lines.",
+    "compliant_version": "Add a section titled 'Comparative Discipline Analysis' containing: (1) disciplinary records for 3–5 younger carriers sanctioned for identical policy violations with outcome comparisons; (2) documentation of Agency-wide communications regarding seatbelt, time-wasting, and medical-accommodation policies; (3) explicit statement of whether any younger employee was allowed to return mail undelivered or granted overtime relief contrary to policy. This would ground the AJ's conclusion in verifiable, systemic enforcement data rather than inference alone."
+  }
+}
+```

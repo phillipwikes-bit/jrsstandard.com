@@ -1,0 +1,94 @@
+# FINDINGS
+
+## I. Scope and Basis of Findings
+
+These findings rest only on the documentary record provided. That record is a summary of the complainant's position, the claims accepted for investigation, and the Agency's final decision. It contains no witness statements, affidavits, exhibits, medical or light-duty documentation, schedules, or comparator information. Findings on the merits of individual allegations are therefore marked **[EVIDENCE REQUIRED]** where the record does not support a conclusion.
+
+## II. Undisputed Background
+
+1. At the relevant time, Complainant was employed as a CBP Officer, GS-1895-12, at the El Paso Port of Entry, El Paso Field Office, Office of Field Operations, El Paso, Texas.
+2. Complainant identified the following protected bases:
+   - Sex (female)
+   - Physical disability (cervical myelopathy; cervical fusion with limited neck movement)
+   - Age (56)
+3. Complainant was on Light Duty during some or all of the period at issue (September 2019 to January 2020). Her return to full duty on her regular shift is referenced in Allegation 10. **[The exact dates, restrictions, and authorizing documentation are not in the record.]**
+4. The responsible management officials named are Supervisory CBP Officer 1 (Supervisor 1) and Supervisory CBP Officer 2 (Supervisor 2). A Chief and a Program Manager are also referenced.
+
+## III. Procedural Findings
+
+1. On April 13, 2020, Complainant filed a formal EEO complaint alleging a hostile work environment and discrimination based on sex, disability, and age.
+2. The Agency investigated the complaint and gave Complainant a copy of the report of investigation (ROI) and notice of her right to request a hearing before an EEOC Administrative Judge.
+3. Complainant asked for a final agency decision without a hearing. The Agency issued its decision under 29 C.F.R. § 1614.110(b).
+4. The Agency concluded that Complainant did not prove discrimination as alleged and found that she did not show disparate treatment.
+
+## IV. Claims Accepted for Investigation
+
+Complainant alleged that Supervisor 1 or Supervisor 2 took the following actions.
+
+| # | Date(s) | Alleged Conduct | Official |
+|---|---------|-----------------|----------|
+| 1 | 9/8/2019 – 1/2020 | Assigned regular cashier duties in addition to I-94 processing despite Light Duty status | Supv. 1 |
+| 2 | 9/2019 | Told Program Manager she did not want to work with Complainant in Passport Control Secondary because Complainant was on Light Duty and had no weapon | Supv. 1 |
+| 3 | 9/13/2019 | Told Complainant she did not want to work with her and that she was a liability due to health issues | Supv. 1 |
+| 4 | 10/2019 – 2/2020 | On approximately 10–15 occasions, interrupted Complainant's conversations with coworkers and told them to stop talking | Supv. 1 |
+| 5 | 12/24/2019 | Assigned passport control duties despite Light Duty; responded "it is what it is" when Complainant said she could not perform regular duties for eight hours | Supv. 1 |
+| 6 | 12/24/2019 | Yelled at Complainant in front of the public to issue permits, and told the public they could complain about her | Supv. 1 |
+| 7 | 1/1 and 1/3/2020 | Yelled at Complainant; accused her of performing a pat down and processing a case without a weapon while on Light Duty and of abusing her light duty schedule | Supv. 1 |
+| 8 | 1/2/2020 | Accused Complainant of making false statements in a memorandum | Supv. 1 |
+| 9 | 1/3/2020 | Commented that Complainant did not want to work | Supv. 1 |
+| 10 | 1/3/2020 | After Supv. 1 called the Chief about her schedule, Complainant's Light Duty shift moved from 10 p.m.–6 a.m. to midnight–8 a.m. for two days before her return to full duty | Supv. 1 / Chief |
+| 11 | 1/6/2020 | Yelled at Complainant by phone, accusing her of working the wrong schedule and not wanting to perform her duties | Supv. 1 |
+| 12 | 1/15–16/2020 | Raised her tone; said Complainant did not want to work; threatened a verbal warning, reprimand, and write-up for insubordination and disobeying a direct order | Supv. 1 |
+| 13 | 1/16/2020 | Said "I'm not signing shit for you"; later said he did not need a "nonproductive worthless person" and told her to go to the back of the office | Supv. 2 |
+| 14 | 1/31/2020 | Supv. 1 demanded cashier duties in a threatening voice though three other officers were available. Supv. 2 reassigned Complainant to detention log duty, raised his voice, directed her to work elsewhere, and told her to go home on administrative leave. Complainant did not go home. | Supv. 1 / Supv. 2 |
+| 15 | 2/6/2020 | Issued a Weingarten notice; accused Complainant of not wanting to work, disobedience, neglect of duties, and disobeying an order; asked for a written statement to the Chief | Supv. 1 / Supv. 2 |
+
+## V. Findings on the Merits
+
+### A. Disparate Treatment (Sex, Disability, Age)
+
+**Finding:** The Agency found that Complainant did not show disparate treatment. The record provided does not include the Agency's supporting analysis, so this report cannot verify whether the Agency applied the correct framework or weighed the evidence correctly.
+
+The following elements are not documented in the record and must be completed from the ROI:
+
+- **Prima facie case:** Whether Complainant is a qualified individual with a disability. Whether she was subjected to adverse actions. Whether the circumstances support an inference of discrimination, including comparators outside her protected classes. **[EVIDENCE REQUIRED]**
+- **Legitimate, nondiscriminatory reasons:** The reasons offered by Supervisors 1 and 2 for each action. These likely concern operational needs, staffing, schedule compliance, and performance or conduct concerns, but the record does not state them. **[EVIDENCE REQUIRED]**
+- **Pretext:** Evidence that the stated reasons are unworthy of belief. **[EVIDENCE REQUIRED]**
+
+### B. Hostile Work Environment
+
+**Finding:** The record states that Complainant alleged a hostile work environment but gives no Agency finding on it. The Agency's stated conclusion addresses only disparate treatment. The analysis must still determine whether the conduct was:
+
+1. Unwelcome.
+2. Based on a protected class.
+3. Sufficiently severe or pervasive to alter the conditions of employment.
+4. Attributable to the Agency.
+
+Allegations 2, 3, 6, 7, 12, 13, and 14 include alleged remarks that expressly reference Complainant's health, Light Duty status, or work ethic, or that were allegedly made in a demeaning manner. These need close factual review. Whether the remarks occurred, in what context, and whether they were tied to disability or another protected basis is **[EVIDENCE REQUIRED]**.
+
+### C. Disability-Specific Issues
+
+Allegations 1, 5, 7, and 10 concern work assignments and schedules during Light Duty. The record does not say whether Complainant requested a reasonable accommodation or whether the Light Duty assignments were an accommodation. It also does not say whether her assignments conformed to her documented medical restrictions. These questions should be resolved from the ROI and medical documentation, and the report should state whether a failure-to-accommodate theory is properly part of the case. **[EVIDENCE REQUIRED]**
+
+### D. Allegation-by-Allegation Determinations
+
+For each of Allegations 1–15, the final report should state the following:
+
+- Whether the event occurred, based on testimony and documents.
+- The credibility assessment of the witnesses, where there are conflicts.
+- Whether it was materially adverse or contributed to a hostile environment.
+- The nexus, if any, to sex, disability, or age.
+
+**[Determinations pending. The record contains no evidence on any of these points.]**
+
+## VI. Observations and Gaps in the Record
+
+1. No evidence on any alleged event is included. The findings are therefore procedural, not factual.
+2. The Agency's final decision is summarized only by its conclusion. Its reasoning, including its treatment of the hostile work environment and any accommodation claim, is not provided.
+3. Allegations 14 and 15 appear connected, since the administrative leave direction and the Weingarten notice followed the same period of conflict. They should be examined together. The record does not say whether any discipline resulted.
+4. Several allegations rest on oral statements, such as 3, 5, 9, 11, 12, and 13. Resolving them will depend on witness testimony, credibility findings, and any corroboration from coworkers or members of the public.
+5. The record does not establish the dates Complainant was on Light Duty or her return-to-full-duty date. Those dates affect Allegations 1, 5, 7, 10, and 11.
+
+## VII. Conclusion
+
+The record establishes the complaint's procedural history and the allegations at issue. It also establishes that the Agency's final decision found no discrimination and no disparate treatment. It does not contain enough evidence to substantiate or refute any of the fifteen allegations, or to evaluate the Agency's conclusion. Final merits findings should be entered after review of the full ROI, including affidavits, supervisory explanations, medical and Light Duty documentation, schedules, and comparator data.

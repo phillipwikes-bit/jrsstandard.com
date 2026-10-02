@@ -1,0 +1,93 @@
+# Investigation Record: Summary of Complaint, Evidence, and Disposition
+
+## I. Background and Accepted Claims
+
+When the events underlying this complaint occurred, Complainant was a GS-12 Senior Bankruptcy Specialist in the Agency's Small Business/Self-Employed Division, Specialty Collection – Insolvency Office, in Houston, Texas.
+
+On September 17, 2021, Complainant filed an EEO complaint alleging that the Agency discriminated against her and subjected her to a hostile work environment. She based the complaint on disability (Major Depression, Recurrence; Somatic Symptoms Disorder; Generalized Anxiety; TIA; Myofascial Pain; Acute Stress Disorder) and on reprisal for prior protected EEO activity. She identified the following incidents:
+
+1. From February 2021 to the present, she was denied paid leave under the Family and Medical Leave Act (FMLA).
+2. On June 19, 2021, a manager reassigned all of a retired co-worker's complex cases to her.
+3. On August 3, 2021, she was denied eight hours of paid FMLA sick leave.
+4. On August 24, 2021, her final appeal of a requested reasonable accommodation was denied.
+5. On October 26, 2021, her supervisor denied her request for official time to work on her EEO complaint.
+
+## II. Claims 1 and 3 – FMLA Leave
+
+**Prior adjudication.** Complainant had already challenged leave matters, including AWOL charges and placement in Leave Without Pay (LWOP) status, in an earlier EEO complaint before an EEOC Administrative Judge (AJ). On May 25, 2022, the AJ in that case found that the Agency had proven it placed Complainant in AWOL and LWOP status on various dates in February and March 2021. The reason was that she had used up her available paid leave balances and failed to report to work. In the present complaint, Complainant again raised those previously adjudicated matters, including the February and March 2021 AWOL charges and LWOP placements.
+
+**The August 3, 2021 denial.** Complainant also alleged that her manager denied her eight hours of paid FMLA sick leave on August 3, 2021. Her first-line supervisor (Supervisor) explained that management's calculations showed Complainant had exhausted her available paid sick leave by March 2021. The Agency's February 26, 2021 letter responding to her FMLA request stated that she had only 32 hours of unpaid FMLA available between March 1, 2021, and December 3, 2021. On that basis, Supervisor told Complainant on March 1, 2021, and on other dates, that she had no paid leave available under FMLA. On various dates, including August 3, 2021, Supervisor granted FMLA-LWOP rather than paid leave.
+
+**The audit and retroactive correction.** Complainant did not request an audit of her leave until August 5, 2021. A payroll representative conducted the audit and determined that she did have some paid leave available under FMLA. Management then retroactively granted her paid leave, including for August 3, 2021. Complainant conceded that she ultimately received all of the paid leave she requested and was entitled to receive. She identified no similarly situated employees who were treated more favorably with respect to leave.
+
+## III. Claim 2 – Reassignment of Casework
+
+In June 2021, one of Complainant's GS-12 Bankruptcy Specialist co-workers retired. According to Complainant, Supervisor emailed her and the two other GS-12 employees in the group to say that the retired employee's cases would be divided among the three of them. Complainant asserted that she should not have received any of this casework. She said she had already submitted a reasonable accommodation request and believed she should have been on indefinite weather and safety leave.
+
+The AJ in the earlier case found that Complainant was not entitled to indefinite weather and safety leave and that the Agency had met all of its obligations under the Rehabilitation Act. That decision is on appeal, docketed as EEOC [number removed].
+
+Supervisor gave the following account of the reassignment:
+
+- Assigning inventory to employees in her group is part of her job.
+- All of the reassigned work was appropriate for Complainant's grade level.
+- The work was divided among Complainant and the two other GS-12 Bankruptcy Specialists according to the alphabetical order of case names.
+
+The record also contains a spreadsheet, provided by Supervisor, showing the case assignments to Complainant and the other two Bankruptcy Specialists. The record identifies no similarly situated employees who were treated more favorably on this claim.
+
+## IV. Claim 4 – Reasonable Accommodation
+
+**The requests.** On May 6, 2021, Complainant asked for two accommodations: (1) that her manager and/or secretary assistant print and mail her letters, and (2) a reduced workload. On May 18, 2021, she amended the request to add reassignment. She conceded that her medical impairment does not limit her ability to perform any essential job duties. The Agency's Reasonable Accommodations Coordinator held an interactive meeting with her on May 21, 2021.
+
+**Denial of reduced workload.** The Agency denied the request for a reduced workload and/or reassignment. Its stated reasons were:
+
+- No medical explanation supported Complainant's need for these accommodations.
+- Lowering her caseload would lower performance or production standards and compromise the Agency's ability to achieve its mission.
+- The undisputed record showed that, with an inventory of only 25 cases, she already carried a caseload well below that of other Bankruptcy Specialists and below the number of cases she typically held.
+
+The record also shows that in 2018 Complainant's psychologist, in support of an earlier request for reduced inventory, noted that Complainant wanted approximately 38 to 40 cases.
+
+**Denial of reassignment.** The Agency found Complainant ineligible for reassignment because it is the accommodation of last resort, granted only when an employee cannot meet the essential functions of her position. When she requested reassignment in March 2020, the Agency explained that she had submitted no medical documentation showing she could not meet those functions. The evidence instead indicated that she wanted reassignment because of an unpleasant working relationship with her supervisors, not because of any effect of a medical impairment on her ability to do her job.
+
+**Accommodation offered for printing and mailing.** To address Complainant's physical limitations, the Agency approved a small portable printer so she could print and mail letters to taxpayers. While the printer was on order, management agreed to send her correspondence for her. Before delivery, however, Complainant submitted a ticket canceling the printer because she did not wish to be held accountable for it and its paper. She later stated that she could not lift either the smaller printer or its paper.
+
+**Reconsideration and appeal.** The Agency denied her request for reconsideration. On July 12, 2021, she appealed that denial. On August 24, 2021, the Director of Collection Operations (Director) denied the appeal. The Director's decision noted that:
+
+- Complainant had summarily rejected the offer of a smaller portable printer that she could lift.
+- Her workload was already reduced.
+- She was not eligible for reassignment because she could perform the essential functions of her job.
+
+## V. Claim 5 – Official Time
+
+On October 20, 2021, Complainant asked for official time from about 10:30 a.m. that day through 11:30 a.m. on October 21, 2021. She wanted the time to respond to an EEO Investigator's request that she complete an affidavit for this complaint. She used six hours of official time on October 20 and four hours on October 21. She still did not complete the affidavit and asked for more time on October 25, 2021. Supervisor approved additional official time that day.
+
+On October 26, 2021, Complainant emailed the Department of the Treasury, Office of Civil Rights and Diversity (OCRD), to request an extension of her deadline. OCRD replied that she could ask the investigator for an extension if she needed more time. Complainant then asked Supervisor for official time that day to finish the affidavit. When Supervisor asked whether she had completed it, Complainant said two questions remained.
+
+Supervisor denied the October 26, 2021 request for two reasons. Complainant had already received approximately 18 hours of official time, and OCRD had told her to contact the investigator if she needed an extension.
+
+## VI. Hearing and Administrative Judge's Decision
+
+At the close of the investigation, the Agency gave Complainant a copy of the report of investigation and notice of her right to request a hearing before an EEOC AJ. She timely requested a hearing. The AJ issued a decision in the Agency's favor without a hearing, by summary judgment.
+
+**Hostile work environment and discriminatory animus.** The AJ determined that the alleged incidents were not severe or pervasive enough to establish a hostile work environment. The AJ also found no evidence that the conduct at issue was motivated by discriminatory or retaliatory animus.
+
+**Leave.** Complainant did not show that similarly situated employees outside her protected classes were treated more favorably by being granted FMLA or other leave entitlements.
+
+**Reassignment of cases.** The record showed that the retired co-worker's cases were divided equally among Complainant and two other Bankruptcy Specialists. The reasons for the division, relating to grade, skill level, and the suitability of the work given Complainant's low workload, were unrebutted.
+
+**Reasonable accommodation.** The AJ reviewed the accommodation claim as follows:
+
+- Complainant's May 6, 2021 request sought assistance printing and mailing her letters and a reduced workload, and she amended it on May 18, 2021 to add reassignment.
+- During the investigation, she admitted that her impairment did not limit her ability to perform any essential job duties.
+- She offered no probative evidence that earlier accommodations did not enable her to perform her essential functions. Those accommodations were a post of duty (with telework) away from her manager and communication primarily by email.
+- The record supported the denial of reduced inventory. An agency is not required to change production standards, such as lowering an employee's case quota, and Complainant gave no evidence that she could not adequately handle her assignments with an unusually low inventory of 25 cases.
+- After the interactive meeting, the Agency approved a lightweight, portable printer. Management agreed to send her correspondence while awaiting delivery. Before delivery, she asked to cancel the printer because she did not want to be accountable for it and its paper, and management continued to print and mail her letters.
+
+For these reasons, the AJ found that the Agency did not deny Complainant a reasonable accommodation in violation of the Rehabilitation Act.
+
+**Official time.** The AJ found that 18 hours of official time was objectively reasonable for completing the affidavit, despite the investigators' numerous questions. The record showed that Complainant spent her time including information and documentation she had already provided in earlier complaints. The Agency was entitled to cap her official time at 18 hours for this affidavit and to direct her to the investigator for any additional time.
+
+**Conclusion.** The AJ concluded that Complainant was not subjected to discrimination, reprisal, or a hostile work environment as alleged.
+
+## VII. Agency Final Order
+
+The Agency subsequently issued a final order adopting the AJ's finding that Complainant failed to prove that the Agency subjected her to discrimination as alleged.

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the five claims is explicitly identified with dates, specific denials alleged, and corresponding findings grounded in documented evidence (spreadsheet, leave audit, medical concessions, official time log)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision path from evidence to conclusion is traceable for each claim: FMLA audit results → retroactive payment; alphabetical assignment spreadsheet → no discrimination; medical concession → accommodation denial justified; 18-hour official time grant + supervisor directive → additional denial justified."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "While findings are substantive, the record lacks explicit documentation of: (1) the prior AJ's May 25, 2022 decision referenced as establishing leave facts, (2) the specific medical or functional documentation reviewed to support Complainant's concession that impairment does not limit essential duties, and (3) the Treasury Office of Civil Rights and Diversity directive cited as justification for denying additional official time."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Evidence supports each conclusion: comparator analysis performed and none identified; spreadsheet and alphabetical order logic documented; medical concessions made by Complainant herself; accommodations offered (printer, mailing assistance); 18 hours officially granted; directive from external oversight body cited for official time denial."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Timeline is complete and sequenced: Feb.–Mar. 2021 (FMLA exhaustion), May 6 & 18, 2021 (accommodation requests), June 19, 2021 (case reassignment), Aug. 3–5, 2021 (leave audit and FMLA correction), Aug. 24, 2021 (appeal denial), Sept. 17, 2021 (complaint filed), Oct. 20–26, 2021 (official time), May 25, 2022 (prior AJ decision)."
+    }
+  },
+  "remediation_note": "Incorporate by reference or append: the prior AJ's May 25, 2022 decision, the specific medical documentation or statements on which Complainant's concession of no functional limitation rests, and the text of the Treasury Office directive limiting official time. These supporting documents would eliminate the 'review' status on cold_reviewer_clarity.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "cold_reviewer_clarity—gaps in evidentiary chain for three key sub-issues that require external or implicit documents to fully reconstruct",
+    "compliant_version": "Attach or quote in full: (1) relevant portions of the prior AJ decision (May 25, 2022) establishing leave facts; (2) Complainant's written concession or medical record stating no functional limitation; (3) the Treasury Office directive regarding official time and investigator referral. Include hyperlinks or case numbers where prior decisions are cited, and summarize any supporting medical documentation with sufficient specificity to allow independent verification."
+  }
+}
+```

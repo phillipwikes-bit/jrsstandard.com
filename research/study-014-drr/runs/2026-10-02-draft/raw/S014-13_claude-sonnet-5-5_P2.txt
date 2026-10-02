@@ -1,0 +1,86 @@
+# FINDINGS
+
+*Draft for investigator review. Bracketed items need verification against the underlying file before finalization.*
+
+## I. Procedural Background
+
+1. Complainant was employed as an Administrative Technician, GS-0303-05, at the Agency's Chicago Regional Office in Oak Brook, Illinois. He began on January 17, 2021, under a Competitive-Career Conditional appointment that required a one-year probationary period. He had previously worked for the Agency as an Administrative Manager (Excepted Service) during the decennial census.
+2. On August 24, 2021, Complainant filed an EEO complaint alleging discrimination based on disability (diabetes and liver fibrosis) and reprisal for prior protected activity (requesting a reasonable accommodation). The sole alleged adverse action was his termination, effective July 28, 2021. Complainant does not challenge the framing of the complaint.
+3. After the investigation, the Agency gave Complainant the report of investigation and notice of his right to request a hearing before an EEOC Administrative Judge. At Complainant's request, the Agency issued a final decision under 29 C.F.R. § 1614.110(b), finding that he had not proven discrimination or reprisal. This appeal followed.
+
+## II. Issue Presented
+
+Whether the Agency discriminated against Complainant on the basis of disability and in reprisal for requesting a reasonable accommodation when it terminated him during his probationary period, effective July 28, 2021.
+
+## III. Findings of Fact
+
+### A. Matters not in dispute
+
+1. The Agency treated Complainant as an individual with a disability and as a qualified individual under the Rehabilitation Act.
+2. Complainant was a probationary employee when terminated.
+3. S3 (Program Coordinator, third-level supervisor) issued the termination letter on July 28, 2021. It cited unacceptable performance during the probationary period, specifically:
+   - failure to ensure timely onboarding of new hires and to track them through the hiring process, and
+   - failure to process payroll successfully and on time.
+
+### B. Documented performance concerns preceding termination
+
+1. **June 15, 2021 progress review.** The first-level supervisor of record at that time [name to be confirmed] rated Complainant as not performing at the fully successful level (level 3 or above). The review identified these areas for improvement:
+   - familiarity with onboarding and payroll processes, and
+   - timely completion of assignments.
+2. **June 2021 emails from S3.** Three emails raised performance issues, including:
+   - partial or missing pay for two employees in Complainant's service area,
+   - payroll processing for pay period 11, and
+   - the status of several new hires.
+3. **June 17, 2021 memorandum.** S3 issued Complainant a memorandum titled "Failure to Follow Up on Payroll Issues," outlining his performance deficiencies.
+4. **S1 affidavit.** S1 (Administrative Officer) became Complainant's supervisor in early July 2021. She stated that:
+   - Complainant's errors caused several people not to be paid on time, and new hires resigned as a result;
+   - upon learning of the errors, she retrained the staff; and
+   - after retraining, Complainant "continued to have unresolved pay issues for the new hires he was responsible for."
+
+### C. Conflicting evidence
+
+1. **AS affidavit.** AS (Administrative Specialist) stated that she supervised Complainant until his termination. Her affidavit shows, however, that she assigned and supervised his work on the Census Investigative Service Missing Documents Project, not payroll or timekeeping. She stated that:
+   - she observed no unacceptable performance, and none was brought to her attention, in connection with the Missing Documents Project; and
+   - she believed Complainant was terminated because of his disabilities and his request for a reasonable accommodation, based on her observation of "tension between the Complainant and [S3] regarding his work schedule."
+2. **Telework context.** The Agency found no evidence that S3 opposed Complainant's reasonable accommodation or his telework schedule. All Administrative Technicians S3 supervised teleworked two days per week for at least part of the relevant period.
+
+## IV. Analysis
+
+### A. Framework
+
+The claims are analyzed under the burden-shifting framework for disparate treatment. Complainant must establish a prima facie case. The Agency must then articulate legitimate, nondiscriminatory reasons for its action. Complainant bears the ultimate burden of showing those reasons are a pretext for discrimination or reprisal. The Agency assumed a prima facie case for both claims, and this analysis does the same. The analysis therefore turns on the Agency's stated reasons and on pretext.
+
+### B. Legitimate, nondiscriminatory reasons
+
+The record shows that management articulated performance-based reasons for the termination: deficiencies in payroll processing and new-hire onboarding. Those reasons are supported by contemporaneous documentation that predates the termination:
+- the June 15 progress review,
+- three June emails from S3,
+- the June 17 memorandum, and
+- S1's account of continued errors after retraining.
+
+The termination letter is consistent with these earlier communications. The Agency's articulated reasons are specific, documented, and traceable to events before the termination.
+
+### C. Pretext
+
+1. **AS's statement of no performance problems.** This does not undermine the Agency's explanation. AS's supervision was limited to the Missing Documents Project, and the documented deficiencies concern payroll and onboarding, which were outside her area. Her silence on those functions is not evidence that the deficiencies did not occur. Three supervisors (the first-level supervisor who prepared the June 15 review, S3, and S1) described deficiencies in those functions.
+2. **AS's belief about the motive for termination.** AS grounded her belief in observed "tension" over Complainant's work schedule. The record does not show that the tension involved his disabilities or accommodation request, that S3 expressed opposition to either, or that S3 treated Complainant differently from other Administrative Technicians on telework. The record indicates that all of S3's Administrative Technicians teleworked two days per week. AS's statement is an opinion and does not establish discriminatory or retaliatory animus.
+3. **Complainant's own showing.** Apart from his subjective belief and AS's opinion, the record contains no evidence of:
+   - comparators treated more favorably,
+   - discriminatory or retaliatory statements by decision-makers, or
+   - inconsistencies in the Agency's explanation.
+
+## V. Conclusions
+
+1. The record supports the Agency's finding that management terminated Complainant for documented performance deficiencies in payroll processing and new-hire onboarding.
+2. The evidence does not establish that these reasons were a pretext for disability discrimination or reprisal for requesting a reasonable accommodation.
+3. The preponderance of the evidence does not show that Complainant was subjected to discrimination as alleged.
+
+## VI. Items for Investigator Follow-Up
+
+These gaps could affect the weight of the findings above:
+- **Accommodation request.** The record does not give the date, nature, or disposition of the request, or whether S3 knew of it. Timing relative to the June 2021 performance actions and the July 28 termination is unestablished.
+- **First-level supervisor identity.** The June 15, 2021 progress review is attributed to "the person listed as Complainant's first-level supervisor." Confirm the name, role, and tenure of this person, and how they relate to S1 and AS. The record also indicates AS supervised Complainant "until his termination" while S1 became his supervisor in early July.
+- **"Three supervisors."** Confirm which three supervisors confirmed the deficiencies and that each statement is in the file.
+- **Nature of the "tension."** AS did not describe it in detail. Consider follow-up with AS and S3 on what was said about Complainant's schedule and whether it related to the accommodation.
+- **Probationary comparators.** The file does not show whether other probationary employees with similar performance problems were retained or terminated.
+- **Retraining and notice.** Confirm the dates and content of the retraining S1 provided, and whether Complainant received a documented opportunity to improve before termination.

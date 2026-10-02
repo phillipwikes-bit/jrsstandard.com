@@ -1,0 +1,119 @@
+# FINDINGS
+
+*Draft for investigator review. Each finding is tied to the record as provided. Items marked **[VERIFY]** are gaps or inconsistencies in the source material that should be resolved before finalizing.*
+
+---
+
+## I. Summary of Findings
+
+1. The record does not show that the Agency made any effort to accommodate Complainant's medical restrictions from September 2021 onward, or that any such effort was unsuccessful.
+2. The record does not explain why the Agency took about a year to move Complainant to a facility separate from her alleged harasser, or what her new position was.
+3. The record does not support the stated reason for denying Complainant's January 2022 bid. No evidence shows she was asked for the medical documentation the Agency says was lacking.
+4. The record contains no explanation for placing Complainant on leave without pay (LWOP), beyond the underlying accommodation dispute.
+5. The Agency's procedural dismissals (untimeliness and collateral attack) are described in the record, but the analysis is incomplete in places (see Part V).
+
+---
+
+## II. Background Facts (as stated by Complainant, ROI at 97–108)
+
+The following facts come from Complainant's affidavit. Unless noted, no contrary Agency statement appears in the record provided.
+
+- **Position and location.** Complainant was a Mail Processing Clerk at the Agency's Atlanta Processing and Distribution Center, Atlanta, Georgia.
+- **Prior EEO activity.** She filed an EEO complaint in September 2018. It was still pending before an EEOC Administrative Judge when she gave her affidavit in this matter. (ROI at 97)
+- **Medical conditions.** She reports PTSD and depression stemming from sexual harassment/assault by a co-worker. She also reports back, foot, and knee problems. Her physical restrictions are:
+  - no extended standing or walking
+  - no climbing or descending stairs
+  - limits on bending, stooping, and lifting (ROI at 97–98)
+- **Medical restriction on location.** She states her doctor said she can no longer work in the same facility as the co-worker. (ROI at 98–99)
+- **Chronology of events:**
+  - **September 2019:** The alleged harassment/assault occurred. She then went on FMLA leave. (ROI at 100)
+  - **April 2020:** She was released to return to work at a facility different from her harasser's. When she reported, the harasser was still there. (ROI at 100)
+  - **June 2020:** She injured her knee at work. (ROI at 100)
+  - **July 2020:** She submitted knee-injury documentation to the Agency and received no response. (ROI at 100)
+  - **Undated:** The Reasonable Accommodation Committee requested additional documentation she says she had already provided. She says it disregarded her PTSD-based need for a different facility and addressed only her physical restrictions. (ROI at 100)
+  - **July 2021:** She received a modified assignment at a different location that accommodated her physical restrictions. (ROI at 100)
+  - **August 16, 2021:** She went on COVID leave. She was later hospitalized for sepsis and was not medically cleared to return until September 21, 2021. (ROI at 100–105)
+  - **After September 21, 2021:** She states she has not been returned to work. Management told her only that no work was available within her restrictions. (ROI at 100–105)
+  - **November 21, 2021 onward:** She was placed on LWOP. (ROI at 105)
+  - **January 2022:** She was denied a bid position, which went to a less senior employee. She was marked "ineligible" without explanation. (ROI at 105, 108–09)
+
+---
+
+## III. Procedural History
+
+- **May 13, 2022:** Complainant filed a formal EEO complaint alleging discrimination based on:
+  - race (African-American/Native American/Cuban)
+  - sex (female)
+  - color (Brown)
+  - disability (physical and mental)
+  - reprisal for prior protected activity
+  
+  The complaint was brought under Title VII and Section 501 of the Rehabilitation Act.
+- **Accepted claims:**
+  1. Since November 10, 2021, she was not accommodated per her medical restrictions.
+  2. Since November 10, 2021, to present, she was charged LWOP.
+  3. On January 24, 2022, she was denied a bid position.
+- **Additional claims in the complaint:**
+  - denial of accommodation from April 2020 to November 9, 2021
+  - leave not properly coded as OWCP leave (unspecified dates)
+  - denial of insurance benefits (unspecified dates)
+- **Related AJ ruling:** Complainant moved to amend her pending EEO case to add the denial-of-accommodation claim from April 2020 onward. The AJ denied the motion because the claim was not sufficiently like or related to the existing claims. The AJ noted that EEO counseling time limits were tolled from November 11, 2021, the date of the motion. (ROI at 17–20)
+- **Agency dismissals:**
+  - The pre-November 10, 2021 accommodation claim was dismissed under 29 C.F.R. § 1614.107(a)(1) for untimely counselor contact. (ROI at 62–63)
+  - The OWCP-coding and insurance-benefit claims were dismissed as collateral attacks on the workers' compensation process. (ROI at 63–65)
+- **December 6, 2022:** The Agency issued a final decision under 29 C.F.R. § 1614.110(b) finding no discrimination. It found that:
+  - Complainant did not submit required medical documentation supporting the accommodation request or showing she could perform the bid position within six months.
+  - Complainant did not show pretext.
+- Complainant appealed.
+
+---
+
+## IV. Findings on the Accepted Claims
+
+### Claim 1: Failure to accommodate (November 10, 2021 to present)
+
+- Complainant states that management told her only that no work was available within her restrictions. (ROI at 100–105)
+- **The record contains no statement from any Agency official** confirming that an effort was made to accommodate her from September 2021 onward, or that such an effort failed.
+- The record contains no explanation of Complainant's July 2021 assignment, such as its duties, location, or terms. It also does not explain why the move away from the alleged harasser's facility took about a year.
+- **Finding:** The record does not establish that the Agency engaged in an interactive process or searched for available work within Complainant's restrictions. It does not show that accommodation would have been an undue hardship. The Agency's stated basis, a lack of medical documentation, is not tied to any documented request for specific information after September 2021. **[VERIFY: whether any such request exists outside the portion of the ROI provided.]**
+
+### Claim 2: LWOP (since November 10, 2021)
+
+- Complainant asserts she was placed on LWOP from November 21, 2021 because she could not work due to the Agency's failure to accommodate. (ROI at 105)
+- No Agency explanation for the LWOP designation appears in the record provided.
+- **Finding:** The LWOP claim depends on Claim 1. Because the record does not show that accommodation was attempted or was infeasible, it does not support the Agency's treatment of the absence as unpaid leave. **[VERIFY: the date discrepancy between November 10 (accepted claim) and November 21, 2021 (affidavit).]**
+
+### Claim 3: Denial of bid position (January 24, 2022)
+
+- The Supervisor of Distribution Operations stated that the bid was denied because Complainant provided no updated medical documentation showing she could fully perform the duties within six months. (ROI at 152)
+- Complainant states she was given no explanation and was marked "ineligible." The position went to a less senior employee. (ROI at 105, 108–09)
+- The Collective Bargaining Agreement provides that management "may, at the time of the submission of the bid or at any time thereafter, request that the employee provide medical certification" that the employee can fully perform the duties within six months. (ROI at 337)
+- **Finding:** The record contains no evidence that management asked Complainant for this certification or told her it was required. The CBA contemplates a request by management, yet the supervisor's explanation rests on Complainant's failure to submit documentation without any record of a request. The record therefore does not support the Agency's articulated reason. It also gives no basis for the Agency's finding that Complainant failed to show pretext.
+
+---
+
+## V. Findings on Dismissed Claims
+
+- **Pre-November 10, 2021 accommodation claim.** The Agency dismissed it for untimely counselor contact. The AJ's order tolled the counseling time limits from November 11, 2021. **[VERIFY: whether the Agency's timeliness calculation accounted for this tolling and for the continuing nature of an ongoing denial of accommodation.]**
+- **OWCP-coding and insurance-benefit claims.** The Agency dismissed them as collateral attacks on the workers' compensation process. The source text of the review of this dismissal is **incomplete** (the sentence beginning "We find that the Agency's affirmance of the claims regarding... were" ends mid-clause). **[VERIFY: the intended conclusion before this finding is finalized. No finding is drafted here.]**
+
+---
+
+## VI. Record Inconsistencies and Gaps
+
+1. **Prior-complaint chronology.** The record says the September 2018 EEO complaint concerned the co-worker's harassment. It also dates the harassment/assault to September 2019. **[VERIFY.]**
+2. **LWOP dates.** The accepted claim uses November 10, 2021, and the affidavit uses November 21, 2021.
+3. **Motion-to-amend date.** The AJ's tolling date is November 11, 2021. The accepted claims begin November 10, 2021.
+4. **Missing Agency evidence.** The record includes no Reasonable Accommodation Committee file, no management statements about post-September 2021 accommodation efforts, and no documentation of Complainant's current position.
+5. **Stray footnote markers.** The source text contains unattached note markers (2, 3, 4, 5). **[VERIFY: whether the footnotes contain material content.]**
+6. **Protected-basis evidence.** The record provided contains no evidence specific to race, color, or sex discrimination. The findings above concern accommodation, leave, and the bid denial.
+
+---
+
+## VII. Recommended Follow-Up
+
+- Obtain Reasonable Accommodation Committee records and all requests for medical documentation from July 2020 through the present.
+- Obtain a statement from management about any search for work within Complainant's restrictions after September 21, 2021.
+- Obtain the bid file for the January 24, 2022 position, including the selectee's seniority and any ineligibility notice.
+- Obtain the LWOP authorization records and the basis for the designation.
+- Resolve the date discrepancies and the incomplete passage listed above.

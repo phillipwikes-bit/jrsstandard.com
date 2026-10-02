@@ -1,0 +1,129 @@
+# FINDINGS (DRAFT)
+
+*Prepared from the record as provided. Bracketed items need verification against the underlying file before finalizing.*
+
+---
+
+## I. Scope and Basis of Findings
+
+These findings rest on the record summary provided: Complainant's statements, S1's statements, the Privacy Investigation Report, the July 1, 2019 Privacy Office letter, the September 4 and 5, 2019 disciplinary decision letters, the Notice of Partial Acceptance, and the Agency's final decision. The record excerpt gives substantive evidence only for **claims 1, 2, 3, and 12** and for the **overall hostile work environment claim**. It contains no evidence for claims 4–11, 13, and 14 (see Section V).
+
+## II. Background
+
+1. Complainant was a Registered Nurse on the 4 East Medical-Surgical Unit, VAMC West Los Angeles. Her first-level supervisor was the Nurse Manager, S1.
+2. Complainant was scheduled for surgery at the VAMC. It was canceled several times, and each time she had to resubmit an FMLA leave request for S1's signature.
+3. The Privacy Investigation Report states that Complainant had surgery on **June 26, 2018**.
+4. ORM's Notice of Partial Acceptance dismissed, for failure to state a claim, the portion of claim 7 alleging that a coworker accused Complainant of harassing behavior. The remaining claims were accepted. Claim 1 was treated as both an independently actionable discrete claim and part of the harassment claim. Claims 2, 3, and 12 were accepted as discrete events under the confidentiality provisions of the Rehabilitation Act, not under HIPAA or the Privacy Act.
+5. Complainant requested an EEOC hearing and later withdrew it. The Agency issued a final decision under 29 C.F.R. § 1614.110(b). It adopted ORM's dismissal of the coworker-accusation portion of claim 7 but considered that matter within the overall harassment claim.
+
+## III. Findings by Claim
+
+### Claim 1: S1 demanded Complainant work twelve-hour shifts, which she refused
+
+**Evidence**
+- The claim was originally framed as management *refusing* to change Complainant's schedule to 12-hour shifts. Complainant clarified that she never requested 12-hour shifts and that S1 "demanded that she switch from 8 to 12 hours."
+- The Agency found the undisputed evidence showed Complainant remained on her eight-hour tour of duty at all times.
+
+**Findings**
+- The record shows no change to Complainant's tour of duty.
+- The record excerpt contains no direct statement from S1 about whether she asked or directed Complainant to move to 12-hour shifts. [Verify whether S1 addressed this.]
+- The Agency found that, even accepting the allegation as true, nothing indicated a discriminatory motive. The record excerpt shows no evidence linking the alleged demand to disability.
+
+### Claim 2: S1 allegedly disclosed Complainant's medical information in front of coworkers
+
+**Complainant's account**
+- After the fourth cancellation of her surgery, she presented a new FMLA form to S1 in S1's private office.
+- As S1 walked down the hallway between the reception station and nurses' station, S1 said loudly: *"And you, you need to go somewhere else to have your surgery. If the VA is not taking care of you, you need to go to UCLA."*
+- She identified Witness 1, who heard S1 talking about her surgery and asked if she was okay, and Witness 13, who was at the reception station and asked why S1 was telling everyone about her surgery.
+- In a supplemental affidavit she said the event occurred in **November or December 2017**, not May 2018 as stated in the accepted claim.
+
+**S1's account**
+- S1 stated she discussed Complainant's surgery only privately with Complainant, to offer emotional support.
+
+**Other evidence**
+- The Agency reports that the six coworkers interviewed in the privacy investigation each confirmed S1 did not disclose information about Complainant's surgery. They said they learned of it from Complainant.
+- Complainant admitted she told at least one coworker she was going to have surgery, which was then canceled.
+- Coworker 4 told the Privacy Office that "everyone was talking about [Complainant's] surgery," and that Complainant had told her and others she was having surgery.
+- The Privacy Investigation Report found no evidence that S1 disclosed information about the surgery in any meeting.
+
+**Findings**
+- The date of the alleged incident is inconsistent in the record (May 2018 versus November/December 2017). The accepted claim should be conformed or the discrepancy noted.
+- The sole direct evidence of the statement is Complainant's account. The statement of Witness 13 is not summarized in the record excerpt. [Verify whether Witnesses 1 and 13 were interviewed in the EEO investigation, and what they said about the hallway statement specifically.]
+- The record shows coworkers' knowledge of the surgery is attributable at least in part to Complainant's own disclosures and, as to two coworkers, to improper record access.
+- The Agency concluded Complainant did not show that S1 improperly disclosed confidential medical information. It further concluded that even if the statement was made and overheard, the vague reference did not disclose confidential medical information.
+
+### Claim 3: Complainant was required to work with coworkers who improperly accessed her medical records
+
+**Evidence**
+- On April 8, 2019, Complainant requested a Sensitive Patient Access Report (SPAR) and identified six employees (Coworkers 1–6) she believed accessed her CPRS record outside their job responsibilities. [The July 1, 2019 letter says the SPAR was provided on April 12, 2019.] She also reported to the Privacy Office the allegation that her supervisor mentioned her surgery in front of staff.
+- S1 stated that, in response to Complainant's April 9, 2019 email, S1 immediately contacted the Privacy Officer to determine whether a coworker had violated Complainant's privacy.
+- The Privacy Investigation Report concluded that **two** of the six employees accessed Complainant's record without a valid reason:
+  - **Coworker 4** accessed the record on June 15, 2018. She said "everyone was talking about" the surgery, including herself and another employee whom she saw accessing the record under her (Coworker 4's) access. The report found no valid reason and that the access was intentional.
+  - **Coworker 3** (ward 4EAD) accessed the record six times across 2018 and 2019. She said she wanted to check the schedule because Complainant had written her up several times and she did not want to work the same shift. The report found scheduling information is not in CPRS and that the access was intentional and without valid reason.
+- The report found the other identified employees accessed the record within their job responsibilities.
+- The July 1, 2019 letter to Complainant confirmed that inappropriate access occurred, said supervisors were notified, and recommended retraining. It names Coworker 4 and contains a blank where a second name would appear.
+- S1 stated two coworkers working with Complainant received discipline. Two decision letters, addressed to unidentified recipients and labeled by handwriting "Employee 1" and "Employee 2," show a seven-day suspension upheld (Sept. 4, 2019) and a seven-day suspension mitigated to one day (Sept. 5, 2019), both for a Privacy Act violation.
+
+**Findings**
+- The record establishes that at least two coworkers, who worked with or around Complainant, accessed her medical record improperly, and that the Agency investigated and imposed discipline.
+- The stated reasons for access were curiosity about her surgery timing and a desire to avoid working her shifts. Neither reason refers to her disability or any medical condition beyond the surgery.
+- The record excerpt shows no evidence of discriminatory animus tied to disability, and the Agency so found. It also noted that Privacy Act violations are outside EEOC regulations absent an allegation that they resulted from prohibited discrimination.
+- Open items:
+  - The record does not link "Employee 1" and "Employee 2" to Coworkers 3 and 4. [Verify.]
+  - Coworker 4 described another employee accessing the record under her credentials. The record does not show that this person was identified or investigated.
+  - The Privacy Investigation Report states both employees "currently work on 4E," while also placing Coworker 3 on ward 4EAD. [Clarify.]
+  - The record does not show whether Complainant continued to work with the two employees after the discipline.
+
+### Claim 12: On June 6, 2019, an unnamed employee interfered with Complainant's privacy investigation
+
+**Evidence**
+- The record excerpt identifies no employee, act, or statement constituting "interference," and no resistance from coworkers during the privacy investigation.
+- S1 promptly referred Complainant's concern to the Privacy Office. The Privacy Office interviewed all employees Complainant identified, and two were found to have improperly accessed her record. Both were disciplined, and retraining was recommended.
+
+**Findings**
+- The record contains no evidence of the alleged interference.
+- The record shows the investigation was initiated promptly, covered every employee Complainant named, and resulted in findings and discipline.
+- The record shows no evidence that any decision not to impose further discipline was based on discriminatory animus.
+
+## IV. Hostile Work Environment / Harassment (Claims 1–14 considered together)
+
+**Evidence**
+- **Witness 1** (no longer employed by the Agency since 2018) gave a vague statement that S1 told him Complainant had "mental issues." S1's testimony contradicted this.
+- **Witness 2's** statement gave no indication of discriminatory animus by S1 toward Complainant based on disability.
+- Both witnesses expressed personal complaints about S1.
+- S1 stated she was unaware Complainant had a disability. She noted Complainant took bereavement leave after a parent's death but said, to her knowledge, it was unrelated to any mental or other disability.
+- Complainant's allegations include a coworker calling her "a 50-year-old mental patient" (claim 5) and an article about nurses with mental disabilities left on the report table (claim 13). The record excerpt contains no investigative evidence on these allegations, including who made the statement or posted the article.
+
+**Findings**
+- The record excerpt contains no evidence that S1 knew of Complainant's disability or acted because of it.
+- The only evidence suggesting S1 referenced a mental condition is Witness 1's vague, uncorroborated statement, which S1 denies. The Agency discounted it because the witness has a personal grievance against S1.
+- The Agency found Complainant presented no evidence she was singled out because of disability and did not establish unlawful harassment.
+- Whether the alleged coworker conduct (claims 5 and 13) supports a finding of disability-based harassment cannot be resolved on this record.
+
+## V. Claims Not Addressed in the Record Excerpt
+
+No evidence or findings are available for the following. [Insert from the full ROI or mark as unsupported.]
+
+| Claim | Allegation |
+|---|---|
+| 4 | Failure to timely resolve sick leave issues (Jan. 2019) |
+| 5 | "50-year-old mental patient" comment (Mar. 5, 2019) |
+| 6 | S1 told a coworker she "had her back" (May 1, 2019) |
+| 7 | Coworker accusation of intimidating/aggressive behavior (May 1, 2019); partially dismissed |
+| 8 | Accused of sending email from another employee's account (May 3, 2019) |
+| 9 | S1 requested she sign a misconduct form (May 3, 2019) |
+| 10 | S1 paced in front of her work area (May 28, 2019) |
+| 11 | S1 accused her of misconduct (May 28, 2019) |
+| 13 | Article about nurses with mental disabilities (Aug. 20, 2019) |
+| 14 | S1 "split the staff" and failed to resolve floor issues (unspecified dates) |
+
+## VI. Record Discrepancies and Items for Follow-Up
+
+1. **Claim 2 date:** May 2018 (accepted claim) versus November/December 2017 (Complainant's supplemental affidavit).
+2. **Claim 1 framing:** originally "refused to change schedule to 12-hour shifts," recharacterized as S1 "demanding" the change.
+3. **SPAR timeline:** April 8 (request), April 9 (email to S1), April 12 (SPAR provided), June 18 (email to Privacy Office). The sequence and any delay should be confirmed.
+4. **July 1, 2019 letter:** names Coworker 2, 3, and 4 as the employees complained of, but its finding names only Coworker 4 and leaves a blank. The Privacy Investigation Report names Coworkers 3 and 4.
+5. **Disciplinary letters:** addressees unidentified and employee numbers handwritten. Authenticate and match to specific coworkers.
+6. **Unidentified third party** said by Coworker 4 to have used her credentials: no follow-up shown.
+7. **Witnesses 1, 12, and 13:** statements are not summarized. Confirm whether they were interviewed and what they said, particularly on the hallway statement (Witnesses 1 and 13) and Witness 12's alleged remark that coworkers spread information from Complainant's records.
+8. **S1's knowledge of disability:** S1 denies knowing of any disability, yet the record does not state what disability Complainant claims. Confirm the basis and timing of any notice to management.

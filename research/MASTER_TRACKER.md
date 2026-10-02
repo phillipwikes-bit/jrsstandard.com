@@ -3121,10 +3121,25 @@ Only four line groups differ between v7 and v8.
   - **Fit:** SB 524's remedies map to RC2, RC4 and RC1; HR and investigation records have no equivalent rule.
   - **Product shapes:** a free drafting specification; a licensed conformance test suite (primary revenue, *Judgment*); a free policy kit; the Engine reframed as a pre-finalization checker.
   - **Key cautions:** "prevents" is a banned word under section 24 until established; no evidence yet that the approach works, so H4 is proposed for Study 014; copyability; trademark and conformance language.
-  Nothing sent.- 2026-10-02 (**OWNER: CONDENSE, AND RESEARCH THE LICENSED TEST SUITE IN DEPTH**): Study 013 tracker entries condensed to one line in each tracker (11 entries in MASTER_TRACKER; rows 65 to 68 and 71 in IP_SALE_TRACKER); mentions in unrelated entries reworded. New `research/LICENSED_TEST_SUITE_RESEARCH_2026-10-02.md`.
+  Nothing sent.
+- 2026-10-02 (**OWNER: CONDENSE, AND RESEARCH THE LICENSED TEST SUITE IN DEPTH**): Study 013 tracker entries condensed to one line in each tracker (11 entries in MASTER_TRACKER; rows 65 to 68 and 71 in IP_SALE_TRACKER); mentions in unrelated entries reworded. New `research/LICENSED_TEST_SUITE_RESEARCH_2026-10-02.md`.
   - **Verified precedents:** Khronos adopters (USD 25,000 to 30,000 for OpenGL; Vulkan USD 95,000 to 120,000 a year; unlimited products; mark only on passing; Working Group review); MLCommons AILuminate (public and private disjoint prompt sets against gaming); Vals Legal AI Report (vendor opt-in with withdrawal; lawyer baseline; proprietary data; conflict disclosed).
   - **Secondary or unverified:** NYC LL144 annual independent audits from about USD 10,000; the Stanford legal-AI hallucination rates.
   - **Design rules:** two sets; vendor-run with automated scoring (no owner hours); human baseline; flat annual unlimited-product licence; opt-in publication; factual result statements until the trademark is registered (dossier status REQUIRES USER INPUT); independence by keeping the Engine a reference checker.
   - **Tiers** (*Judgment*): free practice kit; vendor licence USD 7,500 to 15,000 a year; buyer-side USD 2,500 to 5,000 per evaluation; conformance mark later.
   - **Risks:** validity until Study 014 runs; vendors declining; liability for result statements; small market.
   Nothing sent.
+- 2026-10-02 (**STUDY 014 RUN; SUITE v0.9 BUILT; BETA AND TRADEMARK PREPARED, NOT SENT OR FILED**): owner instruction "run Study 014, then build suite v0.9, then a private beta ... then v1.0 and the trademark filing". Spend USD 9.20 on the owner's key, used only as a process variable and never written.
+  - **Study 014** (`research/study-014-drr/RESULTS.md`):
+    - **H1 holds.** A concise summary kept 0% of record citations, and 0 to 7% of quotations (medians).
+    - **H4 is NOT MET under the pre-registered rule.** Retention held, but the pre-registered extractor counted more "fabrication" in P4.
+    - Reading every flag showed all P4 flags were extractor errors. Under corrected v1.2, P4 has 0 unsupported anchors (post-hoc; needs a confirmatory run).
+    - **H5:** cloze accuracy was source 0.967, P1 0.773, P4 0.973, no document 0.113.
+    - **Part 2 is incomplete** (205 of 1,350 calls): the API credit ran out. H2 and H3 are not established.
+    - Genuine misquotes were found in P1, P2 and P3 drafts, never in P4.
+  - **Suite v0.9** (`research/drr-suite-v0.9/`): 30 public practice texts; deterministic scorer (extractor v1.2) with 16 tests and fault tests caught; baselines; harness specification; frozen hashes, including hashes only of the 29 held-out texts; draft licence terms.
+  - **Beta:** shortlist of Case IQ, HR Acuity and AllVoices (AllVoices as alternate), with a draft message. **Nothing sent;** contact needs "approve contact: <vendor>".
+  - **Trademark:** addendum covering the suite identification, the certification-mark rule (TMEP 1306), and fees of about USD 1,050 to 1,400 (unverified). The owner files; 9 inputs are still open.
+  - **New blockers:**
+    - B-022: API credit. The owner adds about USD 22 at console.anthropic.com, Billing, in a phone browser.
+    - B-023: no sealed private set while the repository is public.

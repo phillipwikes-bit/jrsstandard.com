@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies factual bases (seatbelt non-compliance, loitering, argumentativeness) but does not isolate which specific evidence supports the finding that these facts were 'unrebutted' or establish the chain of custody for each evidentiary claim."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The AJ's leap from 'unrebutted facts established nondiscriminatory reasons' to 'no reasonable factfinder could find age bias' lacks intermediate steps explaining why the absence of named comparators or age-based comments forecloses all inferences of age animus."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer with no prior knowledge cannot determine from this record alone whether specific documentary evidence (witness statements, email, timesheets, medical notes) was presented, weighed, or contradicted, or how the AJ resolved factual disputes between Complainant's and Agency's versions."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record asserts that Complainant's characterizations of harassment and discriminatory motive are unsupported but does not articulate the evidentiary standard applied or explain why Complainant's circumstantial age-based claims (overburdened routes, differential treatment) fail to raise a triable issue."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology of events is present (August 30, 2022 EP placement through November 1, 2022 escort-out; complaint filed February 25, 2023; decision January 4, 2024) with specific dates for each claim and procedural milestone."
+    }
+  },
+  "remediation_note": "A compliant record must cite specific documentary evidence (statements, performance records, safety policies, medical restrictions) for each factual finding, explicitly address Complainant's alternative theories and factual disputes point-by-point, and explain the legal framework and burden-shifting analysis applied to the age-discrimination claims.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The AJ decision should include: (1) citation to specific exhibits and testimony supporting each 'unrebutted fact'; (2) explicit resolution of factual disputes (e.g., whether S2 yelled, whether PM intimidated Complainant); (3) articulation of the McDonnell Douglas burden-shifting framework and application to Complainant's circumstantial age-based arguments (overburdened routes, comparator claims); (4) explanation of why absence of named younger comparators or explicit age comments defeats age-bias claims; (5) notation that disability was raised or not raised, and if raised, why it does not support relief; and (6) a concluding synthesis linking evidence to the no-discrimination finding."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies nine accepted claims with dates and specific allegations, but does not explain the evidentiary basis (witness statements, documents, emails) that supported acceptance of each claim or the factual findings underlying them."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record summarizes claims and a final decision but does not trace the investigative reasoning, analysis of evidence against each claim, or the logic by which the Agency concluded Complainant 'did not prove discrimination'—the decision pathway is opaque."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer unfamiliar with the case cannot reconstruct from this summary alone why each of the nine accepted claims constitutes discrimination, what evidence was adduced, or how the final finding of no discrimination was reached from accepted allegations of harassment, medical non-accommodation, and retaliation."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record lists nine accepted claims with dates but does not document the specific evidence (testimony, medical records, emails, witness accounts) that supports each allegation or establishes a causal link between the Manager's actions and Complainant's disability."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology from November 7, 2020, through April 15, 2021, with specific dates for each claimed incident and a procedural timeline (complaint filed April 17, 2021; hearing denied; remand to Agency; final decision issued)."
+    }
+  },
+  "remediation_note": "The record requires addition of the investigative findings, evidence summaries (statements, documents, medical restrictions, communications), and the Agency's reasoned analysis of how the accepted allegations either do or do not constitute unlawful discrimination under the Rehabilitation Act. The final decision must explain the factual and legal bases for the conclusion of no discrimination despite acceptance of harassment, medical non-accommodation, and retaliation claims.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant version would integrate the Report of Investigation findings (witness statements, documentary evidence, medical certification of restrictions), the Agency's step-by-step analysis of each accepted claim against the elements of a disability discrimination cause of action, explicit findings on whether each action was taken because of disability or for legitimate non-discriminatory reasons, and the causal and temporal linkages between the Manager's conduct and Complainant's protected status, concluding with a clear statement of law and fact supporting the final determination."
+  }
+}
+```

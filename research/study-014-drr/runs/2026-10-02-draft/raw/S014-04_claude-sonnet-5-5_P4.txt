@@ -1,0 +1,118 @@
+# Case File Summary
+
+## Procedural Background
+- Complainant was a Level 1 City Carrier at the Agency's Meadow Mesa Station in North Las Vegas, Nevada.
+- On February 25, 2023, he filed an EEO complaint alleging age discrimination (born 1973) and harassment.
+- The Agency accepted five claims and investigated.
+- After the investigation, the Agency gave Complainant the report of investigation and notice of his right to request a hearing before an EEOC Administrative Judge (AJ).
+- Complainant timely requested a hearing.
+- Disability was not a basis raised in the complaint.
+- The AJ granted the Agency's December 14, 2023 motion for a decision without a hearing, because Complainant did not object. The AJ issued the decision on January 4, 2024.
+- The Agency then issued a final order adopting and fully implementing the AJ's decision. The record gives no date for the final order.
+- Complainant appealed. The record gives no appeal date.
+
+## Accepted Claims
+1. August 30, 2022: placed on Emergency Placement (EP).
+2. September 14, 2022: suspended.
+3. September 20, 2022: a supervisor followed him to the bathroom, yelled at him to get back to work, and threatened discipline.
+4. September 24, 2022: a supervisor accused him of not fastening his seatbelt before starting the engine.
+5. November 1, 2022: escorted out of the facility.
+
+## Evidence by Claim
+The record identifies these individuals: S1 and S2 (supervisors) and PM (Postmaster).
+
+**Claim 1 (EP, August 30, 2022)**
+- *Complainant (affidavit):*
+  - He asked S1 to sign or initial his copy of a Union time request. S1 said she would do so later and told him to get back to work.
+  - PM asked whether he was refusing instructions. Complainant said he was not, but wanted to understand why he was held to policy and S1 was not.
+  - In the locker room, PM questioned what he had been doing for the last hour, interrupted him, yelled, and leaned over him to intimidate him.
+  - PM returned and told him to deliver to the apartments that day. Complainant asked whether this would put him over eight hours.
+  - PM accused him of failing to follow instructions, refused his request for a union steward, demanded his badge, told him to clean out his locker, and threatened to call the authorities.
+  - He believed age was a factor because he was given an overburdened route to finish within eight hours and was constantly compared to younger carriers.
+  - He had no specific examples of similarly situated employees outside his protected class who were treated more favorably.
+- *PM (affidavit):*
+  - He observed several time-wasting practices, and Complainant failed to follow instructions.
+  - Per Agency policy, Complainant was placed on EP, off duty without pay, for failure to follow instructions.
+  - He called the intimidation claim ridiculous and said he does not get close to any employee since having COVID.
+  - No union steward was available. Complainant was told he could speak with his steward but had to leave immediately.
+- *S1 (affidavit):*
+  - She asked Complainant about three times to deliver his route, and he did not listen. He then became argumentative with PM.
+  - She had no knowledge of events in the men's locker room.
+  - No employee placed on EP was allowed to speak with the union before leaving the premises.
+
+**Claim 2 (suspension, September 14, 2022)**
+- *Complainant (affidavit):*
+  - S1 and S2 approached him as he loaded his mail truck, and S2 demanded his badge.
+  - S2 said he was being walked out for not fastening his seatbelt before starting the vehicle and for leaving the driver's seat with the engine running.
+  - S2 denied his request for a union steward.
+  - He understood Section 812 of Handbook M-41 to require seatbelts only while the vehicle is in motion.
+  - He did not think age factored into this incident and had no comparator examples.
+- *The record:*
+  - Complainant was again placed on EP, off duty without pay.
+  - He received a Notice of 14-Day Suspension on September 22, 2022. The letter cites failure to follow instructions on August 30, 2022 as the reason. ROI at 00192-00193.
+- *S2 (affidavit):*
+  - He observed Complainant exit the truck and walk in front of it with the engine running.
+  - He called this a safety violation and said Agency policy requires seatbelts at all times while operating a vehicle.
+  - Because Complainant was placed on EP immediately, he had to contact the union off postal property.
+- *S1 (affidavit):* She had no knowledge of the incident because she was not present.
+
+**Claim 3 (bathroom, September 20, 2022)**
+- *Complainant (affidavit):*
+  - S2 followed him into the bathroom twice, yelled at him, and threatened discipline.
+  - He believed age was a factor because, being older, he has to use the bathroom more often.
+  - He had no comparator examples.
+- *S2 (affidavit):*
+  - He denied raising his voice.
+  - He said that if he followed Complainant, it was because of Complainant's performance.
+  - Complainant spent a long time in the locker room doing something in his locker rather than washing up.
+
+**Claim 4 (seatbelt, September 24, 2022)**
+- *Complainant (affidavit):*
+  - He started the engine and was fastening his seatbelt when S2 yelled at him through the passenger window.
+  - Citing Section 812 of Handbook M-41, he said S2 wrongly required fastening before the engine is started rather than before the vehicle is shifted into gear.
+  - S1 told S2 she saw nothing wrong.
+  - He called the National Association of Letter Carriers (NALC) office, and someone there confirmed his understanding of the policy.
+  - S1 told him to deliver his route, to follow all supervisor instructions, and to fasten his seatbelt before starting the engine from then on.
+  - He did not think age was a factor and had no comparator examples.
+- *S2 (affidavit):*
+  - He thought seatbelts needed to be fastened before starting a vehicle.
+  - He called safety and was told this was not a written Agency policy.
+  - He told Complainant this, and Complainant was allowed to proceed on his route.
+- *S1 (affidavit):*
+  - She confirmed S2 called her over and asked whether she saw anything wrong. She did not, and she told Complainant to follow his supervisor's instructions.
+  - She was unsure whether the request was sent to all carriers or whether other carriers already fastened seatbelts before starting.
+  - She said the relevant conversation was between S2 and Complainant.
+
+**Claim 5 (escorted out, November 1, 2022)**
+- *Complainant (affidavit):*
+  - He gave S1 a doctor's note for 30 days of no overtime due to right shoulder repetitive motion pain. S1 said she did not need to honor it.
+  - That evening he returned with undelivered mail and clocked out. S1 told him to keep delivering until he finished.
+  - He cited the note and said that ignoring it and demanding overtime did not seem safe.
+  - S1 asked whether he was refusing instructions, then demanded his badge, and he was escorted off the premises.
+  - He believed age was a factor because he was expected to finish an overburdened route, and as an older worker he recovers more slowly from pain and injury.
+  - He had no comparator examples.
+- *The record:* Complainant was again placed on EP, off duty without pay, effective November 2, 2022.
+- *S1 (affidavit):*
+  - Complainant told her, on union advice, that he could bring his mail back and did not have to listen to management.
+  - She asked him three times to finish his route and told him he had to follow supervisor instruction.
+  - She sent his medical documentation to Occupational Health Management (OHM), which advised that he could finish his route that day.
+  - OHM said it was looking into whether the note had to be honored as a limited duty job offer or treated as a light duty request requiring PM approval, and told her to wait for an update.
+
+## Decision and Reasoning
+- **Decision-makers:**
+  - The AJ decided the case without a hearing on January 4, 2024.
+  - The Agency adopted and fully implemented that decision in its final order.
+- **Outcome:** Complainant failed to prove the Agency subjected him to discrimination and harassment as alleged.
+- **Criteria applied (as stated in the record):**
+  - Whether the Agency's unrebutted facts established nondiscriminatory reasons for its actions.
+  - Whether Complainant offered evidence of biased age-related comments by management or more favorable treatment of younger workers.
+  - Whether, viewing the evidence in the light most favorable to Complainant, a reasonable factfinder could conclude the Agency's actions were tainted by age considerations.
+- **Responses considered:**
+  - The AJ noted, as examples, that Complainant argued with supervisors, wasted time on his phone in the locker room, neglected to fasten his seatbelt, and failed to turn off his vehicle when exiting.
+  - The AJ found these predicates undisputed and a sufficient nondiscriminatory justification for the discipline and other management actions.
+  - The AJ found no evidence of biased age comments or more favorable treatment of younger workers, so no reasonable factfinder could find age-based taint.
+
+## Items to Note
+- The only record citation in the source is ROI at 00192-00193, for the suspension notice. The other statements are attributed to affidavits without page cites.
+- Claim 2 is framed as a September 14, 2022 suspension. The record shows the September 14 action was an EP, and the 14-day suspension notice was received September 22, 2022, citing the August 30 incident.
+- The AJ's reference to phone use in the locker room does not appear in the affidavit summaries above. S2 described only Complainant spending a long time in the locker room and doing something in his locker.

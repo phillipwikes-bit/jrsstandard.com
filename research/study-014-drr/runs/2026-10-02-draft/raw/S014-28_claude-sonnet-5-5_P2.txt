@@ -1,0 +1,89 @@
+# FINDINGS
+
+*Draft for investigator review. Findings are limited to what the record supports. Items needing verification or an investigator determination are flagged in brackets.*
+
+## I. Background Findings
+
+1. At the relevant time, Complainant was a GS-0343-13 Management Analyst in the Acquisitions Policy Oversight and Business Strategies Division, OSPE, Office of the Secretary, Washington, D.C. (ROI 210-16).
+2. Complainant engaged in prior protected EEO activity by filing an EEO complaint in 2016. This is not disputed. She alleges ongoing retaliation since then (ROI 112).
+3. Management officials involved are DD-1 (OSPE Deputy Director) and AD (Associate Director of Complainant's division, her supervisor since June 2018). Coworker and SPE (Senior Procurement Executive, DD-1's supervisor) are also identified.
+4. Complainant initiated EEO counselor contact on July 19, 2018, and filed a formal complaint on October 2, 2018, alleging reprisal under Title VII on seven claims.
+5. After the investigation, Complainant requested a hearing and then withdrew the request. The Agency issued a final decision under 29 C.F.R. § 1614.110(b) finding no discrimination. Complainant appealed.
+
+## II. Findings on Each Allegation
+
+### Claim 1: February 2017, DD-1 refused to discuss position description inaccuracies
+
+- **Undisputed:** A 2016 desk audit determined the position was properly graded at GS-13. Complainant and DD-1 met on February 6, 2017, as Complainant returned from a detail.
+- **Complainant's account:** She repeatedly raised inaccuracies in the "Scope and Effect" and "Supervisory Controls" sections beginning in February 2017, to no avail. She also asserts that DD-1 and AD were new to OSPE and unqualified to assess the description (ROI 115, 127).
+- **DD-1's account:** She reviewed the description with Human Resources and determined it accurately reflected the position's duties (ROI 139).
+- **Finding:** The record shows DD-1 did review the description, which conflicts with the allegation that she *refused to discuss* it. Complainant's disagreement goes to the outcome of the review, not to whether one occurred. The record contains no HR statement or written record of the review, and no evidence of what was said at later requests. [Verify whether HR was interviewed or documents exist.]
+
+### Claim 2: June 2017, affidavit from the prior EEO complaint posted on a shared drive
+
+- **Undisputed:** Coworker's investigative affidavit from Complainant's prior EEO case was saved to a shared drive. Complainant discovered it, reported it to DD-1, and it was deleted. Complainant deleted it herself after taking a screenshot (ROI 116, 139-40).
+- **Disputed:** Whether the posting was inadvertent or intended to harm Complainant's reputation.
+- **Management accounts:** DD-1 stated the save was inadvertent and that she directed Coworker to delete the file immediately once it was brought to her attention. Coworker stated she meant to save the file to her personal "H" drive and did not realize it was on the shared "S" drive until DD-1 told her (ROI 538, 139-40).
+- **Discrepancies:**
+  - Complainant identifies the location as the **M-60** shared drive, and her screenshot shows the affidavit there (ROI 64).
+  - Coworker states she saved it to the **M-61** drive and does not have access to M-60 (ROI 538).
+  - These accounts are inconsistent and the record does not resolve them. [Determine whether M-60 and M-61 are the same or different drives, who had access to each, and whether the screenshot is authenticated.]
+- **Finding:** The record contains no direct evidence of intent. The drive-location discrepancy bears on Coworker's credibility and on how many people could view the file, but it does not itself show retaliatory intent. The record does not establish how long the file was accessible or who viewed it. The screenshot is the only corroboration of location.
+- **DD-1's response:** She had the file deleted promptly after being told. The record does not show whether Coworker was counseled or disciplined. Complainant asserts discipline was warranted (ROI 127).
+
+### Claim 3: June 29, 2018, AD stated, "you think everyone is out to get you"
+
+- **Undisputed:** AD and Complainant met on June 29, 2018, about an assignment related to the Digital IT Acquisition Program. Complainant said she could not complete the assignment without consulting her attorney because the topic related to her pending EEO matter (ROI 117, 163).
+- **Disputed:** The statement itself.
+  - Complainant says AD questioned her as if in an interrogation, sent another email within minutes, and then said that Complainant believed everyone was out to get her (ROI 117).
+  - AD denies making the statement. She states that Complainant said she felt unfairly treated by prior supervisors and that AD responded that she had no intention of treating her unfairly (ROI 165).
+- **Finding:** This is a credibility dispute between two participants. No witness is identified. The record establishes that AD knew of the EEO complaint at the time of the meeting, since Complainant told her. The record does not contain the follow-up email or any contemporaneous notes. [Obtain the email(s) and any notes. Complainant's remark about prior supervisors and AD's reply may be the origin of the disputed wording, but that is inference only.]
+
+### Claim 4: July 2018, micromanagement, over-management, and telework restrictions
+
+- **Micromanagement:**
+  - Complainant cites, among other things, requests for additional documentation for W2DOT Program approvals in September 2018 and non-response to her approval requests (ROI 121-22, 128-29).
+  - DD-1 states she repeatedly asked for a consolidated program/project schedule and never received an adequate one (ROI 140).
+  - The examples cited are from **September 2018**, not July 2018 as pleaded. [Clarify the intended time frame.]
+  - The record does not show whether other program managers were subject to similar documentation requirements.
+- **Telework:**
+  - Complainant states the new telework policy was more restrictive for employees with ad hoc agreements, limiting them to one day per week (ROI 117-18).
+  - DD-1 states Complainant had a "very liberal ad hoc telework schedule" (arriving around 8:30-9:00, leaving at 3:00, and teleworking the remainder of the day). DD-1 says she placed no restrictions on it, even after the OSPE Timekeeping and Telework SOP took effect on July 1, 2018. AD states Complainant's schedule was "grandfathered" because it predated the SOP (ROI 140-41, 165-66).
+  - Complainant does not identify a specific instance in which her telework was actually restricted. The record as summarized shows the policy changed but does not show it was applied to reduce her telework. [Confirm with timekeeping or telework records.]
+
+### Claim 5: July 8, 2018, AD did not approve FAC-P/PM-IT certification
+
+- **Complainant's account:** She completed all required training and AD denied the application without explaining what was missing. She also approves bureau-level FAC-P/PM-IT applications and considers her position inherently IT-related (ROI 118-19, 130).
+- **Management's account:** AD and DD-1 state the certification is neither required nor expected for her position. AD states the certification is primarily for those responsible for IT investment acquisition, that Complainant does not hold such responsibility, and that her application did not document the minimum two years of experience (ROI 142, 166-68, 403-10).
+- **Finding:** The record contains management's stated reasons, plus application materials at ROI 403-10. Whether the application documented two years of qualifying experience can be checked against those documents. [Verify against the application and written policy. Determine whether AD gave Complainant any explanation of the denial and whether others with similar duties were certified or denied.]
+
+### Claim 6: July/August 2018, request for supervisory reassignment denied
+
+- **Clarification:** The complaint as framed states she was detailed to M and assigned M-60 program efforts. During the investigation, Complainant clarified she was **not** detailed to M (ROI 120-21). The claim should be read as a denied reassignment request. She also states a separate request for a detail to M in summer 2018 was denied by DD-1 for inadequate resources to cover her duties (ROI 120-21).
+- **Undisputed:** Complainant asked to be reassigned outside DD-1/AD's chain of command. The request was not granted. DD-1 states SPE denied a request to report directly to him. On August 7, 2018, DD-1 told Complainant that the two alternative supervisors she proposed were not logical options given her duties. DD-1 urged her to improve her working relationship with AD, who had been her supervisor about one month (ROI 119-20, 142-44, 147-49, 472-92).
+- **Complainant's objection:** DD-1 should not have decided the request, since it sought to move her away from DD-1's chain (ROI 131).
+- **Finding:** The record supports that DD-1 participated in deciding a request to leave her own chain of command. The reasons given are duty alignment and the short time AD had supervised her. The record does not state whether the detail denial was explained to Complainant in writing. [Confirm that the 2018 detail request denial is within the scope of the accepted claim.]
+
+### Claim 7: September 2018, request to speak on the Agile panel denied
+
+- **Undisputed:** A coach or contractor invited Complainant to speak on an Agile initiatives panel. AD denied participation as a speaker and offered attendance as an audience member (ROI 121, 131-32, 170, 498-506).
+- **Management's reasons:** AD stated OSPE had done little in adopting Agile practices beyond a few limited-scope events. DD-1 stated OSPE had not implemented any Agile initiatives outside technology, so Complainant had no Agency-specific knowledge to contribute (ROI 144-45, 169-70, 501-06).
+- **Finding:** The reasons given by AD and DD-1 are consistent with each other and with the email record at ROI 498-506. Complainant's assertion that AD "marginalized" the event is her characterization. [Determine whether any other employee was approved to speak, and whether Complainant has relevant Agile experience.]
+
+## III. Observations on Timeliness and Scope
+
+- Counselor contact occurred July 19, 2018. Claims 1 (February 2017) and 2 (June 2017) predate the 45-day window by well over a year. The record as provided does not show whether timeliness was raised or whether the claims are treated as part of a continuing pattern. [Investigator to confirm how the Agency addressed this.]
+- Claims 4 and 7 include events in September 2018, after counselor contact but before the formal complaint. [Confirm they were accepted as part of the complaint.]
+
+## IV. Record Issues
+
+1. **Incomplete-record contention on appeal:** Complainant argues the record is incomplete and requests sanctions. The Agency responds that Complainant did not provide documents the investigator requested, did not identify deficiencies after receiving the ROI, and withdrew her hearing request the day before discovery began. The record before me does not permit a finding on either side's account. [Obtain the investigator's document requests and Complainant's responses.]
+2. **New evidence on appeal:** Complainant submitted new evidence. The Agency argues it was reasonably available during the investigation. [Determine what the evidence is and whether it was available earlier.]
+3. **Citation anomalies:** The source text contains stray or out-of-sequence ROI citations (for example, "ROI at 64. ROI at 163, 172" appearing in the middle of the Coworker discussion) and a typographical reference to "Agile Unleashed." These should be checked against the ROI before the report is finalized.
+
+## V. Summary of Findings
+
+- **Established:** Prior protected activity; management knowledge of it (at least by AD as of June 29, 2018, and DD-1 as of June 2017); that the affidavit was saved to a shared drive and removed; and that the personnel actions described in Claims 5-7 occurred.
+- **Disputed and unresolved on the current record:** Intent behind the affidavit posting; the drive-location discrepancy; whether AD made the "everyone is out to get you" statement; and whether any actual telework restriction was applied.
+- **Management's stated reasons are on the record for each claim.** For Claims 1, 5, 6, and 7 these are legitimate on their face. Whether they are pretext depends on comparator evidence and corroboration that the record does not yet contain.
+- **No finding is made here on whether retaliation occurred.** That determination requires resolution of the flagged items above.

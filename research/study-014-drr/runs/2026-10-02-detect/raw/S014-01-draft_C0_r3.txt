@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "Each of the five claims is clearly stated with specific dates and actions, and findings are explicitly tied to each claim with documentary support (audit showing available leave, spreadsheet for case assignments, medical evaluation findings for accommodation, official time logs)."
+    },
+    "reasoning_traceability": {
+      "status": "pass",
+      "note": "The decision chain is traceable: complainant's assertions → agency response with evidence (audit, spreadsheet, medical evaluation, official time records) → AJ application of legal standards (no animus, severity/pervasiveness test, Rehabilitation Act burden) → final order adoption."
+    },
+    "cold_reviewer_clarity": {
+      "status": "pass",
+      "note": "A reviewer with no prior knowledge can reconstruct the full record from this summary: each claim states the alleged harm, the agency's factual response is documented, and the legal conclusions rest on identifiable evidence (leave audit results, case assignment method, accommodation requests with responses, official time allocation)."
+    },
+    "accountability_support": {
+      "status": "pass",
+      "note": "Evidentiary support is sufficient for each conclusion: paid leave was audited and retroactively granted; case assignments were alphabetical and documented; accommodation requests lacked medical foundation and benefited from approved alternatives; official time grant of 18 hours was logged and exceeds what was needed for two remaining questions."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "A clear chronology is present: Feb.–Mar. 2021 (FMLA/AWOL), May 6, 2021 (accommodation request), May 18, 2021 (reassignment request), June 19, 2021 (case reassignment), Aug. 3, 2021 (FMLA sick leave denial), Aug. 5, 2021 (audit request), Aug. 24, 2021 (accommodation appeal denial), Oct. 20–21, 2021 (official time granted), Oct. 26, 2021 (additional official time denied), Sept. 17, 2021 (EEO complaint filed), May 25, 2022 (prior AJ decision), AJ summary judgment, final order adoption."
+    }
+  },
+  "remediation_note": "No remediation required. The record fully satisfies all five JRS conditions with clear identification of bases, traceable reasoning, cold-reviewer reconstructability, sufficient evidentiary support, and complete chronology.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "None; all conditions pass.",
+    "compliant_version": "Record is compliant as drafted. It exemplifies the standard for EEO case documentation: each claim is fact-stated with dates; agency response is evidence-grounded; legal analysis explicitly applies standards of proof; and temporal sequence is unambiguous. Future similar records should maintain this structure."
+  }
+}
+```

@@ -1,0 +1,89 @@
+# CASE FILE SUMMARY
+
+**Parties and Employment Information:**
+- Complainant: Probationary Credentials Assistant, GS-0303-07, Naval Medical Center, Portsmouth, Virginia
+- First-level Supervisor (S1): Professional Affairs Coordinator (Assistant Department Head), GS-0301-11
+- Second-level Supervisor (S2): Department Head, GS-0301-12
+
+**Complaint Filing:**
+- Date of Termination: August 2, 2018
+- Date EEO Complaint Filed: November 8, 2018
+- Basis of Complaint: Discrimination based on race (African-American)
+
+**Investigation and Hearing:**
+- An Agency investigation was conducted, and Complainant was provided a copy of the investigation report with notice of her right to request an EEOC Administrative Judge hearing
+- Complainant requested a hearing
+- An EEOC Administrative Judge (AJ) held a hearing and issued a decision in favor of the Agency
+
+**Complainant's Theory of Discrimination:**
+At the hearing, Complainant testified that:
+- S2 made the decision to terminate her after learning that her "significant other" was White
+- S2 became aware of Complainant's interracial relationship in May 2018
+- Her relationship with S2 changed after May 2018
+- S1 had warned Complainant not to let S2 know she was dating a White man
+
+**Supporting Witness Testimony:**
+Complainant presented a coworker (CW), Program Analyst, GS-0303-07, who testified that:
+- S2 openly stated that S2's husband was extremely biased against interracial relationships
+- S2 expressed surprise that Complainant was dating a White man
+- S2 made other race-related remarks
+- Both Complainant and CW testified that S1 had warned them about S2's prejudice
+
+**AJ Credibility Findings:**
+The AJ determined that:
+- Complainant's theory of discrimination based on direct evidence was unreliable
+- Neither Complainant nor her supporting witness (CW) were credible
+- The testimony lacked credibility "due to the glaring omission of any theory about Complainant's interracial relationship in her complaint, EEO counseling records, or her affidavit [during the investigation]"
+- The AJ reasoned that "[t]his type of evidence, if credible, would not have come up for the first time some three years after her termination"
+
+**Prior Theories Advanced by Complainant:**
+During EEO counseling and in her affidavit, Complainant had explained that:
+- She believed her termination stemmed from events that occurred during a work conference in Leesburg, Virginia, where S2 allegedly engaged in inappropriate behavior
+- Complainant believed that S2 "did not trust [her] to not share what happened"
+- Her termination was related to the fact that S2 thought Complainant had filed a grievance against her, though it had been another employee
+
+The AJ noted that these prior theories "have no apparent connection to her race."
+
+**Witness Affidavit Inconsistencies:**
+- CW's affidavit submitted during the investigation referenced events at the training in Leesburg and stated that "Complainant was discriminated against because she was an African-American with more experience than management"
+- CW's affidavit stated that S1 had made racially inappropriate remarks but made no mention of Complainant's partner being White or S2's opposition to it
+- The reference to S2's prejudice against interracial relationships was "conspicuously missing from [CW's] affidavit"
+
+**First-Level Supervisor's Testimony:**
+S1 testified during the hearing and denied making any comments about S2 being racist.
+
+**Agency's Stated Legitimate, Nondiscriminatory Reason for Termination:**
+According to the Notice of Termination letter, Complainant was terminated for failure to "follow the privileging/credentialing process when [she] misrepresented to [her] leadership that a provider had specifically requested privileges when in fact [Complainant] made the request."
+
+**Factual Basis for Stated Reason:**
+- A provider's credentialing/privileges application was involved
+- The provider selected incorrect privileges based on Complainant's mistaken belief about proper protocol for credentialing contract providers
+- Complainant's inaccurate guidance delayed the provider's application and prevented him from receiving proper credentials until the day his then-current privileges were set to expire
+- The provider contacted Complainant's supervisors to express frustration with the delay, stating that Complainant had provided incorrect guidance
+- When supervisors asked about the incident, Complainant explained to S1 that she had received a prior application from the provider in which he had improperly requested incorrect privileges, and her mistaken guidance was based on that prior application
+- S2 obtained a written statement from the provider, concluded that Complainant had misrepresented what happened, and this provided part of the basis for her termination
+
+**Provider Witness Testimony:**
+The provider testified at the hearing and the AJ found him credible when he testified that:
+- He and Complainant discussed the privileges application before he submitted it
+- He submitted his application based on her instructions
+
+**AJ Credibility Finding Regarding Complainant:**
+The AJ found Complainant "not credible in her testimony that she never spoke to [the provider] prior to him submitting the [first] application."
+
+**Pretext Analysis:**
+The AJ concluded that "Complainant has failed to prove pretext because there is no evidence that" a similarly situated employee named by Complainant "was involved in a similar episode, or that she was dishonest with her managers." The AJ found that Complainant's "credibility is doubly important in this case because her lack of candor was part of why she was terminated."
+
+**Secondary Reason for Termination:**
+The Notice of Termination also included that Complainant "failed to initiate the renewal privileging/credentialing process within 90 days as required."
+
+The AJ found this claim to be untrue and noted that a similarly situated employee had several renewals nearing expiration with less than 90 days remaining but was not terminated. The AJ found that "[i]f this were the only reason for Complainant's termination, she would be able to demonstrate pretext. But it was not."
+
+**Overall AJ Conclusion:**
+The AJ found that the Agency had not discriminated against Complainant as alleged.
+
+**Final Agency Action:**
+When the Agency failed to issue a final order within forty days of receipt of the AJ's decision, the AJ's decision finding that Complainant failed to prove that the Agency subjected her to discrimination as alleged became the Agency's final action pursuant to 29 C.F.R. § 1614.109(i).
+
+**Appeal:**
+The instant appeal followed the AJ's decision.

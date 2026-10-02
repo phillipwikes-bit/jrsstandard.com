@@ -1,0 +1,33 @@
+# FINDINGS
+
+## Jurisdiction and Parties
+
+The Complainant, employed as an Administrative Technician, GS-0303-05, at the Agency's Chicago Regional Office in Oak Brook, Illinois, filed an Equal Employment Opportunity (EEO) complaint on August 24, 2021, alleging discrimination and reprisal in connection with his termination effective July 28, 2021. The complaint alleged that the Agency discriminated against him based on disability (diabetes and liver fibrosis) and in reprisal for prior protected EEO activity consisting of a request for reasonable accommodation. The Agency issued a final decision finding no discrimination or reprisal, and Complainant timely appealed.
+
+## Factual Background
+
+Complainant commenced employment with the Agency on January 17, 2021, under a Competitive-Career Conditional Appointment requiring a one-year probationary period. He had previously been employed by the Agency as an Administrative Manager on an Excepted Service Appointment during the decennial census.
+
+During his probationary period, Complainant's performance was documented as deficient in multiple areas. A progress review dated June 15, 2021, from his first-level supervisor indicated that Complainant was not performing at the fully successful level 3 or above and identified areas requiring improvement, including familiarization with onboarding and payroll processes and timely completion of assignments. During June 2021, S3 (third-level supervisor, Program Coordinator) sent three emails to Complainant addressing performance issues including incomplete or missing payroll for employees in Complainant's service area, payroll processing delays for pay period 11, and the status of new hires. On June 17, 2021, S3 issued Complainant a memorandum titled "Failure to Follow Up on Payroll Issues" documenting performance deficiencies.
+
+When S1 (Administrative Officer) assumed supervisory responsibility in early July 2021, she discovered errors in Complainant's work that had prevented timely payment to employees and resulted in new hires resigning. S1 retrained Complainant's staff and noted that despite retraining, Complainant "continued to have unresolved pay issues for the new hires he was responsible for."
+
+On July 28, 2021, S3 issued a termination letter citing Complainant's unacceptable performance during the probationary period, specifically identifying failures to ensure timely onboarding of new hires, to track them through the hiring process, and to process payroll in a timely manner.
+
+## Disability and Qualification Status
+
+The Agency determined that Complainant was an individual with a disability and was qualified within the meaning of the Rehabilitation Act. Complainant does not contest these findings.
+
+## Prima Facie Case and Legitimate Non-Discriminatory Reasons
+
+Assuming Complainant established a prima facie case of both discrimination and reprisal, the Agency articulated legitimate, nondiscriminatory reasons for the termination: performance deficiencies in payroll processing and new hire onboarding during the probationary period. These reasons were documented through multiple supervisory observations and communications spanning June and July 2021.
+
+## Pretext Analysis
+
+Complainant's ability to demonstrate pretext was significantly undermined by the record evidence. While the Administrative Specialist (AS) averred that she did not observe performance problems during Complainant's work on the Census Investigative Service Missing Documents Project and suggested the termination may have been based on disability or accommodation requests, the Agency reasonably determined that AS's limited supervisory purview—restricted to the Missing Documents Project only—did not encompass the payroll and new hire onboarding functions where documented deficiencies occurred. Three supervisors (S3, S1, and AS's predecessors) confirmed performance problems in these specific areas, substantially outweighing AS's limited observations in an unrelated assignment.
+
+Regarding the retaliation allegation, the Agency found no evidence that S3 voiced opposition to Complainant's reasonable accommodation request or his telework schedule. Moreover, the record demonstrated that all Administrative Technicians supervised by S3 teleworked two days per week for at least a portion of the relevant period, suggesting no discriminatory or retaliatory animus toward Complainant's accommodation.
+
+## Conclusion
+
+Complainant failed to establish that the Agency's articulated reasons for termination were pretextual. The documented performance deficiencies, corroborated by multiple supervisors, provided a legitimate, nondiscriminatory basis for the termination decision. Complainant's subjective belief regarding the motivation for termination was insufficient to overcome the objective performance record established during his probationary period.

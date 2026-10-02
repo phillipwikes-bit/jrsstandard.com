@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The record lacks clear identification of the basis for the Agency's critical determination that Complainant failed to request a hearing 'within the time frame provided'—no dates of ROI transmittal, receipt confirmation, or deadline calculation appear in the record."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision-process chain from evidence (email delivery failures, ambiguous receipt status, conflicting affidavits) to the conclusion that Complainant waived her hearing right is not traceable; critical causative steps are missing or obscured."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct why the case was deemed 'closed' before Complainant received ROI, or how the 30-day ROI download window and the hearing request deadline interact, because the record does not establish these temporal or procedural anchors."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The evidence does not sufficiently support the Agency's conclusion that Complainant failed to timely request a hearing: delivery notifications failed twice, Complainant's telephone conversation indicates she was not notified of case closure, and the record does not confirm she received the ROI within the regulatory window."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "No specific dates are provided for ROI transmittal, receipt, the 30-day download windows, the hearing request deadline under 29 C.F.R. § 1614.108(f), or Complainant's actual receipt of any ROI; the chronology cannot be followed."
+    }
+  },
+  "remediation_note": "The record requires insertion of specific dates (ROI transmission, Complainant's receipt or non-receipt, regulatory deadline, and hearing request receipt), explicit confirmation of actual notice to Complainant, and documented reasoning explaining how the timeliness determination was made despite failed email deliveries and Complainant's credible account that she was not notified.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support, temporal_reconstructability",
+    "compliant_version": "A compliant version would establish: (1) the exact date(s) the Agency transmitted the ROI and the method(s) used; (2) documentary proof of actual receipt by Complainant or confirmation that delivery failed; (3) the regulatory deadline for the hearing request (date certain under 29 C.F.R. § 1614.108(f)); (4) the date Complainant submitted her hearing request; (5) explicit findings addressing the impact of the two failed email notifications and the Complainant's unrebutted account that an EEO analyst told her the case was closed; and (6) the Agency's documented reasoning for concluding timeliness was waived notwithstanding these facts."
+  }
+}
+```
