@@ -637,3 +637,5 @@ EXPLANATION: the form was referred to as pending on 2026-07-21 (MASTER_TRACKER) 
 - Reusing its wording in other articles, the training, guides or a book requires SCCE & HCCA permission, or whatever their Author Permissions Policy allows. **Obtain that policy.**
 - Whether a copyright transfer in one article's text reaches the methods or ideas it describes is a **counsel question**. *Inference:* copyright ordinarily covers expression, not ideas.
 - The sole-authorship and originality warranties should be read by counsel against the recorded AI-assisted drafting account (E-029). **REQUIRES HUMAN REVIEW.**
+
+Update 2026-10-02: committed to the repository at `research/evidence/scce_copyright_2026-07-21/CEP_Copyright_Transfer_Form_signed_2026-07-21.jpg` on the owner's explicit instruction. The earlier note that it was deliberately not committed is kept as history.
