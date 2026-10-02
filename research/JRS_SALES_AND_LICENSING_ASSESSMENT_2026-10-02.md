@@ -453,6 +453,12 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | 19 | Curriculum-licence preparation: a rights schedule of the training content (excluding CEP and CCI text) and a one-page term sheet; only if D8 allows | OPEN |
 | 20 | ED-05 (record text sent without delimiters): prepare a fix; testing it needs a small paid-call allowance and owner approval | OPEN |
 | 21 | Update the stale `scripts/publication_status.py` | OPEN |
+| 24 | Migrate the Engine off `claude-haiku-4-5-20251001` to a longer-supported model and freeze Engine v0.2 (needs a small paid test allowance) | OPEN |
+| 25 | Publish a version-controlled Codebook-to-Engine condition mapping (ED-06) | OPEN |
+| 26 | Remove or disable the `compliant_version` rewrite for evaluation and benchmark use | OPEN |
+| 27 | Define the unit of review: a final decision record or a whole investigation file (8,000-character limit) | OPEN |
+| 28 | Add an evaluation mode with no JRS telemetry, for any non-synthetic pilot | OPEN |
+| 29 | Study 013 feasibility round: 30 hidden records, arms A to D; needs owner approval for outside contributors and paid calls | OPEN |
 
 ## C. Research credibility (parallel; affects buyer diligence)
 | # | Item | Status |
@@ -467,63 +473,94 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 4. **You approved** with "For 2 whatever you recommend" and "Yes to all 6" (gate L1 record).
 5. **There is no market basis for the figure.** No buyer, comparable licence or price test supports it.
 
-## Appendix C. Pricing evidence for the two licence candidates
+## Appendix C. Pricing evidence for the two licence candidates (redone 2026-10-02)
 
-**2 October 2026.** Requested by the owner: "a price point supported by market evidence for both licenses." Web sources retrieved today. Most are vendor pages, review aggregators or vendor blogs, so they show **ranges and norms, not a precise comparable**: no source prices a narrow, unvalidated, solo-developed review module or a new investigator curriculum. Labels: *Observed* (read today), *Inference* (my reasoning), *Judgment* (my number, not calibrated).
+**Method.** The first pass relied on search-result summaries. This pass opened the primary pages wherever possible. Each figure is marked **VERIFIED** (page opened and quoted on 2026-10-02) or **UNVERIFIED** (search summary only; the page was blocked or not opened). No source prices a narrow, unvalidated review module or a new investigator curriculum directly, so every price below is a reasoned range, not a proven market price.
 
-### 1. The Engine evaluation licence (currently USD 1,000)
+### C.1 Engine evaluation licence (current test price USD 1,000)
 
-**Market evidence (*Observed*):**
-| Evidence | Figure | Source |
+| Evidence | Figure | Status |
 |---|---|---|
-| HR Acuity (employee relations and investigations platform), entry price | from about USD 10,000 a year; quote-based | Capterra |
-| Case IQ (investigation case management), basic plan | about USD 20,000 a year (an aggregator estimate, not official) | review aggregators |
-| AllVoices, small-company minimum | USD 5,000 to 10,000 a year | Vendr marketplace |
-| Paid pilot norm for enterprise SaaS | 10 to 30% of annual contract value, usually credited to the contract if the buyer converts | Monetizely |
-| Paid pilot norm for early-stage SaaS | 5 to 15% of target annual value, or 1 to 2 months of list price | DoWhatMatter |
+| AllVoices (employee-relations and investigations platform), actual buyer transactions on Vendr | **Median USD 15,000 a year**, from 35 purchases; low USD 5,572, high USD 38,089 | VERIFIED (vendr.com/marketplace/allvoices) |
+| HR Acuity, entry price | "Starting at USD 10,000 a year"; quote-based | UNVERIFIED (Capterra summary) |
+| Case IQ, basic plan | About USD 20,000 a year, an aggregator estimate | UNVERIFIED |
+| Paid-pilot norms | 10 to 30% of annual contract value, credited on conversion; 5 to 15% for early-stage vendors | UNVERIFIED (vendor blogs, Monetizely and DoWhatMatter) |
 
 **Reading (*Inference*):**
-- Those prices are for whole platforms. A single-function, unvalidated add-on would sit below their entry prices. A realistic first annual licence for the Engine is about **USD 5,000 to 10,000** (*Judgment*).
-- At the 10 to 20% pilot norm, that gives a paid evaluation of **USD 500 to 2,000**.
+- The only verified transaction data point is a full platform at a median of USD 15,000 a year. The Engine is one function, unvalidated, from a solo vendor, so a realistic first annual licence is **USD 5,000 to 10,000** (*Judgment*).
+- A trial at 10 to 20% of that is **USD 500 to 2,000**. **USD 1,000 sits inside that range.** A credited USD 1,500 is also defensible, but the pilot norms behind both figures are unverified blog guidance.
 
-**Result:** USD 1,000 is **consistent with the evidence** (about 10 to 20% of a USD 5,000 to 10,000 licence). It is not contradicted by anything found.
-- An evidence-consistent alternative is **USD 1,500, credited in full to a first annual licence** signed within 60 to 90 days, which is the norm the pilot sources describe.
-- The buyer also pays their own model-provider costs (about USD 0.0035 per record review on the tested run).
+**A new condition before selling the trial (verified 2026-10-02 on Anthropic's model-deprecations page):** the Engine is pinned to `claude-haiku-4-5-20251001`. That model is **Active**, with a tentative retirement "not sooner than October 15, 2026", and `api/_model.js` already sets a review-by date of 2026-10-15. Anthropic gives at least 60 days' notice before retiring a model, and no deprecation notice exists as of today. *Inference:* retirement cannot come before early December 2026, but it is the oldest model line still active, and any trial sold now must either disclose this or come after a migration (section E.1).
 
-## 2. The curriculum licence (no price yet)
+### C.2 Curriculum licence
 
-**Market evidence (*Observed*):**
-| Evidence | Figure | Source |
+| Evidence | Figure | Status |
 |---|---|---|
-| **Federal rule:** every federal EEO investigator must complete 32 hours of training when new and **8 hours every year** after that (EEOC Management Directive 110) | A recurring, compliance-driven demand | EEOC; U.S. DOT MD-110 Q&A |
-| 8-hour EEO investigator refresher, EEOC | USD 450 per person | EEOC training page |
-| FELTG refresher (June 2026) | USD 550 to 650 for 1 day; USD 995 to 1,095 for 2 days | FELTG |
-| Spectrum EEO, self-paced 8-hour refresher | USD 220 | Spectrum EEO |
-| Trusted EEO Solutions, 8-hour refresher | USD 250 | Trusted EEO Solutions |
-| DJCPA Academy, 8-hour refresher | USD 175 | DJCPA Academy |
-| AWI Training Institute (4 days, accredited certificate) | USD 3,350 to 3,500 per student (2024) | AWI |
-| Train-the-trainer licensing (vendor blog, enterprise level) | facilitator certification USD 15,000 to 45,000, plus USD 45 to 125 per participant a year | Monetizely-type source |
-| Individual train-the-trainer programmes | USD 700 to 5,000 per person | Hard Hat Training; R1 Learning; Sources of Strength |
+| **The federal rule (EEOC Management Directive 110, chapter 6).** New EEO investigators need 32 hours of training; every investigator needs "at least eight hours of continuing investigator training every fiscal year", including "investigative skills development". "Agencies may also develop their own courses ... or contract with others to provide training" | Recurring, rule-driven demand; outside providers and agency-built courses are both allowed | VERIFIED (eeoc.gov MD-110 chapter 6) |
+| EEOC 8-hour refresher for investigators | USD 450 per person; "meets the annual 8-hour requirement" (2023 session page) | VERIFIED |
+| Trusted EEO Solutions 8-hour refresher (sessions in October and November 2026) | USD 250 per person, live webcast | VERIFIED |
+| FELTG 1-day refresher (June 2026) | USD 550 to 650 | UNVERIFIED (page returned 403) |
+| Spectrum EEO, self-paced refresher | USD 220 | UNVERIFIED |
+| DJCPA Academy, refresher | USD 175 | UNVERIFIED |
+| **A licensed-curriculum model from your own field: Moral Reconation Therapy (MRT), Correctional Counseling, Inc.** | Facilitator training (online) **USD 680** per person (sessions October to December 2026). Participant workbook **USD 27**, case of 40 USD 1,080, minimum 6; **"Purchase requires MRT facilitator training"**, so only trained facilitators may buy | VERIFIED (ccimrt.com) |
+| AWI Training Institute (4 days, accredited certificate) | USD 3,350 to 3,500 per student (2024) | UNVERIFIED |
 
 **Reading (*Inference*):**
-- **The strongest evidence is the mandatory 8-hour annual refresher.** Providers already charge USD 175 to 650 per person for it. A JRS module on AI-drafted and reconstructable records could be licensed to those providers as a refresher module, but **whether it would count toward the MD-110 refresher has not been verified**.
-- **Evidence covers what participants pay, not what content owners receive.** No source found states a royalty share for licensed content. The train-the-trainer figure (USD 45 to 125 per seat) is enterprise-level and comes from a vendor blog.
+1. **The demand is real and recurring, and JRS fits the stated content.** MD-110 requires 8 hours a year from every federal EEO investigator, names "investigative skills development" as content, and allows contracted providers. A module on whether an investigative record can be reconstructed fits that description. Whether a particular agency or provider accepts it is untested.
+2. **Providers sell those 8 hours at USD 175 to 650 per person** (two figures verified, three unverified). A licensed JRS module would be a part of their course, so its value is a fraction of that.
+3. **MRT shows a proven licensing structure in a field close to your Second Thought Alternatives work:** a paid facilitator certification (USD 680) plus per-participant materials (USD 27) that only certified facilitators can buy. A JRS equivalent would be a facilitator certification plus per-participant materials. Your "free, permanently" decision (25 August) conflicts with charging for participant materials, so decision D8 governs which parts can carry a price.
 
-**Price options (*Judgment*, to test, not market-proven):**
-1. **Per-participant royalty:** USD 25 to 50 per participant who takes the JRS module. That is about 10 to 25% of the USD 175 to 450 per-person refresher prices.
-2. **Flat annual licence to one provider:** USD 2,500 to 7,500 a year, unlimited delivery within that provider.
-3. **Facilitator licence** (you certify a provider's trainers): far below the USD 15,000 to 45,000 enterprise figure until JRS has a track record. USD 1,500 to 3,000 per facilitator is a starting test.
+**Price options, now anchored (*Judgment*):**
+| Model | Range | Anchor |
+|---|---|---|
+| Facilitator certification for a provider's trainers | USD 500 to 900 per facilitator | MRT USD 680 |
+| Per-participant licence or materials fee | USD 20 to 35 per participant | MRT USD 27; about 5 to 15% of USD 175 to 650 refresher prices |
+| Flat annual licence to one provider | USD 2,500 to 7,500 a year | No direct comparable; a test figure |
 
-**The best evidence available is your own:** the curriculum you licensed through Second Thought Alternatives (2003 to 2018). The records name the company and your role, but contain **no licensing terms or prices**. Your past prices, models and buyers would anchor this better than any web source.
+**Still the best evidence: your own past licences.** The record names Second Thought Alternatives (2003 to 2018) but holds no terms. Your prices, models and renewal history would anchor this better than any source above.
 
-**Constraints (from Appendix A):**
-- Guides and training are free permanently (25 Aug); whether licensing to providers fits is decision D8.
-- FELTG belongs to the referral channel you closed on 23 August. The other refresher providers do not.
-- The curriculum must exclude CEP text (SCCE owns it) and CCI material (co-author approval).
+**Constraints (Appendix A):** free-permanently and D8; FELTG belongs to the channel closed on 23 August, and the other providers do not; exclude CEP text (SCCE-owned) and CCI material (co-author approval).
 
-## Sources (retrieved 2026-10-02)
-- Engine: [HR Acuity on Capterra](https://www.capterra.com/p/111531/HR-Acuity-On-Demand/); [Case IQ on Capterra](https://www.capterra.com/p/73201/Case-IQ/); [AllVoices on Vendr](https://www.vendr.com/marketplace/allvoices); [Monetizely pilot pricing](https://www.getmonetizely.com/articles/how-to-structure-enterprise-pilot-program-pricing-effective-proof-of-concept-strategies); [DoWhatMatter pilot pricing](https://dowhatmatter.com/guides/pilot-pricing-seed-saas).
-- Curriculum: [EEOC refresher](https://www.eeoc.gov/training/2023/09/eeo-refresher-training-investigators-virtual); [DOT MD-110 Q&A](https://www.transportation.gov/civil-rights/civil-rights-awareness-enforcement/questions-and-answers-new-management-directive-110); [FELTG refresher](https://feltg.com/event/eeo-counselor-and-investigator-refresher-training-june-3-4-2026/); [Spectrum EEO](https://spectrumeeo.talentlms.com/catalog); [Trusted EEO refresher](https://www.trustedeeosolutions.com/course/eeo-investigator-refresher); [DJCPA refresher](https://djcpas-academy.thinkific.com/courses/equal-employment-opportunity-eeo-continuing-investigator-training); [AWI Training Institute](https://www.awi.org/events/EventDetails.aspx?id=1806381); [Ruzuku B2B training pricing](https://www.ruzuku.com/learn/articles/how-to-price-training-courses); [Hard Hat Training](https://www.hardhattraining.com/train-the-trainer-cost/); [R1 Learning](https://store.r1learning.com/collections/r1-training/products/r1-train-the-trainer-program-see-pricing-tiers); [Sources of Strength](https://sourcesofstrength.org/pricing/).
+**Sources (opened 2026-10-02 unless marked):** [AllVoices on Vendr](https://www.vendr.com/marketplace/allvoices); [Anthropic model deprecations](https://platform.claude.com/docs/en/about-claude/model-deprecations); [MD-110 chapter 6](https://www.eeoc.gov/federal-sector/management-directive/chapter-6-development-impartial-and-appropriate-factual-records); [EEOC refresher](https://www.eeoc.gov/training/2023/09/eeo-refresher-training-investigators-virtual); [Trusted EEO refresher](https://www.trustedeeosolutions.com/course/eeo-investigator-refresher); [MRT facilitator training](https://www.ccimrt.com/product-category/online-trainings/mrt-facilitator/); [MRT workbook](https://www.ccimrt.com/product/how-to-escape-your-prison-adult-version/). Unverified (summaries only): [HR Acuity on Capterra](https://www.capterra.com/p/111531/HR-Acuity-On-Demand/); [Monetizely](https://www.getmonetizely.com/articles/how-to-structure-enterprise-pilot-program-pricing-effective-proof-of-concept-strategies); [DoWhatMatter](https://dowhatmatter.com/guides/pilot-pricing-seed-saas); [FELTG](https://feltg.com/event/eeo-counselor-and-investigator-refresher-training-june-3-4-2026/); [Spectrum EEO](https://spectrumeeo.talentlms.com/catalog); [DJCPA](https://djcpas-academy.thinkific.com/courses/equal-employment-opportunity-eeo-continuing-investigator-training); [AWI](https://www.awi.org/events/EventDetails.aspx?id=1806381).
+
+## Appendix E. The Engine-versus-AI study plan the owner supplied (analyzed 2026-10-02)
+
+The owner pasted an adversarial plan, written elsewhere, for testing whether the Engine adds value beyond ordinary AI. Each factual claim was checked against the repository or a primary page.
+
+### E.1 Claims checked
+| Claim in the plan | Finding |
+|---|---|
+| The Engine runs on `claude-haiku-4-5-20251001` | **Confirmed** (`api/_model.js:25`) |
+| Haiku 4.5 retires no sooner than 15 October 2026 | **Confirmed as stated by Anthropic (Active; "not sooner than October 15, 2026").** **Overstated** as "may retire this month": Anthropic gives at least 60 days' notice and has issued none, so the earliest possible retirement is about early December 2026 (*Inference*). The conclusion still holds: migrate before the definitive study. Active models with later floors include `claude-sonnet-5-5` (not before 28 September 2027) and `claude-sonnet-4-6` (not before 17 February 2027) |
+| The Engine's condition names differ from the Codebook | **Confirmed** (defect ED-06; the Engine page says so) |
+| The Engine returns a rewrite (`compliant_version`) | **Confirmed** (`api/review-engine.js:66, 148`). The repository also records that authenticated logging persists it (`review-engine.js:229`, blocker B-013A) |
+| Authenticated input truncates at 8,000 characters | **Confirmed** (`review-engine.js:281`) |
+| The Engine allows 1 to 5 runs and reports variance | **Confirmed** (`review-engine.js:282, 297`) |
+| Detection 83.9% with sensitivity 87.0% and specificity 80.7%; cross-vendor agreement 85.3% | **Confirmed** (E-037, E-039). The 85.3% is all 61 runs; the clean series is 87.2% over 41 runs |
+| HR Acuity 2026 benchmark figures (70%, 46%, 56%) and Anthropic's 30-day API retention | **Not checked this pass**; treat as source-reported |
+
+### E.2 Where I agree
+1. **Two separate questions:** does JRS improve AI review (A against B), and does the Engine beat AI given the public JRS (B against C, plus C against D)? Neither has been tested. The present smoke run used five self-built records and no comparison arm (Technical Report Revision 2).
+2. **The four arms:**
+   - A: same model, strong generic prompt.
+   - B: same model plus public JRS.
+   - C: the Engine.
+   - D: a strong current model plus public JRS.
+   Use equal inference budgets for the primary comparison; treat records, not runs, as the unit; and do not let an LLM grade the headline result.
+3. **Fix three things first:** the Codebook mapping, the rewrite (remove it from the benchmark; it conflicts with JRS by improving prose without adding evidence), and the unit of review (a final decision record against a whole investigation file).
+4. **A feasibility round of 30 records, then about 100 to 150 only if a signal appears.** At 80% on 30 records the 95% Wilson interval is roughly 63% to 90%, which matches the plan's figure.
+5. **Some cases written, and the key checked, by people other than you;** an independent statistician to review the protocol.
+6. **Four outcomes, not one:** detection, grounding, stability and governance artifact.
+7. **A pre-set stop rule:** if a strong general model plus public JRS matches the Engine on detection, grounding and stability, then the commercial asset is the methodology, benchmark, corpus, Codebook and Manifest, and the Engine becomes a reference implementation. This matches section 3 of this report (what a buyer cannot download).
+
+### E.3 What it changes in this report
+- **Point 1 (first sale):** the Engine trial should not be sold on the current model without disclosing the lifecycle. Better, it should follow a migration to a longer-supported model, the rewrite's removal and a frozen v0.2. **The curriculum licence has no such dependency.** This may reorder the two candidates, which is for the owner to decide.
+- **Appendix B gains:** model migration and freeze; Codebook-to-Engine mapping; rewrite removal; unit of review; an evaluation mode with no JRS telemetry.
+- **Cost and decisions:**
+  - Arm D needs a paid allowance for another vendor's model.
+  - Independent case writers and reviewers mean contacting outside people (an owner decision).
+  - A statistician is a paid engagement.
+  - None of this is authorized yet. Synthetic records only until then.
 
 ## Appendix D. Manuscript review (four uploaded papers and the portfolio)
 
