@@ -37,6 +37,8 @@ You said the earlier answers were hasty. Measured against the six documents and 
 | Licence above USD 10,000 within 12 months | 15 to 25% | **5 to 15%** | A licence normally follows a pilot, and no pilot conversation exists. At 10 to 15 hours a week, pilot then licence in 12 months is tight |
 | First paid engagement (USD 500 to 5,000) within 6 months | 40 to 55% | **25 to 40%, if private outreach to 20 to 40 well-chosen organizations starts within a month; near 0% without outreach** | No inbound channel exists: zero leads (*Observed*, 1 and 2 October) |
 
+**The owner-page evidence (section 2.3) does not change these ranges.** It shows real reach (downloads in 51 countries, mostly through LinkedIn) with no conversion, because nothing is being asked for. That strengthens the case for private outreach. It does not show demand.
+
 **These numbers move on evidence, not effort** (section 7). A reply rate, a stated budget owner or one signed evaluation is worth more than any further document.
 
 **Holding is a legitimate choice.** Your checklist says so explicitly (AG-03, AG-05). If you hold, record it as a decision with a re-entry trigger, not as drift.
@@ -69,6 +71,29 @@ You said the earlier answers were hasty. Measured against the six documents and 
 | The repository is public, including the Engine prompt, the detection answer key, the sale strategy and reviewer rosters | *Observed* (B-018, B-020) |
 | A 0.1.1 Engine candidate and evidence entries E-040 to E-045 exist only on your local computer | *Observed* absent from GitHub (B-019) |
 
+### 2.3 Evidence on the owner page (*Observed*, 2026-10-02 07:24 UTC)
+I read `programme-status-9872fb93cc94.html` live (byte-identical to `main`) and every feed it loads.
+
+| Feed | What it shows | What it means for selling |
+|---|---|---|
+| Downloads (`geo-stats`) | **1,557 asset downloads from 51 countries**: Reviewer Reference 578, JRS Standard PDF 451, Rapid Review Card 241. Investigator Guides: 219 downloads from 19 countries. Last download 1 October | **Real reach.** Downloads count files, not people, and crawler filtering only began on 11 August, so treat these as an upper bound |
+| Site clicks (`asset-stats`) | 261 tracked clicks; `/enterprise.html` 29; training 58; 222 of 261 from the US | Some people look at the enterprise page; none has gone further |
+| Research (`panel-stats`) | 58 reviewers; 48 registered; 36 full-set completers in 16 countries; detection panel 16 in 11 countries; reliability set 25 raters | Confirms the recorded figures live |
+| Contributors (`contributor-stats`) | 33 confirmed of 42; 33 consented to use and transfer; 28 named, 5 anonymous; 29 organizations | Up from 31 confirmed on 29 August. The consents stay scoped to study publications |
+| Registration form (`gate-stats`) | 190 views (LinkedIn 83, direct 72), **1 registration (0.5%)**, 189 abandoned | **LinkedIn brings readers; the site does not convert them** |
+| Endorsements (`support-stats`) | 179 clicks from 24 countries; 3 named supporters; last on 21 September | Clicks are not de-duplicated, and both campaigns show exactly 88, so this may double count. Weak signal |
+| Training (`enroll-stats`) | 8 enrolled, 7 completed, 5 countries | Small, real use |
+| Practitioner survey (`asset-stats`) | 32 opens, **1 submission** | Little engagement from working organizations |
+| Organization pilots (`orgpilot-stats`) | **0. Never offered to anyone** | A true zero, not a rejection |
+| Paid offers (`offer-info`) | All three retired, no checkout | Consistent with the 15 August decision |
+| Leads (`leads-*`) | **0 leads.** 6 anonymous pay-screen attempts on the retired governance offer, all US, 9 to 27 September | Interest without a way to act on it |
+
+**Reading (*Inference*).** The funnel has a wide top and no middle. Thousands of downloads in 51 countries, mostly reached through LinkedIn, turned into one registration, one survey response, no leads and no organizational pilots. That pattern points to **no ask**, not no interest: the paid offers are retired and pilots were never offered. It supports private outreach (Option B), because the reach shows the topic travels while the site cannot turn readers into conversations. "Downloaded in 51 countries" is usable in outreach only with its basis stated (downloads, not people).
+
+**A further privacy finding (blocker B-021, CRITICAL).** The owner page's people feed now returns **33 email addresses with names and organizations to anyone who has its address**. 15 of those rows belong to people who did not consent to public listing. Its address is written in `CLAUDE.md` on public GitHub. You accepted that risk for your own page when the passwords came off, but the data belongs to contributors and trainees. Two remedies respect your no-password rule:
+- Make the repository private, which hides the address.
+- Then rotate the page and feed addresses together, which is what CLAUDE.md 36.3 prescribes when an address leaks.
+
 ## 3. What does a buyer get that the public cannot download?
 
 Your checklist asks for one honest paragraph. Here it is.
@@ -97,6 +122,7 @@ Your checklist asks for one honest paragraph. Here it is.
 - Two reviewer rosters that link study codes to real names, titles and countries have been publicly readable on GitHub since 6 August (blocker B-020). They predate consent.
 - The consented credit list records 27 people who chose to be named and 4 who chose not to be. 31 of the roster's 61 code entries do not appear on that list. *Inference:* people who declined naming, or never confirmed, are named publicly. The exact count needs the consent table.
 - This is first a duty to contributors, and only then a sales issue. But diligence would treat it as a red flag, and it undermines the "protect the blind" guardrail.
+- Worse, and live: the owner page's people feed hands 33 contributor and trainee email addresses to anyone with its address, and that address is on public GitHub (B-021; section 2.3).
 - The same public repository exposes the detection answer key, the slugs of both "confidential buyer" pages (they are written in the tracked CLAUDE.md file), the Engine prompt and the full sale strategy.
 
 **R4. Rights (HIGH).**
@@ -156,7 +182,7 @@ Your checklist asks for one honest paragraph. Here it is.
 ### Phase 0. This week: decisions only (about 2 owner hours)
 | # | Decision | My recommendation | Trade-off you are accepting |
 |---|---|---|---|
-| D1 | **Repository visibility (B-018, B-020)** | **Make it private now**, then decide separately on removing the rosters from history | Before switching, check that the Vercel GitHub app still has repository access (deploys come from GitHub) and that the `deploy-verify` workflow still runs. A private repository draws on a monthly GitHub Actions allowance. No public page links to GitHub (*Observed* earlier). Copies already taken cannot be recalled. A history rewrite is a separate, explicit authorization |
+| D1 | **Repository visibility (B-018, B-020, B-021)** | **Make it private now. Then have me rotate the owner-page and feed addresses together (no password involved), and decide separately on removing the rosters from history** | Before switching, check that the Vercel GitHub app still has repository access (deploys come from GitHub) and that the `deploy-verify` workflow still runs. A private repository draws on a monthly GitHub Actions allowance. No public page links to GitHub (*Observed* earlier). Copies already taken cannot be recalled. A history rewrite is a separate, explicit authorization |
 | D2 | **Outreach mode** | **Option B now** | You start learning before publication; you accept talking about work that is unvalidated beyond fixtures |
 | D3 | **Rotate the API key** | Yes, 5 minutes | None |
 | D4 | **The detection co-author's deferral** | Re-decide the trigger. "Until publication" may now be many months away. One option is to tie the narrow confirmation to the resubmission, which he must approve anyway | Asking earlier risks seeming transactional. Asking later leaves the thinnest file in the estate open |
@@ -208,7 +234,7 @@ Your checklist asks for one honest paragraph. Here it is.
 | Gap sensitivity 6/6 in buyer material | **2/2** under the frozen expectations | Technical Report Revision 2 |
 
 ## 9. Sources
-- Repository: `research/IP_SALE_TRACKER.md` (header, s6, s9, rev 14, rev 20); `docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md` (F-4, F-5, F-8, F-11, s12); `docs/enterprise-diligence/EVIDENCE_LEDGER.md` (E-004, E-014, E-025 to E-027, E-037 to E-039); `research/Contributor_Credit_List_2026-08-29.md`; `research/engine-buyer-readiness-2026-10-01/evaluation-license-v8/` (Technical Report Revision 2; gates); `.jrs/state/BLOCKERS.json` (B-018 to B-020); `acquisition-9f3c2a7d4b.html` (wording checked today).
+- Repository: `research/IP_SALE_TRACKER.md` (header, s6, s9, rev 14, rev 20); `docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md` (F-4, F-5, F-8, F-11, s12); `docs/enterprise-diligence/EVIDENCE_LEDGER.md` (E-004, E-014, E-025 to E-027, E-037 to E-039); `research/Contributor_Credit_List_2026-08-29.md`; `research/engine-buyer-readiness-2026-10-01/evaluation-license-v8/` (Technical Report Revision 2; gates); `.jrs/state/BLOCKERS.json` (B-018 to B-020); `acquisition-9f3c2a7d4b.html` (wording checked today); the live owner page `programme-status-9872fb93cc94.html` and its feeds `access-stats`, `asset-stats`, `contributor-stats`, `enroll-stats`, `gate-stats`, `geo-stats`, `offer-info`, `orgpilot-stats`, `panel-stats`, `people-*`, `support-stats` and `leads-*`, read 2026-10-02 07:24 UTC (personal data counted, not copied).
 - Owner-supplied, 1 to 2 October 2026: Buyer Readiness Checklist (current revision, AG-01 to AG-05, B1 to B12); Exit Strategy (current revision and the historical plan); Evidence Ledger, Master Asset Register and Chain of Title Status (revised); the external Technical Report Revision 1.
 - Web, retrieved 2 October 2026 (vendor marketing, not independent evidence): [HR Acuity documentation](https://www.hracuity.com/platform/documentation/); [HR Acuity employee relations AI](https://www.hracuity.com/platform/employee-relations-ai/); [AllVoices AI for employee relations](https://www.allvoices.co/blog/ai-for-employee-relations); [Case IQ 2026 benchmark summary](https://www.caseiq.com/resources/articles/biggest-year-over-year-changes-in-investigations-what-the-2026-benchmark-report-means-for-leaders); [Gartner investigation management reviews](https://www.gartner.com/reviews/market/investigation-management-software).
 

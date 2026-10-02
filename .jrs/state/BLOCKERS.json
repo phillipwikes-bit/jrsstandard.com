@@ -482,6 +482,23 @@
       "next_action_basis": "Visibility, history rewriting and any notification to contributors are owner decisions (CLAUDE.md sections 12, 16 and 26). Claude cannot change repository visibility and must not force-push or contact contributors.",
       "status": "OPEN",
       "opened": "2026-10-02"
+    },
+    {
+      "blocker_id": "B-021",
+      "severity": "CRITICAL",
+      "category": "PRIVACY",
+      "description": "The owner-page data route /api/people-9dd1ecdf6f8cdfd4 is ungated by owner instruction (no passwords, commits 7dec748 and edd67e4) and returns, to an anonymous caller, 58 rows with 33 distinct email addresses, names, organizations and one LinkedIn URL. 15 of the rows carrying an email have consent_public false (Observed 2026-10-02T07:24Z, HTTP 200 with no credentials and with a foreign Origin header). Its slug, the leads slug and the owner-page slug are written in CLAUDE.md on GitHub main, which is public (B-018), so the slugs have leaked in the sense of CLAUDE.md 36.3. /api/leads-4b7e2c9af106d385 carries names, emails and organizations by design and currently holds 0 leads. The owner accepted the public-repository risk for his own page when removing the passwords. This entry records that the exposed data belongs to contributors and trainees, not to the owner.",
+      "evidence_refs": [
+        "GET https://www.jrsstandard.com/api/people-9dd1ecdf6f8cdfd4 (2026-10-02T07:24Z): 200, 33 distinct emails; values not recorded anywhere",
+        "git cat-file origin/main:CLAUDE.md contains the three slugs",
+        "CLAUDE.md 36.3: 'If a slug leaks, rename the file and its route to rotate it, and rotate both endpoint slugs together'"
+      ],
+      "affected_assets": "Contributor and trainee personal data; contributor trust; diligence (a buyer will treat an open personal-data endpoint as a red flag); the owner's 'no passwords' rule, which every remedy below respects.",
+      "required_action": "Owner decides, without any password or token: (1) make the repository private (B-018), which stops the slugs being readable; (2) then rotate the owner-page and both endpoint slugs together, the remedy CLAUDE.md 36.3 prescribes. That is a production change, prepared on request; doing it while the repository is public would leak the new slugs at once. Optional: (3) drop email and LinkedIn fields from the people response if the page does not need them, which is a functional change to the owner page.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "The owner set the no-password rule and must choose among the remedies that respect it. Repository visibility is an owner-only setting, and slug rotation changes the owner's own bookmark and is a production deployment (CLAUDE.md section 26).",
+      "status": "OPEN",
+      "opened": "2026-10-02"
     }
   ],
   "_decisions_recorded_2026_09_15": {
