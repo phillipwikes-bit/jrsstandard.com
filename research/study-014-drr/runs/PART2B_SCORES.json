@@ -1,0 +1,223 @@
+{
+ "residual_after_deletion": {
+  "P014-01-del-citations": 0,
+  "P014-02-del-citations": 0,
+  "P014-03-del-citations": 0,
+  "P014-07-del-attributions": 0,
+  "P014-08-del-citations": 0,
+  "P014-09-del-citations": 0,
+  "P014-10-del-attributions": 0,
+  "P014-11-del-attributions": 0,
+  "P014-12-del-attributions": 0,
+  "P014-13-del-attributions": 0,
+  "P014-14-del-citations": 0,
+  "P014-15-del-attributions": 0,
+  "P014-16-del-attributions": 0,
+  "P014-17-del-attributions": 0,
+  "P014-19-del-citations": 0,
+  "P014-21-del-dates": 0,
+  "P014-22-del-dates": 0,
+  "P014-23-del-dates": 0,
+  "P014-24-del-dates": 0,
+  "P014-25-del-dates": 0,
+  "P014-26-del-dates": 0,
+  "P014-27-del-citations": 0,
+  "P014-28-del-dates": 0,
+  "P014-29-del-citations": 0
+ },
+ "parse_errors": {
+  "E1": 10,
+  "E3": 7
+ },
+ "missing_runs": {
+  "E1": 0,
+  "E3": 0
+ },
+ "tables": {
+  "E1|cond_map": {
+   "citations": {
+    "deletion_hits": [
+     0,
+     9
+    ],
+    "false_flags_all_controls": [
+     0,
+     23
+    ],
+    "false_flags_controls_with_type": [
+     0,
+     9
+    ]
+   },
+   "attributions": {
+    "deletion_hits": [
+     8,
+     8
+    ],
+    "false_flags_all_controls": [
+     6,
+     23
+    ],
+    "false_flags_controls_with_type": [
+     6,
+     23
+    ]
+   },
+   "dates": {
+    "deletion_hits": [
+     6,
+     7
+    ],
+    "false_flags_all_controls": [
+     3,
+     23
+    ],
+    "false_flags_controls_with_type": [
+     3,
+     23
+    ]
+   },
+   "draft_hits": [
+    12,
+    18
+   ]
+  },
+  "E3|missing": {
+   "citations": {
+    "deletion_hits": [
+     9,
+     9
+    ],
+    "false_flags_all_controls": [
+     21,
+     24
+    ],
+    "false_flags_controls_with_type": [
+     8,
+     9
+    ]
+   },
+   "attributions": {
+    "deletion_hits": [
+     8,
+     8
+    ],
+    "false_flags_all_controls": [
+     14,
+     24
+    ],
+    "false_flags_controls_with_type": [
+     14,
+     24
+    ]
+   },
+   "dates": {
+    "deletion_hits": [
+     7,
+     7
+    ],
+    "false_flags_all_controls": [
+     1,
+     24
+    ],
+    "false_flags_controls_with_type": [
+     1,
+     24
+    ]
+   },
+   "draft_hits": [
+    17,
+    18
+   ]
+  },
+  "E3|cond_map": {
+   "citations": {
+    "deletion_hits": [
+     0,
+     9
+    ],
+    "false_flags_all_controls": [
+     0,
+     24
+    ],
+    "false_flags_controls_with_type": [
+     0,
+     9
+    ]
+   },
+   "attributions": {
+    "deletion_hits": [
+     8,
+     8
+    ],
+    "false_flags_all_controls": [
+     11,
+     24
+    ],
+    "false_flags_controls_with_type": [
+     11,
+     24
+    ]
+   },
+   "dates": {
+    "deletion_hits": [
+     7,
+     7
+    ],
+    "false_flags_all_controls": [
+     2,
+     24
+    ],
+    "false_flags_controls_with_type": [
+     2,
+     24
+    ]
+   },
+   "draft_hits": [
+    13,
+    18
+   ]
+  }
+ },
+ "H6": {
+  "by_type": {
+   "citations": {
+    "hit_rate": 1.0,
+    "false_flag_rate": 0.889,
+    "meets": false
+   },
+   "attributions": {
+    "hit_rate": 1.0,
+    "false_flag_rate": 0.583,
+    "meets": false
+   },
+   "dates": {
+    "hit_rate": 1.0,
+    "false_flag_rate": 0.042,
+    "meets": true
+   }
+  },
+  "citations_and_attributions_met": false,
+  "dates_no_regression_met": true
+ },
+ "spend_usd": 2.45,
+ "calls": 432,
+ "stops": {
+  "E1": {
+   "end_turn": 206,
+   "max_tokens": 10
+  },
+  "E3": {
+   "end_turn": 210,
+   "max_tokens": 6
+  }
+ },
+ "e3_control_missing_run_tallies": {
+  "record_citations": 64,
+  "attributions": 42,
+  "criteria": 38,
+  "responses_considered": 12,
+  "decision_maker": 5,
+  "dates": 3
+ }
+}

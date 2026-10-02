@@ -24,6 +24,7 @@ Labels follow CLAUDE.md Rule 2.
    - H2 is met by the letter (B, C and D 30/30 against A 27/30) but is not informative: Codebook-prompted reviewers flag nearly every intact record too.
    - H3 is not met.
    - The production Engine caught 10 of 10 date deletions while flagging 2 of 30 intact records. It cannot report citations by design, and it caught 4 of 10 attribution deletions.
+6. **Part 2b, Engine 0.3.0 (`PART2B_RESULTS.md`): H6 FAILS.** A new "what is missing" list caught every deletion, but flagged citations on 8 of 9 and attributions on 14 of 24 intact texts. Dates stayed specific (7/7 caught, 1/24 false flags). The build was not adopted.
 
 ## Part 1: drafting (240 drafts; 239 ended normally; Haiku P3 on S014-24 hit the 4,000-token limit and is scored as delivered)
 Median retention across 30 texts, pre-registered extractor v1.0. Citations are over the texts that contain them.

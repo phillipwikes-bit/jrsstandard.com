@@ -552,14 +552,18 @@
         "api/review-engine.js",
         "research/engine-v0.3/openapi.proposed-0.3.0.json",
         ".jrs/registries/RELEASE_REGISTER.json",
-        "research/study-014-drr/PART2B_PROTOCOL.md"
+        "research/study-014-drr/PART2B_PROTOCOL.md",
+        "research/study-014-drr/PART2B_RESULTS.md",
+        "research/engine-v0.3/build/review-engine.0.3.0.js"
       ],
       "affected_assets": "JRS-ENGINE; JRS-API-CONTRACT; release register version inventory (engine_version reads 0.1.0-validation while the branch code holds 0.3.0-validation)",
       "required_action": "Owner decides, after the Part 2b result: (1) whether to release 0.3.0 at all; (2) if so, authorize replacing openapi.json with research/engine-v0.3/openapi.proposed-0.3.0.json and updating the release register's engine_version in the same release. Production deployment is an owner approval (CLAUDE.md section 26).",
-      "next_action_by": "OWNER",
+      "next_action_by": "NONE",
       "next_action_basis": "Production deployment and edits to a frozen public contract are owner decisions.",
-      "status": "OPEN",
-      "opened": "2026-10-03"
+      "status": "RESOLVED",
+      "opened": "2026-10-03",
+      "resolved": "2026-10-03",
+      "resolution": "Engine 0.3.0 failed its pre-registered test (research/study-014-drr/PART2B_RESULTS.md: the missing list flagged citations on 8 of 9 and attributions on 14 of 24 intact texts). It was not adopted. api/review-engine.js and api/v1/review-engine.js were restored to 0.1.0 (SHA-256 prefix 97176e22) so the failed build cannot reach production through a merge. The build is archived at research/engine-v0.3/build/ and in history at dfc1022. openapi.json was never edited."
     }
   ],
   "_decisions_recorded_2026_09_15": {

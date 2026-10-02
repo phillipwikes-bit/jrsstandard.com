@@ -36,11 +36,12 @@ def engine(src):
 
 def arms():
     e1 = subprocess.run(["git", "-C", REPO, "show", f"{E1_COMMIT}:api/review-engine.js"], capture_output=True, text=True, check=True).stdout
-    e3 = open(os.path.join(REPO, "api", "review-engine.js")).read()
+    # E3 is read from the commit fixed in PART2B_PROTOCOL.md: the 0.3.0 build was removed from api/ after it failed.
+    e3 = subprocess.run(["git", "-C", REPO, "show", "dfc1022:api/review-engine.js"], capture_output=True, text=True, check=True).stdout
     if not hashlib.sha256(e1.encode()).hexdigest().startswith(E1_SHA): sys.exit("E1 source is not the production Engine 0.1.0")
     h3 = hashlib.sha256(e3.encode()).hexdigest()
     fixed = re.search(r"Engine 0\.3\.0 source SHA-256: `([0-9a-f]{64})`", open(os.path.join(S.ROOT, "PART2B_PROTOCOL.md")).read())
-    if not fixed or fixed.group(1) != h3: sys.exit("api/review-engine.js differs from the source fixed in PART2B_PROTOCOL.md")
+    if not fixed or fixed.group(1) != h3: sys.exit("E3 source differs from the source fixed in PART2B_PROTOCOL.md")
     return {"E1": engine(e1), "E3": engine(e3)}
 
 

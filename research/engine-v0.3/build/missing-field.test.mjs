@@ -10,7 +10,7 @@ let pass = 0, fail = 0;
 // The response is checked against the PROPOSED 0.3.0 contract. openapi.json itself is frozen under B-016
 // (.jrs/registries/RELEASE_REGISTER.json) and still describes 0.1.0; it is changed only on the owner's
 // authorization, together with any release of 0.3.0 (blocker B-024).
-const SPEC = JSON.parse(readFileSync(new URL('../../research/engine-v0.3/openapi.proposed-0.3.0.json', import.meta.url), 'utf8'));
+const SPEC = JSON.parse(readFileSync(new URL('../openapi.proposed-0.3.0.json', import.meta.url), 'utf8'));
 function conforms(v, s, path = '$', errs = []) {
   if (s.$ref) s = s.$ref.split('/').slice(1).reduce((o, k) => o[k], SPEC);
   const ty = Array.isArray(v) ? 'array' : v === null ? 'null' : Number.isInteger(v) ? 'integer' : typeof v;
@@ -44,7 +44,7 @@ async function call(route, missing, status = 'pass', runs = 1) {
     : new Response('', { status: 500 });
   for (const k of ['REVIEW_API_TOKEN', 'SUPABASE_SERVICE_ROLE_KEY']) delete process.env[k];
   Object.assign(process.env, { ANTHROPIC_API_KEY: 'test-not-a-key', JRS_SANDBOX_OPEN: 'true' });
-  const mod = await import(`../../${route}?cachebust=${Math.random()}`);
+  const mod = await import(`./${route}?cachebust=${Math.random()}`);
   const res = await mod.default(new Request('https://x/api/review-engine', {
     method: 'POST', headers: { 'Content-Type': 'application/json', 'x-forwarded-for': '10.0.0.' + Math.floor(Math.random() * 250) },
     body: JSON.stringify({ text: RECORD, runs }),
@@ -52,7 +52,7 @@ async function call(route, missing, status = 'pass', runs = 1) {
   return { status: res.status, body: await res.json() };
 }
 
-for (const route of ['api/review-engine.js', 'api/v1/review-engine.js']) {
+for (const route of ['review-engine.0.3.0.js']) {
   let r = await call(route, ['attributions', 'record_citations', 'dates', 'nonsense', 'dates']);
   t(`${route}: 200`, r.status === 200, String(r.status));
   t(`${route}: engine_version is 0.3.0-validation`, r.body.engine_version === '0.3.0-validation');
