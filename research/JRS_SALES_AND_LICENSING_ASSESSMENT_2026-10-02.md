@@ -418,7 +418,7 @@ One line per settled decision: date, decision, source. **Read this first, before
 | 2026-10-02 | Keep the editor's CEP wording; send no correction | Owner, 2026-10-02 (earlier agreement not found in the repository) |
 | 2026-10-02 | Keep the signed SCCE copyright form in the repository, on main | Owner, 2026-10-02; main 044c7af |
 | 2026-10-02 | Review the sales and licensing assessment point by point, then issue one clean revised report (not layered revisions) | Owner, 2026-10-02 |
-| 2026-10-02 | STA was built on the same fundamentals as CCI's MRT (facilitator training and certification, participant materials, delivery by the customer's staff); figures still to confirm | Owner, 2026-10-02 |
+| 2026-10-02 | STA was built on the same fundamentals as CCI's MRT; STA figures confirmed (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | Owner, 2026-10-02 |
 | 2026-10-01 | First evaluation workflow: non-HR supplier-access exception approvals, fixture-only (O-01); error weights as in v8 s16 (O-02); USD 5 smoke ceiling (O-04); HOLD sending until a minimum sendable package exists, then the owner names one recipient (O-05); trackers stay on the working branch (O-07). O-08 NOT ANSWERED | V8 decision sheet |
 | 2026-10-02 | Assessment point 1 settled: first-sale candidates are two licences, (1) the Engine trial, ready now at the USD 1,000 test price, and (2) a curriculum licence, pending D8; the review engagement is removed | Owner, 2026-10-02 |
 
@@ -461,7 +461,7 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | 28 | Add an evaluation mode with no JRS telemetry, for any non-synthetic pilot | OPEN |
 | 29 | Study 013 feasibility round: 30 hidden records, arms A to D; needs owner approval for outside contributors and paid calls | OPEN |
 | 30 | Decide whether a one-time train-the-trainer session delivered by you is an allowed exception to the 26 August "no owner-hour engagements" decision | OPEN |
-| 31 | Confirm or correct the STA figures in C.3 (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | OPEN |
+| 31 | Confirm or correct the STA figures in C.3 (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | DONE: owner confirmed, 2026-10-02 |
 | 32 | Analyze and report Study 012 (JRS-structured against unaided expert review); it is the evidence the curriculum licence needs | OPEN |
 
 ## C. Research credibility (parallel; affects buyer diligence)
@@ -536,7 +536,7 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | Delivery | You and Tony Myers trained and certified facilitators; the customer's own staff then ran the program |
 | Later | Programs made available free as a community service, with copyright kept |
 
-**Owner confirmation, 2026-10-02:** "our business was based on same fundamentals as CCI's MRT." **The structure is confirmed by the owner:** facilitator training and certification, participant materials, and delivery by the customer's own staff. The individual dollar figures still await confirmation (Appendix B, item 31).
+**Owner confirmation, 2026-10-02:** "our business was based on same fundamentals as CCI's MRT." **The structure is confirmed by the owner:** facilitator training and certification, participant materials, and delivery by the customer's own staff. **The dollar figures were also confirmed by the owner on 2026-10-02 ("they are correct").**
 
 **How it lines up with the verified market (*Inference*):**
 - **The structure matches MRT almost exactly:** paid facilitator certification, per-participant materials, and delivery by the customer's own staff.
@@ -548,6 +548,43 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 - **Institutional facilitator training (customer's trainers): USD 1,500 to 3,000** per session. Anchors: STA USD 1,500 historical; MRT's current individual rate.
 - **Individual facilitator certification: USD 250 to 700.** Anchors: STA USD 250; MRT USD 680.
 - **No charge for participant materials,** because the guides and training are free permanently (25 August). Unlike STA and MRT, JRS has no paid per-participant item unless D8 creates one.
+
+### C.4 Curriculum licence: go or no-go (assessment, 2026-10-02)
+
+**Verdict: CONDITIONAL GO.** Go for preparation and a small market test now. **No-go for selling or announcing it** until the four conditions below are met.
+
+**Why go: the strongest of the two candidates.**
+1. **A model you have already run:** STA, confirmed as the same fundamentals as MRT, which still operates today at USD 680 per facilitator (verified).
+2. **Recurring, rule-driven demand:** MD-110 requires 8 hours a year from every federal EEO investigator, includes "investigative skills development", and allows contracted providers (verified).
+3. **An audience already using the material:** about 80 guide downloads a month, the Reviewer Reference the most-downloaded file (578), and Broida's mention aimed at agency investigators.
+4. **Little to build:** the training, guides and Reference already exist. Checked 2026-10-02: the training page and Reviewer Reference contain no CEP article wording (the only overlap is the generic phrase "system of record").
+5. **No model-lifecycle risk,** unlike the Engine (Appendix E).
+6. **Your credentials carry it:** 13 years as a civil-rights officer and 16 years in program design and training. The journal rejections do not undercut those credentials.
+
+**Why not yet: the conditions before any sale.**
+1. **D8:** decide that "free, permanently" covers self-study only, so facilitator certification and licensed delivery can carry a price.
+2. **Item 30:** decide that a one-time train-the-trainer session is an allowed exception to the 26 August decision. Otherwise, a pre-recorded or self-paced facilitator course must replace it.
+3. **The privacy blockers (B-018, B-020, B-021)** fixed before any outreach.
+4. **The certificate wording** stays "completion" in every offer; no claim of professional certification or competence.
+
+**What strengthens it, but does not gate it:** analyze Study 012 (item 32). A positive result would let the offer say that structured JRS review outperformed unaided expert review. A null result would mean selling the training as a method with no effectiveness claim, which is how much professional training sells, and the offer would then make no outcome claims.
+
+**Main risks:**
+- **Zero buyer conversations so far.**
+- **FELTG, likely the largest refresher provider, is in the channel you closed.**
+- **Providers could build their own JRS-style content from the free materials,** so the paid value must be the official certification, the maintained version and your credibility.
+- **Your capacity is 10 to 15 hours a week.**
+- **The STA prices are 2003 to 2018 figures.**
+
+**Market test, once conditions 1 to 3 are met:**
+- **What to send:** a one-page offer to 10 to 15 refresher providers outside the closed channel (for example Spectrum EEO, Trusted EEO Solutions, DJCPA Academy) and agency EEO training offices. You send it; nothing goes out without your authorization.
+- **Success threshold:** 2 or more substantive conversations within 60 days, and 1 paid facilitator session within 90 days.
+- **Stop rule:** no substantive reply after 15 contacts means stop, record a hold, and re-enter after the November CEP issue or a positive Study 012 result.
+
+**Price to test (anchored in C.3):**
+- Institutional facilitator training: USD 1,500 to 3,000.
+- Individual facilitator certification: USD 250 to 700.
+- One-time, with no annual renewal.
 
 **Two decisions this raises (Appendix B, items 30 and 31):**
 1. **Facilitator training is delivered by you, so it uses your hours.** Your 26 August decision dropped fixed-scope engagements that sell your hours. A short, one-time train-the-trainer session that transfers capability (the STA model) may be a reasonable exception, but that is your decision, not mine.
