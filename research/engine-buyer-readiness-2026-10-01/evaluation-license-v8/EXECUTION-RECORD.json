@@ -99,7 +99,7 @@
   "artifacts": [
     {
       "path": "AUDIT-BUNDLE.zip",
-      "sha256": "200c51032caa63fbb134020ac37151cc1e629a273b1bc967436ae7d3fd9307de"
+      "sha256": "b42c40360fc36b2993cea70644515716e0a7461fe98b0b0e14ae60f51fe01122"
     },
     {
       "path": "ENGINE-DEFECT-REGISTER.md",
@@ -116,6 +116,10 @@
     {
       "path": "SOURCE-LOCATION-MAP.json",
       "sha256": "b80a5df7f8b54dd099e30ee13f82f656d87aefacd18b0ff403fb1cf3bbe9e159"
+    },
+    {
+      "path": "TECHNICAL-REPORT.md",
+      "sha256": "b999d5d6a62a5fbde542dc560778328eb09907856dda034a839dc737a83d0774"
     },
     {
       "path": "corpus/EXPECTATIONS.json",
@@ -167,7 +171,7 @@
     },
     {
       "path": "tools/build-audit-bundle.mjs",
-      "sha256": "e52522893e6fd2becfd7b701555c4a69094e3e93ad639dd6986b8e9d9f974391"
+      "sha256": "cbbed9e22375efc8181ea848a50b58160af50ee1b78a768a250c4afca397c266"
     },
     {
       "path": "tools/build-package.mjs",

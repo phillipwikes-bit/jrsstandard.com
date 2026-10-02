@@ -20,7 +20,7 @@ const sha = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest
 if (fs.existsSync(OUT)) { console.error('refused: AUDIT-BUNDLE.zip exists'); process.exit(3); }
 
 const INCLUDE = [
-  'READINESS-REPORT.md', 'ENGINE-DEFECT-REGISTER.md', 'SOURCE-LOCATION-MAP.json',
+  'READINESS-REPORT.md', 'TECHNICAL-REPORT.md', 'ENGINE-DEFECT-REGISTER.md', 'SOURCE-LOCATION-MAP.json',
   'gates/GATE-DEFINITIONS.json', 'gates/GATE-RESULTS.json',
   'tools/validate-gates.mjs', 'tools/validate-order.mjs',
   'corpus/FIXTURE-PROVENANCE.json', 'runs/2026-10-01-smoke-1.BLOCKED.json', 'runs/2026-10-02-smoke-2/EXECUTION-RECORD.json', 'METRICS.json',
