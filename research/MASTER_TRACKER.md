@@ -3143,3 +3143,4 @@ Only four line groups differ between v7 and v8.
   - **New blockers:**
     - B-022: API credit. The owner adds about USD 22 at console.anthropic.com, Billing, in a phone browser.
     - B-023: no sealed private set while the repository is public.
+- 2026-10-02 (**OWNER ASKED: CAN I ADD MORE CREDIT**): yes. Phone-browser steps given (console.anthropic.com, Settings, Billing, buy credits; about USD 25 recommended, as the two runs are estimated at about USD 22), plus making a new key and deleting the old one on the same site. No file changed except this line.
