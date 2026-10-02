@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for the Agency's no-discrimination finding (lack of persuasive evidence for incidents 2-4, uncorroborated statements, internal inquiry findings), but the basis for dismissing incident 1 (accent-based comments) relies on recharacterization ('nothing indicates mocking' and 'at worst insensitive') rather than evidentiary findings from investigation."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's decision path is partially traceable (investigation conducted, report issued, final decision issued), but the FAD does not explicitly trace how investigative findings on each incident supported or refuted the harassment allegations, nor does it document what the internal anti-harassment inquiry specifically determined."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot determine from this record alone what evidence the investigation actually uncovered regarding S1's comments, the timing and content of Complainant's reports to S2, or the specifics of the internal anti-harassment inquiry findings that are cited but not summarized."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record asserts conclusions (e.g., 'uncorroborated statements,' 'internal inquiry did not substantiate') without documenting the specific evidence examined, witness statements, or investigative findings that support these determinations; the reframing of 'mocking' as 'difficulty communicating' appears interpretive rather than evidentiary."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "Key dates are provided: complaint filed November 4, 2021; accepted November 16, 2021; alleged harassment June 2020–July 2021; separation in late July 2021; final decision issued after investigation; appeal followed."
+    }
+  },
+  "remediation_note": "The record requires explicit incorporation of investigative findings for each alleged incident, including witness statements, documentary evidence examined, and the specific conclusions from the internal anti-harassment inquiry. The FAD must document the evidentiary basis for dismissing each claim rather than asserting conclusions, and must distinguish between credibility determinations and legal interpretations of whether conduct meets discriminatory thresholds.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) a summary of investigative findings for each incident, including witness interviews and documentary evidence; (2) explicit credibility determinations and rationale; (3) the specific findings and reasoning of the internal anti-harassment inquiry; (4) analysis of each allegation against the legal standard with reference to evidence, not recharacterization; and (5) explanation of how separation of the parties affects the hostile-work-environment analysis."
+  }
+}
+```

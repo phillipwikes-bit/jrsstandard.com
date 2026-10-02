@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies some bases (EEO complaint categories, investigation report existence, regulatory framework) but critical evidentiary anchors are obscured: specific dates are redacted as 'at one point,' witness statements are summarized rather than quoted, and the internal anti-harassment inquiry findings are mentioned but not detailed."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The Agency's reasoning path from evidence to 'no discrimination' conclusion is incomplete; the record shows the Agency assumed certain facts as true (accent comments) but then minimized them without explaining how that assumption-then-minimization logic satisfies the discriminatory intent prong, and the separation remedy is asserted without tracing when or why it was deemed adequate."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years hence cannot reconstruct the factual record: dates are redacted, the content and findings of the internal anti-harassment inquiry are not reproduced, S1's actual statements about the accent are paraphrased rather than documented verbatim, and the timeline of when Complainant reported to S2 versus when separation occurred is unclear."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The Agency's evidentiary support for 'no discrimination' on items 2, 3, and 4 is explicitly acknowledged as dependent on Complainant's uncorroborated statements; for item 1, the Agency assumes truth but recharacterizes severity, without producing S1's actual communications or corroborating management documentation of the alleged misdirection."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical temporal markers are redacted ('at one point,' 'late at one point'); the sequence cannot be reconstructed—when harassment began, when Complainant reported to S2, when S4 separated them, and when the internal inquiry occurred are all chronologically opaque."
+    }
+  },
+  "remediation_note": "The record requires un-redacted dates, direct quotation or verbatim summaries of S1's statements, inclusion of the internal anti-harassment inquiry report findings, and explicit tracing of how factual assumptions (e.g., assuming comments were made) were weighed against legal standards for severity, pervasiveness, and discriminatory intent. The Agency's reasoning on why separation cured the hostile environment must be explained with reference to when it occurred relative to the harassment timeline.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "temporal_reconstructability, cold_reviewer_clarity, reasoning_traceability, basis_identification",
+    "compliant_version": "A compliant version would: (1) restore all dates and intervals; (2) reproduce or provide direct, verbatim summaries of S1's communications; (3) include the full internal anti-harassment inquiry report or a detailed account of its scope and findings; (4) explicitly link each factual finding to the evidence supporting it; (5) explain the legal standard applied for hostile work environment (severity, pervasiveness, unwelcomeness, notice to management); (6) state how the Agency weighed uncorroborated allegations against corroborating evidence; and (7) document the timeline and effect of the separation remedy in relation to ongoing harassment."
+  }
+}
+```

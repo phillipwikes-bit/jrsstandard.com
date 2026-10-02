@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies four specific alleged incidents and cites the Agency's investigative conclusions, but critical dates are redacted ('at one point'), obscuring the temporal basis for claims and remedial actions."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's logic is partially traceable (e.g., 'assuming truth of allegations, nothing indicates mockery based on descent'), but the investigative record underlying the FAD is not included, and the internal anti-harassment inquiry's methodology and findings are referenced but not detailed."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct the timeline of harassment, separation, or notice to S2 because specific dates are redacted throughout; the internal anti-harassment inquiry is mentioned but not summarized; and the relationship between S1's roles (manager, Lead, OJI) lacks chronological clarity."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record supports the Agency's conclusion that incidents 2-4 lacked corroboration, but the sufficiency of evidence for incident 1 (accent mockery) is weakened by the Agency's own concession ('assuming the truth') coupled with redacted dates and no summary of witness statements from the investigation."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical temporal markers are redacted ('at one point,' 'late at one point'); the sequence from initial complaint filing, through investigation, to FAD issuance, to separation of Complainant and S1, and to Complainant's notice to S2 cannot be reliably reconstructed."
+    }
+  },
+  "remediation_note": "The record requires unredacted dates for all key events (complaint filing, investigation closure, FAD issuance, separation action, and prior notices to management), explicit incorporation or detailed summary of the internal anti-harassment inquiry findings, and a clear timeline showing when S1 held each role and when each alleged incident occurred relative to the separation and management notice.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "temporal_reconstructability, cold_reviewer_clarity, reasoning_traceability",
+    "compliant_version": "A compliant version would include: (1) unredacted dates for complaint filing, investigation commencement and closure, FAD issuance, and separation of parties; (2) a chronological table mapping S1's role changes and each alleged incident to specific dates; (3) a summary of the internal anti-harassment inquiry's scope, methodology, and findings; (4) reference to or incorporation of key investigative evidence (witness statements, documentary corroboration attempts) supporting the no-discrimination conclusion; and (5) explicit findings on whether and when management had notice of harassment prior to separation, to enable appellate review of any failure-to-remedy claim."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies specific bases for the Agency's conclusions: the FAD cites lack of persuasive evidence for incidents 2-4, assumes truth of accent comments but characterizes them as insensitive rather than discriminatory, and references an internal anti-harassment inquiry that did not substantiate claims."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The Agency's reasoning pathway is partially traceable (evidentiary insufficiency for incidents 2-4, characterization of accent comments), but the leap from 'assuming truth' of accent comments to 'nothing indicates mocking or Mexican descent motivation' lacks intermediate analytical steps connecting evidence to discrimination conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can identify what the Agency decided and some reasoning, but the record does not clearly explain what the internal anti-harassment inquiry actually found, what evidence was reviewed, or why the same accent-related conduct was deemed potentially unwelcome but ultimately not discriminatory."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record states the internal anti-harassment inquiry 'did not substantiate' claims but provides no findings, methodology, or evidence from that inquiry; the FAD's assumption of truth regarding accent comments undercuts its own evidentiary sufficiency argument for the discrimination finding."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: June 2020 to July 2021 harassment period, November 4, 2021 complaint filing, November 16, 2021 Agency acceptance, investigation period, ROI and hearing notice issuance, Complainant's failure to request hearing, final decision issuance, and appeal."
+    }
+  },
+  "remediation_note": "The record requires explicit incorporation of internal anti-harassment inquiry findings and methodology, and reconciliation of the FAD's assumption of truth regarding accent comments with its ultimate no-discrimination conclusion to support accountability. The Agency's characterization of S1's comments as potentially unwelcome but not discriminatory needs intermediate analytical steps explaining why protected-class motivation cannot be inferred.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "accountability_support and reasoning_traceability",
+    "compliant_version": "A compliant record would include: (1) detailed findings and evidentiary basis from the internal anti-harassment inquiry with specific witness statements or documentary evidence; (2) explicit analysis reconciling the FAD's assumption that accent comments were 'unwelcome verbal conduct based on protected categories' with the no-discrimination finding, including analysis of why the evidence does not support a discriminatory motive or nexus to protected status; (3) documentary evidence or specific factual findings regarding what Complainant communicated to S2 and S2's response; and (4) citation to the specific evidence reviewed for incidents 2-4 before concluding it was uncorroborated."
+  }
+}
+```

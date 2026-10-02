@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific alleged incidents (accent mocking, work sabotage, calendar manipulation, fraudulent return advice) and cites regulatory standards (29 C.F.R. § 1614.108(f), § 1614.110(b)), but the Agency's ultimate basis for rejecting incidents 2-4 relies on 'uncorroborated statements' without articulating what evidence was examined or why it was deemed insufficient."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The FAD conditionally assumes incident (1) statements were unwelcome but then pivots to rejecting incidents 2-4 based on lack of corroboration; however, the logical chain from evidence presentation to the corroboration conclusion is not explicit, and the distinction between S1's role as supervisor, Lead, and OJI complicates reconstructing which findings apply to which period."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "Critical dates are redacted ('at one point,' 'at point'), making it impossible for a future reviewer to reconstruct the chronology of employment, complaint filing, investigation, or temporal proximity of alleged incidents; the record also does not clearly specify what evidence the investigation examined or how 'uncorroborated' was operationally defined."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record establishes that an investigation occurred and a report was produced, but the substance of that investigation—what witnesses were interviewed, what documents reviewed, what S1 and S2 said in response—is not set forth, leaving the evidentiary foundation for the 'no discrimination' conclusion opaque."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Multiple temporal anchors are redacted ('at one point,' 'late at one point'); the record references Complainant's 'first day of employment' and a later separation but provides no month, year, or interval between alleged incidents, investigation completion, and final decision issuance, preventing chronological reconstruction."
+    }
+  },
+  "remediation_note": "The record requires restoration of all redacted dates and periods to enable chronological traceability, and the FAD must explicitly detail what evidence (witness statements, documents, responses from S1 and S2) was examined during investigation and why it was found insufficient to corroborate incidents 2-4, particularly distinguishing between different time periods and S1's shifting roles.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity, temporal_reconstructability, accountability_support",
+    "compliant_version": "A compliant record would restore all redacted dates; specify the investigation scope and methods; quote or summarize S1's and S2's contemporaneous responses; explicitly articulate what 'corroboration' standard was applied; and clearly delineate findings for each alleged incident across each distinct employment period (S1 as supervisor, S1 as Lead/OJI), with intervals between events and management responses."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies specific incidents (accent comments, sabotage allegations, calendar manipulation, fraudulent return advice) and decision rationales, but the Agency's final decision shifts between 'assuming truth' and 'nothing indicates' without clearly establishing which facts were found proven or merely assumed for argument."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces the Agency's legal framework (severity/pervasiveness test, EEOC precedent on insensitive comments) but obscures the investigative findings—the internal anti-harassment inquiry is cited as not substantiating claims without disclosing what that inquiry actually found or examined."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct the investigative basis: the report of investigation is referenced but not summarized, witness statements are absent, and critical findings (what S2 knew and when, what the internal inquiry examined) remain undisclosed or vague ('appears' that S2 heard only lack of support)."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The Agency's conclusion that harassment was not substantiated rests on unexamined internal inquiry results and rhetorical reframing ('at worst, insensitive') rather than on disclosed evidence that directly counters Complainant's specific allegations of mockery, sabotage, and misinformation."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are provided (November 4, 2021 complaint; June 2020–July 2021 incident window; late July 2021 separation), but the chronology of when S2 was informed, when the internal inquiry occurred, and when the investigation was completed is absent or unclear."
+    }
+  },
+  "remediation_note": "A compliant record would require disclosure or summary of the investigative report findings, explicit factual determinations (not conditional assumptions) regarding each incident, documented evidence that contradicts or supports each allegation, and a clear timeline showing when management became aware of and responded to harassment claims.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "cold_reviewer_clarity, accountability_support, reasoning_traceability",
+    "compliant_version": "The record should include or attach the investigative report with witness statements and documentary evidence; explicitly state what facts were found proven versus rejected; disclose the scope and findings of the internal anti-harassment inquiry; and provide a detailed chronology with dates showing when S2 was informed, what S2 investigated or verified, and the interval between notice and separation."
+  }
+}
+```
