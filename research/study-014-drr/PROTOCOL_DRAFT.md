@@ -49,3 +49,16 @@ The JRS manuscript (E-037) is author-blind: "JRS does not ask, and does not try 
 1. Owner approval of H1's threshold and of the plain-terms scoring rule.
 2. A human scorer for Part 2: the owner, or a trained reviewer.
 3. Whether to add a second-vendor drafter. It would strengthen "AI drafting" beyond one vendor; there is no key for one.
+
+## Design review 2, 2026-10-02: blind spots and proposed additions (*Proposal*; not yet adopted)
+| # | Blind spot | Why it matters | Proposed addition |
+|---|---|---|---|
+| 1 | **Anchors are a proxy.** Counting dates and citations is not the same as reconstructability | A draft can drop unimportant anchors and keep the decisive ones, or the reverse | **Reconstruction test (strongest measure):** fixed-rule questions built from the source's anchors ("who stated X?", "on what date did Y occur?", "where in the record is Z?"). A reader is given only the draft and answers; the key is the source. The score is the share answerable from the draft |
+| 2 | **Materiality** | Losing the decisive facts matters more than losing incidental ones | Weight anchors tied to the facts the EEOC ordered developed (`study-013/GAP_DEFICIENCIES.json`, D1 to D10) separately from all other anchors |
+| 3 | **Fabricated anchors** | AI may *add* dates, citations or quotations that are not in the source, which is worse than omitting them | Count anchors in each draft that do not appear in the source (precision as well as retention). Report them prominently, whatever the result |
+| 4 | **Prompt realism** | One prompt invites the reply "you asked for concise" | Use three fixed realistic prompts (concise summary, findings section, length-matched rewrite), plus a fourth that **tells the AI to keep sources and dates**. That fourth one tests prevention, not only detection |
+| 5 | **No human comparison** | "AI drafting creates DRR" needs a comparison | Treat the EEOC's own background text (a human-written summary) as the human baseline, and compare at matched length |
+| 6 | **Citation stuffing** | A JRS-guided draft could add references that resolve to nothing | Every citation in a draft must resolve to a passage in the source. Unresolvable citations count as fabricated (item 3) |
+| 7 | **Model and date dependence** | Results hold for specific model versions in October 2026 | Record versions; publish the runner so anyone can rerun it on a newer model |
+| 8 | **One domain, one language, one vendor** | Limits generalization | State it as a limit. A second-vendor drafter and reviewer would be added when a key exists |
+| 9 | **Owner conflict of interest** | The owner benefits from a positive result | Use an independent scorer; disclose and cite Study 013's negative result in every write-up |
