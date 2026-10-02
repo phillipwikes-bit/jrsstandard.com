@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., lack of updated medical documentation for bid denial) but lacks clear identification of the basis for the Agency's failure to accommodate from September 2021 onward, which the record explicitly notes has no explanation or documentation."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record traces the Agency's stated reason for bid denial (lack of updated medical documentation) but contains no traceable decision process explaining why reasonable accommodation efforts ceased after July 2021 or how the Agency concluded no suitable work existed."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct why the Agency took over one year to move Complainant to a different facility, why accommodation efforts halted in September 2021, or what specific positions were evaluated and rejected; the record explicitly states 'there is no explanation or documentation' for these critical gaps."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The Agency's final decision that Complainant 'failed to prove discrimination' lacks sufficient evidentiary support in the record, which shows no documented effort to accommodate from September 2021 onward and no documented request for updated medical documentation before denying the bid."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The record provides a chronology of Complainant's key events (assault September 2019, FMLA return April 2020, knee injury June 2020, modified assignment July 2021, hospitalization August-September 2021, bid denial January 2022) but lacks dates and intervals for critical accommodation decisions and the alleged failure to accommodate after September 21, 2021."
+    }
+  },
+  "remediation_note": "The record requires documented evidence of the Agency's post-September 2021 accommodation efforts (or explicit documentation of why none were attempted), a documented request for updated medical certification before the bid denial, and the Agency's reasoning for concluding no suitable positions existed. The record currently relies on absence of evidence rather than evidence of absence for key conclusions.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include contemporaneous Agency memoranda explaining the decision to end active accommodation efforts after September 2021 and documenting either the search for suitable positions or the rationale for concluding none existed; a documented request to Complainant for updated medical certification with the specific six-month performance standard cited in the CBA; and Agency affidavits from the Reasonable Accommodation Committee and management explaining their reasoning at each stage, with all relevant dates and document references explicitly cross-referenced to support the final determination."
+  }
+}
+```

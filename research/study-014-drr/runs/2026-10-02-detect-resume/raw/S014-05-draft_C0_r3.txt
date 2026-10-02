@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record clearly identifies the basis for the final decision: unequivocal denials by Supervisor and Manager, partial corroboration only of a physical threat (not racial content) by Supervisor 2, and Complainant's failure to appear at the hearing, rendering the factual record incomplete."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While the decision states 'no discrimination or retaliation established,' the record does not explicitly trace how the Agency weighed the direct conflicts between Complainant's account and the denials, or applied the burden of proof standard to reach that conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could identify the conflicting accounts and procedural posture, but the record lacks articulated reasoning for why denial-versus-allegation conflicts resolved in the Agency's favor, or how non-appearance at hearing affected factual finding authority."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record documents contradictory evidence and Complainant's procedural default (non-appearance), but does not explain whether the Agency made credibility findings, applied preponderance-of-evidence analysis, or relied solely on procedural dismissal to support the 'no discrimination' conclusion."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology: alleged incidents (late Jan.–Mar. 3, 2022), complaint filed (Apr. 4, 2022), investigation, ROI received, hearing request, missed October 24 and November 24, 2022 deadlines, dismissal and remand (Jan. 19, 2023), and final decision."
+    }
+  },
+  "remediation_note": "The record must articulate the Agency's reasoning for the factual finding—specifically, credibility assessments, application of burden of proof, and the weight assigned to Complainant's non-appearance—to satisfy reasoning traceability and accountability support standards. A supplemental statement of findings and analysis is required before finalization.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "Revised final decision must include: (1) explicit credibility determinations and the basis for preferring denials over allegations; (2) articulation of the standard of proof applied (preponderance) and how evidence met or failed to meet it; (3) explanation of what inferences, if any, were drawn from Complainant's failure to appear; and (4) clear separation of factual findings from procedural dismissal grounds, so that a later reviewer can independently assess both the merits and the procedural posture."
+  }
+}
+```

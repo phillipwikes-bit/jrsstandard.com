@@ -1,0 +1,29 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., bid denial tied to lack of updated medical documentation per supervisor affidavit and CBA), but the Agency's final decision rationale lacks explicit citation to specific evidence supporting its finding that Complainant 'did not demonstrate pretext for discrimination.'"
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record traces decision pathways for some determinations (e.g., dismissal of pre-November 10, 2021 claims citing 29 C.F.R. §1614.107(a)(1)), but does not show the analytical steps by which the Agency concluded no pretext existed despite documented contradictions between Complainant's account and Agency officials' statements."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer without prior knowledge cannot reconstruct why the Agency determined Complainant failed to prove discrimination when the record documents: one-year delay in facility transfer with no explanation, no statement from Agency officials confirming accommodation efforts post-September 2021, no documented request for updated medical documentation before bid denial, and selective focus on physical restrictions while ignoring PTSD limitation."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The Agency's conclusion that Complainant did not demonstrate pretext lacks evidentiary grounding; the record affirmatively documents gaps in Agency action (missing accommodation documentation, missing accommodation requests, missing explanation for bid ineligibility marking) that contradict the Agency's burden."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology: September 2018 prior complaint filed, September 2019 harassment incident, April 2020 cleared to return to different facility but harasser still present, June 2020 knee injury, July 2020 submission of documents with no response, July 2021 modified assignment, August 16 2021 COVID leave, September 21 2021 cleared to return, November 21 2021 placed on LWOP, January 24 2022 bid denied, May 13 2022 instant complaint filed, December 6 2022 Agency final decision."
+    }
+  },
+  "remediation_note": "The record functions as a narrative reconstruction of events but operates as a deficient analysis/recommendation because it does not articulate the logical chain from evidence to the Agency's discrimination conclusion. A compliant version must explicitly document: (1) what medical documentation the Agency actually requested and when; (2) the Agency's stated efforts to accommodate post-September 2021 and why they failed; (3) specific evidence rebutting Complainant's pretext allegations (temporal proximity, inconsistent application of policy, comparator treatment); and (4) the decision-maker's contemporaneous reasoning, not post-hoc supervisor affidavits.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant decision record must include: (a) explicit identification of each evidentiary source supporting findings on accommodation requests, medical documentation exchanges, and post-September 2021 Agency efforts; (b) contemporaneous documentation of decision-maker reasoning at each step (why accommodation was denied, why bid was marked ineligible, how pretext was ruled out), not retrospective supervisor affidavits; (c) point-by-point analysis of Complainant's pretext evidence (timing of accommodation denial after PTSD disclosure, one-year unexplained delay before facility transfer, missing documentation trails) with specific rebuttal or acknowledgment; and (d) clear statement of what documentation was formally requested of

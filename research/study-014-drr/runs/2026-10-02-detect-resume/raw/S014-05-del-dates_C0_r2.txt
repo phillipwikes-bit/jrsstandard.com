@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for the Agency's no-discrimination finding: Supervisor's categorical denial, Manager's statement that no report was received, and Supervisor 2's limited corroboration of only non-racial threats."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The record presents conflicting accounts but does not explicitly trace how the Agency weighed credibility, evaluated the pattern of alleged statements, or reasoned from evidentiary gaps to its final conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can identify the competing narratives and factual disputes but cannot reconstruct from the record alone why one account was credited over another or how procedural defaults (Complainant's hearing non-appearance) affected substantive analysis."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record contains material factual conflicts (Complainant's detailed allegations vs. Supervisor's denial and Manager's claim of no report) and the Agency's decision does not explain why the weight of evidence supports rejection of Complainant's claims despite Supervisor 2's partial corroboration."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Critical dates are obscured or missing: the complaint filing date is unclear, alleged incidents are described as 'late January/early at one point' and 'at one point,' investigation completion date is unspecified, and the sequence of the hearing dismissal, remand, and final decision lacks precise timing."
+    }
+  },
+  "remediation_note": "The record requires explicit chronological anchors for all material events, a documented credibility analysis explaining how conflicting witness accounts were evaluated and reconciled, and clear reasoning linking the Agency's factual findings to its legal conclusion under the applicable EEO discrimination standard.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "temporal_reconstructability, reasoning_traceability, accountability_support",
+    "compliant_version": "A compliant record would include: (1) precise dates for complaint filing, investigation period, hearing scheduling, and final decision; (2) explicit analysis of credibility (e.g., why Manager's denial outweighs Supervisor 2's partial corroboration); (3) documented evaluation of the pattern and specificity of Complainant's allegations against the general denials; (4) clear articulation of the burden and standard of proof applied; and (5) explanation of how Complainant's procedural default affected the merits review."
+  }
+}
+```

@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The basis for the no-discrimination finding is identifiable (denial by supervisor and manager, partial corroboration by Supervisor 2), but the record does not explicitly state which evidence weighed most heavily or how credibility was assessed between directly conflicting accounts."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision states 'no discrimination or retaliation established' but does not articulate the analytical pathway—whether it rejected Complainant's credibility, applied a specific evidentiary standard, or addressed the temporal gap between alleged incidents (Jan–Mar 2022) and complaint filing (April 4, 2022)."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why direct denials by the accused supervisor and manager, combined with Supervisor 2's partial corroboration of at least one threat, resulted in no-discrimination finding without explicit credibility findings, burden-of-proof discussion, or explanation of the weight assigned to each witness."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The evidence of denials and partial corroboration is present, but the record lacks analysis of whether six separate alleged incidents across six weeks, combined with one corroborated report of a threat, meets the threshold for harassment; no legal standard or factual sufficiency test is applied."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The sequence of alleged incidents is clear (late Jan.–Mar. 3, 2022), complaint filed April 4, 2022, investigation completed before October 2022 hearing order, and January 19, 2023 AJ dismissal establishes a followable chronology."
+    }
+  },
+  "remediation_note": "The final decision requires explicit credibility findings (which witness(es) were believed and why), statement of the applicable legal standard for harassment, and structured analysis of whether the evidence—particularly the pattern of allegations and partial corroboration—meets that standard. The reference to retaliation in the decision should be removed or clarified, since that claim was withdrawn.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A revised final decision must include: (1) express credibility determinations for each key witness with brief reasoning; (2) citation to the applicable Title VII harassment standard (unwelcome conduct, severe or pervasive, affecting terms or conditions of employment); (3) point-by-point response to whether the pattern of six incidents, the one corroborated threat, and the failure to report (per manager) support or defeat the harassment claim; and (4) removal of any reference to retaliation or explicit statement that the retaliation claim was withdrawn and is not addressed."
+  }
+}
+```

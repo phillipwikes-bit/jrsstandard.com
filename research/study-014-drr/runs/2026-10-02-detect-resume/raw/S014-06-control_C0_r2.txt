@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., bid denial tied to lack of medical documentation per supervisor affidavit and CBA language), but the Agency's rationale for the November 2021 accommodation failure and LWOP placement lacks explicit evidentiary grounding."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record explicitly notes 'There is no statement from any Agency official confirming that any effort was made to accommodate Complainant's restrictions from September 2021 onwards or that such an effort was unsuccessful,' breaking the chain from evidence to the Agency's non-accommodation conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer can reconstruct the timeline of complaints, FMLA, injury, and bid denial from dates and ROI citations, but cannot reconstruct why the Agency concluded no accommodation was owed or why the modified July 2021 assignment ended without explanation."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record states the Agency's final decision found Complainant did not submit required medical documentation, but the supervisor affidavit provides no evidence Complainant was formally requested to provide six-month certification documentation as the CBA contemplates."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record establishes a clear chronology from September 2018 initial complaint through September 2021 hospitalization, July 2021 modified assignment, November 2021 LWOP placement, January 2022 bid denial, and May 2022 EEO filing, with specific dates and ROI page citations throughout."
+    }
+  },
+  "remediation_note": "The record requires documented evidence of: (1) Agency communications formally requesting six-month medical certification for the bid position; (2) explicit Agency findings or statements regarding why accommodation efforts ceased or were deemed impossible from September 2021 onward; and (3) explanation of the decision-process gap between the July 2021 modified assignment and the November 2021 LWOP placement.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability and accountability_support; the record reconstructs complainant's timeline and allegations but lacks the Agency's documented decision-making for the non-accommodation and LWOP determinations.",
+    "compliant_version": "A compliant version would include: (a) Agency correspondence to Complainant formally requesting updated medical documentation and the timeline of that request; (b) signed statements from Agency officials detailing what accommodation efforts were undertaken from September 2021–November 2021, with dates and outcomes; (c) a written rationale from management explaining the transition from July 2021 modified assignment to November 2021 LWOP status; and (d) the Reasonable Accommodation Committee's documented decision and reasoning regarding Complainant's PTSD-related facility-separation restriction."
+  }
+}
+```

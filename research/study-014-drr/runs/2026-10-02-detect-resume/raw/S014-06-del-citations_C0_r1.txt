@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., lack of medical documentation for bid denial per CBA language), but provides no documented explanation for the Agency's one-year delay in facility transfer or its post-September 2021 accommodation efforts, leaving critical causal bases unidentified."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The Agency's final decision states conclusions (failure to submit documentation, no pretext demonstrated) but the record contains no traceable reasoning chain showing what accommodation requests were actually made, what responses were given, or how the Agency evaluated Complainant's PTSD restriction against physical restrictions."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the facility transfer took until July 2021, what the July 2021 assignment entailed, or whether post-September 2021 accommodation requests were formally submitted or reviewed, as no contemporaneous documentation or timeline is provided."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record explicitly notes 'there is no statement from any Agency official confirming that any effort was made to accommodate Complainant's restrictions from September 2021 onwards or that such an effort was unsuccessful,' and the Supervisor's affidavit does not confirm whether Complainant was actually requested to provide updated medical certification as the CBA permits."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (September 2019 assault, April 2020 release, June 2020 knee injury, July 2021 modified assignment, September 21, 2021 cleared, November 21, 2021 LWOP, January 24, 2022 bid denial, May 13, 2022 complaint, December 6, 2022 final decision), but intervals lack explanation and the critical gap between September 21, 2021 clearance and November 21, 2021 LWOP onset is not documented."
+    }
+  },
+  "remediation_note": "The record requires contemporaneous agency documentation of all accommodation requests made post-September 2021, explicit confirmation whether Complainant was formally requested to submit updated medical certification and when, and a documented explanation for the one-year delay in facility transfer and the decision to place her on LWOP. Without these, the evidentiary foundation for dismissal cannot be reconstructed.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "A compliant record would include: (1) dated correspondence showing each accommodation request and the Agency's documented response; (2) explicit evidence that Complainant was notified of the medical certification requirement and given a deadline to respond; (3) contemporaneous notes or memoranda explaining the delays in facility transfer and the rationale for LWOP placement; (4) the July 2021 assignment details and confirmation it met PTSD-related restrictions; and (5) Agency affidavits or declarations specifically addressing what post-September 2021 efforts were made or attempted to accommodate both sets of restrictions."
+  }
+}
+```

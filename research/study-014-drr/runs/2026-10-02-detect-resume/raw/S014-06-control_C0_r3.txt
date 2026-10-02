@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., lack of medical documentation for bid denial per Supervisor affidavit at ROI 152) but omits Agency rationale for critical decisions like the year-long delay in facility transfer or the denial of reasonable accommodation post-September 2021."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision states Complainant failed to prove discrimination but does not trace how the Agency evaluated pretext, comparators, or legitimate non-discriminatory reasons against the documented record of PTSD accommodation requests, facility reassignment delays, and LWOP placement without stated justification."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the Agency concluded no accommodation was attempted post-September 2021 when the record explicitly notes 'there is no statement from any Agency official confirming that any effort was made' and lacks documentation of the modified July 2021 assignment or its scope."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The evidentiary record shows Complainant provided medical documentation, suffered documented PTSD and physical restrictions, faced unexplained facility delays, received no explanation for bid denial, and was placed on LWOP without stated cause, yet the Agency's conclusion that she 'failed to prove discrimination' lacks analysis of these facts against statutory standards."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Timeline is largely recoverable (Sept 2018 prior EEO, Sept 2019 assault, April 2020 return-to-work, June 2020 knee injury, July 2021 modified assignment, Aug 16 2021 COVID leave, Sept 21 2021 clearance, Nov 21 2021 LWOP, Jan 24 2022 bid denial, May 13 2022 complaint, Dec 6 2022 final decision) but lacks intervals explaining the year-long gap from April to July 2021 and post-September 2021 accommodation efforts."
+    }
+  },
+  "remediation_note": "The record conflates investigative findings with decisional reasoning. A compliant version must explicitly state what accommodation requests were made, when, to whom, and why each was denied or delayed; analyze comparator treatment if discrimination is at issue; and trace the pretext analysis from evidence to conclusion with citation to specific ROI pages and Agency positions.",
+  "finding": {
+    "ai_function": "summarization",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, accountability_support",
+    "compliant_version": "The final decision must separately document: (1) each accommodation request and the Agency's documented response with dates; (2) the Agency's stated reason for the July 2021 facility assignment delay and why it exceeded medical necessity; (3) whether a request for updated medical documentation for the bid was communicated to Complainant before denial; (4) post-September 2021 efforts to accommodate with named officials and specific dates; and (5) explicit pretext analysis comparing Complainant's treatment to similarly-situated non-protected employees' treatment under identical restrictions."
+  }
+}
+```

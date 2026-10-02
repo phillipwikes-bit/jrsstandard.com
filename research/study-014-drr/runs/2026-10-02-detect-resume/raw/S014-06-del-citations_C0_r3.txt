@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies bases for some conclusions (e.g., lack of updated medical documentation for bid denial) but lacks explicit identification of the basis for the Agency's determination that Complainant failed to prove discrimination or pretext, which is the central conclusion."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The record presents facts and Agency conclusions but does not transparently trace how the Agency weighed evidence of non-accommodation (from Sept 2021 onward with no documented accommodation efforts) against the discrimination allegation, creating a gap between evidence and final determination."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later could reconstruct the timeline of events and claims, but the Agency's decision lacks sufficient reasoning to explain why documented failures to accommodate and the year-long delay in moving the Complainant away from her harasser do not support a discrimination finding."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record documents Complainant's restrictions, the Agency's stated reason for bid denial (lack of medical documentation), and acknowledges no evidence of request for such documentation, yet the Agency's conclusion that Complainant failed to prove discrimination is unsupported by articulated analysis of this evidentiary conflict."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record clearly establishes a chronological sequence from September 2018 (prior EEO complaint) through May 2022 (current complaint filing), with specific dates for sexual assault (Sept 2019), FMLA return (April 2020), knee injury (June 2020), modified assignment (July 2021), hospitalization (August 2021), LWOP placement (November 2021), bid denial (January 2022), and Agency final decision (December 2022)."
+    }
+  },
+  "remediation_note": "The record requires explicit reasoning connecting the documented facts—particularly the one-year delay in accommodation, absence of evidence that accommodation was requested or attempted post-September 2021, and the bid denial without documented notice—to the Agency's conclusion that discrimination was not proven. The decision must articulate how it evaluated pretext and the temporal relationship between accommodation failures and protected-class status.",
+  "finding": {
+    "ai_function": "analysis",
+    "condition_triggered": "reasoning_traceability, accountability_support, and basis_identification—the record assembles factual findings but fails to show analytical work connecting evidence to the discrimination conclusion",
+    "compliant_version": "A compliant version would include: (1) explicit statement of the legal standard for reasonable accommodation discrimination; (2) point-by-point analysis of how the Agency's failure to accommodate post-September 2021 was or was not discriminatory; (3) articulation of what constitutes 'pretext' in this context and how evidence was evaluated against that standard; (4) explanation of why the absence of documented accommodation attempts does not support an inference of discrimination; and (5) clear citation of evidence supporting each element of the conclusion."
+  }
+}
+```

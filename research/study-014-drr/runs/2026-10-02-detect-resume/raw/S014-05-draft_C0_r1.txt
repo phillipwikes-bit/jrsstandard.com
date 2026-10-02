@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "review",
+      "note": "The record identifies sources of conclusions (Supervisor denial, Manager denial, Supervisor 2 partial corroboration) but does not explicitly state which evidentiary standard was applied to resolve the direct conflicts or why one account was credited over another."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The final decision finding 'no discrimination or retaliation established' is referenced but the record does not show the decision text, analysis of credibility, application of burden of proof, or reasoning chain from evidence to conclusion."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years later can identify the allegations and witness positions but cannot reconstruct how conflicting accounts were evaluated or what weight was assigned to Supervisor 2's partial corroboration without access to the actual final decision document."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents conflicting evidence (Complainant's detailed account vs. denials; Supervisor 2's partial corroboration) but does not show how the Agency weighed demeanor, consistency, specificity, documentary evidence, or witness reliability to support the no-discrimination finding."
+    },
+    "temporal_reconstructability": {
+      "status": "pass",
+      "note": "The record provides a clear chronology: alleged incidents spanning late Jan.–March 3, 2022; complaint filed April 4, 2022; investigation completed; ROI received; hearing request and dismissal dates specified (Oct. 24, Nov. 24, 2022); final decision issued; EEOC appeal pending."
+    }
+  },
+  "remediation_note": "The record must include or reference the final decision document that articulates the Agency's reasoning, credibility determinations, application of the burden of proof, and analysis of each allegation. Without the decision text, the record cannot demonstrate how conflicting evidence was reconciled or why Supervisor 2's partial corroboration of a physical threat did not alter the outcome.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "reasoning_traceability, cold_reviewer_clarity, and accountability_support",
+    "compliant_version": "The record must include the full final decision under 29 C.F.R. § 1614.110(b), explicitly addressing: (1) credibility assessments of Complainant, Supervisor, Manager, and Supervisor 2 with stated bases; (2) the evidentiary standard applied (preponderance of the evidence for discrimination; same for retaliation if claim not fully withdrawn); (3) detailed analysis of each alleged incident, including whether timing and specificity of Complainant's account enhanced or diminished credibility; (4) explicit treatment of Supervisor 2's partial corroboration and its weight; and (5) legal conclusion tied to each element of the discrimination and retaliation claims, with citation to applicable statutes and case law."
+  }
+}
+```

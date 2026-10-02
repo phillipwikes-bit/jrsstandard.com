@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "pass",
+      "note": "The record identifies bases for conclusions through specific affidavits (A-D) and regulatory citations (29 C.F.R. § 1614.110(b)), with each party's position sourced to documented statements."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "While evidence is presented (complainant allegations vs. supervisor denial vs. manager denial), the record does not explicitly trace how the Agency weighted conflicting accounts or applied legal standards to reach its no-discrimination finding."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A future reviewer can identify the complaints and affidavits but cannot reconstruct the Agency's decisional logic from this narrative alone, as the final decision rationale is not included in the record excerpt."
+    },
+    "accountability_support": {
+      "status": "review",
+      "note": "The record presents conflicting evidence (Complainant's detailed allegations against Supervisor's denial, Manager's denial, and Supervisor 2's partial corroboration), but does not show credibility findings or explanation of how the Agency resolved these conflicts to support its conclusion."
+    },
+    "temporal_reconstructability": {
+      "status": "gap",
+      "note": "Dates are vague ('late January/early at one point,' 'at one point order,' 'at one point initial conference'), preventing chronological reconstruction of the sequence of events, reports, and procedural steps."
+    }
+  },
+  "remediation_note": "The record requires insertion of the Agency's final decision rationale explaining how it evaluated credibility and conflicting testimony. Temporal gaps must be filled with specific dates for the alleged incidents, manager report, investigation initiation, AJ proceedings, and final decision issuance.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "temporal_reconstructability and reasoning_traceability; secondary gap in cold_reviewer_clarity",
+    "compliant_version": "A complete record would include: (1) specific dates for all allegations and procedural events; (2) the Agency's written final decision with explicit findings on credibility of conflicting accounts; (3) explanation of how evidence satisfied or failed to satisfy the applicable burden of proof; and (4) citation to specific record pages supporting each factual and legal conclusion."
+  }
+}
+```
