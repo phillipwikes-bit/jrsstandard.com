@@ -108,3 +108,12 @@ The reading was done by Claude Code, a model, and has not been checked by a pers
 ## Next (updated 2026-10-02, after the confirmatory run)
 - The confirmatory run is done: **H4c failed** on the automatic count, while the manual reading found only extractor errors in P4. See `CONFIRMATORY_RESULTS.md`.
 - Part 2 resumed after the owner added credit; its results are reported in `PART2_RESULTS.md` when complete.
+
+## Correction 2026-10-03: a duplicate text (OLD FINDING, NEW EVIDENCE, CORRECTED STATUS)
+- **OLD FINDING:** the study set holds 30 decisions.
+- **NEW EVIDENCE:** S014-09 and S014-11 are byte-identical; the same decision was posted under two EEOC links. The corpus builder (`tools/build_corpus.py`) removed duplicates by link, not by content.
+- **CORRECTED STATUS:** 29 unique texts. Every result was recomputed without S014-11 (FACT):
+  - **H1** still holds. Sonnet P1 medians: dates 0.75, citations 0.00, attributions 0.33, quotes 0.04. Haiku P1: 0.50, 0.00, 0.33, 0.00.
+  - **H4** is still not met. v1.0 unsupported totals: Sonnet P4 38 against P1 25; Haiku P4 23 against P1 26.
+  - **Cloze:** source 140/145 (0.966), P1 112/145 (0.772), P4 141/145 (0.972), no document 17/145. Each moves by no more than 0.001.
+- **EXPLANATION:** one text was counted twice. No conclusion changes. The tables above are left as run, for the record.

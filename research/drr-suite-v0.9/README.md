@@ -53,11 +53,12 @@ The values are medians across the 30 texts; citations are taken over the 13 text
    - Every flag on the JRS-guided drafts there was an extractor error.
    - Until v1.3 is confirmed on new texts, the automatic count is a screening step: each flag is read by hand (`HARNESS_SPEC.md` section 3.4) and labelled before it is reported.
 2. **The private set is reproducible from the public rule.** The 29 held-out texts are the next texts the published selection rule yields, so anyone can rebuild them. They guard against tuning a scorer, not against a vendor tuning a tool. v1.0 needs a private set drawn by a rule that is not published (for example, a sealed random draw).
-3. **One text family.** Every text is an EEOC federal-sector decision background. Results may not carry over to workplace investigation reports, police reports or audit files.
-4. **Small set.** 30 texts; intervals are wide.
-5. **Anchors are surface features.** Retention counts whether a date or citation survives, not whether it is attached to the right event.
-6. **Attribution matching is narrow.** It sees a role label followed by a speech verb. A draft that names the speaker in other words can score as a loss.
-7. **Cloze needs a reader model.** The reader is a variable; the suite fixes the instruction and scoring but not the reader.
+3. **Duplicate texts (found 2026-10-03).** `practice/S014-09.txt` and `practice/S014-11.txt` are the same decision posted twice, so the practice set has 29 unique texts. The held-out set has 5 duplicate pairs (24 unique). A rebuilt corpus must remove duplicates by text hash, not by link.
+4. **One text family.** Every text is an EEOC federal-sector decision background. Results may not carry over to workplace investigation reports, police reports or audit files.
+5. **Small set.** 30 texts; intervals are wide.
+6. **Anchors are surface features.** Retention counts whether a date or citation survives, not whether it is attached to the right event.
+7. **Attribution matching is narrow.** It sees a role label followed by a speech verb. A draft that names the speaker in other words can score as a loss.
+8. **Cloze needs a reader model.** The reader is a variable; the suite fixes the instruction and scoring but not the reader.
 
 ## Path to v1.0
 - Extractor v1.3 (the four forms in `CONFIRMATORY_RESULTS.md`), confirmed on texts not yet used. Both earlier sets are now spent.

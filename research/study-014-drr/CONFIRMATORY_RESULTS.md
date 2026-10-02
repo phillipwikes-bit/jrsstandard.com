@@ -58,3 +58,12 @@ These are not fixed in this run, as the protocol requires.
 ## Statements now allowed
 - "In two tests on 59 EEOC decision backgrounds, concise AI summaries kept no record citations (median) and almost no quotations; a JRS-guided drafting instruction kept a median of all of them."
 - It must be paired with: "An automatic check of unsupported additions did not show the JRS-guided drafts to be cleaner, mainly because of scorer errors; a manual reading found no invented dates, citations or quotations in them, which has not been independently checked."
+
+## Correction 2026-10-03: duplicate texts (OLD FINDING, NEW EVIDENCE, CORRECTED STATUS)
+- **OLD FINDING:** 29 held-out texts.
+- **NEW EVIDENCE:** five pairs are byte-identical (P014-01/04, 02/05, 03/06, 12/18, 17/20), so there are 24 unique texts.
+- **CORRECTED STATUS** (recomputed on the 24, FACT): **H4c still fails**, on the same conditions.
+  - Sonnet: pooled P4 1.00 against P2 1.00 (a tie); unsupported P4 4 against P1 2.
+  - Haiku: retention condition met; unsupported P4 2 against P1 0.
+  - The statement "across 59 EEOC decision backgrounds" becomes **53 unique decision backgrounds** (29 plus 24).
+- **EXPLANATION:** the corpus builder removed duplicates by link, not by content. Part 2b uses the 24 unique texts.
