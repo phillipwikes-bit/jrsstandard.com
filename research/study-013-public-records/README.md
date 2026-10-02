@@ -61,3 +61,7 @@ node tools/score-study.mjs runs/2026-10-xx-main
 | `GAP_DEFICIENCIES.json` | The EEOC remand orders for the 15 GAP cases, coded into D1 to D10 and mapped to RC1 to RC5. *Inference*; owner verification required. Also holds the agency tags for all 30 cases |
 | `TRAINING_EXERCISE_DRAFT.md` | The free "Spot the gap" session: six cases, a worksheet and facilitator answers |
 | `tools/make-match-worksheet.mjs` | The blinded worksheet for the human-scored deficiency-match outcome (PROTOCOL amendment 1) |
+
+## Run log
+- **2026-10-02, shape check (not part of the study; not scored).** One call per arm on a synthetic record. That record was not a study case, so no study case was exposed before the main run. All 5 arms returned HTTP 200, `end_turn`, and parsed. Observed cost USD 0.0455. The key was the owner's own, pasted in chat under the CLAUDE.md section 22 override and passed only as a process variable. It appears in no file.
+- **2026-10-02, main run started:** `runs/2026-10-02-main` (450 calls).
