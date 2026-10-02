@@ -447,6 +447,8 @@ One line per settled decision: date, decision, source. **Read this first, before
 | 2026-10-02 | Keep the signed SCCE copyright form in the repository, on main | Owner, 2026-10-02; main 044c7af |
 | 2026-10-02 | Review the sales and licensing assessment point by point, then issue one clean revised report (not layered revisions) | Owner, 2026-10-02 |
 | 2026-10-02 | STA was built on the same fundamentals as CCI's MRT; STA figures confirmed (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | Owner, 2026-10-02 |
+| 2026-10-02 | Study 013: use real public records instead of outside case writers; Claude selects normal and edge cases | Owner, 2026-10-02 |
+| 2026-10-02 | Study 013 spending: "Spend whatever for study" (no cap set by the owner) | Owner, 2026-10-02 |
 | 2026-10-02 | Five strong November publishing targets: Dewey (Broida), SCCE, HCCA, AWI Journal, IAOHRA/NFHTA; other survey rows not pursued | Owner, 2026-10-02 |
 | 2026-10-02 | D8: the curriculum (training, guides, Reviewer Reference) remains free; consider giving it to Dewey (Broida) or SCCE to publish | Owner, 2026-10-02 |
 | 2026-10-01 | First evaluation workflow: non-HR supplier-access exception approvals, fixture-only (O-01); error weights as in v8 s16 (O-02); USD 5 smoke ceiling (O-04); HOLD sending until a minimum sendable package exists, then the owner names one recipient (O-05); trackers stay on the working branch (O-07). O-08 NOT ANSWERED | V8 decision sheet |
@@ -489,7 +491,7 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | 26 | Remove or disable the `compliant_version` rewrite for evaluation and benchmark use | OPEN |
 | 27 | Define the unit of review: a final decision record or a whole investigation file (8,000-character limit) | OPEN |
 | 28 | Add an evaluation mode with no JRS telemetry, for any non-synthetic pilot | OPEN |
-| 29 | Study 013 feasibility round: 30 hidden records, arms A to D; needs owner approval for outside contributors and paid calls. **Where it runs (2026-10-02):** in Claude Code, through the existing adapter (`run-smoke.mjs`, database writes off) and scorer (`score-run.mjs`), after items 24 to 28. Arms A to C must call the Engine's model on Anthropic, which ChatGPT cannot do. ChatGPT can serve as arm D, the cross-vendor model. It must not write the records, the answer key or the scores, because the plan requires human case writers and no LLM grading the headline result | OPEN |
+| 29 | Study 013 feasibility round: 30 hidden records, arms A to D. **Owner decisions 2026-10-02: public records replace outside case writers (Appendix E.4); spending approved with no cap.** Still needs the provider keys in the environment (Anthropic; another vendor for arm D). **Where it runs (2026-10-02):** in Claude Code, through the existing adapter (`run-smoke.mjs`, database writes off) and scorer (`score-run.mjs`), after items 24 to 28. Arms A to C must call the Engine's model on Anthropic, which ChatGPT cannot do. ChatGPT can serve as arm D, the cross-vendor model. It must not write the records, the answer key or the scores, because the plan requires human case writers and no LLM grading the headline result | OPEN |
 | 30 | Decide whether a one-time train-the-trainer session delivered by you is an allowed exception to the 26 August "no owner-hour engagements" decision | OPEN |
 | 31 | Confirm or correct the STA figures in C.3 (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | DONE: owner confirmed, 2026-10-02 |
 | 32 | Analyze and report Study 012 (JRS-structured against unaided expert review); it is the evidence the curriculum licence needs | OPEN |
@@ -740,6 +742,34 @@ The owner pasted an adversarial plan, written elsewhere, for testing whether the
   - Independent case writers and reviewers mean contacting outside people (an owner decision).
   - A statistician is a paid engagement.
   - None of this is authorized yet. Synthetic records only until then.
+
+### E.4 Case source: real public records (owner decision, 2026-10-02)
+
+**Owner's words:** "Can we use historical or public records ... You can pick out real public cases that are considered normal or edge. Spend whatever for study."
+
+**Recommended source (*Judgment*): EEOC federal-sector appellate decisions** (Office of Federal Operations, published on eeoc.gov).
+- **Why they fit:** an agency's final decision must rest on "an impartial and appropriate factual record" (MD-110 chapter 6). When the record is not adequate, the EEOC vacates the decision and remands it for a supplemental investigation. When it is adequate, the decision is reviewed on the merits. That is the JRS question: does the record support the conclusion?
+- **The answer key comes from an independent human adjudicator,** the EEOC, not from you and not from an AI. This meets the plan's two requirements (E.2 points 5 and 2) better than case writers would.
+- **Normal and edge cases:**
+  - *Normal pass:* the record was found adequate and the decision affirmed.
+  - *Normal gap:* the decision was vacated and remanded for a supplemental investigation on the merits.
+  - *Edge:* a partial remand (for example, on damages only, as in decision 2019001549, fetched as a test); an adequate record but a reversed conclusion; a dissent or a split issue.
+- **Access (*Observed*, 2026-10-02):** decision 2019001549 downloaded as a PDF (HTTP 200, 5,312 words).
+- **Rights (*Inference*, REQUIRES HUMAN REVIEW):** works of the US federal government are generally not protected by copyright (17 U.S.C. 105). This is an issue to confirm, not a legal conclusion.
+- **Second domain, matching the smoke corpus:** sole-source "Justification and Approval" documents (FAR 6.303), paired with GAO bid-protest decisions that sustained or denied a challenge to them. Optional; it gives the procurement-exception records an independent label as well.
+
+**Controls, set before any case is chosen:**
+1. **A written selection rule first:** a fixed search, a date range, and the first qualifying decisions taken in order. No hand-picking for interest. Target: 30 decisions, about 15 pass and 15 gap, with about 6 edge cases among them.
+2. **Strip the answer before the model sees the text.** Only the description of the investigative record goes in. The analysis, the holding, the "remand" and "affirm" language and the order are removed.
+3. **Memorization risk:** public decisions may be in model training data. Prefer decisions issued after the models' training periods (for example, 2026). Arm A (no JRS) also shows whether a model recognizes cases without JRS.
+4. **A summary, not the file:** a decision describes the record; it is not the record. This settles item 27 for this round: the unit of review is the adjudicator's description of the record. Generalizing beyond that is out of scope.
+5. **Labels mean what the adjudicator found,** not JRS conditions. A remand is "record inadequate"; an affirmance is "record adequate on the issues decided". Mapping to JRS conditions is an analysis step, reported separately.
+6. **Privacy:** EEOC decisions use pseudonyms ("Complainant", the agency name). Use the published text only, and add nothing that identifies anyone.
+7. **Human check:** you review the stripped versions of all 30 against the selection rule before the run. About 1 to 2 hours.
+
+**Spending:** your instruction (no cap) is recorded in Appendix A. The runner keeps its per-run call limit as a guard against a runaway loop, not as a budget. Each run's actual cost is reported afterwards.
+
+**Still blocked:** the Anthropic key is not in this environment (checked 2026-10-02, by name only), and arm D needs a second vendor's key. Items 24 to 28 come first.
 
 ## Appendix D. Manuscript review (four uploaded papers and the portfolio)
 
