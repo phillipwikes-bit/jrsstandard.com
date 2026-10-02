@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The Agency's basis for denying the bid rests on Complainant's alleged failure to provide 'updated medical documentation showing she could fully perform the duties within 6 months,' but no evidence appears in the record that this requirement was ever communicated to her or that she was afforded opportunity to comply."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision traces a narrow path (no documentation → denial justified) but omits the critical intermediate step: whether the Agency made any request for the documentation, when, and how Complainant responded, making the causal chain incomplete and difficult to verify."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years hence could reconstruct the disability and sexual harassment context and the January 2022 bid denial, but cannot determine from the record alone whether the 6-month medical standard was a pre-existing contractual requirement, a post-hoc justification, or communicated to Complainant prior to her bid."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The Agency's conclusion that Complainant 'did not submit the required medical documentation' lacks supporting evidence that the requirement was stated, the deadline communicated, and the Complainant's response (or non-response) documented; the record contains no such documentary exchange."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are provided (September 2019 incident, April 2020 clearance, July 2021 reassignment, August–September 2021 hospitalization, November 21, 2021 LWOP start, January 24, 2022 bid denial, December 6, 2022 final decision), but the interval from her September 2021 clearance to the November 2021 LWOP transition is opaque—no documentation of accommodation efforts or their failure during that window."
+    }
+  },
+  "remediation_note": "The record must include contemporaneous evidence (e-mail, memo, CBA reference, or testimony) that the Agency explicitly requested updated medical documentation from Complainant, specified the 6-month performance standard and by when it was needed, and documented her failure to provide it or provide it timely. Without such evidence, the decision rests on an unstated premise.",
+  "finding": {
+    "ai_function": "recommendation",
+    "condition_triggered": "basis_identification, accountability_support, reasoning_traceability",
+    "compliant_version": "A compliant version would attach or summarize dated correspondence to Complainant notifying her that the bid process required medical certification within a defined timeframe that she could fully perform all essential functions within 6 months; document what Complainant submitted and when; and explain why that submission was deemed insufficient (e.g., it did not address specific functions, was stale, or was never received). The Agency's statement should tie the bid denial explicitly to evidence of non-compliance rather than to the absence of a document, shifting the burden from Complainant's silence to Agency documentation of a clear request and her documented failure to meet it."
+  }
+}
+```

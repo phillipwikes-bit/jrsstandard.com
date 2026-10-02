@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The Agency's rationale for denying the bid rests on a requirement for 'updated medical documentation showing she could fully perform the duties within 6 months,' but no record evidence shows this requirement was communicated to the Complainant or that she was afforded opportunity to provide it."
+    },
+    "reasoning_traceability": {
+      "status": "gap",
+      "note": "The decision pathway from the September 2021 clearance to return, through the November 2021 LWOP placement, to the January 2022 bid denial is not documented with dates, actions, or intermediate justifications; the record contains no contemporaneous notes or communications explaining each step."
+    },
+    "cold_reviewer_clarity": {
+      "status": "review",
+      "note": "A reviewer years hence could identify the parties, key incidents (assault, injury, FMLA, hospitalization), and formal outcomes (bid denial, LWOP placement), but would find no contemporaneous documentation of internal deliberations, accommodation requests, or management responses between September 2021 and January 2022."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The Agency's conclusion that Complainant 'did not submit the required medical documentation' lacks evidentiary support in the form of a written request to her for such documentation, a date of that request, or evidence that she was given an opportunity to comply before the bid was denied."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "The record provides key dates (September 2019 incident, April 2020 clearance, June 2020 injury, July 2020 documentation, July 2021 assignment, August 16/September 21 2021 hospitalization window, November 21 2021 LWOP start, January 24 2022 bid denial, May 13 2022 EEO filing, December 6 2022 final decision), but the 15-month gap between her July 2021 reassignment and November 2021 LWOP, and the period from September 2021 onward, contain no documented milestones or intermediate actions."
+    }
+  },
+  "remediation_note": "The record requires contemporaneous documentation of: (1) any written request to Complainant for updated medical certification and the date it was made; (2) explicit notice to her of the 6-month prognosis requirement and its basis in the CBA; (3) a timeline of accommodation discussions or determinations from September 2021 onward; and (4) completion of the truncated sentence on the OWCP-coding dismissal.",
+  "finding": {
+    "ai_function": "narrative",
+    "condition_triggered": "basis_identification, reasoning_traceability, accountability_support, and temporal_reconstructability—the record narrates events and outcomes but lacks the internal deliberative and procedural documentation necessary to establish that the Agency's stated basis for the bid denial (missing medical certification) was actually applied or communicated.",
+    "compliant_version": "A compliant record would include: dated correspondence from management requesting updated medical certification; evidence of Complainant's receipt or response; dated accommodation discussions or denials with stated reasons; contemporaneous case notes on the relocation and LWOP decisions; and a complete written statement from the Agency official explaining the sequence of actions from September 2021 through January 2022, with references to specific documents and dates supporting each conclusion."
+  }
+}
+```

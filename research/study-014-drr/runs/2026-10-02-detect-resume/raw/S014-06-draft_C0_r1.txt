@@ -1,0 +1,32 @@
+```json
+{
+  "conditions": {
+    "basis_identification": {
+      "status": "gap",
+      "note": "The Agency's basis for the bid denial rests on absence of 6-month medical documentation, but the record contains no evidence that Complainant was informed this documentation was required or requested, leaving the stated basis unsupported by contemporaneous record."
+    },
+    "reasoning_traceability": {
+      "status": "review",
+      "note": "The decision follows a logical structure (no updated docs → no proof of capability → bid denied) but skips the critical intermediate step: no documented request for or communication about the medical certification requirement prior to denial."
+    },
+    "cold_reviewer_clarity": {
+      "status": "gap",
+      "note": "A reviewer years later cannot reconstruct why the 6-month certification standard was applied, whether it was communicated to Complainant, or what factual investigation preceded the January 2022 denial decision."
+    },
+    "accountability_support": {
+      "status": "gap",
+      "note": "The record offers no statement from the Supervisor or RAC explaining attempts to locate Complainant in available positions from September 2021 to January 2022, the criteria used to assess her eligibility for the bid position, or whether her restrictions were actually incompatible with it."
+    },
+    "temporal_reconstructability": {
+      "status": "review",
+      "note": "Key dates are present (September 2019 incident, April 2020 clearance, June 2020 injury, July 2021 relocation, August 16–September 21, 2021 hospitalization, November 21, 2021 LWOP start, January 24, 2022 bid denial) but the gap between her return to work clearance on September 21, 2021 and the final decision on December 6, 2022 lacks a documented account of Agency efforts to accommodate or the reasoning for the 13-month delay in addressing placement."
+    }
+  },
+  "remediation_note": "The record requires contemporaneous documentation that Complainant was informed of the 6-month medical certification requirement, when it was requested, what response she provided, and what factual findings supported the conclusion that no work was available within her restrictions. Additionally, a statement of efforts undertaken by the RAC or management to locate suitable positions during the November 2021–January 2022 interval must be included to establish that the accommodation process was exhausted before bid denial.",
+  "finding": {
+    "ai_function": "recommendation",
+    "condition_triggered": "basis_identification, cold_reviewer_clarity, accountability_support, temporal_reconstructability",
+    "compliant_version": "The Agency's final decision must document: (1) the date and method of notice to Complainant of the 6-month certification requirement; (2) her response and any medical documentation she submitted; (3) a narrative of specific positions identified within her restrictions and the reason each was unavailable or unsuitable; (4) dates and names of personnel involved in the accommodation search; (5) the identity of the person who marked her 'ineligible' and the stated reason; and (6) a clear factual finding that the comparator employee's qualifications differed in a material, documented way, or that Complainant's restrictions genuinely precluded performance of the awarded position's essential duties."
+  }
+}
+```
