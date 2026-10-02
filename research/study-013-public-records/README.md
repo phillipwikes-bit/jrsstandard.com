@@ -1,6 +1,6 @@
 # Study 013 feasibility round: public-record case set
 
-**Built 2026-10-02 in Claude Code. No model call has been made. Status: case set BUILT, owner review PENDING, run BLOCKED.**
+**Built 2026-10-02 in Claude Code. No model call has been made. Status: case set BUILT; protocol FIXED; runner BUILT and tested offline (21/21, and 3 of 3 fault copies caught); live run BLOCKED (no `ANTHROPIC_API_KEY` in this environment); owner review of the cases PENDING.**
 
 ## What is here
 | Path | What |
@@ -34,3 +34,22 @@
 2. **Decide item 27** (limit 1 above).
 3. Put the provider keys in the environment settings: Anthropic for arms A to C, and a second vendor for arm D.
 4. Items 24 to 26 and 28: model migration, Codebook mapping, rewrite removal, no-telemetry mode.
+
+## Running it (added 2026-10-02)
+| Path | What |
+|---|---|
+| `PROTOCOL.md` | Arms A, B, C, C0 and D; outcomes; the decisions on items 24 to 28. Fixed before any model call |
+| `engine/codebook-conditions.json` | The Codebook's five conditions, extracted word for word from `codebook.html` and hashed |
+| `engine/arms.mjs` | Every arm's model, prompt and output schema. Arm C0 reads the production prompt from `api/review-engine.js` and refuses to run if that file's hash has changed |
+| `tools/run-study.mjs` | The runner |
+| `tools/score-study.mjs` | The deterministic scorer. No model grades anything |
+| `tools/test-run-study.mjs` | Offline tests |
+
+```
+node tools/test-run-study.mjs                      # offline, no network
+node tools/run-study.mjs --out runs/2026-10-xx-main # live: 450 calls (5 arms x 30 cases x 3 runs)
+node tools/score-study.mjs runs/2026-10-xx-main
+```
+**Cost** (*Inference*, not observed): about USD 10 to 20 for the full run, from the published prices and the case lengths. The runner stops at 500 calls or USD 100 observed. The owner set no budget cap.
+
+**Finding for item 24 (*Observed* in the fault test):** production `oneRun` reads `content[0].text`. On a model with thinking turned on, the first block is a thinking block, so a production model switch would fail to parse. The runner reads the text blocks, and a copy changed to use `content[0]` fails 3 tests. A production migration therefore needs that code fix, not only a new model identifier.
