@@ -375,6 +375,8 @@ These three assets rest on **your practitioner credibility**: 13 years as a Lead
    - **Not pursued:** the other survey rows (C.5: H5 to H8, H10 to H12) stay as reference only.
    - **Pacing:** November starts the sequence; it is not five messages at once. Broida's one-ask rule applies to Dewey, and SCCE and HCCA are one conversation. All five are on a non-exclusive licence only.
 
+**Companion evidence (2026-10-02):** Study 013 now supplies each target's companion piece (`research/study-013-public-records/COMPANION_PLAN.md`): the EEOC remand-order deficiency coding, a free training exercise, and the AI-review results once the study runs. Nothing has been sent.
+
 **Stop rule:** if every publisher asked requires a full transfer of the core materials, stop. JRS stays self-published and free.
 
 **Effect on a future sale (*Inference*):** published and free, JRS gains credibility. That raises the value of what can be sold (the standard, the research, the name, the training system and your standing as its author), as long as you keep the copyright. It brings in little direct income, which fits your decision to keep the curriculum free.

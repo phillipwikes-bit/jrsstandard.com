@@ -53,3 +53,11 @@ node tools/score-study.mjs runs/2026-10-xx-main
 **Cost** (*Inference*, not observed): about USD 10 to 20 for the full run, from the published prices and the case lengths. The runner stops at 500 calls or USD 100 observed. The owner set no budget cap.
 
 **Finding for item 24 (*Observed* in the fault test):** production `oneRun` reads `content[0].text`. On a model with thinking turned on, the first block is a thinking block, so a production model switch would fail to parse. The runner reads the text blocks, and a copy changed to use `content[0]` fails 3 tests. A production migration therefore needs that code fix, not only a new model identifier.
+
+## Companion material (added 2026-10-02)
+| Path | What |
+|---|---|
+| `COMPANION_PLAN.md` | A review of the study for targets 1, 2, 3 and 5 of the November publishing plan, with each target's piece and its limits |
+| `GAP_DEFICIENCIES.json` | The EEOC remand orders for the 15 GAP cases, coded into D1 to D10 and mapped to RC1 to RC5. *Inference*; owner verification required. Also holds the agency tags for all 30 cases |
+| `TRAINING_EXERCISE_DRAFT.md` | The free "Spot the gap" session: six cases, a worksheet and facilitator answers |
+| `tools/make-match-worksheet.mjs` | The blinded worksheet for the human-scored deficiency-match outcome (PROTOCOL amendment 1) |

@@ -3125,3 +3125,9 @@ Only four line groups differ between v7 and v8.
   - 26 and 28: done for evaluation.
   - 27: a 40,000-character evaluation limit for all arms.
   Runner and scorer: 21/21 offline tests; three fault copies caught (no destination lock, content[0] parsing, overwrite). **Production finding:** `oneRun` reads `content[0].text`, which breaks on thinking models, so a production migration needs a code fix. No refusal fallback: it would swap the model under test. Arm D is single-vendor because no second vendor's key is set. Estimated cost USD 10 to 20 (*Inference*). No model call made. Commit 4bb7a31.
+- 2026-10-02 (**OWNER: REVIEW THE STUDY AND MAKE IT THE COMPANION PIECE FOR DEWEY, SCCE, HCCA AND IAOHRA/NFHTA**): reviewed. The gap: every output depended on the blocked live run. Added:
+  - `GAP_DEFICIENCIES.json`: the 15 EEOC remand orders coded D1 to D10 and mapped to RC1 to RC5. The commonest were missing decision-maker testimony (9) and missing documents (7). *Inference*; owner to verify. S013-03 is coded from its analysis paragraph. S013-16 was remanded for a hearing, not a supplemental investigation (D10).
+  - PROTOCOL amendment 1, before any model call: a human-scored, blinded deficiency-match outcome (`tools/make-match-worksheet.mjs`), a health-sector band (8 cases, 4 and 4), and equal prominence for negative results.
+  - `COMPANION_PLAN.md`: one piece per target. SCCE and HCCA share one chapter at first, per the decisions log. All pieces vendor-neutral. AWI (target 4) was not in the request and stays unchanged.
+  - `TRAINING_EXERCISE_DRAFT.md`: a free "Spot the gap" session with 6 cases.
+  Gaps disclosed: no fair-housing cases, so NFHTA needs its own source (NOT ESTABLISHED); the employment-to-private-sector link is an analogy. Tests 21/21; worksheet and band checked on a dry run. Nothing sent. No model call.

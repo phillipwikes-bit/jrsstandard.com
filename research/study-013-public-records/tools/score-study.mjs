@@ -6,6 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const HEALTH = new Set(Object.entries(JSON.parse(readFileSync(path.join(ROOT, 'GAP_DEFICIENCIES.json'), 'utf8')).agencies_all_cases).filter(([, v]) => v.health_sector_agency).map(([c]) => c));
 
 export function wilson(k, n, z = 1.96) {
   if (!n) return [null, null];
@@ -59,6 +60,7 @@ export function score(dir) {
       bands: {
         short_text: m((k) => k.words < median, flagged), long_text: m((k) => k.words >= median, flagged),
         posted_before_2023: m((k) => k.posted < '2023', flagged), posted_2023_on: m((k) => k.posted >= '2023', flagged),
+        health_sector_agency: m((k) => HEALTH.has(k.case), flagged), // PROTOCOL amendment 1
       },
       route_counts: Object.values(per).reduce((a, x) => { a[x.route] = (a[x.route] || 0) + 1; return a; }, {}),
     };

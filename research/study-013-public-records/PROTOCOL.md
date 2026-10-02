@@ -60,3 +60,10 @@ On 30 public EEOC decisions, each labeled from the EEOC's own finding (`KEY.json
 - An output directory is never overwritten.
 - Every raw response is saved, together with the model, the system prompt's hash, the case hash and the usage.
 - The key is read from `ANTHROPIC_API_KEY` only and is never written anywhere.
+
+## Amendment 1, 2026-10-02 (before any model call; owner request to make the study a companion to the publishing targets)
+1. **New secondary outcome, deficiency match, scored by a human.** For each GAP case and each arm, the question is whether the arm's notes name at least one deficiency category the EEOC ordered fixed (`GAP_DEFICIENCIES.json`, categories D1 to D10).
+   - It is scored by the owner on a **blinded worksheet**: arms are relabeled with random letters, and the unblinding key is kept separate (`tools/make-match-worksheet.mjs`).
+   - **No model scores it.** It answers the practitioner's question: does the reviewer find what the EEOC found?
+2. **New band, health-sector agencies:** VA, VHA, Defense Health Agency and HHS. That is 8 cases, 4 GAP and 4 PASS. Descriptive only; n = 8.
+3. **Negative results are reported** with the same prominence as positive ones, in every companion piece (`COMPANION_PLAN.md`).
