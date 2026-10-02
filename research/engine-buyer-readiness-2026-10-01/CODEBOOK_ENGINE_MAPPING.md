@@ -22,7 +22,7 @@ The mapping follows the Engine prompt's own label, which carries the Codebook na
 2. **Two Engine questions drift from the Codebook:**
    - Engine 2 asks RC1's question under RC4's name.
    - Engine 4 can be read as a merits question, which the Codebook excludes.
-   Study 013 should therefore score the **route** (ready, review or gap) as its primary outcome. Per-condition results are secondary and exploratory until v0.2.
+   Any study should therefore score the **route** (ready, review or gap) as its primary outcome. Per-condition results are secondary and exploratory until v0.2.
 3. **The order differs.** The Engine runs RC2, RC4, RC1, RC5, RC3; the Codebook runs RC1 to RC5.
 
 ## Proposed for Engine v0.2 (production change: owner approval, deployment and byte verification required)

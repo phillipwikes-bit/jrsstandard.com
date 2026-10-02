@@ -375,8 +375,6 @@ These three assets rest on **your practitioner credibility**: 13 years as a Lead
    - **Not pursued:** the other survey rows (C.5: H5 to H8, H10 to H12) stay as reference only.
    - **Pacing:** November starts the sequence; it is not five messages at once. Broida's one-ask rule applies to Dewey, and SCCE and HCCA are one conversation. All five are on a non-exclusive licence only.
 
-**Companion evidence (2026-10-02):** Study 013 now supplies each target's companion piece (`research/study-013-public-records/COMPANION_PLAN.md`): the EEOC remand-order deficiency coding, a free training exercise, and the AI-review results once the study runs. Nothing has been sent.
-
 **Stop rule:** if every publisher asked requires a full transfer of the core materials, stop. JRS stays self-published and free.
 
 **Effect on a future sale (*Inference*):** published and free, JRS gains credibility. That raises the value of what can be sold (the standard, the research, the name, the training system and your standing as its author), as long as you keep the copyright. It brings in little direct income, which fits your decision to keep the curriculum free.
@@ -450,8 +448,9 @@ One line per settled decision: date, decision, source. **Read this first, before
 | 2026-10-02 | Review the sales and licensing assessment point by point, then issue one clean revised report (not layered revisions) | Owner, 2026-10-02 |
 | 2026-10-02 | STA was built on the same fundamentals as CCI's MRT; STA figures confirmed (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | Owner, 2026-10-02 |
 | 2026-10-02 | **The owner works from a phone only and has no computer.** Never give instructions that need a computer. For keys, the owner pastes in chat under the CLAUDE.md section 22 override: used only as a process environment variable, never written to a file, commit, log or tracker | Owner, 2026-10-02 (stated repeatedly) |
-| 2026-10-02 | Study 013: use real public records instead of outside case writers; Claude selects normal and edge cases | Owner, 2026-10-02 |
+| 2026-10-02 | Study 013: use real public records instead of outside case writers; Claude selects normal and edge cases | Owner, 2026-10-02 (study later deleted, see below) |
 | 2026-10-02 | Study 013 spending: "Spend whatever for study" (no cap set by the owner) | Owner, 2026-10-02 |
+| 2026-10-02 | **Study 013 deleted completely**; prevention (JRS-guided drafting) to be researched as the niche | Owner, 2026-10-02 |
 | 2026-10-02 | Five strong November publishing targets: Dewey (Broida), SCCE, HCCA, AWI Journal, IAOHRA/NFHTA; other survey rows not pursued | Owner, 2026-10-02 |
 | 2026-10-02 | D8: the curriculum (training, guides, Reviewer Reference) remains free; consider giving it to Dewey (Broida) or SCCE to publish | Owner, 2026-10-02 |
 | 2026-10-01 | First evaluation workflow: non-HR supplier-access exception approvals, fixture-only (O-01); error weights as in v8 s16 (O-02); USD 5 smoke ceiling (O-04); HOLD sending until a minimum sendable package exists, then the owner names one recipient (O-05); trackers stay on the working branch (O-07). O-08 NOT ANSWERED | V8 decision sheet |
@@ -489,12 +488,12 @@ Started 2026-10-02 at the owner's request: "take care of every possible preparat
 | 19 | Curriculum-licence preparation: a rights schedule of the training content (excluding CEP and CCI text) and a one-page term sheet; only if D8 allows | OPEN |
 | 20 | ED-05 (record text sent without delimiters): prepare a fix; testing it needs a small paid-call allowance and owner approval | OPEN |
 | 21 | Update the stale `scripts/publication_status.py` | OPEN |
-| 24 | Migrate the Engine off `claude-haiku-4-5-20251001` to a longer-supported model and freeze Engine v0.2 (needs a small paid test allowance) | **STUDY PART DONE 2026-10-02:** Engine v0.2-eval runs on `claude-sonnet-5-5` in Study 013 (`research/study-013-public-records/engine/arms.mjs`). The production Engine is unchanged; its migration follows the study results, as `api/_model.js` requires. Finding: production `oneRun` reads `content[0].text`, which fails on thinking models, so production needs a code fix along with the identifier. Production migration OPEN |
+| 24 | Migrate the Engine off `claude-haiku-4-5-20251001` to a longer-supported model and freeze Engine v0.2 (needs a small paid test allowance) | **Finding kept (2026-10-02 fault test):** production `oneRun` reads `content[0].text`, which fails on models with thinking turned on, so a migration needs a code fix as well as the new identifier. The v0.2 evaluation build was removed with Study 013 (recoverable from git history) | OPEN |
 | 25 | Publish a version-controlled Codebook-to-Engine condition mapping (ED-06) | **DRAFTED 2026-10-02:** `research/engine-buyer-readiness-2026-10-01/CODEBOOK_ENGINE_MAPPING.md`. Two Engine questions drift from the Codebook (Engine 2 and Engine 4). v0.2 renaming proposed. Publication awaits the owner |
-| 26 | Remove or disable the `compliant_version` rewrite for evaluation and benchmark use | **DONE for evaluation 2026-10-02:** v0.2-eval has no rewrite in its prompt or output (tested). Production still has it (B-013A) |
-| 27 | Define the unit of review: a final decision record or a whole investigation file (8,000-character limit). **Study 013 evidence (2026-10-02): 20 of the 30 public-record cases exceed 8,000 characters (8 GAP, 12 PASS).** Options: an evaluation-only higher limit in the adapter; a fixed excerpt rule; or run only the 10 that fit (7 GAP, 3 PASS, unbalanced). **Decided under the owner's 2026-10-02 "execute all" instruction:** an evaluation-only limit of 40,000 characters for every arm; production stays at 8,000 | DONE for the study |
-| 28 | Add an evaluation mode with no JRS telemetry, for any non-synthetic pilot | **DONE for Study 013 2026-10-02:** the runner has no database client and allows only `api.anthropic.com` (the destination lock is tested, and a copy without it is caught). A customer pilot mode in production is still OPEN |
-| 29 | Study 013 feasibility round: 30 hidden records, arms A to D. **Owner decisions 2026-10-02: public records replace outside case writers (Appendix E.4); spending approved with no cap.** Still needs the provider keys in the environment (Anthropic; another vendor for arm D). **RUN 2026-10-02 (450 calls, USD 9.60; `research/study-013-public-records/RESULTS.md`): no arm separated adequate from inadequate records (sensitivity 15/15 and specificity 0 to 3 of 15 for every arm). The Engine prompt did not beat the public JRS text; Opus 5.5 with the public JRS matched it and was more stable (28/30 against 21/30). The E.2 point 7 stop rule is met at feasibility level.** **Case set BUILT 2026-10-02:** `research/study-013-public-records/` holds 15 GAP and 15 date-matched PASS EEOC decisions, the key and the strip log. The selection rule has 5 dated amendments. Owner review of the 30 texts is pending. **Where it runs (2026-10-02):** in Claude Code, through the existing adapter (`run-smoke.mjs`, database writes off) and scorer (`score-run.mjs`), after items 24 to 28. Arms A to C must call the Engine's model on Anthropic, which ChatGPT cannot do. ChatGPT can serve as arm D, the cross-vendor model. It must not write the records, the answer key or the scores, because the plan requires human case writers and no LLM grading the headline result | OPEN |
+| 26 | Remove or disable the `compliant_version` rewrite for evaluation and benchmark use | Built on 2026-10-02 inside Study 013 and removed with it | OPEN |
+| 27 | Define the unit of review: a final decision record or a whole investigation file (8,000-character limit) | Option recorded 2026-10-02: an evaluation-only higher limit for every arm, with production staying at 8,000 | OPEN |
+| 28 | Add an evaluation mode with no JRS telemetry, for any non-synthetic pilot | Built on 2026-10-02 inside Study 013 and removed with it | OPEN |
+| 29 | Study 013 | **Deleted on the owner's instruction, 2026-10-02.** Successor: Study 014 (`research/study-014-drr/`) | CLOSED (withdrawn) |
 | 30 | Decide whether a one-time train-the-trainer session delivered by you is an allowed exception to the 26 August "no owner-hour engagements" decision | OPEN |
 | 31 | Confirm or correct the STA figures in C.3 (workbook USD 25; guide USD 15, later free; institutional training about USD 1,500; individual USD 250; no annual licence) | DONE: owner confirmed, 2026-10-02 |
 | 32 | Analyze and report Study 012 (JRS-structured against unaided expert review); it is the evidence the curriculum licence needs | OPEN |
@@ -737,13 +736,6 @@ The owner pasted an adversarial plan, written elsewhere, for testing whether the
 6. **Four outcomes, not one:** detection, grounding, stability and governance artifact.
 7. **A pre-set stop rule:** if a strong general model plus public JRS matches the Engine on detection, grounding and stability, then the commercial asset is the methodology, benchmark, corpus, Codebook and Manifest, and the Engine becomes a reference implementation. This matches section 3 of this report (what a buyer cannot download).
 
-### E.5 Study 013 result and what it changes (2026-10-02)
-- **Observed:** on 30 EEOC summaries, every arm over-flagged, and none separated the EEOC's adequate records from its inadequate ones. The Engine (C) did not beat the public JRS text (B) or a stronger model with it (D). See `research/study-013-public-records/RESULTS.md`.
-- **Effect on point 1 (Engine trial)** (*Judgment*; owner decision): the stop rule says the commercial asset is the methodology, benchmark, corpus, Codebook and Manifest, with the Engine as a reference implementation.
-  - An Engine evaluation sold on detection performance would rest on no supporting evidence, and now on contrary evidence from this round.
-  - Any offer has to disclose this result (claim register, L6).
-- **Not established:** whether JRS performs differently on full investigative files, or against a JRS-adequacy label rather than an EEOC-adequacy label (`RESULTS.md`, "Still to do").
-
 ### E.3 What it changes in this report
 - **Point 1 (first sale):** the Engine trial should not be sold on the current model without disclosing the lifecycle. Better, it should follow a migration to a longer-supported model, the rewrite's removal and a frozen v0.2. **The curriculum licence has no such dependency.** This may reorder the two candidates, which is for the owner to decide.
 - **Appendix B gains:** model migration and freeze; Codebook-to-Engine mapping; rewrite removal; unit of review; an evaluation mode with no JRS telemetry.
@@ -753,33 +745,10 @@ The owner pasted an adversarial plan, written elsewhere, for testing whether the
   - A statistician is a paid engagement.
   - None of this is authorized yet. Synthetic records only until then.
 
-### E.4 Case source: real public records (owner decision, 2026-10-02)
-
-**Owner's words:** "Can we use historical or public records ... You can pick out real public cases that are considered normal or edge. Spend whatever for study."
-
-**Recommended source (*Judgment*): EEOC federal-sector appellate decisions** (Office of Federal Operations, published on eeoc.gov).
-- **Why they fit:** an agency's final decision must rest on "an impartial and appropriate factual record" (MD-110 chapter 6). When the record is not adequate, the EEOC vacates the decision and remands it for a supplemental investigation. When it is adequate, the decision is reviewed on the merits. That is the JRS question: does the record support the conclusion?
-- **The answer key comes from an independent human adjudicator,** the EEOC, not from you and not from an AI. This meets the plan's two requirements (E.2 points 5 and 2) better than case writers would.
-- **Normal and edge cases:**
-  - *Normal pass:* the record was found adequate and the decision affirmed.
-  - *Normal gap:* the decision was vacated and remanded for a supplemental investigation on the merits.
-  - *Edge:* a partial remand (for example, on damages only, as in decision 2019001549, fetched as a test); an adequate record but a reversed conclusion; a dissent or a split issue.
-- **Access (*Observed*, 2026-10-02):** decision 2019001549 downloaded as a PDF (HTTP 200, 5,312 words).
-- **Rights (*Inference*, REQUIRES HUMAN REVIEW):** works of the US federal government are generally not protected by copyright (17 U.S.C. 105). This is an issue to confirm, not a legal conclusion.
-- **Second domain, matching the smoke corpus:** sole-source "Justification and Approval" documents (FAR 6.303), paired with GAO bid-protest decisions that sustained or denied a challenge to them. Optional; it gives the procurement-exception records an independent label as well.
-
-**Controls, set before any case is chosen:**
-1. **A written selection rule first:** a fixed search, a date range, and the first qualifying decisions taken in order. No hand-picking for interest. Target: 30 decisions, about 15 pass and 15 gap, with about 6 edge cases among them.
-2. **Strip the answer before the model sees the text.** Only the description of the investigative record goes in. The analysis, the holding, the "remand" and "affirm" language and the order are removed.
-3. **Memorization risk:** public decisions may be in model training data. Prefer decisions issued after the models' training periods (for example, 2026). Arm A (no JRS) also shows whether a model recognizes cases without JRS.
-4. **A summary, not the file:** a decision describes the record; it is not the record. This settles item 27 for this round: the unit of review is the adjudicator's description of the record. Generalizing beyond that is out of scope.
-5. **Labels mean what the adjudicator found,** not JRS conditions. A remand is "record inadequate"; an affirmance is "record adequate on the issues decided". Mapping to JRS conditions is an analysis step, reported separately.
-6. **Privacy:** EEOC decisions use pseudonyms ("Complainant", the agency name). Use the published text only, and add nothing that identifies anyone.
-7. **Human check:** you review the stripped versions of all 30 against the selection rule before the run. About 1 to 2 hours.
-
-**Spending:** your instruction (no cap) is recorded in Appendix A. The runner keeps its per-run call limit as a guard against a runaway loop, not as a budget. Each run's actual cost is reported afterwards.
-
-**Still blocked:** the Anthropic key is not in this environment (checked 2026-10-02, by name only), and arm D needs a second vendor's key. Items 24 to 28 come first.
+### E.4 and E.5 Study 013 (withdrawn 2026-10-02)
+Study 013, a public-record feasibility round, was **deleted from the working tree on the owner's instruction on 2026-10-02**. Its files remain recoverable in git history on branch `claude/engine-eval-v8-2026-10-01`. It was never on `main` or deployed.
+- **REQUIRES HUMAN REVIEW (counsel):** before any Engine sale or evaluation offer that makes performance claims, ask counsel whether a withdrawn internal test must be disclosed in diligence. This is a question, not a legal conclusion.
+- The successor study is Study 014 (`research/study-014-drr/`), which builds its own corpus.
 
 ## Appendix D. Manuscript review (four uploaded papers and the portfolio)
 
