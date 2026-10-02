@@ -7,8 +7,8 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-08-14 (rev 6) |
-| **Revisions** | 6 |
+| **Last revised** | 2026-10-02 (rev 7) |
+| **Revisions** | 7 |
 | **Packages defined** | 3 |
 | **Packages built** | **0** |
 | **Packages published** | **0** |
@@ -27,6 +27,8 @@ Companion to `IP_COMMERCIALIZATION_AUDIT.md`, which holds the analysis. **This f
 | 3 | Benchmark Access and Calibration, **$750** | **Yes** | **LIVE** | No | $0 |
 
 **LIVE means the offer page, price and buy path are on the site and reachable.** It does not mean anyone has bought one. **Revenue is $0 and no offer has been shown to a named buyer.**
+
+> **CORRECTION, rev 7 (2026-10-02), Rule 10.** OLD FINDING: the three packages above are "LIVE". NEW EVIDENCE (observed 2026-10-02): all three are `retired: true` in `api/_offer-config.js` since 2026-08-26 (licensing-only model); their pages carry `noindex` and are absent from the sitemap; every `checkout_url` was empty the whole time they were listed. CORRECTED STATUS: **none was ever purchasable; all three are RETIRED.** The free Seven-Point Check (`check.html`) is live and indexed. A fourth package now exists: the Review Engine evaluation licence (USD 1,000), built and live-tested, not offered. The re-ranked analysis is in `IP_COMMERCIALIZATION_AUDIT.md`, Revision 3.
 
 **One thing stands between LIVE and sellable: the three checkout URLs.** `api/_offer-config.js` holds an empty `checkout_url` per offer. Paste the real payment links and deploy; nothing else changes.
 

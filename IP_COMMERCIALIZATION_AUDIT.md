@@ -222,3 +222,58 @@ The strongest evidence that Rank 1 is right is negative, and section 0b sharpene
 **Revision 2, 2026-08-13.** Section 0b added from the per-CTA click attribution that went live the same day, plus the three-way verification that no evaluation has been submitted: the writer's source string is unchanged across every commit, synthetic rows through the live reader count correctly with breakdowns releasing at the pre-registered n=30, and a check-mode POST of all nine answers returns 200. Sections 3 and 6 updated to match. **The ranking is unchanged, and it was set before the funnel was measured.** Progress against this document is tracked in `IP_COMMERCIALIZATION_TRACKER.md`.
 
 Asset index built by grep across 45 public HTML files, 36 API endpoints and the `research/` directory. Failure-mode text quoted verbatim from `research/JRS_Validation_Report.md` §4. Panel figures read live from `/api/panel-stats` on 2026-08-13: 36 completers, 16 countries, 5 continents, 58 reviewers, 48 registered, 16 detection completers across 11 countries, 20 comparison completers, 25 reliability raters. Traction figures read live from `/api/asset-stats`. Cross-vendor consistency figures read from `research.html`. **These are raw-agreement figures, not an established reproducibility result; no chance-corrected AC1 was computed for the cross-vendor study. No figure in this document was carried forward from an earlier note.**
+
+---
+
+# REVISION 3, 2026-10-02: revised commercialization audit
+
+**Prepared 2026-10-02 at the owner's request. The 2026-08-13 text above is kept unchanged as the historical record (CLAUDE.md Rule 10). Each claim below is labelled Observed (checked on 2026-10-02 against production, `origin/main` or the database), Recorded (stated in an estate record), or Inference.**
+
+## R1. What changed since 2026-08-13 (OLD FINDING, NEW EVIDENCE, CORRECTED STATUS)
+
+| # | Old finding (2026-08-13) | New evidence (2026-10-02) | Corrected status |
+|---|---|---|---|
+| 1 | Assets 1 and 2 have no public surface | **Observed:** `check.html` (indexed, in the sitemap) names all seven failure modes, and 5 public pages link the Seven-Point Check. The harness is mentioned on 5 pages, including `index.html` and `check.html` | **Rank 1 is published as a free tool.** It is no longer an unshown asset |
+| 2 | Three paid packages defined; the tracker (rev 6) says built and LIVE at $250, $500, $750 | **Observed:** all three are `retired: true` in `api/_offer-config.js` ("retired 2026-08-26, licensing-only model"); their pages carry `noindex` and are absent from the sitemap; every `checkout_url` is empty and was empty the whole time they were listed | **None was ever purchasable.** The tracker's "LIVE" status was stale; corrected in the tracker |
+| 3 | Rank 2: a 37-run nightly cross-vendor series | **Observed:** `study_runs` holds 61 rows tagged with the three-vendor model string (Anthropic, OpenAI, Google) plus 9 single-model rows, from 2026-06-05; **last run 2026-08-21**. The 61 is a raw row count under mixed denominators. The clean 15-record series is 41 runs up to the 2026-08-15 lock (`verify_manuscript_figures.py`; guard `check_the_cross_vendor_range_carries_its_denominator`) | **The series stopped six weeks ago.** A "nightly" claim is no longer current. Quote only the 41-run, 15-record figure with its denominator |
+| 4 | Rank 3: "the key never leaves the building" | **Observed:** the verified answer key is on public GitHub (`research/Verified_Key.md`, `research/Blind_Recheck_KEY_E08.md`, and inside `api/variance-*.js`); the repository is public (B-018) | **Rank 3 cannot be sold as a held-out benchmark** until a fresh, private key and record set exist |
+| 5 | The Validation Report is "confidential, NDA only" | **Observed:** `research/JRS_Validation_Report.md` and `.pdf` are on public `origin/main`, as are `research/IP_Sale_Playbook.md`, `research/IP_SALE_TRACKER.md` and this audit | **The NDA-only posture no longer exists in practice** |
+| 6 | Constraint 6: no payment mechanism | **Observed:** unchanged. Every checkout URL is empty; the Engine licence tiers have prices deliberately null | **Still no way to pay** |
+| 7 | Demand: 0 organizations, $0 | **Observed:** `pilot_contacts` has 0 identified leads; the newest contact of any kind is 2026-09-05. `interaction_events` holds 6 checkout clicks (2026-09-09 to 09-27), all on the retired governance offer. Reviewer evaluation: opened 32 (14 crawlers excluded), submitted 1, answered all nine 0. Downloads 1,131 (646 with crawlers excluded) | **Interest exists (downloads, retired-offer clicks); conversion is zero** |
+| 8 | Not in the August audit | **Observed:** a working Review Engine evaluation package, live-tested 2026-10-02 (10/10 calls, USD 0.035), with an offer at USD 1,000, an agreement draft and a technical report (`research/engine-buyer-readiness-2026-10-01/evaluation-license-v8/`) | **New sellable package** (evaluation licence), not yet offered to anyone; not reflected in `_offer-config.js` |
+| 9 | Not in the August audit | **Recorded:** CEP Magazine article accepted (November issue); Corporate Compliance Insights article published (card live on `resources.html` 2026-09-29); detection article pending | **Credibility assets now exist** for outreach |
+
+## R2. Re-ranked packages (Inference, on the evidence above)
+
+| Rank | Package | Status now | Demand signal | Speed | Main obstacle |
+|---|---|---|---|---|---|
+| **1** | **Paid documentation review built on the Seven-Point Check** (the retired $250 or $500 scope, re-launched as one fixed-fee offer for GC and investigations teams) | The free tool is live; the paid scope is written but retired | Strongest available: the free tool is public, and the only checkout clicks on record (6) were for a review-type offer | **Days**, once a payment link exists | No payment link; owner time (recorded capacity 10 to 15 hours a week); HR records sit in the scope the Engine offer excludes, so counsel review is needed if employment records are reviewed |
+| **2** | **Review Engine evaluation licence**, USD 1,000 | Built, tested, unsold, never shown | None yet | Ready after three owner decisions | Needs buyers willing to run software with their own API key; rights papered only by owner attestation |
+| **3** | **Model-Agreement Evidence Pack** | Harness exists; series stopped 2026-08-21 | None recorded | Weeks: restart the runs and document | Raw agreement only, no chance-corrected statistic; same-vendor-family concerns; needs three provider keys |
+| **4** | **Benchmark Access and Calibration** | Retired; **key public** | None | **Months:** needs a new private record set, a new key and new raters | Old key exposed; rights in rater-created material (Stacyann's corpus, contributor consents silent on licensing) |
+| **5** | Training and field guides | Free; 8 enrolments, 7 completions recorded (rev 19) | Downloads 646 crawler-excluded | Fast | Low price ceiling; the federal channel closed |
+
+**What changed in the ranking:** the Engine evaluation moves up because it now exists and is tested. The benchmark falls from "highest ceiling" to last, because its scarcity rested on a private key that is now public.
+
+## R3. Cross-cutting findings
+
+1. **The public repository is the largest single commercial risk** (Observed). It exposes the answer key, the validation report, the sale playbook and the Engine source. Nothing in it can be treated as a trade secret until the repository is private, and items already exposed should be treated as public permanently.
+2. **The strategy has changed three times without a buyer conversation** (Recorded): participation offers (to August), three paid packages (13 August, never purchasable), licensing-only (26 August), then the Engine evaluation (1 October). **Inference:** packaging is not the binding constraint. The absence of outreach is.
+3. **The offer record and the site disagree** (Observed): the v8 evaluation offer (USD 1,000) is not in `_offer-config.js`, and the Engine tiers there have null prices. Any re-launch should update that single source of truth.
+4. **Rights limit every package except the free tool** (Recorded): no signed instruments (register F-4); consents silent on licensing (F-3); Hekim's prior-approval condition applies to commercial use of JRS material.
+
+## R4. Recommended sequence (Proposed)
+
+1. **Make the repository private** (owner, one click). Precondition for every paid package.
+2. **Choose one paid offer to re-launch first.** Recommended: the fixed-fee documentation review (Rank 1), with the Engine evaluation (Rank 2) offered to platform-type buyers. Not both on the public site at once.
+3. **Add one working payment link**, then update `api/_offer-config.js` and deploy with byte verification (Claude, after the owner chooses the payment service).
+4. **Outreach:** a 50-organization target list (Claude) and 20 personal messages from the owner citing CEP and CCI. Review replies after 20 sends.
+5. **Defer** the restart of the harness and the rebuild of the benchmark until there is a paying customer, or a buyer who specifically asks for them.
+
+## R5. Honest limits of this revision
+
+- Demand figures are small and partly floors (logging start dates differ by table). No conversion rate should be quoted from them.
+- The ranking is a judgment from the estate's own evidence; no buyer has been asked.
+- This is a packaging audit, not a valuation or a legal opinion.
+
+**Provenance (Revision 3):** `git` against `origin/main` on 2026-10-02 (84 public HTML pages); `api/_offer-config.js`; live `/api/panel-stats` (generated 2026-10-02T06:34Z: 36 completers, 16 countries, 58 reviewers) and `/api/asset-stats`; Supabase read-only queries on `pilot_contacts`, `interaction_events` and `study_runs`; `research/IP_SALE_TRACKER.md` revisions 14 to 51; `research/engine-buyer-readiness-2026-10-01/evaluation-license-v8/`.
