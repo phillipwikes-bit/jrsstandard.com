@@ -3152,3 +3152,7 @@ Only four line groups differ between v7 and v8.
   5. Label meaning: burden-of-proof wording in 14 of 15 PASS and 15 of 15 GAP, so it does not separate them.
   6. Designer bias: low for this result, since the result went against JRS.
   The narrow result stands; "JRS made it worse" is not supported. Next step: a free, decisive check where a human JRS reviewer scores the same 30 summaries blind. RESULTS.md updated.
+- 2026-10-02 (**OWNER: SHIFT THE STUDY TO DRR, "WHAT THE TOOL DOES BETTER THAN AI ALONE BECAUSE AI CREATES DRR"**): Study 013 is kept unchanged; relabelling it after a negative result would be outcome switching. A new Study 014 protocol has been DRAFTED (`research/study-014-drr/PROTOCOL_DRAFT.md`), not fixed or run:
+  - Part 1 measures, deterministically and without a judging model, how many anchors (dates, record citations, attributions, quotes) survive when AI drafts a case-file summary.
+  - Part 2 tests whether JRS arms name the missing anchor in plain terms more often than a generic AI review. Scored by a human; controlled deletions give an exact key.
+  Framing kept consistent with the manuscript's author-blind position (E-037: JRS does not detect AI authorship). H3 (Engine beats public JRS) is tested, not assumed; Study 013 found no Engine advantage. Estimated USD 35 to 60. Needs owner approval of the thresholds, a human scorer, and a key named for this task.
