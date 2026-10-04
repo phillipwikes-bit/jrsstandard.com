@@ -42,8 +42,10 @@ h2{font-family:'Bodoni Moda',serif;font-weight:400;font-size:26px;margin:24px 0 
 .card{background:var(--surface);padding:18px 12px;text-align:center}
 .cv{font-family:'Bodoni Moda',serif;font-size:36px;color:var(--accent);line-height:1}
 .cv.hot{color:var(--ready)}
-.ck{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-top:8px}
-.note{font-size:12px;color:var(--muted-soft);border-left:2px solid var(--rule);padding:11px 14px;background:var(--surface);margin:16px 0;line-height:1.6}
+.ck{font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-top:8px}.note{font-size:12px;color:var(--muted-soft);border-left:2px solid var(--rule);padding:11px 14px;background:var(--surface);margin:16px 0;line-height:1.6}
+.workbench{border:1px solid var(--accent-dim);background:var(--surface);padding:18px;margin:20px 0 28px}
+.workbench h2{font-size:23px;margin:0 0 5px}.workbench textarea{width:100%;min-height:176px;background:#090909;color:var(--text);border:1px solid var(--rule);padding:12px;font:13px/1.55 'Inter',sans-serif;resize:vertical;margin:10px 0}.workbench textarea:focus{outline:1px solid var(--accent)}
+.workbench .work-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;color:var(--muted-soft);margin:6px 0 12px}.workbench .work-result{white-space:pre-wrap;font-size:13px;color:var(--text);padding:12px;background:#090909;border-left:2px solid var(--accent);min-height:48px}
 /* The table scrolls, the page does not. Before this the widest table pushed
    documentElement.scrollWidth to 400px against a 390px viewport, which made
    the whole page scroll sideways and clipped the left edge of every heading
@@ -75,8 +77,22 @@ tr.today td{background:rgba(93,191,130,.07)}
 <a href="#main-content" class="skip-link">Skip to content</a>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Pilot Submissions</div></div></header>
 <main id="main-content"><div class="wrap">
-  <h1>JRS Programme Status</h1>
-  <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Figures refresh automatically every 60 seconds and are read from the production database at the moment you open the page.</p>
+  <h1>JRS Programme Status</h1>  <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Figures refresh automatically every 60 seconds and are read from the production database at the moment you open the page.</p>
+
+  <!-- PRIVATE WORKBENCH. This is part of the one owner surface, not a new page.
+       It never carries a key, stores a record in browser storage, or sends text
+       anywhere except the existing Review Engine route when the owner elects to
+       enable that server-side route. -->
+  <section class="workbench" aria-labelledby="workbench-title">
+    <h2 id="workbench-title">JRS Research Workbench</h2>
+    <p class="sub">Prepare a public record for review. The record remains only in this browser until you choose to run the existing review route. Do not enter private, personnel, medical, financial, or client material here.</p>
+    <textarea id="wb-record" maxlength="8000" placeholder="Paste one public record or public-record excerpt here."></textarea>
+    <div class="work-meta" id="wb-count">0 characters · 0 words · local preparation only</div>
+    <div class="bar"><button class="btn" type="button" id="wb-prepare">Prepare work record</button><button class="btn" type="button" id="wb-review">Run JRS review</button></div>
+    <div class="work-result" id="wb-result" role="status" aria-live="polite">Paste a public record to begin.</div>
+    <p class="note">This workbench does not certify a record, make a legal or employment decision, or preserve a research result. Study 014 shows a defined chronology-detection result, not general-purpose detection.</p>
+  </section>
+  
   <!-- COMMERCIAL INBOX. Added 2026-08-25, at the TOP, above the reviewer panel.
        Everything else on this page is a count. This is the only block that is a
        QUEUE: rows here are people waiting on a reply, and a person waiting is
@@ -538,7 +554,35 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &middot; confidential &middot; not indexed</div></footer>
-<script>
+<script>/* Private workbench. No browser storage, analytics, or key handling. */
+(function(){
+  var record=document.getElementById('wb-record'), count=document.getElementById('wb-count'), result=document.getElementById('wb-result');
+  var prepare=document.getElementById('wb-prepare'), review=document.getElementById('wb-review');
+  function value(){return (record.value||'').trim();}
+  function refresh(){var v=value(), words=v ? v.split(/\s+/).length : 0;count.textContent=v.length+' characters · '+words+' words · local preparation only';}
+  record.addEventListener('input',refresh);
+  prepare.addEventListener('click',function(){
+    var v=value(); if(v.length<40){result.textContent='Add at least 40 characters of public record text.';return;}
+    result.textContent='Work record prepared locally. It contains '+v.length+' characters and '+(v.split(/\s+/).length)+' words. Review it for scope and source identity before running the engine.';
+  });
+  review.addEventListener('click',async function(){
+    var v=value(); if(v.length<40){result.textContent='Add at least 40 characters of public record text.';return;}
+    review.disabled=true; result.textContent='Sending the public record to the configured JRS review route…';
+    try{
+      var response=await fetch('/api/review-engine',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:v,runs:1})});
+      var data=await response.json();
+      if(!response.ok){throw new Error(data.detail||data.error||'Review unavailable.');}
+      var lines=['Review complete.','Engine: '+(data.engine_version||'not reported'),'Result: '+((data.result||{}).determination||'not reported')];
+      var conditions=(data.result||{}).conditions||{};
+      Object.keys(conditions).forEach(function(k){lines.push(k+': '+conditions[k].status+' · '+conditions[k].note);});
+      if((data.result||{}).remediation_note) lines.push('\nSuggested next step: '+data.result.remediation_note);
+      lines.push('\nDevelopment output. Human review remains required.');
+      result.textContent=lines.join('\n');
+    }catch(error){result.textContent='Review route unavailable: '+String(error.message||error)+'. The private page is ready, but the server-side review route still needs its existing authorized configuration.';}
+    finally{review.disabled=false;}
+  });
+})();
+
 var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
 function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
 function rel(iso){
