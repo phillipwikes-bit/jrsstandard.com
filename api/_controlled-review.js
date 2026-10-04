@@ -2,7 +2,9 @@ export const config = { runtime: 'edge' };
 
 const CLOSED_DETAIL = 'The JRS Review Engine is not accepting record text. Do not submit a record through this endpoint. The current candidate remains local and no-go pending independent evaluation, operator-control evidence, counsel review, and recorded release authorization.';
 
-export function unavailable(req, options = {}) {
+export function unavailable(req, options = {}, maybeOptions) {
+  const res = options && typeof options.setHeader === "function" ? options : undefined;
+  if (res || maybeOptions) options = maybeOptions || {};
   const { error = 'controlled_review_unavailable', detail = CLOSED_DETAIL, apiVersion = false, methods = ['POST'] } = options;
   const headers = {
     'Content-Type': 'application/json; charset=utf-8',
@@ -21,10 +23,17 @@ export function unavailable(req, options = {}) {
   }
   if (!methods.includes(req.method)) {
     const body = { error: 'method_not_allowed', detail: 'Use ' + methods.join(' or ') + '.' };
-    if (apiVersion) body.api_version = 'v1';
-    return new Response(JSON.stringify(body), { status: 405, headers });
+    if (options.apiVersion) body.api_version = 'v1';
+    return respond(res, 405, body, headers);
   }
   const body = { error, detail };
-  if (apiVersion) body.api_version = 'v1';
-  return new Response(JSON.stringify(body), { status: 503, headers });
+  if (options.apiVersion) body.api_version = 'v1';
+  return respond(res, 503, body, headers);
+}
+
+function respond(res, status, body, headers) {
+  if (!res) return new Response(JSON.stringify(body), { status, headers });
+  for (const [key, value] of Object.entries(headers)) res.setHeader(key, value);
+  res.statusCode = status;
+  res.end(JSON.stringify(body));
 }
