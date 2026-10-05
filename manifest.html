@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Decision Reconstruction Manifest | JRS™</title>
-<meta name="description" content="Public specification package for the JRS Evidence and Decision Reconstruction Manifest, including current status, schema, fields, integrity controls, limitations, and licensing inquiry path.">
+<meta name="description" content="Public specification package for the JRS Decision Reconstruction Manifest, including schema, field definitions, integrity limits, and current implementation boundary.">
 <meta name="robots" content="index,follow">
 <link rel="canonical" href="https://www.jrsstandard.com/manifest.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,27 +32,27 @@
 <main id="main-content" class="wrap">
  <div class="eyebrow">Public Specification Package · Manifest 1.0 · Schema revision 1.0.1</div>
  <h1>Decision Reconstruction Manifest</h1>
- <p class="lede">The Manifest is a portable, machine-readable evidence artifact describing one JRS evaluation. It records what was evaluated, which versions and vocabularies governed the evaluation, what the engine returned, whether human review remains required, and how the artifact can be checked later.</p>
- <div class="status"><strong>Current status.</strong> The Manifest 1.0 schema revision 1.0.1 and a controlled implementation library exist and have passed the repository's conformance and integrity tests. The versioned Review Engine API can return a development Manifest on an authenticated request with <code>include_manifest: true</code>. Default responses omit it. The artifact is unsigned, can contain record-derived notes, and is not automatically stored in a customer-controlled evidence repository. The Engine remains unvalidated.</div>
- <div class="actions"><a class="btn primary" href="jrs-decision-reconstruction-manifest-v1.0.1.schema.json">Open current JSON Schema</a><a class="btn" href="jrs-decision-reconstruction-manifest-v1.0.schema.json">Earlier schema v1.0</a><a class="btn" href="jrs-decision-reconstruction-manifest-example-v1.0.json">View constructed example</a><a class="btn" href="enterprise.html#enterprise-inquiry">Licensing or integration inquiry</a></div>
+ <p class="lede">The Manifest is a portable, machine-readable specification for documenting one JRS evaluation. It defines the version, vocabulary, integrity metadata, and human-review status that a future artifact would need to preserve.</p>
+ <div class="status"><strong>Current status.</strong> The Manifest 1.0 schema revision 1.0.1 and a controlled implementation library exist and have passed repository conformance and integrity tests. No public API accepts record text, returns a Manifest, or provides a Manifest-generation service. The specification is public. Controlled implementation and evaluation materials remain non-public. The Engine remains unvalidated.</div>
+ <div class="actions"><a class="btn primary" href="jrs-decision-reconstruction-manifest-v1.0.1.schema.json">Open current JSON Schema</a><a class="btn" href="jrs-decision-reconstruction-manifest-v1.0.schema.json">Earlier schema v1.0</a><a class="btn" href="jrs-decision-reconstruction-manifest-example-v1.0.json">View constructed example</a><a class="btn" href="review-engine.html">Review implementation status</a></div>
 
  <div class="note"><strong>Schema revision 1.0.1.</strong> The Manifest format remains 1.0. The current schema accepts JRS Standard 1.0 and Codebook 1.0 and rejects unsupported identifiers. The earlier v1.0 schema remains available for historical interpretation. A valid hash demonstrates internal consistency, not that a claimed version exists or that an unsigned artifact is authentic.</div>
 
  <h2>What the Manifest does</h2>
  <div class="grid">
-  <div class="card"><h3>Pins the evaluation</h3><p>Records the JRS, Codebook, engine, model, API, and Manifest versions used for the evaluation.</p></div>
-  <div class="card"><h3>Preserves the result</h3><p>Carries the five condition results, routing vocabulary, warnings, and human-review requirement in a portable structure.</p></div>
+  <div class="card"><h3>Pins the evaluation</h3><p>Defines fields for the JRS, Codebook, engine, model, API, and Manifest versions used in a future evaluation.</p></div>
+  <div class="card"><h3>Preserves the result</h3><p>Defines a portable structure for five condition results, routing vocabulary, warnings, and a human-review requirement.</p></div>
   <div class="card"><h3>Supports later verification</h3><p>Uses an input hash and a canonical Manifest hash so later reviewers can check correspondence and detect alteration.</p></div>
-  <div class="card"><h3>Leaves storage with the customer</h3><p>The target architecture returns the artifact to the customer for retention in its own evidence store. JRS is not intended to become the permanent repository for customer records.</p></div>
+  <div class="card"><h3>Describes a future storage boundary</h3><p>A future authorized implementation would require a separately approved storage, retention, and access design. JRS is not presented as a public repository for records.</p></div>
  </div>
 
- <h2>Current implementation and target architecture</h2>
- <div class="table-wrap"><table><thead><tr><th>Element</th><th>Current state</th><th>Target licensing state</th></tr></thead><tbody>
-  <tr><td>Review Engine response</td><td>Returns a request identifier, version metadata, five engine-key condition results, routing determination, optional variance, and an optional authenticated Manifest.</td><td>Returns the API result and a conforming Manifest, or provides a documented transformation that produces one.</td></tr>
-  <tr><td>Manifest generator</td><td>Controlled implementation library with schema validation, canonicalization, hashing, refusal tests, and frozen fixtures.</td><td>Versioned release component governed by the public schema and the executed integration agreement.</td></tr>
-  <tr><td>Record handling</td><td>The current engine receives record text for inference. Raw text is not persisted by JRS. Defined record-derived output is retained as disclosed in the Privacy Policy.</td><td>Minimum necessary representation, documented processors, bounded persistence, and customer-approved data flow.</td></tr>
-  <tr><td>Evidence storage</td><td>JRS retains defined evaluation telemetry. The public API does not create a customer-controlled immutable evidence repository.</td><td>The customer stores the returned Manifest with its own record and retention controls.</td></tr>
-  <tr><td>Signature</td><td>Manifest hashing is implemented. Signing is optional and not presently represented as deployed.</td><td>Signing, key custody, and verification procedures are agreed where the transaction requires authentication.</td></tr>
+ <h2>Public specification and controlled development</h2>
+ <div class="table-wrap"><table><thead><tr><th>Element</th><th>Public position</th><th>Controlled development position</th></tr></thead><tbody>
+  <tr><td>Review Engine response</td><td>No public review request, evaluation, or Manifest output is available.</td><td>The local candidate is not a production or external-use service.</td></tr>
+  <tr><td>Manifest generator</td><td>The schema, constructed example, and integrity limits are published.</td><td>A controlled implementation library has schema validation, canonicalization, hashing, refusal tests, and frozen fixtures.</td></tr>
+  <tr><td>Record handling</td><td>The public site must not receive record text, personal information, confidential information, credentials, or privileged information.</td><td>Any future data flow requires separate operational controls and counsel review before authorization.</td></tr>
+  <tr><td>Evidence storage</td><td>The public site is not an evidence repository and provides no record retention service.</td><td>Any future storage design requires separate approval for access, retention, recovery, and auditability.</td></tr>
+  <tr><td>Signature</td><td>The published schema explains integrity metadata and its limits.</td><td>Signing, key custody, and verification are not represented as deployed or authorized.</td></tr>
  </tbody></table></div>
 
  <h2>Minimum field groups</h2>
@@ -75,16 +75,8 @@
  <h2>Human review requirement</h2>
  <p class="lede">Version 1.0 requires <code>human_review.required</code>. The present engine is not established as validated for autonomous consequential-decision use. A Manifest records a documentation evaluation. It does not decide whether the underlying decision is correct, lawful, compliant, or professionally justified.</p>
 
- <h2>Customer-controlled storage model</h2>
- <p class="lede">The intended integration places the customer record and long-term evidence store under customer control. The platform sends an approved representation for evaluation, receives the result and Manifest, and stores the Manifest beside its own decision artifact. The Manifest does not require JRS to retain the underlying record.</p>
-
- <h2>Place in the enterprise pathway</h2>
- <p class="lede">The Manifest is the central technical integration artifact, not the complete commercial asset. A qualified platform can first examine the public schema, then evaluate the current Review Engine and its documented relationship to the Manifest. Integration evidence may support a later licence, an exclusive licence, or acquisition of a defined asset package.</p>
- <div class="grid">
-  <div class="card"><h3>Evaluate</h3><p>Test the current API, schema relationship, integrity controls, data handling, workflow fit, and limitations under a bounded scope.</p></div>
-  <div class="card"><h3>Integrate</h3><p>Map the result and Manifest to the platform's records, evidence store, review queue, and human-routing controls.</p></div>
-  <div class="card"><h3>License or acquire</h3><p>Define only the methodology, implementation, brand, derivative, support, exclusivity, or transfer rights actually established and granted.</p></div>
- </div>
+ <h2>Future storage boundary</h2>
+ <p class="lede">The specification is designed so that a future authorized implementation could preserve evidence-artifact information without making JRS a public repository for the underlying record. No such implementation, data flow, retention practice, or integration is authorized or represented as available on this site.</p>
 
  <h2>Limitations</h2>
  <div class="grid">
@@ -94,10 +86,10 @@
   <div class="card"><h3>Vocabulary remains explicit</h3><p>The schema does not silently relabel Review Engine keys as Codebook conditions. Any mapping must be documented and versioned.</p></div>
  </div>
 
- <h2>Rights and licensing boundary</h2>
- <p class="lede">Publication of this specification permits inspection of the schema. It does not grant source-code rights, implementation rights, derivative rights, trademark rights, commercial embedding rights, exclusivity, or transfer rights. Any such right must be identified in a separate executed agreement after the relevant rights position has been established.</p>
- <div class="actions"><a class="btn primary" href="platform-integration.html">Review platform integration</a><a class="btn" href="controlled-evaluation-package.html">Controlled evaluation package</a><a class="btn" href="platform-evaluation-001.html">Completed evaluation 001</a><a class="btn" href="research.html">Evidence and limitations</a></div>
+ <h2>Publication boundary</h2>
+ <p class="lede">Publication permits inspection of the schema. It does not grant source-code, implementation, derivative, trademark, commercial embedding, exclusivity, or transfer rights. It also does not authorize use of the controlled Engine or submission of records to this website.</p>
+ <div class="actions"><a class="btn primary" href="review-engine.html">Review implementation status</a><a class="btn" href="research.html">Research and limitations</a></div>
 </main>
-<footer class="site-footer" role="contentinfo"><div class="site-footer-inner">JRS&#8482; and Justification Review Standard&#8482; are marks used by Phillip Wikes. Registration and transfer status are not represented by this notice. &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="enterprise.html">Enterprise inquiries</a></div></footer>
+<footer class="site-footer" role="contentinfo"><div class="site-footer-inner">JRS&#8482; and Justification Review Standard&#8482; are marks used by Phillip Wikes. Registration and transfer status are not represented by this notice. &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="enterprise.html">Method information</a></div></footer>
 </body>
 </html>
