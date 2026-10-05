@@ -1,0 +1,14 @@
+/* JRS public experience system · 2026-10-05 */
+:root{--jrs-focus:#f4d18b}
+html{scroll-behavior:smooth}
+body{background-image:radial-gradient(900px 500px at 96% -150px,rgba(211,173,100,.08),transparent 66%)}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--jrs-focus);outline-offset:3px}
+.site-header{background:rgba(7,7,6,.88);backdrop-filter:blur(12px)}
+.wordmark{letter-spacing:-.025em}
+.jrs-sitenav{background:rgba(7,7,6,.94)}
+.jrs-sitenav a{transition:color .18s ease,background .18s ease}
+.jrs-sitenav a:hover,.jrs-sitenav a:focus{background:rgba(211,173,100,.08)}
+.btn,.card,.panel,.resource-card{transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.btn:hover{transform:translateY(-1px)}
+.card:hover,.panel:hover,.resource-card:hover{border-color:rgba(211,173,100,.6)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
