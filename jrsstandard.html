@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 127217)
+Total output lines: 4316
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -659,6 +662,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
 }
 </style>
+<link rel="stylesheet" href="public-experience.css">
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -758,7 +762,7 @@ once, near the top, so the distinction is made before the standard begins. -->
 <div style="margin:0 0 28px;border-left:2px solid var(--accent-dim);padding:2px 0 2px 16px;max-width:660px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">Standard and engine</div>
  <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 7px;"><b style="color:var(--text);">JRS, the Justification Review Standard, is the methodology.</b> It is a set of review conditions applied to a record by a person, on paper or inside whatever workflow an organisation already runs. It is not software and it needs none.</p>
- <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">The JRS Review Engine is a technical implementation of that logic.</b> It is an API that applies the defined review conditions to one record and returns a structured determination. The standard is usable without it; the engine exists so a platform can operationalise the same conditions in code.</p>
+ <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">The JRS Review Engine is a controlled technical implementation candidate.</b> It is not a public record-processing service and this site does not accept record text or return evaluations. The standard is usable without it; any future external use requires separate evidence, operational controls, counsel review, and recorded authorization.</p>
 </div>
 
 <div class="core-principle">
@@ -2250,216 +2254,7 @@ once, near the top, so the distinction is made before the standard begins. -->
  <div class="ws-section"><div class="ws-section-label">Language Check</div>
  <div class="ws-item"><input type="checkbox" class="ws-check"><span>Are evaluative adjectives (difficult, unprofessional, combative, poor) accompanied by behavioral anchors?</span></div>
  <div class="ws-item"><input type="checkbox" class="ws-check"><span>Does pattern language ("repeatedly," "consistently") have specific dated instances?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Do escalation conclusions reference prior documented warnings or counseling?</span></div>
- </div>
- <div class="ws-section"><div class="ws-section-label">AI-Assisted Content</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>If AI-assisted drafting was used, have conclusions been verified against identifiable source material?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Has a human reviewer confirmed no unverified characterizations were introduced?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Does the record reflect contested or incomplete source information, rather than smoothing it over?</span></div>
- <div class="ws-note">Referenced attachment unavailable? Note it. Timeline unclear between two dates? Flag it. Support for conclusion not visible in attached records? Return to drafter.</div>
- </div>
- <div class="readiness-grid">
- <div class="readiness-row"><div class="readiness-badge stop">STOP</div><div class="readiness-desc"><strong>Return to Drafter</strong>Evaluative language without anchors. Timeline or policy basis absent. Do not submit.</div></div>
- <div class="readiness-row"><div class="readiness-badge review">REVIEW</div><div class="readiness-desc"><strong>Clarification Required</strong>Conclusion may be accurate but basis is not visible in the record. Clarify before submission.</div></div>
- <div class="readiness-row"><div class="readiness-badge ready">READY</div><div class="readiness-desc"><strong>Self-Contained</strong>Evidence identifiable. Reasoning traceable. Basis holds without explanation from the author.</div></div>
- </div>
- </div>
-</div>
-
-<div class="worksheet">
- <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">02 / Timeline Anchor Review Checklist</span><span class="worksheet-toggle">Expand &#8595;</span></div>
- <div class="worksheet-body">
- <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">Timeline deficiency is the documentation failure this checklist is built to catch. Apply before submitting any record involving pattern conduct, progressive discipline, or multi-event conclusions.</div></div>
- <div class="ws-section"><div class="ws-section-label">Timeline Checks</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Each described incident has a specific date or date range</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Pattern conduct claims are supported by at least two or three dated instances</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Dates in the record are consistent with formal record system dates</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Frequency claims ("repeatedly," "consistently") are supported by specific dated examples</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Prior notice or warnings are dated and referenced, not just mentioned</span></div>
- <div class="ws-note">Most timeline problems are discovered after escalation, not before. The date is often simply missing from a record that otherwise looks complete. Timeline unclear between March 14 and April 2? Flag it before submission.</div>
- </div>
- </div>
-</div>
-
-<div class="worksheet">
- <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">03 / AI-Assisted Draft Verification Worksheet</span><span class="worksheet-toggle">Expand &#8595;</span></div>
- <div class="worksheet-body">
- <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">Apply before any AI-assisted documentation enters an official system. Confirms source traceability, absence of unverified characterizations, and human reviewer completion.</div></div>
- <div class="ws-section"><div class="ws-section-label">Source Verification</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Source records reviewed before generating the summary are identified in or alongside the record</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Each substantive conclusion traces to an identifiable source record</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>No characterizations have been introduced that were not present in the source material</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Contested or incomplete information in source notes is reflected, not resolved or omitted</span></div>
- </div>
- <div class="ws-section"><div class="ws-section-label">Human Reviewer Confirmation</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Human reviewer has reviewed the AI-assisted draft against source records</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Human reviewer can attest to accuracy and completeness</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Human reviewer is identified before the record enters the official system</span></div>
- <div class="ws-note">Example attestation: "I reviewed this AI-assisted draft against the source material available to me and confirmed that substantive conclusions remain traceable to documented information in the file." Do not attest if source records were not actually reviewed.</div>
- </div>
- </div>
-</div>
-
-<div class="worksheet">
- <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">04 / Escalation Documentation Review Aid</span><span class="worksheet-toggle">Expand &#8595;</span></div>
- <div class="worksheet-body">
- <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">Apply before formal disciplinary action, performance improvement plans, or termination documentation enters the official system.</div></div>
- <div class="ws-section"><div class="ws-section-label">Prior Documentation Check</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Prior warnings or counseling records are referenced and on file</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Dates and outcomes of prior documented steps are identifiable</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Employee notification of expectations or policy violations is documented</span></div>
- </div>
- <div class="ws-section"><div class="ws-section-label">Secondary Review Requirement</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Termination: HR secondary review plus legal/compliance consultation completed</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Formal discipline: traceability review confirms specific conduct dates and policy references</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Accommodation disputes: legal or compliance review of interactive process documentation</span></div>
- <div class="ws-note">Escalation language exceeds available support? Reviewer unable to verify referenced discussion? Pattern claim unsupported? Return to drafter do not approve and note.</div>
- </div>
- </div>
-</div>
-
-<div class="worksheet">
- <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">05 / Manager Self-Review Prompt Sheet</span><span class="worksheet-toggle">Expand &#8595;</span></div>
- <div class="worksheet-body">
- <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">For manager self-application before submitting documentation into HR or compliance systems.</div></div>
- <div class="ws-section"><div class="ws-section-label">Before Submitting, Ask</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>If I were not available, could someone else read this and understand what happened and why?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Have I included specific dates for every behavioral claim?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Have I referenced the relevant policy or performance standard?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Are my descriptive words ("review-oriented," "uncooperative") explained by specific observable events?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Did I document what was communicated to the employee and when?</span></div>
- </div>
- <div class="ws-section"><div class="ws-section-label">If Using AI-Assisted Drafting</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Have I reviewed the AI output against my actual notes and observations?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Has the AI added characterizations that weren't in my original notes?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Can I confirm each conclusion reflects what I actually documented?</span></div>
- </div>
- </div>
-</div>
-
-<div class="worksheet">
- <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">06 / Investigation Reconstruction Worksheet</span><span class="worksheet-toggle">Expand &#8595;</span></div>
- <div class="worksheet-body">
- <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">Apply to investigation summaries, witness accounts, and incident records. Investigation conclusions must trace to identified source material and acknowledge gaps or conflicting accounts.</div></div>
- <div class="ws-section"><div class="ws-section-label">Source Material Identification</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Source materials reviewed during investigation are identified in the record</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Witness accounts, relevant dates, and referenced evidence are identified</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Conflicting accounts or gaps in evidence are acknowledged rather than omitted</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Investigation conclusions trace to specific identified evidence</span></div>
- </div>
- <div class="ws-section"><div class="ws-section-label">Reconstruction Check</div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Does the file explain itself, or does understanding it require outside knowledge?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Are limits of what the evidence shows acknowledged in the conclusion?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check"><span>Can the investigative reasoning be traced without access to the original investigator?</span></div>
- <div class="ws-note">Reviewer unable to verify referenced discussion? Source X unavailable? Note it and document the gap. Secondary review recommended where source material is incomplete.</div>
- </div>
- </div>
-</div>
-
-<div style="border:1px solid var(--rule);margin-top:24px;">
- <div style="padding:11px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Sample / Known Limitation Notice</div>
- <div style="padding:16px;">
- <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
- <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Description of Gap</div><div style="font-size:13px;color:var(--muted);font-style:italic;">Source X unavailable as of review date. Referenced counseling note not located in file.</div></div>
- <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Impact on Conclusions</div><div style="font-size:13px;color:var(--muted);font-style:italic;">Pattern claim partially supported. Alternative support referenced in Tab Y. Proceed with secondary review.</div></div>
- <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Mitigation Steps</div><div style="font-size:13px;color:var(--muted);">Requested missing record from drafter. HRIS search completed. Gap documented.</div></div>
- <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Reviewer</div><div style="font-size:13px;color:var(--muted);">Initials: AJL &nbsp;&nbsp; Date: 5/14/26</div></div>
- </div>
- <div style="margin-top:10px;font-size:11.5px;color:var(--muted-soft);font-style:italic;">Illustrative example. Format may be adapted to organizational workflow.</div>
- </div>
-</div>
-<div class="callout" style="margin-top:14px;">
- <div class="callout-label">Operational References</div>
- <p>Print-ready versions of all worksheets, operational forms, escalation templates, and reviewer training resources. <button onclick="showSection('kit')" style="background:none;border:none;color:var(--accent);font-size:inherit;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0;">View Operational References</button></p>
-</div>
-
-<hr class="section-rule">
-
-<div style="margin-bottom:44px;">
-  <h2 class="section-head">Administrative Intake Conditions</h2>
-  <p class="body-text" style="max-width:620px;">Conditions that can be present at intake review that affect the completeness and reconstructability of records entering the review structure. These conditions are routine rather than exceptional. They reflect the practical environment in which most intake review occurs.</p>
-  <div class="reviewer-note" style="margin-bottom:10px;"><div class="reviewer-note-label">Intake note</div>Escalation chronology partially reconstructed from available records. Intake characterization retained from prior summary. Underlying intake notes not preserved at secondary review stage.</div>
-  <div class="cond-grid">
-    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">A</div><div><div class="cond-title">Unresolved Witness Chronology</div><div class="cond-badge">Chronology</div><div class="cond-text">Witness accounts collected at different points during an intake process reflect different chronologies that have not been reconciled. The intake summary presents one sequence. The underlying accounts reflect another. The reviewer cannot determine from the intake record which chronology was applied.</div></div></div>
-    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">B</div><div><div class="cond-title">Threshold Verification Uncertainty</div><div class="cond-badge">Jurisdiction</div><div class="cond-text">Whether the matter met the threshold for intake was not documented at the time intake occurred. The record reflects that intake proceeded. It does not reflect what standard was applied or whether jurisdictional requirements were confirmed before the intake decision was made.</div></div></div>
-    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">C</div><div><div class="cond-title">Intake Characterization Drift</div><div class="cond-badge">Language</div><div class="cond-text">The characterization applied at intake does not match the characterization reflected in later stages of the same record. The record does not explain the change. A later reviewer reads both characterizations without context for how or when the shift occurred.</div></div></div>
-    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">D</div><div><div class="cond-title">Escalation Prior to Complete Review</div><div class="cond-badge">Routing</div><div class="cond-text">An escalation recommendation was made before the intake record was complete. Supporting materials referenced in the escalation recommendation were not yet verified. The escalation record does not reflect that the underlying intake review was still open at the time the escalation was documented.</div></div></div>
-    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">E</div><div><div class="cond-title">Conflicting Account Compression</div><div class="cond-badge">Reconstruction</div><div class="cond-text">Conflicting accounts from multiple parties were present at intake but were combined into a single intake narrative before being filed. The conflicting information is not reflected in the intake record. A later reviewer reads a unified account and does not have visibility into what was contested at the time the matter was received.</div></div></div>
-    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">F</div><div><div class="cond-title">Summary Language Exceeding Intake Support</div><div class="cond-badge">Language</div><div class="cond-text">The intake summary uses language that reflects a stronger conclusion than the underlying intake materials support. The summary was written after the intake review was complete. It reflects the reviewer's interpretation rather than the source documentation. A later reviewer reading the summary as a primary source will draw conclusions from characterization rather than evidence.</div></div></div>
-  </div>
-  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Implementation variability</div>Review depth at intake varies by staffing structure and matter volume. Escalation thresholds differ across organizational contexts. These conditions are documented here as observed intake phenomena, not corrective requirements. Organizations may apply selective review based on matter type and risk level.</div>
-</div>
-
-<div style="margin-bottom:44px;">
-  <h2 class="section-head">Investigator Review Limitations</h2>
-  <p class="body-text" style="max-width:620px;">Conditions that affect the completeness of investigative records at the point of secondary or later review. These limitations are observed in investigation review environments. They do not indicate procedural failure. They reflect conditions under which investigative records can be assembled and later examined.</p>
-  <div class="reviewer-note" style="margin-bottom:10px;"><div class="reviewer-note-label">Secondary review note</div>Underlying intake notes unavailable during secondary review. Chronology reconstructed from separate interview summaries. Witness terminology inconsistently summarized across accounts. Escalation rationale partially inferred from later notes. Supporting attachments unavailable at this stage of review.</div>
-  <div style="border-top:1px solid var(--rule);margin-top:12px;">
-    <div style="padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:14px;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">01</div>
-      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Underlying intake notes unavailable</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">The investigative record references intake notes that were not transferred to the investigation file. The investigator may have worked from those notes. They are not present at secondary review.</div></div>
-    </div>
-    <div style="padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:14px;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">02</div>
-      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Chronology reconstructed from separate interviews</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">The sequence of events was assembled by the investigator from separate interview accounts conducted at different times. The assembled chronology reflects investigator judgment about how accounts fit together. That judgment is not documented in the record.</div></div>
-    </div>
-    <div style="padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:14px;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">03</div>
-      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Witness terminology inconsistently summarized</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">Different witnesses used different terms to describe the same events. The investigation summary applies uniform terminology. A later reviewer reading the summary cannot identify which characterization originated with which witness or whether the summarized term reflects what any witness actually said.</div></div>
-    </div>
-    <div style="padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:14px;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">04</div>
-      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Escalation rationale partially inferred from later notes</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">The rationale for the escalation decision is not stated at the point of escalation. It is inferable from notes written after the escalation occurred. A secondary reviewer reconstructing the escalation path works from inference rather than contemporaneous documentation.</div></div>
-    </div>
-    <div style="padding:14px 0;display:grid;grid-template-columns:44px 1fr;gap:14px;">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">05</div>
-      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Supporting attachments unavailable during secondary review</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">Documents referenced in the investigation summary were available during the investigation but are not present in the file at the point of secondary review. The gap may be due to system migration, retention policy, or incomplete file assembly. The secondary reviewer works from the summary as a primary source.</div></div>
-    </div>
-  </div>
-  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Partial recoverability</div>Some source-path components survive where others do not. Metadata survives but the attachment is gone. The narrative survives without the source notes it was drawn from. The archived export is missing the revision history. Secondary review proceeds on what is available. The limitations should be documented, not resolved by assumption.</div>
-</div>
-
-</div>
-</div>
-
-<div id="section-scenarios" class="page-section">
-<div class="container">
-<div class="page-eyebrow">Review Examples</div>
-<h2 class="page-title h1-look">Review Examples</h2>
-<p class="page-subtitle">Records as they arrive for review. Each scenario shows the original record, the reviewer analysis identifying gaps, and a supported revision.</p>
-<div class="callout"><div class="callout-label">How to Use</div><p>Select the record type. Use the tabs to move between the original record, the review analysis, and the supported revision.</p></div>
-
-<div style="border:1px solid var(--rule);margin-top:20px;margin-bottom:10px;background:var(--surface);">
-  <div style="padding:10px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Gray Zone / Partially Supportable Record</div>
-  <div style="padding:14px 16px;">
-    <div style="font-size:13px;color:var(--muted);line-height:1.7;font-style:italic;margin-bottom:10px;">"Employee missed several deadlines during Q3 and Q4 and received feedback from the manager on multiple occasions. Performance improvement was discussed. Employee acknowledged the concerns."</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
-      <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--review-text);margin-bottom:4px;">What exists</div><div style="font-size:12.5px;color:var(--muted);">General timeframe (Q3/Q4). Acknowledgment documented. Manager feedback referenced.</div></div>
-      <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">What is missing</div><div style="font-size:12.5px;color:var(--muted);">Specific deadline dates. Number of misses. Standard applied. Coaching notes on file.</div></div>
-    </div>
-    <div class="reviewer-note" style="margin-top:0;"><div class="reviewer-note-label">Disposition</div>REVIEW REQUIRED. Basis partially visible. General timeframe present but specific instances not identified. Return for anchoring or document the gap explicitly before submission.</div>
-  </div>
-</div>
-<div style="border:1px solid var(--rule);margin-top:0;margin-bottom:8px;">
- <div style="padding:10px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Sample / Secondary Review Routing Sheet</div>
- <div style="padding:14px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
-  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Record Type</div><div style="font-size:13px;color:var(--muted);">Performance Evaluation</div></div>
-  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Risk Level</div><div style="font-size:13px;color:var(--review-text);">Elevated</div></div>
-  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Status</div><div style="font-size:13px;color:var(--stop-text);">Returned to Drafter</div></div>
-  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Gap Identified</div><div style="font-size:13px;color:var(--muted);font-style:italic;">Evaluative language without behavioral anchors. No dates identified.</div></div>
-  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Action Required</div><div style="font-size:13px;color:var(--muted);">Anchor each claim to specific dated conduct before resubmission.</div></div>
-  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer</div><div style="font-size:13px;color:var(--muted);">Initials: AJL &nbsp; Date: 4/18/26</div></div>
- </div>
- <div style="padding:8px 16px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted-soft);font-style:italic;">Illustrative example. Format may be adapted to organizational workflow.</div>
-</div>
-
-<div class="scenario-block" style="margin-top:28px;">
- <div class="scenario-header"><div><div class="scenario-label">Scenario 01 / Performance Documentation</div><div class="scenario-title">Annual Performance Review with Unsupported Conclusions</div></div></div>
- <div class="scenario-tabs">
- <button class="scenario-tab active" onclick="showScenarioPane(this,'sc1-record')">Original Record</button>
- <button class="scenario-tab" onclick="showScenarioPane(this,'sc1-analysis')">Review Analysis</button>
- <button class="scenario-tab" onclick="showScenarioPane(this,'sc1-revision')">Supported Revision</button>
- </div>
+ <div class="ws-item"><input type="checkbox" class="ws-check…7217 tokens truncated… </div>
  <div id="sc1-record" class="scenario-pane active">
  <div class="record-text">"Employee demonstrates a consistently poor attitude toward supervisors and colleagues. Performance has been below expectations throughout the review period. Employee does not take initiative and has struggled to complete assignments on time. Communication style is frequently unprofessional."</div>
  </div>
