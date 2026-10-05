@@ -19,6 +19,8 @@ async function check(route, apiVersion) {
     test(route + ' refuses input', response.status === 503 && body.error === 'controlled_review_unavailable');
     test(route + ' has no outbound call', networkCalls === 0);
     test(route + ' declares the expected API version', apiVersion ? body.api_version === 'v1' : !('api_version' in body));
+    test(route + ' identifies the controlled boundary', body.implementation_status === 'controlled_local_development' && body.public_access === false && body.record_submission_accepted === false && body.human_review_required === true);
+    test(route + ' identifies every release gate', Array.isArray(body.release_gates) && body.release_gates.length === 4 && body.release_gates.includes('independent_labeled_and_adjudicated_holdout_evaluation') && body.release_gates.includes('operator_control_evidence') && body.release_gates.includes('counsel_review_of_real_data_flows_and_claims') && body.release_gates.includes('recorded_owner_release_authorization'));
   } finally {
     globalThis.fetch = originalFetch;
   }
