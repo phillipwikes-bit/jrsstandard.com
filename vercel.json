@@ -7,6 +7,26 @@
     }
   ],
   "redirects": [
+    { "source": "/evidence-ledger", "destination": "/research.html", "permanent": false },
+    { "source": "/evidence-ledger.html", "destination": "/research.html", "permanent": false },
+    { "source": "/datasets", "destination": "/research.html", "permanent": false },
+    { "source": "/datasets.html", "destination": "/research.html", "permanent": false },
+    { "source": "/audit-request.html", "destination": "/enterprise.html", "permanent": false },
+    { "source": "/calibration-request.html", "destination": "/enterprise.html", "permanent": false },
+    { "source": "/governance-request.html", "destination": "/enterprise.html", "permanent": false },
+    { "source": "/organizational-evaluation.html", "destination": "/enterprise.html", "permanent": false },
+    { "source": "/controlled-evaluation-package.html", "destination": "/enterprise.html", "permanent": false },
+    { "source": "/licensing-acquisition.html", "destination": "/enterprise.html", "permanent": false },
+    { "source": "/platform-integration.html", "destination": "/review-engine.html", "permanent": false },
+    { "source": "/platform-evaluation-001.html", "destination": "/review-engine.html", "permanent": false },
+    { "source": "/manifest.html", "destination": "/review-engine.html", "permanent": false },
+    { "source": "/security.html", "destination": "/review-engine.html", "permanent": false },
+    { "source": "/privacy.html", "destination": "/privacy-notice.html", "permanent": false },
+    { "source": "/pilot.html", "destination": "/research.html", "permanent": false },
+    { "source": "/org-pilot.html", "destination": "/review-engine.html", "permanent": false },
+    { "source": "/contributor.html", "destination": "/resources.html", "permanent": false },
+    { "source": "/supported.html", "destination": "/resources.html", "permanent": false },
+    { "source": "/research-summary.html", "destination": "/research.html", "permanent": false },
     {
       "source": "/reviewer",
       "destination": "/reviewer/index.html",
@@ -93,11 +113,6 @@
       "permanent": false
     },
     {
-      "source": "/datasets",
-      "destination": "/datasets.html",
-      "permanent": false
-    },
-    {
       "source": "/decision-reconstruction-risk",
       "destination": "/decision-reconstruction-risk.html",
       "permanent": false
@@ -135,11 +150,6 @@
     {
       "source": "/platform-evaluation-001",
       "destination": "/platform-evaluation-001.html",
-      "permanent": false
-    },
-    {
-      "source": "/evidence-ledger",
-      "destination": "/evidence-ledger.html",
       "permanent": false
     },
     {
