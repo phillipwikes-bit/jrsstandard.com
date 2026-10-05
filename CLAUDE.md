@@ -1,6 +1,8 @@
 # JRS CLAUDE CODE MASTER PROMPT
 ## ENTERPRISE ASSET ORCHESTRATOR
 
+> **CURRENT OPERATIVE OVERRIDE — 2026-10-05.** Before any Engine, public-site, deployment, privacy, evaluation, or commercial-pathway work, read `docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`. If its current-state instructions conflict with historical instructions below, the current handoff governs for that work. Preserve the historical text below; do not silently rewrite it.
+
 Justification Review Standard (JRS) · Decision Reconstruction Risk (DRR)
 IP • Evidence • Governance • Research • Engineering • Validation • Commercialization • Transaction Readiness
 
