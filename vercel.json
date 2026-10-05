@@ -27,6 +27,9 @@
     { "source": "/contributor.html", "destination": "/resources.html", "permanent": false },
     { "source": "/supported.html", "destination": "/resources.html", "permanent": false },
     { "source": "/research-summary.html", "destination": "/research.html", "permanent": false },
+    { "source": "/research-data.html", "destination": "/research.html", "permanent": false },
+    { "source": "/bench-results.html", "destination": "/research.html", "permanent": false },
+    { "source": "/engine-activity.html", "destination": "/review-engine.html", "permanent": false },
     { "source": "/acquisition-9f3c2a7d4b.html", "destination": "/enterprise.html", "permanent": false },
     { "source": "/submit-record.html", "destination": "/review-engine.html", "permanent": false },
     { "source": "/submit-validation.html", "destination": "/research.html", "permanent": false },
@@ -98,7 +101,7 @@
     },
     {
       "source": "/bench-results",
-      "destination": "/bench-results.html",
+      "destination": "/research.html",
       "permanent": false
     },
     {
@@ -123,7 +126,7 @@
     },
     {
       "source": "/engine-activity",
-      "destination": "/engine-activity.html",
+      "destination": "/review-engine.html",
       "permanent": false
     },
     {
@@ -223,7 +226,7 @@
     },
     {
       "source": "/research-data",
-      "destination": "/research-data.html",
+      "destination": "/research.html",
       "permanent": false
     },
     {
