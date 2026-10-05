@@ -42,6 +42,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
 .sub{font-size:15px;color:var(--muted);line-height:1.7;max-width:740px}
 .access-note{margin-top:18px;border-left:2px solid var(--ready);padding:3px 0 3px 14px;font-size:13px;color:var(--muted)}
 .access-note strong{color:var(--text)}
+.start-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:24px 0 0}.start-link{display:block;border:1px solid var(--rule);background:var(--surface);padding:13px 14px;text-decoration:none;min-height:88px}.start-link:hover,.start-link:focus{border-color:var(--accent);background:rgba(190,148,71,.06)}.start-k{display:block;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px}.start-v{display:block;font-family:'Bodoni Moda',serif;font-size:16px;line-height:1.25;color:var(--text)}
 .section-label{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin:34px 0 14px}
 .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .card{border:1px solid var(--rule);background:var(--surface);padding:22px;display:flex;flex-direction:column;min-height:230px}
@@ -60,7 +61,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
 .footer-link,.footer-copy{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none}
 .skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
 .skip-link:focus{left:0}
-@media(max-width:680px){h1{font-size:30px}.cards{grid-template-columns:1fr}.card{min-height:0}.jrs-sitenav a{padding:12px 13px;font-size:7.5px}}
+@media(max-width:680px){h1{font-size:30px}.cards,.start-grid{grid-template-columns:1fr}.card{min-height:0}.jrs-sitenav a{padding:12px 13px;font-size:7.5px}}
 </style>
 </head>
 <body>
@@ -90,6 +91,12 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
    <p class="sub">These tools help practitioners examine whether a consequential decision record preserves the basis, evidence, reasoning, and chronology needed for later independent review.</p>
    <p class="access-note"><strong>No purchase, account, or registration is required.</strong> Training is open without registration. Contact details are requested only if you choose to receive a named completion certificate and project updates with consent.</p>
    <p class="access-note"><strong>Public standard, controlled implementation.</strong> These practitioner materials explain and support use of the public JRS methodology. Review Engine source code, deployment architecture, and non-public evaluation infrastructure remain part of the controlled implementation.</p>
+   <div class="start-grid" aria-label="Choose a starting point">
+    <a class="start-link" href="jrsstandard.html"><span class="start-k">First time here</span><span class="start-v">Read the Standard</span></a>
+    <a class="start-link" href="check.html?src=resources"><span class="start-k">Use today</span><span class="start-v">Run a self-guided check</span></a>
+    <a class="start-link" href="#learn"><span class="start-k">Build skill</span><span class="start-v">Learn and practice</span></a>
+    <a class="start-link" href="research.html"><span class="start-k">Assess evidence</span><span class="start-v">Research and limitations</span></a>
+   </div>
   </section>
 
   <div class="section-label">Start with a record</div>
@@ -120,7 +127,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
    </article>
   </div>
 
-  <div class="section-label">Learn and practice</div>
+  <div class="section-label" id="learn">Learn and practice</div>
   <div class="cards">
    <article class="card">
     <div class="card-tag">Six modules &middot; Self-paced</div>
@@ -149,8 +156,8 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
   <article class="card">
    <div class="card-tag">Technical specification &middot; Version 1.0</div>
    <h2 class="card-title">Decision Reconstruction Manifest</h2>
-   <p class="card-copy">Review the public schema, a constructed example, current-versus-target status, integrity controls, human-review requirement, and customer-controlled storage model.</p>
-   <a class="card-link secondary" href="manifest.html">Open the Manifest package &rarr;</a>
+   <p class="card-copy">Review the public schema, constructed example, integrity limits, and human-review requirement. It is a specification, not a public Manifest-generation service.</p>
+   <a class="card-link secondary" href="review-engine.html">Review implementation status &rarr;</a>
   </article>
  </div>
 
@@ -177,7 +184,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
    <a href="jrsstandard.html" class="footer-link">The Standard</a>
    <a href="research.html" class="footer-link">Research</a>
    <a href="privacy.html" class="footer-link">Privacy</a>
-   <a href="enterprise.html" class="footer-link">Enterprise and Strategic Inquiries</a>
+   <a href="enterprise.html" class="footer-link">Method Information</a>
   </div>
   <div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Phillip Wikes, principal</div>
  </div>
