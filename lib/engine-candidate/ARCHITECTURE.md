@@ -1,6 +1,6 @@
 # Review Engine local candidate: architecture
 
-**Candidate 0.4.0-local.1. Local development only. Not deployed, not validated, not connected to any model.** This work is governed by `docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`.
+**Candidate 0.5.0-local.1. Local development only. Not deployed, not validated, not connected to any model.** This work is governed by `docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`.
 
 ## Data flow
 
@@ -27,7 +27,7 @@
  6. person-inference screen ..... emotion, intent, motive, payoff, credibility, clinical:
         |                         text withheld, withholding recorded
         v
- 7. result contract ............. jrs-candidate-result/0.2.0 (contract.js)
+ 7. result contract ............. jrs-candidate-result/0.3.0 (contract.js)
     review_identity (hash of every version, the prompt, the model and the source)
     extraction_findings (X-nnn, deterministic)  |  contextual_findings (C-nnn, model-derived)
     each finding: explanation (explanations.js), pending human disposition
@@ -51,11 +51,11 @@ Around the flow, and never inside it:
 
 | Module | Role |
 |---|---|
-| `review-candidate.js` | Steps 1 to 7. Defines the scope, the excluded domains, the inference screen and the reference prompt. |
+| `review-candidate.js` | Steps 1 to 7. Defines the scope, the excluded domains, the inference screen and the reference prompt (0.4.0: five candidate review keys, not JRS conditions; see README). |
 | `source-prep.js` | Step 2. Deterministic, with no model involved. |
 | `adapter.js` | Step 5. The adapter interface and its fail-closed validator. |
 | `mock-adapter.js` | The only adapter: deterministic scripted responses. |
-| `explanations.js` | Human-review explanations. Candidate-internal vocabulary with no Codebook correspondence. |
+| `explanations.js` | Human-review explanations. Candidate-internal vocabulary with no Codebook correspondence; `cold_reviewer_clarity` and `accountability_support` are explicitly unmapped. |
 | `contract.js` | The result contract, disposition and sign-off. |
 | `harness.js` | Adversarial consistency and integrity harness. |
 | `dev-material.js` | Holdout-separation control: exact and whitespace-only copies. |
@@ -87,7 +87,7 @@ Each module imports only its neighbours and `node:crypto`. The tests enforce thi
 | Public route, API, sandbox, page, Vercel configuration | **Prohibited** under the handoff |
 | Real records, sealed holdouts | **Prohibited** under the handoff |
 | Numerical DRR score, overall verdict, "ready" or "approved" determination | **Prohibited**, and rejected at the adapter boundary |
-| Codebook mapping or equivalence claim | **Prohibited** (D-2, D-3) |
+| Codebook mapping or equivalence claim | **Prohibited** (D-2, D-3); enforced by `vocabulary.test.mjs`. No correspondence record exists. |
 | Inference about emotion, intent, motive, payoff, credibility or clinical condition | **Prohibited**, and withheld when a model produces it |
 | Claims of accuracy, reliability, validation or production readiness | **Prohibited** |
 
@@ -110,6 +110,7 @@ The candidate is **left disconnected** from the Manifest library (`api/_manifest
 | No partial or unreadable input check | Refused before any model call | |
 | Overall determination ("ready", "review_required", "gap_identified") | Removed, and rejected if a model supplies one | Human review is always required |
 | `compliant_version` | `revision_needed` | CLAUDE.md section 24 |
+| Prompt called the five keys "JRS documentation review conditions" (carried into 0.3.0) | Candidate review keys, no correspondence asserted (prompt 0.4.0) | D-2, D-3 |
 | Model output parsed leniently | Fail-closed contract, exact quotations | |
 | No screen on person-describing text | Withheld and recorded | Handoff: record-level flaws only |
 
@@ -120,7 +121,7 @@ The candidate is **left disconnected** from the Manifest library (`api/_manifest
 | `node tests/engine-candidate/run-all.mjs` | Everything, including the mutation run |
 | `node tests/engine-candidate/run-all.mjs --quick` | Everything except the mutation run |
 | `node tests/engine-candidate/eval/run-eval.mjs --write tests/engine-candidate/eval/records` | The corpus evaluation, writing its JSON record |
-| `node tests/engine-candidate/mutation/run-mutations.mjs` | The 63 mutations alone |
+| `node tests/engine-candidate/mutation/run-mutations.mjs` | The 67 mutations alone |
 | `node tests/engine-candidate/regression/run.mjs --table` | The source-preparation regression set, case by case |
 | `node tests/engine-candidate/confirmation/run.mjs --table` | The independent confirmation corpus, case by case |
 

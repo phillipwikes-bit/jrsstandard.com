@@ -77,6 +77,10 @@ export const MUTATIONS = [
   ['M60', 'source prep: anchors use the exact record text', L + 'source-prep.js', "matched: text.slice(m.index, m.index + 7)", "matched: 'clearly'"],
   ['M61', 'dev index: confirmation corpus loaded as development material', 'tests/engine-candidate/shared/dev-index.mjs', "for (const c of JSON.parse(readFileSync(join(BASE, 'confirmation/v0.1.0/cases.json'), 'utf8')).cases) out.push", 'for (const c of []) out.push'],
   ['M32', 'dev material: every development text listed', L + 'dev-material.js', "', 'corpus/v0.1.0/CR-015'],", "', 'corpus/v0.1.0/CR-015-x'],\n  ['0000', 'x'],"],
+  ['M64', 'vocabulary: the prompt does not call the keys JRS conditions', L + 'review-candidate.js', 'for record-level documentation flaws. Use the five candidate review keys below.', 'for record-level documentation flaws, against five JRS documentation review conditions. Use the five candidate review keys below.'],
+  ['M65', 'vocabulary: accountability_support stays unmapped', L + 'explanations.js', 'accountability_support: null,', "accountability_support: 'insufficient_evidence',"],
+  ['M66', 'vocabulary: cold_reviewer_clarity stays unmapped', L + 'explanations.js', "Object.freeze(['cold_reviewer_clarity', 'accountability_support'])", "Object.freeze(['accountability_support'])"],
+  ['M67', 'vocabulary: no correspondence record asserted', L + 'explanations.js', 'export const CODEBOOK_CORRESPONDENCE_RECORD = null;', "export const CODEBOOK_CORRESPONDENCE_RECORD = { reasoning_traceability: 'Reconstructability' };"],
 ];
 
 function sh(cmd, cwd) { return execSync(cmd, { cwd, stdio: ['ignore', 'pipe', 'pipe'] }).toString(); }

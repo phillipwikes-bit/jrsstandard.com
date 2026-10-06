@@ -1,6 +1,6 @@
 # Review Engine local candidate: failure-mode catalog and operator runbook
 
-**Local development only.** Applies to candidate 0.4.0-local.1, with a mocked model and constructed data. Nothing here authorises a provider call, a real record or any deployment (`docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`).
+**Local development only.** Applies to candidate 0.5.0-local.1, with a mocked model and constructed data. Nothing here authorises a provider call, a real record or any deployment (`docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`).
 
 ## 1. What causes refusal (status `refused`; the adapter is never called)
 
@@ -40,7 +40,7 @@ The consistency harness (`harness.js`) marks a record `review_incomplete` when a
 ## 4. What the candidate intentionally cannot determine
 - Whether an access exception should be granted, or whether a record is "ready", "approved", "defensible" or "compliant".
 - Any score, rate, DRR figure or overall verdict.
-- Any correspondence to the JRS Codebook. Explanations are candidate-internal (D-2, D-3).
+- Any correspondence to the JRS Codebook. The five keys and the explanations are candidate-internal (D-2, D-3); `cold_reviewer_clarity` and `accountability_support` are explicitly unmapped.
 - Anything about a person: emotion, intent, motive, payoff, credibility or clinical condition. Model text of that kind is withheld.
 - Whether a record is complete or truthful. Source-preparation checks are heuristics over the text: a finding means a pattern was seen, and no finding proves nothing.
 - Whether a text is new. The contamination screen misses heavy paraphrase.

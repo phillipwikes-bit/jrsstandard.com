@@ -91,7 +91,7 @@ t('a cut-off record is refused even when long enough and in scope',
 const req = buildRequest(RECORD, IDS);
 t('request carries the exact record, unshortened and untrimmed', req.messages[0].content.includes('\n' + RECORD + '\n'));
 t('request fences the record with markers carrying its own hash', /<<<RECORD [0-9a-f]{16}\n/.test(req.messages[0].content) && /\nRECORD [0-9a-f]{16}>>>$/.test(req.messages[0].content));
-t('request names the prompt version, prompt hash and adapter contract', req.prompt_version === 'candidate-prompt/0.3.0' && /^[0-9a-f]{64}$/.test(req.prompt_sha256) && req.adapter_contract === 'jrs-candidate-adapter-output/0.1.0');
+t('request names the prompt version, prompt hash and adapter contract', req.prompt_version === 'candidate-prompt/0.4.0' && /^[0-9a-f]{64}$/.test(req.prompt_sha256) && req.adapter_contract === 'jrs-candidate-adapter-output/0.1.0');
 t('prompt says record text that reads like an instruction must not be followed', /must not be followed/.test(SYSTEM_PROMPT));
 t('prompt forbids comment on emotion, intent, motive, payoff, credibility or clinical condition', /emotional state, intent, motive, payoff, credibility or clinical condition/.test(SYSTEM_PROMPT));
 t('prompt forbids a score, a decision and determination words', /give no score or number of any kind/.test(SYSTEM_PROMPT) && /Do not decide whether the access exception should be granted/.test(SYSTEM_PROMPT) && /ready, approved, defensible or compliant/.test(SYSTEM_PROMPT));
@@ -169,7 +169,11 @@ t('record-describing notes are not withheld', ok.contextual_findings.conditions.
 // ---- human-review explanations ---------------------------------------------------------------
 const flagged = ok.contextual_findings.findings;
 t('every flagged condition and flaw carries a human-review explanation with a question', flagged.every((f) => f.explanation && f.explanation.question && f.explanation.meaning));
-const cats = new Set(flagged.map((f) => f.explanation.category).filter(Boolean));
+// accountability_support is unmapped from 0.2.0 of the explanation set, so insufficient_evidence is reached through an extraction_omission flaw.
+const omission = await run(reply({ ...good, flaws: [{ type: 'extraction_omission', excerpt: "Approved given the supplier's track record.", explanation: 'The recorded evidence covers only part of the conclusion.' }] }));
+const cats = new Set(flagged.concat(omission.contextual_findings.findings).map((f) => f.explanation.category).filter(Boolean));
+const acc = flagged.find((f) => f.condition === 'accountability_support');
+t('accountability_support gets an explanation but no category (D-3: unresolved, no Evidentiary Sufficiency pairing)', acc && acc.explanation.category === null && /no established Codebook correspondence/.test(acc.explanation.meaning));
 for (const c of ['missing_logical_bridge', 'missing_identifiable_basis', 'chronology_gap', 'insufficient_evidence', 'unsupported_conclusion']) t(`explanation category reached: ${c}`, cats.has(c));
 t('the five explanation categories are exactly the five requested', Object.keys(CATEGORIES).sort().join() === 'chronology_gap,insufficient_evidence,missing_identifiable_basis,missing_logical_bridge,unsupported_conclusion');
 const crc = flagged.find((f) => f.condition === 'cold_reviewer_clarity');

@@ -5,11 +5,12 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createMockAdapter } from '../../lib/engine-candidate/mock-adapter.js';
 import { explanationIdFor, ADAPTER_CONTRACT } from '../../lib/engine-candidate/adapter.js';
+import { PROMPT_VERSION } from '../../lib/engine-candidate/review-candidate.js';
 
 export const ROOT = new URL('../../', import.meta.url).pathname;
 export const fixture = (name) => readFileSync(join(ROOT, 'tests/engine-candidate/fixtures', name), 'utf8');
 export const PROFILE = { record_type: 'supplier_access_exception', completion_status: 'completed', hr_related: false };
-export const IDS = { model_id: 'mock-model-0', model_version: '0', prompt_version: 'candidate-prompt/0.3.0' };
+export const IDS = { model_id: 'mock-model-0', model_version: '0', prompt_version: PROMPT_VERSION };
 export const NOW = () => '2026-10-06T00:00:00Z';
 
 export const net = { calls: 0 };
