@@ -161,3 +161,43 @@ Extend `tests/public-route-alignment.mjs` so that no public page states, as curr
 - **B-010:** the acquisition and VP routes (P-12, P-13, P-15).
 - **Production controls behind `privacy.html` section 4 (P-5):** need operator-control evidence (handoff gate 2).
 - **Whether the owner wants a general enquiry route** on `enterprise.html` (P-7).
+
+## 5. Addendum, 2026-10-06: repairs applied (`3758d76`, `1aabaab`)
+Sections 1 to 4 above are kept as the earlier record (Rule 10).
+
+**Correction to section 1 (OLD FINDING → NEW EVIDENCE → CORRECTED STATUS):**
+- **OLD FINDING:** fifteen items, with P-1 and P-2 as the main stale data-flow claims.
+- **NEW EVIDENCE:** `tests/public-boundary-claims.mjs` scanned all 83 deployed public pages.
+- **CORRECTED STATUS:** 66 stale current-tense statements on 14 pages, most of them outside the earlier inventory. Manual inspection added three more pages: the `research.html` headings, `contributor.html` (text built by script, which the scan cannot see) and the `jrsstandard.html` restoration.
+- **EXPLANATION:** the earlier pass read pages individually. It missed copies of two shared blocks (the "dual track" and "track bridge" blocks) that the owner had already corrected on other pages on 4 and 5 October.
+
+### Repaired
+| Page | What was stated as current | Now |
+|---|---|---|
+| `security.html` (P-1) | Record text sent to Anthropic; 8,000-character truncation; bearer tokens; rate limit; stored model notes kept 90 days; integration inquiry; OpenAPI link | The current position, a route table (503 refusal, body not read, no model call), and a short history section. That section makes no deletion statement and says whether stored output remains is not established. The meta description is updated. |
+| `privacy.html` (P-2, P-3, P-4) | Anthropic receives pasted text; output kept 90 days and then removed; "keep it defensible"; "securely"; "the diagnostic is running" | Anthropic moved to "services that are not running", with the current position and the same not-established statement. P-3 and P-4 wording applied. "Last updated" changed to 6 October 2026. |
+| `index.html` (P-6) | "maintained separately for evaluation and possible integration" | P-6 wording |
+| `research.html` (P-8) | "Research & Validation"; "Empirical Validation"; "Validation Maturity" | "Research and Limitations" (the page's own title since the owner's change); "Research Results"; "Research Maturity". The body is unchanged. |
+| `audit-request.html`, `calibration-request.html`, `governance-request.html`, `engagement.html` | Shared "Enterprise Platform Track" card: B2B API licensing, "one record in, a structured determination out", transmitted to Anthropic, telemetry kept, per-partner tokens. Banner: "the commercial pathways that remain are licensing… technical integration, and acquisition". "Request a Review Engine evaluation". "Review Engine API". "Run the Mini-Pilot". Present-tense service text on closed pages. | The card is replaced with the owner's 5 October wording from `training.html`. The banner and the closing note use the current position. Links now go to status pages. Text for the closed service is in the past tense, matching `terms.html`. |
+| `check.html`, `investigator-guides.html` | Shared bridge: "commercial embedding and licensed deployment are handled through the enterprise track"; text "transmitted to the model provider". `check.html`: "licensing… inquiries are handled separately". `investigator-guides.html`: "Run one record now". | The bridge is replaced with the owner's 4 October wording from `jrsstandard.html`, and the other lines use the current position. |
+| `training.html` | A "Record Review Workspace" record field that POSTed to `/api/review`, which now refuses. "Run the diagnostic on my records" carried name, organization, title and email in the URL. | The form and its three functions are removed. A status block keeps the anchor. The button now goes to `check.html` with no personal data in the URL. |
+| `contributor.html`, `supported.html` | "Paste up to twenty five of your own records… get the five-condition read" | Point to the Record Defensibility Check, with the current position |
+| `operational-boundaries.html` | "the licensed JRS Review Engine API can be embedded by a platform provider" | The current position |
+| `research-summary.html` | "Structured Pilot… Scope a pilot"; "Licensing of the standard and the review engine… holds no record text at rest" | Both cards marked "Not offered", with the current position |
+| `simulations.html` | "applies the JRS five-question framework to submitted record text and returns routing guidance"; "Open AI-Assisted Record Reviewer" (×2) | Closed, with the current position; links go to "Review Engine status" |
+| `jrsstandard.html` | Not a claim. A truncated save in `b1929b9` put "Warning: truncated output" before the doctype and replaced 211 worksheet lines with "…7217 tokens truncated…". | Restored as the parent file plus that commit's two intended edits (`1aabaab`). Broken internal links fell from 11 to 4. |
+| `CLAUDE.md` 36.2 (P-14) | `api/review.js` "calls Claude" | A dated status note was added. No text was deleted. |
+
+### Retained deliberately
+| Item | Reason |
+|---|---|
+| `enterprise.html` "Contact about future controlled evaluation" (P-7) | Prospective, and the page's own status text says no evaluation access is offered. The owner may prefer a general enquiry route, so this stays UNRESOLVED. |
+| `privacy.html` section 4, row-level security statements (P-5) | NOT_ASSESSED. They need operator evidence, and B-013 points the other way for `engine_reviews`. Removing them without evidence would be as unsupported as keeping them. |
+| `decision-reconstruction-risk.html` 133 (P-10), `research.html` figures (P-9) | Research accuracy, not a boundary claim. Guard rows 36 and 37 are INVESTIGATE. |
+| `sitemap.xml`, `vercel.json` (P-11 to P-13) | Not directly necessary for the boundary. The `org-pilot.html` redirect to `review-engine.html` still serves old links. B-010 is unresolved. |
+| `index.html` "Enterprise information and future pathway" | Owner wording of 4 and 5 October. It sits beside the release-gate list and offers no access. |
+| Closed request pages: "Licensed access to the record set for one run", "One licensed run… Closed", and `engagement.html` "Retention… destroyed on delivery" | Terms of the closed founder service, on pages labelled closed and historical. They describe neither the Engine nor a current offer. |
+| `coauthor.html` "licensed product", "sold or licensed" | Wording in a contributor consent instrument. Changing it would change a rights instrument (Rules 4 and 5). |
+| "Research & Validation" link labels on other pages (`about.html`, `codebook.html`, `datasets.html`, `evidence-ledger.html`, `finding.html` and others) | These are labels for a link to `research.html`, not claims on the page itself. Follow-up, not a boundary claim. |
+| `programme-status-9872fb93cc94.html`, `acquisition-9f3c2a7d4b.html`, `vp-7c1f9a4e8d2b6035.html` | Restricted surfaces (CLAUDE.md 36.3, B-010), excluded from the test. Not touched. |
+| `training.html` record-pattern helper arrays | Dead after the form was removed and harmless. Removing them was not necessary for the repair. |

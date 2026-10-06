@@ -75,3 +75,35 @@ Every UPDATE and RETIRE would need owner approval. Each future guard change must
 ## Unresolved
 - **The 3 October documents:** the retirements in rows 10 to 25 rely on the 5 October handoff.
 - **Owner decisions:** row 3 (where the Manifest code lives), row 13 (nav on stubs), row 14 (acquisition redirect, B-010).
+
+## Addendum, 2026-10-06, after the source-aligned repairs (commits `afd6b44`, `3758d76`, `1aabaab`)
+**No guard was changed.** `scripts/check_zero_drift.py` is byte-identical to the version above.
+
+`python3 scripts/check_zero_drift.py`: **164 checks, 39 failed, 1 skipped.** Before the repairs: 164, 37, 1. Every other guard result is unchanged (VERIFIED by diffing the FAIL lists before and after).
+
+### Changed rows
+| # | Guard | Before | After | Revised action | Why |
+|---|---|---|---|---|---|
+| 21 | security one-pager exists and is linked | fail: linked from 0 of 2 Track 1 pages | fail: also "missing claims: stateless, not written to any table, Rate limit, request_id" | RETIRE (unchanged) | It requires the retired data-flow claims to be present on `security.html`. The repaired page no longer makes them, because no route they describe operates. |
+| 33 | data-handling claims match the implementation | fail | fail (same detail) | **UPDATE** (was RETAIN) | The pages are now repaired. The guard still fails because it asserts that `api/review-engine.js` calls `logReview` and holds `compliant_version`. That code was removed on 4 October, and the guard's own docstring says to "revisit the claims rather than leaving them". The claims have been revisited. Proposed change: keep the banned-phrase half; replace the code-fact half with an assertion that no review route reads a body or writes a row. |
+| 34 | published API contract matches the write path | fail | fail (same detail) | **UPDATE** (was RETAIN) | As row 33: its premise is a `logReview()` call that no longer exists. Proposed change: assert the contract describes only the refusal. |
+
+### New failures, both caused by the repaired text and both conflicts with the current position
+| # | Guard | Failing | What it requires | Conflicts with current position? | Real current defect? | Action | Proposed future change |
+|---|---|---|---|---|---|---|---|
+| 38 | disclosed retention matches the policy | since `3758d76` | `security.html` and `privacy.html` must each say "kept for 90 days", with "condition statuses" and "never stored at all" beside it | **Yes.** The owner's instruction prohibits promising deletion. `lib/retention/policy.js` says "THIS MODULE COMPUTES. IT DOES NOT DELETE", and nothing imports it, so the 90-day removal statement was not supported by any executing control. | No. The guard enforces a statement that was itself unsupported. | **UPDATE** | Fail if a public page states a retention or deletion period unless an executing deletion mechanism is named and evidenced; otherwise require the page to say no deletion statement is made. |
+| 39 | pages rendering engine output disclose validation status | since `3758d76` | at least one page must call `/api/review` ("the guard has lost its subject") | **Yes.** The current position is that no public page sends a record for review. The guard fails closed when its subject disappears, which is the right design; the subject was removed deliberately. | No | **UPDATE** or RETIRE | Invert it: fail if any page calls `/api/review`, `/api/review-engine`, `/api/v1/review-engine` or `/api/sandbox` with record text. `tests/public-boundary-claims.mjs` already covers the wording side. |
+
+### Revised totals (39 failing)
+| Action | Count |
+|---|---|
+| RETAIN | 8 |
+| UPDATE | 20 |
+| RETIRE | 9 |
+| INVESTIGATE | 2 |
+| **Total** | **39** |
+
+Real current defects now sit in rows 2, 3, 9, 11, 12, 14 and 28, and possibly 36. Rows 33 and 34 are no longer defects in the pages; they are guards whose premise was removed.
+
+### Test added outside the guard suite
+`tests/public-boundary-claims.mjs` is a separate test, not a guard: the guard count is unchanged. It was shown failing first: against the pre-repair pages it reports 66 violations on 14 pages, with 8 of its 10 claim categories failing; after the repairs, 0 violations. Its self-tests show it fires on each stale wording and on a negation placed after the claim, and allows negated and historical statements.

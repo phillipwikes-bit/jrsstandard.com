@@ -3,8 +3,8 @@
 // Fails if a deployed public page states, as current, any of: public record intake,
 // public review execution, a public API or sandbox, token access, current model-provider
 // processing of records, retention of record-derived model output, public Manifest
-// generation, or production, validated, enterprise-ready, licensing-ready or sale-ready
-// status. The position it enforces is the 5 October handoff
+// generation, a licensing or integration pathway, or production, validated, enterprise-ready,
+// licensing-ready or sale-ready status. The position it enforces is the 5 October handoff
 // (docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md) and the owner's position of
 // 2026-10-06: public review routes do not accept records and do not perform inference.
 //
@@ -64,6 +64,7 @@ export const CLAIMS = [
   ['record_truncation', /\btruncated (to|at) 8,000\b|\blonger input is truncated\b/i],
   ['derived_output_retention', /\bkept for \d+ days\b|\bwhat the model writes about the record\b[^.]{0,40}\b(is|are)\b[^.]{0,10}\b(stored|kept)\b|\bmodel-written text about the record\b|\bkept as (programme )?telemetry\b/i],
   ['public_manifest_generation', /\b(generate|download|produce|issue)s? (a |your )?(decision reconstruction )?manifest (for|from) (your|a|the) record\b/i],
+  ['licensing_or_integration_pathway', /\blicensed (JRS )?Review Engine API\b|\blicensing of the (standard and the )?review engine\b|\bcommercial embedding and licensed deployment\b|\bcommercial pathways that remain are licensing\b|\bfor (evaluation and )?possible integration\b|\bevaluate a licensed implementation\b|\bscope a pilot\b/i],
   ['status_claim', /\b(production[- ]ready|enterprise[- ]ready|licensing[- ]ready|sale[- ]ready|acquisition[- ]ready|ready for (sale|licensing|acquisition|production|deployment)|validated (review )?engine|engine is validated)\b/i],
 ];
 
@@ -102,6 +103,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   t('fires: record intake invitation', probe('<p>Paste any organizational record below and receive review observations.</p>').violations.length > 0);
   t('fires: token instructions', probe('<pre>Authorization: Bearer &lt;your-token&gt;</pre>').violations.length > 0);
   t('fires: the old reviewer card', probe('<p>The AI-assisted record reviewer applies the framework to submitted record text and returns routing guidance.</p>').violations.length > 0);
+  t('fires: a licensing pathway', probe('<p>Separately, the licensed JRS Review Engine API can be embedded by a platform provider.</p>').violations.length > 0);
   t('fires: readiness claim', probe('<p>The engine is production-ready.</p>').violations.length > 0);
   t('fires: a negation in a different sentence does not excuse the claim', probe('<p>Records are not stored. It is transmitted to Anthropic, the model provider, to be assessed.</p>').violations.length > 0);
   t('fires: a negation after the claim does not excuse it', probe('<p>Longer input is truncated before evaluation, not rejected.</p>').violations.length > 0

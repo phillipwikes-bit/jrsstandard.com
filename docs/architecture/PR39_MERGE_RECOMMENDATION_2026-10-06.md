@@ -76,3 +76,47 @@ No other conflict was found.
 **REVISE_BEFORE_MERGE**
 
 After the section 4 revision, and after a re-check against the 3 October documents once they are available, PR #39 would be a candidate for **safe merge as excluded local and internal code**. That would be a repository merge only. It would **not** be a release, a deployment authorization or a production authorization, and it would not move any release gate.
+
+## 9. Update after the source-aligned repairs (2026-10-06, commits `afd6b44`, `3758d76`, `1aabaab`)
+Sections 1 to 8 above are kept as the record of the earlier assessment (Rule 10).
+
+### What changed
+- **Section 4 conflict: fixed** (`afd6b44`).
+  - Prompt `candidate-prompt/0.4.0` calls the five keys candidate review keys, says they are not the JRS Codebook conditions, and asserts no correspondence.
+  - `accountability_support` no longer carries the evidence-sufficiency question.
+  - Explanation set 0.2.0 unmaps `accountability_support` beside `cold_reviewer_clarity`, and declares `CODEBOOK_CORRESPONDENCE_RECORD = null`.
+  - The reviewer-packet note is corrected.
+  - `tests/engine-candidate/vocabulary.test.mjs` fails if any of this regresses. VERIFIED: all four of its checks fail on the pre-fix copy, and four new mutations are caught.
+- **Public boundary: repaired** (`3758d76`). Sixteen public pages and `CLAUDE.md` 36.2 (dated note, no text deleted). `tests/public-boundary-claims.mjs` reports 66 violations on 14 pre-repair pages and 0 after.
+- **Standard page restored** (`1aabaab`). `jrsstandard.html` had been saved truncated on `main` in `b1929b9`.
+
+### PR #39 now changes deployable files
+- 104 files in total.
+- 18 of them are outside the `.vercelignore` exclusions: 17 HTML pages and `CLAUDE.md`. `CLAUDE.md` is excluded by `*.md`, so 17 served pages would change on merge.
+- **Section 6 above ("None from PR #39 itself") is therefore superseded.** Merging is now a production publication of public-page changes. CLAUDE.md sections 23 and 26 require the owner's publication review and approval before that happens.
+
+### Verification (this session)
+| Command | Result |
+|---|---|
+| `node tests/engine-candidate/run-all.mjs` | all 17 suites passed; 67 mutations, 67 caught |
+| `node tests/engine/auth-matrix.mjs` | 10 checks, 0 failed |
+| `node scripts/test_review_incomplete.mjs` | PASS |
+| `node tests/public-route-alignment.mjs` | 17 checks, 0 failed |
+| `node tests/public-boundary-claims.mjs` | 83 pages, 0 violations |
+| `python3 scripts/check_zero_drift.py` (unchanged) | 164 checks, 39 failed, 1 skipped. The two new failures (rows 38 and 39 of the guard package) are guards that require the retired wording. |
+| `git diff --check` | clean |
+
+### Recommendation
+**MERGE_SAFE_AS_LOCAL_INTERNAL_WORK.** The only conflict identified (section 4) is fixed, and the boundary tests pass. This recommendation is limited as follows:
+- **It does not authorize** production release, deployment, licensing, sale, evaluation, or any use of real records.
+- **It does not move any release gate.** Section 7 is unchanged.
+- **The public-page changes need the owner's approval as a publication** (Section 23) before merge, because merging deploys them. This includes the `jrsstandard.html` restoration.
+- **The re-check against the three 3 October source-aligned documents remains pending.** Those documents were not reachable in this session.
+
+### Remaining blockers
+- **3 October source recheck:** pending.
+- **Guard reconciliation:** owner approval for the UPDATE and RETIRE rows, including the new rows 38 and 39.
+- **B-010:** acquisition and VP routes, unchanged.
+- **P-5:** production controls behind `privacy.html` section 4 are NOT_ASSESSED; operator evidence is required.
+- **P-11 to P-13:** sitemap and redirect entries, left unchanged.
+- **Earlier engine output:** whether any output stored by the earlier engine route remains is NOT ESTABLISHED. The pages now say so and make no deletion statement.

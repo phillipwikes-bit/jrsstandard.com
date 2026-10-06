@@ -3091,3 +3091,28 @@ Only four line groups differ between v7 and v8.
   - **Guard suite:** re-run gives 164 checks, 37 failed and 1 skipped. Proposed actions: 10 retain, 16 update, 9 retire, 2 investigate. No guard changed.
   - **One wording correction:** `lib/engine-candidate/ARCHITECTURE.md` no longer says the detectors "keep development texts out of any holdout"; it says they detect, and enforce nothing on their own.
   - **Not done:** no merge, deployment, provider call, real record, holdout access or public change.
+- 2026-10-06 (**PR #39 SOURCE-ALIGNED REPAIRS IMPLEMENTED; RECOMMENDATION NOW MERGE_SAFE_AS_LOCAL_INTERNAL_WORK, BUT MERGE DEPLOYS 17 PUBLIC PAGES AND NEEDS OWNER PUBLICATION APPROVAL**): owner-commissioned. FACT:
+  - **WP A, candidate vocabulary (`afd6b44`):**
+    - candidate 0.5.0-local.1 with prompt `candidate-prompt/0.4.0`. The prompt no longer calls the keys JRS conditions, and `accountability_support` no longer carries the evidence-sufficiency question;
+    - explanation set 0.2.0 unmaps `accountability_support` beside `cold_reviewer_clarity`, and declares `CODEBOOK_CORRESPONDENCE_RECORD = null`. No correspondence record was invented;
+    - new `tests/engine-candidate/vocabulary.test.mjs` (17 checks; all four required checks fail on the pre-fix copy) and four new mutations;
+    - the eval runner migrates the pre-registered 0.3.0 corpus responses; the corpus files are unchanged.
+  - **WP B and C, public boundary (`3758d76`):**
+    - 16 pages repaired. The scan found 66 stale current-tense statements on 14 pages; most sat in shared blocks the earlier inventory missed;
+    - `security.html` and `privacy.html` now state the current position and summarise the earlier data flow as history, with no deletion statement;
+    - the `training.html` record form was removed, and the `org-pilot.html` links, which carried name, title and email in the URL, were replaced;
+    - new `tests/public-boundary-claims.mjs`: 66 violations before, 0 after;
+    - a dated note was added to CLAUDE.md 36.2, with no text deleted.
+  - **Found and fixed (`1aabaab`):** `b1929b9` (5 October) had saved `jrsstandard.html` truncated. A tool warning sat before the doctype, and 211 worksheet lines were replaced by "…7217 tokens truncated…". The page was rebuilt as the parent file plus the commit's two intended edits. Broken internal links fell from 19 to 4.
+  - **Also found:** `lib/retention/policy.js` "COMPUTES. IT DOES NOT DELETE", and nothing imports it, so the public "kept for 90 days and then removed" sentence was unsupported.
+  - **Guards:** unchanged. The suite gives 164 checks, 39 failed, 1 skipped (37 before).
+    - The two new failures, rows 38 and 39, are guards that require the retired wording: the 90-day disclosure, and a page calling `/api/review`. Both are documented as UPDATE in the guard package addendum.
+    - Rows 33 and 34 move from RETAIN to UPDATE.
+  - **Tests:**
+    - `run-all.mjs`: 17 suites, 67 of 67 mutations caught;
+    - auth matrix: 10 of 10;
+    - `test_review_incomplete`: PASS;
+    - public-route alignment: 17 of 17;
+    - boundary test: 0 violations;
+    - `git diff --check`: clean.
+  - **Not done:** no merge, deployment, Vercel change, provider call, real record, holdout access, credential change, external contact or gate advancement. The 3 October source recheck remains pending.

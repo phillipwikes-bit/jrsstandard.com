@@ -79,3 +79,8 @@ Every disposition below should be re-checked once the 3 October text is availabl
 ## Unresolved
 - **The three 3 October documents** are not available here. Every disposition above is pending comparison with their text.
 - **D-2 and D-3** are recorded owner decisions. Whether the 3 October Blueprint carries a versioned Engine-to-Codebook correspondence record that changes the CONFLICT finding is NOT ESTABLISHED.
+
+## Addendum, 2026-10-06: CONFLICT row resolved
+The `SYSTEM_PROMPT` conflict recorded above is fixed in `afd6b44`. The details are in `PR39_MERGE_RECOMMENDATION_2026-10-06.md` section 9.
+- No correspondence record was created. The gap is declared (`CODEBOOK_CORRESPONDENCE_RECORD = null`), not resolved.
+- The comparison with the 3 October source-aligned documents is still pending.
