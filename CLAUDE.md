@@ -273,6 +273,8 @@ Never substitute automation for judgment. Never manufacture legal certainty. Nev
 
 `api/review.js` is a Vercel Edge Function that accepts `POST {text}`, calls Claude, and returns `routing`, `conditions`, `flags`, `revisions`, `summary`. It must not be modified to accept or return the key.
 
+> **Status note, 2026-10-06 (PR #39 source-aligned repairs).** The sentence above is historical and is preserved under Rule 10. `api/review.js` is now a status route: through `api/_controlled-review.js` it refuses every submission with 503, does not read the request body, and makes no outbound call (closed 4 October 2026, `0fb5c07`). No deployed route calls a model. The identifier below is the historical default still held in `api/_model.js`, imported by no route. The key rule above is unchanged.
+
 **Model identifiers are versioned infrastructure, not permanent dependencies.** The engine currently pins `claude-haiku-4-5-20251001`. Treat the identifier as a configurable value with a documented default and a recorded review date; do not treat it as part of the JRS methodology.
 
 ## 36.3 Restricted surfaces

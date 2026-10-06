@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://jrsstandard.com/og-card.png" />
 <link rel="canonical" href="https://www.jrsstandard.com/security.html" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<meta name="description" content="How the JRS review call handles data: stateless per request, raw record text not persisted by JRS, disclosed derived telemetry, per-organisation tokens, and fail-closed authentication.">
+<meta name="description" content="Current security and data-handling position of the JRS Review Engine: a controlled development implementation. Public review routes do not accept record submissions and do not perform inference.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -261,78 +261,55 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <main class="container" id="main-content">
 
 <div class="page-eyebrow">Enterprise: Security and Data Handling</div>
-<h1 class="page-title">What happens to a record when it passes through the review call</h1>
-<p class="page-subtitle">This page summarizes the current Review Engine data flow for security review: what is transmitted, what JRS does not persist, what derived telemetry may be retained, and what the interface does not claim. Implementation and contract details remain subject to the versioned API materials and current production controls.</p>
+<h1 class="page-title">Security and data handling: the current position</h1>
+<p class="page-subtitle">This page states, for a security reviewer, what the JRS Review Engine does and does not do today. It replaces an earlier description of a review data flow that JRS no longer operates. That earlier description is summarised below as history, so that a reviewer who read it can see what changed.</p>
 
 <div class="btn-row" style="margin-top:0;">
- <a href="enterprise.html#enterprise-inquiry" class="btn btn-primary">Make a technical integration inquiry &rarr;</a>
- <a href="review-engine.html" class="btn btn-accent">Review Engine status &rarr;</a>
- <a href="/openapi.json" class="btn btn-ghost">OpenAPI 3.1 specification</a>
+ <a href="review-engine.html" class="btn btn-primary">Review Engine status &rarr;</a>
+ <a href="privacy.html" class="btn btn-ghost">Privacy policy</a>
 </div>
 
 <div style="margin-bottom:20px;">
  <h2 class="section-head">The short version</h2>
  <div class="callout callout-gold">
-  <div class="callout-label">What a reviewer usually needs in one paragraph</div>
-  <div class="callout-body">Record text is sent over TLS to this endpoint and from there to <b>Anthropic</b>, the model provider, which is a third party. <b>Your record text is not written to any table, not echoed back in the response, and not logged.</b> What the model writes <i>about</i> the record on the versioned route <b>is</b> stored: a short note against each of the five conditions, and a suggested rewritten version of the passage. That is model output about your record rather than the record. <b>It is kept for 90 days and then removed.</b> The evaluation record itself is kept: the date, the five condition statuses, the routing outcome, the run count, the consistency figure and the engine version. <b>The raw record text you submitted is never stored at all by JRS.</b> There is therefore a store, and the retention and residency questions are real ones for your organisation to answer rather than ones we can answer for you.</div>
+  <div class="callout-label">Current position</div>
+  <div class="callout-body"><b>The JRS Review Engine is a controlled development implementation. Public review routes do not accept record submissions and do not perform inference. JRS does not currently offer public API, sandbox, or production review access.</b> No public route reads a submitted record, and no public route sends record text to Anthropic or to any other model provider. If JRS later conducts a controlled evaluation, the applicable data flow, access controls, retention terms, and participant materials will be defined for that evaluation before records are processed.</div>
  </div>
 </div>
 
 <div style="margin-bottom:20px;">
- <h2 class="section-head">Data handling, field by field</h2>
+ <h2 class="section-head">What the public review routes do</h2>
  <table class="spec-table">
-  <tr><th>What you send</th><th>What happens to it</th><th>Retained</th></tr>
-  <tr><td><code>text</code>: the full text of one record</td><td>Held in memory for one request, evaluated, discarded when the response is written. Truncated to 8,000 characters before evaluation.</td><td><b>No</b></td></tr>
-  <tr><td><code>runs</code>: 1 to 5</td><td>Controls how many independent evaluations run. Recorded as a count only.</td><td>Count only</td></tr>
-  <tr><td>Bearer token</td><td>Compared against the per-organisation allow list. Identifies the partner, never the individual.</td><td>Not stored with the record</td></tr>
-  <tr><td>Result of the evaluation</td><td>Per-condition statuses, the routing determination and the consistency figure are kept as telemetry so the programme can report reproducibility. <b>So is a short note against each condition, which the model is instructed to ground in the record text, and a suggested rewritten version of the passage.</b></td><td><b>Statuses, figures, and model-written text about the record</b></td></tr>
+  <tr><th>Route</th><th>Current behaviour</th></tr>
+  <tr><td><code>/api/review</code>, <code>/api/review-engine</code>, <code>/api/v1/review-engine</code></td><td>Refuse every request with <code>503</code> and a fixed status message. The request body is not read, no model is called, and nothing about the request is written by the route.</td></tr>
+  <tr><td><code>/api/sandbox</code></td><td>Refuses every request in the same way. There is no sandbox.</td></tr>
+  <tr><td>Other methods</td><td><code>405</code>, or an empty <code>204</code> reply to a browser preflight.</td></tr>
  </table>
- <p class="body-text"><b>The distinction that matters to a reviewer:</b> your record is not stored, but text the model wrote about your record is. A stored row is not designed to reproduce your record, and no row holds it. But <b>nothing in the implementation prevents a suggested rewrite from retaining phrasing from the passage it rewrites</b>: the only controls are an instruction to the model and a 600-character limit. There is no verbatim check. Treat that as retained record-derived content when you assess this endpoint, not as metadata.</p>
+ <p class="body-text"><b>Every public review route is fail-closed:</b> there is no token, account or setting that opens it. A request sent to one of these routes still reaches the hosting provider, Vercel, as any web request does, so a record should not be sent to them at all. The status message itself says so.</p>
 </div>
 
 <div style="margin-bottom:20px;">
- <h2 class="section-head">Authentication</h2>
- <p class="body-text"><b>The endpoint is fail-closed.</b> No token means no access, and no evaluation is performed. Tokens are issued per organisation, so one can be rotated or revoked without affecting any other partner.</p>
- <pre class="code-block">Authorization: Bearer &lt;your-token&gt;
-Content-Type: application/json</pre>
- <p class="body-text">A missing or unrecognised token returns <code>401</code> and names no environment variable, no internal hostname and no configuration detail in the public error body.</p>
+ <h2 class="section-head">Earlier review data flow (history)</h2>
+ <p class="body-text">Earlier versions of this page described a review route that sent record text to Anthropic as the model provider, truncated a record at 8,000 characters, used per-organisation bearer tokens, rate-limited by address, and stored model-written notes and suggested rewrites about each record, with a stated 90-day expiry. The public review routes were closed to record submissions in the repository on 4 October 2026. Those statements no longer describe anything JRS operates. They are recorded here rather than silently deleted.</p>
+ <p class="body-text"><b>What this page does not establish:</b> whether any output stored by the earlier route remains, and whether the stated expiry was applied to it. JRS makes no deletion statement here. A reviewer who needs that answer for an earlier interaction should ask in writing.</p>
 </div>
 
 <div style="margin-bottom:20px;">
  <h2 class="section-head">Model provider and key custody</h2>
- <p class="body-text">The evaluation is performed by a hosted model provided by <b>Anthropic</b>, which receives the record text. <b>The provider API key exists only as a server-side environment variable and is read only inside the edge function.</b> It never appears in any page, any client bundle, any response body, or any committed file. No browser ever holds it, and no partner is ever issued it: partners receive a JRS token, which is a different credential with a different scope and its own revocation path.</p>
- <p class="body-text">Submitted text is not used for model training.</p>
-</div>
-
-<div style="margin-bottom:20px;">
- <h2 class="section-head">Availability controls</h2>
- <table class="spec-table">
-  <tr><th>Control</th><th>Value</th><th>Note</th></tr>
-  <tr><td>Rate limit</td><td>20 requests per 60 seconds, per IP</td><td>Best-effort and per-instance. Edge isolates do not share state, so treat it as a guard rail rather than a quota.</td></tr>
-  <tr><td>Maximum record length</td><td>8,000 characters</td><td>Longer input is truncated before evaluation, not rejected.</td></tr>
-  <tr><td>Minimum record length</td><td>40 characters</td><td>Shorter input returns <code>400 record_too_short</code>.</td></tr>
-  <tr><td>Runs per request</td><td>1 to 5</td><td>Above 1 returns a variance block disclosing the spread.</td></tr>
-  <tr><td>Transport</td><td>TLS only</td><td>Served from the edge.</td></tr>
- </table>
-</div>
-
-<div style="margin-bottom:20px;">
- <h2 class="section-head">Audit correlation</h2>
- <p class="body-text">Every response carries a <code>request_id</code>, returned in the body and in the <code>X-Request-Id</code> header. It is the join key between your audit trail and ours. <b>It is an identifier, not a copy of the record</b>, so correlating an event costs you nothing in exposure.</p>
+ <p class="body-text">No public route calls a model provider or reads a model-provider key. A model-provider key must never appear in any page, client bundle, response body or committed file. The local development candidate is tested with a scripted stand-in for the model and makes no provider call.</p>
 </div>
 
 <div style="margin-bottom:20px;">
  <h2 class="section-head">What this does not claim</h2>
  <div class="callout callout-gold">
   <div class="callout-label">Read this before mapping it to a control</div>
-  <div class="callout-body"><b>JRS is not a certification, an accreditation, or an audit opinion, and it does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework.</b> The engine is unvalidated and single-model, in operational validation. Reproducibility is disclosed rather than hidden, and <b>reproducibility is not accuracy and not validation</b>. No effectiveness claim is made. Every API response repeats this in its own payload, so a reviewer reading a raw response sees the same disclosure that appears here.</div>
+  <div class="callout-body"><b>JRS is not a certification, an accreditation, or an audit opinion, and it does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework.</b> The Review Engine is unvalidated. This page describes what the public routes do; it is not a security certification, and it is not evidence that any review output is correct.</div>
  </div>
- <p class="body-text">A security review of this endpoint is a review of data handling. It is not, and should not be presented internally as, evidence that the determinations are correct.</p>
 </div>
 
 <div style="margin-bottom:20px;">
  <h2 class="section-head">Questions a reviewer can send directly</h2>
- <p class="body-text">Scope, token issuance, rotation cadence, subprocessor detail and contractual terms are handled in writing. Submissions route to a private operational dashboard, not to a public queue and not to a mailing list.</p>
+ <p class="body-text">Security and data-handling questions are handled in writing. Submissions route to a private operational dashboard, not to a public queue and not to a mailing list.</p>
  <div class="btn-row">
   <a href="enterprise.html#enterprise-inquiry" class="btn btn-primary">Send a security question &rarr;</a>
   <a href="privacy.html" class="btn btn-ghost">Privacy policy</a>
