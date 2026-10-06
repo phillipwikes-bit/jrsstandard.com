@@ -44,7 +44,7 @@
 
 Around the flow, and never inside it:
 - `harness.js` runs a record through several mocked response variants and fails closed on any inconsistency.
-- `dev-material.js` and `contamination.js` keep development texts out of any holdout. The first catches exact copies; the second flags edited copies as possible matches for a person to judge.
+- `dev-material.js` and `contamination.js` detect development texts so that a future holdout builder can exclude them. They enforce nothing on their own: no holdout builder exists, and separation depends on that builder calling them. The first catches exact copies; the second flags edited copies as possible matches for a person to judge.
 - `tests/engine-candidate/eval/run-eval.mjs` compares the corpus against expected findings written in advance.
 
 ## Modules

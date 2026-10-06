@@ -3079,3 +3079,15 @@ Only four line groups differ between v7 and v8.
   - **Mutation run:** the first run caught 58 of 61. Three tests were missing, and one of my own test paddings was itself development material. All were fixed; the final run catches 63 of 63.
   - **Full suite:** 16 suites, 405 checks plus the case sets and the mutation run, all passing. The handoff checks still pass, and the guard suite is unchanged at 37.
   - **Not done:** no provider call, real record, holdout access, score, public route, page, Vercel or guard change.
+- 2026-10-06 (**SOURCE-ALIGNED RECONCILIATION OF PR #39: ONE DIRECT CONFLICT FOUND, RECOMMENDATION REVISE_BEFORE_MERGE. THE 3 OCTOBER DOCUMENTS ARE STILL NOT REACHABLE**): owner-commissioned reconciliation. FACT:
+  - **Search for the controlling documents:** the three 3 October documents were searched for in the repository (every branch and history; the clone is shallow), across the container by their SHA-256 values, in the session upload folder (only the 1 October "Revised" versions are there, and their hashes do not match), in Google Drive and in claude.ai artifacts. None was found. The review therefore used the 5 October handoff, the owner's stated position and the recorded owner decisions D-2 and D-3. Every finding is marked as pending comparison with the 3 October text.
+  - **Four documents added** in `docs/architecture/`:
+    - `PR39_SOURCE_ALIGNMENT_REVIEW_2026-10-06.md`;
+    - `PUBLIC_CLAIM_RECONCILIATION_2026-10-06.md`;
+    - `GUARD_RECONCILIATION_DECISION_PACKAGE_2026-10-06.md`;
+    - `PR39_MERGE_RECOMMENDATION_2026-10-06.md`.
+  - **Direct conflict:** `lib/engine-candidate/review-candidate.js` `SYSTEM_PROMPT` calls the five engine keys "five JRS documentation review conditions", including `cold_reviewer_clarity`, which contradicts D-2. It also describes `accountability_support` with the Evidentiary Sufficiency question, which the correspondence review records as unresolved. It was not fixed, because this task did not permit code changes; the exact replacement is proposed.
+  - **Public claims on `main`:** `security.html` (indexed, in the sitemap) and `privacy.html` still describe the old live review data flow (Anthropic transmission, stored notes, 90-day retention, tokens). This is priority P-1 and P-2 in the claim package; no page was changed.
+  - **Guard suite:** re-run gives 164 checks, 37 failed and 1 skipped. Proposed actions: 10 retain, 16 update, 9 retire, 2 investigate. No guard changed.
+  - **One wording correction:** `lib/engine-candidate/ARCHITECTURE.md` no longer says the detectors "keep development texts out of any holdout"; it says they detect, and enforce nothing on their own.
+  - **Not done:** no merge, deployment, provider call, real record, holdout access or public change.
