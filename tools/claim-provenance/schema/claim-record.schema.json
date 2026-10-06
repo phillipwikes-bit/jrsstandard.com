@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "jrs-claim-evidence-record/0.1.0",
+  "title": "JRS claim-evidence record",
+  "description": "INTERNAL. One record states a material claim about JRS research or the Engine, the evidence behind it, what that evidence measures, its limitation and the wording permitted in public. A register of claims is a control over wording; it is not new evidence. Rules a schema cannot state (governing claim rules, source-hash binding, qualifier checks) are enforced by tools/claim-provenance/lib/rules.js.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["claim_id", "claim_text", "claim_topic", "claim_type", "surface", "evidence_id", "source_path", "source_location", "source_hash", "evidence_class", "reproduction", "population", "quantities", "date_or_data_lock", "limitation", "limitation_key", "permitted_wording", "prohibited_overstatement", "public_use", "status", "engine_relationship", "scan", "review_history"],
+  "properties": {
+    "claim_id": { "type": "string", "pattern": "^CL-[0-9]{3}$" },
+    "claim_text": { "type": "string", "minLength": 10 },
+    "claim_topic": { "enum": ["METHODOLOGY", "DETECTION", "RELIABILITY", "CROSS_MODEL", "PARTICIPATION", "CONDITION_BEHAVIOUR", "DRR_STUDY", "ENGINE_SOURCE_GROUNDING", "ENGINE_PROVENANCE", "ENGINE_LOCAL_EVALUATION", "ENGINE_REGRESSION", "ENGINE_ROUTE_STATUS", "ENGINE_STATUS", "RELEASE_GATE", "PRIVACY_SECURITY", "PUBLICATION_STATUS", "RESEARCH_STATUS", "MANIFEST", "PROCEDURAL_GUIDANCE", "COMMERCIAL"] },
+    "claim_type": { "enum": ["NUMERICAL_RESULT", "PARTICIPATION_COUNT", "STATUS_STATEMENT", "CONTROL_STATEMENT", "PUBLICATION_STATEMENT", "DESCRIPTIVE", "PROHIBITED_CLAIM"] },
+    "surface": { "enum": ["PUBLIC_PAGE", "PUBLIC_ROUTE", "PUBLIC_DOWNLOAD", "REPOSITORY_DOCUMENTATION", "RESTRICTED_SURFACE", "INTERNAL_ONLY"] },
+    "evidence_id": { "type": "string", "pattern": "^EV-[A-Z0-9-]+$" },
+    "source_path": { "type": ["string", "null"], "minLength": 1 },
+    "source_location": { "type": "string", "minLength": 1 },
+    "source_hash": { "type": ["string", "null"], "pattern": "^(FILE|LINE):[0-9a-f]{64}$" },
+    "evidence_class": { "enum": ["MANUSCRIPT_REPORTED", "STRUCTURED_SECONDARY_ANALYSIS", "AUTHORITATIVE_TABLE_READ_REPORTED", "CONTEMPORANEOUS_PROJECT_RECORD", "CONTEMPORANEOUS_COMMUNICATION", "AUTHOR_STATEMENT", "LOCAL_TEST", "MOCK_OR_FIXTURE", "SOURCE_GROUNDING_TEST", "SCHEMA_TEST", "REPOSITORY_CONTROL_RECORD", "POLICY_OR_WEBSITE_STATEMENT", "NONE"] },
+    "reproduction": { "enum": ["SOURCE_REPORTED", "REPRODUCED_IN_REPOSITORY", "NOT_APPLICABLE"] },
+    "population": { "type": ["string", "null"], "minLength": 1 },
+    "quantities": {
+      "type": ["object", "null"], "additionalProperties": false, "required": ["value", "numerator", "denominator", "denominator_required", "unit"],
+      "properties": { "value": { "type": "string", "minLength": 1 }, "numerator": { "type": ["string", "null"] }, "denominator": { "type": ["string", "null"], "minLength": 1 }, "denominator_required": { "type": "boolean" }, "unit": { "type": "string", "minLength": 1 } },
+      "allOf": [{ "if": { "properties": { "denominator_required": { "const": true } } }, "then": { "properties": { "denominator": { "type": "string", "minLength": 1 } } } }]
+    },
+    "date_or_data_lock": { "type": ["string", "null"], "minLength": 1 },
+    "limitation": { "type": "string", "minLength": 10 },
+    "limitation_key": { "type": ["string", "null"], "minLength": 1 },
+    "permitted_wording": { "type": "string", "minLength": 10 },
+    "prohibited_overstatement": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "public_use": { "enum": ["MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION", "MAY_STATE_WITH_LIMITATION", "HISTORICAL_CONTEXT_ONLY", "INTERNAL_ONLY", "NOT_FOR_PUBLIC_RESTATEMENT", "MUST_NOT_STATE_AS_EVIDENCE", "MUST_NOT_STATE"] },
+    "status": { "enum": ["SUPPORTED_WITH_LIMITATION", "HISTORICAL_ONLY", "SOURCE_REPORTED_NOT_REPRODUCED", "NOT_SUPPORTED", "NOT_ASSESSED", "REQUIRES_WORDING_REPAIR", "RETIRED"] },
+    "engine_relationship": { "enum": ["NO_ENGINE_INFERENCE", "ENGINE_DEVELOPMENT_ONLY", "ENGINE_EVIDENCE_SEPARATE", "NOT_APPLICABLE"] },
+    "scan": {
+      "type": "object", "additionalProperties": false, "required": ["figures", "signatures", "qualifiers", "prohibited"],
+      "properties": {
+        "figures": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "signatures": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "qualifiers": { "type": "array", "items": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 1 } } },
+        "prohibited": { "type": "array", "items": { "type": "array", "minItems": 2, "items": { "type": "string", "minLength": 1 } } }
+      }
+    },
+    "review_history": {
+      "type": "array", "minItems": 1,
+      "items": { "type": "object", "additionalProperties": false, "required": ["date", "change"], "properties": { "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" }, "change": { "type": "string", "minLength": 1 } } }
+    }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "SUPPORTED_WITH_LIMITATION" } } },
+      "then": {
+        "properties": {
+          "source_path": { "type": "string", "minLength": 1 },
+          "source_hash": { "type": "string", "pattern": "^(FILE|LINE):[0-9a-f]{64}$" },
+          "evidence_class": { "enum": ["MANUSCRIPT_REPORTED", "STRUCTURED_SECONDARY_ANALYSIS", "AUTHORITATIVE_TABLE_READ_REPORTED", "CONTEMPORANEOUS_PROJECT_RECORD", "CONTEMPORANEOUS_COMMUNICATION", "AUTHOR_STATEMENT", "LOCAL_TEST", "MOCK_OR_FIXTURE", "SOURCE_GROUNDING_TEST", "SCHEMA_TEST", "REPOSITORY_CONTROL_RECORD", "POLICY_OR_WEBSITE_STATEMENT"] },
+          "limitation": { "type": "string", "minLength": 20 },
+          "date_or_data_lock": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    {
+      "if": { "properties": { "claim_type": { "enum": ["NUMERICAL_RESULT", "PARTICIPATION_COUNT"] } } },
+      "then": { "properties": { "quantities": { "type": "object" }, "population": { "type": "string", "minLength": 1 } } }
+    }
+  ]
+}

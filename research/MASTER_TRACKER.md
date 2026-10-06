@@ -3208,3 +3208,27 @@ Only four line groups differ between v7 and v8.
     - Guard: 164 checks, 39 failed, 1 skipped. That is the same failing set as HEAD, confirmed in a worktree.
   - **Not done:** no owner approval requested or created. No public page, API, OpenAPI, sitemap, Vercel, credential, guard, privacy or release-gate change. No provider call, real record, holdout, deployment or external contact.
 - 2026-10-06 18:30 UTC: PR #39 checks on `194b8af`: Vercel preview Ready, check suites complete. No review threads. No action needed.
+- 2026-10-06 (**CLAIM-PROVENANCE, RESEARCH-LIMITATION AND PUBLIC-ASSERTION CONTROL PACKAGE ADDED TO PR #39; INTERNAL; NO PUBLIC PAGE CHANGED**): owner-commissioned. FACT:
+  - **Tool:** `tools/claim-provenance/`, excluded by `tools/`. Working tree only; no git, network, model or credential.
+    - 33 claims, bound to 22 evidence sources at their reviewed hashes (18 whole-file, 4 anchored-line).
+    - Status: SUPPORTED_WITH_LIMITATION 16, HISTORICAL_ONLY 3, SOURCE_REPORTED_NOT_REPRODUCED 4, NOT_SUPPORTED 4, NOT_ASSESSED 3, REQUIRES_WORDING_REPAIR 3.
+    - 22 claims are source-reported, 7 are reproduced in the repository (tests and control records only), and 4 have no evidence.
+    - The validator enforces thirteen governing rules. The schema rejects a SUPPORTED claim without a source, hash, class, limitation or date.
+  - **Scan:** 70 public pages, 65 routes, 7 readable downloads.
+    - Gated: 28 REQUIRES_REPAIR, all with proposals; no UNSUPPORTED public finding; 4 AMBIGUOUS guidance quantities, registered NOT_ASSESSED.
+    - Report-only: repository documentation, chiefly the superseded `research/JRS_Validation_Report.md`.
+  - **Main findings:**
+    - `research.html` line 148 presents circular condition-separation p-values as evidence (PR-05).
+    - Detection figures lack "constructed" on 5 pages.
+    - The 37-run cross-vendor figure lacks its 13 August window.
+    - AC1 lacks the 10-record sample or the failed criterion in places.
+    - Study 014's reader was a model.
+    - The public methods PDF carries superseded "substantial agreement" and "reproducible application" claims (PD-01, one-off PDF inspection).
+  - **Proposals:** 17 (PR-01 to PR-17) plus PD-01. None changes a figure, and nothing was applied.
+  - **Tests:**
+    - Claim provenance: 150 checks; 12 of 12 insertions and 24 of 24 mutations caught, after 5 gaps the first run exposed were fixed.
+    - Methodology integrity: 6 suites; 23 of 23. Its scan was regenerated (69 to 86 files, counts unchanged) with a dated addendum.
+    - Workspace: 28 of 28. Release gate: 34 of 34. Engine candidate: 67 of 67.
+    - Handoff and public checks pass.
+    - Guard: 164 checks, 39 failed, 1 skipped; the same failing set as HEAD, confirmed in a worktree.
+  - **Not done:** no public page, route, OpenAPI, sitemap, Vercel, credential, guard, privacy or release-gate change. No provider call, real record, holdout, deployment or external contact.

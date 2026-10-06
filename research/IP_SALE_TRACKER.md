@@ -233,3 +233,11 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
   - CLAUDE.md 36.3, B-010 and the Asset Register still describe both pages as deployed confidential buyer surfaces.
 
   Whether the 4 October commit is the "separate authorization" 36.3 requires is REQUIRES HUMAN REVIEW, because authorship is not authorization (Rule 4). PR #38, which held the beta outreach draft (never sent) and the licence-terms draft, was closed unmerged; its branch is kept. No asset-value statement is made.
+
+- 2026-10-06 (**claim-provenance package; internal; no sale, licensing or asset-value statement made**):
+  - **Commercial and acquisition claims.** The register (`tools/claim-provenance/`) records "JRS or the Review Engine is available for licensing, sale or acquisition" as NOT_SUPPORTED (CL-029). Licensing-ready, sale-ready and enterprise-ready Engine status is also NOT_SUPPORTED (CL-026). No public page offers either. The scanner found no current-tense commercial offer on a public page or route.
+  - **Publication claims, internal only.**
+    - The CEP Magazine acceptance (November 2026 issue) rests on the author's file header. The editor's message is not in the repository, so it is SOURCE_REPORTED_NOT_REPRODUCED (CL-022).
+    - The tracker line "PUBLICATION CONFIRMED = Journal of Business Ethics" names a target venue, not an acceptance (CL-023, historical).
+    - The CCI reply of 28 August invited a revision; it is not an acceptance (CL-024).
+  - **Diligence-relevant finding.** The public methods-paper PDF (`JRS_Reliability_Accuracy.pdf`, served from `research.html`) still states "substantial agreement" and "support reproducible application". The 29 August manuscript supersedes both. Repair proposal PD-01; nothing was applied.

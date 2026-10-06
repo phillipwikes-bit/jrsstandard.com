@@ -61,7 +61,7 @@ Each source carries the sha256 it was reviewed at. The builder re-hashes every s
 
 ## 4. Scan results
 
-The scanner read 69 files in seven scope groups (candidate, workspace, methodology-integrity, Manifest, protocol and internal documentation, research summaries, correspondence decision records).
+The scanner read 86 files in seven scope groups (69 when this package was written; see the addendum) (candidate, workspace, methodology-integrity, Manifest, protocol and internal documentation, research summaries, correspondence decision records).
 
 | Disposition | Findings |
 |---|---|
@@ -119,3 +119,7 @@ The absence of a mapping is not a defect in the Standard. The Standard and the C
 | `node tools/methodology-integrity/build.mjs --check` | committed registers, Markdown and workspace snapshot equal a fresh build |
 | `node tools/methodology-integrity/scan.mjs --check` | 0 gated failures |
 | `node tests/methodology-integrity/run-all.mjs` | all suites and the mutation run |
+
+## Addendum, 2026-10-06: scope growth from the claim-provenance package
+
+The 17 internal documents added by the claim-provenance package (`CLAIM_EVIDENCE_REGISTER.md`, `PUBLIC_CLAIM_LIMITATION_MATRIX.md`, `CLAIM_PROVENANCE_INTEGRITY_REPORT.md`, `PUBLIC_CLAIM_REPAIR_PROPOSALS_2026-10-06.md` and 13 claim cards under `docs/architecture/claim-cards/`) fall inside this scanner's `docs/architecture` scope. The scan grew from 69 to 86 files. Every disposition count in section 4 is unchanged, and the gated scope still has 0 failures. `generated/scan-results.json` was regenerated to match.
