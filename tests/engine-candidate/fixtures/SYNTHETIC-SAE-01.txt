@@ -1,0 +1,7 @@
+SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.
+
+Supplier-access exception, completed draft. Reference SAE-SYN-0001.
+
+On 2 March 2026 the vendor-management team received a request from Northgate Fabrication Ltd for temporary read access to the parts-forecast portal for four weeks. The standard policy allows supplier access only after a completed security questionnaire. Northgate's questionnaire was submitted on 27 February 2026 and was marked incomplete by the security office on 28 February 2026 because section 4 (data retention) was blank.
+
+The procurement lead approved the exception on 3 March 2026. The approval note reads: "Approved given the supplier's track record." No record of the track record is attached. Access was granted on 4 March 2026 and is scheduled to end on 1 April 2026. The security office was informed after access was granted.
