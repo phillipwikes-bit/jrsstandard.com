@@ -3117,3 +3117,23 @@ Only four line groups differ between v7 and v8.
     - `git diff --check`: clean.
   - **Not done:** no merge, deployment, Vercel change, provider call, real record, holdout access, credential change, external contact or gate advancement. The 3 October source recheck remains pending.
 - 2026-10-06 12:31 UTC: PR #39 checks on `fbfcc49`: Vercel preview Ready and Preview Comments success; Cloudflare Workers skipped as expected. No review threads. No action needed; safety-net check-in re-armed.
+- 2026-10-06 (**INTERNAL RELEASE-EVIDENCE AND GATE-CONTROL PACKAGE ADDED TO PR #39; NO RELEASE GATE ADVANCED**): owner-commissioned, internal only. FACT:
+  - **Package:** `lib/release-gate/` contains:
+    - the schema `jrs-release-gate-record/0.1.0`;
+    - a subset schema checker that fails closed;
+    - the controlled vocabulary: six statuses and ten evidence classes, each with a fixed provenance and fixed artifact kinds;
+    - the five gate definitions with their sub-controls;
+    - a validator, a deterministic report generator and a CLI.
+  - **Excluded from deployment:** everything is under `lib/`, `tests/` or `*.md`, all excluded by `.vercelignore`.
+  - **Current record:** `RG-RECORD_engine-0.5.0-local.1.json`, package `JRS-RGP-20261006-PR39-LOCAL`.
+    - RG-1 BLOCKED, RG-2 BLOCKED, RG-3 NOT_ASSESSED, RG-4 BLOCKED, RG-5 BLOCKED; conclusion INCOMPLETE_GATES_OPEN.
+    - Eight evidence items, all constructed, mocked, local or source-reported. Each is pinned as `git:<commit>:<path>` with a sha256 that is verified against git in the tests.
+    - No authorization is created.
+  - **Documents:** `docs/architecture/RELEASE_EVIDENCE_PROTOCOL.md`, and `docs/architecture/CURRENT_RELEASE_GATE_REPORT.md`, which is generated and byte-checked.
+  - **Tests:**
+    - `node tests/release-gate/run-all.mjs`: 4 suites, 141 checks, 34 of 34 mutations caught;
+    - candidate suite: 17 suites, 67 of 67 mutations;
+    - handoff checks: pass;
+    - public-route and boundary tests: pass;
+    - guard suite unchanged at 164 checks, 39 failed, 1 skipped. One earlier run in this pass reported 163 checks; two reruns gave 164 with identical check names, so INFERENCE: a reachability-dependent check.
+  - **Not done:** no public page, API route, OpenAPI, sitemap, redirect, Vercel, guard, privacy-page, credential or provider-call change; no merge, deployment, real record, holdout access or external contact.

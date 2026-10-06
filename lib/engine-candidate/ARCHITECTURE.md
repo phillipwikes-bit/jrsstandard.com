@@ -126,3 +126,6 @@ The candidate is **left disconnected** from the Manifest library (`api/_manifest
 | `node tests/engine-candidate/confirmation/run.mjs --table` | The independent confirmation corpus, case by case |
 
 See `RUNBOOK.md` for the failure-mode catalog and recovery steps.
+
+## Release gates
+The five release gates are tracked outside the candidate, in the internal package `lib/release-gate/` (`docs/architecture/RELEASE_EVIDENCE_PROTOCOL.md`). Its current record for this version shows every gate open. Nothing in the candidate, its tests or its documentation is counted as release evidence.

@@ -1,0 +1,484 @@
+{
+ "schema_version": "jrs-release-gate-record/0.1.0",
+ "release_package": {
+  "package_id": "JRS-RGP-20261006-PR39-LOCAL",
+  "package_version": "0.1.0",
+  "record_kind": "internal_release_gate_record",
+  "is_public_manifest": false,
+  "distinct_from": "jrs-decision-reconstruction-manifest"
+ },
+ "as_of": "2026-10-06",
+ "record_author": "Claude Code session on PR #39, prepared for the owner (Phillip Wikes)",
+ "engine": {
+  "engine_version": "0.5.0-local.1",
+  "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+  "prompt_version": "candidate-prompt/0.4.0",
+  "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7",
+  "configuration_identity": "Local development candidate; mock adapter only; no deployment configuration exists"
+ },
+ "evidence": [
+  {
+   "evidence_id": "E-001",
+   "description": "Constructed development corpus v0.1.0 (15 records, expectations committed before the runner).",
+   "evidence_class": "CONSTRUCTED_FIXTURE",
+   "provenance": "constructed",
+   "artifact_kind": "constructed_dataset",
+   "reference": "git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:tests/engine-candidate/corpus/v0.1.0/INDEX.json",
+   "sha256": "149481d3fb75038271b9545db3a7850e99ecef21ddb500d2d0465b4e4908d91f",
+   "evidence_date": "2026-10-06",
+   "applies_to_engine_version": "0.5.0-local.1",
+   "limitation": "Same-author constructed records. Development material: excluded from any holdout by design."
+  },
+  {
+   "evidence_id": "E-002",
+   "description": "Constructed confirmation corpus v0.1.0 (47 cases).",
+   "evidence_class": "CONSTRUCTED_FIXTURE",
+   "provenance": "constructed",
+   "artifact_kind": "constructed_dataset",
+   "reference": "git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:tests/engine-candidate/confirmation/v0.1.0/cases.json",
+   "sha256": "04a2745c665fc147e964dd78cf3ed91b728c9007ed0f83d87a6bdd4f72ab1059",
+   "evidence_date": "2026-10-06",
+   "applies_to_engine_version": "0.5.0-local.1",
+   "limitation": "Same author as the rules it confirms; not independent in authorship, not labeled by anyone independent, not a holdout."
+  },
+  {
+   "evidence_id": "E-003",
+   "description": "Local corpus evaluation record for the candidate: 15 of 15 records match expectations, mock adapter only.",
+   "evidence_class": "MOCKED_TEST",
+   "provenance": "mocked",
+   "artifact_kind": "test_output",
+   "reference": "git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:tests/engine-candidate/eval/records/EVAL_corpus-0.1.0_candidate-0.5.0-local.1.json",
+   "sha256": "195efc0129aa0592ef57efb1dfbce11d5bb2b6269afced3b80aafa9b0cb7b704",
+   "evidence_date": "2026-10-06",
+   "applies_to_engine_version": "0.5.0-local.1",
+   "limitation": "Scripted mock responses. Says nothing about any real model, accuracy, reliability or validity."
+  },
+  {
+   "evidence_id": "E-004",
+   "description": "Current Engine handoff: release gates listed; \"External controlled use is not verified. Do not mark any gate complete.\"",
+   "evidence_class": "SOURCE_REPORTED",
+   "provenance": "source_reported",
+   "artifact_kind": "source_report",
+   "reference": "git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md",
+   "sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "evidence_date": "2026-10-05",
+   "applies_to_engine_version": "not_engine_specific",
+   "limitation": "An instruction document. It states the position; it is not evidence that any control operates."
+  },
+  {
+   "evidence_id": "E-005",
+   "description": "Retention policy module: \"THIS MODULE COMPUTES. IT DOES NOT DELETE.\" Applying it to production is not authorized; no route imports it.",
+   "evidence_class": "LOCAL_CODE_REVIEW",
+   "provenance": "local",
+   "artifact_kind": "code_review_note",
+   "reference": "git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:lib/retention/policy.js",
+   "sha256": "ccf49ce0b772ad38bc9e03cd9bb78912a2e59d6b1b0fc837c7d826edd602bfe7",
+   "evidence_date": "2026-09-21",
+   "applies_to_engine_version": "not_engine_specific",
+   "limitation": "A static reading of code. It shows retention is not executed by code in this repository; it cannot show what production does."
+  },
+  {
+   "evidence_id": "E-006",
+   "description": "Blocker register: B-013 (engine_reviews readable with the public key; production operations not performed), B-015 (production auth matrix not executed), B-017 (anonymous grant not revoked; production verification required).",
+   "evidence_class": "SOURCE_REPORTED",
+   "provenance": "source_reported",
+   "artifact_kind": "source_report",
+   "reference": "git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:.jrs/state/BLOCKERS.json",
+   "sha256": "48826b9d1f26aaf1c0389214b3be0b1de60e475441621c3024cf9c5293bd8aa6",
+   "evidence_date": "2026-10-06",
+   "applies_to_engine_version": "not_engine_specific",
+   "limitation": "Repository record of open production items. Not an operator export and not a live check."
+  },
+  {
+   "evidence_id": "E-007",
+   "description": "Public review routes refuse every request with 503, read no body and make no outbound call (api/_controlled-review.js).",
+   "evidence_class": "LOCAL_CODE_REVIEW",
+   "provenance": "local",
+   "artifact_kind": "code_review_note",
+   "reference": "git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:api/_controlled-review.js",
+   "sha256": "86b78168c560bc925de5b8ebdb568251ab0462ad704015aaff7174dcb7b64482",
+   "evidence_date": "2026-10-04",
+   "applies_to_engine_version": "not_engine_specific",
+   "limitation": "Static code review of the repository. It is not a check of what the production host serves."
+  },
+  {
+   "evidence_id": "E-008",
+   "description": "Candidate pipeline: adapter boundary with a deterministic mock as the only adapter; no live provider adapter exists.",
+   "evidence_class": "LOCAL_CODE_REVIEW",
+   "provenance": "local",
+   "artifact_kind": "code_review_note",
+   "reference": "git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:lib/engine-candidate/review-candidate.js",
+   "sha256": "3678ef6c223b78b79d02844d37260269f351bf87d7967c30fab45814819220e9",
+   "evidence_date": "2026-10-06",
+   "applies_to_engine_version": "0.5.0-local.1",
+   "limitation": "Static code review. Shows the candidate cannot reach a provider; says nothing about behaviour with a real model."
+  }
+ ],
+ "gates": [
+  {
+   "gate_id": "RG-1",
+   "gate_name": "Independent labeling and adjudication of an unused sealed holdout",
+   "engine_version": "0.5.0-local.1",
+   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "prompt_identity": {
+    "prompt_version": "candidate-prompt/0.4.0",
+    "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7"
+   },
+   "status": "BLOCKED",
+   "status_basis": "No sealed holdout exists, no holdout builder exists, and the handoff prohibits provider calls and sealed-holdout access in current work. Constructed and mocked work exists (E-001 to E-003) and cannot satisfy this gate.",
+   "acceptance_criterion": "An unused holdout, sealed before use and kept separate from all development material, is labeled and adjudicated by people independent of the candidate author; the named Engine version and prompt are run on it; per-condition results are reported with an uncertainty statement against thresholds fixed before the run.",
+   "actual_result": null,
+   "evidence_date": null,
+   "evidence_refs": [
+    "E-001",
+    "E-002",
+    "E-003",
+    "E-004",
+    "E-008"
+   ],
+   "missing_dependencies": [
+    "A sealed, unused holdout built under a recorded protocol",
+    "Independent labelers and an adjudication procedure",
+    "Owner authorization for provider calls on the holdout (prohibited by the current handoff)",
+    "Acceptance thresholds per condition, recorded before the run"
+   ],
+   "limitation_statement": "Constructed fixtures and mocked tests describe how the candidate behaves on material its author wrote. They are not holdout evidence and are never counted toward this gate.",
+   "owner_decision": null,
+   "independent_reviewer": null,
+   "sub_controls": [
+    {
+     "control_id": "RG-1.1",
+     "name": "Holdout sealed before use and never used in development",
+     "status": "BLOCKED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No holdout exists; no holdout builder exists"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-1.2",
+     "name": "Independent labeling of the holdout",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No independent labelers engaged"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-1.3",
+     "name": "Adjudication of labeling disagreements",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No adjudication procedure or adjudicator"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-1.4",
+     "name": "Named Engine version run on the holdout",
+     "status": "BLOCKED",
+     "evidence_refs": [
+      "E-003",
+      "E-008"
+     ],
+     "missing_dependencies": [
+      "No live provider adapter; provider calls are prohibited by the current handoff"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-1.5",
+     "name": "Per-condition results with uncertainty",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "Depends on RG-1.1 to RG-1.4"
+     ],
+     "not_applicable_reason": null
+    }
+   ],
+   "per_condition_results": null
+  },
+  {
+   "gate_id": "RG-2",
+   "gate_name": "Operator-control evidence",
+   "engine_version": "0.5.0-local.1",
+   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "prompt_identity": null,
+   "status": "BLOCKED",
+   "status_basis": "No operator-control evidence exists. Retention is computed but not executed (E-005), and open production items B-013, B-015 and B-017 are recorded as not performed or not verified (E-006). Local code review (E-007) is not evidence that a production control operates.",
+   "acceptance_criterion": "For the environment the Engine would run in: an access review export for IAM and database access, a credential rotation record, a deletion execution log for retention, a backup restoration record, a compatible-rollback record, monitoring records, and a live-operation verification log, each dated and produced by the operator.",
+   "actual_result": null,
+   "evidence_date": null,
+   "evidence_refs": [
+    "E-004",
+    "E-005",
+    "E-006",
+    "E-007"
+   ],
+   "missing_dependencies": [
+    "An identified production environment for the Engine (none exists)",
+    "Operator-produced records for each sub-control"
+   ],
+   "limitation_statement": "Written policies, static code review, local tests and documentation statements are not operator-control evidence. Only dated records of the controls executing in the real environment can satisfy this gate.",
+   "owner_decision": null,
+   "independent_reviewer": null,
+   "sub_controls": [
+    {
+     "control_id": "RG-2.1",
+     "name": "IAM and database access",
+     "status": "BLOCKED",
+     "evidence_refs": [
+      "E-006"
+     ],
+     "missing_dependencies": [
+      "B-013 and B-017: anonymous grants recorded as not revoked; production verification not performed"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-2.2",
+     "name": "Credential rotation",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No rotation record for any Engine credential"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-2.3",
+     "name": "Retention execution",
+     "status": "BLOCKED",
+     "evidence_refs": [
+      "E-005"
+     ],
+     "missing_dependencies": [
+      "Retention is computed, not executed; applying it to production is a production data operation not authorized here"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-2.4",
+     "name": "Backup restoration",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No restoration record"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-2.5",
+     "name": "Compatible rollback",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No rollback record for an Engine deployment"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-2.6",
+     "name": "Monitoring",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No monitoring record for an Engine deployment"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-2.7",
+     "name": "Live-operation verification",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [
+      "E-007"
+     ],
+     "missing_dependencies": [
+      "No live Engine operation exists to verify; B-015 production auth matrix not executed"
+     ],
+     "not_applicable_reason": null
+    }
+   ],
+   "per_condition_results": null
+  },
+  {
+   "gate_id": "RG-3",
+   "gate_name": "Counsel review",
+   "engine_version": "0.5.0-local.1",
+   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "prompt_identity": null,
+   "status": "NOT_ASSESSED",
+   "status_basis": "No counsel disposition exists in the repository on data flows, storage terms, privacy obligations, evaluation claims, licensing claims or rights dependencies.",
+   "acceptance_criterion": "Counsel independent of the record author reviews the actual data flows, storage terms, privacy obligations, evaluation claims, licensing claims and rights dependencies of the release as proposed, and records a written disposition for each.",
+   "actual_result": null,
+   "evidence_date": null,
+   "evidence_refs": [
+    "E-004"
+   ],
+   "missing_dependencies": [
+    "Engagement of counsel (owner action)",
+    "A defined release proposal with actual data flows for counsel to review"
+   ],
+   "limitation_statement": "This package organizes what counsel would review. It makes no legal determination, and no engineering record can stand in for counsel review.",
+   "owner_decision": null,
+   "independent_reviewer": null,
+   "sub_controls": [
+    {
+     "control_id": "RG-3.1",
+     "name": "Actual data flows",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No counsel memo"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-3.2",
+     "name": "Storage terms",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No counsel memo"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-3.3",
+     "name": "Privacy obligations",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No counsel memo"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-3.4",
+     "name": "Evaluation claims",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No counsel memo"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-3.5",
+     "name": "Licensing claims",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No counsel memo"
+     ],
+     "not_applicable_reason": null
+    },
+    {
+     "control_id": "RG-3.6",
+     "name": "Rights dependencies",
+     "status": "NOT_ASSESSED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No counsel memo"
+     ],
+     "not_applicable_reason": null
+    }
+   ],
+   "per_condition_results": null
+  },
+  {
+   "gate_id": "RG-4",
+   "gate_name": "Recorded owner release authorization",
+   "engine_version": "0.5.0-local.1",
+   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "prompt_identity": {
+    "prompt_version": "candidate-prompt/0.4.0",
+    "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7"
+   },
+   "status": "BLOCKED",
+   "status_basis": "Prerequisites RG-1, RG-2 and RG-3 have not passed, so an owner release authorization cannot be recorded. No owner release authorization exists.",
+   "acceptance_criterion": "After RG-1, RG-2 and RG-3 pass with valid evidence, the owner records a signed, dated release authorization naming the Engine version, source commit and prompt, with its scope and limitations.",
+   "actual_result": null,
+   "evidence_date": null,
+   "evidence_refs": [
+    "E-004"
+   ],
+   "missing_dependencies": [
+    "RG-1, RG-2 and RG-3 must pass first"
+   ],
+   "limitation_statement": "An owner authorization is a decision, not evidence of accuracy, operation or legal clearance, and it cannot satisfy any other gate.",
+   "owner_decision": null,
+   "independent_reviewer": null,
+   "sub_controls": [
+    {
+     "control_id": "RG-4.1",
+     "name": "Signed owner release authorization naming the Engine version",
+     "status": "BLOCKED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "Prerequisite gates open"
+     ],
+     "not_applicable_reason": null
+    }
+   ],
+   "per_condition_results": null
+  },
+  {
+   "gate_id": "RG-5",
+   "gate_name": "Independent production QA",
+   "engine_version": "0.5.0-local.1",
+   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "prompt_identity": {
+    "prompt_version": "candidate-prompt/0.4.0",
+    "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7"
+   },
+   "status": "BLOCKED",
+   "status_basis": "There is no authorized production deployment of the Engine to examine, and the prerequisite RG-4 has not passed. No independent production QA exists.",
+   "acceptance_criterion": "A QA reviewer independent of the candidate author examines the authorized production deployment of the named Engine version and records a dated QA report against a test plan fixed in advance.",
+   "actual_result": null,
+   "evidence_date": null,
+   "evidence_refs": [
+    "E-004"
+   ],
+   "missing_dependencies": [
+    "RG-4 must pass first",
+    "An authorized production deployment to examine",
+    "An independent QA reviewer"
+   ],
+   "limitation_statement": "A local test, a mock, a smoke test or a GET response is not production QA, and the author of the candidate cannot be its independent QA.",
+   "owner_decision": null,
+   "independent_reviewer": null,
+   "sub_controls": [
+    {
+     "control_id": "RG-5.1",
+     "name": "Independent QA of the authorized production deployment",
+     "status": "BLOCKED",
+     "evidence_refs": [],
+     "missing_dependencies": [
+      "No authorized production deployment; RG-4 open"
+     ],
+     "not_applicable_reason": null
+    }
+   ],
+   "per_condition_results": null
+  }
+ ],
+ "package_limitations": [
+  "The Engine named here is a controlled local-development candidate. Open gates record absent evidence; they are not findings that the candidate is defective.",
+  "Every evidence item in this record is constructed, mocked, local or source-reported. None can satisfy a release gate, and none is evidence that a production control operates.",
+  "Evidence hashes identify repository files at a fixed commit. A matching hash shows the file is unchanged; it does not show the file is true.",
+  "This record does not compare its gate definitions against the three 3 October source-aligned documents, which were not available; that comparison is pending."
+ ],
+ "authorizations_created": {
+  "production": false,
+  "licensing": false,
+  "sale": false,
+  "evaluation": false,
+  "real_record_use": false
+ }
+}
