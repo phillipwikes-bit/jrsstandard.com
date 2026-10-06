@@ -1,0 +1,215 @@
+{
+ "_note": "Append-only log of confirmation runs. Tallies over constructed cases, never rates.",
+ "runs": [
+  {
+   "label": "run 1: before any fix (baseline)",
+   "source_prep_version": "source-prep/0.2.0",
+   "cases": 47,
+   "matched": 24,
+   "by_kind": {
+    "ordinary": "12/18",
+    "hard": "3/17",
+    "adversarial": "9/12"
+   },
+   "mismatches": [
+    {
+     "id": "K01",
+     "category": "clearly: descriptive versus unsupported assertion",
+     "kind": "ordinary",
+     "diffs": [
+      "codes expected [] got [assertion_without_basis]"
+     ]
+    },
+    {
+     "id": "K02",
+     "category": "clearly: descriptive versus unsupported assertion",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [] got [assertion_without_basis]"
+     ]
+    },
+    {
+     "id": "K06",
+     "category": "clearly: descriptive versus unsupported assertion",
+     "kind": "adversarial",
+     "diffs": [
+      "codes expected [] got [assertion_without_basis]"
+     ]
+    },
+    {
+     "id": "K07",
+     "category": "complete text that ends without a full stop",
+     "kind": "hard",
+     "diffs": [
+      "refusal expected null got partial_input",
+      "codes expected [] got [ends_mid_sentence]"
+     ]
+    },
+    {
+     "id": "K08",
+     "category": "complete text that ends without a full stop",
+     "kind": "hard",
+     "diffs": [
+      "refusal expected null got partial_input",
+      "codes expected [] got [ends_mid_sentence]"
+     ]
+    },
+    {
+     "id": "K10",
+     "category": "complete text that ends without a full stop",
+     "kind": "hard",
+     "diffs": [
+      "refusal expected null got partial_input",
+      "codes expected [] got [ends_mid_sentence]"
+     ]
+    },
+    {
+     "id": "K13",
+     "category": "complete text that ends without a full stop",
+     "kind": "hard",
+     "diffs": [
+      "refusal expected null got partial_input",
+      "codes expected [] got [ends_mid_sentence]"
+     ]
+    },
+    {
+     "id": "K14",
+     "category": "ordinal and written-out dates",
+     "kind": "ordinary",
+     "diffs": [
+      "codes expected [] got [profile_element_not_found]",
+      "elements_missing expected [] got [date]"
+     ]
+    },
+    {
+     "id": "K15",
+     "category": "ordinal and written-out dates",
+     "kind": "ordinary",
+     "diffs": [
+      "codes expected [] got [profile_element_not_found]",
+      "elements_missing expected [] got [date]"
+     ]
+    },
+    {
+     "id": "K16",
+     "category": "ordinal and written-out dates",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [] got [profile_element_not_found]",
+      "elements_missing expected [] got [date]"
+     ]
+    },
+    {
+     "id": "K17",
+     "category": "ordinal and written-out dates",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [] got [profile_element_not_found]",
+      "elements_missing expected [] got [date]"
+     ]
+    },
+    {
+     "id": "K21",
+     "category": "attachment included inline versus actually absent",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [] got [referenced_material_not_in_record]"
+     ]
+    },
+    {
+     "id": "K22",
+     "category": "attachment included inline versus actually absent",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [] got [referenced_material_not_in_record]"
+     ]
+    },
+    {
+     "id": "K28",
+     "category": "varied request language",
+     "kind": "ordinary",
+     "diffs": [
+      "codes expected [] got [profile_element_not_found]",
+      "elements_missing expected [] got [request]"
+     ]
+    },
+    {
+     "id": "K29",
+     "category": "varied request language",
+     "kind": "ordinary",
+     "diffs": [
+      "codes expected [] got [profile_element_not_found]",
+      "elements_missing expected [] got [request]"
+     ]
+    },
+    {
+     "id": "K30",
+     "category": "varied request language",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [] got [profile_element_not_found]",
+      "elements_missing expected [] got [request]"
+     ]
+    },
+    {
+     "id": "K31",
+     "category": "varied request language",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [] got [profile_element_not_found]",
+      "elements_missing expected [] got [request]"
+     ]
+    },
+    {
+     "id": "K35",
+     "category": "off-record references",
+     "kind": "ordinary",
+     "diffs": [
+      "codes expected [off_record_reference] got []"
+     ]
+    },
+    {
+     "id": "K37",
+     "category": "off-record references",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [off_record_reference] got []"
+     ]
+    },
+    {
+     "id": "K38",
+     "category": "off-record references",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [off_record_reference] got []"
+     ]
+    },
+    {
+     "id": "K41",
+     "category": "off-record references",
+     "kind": "hard",
+     "diffs": [
+      "codes expected [off_record_reference] got []"
+     ]
+    },
+    {
+     "id": "K46",
+     "category": "mixed adversarial",
+     "kind": "adversarial",
+     "diffs": [
+      "codes expected [off_record_reference] got [assertion_without_basis,referenced_material_not_in_record]"
+     ]
+    },
+    {
+     "id": "K47",
+     "category": "mixed adversarial",
+     "kind": "adversarial",
+     "diffs": [
+      "refusal expected null got partial_input",
+      "codes expected [] got [ends_mid_sentence]"
+     ]
+    }
+   ]
+  }
+ ]
+}
