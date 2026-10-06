@@ -1,0 +1,5 @@
+{
+ "_note": "Divergences between source-prep.js and the confirmation corpus expectations (759ea86). Recorded as found after the single post-fix run on 2026-10-06 against source-prep/0.3.0: none. Not tuned on this set. Limit: the same author wrote these cases and the source-prep/0.3.0 rules, so a full match shows the rules behave as designed on constructed cases, not that they generalise.",
+ "source_prep_version": "source-prep/0.3.0",
+ "divergences": {}
+}

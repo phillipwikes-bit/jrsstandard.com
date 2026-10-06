@@ -210,6 +210,18 @@
      ]
     }
    ]
+  },
+  {
+   "label": "run 2: after the source-prep 0.3.0 fix (single post-fix run)",
+   "source_prep_version": "source-prep/0.3.0",
+   "cases": 47,
+   "matched": 47,
+   "by_kind": {
+    "ordinary": "18/18",
+    "hard": "17/17",
+    "adversarial": "12/12"
+   },
+   "mismatches": []
   }
  ]
 }
