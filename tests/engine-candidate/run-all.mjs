@@ -2,7 +2,7 @@
 //   node tests/engine-candidate/run-all.mjs
 import { execFileSync } from 'node:child_process';
 
-const files = ['source-prep.test.mjs', 'contract.test.mjs', 'candidate.test.mjs'];
+const files = ['source-prep.test.mjs', 'contract.test.mjs', 'candidate.test.mjs', 'dev-material.test.mjs', 'regression/run.mjs'];
 let failed = 0;
 for (const f of files) {
   try {

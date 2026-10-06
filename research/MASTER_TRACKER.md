@@ -3042,3 +3042,14 @@ Only four line groups differ between v7 and v8.
   - **Explanations:** `explanations.js` explains each of the five requested categories in terms of the record, never the writer. They are marked candidate-internal with `codebook_correspondence: not_asserted`. `cold_reviewer_clarity` is left without a category, per owner decision D-2.
   - **Tests:** 155 mocked checks pass (source preparation 35, contract 29, integration 91). Eight deliberate faults were each caught, then reverted byte-exact. The handoff checks still pass, and the guard suite is unchanged at 37 failures.
   - **Not done:** no provider call, no real record, no holdout use, no scoring, no public route, Vercel, page, guard or release-status change.
+- 2026-10-06 (**SOURCE-PREPARATION HEURISTICS MEASURED ON A PRE-REGISTERED CONSTRUCTED SET: 17 OF 17 ORDINARY CASES MATCH, 1 OF 7 HARD CASES. SIX DIVERGENCES RECORDED, NOT FIXED. HOLDOUT-SEPARATION CONTROL ADDED**): the 3 October files still have not reached the session. I re-checked the upload folder and the container, and the source-aligned review stays blocked. Internal Engine work continued.
+  - **Expectations first:** 24 constructed cases with expected findings were committed alone (`fd6a58a`) before the checker was run on them. Seven are hard cases.
+  - **First run:**
+    - 18 of 24 cases match. All 17 ordinary cases match; 1 of 7 hard cases does.
+    - Five false alarms: "clearly printed"; a complete record ending without a full stop, the one false refusal; an ordinal date; an attachment reproduced in the record; "asked for" not read as a request.
+    - One miss: "per the phone call".
+    - R02 is right for the wrong reason (the word "given").
+  - **Recorded, not fixed:** all six are in `tests/engine-candidate/regression/KNOWN_DIVERGENCES.json`. They are not tuned away on the same cases, and any fix must be checked on new cases written first. The runner fails if a divergence appears, disappears or changes; it was shown to fail when one was removed.
+  - **Holdout separation:** `lib/engine-candidate/dev-material.js` lists all 27 development and test texts by hash and refuses them in any holdout batch. Its stated limit: an edited copy is not caught.
+  - **Totals:** 163 mocked checks plus the regression run, all passing. The handoff checks still pass, and the guard suite is unchanged at 37 failures.
+  - **Not done:** no provider call, real record, holdout, score, deployment or public change.

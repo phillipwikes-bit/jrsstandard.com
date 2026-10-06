@@ -9,8 +9,9 @@
 | `source-prep.js` | Deterministic source preparation, run before any model call. |
 | `explanations.js` | Human-review explanation for every flagged condition, flaw and extraction finding. |
 | `contract.js` | Versioned result contract (`jrs-candidate-result/0.2.0`), human disposition and sign-off. |
+| `dev-material.js` | Holdout-separation control: hashes of every development and test text, and a check any future holdout builder must call. |
 
-None of the four has network access, reads an environment variable or writes anything. The model call is a function the caller supplies, and there is no default. `lib/` is excluded by `.vercelignore`, and no file under `api/` imports these modules.
+None of the five has network access, reads an environment variable or writes anything. The model call is a function the caller supplies, and there is no default. `lib/` is excluded by `.vercelignore`, and no file under `api/` imports these modules.
 
 ## Scope
 - Completed, non-HR supplier-access exception drafts only. The caller must declare `record_type: "supplier_access_exception"`, `completion_status: "completed"` and `hr_related: false`.
@@ -60,16 +61,40 @@ They are **not** a mapping to the JRS Codebook. Under `docs/enterprise-diligence
 - **Removed outputs:** the overall determination ("ready" and the rest) and every number. Only positions and sizes remain.
 - **Renamed:** `compliant_version` is now `revision_needed`.
 
+## Source-preparation regression set (constructed records only)
+`tests/engine-candidate/regression/cases.json` holds 24 constructed cases. Their expected findings were committed (`fd6a58a`) before the checker was first run on them. Seven are hard cases, written where the heuristics were expected to be wrong.
+
+First run, against `source-prep/0.1.0`:
+- **Overall:** 18 of 24 cases match their expectations.
+- **Ordinary cases:** 17 of 17 match.
+- **Hard cases:** 1 of 7 match.
+
+The six divergences are recorded in `KNOWN_DIVERGENCES.json` and are not fixed:
+- **Five false alarms:**
+  - "clearly printed" is flagged as an unsupported assertion;
+  - a complete record ending without a full stop is refused as partial, the one false refusal;
+  - an ordinal date ("June 9th") is not recognised;
+  - an attachment reproduced in the record is still reported as missing;
+  - "asked for" is not recognised as a request.
+- **One miss:** "per the phone call" is not caught.
+
+One case, R02, is right for the wrong reason: its basis is recognised only because the word "given" appears in "Approval was given". A fix tuned on these same cases would only show that it fits them, so any fix must also be checked on new cases written before the fix is run. The runner fails if any divergence appears, disappears or changes.
+
+These counts characterise the heuristics on 24 hand-written cases. They are not error rates for real records, and they say nothing about the model step.
+
 ## Not established
 - Accuracy, on any record.
 - Whether the prompt behaves as instructed on a real model. No provider has been called.
-- The false-positive and false-negative rates of the source-preparation heuristics.
+- The error rates of the source-preparation heuristics on real records. Only the 24 constructed cases above have been run.
+- Whether the holdout-separation check is sufficient. It catches exact and whitespace-only copies, not edited ones.
 - Fitness for any use. Release gates: none passed (handoff, "Release-gate status").
 
 ## Tests
 Run `node tests/engine-candidate/run-all.mjs`. It covers:
 - `source-prep.test.mjs`: 35 checks;
 - `contract.test.mjs`: 29 checks;
-- `candidate.test.mjs`: 91 checks.
+- `candidate.test.mjs`: 91 checks;
+- `dev-material.test.mjs`: 8 checks;
+- `regression/run.mjs`: the 24-case regression set.
 
 All use a mocked model with `fetch` trapped, on constructed fictional records in `tests/engine-candidate/fixtures/`. Development and test material here must never be used in a sealed holdout.
