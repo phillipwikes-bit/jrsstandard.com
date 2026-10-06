@@ -1,8 +1,9 @@
 {
  "_note": "Divergences between source-prep.js and the expectations committed before the first run (fd6a58a). Recorded as observed on 2026-10-06 against source-prep/0.1.0. Not fixed: a fix tuned on these same cases would only show that it fits them, so any fix must also be checked on new constructed cases written before the fix is run. The runner fails if a divergence appears, disappears or changes, so this record is kept equal to the code.",
- "source_prep_version": "source-prep/0.1.0",
+ "source_prep_version": "source-prep/0.2.0",
  "observations": [
-  "R02 matches, but its exception basis is recognised only because the word 'given' appears in 'Approval was given', not from its basis clause 'on the basis that'. A correct result for the wrong reason."
+  "R02 matches, but its exception basis is recognised only because the word 'given' appears in 'Approval was given', not from its basis clause 'on the basis that'. A correct result for the wrong reason.",
+  "2026-10-06: re-run against source-prep/0.2.0 (instruction-like text detection added). The same 18 cases match and the same six divergences recur, unchanged; no regression case contains instruction-like text."
  ],
  "divergences": {
   "R18": {

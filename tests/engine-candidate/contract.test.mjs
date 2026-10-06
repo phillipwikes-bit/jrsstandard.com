@@ -1,6 +1,8 @@
 // Versioned result contract: version separation and human-disposition preservation. Mocked only. Added 2026-10-06.
-import { t, done, fixture, net, PROFILE, MODEL, NOW, cond, reply } from './_harness.mjs';
-import { runCandidate, CANDIDATE_VERSION, PROMPT_SHA256 } from '../../lib/engine-candidate/review-candidate.js';
+import { t, done, fixture, net, PROFILE, IDS, NOW, cond, toAdapterOutput } from './_harness.mjs';
+import { createMockAdapter } from '../../lib/engine-candidate/mock-adapter.js';
+import { ADAPTER_CONTRACT } from '../../lib/engine-candidate/adapter.js';
+import { runCandidate, CANDIDATE_VERSION, PROMPT_SHA256, PROMPT_VERSION } from '../../lib/engine-candidate/review-candidate.js';
 import { recordDisposition, signOff, reviewIdentity, CONTRACT_VERSION } from '../../lib/engine-candidate/contract.js';
 import { SOURCE_PREP_VERSION } from '../../lib/engine-candidate/source-prep.js';
 import { EXPLANATION_SET_VERSION } from '../../lib/engine-candidate/explanations.js';
@@ -8,10 +10,12 @@ import { EXPLANATION_SET_VERSION } from '../../lib/engine-candidate/explanations
 const RECORD = fixture('SYNTHETIC-SAE-01.txt');
 const good = {
   conditions: { ...cond('pass', 'Stated.'), basis_identification: { status: 'gap', note: 'The track record is not in the record.' } },
-  flaws: [{ type: 'evidentiary_overreach', excerpt: 'Approved given the supplier’s track record.', explanation: 'Asserted, not shown.' }],
+  flaws: [{ type: 'evidentiary_overreach', excerpt: "Approved given the supplier's track record.", explanation: 'Asserted, not shown.' }],
   revision_needed: 'State the evidence of the track record.',
 };
-const run = (model = MODEL, text = RECORD) => runCandidate({ text, profile: PROFILE }, { callModel: reply(good), model, now: NOW });
+const adapterFor = (model_id = IDS.model_id) => { const ids = { ...IDS, model_id }; return createMockAdapter({ ...ids, respond: () => toAdapterOutput(good, ids) }); };
+const run = (model = IDS.model_id, text = RECORD, now = NOW) => runCandidate({ text, profile: PROFILE }, { adapter: adapterFor(model), now });
+const MODEL = IDS.model_id + '@' + IDS.model_version;
 const freeze = (o) => JSON.stringify(o);
 
 // ---- version identity ----------------------------------------------------------------
@@ -20,19 +24,19 @@ const id = a.review_identity;
 t('result declares its contract version', a.contract_version === CONTRACT_VERSION && id.contract_version === CONTRACT_VERSION);
 t('review identity names every version that produced it',
   id.candidate_version === CANDIDATE_VERSION && id.source_prep_version === SOURCE_PREP_VERSION && id.explanation_set_version === EXPLANATION_SET_VERSION &&
-  id.prompt_sha256 === PROMPT_SHA256 && id.model === MODEL && /d2da83c/.test(id.derived_from));
+  id.prompt_sha256 === PROMPT_SHA256 && id.prompt_version === PROMPT_VERSION && id.adapter_contract === ADAPTER_CONTRACT && id.model === MODEL && /d2da83c/.test(id.derived_from));
 t('the same source and versions give the same review_id', (await run()).review_identity.review_id === id.review_id);
 const bModel = await run('mock-model-1');
-const bText = await run(MODEL, RECORD.replace('four weeks', 'five weeks'));
+const bText = await run(IDS.model_id, RECORD.replace('four weeks', 'five weeks'));
 t('a different model gives a different review_id', bModel.review_identity.review_id !== id.review_id);
 t('a different source gives a different review_id', bText.review_identity.review_id !== id.review_id);
 const versions = { candidate_version: CANDIDATE_VERSION, source_prep_version: SOURCE_PREP_VERSION, explanation_set_version: EXPLANATION_SET_VERSION,
-                   prompt_sha256: PROMPT_SHA256, model: MODEL, derived_from: id.derived_from };
+                   prompt_sha256: PROMPT_SHA256, prompt_version: PROMPT_VERSION, adapter_contract: ADAPTER_CONTRACT, model: MODEL, derived_from: id.derived_from };
 const sha = a.source.sha256;
-t('changing any one version changes the review_id', ['candidate_version', 'source_prep_version', 'explanation_set_version', 'prompt_sha256'].every((k) =>
+t('changing any one version changes the review_id', ['candidate_version', 'source_prep_version', 'explanation_set_version', 'prompt_sha256', 'prompt_version', 'adapter_contract', 'model'].every((k) =>
   reviewIdentity({ ...versions, [k]: 'changed' }, sha).review_id !== reviewIdentity(versions, sha).review_id));
 t('examined_at is outside the identity, so re-running later keeps the same review_id',
-  (await runCandidate({ text: RECORD, profile: PROFILE }, { callModel: reply(good), model: MODEL, now: () => '2027-01-01T00:00:00Z' })).review_identity.review_id === id.review_id);
+  (await run(IDS.model_id, RECORD, () => '2027-01-01T00:00:00Z')).review_identity.review_id === id.review_id);
 
 // ---- disposition is bound to one review version ------------------------------------------
 const fid = a.contextual_findings.findings[0].id;
@@ -77,7 +81,7 @@ t('sign-off needs a statement', throws(() => signOff(all, { ...so, statement: ''
 t('sign-off is still unvalidated output', signed.validated === false && signed.human_review.required === true);
 
 // ---- refused results ---------------------------------------------------------------------------
-const refused = await runCandidate({ text: RECORD + '\nthe tenant asked.', profile: PROFILE }, { callModel: reply(good), model: MODEL, now: NOW });
+const refused = await runCandidate({ text: RECORD + '\nthe tenant asked.', profile: PROFILE }, { adapter: adapterFor(), now: NOW });
 t('a refused result takes no disposition', throws(() => recordDisposition(refused, { ...d, review_id: refused.review_identity.review_id }), /only an examined result/));
 t('a refused result cannot be signed off', throws(() => signOff(refused, { ...so, review_id: refused.review_identity.review_id }), /only an examined result/));
 

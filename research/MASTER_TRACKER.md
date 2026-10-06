@@ -3053,3 +3053,14 @@ Only four line groups differ between v7 and v8.
   - **Holdout separation:** `lib/engine-candidate/dev-material.js` lists all 27 development and test texts by hash and refuses them in any holdout batch. Its stated limit: an edited copy is not caught.
   - **Totals:** 163 mocked checks plus the regression run, all passing. The handoff checks still pass, and the guard suite is unchanged at 37 failures.
   - **Not done:** no provider call, real record, holdout, score, deployment or public change.
+- 2026-10-06 (**ENGINE HARDENING PACKAGE, LOCAL CANDIDATE 0.3.0-local.1: CORPUS, MOCK EVALUATION RUNNER, ADAPTER BOUNDARY, CONSISTENCY HARNESS, PRIVACY TESTS, MUTATION RUN. MANIFEST LEFT DISCONNECTED. NOTHING DEPLOYED, NO PROVIDER CALLED**): owner instruction to complete the internal-only hardening package without waiting for the 3 October files. FACT, from this session's runs:
+  - **Corpus:** constructed corpus v0.1.0 has 15 records (CR-001 to CR-015) with expected findings, committed alone (`804f313`) before the runner, adapter or harness existed.
+  - **Corpus evaluation:** 15 of 15 records match, with a mock adapter only. The record is `tests/engine-candidate/eval/records/EVAL_corpus-0.1.0_candidate-0.3.0-local.1.json`, labelled constructed-development evidence only.
+  - **First evaluation run:** 1 failure, caused by a runner bug (it compared objects in key order). The comparison was fixed and the expectation file was not touched.
+  - **Adapter boundary:** fails closed on unknown fields, numbers, determination language, missing or non-exact quotations, invalid explanation identifiers, and malformed or self-reported incomplete output. 65 mocked checks.
+  - **Harness:** 13 failure codes, each shown to fire. Two detectors had no firing test until the mutation run exposed it; an injectable candidate parameter now lets tests prove them.
+  - **Privacy and isolation:** 24 checks covering the disk, logs and streams, thrown errors, the network, imports and input mutation.
+  - **Manifest:** left disconnected. The schema requires a routing verdict, allows no extra fields and requires an API version; `manifest-compat.test.mjs` shows each point against the real builder.
+  - **Mutation run:** 36 of 36 caught. The first run caught 29 of 32: one mutation was written wrongly, and two harness detectors were untested. All three were fixed and re-run.
+  - **Full suite:** 11 suites pass with `node tests/engine-candidate/run-all.mjs`, 296 checks plus the regression, evaluation and mutation runs. The handoff checks still pass, and the guard suite is unchanged at 37 failures.
+  - **Not done:** no provider call, real record, holdout, score, public route, page, Vercel or guard change.

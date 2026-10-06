@@ -6,10 +6,12 @@ import { DEVELOPMENT_MATERIAL, isDevelopmentMaterial, assertNotDevelopmentMateri
 
 const FIX = join(ROOT, 'tests/engine-candidate/fixtures');
 const texts = readdirSync(FIX).map((f) => ['fixtures/' + f, readFileSync(join(FIX, f), 'utf8')])
-  .concat(JSON.parse(readFileSync(join(ROOT, 'tests/engine-candidate/regression/cases.json'), 'utf8')).cases.map((c) => ['regression/' + c.id, c.text]));
+  .concat(JSON.parse(readFileSync(join(ROOT, 'tests/engine-candidate/regression/cases.json'), 'utf8')).cases.map((c) => ['regression/' + c.id, c.text]))
+  .concat(JSON.parse(readFileSync(join(ROOT, 'tests/engine-candidate/corpus/v0.1.0/INDEX.json'), 'utf8')).records
+    .map((id) => ['corpus/v0.1.0/' + id, JSON.parse(readFileSync(join(ROOT, 'tests/engine-candidate/corpus/v0.1.0/records', id + '.json'), 'utf8')).text]));
 
 const unlisted = texts.filter(([, x]) => !isDevelopmentMaterial(x)).map(([n, x]) => `${n} ${materialHash(x)}`);
-t('every fixture and regression case is listed as development material', unlisted.length === 0, unlisted.join('; '));
+t('every fixture, regression case and corpus record is listed as development material', unlisted.length === 0, unlisted.join('; '));
 t('the list has no entry for material that no longer exists', DEVELOPMENT_MATERIAL.every(([h]) => texts.some(([, x]) => materialHash(x) === h)));
 t('a listed text is detected and named', isDevelopmentMaterial(texts[0][1]) === texts[0][0]);
 t('a whitespace-only reformatting is still detected', isDevelopmentMaterial('  ' + texts[0][1].replace(/\s+/g, '\n\n') + '\n') !== null);
@@ -21,5 +23,6 @@ t('a holdout batch containing development material is refused', (() => {
 t('a clean batch passes', assertNotDevelopmentMaterial(['A new constructed record that is not development material.']) === true);
 t('known limit, stated rather than hidden: an edited copy is NOT detected', isDevelopmentMaterial(sample.replace('Corran', 'Corrin')) === null);
 
+t('the corpus records are all present (15)', texts.filter(([n]) => n.startsWith('corpus/')).length === 15);
 t('no network call was made', net.calls === 0);
 done();

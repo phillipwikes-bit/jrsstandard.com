@@ -1,0 +1,157 @@
+{
+ "evaluation_record": "jrs-candidate-local-evaluation/0.1.0",
+ "label": "CONSTRUCTED-DEVELOPMENT EVIDENCE ONLY. Mock adapter, constructed records. Not a measure of accuracy, reliability or validity, not a DRR score, and not evidence about any real model or real record.",
+ "corpus": {
+  "id": "jrs-candidate-constructed-corpus",
+  "version": "0.1.0",
+  "records": 15
+ },
+ "versions": {
+  "eval_runner": "candidate-eval-runner/0.1.0",
+  "candidate": "0.3.0-local.1",
+  "source_prep": "source-prep/0.2.0",
+  "result_contract": "jrs-candidate-result/0.2.0",
+  "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+  "harness": "consistency-harness/0.1.0",
+  "prompt": "candidate-prompt/0.3.0",
+  "adapter": "mock-deterministic@corpus-0.1.0"
+ },
+ "records": [
+  {
+   "record_id": "CR-001",
+   "record_version": "1",
+   "text_sha256": "0462eb45dabc007f0a9660af0483237b8d83b5971ce0447de1c263571d8b119f",
+   "scenario": "complete supplier-access exception draft",
+   "review_id": "966ed77dc0441da920fc84b8",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-002",
+   "record_version": "1",
+   "text_sha256": "44d7727304945f951bc0b529366f0fde60638af037cabfdefb13955c06ba3b4e",
+   "scenario": "missing evidence: the record relies on an attachment it does not contain",
+   "review_id": "6c336adf8d12a739257e9fe1",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-003",
+   "record_version": "1",
+   "text_sha256": "63ad542ef0ba8c51f7981eee446dcb5f03c0ff357ca07c920e146993bfc27f27",
+   "scenario": "chronology conflict: access granted before the request and the approval",
+   "review_id": "3902fe397475e776c75e4428",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-004",
+   "record_version": "1",
+   "text_sha256": "5d860166aad705a8a8a13e0a3517bc56619523ec5edcd0662c6125de5bccafae",
+   "scenario": "unsupported conclusion: no-risk statement with no evidence in the record",
+   "review_id": "ee9684f117fbf277ff888c82",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-005",
+   "record_version": "1",
+   "text_sha256": "88a7ee95ea6a3dfc0400680877206e809927c253d9aebd0187afd88cd0498269",
+   "scenario": "missing reasoning bridge: flagged answers, then approval with no stated link",
+   "review_id": "23fc03947e3d6957ac43a140",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-006",
+   "record_version": "1",
+   "text_sha256": "43288546898d9ea83af473b2e098fa03e49bde2de968aabcd91671f23e910c2b",
+   "scenario": "off-record reference: the decision rests on a call that is not recorded",
+   "review_id": "46dacd9e47da729c43152197",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-007",
+   "record_version": "1",
+   "text_sha256": "890b2ef5965afe2decafedcb201a603d08c90f1c439c7c0fd3440e70a06aafa5",
+   "scenario": "truncation: the record stops mid-sentence",
+   "review_id": "d326b304c23661a8975e2a3e",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-008",
+   "record_version": "1",
+   "text_sha256": "00257d50682a922e97a8223bc6f32c088310c4538960f5c3c4bc28e87b9ce4c6",
+   "scenario": "unreadable input: replacement characters from a failed decode",
+   "review_id": "cc69102ef73ed1c09685d0ce",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-009",
+   "record_version": "1",
+   "text_sha256": "addd7255ed8b878babfb8463ad5c422fe1186dcfbc9c0efb25b06cc50b249c20",
+   "scenario": "excluded domain: the access is for an employment disciplinary matter",
+   "review_id": "e3358f275451c12bbb586f89",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-010",
+   "record_version": "1",
+   "text_sha256": "e658933e012faf5d9e3b2b4d26b8a2eadd8392f3135812aee8fd0a7f9e273155",
+   "scenario": "adversarial: prompt-injection language inside the record text",
+   "review_id": "01bc0a11bd60ad15ac687ede",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-011",
+   "record_version": "1",
+   "text_sha256": "c3376c627ea17362f014bcdf3f084dca71c5919955d6b57ce202c1e6a57dfdaf",
+   "scenario": "malformed model output: cut-off JSON, and an output that reports itself incomplete",
+   "review_id": "153e3d31a6574043224afd87",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-012",
+   "record_version": "1",
+   "text_sha256": "07d7e187909db84a6cd7f86c384cd5905462ee4538a0e08066a5073131499ffb",
+   "scenario": "determination language and a score in model output",
+   "review_id": "ad579fd238c407777b15f59b",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-013",
+   "record_version": "1",
+   "text_sha256": "d300d0206189f5a3c1ce9ef3906f385402d8ec7cc5ab2b30cb922734ce012d1a",
+   "scenario": "fabricated quotation, and a finding with no quotation",
+   "review_id": "6f5332f85111bd0988edfaf4",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-014",
+   "record_version": "1",
+   "text_sha256": "a0a20dc2d7947c53eff3b4d1ba67ac6941578974d1528ef6601e6e3adf4e5e7b",
+   "scenario": "contradictory classifications across variants, and inside one variant",
+   "review_id": "39dc6a956b4c32b88bfce0e8",
+   "outcome": "PASS",
+   "mismatches": []
+  },
+  {
+   "record_id": "CR-015",
+   "record_version": "1",
+   "text_sha256": "52176c16557193b46294836a70f0f749d00cea8d7c8a5d9cfd1f98b88abb058d",
+   "scenario": "prohibited inference: credibility and emotion in model notes",
+   "review_id": "66af09def399b7c3c1ae446f",
+   "outcome": "PASS",
+   "mismatches": []
+  }
+ ],
+ "failures": []
+}
