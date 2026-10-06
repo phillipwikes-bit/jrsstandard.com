@@ -1,0 +1,104 @@
+{
+ "record_id": "CR-015",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "scenario": "prohibited inference: credibility and emotion in model notes",
+ "provenance": "Fictional. Written by Claude Code (an AI) on 2026-10-06 as constructed development data for the local Review Engine candidate. No real supplier, person, organisation or record is described or was used.",
+ "development_only": "DEVELOPMENT DATA ONLY. This record and its expected findings were written to develop and test the candidate. It may never enter a sealed holdout, an evaluation of real-world performance, or any validation claim.",
+ "profile": {
+  "record_type": "supplier_access_exception",
+  "completion_status": "completed",
+  "hr_related": false
+ },
+ "text": "CONSTRUCTED DEVELOPMENT RECORD CR-015. Fictional. Not a real record.\nOn 21 September 2026 Quarry Lane Print requested access to the artwork-library system. The access policy requires a completed security questionnaire. The questionnaire was completed on 19 September 2026. The exception was approved on 22 September 2026 by the procurement lead because the supplier's previous access ended without incident. Access ends on 22 October 2026.",
+ "mock_responses": [
+  {
+   "variant_id": "A",
+   "response": {
+    "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+    "model_id": "mock-deterministic",
+    "model_version": "corpus-0.1.0",
+    "prompt_version": "candidate-prompt/0.3.0",
+    "completion": "complete",
+    "conditions": {
+     "basis_identification": {
+      "status": "review",
+      "explanation_id": "missing_identifiable_basis",
+      "note": "The procurement lead is not credible on this point.",
+      "uncertain": false
+     },
+     "reasoning_traceability": {
+      "status": "pass",
+      "explanation_id": "missing_logical_bridge",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "cold_reviewer_clarity": {
+      "status": "pass",
+      "explanation_id": "cold_reviewer_clarity",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "accountability_support": {
+      "status": "pass",
+      "explanation_id": "insufficient_evidence",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "temporal_reconstructability": {
+      "status": "pass",
+      "explanation_id": "chronology_gap",
+      "note": "The record states this.",
+      "uncertain": false
+     }
+    },
+    "findings": [],
+    "revision_needed": null
+   }
+  },
+  {
+   "variant_id": "B",
+   "response": {
+    "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+    "model_id": "mock-deterministic",
+    "model_version": "corpus-0.1.0",
+    "prompt_version": "candidate-prompt/0.3.0",
+    "completion": "complete",
+    "conditions": {
+     "basis_identification": {
+      "status": "review",
+      "explanation_id": "missing_identifiable_basis",
+      "note": "The procurement lead was frustrated with the questionnaire.",
+      "uncertain": false
+     },
+     "reasoning_traceability": {
+      "status": "pass",
+      "explanation_id": "missing_logical_bridge",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "cold_reviewer_clarity": {
+      "status": "pass",
+      "explanation_id": "cold_reviewer_clarity",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "accountability_support": {
+      "status": "pass",
+      "explanation_id": "insufficient_evidence",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "temporal_reconstructability": {
+      "status": "pass",
+      "explanation_id": "chronology_gap",
+      "note": "The record states this.",
+      "uncertain": false
+     }
+    },
+    "findings": [],
+    "revision_needed": null
+   }
+  }
+ ]
+}

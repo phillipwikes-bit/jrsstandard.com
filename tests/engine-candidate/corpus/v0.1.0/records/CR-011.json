@@ -1,0 +1,64 @@
+{
+ "record_id": "CR-011",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "scenario": "malformed model output: cut-off JSON, and an output that reports itself incomplete",
+ "provenance": "Fictional. Written by Claude Code (an AI) on 2026-10-06 as constructed development data for the local Review Engine candidate. No real supplier, person, organisation or record is described or was used.",
+ "development_only": "DEVELOPMENT DATA ONLY. This record and its expected findings were written to develop and test the candidate. It may never enter a sealed holdout, an evaluation of real-world performance, or any validation claim.",
+ "profile": {
+  "record_type": "supplier_access_exception",
+  "completion_status": "completed",
+  "hr_related": false
+ },
+ "text": "CONSTRUCTED DEVELOPMENT RECORD CR-011. Fictional. Not a real record.\nOn 11 September 2026 Merrow Signs requested read access to the brand-asset portal. The access standard requires a signed licence acknowledgement. The acknowledgement was signed on 10 September 2026. The exception was approved on 11 September 2026 by the marketing lead because the acknowledgement covered read-only use. Access ends on 31 October 2026.",
+ "mock_responses": [
+  {
+   "variant_id": "A",
+   "response": "{\"adapter_contract\": \"jrs-candidate-adapter-output/0.1.0\", \"conditions\": {"
+  },
+  {
+   "variant_id": "B",
+   "response": {
+    "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+    "model_id": "mock-deterministic",
+    "model_version": "corpus-0.1.0",
+    "prompt_version": "candidate-prompt/0.3.0",
+    "completion": "incomplete",
+    "conditions": {
+     "basis_identification": {
+      "status": "pass",
+      "explanation_id": "missing_identifiable_basis",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "reasoning_traceability": {
+      "status": "pass",
+      "explanation_id": "missing_logical_bridge",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "cold_reviewer_clarity": {
+      "status": "pass",
+      "explanation_id": "cold_reviewer_clarity",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "accountability_support": {
+      "status": "pass",
+      "explanation_id": "insufficient_evidence",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "temporal_reconstructability": {
+      "status": "pass",
+      "explanation_id": "chronology_gap",
+      "note": "The record states this.",
+      "uncertain": false
+     }
+    },
+    "findings": [],
+    "revision_needed": null
+   }
+  }
+ ]
+}
