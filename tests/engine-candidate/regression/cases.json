@@ -1,0 +1,329 @@
+{
+ "set": "candidate-source-prep-regression",
+ "version": "0.1.0",
+ "written": "2026-10-06",
+ "status": "Expectations written and committed BEFORE the first run. Ground truth states what a correct checker should report, including the hard cases, where the current heuristics are expected to be wrong.",
+ "material": "Constructed fictional text only. Development and test material: never to be used in a sealed holdout (see lib/engine-candidate/dev-material.js).",
+ "scope": "source-prep.js only. No model is involved.",
+ "cases": [
+  {
+   "id": "R01",
+   "purpose": "clean control: every expected element, no markers",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R02",
+   "purpose": "clean control: different wording, still every element",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 9 June 2026 Halden Logistics submitted a request for access to the tracking console. The vendor standard requires a signed data-handling agreement. The agreement was signed on 8 June 2026 but not countersigned. Approval was given on 10 June 2026 by the operations manager on the basis that the agreement terms were final. Access is granted until 30 June 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R03",
+   "purpose": "clean control: one quotation, exact location expected",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. The approval note reads: \"Read-only access for the quotation only.\"",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 1
+   }
+  },
+  {
+   "id": "R04",
+   "purpose": "omission: bracketed placeholder",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. Supplier contact: [TBD].",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "placeholder"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R05",
+   "purpose": "omission: angle-bracket placeholder",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. Supplier reference: <insert supplier number>.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "placeholder"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R06",
+   "purpose": "omission: redaction marker",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. Reviewer: [redacted].",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "placeholder"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R07",
+   "purpose": "omission: referenced exhibit not in the record",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. See attached exhibit for the risk rating.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "referenced_material_not_in_record"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R08",
+   "purpose": "unsupported: off-record agreement",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. As agreed verbally, the supplier will complete section 2 later.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "off_record_reference"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R09",
+   "purpose": "unsupported: assertion presented as self-evident",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. The risk is obviously low.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "assertion_without_basis"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R10",
+   "purpose": "omission: no approval recorded",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire. The questionnaire was incomplete because section 2 was blank. Access was granted on 4 May 2026 and ends on 31 May 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "profile_element_not_found"
+    ],
+    "elements_missing": [
+     "approval"
+    ],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R11",
+   "purpose": "omission: no full date and no end of the access period",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nCorran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire. The exception was approved by the procurement lead because the drawings were needed urgently.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "profile_element_not_found"
+    ],
+    "elements_missing": [
+     "access_period",
+     "date"
+    ],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R12",
+   "purpose": "partial: ends mid-sentence",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. The security office then asked whether the supplier",
+   "expect": {
+    "refusal": "partial_input",
+    "codes": [
+     "ends_mid_sentence"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R13",
+   "purpose": "partial: later pages missing",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nPage 2 of 3. On 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026.",
+   "expect": {
+    "refusal": "partial_input",
+    "codes": [
+     "pages_missing"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R14",
+   "purpose": "partial: trailing ellipsis",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. Further conditions were...",
+   "expect": {
+    "refusal": "partial_input",
+    "codes": [
+     "ends_with_ellipsis"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R15",
+   "purpose": "partial: quotation never closed",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. The note reads: \"Read-only access for the quotation.",
+   "expect": {
+    "refusal": "partial_input",
+    "codes": [
+     "unclosed_quotation"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R16",
+   "purpose": "unreadable: control character",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026.\u0007",
+   "expect": {
+    "refusal": "unreadable_input",
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R17",
+   "purpose": "two quotations, straight and curly",
+   "hard_case": false,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. The lead wrote: \"Urgent quotation.\" The supplier replied: “Thank you.”",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 2
+   }
+  },
+  {
+   "id": "R18",
+   "purpose": "HARD: 'clearly' describes print, not an unsupported assertion",
+   "hard_case": true,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. The supplier number is clearly printed on the request form.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R19",
+   "purpose": "HARD: complete record whose last line has no full stop",
+   "hard_case": true,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026.\nAccess end: 31 May 2026",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R20",
+   "purpose": "HARD: ordinal date '9th', a real date the pattern does not expect",
+   "hard_case": true,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn June 9th, 2026 Halden Logistics requested access to the tracking console. The vendor standard requires a signed agreement. Approval was given by the operations manager because the agreement terms were final. Access is granted until June 30th, 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R21",
+   "purpose": "HARD: the attachment IS included below the reference",
+   "hard_case": true,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. See attached risk note, reproduced here: risk rating low, read-only, no personal data in scope.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R22",
+   "purpose": "HARD: off-record call phrased with an extra word",
+   "hard_case": true,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026. Per the phone call with the supplier, section 2 will follow.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "off_record_reference"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R23",
+   "purpose": "HARD: request described as 'asked for', no word 'request'",
+   "hard_case": true,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nOn 3 May 2026 Corran Tooling asked for read access to the drawings portal. The access policy requires a completed security questionnaire. The exception was approved on 4 May 2026 by the procurement lead because the drawings were needed urgently. Access ends on 31 May 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "R24",
+   "purpose": "HARD: page numbering complete on a one-page record",
+   "hard_case": true,
+   "text": "SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.\nSupplier-access exception, completed draft.\nPage 1 of 1. On 3 May 2026 Corran Tooling requested read access to the drawings portal. The access policy requires a completed security questionnaire before access. The questionnaire was incomplete because section 2 was blank. The exception was approved on 4 May 2026 by the procurement lead because the supplier needed the drawings for an urgent quotation and the access is read-only. Access ends on 31 May 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  }
+ ]
+}
