@@ -3116,3 +3116,4 @@ Only four line groups differ between v7 and v8.
     - boundary test: 0 violations;
     - `git diff --check`: clean.
   - **Not done:** no merge, deployment, Vercel change, provider call, real record, holdout access, credential change, external contact or gate advancement. The 3 October source recheck remains pending.
+- 2026-10-06 12:31 UTC: PR #39 checks on `fbfcc49`: Vercel preview Ready and Preview Comments success; Cloudflare Workers skipped as expected. No review threads. No action needed; safety-net check-in re-armed.
