@@ -4,6 +4,7 @@
 - `ARCHITECTURE.md` covers the data flow, the boundary table and the Manifest decision.
 - `RUNBOOK.md` covers the failure modes and the recovery steps.
 - Release gates for this candidate are recorded, internally, in `lib/release-gate/` (protocol: `docs/architecture/RELEASE_EVIDENCE_PROTOCOL.md`; current report: `docs/architecture/CURRENT_RELEASE_GATE_REPORT.md`). All five gates are open.
+- A person can read a reviewer packet and record dispositions in the local, offline reviewer workspace, `tools/local-reviewer-workspace/` (protocol: `docs/architecture/LOCAL_REVIEWER_WORKSPACE_PROTOCOL.md`). It runs nothing, is tested on synthetic fixtures only, and advances no release gate.
 
 ## What it does
 It examines one **completed, non-HR supplier-access exception draft** and returns a versioned result for a person to review:

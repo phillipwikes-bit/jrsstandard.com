@@ -3137,3 +3137,20 @@ Only four line groups differ between v7 and v8.
     - public-route and boundary tests: pass;
     - guard suite unchanged at 164 checks, 39 failed, 1 skipped. One earlier run in this pass reported 163 checks; two reruns gave 164 with identical check names, so INFERENCE: a reachability-dependent check.
   - **Not done:** no public page, API route, OpenAPI, sitemap, redirect, Vercel, guard, privacy-page, credential or provider-call change; no merge, deployment, real record, holdout access or external contact.
+- 2026-10-06 (**LOCAL REVIEWER WORKSPACE ADDED TO PR #39: OFFLINE HUMAN REVIEW OF CANDIDATE PACKETS; SYNTHETIC-FIXTURE TESTED; NO RELEASE GATE ADVANCED**): owner-commissioned, internal only. FACT:
+  - **Location:** `tools/local-reviewer-workspace/`, excluded by `.vercelignore` `tools/`. Tests are in `tests/local-reviewer-workspace/`, excluded by `tests/`. The protocol is `docs/architecture/LOCAL_REVIEWER_WORKSPACE_PROTOCOL.md`, excluded by `*.md`.
+  - **Loopback server (`serve.mjs`):**
+    - refuses non-loopback binding and non-loopback Host headers;
+    - answers GET and HEAD only, for five files;
+    - sends a CSP with `connect-src 'none'`, `form-action 'none'` and `default-src 'none'`.
+  - **Page:**
+    - opens only a locally selected packet, or the built-in SYNTHETIC demo;
+    - re-checks the packet before showing it: exact structure, `review_id` recomputation, `packet_id` recomputation, history binding, anchor alignment, and (with the optional source text) the source hash and every anchor slice;
+    - shows four separate sections;
+    - records the reviewer's five-value dispositions in memory only, each bound to the review ID and packet digest and acknowledged;
+    - blocks sign-off while any finding is `NO_DISPOSITION`;
+    - exports a digest-sealed disposition record, verified by `verify-export.mjs`.
+  - **Not done by the page:** no storage, cookies, analytics, console output or HTML injection; no score, verdict, Codebook mapping or inference language.
+  - **Demo packet:** generated from the `SYNTHETIC-SAE-03-GAPS` fixture with the mock adapter.
+  - **Tests:** 5 suites, 201 checks, including 40 in headless Chromium. That suite shows only loopback requests, empty storage, and a CSP that blocks even a same-origin request. The mutation run follows.
+  - **Not done:** no provider call, real or public record, holdout access, deployment, public page or route, OpenAPI, sitemap, redirect, Vercel, guard, credential or release-gate change.

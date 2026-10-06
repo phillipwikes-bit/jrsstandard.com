@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; worker-src 'none'; manifest-src 'none'; media-src 'none'; font-src 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,nofollow">
+<title>JRS local reviewer workspace</title>
+<link rel="stylesheet" href="workspace.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the workspace</a>
+<header class="top">
+ <p class="eyebrow">Local and offline · internal tool</p>
+ <h1>Local reviewer workspace</h1>
+ <p class="lede">This tool shows a previously generated candidate reviewer packet so that you can record your own dispositions. It does not run the Engine, it does not judge the record, and it sends nothing anywhere. Nothing you do here is saved unless you export it.</p>
+ <p class="notice" id="confidentiality">A reviewer packet can contain quotations from the record. Treat the packet, this window and any export as confidential as the record itself.</p>
+</header>
+
+<main id="main">
+ <section id="open" aria-labelledby="open-h" class="panel">
+  <h2 id="open-h">Open a packet</h2>
+  <div class="field">
+   <label for="packet-file">Reviewer packet (JSON file on this computer)</label>
+   <input type="file" id="packet-file" accept=".json,application/json">
+  </div>
+  <div class="field">
+   <label for="source-file">Source text (optional). Used only to check quotation anchors; it is never shown and never exported.</label>
+   <input type="file" id="source-file" accept=".txt,text/plain">
+  </div>
+  <div class="actions">
+   <button type="button" id="open-btn">Check and open</button>
+   <button type="button" id="demo-open" class="quiet">Open the synthetic demo packet</button>
+   <button type="button" id="demo-download" class="quiet">Download the synthetic demo packet</button>
+  </div>
+  <p id="open-status" role="status" aria-live="polite"></p>
+ </section>
+
+ <section id="refusal" aria-labelledby="refusal-h" class="panel refusal" hidden>
+  <h2 id="refusal-h">Packet refused</h2>
+  <p>The packet was not opened, and nothing from it is shown. The reasons below name fields and finding identifiers only.</p>
+  <ul id="refusal-list"></ul>
+ </section>
+
+ <div id="review" hidden>
+  <section id="identity" aria-labelledby="identity-h" class="panel">
+   <h2 id="identity-h">Packet identity</h2>
+   <p id="synthetic-banner" class="synthetic" hidden></p>
+   <dl id="identity-list" class="meta"></dl>
+   <p class="limit" id="identity-limit"></p>
+  </section>
+
+  <section id="sec-source" aria-labelledby="sec-source-h" class="panel">
+   <h2 id="sec-source-h">1. Source-preparation findings</h2>
+   <p class="desc">Deterministic checks of the input itself: incomplete or unreadable text, placeholders, attachments that are not part of the record, chronology, and references to things off the record. These are pattern checks, not proof.</p>
+   <div id="list-source"></div>
+  </section>
+
+  <section id="sec-candidate" aria-labelledby="sec-candidate-h" class="panel">
+   <h2 id="sec-candidate-h">2. Candidate review prompts and findings</h2>
+   <p class="desc" id="candidate-desc"></p>
+   <div id="key-status"></div>
+   <div id="list-candidate"></div>
+  </section>
+
+  <section id="sec-checks" aria-labelledby="sec-checks-h" class="panel">
+   <h2 id="sec-checks-h">3. Model-output checks</h2>
+   <p class="desc">Checks on what the model returned, kept apart from the record findings. They describe the model output, not the record.</p>
+   <div id="list-checks"></div>
+  </section>
+
+  <section id="human" aria-labelledby="human-h" class="panel human">
+   <h2 id="human-h">4. Human review</h2>
+   <p class="desc">This is the only place a disposition is recorded, and only you record it. Your entries stay in this window's memory and are lost when it closes, unless you sign off and export them.</p>
+   <div class="field">
+    <label for="reviewer-ref">Reviewer reference (self-entered display name or reference; not authenticated)</label>
+    <input type="text" id="reviewer-ref" maxlength="200" autocomplete="off">
+   </div>
+   <div class="field">
+    <label for="review-date">Review date (YYYY-MM-DD)</label>
+    <input type="text" id="review-date" inputmode="numeric" placeholder="YYYY-MM-DD" maxlength="10" autocomplete="off">
+   </div>
+   <div id="disposition-list"></div>
+  </section>
+
+  <section id="signoff" aria-labelledby="signoff-h" class="panel">
+   <h2 id="signoff-h">Sign-off and export</h2>
+   <p id="signoff-statement" class="statement"></p>
+   <h3 class="small">Still needed before sign-off</h3>
+   <ul id="blockers" aria-live="polite"></ul>
+   <div class="field check">
+    <input type="checkbox" id="signoff-ack">
+    <label for="signoff-ack">I confirm the sign-off statement above for this packet only.</label>
+   </div>
+   <div class="actions">
+    <button type="button" id="signoff-btn" disabled>Sign off</button>
+    <button type="button" id="export-btn" disabled>Export disposition record (JSON)</button>
+   </div>
+   <p id="signoff-status" role="status" aria-live="polite"></p>
+   <p class="limit" id="export-limit"></p>
+  </section>
+ </div>
+</main>
+
+<footer class="foot">
+ <p>Local reviewer workspace <span id="version"></span>. Not deployed, not a hosted service, and not a release gate. Exported records are version-bound internal artifacts, not authenticated or legal records.</p>
+</footer>
+<script type="module" src="workspace.js"></script>
+</body>
+</html>

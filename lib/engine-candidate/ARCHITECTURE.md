@@ -129,3 +129,6 @@ See `RUNBOOK.md` for the failure-mode catalog and recovery steps.
 
 ## Release gates
 The five release gates are tracked outside the candidate, in the internal package `lib/release-gate/` (`docs/architecture/RELEASE_EVIDENCE_PROTOCOL.md`). Its current record for this version shows every gate open. Nothing in the candidate, its tests or its documentation is counted as release evidence.
+
+## Local reviewer workspace
+Step 9 (the reviewer packet) can be read in `tools/local-reviewer-workspace/`, a local, offline page served on loopback only with `connect-src 'none'`. Before showing a packet it re-checks the packet against the generator's rules: the review ID, the packet ID, the history binding and the anchors (and, if the source text is supplied, its hash and every anchor slice). It then holds the reviewer's dispositions in memory, apart from the packet, and exports a version-bound disposition record only after sign-off. It does not run the candidate, and it is not release evidence. See `docs/architecture/LOCAL_REVIEWER_WORKSPACE_PROTOCOL.md`.
