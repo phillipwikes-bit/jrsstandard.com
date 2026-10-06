@@ -9,7 +9,7 @@ const APP = DIR + 'app/';
 const read = (f) => readFileSync(APP + f, 'utf8');
 // Comments are stripped before scanning, so a sentence that explains a prohibition is not mistaken for a use.
 export const stripComments = (src) => src.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:'"])\/\/.*$/gm, '$1');
-const code = ['workspace.js', 'core.js'].map(read).map(stripComments).join('\n');
+const code = ['workspace.js', 'core.js', 'correspondence.js'].map(read).map(stripComments).join('\n');
 const html = read('index.html');
 const page = code + '\n' + html + '\n' + read('workspace.css');
 const BANNED_API = [

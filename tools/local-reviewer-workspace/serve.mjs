@@ -21,6 +21,7 @@ const FILES = Object.freeze({
   '/workspace.css': ['workspace.css', 'text/css; charset=utf-8'],
   '/workspace.js': ['workspace.js', 'text/javascript; charset=utf-8'],
   '/core.js': ['core.js', 'text/javascript; charset=utf-8'],
+  '/correspondence.js': ['correspondence.js', 'text/javascript; charset=utf-8'],
   '/demo-packet.js': ['demo-packet.js', 'text/javascript; charset=utf-8'],
 });
 const HEADERS = {

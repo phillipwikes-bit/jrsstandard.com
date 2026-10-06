@@ -1,0 +1,25 @@
+{
+ "reviewed_dispositions_version": "0.1.0",
+ "rule": "Each entry is bound to the sha256 of the exact line text. If the line changes, the entry no longer applies and the scanner classifies the line afresh. An entry may set ALLOWED or HISTORICAL_ONLY, or acknowledge an AMBIGUOUS_REVIEW_REQUIRED finding, which stays visible and is reported for owner review. An entry that matches no finding fails the check.",
+ "reviewer": "repository tooling, 2026-10-06 (not an owner decision, and not a correspondence approval)",
+ "entries": [
+  {
+   "file": "api/_manifest/build.js",
+   "line_sha256": "f8eca84cb084e7995d352aa37badea605a009af654b298d76fed53b87317fd63",
+   "disposition": "ALLOWED",
+   "reason": "The sentence states the consequence of a prohibited relabelling (it \"would silently answer D-2 and D-3 in code\"). The builder refuses jrs_codebook_1.0 without an owner-declared mapping. API routes are outside this package, so the line is reviewed, not edited."
+  },
+  {
+   "file": "docs/architecture/PR39_MERGE_RECOMMENDATION_2026-10-06.md",
+   "line_sha256": "4a89ef819a8f9fa6a83890fcf7392f82bdd7e9aa9a576dab0d6767d41cd971f6",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "Describes prompt 0.3.0 wording that the recommendation identified as a conflict; prompt 0.4.0 removed it. The dated recommendation is preserved unchanged."
+  },
+  {
+   "file": "lib/engine-candidate/explanations.js",
+   "line_sha256": "4091a5ca2905f21641355ce1325b021c2477403c650a60c69730f93c01c0c0c3",
+   "disposition": "AMBIGUOUS_REVIEW_REQUIRED",
+   "reason": "The comment attributes to CODEBOOK_API_CORRESPONDENCE_REVIEW.md the statement that only basis_identification has an exact Codebook correspondence. That review classified the historical API key EXACT by name; no approved record carries it to this candidate, which declares CODEBOOK_CORRESPONDENCE \"not_asserted\". Not edited: any change to lib/engine-candidate/*.js moves the release-gate candidate_source_commit binding. Reported for owner review."
+  }
+ ]
+}

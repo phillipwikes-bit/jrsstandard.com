@@ -6,6 +6,12 @@
 - **`construct_validity_data.csv`** — the analysis-ready dataset. One row per (record × rater). Columns: `record_id`, `labeler_code`, `role`, the five condition ratings, and the overall `determination`.
 - Coverage: **10 records, 21 raters, 108 rated rows.** Each condition rated on a 3-level scale: `pass`, `review`, `gap`.
 
+> **Correction notice, 2026-10-06 (methodology vocabulary-integrity package). Nothing below was rewritten.**
+> **OLD FINDING:** the crosswalk below calls itself "authoritative", and the Status section records the naming reconciliation as "resolved".
+> **NEW EVIDENCE:** owner decision D-2 (`docs/enterprise-diligence/D-2_CODEBOOK_CORRESPONDENCE_MEMO.md`) records `cold_reviewer_clarity` as not equivalent to any JRS condition and intentionally unresolved. No owner approval exists for any row (`docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md`, record for `construct_validity_data.csv condition columns`).
+> **CORRECTED STATUS:** HISTORICAL RESEARCH LABELLING ONLY. No correspondence asserted.
+> **EXPLANATION:** the table is kept as the labelling used when this package was prepared. Do not use it to label factors as JRS conditions unless an approved correspondence record exists.
+
 ## The five conditions AS STORED IN THE DATA
 `basis_identification` · `cold_reviewer_clarity` · `accountability_support` · `reasoning_traceability` · `temporal_reconstructability`
 

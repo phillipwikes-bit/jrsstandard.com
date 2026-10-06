@@ -29,7 +29,7 @@ try {
   t("sends a Content-Security-Policy with connect-src 'none'", /connect-src 'none'/.test(csp) && /default-src 'none'/.test(csp) && /form-action 'none'/.test(csp) && !/https?:/.test(csp));
   t('sends no-store, nosniff and no-referrer', root.headers['cache-control'] === 'no-store' && root.headers['x-content-type-options'] === 'nosniff' && root.headers['referrer-policy'] === 'no-referrer');
   t('sets no cookie', !('set-cookie' in root.headers));
-  for (const f of ['/workspace.js', '/core.js', '/workspace.css', '/demo-packet.js']) t('serves ' + f, (await get(port, f)).status === 200);
+  for (const f of ['/workspace.js', '/core.js', '/correspondence.js', '/workspace.css', '/demo-packet.js']) t('serves ' + f, (await get(port, f)).status === 200);
   for (const f of ['/serve.mjs', '/../serve.mjs', '/%2e%2e/serve.mjs', '/app/core.js', '/.vercelignore', '/README.md', '/../../../CLAUDE.md']) t('does not serve ' + f, (await get(port, f)).status === 404);
   for (const m of ['POST', 'PUT', 'DELETE', 'PATCH']) t('refuses ' + m + ' (no uploads)', (await get(port, '/', { method: m })).status === 405);
   t('refuses a non-loopback Host header (DNS rebinding)', (await get(port, '/', { host: 'evil.example:' + port })).status === 421);

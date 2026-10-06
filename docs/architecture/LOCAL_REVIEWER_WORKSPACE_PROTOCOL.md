@@ -20,7 +20,7 @@ A local, offline page for one task: reading a reviewer packet that the local can
 - **Packet text is never treated as HTML.** It is set only as text. Refusal messages name fields and finding identifiers only, and nothing is written to the console.
 
 ## How a packet is checked before it is shown
-The core module (`app/core.js`) runs in both the browser and Node. It carries its own SHA-256 and canonical JSON, because the candidate's modules depend on `node:crypto`. The tests prove that both agree byte for byte with the candidate's functions on real packets.
+The core module (`app/core.js`) runs in both the browser and Node. It carries its own SHA-256 and canonical JSON, because the candidate's modules depend on `node:crypto`. The tests prove that both agree byte for byte with the candidate's functions on real packets. Codebook wording comes only from `app/correspondence.js`, generated from the methodology correspondence register (`docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md`): a mapped label renders only from an owner-approved record carrying its source hash and approval date. No such record exists, so every finding and every candidate key shows "No Codebook correspondence asserted." (added 2026-10-06).
 
 A packet is refused, and nothing from it is shown, unless all of the following hold:
 1. The structure is exact. An unknown field (a `score`, a `verdict`) is refused.

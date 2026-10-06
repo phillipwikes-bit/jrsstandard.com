@@ -3182,3 +3182,28 @@ Only four line groups differ between v7 and v8.
   - **AI-tool markers:** found in 20 of 29 areas. The identities in the history are Claude, Codex and two owner accounts.
   - **Tests:** 128 checks; 15 of 15 mutations caught after one fix (P15, which first survived).
   - **Not done:** no legal conclusion, transaction clearance, deployment, provider call, real-record use, public, route, Vercel, guard, credential, privacy or release-gate change.
+- 2026-10-06 (**METHODOLOGY CORRESPONDENCE AND VOCABULARY-INTEGRITY PACKAGE ADDED TO PR #39; INTERNAL; NO CORRESPONDENCE APPROVED OR CREATED**): owner-commissioned. FACT:
+  - **Tool:** `tools/methodology-integrity/`, excluded by `tools/`. Working tree only; no git, network, model or credential.
+    - Source register: 8 sources, each bound to the sha256 it was reviewed at, plus 5 correspondence decision records. CANONICAL: `codebook.html` v1.0 (its own statement and D-3) and `JRS-Standard.pdf` Version 2.0 (CLAUDE.md 36.1). Not canonical: `jrsstandard.html`, `methodology.html`, the Manifest schema, the DRR page and the construct-validity package (NOT_ASSESSED), and `standard/jrs-conditions.json` (DRAFT).
+    - Correspondence register: 69 records. APPROVED_CORRESPONDENCE 0, UNMAPPED 40, PROPOSED_NOT_APPROVED 3, HISTORICAL_REFERENCE_ONLY 6, NOT_ASSESSED 19, RETIRED 1. `cold_reviewer_clarity` and `accountability_support` are UNMAPPED. The other three candidate keys are proposals only (D-3 and BD-04, historical API keys).
+    - The validator refuses an approved record without a CANONICAL source, its reviewed hash, a defined source term, an exact location, an approver, a real approval date and an existing approval file. It also refuses EXACT_LABEL or DOCUMENTED_ALIAS without approval. The builder refuses to run when any source has changed since review.
+    - The scanner covered 69 files: ALLOWED 49, REQUIRES_APPROVED_RECORD 12, UNSUPPORTED_MAPPING 3, HISTORICAL_ONLY 16, AMBIGUOUS 8. Gated scope: 0 failures. The remaining findings are in the owner correspondence decision records, which are reported and not gated (Rule 10).
+  - **Repaired:**
+    - The construct-validity crosswalk put `cold_reviewer_clarity` beside Evidentiary Sufficiency, against D-2. It now has a dated correction notice, with the table kept.
+    - The workspace notice now reads "No Codebook correspondence asserted." through a generated, register-resolved snapshot (`app/correspondence.js`), on every finding card and every key status line.
+    - The candidate README now says no correspondence is asserted.
+  - **Not repaired, reported:** the comment in candidate `explanations.js` line 14 (any `.js` edit moves the release-gate binding), acknowledged as AMBIGUOUS.
+  - **Owner-review ambiguities:**
+    - BD-04 against the candidate's no-correspondence position.
+    - The aggregate condition: the PDF gives the whole-record role to Reconstructability, the Codebook to Evidentiary Sufficiency.
+    - `jrsstandard.html` v1.0, its "Four review conditions" note and its "ten conditions".
+    - The candidate comment above.
+    - The pairings in the decision records.
+  - **Tests:**
+    - methodology-integrity: 172 checks; 23 of 23 mutations caught.
+    - Workspace: 203 checks; 28 of 28.
+    - Release gate: 141; 34 of 34.
+    - Engine candidate: 17 suites; 67 of 67.
+    - Also passing: auth matrix, review-incomplete, public route alignment and public boundary.
+    - Guard: 164 checks, 39 failed, 1 skipped. That is the same failing set as HEAD, confirmed in a worktree.
+  - **Not done:** no owner approval requested or created. No public page, API, OpenAPI, sitemap, Vercel, credential, guard, privacy or release-gate change. No provider call, real record, holdout, deployment or external contact.

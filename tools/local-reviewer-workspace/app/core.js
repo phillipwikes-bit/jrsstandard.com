@@ -11,6 +11,12 @@
 // It cannot import the candidate's modules (they use node:crypto), so it carries its own
 // SHA-256 and canonical JSON. tests/local-reviewer-workspace/core.test.mjs proves both agree
 // byte for byte with the candidate's sha256 and canonicalJson on real packets.
+//
+// Codebook wording comes only from ./correspondence.js, generated from the methodology
+// correspondence register: a mapped label renders only from an owner-approved record with its
+// source hash and approval date. No such record exists, so every term shows the unmapped notice.
+import { NO_CORRESPONDENCE, codebookCorrespondenceText } from './correspondence.js';
+export { NO_CORRESPONDENCE, codebookCorrespondenceText };
 
 export const WORKSPACE_VERSION = 'jrs-local-reviewer-workspace/0.1.0';
 export const EXPORT_FORMAT = 'jrs-local-disposition-record/0.1.0';
@@ -24,7 +30,15 @@ export const SECTIONS = Object.freeze({
 });
 export const CONFIDENTIALITY_NOTICE = 'A reviewer packet can contain quotations from the record. Treat the packet, this window and any export as confidential as the record itself.';
 export const QUOTATION_NOTICE = 'An exact quotation shows where the text sits in the record. It does not show that the text supports the finding, or that the candidate finding is correct.';
-export const CODEBOOK_NOTICE = 'No Codebook mapping asserted. Candidate review keys are internal prompts of the local candidate, not JRS conditions.';
+export const CODEBOOK_NOTICE = NO_CORRESPONDENCE + ' Candidate review keys are internal prompts of the local candidate, not JRS conditions.';
+// The register term category of each kind of item the workspace shows.
+export const TERM_CATEGORY = Object.freeze({ source_preparation: 'SOURCE_PREP_CHECK', model_output_checks: 'MODEL_OUTPUT_CHECK', condition: 'CANDIDATE_KEY', flaw: 'CANDIDATE_FLAW_TYPE' });
+export function termOf(f) {
+  const it = f.item;
+  if (f.section === 'candidate_prompts') return it.kind === 'flaw' ? [TERM_CATEGORY.flaw, it.type] : [TERM_CATEGORY.condition, it.condition];
+  return [TERM_CATEGORY[f.section], it.code];
+}
+export function codebookTextFor(f) { const [c, t] = termOf(f); return codebookCorrespondenceText(c, t); }
 export const LIMITATION = 'This is a reviewer-created local disposition record. It is bound to the identified packet and version. It does not authenticate the reviewer, establish legal validity, establish semantic correctness, or authorize production use.';
 export const SIGN_OFF_STATEMENT = 'I reviewed every finding listed in this packet and recorded a disposition for each. This sign-off is not an approval of the record, not an access decision and not a validation of the candidate.';
 const MAX_NOTE = 2000;

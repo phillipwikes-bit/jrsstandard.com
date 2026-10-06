@@ -50,7 +50,8 @@ try {
     && (await page.locator('#list-candidate article').count()) === demo.model_findings.findings.length
     && (await page.locator('#list-checks article').count()) === demo.model_output_checks.length);
   t('candidate findings are labelled candidate-internal, not JRS or Codebook conditions', /not JRS conditions and not Codebook conditions/.test(await page.textContent('#candidate-desc')));
-  t('every finding states that no Codebook mapping is asserted', (await page.locator('article.finding').count()) === (await page.locator('article.finding dd', { hasText: 'No Codebook mapping asserted.' }).count()));
+  t('every finding states that no Codebook correspondence is asserted', (await page.locator('article.finding').count()) === (await page.locator('article.finding dd', { hasText: 'No Codebook correspondence asserted.' }).count()));
+  t('every candidate review key status states that no Codebook correspondence is asserted', (await page.locator('#key-status dd').count()) === 5 && (await page.locator('#key-status dd', { hasText: 'No Codebook correspondence asserted.' }).count()) === 5);
   t('quotations carry the location-not-support notice', (await page.locator('blockquote').count()) > 0 && (await page.locator('p.note-q').count()) === (await page.locator('blockquote').count()) && (await page.textContent('p.note-q')).includes('does not show that the text supports the finding'));
   t('no score, rating or percentage is shown', !/\b(score|rating|percent)\b|\d+\s*%|\d+\s*\/\s*(5|10|100)\b/i.test(bodyText));
   t('no ready, approved, compliant or defensible verdict is shown', !/\b(record|packet|finding)s?\s+(is|are)\s+(ready|approved|compliant|defensible)\b/i.test(bodyText) && !/\b(READY|APPROVED|COMPLIANT|DEFENSIBLE)\b/.test(bodyText));
@@ -132,7 +133,7 @@ try {
   const fetchBlocked = await page.evaluate(async () => { try { await fetch('/core.js'); return false; } catch { return true; } });
   t("the page's CSP blocks a network request even to its own origin", fetchBlocked);
   t('every request went to the loopback server or a local blob', requests.length > 0 && requests.every((u) => u.startsWith(origin + '/') || u.startsWith('blob:')), requests.filter((u) => !u.startsWith(origin)).join(', '));
-  t('the page requested only the workspace files', [...new Set(requests.filter((u) => u.startsWith(origin)).map((u) => new URL(u).pathname))].every((p) => ['/', '/workspace.css', '/workspace.js', '/core.js', '/demo-packet.js'].includes(p)));
+  t('the page requested only the workspace files', [...new Set(requests.filter((u) => u.startsWith(origin)).map((u) => new URL(u).pathname))].every((p) => ['/', '/workspace.css', '/workspace.js', '/core.js', '/correspondence.js', '/demo-packet.js'].includes(p)));
   t('no script error occurred', errors.length === 0, errors.join('; '));
   t('the workspace wrote nothing to the console except the CSP refusal the test provoked', consoleMsgs.every((m) => /Content Security Policy|connect-src/.test(m)), consoleMsgs.filter((m) => !/Content Security Policy|connect-src/.test(m)).join(' | '));
 } finally { await browser.close(); server.close(); rmSync(tmp, { recursive: true, force: true }); }

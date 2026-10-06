@@ -1,0 +1,2107 @@
+{
+ "register_version": "jrs-methodology-correspondence-register/0.1.0",
+ "record_schema": "tools/methodology-integrity/schema/correspondence-record.schema.json",
+ "governing_rule": "A shared word, a similar concept or a plausible interpretation does not establish a formal mapping. Without an owner-approved record, the status is UNMAPPED, PROPOSED_NOT_APPROVED, HISTORICAL_REFERENCE_ONLY, NOT_ASSESSED or RETIRED, and the display is \"No Codebook correspondence asserted.\"",
+ "source_register_digest": "2a22dab2e4c5c0b352191f048491db48a3769ad6428582e1d218288739beaaa4",
+ "record_count": 69,
+ "status_summary": {
+  "APPROVED_CORRESPONDENCE": 0,
+  "UNMAPPED": 40,
+  "PROPOSED_NOT_APPROVED": 3,
+  "HISTORICAL_REFERENCE_ONLY": 6,
+  "NOT_ASSESSED": 19,
+  "RETIRED": 1
+ },
+ "records_digest": "e245e0a316aa62570bbd640d0b721148ef27b7695b79d5722b46bfd67d3ec6a9",
+ "records": [
+  {
+   "correspondence_id": "MC-001",
+   "methodology_source_id": "SRC-CODEBOOK",
+   "methodology_source_sha256": "f70d1cf403f1c5adae5e02629e4b9e0862331cad257b999accd2bc632994afbb",
+   "authoritative_source_term": "Reconstructability",
+   "candidate_term": "Reconstructability",
+   "term_category": "JRS_CONDITION",
+   "term_location": {
+    "path": "JRS-Standard.pdf",
+    "reference": "Core review requirements, 01"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "The same name appears in codebook.html v1.0 (RC 1) and in JRS-Standard.pdf Version 2.0 (Core review requirements, 01).",
+   "source_reference": "codebook.html, RC 1 heading and definition",
+   "limitation": "Identical names do not establish identical definitions. Definitional alignment between the Standard PDF and the Codebook has not been assessed. The PDF calls Reconstructability \"the whole-record requirement the other four serve\"; the Codebook gives that aggregate role to Evidentiary Sufficiency.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-002",
+   "methodology_source_id": "SRC-CODEBOOK",
+   "methodology_source_sha256": "f70d1cf403f1c5adae5e02629e4b9e0862331cad257b999accd2bc632994afbb",
+   "authoritative_source_term": "Basis Identification",
+   "candidate_term": "Basis Identification",
+   "term_category": "JRS_CONDITION",
+   "term_location": {
+    "path": "JRS-Standard.pdf",
+    "reference": "Core review requirements, 02"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "The same name appears in codebook.html v1.0 (RC 2) and in JRS-Standard.pdf Version 2.0 (Core review requirements, 02).",
+   "source_reference": "codebook.html, RC 2 heading and definition",
+   "limitation": "Identical names do not establish identical definitions. Definitional alignment between the Standard PDF and the Codebook has not been assessed.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-003",
+   "methodology_source_id": "SRC-CODEBOOK",
+   "methodology_source_sha256": "f70d1cf403f1c5adae5e02629e4b9e0862331cad257b999accd2bc632994afbb",
+   "authoritative_source_term": "Chronology",
+   "candidate_term": "Chronology",
+   "term_category": "JRS_CONDITION",
+   "term_location": {
+    "path": "JRS-Standard.pdf",
+    "reference": "Core review requirements, 03"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "The same name appears in codebook.html v1.0 (RC 3) and in JRS-Standard.pdf Version 2.0 (Core review requirements, 03).",
+   "source_reference": "codebook.html, RC 3 heading and definition",
+   "limitation": "Identical names do not establish identical definitions. Definitional alignment between the Standard PDF and the Codebook has not been assessed.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-004",
+   "methodology_source_id": "SRC-CODEBOOK",
+   "methodology_source_sha256": "f70d1cf403f1c5adae5e02629e4b9e0862331cad257b999accd2bc632994afbb",
+   "authoritative_source_term": "Decision-Process Traceability",
+   "candidate_term": "Decision-Process Traceability",
+   "term_category": "JRS_CONDITION",
+   "term_location": {
+    "path": "JRS-Standard.pdf",
+    "reference": "Core review requirements, 04"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "The same name appears in codebook.html v1.0 (RC 4) and in JRS-Standard.pdf Version 2.0 (Core review requirements, 04).",
+   "source_reference": "codebook.html, RC 4 heading and definition",
+   "limitation": "Identical names do not establish identical definitions. Definitional alignment between the Standard PDF and the Codebook has not been assessed.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-005",
+   "methodology_source_id": "SRC-CODEBOOK",
+   "methodology_source_sha256": "f70d1cf403f1c5adae5e02629e4b9e0862331cad257b999accd2bc632994afbb",
+   "authoritative_source_term": "Evidentiary Sufficiency",
+   "candidate_term": "Evidentiary Sufficiency",
+   "term_category": "JRS_CONDITION",
+   "term_location": {
+    "path": "JRS-Standard.pdf",
+    "reference": "Core review requirements, 05"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "The same name appears in codebook.html v1.0 (RC 5) and in JRS-Standard.pdf Version 2.0 (Core review requirements, 05).",
+   "source_reference": "codebook.html, RC 5 heading and definition",
+   "limitation": "Identical names do not establish identical definitions. Definitional alignment between the Standard PDF and the Codebook has not been assessed. The Codebook calls it \"the aggregate condition\"; the PDF gives the whole-record role to Reconstructability.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-006",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "basis_identification",
+   "term_category": "CANDIDATE_KEY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CONDITION_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "PROPOSED_NOT_APPROVED",
+   "evidence_basis": "The candidate declares CODEBOOK_CORRESPONDENCE \"not_asserted\" and CODEBOOK_CORRESPONDENCE_RECORD null. D-3 classified the historical API key EXACT by name only; a name match is not an approved definitional correspondence for this candidate.",
+   "source_reference": null,
+   "limitation": "Prompt wording is not a Codebook definition. A shared or similar name is not a correspondence. No Codebook correspondence asserted.",
+   "proposal": {
+    "proposed_source_id": "SRC-CODEBOOK",
+    "proposed_source_term": "Basis Identification",
+    "reference": "docs/enterprise-diligence/JRS_BOARD_DECISION_REGISTER_2026-09-16.md (BD-04); docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md (D-3)",
+    "note": "The proposal concerns the historical API engine key of the same name. It was \"DECLARED, not UPGRADED\" and was never approved for this candidate."
+   },
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-007",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "reasoning_traceability",
+   "term_category": "CANDIDATE_KEY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CONDITION_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "PROPOSED_NOT_APPROVED",
+   "evidence_basis": "The candidate declares CODEBOOK_CORRESPONDENCE \"not_asserted\" and CODEBOOK_CORRESPONDENCE_RECORD null. BD-04 declared the historical API key SEMANTIC / INFERRED as \"the intended mapping\".",
+   "source_reference": null,
+   "limitation": "Prompt wording is not a Codebook definition. A shared or similar name is not a correspondence. No Codebook correspondence asserted.",
+   "proposal": {
+    "proposed_source_id": "SRC-CODEBOOK",
+    "proposed_source_term": "Reconstructability",
+    "reference": "docs/enterprise-diligence/JRS_BOARD_DECISION_REGISTER_2026-09-16.md (BD-04); docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md (D-3)",
+    "note": "The proposal concerns the historical API engine key of the same name. It was \"DECLARED, not UPGRADED\" and was never approved for this candidate."
+   },
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-008",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "temporal_reconstructability",
+   "term_category": "CANDIDATE_KEY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CONDITION_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "PROPOSED_NOT_APPROVED",
+   "evidence_basis": "The candidate declares CODEBOOK_CORRESPONDENCE \"not_asserted\" and CODEBOOK_CORRESPONDENCE_RECORD null. BD-04 declared the historical API key SEMANTIC / INFERRED as \"the intended mapping\".",
+   "source_reference": null,
+   "limitation": "Prompt wording is not a Codebook definition. A shared or similar name is not a correspondence. No Codebook correspondence asserted.",
+   "proposal": {
+    "proposed_source_id": "SRC-CODEBOOK",
+    "proposed_source_term": "Chronology",
+    "reference": "docs/enterprise-diligence/JRS_BOARD_DECISION_REGISTER_2026-09-16.md (BD-04); docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md (D-3)",
+    "note": "The proposal concerns the historical API engine key of the same name. It was \"DECLARED, not UPGRADED\" and was never approved for this candidate."
+   },
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-009",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "accountability_support",
+   "term_category": "CANDIDATE_KEY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CONDITION_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "EXPLICITLY_UNMAPPED_KEYS in the candidate lists it, and CONDITION_CATEGORY gives it no category. BD-04 declared the historical API key of the same name SEMANTIC / INFERRED to Decision-Process Traceability; the candidate does not carry that declaration forward.",
+   "source_reference": null,
+   "limitation": "Not Evidentiary Sufficiency and not Decision-Process Traceability without an approved record. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-010",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "cold_reviewer_clarity",
+   "term_category": "CANDIDATE_KEY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CONDITION_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "Owner decision D-2: insufficiently established; not a JRS condition, not an aggregate, not a sixth condition, not equivalent to another condition. EXPLICITLY_UNMAPPED_KEYS in the candidate lists it.",
+   "source_reference": null,
+   "limitation": "Not a JRS condition. Intentionally unresolved under D-2. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-011",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "missing_logical_bridge",
+   "term_category": "CANDIDATE_EXPLANATION_CATEGORY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CATEGORIES"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "The candidate states the categories are \"a review aid for this candidate only\" and \"NOT a mapping to the JRS Codebook\".",
+   "source_reference": null,
+   "limitation": "Candidate-internal review aid. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-012",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "missing_identifiable_basis",
+   "term_category": "CANDIDATE_EXPLANATION_CATEGORY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CATEGORIES"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "The candidate states the categories are \"a review aid for this candidate only\" and \"NOT a mapping to the JRS Codebook\".",
+   "source_reference": null,
+   "limitation": "Candidate-internal review aid. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-013",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "chronology_gap",
+   "term_category": "CANDIDATE_EXPLANATION_CATEGORY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CATEGORIES"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "The candidate states the categories are \"a review aid for this candidate only\" and \"NOT a mapping to the JRS Codebook\".",
+   "source_reference": null,
+   "limitation": "Candidate-internal review aid. Its label shares the word \"Chronology\" with a Codebook condition name; a shared word is not a correspondence. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-014",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "unsupported_conclusion",
+   "term_category": "CANDIDATE_EXPLANATION_CATEGORY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CATEGORIES"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "The candidate states the categories are \"a review aid for this candidate only\" and \"NOT a mapping to the JRS Codebook\".",
+   "source_reference": null,
+   "limitation": "Candidate-internal review aid. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-015",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "insufficient_evidence",
+   "term_category": "CANDIDATE_EXPLANATION_CATEGORY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CATEGORIES"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "The candidate states the categories are \"a review aid for this candidate only\" and \"NOT a mapping to the JRS Codebook\".",
+   "source_reference": null,
+   "limitation": "Candidate-internal review aid. Its wording resembles the Codebook name \"Evidentiary Sufficiency\"; the resemblance is not a correspondence. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-016",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "reasoning_elision",
+   "term_category": "CANDIDATE_FLAW_TYPE",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "FLAW_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A finding type of the candidate adapter contract (ADAPTER_FLAW_TYPES).",
+   "source_reference": null,
+   "limitation": "Candidate output vocabulary, not methodology vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-017",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "evidentiary_overreach",
+   "term_category": "CANDIDATE_FLAW_TYPE",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "FLAW_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A finding type of the candidate adapter contract (ADAPTER_FLAW_TYPES).",
+   "source_reference": null,
+   "limitation": "Candidate output vocabulary, not methodology vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-018",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "chronology_collapse",
+   "term_category": "CANDIDATE_FLAW_TYPE",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "FLAW_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A finding type of the candidate adapter contract (ADAPTER_FLAW_TYPES).",
+   "source_reference": null,
+   "limitation": "Candidate output vocabulary, not methodology vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-019",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "unsupported_content",
+   "term_category": "CANDIDATE_FLAW_TYPE",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "FLAW_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A finding type of the candidate adapter contract (ADAPTER_FLAW_TYPES).",
+   "source_reference": null,
+   "limitation": "Candidate output vocabulary, not methodology vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-020",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "extraction_omission",
+   "term_category": "CANDIDATE_FLAW_TYPE",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "FLAW_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A finding type of the candidate adapter contract (ADAPTER_FLAW_TYPES).",
+   "source_reference": null,
+   "limitation": "Candidate output vocabulary, not methodology vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-021",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "truncation",
+   "term_category": "CANDIDATE_FLAW_TYPE",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "FLAW_CATEGORY"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A finding type of the candidate adapter contract (ADAPTER_FLAW_TYPES).",
+   "source_reference": null,
+   "limitation": "Candidate output vocabulary, not methodology vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-022",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "placeholder",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-023",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "referenced_material_not_in_record",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-024",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "profile_element_not_found",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-025",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "off_record_reference",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-026",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "assertion_without_basis",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-027",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "pages_missing",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-028",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "ends_mid_sentence",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-029",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "ends_with_ellipsis",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-030",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "explicit_truncation_marker",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-031",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "unclosed_quotation",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-032",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "instruction_like_text",
+   "term_category": "SOURCE_PREP_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic pattern check run by lib/engine-candidate/source-prep.js before any model call.",
+   "source_reference": null,
+   "limitation": "A deterministic input control. It is not a contextual JRS determination and not a JRS finding. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-033",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "adapter_output_rejected",
+   "term_category": "MODEL_OUTPUT_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic check the candidate applies to model output.",
+   "source_reference": null,
+   "limitation": "A check on the model output, not on the record, and not a JRS determination. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-034",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "excerpt_not_in_record",
+   "term_category": "MODEL_OUTPUT_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic check the candidate applies to model output.",
+   "source_reference": null,
+   "limitation": "A check on the model output, not on the record, and not a JRS determination. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-035",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "rejected_flaw_type",
+   "term_category": "MODEL_OUTPUT_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic check the candidate applies to model output.",
+   "source_reference": null,
+   "limitation": "A check on the model output, not on the record, and not a JRS determination. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-036",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "withheld_prohibited_inference",
+   "term_category": "MODEL_OUTPUT_CHECK",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "EXTRACTION"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A deterministic check the candidate applies to model output.",
+   "source_reference": null,
+   "limitation": "A check on the model output, not on the record, and not a JRS determination. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-037",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "Source-preparation findings",
+   "term_category": "WORKSPACE_LABEL",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/core.js",
+    "reference": "SECTIONS.source_preparation"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A label the workspace displays.",
+   "source_reference": null,
+   "limitation": "Display vocabulary of the local workspace. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-038",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "Candidate review prompts and findings",
+   "term_category": "WORKSPACE_LABEL",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/core.js",
+    "reference": "SECTIONS.candidate_prompts"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A label the workspace displays.",
+   "source_reference": null,
+   "limitation": "Display vocabulary of the local workspace. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-039",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "Model-output checks",
+   "term_category": "WORKSPACE_LABEL",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/core.js",
+    "reference": "SECTIONS.model_output_checks"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A label the workspace displays.",
+   "source_reference": null,
+   "limitation": "Display vocabulary of the local workspace. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-040",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "Candidate review key",
+   "term_category": "WORKSPACE_LABEL",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/workspace.js",
+    "reference": "findingCard"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A label the workspace displays.",
+   "source_reference": null,
+   "limitation": "Display vocabulary of the local workspace. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-041",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "Candidate finding type",
+   "term_category": "WORKSPACE_LABEL",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/workspace.js",
+    "reference": "findingCard"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A label the workspace displays.",
+   "source_reference": null,
+   "limitation": "Display vocabulary of the local workspace. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-042",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "Candidate-internal category",
+   "term_category": "WORKSPACE_LABEL",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/workspace.js",
+    "reference": "findingCard"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A label the workspace displays.",
+   "source_reference": null,
+   "limitation": "Display vocabulary of the local workspace. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-043",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "CONFIRMED_FOR_FURTHER_REVIEW",
+   "term_category": "WORKSPACE_DISPOSITION",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/core.js",
+    "reference": "DISPOSITIONS"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A reviewer disposition value of the local workspace.",
+   "source_reference": null,
+   "limitation": "A reviewer's disposition on a candidate finding. It is not a JRS determination, an approval or a routing value. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-044",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "NOT_CONFIRMED",
+   "term_category": "WORKSPACE_DISPOSITION",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/core.js",
+    "reference": "DISPOSITIONS"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A reviewer disposition value of the local workspace.",
+   "source_reference": null,
+   "limitation": "A reviewer's disposition on a candidate finding. It is not a JRS determination, an approval or a routing value. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-045",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "NEEDS_CLARIFICATION",
+   "term_category": "WORKSPACE_DISPOSITION",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/core.js",
+    "reference": "DISPOSITIONS"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A reviewer disposition value of the local workspace.",
+   "source_reference": null,
+   "limitation": "A reviewer's disposition on a candidate finding. It is not a JRS determination, an approval or a routing value. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-046",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "OUT_OF_SCOPE",
+   "term_category": "WORKSPACE_DISPOSITION",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/core.js",
+    "reference": "DISPOSITIONS"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A reviewer disposition value of the local workspace.",
+   "source_reference": null,
+   "limitation": "A reviewer's disposition on a candidate finding. It is not a JRS determination, an approval or a routing value. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-047",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "NO_DISPOSITION",
+   "term_category": "WORKSPACE_DISPOSITION",
+   "term_location": {
+    "path": "tools/local-reviewer-workspace/app/core.js",
+    "reference": "DISPOSITIONS"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "A reviewer disposition value of the local workspace.",
+   "source_reference": null,
+   "limitation": "A reviewer's disposition on a candidate finding. It is not a JRS determination, an approval or a routing value. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-048",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "jrs_codebook_1.0",
+   "term_category": "MANIFEST_VALUE",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.condition_vocabulary.enum"
+   },
+   "mapping_type": "IMPLEMENTATION_REFERENCE",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "The schema allows the value; api/_manifest/build.js refuses it unless an owner-declared mapping is supplied.",
+   "source_reference": null,
+   "limitation": "Names a vocabulary; it does not establish that any emitted key is a Codebook condition. No owner-declared mapping exists. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-049",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "review_engine_keys",
+   "term_category": "MANIFEST_VALUE",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.condition_vocabulary.enum"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "UNMAPPED",
+   "evidence_basis": "The schema states a generator without an owner-declared mapping MUST emit review_engine_keys.",
+   "source_reference": null,
+   "limitation": "Declares implementation keys, not methodology terms. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-050",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "conditions",
+   "term_category": "MANIFEST_FIELD",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.conditions"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "A Manifest field holding five keyed statuses.",
+   "source_reference": null,
+   "limitation": "A field name, not a methodology term. Its keys are interpreted only through condition_vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-051",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "pass",
+   "term_category": "MANIFEST_VALUE",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.conditions.additionalProperties.properties.status.enum"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "A Manifest condition status value. The research datasets use the same three words.",
+   "source_reference": null,
+   "limitation": "A shared word across the Manifest and the research data is not a shared definition. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-052",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "review",
+   "term_category": "MANIFEST_VALUE",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.conditions.additionalProperties.properties.status.enum"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "A Manifest condition status value. The research datasets use the same three words.",
+   "source_reference": null,
+   "limitation": "A shared word across the Manifest and the research data is not a shared definition. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-053",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "gap",
+   "term_category": "MANIFEST_VALUE",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.conditions.additionalProperties.properties.status.enum"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "A Manifest condition status value. The research datasets use the same three words.",
+   "source_reference": null,
+   "limitation": "A shared word across the Manifest and the research data is not a shared definition. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-054",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "jrs_version",
+   "term_category": "MANIFEST_FIELD",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.jrs_version"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "The JRS version the Manifest names.",
+   "source_reference": null,
+   "limitation": "Naming a version is not a correspondence between any emitted key and that version. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-055",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "codebook_version",
+   "term_category": "MANIFEST_FIELD",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.codebook_version"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "The Codebook version the Manifest names.",
+   "source_reference": null,
+   "limitation": "Naming a version is not a correspondence between any emitted key and that version. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-056",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "routing",
+   "term_category": "MANIFEST_FIELD",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.routing"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "A Manifest field holding a value and its vocabulary.",
+   "source_reference": null,
+   "limitation": "A field name, not a methodology term. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-057",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "openapi_1.0_routing",
+   "term_category": "MANIFEST_VALUE",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.routing.properties.vocabulary.enum"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "A routing vocabulary value; api/_manifest/build.js records routing with its vocabulary and never translates it.",
+   "source_reference": null,
+   "limitation": "Implementation vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-058",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "engine_determination",
+   "term_category": "MANIFEST_VALUE",
+   "term_location": {
+    "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+    "reference": "properties.routing.properties.vocabulary.enum"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "A routing vocabulary value; api/_manifest/build.js records routing with its vocabulary and never translates it.",
+   "source_reference": null,
+   "limitation": "Implementation vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-059",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "Decision Reconstruction Risk (DRR)",
+   "term_category": "RESEARCH_TERM",
+   "term_location": {
+    "path": "decision-reconstruction-risk.html",
+    "reference": "page title and DefinedTerm"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "Defined on the public DRR page and used across the research files.",
+   "source_reference": null,
+   "limitation": "A research and public term. It is not Engine vocabulary and no candidate output measures it. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-060",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "Ready / Needs work / Gap",
+   "term_category": "RESEARCH_TERM",
+   "term_location": {
+    "path": "research/JRS_PreRegistered_Analysis_Plan.md",
+    "reference": "Determination scale"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "The determination scale used by human reviewers in the research programme.",
+   "source_reference": null,
+   "limitation": "A human-reviewer research scale. The candidate emits no determination, and this scale is not Engine vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-061",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "ten conditions",
+   "term_category": "RESEARCH_TERM",
+   "term_location": {
+    "path": "jrsstandard.html",
+    "reference": "section \"The Ten Conditions\""
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "A list of documentation failure conditions on the Standard page.",
+   "source_reference": null,
+   "limitation": "A separate vocabulary from the five review conditions. Not Engine vocabulary. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-062",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "five JRS conditions (as applied by human reviewers)",
+   "term_category": "RESEARCH_TERM",
+   "term_location": {
+    "path": "research/DRR_Detection_Validation_Protocol.md",
+    "reference": "Arm A"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "NOT_ASSESSED",
+   "evidence_basis": "Research protocols describe human reviewers applying the five conditions.",
+   "source_reference": null,
+   "limitation": "Describes human review in the research programme, not the Engine candidate. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-063",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "construct_validity_data.csv condition columns",
+   "term_category": "RESEARCH_TERM",
+   "term_location": {
+    "path": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+    "reference": "Condition crosswalk"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "HISTORICAL_REFERENCE_ONLY",
+   "evidence_basis": "The package carries a crosswalk from data keys to conditions that it calls \"authoritative\", including a row pairing cold_reviewer_clarity with Evidentiary Sufficiency; no correspondence asserted here.",
+   "source_reference": null,
+   "limitation": "The crosswalk has no owner approval and its cold_reviewer_clarity row conflicts with D-2. It is recorded as historical research labelling only and is not carried into this register. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-064",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "basis_identification",
+   "term_category": "HISTORICAL_ENGINE_KEY",
+   "term_location": {
+    "path": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+    "reference": "historical API engine key set"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "HISTORICAL_REFERENCE_ONLY",
+   "evidence_basis": "D-3 review: EXACT by name. Recorded for the closed historical API engine (api/v1/review-engine.js).",
+   "source_reference": null,
+   "limitation": "Historical reference only. Not carried forward to the local candidate, and not an approved correspondence. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-065",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "reasoning_traceability",
+   "term_category": "HISTORICAL_ENGINE_KEY",
+   "term_location": {
+    "path": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+    "reference": "historical API engine key set"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "HISTORICAL_REFERENCE_ONLY",
+   "evidence_basis": "BD-04: SEMANTIC / INFERRED to Reconstructability, declared not upgraded. Recorded for the closed historical API engine (api/v1/review-engine.js).",
+   "source_reference": null,
+   "limitation": "Historical reference only. Not carried forward to the local candidate, and not an approved correspondence. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-066",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "temporal_reconstructability",
+   "term_category": "HISTORICAL_ENGINE_KEY",
+   "term_location": {
+    "path": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+    "reference": "historical API engine key set"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "HISTORICAL_REFERENCE_ONLY",
+   "evidence_basis": "BD-04: SEMANTIC / INFERRED to Chronology, declared not upgraded. Recorded for the closed historical API engine (api/v1/review-engine.js).",
+   "source_reference": null,
+   "limitation": "Historical reference only. Not carried forward to the local candidate, and not an approved correspondence. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-067",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "accountability_support",
+   "term_category": "HISTORICAL_ENGINE_KEY",
+   "term_location": {
+    "path": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+    "reference": "historical API engine key set"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "HISTORICAL_REFERENCE_ONLY",
+   "evidence_basis": "BD-04: SEMANTIC / INFERRED to Decision-Process Traceability, declared not upgraded. Recorded for the closed historical API engine (api/v1/review-engine.js).",
+   "source_reference": null,
+   "limitation": "Historical reference only. Not carried forward to the local candidate, and not an approved correspondence. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-068",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "cold_reviewer_clarity",
+   "term_category": "HISTORICAL_ENGINE_KEY",
+   "term_location": {
+    "path": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+    "reference": "historical API engine key set"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "HISTORICAL_REFERENCE_ONLY",
+   "evidence_basis": "D-2: insufficiently established, intentionally unresolved. Recorded for the closed historical API engine (api/v1/review-engine.js).",
+   "source_reference": null,
+   "limitation": "Historical reference only. Not carried forward to the local candidate, and not an approved correspondence. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  },
+  {
+   "correspondence_id": "MC-069",
+   "methodology_source_id": null,
+   "methodology_source_sha256": null,
+   "authoritative_source_term": null,
+   "candidate_term": "accountability_support",
+   "term_category": "CANDIDATE_KEY",
+   "term_location": {
+    "path": "lib/engine-candidate/explanations.js",
+    "reference": "CONDITION_CATEGORY (explanations before 0.2.0)"
+   },
+   "mapping_type": "NO_CORRESPONDENCE_ASSERTED",
+   "status": "RETIRED",
+   "evidence_basis": "Before explanations/0.2.0 the key sat under the insufficient_evidence category, which mirrored the Codebook's Evidentiary Sufficiency wording.",
+   "source_reference": null,
+   "limitation": "Retired 2026-10-06 after the PR #39 source-alignment review. No Codebook correspondence asserted.",
+   "proposal": null,
+   "owner_approval": {
+    "approved": false,
+    "approver": null,
+    "approval_date": null,
+    "approval_reference": null
+   },
+   "change_history": [
+    {
+     "date": "2026-10-06",
+     "change": "explanations/0.2.0 removed the insufficient_evidence assignment."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Record created by the methodology vocabulary-integrity package. No owner approval exists or is implied."
+    }
+   ]
+  }
+ ]
+}

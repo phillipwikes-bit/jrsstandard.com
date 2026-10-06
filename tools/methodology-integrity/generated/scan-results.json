@@ -1,0 +1,911 @@
+{
+ "scanner": "jrs-methodology-vocabulary-scan/0.1.0",
+ "register_records_digest": "e245e0a316aa62570bbd640d0b721148ef27b7695b79d5722b46bfd67d3ec6a9",
+ "files_scanned": 69,
+ "scope": [
+  "candidate",
+  "workspace",
+  "methodology-integrity",
+  "manifest",
+  "protocol-and-internal-docs",
+  "research-summary",
+  "correspondence-records"
+ ],
+ "report_only_groups": [
+  "correspondence-records"
+ ],
+ "summary": {
+  "ALLOWED": 49,
+  "REQUIRES_APPROVED_RECORD": 12,
+  "UNSUPPORTED_MAPPING": 3,
+  "HISTORICAL_ONLY": 16,
+  "AMBIGUOUS_REVIEW_REQUIRED": 8
+ },
+ "gate": {
+  "failures": 0,
+  "stale_reviews": [],
+  "bad_reviews": []
+ },
+ "findings": [
+  {
+   "group": "candidate",
+   "file": "lib/engine-candidate/README.md",
+   "line": 29,
+   "phrase": "accountability_support + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "candidate",
+   "file": "lib/engine-candidate/explanations.js",
+   "line": 14,
+   "phrase": "has an exact Codebook correspondence",
+   "classification": "CORRESPONDENCE_CLAIM",
+   "disposition": "AMBIGUOUS_REVIEW_REQUIRED",
+   "reason": "reviewed: The comment attributes to CODEBOOK_API_CORRESPONDENCE_REVIEW.md the statement that only basis_identification has an exact Codebook correspondence. That review classified the historical API key EXACT by name; no approved record carries it to this candidate, which declares CODEBOOK_CORRESPONDENCE \"not_asserted\". Not edited: any change to lib/engine-candidate/*.js moves the release-gate candidate_source_commit binding. Reported for owner review.",
+   "acknowledged": true
+  },
+  {
+   "group": "workspace",
+   "file": "tools/local-reviewer-workspace/app/workspace.js",
+   "line": 85,
+   "phrase": "are not JRS conditions",
+   "classification": "JRS_CONDITION_CLAIM",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "methodology-integrity",
+   "file": "tools/methodology-integrity/lib/records.js",
+   "line": 64,
+   "phrase": "basis_identification + Basis Identification",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "methodology-integrity",
+   "file": "tools/methodology-integrity/lib/records.js",
+   "line": 65,
+   "phrase": "reasoning_traceability + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "methodology-integrity",
+   "file": "tools/methodology-integrity/lib/records.js",
+   "line": 66,
+   "phrase": "temporal_reconstructability + Chronology",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "methodology-integrity",
+   "file": "tools/methodology-integrity/lib/records.js",
+   "line": 119,
+   "phrase": "is a Codebook condition",
+   "classification": "JRS_CONDITION_CLAIM",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "methodology-integrity",
+   "file": "tools/methodology-integrity/lib/records.js",
+   "line": 145,
+   "phrase": "cold_reviewer_clarity + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "methodology-integrity",
+   "file": "tools/methodology-integrity/lib/records.js",
+   "line": 152,
+   "phrase": "basis_identification + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "methodology-integrity",
+   "file": "tools/methodology-integrity/lib/records.js",
+   "line": 153,
+   "phrase": "temporal_reconstructability + Chronology",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "methodology-integrity",
+   "file": "tools/methodology-integrity/lib/sources.js",
+   "line": 58,
+   "phrase": "equivalent to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "methodology-integrity",
+   "file": "tools/methodology-integrity/lib/sources.js",
+   "line": 61,
+   "phrase": "reasoning_traceability + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "manifest",
+   "file": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+   "line": 126,
+   "phrase": "as Codebook conditions",
+   "classification": "JRS_CONDITION_CLAIM",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "manifest",
+   "file": "api/_manifest/build.js",
+   "line": 16,
+   "phrase": "as Codebook conditions",
+   "classification": "JRS_CONDITION_CLAIM",
+   "disposition": "ALLOWED",
+   "reason": "reviewed: The sentence states the consequence of a prohibited relabelling (it \"would silently answer D-2 and D-3 in code\"). The builder refuses jrs_codebook_1.0 without an owner-declared mapping. API routes are outside this package, so the line is reviewed, not edited.",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/JRS_EVIDENCE_DECISION_RECONSTRUCTION_MANIFEST_SPEC_v1.0.md",
+   "line": 104,
+   "phrase": "as Codebook conditions",
+   "classification": "JRS_CONDITION_CLAIM",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 36,
+   "phrase": "basis_identification + Basis Identification",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 37,
+   "phrase": "reasoning_traceability + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 38,
+   "phrase": "temporal_reconstructability + Chronology",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 39,
+   "phrase": "accountability_support + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 68,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 69,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 70,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 71,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 72,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 73,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 74,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 75,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 76,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 77,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 78,
+   "phrase": "contextual JRS determination",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 114,
+   "phrase": "is a Codebook condition",
+   "classification": "JRS_CONDITION_CLAIM",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 161,
+   "phrase": "accountability_support + Decision-Process Traceability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 162,
+   "phrase": "equivalent to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 214,
+   "phrase": "five JRS conditions",
+   "classification": "FIVE_CONDITIONS_FOR_KEYS",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 215,
+   "phrase": "cold_reviewer_clarity + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 217,
+   "phrase": "reasoning_traceability + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 218,
+   "phrase": "temporal_reconstructability + Chronology",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 219,
+   "phrase": "accountability_support + Decision-Process Traceability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_CORRESPONDENCE_REGISTER.md",
+   "line": 221,
+   "phrase": "accountability_support + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_SOURCE_REGISTER.md",
+   "line": 89,
+   "phrase": "equivalent to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_SOURCE_REGISTER.md",
+   "line": 92,
+   "phrase": "reasoning_traceability + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_VOCABULARY_INTEGRITY_REPORT.md",
+   "line": 54,
+   "phrase": "cold_reviewer_clarity + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_VOCABULARY_INTEGRITY_REPORT.md",
+   "line": 56,
+   "phrase": "contextual JRS determinations",
+   "classification": "SOURCE_PREP_AS_DETERMINATION",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_VOCABULARY_INTEGRITY_REPORT.md",
+   "line": 80,
+   "phrase": "cold_reviewer_clarity + RC5",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_VOCABULARY_INTEGRITY_REPORT.md",
+   "line": 82,
+   "phrase": "accountability_support + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_VOCABULARY_INTEGRITY_REPORT.md",
+   "line": 85,
+   "phrase": "has an exact Codebook correspondence",
+   "classification": "CORRESPONDENCE_CLAIM",
+   "disposition": "ALLOWED",
+   "reason": "states that no correspondence is asserted",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/METHODOLOGY_VOCABULARY_INTEGRITY_REPORT.md",
+   "line": 86,
+   "phrase": "as Codebook conditions",
+   "classification": "JRS_CONDITION_CLAIM",
+   "disposition": "ALLOWED",
+   "reason": "identified quotation of a source",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/PR39_MERGE_RECOMMENDATION_2026-10-06.md",
+   "line": 39,
+   "phrase": "cold_reviewer_clarity + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "reviewed: Describes prompt 0.3.0 wording that the recommendation identified as a conflict; prompt 0.4.0 removed it. The dated recommendation is preserved unchanged.",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/PR39_MERGE_RECOMMENDATION_2026-10-06.md",
+   "line": 41,
+   "phrase": "equivalent to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "protocol-and-internal-docs",
+   "file": "docs/architecture/PR39_SOURCE_ALIGNMENT_REVIEW_2026-10-06.md",
+   "line": 35,
+   "phrase": "equivalent to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "research-summary",
+   "file": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+   "line": 11,
+   "phrase": "equivalent to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "research-summary",
+   "file": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+   "line": 15,
+   "phrase": "The five conditions",
+   "classification": "FIVE_CONDITIONS_FOR_KEYS",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "research-summary",
+   "file": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+   "line": 18,
+   "phrase": "five conditions",
+   "classification": "FIVE_CONDITIONS_FOR_KEYS",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "research-summary",
+   "file": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+   "line": 19,
+   "phrase": "→",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "research-summary",
+   "file": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+   "line": 23,
+   "phrase": "reasoning_traceability + RC1",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "research-summary",
+   "file": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+   "line": 24,
+   "phrase": "basis_identification + RC2",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "research-summary",
+   "file": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+   "line": 25,
+   "phrase": "temporal_reconstructability + RC3",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "research-summary",
+   "file": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+   "line": 26,
+   "phrase": "accountability_support + RC4",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "research-summary",
+   "file": "research/CONSTRUCT_VALIDITY_PACKAGE.md",
+   "line": 27,
+   "phrase": "cold_reviewer_clarity + RC5",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/D-2_CODEBOOK_CORRESPONDENCE_MEMO.md",
+   "line": 38,
+   "phrase": "implements the Codebook",
+   "classification": "IMPLEMENTS_CODEBOOK_TERM",
+   "disposition": "UNSUPPORTED_MAPPING",
+   "reason": "presents a mapping that no approved record supports",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/D-2_CODEBOOK_CORRESPONDENCE_MEMO.md",
+   "line": 49,
+   "phrase": "cold_reviewer_clarity + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "AMBIGUOUS_REVIEW_REQUIRED",
+   "reason": "quotation without an identified source",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md",
+   "line": 9,
+   "phrase": "equivalent to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md",
+   "line": 21,
+   "phrase": "basis_identification + Basis Identification",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md",
+   "line": 22,
+   "phrase": "reasoning_traceability + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "AMBIGUOUS_REVIEW_REQUIRED",
+   "reason": "refers to a proposal or declaration, not an approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md",
+   "line": 23,
+   "phrase": "temporal_reconstructability + Chronology",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md",
+   "line": 24,
+   "phrase": "accountability_support + Decision-Process Traceability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md",
+   "line": 25,
+   "phrase": "cold_reviewer_clarity + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md",
+   "line": 35,
+   "phrase": "implement the Codebook",
+   "classification": "IMPLEMENTS_CODEBOOK_TERM",
+   "disposition": "ALLOWED",
+   "reason": "negated",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/D-3_CORRESPONDENCE_DECISION_MATRIX.md",
+   "line": 27,
+   "phrase": "basis_identification + Basis Identification",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/D-3_CORRESPONDENCE_DECISION_MATRIX.md",
+   "line": 28,
+   "phrase": "reasoning_traceability + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/D-3_CORRESPONDENCE_DECISION_MATRIX.md",
+   "line": 29,
+   "phrase": "temporal_reconstructability + Chronology",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/D-3_CORRESPONDENCE_DECISION_MATRIX.md",
+   "line": 30,
+   "phrase": "map to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/D-3_CORRESPONDENCE_DECISION_MATRIX.md",
+   "line": 31,
+   "phrase": "cold_reviewer_clarity + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "HISTORICAL_ONLY",
+   "reason": "clearly labelled historical material",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 15,
+   "phrase": "basis_identification + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 16,
+   "phrase": "reasoning_traceability + Basis Identification",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 17,
+   "phrase": "cold_reviewer_clarity + Chronology",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 18,
+   "phrase": "accountability_support + Decision-Process Traceability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 19,
+   "phrase": "temporal_reconstructability + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 29,
+   "phrase": "basis_identification + Basis Identification",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 30,
+   "phrase": "reasoning_traceability + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "AMBIGUOUS_REVIEW_REQUIRED",
+   "reason": "refers to a proposal or declaration, not an approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 31,
+   "phrase": "correspond to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "UNSUPPORTED_MAPPING",
+   "reason": "presents a mapping that no approved record supports",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 32,
+   "phrase": "corresponds to",
+   "classification": "MAPPING_PHRASE",
+   "disposition": "UNSUPPORTED_MAPPING",
+   "reason": "presents a mapping that no approved record supports",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 33,
+   "phrase": "cold_reviewer_clarity + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 87,
+   "phrase": "basis_identification + Basis Identification",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "REQUIRES_APPROVED_RECORD",
+   "reason": "a candidate key beside a Codebook label with no approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 88,
+   "phrase": "reasoning_traceability + Reconstructability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "AMBIGUOUS_REVIEW_REQUIRED",
+   "reason": "refers to a proposal or declaration, not an approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 89,
+   "phrase": "temporal_reconstructability + Chronology",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "AMBIGUOUS_REVIEW_REQUIRED",
+   "reason": "refers to a proposal or declaration, not an approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 90,
+   "phrase": "accountability_support + Decision-Process Traceability",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "AMBIGUOUS_REVIEW_REQUIRED",
+   "reason": "refers to a proposal or declaration, not an approved record",
+   "acknowledged": false
+  },
+  {
+   "group": "correspondence-records",
+   "file": "docs/enterprise-diligence/METHODOLOGY_TO_API_MAPPING.md",
+   "line": 91,
+   "phrase": "cold_reviewer_clarity + Evidentiary Sufficiency",
+   "classification": "KEY_BESIDE_CODEBOOK_LABEL",
+   "disposition": "AMBIGUOUS_REVIEW_REQUIRED",
+   "reason": "refers to a proposal or declaration, not an approved record",
+   "acknowledged": false
+  }
+ ]
+}

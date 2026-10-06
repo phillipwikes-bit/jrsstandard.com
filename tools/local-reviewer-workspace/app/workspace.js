@@ -104,7 +104,7 @@ function renderKeyStatus() {
   if (!keys) return;
   box.appendChild(el('h3', 'Candidate review keys as the mocked model answered them', 'small'));
   const dl = el('dl', null, 'meta');
-  for (const k of Object.keys(keys)) row(dl, k, 'model status: ' + keys[k].status + (keys[k].note === null ? '; note withheld by the person-inference screen' : '; note: ' + keys[k].note));
+  for (const k of Object.keys(keys)) row(dl, k, 'model status: ' + keys[k].status + (keys[k].note === null ? '; note withheld by the person-inference screen' : '; note: ' + keys[k].note) + '. ' + C.codebookCorrespondenceText(C.TERM_CATEGORY.condition, k));
   box.appendChild(dl);
 }
 
@@ -141,8 +141,8 @@ function findingCard(f) {
     if (ex.look_for) row(dl, 'Look for', ex.look_for);
     row(dl, 'Reviewer question', ex.reviewer_question);
     row(dl, 'Candidate-internal category', ex.category === null ? 'none (unmapped)' : ex.category);
-    row(dl, 'Codebook', 'No Codebook mapping asserted.');
   }
+  row(dl, 'Codebook', C.codebookTextFor(f));
   const d = it.disposition;
   row(dl, 'Disposition history in the packet', d.status + '; ' + (d.history.length ? d.history.length + ' earlier entr' + (d.history.length === 1 ? 'y' : 'ies') + ': ' + d.history.map((h) => h.disposition || h.status || 'entry').join(', ') : 'no earlier entries'));
   card.appendChild(dl);
