@@ -1,0 +1,76 @@
+{
+ "audit_version": "jrs-provenance-audit/0.1.0",
+ "snapshot": {
+  "source_commit": "a8fb39fd1da275b663a2bdaac89cee2fe07812ff",
+  "commit_date": "2026-10-06",
+  "shallow_history": true,
+  "tracked_files": 1551,
+  "commits_available": 125,
+  "inventory_digest": "d937a28b3d4cc9f382ef5b1f5dcb20f04b5c8582f738c525802f52b9bfd854ad"
+ },
+ "totals": {
+  "by_boundary": {
+   "CONFIGURATION": 43,
+   "CONTROLLED_OR_CLOSED_ROUTE": 8,
+   "DEPLOYED_SERVER_MODULE": 18,
+   "INTERNAL_DOCUMENTATION": 1034,
+   "LOCAL_INTERNAL": 200,
+   "PUBLIC_ROUTE": 41,
+   "PUBLIC_SITE": 104,
+   "TEST_OR_SYNTHETIC": 103
+  },
+  "by_asset_class": {
+   "API_ROUTE": 49,
+   "API_SERVER_MODULE": 14,
+   "CONFIGURATION": 43,
+   "ENGINE_CANDIDATE": 13,
+   "LOCAL_TOOL": 174,
+   "PUBLIC_SITE_SOURCE": 104,
+   "RESEARCH_OR_DOCUMENTATION": 993,
+   "SCHEMA_OR_PROTOCOL": 58,
+   "TEST_OR_FIXTURE": 103
+  },
+  "by_area": {
+   "agent-config": 26,
+   "api-routes": 49,
+   "api-server-modules": 14,
+   "ci-config": 2,
+   "control-state": 41,
+   "database-schema": 11,
+   "deploy-config": 4,
+   "docs-architecture": 16,
+   "docs-other": 160,
+   "engine-candidate": 13,
+   "instructions": 1,
+   "local-reviewer-workspace": 9,
+   "manifest-library": 9,
+   "office-documents": 14,
+   "other-tools": 3,
+   "provenance-audit": 9,
+   "release-gate": 8,
+   "research": 763,
+   "retention-policy": 1,
+   "root-markdown": 33,
+   "scripts": 152,
+   "site-assets": 30,
+   "site-pages": 53,
+   "site-reference": 18,
+   "site-reviewer": 3,
+   "tests-engine-candidate": 63,
+   "tests-local-reviewer-workspace": 8,
+   "tests-other": 18,
+   "tests-provenance-audit": 7,
+   "tests-release-gate": 7,
+   "unpublished-standard": 6
+  }
+ },
+ "routing_note": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there.",
+ "metadata_note": "Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights.",
+ "non_conclusion": "This package records repository-visible evidence only. It does not establish chain of title, copyright ownership, trademark clearance, legal compliance, production readiness, licensing readiness, sale readiness or release authorization, and it is not a license opinion.",
+ "dependency_statuses": [
+  "RECORDED",
+  "MISSING_LOCAL_LICENSE_METADATA",
+  "UNKNOWN",
+  "REQUIRES_REVIEW"
+ ]
+}

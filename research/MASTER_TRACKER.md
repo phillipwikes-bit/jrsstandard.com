@@ -3160,3 +3160,25 @@ Only four line groups differ between v7 and v8.
   - Guard suite unchanged at 164 checks, 39 failed, 1 skipped. `git diff --check` is clean.
   - All 21 changed files match `.vercelignore` (`git check-ignore --no-index` with `.vercelignore` as the excludes file).
   - Release-gate record unchanged: every gate open.
+- 2026-10-06 (**SOFTWARE PROVENANCE, DEPENDENCY AND ASSET-DILIGENCE PACKAGE ADDED TO PR #39; INTERNAL; REPOSITORY-VISIBLE EVIDENCE ONLY; NOT A CHAIN-OF-TITLE OPINION OR TRANSACTION CLEARANCE**): owner-commissioned. FACT:
+  - **Tool:** `tools/provenance-audit/`, excluded by `tools/`.
+    - Reads one commit through git's object store, using six read-only local git subcommands with all transports disabled.
+    - Classifies every tracked file by area, asset class and deployment boundary. Its `.vercelignore` matcher uses git semantics and agrees with `git check-ignore` on all files.
+    - Inventories dependencies from local evidence only.
+    - Maps contribution activity, with masked emails and no authorship score or ownership share.
+    - Refuses to write a report that contains legal-conclusion, readiness or "secret" language or a credential-like value, or that omits its source commit.
+  - **Outputs:** generated from commit `a8fb39f` (inventory digest `d937a28b…`).
+    - Four reports in `docs/architecture/`: `SOFTWARE_ASSET_AND_PROVENANCE_INVENTORY.md`, `TECHNICAL_DILIGENCE_READINESS_REPORT.md`, `THIRD_PARTY_COMPONENTS_AND_NOTICES.md` and `AI_ASSISTED_DEVELOPMENT_DISCLOSURE.md`.
+    - JSON in `tools/provenance-audit/generated/`. It is not written to `docs/architecture/generated/`, because `.vercelignore` would not exclude JSON there.
+  - **Inventory:** 1,551 tracked files. PUBLIC_SITE 104, PUBLIC_ROUTE 41, CONTROLLED_OR_CLOSED_ROUTE 8, DEPLOYED_SERVER_MODULE 18, LOCAL_INTERNAL 200, TEST_OR_SYNTHETIC 103, INTERNAL_DOCUMENTATION 1,034, CONFIGURATION 43, UNKNOWN 0.
+  - **Unknowns:**
+    - No LICENSE, package manifest, lockfile or notice file is tracked, so the repository license is UNKNOWN.
+    - 7 third-party components have MISSING_LOCAL_LICENSE_METADATA: 2 GitHub Actions, Google Analytics, Google Fonts, and the Python packages reportlab, playwright and PIL.
+    - 41 deployed routes have behaviour not assessed.
+    - The `sb_publishable_` key pattern appears in 23 files: REQUIRES_REVIEW.
+    - 935 research and diligence files may hold participant or record material.
+    - The history is shallow (125 commits).
+    - Contributor and assignment instruments are UNKNOWN.
+  - **AI-tool markers:** found in 20 of 29 areas. The identities in the history are Claude, Codex and two owner accounts.
+  - **Tests:** 128 checks; 15 of 15 mutations caught after one fix (P15, which first survived).
+  - **Not done:** no legal conclusion, transaction clearance, deployment, provider call, real-record use, public, route, Vercel, guard, credential, privacy or release-gate change.
