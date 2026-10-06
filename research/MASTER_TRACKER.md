@@ -3154,3 +3154,9 @@ Only four line groups differ between v7 and v8.
   - **Demo packet:** generated from the `SYNTHETIC-SAE-03-GAPS` fixture with the mock adapter.
   - **Tests:** 5 suites, 201 checks, including 40 in headless Chromium. That suite shows only loopback requests, empty storage, and a CSP that blocks even a same-origin request. The mutation run follows.
   - **Not done:** no provider call, real or public record, holdout access, deployment, public page or route, OpenAPI, sitemap, redirect, Vercel, guard, credential or release-gate change.
+- 2026-10-06 (workspace verification complete):
+  - Workspace mutation run: 28 of 28 caught. It covers: the integrity check; sign-off while a finding is pending; the disposition review ID; the packet digest; a score; an approved verdict; local storage; a network request; loading from the URL; non-loopback binding; CSP; Host checks; anchors; history; the packet ID; the acknowledgement; HTML injection; quotations in the export; the source hash; cross-packet export; uploads; text in refusals; review-ID recomputation; sign-off confirmation; and Codebook assertion.
+  - Candidate suite: 17 suites, 67 of 67. Release-gate suite: 5 suites, 34 of 34.
+  - Guard suite unchanged at 164 checks, 39 failed, 1 skipped. `git diff --check` is clean.
+  - All 21 changed files match `.vercelignore` (`git check-ignore --no-index` with `.vercelignore` as the excludes file).
+  - Release-gate record unchanged: every gate open.
