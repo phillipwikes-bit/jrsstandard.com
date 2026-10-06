@@ -22,14 +22,7 @@ export function collectFacts(root, commitRef = 'HEAD') {
   const commitDate = gitText(root, ['log', '-1', '--format=%cs', commit]).trim();
 
   // Tree: mode, type, blob, size, path, for every tracked file at the commit.
-  const files = [];
-  for (const line of gitText(root, ['ls-tree', '-r', '-l', '--full-tree', commit]).split('\n')) {
-    const m = /^(\d+) (\w+) ([0-9a-f]+)\s+(-|\d+)\t(.+)$/.exec(line);
-    if (!m || m[2] !== 'blob') continue;
-    if (isOutput(m[5])) continue;                       // the tool's own outputs are not inventoried
-    files.push({ path: m[5], mode: m[1], blob: m[3], size: m[4] === '-' ? 0 : Number(m[4]) });
-  }
-  files.sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
+  const files = parseTree(gitText(root, ['ls-tree', '-r', '-l', '--full-tree', commit]));
 
   // Deployment exclusion: .vercelignore at this commit, matched with gitignore semantics.
   const ignoreText = files.some((f) => f.path === '.vercelignore') ? gitText(root, ['show', commit + ':.vercelignore']) : '';
@@ -52,6 +45,18 @@ export function collectFacts(root, commitRef = 'HEAD') {
                    files: (parts[6] || '').split('\n').map((s) => s.trim()).filter(Boolean) });
   }
   return { commit, commit_date: commitDate, shallow, files, exclusion, vercelignore: ignoreText, text, commits };
+}
+
+// Parses `git ls-tree -r -l` output into sorted file records, leaving out the tool's own outputs.
+export function parseTree(lsTree) {
+  const files = [];
+  for (const line of String(lsTree).split('\n')) {
+    const m = /^(\d+) (\w+) ([0-9a-f]+)\s+(-|\d+)\t(.+)$/.exec(line);
+    if (!m || m[2] !== 'blob') continue;
+    if (isOutput(m[5])) continue;                       // the tool's own outputs are not inventoried
+    files.push({ path: m[5], mode: m[1], blob: m[3], size: m[4] === '-' ? 0 : Number(m[4]) });
+  }
+  return files.sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
 }
 
 function readBlobs(root, shas) {

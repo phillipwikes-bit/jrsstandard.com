@@ -23,7 +23,7 @@ export const MUTATIONS = [
   ['P12', 'excluded directory decides for files beneath it', 'lib/ignore.js', "    if (r) return 'line ' + r.line + ': ' + r.pattern;\n  }", "  }"],
   ['P13', 'emails masked', 'lib/analyze.js', "const key = c.author + ' <' + maskEmail(c.email) + '>';", "const key = c.author + ' <' + c.email + '>';"],
   ['P14', 'outputs only to permitted paths', 'run.mjs', "if (!WRITABLE.some((re) => re.test(path))) problems.push(path + ': not a permitted output path');", ""],
-  ['P15', 'the tool does not inventory its own outputs', 'lib/collect.js', "    if (isOutput(m[5])) continue;", ""],
+  ['P15', 'the tool does not inventory its own outputs', 'lib/collect.js', "    if (isOutput(m[5])) continue;                       // the tool's own outputs are not inventoried\n", ""],
 ];
 const base = mkdtempSync(join(tmpdir(), 'jrs-pa-mutation-'));
 const copy = join(base, 'provenance-audit');
