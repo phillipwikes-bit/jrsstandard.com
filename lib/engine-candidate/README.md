@@ -1,38 +1,75 @@
-# Review Engine local development candidate 0.1.0-local.1
+# Review Engine local development candidate 0.2.0-local.1
 
-**Status:** local development only. Not deployed, not validated, not a public service. Owner instruction 2026-10-06, under `docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`.
+**Status:** local development only. Not deployed, not validated, not a public service. Owner instructions of 2026-10-06, under `docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`.
 
-## What it is
-`review-candidate.js` is the 0.1.0 Review Engine logic from historical commit `d2da83c` (`api/review-engine.js`), rebuilt as a plain module with no route, no network access, no environment reads and no storage. The model call is a function the caller supplies; there is no default, so the module cannot reach a provider on its own.
+## Files
+| File | Purpose |
+|---|---|
+| `review-candidate.js` | Scope gate, injected model call, output checks. Rebuilt from historical commit `d2da83c` (`api/review-engine.js`, 0.1.0-validation). |
+| `source-prep.js` | Deterministic source preparation, run before any model call. |
+| `explanations.js` | Human-review explanation for every flagged condition, flaw and extraction finding. |
+| `contract.js` | Versioned result contract (`jrs-candidate-result/0.2.0`), human disposition and sign-off. |
+
+None of the four has network access, reads an environment variable or writes anything. The model call is a function the caller supplies, and there is no default. `lib/` is excluded by `.vercelignore`, and no file under `api/` imports these modules.
 
 ## Scope
 - Completed, non-HR supplier-access exception drafts only. The caller must declare `record_type: "supplier_access_exception"`, `completion_status: "completed"` and `hr_related: false`.
 - Records that mention employment, housing, lending, insurance, medical or legal-outcome decisions are refused. This screen is a word list: it can only refuse, and passing it does not show a record is in scope.
-- Human review is always required. The output has no overall determination and no score.
+- Human review is always required. There is no overall verdict and no score.
 
-## What it reports
-- The five JRS documentation review conditions, each `pass`, `review` or `gap` with a note.
-- Documentation flaws, limited to: reasoning elision, evidentiary overreach, chronology collapse, extraction omission, truncation, unsupported content. Each flaw must quote the record word for word.
-- Extraction failures, stated explicitly, never filled in:
-  - excerpts not found in the record;
-  - flaw types outside the list;
-  - missing or invalid conditions;
-  - a cut-off model reply;
-  - a reply that is not JSON.
-- Notes that infer a writer's emotional state, intent, hidden payoff or clinical condition are withheld, and the withholding is recorded.
+## Order of checks
+1. Declared profile.
+2. **Unreadable input** is refused: not text, empty, NUL bytes, replacement characters, control characters, mis-decoded text, or mostly non-letter content.
+3. Length (40 to 8,000 characters). An over-length record is refused, never truncated.
+4. Excluded decision domains.
+5. **Partial input** is refused: missing pages ("page 1 of 2"), a mid-sentence ending, a trailing ellipsis, an explicit truncation marker, or an unclosed quotation.
+6. Reported, not refused:
+   - **omissions:** placeholders, material referred to but not in the record, and expected profile elements not found;
+   - **unsupported content:** off-record references and assertions presented as self-evident;
+   - **every quotation**, with its exact offset, line and column.
+7. The injected model call.
+8. Output checks. Each of these becomes an extraction finding, and none is shown as a result:
+   - a quotation not in the record;
+   - a flaw type outside the permitted list;
+   - text describing a person (emotion, intent, motive, payoff, clinical), which is withheld;
+   - a missing or invalid condition, or a cut-off or non-JSON reply, which makes the result incomplete.
+
+Every source-preparation check is a heuristic over the text: a finding means a pattern was seen, and no finding is not proof that nothing is wrong.
+
+## Result contract (`jrs-candidate-result/0.2.0`)
+- **`review_identity`:** the contract, candidate, source-preparation and explanation-set versions, the prompt hash, the model and the source commit. `review_id` is a hash of all of these plus the source. The examination time is outside the identity.
+- **`extraction_findings`** (`X-nnn`) are deterministic and come from source preparation and output checks.
+- **`contextual_findings`** (`C-nnn`) are model-derived: flagged conditions and documentation flaws, each flaw with its exact location.
+- **`human_review.disposition`:** one entry per finding, starting `pending`, with an append-only history. `recordDisposition()` returns a new result and never changes the old one. A disposition carries a `review_id` and is refused on any other review version. Output-check findings are informational and need no disposition.
+- **`human_review.sign_off`:** a separate final act, refused while any finding is pending. It keeps every disposition and closes further ones. It records a named person reviewing every finding; it is not an access decision and not a validation.
+
+## Explanation categories (candidate-internal)
+The five categories are a review aid for this candidate only:
+- missing logical bridge;
+- missing identifiable basis;
+- chronology gap;
+- unsupported conclusion;
+- insufficient evidence.
+
+They are **not** a mapping to the JRS Codebook. Under `docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md` (D-2, D-3) the Codebook is the authority, and `cold_reviewer_clarity` has no established correspondence. That key therefore gets its own explanation and no category, and every explanation carries `codebook_correspondence: "not_asserted"`.
 
 ## Changes from d2da83c
 - **Removed:** the HTTP route, token auth, CORS, the rate limit and the Supabase write.
-- **Truncation:** records over 8,000 characters are now refused. The old code cut them silently.
-- **Removed outputs:** the overall determination ("ready" and the rest) and every number.
+- **Truncation:** an over-length record is now refused; the old code cut it silently.
+- **New refusals:** partial and unreadable input, before any model call.
+- **Removed outputs:** the overall determination ("ready" and the rest) and every number. Only positions and sizes remain.
 - **Renamed:** `compliant_version` is now `revision_needed`.
-
-The header of `review-candidate.js` lists each change with its reason.
 
 ## Not established
 - Accuracy, on any record.
 - Whether the prompt behaves as instructed on a real model. No provider has been called.
+- The false-positive and false-negative rates of the source-preparation heuristics.
 - Fitness for any use. Release gates: none passed (handoff, "Release-gate status").
 
 ## Tests
-`node tests/engine-candidate/candidate.test.mjs`: mocked model, `fetch` trapped, one constructed fictional record (`tests/engine-candidate/fixtures/SYNTHETIC-SAE-01.txt`). Development and test material here must never be used in a sealed holdout.
+Run `node tests/engine-candidate/run-all.mjs`. It covers:
+- `source-prep.test.mjs`: 35 checks;
+- `contract.test.mjs`: 29 checks;
+- `candidate.test.mjs`: 91 checks.
+
+All use a mocked model with `fetch` trapped, on constructed fictional records in `tests/engine-candidate/fixtures/`. Development and test material here must never be used in a sealed holdout.

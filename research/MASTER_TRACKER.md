@@ -3032,3 +3032,13 @@ Only four line groups differ between v7 and v8.
   - B-016: the `openapi.json` edit is a post-freeze exception requiring reconciliation, not to be reverted or normalised.
 
   Unchanged: PR #39 stays a draft; PR #38 stays closed and unmerged; no guard was changed; the Engine candidate stays local and mocked.
+- 2026-10-06 (**LOCAL ENGINE CANDIDATE 0.2.0-local.1: SOURCE PREPARATION, VERSIONED RESULT CONTRACT, HUMAN-REVIEW EXPLANATIONS. MOCKED ONLY, NOT DEPLOYED, NOT VALIDATED**): on the owner's instruction to continue Engine development without waiting for the 3 October files. All work is in `lib/engine-candidate/` and `tests/engine-candidate/`, both excluded from deployment.
+  - **Source preparation:** `source-prep.js` is deterministic and runs before any model call. It refuses unreadable input (7 checks) and partial input (5 checks). It reports omissions, unsupported content and every quotation with its exact offset, line and column.
+  - **Result contract:** `contract.js`, version `jrs-candidate-result/0.2.0`.
+    - `review_id` is a hash of every version, the prompt, the model and the source, so a disposition cannot move between review versions.
+    - Extraction findings (`X-`) are kept apart from contextual findings (`C-`).
+    - Human disposition is per finding, with append-only history, and kept separate from the final sign-off, which is refused while anything is pending.
+    - No number other than positions and sizes, and no verdict.
+  - **Explanations:** `explanations.js` explains each of the five requested categories in terms of the record, never the writer. They are marked candidate-internal with `codebook_correspondence: not_asserted`. `cold_reviewer_clarity` is left without a category, per owner decision D-2.
+  - **Tests:** 155 mocked checks pass (source preparation 35, contract 29, integration 91). Eight deliberate faults were each caught, then reverted byte-exact. The handoff checks still pass, and the guard suite is unchanged at 37 failures.
+  - **Not done:** no provider call, no real record, no holdout use, no scoring, no public route, Vercel, page, guard or release-status change.

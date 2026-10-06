@@ -1,0 +1,5 @@
+SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.
+
+Supplier-access exception, completed draft. Reference SAE-SYN-0002. Page 1 of 2.
+
+On 14 April 2026 Brightwell Metals Ltd requested access to the tooling-drawings library for six weeks. The access policy requires a completed security questionnaire. The security office reviewed the questionnaire and found that section 4 was
