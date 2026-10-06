@@ -3027,3 +3027,8 @@ Only four line groups differ between v7 and v8.
   - Item 5 also found: the dead VP rewrite, the redirected acquisition page, 4 noindex pages in the sitemap plus the deleted `org-pilot.html`, and the B-016 `openapi.json` freeze edited on `main` without a recorded exception. All need owner decisions.
 
   The 4 and 5 October owner commits on `main` were not logged in this tracker; this entry records that gap rather than reconstructing them. The untested HR scorer is held outside the repository and was not committed.
+- 2026-10-06 (**SOURCE-ALIGNED FILES NOT RECEIVED. REVIEW NOT STARTED, AS THE HANDOFF REQUIRES. TWO OWNER POSITIONS RECORDED**): the owner wrote that he was providing the three 3 October source-aligned files. None reached the session. Searched: the whole container by filename, the upload folders, every branch of the repository, and the owner's Google Drive by title. Nothing was found, so nothing was placed and no hash could be checked. Under handoff startup step 4 the source-aligned review was not attempted and the decision package was not produced; producing it without the files would rest it on the stale material the handoff rules out. Recorded on the owner's instruction, with no status changed:
+  - B-010: authorization for the 4 October buyer-page changes is UNRESOLVED, and neither page is to be altered.
+  - B-016: the `openapi.json` edit is a post-freeze exception requiring reconciliation, not to be reverted or normalised.
+
+  Unchanged: PR #39 stays a draft; PR #38 stays closed and unmerged; no guard was changed; the Engine candidate stays local and mocked.
