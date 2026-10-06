@@ -12,7 +12,59 @@ Machine records: `tools/claim-provenance/current-claim-evidence-register.json` a
 - `claim-cards/`
 - `PUBLIC_CLAIM_REPAIR_PROPOSALS_2026-10-06.md`
 
-## 1. Claims registered
+## Current state, after the repairs were implemented (2026-10-06)
+
+**The repairs are staged on the draft PR #39 branch only. They will not become public unless the owner separately approves a merge and publication.** Sections 1 to 8 below are the record at the proposal stage and are kept unchanged (CLAUDE.md Rule 10).
+
+**What was implemented.** All 17 proposals (PR-01 to PR-17) and the PD-01 supersession notice, plus 12 further repairs found during implementation (PR-18 to PR-29). Three proposals were applied with a variance, recorded in `PUBLIC_CLAIM_REPAIR_PROPOSALS_2026-10-06.md`: PR-07, PR-11 and PR-13. No figure, denominator or date was changed.
+
+**Pages repaired.** `research.html`, `research-summary.html` (body copy, meta, Open Graph, Twitter and structured data), `reviewer/index.html`, `check.html`, `engagement.html`, `decision-reconstruction-risk.html`, `implementation-scenarios.html` and `workflow-fit.html`. One page was added: `methods-paper-notice.html`. The archived `JRS_Reliability_Accuracy.pdf` is unchanged and is reached through the notice.
+
+**Scanner extended.** It now also reads meta, Open Graph and Twitter descriptions, structured-data strings (including `creativeWorkStatus`), and alt, aria-label and title text. That extension found PR-19 to PR-22 and PR-24.
+
+**Claims now.** 33 claims:
+
+| Status | Claims |
+|---|---|
+| SUPPORTED_WITH_LIMITATION | 16 |
+| HISTORICAL_ONLY | 4 |
+| SOURCE_REPORTED_NOT_REPRODUCED | 5 |
+| NOT_SUPPORTED | 4 |
+| NOT_ASSESSED | 2 |
+| REQUIRES_WORDING_REPAIR | 0 |
+| RETIRED | 2 |
+
+**What changed status:**
+- **CL-011, RETIRED:** the circular condition-separation p-values are no longer stated publicly.
+- **CL-025, RETIRED:** the "operational validation phase" wording is gone.
+- **CL-033, HISTORICAL_ONLY:** the methods PDF now sits behind its supersession notice.
+- **CL-013, SOURCE_REPORTED_NOT_REPRODUCED:** the Study 014 reader is now named as an AI reader.
+
+Every repaired claim records its pages and repair IDs in its review history.
+
+**Scan now.** The scan covers 71 public pages and 65 route files:
+
+| Disposition | Findings |
+|---|---|
+| PERMITTED | 79 |
+| HISTORICAL | 4 |
+| AMBIGUOUS | 0 |
+| UNSUPPORTED | 13 |
+| REQUIRES_REPAIR | 7 |
+
+**Public surfaces: no finding needs repair, none is unsupported and none is ambiguous.** The 13 UNSUPPORTED and 7 REQUIRES_REPAIR findings are all report-only: 12 + 7 in repository documentation (chiefly `research/JRS_Validation_Report.md`, superseded) and 1 in an analytics route note. Every implemented repair is a regression check, and `scan.mjs --check` fails if a repaired page brings back the old wording. Restoring the pre-repair pages from `38ca6fb` trips that check for every repair that replaced wording.
+
+**Repository guard.** `scripts/check_zero_drift.py` is unchanged. Two of its existing failures now pass because of the page repairs: "the cross-vendor range carries its own denominator" and "reliability claims preserve E-038 population and criterion status". The result is 164 checks, 37 failed, 1 skipped, with no new failure.
+
+**Still unresolved:**
+- **Which 15-record cross-vendor window to publish.** The pages now carry 37 runs as of 13 August 2026. The 41-run figure is at the 15 August data lock.
+- **The unreconciled 61-run series readings.**
+- **The reliability inputs** that differ between sources.
+- **Whether "Validation phase" on the Working Paper card, and "the enterprise plan" in its description, should change.** Neither was flagged by a register rule, and both were left as written.
+- **Whether the archived PDF should eventually be replaced** by a current version.
+- **The CEP acceptance**, which rests only on the author's file.
+
+## 1. Claims registered (proposal stage)
 
 33 claims, each bound to its evidence source at the hash it was reviewed at. 23 evidence records are listed: 22 sources (18 bound to a whole file, 4 to one anchored line of an append-only log or page) and 1 placeholder for "no evidence". Every claim passes the record schema and the thirteen governing rules (G01 to G13 in `tools/claim-provenance/lib/rules.js`).
 
@@ -68,7 +120,7 @@ Unreconciled differences between sources are recorded and not resolved (CLAUDE.m
 - **The 15-record subset.** 37 runs as read on 13 August 2026 (IP audit). 41 runs from 29 June to 15 August at the data lock, mean 87.2 percent (manuscript). These are one series at two windows, and the 61-run figure is that series without the completeness filter. None of the three counts is used for another.
 - **Reliability.** The manuscript reports 0.739 and 0.623 on 104 labels from 22 raters. The sweep notes "0.739 EXPERT / 0.624 TRAINED ON 10 RECORDS, 99 LABELS" and computes a pooled 0.664 on 104 labels. Population labels also vary across public pages: "invited / open enrolment", "experts / trained reviewers" and "experts / regular reviewers".
 
-## 3. Scan of public surfaces
+## 3. Scan of public surfaces (proposal stage)
 
 Scope:
 - 70 public pages;

@@ -55,7 +55,18 @@ const blank = (m) => m.replace(/[^\n]/g, ' ');
 export function sentencesOf(text, kind) {
   let t = text;
   const headings = [];
+  const meta = [];
   if (kind === 'html') {
+    // Text a reader or a search engine sees outside the body copy: meta and Open Graph descriptions,
+    // structured-data strings, and alt, aria-label and title attributes. Each is scanned at its line.
+    const at = (i) => t.slice(0, i).split('\n').length;
+    for (const m of t.matchAll(/<meta\b[^>]*>/gi)) {
+      const tag = m[0], key = /(?:name|property)="([^"]+)"/i.exec(tag), val = /content="([^"]*)"/i.exec(tag);
+      if (key && val && /^(description|og:description|og:title|twitter:description|twitter:title)$/i.test(key[1])) meta.push({ line: at(m.index), text: val[1] });
+    }
+    for (const m of t.matchAll(/<script[^>]*application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi))
+      for (const v of m[1].matchAll(/"(?:description|name|headline|abstract|text|alternateName|creativeWorkStatus)"\s*:\s*"((?:[^"\\]|\\.)*)"/g)) meta.push({ line: at(m.index + m[0].indexOf(v[0])), text: v[1] });
+    for (const m of t.matchAll(/\s(?:alt|aria-label|title)="([^"]{12,})"/gi)) meta.push({ line: at(m.index), text: m[1] });
     t = t.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<!--[\s\S]*?-->/gi, blank);
     for (const m of t.matchAll(/<h[1-6]\b[^>]*>([\s\S]*?)<\/h[1-6]>|<(section|article)\b/gi)) headings.push({ line: t.slice(0, m.index).split('\n').length, text: (m[1] || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() });
     t = t.replace(/<[^>]*>/g, blank).replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n)).replace(/&([a-z]+);/gi, (m, n) => ENT[n.toLowerCase()] ?? m);
@@ -64,6 +75,9 @@ export function sentencesOf(text, kind) {
   t.split('\n').forEach((raw, i) => {
     for (const s of raw.split(/(?<=[.!?])\s+/)) { const v = s.replace(/\s+/g, ' ').trim(); if (v) out.push({ line: i + 1, text: v }); }
   });
+  const dec = (v) => v.replace(/&#(\d+);/g, (_, n) => String.fromCharCode(+n)).replace(/&([a-z]+);/gi, (m, n) => ENT[n.toLowerCase()] ?? m);
+  for (const m of meta) for (const x of dec(m.text).split(/(?<=[.!?])\s+/)) { const v = x.replace(/\s+/g, ' ').trim(); if (v) out.push({ line: m.line, text: v, metadata: true }); }
+  out.sort((a, b) => a.line - b.line);
   for (const s of out) { const h = headings.filter((x) => x.line <= s.line).pop(); s.heading = h ? h.text : ''; s.section = h ? h.line : 0; }
   return out;
 }
@@ -72,9 +86,10 @@ export function sentencesOf(text, kind) {
 export const NUM_TOKEN = /\b\d+(?:\.\d+)?\s?(?:%|percent\b)|\b\d+\.\d+e-\d+\b|\b0\.\d{2,3}\b|\b\d+\.\d\b(?=\s+(?:to|percent|%))|\b\d[\d,]*\s+(?:(?:independent|international|distinct|detection-panel|individual|recorded|dated|nightly|analysed|shared|scored|graded|submitted|constructed|mixed-denominator)\s+)*(?:records|reviewers|raters|runs|reads|participants|countries|continents|labels|determinations|judgments|judgements|experts|completers|people|studies|texts|participations)\b|\b\d+-record\b|\b\d+ of \d+ (?:records|reviewers|raters)\b/g;
 const NEG = /\b(not|no|never|nor|neither|without|cannot|isn't|aren't|doesn't|does not|is not|are not|was not|were not|none|nothing)\b/i;
 const LIMITATION_SENTENCE = /^(the |this |that )?(?:[^.;]|\.(?=\d)){0,60}\b(figure|result|estimate|coefficient|number|interval)s? (is|are|was|were) not\b|^it is not\b/i;
-const HIST = /\b(historical|previously|formerly|earlier implementation|earlier versions?|no longer|closed on|superseded|archived|retired|at the time|was dropped|has been dropped)\b/i;
+const GUIDANCE = /\b(recommend\w*|start with|starting with|begin with|practical way|format|guidance|suggest\w*)\b/i;
+const HIST = /\b(historical|previously|formerly|earlier implementation|earlier versions?|(the |this )?(earlier |archived )?draft (reports|said|says|states|treats|calls)|no longer|closed on|superseded|archived|retired|at the time|was dropped|has been dropped)\b/i;
 const HIST_SECTION = /\b(history|historical|earlier|previous|archive|closed)\b/i;
-const EXAMPLE = /\b(example|illustrative|illustration|sample (record|report|finding)|sampling (finding|example)|simulation|simulated|fictional|worked example|scenario|before|after revision)\b/i;
+const EXAMPLE = /\b(example|illustrative|illustration|sample (record|report|finding)|sampling (finding|example)|simulation|simulated|fictional|worked example|scenario|before and after|after revision)\b/i;
 const SUBJECT = /\b(JRS|the standard|the method(ology)?|Review Engine|the Engine|engine candidate|this (tool|check|service|product|method)|our (tool|service|method|standard|engine))\b/i;
 // [rule, pattern, linked claim topic] for status claims that need no figure.
 export const STATUS_RULES = Object.freeze([
@@ -82,6 +97,7 @@ export const STATUS_RULES = Object.freeze([
   ['VALIDATED_STATUS', /\b(is|are|has been|have been|was|were|been)\s+(fully |independently |empirically |scientifically |externally |psychometrically )?validated\b|\bvalidated (standard|method|methodology|instrument|tool|engine|framework|scale|model)\b|\b(independent|external|empirical) validation (of|shows|confirms|demonstrates|establishes)\b|\bvalidation (is|was) complete\b/i, 'METHODOLOGY'],
   ['PRODUCTION_OR_OPERATIONAL', /\b(production (use|deployment|system|service|grade)|operationally deployed|live (service|deployment)|operational (capability|deployment|system))\b/i, 'ENGINE_STATUS'],
   ['SOURCE_GROUNDING_AS_SEMANTIC', /\b(semantically (correct|supported|verified|valid)|hallucination[- ]free|quotations? (proves?|verif(y|ies)|confirms?) (the|each|every)|every finding is (verified|correct|supported))\b/i, 'ENGINE_STATUS'],
+  ['SUPERSEDED_METHODS_WORDING', /\b(supports? reproducible application|substantial (inter-rater )?(agreement|reliability)|reproducib(le|ility) (is |was |has been )?(established|demonstrated|shown|confirmed))\b/i, 'RELIABILITY', false],
   ['LICENSING_OR_SALE_OFFER', /\b(available (for|to) licens\w*|licens(e|ing) (is )?(available|offered)|for sale|can be (licensed|purchased|acquired)|acquisition (pathway|opportunity) (is )?(open|available))\b/i, 'COMMERCIAL'],
 ]);
 const ENGINE_TERM = /\b(Review Engine|the Engine|engine candidate|automated reviewer|AI reviewer)\b/i;
@@ -103,8 +119,8 @@ export function classify(sentences, i, claims, ctx = {}) {
   const historical = HIST.test(text) || HIST_SECTION.test(s.heading || '') || ctx.historicalPage;
   const example = EXAMPLE.test(back) || EXAMPLE.test(s.heading || '');
 
-  for (const [rule, pat, topic] of STATUS_RULES) {
-    if (!pat.test(text) || !SUBJECT.test(text)) continue;
+  for (const [rule, pat, topic, needsSubject = true] of STATUS_RULES) {
+    if (!pat.test(text) || (needsSubject && !SUBJECT.test(text))) continue;
     if (!asserts(text, pat)) { results.push({ kind: rule, disposition: 'PERMITTED', reason: 'a limitation or negated statement' }); continue; }
     if (historical) { results.push({ kind: rule, disposition: 'HISTORICAL', reason: 'clearly placed as history' }); continue; }
     const c = claims.find((x) => x.claim_topic === topic && x.status === 'NOT_SUPPORTED') || claims.find((x) => x.status === 'NOT_SUPPORTED');
@@ -144,6 +160,7 @@ export function classify(sentences, i, claims, ctx = {}) {
       else if (c.status === 'NOT_SUPPORTED') { d = limitationOnly ? 'PERMITTED' : 'UNSUPPORTED'; reason = 'a NOT_SUPPORTED claim'; }
       else if (c.status === 'REQUIRES_WORDING_REPAIR') { d = missing.length ? 'REQUIRES_REPAIR' : 'PERMITTED'; reason = missing.length ? 'the register marks this claim for wording repair (missing: ' + missing.join('; ') + ')' : 'carries the repaired wording the register requires'; }
       else if (c.status === 'HISTORICAL_ONLY') { d = historical ? 'HISTORICAL' : 'REQUIRES_REPAIR'; reason = historical ? 'historical figure in a historical context' : 'a historical figure presented as current'; }
+      else if (c.status === 'NOT_ASSESSED' && c.claim_topic === 'PROCEDURAL_GUIDANCE' && GUIDANCE.test(text)) { d = 'PERMITTED'; reason = 'a guidance quantity worded as guidance, not as a finding'; }
       else if (c.status === 'NOT_ASSESSED') { d = 'AMBIGUOUS'; reason = 'the register records this claim as NOT_ASSESSED'; }
       else if (c.status === 'RETIRED') { d = 'REQUIRES_REPAIR'; reason = 'a retired claim'; }
       else if (missing.length && !limitationOnly) { d = 'REQUIRES_REPAIR'; reason = 'missing qualifier: ' + missing.join('; '); }
@@ -170,6 +187,7 @@ export function scanText(text, file, kind, claims) {
   return out;
 }
 
+export const normVisible = (t) => String(t).replace(/\s+/g, ' ').replace(/\s+([,.;:)])/g, '$1').replace(/\(\s+/g, '(').trim();
 const kindOf = (f) => (f.endsWith('.html') ? 'html' : f.endsWith('.js') ? 'js' : 'text');
 
 // A route's public text is its prose string literals. Comments and source code are not served to
@@ -195,13 +213,18 @@ export function scanRepository(root, claims, repairs = []) {
     f.repair_id = r ? r.id : null; f.repair_target = r ? r.target : null; f.proposed_replacement = r ? r.replacement : null; if (r) used.add(r);
   }
   // A proposal is stale when its target sentence is no longer in the file, or it resolves nothing.
-  const sentenceSets = {};
+  // An implemented repair is a regression check: its target must stay absent and its applied text
+  // present in the file's visible text (whitespace before punctuation ignored).
+  const sentenceSets = {}, visible = {};
   const textOf = (f) => (sentenceSets[f] ||= new Set(sentencesOf(readFileSync(join(root, f), 'utf8'), kindOf(f) === 'html' ? 'html' : 'text').map((x) => x.text)));
+  const visibleOf = (f) => (visible[f] ??= normVisible([...textOf(f)].join(' ')));
+  const regressions = repairs.filter((r) => r.status === 'IMPLEMENTED').filter((r) => !existsSync(join(root, r.file))
+    || (r.target && visibleOf(r.file).includes(normVisible(r.target))) || !visibleOf(r.file).includes(normVisible(r.applied))).map((r) => r.id + ' ' + r.file);
   const gated = findings.filter((f) => !REPORT_ONLY.includes(f.group));
   const summary = Object.fromEntries(DISPOSITIONS.map((d) => [d, findings.filter((f) => f.disposition === d).length]));
   const unproposed = gated.filter((f) => ['UNSUPPORTED', 'REQUIRES_REPAIR'].includes(f.disposition) && !f.proposed_replacement);
   return {
     scope: { public_pages: scope.pages.length, public_routes: scope.routes.length, public_downloads: scope.downloads, not_text_readable: scope.unreadable, repository_docs: scope.docs, restricted_excluded: [...RESTRICTED].length },
-    summary, gate: { unproposed: unproposed.length, stale_proposals: repairs.filter((r) => !used.has(r) || !existsSync(join(root, r.file)) || !textOf(r.file).has(r.target)).map((r) => r.id) }, findings,
+    summary, gate: { unproposed: unproposed.length, stale_proposals: repairs.filter((r) => r.status !== 'IMPLEMENTED').filter((r) => !used.has(r) || !existsSync(join(root, r.file)) || !textOf(r.file).has(r.target)).map((r) => r.id), regressions }, findings,
   };
 }

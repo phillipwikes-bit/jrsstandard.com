@@ -13,7 +13,7 @@
 | Claim | Status | Evidence | Last reviewed source hash |
 |---|---|---|---|
 | CL-004 | SUPPORTED_WITH_LIMITATION | EV-DETECTION-ARTICLE (`research/deliverables_2026-08-29/Detection_Article_2026-08-29.md`) | FILE:7d21dad28703 |
-| CL-033 | REQUIRES_WORDING_REPAIR | EV-METHODS-PDF (`JRS_Reliability_Accuracy.pdf`) | FILE:64bb9f80dd9f |
+| CL-033 | HISTORICAL_ONLY | EV-METHODS-PDF (`JRS_Reliability_Accuracy.pdf`) | FILE:64bb9f80dd9f |
 
-- **CL-004 permitted wording:** In a separate reliability sample of 10 records, Gwet's AC1 was 0.739 for invited experts and 0.623 for regular reviewers. Both exceed the 0.61 point floor, but neither analytic lower bound reaches 0.41, so the pre-registered criterion was not met.
+- **CL-004 permitted wording:** In a separate reliability sample of 10 records, Gwet's AC1 was 0.739 for invited participants and 0.623 for open enrolment. Both exceed the 0.61 point floor, but neither analytic lower bound reaches 0.41, so the pre-registered criterion was not met.
 - **CL-033 permitted wording:** Historical draft, superseded: it reported AC1 0.74 and 0.63 on 10 records and cross-vendor agreement of 84 percent on 15 constructed records; the current results are in the 29 August 2026 manuscript.

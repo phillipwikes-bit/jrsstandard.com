@@ -43,8 +43,9 @@ export const SOURCES = Object.freeze([
     id: 'SRC-MANIFEST-SCHEMA', name: 'Decision Reconstruction Manifest schema', path: 'schemas/jrs-decision-reconstruction-manifest.schema.json', reviewed_sha256: '214b4b6f67fcc6ec7426c5005bf90a16d959ef2ec866c81448f95581fe4d5ed8', role: 'SCHEMA', version: 'Manifest 1.0 schema', classification: 'INTERNAL copy (schemas/ excluded); published copies at the site root', status: 'NOT_ASSESSED',
     evidence: 'Defines condition_vocabulary ("jrs_codebook_1.0" or "review_engine_keys") and states that a generator without an owner-declared mapping must emit review_engine_keys.', limitations: ['A schema is not a methodology source; its field names are implementation vocabulary.'],
   },
+  // SRC-DRR-PAGE re-reviewed 2026-10-06: only the Study 014 reader wording changed (claim-provenance PR-13); the DRR definition is unchanged.
   {
-    id: 'SRC-DRR-PAGE', name: 'Decision Reconstruction Risk definition page', path: 'decision-reconstruction-risk.html', reviewed_sha256: 'f1ba6a3bd5c3f1dfb6e33a601df60ce70fdba4a873cd79688ca3ef7250665d8d', role: 'RESEARCH_TERM_SOURCE', version: 'not stated', classification: 'PUBLIC (deployed page)', status: 'NOT_ASSESSED',
+    id: 'SRC-DRR-PAGE', name: 'Decision Reconstruction Risk definition page', path: 'decision-reconstruction-risk.html', reviewed_sha256: '5a0a9d825eba28d39104c52a2d22c4026a4c353c9b810712e7167a95be574b34', role: 'RESEARCH_TERM_SOURCE', version: 'not stated', classification: 'PUBLIC (deployed page)', status: 'NOT_ASSESSED',
     evidence: 'Defines Decision Reconstruction Risk (DRR) as a concept term.', limitations: ['A research and public term source, not a methodology condition source.'],
   },
   {

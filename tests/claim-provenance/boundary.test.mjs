@@ -25,7 +25,12 @@ t('the tool never writes to a public file: every output path is under tools/clai
 if (ROOT === REPO) {
   const changed = execFileSync('git', ['status', '--porcelain', '--untracked-files=all'], { cwd: REPO, encoding: 'utf8' }).split('\n').filter(Boolean).map((l) => l.slice(3));
   const PUBLIC = (p) => !/^(tools|tests|docs|research|lib|scripts|\.jrs|schemas|standard)\//.test(p) && !/\.md$/.test(p);
-  t('no public page, route, download, configuration or credential file is changed or added', changed.filter(PUBLIC).length === 0, changed.filter(PUBLIC).join(', '));
+  // The owner authorized public research-claim repairs on 2026-10-06 (draft branch only). Only the
+  // pages those repairs name, and the methods-paper supersession notice, may differ.
+  const { REPAIRS, MANUAL_FINDINGS } = await import(ROOT + 'tools/claim-provenance/lib/repairs.js');
+  const AUTHORIZED = new Set(REPAIRS.map((r) => r.file).concat(MANUAL_FINDINGS.map((m) => m.notice).filter(Boolean)));
+  t('no public file changes except the authorized repaired pages and the supersession notice', changed.filter(PUBLIC).every((p) => AUTHORIZED.has(p)), changed.filter(PUBLIC).filter((p) => !AUTHORIZED.has(p)).join(', '));
+  t('no API route, OpenAPI, sitemap, Vercel configuration or credential file is changed', !changed.some((p) => /^api\/|^openapi\.json$|^sitemap\.xml$|^vercel\.json$|\.env/.test(p)));
   t('no release-gate record or guard file is changed', !changed.some((p) => /^lib\/release-gate\/|^scripts\/check_zero_drift\.py$|CURRENT_RELEASE_GATE_REPORT|^\.jrs\/registries\/RELEASE/.test(p)));
 }
 

@@ -16,7 +16,7 @@ A source is CANONICAL only where repository evidence names it as authoritative. 
 | SRC-METHODOLOGY-HTML | Methodology page | `methodology.html` | not stated | `a787e782e59826a6169368df3c52a539dbd43cb4264add9835174a1f27d6793a` | PUBLIC (deployed page) | NOT_ASSESSED |
 | SRC-CONDITIONS-JSON | Derived conditions file | `standard/jrs-conditions.json` | jrs_version 1.0, 2026-09-14 | `71a40590d37fe4882c52826181cd90055678e14a47210e21bcad3d2e2e18828c` | INTERNAL (excluded from deployment, unpublished) | DRAFT |
 | SRC-MANIFEST-SCHEMA | Decision Reconstruction Manifest schema | `schemas/jrs-decision-reconstruction-manifest.schema.json` | Manifest 1.0 schema | `214b4b6f67fcc6ec7426c5005bf90a16d959ef2ec866c81448f95581fe4d5ed8` | INTERNAL copy (schemas/ excluded); published copies at the site root | NOT_ASSESSED |
-| SRC-DRR-PAGE | Decision Reconstruction Risk definition page | `decision-reconstruction-risk.html` | not stated | `f1ba6a3bd5c3f1dfb6e33a601df60ce70fdba4a873cd79688ca3ef7250665d8d` | PUBLIC (deployed page) | NOT_ASSESSED |
+| SRC-DRR-PAGE | Decision Reconstruction Risk definition page | `decision-reconstruction-risk.html` | not stated | `5a0a9d825eba28d39104c52a2d22c4026a4c353c9b810712e7167a95be574b34` | PUBLIC (deployed page) | NOT_ASSESSED |
 | SRC-RESEARCH-CVP | Construct-validity data package | `research/CONSTRUCT_VALIDITY_PACKAGE.md` | not stated | `86ecb48536d254acda128392526c96fa12c321db5e44f51546a76c31f03b8019` | INTERNAL (research/ excluded from deployment) | NOT_ASSESSED |
 
 ## Evidence and limitations

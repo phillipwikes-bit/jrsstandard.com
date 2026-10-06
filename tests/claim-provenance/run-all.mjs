@@ -3,7 +3,7 @@
 //   node tests/claim-provenance/run-all.mjs --quick   without the mutation run
 import { execFileSync } from 'node:child_process';
 
-export const SUITES = ['schema.test.mjs', 'rules.test.mjs', 'scanner.test.mjs', 'boundary.test.mjs'];
+export const SUITES = ['schema.test.mjs', 'rules.test.mjs', 'scanner.test.mjs', 'regression.test.mjs', 'boundary.test.mjs'];
 const files = process.argv.includes('--quick') || process.env.CP_MUTATION_CHILD ? SUITES : SUITES.concat(['mutation/run-mutations.mjs']);
 let failed = 0;
 for (const f of files) {

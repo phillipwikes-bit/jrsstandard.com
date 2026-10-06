@@ -12,6 +12,6 @@
 
 | Claim | Status | Evidence | Last reviewed source hash |
 |---|---|---|---|
-| CL-013 | REQUIRES_WORDING_REPAIR | EV-CLAIM-RECONCILIATION (`docs/architecture/PUBLIC_CLAIM_RECONCILIATION_2026-10-06.md`) | FILE:f066bb8e5be9 |
+| CL-013 | SOURCE_REPORTED_NOT_REPRODUCED | EV-CLAIM-RECONCILIATION (`docs/architecture/PUBLIC_CLAIM_RECONCILIATION_2026-10-06.md`) | FILE:f066bb8e5be9 |
 
 - **CL-013 permitted wording:** On 29 of those texts, an AI reader given only one model's concise summary answered 77 percent of masked factual questions correctly, against 97 percent from the original.

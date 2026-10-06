@@ -5,14 +5,14 @@
  "claim_count": 33,
  "status_summary": {
   "SUPPORTED_WITH_LIMITATION": 16,
-  "HISTORICAL_ONLY": 3,
-  "SOURCE_REPORTED_NOT_REPRODUCED": 4,
+  "HISTORICAL_ONLY": 4,
+  "SOURCE_REPORTED_NOT_REPRODUCED": 5,
   "NOT_SUPPORTED": 4,
-  "NOT_ASSESSED": 3,
-  "REQUIRES_WORDING_REPAIR": 3,
-  "RETIRED": 0
+  "NOT_ASSESSED": 2,
+  "REQUIRES_WORDING_REPAIR": 0,
+  "RETIRED": 2
  },
- "claims_digest": "36788c73c3862400bd05bf32f4a6d80a9d6fd70d5425824d20cdd9146b04ef5c",
+ "claims_digest": "cfb4b95d73a23853a679572e330e37cecfb6ff373864ac0f8f898150bf3d3953",
  "evidence": [
   {
    "id": "EV-DETECTION-ARTICLE",
@@ -422,6 +422,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: research.html, research-summary.html (body, meta, Open Graph, Twitter and structured data), engagement.html, reviewer/index.html (PR-01, PR-03, PR-06, PR-08, PR-09, PR-11, PR-14, PR-19 to PR-22, PR-28). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
     }
    ]
   },
@@ -520,10 +524,12 @@
     "figures": [
      "37\\.5\\s+to\\s+100\\s?(%|percent)?",
      "\\b21\\.0\\b",
-     "\\b6 of 16\\b"
+     "\\b6 of 16\\b",
+     "\\bscored 100\\s?(%|percent)"
     ],
     "signatures": [
-     "37\\.5\\s+to\\s+100"
+     "37\\.5\\s+to\\s+100",
+     "[Ss]ix of the panel scored 100"
     ],
     "qualifiers": [],
     "prohibited": [
@@ -563,7 +569,7 @@
    "date_or_data_lock": "data lock 2026-08-15",
    "limitation": "A separate, smaller sample from the detection panel. Interim: 10 records against a pooled target of about 26, wide intervals, and the pre-registered lower-bound criterion not met. Agreement is not correctness and not psychometric validation.",
    "limitation_key": "not met",
-   "permitted_wording": "In a separate reliability sample of 10 records, Gwet's AC1 was 0.739 for invited experts and 0.623 for regular reviewers. Both exceed the 0.61 point floor, but neither analytic lower bound reaches 0.41, so the pre-registered criterion was not met.",
+   "permitted_wording": "In a separate reliability sample of 10 records, Gwet's AC1 was 0.739 for invited participants and 0.623 for open enrolment. Both exceed the 0.61 point floor, but neither analytic lower bound reaches 0.41, so the pre-registered criterion was not met.",
    "prohibited_overstatement": [
     "reviewers reliably agree",
     "substantial agreement",
@@ -623,6 +629,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: research.html, check.html, reviewer/index.html (PR-02, PR-06, PR-12, PR-25 (current population labels: invited / open enrolment)). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
     }
    ]
   },
@@ -700,6 +710,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: reviewer/index.html, research.html (PR-15, PR-18). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
     }
    ]
   },
@@ -742,7 +756,7 @@
      "\\b37 (dated )?(nightly )?runs\\b",
      "\\b41 (nightly )?runs\\b",
      "15-record",
-     "\\b15 records\\b"
+     "\\b15 (constructed )?records\\b"
     ],
     "signatures": [
      "82\\.2"
@@ -782,6 +796,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: research.html, reviewer/index.html (PR-04, PR-06, PR-07, PR-16, PR-18 (the 37-run figure now carries its 13 August 2026 window)). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
     }
    ]
   },
@@ -1030,7 +1048,7 @@
     "each condition independently predicts the outcome"
    ],
    "public_use": "MUST_NOT_STATE_AS_EVIDENCE",
-   "status": "REQUIRES_WORDING_REPAIR",
+   "status": "RETIRED",
    "engine_relationship": "NO_ENGINE_INFERENCE",
    "scan": {
     "figures": [
@@ -1055,6 +1073,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Retired as a public claim: research.html no longer presents the circular condition-separation p-values (PR-05). The record stays so the scanner flags any reintroduction."
     }
    ]
   },
@@ -1146,7 +1168,7 @@
     "the Engine measures DRR at 77 percent"
    ],
    "public_use": "MAY_STATE_WITH_LIMITATION",
-   "status": "REQUIRES_WORDING_REPAIR",
+   "status": "SOURCE_REPORTED_NOT_REPRODUCED",
    "engine_relationship": "NO_ENGINE_INFERENCE",
    "scan": {
     "figures": [
@@ -1174,6 +1196,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Wording repaired on decision-reconstruction-risk.html (PR-13): the reader is named as an AI reader. The figures remain source-reported."
     }
    ]
   },
@@ -1627,7 +1653,7 @@
    "permitted_wording": "Nothing on this page is presented as validated; the research programme is ongoing.",
    "prohibited_overstatement": [],
    "public_use": "MAY_STATE_WITH_LIMITATION",
-   "status": "NOT_ASSESSED",
+   "status": "RETIRED",
    "engine_relationship": "NO_ENGINE_INFERENCE",
    "scan": {
     "figures": [],
@@ -1641,6 +1667,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Retired: research-summary.html no longer calls the programme an \"operational validation phase\" (PR-23, PR-24)."
     }
    ]
   },
@@ -1878,6 +1908,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: implementation-scenarios.html, workflow-fit.html (PR-26, PR-27 (guidance worded as guidance)). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
     }
    ]
   },
@@ -1943,6 +1977,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: research-summary.html (PR-10, PR-17). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
     }
    ]
   },
@@ -1976,7 +2014,7 @@
     "substantial inter-rater reliability"
    ],
    "public_use": "HISTORICAL_CONTEXT_ONLY",
-   "status": "REQUIRES_WORDING_REPAIR",
+   "status": "HISTORICAL_ONLY",
    "engine_relationship": "NO_ENGINE_INFERENCE",
    "scan": {
     "figures": [],
@@ -1988,6 +2026,10 @@
     {
      "date": "2026-10-06",
      "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Supersession notice in place (PD-01): methods-paper-notice.html; research.html and research-summary.html link to the notice, and the PDF is unchanged."
     }
    ]
   }

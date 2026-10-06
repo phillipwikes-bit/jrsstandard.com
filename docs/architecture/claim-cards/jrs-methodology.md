@@ -12,9 +12,9 @@
 
 | Claim | Status | Evidence | Last reviewed source hash |
 |---|---|---|---|
-| CL-011 | REQUIRES_WORDING_REPAIR | EV-DETECTION-ARTICLE (`research/deliverables_2026-08-29/Detection_Article_2026-08-29.md`) | FILE:7d21dad28703 |
+| CL-011 | RETIRED | EV-DETECTION-ARTICLE (`research/deliverables_2026-08-29/Detection_Article_2026-08-29.md`) | FILE:7d21dad28703 |
 | CL-012 | SOURCE_REPORTED_NOT_REPRODUCED | EV-VALIDATION-REPORT (`research/JRS_Validation_Report.md`) | FILE:3a8ef977bb2a |
-| CL-025 | NOT_ASSESSED | EV-HANDOFF (`docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`) | FILE:ec9854d2d76b |
+| CL-025 | RETIRED | EV-HANDOFF (`docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`) | FILE:ec9854d2d76b |
 | CL-028 | NOT_SUPPORTED | EV-NONE | none |
 
 - **CL-011 permitted wording:** Because the overall determination is built from the five conditions, their association with it is expected by construction; the detection study reports it descriptively (Appendix B) and makes no discrimination claim from it.

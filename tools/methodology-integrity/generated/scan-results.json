@@ -130,7 +130,7 @@
   {
    "group": "methodology-integrity",
    "file": "tools/methodology-integrity/lib/sources.js",
-   "line": 58,
+   "line": 59,
    "phrase": "equivalent to",
    "classification": "MAPPING_PHRASE",
    "disposition": "ALLOWED",
@@ -140,7 +140,7 @@
   {
    "group": "methodology-integrity",
    "file": "tools/methodology-integrity/lib/sources.js",
-   "line": 61,
+   "line": 62,
    "phrase": "reasoning_traceability + Reconstructability",
    "classification": "KEY_BESIDE_CODEBOOK_LABEL",
    "disposition": "HISTORICAL_ONLY",

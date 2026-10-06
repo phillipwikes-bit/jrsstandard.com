@@ -1,14 +1,15 @@
-// Claim provenance: proposed public repairs. INTERNAL. PROPOSALS ONLY.
+// Claim provenance: public repairs, proposed on 2026-10-06 and implemented on the draft branch on
+// 2026-10-06 under the owner's repair authorization. INTERNAL. Nothing here edits a public file.
 //
-// Nothing here edits a public file. Each entry names a public file, the exact visible sentence to
-// change (`target`, markup removed), the proposed replacement, the claim it serves, and the scanner
-// findings it would resolve (`resolves`, exact visible sentences). No proposal changes a figure,
-// a denominator or a date: each adds a missing qualifier or corrects a scope. Markup around the
-// sentence is kept by whoever applies the repair, after owner publication approval.
+// Each entry names a public file, the visible text that was wrong (`target`, markup removed), the
+// visible text as applied (`applied`), the claim it serves, and any variance from the proposal.
+// The scan gate treats every IMPLEMENTED entry as a regression check: the target must stay absent
+// and the applied text must stay present. No repair changed a figure, a denominator or a date.
+// Merging the branch, and so publishing these pages, remains the owner's separate decision.
 
 const CONSTRUCTED_NOTE = 'Adds the constructed-corpus qualifier the register requires beside the detection figure (governing rule: constructed-record findings are not real-world performance).';
 
-export const REPAIRS = Object.freeze([
+const PROPOSED = [
   { id: 'PR-01', file: 'research.html', claim: 'CL-001',
     target: 'The detection panel, 16 independent reviewers across 11 countries and 5 continents, detected unreconstructable records at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined.',
     replacement: 'The detection panel, 16 independent reviewers across 11 countries and 5 continents, detected unreconstructable records in a constructed 24-record corpus at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined.',
@@ -81,7 +82,67 @@ export const REPAIRS = Object.freeze([
     target: 'Across 61 recorded runs, 12 June to 21 August 2026, the range was 66.7 to 93.3 percent, mean 85.3 percent, and 82.2 to 93.3 percent across 37 runs at the full 15-record set.',
     replacement: 'Across 61 recorded runs, 12 June to 21 August 2026, the raw agreement range was 66.7 to 93.3 percent, mean 85.3 percent, and 82.2 to 93.3 percent across 37 runs at the full 15-record set, as the series stood on 13 August 2026.',
     reason: 'Adds "raw agreement" and the 37-run window date (see PR-04). No figure changes.', resolves: null },
-]);
+];
+
+
+// As implemented. An entry not listed applied its proposed replacement unchanged.
+const VARIANCE = {
+  'PR-07': { applied: '82.2 to 93.3 percent across 37 runs restricted to the full 15-record set, as the series stood on 13 August 2026; closed 21 August 2026',
+    variance: 'Applied the window date as proposed. Also removed "with accuracy reported as preliminary. Pre-registered thresholds; preliminary and observational.", because the detection result is now reported, and pointed the card at the supersession notice (PD-01) instead of the PDF.' },
+  'PR-11': { applied: 'Accuracy on the constructed 24-record detection set is 83.9% across',
+    variance: 'Applied the qualifier as proposed. Also replaced "Reproducibility and reliability are reported." with a sentence stating their limits, because "reproducibility ... reported" read as established in the same answer.' },
+  'PR-13': { applied: 'an AI reader given only one model\'s concise summary answered 77% of masked factual questions correctly, against 97% from the original',
+    variance: 'Also changed "the reader\'s accuracy" to "the AI reader\'s accuracy" in the following sentence, so the same reader is named the same way.' },
+};
+const ADDED = [
+  { id: 'PR-18', file: 'research.html', claim: 'CL-006',
+    target: 'Independent AI models applied the published conditions with measurable consistency (66.7 to 93.3 percent across 61 recorded runs, mean 85.3 percent, 12 June to 21 August 2026; study closed 21 August 2026).',
+    applied: 'Independent AI models applied the published conditions with measurable consistency (raw agreement of 66.7 to 93.3 percent across 61 recorded runs, mean 85.3 percent, 12 June to 21 August 2026, and 82.2 to 93.3 percent across 37 runs at the full 15-record set as the series stood on 13 August 2026; study closed 21 August 2026). This is agreement between models, not accuracy.',
+    reason: 'Found during implementation: the 61-run range in the page introduction travelled without the full 15-record series or the raw-agreement limit (the repository guard "the cross-vendor range carries its own denominator" already failed on it).' },
+  { id: 'PR-19', file: 'research-summary.html', claim: 'CL-001',
+    target: 'Executive research summary: independent experts detected Decision Reconstruction Risk at 83.9% accuracy on a constructed corpus, 95% CI 72.7 to 95.1.',
+    applied: 'Executive research summary: a 16-member expert panel detected Decision Reconstruction Risk at 83.9% accuracy on a constructed 24-record corpus, 95% CI 72.7 to 95.1.',
+    reason: 'Meta description: found when the scanner was extended to metadata. Adds the panel scope.' },
+  { id: 'PR-20', file: 'research-summary.html', claim: 'CL-001',
+    target: '83.9% expert detection accuracy against a key fixed before scoring, with the boundaries of the claim stated first:',
+    applied: '83.9% detection accuracy by a 16-member expert panel on constructed records, against a key fixed before scoring, with the boundaries of the claim stated first:',
+    reason: 'Open Graph description: adds the panel scope and the constructed-record qualifier.' },
+  { id: 'PR-21', file: 'research-summary.html', claim: 'CL-001',
+    target: '83.9% expert detection accuracy against a key fixed before scoring, reported with its boundaries first:',
+    applied: '83.9% detection accuracy by a 16-member expert panel on constructed records, against a key fixed before scoring, reported with its boundaries first:',
+    reason: 'Twitter description: as PR-20.' },
+  { id: 'PR-22', file: 'research-summary.html', claim: 'CL-001',
+    target: 'Independent experts, reading constructed AI-generated decision records blind to a held-out reference classification',
+    applied: 'A 16-member expert panel, reading constructed AI-generated decision records blind to a held-out reference classification',
+    reason: 'Structured-data abstract: adds the panel scope.' },
+  { id: 'PR-23', file: 'research-summary.html', claim: 'CL-025',
+    target: 'The programme is in its operational validation phase, and the claim control that governs it is published in full in the',
+    applied: 'The research programme is ongoing, and the claim control that governs it is published in full in the',
+    reason: '"Operational validation phase" read as a validation status; the register records the claim as not assessed. Plain status wording keeps the boundary.' },
+  { id: 'PR-24', file: 'research-summary.html', claim: 'CL-025',
+    target: 'Preprint, operational validation phase',
+    applied: 'Research summary of an unpublished manuscript; research ongoing',
+    reason: 'Structured-data creativeWorkStatus: "Preprint" is a publication-status claim no repository record supports, and "operational validation phase" reads as a validation status.' },
+  { id: 'PR-25', file: 'reviewer/index.html', claim: 'CL-004',
+    target: 'Gwet\'s AC1 among experts, 0.623 among trained reviewers. Interim: wide intervals on 10 records.',
+    applied: 'Gwet\'s AC1 for invited participants, 0.623 for open enrolment, in a separate reviewer sample. Interim: wide intervals on 10 records, and the pre-registered criterion was not met.',
+    reason: 'Uses the current population labels (invited / open enrolment) and states the separate sample and the failed criterion.' },
+  { id: 'PR-26', file: 'implementation-scenarios.html', claim: 'CL-031',
+    target: 'First gaps visible in 1-3 records', applied: 'Start with 1-3 records (guidance, not a measured result)',
+    reason: 'The guidance quantity read as a measured finding; no study in the repository measured it.' },
+  { id: 'PR-27', file: 'workflow-fit.html', claim: 'CL-031',
+    target: 'Applying the review structure to 3-5 records is generally enough to begin calibrating reviewer judgment before expanding.',
+    applied: 'Starting with 3-5 records is a practical way to begin calibrating reviewer judgment before expanding.',
+    reason: 'As PR-26.' },
+  { id: 'PR-28', file: 'research.html', claim: 'CL-001', target: null,
+    applied: 'They do not establish performance on real records, psychometric validation of the conditions, model accuracy, or anything about the Review Engine, which is a controlled development candidate and is not evaluated here.',
+    reason: 'Readability addition: a three-part "How to Read These Results" block (what was studied, what the findings mean, what they do not establish) separates the detection panel, the reviewer-agreement sample, model consistency and the Engine.' },
+  { id: 'PR-29', file: 'research.html', claim: 'CL-033', target: null,
+    applied: 'The archived draft itself carries earlier figures and wording that have since been superseded; read the notice before relying on it.',
+    reason: 'PD-01: the methods-paper card leads to the supersession notice, not to the PDF.' },
+];
+export const REPAIRS = Object.freeze(PROPOSED.map((r) => ({ ...r, status: 'IMPLEMENTED', implemented: '2026-10-06', applied: (VARIANCE[r.id] && VARIANCE[r.id].applied) || r.replacement, variance: (VARIANCE[r.id] && VARIANCE[r.id].variance) || null }))
+  .concat(ADDED.map((r) => ({ ...r, replacement: r.applied, resolves: null, status: 'IMPLEMENTED', implemented: '2026-10-06', variance: 'Not in the 2026-10-06 proposal list; added during implementation.' }))));
 
 // The findings a proposal resolves: its own target sentence unless it lists others.
 export const resolvedBy = (r) => r.resolves || [r.target];
@@ -94,5 +155,7 @@ export const MANUAL_FINDINGS = Object.freeze([
     method: 'One-off pdftotext extraction during the package session; not part of the deterministic scan.',
     found: ['"Independent reviewers reached substantial agreement (Gwet\'s AC1 = 0.74 for experts, 0.63 for trained reviewers, across 10 records)."', '"Cross-vendor AI agreement averaged 84% across 15 constructed records."', '"The findings support reproducible application and substantial inter-rater reliability"'],
     proposal: 'Do not edit the draft\'s text silently. Either replace the download with a version carrying the 29 August 2026 manuscript results, or add a first-page notice, exactly: "Superseded, 6 October 2026. This draft describes AC1 of 0.74 and 0.63 as substantial agreement and cross-vendor agreement as averaging 84 percent. The 29 August 2026 manuscript reports that the pre-registered two-part reliability criterion was not met and no longer uses the verbal band; the cross-vendor series closed on 21 August 2026 across 61 recorded runs (raw agreement 66.7 to 93.3 percent, mean 85.3 percent), and its reproducibility criterion is not established because the required AC1 was not computed. This draft is kept as a historical record."',
-    reason: 'A public download reports a superseded reliability characterisation and a reproducibility conclusion the current evidence does not support.' },
+    reason: 'A public download reports a superseded reliability characterisation and a reproducibility conclusion the current evidence does not support.',
+    status: 'IMPLEMENTED', implemented: '2026-10-06', notice: 'methods-paper-notice.html', archival_path: '/api/dl?e=accuracy&src=notice',
+    implementation: 'The PDF is unchanged. A public notice page (methods-paper-notice.html) identifies it as an earlier draft, lists what the current record superseded or clarified, and links to the archived PDF through the existing download route. research.html and research-summary.html now link to the notice instead of the PDF.' },
 ]);

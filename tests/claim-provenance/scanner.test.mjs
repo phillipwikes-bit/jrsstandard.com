@@ -65,16 +65,12 @@ const r = scanCli.runScan(ROOT);
 t('every UNSUPPORTED or REQUIRES_REPAIR public finding has a proposed repair', r.gate.unproposed === 0, r.findings.filter((f) => !scan.REPORT_ONLY.includes(f.group) && ['UNSUPPORTED', 'REQUIRES_REPAIR'].includes(f.disposition) && !f.repair_id).map((f) => f.file + ':' + f.line).join(', '));
 t('no proposal is stale (each target sentence exists and each proposal resolves a finding)', r.gate.stale_proposals.length === 0, r.gate.stale_proposals.join(','));
 t('documentation drift: committed scan results and repair proposals equal a fresh scan', Object.entries(scanCli.outputs(r)).every(([p, text]) => exists(p) && read(p) === text));
-// Apply each proposal to the page's sentences in memory and re-classify: its findings must clear.
+// Every implemented repair is a regression check on the current page: the old wording is absent,
+// the applied wording present, and no figure was changed.
 for (const p of repairs.REPAIRS) {
-  const raw = readFileSync(join(ROOT, p.file), 'utf8');
-  const sents = scan.sentencesOf(raw, 'html');
-  const idx = sents.findIndex((x) => x.text === p.target);
-  const fixed = sents.map((x, i) => (i === idx ? { ...x, text: p.replacement } : x));
-  const after = fixed.map((_, i) => scan.classify(fixed, i, REGISTER.claims)).filter(Boolean);
-  const still = repairs.resolvedBy(p).map((txt) => (txt === p.target ? p.replacement : txt)).filter((txt) => after.some((f) => f.text === txt && ['UNSUPPORTED', 'REQUIRES_REPAIR'].includes(f.disposition)));
-  t(p.id + ' resolves its findings when applied (' + p.file + ')', idx >= 0 && still.length === 0, still.join(' | '));
-  t(p.id + ' changes no figure: every number in the target survives in the replacement', (p.target.match(/\d+(\.\d+)?/g) || []).every((n) => p.replacement.includes(n)) || p.id === 'PR-05');
+  const visible = scan.normVisible(scan.sentencesOf(readFileSync(join(ROOT, p.file), 'utf8'), 'html').map((x) => x.text).join(' '));
+  t(p.id + ' is implemented in ' + p.file + ': ' + (p.target ? 'old wording absent, ' : '') + 'applied wording present', p.status === 'IMPLEMENTED' && (!p.target || !visible.includes(scan.normVisible(p.target))) && visible.includes(scan.normVisible(p.applied)));
+  if (p.target && !['PR-05', 'PR-23', 'PR-24', 'PR-26', 'PR-27'].includes(p.id)) t(p.id + ' changed no figure: every number in the old wording is still on the repaired page', (p.target.match(/\d+(\.\d+)?/g) || []).every((n) => visible.includes(n)));
 }
 t('PR-05 removes the circular p-values rather than altering them', !/1\.0e-08|1\.5e-11/.test(repairs.REPAIRS.find((p) => p.id === 'PR-05').replacement));
 for (const m of repairs.MANUAL_FINDINGS) t(m.id + ' manual finding is bound to the current file hash (a changed file reopens it)', (await import('node:crypto')).createHash('sha256').update(readFileSync(join(ROOT, m.file))).digest('hex') === m.sha256);

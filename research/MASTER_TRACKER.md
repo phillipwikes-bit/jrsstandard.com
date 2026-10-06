@@ -3232,3 +3232,22 @@ Only four line groups differ between v7 and v8.
     - Handoff and public checks pass.
     - Guard: 164 checks, 39 failed, 1 skipped; the same failing set as HEAD, confirmed in a worktree.
   - **Not done:** no public page, route, OpenAPI, sitemap, Vercel, credential, guard, privacy or release-gate change. No provider call, real record, holdout, deployment or external contact.
+- 2026-10-06 (**PUBLIC RESEARCH-CLAIM REPAIRS IMPLEMENTED ON THE DRAFT PR #39 BRANCH; NOT PUBLISHED; MERGE REMAINS THE OWNER'S SEPARATE PUBLICATION DECISION**): owner-authorized repair implementation. FACT:
+  - **Implemented:** PR-01 to PR-17 and PD-01, plus PR-18 to PR-29 found during implementation. Variances, all recorded: PR-07, PR-11 and PR-13. No figure, denominator or date was changed.
+  - **Pages repaired:**
+    - `research.html`: constructed-corpus qualifiers; the 37-run window of 13 August 2026; the failed AC1 criterion; the 61-run range now travels with the full 15-record series; the circular p-values replaced with a descriptive statement; a new three-part "How to Read These Results" block; the methods-paper card now leads to the notice.
+    - `research-summary.html`: body copy, meta, Open Graph, Twitter and structured data; "operational validation phase" and "Preprint" removed; the methods-paper tile now leads to the notice.
+    - `reviewer/index.html`: current AC1 population labels (invited / open enrolment); raw-agreement wording.
+    - `check.html`, `engagement.html`, `decision-reconstruction-risk.html` (Study 014's reader named as an AI reader), and two guidance lines on `implementation-scenarios.html` and `workflow-fit.html`.
+  - **Supersession notice:** new page `methods-paper-notice.html`. `JRS_Reliability_Accuracy.pdf` is unchanged and still reachable through `/api/dl?e=accuracy&src=notice`. No public page links the PDF directly any more.
+  - **Scanner:** now also reads metadata, structured data and attributes, which found PR-19 to PR-22 and PR-24. Public scan: 0 REQUIRES_REPAIR, 0 UNSUPPORTED, 0 AMBIGUOUS. Implemented repairs are regression checks.
+  - **Register:** REQUIRES_WORDING_REPAIR 0. CL-011 and CL-025 are RETIRED, CL-033 is HISTORICAL_ONLY, and CL-013 is source-reported.
+  - **Methodology source register:** `decision-reconstruction-risk.html` re-bound after review (only the Study 014 wording changed).
+  - **Tests:**
+    - Claim provenance: 194 checks; 12 of 12 insertions and 28 of 28 mutations caught.
+    - Methodology integrity: 23 of 23. Workspace: 28 of 28. Release gate: 34 of 34. Engine candidate: 67 of 67. Provenance audit: 15 of 15.
+    - Handoff, public-route, public-boundary and Manifest checks pass.
+  - **Link audit:** the same 4 pre-existing broken links as HEAD; none new.
+  - **Mobile check:** all 9 changed pages render at 375px with no page overflow.
+  - **Guard:** 164 checks, 37 failed, 1 skipped. Two former failures now pass (the E-038 reliability wording and the cross-vendor denominator); none is new, and the guard file is unchanged.
+  - **Not done:** no merge, deployment, provider call, real record, holdout, credential, Vercel, OpenAPI, sitemap, redirect, API route or release-gate change.

@@ -2,7 +2,7 @@
  "register_version": "jrs-methodology-correspondence-register/0.1.0",
  "record_schema": "tools/methodology-integrity/schema/correspondence-record.schema.json",
  "governing_rule": "A shared word, a similar concept or a plausible interpretation does not establish a formal mapping. Without an owner-approved record, the status is UNMAPPED, PROPOSED_NOT_APPROVED, HISTORICAL_REFERENCE_ONLY, NOT_ASSESSED or RETIRED, and the display is \"No Codebook correspondence asserted.\"",
- "source_register_digest": "2a22dab2e4c5c0b352191f048491db48a3769ad6428582e1d218288739beaaa4",
+ "source_register_digest": "b8bb3be122c6dc218afc4f61187a8b714fdd2263dfa3106259605baf60668bbb",
  "record_count": 69,
  "status_summary": {
   "APPROVED_CORRESPONDENCE": 0,

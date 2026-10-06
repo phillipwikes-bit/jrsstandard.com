@@ -59,7 +59,7 @@ export const MUTATIONS = [
   ['M13', 'scanner: unowned figure', SC, "else results.push({ kind: 'FIGURE', disposition: 'UNSUPPORTED'", "else results.push({ kind: 'FIGURE', disposition: 'PERMITTED'"],
   ['M14', 'scanner: missing qualifier', SC, "else if (missing.length && !limitationOnly) { d = 'REQUIRES_REPAIR';", "else if (false) { d = 'REQUIRES_REPAIR';"],
   ['M15', 'scanner: prohibited overstatement', SC, "else if (bad.length) { d = 'UNSUPPORTED';", "else if (false) { d = 'UNSUPPORTED';"],
-  ['M16', 'scanner: status claims (readiness, validation, licensing)', SC, "if (!pat.test(text) || !SUBJECT.test(text)) continue;", "continue;"],
+  ['M16', 'scanner: status claims (readiness, validation, licensing)', SC, "if (!pat.test(text) || (needsSubject && !SUBJECT.test(text))) continue;", "continue;"],
   ['M17', 'scanner: Engine transfer', SC, "disposition: negated ? 'PERMITTED' : 'UNSUPPORTED'", "disposition: 'PERMITTED'"],
   ['M18', 'scanner: historical figure presented as current', SC, "d = historical ? 'HISTORICAL' : 'REQUIRES_REPAIR';", "d = 'HISTORICAL';"],
   ['M19', 'scanner: restricted surfaces excluded', SC, "else if (keep(rel) && !RESTRICTED.has(rel)) out.push(rel);", "else if (keep(rel)) out.push(rel);"],
@@ -67,6 +67,10 @@ export const MUTATIONS = [
   ['M21', 'claims: the 37-run window qualifier', CL, "'13 August|15 August|29 June', 'sentence'", "'.', 'sentence'"],
   ['M23', 'scanner: source grounding presented as semantic validation', SC, "  ['SOURCE_GROUNDING_AS_SEMANTIC', /", "  ['SOURCE_GROUNDING_AS_SEMANTIC', /(?!)"],
   ['M24', 'scanner: a historical stub must be noindex', SC, "/<meta[^>]+noindex/i.test(text) && ", ""],
+  ['M25', 'gate: an implemented repair whose old wording returns', SC, "|| (r.target && visibleOf(r.file).includes(normVisible(r.target)))", ""],
+  ['M26', 'scanner: superseded methods-paper wording', SC, "  ['SUPERSEDED_METHODS_WORDING', /", "  ['SUPERSEDED_METHODS_WORDING', /(?!)"],
+  ['M27', 'scanner: metadata, structured data and attributes are read', SC, "for (const m of meta) for (const x of dec(m.text)", "for (const m of []) for (const x of dec(m.text)"],
+  ['M28', 'scanner: guidance quantities pass only when worded as guidance', SC, "c.claim_topic === 'PROCEDURAL_GUIDANCE' && GUIDANCE.test(text)", "c.claim_topic === 'PROCEDURAL_GUIDANCE'"],
   ['M22', 'builder: a changed source is refused', B, "if (e.binding !== 'NONE' && current !== null && current !== e.reviewed_sha256) problem =", "if (false) problem ="],
 ];
 

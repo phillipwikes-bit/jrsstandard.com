@@ -37,7 +37,7 @@ const NOT_RELIABILITY = ['detection labelled reliability', '83\\.9(?:[^.;()]|\\.
 const NOT_FIELD = ['constructed result presented as real-world', '(83\\.9|87\\.0|80\\.7)(?:[^.;()]|\\.(?=\\d)){0,60}\\b(real[- ]world|field performance|in practice|real records)\\b|\\b(real[- ]world|field performance|in practice|real records)\\b(?:[^.;()]|\\.(?=\\d)){0,40}(83\\.9|87\\.0|80\\.7)'];
 const NOT_ENGINE = ['research transferred to the Engine', '\\b(Review Engine|the Engine)\\b'];
 
-export const CLAIMS = Object.freeze([
+const BASE = [
   // ---- 1. constructed-corpus detection panel ---------------------------------------------------------
   c({ text: 'Panel accuracy against the reference classification was 83.9 percent (95 percent CI 72.7 to 95.1 at participant level) on 24 constructed records, 16 reviewers, 384 graded reads; this cleared the pre-registered threshold of at least 70 percent.',
     topic: 'DETECTION', type: 'NUMERICAL_RESULT', surface: 'PUBLIC_PAGE', evidence: 'EV-DETECTION-ARTICLE', at: 'Abstract (Result) and Section 6.1, Table 1',
@@ -65,7 +65,7 @@ export const CLAIMS = Object.freeze([
     date: 'data lock 2026-08-15', limitation: 'Group-level detectability is not individual-level dependability: the panel mean is not any one reviewer\'s expected performance.', limitationKey: 'individual',
     permitted: 'Across the 16 panel reviewers, individual accuracy ranged from 37.5 to 100 percent (SD 21.0), so the panel mean is not any individual reviewer\'s expected performance.',
     publicUse: 'MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION', status: 'SUPPORTED_WITH_LIMITATION',
-    figures: ['37\\.5\\s+to\\s+100\\s?(%|percent)?', '\\b21\\.0\\b', '\\b6 of 16\\b'], signatures: ['37\\.5\\s+to\\s+100'], qualifiers: [], prohibited: [NOT_ENGINE] }),
+    figures: ['37\\.5\\s+to\\s+100\\s?(%|percent)?', '\\b21\\.0\\b', '\\b6 of 16\\b', '\\bscored 100\\s?(%|percent)'], signatures: ['37\\.5\\s+to\\s+100', '[Ss]ix of the panel scored 100'], qualifiers: [], prohibited: [NOT_ENGINE] }),
   // ---- 2. separate reviewer-agreement sample ------------------------------------------------------------
   c({ text: 'Gwet\'s AC1 was 0.739 for invited experts (8 raters, 36 labels) and 0.623 for regular reviewers (14 raters, 68 labels) on 10 records; analytic lower bounds 0.402 and 0.252; the pre-registered two-part criterion (point estimate at least 0.61 and lower bound at least 0.41) was not met.',
     topic: 'RELIABILITY', type: 'NUMERICAL_RESULT', surface: 'PUBLIC_PAGE', evidence: 'EV-DETECTION-ARTICLE', at: 'Section 6.5, Table 3',
@@ -74,7 +74,7 @@ export const CLAIMS = Object.freeze([
     date: 'data lock 2026-08-15',
     limitation: 'A separate, smaller sample from the detection panel. Interim: 10 records against a pooled target of about 26, wide intervals, and the pre-registered lower-bound criterion not met. Agreement is not correctness and not psychometric validation.',
     limitationKey: 'not met',
-    permitted: 'In a separate reliability sample of 10 records, Gwet\'s AC1 was 0.739 for invited experts and 0.623 for regular reviewers. Both exceed the 0.61 point floor, but neither analytic lower bound reaches 0.41, so the pre-registered criterion was not met.',
+    permitted: 'In a separate reliability sample of 10 records, Gwet\'s AC1 was 0.739 for invited participants and 0.623 for open enrolment. Both exceed the 0.61 point floor, but neither analytic lower bound reaches 0.41, so the pre-registered criterion was not met.',
     prohibitedWording: ['reviewers reliably agree', 'substantial agreement', 'JRS is reliable', 'AC1 shows accuracy'],
     publicUse: 'MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION', status: 'SUPPORTED_WITH_LIMITATION',
     figures: ['0\\.739', '0\\.74\\b', '0\\.623', '0\\.624', '0\\.63\\b', '0\\.61\\b', '0\\.41\\b', '0\\.402', '0\\.252', '0\\.427', '\\b22 raters\\b', '\\b104 (labels|determinations)\\b', '\\b113 (submitted )?(labels|determinations)\\b', '\\b10 (analysed |shared )?records\\b', '10-record', '\\b36 labels\\b', '\\b68 labels\\b'],
@@ -106,7 +106,7 @@ export const CLAIMS = Object.freeze([
     permitted: 'Restricted to runs that returned all 15 records, raw agreement ranged from 82.2 to 93.3 percent across 37 runs (series as read on 13 August 2026).',
     prohibitedWording: ['82.2 to 93.3 percent across 61 runs', '82.2 to 93.3 percent at closure'],
     publicUse: 'MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION', status: 'SOURCE_REPORTED_NOT_REPRODUCED',
-    figures: ['82\\.2', '93\\.3', '87\\.2\\s?(%|percent)?', '\\b37 (dated )?(nightly )?runs\\b', '\\b41 (nightly )?runs\\b', '15-record', '\\b15 records\\b'],
+    figures: ['82\\.2', '93\\.3', '87\\.2\\s?(%|percent)?', '\\b37 (dated )?(nightly )?runs\\b', '\\b41 (nightly )?runs\\b', '15-record', '\\b15 (constructed )?records\\b'],
     signatures: ['82\\.2'],
     qualifiers: [['37- or 41-run denominator', '\\b(37|41) (dated )?(nightly )?runs\\b', 'sentence'], ['15-record set', '15-record|15 records'], ['window date', '13 August|15 August|29 June', 'sentence']],
     prohibited: [['denominator swapped to 61 runs', '82\\.2(?:[^.]|\\.(?=\\d)){0,60}\\b61 (recorded )?runs'], ['agreement labelled accuracy or validation', '82\\.2(?:[^.;()]|\\.(?=\\d)){0,60}\\b(accura\\w*|validat\\w*)\\b|\\b(accura\\w*|validat\\w*)\\b(?:[^.;()]|\\.(?=\\d)){0,40}82\\.2'], NOT_ENGINE] }),
@@ -275,4 +275,29 @@ export const CLAIMS = Object.freeze([
     date: 'draft, cross-vendor figure as of 2026-07-06', limitation: 'Superseded. The 2026-08-29 manuscript reports the pre-registered two-part reliability criterion not met and drops "substantial"; the cross-vendor series closed with 61 runs and its reproducibility criterion is not established. "Reproducible application" is therefore not supported.', limitationKey: 'superseded',
     permitted: 'Historical draft, superseded: it reported AC1 0.74 and 0.63 on 10 records and cross-vendor agreement of 84 percent on 15 constructed records; the current results are in the 29 August 2026 manuscript.',
     prohibitedWording: ['substantial agreement', 'support reproducible application', 'substantial inter-rater reliability'], publicUse: 'HISTORICAL_CONTEXT_ONLY', status: 'REQUIRES_WORDING_REPAIR' }),
-]);
+];
+
+// ---- 2026-10-06: public wording repaired on the draft branch (owner repair authorization) ----------
+// Each entry adds a review-history line naming the pages and repairs; the scanner confirms the old
+// issue is absent before a repair is recorded as implemented (tools/claim-provenance/lib/repairs.js).
+// Statuses change only where the claim itself changed standing; nothing is deleted.
+const REPAIRED = {
+  'CL-001': ['research.html, research-summary.html (body, meta, Open Graph, Twitter and structured data), engagement.html, reviewer/index.html', 'PR-01, PR-03, PR-06, PR-08, PR-09, PR-11, PR-14, PR-19 to PR-22, PR-28'],
+  'CL-004': ['research.html, check.html, reviewer/index.html', 'PR-02, PR-06, PR-12, PR-25 (current population labels: invited / open enrolment)'],
+  'CL-005': ['reviewer/index.html, research.html', 'PR-15, PR-18'],
+  'CL-006': ['research.html, reviewer/index.html', 'PR-04, PR-06, PR-07, PR-16, PR-18 (the 37-run figure now carries its 13 August 2026 window)'],
+  'CL-032': ['research-summary.html', 'PR-10, PR-17'],
+  'CL-031': ['implementation-scenarios.html, workflow-fit.html', 'PR-26, PR-27 (guidance worded as guidance)'],
+};
+const STATUS_CHANGE = {
+  'CL-011': ['RETIRED', 'Retired as a public claim: research.html no longer presents the circular condition-separation p-values (PR-05). The record stays so the scanner flags any reintroduction.'],
+  'CL-013': ['SOURCE_REPORTED_NOT_REPRODUCED', 'Wording repaired on decision-reconstruction-risk.html (PR-13): the reader is named as an AI reader. The figures remain source-reported.'],
+  'CL-025': ['RETIRED', 'Retired: research-summary.html no longer calls the programme an "operational validation phase" (PR-23, PR-24).'],
+  'CL-033': ['HISTORICAL_ONLY', 'Supersession notice in place (PD-01): methods-paper-notice.html; research.html and research-summary.html link to the notice, and the PDF is unchanged.'],
+};
+export const CLAIMS = Object.freeze(BASE.map((c) => {
+  const out = { ...c, review_history: [...c.review_history] };
+  if (REPAIRED[c.claim_id]) out.review_history.push({ date: '2026-10-06', change: 'Public wording repaired on the draft branch: ' + REPAIRED[c.claim_id][0] + ' (' + REPAIRED[c.claim_id][1] + '). The scanner confirms the old issue is absent. Not published until the owner approves a merge.' });
+  if (STATUS_CHANGE[c.claim_id]) { out.status = STATUS_CHANGE[c.claim_id][0]; out.review_history.push({ date: '2026-10-06', change: STATUS_CHANGE[c.claim_id][1] }); }
+  return out;
+}));

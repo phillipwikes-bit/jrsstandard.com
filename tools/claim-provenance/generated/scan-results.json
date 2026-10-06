@@ -1,8 +1,8 @@
 {
  "scanner": "jrs-public-claim-scan/0.1.0",
- "claims_digest": "36788c73c3862400bd05bf32f4a6d80a9d6fd70d5425824d20cdd9146b04ef5c",
+ "claims_digest": "cfb4b95d73a23853a679572e330e37cecfb6ff373864ac0f8f898150bf3d3953",
  "scope": {
-  "public_pages": 70,
+  "public_pages": 71,
   "public_routes": 65,
   "public_downloads": [
    "jrs-decision-reconstruction-manifest-example-v1.0.json",
@@ -50,15 +50,16 @@
   "restricted_excluded": 5
  },
  "summary": {
-  "PERMITTED": 45,
-  "HISTORICAL": 1,
-  "AMBIGUOUS": 4,
-  "UNSUPPORTED": 9,
-  "REQUIRES_REPAIR": 35
+  "PERMITTED": 79,
+  "HISTORICAL": 4,
+  "AMBIGUOUS": 0,
+  "UNSUPPORTED": 13,
+  "REQUIRES_REPAIR": 7
  },
  "gate": {
   "unproposed": 0,
-  "stale_proposals": []
+  "stale_proposals": [],
+  "regressions": []
  },
  "findings": [
   {
@@ -141,21 +142,19 @@
    "group": "public-page",
    "file": "check.html",
    "line": 175,
-   "text": "0.739 / 0.623 Gwet's AC1 in a separate reliability sample: invited / open-enrolment.",
-   "text_sha256": "539ac4f67843bdbbbfb461bb4055522f7deb626b34071d01676c4dae4455203b",
-   "disposition": "REQUIRES_REPAIR",
+   "text": "0.739 / 0.623 Gwet's AC1 in a separate 10-record reliability sample: invited / open-enrolment.",
+   "text_sha256": "4937a30f72f7369594f1a5fc9c2d54d433ffc27acf7b0065d253f635a063a0da",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-004"
    ],
-   "missing_qualifiers": [
-    "ten-record sample"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: ten-record sample"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-12",
-   "repair_target": "0.739 / 0.623 Gwet's AC1 in a separate reliability sample: invited / open-enrolment.",
-   "proposed_replacement": "0.739 / 0.623 Gwet's AC1 in a separate 10-record reliability sample: invited / open-enrolment."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -163,73 +162,67 @@
    "line": 177,
    "text": "Separate reliability result: both AC1 point estimates exceeded the 0.61 floor, but the pre-registered two-part criterion was not met because neither lower confidence bound reached 0.41.",
    "text_sha256": "d084b0287ae1d700024d15bd761d37530de75f2b516671e521cf40c65461e75b",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-004"
    ],
-   "missing_qualifiers": [
-    "ten-record sample"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: ten-record sample"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-12",
-   "repair_target": "0.739 / 0.623 Gwet's AC1 in a separate reliability sample: invited / open-enrolment.",
-   "proposed_replacement": "0.739 / 0.623 Gwet's AC1 in a separate 10-record reliability sample: invited / open-enrolment."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "decision-reconstruction-risk.html",
    "line": 133,
-   "text": "On 29 of those texts, a reader given only the summary answered 77% of masked factual questions correctly, against 97% from the original.",
-   "text_sha256": "1f330f99522a08ba87be858ce3b7ab70bfb9847cb08179b057bbf3e51fee4b18",
-   "disposition": "REQUIRES_REPAIR",
+   "text": "On 29 of those texts, an AI reader given only one model's concise summary answered 77% of masked factual questions correctly, against 97% from the original.",
+   "text_sha256": "88696729366ebe27996bcfb23ca334253e605bd85c634bad5863dbef9e2afa57",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-013"
    ],
-   "missing_qualifiers": [
-    "the reader was a model"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: the register marks this claim for wording repair (missing: the reader was a model)"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-13",
-   "repair_target": "On 29 of those texts, a reader given only the summary answered 77% of masked factual questions correctly, against 97% from the original.",
-   "proposed_replacement": "On 29 of those texts, an AI reader given only one model's concise summary answered 77% of masked factual questions correctly, against 97% from the original."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "engagement.html",
    "line": 254,
-   "text": "Accuracy on the detection set is 83.9% across 16 independent experts and 384 graded reads, 95% confidence interval 72.7 to 95.1 , scored against a key fixed before any scoring took place under a pre-registered analysis plan.",
-   "text_sha256": "0cc9fc7dff0245bbafed697b3b89d108bd4feecc9cdefe194518de1d18613856",
-   "disposition": "REQUIRES_REPAIR",
+   "text": "Accuracy on the constructed 24-record detection set is 83.9% across 16 independent experts and 384 graded reads, 95% confidence interval 72.7 to 95.1 , scored against a key fixed before any scoring took place under a pre-registered analysis plan.",
+   "text_sha256": "d4255ba8c29a474e46e18cadc76674cd2708d512e8220913627abfc8eb52d38f",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-11",
-   "repair_target": "Accuracy on the detection set is 83.9% across 16 independent experts and 384 graded reads, 95% confidence interval 72.7 to 95.1 , scored against a key fixed before any scoring took place under a pre-registered analysis plan.",
-   "proposed_replacement": "Accuracy on the constructed 24-record detection set is 83.9% across 16 independent experts and 384 graded reads, 95% confidence interval 72.7 to 95.1, scored against a key fixed before any scoring took place under a pre-registered analysis plan."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "implementation-scenarios.html",
    "line": 265,
-   "text": "First gaps visible in 1-3 records",
-   "text_sha256": "ec985ab1eece68714be9f9eecc1fc5e8dd98801d83b862c0a6ae6891f9a3df72",
-   "disposition": "AMBIGUOUS",
+   "text": "Start with 1-3 records (guidance, not a measured result)",
+   "text_sha256": "6d421733bf83ec0432c92fa23e6cac2eeaba00cbee498192c0628b737787d2f8",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-031"
    ],
    "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: the register records this claim as NOT_ASSESSED"
+    "CLAIM: a guidance quantity worded as guidance, not as a finding"
    ],
    "repair_id": null,
    "repair_target": null,
@@ -241,13 +234,13 @@
    "line": 469,
    "text": "1-5 reviewers, individual or group format",
    "text_sha256": "1e085aaece07cd18d289fc64655b7073d44b586af1461d2de2634479d19f5161",
-   "disposition": "AMBIGUOUS",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-031"
    ],
    "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: the register records this claim as NOT_ASSESSED"
+    "CLAIM: a guidance quantity worded as guidance, not as a finding"
    ],
    "repair_id": null,
    "repair_target": null,
@@ -375,13 +368,194 @@
    "line": 3732,
    "text": "Recommended minimum: 10 records per record type per quarter for departments with active review programs.",
    "text_sha256": "9cc348396db8359822efaeef2d83fe92b6925c0b063815592db09dd9abcec902",
-   "disposition": "AMBIGUOUS",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-031"
    ],
    "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: the register records this claim as NOT_ASSESSED"
+    "CLAIM: a guidance quantity worded as guidance, not as a finding"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "methods-paper-notice.html",
+   "line": 109,
+   "text": "The draft reports Gwet's AC1 of 0.74 and 0.63 on 10 records and calls this substantial agreement.",
+   "text_sha256": "6ffd843affc40fbeed48f5a22d242111c5fced054045b1be1b0e0c1c02b2ebfb",
+   "disposition": "HISTORICAL",
+   "claim_ids": [
+    "CL-004"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "SUPERSEDED_METHODS_WORDING: clearly placed as history",
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "methods-paper-notice.html",
+   "line": 109,
+   "text": "The current manuscript (29 August 2026) reports 0.739 for invited participants and 0.623 for open enrolment, in a separate reviewer sample of 10 records.",
+   "text_sha256": "d84dbbfc46d648543057397ce91df3ce16ff435f5c3d3a58aedfbe54eb79aa8c",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-004"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "methods-paper-notice.html",
+   "line": 111,
+   "text": "The draft reports that cross-vendor agreement averaged 84% across 15 constructed records, a figure from an earlier point in a nightly series.",
+   "text_sha256": "9e437d863946a933ab644a918e23ea8ef1d814e383964ac6e703159f9ad617b5",
+   "disposition": "HISTORICAL",
+   "claim_ids": [
+    "CL-007"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: historical figure in a historical context"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "methods-paper-notice.html",
+   "line": 111,
+   "text": "Across 61 recorded runs, 12 June to 21 August 2026, raw agreement ranged from 66.7 to 93.3 percent, mean 85.3 percent, and 82.2 to 93.3 percent across 37 runs at the full 15-record set, as the series stood on 13 August 2026.",
+   "text_sha256": "bca12a6905097ab29304beebd457638010815520199a5e5af0985cf6bff25948",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-005",
+    "CL-006"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers",
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "methods-paper-notice.html",
+   "line": 113,
+   "text": "The draft says its findings support reproducible application and substantial inter-rater reliability.",
+   "text_sha256": "ed88d58c6f93d772753c11ca62c39bf249e2ebe3c27b216e6af76940165c9a78",
+   "disposition": "HISTORICAL",
+   "claim_ids": [],
+   "missing_qualifiers": [],
+   "reasons": [
+    "SUPERSEDED_METHODS_WORDING: clearly placed as history"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "methods-paper-notice.html",
+   "line": 115,
+   "text": "The detection result is now reported: on a constructed 24-record corpus, the detection panel matched the reference classification at a mean accuracy of 83.9 percent (95 percent confidence interval 72.7 to 95.1, participant level).",
+   "text_sha256": "51d7e6c9a5c44e60037acfc0ad574933ee839ce49efa0febdf07c36976bcd07c",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-001"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "research-summary.html",
+   "line": 7,
+   "text": "Executive research summary: a 16-member expert panel detected Decision Reconstruction Risk at 83.9% accuracy on a constructed 24-record corpus, 95% CI 72.7 to 95.1.",
+   "text_sha256": "b7766d887e2edba492f498a8f028adf8fdfa6ad8657cc543fefcdc75297ba3f4",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-001"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "research-summary.html",
+   "line": 9,
+   "text": "83.9% detection accuracy by a 16-member expert panel on constructed records, against a key fixed before scoring, with the boundaries of the claim stated first: a bimodal constructed corpus, no criterion validity against real records, unvalidated psychometrics, and a pre-registered reliability lower bound that was not met.",
+   "text_sha256": "648c6de6432bf6a213f5f751afe14a738e9f3cf77e9789b7d26b20c6c70c0c87",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-001"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "research-summary.html",
+   "line": 15,
+   "text": "83.9% detection accuracy by a 16-member expert panel on constructed records, against a key fixed before scoring, reported with its boundaries first: bimodal constructed corpus, no criterion validity, unvalidated psychometrics, one failed pre-registered criterion.",
+   "text_sha256": "c932450ef7f6c03edc186f13fd1bb2eeaec207fa65d8c69587617bec1c25c7c8",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-001"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "research-summary.html",
+   "line": 28,
+   "text": "A 16-member expert panel, reading constructed AI-generated decision records blind to a held-out reference classification, recovered that classification at 83.9 percent accuracy, 95 percent CI 72.7 to 95.1 at participant level.",
+   "text_sha256": "5fef69aa77ad5e40ab029f66dcdf544963cb0673458e75cd513d9aadfe7be677",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-001"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers"
    ],
    "repair_id": null,
    "repair_target": null,
@@ -411,19 +585,17 @@
    "line": 162,
    "text": "83.9%",
    "text_sha256": "e9fd5c574b51c084840ca9a03390d82db95cd8bd0ab85d2ebbbf7f58bf8b3883",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-08",
-   "repair_target": "Panel detection accuracy against a reference classification fixed before scoring",
-   "proposed_replacement": "Panel detection accuracy on a constructed 24-record corpus, against a reference classification fixed before scoring"
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -431,19 +603,17 @@
    "line": 164,
    "text": "95% confidence interval 72.7 to 95.1 at participant level.",
    "text_sha256": "0506608d56be27d751523c8a398c5d0292e585ad18a8da39c225e2931f549b9a",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-08",
-   "repair_target": "Panel detection accuracy against a reference classification fixed before scoring",
-   "proposed_replacement": "Panel detection accuracy on a constructed 24-record corpus, against a reference classification fixed before scoring"
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -451,19 +621,17 @@
    "line": 164,
    "text": "Sensitivity 87.0 percent for unsupported records, specificity 80.7 percent for grounded ones.",
    "text_sha256": "5a7c488d0fde59090259eecab6d3a6c15f78b84ba0ead449ad592456d8fc6bef",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-002"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-08",
-   "repair_target": "Panel detection accuracy against a reference classification fixed before scoring",
-   "proposed_replacement": "Panel detection accuracy on a constructed 24-record corpus, against a reference classification fixed before scoring"
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -471,21 +639,19 @@
    "line": 164,
    "text": "Produced by 16 independent experts across 11 countries and 5 continents, reading cold and blind, over 384 graded reads.",
    "text_sha256": "cadf863648fa2b75d22c714324eeecba6497cfe8e0c9c1534aafa3f684681e80",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001",
     "CL-010"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus",
+    "CLAIM: carries the recorded qualifiers",
     "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-08",
-   "repair_target": "Panel detection accuracy against a reference classification fixed before scoring",
-   "proposed_replacement": "Panel detection accuracy on a constructed 24-record corpus, against a reference classification fixed before scoring"
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -550,10 +716,12 @@
    "text": "Six of the panel scored 100 percent.",
    "text_sha256": "d5f258fdfa2e946271b5bd194a0a635cf3dddf5f83b6670f648c8e495304974f",
    "disposition": "PERMITTED",
-   "claim_ids": [],
+   "claim_ids": [
+    "CL-003"
+   ],
    "missing_qualifiers": [],
    "reasons": [
-    "FIGURE: illustrative example, not a research figure [100 percent]"
+    "CLAIM: carries the recorded qualifiers"
    ],
    "repair_id": null,
    "repair_target": null,
@@ -599,21 +767,19 @@
    "group": "public-page",
    "file": "research-summary.html",
    "line": 197,
-   "text": "The 83.9 percent figure is the mean of the 16 individual reviewer accuracy scores , each scored out of 24 records.",
-   "text_sha256": "2622dd437dcf6d50cfeb51fa66f992847652ea48c021c8d5b76ee4e1f3f7c3cc",
-   "disposition": "REQUIRES_REPAIR",
+   "text": "The 83.9 percent figure is the mean of the 16 individual reviewer accuracy scores , each scored out of the 24 constructed records.",
+   "text_sha256": "c7f87ecee476fb337eee95baa9686dd485a63f8a33ba4c11862876af5694d360",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-09",
-   "repair_target": "The 83.9 percent figure is the mean of the 16 individual reviewer accuracy scores , each scored out of 24 records.",
-   "proposed_replacement": "The 83.9 percent figure is the mean of the 16 individual reviewer accuracy scores, each scored out of the 24 constructed records."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -625,9 +791,7 @@
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
     "CLAIM: a limitation statement"
    ],
@@ -641,19 +805,17 @@
    "line": 198,
    "text": "83.9 ± t(15, .975) × 21.0 / √16 = 72.7 to 95.1",
    "text_sha256": "9c4061aaefca8b4b577482dfada2b2cbd79e7ef56a2a22868378fcf4e2986a8d",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-09",
-   "repair_target": "The 83.9 percent figure is the mean of the 16 individual reviewer accuracy scores , each scored out of 24 records.",
-   "proposed_replacement": "The 83.9 percent figure is the mean of the 16 individual reviewer accuracy scores, each scored out of the 24 constructed records."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -695,42 +857,37 @@
    "group": "public-page",
    "file": "research-summary.html",
    "line": 215,
-   "text": "To size that omission rather than argue about it, a mixed-effects logistic model was fitted over all 384 graded reads, crossing both random factors:",
-   "text_sha256": "3dfaee346d89b6c084f4958564183bacdcfc53d0c98258decce84c95da17e9c9",
-   "disposition": "REQUIRES_REPAIR",
+   "text": "To size that omission rather than argue about it, an exploratory mixed-effects logistic model was fitted over all 384 graded reads of the detection panel on the constructed corpus, crossing both random factors:",
+   "text_sha256": "4e09b6ea4389e8fab10e6ec058c77557b6486bbacc7edb3202f88206d863698f",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus",
-    "detection panel scope"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus; detection panel scope"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-10",
-   "repair_target": "To size that omission rather than argue about it, a mixed-effects logistic model was fitted over all 384 graded reads, crossing both random factors:",
-   "proposed_replacement": "To size that omission rather than argue about it, an exploratory mixed-effects logistic model was fitted over all 384 graded reads of the detection panel on the constructed corpus, crossing both random factors:"
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "research-summary.html",
    "line": 217,
-   "text": "The intercept places an average reviewer on an average record at 89.2 percent .",
-   "text_sha256": "d5edc5214de333187bf43f6b654b63ddc446084f778735c6b8161dc527f30596",
-   "disposition": "REQUIRES_REPAIR",
+   "text": "In this exploratory model, the intercept places an average reviewer on an average record at 89.2 percent .",
+   "text_sha256": "b8b92420a6a16b867d671d9e6b7f817ef1f6fb3b6d89495193ce5477ad5d6095",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-032"
    ],
-   "missing_qualifiers": [
-    "exploratory status"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: exploratory status"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-17",
-   "repair_target": "The intercept places an average reviewer on an average record at 89.2 percent .",
-   "proposed_replacement": "In this exploratory model, the intercept places an average reviewer on an average record at 89.2 percent."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -738,19 +895,17 @@
    "line": 217,
    "text": "Reviewer SD is 1.769 (profile interval 1.292 to 3.000); record SD is 0.011 and sits at the boundary, with a profile interval of 0.001 to 0.556.",
    "text_sha256": "2b30c75d45b360c4a7c0f50a4e1f89336a9460cb991e0d18d668d6bc8f0df2a8",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-032"
    ],
-   "missing_qualifiers": [
-    "exploratory status"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: exploratory status"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-17",
-   "repair_target": "The intercept places an average reviewer on an average record at 89.2 percent .",
-   "proposed_replacement": "In this exploratory model, the intercept places an average reviewer on an average record at 89.2 percent."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -758,51 +913,9 @@
    "line": 217,
    "text": "The latent-scale intraclass correlation is 0.488 for reviewers and 0.0000 for records .",
    "text_sha256": "10c64014931d40cea7541a5ac0baba698c919a50beb1f198596f6c4892bca573",
-   "disposition": "REQUIRES_REPAIR",
-   "claim_ids": [
-    "CL-032"
-   ],
-   "missing_qualifiers": [
-    "exploratory status"
-   ],
-   "reasons": [
-    "CLAIM: missing qualifier: exploratory status"
-   ],
-   "repair_id": "PR-17",
-   "repair_target": "The intercept places an average reviewer on an average record at 89.2 percent .",
-   "proposed_replacement": "In this exploratory model, the intercept places an average reviewer on an average record at 89.2 percent."
-  },
-  {
-   "group": "public-page",
-   "file": "research.html",
-   "line": 103,
-   "text": "The detection panel, 16 independent reviewers across 11 countries and 5 continents, detected unreconstructable records at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined.",
-   "text_sha256": "a1a5a1e9a43ebcc13fa8903680b9329cf8a3adb1084c41f2f9c304a4e7d976e6",
-   "disposition": "REQUIRES_REPAIR",
-   "claim_ids": [
-    "CL-001",
-    "CL-010"
-   ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
-   "reasons": [
-    "CLAIM: missing qualifier: constructed corpus",
-    "CLAIM: carries the recorded qualifiers"
-   ],
-   "repair_id": "PR-01",
-   "repair_target": "The detection panel, 16 independent reviewers across 11 countries and 5 continents, detected unreconstructable records at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined.",
-   "proposed_replacement": "The detection panel, 16 independent reviewers across 11 countries and 5 continents, detected unreconstructable records in a constructed 24-record corpus at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined."
-  },
-  {
-   "group": "public-page",
-   "file": "research.html",
-   "line": 103,
-   "text": "Independent AI models applied the published conditions with measurable consistency (66.7 to 93.3 percent across 61 recorded runs, mean 85.3 percent, 12 June to 21 August 2026; study closed 21 August 2026).",
-   "text_sha256": "39e764b5bd4570e8fad885a5508f8b04331ca0829a6ec9edb4e3b96e48d979ee",
    "disposition": "PERMITTED",
    "claim_ids": [
-    "CL-005"
+    "CL-032"
    ],
    "missing_qualifiers": [],
    "reasons": [
@@ -816,108 +929,138 @@
    "group": "public-page",
    "file": "research.html",
    "line": 103,
-   "text": "A separate human-reviewer reliability analysis measured Gwet's AC1 at 0.739 for invited participants and 0.623 for open enrolment on 10 analysed records.",
-   "text_sha256": "2e7468576e837a8f1119e2dd192c6526f181a97b0747ac1cb91a22597d05aae8",
-   "disposition": "REQUIRES_REPAIR",
-   "claim_ids": [
-    "CL-004"
-   ],
-   "missing_qualifiers": [
-    "criterion or interim status"
-   ],
-   "reasons": [
-    "CLAIM: missing qualifier: criterion or interim status"
-   ],
-   "repair_id": "PR-02",
-   "repair_target": "A separate human-reviewer reliability analysis measured Gwet's AC1 at 0.739 for invited participants and 0.623 for open enrolment on 10 analysed records.",
-   "proposed_replacement": "A separate human-reviewer reliability analysis measured Gwet's AC1 at 0.739 for invited participants and 0.623 for open enrolment on 10 analysed records; the pre-registered two-part criterion was not met because neither lower confidence bound reached 0.41."
-  },
-  {
-   "group": "public-page",
-   "file": "research.html",
-   "line": 115,
-   "text": "83.9%",
-   "text_sha256": "e9fd5c574b51c084840ca9a03390d82db95cd8bd0ab85d2ebbbf7f58bf8b3883",
-   "disposition": "REQUIRES_REPAIR",
-   "claim_ids": [
-    "CL-001"
-   ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
-   "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
-   ],
-   "repair_id": "PR-03",
-   "repair_target": "Against a verified answer key, read blind.",
-   "proposed_replacement": "Against a verified answer key, read blind, on a constructed 24-record corpus."
-  },
-  {
-   "group": "public-page",
-   "file": "research.html",
-   "line": 116,
-   "text": "16 independent experts on the detection panel, 11 countries, 5 continents, 384 determinations.",
-   "text_sha256": "b75c8907641cf8568d790a9f34aafef2284a4d986a9c0d11e019a4b0e4cac2cc",
-   "disposition": "REQUIRES_REPAIR",
+   "text": "The detection panel, 16 independent reviewers across 11 countries and 5 continents, detected unreconstructable records in a constructed 24-record corpus at 83.9% accuracy against a verified key, clearing the threshold set before any data were examined.",
+   "text_sha256": "99bdabe2ec73ba154dc042a6cd3ab012595472e23254d73bf375c661d66c39a1",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001",
     "CL-010"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus",
+    "CLAIM: carries the recorded qualifiers",
     "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-03",
-   "repair_target": "Against a verified answer key, read blind.",
-   "proposed_replacement": "Against a verified answer key, read blind, on a constructed 24-record corpus."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 116,
-   "text": "95% CI 72.7 to 95.1 at participant level.",
-   "text_sha256": "e5bdf40456e756884f83d5fafd3456fb7a50486e25a137a3651a78651f8bf395",
-   "disposition": "REQUIRES_REPAIR",
+   "line": 103,
+   "text": "Independent AI models applied the published conditions with measurable consistency (raw agreement of 66.7 to 93.3 percent across 61 recorded runs, mean 85.3 percent, 12 June to 21 August 2026, and 82.2 to 93.3 percent across 37 runs at the full 15-record set as the series stood on 13 August 2026; study closed 21 August 2026).",
+   "text_sha256": "54851757588fb80b0ec3107fd904fca733c939dd6f3cb94dfbe3017b5ed83c94",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-005",
+    "CL-006"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers",
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "research.html",
+   "line": 103,
+   "text": "A separate human-reviewer reliability analysis measured Gwet's AC1 at 0.739 for invited participants and 0.623 for open enrolment on 10 analysed records; the pre-registered two-part criterion was not met because neither lower confidence bound reached 0.41.",
+   "text_sha256": "c3acd3c5fdded99a23d6f3e31205ed5f87752f3a369cccc1062dd0ea98ca40a7",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-004"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "research.html",
+   "line": 124,
+   "text": "83.9%",
+   "text_sha256": "e9fd5c574b51c084840ca9a03390d82db95cd8bd0ab85d2ebbbf7f58bf8b3883",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-03",
-   "repair_target": "Against a verified answer key, read blind.",
-   "proposed_replacement": "Against a verified answer key, read blind, on a constructed 24-record corpus."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 116,
+   "line": 125,
+   "text": "16 independent experts on the detection panel, 11 countries, 5 continents, 384 determinations.",
+   "text_sha256": "b75c8907641cf8568d790a9f34aafef2284a4d986a9c0d11e019a4b0e4cac2cc",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-001",
+    "CL-010"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers",
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "research.html",
+   "line": 125,
+   "text": "95% CI 72.7 to 95.1 at participant level.",
+   "text_sha256": "e5bdf40456e756884f83d5fafd3456fb7a50486e25a137a3651a78651f8bf395",
+   "disposition": "PERMITTED",
+   "claim_ids": [
+    "CL-001"
+   ],
+   "missing_qualifiers": [],
+   "reasons": [
+    "CLAIM: carries the recorded qualifiers"
+   ],
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
+  },
+  {
+   "group": "public-page",
+   "file": "research.html",
+   "line": 125,
    "text": "Sensitivity 87.0%, specificity 80.7%.",
    "text_sha256": "f54e737b9c133bba9967ab3b2282d1d5fbe8ce5cacc4eecaa788f1eb2309fc68",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-002"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-03",
-   "repair_target": "Against a verified answer key, read blind.",
-   "proposed_replacement": "Against a verified answer key, read blind, on a constructed 24-record corpus."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 120,
+   "line": 129,
    "text": "0.739 / 0.623 criterion not met",
    "text_sha256": "3bf1249c743e3080c0b9d01dbb1ac0d5041becd9527bfab9b22e6bc78a7a58a6",
    "disposition": "PERMITTED",
@@ -935,7 +1078,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 121,
+   "line": 130,
    "text": "Gwet's AC1, invited and open-enrolment participants, on a shared 10-record analysed set carrying 113 submitted determinations reduced to 104 after keeping one label per rater per record.",
    "text_sha256": "4f13bd7f06d5ee20cc214d30248b974ddca4100299905851943f8d213fce079c",
    "disposition": "PERMITTED",
@@ -953,7 +1096,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 121,
+   "line": 130,
    "text": "Point estimates of 0.739 and 0.623 both exceed the pre-registered 0.61 point floor, but neither confidence-interval lower bound reaches the required 0.41.",
    "text_sha256": "f75ac70009fbb2bcfb758f58c5fc219a653304997669a160b5ee65dd8c42cf3b",
    "disposition": "PERMITTED",
@@ -971,7 +1114,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 125,
+   "line": 134,
    "text": "66.7-93.3%",
    "text_sha256": "4124a298ae126dfd90868878cd60b4ef40264db7c33236515bd885aa45fafff5",
    "disposition": "PERMITTED",
@@ -989,7 +1132,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 126,
+   "line": 135,
    "text": "Across 61 recorded runs between 12 June and 21 August 2026 agreement ranged from 66.7 to 93.3 percent, mean 85.3 percent.",
    "text_sha256": "ed4b37bcd1a13cbeb5c9833279f25e220abd37466bfbee1ece2d9e1c47e7752c",
    "disposition": "PERMITTED",
@@ -1007,27 +1150,25 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 126,
-   "text": "Restricted to the runs that returned every record, the range is 82.2 to 93.3 percent across 37 runs at the full 15-record set.",
-   "text_sha256": "0e1371514c63f731227f886a644cc79976b4444cec214465e0fa251ffe323ce1",
-   "disposition": "REQUIRES_REPAIR",
+   "line": 135,
+   "text": "Restricted to the runs that returned every record, the range is 82.2 to 93.3 percent across 37 runs at the full 15-record set, as the series stood on 13 August 2026.",
+   "text_sha256": "811b1f26187bf28b8621ad37260ec4ce14b831875dab1db3cbc275ecc4b3c417",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-006"
    ],
-   "missing_qualifiers": [
-    "window date"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: window date"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-04",
-   "repair_target": "Restricted to the runs that returned every record, the range is 82.2 to 93.3 percent across 37 runs at the full 15-record set.",
-   "proposed_replacement": "Restricted to the runs that returned every record, the range is 82.2 to 93.3 percent across 37 runs at the full 15-record set, as the series stood on 13 August 2026."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 130,
+   "line": 139,
    "text": "58 reviewers",
    "text_sha256": "5d20ace5050e221c8ac771f24e2ab92d6d9814d06bd98190d771bcfb776e34a0",
    "disposition": "PERMITTED",
@@ -1045,7 +1186,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 131,
+   "line": 140,
    "text": "36 of them ( all completers, both arms ) completed a full 24-record set, spanning 16 countries and 5 continents.",
    "text_sha256": "efcc82987a2c3c6ee1c9320d8d0218b03072003c228397e6580836add7e79ea8",
    "disposition": "PERMITTED",
@@ -1063,27 +1204,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 148,
-   "text": "Section 5.4 of the detection study reports that all five carry information separating a reconstructable record from an unreconstructable one, at p between 1.0e-08 and 1.5e-11 on 108 labels from 21 raters.",
-   "text_sha256": "8d454c5e0dff4293037e15222f5c690c87da62abc18d77878d01645975233762",
-   "disposition": "REQUIRES_REPAIR",
-   "claim_ids": [
-    "CL-011"
-   ],
-   "missing_qualifiers": [
-    "circularity stated"
-   ],
-   "reasons": [
-    "CLAIM: the register marks this claim for wording repair (missing: circularity stated)"
-   ],
-   "repair_id": "PR-05",
-   "repair_target": "Section 5.4 of the detection study reports that all five carry information separating a reconstructable record from an unreconstructable one, at p between 1.0e-08 and 1.5e-11 on 108 labels from 21 raters.",
-   "proposed_replacement": "Because the overall determination is built from the five conditions, their association with it is expected by construction; the detection study reports it descriptively (Appendix B) and makes no discrimination claim from it."
-  },
-  {
-   "group": "public-page",
-   "file": "research.html",
-   "line": 167,
+   "line": 176,
    "text": "Evidence Base Detection Reported Programme-wide, 58 international reviewers have graded records across the three studies.",
    "text_sha256": "1c313ac2f7ef79fbbb373ef011ee503a3ab97c08a288b32264bbe12c88fe1f71",
    "disposition": "PERMITTED",
@@ -1101,10 +1222,10 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 167,
-   "text": "Panel detection 83.9% against a verified key ( 16 independent reviewers on the detection panel, 11 countries); cross-vendor raw agreement ranged 66.7 to 93.3 percent, mean 85.3 percent, across 61 recorded mixed-denominator runs, and 82.2 to 93.3 percent across 37 runs restricted to the full 15-record set, study closed 21 August 2026; no chance-corrected AC1 was computed for that cross-vendor study, so its pre-registered reproducibility criterion is not established; reviewer reliability Gwet's AC1 0.739 invited / 0.623 open enrolment, interim; the pre-registered two-part reliability criterion was not met because neither lower confidence bound reached 0.41.",
-   "text_sha256": "50c5eebded31ac1e0b77befcf3180c6edc11215ddff0acf57228816ba750a1a0",
-   "disposition": "REQUIRES_REPAIR",
+   "line": 176,
+   "text": "Panel detection 83.9% against a verified key on a constructed 24-record corpus ( 16 independent reviewers on the detection panel, 11 countries); cross-vendor raw agreement ranged 66.7 to 93.3 percent, mean 85.3 percent, across 61 recorded mixed-denominator runs, and 82.2 to 93.3 percent across 37 runs restricted to the full 15-record set as the series stood on 13 August 2026, study closed 21 August 2026; no chance-corrected AC1 was computed for that cross-vendor study, so its pre-registered reproducibility criterion is not established; reviewer reliability Gwet's AC1 0.739 invited / 0.623 open enrolment on 10 analysed records, interim; the pre-registered two-part reliability criterion was not met because neither lower confidence bound reached 0.41.",
+   "text_sha256": "2694ebfcc28b7cea231846687a41e2e72cdb1ef4fb5a2dc865f46803d8899e83",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001",
     "CL-004",
@@ -1112,26 +1233,22 @@
     "CL-006",
     "CL-010"
    ],
-   "missing_qualifiers": [
-    "constructed corpus",
-    "ten-record sample",
-    "window date"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus",
-    "CLAIM: missing qualifier: ten-record sample",
     "CLAIM: carries the recorded qualifiers",
-    "CLAIM: missing qualifier: window date",
+    "CLAIM: carries the recorded qualifiers",
+    "CLAIM: carries the recorded qualifiers",
+    "CLAIM: carries the recorded qualifiers",
     "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-06",
-   "repair_target": "Panel detection 83.9% against a verified key ( 16 independent reviewers on the detection panel, 11 countries); cross-vendor raw agreement ranged 66.7 to 93.3 percent, mean 85.3 percent, across 61 recorded mixed-denominator runs, and 82.2 to 93.3 percent across 37 runs restricted to the full 15-record set, study closed 21 August 2026; no chance-corrected AC1 was computed for that cross-vendor study, so its pre-registered reproducibility criterion is not established; reviewer reliability Gwet's AC1 0.739 invited / 0.623 open enrolment, interim; the pre-registered two-part reliability criterion was not met because neither lower confidence bound reached 0.41.",
-   "proposed_replacement": "Panel detection 83.9% against a verified key on a constructed 24-record corpus (16 independent reviewers on the detection panel, 11 countries); cross-vendor raw agreement ranged 66.7 to 93.3 percent, mean 85.3 percent, across 61 recorded mixed-denominator runs, and 82.2 to 93.3 percent across 37 runs restricted to the full 15-record set as the series stood on 13 August 2026, study closed 21 August 2026; no chance-corrected AC1 was computed for that cross-vendor study, so its pre-registered reproducibility criterion is not established; reviewer reliability Gwet's AC1 0.739 invited / 0.623 open enrolment on 10 analysed records, interim; the pre-registered two-part reliability criterion was not met because neither lower confidence bound reached 0.41."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 177,
+   "line": 186,
    "text": "Study 003 · Condition Performance Collecting Per-condition data now collected: 108 scored determinations across 10 records, distributed Gap 69%, Needs work 18%, Ready 13%.",
    "text_sha256": "fd26bf1a79b3edc1f69251b53d9f8a143b79f2aa67e91437e5f3be41260638ed",
    "disposition": "PERMITTED",
@@ -1149,7 +1266,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 178,
+   "line": 187,
    "text": "Study 004 · Reviewer Reliability Result reported Independent reviewers have scored a shared record set; inter-rater reliability is reported as chance-corrected agreement (Gwet's AC1 0.739 invited, 0.623 open enrolment, 10 analysed records).",
    "text_sha256": "e053807ed9ba443f1902dbd602c22c137e9b2f0360f633e98ab8c34ce84b5be5",
    "disposition": "PERMITTED",
@@ -1167,7 +1284,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 183,
+   "line": 192,
    "text": "The detection panel, 16 reviewers across 11 countries and 5 continents, completed the full 24-record set, producing 384 graded reads.",
    "text_sha256": "46fb903f522c8c494c3f44898901e125d99dd0fa72bdf985e22c8af561ec8af9",
    "disposition": "PERMITTED",
@@ -1187,7 +1304,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 183,
+   "line": 192,
    "text": "Panel detection accuracy against the verified key is 83.9% (95% confidence interval 72.7 to 95.1 at participant level; sensitivity 87.0%, specificity 80.7%), clearing the pre-registered threshold on both criteria.",
    "text_sha256": "03afa291f1602f536c959fb683b14fa0e61f07109a6ede7b03263514aaebe288",
    "disposition": "PERMITTED",
@@ -1207,7 +1324,7 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 183,
+   "line": 192,
    "text": "This is a method-research result, not validation of the Review Engine.",
    "text_sha256": "0562af15388f4797799c0e43b7b80951b43a8197bc07947485b1ef2de8cbf036",
    "disposition": "PERMITTED",
@@ -1225,26 +1342,24 @@
   {
    "group": "public-page",
    "file": "research.html",
-   "line": 208,
-   "text": "Cross-vendor AI consistency (66.7 to 93.3 percent across 61 recorded mixed-denominator runs, mean 85.3 percent; 82.2 to 93.3 percent across 37 runs restricted to the full 15-record set; closed 21 August 2026; no chance-corrected AC1 computed, so the pre-registered reproducibility criterion is not established) and human inter-rater reliability (Gwet's AC1 0.739 invited, 0.623 open enrolment, 10 analysed records; the pre-registered two-part criterion was not met), with accuracy reported as preliminary.",
-   "text_sha256": "8b944b4026141841a8b1bb81fd8bbd6fa87b5614ed6fe59b123c974e6463c523",
-   "disposition": "REQUIRES_REPAIR",
+   "line": 217,
+   "text": "Cross-vendor AI consistency (66.7 to 93.3 percent across 61 recorded mixed-denominator runs, mean 85.3 percent; 82.2 to 93.3 percent across 37 runs restricted to the full 15-record set, as the series stood on 13 August 2026; closed 21 August 2026; no chance-corrected AC1 computed, so the pre-registered reproducibility criterion is not established) and human inter-rater reliability (Gwet's AC1 0.739 invited, 0.623 open enrolment, 10 analysed records; the pre-registered two-part criterion was not met).",
+   "text_sha256": "bbeacd741beb7d9014a109d65fed5d410de6b9ac15eecd8e296e0b7d4986e263",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-004",
     "CL-005",
     "CL-006"
    ],
-   "missing_qualifiers": [
-    "window date"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
     "CLAIM: carries the recorded qualifiers",
     "CLAIM: carries the recorded qualifiers",
-    "CLAIM: missing qualifier: window date"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-07",
-   "repair_target": "Cross-vendor AI consistency (66.7 to 93.3 percent across 61 recorded mixed-denominator runs, mean 85.3 percent; 82.2 to 93.3 percent across 37 runs restricted to the full 15-record set; closed 21 August 2026; no chance-corrected AC1 computed, so the pre-registered reproducibility criterion is not established) and human inter-rater reliability (Gwet's AC1 0.739 invited, 0.623 open enrolment, 10 analysed records; the pre-registered two-part criterion was not met), with accuracy reported as preliminary.",
-   "proposed_replacement": "Cross-vendor AI consistency (66.7 to 93.3 percent across 61 recorded mixed-denominator runs, mean 85.3 percent; 82.2 to 93.3 percent across 37 runs restricted to the full 15-record set, as the series stood on 13 August 2026; closed 21 August 2026; no chance-corrected AC1 computed, so the pre-registered reproducibility criterion is not established) and human inter-rater reliability (Gwet's AC1 0.739 invited, 0.623 open enrolment, 10 analysed records; the pre-registered two-part criterion was not met), with accuracy reported as preliminary."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -1272,19 +1387,17 @@
    "line": 183,
    "text": "83.9%",
    "text_sha256": "e9fd5c574b51c084840ca9a03390d82db95cd8bd0ab85d2ebbbf7f58bf8b3883",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-14",
-   "repair_target": "16 independent experts on the detection panel against a verified key, read blind.",
-   "proposed_replacement": "16 independent experts on the detection panel against a verified key, read blind, on a constructed 24-record corpus."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -1292,19 +1405,17 @@
    "line": 184,
    "text": "95% CI 72.7 to 95.1.",
    "text_sha256": "36c675b776d072ceaaa374c920778d1a2534832320b80d4a8f704017eca0fee4",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-001"
    ],
-   "missing_qualifiers": [
-    "constructed corpus"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: constructed corpus"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-14",
-   "repair_target": "16 independent experts on the detection panel against a verified key, read blind.",
-   "proposed_replacement": "16 independent experts on the detection panel against a verified key, read blind, on a constructed 24-record corpus."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -1328,8 +1439,8 @@
    "group": "public-page",
    "file": "reviewer/index.html",
    "line": 189,
-   "text": "Gwet's AC1 among experts, 0.623 among trained reviewers.",
-   "text_sha256": "6db4c4b8966b58faefe05f7d7f36221fd04968f6435061fecc3d5c4a9de494fc",
+   "text": "Gwet's AC1 for invited participants, 0.623 for open enrolment, in a separate reviewer sample.",
+   "text_sha256": "31be4f940f94dab11eca43393a80d13511d9ef946a4deaf24bba2468e6e25cdd",
    "disposition": "PERMITTED",
    "claim_ids": [
     "CL-004"
@@ -1348,42 +1459,37 @@
    "line": 193,
    "text": "66.7-93.3%",
    "text_sha256": "4124a298ae126dfd90868878cd60b4ef40264db7c33236515bd885aa45fafff5",
-   "disposition": "REQUIRES_REPAIR",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-005"
    ],
-   "missing_qualifiers": [
-    "raw agreement only"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: raw agreement only"
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-15",
-   "repair_target": "Three AI vendors applying the same conditions to the same constructed record set.",
-   "proposed_replacement": "Raw agreement among three AI vendors applying the same conditions to the same constructed record set; this is consistency, not accuracy."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
    "file": "reviewer/index.html",
    "line": 194,
-   "text": "Across 61 recorded runs, 12 June to 21 August 2026, the range was 66.7 to 93.3 percent, mean 85.3 percent, and 82.2 to 93.3 percent across 37 runs at the full 15-record set.",
-   "text_sha256": "3906fe08fc5681cc138a6fa65c423cd5b4ee5433600c4cb2519790e313be16a3",
-   "disposition": "REQUIRES_REPAIR",
+   "text": "Across 61 recorded runs, 12 June to 21 August 2026, the raw agreement range was 66.7 to 93.3 percent, mean 85.3 percent, and 82.2 to 93.3 percent across 37 runs at the full 15-record set, as the series stood on 13 August 2026.",
+   "text_sha256": "f3e4ca4cefabc5f5656dae58ccac75c576bc2b4837bfd69ab32786d4095c8dcf",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-005",
     "CL-006"
    ],
-   "missing_qualifiers": [
-    "raw agreement only",
-    "window date"
-   ],
+   "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: missing qualifier: raw agreement only",
-    "CLAIM: missing qualifier: window date"
+    "CLAIM: carries the recorded qualifiers",
+    "CLAIM: carries the recorded qualifiers"
    ],
-   "repair_id": "PR-16",
-   "repair_target": "Across 61 recorded runs, 12 June to 21 August 2026, the range was 66.7 to 93.3 percent, mean 85.3 percent, and 82.2 to 93.3 percent across 37 runs at the full 15-record set.",
-   "proposed_replacement": "Across 61 recorded runs, 12 June to 21 August 2026, the raw agreement range was 66.7 to 93.3 percent, mean 85.3 percent, and 82.2 to 93.3 percent across 37 runs at the full 15-record set, as the series stood on 13 August 2026."
+   "repair_id": null,
+   "repair_target": null,
+   "proposed_replacement": null
   },
   {
    "group": "public-page",
@@ -1409,15 +1515,15 @@
    "group": "public-page",
    "file": "workflow-fit.html",
    "line": 302,
-   "text": "Applying the review structure to 3-5 records is generally enough to begin calibrating reviewer judgment before expanding.",
-   "text_sha256": "d4fef727d5f4fe5c3650c9dcd9042d8911db4bd5d7eb8feb89c8ffc55c06d63e",
-   "disposition": "AMBIGUOUS",
+   "text": "Starting with 3-5 records is a practical way to begin calibrating reviewer judgment before expanding.",
+   "text_sha256": "d96df65666104cc8bb9a1c5528f7269278a0085e61dc923e78323faf04528878",
+   "disposition": "PERMITTED",
    "claim_ids": [
     "CL-031"
    ],
    "missing_qualifiers": [],
    "reasons": [
-    "CLAIM: the register records this claim as NOT_ASSESSED"
+    "CLAIM: a guidance quantity worded as guidance, not as a finding"
    ],
    "repair_id": null,
    "repair_target": null,
@@ -1461,11 +1567,11 @@
    "line": 48,
    "text": "| RG-1.5 Per-condition results with uncertainty | NOT_ASSESSED | none | Depends on RG-1.1 to RG-1.4 |",
    "text_sha256": "a17057e829e4cbfe05db30dfe4465669598218da66dcf90b11c7967655a1fe6a",
-   "disposition": "PERMITTED",
+   "disposition": "UNSUPPORTED",
    "claim_ids": [],
    "missing_qualifiers": [],
    "reasons": [
-    "FIGURE: illustrative example, not a research figure [1.1]"
+    "FIGURE: a figure no register claim owns (new, changed or unrecorded) [1.1]"
    ],
    "repair_id": null,
    "repair_target": null,
@@ -1509,11 +1615,11 @@
    "line": 51,
    "text": "All 89 texts are listed in `dev-material.js`, and `tests/engine-candidate/shared/dev-index.mjs` loads them for the contamination screen.",
    "text_sha256": "dc0ea8ff2acf83101f918b24bb85de483ff0a451f5ea889c63c7d5d3a2b4d829",
-   "disposition": "PERMITTED",
+   "disposition": "UNSUPPORTED",
    "claim_ids": [],
    "missing_qualifiers": [],
    "reasons": [
-    "FIGURE: illustrative example, not a research figure [89 texts]"
+    "FIGURE: a figure no register claim owns (new, changed or unrecorded) [89 texts]"
    ],
    "repair_id": null,
    "repair_target": null,
@@ -1622,11 +1728,11 @@
    "line": 132,
    "text": "- **Floor 2, Detection and accuracy.** The claim that reviewers distinguish reconstructable from non-reconstructable records is supported only if agreement with the held-out key on the 24-record set, on the binary distinction, exceeds chance with the lower 95% bound above 0.50 and reaches a pre-set target of at least 0.70.",
    "text_sha256": "a76656253cd94f7cc9bcec53a07f0636db4d02760a39249f945b1859bc86d2cd",
-   "disposition": "PERMITTED",
+   "disposition": "UNSUPPORTED",
    "claim_ids": [],
    "missing_qualifiers": [],
    "reasons": [
-    "FIGURE: illustrative example, not a research figure [95%, 0.50, 0.70]"
+    "FIGURE: a figure no register claim owns (new, changed or unrecorded) [95%, 0.50, 0.70]"
    ],
    "repair_id": null,
    "repair_target": null,
@@ -1644,7 +1750,7 @@
    ],
    "missing_qualifiers": [],
    "reasons": [
-    "FIGURE: a figure no register claim owns (new, changed or unrecorded) [15 constructed records, 87 percent]",
+    "FIGURE: a figure no register claim owns (new, changed or unrecorded) [87 percent]",
     "CLAIM: a historical figure presented as current"
    ],
    "repair_id": null,
@@ -1725,11 +1831,11 @@
    "line": 183,
    "text": "- Inter-rater agreement was **100%**: all three raters assigned identical labels on all 24 records.",
    "text_sha256": "a4212ae616a183930b5191902e25e52f8bb983ad534a2363d5ee9f5ee450692c",
-   "disposition": "PERMITTED",
+   "disposition": "UNSUPPORTED",
    "claim_ids": [],
    "missing_qualifiers": [],
    "reasons": [
-    "FIGURE: illustrative example, not a research figure [100%]"
+    "FIGURE: a figure no register claim owns (new, changed or unrecorded) [100%]"
    ],
    "repair_id": null,
    "repair_target": null,

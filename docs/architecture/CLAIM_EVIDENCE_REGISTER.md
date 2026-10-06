@@ -7,14 +7,14 @@
 | Status | Claims |
 |---|---|
 | SUPPORTED_WITH_LIMITATION | 16 |
-| HISTORICAL_ONLY | 3 |
-| SOURCE_REPORTED_NOT_REPRODUCED | 4 |
+| HISTORICAL_ONLY | 4 |
+| SOURCE_REPORTED_NOT_REPRODUCED | 5 |
 | NOT_SUPPORTED | 4 |
-| NOT_ASSESSED | 3 |
-| REQUIRES_WORDING_REPAIR | 3 |
-| RETIRED | 0 |
+| NOT_ASSESSED | 2 |
+| REQUIRES_WORDING_REPAIR | 0 |
+| RETIRED | 2 |
 
-Total: 33 claims. Claims digest `36788c73c3862400bd05bf32f4a6d80a9d6fd70d5425824d20cdd9146b04ef5c`.
+Total: 33 claims. Claims digest `cfb4b95d73a23853a679572e330e37cecfb6ff373864ac0f8f898150bf3d3953`.
 
 ## Evidence sources
 
@@ -103,11 +103,11 @@ Total: 33 claims. Claims digest `36788c73c3862400bd05bf32f4a6d80a9d6fd70d5425824
 - **Quantities:** AC1 0.739 / 0.623; denominator: 10 records; 36 and 68 labels (required)
 - **Date or data lock:** data lock 2026-08-15
 - **Limitation:** A separate, smaller sample from the detection panel. Interim: 10 records against a pooled target of about 26, wide intervals, and the pre-registered lower-bound criterion not met. Agreement is not correctness and not psychometric validation.
-- **Permitted wording:** In a separate reliability sample of 10 records, Gwet's AC1 was 0.739 for invited experts and 0.623 for regular reviewers. Both exceed the 0.61 point floor, but neither analytic lower bound reaches 0.41, so the pre-registered criterion was not met.
+- **Permitted wording:** In a separate reliability sample of 10 records, Gwet's AC1 was 0.739 for invited participants and 0.623 for open enrolment. Both exceed the 0.61 point floor, but neither analytic lower bound reaches 0.41, so the pre-registered criterion was not met.
 - **Prohibited overstatement:** "reviewers reliably agree"; "substantial agreement"; "JRS is reliable"; "AC1 shows accuracy"
 - **Public use:** MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION · **Surface:** PUBLIC_PAGE · **Engine relationship:** NO_ENGINE_INFERENCE
 
-### CL-033 · REQUIRES_WORDING_REPAIR
+### CL-033 · HISTORICAL_ONLY
 
 - **Claim:** The methods paper download states that independent reviewers reached substantial agreement (AC1 0.74 experts, 0.63 trained reviewers, 10 records), that cross-vendor AI agreement averaged 84 percent across 15 constructed records, and that the findings support reproducible application and substantial inter-rater reliability.
 - **Evidence:** EV-METHODS-PDF (`JRS_Reliability_Accuracy.pdf`, Abstract, "Results and interpretation"; repeated in the results tables, FILE:64bb9f80dd9f); class MANUSCRIPT_REPORTED; SOURCE_REPORTED.
@@ -195,7 +195,7 @@ Total: 33 claims. Claims digest `36788c73c3862400bd05bf32f4a6d80a9d6fd70d5425824
 
 ## CONDITION_BEHAVIOUR
 
-### CL-011 · REQUIRES_WORDING_REPAIR
+### CL-011 · RETIRED
 
 - **Claim:** All five conditions separate a reconstructable record from an unreconstructable one, at p between 1.0e-08 and 1.5e-11 on 108 labels from 21 raters.
 - **Evidence:** EV-DETECTION-ARTICLE (`research/deliverables_2026-08-29/Detection_Article_2026-08-29.md`, Appendix B ("reported descriptively"); EV-FINAL-SWEEP DERIVATION TEST; EV-EMPLOYMENT-MANUSCRIPT, FILE:7d21dad28703); class MANUSCRIPT_REPORTED; SOURCE_REPORTED.
@@ -220,7 +220,7 @@ Total: 33 claims. Claims digest `36788c73c3862400bd05bf32f4a6d80a9d6fd70d5425824
 
 ## DRR_STUDY
 
-### CL-013 · REQUIRES_WORDING_REPAIR
+### CL-013 · SOURCE_REPORTED_NOT_REPRODUCED
 
 - **Claim:** In Study 014, on 29 texts, a reader given only a summary answered 77 percent of masked factual questions correctly, against 97 percent from the original.
 - **Evidence:** EV-CLAIM-RECONCILIATION (`docs/architecture/PUBLIC_CLAIM_RECONCILIATION_2026-10-06.md`, P-10 (verified against research/study-014-drr/RESULTS.md on branch claude/engine-eval-v8-2026-10-01), FILE:f066bb8e5be9); class CONTEMPORANEOUS_PROJECT_RECORD; SOURCE_REPORTED.
@@ -363,7 +363,7 @@ Total: 33 claims. Claims digest `36788c73c3862400bd05bf32f4a6d80a9d6fd70d5425824
 
 ## RESEARCH_STATUS
 
-### CL-025 · NOT_ASSESSED
+### CL-025 · RETIRED
 
 - **Claim:** Nothing on this page is presented as validated. The programme is in its operational validation phase.
 - **Evidence:** EV-HANDOFF (`docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`, research-summary.html; the handoff position that general-purpose validation is not established, FILE:ec9854d2d76b); class REPOSITORY_CONTROL_RECORD; SOURCE_REPORTED.

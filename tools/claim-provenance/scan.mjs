@@ -26,11 +26,12 @@ export function outputs(r) { return { [RESULTS]: JSON.stringify(r, null, 1) + '\
 if (import.meta.url === `file://${process.argv[1]}`) {
   const args = process.argv.slice(2), r = runScan(), out = outputs(r);
   for (const f of r.findings) if (f.disposition !== 'PERMITTED') console.log(f.disposition.padEnd(16) + ' ' + f.file + ':' + f.line + '  ' + f.text.slice(0, 110) + (f.repair_id ? '  [' + f.repair_id + ']' : ''));
-  console.log(Object.entries(r.summary).map(([k, v]) => k + '=' + v).join(' ') + '  unproposed=' + r.gate.unproposed + '  stale proposals=' + r.gate.stale_proposals.length);
+  console.log(Object.entries(r.summary).map(([k, v]) => k + '=' + v).join(' ') + '  unproposed=' + r.gate.unproposed + '  stale proposals=' + r.gate.stale_proposals.length + '  regressions=' + r.gate.regressions.length);
   if (args.includes('--write')) { mkdirSync(join(ROOT, 'tools/claim-provenance/generated'), { recursive: true }); for (const [p, t] of Object.entries(out)) { writeFileSync(join(ROOT, p), t); console.log('wrote ' + p); } }
   if (args.includes('--check')) {
     const stale = Object.entries(out).filter(([p, t]) => !existsSync(join(ROOT, p)) || readFileSync(join(ROOT, p), 'utf8') !== t).map(([p]) => p);
-    const bad = r.gate.unproposed + r.gate.stale_proposals.length + stale.length;
+    const bad = r.gate.unproposed + r.gate.stale_proposals.length + r.gate.regressions.length + stale.length;
+    for (const g of r.gate.regressions) console.log('REGRESSION  ' + g);
     for (const p of stale) console.log('STALE  ' + p);
     console.log(bad ? 'FAIL  ' + bad + ' problem(s)' : 'PASS  every unsupported or repair-needed public claim has a proposed repair; outputs current');
     process.exit(bad ? 1 : 0);

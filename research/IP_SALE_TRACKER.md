@@ -241,3 +241,10 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
     - The tracker line "PUBLICATION CONFIRMED = Journal of Business Ethics" names a target venue, not an acceptance (CL-023, historical).
     - The CCI reply of 28 August invited a revision; it is not an acceptance (CL-024).
   - **Diligence-relevant finding.** The public methods-paper PDF (`JRS_Reliability_Accuracy.pdf`, served from `research.html`) still states "substantial agreement" and "support reproducible application". The 29 August manuscript supersedes both. Repair proposal PD-01; nothing was applied.
+
+- 2026-10-06 (**public research-claim repairs staged on the draft branch; not published**):
+  - The public research pages now carry the constructed-corpus, sample-size, run-window and raw-agreement qualifiers the claim register requires.
+  - The superseded methods PDF now sits behind a public supersession notice (`methods-paper-notice.html`). The PDF itself is unchanged.
+  - "Preprint" and "operational validation phase" were removed from `research-summary.html`, as publication and validation-status claims no record supports.
+  - No commercial, licensing, sale or acquisition statement was added.
+  - Merge and publication remain the owner's decision.
