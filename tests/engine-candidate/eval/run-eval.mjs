@@ -22,8 +22,8 @@ const IDS = { model_id: 'mock-deterministic', model_version: 'corpus-0.1.0', pro
 const NOW = () => 'not-recorded';
 const uniq = (a) => [...new Set(a)].sort();
 // Key-order-independent comparison: the first run compared JSON strings and failed CR-002 on key order alone.
-const canon = (v) => Array.isArray(v) ? v.map(canon) : v && typeof v === 'object' ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, canon(v[k])])) : v;
-const same = (x, y) => JSON.stringify(canon(x)) === JSON.stringify(canon(y));
+export const canon = (v) => Array.isArray(v) ? v.map(canon) : v && typeof v === 'object' ? Object.fromEntries(Object.keys(v).sort().map((k) => [k, canon(v[k])])) : v;
+export const same = (x, y) => JSON.stringify(canon(x)) === JSON.stringify(canon(y));
 
 const mock = (response) => createMockAdapter({ ...IDS, respond: () => response });
 

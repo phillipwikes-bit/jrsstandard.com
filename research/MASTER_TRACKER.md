@@ -3064,3 +3064,18 @@ Only four line groups differ between v7 and v8.
   - **Mutation run:** 36 of 36 caught. The first run caught 29 of 32: one mutation was written wrongly, and two harness detectors were untested. All three were fixed and re-run.
   - **Full suite:** 11 suites pass with `node tests/engine-candidate/run-all.mjs`, 296 checks plus the regression, evaluation and mutation runs. The handoff checks still pass, and the guard suite is unchanged at 37 failures.
   - **Not done:** no provider call, real record, holdout, score, public route, page, Vercel or guard change.
+- 2026-10-06 (**ENGINE CANDIDATE 0.4.0-local.1: CONFIRMATION CORPUS BEFORE FIXES, SIX SOURCE-PREPARATION DEFECTS REPAIRED, METAMORPHIC TESTS, CONTAMINATION SCREEN, REVIEWER PACKET, RUNBOOK. LOCAL AND MOCKED ONLY**): FACT, from this session's runs:
+  - **Confirmation corpus first:** 47 constructed confirmation cases (18 ordinary, 17 hard, 12 adversarial) were committed alone (`759ea86`). The pre-fix baseline was run and committed next (`74ed7f8`): 24 of 47 match against source-prep 0.2.0.
+  - **The fix:** source-prep 0.3.0 adds general rules for the six recorded divergence categories (`cff83b9`).
+  - **Regression set:** 24 of 24, up from 18 of 24. The six divergences keep their original observations and gain `resolved_in`; no expectation was edited.
+  - **Confirmation corpus:** a single post-fix run gave 47 of 47.
+  - **Limit:** the same author wrote the confirmation cases and the rules, with the rules in mind, so this is not independent evidence that they generalise. The contamination screen also found that confirmation case K21 reuses the inline-attachment sentence of regression case R21. It is recorded and pinned, not edited.
+  - **A bug found after the fix:** the metamorphic tests found an anchor bug in the fix (a capitalised "Clearly" was recorded in lower case). It was fixed; findings were unchanged.
+  - **New controls:**
+    - per-finding `review_id` and a `result_digest`, so copied findings and carried dispositions are refused (the digest is not authentication);
+    - a reviewer packet generator, which is not a Manifest;
+    - a shingle contamination screen that reports possible matches with an uncertainty statement and misses heavy paraphrase;
+    - `RUNBOOK.md`.
+  - **Mutation run:** the first run caught 58 of 61. Three tests were missing, and one of my own test paddings was itself development material. All were fixed; the final run catches 63 of 63.
+  - **Full suite:** 16 suites, 405 checks plus the case sets and the mutation run, all passing. The handoff checks still pass, and the guard suite is unchanged at 37.
+  - **Not done:** no provider call, real record, holdout access, score, public route, page, Vercel or guard change.

@@ -79,5 +79,11 @@ t('each instruction-like match points at exactly the matched text', injF.every((
 t('a line opening with a role label is caught', injF.some((f) => /^\s*SYSTEM\s*:/.test(f.matched)));
 t('ordinary records carry no instruction-like finding', [FULL, GAPS].every((x) => !prepareSource(x).findings.some((f) => f.code === 'instruction_like_text')));
 
+// ---- off-record references whose record IS reproduced ----------------------------------------------
+const minutes = prepareSource(FULL + ' As discussed at the meeting on 5 March 2026 (the minutes are reproduced below): read-only access only.');
+t('a conversation whose minutes are reproduced in the record is not reported as off-record', !minutes.findings.some((f) => f.code === 'off_record_reference'));
+const noMinutes = prepareSource(FULL + ' As discussed at the meeting on 5 March 2026, read-only access only.');
+t('the same conversation without its minutes is reported', noMinutes.findings.some((f) => f.code === 'off_record_reference'));
+
 t('no network call was made', net.calls === 0);
 done();

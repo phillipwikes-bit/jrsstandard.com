@@ -5,7 +5,8 @@ import { execFileSync } from 'node:child_process';
 
 export const SUITES = [
   'source-prep.test.mjs', 'adapter.test.mjs', 'contract.test.mjs', 'candidate.test.mjs', 'harness.test.mjs',
-  'privacy.test.mjs', 'manifest-compat.test.mjs', 'dev-material.test.mjs', 'regression/run.mjs', 'eval/run-eval.mjs',
+  'privacy.test.mjs', 'manifest-compat.test.mjs', 'dev-material.test.mjs', 'contamination.test.mjs', 'confirmation-separation.test.mjs',
+  'packet.test.mjs', 'metamorphic.test.mjs', 'regression/run.mjs', 'confirmation/run.mjs', 'eval/run-eval.mjs',
 ];
 const files = process.argv.includes('--quick') || process.env.JRS_MUTATION_CHILD ? SUITES : SUITES.concat(['mutation/run-mutations.mjs']);
 let failed = 0;

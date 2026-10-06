@@ -47,6 +47,35 @@ export const MUTATIONS = [
   ['M34', 'harness: input mutation detected', L + 'harness.js', "if (JSON.stringify(input) !== before) fail('input_mutated');", ''],
   ['M35', 'harness: text mutation detected (source hash)', L + 'harness.js', "if (!r1.source || r1.source.sha256 !== sha256(input.text)) fail('record_text_mutated', vid, 'source hash differs from the input');", ''],
   ['M36', 'harness: refused record must not reach the adapter', L + 'harness.js', "if (w.requests.length) fail('refused_but_adapter_called', vid);", ''],
+  ['M37', 'contamination: shared boilerplate ignored in the development index', L + 'contamination.js', 'return df.get(s) < BOILERPLATE_DOCS;', 'return true;'],
+  ['M63', 'contamination: a long verbatim run inside new text is flagged', L + 'contamination.js', 'shared >= LONG_RUN || ', ''],
+  ['M62', 'contamination: boilerplate in the screened text does not dilute detection', L + 'contamination.js', "(index.df.get(s) || 0) < BOILERPLATE_DOCS", 'true'],
+  ['M38', 'contamination: edited copies flagged', L + 'contamination.js', 'if (shared >= LONG_RUN || (shared >= MIN_SHARED && Math.max(ofText, ofSource) >= SHARE_THRESHOLD)) {', 'if (false) {'],
+  ['M39', 'contamination: a possible match is never called certain', L + 'contamination.js', "certainty: 'uncertain: needs human review'", "certainty: 'match'"],
+  ['M40', 'contamination: embedded copies detected', L + 'contamination.js', 'Math.max(ofText, ofSource) >= SHARE_THRESHOLD', 'ofText >= SHARE_THRESHOLD'],
+  ['M41', 'contamination: exact copies detected', L + 'contamination.js', "if (exact) return { version: CONTAMINATION_VERSION, status: 'exact_match'", "if (false) return { version: CONTAMINATION_VERSION, status: 'exact_match'"],
+  ['M42', 'separation: confirmation corpus does not copy earlier sets', 'tests/engine-candidate/confirmation/v0.1.0/cases.json', (src, base) => {
+    const conf = JSON.parse(src), reg = JSON.parse(readFileSync(join(base, 'tests/engine-candidate/regression/cases.json'), 'utf8'));
+    conf.cases[41].text = reg.cases[0].text; return JSON.stringify(conf, null, 1) + '\n'; }],
+  ['M43', 'packet: quotation anchors checked against the source', L + 'reviewer-packet.js', "if (typeof text !== 'string' || text.slice(loc.start, loc.end) !== quoted) throw", 'if (false) throw'],
+  ['M44', 'packet: no sign-off while items are pending', L + 'reviewer-packet.js', "if (r.human_review.sign_off.status === 'signed' && pending.length) throw", 'if (false) throw'],
+  ['M45', 'packet: identity follows the review version', L + 'reviewer-packet.js', 'review_id: r.review_identity.review_id, result_digest: r.result_digest,\n    history', 'history'],
+  ['M46', 'packet: no model finding hidden', L + 'reviewer-packet.js', 'r.contextual_findings.findings.forEach(function (f) {', 'r.contextual_findings.findings.slice(1).forEach(function (f) {'],
+  ['M47', 'packet: refuses a result failing integrity', L + 'reviewer-packet.js', "if (!v.ok) throw new Error('result_integrity_failed: '", "if (false) throw new Error('result_integrity_failed: '"],
+  ['M48', 'packet: refuses a source text that was not examined', L + 'reviewer-packet.js', "sha256(sourceText) !== result.source.sha256) throw", 'false) throw'],
+  ['M49', 'contract: integrity checked before disposition and sign-off', L + 'contract.js', "  if (!v.ok) throw new Error('result_integrity_failed: ' + v.problems.join('; '));\n}", '}'],
+  ['M50', 'contract: digest checked', L + 'contract.js', "if (result.result_digest !== digestOf(result)) problems.push", 'if (false) problems.push'],
+  ['M51', 'contract: dispositions carried from another version detected', L + 'contract.js', "if (h.review_id !== rid) problems.push('disposition history entry ' + i + ' belongs to another review version');", ''],
+  ['M52', 'source prep: descriptive "clearly" not reported', L + 'source-prep.js', 'if (!sentenceOpening && m[2] && PRESENTATION.test(m[2])) continue;', ''],
+  ['M53', 'source prep: inline attachment not reported as absent', L + 'source-prep.js', 'if (INLINE_COPY.test(sentence) && !NEGATED_COPY.test(sentence)) continue;', ''],
+  ['M54', 'source prep: negated inline copy still reported', L + 'source-prep.js', 'INLINE_COPY.test(sentence) && !NEGATED_COPY.test(sentence)', 'INLINE_COPY.test(sentence)'],
+  ['M55', 'source prep: final line ending on a function word is cut off', L + 'source-prep.js', 'if (TRAILING_FUNCTION_WORD.test(last)) return true;', ''],
+  ['M56', 'source prep: ordinal and written-out dates', L + 'source-prep.js', "' + ORD + '?|' + WORD_DAYS + ')'", "' + ')'"],
+  ['M57', 'source prep: varied request language', L + 'source-prep.js', 'ask(?:ed|s|ing)? for|appl(?:ied|ies|y|ying) for|sought|seek(?:s|ing)?|', ''],
+  ['M58', 'source prep: conversation-based off-record references', L + 'source-prep.js', '(?:per|following|after|based on|according to|during|discussed (?:at|in|on|during)|agreed (?:at|in|on|during))', '(?:zzzz)'],
+  ['M59', 'source prep: recorded conversation not reported', L + 'source-prep.js', "return f.code !== 'off_record_reference' || !REPRODUCED_HERE.test(", 'return true || !REPRODUCED_HERE.test('],
+  ['M60', 'source prep: anchors use the exact record text', L + 'source-prep.js', "matched: text.slice(m.index, m.index + 7)", "matched: 'clearly'"],
+  ['M61', 'dev index: confirmation corpus loaded as development material', 'tests/engine-candidate/shared/dev-index.mjs', "for (const c of JSON.parse(readFileSync(join(BASE, 'confirmation/v0.1.0/cases.json'), 'utf8')).cases) out.push", 'for (const c of []) out.push'],
   ['M32', 'dev material: every development text listed', L + 'dev-material.js', "', 'corpus/v0.1.0/CR-015'],", "', 'corpus/v0.1.0/CR-015-x'],\n  ['0000', 'x'],"],
 ];
 
@@ -66,9 +95,12 @@ try {
   for (const [id, what, file, find, repl] of MUTATIONS) {
     sh('git checkout -q -- . && git clean -fdq', base);
     const path = join(base, file), src = readFileSync(path, 'utf8');
-    const count = src.split(find).length - 1;
-    if (count !== 1) { survived++; console.log(`FAIL  ${id} ${what}: the mutation text occurs ${count} times, so it was not applied`); continue; }
-    writeFileSync(path, src.replace(find, repl));
+    if (typeof find === 'function') { const out = find(src, base); if (out === src) { survived++; console.log(`FAIL  ${id} ${what}: the mutation changed nothing`); continue; } writeFileSync(path, out); }
+    else {
+      const count = src.split(find).length - 1;
+      if (count !== 1) { survived++; console.log(`FAIL  ${id} ${what}: the mutation text occurs ${count} times, so it was not applied`); continue; }
+      writeFileSync(path, src.replace(find, repl));
+    }
     const r = runSuite();
     if (!r.failed) survived++;
     console.log(`${r.failed ? 'PASS' : 'FAIL'}  ${id} ${what}: ${r.failed ? 'caught by ' + r.suites.join(', ') : 'SURVIVED, no suite failed'}`);

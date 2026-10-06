@@ -1,6 +1,6 @@
 # Review Engine local candidate: architecture
 
-**Candidate 0.3.0-local.1. Local development only. Not deployed, not validated, not connected to any model.** This work is governed by `docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`.
+**Candidate 0.4.0-local.1. Local development only. Not deployed, not validated, not connected to any model.** This work is governed by `docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md`.
 
 ## Data flow
 
@@ -35,11 +35,16 @@
  8. human review (outside the candidate)
     recordDisposition() per finding, append-only history, bound to one review_id
     signOff() separate and final; refused while any finding is pending
+    both first run verifyResultIntegrity(): every finding and disposition belongs to
+    this review version, and result_digest still matches the findings
+        |
+ 9. reviewer packet (reviewer-packet.js) ... jrs-candidate-reviewer-packet/0.1.0 for a person:
+    every finding shown, anchors re-checked against the source text, no verdict
 ```
 
 Around the flow, and never inside it:
 - `harness.js` runs a record through several mocked response variants and fails closed on any inconsistency.
-- `dev-material.js` keeps every development text out of any holdout.
+- `dev-material.js` and `contamination.js` keep development texts out of any holdout. The first catches exact copies; the second flags edited copies as possible matches for a person to judge.
 - `tests/engine-candidate/eval/run-eval.mjs` compares the corpus against expected findings written in advance.
 
 ## Modules
@@ -53,7 +58,9 @@ Around the flow, and never inside it:
 | `explanations.js` | Human-review explanations. Candidate-internal vocabulary with no Codebook correspondence. |
 | `contract.js` | The result contract, disposition and sign-off. |
 | `harness.js` | Adversarial consistency and integrity harness. |
-| `dev-material.js` | Holdout-separation control. |
+| `dev-material.js` | Holdout-separation control: exact and whitespace-only copies. |
+| `contamination.js` | Shingle-similarity screen for edited copies of development texts. It reads nothing; texts are passed in. |
+| `reviewer-packet.js` | Reviewer packet generator. Separate from the Manifest library. |
 
 Each module imports only its neighbours and `node:crypto`. The tests enforce this.
 
@@ -68,7 +75,10 @@ Each module imports only its neighbours and `node:crypto`. The tests enforce thi
 | Result contract, disposition and sign-off | **Implemented** |
 | Human-review explanations | **Implemented**: candidate-internal, no Codebook correspondence asserted |
 | Consistency harness | **Implemented**: a software control, not reliability evidence |
-| Holdout-separation list | **Implemented**: exact and whitespace-only copies only |
+| Holdout-separation list | **Implemented**: exact and whitespace-only copies |
+| Contamination screen for edited copies | **Implemented**: possible matches for human review, never certain; misses heavy paraphrase |
+| Version binding (`result_digest`, per-finding `review_id`) | **Implemented**: catches copying and editing; not authentication |
+| Reviewer packet | **Implemented**: local, machine-readable, no verdict; holds quotations, so it is as confidential as the record |
 | Model behaviour | **Mocked**: `mock-adapter.js`, scripted responses |
 | Corpus evaluation | **Mocked**: constructed records and scripted responses only |
 | Live provider adapter | **Intentionally absent**: needs a future owner authorization for provider calls |
@@ -110,5 +120,8 @@ The candidate is **left disconnected** from the Manifest library (`api/_manifest
 | `node tests/engine-candidate/run-all.mjs` | Everything, including the mutation run |
 | `node tests/engine-candidate/run-all.mjs --quick` | Everything except the mutation run |
 | `node tests/engine-candidate/eval/run-eval.mjs --write tests/engine-candidate/eval/records` | The corpus evaluation, writing its JSON record |
-| `node tests/engine-candidate/mutation/run-mutations.mjs` | The 36 mutations alone |
+| `node tests/engine-candidate/mutation/run-mutations.mjs` | The 63 mutations alone |
 | `node tests/engine-candidate/regression/run.mjs --table` | The source-preparation regression set, case by case |
+| `node tests/engine-candidate/confirmation/run.mjs --table` | The independent confirmation corpus, case by case |
+
+See `RUNBOOK.md` for the failure-mode catalog and recovery steps.
