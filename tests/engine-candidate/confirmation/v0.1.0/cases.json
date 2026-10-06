@@ -1,0 +1,679 @@
+{
+ "set": "candidate-source-prep-confirmation",
+ "version": "0.1.0",
+ "written": "2026-10-06",
+ "status": "CONSTRUCTED CONFIRMATION MATERIAL. Written and committed BEFORE any change to source-prep.js made after the 24-case regression run, so the six known divergences can be confirmed or refuted on cases the fix was not tuned on. Expected outputs state what a correct checker should report. It is never a sealed holdout and never a real-world validation set.",
+ "separation": "Independent of tests/engine-candidate/regression/ (24 cases) and tests/engine-candidate/corpus/v0.1.0/ (15 records). Every text is listed as development material in lib/engine-candidate/dev-material.js.",
+ "rule": "The fix may be run against this set once. Remaining mismatches are reported as found and not tuned away on this set.",
+ "categories": [
+  "attachment included inline versus actually absent",
+  "clean controls",
+  "clearly: descriptive versus unsupported assertion",
+  "complete text that ends without a full stop",
+  "mixed adversarial",
+  "off-record references",
+  "ordinal and written-out dates",
+  "varied request language"
+ ],
+ "cases": [
+  {
+   "id": "K01",
+   "category": "clearly: descriptive versus unsupported assertion",
+   "kind": "ordinary",
+   "purpose": "'clearly printed' describes the document",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K01. Fictional. Not a real record.\nOn 12 February 2026 Brackley Dyes requested read access to the tooling-drawings library. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on 10 February 2026 with section 3 left open. The exception was approved on 13 February 2026 by the procurement lead because the drawings were needed for an urgent quotation. Access ends on 28 February 2026. The serial number is clearly printed on the request form.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K02",
+   "category": "clearly: descriptive versus unsupported assertion",
+   "kind": "hard",
+   "purpose": "'clearly marked' describes the document",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K02. Fictional. Not a real record.\nOn 12 March 2026 Coldharbour Metrics requested read access to the supplier-invoice archive. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated 10 March 2026 and covers a different system. The exception was approved on 13 March 2026 by the finance lead because invoices had to be reconciled before quarter end. Access ends on 28 March 2026. The drawings were clearly marked confidential.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K03",
+   "category": "clearly: descriptive versus unsupported assertion",
+   "kind": "ordinary",
+   "purpose": "'clearly trustworthy' asserts without basis",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K03. Fictional. Not a real record.\nOn 12 April 2026 Dunmore Packaging requested read access to the maintenance-schedule system. The supplier-access standard requires a named technical contact. The supplier named a contact on 10 April 2026 but gave no deputy. The exception was approved on 13 April 2026 by the plant manager because planned maintenance could not be scheduled without it. Access ends on 28 April 2026. The supplier is clearly trustworthy.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "assertion_without_basis"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K04",
+   "category": "clearly: descriptive versus unsupported assertion",
+   "kind": "ordinary",
+   "purpose": "sentence-initial 'Clearly,' asserts",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K04. Fictional. Not a real record.\nOn 12 May 2026 Elstow Valves requested read access to the batch-records viewer. The supplier-access standard requires a data-retention statement. The statement was received on 10 May 2026 without a deletion period. The exception was approved on 13 May 2026 by the quality manager because a batch investigation was already under way. Access ends on 28 May 2026. Clearly, the risk to the system is low.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "assertion_without_basis"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K05",
+   "category": "clearly: descriptive versus unsupported assertion",
+   "kind": "hard",
+   "purpose": "one descriptive use and one assertion in the same sentence",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K05. Fictional. Not a real record.\nOn 12 June 2026 Fernhill Optics requested read access to the warehouse-slotting tool. The supplier-access standard requires a signed data-handling agreement. The agreement was signed on 10 June 2026 but not countersigned. The exception was approved on 13 June 2026 by the warehouse lead because slotting changes were due the following week. Access ends on 28 June 2026. The signature is clearly legible, and the agreement is clearly sufficient.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "assertion_without_basis"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K06",
+   "category": "clearly: descriptive versus unsupported assertion",
+   "kind": "adversarial",
+   "purpose": "'not clearly explained' describes an absence",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K06. Fictional. Not a real record.\nOn 12 July 2026 Garside Rail requested read access to the calibration dashboard. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on 10 July 2026 with section 3 left open. The exception was approved on 13 July 2026 by the operations manager because calibration certificates were about to lapse. Access ends on 28 July 2026. The urgency was not clearly explained in the request.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K07",
+   "category": "complete text that ends without a full stop",
+   "kind": "hard",
+   "purpose": "last line is a label and value",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K07. Fictional. Not a real record.\nOn 12 August 2026 Holloway Seals requested read access to the design-review folder. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated 10 August 2026 and covers a different system. The exception was approved on 13 August 2026 by the engineering lead because the design review was scheduled for the next day. Access ends on 28 August 2026.\nAccess end: 28 August 2026",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K08",
+   "category": "complete text that ends without a full stop",
+   "kind": "hard",
+   "purpose": "last line is a sign-off label",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K08. Fictional. Not a real record.\nOn 12 September 2026 Ingleby Coatings requested read access to the forecast workbook. The supplier-access standard requires a named technical contact. The supplier named a contact on 10 September 2026 but gave no deputy. The exception was approved on 13 September 2026 by the procurement lead because the forecast fed a board paper. Access ends on 28 September 2026.\nApproved by: operations manager",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K09",
+   "category": "complete text that ends without a full stop",
+   "kind": "ordinary",
+   "purpose": "prose cut after a function word",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K09. Fictional. Not a real record.\nOn 12 October 2026 Jessop Fasteners requested read access to the dispatch console. The supplier-access standard requires a data-retention statement. The statement was received on 10 October 2026 without a deletion period. The exception was approved on 13 October 2026 by the finance lead because the test data was needed for a supplier audit. Access ends on 28 October 2026. The security office then asked whether the",
+   "expect": {
+    "refusal": "partial_input",
+    "codes": [
+     "ends_mid_sentence"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K10",
+   "category": "complete text that ends without a full stop",
+   "kind": "hard",
+   "purpose": "last line is a bullet item",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K10. Fictional. Not a real record.\nOn 12 November 2026 Kirkby Alloys requested read access to the quality-alerts feed. The supplier-access standard requires a signed data-handling agreement. The agreement was signed on 10 November 2026 but not countersigned. The exception was approved on 13 November 2026 by the plant manager because the drawings were needed for an urgent quotation. Access ends on 28 November 2026.\n- Review date: 20 November 2026",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K11",
+   "category": "complete text that ends without a full stop",
+   "kind": "adversarial",
+   "purpose": "label line whose value is cut after 'the'",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K11. Fictional. Not a real record.\nOn 12 January 2026 Langley Sensors requested read access to the test-data portal. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on 10 January 2026 with section 3 left open. The exception was approved on 13 January 2026 by the quality manager because invoices had to be reconciled before quarter end. Access ends on 28 January 2026.\nReviewer note: the supplier confirmed that the",
+   "expect": {
+    "refusal": "partial_input",
+    "codes": [
+     "ends_mid_sentence"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K12",
+   "category": "complete text that ends without a full stop",
+   "kind": "adversarial",
+   "purpose": "prose cut mid-word",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K12. Fictional. Not a real record.\nOn 12 February 2026 Morland Plastics requested read access to the tooling-drawings library. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated 10 February 2026 and covers a different system. The exception was approved on 13 February 2026 by the warehouse lead because planned maintenance could not be scheduled without it. Access ends on 28 February 2026. The questionnaire was revi",
+   "expect": {
+    "refusal": "partial_input",
+    "codes": [
+     "ends_mid_sentence"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K13",
+   "category": "complete text that ends without a full stop",
+   "kind": "hard",
+   "purpose": "last line is a short reference heading",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K13. Fictional. Not a real record.\nOn 12 March 2026 Netherby Controls requested read access to the supplier-invoice archive. The supplier-access standard requires a named technical contact. The supplier named a contact on 10 March 2026 but gave no deputy. The exception was approved on 13 March 2026 by the operations manager because a batch investigation was already under way. Access ends on 28 March 2026.\nREFERENCE SAE-K13",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K14",
+   "category": "ordinal and written-out dates",
+   "kind": "ordinary",
+   "purpose": "'March 12th, 2026' ordinal dates",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K14. Fictional. Not a real record.\nOn April 12th, 2026 Ormsby Wire requested read access to the maintenance-schedule system. The supplier-access standard requires a data-retention statement. The statement was received on April 10th, 2026 without a deletion period. The exception was approved on April 13th, 2026 by the engineering lead because slotting changes were due the following week. Access ends on April 28th, 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K15",
+   "category": "ordinal and written-out dates",
+   "kind": "ordinary",
+   "purpose": "'12th March 2026' ordinal dates",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K15. Fictional. Not a real record.\nOn 12th May 2026 Pryor Lighting requested read access to the batch-records viewer. The supplier-access standard requires a signed data-handling agreement. The agreement was signed on 10th May 2026 but not countersigned. The exception was approved on 13th May 2026 by the procurement lead because calibration certificates were about to lapse. Access ends on 28th May 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K16",
+   "category": "ordinal and written-out dates",
+   "kind": "hard",
+   "purpose": "written-out dates 'the twelfth of March 2026'",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K16. Fictional. Not a real record.\nOn the twelfth of June 2026 Fallow Instruments requested read access to the warehouse-slotting tool. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on the tenth of June 2026 with section 3 left open. The exception was approved on the thirteenth of June 2026 by the finance lead because the design review was scheduled for the next day. Access ends on the twenty-eighth of June 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K17",
+   "category": "ordinal and written-out dates",
+   "kind": "hard",
+   "purpose": "'the 12th of March, 2026'",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K17. Fictional. Not a real record.\nOn the 12th of July, 2026 Brackley Dyes requested read access to the calibration dashboard. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated the 10th of July, 2026 and covers a different system. The exception was approved on the 13th of July, 2026 by the plant manager because the forecast fed a board paper. Access ends on the 28th of July, 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K18",
+   "category": "ordinal and written-out dates",
+   "kind": "ordinary",
+   "purpose": "month and year only: no full date",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K18. Fictional. Not a real record.\nIn August 2026 Coldharbour Metrics requested read access to the design-review folder. The supplier-access standard requires a named technical contact. The supplier named a contact on early August 2026 but gave no deputy. The exception was approved on mid-August 2026 by the quality manager because the test data was needed for a supplier audit. Access is granted until the end of August 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "profile_element_not_found"
+    ],
+    "elements_missing": [
+     "date"
+    ],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K19",
+   "category": "ordinal and written-out dates",
+   "kind": "adversarial",
+   "purpose": "an ordinal that is not a date ('the 3rd version')",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K19. Fictional. Not a real record.\nIn September 2026 Dunmore Packaging requested read access to the forecast workbook. The supplier-access standard requires a data-retention statement. The statement was received on early September 2026 without a deletion period. The exception was approved on mid-September 2026 by the warehouse lead because the drawings were needed for an urgent quotation. Access is granted until the end of September 2026. The 3rd version of the standard was applied.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "profile_element_not_found"
+    ],
+    "elements_missing": [
+     "date"
+    ],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K20",
+   "category": "ordinal and written-out dates",
+   "kind": "ordinary",
+   "purpose": "ISO dates (control)",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K20. Fictional. Not a real record.\nOn 2026-10-12 Elstow Valves requested read access to the dispatch console. The supplier-access standard requires a signed data-handling agreement. The agreement was signed on 2026-10-10 but not countersigned. The exception was approved on 2026-10-13 by the operations manager because invoices had to be reconciled before quarter end. Access ends on 2026-10-28.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K21",
+   "category": "attachment included inline versus actually absent",
+   "kind": "hard",
+   "purpose": "attachment reproduced in the record",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K21. Fictional. Not a real record.\nOn 12 November 2026 Fernhill Optics requested read access to the quality-alerts feed. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on 10 November 2026 with section 3 left open. The exception was approved on 13 November 2026 by the engineering lead because planned maintenance could not be scheduled without it. Access ends on 28 November 2026. See attached risk note, reproduced here: risk rating low, read-only, no personal data.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K22",
+   "category": "attachment included inline versus actually absent",
+   "kind": "hard",
+   "purpose": "attachment included below the reference",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K22. Fictional. Not a real record.\nOn 12 January 2026 Garside Rail requested read access to the test-data portal. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated 10 January 2026 and covers a different system. The exception was approved on 13 January 2026 by the procurement lead because a batch investigation was already under way. Access ends on 28 January 2026. See the attached checklist (included below). Checklist: questionnaire received; agreement signed; access read-only.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K23",
+   "category": "attachment included inline versus actually absent",
+   "kind": "ordinary",
+   "purpose": "attachment referred to and absent",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K23. Fictional. Not a real record.\nOn 12 February 2026 Holloway Seals requested read access to the tooling-drawings library. The supplier-access standard requires a named technical contact. The supplier named a contact on 10 February 2026 but gave no deputy. The exception was approved on 13 February 2026 by the finance lead because slotting changes were due the following week. Access ends on 28 February 2026. See attached certificate.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "referenced_material_not_in_record"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K24",
+   "category": "attachment included inline versus actually absent",
+   "kind": "ordinary",
+   "purpose": "enclosed appendix referred to and absent",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K24. Fictional. Not a real record.\nOn 12 March 2026 Ingleby Coatings requested read access to the supplier-invoice archive. The supplier-access standard requires a data-retention statement. The statement was received on 10 March 2026 without a deletion period. The exception was approved on 13 March 2026 by the plant manager because calibration certificates were about to lapse. Access ends on 28 March 2026. Per the enclosed appendix, the supplier passed the review.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "referenced_material_not_in_record"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K25",
+   "category": "attachment included inline versus actually absent",
+   "kind": "adversarial",
+   "purpose": "attachment stated not to be reproduced",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K25. Fictional. Not a real record.\nOn 12 April 2026 Jessop Fasteners requested read access to the maintenance-schedule system. The supplier-access standard requires a signed data-handling agreement. The agreement was signed on 10 April 2026 but not countersigned. The exception was approved on 13 April 2026 by the quality manager because the design review was scheduled for the next day. Access ends on 28 April 2026. See attached exhibit; it is not reproduced in this record.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "referenced_material_not_in_record"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K26",
+   "category": "attachment included inline versus actually absent",
+   "kind": "adversarial",
+   "purpose": "attachment reproduced elsewhere, not in this record",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K26. Fictional. Not a real record.\nOn 12 May 2026 Kirkby Alloys requested read access to the batch-records viewer. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on 10 May 2026 with section 3 left open. The exception was approved on 13 May 2026 by the warehouse lead because the forecast fed a board paper. Access ends on 28 May 2026. See attached note, reproduced in full in the supplier's file.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "referenced_material_not_in_record"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K27",
+   "category": "attachment included inline versus actually absent",
+   "kind": "hard",
+   "purpose": "inline copy with no 'see attached' wording (control)",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K27. Fictional. Not a real record.\nOn 12 June 2026 Langley Sensors requested read access to the warehouse-slotting tool. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated 10 June 2026 and covers a different system. The exception was approved on 13 June 2026 by the operations manager because the test data was needed for a supplier audit. Access ends on 28 June 2026. The attachment is copied below in full: risk rating low.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K28",
+   "category": "varied request language",
+   "kind": "ordinary",
+   "purpose": "'asked for' access",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K28. Fictional. Not a real record.\nOn 12 July 2026 Morland Plastics asked for read access to the calibration dashboard. The supplier-access standard requires a named technical contact. The supplier named a contact on 10 July 2026 but gave no deputy. The exception was approved on 13 July 2026 by the engineering lead because the drawings were needed for an urgent quotation. Access ends on 28 July 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K29",
+   "category": "varied request language",
+   "kind": "ordinary",
+   "purpose": "'applied for' access",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K29. Fictional. Not a real record.\nOn 12 August 2026 Netherby Controls applied for read access to the design-review folder. The supplier-access standard requires a data-retention statement. The statement was received on 10 August 2026 without a deletion period. The exception was approved on 13 August 2026 by the procurement lead because invoices had to be reconciled before quarter end. Access ends on 28 August 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K30",
+   "category": "varied request language",
+   "kind": "hard",
+   "purpose": "'sought' access",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K30. Fictional. Not a real record.\nOn 12 September 2026 Ormsby Wire sought read access to the forecast workbook. The supplier-access standard requires a signed data-handling agreement. The agreement was signed on 10 September 2026 but not countersigned. The exception was approved on 13 September 2026 by the finance lead because planned maintenance could not be scheduled without it. Access ends on 28 September 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K31",
+   "category": "varied request language",
+   "kind": "hard",
+   "purpose": "'made an application for' access",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K31. Fictional. Not a real record.\nOn 12 October 2026 Pryor Lighting made an application for read access to the dispatch console. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on 10 October 2026 with section 3 left open. The exception was approved on 13 October 2026 by the plant manager because a batch investigation was already under way. Access ends on 28 October 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K32",
+   "category": "varied request language",
+   "kind": "adversarial",
+   "purpose": "'asked about' the policy is not a request",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K32. Fictional. Not a real record.\nOn 12 November 2026 Fallow Instruments asked about the access policy for the quality-alerts feed. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated 10 November 2026 and covers a different system. The exception was approved on 13 November 2026 by the quality manager because slotting changes were due the following week. Access ends on 28 November 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "profile_element_not_found"
+    ],
+    "elements_missing": [
+     "request"
+    ],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K33",
+   "category": "varied request language",
+   "kind": "adversarial",
+   "purpose": "access set up with no request at all",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K33. Fictional. Not a real record.\nOn 12 January 2026 access to the test-data portal was set up for Brackley Dyes. The supplier-access standard requires a named technical contact. The supplier named a contact on 10 January 2026 but gave no deputy. The exception was approved on 13 January 2026 by the warehouse lead because calibration certificates were about to lapse. Access ends on 28 January 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "profile_element_not_found"
+    ],
+    "elements_missing": [
+     "request"
+    ],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K34",
+   "category": "varied request language",
+   "kind": "hard",
+   "purpose": "'access request form' (control)",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K34. Fictional. Not a real record.\nOn 12 February 2026 Coldharbour Metrics submitted an access request form for the tooling-drawings library. The supplier-access standard requires a data-retention statement. The statement was received on 10 February 2026 without a deletion period. The exception was approved on 13 February 2026 by the operations manager because the design review was scheduled for the next day. Access ends on 28 February 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K35",
+   "category": "off-record references",
+   "kind": "ordinary",
+   "purpose": "'per the phone call'",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K35. Fictional. Not a real record.\nOn 12 March 2026 Dunmore Packaging requested read access to the supplier-invoice archive. The supplier-access standard requires a signed data-handling agreement. The agreement was signed on 10 March 2026 but not countersigned. The exception was approved on 13 March 2026 by the engineering lead because the forecast fed a board paper. Access ends on 28 March 2026. Per the phone call with the supplier, the missing item will follow.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "off_record_reference"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K36",
+   "category": "off-record references",
+   "kind": "ordinary",
+   "purpose": "'as agreed on a call'",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K36. Fictional. Not a real record.\nOn 12 April 2026 Elstow Valves requested read access to the maintenance-schedule system. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on 10 April 2026 with section 3 left open. The exception was approved on 13 April 2026 by the procurement lead because the test data was needed for a supplier audit. Access ends on 28 April 2026. As agreed on a call on 11 April 2026, the missing item will follow.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "off_record_reference"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K37",
+   "category": "off-record references",
+   "kind": "hard",
+   "purpose": "'following a conversation'",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K37. Fictional. Not a real record.\nOn 12 May 2026 Fernhill Optics requested read access to the batch-records viewer. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated 10 May 2026 and covers a different system. The exception was approved on 13 May 2026 by the finance lead because the drawings were needed for an urgent quotation. Access ends on 28 May 2026. Following a conversation with the account manager, the missing item will follow.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "off_record_reference"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K38",
+   "category": "off-record references",
+   "kind": "hard",
+   "purpose": "'confirmed verbally'",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K38. Fictional. Not a real record.\nOn 12 June 2026 Garside Rail requested read access to the warehouse-slotting tool. The supplier-access standard requires a named technical contact. The supplier named a contact on 10 June 2026 but gave no deputy. The exception was approved on 13 June 2026 by the plant manager because invoices had to be reconciled before quarter end. Access ends on 28 June 2026. The supplier confirmed verbally that the missing item will follow.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "off_record_reference"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K39",
+   "category": "off-record references",
+   "kind": "adversarial",
+   "purpose": "'call centre' is not a reference to a call",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K39. Fictional. Not a real record.\nOn 12 July 2026 Holloway Seals requested read access to the calibration dashboard. The supplier-access standard requires a data-retention statement. The statement was received on 10 July 2026 without a deletion period. The exception was approved on 13 July 2026 by the quality manager because planned maintenance could not be scheduled without it. Access ends on 28 July 2026. The supplier's call centre handles all shipping queries.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K40",
+   "category": "off-record references",
+   "kind": "adversarial",
+   "purpose": "a referenced email reproduced in the record",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K40. Fictional. Not a real record.\nOn 12 August 2026 Ingleby Coatings requested read access to the design-review folder. The supplier-access standard requires a signed data-handling agreement. The agreement was signed on 10 August 2026 but not countersigned. The exception was approved on 13 August 2026 by the warehouse lead because a batch investigation was already under way. Access ends on 28 August 2026. Per the email dated 11 August 2026, reproduced below: the missing item will follow.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K41",
+   "category": "off-record references",
+   "kind": "hard",
+   "purpose": "a meeting with no minutes",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K41. Fictional. Not a real record.\nOn 12 September 2026 Jessop Fasteners requested read access to the forecast workbook. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on 10 September 2026 with section 3 left open. The exception was approved on 13 September 2026 by the operations manager because slotting changes were due the following week. Access ends on 28 September 2026. This was discussed at a meeting on 11 September 2026; no minutes were taken.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "off_record_reference"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K42",
+   "category": "clean controls",
+   "kind": "ordinary",
+   "purpose": "clean record, every element, no markers",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K42. Fictional. Not a real record.\nOn 12 October 2026 Kirkby Alloys requested read access to the dispatch console. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated 10 October 2026 and covers a different system. The exception was approved on 13 October 2026 by the engineering lead because calibration certificates were about to lapse. Access ends on 28 October 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K43",
+   "category": "clean controls",
+   "kind": "ordinary",
+   "purpose": "clean record, every element, no markers",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K43. Fictional. Not a real record.\nOn 12 November 2026 Langley Sensors requested read access to the quality-alerts feed. The supplier-access standard requires a named technical contact. The supplier named a contact on 10 November 2026 but gave no deputy. The exception was approved on 13 November 2026 by the procurement lead because the design review was scheduled for the next day. Access ends on 28 November 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K44",
+   "category": "clean controls",
+   "kind": "ordinary",
+   "purpose": "clean record, every element, no markers",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K44. Fictional. Not a real record.\nOn 12 January 2026 Morland Plastics requested read access to the test-data portal. The supplier-access standard requires a data-retention statement. The statement was received on 10 January 2026 without a deletion period. The exception was approved on 13 January 2026 by the finance lead because the forecast fed a board paper. Access ends on 28 January 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K45",
+   "category": "clean controls",
+   "kind": "ordinary",
+   "purpose": "clean record, every element, no markers",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K45. Fictional. Not a real record.\nOn 12 February 2026 Netherby Controls requested read access to the tooling-drawings library. The supplier-access standard requires a signed data-handling agreement. The agreement was signed on 10 February 2026 but not countersigned. The exception was approved on 13 February 2026 by the plant manager because the test data was needed for a supplier audit. Access ends on 28 February 2026.",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K46",
+   "category": "mixed adversarial",
+   "kind": "adversarial",
+   "purpose": "descriptive 'clearly', a phone call and an inline attachment together",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K46. Fictional. Not a real record.\nOn 12 March 2026 Ormsby Wire requested read access to the supplier-invoice archive. The supplier-access standard requires a completed security questionnaire. The questionnaire was submitted on 10 March 2026 with section 3 left open. The exception was approved on 13 March 2026 by the quality manager because the drawings were needed for an urgent quotation. Access ends on 28 March 2026. The label is clearly printed. Per the phone call, the supplier will countersign. See attached note, reproduced here: read-only access.",
+   "expect": {
+    "refusal": null,
+    "codes": [
+     "off_record_reference"
+    ],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  },
+  {
+   "id": "K47",
+   "category": "mixed adversarial",
+   "kind": "adversarial",
+   "purpose": "ordinal dates, 'asked for', and a sign-off label as the last line",
+   "text": "CONSTRUCTED CONFIRMATION RECORD K47. Fictional. Not a real record.\nOn April 12th, 2026 Pryor Lighting asked for read access to the maintenance-schedule system. The supplier-access standard requires a current penetration-test summary. The latest summary on file is dated April 10th, 2026 and covers a different system. The exception was approved on April 13th, 2026 by the warehouse lead because invoices had to be reconciled before quarter end. Access is granted until April 28th, 2026.\nApproved by: engineering lead",
+   "expect": {
+    "refusal": null,
+    "codes": [],
+    "elements_missing": [],
+    "quotations": 0
+   }
+  }
+ ]
+}
