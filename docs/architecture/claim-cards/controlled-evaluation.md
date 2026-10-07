@@ -12,7 +12,7 @@
 
 | Claim | Status | Evidence | Last reviewed source hash |
 |---|---|---|---|
-| CL-018 | SUPPORTED_WITH_LIMITATION | EV-RELEASE-GATE-REPORT (`docs/architecture/CURRENT_RELEASE_GATE_REPORT.md`) | FILE:13b8be6ad771 |
+| CL-018 | SUPPORTED_WITH_LIMITATION | EV-RELEASE-GATE-REPORT (`docs/architecture/CURRENT_RELEASE_GATE_REPORT.md`) | FILE:17f293f8808d |
 | CL-026 | NOT_SUPPORTED | EV-NONE | none |
 | CL-027 | NOT_SUPPORTED | EV-NONE | none |
 

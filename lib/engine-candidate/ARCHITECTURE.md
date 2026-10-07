@@ -46,6 +46,7 @@ Around the flow, and never inside it:
 - `harness.js` runs a record through several mocked response variants and fails closed on any inconsistency.
 - `dev-material.js` and `contamination.js` detect development texts so that a future holdout builder can exclude them. They enforce nothing on their own: no holdout builder exists, and separation depends on that builder calling them. The first catches exact copies; the second flags edited copies as possible matches for a person to judge.
 - `tests/engine-candidate/eval/run-eval.mjs` compares the corpus against expected findings written in advance.
+- `tools/frozen-demo/` replays five frozen SYNTHETIC records through the candidate with the mock adapter, for a future demonstration review (2026-10-07). It calls the candidate the way any caller does and changes nothing in it.
 
 ## Modules
 
@@ -132,3 +133,6 @@ The five release gates are tracked outside the candidate, in the internal packag
 
 ## Local reviewer workspace
 Step 9 (the reviewer packet) can be read in `tools/local-reviewer-workspace/`, a local, offline page served on loopback only with `connect-src 'none'`. Before showing a packet it re-checks the packet against the generator's rules: the review ID, the packet ID, the history binding and the anchors (and, if the source text is supplied, its hash and every anchor slice). It then holds the reviewer's dispositions in memory, apart from the packet, and exports a version-bound disposition record only after sign-off. It does not run the candidate, and it is not release evidence. See `docs/architecture/LOCAL_REVIEWER_WORKSPACE_PROTOCOL.md`.
+
+## Frozen synthetic demonstration package
+`tools/frozen-demo/` (2026-10-07) holds a local-only frozen demonstration: five SYNTHETIC completed non-HR supplier-access exception drafts (FD-01 to FD-05), committed alone in `1717f1b` before any code that uses them. It replays them through this candidate with the deterministic mock adapter, builds reviewer packets, and runs an illustrative disposition through the local reviewer workspace. Its manifest binds the candidate version, the prompt version and hash, the adapter identity and the bytes of every module in this directory, so any change here fails `node tools/frozen-demo/verify-demo-manifest.mjs` until a new package version is frozen. Status `DEMO_PREPARATION_COMPLETE_NOT_RELEASED`. It shows exact replay of a fixed local package only, and it advances no release gate. Its five texts are listed in `dev-material.js` (0.4.0), so a future holdout builder refuses them. Protocol: `docs/architecture/FROZEN_DEMONSTRATION_REPLAY_PROTOCOL.md`.

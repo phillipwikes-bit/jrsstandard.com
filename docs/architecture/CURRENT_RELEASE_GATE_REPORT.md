@@ -9,7 +9,7 @@ This record is internal engineering documentation. It is not a legal, privacy, s
 |---|---|
 | Record schema | `jrs-release-gate-record/0.1.0` |
 | Release package | `JRS-RGP-20261006-PR39-LOCAL` version 0.1.0 (internal_release_gate_record, not the public Manifest) |
-| Record date | 2026-10-06 |
+| Record date | 2026-10-07 |
 | Record author | Claude Code session on PR #39, prepared for the owner (Phillip Wikes) |
 | Engine version | `0.5.0-local.1` |
 | Candidate source commit | `afd6b44556da3f437d8b713e607e940cdc97d902` |
@@ -22,7 +22,7 @@ This record is internal engineering documentation. It is not a legal, privacy, s
 
 | Gate | Name | Status | Basis |
 |---|---|---|---|
-| RG-1 | Independent labeling and adjudication of an unused sealed holdout | **BLOCKED** | No sealed holdout exists, no holdout builder exists, and the handoff prohibits provider calls and sealed-holdout access in current work. Constructed and mocked work exists (E-001 to E-003) and cannot satisfy this gate. |
+| RG-1 | Independent labeling and adjudication of an unused sealed holdout | **BLOCKED** | No sealed holdout exists, no holdout builder exists, and the handoff prohibits provider calls and sealed-holdout access in current work. Constructed and mocked work exists (E-001 to E-003, and the frozen synthetic demonstration corpus E-009) and cannot satisfy this gate. |
 | RG-2 | Operator-control evidence | **BLOCKED** | No operator-control evidence exists. Retention is computed but not executed (E-005), and open production items B-013, B-015 and B-017 are recorded as not performed or not verified (E-006). Local code review (E-007) is not evidence that a production control operates. |
 | RG-3 | Counsel review | **NOT_ASSESSED** | No counsel disposition exists in the repository on data flows, storage terms, privacy obligations, evaluation claims, licensing claims or rights dependencies. |
 | RG-4 | Recorded owner release authorization | **BLOCKED** | Prerequisites RG-1, RG-2 and RG-3 have not passed, so an owner release authorization cannot be recorded. No owner release authorization exists. |
@@ -31,7 +31,7 @@ This record is internal engineering documentation. It is not a legal, privacy, s
 Authorizations created by this record: production **no**, licensing **no**, sale **no**, evaluation **no**, real-record use **no**.
 
 ## RG-1. Independent labeling and adjudication of an unused sealed holdout
-- **Status:** BLOCKED. No sealed holdout exists, no holdout builder exists, and the handoff prohibits provider calls and sealed-holdout access in current work. Constructed and mocked work exists (E-001 to E-003) and cannot satisfy this gate.
+- **Status:** BLOCKED. No sealed holdout exists, no holdout builder exists, and the handoff prohibits provider calls and sealed-holdout access in current work. Constructed and mocked work exists (E-001 to E-003, and the frozen synthetic demonstration corpus E-009) and cannot satisfy this gate.
 - **Acceptance criterion:** An unused holdout, sealed before use and kept separate from all development material, is labeled and adjudicated by people independent of the candidate author; the named Engine version and prompt are run on it; per-condition results are reported with an uncertainty statement against thresholds fixed before the run.
 - **Actual result:** none recorded
 - **Evidence date:** none
@@ -53,7 +53,7 @@ Authorizations created by this record: production **no**, licensing **no**, sale
 - Owner authorization for provider calls on the holdout (prohibited by the current handoff)
 - Acceptance thresholds per condition, recorded before the run
 
-Evidence considered: E-001 (CONSTRUCTED_FIXTURE), E-002 (CONSTRUCTED_FIXTURE), E-003 (MOCKED_TEST), E-004 (SOURCE_REPORTED), E-008 (LOCAL_CODE_REVIEW).
+Evidence considered: E-001 (CONSTRUCTED_FIXTURE), E-002 (CONSTRUCTED_FIXTURE), E-003 (MOCKED_TEST), E-004 (SOURCE_REPORTED), E-008 (LOCAL_CODE_REVIEW), E-009 (CONSTRUCTED_FIXTURE).
 
 ## RG-2. Operator-control evidence
 - **Status:** BLOCKED. No operator-control evidence exists. Retention is computed but not executed (E-005), and open production items B-013, B-015 and B-017 are recorded as not performed or not verified (E-006). Local code review (E-007) is not evidence that a production control operates.
@@ -157,9 +157,11 @@ A class marked "never passes a gate" can describe context but cannot satisfy any
 | E-006 | SOURCE_REPORTED (never passes a gate) | source_reported | source_report | `git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:.jrs/state/BLOCKERS.json` | `48826b9d1f26aaf1…` | 2026-10-06 | Repository record of open production items. Not an operator export and not a live check. |
 | E-007 | LOCAL_CODE_REVIEW (never passes a gate) | local | code_review_note | `git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:api/_controlled-review.js` | `86b78168c560bc92…` | 2026-10-04 | Static code review of the repository. It is not a check of what the production host serves. |
 | E-008 | LOCAL_CODE_REVIEW (never passes a gate) | local | code_review_note | `git:10826932c8ad52d6e6be384733f2ec5a9f2f95f7:lib/engine-candidate/review-candidate.js` | `3678ef6c223b78b7…` | 2026-10-06 | Static code review. Shows the candidate cannot reach a provider; says nothing about behaviour with a real model. |
+| E-009 | CONSTRUCTED_FIXTURE (never passes a gate) | constructed | constructed_dataset | `git:1717f1bc9725a2635397c66487eb29222f863cd4:tools/frozen-demo/corpus/v0.1.0/INDEX.json` | `6ba57cf50414ec05…` | 2026-10-07 | Same-author synthetic records with scripted mock responses. Shows exact replay of a fixed local package only; registered as development material, so it can never be holdout evidence. |
 
 ## Limitations
 - The Engine named here is a controlled local-development candidate. Open gates record absent evidence; they are not findings that the candidate is defective.
 - Every evidence item in this record is constructed, mocked, local or source-reported. None can satisfy a release gate, and none is evidence that a production control operates.
 - Evidence hashes identify repository files at a fixed commit. A matching hash shows the file is unchanged; it does not show the file is true.
 - This record does not compare its gate definitions against the three 3 October source-aligned documents, which were not available; that comparison is pending.
+- A frozen synthetic demonstration package now exists (tools/frozen-demo/, status DEMO_PREPARATION_COMPLETE_NOT_RELEASED, evidence E-009). It is synthetic and mocked, and it does not satisfy the independent holdout, operator-control, counsel, owner-authorization or independent production-QA gates.

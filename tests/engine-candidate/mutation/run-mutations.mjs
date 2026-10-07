@@ -87,7 +87,8 @@ function sh(cmd, cwd) { return execSync(cmd, { cwd, stdio: ['ignore', 'pipe', 'p
 
 const base = mkdtempSync(join(tmpdir(), 'jrs-mutation-'));
 try {
-  for (const p of ['lib/engine-candidate', 'tests/engine-candidate', 'api', 'schemas', '.vercelignore']) cpSync(join(ROOT, p), join(base, p), { recursive: true });
+  // tools/frozen-demo/corpus holds development material (the frozen demonstration records) that the loader reads.
+  for (const p of ['lib/engine-candidate', 'tests/engine-candidate', 'api', 'schemas', '.vercelignore', 'tools/frozen-demo/corpus']) cpSync(join(ROOT, p), join(base, p), { recursive: true });
   sh('git init -q && git -c user.name=mutation -c user.email=mutation@invalid add -A && git -c user.name=mutation -c user.email=mutation@invalid commit -qm base', base);
   const runSuite = () => {
     try { execFileSync(process.execPath, [join(base, 'tests/engine-candidate/run-all.mjs'), '--quick'], { cwd: base, encoding: 'utf8', env: { ...process.env, JRS_MUTATION_CHILD: '1' }, stdio: ['ignore', 'pipe', 'pipe'] }); return { failed: false, suites: [] }; }

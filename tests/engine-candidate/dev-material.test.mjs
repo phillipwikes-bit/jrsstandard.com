@@ -6,9 +6,9 @@ import { loadDevelopmentTexts } from './shared/dev-index.mjs';
 
 const texts = loadDevelopmentTexts().map((d) => [d.name, d.text]);
 const unlisted = texts.filter(([, x]) => !isDevelopmentMaterial(x)).map(([n, x]) => `${n} ${materialHash(x)}`);
-t('every fixture, regression case, corpus record and confirmation case is listed as development material', unlisted.length === 0, unlisted.join('; '));
+t('every fixture, regression case, corpus record, confirmation case and frozen demonstration record is listed as development material', unlisted.length === 0, unlisted.join('; '));
 t('the list has no entry for material that no longer exists', DEVELOPMENT_MATERIAL.every(([h]) => texts.some(([, x]) => materialHash(x) === h)));
-t('the list and the loader agree on the count (89)', DEVELOPMENT_MATERIAL.length === texts.length && texts.length === 89);
+t('the list and the loader agree on the count (94)', DEVELOPMENT_MATERIAL.length === texts.length && texts.length === 94);
 t('a listed text is detected and named', isDevelopmentMaterial(texts[0][1]) === texts[0][0]);
 t('a whitespace-only reformatting is still detected', isDevelopmentMaterial('  ' + texts[0][1].replace(/\s+/g, '\n\n') + '\n') !== null);
 const sample = texts.find(([n]) => n === 'regression/R01')[1];
@@ -18,7 +18,7 @@ t('a holdout batch containing development material is refused', (() => {
 })());
 t('a clean batch passes', assertNotDevelopmentMaterial(['A new constructed record that is not development material.']) === true);
 t('exact check alone does not catch an edited copy (contamination.js screens those)', isDevelopmentMaterial(sample.replace('Corran', 'Corrin')) === null);
-t('each set is present: 3 fixtures, 24 regression, 15 corpus, 47 confirmation',
-  ['fixtures/', 'regression/', 'corpus/', 'confirmation/'].map((p) => texts.filter(([n]) => n.startsWith(p)).length).join() === '3,24,15,47');
+t('each set is present: 3 fixtures, 24 regression, 15 corpus, 47 confirmation, 5 frozen demonstration',
+  ['fixtures/', 'regression/', 'corpus/', 'confirmation/', 'frozen-demo/'].map((p) => texts.filter(([n]) => n.startsWith(p)).length).join() === '3,24,15,47,5');
 t('no network call was made', net.calls === 0);
 done();

@@ -14,7 +14,7 @@
 | REQUIRES_WORDING_REPAIR | 0 |
 | RETIRED | 2 |
 
-Total: 33 claims. Claims digest `cfb4b95d73a23853a679572e330e37cecfb6ff373864ac0f8f898150bf3d3953`.
+Total: 33 claims. Claims digest `5c6f39f412f2cb78b7199e7afe0dabbaa48b9760774568c0af77045f614a5215`.
 
 ## Evidence sources
 
@@ -36,7 +36,7 @@ Total: 33 claims. Claims digest `cfb4b95d73a23853a679572e330e37cecfb6ff373864ac0
 | EV-SOURCE-GROUNDING-TESTS | `tests/engine-candidate/source-prep.test.mjs` | FILE | `3842b714102dc13a…` | SOURCE_GROUNDING_TEST | 2 | That quotations and anchors locate exact text in the source record, and that unlocatable model quotations are withheld. |
 | EV-PROMPT-PROVENANCE-TESTS | `tests/engine-candidate/contract.test.mjs` | FILE | `b0d2fe9e98f4f79e…` | LOCAL_TEST | 2 | That each result carries the prompt version and hash, adapter contract and model identity, and that changing any of them changes the review id. All runs use a mock adapter. |
 | EV-ROUTE-TESTS | `tests/engine/auth-matrix.mjs` | FILE | `37cfd056ec9b565e…` | LOCAL_TEST | 2 | That the review routes in the repository refuse submissions with 503 and make no outbound call. |
-| EV-RELEASE-GATE-REPORT | `docs/architecture/CURRENT_RELEASE_GATE_REPORT.md` | FILE | `13b8be6ad771dc2f…` | REPOSITORY_CONTROL_RECORD | 2 | Release-gate status: RG-1 BLOCKED, RG-2 BLOCKED, RG-3 NOT_ASSESSED, RG-4 BLOCKED, RG-5 BLOCKED; INCOMPLETE_GATES_OPEN. |
+| EV-RELEASE-GATE-REPORT | `docs/architecture/CURRENT_RELEASE_GATE_REPORT.md` | FILE | `17f293f8808d25b6…` | REPOSITORY_CONTROL_RECORD | 2 | Release-gate status: RG-1 BLOCKED, RG-2 BLOCKED, RG-3 NOT_ASSESSED, RG-4 BLOCKED, RG-5 BLOCKED; INCOMPLETE_GATES_OPEN. |
 | EV-BLOCKER-B013 | `.jrs/state/BLOCKERS.json` | LINE | `57b1efcef9fad174…` | REPOSITORY_CONTROL_RECORD | 2 | Records that one table was readable with the public key on 2026-09-15 (zero rows). |
 | EV-PRIVACY-PAGE | `privacy.html` | LINE | `edac094986be03ef…` | POLICY_OR_WEBSITE_STATEMENT | 6 | A website statement that a database control operates. |
 | EV-HANDOFF | `docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md` | FILE | `ec9854d2d76bbd28…` | REPOSITORY_CONTROL_RECORD | 4 | The current operative position: the Engine is a controlled local-development candidate; no public intake; research does not validate the Engine. |
@@ -290,7 +290,7 @@ Total: 33 claims. Claims digest `cfb4b95d73a23853a679572e330e37cecfb6ff373864ac0
 ### CL-018 · SUPPORTED_WITH_LIMITATION
 
 - **Claim:** Release gates: RG-1 BLOCKED, RG-2 BLOCKED, RG-3 NOT_ASSESSED, RG-4 BLOCKED, RG-5 BLOCKED; conclusion INCOMPLETE_GATES_OPEN.
-- **Evidence:** EV-RELEASE-GATE-REPORT (`docs/architecture/CURRENT_RELEASE_GATE_REPORT.md`, gate summary table, FILE:13b8be6ad771); class REPOSITORY_CONTROL_RECORD; REPRODUCED_IN_REPOSITORY.
+- **Evidence:** EV-RELEASE-GATE-REPORT (`docs/architecture/CURRENT_RELEASE_GATE_REPORT.md`, gate summary table, FILE:17f293f8808d); class REPOSITORY_CONTROL_RECORD; REPRODUCED_IN_REPOSITORY.
 - **Date or data lock:** 2026-10-06
 - **Limitation:** No gate has passed; nothing is released.
 - **Permitted wording:** No release gate has passed: four are BLOCKED and one is NOT_ASSESSED.

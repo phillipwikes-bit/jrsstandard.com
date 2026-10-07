@@ -3251,3 +3251,27 @@ Only four line groups differ between v7 and v8.
   - **Mobile check:** all 9 changed pages render at 375px with no page overflow.
   - **Guard:** 164 checks, 37 failed, 1 skipped. Two former failures now pass (the E-038 reliability wording and the cross-vendor denominator); none is new, and the guard file is unchanged.
   - **Not done:** no merge, deployment, provider call, real record, holdout, credential, Vercel, OpenAPI, sitemap, redirect, API route or release-gate change.
+- 2026-10-07 02:39 UTC: PR #39 safety-net check-in on `7bfb13e`: CI green, level with `main`, no review threads. This was the third check-in in a row with nothing new, so check-ins stopped.
+- 2026-10-07 (**FROZEN SYNTHETIC DEMONSTRATION PACKAGE ADDED TO PR #39; LOCAL-ONLY; STATUS `DEMO_PREPARATION_COMPLETE_NOT_RELEASED`; NO RELEASE GATE ADVANCED**): owner-commissioned. FACT:
+  - **Corpus:** five SYNTHETIC completed non-HR supplier-access exception drafts, committed alone in `1717f1b`:
+    - FD-01: complete record;
+    - FD-02: missing identifiable basis;
+    - FD-03: chronology gap;
+    - FD-04: missing logical bridge;
+    - FD-05: partial record, refused before model review.
+    - The corpus has invented organisations and people and dates in 2031. FD-01 also carries three scope probes.
+    - Before the freeze, every expectation was checked once against candidate 0.5.0-local.1. Each text was screened against the 89 existing development texts, with no exact or possible match.
+  - **Replay and verification:** `tools/frozen-demo/` holds the manifest, replay, fail-closed verifier, runner, evidence record and a read-only loopback viewer.
+    - The viewer reuses the reviewer workspace core, served unchanged.
+    - The only adapter is the deterministic mock.
+    - The manifest binds the candidate, prompt, adapter, contract versions and 13 module hashes.
+  - **Development material:** the five texts are now registered (`dev-material.js` 0.4.0, 94 texts), so a future holdout builder refuses them.
+  - **Release gates:** the release-gate record gained evidence E-009 (CONSTRUCTED_FIXTURE) and a limitation line. Every gate status is unchanged, and the report was regenerated.
+  - **Claim provenance:** `EV-RELEASE-GATE-REPORT` was re-bound after review.
+  - **Methodology integrity:** the report records the scan growing from 86 to 89 files, with no new finding.
+  - **Tests:**
+    - Frozen demo: 348 checks plus 36 of 36 mutations caught, each in the section that owns the control.
+    - Engine candidate: 67 of 67. Workspace: 28 of 28. Methodology integrity: 23 of 23. Claim provenance: 28 of 28. Release gate: 34 of 34. Provenance audit: 15 of 15.
+    - Handoff, public-route, public-boundary and Manifest checks pass. `git diff --check` is clean.
+  - **Guard:** 164 checks, 38 failed, 1 skipped. The previous head fails the identical 38 today. Nothing is new, and the guard file is unchanged.
+  - **Not done:** no merge, deployment, public page, API, OpenAPI, Vercel, credential, provider call, real record or holdout change. No demonstration has occurred, and no release decision is recorded.

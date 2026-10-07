@@ -61,7 +61,7 @@ Each source carries the sha256 it was reviewed at. The builder re-hashes every s
 
 ## 4. Scan results
 
-The scanner read 86 files in seven scope groups (69 when this package was written; see the addendum) (candidate, workspace, methodology-integrity, Manifest, protocol and internal documentation, research summaries, correspondence decision records).
+The scanner read 89 files in seven scope groups (69 when this package was written, 86 after the claim-provenance package; see the addenda) (candidate, workspace, methodology-integrity, Manifest, protocol and internal documentation, research summaries, correspondence decision records).
 
 | Disposition | Findings |
 |---|---|
@@ -123,3 +123,7 @@ The absence of a mapping is not a defect in the Standard. The Standard and the C
 ## Addendum, 2026-10-06: scope growth from the claim-provenance package
 
 The 17 internal documents added by the claim-provenance package (`CLAIM_EVIDENCE_REGISTER.md`, `PUBLIC_CLAIM_LIMITATION_MATRIX.md`, `CLAIM_PROVENANCE_INTEGRITY_REPORT.md`, `PUBLIC_CLAIM_REPAIR_PROPOSALS_2026-10-06.md` and 13 claim cards under `docs/architecture/claim-cards/`) fall inside this scanner's `docs/architecture` scope. The scan grew from 69 to 86 files. Every disposition count in section 4 is unchanged, and the gated scope still has 0 failures. `generated/scan-results.json` was regenerated to match.
+
+## Addendum, 2026-10-07: scope growth from the frozen demonstration package
+
+The three internal documents `FROZEN_DEMONSTRATION_CAPABILITY_MATRIX.md`, `FROZEN_DEMONSTRATION_EVIDENCE_RECORD.md` and `FROZEN_DEMONSTRATION_REPLAY_PROTOCOL.md` fall inside the `docs/architecture` scope. The scan grew from 86 to 89 files. The new files add no finding, every disposition count in section 4 is unchanged, and the gated scope still has 0 failures. One existing finding moved from line 29 to line 30 of `lib/engine-candidate/README.md` because a line was added above it. `generated/scan-results.json` was regenerated to match.

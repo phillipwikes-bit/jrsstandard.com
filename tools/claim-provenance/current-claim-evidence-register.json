@@ -12,7 +12,7 @@
   "REQUIRES_WORDING_REPAIR": 0,
   "RETIRED": 2
  },
- "claims_digest": "cfb4b95d73a23853a679572e330e37cecfb6ff373864ac0f8f898150bf3d3953",
+ "claims_digest": "5c6f39f412f2cb78b7199e7afe0dabbaa48b9760774568c0af77045f614a5215",
  "evidence": [
   {
    "id": "EV-DETECTION-ARTICLE",
@@ -253,7 +253,7 @@
    "limitations": [
     "A status record; it opens no gate."
    ],
-   "reviewed_hash": "13b8be6ad771dc2f39dd8302bc0a32454bdbbe6e6ac97ae9622882a849685e10"
+   "reviewed_hash": "17f293f8808d25b625dc7ec2e84fdd8d29c87e8e4481866a32a0bbbeebf48931"
   },
   {
    "id": "EV-BLOCKER-B013",
@@ -1374,7 +1374,7 @@
    "evidence_id": "EV-RELEASE-GATE-REPORT",
    "source_path": "docs/architecture/CURRENT_RELEASE_GATE_REPORT.md",
    "source_location": "gate summary table",
-   "source_hash": "FILE:13b8be6ad771dc2f39dd8302bc0a32454bdbbe6e6ac97ae9622882a849685e10",
+   "source_hash": "FILE:17f293f8808d25b625dc7ec2e84fdd8d29c87e8e4481866a32a0bbbeebf48931",
    "evidence_class": "REPOSITORY_CONTROL_RECORD",
    "reproduction": "REPRODUCED_IN_REPOSITORY",
    "population": null,

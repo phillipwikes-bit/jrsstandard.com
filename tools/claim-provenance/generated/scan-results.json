@@ -1,6 +1,6 @@
 {
  "scanner": "jrs-public-claim-scan/0.1.0",
- "claims_digest": "cfb4b95d73a23853a679572e330e37cecfb6ff373864ac0f8f898150bf3d3953",
+ "claims_digest": "5c6f39f412f2cb78b7199e7afe0dabbaa48b9760774568c0af77045f614a5215",
  "scope": {
   "public_pages": 71,
   "public_routes": 65,
@@ -1596,7 +1596,7 @@
   {
    "group": "repository-documentation",
    "file": "lib/engine-candidate/README.md",
-   "line": 46,
+   "line": 47,
    "text": "| `tests/engine-candidate/fixtures/` | 3 constructed records | with the tests |",
    "text_sha256": "186139aaf8e0fdfce9d389a01e4f9dc6084033385c89e7c8a354ae02a80b67f4",
    "disposition": "UNSUPPORTED",
@@ -1612,14 +1612,14 @@
   {
    "group": "repository-documentation",
    "file": "lib/engine-candidate/README.md",
-   "line": 51,
-   "text": "All 89 texts are listed in `dev-material.js`, and `tests/engine-candidate/shared/dev-index.mjs` loads them for the contamination screen.",
-   "text_sha256": "dc0ea8ff2acf83101f918b24bb85de483ff0a451f5ea889c63c7d5d3a2b4d829",
+   "line": 53,
+   "text": "All 94 texts are listed in `dev-material.js` (0.4.0; 89 until the five demonstration records were added on 2026-10-07), and `tests/engine-candidate/shared/dev-index.mjs` loads them for the contamination screen.",
+   "text_sha256": "ca8580ab81f6e1bfb948f64c1c437d7b42d19254c94f11f93e57b07315d59b20",
    "disposition": "UNSUPPORTED",
    "claim_ids": [],
    "missing_qualifiers": [],
    "reasons": [
-    "FIGURE: a figure no register claim owns (new, changed or unrecorded) [89 texts]"
+    "FIGURE: a figure no register claim owns (new, changed or unrecorded) [94 texts]"
    ],
    "repair_id": null,
    "repair_target": null,

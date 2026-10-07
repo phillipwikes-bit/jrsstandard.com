@@ -248,3 +248,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
   - "Preprint" and "operational validation phase" were removed from `research-summary.html`, as publication and validation-status claims no record supports.
   - No commercial, licensing, sale or acquisition statement was added.
   - Merge and publication remain the owner's decision.
+- 2026-10-07 (**frozen synthetic demonstration package prepared on the draft branch; not released; no sale, licensing or asset-value statement made**):
+  - The package shows exact local replay of five synthetic cases with a mocked model. It is not evidence of accuracy, real-model behaviour, real-record performance, independent evaluation or readiness of any kind.
+  - Nothing was shown to a buyer, customer or anyone else, and no external contact was made.
+  - Any demonstration would need a separate owner decision. Sale and buyer work stays stopped under the 5 October handoff.

@@ -7,7 +7,7 @@
   "is_public_manifest": false,
   "distinct_from": "jrs-decision-reconstruction-manifest"
  },
- "as_of": "2026-10-06",
+ "as_of": "2026-10-07",
  "record_author": "Claude Code session on PR #39, prepared for the owner (Phillip Wikes)",
  "engine": {
   "engine_version": "0.5.0-local.1",
@@ -112,6 +112,18 @@
    "evidence_date": "2026-10-06",
    "applies_to_engine_version": "0.5.0-local.1",
    "limitation": "Static code review. Shows the candidate cannot reach a provider; says nothing about behaviour with a real model."
+  },
+  {
+   "evidence_id": "E-009",
+   "description": "Frozen synthetic demonstration corpus: five SYNTHETIC supplier-access exception drafts (FD-01 to FD-05) replayed through the candidate with the deterministic mock adapter (tools/frozen-demo/, package JRS-FROZEN-DEMO-20261007-PR39, status DEMO_PREPARATION_COMPLETE_NOT_RELEASED).",
+   "evidence_class": "CONSTRUCTED_FIXTURE",
+   "provenance": "constructed",
+   "artifact_kind": "constructed_dataset",
+   "reference": "git:1717f1bc9725a2635397c66487eb29222f863cd4:tools/frozen-demo/corpus/v0.1.0/INDEX.json",
+   "sha256": "6ba57cf50414ec053dbb99dabf6e307764d14e24c0500affd7c4f00d012f5995",
+   "evidence_date": "2026-10-07",
+   "applies_to_engine_version": "0.5.0-local.1",
+   "limitation": "Same-author synthetic records with scripted mock responses. Shows exact replay of a fixed local package only; registered as development material, so it can never be holdout evidence."
   }
  ],
  "gates": [
@@ -125,7 +137,7 @@
     "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7"
    },
    "status": "BLOCKED",
-   "status_basis": "No sealed holdout exists, no holdout builder exists, and the handoff prohibits provider calls and sealed-holdout access in current work. Constructed and mocked work exists (E-001 to E-003) and cannot satisfy this gate.",
+   "status_basis": "No sealed holdout exists, no holdout builder exists, and the handoff prohibits provider calls and sealed-holdout access in current work. Constructed and mocked work exists (E-001 to E-003, and the frozen synthetic demonstration corpus E-009) and cannot satisfy this gate.",
    "acceptance_criterion": "An unused holdout, sealed before use and kept separate from all development material, is labeled and adjudicated by people independent of the candidate author; the named Engine version and prompt are run on it; per-condition results are reported with an uncertainty statement against thresholds fixed before the run.",
    "actual_result": null,
    "evidence_date": null,
@@ -134,7 +146,8 @@
     "E-002",
     "E-003",
     "E-004",
-    "E-008"
+    "E-008",
+    "E-009"
    ],
    "missing_dependencies": [
     "A sealed, unused holdout built under a recorded protocol",
@@ -472,7 +485,8 @@
   "The Engine named here is a controlled local-development candidate. Open gates record absent evidence; they are not findings that the candidate is defective.",
   "Every evidence item in this record is constructed, mocked, local or source-reported. None can satisfy a release gate, and none is evidence that a production control operates.",
   "Evidence hashes identify repository files at a fixed commit. A matching hash shows the file is unchanged; it does not show the file is true.",
-  "This record does not compare its gate definitions against the three 3 October source-aligned documents, which were not available; that comparison is pending."
+  "This record does not compare its gate definitions against the three 3 October source-aligned documents, which were not available; that comparison is pending.",
+  "A frozen synthetic demonstration package now exists (tools/frozen-demo/, status DEMO_PREPARATION_COMPLETE_NOT_RELEASED, evidence E-009). It is synthetic and mocked, and it does not satisfy the independent holdout, operator-control, counsel, owner-authorization or independent production-QA gates."
  ],
  "authorizations_created": {
   "production": false,

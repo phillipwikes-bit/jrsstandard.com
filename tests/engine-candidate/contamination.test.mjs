@@ -12,13 +12,13 @@ const flagged = (r) => r.status === 'possible_development_material';
 const K05 = byName['confirmation/v0.1.0/K05'], CR3 = byName['corpus/v0.1.0/CR-003'], R07 = byName['regression/R07'];
 
 // ---- the loader reads only fixed development locations ----------------------------------------
-t('the loader lists exactly the four development locations', DEVELOPMENT_LOCATIONS.join('|') === 'fixtures/|regression/cases.json|corpus/v0.1.0/records/|confirmation/v0.1.0/cases.json');
+t('the loader lists exactly the five development locations', DEVELOPMENT_LOCATIONS.join('|') === 'fixtures/|regression/cases.json|corpus/v0.1.0/records/|confirmation/v0.1.0/cases.json|../../tools/frozen-demo/corpus/v0.1.0/');
 t('no development location names a holdout or a sealed set', DEVELOPMENT_LOCATIONS.every((p) => !/holdout|sealed|private|real/i.test(p)));
 const loaderSrc = readFileSync(new URL('./shared/dev-index.mjs', import.meta.url), 'utf8').replace(/^\s*\/\/.*$/gm, '');
 t('the loader only reads: no write, delete or create call, and no path argument', !/writeFile|appendFile|mkdir|rm\(|unlink|createWriteStream/.test(loaderSrc) && /export function loadDevelopmentTexts\(\)/.test(loaderSrc));
 const modSrc = readFileSync(new URL('../../lib/engine-candidate/contamination.js', import.meta.url), 'utf8').replace(/^\s*\/\/.*$/gm, '');
 t('the screen module touches no file at all', !/node:fs|readFile|writeFile|readdir/.test(modSrc));
-t('all 89 development texts are indexed', dev.length === 89 && index.docs.length === 89);
+t('all 94 development texts are indexed', dev.length === 94 && index.docs.length === 94);
 
 // ---- exact copies (retained checks) ----------------------------------------------------------------
 t('an exact copy is an exact match, named', screen(K05, index).status === 'exact_match' && screen(K05, index).development_source === 'confirmation/v0.1.0/K05');

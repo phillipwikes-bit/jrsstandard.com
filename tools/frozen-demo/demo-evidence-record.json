@@ -1,0 +1,94 @@
+{
+ "evidence_record_version": "jrs-frozen-demo-evidence-record/0.1.0",
+ "package_id": "JRS-FROZEN-DEMO-20261007-PR39",
+ "package_version": "0.1.0",
+ "status": "DEMO_PREPARATION_COMPLETE_NOT_RELEASED",
+ "recorded": "2026-10-07",
+ "recorded_by": "Claude Code session on draft PR #39, prepared for the owner (Phillip Wikes). Not reviewed by anyone independent.",
+ "statements": {
+  "all_cases_synthetic": true,
+  "all_output_mocked_or_local": true,
+  "repeatable_only_within_fixed_local_configuration": true,
+  "independent_evaluation": false,
+  "sealed_holdout": false,
+  "release_gates_advanced": [],
+  "owner_release_decision_recorded": false,
+  "public_or_customer_demonstration_occurred": false,
+  "real_records_processed": false,
+  "provider_calls_made": false
+ },
+ "what_the_replay_shows": "Exact replay of the fixed local package: the five frozen synthetic records, run through candidate 0.5.0-local.1 with the scripted mock adapter, give the frozen input findings, candidate findings, refusals, packet digests and disposition-example exports, byte for byte.",
+ "what_the_replay_does_not_show": [
+  "No semantic correctness: an exact quotation shows where text sits in the record, not that a finding is right.",
+  "No real-provider behavior: the package says nothing about what any real model would return for these records.",
+  "No real-record performance: five constructed records written by the package author show software behaviour, not accuracy, reliability or validity.",
+  "No independent labeling: the records, the scripted responses, the expectations and the disposition examples share one author.",
+  "No operational-control verification: nothing here examines a deployment, an operator control, retention, access or monitoring.",
+  "No production or commercial readiness of any kind is shown or implied, and no licensing, sale or pilot pathway is created.",
+  "No release gate is advanced. The independent holdout, operator-control, counsel, owner-authorization and independent production-QA gates remain open."
+ ],
+ "cases": [
+  {
+   "record_id": "FD-01",
+   "demonstrates": "complete_reconstructable_record",
+   "source_sha256": "5ea8842f5187c8c2d0002927c443a8fa9ae7a8958b8321f0ae5f85079b74799f",
+   "result_status": "examined",
+   "expected_digests": {
+    "review_id": "a3d3f98277959be19a2a86d7",
+    "result_digest": "b8e4d46ad1028886fe94c345e48d25d2e19ea047326ca5ae92922de6088771ba",
+    "packet_id": "85cd68cd7e381017e0cd2055",
+    "packet_digest": "4a8fccaa4872bcb9a41a19055761bb0231737f9daa90b20ee67d1b8840aec6d9"
+   }
+  },
+  {
+   "record_id": "FD-02",
+   "demonstrates": "missing_identifiable_basis",
+   "source_sha256": "b68f9da50fa2a1a33b894a286d9b73b3e43d3f7ed623ba7ba6e79a6f6dbf2c5d",
+   "result_status": "examined",
+   "expected_digests": {
+    "review_id": "a857fafa9664a3469ee24f0d",
+    "result_digest": "eaa3489ff1ba04725a53c738c7678d28237d34ac25d1bfaecfd9409f92a9ff60",
+    "packet_id": "801bc46344cc5b65ca64d409",
+    "packet_digest": "33d045cf9d2946832ac4c659feae8f6d4d10c04f7898d565ff8c94cffbd02438"
+   }
+  },
+  {
+   "record_id": "FD-03",
+   "demonstrates": "chronology_gap",
+   "source_sha256": "6896021cb0776c472ddf73e38d9926f8ba3e66945cdd8e824f49cd943f01f80a",
+   "result_status": "examined",
+   "expected_digests": {
+    "review_id": "9d36768ca85350dd6c1b3ac6",
+    "result_digest": "f96ece1ec0102ca317872a08ae5bb0b3f72d1d9d26b34408d80cd55e76e0740c",
+    "packet_id": "9f1489fed27b90d7037f0279",
+    "packet_digest": "e3bf3463e302426279ecf3399aa9c7b58493182485435f8da2dca31cb0e69a57"
+   }
+  },
+  {
+   "record_id": "FD-04",
+   "demonstrates": "missing_logical_bridge",
+   "source_sha256": "80060a51a24a15f82bc22b3d577b557d2a8d46e4a618d4c9a365dcfabb675fb4",
+   "result_status": "examined",
+   "expected_digests": {
+    "review_id": "3750c52765983f035054d3d1",
+    "result_digest": "b5d9068dafae86e3119e121b3a7a01bebda7e09854840cab02a9e34933077710",
+    "packet_id": "8c29d9f4672fdd5fe4e7e079",
+    "packet_digest": "8b629713cdbb21d55af5c40eea80b015ed51a3970a8eca9d0676cae9e01275b0"
+   }
+  },
+  {
+   "record_id": "FD-05",
+   "demonstrates": "partial_record_refused_before_model_review",
+   "source_sha256": "a55d03f238e12659ede7db177917647e4e2a7e8350e9dba1c44c4fcfffbeca65",
+   "result_status": "refused",
+   "expected_digests": {
+    "review_id": "59511768c7c06bb2e0d7ef18",
+    "result_digest": "8b005a0785bc367691e95a9a16c0475a6004c8b67a8a705b1f316664e5b407a9",
+    "packet_id": "0c606c6ad981e5a97b6f8276",
+    "packet_digest": "8c883ff37cf8d2c2da724cf8acbbc33915819cef5ea4bb2e15303eaf7abd1e76"
+   }
+  }
+ ],
+ "owner_decision": null,
+ "next_step": "None is required by this package. Any demonstration to another person, public or private, would be a separate act needing its own owner decision."
+}

@@ -1,0 +1,302 @@
+{
+ "manifest_version": "jrs-frozen-demo-manifest/0.1.0",
+ "package_id": "JRS-FROZEN-DEMO-20261007-PR39",
+ "package_version": "0.1.0",
+ "status": "DEMO_PREPARATION_COMPLETE_NOT_RELEASED",
+ "created": "2026-10-07",
+ "candidate_version": "0.5.0-local.1",
+ "source_commit": "7bfb13e7305bf9d789287ddd8578b421d77d36d3",
+ "corpus_commit": "1717f1bc9725a2635397c66487eb29222f863cd4",
+ "prompt_version": "candidate-prompt/0.4.0",
+ "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7",
+ "adapter": {
+  "module": "lib/engine-candidate/mock-adapter.js",
+  "factory": "createMockAdapter",
+  "kind": "deterministic_mock",
+  "model_id": "mock-frozen-demo",
+  "model_version": "frozen-demo-0.1.0"
+ },
+ "versions": {
+  "candidate_version": "0.5.0-local.1",
+  "prompt_version": "candidate-prompt/0.4.0",
+  "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7",
+  "scope_profile": "supplier_access_exception.completed.non_hr",
+  "source_prep_version": "source-prep/0.3.0",
+  "explanation_set_version": "explanations/0.2.0",
+  "contract_version": "jrs-candidate-result/0.3.0",
+  "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+  "packet_version": "jrs-candidate-reviewer-packet/0.1.0",
+  "workspace_version": "jrs-local-reviewer-workspace/0.1.0",
+  "export_format": "jrs-local-disposition-record/0.1.0"
+ },
+ "bound_modules": {
+  "lib/engine-candidate/adapter.js": "736d834a64da14867368dd67dc927ed2430bceb7f9431d209041586107abaf1e",
+  "lib/engine-candidate/contamination.js": "b83c4eb02509afd38fa3b547bc8be1278f92ec94ff6fd968a01b0c53e32edad0",
+  "lib/engine-candidate/contract.js": "f7b0b5dc7f92e0c44bba0905637913b1dfb761b38b5c9d75855247ff8bfce483",
+  "lib/engine-candidate/dev-material.js": "80a3763f556f87c3480f27865ed367185f4fd75a2c154845e7c1ebd35fe92152",
+  "lib/engine-candidate/explanations.js": "f071b9faa7a44a3f51a033296c0271341a879db7824efe74f2e3737668db4d69",
+  "lib/engine-candidate/harness.js": "7cbf2a7b7962273b7f6e5ec4462f94cbffb50e0d1fbc4da0b16cf78cf948195b",
+  "lib/engine-candidate/mock-adapter.js": "1aa604ef2d0ced171880d38837fcb5a1d5f54faa7761d643e7858bd588257e16",
+  "lib/engine-candidate/review-candidate.js": "3678ef6c223b78b79d02844d37260269f351bf87d7967c30fab45814819220e9",
+  "lib/engine-candidate/reviewer-packet.js": "ce943eee7310ae2fbbc5ae5918626d0c7a6c7338c655cae6701e9d313140c123",
+  "lib/engine-candidate/source-prep.js": "3938a9b5e8265599f5359a892e68fb2d84c1caea78ac66dfb6270e4de81b2558",
+  "tools/local-reviewer-workspace/app/core.js": "39e7ccb2ded053ba04108ff3b281f96ba1cb9e90c9b5277e852675ff03a59cbe",
+  "tools/local-reviewer-workspace/app/correspondence.js": "2e9c918cba459e2c4683f662adb6f4662ca2778180b3702f8e0d9ca5300fcd81",
+  "tools/frozen-demo/lib/replay.js": "7677505500b4fe27fb118bf67fe362e69874a4b095efb7bbae786bec8c445c0a"
+ },
+ "corpus": {
+  "name": "jrs-frozen-demonstration-corpus",
+  "version": "0.1.0",
+  "path": "tools/frozen-demo/corpus/v0.1.0/",
+  "index_sha256": "6ba57cf50414ec053dbb99dabf6e307764d14e24c0500affd7c4f00d012f5995",
+  "allowed_capitalised_words": [
+   "Access",
+   "DEMONSTRATION",
+   "Exception",
+   "FD",
+   "Fictional",
+   "Not",
+   "On",
+   "Page",
+   "RECORD",
+   "Reference",
+   "SYN",
+   "SYNTHETIC",
+   "Supplier",
+   "The"
+  ],
+  "entity_rule": "Every capitalised word in a record is a month, a word in this list or a word of a fictional entity the record declares."
+ },
+ "records": [
+  {
+   "record_id": "FD-01",
+   "record_version": "1",
+   "path": "tools/frozen-demo/corpus/v0.1.0/FD-01.json",
+   "file_sha256": "45a804efab34ddb61a447fa9093e47178c1535fdfca94f809a62a15ffc208f37",
+   "source_sha256": "5ea8842f5187c8c2d0002927c443a8fa9ae7a8958b8321f0ae5f85079b74799f",
+   "synthetic": true,
+   "classification": "frozen_synthetic_demonstration_record",
+   "holdout": false,
+   "demonstrates": "complete_reconstructable_record",
+   "expected_input_preparation": {
+    "refusal": null,
+    "refusal_codes": [],
+    "source_prep_codes": [],
+    "elements_missing": []
+   },
+   "expected_candidate": {
+    "adapter_called": true,
+    "result_status": "examined",
+    "flagged_keys": {},
+    "finding_types": [],
+    "finding_quotations": [],
+    "withheld_groups": []
+   },
+   "expected_scope_probes": [
+    "FD-01-P1",
+    "FD-01-P2",
+    "FD-01-P3"
+   ],
+   "expected_digests": {
+    "review_id": "a3d3f98277959be19a2a86d7",
+    "result_digest": "b8e4d46ad1028886fe94c345e48d25d2e19ea047326ca5ae92922de6088771ba",
+    "packet_id": "85cd68cd7e381017e0cd2055",
+    "packet_digest": "4a8fccaa4872bcb9a41a19055761bb0231737f9daa90b20ee67d1b8840aec6d9"
+   }
+  },
+  {
+   "record_id": "FD-02",
+   "record_version": "1",
+   "path": "tools/frozen-demo/corpus/v0.1.0/FD-02.json",
+   "file_sha256": "31150a75b575f8d61cbf7f8b6167622714cc21aa7ac2e4751a3cf5d59147910e",
+   "source_sha256": "b68f9da50fa2a1a33b894a286d9b73b3e43d3f7ed623ba7ba6e79a6f6dbf2c5d",
+   "synthetic": true,
+   "classification": "frozen_synthetic_demonstration_record",
+   "holdout": false,
+   "demonstrates": "missing_identifiable_basis",
+   "expected_input_preparation": {
+    "refusal": null,
+    "refusal_codes": [],
+    "source_prep_codes": [
+     "profile_element_not_found"
+    ],
+    "elements_missing": [
+     "exception_basis"
+    ]
+   },
+   "expected_candidate": {
+    "adapter_called": true,
+    "result_status": "examined",
+    "flagged_keys": {
+     "basis_identification": "gap"
+    },
+    "finding_types": [
+     "evidentiary_overreach"
+    ],
+    "finding_quotations": [
+     "the supplier is low risk"
+    ],
+    "withheld_groups": []
+   },
+   "expected_scope_probes": [],
+   "expected_digests": {
+    "review_id": "a857fafa9664a3469ee24f0d",
+    "result_digest": "eaa3489ff1ba04725a53c738c7678d28237d34ac25d1bfaecfd9409f92a9ff60",
+    "packet_id": "801bc46344cc5b65ca64d409",
+    "packet_digest": "33d045cf9d2946832ac4c659feae8f6d4d10c04f7898d565ff8c94cffbd02438"
+   }
+  },
+  {
+   "record_id": "FD-03",
+   "record_version": "1",
+   "path": "tools/frozen-demo/corpus/v0.1.0/FD-03.json",
+   "file_sha256": "099d218d0caa5f9168f9da2e35c79dd3b375fb30f7a674bcfcfc7f96be462a6a",
+   "source_sha256": "6896021cb0776c472ddf73e38d9926f8ba3e66945cdd8e824f49cd943f01f80a",
+   "synthetic": true,
+   "classification": "frozen_synthetic_demonstration_record",
+   "holdout": false,
+   "demonstrates": "chronology_gap",
+   "expected_input_preparation": {
+    "refusal": null,
+    "refusal_codes": [],
+    "source_prep_codes": [],
+    "elements_missing": []
+   },
+   "expected_candidate": {
+    "adapter_called": true,
+    "result_status": "examined",
+    "flagged_keys": {
+     "temporal_reconstructability": "gap"
+    },
+    "finding_types": [
+     "chronology_collapse",
+     "chronology_collapse"
+    ],
+    "finding_quotations": [
+     "Access was granted earlier that week, before the approval",
+     "the security office completed its review some days later"
+    ],
+    "withheld_groups": []
+   },
+   "expected_scope_probes": [],
+   "expected_digests": {
+    "review_id": "9d36768ca85350dd6c1b3ac6",
+    "result_digest": "f96ece1ec0102ca317872a08ae5bb0b3f72d1d9d26b34408d80cd55e76e0740c",
+    "packet_id": "9f1489fed27b90d7037f0279",
+    "packet_digest": "e3bf3463e302426279ecf3399aa9c7b58493182485435f8da2dca31cb0e69a57"
+   }
+  },
+  {
+   "record_id": "FD-04",
+   "record_version": "1",
+   "path": "tools/frozen-demo/corpus/v0.1.0/FD-04.json",
+   "file_sha256": "4d196159353a9ad4b11087d3f6ae0328d069779458ab8d3953e2776b4f74c82a",
+   "source_sha256": "80060a51a24a15f82bc22b3d577b557d2a8d46e4a618d4c9a365dcfabb675fb4",
+   "synthetic": true,
+   "classification": "frozen_synthetic_demonstration_record",
+   "holdout": false,
+   "demonstrates": "missing_logical_bridge",
+   "expected_input_preparation": {
+    "refusal": null,
+    "refusal_codes": [],
+    "source_prep_codes": [],
+    "elements_missing": []
+   },
+   "expected_candidate": {
+    "adapter_called": true,
+    "result_status": "examined",
+    "flagged_keys": {
+     "reasoning_traceability": "gap"
+    },
+    "finding_types": [
+     "reasoning_elision"
+    ],
+    "finding_quotations": [
+     "approved unrestricted remote access to all engineering systems because the devices were registered"
+    ],
+    "withheld_groups": []
+   },
+   "expected_scope_probes": [],
+   "expected_digests": {
+    "review_id": "3750c52765983f035054d3d1",
+    "result_digest": "b5d9068dafae86e3119e121b3a7a01bebda7e09854840cab02a9e34933077710",
+    "packet_id": "8c29d9f4672fdd5fe4e7e079",
+    "packet_digest": "8b629713cdbb21d55af5c40eea80b015ed51a3970a8eca9d0676cae9e01275b0"
+   }
+  },
+  {
+   "record_id": "FD-05",
+   "record_version": "1",
+   "path": "tools/frozen-demo/corpus/v0.1.0/FD-05.json",
+   "file_sha256": "e9f164ce83309c5e5583c5b1370869f741a050121495ffe3778e94b8e3d151e2",
+   "source_sha256": "a55d03f238e12659ede7db177917647e4e2a7e8350e9dba1c44c4fcfffbeca65",
+   "synthetic": true,
+   "classification": "frozen_synthetic_demonstration_record",
+   "holdout": false,
+   "demonstrates": "partial_record_refused_before_model_review",
+   "expected_input_preparation": {
+    "refusal": "partial_input",
+    "refusal_codes": [
+     "ends_mid_sentence",
+     "pages_missing"
+    ],
+    "source_prep_codes": [
+     "ends_mid_sentence",
+     "pages_missing"
+    ],
+    "elements_missing": []
+   },
+   "expected_candidate": {
+    "adapter_called": false,
+    "result_status": "refused",
+    "flagged_keys": {},
+    "finding_types": [],
+    "finding_quotations": [],
+    "withheld_groups": []
+   },
+   "expected_scope_probes": [],
+   "expected_digests": {
+    "review_id": "59511768c7c06bb2e0d7ef18",
+    "result_digest": "8b005a0785bc367691e95a9a16c0475a6004c8b67a8a705b1f316664e5b407a9",
+    "packet_id": "0c606c6ad981e5a97b6f8276",
+    "packet_digest": "8c883ff37cf8d2c2da724cf8acbbc33915819cef5ea4bb2e15303eaf7abd1e76"
+   }
+  }
+ ],
+ "known_limitations": {
+  "synthetic_only": "Every case is SYNTHETIC: fictional organisations, people, dates and facts written for this package. No real, public, participant, pilot or holdout record is used.",
+  "mock_output_only": "Every candidate output comes from the deterministic mock adapter scripted with the response frozen in each record. No live model was run.",
+  "no_semantic_correctness": "No semantic correctness: an exact quotation shows where text sits in the record, not that a finding is right.",
+  "no_real_provider_behavior": "No real-provider behavior: the package says nothing about what any real model would return for these records.",
+  "no_real_record_performance": "No real-record performance: five constructed records written by the package author show software behaviour, not accuracy, reliability or validity.",
+  "no_independent_labeling": "No independent labeling: the records, the scripted responses, the expectations and the disposition examples share one author.",
+  "not_a_holdout": "Not a sealed holdout. The five texts are registered as development material, so a future holdout builder refuses them.",
+  "no_operational_control_verification": "No operational-control verification: nothing here examines a deployment, an operator control, retention, access or monitoring.",
+  "no_production_or_commercial_readiness": "No production or commercial readiness of any kind is shown or implied, and no licensing, sale or pilot pathway is created.",
+  "fixed_configuration_only": "Repeatable only within its fixed local configuration: the bound module hashes, versions, prompt, adapter, corpus and fixed time stamp. Any change is a new package version.",
+  "no_release_gate_advanced": "No release gate is advanced. The independent holdout, operator-control, counsel, owner-authorization and independent production-QA gates remain open.",
+  "fictional_names_not_exhaustively_checked": "Names were invented and are checked against a closed list in each record and a screen of common real names; the package cannot exclude a coincidental match with a real organisation or person."
+ },
+ "local_only": true,
+ "prohibitions": {
+  "real_records": "prohibited",
+  "public_case_records": "prohibited",
+  "participant_or_pilot_material": "prohibited",
+  "sealed_holdout_material": "prohibited",
+  "provider_calls": "prohibited",
+  "network_access": "prohibited",
+  "public_route": "prohibited"
+ },
+ "release_gate_effect": "none",
+ "holdout": false,
+ "replay": {
+  "replay_version": "jrs-frozen-demo-replay/0.1.0",
+  "fixed_now": "2026-10-07T00:00:00Z",
+  "example_reviewer": "SYNTHETIC-REVIEWER-EXAMPLE",
+  "example_review_date": "2026-10-07",
+  "runner": "node tools/frozen-demo/run-demo.mjs",
+  "verifier": "node tools/frozen-demo/verify-demo-manifest.mjs",
+  "viewer": "node tools/frozen-demo/serve-viewer.mjs"
+ },
+ "notice": "Local-only frozen synthetic demonstration package, prepared for a future demonstration review. Not a public demo, not a pilot, not a production deployment and not a release authorization."
+}

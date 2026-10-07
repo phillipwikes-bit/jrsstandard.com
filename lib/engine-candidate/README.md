@@ -4,6 +4,7 @@
 - `ARCHITECTURE.md` covers the data flow, the boundary table and the Manifest decision.
 - `RUNBOOK.md` covers the failure modes and the recovery steps.
 - Release gates for this candidate are recorded, internally, in `lib/release-gate/` (protocol: `docs/architecture/RELEASE_EVIDENCE_PROTOCOL.md`; current report: `docs/architecture/CURRENT_RELEASE_GATE_REPORT.md`). All five gates are open.
+- A frozen synthetic demonstration package, `tools/frozen-demo/` (protocol: `docs/architecture/FROZEN_DEMONSTRATION_REPLAY_PROTOCOL.md`), replays five SYNTHETIC records through this candidate with the mock adapter. Its status is `DEMO_PREPARATION_COMPLETE_NOT_RELEASED`. It is local-only, shows exact replay of a fixed package and nothing more, and advances no release gate. Changing any candidate module requires freezing a new package version.
 - A person can read a reviewer packet and record dispositions in the local, offline reviewer workspace, `tools/local-reviewer-workspace/` (protocol: `docs/architecture/LOCAL_REVIEWER_WORKSPACE_PROTOCOL.md`). It runs nothing, is tested on synthetic fixtures only, and advances no release gate.
 
 ## What it does
@@ -47,8 +48,9 @@ Run these from the repository root. Tested on Node 22.22.0 only; other versions 
 | `tests/engine-candidate/regression/cases.json` | 24 source-preparation cases | before first run (`fd6a58a`) |
 | `tests/engine-candidate/corpus/v0.1.0/` | 15 corpus records, with mock responses | before the runner, adapter and harness existed (`804f313`) |
 | `tests/engine-candidate/confirmation/v0.1.0/` | 47 confirmation cases | before the source-prep 0.3.0 fix (`759ea86`) |
+| `tools/frozen-demo/corpus/v0.1.0/` | 5 frozen SYNTHETIC demonstration records, with scripted mock responses | committed alone before the replay code (`1717f1b`); checked once against this candidate before the freeze |
 
-All 89 texts are listed in `dev-material.js`, and `tests/engine-candidate/shared/dev-index.mjs` loads them for the contamination screen.
+All 94 texts are listed in `dev-material.js` (0.4.0; 89 until the five demonstration records were added on 2026-10-07), and `tests/engine-candidate/shared/dev-index.mjs` loads them for the contamination screen.
 
 ## Current results (constructed-development evidence only; tallies, not rates)
 | Set | Before the source-prep 0.3.0 fix | After |
