@@ -252,3 +252,4 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
   - The package shows exact local replay of five synthetic cases with a mocked model. It is not evidence of accuracy, real-model behaviour, real-record performance, independent evaluation or readiness of any kind.
   - Nothing was shown to a buyer, customer or anyone else, and no external contact was made.
   - Any demonstration would need a separate owner decision. Sale and buyer work stays stopped under the 5 October handoff.
+- 2026-10-07: editorial review of the SLGR revision of the public-records study (advice only, nothing submitted). Two items affect the asset record: the anonymous figure still names JRS, and the competing-interest statement ("continuing professional interest") should be checked by the owner and counsel against any commercial plan for JRS before submission. Sale and buyer work stays stopped under the 5 October handoff.
