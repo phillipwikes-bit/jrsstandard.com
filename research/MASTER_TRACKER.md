@@ -3289,3 +3289,12 @@ Only four line groups differ between v7 and v8.
   - **Guard:** not green. 164 checks, 37 failed, 1 skipped, triaged by function in `LEGACY_GUARD_FAILURE_TRIAGE_RECORD.md`. None has a safe in-scope fix. Two of the failures (retention disclosure, and the lost subject of the engine-output disclosure check) pass on `main` and were introduced on this branch by `3758d76`.
   - **Not done:** no merge, deployment, public page, API, OpenAPI, sitemap, Vercel, Cloudflare, credential, provider call, real record or holdout change.
   - **Absent:** no attestation, counsel determination, owner authorization or independent QA.
+- 2026-10-07 (**SOURCE-ALIGNED RECONCILIATION PACKAGE STOPPED BEFORE ANY CHANGE: THE THREE 3 OCTOBER SOURCES ARE NOT IN THE WORKSPACE**): owner-commissioned. FACT:
+  - **Where I looked:** `project_sources/` does not exist. No file with the three names is anywhere on the filesystem.
+  - **Hash scan:** none of the 11,055 git blobs on any branch, and none of the session uploads, matches the three SHA-256 values in `CURRENT_ENGINE_HANDOFF_2026-10-05.md`:
+    - `0c64eaff…` (Asset Register);
+    - `57e2ec50…` (Evidence Ledger);
+    - `a8822d7f…` (Blueprint).
+  - **What is present:** only the 1 October *Revised* Asset Register and Evidence Ledger (`.docx`). Those are different documents and were not substituted.
+  - **Why the package stopped:** extracting quotations, line locators or conflicts without the sources would mean inventing them, so nothing was built. This is a CLAUDE.md section 16 stop condition.
+  - **Needed from the owner:** the three files, byte-identical to the handoff hashes.
