@@ -624,3 +624,23 @@ of the record, not evidence that the owner failed to review, direct or accept th
 ## Final assessment for this consolidation pass
 
 **CURRENT JRS FACTUAL EVIDENCE PACKAGE COMPLETE.**
+
+## Addendum 2026-10-07: CEP Magazine copyright transfer form
+
+**New evidence, recorded under Rule 10; nothing above is changed.** No evidence ID is assigned, because E-ID numbering is open conflict CF-SA-01.
+
+| Item | Record |
+|---|---|
+| Evidence | Owner-supplied photograph (2026-10-07) of a single-page SCCE form headed "CEP MAGAZINE COPYRIGHT TRANSFER FORM". The image is not committed, because the repository is public and the image shows a signature. |
+| Work | "When the Record Cannot Speak for Itself" (handwritten title) |
+| Signatory | Printed name "Phillip Wikes", signature, dated 7/21/2026. No countersignature appears on the form. |
+| Stated terms (paraphrase of the form) | On acceptance, transfer to SCCE & HCCA of full ownership of the copyright in the Work, in all forms and media, worldwide, in all languages. Warranties: sole author and sole proprietor; original; not previously published; non-infringing; employer notified if employer material is used. Grants SCCE & HCCA use of the author's name and biographical information, and the right to republish and otherwise exploit the Work. SCCE & HCCA "will provide" a Publications Author Permissions Policy describing the author's distribution permissions. |
+| Classification | **EXECUTED INSTRUMENT, AUTHOR SIGNATURE ONLY, AS PHOTOGRAPHED.** Whether and when it was delivered to SCCE, and the Permissions Policy, are **NOT ESTABLISHED**. |
+| Effect on the record | The CEP acceptance (CL-022) gains author-side documentary support; the editor's acceptance message is still not in the corpus. |
+| Asset impact | The form's terms describe the copyright in this article as transferred out of the estate. The article text should be treated as **not an estate-owned asset** for transaction purposes pending counsel. |
+
+**REQUIRES HUMAN REVIEW (counsel):**
+1. The effect of the transfer, and whether it reaches any text the article shares with the Standard, the website or other estate documents. Copyright generally protects expression rather than methods, but whether that bounds this transfer is a legal question for counsel, not a conclusion recorded here.
+2. The "sole author" warranty, read alongside any AI assistance in drafting the article (Rule 7; E-029 provenance account).
+3. Retrieve the SCCE & HCCA Publications Author Permissions Policy before any reuse of the article text (SSRN, ARMA, Compliance Today, the website).
+4. A future Compliance Today article is published by the same organisations and may carry the same transfer terms.
