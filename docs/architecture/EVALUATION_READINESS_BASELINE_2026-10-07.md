@@ -2,6 +2,11 @@
 
 Machine-readable form: `tools/evaluation-readiness/baseline.json`. Recorded before any change made by the controlled independent-evaluation readiness package.
 
+## Current implementation, target and absent evidence
+- **Current implementation:** the state below was observed from the repository and its tests on 2026-10-07.
+- **Target:** a future independent evaluation prepared by the readiness package; nothing in this record describes one as run.
+- **Absent:** independent evaluation evidence, reviewer attestations, counsel determinations, an owner release authorization and independent production QA.
+
 ## Repository state at start
 | Item | Value |
 |---|---|

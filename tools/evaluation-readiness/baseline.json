@@ -23,7 +23,7 @@
   { "command": "node tests/release-gate/run-all.mjs", "result": "FAILED: 2 of 5 suites. validator.test.mjs: the record named afd6b44 as the candidate source commit, but 7205eea changed lib/engine-candidate/dev-material.js. Corrected in ccbd55b; after it, 5 suites passed and 34 of 34 mutations caught." },
   { "command": "node tests/provenance-audit/run-all.mjs", "result": "5 suites passed; 15 of 15 mutations caught" },
   { "command": "node tests/engine/auth-matrix.mjs", "result": "10 checks, 0 failed" },
-  { "command": "node scripts/test_review_incomplete.mjs", "result": "PASS" },
+  { "command": "node scripts/test_review_incomplete.mjs", "result": "observed: public review route refuses input with no outbound call" },
   { "command": "node tests/public-route-alignment.mjs", "result": "17 checks, 0 failed" },
   { "command": "node tests/public-boundary-claims.mjs", "result": "84 public pages, 0 violations" },
   { "command": "node tests/manifest/run.mjs", "result": "68 checks, 0 failed" },

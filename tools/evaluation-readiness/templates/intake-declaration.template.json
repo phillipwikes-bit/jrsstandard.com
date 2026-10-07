@@ -1,0 +1,19 @@
+{
+ "template": "jrs-evaluation-intake-declaration/0.1.0",
+ "notice": "BLANK TEMPLATE. Declares a record held outside this repository. Never paste record content into it. Intake is closed until an owner opening record exists.",
+ "record_ref": null,
+ "evidence_class": null,
+ "record_category": null,
+ "hr_related": null,
+ "decision_domains": [],
+ "completion_attestation": { "status": null, "attested_by_role": null, "attestation_ref": null },
+ "completeness": { "complete": null, "pages_total": null, "pages_present": null },
+ "rights": { "authority_attestation_ref": null, "rights_attestation_ref": null },
+ "source_reference": null,
+ "chain_of_custody_ref": null,
+ "version_binding": { "engine": { "version": null, "commit": null }, "prompt": { "version": null, "sha256": null }, "extraction_version": null, "interpretation_version": null, "adjudication_protocol_version": null },
+ "codebook": { "source_id": null, "revision": null, "sha256": null },
+ "reviewer_role_declaration": { "role": null, "role_version": null, "independence_declared": null, "independence_attestation_ref": null },
+ "input": { "digest_algorithm": "jrs-material-sha256/1", "input_digest": null, "external_reference": null },
+ "requested_actions": []
+}
