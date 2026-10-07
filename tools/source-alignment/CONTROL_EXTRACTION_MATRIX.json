@@ -55,8 +55,8 @@
  "totals": {
   "ALIGNED": 23,
   "PARTIALLY_ALIGNED": 16,
-  "CONFLICT": 5,
-  "NOT_IMPLEMENTED": 3,
+  "CONFLICT": 6,
+  "NOT_IMPLEMENTED": 2,
   "NOT_ASSESSED": 1,
   "REQUIRES_HUMAN_ACTION": 7
  },
@@ -375,7 +375,7 @@
    },
    "also_at": [],
    "control_type": "EVIDENCE_ID_CONTROL",
-   "requirement_paraphrase": "The canonical sequence has 45 entries, E-001 to E-045, with E-045 recorded as offline engineering evidence.",
+   "requirement_paraphrase": "The canonical sequence runs from E-001 to E-045, with E-045 recorded as offline engineering evidence.",
    "required_interpretation": "The repository baseline ledger should carry the canonical sequence.",
    "current_repository_status": "docs/enterprise-diligence/EVIDENCE_LEDGER.md ends at E-039.",
    "evidence": [
@@ -601,7 +601,7 @@
      "class": "REPOSITORY_RECORD"
     }
    ],
-   "status": "NOT_IMPLEMENTED",
+   "status": "CONFLICT",
    "limitation": "Recorded as a gap; no gate is added here.",
    "conflict_ids": [
     "CF-SA-05"

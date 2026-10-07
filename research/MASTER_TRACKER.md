@@ -3298,3 +3298,24 @@ Only four line groups differ between v7 and v8.
   - **What is present:** only the 1 October *Revised* Asset Register and Evidence Ledger (`.docx`). Those are different documents and were not substituted.
   - **Why the package stopped:** extracting quotations, line locators or conflicts without the sources would mean inventing them, so nothing was built. This is a CLAUDE.md section 16 stop condition.
   - **Needed from the owner:** the three files, byte-identical to the handoff hashes.
+- 2026-10-07 (**SOURCE-ALIGNED RECONCILIATION AND CONTROL-LINEAGE PACKAGE ADDED TO PR #39; INTERNAL; NO RELEASE GATE ADVANCED; SIX CONFLICTS RECORDED, NONE RESOLVED**): owner-commissioned. FACT:
+  - **Sources:** the owner supplied the three 3 October files as one archive. All three are byte-identical to the 5 October handoff hashes (`0c64eaff…`, `57e2ec50…`, `a8822d7f…`).
+    - On the owner's direction they stay local and untracked in `project_sources/` (excluded through `.git/info/exclude`), because the repository is public.
+    - Only hashes, sizes, titles, line locators with per-line SHA-256 values, classifications and minimal paraphrases are committed. No six-word run of source text appears in any package file; the verifier checks this.
+    - A future session that must re-verify needs the archive again. Without it every check fails closed.
+  - **Commits:** `3b66ed8` (integrity receipt and control-set summary), `50c6822` (matrix and reconciliation data), then the verifier, tests, mutation suite and reports.
+  - **Controls:** 55 (47 from the 3 October sources, 8 from the handoff or D-3, four of which have no 3 October counterpart).
+    - 23 ALIGNED, 16 PARTIALLY_ALIGNED, 6 CONFLICT, 2 NOT_IMPLEMENTED, 1 NOT_ASSESSED, 7 REQUIRES_HUMAN_ACTION.
+    - Correction: the `50c6822` message gave 5 CONFLICT and 3 NOT_IMPLEMENTED. SAC-11 belongs to conflict CF-SA-05 and is now classed CONFLICT; the commit message is preserved as written.
+  - **Conflicts for the owner (CF-SA-01 to CF-SA-06):** gate evidence numbering reuses canonical E-IDs; sole owner reviewer against independent reviewers; commercial objectives against the handoff's prohibition; pass/fail vocabulary against BLOCKED; creator review against owner release authorization; a public repository against the "protected implementation" position.
+  - **Release gates:** unchanged. RG-1, RG-2, RG-4 and RG-5 BLOCKED; RG-3 NOT_ASSESSED. The addendum record is bound to the main record and advances nothing.
+  - **Public audit (documentation only, no page edited):** 10 items. Still present: the "operational validation" phrasing (PPA-03) and the retention disclosure (PPA-09, counsel). Not assessable from the sources: PPA-06 and PPA-08.
+  - **Methodology integrity:** the report records the scan growing from 97 to 103 files, with no new finding.
+  - **Tests:**
+    - Source alignment: 203 checks in 5 suites, and 25 of 25 mutations caught. Each mutation removes one safeguard, and the verifier case that reports that safeguard's own problem fails; a stale-output failure is never counted.
+    - The verifier fails closed on 24 tamper cases, each in its owning section. The builder refuses to run when a source is absent.
+    - Engine candidate, release gate, methodology integrity, claim provenance, frozen demo, reviewer workspace and evaluation readiness all pass, with their mutation runs.
+    - Handoff, public-route, public-boundary and Manifest checks pass. `git diff --check` is clean.
+    - `tests/engine/activity-projection.mjs` fails 6 of 17, identically at `1d5c3a7` before this package. Not caused here and not fixed here.
+  - **Guard:** 164 checks, 37 failed, 1 skipped, the same 37 as `1d5c3a7`. One wording in the matrix ("45 entries" beside the ledger) briefly made it 38; the control now states the range E-001 to E-045 instead. The guard file is unchanged.
+  - **Not done:** no merge, deployment, public page, API, OpenAPI, sitemap, Vercel, Cloudflare, credential, provider call, real record or holdout change. The guard file is unchanged.

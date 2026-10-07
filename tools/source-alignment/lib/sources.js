@@ -49,5 +49,6 @@ export function lineHash(src, n) {
 export function lineCount(src) { return src && src._lines ? src._lines.length : 0; }
 // Normalised lines long enough to identify source text, for the leak check. Kept in memory only.
 export function identifyingLines(src, min = 50) {
-  return (src && src._lines ? src._lines : []).map((l) => l.replace(/\s+/g, ' ').trim()).filter((l) => l.length >= min);
+  // A line identifies source text only if it carries words: separators, rules and headings of symbols do not.
+  return (src && src._lines ? src._lines : []).map((l) => l.replace(/\s+/g, ' ').trim()).filter((l) => l.length >= min && (l.match(/[A-Za-z]{2,}/g) || []).length >= 6);
 }
