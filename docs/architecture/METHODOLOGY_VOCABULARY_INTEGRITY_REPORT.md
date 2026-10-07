@@ -61,7 +61,7 @@ Each source carries the sha256 it was reviewed at. The builder re-hashes every s
 
 ## 4. Scan results
 
-The scanner read 89 files in seven scope groups (69 when this package was written, 86 after the claim-provenance package; see the addenda) (candidate, workspace, methodology-integrity, Manifest, protocol and internal documentation, research summaries, correspondence decision records).
+The scanner read 97 files in seven scope groups (69 when this package was written, 86 after the claim-provenance package, 89 after the frozen demonstration package; see the addenda) (candidate, workspace, methodology-integrity, Manifest, protocol and internal documentation, research summaries, correspondence decision records).
 
 | Disposition | Findings |
 |---|---|
@@ -127,3 +127,7 @@ The 17 internal documents added by the claim-provenance package (`CLAIM_EVIDENCE
 ## Addendum, 2026-10-07: scope growth from the frozen demonstration package
 
 The three internal documents `FROZEN_DEMONSTRATION_CAPABILITY_MATRIX.md`, `FROZEN_DEMONSTRATION_EVIDENCE_RECORD.md` and `FROZEN_DEMONSTRATION_REPLAY_PROTOCOL.md` fall inside the `docs/architecture` scope. The scan grew from 86 to 89 files. The new files add no finding, every disposition count in section 4 is unchanged, and the gated scope still has 0 failures. One existing finding moved from line 29 to line 30 of `lib/engine-candidate/README.md` because a line was added above it. `generated/scan-results.json` was regenerated to match.
+
+## Addendum, 2026-10-07: scope growth from the evaluation-readiness package
+
+The eight internal documents of the controlled independent-evaluation readiness package (`CONTROLLED_INDEPENDENT_EVALUATION_READINESS_PROTOCOL.md`, `EVALUATION_SCOPE_AND_REFUSAL_MATRIX.md`, `CODEBOOK_MAPPING_AND_INTERPRETATION_SEPARATION_PROTOCOL.md`, `INPUT_CONTAMINATION_AND_DEVELOPMENT_MATERIAL_EXCLUSION_PROTOCOL.md`, `FUTURE_RUN_EVIDENCE_LEDGER_SPECIFICATION.md`, `AUTHORITY_AND_RELEASE_GATE_RESPONSIBILITY_MATRIX.md`, `LEGACY_GUARD_FAILURE_TRIAGE_RECORD.md` and `EVALUATION_READINESS_BASELINE_2026-10-07.md`) fall inside the `docs/architecture` scope. The scan grew from 89 to 97 files. The new files add no finding: the codebook-mapping protocol names the five conditions without placing any Engine candidate key beside them. Every disposition count in section 4 is unchanged, and the gated scope still has 0 failures. `generated/scan-results.json` was regenerated to match.

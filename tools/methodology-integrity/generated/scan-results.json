@@ -1,7 +1,7 @@
 {
  "scanner": "jrs-methodology-vocabulary-scan/0.1.0",
  "register_records_digest": "e245e0a316aa62570bbd640d0b721148ef27b7695b79d5722b46bfd67d3ec6a9",
- "files_scanned": 89,
+ "files_scanned": 97,
  "scope": [
   "candidate",
   "workspace",

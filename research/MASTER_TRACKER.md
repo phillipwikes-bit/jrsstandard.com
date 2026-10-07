@@ -3275,3 +3275,17 @@ Only four line groups differ between v7 and v8.
     - Handoff, public-route, public-boundary and Manifest checks pass. `git diff --check` is clean.
   - **Guard:** 164 checks, 38 failed, 1 skipped. The previous head fails the identical 38 today. Nothing is new, and the guard file is unchanged.
   - **Not done:** no merge, deployment, public page, API, OpenAPI, Vercel, credential, provider call, real record or holdout change. No demonstration has occurred, and no release decision is recorded.
+- 2026-10-07 (**CONTROLLED INDEPENDENT-EVALUATION READINESS PACKAGE ADDED TO PR #39; INTERNAL; `PLANNING_ONLY`; NO EVALUATION RUN OR SIMULATED; NO RELEASE GATE ADVANCED**): owner-commissioned. FACT:
+  - **Start state:** `7205eea`, clean, level with `main`.
+    - The release-gate validator failed there: the record named `afd6b44` as the candidate source commit, but `7205eea` had changed `dev-material.js`. Corrected in `ccbd55b`, with no gate status changed.
+    - Six conflicts between the brief and the repository are recorded (CF-01 to CF-06). The main one: the repository's condition names (RC1 to RC5) govern, and Engine candidate keys stay unmapped under D-2 and D-3.
+  - **Commits:** `7f3d47c` (baseline, guard triage, registries), `7528349` (intake validator, workspaces, ledger, scan, verifier), then the tests, mutation suite and documents.
+  - **Controls:**
+    - Intake is closed: a well-formed declaration is `WELL_FORMED_NOT_ADMITTED`, and no admission path exists.
+    - The registry can return only `PLANNING_ONLY`, `BINDING_COMPLETE_UNVERIFIED` or `REFUSED`.
+    - Four separated workspaces; conditions are stored by ID only; agreement and DRR functions only refuse.
+    - The ledger is append-only, and role substitution is refused.
+  - **Tests:** evaluation readiness 309 checks in 7 suites; 45 of 45 mutations caught, each in its owning section, covering all 14 required classes. Every existing suite passes.
+  - **Guard:** not green. 164 checks, 37 failed, 1 skipped, triaged by function in `LEGACY_GUARD_FAILURE_TRIAGE_RECORD.md`. None has a safe in-scope fix. Two of the failures (retention disclosure, and the lost subject of the engine-output disclosure check) pass on `main` and were introduced on this branch by `3758d76`.
+  - **Not done:** no merge, deployment, public page, API, OpenAPI, sitemap, Vercel, Cloudflare, credential, provider call, real record or holdout change.
+  - **Absent:** no attestation, counsel determination, owner authorization or independent QA.

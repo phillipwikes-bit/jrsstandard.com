@@ -1,0 +1,23 @@
+// The authority matrix and the release gates (verifier section G): every gate status exactly unchanged.
+import { t, done, json, read, M } from './_helpers.mjs';
+const A = json('tools/evaluation-readiness/authority-matrix.json'), RG = json('lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json'), REG = json('tools/evaluation-readiness/readiness-registry.json');
+const now = Object.fromEntries(RG.gates.map((g) => [g.gate_id, g.status]));
+t('release gates are exactly RG-1 BLOCKED, RG-2 BLOCKED, RG-3 NOT_ASSESSED, RG-4 BLOCKED, RG-5 BLOCKED', JSON.stringify(now) === JSON.stringify(M.verify.EXPECTED_GATES) && JSON.stringify(now) === '{"RG-1":"BLOCKED","RG-2":"BLOCKED","RG-3":"NOT_ASSESSED","RG-4":"BLOCKED","RG-5":"BLOCKED"}');
+t('no gate or sub-control is PASS, and no authorization is created', RG.gates.every((g) => g.status !== 'PASS' && g.sub_controls.every((s) => s.status !== 'PASS')) && Object.values(RG.authorizations_created).every((v) => v === false));
+t('the release-gate report still concludes INCOMPLETE_GATES_OPEN', /\*\*INCOMPLETE_GATES_OPEN\.\*\*/.test(read('docs/architecture/CURRENT_RELEASE_GATE_REPORT.md')));
+t('the registry and the authority matrix carry the same unchanged gate snapshot', JSON.stringify(REG.gate_status_snapshot) === JSON.stringify(now) && JSON.stringify(Object.fromEntries(A.gate_responsibilities.map((g) => [g.gate_id, g.status_snapshot]))) === JSON.stringify(now));
+t('the authority matrix is bound to the contract, registry, release-gate record and Engine version', A.bound_to.contract_version === 'jrs-evaluation-readiness-contract/0.1.0' && A.bound_to.registry_version === 'jrs-evaluation-readiness-registry/0.1.0' && A.bound_to.engine_version === RG.engine.engine_version);
+t('the matrix states that no role can be substituted by code, fixtures or generated text', /cannot be substituted by a code path, a test fixture or generated text/.test(A.rule));
+const R = A.roles;
+t('Claude Code may only prepare', R.claude_code.may_prepare.length >= 5 && ['attest', 'interpret', 'adjudicate', 'legal', 'authorize', 'verify production', 'release-gate status'].every((w) => R.claude_code.may_not.join(' | ').includes(w)));
+t('an independent reviewer must declare independence and interpret blind', R.independent_reviewer.must.some((x) => /independence/.test(x)) && R.independent_reviewer.must.some((x) => /blind/.test(x)));
+t('counsel must review lawful basis, data flows, rights and statements about results', ['lawful basis', 'data flows', 'rights', 'statement'].every((w) => R.counsel.must_review.join(' | ').includes(w)));
+t('the owner must authorize intake, freezes, provider calls, release and gate changes', ['opening intake', 'freezing', 'provider call', 'release', 'release-gate change'].every((w) => R.owner.must_authorize.join(' | ').includes(w)));
+t('independent production QA must verify an authorized deployment', /authorized production deployment/.test(R.independent_production_qa.must_verify.join(' ')));
+t('an adjudicator must be distinct from the reviewers', R.adjudicator.must.some((x) => /distinct/.test(x)));
+t('every gate is owned by a human role and Claude Code never satisfies one', A.gate_responsibilities.length === 5 && A.gate_responsibilities.every((g) => g.responsible_roles.length && !g.responsible_roles.includes('claude_code') && /never satisfy/.test(g.claude_code_may)));
+t('RG-3 is counsel\'s, RG-4 the owner\'s and RG-5 independent QA\'s', A.gate_responsibilities.find((g) => g.gate_id === 'RG-3').responsible_roles.join() === 'counsel' && A.gate_responsibilities.find((g) => g.gate_id === 'RG-4').responsible_roles.join() === 'owner' && A.gate_responsibilities.find((g) => g.gate_id === 'RG-5').responsible_roles.join() === 'independent_production_qa');
+t('what remains prohibited is listed with what must happen first', A.prohibited_until.length === 5 && A.prohibited_until.every((p) => p.action && p.until));
+const doc = read('docs/architecture/AUTHORITY_AND_RELEASE_GATE_RESPONSIBILITY_MATRIX.md');
+t('the matrix document carries the same gate statuses', ['| RG-1 Independent labeling and adjudication of an unused sealed holdout | BLOCKED', '| RG-2 Operator-control evidence | BLOCKED', '| RG-3 Counsel review | NOT_ASSESSED', '| RG-4 Recorded owner release authorization | BLOCKED', '| RG-5 Independent production QA | BLOCKED'].every((r) => doc.includes(r)));
+done();
