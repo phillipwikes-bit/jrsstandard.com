@@ -3344,3 +3344,9 @@ Only four line groups differ between v7 and v8.
   - **Tooling:** `scripts/build_multireader_study.py` builds the packets (seed 20261007) and scores returns. The scorer was validated: perfect agreement gives 1.0, and the existing 10-case second read gives nominal alpha 0.496 against kappa 0.474.
   - **Owner action:** recruit four readers (not authors, unfamiliar with the results) and send each only their packet.
 - 2026-10-07: owner asked for the grade using only the evidence already held (manuscript version 5). Given as INFERENCE: evidence B-, overall B, acceptance after revision about 30 to 35 percent; desk pass about 70 to 75 percent. Nothing submitted.
+- 2026-10-07 (**SLGR VERSION 6: ALL CATEGORIES RAISED WITHOUT NEW DATA; OWNER RULED OUT NEW READERS OR STUDIES**):
+  - **References:** all 11 earlier-added references verified against publisher or repository records. Farrell's first name corrected to Mark.
+  - **Literature:** three verified FOI-administration field experiments added: Grimmelikhuijsen et al. 2019 (JBPA), ben-Aaron et al. 2017 (PAR), Baringer et al. 2022 (Public Integrity).
+  - **Evidence from data already held:** Wilson intervals on the Table 1 rates (36 to 92 and 0 to 18 percent). New Appendix B gives the second reader's ten reasons verbatim, with a descriptive (uncoded) statement that his Needs work and Gap reasons each name something absent and his Ready reasons each name what is documented; checked case by case. I did not widen the fixed rule to fit his phrasing.
+  - **Practitioner value:** Table 4 applies the five questions to a records access officer's determination, marked as untested.
+  - **Size:** 25 pages, anonymous, no blanks. The multi-reader packets remain available but unused, per the owner.
