@@ -3351,3 +3351,10 @@ Only four line groups differ between v7 and v8.
   - **Practitioner value:** Table 4 applies the five questions to a records access officer's determination, marked as untested.
   - **Size:** 25 pages, anonymous, no blanks. The multi-reader packets remain available but unused, per the owner.
 - 2026-10-07: owner asked whether the SLGR paper will likely be rejected. Answered (INFERENCE): about 35 to 40 percent eventual acceptance; this is not "likely not", because most submissions to any peer-reviewed journal are rejected and this paper is in the stronger part of that pool. Advised submitting, keeping the reader packets as a revision answer, and preparing a fallback venue list. Nothing submitted.
+- 2026-10-07 (**SLGR VERSION 7: DESK-CHECK HARDENING AGAINST THE PUBLISHED GUIDELINES**): checked line by line against the SLGR submission guidelines.
+  - **Declarations:** renamed to SLGR's required headings (Ethical considerations, Consent to participate, Consent for publication, Declaration of conflicting interest, Funding statement, Data availability), with the Sage AI statement kept.
+  - **Spacing:** everything double-spaced, captions, notes and table cells included; 29 pages, inside 20 to 30.
+  - **Figures:** all three now 300 dpi. Figure 1 was redrawn because the old one was 865 pixels wide. The AI statement now names Figures 1 to 3.
+  - **Literature:** three SLGR articles found through Crossref by ISSN and cited (Porumbescu 2015; Krah and Mertens 2020; Sollenberger 2026), plus Selin and Butcher 2024 and Wagner, Cuillier and Sparks 2026, all verified.
+  - **References:** citation and reference cross-check passed in both directions; reference list re-sorted.
+  - **Other:** file names carry no author names. No public preprint exists (site searched), and the cover letter now says so. The title page asks for telephone and ORCID, both required.
