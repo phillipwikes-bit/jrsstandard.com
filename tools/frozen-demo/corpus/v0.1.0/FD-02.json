@@ -1,0 +1,116 @@
+{
+ "record_id": "FD-02",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "created": "2026-10-07",
+ "synthetic": true,
+ "synthetic_label": "SYNTHETIC DEMONSTRATION RECORD. Fictional organisations, people, dates and facts. Not a real record.",
+ "record_ref": "SYNTHETIC-FD-02",
+ "demonstrates": "missing_identifiable_basis",
+ "summary": "An exception approved with a conclusion and no stated basis.",
+ "classification": "frozen_synthetic_demonstration_record",
+ "holdout": false,
+ "development_material": true,
+ "scope": {
+  "profile": {
+   "record_type": "supplier_access_exception",
+   "completion_status": "completed",
+   "hr_related": false
+  },
+  "domain": "supplier_access_exception",
+  "excluded_domains_present": false
+ },
+ "fictional_entities": {
+  "organisations": [
+   "Brisenfold Logistics Ltd",
+   "Halvenmoor Instruments"
+  ],
+  "people": [
+   "Doran Velquist"
+  ]
+ },
+ "text": "SYNTHETIC DEMONSTRATION RECORD FD-02. Fictional organisations, people, dates and facts. Not a real record.\nSupplier-access exception, completed draft. Reference SYN-FD-02.\nOn 10 March 2031 Brisenfold Logistics Ltd requested access to the dock-scheduling system of Halvenmoor Instruments for six weeks. The supplier-access policy requires a signed data-handling agreement before access is granted, and no signed agreement was on file on 10 March 2031. On 11 March 2031 the procurement lead, Doran Velquist, approved an exception to the agreement requirement. The approval note reads: \"Exception approved; the supplier is low risk.\" Access was granted on 12 March 2031 and ends on 21 April 2031.",
+ "source_sha256": "b68f9da50fa2a1a33b894a286d9b73b3e43d3f7ed623ba7ba6e79a6f6dbf2c5d",
+ "expected": {
+  "input_preparation": {
+   "refusal": null,
+   "refusal_codes": [],
+   "source_prep_codes": [
+    "profile_element_not_found"
+   ],
+   "elements_missing": [
+    "exception_basis"
+   ]
+  },
+  "mock_response": {
+   "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+   "model_id": "mock-frozen-demo",
+   "model_version": "frozen-demo-0.1.0",
+   "prompt_version": "candidate-prompt/0.4.0",
+   "completion": "complete",
+   "conditions": {
+    "basis_identification": {
+     "status": "gap",
+     "explanation_id": "missing_identifiable_basis",
+     "note": "The record states a low-risk conclusion and does not name what that conclusion rests on.",
+     "uncertain": false
+    },
+    "reasoning_traceability": {
+     "status": "pass",
+     "explanation_id": "missing_logical_bridge",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "cold_reviewer_clarity": {
+     "status": "pass",
+     "explanation_id": "cold_reviewer_clarity",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "accountability_support": {
+     "status": "pass",
+     "explanation_id": "accountability_support",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "temporal_reconstructability": {
+     "status": "pass",
+     "explanation_id": "chronology_gap",
+     "note": "The record states this.",
+     "uncertain": false
+    }
+   },
+   "findings": [
+    {
+     "type": "evidentiary_overreach",
+     "quotation": "the supplier is low risk",
+     "explanation_id": "unsupported_conclusion",
+     "note": "Low risk is asserted, and nothing in the record shows the basis for it.",
+     "uncertain": false
+    }
+   ],
+   "revision_needed": null
+  },
+  "candidate": {
+   "adapter_called": true,
+   "result_status": "examined",
+   "flagged_keys": {
+    "basis_identification": "gap"
+   },
+   "finding_types": [
+    "evidentiary_overreach"
+   ],
+   "finding_quotations": [
+    "the supplier is low risk"
+   ],
+   "withheld_groups": []
+  }
+ },
+ "limitations": [
+  "SYNTHETIC. Written by Claude Code (an AI) on 2026-10-07 for a local demonstration package. No real supplier, person, organisation, date or record is described or was used.",
+  "The names were invented for this package and checked against a closed list in the record; resemblance to a real organisation or person is not intended and cannot be excluded by the package itself.",
+  "Expected candidate behaviour is the scripted output of a deterministic mock adapter. It shows what the software does with that output, not what any real model would return.",
+  "Not a sealed holdout, not independent labeling, not real-record evidence and not evidence of accuracy, reliability or validity.",
+  "The deterministic finding is a presence check for basis wording; its absence of a match is not proof of omission. The candidate finding is scripted."
+ ]
+}

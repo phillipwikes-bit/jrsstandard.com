@@ -1,0 +1,37 @@
+{
+ "corpus": "jrs-frozen-demonstration-corpus",
+ "corpus_version": "0.1.0",
+ "created": "2026-10-07",
+ "synthetic": true,
+ "records": [
+  {
+   "record_id": "FD-01",
+   "record_version": "1",
+   "source_sha256": "5ea8842f5187c8c2d0002927c443a8fa9ae7a8958b8321f0ae5f85079b74799f"
+  },
+  {
+   "record_id": "FD-02",
+   "record_version": "1",
+   "source_sha256": "b68f9da50fa2a1a33b894a286d9b73b3e43d3f7ed623ba7ba6e79a6f6dbf2c5d"
+  },
+  {
+   "record_id": "FD-03",
+   "record_version": "1",
+   "source_sha256": "6896021cb0776c472ddf73e38d9926f8ba3e66945cdd8e824f49cd943f01f80a"
+  },
+  {
+   "record_id": "FD-04",
+   "record_version": "1",
+   "source_sha256": "80060a51a24a15f82bc22b3d577b557d2a8d46e4a618d4c9a365dcfabb675fb4"
+  },
+  {
+   "record_id": "FD-05",
+   "record_version": "1",
+   "source_sha256": "a55d03f238e12659ede7db177917647e4e2a7e8350e9dba1c44c4fcfffbeca65"
+  }
+ ],
+ "notice": "Every record is SYNTHETIC: fictional organisations, people, dates and facts. Not a real record, not a sealed holdout, not participant or pilot material, not a public case record.",
+ "freeze": "Frozen on creation. A change to any record is a new corpus version, never an edit of this one.",
+ "pre_freeze_check": "Before this commit, each expected input-preparation and candidate behaviour was checked once against the existing candidate (0.5.0-local.1, source-prep/0.3.0) with the scripted mock, and each text was screened against the 89 registered development texts (no exact or possible match). The expectations are a demonstration specification for exact replay, not a pre-registered test of generalisation: the same author wrote the records, the scripted responses and the expectations.",
+ "provenance": "Written by Claude Code (an AI) on 2026-10-07 for the frozen synthetic demonstration package on draft PR #39. No sealed-holdout material, public case record, participant or pilot material, or real organisational record was used."
+}

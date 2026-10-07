@@ -1,0 +1,121 @@
+{
+ "record_id": "FD-03",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "created": "2026-10-07",
+ "synthetic": true,
+ "synthetic_label": "SYNTHETIC DEMONSTRATION RECORD. Fictional organisations, people, dates and facts. Not a real record.",
+ "record_ref": "SYNTHETIC-FD-03",
+ "demonstrates": "chronology_gap",
+ "summary": "Steps given out of order and without dates, so the sequence cannot be rebuilt.",
+ "classification": "frozen_synthetic_demonstration_record",
+ "holdout": false,
+ "development_material": true,
+ "scope": {
+  "profile": {
+   "record_type": "supplier_access_exception",
+   "completion_status": "completed",
+   "hr_related": false
+  },
+  "domain": "supplier_access_exception",
+  "excluded_domains_present": false
+ },
+ "fictional_entities": {
+  "organisations": [
+   "Corvane Plastics Ltd",
+   "Halvenmoor Instruments"
+  ],
+  "people": [
+   "Sabine Orlecht"
+  ]
+ },
+ "text": "SYNTHETIC DEMONSTRATION RECORD FD-03. Fictional organisations, people, dates and facts. Not a real record.\nSupplier-access exception, completed draft. Reference SYN-FD-03.\nOn 2 May 2031 Corvane Plastics Ltd requested access to the mould-maintenance portal of Halvenmoor Instruments for three weeks. The supplier-access policy requires a security-office review before access is granted. The procurement lead, Sabine Orlecht, approved the exception on 6 May 2031 because a mould repair could not wait for the next review cycle. Access was granted earlier that week, before the approval, and the security office completed its review some days later. Access ends on 23 May 2031.",
+ "source_sha256": "6896021cb0776c472ddf73e38d9926f8ba3e66945cdd8e824f49cd943f01f80a",
+ "expected": {
+  "input_preparation": {
+   "refusal": null,
+   "refusal_codes": [],
+   "source_prep_codes": [],
+   "elements_missing": []
+  },
+  "mock_response": {
+   "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+   "model_id": "mock-frozen-demo",
+   "model_version": "frozen-demo-0.1.0",
+   "prompt_version": "candidate-prompt/0.4.0",
+   "completion": "complete",
+   "conditions": {
+    "basis_identification": {
+     "status": "pass",
+     "explanation_id": "missing_identifiable_basis",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "reasoning_traceability": {
+     "status": "pass",
+     "explanation_id": "missing_logical_bridge",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "cold_reviewer_clarity": {
+     "status": "pass",
+     "explanation_id": "cold_reviewer_clarity",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "accountability_support": {
+     "status": "pass",
+     "explanation_id": "accountability_support",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "temporal_reconstructability": {
+     "status": "gap",
+     "explanation_id": "chronology_gap",
+     "note": "The record gives no date for the grant of access or for the security-office review, so the order of steps cannot be rebuilt.",
+     "uncertain": false
+    }
+   },
+   "findings": [
+    {
+     "type": "chronology_collapse",
+     "quotation": "Access was granted earlier that week, before the approval",
+     "explanation_id": "chronology_gap",
+     "note": "The grant of access is placed before the approval with no date.",
+     "uncertain": false
+    },
+    {
+     "type": "chronology_collapse",
+     "quotation": "the security office completed its review some days later",
+     "explanation_id": "chronology_gap",
+     "note": "The review is given no date, so its place in the sequence is unclear.",
+     "uncertain": true
+    }
+   ],
+   "revision_needed": null
+  },
+  "candidate": {
+   "adapter_called": true,
+   "result_status": "examined",
+   "flagged_keys": {
+    "temporal_reconstructability": "gap"
+   },
+   "finding_types": [
+    "chronology_collapse",
+    "chronology_collapse"
+   ],
+   "finding_quotations": [
+    "Access was granted earlier that week, before the approval",
+    "the security office completed its review some days later"
+   ],
+   "withheld_groups": []
+  }
+ },
+ "limitations": [
+  "SYNTHETIC. Written by Claude Code (an AI) on 2026-10-07 for a local demonstration package. No real supplier, person, organisation, date or record is described or was used.",
+  "The names were invented for this package and checked against a closed list in the record; resemblance to a real organisation or person is not intended and cannot be excluded by the package itself.",
+  "Expected candidate behaviour is the scripted output of a deterministic mock adapter. It shows what the software does with that output, not what any real model would return.",
+  "Not a sealed holdout, not independent labeling, not real-record evidence and not evidence of accuracy, reliability or validity.",
+  "Source preparation finds nothing here: it checks that a full date exists, not that every step is dated. The chronology finding comes only from the scripted mock."
+ ]
+}
