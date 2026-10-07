@@ -1,0 +1,144 @@
+{
+ "matrix_version": "jrs-evaluation-authority-matrix/0.1.0",
+ "package_id": "JRS-EVAL-READINESS-20261007-PR39",
+ "status": "PLANNING_ONLY",
+ "bound_to": {
+  "contract_version": "jrs-evaluation-readiness-contract/0.1.0",
+  "registry_version": "jrs-evaluation-readiness-registry/0.1.0",
+  "release_gate_record": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+  "engine_version": "0.5.0-local.1"
+ },
+ "rule": "A role below cannot be substituted by a code path, a test fixture or generated text. Claude Code prepares; it never attests, determines, authorizes or verifies on behalf of a person.",
+ "roles": {
+  "claude_code": {
+   "may_prepare": [
+    "protocols, schemas, templates and blank forms",
+    "validators, the run ledger and the repository scan",
+    "synthetic test tokens and probes",
+    "questions for counsel and decision requests for the owner",
+    "reports of what is present and what is absent"
+   ],
+   "may_not": [
+    "attest independence, rights, completion or custody",
+    "interpret or label an evaluation record",
+    "adjudicate a disagreement",
+    "determine a legal or compliance question",
+    "authorize intake, a freeze, a provider call, a release or a publication",
+    "verify production",
+    "change a release-gate status"
+   ]
+  },
+  "independent_reviewer": {
+   "must": [
+    "declare independence and any conflict, in their own attestation",
+    "extract and interpret each record under the frozen Codebook revision, blind to candidate output",
+    "record uncertainty and insufficient basis where they apply"
+   ]
+  },
+  "adjudicator": {
+   "must": [
+    "resolve recorded disagreements under the frozen adjudication protocol",
+    "be distinct from the reviewers whose interpretations are adjudicated"
+   ]
+  },
+  "record_custodian": {
+   "must": [
+    "attest completion status and chain of custody for each record",
+    "hold record text outside this repository"
+   ]
+  },
+  "counsel": {
+   "must_review": [
+    "lawful basis and confidentiality for evaluation records",
+    "data flows, storage, retention and deletion for the evaluation",
+    "rights in reviewer work and results",
+    "any statement about an evaluation result"
+   ]
+  },
+  "owner": {
+   "must_authorize": [
+    "opening intake",
+    "freezing the Codebook revision and the interpretation, calibration and adjudication protocols",
+    "any provider call on evaluation records",
+    "any release, deployment or publication",
+    "any release-gate change, on recorded evidence"
+   ]
+  },
+  "independent_production_qa": {
+   "must_verify": [
+    "an authorized production deployment, after the owner release authorization"
+   ]
+  }
+ },
+ "gate_responsibilities": [
+  {
+   "gate_id": "RG-1",
+   "gate_name": "Independent labeling and adjudication of an unused sealed holdout",
+   "status_snapshot": "BLOCKED",
+   "responsible_roles": [
+    "independent_reviewer",
+    "adjudicator",
+    "owner"
+   ],
+   "claude_code_may": "prepare structure and report absence; never satisfy"
+  },
+  {
+   "gate_id": "RG-2",
+   "gate_name": "Operator-control evidence",
+   "status_snapshot": "BLOCKED",
+   "responsible_roles": [
+    "owner"
+   ],
+   "claude_code_may": "prepare structure and report absence; never satisfy"
+  },
+  {
+   "gate_id": "RG-3",
+   "gate_name": "Counsel review",
+   "status_snapshot": "NOT_ASSESSED",
+   "responsible_roles": [
+    "counsel"
+   ],
+   "claude_code_may": "prepare structure and report absence; never satisfy"
+  },
+  {
+   "gate_id": "RG-4",
+   "gate_name": "Recorded owner release authorization",
+   "status_snapshot": "BLOCKED",
+   "responsible_roles": [
+    "owner"
+   ],
+   "claude_code_may": "prepare structure and report absence; never satisfy"
+  },
+  {
+   "gate_id": "RG-5",
+   "gate_name": "Independent production QA",
+   "status_snapshot": "BLOCKED",
+   "responsible_roles": [
+    "independent_production_qa"
+   ],
+   "claude_code_may": "prepare structure and report absence; never satisfy"
+  }
+ ],
+ "prohibited_until": [
+  {
+   "action": "admit any record to intake",
+   "until": "owner opening record, counsel review and rights attestation (ATT-01 to ATT-03)"
+  },
+  {
+   "action": "run the Engine or any provider on an evaluation record",
+   "until": "owner authorization for provider calls on evaluation records"
+  },
+  {
+   "action": "compute agreement, a DRR score or a classification",
+   "until": "owner freeze records for the codebook, interpretation, calibration and adjudication protocols, and real independent interpretations"
+  },
+  {
+   "action": "describe any result as validation or independent evaluation",
+   "until": "evidence created by the appropriate external authority, matched to the proposition, and counsel review of the statement"
+  },
+  {
+   "action": "change any release-gate status",
+   "until": "proposition-matched evidence from the responsible role, recorded in the release-gate record"
+  }
+ ]
+}

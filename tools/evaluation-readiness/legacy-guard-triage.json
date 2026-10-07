@@ -1,0 +1,456 @@
+{
+ "triage_version": "jrs-legacy-guard-triage/0.1.0",
+ "run_date": "2026-10-07",
+ "guard": "scripts/check_zero_drift.py",
+ "guard_file_changed": false,
+ "run_head": "7205eeab18baa41933a41c65851ab437cb7249e8",
+ "result": {
+  "checks": 164,
+  "failed": 37,
+  "skipped": 1,
+  "passed": 126
+ },
+ "variable_check": {
+  "check_name": "Master Tracker written to today",
+  "note": "Date-dependent. It failed (38 failures) on the first 2026-10-07 run, before research/MASTER_TRACKER.md had a 2026-10-07 entry, and passes once one exists. It is not counted in the stable baseline of 37."
+ },
+ "source_comparison": {
+  "origin_main": "97087e915245a15808f121e2263a7385a6bf5a04",
+  "origin_main_result": {
+   "checks": 164,
+   "failed": 38,
+   "skipped": 1
+  },
+  "fail_on_main_pass_on_branch": [
+   "Master Tracker written to today (date-dependent; main has no 2026-10-07 entry)",
+   "reliability claims preserve E-038 population and criterion status (fixed by 7bfb13e)",
+   "the cross-vendor range carries its own denominator (fixed by 7bfb13e)"
+  ],
+  "pass_on_main_fail_on_branch": [
+   "disclosed retention matches the policy (3758d76)",
+   "pages rendering engine output disclose validation status (3758d76)"
+  ]
+ },
+ "categories": {
+  "PUBLIC_PAGE_STRUCTURE": {
+   "meaning": "A served public page lacks the structure the guard expects.",
+   "required_next_action": "Edit the named public page(s). Requires the owner's publication approval (CLAUDE.md sections 23 and 26).",
+   "count": 7
+  },
+  "COMMERCIAL_PATHWAY_RETIRED": {
+   "meaning": "The guard expects commercial, licensing, pricing, sandbox or inquiry content that the 5 October handoff removed or prohibits.",
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here.",
+   "count": 10
+  },
+  "ENGINE_CLOSED_SUBJECT_MOVED": {
+   "meaning": "The guard checks Engine, Manifest or API code that was closed or restructured (the review routes refuse every request since 4 October 2026), so the code it reads has moved or gone.",
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment.",
+   "count": 13
+  },
+  "DEPLOYMENT_EXCLUSION": {
+   "meaning": "Files under api/_manifest/ sit outside every .vercelignore rule, so the guard reports the Manifest implementation as deployable.",
+   "required_next_action": "Owner decision on deployment configuration (.vercelignore or the api/ layout). Deployment configuration may not be changed here.",
+   "count": 1
+  },
+  "DISCLOSURE_DIVERGENCE": {
+   "meaning": "Public disclosure text no longer states the 90-day period lib/retention/policy.js sets. Introduced on this branch by 3758d76 (public boundary repairs).",
+   "required_next_action": "Owner decision on the disclosure wording or the policy value, then a public page edit under publication approval.",
+   "count": 1
+  },
+  "HUMAN_CLASSIFICATION_REQUIRED": {
+   "meaning": "Hosts referenced in code or pages are absent from .jrs/registries/OUTBOUND_DESTINATIONS.json (reserved test hosts example.invalid, example.test, local.invalid and one external link on resources.html), and four inventory hosts are no longer referenced.",
+   "required_next_action": "A person classifies each host, as the guard requires by design, and the disclosure is reconciled. Not done automatically.",
+   "count": 1
+  },
+  "ENVIRONMENT": {
+   "meaning": "research/build_reviewer_eval_certificate.py imports reportlab, which is not installed in this session's environment.",
+   "required_next_action": "Install reportlab in the environment that runs the guard, then re-run. No repository change is indicated by this failure alone.",
+   "count": 1
+  },
+  "RECORD_DRIFT": {
+   "meaning": "A repository record names a page or entry that no longer matches reality.",
+   "required_next_action": "Update the named record under human review, or restore the page. Not in scope.",
+   "count": 3
+  }
+ },
+ "failures": [
+  {
+   "triage_id": "LG-01",
+   "guard_function": "check_trust_pages_carry_their_proof",
+   "check_name": "trust pages carry the credential and its proof",
+   "observed_message_excerpt": "3 problem(s): enterprise.html: credential present but evidence route missing platform-evaluation-001.html (asks a platform buyer to open an integration scoping call); org-pilot.html: no credential (asks an organisation t",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-02",
+   "guard_function": "check_inquiry_options_are_backed_by_the_allowlist",
+   "check_name": "inquiry options are backed by the allowlist",
+   "observed_message_excerpt": "8 problem(s): enterprise.html offers 'method-information', which the endpoint would store as an empty interest; enterprise.html offers 'future-controlled-evaluation', which the endpoint would store as an empty interest",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-03",
+   "guard_function": "check_printed_certificate_matches_endpoint",
+   "check_name": "printed certificate wording matches the endpoint",
+   "observed_message_excerpt": "research/build_reviewer_eval_certificate.py did not import: ModuleNotFoundError(\"No module named 'reportlab'\")",
+   "category": "ENVIRONMENT",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Install reportlab in the environment that runs the guard, then re-run. No repository change is indicated by this failure alone."
+  },
+  {
+   "triage_id": "LG-04",
+   "guard_function": "check_robots_directives_coherent",
+   "check_name": "no noindex page sits in the sitemap",
+   "observed_message_excerpt": "controlled-evaluation-package.html; licensing-acquisition.html; organizational-evaluation.html; pilot.html",
+   "category": "PUBLIC_PAGE_STRUCTURE",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Edit the named public page(s). Requires the owner's publication approval (CLAUDE.md sections 23 and 26)."
+  },
+  {
+   "triage_id": "LG-05",
+   "guard_function": "check_site_nav_present",
+   "check_name": "site nav present on every public page",
+   "observed_message_excerpt": "missing on: ai-records-pilot.html, controlled-evaluation-package.html, licensing-acquisition.html, organizational-evaluation.html, platform-evaluation-001.html, privacy-notice.html",
+   "category": "PUBLIC_PAGE_STRUCTURE",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Edit the named public page(s). Requires the owner's publication approval (CLAUDE.md sections 23 and 26)."
+  },
+  {
+   "triage_id": "LG-06",
+   "guard_function": "check_no_redirect_shadows_a_real_page",
+   "check_name": "no redirect shadows a page that exists",
+   "observed_message_excerpt": "/evidence-ledger -> /research.html but evidence-ledger.html exists; /datasets -> /research.html but datasets.html exists; /acquisition-9f3c2a7d4b -> /enterprise.html but acquisition-9f3c2a7d4b.html exists",
+   "category": "PUBLIC_PAGE_STRUCTURE",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Edit the named public page(s). Requires the owner's publication approval (CLAUDE.md sections 23 and 26)."
+  },
+  {
+   "triage_id": "LG-07",
+   "guard_function": "check_a_page_leads_with_its_own_action",
+   "check_name": "pilot.html has a hero button row",
+   "observed_message_excerpt": "not found",
+   "category": "PUBLIC_PAGE_STRUCTURE",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Edit the named public page(s). Requires the owner's publication approval (CLAUDE.md sections 23 and 26)."
+  },
+  {
+   "triage_id": "LG-08",
+   "guard_function": "check_util_bar_does_not_hide_links_on_a_phone",
+   "check_name": "util bar wraps instead of hiding links on phones",
+   "observed_message_excerpt": "pilot.html: no util bar rule; review-engine.html: no util bar rule",
+   "category": "PUBLIC_PAGE_STRUCTURE",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Edit the named public page(s). Requires the owner's publication approval (CLAUDE.md sections 23 and 26)."
+  },
+  {
+   "triage_id": "LG-09",
+   "guard_function": "check_enterprise_page_leads_with_its_own_action",
+   "check_name": "enterprise.html leads with its own action",
+   "observed_message_excerpt": "first primary points at jrsstandard.html",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-10",
+   "guard_function": "check_free_track_bridges_to_the_licence",
+   "check_name": "free-track pages bridge to the licence",
+   "observed_message_excerpt": "jrsstandard.html lacks enterprise inquiry; codebook.html lacks enterprise inquiry; simulations.html lacks enterprise inquiry; investigator-guides.html lacks enterprise inquiry; check.html lacks enterprise inquiry",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-11",
+   "guard_function": "check_api_contract_has_a_runnable_example",
+   "check_name": "API contract carries a runnable example",
+   "observed_message_excerpt": "curl=False bearer=False response=False",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-12",
+   "guard_function": "check_openapi_matches_the_implementation",
+   "check_name": "openapi spec matches the implementation",
+   "observed_message_excerpt": "no Error enum in spec",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-13",
+   "guard_function": "check_security_page_exists_and_is_linked",
+   "check_name": "security one-pager exists and is linked",
+   "observed_message_excerpt": "missing claims: stateless, not written to any table, Rate limit, request_id; linked from only 0 of 2 Track 1 pages",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-14",
+   "guard_function": "check_track1_pages_lead_with_an_action",
+   "check_name": "Track 1 pages lead with an action",
+   "observed_message_excerpt": "review-engine.html: no action row after the h1",
+   "category": "PUBLIC_PAGE_STRUCTURE",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Edit the named public page(s). Requires the owner's publication approval (CLAUDE.md sections 23 and 26)."
+  },
+  {
+   "triage_id": "LG-15",
+   "guard_function": "check_sandbox_is_failclosed",
+   "check_name": "sandbox is fail-closed",
+   "observed_message_excerpt": "no enable flag; no SANDBOX_PER_IP_PER_DAY cap; no SANDBOX_GLOBAL_PER_DAY cap; no SANDBOX_MAX_CHARS cap",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-16",
+   "guard_function": "check_sandbox_is_reachable_and_gated",
+   "check_name": "sandbox is reachable and gated",
+   "observed_message_excerpt": "no sandbox section; UI does not call /api/sandbox; no PII gate before submit; fetch has no catch handler; not linked from enterprise.html",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-17",
+   "guard_function": "check_pricing_is_published",
+   "check_name": "pricing posture is published",
+   "observed_message_excerpt": "no pricing section; pricing section does not state 'Integration setup'; pricing section does not state 'Potential platform licence'; pricing section does not state 'Evaluation'; pricing section does not state 'What moves",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-18",
+   "guard_function": "check_no_custom_pricing_estimator_returns",
+   "check_name": "no custom pricing estimator returns",
+   "observed_message_excerpt": "licensing content lost: 'Potential platform licence'; licensing content lost: 'Term and scope determined in writing'; licensing content lost: 'Scope and cost'; licensing content lost: 'id=\"pricing\"'",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-19",
+   "guard_function": "check_founder_service_layer_is_retired",
+   "check_name": "founder service layer is retired",
+   "observed_message_excerpt": "separated enterprise routes lost a commercial pathway: Potential platform licence; separated enterprise routes lost a commercial pathway: Review Engine API; separated enterprise routes lost a commercial pathway: Acquisit",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-20",
+   "guard_function": "check_no_founder_service_funnel_survives_anywhere",
+   "check_name": "no founder-service funnel survives anywhere",
+   "observed_message_excerpt": "enterprise.html no longer distinguishes the standard from the engine",
+   "category": "COMMERCIAL_PATHWAY_RETIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision: either the guard is updated to the handoff position, or the content is restored. Neither is in scope; the guard file may not be edited here."
+  },
+  {
+   "triage_id": "LG-21",
+   "guard_function": "check_pii_gate_is_identical_everywhere",
+   "check_name": "PII gate identical on every text-input page",
+   "observed_message_excerpt": "pilot.html has no jrsSanitizeCheck",
+   "category": "PUBLIC_PAGE_STRUCTURE",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Edit the named public page(s). Requires the owner's publication approval (CLAUDE.md sections 23 and 26)."
+  },
+  {
+   "triage_id": "LG-22",
+   "guard_function": "check_disclosed_retention_matches_the_policy",
+   "check_name": "disclosed retention matches the policy",
+   "observed_message_excerpt": "security.html does not disclose the 90-day period the policy sets; privacy.html does not disclose the 90-day period the policy sets",
+   "category": "DISCLOSURE_DIVERGENCE",
+   "on_origin_main": "PASS (introduced on this branch by 3758d76)",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on the disclosure wording or the policy value, then a public page edit under publication approval."
+  },
+  {
+   "triage_id": "LG-23",
+   "guard_function": "check_record_derived_fields_have_no_export_path",
+   "check_name": "record-derived fields have no export path",
+   "observed_message_excerpt": "api/engine-activity.js no longer declares an explicit select list",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-24",
+   "guard_function": "check_no_unapproved_outbound_destination",
+   "check_name": "no unapproved outbound destination",
+   "observed_message_excerpt": "tests/engine-candidate/mutation/run-mutations.mjs calls out to 'example.invalid', which is NOT in the approved outbound inventory. Classify it and update the disclosure before this passes.; scripts/test_review_incomplete",
+   "category": "HUMAN_CLASSIFICATION_REQUIRED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "A person classifies each host, as the guard requires by design, and the disclosure is reconciled. Not done automatically."
+  },
+  {
+   "triage_id": "LG-25",
+   "guard_function": "check_manifest_implementation_is_not_deployable",
+   "check_name": "manifest implementation is not deployable",
+   "observed_message_excerpt": "api/_manifest/build.js sits outside every exclusion rule; a copy at a servable path defeats the exclusion; api/_manifest/canonicalize.js sits outside every exclusion rule; a copy at a servable path defeats the exclusion;",
+   "category": "DEPLOYMENT_EXCLUSION",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on deployment configuration (.vercelignore or the api/ layout). Deployment configuration may not be changed here."
+  },
+  {
+   "triage_id": "LG-26",
+   "guard_function": "check_manifest_library_holds_its_refusals",
+   "check_name": "manifest library holds its refusals",
+   "observed_message_excerpt": "the development canonicalization identifier is gone",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-27",
+   "guard_function": "check_manifest_truncation_limit_matches_the_engine",
+   "check_name": "manifest truncation limit matches the engine",
+   "observed_message_excerpt": "lib/manifest/hash.js no longer declares ENGINE_TRUNCATION_LIMIT; the manifest's truncation accounting has lost its anchor",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-28",
+   "guard_function": "check_the_methodology_mapping_tracks_the_executable_vocabulary",
+   "check_name": "the methodology mapping tracks the executable vocabulary",
+   "observed_message_excerpt": "ENGINE_CONDITION_KEYS is no longer declared as a list in lib/manifest/build.js; the mapping has nothing to track",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-29",
+   "guard_function": "check_every_public_table_projection_has_a_recorded_disposition",
+   "check_name": "every public table projection has a recorded disposition",
+   "observed_message_excerpt": "dispositions recorded for tables no page queries any more: bench_ai_verdicts, bench_labels, bench_outcomes, bench_records, engine_reviews, findings, findings_history, interaction_events, studies, study_runs. Stale entrie",
+   "category": "RECORD_DRIFT",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Update the named record under human review, or restore the page. Not in scope."
+  },
+  {
+   "triage_id": "LG-30",
+   "guard_function": "check_architecture_baseline_is_current",
+   "check_name": "architecture baseline is current",
+   "observed_message_excerpt": "engine condition keys moved: baseline ['accountability_support', 'basis_identification', 'cold_reviewer_clarity', 'reasoning_traceability', 'temporal_reconstructability'], code []; truncation limit moved: baseline 8000, ",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-31",
+   "guard_function": "check_version_inventory_matches_its_sources",
+   "check_name": "version inventory matches its sources",
+   "observed_message_excerpt": "cannot read manifest_version from lib/manifest/build.js; the inventory names a source that no longer holds the value; cannot read canonicalization from lib/manifest/canonicalize.js; the inventory names a source that no l",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-32",
+   "guard_function": "check_misuse_register_records_reality",
+   "check_name": "misuse register records reality",
+   "observed_message_excerpt": "M-3 claims human_review.required is hardcoded true; it is not; M-10 records the integrity-is-not-authenticity statement as sitting beside the code that creates the field; it is gone",
+   "category": "RECORD_DRIFT",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Update the named record under human review, or restore the page. Not in scope."
+  },
+  {
+   "triage_id": "LG-33",
+   "guard_function": "check_downstream_records_agree_with_the_blocker_registry",
+   "check_name": "downstream records agree with the blocker registry",
+   "observed_message_excerpt": "research-data.html is missing; it carried blocker state",
+   "category": "RECORD_DRIFT",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Update the named record under human review, or restore the page. Not in scope."
+  },
+  {
+   "triage_id": "LG-34",
+   "guard_function": "check_data_handling_claims_match_the_implementation",
+   "check_name": "data-handling claims match the implementation",
+   "observed_message_excerpt": "api/review-engine.js no longer calls logReview; the corrected retention wording describes storage that may no longer happen, so revisit the claims rather than leaving them; compliant_version is gone from api/review-engin",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-35",
+   "guard_function": "check_published_api_contract_matches_the_write_path",
+   "check_name": "published API contract matches the write path",
+   "observed_message_excerpt": "api/v1/review-engine.js no longer awaits logReview(); the statelessness claims in the published contract may now be true, so B-016 must be re-read rather than left open",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-36",
+   "guard_function": "check_pages_that_render_engine_output_disclose_validation_status",
+   "check_name": "pages rendering engine output disclose validation status",
+   "observed_message_excerpt": "no page calls /api/review; the guard has lost its subject",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "PASS (introduced on this branch by 3758d76)",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  },
+  {
+   "triage_id": "LG-37",
+   "guard_function": "check_public_engine_endpoints_carry_no_record_text",
+   "check_name": "raw record never reaches logReview; derived content still does",
+   "observed_message_excerpt": "api/review.js no longer declares the edge runtime; api/review-engine.js no longer declares the edge runtime; api/v1/review-engine.js no longer declares the edge runtime; api/review-engine.js: logReview not found; api/v1/",
+   "category": "ENGINE_CLOSED_SUBJECT_MOVED",
+   "on_origin_main": "FAIL",
+   "safe_fix_in_scope": false,
+   "required_next_action": "Owner decision on whether each guard is retired, re-pointed or kept failing as a record. Requires a guard-file change, which is outside this assignment."
+  }
+ ],
+ "skipped": [
+  {
+   "guard_function": "check_zero_retention_claim_is_true",
+   "check_name": "zero-retention claim matches the code",
+   "observed_message_excerpt": "no page currently makes the claim"
+  }
+ ],
+ "conclusion": "The guard suite is not green: 37 of 164 checks fail, 1 is skipped. No failure has a safe root-cause fix inside this assignment: each needs a public page edit under publication approval, an API, Manifest or deployment-configuration change, an environment change, a human classification decision, or a guard-file change, all of which are outside scope. No failure was suppressed, relabelled or normalised, and the guard file is unchanged. Two failures were introduced on this branch by 3758d76 and pass on main; they are owner decisions, recorded here, not fixed."
+}

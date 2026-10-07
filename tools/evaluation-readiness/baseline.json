@@ -1,0 +1,53 @@
+{
+ "baseline_version": "jrs-evaluation-readiness-baseline/0.1.0",
+ "recorded": "2026-10-07",
+ "repository": {
+  "branch": "claude/engine-local-candidate-2026-10-06",
+  "start_head": "7205eeab18baa41933a41c65851ab437cb7249e8",
+  "remote_tracking_branch": "origin/claude/engine-local-candidate-2026-10-06",
+  "start_worktree": "clean; level with its remote and with origin/main (97087e9), 0 behind",
+  "draft_pr": { "number": 39, "state": "open", "draft": true, "merged": false }
+ },
+ "frozen_demo": {
+  "corpus_commit": "1717f1bc9725a2635397c66487eb29222f863cd4",
+  "package_commit": "7205eeab18baa41933a41c65851ab437cb7249e8",
+  "status": "DEMO_PREPARATION_COMPLETE_NOT_RELEASED",
+  "verifier": "EXACT_REPLAY_CONFIRMED"
+ },
+ "suites_at_start_head": [
+  { "command": "node tests/frozen-demo/run-all.mjs", "result": "6 suites passed; 36 of 36 mutations caught" },
+  { "command": "node tests/engine-candidate/run-all.mjs", "result": "17 suites passed; 67 of 67 mutations caught" },
+  { "command": "node tests/local-reviewer-workspace/run-all.mjs", "result": "6 suites passed; 28 of 28 mutations caught" },
+  { "command": "node tests/methodology-integrity/run-all.mjs", "result": "7 suites passed; 23 of 23 mutations caught" },
+  { "command": "node tests/claim-provenance/run-all.mjs", "result": "6 suites passed; 12 of 12 insertions and 28 of 28 mutations caught" },
+  { "command": "node tests/release-gate/run-all.mjs", "result": "FAILED: 2 of 5 suites. validator.test.mjs: the record named afd6b44 as the candidate source commit, but 7205eea changed lib/engine-candidate/dev-material.js. Corrected in ccbd55b; after it, 5 suites passed and 34 of 34 mutations caught." },
+  { "command": "node tests/provenance-audit/run-all.mjs", "result": "5 suites passed; 15 of 15 mutations caught" },
+  { "command": "node tests/engine/auth-matrix.mjs", "result": "10 checks, 0 failed" },
+  { "command": "node scripts/test_review_incomplete.mjs", "result": "PASS" },
+  { "command": "node tests/public-route-alignment.mjs", "result": "17 checks, 0 failed" },
+  { "command": "node tests/public-boundary-claims.mjs", "result": "84 public pages, 0 violations" },
+  { "command": "node tests/manifest/run.mjs", "result": "68 checks, 0 failed" },
+  { "command": "python3 scripts/check_zero_drift.py", "result": "NOT GREEN: 164 checks, 37 failed, 1 skipped (stable baseline); see legacy-guard-triage.json" }
+ ],
+ "deployment_exclusion": {
+  "file": ".vercelignore",
+  "rules_relied_on": ["*.md", "tools/", "tests/", "lib/", "research/", ".jrs/", "standard/", "scripts/"],
+  "not_excluded": "JSON or other non-Markdown files under docs/ are served if not otherwise excluded; this package writes none there.",
+  "method": "git -c core.excludesFile=.vercelignore check-ignore --no-index -v on every changed path"
+ },
+ "release_gates": {
+  "record": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+  "statuses": { "RG-1": "BLOCKED", "RG-2": "BLOCKED", "RG-3": "NOT_ASSESSED", "RG-4": "BLOCKED", "RG-5": "BLOCKED" },
+  "conclusion": "INCOMPLETE_GATES_OPEN",
+  "authorizations_created": { "production": false, "licensing": false, "sale": false, "evaluation": false, "real_record_use": false }
+ },
+ "claim_provenance": { "register": "tools/claim-provenance/current-claim-evidence-register.json", "claims": 33, "public_scan": "0 REQUIRES_REPAIR, 0 UNSUPPORTED, 0 AMBIGUOUS" },
+ "conflicts_with_the_brief": [
+  { "id": "CF-01", "brief": "Five conditions named Reconstructability, Identifiable basis, Chronology integrity, Reasoning traceability, Sufficiency.", "repository": "standard/jrs-conditions.json and codebook.html v1.0 name them RC1 Reconstructability, RC2 Basis Identification, RC3 Chronology, RC4 Decision-Process Traceability, RC5 Evidentiary Sufficiency.", "resolution": "The repository names govern. Findings store the condition_id and canonical name; the brief's labels are recorded as assignment labels that resolve to the same five IDs and are never stored in their place." },
+  { "id": "CF-02", "brief": "Map all JRS terminology explicitly to the five conditions.", "repository": "Owner decisions D-2 and D-3 forbid asserting any correspondence between the Engine candidate keys and Codebook conditions without an owner-approved record; none exists.", "resolution": "Human reviewer findings map to the five conditions. Candidate keys are held as Engine output in the comparison workspace with correspondence not asserted, and are refused as condition labels." },
+  { "id": "CF-03", "brief": "Blinded human review under a frozen JRS codebook.", "repository": "Codebook v1.0 (codebook.html) is hash-bound but no owner record freezes it for evaluation, and the page classifies all five conditions as Experimental.", "resolution": "The freeze is recorded as NOT_FROZEN with the owner as authority; intake and interpretation stay closed until it exists." },
+  { "id": "CF-04", "brief": "RG statuses as stated; release conclusion that all gates are open.", "repository": "Matches: RG-1, RG-2, RG-4 and RG-5 BLOCKED; RG-3 NOT_ASSESSED; INCOMPLETE_GATES_OPEN.", "resolution": "No conflict." },
+  { "id": "CF-05", "brief": "The release-gate suite as part of the passing baseline.", "repository": "It failed at 7205eea (stale candidate source commit).", "resolution": "Corrected in ccbd55b before this package; no gate status changed." },
+  { "id": "CF-06", "brief": "Frozen-demo package and its manifest.", "repository": "The frozen-demo manifest field source_commit names 7bfb13e, the branch base when it was built. The candidate module bytes it binds by hash are those of 7205eea (dev-material.js 0.4.0 changed in that commit).", "resolution": "The hash binding is exact; the commit label is imprecise. Recorded here under CLAUDE.md Rule 10 rather than edited inside the frozen package." }
+ ]
+}

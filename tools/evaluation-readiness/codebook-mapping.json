@@ -1,0 +1,94 @@
+{
+ "mapping_version": "jrs-evaluation-codebook-mapping/0.1.0",
+ "package_id": "JRS-EVAL-READINESS-20261007-PR39",
+ "status": "PLANNING_ONLY",
+ "codebook_source": {
+  "source_id": "SRC-CODEBOOK",
+  "path": "codebook.html",
+  "revision": "1.0",
+  "sha256": "f70d1cf403f1c5adae5e02629e4b9e0862331cad257b999accd2bc632994afbb",
+  "condition_list_source": "standard/jrs-conditions.json (DERIVED, NOT PUBLISHED)",
+  "page_status": "The page classifies all five conditions as Experimental.",
+  "freeze_for_evaluation": "NOT_FROZEN",
+  "freeze_record_ref": null,
+  "freeze_authority": "owner"
+ },
+ "conditions": [
+  {
+   "condition_id": "RC1",
+   "ordinal": 1,
+   "canonical_name": "Reconstructability",
+   "assignment_label": "Reconstructability",
+   "test_question": "Can the conclusion be reconstructed from the record?"
+  },
+  {
+   "condition_id": "RC2",
+   "ordinal": 2,
+   "canonical_name": "Basis Identification",
+   "assignment_label": "Identifiable basis",
+   "test_question": "Is the basis for the conclusion identifiable?"
+  },
+  {
+   "condition_id": "RC3",
+   "ordinal": 3,
+   "canonical_name": "Chronology",
+   "assignment_label": "Chronology integrity",
+   "test_question": "Is the chronology understandable?"
+  },
+  {
+   "condition_id": "RC4",
+   "ordinal": 4,
+   "canonical_name": "Decision-Process Traceability",
+   "assignment_label": "Reasoning traceability",
+   "test_question": "Can a future reviewer determine how the conclusion was reached?"
+  },
+  {
+   "condition_id": "RC5",
+   "ordinal": 5,
+   "canonical_name": "Evidentiary Sufficiency",
+   "assignment_label": "Sufficiency",
+   "test_question": "Could a reviewer with no prior knowledge evaluate the evidentiary sufficiency of this record?"
+  }
+ ],
+ "label_rule": "Every stored finding carries a condition_id (RC1 to RC5) and its canonical name. The assignment labels of 2026-10-07 resolve to a condition_id and are never stored in place of it. Any other label, and any candidate key, is refused.",
+ "candidate_keys_not_conditions": {
+  "keys": [
+   "basis_identification",
+   "reasoning_traceability",
+   "cold_reviewer_clarity",
+   "accountability_support",
+   "temporal_reconstructability"
+  ],
+  "correspondence": "not_asserted",
+  "authority": "owner decisions D-2 and D-3 (docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md)",
+  "rule": "A candidate key is Engine output vocabulary. It is held in the comparison workspace as candidate output and is never accepted as a condition_id or a condition label."
+ },
+ "determinations": {
+  "AFFIRMATIVE_DEFECT": "The record contains something that defeats the condition, at a stated location.",
+  "INFORMATION_MISSING": "Something the condition needs is absent from the record. Absence is recorded as absence, not as a defect in what is present.",
+  "NO_DEFECT_OBSERVED": "The reviewer looked, at stated locations, and observed no defect. It is not a finding that the record is sufficient overall.",
+  "INSUFFICIENT_BASIS_TO_ASSESS": "The reviewer cannot assess the condition from the record as supplied, for a stated reason."
+ },
+ "uncertainty_levels": [
+  "stated_low",
+  "stated_moderate",
+  "stated_high",
+  "not_stated"
+ ],
+ "prohibited_inference": [
+  "emotion",
+  "intent",
+  "motive",
+  "payoff",
+  "credibility",
+  "clinical",
+  "legal_conclusion",
+  "compliance_conclusion"
+ ],
+ "scoring": {
+  "drr_score": "NOT_PERMITTED",
+  "agreement_statistics": "NOT_PERMITTED",
+  "drr_classification": "NOT_PERMITTED",
+  "condition": "Not before the codebook, interpretation, calibration and adjudication protocols are each frozen by an owner record and real future evidence exists. No scoring code exists in this package."
+ }
+}
