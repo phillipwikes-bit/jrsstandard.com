@@ -12,7 +12,7 @@ This record is internal engineering documentation. It is not a legal, privacy, s
 | Record date | 2026-10-07 |
 | Record author | Claude Code session on PR #39, prepared for the owner (Phillip Wikes) |
 | Engine version | `0.5.0-local.1` |
-| Candidate source commit | `afd6b44556da3f437d8b713e607e940cdc97d902` |
+| Candidate source commit | `7205eeab18baa41933a41c65851ab437cb7249e8` |
 | Prompt | `candidate-prompt/0.4.0`, sha256 `fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7` |
 | Configuration | Local development candidate; mock adapter only; no deployment configuration exists |
 | Validator / report | `jrs-release-gate-validator/0.1.0` / `jrs-release-gate-report/0.1.0` |
@@ -165,3 +165,4 @@ A class marked "never passes a gate" can describe context but cannot satisfy any
 - Evidence hashes identify repository files at a fixed commit. A matching hash shows the file is unchanged; it does not show the file is true.
 - This record does not compare its gate definitions against the three 3 October source-aligned documents, which were not available; that comparison is pending.
 - A frozen synthetic demonstration package now exists (tools/frozen-demo/, status DEMO_PREPARATION_COMPLETE_NOT_RELEASED, evidence E-009). It is synthetic and mocked, and it does not satisfy the independent holdout, operator-control, counsel, owner-authorization or independent production-QA gates.
+- Candidate source commit corrected on 2026-10-07 from afd6b44 to 7205eea: that commit changed lib/engine-candidate/dev-material.js (0.4.0, registering the five frozen demonstration texts as development material). Candidate behaviour, prompt and versions are unchanged, and no gate status changed.

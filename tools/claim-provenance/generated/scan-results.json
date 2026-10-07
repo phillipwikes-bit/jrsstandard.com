@@ -1,6 +1,6 @@
 {
  "scanner": "jrs-public-claim-scan/0.1.0",
- "claims_digest": "5c6f39f412f2cb78b7199e7afe0dabbaa48b9760774568c0af77045f614a5215",
+ "claims_digest": "4f015e93f6a398567462632cea8bc40e8ef9a01bf35106a74510621ce766e203",
  "scope": {
   "public_pages": 71,
   "public_routes": 65,

@@ -67,7 +67,9 @@ export const EVIDENCE = Object.freeze([
     measures: 'That the review routes in the repository refuse submissions with 503 and make no outbound call.', limitations: ['Tests repository code. That production serves these bytes is a separate check (deploy-verify, CLAUDE.md 36.8).'] },
   // EV-RELEASE-GATE-REPORT re-reviewed 2026-10-07: only the record date, evidence E-009 (the frozen synthetic
   // demonstration corpus) and one limitation line were added; every gate status and the conclusion are unchanged.
-  { id: 'EV-RELEASE-GATE-REPORT', path: 'docs/architecture/CURRENT_RELEASE_GATE_REPORT.md', binding: 'FILE', reviewed_sha256: '17f293f8808d25b625dc7ec2e84fdd8d29c87e8e4481866a32a0bbbeebf48931',
+  // Re-reviewed again 2026-10-07: only the candidate source commit (afd6b44 to 7205eea) and a limitation line recording
+  // that correction changed; every gate status and the conclusion are unchanged.
+  { id: 'EV-RELEASE-GATE-REPORT', path: 'docs/architecture/CURRENT_RELEASE_GATE_REPORT.md', binding: 'FILE', reviewed_sha256: 'ce3a188dbc79fc22f8d2a05d815c7e9f09d42aee53db6ddd361793141db4be20',
     evidence_class: 'REPOSITORY_CONTROL_RECORD', level: 2, version: 'current gate report',
     measures: 'Release-gate status: RG-1 BLOCKED, RG-2 BLOCKED, RG-3 NOT_ASSESSED, RG-4 BLOCKED, RG-5 BLOCKED; INCOMPLETE_GATES_OPEN.', limitations: ['A status record; it opens no gate.'] },
   { id: 'EV-BLOCKER-B013', path: '.jrs/state/BLOCKERS.json', binding: 'LINE', anchor: '"description": "engine_reviews is readable with the PUBLIC publishable key.', reviewed_sha256: '57b1efcef9fad1747a16603ee5a5114d0f870b79db55df62063fa7bac4a90bbf',

@@ -11,7 +11,7 @@
  "record_author": "Claude Code session on PR #39, prepared for the owner (Phillip Wikes)",
  "engine": {
   "engine_version": "0.5.0-local.1",
-  "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+  "candidate_source_commit": "7205eeab18baa41933a41c65851ab437cb7249e8",
   "prompt_version": "candidate-prompt/0.4.0",
   "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7",
   "configuration_identity": "Local development candidate; mock adapter only; no deployment configuration exists"
@@ -131,7 +131,7 @@
    "gate_id": "RG-1",
    "gate_name": "Independent labeling and adjudication of an unused sealed holdout",
    "engine_version": "0.5.0-local.1",
-   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "candidate_source_commit": "7205eeab18baa41933a41c65851ab437cb7249e8",
    "prompt_identity": {
     "prompt_version": "candidate-prompt/0.4.0",
     "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7"
@@ -219,7 +219,7 @@
    "gate_id": "RG-2",
    "gate_name": "Operator-control evidence",
    "engine_version": "0.5.0-local.1",
-   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "candidate_source_commit": "7205eeab18baa41933a41c65851ab437cb7249e8",
    "prompt_identity": null,
    "status": "BLOCKED",
    "status_basis": "No operator-control evidence exists. Retention is computed but not executed (E-005), and open production items B-013, B-015 and B-017 are recorded as not performed or not verified (E-006). Local code review (E-007) is not evidence that a production control operates.",
@@ -323,7 +323,7 @@
    "gate_id": "RG-3",
    "gate_name": "Counsel review",
    "engine_version": "0.5.0-local.1",
-   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "candidate_source_commit": "7205eeab18baa41933a41c65851ab437cb7249e8",
    "prompt_identity": null,
    "status": "NOT_ASSESSED",
    "status_basis": "No counsel disposition exists in the repository on data flows, storage terms, privacy obligations, evaluation claims, licensing claims or rights dependencies.",
@@ -408,7 +408,7 @@
    "gate_id": "RG-4",
    "gate_name": "Recorded owner release authorization",
    "engine_version": "0.5.0-local.1",
-   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "candidate_source_commit": "7205eeab18baa41933a41c65851ab437cb7249e8",
    "prompt_identity": {
     "prompt_version": "candidate-prompt/0.4.0",
     "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7"
@@ -445,7 +445,7 @@
    "gate_id": "RG-5",
    "gate_name": "Independent production QA",
    "engine_version": "0.5.0-local.1",
-   "candidate_source_commit": "afd6b44556da3f437d8b713e607e940cdc97d902",
+   "candidate_source_commit": "7205eeab18baa41933a41c65851ab437cb7249e8",
    "prompt_identity": {
     "prompt_version": "candidate-prompt/0.4.0",
     "prompt_sha256": "fabccb9760c06055c8415c76d12df1e38625bff08c610fdc0c14c0a839d8d8a7"
@@ -486,7 +486,8 @@
   "Every evidence item in this record is constructed, mocked, local or source-reported. None can satisfy a release gate, and none is evidence that a production control operates.",
   "Evidence hashes identify repository files at a fixed commit. A matching hash shows the file is unchanged; it does not show the file is true.",
   "This record does not compare its gate definitions against the three 3 October source-aligned documents, which were not available; that comparison is pending.",
-  "A frozen synthetic demonstration package now exists (tools/frozen-demo/, status DEMO_PREPARATION_COMPLETE_NOT_RELEASED, evidence E-009). It is synthetic and mocked, and it does not satisfy the independent holdout, operator-control, counsel, owner-authorization or independent production-QA gates."
+  "A frozen synthetic demonstration package now exists (tools/frozen-demo/, status DEMO_PREPARATION_COMPLETE_NOT_RELEASED, evidence E-009). It is synthetic and mocked, and it does not satisfy the independent holdout, operator-control, counsel, owner-authorization or independent production-QA gates.",
+  "Candidate source commit corrected on 2026-10-07 from afd6b44 to 7205eea: that commit changed lib/engine-candidate/dev-material.js (0.4.0, registering the five frozen demonstration texts as development material). Candidate behaviour, prompt and versions are unchanged, and no gate status changed."
  ],
  "authorizations_created": {
   "production": false,
