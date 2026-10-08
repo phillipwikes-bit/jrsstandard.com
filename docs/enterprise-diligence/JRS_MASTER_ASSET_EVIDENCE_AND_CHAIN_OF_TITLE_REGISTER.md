@@ -644,3 +644,12 @@ of the record, not evidence that the owner failed to review, direct or accept th
 2. The "sole author" warranty, read alongside any AI assistance in drafting the article (Rule 7; E-029 provenance account).
 3. Retrieve the SCCE & HCCA Publications Author Permissions Policy before any reuse of the article text (SSRN, ARMA, Compliance Today, the website).
 4. A future Compliance Today article is published by the same organisations and may carry the same transfer terms.
+
+### Correction 2026-10-08 to the 2026-10-07 addendum (Rule 10)
+
+| | |
+|---|---|
+| OLD FINDING | "The image is not committed, because the repository is public and the image shows a signature." |
+| NEW EVIDENCE | `research/evidence/scce_copyright_2026-07-21/CEP_Copyright_Transfer_Form_signed_2026-07-21.jpg`, committed `044c7af` on 2026-10-02 on owner instruction. The full article text (`research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md` and `.docx`) has been committed since `36c366c`, 2026-09-21. |
+| CORRECTED STATUS | The signed form is **already in the public repository**, and so is the full text of the article whose copyright it describes as transferred. Blocker **B-019** opened. |
+| EXPLANATION | The 2026-10-07 addendum was written without searching the repository for an existing copy. The 2026-10-07 photo matches the committed form in title, signatory and date; a byte comparison was not made. |
