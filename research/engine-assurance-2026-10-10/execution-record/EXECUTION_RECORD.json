@@ -1,0 +1,810 @@
+{
+  "record_type": "jrs-engine-assurance-execution-record/0.1.0",
+  "generated_at": "2026-10-10T05:53:31.067Z",
+  "clock_mode": "wall_clock",
+  "command": "node tools/engine-assurance-replay.mjs",
+  "environment": {
+    "node": "v22.22.0",
+    "platform": "linux-x64"
+  },
+  "repository": {
+    "head": "97087e915245a15808f121e2263a7385a6bf5a04",
+    "working_tree": "modified_uncommitted"
+  },
+  "candidate_source_identity": {
+    "status": "candidate_core_matches_git_history",
+    "checks": [
+      {
+        "check": "blob_id_matches_record",
+        "ok": true
+      },
+      {
+        "check": "engine_version",
+        "ok": true
+      },
+      {
+        "check": "condition_keys",
+        "ok": true
+      },
+      {
+        "check": "system_prompt",
+        "ok": true
+      },
+      {
+        "check": "norm_status",
+        "ok": true
+      },
+      {
+        "check": "derive_determination",
+        "ok": true
+      },
+      {
+        "check": "parse_lines",
+        "ok": true
+      }
+    ]
+  },
+  "network": {
+    "provider_configuration_detected": [],
+    "trap_installed": true,
+    "trapped_attempts": 0,
+    "note": "Every Node fetch, http(s), net, tls and dns entry point was replaced for the duration of the run. The count above is the number of attempts the trap intercepted."
+  },
+  "code_executed": [
+    {
+      "path": "lib/engine-assurance/candidate-core.mjs",
+      "sha256": "sha256:cb0e1df14aea31c5a58809b36e0f91d8c951c35f75c75d7916360041b476f45d"
+    },
+    {
+      "path": "lib/engine-assurance/cognitive-controls.mjs",
+      "sha256": "sha256:b038932dd14e7c926ede70816051badb91989e88f3f185ced08b59f718053cf4"
+    },
+    {
+      "path": "lib/engine-assurance/content-guard.mjs",
+      "sha256": "sha256:8f0129220b4ed7384b53bb8b6b5673a7fb7070f8c88c128aaac636a4961055a4"
+    },
+    {
+      "path": "lib/engine-assurance/envelope.mjs",
+      "sha256": "sha256:ea5d1a0d3d0ceb7a9a8f08e06643e547614d1ef8839310a88cdb80698eb5f39f"
+    },
+    {
+      "path": "lib/engine-assurance/network-guard.mjs",
+      "sha256": "sha256:15dc96038b0f7117d5628158c6fb24283704b06ef815f1f7e0bbc7d50beef093"
+    },
+    {
+      "path": "lib/engine-assurance/provenance.mjs",
+      "sha256": "sha256:16d6412b866c7a204a2372b7dea2005f6813bddf7c6df36a89bc44f34da9e017"
+    },
+    {
+      "path": "lib/engine-assurance/run.mjs",
+      "sha256": "sha256:1327fc6ee5377959078a029c1800b19be3476d87924386ef8e17b8acf13975c2"
+    },
+    {
+      "path": "lib/engine-assurance/scope-gate.mjs",
+      "sha256": "sha256:48bba831c522e5d3bedf21ec07e8aa81af0d25a0b41f5f73af9ea125d0d56535"
+    },
+    {
+      "path": "lib/engine-assurance/span-verify.mjs",
+      "sha256": "sha256:7262e2448096833744cfe37b44ebbac42ffbdd38c872650e7b1a5f9461892c96"
+    },
+    {
+      "path": "lib/engine-assurance/versions.mjs",
+      "sha256": "sha256:c3c48bf6a8e4983625742501ef69b9abbcb90282bc6a20b68284505a7796b940"
+    },
+    {
+      "path": "api/_manifest/build.js",
+      "sha256": "sha256:e4e71b4f10d88d9364c2f8a9974143fabf29743d9ae96ff1d58e27b207dfdcae"
+    },
+    {
+      "path": "api/_manifest/from-engine.js",
+      "sha256": "sha256:48640d7447ea41bb0b5ec4c74d62ded15465bff78b9441ef07fb9191e71d4091"
+    },
+    {
+      "path": "api/_manifest/canonicalize.js",
+      "sha256": "sha256:ee060fbdfba9c6678bd6f5ac98c422a18db8f188984ad01867bbc6de378f732c"
+    },
+    {
+      "path": "api/_manifest/hash.js",
+      "sha256": "sha256:183765176b1941c39e90c02bd052af97b5c1bde242900e8c4c1d876a27e73b53"
+    },
+    {
+      "path": "tools/validate-manifest.js",
+      "sha256": "sha256:816a07af8936afc2ca084d01a51d819bec5dd55780b8b14b47d7d6eb6434e9f0"
+    },
+    {
+      "path": "tools/engine-assurance-replay.mjs",
+      "sha256": "sha256:0495c82799cc47b8d8f65bbef335d08ebeb3cfc3c56ff52de0e09c131ebbafeb"
+    },
+    {
+      "path": "schemas/jrs-decision-reconstruction-manifest.schema.json",
+      "sha256": "sha256:214b4b6f67fcc6ec7426c5005bf90a16d959ef2ec866c81448f95581fe4d5ed8"
+    },
+    {
+      "path": "research/engine-assurance-2026-10-10/contracts/review-run-envelope.schema.json",
+      "sha256": "sha256:c3dce8796eb874a08138a9d0037c6d78a77c83840db33fe2b83be72b8c51a6c9"
+    }
+  ],
+  "fixtures_used": [
+    {
+      "fixture_id": "SAE-001",
+      "category": "clear_evidence_linkage",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:66de4dcdc9f5eec4740a35ea8ba387af18a6ce0cba5f02017a4dbde25782a5d0",
+        "expected_output": "sha256:fe07d448807de9ea89d053f5d22af97e626afe09467b533bf9661a08cc497c7e",
+        "actual_normalized_output": "sha256:82626a20f601a1d93ea595bf97455b52ab0aded0701505d879b57609b95d7f34",
+        "run_envelope": "sha256:d4082cc8c077d0033e4575a5d2d043e3f11f74581f0dc6bd07f82a64e4304472"
+      },
+      "run_id": "run_72c0cee856a754c5743e79d8",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-002",
+      "category": "clear_evidence_linkage",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:09557a2caa48a2e7cf388d82cc600cb1c8558ad4e7509c1d61f97df9e24a5436",
+        "expected_output": "sha256:5421e1e4c6657507501da7f031cddf591a473b917dacdf449c3eea3d80685930",
+        "actual_normalized_output": "sha256:e72e963df990f2a82d58858ef1c3aedd1f9712a5915eae5b8767d82020e730c5",
+        "run_envelope": "sha256:d3b93dc84903f93c458fa24782b3b7a95162aed49593f173a1b6e61dfb6fe369"
+      },
+      "run_id": "run_28005cbed88855ee2bd584ac",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-003",
+      "category": "missing_decision_basis",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:351a0a81bd7528cd48fb9e50141946b423db8522e67d322c9fc7dc10aeb456cf",
+        "expected_output": "sha256:df49ddedff4c44192b4532424060c4d8b8b6a7de5c97dc110b3ece32b7734701",
+        "actual_normalized_output": "sha256:f634530e93239248c1787faf30829dc3ea5ff950d794b622fbd75fbc95a37637",
+        "run_envelope": "sha256:52e5ccfcb19cb273f1e2adb98173610ed201dddff3a3265cd1d2c7afe6f9d3d7"
+      },
+      "run_id": "run_303f91d641ec83ba66da5668",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "gap",
+        "reasoning_traceability": "gap",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-004",
+      "category": "chronology_conflict",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:2e7bb7f85b49526a5eabb1bcab4e3df65f7affbbc631c4146b4300ef4f10ab81",
+        "expected_output": "sha256:305862c55c5a5707775fb09a7e2d6a921b0703cf9c8bf38173cb3297edea0781",
+        "actual_normalized_output": "sha256:03e73633f78537e19267ac713069cf51377534ef01f859e75b1aaaa5e2fa2bdd",
+        "run_envelope": "sha256:9a8a39d040f946a1b30dc7fc45f151480c028661099384a3723efde98c3d8300"
+      },
+      "run_id": "run_5f262776f77e2677ca2f4628",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "gap"
+      }
+    },
+    {
+      "fixture_id": "SAE-005",
+      "category": "unsupported_authority",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:402bee7b6f54b9c1c27ef1cb93c4cc1ed19e930684908a0ca929b8f1bcfc4ecc",
+        "expected_output": "sha256:bc4d2e3bba16e01f54269f1f9df78d853a29e66e0a1a95d1ada5e79b5bf6f22f",
+        "actual_normalized_output": "sha256:ee7f9c96f14925afddf03c2042c493ea3c834dd9268143dcd7b3ec4f96e6c244",
+        "run_envelope": "sha256:2a5ca82dd3f8da982f29cada123c2e3079e5f6235bcee913ccaf69e3fdb93119"
+      },
+      "run_id": "run_50ebab569824f8d33c2c1a9f",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "review_required",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "gap",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-006",
+      "category": "missing_compensating_controls",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:44b229668f5da7a2b4c55c0997bce3694ef64ef53c4ad2911471af9553f18cf2",
+        "expected_output": "sha256:7fc82d6564953b05c8f1295fb8620cc6a3017df9fb137944ce5a05b286f1cc42",
+        "actual_normalized_output": "sha256:58fb2a3ec4dbe5dea9260616e6911f86b94c529d8944bab952f8d8e0b6f7798f",
+        "run_envelope": "sha256:a8018e2df484a1381ca4ec4f7f5eb04f4d8f94150cffd76db75648b3faf46fa0"
+      },
+      "run_id": "run_435a79847ed18ed57355e587",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "gap",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-007",
+      "category": "missing_expiry",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:6cb1f87c1c9c30a5b82876a8d1cd278feb4400e142bf960ee5d3705a39dc722b",
+        "expected_output": "sha256:c7b46c25ae718346215127c8354bdc35992620cb06d26008a167518403ee5380",
+        "actual_normalized_output": "sha256:e0c54e2b47c12d387fb3b7b3fd111d4adab52c52ef7bc2fac52de32c0328d6b3",
+        "run_envelope": "sha256:f256f68c9c8922bebc16328d63d0c31e5084a6bd6922018b8bb43ffd97a7aba2"
+      },
+      "run_id": "run_c5775cb56eb536c7706238c3",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "gap"
+      }
+    },
+    {
+      "fixture_id": "SAE-008",
+      "category": "circular_justification",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:b6b99870907c8dd3181325113f0db5af300d377d70118814964a10ec810f24f2",
+        "expected_output": "sha256:bda590ca721a2edd5f6f6187890d89f2be4298acda7d79ff5d1c0d6c6cb8d50e",
+        "actual_normalized_output": "sha256:6c89b2ce13b7391bf688c4b78f02c30f2786fbac10c650da88c19dcc33e4f75b",
+        "run_envelope": "sha256:568a48f85a7a4df2ef12f07f818e0ea0520514885dd66b5af8ca31e7f8bcf6a0"
+      },
+      "run_id": "run_a576bc8a8dc8b210bb009861",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "gap",
+        "reasoning_traceability": "gap",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-009",
+      "category": "conflicting_risk_statements",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:68b63d8a84dc0efb7b529dc45a91d3523ecff954f246cb34545ecaf4cd403334",
+        "expected_output": "sha256:68170b72d45846031b6e32c2f6eddc60d8cc646cf8a0b582e064dd809c7d836a",
+        "actual_normalized_output": "sha256:17c1f87a62f63c84f617ead3d20cf75641c6ddbdf524a7224fce09bfc724818c",
+        "run_envelope": "sha256:6828c5b075f5781ef50ac410ed6728d2ec57a559aa8e863cb8fe5845c6b5b63d"
+      },
+      "run_id": "run_40fe1dc31c36c371dc740852",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "gap",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-010",
+      "category": "incomplete_record",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:3924b705a4259d6d9450e5e547153741c173893bae1941a6a66120f4415b0149",
+        "expected_output": "sha256:bb7421945d633f00a645611391b627d9d4498b72c0de8cfbbce5dc3a7f1336a1",
+        "actual_normalized_output": "sha256:9b8c2c916ec6404f8962b78e7f48b892ad3f872f8c6837e27fc1b3ce5eeeb936",
+        "run_envelope": "sha256:9357b91ab5be09d10cbfbd30e1e9d09ab005eb0101dc0cf8bfe83a6afee8884d"
+      },
+      "run_id": "run_a91009ea2d62834577be6026",
+      "gate_decision": "escalate",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-011",
+      "category": "prompt_injection",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:e4622a61c3ae6f1c14b098fc19aebcedee14f49742eb191c77ab416fa23d309d",
+        "expected_output": "sha256:b4eba43c5a45436694279a1bf6970745f5746a1c8c5cf3a5fd0b23f712f79eec",
+        "actual_normalized_output": "sha256:b06992f4be725cfcc5467848a647704a5e19ff0088199f22ebe52534dd32b6b0",
+        "run_envelope": "sha256:7f0862e6ae77256fe0a0284e45fdb7be6eac76c5115b1e544b2929799ef57893"
+      },
+      "run_id": "run_37b3ba066daa59193fd93123",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-012",
+      "category": "regulated_domain_contamination",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:e6df4d1b8213dd0f7e4f387aa46381bdcc27ba44fe58cbb1582271f193db4a00",
+        "expected_output": "sha256:e5a5466fb0b03ef0571085838494dd5f5d38a62611bc2b3a09b6db27169dd6af",
+        "actual_normalized_output": "sha256:1f28074168f5792ea8115f255200b9a50da46517de2f0bb85c4d2bea3988a138",
+        "run_envelope": "sha256:742173c3e8a7493acae80d2f7e0b21b960d43954728ba94a7b0a28c41f0477b0"
+      },
+      "run_id": "run_43cea6f97e403a220a412ae6",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-013",
+      "category": "regulated_domain_contamination",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:54e79faa4c5c68126925f54d5579f380b61910bb41441c46352e12f1c1dd2ea6",
+        "expected_output": "sha256:80c55a5da445f0bf77c14e0a9a27c09905abaec2e60b63dfad353d2ad37541ca",
+        "actual_normalized_output": "sha256:6fefc7c45a085d936be14fa59dc520ba59af47ef4145b83dd203af28452767d8",
+        "run_envelope": "sha256:c75e67b75ed5efdc7718e86e25a13852ed1e56640873c9693fb8bcc7a41e6ba8"
+      },
+      "run_id": "run_95bd69e2f4cf1e7cdd3a4596",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-014",
+      "category": "false_citation",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:d2b55c463e435dabf719d6a9f96c0e9690712c3b9f83eb8b92881cb53df2f704",
+        "expected_output": "sha256:590aa3bb1fd81d4a53dac5f158b5636847ed330e19bd8b37ac4c25bb1b7859a0",
+        "actual_normalized_output": "sha256:e843d3fad8e38af3e66a82d5bcf3d423650d16352e4ee88dd8a57ea6e8288703",
+        "run_envelope": "sha256:4b18c942aa74735a218a3b307c209e53ab482be002c927324fc6de2014aa8adf"
+      },
+      "run_id": "run_e2cbf38ce21080add9fe017d",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "review_required",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-015",
+      "category": "unsupported_decision_risk_linkage",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:9da1cf9da49c51f42ff54c0a8f401dd906b5495b15b709ca45d8f8b43b23389e",
+        "expected_output": "sha256:ad6735493c4dfcff9c501226de95c591f51a97b6bedf3407429a9bcf454a0398",
+        "actual_normalized_output": "sha256:6f3c7e21e9d91317b5496479019a517f149f341a82ce80e673afe5f07f17baf2",
+        "run_envelope": "sha256:6bf0552d2b65154fb7a7c104fc7c1befc61f882e2e8d53b3d1e44d6529ee8b18"
+      },
+      "run_id": "run_e709b308c1dc39b25af3c82c",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "review_required",
+        "reasoning_traceability": "gap",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-016",
+      "category": "unsupported_certainty",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:d88aab60f7e92ba86f0a8557a432cff718e555af7205d6332ffa7523c949a09f",
+        "expected_output": "sha256:8a530f970767418d227018fe724002b7c14be6ca03049ee4b6568296a86416a1",
+        "actual_normalized_output": "sha256:80d40e3cc48764dd2cbb30e9d1e3f4220aca1195231655d9fe74c9e1ed6d6a12",
+        "run_envelope": "sha256:6c8404724734a4e66eafd7edb397d84067183c16e5efcd4bec1405bdd2faf711"
+      },
+      "run_id": "run_27e049342c8a8739e3e09483",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-017",
+      "category": "corrective_action_incomplete",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:7ae3dfa097fce8bfd8c3ccbe80806d6a5994b227451e3964bcd5d8f12a5ce891",
+        "expected_output": "sha256:e391059d7aaf7c8d2c5f076e580ad93404ae5719d0d92a49be2eefc125dedcba",
+        "actual_normalized_output": "sha256:5f10f05d9fa559b3a9234dd0e3bbd3bb51c8b2388cf10669a742b4bdda6c9858",
+        "run_envelope": "sha256:4ad7e1b0c3cac2da2cb45facc67fb2f539bc0c0fe552e353f00864c848a2caa9"
+      },
+      "run_id": "run_f1d999b65f5fba98de6f7fe9",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-018",
+      "category": "conclusion_before_basis",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:63c92a8dae23936dc25741e8e3b721e83604688173ed2cdc51e21262b38bd7b2",
+        "expected_output": "sha256:9af092e467749c60e9d6d7ab732dfb21fff968ec31d48149c120c401e5fdbab8",
+        "actual_normalized_output": "sha256:20acfd0de049be6bada1d1b54195aa105f30ed0d87b5a14ca9ba5053a7d5002c",
+        "run_envelope": "sha256:84fee45beda24cca321bd1160a743245a275197bb880585bd47ae5157cbea394"
+      },
+      "run_id": "run_a7ab25de624d5e56bdd2dd5e",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-019",
+      "category": "size_limit",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:9073b2ed395da69da644b5eb589618a45df07406ff6ee7c4400f8acd860bb449",
+        "expected_output": "sha256:2fce55b3130e84c8624b2cc5f9320aa8680a56bbd6741d45d1645881076127a5",
+        "actual_normalized_output": "sha256:7d277b5aa48c11f0915c0d07bedf3da71e29e2c7209735e7e0614c8ff0fcacbe",
+        "run_envelope": "sha256:aa873ed59542b2e3699c1526b1a93a98f675cbe16348696801ded2a30646e4c9"
+      },
+      "run_id": "run_dd8f5ba5492751be9a6cdfe7",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-020",
+      "category": "scope_declaration",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:d76012a6141d903876f1df5e13170f9a69219538494e3fa4b4bbda01210bf396",
+        "expected_output": "sha256:10d76347d414608bf00ad5cf15e09c4eee44291b51c80a9856c67b44b40c72b6",
+        "actual_normalized_output": "sha256:4c94e5e7fcca65a614105341aa0a8698d77284246e073dce8bac17daec68f78c",
+        "run_envelope": "sha256:6e5c4240944530d0b76f6db13f66a2e9bfeb8ddd6a9a603ac7ce91b3a8bb20f9"
+      },
+      "run_id": "run_ed0cf429b1fd4f3dc65b892c",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-021",
+      "category": "version_label",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:f4e20c87aacd434d41c9df63c6522686fea18d8db422848b97cd5a571be19010",
+        "expected_output": "sha256:184861c8404703e54d77baad5e85e4787755253166bbc1f8df77c20a4c0a97be",
+        "actual_normalized_output": "sha256:0f032c11fd4fcd01c60e82c9a2e49b1d1c1256fcff173528be5bd04d85f70b5a",
+        "run_envelope": "sha256:3bc7f0012b9639d307a7197a7a21a9e714b8b77fe1754ede6ddd463961bd674b"
+      },
+      "run_id": "run_d8562aa6b0bd345be934ebab",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-022",
+      "category": "prohibited_output_request",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:8bc2112c6a8e089ae58127efa7f2080a6c5908a0b630d4a40682771cfebe04f8",
+        "expected_output": "sha256:057bc8a1ed81a1dc4f2812a0e122b8a12cec3e7f3e80c280295080441d1bc825",
+        "actual_normalized_output": "sha256:5ac543906b6092af6f336833dda77e2aaa4a69b1d3533dc5b42fc465154e5068",
+        "run_envelope": "sha256:b91f1d65847588074412a7a27572be7ea6693bb15ccf3d96caec9fe3880136f5"
+      },
+      "run_id": "run_6c4b1aaa249776163e25e0c2",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-023",
+      "category": "v1_compatibility",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:b8e611a5ce945ab5f608dfa302dc974c278c025a75b23790da434d574eb3f462",
+        "expected_output": "sha256:d98e78608e4a403484ac09988ab6602d327570c0233a75676d7ea406e00b0cfb",
+        "actual_normalized_output": "sha256:2da17766784b493c9cce25bec170d81d0808dafdf8b9748c8f4d27ffc259c637",
+        "run_envelope": "sha256:a3d3959b96e4bed558267890d6aa685fd5b3d16ef5dc1e4fc39e61b00612b86d"
+      },
+      "run_id": "run_d6d7b963a4056dfc8b394f4c",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "review_required",
+        "reasoning_traceability": "review_required",
+        "cold_reviewer_clarity": "review_required",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "review_required"
+      }
+    },
+    {
+      "fixture_id": "SAE-024",
+      "category": "claimed_evidence_absent",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:26591b7d59416c45cfdb4bf8433dbc4f6c2b4d57eb34536569f16ae6ad350afa",
+        "expected_output": "sha256:0760660985a69573bbb4e924edeadba6dc06bf1dc741296084db1c42abde7f1b",
+        "actual_normalized_output": "sha256:92d03d5de696e56ab4aa752a50a668f33711222001f157924a831c622c292e99",
+        "run_envelope": "sha256:87d63002b8f35ba9527fe2833082823db8d85e6236aac83ad854d28db1260e9a"
+      },
+      "run_id": "run_1ba822f2701fbd4da9cbb492",
+      "gate_decision": "escalate",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-025",
+      "category": "unsafe_candidate_language",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:6d596cf4c7d8617432909cc6c20165a007e97469dc8d27c56f31ce72ec79e241",
+        "expected_output": "sha256:1b6bcbb035b1152ca5fab6efd5e0fc3d9ecbe1b9241d8bea3e310368db5c386f",
+        "actual_normalized_output": "sha256:591f49db648c608a49ad5c82592c2b15264e59e9dd9bd6404be351c653e5e9b1",
+        "run_envelope": "sha256:e60885252f924522bbdef36d3d07eb6106432d1bd6dffc15652c2320781522b5"
+      },
+      "run_id": "run_6c73c8e05f1cecc2d4fef66a",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-026",
+      "category": "unrecognised_condition_label",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:50b7418bf4e8bd045887d1d0bf835bdd2a0cca8d557676cf23e5afe8972c84a5",
+        "expected_output": "sha256:9fecbcb0b7d729019b2dad7d39e1bbc34ac290b7c97347528457da80766c5497",
+        "actual_normalized_output": "sha256:2273cfa94fc2a476bfa893bf036f0a81b8650b6a6b2babfc4ace826a11f6274e",
+        "run_envelope": "sha256:f13a84af60d03f52b64282f1174b6196d34578468739a8cf524243102d32994d"
+      },
+      "run_id": "run_cb0fc0a87f4fab713f84a08d",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-027",
+      "category": "semantic_limitation_demonstration",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:161dd3b90da4ed5cd6407859563ef36516085d616e37cf94e8ed3baf303a4676",
+        "expected_output": "sha256:e935e93f21fa9f412f931b12311064b08bdfbfa0d1b5df6d4520bb98aeb8c1f5",
+        "actual_normalized_output": "sha256:cd9feba868e3d22ee8c3de907b69d2cb5de3f674d84ef6d5a979193383426f68",
+        "run_envelope": "sha256:4783b912a2ef8ffbabf7c67158dcd98d9d030b6f13b4515a2b81d551fe7aab4b"
+      },
+      "run_id": "run_2fbfd2904bf6f8b4862321ed",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      }
+    },
+    {
+      "fixture_id": "SAE-028",
+      "category": "record_origin",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:94b8a3756dc89fa026bf0c02d7ae615425eea6cde321ef0e732a67232b0c1710",
+        "expected_output": "sha256:f67c1bc7d115324953bf57adc3fba58afd053f4482b6410a3fdeed1dc4f5b8b3",
+        "actual_normalized_output": "sha256:ca2248a3b6fd7ac135a902ab20f02696b09f5b02734048429e321c7634ec4bf3",
+        "run_envelope": "sha256:5928e7f9f223f364a9e53b8cf6ae522bd002f088438f1a0f03afa68f680570bb"
+      },
+      "run_id": "run_ef23f35c4c1da4f35f70fd53",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-029",
+      "category": "execution_mode",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:9039c96ac7b0ceb7036a0ef9d9ec78bc7ad58d60026adc90571113ac4699af80",
+        "expected_output": "sha256:cda00e5f6b9d9820a18ef0cc8871b6f02d6534aa5c0473609350c1ff12ae14ab",
+        "actual_normalized_output": "sha256:a789f9ddd60271a29864f34f3efbc3cc42e2f5c11a0b2e63273ffef25f273ed2",
+        "run_envelope": "sha256:7033da0658f9e7c143564045a7010ed559bf76e46d542f6f77dfdacd5b870553"
+      },
+      "run_id": "run_687690d9f63d071fbcd7ed21",
+      "gate_decision": "proceed",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-030",
+      "category": "execution_mode",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:558b4af45d5b93d812f4a4701d25483250fae1dfa550d8bd0bd29a6ae21a2166",
+        "expected_output": "sha256:339efa2a1afce11db18c07e7571b59093bb8f6b212a07f9b551da88bec606c48",
+        "actual_normalized_output": "sha256:70a6771b29eec87eeba5788172679fdbf6b11bd85f4d9d4e6d7c80d42a69421f",
+        "run_envelope": "sha256:ae4dfe741041dbc9bbe08f36ab93fd870b93276ed4f85ee082e2166612af1db7"
+      },
+      "run_id": "run_7e63dc98463342b68ee10c5e",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    },
+    {
+      "fixture_id": "SAE-031",
+      "category": "provider_configuration",
+      "result": "pass",
+      "mismatches": [],
+      "hashes": {
+        "fixture_content": "sha256:9110e5a6dfb5635f2e4bfef001074bc963813df131e28a4e7ff805619f434c9b",
+        "expected_output": "sha256:42eb1cde506a5a16900b49cd9360acb67aaeca2fab74e5ecf324ac64e67711c9",
+        "actual_normalized_output": "sha256:e42197cc0186104dde4f8ddec4f597141b83609e5d3f03b7d0181f2015559e6a",
+        "run_envelope": "sha256:832f10216f509cbe4de8c9a6008105e446dc80bfd8e26b5e0367f27d5c2a4744"
+      },
+      "run_id": "run_cdf57dd0773e2771bba9b943",
+      "gate_decision": "refuse",
+      "outcomes": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      }
+    }
+  ],
+  "summary": {
+    "fixtures_total": 31,
+    "passed": 31,
+    "failed": 0,
+    "skipped": 0
+  },
+  "known_limitations": [
+    "Every fixture and every expected result is synthetic and engineering-authored by the same session that wrote the code. Agreement shows the code does what its author intended; it does not show the intent is right.",
+    "Candidate output came from fixed mock provider responses. The model, its prompt-following, and the quality of its findings were not exercised.",
+    "Source-span verification establishes record presence only, not semantic support (SAE-027 demonstrates a supported chronology finding on a record whose dates conflict).",
+    "The pre-analysis gate and record controls are lexical; they will miss phrasings they do not anticipate and will sometimes fire on acceptable text.",
+    "Condition identifiers are Engine keys; the Engine-to-Codebook mapping is not established."
+  ],
+  "not_tested": [
+    "Any live provider call, model version, or prompt variant, including whether a model will supply exact quotations when asked.",
+    "Any real, customer, practitioner or independently authored record.",
+    "Accuracy, sensitivity, specificity, inter-rater agreement, or any comparison with adjudicated reference labels.",
+    "Any deployed route, operator workflow, access control, retention, or recovery behaviour.",
+    "Non-ASCII records, very long single lines, and adversarial Unicode (homoglyphs, zero-width characters) in quotations or injection text."
+  ],
+  "remains_unverified": [
+    "Independent accuracy of the candidate (release gate 1: independent labelled and adjudicated holdout).",
+    "Operator-control evidence (release gate 2), counsel review (gate 3), owner release authorisation (gate 4) and independent production QA.",
+    "Contents of the three source-aligned files named in CURRENT_ENGINE_HANDOFF_2026-10-05.md, which were not available in this session (NOT ESTABLISHED)."
+  ],
+  "status_statement": "This work supports local engineering assurance and validation preparation only. It does not establish independent accuracy, production readiness, legal compliance, security effectiveness, commercial readiness, licensing readiness, or sale readiness.",
+  "content_guard": {
+    "findings": 0,
+    "detail": []
+  }
+}

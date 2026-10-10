@@ -1,0 +1,32 @@
+{
+  "response": {
+    "conditions": {
+      "basis_identification": {
+        "status": "pass",
+        "note": "The record addresses this condition."
+      },
+      "reasoning_traceability": {
+        "status": "pass",
+        "note": "The record addresses this condition."
+      },
+      "cold_reviewer_clarity": {
+        "status": "pass",
+        "note": "The record addresses this condition."
+      },
+      "accountability_support": {
+        "status": "pass",
+        "note": "The record addresses this condition."
+      },
+      "temporal_reconstructability": {
+        "status": "pass",
+        "note": "The record addresses this condition."
+      }
+    },
+    "remediation_note": "Record the identified items before finalization.",
+    "finding": {
+      "ai_function": "analysis",
+      "condition_triggered": "see conditions",
+      "compliant_version": "Not used by the assurance layer."
+    }
+  }
+}

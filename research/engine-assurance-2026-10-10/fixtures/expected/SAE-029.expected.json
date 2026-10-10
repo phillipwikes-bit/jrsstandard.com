@@ -1,0 +1,40 @@
+{
+  "expected_format_version": "jrs-assurance-expected/0.1.0",
+  "fixture_id": "SAE-029",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_deterministic",
+  "gate_decision": "proceed",
+  "expected_refusal_codes": [],
+  "conditions": {
+    "basis_identification": {
+      "outcome": "not_assessed",
+      "outcome_basis": "deterministic_mode_not_assessed",
+      "span_quotes": []
+    },
+    "reasoning_traceability": {
+      "outcome": "not_assessed",
+      "outcome_basis": "deterministic_mode_not_assessed",
+      "span_quotes": []
+    },
+    "cold_reviewer_clarity": {
+      "outcome": "not_assessed",
+      "outcome_basis": "deterministic_mode_not_assessed",
+      "span_quotes": []
+    },
+    "accountability_support": {
+      "outcome": "not_assessed",
+      "outcome_basis": "deterministic_mode_not_assessed",
+      "span_quotes": []
+    },
+    "temporal_reconstructability": {
+      "outcome": "not_assessed",
+      "outcome_basis": "deterministic_mode_not_assessed",
+      "span_quotes": []
+    }
+  },
+  "record_controls": [
+    "CC-06:action_missing_owner_and_deadline"
+  ],
+  "manifest_produced": false,
+  "provider_invocations": 0
+}

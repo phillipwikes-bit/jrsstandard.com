@@ -1,0 +1,833 @@
+{
+  "register_version": "0.1.0",
+  "created": "2026-10-10",
+  "fixture_count": 31,
+  "status": "SYNTHETIC ENGINEERING FIXTURES. Not a holdout. Must never be used as, mixed into, or relabelled as independent evaluation material.",
+  "fixtures": [
+    {
+      "fixture_id": "SAE-001",
+      "category": "clear_evidence_linkage",
+      "intended_test_purpose": "Clear evidence linkage: every condition anchored to exact record text",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-001.txt",
+        "request": "requests/SAE-001.request.json",
+        "provider_mock": "provider-mocks/SAE-001.provider.json",
+        "expected": "expected/SAE-001.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-002",
+      "category": "clear_evidence_linkage",
+      "intended_test_purpose": "Clear evidence linkage, second supplier and system",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-002.txt",
+        "request": "requests/SAE-002.request.json",
+        "provider_mock": "provider-mocks/SAE-002.provider.json",
+        "expected": "expected/SAE-002.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-003",
+      "category": "missing_decision_basis",
+      "intended_test_purpose": "Missing decision basis: justification gives no source",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "gap",
+        "reasoning_traceability": "gap",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-003.txt",
+        "request": "requests/SAE-003.request.json",
+        "provider_mock": "provider-mocks/SAE-003.provider.json",
+        "expected": "expected/SAE-003.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-004",
+      "category": "chronology_conflict",
+      "intended_test_purpose": "Chronology conflict: decision dated before the request",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "gap"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-03:date_order_conflict"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-004.txt",
+        "request": "requests/SAE-004.request.json",
+        "provider_mock": "provider-mocks/SAE-004.provider.json",
+        "expected": "expected/SAE-004.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-005",
+      "category": "unsupported_authority",
+      "intended_test_purpose": "Unsupported authority: approval cited without a traceable body or policy",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "review_required",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "gap",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-02:reference_without_identifier"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-005.txt",
+        "request": "requests/SAE-005.request.json",
+        "provider_mock": "provider-mocks/SAE-005.provider.json",
+        "expected": "expected/SAE-005.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-006",
+      "category": "missing_compensating_controls",
+      "intended_test_purpose": "Missing compensating controls",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "gap",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-006.txt",
+        "request": "requests/SAE-006.request.json",
+        "provider_mock": "provider-mocks/SAE-006.provider.json",
+        "expected": "expected/SAE-006.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-007",
+      "category": "missing_expiry",
+      "intended_test_purpose": "Missing expiry or renewal condition",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "gap"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-03:relative_time_without_anchor"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-007.txt",
+        "request": "requests/SAE-007.request.json",
+        "provider_mock": "provider-mocks/SAE-007.provider.json",
+        "expected": "expected/SAE-007.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-008",
+      "category": "circular_justification",
+      "intended_test_purpose": "Vague or circular justification",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "gap",
+        "reasoning_traceability": "gap",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-008.txt",
+        "request": "requests/SAE-008.request.json",
+        "provider_mock": "provider-mocks/SAE-008.provider.json",
+        "expected": "expected/SAE-008.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-009",
+      "category": "conflicting_risk_statements",
+      "intended_test_purpose": "Conflicting risk statements",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "gap",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-05:conflicting_risk_statements"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-009.txt",
+        "request": "requests/SAE-009.request.json",
+        "provider_mock": "provider-mocks/SAE-009.provider.json",
+        "expected": "expected/SAE-009.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-010",
+      "category": "incomplete_record",
+      "intended_test_purpose": "Incomplete record: placeholder in compensating controls",
+      "permitted_scope_status": "in_scope_escalation_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "escalate",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "incomplete_record"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-010.txt",
+        "request": "requests/SAE-010.request.json",
+        "provider_mock": "provider-mocks/SAE-010.provider.json",
+        "expected": "expected/SAE-010.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-011",
+      "category": "prompt_injection",
+      "intended_test_purpose": "Explicit prompt-injection language inside the record",
+      "permitted_scope_status": "out_of_scope_refusal_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "embedded_instruction_detected"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-011.txt",
+        "request": "requests/SAE-011.request.json",
+        "provider_mock": "provider-mocks/SAE-011.provider.json",
+        "expected": "expected/SAE-011.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-012",
+      "category": "regulated_domain_contamination",
+      "intended_test_purpose": "Regulated-domain contamination: employment (disciplinary) content",
+      "permitted_scope_status": "out_of_scope_refusal_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "regulated_domain_content"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-012.txt",
+        "request": "requests/SAE-012.request.json",
+        "provider_mock": "provider-mocks/SAE-012.provider.json",
+        "expected": "expected/SAE-012.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-013",
+      "category": "regulated_domain_contamination",
+      "intended_test_purpose": "Regulated-domain contamination: medical (patient) content",
+      "permitted_scope_status": "out_of_scope_refusal_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "regulated_domain_content"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-013.txt",
+        "request": "requests/SAE-013.request.json",
+        "provider_mock": "provider-mocks/SAE-013.provider.json",
+        "expected": "expected/SAE-013.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-014",
+      "category": "false_citation",
+      "intended_test_purpose": "False citation: candidate quotes text that is not in the record",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "review_required",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [
+        "candidate_citation_not_found"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-014.txt",
+        "request": "requests/SAE-014.request.json",
+        "provider_mock": "provider-mocks/SAE-014.provider.json",
+        "expected": "expected/SAE-014.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-015",
+      "category": "unsupported_decision_risk_linkage",
+      "intended_test_purpose": "Unsupported decision-to-risk linkage",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "review_required",
+        "reasoning_traceability": "gap",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-04:absolute_or_certainty_term"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-015.txt",
+        "request": "requests/SAE-015.request.json",
+        "provider_mock": "provider-mocks/SAE-015.provider.json",
+        "expected": "expected/SAE-015.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-016",
+      "category": "unsupported_certainty",
+      "intended_test_purpose": "Unsupported certainty language",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-04:absolute_or_certainty_term"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-016.txt",
+        "request": "requests/SAE-016.request.json",
+        "provider_mock": "provider-mocks/SAE-016.provider.json",
+        "expected": "expected/SAE-016.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-017",
+      "category": "corrective_action_incomplete",
+      "intended_test_purpose": "Corrective action without owner or deadline",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-06:action_missing_owner_and_deadline"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-017.txt",
+        "request": "requests/SAE-017.request.json",
+        "provider_mock": "provider-mocks/SAE-017.provider.json",
+        "expected": "expected/SAE-017.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-018",
+      "category": "conclusion_before_basis",
+      "intended_test_purpose": "Conclusion stated before the supporting basis (record control)",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-01:conclusion_precedes_basis"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-018.txt",
+        "request": "requests/SAE-018.request.json",
+        "provider_mock": "provider-mocks/SAE-018.provider.json",
+        "expected": "expected/SAE-018.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-019",
+      "category": "size_limit",
+      "intended_test_purpose": "Record exceeds the documented local size limit",
+      "permitted_scope_status": "out_of_scope_refusal_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "record_exceeds_local_size_limit"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-019.txt",
+        "request": "requests/SAE-019.request.json",
+        "provider_mock": "provider-mocks/SAE-019.provider.json",
+        "expected": "expected/SAE-019.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-020",
+      "category": "scope_declaration",
+      "intended_test_purpose": "Missing scope declaration",
+      "permitted_scope_status": "out_of_scope_refusal_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "missing_scope_declaration"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-020.txt",
+        "request": "requests/SAE-020.request.json",
+        "provider_mock": "provider-mocks/SAE-020.provider.json",
+        "expected": "expected/SAE-020.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-021",
+      "category": "version_label",
+      "intended_test_purpose": "Unsupported Engine version label",
+      "permitted_scope_status": "out_of_scope_refusal_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "unsupported_version_label"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-021.txt",
+        "request": "requests/SAE-021.request.json",
+        "provider_mock": "provider-mocks/SAE-021.provider.json",
+        "expected": "expected/SAE-021.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-022",
+      "category": "prohibited_output_request",
+      "intended_test_purpose": "Request for an overall pass and a compliance certification",
+      "permitted_scope_status": "out_of_scope_refusal_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "prohibited_output_requested"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-022.txt",
+        "request": "requests/SAE-022.request.json",
+        "provider_mock": "provider-mocks/SAE-022.provider.json",
+        "expected": "expected/SAE-022.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-023",
+      "category": "v1_compatibility",
+      "intended_test_purpose": "Existing v1 output shape (no quotations): favourable statuses must not survive",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "review_required",
+        "reasoning_traceability": "review_required",
+        "cold_reviewer_clarity": "review_required",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "review_required"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-023.txt",
+        "request": "requests/SAE-023.request.json",
+        "provider_mock": "provider-mocks/SAE-023.provider.json",
+        "expected": "expected/SAE-023.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-024",
+      "category": "claimed_evidence_absent",
+      "intended_test_purpose": "Claimed evidence that cannot be found in the record",
+      "permitted_scope_status": "in_scope_escalation_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "escalate",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "claimed_evidence_not_found"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-024.txt",
+        "request": "requests/SAE-024.request.json",
+        "provider_mock": "provider-mocks/SAE-024.provider.json",
+        "expected": "expected/SAE-024.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-025",
+      "category": "unsafe_candidate_language",
+      "intended_test_purpose": "Candidate note asserts compliance and certification",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "review_required",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [
+        "unsafe_language_in_candidate_note"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-025.txt",
+        "request": "requests/SAE-025.request.json",
+        "provider_mock": "provider-mocks/SAE-025.provider.json",
+        "expected": "expected/SAE-025.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-026",
+      "category": "unrecognised_condition_label",
+      "intended_test_purpose": "Candidate returns an unrecognised condition label",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "candidate_output_invalid"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-026.txt",
+        "request": "requests/SAE-026.request.json",
+        "provider_mock": "provider-mocks/SAE-026.provider.json",
+        "expected": "expected/SAE-026.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-027",
+      "category": "semantic_limitation_demonstration",
+      "intended_test_purpose": "Span presence is not semantic support: candidate marks a conflicting chronology as pass",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "supported",
+        "reasoning_traceability": "supported",
+        "cold_reviewer_clarity": "supported",
+        "accountability_support": "supported",
+        "temporal_reconstructability": "supported"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-03:date_order_conflict"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-027.txt",
+        "request": "requests/SAE-027.request.json",
+        "provider_mock": "provider-mocks/SAE-027.provider.json",
+        "expected": "expected/SAE-027.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-028",
+      "category": "record_origin",
+      "intended_test_purpose": "Declared non-synthetic (customer) record origin",
+      "permitted_scope_status": "out_of_scope_refusal_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "non_synthetic_record_not_authorized"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-028.txt",
+        "request": "requests/SAE-028.request.json",
+        "provider_mock": "provider-mocks/SAE-028.provider.json",
+        "expected": "expected/SAE-028.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-029",
+      "category": "execution_mode",
+      "intended_test_purpose": "local_deterministic run: gate and record controls only",
+      "permitted_scope_status": "in_scope",
+      "execution_mode": "local_deterministic",
+      "expected_gate_decision": "proceed",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [],
+      "expected_record_controls": [
+        "CC-06:action_missing_owner_and_deadline"
+      ],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-029.txt",
+        "request": "requests/SAE-029.request.json",
+        "provider_mock": null,
+        "expected": "expected/SAE-029.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-030",
+      "category": "execution_mode",
+      "intended_test_purpose": "Unauthorized execution mode requested (external provider)",
+      "permitted_scope_status": "execution_boundary",
+      "execution_mode": "external_not_authorized",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "execution_mode_not_authorized"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-030.txt",
+        "request": "requests/SAE-030.request.json",
+        "provider_mock": "provider-mocks/SAE-030.provider.json",
+        "expected": "expected/SAE-030.expected.json"
+      }
+    },
+    {
+      "fixture_id": "SAE-031",
+      "category": "provider_configuration",
+      "intended_test_purpose": "Request carries a network-capable provider configuration",
+      "permitted_scope_status": "out_of_scope_refusal_expected",
+      "execution_mode": "local_mocked",
+      "expected_gate_decision": "refuse",
+      "expected_result_by_condition": {
+        "basis_identification": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "cold_reviewer_clarity": "not_assessed",
+        "accountability_support": "not_assessed",
+        "temporal_reconstructability": "not_assessed"
+      },
+      "expected_refusal_or_escalation": [
+        "provider_configuration_not_authorized"
+      ],
+      "expected_record_controls": [],
+      "authoring_source": "Engineering-authored in a Claude Code session on 2026-10-10 for the JRS Engine Assurance Package; reviewed by no one else.",
+      "synthetic_statement": "Synthetic and engineering-authored. Not independent, real-world, buyer, practitioner, or holdout evidence.",
+      "files": {
+        "record": "records/SAE-031.txt",
+        "request": "requests/SAE-031.request.json",
+        "provider_mock": "provider-mocks/SAE-031.provider.json",
+        "expected": "expected/SAE-031.expected.json"
+      }
+    }
+  ]
+}

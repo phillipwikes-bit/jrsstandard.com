@@ -1,0 +1,47 @@
+{
+  "response": {
+    "conditions": {
+      "basis_identification": {
+        "status": "review",
+        "note": "The basis names a certificate but no assessment of this access.",
+        "evidence": [
+          "Decision basis: Because the supplier holds an ISO 27001 certificate, the access poses no risk to the reporting data."
+        ]
+      },
+      "reasoning_traceability": {
+        "status": "gap",
+        "note": "A supplier certificate is linked to the risk of this access without explanation.",
+        "evidence": [
+          "Decision basis: Because the supplier holds an ISO 27001 certificate, the access poses no risk to the reporting data."
+        ]
+      },
+      "cold_reviewer_clarity": {
+        "status": "pass",
+        "note": "The access requested is described specifically.",
+        "evidence": [
+          "Access requested: Read-only access to the shipment tracking reports in the logistics portal (LOG-RPT-04)."
+        ]
+      },
+      "accountability_support": {
+        "status": "pass",
+        "note": "Compensating controls are listed with their source.",
+        "evidence": [
+          "Compensating controls: Access is limited to the LOG-RPT-04 report view"
+        ]
+      },
+      "temporal_reconstructability": {
+        "status": "pass",
+        "note": "The chronology lists dated steps.",
+        "evidence": [
+          "Chronology: 2026-03-02 request received; 2026-03-05 risk assessment RA-2026-0311 completed; 2026-03-09 board decision recorded."
+        ]
+      }
+    },
+    "remediation_note": "Record the identified items before finalization.",
+    "finding": {
+      "ai_function": "analysis",
+      "condition_triggered": "see conditions",
+      "compliant_version": "Not used by the assurance layer."
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "fixture_format_version": "jrs-assurance-fixture/0.1.0",
+  "fixture_id": "SAE-020",
+  "declared_versions": {
+    "engine_version": "0.1.0-validation",
+    "codebook_version": "1.0",
+    "schema_version": "jrs-review-run-envelope/0.1.0"
+  },
+  "requested_outputs": [
+    "condition_findings",
+    "record_controls",
+    "manifest_reference"
+  ],
+  "provider": {
+    "mode": "mocked"
+  },
+  "execution_mode": "local_mocked",
+  "record_file": "records/SAE-020.txt",
+  "provider_response_file": "provider-mocks/SAE-020.provider.json"
+}

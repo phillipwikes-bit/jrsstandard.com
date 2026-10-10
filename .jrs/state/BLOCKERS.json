@@ -425,6 +425,28 @@
       "note": "WHAT IS ESTABLISHED AND WHAT IS NOT. ESTABLISHED FROM REPOSITORY EVIDENCE: the promise, the grant, and the published export link all exist and contradict each other. NOT ESTABLISHED: whether any response rows exist and are actually retrievable by an anonymous caller. A direct read of the production table was attempted and correctly DENIED by the execution environment's production-read control, so the live row count is PRODUCTION VERIFICATION REQUIRED and is not inferred. The remediation does not depend on the count: a privacy promise contradicted by a grant is a defect whether or not anyone has yet typed into the box. SCOPE NOTE, so this is not over-read: interaction_events was examined in the same pass and is a WEAKER case, not this one. Its collecting pages promise 'No free text and no identifying information are collected' and 'aggregated without individual attribution', and select=* over a payload jsonb is consistent with that promise. The enforcement of 'no free text' lives in the client code that builds the payload rather than in the schema, which is a separate and lesser matter recorded as X-1 rather than folded in here.",
       "next_action_by": "OWNER",
       "next_action_basis": "The anon SELECT grant on public.finding_responses must be revoked in the production console. Nothing here can perform or verify it."
+    },
+    {
+      "blocker_id": "B-018",
+      "severity": "MEDIUM",
+      "category": "EVIDENCE",
+      "description": "The three source-aligned files the 2026-10-10 Engine assurance assignment names as controlling (project_sources/01-01_JRS_Master_Asset_Register_Source_Aligned_2026-10-03.md, 02-02_JRS_Evidence_Ledger_Source_Aligned_2026-10-03.md, 03-03_JRS_Master_Architectural_Blueprint_Aligned_2026-10-03.txt) are not present in the repository or anywhere on the session filesystem, and no commit has ever contained them. docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md records them as supplied outside the repository, with SHA-256 values, under filenames prefixed 01_, 02_, 03_ rather than 01-01_, 02-02_, 03-03_. The Engine assurance package was built as local engineering under the handoff's Allowed-work list; no release status, public claim, rights or deployment matter was decided. Any statement that would depend on the Evidence Ledger's dated supplement is NOT ESTABLISHED.",
+      "evidence_refs": [
+        "find / -iname '*Source_Aligned*' returned nothing (2026-10-10)",
+        "git log --all --name-only shows no such path",
+        "docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md, 'Source-aligned materials' table",
+        "research/engine-assurance-2026-10-10/REPOSITORY_AND_CONTRACT_AUDIT.md section 0"
+      ],
+      "affected_assets": [
+        "research/engine-assurance-2026-10-10/"
+      ],
+      "required_action": "Owner supplies the three files (verified against the recorded SHA-256 values) so the assurance package can be reconciled with the dated Evidence Ledger supplement, and confirms which filename set is correct.",
+      "owner": "Phillip Wikes",
+      "status": "OPEN",
+      "created": "2026-10-10",
+      "note": "Not a CRITICAL blocker for local, mocked, synthetic work; it blocks any use of the package as evidence for release status or public claims.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Files are held outside the repository."
     }
   ],
   "_decisions_recorded_2026_09_15": {
