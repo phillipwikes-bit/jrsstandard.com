@@ -1,0 +1,13 @@
+{
+ "_note": "Divergences between source-prep.js and the confirmation corpus expectations (759ea86). Recorded as found after the single post-fix run on 2026-10-06 against source-prep/0.3.0: none. Not tuned on this set. Limit: the same author wrote these cases and the source-prep/0.3.0 rules, so a full match shows the rules behave as designed on constructed cases, not that they generalise.",
+ "source_prep_version": "source-prep/0.3.0",
+ "divergences": {},
+ "separation_findings": [
+  {
+   "date": "2026-10-06",
+   "finding": "K21 reuses, almost word for word, the inline-attachment sentence of regression case R21 ('See attached risk note, reproduced here: ...'). The contamination screen (contamination-screen/0.1.0) flags it as a possible match: 11 shared distinctive shingles, 15% of K21's and 69% of R21's distinctive wording.",
+   "consequence": "For the inline-attachment category, K21 is not independent of the case the rule was fixed on. The other six attachment cases (K22 to K27) do not match any earlier text.",
+   "action": "Recorded, not edited: the corpus was committed before the fix and is not changed afterwards. Pinned by tests/engine-candidate/confirmation-separation.test.mjs, which fails if any other overlap appears."
+  }
+ ]
+}

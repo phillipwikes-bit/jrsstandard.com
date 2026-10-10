@@ -1,0 +1,70 @@
+{
+ "receipt_version": "jrs-source-integrity-receipt/0.1.0",
+ "package_id": "JRS-SOURCE-ALIGNMENT-20261007-PR39",
+ "date_imported": "2026-10-07",
+ "base_commit": "1d5c3a72bb922aecb95e3b4da4d28aade2b3da55",
+ "importing_commit": "The commit that adds this receipt. It is read from git history (git log --diff-filter=A on this file) rather than written here, because a commit cannot name itself.",
+ "classification": "NOT PUBLIC / NOT DEPLOYMENT INPUT / NOT COMMITTED",
+ "owner_direction": {
+  "date": "2026-10-07",
+  "summary": "The repository is public on GitHub. The three source files stay local and untracked, used only during the session that holds them. The repository records only SHA-256 hashes, byte sizes, titles and dates, non-sensitive line locators, control classifications, reconciliation results and minimal paraphrases needed to describe scope, gate and control requirements. No quotation or reproduction of correspondence, commercial strategy, journal material, credentials, keys or other sensitive content. The verifier checks the local files when present and fails closed when they are absent or their hashes differ.",
+  "effect_on_brief": "Replaces the brief's committed byte-identical copy under tools/source-alignment/controlled-sources/ and its exact-quotation requirement. Locators are made reproducible by the SHA-256 of each cited line instead of a quotation."
+ },
+ "delivery": {
+  "archive_name": "JRS_October_3_Source_Aligned_Control_Set.zip",
+  "archive_sha256": "d4ad0ded77671ec4695a454ad17615c0d6ce0d88a4164ccb133686744f053317",
+  "archive_bytes": 64302,
+  "archive_checksum_file": "SHA256SUMS.txt inside the archive lists the same three digests as below.",
+  "extraction": "Files extracted unchanged into project_sources/ at the repository root, which is excluded from git locally (.git/info/exclude) and is never committed."
+ },
+ "sources": [
+  {
+   "source_id": "S01",
+   "title": "JRS Master Asset Register: Current Source Revision, with the harmonization update of 3 October 2026",
+   "source_date": "2026-10-03 (harmonization supplement); 2026-10-01 documentary baseline",
+   "original_workspace_path": "project_sources/01_JRS_Master_Asset_Register_Source_Aligned_2026-10-03.md",
+   "controlled_location": "project_sources/01_JRS_Master_Asset_Register_Source_Aligned_2026-10-03.md (local, untracked)",
+   "sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "bytes": 64866,
+   "lines": 748,
+   "handoff_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "byte_identical": true,
+   "controlling_lines": [1, 109],
+   "historical_lines": [110, 748]
+  },
+  {
+   "source_id": "S02",
+   "title": "JRS Evidence Ledger: Current Source Revision, with the harmonization update of 3 October 2026",
+   "source_date": "2026-10-03 (harmonization supplement); 2026-10-01 documentary baseline",
+   "original_workspace_path": "project_sources/02_JRS_Evidence_Ledger_Source_Aligned_2026-10-03.md",
+   "controlled_location": "project_sources/02_JRS_Evidence_Ledger_Source_Aligned_2026-10-03.md (local, untracked)",
+   "sha256": "57e2ec50fc431381b65048f978175e779481bb174993448cd1b475a218dad0e0",
+   "bytes": 42784,
+   "lines": 190,
+   "handoff_sha256": "57e2ec50fc431381b65048f978175e779481bb174993448cd1b475a218dad0e0",
+   "byte_identical": true,
+   "controlling_lines": [1, 111],
+   "historical_lines": [112, 190]
+  },
+  {
+   "source_id": "S03",
+   "title": "JRS Master Architectural Blueprint: Current Source Revision, with the harmonization update of 3 October 2026",
+   "source_date": "2026-10-03 (harmonization supplement and controlling architectural amendments); historical blueprint and dated addenda retained",
+   "original_workspace_path": "project_sources/03_JRS_Master_Architectural_Blueprint_Aligned_2026-10-03.txt",
+   "controlled_location": "project_sources/03_JRS_Master_Architectural_Blueprint_Aligned_2026-10-03.txt (local, untracked)",
+   "sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "bytes": 66723,
+   "lines": 2057,
+   "handoff_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "byte_identical": true,
+   "controlling_lines": [1, 119],
+   "historical_lines": [120, 2057]
+  }
+ ],
+ "repository_sources": [
+  { "source_id": "H05", "title": "Current Engine handoff, 5 October 2026", "path": "docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md", "sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5", "note": "Committed and already public; governs where consistent with S01 to S03." },
+  { "source_id": "D2", "title": "Owner decision D-2 memo", "path": "docs/enterprise-diligence/D-2_CODEBOOK_CORRESPONDENCE_MEMO.md", "sha256": "31d794afa3b62faccb60ddcabb3ae0f3c22443af38804a069d0de6419bc70ed3", "note": "Owner decision preserved in the repository." },
+  { "source_id": "D3", "title": "Codebook and API correspondence review (owner decisions D-2 and D-3)", "path": "docs/enterprise-diligence/CODEBOOK_API_CORRESPONDENCE_REVIEW.md", "sha256": "963275e9a44a28f62e345b7db21bfd548e115fec0b006d5586629b50a9949358", "note": "Owner decision preserved in the repository." }
+ ],
+ "statement": "Each local file is byte-identical to the file delivered in the archive, and its SHA-256 equals the value recorded in the 5 October handoff. A matching hash shows the file is the one named; it does not show that its contents are true, and it validates nothing."
+}

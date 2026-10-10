@@ -1,0 +1,120 @@
+{
+ "record_id": "CR-002",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "scenario": "missing evidence: the record relies on an attachment it does not contain",
+ "provenance": "Fictional. Written by Claude Code (an AI) on 2026-10-06 as constructed development data for the local Review Engine candidate. No real supplier, person, organisation or record is described or was used.",
+ "development_only": "DEVELOPMENT DATA ONLY. This record and its expected findings were written to develop and test the candidate. It may never enter a sealed holdout, an evaluation of real-world performance, or any validation claim.",
+ "profile": {
+  "record_type": "supplier_access_exception",
+  "completion_status": "completed",
+  "hr_related": false
+ },
+ "text": "CONSTRUCTED DEVELOPMENT RECORD CR-002. Fictional. Not a real record.\nOn 6 April 2026 Ashby Coatings requested access to the batch-testing dashboard. The access standard requires evidence of a current data-protection review. The approval note states that the review is current, see attached certificate. The exception was approved on 7 April 2026 by the quality manager because testing could not start without it. Access ends on 30 April 2026.",
+ "mock_responses": [
+  {
+   "variant_id": "A",
+   "response": {
+    "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+    "model_id": "mock-deterministic",
+    "model_version": "corpus-0.1.0",
+    "prompt_version": "candidate-prompt/0.3.0",
+    "completion": "complete",
+    "conditions": {
+     "basis_identification": {
+      "status": "review",
+      "explanation_id": "missing_identifiable_basis",
+      "note": "The basis is a certificate the reader cannot see.",
+      "uncertain": false
+     },
+     "reasoning_traceability": {
+      "status": "pass",
+      "explanation_id": "missing_logical_bridge",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "cold_reviewer_clarity": {
+      "status": "pass",
+      "explanation_id": "cold_reviewer_clarity",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "accountability_support": {
+      "status": "gap",
+      "explanation_id": "insufficient_evidence",
+      "note": "The record relies on a certificate that is not part of the record.",
+      "uncertain": false
+     },
+     "temporal_reconstructability": {
+      "status": "pass",
+      "explanation_id": "chronology_gap",
+      "note": "The record states this.",
+      "uncertain": false
+     }
+    },
+    "findings": [
+     {
+      "type": "extraction_omission",
+      "quotation": "see attached certificate",
+      "explanation_id": "extraction_omission",
+      "note": "The certificate the record relies on is not in the record.",
+      "uncertain": false
+     }
+    ],
+    "revision_needed": null
+   }
+  },
+  {
+   "variant_id": "B",
+   "response": {
+    "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+    "model_id": "mock-deterministic",
+    "model_version": "corpus-0.1.0",
+    "prompt_version": "candidate-prompt/0.3.0",
+    "completion": "complete",
+    "conditions": {
+     "basis_identification": {
+      "status": "review",
+      "explanation_id": "missing_identifiable_basis",
+      "note": "The basis is a certificate the reader cannot see.",
+      "uncertain": false
+     },
+     "reasoning_traceability": {
+      "status": "pass",
+      "explanation_id": "missing_logical_bridge",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "cold_reviewer_clarity": {
+      "status": "pass",
+      "explanation_id": "cold_reviewer_clarity",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "accountability_support": {
+      "status": "review",
+      "explanation_id": "insufficient_evidence",
+      "note": "The record relies on a certificate that is not part of the record.",
+      "uncertain": false
+     },
+     "temporal_reconstructability": {
+      "status": "pass",
+      "explanation_id": "chronology_gap",
+      "note": "The record states this.",
+      "uncertain": false
+     }
+    },
+    "findings": [
+     {
+      "type": "extraction_omission",
+      "quotation": "see attached certificate",
+      "explanation_id": "extraction_omission",
+      "note": "The certificate the record relies on is not in the record.",
+      "uncertain": false
+     }
+    ],
+    "revision_needed": null
+   }
+  }
+ ]
+}

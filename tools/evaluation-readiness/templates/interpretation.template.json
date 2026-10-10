@@ -1,0 +1,16 @@
+{
+ "template": "jrs-evaluation-human-interpretation/0.1.0",
+ "notice": "BLANK TEMPLATE for one reviewer, one condition, one determination. Locations only, never record text. Completed blind to candidate output.",
+ "kind": "HUMAN_INTERPRETATION",
+ "item_id": null,
+ "author": { "kind": "human", "role": "independent_reviewer", "token": null },
+ "condition_id": null,
+ "determination": null,
+ "uncertainty": null,
+ "location_refs": [],
+ "missing_element": null,
+ "reason": null,
+ "note": null,
+ "blind_to_candidate_output": null,
+ "interpretation_version": null
+}

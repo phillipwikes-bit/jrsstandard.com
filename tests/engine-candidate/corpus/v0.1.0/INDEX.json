@@ -1,0 +1,27 @@
+{
+ "corpus": "jrs-candidate-constructed-corpus",
+ "corpus_version": "0.1.0",
+ "written": "2026-10-06",
+ "records": [
+  "CR-001",
+  "CR-002",
+  "CR-003",
+  "CR-004",
+  "CR-005",
+  "CR-006",
+  "CR-007",
+  "CR-008",
+  "CR-009",
+  "CR-010",
+  "CR-011",
+  "CR-012",
+  "CR-013",
+  "CR-014",
+  "CR-015"
+ ],
+ "development_only": "DEVELOPMENT DATA ONLY. This record and its expected findings were written to develop and test the candidate. It may never enter a sealed holdout, an evaluation of real-world performance, or any validation claim.",
+ "provenance": "Fictional. Written by Claude Code (an AI) on 2026-10-06 as constructed development data for the local Review Engine candidate. No real supplier, person, organisation or record is described or was used.",
+ "separation": "Separate from tests/engine-candidate/fixtures/ and tests/engine-candidate/regression/, and from any future holdout. Every record is listed in lib/engine-candidate/dev-material.js.",
+ "what_it_tests": "Software behaviour of the local candidate given scripted mock-model responses. It does not test any real model, and its results are not evidence of accuracy, reliability or validity.",
+ "pre_registration": "Expected findings were committed before the evaluation runner, the adapter boundary and the consistency harness were written. Mismatches are failures; expected files are not edited to match results."
+}

@@ -1,0 +1,7 @@
+SYNTHETIC CONSTRUCTED RECORD. Fictional supplier and people. Not a real record.
+
+Supplier-access exception, completed draft. Reference SAE-SYN-0003.
+
+On 9 June 2026 Halden Logistics requested access to the shipment-tracking console. The access standard requires a signed data-handling agreement. As discussed on the call, the agreement will follow.
+The approver wrote: "Low risk,   approved." Approved on 10 June 2026. See attached risk note.
+Access ends on 30 June 2026. The supplier is “clearly a trusted partner” according to the request. Contact: [TBD].

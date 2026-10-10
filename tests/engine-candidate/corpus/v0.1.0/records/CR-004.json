@@ -1,0 +1,120 @@
+{
+ "record_id": "CR-004",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "scenario": "unsupported conclusion: no-risk statement with no evidence in the record",
+ "provenance": "Fictional. Written by Claude Code (an AI) on 2026-10-06 as constructed development data for the local Review Engine candidate. No real supplier, person, organisation or record is described or was used.",
+ "development_only": "DEVELOPMENT DATA ONLY. This record and its expected findings were written to develop and test the candidate. It may never enter a sealed holdout, an evaluation of real-world performance, or any validation claim.",
+ "profile": {
+  "record_type": "supplier_access_exception",
+  "completion_status": "completed",
+  "hr_related": false
+ },
+ "text": "CONSTRUCTED DEVELOPMENT RECORD CR-004. Fictional. Not a real record.\nOn 15 June 2026 Fenwick Data Services requested access to the supplier-invoice archive. The access policy requires a completed security questionnaire. No questionnaire was submitted. The exception was approved on 16 June 2026 by the finance lead because Fenwick presents no security risk to the archive. Access ends on 30 June 2026.",
+ "mock_responses": [
+  {
+   "variant_id": "A",
+   "response": {
+    "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+    "model_id": "mock-deterministic",
+    "model_version": "corpus-0.1.0",
+    "prompt_version": "candidate-prompt/0.3.0",
+    "completion": "complete",
+    "conditions": {
+     "basis_identification": {
+      "status": "gap",
+      "explanation_id": "missing_identifiable_basis",
+      "note": "The no-risk statement is the only basis and nothing in the record shows it.",
+      "uncertain": false
+     },
+     "reasoning_traceability": {
+      "status": "pass",
+      "explanation_id": "missing_logical_bridge",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "cold_reviewer_clarity": {
+      "status": "pass",
+      "explanation_id": "cold_reviewer_clarity",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "accountability_support": {
+      "status": "gap",
+      "explanation_id": "insufficient_evidence",
+      "note": "No questionnaire or other evidence is recorded.",
+      "uncertain": false
+     },
+     "temporal_reconstructability": {
+      "status": "pass",
+      "explanation_id": "chronology_gap",
+      "note": "The record states this.",
+      "uncertain": false
+     }
+    },
+    "findings": [
+     {
+      "type": "evidentiary_overreach",
+      "quotation": "Fenwick presents no security risk to the archive",
+      "explanation_id": "unsupported_conclusion",
+      "note": "The record asserts there is no risk but records nothing that shows it.",
+      "uncertain": false
+     }
+    ],
+    "revision_needed": null
+   }
+  },
+  {
+   "variant_id": "B",
+   "response": {
+    "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+    "model_id": "mock-deterministic",
+    "model_version": "corpus-0.1.0",
+    "prompt_version": "candidate-prompt/0.3.0",
+    "completion": "complete",
+    "conditions": {
+     "basis_identification": {
+      "status": "gap",
+      "explanation_id": "missing_identifiable_basis",
+      "note": "The no-risk statement is the only basis and nothing in the record shows it.",
+      "uncertain": false
+     },
+     "reasoning_traceability": {
+      "status": "pass",
+      "explanation_id": "missing_logical_bridge",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "cold_reviewer_clarity": {
+      "status": "pass",
+      "explanation_id": "cold_reviewer_clarity",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "accountability_support": {
+      "status": "gap",
+      "explanation_id": "insufficient_evidence",
+      "note": "No questionnaire or other evidence is recorded.",
+      "uncertain": false
+     },
+     "temporal_reconstructability": {
+      "status": "pass",
+      "explanation_id": "chronology_gap",
+      "note": "The record states this.",
+      "uncertain": false
+     }
+    },
+    "findings": [
+     {
+      "type": "evidentiary_overreach",
+      "quotation": "Fenwick presents no security risk to the archive",
+      "explanation_id": "unsupported_conclusion",
+      "note": "The record asserts there is no risk but records nothing that shows it.",
+      "uncertain": false
+     }
+    ],
+    "revision_needed": null
+   }
+  }
+ ]
+}

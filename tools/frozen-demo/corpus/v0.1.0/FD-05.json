@@ -1,0 +1,62 @@
+{
+ "record_id": "FD-05",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "created": "2026-10-07",
+ "synthetic": true,
+ "synthetic_label": "SYNTHETIC DEMONSTRATION RECORD. Fictional organisations, people, dates and facts. Not a real record.",
+ "record_ref": "SYNTHETIC-FD-05",
+ "demonstrates": "partial_record_refused_before_model_review",
+ "summary": "A partial record (page 1 of 2, ending mid-sentence) that is refused before any model review.",
+ "classification": "frozen_synthetic_demonstration_record",
+ "holdout": false,
+ "development_material": true,
+ "scope": {
+  "profile": {
+   "record_type": "supplier_access_exception",
+   "completion_status": "completed",
+   "hr_related": false
+  },
+  "domain": "supplier_access_exception",
+  "excluded_domains_present": false
+ },
+ "fictional_entities": {
+  "organisations": [
+   "Wyndrel Fasteners Ltd",
+   "Halvenmoor Instruments"
+  ],
+  "people": []
+ },
+ "text": "SYNTHETIC DEMONSTRATION RECORD FD-05. Fictional organisations, people, dates and facts. Not a real record.\nSupplier-access exception, completed draft. Reference SYN-FD-05. Page 1 of 2.\nOn 7 July 2031 Wyndrel Fasteners Ltd requested access to the inventory-forecast dashboard of Halvenmoor Instruments for five weeks. The supplier-access policy requires a completed security questionnaire. The security office reviewed the questionnaire and found that section 3 was",
+ "source_sha256": "a55d03f238e12659ede7db177917647e4e2a7e8350e9dba1c44c4fcfffbeca65",
+ "expected": {
+  "input_preparation": {
+   "refusal": "partial_input",
+   "refusal_codes": [
+    "ends_mid_sentence",
+    "pages_missing"
+   ],
+   "source_prep_codes": [
+    "ends_mid_sentence",
+    "pages_missing"
+   ],
+   "elements_missing": []
+  },
+  "mock_response": null,
+  "candidate": {
+   "adapter_called": false,
+   "result_status": "refused",
+   "flagged_keys": {},
+   "finding_types": [],
+   "finding_quotations": [],
+   "withheld_groups": []
+  }
+ },
+ "limitations": [
+  "SYNTHETIC. Written by Claude Code (an AI) on 2026-10-07 for a local demonstration package. No real supplier, person, organisation, date or record is described or was used.",
+  "The names were invented for this package and checked against a closed list in the record; resemblance to a real organisation or person is not intended and cannot be excluded by the package itself.",
+  "Expected candidate behaviour is the scripted output of a deterministic mock adapter. It shows what the software does with that output, not what any real model would return.",
+  "Not a sealed holdout, not independent labeling, not real-record evidence and not evidence of accuracy, reliability or validity.",
+  "The refusal rests on two text heuristics (a page count and a mid-sentence ending). A partial record without those signs might not be detected."
+ ]
+}

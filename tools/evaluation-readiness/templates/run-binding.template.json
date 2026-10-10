@@ -1,0 +1,5 @@
+{
+ "template": "jrs-evaluation-run-binding/0.1.0",
+ "notice": "BLANK TEMPLATE. The authoritative field list is readiness-registry.json run_binding_template and lib/registry.js REQUIRED_BINDING_FIELDS. A binding with any field unfilled classifies as PLANNING_ONLY.",
+ "source": "tools/evaluation-readiness/readiness-registry.json#run_binding_template"
+}

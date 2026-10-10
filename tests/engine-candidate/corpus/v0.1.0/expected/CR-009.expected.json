@@ -1,0 +1,25 @@
+{
+ "record_id": "CR-009",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "written": "2026-10-06, before the evaluation runner, adapter boundary and harness were written",
+ "development_only": "DEVELOPMENT DATA ONLY. This record and its expected findings were written to develop and test the candidate. It may never enter a sealed holdout, an evaluation of real-world performance, or any validation claim.",
+ "expected": {
+  "refusal": "excluded_domain_employment",
+  "refusal_codes": [],
+  "source_prep_codes": [],
+  "elements_missing": [],
+  "adapter_called": false,
+  "result_status": "refused",
+  "adapter_rejection_codes": [],
+  "flagged_conditions": {},
+  "finding_types": [],
+  "uncertain_finding_types": [],
+  "withheld_groups": [],
+  "harness": {
+   "status": "not_examined",
+   "failure_codes": [],
+   "disagreements": []
+  }
+ }
+}

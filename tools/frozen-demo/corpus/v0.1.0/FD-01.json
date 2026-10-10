@@ -1,0 +1,133 @@
+{
+ "record_id": "FD-01",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "created": "2026-10-07",
+ "synthetic": true,
+ "synthetic_label": "SYNTHETIC DEMONSTRATION RECORD. Fictional organisations, people, dates and facts. Not a real record.",
+ "record_ref": "SYNTHETIC-FD-01",
+ "demonstrates": "complete_reconstructable_record",
+ "summary": "A complete, reconstructable record with no material gap.",
+ "classification": "frozen_synthetic_demonstration_record",
+ "holdout": false,
+ "development_material": true,
+ "scope": {
+  "profile": {
+   "record_type": "supplier_access_exception",
+   "completion_status": "completed",
+   "hr_related": false
+  },
+  "domain": "supplier_access_exception",
+  "excluded_domains_present": false
+ },
+ "fictional_entities": {
+  "organisations": [
+   "Tarnwick Coatings Ltd",
+   "Halvenmoor Instruments"
+  ],
+  "people": [
+   "Imra Tevalle"
+  ]
+ },
+ "text": "SYNTHETIC DEMONSTRATION RECORD FD-01. Fictional organisations, people, dates and facts. Not a real record.\nSupplier-access exception, completed draft. Reference SYN-FD-01.\nOn 3 February 2031 Tarnwick Coatings Ltd requested read-only access to the coatings-specification library of Halvenmoor Instruments for four weeks. The supplier-access policy requires a completed security questionnaire before any access is granted. Tarnwick submitted the questionnaire on 30 January 2031, and on 31 January 2031 the security office recorded that section 6 (incident contacts) was incomplete. On 4 February 2031 the procurement lead, Imra Tevalle, approved a read-only exception because the specification was needed for a coating trial scheduled for 12 February 2031, and recorded that the security office would confirm section 6 by 14 February 2031. Access was granted on 5 February 2031 and ends on 4 March 2031.",
+ "source_sha256": "5ea8842f5187c8c2d0002927c443a8fa9ae7a8958b8321f0ae5f85079b74799f",
+ "expected": {
+  "input_preparation": {
+   "refusal": null,
+   "refusal_codes": [],
+   "source_prep_codes": [],
+   "elements_missing": []
+  },
+  "mock_response": {
+   "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+   "model_id": "mock-frozen-demo",
+   "model_version": "frozen-demo-0.1.0",
+   "prompt_version": "candidate-prompt/0.4.0",
+   "completion": "complete",
+   "conditions": {
+    "basis_identification": {
+     "status": "pass",
+     "explanation_id": "missing_identifiable_basis",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "reasoning_traceability": {
+     "status": "pass",
+     "explanation_id": "missing_logical_bridge",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "cold_reviewer_clarity": {
+     "status": "pass",
+     "explanation_id": "cold_reviewer_clarity",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "accountability_support": {
+     "status": "pass",
+     "explanation_id": "accountability_support",
+     "note": "The record states this.",
+     "uncertain": false
+    },
+    "temporal_reconstructability": {
+     "status": "pass",
+     "explanation_id": "chronology_gap",
+     "note": "The record states this.",
+     "uncertain": false
+    }
+   },
+   "findings": [],
+   "revision_needed": null
+  },
+  "candidate": {
+   "adapter_called": true,
+   "result_status": "examined",
+   "flagged_keys": {},
+   "finding_types": [],
+   "finding_quotations": [],
+   "withheld_groups": []
+  },
+  "scope_probes": [
+   {
+    "probe_id": "FD-01-P1",
+    "profile_change": {
+     "hr_related": true
+    },
+    "expected": {
+     "result_status": "refused",
+     "reason": "hr_status_not_declared_false",
+     "adapter_called": false
+    }
+   },
+   {
+    "probe_id": "FD-01-P2",
+    "profile_change": {
+     "record_type": "vendor_contract_renewal"
+    },
+    "expected": {
+     "result_status": "refused",
+     "reason": "out_of_scope_record_type",
+     "adapter_called": false
+    }
+   },
+   {
+    "probe_id": "FD-01-P3",
+    "profile_change": {
+     "completion_status": "in_progress"
+    },
+    "expected": {
+     "result_status": "refused",
+     "reason": "draft_not_completed",
+     "adapter_called": false
+    }
+   }
+  ]
+ },
+ "limitations": [
+  "SYNTHETIC. Written by Claude Code (an AI) on 2026-10-07 for a local demonstration package. No real supplier, person, organisation, date or record is described or was used.",
+  "The names were invented for this package and checked against a closed list in the record; resemblance to a real organisation or person is not intended and cannot be excluded by the package itself.",
+  "Expected candidate behaviour is the scripted output of a deterministic mock adapter. It shows what the software does with that output, not what any real model would return.",
+  "Not a sealed holdout, not independent labeling, not real-record evidence and not evidence of accuracy, reliability or validity.",
+  "No material gap is shown only in the sense that the scripted mock reports none and source preparation finds none. It does not show the record is correct, sufficient or acceptable, and it is not an approval of the exception."
+ ]
+}

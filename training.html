@@ -551,7 +551,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
       <a href="#training-modules" class="btn-hero-primary">&#9654; Start the Six Modules</a>
       <a href="#simulator" onclick="showSimTab(0)" class="btn-hero-secondary">Explore Simulation Exercises</a>
       <a href="#roles" class="btn-hero-ghost">Explore by Role</a>
-      <a href="#record-review-workspace" class="btn-hero-ghost">Record Review Workspace</a>
+      <a href="#record-review-workspace" class="btn-hero-ghost">Record review status</a>
     </div>
     <div class="hero-tags">
       <span class="hero-tag">No registration required</span>
@@ -1637,116 +1637,14 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 <div id="record-review-workspace" style="background:var(--surface);border-top:1px solid var(--rule);padding:48px 24px 80px">
   <div style="max-width:860px;margin:0 auto">
 
-    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Record Review Workspace</div>
-    <h2 style="font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);margin-bottom:12px">Record Review Workspace</h2>
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:12px;max-width:680px">Paste any organizational record below and receive reconstruction-oriented review observations against the five JRS review conditions. The workspace evaluates whether the record would support independent review by someone with no prior knowledge of the original events. The output is a structured finding in the format the JRS pilot program is designed to collect: the AI function present in the record, the condition it triggered, the determination, and what a compliant version would require.</p>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Record review status</div>
+    <h2 style="font-family:'Bodoni Moda',serif;font-size:26px;font-weight:500;color:var(--text);margin-bottom:12px">The Record Review Workspace is closed</h2>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:12px;max-width:680px">The JRS Review Engine is a controlled development implementation. Public review routes do not accept record submissions and do not perform inference. JRS does not currently offer public API, sandbox, or production review access. This page no longer has a field for record text, and nothing on it sends a record anywhere.</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px;max-width:680px">The six modules and the simulation exercises above are unaffected. To work through a record of your own, use the Record Defensibility Check, which is public and ungated.</p>
 
-    <div style="border:1px solid rgba(190,148,71,.3);background:rgba(190,148,71,.03);padding:14px 18px;margin-bottom:20px;max-width:680px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Pilot Program Contribution</div>
-      <p style="font-size:13px;color:var(--muted);line-height:1.65;margin:0">Findings produced in this workspace can be submitted to the JRS pilot program as structured observations. Use the contact form at <a href="pilot.html#contact" style="color:var(--accent);text-decoration:none">jrsstandard.com/pilot.html</a> to submit your finding. Include the AI function identified, the condition triggered, your determination, and the remediation requirement. No identifying information about the organization or individual is required.</p>
-    </div>
-
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:20px;max-width:640px">
-      <div style="background:var(--surface);padding:14px 16px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px">What it assesses</div>
-        <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:2">
-          <li>Chronology clarity and date visibility</li>
-          <li>Source record traceability</li>
-          <li>Reasoning visibility and evaluative anchoring</li>
-          <li>Account preservation and employee perspective</li>
-          <li>Reconstruction continuity - independent reviewability</li>
-        </ul>
-      </div>
-      <div style="background:var(--surface);padding:14px 16px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:8px">What it returns</div>
-        <ul style="list-style:none;padding:0;font-size:12.5px;color:var(--muted);line-height:2">
-          <li>Routing determination - Low / Moderate / High / Critical</li>
-          <li>Pass / Needs Attention / Fail for each condition</li>
-          <li>Specific flagged language and gaps</li>
-          <li>Concrete revision suggestions</li>
-          <li>Overall assessment summary</li>
-        </ul>
-      </div>
-    </div>
-
-    <p style="font-size:12px;color:var(--muted-soft);margin-bottom:24px;max-width:640px">Documentation review observations generated by reviewer-support analysis. Your text is sent securely and not stored. Use anonymized or fictional records only.</p>
-
-    <div style="border:1px solid rgba(139,32,32,.3);background:rgba(139,32,32,.05);padding:12px 16px;margin-bottom:24px">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--stop-text)">Legal Disclaimer - </span>
-      <span style="font-size:12px;color:var(--muted)">Results are for reviewer practice only. Not legal advice, HR guidance, or compliance determination. Use fictional or anonymized text only. Do not paste records containing real personal identifying information.</span>
-    </div>
-
-    <div style="border:1px solid var(--rule);background:var(--bg);padding:12px 16px;margin-bottom:24px">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim)">Validation Status - </span>
-      <span style="font-size:12px;color:var(--muted)">This engine is <b>operationally implemented and empirically unvalidated</b>. It runs a single model. Reproducibility is disclosed rather than hidden, and reproducibility is not equivalent to accuracy. Output supports reviewer practice and does not replace human judgment.</span>
-    </div>
-
-    <label for="pa-input" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:8px">Record Text</label>
-    <textarea id="pa-input"
-      placeholder="Enter record text for review..."
-      rows="8"
-      style="width:100%;background:#121212;border:1px solid #2A2A2A;color:#F2F2F2;font-family:Arial,sans-serif;font-size:15px;line-height:1.7;padding:14px;box-sizing:border-box;display:block;border-radius:4px;margin-bottom:16px;-webkit-user-select:text;user-select:text;touch-action:manipulation;cursor:text"></textarea>
-
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px">
-      <button onclick="runAssessment()" id="assess-btn"
-        style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:14px 28px;cursor:pointer;font-weight:600">
-        Assess Record
-      </button>
-      <button onclick="clearAssessment()"
-        style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:none;color:var(--muted-soft);border:1px solid var(--rule);padding:14px 20px;cursor:pointer">
-        Clear
-      </button>
-    </div>
-
-    
-    <div id="pa-loading" style="display:none;padding:32px 0;text-align:center">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Reviewing Record</div>
-      <div style="font-size:13px;color:var(--muted-soft)">Applying five JRS review conditions...</div>
-    </div>
-
-    
-    <div id="pa-error" style="display:none;border:1px solid rgba(139,32,32,.4);background:rgba(139,32,32,.06);padding:16px 20px;margin-bottom:24px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--stop-text);margin-bottom:6px">Assessment Error</div>
-      <div id="pa-error-msg" style="font-size:13px;color:var(--muted)"></div>
-    </div>
-
-    
-    <div id="pa-results" style="display:none">
-
-      
-      <div id="pa-rating-block" style="padding:20px 22px;margin-bottom:24px;border-left:4px solid var(--rule);background:var(--bg)">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Review Routing Observation</div>
-        <div id="pa-rating-label" style="font-size:24px;font-weight:600;margin-bottom:6px"></div>
-        <div id="pa-rating-sub" style="font-size:13.5px;color:var(--muted);line-height:1.65"></div>
-      </div>
-
-      
-      <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">JRS Review Conditions</div>
-      <div id="pa-conditions" style="display:flex;flex-direction:column;gap:2px;margin-bottom:24px"></div>
-
-      
-      <div id="pa-flags-block" style="margin-bottom:24px;display:none">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Flagged Language / Gaps</div>
-        <div id="pa-flags-list"></div>
-      </div>
-
-      
-      <div id="pa-recs-block" style="display:none;margin-bottom:24px">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule)">Suggested Revisions</div>
-        <div id="pa-recs-list" style="display:flex;flex-direction:column;gap:8px"></div>
-      </div>
-
-      
-      <div id="pa-summary-block" style="display:none;margin-bottom:24px;padding:16px 20px;background:var(--bg);border:1px solid var(--rule)">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Review Observations</div>
-        <div id="pa-summary-text" style="font-size:13.5px;color:var(--muted);line-height:1.7"></div>
-      </div>
-
-      <div style="border-top:1px solid var(--rule);padding-top:16px;margin-top:8px">
-        <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.65;margin-bottom:6px"><strong>Validation status.</strong> This output came from an engine that is operationally implemented and empirically unvalidated, running a single model. Reproducibility is not equivalent to accuracy, and no effectiveness claim is made. Reviewer judgment remains required.</p>
-        <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.65;margin-bottom:6px">Reviewer-support observations generated for documentation review practice only. Does not constitute legal advice, HR guidance, or compliance determination. Organizations remain responsible for their own review standards and applicable legal requirements.</p>
-        <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.65;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase"><strong>Reviewer Judgment Required</strong> - Outputs are intended to support reviewer analysis and do not replace organizational judgment, investigative review, legal review, or escalation procedures.</p>
-      </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="check.html?src=training" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;background:var(--accent);color:var(--bg);padding:14px 28px;text-decoration:none;font-weight:600">Open the Record Defensibility Check</a>
+      <a href="review-engine.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:14px 20px;text-decoration:none">Review Engine status</a>
     </div>
 
   </div>
@@ -2256,104 +2154,8 @@ function findMatches(text, patterns) {
   return found;
 }
 
-async function runAssessment() {
-  var text = document.getElementById('pa-input').value.trim();
-  if (!text || text.length < 10) { alert('Please enter some record text first.'); return; }
-  // BD-08 Question A, 2026-09-16: the record-paste field is screened before the
-  // text is POSTed to a third-party model provider. A prompt, not a filter.
-  if (typeof jrsSanitizeCheck === 'function' && !jrsSanitizeCheck(text)) return;
-
-  // Show loading, hide previous results/errors
-  document.getElementById('pa-results').style.display = 'none';
-  document.getElementById('pa-error').style.display = 'none';
-  document.getElementById('pa-loading').style.display = 'block';
-  document.getElementById('assess-btn').disabled = true;
-
-  try {
-    var res = await fetch('/api/review', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text: text })
-    });
-
-    var data = await res.json();
-
-    if (!res.ok || data.error) {
-      throw new Error(data.error || 'Assessment failed');
-    }
-
-    renderAssessmentResults(data);
-
-  } catch (err) {
-    document.getElementById('pa-error').style.display = 'block';
-    document.getElementById('pa-error-msg').textContent = 'Could not complete assessment: ' + (err.message || 'Unknown error') + '. Please try again.';
-  } finally {
-    document.getElementById('pa-loading').style.display = 'none';
-    document.getElementById('assess-btn').disabled = false;
-  }
-}
-
-function renderAssessmentResults(data) {
-  // Routing colors
-  var routingColors = { Low: 'var(--ready-text)', Moderate: 'var(--review-text)', High: '#E8A84A', Critical: 'var(--stop-text)' };
-  var ratingColor = routingColors[data.routing] || 'var(--muted)';
-
-  // Rating block
-  var rb = document.getElementById('pa-rating-block');
-  rb.style.borderLeftColor = ratingColor;
-  document.getElementById('pa-rating-label').innerHTML = '<span style="color:'+ratingColor+'">'+data.routing+'</span>';
-  document.getElementById('pa-rating-sub').textContent = data.routingRationale || '';
-
-  // Five conditions
-  var condColors = { 'Pass': 'var(--ready-text)', 'Needs Attention': 'var(--review-text)', 'Fail': 'var(--stop-text)' };
-  var condIcons  = { 'Pass': '✓', 'Needs Attention': '△', 'Fail': '✗' };
-  var condEl = document.getElementById('pa-conditions');
-  condEl.innerHTML = (data.conditions || []).map(function(c) {
-    var color = condColors[c.status] || 'var(--muted-soft)';
-    var icon  = condIcons[c.status]  || '?';
-    return '<div style="display:grid;grid-template-columns:28px 1fr;background:var(--surface);padding:12px 16px;border-left:3px solid '+color+'">'
-      + '<span style="color:'+color+';font-family:\'JetBrains Mono\',monospace;font-size:12px">'+icon+'</span>'
-      + '<div><div style="font-size:12.5px;font-weight:600;color:'+color+'">RC '+c.id+' - '+c.label+' <span style="font-weight:400;font-size:11px">('+c.status+')</span></div>'
-      + '<div style="font-size:12.5px;color:var(--muted);margin-top:3px;line-height:1.55">'+c.note+'</div></div></div>';
-  }).join('');
-
-  // Flags
-  var fb = document.getElementById('pa-flags-block');
-  if (data.flags && data.flags.length > 0) {
-    fb.style.display = 'block';
-    document.getElementById('pa-flags-list').innerHTML = data.flags.map(function(f) {
-      return '<div style="padding:9px 14px;background:var(--surface);border-left:3px solid var(--review-text);margin-bottom:5px;font-size:12.5px;color:var(--muted);line-height:1.55">'+f+'</div>';
-    }).join('');
-  } else { fb.style.display = 'none'; }
-
-  // Revisions
-  var recBlock = document.getElementById('pa-recs-block');
-  if (data.revisions && data.revisions.length > 0) {
-    recBlock.style.display = 'block';
-    document.getElementById('pa-recs-list').innerHTML = data.revisions.map(function(r) {
-      return '<div style="display:flex;gap:10px;padding:10px 14px;background:var(--surface);border-left:3px solid rgba(190,148,71,.4)">'
-        + '<span style="color:var(--accent);font-family:\'JetBrains Mono\',monospace;font-size:11px;flex-shrink:0">-</span>'
-        + '<span style="font-size:13px;color:var(--muted);line-height:1.6">'+r+'</span></div>';
-    }).join('');
-  } else { recBlock.style.display = 'none'; }
-
-  // Summary
-  var sumBlock = document.getElementById('pa-summary-block');
-  if (data.summary) {
-    sumBlock.style.display = 'block';
-    document.getElementById('pa-summary-text').textContent = data.summary;
-  } else { sumBlock.style.display = 'none'; }
-
-  document.getElementById('pa-results').style.display = 'block';
-  document.getElementById('pa-results').scrollIntoView({behavior:'smooth', block:'nearest'});
-}
-
-function clearAssessment() {
-  document.getElementById('pa-input').value = '';
-  document.getElementById('pa-results').style.display = 'none';
-  document.getElementById('pa-error').style.display = 'none';
-  document.getElementById('pa-loading').style.display = 'none';
-}
+// runAssessment, renderAssessmentResults and clearAssessment were removed 2026-10-06 with the
+// Record Review Workspace form: public review routes accept no records (current Engine handoff).
 
 // ── INIT SIMULATORS ───────────────────────────────
 renderDR();
@@ -3341,18 +3143,17 @@ function enrollSubmit(){
       try{ localStorage.setItem('jrs-training-enrolled','1'); localStorage.setItem('jrs-training-email', email); }catch(e){}
       window._jrsPreview = false;
       var pb = document.getElementById('preview-banner'); if (pb) pb.style.display = 'none';
-      // Release panel: the training is unlocked either way, and the diagnostic
-      // is offered here because this is the moment the registration is fresh.
+      // Release panel: the training is unlocked either way. The record diagnostic
+      // link was removed 2026-10-06 (public review routes accept no records), and
+      // with it the name, organization, title and email it carried in the URL.
       var ov = document.getElementById('enroll-overlay');
       var inner = ov ? ov.firstElementChild : null;
       if (!inner) { if (ov) ov.style.display = 'none'; return; }
-      var q = '?src=training&org=' + encodeURIComponent(org) + '&name=' + encodeURIComponent(name)
-            + '&title=' + encodeURIComponent(title) + '&email=' + encodeURIComponent(email);
       inner.innerHTML =
         '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">Registered</div>'
       + '<h2 style="font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">You are in</h2>'
       + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">Your certificate will be issued in that name. Finish all six modules and it records completion of the JRS reviewer training. <b style="color:var(--text)">It is a certificate of completion, not professional certification, accreditation, licensure, or a regulatory credential.</b></p>'
-      + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer;margin-bottom:10px">Run the diagnostic on my records</button></a>'
+      + '<a href="check.html?src=training" style="text-decoration:none"><button type="button" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer;margin-bottom:10px">Open the Record Defensibility Check</button></a>'
       + '<button type="button" onclick="document.getElementById(\'enroll-overlay\').style.display=\'none\'" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Start the training</button>';
     })
     .catch(function(){ msg.style.color = 'var(--review-text)'; msg.textContent = 'Could not register just now. Please try again, or email info@jrsstandard.com.'; btn.disabled = false; });

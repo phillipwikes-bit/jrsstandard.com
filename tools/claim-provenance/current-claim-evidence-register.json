@@ -1,0 +1,2037 @@
+{
+ "register_version": "jrs-claim-evidence-register/0.1.0",
+ "record_schema": "tools/claim-provenance/schema/claim-record.schema.json",
+ "standing": "An internal claim-control register. It records what repository-visible evidence supports and how a claim may be worded. It is not new evidence and does not validate the research, the Engine, privacy controls, commercial readiness or production use.",
+ "claim_count": 33,
+ "status_summary": {
+  "SUPPORTED_WITH_LIMITATION": 16,
+  "HISTORICAL_ONLY": 4,
+  "SOURCE_REPORTED_NOT_REPRODUCED": 5,
+  "NOT_SUPPORTED": 4,
+  "NOT_ASSESSED": 2,
+  "REQUIRES_WORDING_REPAIR": 0,
+  "RETIRED": 2
+ },
+ "claims_digest": "4f015e93f6a398567462632cea8bc40e8ef9a01bf35106a74510621ce766e203",
+ "evidence": [
+  {
+   "id": "EV-DETECTION-ARTICLE",
+   "path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "level": 4,
+   "version": "manuscript dated 2026-08-29; data lock 2026-08-15",
+   "measures": "Human reviewers classifying 24 constructed AI-generated records against an author-generated, blind-reproduced reference classification (Sections 4 to 6); a separate 10-record reliability sample (Section 6.5); three-vendor model consistency on a fixed 15-record set (Appendix A); per-condition behaviour, descriptively (Appendix B).",
+   "limitations": [
+    "A manuscript, not a peer-reviewed publication. Its figures are reported by the manuscript; this package does not recompute them.",
+    "Constructed records only. It states what was not shown: ambiguous, human-authored or real records, and individual-level reliability."
+   ],
+   "reviewed_hash": "7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b"
+  },
+  {
+   "id": "EV-FINAL-SWEEP",
+   "path": "research/final_sweep_2026-08-21.json",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "STRUCTURED_SECONDARY_ANALYSIS",
+   "level": 5,
+   "version": "sweep dated 2026-08-21",
+   "measures": "A re-analysis sweep over the study tables: pooled and per-condition AC1, condition separation with a derivation test, and the cross-vendor series.",
+   "limitations": [
+    "A secondary analysis; its pooled AC1 (0.664 on 104 labels) and series dates differ from the manuscript and from the Study 001 resolution, and neither is reconciled here.",
+    "It records that the condition-separation tests are circular (DERIVATION TEST: DETERMINISTIC)."
+   ],
+   "reviewed_hash": "e0571bded21dc44f330a7f70da5ee1a551e29607d41258b513c3f38c9fb0a992"
+  },
+  {
+   "id": "EV-STUDY001-RESOLUTION",
+   "path": "docs/enterprise-diligence/STUDY_001_FIGURE_RESOLUTION.md",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "AUTHORITATIVE_TABLE_READ_REPORTED",
+   "level": 4,
+   "version": "decision D-18, 2026-09-15, corrected 2026-09-20",
+   "measures": "A reading of the study tables findings_history and study_runs for the STUDY-001 cross-vendor series: 61 recorded runs, 2026-06-12 to 2026-08-21, range 0.667 to 0.933, mean 0.8526; and the 15-record subset (37 runs, 41 runs at the 2026-08-15 data lock).",
+   "limitations": [
+    "The tables themselves are not in the repository, so the figures are source-reported, not reproduced.",
+    "It states that 37 and 41 runs are one series at two windows and 61 is that series without the completeness filter."
+   ],
+   "reviewed_hash": "90085324419b501993cb49425e3f2c52da0ee3dd0a04fe44e93ee2fbc21c4f28"
+  },
+  {
+   "id": "EV-IP-AUDIT",
+   "path": "IP_COMMERCIALIZATION_AUDIT.md",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "level": 4,
+   "version": "prepared 2026-08-13",
+   "measures": "Records the cross-vendor 15-record series as read on 2026-08-13: 37 dated nightly runs, range 82.2 to 93.3.",
+   "limitations": [
+    "The 37-run figure belongs to its 2026-08-13 window; it is not the series at closure."
+   ],
+   "reviewed_hash": "f8d3e768f53c12f2aa139a8a73c5d94d32c49a33db17e0dc034a6d00f30404ed"
+  },
+  {
+   "id": "EV-VALIDATION-REPORT",
+   "path": "research/JRS_Validation_Report.md",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "level": 4,
+   "version": "undated validation report (earlier than the 2026-08-29 manuscript)",
+   "measures": "Study 003 determination distribution over 108 labels on 10 records; an earlier reliability statement.",
+   "limitations": [
+    "Its reliability statement (\"clearing the pre-registered floor\", \"substantial\") is superseded by the 2026-08-29 manuscript, which reports the two-part criterion not met and drops the verbal band."
+   ],
+   "reviewed_hash": "3a8ef977bb2a3dcc468b2a00e19a9b28e8ad157630097817f3b887b7acd2206d"
+  },
+  {
+   "id": "EV-EMPLOYMENT-MANUSCRIPT",
+   "path": "research/Employment_Pilot_Manuscript_2026-08-21.md",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "level": 4,
+   "version": "manuscript dated 2026-08-21",
+   "measures": "States that the determination is a deterministic function of the five conditions and that no discrimination claim is made from them.",
+   "limitations": [
+    "A manuscript, not a publication."
+   ],
+   "reviewed_hash": "a7284f5684a5914f33b795c2c2054ec552bc8d2f366884bde68a5da3de6357c7"
+  },
+  {
+   "id": "EV-CLAIM-RECONCILIATION",
+   "path": "docs/architecture/PUBLIC_CLAIM_RECONCILIATION_2026-10-06.md",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "level": 4,
+   "version": "2026-10-06 with addendum",
+   "measures": "The earlier public-claim reconciliation: P-10 records that the Study 014 reader was a model (Sonnet 5.5), verified on branch claude/engine-eval-v8-2026-10-01.",
+   "limitations": [
+    "The Study 014 results file is on another branch and is not in this branch, so the figures are source-reported here."
+   ],
+   "reviewed_hash": "f066bb8e5be97a91568f805f1ad9a735669ce0e32c7c8c0bf48c9f3c60f7057f"
+  },
+  {
+   "id": "EV-TRACKER-COUNTRIES",
+   "path": "research/MASTER_TRACKER.md",
+   "binding": "LINE",
+   "anchor": "- **Combined: 16 countries across all 5 populated continents.**",
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "level": 4,
+   "version": "tracker line, completer geography",
+   "measures": "Completer geography across both arms: 16 countries on 5 continents.",
+   "limitations": [
+    "A project log line, not a structured record."
+   ],
+   "reviewed_hash": "da6595869ddae876132f048cccc74b58a8a0bc9a0fc72d61602d520cb2284f8c"
+  },
+  {
+   "id": "EV-TRACKER-JBE",
+   "path": "research/MASTER_TRACKER.md",
+   "binding": "LINE",
+   "anchor": "**PUBLICATION CONFIRMED = *Journal of Business Ethics* (2026-07-17).**",
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "level": 4,
+   "version": "tracker line, 2026-07-17",
+   "measures": "Records the choice of a target journal for an empirical paper.",
+   "limitations": [
+    "\"PUBLICATION CONFIRMED\" names a target venue; no submission outcome or acceptance is recorded in that line."
+   ],
+   "reviewed_hash": "c74624476a861928aaecd398a09bbc499512628d28d34a6c2b101ceefe019faf"
+  },
+  {
+   "id": "EV-CEP-FILE",
+   "path": "research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "AUTHOR_STATEMENT",
+   "level": 5,
+   "version": "text extraction of the author-supplied file of 2026-08-27",
+   "measures": "The file header states acceptance by CEP Magazine (SCCE) for the November 2026 issue, accepted 2026-07-16.",
+   "limitations": [
+    "The editor's acceptance message is not in the repository; the statement is the file header."
+   ],
+   "reviewed_hash": "53f341e5e6383aab6c6dfcd19b95d494499d31d1cc37879bbc35a021a41ddf89"
+  },
+  {
+   "id": "EV-CCI-RESPONSE",
+   "path": "research/CCI_Editor_Response_Gaskin_2026-08-28.pdf",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "CONTEMPORANEOUS_COMMUNICATION",
+   "level": 3,
+   "version": "editor reply, 2026-08-28",
+   "measures": "An editor's reply to a submission: overlap with recent coverage; a revised piece with a different focus would be considered.",
+   "limitations": [
+    "Not an acceptance."
+   ],
+   "reviewed_hash": "6702248c30311efce972cfa56e98a2aa8a01bf1ed6269063133872d24b1b363c"
+  },
+  {
+   "id": "EV-CANDIDATE-EVAL",
+   "path": "tests/engine-candidate/eval/records/EVAL_corpus-0.1.0_candidate-0.5.0-local.1.json",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "MOCK_OR_FIXTURE",
+   "level": 2,
+   "version": "corpus 0.1.0, candidate 0.5.0-local.1",
+   "measures": "The local candidate run with a mock adapter over 15 constructed development records.",
+   "limitations": [
+    "Its own label: \"Not a measure of accuracy, reliability or validity, not a DRR score, and not evidence about any real model or real record.\""
+   ],
+   "reviewed_hash": "195efc0129aa0592ef57efb1dfbce11d5bb2b6269afced3b80aafa9b0cb7b704"
+  },
+  {
+   "id": "EV-CANDIDATE-REGRESSION",
+   "path": "tests/engine-candidate/regression/cases.json",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "LOCAL_TEST",
+   "level": 2,
+   "version": "candidate-source-prep-regression 0.1.0",
+   "measures": "24 source-preparation regression cases with expectations written before the first run; constructed fictional text; no model involved.",
+   "limitations": [
+    "Tests the deterministic checker against constructed text only."
+   ],
+   "reviewed_hash": "dd8d3d24c8739f8429caebb751177bb97d874be258f54e06ec4646ecdea5f3fb"
+  },
+  {
+   "id": "EV-SOURCE-GROUNDING-TESTS",
+   "path": "tests/engine-candidate/source-prep.test.mjs",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "SOURCE_GROUNDING_TEST",
+   "level": 2,
+   "version": "branch test file",
+   "measures": "That quotations and anchors locate exact text in the source record, and that unlocatable model quotations are withheld.",
+   "limitations": [
+    "Exact quotation presence is not semantic support: an anchor shows where text sits, not that it supports a finding."
+   ],
+   "reviewed_hash": "3842b714102dc13ab94a26cb0992925392223e11bba79483762508a9c22f458a"
+  },
+  {
+   "id": "EV-PROMPT-PROVENANCE-TESTS",
+   "path": "tests/engine-candidate/contract.test.mjs",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "LOCAL_TEST",
+   "level": 2,
+   "version": "branch test file",
+   "measures": "That each result carries the prompt version and hash, adapter contract and model identity, and that changing any of them changes the review id. All runs use a mock adapter.",
+   "limitations": [
+    "Records provenance of a local mocked run; no provider was called."
+   ],
+   "reviewed_hash": "b0d2fe9e98f4f79e04ee741141b1d8db55f146e7e4a23bd4c66e5a561c648169"
+  },
+  {
+   "id": "EV-ROUTE-TESTS",
+   "path": "tests/engine/auth-matrix.mjs",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "LOCAL_TEST",
+   "level": 2,
+   "version": "branch test file (with scripts/test_review_incomplete.mjs)",
+   "measures": "That the review routes in the repository refuse submissions with 503 and make no outbound call.",
+   "limitations": [
+    "Tests repository code. That production serves these bytes is a separate check (deploy-verify, CLAUDE.md 36.8)."
+   ],
+   "reviewed_hash": "37cfd056ec9b565e6229cee17f338426d196678ccb2bf8a7653f78400e6d522c"
+  },
+  {
+   "id": "EV-RELEASE-GATE-REPORT",
+   "path": "docs/architecture/CURRENT_RELEASE_GATE_REPORT.md",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "REPOSITORY_CONTROL_RECORD",
+   "level": 2,
+   "version": "current gate report",
+   "measures": "Release-gate status: RG-1 BLOCKED, RG-2 BLOCKED, RG-3 NOT_ASSESSED, RG-4 BLOCKED, RG-5 BLOCKED; INCOMPLETE_GATES_OPEN.",
+   "limitations": [
+    "A status record; it opens no gate."
+   ],
+   "reviewed_hash": "ce3a188dbc79fc22f8d2a05d815c7e9f09d42aee53db6ddd361793141db4be20"
+  },
+  {
+   "id": "EV-BLOCKER-B013",
+   "path": ".jrs/state/BLOCKERS.json",
+   "binding": "LINE",
+   "anchor": "\"description\": \"engine_reviews is readable with the PUBLIC publishable key.",
+   "evidence_class": "REPOSITORY_CONTROL_RECORD",
+   "level": 2,
+   "version": "B-013, probed 2026-09-15",
+   "measures": "Records that one table was readable with the public key on 2026-09-15 (zero rows).",
+   "limitations": [
+    "A single dated probe; current production configuration is NOT ESTABLISHED."
+   ],
+   "reviewed_hash": "57b1efcef9fad1747a16603ee5a5114d0f870b79db55df62063fa7bac4a90bbf"
+  },
+  {
+   "id": "EV-PRIVACY-PAGE",
+   "path": "privacy.html",
+   "binding": "LINE",
+   "anchor": "Row-level security is enabled on these tables with no public read access.",
+   "evidence_class": "POLICY_OR_WEBSITE_STATEMENT",
+   "level": 6,
+   "version": "privacy page, last updated 2026-10-06",
+   "measures": "A website statement that a database control operates.",
+   "limitations": [
+    "A policy or website statement does not prove that a live control executes."
+   ],
+   "reviewed_hash": "edac094986be03ef6d52e769cbcb93eab4769946f39b722492397ddd0cc4da26"
+  },
+  {
+   "id": "EV-HANDOFF",
+   "path": "docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "REPOSITORY_CONTROL_RECORD",
+   "level": 4,
+   "version": "2026-10-05 handoff",
+   "measures": "The current operative position: the Engine is a controlled local-development candidate; no public intake; research does not validate the Engine.",
+   "limitations": [
+    "An instruction record, not test evidence."
+   ],
+   "reviewed_hash": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5"
+  },
+  {
+   "id": "EV-MANIFEST-TESTS",
+   "path": "tests/manifest/run.mjs",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "SCHEMA_TEST",
+   "level": 2,
+   "version": "branch test file",
+   "measures": "Manifest schema conformance and integrity checks on fixtures.",
+   "limitations": [
+    "Schema and integrity tests; they do not validate the Engine or the authenticity of an unsigned artifact."
+   ],
+   "reviewed_hash": "34436020041e5fb53789078b265260339de820288dfb2dc13fb42be37a28cf40"
+  },
+  {
+   "id": "EV-METHODS-PDF",
+   "path": "JRS_Reliability_Accuracy.pdf",
+   "binding": "FILE",
+   "anchor": null,
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "level": 4,
+   "version": "draft methods paper, Rungs 1 and 2 (public download through /api/dl?e=accuracy)",
+   "measures": "An earlier draft reporting AC1 0.74 / 0.63 as substantial agreement and cross-vendor agreement averaging 84 percent on 15 constructed records.",
+   "limitations": [
+    "Superseded by the 2026-08-29 manuscript on the reliability criterion, the verbal band and the cross-vendor series. A PDF; the scanner cannot read it, so this source was inspected once by hand."
+   ],
+   "reviewed_hash": "64bb9f80dd9f914210a7eb52ebf6a3f42cd16faa0b885aa22140d7995632b2b8"
+  },
+  {
+   "id": "EV-NONE",
+   "path": null,
+   "binding": "NONE",
+   "anchor": null,
+   "evidence_class": "NONE",
+   "level": 7,
+   "version": "none",
+   "measures": "No evidence. Used only by records that state what must not be claimed.",
+   "limitations": [
+    "No source supports the claim."
+   ],
+   "reviewed_hash": null
+  }
+ ],
+ "claims": [
+  {
+   "claim_id": "CL-001",
+   "claim_text": "Panel accuracy against the reference classification was 83.9 percent (95 percent CI 72.7 to 95.1 at participant level) on 24 constructed records, 16 reviewers, 384 graded reads; this cleared the pre-registered threshold of at least 70 percent.",
+   "claim_topic": "DETECTION",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-DETECTION-ARTICLE",
+   "source_path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "source_location": "Abstract (Result) and Section 6.1, Table 1",
+   "source_hash": "FILE:7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "16 reviewers who completed all 24 constructed AI-generated records; 384 scorable graded reads (385 retained, 1 administrative row excluded)",
+   "quantities": {
+    "value": "83.9 percent",
+    "numerator": null,
+    "denominator": "16 reviewer-level accuracy scores, each out of 24 records",
+    "denominator_required": true,
+    "unit": "mean of reviewer-level accuracy"
+   },
+   "date_or_data_lock": "data lock 2026-08-15",
+   "limitation": "A detection result on a constructed corpus against an author-generated reference classification. It is the mean of 16 reviewer scores, not a pooled proportion, not inter-rater reliability, and not an estimate of field performance on real records.",
+   "limitation_key": "constructed",
+   "permitted_wording": "On a constructed 24-record corpus, 16 reviewers matched the reference classification at a mean accuracy of 83.9 percent (95 percent CI 72.7 to 95.1, participant level; 384 graded reads; data lock 15 August 2026). This is a detection result on constructed records, not reliability and not field performance.",
+   "prohibited_overstatement": [
+    "JRS is 83.9 percent accurate",
+    "reviewers agree 83.9 percent of the time",
+    "83.9 percent reliability",
+    "83.9 percent accuracy on real records",
+    "the Engine detects at 83.9 percent"
+   ],
+   "public_use": "MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "83\\.9\\s?(%|percent)?",
+     "72\\.7",
+     "95\\.1",
+     "95\\s?(%|percent)\\s+(CI|confidence)",
+     "\\b384\\b",
+     "\\b385\\b",
+     "\\b70\\s?(%|percent)",
+     "24-record",
+     "\\b24 (constructed )?records\\b",
+     "\\b16 (independent |detection-panel |individual )?(experts|reviewers|raters)\\b"
+    ],
+    "signatures": [
+     "83\\.9",
+     "72\\.7 to 95\\.1",
+     "\\b384 (graded|determinations|judgments|reads)"
+    ],
+    "qualifiers": [
+     [
+      "constructed corpus",
+      "constructed|24-record|author-generated"
+     ],
+     [
+      "detection panel scope",
+      "\\b16\\b|panel"
+     ]
+    ],
+    "prohibited": [
+     [
+      "detection labelled reliability",
+      "83\\.9(?:[^.;()]|\\.(?=\\d)){0,40}\\b(reliab\\w*|inter-rater|agreement)\\b|\\b(reliab\\w*|inter-rater|agreement)\\b(?:[^.;()]|\\.(?=\\d)){0,30}83\\.9"
+     ],
+     [
+      "constructed result presented as real-world",
+      "(83\\.9|87\\.0|80\\.7)(?:[^.;()]|\\.(?=\\d)){0,60}\\b(real[- ]world|field performance|in practice|real records)\\b|\\b(real[- ]world|field performance|in practice|real records)\\b(?:[^.;()]|\\.(?=\\d)){0,40}(83\\.9|87\\.0|80\\.7)"
+     ],
+     [
+      "research transferred to the Engine",
+      "\\b(Review Engine|the Engine)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: research.html, research-summary.html (body, meta, Open Graph, Twitter and structured data), engagement.html, reviewer/index.html (PR-01, PR-03, PR-06, PR-08, PR-09, PR-11, PR-14, PR-19 to PR-22, PR-28). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-002",
+   "claim_text": "Sensitivity was 87.0 percent for unsupported records and specificity 80.7 percent for grounded ones, on the same constructed corpus.",
+   "claim_topic": "DETECTION",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-DETECTION-ARTICLE",
+   "source_path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "source_location": "Abstract (Result); Section 6.4",
+   "source_hash": "FILE:7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "the 384 graded reads of the detection panel",
+   "quantities": {
+    "value": "87.0 / 80.7 percent",
+    "numerator": null,
+    "denominator": "unsupported and grounded records of the 24-record corpus",
+    "denominator_required": true,
+    "unit": "percent"
+   },
+   "date_or_data_lock": "data lock 2026-08-15",
+   "limitation": "Constructed corpus only. Which direction of error is preferable depends on a cost model the programme has not built.",
+   "limitation_key": "constructed",
+   "permitted_wording": "On the constructed 24-record corpus, sensitivity was 87.0 percent and specificity 80.7 percent.",
+   "prohibited_overstatement": [
+    "JRS catches 87 percent of bad records"
+   ],
+   "public_use": "MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "87\\.0\\s?(%|percent)",
+     "80\\.7\\s?(%|percent)"
+    ],
+    "signatures": [
+     "87\\.0\\s?(%|percent)",
+     "80\\.7\\s?(%|percent)"
+    ],
+    "qualifiers": [
+     [
+      "constructed corpus",
+      "constructed|24-record|author-generated"
+     ]
+    ],
+    "prohibited": [
+     [
+      "constructed result presented as real-world",
+      "(83\\.9|87\\.0|80\\.7)(?:[^.;()]|\\.(?=\\d)){0,60}\\b(real[- ]world|field performance|in practice|real records)\\b|\\b(real[- ]world|field performance|in practice|real records)\\b(?:[^.;()]|\\.(?=\\d)){0,40}(83\\.9|87\\.0|80\\.7)"
+     ],
+     [
+      "research transferred to the Engine",
+      "\\b(Review Engine|the Engine)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-003",
+   "claim_text": "Reviewer-level accuracy ranged from 37.5 to 100 percent (SD 21.0); 6 of 16 reviewers scored all 24 records correctly.",
+   "claim_topic": "DETECTION",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-DETECTION-ARTICLE",
+   "source_path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "source_location": "Abstract; Section 6.2, Table 2",
+   "source_hash": "FILE:7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "16 detection-panel reviewers",
+   "quantities": {
+    "value": "37.5 to 100 percent",
+    "numerator": null,
+    "denominator": "16 reviewers",
+    "denominator_required": true,
+    "unit": "reviewer-level accuracy"
+   },
+   "date_or_data_lock": "data lock 2026-08-15",
+   "limitation": "Group-level detectability is not individual-level dependability: the panel mean is not any one reviewer's expected performance.",
+   "limitation_key": "individual",
+   "permitted_wording": "Across the 16 panel reviewers, individual accuracy ranged from 37.5 to 100 percent (SD 21.0), so the panel mean is not any individual reviewer's expected performance.",
+   "prohibited_overstatement": [],
+   "public_use": "MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "37\\.5\\s+to\\s+100\\s?(%|percent)?",
+     "\\b21\\.0\\b",
+     "\\b6 of 16\\b",
+     "\\bscored 100\\s?(%|percent)"
+    ],
+    "signatures": [
+     "37\\.5\\s+to\\s+100",
+     "[Ss]ix of the panel scored 100"
+    ],
+    "qualifiers": [],
+    "prohibited": [
+     [
+      "research transferred to the Engine",
+      "\\b(Review Engine|the Engine)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-004",
+   "claim_text": "Gwet's AC1 was 0.739 for invited experts (8 raters, 36 labels) and 0.623 for regular reviewers (14 raters, 68 labels) on 10 records; analytic lower bounds 0.402 and 0.252; the pre-registered two-part criterion (point estimate at least 0.61 and lower bound at least 0.41) was not met.",
+   "claim_topic": "RELIABILITY",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-DETECTION-ARTICLE",
+   "source_path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "source_location": "Section 6.5, Table 3",
+   "source_hash": "FILE:7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "22 raters under the five-condition instrument (8 invited experts, 14 regular reviewers), 10 records with two or more raters, 104 labels after one label per rater per record (113 submitted)",
+   "quantities": {
+    "value": "AC1 0.739 / 0.623",
+    "numerator": null,
+    "denominator": "10 records; 36 and 68 labels",
+    "denominator_required": true,
+    "unit": "Gwet AC1"
+   },
+   "date_or_data_lock": "data lock 2026-08-15",
+   "limitation": "A separate, smaller sample from the detection panel. Interim: 10 records against a pooled target of about 26, wide intervals, and the pre-registered lower-bound criterion not met. Agreement is not correctness and not psychometric validation.",
+   "limitation_key": "not met",
+   "permitted_wording": "In a separate reliability sample of 10 records, Gwet's AC1 was 0.739 for invited participants and 0.623 for open enrolment. Both exceed the 0.61 point floor, but neither analytic lower bound reaches 0.41, so the pre-registered criterion was not met.",
+   "prohibited_overstatement": [
+    "reviewers reliably agree",
+    "substantial agreement",
+    "JRS is reliable",
+    "AC1 shows accuracy"
+   ],
+   "public_use": "MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "0\\.739",
+     "0\\.74\\b",
+     "0\\.623",
+     "0\\.624",
+     "0\\.63\\b",
+     "0\\.61\\b",
+     "0\\.41\\b",
+     "0\\.402",
+     "0\\.252",
+     "0\\.427",
+     "\\b22 raters\\b",
+     "\\b104 (labels|determinations)\\b",
+     "\\b113 (submitted )?(labels|determinations)\\b",
+     "\\b10 (analysed |shared )?records\\b",
+     "10-record",
+     "\\b36 labels\\b",
+     "\\b68 labels\\b"
+    ],
+    "signatures": [
+     "0\\.739",
+     "0\\.623",
+     "AC1"
+    ],
+    "qualifiers": [
+     [
+      "ten-record sample",
+      "\\b10 (analysed |shared )?records\\b|10-record|ten records|\\b10 records\\b"
+     ],
+     [
+      "criterion or interim status",
+      "not met|lower (confidence )?bound|\\b0\\.41\\b|[Ii]nterim|wide intervals"
+     ]
+    ],
+    "prohibited": [
+     [
+      "agreement labelled accuracy or validation",
+      "(0\\.739|0\\.623|AC1)(?:[^.;()]|\\.(?=\\d)){0,40}\\b(accura\\w*|validat\\w*|substantial)\\b|\\b(accura\\w*|validat\\w*|substantial)\\b(?:[^.;()]|\\.(?=\\d)){0,40}(0\\.739|0\\.623)"
+     ],
+     [
+      "research transferred to the Engine",
+      "\\b(Review Engine|the Engine)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: research.html, check.html, reviewer/index.html (PR-02, PR-06, PR-12, PR-25 (current population labels: invited / open enrolment)). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-005",
+   "claim_text": "Across 61 recorded runs between 12 June and 21 August 2026, agreement across three vendor models ranged from 66.7 to 93.3 percent, mean 85.3 percent; the study closed on 21 August 2026.",
+   "claim_topic": "CROSS_MODEL",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-STUDY001-RESOLUTION",
+   "source_path": "docs/enterprise-diligence/STUDY_001_FIGURE_RESOLUTION.md",
+   "source_location": "\"What the authoritative tables say\" and the 2026-09-20 corrected recommendation",
+   "source_hash": "FILE:90085324419b501993cb49425e3f2c52da0ee3dd0a04fe44e93ee2fbc21c4f28",
+   "evidence_class": "AUTHORITATIVE_TABLE_READ_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "three vendor models (Anthropic, OpenAI, Google), one model each; 61 recorded runs without a completeness filter (mixed denominators)",
+   "quantities": {
+    "value": "66.7 to 93.3 percent, mean 85.3 percent",
+    "numerator": null,
+    "denominator": "61 recorded runs (mixed record counts)",
+    "denominator_required": true,
+    "unit": "raw pairwise agreement"
+   },
+   "date_or_data_lock": "2026-06-12 to 2026-08-21 (closed 2026-08-21)",
+   "limitation": "Raw agreement among models, not accuracy, not human reliability and not independent validation. The pre-registered reproducibility criterion requires chance-corrected AC1, which was not computed, so it is not established. The 61 runs mix denominators. EV-FINAL-SWEEP reports the same series as 2026-06-13 to 2026-08-21, mean 0.849; the difference is not reconciled.",
+   "limitation_key": "raw",
+   "permitted_wording": "Across 61 recorded runs between 12 June and 21 August 2026, raw agreement across three models ranged from 66.7 to 93.3 percent, mean 85.3 percent. This is consistency, not accuracy; the reproducibility criterion is not established because the required AC1 was not computed.",
+   "prohibited_overstatement": [
+    "the AI is 85 percent accurate",
+    "models validate JRS",
+    "reproducibility established",
+    "independent validation by three AI vendors"
+   ],
+   "public_use": "MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION",
+   "status": "SOURCE_REPORTED_NOT_REPRODUCED",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "66\\.7",
+     "93\\.3",
+     "85\\.3\\s?(%|percent)?",
+     "\\b61 (recorded )?(mixed-denominator )?runs\\b",
+     "\\b(three|3) (vendor )?models\\b"
+    ],
+    "signatures": [
+     "66\\.7",
+     "85\\.3"
+    ],
+    "qualifiers": [
+     [
+      "61-run denominator",
+      "\\b61 (recorded )?(mixed-denominator )?runs\\b"
+     ],
+     [
+      "raw agreement only",
+      "\\braw\\b|not (accuracy|established)|consistenc|not computed"
+     ]
+    ],
+    "prohibited": [
+     [
+      "61-run range given a 15-record-window denominator",
+      "(66\\.7|85\\.3)(?:(?!82\\.2)[^.]|\\.(?=\\d)){0,80}\\b(37|41) (dated |nightly )?runs\\b|\\b(37|41) (dated |nightly )?runs\\b(?:(?!82\\.2)[^.]|\\.(?=\\d)){0,80}(66\\.7|85\\.3)"
+     ],
+     [
+      "agreement labelled accuracy, reliability or validation",
+      "(66\\.7|85\\.3)(?:[^.;()]|\\.(?=\\d)){0,60}\\b(accura\\w*|reliab\\w*|validat\\w*)\\b|\\b(accura\\w*|reliab\\w*|validat\\w*)\\b(?:[^.;()]|\\.(?=\\d)){0,40}(66\\.7|85\\.3)"
+     ],
+     [
+      "research transferred to the Engine",
+      "\\b(Review Engine|the Engine)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: reviewer/index.html, research.html (PR-15, PR-18). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-006",
+   "claim_text": "Restricted to runs that returned every record, the range was 82.2 to 93.3 percent across 37 runs at the full 15-record set (series as read on 13 August 2026); at the 15 August 2026 data lock the same series held 41 nightly runs (29 June to 15 August), mean 87.2 percent.",
+   "claim_topic": "CROSS_MODEL",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-DETECTION-ARTICLE",
+   "source_path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "source_location": "Appendix A (41 runs); EV-IP-AUDIT (37 runs, 2026-08-13); EV-STUDY001-RESOLUTION (correction of 2026-09-20)",
+   "source_hash": "FILE:7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "three vendor models on a fixed 15-record constructed set",
+   "quantities": {
+    "value": "82.2 to 93.3 percent",
+    "numerator": null,
+    "denominator": "37 runs (as of 2026-08-13) or 41 runs (2026-06-29 to 2026-08-15); never 61",
+    "denominator_required": true,
+    "unit": "raw pairwise agreement"
+   },
+   "date_or_data_lock": "37 runs: read 2026-08-13; 41 runs: data lock 2026-08-15",
+   "limitation": "37 and 41 runs are one series at two windows; 61 runs is that series without the completeness filter. None of the three counts is interchangeable with another, and neither window is the series at closure on 21 August 2026. Raw agreement only; not accuracy.",
+   "limitation_key": "15 records",
+   "permitted_wording": "Restricted to runs that returned all 15 records, raw agreement ranged from 82.2 to 93.3 percent across 37 runs (series as read on 13 August 2026).",
+   "prohibited_overstatement": [
+    "82.2 to 93.3 percent across 61 runs",
+    "82.2 to 93.3 percent at closure"
+   ],
+   "public_use": "MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION",
+   "status": "SOURCE_REPORTED_NOT_REPRODUCED",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "82\\.2",
+     "93\\.3",
+     "87\\.2\\s?(%|percent)?",
+     "\\b37 (dated )?(nightly )?runs\\b",
+     "\\b41 (nightly )?runs\\b",
+     "15-record",
+     "\\b15 (constructed )?records\\b"
+    ],
+    "signatures": [
+     "82\\.2"
+    ],
+    "qualifiers": [
+     [
+      "37- or 41-run denominator",
+      "\\b(37|41) (dated )?(nightly )?runs\\b",
+      "sentence"
+     ],
+     [
+      "15-record set",
+      "15-record|15 records"
+     ],
+     [
+      "window date",
+      "13 August|15 August|29 June",
+      "sentence"
+     ]
+    ],
+    "prohibited": [
+     [
+      "denominator swapped to 61 runs",
+      "82\\.2(?:[^.]|\\.(?=\\d)){0,60}\\b61 (recorded )?runs"
+     ],
+     [
+      "agreement labelled accuracy or validation",
+      "82\\.2(?:[^.;()]|\\.(?=\\d)){0,60}\\b(accura\\w*|validat\\w*)\\b|\\b(accura\\w*|validat\\w*)\\b(?:[^.;()]|\\.(?=\\d)){0,40}82\\.2"
+     ],
+     [
+      "research transferred to the Engine",
+      "\\b(Review Engine|the Engine)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: research.html, reviewer/index.html (PR-04, PR-06, PR-07, PR-16, PR-18 (the 37-run figure now carries its 13 August 2026 window)). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-007",
+   "claim_text": "Earlier single-run cross-vendor figures (84 percent, 86.7 percent) were each published as the latest value.",
+   "claim_topic": "CROSS_MODEL",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "REPOSITORY_DOCUMENTATION",
+   "evidence_id": "EV-STUDY001-RESOLUTION",
+   "source_path": "docs/enterprise-diligence/STUDY_001_FIGURE_RESOLUTION.md",
+   "source_location": "\"The finding\" and \"Historical figures preserved\"",
+   "source_hash": "FILE:90085324419b501993cb49425e3f2c52da0ee3dd0a04fe44e93ee2fbc21c4f28",
+   "evidence_class": "AUTHORITATIVE_TABLE_READ_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "single runs of the STUDY-001 series",
+   "quantities": {
+    "value": "84 / 86.7 percent",
+    "numerator": null,
+    "denominator": "one run each (84 percent in 4 runs, 86.7 percent in 6 runs)",
+    "denominator_required": true,
+    "unit": "raw agreement"
+   },
+   "date_or_data_lock": "mid-study snapshots before 2026-08-21",
+   "limitation": "Historical mid-study snapshots, superseded. Not current and not the series result.",
+   "limitation_key": "historical",
+   "permitted_wording": "Historical: single runs earlier in the series read 84 percent and 86.7 percent; the series closed on 21 August 2026.",
+   "prohibited_overstatement": [
+    "latest agreement 86.7 percent",
+    "cross-model agreement is 84 percent"
+   ],
+   "public_use": "HISTORICAL_CONTEXT_ONLY",
+   "status": "HISTORICAL_ONLY",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "\\b86\\.7\\s?(%|percent)",
+     "\\b84\\s?(%|percent)"
+    ],
+    "signatures": [
+     "\\b86\\.7\\s?(%|percent)",
+     "\\b84\\s?(%|percent)"
+    ],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-008",
+   "claim_text": "58 distinct people took part across three studies (61 participations): a 16-member detection panel, a 25-rater reliability study and a 20-expert comparison study.",
+   "claim_topic": "PARTICIPATION",
+   "claim_type": "PARTICIPATION_COUNT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-DETECTION-ARTICLE",
+   "source_path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "source_location": "Acknowledgments",
+   "source_hash": "FILE:7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "detection panel (16), reliability study (25 raters), comparison study (20 experts); three people in two studies",
+   "quantities": {
+    "value": "58 people",
+    "numerator": null,
+    "denominator": "three studies (61 participations)",
+    "denominator_required": false,
+    "unit": "people"
+   },
+   "date_or_data_lock": "manuscript 2026-08-29",
+   "limitation": "Participation is acknowledgment, not a result. The detection finding rests on the 16 panel members only.",
+   "limitation_key": "three studies",
+   "permitted_wording": "58 international reviewers took part across three studies.",
+   "prohibited_overstatement": [
+    "58 experts validated JRS",
+    "58 reviewers confirmed the method"
+   ],
+   "public_use": "MAY_STATE_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "\\b58 (international |distinct )?(reviewers|people|participants)\\b",
+     "\\b61 participations\\b",
+     "\\b25 raters\\b",
+     "\\b20 (independent )?experts\\b"
+    ],
+    "signatures": [
+     "\\b58 (international |distinct )?(reviewers|people)"
+    ],
+    "qualifiers": [
+     [
+      "three studies",
+      "three studies"
+     ]
+    ],
+    "prohibited": [
+     [
+      "participation presented as validation",
+      "\\b(validat\\w*|confirm\\w*|endors\\w*)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-009",
+   "claim_text": "36 completers across both arms (16 detection-panel experts and 20 comparison-study experts) each completed the full 24-record set, spanning 16 countries on 5 continents.",
+   "claim_topic": "PARTICIPATION",
+   "claim_type": "PARTICIPATION_COUNT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-TRACKER-COUNTRIES",
+   "source_path": "research/MASTER_TRACKER.md",
+   "source_location": "tracker line \"Combined: 16 countries across all 5 populated continents\"; EV-DETECTION-ARTICLE Acknowledgments for the 16 and 20",
+   "source_hash": "LINE:da6595869ddae876132f048cccc74b58a8a0bc9a0fc72d61602d520cb2284f8c",
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "36 completers of the 24-record corpus across two arms",
+   "quantities": {
+    "value": "36 completers, 16 countries",
+    "numerator": null,
+    "denominator": "two arms",
+    "denominator_required": false,
+    "unit": "people"
+   },
+   "date_or_data_lock": "completer geography as recorded in August 2026",
+   "limitation": "A geography and participation count, not a result. The 16-country figure combines both arms; the detection panel alone spans 11 countries.",
+   "limitation_key": "24-record",
+   "permitted_wording": "36 of them completed the full 24-record set, across 16 countries.",
+   "prohibited_overstatement": [],
+   "public_use": "MAY_STATE_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "\\b36 (independent )?(experts|completers|reviewers|of them)\\b",
+     "\\b16 countries\\b",
+     "\\b5 continents\\b"
+    ],
+    "signatures": [
+     "\\b36 (independent )?(experts|completers|of them)",
+     "\\b16 countries\\b"
+    ],
+    "qualifiers": [
+     [
+      "full 24-record set",
+      "24-record|24 records"
+     ]
+    ],
+    "prohibited": [
+     [
+      "completers presented as validation",
+      "\\b(validat\\w*|confirm\\w*)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-010",
+   "claim_text": "The detection panel was 16 reviewers in 11 countries on 5 continents.",
+   "claim_topic": "PARTICIPATION",
+   "claim_type": "PARTICIPATION_COUNT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-DETECTION-ARTICLE",
+   "source_path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "source_location": "Section 4.5 (data lock 2026-08-15)",
+   "source_hash": "FILE:7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "detection panel",
+   "quantities": {
+    "value": "16 reviewers, 11 countries",
+    "numerator": null,
+    "denominator": null,
+    "denominator_required": false,
+    "unit": "people"
+   },
+   "date_or_data_lock": "data lock 2026-08-15",
+   "limitation": "Geography of the panel, not a result.",
+   "limitation_key": "detection panel",
+   "permitted_wording": "The detection panel was 16 reviewers in 11 countries on 5 continents.",
+   "prohibited_overstatement": [],
+   "public_use": "MAY_STATE_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "\\b11 countries\\b",
+     "\\b5 continents\\b",
+     "\\b16 (independent |detection-panel )?(experts|reviewers)\\b"
+    ],
+    "signatures": [
+     "\\b11 countries\\b"
+    ],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-011",
+   "claim_text": "All five conditions separate a reconstructable record from an unreconstructable one, at p between 1.0e-08 and 1.5e-11 on 108 labels from 21 raters.",
+   "claim_topic": "CONDITION_BEHAVIOUR",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-DETECTION-ARTICLE",
+   "source_path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "source_location": "Appendix B (\"reported descriptively\"); EV-FINAL-SWEEP DERIVATION TEST; EV-EMPLOYMENT-MANUSCRIPT",
+   "source_hash": "FILE:7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "108 labels from 21 raters",
+   "quantities": {
+    "value": "p 1.0e-08 to 1.5e-11",
+    "numerator": null,
+    "denominator": "108 labels",
+    "denominator_required": true,
+    "unit": "p-value"
+   },
+   "date_or_data_lock": "data lock 2026-08-15",
+   "limitation": "Circular: the overall determination is built from the five conditions, so their association with it is expected by construction and is not evidence that they discriminate. The 2026-08-29 manuscript moved this analysis to an appendix with inferential language removed; the sweep records the derivation as deterministic.",
+   "limitation_key": "by construction",
+   "permitted_wording": "Because the overall determination is built from the five conditions, their association with it is expected by construction; the detection study reports it descriptively (Appendix B) and makes no discrimination claim from it.",
+   "prohibited_overstatement": [
+    "the conditions discriminate at p < 1e-8",
+    "each condition independently predicts the outcome"
+   ],
+   "public_use": "MUST_NOT_STATE_AS_EVIDENCE",
+   "status": "RETIRED",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "1\\.0e-08",
+     "1\\.5e-11",
+     "\\b108 (labels|scored determinations|determinations)\\b",
+     "\\b21 raters\\b"
+    ],
+    "signatures": [
+     "1\\.0e-08",
+     "1\\.5e-11"
+    ],
+    "qualifiers": [
+     [
+      "circularity stated",
+      "by construction|circular|descriptiv"
+     ]
+    ],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Retired as a public claim: research.html no longer presents the circular condition-separation p-values (PR-05). The record stays so the scanner flags any reintroduction."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-012",
+   "claim_text": "Study 003 collected 108 scored determinations across 10 records, distributed Gap 69 percent, Needs work 18 percent, Ready 13 percent.",
+   "claim_topic": "CONDITION_BEHAVIOUR",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-VALIDATION-REPORT",
+   "source_path": "research/JRS_Validation_Report.md",
+   "source_location": "reliability section (\"Across all determinations in this mode (108 labels)\")",
+   "source_hash": "FILE:3a8ef977bb2a3dcc468b2a00e19a9b28e8ad157630097817f3b887b7acd2206d",
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "108 labels on 10 constructed records",
+   "quantities": {
+    "value": "Gap 69 / Needs work 18 / Ready 13 percent",
+    "numerator": null,
+    "denominator": "108 labels",
+    "denominator_required": true,
+    "unit": "percent of labels"
+   },
+   "date_or_data_lock": "undated report, earlier than 2026-08-29",
+   "limitation": "A descriptive label distribution on a record set built to contain gaps; not a prevalence estimate.",
+   "limitation_key": "10 records",
+   "permitted_wording": "Study 003 recorded 108 determinations across 10 records: Gap 69 percent, Needs work 18 percent, Ready 13 percent.",
+   "prohibited_overstatement": [],
+   "public_use": "MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION",
+   "status": "SOURCE_REPORTED_NOT_REPRODUCED",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "\\b69\\s?(%|percent)",
+     "\\b18\\s?(%|percent)",
+     "\\b13\\s?(%|percent)",
+     "\\b108 (scored )?determinations\\b",
+     "\\b10 records\\b"
+    ],
+    "signatures": [
+     "Gap 69"
+    ],
+    "qualifiers": [
+     [
+      "ten records",
+      "10 records"
+     ]
+    ],
+    "prohibited": [
+     [
+      "distribution presented as prevalence",
+      "\\b(prevalen\\w*|real[- ]world)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-013",
+   "claim_text": "In Study 014, on 29 texts, a reader given only a summary answered 77 percent of masked factual questions correctly, against 97 percent from the original.",
+   "claim_topic": "DRR_STUDY",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-CLAIM-RECONCILIATION",
+   "source_path": "docs/architecture/PUBLIC_CLAIM_RECONCILIATION_2026-10-06.md",
+   "source_location": "P-10 (verified against research/study-014-drr/RESULTS.md on branch claude/engine-eval-v8-2026-10-01)",
+   "source_hash": "FILE:f066bb8e5be97a91568f805f1ad9a735669ce0e32c7c8c0bf48c9f3c60f7057f",
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "29 texts; the reader was a model (Sonnet 5.5), and only one model's concise summaries were tested",
+   "quantities": {
+    "value": "77 / 97 percent",
+    "numerator": null,
+    "denominator": "29 texts",
+    "denominator_required": true,
+    "unit": "percent of masked questions answered correctly"
+   },
+   "date_or_data_lock": "October 2026",
+   "limitation": "The reader was an AI model, not a person, and only one model's summaries were tested. Research about AI drafting tools, not Engine output and not a DRR score.",
+   "limitation_key": "AI reader",
+   "permitted_wording": "On 29 of those texts, an AI reader given only one model's concise summary answered 77 percent of masked factual questions correctly, against 97 percent from the original.",
+   "prohibited_overstatement": [
+    "readers lose 20 percent of the facts",
+    "the Engine measures DRR at 77 percent"
+   ],
+   "public_use": "MAY_STATE_WITH_LIMITATION",
+   "status": "SOURCE_REPORTED_NOT_REPRODUCED",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "\\b29 (of those )?texts\\b",
+     "\\b77\\s?(%|percent)",
+     "\\b97\\s?(%|percent)"
+    ],
+    "signatures": [
+     "\\b77\\s?(%|percent)"
+    ],
+    "qualifiers": [
+     [
+      "the reader was a model",
+      "AI reader|model reader|a model|Sonnet"
+     ]
+    ],
+    "prohibited": [
+     [
+      "research transferred to the Engine",
+      "\\b(Review Engine|the Engine)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Wording repaired on decision-reconstruction-risk.html (PR-13): the reader is named as an AI reader. The figures remain source-reported."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-014",
+   "claim_text": "Candidate quotations and anchors are checked to locate exact text in the source record; quotations the record does not contain are withheld.",
+   "claim_topic": "ENGINE_SOURCE_GROUNDING",
+   "claim_type": "CONTROL_STATEMENT",
+   "surface": "REPOSITORY_DOCUMENTATION",
+   "evidence_id": "EV-SOURCE-GROUNDING-TESTS",
+   "source_path": "tests/engine-candidate/source-prep.test.mjs",
+   "source_location": "source-prep and packet anchor tests",
+   "source_hash": "FILE:3842b714102dc13ab94a26cb0992925392223e11bba79483762508a9c22f458a",
+   "evidence_class": "SOURCE_GROUNDING_TEST",
+   "reproduction": "REPRODUCED_IN_REPOSITORY",
+   "population": "constructed SYNTHETIC fixtures",
+   "quantities": null,
+   "date_or_data_lock": "2026-10-06",
+   "limitation": "Exact quotation presence is not semantic support: an anchor shows where text sits in the record, not that it supports the finding or that the finding is correct.",
+   "limitation_key": "not semantic support",
+   "permitted_wording": "In local tests on constructed fixtures, each candidate quotation is checked to occur exactly in the record. This is not semantic support for the finding.",
+   "prohibited_overstatement": [
+    "quotations prove the finding",
+    "source-grounded findings are correct",
+    "hallucination-free"
+   ],
+   "public_use": "INTERNAL_ONLY",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "ENGINE_DEVELOPMENT_ONLY",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-015",
+   "claim_text": "Each candidate result records the prompt version and hash, the adapter contract and the model identity, and every run in the repository uses a mock adapter.",
+   "claim_topic": "ENGINE_PROVENANCE",
+   "claim_type": "CONTROL_STATEMENT",
+   "surface": "REPOSITORY_DOCUMENTATION",
+   "evidence_id": "EV-PROMPT-PROVENANCE-TESTS",
+   "source_path": "tests/engine-candidate/contract.test.mjs",
+   "source_location": "contract and candidate tests",
+   "source_hash": "FILE:b0d2fe9e98f4f79e04ee741141b1d8db55f146e7e4a23bd4c66e5a561c648169",
+   "evidence_class": "LOCAL_TEST",
+   "reproduction": "REPRODUCED_IN_REPOSITORY",
+   "population": "mocked local runs",
+   "quantities": null,
+   "date_or_data_lock": "2026-10-06",
+   "limitation": "Provenance of a mocked local run. No provider was called; this says nothing about any real model's behaviour.",
+   "limitation_key": "mock",
+   "permitted_wording": "In the repository, every candidate run uses a mock adapter, and each result records its prompt hash and adapter contract.",
+   "prohibited_overstatement": [
+    "provider-verified",
+    "model behaviour tested"
+   ],
+   "public_use": "INTERNAL_ONLY",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "ENGINE_DEVELOPMENT_ONLY",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-016",
+   "claim_text": "The local candidate was run with a mock adapter over a 15-record constructed development corpus (corpus 0.1.0).",
+   "claim_topic": "ENGINE_LOCAL_EVALUATION",
+   "claim_type": "DESCRIPTIVE",
+   "surface": "REPOSITORY_DOCUMENTATION",
+   "evidence_id": "EV-CANDIDATE-EVAL",
+   "source_path": "tests/engine-candidate/eval/records/EVAL_corpus-0.1.0_candidate-0.5.0-local.1.json",
+   "source_location": "label field",
+   "source_hash": "FILE:195efc0129aa0592ef57efb1dfbce11d5bb2b6269afced3b80aafa9b0cb7b704",
+   "evidence_class": "MOCK_OR_FIXTURE",
+   "reproduction": "REPRODUCED_IN_REPOSITORY",
+   "population": "15 constructed development records",
+   "quantities": {
+    "value": "15 records",
+    "numerator": null,
+    "denominator": "15 constructed records",
+    "denominator_required": true,
+    "unit": "records"
+   },
+   "date_or_data_lock": "candidate 0.5.0-local.1",
+   "limitation": "Constructed-development evidence only, with a mock adapter: not a measure of accuracy, reliability or validity, and not evidence about any real model or real record.",
+   "limitation_key": "mock",
+   "permitted_wording": "A local run with a mock adapter over 15 constructed development records; not a measure of accuracy, reliability or validity.",
+   "prohibited_overstatement": [
+    "the Engine passed its evaluation",
+    "Engine accuracy on 15 records"
+   ],
+   "public_use": "INTERNAL_ONLY",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "ENGINE_DEVELOPMENT_ONLY",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-017",
+   "claim_text": "24 source-preparation regression cases were written before the first run, including hard cases where the heuristics are expected to be wrong.",
+   "claim_topic": "ENGINE_REGRESSION",
+   "claim_type": "DESCRIPTIVE",
+   "surface": "REPOSITORY_DOCUMENTATION",
+   "evidence_id": "EV-CANDIDATE-REGRESSION",
+   "source_path": "tests/engine-candidate/regression/cases.json",
+   "source_location": "status, material and cases fields",
+   "source_hash": "FILE:dd8d3d24c8739f8429caebb751177bb97d874be258f54e06ec4646ecdea5f3fb",
+   "evidence_class": "LOCAL_TEST",
+   "reproduction": "REPRODUCED_IN_REPOSITORY",
+   "population": "24 constructed regression cases",
+   "quantities": {
+    "value": "24 cases",
+    "numerator": null,
+    "denominator": "24 cases",
+    "denominator_required": true,
+    "unit": "cases"
+   },
+   "date_or_data_lock": "set 0.1.0",
+   "limitation": "Tests a deterministic checker on constructed text. Known divergences are recorded, not hidden. No model is involved.",
+   "limitation_key": "constructed",
+   "permitted_wording": "24 constructed regression cases test the deterministic source-preparation checker; known divergences are recorded.",
+   "prohibited_overstatement": [],
+   "public_use": "INTERNAL_ONLY",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "ENGINE_DEVELOPMENT_ONLY",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-018",
+   "claim_text": "Release gates: RG-1 BLOCKED, RG-2 BLOCKED, RG-3 NOT_ASSESSED, RG-4 BLOCKED, RG-5 BLOCKED; conclusion INCOMPLETE_GATES_OPEN.",
+   "claim_topic": "RELEASE_GATE",
+   "claim_type": "STATUS_STATEMENT",
+   "surface": "REPOSITORY_DOCUMENTATION",
+   "evidence_id": "EV-RELEASE-GATE-REPORT",
+   "source_path": "docs/architecture/CURRENT_RELEASE_GATE_REPORT.md",
+   "source_location": "gate summary table",
+   "source_hash": "FILE:ce3a188dbc79fc22f8d2a05d815c7e9f09d42aee53db6ddd361793141db4be20",
+   "evidence_class": "REPOSITORY_CONTROL_RECORD",
+   "reproduction": "REPRODUCED_IN_REPOSITORY",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": "2026-10-06",
+   "limitation": "No gate has passed; nothing is released.",
+   "limitation_key": "BLOCKED",
+   "permitted_wording": "No release gate has passed: four are BLOCKED and one is NOT_ASSESSED.",
+   "prohibited_overstatement": [
+    "the Engine passed its release gates",
+    "release-ready"
+   ],
+   "public_use": "MAY_STATE_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "ENGINE_EVIDENCE_SEPARATE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-019",
+   "claim_text": "The public review routes refuse every submission with 503 and make no call to a model provider.",
+   "claim_topic": "ENGINE_ROUTE_STATUS",
+   "claim_type": "CONTROL_STATEMENT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-ROUTE-TESTS",
+   "source_path": "tests/engine/auth-matrix.mjs",
+   "source_location": "auth matrix and scripts/test_review_incomplete.mjs",
+   "source_hash": "FILE:37cfd056ec9b565e6229cee17f338426d196678ccb2bf8a7653f78400e6d522c",
+   "evidence_class": "LOCAL_TEST",
+   "reproduction": "REPRODUCED_IN_REPOSITORY",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": "2026-10-06",
+   "limitation": "The tests check repository code; that production serves the same bytes is verified separately by deploy-verify.",
+   "limitation_key": "refuse",
+   "permitted_wording": "The review routes on this site refuse submissions and make no call to any model provider.",
+   "prohibited_overstatement": [],
+   "public_use": "MAY_STATE_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "ENGINE_EVIDENCE_SEPARATE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-020",
+   "claim_text": "Earlier implementations sent record text to a model provider, truncated it to 8,000 characters, used per-organisation tokens and kept stored model output for 90 days.",
+   "claim_topic": "PRIVACY_SECURITY",
+   "claim_type": "STATUS_STATEMENT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-CLAIM-RECONCILIATION",
+   "source_path": "docs/architecture/PUBLIC_CLAIM_RECONCILIATION_2026-10-06.md",
+   "source_location": "P-1 and P-2, and the repaired history sections",
+   "source_hash": "FILE:f066bb8e5be97a91568f805f1ad9a735669ce0e32c7c8c0bf48c9f3c60f7057f",
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "reproduction": "SOURCE_REPORTED",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": "before 2026-10-04",
+   "limitation": "Historical: the data flow is no longer active. Whether stored output remains is NOT ESTABLISHED, and no deletion is asserted.",
+   "limitation_key": "historical",
+   "permitted_wording": "Historical: an earlier implementation sent record text to a model provider; that data flow is no longer active.",
+   "prohibited_overstatement": [
+    "record text is sent to Anthropic",
+    "kept for 90 days and then removed"
+   ],
+   "public_use": "HISTORICAL_CONTEXT_ONLY",
+   "status": "HISTORICAL_ONLY",
+   "engine_relationship": "ENGINE_EVIDENCE_SEPARATE",
+   "scan": {
+    "figures": [
+     "\\b90 days\\b",
+     "8,000 characters"
+    ],
+    "signatures": [
+     "\\b90 days\\b",
+     "8,000 characters"
+    ],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-021",
+   "claim_text": "Row-level security is enabled on these tables with no public read access.",
+   "claim_topic": "PRIVACY_SECURITY",
+   "claim_type": "CONTROL_STATEMENT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-PRIVACY-PAGE",
+   "source_path": "privacy.html",
+   "source_location": "privacy.html section 4",
+   "source_hash": "LINE:edac094986be03ef6d52e769cbcb93eab4769946f39b722492397ddd0cc4da26",
+   "evidence_class": "POLICY_OR_WEBSITE_STATEMENT",
+   "reproduction": "SOURCE_REPORTED",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": "page updated 2026-10-06",
+   "limitation": "A website statement, not proof that a live control executes. B-013 records one table readable with the public key on 2026-09-15 (zero rows). No operator-control evidence exists (RG-2 BLOCKED).",
+   "limitation_key": "operator",
+   "permitted_wording": "Not to be restated until operator-control evidence exists.",
+   "prohibited_overstatement": [
+    "data is secure",
+    "no public access is possible"
+   ],
+   "public_use": "NOT_FOR_PUBLIC_RESTATEMENT",
+   "status": "NOT_ASSESSED",
+   "engine_relationship": "NOT_APPLICABLE",
+   "scan": {
+    "figures": [],
+    "signatures": [
+     "Row-level security is enabled"
+    ],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-022",
+   "claim_text": "CEP Magazine (SCCE) accepted \"When the Record Cannot Speak for Itself\" on 16 July 2026 for the November 2026 issue.",
+   "claim_topic": "PUBLICATION_STATUS",
+   "claim_type": "PUBLICATION_STATEMENT",
+   "surface": "RESTRICTED_SURFACE",
+   "evidence_id": "EV-CEP-FILE",
+   "source_path": "research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md",
+   "source_location": "file header",
+   "source_hash": "FILE:53f341e5e6383aab6c6dfcd19b95d494499d31d1cc37879bbc35a021a41ddf89",
+   "evidence_class": "AUTHOR_STATEMENT",
+   "reproduction": "SOURCE_REPORTED",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": "accepted 2026-07-16",
+   "limitation": "The acceptance is stated in the author's file header; the editor's message is not in the repository. A practitioner magazine acceptance is not peer review of the research.",
+   "limitation_key": "magazine",
+   "permitted_wording": "An article was accepted by CEP Magazine for its November 2026 issue (practitioner magazine).",
+   "prohibited_overstatement": [
+    "peer-reviewed publication",
+    "published research validates JRS"
+   ],
+   "public_use": "INTERNAL_ONLY",
+   "status": "SOURCE_REPORTED_NOT_REPRODUCED",
+   "engine_relationship": "NOT_APPLICABLE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-023",
+   "claim_text": "\"PUBLICATION CONFIRMED = Journal of Business Ethics (2026-07-17).\"",
+   "claim_topic": "PUBLICATION_STATUS",
+   "claim_type": "PUBLICATION_STATEMENT",
+   "surface": "REPOSITORY_DOCUMENTATION",
+   "evidence_id": "EV-TRACKER-JBE",
+   "source_path": "research/MASTER_TRACKER.md",
+   "source_location": "tracker line of 2026-07-17",
+   "source_hash": "LINE:c74624476a861928aaecd398a09bbc499512628d28d34a6c2b101ceefe019faf",
+   "evidence_class": "CONTEMPORANEOUS_PROJECT_RECORD",
+   "reproduction": "SOURCE_REPORTED",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": "2026-07-17",
+   "limitation": "Historical tracker wording that names a target journal. It records no submission outcome and is not an acceptance.",
+   "limitation_key": "target",
+   "permitted_wording": "Historical: the Journal of Business Ethics was chosen as the target venue on 17 July 2026.",
+   "prohibited_overstatement": [
+    "published in the Journal of Business Ethics",
+    "accepted by the Journal of Business Ethics"
+   ],
+   "public_use": "INTERNAL_ONLY",
+   "status": "HISTORICAL_ONLY",
+   "engine_relationship": "NOT_APPLICABLE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-024",
+   "claim_text": "A submission to Corporate Compliance Insights received an editor reply on 28 August 2026 citing overlap and inviting a revised version with a different focus.",
+   "claim_topic": "PUBLICATION_STATUS",
+   "claim_type": "PUBLICATION_STATEMENT",
+   "surface": "INTERNAL_ONLY",
+   "evidence_id": "EV-CCI-RESPONSE",
+   "source_path": "research/CCI_Editor_Response_Gaskin_2026-08-28.pdf",
+   "source_location": "editor reply",
+   "source_hash": "FILE:6702248c30311efce972cfa56e98a2aa8a01bf1ed6269063133872d24b1b363c",
+   "evidence_class": "CONTEMPORANEOUS_COMMUNICATION",
+   "reproduction": "SOURCE_REPORTED",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": "2026-08-28",
+   "limitation": "An editor reply inviting a revision; not an acceptance.",
+   "limitation_key": "not an acceptance",
+   "permitted_wording": "Internal: an editor reply invited a revised version; this is not an acceptance.",
+   "prohibited_overstatement": [],
+   "public_use": "INTERNAL_ONLY",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "NOT_APPLICABLE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-025",
+   "claim_text": "Nothing on this page is presented as validated. The programme is in its operational validation phase.",
+   "claim_topic": "RESEARCH_STATUS",
+   "claim_type": "STATUS_STATEMENT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-HANDOFF",
+   "source_path": "docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md",
+   "source_location": "research-summary.html; the handoff position that general-purpose validation is not established",
+   "source_hash": "FILE:ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "evidence_class": "REPOSITORY_CONTROL_RECORD",
+   "reproduction": "SOURCE_REPORTED",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": "2026-10-06",
+   "limitation": "\"Operational validation phase\" names a research stage. It does not mean that any validation is complete, and it says nothing about the Engine.",
+   "limitation_key": "nothing on this page is presented as validated",
+   "permitted_wording": "Nothing on this page is presented as validated; the research programme is ongoing.",
+   "prohibited_overstatement": [],
+   "public_use": "MAY_STATE_WITH_LIMITATION",
+   "status": "RETIRED",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [],
+    "signatures": [
+     "operational validation phase"
+    ],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Retired: research-summary.html no longer calls the programme an \"operational validation phase\" (PR-23, PR-24)."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-026",
+   "claim_text": "The Review Engine is production-ready, independently validated, licensing-ready, sale-ready, compliant, defensible or enterprise-ready.",
+   "claim_topic": "ENGINE_STATUS",
+   "claim_type": "PROHIBITED_CLAIM",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-NONE",
+   "source_path": null,
+   "source_location": "none",
+   "source_hash": null,
+   "evidence_class": "NONE",
+   "reproduction": "NOT_APPLICABLE",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": null,
+   "limitation": "No evidence supports any of these. Every release gate is closed, and the handoff describes the Engine as a controlled local-development candidate.",
+   "limitation_key": "not",
+   "permitted_wording": "The Review Engine is a controlled local-development candidate. It is not validated and not available for use.",
+   "prohibited_overstatement": [
+    "production-ready",
+    "independently validated",
+    "licensing-ready",
+    "sale-ready",
+    "compliant",
+    "defensible",
+    "enterprise-ready"
+   ],
+   "public_use": "MUST_NOT_STATE",
+   "status": "NOT_SUPPORTED",
+   "engine_relationship": "ENGINE_EVIDENCE_SEPARATE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-027",
+   "claim_text": "JRS research findings validate the Review Engine.",
+   "claim_topic": "ENGINE_STATUS",
+   "claim_type": "PROHIBITED_CLAIM",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-NONE",
+   "source_path": null,
+   "source_location": "none",
+   "source_hash": null,
+   "evidence_class": "NONE",
+   "reproduction": "NOT_APPLICABLE",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": null,
+   "limitation": "The research measured human reviewers and model consistency on constructed records. It is not evidence about the Engine.",
+   "limitation_key": "not",
+   "permitted_wording": "The research concerns the JRS methodology. It does not validate the Engine.",
+   "prohibited_overstatement": [
+    "the Engine is backed by 83.9 percent accuracy",
+    "validated by our research"
+   ],
+   "public_use": "MUST_NOT_STATE",
+   "status": "NOT_SUPPORTED",
+   "engine_relationship": "ENGINE_EVIDENCE_SEPARATE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-028",
+   "claim_text": "The JRS methodology is validated (generally, independently or psychometrically).",
+   "claim_topic": "METHODOLOGY",
+   "claim_type": "PROHIBITED_CLAIM",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-NONE",
+   "source_path": null,
+   "source_location": "none",
+   "source_hash": null,
+   "evidence_class": "NONE",
+   "reproduction": "NOT_APPLICABLE",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": null,
+   "limitation": "Not established: the five conditions are not psychometrically validated, the reliability criterion was not met, and the detection result is on constructed records only.",
+   "limitation_key": "not",
+   "permitted_wording": "The research reports specific results with their limitations; it does not establish general validation.",
+   "prohibited_overstatement": [
+    "validated standard",
+    "scientifically validated",
+    "independently validated method"
+   ],
+   "public_use": "MUST_NOT_STATE",
+   "status": "NOT_SUPPORTED",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-029",
+   "claim_text": "JRS or the Review Engine is available for licensing, sale or acquisition.",
+   "claim_topic": "COMMERCIAL",
+   "claim_type": "PROHIBITED_CLAIM",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-HANDOFF",
+   "source_path": "docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md",
+   "source_location": "current operative position (no licensing, sale or acquisition pathway)",
+   "source_hash": "FILE:ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "evidence_class": "REPOSITORY_CONTROL_RECORD",
+   "reproduction": "SOURCE_REPORTED",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": null,
+   "limitation": "The handoff closes every licensing, integration and acquisition pathway; no offer exists. Rights and title are not established (CLAUDE.md Rules 4 to 8).",
+   "limitation_key": "no licensing",
+   "permitted_wording": "No licensing, sale or acquisition pathway is offered.",
+   "prohibited_overstatement": [
+    "licensing-ready",
+    "sale-ready",
+    "available for licensing"
+   ],
+   "public_use": "MUST_NOT_STATE",
+   "status": "NOT_SUPPORTED",
+   "engine_relationship": "NOT_APPLICABLE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-030",
+   "claim_text": "The Manifest schema and library have passed repository conformance and integrity tests.",
+   "claim_topic": "MANIFEST",
+   "claim_type": "CONTROL_STATEMENT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-MANIFEST-TESTS",
+   "source_path": "tests/manifest/run.mjs",
+   "source_location": "tests/manifest/run.mjs",
+   "source_hash": "FILE:34436020041e5fb53789078b265260339de820288dfb2dc13fb42be37a28cf40",
+   "evidence_class": "SCHEMA_TEST",
+   "reproduction": "REPRODUCED_IN_REPOSITORY",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": "2026-10-06",
+   "limitation": "Schema and integrity tests on fixtures. They do not validate the Engine, and a valid hash shows internal consistency, not authenticity.",
+   "limitation_key": "Engine remains unvalidated",
+   "permitted_wording": "The Manifest schema and library have passed repository conformance and integrity tests. The Engine remains unvalidated.",
+   "prohibited_overstatement": [],
+   "public_use": "MAY_STATE_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "ENGINE_EVIDENCE_SEPARATE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-031",
+   "claim_text": "Procedural quantities in implementation guidance (for example, a first pass on 3 to 5 records, groups of 1 to 5 reviewers, a minimum of 10 records per record type per quarter).",
+   "claim_topic": "PROCEDURAL_GUIDANCE",
+   "claim_type": "DESCRIPTIVE",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-NONE",
+   "source_path": null,
+   "source_location": "implementation-scenarios.html, workflow-fit.html, jrsstandard.html",
+   "source_hash": null,
+   "evidence_class": "NONE",
+   "reproduction": "NOT_APPLICABLE",
+   "population": null,
+   "quantities": null,
+   "date_or_data_lock": null,
+   "limitation": "Guidance quantities, not research findings. No study in the repository measured them; \"First gaps visible in 1-3 records\" reads as an empirical claim and is not assessed.",
+   "limitation_key": "guidance",
+   "permitted_wording": "Guidance: start with a small number of records before expanding.",
+   "prohibited_overstatement": [],
+   "public_use": "MAY_STATE_WITH_LIMITATION",
+   "status": "NOT_ASSESSED",
+   "engine_relationship": "NOT_APPLICABLE",
+   "scan": {
+    "figures": [
+     "\\b\\d+-\\d+ (records|reviewers)\\b",
+     "\\b\\d+ records per record type\\b",
+     "\\b(3|5) records\\b",
+     "\\b(1|5) reviewers\\b"
+    ],
+    "signatures": [
+     "\\b\\d+-\\d+ (records|reviewers)\\b",
+     "records per record type"
+    ],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: implementation-scenarios.html, workflow-fit.html (PR-26, PR-27 (guidance worded as guidance)). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-032",
+   "claim_text": "An exploratory crossed mixed-effects logistic model over all 384 graded reads places an average reviewer on an average record at 89.2 percent; reviewer SD 1.769 (profile interval 1.292 to 3.000); record SD 0.011 at the boundary (profile interval 0.001 to 0.556); latent-scale ICC 0.488 for reviewers and 0.0000 for records.",
+   "claim_topic": "DETECTION",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_PAGE",
+   "evidence_id": "EV-DETECTION-ARTICLE",
+   "source_path": "research/deliverables_2026-08-29/Detection_Article_2026-08-29.md",
+   "source_location": "Appendix C, \"What this answers\" and \"The record component is estimated at the boundary\"",
+   "source_hash": "FILE:7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "384 graded reads from 16 reviewers on 24 constructed records",
+   "quantities": {
+    "value": "89.2 percent intercept",
+    "numerator": null,
+    "denominator": "384 graded reads",
+    "denominator_required": true,
+    "unit": "model-estimated accuracy"
+   },
+   "date_or_data_lock": "data lock 2026-08-15",
+   "limitation": "Exploratory, added after pre-registration. The record component is weakly identified and must not be read as zero. Constructed corpus only.",
+   "limitation_key": "exploratory",
+   "permitted_wording": "An exploratory crossed model over the 384 graded reads on the constructed corpus places an average reviewer on an average record at 89.2 percent; the record component is weakly identified.",
+   "prohibited_overstatement": [
+    "records do not differ in difficulty",
+    "JRS is 89 percent accurate"
+   ],
+   "public_use": "MAY_STATE_HISTORIC_RESULT_WITH_LIMITATION",
+   "status": "SUPPORTED_WITH_LIMITATION",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [
+     "89\\.2\\s?(%|percent)?",
+     "\\b0\\.011\\b",
+     "\\b0\\.001\\b",
+     "\\b0\\.556\\b",
+     "\\b0\\.488\\b",
+     "\\b384 graded reads\\b"
+    ],
+    "signatures": [
+     "89\\.2",
+     "0\\.488",
+     "1\\.769"
+    ],
+    "qualifiers": [
+     [
+      "exploratory status",
+      "[Ee]xploratory"
+     ]
+    ],
+    "prohibited": [
+     [
+      "research transferred to the Engine",
+      "\\b(Review Engine|the Engine)\\b"
+     ]
+    ]
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Public wording repaired on the draft branch: research-summary.html (PR-10, PR-17). The scanner confirms the old issue is absent. Not published until the owner approves a merge."
+    }
+   ]
+  },
+  {
+   "claim_id": "CL-033",
+   "claim_text": "The methods paper download states that independent reviewers reached substantial agreement (AC1 0.74 experts, 0.63 trained reviewers, 10 records), that cross-vendor AI agreement averaged 84 percent across 15 constructed records, and that the findings support reproducible application and substantial inter-rater reliability.",
+   "claim_topic": "RELIABILITY",
+   "claim_type": "NUMERICAL_RESULT",
+   "surface": "PUBLIC_DOWNLOAD",
+   "evidence_id": "EV-METHODS-PDF",
+   "source_path": "JRS_Reliability_Accuracy.pdf",
+   "source_location": "Abstract, \"Results and interpretation\"; repeated in the results tables",
+   "source_hash": "FILE:64bb9f80dd9f914210a7eb52ebf6a3f42cd16faa0b885aa22140d7995632b2b8",
+   "evidence_class": "MANUSCRIPT_REPORTED",
+   "reproduction": "SOURCE_REPORTED",
+   "population": "10 records (reliability); 15 constructed records (cross-vendor)",
+   "quantities": {
+    "value": "AC1 0.74 / 0.63; 84 percent",
+    "numerator": null,
+    "denominator": "10 records; 15 constructed records",
+    "denominator_required": true,
+    "unit": "AC1; raw agreement"
+   },
+   "date_or_data_lock": "draft, cross-vendor figure as of 2026-07-06",
+   "limitation": "Superseded. The 2026-08-29 manuscript reports the pre-registered two-part reliability criterion not met and drops \"substantial\"; the cross-vendor series closed with 61 runs and its reproducibility criterion is not established. \"Reproducible application\" is therefore not supported.",
+   "limitation_key": "superseded",
+   "permitted_wording": "Historical draft, superseded: it reported AC1 0.74 and 0.63 on 10 records and cross-vendor agreement of 84 percent on 15 constructed records; the current results are in the 29 August 2026 manuscript.",
+   "prohibited_overstatement": [
+    "substantial agreement",
+    "support reproducible application",
+    "substantial inter-rater reliability"
+   ],
+   "public_use": "HISTORICAL_CONTEXT_ONLY",
+   "status": "HISTORICAL_ONLY",
+   "engine_relationship": "NO_ENGINE_INFERENCE",
+   "scan": {
+    "figures": [],
+    "signatures": [],
+    "qualifiers": [],
+    "prohibited": []
+   },
+   "review_history": [
+    {
+     "date": "2026-10-06",
+     "change": "Registered by the claim-provenance package from repository-visible evidence. No figure recalculated."
+    },
+    {
+     "date": "2026-10-06",
+     "change": "Supersession notice in place (PD-01): methods-paper-notice.html; research.html and research-summary.html link to the notice, and the PDF is unchanged."
+    }
+   ]
+  }
+ ]
+}

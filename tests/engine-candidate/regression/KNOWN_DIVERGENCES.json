@@ -1,0 +1,115 @@
+{
+ "_note": "Divergences between source-prep.js and the expectations committed before the first run (fd6a58a). Recorded as observed on 2026-10-06 against source-prep/0.1.0. Not fixed: a fix tuned on these same cases would only show that it fits them, so any fix must also be checked on new constructed cases written before the fix is run. The runner fails if a divergence appears, disappears or changes, so this record is kept equal to the code. UPDATE 2026-10-06: all six were resolved in source-prep/0.3.0. Each entry keeps its original observation and gains resolved_in and resolution; the runner now requires these cases to match.",
+ "source_prep_version": "source-prep/0.3.0",
+ "observations": [
+  "R02 matches, but its exception basis is recognised only because the word 'given' appears in 'Approval was given', not from its basis clause 'on the basis that'. A correct result for the wrong reason.",
+  "2026-10-06: re-run against source-prep/0.2.0 (instruction-like text detection added). The same 18 cases match and the same six divergences recur, unchanged; no regression case contains instruction-like text."
+ ],
+ "divergences": {
+  "R18": {
+   "diffs": [
+    "codes expected [] got [assertion_without_basis]"
+   ],
+   "class": "false alarm",
+   "consequence": "low",
+   "explanation": "The word list treats any 'clearly' as an assertion without basis. A finding a reviewer can dismiss; nothing is refused.",
+   "first_observed": "2026-10-06",
+   "status": "RESOLVED (history preserved; the original observation above is unchanged)",
+   "resolved_in": "source-prep/0.3.0",
+   "resolution": {
+    "date": "2026-10-06",
+    "general_rule": "'clearly' followed by a presentation or perception word ('printed') is descriptive",
+    "evidence": "Re-run of this 24-case set against source-prep/0.3.0: the case now matches its expectation, which was not edited (fd6a58a). Confirmation corpus v0.1.0 (759ea86, committed before the fix): 47 of 47 after the fix, 24 of 47 before it.",
+    "limit": "The same author wrote the confirmation cases and the rule, with the intended rule in mind. The result shows the rule behaves as designed on constructed cases; it is not independent evidence that it generalises."
+   }
+  },
+  "R19": {
+   "diffs": [
+    "refusal expected null got partial_input",
+    "codes expected [] got [ends_mid_sentence]"
+   ],
+   "class": "false refusal",
+   "consequence": "medium",
+   "explanation": "A complete record ending on a heading-style line ('Access end: 31 May 2026') is refused as partial. Refusal is the safe direction, but it blocks a valid record from being examined.",
+   "first_observed": "2026-10-06",
+   "status": "RESOLVED (history preserved; the original observation above is unchanged)",
+   "resolved_in": "source-prep/0.3.0",
+   "resolution": {
+    "date": "2026-10-06",
+    "general_rule": "a final line that is a label and value is complete unless it ends on a function word",
+    "evidence": "Re-run of this 24-case set against source-prep/0.3.0: the case now matches its expectation, which was not edited (fd6a58a). Confirmation corpus v0.1.0 (759ea86, committed before the fix): 47 of 47 after the fix, 24 of 47 before it.",
+    "limit": "The same author wrote the confirmation cases and the rule, with the intended rule in mind. The result shows the rule behaves as designed on constructed cases; it is not independent evidence that it generalises."
+   }
+  },
+  "R20": {
+   "diffs": [
+    "codes expected [] got [profile_element_not_found]",
+    "elements_missing expected [] got [date]"
+   ],
+   "class": "false alarm",
+   "consequence": "low",
+   "explanation": "Ordinal dates ('June 9th, 2026') are not recognised, so a date present in the record is reported as absent.",
+   "first_observed": "2026-10-06",
+   "status": "RESOLVED (history preserved; the original observation above is unchanged)",
+   "resolved_in": "source-prep/0.3.0",
+   "resolution": {
+    "date": "2026-10-06",
+    "general_rule": "full dates include ordinal suffixes and written-out ordinal days",
+    "evidence": "Re-run of this 24-case set against source-prep/0.3.0: the case now matches its expectation, which was not edited (fd6a58a). Confirmation corpus v0.1.0 (759ea86, committed before the fix): 47 of 47 after the fix, 24 of 47 before it.",
+    "limit": "The same author wrote the confirmation cases and the rule, with the intended rule in mind. The result shows the rule behaves as designed on constructed cases; it is not independent evidence that it generalises."
+   }
+  },
+  "R21": {
+   "diffs": [
+    "codes expected [] got [referenced_material_not_in_record]"
+   ],
+   "class": "false alarm",
+   "consequence": "low",
+   "explanation": "The attachment check cannot tell when the referenced material is reproduced in the record itself.",
+   "first_observed": "2026-10-06",
+   "status": "RESOLVED (history preserved; the original observation above is unchanged)",
+   "resolved_in": "source-prep/0.3.0",
+   "resolution": {
+    "date": "2026-10-06",
+    "general_rule": "an attachment reference is not reported when the same sentence says the material is reproduced here or below",
+    "evidence": "Re-run of this 24-case set against source-prep/0.3.0: the case now matches its expectation, which was not edited (fd6a58a). Confirmation corpus v0.1.0 (759ea86, committed before the fix): 47 of 47 after the fix, 24 of 47 before it.",
+    "limit": "The same author wrote the confirmation cases and the rule, with the intended rule in mind. The result shows the rule behaves as designed on constructed cases; it is not independent evidence that it generalises."
+   }
+  },
+  "R22": {
+   "diffs": [
+    "codes expected [off_record_reference] got []"
+   ],
+   "class": "miss",
+   "consequence": "medium",
+   "explanation": "'Per the phone call' is not matched because of the extra word 'phone'. An off-record source goes unreported.",
+   "first_observed": "2026-10-06",
+   "status": "RESOLVED (history preserved; the original observation above is unchanged)",
+   "resolved_in": "source-prep/0.3.0",
+   "resolution": {
+    "date": "2026-10-06",
+    "general_rule": "conversation words after a reference word ('per the phone call') are off-record references",
+    "evidence": "Re-run of this 24-case set against source-prep/0.3.0: the case now matches its expectation, which was not edited (fd6a58a). Confirmation corpus v0.1.0 (759ea86, committed before the fix): 47 of 47 after the fix, 24 of 47 before it.",
+    "limit": "The same author wrote the confirmation cases and the rule, with the intended rule in mind. The result shows the rule behaves as designed on constructed cases; it is not independent evidence that it generalises."
+   }
+  },
+  "R23": {
+   "diffs": [
+    "codes expected [] got [profile_element_not_found]",
+    "elements_missing expected [] got [request]"
+   ],
+   "class": "false alarm",
+   "consequence": "low",
+   "explanation": "'Asked for' is not recognised as a request; only the word 'request' is.",
+   "first_observed": "2026-10-06",
+   "status": "RESOLVED (history preserved; the original observation above is unchanged)",
+   "resolved_in": "source-prep/0.3.0",
+   "resolution": {
+    "date": "2026-10-06",
+    "general_rule": "request verbs and phrases ('asked for', 'applied for', 'sought') count as a request; 'asked about' does not",
+    "evidence": "Re-run of this 24-case set against source-prep/0.3.0: the case now matches its expectation, which was not edited (fd6a58a). Confirmation corpus v0.1.0 (759ea86, committed before the fix): 47 of 47 after the fix, 24 of 47 before it.",
+    "limit": "The same author wrote the confirmation cases and the rule, with the intended rule in mind. The result shows the rule behaves as designed on constructed cases; it is not independent evidence that it generalises."
+   }
+  }
+ }
+}

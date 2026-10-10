@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "jrs-release-gate-record/0.1.0",
+  "title": "JRS internal release-gate record",
+  "description": "INTERNAL. A machine-readable record of release-gate evidence for one named Review Engine version. Not deployed, not public, and distinct from the public Decision Reconstruction Manifest. The structure is checked by lib/release-gate/schema-check.js; the cross-field rules (what may satisfy PASS, prerequisites, engine binding) are checked by lib/release-gate/validator.js.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "release_package", "as_of", "record_author", "engine", "evidence", "gates", "package_limitations", "authorizations_created"],
+  "properties": {
+    "schema_version": { "type": "string", "enum": ["jrs-release-gate-record/0.1.0"] },
+    "release_package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["package_id", "package_version", "record_kind", "is_public_manifest", "distinct_from"],
+      "properties": {
+        "package_id": { "type": "string", "pattern": "^JRS-RGP-[0-9]{8}-[A-Z0-9-]{1,40}$" },
+        "package_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "record_kind": { "type": "string", "const": "internal_release_gate_record" },
+        "is_public_manifest": { "type": "boolean", "const": false },
+        "distinct_from": { "type": "string", "const": "jrs-decision-reconstruction-manifest" }
+      }
+    },
+    "as_of": { "$ref": "#/$defs/date" },
+    "record_author": { "$ref": "#/$defs/text" },
+    "engine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["engine_version", "candidate_source_commit", "prompt_version", "prompt_sha256", "configuration_identity"],
+      "properties": {
+        "engine_version": { "$ref": "#/$defs/text" },
+        "candidate_source_commit": { "$ref": "#/$defs/commit" },
+        "prompt_version": { "$ref": "#/$defs/text" },
+        "prompt_sha256": { "$ref": "#/$defs/sha256" },
+        "configuration_identity": { "$ref": "#/$defs/text" }
+      }
+    },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence_item" } },
+    "gates": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/gate" } },
+    "package_limitations": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/text" } },
+    "authorizations_created": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["production", "licensing", "sale", "evaluation", "real_record_use"],
+      "properties": {
+        "production": { "type": "boolean", "const": false },
+        "licensing": { "type": "boolean", "const": false },
+        "sale": { "type": "boolean", "const": false },
+        "evaluation": { "type": "boolean", "const": false },
+        "real_record_use": { "type": "boolean", "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "text": { "type": "string", "minLength": 1, "maxLength": 2000 },
+    "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "status": { "type": "string", "enum": ["NOT_ASSESSED", "PENDING", "BLOCKED", "PASS", "FAIL", "NOT_APPLICABLE"] },
+    "evidence_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_id", "description", "evidence_class", "provenance", "artifact_kind", "reference", "sha256", "evidence_date", "applies_to_engine_version", "limitation"],
+      "properties": {
+        "evidence_id": { "type": "string", "pattern": "^E-[0-9]{3}$" },
+        "description": { "$ref": "#/$defs/text" },
+        "evidence_class": { "type": "string", "enum": ["CONSTRUCTED_FIXTURE", "MOCKED_TEST", "LOCAL_CODE_REVIEW", "SOURCE_REPORTED", "LIVE_EXECUTION", "INDEPENDENT_LABELING", "INDEPENDENT_QA", "COUNSEL_REVIEW", "OWNER_AUTHORIZATION", "OPERATOR_CONTROL_EVIDENCE"] },
+        "provenance": { "type": "string", "enum": ["constructed", "mocked", "local", "live", "independent", "source_reported", "owner_record"] },
+        "artifact_kind": { "type": "string", "enum": ["constructed_dataset", "test_output", "code_review_note", "policy_document", "documentation_statement", "source_report", "execution_log", "smoke_test_response", "monitoring_record", "access_review_export", "rotation_record", "deletion_execution_log", "restore_record", "rollback_record", "labeling_dataset", "adjudication_record", "holdout_attestation", "qa_report", "counsel_memo", "signed_authorization"] },
+        "reference": { "type": "string", "pattern": "^(git:[0-9a-f]{40}:[A-Za-z0-9._/-]{1,300}|external:[A-Za-z0-9._:/#-]{1,300})$" },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "evidence_date": { "$ref": "#/$defs/date" },
+        "applies_to_engine_version": { "$ref": "#/$defs/text" },
+        "limitation": { "$ref": "#/$defs/text" }
+      }
+    },
+    "person": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "role", "organisation", "independence_statement"],
+      "properties": {
+        "identity": { "$ref": "#/$defs/text" },
+        "role": { "$ref": "#/$defs/text" },
+        "organisation": { "$ref": "#/$defs/text" },
+        "independence_statement": { "$ref": "#/$defs/text" }
+      }
+    },
+    "owner_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision", "decided_by", "decision_date", "evidence_id"],
+      "properties": {
+        "decision": { "type": "string", "enum": ["release_authorized", "release_refused", "gate_accepted", "gate_rejected"] },
+        "decided_by": { "$ref": "#/$defs/text" },
+        "decision_date": { "$ref": "#/$defs/date" },
+        "evidence_id": { "type": "string", "pattern": "^E-[0-9]{3}$" }
+      }
+    },
+    "sub_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["control_id", "name", "status", "evidence_refs", "missing_dependencies", "not_applicable_reason"],
+      "properties": {
+        "control_id": { "type": "string", "pattern": "^RG-[1-5]\\.[0-9]{1,2}$" },
+        "name": { "$ref": "#/$defs/text" },
+        "status": { "$ref": "#/$defs/status" },
+        "evidence_refs": { "type": "array", "items": { "type": "string", "pattern": "^E-[0-9]{3}$" } },
+        "missing_dependencies": { "type": "array", "items": { "$ref": "#/$defs/text" } },
+        "not_applicable_reason": { "type": ["string", "null"] }
+      }
+    },
+    "per_condition_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["condition_key", "result", "uncertainty", "evidence_id"],
+      "properties": {
+        "condition_key": { "$ref": "#/$defs/text" },
+        "result": { "$ref": "#/$defs/text" },
+        "uncertainty": { "$ref": "#/$defs/text" },
+        "evidence_id": { "type": "string", "pattern": "^E-[0-9]{3}$" }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate_id", "gate_name", "engine_version", "candidate_source_commit", "prompt_identity", "status", "status_basis", "acceptance_criterion", "actual_result", "evidence_date", "evidence_refs", "missing_dependencies", "limitation_statement", "owner_decision", "independent_reviewer", "sub_controls", "per_condition_results"],
+      "properties": {
+        "gate_id": { "type": "string", "enum": ["RG-1", "RG-2", "RG-3", "RG-4", "RG-5"] },
+        "gate_name": { "$ref": "#/$defs/text" },
+        "engine_version": { "$ref": "#/$defs/text" },
+        "candidate_source_commit": { "$ref": "#/$defs/commit" },
+        "prompt_identity": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["prompt_version", "prompt_sha256"],
+          "properties": {
+            "prompt_version": { "$ref": "#/$defs/text" },
+            "prompt_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "status": { "$ref": "#/$defs/status" },
+        "status_basis": { "$ref": "#/$defs/text" },
+        "acceptance_criterion": { "$ref": "#/$defs/text" },
+        "actual_result": { "type": ["string", "null"] },
+        "evidence_date": { "type": ["string", "null"], "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "evidence_refs": { "type": "array", "items": { "type": "string", "pattern": "^E-[0-9]{3}$" } },
+        "missing_dependencies": { "type": "array", "items": { "$ref": "#/$defs/text" } },
+        "limitation_statement": { "$ref": "#/$defs/text" },
+        "owner_decision": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/owner_decision" }] },
+        "independent_reviewer": { "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/person" }] },
+        "sub_controls": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sub_control" } },
+        "per_condition_results": { "type": ["array", "null"], "items": { "$ref": "#/$defs/per_condition_result" } }
+      }
+    }
+  }
+}

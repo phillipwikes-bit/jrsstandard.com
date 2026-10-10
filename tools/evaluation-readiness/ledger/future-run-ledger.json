@@ -1,0 +1,31 @@
+{
+ "ledger_version": "jrs-evaluation-run-ledger/0.1.0",
+ "package_id": "JRS-EVAL-READINESS-20261007-PR39",
+ "status": "PLANNING_ONLY",
+ "rule": "Append-only. Every earlier entry stays byte-identical; each entry carries the digest of the one before.",
+ "entries": [
+  {
+   "seq": 0,
+   "created_by": {
+    "kind": "code",
+    "identity": "Claude Code session on draft PR #39"
+   },
+   "artifact_type": "planning_record",
+   "version_identity": "jrs-evaluation-readiness-registry/0.1.0 + jrs-evaluation-readiness-contract/0.1.0",
+   "digest": "fd6ce9598592dccb5348b8e715e64171b524a0ee959bb90f165c9a1041361546",
+   "timestamp": "2026-10-07T07:54:00Z",
+   "preconditions": [
+    "readiness registry committed in 7f3d47c"
+   ],
+   "evidence_status": "NOT_APPLICABLE",
+   "required_human_role": null,
+   "limitation": "Genesis planning record. It records that the readiness registry exists, as of its creation; it is not an evaluation, holds no record and advances no gate. The digest identifies the registry bytes at creation only.",
+   "release_gate_relation": {
+    "gates": [],
+    "effect": "none"
+   },
+   "prev_digest": null,
+   "entry_digest": "25b6211c95a945b191db732f10f9d0cb3046a9124404bd8c20840fe6c6746db1"
+  }
+ ]
+}

@@ -1,0 +1,2587 @@
+{
+ "matrix_version": "jrs-source-control-extraction-matrix/0.1.0",
+ "package_id": "JRS-SOURCE-ALIGNMENT-20261007-PR39",
+ "builder": "jrs-source-alignment-builder/0.1.0",
+ "receipt_sha256": "0fbe4720ac3ef2f9be34bd1ee60dab046025a6932e4472cb1f9697858fb74c59",
+ "sources": [
+  {
+   "source_id": "S01",
+   "sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "local": true,
+   "controlling_lines": [
+    1,
+    109
+   ]
+  },
+  {
+   "source_id": "S02",
+   "sha256": "57e2ec50fc431381b65048f978175e779481bb174993448cd1b475a218dad0e0",
+   "local": true,
+   "controlling_lines": [
+    1,
+    111
+   ]
+  },
+  {
+   "source_id": "S03",
+   "sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "local": true,
+   "controlling_lines": [
+    1,
+    119
+   ]
+  },
+  {
+   "source_id": "H05",
+   "sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "local": false,
+   "controlling_lines": null
+  },
+  {
+   "source_id": "D2",
+   "sha256": "31d794afa3b62faccb60ddcabb3ae0f3c22443af38804a069d0de6419bc70ed3",
+   "local": false,
+   "controlling_lines": null
+  },
+  {
+   "source_id": "D3",
+   "sha256": "963275e9a44a28f62e345b7db21bfd548e115fec0b006d5586629b50a9949358",
+   "local": false,
+   "controlling_lines": null
+  }
+ ],
+ "quotation_policy": "No source text is reproduced (owner direction, 2026-10-07). Each locator carries the SHA-256 of every cited line, so it can be checked against the local source without committing it.",
+ "control_count": 55,
+ "totals": {
+  "ALIGNED": 23,
+  "PARTIALLY_ALIGNED": 16,
+  "CONFLICT": 6,
+  "NOT_IMPLEMENTED": 2,
+  "NOT_ASSESSED": 1,
+  "REQUIRES_HUMAN_ACTION": 7
+ },
+ "controls": [
+  {
+   "control_id": "SAC-01",
+   "topic": "scope",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     5,
+     5
+    ],
+    "line_sha256": [
+     "335a9be6ad678f0d7bac30a7e20ce47bef738ed43b91a706a4bb1dbda5a7a712"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S02",
+     "lines": [
+      5,
+      5
+     ],
+     "line_sha256": [
+      "335a9be6ad678f0d7bac30a7e20ce47bef738ed43b91a706a4bb1dbda5a7a712"
+     ]
+    },
+    {
+     "source_id": "S03",
+     "lines": [
+      5,
+      5
+     ],
+     "line_sha256": [
+      "335a9be6ad678f0d7bac30a7e20ce47bef738ed43b91a706a4bb1dbda5a7a712"
+     ]
+    }
+   ],
+   "control_type": "SCOPE",
+   "requirement_paraphrase": "Only completed internal compliance records that are not HR records are in scope, starting with exceptions to supplier access; the named consequential decision areas are out of scope; a person always reviews.",
+   "required_interpretation": "Applies to the Engine candidate and to any evaluation intake.",
+   "current_repository_status": "The candidate refuses any other record type, an undeclared HR status and excluded-domain text; the readiness intake refuses the same categories; every result requires human review.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/review-candidate.js",
+     "contains": "export const EXCLUDED_DOMAINS",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "lib/engine-candidate/review-candidate.js",
+     "contains": "export const SCOPE_PROFILE = 'supplier_access_exception.completed.non_hr'",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/evaluation-readiness/lib/intake.js",
+     "contains": "REFUSED_DOMAINS",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "The excluded-domain screen is a heuristic that can only refuse; passing it does not prove a record is in scope.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-02",
+   "topic": "production_status",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     5,
+     5
+    ],
+    "line_sha256": [
+     "335a9be6ad678f0d7bac30a7e20ce47bef738ed43b91a706a4bb1dbda5a7a712"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S02",
+     "lines": [
+      5,
+      5
+     ],
+     "line_sha256": [
+      "335a9be6ad678f0d7bac30a7e20ce47bef738ed43b91a706a4bb1dbda5a7a712"
+     ]
+    },
+    {
+     "source_id": "S03",
+     "lines": [
+      5,
+      5
+     ],
+     "line_sha256": [
+      "335a9be6ad678f0d7bac30a7e20ce47bef738ed43b91a706a4bb1dbda5a7a712"
+     ]
+    }
+   ],
+   "control_type": "STATUS",
+   "requirement_paraphrase": "Production is no-go and not verified; general-purpose validation, workplace readiness, licensing readiness and sale readiness are not established.",
+   "required_interpretation": "No repository record may state or imply any of these statuses.",
+   "current_repository_status": "The release-gate report concludes every gate is open; the frozen demo is not released; the readiness package is planning-only.",
+   "evidence": [
+    {
+     "path": "docs/architecture/CURRENT_RELEASE_GATE_REPORT.md",
+     "contains": "INCOMPLETE_GATES_OPEN",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "tools/frozen-demo/demo-manifest.json",
+     "contains": "DEMO_PREPARATION_COMPLETE_NOT_RELEASED",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "tools/evaluation-readiness/readiness-registry.json",
+     "contains": "PLANNING_ONLY",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "A status record states a position; it is not evidence that anything was tested.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-03",
+   "topic": "version_bound_identity",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     9,
+     9
+    ],
+    "line_sha256": [
+     "3864c88a3abb9d914c5c289768d5d1ebc710a3064cf0dba8e5070ae2133c3ec6"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S02",
+     "lines": [
+      9,
+      9
+     ],
+     "line_sha256": [
+      "3864c88a3abb9d914c5c289768d5d1ebc710a3064cf0dba8e5070ae2133c3ec6"
+     ]
+    },
+    {
+     "source_id": "S03",
+     "lines": [
+      9,
+      9
+     ],
+     "line_sha256": [
+      "3864c88a3abb9d914c5c289768d5d1ebc710a3064cf0dba8e5070ae2133c3ec6"
+     ]
+    }
+   ],
+   "control_type": "VERSION_BINDING",
+   "requirement_paraphrase": "A result may not be carried from one version, commit or hosted service to another unless the source, prompt, configuration and run identities all match.",
+   "required_interpretation": "Every result and every future run carries the identities that produced it.",
+   "current_repository_status": "Candidate results carry a review identity hashed from every version, the prompt, the model and the source; the frozen demo binds module hashes; the readiness registry requires a full run binding. No execution identity exists because no live run exists, and the configuration identity is only the statement that the candidate is local with a mock adapter.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/contract.js",
+     "contains": "export function reviewIdentity",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/frozen-demo/demo-manifest.json",
+     "contains": "bound_modules",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "tools/evaluation-readiness/lib/registry.js",
+     "contains": "REQUIRED_BINDING_FIELDS",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Binding is shown for local, mocked runs only; it says nothing about a hosted endpoint.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-04",
+   "topic": "semantic_support",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     9,
+     9
+    ],
+    "line_sha256": [
+     "3864c88a3abb9d914c5c289768d5d1ebc710a3064cf0dba8e5070ae2133c3ec6"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S01",
+     "lines": [
+      66,
+      66
+     ],
+     "line_sha256": [
+      "359720ec9fa80f81ccf42fe59a2e848b5d0eb46383f036c37a78e246ec27d9fb"
+     ]
+    }
+   ],
+   "control_type": "INTERPRETATION_LIMIT",
+   "requirement_paraphrase": "Exact quotation presence and offsets do not establish semantic support.",
+   "required_interpretation": "Every place a quotation is shown says so.",
+   "current_repository_status": "Reviewer packets and the workspace state that a quotation shows location, not support.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/reviewer-packet.js",
+     "contains": "A quotation shows presence in the record, not support.",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/local-reviewer-workspace/app/core.js",
+     "contains": "export const QUOTATION_NOTICE",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "The notice is a statement; it does not test whether any finding is correct.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-05",
+   "topic": "evidence_ids",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     13,
+     13
+    ],
+    "line_sha256": [
+     "c25b8250a39b508fa9754c19f9a92d9a5bf42a82ec5472c4e244e5abaff17f34"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S02",
+     "lines": [
+      104,
+      104
+     ],
+     "line_sha256": [
+      "c0c32efee240577b4e6be25aa416f9dfe4807be4165d6492f1e6fd66b74ba2f6"
+     ]
+    }
+   ],
+   "control_type": "EVIDENCE_ID_CONTROL",
+   "requirement_paraphrase": "Evidence is cited by the canonical numbers E-001 to E-045; new numbers are added only by a controlled change to the canonical ledger itself.",
+   "required_interpretation": "No repository record may assign E-nnn identifiers outside the canonical ledger.",
+   "current_repository_status": "The release-gate record numbers its own evidence E-001 to E-009, with meanings unrelated to the canonical entries of the same numbers.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "\"evidence_id\": \"E-001\"",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "CONFLICT",
+   "limitation": "Recorded, not renumbered: renumbering would change a hash-bound record and is an owner decision.",
+   "conflict_ids": [
+    "CF-SA-01"
+   ],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-06",
+   "topic": "evidence_ids",
+   "source_id": "S02",
+   "source_sha256": "57e2ec50fc431381b65048f978175e779481bb174993448cd1b475a218dad0e0",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S02",
+    "lines": [
+     96,
+     100
+    ],
+    "line_sha256": [
+     "13a3b602b93ad5023a40d77596fab30a78ffc42d8fc3f955aed3825093834cab",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "4f3f4adff6d79fba35807f5e84168709e9730e4d5023ea51748dae981dc812a8",
+     "18248260ae366dbe64ac6a912eb9750e85713bc29189b0af7cfcc3043f11263e",
+     "0c0603b6bf354bc2e8b02d3d3e321d44af53887668de093d0e1de7ca1da3d80f"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVIDENCE_ID_CONTROL",
+   "requirement_paraphrase": "The canonical sequence runs from E-001 to E-045, with E-045 recorded as offline engineering evidence.",
+   "required_interpretation": "The repository baseline ledger should carry the canonical sequence.",
+   "current_repository_status": "docs/enterprise-diligence/EVIDENCE_LEDGER.md ends at E-039.",
+   "evidence": [
+    {
+     "path": "docs/enterprise-diligence/EVIDENCE_LEDGER.md",
+     "contains": "| E-039 |",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "REQUIRES_HUMAN_ACTION",
+   "limitation": "The repository ledger lags the controlling source; nothing here is added to it.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "owner",
+    "action": "Decide whether and how the repository ledger is brought to the canonical sequence; entries E-042 to E-044 are correspondence records the owner has directed must not be reproduced publicly.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-07",
+   "topic": "measured_limits",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     17,
+     17
+    ],
+    "line_sha256": [
+     "ea742fa2e2c1efb7773162c233eb9bf3fc8dae8297351b4f1556363a61122742"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVIDENCE_LIMIT",
+   "requirement_paraphrase": "Earlier offline scorer results are narrow fixture results for an earlier Engine version, not independently labeled accuracy.",
+   "required_interpretation": "No such result is carried forward as accuracy, or to another version.",
+   "current_repository_status": "The candidate states that accuracy is not established on any record and carries no earlier-version result.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/README.md",
+     "contains": "Accuracy, on any record.",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "The earlier-version execution records are not in this branch and were not examined.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-08",
+   "topic": "release_gates",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S02",
+     "lines": [
+      21,
+      21
+     ],
+     "line_sha256": [
+      "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+     ]
+    },
+    {
+     "source_id": "S03",
+     "lines": [
+      21,
+      21
+     ],
+     "line_sha256": [
+      "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+     ]
+    }
+   ],
+   "control_type": "RELEASE_GATE",
+   "requirement_paraphrase": "Before production, unused holdout records must be labelled and adjudicated independently, with results and uncertainty reported for each condition.",
+   "required_interpretation": "Release-gate RG-1.",
+   "current_repository_status": "RG-1 states this criterion and is BLOCKED; no holdout, labeler or adjudication exists.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "Independent labeling and adjudication of an unused sealed holdout",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "REQUIRES_HUMAN_ACTION",
+   "limitation": "Local work can prepare the structure only.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "independent_labelers_and_owner",
+    "action": "Independent labeling and adjudication of an unused, sealed holdout; owner authorization for any provider call on it.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-09",
+   "topic": "release_gates",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "also_at": [],
+   "control_type": "RELEASE_GATE",
+   "requirement_paraphrase": "Production requires operator evidence for access and database grants, credential rotation, retention and execution policies, backup restoration and compatible rollback.",
+   "required_interpretation": "Release-gate RG-2.",
+   "current_repository_status": "RG-2 sub-controls cover each item and are BLOCKED or NOT_ASSESSED.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "Compatible rollback",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "Credential rotation",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "REQUIRES_HUMAN_ACTION",
+   "limitation": "Code review cannot show that a production control operates.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "owner_as_operator",
+    "action": "Supply operator exports and records from the environment the Engine would run in.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-10",
+   "topic": "release_gates",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "also_at": [],
+   "control_type": "RELEASE_GATE",
+   "requirement_paraphrase": "Before production, counsel must dispose of the real data flows, the storage arrangements, privacy duties and any evaluation or licensing statements.",
+   "required_interpretation": "Release-gate RG-3.",
+   "current_repository_status": "RG-3 covers each item and is NOT_ASSESSED; no counsel disposition exists.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "Storage terms",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "REQUIRES_HUMAN_ACTION",
+   "limitation": "No internal document substitutes for counsel.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "counsel",
+    "action": "Review the real data flows, storage arrangements, privacy duties and any evaluation or licensing statements.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-11",
+   "topic": "release_gates",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "also_at": [],
+   "control_type": "RELEASE_GATE",
+   "requirement_paraphrase": "Creator review remains the recorded requirement for the development package.",
+   "required_interpretation": "A dated creator-review record for the development package.",
+   "current_repository_status": "The release-gate record has no creator-review gate or record; its five gates follow the 5 October handoff, which does not list creator review.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "\"gate_id\": \"RG-5\"",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "CONFLICT",
+   "limitation": "Recorded as a gap; no gate is added here.",
+   "conflict_ids": [
+    "CF-SA-05"
+   ],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-12",
+   "topic": "release_gates",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "also_at": [],
+   "control_type": "RELEASE_GATE",
+   "requirement_paraphrase": "Quality assurance of production by an independent party is a release gate of its own.",
+   "required_interpretation": "Release-gate RG-5.",
+   "current_repository_status": "RG-5 is BLOCKED; no authorized deployment exists to examine.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "Independent QA of the authorized production deployment",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "REQUIRES_HUMAN_ACTION",
+   "limitation": "Nothing local can stand in for it.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "independent_production_qa",
+    "action": "Examine an authorized production deployment against a test plan fixed in advance.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-13",
+   "topic": "no_release_from_local_progress",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVIDENCE_LIMIT",
+   "requirement_paraphrase": "Static checks, and status codes returned to GET requests, cannot show that the Edge Functions execute.",
+   "required_interpretation": "Local or static evidence never stands for live behaviour.",
+   "current_repository_status": "The release-gate record limits its code-review evidence to the repository and classes every local item as unable to pass a gate.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "It is not a check of what the production host serves.",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "The limitation is recorded, not tested against a live host.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-14",
+   "topic": "demonstration_track",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     44,
+     44
+    ],
+    "line_sha256": [
+     "2063a1d4e56560a6b3e5a6691a09500c3b9a5a4d0befe4d0c972c4767240edea"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S03",
+     "lines": [
+      112,
+      112
+     ],
+     "line_sha256": [
+      "ceacc12a4696853307ccd2e324771e33e868cb6ddfb4295dfea1044a2e0bdacb"
+     ]
+    }
+   ],
+   "control_type": "TRACK_EVIDENCE",
+   "requirement_paraphrase": "A demonstration status needs frozen demo cases, a named version, complete run evidence, a capability matrix, visible limitations and a dated owner release decision; it is not established.",
+   "required_interpretation": "The frozen demo may be prepared, never treated as released.",
+   "current_repository_status": "Frozen cases, a named version, a capability matrix and visible limitations exist. Run evidence is local mock replay only; no owner release decision exists.",
+   "evidence": [
+    {
+     "path": "tools/frozen-demo/demo-manifest.json",
+     "contains": "DEMO_PREPARATION_COMPLETE_NOT_RELEASED",
+     "class": "SYNTHETIC_FIXTURE"
+    },
+    {
+     "path": "docs/architecture/FROZEN_DEMONSTRATION_CAPABILITY_MATRIX.md",
+     "contains": "Demonstrated capability",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Synthetic replay proves only behaviour on the constructed corpus.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "owner",
+    "action": "A dated release decision, if a demonstration is ever to be given.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-15",
+   "topic": "commercial_pathway",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     37,
+     39
+    ],
+    "line_sha256": [
+     "dfdb8a7aefea547979eb7e5adacec20dcafc420f8c3ad4eec4c93b746b91611a",
+     "9dbf4b53cf0bf0b2626e03825a965e67e29e9eca2e097341422e228366907e4e",
+     "282732401a594e930e594f9674209fa7a3ce25a7c7c72d80243c5056e88794b1"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S01",
+     "lines": [
+      45,
+      46
+     ],
+     "line_sha256": [
+      "ee85ed4b18c297a5ec6dace2337b4496cfdb2a17fcf771720e0cddd1f91cffcd",
+      "518f5e3c41d6e14349a91888e8dd945a1cc9a42950e3308a7f24cc8959b26dbb"
+     ]
+    },
+    {
+     "source_id": "S03",
+     "lines": [
+      96,
+      96
+     ],
+     "line_sha256": [
+      "3a961e5eb72524e90d5ada307b0dccb7514284ff184eb2cd515cc223f7b64197"
+     ]
+    }
+   ],
+   "control_type": "OBJECTIVE",
+   "requirement_paraphrase": "The stated current objectives include preparing a limited commercial evaluation pathway in parallel with demonstration and evidence work.",
+   "required_interpretation": "Read against the later 5 October handoff, which prohibits licensing and acquisition work without a new owner instruction.",
+   "current_repository_status": "This branch follows the handoff: public pages state no licence, evaluation or transaction is offered, and no commercial artifact was prepared.",
+   "evidence": [
+    {
+     "path": "index.html",
+     "contains": "No software access, licence, exclusive grant, or asset transfer is currently offered.",
+     "class": "PUBLIC_PAGE"
+    },
+    {
+     "path": "docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md",
+     "contains": "licensing, acquisition, or rights transfer",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "CONFLICT",
+   "limitation": "Which instruction governs commercial preparation is an owner decision; no commercial terms are described here.",
+   "conflict_ids": [
+    "CF-SA-03"
+   ],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-16",
+   "topic": "independent_human_dispositions",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     70,
+     70
+    ],
+    "line_sha256": [
+     "56dd193329e96fef12868d69fc1636d479a137c4bff55039ae97d2e948e91800"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S01",
+     "lines": [
+      74,
+      74
+     ],
+     "line_sha256": [
+      "33c40a5f9fd92ec6d7af0cc5eebf2f4e8f029b25dea2d3bf7094bc6b591da215"
+     ]
+    }
+   ],
+   "control_type": "HUMAN_AUTHORITY",
+   "requirement_paraphrase": "The owner is the sole human reviewer the evaluation package requires; AI does the inspection, fixtures, harnesses, authorized runs, scoring and drafting; nobody is to be recruited or contacted; a dispute stays open unless the owner settles it.",
+   "required_interpretation": "Applies to the evaluation package; the production gate (SAC-08) separately requires independent labeling.",
+   "current_repository_status": "The evaluation-readiness package models future review by independent reviewers and a separate adjudicator, with independence attestations, and has no creator-review path.",
+   "evidence": [
+    {
+     "path": "tools/evaluation-readiness/authority-matrix.json",
+     "contains": "\"independent_reviewer\"",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "tools/evaluation-readiness/readiness-contract.json",
+     "contains": "ATT-04",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "CONFLICT",
+   "limitation": "The readiness package is planning-only; nothing was recruited or contacted.",
+   "conflict_ids": [
+    "CF-SA-02"
+   ],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-17",
+   "topic": "separation_of_extraction_and_evaluation",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     72,
+     72
+    ],
+    "line_sha256": [
+     "e72333033e5f1ec60efd1d466ba3cd0d9a51c312351c5575148823a6b611c007"
+    ]
+   },
+   "also_at": [],
+   "control_type": "SEPARATION",
+   "requirement_paraphrase": "Deterministic checks, the expectations written for constructed cases, and the creator's reviewed judgments stay apart.",
+   "required_interpretation": "No layer is merged into another.",
+   "current_repository_status": "The candidate keeps deterministic findings apart from model findings; frozen-demo expectations are separate files; readiness workspaces keep extraction, interpretation, comparison and adjudication apart. Creator-reviewed judgments are not modelled anywhere.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/contract.js",
+     "contains": "extraction_findings",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/evaluation-readiness/lib/workspace.js",
+     "contains": "export const WORKSPACES = Object.freeze(['extraction', 'interpretation', 'comparison', 'adjudication']);",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Separation is enforced in local code and tests only.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-18",
+   "topic": "freeze_before_labels",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     72,
+     72
+    ],
+    "line_sha256": [
+     "e72333033e5f1ec60efd1d466ba3cd0d9a51c312351c5575148823a6b611c007"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVALUATION_CONTROL",
+   "requirement_paraphrase": "Before any labeling or testing, the Codebook and the mapping of errors are frozen and hashed.",
+   "required_interpretation": "Both must exist as frozen, hashed artifacts before any labeling.",
+   "current_repository_status": "The Codebook is hash-bound (v1.0) but not frozen for evaluation; no error-mapping artifact exists.",
+   "evidence": [
+    {
+     "path": "tools/evaluation-readiness/codebook-mapping.json",
+     "contains": "\"freeze_for_evaluation\": \"NOT_FROZEN\"",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "A hash identifies the page; it is not a freeze.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "owner",
+    "action": "Record the Codebook freeze and approve an error mapping.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-19",
+   "topic": "blind_labeling",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     72,
+     72
+    ],
+    "line_sha256": [
+     "e72333033e5f1ec60efd1d466ba3cd0d9a51c312351c5575148823a6b611c007"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVALUATION_CONTROL",
+   "requirement_paraphrase": "Conceal Engine output during initial labeling.",
+   "required_interpretation": "Interpretations are made blind to candidate output.",
+   "current_repository_status": "The readiness workspace refuses an interpretation not made blind to candidate output.",
+   "evidence": [
+    {
+     "path": "tools/evaluation-readiness/lib/workspace.js",
+     "contains": "blind_to_candidate_output",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "A declared flag; the workspace cannot observe what a person saw.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-20",
+   "topic": "ordering_and_retest",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     72,
+     72
+    ],
+    "line_sha256": [
+     "e72333033e5f1ec60efd1d466ba3cd0d9a51c312351c5575148823a6b611c007"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVALUATION_CONTROL",
+   "requirement_paraphrase": "Record random ordering, corrections and reasons; any test-retest claim needs a delayed blind re-label after a minimum interval and coverage.",
+   "required_interpretation": "Required before any test-retest statement.",
+   "current_repository_status": "No ordering, correction or re-label record exists.",
+   "evidence": [],
+   "status": "NOT_IMPLEMENTED",
+   "limitation": "Nothing is claimed about test-retest.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-21",
+   "topic": "no_invented_labels",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     72,
+     72
+    ],
+    "line_sha256": [
+     "e72333033e5f1ec60efd1d466ba3cd0d9a51c312351c5575148823a6b611c007"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S02",
+     "lines": [
+      96,
+      96
+     ],
+     "line_sha256": [
+      "13a3b602b93ad5023a40d77596fab30a78ffc42d8fc3f955aed3825093834cab"
+     ]
+    }
+   ],
+   "control_type": "EVIDENCE_LIMIT",
+   "requirement_paraphrase": "No label, and no result of a waiting period, may be made up; approvals copied into fixtures are never reported as decisions by a person.",
+   "required_interpretation": "Code never authors a human judgment.",
+   "current_repository_status": "No label exists; the readiness workspace refuses interpretations authored by code, and the ledger refuses human-role artifacts created by code or fixtures.",
+   "evidence": [
+    {
+     "path": "tools/evaluation-readiness/lib/ledger.js",
+     "contains": "role_substitution",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/evaluation-readiness/lib/workspace.js",
+     "contains": "author_not_permitted",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Probes and fixtures carry SYNTHETIC tokens only.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-22",
+   "topic": "ai_not_adjudication",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     74,
+     74
+    ],
+    "line_sha256": [
+     "33c40a5f9fd92ec6d7af0cc5eebf2f4e8f029b25dea2d3bf7094bc6b591da215"
+    ]
+   },
+   "also_at": [],
+   "control_type": "HUMAN_AUTHORITY",
+   "requirement_paraphrase": "Checks run by AI are automated judgments; they are not adjudication by an independent person.",
+   "required_interpretation": "No automated agreement stands for adjudication.",
+   "current_repository_status": "Code cannot adjudicate in the readiness workspace, and cross-model agreement is never called accuracy; who adjudicates differs from the source (see CF-SA-02).",
+   "evidence": [
+    {
+     "path": "tools/evaluation-readiness/lib/workspace.js",
+     "contains": "adjudicator_is_a_reviewer",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/claim-provenance/lib/rules.js",
+     "contains": "G03",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Local controls only.",
+   "conflict_ids": [
+    "CF-SA-02"
+   ],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-23",
+   "topic": "research_distinction",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     76,
+     76
+    ],
+    "line_sha256": [
+     "426301f7ca7d4220f97a5119591669cece026431ef29e31d56cc1b1ce6f70e5f"
+    ]
+   },
+   "also_at": [],
+   "control_type": "DISCLOSURE",
+   "requirement_paraphrase": "A technical evaluation report states the interests involved, the use of AI, where fixtures came from, that real records are missing and how evaluators depend on each other; it measures the integrity of documentation, not its legal validity; publishing is its own decision.",
+   "required_interpretation": "Public research statements keep detection, operational validity and legal defensibility apart.",
+   "current_repository_status": "Public pages on this branch state the constructed corpus, the limits and that legal defensibility is not assessed; the repairs are staged, not published.",
+   "evidence": [
+    {
+     "path": "research.html",
+     "contains": "Detection, reproducibility, reliability, method research, and real-world validation are distinct.",
+     "class": "PUBLIC_PAGE"
+    },
+    {
+     "path": "jrsstandard.html",
+     "contains": "It does not evaluate whether the underlying decision was correct, legally defensible, or consistent with policy.",
+     "class": "PUBLIC_PAGE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Wording is checked by the claim-provenance scanner, not by a reader study.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "owner",
+    "action": "Publication of the repaired research pages is a separate owner decision.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-24",
+   "topic": "rights_provenance",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     80,
+     82
+    ],
+    "line_sha256": [
+     "dc3e6593f930f9596eaee200842912065253ddbb25a4177c23e18f1e175485a8",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "7243c37a9ec1496d48dba2c58dede39a9becdeedbb57b3ee301dd1dd4a0a2f8a"
+    ]
+   },
+   "also_at": [],
+   "control_type": "RIGHTS_LIMIT",
+   "requirement_paraphrase": "Recorded consents and contributions are not widened into commercial or exclusive grants; no new assignment, permission, trademark clearance, publishing agreement or evidence of a selling entity is established.",
+   "required_interpretation": "No repository record states a rights conclusion beyond its evidence.",
+   "current_repository_status": "The provenance package records repository-visible evidence only and states it establishes no chain of title, licence or clearance.",
+   "evidence": [
+    {
+     "path": "docs/architecture/SOFTWARE_ASSET_AND_PROVENANCE_INVENTORY.md",
+     "contains": "It does not establish chain of title",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "No legal conclusion; counsel review is RG-3.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-25",
+   "topic": "correspondence_records",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     84,
+     84
+    ],
+    "line_sha256": [
+     "8f04925e2c13e4cb899b0ee79fbbb4c3311d23bdb6c5321af2c3b8112a0eaa8a"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVIDENCE_LIMIT",
+   "requirement_paraphrase": "Drafts are not proof of dispatch or assent, and historical correspondence records are not rewritten.",
+   "required_interpretation": "Outside this package; not examined.",
+   "current_repository_status": "No correspondence record is touched by this package.",
+   "evidence": [],
+   "status": "NOT_ASSESSED",
+   "limitation": "On the owner's direction no correspondence content is reproduced here.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-26",
+   "topic": "run_identity_evidence",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     88,
+     88
+    ],
+    "line_sha256": [
+     "ea017403cfe6f76b1adcc48a6d589cd31d758a17e7a9a2b1e46e008cbb3841a3"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVIDENCE_REQUIRED",
+   "requirement_paraphrase": "Obtain a redacted bundle of the raw run outputs, with the exact source, prompt and configuration identities that were tested and deployed.",
+   "required_interpretation": "Required before any earlier run is cited as evidence.",
+   "current_repository_status": "Not located in this branch.",
+   "evidence": [],
+   "status": "REQUIRES_HUMAN_ACTION",
+   "limitation": "Absence here is not proof of absence elsewhere.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "owner",
+    "action": "Provide a redacted bundle of the earlier raw run outputs, with their identities, if those runs are to be cited.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-27",
+   "topic": "dated_owner_decisions",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     88,
+     88
+    ],
+    "line_sha256": [
+     "ea017403cfe6f76b1adcc48a6d589cd31d758a17e7a9a2b1e46e008cbb3841a3"
+    ]
+   },
+   "also_at": [],
+   "control_type": "HUMAN_AUTHORITY",
+   "requirement_paraphrase": "Each specific owner decision is recorded with its date; a general approval never stands in for a missing dated gate record.",
+   "required_interpretation": "No gate or freeze is treated as decided without a dated record.",
+   "current_repository_status": "Every owner-decision field in the release-gate record and the readiness registry is null.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "\"owner_decision\": null",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "tools/evaluation-readiness/readiness-registry.json",
+     "contains": "\"freeze_record_ref\": null",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Fields are empty because no decision exists.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-28",
+   "topic": "production_change_traceability",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     92,
+     92
+    ],
+    "line_sha256": [
+     "0cbe9da1aec125a526df20875f3b00ab992236dfcb4eae2efccfa2fee4e8592f"
+    ]
+   },
+   "also_at": [],
+   "control_type": "DEPLOYMENT_CONTROL",
+   "requirement_paraphrase": "Any later production change must be traceable upstream, carry a release reference, go through an authorized deployment route and have its served files checked against what was built.",
+   "required_interpretation": "Applies to any merge of this branch.",
+   "current_repository_status": "A deploy-verify workflow byte-compares production against the commit; no release reference or authorization exists for this branch.",
+   "evidence": [
+    {
+     "path": ".github/workflows/deploy-verify.yml",
+     "contains": "byte",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "The workflow compares static assets; it does not verify Edge Function execution.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "owner",
+    "action": "A release reference and authorization before any merge that publishes.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-29",
+   "topic": "protected_implementation",
+   "source_id": "S01",
+   "source_sha256": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S01",
+    "lines": [
+     102,
+     102
+    ],
+    "line_sha256": [
+     "f6d0737a32e2ce0bcf5eaabc14993df7248818d14283c7e7118ca1b5a9320664"
+    ]
+   },
+   "also_at": [],
+   "control_type": "CONFIDENTIALITY",
+   "requirement_paraphrase": "Software is not classed secret, exclusive or transaction-ready merely because it is called proprietary; the public-repository position requires an exposure review before any promise of secrecy or exclusivity.",
+   "required_interpretation": "Exclusion from the website is not confidentiality.",
+   "current_repository_status": "The repository is public on GitHub. .vercelignore describes its exclusions as protecting the implementation, while the provenance inventory records that exclusion is not a confidentiality control.",
+   "evidence": [
+    {
+     "path": ".vercelignore",
+     "contains": "PUBLICIZE THE STANDARD, PROTECT THE IMPLEMENTATION",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "docs/architecture/SOFTWARE_ASSET_AND_PROVENANCE_INVENTORY.md",
+     "contains": "It is not a confidentiality control.",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "CONFLICT",
+   "limitation": "This package changes neither; repository visibility is the owner's setting.",
+   "conflict_ids": [
+    "CF-SA-06"
+   ],
+   "human_action": {
+    "role": "owner_and_counsel",
+    "action": "Exposure review of the public repository before any statement that the implementation is protected.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-30",
+   "topic": "target_vs_current",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     96,
+     96
+    ],
+    "line_sha256": [
+     "3a961e5eb72524e90d5ada307b0dccb7514284ff184eb2cd515cc223f7b64197"
+    ]
+   },
+   "also_at": [],
+   "control_type": "INTERPRETATION_LIMIT",
+   "requirement_paraphrase": "The historical architecture describes intended design; it does not state what is implemented.",
+   "required_interpretation": "Target and current state are always labelled apart.",
+   "current_repository_status": "The readiness contract separates current implementation from target architecture.",
+   "evidence": [
+    {
+     "path": "tools/evaluation-readiness/readiness-contract.json",
+     "contains": "TARGET_ARCHITECTURE",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Labels only.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-31",
+   "topic": "scope",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     98,
+     98
+    ],
+    "line_sha256": [
+     "3d289fcf3d95f502dc182cb792f5473a5c03c7ba24a2032442b55e8923a9b6b9"
+    ]
+   },
+   "also_at": [],
+   "control_type": "SCOPE",
+   "requirement_paraphrase": "The first proposed workflow is a proposal, not evidence of demand; HR and other consequential eligibility decisions stay outside it; a disclaimer alone does not settle applicability.",
+   "required_interpretation": "No demand claim; scope held to the non-HR workflow.",
+   "current_repository_status": "No demand claim is made. Public methodology pages describe review environments that include HR and employment records; whether the scope sentence governs the public methodology or only the Engine is not settled (public audit PPA-08).",
+   "evidence": [
+    {
+     "path": "jrsstandard.html",
+     "contains": "HR review and employment documentation audit",
+     "class": "PUBLIC_PAGE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Interpretation question for the owner.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-32",
+   "topic": "source_prompt_config_binding",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     100,
+     100
+    ],
+    "line_sha256": [
+     "93ef52744dc473d81ee60de1914520693bb5fd3b5b4e847c5370de4b906e6009"
+    ]
+   },
+   "also_at": [],
+   "control_type": "VERSION_BINDING",
+   "requirement_paraphrase": "Inspect instructions and existing work before edits, do not assume branches or credentials exist, and pin exact model identifiers.",
+   "required_interpretation": "Model identity is a pinned, versioned value.",
+   "current_repository_status": "The model identifier is pinned in one module and recorded in the candidate identity; each package records its start state.",
+   "evidence": [
+    {
+     "path": "api/_model.js",
+     "contains": "claude-haiku-4-5-20251001",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/evaluation-readiness/baseline.json",
+     "contains": "start_head",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "No live model is called.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-33",
+   "topic": "harness_controls",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     102,
+     102
+    ],
+    "line_sha256": [
+     "e71ac528f8d9900049ede895b261f8822d38ba5741268770ced80293a8aa6803"
+    ]
+   },
+   "also_at": [],
+   "control_type": "HARNESS_CONTROL",
+   "requirement_paraphrase": "Paid calls only under a dated authorization of spend; a cap on input size; timeouts and cancellation; redirect refusal; a destination allowlist; no key or body logging; bounded retries; fail-closed handling of malformed output.",
+   "required_interpretation": "Required of any live adapter.",
+   "current_repository_status": "No provider adapter exists, so no paid call is possible; the candidate enforces a maximum input size and rejects malformed output fail-closed; an outbound inventory exists. Timeout, cancellation, redirect refusal and retry budgets belong to a live adapter that does not exist.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/adapter.js",
+     "contains": "NO LIVE PROVIDER IS IMPLEMENTED HERE OR ANYWHERE IN THE CANDIDATE.",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "lib/engine-candidate/review-candidate.js",
+     "contains": "export const MAX_CHARS = 8000;",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": ".jrs/registries/OUTBOUND_DESTINATIONS.json",
+     "contains": "api.anthropic.com",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Provider-side billing caps are not verified.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-34",
+   "topic": "evaluation_metric_freeze",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     104,
+     104
+    ],
+    "line_sha256": [
+     "8874b57103e84fe00d2e4e5dd43750b5060c723e9dbf448e2e9e764d7eee09ef"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVALUATION_CONTROL",
+   "requirement_paraphrase": "Freeze the evaluation metrics and their mappings before execution; report conditions and routes separately; smoke results show connectivity only.",
+   "required_interpretation": "A metric specification frozen before any run.",
+   "current_repository_status": "The readiness registry holds a calibration freeze slot (unfrozen); no metric specification exists.",
+   "evidence": [
+    {
+     "path": "tools/evaluation-readiness/readiness-registry.json",
+     "contains": "\"calibration\"",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "NOT_IMPLEMENTED",
+   "limitation": "Structure only.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "owner",
+    "action": "Approve and freeze a metric specification before any evaluation run.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-35",
+   "topic": "sealed_holdout_separation",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     104,
+     104
+    ],
+    "line_sha256": [
+     "8874b57103e84fe00d2e4e5dd43750b5060c723e9dbf448e2e9e764d7eee09ef"
+    ]
+   },
+   "also_at": [],
+   "control_type": "HOLDOUT_SEPARATION",
+   "requirement_paraphrase": "Smoke-test cases never go into a later holdout, and a local result counts as production evidence only after the local and production source, prompt and configuration hashes have been compared.",
+   "required_interpretation": "Development and smoke material never enters a holdout; local results never stand as production evidence.",
+   "current_repository_status": "Every development text, the frozen demo included, is registered and refused by digest at intake; no holdout builder exists; local evidence is classed as unable to pass a gate.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/dev-material.js",
+     "contains": "export function assertNotDevelopmentMaterial",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/evaluation-readiness/lib/intake.js",
+     "contains": "frozen_demo_material",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Digest matching is a contamination control, not proof of independence.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-36",
+   "topic": "adversarial_tests",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     106,
+     106
+    ],
+    "line_sha256": [
+     "e3b2fcba573e38ca96607f3f009eab1ae09e30d29372d51229f9665ed8f75498"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVALUATION_CONTROL",
+   "requirement_paraphrase": "Adversarial testing covers prompt injection inside untrusted records, malformed input, attempts to draw out disclosures and outcomes wrongly marked ready; a clean result on a frozen set has a bounded meaning.",
+   "required_interpretation": "Each class has a frozen adversarial set.",
+   "current_repository_status": "The candidate reports instruction-like record text, rejects malformed and determination-language output, and has mutation and metamorphic tests; no disclosure-attempt set and no live adversarial run exist.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/source-prep.js",
+     "contains": "instruction_like_text",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "lib/engine-candidate/adapter.js",
+     "contains": "export const DETERMINATION",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Mocked tests only.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-37",
+   "topic": "real_record_path",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     108,
+     108
+    ],
+    "line_sha256": [
+     "b2cb6a09e90f136e493bb537e44f06a682b90c2303ae1787429870430690d9c1"
+    ]
+   },
+   "also_at": [],
+   "control_type": "DATA_CONTROL",
+   "requirement_paraphrase": "Real records only when permissioned, de-identified and under confirmed authority, never in smoke tests; otherwise results are labelled fixture performance; creator-only labels are not independent truth.",
+   "required_interpretation": "No real record without authority; synthetic results labelled as such.",
+   "current_repository_status": "Intake is closed and requires authority, rights and custody attestations; frozen-demo results are labelled synthetic.",
+   "evidence": [
+    {
+     "path": "tools/evaluation-readiness/lib/intake.js",
+     "contains": "export const INTAKE_OPEN = false;",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/frozen-demo/demo-evidence-record.json",
+     "contains": "all_cases_synthetic",
+     "class": "SYNTHETIC_FIXTURE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "No real record exists to test the path.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-38",
+   "topic": "release_gates",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     110,
+     110
+    ],
+    "line_sha256": [
+     "e3cec7890b50e5e17c529fb3e7c75a8b5ac88903a7b18bf3f89c9a37eeed0915"
+    ]
+   },
+   "also_at": [],
+   "control_type": "RELEASE_GATE_FORMAT",
+   "requirement_paraphrase": "Gates kept as machine-readable records hold their ID, the named version, hashed evidence paths, the threshold and the result obtained, any missing dependency, the owner's dated decision and a status of pass, fail or not assessed; averaging may not hide a critical failure; where evidence needing professional authority is missing the gate is not assessed, and nothing is simulated.",
+   "required_interpretation": "Read against the release-gate record.",
+   "current_repository_status": "The record carries ID, version, hashed evidence, criterion, missing dependencies and owner decision, but no numeric threshold, and uses BLOCKED for RG-1, RG-2, RG-4 and RG-5 where the source vocabulary is pass, fail or not assessed.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "\"status\": \"BLOCKED\"",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+     "contains": "\"acceptance_criterion\"",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "CONFLICT",
+   "limitation": "No status is changed here.",
+   "conflict_ids": [
+    "CF-SA-04"
+   ],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-39",
+   "topic": "no_release_from_local_progress",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     112,
+     112
+    ],
+    "line_sha256": [
+     "ceacc12a4696853307ccd2e324771e33e868cb6ddfb4295dfea1044a2e0bdacb"
+    ]
+   },
+   "also_at": [
+    {
+     "source_id": "S01",
+     "lines": [
+      88,
+      88
+     ],
+     "line_sha256": [
+      "ea017403cfe6f76b1adcc48a6d589cd31d758a17e7a9a2b1e46e008cbb3841a3"
+     ]
+    }
+   ],
+   "control_type": "STATUS",
+   "requirement_paraphrase": "Completed paperwork does not confer demonstration readiness or commercial clearance.",
+   "required_interpretation": "No package of documents advances a status.",
+   "current_repository_status": "Every package records that it advances no gate; constructed, mocked and local evidence classes can never pass a gate.",
+   "evidence": [
+    {
+     "path": "lib/release-gate/vocabulary.js",
+     "contains": "production_evidence: false",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/evaluation-readiness/readiness-contract.json",
+     "contains": "\"relationship_to_release_gates\": \"none\"",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "A rule in code; it does not prevent a person from mislabelling.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-40",
+   "topic": "completion_package",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     112,
+     112
+    ],
+    "line_sha256": [
+     "ceacc12a4696853307ccd2e324771e33e868cb6ddfb4295dfea1044a2e0bdacb"
+    ]
+   },
+   "also_at": [],
+   "control_type": "TRACK_EVIDENCE",
+   "requirement_paraphrase": "The completion package is a capability matrix, the frozen demo with its replay disclosure, visible limitations, redacted raw outputs with their scoring scripts, a technical report, data-flow and threat material, a change log, offer documents, a procurement sheet, a gate report and an owner decision sheet.",
+   "required_interpretation": "Deliverables may carry candid missing-evidence statuses.",
+   "current_repository_status": "Capability matrix, frozen demo, limitations, data-flow records, gate report and an owner decision sheet exist; raw run evidence is absent; offer and procurement documents were not prepared under the handoff.",
+   "evidence": [
+    {
+     "path": "docs/architecture/FROZEN_DEMONSTRATION_CAPABILITY_MATRIX.md",
+     "contains": "What it does not show",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "docs/enterprise-diligence/ACTUAL_DATA_FLOW_AND_PROCESSOR_MATRIX_2026-09-15.md",
+     "contains": "Data",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Offer documents are subject to CF-SA-03.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-41",
+   "topic": "public_controlled_boundary",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "HISTORICAL_CONTEXT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     196,
+     206
+    ],
+    "line_sha256": [
+     "e5478659682549771129f48e272eb8cc2e948a9c33e1222ab75f250b0c6d437f",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "7fac3c2046a981712f2d784ec91d7ff3179d3350f373a5a74a28e9620006225f",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "b337a60d1a3386f4227e9d9b42fbd5de50f80141e72050fd6ad94f07eab3c528",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "d59fecf61d52950650acd04256ba864a70153fa997ff4485de9b59e3773249f2",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "73097a8a86ac48a0a7b5fc8b0701d1e5d6d7182e148016466b61c012acaa7592",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "206fd31883f1dea41d64663fc10497598f179c06ed34d5e5ac3621c07b8e4d75"
+    ]
+   },
+   "also_at": [],
+   "control_type": "BOUNDARY",
+   "requirement_paraphrase": "Publicize the standard and protect the implementation; do not treat the public methodology as a trade secret.",
+   "required_interpretation": "Historical design context.",
+   "current_repository_status": "The website serves the standard and excludes the implementation; the public GitHub repository exposes the implementation.",
+   "evidence": [
+    {
+     "path": ".vercelignore",
+     "contains": "tools/",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Historical text, not a current instruction.",
+   "conflict_ids": [
+    "CF-SA-06"
+   ],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-42",
+   "topic": "public_controlled_boundary",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "HISTORICAL_CONTEXT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     472,
+     525
+    ],
+    "line_sha256": [
+     "5d573b367e88609a9f590c5769b7500e45bf4140167d059d0f1a7c50aeae87fb",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "a2f0ab42b1e9c7bd2f9b5643458604860ed414d2a32df0a88183368001ff992d",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "db4b8a9ecc09df131ae35ef2e092d8d317ae9d3632b1b4c36e98b14550b645b8",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "22a0a8dacae7643217959d409ec5346a7f055bfa1734938cfc21d86134d905e9",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "591935b15b1c88e2d5f6be0a054604fcf36f0585a6f51098fa3803826fff278c",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "5b9109a307aa90eb3dd33bb1d969700335b9a489cab84061446bc63a05d818f8",
+     "eb6f5bc75beaf157fbb1d2a971aa7135ce43b6a6fb3571f9e68f75f67bf5e2c7",
+     "a040dba89c8486991b23b36cc969ab5be8b7510ce4794559f8dcfef229476c68",
+     "9bbc88337ddd0fbeb061f589e4a35e611748002f23f6d3671dfd6fe969d00a33",
+     "d1c8d699b924780ce5f6fbba1a6da56c78c89247a6799b1fe1f5b1219ee90e03",
+     "1865a3d296a55ebc910ade77bcfcac451db041abce631837d7e864b48e03402c",
+     "1cc3448bf2fa641f333bfb59fda8cf9c4872e8fa3f9f00bc898fc31840c686cc",
+     "2a8d14f9fabcf99972e1035bc2359c21e289faa582a03ea74f785b1fe59f4098",
+     "528afaa2ffbfd9142df6c3dcb0e1b381e0ffe63b0cff1f2ca7b2530c93b04ed0",
+     "74b170e2ec88503761964de65ecbb2b4d3459369268a70697f895e4d2440d1ad",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "7d883fbb5eece2ef4adc7df9f38fdda53ee83dfafcfd8e3a18a03f50e31208c9",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "188f0d93ef9bf7a8a556d5858e6a233c44917eedf947d4422207bdafe5747d5a",
+     "c076ca033b135494fdb3e6f6e73855d41158d6bee7dde47588913ffd3b0e6224",
+     "3e03ba385c0ab156bf2791ad98152786d1ae08984683884dbe09d7bd51af319e",
+     "80ac808e789574ccc09a86028b1e8e6664e73f232515e02d66586af055557b83",
+     "37df90b2e35d22315ed2145bcc1d719f423e37b5f8f81e3fbfa6f71c31991a47",
+     "3b43ed731676b733d16a84b0ea1f1a535c6c223f6621e48e5aa53dd24a374161",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "a3e83aee8605fad96741fdd3ca73654aeb1cc339b1a46f4db41c18cdd3635720",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "8575096d3ecc863c0ba33adb4617cf3e84208525a1aa38d7afa040265a30079e",
+     "396c47d7aff67010c91269c560e4d5c739fd7904595c225d927ec0542c68177e",
+     "46f2ded7ea6b8008ed137f1eb659446a4f79b43f72f5c35e5ec11ccd95b2b1ef",
+     "9ef01ec4723d2489d049279e43d8e998c7a01af7229c0b6dcc80370f4f946c01",
+     "821d18b014b859cb9d2d4bbf53b527e59101a0ce43dafaa262568981227c47da",
+     "3c24ed3f698a2a70706f7d9940b3a44ed3e0a770f5dc849c8917c58a727f97c3",
+     "0ff1e39ec650ee25bcf4efa62209ea4e55e721b59db252b9115967a9def30299",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "055941c8cd3676d39c9534782f431714ed919bb2e1277c1765bea37297ea23ca",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "eb61cd53513aa47df825f5272eb6acc9c5011e5a154047fc231e1f06dc558f0a",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "ff63ce627ea037003ba0a9c818119af924a234a74cc2a19c6afa8f9bbcd6347f",
+     "280a572b810b965f4bfe913d3747234c79fd9170d12b4cb0f90184a93e417a65",
+     "49cbc752656999c04a4e4d276af1057c31c0607c07c28305077c56fdcac626ea",
+     "3c55312f0bddc636836706c6d5b1a6967efeffedbe64f04fd5b45c387bead260",
+     "6ae4967b771d814636001322408dac6acba89e5164b295064187941fb42330fe",
+     "195cff1e2777a4e72647c23c5d67d51f36186c38d6776bb73c218d4164ab5359",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "3b7da565d0b96d0a9e9b623e2e66484f445e090f9b9751369fa4afe713635dae",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "238b0f28a11a4e0647f24b84534f18775b9c8e8554813a86d11025e77b243c20"
+    ]
+   },
+   "also_at": [],
+   "control_type": "BOUNDARY",
+   "requirement_paraphrase": "A public, controlled and confidential classification, with evaluation and benchmark datasets controlled.",
+   "required_interpretation": "Historical design context.",
+   "current_repository_status": "Development corpora and evaluation tooling are excluded from the website but readable in the public repository; sealed holdouts do not exist.",
+   "evidence": [
+    {
+     "path": ".vercelignore",
+     "contains": "tests/",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Historical text, not a current instruction.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-43",
+   "topic": "research_distinction",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "HISTORICAL_CONTEXT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     699,
+     756
+    ],
+    "line_sha256": [
+     "0217dfec6ec9fca5566bd7773f7ce503f6e1e1c8f695f1d8a7294294c825793e",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "909f31ddeddb3922d8a3e4e43126d730336e939bf590087ec4bad8c3c1f5217d",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "0cd7580b9d37521fb10109f7a78c1c57e6e460a86c6aff1a6e03d28b40357ebd",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "3bd14e69604a5ae73c6eed2eaa532602469ef198e3b00b060d38be920c42c4e0",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "c75aa0ee9150d56723b2fc310ad90664c1594468ade8e20f5ed9cdb3c348cfe0",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "4042bdd593ac25cfc870961a7f2c31bb7d6d23876caa3ae7c53d422cc3cb1452",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "f5f9f0b914dc26310a4d1bd38bf1a9c34b0b459e8f684300fff33a5cade53961",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "e66d62bd7e2147d8c14eb251ecf82651f4f827789c167e29f1f8307eb6503676",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "6c2b5222b4f0b7bc2a783b13d928b330e257e730a86092496eb59ba79fe4096b",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "b71c1f096944ea4be8a1721b482129db2161d6577c0540edaff2df5b7780f5e1",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "ac991dd3c2d928da95b77afb954db61a3246be27b683f30d1232dcee625ae376",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "428868c036693cc9c683339e3ef2982bcea2aa06b302f9ecb87cbc28cf359f77",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "953e56ffb6607117c93fb61e855d82f412716956fc46a792f368706e366f1d8c",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "71d0acd46556424657f3866a5dc46d45d66b0849904e0a66d712764f95fa16bb",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "ab6312d37fa67b3aae631b763882236a7db20e6cbbb203e690820738f4513264",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "63154fd48bd1008db3976b5fa9e8f97ac6411ef880508c95e186504aeae3b566",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "7135725f6b234aa07f2b7ee9a71bef213a3b1a2e67994ef4b42f103257a95f98",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "8e220daa2e50f4ecae449341650498ef45cc43603e3fbb37a05b80ddb9a0561e",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "e66d62bd7e2147d8c14eb251ecf82651f4f827789c167e29f1f8307eb6503676",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "16033876e7f3110e4e16f1bb0687771176bfecd6ae312d1f552df363cdc9e7f8",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "6f8d53b58ae4eff51b98f3cd275b37b8ef315568b01a557930ba449e1d4af9f8",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "1c533ed9f95dc7dfafb36ee8f797cfe20140505802522833d9b1c5814cfcc5fb",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "a94f1b7d30e4b5823187247d0e81c3d693de37a01234e84a8f14a428d4f9c60c",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "24ea0781bc61af46911ec2d420a821b4ceaf2422539b837cab5b37fca662ba30",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "cd67fc2a9b3cd706742a1e476535a2c617339e2f1a6b4b5572c6ab0693b3d140",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "032432e7c3f807e938108d6cdbd7544141374221cfa9fa141d0660d617514b75",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "92741b26eb03b41e808ca744596e7f97e2c9d2fb033326dd26dc72367cc281a2",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "6184bb31a5d5588ca6475fcfd10665668d6e9ad5c1bbc3a7f6c18880d58eb3bf",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "b3b926726ee3e09e16259a1085298ab61f8ce3cd4c928a6909359f8d41dda1fb"
+    ]
+   },
+   "also_at": [],
+   "control_type": "INTERPRETATION_LIMIT",
+   "requirement_paraphrase": "Reproducibility, classification performance, reviewer agreement, robustness and operational validity are separate properties, each measured, not assumed.",
+   "required_interpretation": "Historical design context.",
+   "current_repository_status": "The claim-provenance rules keep detection, agreement and reliability apart; several public pages describe the programme as being in \"operational validation\", which names a property no study has measured (public audit PPA-03).",
+   "evidence": [
+    {
+     "path": "tools/claim-provenance/lib/rules.js",
+     "contains": "G01",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "about.html",
+     "contains": "operational validation",
+     "class": "PUBLIC_PAGE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Historical text, not a current instruction.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-44",
+   "topic": "no_psychological_or_legal_determination",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "HISTORICAL_CONTEXT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     759,
+     769
+    ],
+    "line_sha256": [
+     "2de1a4b3918319bc38225d504e69a72d6f871d53927ab4ebb929e54b40e791fa",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "6c435d9b142b2c8ae280576281bb729cf3f1f4c1cd9567610e4507b4945960b2",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "26318f21d0a76cdc0c277b4dd5a8d0e3e0870bf82b8ceea967ce4f34e9047d98",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "a6e50989e7be4d3fe7add2f1e937a2f0fd7efbb629eb8909b45c2bf1c930e8a4",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "d59fecf61d52950650acd04256ba864a70153fa997ff4485de9b59e3773249f2",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "028d02331c92d374e5564fee2f01a91f3184cc553280070d77888b37ab7395bd"
+    ]
+   },
+   "also_at": [],
+   "control_type": "HUMAN_OVERSIGHT",
+   "requirement_paraphrase": "Never imply that JRS determined a decision defensible; it identifies conditions requiring review, followed by human review.",
+   "required_interpretation": "Historical design context.",
+   "current_repository_status": "The candidate rejects determination language in model output, and sign-off is defined as not an approval.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/adapter.js",
+     "contains": "export const DETERMINATION",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "lib/engine-candidate/contract.js",
+     "contains": "SIGN_OFF_MEANING",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Historical text, not a current instruction.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-45",
+   "topic": "research_distinction",
+   "source_id": "S03",
+   "source_sha256": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "tier": "HISTORICAL_CONTEXT",
+   "locator": {
+    "source_id": "S03",
+    "lines": [
+     1398,
+     1430
+    ],
+    "line_sha256": [
+     "23aa7c657de4effd09a86e8baa544b37017c5eef4e3d9e2e0bb434504c06a8ec",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "0c70b55abaa568281fddd26463826d9d49a3301fe6baba97ae148d2f65aefad1",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "28b1d67cda7251d246a8aac9e3ae0eeeda879098b57a36c834993e33ac41ccdc",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "0ab2cf515fec05a490f6a710d8c8e24fcb6afd2e47b164f65e11c3580524f703",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "3653378f03af71a7c8c577f0ef65169ed852c625cd3974fedbaf1a515da0b9a2",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "3dd3c27d4295203b252b1fb290f6eab0e57738d33ad0e89d4a990acbcf1103eb",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "d26d75a8c90bd6e53c21fa2fe3f700e916fde57c21d54c1d33aa83b7de9b3c41",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "8f1cfebd36274b9e98ac048fe4941e38cb462072d952da8bd6a01ffcb96920a4",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "573bd17cc907d4dbf7464ac415c0e9f85bcd361c4bd9b3bf15e43677808db8a6",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "cd84ac55de8c27b20dee59d400da515855bfdc159482c3adf9d47ce3a7cfc7d2",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "b6095b4bc6a32507e0b50b7cdb90e9006605b401f2308f4e3a2a1597cde614c9",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "66c5daf8c158edc686711bf6f3b9d979649e56766ea0faeb3a9a85a2858375aa",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "6b68c2db4ff6acda8f2e383528af3817a4db66c4b5570c9bc185cdb22c77e23c",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "b4c0dc984980d6d52a74f32f8eda3858dd86781fef9ddd23089ab8e94d202145",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "282fb848c7ec307b44d85c2df3b1f693b13985b28105489688bc38e7b9cc5329",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "4e88a75937997ef2413a19bf0fe1c7c2a1e392c1d00055ad6427920c546f964a",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "339551cda569faf46e8d8231694ec2a899c17b2049280cacf5ee20c4c16f164e"
+    ]
+   },
+   "also_at": [],
+   "control_type": "RESEARCH_GOVERNANCE",
+   "requirement_paraphrase": "Research proceeds by tiers and does not jump from methodological testing or reliability to effectiveness claims.",
+   "required_interpretation": "Historical design context.",
+   "current_repository_status": "Public research pages and the claim register make no effectiveness or real-world claim.",
+   "evidence": [
+    {
+     "path": "research.html",
+     "contains": "Nothing above is presented as real-world validation.",
+     "class": "PUBLIC_PAGE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Historical text, not a current instruction.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-46",
+   "topic": "research_distinction",
+   "source_id": "S02",
+   "source_sha256": "57e2ec50fc431381b65048f978175e779481bb174993448cd1b475a218dad0e0",
+   "tier": "HISTORICAL_CONTEXT",
+   "locator": {
+    "source_id": "S02",
+    "lines": [
+     166,
+     169
+    ],
+    "line_sha256": [
+     "0550d198b7154c44b46d1674ad51a7e5661bc0d126e39f8a2f9d727bc2d67694",
+     "3138c3551e150b676330b1f62fe51bd6e1f443c6c6049912c308527d39fda766",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "2f1183aa200590445b66e5754eb942103f0ed6a576a4e534945cf527a8ec6208"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EVIDENCE_LIMIT",
+   "requirement_paraphrase": "Detection was measured on a constructed corpus; reliability on a separate small sample did not meet its criterion; cross-vendor figures are consistency, not accuracy or reliability.",
+   "required_interpretation": "Canonical evidence entries E-037 to E-039.",
+   "current_repository_status": "The claim register binds these limits, and the public repairs carry them.",
+   "evidence": [
+    {
+     "path": "docs/architecture/CLAIM_EVIDENCE_REGISTER.md",
+     "contains": "CL-001",
+     "class": "REPOSITORY_RECORD"
+    },
+    {
+     "path": "research.html",
+     "contains": "This is agreement between models, not accuracy.",
+     "class": "PUBLIC_PAGE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Already public in the repository ledger; no new content.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "SAC-47",
+   "topic": "credential_handling",
+   "source_id": "S02",
+   "source_sha256": "57e2ec50fc431381b65048f978175e779481bb174993448cd1b475a218dad0e0",
+   "tier": "SUPPLEMENT",
+   "locator": {
+    "source_id": "S02",
+    "lines": [
+     66,
+     66
+    ],
+    "line_sha256": [
+     "359720ec9fa80f81ccf42fe59a2e848b5d0eb46383f036c37a78e246ec27d9fb"
+    ]
+   },
+   "also_at": [],
+   "control_type": "SECURITY",
+   "requirement_paraphrase": "A credential-handling requirement: rotation evidence is required for a credential the source identifies. Details remain in the local source only.",
+   "required_interpretation": "Owner evidence required.",
+   "current_repository_status": "The repository records one owner attestation of a different credential rotation (E-030); it cannot show this one.",
+   "evidence": [],
+   "status": "REQUIRES_HUMAN_ACTION",
+   "limitation": "No credential detail is reproduced, on the owner's direction.",
+   "conflict_ids": [],
+   "human_action": {
+    "role": "owner",
+    "action": "Confirm the rotation the source requires, by an attestation or record kept outside the repository.",
+    "completed": false,
+    "evidence_ref": null
+   },
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "RAC-01",
+   "topic": "no_psychological_or_intent_inference",
+   "source_id": "H05",
+   "source_sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "tier": "REPOSITORY_SOURCE",
+   "locator": {
+    "source_id": "H05",
+    "lines": [
+     22,
+     22
+    ],
+    "line_sha256": [
+     "13685c491e101561f1d1aa184506180d939f60b07c597e2f207b30494a9bd635"
+    ]
+   },
+   "also_at": [],
+   "control_type": "INFERENCE_LIMIT",
+   "requirement_paraphrase": "Record-level documentation flaws only; no inference of a writer's emotional state, intent, hidden payoff or clinical condition.",
+   "required_interpretation": "No October 3 control was located for this; the handoff governs.",
+   "current_repository_status": "The candidate withholds model text matching emotion, intent, motive, payoff, credibility or clinical terms; the readiness workspace refuses such notes.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/review-candidate.js",
+     "contains": "export const PROHIBITED_INFERENCE",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/evaluation-readiness/lib/vocabulary.js",
+     "contains": "export const PROHIBITED_INFERENCE",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Pattern screens miss paraphrase.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": true
+  },
+  {
+   "control_id": "RAC-02",
+   "topic": "extraction_failure_reporting",
+   "source_id": "H05",
+   "source_sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "tier": "REPOSITORY_SOURCE",
+   "locator": {
+    "source_id": "H05",
+    "lines": [
+     27,
+     27
+    ],
+    "line_sha256": [
+     "8efe9e8e10097ac0fbcd9cd692c6c5074e9f8669c4decd1f92bfee063ac99716"
+    ]
+   },
+   "also_at": [],
+   "control_type": "EXTRACTION_REPORTING",
+   "requirement_paraphrase": "Explicit reporting of extraction failure, omission, truncation and unsupported content.",
+   "required_interpretation": "No October 3 control was located; the handoff governs.",
+   "current_repository_status": "Deterministic source preparation reports unreadable and partial input (refused), omissions, unsupported content and instruction-like text.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/source-prep.js",
+     "contains": "TRUNCATION_MARKERS",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "lib/engine-candidate/source-prep.js",
+     "contains": "UNSUPPORTED_MARKERS",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Heuristics; absence of a finding is not proof of absence.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": true
+  },
+  {
+   "control_id": "RAC-03",
+   "topic": "sealed_holdout_separation",
+   "source_id": "H05",
+   "source_sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "tier": "REPOSITORY_SOURCE",
+   "locator": {
+    "source_id": "H05",
+    "lines": [
+     37,
+     37
+    ],
+    "line_sha256": [
+     "13f4cfeec37cf8eb9c0006b73bab7089f19cb3e365fa41bf3ebe7754dc4f8560"
+    ]
+   },
+   "also_at": [],
+   "control_type": "HOLDOUT_SEPARATION",
+   "requirement_paraphrase": "No development, training or debugging data in sealed holdouts.",
+   "required_interpretation": "The October 3 source covers smoke cases only (SAC-35); the handoff extends it.",
+   "current_repository_status": "All 94 development texts are registered and refused; no holdout builder exists to enforce it.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/dev-material.js",
+     "contains": "DEVELOPMENT_MATERIAL",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "PARTIALLY_ALIGNED",
+   "limitation": "Detection, not enforcement.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": true
+  },
+  {
+   "control_id": "RAC-04",
+   "topic": "no_premature_drr_scoring",
+   "source_id": "H05",
+   "source_sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "tier": "REPOSITORY_SOURCE",
+   "locator": {
+    "source_id": "H05",
+    "lines": [
+     38,
+     38
+    ],
+    "line_sha256": [
+     "7da48927eb8c2c0d7062d123fc8172121463eea10617237ffd7e865f036b2b55"
+    ]
+   },
+   "also_at": [],
+   "control_type": "SCORING_LIMIT",
+   "requirement_paraphrase": "No numerical DRR scoring before formal reference interpretations and calibration data are locked.",
+   "required_interpretation": "No October 3 control was located; the handoff governs.",
+   "current_repository_status": "Candidate results carry no score; the readiness DRR function only refuses. The public training page uses a reviewer-assigned one-to-five rating, outside the Engine (public audit PPA-06).",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/contract.js",
+     "contains": "There is no numerical score, no DRR score and no overall verdict of any kind.",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/evaluation-readiness/lib/workspace.js",
+     "contains": "drr_score_before_freeze",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Applies to the Engine and evaluation tooling.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": true
+  },
+  {
+   "control_id": "RAC-05",
+   "topic": "codebook_correspondence",
+   "source_id": "D3",
+   "source_sha256": "963275e9a44a28f62e345b7db21bfd548e115fec0b006d5586629b50a9949358",
+   "tier": "REPOSITORY_SOURCE",
+   "locator": {
+    "source_id": "D3",
+    "lines": [
+     7,
+     9
+    ],
+    "line_sha256": [
+     "e7b2b5071e1de9e45323ba65f887d8777c5770d9e97ab0db9e2fb6b1071c771b",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "2d487e8546f1cae0671a2cf39f752513e6349925f7f3946358ff32af2a6e0cc7"
+    ]
+   },
+   "also_at": [],
+   "control_type": "METHODOLOGY_AUTHORITY",
+   "requirement_paraphrase": "The Codebook is the methodological authority; one candidate key is insufficiently established; no Engine-to-Codebook correspondence without a versioned, owner-approved record.",
+   "required_interpretation": "Owner decisions D-2 and D-3, with handoff line 39.",
+   "current_repository_status": "No correspondence record exists; all 69 correspondence register entries are unapproved; candidate keys are refused as conditions.",
+   "evidence": [
+    {
+     "path": "lib/engine-candidate/explanations.js",
+     "contains": "export const CODEBOOK_CORRESPONDENCE_RECORD = null;",
+     "class": "SOURCE_CODE"
+    },
+    {
+     "path": "tools/methodology-integrity/current-correspondence-register.json",
+     "contains": "\"approved\": false",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "No mapping is created or implied.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "RAC-06",
+   "topic": "public_controlled_boundary",
+   "source_id": "H05",
+   "source_sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "tier": "REPOSITORY_SOURCE",
+   "locator": {
+    "source_id": "H05",
+    "lines": [
+     16,
+     16
+    ],
+    "line_sha256": [
+     "3665b78aba1446ae6ccc835c31eae009fc1610ebd12274de843c996db31c3da5"
+    ]
+   },
+   "also_at": [],
+   "control_type": "BOUNDARY",
+   "requirement_paraphrase": "Public review routes refuse submissions; no public route accepts record text or returns an evaluation or Manifest.",
+   "required_interpretation": "The handoff governs.",
+   "current_repository_status": "The review routes refuse every request with 503 and make no outbound call.",
+   "evidence": [
+    {
+     "path": "api/_controlled-review.js",
+     "contains": "503",
+     "class": "SOURCE_CODE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Repository code; production identity is verified separately.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "RAC-07",
+   "topic": "release_gates",
+   "source_id": "H05",
+   "source_sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "tier": "REPOSITORY_SOURCE",
+   "locator": {
+    "source_id": "H05",
+    "lines": [
+     45,
+     51
+    ],
+    "line_sha256": [
+     "f4c4b8f64db8595f46b7e856c40148cdd0aef5eaa7b9e2dd75ca7af7faa8116f",
+     "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+     "f2564666d132aa987d030dc4252ab7c913a7d782b5e16d2ac3e2253bab617893",
+     "c35ece5862d1ba4f14d6a74044db71eadb55a22b2b3ff7fe6fb2551dfa4a1f5e",
+     "428ba11680ef17d588d169c6db12d3a8933bbf2a706686d9b0f8e20845187a36",
+     "264cdb5b194e4094763bc353a46ea03834d19b1640b05c1a3bec9dfa353425f2",
+     "1ae9b044dad3e0f6a9fefda636242cc68e58a7d74eea4ecab5bd75bb73e4953a"
+    ]
+   },
+   "also_at": [],
+   "control_type": "RELEASE_GATE",
+   "requirement_paraphrase": "External controlled use is not verified and no gate is marked complete; five gates.",
+   "required_interpretation": "The handoff gate list.",
+   "current_repository_status": "All five gates open; no authorization created.",
+   "evidence": [
+    {
+     "path": "docs/architecture/CURRENT_RELEASE_GATE_REPORT.md",
+     "contains": "INCOMPLETE_GATES_OPEN",
+     "class": "REPOSITORY_RECORD"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "See CF-SA-05 for the difference from the October 3 gate list.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  },
+  {
+   "control_id": "RAC-08",
+   "topic": "engine_status",
+   "source_id": "H05",
+   "source_sha256": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "tier": "REPOSITORY_SOURCE",
+   "locator": {
+    "source_id": "H05",
+    "lines": [
+     14,
+     14
+    ],
+    "line_sha256": [
+     "31465b5cbbb2f4e2c0b937a9fc72da1c1443e767cba9b97c66f8783900777e98"
+    ]
+   },
+   "also_at": [],
+   "control_type": "STATUS",
+   "requirement_paraphrase": "The Review Engine is a controlled local-development candidate, not a public service, production system, API, sandbox, integration, licensing offer or acquisition pathway.",
+   "required_interpretation": "The handoff governs.",
+   "current_repository_status": "Public pages on this branch state this.",
+   "evidence": [
+    {
+     "path": "review-engine.html",
+     "contains": "It is not a public record-processing service, production system, or autonomous decision-maker.",
+     "class": "PUBLIC_PAGE"
+    }
+   ],
+   "status": "ALIGNED",
+   "limitation": "Wording only.",
+   "conflict_ids": [],
+   "human_action": null,
+   "no_october_3_control": false
+  }
+ ],
+ "conflicts": [
+  {
+   "id": "CF-SA-01",
+   "controls": [
+    "SAC-05"
+   ],
+   "source": "S01 line 13; S02 line 104",
+   "repository_location": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json $.evidence[*].evidence_id (E-001 to E-009); docs/architecture/CURRENT_RELEASE_GATE_REPORT.md, evidence register",
+   "finding": "The release-gate record assigns E-001 to E-009 to its own evidence items, reusing canonical evidence-ledger identifiers that mean other things.",
+   "classification": "NEEDS_RECONCILIATION",
+   "decision_owner": "owner",
+   "resolution": null
+  },
+  {
+   "id": "CF-SA-02",
+   "controls": [
+    "SAC-16",
+    "SAC-22"
+   ],
+   "source": "S01 lines 70 and 74 (with line 21 for production)",
+   "repository_location": "tools/evaluation-readiness/authority-matrix.json roles.independent_reviewer, roles.adjudicator; tools/evaluation-readiness/readiness-contract.json ATT-04; docs/architecture/CODEBOOK_MAPPING_AND_INTERPRETATION_SEPARATION_PROTOCOL.md",
+   "finding": "The source makes the owner the only required human evaluation reviewer and the decider of disputes for the evaluation package, and requires independent labeling only for production. The readiness package models future evaluation review by independent reviewers and a separate adjudicator, with no creator-review path.",
+   "classification": "NEEDS_RECONCILIATION",
+   "decision_owner": "owner",
+   "resolution": null
+  },
+  {
+   "id": "CF-SA-03",
+   "controls": [
+    "SAC-15"
+   ],
+   "source": "S01 lines 37 to 39 and 45 to 46; S03 line 96",
+   "repository_location": "docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md lines 10, 36 and 40; public pages on this branch (for example index.html)",
+   "finding": "The October 3 sources state commercial-preparation objectives; the later 5 October handoff prohibits licensing and acquisition work without a new owner instruction. The governing order puts the October 3 sources first and the handoff last, \"where consistent\", and the two are not consistent on this point.",
+   "classification": "NEEDS_RECONCILIATION",
+   "decision_owner": "owner",
+   "resolution": null
+  },
+  {
+   "id": "CF-SA-04",
+   "controls": [
+    "SAC-38"
+   ],
+   "source": "S03 line 110",
+   "repository_location": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json $.gates[RG-1, RG-2, RG-4, RG-5].status and sub-control statuses; no threshold field",
+   "finding": "The source vocabulary is pass, fail or not assessed, with missing professional-authority evidence recorded as not assessed; the record uses BLOCKED for four gates and records no numeric thresholds.",
+   "classification": "NEEDS_RECONCILIATION",
+   "decision_owner": "owner",
+   "resolution": null
+  },
+  {
+   "id": "CF-SA-05",
+   "controls": [
+    "SAC-11"
+   ],
+   "source": "S01 line 21",
+   "repository_location": "docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md lines 47 to 51; lib/release-gate/vocabulary.js GATES",
+   "finding": "The October 3 gate statement lists independent holdout labeling, operator evidence, counsel disposition, creator review of the development package and independent production QA. The handoff and the release-gate record list owner release authorization as a gate and omit creator review.",
+   "classification": "NEEDS_RECONCILIATION",
+   "decision_owner": "owner",
+   "resolution": null
+  },
+  {
+   "id": "CF-SA-06",
+   "controls": [
+    "SAC-29",
+    "SAC-41"
+   ],
+   "source": "S01 line 102; S03 lines 196 to 206 (historical)",
+   "repository_location": ".vercelignore (comment \"PUBLICIZE THE STANDARD, PROTECT THE IMPLEMENTATION\"); repository visibility public",
+   "finding": "Implementation, test corpora and evaluation tooling are excluded from the website but public on GitHub; the source requires an exposure review before any promise of secrecy or exclusivity.",
+   "classification": "NEEDS_RECONCILIATION",
+   "decision_owner": "owner_and_counsel",
+   "resolution": null
+  }
+ ],
+ "mapping_statement": "No approved mapping between Engine candidate keys and Codebook conditions is created or implied. Owner decisions D-2 and D-3 are preserved."
+}

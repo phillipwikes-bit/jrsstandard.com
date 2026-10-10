@@ -1,0 +1,206 @@
+{
+ "contract_version": "jrs-evaluation-readiness-contract/0.1.0",
+ "package_id": "JRS-EVAL-READINESS-20261007-PR39",
+ "package_status": "PLANNING_ONLY",
+ "created": "2026-10-07",
+ "notice": "Internal planning and control artifact. It prepares a future independent evaluation. It is not an evaluation, a simulation of one, a validation, or a release authorization.",
+ "categories": {
+  "CURRENT_IMPLEMENTATION": {
+   "treatment": "Verified from current source and tests",
+   "state": "VERIFIED_IN_REPOSITORY",
+   "items": [
+    {
+     "id": "CI-01",
+     "description": "Local Engine candidate 0.5.0-local.1 with a deterministic mock adapter only; no provider adapter exists.",
+     "source_paths": [
+      "lib/engine-candidate/review-candidate.js",
+      "lib/engine-candidate/adapter.js",
+      "lib/engine-candidate/mock-adapter.js"
+     ],
+     "verified_by": "node tests/engine-candidate/run-all.mjs"
+    },
+    {
+     "id": "CI-02",
+     "description": "Development-material registry (94 texts) and contamination screen.",
+     "source_paths": [
+      "lib/engine-candidate/dev-material.js",
+      "lib/engine-candidate/contamination.js"
+     ],
+     "verified_by": "node tests/engine-candidate/run-all.mjs"
+    },
+    {
+     "id": "CI-03",
+     "description": "Local reviewer workspace for candidate packets (offline, synthetic fixtures only).",
+     "source_paths": [
+      "tools/local-reviewer-workspace/app/core.js"
+     ],
+     "verified_by": "node tests/local-reviewer-workspace/run-all.mjs"
+    },
+    {
+     "id": "CI-04",
+     "description": "Frozen synthetic demonstration package, status DEMO_PREPARATION_COMPLETE_NOT_RELEASED.",
+     "source_paths": [
+      "tools/frozen-demo/demo-manifest.json",
+      "tools/frozen-demo/lib/verify.js"
+     ],
+     "verified_by": "node tests/frozen-demo/run-all.mjs"
+    },
+    {
+     "id": "CI-05",
+     "description": "Release-gate record and validator; every gate open.",
+     "source_paths": [
+      "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+      "lib/release-gate/validator.js"
+     ],
+     "verified_by": "node tests/release-gate/run-all.mjs"
+    },
+    {
+     "id": "CI-06",
+     "description": "Methodology correspondence register: no Engine-to-Codebook correspondence approved.",
+     "source_paths": [
+      "tools/methodology-integrity/current-correspondence-register.json"
+     ],
+     "verified_by": "node tests/methodology-integrity/run-all.mjs"
+    },
+    {
+     "id": "CI-07",
+     "description": "Claim-provenance register and public-claim scanner.",
+     "source_paths": [
+      "tools/claim-provenance/current-claim-evidence-register.json"
+     ],
+     "verified_by": "node tests/claim-provenance/run-all.mjs"
+    },
+    {
+     "id": "CI-08",
+     "description": "This package: readiness registries, intake validator, separated review workspaces, run ledger, repository scan and verifier.",
+     "source_paths": [
+      "tools/evaluation-readiness/readiness-registry.json"
+     ],
+     "verified_by": "node tests/evaluation-readiness/run-all.mjs"
+    }
+   ]
+  },
+  "TARGET_ARCHITECTURE": {
+   "treatment": "Clearly labeled future-state design",
+   "state": "TARGET_ONLY",
+   "items": [
+    {
+     "id": "TA-01",
+     "description": "An owner-opened intake of a genuinely independent, completed, rights-cleared set of supplier-access exception records, held outside this repository and identified here only by digest and external reference."
+    },
+    {
+     "id": "TA-02",
+     "description": "Blinded human review by independent reviewers under a frozen Codebook revision, in four separated workspaces: extraction, interpretation, comparison and adjudication."
+    },
+    {
+     "id": "TA-03",
+     "description": "Engine candidate output produced only under a separately authorized run and compared only in the comparison workspace, with no condition correspondence asserted for candidate keys."
+    },
+    {
+     "id": "TA-04",
+     "description": "Calibration and agreement analysis under a protocol frozen before any data is seen; none is designed or implemented here."
+    },
+    {
+     "id": "TA-05",
+     "description": "Every run bound in the readiness registry and every artifact recorded in the append-only run ledger."
+    }
+   ]
+  },
+  "SYNTHETIC_FIXTURE": {
+   "treatment": "Constructed development material only",
+   "state": "DEVELOPMENT_ONLY",
+   "items": [
+    {
+     "id": "SF-01",
+     "description": "Engine-candidate fixtures, regression, corpus and confirmation sets (89 texts).",
+     "location": "tests/engine-candidate/"
+    },
+    {
+     "id": "SF-02",
+     "description": "Frozen synthetic demonstration corpus FD-01 to FD-05.",
+     "location": "tools/frozen-demo/corpus/v0.1.0/"
+    },
+    {
+     "id": "SF-03",
+     "description": "Synthetic test tokens and probes of this package; they carry no record content.",
+     "location": "tools/evaluation-readiness/lib/probes.js"
+    }
+   ],
+   "rule": "No synthetic fixture is independent evaluation evidence, holdout material, a user record or a production sample, whatever it is called."
+  },
+  "INDEPENDENT_EVALUATION_EVIDENCE": {
+   "treatment": "Not yet present",
+   "state": "NOT_PRESENT",
+   "items": []
+  },
+  "HUMAN_ATTESTATION": {
+   "treatment": "Required but unfilled",
+   "state": "REQUIRED_UNFILLED",
+   "items": [
+    {
+     "id": "ATT-01",
+     "attestation": "Authority and rights to use each evaluation record for this purpose",
+     "required_role": "owner",
+     "value": null
+    },
+    {
+     "id": "ATT-02",
+     "attestation": "Each record is completed, and its completion status is attested by the record custodian",
+     "required_role": "record_custodian",
+     "value": null
+    },
+    {
+     "id": "ATT-03",
+     "attestation": "Chain of custody from source to the evaluation store",
+     "required_role": "record_custodian",
+     "value": null
+    },
+    {
+     "id": "ATT-04",
+     "attestation": "Each reviewer is independent of the candidate author and has no conflict",
+     "required_role": "independent_reviewer",
+     "value": null
+    },
+    {
+     "id": "ATT-05",
+     "attestation": "Codebook revision frozen for the evaluation",
+     "required_role": "owner",
+     "value": null
+    },
+    {
+     "id": "ATT-06",
+     "attestation": "Interpretation, calibration and adjudication protocols frozen before data is seen",
+     "required_role": "owner",
+     "value": null
+    }
+   ]
+  },
+  "RELEASE_AUTHORIZATION": {
+   "treatment": "Owner-controlled and absent",
+   "state": "ABSENT",
+   "owner_record_ref": null
+  },
+  "EXTERNAL_COUNSEL_DETERMINATION": {
+   "treatment": "Required but absent",
+   "state": "ABSENT",
+   "determination_ref": null,
+   "questions_for_counsel": [
+    "Lawful basis, consent and confidentiality terms for using real supplier-access exception records in an evaluation.",
+    "Data-protection obligations for the evaluation store, reviewer access, retention and deletion.",
+    "Rights in reviewer contributions and in evaluation results.",
+    "What may lawfully be said about any future evaluation result."
+   ]
+  }
+ },
+ "limitations": {
+  "not_an_evaluation": "No evaluation has been run, simulated or approximated. No record, reviewer, label, agreement or result exists.",
+  "no_independent_evidence": "Independent evaluation evidence is NOT_PRESENT. Nothing in the repository is, or can be relabeled as, such evidence.",
+  "digest_not_independence": "Digest matching is a contamination control. A digest that matches no development text does not show that a record is independent.",
+  "no_validation": "Nothing here shows the Engine or JRS is valid, reliable or accurate, on any record.",
+  "no_release_effect": "No release gate is advanced, and every gate status is unchanged.",
+  "no_counsel_or_owner_action": "No counsel determination, owner authorization, reviewer attestation or independent QA exists; the package only names where each is required.",
+  "no_scoring": "No DRR score, agreement statistic or classification is computed, and no code for one exists.",
+  "scope_limited": "Completed, non-HR supplier-access exception records only. Every other decision domain is refused."
+ },
+ "relationship_to_release_gates": "none"
+}

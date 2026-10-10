@@ -1,0 +1,96 @@
+{
+ "registry_version": "jrs-evaluation-readiness-registry/0.1.0",
+ "package_id": "JRS-EVAL-READINESS-20261007-PR39",
+ "status": "PLANNING_ONLY",
+ "created": "2026-10-07",
+ "notice": "Planning-only registry. Its run list is empty. A planning artifact classifies as PLANNING_ONLY and can never classify as an evaluation result.",
+ "intake": {
+  "state": "INTAKE_CLOSED",
+  "opening_authority": "owner",
+  "opening_record_ref": null
+ },
+ "freezes": {
+  "codebook": {
+   "frozen": false,
+   "freeze_record_ref": null,
+   "authority": "owner"
+  },
+  "interpretation": {
+   "frozen": false,
+   "freeze_record_ref": null,
+   "authority": "owner"
+  },
+  "calibration": {
+   "frozen": false,
+   "freeze_record_ref": null,
+   "authority": "owner"
+  },
+  "adjudication_protocol": {
+   "frozen": false,
+   "freeze_record_ref": null,
+   "authority": "owner"
+  }
+ },
+ "gate_status_snapshot": {
+  "RG-1": "BLOCKED",
+  "RG-2": "BLOCKED",
+  "RG-3": "NOT_ASSESSED",
+  "RG-4": "BLOCKED",
+  "RG-5": "BLOCKED"
+ },
+ "run_binding_template": {
+  "engine": {
+   "version": null,
+   "commit": null
+  },
+  "prompt": {
+   "version": null,
+   "sha256": null
+  },
+  "configuration_id": null,
+  "adapter": {
+   "identity": null,
+   "kind": null
+  },
+  "codebook": {
+   "source_id": null,
+   "revision": null,
+   "sha256": null,
+   "freeze_record_ref": null
+  },
+  "scope": {
+   "record_category": null,
+   "record_type": null,
+   "completion_status": null,
+   "hr_related": null
+  },
+  "rights": {
+   "authorization_status": null,
+   "authority_attestation_ref": null
+  },
+  "input": {
+   "digest_algorithm": null,
+   "input_digest": null,
+   "external_reference": null,
+   "custody_ref": null
+  },
+  "reviewer": {
+   "token": null,
+   "role": null,
+   "role_version": null,
+   "independence_status": null,
+   "conflict_status": null,
+   "independence_attestation_ref": null
+  },
+  "extraction_version": null,
+  "interpretation_version": null,
+  "adjudication_protocol_version": null,
+  "output": {
+   "output_identity": null,
+   "evidence_digest": null
+  },
+  "evidence_class": null,
+  "gate_status_at_run": null
+ },
+ "runs": []
+}

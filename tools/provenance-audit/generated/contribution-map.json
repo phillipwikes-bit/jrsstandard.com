@@ -1,0 +1,870 @@
+{
+ "source_commit": "a8fb39fd1da275b663a2bdaac89cee2fe07812ff",
+ "inventory_digest": "d937a28b3d4cc9f382ef5b1f5dcb20f04b5c8582f738c525802f52b9bfd854ad",
+ "metadata_note": "Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights.",
+ "areas": [
+  {
+   "area": "provenance-audit",
+   "files": 9,
+   "earliest_available_commit": {
+    "hash": "01d38b78fc2d6c02c9528425e665f01c161d1918",
+    "date": "2026-10-06"
+   },
+   "most_recent_available_commit": {
+    "hash": "a8fb39fd1da275b663a2bdaac89cee2fe07812ff",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 2,
+   "commits_with_ai_tool_markers": 2,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 2
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "local-reviewer-workspace",
+   "files": 9,
+   "earliest_available_commit": {
+    "hash": "6ced2506df5fcd56526049cb7135f98841598b4c",
+    "date": "2026-10-06"
+   },
+   "most_recent_available_commit": {
+    "hash": "6ced2506df5fcd56526049cb7135f98841598b4c",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 1,
+   "commits_with_ai_tool_markers": 1,
+   "generated_files": 1,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED",
+    "GENERATED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "other-tools",
+   "files": 3,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "529fd72b95507039bd713b6c5a382add270b5c4f",
+    "date": "2026-09-28"
+   },
+   "commits_touching": 2,
+   "commits_with_ai_tool_markers": 0,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 2
+    }
+   ],
+   "origin_labels": [
+    "UNKNOWN"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "engine-candidate",
+   "files": 13,
+   "earliest_available_commit": {
+    "hash": "05291f8f9e3849eed19ba1e25b2a7ec374442d35",
+    "date": "2026-10-06"
+   },
+   "most_recent_available_commit": {
+    "hash": "fe2bb1db0fc25a0cb30eb9625f149b685200ecbc",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 10,
+   "commits_with_ai_tool_markers": 10,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 10
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "release-gate",
+   "files": 8,
+   "earliest_available_commit": {
+    "hash": "47cebfb3349b315d3b25793b571fc7200727010e",
+    "date": "2026-10-06"
+   },
+   "most_recent_available_commit": {
+    "hash": "47cebfb3349b315d3b25793b571fc7200727010e",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 1,
+   "commits_with_ai_tool_markers": 1,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "manifest-library",
+   "files": 9,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "529fd72b95507039bd713b6c5a382add270b5c4f",
+    "date": "2026-09-28"
+   },
+   "commits_touching": 3,
+   "commits_with_ai_tool_markers": 0,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 3
+    }
+   ],
+   "origin_labels": [
+    "UNKNOWN"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "retention-policy",
+   "files": 1,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "commits_touching": 1,
+   "commits_with_ai_tool_markers": 0,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "UNKNOWN"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "api-server-modules",
+   "files": 14,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "601539cb4cdfccc5b85e5570af99e65d40e0c4e9",
+    "date": "2026-10-04"
+   },
+   "commits_touching": 7,
+   "commits_with_ai_tool_markers": 0,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 7
+    }
+   ],
+   "origin_labels": [
+    "UNKNOWN"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "api-routes",
+   "files": 49,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "601539cb4cdfccc5b85e5570af99e65d40e0c4e9",
+    "date": "2026-10-04"
+   },
+   "commits_touching": 12,
+   "commits_with_ai_tool_markers": 3,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 2
+    },
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 1
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 9
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "tests-engine-candidate",
+   "files": 63,
+   "earliest_available_commit": {
+    "hash": "05291f8f9e3849eed19ba1e25b2a7ec374442d35",
+    "date": "2026-10-06"
+   },
+   "most_recent_available_commit": {
+    "hash": "fe2bb1db0fc25a0cb30eb9625f149b685200ecbc",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 11,
+   "commits_with_ai_tool_markers": 11,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 11
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "tests-release-gate",
+   "files": 7,
+   "earliest_available_commit": {
+    "hash": "47cebfb3349b315d3b25793b571fc7200727010e",
+    "date": "2026-10-06"
+   },
+   "most_recent_available_commit": {
+    "hash": "47cebfb3349b315d3b25793b571fc7200727010e",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 1,
+   "commits_with_ai_tool_markers": 1,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "tests-local-reviewer-workspace",
+   "files": 8,
+   "earliest_available_commit": {
+    "hash": "6ced2506df5fcd56526049cb7135f98841598b4c",
+    "date": "2026-10-06"
+   },
+   "most_recent_available_commit": {
+    "hash": "6ced2506df5fcd56526049cb7135f98841598b4c",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 1,
+   "commits_with_ai_tool_markers": 1,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "tests-provenance-audit",
+   "files": 7,
+   "earliest_available_commit": {
+    "hash": "01d38b78fc2d6c02c9528425e665f01c161d1918",
+    "date": "2026-10-06"
+   },
+   "most_recent_available_commit": {
+    "hash": "a8fb39fd1da275b663a2bdaac89cee2fe07812ff",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 2,
+   "commits_with_ai_tool_markers": 2,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 2
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "tests-other",
+   "files": 18,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "fbfcc4923ec8a06b47bd2c227158d3b8563115e7",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 10,
+   "commits_with_ai_tool_markers": 2,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 2
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 8
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "scripts",
+   "files": 152,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "601539cb4cdfccc5b85e5570af99e65d40e0c4e9",
+    "date": "2026-10-04"
+   },
+   "commits_touching": 7,
+   "commits_with_ai_tool_markers": 3,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 1
+    },
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 2
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 4
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "research",
+   "files": 763,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "fe2bb1db0fc25a0cb30eb9625f149b685200ecbc",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 34,
+   "commits_with_ai_tool_markers": 30,
+   "generated_files": 8,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 28
+    },
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 2
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 4
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED",
+    "GENERATED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "docs-architecture",
+   "files": 16,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "fbfcc4923ec8a06b47bd2c227158d3b8563115e7",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 8,
+   "commits_with_ai_tool_markers": 4,
+   "generated_files": 1,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 4
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 4
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED",
+    "GENERATED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "docs-other",
+   "files": 160,
+   "earliest_available_commit": {
+    "hash": "1b57a06c1dfe074e82fba8fa8010d58dc913ad9c",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "c22e4da8628ecc65d3b822c8a98a6e704f6e62cd",
+    "date": "2026-10-05"
+   },
+   "commits_touching": 17,
+   "commits_with_ai_tool_markers": 4,
+   "generated_files": 1,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 1
+    },
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 3
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 13
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED",
+    "GENERATED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "control-state",
+   "files": 41,
+   "earliest_available_commit": {
+    "hash": "3080b6d6003a4961deb78d552d75b3f5edffbda5",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "b32dc8d7a72a0568c93a8fbdbd36d99ba49b40eb",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 9,
+   "commits_with_ai_tool_markers": 3,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 2
+    },
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 1
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 6
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "agent-config",
+   "files": 26,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "commits_touching": 1,
+   "commits_with_ai_tool_markers": 0,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "UNKNOWN"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "ci-config",
+   "files": 2,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "9065a9e041bd5a5a54debc5544e8157335aefafc",
+    "date": "2026-09-22"
+   },
+   "commits_touching": 3,
+   "commits_with_ai_tool_markers": 0,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Phillip Wikes <1…@users.noreply.github.com>",
+     "commits": 1
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 2
+    }
+   ],
+   "origin_labels": [
+    "UNKNOWN"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "unpublished-standard",
+   "files": 6,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "54417dc7c9e8f6f79f27a1dd604c2e536c9b3686",
+    "date": "2026-09-22"
+   },
+   "commits_touching": 2,
+   "commits_with_ai_tool_markers": 1,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 1
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "site-reference",
+   "files": 18,
+   "earliest_available_commit": {
+    "hash": "3080b6d6003a4961deb78d552d75b3f5edffbda5",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "f2b85e38a037453d3d96d6ea6ef08212f53a66bb",
+    "date": "2026-09-22"
+   },
+   "commits_touching": 4,
+   "commits_with_ai_tool_markers": 2,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 2
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 2
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "site-reviewer",
+   "files": 3,
+   "earliest_available_commit": {
+    "hash": "3080b6d6003a4961deb78d552d75b3f5edffbda5",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "f2b85e38a037453d3d96d6ea6ef08212f53a66bb",
+    "date": "2026-09-22"
+   },
+   "commits_touching": 4,
+   "commits_with_ai_tool_markers": 2,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 2
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 2
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "deploy-config",
+   "files": 4,
+   "earliest_available_commit": {
+    "hash": "3080b6d6003a4961deb78d552d75b3f5edffbda5",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "8590ba09e0ddad9e6ad054f5334f6cc5846d11b8",
+    "date": "2026-10-04"
+   },
+   "commits_touching": 8,
+   "commits_with_ai_tool_markers": 1,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 1
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 7
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "instructions",
+   "files": 1,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "3758d7619168a5dc1690476a0b322726a7b71998",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 3,
+   "commits_with_ai_tool_markers": 1,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 1
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 2
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "database-schema",
+   "files": 11,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "commits_touching": 1,
+   "commits_with_ai_tool_markers": 0,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "UNKNOWN"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "office-documents",
+   "files": 14,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "commits_touching": 1,
+   "commits_with_ai_tool_markers": 0,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "UNKNOWN"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "site-pages",
+   "files": 53,
+   "earliest_available_commit": {
+    "hash": "16e8e2ea82dc8f8ddbda8fb7ba8eacca359c6b01",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "3758d7619168a5dc1690476a0b322726a7b71998",
+    "date": "2026-10-06"
+   },
+   "commits_touching": 63,
+   "commits_with_ai_tool_markers": 6,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Claude <n…@anthropic.com>",
+     "commits": 4
+    },
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 2
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 57
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "site-assets",
+   "files": 30,
+   "earliest_available_commit": {
+    "hash": "3080b6d6003a4961deb78d552d75b3f5edffbda5",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "3cccf320c5ce9c173ce9752c073a81aa588f4225",
+    "date": "2026-10-05"
+   },
+   "commits_touching": 8,
+   "commits_with_ai_tool_markers": 1,
+   "generated_files": 0,
+   "contributor_identities": [
+    {
+     "identity": "Codex <c…@openai.com>",
+     "commits": 1
+    },
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 7
+    }
+   ],
+   "origin_labels": [
+    "AI_ASSISTED_RECORDED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  },
+  {
+   "area": "root-markdown",
+   "files": 33,
+   "earliest_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "most_recent_available_commit": {
+    "hash": "36c366cd5eca77a80eee737e261ac30402ca59a1",
+    "date": "2026-09-21"
+   },
+   "commits_touching": 1,
+   "commits_with_ai_tool_markers": 0,
+   "generated_files": 2,
+   "contributor_identities": [
+    {
+     "identity": "phillipwikes-bit <p…@gmail.com>",
+     "commits": 1
+    }
+   ],
+   "origin_labels": [
+    "GENERATED"
+   ],
+   "limitation": "The clone is shallow, so the earliest available commit is a history boundary, not the origin of the files. An AI-tool marker (an AI author identity or an AI co-author or session trailer) records that a tool took part in a commit; its absence does not show that a person wrote the change. Repository metadata records contribution activity. It does not determine legal authorship, employment ownership, work-for-hire status, assignment, license grant, or transfer rights."
+  }
+ ]
+}

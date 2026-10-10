@@ -1,0 +1,104 @@
+{
+ "record_id": "CR-001",
+ "record_version": "1",
+ "corpus_version": "0.1.0",
+ "scenario": "complete supplier-access exception draft",
+ "provenance": "Fictional. Written by Claude Code (an AI) on 2026-10-06 as constructed development data for the local Review Engine candidate. No real supplier, person, organisation or record is described or was used.",
+ "development_only": "DEVELOPMENT DATA ONLY. This record and its expected findings were written to develop and test the candidate. It may never enter a sealed holdout, an evaluation of real-world performance, or any validation claim.",
+ "profile": {
+  "record_type": "supplier_access_exception",
+  "completion_status": "completed",
+  "hr_related": false
+ },
+ "text": "CONSTRUCTED DEVELOPMENT RECORD CR-001. Fictional. Not a real record.\nOn 2 March 2026 Northgate Fabrication Ltd requested read access to the parts-forecast portal for four weeks. The supplier-access policy requires a completed security questionnaire before access is granted. Northgate submitted the questionnaire on 27 February 2026; the security office marked section 4 (data retention) incomplete on 28 February 2026. On 3 March 2026 the procurement lead approved a read-only exception because the forecast was needed for a contract bid due on 10 March 2026, and recorded that the security office would confirm section 4 before 17 March 2026. Access was granted on 4 March 2026 and ends on 1 April 2026.",
+ "mock_responses": [
+  {
+   "variant_id": "A",
+   "response": {
+    "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+    "model_id": "mock-deterministic",
+    "model_version": "corpus-0.1.0",
+    "prompt_version": "candidate-prompt/0.3.0",
+    "completion": "complete",
+    "conditions": {
+     "basis_identification": {
+      "status": "pass",
+      "explanation_id": "missing_identifiable_basis",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "reasoning_traceability": {
+      "status": "pass",
+      "explanation_id": "missing_logical_bridge",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "cold_reviewer_clarity": {
+      "status": "pass",
+      "explanation_id": "cold_reviewer_clarity",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "accountability_support": {
+      "status": "pass",
+      "explanation_id": "insufficient_evidence",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "temporal_reconstructability": {
+      "status": "pass",
+      "explanation_id": "chronology_gap",
+      "note": "The record states this.",
+      "uncertain": false
+     }
+    },
+    "findings": [],
+    "revision_needed": null
+   }
+  },
+  {
+   "variant_id": "B",
+   "response": {
+    "adapter_contract": "jrs-candidate-adapter-output/0.1.0",
+    "model_id": "mock-deterministic",
+    "model_version": "corpus-0.1.0",
+    "prompt_version": "candidate-prompt/0.3.0",
+    "completion": "complete",
+    "conditions": {
+     "basis_identification": {
+      "status": "pass",
+      "explanation_id": "missing_identifiable_basis",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "reasoning_traceability": {
+      "status": "pass",
+      "explanation_id": "missing_logical_bridge",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "cold_reviewer_clarity": {
+      "status": "pass",
+      "explanation_id": "cold_reviewer_clarity",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "accountability_support": {
+      "status": "pass",
+      "explanation_id": "insufficient_evidence",
+      "note": "The record states this.",
+      "uncertain": false
+     },
+     "temporal_reconstructability": {
+      "status": "pass",
+      "explanation_id": "chronology_gap",
+      "note": "The record states this.",
+      "uncertain": false
+     }
+    },
+    "findings": [],
+    "revision_needed": null
+   }
+  }
+ ]
+}

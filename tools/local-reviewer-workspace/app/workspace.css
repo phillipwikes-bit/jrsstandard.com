@@ -1,0 +1,56 @@
+/* JRS local reviewer workspace. Local only. Tokens follow CLAUDE.md 36.4; no web fonts are loaded,
+   so the font stacks fall back to local system faces. */
+:root {
+  --bg: #050505; --surface: #121212; --surface2: #1A1A1A; --accent: #BE9447; --accent-dim: #7A5E28;
+  --muted: #B3B3B3; --muted-soft: #8A8A8A; --text: #F2F2F2; --rule: #2A2A2A; --stop: #8B2020;
+  --stop-text: #E88080; --review-text: #D4A055; --ready-text: #5DBF82;
+  --display: 'Bodoni Moda', Georgia, 'Times New Roman', serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+  --body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 8px; background: var(--surface); color: var(--text); padding: 8px 12px; }
+.top, main, .foot { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+.top { padding-top: 32px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+h1 { font-family: var(--display); font-weight: 500; font-size: 32px; margin: 0 0 10px; }
+h2 { font-family: var(--display); font-weight: 500; font-size: 22px; margin: 0 0 10px; }
+h3 { font-size: 17px; margin: 0 0 8px; }
+h3.small { font-size: 14px; color: var(--muted); font-weight: 600; margin-top: 14px; }
+.lede { color: var(--muted); max-width: 720px; }
+.notice { border-left: 3px solid var(--accent); background: var(--surface); padding: 10px 14px; color: var(--text); }
+.panel { background: var(--surface); border: 1px solid var(--rule); padding: 20px; margin: 20px 0; }
+.refusal { border-color: var(--stop); }
+.refusal h2 { color: var(--stop-text); }
+.desc, .limit { color: var(--muted); font-size: 14.5px; }
+.statement { border: 1px solid var(--rule); background: var(--surface2); padding: 10px 14px; }
+.synthetic { font-family: var(--mono); font-size: 13px; color: var(--review-text); border: 1px dashed var(--accent-dim); padding: 8px 12px; }
+.field { margin: 12px 0; }
+.field label { display: block; font-weight: 600; margin-bottom: 4px; }
+.field.check { display: flex; gap: 10px; align-items: flex-start; }
+.field.check label { font-weight: 400; margin: 0; }
+input[type=text], select, textarea { width: 100%; max-width: 520px; background: var(--bg); color: var(--text); border: 1px solid var(--rule); padding: 8px 10px; font: inherit; }
+textarea { min-height: 64px; max-width: 100%; }
+input[type=file] { color: var(--muted); }
+button { font: inherit; font-weight: 600; background: var(--accent); color: var(--bg); border: 1px solid var(--accent); padding: 9px 16px; cursor: pointer; min-height: 40px; }
+button.quiet { background: transparent; color: var(--accent); }
+button:disabled { background: var(--surface2); color: var(--muted-soft); border-color: var(--rule); cursor: not-allowed; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.finding { border-top: 1px solid var(--rule); padding: 14px 0; }
+.finding:first-child { border-top: 0; }
+.finding h3 { font-family: var(--mono); font-size: 14px; color: var(--accent); }
+.finding dl, .meta { display: grid; grid-template-columns: minmax(150px, 220px) 1fr; gap: 4px 14px; margin: 0; }
+.finding dt, .meta dt { color: var(--muted-soft); font-size: 14px; }
+.finding dd, .meta dd { margin: 0; overflow-wrap: anywhere; }
+.meta dd { font-family: var(--mono); font-size: 13.5px; }
+blockquote { margin: 0; padding: 4px 10px; border-left: 2px solid var(--accent-dim); background: var(--bg); white-space: pre-wrap; }
+.note-q { color: var(--muted); font-size: 14px; }
+fieldset { border: 1px solid var(--rule); padding: 12px 14px; margin: 12px 0; }
+legend { font-family: var(--mono); font-size: 14px; color: var(--accent); padding: 0 6px; }
+.recorded { font-size: 14px; color: var(--muted); }
+.error { color: var(--stop-text); font-size: 14px; }
+.foot { color: var(--muted-soft); font-size: 13px; padding-bottom: 40px; }
+@media (max-width: 640px) { .finding dl, .meta { grid-template-columns: 1fr; } }

@@ -1,0 +1,93 @@
+// Claim provenance: evidence sources. INTERNAL, LOCAL ONLY.
+//
+// Each source records what the repository itself shows. `binding` is FILE (the sha256 of the
+// whole file as reviewed) or LINE (the sha256 of one exact line, found by `anchor`), used for
+// append-only logs such as the tracker, which change every turn. The builder refuses to run when a
+// source no longer has its reviewed hash, so a changed source is reviewed before any claim is
+// re-bound to it. Source level follows CLAUDE.md section 5 (1 executed primary evidence ... 7
+// assumption).
+
+export const EVIDENCE_CLASSES = Object.freeze(['MANUSCRIPT_REPORTED', 'STRUCTURED_SECONDARY_ANALYSIS', 'AUTHORITATIVE_TABLE_READ_REPORTED', 'CONTEMPORANEOUS_PROJECT_RECORD',
+  'CONTEMPORANEOUS_COMMUNICATION', 'AUTHOR_STATEMENT', 'LOCAL_TEST', 'MOCK_OR_FIXTURE', 'SOURCE_GROUNDING_TEST', 'SCHEMA_TEST', 'REPOSITORY_CONTROL_RECORD', 'POLICY_OR_WEBSITE_STATEMENT', 'NONE']);
+
+export const EVIDENCE = Object.freeze([
+  { id: 'EV-DETECTION-ARTICLE', path: 'research/deliverables_2026-08-29/Detection_Article_2026-08-29.md', binding: 'FILE', reviewed_sha256: '7d21dad2870306fa8171428227fb090f94a129a592b25bf80ee54233516c3d4b',
+    evidence_class: 'MANUSCRIPT_REPORTED', level: 4, version: 'manuscript dated 2026-08-29; data lock 2026-08-15',
+    measures: 'Human reviewers classifying 24 constructed AI-generated records against an author-generated, blind-reproduced reference classification (Sections 4 to 6); a separate 10-record reliability sample (Section 6.5); three-vendor model consistency on a fixed 15-record set (Appendix A); per-condition behaviour, descriptively (Appendix B).',
+    limitations: ['A manuscript, not a peer-reviewed publication. Its figures are reported by the manuscript; this package does not recompute them.', 'Constructed records only. It states what was not shown: ambiguous, human-authored or real records, and individual-level reliability.'] },
+  { id: 'EV-FINAL-SWEEP', path: 'research/final_sweep_2026-08-21.json', binding: 'FILE', reviewed_sha256: 'e0571bded21dc44f330a7f70da5ee1a551e29607d41258b513c3f38c9fb0a992',
+    evidence_class: 'STRUCTURED_SECONDARY_ANALYSIS', level: 5, version: 'sweep dated 2026-08-21',
+    measures: 'A re-analysis sweep over the study tables: pooled and per-condition AC1, condition separation with a derivation test, and the cross-vendor series.',
+    limitations: ['A secondary analysis; its pooled AC1 (0.664 on 104 labels) and series dates differ from the manuscript and from the Study 001 resolution, and neither is reconciled here.', 'It records that the condition-separation tests are circular (DERIVATION TEST: DETERMINISTIC).'] },
+  { id: 'EV-STUDY001-RESOLUTION', path: 'docs/enterprise-diligence/STUDY_001_FIGURE_RESOLUTION.md', binding: 'FILE', reviewed_sha256: '90085324419b501993cb49425e3f2c52da0ee3dd0a04fe44e93ee2fbc21c4f28',
+    evidence_class: 'AUTHORITATIVE_TABLE_READ_REPORTED', level: 4, version: 'decision D-18, 2026-09-15, corrected 2026-09-20',
+    measures: 'A reading of the study tables findings_history and study_runs for the STUDY-001 cross-vendor series: 61 recorded runs, 2026-06-12 to 2026-08-21, range 0.667 to 0.933, mean 0.8526; and the 15-record subset (37 runs, 41 runs at the 2026-08-15 data lock).',
+    limitations: ['The tables themselves are not in the repository, so the figures are source-reported, not reproduced.', 'It states that 37 and 41 runs are one series at two windows and 61 is that series without the completeness filter.'] },
+  { id: 'EV-IP-AUDIT', path: 'IP_COMMERCIALIZATION_AUDIT.md', binding: 'FILE', reviewed_sha256: 'f8d3e768f53c12f2aa139a8a73c5d94d32c49a33db17e0dc034a6d00f30404ed',
+    evidence_class: 'CONTEMPORANEOUS_PROJECT_RECORD', level: 4, version: 'prepared 2026-08-13',
+    measures: 'Records the cross-vendor 15-record series as read on 2026-08-13: 37 dated nightly runs, range 82.2 to 93.3.',
+    limitations: ['The 37-run figure belongs to its 2026-08-13 window; it is not the series at closure.'] },
+  { id: 'EV-VALIDATION-REPORT', path: 'research/JRS_Validation_Report.md', binding: 'FILE', reviewed_sha256: '3a8ef977bb2a3dcc468b2a00e19a9b28e8ad157630097817f3b887b7acd2206d',
+    evidence_class: 'CONTEMPORANEOUS_PROJECT_RECORD', level: 4, version: 'undated validation report (earlier than the 2026-08-29 manuscript)',
+    measures: 'Study 003 determination distribution over 108 labels on 10 records; an earlier reliability statement.',
+    limitations: ['Its reliability statement ("clearing the pre-registered floor", "substantial") is superseded by the 2026-08-29 manuscript, which reports the two-part criterion not met and drops the verbal band.'] },
+  { id: 'EV-EMPLOYMENT-MANUSCRIPT', path: 'research/Employment_Pilot_Manuscript_2026-08-21.md', binding: 'FILE', reviewed_sha256: 'a7284f5684a5914f33b795c2c2054ec552bc8d2f366884bde68a5da3de6357c7',
+    evidence_class: 'MANUSCRIPT_REPORTED', level: 4, version: 'manuscript dated 2026-08-21',
+    measures: 'States that the determination is a deterministic function of the five conditions and that no discrimination claim is made from them.', limitations: ['A manuscript, not a publication.'] },
+  { id: 'EV-CLAIM-RECONCILIATION', path: 'docs/architecture/PUBLIC_CLAIM_RECONCILIATION_2026-10-06.md', binding: 'FILE', reviewed_sha256: 'f066bb8e5be97a91568f805f1ad9a735669ce0e32c7c8c0bf48c9f3c60f7057f',
+    evidence_class: 'CONTEMPORANEOUS_PROJECT_RECORD', level: 4, version: '2026-10-06 with addendum',
+    measures: 'The earlier public-claim reconciliation: P-10 records that the Study 014 reader was a model (Sonnet 5.5), verified on branch claude/engine-eval-v8-2026-10-01.',
+    limitations: ['The Study 014 results file is on another branch and is not in this branch, so the figures are source-reported here.'] },
+  { id: 'EV-TRACKER-COUNTRIES', path: 'research/MASTER_TRACKER.md', binding: 'LINE', anchor: '- **Combined: 16 countries across all 5 populated continents.**', reviewed_sha256: 'da6595869ddae876132f048cccc74b58a8a0bc9a0fc72d61602d520cb2284f8c',
+    evidence_class: 'CONTEMPORANEOUS_PROJECT_RECORD', level: 4, version: 'tracker line, completer geography',
+    measures: 'Completer geography across both arms: 16 countries on 5 continents.', limitations: ['A project log line, not a structured record.'] },
+  { id: 'EV-TRACKER-JBE', path: 'research/MASTER_TRACKER.md', binding: 'LINE', anchor: '**PUBLICATION CONFIRMED = *Journal of Business Ethics* (2026-07-17).**', reviewed_sha256: 'c74624476a861928aaecd398a09bbc499512628d28d34a6c2b101ceefe019faf',
+    evidence_class: 'CONTEMPORANEOUS_PROJECT_RECORD', level: 4, version: 'tracker line, 2026-07-17',
+    measures: 'Records the choice of a target journal for an empirical paper.', limitations: ['"PUBLICATION CONFIRMED" names a target venue; no submission outcome or acceptance is recorded in that line.'] },
+  { id: 'EV-CEP-FILE', path: 'research/CEP_When_the_Record_Cannot_Speak_for_Itself_ACCEPTED.md', binding: 'FILE', reviewed_sha256: '53f341e5e6383aab6c6dfcd19b95d494499d31d1cc37879bbc35a021a41ddf89',
+    evidence_class: 'AUTHOR_STATEMENT', level: 5, version: 'text extraction of the author-supplied file of 2026-08-27',
+    measures: 'The file header states acceptance by CEP Magazine (SCCE) for the November 2026 issue, accepted 2026-07-16.', limitations: ['The editor\'s acceptance message is not in the repository; the statement is the file header.'] },
+  { id: 'EV-CCI-RESPONSE', path: 'research/CCI_Editor_Response_Gaskin_2026-08-28.pdf', binding: 'FILE', reviewed_sha256: '6702248c30311efce972cfa56e98a2aa8a01bf1ed6269063133872d24b1b363c',
+    evidence_class: 'CONTEMPORANEOUS_COMMUNICATION', level: 3, version: 'editor reply, 2026-08-28',
+    measures: 'An editor\'s reply to a submission: overlap with recent coverage; a revised piece with a different focus would be considered.', limitations: ['Not an acceptance.'] },
+  { id: 'EV-CANDIDATE-EVAL', path: 'tests/engine-candidate/eval/records/EVAL_corpus-0.1.0_candidate-0.5.0-local.1.json', binding: 'FILE', reviewed_sha256: '195efc0129aa0592ef57efb1dfbce11d5bb2b6269afced3b80aafa9b0cb7b704',
+    evidence_class: 'MOCK_OR_FIXTURE', level: 2, version: 'corpus 0.1.0, candidate 0.5.0-local.1',
+    measures: 'The local candidate run with a mock adapter over 15 constructed development records.', limitations: ['Its own label: "Not a measure of accuracy, reliability or validity, not a DRR score, and not evidence about any real model or real record."'] },
+  { id: 'EV-CANDIDATE-REGRESSION', path: 'tests/engine-candidate/regression/cases.json', binding: 'FILE', reviewed_sha256: 'dd8d3d24c8739f8429caebb751177bb97d874be258f54e06ec4646ecdea5f3fb',
+    evidence_class: 'LOCAL_TEST', level: 2, version: 'candidate-source-prep-regression 0.1.0',
+    measures: '24 source-preparation regression cases with expectations written before the first run; constructed fictional text; no model involved.', limitations: ['Tests the deterministic checker against constructed text only.'] },
+  { id: 'EV-SOURCE-GROUNDING-TESTS', path: 'tests/engine-candidate/source-prep.test.mjs', binding: 'FILE', reviewed_sha256: '3842b714102dc13ab94a26cb0992925392223e11bba79483762508a9c22f458a',
+    evidence_class: 'SOURCE_GROUNDING_TEST', level: 2, version: 'branch test file',
+    measures: 'That quotations and anchors locate exact text in the source record, and that unlocatable model quotations are withheld.', limitations: ['Exact quotation presence is not semantic support: an anchor shows where text sits, not that it supports a finding.'] },
+  { id: 'EV-PROMPT-PROVENANCE-TESTS', path: 'tests/engine-candidate/contract.test.mjs', binding: 'FILE', reviewed_sha256: 'b0d2fe9e98f4f79e04ee741141b1d8db55f146e7e4a23bd4c66e5a561c648169',
+    evidence_class: 'LOCAL_TEST', level: 2, version: 'branch test file',
+    measures: 'That each result carries the prompt version and hash, adapter contract and model identity, and that changing any of them changes the review id. All runs use a mock adapter.', limitations: ['Records provenance of a local mocked run; no provider was called.'] },
+  { id: 'EV-ROUTE-TESTS', path: 'tests/engine/auth-matrix.mjs', binding: 'FILE', reviewed_sha256: '37cfd056ec9b565e6229cee17f338426d196678ccb2bf8a7653f78400e6d522c',
+    evidence_class: 'LOCAL_TEST', level: 2, version: 'branch test file (with scripts/test_review_incomplete.mjs)',
+    measures: 'That the review routes in the repository refuse submissions with 503 and make no outbound call.', limitations: ['Tests repository code. That production serves these bytes is a separate check (deploy-verify, CLAUDE.md 36.8).'] },
+  // EV-RELEASE-GATE-REPORT re-reviewed 2026-10-07: only the record date, evidence E-009 (the frozen synthetic
+  // demonstration corpus) and one limitation line were added; every gate status and the conclusion are unchanged.
+  // Re-reviewed again 2026-10-07: only the candidate source commit (afd6b44 to 7205eea) and a limitation line recording
+  // that correction changed; every gate status and the conclusion are unchanged.
+  { id: 'EV-RELEASE-GATE-REPORT', path: 'docs/architecture/CURRENT_RELEASE_GATE_REPORT.md', binding: 'FILE', reviewed_sha256: 'ce3a188dbc79fc22f8d2a05d815c7e9f09d42aee53db6ddd361793141db4be20',
+    evidence_class: 'REPOSITORY_CONTROL_RECORD', level: 2, version: 'current gate report',
+    measures: 'Release-gate status: RG-1 BLOCKED, RG-2 BLOCKED, RG-3 NOT_ASSESSED, RG-4 BLOCKED, RG-5 BLOCKED; INCOMPLETE_GATES_OPEN.', limitations: ['A status record; it opens no gate.'] },
+  { id: 'EV-BLOCKER-B013', path: '.jrs/state/BLOCKERS.json', binding: 'LINE', anchor: '"description": "engine_reviews is readable with the PUBLIC publishable key.', reviewed_sha256: '57b1efcef9fad1747a16603ee5a5114d0f870b79db55df62063fa7bac4a90bbf',
+    evidence_class: 'REPOSITORY_CONTROL_RECORD', level: 2, version: 'B-013, probed 2026-09-15',
+    measures: 'Records that one table was readable with the public key on 2026-09-15 (zero rows).', limitations: ['A single dated probe; current production configuration is NOT ESTABLISHED.'] },
+  { id: 'EV-PRIVACY-PAGE', path: 'privacy.html', binding: 'LINE', anchor: 'Row-level security is enabled on these tables with no public read access.', reviewed_sha256: 'edac094986be03ef6d52e769cbcb93eab4769946f39b722492397ddd0cc4da26',
+    evidence_class: 'POLICY_OR_WEBSITE_STATEMENT', level: 6, version: 'privacy page, last updated 2026-10-06',
+    measures: 'A website statement that a database control operates.', limitations: ['A policy or website statement does not prove that a live control executes.'] },
+  { id: 'EV-HANDOFF', path: 'docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md', binding: 'FILE', reviewed_sha256: 'ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5',
+    evidence_class: 'REPOSITORY_CONTROL_RECORD', level: 4, version: '2026-10-05 handoff',
+    measures: 'The current operative position: the Engine is a controlled local-development candidate; no public intake; research does not validate the Engine.', limitations: ['An instruction record, not test evidence.'] },
+  { id: 'EV-MANIFEST-TESTS', path: 'tests/manifest/run.mjs', binding: 'FILE', reviewed_sha256: '34436020041e5fb53789078b265260339de820288dfb2dc13fb42be37a28cf40',
+    evidence_class: 'SCHEMA_TEST', level: 2, version: 'branch test file',
+    measures: 'Manifest schema conformance and integrity checks on fixtures.', limitations: ['Schema and integrity tests; they do not validate the Engine or the authenticity of an unsigned artifact.'] },
+  { id: 'EV-METHODS-PDF', path: 'JRS_Reliability_Accuracy.pdf', binding: 'FILE', reviewed_sha256: '64bb9f80dd9f914210a7eb52ebf6a3f42cd16faa0b885aa22140d7995632b2b8',
+    evidence_class: 'MANUSCRIPT_REPORTED', level: 4, version: 'draft methods paper, Rungs 1 and 2 (public download through /api/dl?e=accuracy)',
+    measures: 'An earlier draft reporting AC1 0.74 / 0.63 as substantial agreement and cross-vendor agreement averaging 84 percent on 15 constructed records.',
+    limitations: ['Superseded by the 2026-08-29 manuscript on the reliability criterion, the verbal band and the cross-vendor series. A PDF; the scanner cannot read it, so this source was inspected once by hand.'] },
+  { id: 'EV-NONE', path: null, binding: 'NONE', reviewed_sha256: null, evidence_class: 'NONE', level: 7, version: 'none',
+    measures: 'No evidence. Used only by records that state what must not be claimed.', limitations: ['No source supports the claim.'] },
+]);

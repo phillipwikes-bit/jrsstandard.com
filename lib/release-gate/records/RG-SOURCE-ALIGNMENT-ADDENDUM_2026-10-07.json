@@ -1,0 +1,131 @@
+{
+ "addendum_version": "jrs-release-gate-source-alignment-addendum/0.1.0",
+ "package_id": "JRS-SOURCE-ALIGNMENT-20261007-PR39",
+ "record_kind": "internal_source_alignment_addendum",
+ "binds": {
+  "main_record": "lib/release-gate/records/RG-RECORD_engine-0.5.0-local.1.json",
+  "main_record_sha256": "a8d2b929dfc7bfe0859e73e1fdab00671373fb84e3f72a981634e2a025fca65b",
+  "main_report": "docs/architecture/CURRENT_RELEASE_GATE_REPORT.md",
+  "main_report_sha256": "ce3a188dbc79fc22f8d2a05d815c7e9f09d42aee53db6ddd361793141db4be20",
+  "receipt_sha256": "0fbe4720ac3ef2f9be34bd1ee60dab046025a6932e4472cb1f9697858fb74c59",
+  "sources": {
+   "S01": "0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e",
+   "S02": "57e2ec50fc431381b65048f978175e779481bb174993448cd1b475a218dad0e0",
+   "S03": "a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9",
+   "H05": "ec9854d2d76bbd2809157ec15a6b9860cb67c20c6f8753e432f3042297600ba5",
+   "D2": "31d794afa3b62faccb60ddcabb3ae0f3c22443af38804a069d0de6419bc70ed3",
+   "D3": "963275e9a44a28f62e345b7db21bfd548e115fec0b006d5586629b50a9949358"
+  }
+ },
+ "advances_any_gate": false,
+ "gates_changed": [],
+ "statement": "This reconciliation does not advance any gate. Every status below is copied unchanged from the main record.",
+ "gates": [
+  {
+   "gate_id": "RG-1",
+   "gate_name": "Independent labeling and adjudication of an unused sealed holdout",
+   "status": "BLOCKED",
+   "source_control": "SAC-08",
+   "source_locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "source_aligned_reason": "Before production, unused holdout records must be labelled and adjudicated independently, with results and uncertainty reported for each condition.",
+   "local_work_can_establish": "The structure: development-material registration and refusal by digest, a closed intake, run bindings, blind workspaces and a ledger that refuses code-authored judgments.",
+   "only_external_human_evidence_can_establish": "An unused sealed holdout; independent labelers and adjudication; owner authorization for provider calls on it; per-condition results with uncertainty against thresholds fixed before the run."
+  },
+  {
+   "gate_id": "RG-2",
+   "gate_name": "Operator-control evidence",
+   "status": "BLOCKED",
+   "source_control": "SAC-09",
+   "source_locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "source_aligned_reason": "Production requires operator evidence for access and database grants, credential rotation, retention and execution policies, backup restoration and compatible rollback.",
+   "local_work_can_establish": "Static review of repository code, such as retention-policy code that selects candidates and routes that refuse requests.",
+   "only_external_human_evidence_can_establish": "Operator exports and records from the environment the Engine would run in: access review, rotation record, deletion execution log, restore record, rollback record, monitoring."
+  },
+  {
+   "gate_id": "RG-3",
+   "gate_name": "Counsel review",
+   "status": "NOT_ASSESSED",
+   "source_control": "SAC-10",
+   "source_locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "source_aligned_reason": "Before production, counsel must dispose of the real data flows, the storage arrangements, privacy duties and any evaluation or licensing statements.",
+   "local_work_can_establish": "Data-flow records and questions for counsel.",
+   "only_external_human_evidence_can_establish": "A counsel disposition on the release as proposed."
+  },
+  {
+   "gate_id": "RG-4",
+   "gate_name": "Recorded owner release authorization",
+   "status": "BLOCKED",
+   "source_control": "SAC-38",
+   "source_locator": {
+    "source_id": "S03",
+    "lines": [
+     110,
+     110
+    ],
+    "line_sha256": [
+     "e3cec7890b50e5e17c529fb3e7c75a8b5ac88903a7b18bf3f89c9a37eeed0915"
+    ]
+   },
+   "source_aligned_reason": "Machine-readable gates carry an owner decision and date; general approval does not fill a missing dated gate record.",
+   "local_work_can_establish": "An owner decision package listing what is open.",
+   "only_external_human_evidence_can_establish": "A signed, dated owner release authorization naming the Engine version, after RG-1 to RG-3 have evidence."
+  },
+  {
+   "gate_id": "RG-5",
+   "gate_name": "Independent production QA",
+   "status": "BLOCKED",
+   "source_control": "SAC-12",
+   "source_locator": {
+    "source_id": "S01",
+    "lines": [
+     21,
+     21
+    ],
+    "line_sha256": [
+     "56b9ef47d44d9487c707c7cb7b744480fece9205ca69569cd6d23e6f76fd1f64"
+    ]
+   },
+   "source_aligned_reason": "Quality assurance of production by an independent party is a release gate of its own.",
+   "local_work_can_establish": "Nothing beyond drafting a test plan.",
+   "only_external_human_evidence_can_establish": "An independent QA report on an authorized production deployment."
+  }
+ ],
+ "conflicts_affecting_the_record": [
+  "CF-SA-01",
+  "CF-SA-04",
+  "CF-SA-05"
+ ],
+ "superseded_limitation": {
+  "old_finding": "This record does not compare its gate definitions against the three 3 October source-aligned documents, which were not available; that comparison is pending.",
+  "new_evidence": "The three October 3 sources were supplied on 2026-10-07 and matched their recorded hashes; this package compared the record with them.",
+  "corrected_status": "Comparison performed. Conflicts CF-SA-01, CF-SA-04 and CF-SA-05 recorded. The main record is not edited; this addendum carries the correction.",
+  "explanation": "Recorded beside the original finding, not over it (CLAUDE.md Rule 10)."
+ }
+}

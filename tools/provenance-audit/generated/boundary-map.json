@@ -1,0 +1,603 @@
+{
+ "source_commit": "a8fb39fd1da275b663a2bdaac89cee2fe07812ff",
+ "inventory_digest": "d937a28b3d4cc9f382ef5b1f5dcb20f04b5c8582f738c525802f52b9bfd854ad",
+ "routing_note": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there.",
+ "groups": [
+  {
+   "area": "agent-config",
+   "boundary": "CONFIGURATION",
+   "files": 26,
+   "exclusion_rules": [
+    "line 142: .claude/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "api-routes",
+   "boundary": "CONTROLLED_OR_CLOSED_ROUTE",
+   "files": 8,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": false,
+   "restricted_files": 0,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "api-routes",
+   "boundary": "PUBLIC_ROUTE",
+   "files": 41,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE",
+    "INCLUDE_AFTER_REVIEW"
+   ],
+   "exclude_from_public_release": false,
+   "restricted_files": 2,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "api-server-modules",
+   "boundary": "DEPLOYED_SERVER_MODULE",
+   "files": 14,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "ci-config",
+   "boundary": "CONFIGURATION",
+   "files": 2,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "control-state",
+   "boundary": "INTERNAL_DOCUMENTATION",
+   "files": 41,
+   "exclusion_rules": [
+    "line 103: .jrs/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "database-schema",
+   "boundary": "CONFIGURATION",
+   "files": 11,
+   "exclusion_rules": [
+    "line 84: *.sql"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "deploy-config",
+   "boundary": "CONFIGURATION",
+   "files": 4,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "docs-architecture",
+   "boundary": "INTERNAL_DOCUMENTATION",
+   "files": 16,
+   "exclusion_rules": [
+    "line 17: *.md"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "docs-other",
+   "boundary": "INTERNAL_DOCUMENTATION",
+   "files": 160,
+   "exclusion_rules": [
+    "line 130: docs/manifest-independent-review/",
+    "line 17: *.md",
+    "line 21: research/",
+    "line 31: docs/enterprise-diligence/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "REQUIRES_REVIEW"
+   ],
+   "diligence": [
+    "INCLUDE_AFTER_REVIEW"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "engine-candidate",
+   "boundary": "LOCAL_INTERNAL",
+   "files": 13,
+   "exclusion_rules": [
+    "line 117: lib/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED",
+    "REQUIRES_REVIEW"
+   ],
+   "diligence": [
+    "INCLUDE",
+    "INCLUDE_AFTER_REVIEW"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "instructions",
+   "boundary": "INTERNAL_DOCUMENTATION",
+   "files": 1,
+   "exclusion_rules": [
+    "line 17: *.md"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "local-reviewer-workspace",
+   "boundary": "LOCAL_INTERNAL",
+   "files": 9,
+   "exclusion_rules": [
+    "line 118: tools/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED",
+    "REQUIRES_REVIEW"
+   ],
+   "diligence": [
+    "INCLUDE",
+    "INCLUDE_AFTER_REVIEW"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "manifest-library",
+   "boundary": "DEPLOYED_SERVER_MODULE",
+   "files": 4,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "manifest-library",
+   "boundary": "LOCAL_INTERNAL",
+   "files": 5,
+   "exclusion_rules": [
+    "line 117: lib/",
+    "line 139: schemas/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "office-documents",
+   "boundary": "INTERNAL_DOCUMENTATION",
+   "files": 14,
+   "exclusion_rules": [
+    "line 54: *.docx"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "other-tools",
+   "boundary": "LOCAL_INTERNAL",
+   "files": 3,
+   "exclusion_rules": [
+    "line 118: tools/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "provenance-audit",
+   "boundary": "LOCAL_INTERNAL",
+   "files": 9,
+   "exclusion_rules": [
+    "line 118: tools/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "release-gate",
+   "boundary": "LOCAL_INTERNAL",
+   "files": 8,
+   "exclusion_rules": [
+    "line 117: lib/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED",
+    "REQUIRES_REVIEW"
+   ],
+   "diligence": [
+    "INCLUDE",
+    "INCLUDE_AFTER_REVIEW"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "research",
+   "boundary": "INTERNAL_DOCUMENTATION",
+   "files": 763,
+   "exclusion_rules": [
+    "line 21: research/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "REQUIRES_REVIEW"
+   ],
+   "diligence": [
+    "INCLUDE_AFTER_REVIEW"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "retention-policy",
+   "boundary": "LOCAL_INTERNAL",
+   "files": 1,
+   "exclusion_rules": [
+    "line 117: lib/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "root-markdown",
+   "boundary": "INTERNAL_DOCUMENTATION",
+   "files": 33,
+   "exclusion_rules": [
+    "line 17: *.md"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "scripts",
+   "boundary": "LOCAL_INTERNAL",
+   "files": 152,
+   "exclusion_rules": [
+    "line 43: scripts/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "site-assets",
+   "boundary": "PUBLIC_SITE",
+   "files": 30,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": false,
+   "restricted_files": 0,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "site-pages",
+   "boundary": "PUBLIC_SITE",
+   "files": 53,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED",
+    "REQUIRES_REVIEW"
+   ],
+   "diligence": [
+    "INCLUDE",
+    "INCLUDE_AFTER_REVIEW"
+   ],
+   "exclude_from_public_release": false,
+   "restricted_files": 2,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "site-reference",
+   "boundary": "PUBLIC_SITE",
+   "files": 18,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED",
+    "REQUIRES_REVIEW"
+   ],
+   "diligence": [
+    "INCLUDE",
+    "INCLUDE_AFTER_REVIEW"
+   ],
+   "exclude_from_public_release": false,
+   "restricted_files": 0,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "site-reviewer",
+   "boundary": "PUBLIC_SITE",
+   "files": 3,
+   "exclusion_rules": [],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": false,
+   "restricted_files": 0,
+   "routing": "Deployed with the site (no .vercelignore rule matches)."
+  },
+  {
+   "area": "tests-engine-candidate",
+   "boundary": "TEST_OR_SYNTHETIC",
+   "files": 63,
+   "exclusion_rules": [
+    "line 119: tests/"
+   ],
+   "synthetic_files": 48,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED",
+    "REQUIRES_REVIEW",
+    "SYNTHETIC_ONLY"
+   ],
+   "diligence": [
+    "INCLUDE",
+    "INCLUDE_AFTER_REVIEW"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "tests-local-reviewer-workspace",
+   "boundary": "TEST_OR_SYNTHETIC",
+   "files": 8,
+   "exclusion_rules": [
+    "line 119: tests/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "tests-other",
+   "boundary": "TEST_OR_SYNTHETIC",
+   "files": 18,
+   "exclusion_rules": [
+    "line 119: tests/"
+   ],
+   "synthetic_files": 8,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED",
+    "SYNTHETIC_ONLY"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "tests-provenance-audit",
+   "boundary": "TEST_OR_SYNTHETIC",
+   "files": 7,
+   "exclusion_rules": [
+    "line 119: tests/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "tests-release-gate",
+   "boundary": "TEST_OR_SYNTHETIC",
+   "files": 7,
+   "exclusion_rules": [
+    "line 119: tests/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  },
+  {
+   "area": "unpublished-standard",
+   "boundary": "INTERNAL_DOCUMENTATION",
+   "files": 6,
+   "exclusion_rules": [
+    "line 17: *.md",
+    "line 37: cep-article-prep/",
+    "line 87: templates/",
+    "line 96: standard/"
+   ],
+   "synthetic_files": 0,
+   "may_contain_record_excerpts": [
+    "NOT_INDICATED"
+   ],
+   "diligence": [
+    "INCLUDE"
+   ],
+   "exclude_from_public_release": true,
+   "restricted_files": 0,
+   "routing": "Exclusion from the Vercel deployment records routing only: the file is not uploaded to the site. It is not a confidentiality control. The repository itself is recorded as public on GitHub (B-018), so excluded files can still be read there."
+  }
+ ]
+}
