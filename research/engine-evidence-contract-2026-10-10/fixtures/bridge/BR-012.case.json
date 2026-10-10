@@ -1,0 +1,7 @@
+{
+  "id": "BR-012",
+  "purpose": "v1 raw text with prose around the JSON (v1 lenient parse)",
+  "record": "../../../engine-assurance-2026-10-10/fixtures/records/SAE-001.txt",
+  "scope_refused": false,
+  "v1_form": "raw_provider_text"
+}

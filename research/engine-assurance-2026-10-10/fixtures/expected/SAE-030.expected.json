@@ -1,0 +1,41 @@
+{
+  "expected_format_version": "jrs-assurance-expected/0.1.0",
+  "fixture_id": "SAE-030",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "external_not_authorized",
+  "gate_decision": "refuse",
+  "expected_refusal_codes": [
+    "execution_mode_not_authorized",
+    "execution_mode_not_authorized"
+  ],
+  "conditions": {
+    "basis_identification": {
+      "outcome": "not_assessed",
+      "outcome_basis": "execution_mode_not_authorized",
+      "span_quotes": []
+    },
+    "reasoning_traceability": {
+      "outcome": "not_assessed",
+      "outcome_basis": "execution_mode_not_authorized",
+      "span_quotes": []
+    },
+    "cold_reviewer_clarity": {
+      "outcome": "not_assessed",
+      "outcome_basis": "execution_mode_not_authorized",
+      "span_quotes": []
+    },
+    "accountability_support": {
+      "outcome": "not_assessed",
+      "outcome_basis": "execution_mode_not_authorized",
+      "span_quotes": []
+    },
+    "temporal_reconstructability": {
+      "outcome": "not_assessed",
+      "outcome_basis": "execution_mode_not_authorized",
+      "span_quotes": []
+    }
+  },
+  "record_controls": [],
+  "manifest_produced": false,
+  "provider_invocations": 0
+}

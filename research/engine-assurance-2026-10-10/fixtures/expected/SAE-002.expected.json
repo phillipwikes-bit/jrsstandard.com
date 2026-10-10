@@ -1,0 +1,48 @@
+{
+  "expected_format_version": "jrs-assurance-expected/0.1.0",
+  "fixture_id": "SAE-002",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "expected_refusal_codes": [],
+  "conditions": {
+    "basis_identification": {
+      "outcome": "supported",
+      "outcome_basis": "candidate_status_with_verified_span",
+      "span_quotes": [
+        "Decision basis: Risk assessment RA-2026-0420, completed 2026-04-16, found that the alarm history holds equipment identifiers and timestamps only"
+      ]
+    },
+    "reasoning_traceability": {
+      "outcome": "supported",
+      "outcome_basis": "candidate_status_with_verified_span",
+      "span_quotes": [
+        "The supplier needs it to diagnose recurring chiller faults under maintenance contract CTR-2024-077 section 2"
+      ]
+    },
+    "cold_reviewer_clarity": {
+      "outcome": "supported",
+      "outcome_basis": "candidate_status_with_verified_span",
+      "span_quotes": [
+        "Access requested: Read-only access to the building-management alarm history in the facilities console (FAC-BMS-02)."
+      ]
+    },
+    "accountability_support": {
+      "outcome": "supported",
+      "outcome_basis": "candidate_status_with_verified_span",
+      "span_quotes": [
+        "Compensating controls: Access is limited to the FAC-BMS-02 history view"
+      ]
+    },
+    "temporal_reconstructability": {
+      "outcome": "supported",
+      "outcome_basis": "candidate_status_with_verified_span",
+      "span_quotes": [
+        "Chronology: 2026-04-14 request received; 2026-04-16 risk assessment RA-2026-0420 completed; 2026-04-21 board decision recorded."
+      ]
+    }
+  },
+  "record_controls": [],
+  "manifest_produced": true,
+  "provider_invocations": 1
+}

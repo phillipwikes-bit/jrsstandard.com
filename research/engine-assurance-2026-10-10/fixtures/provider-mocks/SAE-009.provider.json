@@ -1,0 +1,48 @@
+{
+  "response": {
+    "conditions": {
+      "basis_identification": {
+        "status": "pass",
+        "note": "The decision basis names the risk assessment and its finding.",
+        "evidence": [
+          "Decision basis: Risk assessment RA-2026-0311, completed 2026-03-05, found that the reports contain shipment reference numbers and delivery dates only"
+        ]
+      },
+      "reasoning_traceability": {
+        "status": "gap",
+        "note": "The decision does not say which risk level it relied on.",
+        "evidence": [
+          "The risk rating is high because the reporting database also holds supplier bank details"
+        ]
+      },
+      "cold_reviewer_clarity": {
+        "status": "pass",
+        "note": "The access requested is described specifically.",
+        "evidence": [
+          "Access requested: Read-only access to the shipment tracking reports in the logistics portal (LOG-RPT-04)."
+        ]
+      },
+      "accountability_support": {
+        "status": "review",
+        "note": "Two different risk levels are stated.",
+        "evidence": [
+          "Risk statement: The access is low risk.",
+          "The risk rating is high because the reporting database also holds supplier bank details"
+        ]
+      },
+      "temporal_reconstructability": {
+        "status": "pass",
+        "note": "The chronology lists dated steps.",
+        "evidence": [
+          "Chronology: 2026-03-02 request received; 2026-03-05 risk assessment RA-2026-0311 completed; 2026-03-09 board decision recorded."
+        ]
+      }
+    },
+    "remediation_note": "Record the identified items before finalization.",
+    "finding": {
+      "ai_function": "analysis",
+      "condition_triggered": "see conditions",
+      "compliant_version": "Not used by the assurance layer."
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "BR-007",
+  "purpose": "v1 output for an out-of-scope (employment) record",
+  "record": "../../../engine-assurance-2026-10-10/fixtures/records/SAE-012.txt",
+  "scope_refused": true,
+  "v1_form": "raw_provider_text"
+}

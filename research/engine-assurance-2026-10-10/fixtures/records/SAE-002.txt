@@ -1,0 +1,14 @@
+SYNTHETIC ENGINEERING FIXTURE. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-0102
+Supplier: Kestrel Facilities Maintenance Ltd (fictional)
+Access requested: Read-only access to the building-management alarm history in the facilities console (FAC-BMS-02).
+Requested by: Facilities Operations Manager, 2026-04-14.
+Decision basis: Risk assessment RA-2026-0420, completed 2026-04-16, found that the alarm history holds equipment identifiers and timestamps only. The supplier needs it to diagnose recurring chiller faults under maintenance contract CTR-2024-077 section 2.
+Residual risk: low, per RA-2026-0420 section 3.
+Compensating controls: Access is limited to the FAC-BMS-02 history view; the account is named to one supplier engineer; access logs are reviewed weekly by the Facilities Operations Manager, as set out in RA-2026-0420 section 4.
+Authority: Information Security Exception Board, minutes ISEB-2026-11 item 2, dated 2026-04-21.
+Decision: Exception granted for 90 days.
+Expiry and renewal: Expires 2026-07-20. Renewal requires a new request with an updated risk assessment.
+Revocation: The Facilities Operations Manager will revoke access on 2026-07-20 unless a renewal is approved before that date.
+Chronology: 2026-04-14 request received; 2026-04-16 risk assessment RA-2026-0420 completed; 2026-04-21 board decision recorded.

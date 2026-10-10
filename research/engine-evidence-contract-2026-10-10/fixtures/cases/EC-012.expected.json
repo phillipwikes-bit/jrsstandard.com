@@ -1,0 +1,49 @@
+{
+  "case_id": "EC-012",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "detected",
+  "response_status": "valid",
+  "refusal_codes": [],
+  "remediation": null,
+  "long_record_status": null,
+  "comparison_present": false,
+  "conditions": {
+    "reconstructability": {
+      "status": "review_required",
+      "reasons_include": [
+        "record_instruction_risk_detected"
+      ],
+      "evidence_quotes": null
+    },
+    "identifiable_basis": {
+      "status": "review_required",
+      "reasons_include": [
+        "record_instruction_risk_detected"
+      ],
+      "evidence_quotes": null
+    },
+    "chronology_integrity": {
+      "status": "review_required",
+      "reasons_include": [
+        "record_instruction_risk_detected"
+      ],
+      "evidence_quotes": null
+    },
+    "reasoning_traceability": {
+      "status": "review_required",
+      "reasons_include": [
+        "record_instruction_risk_detected"
+      ],
+      "evidence_quotes": null
+    },
+    "sufficiency": {
+      "status": "review_required",
+      "reasons_include": [
+        "record_instruction_risk_detected"
+      ],
+      "evidence_quotes": null
+    }
+  }
+}
