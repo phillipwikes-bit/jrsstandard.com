@@ -1,0 +1,27 @@
+{
+  "result": {
+    "conditions": {
+      "basis_identification": {
+        "status": "pass",
+        "note": "Addressed."
+      },
+      "reasoning_traceability": {
+        "status": "pass",
+        "note": "Addressed."
+      },
+      "cold_reviewer_clarity": {
+        "status": "pass",
+        "note": "Addressed."
+      },
+      "accountability_support": {
+        "status": "pass",
+        "note": "Addressed."
+      },
+      "temporal_reconstructability": {
+        "status": "pass",
+        "note": "Addressed."
+      }
+    },
+    "determination": "gap_identified"
+  }
+}

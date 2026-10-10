@@ -1,0 +1,10 @@
+{
+  "prompt_version": "jrs-engine-local-0.2.0/prompt-1",
+  "contract_version": "jrs-engine-local-0.2.0",
+  "engine_candidate_version": "0.2.0-local-candidate",
+  "file": "PROMPT_v0.2.0.txt",
+  "sha256": "sha256:d6f1498e7d51b0477029e237e6ea045d302491c2e98c42f6727d364d1ae845ae",
+  "status": "SPECIFICATION ONLY. Never sent to any model. Exercised only against fixed mock responses.",
+  "historical_prompt_reference": "HREF-v1-0.1.0-validation-baebb512 (system_prompt element hash in historical-reference/HISTORICAL_REFERENCE_MANIFEST.json)",
+  "change_control": "Any edit changes the SHA-256 and fails tests/engine-evidence-contract/run.mjs. A changed prompt is a new prompt_version and a new system under test; see PROMPT_CHANGE_CONTROL.md."
+}

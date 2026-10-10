@@ -1,0 +1,51 @@
+{
+  "case_id": "EC-026",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_deterministic",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "response_status": "not_read",
+  "refusal_codes": [],
+  "remediation": [
+    "CC-06:action_missing_owner_and_deadline"
+  ],
+  "long_record_status": null,
+  "comparison_present": false,
+  "conditions": {
+    "reconstructability": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "deterministic_mode_no_candidate"
+      ],
+      "evidence_quotes": []
+    },
+    "identifiable_basis": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "deterministic_mode_no_candidate"
+      ],
+      "evidence_quotes": []
+    },
+    "chronology_integrity": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "deterministic_mode_no_candidate"
+      ],
+      "evidence_quotes": []
+    },
+    "reasoning_traceability": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "deterministic_mode_no_candidate"
+      ],
+      "evidence_quotes": []
+    },
+    "sufficiency": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "deterministic_mode_no_candidate"
+      ],
+      "evidence_quotes": []
+    }
+  }
+}

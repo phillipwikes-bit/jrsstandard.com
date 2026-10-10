@@ -1,0 +1,65 @@
+{
+  "manifest_version": "1.0.0",
+  "reference_id": "HREF-v1-0.1.0-validation-baebb512",
+  "identifier_status": "local working identifier, NON-CANONICAL; not an Evidence Ledger identifier",
+  "created": "2026-10-10",
+  "purpose": "Controlled comparison only. Not a deployed artifact, not executable from this location, not a public route.",
+  "source": {
+    "repository": "phillipwikes-bit/jrsstandard.com",
+    "path": "api/v1/review-engine.js",
+    "commit": "0177c5184182b5b1f51ff18c80da29f668996e49",
+    "git_blob": "baebb512e5f296e1b41da138b7868aae4b6098fc",
+    "removed_from_working_tree_by": "0fb5c073e9e02ce1561eee460cce7420864cf65c (2026-10-04)"
+  },
+  "copied_file": {
+    "path": "v1-review-engine.0177c51.js.txt",
+    "bytes": 16182,
+    "sha256": "sha256:f5b4d634cb6f9adfc1ac09d8896eb7c0a07f8f504c0a6eb3dcce005163a68ebb",
+    "git_blob_of_copy": "baebb512e5f296e1b41da138b7868aae4b6098fc",
+    "storage_note": "Stored with a .txt suffix so it cannot be imported or executed and is not read as live code by repository scanners."
+  },
+  "elements": {
+    "engine_version": {
+      "sha256": "sha256:4a37ed2056559892f5f7cda99952cec97f19c78646390903d3e1385de08e8b5a",
+      "chars": 42
+    },
+    "api_version": {
+      "sha256": "sha256:fb92619936c2039763356c2436755a633dc2df2601bf782b5eb4d6d585d1f29e",
+      "chars": 25
+    },
+    "condition_keys": {
+      "sha256": "sha256:2c659a38b50f3ee5c1af516866e0a6cdcc365c489cd20549fd37798e860dae9d",
+      "chars": 169
+    },
+    "system_prompt": {
+      "sha256": "sha256:980a963db72b34dfc8e1971c42250bc4b2e51bb9701ab2139de33ae803399b30",
+      "chars": 1947
+    },
+    "status_values": {
+      "sha256": "sha256:658ecd3af10969d42883d5a3bafe9e45bc1fb4b68b4a010e53127aa644122d13",
+      "chars": 142
+    },
+    "determination_logic": {
+      "sha256": "sha256:185dac5b7cda95db97ff4c20442ecf7bbb98ebd54df28502a4b485f783aee882",
+      "chars": 272
+    },
+    "response_parser": {
+      "sha256": "sha256:6a5e3eebcc9df50d19e5a58d072abd0c88b1c33b69c46d1126947326ebbed01c",
+      "chars": 961
+    }
+  },
+  "status_values": [
+    "pass",
+    "review",
+    "gap"
+  ],
+  "determination_rule": "any gap -> gap_identified; else any review -> review_required; else ready",
+  "condition_keys": [
+    "basis_identification",
+    "reasoning_traceability",
+    "cold_reviewer_clarity",
+    "accountability_support",
+    "temporal_reconstructability"
+  ],
+  "immutability_rule": "Do not edit this directory. Any change requires a new reference_id and a new directory. tests/engine-evidence-contract/run.mjs fails if the copy or any element hash changes."
+}

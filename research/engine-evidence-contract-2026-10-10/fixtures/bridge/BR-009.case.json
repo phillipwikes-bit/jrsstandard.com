@@ -1,0 +1,7 @@
+{
+  "id": "BR-009",
+  "purpose": "v1 all gap",
+  "record": "../../../engine-assurance-2026-10-10/fixtures/records/SAE-008.txt",
+  "scope_refused": false,
+  "v1_form": "raw_provider_text"
+}
