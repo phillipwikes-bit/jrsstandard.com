@@ -1,0 +1,982 @@
+{
+  "generated": "2026-10-13T00:00:00Z",
+  "compiler": "frozen v0.3 (lib/engine-evidence-graph)",
+  "total": 50,
+  "identity": {
+    "change_control_sha256": "sha256:dd5661f10aeeda45ba84f4ad40d2672dee5e1e936614e2e5c738368d46887e51",
+    "baseline_sha256": "sha256:29a69d6d4afc48a7c0d8784af32b512e9f31e083f2a2c0b226f9ceab2847b3b8",
+    "patch_sha256": "none",
+    "fixture_set_sha256": "sha256:336c8944fca7d03ff5f0eb6264b724c8bed234487494208c63c18c669883d05b",
+    "fixtures": [
+      {
+        "fixture_id": "AR-001",
+        "fixture_hash": "sha256:876b69adc0b73366f01f13369941fbc752828de7af617429ec19829a9a5127c3"
+      },
+      {
+        "fixture_id": "AR-002",
+        "fixture_hash": "sha256:4cd28e41862074166ae5cab7c15a9276f4642acfa2fdd4c7256faf908a67f51e"
+      },
+      {
+        "fixture_id": "AR-003",
+        "fixture_hash": "sha256:62a859d1b51bb0cd6ac741544265ab365e476cc0663b6ab2ca29c78eae6c9919"
+      },
+      {
+        "fixture_id": "AR-004",
+        "fixture_hash": "sha256:bd6441a83e86abc7e7c3e6914851788b4a4cd5f39b556b007fbfacac4e51b456"
+      },
+      {
+        "fixture_id": "AR-005",
+        "fixture_hash": "sha256:9f34bd79468a8cc323a57d044c9557001d5190490f3b398b36b566116db7745d"
+      },
+      {
+        "fixture_id": "AR-006",
+        "fixture_hash": "sha256:da4a9ae1c0b7f62f32c116248d07cc8857f741c32061651d9d6801d6645fe550"
+      },
+      {
+        "fixture_id": "AR-007",
+        "fixture_hash": "sha256:84ad0507eab97d8ca9aeabff01c2a0aa45240b1a788edc57fd784a5faac93bad"
+      },
+      {
+        "fixture_id": "AR-008",
+        "fixture_hash": "sha256:25d1555d8f58b8122b24daf9496d4ca09370b77b5f97676591a2e7155cd272f7"
+      },
+      {
+        "fixture_id": "AR-009",
+        "fixture_hash": "sha256:6c2ed625cea2434d440b1eeb3a49977353b14ed97dcf2175896c4da0580153b5"
+      },
+      {
+        "fixture_id": "AR-010",
+        "fixture_hash": "sha256:18b2824ee1a2a641b21982cb8587b518ea592cc895567808b3b1ae4324dad5f6"
+      },
+      {
+        "fixture_id": "AR-011",
+        "fixture_hash": "sha256:73d356d2742277c15e2f3b83c2c9cceee517fbf1858764faf21c373ec8cb8a77"
+      },
+      {
+        "fixture_id": "AR-012",
+        "fixture_hash": "sha256:7e3286cc609647783d7e6922e528db81132fd875777e96d5c32714aa3bfb3ae3"
+      },
+      {
+        "fixture_id": "AR-013",
+        "fixture_hash": "sha256:02fbabad2bb128ad29f643a3d9e40a35fc857cc01cf41c38589bd0fcc8c16a9d"
+      },
+      {
+        "fixture_id": "AR-014",
+        "fixture_hash": "sha256:6b3961bf7f626004de659c02b6dffc2412809c838121e4729e5463d5cb554d59"
+      },
+      {
+        "fixture_id": "AR-015",
+        "fixture_hash": "sha256:b6d75990a0938b55a195a00580caa0df1725ca6cd80b9c1d5d7af33c4791b317"
+      },
+      {
+        "fixture_id": "AR-016",
+        "fixture_hash": "sha256:d1972dd7baf527c6525d52e667bb81f14a57b68f6af4369c2109a5c153bb7619"
+      },
+      {
+        "fixture_id": "AR-017",
+        "fixture_hash": "sha256:67011cc6a217e367889d57d4a808154e96c65354e5ff9e4663819d8d86fcefac"
+      },
+      {
+        "fixture_id": "AR-018",
+        "fixture_hash": "sha256:92c4a1e6a57442ef417173161791d210ad72b9898d29d09c10c12dbf1147e235"
+      },
+      {
+        "fixture_id": "AR-019",
+        "fixture_hash": "sha256:9acf7050a9f6749c26b471a3b313c25ed8733dfdd11f16b3d37e019fd888578e"
+      },
+      {
+        "fixture_id": "AR-020",
+        "fixture_hash": "sha256:8aab7cc00e93939a9bfe7d171d47f34b26995ae4515b1a4fe6f5599dcc658bae"
+      },
+      {
+        "fixture_id": "AR-021",
+        "fixture_hash": "sha256:77e02c14514434012211ee14e993093b6894d4ea36601526ac7db455ee6fdb96"
+      },
+      {
+        "fixture_id": "AR-022",
+        "fixture_hash": "sha256:ebb621bccf70a9f3be28003a76d65dad0996a7ad9e28f81743621fc86e6997c3"
+      },
+      {
+        "fixture_id": "AR-023",
+        "fixture_hash": "sha256:9953e757eb5c529095404fb7b7a70d8f3e496443a88e027006b95c625aaefeab"
+      },
+      {
+        "fixture_id": "AR-024",
+        "fixture_hash": "sha256:54d38a8fcbca452c33145f9d0d675d8564c3d4cfc6e381683b6d8d48039e10a1"
+      },
+      {
+        "fixture_id": "AR-025",
+        "fixture_hash": "sha256:50e5ff6508f281f2f6207d101b44a0747254b9838bad0e9a26fe5a85b103e767"
+      },
+      {
+        "fixture_id": "AR-026",
+        "fixture_hash": "sha256:b3b93e95a7b84765f161da5d2de34d47749e519de6a1b49c36a34cc5a882d5f0"
+      },
+      {
+        "fixture_id": "AR-027",
+        "fixture_hash": "sha256:f1dcbce84135282b33c5d5dfb3e52721721b565384d96626c25c0b223f1ecb1c"
+      },
+      {
+        "fixture_id": "AR-028",
+        "fixture_hash": "sha256:4181b7c4cbaad47a68346d3e3261cd36bf7ca78545132b99294126688769a67b"
+      },
+      {
+        "fixture_id": "AR-029",
+        "fixture_hash": "sha256:eac8d300777acc8f06b4bbf5bd5ebb62ca7a809436c4cb2a8e9c976deb35715a"
+      },
+      {
+        "fixture_id": "AR-030",
+        "fixture_hash": "sha256:af89a758d09abfeaf7021dffb247c5180eb66c46c73599c12323acaa928d4b1a"
+      },
+      {
+        "fixture_id": "AR-031",
+        "fixture_hash": "sha256:0aae7f71b6f69eab93666e50d99843f4ffb497e0e82509af49b6d7a86e6529d9"
+      },
+      {
+        "fixture_id": "AR-032",
+        "fixture_hash": "sha256:b9a6ee44220b3d54df3bebd9e5f5a416302fb83b4640ce6e8d41691691ac2583"
+      },
+      {
+        "fixture_id": "AR-033",
+        "fixture_hash": "sha256:bdd135af965d9d267ff0e21ae7e8e7d81b7663fda7f8450c0caa7c72670a6656"
+      },
+      {
+        "fixture_id": "AR-034",
+        "fixture_hash": "sha256:932de00036440178225362304ebb9364a19bbab8548e51d10b90ff2dd76bbe04"
+      },
+      {
+        "fixture_id": "AR-035",
+        "fixture_hash": "sha256:0ae287c05abdf3362310d1721bb10eb7b2001df6425b7e034770cb82dd8d0ff5"
+      },
+      {
+        "fixture_id": "AR-036",
+        "fixture_hash": "sha256:1dfd8962d6f9e166e4b6e5953c859510a50a092b85dc4895c71cb9666312f668"
+      },
+      {
+        "fixture_id": "AR-037",
+        "fixture_hash": "sha256:d405a2c3e741d0efb8dcf2e6fd415674056b3cde6a3042b9c8cc60f4707b646d"
+      },
+      {
+        "fixture_id": "AR-038",
+        "fixture_hash": "sha256:deca5e27051b7d77fe6629f924a86680d6d2ef25902d790cd3f3b4fca3b3b24f"
+      },
+      {
+        "fixture_id": "AR-039",
+        "fixture_hash": "sha256:a5da7792dab81573ccc3992e08a6651001039e3bf54c176f992657334b5f3366"
+      },
+      {
+        "fixture_id": "AR-040",
+        "fixture_hash": "sha256:f219fe80276ed3794c4840c171bd6c12132a6d5895030988647f4ddba2d40d7c"
+      },
+      {
+        "fixture_id": "AR-041",
+        "fixture_hash": "sha256:a86053b143218a2f0fdaca966334753f04ffd577fd322819d201eeb9c0483a12"
+      },
+      {
+        "fixture_id": "AR-042",
+        "fixture_hash": "sha256:a45fd8930f207f32c31d5c780bb18859d4b4fc09b62eab456264c1ce58674a4c"
+      },
+      {
+        "fixture_id": "AR-043",
+        "fixture_hash": "sha256:b86f70ff19185d86dd7d8657f1f087065c4aa4f518167cbb07a9c434d010fd0b"
+      },
+      {
+        "fixture_id": "AR-044",
+        "fixture_hash": "sha256:dcda51a3425616493934bdc229dd80a954b7236387b1c25eb13e178567b50373"
+      },
+      {
+        "fixture_id": "AR-045",
+        "fixture_hash": "sha256:35ddff11ff6e415b020b37d692206fd78cc5448870349a0d8c1b704396da0d90"
+      },
+      {
+        "fixture_id": "AR-046",
+        "fixture_hash": "sha256:50d52d90366a901a92390f1961ee8649e49aa3d2e65dc30bed87977fa5c18b0c"
+      },
+      {
+        "fixture_id": "AR-047",
+        "fixture_hash": "sha256:95cc7cf9781dc945a9bcbb28dad8fbe1b65278e0e928ea2336c067349916e909"
+      },
+      {
+        "fixture_id": "AR-048",
+        "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+      },
+      {
+        "fixture_id": "AR-049",
+        "fixture_hash": "sha256:e1465d546ef41b3c3bb73f8bef6a5e4653a1d319046fc47dff054920485e65f1"
+      },
+      {
+        "fixture_id": "AR-050",
+        "fixture_hash": "sha256:a2df5740e64021736d14b11774a7877f5109ca27652d1dd80de505f1132e31ac"
+      }
+    ],
+    "test_command": "node research/adaptive-reliability-2026-10-13/build-artifacts.mjs (corpus replay)",
+    "execution_mode": "local_frozen_baseline",
+    "synthetic_local_only": true,
+    "clock": "2026-10-13T00:00:00Z",
+    "run_id": "arr_59703dde6c6e46cfe3bd8589"
+  },
+  "expectation_fields": {
+    "executable": 501,
+    "descriptive": 1
+  },
+  "as_expected": 45,
+  "open_failures_observed": [
+    "AR-010",
+    "AR-011",
+    "AR-025",
+    "AR-035",
+    "AR-040"
+  ],
+  "open_failures_documented": [
+    "AR-010",
+    "AR-011",
+    "AR-025",
+    "AR-035",
+    "AR-040"
+  ],
+  "matches_documented_open_failures": true,
+  "results": [
+    {
+      "id": "AR-001",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:d9eb7fe06742fb5028d755cee018fed47b4a395f5050085ce48a3d8247a02f87"
+    },
+    {
+      "id": "AR-002",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:41aa735235fb0bfbb7258ad86f40ad9969fa1e0e16c7a13d6e2fb056808ead3f"
+    },
+    {
+      "id": "AR-003",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:870d5ae44987b83101dcf0c63a185a8e945d470a4c73fcc0d3cc462ea767e40c"
+    },
+    {
+      "id": "AR-004",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:bd0ca070f58d3aa68bcb7f36a09c2fe18636ad1c383c9cb22803883020682108"
+    },
+    {
+      "id": "AR-005",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:b73b1b8920f7b557700152641ec093eecd82560d656295f9ce19da4bef11d396"
+    },
+    {
+      "id": "AR-006",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:6900870c3f7df4b8f199cbb5d508e7c135d2bee93f2f5220659eb611d613c23b"
+    },
+    {
+      "id": "AR-007",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:fcfb3f5a46cbc060b310357de923102d28ee770c4a4bff09eabdc6c2ab58df50"
+    },
+    {
+      "id": "AR-008",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:d0e2299b5888e77784bd949b7acada2d4cb682e157d52a0eeb9b63db809a10c9"
+    },
+    {
+      "id": "AR-009",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:be272986be7b5b57ec4cf31e5f737fbcaab03275d3fb5a57548e2c9c563fe13a"
+    },
+    {
+      "id": "AR-010",
+      "result": "fail",
+      "mismatches": [
+        "statuses: expected {\"reconstructability\":\"supported\",\"identifiable_basis\":\"supported\",\"chronology_integrity\":\"review_required\",\"reasoning_traceability\":\"supported\",\"sufficiency\":\"review_required\"}, got {\"reconstructability\":\"supported\",\"identifiable_basis\":\"supported\",\"chronology_integrity\":\"supported\",\"reasoning_traceability\":\"supported\",\"sufficiency\":\"review_required\"}",
+        "conflict_kinds: expected [\"impossible_sequence\"], got []",
+        "cc_defects: expected [\"impossible_sequence\"], got []",
+        "limitations.chronology_integrity: expected [\"conflict\",\"presence\"], got [\"presence\"]",
+        "graph.conflict_nodes: expected 1, got 0"
+      ],
+      "unsafe": [
+        "chronology_integrity review_required became supported"
+      ],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:88339b96c077854d621ce51747db80f1f6b407ec8346601b7998c305301cd47a"
+    },
+    {
+      "id": "AR-011",
+      "result": "fail",
+      "mismatches": [
+        "statuses: expected {\"reconstructability\":\"supported\",\"identifiable_basis\":\"supported\",\"chronology_integrity\":\"review_required\",\"reasoning_traceability\":\"supported\",\"sufficiency\":\"review_required\"}, got {\"reconstructability\":\"supported\",\"identifiable_basis\":\"supported\",\"chronology_integrity\":\"supported\",\"reasoning_traceability\":\"supported\",\"sufficiency\":\"review_required\"}"
+      ],
+      "unsafe": [
+        "chronology_integrity review_required became supported"
+      ],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:83191f115a70c26d85dfd8d1466e6f0a94dafbfc39ef1dc3d5cd13030d4d28f4"
+    },
+    {
+      "id": "AR-012",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:ec809e3fa86325ee49b292b4461b120379ee8c7e0558cffed3a9a4017b8f89c6"
+    },
+    {
+      "id": "AR-013",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:60bbe05103bd66bfdaf4816dea23538e7a6aaaf146f8f9ba97747bfaa0cc1b67"
+    },
+    {
+      "id": "AR-014",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:5d1c5ff8fc27f789b2e2c2e2e5c41ed1f08ff0a8ace77c5365b9d7c29cde0244"
+    },
+    {
+      "id": "AR-015",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:03ee196db77efed2bf3b42eed6a640c65352787ecaa8bda441299dff22a0ce5d"
+    },
+    {
+      "id": "AR-016",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:4f532d0f49870b7d27602af6b383e8f08e691c44886e79b9b5e89a2747e34a1a"
+    },
+    {
+      "id": "AR-017",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:f5a0fe4e6294fb8e1f2af6ec13071a9164b0dfdd0b5022799b4aaec2eb46eb83"
+    },
+    {
+      "id": "AR-018",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:f6fd4c284d5216086f725b4cac32f1f8c95f080ff28bcae496b8c93d8915ce2a"
+    },
+    {
+      "id": "AR-019",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:bb43785569db176a62e4ce93a7ab228c9f92a7818b4e0d1e39f69c62abb478f7"
+    },
+    {
+      "id": "AR-020",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:547483baea6d4629f3f6c186a27a19ace7afac193677f6a24cdf5802bb210edb"
+    },
+    {
+      "id": "AR-021",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:a55efa0612e355cce476ac59952f4c68bf423a4c056ea06896ba3d116e2396a1"
+    },
+    {
+      "id": "AR-022",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:fc2028a0f6e66738e370893fab78f82b56b113ac60a8f490d33ca6d25cdec15c"
+    },
+    {
+      "id": "AR-023",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:303a48885bae1c634fa55b176e2fa14f893336af5cb982f5135551a7a5371f60"
+    },
+    {
+      "id": "AR-024",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:b4f64365fae857d9330f1d94a3b846df334af25859e7c5f7f20d2ed65795fcd0"
+    },
+    {
+      "id": "AR-025",
+      "result": "fail",
+      "mismatches": [
+        "conflict_kinds: expected [\"control_state_conflict\"], got []",
+        "cc_defects: expected [\"control_state_conflict\"], got []",
+        "limitations.sufficiency: expected [\"conflict\",\"presence\",\"sufficiency\"], got [\"presence\",\"sufficiency\"]",
+        "graph.conflict_nodes: expected 1, got 0"
+      ],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:96535befc7d5bee8f3c408abd23fe4157156ec3cc9efb3d61e754ca6cd7d3c82"
+    },
+    {
+      "id": "AR-026",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:a1baa81cb4cdb4dda7a1b07c640bad52d2c81aec8d24e7de102d1b24c4d7fd40"
+    },
+    {
+      "id": "AR-027",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:ef560d695fa4cca6227e5bc1059e5b190e871e98c94d53ad71370b1265454485"
+    },
+    {
+      "id": "AR-028",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:498531dda2eba54a81640117c7f44a8c2cf829900d86c27f64039deae6d61c8a"
+    },
+    {
+      "id": "AR-029",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:e0c80896f99093b1915dabfca3f67f382fa726eab639f4e01d539f5c7bf94743"
+    },
+    {
+      "id": "AR-030",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:fea92e53c03f172770d8767acadad57227f73b75c6353d18fde25277d305d512"
+    },
+    {
+      "id": "AR-031",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "graph_sha256": "sha256:c29b98725fac65b11f8d934925b20060d079f1a53571cd98f1e4279d42af475e"
+    },
+    {
+      "id": "AR-032",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:b9bef0e591c18004f8a85fbe010dc27fad842f5123cea680818bfeef972464df"
+    },
+    {
+      "id": "AR-033",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:1cafa0b9664179c4dda59a145f1546e465a84b760c7b632353cbf5159545fccf"
+    },
+    {
+      "id": "AR-034",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:4c941ceda9f2cbe1d245fc37c6fbc82b87fadf983c209ff74fe434d620f1e254"
+    },
+    {
+      "id": "AR-035",
+      "result": "fail",
+      "mismatches": [
+        "statuses: expected {\"reconstructability\":\"supported\",\"identifiable_basis\":\"review_required\",\"chronology_integrity\":\"supported\",\"reasoning_traceability\":\"supported\",\"sufficiency\":\"review_required\"}, got {\"reconstructability\":\"supported\",\"identifiable_basis\":\"supported\",\"chronology_integrity\":\"supported\",\"reasoning_traceability\":\"supported\",\"sufficiency\":\"review_required\"}",
+        "identifiable_basis: missing reason assertion_rejected: (got [\"verified_quotation_and_visible_rule_requirements\"])",
+        "refusal_codes: expected [\"assertion_rejected\"], got []",
+        "graph.textually_supports_edges: expected 5, got 6"
+      ],
+      "unsafe": [
+        "identifiable_basis review_required became supported"
+      ],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:7522671be303492d8c95e97856f111a97edbd4a73adbc1e830f3a2bc9716e8d2"
+    },
+    {
+      "id": "AR-036",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:2e9b2d4c8c0803f2ed06d46d02edd55e9bf257de6d9077bc1c407464cd857093"
+    },
+    {
+      "id": "AR-037",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:a7516b9782cfb795a83ae43841648560cf06d4a3e9716323525377e691fb8236"
+    },
+    {
+      "id": "AR-038",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:0edf812f691789597b00576762ef53e7919290a893d2b1db8e796443c9f50be3"
+    },
+    {
+      "id": "AR-039",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:9bfce729bff91134a68639efff6a4ea4890becf27c6db2a046863b155769efbe"
+    },
+    {
+      "id": "AR-040",
+      "result": "fail",
+      "mismatches": [
+        "gate: expected \"refuse\", got \"proceed\"",
+        "statuses: expected {\"reconstructability\":\"not_assessed\",\"identifiable_basis\":\"not_assessed\",\"chronology_integrity\":\"not_assessed\",\"reasoning_traceability\":\"not_assessed\",\"sufficiency\":\"not_assessed\"}, got {\"reconstructability\":\"supported\",\"identifiable_basis\":\"supported\",\"chronology_integrity\":\"supported\",\"reasoning_traceability\":\"supported\",\"sufficiency\":\"review_required\"}",
+        "refusal_codes: expected [\"excluded_domain_content\"], got []",
+        "limitations.reconstructability: expected [\"refusal\"], got [\"presence\"]",
+        "limitations.identifiable_basis: expected [\"refusal\"], got [\"presence\"]",
+        "limitations.chronology_integrity: expected [\"refusal\"], got [\"presence\"]",
+        "limitations.reasoning_traceability: expected [\"refusal\"], got [\"presence\"]",
+        "limitations.sufficiency: expected [\"refusal\"], got [\"presence\",\"sufficiency\"]",
+        "graph.textually_supports_edges: expected 0, got 6"
+      ],
+      "unsafe": [
+        "gate refuse became proceed",
+        "reconstructability not_assessed became supported",
+        "identifiable_basis not_assessed became supported",
+        "chronology_integrity not_assessed became supported",
+        "reasoning_traceability not_assessed became supported",
+        "sufficiency not_assessed became review_required"
+      ],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:2d758b387aea29ab9b87039a7a86a5a5de31e196d7dcd5593a2480d18243fb41"
+    },
+    {
+      "id": "AR-041",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "graph_sha256": "sha256:fce2fff20ac1f2aed863a81179755f6d45062a8b59534a5ba1b34b7f05e4b10e"
+    },
+    {
+      "id": "AR-042",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "graph_sha256": "sha256:5f48bd3ac4e20e0c6f142495656b5cdd3aa37727154d1a2e94dd03c72a04d94a"
+    },
+    {
+      "id": "AR-043",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "graph_sha256": "sha256:cd16ac2c13253502bc9b367e8b060c813baa8163f1331680a8c3ffaf88c63a98"
+    },
+    {
+      "id": "AR-044",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "gap"
+      },
+      "graph_sha256": "sha256:ea131486dc4f19c98121565785e05dd5b3d489dc1437cb6928ee7d2a490fcf45"
+    },
+    {
+      "id": "AR-045",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:c1260866ee78b0fbb47f6a9c9245b6bb4bd9ed1cbcb0212b97271a76a2d03987"
+    },
+    {
+      "id": "AR-046",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:ef85884884b65f1b464cb311aa133806168adc1e9cb7778be7ce9bde6c72c15f"
+    },
+    {
+      "id": "AR-047",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "graph_sha256": "sha256:05cec057fe5df506bee37ac23c63a0ec135e0c0eebc03c100f8bd18ac51c0ec0"
+    },
+    {
+      "id": "AR-048",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "graph_sha256": "sha256:1cc562dd6f4cdc0f17db5c6ff106aa1cf6a942a7d7598a35742eb4261a0a1e7e"
+    },
+    {
+      "id": "AR-049",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "graph_sha256": "sha256:43d2b844f860d557be45d14985ad1b1f0eacac35c9286d6dd1042f8f51d2a08e"
+    },
+    {
+      "id": "AR-050",
+      "result": "pass",
+      "mismatches": [],
+      "unsafe": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "graph_sha256": "sha256:c1cbb04fa658ef0b78d00d0cd10eedf4d44e9d03ca0a421f6c247a7e04987c40"
+    }
+  ],
+  "statement": "Expected results are engineering-authored expected safe behaviour, not adjudicated labels. Passing cases are not an accuracy result."
+}

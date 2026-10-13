@@ -1,0 +1,24 @@
+{
+  "submission_metadata": {
+    "submission_id": "AR-038"
+  },
+  "scope_declaration": {
+    "record_type": "supplier_access_exception_draft",
+    "record_state": "completed_draft",
+    "content_origin": "synthetic_engineering_fixture",
+    "hr_content": false,
+    "regulated_decision_content": false
+  },
+  "declared_versions": {
+    "contract_version": "jrs-engine-local-0.3.0-evidence-graph",
+    "compiler_version": "0.3.0-local",
+    "prompt_version": "jrs-engine-local-0.3.0/prompt-1",
+    "codebook_version": "1.0"
+  },
+  "requested_outputs": [
+    "condition_findings",
+    "evidence_graph",
+    "cognitive_controls"
+  ],
+  "record_text": "@file:AR-038.record.txt"
+}

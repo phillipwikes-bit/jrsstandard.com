@@ -1,0 +1,14 @@
+{
+  "status": "NON-CANONICAL local record. Open failures of the frozen v0.3 compiler observed on the first run of the Phase 4 corpus and stability laboratory, 2026-10-13. Expectations were not edited to match. v0.3 was not changed.",
+  "first_run": "2026-10-13",
+  "corpus": {
+    "AR-010": { "knowledge_id": "RKB-041", "unsafe_direction": true, "summary": "Assessment dated after the decision is not detected; chronology_integrity supported instead of review_required." },
+    "AR-011": { "knowledge_id": "RKB-042", "unsafe_direction": true, "summary": "Two different expiry dates are not detected; chronology_integrity supported instead of review_required." },
+    "AR-025": { "knowledge_id": "RKB-044", "unsafe_direction": false, "summary": "Paraphrased control conflict (log review planned versus logs reviewed weekly) is not detected; no conflict node. Sufficiency stays review_required." },
+    "AR-035": { "knowledge_id": "RKB-045", "unsafe_direction": true, "summary": "Candidate note 'acted lawfully' is not rejected; identifiable_basis supported instead of review_required." },
+    "AR-040": { "knowledge_id": "RKB-046", "unsafe_direction": true, "summary": "Reworded employment outcome is not refused; the record is assessed." }
+  },
+  "stability": {
+    "ST-14": { "knowledge_id": "RKB-046", "unsafe_direction": true, "summary": "Reworded employment language ('keeps their job') is not refused; the record is assessed." }
+  }
+}
