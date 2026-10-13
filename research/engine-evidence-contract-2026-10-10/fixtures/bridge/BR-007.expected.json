@@ -1,0 +1,46 @@
+{
+  "parse_status": "valid_v1",
+  "determination_conflict": false,
+  "record_flags": [
+    "record_out_of_scope:regulated_domain_content"
+  ],
+  "conditions": {
+    "basis_identification": {
+      "mapping": "not_mappable",
+      "effective_v02_status": "not_assessed",
+      "reasons_include": [
+        "record_out_of_scope:regulated_domain_content"
+      ]
+    },
+    "reasoning_traceability": {
+      "mapping": "not_mappable",
+      "effective_v02_status": "not_assessed",
+      "reasons_include": [
+        "record_out_of_scope:regulated_domain_content"
+      ]
+    },
+    "cold_reviewer_clarity": {
+      "mapping": "not_mappable",
+      "effective_v02_status": "not_assessed",
+      "reasons_include": [
+        "record_out_of_scope:regulated_domain_content"
+      ]
+    },
+    "accountability_support": {
+      "mapping": "not_mappable",
+      "effective_v02_status": "not_assessed",
+      "reasons_include": [
+        "record_out_of_scope:regulated_domain_content"
+      ]
+    },
+    "temporal_reconstructability": {
+      "mapping": "not_mappable",
+      "effective_v02_status": "not_assessed",
+      "reasons_include": [
+        "record_out_of_scope:regulated_domain_content"
+      ]
+    }
+  },
+  "case_id": "BR-007",
+  "label_status": "engineering_authored_expected_result_not_adjudicated"
+}

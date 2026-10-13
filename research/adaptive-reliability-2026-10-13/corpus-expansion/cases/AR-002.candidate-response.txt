@@ -1,0 +1,48 @@
+{
+  "contract_version": "jrs-engine-local-0.3.0-evidence-graph",
+  "prompt_version": "jrs-engine-local-0.3.0/prompt-1",
+  "observations": [
+    {
+      "observation_id": "O1",
+      "condition_id": "reconstructability",
+      "proposed_status": "supported",
+      "quote": "Decision: Exception granted for 90 days.",
+      "assertion_type": "stated_decision"
+    },
+    {
+      "observation_id": "O2",
+      "condition_id": "reconstructability",
+      "proposed_status": "supported",
+      "quote": "Decision basis: See RA-2026-0311.",
+      "assertion_type": "stated_source_reference"
+    },
+    {
+      "observation_id": "O3",
+      "condition_id": "identifiable_basis",
+      "proposed_status": "supported",
+      "quote": "Authority: Information Security Exception Board, minutes ISEB-2026-07 item 4, dated 2026-03-09.",
+      "assertion_type": "stated_authority"
+    },
+    {
+      "observation_id": "O4",
+      "condition_id": "chronology_integrity",
+      "proposed_status": "supported",
+      "quote": "Chronology: 2026-03-02 request received; 2026-03-05 risk assessment RA-2026-0311 completed; 2026-03-09 board decision recorded.",
+      "assertion_type": "stated_date"
+    },
+    {
+      "observation_id": "O5",
+      "condition_id": "reasoning_traceability",
+      "proposed_status": "supported",
+      "quote": "Decision basis: See RA-2026-0311.",
+      "assertion_type": "stated_source_reference"
+    },
+    {
+      "observation_id": "O6",
+      "condition_id": "sufficiency",
+      "proposed_status": "supported",
+      "quote": "Compensating controls: Access is limited to the LOG-RPT-04 report view",
+      "assertion_type": "stated_control"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "case_id": "EC-015",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "response_status": "valid",
+  "refusal_codes": [],
+  "remediation": [
+    "CC-03:date_order_conflict"
+  ],
+  "long_record_status": null,
+  "comparison_present": false,
+  "conditions": {
+    "reconstructability": {
+      "status": "supported",
+      "reasons_include": [
+        "candidate_status_supported_with_offset_verified_evidence"
+      ],
+      "evidence_quotes": [
+        "Access requested: Read-only access to the shipment tracking reports in the logistics portal (LOG-RPT-04)."
+      ]
+    },
+    "identifiable_basis": {
+      "status": "supported",
+      "reasons_include": [
+        "candidate_status_supported_with_offset_verified_evidence"
+      ],
+      "evidence_quotes": [
+        "Decision basis: Risk assessment RA-2026-0311, completed 2026-04-12, found that the reports contain shipment reference numbers and delivery dates only."
+      ]
+    },
+    "chronology_integrity": {
+      "status": "supported",
+      "reasons_include": [
+        "candidate_status_supported_with_offset_verified_evidence"
+      ],
+      "evidence_quotes": [
+        "Chronology: 2026-04-10 request received; 2026-04-12 risk assessment RA-2026-0311 completed; 2026-04-03 board decision recorded."
+      ]
+    },
+    "reasoning_traceability": {
+      "status": "supported",
+      "reasons_include": [
+        "candidate_status_supported_with_offset_verified_evidence"
+      ],
+      "evidence_quotes": [
+        "The supplier needs them to reconcile its invoices under contract CTR-2025-118 section 4.",
+        "Authority: Information Security Exception Board, minutes ISEB-2026-07 item 4, dated 2026-04-03."
+      ]
+    },
+    "sufficiency": {
+      "status": "supported",
+      "reasons_include": [
+        "candidate_status_supported_with_offset_verified_evidence"
+      ],
+      "evidence_quotes": [
+        "Compensating controls: Access is limited to the LOG-RPT-04 report view"
+      ]
+    }
+  }
+}

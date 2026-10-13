@@ -1,0 +1,25 @@
+WORKBENCH EC-002: Chronology gap requiring human review
+Synthetic fixture; candidate 0.2.0-local-candidate; NO_GO_NOT_VERIFIED
+
+1 INTAKE  gate=proceed instruction_risk=not_detected boundary=preserved
+2 IDENTITY  jrs-engine-local-0.2.0 / HREF-v1-0.1.0-validation-baebb512 / run ecr_e5fa5090cba038568e090fe7
+3 RECORD  1377 chars sha256:ce85b45ef3aff846c0f79d1e1bdb770b0e162430329c84c33eb0419340599b3f
+4 CANDIDATE RESPONSE  valid
+5/6 reconstructability      supported       candidate=supported
+      E1 [217,322) "Access requested: Read-only access to the shipment tracking reports in..."
+      reason: candidate_status_supported_with_offset_verified_evidence
+5/6 identifiable_basis      supported       candidate=supported
+      E1 [376,526) "Decision basis: Risk assessment RA-2026-0311, completed 2026-04-12, fo..."
+      reason: candidate_status_supported_with_offset_verified_evidence
+5/6 chronology_integrity    gap             candidate=gap
+      E1 [1249,1376) "Chronology: 2026-04-10 request received; 2026-04-12 risk assessment RA..."
+      reason: candidate_status_gap_with_offset_verified_evidence
+5/6 reasoning_traceability  supported       candidate=supported
+      E1 [527,615) "The supplier needs them to reconcile its invoices under contract CTR-2..."
+      E2 [886,981) "Authority: Information Security Exception Board, minutes ISEB-2026-07 ..."
+      reason: candidate_status_supported_with_offset_verified_evidence
+5/6 sufficiency             supported       candidate=supported
+      E1 [664,734) "Compensating controls: Access is limited to the LOG-RPT-04 report view"
+      reason: candidate_status_supported_with_offset_verified_evidence
+7 CC-03 date_order_conflict  correct: What date establishes the decision sequence, and which source document records it?
+10 HUMAN REVIEW ACKNOWLEDGMENT: not recorded (placeholder)

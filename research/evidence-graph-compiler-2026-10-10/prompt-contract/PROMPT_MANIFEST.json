@@ -1,0 +1,9 @@
+{
+  "prompt_version": "jrs-engine-local-0.3.0/prompt-1",
+  "contract_version": "jrs-engine-local-0.3.0-evidence-graph",
+  "file": "PROMPT_v0.3.0.txt",
+  "sha256": "sha256:0ceda8887463a515d241751133c9b0d3bf3364f89b63fa6ac5dda6ac70c8eec2",
+  "status": "SPECIFICATION ONLY. Never sent to any model. Exercised only against fixed mock responses.",
+  "contract_kind": "quote_only: the candidate never supplies offsets, sections, locations, evidence status, graph links or final status",
+  "predecessor": "jrs-engine-local-0.2.0/prompt-1 (offset-bearing; unchanged in research/engine-evidence-contract-2026-10-10/prompt-contract/)"
+}

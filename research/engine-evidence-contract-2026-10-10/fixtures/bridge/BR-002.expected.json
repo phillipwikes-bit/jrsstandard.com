@@ -1,0 +1,37 @@
+{
+  "parse_status": "valid_v1",
+  "determination_conflict": false,
+  "record_flags": [],
+  "conditions": {
+    "basis_identification": {
+      "mapping": "lossy",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_gap_has_no_offset_verified_evidence",
+        "note_quotation_not_found_in_record"
+      ]
+    },
+    "reasoning_traceability": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": []
+    },
+    "cold_reviewer_clarity": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": []
+    },
+    "accountability_support": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": []
+    },
+    "temporal_reconstructability": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": []
+    }
+  },
+  "case_id": "BR-002",
+  "label_status": "engineering_authored_expected_result_not_adjudicated"
+}

@@ -1,0 +1,1047 @@
+{
+  "generated": "2026-10-13T00:00:00Z",
+  "transforms": [
+    {
+      "id": "ST-01",
+      "name": "whitespace: blank line between every line",
+      "kind": "invariant",
+      "base": "GC-001",
+      "expected_invariant": "all statuses, refusals and conflicts unchanged",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged: every finding routed to review"
+    },
+    {
+      "id": "ST-02",
+      "name": "paragraph reorder preserving chronology labels (risk and controls swapped)",
+      "kind": "invariant",
+      "base": "GC-001",
+      "expected_invariant": "all outcomes unchanged",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    },
+    {
+      "id": "ST-03",
+      "name": "heading format change on unquoted headings (upper case)",
+      "kind": "invariant",
+      "base": "GC-001",
+      "expected_invariant": "outcomes unchanged; section labels may change",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    },
+    {
+      "id": "ST-04",
+      "name": "irrelevant narrative inserted",
+      "kind": "invariant",
+      "base": "GC-001",
+      "expected_invariant": "outcomes unchanged",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    },
+    {
+      "id": "ST-05",
+      "name": "exact authority quotation replaced with a paraphrase",
+      "kind": "changed",
+      "base": "GC-001",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {
+          "identifiable_basis": "review_required"
+        }
+      },
+      "expected_refusals": [
+        "quote_absent"
+      ],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "type_delta": {
+          "verified_evidence": -1,
+          "assertion": -1
+        }
+      },
+      "expected_review": "identifiable_basis routed to review with an absent-quotation reason"
+    },
+    {
+      "id": "ST-06",
+      "name": "cited rationale sentence moved into the residual-risk section",
+      "kind": "invariant",
+      "base": "GC-001",
+      "expected_invariant": "statuses unchanged",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged; the moved span is traceable to its new section"
+    },
+    {
+      "id": "ST-07",
+      "name": "decision quotation duplicated elsewhere in the record",
+      "kind": "changed",
+      "base": "GC-001",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {
+          "reconstructability": "review_required"
+        }
+      },
+      "expected_refusals": [
+        "quote_ambiguous"
+      ],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": null,
+      "expected_review": "reconstructability routed to review with an ambiguity reason"
+    },
+    {
+      "id": "ST-08",
+      "name": "explicit authority source inserted into a record that lacked one",
+      "kind": "changed",
+      "base": "GC-002",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {
+          "identifiable_basis": "supported"
+        }
+      },
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": null,
+      "expected_review": "still routed to review; the more favourable status traces to the inserted span"
+    },
+    {
+      "id": "ST-09",
+      "name": "expiry date deleted",
+      "kind": "changed",
+      "base": "GC-001",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {
+          "chronology_integrity": "review_required"
+        }
+      },
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": null,
+      "expected_review": "chronology routed to review (candidate said supported but a visible gap exists) with a neutral question"
+    },
+    {
+      "id": "ST-10",
+      "name": "conflicting decision date inserted",
+      "kind": "changed",
+      "base": "GC-001",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {
+          "chronology_integrity": "review_required",
+          "reconstructability": "review_required"
+        }
+      },
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "type_delta": {
+          "conflict": 1
+        }
+      },
+      "expected_review": "conflict node routed to review; the Engine does not choose a date"
+    },
+    {
+      "id": "ST-11",
+      "name": "compensating control deleted (candidate quotation now stale)",
+      "kind": "changed",
+      "base": "GC-001",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {}
+      },
+      "expected_refusals": [
+        "quote_absent"
+      ],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": null,
+      "expected_review": "sufficiency stays review_required; the stale quotation cannot become evidence"
+    },
+    {
+      "id": "ST-12",
+      "name": "out-of-scope employment phrase inserted",
+      "kind": "changed",
+      "base": "GC-001",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        }
+      },
+      "expected_refusals": [
+        "excluded_domain_content"
+      ],
+      "expected_limitation": "refusal_boundary",
+      "expected_graph_change": null,
+      "expected_review": "refused before assessment"
+    },
+    {
+      "id": "ST-13",
+      "name": "embedded instruction inserted",
+      "kind": "changed",
+      "base": "GC-001",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        }
+      },
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": null,
+      "expected_review": "instruction quarantined; every favourable status routed to review"
+    },
+    {
+      "id": "ST-14",
+      "name": "reworded excluded-domain language (no listed keyword)",
+      "kind": "changed",
+      "base": "GC-001",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        }
+      },
+      "expected_refusals": [
+        "excluded_domain_content"
+      ],
+      "expected_limitation": "refusal_boundary",
+      "expected_graph_change": null,
+      "expected_review": "refused before assessment"
+    },
+    {
+      "id": "ST-15",
+      "name": "case change inside a quoted heading (candidate quotation unchanged)",
+      "kind": "changed",
+      "base": "GC-001",
+      "expected_invariant": null,
+      "expected_changed": {
+        "statuses": {
+          "reconstructability": "review_required"
+        }
+      },
+      "expected_refusals": [
+        "quote_absent"
+      ],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": null,
+      "expected_review": "reconstructability routed to review with a case-variant reason"
+    },
+    {
+      "id": "ST-16",
+      "name": "non-breaking space in an unquoted line",
+      "kind": "invariant",
+      "base": "GC-001",
+      "expected_invariant": "outcomes unchanged",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    },
+    {
+      "id": "LB-01",
+      "name": "whitespace: blank lines in a record with an authority-source gap",
+      "kind": "invariant",
+      "base": "GC-002",
+      "expected_invariant": "gap stays gap; no outcome improves",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    },
+    {
+      "id": "LB-02",
+      "name": "irrelevant narrative added to a record with an impossible sequence",
+      "kind": "invariant",
+      "base": "GC-004",
+      "expected_invariant": "conflict and review stay",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "conflict still routed to review"
+    },
+    {
+      "id": "LB-03",
+      "name": "heading format change on a record with review_required (no basis section)",
+      "kind": "invariant",
+      "base": "GC-015",
+      "expected_invariant": "review stays",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    },
+    {
+      "id": "LB-04",
+      "name": "duplicated irrelevant text in a refused record",
+      "kind": "invariant",
+      "base": "GC-008",
+      "expected_invariant": "refusal stays; nothing assessed",
+      "expected_changed": null,
+      "expected_refusals": [
+        "excluded_domain_content"
+      ],
+      "expected_limitation": "refusal_boundary",
+      "expected_graph_change": null,
+      "expected_review": "refused before assessment"
+    },
+    {
+      "id": "LB-05",
+      "name": "section reorder in a record with a missing expiry date",
+      "kind": "invariant",
+      "base": "GC-018",
+      "expected_invariant": "gap does not turn into support",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    },
+    {
+      "id": "LB-06",
+      "name": "irrelevant narrative added to a record with an ambiguous quotation",
+      "kind": "invariant",
+      "base": "GC-006",
+      "expected_invariant": "ambiguity stays",
+      "expected_changed": null,
+      "expected_refusals": [
+        "quote_ambiguous"
+      ],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    },
+    {
+      "id": "LB-07",
+      "name": "whitespace: blank lines in a record with embedded instructions",
+      "kind": "invariant",
+      "base": "GC-020",
+      "expected_invariant": "instruction risk and review stay",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    },
+    {
+      "id": "LB-08",
+      "name": "section reorder in a record with several gaps",
+      "kind": "invariant",
+      "base": "AR-044",
+      "expected_invariant": "no gap turns into support",
+      "expected_changed": null,
+      "expected_refusals": [],
+      "expected_limitation": "presence and sufficiency limitations",
+      "expected_graph_change": {
+        "non_section_types_same": true
+      },
+      "expected_review": "unchanged"
+    }
+  ],
+  "statement": "Synthetic metamorphic checks in a limited local context. Not a robustness, reliability, accuracy or validation result.",
+  "results": [
+    {
+      "name": "whitespace: blank line between every line",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "unchanged: every finding routed to review",
+      "transform_id": "ST-01",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "paragraph reorder preserving chronology labels (risk and controls swapped)",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "unchanged",
+      "transform_id": "ST-02",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "heading format change on unquoted headings (upper case)",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "unchanged",
+      "transform_id": "ST-03",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "irrelevant narrative inserted",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "unchanged",
+      "transform_id": "ST-04",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "exact authority quotation replaced with a paraphrase",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "identifiable_basis routed to review with an absent-quotation reason",
+      "transform_id": "ST-05",
+      "kind": "changed",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "cited rationale sentence moved into the residual-risk section",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "unchanged; the moved span is traceable to its new section",
+      "transform_id": "ST-06",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "decision quotation duplicated elsewhere in the record",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "reconstructability routed to review with an ambiguity reason",
+      "transform_id": "ST-07",
+      "kind": "changed",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "explicit authority source inserted into a record that lacked one",
+      "base": "GC-002",
+      "lower_baseline": null,
+      "expected_review": "still routed to review; the more favourable status traces to the inserted span",
+      "transform_id": "ST-08",
+      "kind": "changed",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [
+        "identifiable_basis gap to supported"
+      ],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "expiry date deleted",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "chronology routed to review (candidate said supported but a visible gap exists) with a neutral question",
+      "transform_id": "ST-09",
+      "kind": "changed",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true,
+      "expectation_correction": {
+        "first_run": "2026-10-13",
+        "original": "chronology_integrity gap",
+        "corrected_to": "chronology_integrity review_required",
+        "reason": "Authoring error. v0.3 routes a candidate-supported condition with a visible gap to review_required (compiler.mjs, reason candidate_supported_but_visible_gap); it never converts supported to gap. The observed outcome is the less favourable one. Recorded as RKB-043."
+      }
+    },
+    {
+      "name": "conflicting decision date inserted",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "conflict node routed to review; the Engine does not choose a date",
+      "transform_id": "ST-10",
+      "kind": "changed",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "compensating control deleted (candidate quotation now stale)",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "sufficiency stays review_required; the stale quotation cannot become evidence",
+      "transform_id": "ST-11",
+      "kind": "changed",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "out-of-scope employment phrase inserted",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "refused before assessment",
+      "transform_id": "ST-12",
+      "kind": "changed",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "embedded instruction inserted",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "instruction quarantined; every favourable status routed to review",
+      "transform_id": "ST-13",
+      "kind": "changed",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "reworded excluded-domain language (no listed keyword)",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "refused before assessment",
+      "transform_id": "ST-14",
+      "kind": "changed",
+      "result": "mismatch",
+      "mismatches": [
+        "status reconstructability: expected not_assessed, got supported",
+        "status identifiable_basis: expected not_assessed, got supported",
+        "status chronology_integrity: expected not_assessed, got supported",
+        "status reasoning_traceability: expected not_assessed, got supported",
+        "status sufficiency: expected not_assessed, got review_required",
+        "gate: expected refuse, got proceed",
+        "missing refusal excluded_domain_content (got )",
+        "refusal boundary statement missing"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "case change inside a quoted heading (candidate quotation unchanged)",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "reconstructability routed to review with a case-variant reason",
+      "transform_id": "ST-15",
+      "kind": "changed",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "non-breaking space in an unquoted line",
+      "base": "GC-001",
+      "lower_baseline": null,
+      "expected_review": "unchanged",
+      "transform_id": "ST-16",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "whitespace: blank lines in a record with an authority-source gap",
+      "base": "GC-002",
+      "lower_baseline": "identifiable_basis gap",
+      "expected_review": "unchanged",
+      "transform_id": "LB-01",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "irrelevant narrative added to a record with an impossible sequence",
+      "base": "GC-004",
+      "lower_baseline": "chronology_integrity review_required (conflict)",
+      "expected_review": "conflict still routed to review",
+      "transform_id": "LB-02",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "heading format change on a record with review_required (no basis section)",
+      "base": "GC-015",
+      "lower_baseline": "reconstructability and reasoning_traceability review_required",
+      "expected_review": "unchanged",
+      "transform_id": "LB-03",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "duplicated irrelevant text in a refused record",
+      "base": "GC-008",
+      "lower_baseline": "refused (all not_assessed)",
+      "expected_review": "refused before assessment",
+      "transform_id": "LB-04",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "section reorder in a record with a missing expiry date",
+      "base": "GC-018",
+      "lower_baseline": "chronology_integrity gap",
+      "expected_review": "unchanged",
+      "transform_id": "LB-05",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "irrelevant narrative added to a record with an ambiguous quotation",
+      "base": "GC-006",
+      "lower_baseline": "reconstructability review_required (ambiguous)",
+      "expected_review": "unchanged",
+      "transform_id": "LB-06",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "whitespace: blank lines in a record with embedded instructions",
+      "base": "GC-020",
+      "lower_baseline": "all review_required (instruction risk)",
+      "expected_review": "unchanged",
+      "transform_id": "LB-07",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    },
+    {
+      "name": "section reorder in a record with several gaps",
+      "base": "AR-044",
+      "lower_baseline": "identifiable_basis, chronology_integrity and sufficiency gap",
+      "expected_review": "unchanged",
+      "transform_id": "LB-08",
+      "kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "gap"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "gap"
+      },
+      "favourable_transitions": [],
+      "graph_sha256_changed": true
+    }
+  ],
+  "as_expected": 23,
+  "total": 24,
+  "open_failures_documented": [
+    "ST-14"
+  ],
+  "open_failures_observed": [
+    "ST-14"
+  ]
+}

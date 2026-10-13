@@ -1,0 +1,9 @@
+{
+  "length_chars": 7999,
+  "length_status": "below_limit",
+  "gate_decision": "proceed",
+  "min_segments": 0,
+  "human_review_points": [],
+  "case_id": "LR-001",
+  "label_status": "engineering_authored_expected_result_not_adjudicated"
+}

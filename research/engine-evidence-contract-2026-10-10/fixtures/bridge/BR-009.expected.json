@@ -1,0 +1,44 @@
+{
+  "parse_status": "valid_v1",
+  "determination_conflict": false,
+  "record_flags": [],
+  "conditions": {
+    "basis_identification": {
+      "mapping": "lossy",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_gap_has_no_offset_verified_evidence"
+      ]
+    },
+    "reasoning_traceability": {
+      "mapping": "lossy",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_gap_has_no_offset_verified_evidence"
+      ]
+    },
+    "cold_reviewer_clarity": {
+      "mapping": "lossy",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_gap_has_no_offset_verified_evidence"
+      ]
+    },
+    "accountability_support": {
+      "mapping": "lossy",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_gap_has_no_offset_verified_evidence"
+      ]
+    },
+    "temporal_reconstructability": {
+      "mapping": "lossy",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_gap_has_no_offset_verified_evidence"
+      ]
+    }
+  },
+  "case_id": "BR-009",
+  "label_status": "engineering_authored_expected_result_not_adjudicated"
+}

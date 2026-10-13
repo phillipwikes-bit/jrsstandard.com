@@ -1,0 +1,724 @@
+{
+  "record_type": "jrs-evidence-graph-execution-record/0.3.0",
+  "generated_at": "2026-10-10T00:00:00Z",
+  "command": "node tools/engine-evidence-graph-replay.mjs --clock 2026-10-10T00:00:00Z",
+  "environment": {
+    "node": "v22.22.0",
+    "platform": "linux-x64"
+  },
+  "network": {
+    "trap_installed": true,
+    "trapped_attempts": 0,
+    "provider_calls": 0,
+    "external_records": 0
+  },
+  "summary": {
+    "total": 35,
+    "passed": 35,
+    "failed": 0,
+    "skipped": 0
+  },
+  "cases": [
+    {
+      "id": "GC-001",
+      "category": "positive_control",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 65,
+      "edges": 95,
+      "hashes": {
+        "fixture": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5",
+        "expected": "sha256:e5391fa27b8f8a4e3c8e615f4c963bddd76a9796c866d0656172dfcd52eac60e",
+        "graph": "sha256:780686dea3d4631f0a2c5898476a806b31e8dda2b9442cd1fcadcb3372cb17d6"
+      }
+    },
+    {
+      "id": "GC-002",
+      "category": "missing_authority",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 64,
+      "edges": 94,
+      "hashes": {
+        "fixture": "sha256:52cd3b287808c3a9b4faf081521c3fc2725ec6fb548021e0d9fdf204ec285227",
+        "expected": "sha256:6d7f38989054e3dcca35e9feaefeada68649b718687639eff5e64a235b7b8347",
+        "graph": "sha256:8f474b4b60ec09e48dfe2a5ddc536d46666f3321d2a5c1fdfd87cdb22fe8cd16"
+      }
+    },
+    {
+      "id": "GC-003",
+      "category": "missing_control",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "gap"
+      },
+      "nodes": 65,
+      "edges": 95,
+      "hashes": {
+        "fixture": "sha256:873029b6a6a709d6286dfb6a0417b02851a62cedade49c5dab5ab8dc23d89e56",
+        "expected": "sha256:cf11fed90c23f9c212b9fabc6d6a52312e74fcd2e9f428cf5ad8c3407aba666e",
+        "graph": "sha256:6fd5e8d1c09308134cbde16fc95c5d913c7deb8290c44dffe8f1c15071031c09"
+      }
+    },
+    {
+      "id": "GC-004",
+      "category": "contradictory_chronology",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 66,
+      "edges": 99,
+      "hashes": {
+        "fixture": "sha256:0ca62ded9043bd790e06975644b131e73bf95e7d021ffca4524c838a9b1ef69f",
+        "expected": "sha256:ee33e4a80b0dbe3a50902a5390fec199c9696b7fb9d1614716dbb0a010db6b16",
+        "graph": "sha256:65efe9d7ca464602192851c1666fab170f034513fda31de394bf4beac36d90d2"
+      }
+    },
+    {
+      "id": "GC-005",
+      "category": "conflicting_dates",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 66,
+      "edges": 99,
+      "hashes": {
+        "fixture": "sha256:e9b8785476c1b315cf30a92721e040b57c041631deaae90505f140ec5a6713a4",
+        "expected": "sha256:c21579356e661679bed1147e85ac0fee06d2a2bad0d23268fc34cb268e4d402c",
+        "graph": "sha256:c29e33139d57ca038d774debf73126b6aa2f8f3e232beef33aafdaad69dbdccf"
+      }
+    },
+    {
+      "id": "GC-006",
+      "category": "duplicate_ambiguous",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 70,
+      "edges": 103,
+      "hashes": {
+        "fixture": "sha256:9d3e22762d21b889ff3734ae699766cf21282c313ea2cfc2ba4511fdc4a59127",
+        "expected": "sha256:bf5c4e497626f3cf2906cbc11ed0739f787711942f16761422a86185cbb65052",
+        "graph": "sha256:2bb52364741172d5a20a28665f17cefaf58fc3f25aa1a3d10498a045520e7428"
+      }
+    },
+    {
+      "id": "GC-007",
+      "category": "duplicate_disambiguated",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 70,
+      "edges": 104,
+      "hashes": {
+        "fixture": "sha256:b269d0b958294425dffd1757a03897bea83444f5554be014744410edb518a486",
+        "expected": "sha256:1d2d32de33aecce63b14c06358cd35b660d3a2c74f4109e79ef0b5178ab5b2db",
+        "graph": "sha256:6caef966ecf14a980e40de83d9aafa4a13bba6c20c49c9a86d5f43a994e37830"
+      }
+    },
+    {
+      "id": "GC-008",
+      "category": "scope_refusal",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 19,
+      "edges": 23,
+      "hashes": {
+        "fixture": "sha256:6c5b06538d9fd463e88fc6fac624a82422954c25e2c5441effd4043bd19b8361",
+        "expected": "sha256:d6d8f298e077408360147e7f650b7e493923c8bf902602a80fac039e23a3fd1f",
+        "graph": "sha256:d57b5faa6133a4f26afe92d1a0d95cf316499a26fc1424990e10097719e69c86"
+      }
+    },
+    {
+      "id": "GC-009",
+      "category": "fabricated_quote",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 63,
+      "edges": 90,
+      "hashes": {
+        "fixture": "sha256:5c7a35ef5d4ef5b112e82f41f76f471326a29dea41017bba3c5d58b3ffa4ca85",
+        "expected": "sha256:9aec088b115cf542490b2e3eca6c39a1f20f3d67496af8887aedd76e35430c29",
+        "graph": "sha256:8a8f40fea5902501ef95384e04591f4ac77ff7e985cbdf6b485ea5625db7b3cb"
+      }
+    },
+    {
+      "id": "GC-010",
+      "category": "whitespace_variant",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 63,
+      "edges": 90,
+      "hashes": {
+        "fixture": "sha256:25680ffa0f7757affb1652c8d1ed6125ddbe8f95d47fdae72cd41dde18754f5e",
+        "expected": "sha256:e4eb28f63b5143aa3580ca8c902ad86e727014bc2a32804d824b7259a7c57e7c",
+        "graph": "sha256:f3824027eeabed6c1bb97519b9759d7eba41ee9d8dd9937b5aae286f66fbb787"
+      }
+    },
+    {
+      "id": "GC-011",
+      "category": "unicode_variant",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 64,
+      "edges": 91,
+      "hashes": {
+        "fixture": "sha256:f10266fb797c9a89b12ef9bd99aa9c2ced4b8ee968aae523219b893e1ee58e81",
+        "expected": "sha256:5d58ae8b6402a0ab32f17fc83f734c8e84a363a79a12b80468b89094f2ce0461",
+        "graph": "sha256:8f3a52bee224e6e00e3f90f3bcbdd8e04a8a878f03853e2a6c0eff94b7c9ccab"
+      }
+    },
+    {
+      "id": "GC-012",
+      "category": "heading_only",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 63,
+      "edges": 90,
+      "hashes": {
+        "fixture": "sha256:e53889ff532bea963075f6d1a24a6cbf999bebf0b52d32625b6594bba76b0315",
+        "expected": "sha256:a86e7ac11e025380896c4cb10b42cb9220748df1145060894c74a7a0ebbf9ad0",
+        "graph": "sha256:1b4e74e9151472b7fa5f4e5f03cb455f718db05d021c1d3eaf0c4d090baf145a"
+      }
+    },
+    {
+      "id": "GC-013",
+      "category": "noncontiguous",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "nodes": 62,
+      "edges": 86,
+      "hashes": {
+        "fixture": "sha256:3c63dd71e6d660d9abc29cfe30bb2499d22f7678e1f7df9247ac8526bf21a85f",
+        "expected": "sha256:c32f043e06c2aa3a8b1e1aba7bc6dcd5755b30cc9ed68e3ddb0cf6b14c685262",
+        "graph": "sha256:4106a8cb9caf9052f35293c6dc0c83506dcaba84d6f242f31e5c0382ebe7aa7c"
+      }
+    },
+    {
+      "id": "GC-014",
+      "category": "wrong_condition",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 68,
+      "edges": 100,
+      "hashes": {
+        "fixture": "sha256:c0b6cf7a64faa54498d558cb192911309191ac19ca25f01201c359e4916e4641",
+        "expected": "sha256:47ef775268f67b8778d44eb035f266c06cddbc3240aec6b737edde16d23cf8c2",
+        "graph": "sha256:dd3cb26e6efa27704b81158e7c13ac4c5a6638cd9f52e078d2aed7ca1d4984ac"
+      }
+    },
+    {
+      "id": "GC-015",
+      "category": "conclusion_without_basis",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "nodes": 59,
+      "edges": 85,
+      "hashes": {
+        "fixture": "sha256:5887c9f56c762b44e88e3c3ba8e017cfeefed14b3ed0a3edb0eb3a170b3719e6",
+        "expected": "sha256:911458e1f10362d6c2918c547e4f0101ad27be708acfce4097130ee8daf03369",
+        "graph": "sha256:d4040919526884af2acacf337c1d0ba0430d2075f96bb3a30bad8f0e4eecaebf"
+      }
+    },
+    {
+      "id": "GC-016",
+      "category": "basis_without_conclusion",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "gap",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "nodes": 60,
+      "edges": 86,
+      "hashes": {
+        "fixture": "sha256:464b69480a50b5400cb17a0eb36a68af239983b3393abbe1b4bc64a69ae038b7",
+        "expected": "sha256:bfa979a165b2bd036c0b7bfa852b145d7df1c53c1f328a903e8e37472c80f349",
+        "graph": "sha256:4c2a0a82b53fa41ca9b776d1f209b597c867bc3eba3706864eb72445689d89de"
+      }
+    },
+    {
+      "id": "GC-017",
+      "category": "conflicting_authority",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "nodes": 68,
+      "edges": 100,
+      "hashes": {
+        "fixture": "sha256:7e4543b29b71a57e69333e00f9579978321bd76164c42f40c7aa90ca662a650e",
+        "expected": "sha256:5b08d0abe9597fd5986122e26b43a766665c3843ed280bd58b63eb7d5b51c3b2",
+        "graph": "sha256:f8e115b34088652b68b3e2777f99d496d7d0e7d317f79315d0ea615b9cf2a53e"
+      }
+    },
+    {
+      "id": "GC-018",
+      "category": "missing_expiry",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 63,
+      "edges": 92,
+      "hashes": {
+        "fixture": "sha256:201168a16622bd3ad35abffae8a053520f946c222803ee427c717e3787a0225e",
+        "expected": "sha256:aa050be87b53253d17c8e3df091ded3822bc42bd5ba9b4c3becbb728b091debb",
+        "graph": "sha256:f9df4ed2329a445fb71b4cc9c00d80333fa1992a2b78394bec0ca4c25a99bb90"
+      }
+    },
+    {
+      "id": "GC-019",
+      "category": "certainty_language",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 67,
+      "edges": 97,
+      "hashes": {
+        "fixture": "sha256:971dd96ea634f827351807f011574a1d476980b960c294cf6bc949e726b4159b",
+        "expected": "sha256:777d9fe34932d17ea6a156b91d509ae7a6ea18cfff76404f488f2413c0940ed5",
+        "graph": "sha256:a8cc872f6897e20f1d0c3b2393eb4cb31ca90b2a4398f9a78e04e14e3ccf99cf"
+      }
+    },
+    {
+      "id": "GC-020",
+      "category": "prompt_injection",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "nodes": 68,
+      "edges": 98,
+      "hashes": {
+        "fixture": "sha256:5137e935d588d982d4fd728f6de96b40c53dc886d24430848558bba95147a87e",
+        "expected": "sha256:4279b990488ac94c376ba457d416cb3f047b86fdeba9908aaab77f8863925eff",
+        "graph": "sha256:4ca8bc40aed085df4e163cfc4d036bf04b86c1cffb15c59d61975a5fd351226d"
+      }
+    },
+    {
+      "id": "GC-021",
+      "category": "reworded_injection",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "nodes": 67,
+      "edges": 97,
+      "hashes": {
+        "fixture": "sha256:12d8ad806d73696f222581d8bdb31811a2459b11a2e8177c60a791252e015dbe",
+        "expected": "sha256:487a42024c19546812cb7def224d2195528fb7867474a10f781665bd4548e242",
+        "graph": "sha256:36ee26b35f6e1dab8d15a8c1b89a0494a2a93bbd3a1881888902efa8f4391be7"
+      }
+    },
+    {
+      "id": "GC-022",
+      "category": "reworded_employment",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 19,
+      "edges": 23,
+      "hashes": {
+        "fixture": "sha256:e221d98ddf784862e1309737983bd33576e0c38fac77d5f990dbb5cb77168e96",
+        "expected": "sha256:d9a1492fa5164f28697d4ff9155c52ede07ad65b0959a4c00e6f99d3b9950bd3",
+        "graph": "sha256:80fb328e12aab5ff6ca80322b84217076ae47473b7195473a3ed5cfd987c6c3c"
+      }
+    },
+    {
+      "id": "GC-023",
+      "category": "mixed_scope",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 19,
+      "edges": 23,
+      "hashes": {
+        "fixture": "sha256:529d5fb97190b800bf14fbed0c21a591b3972762f085cfeb7919056be6558dfb",
+        "expected": "sha256:fdc29ffc88d2141dba5dcb41e73b9b7b8433bd0c27283cbbdbb947b1ea449df3",
+        "graph": "sha256:de0e6962ace67facd3ecbdea57ab5069b2c7b4bfbc093bce55335da996b58ad3"
+      }
+    },
+    {
+      "id": "GC-024",
+      "category": "malformed_response",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 48,
+      "edges": 59,
+      "hashes": {
+        "fixture": "sha256:d816116592dab6a7390d18ed99ffee7d387260191640df812ca073154e638972",
+        "expected": "sha256:662eccf50cac10c51748bcf578dbfb17217bfa5019172e013333fada47647de1",
+        "graph": "sha256:9af9e35f52344afa9aa9aee06d95f438a932a24ce893181fa5f1ef4524e4898b"
+      }
+    },
+    {
+      "id": "GC-025",
+      "category": "duplicate_keys",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 48,
+      "edges": 59,
+      "hashes": {
+        "fixture": "sha256:91f0b40051ec95f125974aa1158031b5f9ae88b4287c88e9dc97753a3163592c",
+        "expected": "sha256:0af49a4bfe70392702e1083d34ffb2f0f5832a24a07292ee72fb028b2c481a8a",
+        "graph": "sha256:84d95bbd649aadc9a1fd6adfd69262d04b2d2874d964e7595563ab3e72949541"
+      }
+    },
+    {
+      "id": "GC-026",
+      "category": "untrusted_field",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 48,
+      "edges": 59,
+      "hashes": {
+        "fixture": "sha256:dc6521769df45c4ccb1e2ff9e850bb8d1e53f62db2e02725d07ab8b804daedbb",
+        "expected": "sha256:811e1a576b461c6db677785467cd9d0fe969cb6bb3edd271cb238a17805972e7",
+        "graph": "sha256:c9be028e573bdc6ffa2160c9c7c7022777f76c4fa578591bbe47f775f3fe735a"
+      }
+    },
+    {
+      "id": "GC-027",
+      "category": "version_mismatch",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 19,
+      "edges": 23,
+      "hashes": {
+        "fixture": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5",
+        "expected": "sha256:b00e24cceb369ebd6bc779981a1d0480bdc301175d8f8d21fefd27308ae6d139",
+        "graph": "sha256:c416afcd39cbaf8fc48c704dc403b1fc01270e8b3be33c1ceac01e900fe3f068"
+      }
+    },
+    {
+      "id": "GC-028",
+      "category": "version_mismatch",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 19,
+      "edges": 23,
+      "hashes": {
+        "fixture": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5",
+        "expected": "sha256:3d8c139b28ae48e8ab59b201fd24e56f3cf9d7a625a2e56e081fa33ffc4e17ef",
+        "graph": "sha256:abe1c8c46888d2fe11b6fab70d2596ea0aabc6804ad76a81dd927924812ca424"
+      }
+    },
+    {
+      "id": "GC-029",
+      "category": "version_mismatch",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 19,
+      "edges": 23,
+      "hashes": {
+        "fixture": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5",
+        "expected": "sha256:81d7c0dfc98b26ec4ece0a83ea49e174d3fbf9f6bf26cc2384fa9280ef4bb05f",
+        "graph": "sha256:70b6a21382e8f0a150cdc7764d49e2f2ee9b0304ff7df792ab808762bce0fe63"
+      }
+    },
+    {
+      "id": "GC-030",
+      "category": "fixture_hash",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 19,
+      "edges": 23,
+      "hashes": {
+        "fixture": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5",
+        "expected": "sha256:3331618aff0ada93d4b2ce569a6d39fbd946f6b733decac056a251b8c690a87d",
+        "graph": "sha256:2300d18c6fa06f8af1ef92a9b9938503115314a606c2a9eab8036c6a5feac6be"
+      }
+    },
+    {
+      "id": "GC-031",
+      "category": "conflicting_control",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 69,
+      "edges": 101,
+      "hashes": {
+        "fixture": "sha256:54d38a8fcbca452c33145f9d0d675d8564c3d4cfc6e381683b6d8d48039e10a1",
+        "expected": "sha256:023a29725071b341d0533cedfa4d29130ab69cfaf5f60eca0161994dd6c04f96",
+        "graph": "sha256:c063e123e2b999cb3e987545c8cccff2f44eecdababa77f0e28a634a5d64ad8d"
+      }
+    },
+    {
+      "id": "GC-032",
+      "category": "conflicting_risk",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "nodes": 68,
+      "edges": 100,
+      "hashes": {
+        "fixture": "sha256:eadf7f5e2b3a40cdd57af2fbde3eb5e0bd0a3928ca93741eed47cda8030437f3",
+        "expected": "sha256:2a3c0ccc1b93eb178d430beb999934c23c5066667daf9e7c4aa667391e9727b1",
+        "graph": "sha256:8dd7ad0eb28d41da2f5b7e260156fe449dfbfc57b8409272f430278b0531492e"
+      }
+    },
+    {
+      "id": "GC-033",
+      "category": "deterministic_mode",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "nodes": 47,
+      "edges": 58,
+      "hashes": {
+        "fixture": "sha256:6656e10ee134b8ba959fce56d9765477ea0aaec015acb73224d61588c8cb9b15",
+        "expected": "sha256:30ffd36436eb5c243f81b820da68688c1a4003e777a466782a373be76a93decb",
+        "graph": "sha256:5d1dc06af0ae5df1984b7e66fdba621618324b5f3594da4b788fef6cbfe3afef"
+      }
+    },
+    {
+      "id": "GC-034",
+      "category": "cited_evidence_conflict",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 71,
+      "edges": 107,
+      "hashes": {
+        "fixture": "sha256:f7d912715dad2d00862d8c1188e6687c1a77d2da19ae0bff346c130b2f8a3f4b",
+        "expected": "sha256:8a2d76e8c31fa6c61c2f9439652c200f201f2a4afaf3c9bfc006f5bc3cd8e312",
+        "graph": "sha256:94d9de3130e667f7281f1eeb472b8777dc0236588174832de632611c0c97724a"
+      }
+    },
+    {
+      "id": "GC-035",
+      "category": "prohibited_inference",
+      "result": "pass",
+      "mismatches": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "nodes": 65,
+      "edges": 94,
+      "hashes": {
+        "fixture": "sha256:5de2aa3e15d11e9d6a677825a71c4a0581d8e42a1f16b0a87511d73da3b32929",
+        "expected": "sha256:898f173d58f34c7b6ac479258722ab8add14ab722e5892704eaf036fdea93cad",
+        "graph": "sha256:98066e1361af1e94d3324645ca4fdd4d4c25f1643bdec4836cb575c062b09b94"
+      }
+    }
+  ],
+  "status_statement": "This package is a local Evidence Graph Compiler and sealed evaluation-preparation system. It does not establish independent accuracy, semantic validity, adjudicated performance, operational reliability, production readiness, security effectiveness, legal compliance, licensing readiness, or sale readiness."
+}

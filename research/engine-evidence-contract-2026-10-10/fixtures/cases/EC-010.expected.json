@@ -1,0 +1,51 @@
+{
+  "case_id": "EC-010",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "response_status": "invalid",
+  "refusal_codes": [
+    "candidate_response_invalid"
+  ],
+  "remediation": [],
+  "long_record_status": null,
+  "comparison_present": false,
+  "conditions": {
+    "reconstructability": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "invalid_status_value"
+      ],
+      "evidence_quotes": []
+    },
+    "identifiable_basis": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "invalid_status_value"
+      ],
+      "evidence_quotes": []
+    },
+    "chronology_integrity": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "invalid_status_value"
+      ],
+      "evidence_quotes": []
+    },
+    "reasoning_traceability": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "invalid_status_value"
+      ],
+      "evidence_quotes": []
+    },
+    "sufficiency": {
+      "status": "not_assessed",
+      "reasons_include": [
+        "invalid_status_value"
+      ],
+      "evidence_quotes": []
+    }
+  }
+}

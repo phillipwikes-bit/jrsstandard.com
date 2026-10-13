@@ -1,0 +1,49 @@
+{
+  "parse_status": "valid_v1",
+  "determination_conflict": false,
+  "record_flags": [],
+  "conditions": {
+    "basis_identification": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_pass_has_no_offset_verified_evidence",
+        "note_has_no_exact_quotation"
+      ]
+    },
+    "reasoning_traceability": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_pass_has_no_offset_verified_evidence",
+        "note_has_no_exact_quotation"
+      ]
+    },
+    "cold_reviewer_clarity": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_pass_has_no_offset_verified_evidence",
+        "note_has_no_exact_quotation"
+      ]
+    },
+    "accountability_support": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_pass_has_no_offset_verified_evidence",
+        "note_has_no_exact_quotation"
+      ]
+    },
+    "temporal_reconstructability": {
+      "mapping": "ambiguous",
+      "effective_v02_status": "review_required",
+      "reasons_include": [
+        "v1_pass_has_no_offset_verified_evidence",
+        "note_has_no_exact_quotation"
+      ]
+    }
+  },
+  "case_id": "BR-001",
+  "label_status": "engineering_authored_expected_result_not_adjudicated"
+}

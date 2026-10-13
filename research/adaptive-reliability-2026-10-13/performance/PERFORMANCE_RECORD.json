@@ -1,0 +1,1078 @@
+{
+  "record_type": "jrs-adaptive-reliability-performance/0.4.1-local",
+  "identity": {
+    "change_control_sha256": "sha256:dd5661f10aeeda45ba84f4ad40d2672dee5e1e936614e2e5c738368d46887e51",
+    "baseline_sha256": "sha256:29a69d6d4afc48a7c0d8784af32b512e9f31e083f2a2c0b226f9ceab2847b3b8",
+    "patch_sha256": "none",
+    "fixture_set_sha256": "sha256:36511be6cb5d7bb6db4d18f19f8528598b5e133e992a54e3b0694f046f012ed8",
+    "fixtures": [
+      {
+        "fixture_id": "AR-001",
+        "fixture_hash": "sha256:876b69adc0b73366f01f13369941fbc752828de7af617429ec19829a9a5127c3"
+      },
+      {
+        "fixture_id": "AR-002",
+        "fixture_hash": "sha256:4cd28e41862074166ae5cab7c15a9276f4642acfa2fdd4c7256faf908a67f51e"
+      },
+      {
+        "fixture_id": "AR-003",
+        "fixture_hash": "sha256:62a859d1b51bb0cd6ac741544265ab365e476cc0663b6ab2ca29c78eae6c9919"
+      },
+      {
+        "fixture_id": "AR-004",
+        "fixture_hash": "sha256:bd6441a83e86abc7e7c3e6914851788b4a4cd5f39b556b007fbfacac4e51b456"
+      },
+      {
+        "fixture_id": "AR-005",
+        "fixture_hash": "sha256:9f34bd79468a8cc323a57d044c9557001d5190490f3b398b36b566116db7745d"
+      },
+      {
+        "fixture_id": "AR-006",
+        "fixture_hash": "sha256:da4a9ae1c0b7f62f32c116248d07cc8857f741c32061651d9d6801d6645fe550"
+      },
+      {
+        "fixture_id": "AR-007",
+        "fixture_hash": "sha256:84ad0507eab97d8ca9aeabff01c2a0aa45240b1a788edc57fd784a5faac93bad"
+      },
+      {
+        "fixture_id": "AR-008",
+        "fixture_hash": "sha256:25d1555d8f58b8122b24daf9496d4ca09370b77b5f97676591a2e7155cd272f7"
+      },
+      {
+        "fixture_id": "AR-009",
+        "fixture_hash": "sha256:6c2ed625cea2434d440b1eeb3a49977353b14ed97dcf2175896c4da0580153b5"
+      },
+      {
+        "fixture_id": "AR-010",
+        "fixture_hash": "sha256:18b2824ee1a2a641b21982cb8587b518ea592cc895567808b3b1ae4324dad5f6"
+      },
+      {
+        "fixture_id": "AR-011",
+        "fixture_hash": "sha256:73d356d2742277c15e2f3b83c2c9cceee517fbf1858764faf21c373ec8cb8a77"
+      },
+      {
+        "fixture_id": "AR-012",
+        "fixture_hash": "sha256:7e3286cc609647783d7e6922e528db81132fd875777e96d5c32714aa3bfb3ae3"
+      },
+      {
+        "fixture_id": "AR-013",
+        "fixture_hash": "sha256:02fbabad2bb128ad29f643a3d9e40a35fc857cc01cf41c38589bd0fcc8c16a9d"
+      },
+      {
+        "fixture_id": "AR-014",
+        "fixture_hash": "sha256:6b3961bf7f626004de659c02b6dffc2412809c838121e4729e5463d5cb554d59"
+      },
+      {
+        "fixture_id": "AR-015",
+        "fixture_hash": "sha256:b6d75990a0938b55a195a00580caa0df1725ca6cd80b9c1d5d7af33c4791b317"
+      },
+      {
+        "fixture_id": "AR-016",
+        "fixture_hash": "sha256:d1972dd7baf527c6525d52e667bb81f14a57b68f6af4369c2109a5c153bb7619"
+      },
+      {
+        "fixture_id": "AR-017",
+        "fixture_hash": "sha256:67011cc6a217e367889d57d4a808154e96c65354e5ff9e4663819d8d86fcefac"
+      },
+      {
+        "fixture_id": "AR-018",
+        "fixture_hash": "sha256:92c4a1e6a57442ef417173161791d210ad72b9898d29d09c10c12dbf1147e235"
+      },
+      {
+        "fixture_id": "AR-019",
+        "fixture_hash": "sha256:9acf7050a9f6749c26b471a3b313c25ed8733dfdd11f16b3d37e019fd888578e"
+      },
+      {
+        "fixture_id": "AR-020",
+        "fixture_hash": "sha256:8aab7cc00e93939a9bfe7d171d47f34b26995ae4515b1a4fe6f5599dcc658bae"
+      },
+      {
+        "fixture_id": "AR-021",
+        "fixture_hash": "sha256:77e02c14514434012211ee14e993093b6894d4ea36601526ac7db455ee6fdb96"
+      },
+      {
+        "fixture_id": "AR-022",
+        "fixture_hash": "sha256:ebb621bccf70a9f3be28003a76d65dad0996a7ad9e28f81743621fc86e6997c3"
+      },
+      {
+        "fixture_id": "AR-023",
+        "fixture_hash": "sha256:9953e757eb5c529095404fb7b7a70d8f3e496443a88e027006b95c625aaefeab"
+      },
+      {
+        "fixture_id": "AR-024",
+        "fixture_hash": "sha256:54d38a8fcbca452c33145f9d0d675d8564c3d4cfc6e381683b6d8d48039e10a1"
+      },
+      {
+        "fixture_id": "AR-025",
+        "fixture_hash": "sha256:50e5ff6508f281f2f6207d101b44a0747254b9838bad0e9a26fe5a85b103e767"
+      },
+      {
+        "fixture_id": "AR-026",
+        "fixture_hash": "sha256:b3b93e95a7b84765f161da5d2de34d47749e519de6a1b49c36a34cc5a882d5f0"
+      },
+      {
+        "fixture_id": "AR-027",
+        "fixture_hash": "sha256:f1dcbce84135282b33c5d5dfb3e52721721b565384d96626c25c0b223f1ecb1c"
+      },
+      {
+        "fixture_id": "AR-028",
+        "fixture_hash": "sha256:4181b7c4cbaad47a68346d3e3261cd36bf7ca78545132b99294126688769a67b"
+      },
+      {
+        "fixture_id": "AR-029",
+        "fixture_hash": "sha256:eac8d300777acc8f06b4bbf5bd5ebb62ca7a809436c4cb2a8e9c976deb35715a"
+      },
+      {
+        "fixture_id": "AR-030",
+        "fixture_hash": "sha256:af89a758d09abfeaf7021dffb247c5180eb66c46c73599c12323acaa928d4b1a"
+      },
+      {
+        "fixture_id": "AR-031",
+        "fixture_hash": "sha256:0aae7f71b6f69eab93666e50d99843f4ffb497e0e82509af49b6d7a86e6529d9"
+      },
+      {
+        "fixture_id": "AR-032",
+        "fixture_hash": "sha256:b9a6ee44220b3d54df3bebd9e5f5a416302fb83b4640ce6e8d41691691ac2583"
+      },
+      {
+        "fixture_id": "AR-033",
+        "fixture_hash": "sha256:bdd135af965d9d267ff0e21ae7e8e7d81b7663fda7f8450c0caa7c72670a6656"
+      },
+      {
+        "fixture_id": "AR-034",
+        "fixture_hash": "sha256:932de00036440178225362304ebb9364a19bbab8548e51d10b90ff2dd76bbe04"
+      },
+      {
+        "fixture_id": "AR-035",
+        "fixture_hash": "sha256:0ae287c05abdf3362310d1721bb10eb7b2001df6425b7e034770cb82dd8d0ff5"
+      },
+      {
+        "fixture_id": "AR-036",
+        "fixture_hash": "sha256:1dfd8962d6f9e166e4b6e5953c859510a50a092b85dc4895c71cb9666312f668"
+      },
+      {
+        "fixture_id": "AR-037",
+        "fixture_hash": "sha256:d405a2c3e741d0efb8dcf2e6fd415674056b3cde6a3042b9c8cc60f4707b646d"
+      },
+      {
+        "fixture_id": "AR-038",
+        "fixture_hash": "sha256:deca5e27051b7d77fe6629f924a86680d6d2ef25902d790cd3f3b4fca3b3b24f"
+      },
+      {
+        "fixture_id": "AR-039",
+        "fixture_hash": "sha256:a5da7792dab81573ccc3992e08a6651001039e3bf54c176f992657334b5f3366"
+      },
+      {
+        "fixture_id": "AR-040",
+        "fixture_hash": "sha256:f219fe80276ed3794c4840c171bd6c12132a6d5895030988647f4ddba2d40d7c"
+      },
+      {
+        "fixture_id": "AR-041",
+        "fixture_hash": "sha256:a86053b143218a2f0fdaca966334753f04ffd577fd322819d201eeb9c0483a12"
+      },
+      {
+        "fixture_id": "AR-042",
+        "fixture_hash": "sha256:a45fd8930f207f32c31d5c780bb18859d4b4fc09b62eab456264c1ce58674a4c"
+      },
+      {
+        "fixture_id": "AR-043",
+        "fixture_hash": "sha256:b86f70ff19185d86dd7d8657f1f087065c4aa4f518167cbb07a9c434d010fd0b"
+      },
+      {
+        "fixture_id": "AR-044",
+        "fixture_hash": "sha256:dcda51a3425616493934bdc229dd80a954b7236387b1c25eb13e178567b50373"
+      },
+      {
+        "fixture_id": "AR-045",
+        "fixture_hash": "sha256:35ddff11ff6e415b020b37d692206fd78cc5448870349a0d8c1b704396da0d90"
+      },
+      {
+        "fixture_id": "AR-046",
+        "fixture_hash": "sha256:50d52d90366a901a92390f1961ee8649e49aa3d2e65dc30bed87977fa5c18b0c"
+      },
+      {
+        "fixture_id": "AR-047",
+        "fixture_hash": "sha256:95cc7cf9781dc945a9bcbb28dad8fbe1b65278e0e928ea2336c067349916e909"
+      },
+      {
+        "fixture_id": "AR-048",
+        "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+      },
+      {
+        "fixture_id": "AR-049",
+        "fixture_hash": "sha256:e1465d546ef41b3c3bb73f8bef6a5e4653a1d319046fc47dff054920485e65f1"
+      },
+      {
+        "fixture_id": "AR-050",
+        "fixture_hash": "sha256:a2df5740e64021736d14b11774a7877f5109ca27652d1dd80de505f1132e31ac"
+      },
+      {
+        "fixture_id": "GC-001",
+        "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+      },
+      {
+        "fixture_id": "GC-002",
+        "fixture_hash": "sha256:52cd3b287808c3a9b4faf081521c3fc2725ec6fb548021e0d9fdf204ec285227"
+      },
+      {
+        "fixture_id": "GC-003",
+        "fixture_hash": "sha256:873029b6a6a709d6286dfb6a0417b02851a62cedade49c5dab5ab8dc23d89e56"
+      },
+      {
+        "fixture_id": "GC-004",
+        "fixture_hash": "sha256:0ca62ded9043bd790e06975644b131e73bf95e7d021ffca4524c838a9b1ef69f"
+      },
+      {
+        "fixture_id": "GC-005",
+        "fixture_hash": "sha256:e9b8785476c1b315cf30a92721e040b57c041631deaae90505f140ec5a6713a4"
+      },
+      {
+        "fixture_id": "GC-006",
+        "fixture_hash": "sha256:9d3e22762d21b889ff3734ae699766cf21282c313ea2cfc2ba4511fdc4a59127"
+      },
+      {
+        "fixture_id": "GC-007",
+        "fixture_hash": "sha256:b269d0b958294425dffd1757a03897bea83444f5554be014744410edb518a486"
+      },
+      {
+        "fixture_id": "GC-008",
+        "fixture_hash": "sha256:6c5b06538d9fd463e88fc6fac624a82422954c25e2c5441effd4043bd19b8361"
+      },
+      {
+        "fixture_id": "GC-009",
+        "fixture_hash": "sha256:5c7a35ef5d4ef5b112e82f41f76f471326a29dea41017bba3c5d58b3ffa4ca85"
+      },
+      {
+        "fixture_id": "GC-010",
+        "fixture_hash": "sha256:25680ffa0f7757affb1652c8d1ed6125ddbe8f95d47fdae72cd41dde18754f5e"
+      },
+      {
+        "fixture_id": "GC-011",
+        "fixture_hash": "sha256:f10266fb797c9a89b12ef9bd99aa9c2ced4b8ee968aae523219b893e1ee58e81"
+      },
+      {
+        "fixture_id": "GC-012",
+        "fixture_hash": "sha256:e53889ff532bea963075f6d1a24a6cbf999bebf0b52d32625b6594bba76b0315"
+      },
+      {
+        "fixture_id": "GC-013",
+        "fixture_hash": "sha256:3c63dd71e6d660d9abc29cfe30bb2499d22f7678e1f7df9247ac8526bf21a85f"
+      },
+      {
+        "fixture_id": "GC-014",
+        "fixture_hash": "sha256:c0b6cf7a64faa54498d558cb192911309191ac19ca25f01201c359e4916e4641"
+      },
+      {
+        "fixture_id": "GC-015",
+        "fixture_hash": "sha256:5887c9f56c762b44e88e3c3ba8e017cfeefed14b3ed0a3edb0eb3a170b3719e6"
+      },
+      {
+        "fixture_id": "GC-016",
+        "fixture_hash": "sha256:464b69480a50b5400cb17a0eb36a68af239983b3393abbe1b4bc64a69ae038b7"
+      },
+      {
+        "fixture_id": "GC-017",
+        "fixture_hash": "sha256:7e4543b29b71a57e69333e00f9579978321bd76164c42f40c7aa90ca662a650e"
+      },
+      {
+        "fixture_id": "GC-018",
+        "fixture_hash": "sha256:201168a16622bd3ad35abffae8a053520f946c222803ee427c717e3787a0225e"
+      },
+      {
+        "fixture_id": "GC-019",
+        "fixture_hash": "sha256:971dd96ea634f827351807f011574a1d476980b960c294cf6bc949e726b4159b"
+      },
+      {
+        "fixture_id": "GC-020",
+        "fixture_hash": "sha256:5137e935d588d982d4fd728f6de96b40c53dc886d24430848558bba95147a87e"
+      },
+      {
+        "fixture_id": "GC-021",
+        "fixture_hash": "sha256:12d8ad806d73696f222581d8bdb31811a2459b11a2e8177c60a791252e015dbe"
+      },
+      {
+        "fixture_id": "GC-022",
+        "fixture_hash": "sha256:e221d98ddf784862e1309737983bd33576e0c38fac77d5f990dbb5cb77168e96"
+      },
+      {
+        "fixture_id": "GC-023",
+        "fixture_hash": "sha256:529d5fb97190b800bf14fbed0c21a591b3972762f085cfeb7919056be6558dfb"
+      },
+      {
+        "fixture_id": "GC-024",
+        "fixture_hash": "sha256:d816116592dab6a7390d18ed99ffee7d387260191640df812ca073154e638972"
+      },
+      {
+        "fixture_id": "GC-025",
+        "fixture_hash": "sha256:91f0b40051ec95f125974aa1158031b5f9ae88b4287c88e9dc97753a3163592c"
+      },
+      {
+        "fixture_id": "GC-026",
+        "fixture_hash": "sha256:dc6521769df45c4ccb1e2ff9e850bb8d1e53f62db2e02725d07ab8b804daedbb"
+      },
+      {
+        "fixture_id": "GC-027",
+        "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+      },
+      {
+        "fixture_id": "GC-028",
+        "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+      },
+      {
+        "fixture_id": "GC-029",
+        "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+      },
+      {
+        "fixture_id": "GC-030",
+        "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+      },
+      {
+        "fixture_id": "GC-031",
+        "fixture_hash": "sha256:54d38a8fcbca452c33145f9d0d675d8564c3d4cfc6e381683b6d8d48039e10a1"
+      },
+      {
+        "fixture_id": "GC-032",
+        "fixture_hash": "sha256:eadf7f5e2b3a40cdd57af2fbde3eb5e0bd0a3928ca93741eed47cda8030437f3"
+      },
+      {
+        "fixture_id": "GC-033",
+        "fixture_hash": "sha256:6656e10ee134b8ba959fce56d9765477ea0aaec015acb73224d61588c8cb9b15"
+      },
+      {
+        "fixture_id": "GC-034",
+        "fixture_hash": "sha256:f7d912715dad2d00862d8c1188e6687c1a77d2da19ae0bff346c130b2f8a3f4b"
+      },
+      {
+        "fixture_id": "GC-035",
+        "fixture_hash": "sha256:5de2aa3e15d11e9d6a677825a71c4a0581d8e42a1f16b0a87511d73da3b32929"
+      },
+      {
+        "fixture_id": "LB-01",
+        "fixture_hash": "sha256:89774890839674cbc84ef6998cef910413810b77aa64ee75a934f05a31cd2480"
+      },
+      {
+        "fixture_id": "LB-02",
+        "fixture_hash": "sha256:fc11359d196b32275ba33dc69504598e4e077886c6d022467a9275804944c85b"
+      },
+      {
+        "fixture_id": "LB-03",
+        "fixture_hash": "sha256:43f9d734e1a2d3297e58fe0adf9defe2cf69097baa0200ce4847857ae252fd17"
+      },
+      {
+        "fixture_id": "LB-04",
+        "fixture_hash": "sha256:3cb271f9af44d9db94e5b35f90eda367e6c3c4a83a79ae3d8d69f55b21302b20"
+      },
+      {
+        "fixture_id": "LB-05",
+        "fixture_hash": "sha256:42951bfc5f526eef068edbb1517d88ff7cf625d6074168e2458b9811e22a7a00"
+      },
+      {
+        "fixture_id": "LB-06",
+        "fixture_hash": "sha256:5813939585ec12aa43570237eb9011fad04ecebe0cdb2c69d0bfb980a37b72eb"
+      },
+      {
+        "fixture_id": "LB-07",
+        "fixture_hash": "sha256:3f38c7a6120bfff75de24a7f4d6ebc08e74f27e864dce6282ba6053c5ab497a4"
+      },
+      {
+        "fixture_id": "LB-08",
+        "fixture_hash": "sha256:15bd00f0e8ddc20022656f1857727841f541d3b1378cf16fef8feee18cba798b"
+      },
+      {
+        "fixture_id": "ST-01",
+        "fixture_hash": "sha256:ff905339c99824cba772e6a18e7dd5153f5d9a233ddff41da0fc10a11e47fc78"
+      },
+      {
+        "fixture_id": "ST-02",
+        "fixture_hash": "sha256:27bd737350a56288c1f0f23d0f5aaee1680971ff73a1d1be1d5c84386285e296"
+      },
+      {
+        "fixture_id": "ST-03",
+        "fixture_hash": "sha256:904ce1fc8fe54b34a0a9b391ab9a575c05a3e80dc31600ecce1cf56362a1ffe9"
+      },
+      {
+        "fixture_id": "ST-04",
+        "fixture_hash": "sha256:c5ecbf712af9fe8165a32b6945aac08ebad0b368fde1951bcac5443a84edf700"
+      },
+      {
+        "fixture_id": "ST-05",
+        "fixture_hash": "sha256:b7fe3a93203b9ec339d6bcf2c4d068d5da27ac007e547ab9dfe84588588eacbd"
+      },
+      {
+        "fixture_id": "ST-06",
+        "fixture_hash": "sha256:2478762507234721e9983433ae57182453619bb12309d5d5e911079db1593ff5"
+      },
+      {
+        "fixture_id": "ST-07",
+        "fixture_hash": "sha256:1bbb57e16ffed0d0331533fe2c8838e7966bedd999ba592504e5826b07858293"
+      },
+      {
+        "fixture_id": "ST-08",
+        "fixture_hash": "sha256:82506cb95ee2bfc28dc0dbb7cc7797e68c7ed9054ed450278d27d46b457417d9"
+      },
+      {
+        "fixture_id": "ST-09",
+        "fixture_hash": "sha256:a0f10d12f8682e2bd1591892098bd8b8058bbf804d1955bf37b72673bbe26979"
+      },
+      {
+        "fixture_id": "ST-10",
+        "fixture_hash": "sha256:e9b8785476c1b315cf30a92721e040b57c041631deaae90505f140ec5a6713a4"
+      },
+      {
+        "fixture_id": "ST-11",
+        "fixture_hash": "sha256:12ec22773ba4cf08621fe435881854c12f8d2107a46ef860b0212bf69c7ae830"
+      },
+      {
+        "fixture_id": "ST-12",
+        "fixture_hash": "sha256:752025b33bc26a049ca580f322b38156cd64c604c25fd8d0e512de0ea2ccc389"
+      },
+      {
+        "fixture_id": "ST-13",
+        "fixture_hash": "sha256:599644cc60e896305a043ff4c0c2e24a1b4a78ebe27a4ad5715d8f36f9e86033"
+      },
+      {
+        "fixture_id": "ST-14",
+        "fixture_hash": "sha256:39d7805857cf3c31c09492ff89c4e26c068fd411b600ec872f74899679b93a2d"
+      },
+      {
+        "fixture_id": "ST-15",
+        "fixture_hash": "sha256:018781977c3a09f155adb84545c7beec9d163661a1e4ff8261e852f0d4919f2c"
+      },
+      {
+        "fixture_id": "ST-16",
+        "fixture_hash": "sha256:449b9ee9517d97d2988284db7e2cb818a4d80354c8155d93f8aff94f3cc3acad"
+      }
+    ],
+    "test_command": "node research/adaptive-reliability-2026-10-13/performance/run-performance.mjs",
+    "execution_mode": "local_measurement",
+    "synthetic_local_only": true,
+    "clock": "2026-10-13T00:00:00Z",
+    "run_id": "arr_2a60d025ac703e6bbf28f5a0"
+  },
+  "generated_at": "2026-10-13T10:02:40.462Z",
+  "environment": {
+    "node": "v22.22.0",
+    "platform": "linux-x64"
+  },
+  "statement": "Bounded local engineering measurements on synthetic fixtures. Not production performance, scalability, reliability or service-level evidence.",
+  "budgets": [
+    {
+      "id": "B-01",
+      "text": "output hash identical across repeated deterministic runs",
+      "result": "held"
+    },
+    {
+      "id": "B-02",
+      "text": "graph serialisation round-trips byte-identically",
+      "result": "held"
+    },
+    {
+      "id": "B-03",
+      "text": "nodes and edges sorted by id in every graph",
+      "result": "held"
+    },
+    {
+      "id": "B-04",
+      "text": "no network attempt during any measurement",
+      "result": "held"
+    },
+    {
+      "id": "B-05",
+      "text": "no malformed or oversized input returns a favourable finding",
+      "result": "held"
+    },
+    {
+      "id": "B-06",
+      "text": "no failed run is recorded as a successful complete run",
+      "result": "held"
+    },
+    {
+      "id": "B-07",
+      "text": "no temporary output contaminates a fixture source directory",
+      "result": "held"
+    },
+    {
+      "id": "B-08",
+      "text": "a failed build leaves no partial artifact behind",
+      "result": "held"
+    },
+    {
+      "id": "B-09",
+      "text": "record of exactly 8000 characters proceeds; 8001 is refused",
+      "result": "held"
+    }
+  ],
+  "network_attempts": 0,
+  "results": {
+    "determinism": {
+      "passes": 5,
+      "cases": 109,
+      "distinct_output_hashes": 1,
+      "output_hash": "23fa14365199ff348fb302946564a058838f7e8330e41b2118b20a0c71d0e930",
+      "every_pass_complete": true
+    },
+    "timing_ms": {
+      "pass_durations": [
+        1655.3,
+        1595.3,
+        1506.6,
+        1227.4,
+        1124.4
+      ],
+      "per_fixture": {
+        "min": 2.91,
+        "median": 12.5,
+        "p95": 22.74,
+        "max": 62.28
+      }
+    },
+    "memory_bytes": {
+      "heap_used_before": 8800280,
+      "heap_used_after": 17291528,
+      "rss_after": 117972992,
+      "note": "process.memoryUsage() snapshots; garbage collection timing makes these indicative only"
+    },
+    "serialisation": {
+      "graphs_checked": 109,
+      "round_trip_differences": 0,
+      "unsorted_graphs": 0
+    },
+    "size_boundary": {
+      "at_limit": {
+        "length": 8000,
+        "decision": "proceed"
+      },
+      "over_limit": {
+        "length": 8001,
+        "decision": "refuse",
+        "refusals": [
+          "record_exceeds_local_size_limit"
+        ]
+      }
+    },
+    "malformed": {
+      "null_record": {
+        "returned": true,
+        "gate": "refuse",
+        "candidate_valid": null,
+        "favourable": []
+      },
+      "empty_record": {
+        "returned": true,
+        "gate": "refuse",
+        "candidate_valid": null,
+        "favourable": []
+      },
+      "numeric_record": {
+        "returned": true,
+        "gate": "refuse",
+        "candidate_valid": null,
+        "favourable": []
+      },
+      "missing_versions": {
+        "returned": true,
+        "gate": "refuse",
+        "candidate_valid": null,
+        "favourable": []
+      },
+      "garbage_response": {
+        "returned": true,
+        "gate": "proceed",
+        "candidate_valid": false,
+        "favourable": []
+      },
+      "empty_response": {
+        "returned": true,
+        "gate": "proceed",
+        "candidate_valid": false,
+        "favourable": []
+      },
+      "oversized_response": {
+        "returned": true,
+        "gate": "proceed",
+        "candidate_valid": false,
+        "favourable": []
+      },
+      "deeply_nested_response": {
+        "returned": true,
+        "gate": "proceed",
+        "candidate_valid": false,
+        "favourable": []
+      },
+      "record_2mb": {
+        "returned": true,
+        "gate": "refuse",
+        "candidate_valid": null,
+        "favourable": []
+      },
+      "response_as_object": {
+        "returned": true,
+        "gate": "proceed",
+        "candidate_valid": false,
+        "favourable": []
+      }
+    },
+    "incomplete_run": {
+      "failed": 1,
+      "complete": false
+    },
+    "partial_artifacts": {
+      "injected": [
+        "before_write: injected failure before write (test)",
+        "mid_write: injected failure during staging (test)"
+      ],
+      "outputs_unchanged": true,
+      "leftover_staging_dirs": 0
+    },
+    "fixture_sources_unchanged": true,
+    "identity": {
+      "change_control_sha256": "sha256:dd5661f10aeeda45ba84f4ad40d2672dee5e1e936614e2e5c738368d46887e51",
+      "baseline_sha256": "sha256:29a69d6d4afc48a7c0d8784af32b512e9f31e083f2a2c0b226f9ceab2847b3b8",
+      "patch_sha256": "none",
+      "fixture_set_sha256": "sha256:36511be6cb5d7bb6db4d18f19f8528598b5e133e992a54e3b0694f046f012ed8",
+      "fixtures": [
+        {
+          "fixture_id": "AR-001",
+          "fixture_hash": "sha256:876b69adc0b73366f01f13369941fbc752828de7af617429ec19829a9a5127c3"
+        },
+        {
+          "fixture_id": "AR-002",
+          "fixture_hash": "sha256:4cd28e41862074166ae5cab7c15a9276f4642acfa2fdd4c7256faf908a67f51e"
+        },
+        {
+          "fixture_id": "AR-003",
+          "fixture_hash": "sha256:62a859d1b51bb0cd6ac741544265ab365e476cc0663b6ab2ca29c78eae6c9919"
+        },
+        {
+          "fixture_id": "AR-004",
+          "fixture_hash": "sha256:bd6441a83e86abc7e7c3e6914851788b4a4cd5f39b556b007fbfacac4e51b456"
+        },
+        {
+          "fixture_id": "AR-005",
+          "fixture_hash": "sha256:9f34bd79468a8cc323a57d044c9557001d5190490f3b398b36b566116db7745d"
+        },
+        {
+          "fixture_id": "AR-006",
+          "fixture_hash": "sha256:da4a9ae1c0b7f62f32c116248d07cc8857f741c32061651d9d6801d6645fe550"
+        },
+        {
+          "fixture_id": "AR-007",
+          "fixture_hash": "sha256:84ad0507eab97d8ca9aeabff01c2a0aa45240b1a788edc57fd784a5faac93bad"
+        },
+        {
+          "fixture_id": "AR-008",
+          "fixture_hash": "sha256:25d1555d8f58b8122b24daf9496d4ca09370b77b5f97676591a2e7155cd272f7"
+        },
+        {
+          "fixture_id": "AR-009",
+          "fixture_hash": "sha256:6c2ed625cea2434d440b1eeb3a49977353b14ed97dcf2175896c4da0580153b5"
+        },
+        {
+          "fixture_id": "AR-010",
+          "fixture_hash": "sha256:18b2824ee1a2a641b21982cb8587b518ea592cc895567808b3b1ae4324dad5f6"
+        },
+        {
+          "fixture_id": "AR-011",
+          "fixture_hash": "sha256:73d356d2742277c15e2f3b83c2c9cceee517fbf1858764faf21c373ec8cb8a77"
+        },
+        {
+          "fixture_id": "AR-012",
+          "fixture_hash": "sha256:7e3286cc609647783d7e6922e528db81132fd875777e96d5c32714aa3bfb3ae3"
+        },
+        {
+          "fixture_id": "AR-013",
+          "fixture_hash": "sha256:02fbabad2bb128ad29f643a3d9e40a35fc857cc01cf41c38589bd0fcc8c16a9d"
+        },
+        {
+          "fixture_id": "AR-014",
+          "fixture_hash": "sha256:6b3961bf7f626004de659c02b6dffc2412809c838121e4729e5463d5cb554d59"
+        },
+        {
+          "fixture_id": "AR-015",
+          "fixture_hash": "sha256:b6d75990a0938b55a195a00580caa0df1725ca6cd80b9c1d5d7af33c4791b317"
+        },
+        {
+          "fixture_id": "AR-016",
+          "fixture_hash": "sha256:d1972dd7baf527c6525d52e667bb81f14a57b68f6af4369c2109a5c153bb7619"
+        },
+        {
+          "fixture_id": "AR-017",
+          "fixture_hash": "sha256:67011cc6a217e367889d57d4a808154e96c65354e5ff9e4663819d8d86fcefac"
+        },
+        {
+          "fixture_id": "AR-018",
+          "fixture_hash": "sha256:92c4a1e6a57442ef417173161791d210ad72b9898d29d09c10c12dbf1147e235"
+        },
+        {
+          "fixture_id": "AR-019",
+          "fixture_hash": "sha256:9acf7050a9f6749c26b471a3b313c25ed8733dfdd11f16b3d37e019fd888578e"
+        },
+        {
+          "fixture_id": "AR-020",
+          "fixture_hash": "sha256:8aab7cc00e93939a9bfe7d171d47f34b26995ae4515b1a4fe6f5599dcc658bae"
+        },
+        {
+          "fixture_id": "AR-021",
+          "fixture_hash": "sha256:77e02c14514434012211ee14e993093b6894d4ea36601526ac7db455ee6fdb96"
+        },
+        {
+          "fixture_id": "AR-022",
+          "fixture_hash": "sha256:ebb621bccf70a9f3be28003a76d65dad0996a7ad9e28f81743621fc86e6997c3"
+        },
+        {
+          "fixture_id": "AR-023",
+          "fixture_hash": "sha256:9953e757eb5c529095404fb7b7a70d8f3e496443a88e027006b95c625aaefeab"
+        },
+        {
+          "fixture_id": "AR-024",
+          "fixture_hash": "sha256:54d38a8fcbca452c33145f9d0d675d8564c3d4cfc6e381683b6d8d48039e10a1"
+        },
+        {
+          "fixture_id": "AR-025",
+          "fixture_hash": "sha256:50e5ff6508f281f2f6207d101b44a0747254b9838bad0e9a26fe5a85b103e767"
+        },
+        {
+          "fixture_id": "AR-026",
+          "fixture_hash": "sha256:b3b93e95a7b84765f161da5d2de34d47749e519de6a1b49c36a34cc5a882d5f0"
+        },
+        {
+          "fixture_id": "AR-027",
+          "fixture_hash": "sha256:f1dcbce84135282b33c5d5dfb3e52721721b565384d96626c25c0b223f1ecb1c"
+        },
+        {
+          "fixture_id": "AR-028",
+          "fixture_hash": "sha256:4181b7c4cbaad47a68346d3e3261cd36bf7ca78545132b99294126688769a67b"
+        },
+        {
+          "fixture_id": "AR-029",
+          "fixture_hash": "sha256:eac8d300777acc8f06b4bbf5bd5ebb62ca7a809436c4cb2a8e9c976deb35715a"
+        },
+        {
+          "fixture_id": "AR-030",
+          "fixture_hash": "sha256:af89a758d09abfeaf7021dffb247c5180eb66c46c73599c12323acaa928d4b1a"
+        },
+        {
+          "fixture_id": "AR-031",
+          "fixture_hash": "sha256:0aae7f71b6f69eab93666e50d99843f4ffb497e0e82509af49b6d7a86e6529d9"
+        },
+        {
+          "fixture_id": "AR-032",
+          "fixture_hash": "sha256:b9a6ee44220b3d54df3bebd9e5f5a416302fb83b4640ce6e8d41691691ac2583"
+        },
+        {
+          "fixture_id": "AR-033",
+          "fixture_hash": "sha256:bdd135af965d9d267ff0e21ae7e8e7d81b7663fda7f8450c0caa7c72670a6656"
+        },
+        {
+          "fixture_id": "AR-034",
+          "fixture_hash": "sha256:932de00036440178225362304ebb9364a19bbab8548e51d10b90ff2dd76bbe04"
+        },
+        {
+          "fixture_id": "AR-035",
+          "fixture_hash": "sha256:0ae287c05abdf3362310d1721bb10eb7b2001df6425b7e034770cb82dd8d0ff5"
+        },
+        {
+          "fixture_id": "AR-036",
+          "fixture_hash": "sha256:1dfd8962d6f9e166e4b6e5953c859510a50a092b85dc4895c71cb9666312f668"
+        },
+        {
+          "fixture_id": "AR-037",
+          "fixture_hash": "sha256:d405a2c3e741d0efb8dcf2e6fd415674056b3cde6a3042b9c8cc60f4707b646d"
+        },
+        {
+          "fixture_id": "AR-038",
+          "fixture_hash": "sha256:deca5e27051b7d77fe6629f924a86680d6d2ef25902d790cd3f3b4fca3b3b24f"
+        },
+        {
+          "fixture_id": "AR-039",
+          "fixture_hash": "sha256:a5da7792dab81573ccc3992e08a6651001039e3bf54c176f992657334b5f3366"
+        },
+        {
+          "fixture_id": "AR-040",
+          "fixture_hash": "sha256:f219fe80276ed3794c4840c171bd6c12132a6d5895030988647f4ddba2d40d7c"
+        },
+        {
+          "fixture_id": "AR-041",
+          "fixture_hash": "sha256:a86053b143218a2f0fdaca966334753f04ffd577fd322819d201eeb9c0483a12"
+        },
+        {
+          "fixture_id": "AR-042",
+          "fixture_hash": "sha256:a45fd8930f207f32c31d5c780bb18859d4b4fc09b62eab456264c1ce58674a4c"
+        },
+        {
+          "fixture_id": "AR-043",
+          "fixture_hash": "sha256:b86f70ff19185d86dd7d8657f1f087065c4aa4f518167cbb07a9c434d010fd0b"
+        },
+        {
+          "fixture_id": "AR-044",
+          "fixture_hash": "sha256:dcda51a3425616493934bdc229dd80a954b7236387b1c25eb13e178567b50373"
+        },
+        {
+          "fixture_id": "AR-045",
+          "fixture_hash": "sha256:35ddff11ff6e415b020b37d692206fd78cc5448870349a0d8c1b704396da0d90"
+        },
+        {
+          "fixture_id": "AR-046",
+          "fixture_hash": "sha256:50d52d90366a901a92390f1961ee8649e49aa3d2e65dc30bed87977fa5c18b0c"
+        },
+        {
+          "fixture_id": "AR-047",
+          "fixture_hash": "sha256:95cc7cf9781dc945a9bcbb28dad8fbe1b65278e0e928ea2336c067349916e909"
+        },
+        {
+          "fixture_id": "AR-048",
+          "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+        },
+        {
+          "fixture_id": "AR-049",
+          "fixture_hash": "sha256:e1465d546ef41b3c3bb73f8bef6a5e4653a1d319046fc47dff054920485e65f1"
+        },
+        {
+          "fixture_id": "AR-050",
+          "fixture_hash": "sha256:a2df5740e64021736d14b11774a7877f5109ca27652d1dd80de505f1132e31ac"
+        },
+        {
+          "fixture_id": "GC-001",
+          "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+        },
+        {
+          "fixture_id": "GC-002",
+          "fixture_hash": "sha256:52cd3b287808c3a9b4faf081521c3fc2725ec6fb548021e0d9fdf204ec285227"
+        },
+        {
+          "fixture_id": "GC-003",
+          "fixture_hash": "sha256:873029b6a6a709d6286dfb6a0417b02851a62cedade49c5dab5ab8dc23d89e56"
+        },
+        {
+          "fixture_id": "GC-004",
+          "fixture_hash": "sha256:0ca62ded9043bd790e06975644b131e73bf95e7d021ffca4524c838a9b1ef69f"
+        },
+        {
+          "fixture_id": "GC-005",
+          "fixture_hash": "sha256:e9b8785476c1b315cf30a92721e040b57c041631deaae90505f140ec5a6713a4"
+        },
+        {
+          "fixture_id": "GC-006",
+          "fixture_hash": "sha256:9d3e22762d21b889ff3734ae699766cf21282c313ea2cfc2ba4511fdc4a59127"
+        },
+        {
+          "fixture_id": "GC-007",
+          "fixture_hash": "sha256:b269d0b958294425dffd1757a03897bea83444f5554be014744410edb518a486"
+        },
+        {
+          "fixture_id": "GC-008",
+          "fixture_hash": "sha256:6c5b06538d9fd463e88fc6fac624a82422954c25e2c5441effd4043bd19b8361"
+        },
+        {
+          "fixture_id": "GC-009",
+          "fixture_hash": "sha256:5c7a35ef5d4ef5b112e82f41f76f471326a29dea41017bba3c5d58b3ffa4ca85"
+        },
+        {
+          "fixture_id": "GC-010",
+          "fixture_hash": "sha256:25680ffa0f7757affb1652c8d1ed6125ddbe8f95d47fdae72cd41dde18754f5e"
+        },
+        {
+          "fixture_id": "GC-011",
+          "fixture_hash": "sha256:f10266fb797c9a89b12ef9bd99aa9c2ced4b8ee968aae523219b893e1ee58e81"
+        },
+        {
+          "fixture_id": "GC-012",
+          "fixture_hash": "sha256:e53889ff532bea963075f6d1a24a6cbf999bebf0b52d32625b6594bba76b0315"
+        },
+        {
+          "fixture_id": "GC-013",
+          "fixture_hash": "sha256:3c63dd71e6d660d9abc29cfe30bb2499d22f7678e1f7df9247ac8526bf21a85f"
+        },
+        {
+          "fixture_id": "GC-014",
+          "fixture_hash": "sha256:c0b6cf7a64faa54498d558cb192911309191ac19ca25f01201c359e4916e4641"
+        },
+        {
+          "fixture_id": "GC-015",
+          "fixture_hash": "sha256:5887c9f56c762b44e88e3c3ba8e017cfeefed14b3ed0a3edb0eb3a170b3719e6"
+        },
+        {
+          "fixture_id": "GC-016",
+          "fixture_hash": "sha256:464b69480a50b5400cb17a0eb36a68af239983b3393abbe1b4bc64a69ae038b7"
+        },
+        {
+          "fixture_id": "GC-017",
+          "fixture_hash": "sha256:7e4543b29b71a57e69333e00f9579978321bd76164c42f40c7aa90ca662a650e"
+        },
+        {
+          "fixture_id": "GC-018",
+          "fixture_hash": "sha256:201168a16622bd3ad35abffae8a053520f946c222803ee427c717e3787a0225e"
+        },
+        {
+          "fixture_id": "GC-019",
+          "fixture_hash": "sha256:971dd96ea634f827351807f011574a1d476980b960c294cf6bc949e726b4159b"
+        },
+        {
+          "fixture_id": "GC-020",
+          "fixture_hash": "sha256:5137e935d588d982d4fd728f6de96b40c53dc886d24430848558bba95147a87e"
+        },
+        {
+          "fixture_id": "GC-021",
+          "fixture_hash": "sha256:12d8ad806d73696f222581d8bdb31811a2459b11a2e8177c60a791252e015dbe"
+        },
+        {
+          "fixture_id": "GC-022",
+          "fixture_hash": "sha256:e221d98ddf784862e1309737983bd33576e0c38fac77d5f990dbb5cb77168e96"
+        },
+        {
+          "fixture_id": "GC-023",
+          "fixture_hash": "sha256:529d5fb97190b800bf14fbed0c21a591b3972762f085cfeb7919056be6558dfb"
+        },
+        {
+          "fixture_id": "GC-024",
+          "fixture_hash": "sha256:d816116592dab6a7390d18ed99ffee7d387260191640df812ca073154e638972"
+        },
+        {
+          "fixture_id": "GC-025",
+          "fixture_hash": "sha256:91f0b40051ec95f125974aa1158031b5f9ae88b4287c88e9dc97753a3163592c"
+        },
+        {
+          "fixture_id": "GC-026",
+          "fixture_hash": "sha256:dc6521769df45c4ccb1e2ff9e850bb8d1e53f62db2e02725d07ab8b804daedbb"
+        },
+        {
+          "fixture_id": "GC-027",
+          "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+        },
+        {
+          "fixture_id": "GC-028",
+          "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+        },
+        {
+          "fixture_id": "GC-029",
+          "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+        },
+        {
+          "fixture_id": "GC-030",
+          "fixture_hash": "sha256:f81cb2cfe6e1ab4cfc3cec4137cfb65350ee6e8dca34d4e85cadaba2bc9b3fb5"
+        },
+        {
+          "fixture_id": "GC-031",
+          "fixture_hash": "sha256:54d38a8fcbca452c33145f9d0d675d8564c3d4cfc6e381683b6d8d48039e10a1"
+        },
+        {
+          "fixture_id": "GC-032",
+          "fixture_hash": "sha256:eadf7f5e2b3a40cdd57af2fbde3eb5e0bd0a3928ca93741eed47cda8030437f3"
+        },
+        {
+          "fixture_id": "GC-033",
+          "fixture_hash": "sha256:6656e10ee134b8ba959fce56d9765477ea0aaec015acb73224d61588c8cb9b15"
+        },
+        {
+          "fixture_id": "GC-034",
+          "fixture_hash": "sha256:f7d912715dad2d00862d8c1188e6687c1a77d2da19ae0bff346c130b2f8a3f4b"
+        },
+        {
+          "fixture_id": "GC-035",
+          "fixture_hash": "sha256:5de2aa3e15d11e9d6a677825a71c4a0581d8e42a1f16b0a87511d73da3b32929"
+        },
+        {
+          "fixture_id": "LB-01",
+          "fixture_hash": "sha256:89774890839674cbc84ef6998cef910413810b77aa64ee75a934f05a31cd2480"
+        },
+        {
+          "fixture_id": "LB-02",
+          "fixture_hash": "sha256:fc11359d196b32275ba33dc69504598e4e077886c6d022467a9275804944c85b"
+        },
+        {
+          "fixture_id": "LB-03",
+          "fixture_hash": "sha256:43f9d734e1a2d3297e58fe0adf9defe2cf69097baa0200ce4847857ae252fd17"
+        },
+        {
+          "fixture_id": "LB-04",
+          "fixture_hash": "sha256:3cb271f9af44d9db94e5b35f90eda367e6c3c4a83a79ae3d8d69f55b21302b20"
+        },
+        {
+          "fixture_id": "LB-05",
+          "fixture_hash": "sha256:42951bfc5f526eef068edbb1517d88ff7cf625d6074168e2458b9811e22a7a00"
+        },
+        {
+          "fixture_id": "LB-06",
+          "fixture_hash": "sha256:5813939585ec12aa43570237eb9011fad04ecebe0cdb2c69d0bfb980a37b72eb"
+        },
+        {
+          "fixture_id": "LB-07",
+          "fixture_hash": "sha256:3f38c7a6120bfff75de24a7f4d6ebc08e74f27e864dce6282ba6053c5ab497a4"
+        },
+        {
+          "fixture_id": "LB-08",
+          "fixture_hash": "sha256:15bd00f0e8ddc20022656f1857727841f541d3b1378cf16fef8feee18cba798b"
+        },
+        {
+          "fixture_id": "ST-01",
+          "fixture_hash": "sha256:ff905339c99824cba772e6a18e7dd5153f5d9a233ddff41da0fc10a11e47fc78"
+        },
+        {
+          "fixture_id": "ST-02",
+          "fixture_hash": "sha256:27bd737350a56288c1f0f23d0f5aaee1680971ff73a1d1be1d5c84386285e296"
+        },
+        {
+          "fixture_id": "ST-03",
+          "fixture_hash": "sha256:904ce1fc8fe54b34a0a9b391ab9a575c05a3e80dc31600ecce1cf56362a1ffe9"
+        },
+        {
+          "fixture_id": "ST-04",
+          "fixture_hash": "sha256:c5ecbf712af9fe8165a32b6945aac08ebad0b368fde1951bcac5443a84edf700"
+        },
+        {
+          "fixture_id": "ST-05",
+          "fixture_hash": "sha256:b7fe3a93203b9ec339d6bcf2c4d068d5da27ac007e547ab9dfe84588588eacbd"
+        },
+        {
+          "fixture_id": "ST-06",
+          "fixture_hash": "sha256:2478762507234721e9983433ae57182453619bb12309d5d5e911079db1593ff5"
+        },
+        {
+          "fixture_id": "ST-07",
+          "fixture_hash": "sha256:1bbb57e16ffed0d0331533fe2c8838e7966bedd999ba592504e5826b07858293"
+        },
+        {
+          "fixture_id": "ST-08",
+          "fixture_hash": "sha256:82506cb95ee2bfc28dc0dbb7cc7797e68c7ed9054ed450278d27d46b457417d9"
+        },
+        {
+          "fixture_id": "ST-09",
+          "fixture_hash": "sha256:a0f10d12f8682e2bd1591892098bd8b8058bbf804d1955bf37b72673bbe26979"
+        },
+        {
+          "fixture_id": "ST-10",
+          "fixture_hash": "sha256:e9b8785476c1b315cf30a92721e040b57c041631deaae90505f140ec5a6713a4"
+        },
+        {
+          "fixture_id": "ST-11",
+          "fixture_hash": "sha256:12ec22773ba4cf08621fe435881854c12f8d2107a46ef860b0212bf69c7ae830"
+        },
+        {
+          "fixture_id": "ST-12",
+          "fixture_hash": "sha256:752025b33bc26a049ca580f322b38156cd64c604c25fd8d0e512de0ea2ccc389"
+        },
+        {
+          "fixture_id": "ST-13",
+          "fixture_hash": "sha256:599644cc60e896305a043ff4c0c2e24a1b4a78ebe27a4ad5715d8f36f9e86033"
+        },
+        {
+          "fixture_id": "ST-14",
+          "fixture_hash": "sha256:39d7805857cf3c31c09492ff89c4e26c068fd411b600ec872f74899679b93a2d"
+        },
+        {
+          "fixture_id": "ST-15",
+          "fixture_hash": "sha256:018781977c3a09f155adb84545c7beec9d163661a1e4ff8261e852f0d4919f2c"
+        },
+        {
+          "fixture_id": "ST-16",
+          "fixture_hash": "sha256:449b9ee9517d97d2988284db7e2cb818a4d80354c8155d93f8aff94f3cc3acad"
+        }
+      ],
+      "test_command": "node research/adaptive-reliability-2026-10-13/performance/run-performance.mjs",
+      "execution_mode": "local_measurement",
+      "synthetic_local_only": true,
+      "clock": "2026-10-13T00:00:00Z",
+      "run_id": "arr_2a60d025ac703e6bbf28f5a0"
+    }
+  }
+}

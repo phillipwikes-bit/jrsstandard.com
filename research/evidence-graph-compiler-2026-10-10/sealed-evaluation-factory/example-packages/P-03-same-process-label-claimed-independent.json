@@ -1,0 +1,38 @@
+{
+  "evaluation_id": "EVAL-LW-EXAMPLE",
+  "version_identity": {
+    "engine_version": "0.3.0-local",
+    "compiler_version": "0.3.0-local",
+    "prompt_contract_version": "jrs-engine-local-0.3.0/prompt-1",
+    "codebook_version": "1.0",
+    "codebook_sha256": "sha256:f70d1cf403f1c5adae5e02629e4b9e0862331cad257b999accd2bc632994afbb"
+  },
+  "freeze": {
+    "freeze_date": "2026-10-10",
+    "prompt_sha256": "sha256:0ceda8887463a515d241751133c9b0d3bf3364f89b63fa6ac5dda6ac70c8eec2",
+    "codebook_sha256": "sha256:f70d1cf403f1c5adae5e02629e4b9e0862331cad257b999accd2bc632994afbb",
+    "compiler_sha256": "sha256:6f55346ffd24714487a9c3d3129f8f5ed9dd48ab81f6bf3e56d43607cf94fe62"
+  },
+  "data_classification": "authorized_independent_non_hr_supplier_records_with_counsel_review",
+  "owner_authorization": {
+    "record_id": "OWNER-AUTH-PLACEHOLDER-NOT-ISSUED",
+    "date": "2026-10-10"
+  },
+  "adjudication_authority": {
+    "name": "Named independent adjudicator (example structure only)"
+  },
+  "label_authority": {
+    "name": "Fixture generator",
+    "claimed_independent": true,
+    "process_id": "engineering_authored"
+  },
+  "sealed_set": [
+    {
+      "item_id": "H-001",
+      "content_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "origin": "independent_authorised_source"
+    }
+  ],
+  "data_location": "/secure-store/not-in-repository",
+  "engineering_process_id": "claude_code_session"
+}

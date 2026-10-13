@@ -1,0 +1,79 @@
+{
+  "generated": "2026-10-13T06:52:45.758Z",
+  "non_file_requests_aborted": 0,
+  "blocked": [],
+  "screenshots": [
+    {
+      "file": "GC-001-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-002-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-003-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-004-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-006-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-008-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-001-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-002-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-003-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-004-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-006-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "GC-008-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    }
+  ]
+}

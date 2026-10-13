@@ -1,0 +1,30 @@
+{
+  "case_id": "GC-006",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "candidate_valid": true,
+  "statuses": {
+    "reconstructability": "review_required",
+    "identifiable_basis": "supported",
+    "chronology_integrity": "supported",
+    "reasoning_traceability": "supported",
+    "sufficiency": "review_required"
+  },
+  "reasons_include": {
+    "reconstructability": [
+      "quote_ambiguous:multiple_exact_matches_no_disambiguator"
+    ]
+  },
+  "conflict_kinds": [],
+  "refusal_codes": [
+    "quote_ambiguous"
+  ],
+  "quote_statuses": {
+    "O7": "ambiguous"
+  },
+  "cc_defects": [
+    "ambiguous_quotation"
+  ]
+}

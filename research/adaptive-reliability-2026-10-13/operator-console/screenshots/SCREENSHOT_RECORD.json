@@ -1,0 +1,103 @@
+{
+  "generated": "2026-10-13T10:17:50.106Z",
+  "non_file_requests_aborted": 0,
+  "blocked": [],
+  "screenshots": [
+    {
+      "file": "R-01-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "R-02-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "R-04-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "Y-03-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "X-02-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "Y-04-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "Y-06-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "Y-08-desktop.png",
+      "viewport": "desktop",
+      "width": 1280,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "R-01-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "R-02-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "R-04-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "Y-03-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "X-02-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "Y-04-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "Y-06-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    },
+    {
+      "file": "Y-08-mobile.png",
+      "viewport": "mobile",
+      "width": 390,
+      "horizontal_page_overflow": false
+    }
+  ]
+}

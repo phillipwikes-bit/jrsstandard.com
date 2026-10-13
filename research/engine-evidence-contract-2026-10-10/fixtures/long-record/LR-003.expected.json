@@ -1,0 +1,11 @@
+{
+  "length_chars": 8001,
+  "length_status": "above_limit",
+  "gate_decision": "refuse",
+  "min_segments": 2,
+  "human_review_points": [
+    "cross_segment_dependency_unassessed"
+  ],
+  "case_id": "LR-003",
+  "label_status": "engineering_authored_expected_result_not_adjudicated"
+}
