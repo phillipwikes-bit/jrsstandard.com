@@ -1,0 +1,51 @@
+{
+  "status": "NON-CANONICAL local working matrix",
+  "roles": {
+    "owner_decision": {
+      "may": "authorise or decline a proposed evaluation; set scope",
+      "may_not": "act as independent labeler or adjudicator of work they commissioned",
+      "produces": "recorded owner decision"
+    },
+    "independent_labeler": {
+      "may": "assign reference labels independently",
+      "may_not": "have built or tuned the candidate",
+      "produces": "reference labels"
+    },
+    "adjudicator": {
+      "may": "resolve labeler disagreements under a recorded procedure",
+      "may_not": "be a labeler on the same items or have built the candidate",
+      "produces": "adjudicated labels"
+    },
+    "technical_operator": {
+      "may": "run the frozen candidate under the protocol",
+      "may_not": "change prompt, codebook or compiler after freeze",
+      "produces": "run records"
+    },
+    "counsel": {
+      "may": "review data flows, privacy and claims",
+      "may_not": "be replaced by engineering documentation",
+      "produces": "counsel disposition"
+    },
+    "production_qa": {
+      "may": "independently test a deployed build",
+      "may_not": "be the developer of the build",
+      "produces": "production QA record"
+    },
+    "release_authority": {
+      "may": "record a release decision after gates 1 to 4 and production QA",
+      "may_not": "treat local tests as release evidence",
+      "produces": "release authorisation"
+    },
+    "local_engineering": {
+      "may": "build and test local candidates on synthetic material",
+      "may_not": "convert local work into independent validation, counsel disposition, production evidence or release authorisation",
+      "produces": "local engineering evidence only"
+    }
+  },
+  "exclusive_from_local_engineering": [
+    "independent_labeler",
+    "adjudicator",
+    "counsel",
+    "production_qa"
+  ]
+}

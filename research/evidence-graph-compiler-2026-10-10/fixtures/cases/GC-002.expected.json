@@ -1,0 +1,26 @@
+{
+  "case_id": "GC-002",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "candidate_valid": true,
+  "statuses": {
+    "reconstructability": "supported",
+    "identifiable_basis": "gap",
+    "chronology_integrity": "supported",
+    "reasoning_traceability": "supported",
+    "sufficiency": "review_required"
+  },
+  "reasons_include": {
+    "identifiable_basis": [
+      "visible_gap:authority_source_not_identified"
+    ]
+  },
+  "conflict_kinds": [],
+  "refusal_codes": [],
+  "quote_statuses": {},
+  "cc_defects": [
+    "authority_source_not_identified"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "case_id": "GC-035",
+  "label_status": "engineering_authored_expected_result_not_adjudicated",
+  "execution_mode": "local_mocked",
+  "gate_decision": "proceed",
+  "record_instruction_risk": "not_detected",
+  "candidate_valid": true,
+  "statuses": {
+    "reconstructability": "supported",
+    "identifiable_basis": "review_required",
+    "chronology_integrity": "supported",
+    "reasoning_traceability": "supported",
+    "sufficiency": "review_required"
+  },
+  "reasons_include": {
+    "identifiable_basis": [
+      "assertion_rejected:prohibited_inference:intent"
+    ]
+  },
+  "conflict_kinds": [],
+  "refusal_codes": [
+    "assertion_rejected"
+  ],
+  "quote_statuses": {},
+  "cc_defects": null
+}
