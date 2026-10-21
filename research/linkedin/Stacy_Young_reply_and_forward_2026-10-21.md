@@ -12,7 +12,7 @@ Context: Stacy Young (E-08) posted about 2026-10-16 that the co-authored paper "
 
 ## 3. Note to send with the post, Version B (contact who already knows JRS)
 
-> Hi [Name], Stacy Young and I have a new paper on SSRN looking at 32 public-records cases: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521 . She did outstanding work on this, and I wanted you to see it.
+> Hi [Name], Stacy Young and I have a new paper on SSRN looking at 32 public-records cases. She did outstanding work on this, and I wanted you to see it: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521
 
 ## 4. Optional private message to Stacy
 
