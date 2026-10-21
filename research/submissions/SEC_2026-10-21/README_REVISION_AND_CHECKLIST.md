@@ -6,8 +6,8 @@ Prepared 2026-10-21 from `Young_Wikes_SSRN.pdf` (SHA-256 prefix `5d01ac2f3fa4849
 
 | File | What it is |
 |---|---|
-| `Young_Wikes_SEC_manuscript_DRAFT.docx` | Revised manuscript in the journal's template styles (Word, as the journal requires) |
-| `Young_Wikes_SEC_manuscript_DRAFT.pdf` | PDF render of the same, for reading only |
+| `Young_Wikes_SEC_manuscript.docx` | Revised manuscript in the journal's template styles (Word, as the journal requires) |
+| `Young_Wikes_SEC_manuscript.pdf` | PDF render of the same, for reading only |
 | `Young_Wikes_SSRN_preprint.pdf` | The original preprint, byte-identical to the SSRN file; the journal asked for both versions |
 | `figures/Figure1.png` to `Figure3.png` | The three figures as separate files, which the journal requires |
 | `Cover_letter_form_SEC_BLANK.docx` | The journal's own cover-letter form, unfilled (it asks for addresses and phone numbers, so you fill it in) |
