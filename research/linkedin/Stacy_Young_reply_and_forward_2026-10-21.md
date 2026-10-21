@@ -18,6 +18,26 @@ Context: Stacy Young (E-08) posted about 2026-10-16 that the co-authored paper "
 
 > Stacy, thank you again for the post and for your kind words. Seeing the paper out under your name first meant a lot. Whenever you have time, I'd value a short conversation about what comes next. No rush at all.
 
+## 5. Repost caption (Repost with your thoughts on her post)
+
+> Proud to share this paper, co-authored with @Stacy Young and now on SSRN:
+>
+> Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases
+>
+> Stacy designed the case protocol and screened all 32 cases, bringing more than two decades of public-records experience to the work. Her care with every record is what made this study possible.
+>
+> The question is simple to ask and hard to answer: when someone who was not part of a decision reviews it later, can they rebuild why it was made from the record alone?
+>
+> Thank you, Stacy, for the collaboration.
+>
+> #PublicRecords #InformationGovernance #RecordsManagement
+
+Short version:
+
+> Proud to share this paper with @Stacy Young, now on SSRN. Stacy designed the case protocol and screened all 32 public-records cases. The question: can someone rebuild why a decision was made from the record alone? Thank you, Stacy, for the collaboration.
+
+Her post already carries the paper link, so the repost needs none.
+
 ## Pre-send checklist
 
 1. Replace every bracket. Do not send `[Name]` or `[field]`.
