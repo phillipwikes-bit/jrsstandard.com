@@ -39,8 +39,8 @@ Prepared 2026-10-21 from `Young_Wikes_SSRN.pdf` (SHA-256 prefix `5d01ac2f3fa4849
 
 ## Must be done before sending (blockers)
 
-1. **Stacyann Young approves this revised version and the venue.** She is first author; the journal also requires that "all authors approved the final paper version".
-2. **Data DOI.** The journal requires a public repository deposit with a DOI. The Data availability statement has a placeholder `[ZENODO DOI TO BE INSERTED BEFORE SUBMISSION]`. Depositing the case set needs Stacyann's agreement.
+1. ~~Stacyann Young approves this revised version and the venue.~~ **Owner attestation, 2026-10-21:** Stacyann approved Phillip sending inquiries and any information needed to obtain publication. Recorded as an owner attestation, not her written word. Recommended courtesy, not a blocker: send her the final PDF before submission, because the journal's checklist says "all authors approved the final paper version".
+2. **Data DOI.** The journal requires a public repository deposit with a DOI. The deposit package is ready in `zenodo_deposit/` (data, dictionary, and a reproduction script verified to match every figure). Upload it to Zenodo (steps in that folder's README), then put the DOI into the placeholder `[ZENODO DOI TO BE INSERTED BEFORE SUBMISSION]`. Publishing on Zenodo is permanent and public, so the owner does the upload.
 3. **Your country** in the author line is a placeholder `[COUNTRY]`.
 4. **Corresponding email.** The draft uses info@jrsstandard.com (house rule, CLAUDE.md 36.1). In September, AI and Ethics questioned an `info@` address. Decide whether to use it or a personal address.
 5. **CRediT roles** are mapped from the preprint's contribution statement. Stacyann should confirm them.
