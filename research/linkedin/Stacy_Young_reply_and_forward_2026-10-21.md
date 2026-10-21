@@ -1,6 +1,6 @@
 # Stacy Young post: reply and forwarding notes (revised 2026-10-21, final)
 
-Context: Stacy Young (E-08) posted about 2026-10-16 that the co-authored paper "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases" is available on SSRN (link in her post: https://lnkd.in/gmEsHhHB). Phillip's first comment thanked her at length; her reply thanked him "for believing in this research." Nothing below has been posted by Claude. Posting is the owner's act.
+Context: Stacy Young (E-08) posted about 2026-10-16 that the co-authored paper "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases" is available on SSRN (SSRN abstract 7591521: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521; her post's short link: https://lnkd.in/gmEsHhHB). Phillip's first comment thanked her at length; her reply thanked him "for believing in this research." Nothing below has been posted by Claude. Posting is the owner's act.
 
 ## 1. Public reply under her comment
 
@@ -8,11 +8,11 @@ Context: Stacy Young (E-08) posted about 2026-10-16 that the co-authored paper "
 
 ## 2. Note to send with the post, Version A (contact new to the work)
 
-> Hi [Name], I wanted to share a paper I co-authored with Stacy Young, now available on SSRN: "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases." It asks whether the basis for a public-records decision can be rebuilt from the record alone. Stacy designed the case protocol and screened all 32 cases. Given your work in [field], I'd value your perspective. Her post links to the paper.
+> Hi [Name], I wanted to share a paper I co-authored with Stacy Young, now available on SSRN: "Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases." It asks whether the basis for a public-records decision can be rebuilt from the record alone. Stacy designed the case protocol and screened all 32 cases. Given your work in [field], I'd value your perspective. The paper is here: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521
 
 ## 3. Note to send with the post, Version B (contact who already knows JRS)
 
-> Hi [Name], Stacy Young and I have a new paper on SSRN looking at 32 public-records cases. Her post links to it. She did outstanding work on this, and I wanted you to see it.
+> Hi [Name], Stacy Young and I have a new paper on SSRN looking at 32 public-records cases: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521 . She did outstanding work on this, and I wanted you to see it.
 
 ## 4. Optional private message to Stacy
 
@@ -42,3 +42,4 @@ File checks: the DOCX core properties are empty (no `lastModifiedBy`, no `Compan
 |---|---|---|---|
 | SSRN live status NOT ESTABLISHED. | Her LinkedIn post (about 5 days old on 2026-10-21): "Our paper is now available on SSRN", with link https://lnkd.in/gmEsHhHB. | **LIVE, per her post (Level C, external).** The SSRN abstract ID and URL are not yet recorded. | The blind-review concern no longer applies. |
 | "City of New York" in the Disclosure: REQUIRES HUMAN REVIEW. | Her own public post: "After more than two decades in NYC government". | **DOWNGRADED to NOTE.** She has publicly disclosed her government background herself. | The Disclosure sentence protects her ("does not represent the views of ... the City of New York") and is consistent with what she now says publicly. Our messages still name no title or agency. |
+| The SSRN abstract ID and URL were not yet recorded. | Owner supplied https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521 on 2026-10-21. | **RECORDED: SSRN abstract_id 7591521 (owner-supplied).** | An automated fetch returned SSRN's "Content Blocked" page, so the page's title and authors could not be machine-checked. Level D owner attestation until someone views the page. |
