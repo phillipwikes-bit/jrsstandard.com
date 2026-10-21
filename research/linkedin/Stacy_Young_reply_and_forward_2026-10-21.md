@@ -38,6 +38,22 @@ Short version:
 
 Her post already carries the paper link, so the repost needs none.
 
+## 5a. Repost caption, owner's edit with two light fixes (recommended)
+
+> I'm delighted to share this paper, co-authored with @Stacy Young and now available on SSRN:
+>
+> Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases
+>
+> Stacy designed the case protocol and carefully screened all 32 cases, drawing on more than two decades of experience with public records. Her care, thoughtfulness, and respect for each record made this study possible.
+>
+> The question is simple to ask, but difficult to answer: when someone who was not involved in a decision reviews it later, can they understand how and why it was made from the record alone?
+>
+> Thank you, Stacy, for your generosity, expertise, and collaboration.
+>
+> #PublicRecords #InformationGovernance #RecordsManagement
+
+Changes from the owner's text: "grateful" appeared three times (opening, paragraph 3, closing thanks), so the opening became "delighted" and the paragraph 3 clause was cut. "Partnership" became "collaboration" because "partnership" can read as a business or ownership relationship (CLAUDE.md Rule 4). Hashtags were restored (optional).
+
 ## Pre-send checklist
 
 1. Replace every bracket. Do not send `[Name]` or `[field]`.
