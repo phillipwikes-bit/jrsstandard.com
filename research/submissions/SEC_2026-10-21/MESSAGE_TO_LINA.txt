@@ -1,26 +1,21 @@
-Subject: Manuscript submission: Can Public-Records Determinations Be Independently Reconstructed? Evidence from 32 Public Cases
-
 Dear Lina,
 
-Thank you again for your guidance and for the fee discount. Please find attached our submission to SocioEconomic Challenges.
+Thank you for the clear guidance and for the 25% discount.
 
-Authors (same names and order as the preprint): Stacyann Young and Phillip Wikes. I am the corresponding author.
+As requested:
 
-Preprint: SSRN, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521. The preprint has received no public reviews, comments or recommendations.
+1. Authorship: the authors and their order are exactly the same as in the preprint: Stacyann Young, Phillip Wikes.
 
-Attached:
-1. Cover letter (journal form)
-2. Manuscript, revised for the journal (Word)
-3. Original preprint (PDF), for comparison
-4. Tables (Word, editable)
-5. Figures 1 to 3 (PNG)
-6. Data files and a script that reproduces every reported result
+2. Both versions are attached:
+   - the original preprint (PDF)
+   - the manuscript intended for SocioEconomic Challenges (Word)
 
-Main revisions from the preprint: the paper now follows the journal's structure; it adds a stronger focus on the socioeconomic implications (who bears the cost of unreconstructable records, public trust, and the governance of automated drafting); the literature review is expanded from 7 to 20 references; one citation is corrected; and the limitations are stated more fully. The data and results are unchanged.
+3. Preprint platform: SSRN, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521
+   The preprint has received no public peer reviews, comments or recommendations.
 
-The data will be deposited in Zenodo with a DOI before publication.
+The main revisions are a stronger focus on the socioeconomic implications, an expanded literature review, and a restructure to the journal's format. The data and results are unchanged.
 
-I would be grateful if you could confirm receipt and let me know the next steps.
+I look forward to hearing from you.
 
 Best regards,
 Phillip Wikes
