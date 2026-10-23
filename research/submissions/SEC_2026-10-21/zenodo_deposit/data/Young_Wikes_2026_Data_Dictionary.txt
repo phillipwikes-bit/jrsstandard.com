@@ -1,0 +1,112 @@
+JCI SUBMISSION PACKAGE, DATA DICTIONARY
+
+Values shown as N/A mean the field does not apply to that row, not that a
+record is missing.
+
+JCI_JRS_32_Case_Master_Dataset.csv
+  Case ID
+      Package identifier, PR-01 to PR-32, assigned in collection order.
+  Document class
+      Case-level source, or Programme-level audit. The five audits assess a
+      records programme rather than a single determination and are analysed
+      separately in Section 5.2.
+  Jurisdiction
+      New York or Connecticut, derived from the citation and the source URL.
+  Source type
+      The publishing body and decision level, derived from the citation.
+  Citation
+      The identifier used in the manuscript's bibliography. For the five audits,
+      which carry no reporter citation, this is the issuing Comptroller and the
+      audit year.
+  Public URL
+      The public location of the source. Where testing found a stored URL to be
+      wrong, the corrected URL is given here and the correction is recorded in
+      the source verification index.
+  Decision/source year
+      The year of the underlying public decision or audit. This is NOT the
+      collection date.
+  Collection date
+      The date the case was recorded into the study.
+  JRS Read
+      The primary reviewer's classification, recorded before the documented
+      outcome was consulted. Allowed values: Ready, Needs work, Gap.
+  Contemporaneous Note Available
+      Yes or No. Four of the 32 cases carry no note.
+  Contemporaneous Basis Note
+      The short explanation recorded by the primary reviewer at the time of the
+      read and before the outcome was consulted. Cases without one say
+      "No contemporaneous basis note recorded."
+  Documented Outcome
+      The outcome recorded from the cited public source AFTER the read was
+      recorded. No outcome was inferred.
+  Outcome Category
+      Plain-language form of the outcome. An adverse audit or compliance finding
+      is a separate category from failing to survive review.
+  Case included in 5.3?
+      Yes only for case-level sources that carry a note.
+  5.3 reconstructability coding
+      Yes where the contemporaneous note explicitly states that the underlying
+      record-level basis could not be rebuilt from the source. No where the note
+      does not state it. Inference was not accepted. N/A where the case is a
+      programme-level audit or carries no note.
+  Included in 5.4?
+      All 32 cases enter the discriminant analysis.
+  Included in 5.5?
+      Yes for the 20 cases carrying a resolved appellate disposition.
+  Included in blind second read?
+      Yes plus the packet case number for the ten re-read cases; No otherwise.
+  Second-reader classification
+      The independent reviewer's own classification. N/A for the 22 cases not
+      in the packet.
+  Agreement
+      Agree or Disagree against the original read. N/A outside the packet.
+
+JCI_JRS_Contemporaneous_Basis_Notes.csv
+  Note Date
+      The date the note was recorded. N/A where no note exists.
+  Outcome Known When Note Written?
+      No for every note. The protocol required the read and its note before the
+      outcome was consulted. N/A where no note exists.
+
+JCI_JRS_Construct_Coding_Frame.csv
+  Coding Rule
+      The rule applied to every row: an explicit statement is required and
+      inference is not accepted.
+  Coder
+      The person who applied the coding.
+  Supporting Note
+      The note text the coding decision rests on.
+
+JCI_JRS_Structural_Coding_Frame.csv
+  Structural group
+      A, the source reproduces the determination text. B, the source assessed
+      the underlying records in camera or in aggregate. Sources in neither group
+      are marked as not in the structural comparison.
+
+Blind_Recheck_RESULT_2026-08-28.json, Second_Reader_Responses.csv,
+Agreement_Calculations.csv
+  Scale distance
+      0 where the two readers agree, 1 for an adjacent disagreement, 2 for a
+      Ready against a Gap.
+  Reader reported knowing the outcome
+      The second reader's own answer for each case. It is No for all ten.
+
+JCI_JRS_Source_Verification_Index.csv
+  Source title
+      The citation is the title of record for these sources. The study recorded
+      an identifying citation rather than a separate document title.
+  URL tested on
+      The date the URL was requested for this package.
+  Publicly accessible?
+      The result of that request. Several publishers refuse automated requests
+      regardless of user agent; those rows say so rather than reporting the
+      source as unavailable, because a person following the link reaches it.
+  URL correction applied
+      Present where testing found the stored URL to be wrong, with the evidence.
+
+JCI_Companion_Employment_Corpus_Verification.csv
+  Included in the analysis
+      Yes for the 20 matters analysed, No for the 2 excluded.
+  Exclusion reason
+      Why the matter failed that study's stated inclusion criteria. N/A for the
+      20 included.
