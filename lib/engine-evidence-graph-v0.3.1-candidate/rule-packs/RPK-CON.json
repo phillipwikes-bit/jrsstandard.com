@@ -1,0 +1,30 @@
+{
+  "candidate_version": "0.3.1-candidate",
+  "pack_id": "RPK-CON",
+  "pack_version": "1.0.0",
+  "purpose": "Conflict controls for one paraphrase family.",
+  "rules": [
+    {
+      "rule_id": "RP-CON-01",
+      "purpose": "Address P6K-007.",
+      "trigger": "When no other control conflict is found: one clause names log review (\"log review\", \"review of (the) (access) logs\", \"(access) logs are/is reviewed\") as in place, and another names it as pending, planned, not started or not begun. Adds conflict \"control_state_conflict\" affecting sufficiency.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "One paraphrase family only.",
+      "false_positive_risk": "A note about a separate, later log-review programme would be flagged.",
+      "linked_scenarios": [
+        "P6-SU-07",
+        "P7-CON-01",
+        "P7-CON-02",
+        "P7-CON-03",
+        "P7-CON-04",
+        "P7-CON-05",
+        "P7-CON-06"
+      ],
+      "owner_decision_for_expansion": "Any widening of the trigger, any new pattern, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    }
+  ],
+  "signature": {
+    "method": "sha256-canonical-content-seal",
+    "content_sha256": "sha256:f04fe99a4018e3112929ea51c205540aca1a68ff6dd2d60566afd41a54182750"
+  }
+}

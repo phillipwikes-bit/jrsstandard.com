@@ -1,0 +1,1 @@
+{"model":"MOCK-MODEL-NOT-A-PROVIDER","status":"ok","stop_reason":"end_turn","content":[{"type":"text","text":"{\"contract_version\": \"jrs-engine-local-0.3.0-evidence-graph\", \"prompt_version\": \"jrs-engine-local-0.3.0/prompt-1\", \"observations\": [ }"}],"usage":{"input_tokens":0,"output_tokens":0}}

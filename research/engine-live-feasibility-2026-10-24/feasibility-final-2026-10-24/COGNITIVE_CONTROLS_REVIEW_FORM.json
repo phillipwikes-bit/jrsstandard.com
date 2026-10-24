@@ -1,0 +1,49 @@
+{
+  "form_format": "jrs-cognitive-controls-review-form/0.1.0",
+  "status": "Scratch-only human-review control layer. Not part of the frozen Engine graph, prompt, adapter acceptance logic or automated status calculation. Synthetic use only until a pilot is separately authorized.",
+  "source": "research/engine-human-review-phase9-2026-10-20/COGNITIVE_CONTROLS_FOR_REVIEWERS.md (SHA-256 4f08231eea98e0e3dc2cd23e30c2bac5cff4da990ad03f09395e53f83bbd7f9c), read only, unchanged",
+  "prerequisite": "The graph and its paired execution record must pass the nine-field provenance pair check before any review note is accepted. The validator runs the check itself; a note cannot assert it.",
+  "states": ["observed", "uncertain", "escalated", "review_blocked"],
+  "state_meanings": {
+    "observed": "The reviewer addressed the control and recorded what was seen.",
+    "uncertain": "The reviewer could not settle the point from the evidence; recorded as uncertain, not resolved.",
+    "escalated": "The point needs review beyond this reviewer.",
+    "review_blocked": "The reviewer could not carry out this control."
+  },
+  "controls": [
+    { "id": "RC-01", "topic": "Separate artifacts", "question": "Were the source record, the model response, the graph and the execution record each examined as separate artifacts?", "related_phase9_controls": [] },
+    { "id": "RC-02", "topic": "Presence versus support", "question": "For each cited quotation, is its presence in the record distinguished from whether its words support the stated proposition?", "related_phase9_controls": ["CC-PLAUSIBLE", "CC-WORDS", "CC-NEGATION"] },
+    { "id": "RC-03", "topic": "Uncertainty and alternatives", "question": "Which points are uncertain, ambiguous or missing, and which alternative readings of the record were considered?", "related_phase9_controls": ["CC-MISSING", "CC-INTENT", "CC-PLAUSIBLE"] },
+    { "id": "RC-04", "topic": "Fluency is not evidence", "question": "Was any weight placed on fluent wording, apparent completeness or expressed confidence rather than on the record text?", "related_phase9_controls": ["CC-PLAUSIBLE"] },
+    { "id": "RC-05", "topic": "Limited to the record", "question": "Is every statement in this note limited to what the recorded evidence states, including its dates and stated basis?", "related_phase9_controls": ["CC-BASIS", "CC-WORDS", "CC-DATES"] },
+    { "id": "RC-06", "topic": "Provenance", "question": "Were the graph and execution record complete, paired and digest-verified before review?", "related_phase9_controls": [] },
+    { "id": "RC-07", "topic": "Escalation", "question": "Does any point require escalation, and why?", "related_phase9_controls": ["CC-ESCALATE"] },
+    { "id": "RC-08", "topic": "Not determinable", "question": "Which points cannot be determined from the available evidence?", "related_phase9_controls": ["CC-ESCALATE", "CC-MISSING"] }
+  ],
+  "note_template": {
+    "note_format": "jrs-cognitive-controls-review-note/0.1.0",
+    "review_id": "",
+    "request_id": "",
+    "execution_record_file": "",
+    "reviewer_role": "",
+    "controls": {
+      "RC-01": { "state": "", "note": "" },
+      "RC-02": { "state": "", "note": "" },
+      "RC-03": { "state": "", "note": "" },
+      "RC-04": { "state": "", "note": "" },
+      "RC-05": { "state": "", "note": "" },
+      "RC-06": { "state": "", "note": "" },
+      "RC-07": { "state": "", "note": "" },
+      "RC-08": { "state": "", "note": "" }
+    },
+    "uncertainty_treatment": "",
+    "escalation_treatment": { "escalate": null, "reason": "" },
+    "support_observations": []
+  },
+  "support_observation_template": { "condition_id": "", "graph_status_observed": "", "quote_semantically_supports": "yes | no | uncertain", "note": "" },
+  "prohibitions": [
+    "No field may set, change or override any Engine status, finding or graph content.",
+    "No note may treat a model output as a supported outcome; graph statuses are recorded as observed, never assigned.",
+    "No clinical, diagnostic, therapeutic, performance, validation or release characterization."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "record_type": "jrs-phase8-1-isolated-replay/1.0.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "command": "env -u ANTHROPIC_BASE_URL node tools/engine-governance-phase8-replay.mjs --isolated phase4-change-control,phase6-reliability,phase7-candidate --record",
+  "baseline_commit": "428c307af510ff7378615777251fe252dab2dac7",
+  "temporary_copies_deleted": true,
+  "network_attempts": 0,
+  "replays": [
+    {
+      "package": "phase4-change-control",
+      "command": "node tests/engine-adaptive-reliability/run.mjs",
+      "environment": "temporary clone at 428c307 plus recorded manifests of no untracked package",
+      "untracked_files_in_clone": 0,
+      "later_packages_present": false,
+      "contamination": {
+        "clean": true,
+        "extra": [],
+        "missing": []
+      },
+      "started_at": "2026-10-20T03:17:33.045Z",
+      "finished_at": "2026-10-20T03:18:30.991Z",
+      "exit_code": 0,
+      "output_sha256": "sha256:5b7e876d65f0b2e2c332b68df8de7b9547cb727e0134e5cd2c3619a816355529",
+      "complete": true,
+      "total": 269,
+      "passed": 269,
+      "failed": 0,
+      "failed_checks": []
+    },
+    {
+      "package": "phase6-reliability",
+      "command": "node tests/engine-reliability/run.mjs",
+      "environment": "temporary clone at 428c307 plus recorded manifests of phase6-reliability",
+      "untracked_files_in_clone": 139,
+      "later_packages_present": false,
+      "contamination": {
+        "clean": true,
+        "extra": [],
+        "missing": []
+      },
+      "started_at": "2026-10-20T03:18:35.151Z",
+      "finished_at": "2026-10-20T03:18:57.425Z",
+      "exit_code": 0,
+      "output_sha256": "sha256:53a1ef694b4d80ea777f1507a042562ebf66839a9d359461dab12038afd6190a",
+      "complete": true,
+      "total": 316,
+      "passed": 316,
+      "failed": 0,
+      "failed_checks": []
+    },
+    {
+      "package": "phase7-candidate",
+      "command": "node tests/engine-remediation-phase7/run.mjs",
+      "environment": "temporary clone at 428c307 plus recorded manifests of phase6-reliability, phase7-candidate",
+      "untracked_files_in_clone": 286,
+      "later_packages_present": false,
+      "contamination": {
+        "clean": true,
+        "extra": [],
+        "missing": []
+      },
+      "started_at": "2026-10-20T03:19:01.279Z",
+      "finished_at": "2026-10-20T03:22:33.113Z",
+      "exit_code": 0,
+      "output_sha256": "sha256:d620f69fdc652162e3ea379a0ae390d96a83651a71faa5964a34683836bf39d8",
+      "complete": true,
+      "total": 328,
+      "passed": 328,
+      "failed": 0,
+      "failed_checks": []
+    }
+  ]
+}

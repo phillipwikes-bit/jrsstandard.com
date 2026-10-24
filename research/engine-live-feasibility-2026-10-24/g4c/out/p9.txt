@@ -1,0 +1,320 @@
+PASS  [structural] HEAD is still the starting commit 428c307
+PASS  [structural] no tracked or staged change from 428c307 (public routes, deployment, B-018, trackers, ledgers, PR #40 branch content)
+PASS  [structural] B-018 remains OPEN
+PASS  [structural] release status remains NO_GO_NOT_VERIFIED
+PASS  [structural] version registry binds seven earlier package manifests
+PASS  [structural] earlier package byte-identical to its manifest: v1-historical.sha256
+PASS  [structural] earlier package byte-identical to its manifest: v0.1-assurance.sha256
+PASS  [structural] earlier package byte-identical to its manifest: v0.2-evidence-contract.sha256
+PASS  [structural] earlier package byte-identical to its manifest: v0.3-evidence-graph.sha256
+PASS  [structural] earlier package byte-identical to its manifest: phase4-change-control.sha256
+PASS  [structural] earlier package byte-identical to its manifest: phase6-reliability.sha256
+PASS  [structural] earlier package byte-identical to its manifest: phase7-candidate.sha256
+PASS  [structural] earlier package byte-identical to its manifest: PHASE8_FILE_MANIFEST_SHA256.txt
+PASS  [structural] Phase 9 registry entry is admitted, local_construction_only, with exactly the four approved paths
+PASS  [structural] Phase 9 registry entry binds the manifest inside the Phase 9 research directory
+PASS  [structural] Phase 9 registry entry requires the five declared conditions
+PASS  [structural] Phase 9 registry entry restricts provider use, real records, holdouts, evaluation, deployment, commercial use and release
+PASS  [structural] every Phase 9 file is inside the four admitted locations
+PASS  [structural] no Phase 9 file predates the admission record
+PASS  [adversarial] a Phase 9 file outside its admitted path fails closed (sibling library directory)
+PASS  [adversarial] a Phase 9 file outside its admitted path fails closed (research directory with a suffix)
+PASS  [adversarial] a Phase 9 file outside its admitted path fails closed (second tool file)
+PASS  [adversarial] a Phase 9 file in a public or deployment location fails closed
+PASS  [direct] Phase 9 files inside the admitted paths classify as declared composition conditions only
+PASS  [adversarial] a Phase 9 package integrity failure fails closed
+PASS  [adversarial] a Phase 9 file dated before admission fails closed
+PASS  [structural] no present Phase 9 path matches the Phase 7 protected filename pattern
+PASS  [adversarial] the Phase 7 protected filename pattern would catch the version 1 document name
+PASS  [structural] no Phase 10 registry entry, file or directory exists
+PASS  [direct] probe presence_not_support
+PASS  [direct] probe derive_outcome_refuses
+PASS  [direct] probe dossier_response_unfilled
+PASS  [direct] probe validate_flags_prefill
+PASS  [direct] probe entry_rejects_system_source
+PASS  [direct] probe entry_requires_cited_words
+PASS  [direct] probe entry_requires_escalation
+PASS  [direct] probe entry_requires_placeholder
+PASS  [direct] probe disagreement_preserves_engine
+PASS  [direct] probe learning_requires_exact_graph
+PASS  [direct] probe apply_to_engine_refuses
+PASS  [direct] probe incomplete_escalates
+PASS  [direct] probe escalation_rule_direct
+PASS  [direct] probe validate_flags_escalation_drift
+PASS  [direct] probe dossier_matches_engine
+PASS  [direct] probe not_more_favourable_detects
+PASS  [direct] probe controls_disable_detected
+PASS  [direct] probe controls_removal_detected
+PASS  [direct] probe controls_directive_detected
+PASS  [direct] probe controls_question_required
+PASS  [direct] probe dossier_lists_controls
+PASS  [direct] probe seal_verifies
+PASS  [direct] probe seal_rejects_expectation_change
+PASS  [direct] probe seal_rejects_case_change
+PASS  [direct] probe seal_rejects_record_change
+PASS  [direct] probe validate_flags_proof
+PASS  [direct] probe validate_flags_approval
+PASS  [direct] probe validate_flags_hash
+PASS  [direct] probe validate_flags_offsets
+PASS  [direct] probe validate_flags_presence
+PASS  [direct] probe validate_flags_outcomes
+PASS  [direct] probe validate_flags_abstention
+PASS  [direct] probe dossiers_valid
+PASS  [direct] probe synthetic_only
+PASS  [direct] probe decision_model_valid
+PASS  [direct] probe decision_model_detects_collapse
+PASS  [direct] probe protocol_disabled
+PASS  [direct] probe adjudication_rule
+PASS  [direct] probe measures_not_measurable
+PASS  [direct] probe route_rule
+PASS  [direct] probe case_marking
+PASS  [direct] probe packets_blinded
+PASS  [direct] probe blinding_detects_leak
+PASS  [direct] probe evaluator_matches_first_run
+PASS  [direct] probe evaluator_detects_escalation_mismatch
+PASS  [direct] probe evaluator_detects_route_mismatch
+PASS  [direct] probe stability_detects_favourable
+PASS  [direct] probe stability_invariant_holds
+PASS  [direct] contract carries the three Phase 9 statements
+PASS  [direct] exactly seven admissible outcomes in the stated order
+PASS  [direct] five evidence layers kept separate, decision validity out of scope
+PASS  [direct] decision model entry complete: supports_finding
+PASS  [direct] decision model entry complete: does_not_support_finding
+PASS  [direct] decision model entry complete: insufficient_context
+PASS  [direct] decision model entry complete: ambiguous
+PASS  [direct] decision model entry complete: record_conflict
+PASS  [direct] decision model entry complete: outside_authorized_scope
+PASS  [direct] decision model entry complete: abstain_and_escalate
+PASS  [direct] Cognitive Control names its review risk and asks a neutral question: CC-INTENT
+PASS  [direct] Cognitive Control names its review risk and asks a neutral question: CC-PLAUSIBLE
+PASS  [direct] Cognitive Control names its review risk and asks a neutral question: CC-NEGATION
+PASS  [direct] Cognitive Control names its review risk and asks a neutral question: CC-DATES
+PASS  [direct] Cognitive Control names its review risk and asks a neutral question: CC-WORDS
+PASS  [direct] Cognitive Control names its review risk and asks a neutral question: CC-MISSING
+PASS  [direct] Cognitive Control names its review risk and asks a neutral question: CC-BASIS
+PASS  [direct] Cognitive Control names its review risk and asks a neutral question: CC-ESCALATE
+PASS  [direct] bounded reviewer question present and asks about the record only: reconstructability
+PASS  [direct] bounded reviewer question present and asks about the record only: identifiable_basis
+PASS  [direct] bounded reviewer question present and asks about the record only: chronology_integrity
+PASS  [direct] bounded reviewer question present and asks about the record only: reasoning_traceability
+PASS  [direct] bounded reviewer question present and asks about the record only: sufficiency
+PASS  [direct] measure defined and marked not measurable locally: RM-01
+PASS  [direct] measure defined and marked not measurable locally: RM-02
+PASS  [direct] measure defined and marked not measurable locally: RM-03
+PASS  [direct] measure defined and marked not measurable locally: RM-04
+PASS  [direct] measure defined and marked not measurable locally: RM-05
+PASS  [direct] measure defined and marked not measurable locally: RM-06
+PASS  [direct] measure defined and marked not measurable locally: RM-07
+PASS  [direct] measure defined and marked not measurable locally: RM-08
+PASS  [direct] five review roles defined with duties and prohibitions
+PASS  [direct] dual-review protocol: two blinded reviewers, adjudicator only on disagreement or escalation
+PASS  [direct] dual-review protocol defines contamination controls, versioning and re-review triggers
+PASS  [direct] future decision ledger structure defined; a complete synthetic row validates
+PASS  [direct] disagreement protocol prohibits automatic modification and names the governance path
+PASS  [direct] prohibited reviewer questions are listed: liability, discrimination, policy compliance, employment-decision correctness
+PASS  [adversarial] pre-filled reviewer field rejected: outcome
+PASS  [adversarial] pre-filled reviewer field rejected: rationale
+PASS  [adversarial] pre-filled reviewer field rejected: cited_evidence
+PASS  [adversarial] pre-filled reviewer field rejected: confidence
+PASS  [adversarial] pre-filled reviewer field rejected: reviewer_placeholder
+PASS  [adversarial] proof assertion rejected in authored text: The quotation proves the finding.
+PASS  [adversarial] proof assertion rejected in authored text: This establishes the finding.
+PASS  [adversarial] proof assertion rejected in authored text: The quotation supports the finding.
+PASS  [adversarial] proof assertion rejected in authored text: This confirms the finding.
+PASS  [adversarial] approval or legal-conclusion field rejected: approved
+PASS  [adversarial] approval or legal-conclusion field rejected: approval
+PASS  [adversarial] approval or legal-conclusion field rejected: recommendation
+PASS  [adversarial] approval or legal-conclusion field rejected: recommended_outcome
+PASS  [adversarial] approval or legal-conclusion field rejected: legal_conclusion
+PASS  [adversarial] removed limitation rejected
+PASS  [adversarial] altered reviewer question rejected
+PASS  [adversarial] unknown condition rejected
+PASS  [adversarial] escalation added without an Engine trigger rejected
+PASS  [adversarial] Cognitive Control removed from the dossier rejected
+PASS  [adversarial] assertion marked accepted on an unverified quotation rejected
+PASS  [adversarial] dossier refused for non-synthetic material
+PASS  [adversarial] reviewer entry from the Engine rejected
+PASS  [adversarial] reviewer entry auto-filled by the system rejected
+PASS  [adversarial] reviewer entry with an inadmissible outcome rejected
+PASS  [adversarial] reviewer entry without a rationale rejected
+PASS  [adversarial] reviewer entry with a real-looking identity rejected
+PASS  [adversarial] deriveOutcome refuses for every rehearsal dossier
+PASS  [adversarial] decision model that asks reviewers to decide legal liability is rejected
+PASS  [adversarial] decision model that lets presence imply support is rejected
+PASS  [adversarial] control with directive wording rejected
+PASS  [adversarial] control with clinical wording rejected
+PASS  [adversarial] extra control beyond the set rejected
+PASS  [adversarial] running a dual review refuses
+PASS  [adversarial] calculating any reliability measure refuses
+PASS  [adversarial] applying a learning record to the Engine refuses
+PASS  [adversarial] learning record from an Engine-generated entry refuses
+PASS  [adversarial] adjudication routing refuses a non-human entry
+PASS  [adversarial] ledger row with an unknown role rejected
+PASS  [adversarial] case marked holdout-eligible rejected
+PASS  [adversarial] case without the synthetic marker rejected
+PASS  [adversarial] case with personal-data-like text rejected
+PASS  [adversarial] case in a provider execution mode rejected
+PASS  [adversarial] expectation with an inadmissible class rejected
+PASS  [adversarial] expectation whose route appropriateness breaks the fixed rule rejected
+PASS  [adversarial] seal rejects an added case
+PASS  [adversarial] seal rejects a removed expectation
+PASS  [adversarial] blinding check catches an expected-class field
+PASS  [adversarial] blinding check catches a category name
+PASS  [adversarial] provider configuration in the environment is refused (checked in-process; no variable is set)
+PASS  [adversarial] a network attempt from the harness is trapped
+PASS  [structural] at least 48 rehearsal packets
+PASS  [structural] category minimum met: quote_present_not_supportive (10 >= 10)
+PASS  [structural] category minimum met: supportive_but_incomplete (6 >= 6)
+PASS  [structural] category minimum met: negation_or_conditional_language (6 >= 6)
+PASS  [structural] category minimum met: chronology_ambiguity (6 >= 6)
+PASS  [structural] category minimum met: conflicting_evidence (6 >= 5)
+PASS  [structural] category minimum met: reasoning_gaps (6 >= 5)
+PASS  [structural] category minimum met: sufficiency_and_escalation (5 >= 5)
+PASS  [structural] category minimum met: cognitive_control_pressure (5 >= 5)
+PASS  [structural] every case synthetic and holdout-ineligible, every expectation well formed
+PASS  [structural] seal verifies and was recorded before the first evaluator run
+PASS  [structural] evaluator results identical to the first recorded evaluator run
+PASS  [structural] every difference from the seal is disclosed, and only those
+PASS  [structural] every disclosed difference names its direction, cause and an unapplied learning record, and concerns an Engine prediction only
+PASS  [structural] all packets pass evaluator check: dossier_valid
+PASS  [structural] all packets pass evaluator check: blinded
+PASS  [structural] all packets pass evaluator check: outcome_unfilled
+PASS  [structural] all packets pass evaluator check: not_more_favourable
+PASS  [structural] all packets pass evaluator check: control_listed
+PASS  [structural] no packet is routed away from human review
+PASS  [structural] favourable Engine statuses on non-supporting packets are reliant on human review and recorded as such
+PASS  [stability] P9-ST-01 wording: supplier name spelled out on R9-QNS-01
+PASS  [stability] P9-ST-02 layout: blank line after every line on R9-QNS-01
+PASS  [stability] P9-ST-03 wording: supplier name spelled out on R9-QNS-03
+PASS  [stability] P9-ST-04 layout: blank line after every line on R9-QNS-03
+PASS  [stability] P9-ST-05 wording: supplier name spelled out on R9-SIN-02
+PASS  [stability] P9-ST-06 layout: blank line after every line on R9-SIN-02
+PASS  [stability] P9-ST-07 wording: supplier name spelled out on R9-NEG-02
+PASS  [stability] P9-ST-08 layout: blank line after every line on R9-NEG-02
+PASS  [stability] P9-ST-09 wording: supplier name spelled out on R9-CHR-04
+PASS  [stability] P9-ST-10 layout: blank line after every line on R9-CHR-04
+PASS  [stability] P9-ST-11 wording: supplier name spelled out on R9-CCP-02
+PASS  [stability] P9-ST-12 layout: blank line after every line on R9-CCP-02
+PASS  [stability] P9-ST-13 wording: supplier name spelled out on R9-CHR-02 (unfavourable or escalation base)
+PASS  [stability] P9-ST-14 layout: blank line after every line on R9-CHR-02 (unfavourable or escalation base)
+PASS  [stability] P9-ST-15 wording: supplier name spelled out on R9-CHR-05 (unfavourable or escalation base)
+PASS  [stability] P9-ST-16 layout: blank line after every line on R9-CHR-05 (unfavourable or escalation base)
+PASS  [stability] P9-ST-17 wording: supplier name spelled out on R9-CON-01 (unfavourable or escalation base)
+PASS  [stability] P9-ST-18 layout: blank line after every line on R9-CON-01 (unfavourable or escalation base)
+PASS  [stability] P9-ST-19 wording: supplier name spelled out on R9-CON-02 (unfavourable or escalation base)
+PASS  [stability] P9-ST-20 layout: blank line after every line on R9-CON-02 (unfavourable or escalation base)
+PASS  [stability] P9-ST-21 wording: supplier name spelled out on R9-CON-06 (unfavourable or escalation base)
+PASS  [stability] P9-ST-22 layout: blank line after every line on R9-CON-06 (unfavourable or escalation base)
+PASS  [stability] P9-ST-23 wording: supplier name spelled out on R9-SUF-03 (unfavourable or escalation base)
+PASS  [stability] P9-ST-24 layout: blank line after every line on R9-SUF-03 (unfavourable or escalation base)
+PASS  [stability] P9-ST-25 wording: supplier name spelled out on R9-NEG-01 (unfavourable or escalation base)
+PASS  [stability] P9-ST-26 layout: blank line after every line on R9-NEG-01 (unfavourable or escalation base)
+PASS  [stability] P9-ST-27 wording: supplier name spelled out on R9-RGP-06 (unfavourable or escalation base)
+PASS  [stability] P9-ST-28 layout: blank line after every line on R9-RGP-06 (unfavourable or escalation base)
+PASS  [stability] P9-ST-29 punctuation: hyphen and full stop in the record type on R9-CHR-02 (unfavourable or escalation base)
+PASS  [stability] P9-ST-30 punctuation: hyphen and full stop in the record type on R9-CON-05 (unfavourable or escalation base)
+PASS  [stability] P9-ST-31 punctuation: hyphen and full stop in the record type on R9-SUF-04 (unfavourable or escalation base)
+PASS  [stability] P9-ST-32 punctuation: hyphen and full stop in the record type on R9-QNS-09
+PASS  [stability] P9-ST-33 punctuation: full stop after the exception identifier on R9-CON-04 (unfavourable or escalation base)
+PASS  [stability] P9-ST-34 punctuation: full stop after the exception identifier on R9-RGP-03 (unfavourable or escalation base)
+PASS  [stability] P9-ST-35 irrelevant narrative line added on R9-CON-02 (unfavourable or escalation base)
+PASS  [stability] P9-ST-36 irrelevant narrative line added on R9-QNS-02
+PASS  [stability] P9-ST-37 irrelevant narrative line added on R9-RGP-04 (unfavourable or escalation base)
+PASS  [stability] P9-ST-38 section order: risk and controls swapped on R9-CHR-05 (unfavourable or escalation base)
+PASS  [stability] P9-ST-39 section order: risk and controls swapped on R9-QNS-01
+PASS  [stability] P9-ST-40 response: observations in reverse order on R9-CON-06 (unfavourable or escalation base)
+PASS  [stability] P9-ST-41 response: observations in reverse order on R9-RGP-01
+PASS  [stability] P9-ST-42 response: observations in reverse order on R9-QNS-04 (unfavourable or escalation base)
+PASS  [stability] P9-ST-43 response: compact JSON spacing on R9-CHR-02 (unfavourable or escalation base)
+PASS  [stability] P9-ST-44 response: compact JSON spacing on R9-SIN-01
+PASS  [structural] at least 30 stability transforms, at least 12 from an unfavourable or escalation baseline
+PASS  [structural] no invariant transform produced a more favourable human-review class
+PASS  [determinism] five-pass determinism: evaluator
+PASS  [determinism] five-pass determinism: stability
+PASS  [determinism] five-pass determinism: dossiers
+PASS  [structural] no provider model identifier, key, key name, endpoint, environment access or SDK import in any Phase 9 script
+PASS  [structural] no process execution, fetch or network URL in the Phase 9 library
+PASS  [structural] no credential-like value in any Phase 9 file
+PASS  [structural] no email address in any Phase 9 file
+PASS  [structural] no Phase 9 item is marked holdout-eligible or non-synthetic
+PASS  [structural] every rehearsal record is the fictional GC-001 derivative with the synthetic marker
+PASS  [structural] no readiness, compliance, licensing, commercial, validation or production claim in Phase 9 records or the workbench
+PASS  [structural] no Phase 9 record presents B-018 as resolved
+PASS  [structural] no Phase 9 record asks a reviewer to decide liability, discrimination, policy compliance or an employment decision
+PASS  [structural] static workbench present
+PASS  [structural] workbench: no script, form, input, upload, iframe, authentication or network URL
+PASS  [structural] workbench shows dossier boundary
+PASS  [structural] workbench shows decision model
+PASS  [structural] workbench shows Cognitive Controls
+PASS  [structural] workbench shows disagreement example
+PASS  [structural] workbench shows limitations and escalation
+PASS  [structural] workbench shows unresolved decisions
+PASS  [structural] workbench shows B-018 OPEN
+PASS  [structural] workbench shows NO_GO_NOT_VERIFIED
+PASS  [structural] workbench shows six blinded examples
+PASS  [structural] workbench rendered at desktop and mobile with zero non-file requests and zero overflow
+PASS  [structural] document present with the three required statements: PHASE9_HANDOFF.md
+PASS  [structural] document present with the three required statements: PHASE9_EXECUTION_RECORD.md
+PASS  [structural] document present with the three required statements: HUMAN_EVIDENCE_DOSSIER_CONTRACT.md
+PASS  [structural] document present with the three required statements: REVIEWER_DECISION_MODEL.md
+PASS  [structural] document present with the three required statements: COGNITIVE_CONTROLS_FOR_REVIEWERS.md
+PASS  [structural] document present with the three required statements: BLINDED_SYNTHETIC_REHEARSAL_PROTOCOL.md
+PASS  [structural] document present with the three required statements: DUAL_REVIEW_PROTOCOL.md
+PASS  [structural] document present with the three required statements: RELIABILITY_MEASUREMENT_PLAN.md
+PASS  [structural] document present with the three required statements: ENGINE_HUMAN_DISAGREEMENT_PROTOCOL.md
+PASS  [structural] document present with the three required statements: KNOWN_LIMITATIONS_AND_STOP_CONDITIONS.md
+PASS  [structural] document present with the three required statements: OWNER_DECISION_REGISTER.md
+PASS  [structural] document present with the three required statements: CHANGELOG.md
+PASS  [structural] no em-dash in Phase 9 document prose
+PASS  [structural] Phase 9 manifest version 1 preserved and readable at manifest-history/v1.sha256
+PASS  [structural] original document preserved byte for byte under a neutral name
+PASS  [structural] renamed document content equals the original (no substantive change)
+PASS  [structural] mapping record names original, replacement, hashes, reason and the Phase 7 rule
+PASS  [structural] Phase 9 manifest integrity enforced after creation
+PASS  [structural] current Phase 9 manifest is version 2 and version 1 is preserved
+PASS  [adversarial] a version 2 manifest without the preserved version 1 is an integrity failure
+PASS  [adversarial] a Phase 9 file changed after the manifest is an integrity failure
+PASS  [adversarial] a Phase 9 file added after the manifest is an integrity failure
+PASS  [mutation] MU-01 (dossier.mjs) caught by named probe dossier_response_unfilled, presence_not_support
+PASS  [mutation] MU-02 (dossier.mjs) caught by named probe incomplete_escalates, escalation_rule_direct
+PASS  [mutation] MU-03 (dossier.mjs) caught by named probe incomplete_escalates, escalation_rule_direct
+PASS  [mutation] MU-04 (dossier.mjs) caught by named probe incomplete_escalates, escalation_rule_direct
+PASS  [mutation] MU-05 (dossier.mjs) caught by named probe dossier_matches_engine
+PASS  [mutation] MU-06 (dossier.mjs) caught by named probe presence_not_support, dossiers_valid
+PASS  [mutation] MU-07 (dossier.mjs) caught by named probe validate_flags_prefill
+PASS  [mutation] MU-08 (dossier.mjs) caught by named probe validate_flags_proof
+PASS  [mutation] MU-09 (dossier.mjs) caught by named probe validate_flags_approval
+PASS  [mutation] MU-10 (dossier.mjs) caught by named probe validate_flags_hash
+PASS  [mutation] MU-11 (dossier.mjs) caught by named probe synthetic_only
+PASS  [mutation] MU-12 (dossier.mjs) caught by named probe not_more_favourable_detects
+PASS  [mutation] MU-13 (dossier.mjs) caught by named probe validate_flags_offsets
+PASS  [mutation] MU-14 (dossier.mjs) caught by named probe incomplete_escalates, dossiers_valid
+PASS  [mutation] MU-15 (dossier.mjs) caught by named probe dossier_lists_controls, dossiers_valid
+PASS  [mutation] MU-16 (dossier.mjs) caught by named probe dossiers_valid
+PASS  [mutation] MU-17 (controls.mjs) caught by named probe controls_disable_detected
+PASS  [mutation] MU-18 (controls.mjs) caught by named probe controls_directive_detected
+PASS  [mutation] MU-19 (controls.mjs) caught by named probe controls_question_required
+PASS  [mutation] MU-20 (decision-model.mjs) caught by named probe derive_outcome_refuses
+PASS  [mutation] MU-21 (decision-model.mjs) caught by named probe entry_rejects_system_source
+PASS  [mutation] MU-22 (decision-model.mjs) caught by named probe entry_requires_cited_words
+PASS  [mutation] MU-23 (decision-model.mjs) caught by named probe entry_requires_escalation
+PASS  [mutation] MU-24 (decision-model.mjs) caught by named probe entry_requires_placeholder
+PASS  [mutation] MU-25 (protocol.mjs) caught by named probe apply_to_engine_refuses
+PASS  [mutation] MU-26 (protocol.mjs) caught by named probe learning_requires_exact_graph
+PASS  [mutation] MU-27 (protocol.mjs) caught by named probe disagreement_preserves_engine
+PASS  [mutation] MU-28 (protocol.mjs) caught by named probe adjudication_rule
+PASS  [mutation] MU-29 (protocol.mjs) caught by named probe measures_not_measurable
+PASS  [mutation] MU-30 (protocol.mjs) caught by named probe protocol_disabled
+PASS  [mutation] MU-31 (protocol.mjs) caught by named probe measures_not_measurable
+PASS  [mutation] MU-32 (rehearsal-schema.mjs) caught by named probe seal_rejects_expectation_change
+PASS  [mutation] MU-33 (rehearsal-schema.mjs) caught by named probe seal_rejects_case_change
+PASS  [mutation] MU-34 (rehearsal-schema.mjs) caught by named probe route_rule, evaluator_matches_first_run
+PASS  [mutation] MU-35 (rehearsal-schema.mjs) caught by named probe case_marking
+PASS  [mutation] MU-36 (rehearsal.mjs) caught by named probe packets_blinded
+PASS  [mutation] MU-37 (rehearsal.mjs) caught by named probe packets_blinded
+PASS  [mutation] MU-38 (rehearsal.mjs) caught by named probe evaluator_detects_escalation_mismatch, evaluator_matches_first_run
+PASS  [mutation] MU-39 (stability.mjs) caught by named probe stability_detects_favourable
+PASS  [mutation] MU-40 (rehearsal.mjs) caught by named probe blinding_detects_leak
+PASS  [structural] no network attempt during the suite
+
+{"total":318,"pass":318,"fail":0,"skipped":0,"counts":{"direct":86,"adversarial":60,"mutation":40,"stability":44,"determinism":3,"structural":85},"network_attempts":0}

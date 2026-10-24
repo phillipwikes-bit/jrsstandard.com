@@ -1,0 +1,25 @@
+{
+  "record_type": "Phase 8 test-harness correction after the authorized probe repair",
+  "date": "2026-10-19",
+  "execution_mode": "local, synthetic, offline",
+  "finding": "The first full Phase 8 suite run after the mutation group passed reported 195 of 197. Both failures were false positives in two suite checks, not implementation defects: the provider-identifier check matched its own regular-expression text in tests/engine-governance-phase8/run.mjs, and the no-execution check matched ordinary regular-expression .exec( calls in the Phase 8 modules.",
+  "correction": [
+    "Provider-identifier pattern is built from string fragments so the suite file does not match itself; it still matches the same identifiers, keys and endpoint.",
+    "No-execution pattern matches fetch(, http or https URLs, spawn calls, execSync( and a bare exec( call, but not a method call such as re.exec(."
+  ],
+  "scope": "tests/engine-governance-phase8/run.mjs only (permitted Phase 8 test-harness location).",
+  "not_changed": [
+    "lib/engine-governance-phase8/",
+    "probes and mutations",
+    "earlier packages and tests",
+    "compatibility conditions CPC-01 to CPC-04",
+    "tracked files, public routes, deployment, PR #40, B-018, trackers"
+  ],
+  "superseding_correction": {
+    "date": "2026-10-19",
+    "old_finding": "The record described the provider pattern as still matching the same identifiers, keys and endpoint (accurate), and the execution pattern as excluding only method calls such as re.exec( (inaccurate in effect: it excluded every method-call form of exec, including cp.exec and child_process.exec). EXECUTION_RECORD.md stated that both checks \"still forbid the same things\".",
+    "new_evidence": "Read-only audit: the corrected process-execution pattern no longer detected cp.exec(...) or child_process.exec(...), which the original pattern detected. Neither check named the violating file or rule.",
+    "corrected_status": "The correction unintentionally weakened the process-execution safeguard. The earlier statement was inaccurate. Both safeguards were rebuilt; see AUDIT_REMEDIATION_RECORD.json.",
+    "note": "The original fields of this record are preserved unchanged above."
+  }
+}

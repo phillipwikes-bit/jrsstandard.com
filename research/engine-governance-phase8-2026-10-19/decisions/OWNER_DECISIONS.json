@@ -1,0 +1,178 @@
+{
+  "register_type": "jrs-phase8-owner-decisions/1.0.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "statement": "Open decisions are questions only. The recorded owner authorizations are decided and limited to their stated scope. Nothing here is recommended.",
+  "decisions": [
+    {
+      "status": "open",
+      "raised_on": "2026-10-19",
+      "decided_by": "owner (not yet decided)",
+      "id": "P8-OD-01",
+      "question": "Whether to authorize a separately scoped Engine fix for the deferred issues (AR-040 person-directed contract language, invalid calendar dates, AR-035 legal-conclusion note, wider negation, duration, control and employment forms).",
+      "basis": "Phase 7 backlog P7B-010, P7B-011, P7B-014; P7-OD-03, P7-OD-05, P7-OD-06.",
+      "blocks": "Any further candidate version.",
+      "carries": [
+        "P7-OD-03",
+        "P7-OD-05",
+        "P7-OD-06"
+      ]
+    },
+    {
+      "status": "open",
+      "raised_on": "2026-10-19",
+      "decided_by": "owner (not yet decided)",
+      "id": "P8-OD-02",
+      "question": "How to handle the declared cross-package compatibility conditions CPC-01 to CPC-04: keep them visible as they are, or authorize a redesign of the earlier file-ownership checks under a recorded change.",
+      "basis": "governance/COMPATIBILITY_MANIFEST.json; execution-record/WORKTREE_RUN_RECORD.json.",
+      "blocks": "Any edit to a Phase 4, Phase 6 or Phase 7 test.",
+      "carries": [
+        "P7-OD-04"
+      ]
+    },
+    {
+      "status": "open",
+      "raised_on": "2026-10-19",
+      "decided_by": "owner (not yet decided)",
+      "id": "P8-OD-03",
+      "question": "Whether to preserve or commit the local Phase 6, Phase 7 and Phase 8 work, and in what private location.",
+      "basis": "All three packages are local and uncommitted by instruction.",
+      "blocks": "Any commit, push or transfer of the local packages.",
+      "carries": [
+        "P7-OD-08"
+      ]
+    },
+    {
+      "status": "open",
+      "raised_on": "2026-10-19",
+      "decided_by": "owner (not yet decided)",
+      "id": "P8-OD-04",
+      "question": "Whether any future independent evaluation is authorized, and if so who fills each role and which material classes are permitted (Gate A).",
+      "basis": "INDEPENDENT_EVALUATION_PROTOCOL.md (execution-disabled).",
+      "blocks": "Gates A to F; any statement about performance.",
+      "carries": [
+        "P7-OD-07"
+      ]
+    },
+    {
+      "status": "open",
+      "raised_on": "2026-10-19",
+      "decided_by": "owner (not yet decided)",
+      "id": "P8-OD-05",
+      "question": "Whether the v0.3.1 candidate becomes a proposal for a successor local Engine version, remains a parked candidate, or is discarded.",
+      "basis": "CANDIDATE_QUALIFICATION_RECORD.md.",
+      "blocks": "Any change of the candidate status.",
+      "carries": [
+        "P7-OD-01",
+        "P7-OD-02"
+      ]
+    },
+    {
+      "status": "open",
+      "raised_on": "2026-10-19",
+      "decided_by": "owner (not yet decided)",
+      "id": "P8-OD-06",
+      "question": "Whether the change-impact and rollback model is adopted as the rule for future Engine proposals.",
+      "basis": "CHANGE_IMPACT_AND_ROLLBACK_MODEL.md.",
+      "blocks": "Treating the model as binding.",
+      "carries": []
+    },
+    {
+      "status": "open",
+      "raised_on": "2026-10-19",
+      "decided_by": "owner (not yet decided)",
+      "id": "P8-OD-07",
+      "question": "How the three B-018 controlling source files will be made available for a read-only reconciliation, given they are held outside this container.",
+      "basis": "B-018 OPEN; source files absent from the repository and container.",
+      "blocks": "B-018 reconciliation; any statement depending on the source-aligned records.",
+      "carries": []
+    },
+    {
+      "status": "open",
+      "raised_on": "2026-10-20",
+      "decided_by": "owner (not yet decided)",
+      "id": "P8-OD-08",
+      "question": "Whether to ratify the retroactive later-package registry entries for Phase 6, Phase 7 and Phase 8, whose owner-decision references point to recorded assignment evidence rather than to a formal decision record.",
+      "basis": "governance/LATER_PACKAGE_REGISTRY.json (seeded_retroactively entries).",
+      "blocks": "Treating the seeded entries as formally admitted.",
+      "carries": []
+    },
+    {
+      "status": "open",
+      "raised_on": "2026-10-20",
+      "decided_by": "owner (not yet decided)",
+      "id": "P8-OD-09",
+      "question": "Whether the later-package registry, dual-context result model and future-package admission gate are adopted as the rule for any future local package.",
+      "basis": "TEST_GOVERNANCE_SCALABILITY_MODEL.md; FUTURE_PACKAGE_ADMISSION_GATE.md.",
+      "blocks": "Admitting any future package.",
+      "carries": []
+    }
+  ],
+  "owner_authorizations": [
+    {
+      "id": "OWNER_WORK_ASSIGNMENT_2026-10-20_PHASE9_HUMAN_ADJUDICATION_LAYER",
+      "status": "decided",
+      "raised_on": "2026-10-20",
+      "decided_by": "owner",
+      "question": "Reference for a future local package reservation: a human evidence adjudication and review dossier layer around the v0.3.1 candidate.",
+      "basis": "Owner work assignment of 2026-10-20 (Phase 9), cited again in the Phase 8.2 authorization.",
+      "decision_record": "Owner instruction in session, 2026-10-20: record this exact reference as an owner decision for a future local package reservation.",
+      "blocks": "Nothing; it is required by, and does not replace, the admission gate.",
+      "scope": {
+        "local_package_construction": true,
+        "independent_evaluation": false,
+        "provider_calls": false,
+        "deployment": false,
+        "public_use": false,
+        "commercial_licensing_or_release": false,
+        "real_record_processing": false
+      },
+      "reservation_created": false
+    }
+  ],
+  "phase7_decisions_carried": [
+    {
+      "id": "P7-OD-01",
+      "question": "Whether the v0.3.1 candidate should become a proposal for a successor local Engine version, remain a parked candidate, or be discarded. No release or deployment is implied either way.",
+      "status": "open"
+    },
+    {
+      "id": "P7-OD-02",
+      "question": "Whether the Phase 4 ST-06 degradation (a rationale moved into the residual-risk section is now routed to review by RP-EVL-01) is acceptable over-review.",
+      "status": "open"
+    },
+    {
+      "id": "P7-OD-03",
+      "question": "The scope boundary for person-directed contract language such as Phase 4 AR-040 (\"contract will not be renewed\"). Deferred: it cannot be separated lexically from supplier-contract wording.",
+      "status": "open"
+    },
+    {
+      "id": "P7-OD-04",
+      "question": "How to treat the declared cross-package conflicts: the Phase 4 check on tools/ (from Phase 6) and the Phase 6 check that every new file is a Phase 6 file (from Phase 7).",
+      "status": "open"
+    },
+    {
+      "id": "P7-OD-05",
+      "question": "Whether any rule should be widened (more negation forms, other duration units, other control or employment paraphrases); each widening needs a new sealed scenario set.",
+      "status": "open"
+    },
+    {
+      "id": "P7-OD-06",
+      "question": "Whether invalid calendar dates and the AR-035 legal-conclusion note should enter a later remediation set.",
+      "status": "open"
+    },
+    {
+      "id": "P7-OD-07",
+      "question": "Which future independent evaluation, if any, should examine the abstention and scope rules before any stronger statement is made (P6K-001, P6K-002, P6K-008).",
+      "status": "open"
+    },
+    {
+      "id": "P7-OD-08",
+      "question": "Whether, when and where Phase 6 and Phase 7 material is committed in a public repository.",
+      "status": "open"
+    }
+  ]
+}

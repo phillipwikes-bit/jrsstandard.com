@@ -1,0 +1,34 @@
+running tests/engine-assurance/run.mjs
+  148/148, failed: none
+running tests/engine-evidence-contract/run.mjs
+  123/123, failed: none
+running tests/engine-evidence-graph/run.mjs
+  140/140, failed: none
+running tests/engine-adaptive-reliability/run.mjs
+  268/269, failed: tools unchanged since 5d5374b
+running tests/engine-reliability/run.mjs
+  315/316, failed: every new file is inside the four Phase 6 locations
+running tests/engine-remediation-phase7/run.mjs
+  326/328, failed: every new file is a Phase 6 file or inside the three Phase 7 locations | no Phase 7 file under tools/, api/, docs/, .jrs/ or a public page
+
+registry-derived composition: declared_composition_conditions_only
+  declared_composition_condition: DCC-EC-P4-TOOLS-phase8-governance | phase8-governance
+  declared_composition_condition: DCC-EC-P4-TOOLS-phase9-human-evidence-adjudication | phase9-human-evidence-adjudication
+  declared_composition_condition: DCC-EC-P4-TOOLS-phase6-reliability | phase6-reliability
+  declared_composition_condition: DCC-EC-P6-OWNERSHIP-phase7-candidate | phase7-candidate
+  declared_composition_condition: DCC-EC-P6-OWNERSHIP-phase8-governance | phase8-governance
+  declared_composition_condition: DCC-EC-P6-OWNERSHIP-phase9-human-evidence-adjudication | phase9-human-evidence-adjudication
+  declared_composition_condition: DCC-EC-P7-OWNERSHIP-phase8-governance | phase8-governance
+  declared_composition_condition: DCC-EC-P7-OWNERSHIP-phase9-human-evidence-adjudication | phase9-human-evidence-adjudication
+  declared_composition_condition: DCC-EC-P7-TOOLS-phase8-governance | phase8-governance
+  declared_composition_condition: DCC-EC-P7-TOOLS-phase9-human-evidence-adjudication | phase9-human-evidence-adjudication
+
+verdict: declared_conditions_only
+  declared_compatibility_condition: phase4-change-control | CPC-01 | tools unchanged since 5d5374b
+  declared_composition_condition: phase4-change-control | DCC-EC-P4-TOOLS-phase9-human-evidence-adjudication | tools unchanged since 5d5374b
+  declared_compatibility_condition: phase6-reliability | CPC-02 | every new file is inside the four Phase 6 locations
+  declared_composition_condition: phase6-reliability | DCC-EC-P6-OWNERSHIP-phase9-human-evidence-adjudication | every new file is inside the four Phase 6 locations
+  declared_compatibility_condition: phase7-candidate | CPC-03 | every new file is a Phase 6 file or inside the three Phase 7 locations
+  declared_composition_condition: phase7-candidate | DCC-EC-P7-OWNERSHIP-phase9-human-evidence-adjudication | every new file is a Phase 6 file or inside the three Phase 7 locations
+  declared_compatibility_condition: phase7-candidate | CPC-04 | no Phase 7 file under tools/, api/, docs/, .jrs/ or a public page
+  declared_composition_condition: phase7-candidate | DCC-EC-P7-TOOLS-phase9-human-evidence-adjudication | no Phase 7 file under tools/, api/, docs/, .jrs/ or a public page

@@ -1,0 +1,151 @@
+{
+  "mutations": [
+    {
+      "id": "M01",
+      "description": "Remove V9 quotation-state rule",
+      "applied": true,
+      "expected_failures": [
+        "T12",
+        "T13",
+        "T14"
+      ],
+      "observed_failures": [
+        "T12",
+        "T13",
+        "T14"
+      ],
+      "detected": true
+    },
+    {
+      "id": "M02",
+      "description": "Remove A-DUP request_id check",
+      "applied": true,
+      "expected_failures": [
+        "T17"
+      ],
+      "observed_failures": [
+        "T17"
+      ],
+      "detected": true
+    },
+    {
+      "id": "M03",
+      "description": "Remove V5 size limit",
+      "applied": true,
+      "expected_failures": [
+        "T09"
+      ],
+      "observed_failures": [
+        "T09"
+      ],
+      "detected": true
+    },
+    {
+      "id": "M04",
+      "description": "Remove V6 empty-body check",
+      "applied": true,
+      "expected_failures": [
+        "T02",
+        "T03"
+      ],
+      "observed_failures": [
+        "T02",
+        "T03"
+      ],
+      "detected": true
+    },
+    {
+      "id": "M05",
+      "description": "Remove V3 length stop check",
+      "applied": true,
+      "expected_failures": [
+        "T05"
+      ],
+      "observed_failures": [
+        "T05"
+      ],
+      "detected": true
+    },
+    {
+      "id": "M06",
+      "description": "Pair check skips graph hash",
+      "applied": true,
+      "expected_failures": [
+        "T20"
+      ],
+      "observed_failures": [
+        "T20"
+      ],
+      "detected": true
+    },
+    {
+      "id": "M07",
+      "description": "Pair check skips binding digest",
+      "applied": true,
+      "expected_failures": [
+        "T21"
+      ],
+      "observed_failures": [
+        "T21"
+      ],
+      "detected": true
+    },
+    {
+      "id": "M08",
+      "description": "Timeout treated as provider error",
+      "applied": true,
+      "expected_failures": [
+        "T18"
+      ],
+      "observed_failures": [
+        "T18"
+      ],
+      "detected": true
+    },
+    {
+      "id": "M09",
+      "description": "Fixture weakened: exact quotation restored in FX-10",
+      "applied": true,
+      "expected_failures": [
+        "T10"
+      ],
+      "observed_failures": [
+        "T10"
+      ],
+      "detected": true
+    },
+    {
+      "id": "M10",
+      "description": "Mock transport attempts a network call",
+      "applied": true,
+      "expected_failures": [
+        "ALL"
+      ],
+      "observed_failures": [
+        "T01",
+        "T02",
+        "T03",
+        "T04",
+        "T05",
+        "T06",
+        "T07",
+        "T08",
+        "T09",
+        "T10",
+        "T11",
+        "T12",
+        "T13",
+        "T14",
+        "T15",
+        "T16",
+        "T17",
+        "T18",
+        "T19",
+        "T20",
+        "T21"
+      ],
+      "detected": true
+    }
+  ],
+  "all_detected": true
+}

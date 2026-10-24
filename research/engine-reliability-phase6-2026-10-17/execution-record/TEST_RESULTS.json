@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-10-19T11:13:53.182Z",
+  "command": "node tests/engine-reliability/run.mjs --record",
+  "node": "v22.22.0",
+  "network_attempts": 0,
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "passed": 316,
+  "failed": 0,
+  "skipped": 0,
+  "failed_checks": [],
+  "library": {
+    "counts": {
+      "as_expected": 51,
+      "known_open_failure_reproduced": 10,
+      "known_open_failure_not_reproduced": 0,
+      "unexpected": 1
+    },
+    "results_hash": "sha256:e67dc30cbba13835364b0cd9eca3202c4297172a6073a42449c717ec3aa243b2"
+  }
+}

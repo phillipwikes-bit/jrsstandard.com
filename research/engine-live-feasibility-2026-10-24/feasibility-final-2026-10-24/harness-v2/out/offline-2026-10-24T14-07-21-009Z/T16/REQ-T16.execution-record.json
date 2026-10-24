@@ -1,0 +1,37 @@
+{
+  "record_format": "jrs-live-pilot-execution-record/0.1.0",
+  "run_id": "offline-2026-10-24T14-07-21-009Z-T16",
+  "request_id": "REQ-T16",
+  "synthetic_record_id": "HF-001",
+  "input_sha256": "f5b6a15779b592fa150142605841c209a28f2afc77adc1fd69208798b5af34ce",
+  "engine_version": "0.3.1-candidate",
+  "candidate_package_sha256": "815c5d5671d0cfcaf62edca0a11938b920e37d058d3e8655ae9e4f9c735925c3",
+  "prompt_sha256": "0ceda8887463a515d241751133c9b0d3bf3364f89b63fa6ac5dda6ac70c8eec2",
+  "adapter_version": "0.2.0-offline",
+  "adapter_sha256": "aa2b97797a9ed2d9476e901f2a54e10b3c7f898af6a9df8b473ac27482d81fb6",
+  "model_identifier": "MOCK-MODEL-NOT-A-PROVIDER",
+  "configuration": {
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_ms": 200,
+    "note": "offline mock configuration"
+  },
+  "sent_at_utc": "2026-10-24T14:07:21.113Z",
+  "captured_at_utc": "2026-10-24T14:07:21.113Z",
+  "replayed_at_utc": "2026-10-24T14:07:21.124Z",
+  "captured_response_file": "/tmp/claude-0/-home-user-jrsstandard-com/2ef9dc98-85d0-521a-aea1-a739f5ce030f/scratchpad/feasibility-final-2026-10-24/harness-v2/out/offline-2026-10-24T14-07-21-009Z/T16/REQ-T16.response.json",
+  "captured_response_sha256": "53b66f64c09a52cbeb78ba9f384e58716e8bbefe81e1994f70a453e93940974d",
+  "validation": {
+    "ok": true
+  },
+  "graph_file": "/tmp/claude-0/-home-user-jrsstandard-com/2ef9dc98-85d0-521a-aea1-a739f5ce030f/scratchpad/feasibility-final-2026-10-24/harness-v2/out/offline-2026-10-24T14-07-21-009Z/T16/REQ-T16.graph.json",
+  "graph_sha256": "01b15584812e6f4a5ca1ca23bbba55c4f8c0d9b840fddeff66c829c8ae698b5f",
+  "lineage": "L3",
+  "response_origin": "mock_transport_fixture",
+  "adapter_transport_mode": "mocked",
+  "engine_execution_mode": "recorded_response_replay",
+  "graph_execution_mode_label": "local_mocked",
+  "authorization_file_sha256": null,
+  "authorization_note": "offline harness test; no live-run authorization exists",
+  "binding_digest": "c2d600dd81556d67a28194524a2d1377f89c6ec8325053a7de7faeb0bef38754"
+}

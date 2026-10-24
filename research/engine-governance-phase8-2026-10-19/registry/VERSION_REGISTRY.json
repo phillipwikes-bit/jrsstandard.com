@@ -1,0 +1,207 @@
+{
+  "registry_type": "jrs-phase8-version-registry/1.0.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "baseline_commit": "428c307af510ff7378615777251fe252dab2dac7",
+  "statement": "Describes earlier packages and their file hashes. Makes no readiness, validation, ownership, commercial or release statement.",
+  "packages": [
+    {
+      "id": "v1-historical",
+      "title": "Frozen v1 Review Engine handler (historical reference)",
+      "status": "frozen",
+      "eligible_for_future_owner_review": false,
+      "kind": "git_object",
+      "source_paths": [
+        "research/engine-evidence-contract-2026-10-10/historical-reference/v1-review-engine.0177c51.js.txt"
+      ],
+      "git_object": {
+        "commit": "0177c5184182b5b1f51ff18c80da29f668996e49",
+        "path": "api/v1/review-engine.js",
+        "blob": "baebb512e5f296e1b41da138b7868aae4b6098fc"
+      },
+      "shared_with": "v0.2-evidence-contract",
+      "file_count": 1,
+      "package_sha256": "sha256:70c76d942960732bbadfa16cb7e9d622ca7380397050aceaba8d9bbe93d6661d",
+      "git_object_content_sha256": "f5b4d634cb6f9adfc1ac09d8896eb7c0a07f8f504c0a6eb3dcce005163a68ebb",
+      "manifest_file": "research/engine-governance-phase8-2026-10-19/registry/manifests/v1-historical.sha256",
+      "test_command": "none of its own; source identity is checked by tests/engine-assurance/run.mjs (\"candidate core is byte-identical to the last executable v1 handler\")",
+      "latest_recorded_result": {
+        "result": "no suite of its own",
+        "source": "lib/engine-assurance/provenance.mjs"
+      },
+      "known_limitations": "Historical only. The public v1 route now returns a refusal-only response; the historical handler is not executed by any later package."
+    },
+    {
+      "id": "v0.1-assurance",
+      "title": "v0.1 Engine assurance package",
+      "status": "frozen",
+      "eligible_for_future_owner_review": false,
+      "kind": "tracked",
+      "source_paths": [
+        "lib/engine-assurance/",
+        "tests/engine-assurance/",
+        "tools/engine-assurance-replay.mjs",
+        "research/engine-assurance-2026-10-10/"
+      ],
+      "git_object": null,
+      "shared_with": null,
+      "file_count": 183,
+      "package_sha256": "sha256:bf47e7b846862232f95864e6f095bd4151b8f5707d0e052fbda4afcc6130e2f4",
+      "git_object_content_sha256": null,
+      "manifest_file": "research/engine-governance-phase8-2026-10-19/registry/manifests/v0.1-assurance.sha256",
+      "test_command": "env -u ANTHROPIC_BASE_URL node tests/engine-assurance/run.mjs",
+      "latest_recorded_result": {
+        "result": "148/148",
+        "date": "2026-10-17",
+        "source": "research/engine-reliability-phase6-2026-10-17/execution-record/PRIOR_SUITE_RESULTS.json",
+        "replay": "31/31 fixtures (research/engine-assurance-2026-10-10/execution-record/EXECUTION_RECORD.json)"
+      },
+      "known_limitations": "research/engine-assurance-2026-10-10/FAILURE_MODE_REGISTER.md and INHERITED_FAILURES.md"
+    },
+    {
+      "id": "v0.2-evidence-contract",
+      "title": "v0.2 evidence contract",
+      "status": "frozen",
+      "eligible_for_future_owner_review": false,
+      "kind": "tracked",
+      "source_paths": [
+        "lib/engine-evidence-contract/",
+        "tests/engine-evidence-contract/",
+        "tools/engine-evidence-contract-replay.mjs",
+        "research/engine-evidence-contract-2026-10-10/"
+      ],
+      "git_object": null,
+      "shared_with": null,
+      "file_count": 235,
+      "package_sha256": "sha256:91464918068fd336b546ca0e929f3d9da19471e555ed463b057b6fdd7dabd251",
+      "git_object_content_sha256": null,
+      "manifest_file": "research/engine-governance-phase8-2026-10-19/registry/manifests/v0.2-evidence-contract.sha256",
+      "test_command": "env -u ANTHROPIC_BASE_URL node tests/engine-evidence-contract/run.mjs",
+      "latest_recorded_result": {
+        "result": "123/123",
+        "date": "2026-10-17",
+        "source": "research/engine-reliability-phase6-2026-10-17/execution-record/PRIOR_SUITE_RESULTS.json",
+        "replay": "52/52 cases (research/engine-evidence-contract-2026-10-10/execution-record/EXECUTION_RECORD.json)"
+      },
+      "known_limitations": "research/engine-evidence-contract-2026-10-10/KNOWN_FAILURE_MODES_AND_STOP_CONDITIONS.md"
+    },
+    {
+      "id": "v0.3-evidence-graph",
+      "title": "v0.3 evidence graph compiler (frozen local baseline)",
+      "status": "frozen",
+      "eligible_for_future_owner_review": false,
+      "kind": "tracked",
+      "source_paths": [
+        "lib/engine-evidence-graph/",
+        "tests/engine-evidence-graph/",
+        "tools/engine-evidence-graph-replay.mjs",
+        "research/evidence-graph-compiler-2026-10-10/"
+      ],
+      "git_object": null,
+      "shared_with": null,
+      "file_count": 218,
+      "package_sha256": "sha256:ecf0c04766a4e521af7ec1ca93d194a94c6db2fd2e2c130884296863b8756b12",
+      "git_object_content_sha256": null,
+      "manifest_file": "research/engine-governance-phase8-2026-10-19/registry/manifests/v0.3-evidence-graph.sha256",
+      "test_command": "env -u ANTHROPIC_BASE_URL node tests/engine-evidence-graph/run.mjs",
+      "latest_recorded_result": {
+        "result": "140/140",
+        "date": "2026-10-17",
+        "source": "research/engine-reliability-phase6-2026-10-17/execution-record/PRIOR_SUITE_RESULTS.json",
+        "replay": "35/35 cases (research/evidence-graph-compiler-2026-10-10/execution-record/EXECUTION_RECORD.json)"
+      },
+      "known_limitations": "research/evidence-graph-compiler-2026-10-10/FAILURE_MODE_REGISTER.md"
+    },
+    {
+      "id": "phase4-change-control",
+      "title": "Phase 4 adaptive reliability and change-control package",
+      "status": "frozen",
+      "eligible_for_future_owner_review": false,
+      "kind": "tracked",
+      "source_paths": [
+        "lib/engine-change-control/",
+        "tests/engine-adaptive-reliability/",
+        "research/adaptive-reliability-2026-10-13/"
+      ],
+      "git_object": null,
+      "shared_with": null,
+      "file_count": 277,
+      "package_sha256": "sha256:8b12a2384e81d727cc8eb57b12f02632a6a44d419e25e71d44ba6c2fb3a6f853",
+      "git_object_content_sha256": null,
+      "manifest_file": "research/engine-governance-phase8-2026-10-19/registry/manifests/phase4-change-control.sha256",
+      "test_command": "env -u ANTHROPIC_BASE_URL node tests/engine-adaptive-reliability/run.mjs",
+      "latest_recorded_result": {
+        "result": "269/269",
+        "date": "2026-10-17",
+        "source": "research/engine-reliability-phase6-2026-10-17/execution-record/PRIOR_SUITE_RESULTS.json"
+      },
+      "known_limitations": "research/adaptive-reliability-2026-10-13/ADAPTIVE_FAILURE_MODE_REGISTER.md"
+    },
+    {
+      "id": "phase6-reliability",
+      "title": "Phase 6 reliability, regression and adaptation framework",
+      "status": "local_only",
+      "eligible_for_future_owner_review": true,
+      "kind": "untracked",
+      "source_paths": [
+        "lib/engine-reliability/",
+        "tests/engine-reliability/",
+        "tools/engine-reliability-replay.mjs",
+        "research/engine-reliability-phase6-2026-10-17/"
+      ],
+      "git_object": null,
+      "shared_with": null,
+      "file_count": 139,
+      "package_sha256": "sha256:cdd51355e92e8a62dbdb3f2147115f17f559d92efc12a951f4c45e96c1a38576",
+      "git_object_content_sha256": null,
+      "manifest_file": "research/engine-governance-phase8-2026-10-19/registry/manifests/phase6-reliability.sha256",
+      "test_command": "env -u ANTHROPIC_BASE_URL node tests/engine-reliability/run.mjs",
+      "latest_recorded_result": {
+        "result": "316/316",
+        "date": "2026-10-19T11:13:53.182Z",
+        "source": "research/engine-reliability-phase6-2026-10-17/execution-record/TEST_RESULTS.json"
+      },
+      "known_limitations": "research/engine-reliability-phase6-2026-10-17/KNOWN_FAILURE_MODES.md"
+    },
+    {
+      "id": "phase7-candidate",
+      "title": "Phase 7 v0.3.1 remediation candidate",
+      "status": "candidate_only",
+      "eligible_for_future_owner_review": true,
+      "kind": "untracked",
+      "source_paths": [
+        "lib/engine-evidence-graph-v0.3.1-candidate/",
+        "tests/engine-remediation-phase7/",
+        "research/engine-remediation-phase7-2026-10-19/"
+      ],
+      "git_object": null,
+      "shared_with": null,
+      "file_count": 147,
+      "package_sha256": "sha256:815c5d5671d0cfcaf62edca0a11938b920e37d058d3e8655ae9e4f9c735925c3",
+      "git_object_content_sha256": null,
+      "manifest_file": "research/engine-governance-phase8-2026-10-19/registry/manifests/phase7-candidate.sha256",
+      "test_command": "env -u ANTHROPIC_BASE_URL node tests/engine-remediation-phase7/run.mjs",
+      "latest_recorded_result": {
+        "result": "328/328",
+        "date": "2026-10-19T13:57:52.546Z",
+        "source": "research/engine-remediation-phase7-2026-10-19/execution-record/TEST_RESULTS.json",
+        "mutations": "79/79 killed directly (execution-record/MUTATION_EVIDENCE.json)"
+      },
+      "known_limitations": "research/engine-remediation-phase7-2026-10-19/KNOWN_LIMITATIONS.md"
+    }
+  ],
+  "recorded_at": "2026-10-19T14:56:57.008Z",
+  "phase7_corroboration": {
+    "seal_verifies": true,
+    "files": 147,
+    "latest_modification": "2026-10-19T13:58:05.573Z",
+    "final_handoff_write_bound": "2026-10-19T13:58:06Z",
+    "modified_after_handoff": false,
+    "note": "Phase 7 kept no complete file manifest of its own. Its seal (contract, scenarios, transforms, rule packs, evaluator files) verifies, and no Phase 7 file was modified after the final handoff write. The Phase 8 manifest is the first complete cryptographic manifest of the Phase 7 package."
+  },
+  "registry_sha256": "sha256:39a41b3921bdcd0c782eb48844a4ff9cb3266265d1b84f3b4ebc8c859d552e02"
+}

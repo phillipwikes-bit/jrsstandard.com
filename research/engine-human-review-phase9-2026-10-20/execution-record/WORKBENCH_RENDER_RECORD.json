@@ -1,0 +1,21 @@
+{
+  "generated_at": "2026-10-20T12:54:08.024Z",
+  "javascript_enabled": false,
+  "measurement_note": "Overflow is measured with page evaluation in a separate offline context; the pages contain no script.",
+  "pages": [
+    {
+      "page": "index.html",
+      "viewport": "desktop",
+      "width": 1280,
+      "non_file_requests": 0,
+      "horizontal_overflow": false
+    },
+    {
+      "page": "index.html",
+      "viewport": "mobile",
+      "width": 390,
+      "non_file_requests": 0,
+      "horizontal_overflow": false
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "model_type": "jrs-phase8-change-impact-model/1.0.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "conservative_rule": "No later change may be treated as neutral when it can alter a refusal boundary, evidence requirement, condition status, limitation, or review route.",
+  "sensitive_surfaces": [
+    "refusal_boundary",
+    "evidence_requirement",
+    "condition_status",
+    "limitation",
+    "review_route"
+  ],
+  "classes": [
+    {
+      "id": "documentation-only",
+      "evidence": "Diff showing only documents changed; claim guard clean.",
+      "regression": "Document checks of the affected package.",
+      "new_candidate_version": false,
+      "invalidates_sealed_evaluation": false,
+      "rollback": "Revert the document.",
+      "owner_decision": false,
+      "counsel_trigger": "Any change to rights, attribution, public or commercial language."
+    },
+    {
+      "id": "test-only",
+      "evidence": "Diff showing only tests changed; mutation run of the affected suite with every mutation caught directly.",
+      "regression": "Full suite of the affected package plus its mutation group.",
+      "new_candidate_version": false,
+      "invalidates_sealed_evaluation": false,
+      "rollback": "Revert the test; earlier recorded result stays as recorded.",
+      "owner_decision": true,
+      "counsel_trigger": "None unless the test encodes a scope or legal boundary."
+    },
+    {
+      "id": "rule-pack change",
+      "evidence": "Sealed positive, nearby benign, malformed and reordered scenarios per changed rule, sealed before the change; differential against the current candidate.",
+      "regression": "All existing inputs, all sealed scenarios, stability transforms, over-refusal table, mutation group.",
+      "new_candidate_version": true,
+      "invalidates_sealed_evaluation": true,
+      "rollback": "Restore the prior signed pack set; packs are versioned and content-sealed.",
+      "owner_decision": true,
+      "counsel_trigger": "Rules touching excluded domains or employment content."
+    },
+    {
+      "id": "intake-boundary change",
+      "evidence": "Benign controls showing no in-scope record is refused; excluded-domain scenarios showing refusal holds.",
+      "regression": "All refusal and scope scenarios across packages; differential on every existing input.",
+      "new_candidate_version": true,
+      "invalidates_sealed_evaluation": true,
+      "rollback": "Restore the previous intake module and its version.",
+      "owner_decision": true,
+      "counsel_trigger": "Always (scope of excluded domains)."
+    },
+    {
+      "id": "evidence-validation change",
+      "evidence": "Quote-resolution and offset scenarios, including unrelated-quotation cases.",
+      "regression": "All existing inputs, Phase 6 library, Phase 7 scenarios, stability transforms.",
+      "new_candidate_version": true,
+      "invalidates_sealed_evaluation": true,
+      "rollback": "Restore the previous validation module and version.",
+      "owner_decision": true,
+      "counsel_trigger": "None unless evidence language reaches public text."
+    },
+    {
+      "id": "status-routing change",
+      "evidence": "Sealed expectation for every affected condition; no favourable transition without explicit owner authorization.",
+      "regression": "All existing inputs and scenarios; differential classification with fail-closed classes.",
+      "new_candidate_version": true,
+      "invalidates_sealed_evaluation": true,
+      "rollback": "Restore previous routing and version.",
+      "owner_decision": true,
+      "counsel_trigger": "If any status becomes more favourable."
+    },
+    {
+      "id": "prompt change",
+      "evidence": "Prompt diff, prompt version increment, response-contract compatibility check.",
+      "regression": "All contract and graph fixtures; differential on mocked responses.",
+      "new_candidate_version": true,
+      "invalidates_sealed_evaluation": true,
+      "rollback": "Restore the previous prompt version.",
+      "owner_decision": true,
+      "counsel_trigger": "If instructions about excluded domains or legal conclusions change."
+    },
+    {
+      "id": "evaluation-protocol change",
+      "evidence": "Protocol diff and new seal; reason recorded.",
+      "regression": "Protocol validation; Phase 8 governance suite.",
+      "new_candidate_version": false,
+      "invalidates_sealed_evaluation": true,
+      "rollback": "Restore the previous sealed protocol.",
+      "owner_decision": true,
+      "counsel_trigger": "Any change to material classes, roles or authorization."
+    },
+    {
+      "id": "model/provider change",
+      "evidence": "Identifier, version, review date and reason recorded; offline fixtures re-run; a new sealed evaluation is required before any statement about behaviour.",
+      "regression": "Everything above plus a new protocol freeze.",
+      "new_candidate_version": true,
+      "invalidates_sealed_evaluation": true,
+      "rollback": "Restore the previous identifier; never silently fall back.",
+      "owner_decision": true,
+      "counsel_trigger": "Always (data handling and provider terms).",
+      "requires_evaluation_review": true
+    },
+    {
+      "id": "public-claim change",
+      "evidence": "Claim, evidence, limitation, rights and regulatory implication recorded; publication review.",
+      "regression": "Claim guard on all public text; zero-drift guards.",
+      "new_candidate_version": false,
+      "invalidates_sealed_evaluation": false,
+      "rollback": "Restore previous public text and re-verify production bytes.",
+      "owner_decision": true,
+      "counsel_trigger": "Always."
+    }
+  ]
+}

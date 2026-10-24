@@ -1,0 +1,388 @@
+{
+  "record_type": "jrs-phase8-candidate-qualification-record/1.0.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "candidate": "lib/engine-evidence-graph-v0.3.1-candidate (0.3.1-candidate)",
+  "base": "lib/engine-evidence-graph (0.3.0-local)",
+  "evidence_kind": "local_engineering_check",
+  "independent_evaluation": "not_authorized_not_conducted",
+  "statement": "These are local engineering checks on synthetic material, run by the team that built the candidate. They are not an independent evaluation. Passing them does not establish semantic validity, accuracy, reliability in use, legal compliance or readiness.",
+  "not_established": [
+    "semantic validity",
+    "accuracy",
+    "reliability in use",
+    "legal compliance",
+    "readiness for release, deployment, sale or licensing",
+    "performance on real records"
+  ],
+  "components": {
+    "differential": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/results/QUALIFICATION_RESULTS.json",
+        "sha256": "ce1bd5a1edc06f3a1a000aa0b3d401f9413afe17ed899ebf0e1fd73ecdd40dff",
+        "manifest_sha256": "ce1bd5a1edc06f3a1a000aa0b3d401f9413afe17ed899ebf0e1fd73ecdd40dff"
+      },
+      "existing_inputs": 194,
+      "existing_counts": {
+        "no_behavioral_difference": 171,
+        "intended_safe_degradation": 19,
+        "intended_refusal": 3,
+        "intended_safe_routing": 1
+      },
+      "phase7_scenarios": 50,
+      "phase7_counts": {
+        "intended_safe_degradation": 24,
+        "no_behavioral_difference": 18,
+        "intended_safe_routing": 4,
+        "intended_refusal": 4
+      },
+      "recorded_statement": "Frozen v0.3 against the v0.3.1 candidate on identical synthetic inputs. Local deterministic behaviour only."
+    },
+    "sealed_scenarios": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/results/SCENARIO_RESULTS.json",
+        "sha256": "84297fff9dd93b44793364e306f2baab0883be9e59f5d41c9e31b0ceae23770e",
+        "manifest_sha256": "84297fff9dd93b44793364e306f2baab0883be9e59f5d41c9e31b0ceae23770e"
+      },
+      "total": 50,
+      "counts": {
+        "as_expected": 50
+      }
+    },
+    "stability_transforms": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/stability/STABILITY_RESULTS.json",
+        "sha256": "3a3052be50b5de479892f6e7cf868192ca442b3ab4ee278c69180c29179dab66",
+        "manifest_sha256": "3a3052be50b5de479892f6e7cf868192ca442b3ab4ee278c69180c29179dab66"
+      },
+      "total": 32,
+      "as_expected": 32,
+      "invariant_total": 17,
+      "invariant_non_favorable_base": 10,
+      "results_hash": "sha256:97a16edbbab65d6e7874d0dc9e9c3a6863992cfae10a7096c3f379e030d40736",
+      "recorded_statement": "Synthetic metamorphic checks in a limited local context. Not a robustness, reliability, accuracy or validation result."
+    },
+    "mutation": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/execution-record/MUTATION_EVIDENCE.json",
+        "sha256": "792aa195dd4aae07f93413a420321372bff434ceed72be62d5687f21629b1273",
+        "manifest_sha256": "792aa195dd4aae07f93413a420321372bff434ceed72be62d5687f21629b1273"
+      },
+      "total": 79,
+      "killed": 79,
+      "survived": 0,
+      "load_failures": 0,
+      "probes": 94,
+      "recorded_at": "2026-10-19T13:57:52.546Z"
+    },
+    "determinism": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/execution-record/DETERMINISM_RECORD.json",
+        "sha256": "a31b31e1f31216cc810a72ddb3db37dbc527bf1e0b0984fce8401a480d75bd2e",
+        "manifest_sha256": "a31b31e1f31216cc810a72ddb3db37dbc527bf1e0b0984fce8401a480d75bd2e"
+      },
+      "passes": 5,
+      "distinct_hashes": 1,
+      "hash": "sha256:6be752fa7387460246d3880f0dff9f9850029397692fa34d2bd0ddddbe060bcd"
+    },
+    "over_refusal": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/results/OVER_REFUSAL_TABLE.json",
+        "sha256": "0c3d746f2130f7875f934b1abe5241bea5de81cc6389f93ece720a8a88e95d3b",
+        "manifest_sha256": "0c3d746f2130f7875f934b1abe5241bea5de81cc6389f93ece720a8a88e95d3b"
+      },
+      "recorded_statement": "Local engineering observations on synthetic target and nearby benign cases. Not accuracy or performance measures.",
+      "rows": [
+        {
+          "rule_id": "RP-CHR-01",
+          "target_cases": 3,
+          "target_cases_routed_as_sealed": 3,
+          "benign_cases": 1,
+          "benign_cases_refused_or_degraded": 0
+        },
+        {
+          "rule_id": "RP-CHR-02",
+          "target_cases": 3,
+          "target_cases_routed_as_sealed": 3,
+          "benign_cases": 1,
+          "benign_cases_refused_or_degraded": 0
+        },
+        {
+          "rule_id": "RP-CHR-03",
+          "target_cases": 3,
+          "target_cases_routed_as_sealed": 3,
+          "benign_cases": 1,
+          "benign_cases_refused_or_degraded": 0
+        },
+        {
+          "rule_id": "RP-CHR-04",
+          "target_cases": 3,
+          "target_cases_routed_as_sealed": 3,
+          "benign_cases": 1,
+          "benign_cases_refused_or_degraded": 0
+        },
+        {
+          "rule_id": "RP-CON-01",
+          "target_cases": 4,
+          "target_cases_routed_as_sealed": 4,
+          "benign_cases": 2,
+          "benign_cases_refused_or_degraded": 0
+        },
+        {
+          "rule_id": "RP-EVL-01",
+          "target_cases": 4,
+          "target_cases_routed_as_sealed": 4,
+          "benign_cases": 2,
+          "benign_cases_refused_or_degraded": 0
+        },
+        {
+          "rule_id": "RP-NEG-01",
+          "target_cases": 4,
+          "target_cases_routed_as_sealed": 4,
+          "benign_cases": 2,
+          "benign_cases_refused_or_degraded": 0
+        },
+        {
+          "rule_id": "RP-STR-01",
+          "target_cases": 4,
+          "target_cases_routed_as_sealed": 4,
+          "benign_cases": 1,
+          "benign_cases_refused_or_degraded": 0
+        },
+        {
+          "rule_id": "RP-SCO-01",
+          "target_cases": 4,
+          "target_cases_routed_as_sealed": 4,
+          "benign_cases": 2,
+          "benign_cases_refused_or_degraded": 0
+        }
+      ]
+    },
+    "phase7_suite": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/execution-record/TEST_RESULTS.json",
+        "sha256": "f15b7de8daa0f2f4698f9e9a72b7c3a42604e8476b1a673b690a49442337c211",
+        "manifest_sha256": "f15b7de8daa0f2f4698f9e9a72b7c3a42604e8476b1a673b690a49442337c211"
+      },
+      "passed": 328,
+      "failed": 0,
+      "recorded_at": "2026-10-19T13:57:52.546Z",
+      "note": "Time-bound recorded result for the sealed Phase 7 scope."
+    },
+    "phase6_library_on_candidate": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/results/PHASE6_LIBRARY_ON_CANDIDATE.json",
+        "sha256": "2e198014457851aa43604ef0c3eab8c8052bdd3e8c8f3f796576651df6cc9b21",
+        "manifest_sha256": "2e198014457851aa43604ef0c3eab8c8052bdd3e8c8f3f796576651df6cc9b21"
+      },
+      "counts": {
+        "as_expected": 52,
+        "known_open_failure_not_reproduced": 10
+      },
+      "recorded_note": "Phase 6 sealed expectations describe safe behaviour; Phase 6 known open failures that the candidate now handles appear as known_open_failure_not_reproduced. Informational; Phase 6 artifacts are unchanged."
+    },
+    "known_limitations": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/KNOWN_LIMITATIONS.md",
+        "sha256": "ce9af7030a30706efc97b177865e6ddab5f3faa2bd4b0df6d8bfa0fb2aae2705",
+        "manifest_sha256": "ce9af7030a30706efc97b177865e6ddab5f3faa2bd4b0df6d8bfa0fb2aae2705"
+      }
+    },
+    "owner_decisions": {
+      "source": {
+        "path": "research/engine-remediation-phase7-2026-10-19/OWNER_DECISION_REGISTER.md",
+        "sha256": "785fa6a2955a5121c2dcb494f0cf7b5f28d22a7cc6fe4df11754ab898ee8da84",
+        "manifest_sha256": "785fa6a2955a5121c2dcb494f0cf7b5f28d22a7cc6fe4df11754ab898ee8da84"
+      }
+    }
+  },
+  "open_issues": [
+    {
+      "issue_id": "P7B-001",
+      "ref": "P6-RT-07 (P6K-009)",
+      "recorded_decision": "included",
+      "owner_decision_required": "Whether to test the discrimination label (outside Phase 7 scope by instruction).",
+      "independent_evaluation_required_before_stronger_claim": false,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-002",
+      "ref": "P6K-001 presence without semantic support",
+      "recorded_decision": "included",
+      "owner_decision_required": "Whether the ST-06 degradation (rationale moved into the residual-risk section) is acceptable over-review.",
+      "independent_evaluation_required_before_stronger_claim": true,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-003",
+      "ref": "P6K-002 negated rationale",
+      "recorded_decision": "included",
+      "owner_decision_required": "Whether \"Not because of cost, ...\" style sentences should stay routed to review.",
+      "independent_evaluation_required_before_stronger_claim": true,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-004",
+      "ref": "P6K-003 assessment after decision",
+      "recorded_decision": "included",
+      "owner_decision_required": "None for retention; widening needs a decision.",
+      "independent_evaluation_required_before_stronger_claim": false,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-005",
+      "ref": "P6K-004 two expiry dates",
+      "recorded_decision": "included",
+      "owner_decision_required": "How records that legitimately state an original and an extended expiry should be treated.",
+      "independent_evaluation_required_before_stronger_claim": false,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-006",
+      "ref": "P6K-005 missing decision date",
+      "recorded_decision": "included",
+      "owner_decision_required": "None for retention.",
+      "independent_evaluation_required_before_stronger_claim": false,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-007",
+      "ref": "P6K-006 duration inconsistent with dates",
+      "recorded_decision": "included",
+      "owner_decision_required": "Whether other duration units should be read.",
+      "independent_evaluation_required_before_stronger_claim": false,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-008",
+      "ref": "P6K-007 paraphrased control conflict",
+      "recorded_decision": "included",
+      "owner_decision_required": "Which further control families, if any, to add.",
+      "independent_evaluation_required_before_stronger_claim": false,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-009",
+      "ref": "P6K-008 reworded employment language",
+      "recorded_decision": "included",
+      "owner_decision_required": "Which further employment rewordings to cover.",
+      "independent_evaluation_required_before_stronger_claim": true,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-010",
+      "ref": "Phase 4 AR-040 (contract non-renewal for a person, P6K-008 family)",
+      "recorded_decision": "DEFERRED_PENDING_OWNER_DECISION",
+      "owner_decision_required": "Scope boundary for person-directed contract language.",
+      "independent_evaluation_required_before_stronger_claim": true,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-011",
+      "ref": "Invalid calendar dates (for example 2026-02-30)",
+      "recorded_decision": "deferred",
+      "owner_decision_required": "Whether to add this to a later remediation set.",
+      "independent_evaluation_required_before_stronger_claim": false,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-012",
+      "ref": "P6-RT-07 general form: any graph self-validation failure",
+      "recorded_decision": "rejected",
+      "owner_decision_required": "None unless the trade-off is revisited.",
+      "independent_evaluation_required_before_stronger_claim": false,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-013",
+      "ref": "P6K-001 general form: semantic support",
+      "recorded_decision": "rejected",
+      "owner_decision_required": "Whether semantic support is ever in scope.",
+      "independent_evaluation_required_before_stronger_claim": true,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7B-014",
+      "ref": "Phase 4 AR-035 (candidate note \"acted lawfully\")",
+      "recorded_decision": "deferred",
+      "owner_decision_required": "Whether to include it in a later set.",
+      "independent_evaluation_required_before_stronger_claim": false,
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7-OD-01",
+      "ref": "Phase 7 owner decision",
+      "question": "Whether the v0.3.1 candidate should become a proposal for a successor local Engine version, remain a parked candidate, or be discarded. No release or deployment is implied either way.",
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7-OD-02",
+      "ref": "Phase 7 owner decision",
+      "question": "Whether the Phase 4 ST-06 degradation (a rationale moved into the residual-risk section is now routed to review by RP-EVL-01) is acceptable over-review.",
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7-OD-03",
+      "ref": "Phase 7 owner decision",
+      "question": "The scope boundary for person-directed contract language such as Phase 4 AR-040 (\"contract will not be renewed\"). Deferred: it cannot be separated lexically from supplier-contract wording.",
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7-OD-04",
+      "ref": "Phase 7 owner decision",
+      "question": "How to treat the declared cross-package conflicts: the Phase 4 check on tools/ (from Phase 6) and the Phase 6 check that every new file is a Phase 6 file (from Phase 7).",
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7-OD-05",
+      "ref": "Phase 7 owner decision",
+      "question": "Whether any rule should be widened (more negation forms, other duration units, other control or employment paraphrases); each widening needs a new sealed scenario set.",
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7-OD-06",
+      "ref": "Phase 7 owner decision",
+      "question": "Whether invalid calendar dates and the AR-035 legal-conclusion note should enter a later remediation set.",
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7-OD-07",
+      "ref": "Phase 7 owner decision",
+      "question": "Which future independent evaluation, if any, should examine the abstention and scope rules before any stronger statement is made (P6K-001, P6K-002, P6K-008).",
+      "status": "active",
+      "resolution_record": null
+    },
+    {
+      "issue_id": "P7-OD-08",
+      "ref": "Phase 7 owner decision",
+      "question": "Whether, when and where Phase 6 and Phase 7 material is committed in a public repository.",
+      "status": "active",
+      "resolution_record": null
+    }
+  ],
+  "record_sha256": "sha256:814baa3b3b2dee38e2d6a062e659d29025a2d3629290ad7167220ca0d9f5e5ca"
+}

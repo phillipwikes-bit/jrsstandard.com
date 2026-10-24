@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-10-20T06:12:03.255Z",
+  "command": "node tests/engine-governance-phase8/run.mjs --record",
+  "node": "v22.22.0",
+  "network_attempts": 0,
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "passed": 474,
+  "failed": 0,
+  "by_kind": {
+    "direct": 246,
+    "negative": 130,
+    "mutation": 98
+  },
+  "failed_checks": []
+}

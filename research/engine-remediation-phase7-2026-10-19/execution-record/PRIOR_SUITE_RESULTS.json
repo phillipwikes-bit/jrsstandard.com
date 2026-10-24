@@ -1,0 +1,14 @@
+{
+  "record_type": "prior-version suite results, run unchanged after the Phase 7 files were added",
+  "run_date": "2026-10-19",
+  "commands": "env -u ANTHROPIC_BASE_URL node tests/<suite>/run.mjs",
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "before_phase7": { "engine-assurance": "148/148", "engine-evidence-contract": "123/123", "engine-evidence-graph": "140/140", "engine-adaptive-reliability": "268/269", "engine-reliability": "316/316" },
+  "after_phase7": { "engine-assurance": "148/148", "engine-evidence-contract": "123/123", "engine-evidence-graph": "140/140", "engine-adaptive-reliability": "268/269", "engine-reliability": "315/316" },
+  "cross_package_conflicts": [
+    { "suite": "tests/engine-adaptive-reliability/run.mjs (Phase 4)", "check": "tools unchanged since 5d5374b", "cause": "Pre-existing from Phase 6: the Phase 6 file tools/engine-reliability-replay.mjs is untracked under tools/. Phase 7 added nothing under tools/.", "status": "declared; unchanged from Phase 6; owner decision P7-OD-04", "suite_modified": false },
+    { "suite": "tests/engine-reliability/run.mjs (Phase 6)", "check": "every new file is inside the four Phase 6 locations", "cause": "The Phase 6 check treats any untracked file outside its four locations as a failure. Phase 7 adds the candidate library, its research folder and its test folder, as the Phase 7 assignment requires. No Phase 6 file was changed (Phase 7 preservation group compares all 139 Phase 6 hashes).", "status": "declared cross-package conflict; unresolved; owner decision P7-OD-04", "suite_modified": false }
+  ],
+  "suites_modified": false,
+  "network_attempts": 0
+}

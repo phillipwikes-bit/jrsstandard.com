@@ -1,0 +1,8 @@
+{
+  "record_type": "post-stop owner-authorized test-coverage repair",
+  "stop": { "date": "2026-10-17", "condition": "mutation survived", "mutation": "MU-51", "file": "lib/engine-reliability/library.mjs", "detail": "U2 exactly-one-limitation check disabled; the only probe removed a limitation, which a second U2 check also detects" },
+  "authorization": { "date": "2026-10-19", "by": "owner instruction in session", "scope": "add one direct test for the duplicated-limitation condition; re-run the full mutation group; proceed only if every mutation is killed" },
+  "change": { "file": "tests/engine-reliability/probes.mjs", "added_probe": "l.universal_duplicate_limitation_detected", "construction": "GC-001 graph copy with a second limitation node and a second LIMITS edge to find:reconstructability" },
+  "not_changed": ["no existing check weakened, removed or reclassified", "no sealed Phase 6 scenario expectation changed", "no transform expectation changed", "no Engine package changed"],
+  "rerun": { "mutations": 64, "killed": 64, "survived": 0, "load_failures": 0, "MU-51_killed_by": ["l.universal_duplicate_limitation_detected"] }
+}

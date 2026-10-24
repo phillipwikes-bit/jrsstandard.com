@@ -1,0 +1,481 @@
+{
+  "statements": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO RELEASE, DEPLOYMENT OR COMMERCIAL READINESS DETERMINATION"
+  ],
+  "authored": "2026-10-20",
+  "basis": "Adjudication class, explanation and control from the record text; predicted Engine status and escalation from reading the v0.3.1 candidate source. No Engine was run.",
+  "expectations": [
+    {
+      "packet_id": "R9-QNS-01",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted authority line names a board and minutes but states that the board did not consider the request, so its words do not show that it was the basis for the exception.",
+      "relevant_control": "CC-WORDS",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-QNS-02",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted minutes are identified but the same line says they concerned a different supplier, so the reference does not identify the basis for this exception.",
+      "relevant_control": "CC-WORDS",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-QNS-03",
+      "expected_class": "does_not_support_finding",
+      "explanation": "A decision and a stated reason are both quoted, but the stated reason (a holiday rota) does not bear on access to shipment tracking reports; any link would be supplied by the reviewer, not the record.",
+      "relevant_control": "CC-PLAUSIBLE",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-QNS-04",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted residual risk rating is a conclusion about risk, not a stated reason for granting access; the reasoning path is not carried by these words.",
+      "relevant_control": "CC-BASIS",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-QNS-05",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted sentence records how the request was made; the form a request took is not a stated reason for the decision, so the quotation does not trace the reasoning.",
+      "relevant_control": "CC-BASIS",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-QNS-06",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted line gives one request date only; a single date cannot show that the sequence of events, documents and decision is consistent.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-QNS-07",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted risk line cites an assessment section but does not identify who authorised the exception or on what authority.",
+      "relevant_control": "CC-WORDS",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-QNS-08",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The second quotation is an expiry date; together with the decision line it says what was granted and for how long, not on what stated basis, so the decision is not reconstructed from these words.",
+      "relevant_control": "CC-BASIS",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-QNS-09",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted sentence reports a past pattern without stating that it was the reason for this decision; treating it as the reason would be a plausible explanation, not a stated one.",
+      "relevant_control": "CC-PLAUSIBLE",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-QNS-10",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted revocation line gives a planned future action date under a condition; it does not show the order of request, assessment and decision.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-SIN-01",
+      "expected_class": "supports_finding",
+      "explanation": "The quoted line names the board, the minutes and their date; the missing item number does not stop a reviewer locating the authority, so the words support the finding.",
+      "relevant_control": "CC-MISSING",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-SIN-02",
+      "expected_class": "insufficient_context",
+      "explanation": "The quoted line gives a date and a generic board name with no minutes or document reference; which authority was relied on cannot be located from the record.",
+      "relevant_control": "CC-MISSING",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-SIN-03",
+      "expected_class": "insufficient_context",
+      "explanation": "The basis names an assessment but no longer states what it found; the decision and one reason are quoted, but the part of the basis resting on the assessment cannot be reconstructed.",
+      "relevant_control": "CC-MISSING",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-SIN-04",
+      "expected_class": "supports_finding",
+      "explanation": "The quoted chronology omits the assessment date, but the request and decision dates it states are in a consistent order and the assessment date is stated elsewhere in the record.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-SIN-05",
+      "expected_class": "insufficient_context",
+      "explanation": "Only one compensating control is stated; whether the remaining controls the assessment relied on exist is not in the record.",
+      "relevant_control": "CC-MISSING",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-SIN-06",
+      "expected_class": "insufficient_context",
+      "explanation": "A reason is quoted, but the basis no longer refers to the contract or the assessment; why reconciliation requires these reports is left for the reviewer to supply.",
+      "relevant_control": "CC-PLAUSIBLE",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-NEG-01",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted sentence negates the stated need; read literally it gives a reason the access is not needed, so it does not trace a reason for the grant.",
+      "relevant_control": "CC-NEGATION",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-NEG-02",
+      "expected_class": "insufficient_context",
+      "explanation": "The stated need applies only if the contract is renewed; the record does not say whether it was, so whether the reason applied cannot be determined.",
+      "relevant_control": "CC-NEGATION",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-NEG-03",
+      "expected_class": "supports_finding",
+      "explanation": "The condition qualifies the grant but does not remove it; the decision and its stated basis are both quoted, so the decision remains reconstructable.",
+      "relevant_control": "CC-NEGATION",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-NEG-04",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted line identifies the minutes but states that they do not include this exception; the words exclude it as the basis.",
+      "relevant_control": "CC-NEGATION",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-NEG-05",
+      "expected_class": "insufficient_context",
+      "explanation": "The negation removes a control the base record states; whether the remaining controls are enough is not stated in the record.",
+      "relevant_control": "CC-NEGATION",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-NEG-06",
+      "expected_class": "supports_finding",
+      "explanation": "The condition on the expiry does not change the stated dates; request, assessment, decision and expiry remain in a consistent order.",
+      "relevant_control": "CC-NEGATION",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CHR-01",
+      "expected_class": "ambiguous",
+      "explanation": "The only dated decision is the date of the minutes; the chronology gives the decision no date, so whether 2026-03-09 is the decision date or the document date is not settled by the record.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-CHR-02",
+      "expected_class": "ambiguous",
+      "explanation": "The meeting is dated 2026-03-09 and the minutes 2026-03-16; the record does not say which is the decision date, and the 90-day grant fits only one of them.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [
+        "ET2"
+      ],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CHR-03",
+      "expected_class": "supports_finding",
+      "explanation": "The added access date follows the decision date; every stated date keeps a consistent order, so the quoted chronology supports the finding.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CHR-04",
+      "expected_class": "ambiguous",
+      "explanation": "The record states a planned revocation on the expiry date and an actual revocation earlier, with no explanation; how long access lasted cannot be settled from the record.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-CHR-05",
+      "expected_class": "record_conflict",
+      "explanation": "The authority line dates the decision 2026-03-11 and the chronology dates it 2026-03-09; the record states two decision dates and does not say which is right.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [
+        "ET2"
+      ],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CHR-06",
+      "expected_class": "supports_finding",
+      "explanation": "The expiry is stated relative to the decision; read with the decision date and the revocation date it gives a consistent sequence, though the Engine cannot read a relative expiry.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "conservative_over_review"
+    },
+    {
+      "packet_id": "R9-CON-01",
+      "expected_class": "record_conflict",
+      "explanation": "One passage says access logs are reviewed weekly and another says that review has not started; the record contradicts itself on a control the assessment relies on.",
+      "relevant_control": "CC-ESCALATE",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [
+        "ET2"
+      ],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CON-02",
+      "expected_class": "record_conflict",
+      "explanation": "The authority line records a board item and the decision is stated as granted, while a note says board approval is pending; the record conflicts on whether the authority was given.",
+      "relevant_control": "CC-WORDS",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [
+        "ET2"
+      ],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CON-03",
+      "expected_class": "record_conflict",
+      "explanation": "The stated reason depends on a contract that the same section says ended before the request; the reason and the record contradict each other.",
+      "relevant_control": "CC-WORDS",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-CON-04",
+      "expected_class": "record_conflict",
+      "explanation": "The residual risk is stated as low and, in a separate note, as unresolved; the record conflicts on the risk the controls are meant to address.",
+      "relevant_control": "CC-WORDS",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [
+        "ET2"
+      ],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CON-05",
+      "expected_class": "record_conflict",
+      "explanation": "Two different expiry dates are stated; the record does not say which applies.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [
+        "ET2"
+      ],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CON-06",
+      "expected_class": "record_conflict",
+      "explanation": "Two quoted passages state the exception as granted and as denied; what was decided cannot be reconstructed without choosing between them.",
+      "relevant_control": "CC-WORDS",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [
+        "ET2"
+      ],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-RGP-01",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The quoted finding says what the reports contain; no step connects that to why the supplier was given access, so the reasoning path to the decision is missing.",
+      "relevant_control": "CC-BASIS",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-RGP-02",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The stated reason restates the request as the justification; a request is not a reason, so the reasoning cannot be followed.",
+      "relevant_control": "CC-BASIS",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-RGP-03",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The basis section refers back to the decision and states no reason or source; there is no reasoning to trace.",
+      "relevant_control": "CC-BASIS",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-RGP-04",
+      "expected_class": "does_not_support_finding",
+      "explanation": "Only the decision line is quoted for reasoning; an outcome is not its own reasoning, so the quotation does not trace a reason.",
+      "relevant_control": "CC-BASIS",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-RGP-05",
+      "expected_class": "insufficient_context",
+      "explanation": "The quoted sentence states a need without saying what for, and attributes a wish to help; neither is a stated reason that connects to the decision.",
+      "relevant_control": "CC-INTENT",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-RGP-06",
+      "expected_class": "does_not_support_finding",
+      "explanation": "The record has no basis section; the decision is quoted but on what stated basis it was made cannot be reconstructed from the record.",
+      "relevant_control": "CC-MISSING",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-SUF-01",
+      "expected_class": "supports_finding",
+      "explanation": "Controls, expiry, authority and basis are all stated with references; nothing material for reconstruction is visibly missing, although the Engine never marks sufficiency supported.",
+      "relevant_control": "CC-MISSING",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "conservative_over_review"
+    },
+    {
+      "packet_id": "R9-SUF-02",
+      "expected_class": "insufficient_context",
+      "explanation": "No compensating control is identified while the risk line relies on the assessment; whether the exception can be reconstructed as controlled is not in the record.",
+      "relevant_control": "CC-MISSING",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-SUF-03",
+      "expected_class": "abstain_and_escalate",
+      "explanation": "The candidate response was not readable, so the dossier carries no quotation and no assessment; the reviewer has nothing bounded to review and should escalate.",
+      "relevant_control": "CC-ESCALATE",
+      "predicted_engine_status": "not_assessed",
+      "expected_escalation_triggers": [
+        "ET1",
+        "ET3"
+      ],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-SUF-04",
+      "expected_class": "outside_authorized_scope",
+      "explanation": "The record contains employment-related content outside the authorized scope; the item is not reviewed and is escalated.",
+      "relevant_control": "CC-ESCALATE",
+      "predicted_engine_status": "not_assessed",
+      "expected_escalation_triggers": [
+        "ET1",
+        "ET3"
+      ],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-SUF-05",
+      "expected_class": "record_conflict",
+      "explanation": "The expiry line says access continues until further notice and the revocation line gives a fixed revocation date; the record conflicts on when access ends.",
+      "relevant_control": "CC-DATES",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CCP-01",
+      "expected_class": "supports_finding",
+      "explanation": "A background line invites an inference about motive, but the quoted reason and its contract reference are unchanged and can be followed to the decision.",
+      "relevant_control": "CC-INTENT",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CCP-02",
+      "expected_class": "ambiguous",
+      "explanation": "The stated reason is hedged (\"probably\"); the record does not settle whether the need was established or assumed.",
+      "relevant_control": "CC-PLAUSIBLE",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-CCP-03",
+      "expected_class": "supports_finding",
+      "explanation": "A later outcome is reported, but the decision and its stated basis are quoted unchanged; what happened later does not change what the record says was decided and why.",
+      "relevant_control": "CC-INTENT",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    },
+    {
+      "packet_id": "R9-CCP-04",
+      "expected_class": "insufficient_context",
+      "explanation": "The quoted line refers to \"the usual board\" and gives a minutes item but no date; which body acted is assumed from familiarity rather than stated.",
+      "relevant_control": "CC-WORDS",
+      "predicted_engine_status": "supported",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "favourable_status_reliant_on_human_review"
+    },
+    {
+      "packet_id": "R9-CCP-05",
+      "expected_class": "abstain_and_escalate",
+      "explanation": "The record contains a directive addressed to the reviewer; the review should not proceed on a record that tries to direct its outcome and should be escalated.",
+      "relevant_control": "CC-ESCALATE",
+      "predicted_engine_status": "review_required",
+      "expected_escalation_triggers": [],
+      "expected_route_appropriateness": "appropriate"
+    }
+  ]
+}

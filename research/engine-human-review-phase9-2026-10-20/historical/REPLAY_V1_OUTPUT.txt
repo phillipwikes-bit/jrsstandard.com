@@ -1,0 +1,127 @@
+running tests/engine-assurance/run.mjs
+  148/148, failed: none
+running tests/engine-evidence-contract/run.mjs
+  123/123, failed: none
+running tests/engine-evidence-graph/run.mjs
+  140/140, failed: none
+running tests/engine-adaptive-reliability/run.mjs
+  268/269, failed: tools unchanged since 5d5374b
+running tests/engine-reliability/run.mjs
+  315/316, failed: every new file is inside the four Phase 6 locations
+running tests/engine-remediation-phase7/run.mjs
+  325/328, failed: every new file is a Phase 6 file or inside the three Phase 7 locations | no Phase 7 file under tools/, api/, docs/, .jrs/ or a public page | no source-aligned controlling file, holdout or label file in the work
+
+registry-derived composition: fail_closed
+  declared_composition_condition: DCC-EC-P4-TOOLS-phase8-governance | phase8-governance
+  declared_composition_condition: DCC-EC-P4-TOOLS-phase9-human-evidence-adjudication | phase9-human-evidence-adjudication
+  declared_composition_condition: DCC-EC-P4-TOOLS-phase6-reliability | phase6-reliability
+  declared_composition_condition: DCC-EC-P6-OWNERSHIP-phase7-candidate | phase7-candidate
+  declared_composition_condition: DCC-EC-P6-OWNERSHIP-phase8-governance | phase8-governance
+  declared_composition_condition: DCC-EC-P6-OWNERSHIP-phase9-human-evidence-adjudication | phase9-human-evidence-adjudication
+  declared_composition_condition: DCC-EC-P7-OWNERSHIP-phase8-governance | phase8-governance
+  declared_composition_condition: DCC-EC-P7-OWNERSHIP-phase9-human-evidence-adjudication | phase9-human-evidence-adjudication
+  declared_composition_condition: DCC-EC-P7-TOOLS-phase8-governance | phase8-governance
+  declared_composition_condition: DCC-EC-P7-TOOLS-phase9-human-evidence-adjudication | phase9-human-evidence-adjudication
+  genuine_regression_or_unexplained: no source-aligned controlling file, holdout or label file in the work | phase7-candidate
+
+verdict: fail_closed
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  package_outside_registry: 
+  unexplained_conflict: phase4-change-control | CPC-01 | tools unchanged since 5d5374b | tools/engine-human-review-phase9-replay.mjs
+  unexplained_conflict: phase6-reliability | CPC-02 | every new file is inside the four Phase 6 locations | lib/engine-human-review-phase9/contract.mjs,lib/engine-human-review-phase9/controls.mjs,lib/engine-human-review-phase9/decision-model.mjs,lib/engine-human-review-phase9/dossier.mjs,lib/engine-human-review-phase9/protocol.mjs,lib/engine-human-review-phase9/rehearsal-schema.mjs,lib/engine-human-review-phase9/rehearsal.mjs,lib/engine-human-review-phase9/stability.mjs,research/engine-human-review-phase9-2026-10-20/BLINDED_SYNTHETIC_REHEARSAL_PROTOCOL.md,research/engine-human-review-phase9-2026-10-20/CHANGELOG.md,research/engine-human-review-phase9-2026-10-20/COGNITIVE_CONTROLS_FOR_REVIEWERS.md,research/engine-human-review-phase9-2026-10-20/DUAL_REVIEW_AND_ADJUDICATION_PROTOCOL.md,research/engine-human-review-phase9-2026-10-20/ENGINE_HUMAN_DISAGREEMENT_PROTOCOL.md,research/engine-human-review-phase9-2026-10-20/HUMAN_EVIDENCE_DOSSIER_CONTRACT.md,research/engine-human-review-phase9-2026-10-20/KNOWN_LIMITATIONS_AND_STOP_CONDITIONS.md,research/engine-human-review-phase9-2026-10-20/OWNER_DECISION_REGISTER.md,research/engine-human-review-phase9-2026-10-20/PHASE9_EXECUTION_RECORD.md,research/engine-human-review-phase9-2026-10-20/PHASE9_FILE_MANIFEST_SHA256.txt,research/engine-human-review-phase9-2026-10-20/PHASE9_HANDOFF.md,research/engine-human-review-phase9-2026-10-20/RELIABILITY_MEASUREMENT_PLAN.md,research/engine-human-review-phase9-2026-10-20/REVIEWER_DECISION_MODEL.md,research/engine-human-review-phase9-2026-10-20/build-documents.mjs,research/engine-human-review-phase9-2026-10-20/build-manifest.mjs,research/engine-human-review-phase9-2026-10-20/execution-record/MUTATION_EVIDENCE.json,research/engine-human-review-phase9-2026-10-20/execution-record/PHASE9_TEST_RESULTS.json,research/engine-human-review-phase9-2026-10-20/execution-record/WORKBENCH_RENDER_RECORD.json,research/engine-human-review-phase9-2026-10-20/rehearsal/DISCLOSED_DIFFERENCES.json,research/engine-human-review-phase9-2026-10-20/rehearsal/EXPECTATIONS.json,research/engine-human-review-phase9-2026-10-20/rehearsal/FIRST_EVALUATOR_RUN.json,research/engine-human-review-phase9-2026-10-20/rehearsal/REHEARSAL_RESULTS.json,research/engine-human-review-phase9-2026-10-20/rehearsal/SEAL.json,research/engine-human-review-phase9-2026-10-20/rehearsal/author-rehearsal.mjs,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-07.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-08.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-09.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-10.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/run-evaluator.mjs,research/engine-human-review-phase9-2026-10-20/rehearsal/seal-rehearsal.mjs,research/engine-human-review-phase9-2026-10-20/stability/transforms.mjs,research/engine-human-review-phase9-2026-10-20/workbench/build-workbench.mjs,research/engine-human-review-phase9-2026-10-20/workbench/index.html,research/engine-human-review-phase9-2026-10-20/workbench/render-check.mjs,research/engine-human-review-phase9-2026-10-20/workbench/screenshots/index-desktop.png,research/engine-human-review-phase9-2026-10-20/workbench/screenshots/index-mobile.png,tests/engine-human-review-phase9/probes.mjs,tests/engine-human-review-phase9/run.mjs,tools/engine-human-review-phase9-replay.mjs
+  unexplained_conflict: phase7-candidate | CPC-03 | every new file is a Phase 6 file or inside the three Phase 7 locations | lib/engine-human-review-phase9/contract.mjs,lib/engine-human-review-phase9/controls.mjs,lib/engine-human-review-phase9/decision-model.mjs,lib/engine-human-review-phase9/dossier.mjs,lib/engine-human-review-phase9/protocol.mjs,lib/engine-human-review-phase9/rehearsal-schema.mjs,lib/engine-human-review-phase9/rehearsal.mjs,lib/engine-human-review-phase9/stability.mjs,research/engine-human-review-phase9-2026-10-20/BLINDED_SYNTHETIC_REHEARSAL_PROTOCOL.md,research/engine-human-review-phase9-2026-10-20/CHANGELOG.md,research/engine-human-review-phase9-2026-10-20/COGNITIVE_CONTROLS_FOR_REVIEWERS.md,research/engine-human-review-phase9-2026-10-20/DUAL_REVIEW_AND_ADJUDICATION_PROTOCOL.md,research/engine-human-review-phase9-2026-10-20/ENGINE_HUMAN_DISAGREEMENT_PROTOCOL.md,research/engine-human-review-phase9-2026-10-20/HUMAN_EVIDENCE_DOSSIER_CONTRACT.md,research/engine-human-review-phase9-2026-10-20/KNOWN_LIMITATIONS_AND_STOP_CONDITIONS.md,research/engine-human-review-phase9-2026-10-20/OWNER_DECISION_REGISTER.md,research/engine-human-review-phase9-2026-10-20/PHASE9_EXECUTION_RECORD.md,research/engine-human-review-phase9-2026-10-20/PHASE9_FILE_MANIFEST_SHA256.txt,research/engine-human-review-phase9-2026-10-20/PHASE9_HANDOFF.md,research/engine-human-review-phase9-2026-10-20/RELIABILITY_MEASUREMENT_PLAN.md,research/engine-human-review-phase9-2026-10-20/REVIEWER_DECISION_MODEL.md,research/engine-human-review-phase9-2026-10-20/build-documents.mjs,research/engine-human-review-phase9-2026-10-20/build-manifest.mjs,research/engine-human-review-phase9-2026-10-20/execution-record/MUTATION_EVIDENCE.json,research/engine-human-review-phase9-2026-10-20/execution-record/PHASE9_TEST_RESULTS.json,research/engine-human-review-phase9-2026-10-20/execution-record/WORKBENCH_RENDER_RECORD.json,research/engine-human-review-phase9-2026-10-20/rehearsal/DISCLOSED_DIFFERENCES.json,research/engine-human-review-phase9-2026-10-20/rehearsal/EXPECTATIONS.json,research/engine-human-review-phase9-2026-10-20/rehearsal/FIRST_EVALUATOR_RUN.json,research/engine-human-review-phase9-2026-10-20/rehearsal/REHEARSAL_RESULTS.json,research/engine-human-review-phase9-2026-10-20/rehearsal/SEAL.json,research/engine-human-review-phase9-2026-10-20/rehearsal/author-rehearsal.mjs,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CCP-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CHR-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-CON-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-NEG-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-07.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-08.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-09.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-QNS-10.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-RGP-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SIN-06.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-01.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-02.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-03.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-04.json,research/engine-human-review-phase9-2026-10-20/rehearsal/cases/R9-SUF-05.json,research/engine-human-review-phase9-2026-10-20/rehearsal/run-evaluator.mjs,research/engine-human-review-phase9-2026-10-20/rehearsal/seal-rehearsal.mjs,research/engine-human-review-phase9-2026-10-20/stability/transforms.mjs,research/engine-human-review-phase9-2026-10-20/workbench/build-workbench.mjs,research/engine-human-review-phase9-2026-10-20/workbench/index.html,research/engine-human-review-phase9-2026-10-20/workbench/render-check.mjs,research/engine-human-review-phase9-2026-10-20/workbench/screenshots/index-desktop.png,research/engine-human-review-phase9-2026-10-20/workbench/screenshots/index-mobile.png,tests/engine-human-review-phase9/probes.mjs,tests/engine-human-review-phase9/run.mjs,tools/engine-human-review-phase9-replay.mjs
+  unexplained_conflict: phase7-candidate | CPC-04 | no Phase 7 file under tools/, api/, docs/, .jrs/ or a public page | tools/engine-human-review-phase9-replay.mjs
+  genuine_regression: phase7-candidate | no source-aligned controlling file, holdout or label file in the work
+running tests/engine-governance-phase8/run.mjs (Phase 8 in the current composition)
+  468/474, Phase 8 scope: declared_composition_conditions_only (DCC-EC-P8-SCOPE-phase9-human-evidence-adjudication)
