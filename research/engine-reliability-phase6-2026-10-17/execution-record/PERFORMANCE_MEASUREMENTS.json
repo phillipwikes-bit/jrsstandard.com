@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-10-19T11:13:53.182Z",
+  "command": "node tests/engine-reliability/run.mjs --record",
+  "node": "v22.22.0",
+  "network_attempts": 0,
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "statement": "Local engineering budgets on this container only. Not production, latency or throughput performance.",
+  "budgets": {
+    "replay_completion_ms": 20000,
+    "baseline_comparison_ms": 1000,
+    "fixture_loading_ms": 1000,
+    "malformed_input_refusal_ms_per_1000": 1000,
+    "failure_cleanup_ms": 3000
+  },
+  "observed": {
+    "replay_completion_ms": 2914.901709,
+    "baseline_comparison_ms": 69.539889,
+    "fixture_loading_ms": 4.827449,
+    "malformed_input_refusal_ms_per_1000": 5.908582,
+    "failure_cleanup_ms": 24.747761
+  },
+  "platform": "linux-x64"
+}

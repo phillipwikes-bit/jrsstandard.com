@@ -1,0 +1,468 @@
+{
+  "statements": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO RELEASE, DEPLOYMENT OR COMMERCIAL READINESS DETERMINATION"
+  ],
+  "note": "Each mutation is one exact-once source change in a copy of the Phase 9 library. Caught means a named probe returned false; a load failure is never counted as a catch.",
+  "mutations": [
+    {
+      "id": "MU-01",
+      "file": "dossier.mjs",
+      "probes": [
+        "dossier_response_unfilled",
+        "presence_not_support"
+      ],
+      "caught_by": [
+        "dossier_response_unfilled",
+        "presence_not_support"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-02",
+      "file": "dossier.mjs",
+      "probes": [
+        "incomplete_escalates",
+        "escalation_rule_direct"
+      ],
+      "caught_by": [
+        "incomplete_escalates",
+        "escalation_rule_direct"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-03",
+      "file": "dossier.mjs",
+      "probes": [
+        "incomplete_escalates",
+        "escalation_rule_direct"
+      ],
+      "caught_by": [
+        "incomplete_escalates",
+        "escalation_rule_direct"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-04",
+      "file": "dossier.mjs",
+      "probes": [
+        "incomplete_escalates",
+        "escalation_rule_direct"
+      ],
+      "caught_by": [
+        "incomplete_escalates",
+        "escalation_rule_direct"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-05",
+      "file": "dossier.mjs",
+      "probes": [
+        "dossier_matches_engine"
+      ],
+      "caught_by": [
+        "dossier_matches_engine"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-06",
+      "file": "dossier.mjs",
+      "probes": [
+        "presence_not_support",
+        "dossiers_valid"
+      ],
+      "caught_by": [
+        "presence_not_support",
+        "dossiers_valid"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-07",
+      "file": "dossier.mjs",
+      "probes": [
+        "validate_flags_prefill"
+      ],
+      "caught_by": [
+        "validate_flags_prefill"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-08",
+      "file": "dossier.mjs",
+      "probes": [
+        "validate_flags_proof"
+      ],
+      "caught_by": [
+        "validate_flags_proof"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-09",
+      "file": "dossier.mjs",
+      "probes": [
+        "validate_flags_approval"
+      ],
+      "caught_by": [
+        "validate_flags_approval"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-10",
+      "file": "dossier.mjs",
+      "probes": [
+        "validate_flags_hash"
+      ],
+      "caught_by": [
+        "validate_flags_hash"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-11",
+      "file": "dossier.mjs",
+      "probes": [
+        "synthetic_only"
+      ],
+      "caught_by": [
+        "synthetic_only"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-12",
+      "file": "dossier.mjs",
+      "probes": [
+        "not_more_favourable_detects"
+      ],
+      "caught_by": [
+        "not_more_favourable_detects"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-13",
+      "file": "dossier.mjs",
+      "probes": [
+        "validate_flags_offsets"
+      ],
+      "caught_by": [
+        "validate_flags_offsets"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-14",
+      "file": "dossier.mjs",
+      "probes": [
+        "incomplete_escalates",
+        "dossiers_valid"
+      ],
+      "caught_by": [
+        "incomplete_escalates",
+        "dossiers_valid"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-15",
+      "file": "dossier.mjs",
+      "probes": [
+        "dossier_lists_controls",
+        "dossiers_valid"
+      ],
+      "caught_by": [
+        "dossier_lists_controls",
+        "dossiers_valid"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-16",
+      "file": "dossier.mjs",
+      "probes": [
+        "dossiers_valid"
+      ],
+      "caught_by": [
+        "dossiers_valid"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-17",
+      "file": "controls.mjs",
+      "probes": [
+        "controls_disable_detected"
+      ],
+      "caught_by": [
+        "controls_disable_detected"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-18",
+      "file": "controls.mjs",
+      "probes": [
+        "controls_directive_detected"
+      ],
+      "caught_by": [
+        "controls_directive_detected"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-19",
+      "file": "controls.mjs",
+      "probes": [
+        "controls_question_required"
+      ],
+      "caught_by": [
+        "controls_question_required"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-20",
+      "file": "decision-model.mjs",
+      "probes": [
+        "derive_outcome_refuses"
+      ],
+      "caught_by": [
+        "derive_outcome_refuses"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-21",
+      "file": "decision-model.mjs",
+      "probes": [
+        "entry_rejects_system_source"
+      ],
+      "caught_by": [
+        "entry_rejects_system_source"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-22",
+      "file": "decision-model.mjs",
+      "probes": [
+        "entry_requires_cited_words"
+      ],
+      "caught_by": [
+        "entry_requires_cited_words"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-23",
+      "file": "decision-model.mjs",
+      "probes": [
+        "entry_requires_escalation"
+      ],
+      "caught_by": [
+        "entry_requires_escalation"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-24",
+      "file": "decision-model.mjs",
+      "probes": [
+        "entry_requires_placeholder"
+      ],
+      "caught_by": [
+        "entry_requires_placeholder"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-25",
+      "file": "protocol.mjs",
+      "probes": [
+        "apply_to_engine_refuses"
+      ],
+      "caught_by": [
+        "apply_to_engine_refuses"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-26",
+      "file": "protocol.mjs",
+      "probes": [
+        "learning_requires_exact_graph"
+      ],
+      "caught_by": [
+        "learning_requires_exact_graph"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-27",
+      "file": "protocol.mjs",
+      "probes": [
+        "disagreement_preserves_engine"
+      ],
+      "caught_by": [
+        "disagreement_preserves_engine"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-28",
+      "file": "protocol.mjs",
+      "probes": [
+        "adjudication_rule"
+      ],
+      "caught_by": [
+        "adjudication_rule"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-29",
+      "file": "protocol.mjs",
+      "probes": [
+        "measures_not_measurable"
+      ],
+      "caught_by": [
+        "measures_not_measurable"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-30",
+      "file": "protocol.mjs",
+      "probes": [
+        "protocol_disabled"
+      ],
+      "caught_by": [
+        "protocol_disabled"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-31",
+      "file": "protocol.mjs",
+      "probes": [
+        "measures_not_measurable"
+      ],
+      "caught_by": [
+        "measures_not_measurable"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-32",
+      "file": "rehearsal-schema.mjs",
+      "probes": [
+        "seal_rejects_expectation_change"
+      ],
+      "caught_by": [
+        "seal_rejects_expectation_change"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-33",
+      "file": "rehearsal-schema.mjs",
+      "probes": [
+        "seal_rejects_case_change"
+      ],
+      "caught_by": [
+        "seal_rejects_case_change"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-34",
+      "file": "rehearsal-schema.mjs",
+      "probes": [
+        "route_rule",
+        "evaluator_matches_first_run"
+      ],
+      "caught_by": [
+        "route_rule",
+        "evaluator_matches_first_run"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-35",
+      "file": "rehearsal-schema.mjs",
+      "probes": [
+        "case_marking"
+      ],
+      "caught_by": [
+        "case_marking"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-36",
+      "file": "rehearsal.mjs",
+      "probes": [
+        "packets_blinded"
+      ],
+      "caught_by": [
+        "packets_blinded"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-37",
+      "file": "rehearsal.mjs",
+      "probes": [
+        "packets_blinded"
+      ],
+      "caught_by": [
+        "packets_blinded"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-38",
+      "file": "rehearsal.mjs",
+      "probes": [
+        "evaluator_detects_escalation_mismatch",
+        "evaluator_matches_first_run"
+      ],
+      "caught_by": [
+        "evaluator_detects_escalation_mismatch",
+        "evaluator_matches_first_run"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-39",
+      "file": "stability.mjs",
+      "probes": [
+        "stability_detects_favourable"
+      ],
+      "caught_by": [
+        "stability_detects_favourable"
+      ],
+      "result": "caught"
+    },
+    {
+      "id": "MU-40",
+      "file": "rehearsal.mjs",
+      "probes": [
+        "blinding_detects_leak"
+      ],
+      "caught_by": [
+        "blinding_detects_leak"
+      ],
+      "result": "caught"
+    }
+  ]
+}

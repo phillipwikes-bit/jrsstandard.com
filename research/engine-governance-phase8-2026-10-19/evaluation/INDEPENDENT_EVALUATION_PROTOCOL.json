@@ -1,0 +1,230 @@
+{
+  "protocol_id": "JRS-IEP-0.1-draft",
+  "protocol_version": "0.1.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "execution_enabled": false,
+  "authorization": "not_authorized",
+  "conducted": false,
+  "candidate_under_evaluation": {
+    "id": "phase7-candidate",
+    "compiler_version": "0.3.1-candidate",
+    "base": "v0.3-evidence-graph (0.3.0-local)",
+    "identity_rule": "Identified by its Phase 8 package hash; any change before Gate D invalidates the freeze."
+  },
+  "questions": [
+    {
+      "id": "Q1",
+      "area": "quote presence and offset accuracy",
+      "question": "When the candidate marks a quotation as present, is the quoted text found in the record at the recorded offsets?"
+    },
+    {
+      "id": "Q2",
+      "area": "human-review routing",
+      "question": "Does the candidate route to human review the conditions that independent labelers judge should not receive a supported status?"
+    },
+    {
+      "id": "Q3",
+      "area": "chronology conflict detection",
+      "question": "Does the candidate report the chronology conflicts that independent labelers identify, and only those?"
+    },
+    {
+      "id": "Q4",
+      "area": "exclusion and refusal behaviour",
+      "question": "Does the candidate refuse records in excluded domains, and avoid refusing records outside them?"
+    },
+    {
+      "id": "Q5",
+      "area": "Cognitive Controls neutrality",
+      "question": "Do Cognitive Controls prompts stay neutral (no direction towards an outcome) as judged by independent labelers?"
+    },
+    {
+      "id": "Q6",
+      "area": "presence versus semantic support",
+      "question": "Where the candidate reports text presence, do labelers find that the text semantically supports the condition, and does the candidate avoid presenting presence as support?"
+    }
+  ],
+  "roles": [
+    {
+      "role": "owner",
+      "duties": "Authorizes each gate; does not label, adjudicate or operate.",
+      "may_view_sealed_labels": false
+    },
+    {
+      "role": "data_custodian",
+      "duties": "Holds and releases authorized material; keeps sealed labels outside the repository.",
+      "may_view_sealed_labels": true
+    },
+    {
+      "role": "independent_labeler",
+      "duties": "Labels material blind to candidate output; independent of the developers and of each other.",
+      "may_view_sealed_labels": true,
+      "must_be_independent_of": [
+        "developer",
+        "technical_operator",
+        "owner"
+      ]
+    },
+    {
+      "role": "adjudicator",
+      "duties": "Resolves disputed labels under the written rule; does not label the same item.",
+      "may_view_sealed_labels": true,
+      "must_be_independent_of": [
+        "developer",
+        "independent_labeler"
+      ]
+    },
+    {
+      "role": "technical_operator",
+      "duties": "Runs the frozen candidate in the recorded environment; never sees labels before Gate E.",
+      "may_view_sealed_labels": false
+    },
+    {
+      "role": "counsel_or_privacy_reviewer",
+      "duties": "Reviews material authorization, privacy and disclosure before Gate A and at Gate F.",
+      "may_view_sealed_labels": false
+    }
+  ],
+  "separation_rules": [
+    "No person holds both a developer or technical_operator role and a labeler or adjudicator role.",
+    "Labelers do not see candidate output before labeling.",
+    "Developers never access sealed labels."
+  ],
+  "materials": [
+    {
+      "class": "synthetic_engineering_fixtures",
+      "use": "Development and regression only. Never used to report evaluation results.",
+      "in_repository": true
+    },
+    {
+      "class": "calibration_material",
+      "use": "Labeler training and rule calibration; results not reported as performance.",
+      "in_repository": false
+    },
+    {
+      "class": "sealed_evaluation_material",
+      "use": "Blind execution only, after protocol freeze.",
+      "in_repository": false,
+      "developer_access": false,
+      "copy_into_repository": "prohibited"
+    },
+    {
+      "class": "real_records",
+      "use": "Prohibited unless separately authorized in writing under Gate A with counsel review.",
+      "in_repository": false,
+      "default": "prohibited"
+    }
+  ],
+  "blinding_and_contamination": [
+    "Developers have no access to sealed evaluation labels.",
+    "Sealed evaluation material is never copied into the repository.",
+    "No prompt, rule pack, model or code change after the protocol freeze (Gate B); any such change voids the freeze and requires a new freeze.",
+    "Ambiguous or disputed labels go to the adjudicator under a written rule recorded before labeling; adjudication outcomes are recorded with reasons.",
+    "The candidate package hash, environment and clock are recorded at freeze and at execution; any difference stops the evaluation."
+  ],
+  "measures": [
+    {
+      "id": "M1",
+      "name": "quote-verification precision",
+      "definition": "Of quotations the candidate marks as verified, the share that labelers confirm as present at the recorded offsets.",
+      "unit": "proportion",
+      "calculated": false
+    },
+    {
+      "id": "M2",
+      "name": "quote-verification recall",
+      "definition": "Of quotations labelers identify as present and relevant, the share the candidate marks as verified.",
+      "unit": "proportion",
+      "calculated": false
+    },
+    {
+      "id": "M3",
+      "name": "routing agreement",
+      "definition": "Share of conditions where the candidate route (supported, review_required, not_assessed, refusal) matches the adjudicated label.",
+      "unit": "proportion",
+      "calculated": false
+    },
+    {
+      "id": "M4",
+      "name": "false-refusal rate",
+      "definition": "Share of in-scope records the candidate refuses.",
+      "unit": "proportion",
+      "calculated": false
+    },
+    {
+      "id": "M5",
+      "name": "missed-conflict rate",
+      "definition": "Share of labeled chronology or control conflicts the candidate does not report.",
+      "unit": "proportion",
+      "calculated": false
+    },
+    {
+      "id": "M6",
+      "name": "inter-rater agreement",
+      "definition": "Chance-corrected agreement between independent labelers before adjudication; statistic named at freeze.",
+      "unit": "coefficient",
+      "calculated": false
+    },
+    {
+      "id": "M7",
+      "name": "adjudication rate",
+      "definition": "Share of labeled items that required adjudication.",
+      "unit": "proportion",
+      "calculated": false
+    },
+    {
+      "id": "M8",
+      "name": "abstention or review-required rate",
+      "definition": "Share of conditions the candidate routes to review_required or not_assessed.",
+      "unit": "proportion",
+      "calculated": false
+    }
+  ],
+  "stop_conditions": [
+    "source or data authorization gap",
+    "counsel objection",
+    "labeler independence failure",
+    "sealed evaluation material contamination",
+    "unexplained candidate drift (package hash differs from the freeze)",
+    "provider or environment change",
+    "any attempt to claim performance before the evaluation is completed"
+  ],
+  "gates": [
+    {
+      "gate": "A",
+      "name": "material authorization",
+      "requires": "Owner and counsel or privacy reviewer authorize material classes, sources and retention in writing."
+    },
+    {
+      "gate": "B",
+      "name": "protocol freeze",
+      "requires": "Candidate package hash, rule packs, prompts, environment, measures and adjudication rule frozen and sealed."
+    },
+    {
+      "gate": "C",
+      "name": "independent labeling",
+      "requires": "Labelers confirmed independent; labels completed blind and sealed by the data custodian."
+    },
+    {
+      "gate": "D",
+      "name": "blind execution",
+      "requires": "Technical operator runs the frozen candidate; package hash and environment match the freeze."
+    },
+    {
+      "gate": "E",
+      "name": "adjudication",
+      "requires": "Disputes resolved under the written rule; measures calculated only now."
+    },
+    {
+      "gate": "F",
+      "name": "owner and counsel review",
+      "requires": "Owner and counsel review results and limits before any statement is made."
+    }
+  ],
+  "measures_calculated_in_this_package": false,
+  "seal_sha256": "sha256:26efd3a042965808fbdaf13994b6283aff60fd5f0077dad408fe2e78782dc1b3"
+}

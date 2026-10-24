@@ -1,0 +1,109 @@
+{
+  "statement": "Local engineering observations on synthetic target and nearby benign cases. Not accuracy or performance measures.",
+  "rows": [
+    {
+      "rule_id": "RP-CHR-01",
+      "target_cases": 3,
+      "target_cases_routed_as_sealed": 3,
+      "benign_cases": 1,
+      "benign_cases_refused_or_degraded": 0,
+      "existing_inputs_triggered": [
+        "GC-004",
+        "AR-010",
+        "LB-02",
+        "P6-CH-06"
+      ]
+    },
+    {
+      "rule_id": "RP-CHR-02",
+      "target_cases": 3,
+      "target_cases_routed_as_sealed": 3,
+      "benign_cases": 1,
+      "benign_cases_refused_or_degraded": 0,
+      "existing_inputs_triggered": [
+        "AR-011",
+        "P6-CH-07"
+      ]
+    },
+    {
+      "rule_id": "RP-CHR-03",
+      "target_cases": 3,
+      "target_cases_routed_as_sealed": 3,
+      "benign_cases": 1,
+      "benign_cases_refused_or_degraded": 0,
+      "existing_inputs_triggered": [
+        "P6-CH-09",
+        "P6-ST-12"
+      ]
+    },
+    {
+      "rule_id": "RP-CHR-04",
+      "target_cases": 3,
+      "target_cases_routed_as_sealed": 3,
+      "benign_cases": 1,
+      "benign_cases_refused_or_degraded": 0,
+      "existing_inputs_triggered": [
+        "AR-009",
+        "P6-CH-02",
+        "P6-CH-10",
+        "P6-ST-14"
+      ]
+    },
+    {
+      "rule_id": "RP-CON-01",
+      "target_cases": 4,
+      "target_cases_routed_as_sealed": 4,
+      "benign_cases": 2,
+      "benign_cases_refused_or_degraded": 0,
+      "existing_inputs_triggered": [
+        "AR-025",
+        "P6-SU-07"
+      ]
+    },
+    {
+      "rule_id": "RP-EVL-01",
+      "target_cases": 4,
+      "target_cases_routed_as_sealed": 4,
+      "benign_cases": 2,
+      "benign_cases_refused_or_degraded": 0,
+      "existing_inputs_triggered": [
+        "ST-06",
+        "P6-SP-02",
+        "P6-SP-04",
+        "P6-SP-06"
+      ]
+    },
+    {
+      "rule_id": "RP-NEG-01",
+      "target_cases": 4,
+      "target_cases_routed_as_sealed": 4,
+      "benign_cases": 2,
+      "benign_cases_refused_or_degraded": 0,
+      "existing_inputs_triggered": [
+        "P6-SP-07"
+      ]
+    },
+    {
+      "rule_id": "RP-STR-01",
+      "target_cases": 4,
+      "target_cases_routed_as_sealed": 4,
+      "benign_cases": 1,
+      "benign_cases_refused_or_degraded": 0,
+      "existing_inputs_triggered": [
+        "P6-RT-07"
+      ]
+    },
+    {
+      "rule_id": "RP-SCO-01",
+      "target_cases": 4,
+      "target_cases_routed_as_sealed": 4,
+      "benign_cases": 2,
+      "benign_cases_refused_or_degraded": 0,
+      "existing_inputs_triggered": [
+        "ST-14",
+        "P6-XD-03",
+        "P6-ST-17"
+      ]
+    }
+  ]
+}

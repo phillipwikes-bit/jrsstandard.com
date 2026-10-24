@@ -1,0 +1,1631 @@
+{
+  "statements": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO RELEASE, DEPLOYMENT OR COMMERCIAL READINESS DETERMINATION"
+  ],
+  "summary": {
+    "total": 313,
+    "pass": 313,
+    "fail": 0,
+    "skipped": 1,
+    "counts": {
+      "direct": 86,
+      "adversarial": 57,
+      "mutation": 40,
+      "stability": 44,
+      "determinism": 3,
+      "structural": 83
+    },
+    "network_attempts": 0
+  },
+  "failed": [],
+  "rows": [
+    {
+      "kind": "structural",
+      "name": "HEAD is still the starting commit 428c307",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no tracked or staged change from 428c307 (public routes, deployment, B-018, trackers, ledgers, PR #40 branch content)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "B-018 remains OPEN",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "release status remains NO_GO_NOT_VERIFIED",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "version registry binds seven earlier package manifests",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "earlier package byte-identical to its manifest: v1-historical.sha256",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "earlier package byte-identical to its manifest: v0.1-assurance.sha256",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "earlier package byte-identical to its manifest: v0.2-evidence-contract.sha256",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "earlier package byte-identical to its manifest: v0.3-evidence-graph.sha256",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "earlier package byte-identical to its manifest: phase4-change-control.sha256",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "earlier package byte-identical to its manifest: phase6-reliability.sha256",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "earlier package byte-identical to its manifest: phase7-candidate.sha256",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "earlier package byte-identical to its manifest: PHASE8_FILE_MANIFEST_SHA256.txt",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "Phase 9 registry entry is admitted, local_construction_only, with exactly the four approved paths",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "Phase 9 registry entry binds the manifest inside the Phase 9 research directory",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "Phase 9 registry entry requires the five declared conditions",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "Phase 9 registry entry restricts provider use, real records, holdouts, evaluation, deployment, commercial use and release",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "every Phase 9 file is inside the four admitted locations",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no Phase 9 file predates the admission record",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "a Phase 9 file outside its admitted path fails closed (sibling library directory)",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "a Phase 9 file outside its admitted path fails closed (research directory with a suffix)",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "a Phase 9 file outside its admitted path fails closed (second tool file)",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "a Phase 9 file in a public or deployment location fails closed",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "Phase 9 files inside the admitted paths classify as declared composition conditions only",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "a Phase 9 package integrity failure fails closed",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "a Phase 9 file dated before admission fails closed",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no present Phase 9 path matches the Phase 7 protected filename pattern",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "the Phase 7 protected filename pattern would catch the version 1 document name",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no Phase 10 registry entry, file or directory exists",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe presence_not_support",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe derive_outcome_refuses",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe dossier_response_unfilled",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe validate_flags_prefill",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe entry_rejects_system_source",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe entry_requires_cited_words",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe entry_requires_escalation",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe entry_requires_placeholder",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe disagreement_preserves_engine",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe learning_requires_exact_graph",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe apply_to_engine_refuses",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe incomplete_escalates",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe escalation_rule_direct",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe validate_flags_escalation_drift",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe dossier_matches_engine",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe not_more_favourable_detects",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe controls_disable_detected",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe controls_removal_detected",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe controls_directive_detected",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe controls_question_required",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe dossier_lists_controls",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe seal_verifies",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe seal_rejects_expectation_change",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe seal_rejects_case_change",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe seal_rejects_record_change",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe validate_flags_proof",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe validate_flags_approval",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe validate_flags_hash",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe validate_flags_offsets",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe validate_flags_presence",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe validate_flags_outcomes",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe validate_flags_abstention",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe dossiers_valid",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe synthetic_only",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe decision_model_valid",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe decision_model_detects_collapse",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe protocol_disabled",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe adjudication_rule",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe measures_not_measurable",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe route_rule",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe case_marking",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe packets_blinded",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe blinding_detects_leak",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe evaluator_matches_first_run",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe evaluator_detects_escalation_mismatch",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe evaluator_detects_route_mismatch",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe stability_detects_favourable",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "probe stability_invariant_holds",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "contract carries the three Phase 9 statements",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "exactly seven admissible outcomes in the stated order",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "five evidence layers kept separate, decision validity out of scope",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "decision model entry complete: supports_finding",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "decision model entry complete: does_not_support_finding",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "decision model entry complete: insufficient_context",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "decision model entry complete: ambiguous",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "decision model entry complete: record_conflict",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "decision model entry complete: outside_authorized_scope",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "decision model entry complete: abstain_and_escalate",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "Cognitive Control names its review risk and asks a neutral question: CC-INTENT",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "Cognitive Control names its review risk and asks a neutral question: CC-PLAUSIBLE",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "Cognitive Control names its review risk and asks a neutral question: CC-NEGATION",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "Cognitive Control names its review risk and asks a neutral question: CC-DATES",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "Cognitive Control names its review risk and asks a neutral question: CC-WORDS",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "Cognitive Control names its review risk and asks a neutral question: CC-MISSING",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "Cognitive Control names its review risk and asks a neutral question: CC-BASIS",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "Cognitive Control names its review risk and asks a neutral question: CC-ESCALATE",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "bounded reviewer question present and asks about the record only: reconstructability",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "bounded reviewer question present and asks about the record only: identifiable_basis",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "bounded reviewer question present and asks about the record only: chronology_integrity",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "bounded reviewer question present and asks about the record only: reasoning_traceability",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "bounded reviewer question present and asks about the record only: sufficiency",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "measure defined and marked not measurable locally: RM-01",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "measure defined and marked not measurable locally: RM-02",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "measure defined and marked not measurable locally: RM-03",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "measure defined and marked not measurable locally: RM-04",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "measure defined and marked not measurable locally: RM-05",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "measure defined and marked not measurable locally: RM-06",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "measure defined and marked not measurable locally: RM-07",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "measure defined and marked not measurable locally: RM-08",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "five review roles defined with duties and prohibitions",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "dual-review protocol: two blinded reviewers, adjudicator only on disagreement or escalation",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "dual-review protocol defines contamination controls, versioning and re-review triggers",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "future decision ledger structure defined; a complete synthetic row validates",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "disagreement protocol prohibits automatic modification and names the governance path",
+      "result": "pass"
+    },
+    {
+      "kind": "direct",
+      "name": "prohibited reviewer questions are listed: liability, discrimination, policy compliance, employment-decision correctness",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "pre-filled reviewer field rejected: outcome",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "pre-filled reviewer field rejected: rationale",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "pre-filled reviewer field rejected: cited_evidence",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "pre-filled reviewer field rejected: confidence",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "pre-filled reviewer field rejected: reviewer_placeholder",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "proof assertion rejected in authored text: The quotation proves the finding.",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "proof assertion rejected in authored text: This establishes the finding.",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "proof assertion rejected in authored text: The quotation supports the finding.",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "proof assertion rejected in authored text: This confirms the finding.",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "approval or legal-conclusion field rejected: approved",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "approval or legal-conclusion field rejected: approval",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "approval or legal-conclusion field rejected: recommendation",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "approval or legal-conclusion field rejected: recommended_outcome",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "approval or legal-conclusion field rejected: legal_conclusion",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "removed limitation rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "altered reviewer question rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "unknown condition rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "escalation added without an Engine trigger rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "Cognitive Control removed from the dossier rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "assertion marked accepted on an unverified quotation rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "dossier refused for non-synthetic material",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "reviewer entry from the Engine rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "reviewer entry auto-filled by the system rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "reviewer entry with an inadmissible outcome rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "reviewer entry without a rationale rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "reviewer entry with a real-looking identity rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "deriveOutcome refuses for every rehearsal dossier",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "decision model that asks reviewers to decide legal liability is rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "decision model that lets presence imply support is rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "control with directive wording rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "control with clinical wording rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "extra control beyond the set rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "running a dual review refuses",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "calculating any reliability measure refuses",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "applying a learning record to the Engine refuses",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "learning record from an Engine-generated entry refuses",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "adjudication routing refuses a non-human entry",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "ledger row with an unknown role rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "case marked holdout-eligible rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "case without the synthetic marker rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "case with personal-data-like text rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "case in a provider execution mode rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "expectation with an inadmissible class rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "expectation whose route appropriateness breaks the fixed rule rejected",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "seal rejects an added case",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "seal rejects a removed expectation",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "blinding check catches an expected-class field",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "blinding check catches a category name",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "provider configuration in the environment is refused (checked in-process; no variable is set)",
+      "result": "pass"
+    },
+    {
+      "kind": "adversarial",
+      "name": "a network attempt from the harness is trapped",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "at least 48 rehearsal packets",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "category minimum met: quote_present_not_supportive (10 >= 10)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "category minimum met: supportive_but_incomplete (6 >= 6)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "category minimum met: negation_or_conditional_language (6 >= 6)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "category minimum met: chronology_ambiguity (6 >= 6)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "category minimum met: conflicting_evidence (6 >= 5)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "category minimum met: reasoning_gaps (6 >= 5)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "category minimum met: sufficiency_and_escalation (5 >= 5)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "category minimum met: cognitive_control_pressure (5 >= 5)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "every case synthetic and holdout-ineligible, every expectation well formed",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "seal verifies and was recorded before the first evaluator run",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "evaluator results identical to the first recorded evaluator run",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "every difference from the seal is disclosed, and only those",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "every disclosed difference names its direction, cause and an unapplied learning record, and concerns an Engine prediction only",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "all packets pass evaluator check: dossier_valid",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "all packets pass evaluator check: blinded",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "all packets pass evaluator check: outcome_unfilled",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "all packets pass evaluator check: not_more_favourable",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "all packets pass evaluator check: control_listed",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no packet is routed away from human review",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "favourable Engine statuses on non-supporting packets are reliant on human review and recorded as such",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-01 wording: supplier name spelled out on R9-QNS-01",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-02 layout: blank line after every line on R9-QNS-01",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-03 wording: supplier name spelled out on R9-QNS-03",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-04 layout: blank line after every line on R9-QNS-03",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-05 wording: supplier name spelled out on R9-SIN-02",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-06 layout: blank line after every line on R9-SIN-02",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-07 wording: supplier name spelled out on R9-NEG-02",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-08 layout: blank line after every line on R9-NEG-02",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-09 wording: supplier name spelled out on R9-CHR-04",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-10 layout: blank line after every line on R9-CHR-04",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-11 wording: supplier name spelled out on R9-CCP-02",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-12 layout: blank line after every line on R9-CCP-02",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-13 wording: supplier name spelled out on R9-CHR-02 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-14 layout: blank line after every line on R9-CHR-02 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-15 wording: supplier name spelled out on R9-CHR-05 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-16 layout: blank line after every line on R9-CHR-05 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-17 wording: supplier name spelled out on R9-CON-01 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-18 layout: blank line after every line on R9-CON-01 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-19 wording: supplier name spelled out on R9-CON-02 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-20 layout: blank line after every line on R9-CON-02 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-21 wording: supplier name spelled out on R9-CON-06 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-22 layout: blank line after every line on R9-CON-06 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-23 wording: supplier name spelled out on R9-SUF-03 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-24 layout: blank line after every line on R9-SUF-03 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-25 wording: supplier name spelled out on R9-NEG-01 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-26 layout: blank line after every line on R9-NEG-01 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-27 wording: supplier name spelled out on R9-RGP-06 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-28 layout: blank line after every line on R9-RGP-06 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-29 punctuation: hyphen and full stop in the record type on R9-CHR-02 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-30 punctuation: hyphen and full stop in the record type on R9-CON-05 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-31 punctuation: hyphen and full stop in the record type on R9-SUF-04 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-32 punctuation: hyphen and full stop in the record type on R9-QNS-09",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-33 punctuation: full stop after the exception identifier on R9-CON-04 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-34 punctuation: full stop after the exception identifier on R9-RGP-03 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-35 irrelevant narrative line added on R9-CON-02 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-36 irrelevant narrative line added on R9-QNS-02",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-37 irrelevant narrative line added on R9-RGP-04 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-38 section order: risk and controls swapped on R9-CHR-05 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-39 section order: risk and controls swapped on R9-QNS-01",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-40 response: observations in reverse order on R9-CON-06 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-41 response: observations in reverse order on R9-RGP-01",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-42 response: observations in reverse order on R9-QNS-04 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-43 response: compact JSON spacing on R9-CHR-02 (unfavourable or escalation base)",
+      "result": "pass"
+    },
+    {
+      "kind": "stability",
+      "name": "P9-ST-44 response: compact JSON spacing on R9-SIN-01",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "at least 30 stability transforms, at least 12 from an unfavourable or escalation baseline",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no invariant transform produced a more favourable human-review class",
+      "result": "pass"
+    },
+    {
+      "kind": "determinism",
+      "name": "five-pass determinism: evaluator",
+      "result": "pass"
+    },
+    {
+      "kind": "determinism",
+      "name": "five-pass determinism: stability",
+      "result": "pass"
+    },
+    {
+      "kind": "determinism",
+      "name": "five-pass determinism: dossiers",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no provider model identifier, key, key name, endpoint, environment access or SDK import in any Phase 9 script",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no process execution, fetch or network URL in the Phase 9 library",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no credential-like value in any Phase 9 file",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no email address in any Phase 9 file",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no Phase 9 item is marked holdout-eligible or non-synthetic",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "every rehearsal record is the fictional GC-001 derivative with the synthetic marker",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no readiness, compliance, licensing, commercial, validation or production claim in Phase 9 records or the workbench",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no Phase 9 record presents B-018 as resolved",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no Phase 9 record asks a reviewer to decide liability, discrimination, policy compliance or an employment decision",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "static workbench present",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench: no script, form, input, upload, iframe, authentication or network URL",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench shows dossier boundary",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench shows decision model",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench shows Cognitive Controls",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench shows disagreement example",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench shows limitations and escalation",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench shows unresolved decisions",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench shows B-018 OPEN",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench shows NO_GO_NOT_VERIFIED",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench shows six blinded examples",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "workbench rendered at desktop and mobile with zero non-file requests and zero overflow",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: PHASE9_HANDOFF.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: PHASE9_EXECUTION_RECORD.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: HUMAN_EVIDENCE_DOSSIER_CONTRACT.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: REVIEWER_DECISION_MODEL.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: COGNITIVE_CONTROLS_FOR_REVIEWERS.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: BLINDED_SYNTHETIC_REHEARSAL_PROTOCOL.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: DUAL_REVIEW_PROTOCOL.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: RELIABILITY_MEASUREMENT_PLAN.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: ENGINE_HUMAN_DISAGREEMENT_PROTOCOL.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: KNOWN_LIMITATIONS_AND_STOP_CONDITIONS.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: OWNER_DECISION_REGISTER.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "document present with the three required statements: CHANGELOG.md",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no em-dash in Phase 9 document prose",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "Phase 9 manifest version 1 preserved and readable at manifest-history/v1.sha256",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "original document preserved byte for byte under a neutral name",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "renamed document content equals the original (no substantive change)",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "mapping record names original, replacement, hashes, reason and the Phase 7 rule",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "Phase 9 manifest integrity enforced after creation",
+      "result": "skipped",
+      "reason": "manifest not yet written; recorded runs precede it"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-01 (dossier.mjs) caught by named probe dossier_response_unfilled, presence_not_support",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-02 (dossier.mjs) caught by named probe incomplete_escalates, escalation_rule_direct",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-03 (dossier.mjs) caught by named probe incomplete_escalates, escalation_rule_direct",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-04 (dossier.mjs) caught by named probe incomplete_escalates, escalation_rule_direct",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-05 (dossier.mjs) caught by named probe dossier_matches_engine",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-06 (dossier.mjs) caught by named probe presence_not_support, dossiers_valid",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-07 (dossier.mjs) caught by named probe validate_flags_prefill",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-08 (dossier.mjs) caught by named probe validate_flags_proof",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-09 (dossier.mjs) caught by named probe validate_flags_approval",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-10 (dossier.mjs) caught by named probe validate_flags_hash",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-11 (dossier.mjs) caught by named probe synthetic_only",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-12 (dossier.mjs) caught by named probe not_more_favourable_detects",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-13 (dossier.mjs) caught by named probe validate_flags_offsets",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-14 (dossier.mjs) caught by named probe incomplete_escalates, dossiers_valid",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-15 (dossier.mjs) caught by named probe dossier_lists_controls, dossiers_valid",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-16 (dossier.mjs) caught by named probe dossiers_valid",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-17 (controls.mjs) caught by named probe controls_disable_detected",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-18 (controls.mjs) caught by named probe controls_directive_detected",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-19 (controls.mjs) caught by named probe controls_question_required",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-20 (decision-model.mjs) caught by named probe derive_outcome_refuses",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-21 (decision-model.mjs) caught by named probe entry_rejects_system_source",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-22 (decision-model.mjs) caught by named probe entry_requires_cited_words",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-23 (decision-model.mjs) caught by named probe entry_requires_escalation",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-24 (decision-model.mjs) caught by named probe entry_requires_placeholder",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-25 (protocol.mjs) caught by named probe apply_to_engine_refuses",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-26 (protocol.mjs) caught by named probe learning_requires_exact_graph",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-27 (protocol.mjs) caught by named probe disagreement_preserves_engine",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-28 (protocol.mjs) caught by named probe adjudication_rule",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-29 (protocol.mjs) caught by named probe measures_not_measurable",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-30 (protocol.mjs) caught by named probe protocol_disabled",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-31 (protocol.mjs) caught by named probe measures_not_measurable",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-32 (rehearsal-schema.mjs) caught by named probe seal_rejects_expectation_change",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-33 (rehearsal-schema.mjs) caught by named probe seal_rejects_case_change",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-34 (rehearsal-schema.mjs) caught by named probe route_rule, evaluator_matches_first_run",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-35 (rehearsal-schema.mjs) caught by named probe case_marking",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-36 (rehearsal.mjs) caught by named probe packets_blinded",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-37 (rehearsal.mjs) caught by named probe packets_blinded",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-38 (rehearsal.mjs) caught by named probe evaluator_detects_escalation_mismatch, evaluator_matches_first_run",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-39 (stability.mjs) caught by named probe stability_detects_favourable",
+      "result": "pass"
+    },
+    {
+      "kind": "mutation",
+      "name": "MU-40 (rehearsal.mjs) caught by named probe blinding_detects_leak",
+      "result": "pass"
+    },
+    {
+      "kind": "structural",
+      "name": "no network attempt during the suite",
+      "result": "pass"
+    }
+  ],
+  "determinism": {
+    "passes": [
+      {
+        "evaluator": "sha256:e4087d052b895a3f2227a3fb4dff50e6bd8baf69cc5aad5392e461b277303524",
+        "stability": "sha256:656f925729328819130bc527106b178fed3b4fea43c2fa5b51be25f81f09c603",
+        "dossiers": "sha256:c9e0b6e19a4d24c3d3cf8960d6f22d16bd86e42a2e6c3e6f2953fc2266853d40"
+      },
+      {
+        "evaluator": "sha256:e4087d052b895a3f2227a3fb4dff50e6bd8baf69cc5aad5392e461b277303524",
+        "stability": "sha256:656f925729328819130bc527106b178fed3b4fea43c2fa5b51be25f81f09c603",
+        "dossiers": "sha256:c9e0b6e19a4d24c3d3cf8960d6f22d16bd86e42a2e6c3e6f2953fc2266853d40"
+      },
+      {
+        "evaluator": "sha256:e4087d052b895a3f2227a3fb4dff50e6bd8baf69cc5aad5392e461b277303524",
+        "stability": "sha256:656f925729328819130bc527106b178fed3b4fea43c2fa5b51be25f81f09c603",
+        "dossiers": "sha256:c9e0b6e19a4d24c3d3cf8960d6f22d16bd86e42a2e6c3e6f2953fc2266853d40"
+      },
+      {
+        "evaluator": "sha256:e4087d052b895a3f2227a3fb4dff50e6bd8baf69cc5aad5392e461b277303524",
+        "stability": "sha256:656f925729328819130bc527106b178fed3b4fea43c2fa5b51be25f81f09c603",
+        "dossiers": "sha256:c9e0b6e19a4d24c3d3cf8960d6f22d16bd86e42a2e6c3e6f2953fc2266853d40"
+      },
+      {
+        "evaluator": "sha256:e4087d052b895a3f2227a3fb4dff50e6bd8baf69cc5aad5392e461b277303524",
+        "stability": "sha256:656f925729328819130bc527106b178fed3b4fea43c2fa5b51be25f81f09c603",
+        "dossiers": "sha256:c9e0b6e19a4d24c3d3cf8960d6f22d16bd86e42a2e6c3e6f2953fc2266853d40"
+      }
+    ]
+  },
+  "stability": {
+    "total": 44,
+    "as_expected": 44,
+    "from_unfavourable_or_escalation": 27,
+    "more_favourable": 0
+  }
+}

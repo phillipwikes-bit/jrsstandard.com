@@ -1,0 +1,1099 @@
+{
+  "generated_clock": "2026-10-17T00:00:00Z",
+  "seal_hash": "sha256:1c81b496fb2dd3404610fe708101d8d64ba4483980625e4db2fb7b0e3c8bb021",
+  "seal_problems": [],
+  "counts": {
+    "as_expected": 51,
+    "known_open_failure_reproduced": 10,
+    "known_open_failure_not_reproduced": 0,
+    "unexpected": 1
+  },
+  "by_category": {
+    "evidence_quotation_span_integrity": 11,
+    "presence_versus_semantic_support": 10,
+    "chronology_ambiguity_conflict_omission": 10,
+    "reasoning_traceability_unsupported_conclusions": 8,
+    "sufficiency_missing_decision_basis": 8,
+    "cognitive_controls_neutrality_bounded_language": 6,
+    "excluded_domain_reworded_scope": 4,
+    "instruction_injection_malformed_input": 5
+  },
+  "by_kind": {
+    "invariant": 8,
+    "expected_degradation": 37,
+    "expected_refusal": 7,
+    "known_open_failure": 10
+  },
+  "results": [
+    {
+      "scenario_id": "P6-CC-01",
+      "category": "cognitive_controls_neutrality_bounded_language",
+      "expectation_kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:f9f929265f639254dad44e0d9154c3e53fffd3ba9a75730267d4979885fabd65"
+    },
+    {
+      "scenario_id": "P6-CC-02",
+      "category": "cognitive_controls_neutrality_bounded_language",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:7dc079e679428cfab66bea94c011f3c8a49f8e89b0464430a4b8e03a62bdaeee"
+    },
+    {
+      "scenario_id": "P6-CC-03",
+      "category": "cognitive_controls_neutrality_bounded_language",
+      "expectation_kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:6bdfad46f04921b1387df6704878f0f8e46ceca212a749f12a53ac5f7fac07bc"
+    },
+    {
+      "scenario_id": "P6-CC-04",
+      "category": "cognitive_controls_neutrality_bounded_language",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:5bf0e2e34229893015de08f127559738a33038482812cc9cd108822c8d953bfd"
+    },
+    {
+      "scenario_id": "P6-CC-05",
+      "category": "cognitive_controls_neutrality_bounded_language",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:f3f820fbfde9597bba4eede5a0ccc8f089cd50868ab09a1c4d13961f4ba64a0a"
+    },
+    {
+      "scenario_id": "P6-CC-06",
+      "category": "cognitive_controls_neutrality_bounded_language",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:c3deb848f53beea95c6ce5f01bc82103daf8c6ce862bf87a9883ed7808a35c3d"
+    },
+    {
+      "scenario_id": "P6-CH-01",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:32e57f8c1d678d7a4db3aaaac0a0b7f06fa83421d2611b532f87cd91df61bcf2"
+    },
+    {
+      "scenario_id": "P6-CH-02",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:635cb5db36e76aa0a8e25a813d56c4e2a0328266b696ac331be12f3185e1ee1e"
+    },
+    {
+      "scenario_id": "P6-CH-03",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:c9f4543fce95b6ff274391360a862f674e3b04a1e862b105d858ac83c8047bf9"
+    },
+    {
+      "scenario_id": "P6-CH-04",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:665bc240daa5de509f66e5ae3d11baf45d9d2d27031aaeebcfeddff21b89bb38"
+    },
+    {
+      "scenario_id": "P6-CH-05",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:e3b4cb092bf265f163d4892978c05e26ad4283e75eeea491c6d2e11f7b82fb95"
+    },
+    {
+      "scenario_id": "P6-CH-06",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "ceiling chronology_integrity: at most review_required, got supported"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:7e8ce388c3a8206cb7e9586267c197794d3e3bfe300bcd72e5911367371f2474"
+    },
+    {
+      "scenario_id": "P6-CH-07",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "ceiling chronology_integrity: at most review_required, got supported"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:4b1afc03819f27604f19a1246a1aa7a15478fcf9cfb03f3bb22512836b8ca422"
+    },
+    {
+      "scenario_id": "P6-CH-08",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:a5f1c738d03f656b1b7cfa6301a22458f3380ad60cdda76238207a599113164d"
+    },
+    {
+      "scenario_id": "P6-CH-09",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "ceiling chronology_integrity: at most review_required, got supported"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:9e9a57dde2bf6887ecf9b93eeef22ad320572a5d676a3fc5e35dd03d9be41b2c"
+    },
+    {
+      "scenario_id": "P6-CH-10",
+      "category": "chronology_ambiguity_conflict_omission",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "ceiling chronology_integrity: at most review_required, got supported"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:6bde8789f6a7f39309a16a19c80f247e9934f5ee3cce872be2a258523e0fa123"
+    },
+    {
+      "scenario_id": "P6-EQ-01",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:27cf88d9ce843627aba5aaa306727ab8b07028dae17ed592d2f283e1fae78fb2"
+    },
+    {
+      "scenario_id": "P6-EQ-02",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:23cba168ac9e16f047df35e32096782470547f92b2f2d7be12c50e364598e2a6"
+    },
+    {
+      "scenario_id": "P6-EQ-03",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:6c2e91fd3c86174dd3100bfbf05ffbf3422f9d825fbcd4fdc6e206d6a78bdd7f"
+    },
+    {
+      "scenario_id": "P6-EQ-04",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:a5072ac4d038f538e7a753ecb6743beb03cd1109ae34ae5c5312bee1631666bc"
+    },
+    {
+      "scenario_id": "P6-EQ-05",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:bcedc565b11770cf79f668c799c9c2009a4a409a9217b7caf43b18f461bb5dbe"
+    },
+    {
+      "scenario_id": "P6-EQ-06",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:3cadf8b24e074ba6c0ff7bcf0137c44c9e9dfb30d03e57da19845d4efcbe1cbd"
+    },
+    {
+      "scenario_id": "P6-EQ-07",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:fc8e38527d4a30e8a55977168eaf70511e14431803c847152a284273bc0b551c"
+    },
+    {
+      "scenario_id": "P6-EQ-08",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:4240f13f70b4f0eacba9a3036a2f89e07dc9201a44bbefc2ff009d07fb75dd28"
+    },
+    {
+      "scenario_id": "P6-EQ-09",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:8f9d5b4ae9c89f9f3c098ce9cc09be98f27bb7b7718fdd0cf95f4ce786651144"
+    },
+    {
+      "scenario_id": "P6-EQ-10",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:15fadd1fd00dc4762235edc0f1fdf97fcddee1aeafc86d76913a22e091861160"
+    },
+    {
+      "scenario_id": "P6-EQ-11",
+      "category": "evidence_quotation_span_integrity",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:93ff80bf112d64e2cc0c555a5174f8f3f6afe5b1dbc3c68752fe11af8804163e"
+    },
+    {
+      "scenario_id": "P6-IN-01",
+      "category": "instruction_injection_malformed_input",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:45da680e4e662a8dd8fc07232054f6ba1420f211303ae978ec40b9fa06d812aa"
+    },
+    {
+      "scenario_id": "P6-IN-02",
+      "category": "instruction_injection_malformed_input",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:6e6537855404f24cb09eca36eaeaf456f30485dad3e295cd98786662f214c78f"
+    },
+    {
+      "scenario_id": "P6-IN-03",
+      "category": "instruction_injection_malformed_input",
+      "expectation_kind": "expected_refusal",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:a42f716109bc08b2056d189fce0075e2cd0cefbbd9862d3520faefc51bba54b1"
+    },
+    {
+      "scenario_id": "P6-IN-04",
+      "category": "instruction_injection_malformed_input",
+      "expectation_kind": "expected_refusal",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:f26e1617596b8d9ea31102780fb3f5b01bf092ac2fd388a478065f4aa25cdb99"
+    },
+    {
+      "scenario_id": "P6-IN-05",
+      "category": "instruction_injection_malformed_input",
+      "expectation_kind": "expected_refusal",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:34b343fcae6fe8a383b3f6fa6f9a91990f7c1e73b94af1c8054a350760b1b6ee"
+    },
+    {
+      "scenario_id": "P6-RT-01",
+      "category": "reasoning_traceability_unsupported_conclusions",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:f5e396e3d96e99ce741956ac62f143b5057b3978ca00a0d4ea87a528b7b572ec"
+    },
+    {
+      "scenario_id": "P6-RT-02",
+      "category": "reasoning_traceability_unsupported_conclusions",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:1da32c6ef35fa1f704279a3f8d7312634ee6d829232671704c7d801b7d575683"
+    },
+    {
+      "scenario_id": "P6-RT-03",
+      "category": "reasoning_traceability_unsupported_conclusions",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:be91e107610201aacb059712b536c8efc26f50268d4c3d062fb535cbfdc58ad4"
+    },
+    {
+      "scenario_id": "P6-RT-04",
+      "category": "reasoning_traceability_unsupported_conclusions",
+      "expectation_kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:ac09741c93c25787b5ed1c100aae0bdd55088ed8e8b19bf37f83a855e792d2ba"
+    },
+    {
+      "scenario_id": "P6-RT-05",
+      "category": "reasoning_traceability_unsupported_conclusions",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:9fd34af42b5ff7d6d2c3758564ab25961e954eda494b2e3b996eb700deab76ca"
+    },
+    {
+      "scenario_id": "P6-RT-06",
+      "category": "reasoning_traceability_unsupported_conclusions",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:68293428a5b793c1c342f7086be1e233166f59fa7e0d0f15cb80762b21dfdd4c"
+    },
+    {
+      "scenario_id": "P6-RT-07",
+      "category": "reasoning_traceability_unsupported_conclusions",
+      "expectation_kind": "expected_degradation",
+      "result": "unexpected",
+      "mismatches": [
+        "compile error: graph_self_validation_failed: GV-11: $.findings[3].reasons[0] \"motive\"; GV-11: $.refusals[0].boundary \"motive\"; GV-11: $.nodes[18].reasons[0] \"motive\"; GV-11: $.nodes[27].boundary \"motive\""
+      ],
+      "universal_violations": []
+    },
+    {
+      "scenario_id": "P6-RT-08",
+      "category": "reasoning_traceability_unsupported_conclusions",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:ff1474ffab0ded4c0decc12e1d2f76bc9fe13671393a2b57d1f9b4f876243a4e"
+    },
+    {
+      "scenario_id": "P6-SP-01",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:74fc0865a2653a78604b07a10908f9aa3431eb4fe4ceaeae9abd3e1ca0377653"
+    },
+    {
+      "scenario_id": "P6-SP-02",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "ceiling identifiable_basis: at most review_required, got supported"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:9a1dbd4ed6a801b84af57f615a648a5f710b673077ab46b2ebb08ba698f79f1c"
+    },
+    {
+      "scenario_id": "P6-SP-03",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:d45869c1c6abf1411147b337b4d780e8e31b83b5051fd018d207661cbbbfde53"
+    },
+    {
+      "scenario_id": "P6-SP-04",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "ceiling chronology_integrity: at most review_required, got supported"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:a62ca842d06b5dd743aab3eadb5936ba9024b285a68eade5262b6b1366ac9ed8"
+    },
+    {
+      "scenario_id": "P6-SP-05",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:ab8efc1c2a1f9ca789c51c28a02a0fa33774b02b6be6640eca533bd67d3b6c72"
+    },
+    {
+      "scenario_id": "P6-SP-06",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "ceiling reasoning_traceability: at most review_required, got supported"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:e0253e74d03721c23f82b1b4c7c9222efc4128d6d37e598cd03d012a18ad97ea"
+    },
+    {
+      "scenario_id": "P6-SP-07",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "ceiling reasoning_traceability: at most review_required, got supported"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:a48c080151646ac019ecfcbf3c79920fc4ec1fa5abbf23addce32aadf7002e7e"
+    },
+    {
+      "scenario_id": "P6-SP-08",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:614482495d590427ba48e6d712e822447173fe0c5f7d9b147f63b67c48321edf"
+    },
+    {
+      "scenario_id": "P6-SP-09",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:547b76b79158bf4f45b5b09cef0ae988b4d396a4c39b92f6581b3d9bb34c2fed"
+    },
+    {
+      "scenario_id": "P6-SP-10",
+      "category": "presence_versus_semantic_support",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:058612889533f9133e8c22709cf33730c7b0e6c4b81e1aaf0c7567ee24c48fb3"
+    },
+    {
+      "scenario_id": "P6-SU-01",
+      "category": "sufficiency_missing_decision_basis",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:79ea5b8ff426f6d66623e84b3a06d2a9febec2f81fff63bfeb40decab24ec664"
+    },
+    {
+      "scenario_id": "P6-SU-02",
+      "category": "sufficiency_missing_decision_basis",
+      "expectation_kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "gap"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:0db1d5b7b4da65bb35459dbfca8046c79be65e668c23b9357055a6a3dfbe80b4"
+    },
+    {
+      "scenario_id": "P6-SU-03",
+      "category": "sufficiency_missing_decision_basis",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:c8b84efecb4611089430e3232664d3c69745d637c513b413780928c754b47179"
+    },
+    {
+      "scenario_id": "P6-SU-04",
+      "category": "sufficiency_missing_decision_basis",
+      "expectation_kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "gap",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:7a8d93c8976433aab36f3c9e9b3444d0512d61a6c29615d20a78aa171286c0d9"
+    },
+    {
+      "scenario_id": "P6-SU-05",
+      "category": "sufficiency_missing_decision_basis",
+      "expectation_kind": "expected_degradation",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:def17530818801a329de98edf3600e9b3e3c28651c14ba6a70ae2a8e6620c09f"
+    },
+    {
+      "scenario_id": "P6-SU-06",
+      "category": "sufficiency_missing_decision_basis",
+      "expectation_kind": "invariant",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:b65b6a4b5101015ef07b715d0a0e11b5660f342a0aaccc017999d1c95e87cbb2"
+    },
+    {
+      "scenario_id": "P6-SU-07",
+      "category": "sufficiency_missing_decision_basis",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "missing conflict control_state_conflict (got )"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:b8270a6fffc20476d44134baf8975360e8bf82093727eb942e4134bf121d6b07"
+    },
+    {
+      "scenario_id": "P6-SU-08",
+      "category": "sufficiency_missing_decision_basis",
+      "expectation_kind": "expected_refusal",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "escalate",
+      "graph_sha256": "sha256:25eb2b64b219fcae31eca7b2de91a6b3aa2284c7bd9907d219609a71c71c9599"
+    },
+    {
+      "scenario_id": "P6-XD-01",
+      "category": "excluded_domain_reworded_scope",
+      "expectation_kind": "expected_refusal",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "graph_sha256": "sha256:d26b972755db1d9303822ea5769900e67da210c5bb2140a0d81823b8b79cf9b0"
+    },
+    {
+      "scenario_id": "P6-XD-02",
+      "category": "excluded_domain_reworded_scope",
+      "expectation_kind": "expected_refusal",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "graph_sha256": "sha256:101398af68abf7c7f155f1610e9ac85cae3e3488497898e64d8c1d315fd09996"
+    },
+    {
+      "scenario_id": "P6-XD-03",
+      "category": "excluded_domain_reworded_scope",
+      "expectation_kind": "known_open_failure",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "gate: expected refuse, got proceed",
+        "missing refusal excluded_domain_content (got )"
+      ],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "graph_sha256": "sha256:ed1ea949437a4e3b593594aa01fab6ecd5d9743eb86a22d0ae267e6d5d94ce92"
+    },
+    {
+      "scenario_id": "P6-XD-04",
+      "category": "excluded_domain_reworded_scope",
+      "expectation_kind": "expected_refusal",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "graph_sha256": "sha256:fb50d327fcb8789d7593a35237c46772b9bce8e35c4f6cc5ad94555f0067c529"
+    }
+  ],
+  "results_hash": "sha256:e67dc30cbba13835364b0cd9eca3202c4297172a6073a42449c717ec3aa243b2",
+  "statement": "Engineering-authored expected safe behaviour, sealed before execution. Not adjudicated labels; an as_expected result is not an accuracy result."
+}

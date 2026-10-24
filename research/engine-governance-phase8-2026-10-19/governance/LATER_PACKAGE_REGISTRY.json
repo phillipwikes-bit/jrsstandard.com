@@ -1,0 +1,177 @@
+{
+  "registry_type": "jrs-phase8-1-later-package-registry",
+  "registry_version": "1.1.0",
+  "amended_by": "Phase 8.2 governance amendment (2026-10-20): entry classes, derived counts, Phase 8 scope classification",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018_status": "OPEN",
+  "statement": "Records which local packages were added after each earlier package and which earlier checks they affect. A registry status is not a validation, release, ownership, commercial or deployment status. B-018 remains OPEN and is not addressed by this registry.",
+  "language_rule": "Earlier package results remain historically recorded results for their sealed package scope. A later whole-worktree run may show a declared compatibility condition without establishing a defect in the earlier package.",
+  "packages": [
+    {
+      "entry_class": "retroactive_seed",
+      "permissions": {
+        "may_affect_historical_results": false,
+        "may_affect_composition_results": true,
+        "may_affect_public_or_deployment": false
+      },
+      "seeded_retroactively": true,
+      "admission_record": null,
+      "package_id": "phase6-reliability",
+      "package_version": "1.0.0",
+      "created": "2026-10-17",
+      "status": "preserved_local_only",
+      "owner_decision_reference": {
+        "reference": "Phase 6 assignment (owner, 2026-10-17)",
+        "evidence_path": "research/engine-reliability-phase6-2026-10-17/OWNER_DECISION_REGISTER.md",
+        "evidence_note": "Decisions-taken row dated 2026-10-17: \"Phase 6 assignment\".",
+        "formal_decision_record": false
+      },
+      "approved_paths": [
+        "lib/engine-reliability/",
+        "tests/engine-reliability/",
+        "tools/engine-reliability-replay.mjs",
+        "research/engine-reliability-phase6-2026-10-17/"
+      ],
+      "manifest_binding": {
+        "manifest_file": "research/engine-governance-phase8-2026-10-19/registry/manifests/phase6-reliability.sha256",
+        "package_sha256": "sha256:cdd51355e92e8a62dbdb3f2147115f17f559d92efc12a951f4c45e96c1a38576"
+      },
+      "reason": "Controlled reliability, regression and adaptation framework over the frozen v0.3 compiler.",
+      "affected_earlier_checks": [
+        "EC-P4-TOOLS"
+      ]
+    },
+    {
+      "entry_class": "retroactive_seed",
+      "permissions": {
+        "may_affect_historical_results": false,
+        "may_affect_composition_results": true,
+        "may_affect_public_or_deployment": false
+      },
+      "seeded_retroactively": true,
+      "admission_record": null,
+      "package_id": "phase7-candidate",
+      "package_version": "0.3.1",
+      "created": "2026-10-19",
+      "status": "preserved_local_only",
+      "owner_decision_reference": {
+        "reference": "Phase 7 assignment (owner, 2026-10-19)",
+        "evidence_path": "research/engine-remediation-phase7-2026-10-19/REMEDIATION_CONTRACT.md",
+        "evidence_note": "Section \"Stop conditions (from the assignment)\"; post-stop authorizations in execution-record/.",
+        "formal_decision_record": false
+      },
+      "approved_paths": [
+        "lib/engine-evidence-graph-v0.3.1-candidate/",
+        "tests/engine-remediation-phase7/",
+        "research/engine-remediation-phase7-2026-10-19/"
+      ],
+      "manifest_binding": {
+        "manifest_file": "research/engine-governance-phase8-2026-10-19/registry/manifests/phase7-candidate.sha256",
+        "package_sha256": "sha256:815c5d5671d0cfcaf62edca0a11938b920e37d058d3e8655ae9e4f9c735925c3"
+      },
+      "reason": "Separately versioned v0.3.1 remediation candidate and its change qualification.",
+      "affected_earlier_checks": [
+        "EC-P6-OWNERSHIP"
+      ]
+    },
+    {
+      "entry_class": "retroactive_seed",
+      "permissions": {
+        "may_affect_historical_results": false,
+        "may_affect_composition_results": true,
+        "may_affect_public_or_deployment": false
+      },
+      "seeded_retroactively": true,
+      "admission_record": null,
+      "package_id": "phase8-governance",
+      "package_version": "1.1.0",
+      "created": "2026-10-19",
+      "status": "present_local_only",
+      "owner_decision_reference": {
+        "reference": "Phase 8 assignment (owner, 2026-10-19) and Phase 8.1 assignment (owner, 2026-10-20)",
+        "evidence_path": "research/engine-governance-phase8-2026-10-19/OWNER_DECISION_REGISTER.md",
+        "evidence_note": "Decisions-taken rows: \"Proceed with Phase 8 as specified\" and the Phase 8.1 governance repair.",
+        "formal_decision_record": false
+      },
+      "approved_paths": [
+        "lib/engine-governance-phase8/",
+        "tests/engine-governance-phase8/",
+        "tools/engine-governance-phase8-replay.mjs",
+        "research/engine-governance-phase8-2026-10-19/"
+      ],
+      "manifest_binding": {
+        "manifest_file": "research/engine-governance-phase8-2026-10-19/PHASE8_FILE_MANIFEST_SHA256.txt",
+        "package_sha256": "sha256:a0e59dc89c12bbfafb972d55e7237fa1a48b228fd164760868e96ff9141017b7",
+        "note": "Hash of the manifest rows; this registry file is excluded from that manifest."
+      },
+      "reason": "Candidate preservation, cross-package test governance and execution-disabled evaluation readiness.",
+      "affected_earlier_checks": [
+        "EC-P4-TOOLS",
+        "EC-P6-OWNERSHIP",
+        "EC-P7-OWNERSHIP",
+        "EC-P7-TOOLS"
+      ]
+    },
+    {
+      "package_id": "phase9-human-evidence-adjudication",
+      "package_version": "0.1.0",
+      "entry_class": "admitted_future_package",
+      "created": "2026-10-20",
+      "status": "local_construction_only",
+      "owner_decision_reference": {
+        "reference": "OWNER_WORK_ASSIGNMENT_2026-10-20_PHASE9_HUMAN_ADJUDICATION_LAYER",
+        "evidence_path": "research/engine-governance-phase8-2026-10-19/decisions/OWNER_DECISIONS.json",
+        "evidence_note": "Recorded owner authorization (decided, local package construction only).",
+        "formal_decision_record": true
+      },
+      "approved_paths": [
+        "lib/engine-human-review-phase9/",
+        "tests/engine-human-review-phase9/",
+        "tools/engine-human-review-phase9-replay.mjs",
+        "research/engine-human-review-phase9-2026-10-20/"
+      ],
+      "manifest_binding": {
+        "manifest_file": "research/engine-human-review-phase9-2026-10-20/PHASE9_FILE_MANIFEST_SHA256.txt",
+        "required_once_files_exist": true
+      },
+      "reason": "Local, synthetic-only human evidence adjudication layer around the v0.3.1 candidate: dossiers, decision model, Cognitive Controls, sealed rehearsal packets, execution-disabled review and measurement protocols.",
+      "restrictions": "No provider use, real records, external labels, holdouts, independent evaluation, deployment, public use, commercial use, licensing, release or production. The package does not label, score, approve or commercialize the Engine.",
+      "affected_earlier_checks": [
+        "EC-P4-TOOLS",
+        "EC-P6-OWNERSHIP",
+        "EC-P7-OWNERSHIP",
+        "EC-P7-TOOLS",
+        "EC-P8-SCOPE"
+      ],
+      "permissions": {
+        "may_affect_historical_results": false,
+        "may_affect_composition_results": true,
+        "may_affect_public_or_deployment": false
+      },
+      "seeded_retroactively": false,
+      "admission_record": {
+        "gate_result": "admissible",
+        "owner_decision_reference": "OWNER_WORK_ASSIGNMENT_2026-10-20_PHASE9_HUMAN_ADJUDICATION_LAYER",
+        "admitted_at": "2026-10-20T12:12:54.948Z",
+        "files_present_at_admission": 0,
+        "proposal_sha256": "sha256:694c9d4150d334f369f9decda1fc602623efc9cec3a74330affc0b6c66a8c2e2"
+      }
+    }
+  ],
+  "summary": {
+    "entries": 4,
+    "retroactive_seeds": 3,
+    "admitted_future_packages": 1,
+    "reserved_not_present": 0,
+    "local_construction_only": 1,
+    "present": 3,
+    "retired": 0
+  },
+  "governance_sha256": "sha256:c43721cf39ba4abd89a4b736718202bed735beea4d1c305969ee51fc2f2cd656",
+  "registry_sha256": "sha256:d45bbc587e861d32099fd1e2de54c7f46ff9ecc0bda318a904a3580346c6f070"
+}

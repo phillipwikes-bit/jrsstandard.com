@@ -1,0 +1,160 @@
+
+# A. Prior versions preserved
+PASS  lib/engine-assurance unchanged since 882e4f5
+PASS  lib/engine-evidence-contract unchanged since 882e4f5
+PASS  lib/manifest unchanged since 882e4f5
+PASS  api unchanged since 882e4f5
+PASS  research/engine-assurance-2026-10-10 unchanged since 882e4f5
+PASS  research/engine-evidence-contract-2026-10-10 unchanged since 882e4f5
+PASS  tests/engine-assurance unchanged since 882e4f5
+PASS  tests/engine-evidence-contract unchanged since 882e4f5
+PASS  .jrs unchanged since 882e4f5
+PASS  docs/enterprise-diligence unchanged since 882e4f5
+PASS  historical v1 copy still hashes to git blob baebb512
+PASS  public routes remain 503 refusal stubs
+PASS  version boundary manifest lists v1, v0.1, v0.2, v0.3 with distinct identities
+PASS  no prior result is migrated (manifest says so for each prior version)
+
+# B. Fixture replay and determinism
+PASS  all 35 v0.3 fixture cases match their frozen expected results
+PASS  two replays with a fixed clock are byte-identical
+PASS  graph JSON is deterministic with stable key order
+PASS  replay refuses to start with a provider endpoint configured
+
+# C. Every graph: traversal, identity, edge meanings
+PASS  every graph carries version, fixture, record hash, compiler hash, contract and run identity
+PASS  every non-refusal finding in every graph traverses to an exact record span
+PASS  every supported or gap finding traverses through verified evidence
+PASS  no edge meaning claims proof, truth, legal sufficiency, compliance, credibility or correctness
+PASS  TEXTUALLY_SUPPORTS carries exactly the required meaning
+PASS  ambiguous quotations never attach to a finding
+PASS  sufficiency is never supported in any graph
+PASS  every conflict states it is a record conflict, not the true state of events
+PASS  no graph contains a voting, weighting or score field
+
+# D. Adversarial cases
+PASS  fabricated quotation routes to review
+PASS  exact text with an incorrect offset cannot be supplied: offsets are rejected as untrusted
+PASS  duplicate quotation without disambiguator is ambiguous and not used
+PASS  duplicate quotation with a valid disambiguator is used
+PASS  quote attached to the wrong condition is rejected
+PASS  conclusion with no linked basis routes to review
+PASS  basis with no linked conclusion: reconstructability gap, reasoning review
+PASS  conflicting dates and authority state route to review
+PASS  missing expiry and missing control are visible gaps
+PASS  unsupported certainty produces a documentation control
+PASS  direct, reworded and mixed-scope employment content is refused
+PASS  malformed response and duplicate JSON keys fail closed
+
+# E. Graph Cognitive Controls stay neutral
+PASS  controls produced across fixtures (25) and none withheld
+PASS  no control tells a reviewer what to decide or describes a person
+PASS  each control has exactly detect, reflect, correct, learn content and a question
+PASS  neutrality check catches drift "Should the exception be revoked?"
+PASS  neutrality check catches drift "Is the requester credible?"
+PASS  neutrality check catches drift "We recommend granting access."
+
+# F. Sealed Evaluation Factory
+PASS  registry is a valid hash chain with permitted statuses only
+PASS  registry entry status is not_authorized_to_execute
+PASS  separation check refuses P-01-synthetic-as-holdout for synthetic_presented_as_holdout
+PASS  separation check refuses P-02-development-overlap for development_sealed_overlap
+PASS  separation check refuses P-03-same-process-label-claimed-independent for label_independence_not_supported
+PASS  separation check refuses P-04-raw-records-in-tracked-directory for raw_records_in_tracked_directory
+PASS  separation check refuses P-05-missing-version-identity for missing_version_identity
+PASS  separation check refuses P-06-missing-codebook-hash for missing_codebook_hash
+PASS  separation check refuses P-07-missing-owner-authorization for missing_owner_authorization
+PASS  separation check refuses P-08-unapproved-data-classification for unapproved_data_classification
+PASS  separation check refuses P-09-placeholder-adjudicator for placeholder_adjudication_authority
+PASS  separation check refuses P-10-changed-after-freeze for component_changed_after_freeze
+PASS  separation check refuses P-11-completion-claimed-from-template for status_claim_not_permitted
+PASS  no example package reaches any status other than refused or not_authorized_to_execute
+PASS  protocol template states no evaluation was authorized or conducted
+PASS  protocol template has all required sections
+PASS  authority matrix separates the seven roles and bars engineering from conversion
+PASS  no holdout, label or adjudication file exists in the package
+
+# G. Static workbench
+PASS  six required examples rendered
+PASS  pages contain no script, form, input, iframe, storage, analytics or external URL
+PASS  each page shows the fourteen sections in order
+PASS  rendered page text carries no unsupported claim
+PASS  factory status shown as not_authorized_to_execute on every page
+PASS  12 screenshots (desktop and mobile) with 0 non-file requests and no horizontal overflow
+PASS  workbench builder has no server, listener, upload or network client
+
+# H. Probes and mutation testing
+PASS  all 58 direct probes pass on the unmutated library
+PASS  M-01 quote: duplicates treated as unique: killed by q.duplicate_ambiguous, q.duplicate_section_disambiguated, q.near_quote_both_in_window_ambiguous
+PASS  M-02 quote: whitespace-collapsed matching: killed by q.whitespace_variant
+PASS  M-03 quote: heading-only check removed: killed by q.heading_only_without_colon
+PASS  M-04 quote: ellipsis check removed: killed by q.elided
+PASS  M-05 quote: line-break check removed: killed by q.line_break
+PASS  M-06 quote: mid-word truncation allowed: killed by q.mid_word
+PASS  M-07 quote: disambiguator accepts several: killed by q.near_quote_both_in_window_ambiguous
+PASS  M-08 quote: breadth limit removed: killed by q.too_broad
+PASS  M-09 graph: span text check removed: killed by g.span_text_altered
+PASS  M-10 graph: traversal check removed: killed by g.untraceable_finding_rejected
+PASS  M-11 graph: evidence-path check removed: killed by g.supported_without_evidence_path
+PASS  M-12 graph: edge shape check removed: killed by g.edge_wrong_shape
+PASS  M-13 graph: edge meaning check removed: killed by g.edge_meaning_non_proof_altered
+PASS  M-14 graph: sufficiency-supported check removed: killed by g.sufficiency_supported_rejected
+PASS  M-15 graph: ordering check removed: killed by g.unsorted_rejected
+PASS  M-16 graph: limitation check removed: killed by g.missing_limitation_rejected
+PASS  M-17 graph: proof-claim guard removed: killed by g.proof_claim_graph_guard_only
+PASS  M-18 graph: identity check removed: killed by g.version_tamper_rejected
+PASS  M-19 graph: conflict-node downgrade check removed: killed by c.validator_rejects_undowngraded_conflict_node
+PASS  M-20 contradiction: downgrade removed in compiler: killed by c.chronology_conflict_downgrades, c.validator_rejects_undowngraded_conflict_node, k.controls_neutral_and_present
+PASS  M-21 contradiction: impossible-sequence detection removed: killed by c.chronology_conflict_downgrades, c.validator_rejects_undowngraded_conflict_node, k.controls_neutral_and_present
+PASS  M-22 contradiction: decision-date detection removed: killed by c.decision_date_conflict
+PASS  M-23 contradiction: authority-state detection removed: killed by c.authority_state_conflict
+PASS  M-24 scope: v0.3 employment phrasings removed: killed by s.relieved_of_duties_refused
+PASS  M-25 scope: refusal never decided: killed by s.employment_refused, s.reworded_termination_refused, s.relieved_of_duties_refused
+PASS  M-26 scope: reworded injection pattern removed: killed by s.reworded_injection_detected
+PASS  M-27 scope: instruction-risk downgrade removed: killed by s.injection_routes_all_review
+PASS  M-28 version: declared-version check removed: killed by v.codebook_mismatch_refused, v.prompt_mismatch_refused, v.compiler_mismatch_refused
+PASS  M-29 version: fixture-hash check removed: killed by v.fixture_hash_mismatch_refused
+PASS  M-30 version: response prompt check removed: killed by v.response_prompt_mismatch_invalid
+PASS  M-31 response: untrusted-field check removed: killed by v.untrusted_field_reason
+PASS  M-32 claim: prohibited-inference check removed: killed by k.intent_inference_rejected
+PASS  M-33 claim: unstated-cause check removed: killed by k.unstated_cause_rejected
+PASS  M-34 claim: assertion marker check removed: killed by k.marker_required
+PASS  M-35 claim: condition permission check removed: killed by k.condition_permission_required
+PASS  M-36 controls: template drifts into a recommendation: killed by k.controls_neutral_and_present, k.templates_all_neutral
+PASS  M-37 status: sufficiency override removed: killed by st.clean_statuses
+PASS  M-38 status: gap accepted without a visible rule gap: killed by st.unconfirmed_gap_routes_review
+PASS  M-39 evaluation: synthetic-holdout check removed: killed by e.synthetic_holdout
+PASS  M-40 evaluation: overlap check removed: killed by e.overlap
+PASS  M-41 evaluation: label-independence check removed: killed by e.label_independence
+PASS  M-42 evaluation: tracked-directory check removed: killed by e.raw_records_tracked
+PASS  M-43 evaluation: freeze check removed: killed by e.changed_after_freeze
+PASS  M-44 evaluation: checker can approve: killed by e.never_authorises
+PASS  M-45 evaluation: registry accepts completed status: killed by e.registry_rejects_completed
+PASS  M-46 evaluation: registry chain check removed: killed by e.registry_chain_detects_edit
+PASS  M-47 evaluation: engineering-role conflict check removed: killed by e.authority_conflict
+
+# I. Package documents
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/ASSERTION_BOUNDARY.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/COGNITIVE_CONTROLS_GRAPH_BOUNDARY.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/CONDITION_RULEBOOK.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/CONTRADICTION_HANDLING_PROTOCOL.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/EVALUATION_AUTHORITY_MATRIX.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/EVALUATION_CONTAMINATION_CONTROLS.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/EVIDENCE_GRAPH_SPECIFICATION.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/FAILURE_MODE_REGISTER.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/MUTATION_TEST_RECORD.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/PHASE_3_HANDOFF.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/QUOTE_RESOLUTION_POLICY.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/SEALED_EVALUATION_FACTORY_SPECIFICATION.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/VERSION_COMPATIBILITY_REPORT.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/WORKBENCH_README.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/version-lineage/HISTORICAL_REFERENCE_CHECKS.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/version-lineage/V1_V02_V03_COMPARISON_MATRIX.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/version-lineage/VERSION_LINEAGE.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/fixtures/FIXTURE_REGISTER.md
+PASS  content guard: research/evidence-graph-compiler-2026-10-10/sealed-evaluation-factory/PROTOCOL_TEMPLATE.md
+PASS  all fourteen required documents present
+PASS  handoff ends with the required statement
+PASS  suite made no network attempt
+
+140 checks: 140 passed, 0 failed, 0 skipped

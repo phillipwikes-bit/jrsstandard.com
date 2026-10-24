@@ -1,0 +1,198 @@
+{
+  "result_format": "jrs-live-boundary-offline-results/0.1.0",
+  "run_at_utc": "2026-10-24T14:07:19.854Z",
+  "live_dispatch_enabled": false,
+  "totals": {
+    "tests": 15,
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0,
+    "load_or_setup_errors": 0
+  },
+  "network_attempts_total": 0,
+  "credential_values_read": 0,
+  "note": "All provider, model, endpoint, credential-name, budget and signature values are synthetic placeholders. Gate 1 CLEARED appears only as a synthetic test state; the actual Gate 1 status is OPEN.",
+  "tests": [
+    {
+      "id": "LT-01",
+      "name": "Gate 1 open",
+      "expected": "gate1_not_cleared",
+      "result": "pass",
+      "observed": {
+        "code": "gate1_not_cleared",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-02",
+      "name": "Authorization absent",
+      "expected": "authorization_absent",
+      "result": "pass",
+      "observed": {
+        "code": "authorization_absent",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-03",
+      "name": "Authorization expired",
+      "expected": "authorization_expired_or_invalid_expiry",
+      "result": "pass",
+      "observed": {
+        "code": "authorization_expired_or_invalid_expiry",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-04",
+      "name": "Provider differs from authorization",
+      "expected": "provider_differs_from_authorization",
+      "result": "pass",
+      "observed": {
+        "code": "provider_differs_from_authorization",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-05",
+      "name": "Model identifier differs from authorization",
+      "expected": "model_identifier_differs_from_authorization",
+      "result": "pass",
+      "observed": {
+        "code": "model_identifier_differs_from_authorization",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-06",
+      "name": "Request limit would exceed ten",
+      "expected": "maximum_requests_outside_cap and request_limit_would_be_exceeded",
+      "result": "pass",
+      "observed": {
+        "cap_11": [
+          "maximum_requests_outside_cap"
+        ],
+        "eleventh_request": [
+          "request_limit_would_be_exceeded"
+        ],
+        "sender_calls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-07",
+      "name": "Budget absent",
+      "expected": "authorization_field_absent:maximum_budget",
+      "result": "pass",
+      "observed": {
+        "code": "authorization_field_absent:maximum_budget",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-08",
+      "name": "Retention location absent",
+      "expected": "authorization_field_absent:retention_location",
+      "result": "pass",
+      "observed": {
+        "code": "authorization_field_absent:retention_location",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-09",
+      "name": "Synthetic-material classification absent",
+      "expected": "material_not_classified_synthetic_development",
+      "result": "pass",
+      "observed": {
+        "code": "material_not_classified_synthetic_development",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-10",
+      "name": "Synthetic-record identifier duplicated",
+      "expected": "duplicate_synthetic_record_id",
+      "result": "pass",
+      "observed": {
+        "codes": [
+          "duplicate_synthetic_record_id"
+        ]
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-11",
+      "name": "Live transport selected during offline mode",
+      "expected": "offline_mode_live_transport_not_permitted",
+      "result": "pass",
+      "observed": {
+        "code": "offline_mode_live_transport_not_permitted",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-12",
+      "name": "Credential value would enter a log or record",
+      "expected": "credential_value_in_output; credential_field_must_be_a_variable_name",
+      "result": "pass",
+      "observed": {
+        "writer_code": "credential_value_in_output",
+        "refusal_message_echoes_value": false,
+        "records_written": 0,
+        "field_check": [
+          "credential_field_must_be_a_variable_name"
+        ]
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-13",
+      "name": "Positive control: every check passes, dispatch still locked in this build",
+      "expected": "live_dispatch_not_enabled_in_this_build",
+      "result": "pass",
+      "observed": {
+        "code": "live_dispatch_not_enabled_in_this_build",
+        "senderCalls": 0
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-14",
+      "name": "Provenance labels by transport kind",
+      "expected": "PROVENANCE map",
+      "result": "pass",
+      "observed": {
+        "mock": {
+          "response_origin": "mock_transport_fixture",
+          "adapter_transport_mode": "mocked"
+        },
+        "live_provider": {
+          "response_origin": "live_provider_captured",
+          "adapter_transport_mode": "live_provider"
+        }
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "LT-15",
+      "name": "Hand-built live transport cannot bypass the boundary",
+      "expected": "live_transport_not_created_by_boundary",
+      "result": "pass",
+      "observed": {
+        "code": "live_transport_not_created_by_boundary",
+        "fake_send_calls": 0
+      },
+      "network_attempts": 0
+    }
+  ]
+}

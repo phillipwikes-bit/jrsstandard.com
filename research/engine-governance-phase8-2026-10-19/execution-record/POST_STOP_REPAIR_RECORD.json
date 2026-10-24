@@ -1,0 +1,17 @@
+{
+  "record_type": "post-stop owner-authorized test-harness repair (Phase 8)",
+  "date": "2026-10-19",
+  "execution_mode": "local, synthetic, offline",
+  "stop": { "condition": "mutation survived", "mutation": "MG-14", "mutations": 25, "killed": 24 },
+  "cause": "MG-14 survived because the original probe neg.local_tests_as_independent_rejected edited the record but retained a stale record hash; validation then rejected the record for the hash mismatch, so the probe passed whether or not the targeted control existed.",
+  "authorization": "Owner instruction in session: repair the three Phase 8 qualification probes so each recomputes the record hash after its deliberate edit and asserts its specific rejection reason; rerun the full mutation group; continue only if all 25 mutations are caught directly.",
+  "repaired_probes": [
+    { "probe": "neg.local_tests_as_independent_rejected", "asserts": "independent evaluation status altered" },
+    { "probe": "neg.issue_closed_without_record_rejected", "asserts": "<issue id>: closed without an owner decision or remediation record" },
+    { "probe": "neg.score_field_rejected", "asserts": "forbidden field: confidence_score" }
+  ],
+  "each_repaired_probe_also_asserts": "no record hash mismatch is reported, so only the targeted control can reject",
+  "qualification_implementation_changed": false,
+  "not_changed": ["lib/engine-governance-phase8/ (qualification and all other modules)", "sealed Phase 7 expectations", "earlier packages (v1, v0.1, v0.2, v0.3, Phase 4, Phase 6, Phase 7)", "candidate rules", "compatibility conditions CPC-01 to CPC-04", "tracked files, public routes, deployment, PR #40, B-018, trackers"],
+  "first_rerun_attempt": "Not applicable: the mutation rerun after this repair began and completed normally."
+}

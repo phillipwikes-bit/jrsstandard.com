@@ -1,0 +1,156 @@
+{
+  "record_type": "jrs-phase8-2-admission-correction/1.0.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "statement": "A narrow correction to the Phase 8.2 governance design before Phase 9 admission. Not a new phase. It does not alter any Engine conclusion, evaluation status or release status, and it does not describe the earlier Phase 8.2 result as invalid.",
+  "phase8_2_historical_state": {
+    "completed_at": "2026-10-20T05:26:26.606Z",
+    "result": "435/435",
+    "by_kind": {
+      "direct": 230,
+      "negative": 120,
+      "mutation": 85
+    },
+    "mutations": "85/85",
+    "registry_summary": {
+      "entries": 3,
+      "retroactive_seeds": 3,
+      "admitted_future_packages": 0,
+      "reserved_not_present": 0,
+      "present": 3,
+      "retired": 0
+    },
+    "registry_governance_sha256": "sha256:9a3cc35ea99a1dda063d368a6ab6468c27e38ce35025a3c1ca2e71cfe8ce6fd4",
+    "phase9_admitted": false,
+    "phase9_paths_present": 0,
+    "historical_manifest": {
+      "file": "registry/manifests/phase8-governance-8.2-historical.sha256",
+      "sha256": "sha256:3bda607430ce1adca18cfad74aa8fb284e0896b38d7012047d3ad0f37208ecc4",
+      "files": 78
+    },
+    "isolated_replay": {
+      "date": "2026-10-20",
+      "environment": "temporary git clone outside the repository at 428c307 plus the recorded Phase 6, Phase 7 and Phase 8.2 files only (364 files, each matched to its recorded hash; clone untracked set equal to the planned set)",
+      "result": "435/435",
+      "output_sha256": "sha256:fe8206c71cb441a5ed426632213cd6822e1a59e8ee7895514742c2c5e4c86e11",
+      "temporary_copy_deleted": true
+    }
+  },
+  "framing_correction": "The Phase 8.2 checks \"recording the authorization created no registry reservation\", \"no Phase 9 file or directory exists\" and probe p82.authorization_created_no_reservation were framed as permanent absence checks. They were true when Phase 8.2 completed and are now historical-scope checks against this record. The earlier result is not invalid.",
+  "corrections": [
+    {
+      "item": "run.mjs \"recording the authorization created no registry reservation\"",
+      "was": "permanent absence check",
+      "now": "historical-scope check against phase8_2_historical_state, plus a current check that any reservation under the authorization exists only through a valid admission made after Phase 8.2 completed"
+    },
+    {
+      "item": "run.mjs \"no Phase 9 file or directory exists\"",
+      "was": "permanent absence check",
+      "now": "historical-scope check (no Phase 9 path at Phase 8.2 completion), plus a current check that every Phase 9 path is owned by an admitted registry entry"
+    },
+    {
+      "item": "p82.authorization_created_no_reservation",
+      "was": "no registry entry may reference the authorization",
+      "now": "p82.authorization_reservations_only_through_admission: reservations exist only as admitted entries tied to the authorization, admitted after Phase 8.2 completed"
+    },
+    {
+      "item": "p82.fourth_entry_valid",
+      "was": "assumed a three-entry registry",
+      "now": "p82.additional_entry_valid: any added valid entry validates"
+    },
+    {
+      "item": "p82.counts_derived_from_entries",
+      "was": "fixed totals (4 entries, 1 admitted)",
+      "now": "totals relative to the current registry"
+    },
+    {
+      "item": "p82.seed_and_admitted_distinguishable",
+      "was": "exactly one admitted entry",
+      "now": "admitted count relative to the current registry; seeds fixed to Phase 6, 7, 8"
+    },
+    {
+      "item": "p82.current_registry_has_three_seeds_only",
+      "was": "zero admitted packages",
+      "now": "p82.current_registry_seeds_and_admissions_valid: three seeds; every admitted entry tied to a recorded decision and admitted after Phase 8.2 completed"
+    },
+    {
+      "item": "p82.future_admission_representable",
+      "was": "used the Phase 9 paths, which become registered on admission",
+      "now": "uses a synthetic unregistered four-location package; a new adversarial probe confirms a registered package cannot be readmitted"
+    },
+    {
+      "item": "p82.phase8_scope_current_worktree_clean",
+      "was": "zero Phase 8 scope conditions",
+      "now": "p82.phase8_scope_current_worktree_derived: one condition per admitted package with files present"
+    },
+    {
+      "item": "Phase 8.1 check \"recorded composition has six registry-derived conditions\"",
+      "was": "total fixed at six",
+      "now": "seed-derived conditions are six and cover CPC-01 to CPC-04; the total is derived from the registry"
+    },
+    {
+      "item": "manifest binding for admitted packages",
+      "was": "only Phase 6, 7, 8 manifest hashes known, so a present admitted package could never validate",
+      "now": "each admitted package declares its own manifest inside an approved research path; nothing is required before files exist; package state derived as no_files, incomplete_construction, manifest_verified or integrity_failure; regeneration requires a manifest_version header and preserved prior versions under manifest-history/"
+    }
+  ],
+  "package_state_model": [
+    {
+      "state": "Historical Phase 8.2 result",
+      "treatment": "preserved, time-bound (phase8_2_historical_state)"
+    },
+    {
+      "state": "Admitted package, no files yet",
+      "treatment": "valid reservation; local construction not begun"
+    },
+    {
+      "state": "Admitted package, files present, no package manifest yet",
+      "treatment": "declared incomplete-construction condition; not a historical defect; not release-capable"
+    },
+    {
+      "state": "Admitted package, files present, valid package manifest",
+      "treatment": "present local package subject to manifest verification"
+    },
+    {
+      "state": "Admitted package, files changed after its manifest",
+      "treatment": "integrity failure; fails closed"
+    },
+    {
+      "state": "Any path without valid admission",
+      "treatment": "undeclared condition; fails closed"
+    }
+  ],
+  "temporary_copy_simulation": {
+    "method": "copy of the corrected repository outside it, real planned Phase 9 entry (status local_construction_only), Phase 8 suite groups other than mutation, composition re-recorded in the copy by the same registry-derived computation the replay tool uses; copy deleted",
+    "results": [
+      {
+        "state": "admitted, no files",
+        "phase8_failures": 0
+      },
+      {
+        "state": "files present, no package manifest",
+        "phase8_failures": 0,
+        "condition": "DCC-EC-P8-SCOPE-phase9-human-evidence-adjudication (incomplete_construction)"
+      },
+      {
+        "state": "files present, valid package manifest",
+        "phase8_failures": 0,
+        "condition": "DCC-EC-P8-SCOPE-phase9-human-evidence-adjudication (manifest_verified)"
+      },
+      {
+        "state": "files changed after manifest",
+        "phase8_failures": 2,
+        "expected": "integrity failure: location check and current-worktree probe fail closed"
+      },
+      {
+        "state": "path without valid admission",
+        "phase8_failures": 2,
+        "expected": "undeclared path fails closed"
+      }
+    ],
+    "first_simulation_findings": "The first simulation run exposed two probe defects introduced in this correction, fixed before the recorded runs: synthetic-entry probes replaced the recorded decided references with a test-only set, and three synthetic-state probes classified the live worktree together with their synthetic files."
+  }
+}

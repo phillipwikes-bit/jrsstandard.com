@@ -1,0 +1,41 @@
+{
+  "record_type": "jrs-phase8-historical-result/1.0.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "package": "phase8-governance",
+  "scope": "Phase 8 as completed in Phase 8.1, before the Phase 8.2 governance amendment",
+  "historical_result": {
+    "result": "370/370",
+    "by_kind": {
+      "direct": 198,
+      "negative": 105,
+      "mutation": 67
+    },
+    "recorded_at": "2026-10-20T03:38:10.929Z",
+    "command": "node tests/engine-governance-phase8/run.mjs --record",
+    "source": "execution-record/PHASE8_TEST_RESULTS.json as it stood before Phase 8.2 (that file is rewritten by later recorded runs)"
+  },
+  "historical_manifest": {
+    "file": "registry/manifests/phase8-governance-8.1-historical.sha256",
+    "sha256": "sha256:3a96b525da30e08110f154331d6f7492816bde72eeaba0eb6a4782bd6332537a",
+    "note": "Every Phase 8 file at the 8.1 scope, including the manifest file and the later-package registry that the Phase 8 file manifest excludes."
+  },
+  "isolated_replay": {
+    "date": "2026-10-20",
+    "environment": "temporary git clone outside the repository at 428c307 plus the recorded Phase 6, Phase 7 and Phase 8 (8.1) files only; 354 files, each matched to its recorded hash; clone untracked set equal to the planned set",
+    "command": "node tests/engine-governance-phase8/run.mjs",
+    "result": "370/370",
+    "by_kind": {
+      "direct": 198,
+      "negative": 105,
+      "mutation": 67
+    },
+    "output_sha256": "sha256:d3306d9deffc4244211b1c52eda1d86c59c052b362d32af0840530f88ed94b29",
+    "temporary_copy_deleted": true,
+    "first_attempt": "369/370. The single failing check was \"no isolated replay temporary directory remains\": the replay clone had been created with the same p8-iso- prefix that check looks for, so the suite saw its own working directory. The clone was renamed (p82-histreplay-) and the replay rerun; no package file differed."
+  },
+  "rule": "This historical result is time-bound to the 8.1 scope. Later amendments and later whole-worktree runs never rewrite it."
+}

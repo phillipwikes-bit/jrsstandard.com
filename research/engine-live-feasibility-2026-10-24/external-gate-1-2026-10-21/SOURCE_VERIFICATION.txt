@@ -1,0 +1,20 @@
+JRS External Gate 1: source verification
+Date: 2026-10-21
+Result: STOPPED. All three controlling source files are missing. No source content was read. No analysis was performed.
+
+Required file                                                                  Required SHA-256                                                   Observed
+project_sources/01-01_JRS_Master_Asset_Register_Source_Aligned_2026-10-03.md    0c64eaff74cae34b4c4fbe00c93ae80ac81007c59ecfe68d6f0a1f9ada795c5e   MISSING
+project_sources/02-02_JRS_Evidence_Ledger_Source_Aligned_2026-10-03.md          57e2ec50fc431381b65048f978175e779481bb174993448cd1b475a218dad0e0   MISSING
+project_sources/03-03_JRS_Master_Architectural_Blueprint_Aligned_2026-10-03.txt a8822d7f54012dd646d822ab2eaca1b00a77e4c7f2c81522c61e6d774573efe9   MISSING
+
+Checks performed (file names and hashes only; no file content opened):
+- The repository at /home/user/jrsstandard.com has no project_sources/ directory.
+- A filename search of the session filesystem (excluding /proc) for *Source_Aligned_2026-10-03* and *Blueprint_Aligned_2026-10-03* returned nothing.
+- A broader filename search for *Asset_Register*, *Evidence_Ledger* and *Architectural_Blueprint* found only repository records that are not the controlling files:
+  .jrs/registries/ASSET_REGISTER.json, .jrs/registries/EVIDENCE_LEDGER.json,
+  docs/enterprise-diligence/IP_ASSET_REGISTER.md, docs/enterprise-diligence/EVIDENCE_LEDGER.md.
+  Their names do not match and they were not hashed against, substituted for or read as the controlling sources.
+
+Consistency with existing records: this matches blocker B-018 (.jrs/state/BLOCKERS.json), which records that the three files are not present in the repository or on the session filesystem and that no commit has ever contained them.
+
+No repository file was created, edited, deleted or staged. No network, provider or credential use occurred.

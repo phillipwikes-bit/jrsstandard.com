@@ -1,0 +1,409 @@
+{
+  "result_format": "jrs-live-pilot-offline-results/0.1.0",
+  "run_id": "offline-2026-10-24T13-27-17-033Z",
+  "run_at_utc": "2026-10-24T13:27:17.237Z",
+  "adapter_version": "0.1.0-offline",
+  "adapter_sha256": "88b6934494f0aed9f108207d55af09e34a48eef6c9b9900efe4bfc151aa3e3f2",
+  "candidate_package_sha256": "815c5d5671d0cfcaf62edca0a11938b920e37d058d3e8655ae9e4f9c735925c3",
+  "prompt_sha256": "0ceda8887463a515d241751133c9b0d3bf3364f89b63fa6ac5dda6ac70c8eec2",
+  "model_identifier": "MOCK-MODEL-NOT-A-PROVIDER",
+  "transport": "mock only",
+  "totals": {
+    "tests": 21,
+    "passed": 21,
+    "failed": 0,
+    "skipped": 0,
+    "load_or_setup_errors": 0
+  },
+  "network_attempts_total": 0,
+  "network_attempts": [],
+  "forbidden_env_names_present_before": [],
+  "credential_values_read": 0,
+  "self_checks": {
+    "live_transport_refused": true,
+    "disabled_transport_refused": true
+  },
+  "isolation": {
+    "candidate_files_verified_against_phase7_manifest": 19,
+    "files_copied": 42,
+    "copy_unchanged_after_run": true,
+    "changed_files": [],
+    "copy_deleted": true
+  },
+  "artifacts_dir": "/tmp/claude-0/-home-user-jrsstandard-com/2ef9dc98-85d0-521a-aea1-a739f5ce030f/scratchpad/live-pilot-adapter-2026-10-24/harness/out/offline-2026-10-24T13-27-17-033Z",
+  "tests": [
+    {
+      "id": "T01",
+      "name": "Valid bounded response accepted",
+      "control": "Adapter V1 to V9, then Engine replay, then pair check",
+      "class": "ACCEPT",
+      "fixture_id": "FX-01-valid",
+      "result": "pass",
+      "observed": {
+        "outcome": "REPLAYED",
+        "pair_check": {
+          "ok": true
+        },
+        "graph_execution_mode": "local_mocked",
+        "response_origin": "mock_transport_fixture",
+        "engine_execution_mode": "recorded_response_replay",
+        "statuses": [
+          "reconstructability:review_required",
+          "identifiable_basis:supported",
+          "chronology_integrity:supported",
+          "reasoning_traceability:supported",
+          "sufficiency:review_required"
+        ],
+        "human_review_route": "documentation_quality_reviewer"
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T02",
+      "name": "Empty response rejected",
+      "control": "Adapter V6",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-02-empty",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V6",
+        "code": "model_refusal",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T03",
+      "name": "Whitespace-only response rejected",
+      "control": "Adapter V6",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-03-whitespace",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V6",
+        "code": "model_refusal",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T04",
+      "name": "Malformed JSON rejected",
+      "control": "Adapter V7 (frozen strict parser)",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-04-malformed",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V7",
+        "code": "malformed_json"
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T05",
+      "name": "Truncated JSON rejected",
+      "control": "Adapter V3 (length stop reason)",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-05-truncated",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V3",
+        "code": "response_truncated",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T06",
+      "name": "Missing required field rejected",
+      "control": "Adapter V8 (frozen validator)",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-06-missing-field",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V8",
+        "code": "observation_missing_field",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T07",
+      "name": "Wrong field type rejected",
+      "control": "Adapter V8 (frozen validator)",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-07-wrong-type",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V8",
+        "code": "quote_not_text_or_null",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T08",
+      "name": "Unsupported structural field rejected",
+      "control": "Adapter V8 (frozen validator)",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-08-structural-field",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V8",
+        "code": "undeclared_top_level_fields",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T09",
+      "name": "Oversized response rejected",
+      "control": "Adapter V5",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-09-oversized",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V5",
+        "code": "response_too_large",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T10",
+      "name": "Exact quotation failure detected after replay",
+      "control": "Frozen Engine quotation resolution",
+      "class": "REPLAY-DETECT",
+      "fixture_id": "FX-10-quote-not-exact",
+      "result": "pass",
+      "observed": {
+        "outcome": "REPLAYED",
+        "condition": "reasoning_traceability",
+        "status": "review_required",
+        "proposed_status": "supported",
+        "reasons": [
+          "quote_absent:not_found"
+        ],
+        "quote_resolution_status": "absent",
+        "human_review_route": "documentation_quality_reviewer"
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T11",
+      "name": "Unsupported quotation detected after replay",
+      "control": "Frozen Engine linked-section and keep-or-lower rules",
+      "class": "REPLAY-DETECT",
+      "fixture_id": "FX-11-quote-unsupported",
+      "result": "pass",
+      "observed": {
+        "outcome": "REPLAYED",
+        "condition": "identifiable_basis",
+        "status": "review_required",
+        "proposed_status": "supported",
+        "reasons": [
+          "assertion_rejected:assertion_type_not_visible_in_quoted_text"
+        ],
+        "quote_resolution_status": "verified_unique",
+        "human_review_route": "documentation_quality_reviewer"
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T12",
+      "name": "Null quotation with supported rejected",
+      "control": "Adapter V9",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-12-null-supported",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V9",
+        "code": "quote_null_requires_not_assessed",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T13",
+      "name": "Null quotation with gap rejected",
+      "control": "Adapter V9",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-13-null-gap",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V9",
+        "code": "quote_null_requires_not_assessed",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T14",
+      "name": "Null quotation with review_required rejected",
+      "control": "Adapter V9",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-14-null-review",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V9",
+        "code": "quote_null_requires_not_assessed",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T15",
+      "name": "Null quotation with not_assessed accepted",
+      "control": "Adapter V9 (control case), then Engine replay",
+      "class": "ACCEPT",
+      "fixture_id": "FX-15-null-not-assessed",
+      "result": "pass",
+      "observed": {
+        "outcome": "REPLAYED",
+        "pair_check": {
+          "ok": true
+        },
+        "quote_resolution_status": "not_assessed",
+        "sufficiency_status": "not_assessed"
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T16",
+      "name": "Unsupported conclusion detected after replay",
+      "control": "Frozen Engine keep-or-lower and abstention rules",
+      "class": "REPLAY-DETECT",
+      "fixture_id": "FX-16-unsupported-conclusion",
+      "result": "pass",
+      "observed": {
+        "outcome": "REPLAYED",
+        "condition": "sufficiency",
+        "status": "review_required",
+        "proposed_status": "supported",
+        "reasons": [
+          "assertion_rejected:assertion_type_not_permitted_for_condition",
+          "sufficiency_not_determinable_by_engine"
+        ],
+        "quote_resolution_status": "verified_unique",
+        "human_review_route": "documentation_quality_reviewer"
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T17",
+      "name": "Duplicate request_id rejected before replay",
+      "control": "Adapter A-DUP",
+      "class": "REJECT-PRE",
+      "fixture_id": "FX-17-valid-for-duplicate",
+      "result": "pass",
+      "observed": {
+        "first": "REPLAYED",
+        "second": "REJECT-PRE",
+        "code": "duplicate_request_id",
+        "transport_calls": 1
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T18",
+      "name": "Simulated timeout handled without replay",
+      "control": "Adapter V1",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-18-timeout",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V1",
+        "code": "transport_timeout",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T19",
+      "name": "Simulated provider error handled without replay",
+      "control": "Adapter V2",
+      "class": "REJECT-PRE-REPLAY",
+      "fixture_id": "FX-19-provider-error",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "code": "provider_error",
+        "replayed": false
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T20",
+      "name": "Graph and execution-record mismatch stops review",
+      "control": "Pair check (contract section 8A); SR-LP-15",
+      "class": "REVIEW-STOP",
+      "fixture_id": "FX-20-valid-for-mismatch",
+      "result": "pass",
+      "observed": {
+        "before": {
+          "ok": true
+        },
+        "after": {
+          "ok": false,
+          "code": "graph_sha256_mismatch"
+        },
+        "review": "stopped"
+      },
+      "network_attempts": 0,
+      "network_required": false
+    },
+    {
+      "id": "T21",
+      "name": "Altered binding digest stops review",
+      "control": "Pair check (contract section 8A); SR-LP-15",
+      "class": "REVIEW-STOP",
+      "fixture_id": "FX-21-valid-for-digest",
+      "result": "pass",
+      "observed": {
+        "before": {
+          "ok": true
+        },
+        "after": {
+          "ok": false,
+          "code": "binding_digest_mismatch"
+        },
+        "review": "stopped"
+      },
+      "network_attempts": 0,
+      "network_required": false
+    }
+  ],
+  "statement": "Offline harness tests on synthetic fixtures with a mocked transport. Not a pilot, not an evaluation, not validation. B-018 OPEN. NO_GO_NOT_VERIFIED."
+}

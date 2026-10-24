@@ -1,0 +1,5 @@
+{
+  "record_type": "disclosure of a blocked first attempt (Phase 7 post-stop mutation rerun)",
+  "date": "2026-10-19",
+  "statement": "The first attempt to launch the post-stop mutation rerun never began. The command blocked before execution on a shell step waiting for standard input, so no mutation run started, no log was produced and no result exists from it. That step left POST_STOP_REPAIR_RECORD.json empty; it was then written in full and is preserved unchanged. The four authorized probes had already been added. The rerun was launched afresh."
+}

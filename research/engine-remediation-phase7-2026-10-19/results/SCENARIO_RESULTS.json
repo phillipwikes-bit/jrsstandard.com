@@ -1,0 +1,936 @@
+{
+  "generated_clock": "2026-10-19T00:00:00Z",
+  "seal_problems": [],
+  "counts": {
+    "as_expected": 50
+  },
+  "results": [
+    {
+      "scenario_id": "P7-CHR-01",
+      "rule_id": "RP-CHR-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "assessment_after_decision"
+      ],
+      "graph_sha256": "sha256:7178de56f09caf881109f5410f5a69e8f79f4bde260e37178f0822fa050fef65"
+    },
+    {
+      "scenario_id": "P7-CHR-02",
+      "rule_id": "RP-CHR-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:6a07ade56bf88df33ee0ef3e11d39362f21b34b752f3819775592a961bb3afeb"
+    },
+    {
+      "scenario_id": "P7-CHR-03",
+      "rule_id": "RP-CHR-01",
+      "role": "malformed",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "assessment_after_decision"
+      ],
+      "graph_sha256": "sha256:a00c6f126912c89fadc5cd9cea76e3862b79274db4ed1ee63460d2d92b121fe8"
+    },
+    {
+      "scenario_id": "P7-CHR-04",
+      "rule_id": "RP-CHR-01",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "assessment_after_decision"
+      ],
+      "graph_sha256": "sha256:eed7b8ca44d52edac586e9ace7c0bc2119d8bdc0a6d2200c90934d59d317ad85"
+    },
+    {
+      "scenario_id": "P7-CHR-05",
+      "rule_id": "RP-CHR-02",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "expiry_date_conflict"
+      ],
+      "graph_sha256": "sha256:1cae295830e547d4eb360fdb186a88333052d259ac96053fd3adac0763aca8ec"
+    },
+    {
+      "scenario_id": "P7-CHR-06",
+      "rule_id": "RP-CHR-02",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:c80423002330b540ed1f034f424767c63dcb83495aebce86471615aa1d1d9060"
+    },
+    {
+      "scenario_id": "P7-CHR-07",
+      "rule_id": "RP-CHR-02",
+      "role": "malformed",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "expiry_date_conflict"
+      ],
+      "graph_sha256": "sha256:8cf2880f1588eb853a27a8fc1240104e6cc25d38953b8a247225b40abd53a9f8"
+    },
+    {
+      "scenario_id": "P7-CHR-08",
+      "rule_id": "RP-CHR-02",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "expiry_date_conflict",
+        "duration_date_conflict"
+      ],
+      "graph_sha256": "sha256:8414fd3b02bb46f37abe654a9dd11d27eaf9d7e98d1b44645202ac9e4a0bab7b"
+    },
+    {
+      "scenario_id": "P7-CHR-09",
+      "rule_id": "RP-CHR-03",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:99eedc4aa651d9de928b060d5d1a23fb4c365fcb087a2e492b0c61eb949f14e9"
+    },
+    {
+      "scenario_id": "P7-CHR-10",
+      "rule_id": "RP-CHR-03",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:b9e3c332399d164082076914c757d2c161723f8951fae11b8b53c7ac0ccde82c"
+    },
+    {
+      "scenario_id": "P7-CHR-11",
+      "rule_id": "RP-CHR-03",
+      "role": "malformed",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:e2f5e03a86fdc6e1acc411e91dcc4de317862ef7a2bcf2ff4469e919444f0b94"
+    },
+    {
+      "scenario_id": "P7-CHR-12",
+      "rule_id": "RP-CHR-03",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:916047e50546360d5e8b1ac1be9a9ff7551739155f7b4c405f6598ae7e7a42c9"
+    },
+    {
+      "scenario_id": "P7-CHR-13",
+      "rule_id": "RP-CHR-04",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "duration_date_conflict"
+      ],
+      "graph_sha256": "sha256:126609e226a3871b988680a0014865b1681deae2e2d927287a1b6b04ea5fbdff"
+    },
+    {
+      "scenario_id": "P7-CHR-14",
+      "rule_id": "RP-CHR-04",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:4d03e7c8c89cfde2ee3658dad7cf33afbf01c992540959f23a4684da9fb7e303"
+    },
+    {
+      "scenario_id": "P7-CHR-15",
+      "rule_id": "RP-CHR-04",
+      "role": "malformed",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "duration_date_conflict"
+      ],
+      "graph_sha256": "sha256:d5360e4ebbbe96ec483ddf062bf46ffde5b7cb51ba18db7448c901892eeadf0f"
+    },
+    {
+      "scenario_id": "P7-CHR-16",
+      "rule_id": "RP-CHR-04",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "duration_date_conflict"
+      ],
+      "graph_sha256": "sha256:638885c2d779fd7f14c7fd2a30991d44ea71a9c04cc53519265185a49d13ff05"
+    },
+    {
+      "scenario_id": "P7-CON-01",
+      "rule_id": "RP-CON-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "control_state_conflict"
+      ],
+      "graph_sha256": "sha256:1a872b58cd42fc1d82a2d1e635fcbdaeee71c2a40f6faa71ded4ebcfdca375cd"
+    },
+    {
+      "scenario_id": "P7-CON-02",
+      "rule_id": "RP-CON-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "control_state_conflict"
+      ],
+      "graph_sha256": "sha256:2e67d9fca43c9c5a3f97e3215fe323ccb1b79fb20b2e14c4d2edc332b8211202"
+    },
+    {
+      "scenario_id": "P7-CON-03",
+      "rule_id": "RP-CON-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:c3562682f78fec9b14108fd0bd7353ac1bae7d505e1a59cc32046ae244f197b1"
+    },
+    {
+      "scenario_id": "P7-CON-04",
+      "rule_id": "RP-CON-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:456058a5c119f3d73c90b21384cd61a0d9e840899efde3487dd404757650f6be"
+    },
+    {
+      "scenario_id": "P7-CON-05",
+      "rule_id": "RP-CON-01",
+      "role": "malformed",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "control_state_conflict"
+      ],
+      "graph_sha256": "sha256:7656d7e939ee1a520672716e26bad6f01f4863c97e8a25e01b84dfe67e9a68fe"
+    },
+    {
+      "scenario_id": "P7-CON-06",
+      "rule_id": "RP-CON-01",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [
+        "control_state_conflict"
+      ],
+      "graph_sha256": "sha256:1fe1a487a2c60d9b7faf35c0bd295831f93ee1bb4cf8173d6e49cda37fc988a2"
+    },
+    {
+      "scenario_id": "P7-EVL-01",
+      "rule_id": "RP-EVL-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:ddfa3c5c3acbe8966bac0f57dcf7a9453e4d665fa9a5fcfdd57bd27ef1020d63"
+    },
+    {
+      "scenario_id": "P7-EVL-02",
+      "rule_id": "RP-EVL-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:d7aaa99d02050cf35f6cf4d12df24bfbe01905137e4dbe04ca9be08c07761ae3"
+    },
+    {
+      "scenario_id": "P7-EVL-03",
+      "rule_id": "RP-EVL-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:c0d5d2ceadbfe7255299eb1ed553c2361d0e98df43ec90856d199a1cd8304de5"
+    },
+    {
+      "scenario_id": "P7-EVL-04",
+      "rule_id": "RP-EVL-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:522f183068cb77ae53d7061222a0d122a696f643fbf90f44889ca2350c864e51"
+    },
+    {
+      "scenario_id": "P7-EVL-05",
+      "rule_id": "RP-EVL-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:5b2b3b8ff26fbcf3d5bbdfca6357262878759ce04ecb3312285df9863310d209"
+    },
+    {
+      "scenario_id": "P7-EVL-06",
+      "rule_id": "RP-EVL-01",
+      "role": "malformed",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:01c8f6c3b2d4d488b15a8fdc779528f6910c6c1a111e9d45f4acfa33298887ae"
+    },
+    {
+      "scenario_id": "P7-EVL-07",
+      "rule_id": "RP-EVL-01",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:e7aa4107571befff74381ff3a23d1928bfa1d4008433f585e60740f76ca0998c"
+    },
+    {
+      "scenario_id": "P7-EVL-08",
+      "rule_id": "RP-EVL-01",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:2890de4a52c79c0e8eb66ae88c559e2f1570f11b6a67d4aab35e88beffd628a6"
+    },
+    {
+      "scenario_id": "P7-NEG-01",
+      "rule_id": "RP-NEG-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:634527c1c27c5908656e60787b254f3287675136bdeb747b2e9c72bb2e3028f4"
+    },
+    {
+      "scenario_id": "P7-NEG-02",
+      "rule_id": "RP-NEG-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:43169cb82f205c4c728301cf7badadf9e9a1e7bd25a2bc0e65c1d2d604c18d07"
+    },
+    {
+      "scenario_id": "P7-NEG-03",
+      "rule_id": "RP-NEG-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:40e8189eafa0671f5bf30de1eefe212b95d20777b7b3f300ffe769701aae6104"
+    },
+    {
+      "scenario_id": "P7-NEG-04",
+      "rule_id": "RP-NEG-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:1eb6a4090f535a7bcc33e66a78ec643bd0f72060fe05860f352bd76636eb20b4"
+    },
+    {
+      "scenario_id": "P7-NEG-05",
+      "rule_id": "RP-NEG-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:cede8331d33e6dd011e2195fc48295637555a1a0b24856e4802b1154ac402f7d"
+    },
+    {
+      "scenario_id": "P7-NEG-06",
+      "rule_id": "RP-NEG-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:94e8ca17aafddb06f0aa2ad7b5e734f1a60bf9e1106868689e7ccaf76a8a46a3"
+    },
+    {
+      "scenario_id": "P7-NEG-07",
+      "rule_id": "RP-NEG-01",
+      "role": "malformed",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:be03cbe17247bdff8888e4054421ffbf131d84e60022a9ab43de4605d3a07887"
+    },
+    {
+      "scenario_id": "P7-NEG-08",
+      "rule_id": "RP-NEG-01",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:a06f63443dcd80a7eabb6aad1028117f8d1e1385b671416866c64e47bed6685a"
+    },
+    {
+      "scenario_id": "P7-R07-01",
+      "rule_id": "RP-STR-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:b633d5e45da12af705c23ecdcdf8cd75316d5828c786d87d598ad4984f018b2e"
+    },
+    {
+      "scenario_id": "P7-R07-02",
+      "rule_id": "RP-STR-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:b71bf2362206883bb97c49ccd5a6a3e8ee5270bb3c90c99266c3abaff203729d"
+    },
+    {
+      "scenario_id": "P7-R07-03",
+      "rule_id": "RP-STR-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:b1395d0ea9d8b3622eec8ff4a3f23e058b4020605e828c5d8611c7e8b70624bb"
+    },
+    {
+      "scenario_id": "P7-R07-04",
+      "rule_id": "RP-STR-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:bb43f18751e9e905af716bef380de62a0e4d8441cca59cd11644f6a1b2692260"
+    },
+    {
+      "scenario_id": "P7-R07-05",
+      "rule_id": "RP-STR-01",
+      "role": "malformed",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:c24ad44b9e5a57837084c2e74a466778bd62a313198d381fc556110e32bc2ebe"
+    },
+    {
+      "scenario_id": "P7-R07-06",
+      "rule_id": "RP-STR-01",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:2ef5d4e8af7dc47d5c4ef85ba3748cbf7c80fa88729a0706eeb57fd80a03162d"
+    },
+    {
+      "scenario_id": "P7-SCO-01",
+      "rule_id": "RP-SCO-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "conflicts": [],
+      "graph_sha256": "sha256:43b793b8d18d2777479821e05dcee1b455b7d09378f279e9cb26dd9bbe8fa124"
+    },
+    {
+      "scenario_id": "P7-SCO-02",
+      "rule_id": "RP-SCO-01",
+      "role": "positive",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "conflicts": [],
+      "graph_sha256": "sha256:ecbf4d76b6bef8be6caa116cdbb61e5e0788cf01e5798eae7d724c6dd51c5a5c"
+    },
+    {
+      "scenario_id": "P7-SCO-03",
+      "rule_id": "RP-SCO-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:5a819d7ebe84357a4771956092f2242917d431dee8155bccfeff483104ec3723"
+    },
+    {
+      "scenario_id": "P7-SCO-04",
+      "rule_id": "RP-SCO-01",
+      "role": "benign",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "conflicts": [],
+      "graph_sha256": "sha256:da451d5ec2e5d7f5d1c68a3252051b268cde502c17d5aaf15246d43839fedafe"
+    },
+    {
+      "scenario_id": "P7-SCO-05",
+      "rule_id": "RP-SCO-01",
+      "role": "malformed",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "conflicts": [],
+      "graph_sha256": "sha256:3717bd481abd0f780bb2b20b2851702e32caafed160e53c77cff508b2f40a74c"
+    },
+    {
+      "scenario_id": "P7-SCO-06",
+      "rule_id": "RP-SCO-01",
+      "role": "duplicate_or_reordered",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "gate": "refuse",
+      "conflicts": [],
+      "graph_sha256": "sha256:8edb07ba35b844f02988684fd4f63d6ec20e54e2d1f6d1c27382f152e32f982d"
+    }
+  ]
+}

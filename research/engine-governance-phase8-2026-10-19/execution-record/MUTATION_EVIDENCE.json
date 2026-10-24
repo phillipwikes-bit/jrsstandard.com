@@ -1,0 +1,1116 @@
+{
+  "generated_at": "2026-10-21T10:38:50.968Z",
+  "command": "node tests/engine-governance-phase8/run.mjs --record",
+  "node": "v22.22.0",
+  "network_attempts": 0,
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "total": 112,
+  "killed": 112,
+  "survived": 0,
+  "load_failures": 0,
+  "setup_errors": 0,
+  "probes": 249,
+  "results": [
+    {
+      "id": "MG-01",
+      "file": "registry.mjs",
+      "area": "protected-file alteration",
+      "result": "killed",
+      "killed_by": [
+        "neg.changed_protected_file_detected"
+      ]
+    },
+    {
+      "id": "MG-02",
+      "file": "registry.mjs",
+      "area": "protected-file alteration",
+      "result": "killed",
+      "killed_by": [
+        "neg.missing_protected_file_detected"
+      ]
+    },
+    {
+      "id": "MG-03",
+      "file": "registry.mjs",
+      "area": "protected-file alteration",
+      "result": "killed",
+      "killed_by": [
+        "neg.added_file_in_protected_package_detected"
+      ]
+    },
+    {
+      "id": "MG-04",
+      "file": "registry.mjs",
+      "area": "missing record",
+      "result": "killed",
+      "killed_by": [
+        "neg.missing_manifest_fails_closed"
+      ]
+    },
+    {
+      "id": "MG-05",
+      "file": "registry.mjs",
+      "area": "Phase 7 manifest integrity",
+      "result": "killed",
+      "killed_by": [
+        "reg.phase7_manifest_reproduces",
+        "reg.package_hash_is_hash_of_manifest_text"
+      ]
+    },
+    {
+      "id": "MG-06",
+      "file": "governance.mjs",
+      "area": "undeclared conflict",
+      "result": "killed",
+      "killed_by": [
+        "neg.undeclared_conflict_fails_closed",
+        "neg.genuine_regression_fails_closed",
+        "neg.removed_condition_is_undeclared",
+        "neg.relabelled_check_detected",
+        "n83.genuine_regression_still_fails",
+        "n83.unplaced_file_on_unmanifested_check_unexplained"
+      ]
+    },
+    {
+      "id": "MG-07",
+      "file": "governance.mjs",
+      "area": "undeclared conflict",
+      "result": "killed",
+      "killed_by": [
+        "neg.trigger_outside_declared_paths"
+      ]
+    },
+    {
+      "id": "MG-08",
+      "file": "governance.mjs",
+      "area": "hidden condition",
+      "result": "killed",
+      "killed_by": [
+        "neg.relabelled_check_detected",
+        "neg.hidden_condition_detected"
+      ]
+    },
+    {
+      "id": "MG-09",
+      "file": "governance.mjs",
+      "area": "relabelled condition",
+      "result": "killed",
+      "killed_by": [
+        "neg.condition_labelled_pass_rejected"
+      ]
+    },
+    {
+      "id": "MG-10",
+      "file": "governance.mjs",
+      "area": "missing test record",
+      "result": "killed",
+      "killed_by": [
+        "neg.inconsistent_test_counts_fail_closed",
+        "neg.missing_output_hash_fails_closed"
+      ]
+    },
+    {
+      "id": "MG-11",
+      "file": "governance.mjs",
+      "area": "unsupported pass claim",
+      "result": "killed",
+      "killed_by": [
+        "neg.pass_claim_with_failures_refused"
+      ]
+    },
+    {
+      "id": "MG-12",
+      "file": "governance.mjs",
+      "area": "package outside registry",
+      "result": "killed",
+      "killed_by": [
+        "neg.trigger_outside_declared_paths",
+        "neg.package_outside_registry",
+        "p83.no_manifest_declared_incomplete",
+        "p83.without_registry_context_unchanged",
+        "n83.changed_after_manifest_integrity_failure",
+        "n83.outside_approved_path_fails",
+        "n83.phase10_like_path_fails",
+        "n83.imitation_paths_fail",
+        "n83.invalid_owner_decision_fails",
+        "n83.missing_owner_evidence_fails",
+        "n83.altered_admission_unhashed_fails",
+        "n83.altered_admission_rehashed_fails",
+        "n83.files_before_admission_fail",
+        "n83.state_not_determined_fails",
+        "n83.registry_missing_fails"
+      ]
+    },
+    {
+      "id": "MG-13",
+      "file": "governance.mjs",
+      "area": "conflict description",
+      "result": "killed",
+      "killed_by": [
+        "neg.language_rule_required"
+      ]
+    },
+    {
+      "id": "MG-14",
+      "file": "qualification.mjs",
+      "area": "local test as independent evaluation",
+      "result": "killed",
+      "killed_by": [
+        "neg.local_tests_as_independent_rejected"
+      ]
+    },
+    {
+      "id": "MG-15",
+      "file": "qualification.mjs",
+      "area": "score or readiness field",
+      "result": "killed",
+      "killed_by": [
+        "neg.score_field_rejected"
+      ]
+    },
+    {
+      "id": "MG-16",
+      "file": "qualification.mjs",
+      "area": "unresolved issue treated as closed",
+      "result": "killed",
+      "killed_by": [
+        "q.record_valid",
+        "q.issues_active"
+      ]
+    },
+    {
+      "id": "MG-17",
+      "file": "evaluation-protocol.mjs",
+      "area": "sealed material separation",
+      "result": "killed",
+      "killed_by": [
+        "neg.missing_sealed_material_separation",
+        "neg.sealed_material_in_repository_rejected"
+      ]
+    },
+    {
+      "id": "MG-18",
+      "file": "evaluation-protocol.mjs",
+      "area": "post-freeze change",
+      "result": "killed",
+      "killed_by": [
+        "neg.post_freeze_change_rule_required"
+      ]
+    },
+    {
+      "id": "MG-19",
+      "file": "evaluation-protocol.mjs",
+      "area": "post-freeze change",
+      "result": "killed",
+      "killed_by": [
+        "neg.post_freeze_rule_change_invalidates"
+      ]
+    },
+    {
+      "id": "MG-20",
+      "file": "evaluation-protocol.mjs",
+      "area": "execution disabled",
+      "result": "killed",
+      "killed_by": [
+        "neg.execution_enabled_rejected"
+      ]
+    },
+    {
+      "id": "MG-21",
+      "file": "change-impact.mjs",
+      "area": "model or provider change",
+      "result": "killed",
+      "killed_by": [
+        "neg.model_change_without_evaluation_review"
+      ]
+    },
+    {
+      "id": "MG-22",
+      "file": "change-impact.mjs",
+      "area": "conservative rule",
+      "result": "killed",
+      "killed_by": [
+        "neg.sensitive_surface_never_neutral",
+        "neg.refusal_boundary_escalates"
+      ]
+    },
+    {
+      "id": "MG-23",
+      "file": "decisions.mjs",
+      "area": "incomplete owner decision",
+      "result": "killed",
+      "killed_by": [
+        "neg.incomplete_decision_rejected"
+      ]
+    },
+    {
+      "id": "MG-24",
+      "file": "claims.mjs",
+      "area": "readiness or commercial claim",
+      "result": "killed",
+      "killed_by": [
+        "neg.readiness_claim_detected"
+      ]
+    },
+    {
+      "id": "MG-25",
+      "file": "claims.mjs",
+      "area": "local test as independent evaluation",
+      "result": "killed",
+      "killed_by": [
+        "neg.local_validation_claim_detected"
+      ]
+    },
+    {
+      "id": "MG-26",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "process execution: child_process member",
+      "result": "killed",
+      "killed_by": [
+        "h.exec_child_process_member_detected"
+      ]
+    },
+    {
+      "id": "MG-27",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "process execution: aliased cp.exec",
+      "result": "killed",
+      "killed_by": [
+        "h.exec_aliased_cp_exec_detected",
+        "h.exec_namespace_cp_exec_detected",
+        "h.exec_require_detected"
+      ]
+    },
+    {
+      "id": "MG-28",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "process execution: named import",
+      "result": "killed",
+      "killed_by": [
+        "h.exec_bare_imported_exec_detected",
+        "h.exec_execfile_detected",
+        "h.exec_spawn_detected",
+        "h.exec_spawnsync_detected",
+        "h.exec_fork_detected",
+        "h.exec_dynamic_aliased_import_detected"
+      ]
+    },
+    {
+      "id": "MG-29",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "process execution: destructured alias",
+      "result": "killed",
+      "killed_by": [
+        "h.exec_destructured_alias_detected"
+      ]
+    },
+    {
+      "id": "MG-30",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "process execution: non-git execFileSync",
+      "result": "killed",
+      "killed_by": [
+        "h.exec_execfilesync_non_git_detected"
+      ]
+    },
+    {
+      "id": "MG-31",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "process execution: regex .exec false positive",
+      "result": "killed",
+      "killed_by": [
+        "h.exec_regex_exec_permitted",
+        "h.exec_real_phase8_modules_clean"
+      ]
+    },
+    {
+      "id": "MG-32",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "process execution: member call",
+      "result": "killed",
+      "killed_by": [
+        "h.exec_bun_spawn_detected"
+      ]
+    },
+    {
+      "id": "MG-33",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "provider: environment access",
+      "result": "killed",
+      "killed_by": [
+        "h.prov_env_key_access_detected",
+        "h.prov_env_bracket_access_detected"
+      ]
+    },
+    {
+      "id": "MG-34",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "provider: SDK import",
+      "result": "killed",
+      "killed_by": [
+        "h.prov_sdk_import_detected"
+      ]
+    },
+    {
+      "id": "MG-35",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "provider: split identifier",
+      "result": "killed",
+      "killed_by": [
+        "h.prov_split_identifier_detected"
+      ]
+    },
+    {
+      "id": "MG-36",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "provider: endpoint",
+      "result": "killed",
+      "killed_by": [
+        "h.prov_endpoint_detected"
+      ]
+    },
+    {
+      "id": "MG-37",
+      "file": "tests/engine-governance-phase8/harness-scan.mjs",
+      "area": "provider: violating file reported",
+      "result": "killed",
+      "killed_by": [
+        "h.prov_model_identifier_detected",
+        "h.prov_endpoint_detected",
+        "h.prov_env_key_access_detected",
+        "h.prov_env_bracket_access_detected",
+        "h.prov_sdk_import_detected"
+      ]
+    },
+    {
+      "id": "MG-38",
+      "file": "later-packages.mjs",
+      "area": "undeclared later path",
+      "result": "killed",
+      "killed_by": [
+        "n81.undeclared_future_path_fails_closed"
+      ]
+    },
+    {
+      "id": "MG-39",
+      "file": "later-packages.mjs",
+      "area": "undeclared affected check",
+      "result": "killed",
+      "killed_by": [
+        "n81.undeclared_affected_check_fails_closed"
+      ]
+    },
+    {
+      "id": "MG-40",
+      "file": "later-packages.mjs",
+      "area": "changed protected file",
+      "result": "killed",
+      "killed_by": [
+        "n81.changed_protected_file_remains_failure"
+      ]
+    },
+    {
+      "id": "MG-41",
+      "file": "later-packages.mjs",
+      "area": "composition label",
+      "result": "killed",
+      "killed_by": [
+        "c81.condition_label_exact",
+        "p82.phase8_scope_declared_condition",
+        "p83.condition_label_not_defect"
+      ]
+    },
+    {
+      "id": "MG-42",
+      "file": "later-packages.mjs",
+      "area": "protected change flag",
+      "result": "killed",
+      "killed_by": [
+        "n81.condition_flags_protected_change"
+      ]
+    },
+    {
+      "id": "MG-43",
+      "file": "later-packages.mjs",
+      "area": "B-018 open",
+      "result": "killed",
+      "killed_by": [
+        "n81.registry_b018_closed_rejected"
+      ]
+    },
+    {
+      "id": "MG-44",
+      "file": "later-packages.mjs",
+      "area": "B-018 resolution wording",
+      "result": "killed",
+      "killed_by": [
+        "r81.b018_claim_detector_bounds",
+        "n81.registry_b018_resolved_text_rejected",
+        "n81.freeze_b018_resolved_rejected"
+      ]
+    },
+    {
+      "id": "MG-45",
+      "file": "later-packages.mjs",
+      "area": "owner reference",
+      "result": "killed",
+      "killed_by": [
+        "n81.registry_missing_owner_reference",
+        "n83.missing_owner_evidence_fails"
+      ]
+    },
+    {
+      "id": "MG-46",
+      "file": "later-packages.mjs",
+      "area": "historical permission",
+      "result": "killed",
+      "killed_by": [
+        "n81.registry_historical_permission_rejected"
+      ]
+    },
+    {
+      "id": "MG-47",
+      "file": "later-packages.mjs",
+      "area": "public permission",
+      "result": "killed",
+      "killed_by": [
+        "n81.registry_public_permission_rejected"
+      ]
+    },
+    {
+      "id": "MG-48",
+      "file": "later-packages.mjs",
+      "area": "forbidden path in registry",
+      "result": "killed",
+      "killed_by": [
+        "n81.registry_forbidden_path_rejected"
+      ]
+    },
+    {
+      "id": "MG-49",
+      "file": "later-packages.mjs",
+      "area": "affected checks in registry",
+      "result": "killed",
+      "killed_by": [
+        "n81.registry_affected_checks_understated"
+      ]
+    },
+    {
+      "id": "MG-50",
+      "file": "later-packages.mjs",
+      "area": "stale manifest",
+      "result": "killed",
+      "killed_by": [
+        "n81.registry_stale_manifest_rejected"
+      ]
+    },
+    {
+      "id": "MG-51",
+      "file": "later-packages.mjs",
+      "area": "declared check without later file",
+      "result": "killed",
+      "killed_by": [
+        "n81.declared_check_without_later_file_is_regression"
+      ]
+    },
+    {
+      "id": "MG-52",
+      "file": "later-packages.mjs",
+      "area": "uncatalogued failing check",
+      "result": "killed",
+      "killed_by": [
+        "n81.uncatalogued_failing_check_is_regression"
+      ]
+    },
+    {
+      "id": "MG-53",
+      "file": "admission.mjs",
+      "area": "self-admission after file creation",
+      "result": "killed",
+      "killed_by": [
+        "n81.self_admission_after_file_creation_rejected"
+      ]
+    },
+    {
+      "id": "MG-54",
+      "file": "admission.mjs",
+      "area": "unrecorded owner reference",
+      "result": "killed",
+      "killed_by": [
+        "n81.unrecorded_owner_reference_fails_admission",
+        "n82.missing_owner_reference_fails_admission"
+      ]
+    },
+    {
+      "id": "MG-55",
+      "file": "admission.mjs",
+      "area": "licensing or commercial claim",
+      "result": "killed",
+      "killed_by": [
+        "n81.commercial_claim_fails_admission"
+      ]
+    },
+    {
+      "id": "MG-56",
+      "file": "admission.mjs",
+      "area": "planned file outside paths",
+      "result": "killed",
+      "killed_by": [
+        "n81.planned_file_outside_paths_rejected"
+      ]
+    },
+    {
+      "id": "MG-57",
+      "file": "admission.mjs",
+      "area": "prior-package analysis",
+      "result": "killed",
+      "killed_by": [
+        "n81.incomplete_prior_analysis_rejected"
+      ]
+    },
+    {
+      "id": "MG-58",
+      "file": "admission.mjs",
+      "area": "historical redefinition",
+      "result": "killed",
+      "killed_by": [
+        "n81.historical_redefinition_rejected"
+      ]
+    },
+    {
+      "id": "MG-59",
+      "file": "admission.mjs",
+      "area": "admission never authorizes work",
+      "result": "killed",
+      "killed_by": [
+        "a81.admission_never_authorizes_work"
+      ]
+    },
+    {
+      "id": "MG-60",
+      "file": "admission.mjs",
+      "area": "manifest mismatch",
+      "result": "killed",
+      "killed_by": [
+        "n81.manifest_mismatch_detected"
+      ]
+    },
+    {
+      "id": "MG-61",
+      "file": "isolated-replay.mjs",
+      "area": "isolated replay missing manifest",
+      "result": "killed",
+      "killed_by": [
+        "n81.isolated_plan_refuses_missing_manifest"
+      ]
+    },
+    {
+      "id": "MG-62",
+      "file": "isolated-replay.mjs",
+      "area": "isolated replay contamination",
+      "result": "killed",
+      "killed_by": [
+        "n81.isolated_contamination_detected"
+      ]
+    },
+    {
+      "id": "MG-63",
+      "file": "isolated-replay.mjs",
+      "area": "isolated replay missing command",
+      "result": "killed",
+      "killed_by": [
+        "n81.isolated_plan_refuses_missing_command"
+      ]
+    },
+    {
+      "id": "MG-64",
+      "file": "handoff-freeze.mjs",
+      "area": "freeze execution disabled",
+      "result": "killed",
+      "killed_by": [
+        "n81.freeze_execution_enabled_rejected"
+      ]
+    },
+    {
+      "id": "MG-65",
+      "file": "handoff-freeze.mjs",
+      "area": "freeze B-018",
+      "result": "killed",
+      "killed_by": [
+        "n81.freeze_b018_resolved_rejected"
+      ]
+    },
+    {
+      "id": "MG-66",
+      "file": "handoff-freeze.mjs",
+      "area": "freeze labels or scores",
+      "result": "killed",
+      "killed_by": [
+        "n81.freeze_labels_rejected"
+      ]
+    },
+    {
+      "id": "MG-67",
+      "file": "handoff-freeze.mjs",
+      "area": "freeze open issues",
+      "result": "killed",
+      "killed_by": [
+        "n81.freeze_closed_issue_rejected"
+      ]
+    },
+    {
+      "id": "MG-68",
+      "file": "later-packages.mjs",
+      "area": "Phase 8 scope: undeclared future path",
+      "result": "killed",
+      "killed_by": [
+        "n82.undeclared_future_path_fails_closed",
+        "n82.phase9_like_unadmitted_path_fails_closed"
+      ]
+    },
+    {
+      "id": "MG-69",
+      "file": "later-packages.mjs",
+      "area": "Phase 8 scope: invalid reservation",
+      "result": "killed",
+      "killed_by": [
+        "n82.invalid_reservation_fails",
+        "n83.invalid_owner_decision_fails",
+        "n83.missing_owner_evidence_fails",
+        "n83.altered_admission_rehashed_fails"
+      ]
+    },
+    {
+      "id": "MG-70",
+      "file": "later-packages.mjs",
+      "area": "Phase 8 scope: reserved package with files",
+      "result": "killed",
+      "killed_by": [
+        "n82.reserved_package_with_files_fails"
+      ]
+    },
+    {
+      "id": "MG-71",
+      "file": "later-packages.mjs",
+      "area": "Phase 8 scope: files older than admission",
+      "result": "killed",
+      "killed_by": [
+        "n82.files_older_than_admission_fail",
+        "n83.files_before_admission_fail"
+      ]
+    },
+    {
+      "id": "MG-72",
+      "file": "later-packages.mjs",
+      "area": "Phase 8 scope: changed protected file",
+      "result": "killed",
+      "killed_by": [
+        "n82.changed_phase8_file_remains_failure"
+      ]
+    },
+    {
+      "id": "MG-73",
+      "file": "later-packages.mjs",
+      "area": "Phase 8 scope: condition label",
+      "result": "killed",
+      "killed_by": [
+        "p82.phase8_scope_declared_condition"
+      ]
+    },
+    {
+      "id": "MG-74",
+      "file": "later-packages.mjs",
+      "area": "entry class",
+      "result": "killed",
+      "killed_by": [
+        "n82.unknown_entry_class_rejected"
+      ]
+    },
+    {
+      "id": "MG-75",
+      "file": "later-packages.mjs",
+      "area": "seed set",
+      "result": "killed",
+      "killed_by": [
+        "n82.future_package_as_seed_rejected"
+      ]
+    },
+    {
+      "id": "MG-76",
+      "file": "later-packages.mjs",
+      "area": "admitted package needs recorded decision",
+      "result": "killed",
+      "killed_by": [
+        "n82.admitted_without_decided_reference_rejected",
+        "n83.altered_admission_rehashed_fails"
+      ]
+    },
+    {
+      "id": "MG-77",
+      "file": "later-packages.mjs",
+      "area": "files at admission",
+      "result": "killed",
+      "killed_by": [
+        "n82.admitted_with_files_at_admission_rejected"
+      ]
+    },
+    {
+      "id": "MG-78",
+      "file": "later-packages.mjs",
+      "area": "registry status-word rule",
+      "result": "killed",
+      "killed_by": [
+        "n82.deployed_status_rejected",
+        "n82.validated_licensed_ready_rejected"
+      ]
+    },
+    {
+      "id": "MG-79",
+      "file": "later-packages.mjs",
+      "area": "derived counts",
+      "result": "killed",
+      "killed_by": [
+        "p82.counts_derived_from_entries",
+        "p82.seed_and_admitted_distinguishable",
+        "p82.current_registry_seeds_and_admissions_valid"
+      ]
+    },
+    {
+      "id": "MG-80",
+      "file": "decisions.mjs",
+      "area": "authorization scope",
+      "result": "killed",
+      "killed_by": [
+        "n82.authorization_overreach_rejected"
+      ]
+    },
+    {
+      "id": "MG-81",
+      "file": "decisions.mjs",
+      "area": "authorization decided",
+      "result": "killed",
+      "killed_by": [
+        "n82.authorization_undecided_rejected"
+      ]
+    },
+    {
+      "id": "MG-82",
+      "file": "decisions.mjs",
+      "area": "authorization creates no reservation",
+      "result": "killed",
+      "killed_by": [
+        "n82.authorization_creating_reservation_rejected"
+      ]
+    },
+    {
+      "id": "MG-83",
+      "file": "handoff-freeze.mjs",
+      "area": "freeze lineage",
+      "result": "killed",
+      "killed_by": [
+        "f81.freeze_file_matches_build",
+        "p82.freeze_unaffected_by_admitted_entries"
+      ]
+    },
+    {
+      "id": "MG-84",
+      "file": "later-packages.mjs",
+      "area": "Phase 8 historical result",
+      "result": "killed",
+      "killed_by": [
+        "p82.dual_context_phase8_separate",
+        "p82.historical_unchanged_by_failing_composition"
+      ]
+    },
+    {
+      "id": "MG-85",
+      "file": "later-packages.mjs",
+      "area": "Phase 8 scope in affected-check analysis",
+      "result": "killed",
+      "killed_by": [
+        "r81.registry_valid",
+        "a81.well_formed_proposal_admissible",
+        "a81.computed_analysis_for_research_only_package",
+        "n81.incomplete_prior_analysis_rejected",
+        "p82.additional_entry_valid",
+        "p82.future_admission_representable",
+        "s82.admitted_no_files_valid_reservation",
+        "n83.altered_admission_unhashed_fails"
+      ]
+    },
+    {
+      "id": "MG-86",
+      "file": "later-packages.mjs",
+      "area": "admitted package manifest location",
+      "result": "killed",
+      "killed_by": [
+        "n82.manifest_outside_research_path_rejected"
+      ]
+    },
+    {
+      "id": "MG-87",
+      "file": "later-packages.mjs",
+      "area": "admitted package statuses",
+      "result": "killed",
+      "killed_by": [
+        "n82.admitted_package_with_seed_status_rejected"
+      ]
+    },
+    {
+      "id": "MG-88",
+      "file": "later-packages.mjs",
+      "area": "incomplete construction state",
+      "result": "killed",
+      "killed_by": [
+        "s82.files_without_manifest_is_incomplete_construction",
+        "s82.incomplete_construction_declared_not_defect"
+      ]
+    },
+    {
+      "id": "MG-89",
+      "file": "later-packages.mjs",
+      "area": "file changed after manifest",
+      "result": "killed",
+      "killed_by": [
+        "n82.changed_file_after_manifest_integrity_failure"
+      ]
+    },
+    {
+      "id": "MG-90",
+      "file": "later-packages.mjs",
+      "area": "manifest file set",
+      "result": "killed",
+      "killed_by": [
+        "n82.unlisted_file_integrity_failure"
+      ]
+    },
+    {
+      "id": "MG-91",
+      "file": "later-packages.mjs",
+      "area": "manifest version header",
+      "result": "killed",
+      "killed_by": [
+        "n82.manifest_without_version_integrity_failure"
+      ]
+    },
+    {
+      "id": "MG-92",
+      "file": "later-packages.mjs",
+      "area": "manifest history preserved",
+      "result": "killed",
+      "killed_by": [
+        "n82.regeneration_without_history_integrity_failure"
+      ]
+    },
+    {
+      "id": "MG-93",
+      "file": "later-packages.mjs",
+      "area": "integrity failure classified",
+      "result": "killed",
+      "killed_by": [
+        "n82.changed_file_after_manifest_integrity_failure",
+        "n83.changed_after_manifest_integrity_failure"
+      ]
+    },
+    {
+      "id": "MG-94",
+      "file": "later-packages.mjs",
+      "area": "package state required",
+      "result": "killed",
+      "killed_by": [
+        "n82.package_state_missing_fails_closed",
+        "n83.state_not_determined_fails"
+      ]
+    },
+    {
+      "id": "MG-95",
+      "file": "later-packages.mjs",
+      "area": "incomplete construction declared",
+      "result": "killed",
+      "killed_by": [
+        "s82.incomplete_construction_declared_not_defect"
+      ]
+    },
+    {
+      "id": "MG-96",
+      "file": "later-packages.mjs",
+      "area": "admitted files attributed in composition",
+      "result": "killed",
+      "killed_by": [
+        "s82.admitted_files_attributed_in_composition"
+      ]
+    },
+    {
+      "id": "MG-97",
+      "file": "later-packages.mjs",
+      "area": "no manifest required before files",
+      "result": "killed",
+      "killed_by": [
+        "r81.registry_valid",
+        "p82.additional_entry_valid",
+        "s82.admitted_no_files_valid_reservation",
+        "s82.no_manifest_required_before_files",
+        "n83.altered_admission_unhashed_fails"
+      ]
+    },
+    {
+      "id": "MG-98",
+      "file": "later-packages.mjs",
+      "area": "malformed manifest line",
+      "result": "killed",
+      "killed_by": [
+        "n82.malformed_manifest_integrity_failure"
+      ]
+    },
+    {
+      "id": "MG-99",
+      "file": "governance.mjs",
+      "area": "unregistered later path",
+      "result": "killed",
+      "killed_by": [
+        "neg.trigger_outside_declared_paths",
+        "neg.package_outside_registry",
+        "p83.without_registry_context_unchanged",
+        "n83.outside_approved_path_fails",
+        "n83.phase10_like_path_fails",
+        "n83.imitation_paths_fail",
+        "n83.registry_missing_fails"
+      ]
+    },
+    {
+      "id": "MG-100",
+      "file": "governance.mjs",
+      "area": "only accepted paths pass",
+      "result": "killed",
+      "killed_by": [
+        "p83.no_manifest_declared_incomplete",
+        "n83.changed_after_manifest_integrity_failure",
+        "n83.invalid_owner_decision_fails",
+        "n83.missing_owner_evidence_fails",
+        "n83.altered_admission_unhashed_fails",
+        "n83.altered_admission_rehashed_fails",
+        "n83.files_before_admission_fail",
+        "n83.state_not_determined_fails"
+      ]
+    },
+    {
+      "id": "MG-101",
+      "file": "governance.mjs",
+      "area": "only declared states attributed",
+      "result": "killed",
+      "killed_by": [
+        "n83.changed_after_manifest_integrity_failure"
+      ]
+    },
+    {
+      "id": "MG-102",
+      "file": "governance.mjs",
+      "area": "affected check must be declared",
+      "result": "killed",
+      "killed_by": [
+        "n83.undeclared_affected_check_fails"
+      ]
+    },
+    {
+      "id": "MG-103",
+      "file": "governance.mjs",
+      "area": "incomplete construction reported",
+      "result": "killed",
+      "killed_by": [
+        "p83.no_manifest_declared_incomplete"
+      ]
+    },
+    {
+      "id": "MG-104",
+      "file": "governance.mjs",
+      "area": "registry attribution of later files",
+      "result": "killed",
+      "killed_by": [
+        "p83.valid_phase9_with_manifest_declared",
+        "p83.no_phase9_unexplained_conflict",
+        "p83.no_manifest_declared_incomplete",
+        "p83.cpc_kept_as_historical_references",
+        "p83.composition_conditions_listed_separately",
+        "p83.phase9_only_composition_declared",
+        "n83.undeclared_affected_check_fails"
+      ]
+    },
+    {
+      "id": "MG-105",
+      "file": "governance.mjs",
+      "area": "fail-closed class set",
+      "result": "killed",
+      "killed_by": [
+        "n83.undeclared_affected_check_fails"
+      ]
+    },
+    {
+      "id": "MG-106",
+      "file": "governance.mjs",
+      "area": "composition conditions listed",
+      "result": "killed",
+      "killed_by": [
+        "p83.composition_conditions_listed_separately"
+      ]
+    },
+    {
+      "id": "MG-107",
+      "file": "governance.mjs",
+      "area": "unmanifested check needs placed files",
+      "result": "killed",
+      "killed_by": [
+        "n83.unplaced_file_on_unmanifested_check_unexplained"
+      ]
+    },
+    {
+      "id": "MG-108",
+      "file": "governance.mjs",
+      "area": "condition label",
+      "result": "killed",
+      "killed_by": [
+        "p83.condition_label_not_defect"
+      ]
+    },
+    {
+      "id": "MG-109",
+      "file": "later-packages.mjs",
+      "area": "registry-level problem invalidates admissions",
+      "result": "killed",
+      "killed_by": [
+        "n83.altered_admission_unhashed_fails"
+      ]
+    },
+    {
+      "id": "MG-110",
+      "file": "later-packages.mjs",
+      "area": "failure states carried per file",
+      "result": "killed",
+      "killed_by": [
+        "n83.changed_after_manifest_integrity_failure",
+        "n83.invalid_owner_decision_fails",
+        "n83.missing_owner_evidence_fails",
+        "n83.altered_admission_rehashed_fails",
+        "n83.files_before_admission_fail",
+        "n83.state_not_determined_fails"
+      ]
+    },
+    {
+      "id": "MG-111",
+      "file": "later-packages.mjs",
+      "area": "integrity failures reported separately",
+      "result": "killed",
+      "killed_by": [
+        "p83.report_six_kinds_separate"
+      ]
+    },
+    {
+      "id": "MG-112",
+      "file": "later-packages.mjs",
+      "area": "incomplete construction distinguished",
+      "result": "killed",
+      "killed_by": [
+        "p83.no_manifest_declared_incomplete"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,816 @@
+{
+  "generated_clock": "2026-10-17T00:00:00Z",
+  "seal_problems": [],
+  "statement": "Synthetic metamorphic checks in a limited local context. Not a robustness, reliability, accuracy or validation result.",
+  "results": [
+    {
+      "transform_id": "P6-ST-01",
+      "name": "formatting: blank line after every line",
+      "kind": "invariant",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "presentation_only",
+      "classes": [
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-02",
+      "name": "formatting: blank line after every line (bare basis, review_required base)",
+      "kind": "invariant",
+      "base": "P6-RT-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "presentation_only",
+      "classes": [
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-03",
+      "name": "formatting: unquoted headings in upper case (no-controls base)",
+      "kind": "invariant",
+      "base": "P6-SU-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "no_behavioral_difference",
+      "classes": [],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-27",
+      "name": "formatting: blank line after every line (scope-refused base)",
+      "kind": "invariant",
+      "base": "P6-XD-04",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "no_behavioral_difference",
+      "classes": [],
+      "base_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-04",
+      "name": "irrelevant narrative line added",
+      "kind": "invariant",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "presentation_only",
+      "classes": [
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-05",
+      "name": "irrelevant narrative line added (no-expiry base)",
+      "kind": "invariant",
+      "base": "P6-CH-04",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "presentation_only",
+      "classes": [
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-06",
+      "name": "irrelevant note added (excluded-domain refused base)",
+      "kind": "invariant",
+      "base": "P6-XD-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "no_behavioral_difference",
+      "classes": [],
+      "base_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-07",
+      "name": "residual risk and controls sections swapped",
+      "kind": "invariant",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "presentation_only",
+      "classes": [
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-08",
+      "name": "residual risk and controls sections swapped (unreferenced-authority base)",
+      "kind": "invariant",
+      "base": "P6-SU-03",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "presentation_only",
+      "classes": [
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-09",
+      "name": "residual risk and controls sections swapped (instruction-risk base)",
+      "kind": "invariant",
+      "base": "P6-IN-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "presentation_only",
+      "classes": [
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-10",
+      "name": "decision quotation duplicated",
+      "kind": "changed",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_refusal",
+        "expected_safe_degradation",
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-11",
+      "name": "decision quotation duplicated (bare basis base)",
+      "kind": "changed",
+      "base": "P6-RT-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_refusal",
+        "expected_safe_degradation",
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-12",
+      "name": "every decision date removed",
+      "kind": "changed",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "ceiling chronology_integrity: at most review_required, got supported"
+      ],
+      "universal_violations": [],
+      "verdict": "presentation_only",
+      "classes": [
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-13",
+      "name": "second, different decision date added",
+      "kind": "changed",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_safe_degradation",
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-14",
+      "name": "expiry moved before the decision (unreferenced-authority base)",
+      "kind": "changed",
+      "base": "P6-SU-03",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_safe_degradation",
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-15",
+      "name": "authority reworded without a locatable reference",
+      "kind": "changed",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_refusal",
+        "expected_safe_degradation",
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-16",
+      "name": "authority reworded without a locatable reference (bare basis base)",
+      "kind": "changed",
+      "base": "P6-RT-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_refusal",
+        "expected_safe_degradation",
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-17",
+      "name": "reworded employment line added",
+      "kind": "changed",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "known_open_failure_reproduced",
+      "mismatches": [
+        "gate: expected refuse, got proceed"
+      ],
+      "universal_violations": [],
+      "verdict": "presentation_only",
+      "classes": [
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-18",
+      "name": "explicit employment line added (no-controls base)",
+      "kind": "changed",
+      "base": "P6-SU-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "fail_closed",
+      "classes": [
+        "expected_refusal",
+        "expected_safe_degradation",
+        "limitation_removed_or_weakened",
+        "presentation_only",
+        "quote_or_span_integrity_defect",
+        "unexpected_behavioral_change"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-19",
+      "name": "instruction to ignore rules appended",
+      "kind": "changed",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_safe_degradation"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-20",
+      "name": "instruction to ignore rules appended (no-expiry base)",
+      "kind": "changed",
+      "base": "P6-CH-04",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_safe_degradation"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-21",
+      "name": "compensating-controls section removed",
+      "kind": "changed",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_refusal",
+        "expected_safe_degradation",
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-22",
+      "name": "cited \"None\" control line removed (sufficiency gap base)",
+      "kind": "changed",
+      "base": "P6-SU-02",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "human_review_required",
+      "classes": [
+        "expected_refusal",
+        "expected_safe_degradation",
+        "presentation_only"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "gap"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-23",
+      "name": "output damage: reasoning limitation text weakened",
+      "kind": "changed",
+      "base": "GC-001",
+      "base_state": "favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "fail_closed",
+      "classes": [
+        "limitation_removed_or_weakened"
+      ],
+      "base_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-24",
+      "name": "output damage: reasoning limitation text weakened (bare basis base)",
+      "kind": "changed",
+      "base": "P6-RT-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "fail_closed",
+      "classes": [
+        "limitation_removed_or_weakened"
+      ],
+      "base_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-25",
+      "name": "output damage: every refusal removed (excluded-domain base)",
+      "kind": "changed",
+      "base": "P6-XD-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "fail_closed",
+      "classes": [
+        "scope_boundary_defect",
+        "unexpected_behavioral_change"
+      ],
+      "base_statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "favourable_transitions": []
+    },
+    {
+      "transform_id": "P6-ST-26",
+      "name": "output damage: review_required reasoning flipped to supported (bare basis base)",
+      "kind": "changed",
+      "base": "P6-RT-01",
+      "base_state": "non_favorable",
+      "result": "as_expected",
+      "mismatches": [],
+      "universal_violations": [],
+      "verdict": "fail_closed",
+      "classes": [
+        "favorable_transition_requiring_human_review"
+      ],
+      "base_statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "favourable_transitions": [
+        "reasoning_traceability review_required -> supported (unsupported, ambiguous or not-assessed state became favourable)",
+        "reasoning_traceability is supported without a deterministic evidence trail"
+      ]
+    }
+  ],
+  "total": 27,
+  "as_expected": 25,
+  "invariant_total": 10,
+  "invariant_non_favorable_base": 7,
+  "results_hash": "sha256:88afafbe7b7c287951c949b13a55ffb51bc29f4b0ccb96e9be847e1002a143d3"
+}

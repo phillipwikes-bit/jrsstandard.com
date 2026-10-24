@@ -1,0 +1,22 @@
+{
+  "fixture_note": "Synthetic review note authored for offline validator testing on 2026-10-24. It refers to synthetic fixture HF-001 only. No real review was performed.",
+  "note_format": "jrs-cognitive-controls-review-note/0.1.0",
+  "review_id": "CCR-TEST-001",
+  "reviewer_role": "synthetic test reviewer",
+  "controls": {
+    "RC-01": { "state": "observed", "note": "Record text, captured response, graph and execution record were opened and read as four separate files." },
+    "RC-02": { "state": "observed", "note": "Each cited quotation was found in the record; whether its words support the proposition was considered separately for each." },
+    "RC-03": { "state": "uncertain", "note": "Whether the 60-day period matches any internal policy is not stated in the record." },
+    "RC-04": { "state": "observed", "note": "No weight was placed on the wording or completeness of the model response." },
+    "RC-05": { "state": "observed", "note": "Statements here are limited to the text and dates in the record." },
+    "RC-06": { "state": "observed", "note": "The pair check was run by the validator before this note was considered." },
+    "RC-07": { "state": "observed", "note": "No point was identified that needs review beyond this reviewer." },
+    "RC-08": { "state": "uncertain", "note": "The record does not show whether the board minutes were approved." }
+  },
+  "uncertainty_treatment": "Two points are recorded as uncertain (RC-03, RC-08) and are left unresolved.",
+  "escalation_treatment": { "escalate": false, "reason": "No point identified that needs review beyond this reviewer." },
+  "support_observations": [
+    { "condition_id": "identifiable_basis", "graph_status_observed": "supported", "quote_semantically_supports": "yes", "note": "The quoted authority line names the board and the minutes reference." },
+    { "condition_id": "sufficiency", "graph_status_observed": "review_required", "quote_semantically_supports": "uncertain", "note": "The quoted residual-risk line states a rating but not how it was reached." }
+  ]
+}

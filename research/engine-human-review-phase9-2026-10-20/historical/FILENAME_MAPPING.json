@@ -1,0 +1,16 @@
+{
+  "statements": ["LOCAL ENGINEERING MATERIAL ONLY", "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED", "NO RELEASE, DEPLOYMENT OR COMMERCIAL READINESS DETERMINATION"],
+  "record_type": "phase9-filename-compatibility-mapping",
+  "authorized_by": "Owner authorization 2026-10-20: Phase 9 Filename Compatibility Repair and Final Verification (Option 1)",
+  "original_filename": "research/engine-human-review-phase9-2026-10-20/DUAL_REVIEW_AND_ADJUDICATION_PROTOCOL.md",
+  "replacement_filename": "research/engine-human-review-phase9-2026-10-20/DUAL_REVIEW_PROTOCOL.md",
+  "preserved_original_copy": "research/engine-human-review-phase9-2026-10-20/historical/DOCUMENT_07_V1.md",
+  "original_sha256": "750b350897455f66b9ef9b421b5a89700223ba7196401e6f84d7406f2b9f6360",
+  "replacement_sha256_at_rename": "750b350897455f66b9ef9b421b5a89700223ba7196401e6f84d7406f2b9f6360",
+  "manifest_v1": { "preserved_at": "research/engine-human-review-phase9-2026-10-20/manifest-history/v1.sha256", "sha256": "edd4e6358b6f85905082ee3a7b62fc46ff675509b845e25cdd7c422904f6bdfc", "files": 92 },
+  "reason": "The original filename contains 'adjudicat', which the Phase 7 suite treats as a protected-path term for new files. The resulting failure was not among the conditions declared at the Phase 9 admission, so the whole-worktree replay failed closed.",
+  "phase7_rule_triggered": { "file": "tests/engine-remediation-phase7/run.mjs", "line": 72, "check": "no source-aligned controlling file, holdout or label file in the work", "pattern": "/Source_Aligned|Blueprint_Aligned|project_sources|holdout|adjudicat/i" },
+  "substantive_content_changed": false,
+  "content_note": "The document was renamed byte for byte. The document builder regenerates it under the new name; its content does not depend on test results and is checked against the original hash. The document still describes future human adjudication; the restriction concerns the file path, not the concept.",
+  "not_changed": ["Phase 7 filename guard", "Phase 8 governance", "any Engine rule, prompt, condition or finding", "sealed rehearsal expectations", "B-018", "public routes and deployment"]
+}

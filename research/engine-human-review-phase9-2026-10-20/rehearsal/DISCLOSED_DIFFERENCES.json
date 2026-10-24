@@ -1,0 +1,18 @@
+{
+  "statements": ["LOCAL ENGINEERING MATERIAL ONLY", "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED", "NO RELEASE, DEPLOYMENT OR COMMERCIAL READINESS DETERMINATION"],
+  "note": "Differences between the first Phase 9 evaluator run and the sealed expectations. The seal was not changed. Each difference is recorded with its direction and its cause; none is repaired in Phase 9.",
+  "differences": [
+    {
+      "packet_id": "R9-CON-04",
+      "check": "escalation_as_sealed",
+      "sealed": ["ET2"],
+      "observed": [],
+      "direction": "less_escalation_than_sealed",
+      "direction_note": "The packet reaches the reviewer without the conflict indicator the author predicted. Its review rank is 1 (Engine status review_required, no escalation) where the sealed expectation implied rank 0. The Engine status itself (review_required) matched the prediction, and the route to human review is unchanged.",
+      "cause": "FACT (from source and a post-seal check of detectRecordConflicts on this record): the v0.3.1 candidate low-risk pattern is matched against clause text with the section label removed. The record states the low rating as 'Residual risk: low, ...', so the clause read is 'low, per RA-2026-0311 section 3.' and no low-risk statement is found; the unresolved-risk note therefore produces no risk_state_conflict.",
+      "author_error": "The author predicted the conflict without accounting for label removal. The expected adjudication class (record_conflict) is unaffected: a careful reviewer reading the record would still see the conflict.",
+      "consequence": "A low-versus-unresolved risk conflict can reach the reviewer without an Engine conflict indicator. Detection of this conflict then rests on the human reviewer and the CC-WORDS control.",
+      "learning_record": "Candidate only. Not applied. Any change to the Engine requires a separately authorized governance proposal through the Phase 8 change-impact and admission process."
+    }
+  ]
+}

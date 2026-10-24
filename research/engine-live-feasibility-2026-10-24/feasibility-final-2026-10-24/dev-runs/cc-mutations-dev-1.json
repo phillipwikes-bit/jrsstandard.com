@@ -1,0 +1,121 @@
+{
+  "mutations": [
+    {
+      "id": "CM01",
+      "description": "Pair check skipped",
+      "applied": true,
+      "expected_failures": [
+        "CC-02",
+        "CC-03",
+        "CC-04",
+        "CC-05"
+      ],
+      "observed_failures": [
+        "CC-02",
+        "CC-03",
+        "CC-04",
+        "CC-05"
+      ],
+      "detected": true
+    },
+    {
+      "id": "CM02",
+      "description": "Override-key check removed",
+      "applied": true,
+      "expected_failures": [
+        "CC-12"
+      ],
+      "observed_failures": [
+        "CC-12"
+      ],
+      "detected": true
+    },
+    {
+      "id": "CM03",
+      "description": "Unsupported support claim allowed",
+      "applied": true,
+      "expected_failures": [
+        "CC-07"
+      ],
+      "observed_failures": [
+        "CC-07"
+      ],
+      "detected": true
+    },
+    {
+      "id": "CM04",
+      "description": "Uncertainty treatment not required",
+      "applied": true,
+      "expected_failures": [
+        "CC-08"
+      ],
+      "observed_failures": [
+        "CC-08"
+      ],
+      "detected": true
+    },
+    {
+      "id": "CM05",
+      "description": "Escalation treatment not required",
+      "applied": true,
+      "expected_failures": [
+        "CC-09"
+      ],
+      "observed_failures": [],
+      "detected": false
+    },
+    {
+      "id": "CM06",
+      "description": "Outcome forced to observed",
+      "applied": true,
+      "expected_failures": [
+        "CC-10",
+        "CC-11",
+        "CC-15"
+      ],
+      "observed_failures": [
+        "CC-01",
+        "CC-10",
+        "CC-11"
+      ],
+      "detected": false
+    },
+    {
+      "id": "CM07",
+      "description": "Prohibited-term check removed",
+      "applied": true,
+      "expected_failures": [
+        "CC-13"
+      ],
+      "observed_failures": [
+        "CC-13"
+      ],
+      "detected": true
+    },
+    {
+      "id": "CM08",
+      "description": "Misreported status allowed",
+      "applied": true,
+      "expected_failures": [
+        "CC-14"
+      ],
+      "observed_failures": [
+        "CC-14"
+      ],
+      "detected": true
+    },
+    {
+      "id": "CM09",
+      "description": "Control presence not required",
+      "applied": true,
+      "expected_failures": [
+        "CC-06"
+      ],
+      "observed_failures": [
+        "CC-06"
+      ],
+      "detected": true
+    }
+  ],
+  "all_detected": false
+}
