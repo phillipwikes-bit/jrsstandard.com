@@ -1,0 +1,153 @@
+{
+  "mutations": [
+    {
+      "id": "MM01",
+      "description": "Model-match check disabled",
+      "applied": true,
+      "expected_failures": [
+        "MT-09"
+      ],
+      "observed_failures": [
+        "MT-09"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM02",
+      "description": "Duplicate provider-request check disabled",
+      "applied": true,
+      "expected_failures": [
+        "MT-11"
+      ],
+      "observed_failures": [
+        "MT-11"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM03",
+      "description": "Duplicate request_id check disabled (adapter A-DUP)",
+      "applied": true,
+      "expected_failures": [
+        "MT-12"
+      ],
+      "observed_failures": [
+        "MT-12"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM04",
+      "description": "Null-quotation control disabled (adapter V9)",
+      "applied": true,
+      "expected_failures": [
+        "MT-23",
+        "MT-24",
+        "MT-25"
+      ],
+      "observed_failures": [
+        "MT-23",
+        "MT-24",
+        "MT-25"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM05",
+      "description": "Pair verification: graph hash check disabled",
+      "applied": true,
+      "expected_failures": [
+        "MT-29"
+      ],
+      "observed_failures": [
+        "MT-29"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM06",
+      "description": "Pair verification: response hash check disabled",
+      "applied": true,
+      "expected_failures": [
+        "MT-30"
+      ],
+      "observed_failures": [
+        "MT-30"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM07",
+      "description": "Pair verification: model check disabled",
+      "applied": true,
+      "expected_failures": [
+        "MT-31"
+      ],
+      "observed_failures": [
+        "MT-31"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM08",
+      "description": "Pair verification: request identifier check disabled",
+      "applied": true,
+      "expected_failures": [
+        "MT-32"
+      ],
+      "observed_failures": [
+        "MT-32"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM09",
+      "description": "Missing provider request identifier allowed",
+      "applied": true,
+      "expected_failures": [
+        "MT-10"
+      ],
+      "observed_failures": [
+        "MT-10"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM10",
+      "description": "Multiple text blocks allowed",
+      "applied": true,
+      "expected_failures": [
+        "MT-05"
+      ],
+      "observed_failures": [
+        "MT-05"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM11",
+      "description": "Unsupported block types allowed",
+      "applied": true,
+      "expected_failures": [
+        "MT-07"
+      ],
+      "observed_failures": [
+        "MT-07"
+      ],
+      "detected": true
+    },
+    {
+      "id": "MM12",
+      "description": "Missing body allowed",
+      "applied": true,
+      "expected_failures": [
+        "MT-03"
+      ],
+      "observed_failures": [
+        "MT-03"
+      ],
+      "detected": true
+    }
+  ],
+  "all_detected": true
+}

@@ -1,0 +1,37 @@
+{
+  "record_format": "jrs-live-pilot-execution-record/0.1.0",
+  "run_id": "map-2026-10-24T15-15-40-044Z-MT-27",
+  "request_id": "REQ-MT-27",
+  "synthetic_record_id": "HF-001",
+  "input_sha256": "f5b6a15779b592fa150142605841c209a28f2afc77adc1fd69208798b5af34ce",
+  "engine_version": "0.3.1-candidate",
+  "candidate_package_sha256": "815c5d5671d0cfcaf62edca0a11938b920e37d058d3e8655ae9e4f9c735925c3",
+  "prompt_sha256": "0ceda8887463a515d241751133c9b0d3bf3364f89b63fa6ac5dda6ac70c8eec2",
+  "adapter_version": "0.2.0-offline",
+  "adapter_sha256": "aa2b97797a9ed2d9476e901f2a54e10b3c7f898af6a9df8b473ac27482d81fb6",
+  "model_identifier": "claude-haiku-5-5",
+  "configuration": {
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_ms": 200,
+    "note": "offline mock configuration"
+  },
+  "sent_at_utc": "2026-10-24T15:15:40.152Z",
+  "captured_at_utc": "2026-10-24T15:15:40.152Z",
+  "replayed_at_utc": "2026-10-24T15:15:40.162Z",
+  "captured_response_file": "/tmp/claude-0/-home-user-jrsstandard-com/2ef9dc98-85d0-521a-aea1-a739f5ce030f/scratchpad/stage-a-offline-preparation-2026-10-24/out/map-2026-10-24T15-15-40-044Z/MT-27/REQ-MT-27.response.json",
+  "captured_response_sha256": "c29eadf35fa26cc18190dde8ff69565765ea35fdb0f9fa3f2e939de3c76edd7c",
+  "validation": {
+    "ok": true
+  },
+  "graph_file": "/tmp/claude-0/-home-user-jrsstandard-com/2ef9dc98-85d0-521a-aea1-a739f5ce030f/scratchpad/stage-a-offline-preparation-2026-10-24/out/map-2026-10-24T15-15-40-044Z/MT-27/REQ-MT-27.graph.json",
+  "graph_sha256": "268ce911c3d758e5b4dae5ae30ec9c95fba0460d70ed2a3d281b3181475d3cc2",
+  "lineage": "L3",
+  "response_origin": "mock_transport_fixture",
+  "adapter_transport_mode": "mocked",
+  "engine_execution_mode": "recorded_response_replay",
+  "graph_execution_mode_label": "local_mocked",
+  "authorization_file_sha256": null,
+  "authorization_note": "offline harness test; no live-run authorization exists",
+  "binding_digest": "d17a04fdbccf2124fbd7cb434c051e22e370c4ba31fd80a48712130c928b1596"
+}

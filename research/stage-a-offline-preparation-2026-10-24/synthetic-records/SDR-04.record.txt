@@ -1,0 +1,10 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Supplier: Hollowmere Cleaning Group (fictional)
+Access requested: Read-only access to the building access-badge rota (BADGE-ROTA-01).
+Requested by: Site Services Manager, 2026-09-05.
+Decision basis: A risk assessment was completed and found the rota shows shift labels only.
+Residual risk: low.
+Authority: The exception board approved the request.
+Decision: Exception granted for 45 days.
+Chronology: 2026-09-05 request received; board decision recorded later that month.

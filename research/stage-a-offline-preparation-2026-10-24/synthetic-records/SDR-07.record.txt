@@ -1,0 +1,11 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-1107
+Supplier: Thistlegate Vending Ltd (fictional)
+Access requested: Read-only access to the canteen stock dashboard (CAN-STK-01).
+Requested by: Catering Services Lead, 2026-09-16.
+Decision basis: The supplier is well established and the request is routine.
+Authority: Information Security Exception Board, minutes ISEB-2026-24 item 1, dated 2026-09-22.
+Decision: Exception granted for 120 days. Access is considered fully appropriate and low risk.
+Expiry and renewal: Expires 2027-01-20.
+Chronology: 2026-09-16 request received; 2026-09-22 board decision recorded.

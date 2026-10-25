@@ -1,0 +1,100 @@
+{
+  "records": [
+    {
+      "synthetic_record_id": "SDR-01",
+      "sha256": "7cb8571a4d3ff667748b4a6fd7f62940bc45f08e16bb1ea47653ca5d88eeb7d1",
+      "chars": 1174,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    },
+    {
+      "synthetic_record_id": "SDR-02",
+      "sha256": "be4f0178c984dfe5c7d264d24dd306f4e2892d72ff5d903058cb81e4c31bfc29",
+      "chars": 665,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    },
+    {
+      "synthetic_record_id": "SDR-03",
+      "sha256": "f36d934158d9387a2cec5dd59c6ed25ef7fc98b01d82b2814cb5894526d43155",
+      "chars": 1004,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    },
+    {
+      "synthetic_record_id": "SDR-04",
+      "sha256": "cfed32b0dc58e1996048052e298cc96769bed644595349e3bfa049c5e72304a6",
+      "chars": 633,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    },
+    {
+      "synthetic_record_id": "SDR-05",
+      "sha256": "3685b7d993a9d723488caa8130b2fdfb7e19333feb352bb6ed8ce811faaa864c",
+      "chars": 882,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    },
+    {
+      "synthetic_record_id": "SDR-06",
+      "sha256": "de97991b0b9284eeca3ba51f1cfcf83038ca6b7c69dfcae9450d24fa56f88a61",
+      "chars": 862,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    },
+    {
+      "synthetic_record_id": "SDR-07",
+      "sha256": "607a5f3956d122215c1d3b08bec2dc7182ff81b2172ea8df0bdbab5a79f99e1f",
+      "chars": 750,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    },
+    {
+      "synthetic_record_id": "SDR-08",
+      "sha256": "545c4e0adfe6b2b30b14b1713e29101d19cef84c7a5bbe0682c3641e7834a215",
+      "chars": 480,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    },
+    {
+      "synthetic_record_id": "SDR-09",
+      "sha256": "4e06fb82e4a763f3cf056057b70903f11f4ec8007dba20cca1d10a80d0ff3c0a",
+      "chars": 1006,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    },
+    {
+      "synthetic_record_id": "SDR-10",
+      "sha256": "43d957d77814984469cfcfa76d4ecd9e84534bfba8d787af3b23da06f043f154",
+      "chars": 800,
+      "labeled": true,
+      "intake": "proceed",
+      "triggers": [],
+      "graph_execution_mode": "local_deterministic"
+    }
+  ],
+  "network_attempts": 0,
+  "isolation": {
+    "unchanged": true,
+    "changed": [],
+    "deleted": true
+  }
+}

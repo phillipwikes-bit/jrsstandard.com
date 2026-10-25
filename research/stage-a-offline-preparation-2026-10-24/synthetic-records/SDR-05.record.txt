@@ -1,0 +1,13 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-1105
+Supplier: Cobbleton Print Works (fictional)
+Access requested: Read-only access to the brochure artwork folder (MKT-ART-07).
+Requested by: Marketing Production Lead, 2026-09-06.
+Decision basis: Risk assessment RA-2026-0912 found the folder holds published artwork only.
+Exception ID: SAE-2026-1105
+Residual risk: low, per RA-2026-0912 section 2.
+Authority: Information Security Exception Board, minutes ISEB-2026-23 item 4, dated 2026-09-15.
+Authority: Information Security Exception Board, minutes ISEB-2026-23 item 4, dated 2026-09-15.
+Decision: Exception granted for 60 days.
+Chronology: 2026-09-06 request received; 2026-09-12 risk assessment completed; 2026-09-15 board decision recorded.

@@ -1,0 +1,12 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-1106
+Supplier: Merriswold Plant Hire (fictional)
+Access requested: Read-only access to the equipment booking sheet (EQP-BOOK-02).
+Requested by: Grounds Operations Lead, 2026-09-14.
+Decision basis: Risk assessment RA-2026-0915, completed 2026-09-15, found the sheet lists equipment codes and booking dates only.
+Residual risk: low, per RA-2026-0915 section 3.
+Authority: Information Security Exception Board, minutes ISEB-2026-23 item 5, dated 2026-09-12.
+Decision: Exception granted for 60 days.
+Expiry and renewal: Expires 60 days after access is first used.
+Chronology: request received mid-September; risk assessment completed 2026-09-15; board decision recorded 2026-09-12.

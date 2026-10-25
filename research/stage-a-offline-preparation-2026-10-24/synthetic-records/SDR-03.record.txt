@@ -1,0 +1,13 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-1103
+Supplier: Larchwick Courier Ltd (fictional)
+Access requested: Read-only access to the parcel tracking export (PKG-EXP-02).
+Requested by: Mailroom Operations Lead, 2026-09-03.
+Decision basis: Risk assessment RA-2026-0910, completed 2026-09-10, found that the export lists parcel references and delivery windows only.
+Decision basis note: The export lists parcel references and delivery windows, and the supplier uses it to confirm collections.
+Residual risk: low, per RA-2026-0910 section 1.
+Authority: Information Security Exception Board, minutes ISEB-2026-23 item 2, dated 2026-09-15.
+Decision: Exception granted for 60 days.
+Expiry and renewal: Expires 2026-11-14. Renewal requires a new request.
+Chronology: 2026-09-03 request received; 2026-09-10 risk assessment completed; 2026-09-15 board decision recorded.

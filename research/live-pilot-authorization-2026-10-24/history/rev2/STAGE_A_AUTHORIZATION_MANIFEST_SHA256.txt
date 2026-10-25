@@ -1,0 +1,5 @@
+# manifest_version: 2 (2026-10-24; Gate 1 determination added, readiness status revision 2); revision 1 at history/rev1/
+7c08842de348b7d32f0a0279d9794e90e8c0e710a6ebfdc8d430fcad3da817bb  STAGE_A_COUNSEL_DETERMINATION.md
+63f0c4bca99b7026702863ac6672d7e53583e9f7af2cf1c88461381fbfe97b04  STAGE_A_OWNER_AUTHORIZATION_DRAFT.md
+b8d1c9ed2bb0cdf515e8182febea325e1ea982bc42b456d2cffacc2c23a2b679  STAGE_A_READINESS_STATUS.md
+3cfe72a8a800cfb00108e7501ceb48eb11bd22dc23a4c0d322e7d7fc0ac8458a  STAGE_A_GATE1_DETERMINATION.md

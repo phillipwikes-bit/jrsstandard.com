@@ -1,0 +1,461 @@
+{
+  "result_format": "jrs-stage-a-mapping-offline-results/0.1.0",
+  "run_id": "map-2026-10-24T15-15-40-044Z",
+  "run_at_utc": "2026-10-24T15:15:40.220Z",
+  "model_identifier_under_test": "claude-haiku-5-5",
+  "mapping_version": "0.1.0-offline",
+  "mapping_sha256": "1e289b0687d8b14a4c3dd74db1bd977af0f32d50dee2ad523da412f515a159b8",
+  "adapter_version": "0.2.0-offline",
+  "adapter_sha256": "aa2b97797a9ed2d9476e901f2a54e10b3c7f898af6a9df8b473ac27482d81fb6",
+  "totals": {
+    "tests": 33,
+    "passed": 33,
+    "failed": 0,
+    "skipped": 0,
+    "load_or_setup_errors": 0
+  },
+  "network_attempts_total": 0,
+  "credential_values_read": 0,
+  "statement": "Offline mapping tests on synthetic captures with no provider involvement. Not a pilot, evaluation or validation. B-018 OPEN. NO_GO_NOT_VERIFIED.",
+  "tests": [
+    {
+      "id": "MT-01",
+      "name": "Valid single-text response accepted and replayed",
+      "control": "Mapper, adapter V1 to V9, Engine replay, pair check",
+      "result": "pass",
+      "observed": {
+        "pair_check": {
+          "ok": true
+        },
+        "graph_execution_mode": "local_mocked",
+        "statuses": [
+          "reconstructability:review_required",
+          "identifiable_basis:supported",
+          "chronology_integrity:supported",
+          "reasoning_traceability:supported",
+          "sufficiency:review_required"
+        ]
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-02",
+      "name": "Valid structured response (single exact JSON fence) accepted",
+      "control": "Mapper; adapter V7 strict parser",
+      "result": "pass",
+      "observed": {
+        "outcome": "REPLAYED"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-03",
+      "name": "Missing response body rejected",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "adapter_code": "provider_error",
+        "mapping_code": "missing_response_body"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-04",
+      "name": "No text block (empty content array) rejected",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "adapter_code": "provider_error",
+        "mapping_code": "empty_content"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-05",
+      "name": "Multiple eligible text blocks rejected",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "adapter_code": "provider_error",
+        "mapping_code": "multiple_text_blocks"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-06",
+      "name": "Empty text rejected",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "adapter_code": "provider_error",
+        "mapping_code": "empty_content"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-07",
+      "name": "Non-text content block rejected",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "adapter_code": "provider_error",
+        "mapping_code": "unsupported_content_block_type"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-08",
+      "name": "Non-string text content rejected",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "adapter_code": "provider_error",
+        "mapping_code": "text_content_missing_or_not_string"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-09",
+      "name": "Model identifier mismatch rejected",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "adapter_code": "provider_error",
+        "mapping_code": "model_identifier_mismatch"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-10",
+      "name": "Missing provider request identifier rejected",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "adapter_code": "provider_error",
+        "mapping_code": "provider_request_id_missing"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-11",
+      "name": "Duplicate provider request identifier rejected within one run",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "second_map": "duplicate_provider_request_id"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-12",
+      "name": "Duplicate request_id rejected before provider access and replay",
+      "control": "Adapter A-DUP",
+      "result": "pass",
+      "observed": {
+        "first": "REPLAYED",
+        "second": "REJECT-PRE",
+        "code": "duplicate_request_id",
+        "transport_calls": 1
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-13",
+      "name": "Malformed top-level structure rejected",
+      "control": "Mapper",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "adapter_code": "provider_error",
+        "mapping_code": "malformed_top_level_structure"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-14",
+      "name": "Malformed structured payload rejected",
+      "control": "Adapter V7",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V7",
+        "code": "malformed_json"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-15",
+      "name": "V1 timeout handled without replay",
+      "control": "Adapter V1",
+      "result": "pass",
+      "observed": {
+        "step": "V1",
+        "code": "transport_timeout"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-16",
+      "name": "V2 provider error body handled without replay",
+      "control": "Mapper maps error; adapter V2",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "code": "provider_error"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-17",
+      "name": "V3 length cut-off rejected",
+      "control": "Adapter V3",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V3",
+        "code": "response_truncated"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-18",
+      "name": "V4 non-text envelope rejected by adapter (control present beyond mapper)",
+      "control": "Adapter V4 (direct)",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V4",
+        "code": "unexpected_content_type"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-19",
+      "name": "V5 oversized response rejected",
+      "control": "Adapter V5",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V5",
+        "code": "response_too_large"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-20",
+      "name": "V6 empty body rejected by adapter (control present beyond mapper)",
+      "control": "Adapter V6 (direct)",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V6",
+        "code": "model_refusal"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-21",
+      "name": "V7 prose around JSON rejected",
+      "control": "Adapter V7",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V7",
+        "code": "content_outside_json_object"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-22",
+      "name": "V8 untrusted field rejected",
+      "control": "Adapter V8",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V8",
+        "code": "candidate_supplied_untrusted_field"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-23",
+      "name": "V9 supported with null quotation rejected",
+      "control": "Adapter V9",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V9",
+        "code": "quote_null_requires_not_assessed"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-24",
+      "name": "V9 gap with null quotation rejected",
+      "control": "Adapter V9",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V9",
+        "code": "quote_null_requires_not_assessed"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-25",
+      "name": "V9 review_required with null quotation rejected",
+      "control": "Adapter V9",
+      "result": "pass",
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V9",
+        "code": "quote_null_requires_not_assessed"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-26",
+      "name": "not_assessed with null quotation accepted (control case)",
+      "control": "Adapter V9, Engine replay",
+      "result": "pass",
+      "observed": {
+        "outcome": "REPLAYED"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-27",
+      "name": "Provenance records generated with required labels",
+      "control": "Adapter execution record; mapping sidecar",
+      "result": "pass",
+      "observed": {
+        "response_origin": "mock_transport_fixture",
+        "adapter_transport_mode": "mocked",
+        "engine_execution_mode": "recorded_response_replay",
+        "model_identifier": "claude-haiku-5-5",
+        "provider_request_id": "synthetic-provider-req-27",
+        "graph_execution_mode": "local_mocked"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-28",
+      "name": "Nine-field provenance pair verifies, fields in canonical order",
+      "control": "Pair check (contract section 8A)",
+      "result": "pass",
+      "observed": {
+        "pair_check": {
+          "ok": true
+        },
+        "fields": [
+          "graph_sha256",
+          "captured_response_sha256",
+          "request_id",
+          "model_identifier",
+          "adapter_version",
+          "adapter_sha256",
+          "captured_at_utc",
+          "replayed_at_utc",
+          "synthetic_record_id"
+        ]
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-29",
+      "name": "Altered graph hash stops review",
+      "control": "Pair check",
+      "result": "pass",
+      "observed": {
+        "before": {
+          "ok": true
+        },
+        "after": {
+          "ok": false,
+          "code": "graph_sha256_mismatch"
+        }
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-30",
+      "name": "Altered captured-response hash stops review",
+      "control": "Pair check",
+      "result": "pass",
+      "observed": {
+        "before": {
+          "ok": true
+        },
+        "after": {
+          "ok": false,
+          "code": "captured_response_sha256_mismatch"
+        }
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-31",
+      "name": "Model mismatch stops review (consistent forgery)",
+      "control": "Pair check",
+      "result": "pass",
+      "observed": {
+        "before": {
+          "ok": true
+        },
+        "after": {
+          "ok": false,
+          "code": "model_identifier_mismatch"
+        }
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-32",
+      "name": "Request identifier mismatch stops review (consistent forgery)",
+      "control": "Pair check",
+      "result": "pass",
+      "observed": {
+        "before": {
+          "ok": true
+        },
+        "after": {
+          "ok": false,
+          "code": "request_id_mismatch"
+        }
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "MT-33",
+      "name": "No network attempt in the whole run; isolated Engine copy unchanged and deleted",
+      "control": "Network guard; isolation",
+      "result": "pass",
+      "observed": {
+        "network_attempts_total": 0,
+        "isolation": {
+          "unchanged": true,
+          "changed": [],
+          "deleted": true
+        }
+      }
+    }
+  ]
+}
