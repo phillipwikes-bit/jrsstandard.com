@@ -1,0 +1,201 @@
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs candidate/lib/engine-evidence-graph-v0.3.2-candidate/compiler.mjs
+--- lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs	2026-10-19 12:27:46.986380758 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/compiler.mjs	2026-10-25 09:10:03.951468773 +0000
+@@ -1,4 +1,4 @@
+-// JRS EVIDENCE GRAPH 0.3.1-candidate: the compiler (Phase 7 local remediation candidate; v0.3 is unchanged).
++// JRS EVIDENCE GRAPH 0.3.2-candidate: the compiler (V0-02 correction of 0.3.1-candidate; v0.3 and 0.3.1 are unchanged).
+ // Phase 7 rules are active only through validated rule packs (rule-packs.mjs); an invalid pack set refuses every record.
+ //
+ // record text -> exact span -> evidence item -> bounded assertion -> condition
+@@ -163,7 +163,7 @@
+     }
+     // Conflicts: record-level and cited-evidence.
+     const allVerified = Object.values(verifiedByCondition).flat();
+-    const conflicts = [...recordConflicts, ...detectEvidenceConflicts(allVerified)];
++    const conflicts = [...recordConflicts, ...detectEvidenceConflicts(allVerified, events, rules)];
+     const conflictAffects = Object.fromEntries(CONDITION_IDS.map((c) => [c, []]));
+     conflicts.forEach((k, i) => {
+       const id = 'conf:' + String(i + 1).padStart(2, '0');
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/contract.mjs candidate/lib/engine-evidence-graph-v0.3.2-candidate/contract.mjs
+--- lib/engine-evidence-graph-v0.3.1-candidate/contract.mjs	2026-10-19 12:26:23.635262610 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/contract.mjs	2026-10-25 09:10:03.950498288 +0000
+@@ -1,4 +1,4 @@
+-// JRS EVIDENCE GRAPH COMPILER 0.3.1-candidate (Phase 7 local remediation candidate). Constants.
++// JRS EVIDENCE GRAPH COMPILER 0.3.2-candidate (V0-02 correction of 0.3.1-candidate: RP-CON-02 only). Constants.
+ // Separately versioned from frozen v0.3 (lib/engine-evidence-graph/), which is unchanged.
+ // Only COMPILER_VERSION differs here; contract, prompt and limitation texts are identical.
+ //
+@@ -12,7 +12,7 @@
+ // of those locally and can only keep or lower a candidate's proposed status.
+ 
+ export const CONTRACT_VERSION = 'jrs-engine-local-0.3.0-evidence-graph';
+-export const COMPILER_VERSION = '0.3.1-candidate';
++export const COMPILER_VERSION = '0.3.2-candidate';
+ export const PROMPT_VERSION = 'jrs-engine-local-0.3.0/prompt-1';
+ export const CODEBOOK_VERSION = '1.0';
+ export const GRAPH_FORMAT_VERSION = 'jrs-evidence-graph/0.3.0';
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs candidate/lib/engine-evidence-graph-v0.3.2-candidate/contradictions.mjs
+--- lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs	2026-10-19 12:26:46.071667810 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/contradictions.mjs	2026-10-25 09:10:03.953045586 +0000
+@@ -103,9 +103,21 @@
+   return { conflicts, events };
+ }
+ 
++// RP-CON-02 (V0-02 correction): the event role of a cited quotation is the role of the explicitly
++// dated event(s) whose clause overlaps the quotation's span; null when none or more than one role.
++export function eventRoleOf(e, events = []) {
++  const m = /^span:(\d+)-(\d+)$/.exec(e.span_id || '');
++  if (!m) return null;
++  const s = Number(m[1]), t = Number(m[2]);
++  const roles = [...new Set(events.filter((ev) => ev.start < t && s < ev.end).map((ev) => ev.role))];
++  return roles.length === 1 ? roles[0] : null;
++}
++
+ // K6 two verified quotations cited for the same condition and the same date or
+-// decision assertion that state incompatible values.
+-export function detectEvidenceConflicts(evidence) {
++// decision assertion that state incompatible values. With RP-CON-02, two dates are not
++// compared when both quotations have a known event role and the roles differ (for example a
++// request date and an expiry date); an unknown role keeps the comparison.
++export function detectEvidenceConflicts(evidence, events = [], rules = new Set()) {
+   const out = [];
+   const byKey = new Map();
+   for (const e of evidence) {
+@@ -122,6 +134,10 @@
+     const vals = list.filter((e) => value(e));
+     for (let i = 0; i < vals.length; i++) for (let j = i + 1; j < vals.length; j++) {
+       if (value(vals[i]) !== value(vals[j])) {
++        if (rules.has('RP-CON-02') && vals[i].assertion_type !== 'stated_decision') {
++          const ra = eventRoleOf(vals[i], events), rb = eventRoleOf(vals[j], events);
++          if (ra && rb && ra !== rb) continue;
++        }
+         out.push({ kind: 'cited_evidence_conflict', evidence: [vals[i], vals[j]], affects: [k.split('|')[0]],
+           summary: 'Two quotations cited for the same ' + k.split('|')[1] + ' state incompatible values.' });
+         return out;
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-CHR.json candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-CHR.json
+--- lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-CHR.json	2026-10-19 12:23:04.181148214 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-CHR.json	2026-10-25 09:10:22.729546583 +0000
+@@ -1,5 +1,5 @@
+ {
+-  "candidate_version": "0.3.1-candidate",
++  "candidate_version": "0.3.2-candidate",
+   "pack_id": "RPK-CHR",
+   "pack_version": "1.0.0",
+   "purpose": "Chronology integrity controls over explicitly dated, role-labelled events.",
+@@ -71,6 +71,6 @@
+   ],
+   "signature": {
+     "method": "sha256-canonical-content-seal",
+-    "content_sha256": "sha256:ff20267780e626a00ed9b55e31019d73ac8f527ae67ddadd36c8c5587b24da73"
++    "content_sha256": "sha256:49d57e3317128173c1a68f81ef145f7c0a73cbf0b6ff73cef1dffe1a2ce588c9"
+   }
+ }
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-CON.json candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-CON.json
+--- lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-CON.json	2026-10-19 12:23:04.181148214 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-CON.json	2026-10-25 09:10:22.733546583 +0000
+@@ -1,5 +1,5 @@
+ {
+-  "candidate_version": "0.3.1-candidate",
++  "candidate_version": "0.3.2-candidate",
+   "pack_id": "RPK-CON",
+   "pack_version": "1.0.0",
+   "purpose": "Conflict controls for one paraphrase family.",
+@@ -25,6 +25,6 @@
+   ],
+   "signature": {
+     "method": "sha256-canonical-content-seal",
+-    "content_sha256": "sha256:f04fe99a4018e3112929ea51c205540aca1a68ff6dd2d60566afd41a54182750"
++    "content_sha256": "sha256:03bda1f447ce2597ff4ef5f28004a704ac4a5d648368b49225f83fa542c31a8c"
+   }
+ }
+Only in candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs: RPK-ECR.json
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-EVL.json candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-EVL.json
+--- lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-EVL.json	2026-10-19 12:23:04.181148214 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-EVL.json	2026-10-25 09:10:22.733546583 +0000
+@@ -1,5 +1,5 @@
+ {
+-  "candidate_version": "0.3.1-candidate",
++  "candidate_version": "0.3.2-candidate",
+   "pack_id": "RPK-EVL",
+   "pack_version": "1.0.0",
+   "purpose": "Evidence-link abstention: a supported status needs at least one cited quotation from a section linked to the condition.",
+@@ -29,6 +29,6 @@
+   ],
+   "signature": {
+     "method": "sha256-canonical-content-seal",
+-    "content_sha256": "sha256:a9115e9b84dc7d790294936a1519d06ee70d6bed720482d93e3c0b1234966b3d"
++    "content_sha256": "sha256:cf29cc0cc80cefdf2b8f21727faecc871d1e6615095b8765daf33043bbe5229a"
+   }
+ }
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-NEG.json candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-NEG.json
+--- lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-NEG.json	2026-10-19 12:23:04.181148214 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-NEG.json	2026-10-25 09:10:22.733546583 +0000
+@@ -1,5 +1,5 @@
+ {
+-  "candidate_version": "0.3.1-candidate",
++  "candidate_version": "0.3.2-candidate",
+   "pack_id": "RPK-NEG",
+   "pack_version": "1.0.0",
+   "purpose": "Negation and rationale controls for reasoning traceability.",
+@@ -27,6 +27,6 @@
+   ],
+   "signature": {
+     "method": "sha256-canonical-content-seal",
+-    "content_sha256": "sha256:e3af1bccc7184c95c26dd77852e6f8e7eca167b6500fa8180dd0359eac7ac148"
++    "content_sha256": "sha256:bdea4f0f98c73a0e0d44fe28d4caafe1f7dd5d0bc66c18a7b1a7d91b148e5d7e"
+   }
+ }
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-SCO.json candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-SCO.json
+--- lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-SCO.json	2026-10-19 12:23:04.181148214 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-SCO.json	2026-10-25 09:10:22.733546583 +0000
+@@ -1,5 +1,5 @@
+ {
+-  "candidate_version": "0.3.1-candidate",
++  "candidate_version": "0.3.2-candidate",
+   "pack_id": "RPK-SCO",
+   "pack_version": "1.0.0",
+   "purpose": "Excluded-domain and scope controls for one rewording family.",
+@@ -25,6 +25,6 @@
+   ],
+   "signature": {
+     "method": "sha256-canonical-content-seal",
+-    "content_sha256": "sha256:f35895c6857f8981b3ca08056b22d8db00c8d990a8fad6356d94a3f2d93933d3"
++    "content_sha256": "sha256:d66e4710615d304030b761068c9769d2fcd6161fa8b0b3d2766eaed3e31e4e52"
+   }
+ }
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-STR.json candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-STR.json
+--- lib/engine-evidence-graph-v0.3.1-candidate/rule-packs/RPK-STR.json	2026-10-19 12:23:04.181148214 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs/RPK-STR.json	2026-10-25 09:10:22.733546583 +0000
+@@ -1,5 +1,5 @@
+ {
+-  "candidate_version": "0.3.1-candidate",
++  "candidate_version": "0.3.2-candidate",
+   "pack_id": "RPK-STR",
+   "pack_version": "1.0.0",
+   "purpose": "Structural integrity: the compiler reports a withheld inference instead of failing its own self-validation.",
+@@ -25,6 +25,6 @@
+   ],
+   "signature": {
+     "method": "sha256-canonical-content-seal",
+-    "content_sha256": "sha256:b5a5ff96beafa435ac090032115aaf81b8ea7b63eb142cf7b4f8b475727ad61d"
++    "content_sha256": "sha256:548e648de50428ad4d3308a0dacaa1dacbabcd1d60273fdbc618410386697a51"
+   }
+ }
+diff -ru lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs.mjs
+--- lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs	2026-10-19 12:27:24.317035763 +0000
++++ candidate/lib/engine-evidence-graph-v0.3.2-candidate/rule-packs.mjs	2026-10-25 09:10:03.952402488 +0000
+@@ -1,4 +1,4 @@
+-// JRS EVIDENCE GRAPH 0.3.1-candidate: rule-pack loading and validation.
++// JRS EVIDENCE GRAPH 0.3.2-candidate: rule-pack loading and validation.
+ //
+ // A Phase 7 rule is active only when it is listed in a valid rule pack. A pack
+ // set is rejected as a whole if any pack is malformed, unsigned or carries a
+@@ -13,7 +13,7 @@
+ import { fileURLToPath } from 'node:url';
+ import { COMPILER_VERSION } from './contract.mjs';
+ 
+-export const IMPLEMENTED_RULES = Object.freeze(['RP-STR-01', 'RP-CHR-01', 'RP-CHR-02', 'RP-CHR-03', 'RP-CHR-04', 'RP-NEG-01', 'RP-EVL-01', 'RP-CON-01', 'RP-SCO-01']);
++export const IMPLEMENTED_RULES = Object.freeze(['RP-STR-01', 'RP-CHR-01', 'RP-CHR-02', 'RP-CHR-03', 'RP-CHR-04', 'RP-NEG-01', 'RP-EVL-01', 'RP-CON-01', 'RP-SCO-01', 'RP-CON-02']);
+ export const PACK_FIELDS = Object.freeze(['pack_id', 'pack_version', 'candidate_version', 'purpose', 'rules', 'signature']);
+ export const RULE_FIELDS = Object.freeze(['rule_id', 'purpose', 'trigger', 'expected_safe_outcome', 'limitation', 'false_positive_risk', 'linked_scenarios', 'owner_decision_for_expansion']);
+ export const SAFE_OUTCOMES = Object.freeze(['review_required', 'refusal', 'conflict_and_review', 'assertion_withheld_and_review']);

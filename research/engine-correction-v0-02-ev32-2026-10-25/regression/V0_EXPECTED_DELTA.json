@@ -1,0 +1,11 @@
+{
+  "statement": "Pre-declared change to the sealed V0 corpus expectations under 0.3.2-candidate. Every other V0 case must match its sealed V0 expectation exactly.",
+  "deltas": {
+    "EV-32": {
+      "statuses": {
+        "chronology_integrity": "supported"
+      },
+      "conflict_kinds": []
+    }
+  }
+}

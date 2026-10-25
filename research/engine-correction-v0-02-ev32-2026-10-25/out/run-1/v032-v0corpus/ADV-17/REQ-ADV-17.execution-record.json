@@ -1,0 +1,37 @@
+{
+  "record_format": "jrs-live-pilot-execution-record/0.1.0",
+  "run_id": "v002-run-1-v032-v0corpus-ADV-17",
+  "request_id": "REQ-ADV-17",
+  "synthetic_record_id": "ADV-17",
+  "input_sha256": "5b03951204114ad4488b5d063f248aa0091e7937dec734a2836fc5c53a213701",
+  "engine_version": "0.3.2-candidate",
+  "candidate_package_sha256": "2276bbc22e1e226220b471b27b793119d37ceb6e093a91d1ecbafae31a200f18",
+  "prompt_sha256": "0ceda8887463a515d241751133c9b0d3bf3364f89b63fa6ac5dda6ac70c8eec2",
+  "adapter_version": "0.2.0-offline",
+  "adapter_sha256": "aa2b97797a9ed2d9476e901f2a54e10b3c7f898af6a9df8b473ac27482d81fb6",
+  "model_identifier": "MOCK-MODEL-NOT-A-PROVIDER",
+  "configuration": {
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_ms": 200,
+    "note": "offline mock configuration"
+  },
+  "sent_at_utc": "2026-10-25T09:12:02.491Z",
+  "captured_at_utc": "2026-10-25T09:12:02.491Z",
+  "replayed_at_utc": "2026-10-25T09:12:02.510Z",
+  "captured_response_file": "/home/user/jrsstandard.com/research/engine-correction-v0-02-ev32-2026-10-25/out/run-1/v032-v0corpus/ADV-17/REQ-ADV-17.response.json",
+  "captured_response_sha256": "86b761fa764f3f2141bb8f13f9cf5f1ea1391df6024afda07982ea10f4d03165",
+  "validation": {
+    "ok": true
+  },
+  "graph_file": "/home/user/jrsstandard.com/research/engine-correction-v0-02-ev32-2026-10-25/out/run-1/v032-v0corpus/ADV-17/REQ-ADV-17.graph.json",
+  "graph_sha256": "c8065ffed86a8cfc473da88c43925c3eb71adfcaea527a697609ea87fa90cb28",
+  "lineage": "L3",
+  "response_origin": "mock_transport_fixture",
+  "adapter_transport_mode": "mocked",
+  "engine_execution_mode": "recorded_response_replay",
+  "graph_execution_mode_label": "local_mocked",
+  "authorization_file_sha256": null,
+  "authorization_note": "offline harness test; no live-run authorization exists",
+  "binding_digest": "6ac644c5e76ef2695200c72e2d4fa9b32aa5983331adbb010ce490fed3f4898f"
+}

@@ -1,0 +1,35 @@
+{
+  "case_id": "RC-06",
+  "purpose": "Two conflicting decision quotations (granted, denied) with known, different event roles (decision, request): decisions stay excluded from RP-CON-02, so the conflict persists. Targets survivor X13.",
+  "record_source": "regression-supplement cases/RC-06.record.txt",
+  "record_sha256": "c94901f262a94bef718a8fdc80b1671cbc69d92102ab1dfb0e7c5414ef926ad2",
+  "expected": {
+    "0.3.1-candidate": {
+      "intake_decision": "proceed",
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "cited_evidence_conflict"
+      ]
+    },
+    "0.3.2-candidate": {
+      "intake_decision": "proceed",
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "cited_evidence_conflict"
+      ]
+    }
+  },
+  "expectation_authority": "owner direction 2026-10-25 (X13); AI-assisted drafting; not ground truth"
+}

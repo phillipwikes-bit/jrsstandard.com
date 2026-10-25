@@ -1,0 +1,7 @@
+{
+  "comparison": "run-1 vs run-2: adapter outcome, normalized graph digest, observed behaviour (same criterion as V0)",
+  "items": 70,
+  "identical": 70,
+  "differences": [],
+  "summaries_identical": true
+}

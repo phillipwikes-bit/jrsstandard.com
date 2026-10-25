@@ -1,0 +1,7 @@
+{
+  "sealed_at_utc": "2026-10-25T09:14:31.075Z",
+  "file_count": 4,
+  "manifest_sha256": "102e1178adcdb46ca38c9266a251ebad232e712cf0f41f1b266a44cbf4df19e6",
+  "code_changes_since_regression_seal": "RP-CON-02 change only (CORRECTION_DIFF.patch); none since",
+  "rule": "Post-seal modification prohibited."
+}

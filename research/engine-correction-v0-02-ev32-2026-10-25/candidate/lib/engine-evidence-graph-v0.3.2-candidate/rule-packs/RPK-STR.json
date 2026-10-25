@@ -1,0 +1,30 @@
+{
+  "candidate_version": "0.3.2-candidate",
+  "pack_id": "RPK-STR",
+  "pack_version": "1.0.0",
+  "purpose": "Structural integrity: the compiler reports a withheld inference instead of failing its own self-validation.",
+  "rules": [
+    {
+      "rule_id": "RP-STR-01",
+      "purpose": "Repair P6-RT-07.",
+      "trigger": "The internal label for a candidate note that attributes motive or purpose (\"motive\", \"motivated\", \"in order to hide\", \"wanted to\", \"tried to\") is \"attributed_purpose\" instead of a word that the graph self-validation forbids.",
+      "expected_safe_outcome": "assertion_withheld_and_review",
+      "limitation": "Covers this one label. Other inference labels are unchanged; untested labels may still trip self-validation.",
+      "false_positive_risk": "None added: the detection pattern is unchanged; only the label text changes.",
+      "linked_scenarios": [
+        "P6-RT-07",
+        "P7-R07-01",
+        "P7-R07-02",
+        "P7-R07-03",
+        "P7-R07-04",
+        "P7-R07-05",
+        "P7-R07-06"
+      ],
+      "owner_decision_for_expansion": "Any widening of the trigger, any new pattern, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    }
+  ],
+  "signature": {
+    "method": "sha256-canonical-content-seal",
+    "content_sha256": "sha256:548e648de50428ad4d3308a0dacaa1dacbabcd1d60273fdbc618410386697a51"
+  }
+}

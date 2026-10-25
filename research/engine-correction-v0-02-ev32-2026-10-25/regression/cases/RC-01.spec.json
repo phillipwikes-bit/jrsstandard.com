@@ -1,0 +1,33 @@
+{
+  "case_id": "RC-01",
+  "purpose": "EV-32 replica: request date and expiry date cited as stated_date for chronology (different event roles).",
+  "record_source": "V0 sealed corpus cases/EV-04.record.txt",
+  "record_sha256": "ac49738e49f977c6a0224f43901d8f2460a30b8bbd2e43e7079753ca3cab0dcb",
+  "expected": {
+    "0.3.1-candidate": {
+      "intake_decision": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "cited_evidence_conflict"
+      ]
+    },
+    "0.3.2-candidate": {
+      "intake_decision": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": []
+    }
+  },
+  "expectation_authority": "owner-authorized correction scope (V0-02); AI-assisted drafting; not ground truth"
+}
