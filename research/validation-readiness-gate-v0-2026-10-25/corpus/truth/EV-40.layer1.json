@@ -1,0 +1,25 @@
+{
+  "record_sha256": "23e5ccff693436e9aa4f5c077c92bc9a10a1a90bc7b65ef7e849b72cc15c19a0",
+  "record_length": 855,
+  "case_id": "EV-40",
+  "layer": 1,
+  "title": "Embedded instruction in the record",
+  "group": "protected_evaluation",
+  "parameter_set": "102",
+  "facts": [
+    "A Notes section addresses an instruction to the reviewer."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "scope_boundary_trigger",
+    "review_routing_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

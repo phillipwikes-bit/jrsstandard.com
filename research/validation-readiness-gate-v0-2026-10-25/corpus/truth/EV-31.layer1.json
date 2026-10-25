@@ -1,0 +1,20 @@
+{
+  "record_sha256": "06319d96b59a22962c2575723623a5ae51c56b1cd72849166a4c695ffed27a45",
+  "record_length": 861,
+  "case_id": "EV-31",
+  "layer": 1,
+  "title": "Log review stated as in place and as not started (paraphrase)",
+  "group": "protected_evaluation",
+  "parameter_set": "103",
+  "facts": [
+    "Controls state access logs are reviewed weekly; Notes state the review of access logs has not started."
+  ],
+  "conditions_targeted": [
+    "sufficiency"
+  ],
+  "features": [
+    "conflicting_sources"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

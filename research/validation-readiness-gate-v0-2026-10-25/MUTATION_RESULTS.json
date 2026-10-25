@@ -1,0 +1,814 @@
+{
+  "results_format": "jrs-v0-mutation-results/1.0.0",
+  "date": "2026-10-25T08:56:06.801Z",
+  "target": "tools/controls.mjs",
+  "statement": "Mutations against the Gate V0 validation controls. A mutation is detected only when its named direct probe fails. Detection shows the probes catch these faults; it does not show the absence of other faults.",
+  "baseline": {
+    "probes": 60,
+    "passing": 60,
+    "failures": []
+  },
+  "totals": {
+    "mutations": 50,
+    "applied": 50,
+    "detected": 50,
+    "survivors": []
+  },
+  "network_attempts": 0,
+  "mutations": [
+    {
+      "id": "M01",
+      "description": "Remove the graph-hash check from the provenance pair",
+      "target_probe": "P-PAIR-GRAPH",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-PAIR-GRAPH"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M02",
+      "description": "Permit a graph-hash mismatch (compare the hash with itself)",
+      "target_probe": "P-PAIR-GRAPH",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-PAIR-GRAPH"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M03",
+      "description": "Remove the captured-response hash check",
+      "target_probe": "P-PAIR-RESP",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-PAIR-RESP"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M04",
+      "description": "Remove the binding-digest comparison",
+      "target_probe": "P-PAIR-DIGEST",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-PAIR-DIGEST"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M05",
+      "description": "Swallow an invalid binding field",
+      "target_probe": "P-PAIR-BINDFIELD",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-PAIR-BINDFIELD"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M06",
+      "description": "Permit an incorrect model identity in the execution record",
+      "target_probe": "P-MODEL-REC",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-MODEL-REC"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M07",
+      "description": "Permit an incorrect model identity in the captured envelope",
+      "target_probe": "P-MODEL-ENV",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-MODEL-ENV"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M08",
+      "description": "Compare the record model with itself",
+      "target_probe": "P-MODEL-REC",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-MODEL-REC"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M09",
+      "description": "Accept altered expected results",
+      "target_probe": "P-EXP-ALTERED",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-EXP-ALTERED"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M10",
+      "description": "Accept an expectation for another case",
+      "target_probe": "P-EXP-CASEID",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-EXP-CASEID"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M11",
+      "description": "Allow an unsealed corpus",
+      "target_probe": "P-SEAL-MISSING",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-SEAL-MISSING"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M12",
+      "description": "Allow post-seal modification",
+      "target_probe": "P-SEAL-MODIFIED",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-SEAL-MODIFIED"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M13",
+      "description": "Allow an unsealed file to be added",
+      "target_probe": "P-SEAL-ADDED",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-SEAL-ADDED"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M14",
+      "description": "Ignore a seal-manifest hash mismatch",
+      "target_probe": "P-SEAL-MANIFEST",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-SEAL-MANIFEST"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M15",
+      "description": "Allow a seal without a timestamp",
+      "target_probe": "P-SEAL-TIMESTAMP",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-SEAL-TIMESTAMP"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M16",
+      "description": "Allow missing Layer 1 facts",
+      "target_probe": "P-L1-FACTS",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-L1-FACTS"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M17",
+      "description": "Allow Layer 1 not declared synthetic",
+      "target_probe": "P-L1-SYNTH",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-L1-SYNTH"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M18",
+      "description": "Allow an ambiguous quotation to be selected",
+      "target_probe": "P-AMB-SELECT",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-AMB-SELECT"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M19",
+      "description": "Allow an ambiguous quotation without candidate locations",
+      "target_probe": "P-AMB-LOCATIONS",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-AMB-LOCATIONS"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M20",
+      "description": "Permit an unsupported status increase to supported",
+      "target_probe": "P-MONO-RAISE",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-MONO-RAISE"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M21",
+      "description": "Permit a status change to gap",
+      "target_probe": "P-MONO-GAP",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-MONO-GAP"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M22",
+      "description": "Permit sufficiency to be supported",
+      "target_probe": "P-MONO-SUFF",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-MONO-SUFF"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M23",
+      "description": "Remove the status-rank check",
+      "target_probe": "P-MONO-RANK",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-MONO-RANK"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M24",
+      "description": "Permit a status with no candidate proposal",
+      "target_probe": "P-MONO-NOPROP",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-MONO-NOPROP"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M25",
+      "description": "Suppress a required finding route to human review",
+      "target_probe": "P-ROUTE-FIND",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-ROUTE-FIND"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M26",
+      "description": "Accept a missing human-review route",
+      "target_probe": "P-ROUTE-MISSING",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-ROUTE-MISSING"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M27",
+      "description": "Suppress conflict routing",
+      "target_probe": "P-ROUTE-CONF",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-ROUTE-CONF"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M28",
+      "description": "Conceal an execution error as a normal result",
+      "target_probe": "P-ERR-GUARD",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-ERR-GUARD"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M29",
+      "description": "Stop counting execution errors as failures",
+      "target_probe": "P-ERR-COUNT",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-ERR-COUNT"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M30",
+      "description": "Permit a network-related configuration key",
+      "target_probe": "P-NET-KEY",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-NET-KEY"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M31",
+      "description": "Permit a network URL in configuration",
+      "target_probe": "P-NET-VALUE",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-NET-VALUE"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M32",
+      "description": "Permit forbidden provider environment variables",
+      "target_probe": "P-NET-ENV",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-NET-ENV"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M33",
+      "description": "Ignore network attempts",
+      "target_probe": "P-NET-ATTEMPTS",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-NET-ATTEMPTS"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M34",
+      "description": "Permit forbidden validation or release language",
+      "target_probe": "P-LANG",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-LANG",
+        "P-LANG-RELEASE"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M35",
+      "description": "Treat every mention as negated",
+      "target_probe": "P-LANG",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-LANG",
+        "P-LANG-RELEASE"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M36",
+      "description": "Drop \"ready for release\" from the forbidden terms",
+      "target_probe": "P-LANG-RELEASE",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-LANG-RELEASE"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M37",
+      "description": "Remove the span-text offset check",
+      "target_probe": "P-OFF-SPAN",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-OFF-SPAN"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M38",
+      "description": "Remove the evidence offset check",
+      "target_probe": "P-OFF-EV",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-OFF-EV"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M39",
+      "description": "Remove the assertion-to-evidence linkage check",
+      "target_probe": "P-LINK-ASSERT",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-LINK-ASSERT"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M40",
+      "description": "Permit a favourable finding without an assertion",
+      "target_probe": "P-LINK-FAV",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-LINK-FAV"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M41",
+      "description": "Ignore recorded provider or network calls",
+      "target_probe": "P-ID-CALLS",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-ID-CALLS"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M42",
+      "description": "Ignore an unexpected execution mode",
+      "target_probe": "P-ID-MODE",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-ID-MODE"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M43",
+      "description": "Ignore live provenance labels",
+      "target_probe": "P-ID-LABELS",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-ID-LABELS"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M44",
+      "description": "Permit an unlowered chronology conflict",
+      "target_probe": "P-CHRONO",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-CHRONO"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M45",
+      "description": "Discard graph-validity problems",
+      "target_probe": "P-GV",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-GV"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M46",
+      "description": "Stop comparing statuses with the sealed expectation",
+      "target_probe": "P-CMP-STATUS",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-CMP-STATUS"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M47",
+      "description": "Stop comparing conflict kinds",
+      "target_probe": "P-CMP-CONFLICT",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-CMP-CONFLICT"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M48",
+      "description": "Stop comparing refusal codes",
+      "target_probe": "P-CMP-REFUSAL",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-CMP-REFUSAL"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M49",
+      "description": "Stop comparing quotation statuses",
+      "target_probe": "P-CMP-QUOTE",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-CMP-QUOTE"
+      ],
+      "load_error": null
+    },
+    {
+      "id": "M50",
+      "description": "Accept any adapter outcome",
+      "target_probe": "P-CMP-ADAPTER",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "P-CMP-ADAPTER"
+      ],
+      "load_error": null
+    }
+  ],
+  "probes": [
+    {
+      "id": "P-SEAL-GOOD",
+      "control": "VC-01"
+    },
+    {
+      "id": "P-SEAL-MISSING",
+      "control": "VC-01"
+    },
+    {
+      "id": "P-SEAL-MODIFIED",
+      "control": "VC-01"
+    },
+    {
+      "id": "P-SEAL-ADDED",
+      "control": "VC-01"
+    },
+    {
+      "id": "P-SEAL-MANIFEST",
+      "control": "VC-01"
+    },
+    {
+      "id": "P-SEAL-TIMESTAMP",
+      "control": "VC-01"
+    },
+    {
+      "id": "P-L1-GOOD",
+      "control": "VC-02"
+    },
+    {
+      "id": "P-L1-FACTS",
+      "control": "VC-02"
+    },
+    {
+      "id": "P-L1-SYNTH",
+      "control": "VC-02"
+    },
+    {
+      "id": "P-EXP-GOOD",
+      "control": "VC-03"
+    },
+    {
+      "id": "P-EXP-ALTERED",
+      "control": "VC-03"
+    },
+    {
+      "id": "P-EXP-CASEID",
+      "control": "VC-03"
+    },
+    {
+      "id": "P-PAIR-GOOD",
+      "control": "VC-04"
+    },
+    {
+      "id": "P-PAIR-GRAPH",
+      "control": "VC-04"
+    },
+    {
+      "id": "P-PAIR-RESP",
+      "control": "VC-04"
+    },
+    {
+      "id": "P-PAIR-DIGEST",
+      "control": "VC-04"
+    },
+    {
+      "id": "P-PAIR-BINDFIELD",
+      "control": "VC-04"
+    },
+    {
+      "id": "P-MODEL-GOOD",
+      "control": "VC-05"
+    },
+    {
+      "id": "P-MODEL-REC",
+      "control": "VC-05"
+    },
+    {
+      "id": "P-MODEL-ENV",
+      "control": "VC-05"
+    },
+    {
+      "id": "P-ID-GOOD",
+      "control": "VC-06"
+    },
+    {
+      "id": "P-ID-CALLS",
+      "control": "VC-06"
+    },
+    {
+      "id": "P-ID-MODE",
+      "control": "VC-06"
+    },
+    {
+      "id": "P-ID-LABELS",
+      "control": "VC-06"
+    },
+    {
+      "id": "P-OFF-GOOD",
+      "control": "VC-07"
+    },
+    {
+      "id": "P-OFF-SPAN",
+      "control": "VC-07"
+    },
+    {
+      "id": "P-OFF-EV",
+      "control": "VC-07"
+    },
+    {
+      "id": "P-LINK-GOOD",
+      "control": "VC-08"
+    },
+    {
+      "id": "P-LINK-ASSERT",
+      "control": "VC-08"
+    },
+    {
+      "id": "P-LINK-FAV",
+      "control": "VC-08"
+    },
+    {
+      "id": "P-AMB-SELECT",
+      "control": "VC-09"
+    },
+    {
+      "id": "P-AMB-LOCATIONS",
+      "control": "VC-09"
+    },
+    {
+      "id": "P-MONO-GOOD",
+      "control": "VC-10"
+    },
+    {
+      "id": "P-MONO-RAISE",
+      "control": "VC-10"
+    },
+    {
+      "id": "P-MONO-GAP",
+      "control": "VC-10"
+    },
+    {
+      "id": "P-MONO-SUFF",
+      "control": "VC-10"
+    },
+    {
+      "id": "P-MONO-RANK",
+      "control": "VC-10"
+    },
+    {
+      "id": "P-MONO-NOPROP",
+      "control": "VC-10"
+    },
+    {
+      "id": "P-ROUTE-GOOD",
+      "control": "VC-11"
+    },
+    {
+      "id": "P-ROUTE-MISSING",
+      "control": "VC-11"
+    },
+    {
+      "id": "P-ROUTE-FIND",
+      "control": "VC-11"
+    },
+    {
+      "id": "P-ROUTE-CONF",
+      "control": "VC-11"
+    },
+    {
+      "id": "P-CHRONO",
+      "control": "VC-12"
+    },
+    {
+      "id": "P-GV",
+      "control": "VC-13"
+    },
+    {
+      "id": "P-CMP-GOOD",
+      "control": "VC-14"
+    },
+    {
+      "id": "P-CMP-STATUS",
+      "control": "VC-14"
+    },
+    {
+      "id": "P-CMP-CONFLICT",
+      "control": "VC-14"
+    },
+    {
+      "id": "P-CMP-REFUSAL",
+      "control": "VC-14"
+    },
+    {
+      "id": "P-CMP-QUOTE",
+      "control": "VC-14"
+    },
+    {
+      "id": "P-CMP-ADAPTER",
+      "control": "VC-14"
+    },
+    {
+      "id": "P-ERR-GUARD",
+      "control": "VC-15"
+    },
+    {
+      "id": "P-ERR-COUNT",
+      "control": "VC-15"
+    },
+    {
+      "id": "P-NET-GOOD",
+      "control": "VC-16"
+    },
+    {
+      "id": "P-NET-ENV",
+      "control": "VC-16"
+    },
+    {
+      "id": "P-NET-KEY",
+      "control": "VC-16"
+    },
+    {
+      "id": "P-NET-VALUE",
+      "control": "VC-16"
+    },
+    {
+      "id": "P-NET-ATTEMPTS",
+      "control": "VC-16"
+    },
+    {
+      "id": "P-LANG-GOOD",
+      "control": "VC-17"
+    },
+    {
+      "id": "P-LANG",
+      "control": "VC-17"
+    },
+    {
+      "id": "P-LANG-RELEASE",
+      "control": "VC-17"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "record_sha256": "62b989342426d2bc545a45571e8975386f8284adcb0d0230b972ce350483597c",
+  "record_length": 778,
+  "case_id": "EV-03",
+  "layer": 1,
+  "title": "Benign complete record, parameter set 103",
+  "group": "protected_evaluation",
+  "parameter_set": "103",
+  "facts": [
+    "All nine standard sections are present.",
+    "Request dated 2026-05-04; assessment 2026-05-06 stated inside the basis section; authority dated 2026-05-11; expiry 2026-08-31.",
+    "Dates are in workflow order.",
+    "The authority names minutes ERB-2026-15, item 4.",
+    "Two compensating controls are stated.",
+    "No excluded-domain, placeholder, instruction or certainty language."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "benign_should_not_degrade"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

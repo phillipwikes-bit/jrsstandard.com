@@ -1,0 +1,37 @@
+{
+  "record_format": "jrs-live-pilot-execution-record/0.1.0",
+  "run_id": "v0-run-2-EV-32",
+  "request_id": "REQ-EV-32",
+  "synthetic_record_id": "EV-32",
+  "input_sha256": "ac49738e49f977c6a0224f43901d8f2460a30b8bbd2e43e7079753ca3cab0dcb",
+  "engine_version": "0.3.1-candidate",
+  "candidate_package_sha256": "815c5d5671d0cfcaf62edca0a11938b920e37d058d3e8655ae9e4f9c735925c3",
+  "prompt_sha256": "0ceda8887463a515d241751133c9b0d3bf3364f89b63fa6ac5dda6ac70c8eec2",
+  "adapter_version": "0.2.0-offline",
+  "adapter_sha256": "aa2b97797a9ed2d9476e901f2a54e10b3c7f898af6a9df8b473ac27482d81fb6",
+  "model_identifier": "MOCK-MODEL-NOT-A-PROVIDER",
+  "configuration": {
+    "temperature": 0,
+    "max_output_tokens": 4096,
+    "timeout_ms": 200,
+    "note": "offline mock configuration"
+  },
+  "sent_at_utc": "2026-10-25T08:51:24.487Z",
+  "captured_at_utc": "2026-10-25T08:51:24.487Z",
+  "replayed_at_utc": "2026-10-25T08:51:24.500Z",
+  "captured_response_file": "/home/user/jrsstandard.com/research/validation-readiness-gate-v0-2026-10-25/out/run-2/EV-32/REQ-EV-32.response.json",
+  "captured_response_sha256": "5b5a4be641f555a8e8ab9160dff5202762243ebc03e90729fcc296702d361e9b",
+  "validation": {
+    "ok": true
+  },
+  "graph_file": "/home/user/jrsstandard.com/research/validation-readiness-gate-v0-2026-10-25/out/run-2/EV-32/REQ-EV-32.graph.json",
+  "graph_sha256": "d73a85142bd9c24e5dc9ecba94e6f7a001395d44eff0ad5179eaf4e527991f3c",
+  "lineage": "L3",
+  "response_origin": "mock_transport_fixture",
+  "adapter_transport_mode": "mocked",
+  "engine_execution_mode": "recorded_response_replay",
+  "graph_execution_mode_label": "local_mocked",
+  "authorization_file_sha256": null,
+  "authorization_note": "offline harness test; no live-run authorization exists",
+  "binding_digest": "b12e396550170d3184f1d2059412483cfff48d8c5a28c460b0f7bb8df82b246a"
+}

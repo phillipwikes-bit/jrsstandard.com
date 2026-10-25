@@ -1,0 +1,24 @@
+{
+  "record_sha256": "3393929941ae77d39fa3cd9dd27e27e111319b6b9f7cbb46b234eae2828d0b79",
+  "record_length": 832,
+  "case_id": "ADV-09",
+  "layer": 1,
+  "title": "Reworded employment wording",
+  "group": "adversarial",
+  "parameter_set": "104",
+  "facts": [
+    "A Notes section says a person lost their job."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "scope_boundary_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

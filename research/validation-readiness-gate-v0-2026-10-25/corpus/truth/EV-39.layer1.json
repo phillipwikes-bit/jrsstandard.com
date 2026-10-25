@@ -1,0 +1,25 @@
+{
+  "record_sha256": "d278c8bccbdfafdf4be75f323cb1b4f5cec85e7b6569925a7a99f4ee91a68f8d",
+  "record_length": 769,
+  "case_id": "EV-39",
+  "layer": 1,
+  "title": "Placeholder text in expiry",
+  "group": "protected_evaluation",
+  "parameter_set": "101",
+  "facts": [
+    "The expiry contains the placeholder \"[TBD]\"."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "scope_boundary_trigger",
+    "incomplete_evidence_chain"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

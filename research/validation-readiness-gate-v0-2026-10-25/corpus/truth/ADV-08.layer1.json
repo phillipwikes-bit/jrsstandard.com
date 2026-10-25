@@ -1,0 +1,24 @@
+{
+  "record_sha256": "62b989342426d2bc545a45571e8975386f8284adcb0d0230b972ce350483597c",
+  "record_length": 778,
+  "case_id": "ADV-08",
+  "layer": 1,
+  "title": "Duplicate observation identifiers",
+  "group": "adversarial",
+  "parameter_set": "103",
+  "facts": [
+    "Two observations share identifier O1."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "malformed_response"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

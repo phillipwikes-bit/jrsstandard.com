@@ -1,0 +1,21 @@
+{
+  "record_sha256": "9dc640111212a2f91ca0bdb4d4e8e4b380cdf52e46ce8dce9094e6a2b99357c9",
+  "record_length": 828,
+  "case_id": "EV-28",
+  "layer": 1,
+  "title": "Authority stated as given and as pending",
+  "group": "protected_evaluation",
+  "parameter_set": "105",
+  "facts": [
+    "The Authority section states approval; a Notes section states board sign-off is pending."
+  ],
+  "conditions_targeted": [
+    "identifiable_basis",
+    "reasoning_traceability"
+  ],
+  "features": [
+    "conflicting_sources"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

@@ -1,0 +1,20 @@
+{
+  "record_sha256": "ac49738e49f977c6a0224f43901d8f2460a30b8bbd2e43e7079753ca3cab0dcb",
+  "record_length": 773,
+  "case_id": "ADV-14",
+  "layer": 1,
+  "title": "Inconsistent statuses for one condition",
+  "group": "adversarial",
+  "parameter_set": "104",
+  "facts": [
+    "Candidate proposes both supported and gap for chronology."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity"
+  ],
+  "features": [
+    "review_routing_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

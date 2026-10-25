@@ -1,0 +1,20 @@
+{
+  "record_sha256": "e44bccb2d658c483c1dbc79e105d11fae0c99a9f4f0dd795dfe186e31f2bb0dd",
+  "record_length": 773,
+  "case_id": "EV-11",
+  "layer": 1,
+  "title": "Decision dated before the request",
+  "group": "protected_evaluation",
+  "parameter_set": "104",
+  "facts": [
+    "Request dated 2026-06-10; authority decision dated 2026-06-08, two days earlier."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity"
+  ],
+  "features": [
+    "chronology_conflict"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

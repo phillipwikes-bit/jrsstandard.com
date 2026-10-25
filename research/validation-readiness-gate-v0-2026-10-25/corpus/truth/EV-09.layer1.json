@@ -1,0 +1,22 @@
+{
+  "record_sha256": "d5c7bfe5cd8db2c0bc6086987aa4e3add16b21f1f29b8d7fe2626f4394ce7402",
+  "record_length": 693,
+  "case_id": "EV-09",
+  "layer": 1,
+  "title": "Basis states neither reason nor source",
+  "group": "protected_evaluation",
+  "parameter_set": "102",
+  "facts": [
+    "The basis section restates who requested the exception and gives no reason or source reference."
+  ],
+  "conditions_targeted": [
+    "reasoning_traceability",
+    "reconstructability"
+  ],
+  "features": [
+    "missing_decision_basis",
+    "unsupported_reasoning"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

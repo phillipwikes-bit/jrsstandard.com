@@ -1,0 +1,24 @@
+{
+  "record_sha256": "a1fefb96652f5c40418580627080fdbbcd2be5ebbe57d8787b189823f930f9c5",
+  "record_length": 849,
+  "case_id": "EV-37",
+  "layer": 1,
+  "title": "Excluded domain: employment wording",
+  "group": "protected_evaluation",
+  "parameter_set": "104",
+  "facts": [
+    "A Notes section states a person was dismissed."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "scope_boundary_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

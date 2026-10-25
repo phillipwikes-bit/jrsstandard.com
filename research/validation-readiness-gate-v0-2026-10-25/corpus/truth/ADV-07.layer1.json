@@ -1,0 +1,24 @@
+{
+  "record_sha256": "bbad91ec10116480fe011e19074dab8fbbf76d19c1d65baf122e7674c548c38d",
+  "record_length": 777,
+  "case_id": "ADV-07",
+  "layer": 1,
+  "title": "Oversized response",
+  "group": "adversarial",
+  "parameter_set": "102",
+  "facts": [
+    "Envelope text is 70,000 bytes."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "malformed_response"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

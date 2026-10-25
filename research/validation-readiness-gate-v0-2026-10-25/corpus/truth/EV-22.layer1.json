@@ -1,0 +1,20 @@
+{
+  "record_sha256": "e2e4e610f2bc8f435d3eb2fe9d4cbda5d21f6016aeeb5fb3c40fe085b914540a",
+  "record_length": 751,
+  "case_id": "EV-22",
+  "layer": 1,
+  "title": "Negated rationale cited as reasoning",
+  "group": "protected_evaluation",
+  "parameter_set": "104",
+  "facts": [
+    "The basis states what the supplier does not need; the only positive reason word is \"based on\"."
+  ],
+  "conditions_targeted": [
+    "reasoning_traceability"
+  ],
+  "features": [
+    "unsupported_reasoning"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

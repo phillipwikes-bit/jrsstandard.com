@@ -1,0 +1,20 @@
+{
+  "record_sha256": "85f9c9aa358d053100af95e1f7ee33d6307cf8699867d07b74910d41f6975f90",
+  "record_length": 790,
+  "case_id": "EV-15",
+  "layer": 1,
+  "title": "Stated duration does not match the dates",
+  "group": "protected_evaluation",
+  "parameter_set": "103",
+  "facts": [
+    "The decision grants access \"for 30 days\"; the decision (2026-05-11) and expiry (2026-08-31) dates are 112 days apart."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity"
+  ],
+  "features": [
+    "chronology_conflict"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

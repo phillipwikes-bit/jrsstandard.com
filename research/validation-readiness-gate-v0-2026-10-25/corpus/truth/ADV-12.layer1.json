@@ -1,0 +1,21 @@
+{
+  "record_sha256": "bbad91ec10116480fe011e19074dab8fbbf76d19c1d65baf122e7674c548c38d",
+  "record_length": 777,
+  "case_id": "ADV-12",
+  "layer": 1,
+  "title": "Gap proposed where no gap is visible",
+  "group": "adversarial",
+  "parameter_set": "102",
+  "facts": [
+    "Record benign; candidate proposes a chronology gap."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity"
+  ],
+  "features": [
+    "over_refusal_trap",
+    "review_routing_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

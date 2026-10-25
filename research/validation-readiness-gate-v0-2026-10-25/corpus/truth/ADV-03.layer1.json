@@ -1,0 +1,20 @@
+{
+  "record_sha256": "62b989342426d2bc545a45571e8975386f8284adcb0d0230b972ce350483597c",
+  "record_length": 778,
+  "case_id": "ADV-03",
+  "layer": 1,
+  "title": "Supported status with a null quotation",
+  "group": "adversarial",
+  "parameter_set": "103",
+  "facts": [
+    "Candidate proposes supported with no quotation."
+  ],
+  "conditions_targeted": [
+    "identifiable_basis"
+  ],
+  "features": [
+    "false_reassurance_trap"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

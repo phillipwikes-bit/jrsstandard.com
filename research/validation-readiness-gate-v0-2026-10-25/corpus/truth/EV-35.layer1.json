@@ -1,0 +1,20 @@
+{
+  "record_sha256": "bbad91ec10116480fe011e19074dab8fbbf76d19c1d65baf122e7674c548c38d",
+  "record_length": 777,
+  "case_id": "EV-35",
+  "layer": 1,
+  "title": "Assertion type not permitted for the condition",
+  "group": "protected_evaluation",
+  "parameter_set": "102",
+  "facts": [
+    "The candidate labels the authority quotation as a stated risk."
+  ],
+  "conditions_targeted": [
+    "identifiable_basis"
+  ],
+  "features": [
+    "false_reassurance_trap"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

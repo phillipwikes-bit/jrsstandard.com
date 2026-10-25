@@ -1,0 +1,24 @@
+{
+  "record_sha256": "73edd62175221bcae41e18d040703937ac1b48f50a777bb9814bd606a6de0e05",
+  "record_length": 766,
+  "case_id": "ADV-05",
+  "layer": 1,
+  "title": "Empty response text",
+  "group": "adversarial",
+  "parameter_set": "105",
+  "facts": [
+    "Envelope text is empty."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "malformed_response"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

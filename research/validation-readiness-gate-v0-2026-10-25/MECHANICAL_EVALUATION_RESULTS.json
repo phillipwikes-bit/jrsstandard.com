@@ -1,0 +1,1469 @@
+{
+  "results_format": "jrs-v0-mechanical-evaluation-summary/1.0.0",
+  "date": "2026-10-25",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "statement": "Offline mechanical evaluation against owner-authored expectations. Not validation; establishes no accuracy or reliability.",
+  "primary_run": "out/run-1/RESULTS.json",
+  "repeat_run": "out/run-2/RESULTS.json",
+  "system_under_test": {
+    "compiler_version": "0.3.1-candidate",
+    "candidate_package_sha256": "815c5d5671d0cfcaf62edca0a11938b920e37d058d3e8655ae9e4f9c735925c3",
+    "prompt_sha256": "0ceda8887463a515d241751133c9b0d3bf3364f89b63fa6ac5dda6ac70c8eec2",
+    "adapter_version": "0.2.0-offline",
+    "adapter_sha256": "aa2b97797a9ed2d9476e901f2a54e10b3c7f898af6a9df8b473ac27482d81fb6",
+    "model_identifier": "MOCK-MODEL-NOT-A-PROVIDER",
+    "transport": "mock",
+    "candidate_files_verified": 19,
+    "node_version": "v22.22.0"
+  },
+  "seal": {
+    "sealed_at_utc": "2026-10-25T08:45:46.600Z",
+    "manifest_sha256": "1103d11d8a37407d3380b8edc3d8ca018345e5c74ccb5955933d0a60b97edfe6",
+    "verified": true
+  },
+  "network": {
+    "attempts": 0,
+    "problems": []
+  },
+  "summary_run_1": {
+    "cases": 60,
+    "replayed": 52,
+    "rejected_pre_replay": 8,
+    "errors": 0,
+    "mechanical_check_failures": 0,
+    "cases_with_mechanical_failures": [],
+    "setup_problems": 0,
+    "expectation_matches": 60,
+    "cases_differing_from_expectation": [],
+    "metamorphic_relations": 6,
+    "metamorphic_holding": 6,
+    "network_attempts": 0,
+    "isolated_copy_unchanged": true,
+    "isolated_copy_deleted": true
+  },
+  "summary_run_2": {
+    "cases": 60,
+    "replayed": 52,
+    "rejected_pre_replay": 8,
+    "errors": 0,
+    "mechanical_check_failures": 0,
+    "cases_with_mechanical_failures": [],
+    "setup_problems": 0,
+    "expectation_matches": 60,
+    "cases_differing_from_expectation": [],
+    "metamorphic_relations": 6,
+    "metamorphic_holding": 6,
+    "network_attempts": 0,
+    "isolated_copy_unchanged": true,
+    "isolated_copy_deleted": true
+  },
+  "determinism": {
+    "cases": 60,
+    "identical_under_criterion": 60,
+    "determinism_failures": [],
+    "replayed_cases_with_raw_graph_byte_differences": 52,
+    "raw_difference_explanation": "Timestamp-driven: the adapter passes capture time as the compiler clock; run_id, run_timestamp and identity.graph_sha256 carry it. Normalized digests are compared instead, as pre-specified."
+  },
+  "metamorphic": [
+    {
+      "case_id": "ADV-15",
+      "source": "EV-01",
+      "holds": true
+    },
+    {
+      "case_id": "ADV-16",
+      "source": "EV-01",
+      "holds": true
+    },
+    {
+      "case_id": "ADV-17",
+      "source": "EV-01",
+      "holds": true
+    },
+    {
+      "case_id": "ADV-18",
+      "source": "EV-01",
+      "holds": true
+    },
+    {
+      "case_id": "ADV-19",
+      "source": "EV-19",
+      "holds": true
+    },
+    {
+      "case_id": "ADV-20",
+      "source": "EV-01",
+      "holds": true
+    }
+  ],
+  "claim_categories": {
+    "mechanically_established": "Checks VC-04 to VC-13 and VC-15 passed on every replayed case, and the rejection checks passed on every rejected case. These are properties of this Engine build on this corpus only.",
+    "owner_authored_expectation": "60 of 60 cases matched the sealed expectation. The expectations were written by the same side as the corpus, so this measures conformance to the owner's reading of the rules, not accuracy.",
+    "unresolved_semantic_question": [
+      "EV-08",
+      "EV-23",
+      "EV-32",
+      "EV-33",
+      "EV-38"
+    ],
+    "not_assessed": [
+      "ADV-01: all five conditions (no replay)",
+      "ADV-02: all five conditions (no replay)",
+      "ADV-03: all five conditions (no replay)",
+      "ADV-04: all five conditions (no replay)",
+      "ADV-05: all five conditions (no replay)",
+      "ADV-06: all five conditions (no replay)",
+      "ADV-07: all five conditions (no replay)",
+      "ADV-08: all five conditions (no replay)",
+      "ADV-09: reconstructability, identifiable_basis, chronology_integrity, reasoning_traceability, sufficiency",
+      "ADV-10: reconstructability, identifiable_basis, chronology_integrity, reasoning_traceability, sufficiency",
+      "ADV-13: sufficiency",
+      "EV-37: reconstructability, identifiable_basis, chronology_integrity, reasoning_traceability, sufficiency",
+      "EV-38: reconstructability, identifiable_basis, chronology_integrity, reasoning_traceability, sufficiency",
+      "EV-39: reconstructability, identifiable_basis, chronology_integrity, reasoning_traceability, sufficiency"
+    ],
+    "not_suitable_for_a_claim": [
+      "diagnostic accuracy",
+      "model behaviour",
+      "reliability",
+      "real-world performance",
+      "independent validation",
+      "production or release suitability"
+    ]
+  },
+  "cases": [
+    {
+      "case_id": "ADV-01",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V8",
+        "code": "candidate_supplied_untrusted_field"
+      },
+      "statuses": null,
+      "conflict_kinds": null,
+      "refusal_codes": null,
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "22283e3295deb2264b9174ab811f537b6dcc8dc645f877ce088e57b89c3ba2fa"
+    },
+    {
+      "case_id": "ADV-02",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V7",
+        "code": "content_outside_json_object"
+      },
+      "statuses": null,
+      "conflict_kinds": null,
+      "refusal_codes": null,
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "d8f06b252933b4f656498682b2b32222b54e3148364f8d157a43acc8ac2c5726"
+    },
+    {
+      "case_id": "ADV-03",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V9",
+        "code": "quote_null_requires_not_assessed"
+      },
+      "statuses": null,
+      "conflict_kinds": null,
+      "refusal_codes": null,
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "d8024f018f9d7844710a86d33ad252c782d4f079353c6358d2c9de5174df62c8"
+    },
+    {
+      "case_id": "ADV-04",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V3",
+        "code": "response_truncated"
+      },
+      "statuses": null,
+      "conflict_kinds": null,
+      "refusal_codes": null,
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "0547151564b643447ffc75c588e09fb534168ac3b4c9cf263d6888d35bb130bb"
+    },
+    {
+      "case_id": "ADV-05",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V6",
+        "code": "model_refusal"
+      },
+      "statuses": null,
+      "conflict_kinds": null,
+      "refusal_codes": null,
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "0df6343424b3cba29fe6c0ac8d09c34b0e9437a5696bb0aae3335e1a39907cee"
+    },
+    {
+      "case_id": "ADV-06",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "code": "provider_error"
+      },
+      "statuses": null,
+      "conflict_kinds": null,
+      "refusal_codes": null,
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "e8f6378596acf8088ad9e7efcba8768bf1b4e966a99f08e96f31b7f85b72ab7c"
+    },
+    {
+      "case_id": "ADV-07",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V5",
+        "code": "response_too_large"
+      },
+      "statuses": null,
+      "conflict_kinds": null,
+      "refusal_codes": null,
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "3f8a3ef746a4b05fd220c2dc13b9b4e32d4f79f146789cbbe1dd63b48d2b2a57"
+    },
+    {
+      "case_id": "ADV-08",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V8",
+        "code": "observation_id_invalid_or_duplicate"
+      },
+      "statuses": null,
+      "conflict_kinds": null,
+      "refusal_codes": null,
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "7d3ba6fae4a405e480a6b7b54b4ebe912655288f8bd17ccaa4afe953f795ebd4"
+    },
+    {
+      "case_id": "ADV-09",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "excluded_domain_content"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "3ec36a9c79a64ea6d8591dda6c913dde460a51524ac5e209c33fcef0788f639f"
+    },
+    {
+      "case_id": "ADV-10",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "record_exceeds_local_size_limit"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "7448a5f6375e89eb9d4afe0ae4abc9939dc259e5ade4a9e85f3a0fc1130716ab"
+    },
+    {
+      "case_id": "ADV-11",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "quote_malformed"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "046f0796dfe8a62484acc58ecfe6309e652c8e89a9da0e362a50362dd7f83e05"
+    },
+    {
+      "case_id": "ADV-12",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "6ae338d500d18e70cee96d10eec5e0e0d9719efcdc103e55144a100545db3436"
+    },
+    {
+      "case_id": "ADV-13",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "not_assessed"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "candidate_did_not_assess"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "ae2cbbd03a8cb9ba168d751cde0aec96d2a1b170d42ea749731c3e78b547eb4c"
+    },
+    {
+      "case_id": "ADV-14",
+      "group": "adversarial",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "d51ced8668e1be507249d7f7570bd60b1e913508cf9d36671429905f87750391"
+    },
+    {
+      "case_id": "ADV-15",
+      "group": "metamorphic",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "6d1b3aa693362ce8efd65617ce8cf5bd6d3990226ae60d9524f2bb7144df5c5c"
+    },
+    {
+      "case_id": "ADV-16",
+      "group": "metamorphic",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "f4a517baa8b6e9e69698564cee96ce95eaa2bf0323d8972c432a45942f33e69d"
+    },
+    {
+      "case_id": "ADV-17",
+      "group": "metamorphic",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "fc4d378113d489ceb8150a94d81943fd7162aee71dbc9430fd2328c7b7a7be56"
+    },
+    {
+      "case_id": "ADV-18",
+      "group": "metamorphic",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "448fa7fce413956690b8577803ca0cc558bf7596d59280a3dd988579e8430d5a"
+    },
+    {
+      "case_id": "ADV-19",
+      "group": "metamorphic",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "c4a82b914273d66c0910ef638bb5e31dfcd38bfcd2be7b0e88468340c7a8ae89"
+    },
+    {
+      "case_id": "ADV-20",
+      "group": "metamorphic",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "4f12d54c3cc1ccdc2f248df41589e8c466d75eee4cb00e5e16975529b51c4c53"
+    },
+    {
+      "case_id": "EV-01",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "80b111528de28da685648c621a7f9260fdf704ff6f4cad04adf1841e9235fbb4"
+    },
+    {
+      "case_id": "EV-02",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "fc2bbd5b7a40ae551d73586c5e1945c6559c54add4dc2dd8ebfdf1adb325a909"
+    },
+    {
+      "case_id": "EV-03",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "85a8234a03c880719bb33fd7054256c3543b89bd3ffc0f1de6132fc5364d8bba"
+    },
+    {
+      "case_id": "EV-04",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "69883f85fe3b6b8264a1b7fc76a5edcf9e8b088a24e0831fa84e5b5021068124"
+    },
+    {
+      "case_id": "EV-05",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "552daaf8c0ce57572ec5e0118874e8be54c75c4a8dba65f588c6114cf67d092b"
+    },
+    {
+      "case_id": "EV-06",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "48ed13da0b668ee891035e9c8afb73c03229c2b5787caabac14592d2deade3ea"
+    },
+    {
+      "case_id": "EV-07",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "9f225e9caedb5dc3e396fede14d5cd7b5d358fb049240528fed774977ab013d9"
+    },
+    {
+      "case_id": "EV-08",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [
+        "Identifiable basis is supported from an identified authority alone, with no basis section; whether an authority reference alone is an identifiable basis is a semantic question for adjudication."
+      ],
+      "case_digest": "9e7bbad57f4f3f9e3ec17a015dadcdd88f9d74d7f73e20e85d78fbb5219a93bf"
+    },
+    {
+      "case_id": "EV-09",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "assertion_rejected"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "d6e97621cade69b626ce2eef0c04e30e533eda3819abd62d829b0f760e781ed7"
+    },
+    {
+      "case_id": "EV-10",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "4b294afae062b1925d9b8b0e67c413ee0aa7576439d820c12d8060c523d7fbaf"
+    },
+    {
+      "case_id": "EV-11",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "impossible_sequence"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "aba14a41f53be19b5ab0c6f46191fb95f0f03ad0b3ff5197fc097f1f2241ab87"
+    },
+    {
+      "case_id": "EV-12",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "decision_date_conflict"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "8415a5cdb15a57febe96949c11728848747cab217087733805aee82d09a6eb44"
+    },
+    {
+      "case_id": "EV-13",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "assessment_after_decision"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "f418fb94fbb1246ef648826a85b293ba2c3eb204ef77a307add54294fd37f1fc"
+    },
+    {
+      "case_id": "EV-14",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "expiry_date_conflict"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "15d1a0a24c3121434d7cdd573d4defe92b93bda6a55b2094d666cc6d02943530"
+    },
+    {
+      "case_id": "EV-15",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "duration_date_conflict"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "79c16f87dab226b582ac01c94044ae843b5b3a3daea5dce2f251acefc167fb1b"
+    },
+    {
+      "case_id": "EV-16",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "9f388c7f9319918001cdf8746c8e872781946f295b4c761aa92f5834a891a03b"
+    },
+    {
+      "case_id": "EV-17",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "assertion_rejected"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "13c44a68fee79cf88dcdcf953f61fc61b6b35669b3c425a778d57603fabd3465"
+    },
+    {
+      "case_id": "EV-18",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "quote_ambiguous"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "95b4cefcc009c19ad7f0ca02f4990541d8859b2f2bebdfe3dfd4022964119c55"
+    },
+    {
+      "case_id": "EV-19",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "23ba74479c80c4ebdae6ee5823cd2fe03cc537e03cfca8db7edf47d1f8e19300"
+    },
+    {
+      "case_id": "EV-20",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "quote_absent"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "ad032ae3c6d0e817a7765626c780534a69afa20e1869aac26fa936b8d759d49a"
+    },
+    {
+      "case_id": "EV-21",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "quote_malformed"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "5a3d0728b3572660b7bda9be226facbbf5307f07c57fd634d75fee98974cfd20"
+    },
+    {
+      "case_id": "EV-22",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "eaf603468c7e79363e695fad31a290df56d632e2c97ad64c891d64d2f37561b0"
+    },
+    {
+      "case_id": "EV-23",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [
+        "Reconstructability is supported because a decision and a basis section are both cited, although the basis restates the conclusion. Whether a conclusion-only basis makes a decision reconstructable is a semantic question; the rule checks structure, not content."
+      ],
+      "case_digest": "175b8ba3528e8713758e0b7c633f9fb8e08af9dcf0154be8f9d98cdc1d7ef290"
+    },
+    {
+      "case_id": "EV-24",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "e802ec7f5e1f964210bbbba1ddc08fa19978f94c9b16754959429746c05eb702"
+    },
+    {
+      "case_id": "EV-25",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "a1a8f6623d2d160832e590c223883d28dfeb1848a6ae76a932861b0f2d5b1f91"
+    },
+    {
+      "case_id": "EV-26",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "gap"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "0e8d160471190e237a6fbc229ce8fc5e36c6231f41d042be7ddb307da89200c9"
+    },
+    {
+      "case_id": "EV-27",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "gap",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "de028b98b02bb9d570acd14e4398682745fa39957a5531c684a4685f06e161b6"
+    },
+    {
+      "case_id": "EV-28",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "authority_state_conflict"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "710d33a2d1aac2502e3b56ac42cb7923cf202f483afb0a30648f33c50ea8a7ff"
+    },
+    {
+      "case_id": "EV-29",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "control_state_conflict"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "28632cbb3a43c364b37700e6494db28c8bae6a5fbebc953e9c89e8a97c65caf9"
+    },
+    {
+      "case_id": "EV-30",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "risk_state_conflict"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "ec6e151b6ccbcbfa7a3e95a3556bcb1856e53d8e6f24016173e530ef96143783"
+    },
+    {
+      "case_id": "EV-31",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "control_state_conflict"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "989985af2162594cdb96067bb851db55bd0c9418d5672b564fabdc2e66a3ab7b"
+    },
+    {
+      "case_id": "EV-32",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "cited_evidence_conflict"
+      ],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [
+        "A request date and an expiry date are different facts, yet two stated_date quotations with different dates are flagged as a cited-evidence conflict. This looks like over-flagging of a consistent record; it is recorded for adjudication, not repaired."
+      ],
+      "case_digest": "ff63d5704437b778abca3fc3a2417df1ca14bcd6e32301a6f70157abcc7ac1b7"
+    },
+    {
+      "case_id": "EV-33",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [
+        "Certainty language is surfaced as a cognitive control but does not lower any status; whether it should is a design question."
+      ],
+      "case_digest": "84da761d6500be7b43d1981832276ca18e9a9861b9a36165b928ba74671a71f3"
+    },
+    {
+      "case_id": "EV-34",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "quote_absent"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "f9ba906e8652ef82b624690288a55ae200e779554cd3dc6243e6ce0d575794e6"
+    },
+    {
+      "case_id": "EV-35",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "assertion_rejected"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "864805ea964851e3ea580e7aff2e4cfe1bb4b140449753db3a8ac4ef3a91db25"
+    },
+    {
+      "case_id": "EV-36",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "assertion_rejected"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "1a6790f0562622437514b2942b82505cd9f8faf1f81a23e928678b0150fc0b1b"
+    },
+    {
+      "case_id": "EV-37",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "excluded_domain_content"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "823d9a29437bbf0e4789c3cd48fcacf0106e211e94ff88eeb4a7de9b9ec3e0ff"
+    },
+    {
+      "case_id": "EV-38",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "excluded_domain_content"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [
+        "\"Tenant parking\" for a depot is not a housing matter; the refusal may be over-refusal. Recorded, not repaired."
+      ],
+      "case_digest": "e09aaeed3ad3cc736725003569d197fa54816e4c8870010059dfbd8728a7ff92"
+    },
+    {
+      "case_id": "EV-39",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [
+        "incomplete_record"
+      ],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "00bbc96e04fac287a858c60e9a9d4ea567207d911a52f01fc42fe8f42b9356d1"
+    },
+    {
+      "case_id": "EV-40",
+      "group": "protected_evaluation",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [],
+      "refusal_codes": [],
+      "expectation": "matches_sealed_expectation",
+      "mechanical_failures": [],
+      "semantic_questions": [],
+      "case_digest": "fd6a19831beb08c7c2b2a25c3ff47e95d04a02e2bf3cb3b7bc72c6a13e04d7df"
+    }
+  ]
+}

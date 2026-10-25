@@ -1,0 +1,10 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL.
+Record type: Supplier access exception draft (fictional)
+Exception ID: EXC-2026-102
+Supplier: Harbourline Fictional Freight (fictional)
+Requested by: Warehouse planning team; request received 2026-04-06.
+Decision: Exception granted for read-only access to the freight booking console.
+Decision basis: Granted because the supplier needs console access to reconcile container bookings, based on assessment RA-2026-21 completed 2026-04-08.
+Authority: Approved by the Exception Review Board, minutes ERB-2026-11, item 4, on 2026-04-14.
+Compensating controls: Access limited to read-only views; sessions require multi-factor authentication; configuration changes are promoted to production only after peer sign-off.
+Expiry and renewal: Access expires 2026-07-31; renewal requires a fresh assessment.

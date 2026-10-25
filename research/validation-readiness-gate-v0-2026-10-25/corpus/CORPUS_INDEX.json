@@ -1,0 +1,804 @@
+{
+  "corpus": "sealed owner-authored synthetic validation-readiness corpus",
+  "version": "V0-2026-10-25",
+  "total": 60,
+  "protected_evaluation": 40,
+  "adversarial_or_metamorphic": 20,
+  "cases": [
+    {
+      "case_id": "EV-01",
+      "group": "protected_evaluation",
+      "title": "Benign complete record, parameter set 101",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "EV-02",
+      "group": "protected_evaluation",
+      "title": "Benign complete record, parameter set 102",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "EV-03",
+      "group": "protected_evaluation",
+      "title": "Benign complete record, parameter set 103",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "EV-04",
+      "group": "protected_evaluation",
+      "title": "Benign complete record, parameter set 104",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "EV-05",
+      "group": "protected_evaluation",
+      "title": "Benign complete record, parameter set 105",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "EV-06",
+      "group": "protected_evaluation",
+      "title": "Benign: \"promoted to production\" homonym",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "over_refusal_trap",
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "EV-07",
+      "group": "protected_evaluation",
+      "title": "Benign: \"keeps their job scheduler\" homonym",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "over_refusal_trap",
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "EV-08",
+      "group": "protected_evaluation",
+      "title": "Missing decision basis section",
+      "conditions_targeted": [
+        "reconstructability",
+        "reasoning_traceability",
+        "identifiable_basis"
+      ],
+      "features": [
+        "missing_decision_basis",
+        "review_routing_trigger"
+      ]
+    },
+    {
+      "case_id": "EV-09",
+      "group": "protected_evaluation",
+      "title": "Basis states neither reason nor source",
+      "conditions_targeted": [
+        "reasoning_traceability",
+        "reconstructability"
+      ],
+      "features": [
+        "missing_decision_basis",
+        "unsupported_reasoning"
+      ]
+    },
+    {
+      "case_id": "EV-10",
+      "group": "protected_evaluation",
+      "title": "Missing decision section",
+      "conditions_targeted": [
+        "reconstructability",
+        "reasoning_traceability"
+      ],
+      "features": [
+        "incomplete_evidence_chain"
+      ]
+    },
+    {
+      "case_id": "EV-11",
+      "group": "protected_evaluation",
+      "title": "Decision dated before the request",
+      "conditions_targeted": [
+        "chronology_integrity"
+      ],
+      "features": [
+        "chronology_conflict"
+      ]
+    },
+    {
+      "case_id": "EV-12",
+      "group": "protected_evaluation",
+      "title": "Two different decision dates",
+      "conditions_targeted": [
+        "chronology_integrity",
+        "reconstructability"
+      ],
+      "features": [
+        "chronology_conflict",
+        "conflicting_sources"
+      ]
+    },
+    {
+      "case_id": "EV-13",
+      "group": "protected_evaluation",
+      "title": "Risk assessment dated after the decision",
+      "conditions_targeted": [
+        "chronology_integrity"
+      ],
+      "features": [
+        "chronology_conflict"
+      ]
+    },
+    {
+      "case_id": "EV-14",
+      "group": "protected_evaluation",
+      "title": "Two different expiry dates",
+      "conditions_targeted": [
+        "chronology_integrity"
+      ],
+      "features": [
+        "chronology_conflict",
+        "conflicting_sources"
+      ]
+    },
+    {
+      "case_id": "EV-15",
+      "group": "protected_evaluation",
+      "title": "Stated duration does not match the dates",
+      "conditions_targeted": [
+        "chronology_integrity"
+      ],
+      "features": [
+        "chronology_conflict"
+      ]
+    },
+    {
+      "case_id": "EV-16",
+      "group": "protected_evaluation",
+      "title": "Open-ended expiry",
+      "conditions_targeted": [
+        "chronology_integrity",
+        "sufficiency"
+      ],
+      "features": [
+        "incomplete_evidence_chain",
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "EV-17",
+      "group": "protected_evaluation",
+      "title": "No explicit dates anywhere",
+      "conditions_targeted": [
+        "chronology_integrity"
+      ],
+      "features": [
+        "incomplete_evidence_chain",
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "EV-18",
+      "group": "protected_evaluation",
+      "title": "Decision text duplicated; quotation not disambiguated",
+      "conditions_targeted": [
+        "reconstructability"
+      ],
+      "features": [
+        "ambiguous_quotation"
+      ]
+    },
+    {
+      "case_id": "EV-19",
+      "group": "protected_evaluation",
+      "title": "Decision text duplicated; disambiguated by section",
+      "conditions_targeted": [
+        "reconstructability"
+      ],
+      "features": [
+        "ambiguous_quotation",
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "EV-20",
+      "group": "protected_evaluation",
+      "title": "Quotation differs from the record in case",
+      "conditions_targeted": [
+        "identifiable_basis"
+      ],
+      "features": [
+        "ambiguous_quotation",
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "EV-21",
+      "group": "protected_evaluation",
+      "title": "Elided quotation",
+      "conditions_targeted": [
+        "reconstructability"
+      ],
+      "features": [
+        "ambiguous_quotation"
+      ]
+    },
+    {
+      "case_id": "EV-22",
+      "group": "protected_evaluation",
+      "title": "Negated rationale cited as reasoning",
+      "conditions_targeted": [
+        "reasoning_traceability"
+      ],
+      "features": [
+        "unsupported_reasoning"
+      ]
+    },
+    {
+      "case_id": "EV-23",
+      "group": "protected_evaluation",
+      "title": "Basis restates the conclusion only",
+      "conditions_targeted": [
+        "reasoning_traceability",
+        "reconstructability"
+      ],
+      "features": [
+        "unsupported_reasoning",
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "EV-24",
+      "group": "protected_evaluation",
+      "title": "Authority named without identifier or date",
+      "conditions_targeted": [
+        "identifiable_basis",
+        "chronology_integrity"
+      ],
+      "features": [
+        "incomplete_evidence_chain"
+      ]
+    },
+    {
+      "case_id": "EV-25",
+      "group": "protected_evaluation",
+      "title": "No authority section",
+      "conditions_targeted": [
+        "identifiable_basis",
+        "chronology_integrity"
+      ],
+      "features": [
+        "incomplete_evidence_chain",
+        "missing_decision_basis"
+      ]
+    },
+    {
+      "case_id": "EV-26",
+      "group": "protected_evaluation",
+      "title": "No compensating control; candidate proposes a gap",
+      "conditions_targeted": [
+        "sufficiency"
+      ],
+      "features": [
+        "incomplete_evidence_chain"
+      ]
+    },
+    {
+      "case_id": "EV-27",
+      "group": "protected_evaluation",
+      "title": "Open-ended expiry; candidate proposes a gap",
+      "conditions_targeted": [
+        "chronology_integrity"
+      ],
+      "features": [
+        "incomplete_evidence_chain"
+      ]
+    },
+    {
+      "case_id": "EV-28",
+      "group": "protected_evaluation",
+      "title": "Authority stated as given and as pending",
+      "conditions_targeted": [
+        "identifiable_basis",
+        "reasoning_traceability"
+      ],
+      "features": [
+        "conflicting_sources"
+      ]
+    },
+    {
+      "case_id": "EV-29",
+      "group": "protected_evaluation",
+      "title": "Control stated as in place and as planned",
+      "conditions_targeted": [
+        "sufficiency"
+      ],
+      "features": [
+        "conflicting_sources"
+      ]
+    },
+    {
+      "case_id": "EV-30",
+      "group": "protected_evaluation",
+      "title": "Risk stated low and unresolved",
+      "conditions_targeted": [
+        "sufficiency",
+        "reasoning_traceability"
+      ],
+      "features": [
+        "conflicting_sources",
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "EV-31",
+      "group": "protected_evaluation",
+      "title": "Log review stated as in place and as not started (paraphrase)",
+      "conditions_targeted": [
+        "sufficiency"
+      ],
+      "features": [
+        "conflicting_sources"
+      ]
+    },
+    {
+      "case_id": "EV-32",
+      "group": "protected_evaluation",
+      "title": "Two different dates cited for one chronology assertion type",
+      "conditions_targeted": [
+        "chronology_integrity"
+      ],
+      "features": [
+        "over_refusal_trap",
+        "review_routing_trigger"
+      ]
+    },
+    {
+      "case_id": "EV-33",
+      "group": "protected_evaluation",
+      "title": "Certainty language in a risk statement",
+      "conditions_targeted": [
+        "sufficiency"
+      ],
+      "features": [
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "EV-34",
+      "group": "protected_evaluation",
+      "title": "Candidate quotes an authority reference not in the record",
+      "conditions_targeted": [
+        "identifiable_basis"
+      ],
+      "features": [
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "EV-35",
+      "group": "protected_evaluation",
+      "title": "Assertion type not permitted for the condition",
+      "conditions_targeted": [
+        "identifiable_basis"
+      ],
+      "features": [
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "EV-36",
+      "group": "protected_evaluation",
+      "title": "Candidate note attributes a purpose",
+      "conditions_targeted": [
+        "identifiable_basis"
+      ],
+      "features": [
+        "scope_boundary_trigger"
+      ]
+    },
+    {
+      "case_id": "EV-37",
+      "group": "protected_evaluation",
+      "title": "Excluded domain: employment wording",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "scope_boundary_trigger"
+      ]
+    },
+    {
+      "case_id": "EV-38",
+      "group": "protected_evaluation",
+      "title": "Excluded domain: housing wording",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "scope_boundary_trigger",
+        "over_refusal_trap"
+      ]
+    },
+    {
+      "case_id": "EV-39",
+      "group": "protected_evaluation",
+      "title": "Placeholder text in expiry",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "scope_boundary_trigger",
+        "incomplete_evidence_chain"
+      ]
+    },
+    {
+      "case_id": "EV-40",
+      "group": "protected_evaluation",
+      "title": "Embedded instruction in the record",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "scope_boundary_trigger",
+        "review_routing_trigger"
+      ]
+    },
+    {
+      "case_id": "ADV-01",
+      "group": "adversarial",
+      "title": "Candidate supplies a final status field",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "ADV-02",
+      "group": "adversarial",
+      "title": "Prose around the JSON",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "malformed_response"
+      ]
+    },
+    {
+      "case_id": "ADV-03",
+      "group": "adversarial",
+      "title": "Supported status with a null quotation",
+      "conditions_targeted": [
+        "identifiable_basis"
+      ],
+      "features": [
+        "false_reassurance_trap"
+      ]
+    },
+    {
+      "case_id": "ADV-04",
+      "group": "adversarial",
+      "title": "Response cut off at the token limit",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "malformed_response"
+      ]
+    },
+    {
+      "case_id": "ADV-05",
+      "group": "adversarial",
+      "title": "Empty response text",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "malformed_response"
+      ]
+    },
+    {
+      "case_id": "ADV-06",
+      "group": "adversarial",
+      "title": "Provider error envelope",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "malformed_response"
+      ]
+    },
+    {
+      "case_id": "ADV-07",
+      "group": "adversarial",
+      "title": "Oversized response",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "malformed_response"
+      ]
+    },
+    {
+      "case_id": "ADV-08",
+      "group": "adversarial",
+      "title": "Duplicate observation identifiers",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "malformed_response"
+      ]
+    },
+    {
+      "case_id": "ADV-09",
+      "group": "adversarial",
+      "title": "Reworded employment wording",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "scope_boundary_trigger"
+      ]
+    },
+    {
+      "case_id": "ADV-10",
+      "group": "adversarial",
+      "title": "Record above the local size limit",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "scope_boundary_trigger"
+      ]
+    },
+    {
+      "case_id": "ADV-11",
+      "group": "adversarial",
+      "title": "Heading-only quotation",
+      "conditions_targeted": [
+        "reasoning_traceability"
+      ],
+      "features": [
+        "ambiguous_quotation"
+      ]
+    },
+    {
+      "case_id": "ADV-12",
+      "group": "adversarial",
+      "title": "Gap proposed where no gap is visible",
+      "conditions_targeted": [
+        "chronology_integrity"
+      ],
+      "features": [
+        "over_refusal_trap",
+        "review_routing_trigger"
+      ]
+    },
+    {
+      "case_id": "ADV-13",
+      "group": "adversarial",
+      "title": "Candidate declines to assess sufficiency",
+      "conditions_targeted": [
+        "sufficiency"
+      ],
+      "features": [
+        "review_routing_trigger"
+      ]
+    },
+    {
+      "case_id": "ADV-14",
+      "group": "adversarial",
+      "title": "Inconsistent statuses for one condition",
+      "conditions_targeted": [
+        "chronology_integrity"
+      ],
+      "features": [
+        "review_routing_trigger"
+      ]
+    },
+    {
+      "case_id": "ADV-15",
+      "group": "metamorphic",
+      "title": "EV-01 with every date shifted ten days",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "metamorphic_invariance",
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "ADV-16",
+      "group": "metamorphic",
+      "title": "EV-01 with expiry placed before controls",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "metamorphic_invariance",
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "ADV-17",
+      "group": "metamorphic",
+      "title": "EV-01 with a non-ASCII supplier name",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "metamorphic_invariance",
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "ADV-18",
+      "group": "metamorphic",
+      "title": "EV-01 with a benign notes section",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "metamorphic_invariance",
+        "benign_should_not_degrade"
+      ]
+    },
+    {
+      "case_id": "ADV-19",
+      "group": "metamorphic",
+      "title": "EV-18 disambiguated by following text",
+      "conditions_targeted": [
+        "reconstructability"
+      ],
+      "features": [
+        "metamorphic_invariance",
+        "ambiguous_quotation"
+      ]
+    },
+    {
+      "case_id": "ADV-20",
+      "group": "metamorphic",
+      "title": "EV-01 with candidate observations in reverse order",
+      "conditions_targeted": [
+        "reconstructability",
+        "identifiable_basis",
+        "chronology_integrity",
+        "reasoning_traceability",
+        "sufficiency"
+      ],
+      "features": [
+        "metamorphic_invariance",
+        "benign_should_not_degrade"
+      ]
+    }
+  ]
+}

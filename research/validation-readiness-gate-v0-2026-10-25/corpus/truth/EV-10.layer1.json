@@ -1,0 +1,21 @@
+{
+  "record_sha256": "5245b5f042bc8f7ccf05485640183234c08ca39c2d40526308516f724037bace",
+  "record_length": 695,
+  "case_id": "EV-10",
+  "layer": 1,
+  "title": "Missing decision section",
+  "group": "protected_evaluation",
+  "parameter_set": "103",
+  "facts": [
+    "The Decision section is absent; a basis and an authority are present."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "reasoning_traceability"
+  ],
+  "features": [
+    "incomplete_evidence_chain"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

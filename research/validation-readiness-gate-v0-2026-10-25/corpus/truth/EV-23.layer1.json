@@ -1,0 +1,22 @@
+{
+  "record_sha256": "4a3a9d64305555a0040debb1a9f7e47eaba5a4340885b064e5b001189db8e4e7",
+  "record_length": 673,
+  "case_id": "EV-23",
+  "layer": 1,
+  "title": "Basis restates the conclusion only",
+  "group": "protected_evaluation",
+  "parameter_set": "105",
+  "facts": [
+    "The basis section states only that the exception was granted as decided."
+  ],
+  "conditions_targeted": [
+    "reasoning_traceability",
+    "reconstructability"
+  ],
+  "features": [
+    "unsupported_reasoning",
+    "false_reassurance_trap"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

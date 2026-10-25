@@ -1,0 +1,22 @@
+{
+  "record_sha256": "2d5b6eeb35be6259bd42330ad97f63b3b1746c014c2b9a1bd384253e813118a2",
+  "record_length": 864,
+  "case_id": "EV-30",
+  "layer": 1,
+  "title": "Risk stated low and unresolved",
+  "group": "protected_evaluation",
+  "parameter_set": "102",
+  "facts": [
+    "Residual risk is stated as low; a Notes section states the supplier risk is unresolved."
+  ],
+  "conditions_targeted": [
+    "sufficiency",
+    "reasoning_traceability"
+  ],
+  "features": [
+    "conflicting_sources",
+    "false_reassurance_trap"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

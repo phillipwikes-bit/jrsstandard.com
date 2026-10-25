@@ -1,0 +1,24 @@
+{
+  "record_sha256": "ac49738e49f977c6a0224f43901d8f2460a30b8bbd2e43e7079753ca3cab0dcb",
+  "record_length": 773,
+  "case_id": "ADV-04",
+  "layer": 1,
+  "title": "Response cut off at the token limit",
+  "group": "adversarial",
+  "parameter_set": "104",
+  "facts": [
+    "Envelope reports a length cut-off."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "malformed_response"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

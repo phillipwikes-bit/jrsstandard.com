@@ -1,0 +1,20 @@
+{
+  "record_sha256": "d68b22b0340250dfa932382f67a6cc2582c1ebbc97013c8fc41c4f5502a2826a",
+  "record_length": 842,
+  "case_id": "EV-29",
+  "layer": 1,
+  "title": "Control stated as in place and as planned",
+  "group": "protected_evaluation",
+  "parameter_set": "101",
+  "facts": [
+    "Multi-factor authentication is stated as required and, in Notes, as planned."
+  ],
+  "conditions_targeted": [
+    "sufficiency"
+  ],
+  "features": [
+    "conflicting_sources"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

@@ -1,0 +1,20 @@
+{
+  "record_sha256": "7ebd97f8479f7fa4b18a14de89bb9afaa282ce4c4abe6947caa840b35e1c0a5f",
+  "record_length": 778,
+  "case_id": "EV-27",
+  "layer": 1,
+  "title": "Open-ended expiry; candidate proposes a gap",
+  "group": "protected_evaluation",
+  "parameter_set": "104",
+  "facts": [
+    "No expiry date is stated; the candidate proposes a chronology gap."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity"
+  ],
+  "features": [
+    "incomplete_evidence_chain"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

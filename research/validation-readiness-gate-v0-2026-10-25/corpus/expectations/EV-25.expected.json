@@ -1,0 +1,35 @@
+{
+  "case_id": "EV-25",
+  "expectation_authority": "owner-authored specification (AI-assisted drafting); not ground truth",
+  "adapter": {
+    "outcome": "REPLAYED"
+  },
+  "graph": {
+    "intake_decision": "proceed",
+    "statuses": {
+      "reconstructability": "supported",
+      "identifiable_basis": "review_required",
+      "chronology_integrity": "review_required",
+      "reasoning_traceability": "supported",
+      "sufficiency": "review_required"
+    },
+    "conflict_kinds": [],
+    "refusal_codes": [],
+    "quote_statuses": {
+      "O1": "verified_unique",
+      "O2": "verified_unique",
+      "O3": "verified_unique",
+      "O4": "verified_unique",
+      "O5": "verified_unique",
+      "O6": "verified_unique"
+    },
+    "instruction_risk": "not_detected",
+    "required_span_origins": [],
+    "execution_mode": "local_mocked",
+    "provider_calls": 0,
+    "network_calls": 0,
+    "human_review_route": "documentation_quality_reviewer"
+  },
+  "metamorphic_of": null,
+  "semantic_questions": []
+}

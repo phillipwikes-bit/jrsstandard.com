@@ -1,0 +1,20 @@
+{
+  "record_sha256": "7aaf377639fe6ec431bbbc7ec3c256301987d398123499205545e083432f4b92",
+  "record_length": 824,
+  "case_id": "EV-13",
+  "layer": 1,
+  "title": "Risk assessment dated after the decision",
+  "group": "protected_evaluation",
+  "parameter_set": "101",
+  "facts": [
+    "A Chronology section dates a risk assessment 2026-03-12, after the 2026-03-09 decision."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity"
+  ],
+  "features": [
+    "chronology_conflict"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

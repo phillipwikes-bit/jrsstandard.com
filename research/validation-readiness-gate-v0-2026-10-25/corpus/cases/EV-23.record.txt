@@ -1,0 +1,10 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL.
+Record type: Supplier access exception draft (fictional)
+Exception ID: EXC-2026-105
+Supplier: Kestrel Fictional Cleaning (fictional)
+Requested by: Site services team; request received 2026-07-06.
+Decision: Exception granted for read-only access to the cleaning rota calendar.
+Decision basis: Granted as decided at the board meeting.
+Authority: Approved by the Exception Review Board, minutes ERB-2026-23, item 4, on 2026-07-13.
+Compensating controls: Access limited to read-only views; sessions require multi-factor authentication.
+Expiry and renewal: Access expires 2026-10-30; renewal requires a fresh assessment.

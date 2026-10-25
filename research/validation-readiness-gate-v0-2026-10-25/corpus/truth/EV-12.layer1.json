@@ -1,0 +1,22 @@
+{
+  "record_sha256": "2db19f055b975b9dde28d868d0cf3f399a3a1a3b0acbae06a31aebcfff86539a",
+  "record_length": 796,
+  "case_id": "EV-12",
+  "layer": 1,
+  "title": "Two different decision dates",
+  "group": "protected_evaluation",
+  "parameter_set": "105",
+  "facts": [
+    "The Decision section records a decision on 2026-07-15; the Authority section dates it 2026-07-13."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity",
+    "reconstructability"
+  ],
+  "features": [
+    "chronology_conflict",
+    "conflicting_sources"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

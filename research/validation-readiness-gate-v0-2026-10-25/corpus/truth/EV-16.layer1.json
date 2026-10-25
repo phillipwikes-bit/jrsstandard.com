@@ -1,0 +1,22 @@
+{
+  "record_sha256": "7ebd97f8479f7fa4b18a14de89bb9afaa282ce4c4abe6947caa840b35e1c0a5f",
+  "record_length": 778,
+  "case_id": "EV-16",
+  "layer": 1,
+  "title": "Open-ended expiry",
+  "group": "protected_evaluation",
+  "parameter_set": "104",
+  "facts": [
+    "No expiry date is stated; access continues \"until further notice\"."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity",
+    "sufficiency"
+  ],
+  "features": [
+    "incomplete_evidence_chain",
+    "false_reassurance_trap"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

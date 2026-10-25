@@ -1,0 +1,21 @@
+{
+  "record_sha256": "c0b888dc15ffd812545893b9da07a795bf23a2a91b090a5c4ff3b61286c14d03",
+  "record_length": 802,
+  "case_id": "EV-14",
+  "layer": 1,
+  "title": "Two different expiry dates",
+  "group": "protected_evaluation",
+  "parameter_set": "102",
+  "facts": [
+    "Expiry stated as 2026-07-31 and, in a Valid until section, as 2026-08-31."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity"
+  ],
+  "features": [
+    "chronology_conflict",
+    "conflicting_sources"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

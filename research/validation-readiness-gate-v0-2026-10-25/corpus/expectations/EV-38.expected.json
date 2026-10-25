@@ -1,0 +1,32 @@
+{
+  "case_id": "EV-38",
+  "expectation_authority": "owner-authored specification (AI-assisted drafting); not ground truth",
+  "adapter": {
+    "outcome": "REPLAYED"
+  },
+  "graph": {
+    "intake_decision": "refuse",
+    "statuses": {
+      "reconstructability": "not_assessed",
+      "identifiable_basis": "not_assessed",
+      "chronology_integrity": "not_assessed",
+      "reasoning_traceability": "not_assessed",
+      "sufficiency": "not_assessed"
+    },
+    "conflict_kinds": [],
+    "refusal_codes": [
+      "excluded_domain_content"
+    ],
+    "quote_statuses": {},
+    "instruction_risk": "not_detected",
+    "required_span_origins": [],
+    "execution_mode": "local_mocked",
+    "provider_calls": 0,
+    "network_calls": 0,
+    "human_review_route": "documentation_quality_reviewer"
+  },
+  "metamorphic_of": null,
+  "semantic_questions": [
+    "\"Tenant parking\" for a depot is not a housing matter; the refusal may be over-refusal. Recorded, not repaired."
+  ]
+}
