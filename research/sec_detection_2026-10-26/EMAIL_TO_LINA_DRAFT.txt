@@ -6,7 +6,7 @@ Thank you again for your invitation and for your help with the public-records ma
 
 You kindly asked about my other current manuscripts, and I'd like to submit a second article to SocioEconomic Challenges:
 
-"Detecting Unsupported Conclusions in AI-Drafted Decision Records: Evidence from an International Expert Panel"
+"Socioeconomic Challenges of AI-Drafted Decision Records: Can Professional Reviewers Detect Unsupported Conclusions?"
 Authors: Phillip Wikes and Ubayet Hossain, FRM
 
 The paper reports a pre-registered study in which sixteen professionals in eleven countries assessed whether conclusions in AI-drafted decision records were supported by the evidence in the record. It examines what reviewer performance means for how institutions design and resource human review of AI-drafted decisions, and who bears the cost when review fails. It has been prepared in the journal's format.
