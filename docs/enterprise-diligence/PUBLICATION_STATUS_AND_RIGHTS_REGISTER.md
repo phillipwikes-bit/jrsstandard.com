@@ -20,7 +20,7 @@ wording was inaccurate; the conclusion it supported was not.
 
 | Work | Venue | Status | Evidence located | Rights position |
 |---|---|---|---|---|
-| Detection study | **AI and Ethics** | **REJECTED 2026-10-26** (was SUBMISSION-READY; editorial decision: contribution to aims and scope unclear; record `research/aie_submission_2026-09-01/DECISION_REJECTED_2026-10-26.md`) | Complete packet: cover letter, title page, blinded manuscript, generated docx | Co-author M-01 **not confirmed** on the consent instrument |
+| Detection study | **AI and Ethics** | **REJECTED 2026-10-26** (was SUBMISSION-READY; editorial decision: contribution to aims and scope unclear; record `research/aie_submission_2026-09-01/DECISION_REJECTED_2026-10-26.md`) | Complete packet: cover letter, title page, blinded manuscript, generated docx | Co-author M-01 authorship **CONFIRMED** (OLD: not confirmed on the consent instrument. NEW 2026-10-26: owner confirms prior approval; evidence 2026-07-27 byline approval, 2026-08-28 written approval with his own descriptor, direct confirmation to Springer) |
 | Evidentiary deficit article | **Corporate Compliance Insights** | **ACCEPTED** (internally recorded 2026-09-03; publication expected about a month out) | `research/cci_resubmission_2026-09-03/`; editor response PDF | **Co-author Hekim Colpan is not covered by the consent instrument.** Written terms include a prior-approval requirement over commercial use of JRS material |
 | CEP Magazine article | **CEP Magazine** | **ACCEPTED** (internally recorded) | Tracker record | Not located |
 | Records Management Journal manuscript | **RMJ** | **PREPARED**, anonymous and non-anonymous versions built | R9 and ANONYMOUS docx, with SHA-256 recorded | First author E-08 **not confirmed** |

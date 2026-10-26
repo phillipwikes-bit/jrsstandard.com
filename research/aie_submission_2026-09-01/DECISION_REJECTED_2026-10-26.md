@@ -42,7 +42,7 @@ The owner uploaded the four files as submitted. SHA-256 hashes:
 - It says **Ubayet Hossain independently confirmed his authorship and contribution from his own account**, and that on October 5, 2026 the Editorial Office recommended submitting the work as a new submission.
 - Its corresponding-author email is the personal address, and it drops the "Creator of the Justification Review Standard" sign-off.
 
-**Effect on the co-author gap in §2 (INFERENCE):** M-01's direct confirmation to the journal is **stronger evidence of authorship consent** than the LinkedIn approval. It still is not the register's consent instrument. The confirmation itself (an email or a submission-system record) is not in this repository. Until it is filed, the gap is **narrowed, not closed**.
+**Co-author authorship: CONFIRMED.** OLD FINDING (earlier today): gap narrowed, not closed, pending a filed consent instrument. NEW EVIDENCE: the owner states that M-01 has already approved authorship. The record supports this three times: his approval of the byline on 2026-07-27, his written approval of the paper and his chosen descriptor on 2026-08-28 (LinkedIn screenshot on file; tracker 2026-08-29), and his direct confirmation to Springer Nature from his own account (submitted cover letter). CORRECTED STATUS: **authorship approval is established; do not ask him to confirm it again.** The only approval still open is his approval of the *revised* text when it exists, which every journal requires for a new version.
 
 **Not stored here:** the uploaded files themselves. This repository is public (B-018), and the submitted title page and cover letter carry a personal email address that §36.1 keeps off public surfaces. The hashes above identify them. Where to keep them is **REQUIRES HUMAN REVIEW**.
 
@@ -64,7 +64,7 @@ The owner supplied a report titled *JRS Research Publication Strategy: Comprehen
 
 **Most of the report's corrective actions are already in the rejected manuscript (FACT).** It already states that the criterion failed, that no IRB reviewed the study, that the reference classification was set by the author, and how the provenance was produced. The paper was not rejected for leaving these out. It was rejected for being unclear about its contribution and its fit with the journal. **INFERENCE:** a revision that only adds more limitations will not fix that. The fix the report gives in its §3.4 (build the paper around one research question) is the change that responds to the editor.
 
-**Rights gap the report does not mention (FACT, from `docs/enterprise-diligence/PUBLICATION_STATUS_AND_RIGHTS_REGISTER.md`):** co-author M-01 is recorded as **not confirmed on the consent instrument**. The tracker records his approval of the byline on 2026-07-27, given by LinkedIn message. That approval is not the register's consent instrument. Any resubmission or transfer lists him as an author again. **REQUIRES HUMAN REVIEW** before that happens.
+**Rights gap the report does not mention (FACT, from `docs/enterprise-diligence/PUBLICATION_STATUS_AND_RIGHTS_REGISTER.md`):** co-author M-01 is recorded as **not confirmed on the consent instrument**. The tracker records his approval of the byline on 2026-07-27, given by LinkedIn message. That approval is not the register's consent instrument. Any resubmission or transfer lists him as an author again. *(Superseded the same day: see §1a, authorship CONFIRMED.)*
 
 ## 3. Status
 
