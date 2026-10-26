@@ -12,7 +12,7 @@ import sys
 import docx
 
 TITLE = ("Socioeconomic Challenges of AI-Drafted Decision Records: "
-         "Can Professional Reviewers Detect Unsupported Conclusions?")
+         "Can Expert Reviewers Detect Unsupported Conclusions?")
 
 AUTHORS = [
     "**Phillip Wikes** (corresponding author, info@jrsstandard.com), Independent Researcher. ORCID: 0009-0009-7230-3661",
@@ -21,15 +21,15 @@ AUTHORS = [
 ]
 
 ABSTRACT = (
-    "Employers, public agencies and regulated firms now use generative artificial intelligence to draft the records "
+    "Employers, public agencies and regulated firms now use generative artificial intelligence (AI) to draft the records "
     "behind decisions on hiring, discipline, benefits, investigations and compliance. A drafted record can look "
     "complete and still omit the evidence and reasoning that justify its conclusion. When such a decision is later "
-    "challenged, someone has to rebuild it, and much of that cost lands on the person affected. Most institutions rely on a human reviewer to stop weak records before they "
+    "challenged, someone has to rebuild it, and much of that cost lands on the person affected. Many institutions rely on a human reviewer to stop weak records before they "
     "are finalised, and recent regulation assumes this oversight works. Research has mostly taken that oversight "
     "for granted. This study measures the overseers. It asks "
-    "whether professional reviewers can tell supported from unsupported conclusions in AI-drafted decision records, "
+    "whether expert reviewers can tell supported from unsupported conclusions in AI-drafted decision records, "
     "how far individual reviewers differ, and whether they agree closely enough for one review to be trusted. In a "
-    "pre-registered study, sixteen professionals working in compliance, audit, human resources, investigations, "
+    "pre-registered study, sixteen credentialed experts working in compliance, audit, human resources, investigations, "
     "privacy, records management and law across 11 countries classified 24 constructed records, half with documented "
     "support for their conclusions and half without, giving 384 independent judgments. Reviewers worked alone and did not know the reference "
     "classification, which was fixed in advance and reproduced on every record by three automated raters. Mean "
@@ -54,17 +54,17 @@ BODY = [
 ("h1", "INTRODUCTION"),
 ("p", "Most consequential decisions leave a written trace. A dismissal, a refused benefit, an investigation finding or a compliance ruling is recorded, and the record is what any later review examines. Appeals officers, auditors, regulators and courts seldom get to question the person who decided. They read the file, and whatever they can learn about why the decision went one way rather than another has to come from it."),
 ("p", "When a record does not carry the basis for its conclusion, somebody pays to reconstruct it. The affected person must contest a decision whose reasons are hidden from them. An appeal body or regulator must rebuild the decision from competing submissions. The organisation itself may be unable to defend a decision it can no longer explain. These costs fall unevenly. A large employer or a well-funded claimant can absorb the expense of litigation; an individual trying to understand why they lost a job or a benefit usually cannot. A poorly supported record is in this sense a transfer of cost from the institution that produced it to the people and bodies who must later make sense of it."),
-("p", "Generative artificial intelligence has changed how these records are written. Organisations now use large language models to draft decision memoranda, case summaries and determination letters, because doing so saves staff time. The output is well organised and professional in tone, and that polish is separate from whether the evidence behind a conclusion actually appears on the page (Bender et al., 2021; Ji et al., 2023). A model can produce a conclusion that sounds settled while leaving out the facts that would justify it. Readers have long relied on rough signals to spot a thin file, such as hedged wording, a disorganised structure or an informal register. Machine drafting tends to remove exactly those signals."),
-("p", "The usual safeguard is a person. A supervisor, compliance officer or second reader checks the draft before it becomes final, and regulation increasingly takes such oversight for granted (Regulation (EU) 2024/1689, 2024). Recent work in this journal finds the same reliance in other settings: the benefits of algorithmic management depend on intelligible explanations and meaningful human review (van der Nest & Sheik, 2026), and municipal oversight still rests largely on manual verification and retrospective audit (Oluka, 2026). A safeguard of this kind only works if reviewers can tell a supported conclusion from an unsupported one. If they cannot, the institution pays for review and receives little protection in return. If some reviewers can and others cannot, an organisation that assigns one reviewer per file carries a risk it cannot see."),
+("p", "Generative artificial intelligence (AI) has changed how these records are written. Organisations now use large language models to draft decision memoranda, case summaries and determination letters, often to save staff time. The output is well organised and professional in tone, and that polish is separate from whether the evidence behind a conclusion actually appears on the page (Bender et al., 2021; Ji et al., 2023). A model can produce a conclusion that sounds settled while leaving out the facts that would justify it. Readers have long relied on rough signals to spot a thin file, such as hedged wording, a disorganised structure or an informal register. Machine drafting can remove exactly those signals."),
+("p", "A common safeguard is a person. A supervisor, compliance officer or second reader checks the draft before it becomes final, and regulation increasingly takes such oversight for granted (European Union, 2024). Recent work in this journal finds the same reliance in other settings: the benefits of algorithmic management depend on intelligible explanations and meaningful human review (van der Nest & Sheik, 2026), and municipal oversight still rests largely on manual verification and retrospective audit (Oluka, 2026). A safeguard of this kind only works if reviewers can tell a supported conclusion from an unsupported one. If they cannot, the institution pays for review and receives little protection in return. If some reviewers can and others cannot, an organisation that assigns one reviewer per file carries a risk it cannot see."),
 ("p", "This paper reports a pre-registered study of that problem and addresses three research questions:"),
-("n", "1. Can independent professional reviewers distinguish supported from unsupported conclusions in AI-drafted decision records, judged against a classification fixed in advance?"),
+("n", "1. Can independent expert reviewers distinguish supported from unsupported conclusions in AI-drafted decision records, judged against a classification fixed in advance?"),
 ("n", "2. How much does that ability vary between individual reviewers, and does the variation come from the reviewers or from the records?"),
 ("n", "3. Do reviewers using a structured review agree with each other closely enough for a single judgment to be relied on?"),
-("p", "The answers are mixed in a way that matters for practice. A panel of professionals detected the difference well above chance and above a target set before the data were seen. Individual reviewers, though, varied widely, and agreement between them fell short of the registered standard. Human review of AI-drafted records therefore looks feasible as a collective judgment and unproven as an individual one. The rest of the paper sets out the literature, the design and the results, and then considers what they imply for how organisations organise, staff and pay for review."),
+("p", "The answers are mixed in a way that matters for practice. A panel of experts detected the difference well above chance and above a target set before the data were seen. Individual reviewers, though, varied widely, and agreement between them fell short of the registered standard. Human review of AI-drafted records therefore looks feasible as a collective judgment and unproven as an individual one. The rest of the paper sets out the literature, the design and the results, and then considers what they imply for how organisations organise, staff and pay for review."),
 
 ("h1", "LITERATURE REVIEW"),
 ("h2", "Accountability Depends on the Record"),
-("p", "Bovens (2007) describes accountability as a relationship in which an actor must explain and justify conduct to a forum that can ask questions, pass judgement and impose consequences. Every stage of that relationship needs information about what the actor did and why. Where the record cannot provide it, the forum has to reconstruct events from argument and memory, and accountability weakens even when every formal step has been followed. Mashaw (1983) argues that mass administrative adjudication should be judged on whether it reaches accurate decisions consistently and can justify them. Tyler (2006) shows that people accept decisions, including unfavourable ones, largely according to whether they see the process as fair, and being given reasons is part of that judgement. A record that loses its own reasoning undermines both the justification Mashaw emphasises and the legitimacy Tyler describes."),
+("p", "Bovens (2007) describes accountability as a relationship in which an actor must explain and justify conduct to a forum that can ask questions, pass judgment and impose consequences. Every stage of that relationship needs information about what the actor did and why. Where the record cannot provide it, the forum has to reconstruct events from argument and memory, and accountability weakens even when every formal step has been followed. Mashaw (1983) argues that mass administrative adjudication should be judged on whether it reaches accurate decisions consistently and can justify them. Tyler (2006) shows that people accept decisions, including unfavourable ones, largely according to whether they see the process as fair, and being given reasons is part of that judgment. A record that loses its own reasoning undermines both the justification Mashaw emphasises and the legitimacy Tyler describes."),
 ("p", "Transparency is often offered as the remedy, yet its effects depend on what is disclosed. In an experiment, Grimmelikhuijsen and Meijer (2014) find that transparency raises the perceived trustworthiness of a government organisation only under certain conditions, depending on the content released and on citizens' prior views. The OECD (2017) treats public trust as an economic asset as well as a political one, tied to compliance, to the cost of carrying out policy and to people's willingness to deal with institutions. Ananny and Crawford (2018) argue that seeing a system is different from being able to hold it to account. A record can therefore be available and still be of little use to the person reading it."),
 ("h2", "Artificial Intelligence, Automation and the Opacity of Decisions"),
 ("p", "Citron (2008) warns that automated systems can hollow out notice and hearing rights when the logic of a decision sits in software rather than in the record. Kaminski and Urban (2021) set out a right to contest automated decisions, which assumes that the grounds of a decision can be found. Cobbe, Lee and Singh (2021) propose that automated decision-making be built for review from the outset, with the necessary record-keeping designed in."),
@@ -89,13 +89,13 @@ BODY = [
 ("p", "Before verification began, the first author recorded a classification for each record together with the specific evidentiary gap or support behind it. That document was time-stamped and left unchanged. Three separate large-language-model instances then classified all 24 records under the same operational rule, with no access to the intended labels or to each other, producing 72 classifications. All three reproduced the intended classification for every record, so the registered adjudication step was never triggered and no label changed. The registration called for two passes with adjudication if they disagreed; three were run."),
 ("p", "This check confirms that the classification follows consistently from the rule and that it was not adjusted to fit reviewers' answers after the event. It falls short of independent validation, since the automated raters were briefed by the authors on what the two classes mean. No human has yet replicated the reference independently. Unanimous agreement across all 24 records is also a further sign that the corpus contains clear cases."),
 ("h2", "Participants"),
-("p", "Reviewers were credentialed practitioners and researchers in AI governance, compliance, audit, human resources, investigations, data privacy, records management and law, recruited through professional networks. By the data lock, 16 had completed all 24 records. They worked in 11 countries on five continents: Australia, Germany, India, Nigeria, Poland, Singapore, South Korea, Spain, the United Arab Emirates, the United Kingdom and the United States. Another eleven accepted an invitation but never started. Reviewers did not know the reference classification, could not see each other's answers and were not told that the corpus was balanced. All took part unpaid and in a personal capacity. Because the panel chose to take part out of interest in documentation governance, it represents no defined population."),
+("p", "All reviewers were credentialed experts, practitioners and researchers in AI governance, compliance, audit, human resources, investigations, data privacy, records management and law, recruited through professional networks. By the data lock, 16 had completed all 24 records. They worked in 11 countries on five continents: Australia, Germany, India, Nigeria, Poland, Singapore, South Korea, Spain, the United Arab Emirates, the United Kingdom and the United States. Another eleven accepted an invitation but never started. Reviewers did not know the reference classification, could not see each other's answers and were not told that the corpus was balanced. All took part unpaid and in a personal capacity. Because the panel chose to take part out of interest in documentation governance, it represents no defined population."),
 ("h2", "Analysis"),
 ("p", "Accuracy was calculated for each reviewer. The panel estimate is the mean of the 16 reviewer accuracies with a Student t interval, so each reviewer counts as one independent unit. Treating all 384 judgments as independent would overstate precision, since one reviewer's answers reflect one person's threshold. Where a reviewer resubmitted a record, the latest answer was used. The registered exclusion rule, which removed anyone completing fewer than 18 records, excluded nobody. Of 385 stored rows after de-duplication, one was an administrative marker and was dropped, leaving 384 scorable judgments."),
 ("p", "The registered detection criterion had two parts. The lower bound of the 95 percent confidence interval had to exceed 0.50, the chance rate on a balanced corpus, and the point estimate had to reach 0.70. The 0.70 figure was a practical floor chosen in advance; it was not derived from any cost model, and readers can judge the reported interval against their own threshold."),
 ("p", "After registration, a mixed-effects logistic model with crossed random intercepts for reviewer and record was added to separate differences between reviewers from differences in record difficulty (Barr et al., 2013; Bates et al., 2015). It was fitted by Laplace-approximated maximum likelihood with profile-likelihood intervals. Because it was added later, it is treated as exploratory and plays no part in the registered criterion."),
 ("h2", "Reliability Analysis"),
-("p", "Agreement between reviewers was measured in a separate sample, where raters applied a five-condition structured review to a shared set of records. The five conditions ask whether the conclusion can be reconstructed from the record alone, whether the record identifies the basis for its conclusions, whether its chronology holds together, whether the reasoning from evidence to conclusion can be followed, and whether the record contains enough evidence for the weight of the decision. Some raters were invited directly and others enrolled through an open review page. The two groups are reported separately because they arrived by different routes, which says nothing about their expertise."),
+("p", "Agreement between reviewers was measured in a separate sample, where raters applied a five-condition structured review to a shared set of records. The five conditions ask whether the conclusion can be reconstructed from the record alone, whether the record identifies the basis for its conclusions, whether its chronology holds together, whether the reasoning from evidence to conclusion can be followed, and whether the record contains enough evidence for the weight of the decision. Some raters were invited directly and others enrolled through an open review page. All raters were experienced practitioners. The two groups are reported separately because they arrived by different routes, which says nothing about their expertise."),
 ("p", "Gwet's (2008) AC1 was registered as the primary coefficient because it copes better than kappa with skewed category distributions (Byrt et al., 1993; Feinstein & Cicchetti, 1990); Krippendorff's (2004) alpha and Fleiss' (1971) kappa were computed alongside it. The registered criterion required a point estimate of at least 0.61 and a lower 95 percent confidence bound of at least 0.41. Only labels recorded under the five-condition review were analysed, keeping each rater's latest label per record. Sixteen labels from raters who worked under an unstructured baseline prompt were left out, because those raters were answering a different question with a different tool and mixing the two would measure agreement between methods instead of the reliability of one."),
 
 ("h1", "RESULTS"),
@@ -137,34 +137,34 @@ BODY = [
 
 ("h1", "DISCUSSION"),
 ("h2", "What the Results Show"),
-("p", "Reviewers who had never seen the records and did not know the answers identified unsupported conclusions in AI-drafted files at 83.9 percent, comfortably above a target set before the data came in. At least for clear cases, then, the problem is recognisable to independent professionals, and human review has a factual basis on which to build."),
-("p", "Individual results temper that conclusion. Accuracy ran from 37.5 to 100 percent, and most of the spread came from the reviewers. Agreement between raters also missed its registered lower bound. Detection worked as something a group of reviewers can do; for any single reviewer it remains unproven."),
+("p", "Reviewers who had never seen the records and did not know the answers identified unsupported conclusions in AI-drafted files at 83.9 percent, comfortably above a target set before the data came in. At least for clear cases, then, the problem is recognisable to independent experts, and human review has a factual basis on which to build."),
+("p", "Individual results temper that conclusion. Every reviewer was a credentialed expert, yet accuracy ran from 37.5 to 100 percent, and most of the spread came from the reviewers. Expertise alone did not guarantee dependable judgment. Agreement between raters also missed its registered lower bound. Detection worked as something a group of reviewers can do; for any single reviewer it remains unproven."),
 ("h2", "Socioeconomic Implications"),
-("p", "Staffing comes first. Organisations usually plan review on the basis that one competent person per file is enough. For AI-drafted records, these results cast doubt on that assumption. A panel figure tells a manager little about the colleague who will actually read a given file, and nothing in the file reveals which kind of reviewer it got. Making review dependable could mean calibrating reviewers against cases with known answers, sending a sample of files to a second reader, or adjudicating disagreements. All of these take staff time. Drafting tools are adopted largely to save that time (Mushkudiani et al., 2026), so part of the saving may have to be spent on checking the output. How much depends on the stakes of the decisions and on what errors cost, neither of which this study measured."),
-("p", "Fairness is the second concern. An unsupported record that passes review does not disappear. Its cost comes back later, usually as an appeal the affected person has to bring or as a decision the organisation cannot defend. Because reviewers differ so much, whether a particular person's flawed file is caught depends partly on which reviewer it reaches. Nobody intends that inequality, and the person affected cannot see it. In employment, benefits and public services, where the individual usually has far fewer resources than the institution, it adds to the uneven burden described in the Introduction. van der Nest and Sheik (2026) describe a related imbalance in algorithmic management, where oversight is most needed exactly where workers have the least voice."),
+("p", "Staffing comes first. Organisations usually plan review on the basis that one competent person per file is enough. For AI-drafted records, these results cast doubt on that assumption. A panel figure tells a manager little about the colleague who will actually read a given file, and nothing in the file reveals which kind of reviewer it got. Making review dependable could mean calibrating reviewers against cases with known answers, sending a sample of files to a second reader, or adjudicating disagreements. All of these take staff time. Drafting tools are often adopted for productivity gains of this kind (Mushkudiani et al., 2026), so part of the saving may have to be spent on checking the output. How much depends on the stakes of the decisions and on what errors cost, neither of which this study measured."),
+("p", "Fairness is the second concern. An unsupported record that passes review does not disappear. Its cost comes back later, usually as an appeal the affected person has to bring or as a decision the organisation cannot defend. Because reviewers differ so much, whether a particular person's flawed file is caught depends partly on which reviewer it reaches. Nobody intends that inequality, and the person affected cannot see it. In employment, benefits and public services, where the individual usually has far fewer resources than the institution, it adds to the uneven burden described in the Introduction. Van der Nest and Sheik (2026) report a related gap in algorithmic management: in the research they reviewed, the points at which algorithmic scores turn into sanctions were the least examined."),
 ("p", "Capacity differs between institutions as well as between reviewers. A large employer or national agency can afford to train reviewers, run calibration exercises and pay for a second reading of its most consequential files. A small municipality, a charity or a firm with a single compliance officer usually cannot. Those smaller bodies may be the keenest adopters of drafting tools, since they are short of staff, and they are the least able to absorb the checking that the tools appear to require. If that pattern holds, generative drafting could widen the gap in decision quality between well-resourced and poorly resourced institutions, and the people who deal with the second group would bear the difference. This is a hypothesis that the present data cannot test. It does suggest that guidance and shared resources for review, such as common calibration sets, may matter as much for smaller institutions as the drafting tools themselves."),
-("p", "Trust and regulation form the third concern. The OECD (2017) links public trust to compliance and to the cost of implementing policy, and Grimmelikhuijsen and Meijer (2014) show that transparency builds trust only when what is released makes sense to the reader. If AI-drafted records spread faster than institutions learn to check them, more will be disclosed while less is understood. Rules requiring human oversight of high-risk systems (Regulation (EU) 2024/1689, 2024) presume that oversight works. These results suggest it should be measured, and that the individual reviewer, as well as the review process, is the right thing to measure. Oluka (2026) reaches a compatible conclusion for municipal finance, where digital compliance tools helped only alongside capacity, coordination and accountability."),
+("p", "Trust and regulation form the third concern. The OECD (2017) links public trust to compliance and to the cost of implementing policy, and Grimmelikhuijsen and Meijer (2014) show that transparency builds trust only when what is released makes sense to the reader. If AI-drafted records spread faster than institutions learn to check them, more will be disclosed while less is understood. Rules requiring human oversight of high-risk systems (European Union, 2024) presume that oversight works. These results suggest it should be measured, and that the individual reviewer, as well as the review process, is the right thing to measure. Oluka (2026) reaches a compatible conclusion for municipal finance, where the impact of digital compliance tools was constrained by poor data integration, limited digital readiness and uneven accountability."),
 ("p", "The direction of reviewer error has its own economics. Sensitivity was somewhat higher than specificity here, though the difference could not be tested. Both errors cost money. A missed unsupported record pushes costs onto the affected person and onto whoever must later reconstruct the decision. A sound record wrongly flagged causes delay, repeat review, paperwork and reviewer fatigue, and a slow decision can sometimes harm a person more than an imperfect one. Which error to tolerate depends on the stakes and on local costs, and those costs are best stated openly before review thresholds are set."),
 ("h2", "Implications for Practice"),
 ("p", "Several low-cost steps follow from the findings. An organisation can test its own reviewers on a small set of files whose answers are known, instead of assuming a published panel figure applies to them. It can send its highest-stakes files to two reviewers and treat their disagreement as a reason to look again. It can ask reviewers to record why they passed a file as well as whether they did, so later auditors can see the reasoning. And it can track how often reviewed files are later found deficient on appeal or audit, which is the evidence needed to judge whether review is worth what it costs. None of these steps was tested here, and each should be evaluated where it is used."),
 ("h2", "Relation to the Companion Study"),
-("p", "The companion study of 32 public-records determinations (Young & Wikes, 2026) came at the same question from the other side. It used real public documents and found that a record-level review matched independent government auditors in all five cases with comparable audit findings, and that it bore no relation to appellate outcome. Its main weakness was reliance on one reader. This study used constructed documents and a large international panel, so its strength and weakness are reversed. Taken together, they suggest that whether a record can be reconstructed is a property that can be assessed on real material and recognised by independent professionals, and that the weak link in practice may be the consistency of individual reviewers. Both studies share authors and neither validates the other, so the agreement between them is a reason to test further."),
+("p", "The companion study of 32 public-records determinations (Young & Wikes, 2026) came at the same question from the other side. It used real public documents and found that a record-level review matched independent government auditors in all five cases with comparable audit findings, and that it bore no relation to appellate outcome. Its main weakness was reliance on one reader. This study used constructed documents and a large international panel, so its strength and weakness are reversed. Taken together, they suggest that whether a record can be reconstructed is a property that can be assessed on real material and recognised by independent experts, and that the weak link in practice may be the consistency of individual reviewers. Both studies share authors and neither validates the other, so the agreement between them is a reason to test further."),
 ("h2", "AI Drafting as Context"),
 ("p", "All 24 records were AI-generated, and the study included no human-written comparison set. People write unsupported records as well, so the results say nothing about whether AI drafting causes the problem or makes it harder to detect. AI-drafted records were chosen because reviewers increasingly face them and because their polish strips away cues a reviewer might otherwise use. A matched comparison of AI-drafted and human-drafted files would be needed to test whether drafting source affects detection."),
 ("h2", "Limitations"),
-("p", "The first author built the records and set their classification. Automated reproduction shows that the reference was not fitted to the results, but the reference still reflects the authors' definition, so the finding is that independent experts recognise that definition (Jacobs & Wallach, 2021). The corpus held only clear cases in equal numbers, and its accuracy, sensitivity and specificity should not be carried over to ordinary files or to the share of unsupported records found in practice. The panel was small, credentialed and self-selected, and how less experienced reviewers or people outside these fields would perform is unknown. With one to three reviewers per country, the study could not test for national or linguistic differences, and as Frimpong (2026) argues, an instrument's validity in one setting cannot simply be assumed in another. Why reviewers differed was not analysed in advance and could not be explained with 16 people. The reliability evidence is interim, rests on ten records and missed its registered lower bound. A complete generation log for the records, and full execution records for the automated reference check, were not kept. The study was not reviewed by an ethics committee, as explained in the Informed Consent Statement. Finally, the authors defined the construct, built the records, set the reference, recruited the participants and planned the analysis; registration, blinding, automated reproduction of the reference and the reporting of a failed criterion reduce that dependence without eliminating it."),
+("p", "The first author built the records and set their classification. Automated reproduction shows that the reference was not fitted to the results, but the reference still reflects the authors' definition, so the finding is that independent experts recognise that definition (Jacobs & Wallach, 2021). The corpus held only clear cases in equal numbers, and its accuracy, sensitivity and specificity should not be carried over to ordinary files or to the share of unsupported records found in practice. The expert panel was small and self-selected, and how less experienced reviewers or people outside these fields would perform is unknown. With one to three reviewers per country, the study could not test for national or linguistic differences, and as Frimpong (2026) argues, an instrument's validity in one setting cannot simply be assumed in another. Why reviewers differed was not analysed in advance and could not be explained with 16 people. The reliability evidence is interim, rests on ten records and missed its registered lower bound. A complete generation log for the records, and full execution records for the automated reference check, were not kept. The study was not reviewed by an ethics committee, as explained in the Informed Consent Statement. Finally, the authors defined the construct, built the records, set the reference, recruited the participants and planned the analysis; registration, blinding, automated reproduction of the reference and the reporting of a failed criterion reduce that dependence without eliminating it."),
 ("h2", "Further Research"),
 ("p", "The most useful next steps follow from those limitations. A corpus built and classified by researchers with no stake in the construct would test whether the finding survives independent definition. Records spanning supported, partly supported, ambiguous and unsupported files would show how reviewers perform where judgment is hard. A larger reliability set would allow informative confidence bounds. A matched comparison of AI-drafted and human-drafted files would address the question of drafting source, and a trial comparing unaided with structured review would show whether a review instrument helps. Field studies using properly authorised real records, under independent ethical review, would test performance in practice. Studies that measure the staff time needed for calibration and double review would allow the cost trade-off discussed above to be put in numbers."),
 
 ("h1", "CONCLUSIONS"),
-("p", "Professional reviewers, working independently and without the answer key, distinguished supported from unsupported conclusions in AI-drafted decision records at a mean accuracy of 83.9 percent, clearing a target fixed in advance. Sixteen reviewers in 11 countries made 384 judgments."),
+("p", "Expert reviewers, working independently and without the answer key, distinguished supported from unsupported conclusions in AI-drafted decision records at a mean accuracy of 83.9 percent, clearing a target fixed in advance. Sixteen reviewers in 11 countries made 384 judgments."),
 ("p", "The same data show where that result stops. Accuracy ranged from 37.5 to 100 percent between reviewers. Most of that spread came from the reviewers rather than the records, and agreement between raters fell short of its registered standard. Reviewers succeeded as a panel. As individuals they could not yet be relied on, and organisations should not treat a panel figure as the accuracy of the person they assign."),
 ("p", "For employers and public bodies adopting generative drafting, human review is a safeguard whose value depends on who performs it and how it is organised. Its effectiveness should be measured rather than assumed, and the staff cost of calibration or double review should be weighed against the costs that unsupported decisions place on the people they affect. These conclusions rest on constructed clear-cut records and a reference set by the authors. Within those limits, the study shows that whether a record carries the basis for its conclusion can be measured, and that professional judgments about it differ substantially from one reviewer to the next."),
 
 ("h1", "AUTHOR CONTRIBUTIONS"),
 ("p", "Conceptualization, P.W.; methodology, P.W. and U.H.; validation, U.H.; formal analysis, P.W. and U.H.; investigation, P.W.; resources, P.W.; data curation, P.W.; writing (original draft preparation), P.W.; writing (review and editing), P.W. and U.H.; supervision of the reliability and validation framework, U.H.; project administration, P.W. P.W. conceived the construct and the review method, constructed the corpus, wrote the reference classification and assembled the reviewer panel. U.H. designed the reliability and validation framework: the reference-panel design, the chance-corrected agreement statistics, and the registered decision thresholds and analysis plan. Neither author took part in the automated reproduction of the reference classification or graded any record in the detection panel. All authors have read and agreed to the published version of the manuscript."),
 ("h1", "ACKNOWLEDGEMENTS"),
-("p", "The authors thank the sixteen independent professionals who served on the detection panel and the raters who took part in the reliability study, all of whom contributed unpaid and in a personal capacity."),
+("p", "The authors thank the sixteen independent experts who served on the detection panel and the raters who took part in the reliability study, all of whom contributed unpaid and in a personal capacity."),
 ("h1", "STATEMENT ON THE USE OF AI TOOLS"),
 ("p", "AI tools were part of the research design and are described where they occur: the corpus was generated with large-language-model assistance and edited by the first author, and the reference classification was reproduced by three automated raters briefed by the authors. Generative AI tools also supported the writing and production of this manuscript, helping restructure and edit the text under the authors' direction. Every research judgment was made by the authors, who reviewed all content and take full responsibility for it. AI tools do not meet the criteria for authorship and are not listed as authors."),
 ("h1", "FUNDING"),
@@ -204,17 +204,90 @@ REFERENCES = [
     'Oluka, A. (2026). Irregular and wasteful expenditure as socio-economic challenges for local municipalities: RegTech and SupTech as digital mechanisms of compliance and oversight. SocioEconomic Challenges, 10(3), 17–39. https://doi.org/10.61093/sec.10(3).17-39.2026',
     'Raji, I. D., Smart, A., White, R. N., Mitchell, M., Gebru, T., Hutchinson, B., Smith-Loud, J., Theron, D., & Barnes, P. (2020). Closing the AI accountability gap: Defining an end-to-end framework for internal algorithmic auditing. In Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency (pp. 33–44). ACM. https://doi.org/10.1145/3351095.3372873',
     'Ransohoff, D. F., & Feinstein, A. R. (1978). Problems of spectrum and bias in evaluating the efficacy of diagnostic tests. New England Journal of Medicine, 299(17), 926–930. https://doi.org/10.1056/NEJM197810262991705',
-    'Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act). (2024). Official Journal of the European Union, L, 2024/1689.',
+    'European Union. (2024). Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence (Artificial Intelligence Act). Official Journal of the European Union, L, 2024/1689.',
     'Tyler, T. R. (2006). Why people obey the law. Princeton University Press.',
     'Whiting, P. F., Rutjes, A. W. S., Westwood, M. E., Mallett, S., Deeks, J. J., Reitsma, J. B., Leeflang, M. M. G., Sterne, J. A. C., & Bossuyt, P. M. M. (2011). QUADAS-2: A revised tool for the quality assessment of diagnostic accuracy studies. Annals of Internal Medicine, 155(8), 529–536. https://doi.org/10.7326/0003-4819-155-8-201110180-00009',
     'Young, S., & Wikes, P. (2026). Can public-records determinations be independently reconstructed? Evidence from 32 public cases [Preprint]. SSRN. https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7591521',
 ]
 
 
-def add_runs(par, text):
-    for i, chunk in enumerate(re.split(r"\*\*", text)):
-        if chunk:
-            par.add_run(chunk).bold = (i % 2 == 1)
+from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+
+FONT = "Cambria"
+BOOK_TITLES = (
+    "Content analysis: An introduction to its methodology",
+    "Bureaucratic justice: Managing social security disability claims",
+    "Trust and public policy: How better governance can help rebuild public trust",
+    "Why people obey the law",
+    "Can public-records determinations be independently reconstructed? Evidence from 32 public cases",
+)
+
+
+def _ppr(par, jc=None, line=None, before=None, after=None, first=None, left=None, hanging=None, style_id=None):
+    ppr = par._p.get_or_add_pPr()
+    if style_id:
+        ps = ppr.find(qn("w:pStyle"))
+        if ps is None:
+            ps = OxmlElement("w:pStyle")
+            ppr.insert(0, ps)
+        ps.set(qn("w:val"), style_id)
+    if line is not None or before is not None or after is not None:
+        sp = OxmlElement("w:spacing")
+        if line is not None:
+            sp.set(qn("w:line"), str(line))
+            sp.set(qn("w:lineRule"), "auto")
+        if before is not None:
+            sp.set(qn("w:before"), str(before))
+        if after is not None:
+            sp.set(qn("w:after"), str(after))
+        ppr.append(sp)
+    if first is not None or left is not None or hanging is not None:
+        ind = OxmlElement("w:ind")
+        if left is not None:
+            ind.set(qn("w:left"), str(left))
+        if first is not None:
+            ind.set(qn("w:firstLine"), str(first))
+        if hanging is not None:
+            ind.set(qn("w:hanging"), str(hanging))
+        ppr.append(ind)
+    if jc:
+        j = OxmlElement("w:jc")
+        j.set(qn("w:val"), jc)
+        ppr.append(j)
+
+
+def _run(par, text, size, bold=False, italic=False, font=True):
+    r = par.add_run(text)
+    if font:
+        r.font.name = FONT
+    r.font.size = docx.shared.Pt(size)
+    r.bold = bold or None
+    r.italic = italic or None
+    return r
+
+
+def _marked(par, text, size, base_italic=False):
+    """**bold** and *italic* markers."""
+    for chunk in re.split(r"(\*\*.+?\*\*|\*.+?\*)", text):
+        if not chunk:
+            continue
+        if chunk.startswith("**"):
+            _run(par, chunk[2:-2], size, bold=True, italic=base_italic)
+        elif chunk.startswith("*"):
+            _run(par, chunk[1:-1], size, italic=not base_italic)
+        else:
+            _run(par, chunk, size, italic=base_italic)
+
+
+def _apa_italics(ref):
+    for t in BOOK_TITLES:
+        if t in ref:
+            return ref.replace(t, "*" + t + "*", 1)
+    ref = re.sub(r"In (Proceedings[^(]*?) \(pp\.", r"In *\1* (pp.", ref)
+    ref = ref.replace("Official Journal of the European Union, L, 2024/1689", "*Official Journal of the European Union*, L, 2024/1689")
+    ref = re.sub(r"\. ([A-Z][A-Za-z&:' -]+?, \d+)(\(\d+(?:/\d+)?\))?, ", lambda m: ". *" + m.group(1) + "*" + (m.group(2) or "") + ", ", ref, count=1)
+    return ref
 
 
 def main(template, out):
@@ -226,47 +299,74 @@ def main(template, out):
             body.remove(el)
     styles = {s.name for s in d.styles}
 
-    def para(text, style):
-        p = d.add_paragraph(style=style if style in styles else None)
-        add_runs(p, text)
-        return p
+    def styled(style):
+        return d.add_paragraph(style=style if style in styles else None)
 
-    para(TITLE, "AR&P Level 0 Title of the Manuscript Style")
+    def body_par(text, first=283, left=None):
+        par = styled("Normal")
+        _ppr(par, jc="both", line=276, before=0, after=0, first=first, left=left)
+        _marked(par, text, 10)
+        return par
+
+    par = styled("AR&P Level 0 Title of the Manuscript Style")
+    _ppr(par, jc="center")
+    _run(par, TITLE, 16, bold=True)
     for a in AUTHORS:
-        para(a, "AuthorLine")
-    p = d.add_paragraph(style="AbstractText")
-    p.add_run("Abstract: ").bold = True
-    p.add_run(ABSTRACT).italic = True
-    p = d.add_paragraph(style="KeywordsText")
-    p.add_run("Keywords: ").bold = True
-    p.add_run(KEYWORDS + ".")
-    p = d.add_paragraph(style="KeywordsText")
-    p.add_run("JEL Classification: ").bold = True
-    p.add_run(JEL)
+        par = styled("AuthorLine")
+        _marked(par, a, 9)
+    par = styled("AbstractText")
+    _ppr(par, jc="both")
+    _run(par, "Abstract:", 10, bold=True)
+    _run(par, " ", 10)
+    _run(par, ABSTRACT, 10, italic=True)
+    for label, value in (("Keywords:", KEYWORDS + "."), ("JEL Classification:", JEL)):
+        par = styled("KeywordsText")
+        _run(par, label, 8, bold=True)
+        _run(par, " " + value, 8)
 
     for kind, val in BODY:
         if kind == "h1":
-            para(val, "AR&P Level 1 Style")
+            styled("AR&P Level 1 Style").add_run(val)
         elif kind == "h2":
-            para(val, "AR&P Level 2 Style")
-        elif kind in ("p", "n"):
-            para(val, "Normal")
+            styled("AR&P Level 2 Style").add_run(val)
+        elif kind == "p":
+            body_par(val)
+        elif kind == "n":
+            body_par(val, first=0, left=283)
         elif kind == "caption":
-            para(val, "AR&P Title of the Figures and Tables Style")
+            par = styled("AR&P Title of the Figures and Tables Style")
+            _ppr(par, jc="center")
+            r = par.add_run(val)
+            r.bold = True
         elif kind == "note":
-            para(val, "AR&P Source and Notes Style")
+            par = styled("AR&P Source and Notes Style")
+            _ppr(par, jc="center")
+            _run(par, val, 8, italic=True)
         elif kind == "table":
             t = d.add_table(rows=len(val), cols=len(val[0]))
             t.style = "Table Grid"
-            for r, row in enumerate(val):
-                for c, cell in enumerate(row):
-                    t.cell(r, c).text = cell
-                    if r == 0:
-                        for run in t.cell(r, c).paragraphs[0].runs:
-                            run.bold = True
-    para("REFERENCES", "AR&P Level 1 Style")
-    for ref in REFERENCES:
-        para(ref, "Normal")
+            tblpr = t._tbl.tblPr
+            w = OxmlElement("w:tblW")
+            w.set(qn("w:type"), "pct")
+            w.set(qn("w:w"), "5000")
+            for old in tblpr.findall(qn("w:tblW")):
+                tblpr.remove(old)
+            tblpr.append(w)
+            hdr = t.rows[0]._tr.get_or_add_trPr()
+            th = OxmlElement("w:tblHeader")
+            th.set(qn("w:val"), "true")
+            hdr.append(th)
+            for r_i, row in enumerate(val):
+                for c_i, cell_text in enumerate(row):
+                    cpar = t.cell(r_i, c_i).paragraphs[0]
+                    _ppr(cpar, jc="left" if c_i == 0 else "center", style_id="Compact")
+                    _run(cpar, cell_text, 9, bold=(r_i == 0))
+    styled("AR&P Level 1 Style").add_run("REFERENCES")
+    for ref in sorted(REFERENCES, key=lambda x: x.lower().replace("van der ", "")):
+        par = styled("Normal")
+        _ppr(par, jc="left", line=276, before=0, after=60, left=283, hanging=283)
+        _marked(par, _apa_italics(ref), 10)
+
     # Drop parts inherited from the template paper: its figures, comments and title metadata.
     part = d.part
     for rid, rel in list(part.rels.items()):
