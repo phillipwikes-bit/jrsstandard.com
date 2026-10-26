@@ -70,4 +70,4 @@ The owner supplied a report titled *JRS Research Publication Strategy: Comprehen
 
 - **AI and Ethics:** CLOSED, REJECTED 2026-10-26.
 - **Transfer:** NOT AUTHORIZED. The owner's report recommends against transferring the manuscript unchanged. No journal has been chosen.
-- **Revision:** not started.
+- **Revision:** OLD: not started. NEW: rebuilt for SocioEconomic Challenges (`research/sec_detection_2026-10-26/`). **Co-author approval to submit received 2026-10-26** (LinkedIn, 2:41 pm, screenshot from the owner): "Yes, I saw the email. Thanks for taking this further. Yes, pls go ahead with this."
