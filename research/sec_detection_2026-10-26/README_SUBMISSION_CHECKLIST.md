@@ -5,11 +5,11 @@
 2. **Lina** (after he agrees): `EMAIL_TO_LINA_DRAFT.txt` with these attachments:
    - `Wikes_Hossain_SEC_manuscript_DRAFT.docx` (the manuscript)
    - `Figure1.png` (separate file at 300 dpi, which the journal requires)
-   - `SEC_cover_letter_form_DRAFT.docx`, completed: fill in the highlighted fields, then print, sign by hand and scan
+   - `SEC_cover_letter_form_DRAFT.docx` (names, positions, ORCIDs and contribution roles only; no contact details or signatures, by owner decision)
    - Keep `SEC_manuscript_ANONYMISED_DRAFT.docx` ready in case the editorial office asks for an anonymised copy for review
 
 ## Still to fill in (owner)
-- Cover letter: both addresses and phone numbers, Ubayet's own email, Web of Science IDs if either of you has one, dates, signatures.
+- Nothing. By owner decision, the cover letter carries no contact information, dates or signatures. If the editorial office asks for a signed form, it can be added then.
 
 ## Risk register
 

@@ -1,7 +1,7 @@
 """Fill the SEC cover-letter form for the Wikes & Hossain detection manuscript.
 
-Personal contact fields (address, phone, co-author email, signatures, dates) are
-left as highlighted [ADD ...] markers for the owner; they are not stored here.
+Owner decision (2026-10-26): no contact information, dates or signatures in
+this form. Only names, positions, ORCID iDs and CRediT roles are filled.
 
 Usage: python3 scripts/fill_sec_cover_letter.py <blank_form.docx> <out.docx>
 """
@@ -14,11 +14,11 @@ TITLE = ("Socioeconomic Challenges of AI-Drafted Decision Records: "
          "Can Expert Reviewers Detect Unsupported Conclusions?")
 AUTHORS = [
     {"name": "Phillip Wikes", "position": "Independent Researcher",
-     "email": "info@jrsstandard.com", "orcid": "0009-0009-7230-3661",
+"orcid": "0009-0009-7230-3661",
      "roles": {"Conceptualisation", "Methodology", "Data curation", "Formal analysis", "Investigation",
                "Project administration", "Resources", "Writing – original draft", "Writing – review & editing"}},
     {"name": "Ubayet Hossain, FRM", "position": "Independent Financial Risk & Model Validation Professional",
-     "email": "[ADD: his own email address]", "orcid": "0009-0001-5304-2170",
+"orcid": "0009-0001-5304-2170",
      "roles": {"Methodology", "Validation", "Formal analysis", "Supervision", "Writing – review & editing"}},
 ]
 
@@ -48,15 +48,12 @@ def main(src, out):
             for blank in ("_________________", "_______"):
                 if blank in r.text:
                     r.text = r.text.replace(blank, TITLE)
+    drop = []
     for start, tbl, a in ((8, 19, AUTHORS[0]), (21, 32, AUTHORS[1])):
         put(P(start + 1), a["position"] + "; no institutional affiliation")
-        put(P(start + 2), "[ADD BEFORE SENDING]")
-        put(P(start + 3), "Not applicable")
-        put(P(start + 4), a["email"])
-        put(P(start + 5), "[ADD BEFORE SENDING]")
         put(P(start + 6), a["orcid"])
-        put(P(start + 7), "[ADD IF AVAILABLE]")
-        put(P(start + 8), "[DATE]")
+        # Owner decision: no contact information, dates or signatures in this form.
+        drop += [els[start + k] for k in (2, 3, 4, 5, 7, 8)]
         P(start).add_run(" " + a["name"]).bold = True
         for row in T(tbl).rows:
             cells = row.cells
@@ -64,14 +61,11 @@ def main(src, out):
                 role = cells[c].text.strip().replace("-", "–")
                 if role in a["roles"]:
                     cells[c + 1].text = "X"
-    sig = T(128)
-    sig.rows[1].cells[0].text = AUTHORS[0]["name"]
-    sig.rows[2].cells[0].text = AUTHORS[1]["name"]
-    for row in list(sig.rows)[3:]:
-        row._tr.getparent().remove(row._tr)
-    T(133).rows[1].cells[0].text = AUTHORS[0]["name"]
+    # Signature tables, the print-and-sign instruction and their spacers are removed.
+    drop += [els[i] for i in (127, 128, 129, 130, 132, 133, 134)]
     # Remove unused Author 3-5 and Contributor blocks (elements 33..105).
-    for el in els[33:106]:
+    drop += els[33:106]
+    for el in drop:
         body.remove(el)
     d.save(out)
 
