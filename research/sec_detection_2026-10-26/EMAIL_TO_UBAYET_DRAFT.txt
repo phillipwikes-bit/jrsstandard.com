@@ -1,27 +1,22 @@
-Subject: Our detection paper: a new home, and your permission to submit
+Subject: Our paper, and a quick question
 
 Hi Ubayet,
 
-I wanted you to hear this from me first. AI and Ethics declined our paper. It was a decision on fit: the paper never went to reviewers, and the editor raised no concern about the data, the statistics or your reliability framework. His only point was that our contribution to that particular journal was not clear enough.
+I hope you're doing well. I wanted you to hear this from me first: AI and Ethics passed on our paper. The editor didn't send it out for review, and he didn't question the data or your reliability work at all. He just felt it wasn't the right fit for his journal.
 
-Since then, things have moved in a better direction. Lina Lopa, an editor at SocioEconomic Challenges, contacted me directly and invited me to submit my current manuscripts. It is a peer-reviewed, open-access journal, listed in the Directory of Open Access Journals and published since 2017, and it focuses on the social and economic challenges facing governments and organisations. Stacyann Young's public-records paper is going there as well, so our two studies would appear side by side and support each other.
+The good news is that another door has opened. Lina Lopa, an editor at SocioEconomic Challenges, got in touch with me and invited me to send my current work. It's a peer-reviewed, open-access journal that looks at social and economic challenges for governments and organisations, and Stacyann's public-records paper is going there too, so our two studies would sit nicely side by side.
 
-I have rebuilt our paper for this journal, and I think it is now much stronger. The revised manuscript is attached. The data and every result are unchanged. What has changed:
+I've reworked our paper for them, and honestly, I think it's better for it. The results haven't changed, but the story is much clearer now. The expert panel got it right 83.9 percent of the time, and even the low end of the confidence interval clears our 70 percent target. The part I'm proudest of is that your reliability work is now at the heart of the paper. Individual experts ranged from 37.5 to 100 percent, which tells organisations that one reviewer per file isn't enough. That's a real, practical finding, and it comes from your framework.
 
-- It asks one clear question: can experts tell supported from unsupported conclusions in AI-drafted decision records?
-- It gives a clear answer. The panel of 16 credentialed experts reached 83.9 percent, and even the lower end of the confidence interval (72.7 percent) is above our 70 percent target.
-- Your reliability framework is now central to the paper's message. Individual experts ranged from 37.5 to 100 percent, and the reliability criterion you set shows that one reviewer per file is not enough. That finding gives organisations a practical lesson and is what makes the paper credible.
-- It adds an economic framing that fits the journal: review treated as a monitoring cost, in the tradition of agency theory, with a figure, a strengths section and citations of the journal's own recent work on AI oversight.
+You won't need to pay anything. The fee is 150 euros, it's only charged if the paper is accepted, and I'll cover it myself.
 
-On cost: there is nothing for you to pay. The publication fee is 150 euros after a discount Lina offered, it is charged only if the paper is accepted, and I will pay it in full.
+I've kept your name and title exactly as you chose them, and I've added your ORCID (0009-0001-5304-2170). Just let me know if that isn't the right one.
 
-Your byline is exactly as you set it, "Ubayet Hossain, FRM, Independent Financial Risk & Model Validation Professional", with your ORCID iD 0009-0001-5304-2170, which is the one listed under your name on the ORCID registry. Please tell me if that iD is not yours.
+So my question is this: do I have your permission to submit the paper to SocioEconomic Challenges, with you as co-author?
 
-My question for you is simple: do I have your permission to submit this manuscript, with you as co-author, to SocioEconomic Challenges?
+A quick yes is all I need. If you'd like to change anything first, just send it over and I'll take care of it before anything goes out. I won't submit without hearing from you.
 
-A short "yes" is all I need. If you would like any changes first, especially to the reliability sections or the conclusion, send them and I will make them before anything goes out. Nothing will be submitted without your go-ahead.
+I've attached the manuscript. Thanks so much, Ubayet. I'd really love to see this published with your name on it.
 
-Thank you again. Your framework is what lets this paper say something honest and useful, and I would be glad to see it published with your name on it.
-
-Best regards,
+Best,
 Phillip
