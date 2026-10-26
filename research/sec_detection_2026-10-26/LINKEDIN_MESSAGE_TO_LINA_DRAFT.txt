@@ -1,12 +1,16 @@
 Hi Lina,
 
-I hope you're well. I've just emailed you a second manuscript for SocioEconomic Challenges: "Socioeconomic Challenges of AI-Drafted Decision Records: Can Expert Reviewers Detect Unsupported Conclusions?", co-authored with Ubayet Hossain, FRM.
+I hope you're well. Thank you again for inviting my work. I've just emailed you a second manuscript, co-authored with Ubayet Hossain, FRM: "Socioeconomic Challenges of AI-Drafted Decision Records: Can Expert Reviewers Detect Unsupported Conclusions?"
 
-It's a pre-registered study in which sixteen experts in eleven countries reviewed AI-drafted decision records, and it looks at what that means for staffing, fairness and public trust. It pairs well with Stacyann Young's public-records paper, which is already with you.
+I think it's a strong fit for SocioEconomic Challenges. Employers and public bodies are now using AI to draft the records behind decisions on jobs, benefits and investigations, and they rely on a human reviewer to catch weak ones. Our study tests whether that safeguard actually works.
 
-The Word file is attached to the email. Please let me know if you need anything else from us.
+In a pre-registered study, sixteen credentialed experts in eleven countries made 384 independent judgments. As a panel they caught unsupported records 83.9 percent of the time, clearing our target even at the lower end of the confidence interval. Individually, though, they ranged from 37.5 to 100 percent. In practice that means whether a flawed decision gets caught can depend on who happens to read the file, a cost that falls hardest on the people affected and on smaller institutions with fewer resources.
 
-Thank you again for reaching out. I'm grateful for the opportunity.
+The paper builds on recent work in your journal, including van der Nest and Sheik, Oluka, and Mushkudiani et al., and it complements Stacyann Young's public-records paper, which is already with you. Together the two studies look at the same problem from both sides: real documents, and an independent expert panel.
+
+The Word file is attached to the email. I'd be glad to provide anything else you need.
+
+Thank you for your time and for the opportunity.
 
 Best regards,
 Phillip
