@@ -16,7 +16,7 @@ TITLE = ("Socioeconomic Challenges of AI-Drafted Decision Records: "
 
 AUTHORS = [
     "**Phillip Wikes** (corresponding author, info@jrsstandard.com), Independent Researcher. ORCID: 0009-0009-7230-3661",
-    "**Ubayet Hossain, FRM**, Independent Financial Risk & Model Validation Professional. ORCID: [ADD IF AVAILABLE]",
+    "**Ubayet Hossain, FRM**, Independent Financial Risk & Model Validation Professional. ORCID: 0009-0001-5304-2170",
     "Type of manuscript: research paper",
 ]
 
@@ -172,7 +172,7 @@ BODY = [
 ("h1", "CONFLICT OF INTEREST"),
 ("p", "P.W. created the construct and the review method studied here, constructed the corpus, wrote the reference classification, recruited the panel, has a continuing professional interest in the method and would benefit professionally and commercially from its adoption. U.H. designed the validation and reliability framework and would benefit reputationally from its use. No commercial arrangement is contingent on any result reported here, and no participant had any financial interest in the outcome."),
 ("h1", "DATA AVAILABILITY STATEMENT"),
-("p", "[OWNER TO CONFIRM BEFORE SUBMISSION] The 24 constructed records, the reference classification with the reason for each record, the instructions given to the automated raters and their record-by-record results, aggregate result tables and the analysis scripts will be deposited in Zenodo, with a DOI, before publication: [ZENODO DOI]. Participants consented to the use of their responses in aggregate, so individual reviewer responses are not deposited; de-identified participant-level data are available from the corresponding author on reasonable request. A complete record-level generation log was not retained."),
+("p", "The 24 constructed records, the reference classification with the reason for each record, the instructions given to the automated raters and their record-by-record results, aggregate result tables and the analysis scripts are available from the corresponding author on reasonable request. Participants consented to the use of their responses in aggregate, so individual reviewer responses are not publicly shared; de-identified participant-level data are available from the corresponding author on reasonable request. A complete record-level generation log was not retained."),
 ("h1", "INFORMED CONSENT STATEMENT"),
 ("p", "This study was not reviewed by an institutional review board or ethics committee. It was conducted outside any institution holding one, by independent researchers, with adult professional volunteers making judgments about wholly synthetic documents. No approval or exemption was sought or granted. All participants gave informed consent, took part voluntarily, unpaid and in a personal capacity, and could withdraw at any time before publication. They were told in advance that the reference classification and the composition of the corpus would not be disclosed during review, because disclosure would compromise the blinded task. No personal data beyond name, professional title, country and contact address was collected, no vulnerable population was involved, and responses are reported only in aggregate. Independent ethical review would be sought for any successor study involving real records or real case outcomes."),
 ]

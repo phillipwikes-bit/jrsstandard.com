@@ -15,7 +15,7 @@ A few points for transparency:
 
 1. The manuscript has not been posted as a preprint and is not under consideration elsewhere. An earlier version was declined by another journal on scope, without peer review.
 2. The study involved adult professional volunteers who gave informed consent. It was not reviewed by an institutional ethics committee, because the authors are independent researchers without an institutional affiliation. The manuscript states this plainly. All documents the participants reviewed were constructed for the study, and no personal data beyond name, professional title, country and contact details was collected. Please let me know if the editorial office needs anything further on this point before the paper can be considered.
-3. The data and analysis materials will be deposited in Zenodo with a DOI before publication.
+3. The study materials, aggregate data and analysis scripts are available from the authors on reasonable request. Individual participant responses are not shared publicly, because participants consented to aggregate use only.
 
 I would be grateful if the same discount could apply to this submission.
 
