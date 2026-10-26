@@ -84,7 +84,7 @@ BODY = [
 ("p", "A conclusion is referred to here as supported when an independent reviewer can find, in the record alone, the evidence it rests on and can follow the reasoning from that evidence to the conclusion. A conclusion is unsupported when the record states it without that basis, so the reviewer cannot work out why the decision went as it did. The risk that unsupported records create is referred to as decision reconstruction risk."),
 ("p", "Whether a record can be reconstructed depends partly on who reads it and what they may bring to it. The study therefore fixed one standpoint: a reviewer who is competent in the domain, has the record and generally available professional knowledge, and has no access to the original decision-maker or to papers outside the file. A supported conclusion may still be wrong, but its error is visible and can be challenged; an unsupported conclusion may happen to be right, but nobody reading the file can confirm it."),
 ("h2", "Design and Registration"),
-("p", "The study measured detection. Independent reviewers classified a balanced corpus of constructed records, and their answers were scored against a reference classification fixed beforehand. The protocol, analysis plan and decision thresholds were fixed and time-stamped on 6 July 2026, before the reference classification was verified and before any accuracy analysis was run; the dated documents are available from the authors. Data collection closed on 15 August 2026. The design has no comparison arm. A separate randomised study, using the same records with different participants, compares review with and without a structured instrument and is reported elsewhere."),
+("p", "The study measured detection. Independent reviewers classified a balanced corpus of constructed records, and their answers were scored against a reference classification fixed beforehand. The protocol, analysis plan and decision thresholds were fixed and time-stamped on 6 July 2026, before the reference classification was verified and before any accuracy analysis was run; the dated documents are available from the authors. Data collection closed on 15 August 2026. The design has no comparison arm. A separate randomised study, using the same records with different participants, compares review with and without a structured instrument; it will be reported separately and in full, whatever its result, and nothing in this paper depends on it."),
 ("h2", "Corpus"),
 ("p", "The corpus consists of 24 constructed records from settings where decisions carry real consequences: human resources and employment, investigations, compliance and audit, public records, and AI-assisted summaries. Twelve records are supported and twelve unsupported. They were shown unlabelled and in random order. Each was generated with large-language-model assistance and then edited by the first author to fit its intended class, and none is based on a real case, person or organisation. The study did not keep a construction log detailed enough to reconstruct how each record was generated (model and version, date, prompt and extent of editing)."),
 ("p", "Records were built at the two ends of the quality range so that the detection question could be posed cleanly. Real files are spread across that range, with many partly supported or ambiguous. Clear cases make classification easier, much as a diagnostic test assessed on obvious cases overstates how it performs in the clinic (Ransohoff & Feinstein, 1978; Whiting et al., 2011). The accuracy figures below describe performance on clear cases and should be read that way."),
@@ -174,7 +174,7 @@ BODY = [
 ("h1", "AUTHOR CONTRIBUTIONS"),
 ("p", "Conceptualization, P.W.; methodology, P.W. and U.H.; validation, U.H.; formal analysis, P.W. and U.H.; investigation, P.W.; resources, P.W.; data curation, P.W.; writing (original draft preparation), P.W.; writing (review and editing), P.W. and U.H.; supervision of the reliability and validation framework, U.H.; project administration, P.W. P.W. conceived the construct and the review method, constructed the corpus, wrote the reference classification and assembled the reviewer panel. U.H. designed the reliability and validation framework: the reference-panel design, the chance-corrected agreement statistics, and the registered decision thresholds and analysis plan. Neither author took part in the automated reproduction of the reference classification or graded any record in the detection panel. All authors have read and agreed to the published version of the manuscript."),
 ("h1", "ACKNOWLEDGEMENTS"),
-("p", "The detection panel, 16 independent experts across 11 countries and five continents, each read the full 24-record corpus without knowing the reference classification and returned 384 graded judgments. This paper's main result is theirs. The reliability study involved 25 raters, eight invited and seventeen enrolled through an open review page. Twenty-two of them worked under the five-condition review and form the analysed sample; the other three worked under the unstructured baseline prompt, and their labels are excluded under the rule stated in the Methodology. All 25 are credited here because all 25 did the work. A further 20 independent experts completed the same corpus in a separate comparison study, which is reported elsewhere."),
+("p", "The detection panel, 16 independent experts across 11 countries and five continents, each read the full 24-record corpus without knowing the reference classification and returned 384 graded judgments. This paper's main result is theirs. The reliability study involved 25 raters, eight invited and seventeen enrolled through an open review page. Twenty-two of them worked under the five-condition review and form the analysed sample; the other three worked under the unstructured baseline prompt, and their labels are excluded under the rule stated in the Methodology. All 25 are credited here because all 25 did the work. A further 20 independent experts completed the same corpus in a separate comparison study, which will be reported separately."),
 ("p", "These three groups comprise 61 participations held by 58 distinct people, since three reliability raters also served on the detection panel. All 58 worked unpaid, in a personal capacity and with nothing at stake in the outcome. Contributors are named only with their consent; none is an author of this paper, and any contributor may withdraw their name at any time. Reviewers who have not recorded a choice are counted in every figure and are not named."),
 ("p", "Thirty-two contributors chose to be named. Each name and description below is given as that person recorded it:"),
 ("n", 'Adesh Sharma, Data and AI Governance Leader | IAPP AIGP CIPT; Digital Frontier Partners'),
@@ -337,6 +337,9 @@ def _apa_italics(ref):
     return ref
 
 
+BLIND = False
+
+
 def main(template, out):
     d = docx.Document(template)
     inherited = {rid for rid, rel in d.part.rels.items() if rel.reltype.endswith(("/image", "/comments"))}
@@ -359,7 +362,7 @@ def main(template, out):
     par = styled("AR&P Level 0 Title of the Manuscript Style")
     _ppr(par, jc="center")
     _run(par, TITLE, 16, bold=True)
-    for a in AUTHORS:
+    for a in (["Author details removed for anonymous review.", AUTHORS[-1]] if BLIND else AUTHORS):
         par = styled("AuthorLine")
         _marked(par, a, 9)
     par = styled("AbstractText")
@@ -378,6 +381,9 @@ def main(template, out):
         elif kind == "h2":
             styled("AR&P Level 2 Style").add_run(val)
         elif kind == "p":
+            if BLIND:
+                val = (val.replace("P.W. and U.H.", "Author 1 and Author 2").replace("P.W.", "Author 1")
+                       .replace("U.H.", "Author 2"))
             body_par(val)
         elif kind == "n":
             body_par(val, first=0, left=283)
@@ -425,9 +431,10 @@ def main(template, out):
         del part.rels[rid]
     d.core_properties.title = TITLE
     d.core_properties.subject = ""
-    d.core_properties.author = "Phillip Wikes; Ubayet Hossain"
+    d.core_properties.author = "" if BLIND else "Phillip Wikes; Ubayet Hossain"
     d.save(out)
 
 
 if __name__ == "__main__":
+    BLIND = "--blind" in sys.argv
     main(sys.argv[1], sys.argv[2])
