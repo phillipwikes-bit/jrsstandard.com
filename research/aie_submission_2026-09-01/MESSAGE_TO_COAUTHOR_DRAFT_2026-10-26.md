@@ -12,11 +12,10 @@ I don't want to move it to another journal unchanged. My plan is to rebuild it a
 
 Springer suggested six journals. The two strongest fits look like Discover Artificial Intelligence and Humanities & Social Sciences Communications. Before choosing, I plan to ask both whether they accept a study with informed consent but no ethics board review.
 
-Three things I need from you:
+Two things I need from you:
 
 1. Are you still happy to be co-author on a substantially revised version?
-2. How do you want to be described? The last title page said "Independent Financial Risk & Model Validation Professional", with no institutional affiliation. Please confirm that is still right, and that publishing it raises no issue with your employer.
-3. Could you reply to this message confirming your authorship and contribution in writing? Your confirmation to Springer went through their system, and I'd like a copy in the project file too.
+2. Could you reply to this message confirming your authorship and contribution in writing? Your confirmation to Springer went through their system, and I'd like a copy in the project file too.
 
 Nothing will be submitted anywhere without your approval of the final text.
 
