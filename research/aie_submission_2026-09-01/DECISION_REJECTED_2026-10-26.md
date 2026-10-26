@@ -11,7 +11,18 @@
 - Decision: **rejected**. Sent 12:37 AM, signed John MacIntyre, Editor, AI and Ethics.
 - Stated reason, verbatim: *"The contribution to the specific aims and scope of AI and Ethics is unclear - the argument appears vague and there appears no specific conclusion which fits our aims and scope. I suggest the authors re-think the paper substantially before submitting to a journal with a better fit."*
 - **No reviewer comments.** OLD FINDING (first screenshots): none visible, and whether reviewers saw the paper was NOT ESTABLISHED. NEW EVIDENCE (owner's second set of screenshots, 2026-10-26, showing the whole email): it ends at the Springer Nature "What's next" transfer paragraph, with no reviewer comments. CORRECTED STATUS: **no reviewer comments were sent (FACT)**. INFERENCE: this was a desk rejection by the editor. The email does not use that term, so this is not confirmed.
-- Springer Nature offered a transfer service. The list of recommended journals was not in the screenshots; the owner's report says six journals were recommended.
+- Springer Nature offered a transfer service. The owner later uploaded Springer's recommendation page (PDF). It lists six journals (FACT, figures copied as listed):
+
+| Journal | Model | Impact factor | Acceptance rate | APC (USD) |
+|---|---|---|---|---|
+| Scientific Reports | OA | 4.9 | 33.4% | 2,850 |
+| Knowledge and Information Systems | Hybrid | 3.6 | 6.9% | 3,290 |
+| BMC Medical Research Methodology | OA | 3.7 | 28.0% | 3,090 |
+| International Journal of Data Science and Analytics | Hybrid | 2.9 | 10.9% | 3,490 |
+| Discover Artificial Intelligence | OA | **none listed** | 15.1% | 1,690 |
+| Humanities & Social Sciences Communications | OA | 4.8 | 20.4% | 1,990 |
+
+  The page states no deadline for the transfer offer. Acceptance rates are journal-wide and are not a prediction for this paper.
 
 ## 1a. The packet actually submitted (owner's uploads, 2026-10-26)
 
@@ -37,7 +48,7 @@ The owner uploaded the four files as submitted. SHA-256 hashes:
 
 ## 2. Owner's reassessment report (2026-10-26), as checked
 
-The owner supplied a report titled *JRS Research Publication Strategy: Comprehensive Independent Reassessment*. The pasted text **stops partway through Section 6.1** (at "Required Adjust"). Section 6.1's required adjustments, the assessment of Humanities & Social Sciences Communications, and any later sections were not received.
+The owner supplied a report titled *JRS Research Publication Strategy: Comprehensive Independent Reassessment*. OLD: the first paste stopped in §6.1. NEW: the owner supplied the full report (§§1-15) on 2026-10-26. Its journal figures match Springer's page exactly. Its §3.2 says it is unknown whether reviewers saw the paper; that is now resolved, because no reviewer comments were sent (§1).
 
 **Figures in the report checked against `01_Blinded_Manuscript.md`. All match (FACT):**
 
