@@ -25,6 +25,8 @@ We would state all of this plainly in the manuscript's ethics declaration. We wo
 
 Could you tell us whether a study conducted on this basis is eligible for consideration, and if so, whether you would need any further information or documentation from us?
 
+We would also be grateful for confirmation that the article processing charge is payable only on acceptance, and whether any waiver or discount is available to independent researchers without institutional funding.
+
 Thank you for your time.
 
 Kind regards,
