@@ -1,0 +1,25 @@
+Subject: A second manuscript for SocioEconomic Challenges
+
+Dear Lina,
+
+Thank you again for your invitation and for your help with the public-records manuscript I co-authored with Stacyann Young.
+
+You kindly asked about my other current manuscripts, and I'd like to submit a second article to SocioEconomic Challenges:
+
+"Detecting Unsupported Conclusions in AI-Drafted Decision Records: Evidence from an International Expert Panel"
+Authors: Phillip Wikes and Ubayet Hossain, FRM
+
+The paper reports a pre-registered study in which sixteen professionals in eleven countries assessed whether conclusions in AI-drafted decision records were supported by the evidence in the record. It examines what reviewer performance means for how institutions design and resource human review of AI-drafted decisions, and who bears the cost when review fails. It has been prepared in the journal's format.
+
+A few points for transparency:
+
+1. The manuscript has not been posted as a preprint and is not under consideration elsewhere. An earlier version was declined by another journal on scope, without peer review.
+2. The study involved adult professional volunteers who gave informed consent. It was not reviewed by an institutional ethics committee, because the authors are independent researchers without an institutional affiliation. The manuscript states this plainly. All documents the participants reviewed were constructed for the study, and no personal data beyond name, professional title, country and contact details was collected. Please let me know if the editorial office needs anything further on this point before the paper can be considered.
+3. The data and analysis materials will be deposited in Zenodo with a DOI before publication.
+
+I would be grateful if the same discount could apply to this submission.
+
+The manuscript is attached. Thank you for your time and consideration.
+
+Kind regards,
+Phillip Wikes
