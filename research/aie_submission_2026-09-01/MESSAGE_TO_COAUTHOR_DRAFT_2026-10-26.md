@@ -12,7 +12,7 @@ I don't want to move it to another journal unchanged. My plan is to rebuild it a
 
 Springer suggested six journals. The two strongest fits look like Discover Artificial Intelligence and Humanities & Social Sciences Communications. Before choosing, I plan to ask both whether they accept a study with informed consent but no ethics board review.
 
-Before I start, are you happy for me to go ahead on that basis? I'll send you the revised text to approve before it goes anywhere.
+Before I start, are you happy for me to go ahead on that basis?
 
 Nothing will be submitted anywhere without your approval of the final text.
 
