@@ -4,7 +4,7 @@
 **Submission ID:** 920012c1-2c61-46b6-92b0-70151a6d20e3
 **Manuscript:** "Detectability of Decision Reconstruction Risk in AI-Generated Decision Records: An International Expert Study"
 **Authors on title page:** Phillip Wikes; Ubayet Hossain, FRM
-**Packet submitted:** this folder (`01_Blinded_Manuscript`, `02_Title_Page`, `03_Cover_Letter`)
+**Packet submitted:** the manuscript matches this folder. The submitted title page and cover letter differ from this folder's copies; see §1a.
 
 ## 1. Editorial fact (source: owner's screenshots of the decision email, 2026-10-26)
 
