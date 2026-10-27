@@ -1,0 +1,26 @@
+{
+  "envelope": {
+    "status": "ok",
+    "stop_reason": "end_turn",
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"contract_version\": \"jrs-engine-local-0.3.0-evidence-graph\",\n  \"prompt_version\": \"jrs-engine-local-0.3.3-research/prompt-1\",\n  \"observations\": [\n    {\n      \"observation_id\": \"M1\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"The Change Advisory Board approved CR-2291 on 6 March under that section\",\n      \"assertion_type\": \"stated_decision\"\n    },\n    {\n      \"observation_id\": \"M2\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"Change Policy CP-7, section 3 allows a production data-store upgrade when a rollback rehearsal passes and post-upgrade headroom is at least 25%\",\n      \"assertion_type\": \"stated_source_reference\"\n    },\n    {\n      \"observation_id\": \"M3\",\n      \"condition_id\": \"identifiable_basis\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"Change Policy CP-7, section 3 allows a production data-store upgrade when a rollback rehearsal passes and post-upgrade headroom is at least 25%\",\n      \"assertion_type\": \"stated_source_reference\"\n    },\n    {\n      \"observation_id\": \"M4\",\n      \"condition_id\": \"chronology_integrity\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"For change request CR-2291 the rollback rehearsal on 4 March passed (test report TR-118) and the 5 March capacity review measured 38% headroom\",\n      \"assertion_type\": \"stated_date\"\n    },\n    {\n      \"observation_id\": \"M5\",\n      \"condition_id\": \"chronology_integrity\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"The Change Advisory Board approved CR-2291 on 6 March under that section\",\n      \"assertion_type\": \"stated_date\"\n    },\n    {\n      \"observation_id\": \"M6\",\n      \"condition_id\": \"reasoning_traceability\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"The Change Advisory Board approved CR-2291 on 6 March under that section\",\n      \"assertion_type\": \"stated_rationale\"\n    },\n    {\n      \"observation_id\": \"M7\",\n      \"condition_id\": \"sufficiency\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"Change Policy CP-7, section 3 allows a production data-store upgrade when a rollback rehearsal passes and post-upgrade headroom is at least 25%\",\n      \"assertion_type\": \"stated_source_reference\"\n    }\n  ]\n}"
+      }
+    ],
+    "model": "MOCK-POLICY-UNDERCLAIM-NOT-A-MODEL",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "provenance": {
+    "response_origin": "mock_policy_fixture",
+    "policy": "UNDERCLAIM",
+    "generator": "tools/mock-candidates.mjs",
+    "reference_used": {
+      "e1": "GROUNDED",
+      "chronology_conflict": false
+    }
+  }
+}

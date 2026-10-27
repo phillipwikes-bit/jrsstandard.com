@@ -1,0 +1,1 @@
+Release decision record. Release 5.2 of the scheduling application was proposed for 20 September. The regression suite run on 17 September passed 1,412 of 1,412 tests (run RS-5208), and the security scan of 18 September reported no high findings (scan SC-311). The release manager authorized deployment on 19 September. The authorization relies on run RS-5208 and scan SC-311.

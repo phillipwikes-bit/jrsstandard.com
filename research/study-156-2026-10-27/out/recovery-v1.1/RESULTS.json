@@ -1,0 +1,122 @@
+{
+  "results_format": "jrs-study-156-recovery/1.1.0",
+  "supersedes_nothing": "Version 1.0 result kept at out/recovery/RESULTS.json",
+  "network_attempts_parent": 0,
+  "totals": {
+    "tests": 10,
+    "passed": 10,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "RT-01",
+      "name": "an interrupted development run leaves no results file; the same label is refused; a new label completes with the same graphs",
+      "ok": true,
+      "observed": {
+        "interrupted_dir_left": true,
+        "interrupted_results_left": false,
+        "same_label_exit": 2,
+        "new_label_exit": 0,
+        "digests_equal_to_run1": "440/440"
+      }
+    },
+    {
+      "id": "RT-02",
+      "name": "a corrupted record stops a scored run before execution",
+      "ok": true,
+      "observed": {
+        "exit": 3,
+        "problems": [
+          "corpus: modified records/synthetic/S-050.txt"
+        ]
+      }
+    },
+    {
+      "id": "RT-03",
+      "name": "a corrupted mock candidate stops a scored run before execution (freeze seal) and fails a development run closed (no results file)",
+      "ok": true,
+      "observed": {
+        "scored_exit": 3,
+        "scored_problems": [
+          "freeze: modified mocks/ORACLE/S-001.json"
+        ],
+        "dev_exit": 1,
+        "dev_error": "mock_hash_mismatch:' + a.mock + '/' + e.source_id); cand = JSON.parse(body).envelope.content[0].text; }"
+      }
+    },
+    {
+      "id": "RT-04",
+      "name": "an altered candidate file (incompatible version) stops a scored run before execution and fails a development run at isolation",
+      "ok": true,
+      "observed": {
+        "scored_exit": 3,
+        "scored_problems": [
+          "freeze: modified candidate/lib/engine-evidence-graph-v0.3.3-research-candidate/research-profile.mjs"
+        ],
+        "dev_exit": 1,
+        "dev_error": "isolated_copy_mismatch:' + version + ':' + f); verified++; }"
+      }
+    },
+    {
+      "id": "RT-05",
+      "name": "a missing freeze seal stops a scored run before execution",
+      "ok": true,
+      "observed": {
+        "exit": 3,
+        "problems": [
+          "freeze: seal missing"
+        ]
+      }
+    },
+    {
+      "id": "RT-06",
+      "name": "a corrupted variant file stops a variant run before execution",
+      "ok": true,
+      "observed": {
+        "exit": 3,
+        "problems": [
+          "variants_file_hash_mismatch"
+        ]
+      }
+    },
+    {
+      "id": "RT-07",
+      "name": "provider configuration is refused: forbidden variable names and network keys are detected (synthetic objects; the process environment is not touched)",
+      "ok": true,
+      "observed": [
+        "forbidden_env_present:ANTHROPIC_BASE_URL",
+        "forbidden_env_present:ANTHROPIC_API_KEY",
+        "forbidden_env_present:OPENAI_BASE_URL",
+        "network_config_key:provider.base_url",
+        "network_config_value:provider.base_url."
+      ]
+    },
+    {
+      "id": "RT-08",
+      "name": "the network guard traps an outbound attempt before any connection and counts it",
+      "ok": true,
+      "observed": {
+        "threw": "network_blocked:fetch",
+        "attempts": 1
+      }
+    },
+    {
+      "id": "RT-09",
+      "name": "a duplicate scored label is refused before any work",
+      "ok": true,
+      "observed": {
+        "exit": 2
+      }
+    },
+    {
+      "id": "RT-10",
+      "name": "the offline transport suite passes in a fresh copy (journal corruption, resume, duplicates, budget, stale authorization)",
+      "ok": true,
+      "observed": {
+        "tests": 49,
+        "passed": 49,
+        "failed": 0
+      }
+    }
+  ]
+}

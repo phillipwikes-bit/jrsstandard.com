@@ -1,0 +1,1 @@
+Release decision record. Release 5.2 is a high-quality release that the team is proud of. Testing went smoothly and everyone is comfortable with the build. The release manager authorized deployment with full confidence.

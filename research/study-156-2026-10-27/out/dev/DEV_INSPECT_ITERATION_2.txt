@@ -1,0 +1,758 @@
+
+=== R03 UNGROUNDED
+  U0 anchors=[]
+     AI-assisted meeting summary.
+  U1 anchors=[]
+     The team had a productive discussion and reached strong alignment on the path forward.
+  U2 D anchors=[]
+     Several important decisions were made, and clear ownership was established.
+  U3 +C anchors=[]
+     Overall sentiment was positive, and the group is confident in the direction.
+  U4 anchors=[]
+     Next steps are well understood by all.
+  events: 
+  conflicts: none
+  reconstructability: gaps=conclusion_without_identifiable_basis review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence,conclusion_without_identifiable_basis review=
+  chronology_integrity: gaps=no_explicit_dates review=
+  reasoning_traceability: gaps=conclusion_without_stated_basis,conclusion_without_identifiable_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence,conclusion_without_identifiable_basis review=sufficiency_not_determinable_by_engine
+
+=== R08 GROUNDED
+  U0 anchors=[]
+     Control assessment, logical access.
+  U1 anchors=["25 terminations","Q1"]
+     We tested all 25 terminations in Q1.
+  U2 anchors=["#4471","1.2 days","six days"]
+     Twenty-four were de-provisioned within the three-day SLA (average 1.2 days); one contractor account (ref #4471) remained active for six days post-term
+  U3 positive anchors=[]
+     We reviewed the 12 privileged accounts against approved-role mappings, and each tied to an approved access ticket.
+  U4 D B(based on) anchors=[]
+     Based on the single timing exception, the control is rated Effective with one observation; the exception and its remediation are documented above.
+  events: 
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps=no_explicit_dates review=
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== R15 UNGROUNDED
+  U0 anchors=[]
+     Control assessment, logical access.
+  U1 anchors=[]
+     Our review found the access-control environment operating effectively, with access appropriately restricted across critical systems.
+  U2 D positive anchors=[]
+     Quarterly access reviews are performed and provide reasonable assurance that terminated users are removed in a timely manner and that privileged acces
+  U3 anchors=[]
+     No material weaknesses were identified.
+  U4 D anchors=[]
+     The control is rated Effective.
+  events: 
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=
+  chronology_integrity: gaps=no_explicit_dates review=
+  reasoning_traceability: gaps=conclusion_without_stated_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== R22 GROUNDED
+  U0 anchors=[]
+     AI-assisted meeting summary, human-reviewed.
+  U1 D positive anchors=["agenda item 4","agenda item 6"] excluded=["$50,000:decision_detail","Q3:decision_detail"]
+     Decisions: the budget was increased to $50,000 (approved by the sponsor, agenda item 4); the launch moved to Q3 (owner: product lead, agenda item 6).
+  U2 D anchors=[]
+     Each decision lists the decision-maker and the agenda item.
+  U3 D B(confirmed each against) positive anchors=[]
+     The reviewer confirmed each against the recording timestamps before finalization.
+  U4 B(traceable to) anchors=["attached"]
+     The summary's conclusions are traceable to the cited agenda items and the attached recording.
+  events: 
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps=no_explicit_dates review=
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-001 GROUNDED [G]
+  U0 anchors=[]
+     Change approval record.
+  U1 S["CR-2291","VERSION 14"] anchors=[] excluded=["CR-2291:subject_reference","version 14:subject_reference"]
+     Change request CR-2291 asked to upgrade the reporting database cluster to version 14.
+  U2 B(after the) anchors=["4 March","5 March","TR-118","38%"]
+     The rollback rehearsal on 4 March was recorded as passed in test report TR-118, and the capacity review dated 5 March found 38% headroom after the upg
+  U3 D positive S["CR-2291"] anchors=["item 3"] excluded=["6 March:decision_date","CR-2291:subject_reference"]
+     The Change Advisory Board approved CR-2291 at its meeting of 6 March (minutes item 3).
+  U4 B(relies on) anchors=["5 March","TR-118"]
+     The approval relies on test report TR-118 and the 5 March capacity review.
+  events: rehearsal@-----03-04 | review@-----03-05 | approval@-----03-06CR-2291 | review@-----03-05
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-002 GROUNDED [G2]
+  U0 anchors=[]
+     Change approval record.
+  U1 D B(because) positive S["CR-2291"] anchors=["6 March","4 March","5 March","TR-118","38%","20-minute"] excluded=["CR-2291:subject_reference"]
+     The Change Advisory Board approved change request CR-2291, the reporting database upgrade, on 6 March because test report TR-118 shows the rollback re
+  U2 anchors=["item 3"]
+     Minutes item 3 lists both documents as reviewed.
+  events: approval@-----03-06 | rehearsal@-----03-04TR-118 | review@-----03-05
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-003 UNGROUNDED [U]
+  U0 anchors=[]
+     Change approval record.
+  U1 D positive S["CR-2291"] anchors=[] excluded=["CR-2291:subject_reference"]
+     Change request CR-2291 for the reporting database upgrade was reviewed thoroughly and approved.
+  U2 +C anchors=[]
+     The board was satisfied that the change is well prepared and carries little exposure.
+  U3 anchors=[]
+     The team has a strong track record with upgrades of this kind, and the approval is well founded.
+  events: 
+  conflicts: none
+  reconstructability: gaps=conclusion_without_identifiable_basis review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence,conclusion_without_identifiable_basis review=
+  chronology_integrity: gaps=no_explicit_dates review=
+  reasoning_traceability: gaps=conclusion_without_stated_basis,conclusion_without_identifiable_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence,conclusion_without_identifiable_basis review=sufficiency_not_determinable_by_engine
+
+=== S-004 UNGROUNDED [A]
+  U0 anchors=[]
+     Change approval record.
+  U1 D A positive S["CR-2291"] anchors=[] excluded=["6 March:decision_date","CR-2291:subject_reference","CP-7:authority_citation","section 3:authority_citation"]
+     Change request CR-2291, the reporting database upgrade, was approved on 6 March under Change Policy CP-7, section 3.
+  U2 A anchors=[]
+     That section governs upgrades to production data stores.
+  U3 anchors=[]
+     The approval is recorded in the board minutes.
+  events: approval@-----03-06
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=authority_reference_without_linked_facts
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_without_stated_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-005 GROUNDED [L]
+  U0 anchors=[]
+     Change approval record.
+  U1 A anchors=[] excluded=["CP-7:authority_citation","section 3:authority_citation","25%:authority_citation"]
+     Change Policy CP-7, section 3 allows a production data-store upgrade when a rollback rehearsal passes and post-upgrade headroom is at least 25%.
+  U2 S["CR-2291"] anchors=["4 March","5 March","TR-118","38%"] excluded=["CR-2291:subject_reference"]
+     For change request CR-2291 the rollback rehearsal on 4 March passed (test report TR-118) and the 5 March capacity review measured 38% headroom.
+  U3 D A positive S["CR-2291"] anchors=[] excluded=["6 March:decision_date","CR-2291:subject_reference"]
+     The Change Advisory Board approved CR-2291 on 6 March under that section.
+  events: rehearsal@-----03-04CR-2291 | review@-----03-05 | approval@-----03-06CR-2291
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-006 UNGROUNDED [C]
+  U0 anchors=[]
+     Change approval record.
+  U1 D positive S["CR-2291"] anchors=[] excluded=["6 March:decision_date","CR-2291:subject_reference"]
+     Change request CR-2291, the reporting database upgrade, was approved on 6 March.
+  U2 D B(because) positive anchors=[]
+     The board approved it because the change met the standard for approval.
+  U3 D B(since) positive anchors=[]
+     Since the upgrade was judged acceptable, approval was the appropriate outcome, and the minutes record that the change was approved.
+  events: approval@-----03-06
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_restated_as_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-007 GROUNDED [D]
+  U0 anchors=[]
+     Change approval record.
+  U1 S["CR-2291"] anchors=["2 March"] excluded=["CR-2291:subject_reference"]
+     Change request CR-2291 was submitted on 2 March.
+  U2 anchors=["4 March","TR-118"]
+     The rollback rehearsal was run on 4 March and passed (test report TR-118).
+  U3 anchors=["5 March","38%"]
+     The capacity review followed on 5 March and measured 38% headroom.
+  U4 D B(citing) positive anchors=["TR-118"] excluded=["6 March:decision_date"]
+     The Change Advisory Board approved the change on 6 March, citing TR-118 and the capacity review.
+  events: submission@-----03-02CR-2291 | rehearsal@-----03-04 | review@-----03-05 | approval@-----03-06
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-008 GROUNDED [S]
+  U0 anchors=[]
+     Change approval record.
+  U1 S["CR-2291"] anchors=["4 March","TR-118"] excluded=["CR-2291:subject_reference"]
+     The rollback rehearsal for change request CR-2291 was run on 4 March and passed (test report TR-118).
+  U2 anchors=["38%"]
+     The capacity review measured 38% headroom.
+  U3 D B(citing) positive anchors=["9 March"] excluded=["6 March:decision_date"]
+     The Change Advisory Board approved the change on 6 March, citing the rollback rehearsal of 9 March and the capacity review.
+  events: rehearsal@-----03-04CR-2291 | approval@-----03-06 | rehearsal@-----03-09
+  conflicts: same_event_date_conflict: Two record spans give the event "rehearsal" different dates (4 March, 9 March).
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-009 GROUNDED [P]
+  U0 anchors=[]
+     Change approval record.
+  U1 anchors=["6 March"]
+     Two changes were considered on 6 March.
+  U2 D B(because) positive S["CR-2291"] anchors=["TR-118"] excluded=["CR-2291:subject_reference"]
+     Change request CR-2291, the reporting database upgrade, was approved because its rollback rehearsal passed (test report TR-118).
+  U3 D B(because) negative S["CR-2294"] anchors=["had not been tested","no test report was submitted"] excluded=["CR-2294:subject_reference"]
+     Change request CR-2294, a firewall rule change, was declined because its rollback plan had not been tested and no test report was submitted.
+  U4 anchors=["items 3"]
+     Each outcome is recorded under its own minutes item (items 3 and 4).
+  events: null@-----03-06
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-010 UNGROUNDED [M]
+  U0 anchors=[]
+     Change approval record.
+  U1 D B(after the) positive S["CR-2291"] anchors=["4 March","TR-118"] excluded=["6 March:decision_date","CR-2291:subject_reference"]
+     The Change Advisory Board approved change request CR-2291 on 6 March after the rollback rehearsal passed (test report TR-118, 4 March).
+  U2 D +C positive anchors=[]
+     The board also concluded that the vendor's patch process is mature and that future upgrades of this cluster can be approved without a rehearsal.
+  events: approval@-----03-06CR-2291 | report@-----03-04
+  conflicts: none
+  reconstructability: gaps=conclusion_without_identifiable_basis review=
+  identifiable_basis: gaps=conclusion_without_identifiable_basis review=
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_without_identifiable_basis review=
+  sufficiency: gaps=conclusion_without_identifiable_basis review=sufficiency_not_determinable_by_engine
+
+=== S-011 GROUNDED [G]
+  U0 anchors=[]
+     Procurement award record.
+  U1 S["T-0417"] anchors=["14 April","four compliant"] excluded=["T-0417:subject_reference"]
+     Tender T-0417 for document printing services received four compliant bids by the 14 April deadline.
+  U2 anchors=["18 April","SS-4417","82 of 100"]
+     The evaluation panel scored the bids against the published criteria on 18 April; Northline Print scored 82 of 100, the highest total, in score sheet S
+  U3 D positive anchors=[] excluded=["22 April:decision_date"]
+     The contract was awarded to Northline Print on 22 April.
+  U4 B(based on) anchors=["14 April","SS-4417"]
+     The award is based on score sheet SS-4417 and the bid register for 14 April.
+  events: deadline@-----04-14T-0417 | scoring@-----04-18 | award@-----04-22 | null@-----04-14
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-012 GROUNDED [G2]
+  U0 anchors=[]
+     Procurement award record.
+  U1 D B(because) positive S["T-0417"] anchors=["18 April","SS-4417","82 of 100","eleven points"] excluded=["22 April:decision_date","T-0417:subject_reference"]
+     Northline Print was awarded tender T-0417 on 22 April because its bid scored 82 of 100 on the published criteria, eleven points above the next bid, as
+  U2 anchors=["14 April","four compliant"]
+     The bid register lists four compliant bids received by the 14 April deadline.
+  events: award@-----04-22T-0417 | scoring@-----04-18SS-4417 | deadline@-----04-14
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-013 UNGROUNDED [U]
+  U0 anchors=[]
+     Procurement award record.
+  U1 D A S["T-0417"] anchors=[] excluded=["T-0417:subject_reference"]
+     Tender T-0417 was run in line with good procurement practice and the award went to the strongest bidder.
+  U2 +C anchors=[]
+     The panel was confident in the outcome, and Northline Print offers excellent value.
+  U3 D anchors=[]
+     The decision reflects a careful and balanced evaluation.
+  events: 
+  conflicts: none
+  reconstructability: gaps=conclusion_without_identifiable_basis review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence,conclusion_without_identifiable_basis review=authority_reference_without_linked_facts
+  chronology_integrity: gaps=no_explicit_dates review=
+  reasoning_traceability: gaps=conclusion_without_stated_basis,conclusion_without_identifiable_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence,conclusion_without_identifiable_basis review=sufficiency_not_determinable_by_engine
+
+=== S-014 UNGROUNDED [A]
+  U0 anchors=[]
+     Procurement award record.
+  U1 D A positive S["T-0417"] anchors=[] excluded=["22 April:decision_date","T-0417:subject_reference","Rule 4.2:authority_citation"]
+     Tender T-0417 for document printing services was awarded to Northline Print on 22 April under Procurement Rule 4.2.
+  U2 D A positive anchors=[]
+     The rule sets out how contracts of this value are awarded.
+  U3 anchors=[]
+     The award notice was issued the same day.
+  events: award@-----04-22T-0417
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=authority_reference_without_linked_facts
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_without_stated_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-015 GROUNDED [L]
+  U0 anchors=[]
+     Procurement award record.
+  U1 A anchors=[] excluded=["Rule 4.2:authority_citation"]
+     Procurement Rule 4.2 requires award to the compliant bid with the highest total score on the published criteria.
+  U2 S["T-0417"] anchors=["18 April","SS-4417","82 of 100","four compliant"] excluded=["T-0417:subject_reference"]
+     For tender T-0417, panel score sheet SS-4417 dated 18 April gives Northline Print 82 of 100, the highest of the four compliant bids.
+  U3 D A positive anchors=[] excluded=["22 April:decision_date","Rule 4.2:authority_citation"]
+     The contract was awarded to Northline Print on 22 April under Rule 4.2.
+  events: scoring@-----04-18SS-4417 | award@-----04-22
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-016 UNGROUNDED [C]
+  U0 anchors=[]
+     Procurement award record.
+  U1 D positive S["T-0417"] anchors=[] excluded=["22 April:decision_date","T-0417:subject_reference"]
+     Tender T-0417 was awarded to Northline Print on 22 April.
+  U2 D B(because) anchors=[]
+     Northline Print was selected because it was judged the most suitable bidder.
+  U3 D positive anchors=[]
+     Its suitability is confirmed by the panel's decision to select it, and the award follows from that selection.
+  events: award@-----04-22T-0417
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_restated_as_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-017 GROUNDED [D]
+  U0 anchors=[]
+     Procurement award record.
+  U1 D S["T-0417"] anchors=[] excluded=["1 April:decision_detail","14 April:decision_date","T-0417:subject_reference","four compliant:decision_detail"]
+     Tender T-0417 was published on 1 April and closed on 14 April with four compliant bids.
+  U2 anchors=["18 April","SS-4417","82 of 100"]
+     The panel scored the bids on 18 April (score sheet SS-4417), with Northline Print highest at 82 of 100.
+  U3 anchors=["22 April","2 May"]
+     The award to Northline Print was issued on 22 April, and the standstill period ended on 2 May.
+  events: publication@-----04-01T-0417 | closing@-----04-14 | scoring@-----04-18 | award@-----04-22 | standstill@-----05-02
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-018 GROUNDED [S]
+  U0 anchors=[]
+     Procurement award record.
+  U1 D S["T-0417"] anchors=[] excluded=["14 April:decision_date","T-0417:subject_reference","four compliant:decision_detail"]
+     Tender T-0417 closed on 14 April with four compliant bids.
+  U2 anchors=["18 April","SS-4417","82 of 100"]
+     The panel scored the bids on 18 April (score sheet SS-4417), with Northline Print highest at 82 of 100.
+  U3 B(following the) anchors=["22 April","25 April"]
+     The award to Northline Print was issued on 22 April, following the panel scoring session held on 25 April.
+  events: closing@-----04-14T-0417 | scoring@-----04-18 | award@-----04-22 | scoring@-----04-25
+  conflicts: same_event_date_conflict: Two record spans give the event "scoring" different dates (18 April, 25 April).
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-019 GROUNDED [P]
+  U0 anchors=[]
+     Procurement award record.
+  U1 S["T-0417"] anchors=[] excluded=["T-0417:subject_reference"]
+     Tender T-0417 was let in two lots.
+  U2 D B(because) positive S["LOT 1"] anchors=["SS-4417","82 of 100"] excluded=["22 April:decision_date","Lot 1:subject_reference"]
+     Lot 1, document printing, was awarded to Northline Print on 22 April because its bid scored highest at 82 of 100 (score sheet SS-4417).
+  U3 D B(because) mixed S["LOT 2"] anchors=["B-2","15,000","4,200"] excluded=["Lot 2:subject_reference"]
+     Lot 2, binding services, was not awarded because the only bid exceeded the published lot budget of 15,000 by 4,200 (bid register entry B-2).
+  U4 anchors=[]
+     The two lots were evaluated separately.
+  events: award@-----04-22
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-020 UNGROUNDED [M]
+  U0 anchors=[]
+     Procurement award record.
+  U1 D B(because) positive S["T-0417"] anchors=["18 April","SS-4417","82 of 100"] excluded=["22 April:decision_date","T-0417:subject_reference"]
+     Tender T-0417 was awarded to Northline Print on 22 April because its bid scored highest at 82 of 100 (score sheet SS-4417, dated 18 April).
+  U2 D +C anchors=[]
+     The panel further concluded that Northline Print will meet every delivery target over the contract term and that delivery monitoring can be dropped.
+  events: award@-----04-22T-0417 | null@-----04-18
+  conflicts: none
+  reconstructability: gaps=conclusion_without_identifiable_basis review=
+  identifiable_basis: gaps=conclusion_without_identifiable_basis review=
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_without_identifiable_basis review=
+  sufficiency: gaps=conclusion_without_identifiable_basis review=sufficiency_not_determinable_by_engine
+
+=== S-021 GROUNDED [G]
+  U0 D anchors=[]
+     Records request determination.
+  U1 S["RQ-0912"] anchors=[] excluded=["RQ-0912:subject_reference"]
+     Request RQ-0912 asked for the 2025 facilities maintenance contracts.
+  U2 D positive anchors=["9 contracts"] excluded=["3 June:decision_date"]
+     The records team located 9 contracts and released 7 on 3 June.
+  U3 D B(because) negative S["FM-22 AND FM-31"] anchors=[] excluded=["FM-22:subject_reference","FM-31:subject_reference","Two contracts:decision_detail"]
+     Two contracts were withheld because each contains a supplier's unit pricing marked commercially confidential on its cover page (contracts FM-22 and FM
+  U4 D B(rests on) anchors=["2 June"]
+     The determination rests on the contract register search of 2 June and the two cover pages cited.
+  events: release@-----06-03 | search@-----06-02
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-022 GROUNDED [G2]
+  U0 D anchors=[]
+     Records request determination.
+  U1 S["RQ-0912"] anchors=[] excluded=["RQ-0912:subject_reference"]
+     Request RQ-0912 sought the 2025 facilities maintenance contracts.
+  U2 D positive anchors=["2 June","Seven of","nine contracts"] excluded=["3 June:decision_date"]
+     Seven of the nine contracts located in the register search of 2 June were released on 3 June.
+  U3 D B(because) negative S["FM-22","FM-31"] anchors=[] excluded=["FM-22:subject_reference","FM-31:subject_reference"]
+     Contracts FM-22 and FM-31 were withheld because their cover pages mark the unit pricing as commercially confidential, and the confidentiality marking 
+  events: search@-----06-02 | release@-----06-03
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-023 UNGROUNDED [U]
+  U0 D anchors=[]
+     Records request determination.
+  U1 S["RQ-0912"] anchors=[] excluded=["RQ-0912:subject_reference"]
+     Request RQ-0912 was handled carefully and in good time.
+  U2 anchors=[]
+     All appropriate records were considered, and the response reflects a sensible balance between openness and confidentiality.
+  U3 D positive anchors=[]
+     The requester has received everything that could properly be released.
+  events: 
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=
+  chronology_integrity: gaps=no_explicit_dates review=
+  reasoning_traceability: gaps=conclusion_without_stated_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-024 UNGROUNDED [A]
+  U0 D anchors=[]
+     Records request determination.
+  U1 D A negative S["RQ-0912"] anchors=[] excluded=["3 June:decision_date","RQ-0912:subject_reference","section 6:authority_citation"]
+     Request RQ-0912 for the 2025 facilities maintenance contracts was partly refused on 3 June under section 6 of the Information Access Policy.
+  U2 A anchors=[] excluded=["Section 6:authority_citation"]
+     Section 6 covers commercially confidential material.
+  U3 anchors=[]
+     The requester was told of the refusal in writing.
+  events: refusal@-----06-03RQ-0912
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=authority_reference_without_linked_facts
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_without_stated_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-025 GROUNDED [L]
+  U0 D anchors=[]
+     Records request determination.
+  U1 A anchors=[] excluded=["Section 6:authority_citation"]
+     Section 6 of the Information Access Policy permits withholding a document whose cover page marks it commercially confidential.
+  U2 D A negative S["RQ-0912","FM-22 AND FM-31"] anchors=[] excluded=["3 June:decision_date","RQ-0912:subject_reference","FM-22:subject_reference","FM-31:subject_reference","section 6:authority_citation"]
+     For request RQ-0912, contracts FM-22 and FM-31 carry that marking on their cover pages, and they were withheld on 3 June under section 6.
+  U3 D positive anchors=["2 June","seven contracts"]
+     The other seven contracts located on 2 June carry no marking and were released.
+  events: withholding@-----06-03 | null@-----06-02
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-026 UNGROUNDED [C]
+  U0 D anchors=[]
+     Records request determination.
+  U1 D negative S["RQ-0912"] anchors=[] excluded=["3 June:decision_date","RQ-0912:subject_reference"]
+     Request RQ-0912 was partly refused on 3 June.
+  U2 D B(because) negative anchors=[] excluded=["Two contracts:decision_detail"]
+     Two contracts were withheld because they were not suitable for release.
+  U3 D B(because) anchors=[]
+     They were not suitable for release because the records team decided to withhold them, and the partial refusal follows from that decision.
+  events: refusal@-----06-03RQ-0912
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_restated_as_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-027 GROUNDED [D]
+  U0 D anchors=[]
+     Records request determination.
+  U1 S["RQ-0912"] anchors=["28 May"] excluded=["RQ-0912:subject_reference"]
+     Request RQ-0912 was received on 28 May.
+  U2 anchors=["2 June","9 contracts"]
+     The contract register was searched on 2 June and 9 contracts were located.
+  U3 D mixed S["FM-22 AND FM-31"] anchors=[] excluded=["3 June:decision_date","FM-22:subject_reference","FM-31:subject_reference"]
+     Seven were released on 3 June, and contracts FM-22 and FM-31 were withheld under the confidentiality markings on their cover pages.
+  U4 anchors=["10 June"]
+     The requester's review request was received on 10 June.
+  events: receipt@-----05-28RQ-0912 | search@-----06-02 | release@-----06-03 | appeal@-----06-10
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-028 GROUNDED [S]
+  U0 D anchors=[]
+     Records request determination.
+  U1 S["RQ-0912"] anchors=["28 May","2 June","9 contracts"] excluded=["RQ-0912:subject_reference"]
+     Request RQ-0912 was received on 28 May, and the contract register search on 2 June located 9 contracts.
+  U2 D mixed S["FM-22 AND FM-31"] anchors=[] excluded=["3 June:decision_date","FM-22:subject_reference","FM-31:subject_reference"]
+     Seven were released on 3 June, and contracts FM-22 and FM-31 were withheld under their confidentiality markings.
+  U3 anchors=["3 June","5 June"]
+     The release letter of 3 June refers to the register search completed on 5 June.
+  events: receipt@-----05-28RQ-0912 | search@-----06-02 | release@-----06-03 | release@-----06-03 | search@-----06-05
+  conflicts: same_event_date_conflict: Two record spans give the event "search" different dates (2 June, 5 June).
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-029 GROUNDED [P]
+  U0 D anchors=[]
+     Records request determination.
+  U1 D anchors=[] excluded=["3 June:decision_date"]
+     Two requests from the same requester were decided on 3 June.
+  U2 D mixed S["RQ-0912","FM-22","FM-31"] anchors=[] excluded=["RQ-0912:subject_reference","FM-22:subject_reference","FM-31:subject_reference","seven contracts:decision_detail"]
+     Request RQ-0912, for the 2025 maintenance contracts, was granted in part: seven contracts were released and FM-22 and FM-31 were withheld under their 
+  U3 D B(because) negative S["RQ-0915"] anchors=["2 June","found no"] excluded=["RQ-0915:subject_reference"]
+     Request RQ-0915, for the 2024 cleaning rota, was refused because the register search of 2 June found no such document.
+  U4 anchors=[]
+     Each request has its own reference.
+  events: null@-----06-03 | search@-----06-02
+  conflicts: none
+  reconstructability: gaps=conclusion_without_identifiable_basis review=
+  identifiable_basis: gaps=conclusion_without_identifiable_basis review=
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_without_identifiable_basis review=
+  sufficiency: gaps=conclusion_without_identifiable_basis review=sufficiency_not_determinable_by_engine
+
+=== S-030 UNGROUNDED [M]
+  U0 D anchors=[]
+     Records request determination.
+  U1 D mixed S["RQ-0912","FM-22 AND FM-31"] anchors=["2 June","seven of","nine contracts"] excluded=["3 June:decision_date","RQ-0912:subject_reference","FM-22:subject_reference","FM-31:subject_reference"]
+     Request RQ-0912 was granted in part on 3 June: seven of nine contracts located in the 2 June register search were released, and contracts FM-22 and FM
+  U2 D +C anchors=[]
+     The determination adds that no other records relevant to the request exist anywhere in the organization.
+  events: grant@-----06-03RQ-0912 | search@-----06-02
+  conflicts: none
+  reconstructability: gaps=conclusion_without_identifiable_basis review=
+  identifiable_basis: gaps=conclusion_without_identifiable_basis review=
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_without_identifiable_basis review=
+  sufficiency: gaps=conclusion_without_identifiable_basis review=sufficiency_not_determinable_by_engine
+
+=== S-031 GROUNDED [G]
+  U0 anchors=[]
+     Retention exception record.
+  U1 anchors=["12 January","3 years","7-year"]
+     The project team asked on 12 January to keep the Riverside design files for 3 years beyond the 7-year schedule.
+  U2 B(cites) anchors=["9 January","AR-5520","IR-77","10-year"]
+     The asset register shows the bridge is still under its 10-year inspection programme (entry AR-5520), and inspection report IR-77 of 9 January cites th
+  U3 D B(cites) positive anchors=["AR-5520","IR-77"] excluded=["16 January:decision_date"]
+     The records manager approved the exception on 16 January; the approval cites entry AR-5520 and report IR-77.
+  events: request@-----01-12 | report@-----01-09IR-77 | approval@-----01-16
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-032 GROUNDED [G2]
+  U0 anchors=[]
+     Retention exception record.
+  U1 D B(because) positive anchors=["9 January","AR-5520","IR-77","10-year"] excluded=["until 2031:decision_detail"]
+     The Riverside design files will be kept until 2031, three years past the schedule, because the bridge remains in its 10-year inspection programme (ass
+  U2 D positive anchors=[] excluded=["16 January:decision_date"]
+     The records manager approved the exception on 16 January.
+  events: report@-----01-09IR-77 | approval@-----01-16
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-033 UNGROUNDED [U]
+  U0 anchors=[]
+     Retention exception record.
+  U1 anchors=[]
+     The Riverside design files are important and are worth keeping for longer than usual.
+  U2 D positive anchors=[]
+     The records manager considered the request and agreed that an exception is sensible.
+  U3 anchors=[]
+     Keeping the files is a prudent step that protects the organization.
+  events: 
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=
+  chronology_integrity: gaps=no_explicit_dates review=
+  reasoning_traceability: gaps=conclusion_without_stated_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-034 UNGROUNDED [A]
+  U0 anchors=[]
+     Retention exception record.
+  U1 D A positive anchors=[] excluded=["16 January:decision_date","clause 9.1:authority_citation","3 years:decision_detail"]
+     An exception to keep the Riverside design files for 3 years beyond the schedule was approved on 16 January under clause 9.1 of the Records Retention S
+  U2 D A positive anchors=[] excluded=["Clause 9.1:authority_citation"]
+     Clause 9.1 deals with extended retention.
+  U3 anchors=[]
+     The exception is entered in the retention log.
+  events: approval@-----01-16
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=authority_reference_without_linked_facts
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_without_stated_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-035 GROUNDED [L]
+  U0 anchors=[]
+     Retention exception record.
+  U1 D A positive anchors=[] excluded=["Clause 9.1:authority_citation"]
+     Clause 9.1 of the Records Retention Standard allows extended retention while an asset remains under an active inspection programme.
+  U2 anchors=["AR-5520","10-year","until 2031"]
+     Asset register entry AR-5520 shows the Riverside bridge in its 10-year inspection programme until 2031.
+  U3 D A positive anchors=[] excluded=["16 January:decision_detail","clause 9.1:authority_citation","until 2031:decision_detail"]
+     The records manager approved keeping the design files until 2031 under clause 9.1 on 16 January.
+  events: approval@-----01-16
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-036 UNGROUNDED [C]
+  U0 anchors=[]
+     Retention exception record.
+  U1 D positive anchors=[] excluded=["16 January:decision_date","3 years:decision_detail"]
+     The exception to keep the Riverside design files for 3 years beyond the schedule was approved on 16 January.
+  U2 D B(because) positive anchors=[]
+     The files are being kept longer because an extended retention period was considered necessary, and it was considered necessary because the files are t
+  events: approval@-----01-16
+  conflicts: none
+  reconstructability: gaps= review=conclusion_without_identifiable_basis
+  identifiable_basis: gaps=no_identifiable_basis_evidence review=
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_restated_as_basis review=
+  sufficiency: gaps=no_identifiable_basis_evidence review=sufficiency_not_determinable_by_engine
+
+=== S-037 GROUNDED [D]
+  U0 anchors=[]
+     Retention exception record.
+  U1 anchors=["12 January"]
+     The exception request was received on 12 January.
+  U2 B(relies on) anchors=["9 January","14 March","IR-77","AR-5520"]
+     Inspection report IR-77, dated 9 January, relies on the design files, and asset register entry AR-5520 lists the bridge's next inspection for 14 March
+  U3 D positive anchors=[] excluded=["16 January:decision_date","17 January:decision_detail"]
+     The records manager approved the exception on 16 January, and the retention log was updated on 17 January.
+  events: receipt@-----01-12 | null@-----01-09 | inspection@-----03-14AR-5520 | approval@-----01-16 | update@-----01-17
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-038 GROUNDED [S]
+  U0 anchors=[]
+     Retention exception record.
+  U1 D B(citing) positive anchors=["12 January","AR-5520","IR-77"] excluded=["16 January:decision_date"]
+     The exception request was received on 12 January, and the records manager approved it on 16 January, citing asset register entry AR-5520 and inspectio
+  U2 anchors=["21 January"]
+     The retention log entry records the same approval as given on 21 January.
+  events: receipt@-----01-12 | approval@-----01-16 | approval@-----01-21
+  conflicts: same_event_date_conflict: Two record spans give the event "approval" different dates (16 January, 21 January).
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-039 GROUNDED [P]
+  U0 anchors=[]
+     Retention exception record.
+  U1 D anchors=[] excluded=["16 January:decision_date"]
+     Two retention requests for Riverside project material were decided on 16 January.
+  U2 D B(because) positive anchors=["AR-5520"] excluded=["until 2031:decision_detail"]
+     The design files will be kept until 2031 because the bridge remains in its inspection programme (asset register entry AR-5520).
+  U3 D B(because) negative anchors=["IR-77","does not refer to"]
+     The site photographs will be disposed of on schedule because inspection report IR-77 does not refer to them.
+  U4 anchors=[]
+     Each request is logged separately.
+  events: null@-----01-16
+  conflicts: none
+  reconstructability: gaps= review=decision_and_linked_content_not_both_cited
+  identifiable_basis: gaps= review=no_cited_basis_with_evidence_anchor
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps= review=rationale_path_not_cited
+  sufficiency: gaps= review=sufficiency_not_determinable_by_engine
+
+=== S-040 UNGROUNDED [M]
+  U0 anchors=[]
+     Retention exception record.
+  U1 D B(because) positive anchors=["16 January","AR-5520","until 2031"]
+     The records manager approved keeping the Riverside design files until 2031 on 16 January because asset register entry AR-5520 shows the bridge in its 
+  U2 +C anchors=[]
+     The approval also states that all other Riverside project records carry no ongoing value and can be destroyed now.
+  events: approval@-----01-16
+  conflicts: none
+  reconstructability: gaps=conclusion_without_identifiable_basis review=
+  identifiable_basis: gaps=conclusion_without_identifiable_basis review=
+  chronology_integrity: gaps= review=dated_sequence_not_cited
+  reasoning_traceability: gaps=conclusion_without_identifiable_basis review=
+  sufficiency: gaps=conclusion_without_identifiable_basis review=sufficiency_not_determinable_by_engine
+
+release {"unchanged":true,"changed":[],"deleted":true} network 0

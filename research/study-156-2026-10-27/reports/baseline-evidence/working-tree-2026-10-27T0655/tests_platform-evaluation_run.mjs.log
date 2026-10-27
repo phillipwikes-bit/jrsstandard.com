@@ -1,0 +1,89 @@
+{
+  "evaluation_id": "JRS-PE-001",
+  "evaluation_type": "internal constructed platform-integration evaluation",
+  "executed_at": "2026-09-22T18:00:00.000Z",
+  "data_class": "synthetic constructed record only",
+  "network_calls": 0,
+  "customer_or_third_party": false,
+  "summary": {
+    "checks": 12,
+    "passed": 12,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "name": "Schema conformance",
+      "result": "pass",
+      "evidence": "Manifest v1.0 accepted"
+    },
+    {
+      "name": "Five-condition preservation",
+      "result": "pass",
+      "evidence": "5 conditions stored"
+    },
+    {
+      "name": "Request correlation",
+      "result": "pass",
+      "evidence": "pe001-0000-4000-8000-000000000001"
+    },
+    {
+      "name": "Input correspondence",
+      "result": "pass",
+      "evidence": "sha256:7a52ec09f2bc6c524d26f3563a98d7ae78c8b4608d3377edc45715e9d6c51731"
+    },
+    {
+      "name": "Version pinning",
+      "result": "pass",
+      "evidence": "JRS 1.0; Codebook 1.0; engine 0.1.0-validation"
+    },
+    {
+      "name": "Vocabulary declaration",
+      "result": "pass",
+      "evidence": "No silent Codebook or routing translation"
+    },
+    {
+      "name": "Human-review preservation",
+      "result": "pass",
+      "evidence": "Human secondary review retained"
+    },
+    {
+      "name": "Content classification",
+      "result": "pass",
+      "evidence": "derived_record_content"
+    },
+    {
+      "name": "Raw-record exclusion",
+      "result": "pass",
+      "evidence": "Platform evidence entry contains the hash and derived notes, not the raw record"
+    },
+    {
+      "name": "Integrity self-check",
+      "result": "pass",
+      "evidence": "SELF-CONSISTENT (not authenticated: unsigned)"
+    },
+    {
+      "name": "Tamper detection",
+      "result": "pass",
+      "evidence": "Changed routing value produced a hash mismatch"
+    },
+    {
+      "name": "Unsupported mapping refusal",
+      "result": "pass",
+      "evidence": "Generator refused unestablished Codebook relabeling"
+    }
+  ],
+  "conclusions": {
+    "established": [
+      "A documented adapter path can convert a constructed current-state engine response into a conforming Manifest.",
+      "The resulting artifact can be stored beside a platform audit entry with request correlation and without embedding the raw record.",
+      "The offline validator detects controlled tampering and the generator refuses unsupported vocabulary conversion.",
+      "The documented test can be executed from the repository without oral founder instruction."
+    ],
+    "not_established": [
+      "Live API availability, latency, production scale, security certification, customer deployment, or third-party integration.",
+      "Accuracy, reliability, organizational effectiveness, legal sufficiency, compliance, or market adoption.",
+      "Automatic Manifest delivery by the current public API.",
+      "Conveyability of every potential JRS asset or commercial right."
+    ]
+  }
+}

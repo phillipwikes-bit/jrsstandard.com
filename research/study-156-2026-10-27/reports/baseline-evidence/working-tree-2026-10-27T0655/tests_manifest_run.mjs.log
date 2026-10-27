@@ -1,0 +1,70 @@
+PASS  F1 no-record manifest is valid
+PASS  F1 content_class = no_record_content  no_record_content
+PASS  F2 derived manifest is valid
+PASS  F2 content_class = derived_record_content  derived_record_content
+PASS  F3 content_class = contains_record  contains_record
+PASS  F4 input.truncated = true
+PASS  F4 length_chars pinned at the 8,000 limit  8000
+PASS  F4 carries source_hash for the full record
+PASS  F4 evaluated hash differs from source hash
+PASS  F5 condition_vocabulary defaults to review_engine_keys
+PASS  F5 routing vocabulary declared
+PASS  F6 relabeling to Codebook without a declared mapping THROWS
+PASS  RT silent routing conversion refused (no openapi value present)  (threw: manifest_build_failed: no routing value for vocabulary openapi_1.0_rou)
+PASS  RT unknown routing vocabulary refused  (threw: manifest_build_failed: unknown routing_vocabulary invented)
+PASS  RT unknown condition vocabulary refused  (threw: manifest_build_failed: unknown condition_vocabulary invented)
+PASS  RT invented condition status refused, not coerced  (threw: manifest_build_failed: condition basis_identification has status "exce)
+PASS  RT missing jrs_version refused  (threw: manifest_build_failed: jrsVersion is required)
+PASS  RT missing codebook_version refused  (threw: manifest_build_failed: codebookVersion is required)
+PASS  RT missing engine version refused  (threw: manifest_build_failed: engine name, version, model and api_version are)
+PASS  RT four conditions refused  (threw: manifest_build_failed: expected 5 conditions, received 4)
+PASS  RT human_review.required is true and carries a reason
+PASS  RT human_review reason avoids a legal claim
+PASS  RT forged no_record_content with notes is REJECTED
+PASS  RT hand-set jrs_codebook_1.0 is REJECTED by the validator
+PASS  PRIV F1 contains no synthetic identifier
+PASS  PRIV F2 (derived) contains no synthetic identifier verbatim
+PASS  PRIV no raw record text in F2
+PASS  SEC no sk-ant- in output
+PASS  SEC no ANTHROPIC_API_KEY in output
+PASS  SEC no supabase.co in output
+PASS  SEC no process.env in output
+PASS  SEC no You are a in output
+PASS  SEC no Bearer in output
+PASS  SEC no sb_publishable in output
+PASS  REPRO identical inputs give an identical canonical form
+PASS  REPRO identical inputs give an identical manifest hash
+PASS  REPRO manifest_id and created_at are the nondeterministic fields
+PASS  INTEGRITY tampering with routing breaks the hash
+PASS  INTEGRITY unsigned manifest reports self-consistent, never authentic
+PASS  SH baseline truncated manifest is valid
+PASS  SH altered source_hash breaks the manifest hash
+PASS  SH altered evaluated hash breaks the manifest hash
+PASS  SH hash_algorithm changed to disagree with the prefix
+PASS  SH source_hash removed while truncated stays true
+PASS  SH malformed hash without an algorithm prefix
+PASS  SH evaluated length changed to contradict truncation
+PASS  SH truncated flipped to false while source_hash remains
+PASS  SH source_hash forged equal to the evaluated hash
+PASS  SH full-record evaluation claimed on a truncated manifest
+PASS  SH prohibited field legally_sufficient rejected
+PASS  SH prohibited field compliant rejected
+PASS  SH prohibited field certified rejected
+PASS  SH prohibited field validated rejected
+PASS  SH prohibited field court_admissible rejected
+PASS  SH prohibited field litigation_proof rejected
+PASS  SH human_review.required=false with no reason
+PASS  SH human_review reason carrying a legal conclusion is detectable
+PASS  SH manifest_id altered without rehash
+PASS  SH jrs_version removed
+PASS  SH codebook_version removed
+PASS  SH engine.version removed
+PASS  SH canonicalization identifier altered
+PASS  SH unsupported condition key added as a sixth
+PASS  ORACLE 01-no-record.manifest.json matches the frozen canonical fixture
+PASS  ORACLE 02-derived.manifest.json matches the frozen canonical fixture
+PASS  ORACLE 03-contains-record.manifest.json matches the frozen canonical fixture
+PASS  ORACLE 04-truncated.manifest.json matches the frozen canonical fixture
+PASS  ORACLE detects a generator regression (mutated content_class differs from canonical)
+
+68 checks, 0 failed

@@ -1,0 +1,1 @@
+Control test record. Two controls were tested in July. Backup restoration was rated effective with one exception because 14 of 15 sampled restores met the 4-hour target (working paper WP-14). Off-site backup rotation was rated ineffective because 3 of 12 sampled weekly tapes were not logged as leaving the site (working paper WP-15). Each control has its own rating.

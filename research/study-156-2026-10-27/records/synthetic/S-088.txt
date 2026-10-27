@@ -1,0 +1,1 @@
+Control test record, backup restoration. We restored 15 of the 60 Q2 weekly backups; backup BK-2207 overran at 6 hours and was re-run successfully on 3 July (working paper WP-14). The rating of effective with one exception was agreed on 5 July. The audit file records the BK-2207 re-run as performed on 8 July.

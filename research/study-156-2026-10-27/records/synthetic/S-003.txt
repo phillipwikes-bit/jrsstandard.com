@@ -1,0 +1,1 @@
+Change approval record. Change request CR-2291 for the reporting database upgrade was reviewed thoroughly and approved. The board was satisfied that the change is well prepared and carries little exposure. The team has a strong track record with upgrades of this kind, and the approval is well founded.

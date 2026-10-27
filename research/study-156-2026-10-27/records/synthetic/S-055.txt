@@ -1,0 +1,1 @@
+Release decision record. Section 2.3 of the Release Management Procedure permits a minor release when the full regression suite passes and no high-severity security finding is open. Regression run RS-5208 of 17 September passed 1,412 of 1,412 tests, and scan SC-311 of 18 September reported no high findings. Release 5.2 was authorized under section 2.3 on 19 September.

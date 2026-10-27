@@ -1,0 +1,19 @@
+FAIL  returns 200 with a service key
+PASS  NO record text in the response
+PASS  NO compliant_version key
+PASS  NO note key
+PASS  NO finding key
+PASS  NO input_preview key
+FAIL  condition STATUSES survive
+PASS  determination survives
+FAIL  timestamp truncated to the hour
+FAIL  select list omits finding and asks only for safe columns
+PASS  reads with the SERVICE key so it survives grant revocation  (service-role read, not anon)
+PASS  no-store cache header
+PASS  noindex header
+FAIL  carries a disclosure statement
+PASS  fails closed with no service key
+FAIL  invented status is nulled, not echoed
+PASS  an unexpected upstream column does not pass through
+
+17 checks, 6 failed

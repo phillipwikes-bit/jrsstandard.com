@@ -1,0 +1,1 @@
+Change approval record. The Change Advisory Board approved change request CR-2291 on 6 March after the rollback rehearsal passed (test report TR-118, 4 March). The board also concluded that the vendor's patch process is mature and that future upgrades of this cluster can be approved without a rehearsal.

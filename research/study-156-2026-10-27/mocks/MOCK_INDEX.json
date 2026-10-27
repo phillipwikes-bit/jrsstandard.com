@@ -1,0 +1,3761 @@
+{
+  "format": "jrs-study-156-mock-index/1.0.0",
+  "built_at_utc": "2026-10-27T12:39:28.866Z",
+  "records": 104,
+  "policies": [
+    "ORACLE",
+    "OVERCLAIM",
+    "UNDERCLAIM",
+    "ORACLE-default",
+    "ORACLE-R",
+    "OVERCLAIM-R"
+  ],
+  "files": 624,
+  "note": "Mock policy fixtures, not model output. ORACLE is told the reference label; OVERCLAIM and UNDERCLAIM are told nothing but their policy. The -R policies choose quotations with the research rules themselves (circular, a ceiling only).",
+  "rows": [
+    {
+      "id": "R03",
+      "policy": "ORACLE",
+      "sha256": "3b452f6d97fb98fd98a46c310dc49fb2493fa126f5d4c26dd28f836071997865",
+      "observations": 5
+    },
+    {
+      "id": "R03",
+      "policy": "OVERCLAIM",
+      "sha256": "f93cb04e099e23e0fab429c6fbf6e10008927c266a9a0bc2691d7998ae02b380",
+      "observations": 5
+    },
+    {
+      "id": "R03",
+      "policy": "UNDERCLAIM",
+      "sha256": "99d82b782750658029b7323107c40fc2fce10726b96c1f893acb18f7588eccbe",
+      "observations": 5
+    },
+    {
+      "id": "R03",
+      "policy": "ORACLE-default",
+      "sha256": "8001fee3ee83b7d3fea00a0575613df451db71791a9322135e513472eeac9c16",
+      "observations": 5
+    },
+    {
+      "id": "R03",
+      "policy": "ORACLE-R",
+      "sha256": "1500f35b98cf288212a65d2370841c72254d97c45dea1517ebac6d91ef820320",
+      "observations": 5
+    },
+    {
+      "id": "R03",
+      "policy": "OVERCLAIM-R",
+      "sha256": "79b115d91b8d00bcf5483ea95984ea3cf535a45e8eb52375f0d4444dbd5b3880",
+      "observations": 5
+    },
+    {
+      "id": "R08",
+      "policy": "ORACLE",
+      "sha256": "650176b8f40520310d4f255bf0856548cb409ef4f38409767c23c34b98641041",
+      "observations": 6
+    },
+    {
+      "id": "R08",
+      "policy": "OVERCLAIM",
+      "sha256": "836fb1eff52ad5405ef34420c582169d6b7580e814b0840106969c93457361a2",
+      "observations": 6
+    },
+    {
+      "id": "R08",
+      "policy": "UNDERCLAIM",
+      "sha256": "9bacced304cb15fd38a1fb40b56ce40648ac3e35c7417cef8a0723beea7dff97",
+      "observations": 6
+    },
+    {
+      "id": "R08",
+      "policy": "ORACLE-default",
+      "sha256": "b29e6d8fafb1137178bc51ffd60f0ba74a82a327634cc8ebf6c191208cffa496",
+      "observations": 6
+    },
+    {
+      "id": "R08",
+      "policy": "ORACLE-R",
+      "sha256": "1586cc57870aa6a34c60277baaffa3520ec1d19811f746bda9468d3bb8733d54",
+      "observations": 6
+    },
+    {
+      "id": "R08",
+      "policy": "OVERCLAIM-R",
+      "sha256": "db494a068867c49911e8762c5c6892595383015c55634ba5edc4b2b6e5a38d34",
+      "observations": 6
+    },
+    {
+      "id": "R15",
+      "policy": "ORACLE",
+      "sha256": "e0c003853c51bcf9076c65f483293f585082cb1e6132e0755e46d93049aef01e",
+      "observations": 6
+    },
+    {
+      "id": "R15",
+      "policy": "OVERCLAIM",
+      "sha256": "703291abbccaaadcc8be84e987a4da4585e0891a7a2d21ad2a88eb6df50a7b5f",
+      "observations": 6
+    },
+    {
+      "id": "R15",
+      "policy": "UNDERCLAIM",
+      "sha256": "f70632b06f511ae8fda46a4a04c2d586ab84a8a82a3b90dbcc9ddc06e8b22a08",
+      "observations": 6
+    },
+    {
+      "id": "R15",
+      "policy": "ORACLE-default",
+      "sha256": "e6ddc9b758de9c7a7c511eb4e2f2c26f4bb09b75f4ca64a335551228fc6e47a2",
+      "observations": 6
+    },
+    {
+      "id": "R15",
+      "policy": "ORACLE-R",
+      "sha256": "d0818fbd06c468e0d63077cdcd7b8af8391502966019edaf03d1179431d9d223",
+      "observations": 5
+    },
+    {
+      "id": "R15",
+      "policy": "OVERCLAIM-R",
+      "sha256": "5cbfc5d8f84fb78985da587ad5b8a5d19bb60e954ecd78489b2adaf724f49cbc",
+      "observations": 5
+    },
+    {
+      "id": "R22",
+      "policy": "ORACLE",
+      "sha256": "820568e477b934f6d31d8c8866fbc945449fe9ceee1f1f8d964d16188b79cba6",
+      "observations": 6
+    },
+    {
+      "id": "R22",
+      "policy": "OVERCLAIM",
+      "sha256": "2eb6e448f275c4fe718aa329842bdcd86a33ca8382c61e36291efd3b62646de8",
+      "observations": 6
+    },
+    {
+      "id": "R22",
+      "policy": "UNDERCLAIM",
+      "sha256": "a08e31d6d64e7e97411683d8da2724acf8251f1a1d75e7d899808331f97569e1",
+      "observations": 6
+    },
+    {
+      "id": "R22",
+      "policy": "ORACLE-default",
+      "sha256": "246ed1733b8e16dfefe9683b4863d344ba42882ca32de705f2fe80ba278b0eac",
+      "observations": 6
+    },
+    {
+      "id": "R22",
+      "policy": "ORACLE-R",
+      "sha256": "947655736d236d8e2f245461ee0b1dcaccdd4e3971a8632b51b0fc1ce108084a",
+      "observations": 6
+    },
+    {
+      "id": "R22",
+      "policy": "OVERCLAIM-R",
+      "sha256": "82fe66b27a8ad6eb8e0848e67f4f6afe8fecdffca2f219795b6596367434cac8",
+      "observations": 6
+    },
+    {
+      "id": "S-001",
+      "policy": "ORACLE",
+      "sha256": "5215735a6f9e86c6e54076915b05621bfe10e94c2d5e8712cec22b6e4b68e1c9",
+      "observations": 7
+    },
+    {
+      "id": "S-001",
+      "policy": "OVERCLAIM",
+      "sha256": "66ea8ca3a111884925b1397a7c8d8c84d2b219337723a6e8dde0bb160a14998f",
+      "observations": 7
+    },
+    {
+      "id": "S-001",
+      "policy": "UNDERCLAIM",
+      "sha256": "b47d898ad72d2eb3744003ad5cf01eee5d84dbab64e506bf14713fe66fdce6b8",
+      "observations": 7
+    },
+    {
+      "id": "S-001",
+      "policy": "ORACLE-default",
+      "sha256": "7bd7e7abd1a27de30801028fd17392a309d5b7774c488030c30df02da8e0e6b2",
+      "observations": 7
+    },
+    {
+      "id": "S-001",
+      "policy": "ORACLE-R",
+      "sha256": "f55b1ec35843ad8f04c08370019ce01e37a884f6ab71aa1b1a72469d264252b6",
+      "observations": 7
+    },
+    {
+      "id": "S-001",
+      "policy": "OVERCLAIM-R",
+      "sha256": "4dd30ff420b4f3e05f1717dd96b470f41401d2372b7ec4a26bc1ef8ac063a506",
+      "observations": 7
+    },
+    {
+      "id": "S-002",
+      "policy": "ORACLE",
+      "sha256": "2d33b433177b3a489e2b0c9e42f779ce61940bc4f4d961cc66e2e255f0329a07",
+      "observations": 6
+    },
+    {
+      "id": "S-002",
+      "policy": "OVERCLAIM",
+      "sha256": "082f9ff189b30aa7da90bf86774c5dfb012389cf3c1451afbfa06bae70b6c4a5",
+      "observations": 6
+    },
+    {
+      "id": "S-002",
+      "policy": "UNDERCLAIM",
+      "sha256": "737cb4d4f65ab8a74eeb2d3fef7ea3cf987e5055b8e6e008ab7eab9f3b4681d3",
+      "observations": 6
+    },
+    {
+      "id": "S-002",
+      "policy": "ORACLE-default",
+      "sha256": "2e07a9876fc9ba04e23f7c722dc96b5929181628b3677d6be68453c5439dc1d3",
+      "observations": 6
+    },
+    {
+      "id": "S-002",
+      "policy": "ORACLE-R",
+      "sha256": "12c89e5d4b727756f69d26ee25c659a13a4649042f9e0518a1dd3034d49c2882",
+      "observations": 7
+    },
+    {
+      "id": "S-002",
+      "policy": "OVERCLAIM-R",
+      "sha256": "3e37123bb5190a1d0505b90259a1f9beb574c075698d7729b1ebba7594a0d360",
+      "observations": 7
+    },
+    {
+      "id": "S-003",
+      "policy": "ORACLE",
+      "sha256": "57c4d1225af140be2be8a173cfe75921e8ad932e1df1ca51f6607edf5abd126c",
+      "observations": 5
+    },
+    {
+      "id": "S-003",
+      "policy": "OVERCLAIM",
+      "sha256": "c446b132d7d368b42e7e8877cd0e07cdf41a07fe67f9be5a0b8d41ad86c71608",
+      "observations": 5
+    },
+    {
+      "id": "S-003",
+      "policy": "UNDERCLAIM",
+      "sha256": "3e3541db78615b148e296ff7d4ee6b996e2222b5b8cf6bce38d2e22ce9a28c4b",
+      "observations": 5
+    },
+    {
+      "id": "S-003",
+      "policy": "ORACLE-default",
+      "sha256": "d1400bf8d2625227e02108a142bc162136d783136151678392f5a4980baad37f",
+      "observations": 5
+    },
+    {
+      "id": "S-003",
+      "policy": "ORACLE-R",
+      "sha256": "5d6447fe4e7d943b161414294ce42100a8ebed513d16edb3a4c262128967e286",
+      "observations": 5
+    },
+    {
+      "id": "S-003",
+      "policy": "OVERCLAIM-R",
+      "sha256": "97e61d9ac43cb26154726044c8a242a9753523487177834956ebf1d032c9d28d",
+      "observations": 5
+    },
+    {
+      "id": "S-004",
+      "policy": "ORACLE",
+      "sha256": "70d38d373f3de33d4da5758005ebd4809312865828af51a13cdc2ff0e0791635",
+      "observations": 6
+    },
+    {
+      "id": "S-004",
+      "policy": "OVERCLAIM",
+      "sha256": "bf3c9d23b7db18b849e0514c7ce95afa553412d314acad9153800c8857d23ea4",
+      "observations": 6
+    },
+    {
+      "id": "S-004",
+      "policy": "UNDERCLAIM",
+      "sha256": "f91ad3652b54b3694d838f5a9866f7099f589fa6cbf2745c70c9f3bc6aa01aa4",
+      "observations": 6
+    },
+    {
+      "id": "S-004",
+      "policy": "ORACLE-default",
+      "sha256": "ac6ca02ceb4f10d0283227f66a9e0e935d6b0c1626b900b98b27bffa4a691a31",
+      "observations": 6
+    },
+    {
+      "id": "S-004",
+      "policy": "ORACLE-R",
+      "sha256": "64c4435f44d8e1f98465490644436ebbf70354532f4c9012dadd8e5d8b34974d",
+      "observations": 5
+    },
+    {
+      "id": "S-004",
+      "policy": "OVERCLAIM-R",
+      "sha256": "409b874c795708c9b0dbce74a8ce62b771ad6b3560cae11bd0be035b6823f7d3",
+      "observations": 5
+    },
+    {
+      "id": "S-005",
+      "policy": "ORACLE",
+      "sha256": "316549aaf9f6a7435aebc93f727ca6c355bb8a3287c82d99e34136d96056cf60",
+      "observations": 7
+    },
+    {
+      "id": "S-005",
+      "policy": "OVERCLAIM",
+      "sha256": "c84aee594729214421962309ba9237eef5a62f9c7c3439a209940c9c8276f218",
+      "observations": 7
+    },
+    {
+      "id": "S-005",
+      "policy": "UNDERCLAIM",
+      "sha256": "72dfb02f0b28bf83459603269cf7b634d33bdaf717e25401b4461036bc7028d8",
+      "observations": 7
+    },
+    {
+      "id": "S-005",
+      "policy": "ORACLE-default",
+      "sha256": "b95096a7d3773ea0c31dccefd1d1aadcc6a3fc2afe58b40147594a5a517d8f10",
+      "observations": 7
+    },
+    {
+      "id": "S-005",
+      "policy": "ORACLE-R",
+      "sha256": "4b5554dd4a68cdace65d5d0c217c01310c6830fb1a247aa25dd6f73feb8a78af",
+      "observations": 7
+    },
+    {
+      "id": "S-005",
+      "policy": "OVERCLAIM-R",
+      "sha256": "8d4298a52e4b13b86e1a758aa6a1ba22db81e87d0d377ec74113e10e82d81469",
+      "observations": 7
+    },
+    {
+      "id": "S-006",
+      "policy": "ORACLE",
+      "sha256": "4808b264e78c9cea0ffbf58d1cc460a59774a300ac1b06530eb8b45b83047877",
+      "observations": 6
+    },
+    {
+      "id": "S-006",
+      "policy": "OVERCLAIM",
+      "sha256": "50e6937596cd929af65a433fea9521a8e15bd0dd40b2518eaed4cdf35881fd71",
+      "observations": 6
+    },
+    {
+      "id": "S-006",
+      "policy": "UNDERCLAIM",
+      "sha256": "68911030fabbbf153796f35aa91b8d84e969befdbb10a0a76cdcb6615c752bca",
+      "observations": 6
+    },
+    {
+      "id": "S-006",
+      "policy": "ORACLE-default",
+      "sha256": "9bbb40c9be814202c6585f2906e7a522d9891f9c3993b7e95a817031b11d279e",
+      "observations": 6
+    },
+    {
+      "id": "S-006",
+      "policy": "ORACLE-R",
+      "sha256": "0afd78d08e84ca4193ca73553f021d4034f79727393b289d9d025cd0c9242c84",
+      "observations": 5
+    },
+    {
+      "id": "S-006",
+      "policy": "OVERCLAIM-R",
+      "sha256": "3ad27631067f31dff6ee59683f6886009620ee10fdb015bb0ac0727878a9cbf1",
+      "observations": 5
+    },
+    {
+      "id": "S-007",
+      "policy": "ORACLE",
+      "sha256": "57052e41c579d35c0028b19ac6ef8d238ad0989aed0fa14aeed170097f29a934",
+      "observations": 7
+    },
+    {
+      "id": "S-007",
+      "policy": "OVERCLAIM",
+      "sha256": "5ae75fe42061bc0c8b58a64e2416826c98276f1a9373e55221458d726abb1cfe",
+      "observations": 7
+    },
+    {
+      "id": "S-007",
+      "policy": "UNDERCLAIM",
+      "sha256": "ba9534c4ea0a0f024aa6e3a49f693e12ce844766e6d12a17b6c3b875006cd230",
+      "observations": 7
+    },
+    {
+      "id": "S-007",
+      "policy": "ORACLE-default",
+      "sha256": "20c22ce4afc7c8f2c2982b20f127454ba0c608064ebbf4b147055db0ea547d8e",
+      "observations": 7
+    },
+    {
+      "id": "S-007",
+      "policy": "ORACLE-R",
+      "sha256": "e804dd73a85d10b8cd145815480623287b90cd249b567974c59ad2add9775b77",
+      "observations": 7
+    },
+    {
+      "id": "S-007",
+      "policy": "OVERCLAIM-R",
+      "sha256": "1e00bf677d434feb10d69abaf1e13df30f0fc1068d1441df242b92d1cf0e42f9",
+      "observations": 7
+    },
+    {
+      "id": "S-008",
+      "policy": "ORACLE",
+      "sha256": "5c478abc87c59f66b6e12263c80bfce358ea59b9a0a99ce95c768f078b828440",
+      "observations": 7
+    },
+    {
+      "id": "S-008",
+      "policy": "OVERCLAIM",
+      "sha256": "952133441cf8d555a9a17c8c9ae624afafbf351208d56c27ceeb1ae1350bd413",
+      "observations": 7
+    },
+    {
+      "id": "S-008",
+      "policy": "UNDERCLAIM",
+      "sha256": "fc49ae8e84a0adee1b164d71569591a0e40a2f732de08fb8302deea7740987ec",
+      "observations": 7
+    },
+    {
+      "id": "S-008",
+      "policy": "ORACLE-default",
+      "sha256": "865b1137858344da1b3b393ee5f231b88f32ff5fe534ea81c9cfd2ad385d8504",
+      "observations": 7
+    },
+    {
+      "id": "S-008",
+      "policy": "ORACLE-R",
+      "sha256": "54d655a9ec8dd55d25d09f37a920b33ccf2b225aa406a157c490016135040966",
+      "observations": 7
+    },
+    {
+      "id": "S-008",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ae5959474ae0e3dc1ce2084df47655bd66e7f09ddfd7670b7b3ca0d8e60a9481",
+      "observations": 7
+    },
+    {
+      "id": "S-009",
+      "policy": "ORACLE",
+      "sha256": "dbeba7abcd285a76d5635891340dfb5fb3b2f75c5eeee72b69e92948250d14fe",
+      "observations": 5
+    },
+    {
+      "id": "S-009",
+      "policy": "OVERCLAIM",
+      "sha256": "d82d689a8b208e0a502124259566a0c11b555343966eeb1d4202cb79e3819f54",
+      "observations": 5
+    },
+    {
+      "id": "S-009",
+      "policy": "UNDERCLAIM",
+      "sha256": "eced247fb0d139367c25e68e78d957b9991d8f83241d5523539ace1533fde8ee",
+      "observations": 5
+    },
+    {
+      "id": "S-009",
+      "policy": "ORACLE-default",
+      "sha256": "bd5844da78a4dbaec4f5c5a82491e3a3ef42ae3ce4ec640c2ce69b649c07ae83",
+      "observations": 5
+    },
+    {
+      "id": "S-009",
+      "policy": "ORACLE-R",
+      "sha256": "b5e2dcba528ce522e7d9811e6d7374aea34b084a6dceef6bad3c1b757f3e485e",
+      "observations": 6
+    },
+    {
+      "id": "S-009",
+      "policy": "OVERCLAIM-R",
+      "sha256": "88909932cc03ae1c8cfb9aac479f6e01baa20e865ec6e05f7c13a7378bb4334d",
+      "observations": 6
+    },
+    {
+      "id": "S-010",
+      "policy": "ORACLE",
+      "sha256": "e156f364cfc1a86c08606b34227d883217b83cdb8e01be11c15e8740832309e3",
+      "observations": 5
+    },
+    {
+      "id": "S-010",
+      "policy": "OVERCLAIM",
+      "sha256": "ce4399356398f7efd3a8121a414972b4b604797f35527c7ea94db78d8fa342b2",
+      "observations": 5
+    },
+    {
+      "id": "S-010",
+      "policy": "UNDERCLAIM",
+      "sha256": "9a7f7dd5d6266b8092dcf9d70931f076b36a4af4f404375c42e89975a416a34e",
+      "observations": 5
+    },
+    {
+      "id": "S-010",
+      "policy": "ORACLE-default",
+      "sha256": "98750f82777746eec9d4b482c3e98f0e156cb027f23dad738cc386539d000a63",
+      "observations": 5
+    },
+    {
+      "id": "S-010",
+      "policy": "ORACLE-R",
+      "sha256": "ad0073d7c87e5c8fffdea8ee6126013f81b2ab0405275e32f232c9d0edfca8b5",
+      "observations": 7
+    },
+    {
+      "id": "S-010",
+      "policy": "OVERCLAIM-R",
+      "sha256": "002c40b12af9547341164bca695153cf1805553cd467bf2bfd1add7b8c54eda6",
+      "observations": 7
+    },
+    {
+      "id": "S-011",
+      "policy": "ORACLE",
+      "sha256": "a9e8dd9416982e464ab8f12c25d2585e931c85ae4f8362da951811e78187144f",
+      "observations": 7
+    },
+    {
+      "id": "S-011",
+      "policy": "OVERCLAIM",
+      "sha256": "96932ebf413c2ea855037a32983487242225b420773b2ac1a208a7fe59d847f3",
+      "observations": 7
+    },
+    {
+      "id": "S-011",
+      "policy": "UNDERCLAIM",
+      "sha256": "a4725289e4b6e253bd8baf58b6fa7cdde918b52694f7834a60e2356fa9aac146",
+      "observations": 7
+    },
+    {
+      "id": "S-011",
+      "policy": "ORACLE-default",
+      "sha256": "789446a1992bdb9528743b6e18d8605b5fd0bec615e686fae13d18ded5058751",
+      "observations": 7
+    },
+    {
+      "id": "S-011",
+      "policy": "ORACLE-R",
+      "sha256": "3752c4c202d8e5f33106bc4d6edcb7a5f6d1d1c478fc4901452b3dc4b587966d",
+      "observations": 7
+    },
+    {
+      "id": "S-011",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d0f573a3748829817820e0a52b57b9c20b621a71a128ec683c01252c7f966908",
+      "observations": 7
+    },
+    {
+      "id": "S-012",
+      "policy": "ORACLE",
+      "sha256": "c8ac1413b47ba6d84bb896cdd84e7fa17abead7a1e50ebfce06830aab6cb513d",
+      "observations": 6
+    },
+    {
+      "id": "S-012",
+      "policy": "OVERCLAIM",
+      "sha256": "11496390ae1f442b8065bf2d2adde448ec41ca6bd1da8e6706f78287432f3a68",
+      "observations": 6
+    },
+    {
+      "id": "S-012",
+      "policy": "UNDERCLAIM",
+      "sha256": "bc1732f05fd0c9ca64608e8d5d37cc333a4e00c1f99a55580ad7da5249160e22",
+      "observations": 6
+    },
+    {
+      "id": "S-012",
+      "policy": "ORACLE-default",
+      "sha256": "d12c530c30d34c333d0a056181224291eb4fa1e25ef720f46450783cfb9c4acf",
+      "observations": 6
+    },
+    {
+      "id": "S-012",
+      "policy": "ORACLE-R",
+      "sha256": "64f8097484852f69469b5e48cc759e1daa206c79530c0e55c9b735a607044ed5",
+      "observations": 7
+    },
+    {
+      "id": "S-012",
+      "policy": "OVERCLAIM-R",
+      "sha256": "eb3a3a8413023c941a5da233fca7cb523ddda2090e1ec61fa16cc980cf57a25d",
+      "observations": 7
+    },
+    {
+      "id": "S-013",
+      "policy": "ORACLE",
+      "sha256": "82b47b000798e0164c59dae1d34fd4eebb69d6a3f9155a32049f7be6d550ee11",
+      "observations": 6
+    },
+    {
+      "id": "S-013",
+      "policy": "OVERCLAIM",
+      "sha256": "8764170c8b2573ffd95492ab98ec303187780a3ba9ebe9a0051f52a75c0e54a4",
+      "observations": 6
+    },
+    {
+      "id": "S-013",
+      "policy": "UNDERCLAIM",
+      "sha256": "e7032aa7b2ad5d2b926e486aba12f2ed09e7db54b2d093af8dcba0d917a81e83",
+      "observations": 6
+    },
+    {
+      "id": "S-013",
+      "policy": "ORACLE-default",
+      "sha256": "349b18e2387e3faabf51834f131e291a2f5180bbf7c97f7dcec2f1929045b145",
+      "observations": 6
+    },
+    {
+      "id": "S-013",
+      "policy": "ORACLE-R",
+      "sha256": "1500f35b98cf288212a65d2370841c72254d97c45dea1517ebac6d91ef820320",
+      "observations": 5
+    },
+    {
+      "id": "S-013",
+      "policy": "OVERCLAIM-R",
+      "sha256": "79b115d91b8d00bcf5483ea95984ea3cf535a45e8eb52375f0d4444dbd5b3880",
+      "observations": 5
+    },
+    {
+      "id": "S-014",
+      "policy": "ORACLE",
+      "sha256": "7a5f02a84e3edb5ca4399cc58d76d1d0e2aa761d6379da3c97661b3d6c4334c3",
+      "observations": 5
+    },
+    {
+      "id": "S-014",
+      "policy": "OVERCLAIM",
+      "sha256": "62c48275f0b1ed590744ae5d4d98670c5c47f62f6bee513035c1d57e4c9dc6a6",
+      "observations": 5
+    },
+    {
+      "id": "S-014",
+      "policy": "UNDERCLAIM",
+      "sha256": "c7d8220387e1b36847779cf659454537273cf38eb5499397eeb87ecf33101031",
+      "observations": 5
+    },
+    {
+      "id": "S-014",
+      "policy": "ORACLE-default",
+      "sha256": "627b63f548fba3069a40f92328c8d2df3d41352d6228fd27fb48b0127967e599",
+      "observations": 5
+    },
+    {
+      "id": "S-014",
+      "policy": "ORACLE-R",
+      "sha256": "4f7e50fa944a7d80fd9b8df3cb1003f683754243ff2c1f0712bec5b3a763c3b1",
+      "observations": 5
+    },
+    {
+      "id": "S-014",
+      "policy": "OVERCLAIM-R",
+      "sha256": "9dc6ff42fb8ffc2a3564b2390854a9d509ada19838497512608b546852ad575d",
+      "observations": 5
+    },
+    {
+      "id": "S-015",
+      "policy": "ORACLE",
+      "sha256": "1f776a3a592f10b80201a96ac09521e231c06e8dc7746d51a8926e5831683363",
+      "observations": 7
+    },
+    {
+      "id": "S-015",
+      "policy": "OVERCLAIM",
+      "sha256": "90e7fd368ce5f93ba56a851691ca883ba3e3751388343d3cd9d8b011f8d798ae",
+      "observations": 7
+    },
+    {
+      "id": "S-015",
+      "policy": "UNDERCLAIM",
+      "sha256": "5d4751e050876a75c088918bc2e1bca7ad0e3a3ac8586db6d40da396654ace65",
+      "observations": 7
+    },
+    {
+      "id": "S-015",
+      "policy": "ORACLE-default",
+      "sha256": "ee09d3794ac7a76c5e1c370a77a3691fcf703e09bd18ebcb61c2c847794b4a2b",
+      "observations": 7
+    },
+    {
+      "id": "S-015",
+      "policy": "ORACLE-R",
+      "sha256": "278b077b4621658b166c6d5ece894d07a2ad1b5a3ca9c99beab143455583e5b4",
+      "observations": 7
+    },
+    {
+      "id": "S-015",
+      "policy": "OVERCLAIM-R",
+      "sha256": "c8403143534eb8f90fcd125ecfbd2b9c89d89e52bbee150291e177b8832af545",
+      "observations": 7
+    },
+    {
+      "id": "S-016",
+      "policy": "ORACLE",
+      "sha256": "5b31fcc71e29b5d75780d66ef109f226c0ff759052f65cb4e0d399b5a55a8fb5",
+      "observations": 6
+    },
+    {
+      "id": "S-016",
+      "policy": "OVERCLAIM",
+      "sha256": "def77725d872247dff30d1be9386ad28c8479eddf904727aceed464e44530671",
+      "observations": 6
+    },
+    {
+      "id": "S-016",
+      "policy": "UNDERCLAIM",
+      "sha256": "c8caa984d5496b71242cdd31025f99277a38a383da645b95d7e222ae3e69119a",
+      "observations": 6
+    },
+    {
+      "id": "S-016",
+      "policy": "ORACLE-default",
+      "sha256": "dbf632b59f7b4129fb56221657fcbe285c01b96dd7629f1698362d6e37753659",
+      "observations": 6
+    },
+    {
+      "id": "S-016",
+      "policy": "ORACLE-R",
+      "sha256": "3536bf1d6cb33af814a23d7ba0024d36d6cc06a2149f18362444502c266808f3",
+      "observations": 5
+    },
+    {
+      "id": "S-016",
+      "policy": "OVERCLAIM-R",
+      "sha256": "637391046a6a945ecaef9601a9fe394453dc5f7b8e27d8ca0a1dedbb79d7d9a8",
+      "observations": 5
+    },
+    {
+      "id": "S-017",
+      "policy": "ORACLE",
+      "sha256": "92a41d8703373840e10278148c74497c6f5c461c74f3b8c738e8877c09efda5e",
+      "observations": 7
+    },
+    {
+      "id": "S-017",
+      "policy": "OVERCLAIM",
+      "sha256": "dc0aa7f3d978bb3433374972aa222b717c46282082ec11881e02445c473750ab",
+      "observations": 7
+    },
+    {
+      "id": "S-017",
+      "policy": "UNDERCLAIM",
+      "sha256": "0d1cb18092cefaa3a4f4bf1191af729ad651e4dbef8760fe6e4f747f29c35bdc",
+      "observations": 7
+    },
+    {
+      "id": "S-017",
+      "policy": "ORACLE-default",
+      "sha256": "4c6d464767bf71cc8b4b94bc81d931c306419a7562d9bfbd5ee81ddd1a03d15f",
+      "observations": 7
+    },
+    {
+      "id": "S-017",
+      "policy": "ORACLE-R",
+      "sha256": "986fe61bffb7fafb21a10bb29612114f50fe710da969a46499017a255607de17",
+      "observations": 7
+    },
+    {
+      "id": "S-017",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b2cfd629287cebc682faddef245c5ad36d44aa68d4b5a0b7504924239ee346ee",
+      "observations": 7
+    },
+    {
+      "id": "S-018",
+      "policy": "ORACLE",
+      "sha256": "c58143424c07265d0d05c959c23edd0d77fc4986805397b27653668f8c3f26ad",
+      "observations": 7
+    },
+    {
+      "id": "S-018",
+      "policy": "OVERCLAIM",
+      "sha256": "2418b34bab88edd2f523f420c9d3b5c2490d9652d2549c7b5e9610dd6753ddef",
+      "observations": 7
+    },
+    {
+      "id": "S-018",
+      "policy": "UNDERCLAIM",
+      "sha256": "3e227095fd79699c9bf3d5b8146b9a357c741598dbe458c5612ea54211b3f4c6",
+      "observations": 7
+    },
+    {
+      "id": "S-018",
+      "policy": "ORACLE-default",
+      "sha256": "fd84d994c0fee3f370683ef33da3557cc6ca73d418afb8ce9e31cd46a080930b",
+      "observations": 7
+    },
+    {
+      "id": "S-018",
+      "policy": "ORACLE-R",
+      "sha256": "cd4101f9015d37d3696b895ad82a2f4393a056af321fd2c736c38219fb99dffe",
+      "observations": 7
+    },
+    {
+      "id": "S-018",
+      "policy": "OVERCLAIM-R",
+      "sha256": "31dd46f98294a08484c52d0317ad009d36cb04504d76949569cda12d68d0b8df",
+      "observations": 7
+    },
+    {
+      "id": "S-019",
+      "policy": "ORACLE",
+      "sha256": "a4fdf6560adcf7a3df560bd766bc146501062429bda71a0c19574d3d76d4e27b",
+      "observations": 5
+    },
+    {
+      "id": "S-019",
+      "policy": "OVERCLAIM",
+      "sha256": "3041a4971928e4cb6074c436d46dde8cbdcb337c68481be2f5c45b34120fd301",
+      "observations": 5
+    },
+    {
+      "id": "S-019",
+      "policy": "UNDERCLAIM",
+      "sha256": "a8c03f2c91d032b04486ddf1c73b49dcf3b1e28dffb73dcfcc9c338b8faab6b0",
+      "observations": 5
+    },
+    {
+      "id": "S-019",
+      "policy": "ORACLE-default",
+      "sha256": "948d140887d7c91020241baba74186a619b5423fd010fc4ebf12927dd7160d5c",
+      "observations": 5
+    },
+    {
+      "id": "S-019",
+      "policy": "ORACLE-R",
+      "sha256": "6b2454335a8d005848e2fdf43fb43c862327c49048e81fdd75f9f7978497f1da",
+      "observations": 6
+    },
+    {
+      "id": "S-019",
+      "policy": "OVERCLAIM-R",
+      "sha256": "2e43f1eb99c69db15aa4145fcb67872c03a8760aa81061e0b4c5eb677ede1fd2",
+      "observations": 6
+    },
+    {
+      "id": "S-020",
+      "policy": "ORACLE",
+      "sha256": "73c55a8dc4c49a4b11513f39b90dd409babb3eac7032b23dd2c5e0a8e4094df4",
+      "observations": 5
+    },
+    {
+      "id": "S-020",
+      "policy": "OVERCLAIM",
+      "sha256": "b88d2423e1b133f9f4f959144a5b799e3731ff6937af5938c5eadfa81142fffc",
+      "observations": 5
+    },
+    {
+      "id": "S-020",
+      "policy": "UNDERCLAIM",
+      "sha256": "61bc2e406e111a23321ca8e4fb4ce60933d7b23fdc91ad0b0b96bf23d179d8d0",
+      "observations": 5
+    },
+    {
+      "id": "S-020",
+      "policy": "ORACLE-default",
+      "sha256": "123aa8a94bebcba572bd60ac6301eae1ff60a2e8710049b2d4f5629a72340c0e",
+      "observations": 5
+    },
+    {
+      "id": "S-020",
+      "policy": "ORACLE-R",
+      "sha256": "dc606528cbe397182cd3eaa490ee0eac25a22166d02ebeadce8289d70cca0b45",
+      "observations": 7
+    },
+    {
+      "id": "S-020",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d99170a6b46443d65a7a86a12b26c94a2b708dfb282ad389c39df93c9bb13344",
+      "observations": 7
+    },
+    {
+      "id": "S-021",
+      "policy": "ORACLE",
+      "sha256": "3fb716e9d62190574ed059b49395bda80711f8bf910353add4c7e4c63b54fe94",
+      "observations": 7
+    },
+    {
+      "id": "S-021",
+      "policy": "OVERCLAIM",
+      "sha256": "1f9217e435efc69c75c49a135fa07e6896e8f42aae170810e9be26715669a36d",
+      "observations": 7
+    },
+    {
+      "id": "S-021",
+      "policy": "UNDERCLAIM",
+      "sha256": "4863a654508d7616f1bbaa5d7fc0ae9463452405ca924147fab71bb9b7e4b5b9",
+      "observations": 7
+    },
+    {
+      "id": "S-021",
+      "policy": "ORACLE-default",
+      "sha256": "4606cfcbe2365109e33053a57624bbd622a1754e9b79b7915ef812075446a647",
+      "observations": 7
+    },
+    {
+      "id": "S-021",
+      "policy": "ORACLE-R",
+      "sha256": "b4a5ec1e050839c21ab59c3e01a4061cc2d17896d3d10d0c5af9445571f0e00e",
+      "observations": 7
+    },
+    {
+      "id": "S-021",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d69120e47832511c51f4cbfc7c6411a7cc8c3464c62f4c8aaee8aeafd0dd000e",
+      "observations": 7
+    },
+    {
+      "id": "S-022",
+      "policy": "ORACLE",
+      "sha256": "541d97def0d4fdce2e1298c1f7f245292a475676e1bd352531b0c2c9521c520b",
+      "observations": 6
+    },
+    {
+      "id": "S-022",
+      "policy": "OVERCLAIM",
+      "sha256": "9aef090bd072f5bbaeff8b18f2680faf0bce60ae2b4fb7b431fa74a2c8fe185c",
+      "observations": 6
+    },
+    {
+      "id": "S-022",
+      "policy": "UNDERCLAIM",
+      "sha256": "bb6539d6dde9c610681891e3874f90a8a43a10cf1eaa1388444a935f78abc40c",
+      "observations": 6
+    },
+    {
+      "id": "S-022",
+      "policy": "ORACLE-default",
+      "sha256": "1ef0966f2140918a269536b9bad83699d2802ea8efd9f24a19e472602784df4f",
+      "observations": 6
+    },
+    {
+      "id": "S-022",
+      "policy": "ORACLE-R",
+      "sha256": "a912806ee05a44b8c3d78437a0bc5bdd6d77eebdfa09eeec042650dafae589c9",
+      "observations": 7
+    },
+    {
+      "id": "S-022",
+      "policy": "OVERCLAIM-R",
+      "sha256": "c486a5bf84d26649726bfcc7ba622e5e5e8a7a5b91ec2a1b768e2a5360ccffa2",
+      "observations": 7
+    },
+    {
+      "id": "S-023",
+      "policy": "ORACLE",
+      "sha256": "b0326327d99f10aa582f886b55429328581bd8227081b6116a866a5e56b552cd",
+      "observations": 6
+    },
+    {
+      "id": "S-023",
+      "policy": "OVERCLAIM",
+      "sha256": "ad8d67328644e806cb29a6e1a5a7c9ed3e10220230c8100d9b345b2a1954dc28",
+      "observations": 6
+    },
+    {
+      "id": "S-023",
+      "policy": "UNDERCLAIM",
+      "sha256": "1ddd8bef5661d16f8fad996a817838daf33a9787572d98bdecabdd7cecec7f56",
+      "observations": 6
+    },
+    {
+      "id": "S-023",
+      "policy": "ORACLE-default",
+      "sha256": "c68090a7093aa77aa92997735736a0c9c12bc426a2ab1badb4d4c54eeed0e33d",
+      "observations": 6
+    },
+    {
+      "id": "S-023",
+      "policy": "ORACLE-R",
+      "sha256": "68899125d162c9adecd9b9e40973f0f80d9242d11b4e0a14ebe1ad6f39890612",
+      "observations": 5
+    },
+    {
+      "id": "S-023",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b864206e3b2610d48704f54006a7cf5792c7f4db754e672e7d61ed05b1b34b5a",
+      "observations": 5
+    },
+    {
+      "id": "S-024",
+      "policy": "ORACLE",
+      "sha256": "dbde02cc7b6c0423aee5f5307d1c66964ffee7ff202a252a22200e080c1c4c6e",
+      "observations": 6
+    },
+    {
+      "id": "S-024",
+      "policy": "OVERCLAIM",
+      "sha256": "a9625af1a27752c8c6de5337e8999fe3fd5d3698200cb2d30f73b32d21da1773",
+      "observations": 6
+    },
+    {
+      "id": "S-024",
+      "policy": "UNDERCLAIM",
+      "sha256": "81d22956ce1304d40d3afa308dd0919634c5bd8fbd0703899997b951865f56f3",
+      "observations": 6
+    },
+    {
+      "id": "S-024",
+      "policy": "ORACLE-default",
+      "sha256": "c85cd6fa3b6978038b96dce0e137546b2a7772026e532a1afc51b91b11a63df3",
+      "observations": 6
+    },
+    {
+      "id": "S-024",
+      "policy": "ORACLE-R",
+      "sha256": "d9fb11c599343136f835a07743469be5053e39289351b098ad9eda8234e79693",
+      "observations": 5
+    },
+    {
+      "id": "S-024",
+      "policy": "OVERCLAIM-R",
+      "sha256": "768202277c6099ea6c3d0db54e1cb0f88b545bd0358ec75f0f4528da1ca4ab47",
+      "observations": 5
+    },
+    {
+      "id": "S-025",
+      "policy": "ORACLE",
+      "sha256": "7c1bade75becc299aef335b41aaba1b46fd8178bd53930abbf29c85f6a6a35ff",
+      "observations": 7
+    },
+    {
+      "id": "S-025",
+      "policy": "OVERCLAIM",
+      "sha256": "d35d9138aa65b2bee448d0a1f69eaa516d7d94e5f67210c72bb757bf9270d803",
+      "observations": 7
+    },
+    {
+      "id": "S-025",
+      "policy": "UNDERCLAIM",
+      "sha256": "fefac65d00d77ea6a3577b28decc13f975822e193c7cf359febb7e58e2e990af",
+      "observations": 7
+    },
+    {
+      "id": "S-025",
+      "policy": "ORACLE-default",
+      "sha256": "cb1afe39b5fe2ad1ccf0ab992f05ccb0be04f6ca7ee23b0c1b758c316bb87a30",
+      "observations": 7
+    },
+    {
+      "id": "S-025",
+      "policy": "ORACLE-R",
+      "sha256": "5e384a546bfb5849f73d43594226519997b6f19dea7c7c37d38baa8c8376ed85",
+      "observations": 7
+    },
+    {
+      "id": "S-025",
+      "policy": "OVERCLAIM-R",
+      "sha256": "e302012bf9180adc72ac1254a1f1eeedfdc4093b1b325c258b4ec6e876893705",
+      "observations": 7
+    },
+    {
+      "id": "S-026",
+      "policy": "ORACLE",
+      "sha256": "a865af9cd1ee9365c896683f7c3a9b30b90be769dcfb8b16d5d19d1f03e39f11",
+      "observations": 6
+    },
+    {
+      "id": "S-026",
+      "policy": "OVERCLAIM",
+      "sha256": "3ac9db57a1731499dbab30864af16e059f34627d5825be02fcf342813e6c4964",
+      "observations": 6
+    },
+    {
+      "id": "S-026",
+      "policy": "UNDERCLAIM",
+      "sha256": "da46cf813ba2074a98a7c5febbf45d1c9749d8f11985e6ae06e1955de737e12a",
+      "observations": 6
+    },
+    {
+      "id": "S-026",
+      "policy": "ORACLE-default",
+      "sha256": "bf542faf9547fee9dc46b403f7375ae05ad31316d4ed45a109044f0d4d7247d5",
+      "observations": 6
+    },
+    {
+      "id": "S-026",
+      "policy": "ORACLE-R",
+      "sha256": "5eebd20e81f1705139d90f4416035973fe60905c60600b05fe89f5aa95a3c53e",
+      "observations": 5
+    },
+    {
+      "id": "S-026",
+      "policy": "OVERCLAIM-R",
+      "sha256": "3a5249ad0aa3ae25d68ea2e05e40ea854f9143186e75263d04d40f92470b755f",
+      "observations": 5
+    },
+    {
+      "id": "S-027",
+      "policy": "ORACLE",
+      "sha256": "5fc094bad4016e293153880f8a00a51977d2f08e856a7524cd8092493c553993",
+      "observations": 7
+    },
+    {
+      "id": "S-027",
+      "policy": "OVERCLAIM",
+      "sha256": "7dd4eeb87f22cf549bc94c3f2821405177d7f03c53e51073878c8c2b54c63c59",
+      "observations": 7
+    },
+    {
+      "id": "S-027",
+      "policy": "UNDERCLAIM",
+      "sha256": "ec5da53b3101b9e1c69cd0bddb4f8fd63b537dcf5eee0ffe9e9436aee9b93dd1",
+      "observations": 7
+    },
+    {
+      "id": "S-027",
+      "policy": "ORACLE-default",
+      "sha256": "4ae64cb028925b810f0b15165c5f0382fe7d899ab30f3a0cb0180ca53718ef70",
+      "observations": 7
+    },
+    {
+      "id": "S-027",
+      "policy": "ORACLE-R",
+      "sha256": "23aa2b374f32820cd69ae3309fb78c11aced877ac46fe5ef112f329ebe013148",
+      "observations": 7
+    },
+    {
+      "id": "S-027",
+      "policy": "OVERCLAIM-R",
+      "sha256": "a10bc0549257e72a7c85d26d286a2d8a69c99d4705c65c72cd348053aecb3605",
+      "observations": 7
+    },
+    {
+      "id": "S-028",
+      "policy": "ORACLE",
+      "sha256": "7911f6bf709557c0c23011e17e4068446968a8e84e6fa6fa0897a1f4aff36311",
+      "observations": 7
+    },
+    {
+      "id": "S-028",
+      "policy": "OVERCLAIM",
+      "sha256": "7ad546c5a482cff381054a67a2046cedbb8ba552405c4d10e34fcff27546f2a8",
+      "observations": 7
+    },
+    {
+      "id": "S-028",
+      "policy": "UNDERCLAIM",
+      "sha256": "c642d433afd9b3486fbd18c2c6cc07c79282c756c48e8b549ba4351673a46505",
+      "observations": 7
+    },
+    {
+      "id": "S-028",
+      "policy": "ORACLE-default",
+      "sha256": "ea14fba00ac5e6ecbf1cc6740741c1353a56cfc23a81491be7241c887d1b4c3d",
+      "observations": 7
+    },
+    {
+      "id": "S-028",
+      "policy": "ORACLE-R",
+      "sha256": "69659ca289bc7fd27cc40c815c3cccb00edf4519b714676e20f5828324a54f15",
+      "observations": 7
+    },
+    {
+      "id": "S-028",
+      "policy": "OVERCLAIM-R",
+      "sha256": "7b5f421775d88b78f99938336ed590c33cffb26f3ed5d230af7edd79041f8f21",
+      "observations": 7
+    },
+    {
+      "id": "S-029",
+      "policy": "ORACLE",
+      "sha256": "df024985c822bf1b9458e8b54ee4b6b14304ba308e358a50f67d5e9b1cfb6ae0",
+      "observations": 7
+    },
+    {
+      "id": "S-029",
+      "policy": "OVERCLAIM",
+      "sha256": "2d6df56903eebb43ee0ee5b432c164059d6574e852f8f2248ba816b86c54d5b4",
+      "observations": 7
+    },
+    {
+      "id": "S-029",
+      "policy": "UNDERCLAIM",
+      "sha256": "f80316fb7dd57672985577971a9cdf6373899b7537ea9d81ab70b55ecd1f3958",
+      "observations": 7
+    },
+    {
+      "id": "S-029",
+      "policy": "ORACLE-default",
+      "sha256": "03d2a5859ceb1a257c0c367630dc9de99090942d23c56021aed7f7a8c8fcb522",
+      "observations": 7
+    },
+    {
+      "id": "S-029",
+      "policy": "ORACLE-R",
+      "sha256": "f5679d8f9e6c095a1e7fac9ce766bfa652ab36d71e46c47d33bd7c4b1a1fbba0",
+      "observations": 7
+    },
+    {
+      "id": "S-029",
+      "policy": "OVERCLAIM-R",
+      "sha256": "2fa7ce7f44c5cd20c1c0b69bbc61d311cb332dea0936951d53163cbff74334f4",
+      "observations": 7
+    },
+    {
+      "id": "S-030",
+      "policy": "ORACLE",
+      "sha256": "9dbdbd105f285e3cb85c6e8b294870ba27968d59904a6d0ac7de16de4d04c371",
+      "observations": 6
+    },
+    {
+      "id": "S-030",
+      "policy": "OVERCLAIM",
+      "sha256": "be0bf0b2394eb053f77d0b2e81003e00157476fd51b36fba95a13891346dc482",
+      "observations": 6
+    },
+    {
+      "id": "S-030",
+      "policy": "UNDERCLAIM",
+      "sha256": "f7b574843991ff1d4a24146c6d314afbe0d1b2b61aa8698b37851d7e58459037",
+      "observations": 6
+    },
+    {
+      "id": "S-030",
+      "policy": "ORACLE-default",
+      "sha256": "239fae968ece7730a851791c3666760d173a5e4daff53adc260df3ae1e9241af",
+      "observations": 6
+    },
+    {
+      "id": "S-030",
+      "policy": "ORACLE-R",
+      "sha256": "b66f7f77ec5d30552818323a88779baf6b3517269f4bb99abc88a0d50f355d33",
+      "observations": 7
+    },
+    {
+      "id": "S-030",
+      "policy": "OVERCLAIM-R",
+      "sha256": "c05a2448b15c152c0bf354e3f7ad98b7fb591d4be0c9ec50b766dd08855da941",
+      "observations": 7
+    },
+    {
+      "id": "S-031",
+      "policy": "ORACLE",
+      "sha256": "469e43af8ff4f8501d2dafddde850bac1bb08b07f650415cce744aa7a9132477",
+      "observations": 7
+    },
+    {
+      "id": "S-031",
+      "policy": "OVERCLAIM",
+      "sha256": "3c39f223163c00423884cc281e434e6209c6da248843f71a5f4ca7a4faa20c56",
+      "observations": 7
+    },
+    {
+      "id": "S-031",
+      "policy": "UNDERCLAIM",
+      "sha256": "e964bf6bfc406b45682781a0f830ea719c20061b0b44de1923fbacea1d5e48ad",
+      "observations": 7
+    },
+    {
+      "id": "S-031",
+      "policy": "ORACLE-default",
+      "sha256": "d68ac812b07334440f7501307c8e50a6c4f36c9cdce33c93933f72da2ba6ff31",
+      "observations": 7
+    },
+    {
+      "id": "S-031",
+      "policy": "ORACLE-R",
+      "sha256": "4b7eeebbb37c04c756fd5bb4d9113672b86f256c49a3fe8aa74a71ced8fd36e3",
+      "observations": 7
+    },
+    {
+      "id": "S-031",
+      "policy": "OVERCLAIM-R",
+      "sha256": "7e786b348e0031fca40a7846ef105581f3e4948f6ba2f525ec7de6f747a6726c",
+      "observations": 7
+    },
+    {
+      "id": "S-032",
+      "policy": "ORACLE",
+      "sha256": "1830603120c4362152129a80763c6eecb550cce65867e1026d9d65079cb773a0",
+      "observations": 7
+    },
+    {
+      "id": "S-032",
+      "policy": "OVERCLAIM",
+      "sha256": "7975219feeb58242e413c420dea0120c0a882aae5d01b01778616b6b2a8425a9",
+      "observations": 7
+    },
+    {
+      "id": "S-032",
+      "policy": "UNDERCLAIM",
+      "sha256": "52beff72260e43765494d452319d9ee05d328ddf621796916867c82ce117e9aa",
+      "observations": 7
+    },
+    {
+      "id": "S-032",
+      "policy": "ORACLE-default",
+      "sha256": "34fc7d3f10486228ba45b52127317d47e9f90ddfa5966b0eb596aed3b5228604",
+      "observations": 7
+    },
+    {
+      "id": "S-032",
+      "policy": "ORACLE-R",
+      "sha256": "dad2238ea4813d12832d76b6c38af284945f8713a243dc82c5c2276351965cd8",
+      "observations": 7
+    },
+    {
+      "id": "S-032",
+      "policy": "OVERCLAIM-R",
+      "sha256": "1ed54eb0744aa57ef7b3327708694fd850e71937b8113e94e6f5433911747d0d",
+      "observations": 7
+    },
+    {
+      "id": "S-033",
+      "policy": "ORACLE",
+      "sha256": "013df54680a05103dc5390caacdb6c5d182931b9f7a7a0a4356b2c8da1919df7",
+      "observations": 5
+    },
+    {
+      "id": "S-033",
+      "policy": "OVERCLAIM",
+      "sha256": "8499c742791fc5eb2d36deff56e87ee9fa1b47a992d4af4567f6013bb21fc7d5",
+      "observations": 5
+    },
+    {
+      "id": "S-033",
+      "policy": "UNDERCLAIM",
+      "sha256": "455b6075ccb95b1cc814ffef86ef8291258e3529095e56a704deb33e3f758951",
+      "observations": 5
+    },
+    {
+      "id": "S-033",
+      "policy": "ORACLE-default",
+      "sha256": "5cc5cf553520300d809e2a1676073c355045958adb242b9dfc69e8ce48fc0d8a",
+      "observations": 5
+    },
+    {
+      "id": "S-033",
+      "policy": "ORACLE-R",
+      "sha256": "8f654c2b0eda9e59048ff3eab81741e4bc24b9368ea3aba9810fe406d9035203",
+      "observations": 5
+    },
+    {
+      "id": "S-033",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d2487da1c23b616b5a1753fa78e57ea2c06c1c41f390a88bf7541e87d1b41dcd",
+      "observations": 5
+    },
+    {
+      "id": "S-034",
+      "policy": "ORACLE",
+      "sha256": "70bb4f493b7f0ada01a5c0d46305cf90779ccc26a803cc0ad41850ea190c8cf2",
+      "observations": 6
+    },
+    {
+      "id": "S-034",
+      "policy": "OVERCLAIM",
+      "sha256": "71fff030aa30e96ef147cba19ac722807b15a52297aa0a08e4cd473f36b278f6",
+      "observations": 6
+    },
+    {
+      "id": "S-034",
+      "policy": "UNDERCLAIM",
+      "sha256": "88f191ba7b297fb429bf61e0fa33426e3d1661a1fba980a34d94484d21214006",
+      "observations": 6
+    },
+    {
+      "id": "S-034",
+      "policy": "ORACLE-default",
+      "sha256": "7e25524399416e3eb627ef3941dd24ba7729dbc9c622b34796dad3700559243c",
+      "observations": 6
+    },
+    {
+      "id": "S-034",
+      "policy": "ORACLE-R",
+      "sha256": "fa55f766d39c1662c5cb7dee63701de2d1997f479dcc32c170a06a332233adf3",
+      "observations": 5
+    },
+    {
+      "id": "S-034",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ef5734810849150a210f378f977f89ad109a6f86be75253bcc1ca1c2d014fa92",
+      "observations": 5
+    },
+    {
+      "id": "S-035",
+      "policy": "ORACLE",
+      "sha256": "7676b6ece7bd254f3ec4ebc9784740a2fd5c3f5eb6d4a149ebe5e147157a2b66",
+      "observations": 6
+    },
+    {
+      "id": "S-035",
+      "policy": "OVERCLAIM",
+      "sha256": "b809430665813ea32af3271e11e4d7913bb11ff758549bb941da2de3cfea826e",
+      "observations": 6
+    },
+    {
+      "id": "S-035",
+      "policy": "UNDERCLAIM",
+      "sha256": "43bac7ee79e108361209ec94f2cee794a212fc7a1dca4fdc37570925725e40c4",
+      "observations": 6
+    },
+    {
+      "id": "S-035",
+      "policy": "ORACLE-default",
+      "sha256": "39b96fb64b90c67521373f2fa3f92c695d916ff0f5c1be716d7c621f17589ec4",
+      "observations": 6
+    },
+    {
+      "id": "S-035",
+      "policy": "ORACLE-R",
+      "sha256": "13cd3c9f15df7f137403fe9add38570c741c2d408bba0192227720358dfc19dc",
+      "observations": 6
+    },
+    {
+      "id": "S-035",
+      "policy": "OVERCLAIM-R",
+      "sha256": "63d53c84b359d7318e3122e06116a9c3a8548fc039e0de7a84970debaede12e6",
+      "observations": 6
+    },
+    {
+      "id": "S-036",
+      "policy": "ORACLE",
+      "sha256": "be9513216d948daf614d738056cb368c98e1525ba4e2e0b634631e6e89d128f5",
+      "observations": 6
+    },
+    {
+      "id": "S-036",
+      "policy": "OVERCLAIM",
+      "sha256": "b17183b60f7fd5e0d31b2a586018329cf41f7b5c8989d2f44aad3fce633aaa91",
+      "observations": 6
+    },
+    {
+      "id": "S-036",
+      "policy": "UNDERCLAIM",
+      "sha256": "8ce342c702048fd64808f169f9e29706219307ad2238f2b2f2f47b0315cfa124",
+      "observations": 6
+    },
+    {
+      "id": "S-036",
+      "policy": "ORACLE-default",
+      "sha256": "962c8699af30dc6a19e52d13348f40b2dfec6f20982235e5ed4d10a5319552e1",
+      "observations": 6
+    },
+    {
+      "id": "S-036",
+      "policy": "ORACLE-R",
+      "sha256": "131091c56168f6233b0c496a3afd7804eb4195b352f589a61dcd93c66eb9201d",
+      "observations": 5
+    },
+    {
+      "id": "S-036",
+      "policy": "OVERCLAIM-R",
+      "sha256": "6d557f1ee72c760c440435dbe2d1eea2eed7ea7bfc29d14d6044026301e40df0",
+      "observations": 5
+    },
+    {
+      "id": "S-037",
+      "policy": "ORACLE",
+      "sha256": "5ca46e1783409ebc77fc7fd62923be1246d0fb93cc5506e014b5b4efe8764b04",
+      "observations": 7
+    },
+    {
+      "id": "S-037",
+      "policy": "OVERCLAIM",
+      "sha256": "a7d4b4ceea56280b60a799f72eb008e59c742bf4d6a61f31982ddd339ec5c64d",
+      "observations": 7
+    },
+    {
+      "id": "S-037",
+      "policy": "UNDERCLAIM",
+      "sha256": "ffbd811caed78c7868f98d9f14a3a1342a6b980a79ab0b23e8d70c6f79bf91f7",
+      "observations": 7
+    },
+    {
+      "id": "S-037",
+      "policy": "ORACLE-default",
+      "sha256": "3b7788306e87c340ed013bf60ef3f589f9ff3ec1d27e3c55292ebed34b7373bc",
+      "observations": 7
+    },
+    {
+      "id": "S-037",
+      "policy": "ORACLE-R",
+      "sha256": "c2e16955e76a23109eb029796cde77d74aeb84e8dbc1a3bb437d342a516b1775",
+      "observations": 7
+    },
+    {
+      "id": "S-037",
+      "policy": "OVERCLAIM-R",
+      "sha256": "93b92167294097bafb36f62295e9456f4878756340107d4b3c8d7b7acc274dc1",
+      "observations": 7
+    },
+    {
+      "id": "S-038",
+      "policy": "ORACLE",
+      "sha256": "b851b194ef8ccf39bf1117e92c8f52a4548ccb217131efec1f0acd45f1c636b5",
+      "observations": 7
+    },
+    {
+      "id": "S-038",
+      "policy": "OVERCLAIM",
+      "sha256": "8ab795e8888b12132ba684f3ce38ea6235aa89804901033319e2245f41852545",
+      "observations": 7
+    },
+    {
+      "id": "S-038",
+      "policy": "UNDERCLAIM",
+      "sha256": "61f633881cc01f33c2dbbcdbb453c6d25b649388de592159b5a19c80504a2ab1",
+      "observations": 7
+    },
+    {
+      "id": "S-038",
+      "policy": "ORACLE-default",
+      "sha256": "6be7c57812d4d621375382568b1b22652b1bcf8fa26f56947a204b6733b8f61f",
+      "observations": 7
+    },
+    {
+      "id": "S-038",
+      "policy": "ORACLE-R",
+      "sha256": "6a7f0e3c0d69dd5d56eeb4ebb0beb9a72ed26eeab2060729d664bb1db77f0c52",
+      "observations": 7
+    },
+    {
+      "id": "S-038",
+      "policy": "OVERCLAIM-R",
+      "sha256": "e8617dfc90aad107f7e81ae6e99d01ace3dade0a3ac1fc00db13f774b512ee78",
+      "observations": 7
+    },
+    {
+      "id": "S-039",
+      "policy": "ORACLE",
+      "sha256": "d170f67f28c95173e65fb73a5af6ad1c0a58b98467a6f42bc9f75ccf3e377997",
+      "observations": 6
+    },
+    {
+      "id": "S-039",
+      "policy": "OVERCLAIM",
+      "sha256": "b9194e58415585a8e5df7cd451eec4614d055aea25c3f1be3000f83e94f31182",
+      "observations": 6
+    },
+    {
+      "id": "S-039",
+      "policy": "UNDERCLAIM",
+      "sha256": "feca6d61b5e8f598db0297a9837153db2b2a80c967ec9d964627e78e478a4d99",
+      "observations": 6
+    },
+    {
+      "id": "S-039",
+      "policy": "ORACLE-default",
+      "sha256": "18362e89c6ea0e095ab59f33029e41e0f03dc7c02c03f7ce77e37de844becd62",
+      "observations": 6
+    },
+    {
+      "id": "S-039",
+      "policy": "ORACLE-R",
+      "sha256": "fe98f2107dcf4e2992aa992776aa5e0417a13159a0022f7b001bfa5f7c6908de",
+      "observations": 6
+    },
+    {
+      "id": "S-039",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ef46ed408517c3aa519e378d5c33a92e41bfa46dcf80fa064a0a6dd25815668d",
+      "observations": 6
+    },
+    {
+      "id": "S-040",
+      "policy": "ORACLE",
+      "sha256": "ecc2d6ec01759e306314d618526340dffc498e768c9f4e3d7a1b97d08f63f7d3",
+      "observations": 6
+    },
+    {
+      "id": "S-040",
+      "policy": "OVERCLAIM",
+      "sha256": "2eb72fa78558703bcea36cf1915da1d681a931374ba12b26e65b5d418eb54993",
+      "observations": 6
+    },
+    {
+      "id": "S-040",
+      "policy": "UNDERCLAIM",
+      "sha256": "3fe7c5b3c89bc2f2cf8221d664e5c6e24e7e54c08a214a6588ae3e869a508315",
+      "observations": 6
+    },
+    {
+      "id": "S-040",
+      "policy": "ORACLE-default",
+      "sha256": "9a38ba1092795cdf77dcd33008fca32d1da1cbe151ff4f4e640970729d3ae3d4",
+      "observations": 6
+    },
+    {
+      "id": "S-040",
+      "policy": "ORACLE-R",
+      "sha256": "c7bfc6e17f08db87a288444b782ea8bea6fa9dad35373dc779a42f159303e2e5",
+      "observations": 6
+    },
+    {
+      "id": "S-040",
+      "policy": "OVERCLAIM-R",
+      "sha256": "42872d8336988e20f54e59072ff3ea50f7ae17f351a8f1390cf62699b4bb476a",
+      "observations": 6
+    },
+    {
+      "id": "S-041",
+      "policy": "ORACLE",
+      "sha256": "546075589d61246425535694e926ba1cbc01a37671725552be41812f0f128e64",
+      "observations": 7
+    },
+    {
+      "id": "S-041",
+      "policy": "OVERCLAIM",
+      "sha256": "1e1cc8e5b4d598442e2ff48007e3d913a5ff0b4a5de480d28bf7554649142181",
+      "observations": 7
+    },
+    {
+      "id": "S-041",
+      "policy": "UNDERCLAIM",
+      "sha256": "f96f131a416d77a0a03c725b72f412945e9fb608cba1362528f92037a903145a",
+      "observations": 7
+    },
+    {
+      "id": "S-041",
+      "policy": "ORACLE-default",
+      "sha256": "a0ab13708d1ae5b3a6e402f449424852657f736b7497bcbc1342a74f1caed284",
+      "observations": 7
+    },
+    {
+      "id": "S-041",
+      "policy": "ORACLE-R",
+      "sha256": "e7e5b83beffc4e503b647597b89cb83bb107d432287c1621b831b7a518b89bec",
+      "observations": 6
+    },
+    {
+      "id": "S-041",
+      "policy": "OVERCLAIM-R",
+      "sha256": "986d3f05fcbfcc0e390f942a291008a59c8fa59b771870e24d06050966f98f8b",
+      "observations": 6
+    },
+    {
+      "id": "S-042",
+      "policy": "ORACLE",
+      "sha256": "0d67e5e6c10e782c0af23d83c21a06f893d78b85873acf465c4ee82f8ae9e199",
+      "observations": 7
+    },
+    {
+      "id": "S-042",
+      "policy": "OVERCLAIM",
+      "sha256": "cdc7479b61ddaa344c2a67a2d36f938bb30c6907b0e118452ac8fb52f0a2daf6",
+      "observations": 7
+    },
+    {
+      "id": "S-042",
+      "policy": "UNDERCLAIM",
+      "sha256": "3f5b329b3b2fa3d4edda67b37f60b5a5856b3113ab12309b31e33cbb816679bf",
+      "observations": 7
+    },
+    {
+      "id": "S-042",
+      "policy": "ORACLE-default",
+      "sha256": "ccfc5b09de8a2fd5283b59649bae4454634dfc519ee0de6a70fe3cda21a8e8d1",
+      "observations": 7
+    },
+    {
+      "id": "S-042",
+      "policy": "ORACLE-R",
+      "sha256": "fa1b79cbdc6cdc3c3bb768dc6fd3ac857ace88b82dcd7079aba1056055e6d78d",
+      "observations": 7
+    },
+    {
+      "id": "S-042",
+      "policy": "OVERCLAIM-R",
+      "sha256": "2478d8be8b788490ea7b90c2bad429a9811be2d24b621461cab8e6bba07d676c",
+      "observations": 7
+    },
+    {
+      "id": "S-043",
+      "policy": "ORACLE",
+      "sha256": "d24aff69fa91e14a9e90263c81e18be356450399321882428147b3e25a5a246e",
+      "observations": 6
+    },
+    {
+      "id": "S-043",
+      "policy": "OVERCLAIM",
+      "sha256": "0754145f49fde413f3c7d1d1b8d35cc5b38dee63c880c2544e60282e32801eef",
+      "observations": 6
+    },
+    {
+      "id": "S-043",
+      "policy": "UNDERCLAIM",
+      "sha256": "192e55b526213e22d9d164caa3dfdf56a32e26dacfeddfa2e3b4dbee79491a84",
+      "observations": 6
+    },
+    {
+      "id": "S-043",
+      "policy": "ORACLE-default",
+      "sha256": "6e840544e0b1c9f8ea26672fc73acdd01e12f16b7f598702d5aa46c3c285e8ca",
+      "observations": 6
+    },
+    {
+      "id": "S-043",
+      "policy": "ORACLE-R",
+      "sha256": "dd85693de1283f002470a630865a63e891e00e5c4f6901965f2f7bcace2a4114",
+      "observations": 5
+    },
+    {
+      "id": "S-043",
+      "policy": "OVERCLAIM-R",
+      "sha256": "226b2e8a040c63e74598c8a9a340203621dc2ae7d8112bf11647806e926dedbb",
+      "observations": 5
+    },
+    {
+      "id": "S-044",
+      "policy": "ORACLE",
+      "sha256": "0c6f604de1dbead7728e2bd94b657474e7251ad17f10595229e324e317b4905a",
+      "observations": 6
+    },
+    {
+      "id": "S-044",
+      "policy": "OVERCLAIM",
+      "sha256": "5ab76b7b7adb30bba8a6f6a93b4a6837cd8f585c73f82af0f5c0a47eb232f48c",
+      "observations": 6
+    },
+    {
+      "id": "S-044",
+      "policy": "UNDERCLAIM",
+      "sha256": "e3be6009ec69911da8d28fe87e72e5b4f5726036f4a7a13536414456376fc6c7",
+      "observations": 6
+    },
+    {
+      "id": "S-044",
+      "policy": "ORACLE-default",
+      "sha256": "0eb3f03acde0f26d2987974277f5978115fd9751a7bad1d275ea22a3df06df9e",
+      "observations": 6
+    },
+    {
+      "id": "S-044",
+      "policy": "ORACLE-R",
+      "sha256": "09350674ce229342082935599dd34b40dabfc3a40639de0c1e85a50b4f92a025",
+      "observations": 5
+    },
+    {
+      "id": "S-044",
+      "policy": "OVERCLAIM-R",
+      "sha256": "6a3e7858e6db7bfd145b9c53b740db20f43cd6c8d2eb1973d73d963be4b37d00",
+      "observations": 5
+    },
+    {
+      "id": "S-045",
+      "policy": "ORACLE",
+      "sha256": "94f917f7325310fa274d011083b91e9b030dadb19a8dcb5247a3eccb7a2b107f",
+      "observations": 6
+    },
+    {
+      "id": "S-045",
+      "policy": "OVERCLAIM",
+      "sha256": "ecb3bed1488e494c8035229865391560ef8a9f94e8c867c42f5a4b140b20e5d3",
+      "observations": 6
+    },
+    {
+      "id": "S-045",
+      "policy": "UNDERCLAIM",
+      "sha256": "dee2ed9863f8a9996f5bc2d055a3c080d0ce016d51bf0a9891da5929d051cfa2",
+      "observations": 6
+    },
+    {
+      "id": "S-045",
+      "policy": "ORACLE-default",
+      "sha256": "a740f1d897faea72231d04a45343c7ccfdb4c711c30d790c9709e9d022459324",
+      "observations": 6
+    },
+    {
+      "id": "S-045",
+      "policy": "ORACLE-R",
+      "sha256": "dee6ead04f2e0cd90827651e399d4266e1a3e6418cf345423369f13bfe491e59",
+      "observations": 6
+    },
+    {
+      "id": "S-045",
+      "policy": "OVERCLAIM-R",
+      "sha256": "a01ca5a8b36332d4c6ab3234035dc75f2455ad9dc32ec4055bb5bab512bfa695",
+      "observations": 6
+    },
+    {
+      "id": "S-046",
+      "policy": "ORACLE",
+      "sha256": "298682fa2590073f2c9bb4af92f9d7b54feab50f6ce152e376a3aa7f57dffe19",
+      "observations": 6
+    },
+    {
+      "id": "S-046",
+      "policy": "OVERCLAIM",
+      "sha256": "6f2f765e686b492c11a749c69c9440f9a1d1d332909f9f87fd8013a04175c31c",
+      "observations": 6
+    },
+    {
+      "id": "S-046",
+      "policy": "UNDERCLAIM",
+      "sha256": "72f00fd0089ecf9fa09abd33f0b0cb438de485d5f698eb7969951533ba1abcb1",
+      "observations": 6
+    },
+    {
+      "id": "S-046",
+      "policy": "ORACLE-default",
+      "sha256": "f3a2b659c3a3a9a566ca85194051be169761f1f9d5af542609665da8dbb14023",
+      "observations": 6
+    },
+    {
+      "id": "S-046",
+      "policy": "ORACLE-R",
+      "sha256": "55a922a4632ac22349ef0dd363e2d7e072beddc193e1bcc60bc034f4ae75b35e",
+      "observations": 5
+    },
+    {
+      "id": "S-046",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d0cc4da9266681efd02c9045e96e8ea7dd8e1a7ed5e407bacc5c901d65d23bdf",
+      "observations": 5
+    },
+    {
+      "id": "S-047",
+      "policy": "ORACLE",
+      "sha256": "ce40c5617973c6d932b1e278cc56b9b867ec41c4e1f01ed222c993607ff5e213",
+      "observations": 7
+    },
+    {
+      "id": "S-047",
+      "policy": "OVERCLAIM",
+      "sha256": "093ff6389d24237e8b332f09af43c49d5e051565ded106cf608d226feccbcfeb",
+      "observations": 7
+    },
+    {
+      "id": "S-047",
+      "policy": "UNDERCLAIM",
+      "sha256": "8495988e9fcc53db910e530452565047b19df6497f7337cdac6d8247844a205a",
+      "observations": 7
+    },
+    {
+      "id": "S-047",
+      "policy": "ORACLE-default",
+      "sha256": "728e733095d4caaa6344d8758a3fab2b325550cbd8416e07063fd47e652f49ae",
+      "observations": 7
+    },
+    {
+      "id": "S-047",
+      "policy": "ORACLE-R",
+      "sha256": "6cd04ef6c1610c8ad847baa9b0dbb7d7572a8e738adc66088d348762659b6fef",
+      "observations": 7
+    },
+    {
+      "id": "S-047",
+      "policy": "OVERCLAIM-R",
+      "sha256": "3fb5d963cf84082186070418e7e52f28b4eb3833099848f0d23c51c3c426998d",
+      "observations": 7
+    },
+    {
+      "id": "S-048",
+      "policy": "ORACLE",
+      "sha256": "92b3743b8e8f1e1686237deece962c4a3f0a1bbe7d8c2baee4bd992f8c65cf3b",
+      "observations": 7
+    },
+    {
+      "id": "S-048",
+      "policy": "OVERCLAIM",
+      "sha256": "79b41971c7347b5b52a0de24639dac70547b449b1917ddd3ffa18ee9c672d856",
+      "observations": 7
+    },
+    {
+      "id": "S-048",
+      "policy": "UNDERCLAIM",
+      "sha256": "18182b456adfb1b9fd0cfec8d13916f1b3bb495be051c3b7fc38855659a11523",
+      "observations": 7
+    },
+    {
+      "id": "S-048",
+      "policy": "ORACLE-default",
+      "sha256": "41e5dac5528f8db2aa95041b44d60033db6f943f2532b7288c36afc8666e4fc3",
+      "observations": 7
+    },
+    {
+      "id": "S-048",
+      "policy": "ORACLE-R",
+      "sha256": "c3307f0b96782b43e10d013b19a7f3ed437a233df30f042d2281dfdb815c4288",
+      "observations": 7
+    },
+    {
+      "id": "S-048",
+      "policy": "OVERCLAIM-R",
+      "sha256": "0e6266127f4b0574f71bb3072a295d6768190876bf57bd4c14c174334af9b55f",
+      "observations": 7
+    },
+    {
+      "id": "S-049",
+      "policy": "ORACLE",
+      "sha256": "54df3ced8fa4e55639ce91633306ba61afe64a91baed9598916b70564762c45d",
+      "observations": 5
+    },
+    {
+      "id": "S-049",
+      "policy": "OVERCLAIM",
+      "sha256": "7cb3a1beaa1fec3018829c3b89385d03a44410f96bac37f84f314f3e2bea010c",
+      "observations": 5
+    },
+    {
+      "id": "S-049",
+      "policy": "UNDERCLAIM",
+      "sha256": "6e60df736137b5fe4b7d98b1e7770182ebd7ab7932752057570f0c6992b1ad06",
+      "observations": 5
+    },
+    {
+      "id": "S-049",
+      "policy": "ORACLE-default",
+      "sha256": "dc2175a44eb57fe12f026d984f3acf5c6080055533b77e9da6e0301a33c5df70",
+      "observations": 5
+    },
+    {
+      "id": "S-049",
+      "policy": "ORACLE-R",
+      "sha256": "a8473bbc6057b5424d51b079fa24e36632ff3128e39e301bb8fda5f73d1c5cc6",
+      "observations": 6
+    },
+    {
+      "id": "S-049",
+      "policy": "OVERCLAIM-R",
+      "sha256": "9192087bd3decf3227dda27cc9f346e4eb3533cfa18c421c09965b25885ab63d",
+      "observations": 6
+    },
+    {
+      "id": "S-050",
+      "policy": "ORACLE",
+      "sha256": "6ce1599d507d2799853312f462798ea82d87b77129773bbc11ec4d3ad8ce82dc",
+      "observations": 6
+    },
+    {
+      "id": "S-050",
+      "policy": "OVERCLAIM",
+      "sha256": "90c76917c33503516958b7765df11e1ad0e08827111f2d3ebb668b585f0c30e8",
+      "observations": 6
+    },
+    {
+      "id": "S-050",
+      "policy": "UNDERCLAIM",
+      "sha256": "6e400e214f8a1722fe027dc20d0f1cc53119f02b69f6c376f47d8cecd7cf8afe",
+      "observations": 6
+    },
+    {
+      "id": "S-050",
+      "policy": "ORACLE-default",
+      "sha256": "2438bb48dd358a8627f222a1b65af7b612e72e3cfa02c977f08fb5c51b099773",
+      "observations": 6
+    },
+    {
+      "id": "S-050",
+      "policy": "ORACLE-R",
+      "sha256": "f1f5ab2de992ee6a86f3e762949668a259f77f14d2c8bf93b0fe715c769db9bd",
+      "observations": 6
+    },
+    {
+      "id": "S-050",
+      "policy": "OVERCLAIM-R",
+      "sha256": "17d44a788512f5dfb5a86e943e343dd413dcf738b49a460cdea921bed4411dbc",
+      "observations": 6
+    },
+    {
+      "id": "S-051",
+      "policy": "ORACLE",
+      "sha256": "e577295536ffd83b19dc757563c89d66b907a6e0e1c4696c84b9c107809039a4",
+      "observations": 7
+    },
+    {
+      "id": "S-051",
+      "policy": "OVERCLAIM",
+      "sha256": "3b1ab2eee04558c97f74eabe2fdd446464a5209656060c33088adb843ecbca60",
+      "observations": 7
+    },
+    {
+      "id": "S-051",
+      "policy": "UNDERCLAIM",
+      "sha256": "8a52bd514a77b82f065e87bc1197dac57ad5dbd101625de6dd61091967d73ba1",
+      "observations": 7
+    },
+    {
+      "id": "S-051",
+      "policy": "ORACLE-default",
+      "sha256": "65d28a6dbec09913971e92b5b84cf709d54c16f9571c13d8a229ba5a197e24fc",
+      "observations": 7
+    },
+    {
+      "id": "S-051",
+      "policy": "ORACLE-R",
+      "sha256": "46ad3d6aecc4ee6a6865b16f1ac172ecb3700604ca20666bbfb9116f74e180c7",
+      "observations": 7
+    },
+    {
+      "id": "S-051",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ef5263ef6ae5eb22532699728ba9052cbf42801a9693695050c02c8bea3796e3",
+      "observations": 7
+    },
+    {
+      "id": "S-052",
+      "policy": "ORACLE",
+      "sha256": "f48140f7a8b5bc01d1976b18d872ca36d57bfb8b54f2ad24a1ad41462a7c4789",
+      "observations": 6
+    },
+    {
+      "id": "S-052",
+      "policy": "OVERCLAIM",
+      "sha256": "74d6abf7b3a66e64b6365b15860094f1837423c19f310be3c219045d89dcea2b",
+      "observations": 6
+    },
+    {
+      "id": "S-052",
+      "policy": "UNDERCLAIM",
+      "sha256": "6498e2e8d290b31373c5cab8d032ca2cda433c81b42aedb9610bf32cd1f97a08",
+      "observations": 6
+    },
+    {
+      "id": "S-052",
+      "policy": "ORACLE-default",
+      "sha256": "f026caf6dfa3fffa5920da09908e78886d7d53fddc7adfea1900664684ca1426",
+      "observations": 6
+    },
+    {
+      "id": "S-052",
+      "policy": "ORACLE-R",
+      "sha256": "7668f8ab135919efb8afa35aacc2990a108451613336f38bbcc6c89e823f9198",
+      "observations": 7
+    },
+    {
+      "id": "S-052",
+      "policy": "OVERCLAIM-R",
+      "sha256": "cd3964054445d86c02c9d7fe7cf5ef46cb8c8b30a449b5b8da389b00a3cb3294",
+      "observations": 7
+    },
+    {
+      "id": "S-053",
+      "policy": "ORACLE",
+      "sha256": "41b60d4fdf91e961cbf2b199e3f1196d4b9ae085bc458a413dd538a9af301f36",
+      "observations": 5
+    },
+    {
+      "id": "S-053",
+      "policy": "OVERCLAIM",
+      "sha256": "d21b39b1094fa0e9ad0da4b918539f55213674d6114af8ed349e9c178f14344f",
+      "observations": 5
+    },
+    {
+      "id": "S-053",
+      "policy": "UNDERCLAIM",
+      "sha256": "30b7017aff3d34fbe6d7f081690eba02f672a3d55fa3011ab424a1b99c55ce4f",
+      "observations": 5
+    },
+    {
+      "id": "S-053",
+      "policy": "ORACLE-default",
+      "sha256": "e6b20c886434b07ba9071935f2707857c4653b0fd823223f1abefc0efe2a8ac2",
+      "observations": 5
+    },
+    {
+      "id": "S-053",
+      "policy": "ORACLE-R",
+      "sha256": "99ee00169c70108722275a9013401ae32757ecb91922c28dde8dd6ed27fbb5d0",
+      "observations": 5
+    },
+    {
+      "id": "S-053",
+      "policy": "OVERCLAIM-R",
+      "sha256": "14c62bdf4856dfac5ef3f7754707a165046c2bbc6af145dd233446f645d54c92",
+      "observations": 5
+    },
+    {
+      "id": "S-054",
+      "policy": "ORACLE",
+      "sha256": "379e615e2c2b865433efb17a803453c64bfba6db920a61b1b9e839c33d7bc88c",
+      "observations": 6
+    },
+    {
+      "id": "S-054",
+      "policy": "OVERCLAIM",
+      "sha256": "336403bb967c1b3875c996f65976769860172915c0b9d0b39175c5ab5dc62de8",
+      "observations": 6
+    },
+    {
+      "id": "S-054",
+      "policy": "UNDERCLAIM",
+      "sha256": "31eb8c3dc6780857b7da6ab7a3463d957e65b66f17bb335019fd34dd6842d345",
+      "observations": 6
+    },
+    {
+      "id": "S-054",
+      "policy": "ORACLE-default",
+      "sha256": "52f92bf64cb5e1242465209083ff85b0eb78b5ba01af57626ff9939de2ada423",
+      "observations": 6
+    },
+    {
+      "id": "S-054",
+      "policy": "ORACLE-R",
+      "sha256": "eab783a28863b99c48a38d0886a5ddf8ed773d27e0e52e583de35273b7324eca",
+      "observations": 5
+    },
+    {
+      "id": "S-054",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ea91fdc013a6f96426741f5bd5646f1d5c0d3ca5dce2d4cd0d65f679c45d618d",
+      "observations": 5
+    },
+    {
+      "id": "S-055",
+      "policy": "ORACLE",
+      "sha256": "86aa527bde7fd57cefa785afd914d4b09057ef5d678eba1669ff298c00f0665c",
+      "observations": 7
+    },
+    {
+      "id": "S-055",
+      "policy": "OVERCLAIM",
+      "sha256": "ea7eba54fae85a7a206dff6fdd615bdd2c6dc2e5d8a9519124857ed8b3f0fcef",
+      "observations": 7
+    },
+    {
+      "id": "S-055",
+      "policy": "UNDERCLAIM",
+      "sha256": "c01002148fd7376c5edb21b8e48353cdd4c3e81ace2c9e1494ee309117efe11c",
+      "observations": 7
+    },
+    {
+      "id": "S-055",
+      "policy": "ORACLE-default",
+      "sha256": "7476c74d3dd5a024303e836fb742c10f30f80610ec1ebe790304577bb28229fb",
+      "observations": 7
+    },
+    {
+      "id": "S-055",
+      "policy": "ORACLE-R",
+      "sha256": "bbdee9a1c1c30f6baf3c1cddee9c1eded821d9f6bb6e1c4f0586807948d9aec6",
+      "observations": 7
+    },
+    {
+      "id": "S-055",
+      "policy": "OVERCLAIM-R",
+      "sha256": "f3f41b89af23fb891131eb32076246a7ffb77c95984a9ae6dcbfb025e96061ff",
+      "observations": 7
+    },
+    {
+      "id": "S-056",
+      "policy": "ORACLE",
+      "sha256": "6549fb0228590574bb33574e14be5301fc4bdeafb76ac37ab333d8f4cdb86c43",
+      "observations": 6
+    },
+    {
+      "id": "S-056",
+      "policy": "OVERCLAIM",
+      "sha256": "66b2935c8854868cb9064345d9f59314d41969ebaf8dcfe05b578169f37e5c25",
+      "observations": 6
+    },
+    {
+      "id": "S-056",
+      "policy": "UNDERCLAIM",
+      "sha256": "619fa0d51403adaa7990fd6e91402187ec76d36d277f8f432c8c3e8be239885b",
+      "observations": 6
+    },
+    {
+      "id": "S-056",
+      "policy": "ORACLE-default",
+      "sha256": "9886f990ec782778762378d598eece09a1812530be81ee74c7b0cfb8ac71c79c",
+      "observations": 6
+    },
+    {
+      "id": "S-056",
+      "policy": "ORACLE-R",
+      "sha256": "14337c904582b44f41b072ffe7b1a1d7937cf480612dbf75ae896654956582dc",
+      "observations": 5
+    },
+    {
+      "id": "S-056",
+      "policy": "OVERCLAIM-R",
+      "sha256": "fa80b98a886bdddd80223ac65c805ebb9b6948da38e7b5e88c4303ce91dec9fe",
+      "observations": 5
+    },
+    {
+      "id": "S-057",
+      "policy": "ORACLE",
+      "sha256": "f4f2c7f14336d585903831204ee83b1511953357fa7e5c14bf811e8da9bdce46",
+      "observations": 6
+    },
+    {
+      "id": "S-057",
+      "policy": "OVERCLAIM",
+      "sha256": "826213c8d1f4815b9369801e1dcb47775889b966607f12eee4932a326a2cb91c",
+      "observations": 6
+    },
+    {
+      "id": "S-057",
+      "policy": "UNDERCLAIM",
+      "sha256": "721ab939a6d17ee65a29ef1ec3db707823422bbcddb63b7a6169d91343f17c48",
+      "observations": 6
+    },
+    {
+      "id": "S-057",
+      "policy": "ORACLE-default",
+      "sha256": "3b951bdc10c28bb7241406e51855160faad81e9e952adfab1728d34e9b086d98",
+      "observations": 6
+    },
+    {
+      "id": "S-057",
+      "policy": "ORACLE-R",
+      "sha256": "8bbd2f40227c6eb29d823d439f0fbec083be7deaa639eb1bf57418a6c3eeb86e",
+      "observations": 7
+    },
+    {
+      "id": "S-057",
+      "policy": "OVERCLAIM-R",
+      "sha256": "c4c18c24a375a0641110bf81194a339aed3c36b91627c57500994df09547341f",
+      "observations": 7
+    },
+    {
+      "id": "S-058",
+      "policy": "ORACLE",
+      "sha256": "253d782f80c2dc6b17249448a22437f9a4fc9d212aa574f3c0129f88767e918b",
+      "observations": 7
+    },
+    {
+      "id": "S-058",
+      "policy": "OVERCLAIM",
+      "sha256": "cf0c8bbc26cec54d7e3a5855638eee192f5ce25ca4a3cdf55306470011b2d9ee",
+      "observations": 7
+    },
+    {
+      "id": "S-058",
+      "policy": "UNDERCLAIM",
+      "sha256": "94d3addf73b582bd0562ec5333bcd8af484852c24e6fa20ba95eba9e499724aa",
+      "observations": 7
+    },
+    {
+      "id": "S-058",
+      "policy": "ORACLE-default",
+      "sha256": "7e0d6256b14c1c85f0b14b309e830cca15805bba3afdc4f96cb33bb18bcf98bf",
+      "observations": 7
+    },
+    {
+      "id": "S-058",
+      "policy": "ORACLE-R",
+      "sha256": "7e4bd1b1acc3d2c4074a9ca904617df8d60b398efca3b2deecb57ce1e304306d",
+      "observations": 7
+    },
+    {
+      "id": "S-058",
+      "policy": "OVERCLAIM-R",
+      "sha256": "1e7381a80f61e09275ee8db78afc44a8deddd6380091c2c4fccdde27a4c6d42f",
+      "observations": 7
+    },
+    {
+      "id": "S-059",
+      "policy": "ORACLE",
+      "sha256": "fedcfca42b0c8c6542442641c5e9e5256dbca29977052826c0bad0c2a546839a",
+      "observations": 5
+    },
+    {
+      "id": "S-059",
+      "policy": "OVERCLAIM",
+      "sha256": "60dcf8914aa295bcbfea0bb1fa48333572da0b82f15e12b3f26692a58a54c160",
+      "observations": 5
+    },
+    {
+      "id": "S-059",
+      "policy": "UNDERCLAIM",
+      "sha256": "44458704364fbdaa4065b68206a1ebd6d60797c234d3e8e1294593837f7de9c3",
+      "observations": 5
+    },
+    {
+      "id": "S-059",
+      "policy": "ORACLE-default",
+      "sha256": "be2d284e2e5a56ce42426344b7021a6f4a893ddf936f532ae2601842c592beb3",
+      "observations": 5
+    },
+    {
+      "id": "S-059",
+      "policy": "ORACLE-R",
+      "sha256": "540d6a77c5eb4a519a84373a2edb04761954c0d1fa76323c1f6cc937371661dd",
+      "observations": 6
+    },
+    {
+      "id": "S-059",
+      "policy": "OVERCLAIM-R",
+      "sha256": "753a2812cda3cd1bf51c7af3c583a5b108ff7f618a4ace0939d4a98d30542e3e",
+      "observations": 6
+    },
+    {
+      "id": "S-060",
+      "policy": "ORACLE",
+      "sha256": "8d3346c3f2a2471c8c2e66b05de3ab19c94f8804ad6edc591b8805bbe0803758",
+      "observations": 5
+    },
+    {
+      "id": "S-060",
+      "policy": "OVERCLAIM",
+      "sha256": "fcdf3a140cf8fffa14e9172c462874c80b0e146ad6821dfa954dd55a26071710",
+      "observations": 5
+    },
+    {
+      "id": "S-060",
+      "policy": "UNDERCLAIM",
+      "sha256": "2f561cab1e9c9ddd542a4d1097e63a5eded39ed801c042e188f7bef8a3e38151",
+      "observations": 5
+    },
+    {
+      "id": "S-060",
+      "policy": "ORACLE-default",
+      "sha256": "08a3485c4f165e5b3a827ad74b0268260dffc468d40a1b83efe8625b944fa729",
+      "observations": 5
+    },
+    {
+      "id": "S-060",
+      "policy": "ORACLE-R",
+      "sha256": "b2dafad40c9838a80b9da36af2b6d992b5690df1bc590d290fad6d61eadd5f25",
+      "observations": 7
+    },
+    {
+      "id": "S-060",
+      "policy": "OVERCLAIM-R",
+      "sha256": "e31edf0e875b9797845c9e6c4807fc62dd81225b8712fb9003a7810a744aab1a",
+      "observations": 7
+    },
+    {
+      "id": "S-061",
+      "policy": "ORACLE",
+      "sha256": "3735a7bb27e2a3ddeeb1206887643229c3fabdf2896ac68072bb865e014ccef8",
+      "observations": 7
+    },
+    {
+      "id": "S-061",
+      "policy": "OVERCLAIM",
+      "sha256": "4f530434370cd77cd0738f3f6346e4519464a37a36b081f0b6760414e8415c92",
+      "observations": 7
+    },
+    {
+      "id": "S-061",
+      "policy": "UNDERCLAIM",
+      "sha256": "c5f1cdfbb26a8cba5b875647fe41b5543b0cb146f6e855400f843ee0d3efc294",
+      "observations": 7
+    },
+    {
+      "id": "S-061",
+      "policy": "ORACLE-default",
+      "sha256": "7e452b2a99462c96696cd5d5ddde62423294a561c790dca28c4efcf32ad9defb",
+      "observations": 7
+    },
+    {
+      "id": "S-061",
+      "policy": "ORACLE-R",
+      "sha256": "1369b45bdca141f21be6dddb5eb5ea85f1bc8f31287b211a94bb534a0495d168",
+      "observations": 7
+    },
+    {
+      "id": "S-061",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ed4512f7eef22d443eba5e6aa75d491ce3d14b21a8ac8e46ff55f5f40432317f",
+      "observations": 7
+    },
+    {
+      "id": "S-062",
+      "policy": "ORACLE",
+      "sha256": "1a0bdc6d248c3f1bb7abbae9a592fe40ce539140077662151137fa6e791e4ae7",
+      "observations": 6
+    },
+    {
+      "id": "S-062",
+      "policy": "OVERCLAIM",
+      "sha256": "c68d3907ea7467d03c85344a05e46c1cc50379ca2f014e53f0b34a6f0246fdff",
+      "observations": 6
+    },
+    {
+      "id": "S-062",
+      "policy": "UNDERCLAIM",
+      "sha256": "fe05c0115613f205f226f6a943b144c3fda316fb59e275e6fa55de12611d50c4",
+      "observations": 6
+    },
+    {
+      "id": "S-062",
+      "policy": "ORACLE-default",
+      "sha256": "aa56c4ca2df523710c337cfed2d14c63cc745414ab59b3fd85023cee95748866",
+      "observations": 6
+    },
+    {
+      "id": "S-062",
+      "policy": "ORACLE-R",
+      "sha256": "b88a656ae641fe78cdcd483c59f29bafbd53ed876ed0f1a31345cdf356ddd968",
+      "observations": 6
+    },
+    {
+      "id": "S-062",
+      "policy": "OVERCLAIM-R",
+      "sha256": "88a8848437b86582f2c532ee0249a731a535c937d1bdc91d7e2b152db0fa57e3",
+      "observations": 6
+    },
+    {
+      "id": "S-063",
+      "policy": "ORACLE",
+      "sha256": "3b452f6d97fb98fd98a46c310dc49fb2493fa126f5d4c26dd28f836071997865",
+      "observations": 5
+    },
+    {
+      "id": "S-063",
+      "policy": "OVERCLAIM",
+      "sha256": "f93cb04e099e23e0fab429c6fbf6e10008927c266a9a0bc2691d7998ae02b380",
+      "observations": 5
+    },
+    {
+      "id": "S-063",
+      "policy": "UNDERCLAIM",
+      "sha256": "99d82b782750658029b7323107c40fc2fce10726b96c1f893acb18f7588eccbe",
+      "observations": 5
+    },
+    {
+      "id": "S-063",
+      "policy": "ORACLE-default",
+      "sha256": "8001fee3ee83b7d3fea00a0575613df451db71791a9322135e513472eeac9c16",
+      "observations": 5
+    },
+    {
+      "id": "S-063",
+      "policy": "ORACLE-R",
+      "sha256": "1500f35b98cf288212a65d2370841c72254d97c45dea1517ebac6d91ef820320",
+      "observations": 5
+    },
+    {
+      "id": "S-063",
+      "policy": "OVERCLAIM-R",
+      "sha256": "79b115d91b8d00bcf5483ea95984ea3cf535a45e8eb52375f0d4444dbd5b3880",
+      "observations": 5
+    },
+    {
+      "id": "S-064",
+      "policy": "ORACLE",
+      "sha256": "a131f1cfd877907fa855da94f0164a3b8b24027ffa568f9d4b56d6e267d342e5",
+      "observations": 6
+    },
+    {
+      "id": "S-064",
+      "policy": "OVERCLAIM",
+      "sha256": "ff724814bb0333a136a0067ae69114bf2d8ebf5ef45879b1a4c99a9906ca4ea6",
+      "observations": 6
+    },
+    {
+      "id": "S-064",
+      "policy": "UNDERCLAIM",
+      "sha256": "ff466d4a7d0debd6f94156de89fe0786783e6493db349773953686b6ab3ec1b3",
+      "observations": 6
+    },
+    {
+      "id": "S-064",
+      "policy": "ORACLE-default",
+      "sha256": "7e05ed1d53383380009e15c0b833436fc9d6b87d4bab0a2b11b78aa659223eb0",
+      "observations": 6
+    },
+    {
+      "id": "S-064",
+      "policy": "ORACLE-R",
+      "sha256": "d4b172acb080c53b68bf61835d5898979fed28cd8db261fa4bd8de4be496eb1a",
+      "observations": 5
+    },
+    {
+      "id": "S-064",
+      "policy": "OVERCLAIM-R",
+      "sha256": "3af6576f0249888c8cfae236dc4a057b6458b66205e63f4d64a4596b9addb4cb",
+      "observations": 5
+    },
+    {
+      "id": "S-065",
+      "policy": "ORACLE",
+      "sha256": "e56c915a921cf91544b30ddbd814d0741125f4ee68585ac64648063b3f100065",
+      "observations": 6
+    },
+    {
+      "id": "S-065",
+      "policy": "OVERCLAIM",
+      "sha256": "bb25eead72b4cec59fa5a00457fcb9d71dcdb8ad826cc5f99b826a3d6306921b",
+      "observations": 6
+    },
+    {
+      "id": "S-065",
+      "policy": "UNDERCLAIM",
+      "sha256": "b98546d6b9952f5462d363667da6bd15794c6b7860d1e16a8f26f6ab4cd895e6",
+      "observations": 6
+    },
+    {
+      "id": "S-065",
+      "policy": "ORACLE-default",
+      "sha256": "db1045e35b64ddace737f61285c4b3daedb7c5729ab23791a5a009e7f1518c82",
+      "observations": 6
+    },
+    {
+      "id": "S-065",
+      "policy": "ORACLE-R",
+      "sha256": "80d2d5e88c5aa89e8f2b6063257089b9624881857a801222b7492ff229822fa1",
+      "observations": 6
+    },
+    {
+      "id": "S-065",
+      "policy": "OVERCLAIM-R",
+      "sha256": "8e2237eb40932bbdc7557eecf0da9cd4352dde328c4a9011c1ab88fe39ecb27c",
+      "observations": 6
+    },
+    {
+      "id": "S-066",
+      "policy": "ORACLE",
+      "sha256": "63ce25b12c3882d9e27cd883f10e041994a2e0c4a8af69523b44e41a21f90326",
+      "observations": 6
+    },
+    {
+      "id": "S-066",
+      "policy": "OVERCLAIM",
+      "sha256": "9139b7c8664c72a321c9b5a04311ae1c18f68939d4900538247eb720f4615e18",
+      "observations": 6
+    },
+    {
+      "id": "S-066",
+      "policy": "UNDERCLAIM",
+      "sha256": "36866964d89eb79854e18815ff16d6895af47416873230af0a69f38690f371ec",
+      "observations": 6
+    },
+    {
+      "id": "S-066",
+      "policy": "ORACLE-default",
+      "sha256": "5ff52202ce018330026147019bb0bc14c998136c112e4d5d42b533a73259de52",
+      "observations": 6
+    },
+    {
+      "id": "S-066",
+      "policy": "ORACLE-R",
+      "sha256": "f09704ed027695b14f237e55d3d5b35f0754d181ba3f3612348bda5f3515362e",
+      "observations": 5
+    },
+    {
+      "id": "S-066",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ec1fc5a4ff97f791afe13ce87d05b8e9c91cf3fd57a1cce1a4106d535badb4ee",
+      "observations": 5
+    },
+    {
+      "id": "S-067",
+      "policy": "ORACLE",
+      "sha256": "7edbf2e05c6a7c1f18aface648668b00cd65cc5f19cb85e76319f6cfe96db17d",
+      "observations": 7
+    },
+    {
+      "id": "S-067",
+      "policy": "OVERCLAIM",
+      "sha256": "25c4e8c61376dc3e85405e65f05f4224e74e175af7a819cb9646e0935fef5417",
+      "observations": 7
+    },
+    {
+      "id": "S-067",
+      "policy": "UNDERCLAIM",
+      "sha256": "eeeb96ae1e7e8723cf7886361c3e452847ae9f5daec8920face7121f57cd4969",
+      "observations": 7
+    },
+    {
+      "id": "S-067",
+      "policy": "ORACLE-default",
+      "sha256": "1bbf266aa2a0f2fb0120fdbc178c956d77e960e043e4026684565632b3a309bc",
+      "observations": 7
+    },
+    {
+      "id": "S-067",
+      "policy": "ORACLE-R",
+      "sha256": "106569a497085a5816fb344e8e7b8fac0e3ce9fd8e02495ee9d0514d911ee094",
+      "observations": 7
+    },
+    {
+      "id": "S-067",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b27230bb304e11b9cad1185a15c668d40ccdcbe7366562c7163f142bdddb7fc5",
+      "observations": 7
+    },
+    {
+      "id": "S-068",
+      "policy": "ORACLE",
+      "sha256": "e0736f93e9976838b962aca37c55f07b53e0ae408c54224359514fdb94e3e2a9",
+      "observations": 7
+    },
+    {
+      "id": "S-068",
+      "policy": "OVERCLAIM",
+      "sha256": "480985d0b958394955488c5234fcb11877173dea963b8dcd18e81639aebc6e9f",
+      "observations": 7
+    },
+    {
+      "id": "S-068",
+      "policy": "UNDERCLAIM",
+      "sha256": "1504a4cc185f8912a46fa5ab809cd17611196b94d18344ce64b7d92b459fbb2d",
+      "observations": 7
+    },
+    {
+      "id": "S-068",
+      "policy": "ORACLE-default",
+      "sha256": "5931bd4b3040207e0591f7595ff0e30935f7b532bf2742e0ee71507011b937a8",
+      "observations": 7
+    },
+    {
+      "id": "S-068",
+      "policy": "ORACLE-R",
+      "sha256": "b5b6bdf5112ed4c4935716a3555f39ba6c55c53c109c08e1353ebf554a8a60c6",
+      "observations": 7
+    },
+    {
+      "id": "S-068",
+      "policy": "OVERCLAIM-R",
+      "sha256": "52cd1e405cb1dedbfa142574160832330557709e7dadc8c7d2ff44dfa4351b7e",
+      "observations": 7
+    },
+    {
+      "id": "S-069",
+      "policy": "ORACLE",
+      "sha256": "9b416d5ce741f8748fc31ac9d6106ec3b2506c3d1ae9a5ae6c1c6a63262a76c6",
+      "observations": 6
+    },
+    {
+      "id": "S-069",
+      "policy": "OVERCLAIM",
+      "sha256": "eff1e0dc9eb7137ed1ae5fb725487b84da01153e66216409f7a356eb98c227bd",
+      "observations": 6
+    },
+    {
+      "id": "S-069",
+      "policy": "UNDERCLAIM",
+      "sha256": "07b6de367b36631e2ee37caad2449d08890b28aaa5c9191732d7fda11b539fa3",
+      "observations": 6
+    },
+    {
+      "id": "S-069",
+      "policy": "ORACLE-default",
+      "sha256": "60a243dd690bc4aef51a7d8dc77242b59999872eb43529cedf05c3bc7b95e742",
+      "observations": 6
+    },
+    {
+      "id": "S-069",
+      "policy": "ORACLE-R",
+      "sha256": "3856d8fca701347a8987bbee7ae6f719fc417738d2d577b09c26eabfd268f742",
+      "observations": 6
+    },
+    {
+      "id": "S-069",
+      "policy": "OVERCLAIM-R",
+      "sha256": "dc7d6f0bd6c6efcb8665e4b98c141788b7dfb56d64fd76c40165db791cd20662",
+      "observations": 6
+    },
+    {
+      "id": "S-070",
+      "policy": "ORACLE",
+      "sha256": "9b9e99ae4dd024fa532fa38c51f7f7a537ea853d0278224e5fb715de1015c9f1",
+      "observations": 6
+    },
+    {
+      "id": "S-070",
+      "policy": "OVERCLAIM",
+      "sha256": "ff1b428557c790c0482a3f940547c25da0b006f3f992008db337b72d30469fff",
+      "observations": 6
+    },
+    {
+      "id": "S-070",
+      "policy": "UNDERCLAIM",
+      "sha256": "de67dc7df24895448d3e6d63da0bfe0b459afad0c7a6087f44456730cdcf7e17",
+      "observations": 6
+    },
+    {
+      "id": "S-070",
+      "policy": "ORACLE-default",
+      "sha256": "8fc685e843dbd535982af1a8f188cb54df69599d944027cf4ac774c69086a8ea",
+      "observations": 6
+    },
+    {
+      "id": "S-070",
+      "policy": "ORACLE-R",
+      "sha256": "6edaac8780580d0e004ef102a31a983767c863f8ea034b92d3ca22816d5de094",
+      "observations": 6
+    },
+    {
+      "id": "S-070",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d9d8900cd8605d9ad711f290d430543c26776dc5344d462b501f054dc5126354",
+      "observations": 6
+    },
+    {
+      "id": "S-071",
+      "policy": "ORACLE",
+      "sha256": "7b006fbf634c2921d701d5add5692b561f58ad26fd607699e5b8b2e1353a30d6",
+      "observations": 6
+    },
+    {
+      "id": "S-071",
+      "policy": "OVERCLAIM",
+      "sha256": "585127b6fc9d534c567f3420daaa92f36aabbe1e7ba0f81f276b220518d66169",
+      "observations": 6
+    },
+    {
+      "id": "S-071",
+      "policy": "UNDERCLAIM",
+      "sha256": "5284ee49a7d40f6eea97aa68aa9670fea828620f27063dc6dfffd266d3f04ed8",
+      "observations": 6
+    },
+    {
+      "id": "S-071",
+      "policy": "ORACLE-default",
+      "sha256": "cde43af538117db7bdfe4c5161a9f3f36caac7bf4c1b0776e5c2de4a9dc0e430",
+      "observations": 6
+    },
+    {
+      "id": "S-071",
+      "policy": "ORACLE-R",
+      "sha256": "ceba0ceacebf5fb76e6c8415a7f153c8ee30fc4d8fab966db48d04cec50da6fc",
+      "observations": 6
+    },
+    {
+      "id": "S-071",
+      "policy": "OVERCLAIM-R",
+      "sha256": "208e71e37e2ca101338e9d68e34889d632008406cbaf511051c22d389418d4c9",
+      "observations": 6
+    },
+    {
+      "id": "S-072",
+      "policy": "ORACLE",
+      "sha256": "21b9591b8e3a66edb7e9bd02baa2a73cd860eb21063ddb8501d1ce8561021759",
+      "observations": 6
+    },
+    {
+      "id": "S-072",
+      "policy": "OVERCLAIM",
+      "sha256": "47fedf56187e864a8e12fd63ac83e5634ba63129fc952ed9480daa20fed1f6cf",
+      "observations": 6
+    },
+    {
+      "id": "S-072",
+      "policy": "UNDERCLAIM",
+      "sha256": "f774882d4bbbec72f05f71baa30be3d07855e72b6de237f4487c3884f26c88bb",
+      "observations": 6
+    },
+    {
+      "id": "S-072",
+      "policy": "ORACLE-default",
+      "sha256": "ff2dd47aa2819ef978adb5db183cfeef2517cc83444d15683e2b4a4b706b01d8",
+      "observations": 6
+    },
+    {
+      "id": "S-072",
+      "policy": "ORACLE-R",
+      "sha256": "c22fa4b85ac188ad577fc376b9b7102af60b9e2757167804e74ee352d83ef2d2",
+      "observations": 6
+    },
+    {
+      "id": "S-072",
+      "policy": "OVERCLAIM-R",
+      "sha256": "09dc5f0ae86fa5fd6e441608e9fbc74a3eccc5f0d7b9d166e52fb272aa886d0d",
+      "observations": 6
+    },
+    {
+      "id": "S-073",
+      "policy": "ORACLE",
+      "sha256": "bb3f1ff21c0c567d4ab210876d83ad6ae4b95637602a566f27b95838401cad50",
+      "observations": 5
+    },
+    {
+      "id": "S-073",
+      "policy": "OVERCLAIM",
+      "sha256": "2900b7308b17b48d1688d0eca4d8c1f02f510671c858fd7c4a3b882f58c54a9e",
+      "observations": 5
+    },
+    {
+      "id": "S-073",
+      "policy": "UNDERCLAIM",
+      "sha256": "87f92f76ead910d7e61cf55736ed8056a69e5d71fdccdc462ff9dcdafb468f76",
+      "observations": 5
+    },
+    {
+      "id": "S-073",
+      "policy": "ORACLE-default",
+      "sha256": "71b1b1c98cfd507d687fdad8368e51865727b174844d029dc4bd7e3e602efde4",
+      "observations": 5
+    },
+    {
+      "id": "S-073",
+      "policy": "ORACLE-R",
+      "sha256": "537ed1d7b99767d1880cc55a68514328f7fae60719f0bbb2c62c89e720deb84b",
+      "observations": 5
+    },
+    {
+      "id": "S-073",
+      "policy": "OVERCLAIM-R",
+      "sha256": "8e48c5bb52a4774d13baf00504397da75c094729ff4eadcab90d462b6213a67d",
+      "observations": 5
+    },
+    {
+      "id": "S-074",
+      "policy": "ORACLE",
+      "sha256": "926068966c14a8d5e95eef1332ddeed3ac5163701b5ec2cfcb3934f784a9b6c3",
+      "observations": 6
+    },
+    {
+      "id": "S-074",
+      "policy": "OVERCLAIM",
+      "sha256": "267c2cfc7349c104ee2913facbc0b4a6827742d042e122dee6cc326bf3d27d9d",
+      "observations": 6
+    },
+    {
+      "id": "S-074",
+      "policy": "UNDERCLAIM",
+      "sha256": "ca9afd0ac35c3c1bb2a651102f7330eb1fbf0e96e9867b7c20655b7062f28247",
+      "observations": 6
+    },
+    {
+      "id": "S-074",
+      "policy": "ORACLE-default",
+      "sha256": "ca00206954f288fdcc7d254b64fd1c6e99b25966dd846e365cafc52b58d26382",
+      "observations": 6
+    },
+    {
+      "id": "S-074",
+      "policy": "ORACLE-R",
+      "sha256": "e4a58f36869c6c80b1cc57f9fdb2b3fd69772867ed323fd7e91c9093a4d90b3b",
+      "observations": 5
+    },
+    {
+      "id": "S-074",
+      "policy": "OVERCLAIM-R",
+      "sha256": "c2c9ec4f9cb8ab8aadd86db70155e8059cf9b7916a1058edafe70ef8b50096b4",
+      "observations": 5
+    },
+    {
+      "id": "S-075",
+      "policy": "ORACLE",
+      "sha256": "fb75f70b5d9fe56c6b39b8031a9126938c893d060aa3dda9eed302b5e4355455",
+      "observations": 6
+    },
+    {
+      "id": "S-075",
+      "policy": "OVERCLAIM",
+      "sha256": "0edb7ebf38d9616760a0c38e2c2d607fe9c918960fdd7ed4cf1c078374ad2673",
+      "observations": 6
+    },
+    {
+      "id": "S-075",
+      "policy": "UNDERCLAIM",
+      "sha256": "c353daa736b324d9bb13c550d466af37062c98b09aede08fe610bffe22f84837",
+      "observations": 6
+    },
+    {
+      "id": "S-075",
+      "policy": "ORACLE-default",
+      "sha256": "5af0f333f4fc944076de9305b06a685a6dd0e382a1aa656ee67ed00f4fb0fbff",
+      "observations": 6
+    },
+    {
+      "id": "S-075",
+      "policy": "ORACLE-R",
+      "sha256": "c3edf89147f3f98bc88202dc17473ee7a49d59b57b0811d8b975e6fe687b957f",
+      "observations": 5
+    },
+    {
+      "id": "S-075",
+      "policy": "OVERCLAIM-R",
+      "sha256": "fc7379d50a3a575de112490917e6ea57865c0581e7d7ba5acf303dc3b926c7d9",
+      "observations": 5
+    },
+    {
+      "id": "S-076",
+      "policy": "ORACLE",
+      "sha256": "c1a9d2411fc38b55a180187481fa6781a8fc52d508c98c237a267ef3926e8c49",
+      "observations": 6
+    },
+    {
+      "id": "S-076",
+      "policy": "OVERCLAIM",
+      "sha256": "4ab0b5a954448f9264b8b6e63e35cbc0887507a7c2a78e5262bf44bea49a2825",
+      "observations": 6
+    },
+    {
+      "id": "S-076",
+      "policy": "UNDERCLAIM",
+      "sha256": "370772289cc0f8b626e89f7a756377ef896df988e70f3554e3981c54b8d1fc2b",
+      "observations": 6
+    },
+    {
+      "id": "S-076",
+      "policy": "ORACLE-default",
+      "sha256": "3163e31eab6ca03840d90855c11bad99ff7c0c79dd7845407f5f8005805773ac",
+      "observations": 6
+    },
+    {
+      "id": "S-076",
+      "policy": "ORACLE-R",
+      "sha256": "0403e8153a035d58e67cecb875f5f1c3cab4cc0e411c9d375c4ae08c1c08561d",
+      "observations": 5
+    },
+    {
+      "id": "S-076",
+      "policy": "OVERCLAIM-R",
+      "sha256": "043736aa4d565680ffeefc0be9468ea2b7b9eb28fa989d5fe14cbc2adb202204",
+      "observations": 5
+    },
+    {
+      "id": "S-077",
+      "policy": "ORACLE",
+      "sha256": "7bbd38234d96e666184e9641cf1165d130b370bf8d154c7b5729563b4b241d50",
+      "observations": 7
+    },
+    {
+      "id": "S-077",
+      "policy": "OVERCLAIM",
+      "sha256": "43242b23ceeb6c2750972002bd2f2acd3f4bab35f8f3e48d2bd4d9e315a9dcc9",
+      "observations": 7
+    },
+    {
+      "id": "S-077",
+      "policy": "UNDERCLAIM",
+      "sha256": "d40f3910df367e80397a9ee9ee2534b6b7893c00817df43e9308e98251e615d7",
+      "observations": 7
+    },
+    {
+      "id": "S-077",
+      "policy": "ORACLE-default",
+      "sha256": "d6b1e7615db3fb0e87ca0dd0524d556537dfb606c8c70a235a329e4b67547a17",
+      "observations": 7
+    },
+    {
+      "id": "S-077",
+      "policy": "ORACLE-R",
+      "sha256": "f4fb5a0c204c5c003b52c4390d232e012f55c63aef00fff22064c8e4b984e2de",
+      "observations": 7
+    },
+    {
+      "id": "S-077",
+      "policy": "OVERCLAIM-R",
+      "sha256": "451451c31bd849f377d0d993ab8ce8ebdc94cf3294dea0c4e30e04c197144389",
+      "observations": 7
+    },
+    {
+      "id": "S-078",
+      "policy": "ORACLE",
+      "sha256": "d213dd9221dc243376f9bbbe7aeb17ebbc8d9f2b8861a03c4514b9503496c6d0",
+      "observations": 7
+    },
+    {
+      "id": "S-078",
+      "policy": "OVERCLAIM",
+      "sha256": "18a04ff4879b0412bde5ff02728fb50f76d3670e8cd43885243507d46a9720ba",
+      "observations": 7
+    },
+    {
+      "id": "S-078",
+      "policy": "UNDERCLAIM",
+      "sha256": "071c6b6450156ab77f6791ae805fc3e018e6200410c3c59e1a2a42389f1102cf",
+      "observations": 7
+    },
+    {
+      "id": "S-078",
+      "policy": "ORACLE-default",
+      "sha256": "905d6373caf06aff5112baea564ced1ccdc404ed95b51f887e3e75ac747b8b74",
+      "observations": 7
+    },
+    {
+      "id": "S-078",
+      "policy": "ORACLE-R",
+      "sha256": "7ff201e916a8d2732a68fc8b98510d68326e735eb6fddcd8437c1358e367f026",
+      "observations": 6
+    },
+    {
+      "id": "S-078",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b99b95d8338c9f7627f5e3805d6ea81fe2207460393b74abab914987c5f0cab6",
+      "observations": 6
+    },
+    {
+      "id": "S-079",
+      "policy": "ORACLE",
+      "sha256": "36d3a3bda3af0f4e0df5f484fd05f6ec5e0198f917b1547971b6acf4d6362df4",
+      "observations": 6
+    },
+    {
+      "id": "S-079",
+      "policy": "OVERCLAIM",
+      "sha256": "c89e1ab4795aa7470c5ced7cd79481095c0c08652c3b22729b6125f13e8014fc",
+      "observations": 6
+    },
+    {
+      "id": "S-079",
+      "policy": "UNDERCLAIM",
+      "sha256": "d8475d11642f8a4fa85a8f3107eff5c3dc53ec690abb55c3a95873843e7c5822",
+      "observations": 6
+    },
+    {
+      "id": "S-079",
+      "policy": "ORACLE-default",
+      "sha256": "c9fc85b78468e7ad7a5bf6e08d3101e928b88417aa6cbba503004a4107f2fe84",
+      "observations": 6
+    },
+    {
+      "id": "S-079",
+      "policy": "ORACLE-R",
+      "sha256": "6f378383e518651d150685ef67994e528c81085efd9916424786b69b05a7eb1e",
+      "observations": 6
+    },
+    {
+      "id": "S-079",
+      "policy": "OVERCLAIM-R",
+      "sha256": "20053b22217fdac3d497355698f9b4ee04915d98227cf8af129cc722b458cbae",
+      "observations": 6
+    },
+    {
+      "id": "S-080",
+      "policy": "ORACLE",
+      "sha256": "7f88e7718e33bec3d7fde2e1b5a11e3539cdd9f2a6fc614219d77ba8132ef588",
+      "observations": 5
+    },
+    {
+      "id": "S-080",
+      "policy": "OVERCLAIM",
+      "sha256": "22588a67e8182b2fb29b01964336eb441ef38d0767d703ed95b8307205d74807",
+      "observations": 5
+    },
+    {
+      "id": "S-080",
+      "policy": "UNDERCLAIM",
+      "sha256": "efc96426fccfd1c74c43f904508c798b264da64ae78194c53c39e9c2504cf840",
+      "observations": 5
+    },
+    {
+      "id": "S-080",
+      "policy": "ORACLE-default",
+      "sha256": "1405f5b31fb7b96713fcca1fd4a909bab5e79bb818da12a61de7c7941e17e7cc",
+      "observations": 5
+    },
+    {
+      "id": "S-080",
+      "policy": "ORACLE-R",
+      "sha256": "e0a7c6063608ecbb9da81464632dbd43b5af05a8fc727ec329a4e13e47a881af",
+      "observations": 6
+    },
+    {
+      "id": "S-080",
+      "policy": "OVERCLAIM-R",
+      "sha256": "69ff9cb9755344a5554aeb523a529a5060f0cb1bf19ceba6d57ccf465aeebbdf",
+      "observations": 6
+    },
+    {
+      "id": "S-081",
+      "policy": "ORACLE",
+      "sha256": "270c10174e99c9a76aba62650eddfb9d46bfeab472f17cc064edd7a5c81f10bb",
+      "observations": 6
+    },
+    {
+      "id": "S-081",
+      "policy": "OVERCLAIM",
+      "sha256": "42b84f1957015f526334d8863d77664e329dee8b61c7dd87c81b73447057f036",
+      "observations": 6
+    },
+    {
+      "id": "S-081",
+      "policy": "UNDERCLAIM",
+      "sha256": "a6ec38383ce7f81ec384198ca78a084385b4d90051919c5165f2330345258132",
+      "observations": 6
+    },
+    {
+      "id": "S-081",
+      "policy": "ORACLE-default",
+      "sha256": "31dff8caa7ea4060b6b075d22c2ad72ecccd8a739bf1c75bc18e648a4e990eab",
+      "observations": 6
+    },
+    {
+      "id": "S-081",
+      "policy": "ORACLE-R",
+      "sha256": "ba9df676959d9ed4a6c6cc5a3267bbc636eb23c7f00f5f9827902edc5e68df0b",
+      "observations": 6
+    },
+    {
+      "id": "S-081",
+      "policy": "OVERCLAIM-R",
+      "sha256": "bf37bbdfe33febccc9cae1f8294ffe78f018f4faf81ae3e71d9ac65681b76713",
+      "observations": 6
+    },
+    {
+      "id": "S-082",
+      "policy": "ORACLE",
+      "sha256": "b0396d321ba03b4b2c0f98ff14b347816786aefb13164b439c3b5117fa8ccb15",
+      "observations": 6
+    },
+    {
+      "id": "S-082",
+      "policy": "OVERCLAIM",
+      "sha256": "df90350dfc4ad8821fcf7d9351bd5db0f1da0ce5763a5cd601b66e804ead0229",
+      "observations": 6
+    },
+    {
+      "id": "S-082",
+      "policy": "UNDERCLAIM",
+      "sha256": "465525a626e3836acea5479c184fae2d8c309ad21b0f9b27ce86f2b9e9332b04",
+      "observations": 6
+    },
+    {
+      "id": "S-082",
+      "policy": "ORACLE-default",
+      "sha256": "c096d93a95d1b53e3c32a5dce0f7b26e4bfc46db95ee97b7dab653cd9ebaa711",
+      "observations": 6
+    },
+    {
+      "id": "S-082",
+      "policy": "ORACLE-R",
+      "sha256": "d437eb12b694f936050f89bfa4ef813f04d7aa40e3b0011039fe48c530ca4954",
+      "observations": 6
+    },
+    {
+      "id": "S-082",
+      "policy": "OVERCLAIM-R",
+      "sha256": "95a3c0a70964f71a5a85148a93a8956bc360bcf0aa2c198464fb2234a96132e8",
+      "observations": 6
+    },
+    {
+      "id": "S-083",
+      "policy": "ORACLE",
+      "sha256": "93fc50040ea8de0692ac05b1956a426705b27e8e2627647d98f21d976918a579",
+      "observations": 6
+    },
+    {
+      "id": "S-083",
+      "policy": "OVERCLAIM",
+      "sha256": "5c244b4278c50458eb65fc282b1d4a135f63785ff11aea5e60408fad58031108",
+      "observations": 6
+    },
+    {
+      "id": "S-083",
+      "policy": "UNDERCLAIM",
+      "sha256": "a11d9e8f3a1857e8afbc38c6a08915fc795f8849c116694e549540bae4464b8e",
+      "observations": 6
+    },
+    {
+      "id": "S-083",
+      "policy": "ORACLE-default",
+      "sha256": "9f2bff43a4d3cf6a15ee82ba16114df6f570c069c96c8700a7bc34e022f5c995",
+      "observations": 6
+    },
+    {
+      "id": "S-083",
+      "policy": "ORACLE-R",
+      "sha256": "13976edc56de852ba2c93e2807b27640f3daf922f55778a105e43912e27f1750",
+      "observations": 5
+    },
+    {
+      "id": "S-083",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d6954dc4351650d29b170a0302aa84e6d5cc674684671dc0ec40cad2e076e762",
+      "observations": 5
+    },
+    {
+      "id": "S-084",
+      "policy": "ORACLE",
+      "sha256": "67448690980c2435f579d43d8783212397c7b16a573ed0a3735175d6c99cfe13",
+      "observations": 6
+    },
+    {
+      "id": "S-084",
+      "policy": "OVERCLAIM",
+      "sha256": "1bb23a7ca31f56e65e337d6d07125ea064f5b1283602b62676629efd90962f23",
+      "observations": 6
+    },
+    {
+      "id": "S-084",
+      "policy": "UNDERCLAIM",
+      "sha256": "82886de52f538251f42e508aabb3588b05d99d5fcbf59b3ca8fb1bf867983eec",
+      "observations": 6
+    },
+    {
+      "id": "S-084",
+      "policy": "ORACLE-default",
+      "sha256": "a335573836fc10f913a08d7ca826a8a4b636b39d49d37187c72c23a29455ca74",
+      "observations": 6
+    },
+    {
+      "id": "S-084",
+      "policy": "ORACLE-R",
+      "sha256": "f29fb621185f7d6d476a7ce5069527ff279c225f326f1f1fc8c5dc0009bb1b04",
+      "observations": 5
+    },
+    {
+      "id": "S-084",
+      "policy": "OVERCLAIM-R",
+      "sha256": "1eab41619fe08edec7db4e10dbb65ad56789215e93a9641744786d38473cbd8f",
+      "observations": 5
+    },
+    {
+      "id": "S-085",
+      "policy": "ORACLE",
+      "sha256": "2f328c9cf969d2fbf60186b94fbf6da85eb05bbf84465fffb13c284239cbba6e",
+      "observations": 6
+    },
+    {
+      "id": "S-085",
+      "policy": "OVERCLAIM",
+      "sha256": "384903e7bd497dff417c151af720b96261c28338b3c87e761ab65b369e76afbe",
+      "observations": 6
+    },
+    {
+      "id": "S-085",
+      "policy": "UNDERCLAIM",
+      "sha256": "0bef4c6a23de70f083468ee9796cd7d52326b2d63e45647eff17b5330ac1ebf8",
+      "observations": 6
+    },
+    {
+      "id": "S-085",
+      "policy": "ORACLE-default",
+      "sha256": "86869b9f7a9d24aefc4711fa6838c4633ff4b19609a2b49ad4d15b6a53d4bf8d",
+      "observations": 6
+    },
+    {
+      "id": "S-085",
+      "policy": "ORACLE-R",
+      "sha256": "4daaf3950499a70ac833d162010853c360e8a528b8d5f1f38b598dcefd63388b",
+      "observations": 6
+    },
+    {
+      "id": "S-085",
+      "policy": "OVERCLAIM-R",
+      "sha256": "5496654cd6950c69a488d8d48deb92749fda6fb7d7b4a76676b2a1a8c43220eb",
+      "observations": 6
+    },
+    {
+      "id": "S-086",
+      "policy": "ORACLE",
+      "sha256": "9742c94182b61f1e37044b622031b7490721031a5858f6c7d2d27a9f5e0d2a0d",
+      "observations": 6
+    },
+    {
+      "id": "S-086",
+      "policy": "OVERCLAIM",
+      "sha256": "2123820e1bfb40ab32ea8280a8c7da2bb4c3a9ad7e97a14a8299f2394a61f5cc",
+      "observations": 6
+    },
+    {
+      "id": "S-086",
+      "policy": "UNDERCLAIM",
+      "sha256": "8e216508348faeb5929eb5efb2c907525f923a8284731272fcb624dafda94eb8",
+      "observations": 6
+    },
+    {
+      "id": "S-086",
+      "policy": "ORACLE-default",
+      "sha256": "3b0ab17e3dc5a1777aa945f9c29857434150f1b6d59de52ee5fff7a03847827a",
+      "observations": 6
+    },
+    {
+      "id": "S-086",
+      "policy": "ORACLE-R",
+      "sha256": "cac078ed3885d3a60bd83f104336a38424d3eb9d46df6e42f9abde64e2faee33",
+      "observations": 5
+    },
+    {
+      "id": "S-086",
+      "policy": "OVERCLAIM-R",
+      "sha256": "9ebbbb5c80ac7606695ce1f1abb8ffc3d96612a71ff1d14a1c5891f2061dc78f",
+      "observations": 5
+    },
+    {
+      "id": "S-087",
+      "policy": "ORACLE",
+      "sha256": "68d4436eb1cc10c3c46def6adadea48d326040bf3b94bbd0fd87996d29829bcd",
+      "observations": 7
+    },
+    {
+      "id": "S-087",
+      "policy": "OVERCLAIM",
+      "sha256": "148ecb4b266e25501ccd5148f372065a3ca00f70e6fb5c1578fbc9952038048a",
+      "observations": 7
+    },
+    {
+      "id": "S-087",
+      "policy": "UNDERCLAIM",
+      "sha256": "523f408aeeb9cab3ada2c9975c981b6757d27ffde13dd27da87bed8d9e1b7f47",
+      "observations": 7
+    },
+    {
+      "id": "S-087",
+      "policy": "ORACLE-default",
+      "sha256": "534ab05f6e2784a87c2a04107dd19e7dd9cf964f17b39b1e68a6c7490aeacc54",
+      "observations": 7
+    },
+    {
+      "id": "S-087",
+      "policy": "ORACLE-R",
+      "sha256": "e0d45cd1d0262fea22f68d847f711213898e6a43b326a5d14db9cd857b135409",
+      "observations": 7
+    },
+    {
+      "id": "S-087",
+      "policy": "OVERCLAIM-R",
+      "sha256": "a2bcdac6ae18d225a5af4e1265573c8e3d49811d3d7adb5d98a3237abd7e5fb6",
+      "observations": 7
+    },
+    {
+      "id": "S-088",
+      "policy": "ORACLE",
+      "sha256": "ceda354e59b14aa87149e71b32d963229b3e848b0b7f465cb07d260c6d61d618",
+      "observations": 7
+    },
+    {
+      "id": "S-088",
+      "policy": "OVERCLAIM",
+      "sha256": "3d68f7e60d0d009568942ef74ff798e5b599ff096b119daec5ca41e9043df402",
+      "observations": 7
+    },
+    {
+      "id": "S-088",
+      "policy": "UNDERCLAIM",
+      "sha256": "a4486d906bc5493115c9a840563f18470a1d707d231278ab0454a8cc901ef56f",
+      "observations": 7
+    },
+    {
+      "id": "S-088",
+      "policy": "ORACLE-default",
+      "sha256": "4afb0182e9c67c22232064ee1d46a132e6cbf4a183bd72dadfe541cc6e4c2a63",
+      "observations": 7
+    },
+    {
+      "id": "S-088",
+      "policy": "ORACLE-R",
+      "sha256": "059d829a4c68eb9e6c5bb1cbfc5823aac89ab3ecb76154657b4f828d41ebb38f",
+      "observations": 7
+    },
+    {
+      "id": "S-088",
+      "policy": "OVERCLAIM-R",
+      "sha256": "64e1630eeeffa08f421adb06bb940d3bacfc3c05dc4babf1e2fbdce2e5deac00",
+      "observations": 7
+    },
+    {
+      "id": "S-089",
+      "policy": "ORACLE",
+      "sha256": "cd5e604338e98a909058bfe9bd7247f2eeef79fb8f389ba377545c3dd107599f",
+      "observations": 5
+    },
+    {
+      "id": "S-089",
+      "policy": "OVERCLAIM",
+      "sha256": "a9f5450f7803ee33a61bf13a6ef135fc3890c0e003079d815cdc0c3defd3077b",
+      "observations": 5
+    },
+    {
+      "id": "S-089",
+      "policy": "UNDERCLAIM",
+      "sha256": "17d74403023bf014e9f23c81cbf21a45d50af5bed74694ee15fa52150fb8073d",
+      "observations": 5
+    },
+    {
+      "id": "S-089",
+      "policy": "ORACLE-default",
+      "sha256": "6f2cffa9f18a2a9f02e6785c934efb41f64e8f55ff49ff35f4890713eafbfea1",
+      "observations": 5
+    },
+    {
+      "id": "S-089",
+      "policy": "ORACLE-R",
+      "sha256": "3cca8179eda69c07f69eb6a660c23691be1e420f718448c33414633c41d0b16f",
+      "observations": 6
+    },
+    {
+      "id": "S-089",
+      "policy": "OVERCLAIM-R",
+      "sha256": "dd6d1038691559f74ecef61ea1535497b9e6e3febea48a16c1dc419e395d837a",
+      "observations": 6
+    },
+    {
+      "id": "S-090",
+      "policy": "ORACLE",
+      "sha256": "478591e046c6957eaaee2630fd49c3c6f315c59229537718034c021e8523c30c",
+      "observations": 6
+    },
+    {
+      "id": "S-090",
+      "policy": "OVERCLAIM",
+      "sha256": "f4111460e2ec4966ef014661e68236ca7ac6fed122c285259948849bc0f96271",
+      "observations": 6
+    },
+    {
+      "id": "S-090",
+      "policy": "UNDERCLAIM",
+      "sha256": "8d22eef2c12a5d22b906a85f5b50e6f136eef69ea79835863c2d7522d510cd4b",
+      "observations": 6
+    },
+    {
+      "id": "S-090",
+      "policy": "ORACLE-default",
+      "sha256": "58ed36758977911f8b1cbe247bf1be7570022f765924bbd9aba98a7ff444f715",
+      "observations": 6
+    },
+    {
+      "id": "S-090",
+      "policy": "ORACLE-R",
+      "sha256": "549dc9127b2777b051482c667181ad3fd84f81aba99bf9f2f6cdff1e237a11fe",
+      "observations": 6
+    },
+    {
+      "id": "S-090",
+      "policy": "OVERCLAIM-R",
+      "sha256": "e4724a2599c56b8a5a41c4459ce02c35ee3ba99a13104c9dda6a52e7fd180252",
+      "observations": 6
+    },
+    {
+      "id": "S-091",
+      "policy": "ORACLE",
+      "sha256": "1f31376dd52ff67bfd15683adb0204597da047f1d34572f77fcb73cbb475590e",
+      "observations": 7
+    },
+    {
+      "id": "S-091",
+      "policy": "OVERCLAIM",
+      "sha256": "8d9ffb39ae87b0fa60442efeea5574f36b8707924b21fa5d35ce2d2f041cf5e6",
+      "observations": 7
+    },
+    {
+      "id": "S-091",
+      "policy": "UNDERCLAIM",
+      "sha256": "ad25e190172c118c6dd2e1009cc326a94dd55106ad6d0b504f9cb6cb0871acec",
+      "observations": 7
+    },
+    {
+      "id": "S-091",
+      "policy": "ORACLE-default",
+      "sha256": "ffcf0b9a449b3f79fede162208a259d6dbfd40a4c70bfd5f589e6f7643ba7362",
+      "observations": 7
+    },
+    {
+      "id": "S-091",
+      "policy": "ORACLE-R",
+      "sha256": "d297feef9a2c4cb0d06c569b4ea3cf2f9dd60bb2eb20251dcd8455547b31485a",
+      "observations": 7
+    },
+    {
+      "id": "S-091",
+      "policy": "OVERCLAIM-R",
+      "sha256": "4c828dc9d0ab9507fac3337d2c8c631d3751af77e9826600e69e11e061b80598",
+      "observations": 7
+    },
+    {
+      "id": "S-092",
+      "policy": "ORACLE",
+      "sha256": "6221524862ba98115906cd203e7a5a972d3e6ee6170bf469eadfaad10ecf6a43",
+      "observations": 6
+    },
+    {
+      "id": "S-092",
+      "policy": "OVERCLAIM",
+      "sha256": "056ab21984dd84f617e0c1740635989bbc420b68c4f4d957be7fb194596b8464",
+      "observations": 6
+    },
+    {
+      "id": "S-092",
+      "policy": "UNDERCLAIM",
+      "sha256": "cf21b56ae6e60f30ab199396a0940e49898006b777cd4d4893e73716b96ae5c4",
+      "observations": 6
+    },
+    {
+      "id": "S-092",
+      "policy": "ORACLE-default",
+      "sha256": "fbea22da80f79f01a6df8469651169657615c422f1a7ee6a6ac4b4a460336c4f",
+      "observations": 6
+    },
+    {
+      "id": "S-092",
+      "policy": "ORACLE-R",
+      "sha256": "49699d6928ef7849c5609acfca8f87f630f6080099a5a0200c745b2d95fdbd7b",
+      "observations": 7
+    },
+    {
+      "id": "S-092",
+      "policy": "OVERCLAIM-R",
+      "sha256": "1d4ad4005997f4078b90a8c5fdb9328e250a6140d77115e7d674b826eb843cba",
+      "observations": 7
+    },
+    {
+      "id": "S-093",
+      "policy": "ORACLE",
+      "sha256": "63617fdea8b352226a68ecefb9924a03c75954b2fcd44e84634456085a5754db",
+      "observations": 5
+    },
+    {
+      "id": "S-093",
+      "policy": "OVERCLAIM",
+      "sha256": "2e9c3e16418f2a1bee6b4b6c9c122a4c8f0c888c883ac9a5ddfb92ff060651d7",
+      "observations": 5
+    },
+    {
+      "id": "S-093",
+      "policy": "UNDERCLAIM",
+      "sha256": "8782e87a0277d7b565d1f8ddc73d536069deac41a72c8aeac06caa0b02bd95f5",
+      "observations": 5
+    },
+    {
+      "id": "S-093",
+      "policy": "ORACLE-default",
+      "sha256": "7dff4d70f3bf45c4b2f2fa0d5fe8e51ad545a3ead599caaa829def0ee94d1c57",
+      "observations": 5
+    },
+    {
+      "id": "S-093",
+      "policy": "ORACLE-R",
+      "sha256": "3a2817a055e5a6458ac466dd8efb634c3947c50e3ada1fa836dc65c6bd41b28d",
+      "observations": 5
+    },
+    {
+      "id": "S-093",
+      "policy": "OVERCLAIM-R",
+      "sha256": "655fcffc5819c3b0fb822830597844c51fcc2c9442652df9c9f8ed0ba2f220e2",
+      "observations": 5
+    },
+    {
+      "id": "S-094",
+      "policy": "ORACLE",
+      "sha256": "3de0e5ac31ba30694afda50310682b95bc9ffa159832a58cf5e012008e35c146",
+      "observations": 7
+    },
+    {
+      "id": "S-094",
+      "policy": "OVERCLAIM",
+      "sha256": "29ae54ffb5a9df7b7081e8e9f154f95b2e22c4e1992d346efffbc6f575261291",
+      "observations": 7
+    },
+    {
+      "id": "S-094",
+      "policy": "UNDERCLAIM",
+      "sha256": "fc57dda117e539615eadfa6df270bc412b8494c8582f6cbfdd1e6475d775c1b7",
+      "observations": 7
+    },
+    {
+      "id": "S-094",
+      "policy": "ORACLE-default",
+      "sha256": "d6620559a6b74c503746e6ba21804a8eb7e761982a4a44341a33f470bf5df628",
+      "observations": 7
+    },
+    {
+      "id": "S-094",
+      "policy": "ORACLE-R",
+      "sha256": "20cc35463030f693fd9a0194986dc2b2d0f684c7f4606a916800665b32170c9b",
+      "observations": 6
+    },
+    {
+      "id": "S-094",
+      "policy": "OVERCLAIM-R",
+      "sha256": "f56957fe9396c139199280687d574815e3a54752a51700637bfc6742c1e21170",
+      "observations": 6
+    },
+    {
+      "id": "S-095",
+      "policy": "ORACLE",
+      "sha256": "dd006b7b8133758dce011d8cb7881c4d7b00187606b9cf4d714020bebaacc80b",
+      "observations": 7
+    },
+    {
+      "id": "S-095",
+      "policy": "OVERCLAIM",
+      "sha256": "2e5f62008026dbac8d2a98ab40dc7966a553a33537a3b57351ce49140700e4f7",
+      "observations": 7
+    },
+    {
+      "id": "S-095",
+      "policy": "UNDERCLAIM",
+      "sha256": "1db9c0e3a93c7cd76680f95fb7bb3ebd7531168a9edc16e21f15c1b6fde790a3",
+      "observations": 7
+    },
+    {
+      "id": "S-095",
+      "policy": "ORACLE-default",
+      "sha256": "ce8cb77247109c744319bda10b0759d23c7b1d26ad9d88cb9a089360df0f2b51",
+      "observations": 7
+    },
+    {
+      "id": "S-095",
+      "policy": "ORACLE-R",
+      "sha256": "362c547535bd5299d03bda84fb3b88b417a9fe9f26b86e59f81b4a122852403c",
+      "observations": 7
+    },
+    {
+      "id": "S-095",
+      "policy": "OVERCLAIM-R",
+      "sha256": "6aaac1946c79773858147e5146ec54bd131da6f6521f7f19599b70cf149326df",
+      "observations": 7
+    },
+    {
+      "id": "S-096",
+      "policy": "ORACLE",
+      "sha256": "0901994f286a0d8709a93bdebb2722fae03c2b7abe558f5feff5b40fcdd74e00",
+      "observations": 7
+    },
+    {
+      "id": "S-096",
+      "policy": "OVERCLAIM",
+      "sha256": "d5a930fd6a52f8e12f8448ed7c8791fab73d7bc7f43e17528c4fcd2277d9d045",
+      "observations": 7
+    },
+    {
+      "id": "S-096",
+      "policy": "UNDERCLAIM",
+      "sha256": "1282e6856dcd173221ff4d1ff0e723c9ce5d95fa84e4635c1ce3c6d78a21b11a",
+      "observations": 7
+    },
+    {
+      "id": "S-096",
+      "policy": "ORACLE-default",
+      "sha256": "ea87ad0b70a2693501ae589278659556e6f12fe05723620f666aac3964865dd9",
+      "observations": 7
+    },
+    {
+      "id": "S-096",
+      "policy": "ORACLE-R",
+      "sha256": "2c5a6f44c9267801f6c352d823c9f4c3cf300b139b3af912c2682e96a4a41865",
+      "observations": 6
+    },
+    {
+      "id": "S-096",
+      "policy": "OVERCLAIM-R",
+      "sha256": "94db2af0c48b3aa23106397bded1f3b10a68d7e7116b527e4c250108667a7ffe",
+      "observations": 6
+    },
+    {
+      "id": "S-097",
+      "policy": "ORACLE",
+      "sha256": "d70e268fc7054f45ed4eafa767915874144e905078353b66c3cb6e76099e59f9",
+      "observations": 6
+    },
+    {
+      "id": "S-097",
+      "policy": "OVERCLAIM",
+      "sha256": "a8a8da15db416a3e2b0c816bf534be4c9ef904ca821ea33985cbf75fb5dfa6e0",
+      "observations": 6
+    },
+    {
+      "id": "S-097",
+      "policy": "UNDERCLAIM",
+      "sha256": "66fd3f847d409964b0a902360e861ddfed23fa6244f93e688a51832517deef26",
+      "observations": 6
+    },
+    {
+      "id": "S-097",
+      "policy": "ORACLE-default",
+      "sha256": "f88a4b874450894b408d2d382ffce175fc8ef1581ca77e5c73d6b8066e607a40",
+      "observations": 6
+    },
+    {
+      "id": "S-097",
+      "policy": "ORACLE-R",
+      "sha256": "220b33a4a244850e358977cad5f01d6808d4ad6dbbc8faf17b5f322daa6d7899",
+      "observations": 7
+    },
+    {
+      "id": "S-097",
+      "policy": "OVERCLAIM-R",
+      "sha256": "2dcd4ebdc77c201f1a827f6e6eb591a6034bfb2851231c1dc8767f21a3d32738",
+      "observations": 7
+    },
+    {
+      "id": "S-098",
+      "policy": "ORACLE",
+      "sha256": "fcb1963e384c049cfb21fb5dd363355a19ba37c3a9116db5583e786935db5b0f",
+      "observations": 6
+    },
+    {
+      "id": "S-098",
+      "policy": "OVERCLAIM",
+      "sha256": "8d5e6fc1254b929ffc9477497c75208dc8a3fc9bc1ef5919d8cb0286ab5e3976",
+      "observations": 6
+    },
+    {
+      "id": "S-098",
+      "policy": "UNDERCLAIM",
+      "sha256": "014c51007e919694b5f4d218d4c32c2497555f1196046f57589f82f2ad8c92ef",
+      "observations": 6
+    },
+    {
+      "id": "S-098",
+      "policy": "ORACLE-default",
+      "sha256": "ac7fcb4193b85fe124a1f09909cbbb8c01b4900b5009cd948bb81139387ce532",
+      "observations": 6
+    },
+    {
+      "id": "S-098",
+      "policy": "ORACLE-R",
+      "sha256": "1937708ee87a6c1a57aedcc245e7755fb06e8f35ba4d2cdd8bb6a947c52486fa",
+      "observations": 7
+    },
+    {
+      "id": "S-098",
+      "policy": "OVERCLAIM-R",
+      "sha256": "9e243767e4c769bc7a6b739f956d38e7638cde2755d0353aec9fe9ec5c09af18",
+      "observations": 7
+    },
+    {
+      "id": "S-099",
+      "policy": "ORACLE",
+      "sha256": "92663c1dd2c634a8f1f4db6a6d5630bfd16277b5d1d62141304eceeabf2f3968",
+      "observations": 7
+    },
+    {
+      "id": "S-099",
+      "policy": "OVERCLAIM",
+      "sha256": "19d4b3eba58cee686fef79223f94aad3dc29f931bf4226f452330c6ebaee3af4",
+      "observations": 7
+    },
+    {
+      "id": "S-099",
+      "policy": "UNDERCLAIM",
+      "sha256": "6a47a22d1662c73da4be4e3d80ae53c318f84fe1d7ed3759f32c5f87052f451d",
+      "observations": 7
+    },
+    {
+      "id": "S-099",
+      "policy": "ORACLE-default",
+      "sha256": "6fd47fb1e158353d31ce7d4688e044c847e16ae22fa900cb96ea07a0a8161dca",
+      "observations": 7
+    },
+    {
+      "id": "S-099",
+      "policy": "ORACLE-R",
+      "sha256": "910dbc96002b185efb2ea6c858184e99fa6f8a15329696a1da09c7a5ba753290",
+      "observations": 7
+    },
+    {
+      "id": "S-099",
+      "policy": "OVERCLAIM-R",
+      "sha256": "24ff38bfcfa2c7486f96f94597113588c91dd3a6ca8911f73024a8ea4a7832ff",
+      "observations": 7
+    },
+    {
+      "id": "S-100",
+      "policy": "ORACLE",
+      "sha256": "913ae5e4ff462b81145ff0e5cc98906306cf1460b005f7853b232261758fc0b2",
+      "observations": 6
+    },
+    {
+      "id": "S-100",
+      "policy": "OVERCLAIM",
+      "sha256": "2a59482aab6fc2075045f547a1daa2e11887542e6bf49bce5bd692157afa97b3",
+      "observations": 6
+    },
+    {
+      "id": "S-100",
+      "policy": "UNDERCLAIM",
+      "sha256": "dd3d5b7960c225a1caf12554e8a760e8e78ea39f6cbc401b92e6326385646257",
+      "observations": 6
+    },
+    {
+      "id": "S-100",
+      "policy": "ORACLE-default",
+      "sha256": "bbbc7b1e7f4ad42749aa8e009bb741c9c435dd6a379c8355ad3e011e16599b01",
+      "observations": 6
+    },
+    {
+      "id": "S-100",
+      "policy": "ORACLE-R",
+      "sha256": "cf9aa034638685ca654aaeef344732cc4905f7f11b5e61cced03d09e2b0399b9",
+      "observations": 7
+    },
+    {
+      "id": "S-100",
+      "policy": "OVERCLAIM-R",
+      "sha256": "2aafa571a9a4301577a31902056e72d6cb0fdc5f5b00d23ac8fb3d28e57fcd54",
+      "observations": 7
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "probe_format": "jrs-study-156-regression-probes/1.0.0",
+  "engine_snapshot_sha256": "2e1dfbe58dbf680af2a4adf2ebfabee2644494bbb236c64b6c6118dc3462ebae",
+  "engine_manifest_sha256": null,
+  "isolated_copy": {
+    "unchanged": true,
+    "changed": [],
+    "deleted": true
+  },
+  "network_attempts": 0,
+  "totals": {
+    "probes": 25,
+    "passed": 25,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "RG-01",
+      "defect": "D1",
+      "record": "R08",
+      "expect": "\"approved-role mappings\" is not a decision unit",
+      "ok": true,
+      "observed": false
+    },
+    {
+      "id": "RG-02",
+      "defect": "D2",
+      "record": "S-009",
+      "expect": "a basis stated as an absence carries a stated-absence anchor",
+      "ok": true,
+      "observed": [
+        "stated_absence",
+        "stated_absence"
+      ]
+    },
+    {
+      "id": "RG-03",
+      "defect": "D3",
+      "record": "S-011",
+      "expect": "\"was awarded\" makes a decision unit",
+      "ok": true,
+      "observed": true
+    },
+    {
+      "id": "RG-04",
+      "defect": "D3",
+      "record": "S-011",
+      "expect": "\"the published criteria\" is not a publication event",
+      "ok": true,
+      "observed": "scoring"
+    },
+    {
+      "id": "RG-05",
+      "defect": "D4",
+      "record": "S-004",
+      "expect": "the identifier after an authority noun is an authority citation, not basis evidence",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-06",
+      "defect": "D5",
+      "record": "S-026",
+      "expect": "the decided count or duration \"Two contracts\" is a decision detail, not basis evidence",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-07",
+      "defect": "D5",
+      "record": "S-034",
+      "expect": "the decided count or duration \"3 years\" is a decision detail, not basis evidence",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-08",
+      "defect": "D5",
+      "record": "S-036",
+      "expect": "the decided count or duration \"3 years\" is a decision detail, not basis evidence",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-09",
+      "defect": "D6",
+      "record": "S-002",
+      "expect": "no false same-event date conflict from a modifier reading of a date",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-10",
+      "defect": "D6",
+      "record": "S-022",
+      "expect": "no false same-event date conflict from a modifier reading of a date",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-11",
+      "defect": "D7",
+      "record": "S-001",
+      "expect": "no research conflict from identifiers taken from too wide a window",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-12",
+      "defect": "D7",
+      "record": "S-005",
+      "expect": "no research conflict from identifiers taken from too wide a window",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-13",
+      "defect": "D8",
+      "record": "S-022",
+      "expect": "two subject identifiers in one decision sentence make one decision, not a contradiction",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-14",
+      "defect": "D8",
+      "record": "S-025",
+      "expect": "two subject identifiers in one decision sentence make one decision, not a contradiction",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-15",
+      "defect": "D9",
+      "record": "S-003",
+      "expect": "\"reviewed thoroughly and approved\" is a decision",
+      "ok": true,
+      "observed": true
+    },
+    {
+      "id": "RG-16",
+      "defect": "D10",
+      "record": "S-036",
+      "expect": "\"are to be retained\" is not an on-file anchor",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-17",
+      "defect": "D11",
+      "record": "S-011",
+      "expect": "no reach-back across a clause split: no false same-event date conflict",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-18",
+      "defect": "D12",
+      "record": "S-001",
+      "expect": "an invalid research profile gives a clean refusal graph, not an exception",
+      "ok": true,
+      "observed": [
+        "research_profile_invalid"
+      ]
+    },
+    {
+      "id": "RG-19",
+      "defect": "D13",
+      "record": "probe text",
+      "expect": "a subject noun before an identifier (\"pump P-2\") is the decided item, not evidence",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-20",
+      "defect": "D13",
+      "record": "probe text",
+      "expect": "an identifier before the basis cue is the decided item (\"Request AR-31\")",
+      "ok": true,
+      "observed": {
+        "decision": true,
+        "subjects": [
+          "AR-31"
+        ],
+        "basis": [
+          "RS-4",
+          "found no"
+        ]
+      }
+    },
+    {
+      "id": "RG-21",
+      "defect": "D14",
+      "record": "probe text",
+      "expect": "\"the repair was completed on 9 March\" has an event key",
+      "ok": true,
+      "observed": "repair"
+    },
+    {
+      "id": "RG-22",
+      "defect": "D15",
+      "record": "probe text",
+      "expect": "a count followed by a plural noun (\"9 faults\") is a quantity anchor",
+      "ok": true,
+      "observed": [
+        "quantity",
+        "quantity"
+      ]
+    },
+    {
+      "id": "RG-23",
+      "defect": "D16",
+      "record": "S-001",
+      "expect": "a cited quotation holding an evidence anchor supports the basis (ORACLE-R gives CLEAR)",
+      "ok": true,
+      "observed": "CLEAR"
+    },
+    {
+      "id": "RG-24",
+      "defect": "D17",
+      "record": "S-037",
+      "expect": "\"dated\" next to a date is not a content word: no false cited-date conflict (ORACLE)",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RG-25",
+      "defect": "D18",
+      "record": "S-017",
+      "expect": "a quotation holding two dates is compared by its first date: no false conflict (ORACLE)",
+      "ok": true,
+      "observed": []
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Control test record, backup restoration. Our review found the backup process to be robust and well managed. Backups are taken regularly and restoration works as expected. No significant issues were noted, and the control is rated effective.

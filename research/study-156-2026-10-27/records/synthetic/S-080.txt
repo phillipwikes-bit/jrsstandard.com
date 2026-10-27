@@ -1,0 +1,1 @@
+Incident review record. The review attributes the 11 November payments portal outage (incident INC-6602) to the expiry of certificate CERT-19, shown in the load-balancer log at 02:09. The review further concludes that no other certificate in the estate is at risk of expiring.

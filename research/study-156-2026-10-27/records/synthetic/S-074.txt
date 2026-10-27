@@ -1,0 +1,1 @@
+Incident review record. Incident INC-6602, the payments portal outage on 11 November, was classified as severity 2 under the Incident Management Standard, table 4. Table 4 sets out severity levels. The classification is entered in the incident register.

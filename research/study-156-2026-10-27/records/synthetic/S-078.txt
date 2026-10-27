@@ -1,0 +1,1 @@
+Incident review record. The payments portal went down at 02:10 on 11 November (incident INC-6602) after certificate CERT-19 expired, as the load-balancer log shows. The certificate was renewed under ticket RT-881 and service returned at 03:25. The incident register gives the date of the outage as 12 November.

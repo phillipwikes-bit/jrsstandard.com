@@ -1,0 +1,595 @@
+{
+  "results_format": "jrs-study-156-control-template-rubric/1.0.0",
+  "rater": "AI-applied lexical rubric (this study); not a human rating",
+  "engine_manifest_sha256": "fad69b62554a8e8cb6aa97ba9a85b5ee4f80ebfff565a3705dfc91f8dc100477",
+  "isolated_copy": {
+    "unchanged": true,
+    "changed": [],
+    "deleted": true
+  },
+  "network_attempts": 0,
+  "totals": {
+    "templates": 30,
+    "research_templates": 9,
+    "research_all_four": 8,
+    "all_templates_all_four": 22,
+    "by_field_research": {
+      "detect": 9,
+      "reflect": 9,
+      "correct": 9,
+      "learn": 8
+    }
+  },
+  "rows": [
+    {
+      "defect": "no_authority_section",
+      "condition": "identifiable_basis",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 39,
+      "fields": {
+        "detect": "No section of the record identifies an authority for the exception.",
+        "reflect": "A later reviewer may be unable to determine who authorised the exception.",
+        "correct": "What record identifies the authority for this exception?",
+        "learn": "Add an authority-source field to the exception template."
+      }
+    },
+    {
+      "defect": "authority_source_not_identified",
+      "condition": "identifiable_basis",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 50,
+      "fields": {
+        "detect": "The stated exception has no verified authority source linked in the record.",
+        "reflect": "A later reviewer may be unable to locate the authority the record relies on.",
+        "correct": "What record identifies the authority for this exception, and where can it be located?",
+        "learn": "Add an authority-source field with a document identifier and date."
+      }
+    },
+    {
+      "defect": "no_compensating_control_stated",
+      "condition": "sufficiency",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 42,
+      "fields": {
+        "detect": "No compensating control is stated in the record.",
+        "reflect": "A later reviewer cannot see what limited the exposure while the exception was open.",
+        "correct": "What compensating controls, if any, does the record identify for this access?",
+        "learn": "Add a compensating-controls field with a source reference."
+      }
+    },
+    {
+      "defect": "no_stated_expiry_date",
+      "condition": "chronology_integrity",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 45,
+      "fields": {
+        "detect": "No expiry date is stated for the exception.",
+        "reflect": "Without an end point a later reviewer cannot tell when the exception was expected to close.",
+        "correct": "What event or date would trigger renewal, expiry, or reassessment?",
+        "learn": "Require an expiry date and a renewal condition in the template."
+      }
+    },
+    {
+      "defect": "no_explicit_dates",
+      "condition": "chronology_integrity",
+      "research_wording": true,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 42,
+      "fields": {
+        "detect": "No explicitly dated event appears in the record.",
+        "reflect": "The sequence of events that led to the decision cannot be reconstructed.",
+        "correct": "What dates establish the sequence of events that led to the decision?",
+        "learn": "Ask for a date for each step the record describes."
+      }
+    },
+    {
+      "defect": "no_locatable_conclusion",
+      "condition": "reconstructability",
+      "research_wording": true,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 31,
+      "fields": {
+        "detect": "No sentence states the decision or conclusion.",
+        "reflect": "A later reviewer cannot identify what is being reconstructed.",
+        "correct": "Which passage records the decision or conclusion?",
+        "learn": "Add a decision statement to the record template."
+      }
+    },
+    {
+      "defect": "conclusion_without_traceable_basis",
+      "condition": "reconstructability",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 39,
+      "fields": {
+        "detect": "A decision is stated with no linked basis section.",
+        "reflect": "A later reviewer may not be able to see what the decision rested on.",
+        "correct": "What record states the basis for this decision?",
+        "learn": "Pair the decision field with a basis field."
+      }
+    },
+    {
+      "defect": "conclusion_without_basis",
+      "condition": "reasoning_traceability",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 39,
+      "fields": {
+        "detect": "A decision is stated with no linked basis section.",
+        "reflect": "A later reviewer may not be able to trace how the decision was reached.",
+        "correct": "What record states the basis for this decision?",
+        "learn": "Pair the decision field with a basis field."
+      }
+    },
+    {
+      "defect": "basis_without_conclusion",
+      "condition": "reasoning_traceability",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 40,
+      "fields": {
+        "detect": "A basis is stated with no linked decision.",
+        "reflect": "A later reviewer may not be able to tell what the basis was used for.",
+        "correct": "Which passage records the decision this basis relates to?",
+        "learn": "Pair the basis field with a decision field."
+      }
+    },
+    {
+      "defect": "basis_states_no_reason_or_source",
+      "condition": "reasoning_traceability",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 44,
+      "fields": {
+        "detect": "The basis section states neither a reason nor a source reference.",
+        "reflect": "A later reviewer may not be able to see why the exception was considered.",
+        "correct": "What reason or source does the record give for the exception?",
+        "learn": "Add a source-reference field to the basis section."
+      }
+    },
+    {
+      "defect": "decision_date_conflict",
+      "condition": "chronology_integrity",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 34,
+      "fields": {
+        "detect": "Two verified record spans provide incompatible decision dates.",
+        "reflect": "The sequence cannot be reconstructed without clarification.",
+        "correct": "Which date reflects the actual decision, and what record confirms it?",
+        "learn": "Require a single decision-date field and source reference."
+      }
+    },
+    {
+      "defect": "impossible_sequence",
+      "condition": "chronology_integrity",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": false
+      },
+      "all_four": false,
+      "words": 44,
+      "fields": {
+        "detect": "Two dated record spans appear in an order that cannot both be correct as written.",
+        "reflect": "The sequence cannot be reconstructed without clarification.",
+        "correct": "What date establishes the decision sequence, and which source document records it?",
+        "learn": "Add a date check between request, decision and expiry fields."
+      }
+    },
+    {
+      "defect": "authority_state_conflict",
+      "condition": "identifiable_basis",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 46,
+      "fields": {
+        "detect": "The record states the authority as given in one passage and as pending in another.",
+        "reflect": "A later reviewer cannot tell the authority status from the record alone.",
+        "correct": "What record shows the authority status at the time of the decision?",
+        "learn": "Add an authority-status field with a date."
+      }
+    },
+    {
+      "defect": "control_state_conflict",
+      "condition": "sufficiency",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 49,
+      "fields": {
+        "detect": "A control is stated as in place in one passage and as not in place in another.",
+        "reflect": "A later reviewer cannot tell which controls applied from the record alone.",
+        "correct": "What record shows whether this control was in place, and from what date?",
+        "learn": "Add an implementation-date field for each control."
+      }
+    },
+    {
+      "defect": "risk_state_conflict",
+      "condition": "sufficiency",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 56,
+      "fields": {
+        "detect": "The record states the risk as low in one passage and as unresolved or high in another.",
+        "reflect": "A later reviewer cannot tell which risk statement the decision relied on.",
+        "correct": "What evidence links the stated risk to the requested access, and which risk statement does the record rely on?",
+        "learn": "Add a single risk field with its source."
+      }
+    },
+    {
+      "defect": "cited_evidence_conflict",
+      "condition": "reconstructability",
+      "research_wording": false,
+      "scores": {
+        "detect": false,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": false,
+      "words": 44,
+      "fields": {
+        "detect": "Two quotations cited for the same assertion state incompatible values.",
+        "reflect": "A later reviewer cannot tell which statement the record relies on.",
+        "correct": "Which statement does the record rely on, and what record confirms it?",
+        "learn": "Use one field per fact so the record states it once."
+      }
+    },
+    {
+      "defect": "ambiguous_quotation",
+      "condition": "reconstructability",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": false
+      },
+      "all_four": false,
+      "words": 44,
+      "fields": {
+        "detect": "A proposed quotation occurs more than once in the record and could not be located uniquely.",
+        "reflect": "A reviewer cannot tell which passage the observation refers to.",
+        "correct": "Which occurrence of this text does the observation refer to?",
+        "learn": "Prefer distinctive wording in fields that are quoted."
+      }
+    },
+    {
+      "defect": "absent_quotation",
+      "condition": "reconstructability",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": false
+      },
+      "all_four": false,
+      "words": 44,
+      "fields": {
+        "detect": "A proposed quotation does not occur in the record.",
+        "reflect": "An observation that rests on text outside the record cannot be checked.",
+        "correct": "What passage of the record, if any, does this observation rely on?",
+        "learn": "Keep cited material inside the record or reference it by identifier."
+      }
+    },
+    {
+      "defect": "assessment_after_decision",
+      "condition": "chronology_integrity",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": false
+      },
+      "all_four": false,
+      "words": 46,
+      "fields": {
+        "detect": "A risk assessment is dated after the decision it is linked to.",
+        "reflect": "A later reviewer cannot tell whether the assessment informed the decision.",
+        "correct": "On what date was the risk assessment completed, and which record confirms it?",
+        "learn": "Add a date check between the assessment and decision fields."
+      }
+    },
+    {
+      "defect": "expiry_date_conflict",
+      "condition": "chronology_integrity",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 33,
+      "fields": {
+        "detect": "Two record spans state different expiry dates.",
+        "reflect": "A later reviewer cannot tell when the exception was expected to close.",
+        "correct": "Which expiry date applies, and which record confirms it?",
+        "learn": "Use a single expiry-date field."
+      }
+    },
+    {
+      "defect": "duration_date_conflict",
+      "condition": "chronology_integrity",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": false
+      },
+      "all_four": false,
+      "words": 44,
+      "fields": {
+        "detect": "The stated grant duration does not match the stated decision and expiry dates.",
+        "reflect": "A later reviewer cannot tell which period the exception covered.",
+        "correct": "Which period does the record intend, and which record confirms the dates?",
+        "learn": "Derive the duration from the decision and expiry fields."
+      }
+    },
+    {
+      "defect": "no_dated_decision",
+      "condition": "chronology_integrity",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 36,
+      "fields": {
+        "detect": "No dated decision appears in the record.",
+        "reflect": "The sequence that ends in the decision cannot be reconstructed.",
+        "correct": "On what date was the decision made, and which record states it?",
+        "learn": "Add a decision-date field to the template."
+      }
+    },
+    {
+      "defect": "certainty_language",
+      "condition": "sufficiency",
+      "research_wording": false,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": false
+      },
+      "all_four": false,
+      "words": 43,
+      "fields": {
+        "detect": "A record span uses absolute or certainty terms.",
+        "reflect": "Absolute terms state a confidence the record may not show the basis for.",
+        "correct": "What evidence in the record supports the stated degree of certainty?",
+        "learn": "List certainty terms that prompt a request for the supporting measurement."
+      }
+    },
+    {
+      "defect": "no_identifiable_basis_evidence",
+      "condition": "identifiable_basis",
+      "research_wording": true,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 51,
+      "fields": {
+        "detect": "No identifiable evidence (a dated, numbered, identified or on-file source) for the conclusion appears in the record.",
+        "reflect": "A later reviewer cannot see what the conclusion rested on.",
+        "correct": "Which document, date or measurement in the record does the conclusion rest on?",
+        "learn": "Add a field that names the evidence each conclusion rests on."
+      }
+    },
+    {
+      "defect": "authority_reference_without_linked_facts",
+      "condition": "identifiable_basis",
+      "research_wording": true,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 50,
+      "fields": {
+        "detect": "The record cites an authority but states no facts showing how its conditions were met.",
+        "reflect": "A citation of a rule does not show which facts satisfied it.",
+        "correct": "Which facts in the record meet the conditions of the cited authority?",
+        "learn": "Pair each cited authority with the facts that meet its conditions."
+      }
+    },
+    {
+      "defect": "conclusion_restated_as_basis",
+      "condition": "reasoning_traceability",
+      "research_wording": true,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 53,
+      "fields": {
+        "detect": "The stated reason repeats the conclusion instead of giving a separate basis.",
+        "reflect": "A reason that restates the outcome does not show how the outcome was reached.",
+        "correct": "What separate fact or source does the record give for this conclusion?",
+        "learn": "Ask for each reason to name a fact or source other than the outcome itself."
+      }
+    },
+    {
+      "defect": "conclusion_without_stated_basis",
+      "condition": "reasoning_traceability",
+      "research_wording": true,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 40,
+      "fields": {
+        "detect": "A decision is stated without any reason or source.",
+        "reflect": "A later reviewer cannot trace how the decision was reached.",
+        "correct": "What reason or source does the record give for this decision?",
+        "learn": "Pair each decision with a stated reason and its source."
+      }
+    },
+    {
+      "defect": "conclusion_without_identifiable_basis",
+      "condition": "reconstructability",
+      "research_wording": true,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 39,
+      "fields": {
+        "detect": "A conclusion in the record has no identifiable evidence of its own.",
+        "reflect": "A conclusion without its own basis cannot be checked from the record.",
+        "correct": "Which passage of the record supports this conclusion?",
+        "learn": "Give each conclusion its own basis reference."
+      }
+    },
+    {
+      "defect": "same_event_date_conflict",
+      "condition": "chronology_integrity",
+      "research_wording": true,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": true
+      },
+      "all_four": true,
+      "words": 34,
+      "fields": {
+        "detect": "The record gives one event two different dates.",
+        "reflect": "The sequence cannot be reconstructed without clarification.",
+        "correct": "Which date applies to this event, and which record confirms it?",
+        "learn": "Record each event date once, with its source."
+      }
+    },
+    {
+      "defect": "decision_outcome_conflict",
+      "condition": "reconstructability",
+      "research_wording": true,
+      "scores": {
+        "detect": true,
+        "reflect": true,
+        "correct": true,
+        "learn": false
+      },
+      "all_four": false,
+      "words": 39,
+      "fields": {
+        "detect": "The record states opposite outcomes for the same item.",
+        "reflect": "A later reviewer cannot tell which outcome the record relies on.",
+        "correct": "Which outcome applies to this item, and which record confirms it?",
+        "learn": "Record one outcome per item, with its reference."
+      }
+    }
+  ]
+}

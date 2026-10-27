@@ -1,0 +1,1 @@
+Work-order priority record. Row 2 of the Facilities Priority Matrix assigns priority 1 to a building fabric defect that lets water reach stored records. Building survey BS-204 of 9 May found the roof drain above the archive store leaking at 2 litres per hour with staining on three archive boxes. Work order WO-3381 was set to priority 1 under row 2 that day.

@@ -1,0 +1,1 @@
+Incident review record. Table 4 of the Incident Management Standard defines severity 2 as a full outage of a customer-facing service lasting between 30 minutes and 4 hours. Incident INC-6602 was a full outage of the payments portal from 02:10 to 03:25 on 11 November, 75 minutes in all. The incident was classified as severity 2 under table 4.

@@ -1,0 +1,1 @@
+Incident review record. The review attributes the 11 November payments portal outage (incident INC-6602, 02:10 to 03:25) to the expiry of certificate CERT-19 at 02:09, because the load-balancer log shows health checks failing from that minute and ticket RT-881 records the renewal at 03:20, after which the checks passed.

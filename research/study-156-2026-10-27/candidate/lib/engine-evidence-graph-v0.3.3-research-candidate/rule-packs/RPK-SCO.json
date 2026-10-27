@@ -1,0 +1,30 @@
+{
+  "candidate_version": "0.3.3-research-candidate",
+  "pack_id": "RPK-SCO",
+  "pack_version": "1.0.0",
+  "purpose": "Excluded-domain and scope controls for one rewording family.",
+  "rules": [
+    {
+      "rule_id": "RP-SCO-01",
+      "purpose": "Address P6K-008.",
+      "trigger": "The record contains \"keep(s)|lose(s)|lost\" + \"his|her|their\" + \"job\", not followed by queue, scheduler, runner, title, description, code, reference or log(s). Refuses intake as excluded employment content.",
+      "expected_safe_outcome": "refusal",
+      "limitation": "Contract non-renewal for a person (Phase 4 AR-040) is not covered; it cannot be separated from supplier-contract wording and is deferred.",
+      "false_positive_risk": "A sentence about a system keeping \"their job\" in another technical sense not on the exclusion list would be refused.",
+      "linked_scenarios": [
+        "P6-XD-03",
+        "P7-SCO-01",
+        "P7-SCO-02",
+        "P7-SCO-03",
+        "P7-SCO-04",
+        "P7-SCO-05",
+        "P7-SCO-06"
+      ],
+      "owner_decision_for_expansion": "Any widening of the trigger, any new pattern, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    }
+  ],
+  "signature": {
+    "method": "sha256-canonical-content-seal",
+    "content_sha256": "sha256:98893f67262d2097d371f25cf0986216f18b701f907453ee037ec03f7c76663e"
+  }
+}

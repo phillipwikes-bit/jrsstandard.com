@@ -1,0 +1,1 @@
+Release decision record. Code freeze for release 5.2 was on 15 September. Regression run RS-5208 completed on 17 September with all 1,412 tests passing, and scan SC-311 followed on 18 September. The release manager authorized deployment on 19 September on the strength of both reports, and the release went out on 20 September.

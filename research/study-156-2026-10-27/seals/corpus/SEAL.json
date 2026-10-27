@@ -1,0 +1,17 @@
+{
+  "seal_format": "jrs-study-156-seal/1.0.0",
+  "name": "corpus",
+  "note": "Study corpus: 24 original texts, 100 disclosed synthetic replacements, construction log and register, inventory v1; sealed before any research-profile code or compiler run",
+  "sealed_at_utc": "2026-10-27T06:45:34.333Z",
+  "file_count": 131,
+  "manifest_file": "seals/corpus/MANIFEST_SHA256.txt",
+  "manifest_sha256": "19a2c89e09d6759f5fd564c1c437d5bd81bb47dcec4f8f49aca9c3a032907f5b",
+  "roots": [
+    "records",
+    "tools/synthetic-spec.mjs",
+    "tools/generate-synthetic.mjs",
+    "tools/build-inventory.mjs",
+    "inventory"
+  ],
+  "rule": "Post-seal modification of any listed file is prohibited. A listed directory may not gain files."
+}

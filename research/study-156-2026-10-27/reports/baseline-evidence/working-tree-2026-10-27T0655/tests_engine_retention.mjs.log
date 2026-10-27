@@ -1,0 +1,62 @@
+PASS  policy targets interaction_events only
+PASS  research tables are excluded
+PASS  pilot_contacts excluded (consent regime, not a schedule)
+PASS  engine_reviews is covered by its own rule, not the telemetry rule
+PASS  cutoff is 24 months back  2024-09-16T12:00:00.000Z
+PASS  strictly older is expired
+PASS  exactly on the boundary is KEPT
+PASS  newer is kept
+PASS  missing timestamp is KEPT, not deleted
+PASS  unparseable timestamp is KEPT, not deleted
+PASS  would_delete counts only the expired  1
+PASS  first application against the real earliest row is a NO-OP
+PASS  31 March minus 24 months stays in March
+PASS  29 Feb source clamps to a valid day  2024-02-28T00:00:00.000Z
+PASS  module contains no DELETE and no fetch
+PASS  BD-10 targets engine_reviews
+PASS  BD-10 period differs from the telemetry rule, and in a different unit
+PASS  BD-10 was NOT extended by inference from interaction_events
+PASS  engine_reviews no longer excluded from retention entirely
+PASS  research tables still excluded from deletion
+PASS  BD-10 old row IS affected
+PASS  BD-10 note nulled
+PASS  BD-10 compliant_version nulled
+PASS  BD-10 input_preview nulled
+PASS  BD-10 NO sensitive text survives redaction
+PASS  BD-10 status RETAINED
+PASS  BD-10 determination RETAINED
+PASS  BD-10 overall_consistency RETAINED
+PASS  BD-10 engine_version RETAINED
+PASS  BD-10 condition_triggered RETAINED
+PASS  BD-10 row is NOT deleted, only redacted
+PASS  BD-10 recent row untouched
+PASS  BD-10 row exactly on the cutoff is NOT redacted
+PASS  BD-10 unparseable timestamp is NOT redacted
+PASS  BD-10 metadata-only row needs no redaction
+PASS  BD-10 empty dataset is safe
+PASS  BD-10 future-dated row untouched
+PASS  BD-10 policy carries version, decision id and date
+PASS  BD-10 policy is expressed in DAYS, not calendar months
+PASS  BD-10 the disclosed number and the enforced number are the SAME number
+PASS  BD-10 89 days old is NOT redacted
+PASS  BD-10 exactly 90 days old is NOT redacted (boundary retains)
+PASS  BD-10 90 days plus one second IS redacted
+PASS  BD-10 91 days old IS redacted
+PASS  BD-10 92 days old IS redacted (the old calendar rule KEPT this row)
+PASS  BD-10 REGRESSION: a row 91 days old is redacted in EVERY month of the year
+PASS  BD-10 cutoff is identical for the same instant written in two zones
+PASS  BD-10 cutoff is UTC-normalised
+PASS  BD-10 a row 90 days old in a non-UTC spelling is still on the boundary
+PASS  BD-10 leap-year span counts real days, not calendar months
+PASS  BD-10 a row 91 days old across 29 February IS redacted
+PASS  BD-10 missing created_at is KEPT unredacted
+PASS  BD-10 null created_at is KEPT unredacted
+PASS  BD-10 empty-string created_at is KEPT unredacted
+PASS  BD-10 does not target interaction_events
+PASS  BD-10 does not target pilot_contacts
+PASS  BD-10 does not target findings_history
+PASS  BD-10 does not target study_runs
+PASS  BD-10 does not target bench_outcomes
+PASS  BD-10 does not target bench_labels
+
+60 checks, 0 failed

@@ -1,0 +1,1622 @@
+{
+  "format": "jrs-study-156-ai-proposals/1.0.0",
+  "note": "AI-authored construction intent (synthetic) and the LLM-reproduced key (originals). AI proposals, not human findings.",
+  "rows": [
+    {
+      "source_id": "R01",
+      "blind_id": "B-115",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R02",
+      "blind_id": "B-116",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R03",
+      "blind_id": "B-018",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R04",
+      "blind_id": "B-122",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R05",
+      "blind_id": "B-123",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R06",
+      "blind_id": "B-107",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R07",
+      "blind_id": "B-119",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R08",
+      "blind_id": "B-017",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R09",
+      "blind_id": "B-114",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R10",
+      "blind_id": "B-121",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R11",
+      "blind_id": "B-109",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R12",
+      "blind_id": "B-118",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R13",
+      "blind_id": "B-113",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R14",
+      "blind_id": "B-112",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R15",
+      "blind_id": "B-028",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R16",
+      "blind_id": "B-120",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R17",
+      "blind_id": "B-117",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R18",
+      "blind_id": "B-105",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R19",
+      "blind_id": "B-106",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R20",
+      "blind_id": "B-110",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R21",
+      "blind_id": "B-111",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R22",
+      "blind_id": "B-012",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R23",
+      "blind_id": "B-124",
+      "e1": "UNGROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "R24",
+      "blind_id": "B-108",
+      "e1": "GROUNDED",
+      "e1_kind": "binary_study_label",
+      "questions": "NOT PROPOSED (no construction design exists for original records)",
+      "provenance": "Three large-language-model instances applying the packet rule, blind to the intended labels; 24 of 24 agreement with the intended construction key. Not human raters.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-001",
+      "blind_id": "B-026",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-002",
+      "blind_id": "B-025",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-003",
+      "blind_id": "B-001",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-004",
+      "blind_id": "B-007",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-005",
+      "blind_id": "B-034",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-006",
+      "blind_id": "B-038",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-007",
+      "blind_id": "B-016",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-008",
+      "blind_id": "B-019",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-009",
+      "blind_id": "B-040",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-010",
+      "blind_id": "B-011",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-011",
+      "blind_id": "B-023",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-012",
+      "blind_id": "B-029",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-013",
+      "blind_id": "B-020",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-014",
+      "blind_id": "B-003",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-015",
+      "blind_id": "B-044",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-016",
+      "blind_id": "B-002",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-017",
+      "blind_id": "B-036",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-018",
+      "blind_id": "B-004",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-019",
+      "blind_id": "B-009",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-020",
+      "blind_id": "B-042",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-021",
+      "blind_id": "B-032",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-022",
+      "blind_id": "B-008",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-023",
+      "blind_id": "B-005",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-024",
+      "blind_id": "B-037",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-025",
+      "blind_id": "B-030",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-026",
+      "blind_id": "B-039",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-027",
+      "blind_id": "B-015",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-028",
+      "blind_id": "B-031",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-029",
+      "blind_id": "B-033",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-030",
+      "blind_id": "B-024",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-031",
+      "blind_id": "B-043",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-032",
+      "blind_id": "B-041",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-033",
+      "blind_id": "B-022",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-034",
+      "blind_id": "B-027",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-035",
+      "blind_id": "B-010",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-036",
+      "blind_id": "B-006",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-037",
+      "blind_id": "B-013",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-038",
+      "blind_id": "B-014",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-039",
+      "blind_id": "B-021",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-040",
+      "blind_id": "B-035",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-041",
+      "blind_id": "B-104",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-042",
+      "blind_id": "B-081",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-043",
+      "blind_id": "B-067",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-044",
+      "blind_id": "B-055",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-045",
+      "blind_id": "B-077",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-046",
+      "blind_id": "B-075",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-047",
+      "blind_id": "B-054",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-048",
+      "blind_id": "B-095",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-049",
+      "blind_id": "B-058",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-050",
+      "blind_id": "B-096",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-051",
+      "blind_id": "B-062",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-052",
+      "blind_id": "B-078",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-053",
+      "blind_id": "B-066",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-054",
+      "blind_id": "B-091",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-055",
+      "blind_id": "B-065",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-056",
+      "blind_id": "B-045",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-057",
+      "blind_id": "B-079",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-058",
+      "blind_id": "B-101",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-059",
+      "blind_id": "B-070",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-060",
+      "blind_id": "B-049",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-061",
+      "blind_id": "B-099",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-062",
+      "blind_id": "B-103",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-063",
+      "blind_id": "B-059",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-064",
+      "blind_id": "B-050",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-065",
+      "blind_id": "B-072",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-066",
+      "blind_id": "B-082",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-067",
+      "blind_id": "B-057",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-068",
+      "blind_id": "B-094",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-069",
+      "blind_id": "B-087",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-070",
+      "blind_id": "B-071",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-071",
+      "blind_id": "B-089",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-072",
+      "blind_id": "B-064",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-073",
+      "blind_id": "B-098",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-074",
+      "blind_id": "B-086",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-075",
+      "blind_id": "B-048",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-076",
+      "blind_id": "B-080",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-077",
+      "blind_id": "B-083",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-078",
+      "blind_id": "B-046",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-079",
+      "blind_id": "B-053",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-080",
+      "blind_id": "B-068",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-081",
+      "blind_id": "B-097",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-082",
+      "blind_id": "B-102",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-083",
+      "blind_id": "B-076",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-084",
+      "blind_id": "B-061",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-085",
+      "blind_id": "B-074",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-086",
+      "blind_id": "B-088",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-087",
+      "blind_id": "B-047",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-088",
+      "blind_id": "B-093",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-089",
+      "blind_id": "B-092",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-090",
+      "blind_id": "B-069",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-091",
+      "blind_id": "B-056",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-092",
+      "blind_id": "B-063",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type G2). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-093",
+      "blind_id": "B-073",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type U). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-094",
+      "blind_id": "B-052",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority only",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type A). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-095",
+      "blind_id": "B-090",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "authority with linked facts",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type L). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-096",
+      "blind_id": "B-085",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "restates the conclusion",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type C). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-097",
+      "blind_id": "B-051",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "different events, consistent",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type D). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-098",
+      "blind_id": "B-084",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "one event given two different dates",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type S). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-099",
+      "blind_id": "B-060",
+      "e1": "GROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "separate items, no contradiction"
+      },
+      "provenance": "AI-authored construction intent (type P). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    },
+    {
+      "source_id": "S-100",
+      "blind_id": "B-100",
+      "e1": "UNGROUNDED",
+      "e1_kind": "designed_construction_label",
+      "questions": {
+        "q1": "not targeted by construction",
+        "q2": "not targeted by construction",
+        "q3": "not targeted by construction",
+        "q4": "not targeted by construction"
+      },
+      "provenance": "AI-authored construction intent (type M). Not a human reference finding; requires the development reviewer's blinded review.",
+      "status": "AI_PROPOSAL: not reviewed by a human"
+    }
+  ]
+}

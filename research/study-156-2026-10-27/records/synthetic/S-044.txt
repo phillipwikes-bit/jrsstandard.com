@@ -1,0 +1,1 @@
+Work-order priority record. Work order WO-3381 was set to priority 1 on 9 May under the Facilities Priority Matrix, row 2. Row 2 covers building fabric defects. The priority was entered in the maintenance system.

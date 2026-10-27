@@ -1,0 +1,1 @@
+Work-order priority record. Work order WO-3381 concerns an urgent problem that needed fast attention. The facilities manager judged it to be a top priority, and the team agreed it was the most important job in the queue. Priority 1 was the natural choice.

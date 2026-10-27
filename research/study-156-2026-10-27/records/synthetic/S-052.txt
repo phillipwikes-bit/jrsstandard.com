@@ -1,0 +1,1 @@
+Release decision record. Release 5.2 was authorized on 19 September because regression run RS-5208 passed all 1,412 tests on 17 September and security scan SC-311 of 18 September found no high-severity issues. Both reports are attached to the change ticket.

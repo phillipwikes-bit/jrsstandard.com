@@ -1,0 +1,176 @@
+{
+  "candidate_version": "0.3.3-research-candidate",
+  "pack_id": "RPK-SRP",
+  "pack_version": "1.0.0",
+  "purpose": "Study research profile for prose decision records (156-record study assignment). Active only through an enabled research profile.",
+  "rules": [
+    {
+      "rule_id": "RP-SRP-01",
+      "purpose": "Read study records that have no \"Label:\" headings.",
+      "trigger": "Split the record into sentence units and mark each with lexical roles: decision, basis cue, authority reference, added conclusion.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Lexical role words only; a decision or reason phrased without the listed words is missed.",
+      "false_positive_risk": "Descriptive sentences that use a decision word are treated as decision units.",
+      "linked_scenarios": [
+        "R03",
+        "R08",
+        "R15",
+        "R22",
+        "S-001",
+        "S-002",
+        "S-003",
+        "S-004",
+        "S-005",
+        "S-006",
+        "S-007",
+        "S-008",
+        "S-009",
+        "S-010"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-02",
+      "purpose": "Find identifiable evidence in prose.",
+      "trigger": "Count dates, identifiers, quantities and on-file documents as evidence anchors, excluding the identifier of the thing decided, the figures inside an authority statement, and the date attached to a decision verb.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "An anchor shows that something specific is cited, not that it supports the conclusion.",
+      "false_positive_risk": "An irrelevant dated or numbered sentence counts as an anchor.",
+      "linked_scenarios": [
+        "R08",
+        "R15",
+        "S-001",
+        "S-002",
+        "S-003",
+        "S-004",
+        "S-005",
+        "S-006",
+        "S-007",
+        "S-008",
+        "S-009",
+        "S-010",
+        "S-011",
+        "S-012",
+        "S-013",
+        "S-014",
+        "S-015",
+        "S-016",
+        "S-017",
+        "S-018",
+        "S-019",
+        "S-020"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-03",
+      "purpose": "Question 3: do two dates concern the same event or different events?",
+      "trigger": "Give each date an event key from the nearest event word. Two dates conflict only when their keys and any identifiers match. In K6, two cited dates with different known keys are not compared; an unknown key keeps the comparison.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Event words are a fixed list; an unlisted event gets no key.",
+      "false_positive_risk": "Two different events named with the same word are flagged as one event with two dates.",
+      "linked_scenarios": [
+        "S-007",
+        "S-008",
+        "S-017",
+        "S-018",
+        "S-027",
+        "S-028",
+        "S-037",
+        "S-038"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-04",
+      "purpose": "Question 4: do apparent contradictions concern separate requests?",
+      "trigger": "In K6, opposite cited decisions are not compared when their units name different subject identifiers, when the record marks several decisions and the units differ, or when one unit records a partial outcome.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Subject identifiers and multi-decision markers are lexical.",
+      "false_positive_risk": "A real contradiction between two differently numbered items for the same request would be missed.",
+      "linked_scenarios": [
+        "S-009",
+        "S-019",
+        "S-029",
+        "S-039"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-05",
+      "purpose": "Flag opposite outcomes for the same item.",
+      "trigger": "Two decision units with opposite outcomes that share a subject identifier, neither partial, raise a decision_outcome_conflict affecting reconstructability and reasoning traceability.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Needs a shared identifier; a contradiction about an unnumbered item is not detected.",
+      "false_positive_risk": "A record that reverses an outcome on appeal is flagged.",
+      "linked_scenarios": [
+        "S-009",
+        "S-019",
+        "S-029",
+        "S-039"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-06",
+      "purpose": "Question 1: does an authority reference establish the basis?",
+      "trigger": "When the record cites an authority and contains no evidence anchor outside the authority statement, identifiable basis is routed to review with authority_reference_without_linked_facts; it can never be supported.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Whether the cited authority itself settles the outcome is a judgement the rule cannot make.",
+      "false_positive_risk": "A record whose authority alone settles the outcome, with the facts described in words, is flagged.",
+      "linked_scenarios": [
+        "S-004",
+        "S-005",
+        "S-014",
+        "S-015",
+        "S-024",
+        "S-025",
+        "S-034",
+        "S-035"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-07",
+      "purpose": "Question 2: does a repeated conclusion explain the decision?",
+      "trigger": "With no evidence anchor in the record, a reason that repeats the decision or uses a listed restatement phrase is a visible gap conclusion_restated_as_basis; a decision with no reason at all is conclusion_without_stated_basis.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "The restatement phrase list is short and lexical.",
+      "false_positive_risk": "A brief but genuine reason without a date or identifier is flagged.",
+      "linked_scenarios": [
+        "S-003",
+        "S-006",
+        "S-013",
+        "S-016",
+        "S-023",
+        "S-026",
+        "S-033",
+        "S-036"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-08",
+      "purpose": "Apply only the checks that fit study records.",
+      "trigger": "Expiry, compensating-control and labelled-section linkage rules are not applied. An added conclusion, or one of several decisions about different subjects, needs evidence of its own; otherwise a visible gap conclusion_without_identifiable_basis is recorded.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Which checks fit a record type is a design choice, not a finding.",
+      "false_positive_risk": "A secondary decision whose basis is an absence (for example \"no test report was submitted\") is flagged.",
+      "linked_scenarios": [
+        "S-009",
+        "S-010",
+        "S-019",
+        "S-020",
+        "S-029",
+        "S-030",
+        "S-039",
+        "S-040"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    }
+  ],
+  "signature": {
+    "method": "sha256-canonical-content-seal",
+    "content_sha256": "sha256:5518c4de2e558446304a05ab923c01ff9fa4c2f9c16c3ab7fafffcac159f9b1d"
+  }
+}

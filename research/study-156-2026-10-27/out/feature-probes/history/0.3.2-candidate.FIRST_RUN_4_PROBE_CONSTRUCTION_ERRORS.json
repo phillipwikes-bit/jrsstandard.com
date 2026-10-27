@@ -1,0 +1,3648 @@
+{
+  "probe_format": "jrs-study-156-feature-probes/1.0.0",
+  "engine_version": "0.3.2-candidate",
+  "engine_snapshot_sha256": "bfe9db78b0762e6d1d09283becb572a90b96b73d46642fefb42765d7d8460ae9",
+  "engine_manifest_sha256": "2276bbc22e1e226220b471b27b793119d37ceb6e093a91d1ecbafae31a200f18",
+  "isolated_copy": {
+    "files_verified": 43,
+    "unchanged_after_use": true,
+    "deleted": true
+  },
+  "network_attempts": 0,
+  "totals": {
+    "probes": 342,
+    "passed": 338,
+    "failed": 4,
+    "unreachable_recorded": 2
+  },
+  "results": [
+    {
+      "id": "FP-001",
+      "area": "condition_failure_mode",
+      "feature": "reconstructability visible gap no_locatable_conclusion",
+      "ok": true,
+      "observed": [
+        "no_locatable_conclusion"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-002",
+      "area": "condition_failure_mode",
+      "feature": "reconstructability review conclusion_without_traceable_basis",
+      "ok": true,
+      "observed": [
+        "conclusion_without_traceable_basis"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-003",
+      "area": "condition_failure_mode",
+      "feature": "reconstructability review decision_and_linked_content_not_both_cited",
+      "ok": true,
+      "observed": [
+        "decision_and_linked_content_not_both_cited"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-004",
+      "area": "condition_failure_mode",
+      "feature": "reconstructability requirement visible with decision and rationale cited",
+      "ok": true,
+      "observed": {
+        "requirement_visible": true,
+        "visible_gaps": [],
+        "review_reasons": [],
+        "anchor": {
+          "index": 5,
+          "label": "Decision",
+          "role": "decision",
+          "start": 264,
+          "end": 344,
+          "content_start": 274,
+          "content_end": 343
+        },
+        "explanation": "A decision section and a basis section are both visible in the record."
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-005",
+      "area": "condition_failure_mode",
+      "feature": "identifiable_basis visible gap no_authority_section",
+      "ok": true,
+      "observed": [
+        "no_authority_section"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-006",
+      "area": "condition_failure_mode",
+      "feature": "identifiable_basis visible gap authority_source_not_identified",
+      "ok": true,
+      "observed": [
+        "authority_source_not_identified"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-007",
+      "area": "condition_failure_mode",
+      "feature": "identifiable_basis review no_basis_section",
+      "ok": true,
+      "observed": [
+        "no_basis_section",
+        "no_cited_basis_with_identifier_or_date"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-008",
+      "area": "condition_failure_mode",
+      "feature": "identifiable_basis review no_cited_basis_with_identifier_or_date",
+      "ok": true,
+      "observed": [
+        "no_cited_basis_with_identifier_or_date"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-009",
+      "area": "condition_failure_mode",
+      "feature": "chronology visible gap no_explicit_dates",
+      "ok": true,
+      "observed": [
+        "no_explicit_dates",
+        "no_stated_expiry_date",
+        "no_dated_decision"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-010",
+      "area": "condition_failure_mode",
+      "feature": "chronology visible gap no_stated_expiry_date",
+      "ok": true,
+      "observed": [
+        "no_stated_expiry_date"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-011",
+      "area": "condition_failure_mode",
+      "feature": "chronology visible gap no_dated_decision (RP-CHR-03)",
+      "ok": true,
+      "observed": [
+        "no_dated_decision"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-012",
+      "area": "condition_failure_mode",
+      "feature": "chronology review dated_sequence_not_cited",
+      "ok": true,
+      "observed": [
+        "dated_sequence_not_cited"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-013",
+      "area": "condition_failure_mode",
+      "feature": "reasoning review conclusion_without_basis",
+      "ok": true,
+      "observed": [
+        "conclusion_without_basis"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-014",
+      "area": "condition_failure_mode",
+      "feature": "reasoning review basis_without_conclusion",
+      "ok": true,
+      "observed": [
+        "basis_without_conclusion"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-015",
+      "area": "condition_failure_mode",
+      "feature": "reasoning review basis_states_no_reason_or_source",
+      "ok": true,
+      "observed": [
+        "basis_states_no_reason_or_source"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-016",
+      "area": "condition_failure_mode",
+      "feature": "reasoning review rationale_path_not_cited",
+      "ok": true,
+      "observed": [
+        "rationale_path_not_cited"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-017",
+      "area": "negation",
+      "feature": "RP-NEG-01 negated rationale not counted (negated_rationale_not_counted)",
+      "ok": true,
+      "observed": [
+        "negated_rationale_not_counted"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-018",
+      "area": "condition_failure_mode",
+      "feature": "sufficiency visible gap no_compensating_control_stated",
+      "ok": true,
+      "observed": [
+        "no_compensating_control_stated"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-019",
+      "area": "condition_failure_mode",
+      "feature": "sufficiency review sufficiency_not_determinable_by_engine (always)",
+      "ok": true,
+      "observed": [
+        "sufficiency_not_determinable_by_engine"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-020",
+      "area": "status_transition",
+      "feature": "base case: four supported, sufficiency review_required",
+      "ok": true,
+      "observed": [
+        "supported",
+        "supported",
+        "supported",
+        "supported",
+        "review_required"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-021",
+      "area": "status_transition",
+      "feature": "deterministic_mode_no_candidate: all not_assessed",
+      "ok": true,
+      "observed": [
+        "not_assessed",
+        "not_assessed",
+        "not_assessed",
+        "not_assessed",
+        "not_assessed"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-022",
+      "area": "status_transition",
+      "feature": "candidate_response_invalid: refusal and all not_assessed",
+      "ok": true,
+      "observed": [
+        "candidate_response_invalid",
+        "candidate_response_invalid",
+        "candidate_response_invalid",
+        "candidate_response_invalid",
+        "candidate_response_invalid",
+        "candidate_response_invalid"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-023",
+      "area": "status_transition",
+      "feature": "no_candidate_observation -> review_required",
+      "ok": true,
+      "observed": {
+        "condition_id": "identifiable_basis",
+        "status": "review_required",
+        "proposed_status": null,
+        "reasons": [
+          "no_candidate_observation"
+        ],
+        "explanation": "An authority with a locatable reference is visible in the record."
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-024",
+      "area": "status_transition",
+      "feature": "inconsistent_candidate_statuses -> review_required",
+      "ok": true,
+      "observed": [
+        "inconsistent_candidate_statuses"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-025",
+      "area": "status_transition",
+      "feature": "not_assessed_with_quotation -> review_required",
+      "ok": true,
+      "observed": [
+        "not_assessed_with_quotation"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-026",
+      "area": "status_transition",
+      "feature": "candidate_did_not_assess -> not_assessed",
+      "ok": true,
+      "observed": [
+        "candidate_did_not_assess"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-027",
+      "area": "status_transition",
+      "feature": "candidate_proposed_review_required kept",
+      "ok": true,
+      "observed": [
+        "candidate_proposed_review_required"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-028",
+      "area": "status_transition",
+      "feature": "supported sufficiency lowered (sufficiency_not_determinable_by_engine)",
+      "ok": true,
+      "observed": {
+        "condition_id": "sufficiency",
+        "status": "review_required",
+        "proposed_status": "supported",
+        "reasons": [
+          "sufficiency_not_determinable_by_engine"
+        ],
+        "explanation": "The checked elements are visible. Whether the support was substantively sufficient is not determined."
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-029",
+      "area": "status_transition",
+      "feature": "candidate_supported_but_visible_gap lowers",
+      "ok": true,
+      "observed": [
+        "candidate_supported_but_visible_gap:no_stated_expiry_date"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-030",
+      "area": "status_transition",
+      "feature": "rule:<review reason> lowers when requirement not visible",
+      "ok": true,
+      "observed": [
+        "rule:no_cited_basis_with_identifier_or_date"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-031",
+      "area": "status_transition",
+      "feature": "rule:requirement_not_visible (default reason) is unreachable by construction",
+      "ok": true,
+      "observed": "Every condition rule pushes a named review reason whenever its requirement is not visible and no visible gap exists (conditions.mjs), so the fallback reason never fires. Recorded, not a defect.",
+      "version_dependent": null,
+      "unreachable": true
+    },
+    {
+      "id": "FP-032",
+      "area": "linkage",
+      "feature": "RP-EVL-01 evidence_not_in_linked_section",
+      "ok": true,
+      "observed": [
+        "evidence_not_in_linked_section"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-033",
+      "area": "status_transition",
+      "feature": "proposed gap with visible gap and cited evidence -> gap",
+      "ok": true,
+      "observed": {
+        "condition_id": "chronology_integrity",
+        "status": "gap",
+        "proposed_status": "gap",
+        "reasons": [
+          "visible_gap:no_stated_expiry_date"
+        ],
+        "explanation": "Dated events appear, but no expiry date is stated."
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-034",
+      "area": "status_transition",
+      "feature": "gap_not_confirmed_by_rule -> review_required",
+      "ok": true,
+      "observed": [
+        "gap_not_confirmed_by_rule"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-035",
+      "area": "status_transition",
+      "feature": "record conflict lowers affected conditions",
+      "ok": true,
+      "observed": [
+        "record_conflict:decision_date_conflict"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-036",
+      "area": "status_transition",
+      "feature": "instruction risk lowers every condition",
+      "ok": true,
+      "observed": [
+        "review_required",
+        "review_required",
+        "review_required",
+        "review_required",
+        "review_required"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-037",
+      "area": "status_transition",
+      "feature": "quote failure reason recorded and lowers",
+      "ok": true,
+      "observed": [
+        "quote_absent:not_found"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-038",
+      "area": "compiler_refusal",
+      "feature": "no_traceable_record_anchor",
+      "ok": true,
+      "observed": [
+        "no_traceable_record_anchor",
+        "no_traceable_record_anchor"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-039",
+      "area": "compiler_refusal",
+      "feature": "assertion_rejected (withhold)",
+      "ok": true,
+      "observed": [
+        "assertion_rejected"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-040",
+      "area": "cognitive_control_template:graph",
+      "feature": "no_authority_section",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-041",
+      "area": "cognitive_control_template:graph",
+      "feature": "authority_source_not_identified",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-042",
+      "area": "cognitive_control_template:graph",
+      "feature": "no_compensating_control_stated",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-043",
+      "area": "cognitive_control_template:graph",
+      "feature": "no_stated_expiry_date",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-044",
+      "area": "cognitive_control_template:graph",
+      "feature": "no_explicit_dates",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-045",
+      "area": "cognitive_control_template:graph",
+      "feature": "no_locatable_conclusion",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-046",
+      "area": "cognitive_control_template:graph",
+      "feature": "conclusion_without_traceable_basis",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-047",
+      "area": "cognitive_control_template:graph",
+      "feature": "conclusion_without_basis",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-048",
+      "area": "cognitive_control_template:graph",
+      "feature": "basis_without_conclusion",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-049",
+      "area": "cognitive_control_template:graph",
+      "feature": "basis_states_no_reason_or_source",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-050",
+      "area": "cognitive_control_template:graph",
+      "feature": "decision_date_conflict",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-051",
+      "area": "cognitive_control_template:graph",
+      "feature": "impossible_sequence",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-052",
+      "area": "cognitive_control_template:graph",
+      "feature": "authority_state_conflict",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-053",
+      "area": "cognitive_control_template:graph",
+      "feature": "control_state_conflict",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-054",
+      "area": "cognitive_control_template:graph",
+      "feature": "risk_state_conflict",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-055",
+      "area": "cognitive_control_template:graph",
+      "feature": "cited_evidence_conflict",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-056",
+      "area": "cognitive_control_template:graph",
+      "feature": "ambiguous_quotation",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-057",
+      "area": "cognitive_control_template:graph",
+      "feature": "absent_quotation",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-058",
+      "area": "cognitive_control_template:graph",
+      "feature": "assessment_after_decision",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-059",
+      "area": "cognitive_control_template:graph",
+      "feature": "expiry_date_conflict",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-060",
+      "area": "cognitive_control_template:graph",
+      "feature": "duration_date_conflict",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-061",
+      "area": "cognitive_control_template:graph",
+      "feature": "no_dated_decision",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-062",
+      "area": "cognitive_control_template:graph",
+      "feature": "certainty_language",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-063",
+      "area": "cognitive_control_template:graph",
+      "feature": "neutrality guard withholds a directive control",
+      "ok": true,
+      "observed": [
+        "correct_contains_directive_or_recommendation"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-064",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "conclusion_precedes_basis",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-065",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "conclusion_without_labelled_basis",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-066",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "reference_without_identifier",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-067",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "relative_time_without_anchor",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-068",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "no_absolute_dates",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-069",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "date_order_conflict",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-070",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "absolute_or_certainty_term",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-071",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "conflicting_risk_statements",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-072",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "conflicting_access_statements",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-073",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "action_missing_owner",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-074",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "action_missing_deadline",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-075",
+      "area": "cognitive_control_template:v0.2_remediation",
+      "feature": "action_missing_owner_and_deadline",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-076",
+      "area": "human_review_safeguard",
+      "feature": "all eight controls present, neutral and phrased as questions",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-077",
+      "area": "human_review_safeguard",
+      "feature": "CC-INTENT disabling is detected",
+      "ok": true,
+      "observed": [
+        "control disabled: CC-INTENT"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-078",
+      "area": "human_review_safeguard",
+      "feature": "CC-INTENT directive wording is detected",
+      "ok": true,
+      "observed": [
+        "control directs a result: CC-INTENT"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-079",
+      "area": "human_review_safeguard",
+      "feature": "CC-PLAUSIBLE disabling is detected",
+      "ok": true,
+      "observed": [
+        "control disabled: CC-PLAUSIBLE"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-080",
+      "area": "human_review_safeguard",
+      "feature": "CC-PLAUSIBLE directive wording is detected",
+      "ok": true,
+      "observed": [
+        "control directs a result: CC-PLAUSIBLE"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-081",
+      "area": "human_review_safeguard",
+      "feature": "CC-NEGATION disabling is detected",
+      "ok": true,
+      "observed": [
+        "control disabled: CC-NEGATION"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-082",
+      "area": "human_review_safeguard",
+      "feature": "CC-NEGATION directive wording is detected",
+      "ok": true,
+      "observed": [
+        "control directs a result: CC-NEGATION"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-083",
+      "area": "human_review_safeguard",
+      "feature": "CC-DATES disabling is detected",
+      "ok": true,
+      "observed": [
+        "control disabled: CC-DATES"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-084",
+      "area": "human_review_safeguard",
+      "feature": "CC-DATES directive wording is detected",
+      "ok": true,
+      "observed": [
+        "control directs a result: CC-DATES"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-085",
+      "area": "human_review_safeguard",
+      "feature": "CC-WORDS disabling is detected",
+      "ok": true,
+      "observed": [
+        "control disabled: CC-WORDS"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-086",
+      "area": "human_review_safeguard",
+      "feature": "CC-WORDS directive wording is detected",
+      "ok": true,
+      "observed": [
+        "control directs a result: CC-WORDS"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-087",
+      "area": "human_review_safeguard",
+      "feature": "CC-MISSING disabling is detected",
+      "ok": true,
+      "observed": [
+        "control disabled: CC-MISSING"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-088",
+      "area": "human_review_safeguard",
+      "feature": "CC-MISSING directive wording is detected",
+      "ok": true,
+      "observed": [
+        "control directs a result: CC-MISSING"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-089",
+      "area": "human_review_safeguard",
+      "feature": "CC-BASIS disabling is detected",
+      "ok": true,
+      "observed": [
+        "control disabled: CC-BASIS"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-090",
+      "area": "human_review_safeguard",
+      "feature": "CC-BASIS directive wording is detected",
+      "ok": true,
+      "observed": [
+        "control directs a result: CC-BASIS"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-091",
+      "area": "human_review_safeguard",
+      "feature": "CC-ESCALATE disabling is detected",
+      "ok": true,
+      "observed": [
+        "control disabled: CC-ESCALATE"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-092",
+      "area": "human_review_safeguard",
+      "feature": "CC-ESCALATE directive wording is detected",
+      "ok": true,
+      "observed": [
+        "control directs a result: CC-ESCALATE"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-093",
+      "area": "intake_trigger",
+      "feature": "unrecognised_submission_field",
+      "ok": true,
+      "observed": [
+        "unrecognised_submission_field"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-094",
+      "area": "intake_trigger",
+      "feature": "record_text_missing",
+      "ok": true,
+      "observed": [
+        "record_text_missing"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-095",
+      "area": "intake_trigger",
+      "feature": "missing_scope_declaration",
+      "ok": true,
+      "observed": [
+        "missing_scope_declaration"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-096",
+      "area": "intake_trigger",
+      "feature": "invalid_scope_declaration",
+      "ok": true,
+      "observed": [
+        "invalid_scope_declaration"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-097",
+      "area": "intake_trigger",
+      "feature": "non_synthetic_record_not_authorized",
+      "ok": true,
+      "observed": [
+        "non_synthetic_record_not_authorized"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-098",
+      "area": "intake_trigger",
+      "feature": "hr_content true is refused",
+      "ok": true,
+      "observed": [
+        "invalid_scope_declaration"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-099",
+      "area": "intake_trigger",
+      "feature": "regulated_decision_content not false is refused",
+      "ok": true,
+      "observed": [
+        "invalid_scope_declaration"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-100",
+      "area": "intake_trigger",
+      "feature": "missing_version_declaration",
+      "ok": true,
+      "observed": [
+        "missing_version_declaration"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-101",
+      "area": "intake_trigger",
+      "feature": "contract_version_mismatch",
+      "ok": true,
+      "observed": [
+        "contract_version_mismatch"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-102",
+      "area": "intake_trigger",
+      "feature": "compiler_version_mismatch",
+      "ok": true,
+      "observed": [
+        "compiler_version_mismatch"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-103",
+      "area": "intake_trigger",
+      "feature": "prompt_version_mismatch",
+      "ok": true,
+      "observed": [
+        "prompt_version_mismatch"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-104",
+      "area": "intake_trigger",
+      "feature": "codebook_version_mismatch",
+      "ok": true,
+      "observed": [
+        "codebook_version_mismatch"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-105",
+      "area": "intake_trigger",
+      "feature": "fixture_hash_mismatch",
+      "ok": true,
+      "observed": [
+        "fixture_hash_mismatch"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-106",
+      "area": "intake_trigger",
+      "feature": "missing_requested_outputs",
+      "ok": true,
+      "observed": [
+        "missing_requested_outputs"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-107",
+      "area": "prohibited_output",
+      "feature": "overall_pass",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-108",
+      "area": "prohibited_output",
+      "feature": "overall_score",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-109",
+      "area": "prohibited_output",
+      "feature": "overall_determination",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-110",
+      "area": "prohibited_output",
+      "feature": "compliance_certification",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-111",
+      "area": "prohibited_output",
+      "feature": "legal_conclusion",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-112",
+      "area": "prohibited_output",
+      "feature": "decision_recommendation",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-113",
+      "area": "prohibited_output",
+      "feature": "approval_recommendation",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-114",
+      "area": "prohibited_output",
+      "feature": "credibility_assessment",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-115",
+      "area": "prohibited_output",
+      "feature": "readiness_verdict",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-116",
+      "area": "prohibited_output",
+      "feature": "risk_acceptance",
+      "ok": true,
+      "observed": [
+        "prohibited_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-117",
+      "area": "intake_trigger",
+      "feature": "unsupported_output_requested",
+      "ok": true,
+      "observed": [
+        "unsupported_output_requested"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-118",
+      "area": "intake_trigger",
+      "feature": "record_too_short",
+      "ok": true,
+      "observed": [
+        "record_too_short"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-119",
+      "area": "size",
+      "feature": "record_exceeds_local_size_limit: refused, never truncated",
+      "ok": true,
+      "observed": {
+        "length": 9362,
+        "triggers": [
+          "record_exceeds_local_size_limit"
+        ]
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-120",
+      "area": "excluded_domain_lexicon",
+      "feature": "employment: \"The engineer received a written warning.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:employment"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-121",
+      "area": "excluded_domain_lexicon",
+      "feature": "employment: \"This followed the termination of the employee.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:employment"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-122",
+      "area": "excluded_domain_lexicon",
+      "feature": "employment: \"The analyst's performance rating changed.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:employment"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-123",
+      "area": "excluded_domain_lexicon",
+      "feature": "employment: \"The promotion was confirmed.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:employment"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-124",
+      "area": "excluded_domain_lexicon",
+      "feature": "housing: \"The tenant raised the issue.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:housing"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-125",
+      "area": "excluded_domain_lexicon",
+      "feature": "lending: \"The loan was reviewed.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:lending"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-126",
+      "area": "excluded_domain_lexicon",
+      "feature": "insurance: \"The insurance claim was noted.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:insurance"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-127",
+      "area": "excluded_domain_lexicon",
+      "feature": "medical: \"The patient was informed.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:medical"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-128",
+      "area": "excluded_domain_lexicon",
+      "feature": "legal_outcome: \"The court will decide.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:legal_outcome"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-129",
+      "area": "excluded_domain_lexicon",
+      "feature": "other_consequential: \"An immigration matter was referenced.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:other_consequential"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-130",
+      "area": "excluded_domain_lexicon",
+      "feature": "employment: \"He keeps his job if the access is granted.\"",
+      "ok": true,
+      "observed": [
+        "excluded_domain:employment"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-131",
+      "area": "intake_trigger",
+      "feature": "incomplete_record escalates (placeholder)",
+      "ok": true,
+      "observed": [
+        "incomplete_record"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-132",
+      "area": "rule_pack_seal_check",
+      "feature": "fail closed: invalid rule-pack set refuses every record",
+      "ok": true,
+      "observed": [
+        "rule_pack_rejected"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-133",
+      "area": "intake_trigger",
+      "feature": "execution_mode_not_authorized",
+      "ok": true,
+      "observed": [
+        "execution_mode_not_authorized"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-134",
+      "area": "intake_trigger",
+      "feature": "proceed on the base fixture",
+      "ok": true,
+      "observed": "proceed",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-135",
+      "area": "instruction_quarantine_pattern",
+      "feature": "override_instructions",
+      "ok": true,
+      "observed": [
+        "override_instructions"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-136",
+      "area": "instruction_quarantine_pattern",
+      "feature": "role_reassignment",
+      "ok": true,
+      "observed": [
+        "role_reassignment"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-137",
+      "area": "instruction_quarantine_pattern",
+      "feature": "prompt_reference",
+      "ok": true,
+      "observed": [
+        "prompt_reference"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-138",
+      "area": "instruction_quarantine_pattern",
+      "feature": "status_directive",
+      "ok": true,
+      "observed": [
+        "status_directive"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-139",
+      "area": "instruction_quarantine_pattern",
+      "feature": "output_directive",
+      "ok": true,
+      "observed": [
+        "output_directive"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-140",
+      "area": "instruction_quarantine_pattern",
+      "feature": "role_marker",
+      "ok": true,
+      "observed": [
+        "role_marker"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-141",
+      "area": "instruction_quarantine_pattern",
+      "feature": "addressed_to_tool",
+      "ok": true,
+      "observed": [
+        "addressed_to_tool"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-142",
+      "area": "instruction_quarantine_pattern",
+      "feature": "suppression_directive",
+      "ok": true,
+      "observed": [
+        "suppression_directive"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-143",
+      "area": "instruction_quarantine_pattern",
+      "feature": "certification_request",
+      "ok": true,
+      "observed": [
+        "certification_request"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-144",
+      "area": "instruction_quarantine_pattern",
+      "feature": "reworded_status_directive",
+      "ok": true,
+      "observed": [
+        "reworded_status_directive"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-145",
+      "area": "instruction_quarantine_pattern",
+      "feature": "assume_directive",
+      "ok": true,
+      "observed": [
+        "assume_directive"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-146",
+      "area": "instruction_quarantine_pattern",
+      "feature": "summary_directive",
+      "ok": true,
+      "observed": [
+        "summary_directive"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-147",
+      "area": "instruction_quarantine_pattern",
+      "feature": "non_english_override",
+      "ok": true,
+      "observed": [
+        "non_english_override"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-148",
+      "area": "strict_json",
+      "feature": "response_not_text",
+      "ok": true,
+      "observed": "response_not_text",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-149",
+      "area": "strict_json",
+      "feature": "markdown_wrapper_not_a_single_exact_fence",
+      "ok": true,
+      "observed": "markdown_wrapper_not_a_single_exact_fence",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-150",
+      "area": "strict_json",
+      "feature": "markdown_fence_removed is recorded, not silent",
+      "ok": true,
+      "observed": [
+        "markdown_fence_removed"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-151",
+      "area": "strict_json",
+      "feature": "content_outside_json_object",
+      "ok": true,
+      "observed": "content_outside_json_object",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-152",
+      "area": "strict_json",
+      "feature": "malformed_json",
+      "ok": true,
+      "observed": "malformed_json",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-153",
+      "area": "strict_json",
+      "feature": "duplicate_json_key",
+      "ok": true,
+      "observed": "duplicate_json_key",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-154",
+      "area": "strict_json",
+      "feature": "top_level_not_object is unreachable after the brace check",
+      "ok": true,
+      "observed": "content_outside_json_object",
+      "version_dependent": null,
+      "unreachable": true
+    },
+    {
+      "id": "FP-155",
+      "area": "candidate_contract",
+      "feature": "undeclared_top_level_fields",
+      "ok": true,
+      "observed": "undeclared_top_level_fields",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-156",
+      "area": "candidate_contract",
+      "feature": "contract_version_mismatch",
+      "ok": true,
+      "observed": "contract_version_mismatch",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-157",
+      "area": "candidate_contract",
+      "feature": "prompt_version_mismatch",
+      "ok": true,
+      "observed": "prompt_version_mismatch",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-158",
+      "area": "candidate_contract",
+      "feature": "observations_missing",
+      "ok": true,
+      "observed": "observations_missing",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-159",
+      "area": "candidate_contract",
+      "feature": "too_many_observations",
+      "ok": true,
+      "observed": "too_many_observations",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-160",
+      "area": "candidate_contract",
+      "feature": "observation_not_an_object",
+      "ok": true,
+      "observed": "observation_not_an_object",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-161",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: start_offset",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-162",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: end_offset",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-163",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: offset",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-164",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: offsets",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-165",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: start",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-166",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: end",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-167",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: section",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-168",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: record_section",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-169",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: location",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-170",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: evidence_status",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-171",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: quote_resolution_status",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-172",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: presence_verified",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-173",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: final_status",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-174",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: status",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-175",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: edges",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-176",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: graph",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-177",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: span_id",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-178",
+      "area": "candidate_contract",
+      "feature": "candidate_supplied_untrusted_field: human_review_required",
+      "ok": true,
+      "observed": "candidate_supplied_untrusted_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-179",
+      "area": "candidate_contract",
+      "feature": "undeclared_observation_field",
+      "ok": true,
+      "observed": "undeclared_observation_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-180",
+      "area": "candidate_contract",
+      "feature": "observation_missing_field",
+      "ok": true,
+      "observed": "observation_missing_field",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-181",
+      "area": "candidate_contract",
+      "feature": "observation_id_invalid_or_duplicate",
+      "ok": true,
+      "observed": "observation_id_invalid_or_duplicate",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-182",
+      "area": "candidate_contract",
+      "feature": "unrecognised_condition_id",
+      "ok": true,
+      "observed": "unrecognised_condition_id",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-183",
+      "area": "candidate_contract",
+      "feature": "invalid_proposed_status",
+      "ok": true,
+      "observed": "invalid_proposed_status",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-184",
+      "area": "candidate_contract",
+      "feature": "quote_not_text_or_null",
+      "ok": true,
+      "observed": "quote_not_text_or_null",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-185",
+      "area": "candidate_contract",
+      "feature": "note_invalid",
+      "ok": true,
+      "observed": "note_invalid",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-186",
+      "area": "quotation",
+      "feature": "malformed:quote_not_text",
+      "ok": true,
+      "observed": "malformed:quote_not_text",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-187",
+      "area": "quotation",
+      "feature": "malformed:blank_quote",
+      "ok": true,
+      "observed": "malformed:blank_quote",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-188",
+      "area": "quotation",
+      "feature": "malformed:leading_or_trailing_whitespace",
+      "ok": true,
+      "observed": "malformed:leading_or_trailing_whitespace",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-189",
+      "area": "quotation",
+      "feature": "malformed:quote_too_short",
+      "ok": true,
+      "observed": "malformed:quote_too_short",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-190",
+      "area": "quotation",
+      "feature": "malformed:quote_too_broad",
+      "ok": true,
+      "observed": "malformed:quote_too_broad",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-191",
+      "area": "quotation",
+      "feature": "malformed:elided_quote",
+      "ok": true,
+      "observed": "malformed:elided_quote",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-192",
+      "area": "quotation",
+      "feature": "malformed:crosses_line_break",
+      "ok": true,
+      "observed": "malformed:crosses_line_break",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-193",
+      "area": "quotation",
+      "feature": "malformed:heading_only",
+      "ok": true,
+      "observed": "malformed:heading_only",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-194",
+      "area": "quotation",
+      "feature": "malformed:invalid_disambiguator",
+      "ok": true,
+      "observed": "malformed:invalid_disambiguator",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-195",
+      "area": "quotation",
+      "feature": "absent:not_found",
+      "ok": true,
+      "observed": "absent:not_found",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-196",
+      "area": "quotation",
+      "feature": "absent:unicode_normalization_variant",
+      "ok": false,
+      "observed": "malformed:quote_too_broad",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-197",
+      "area": "quotation",
+      "feature": "absent:whitespace_variant",
+      "ok": true,
+      "observed": "absent:whitespace_variant",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-198",
+      "area": "quotation",
+      "feature": "absent:case_variant",
+      "ok": true,
+      "observed": "absent:case_variant",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-199",
+      "area": "quotation",
+      "feature": "malformed:crosses_section_boundary",
+      "ok": false,
+      "observed": "verified_unique:exact_unique_match",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-200",
+      "area": "quotation",
+      "feature": "malformed:truncated_mid_word",
+      "ok": true,
+      "observed": "malformed:truncated_mid_word",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-201",
+      "area": "quotation",
+      "feature": "verified_unique:exact_unique_match",
+      "ok": true,
+      "observed": "verified_unique:exact_unique_match",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-202",
+      "area": "quotation",
+      "feature": "ambiguous:multiple_exact_matches_no_disambiguator",
+      "ok": true,
+      "observed": "ambiguous:multiple_exact_matches_no_disambiguator",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-203",
+      "area": "quotation",
+      "feature": "verified_disambiguated:disambiguated_by_section",
+      "ok": true,
+      "observed": "verified_disambiguated:disambiguated_by_section",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-204",
+      "area": "quotation",
+      "feature": "verified_disambiguated:disambiguated_by_context_before",
+      "ok": true,
+      "observed": "verified_disambiguated:disambiguated_by_context_before",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-205",
+      "area": "quotation",
+      "feature": "verified_disambiguated:disambiguated_by_context_after",
+      "ok": true,
+      "observed": "verified_disambiguated:disambiguated_by_context_after",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-206",
+      "area": "quotation",
+      "feature": "verified_disambiguated:disambiguated_by_near_quote",
+      "ok": false,
+      "observed": "ambiguous:disambiguator_did_not_select_exactly_one",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-207",
+      "area": "quotation",
+      "feature": "ambiguous:near_quote_not_unique",
+      "ok": true,
+      "observed": "ambiguous:near_quote_not_unique",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-208",
+      "area": "quotation",
+      "feature": "ambiguous:disambiguator_did_not_select_exactly_one",
+      "ok": true,
+      "observed": "ambiguous:disambiguator_did_not_select_exactly_one",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-209",
+      "area": "quotation",
+      "feature": "ambiguous quotation is withheld: no location chosen, condition lowered",
+      "ok": true,
+      "observed": "ambiguous",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-210",
+      "area": "offsets",
+      "feature": "UTF-16 and UTF-8 offsets computed locally and consistent (multi-byte record)",
+      "ok": true,
+      "observed": 13,
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-211",
+      "area": "assertion_type_marker",
+      "feature": "stated_authority accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-212",
+      "area": "assertion_type_marker",
+      "feature": "stated_authority rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-213",
+      "area": "assertion_type_marker",
+      "feature": "stated_decision accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-214",
+      "area": "assertion_type_marker",
+      "feature": "stated_decision rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-215",
+      "area": "assertion_type_marker",
+      "feature": "stated_date accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-216",
+      "area": "assertion_type_marker",
+      "feature": "stated_date rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-217",
+      "area": "assertion_type_marker",
+      "feature": "stated_rationale accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-218",
+      "area": "assertion_type_marker",
+      "feature": "stated_rationale rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-219",
+      "area": "assertion_type_marker",
+      "feature": "stated_risk accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-220",
+      "area": "assertion_type_marker",
+      "feature": "stated_risk rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-221",
+      "area": "assertion_type_marker",
+      "feature": "stated_control accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-222",
+      "area": "assertion_type_marker",
+      "feature": "stated_control rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-223",
+      "area": "assertion_type_marker",
+      "feature": "stated_expiry accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-224",
+      "area": "assertion_type_marker",
+      "feature": "stated_expiry rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-225",
+      "area": "assertion_type_marker",
+      "feature": "stated_renewal_condition accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-226",
+      "area": "assertion_type_marker",
+      "feature": "stated_renewal_condition rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-227",
+      "area": "assertion_type_marker",
+      "feature": "stated_source_reference accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-228",
+      "area": "assertion_type_marker",
+      "feature": "stated_source_reference rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-229",
+      "area": "assertion_type_marker",
+      "feature": "stated_unresolved_issue accepted when its marker is visible",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-230",
+      "area": "assertion_type_marker",
+      "feature": "stated_unresolved_issue rejected when its marker is not visible",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_visible_in_quoted_text"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-231",
+      "area": "assertion_type_marker",
+      "feature": "assertion_type_not_permitted_for_condition",
+      "ok": true,
+      "observed": [
+        "assertion_type_not_permitted_for_condition"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-232",
+      "area": "assertion_type_marker",
+      "feature": "unsupported_assertion_type",
+      "ok": true,
+      "observed": [
+        "unsupported_assertion_type"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-233",
+      "area": "prohibited_inference_screen",
+      "feature": "legal_conclusion",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:legal_conclusion"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-234",
+      "area": "prohibited_inference_screen",
+      "feature": "compliance_conclusion",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:compliance_conclusion"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-235",
+      "area": "prohibited_inference_screen",
+      "feature": "substantive_rightness",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:substantive_rightness"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-236",
+      "area": "prohibited_inference_screen",
+      "feature": "credibility",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:credibility"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-237",
+      "area": "prohibited_inference_screen",
+      "feature": "intent",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:intent"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-238",
+      "area": "prohibited_inference_screen",
+      "feature": "emotion",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:emotion"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-239",
+      "area": "prohibited_inference_screen",
+      "feature": "fairness",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:fairness"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-240",
+      "area": "prohibited_inference_screen",
+      "feature": "decision_recommendation",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:decision_recommendation"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-241",
+      "area": "prohibited_inference_screen",
+      "feature": "discrimination",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:discrimination",
+        "prohibited_inference:cause_not_stated_in_quote"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-242",
+      "area": "prohibited_inference_screen",
+      "feature": "motive labelled attributed_purpose (RP-STR-01)",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:attributed_purpose"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-243",
+      "area": "prohibited_inference_screen",
+      "feature": "cause_not_stated_in_quote",
+      "ok": true,
+      "observed": [
+        "prohibited_inference:cause_not_stated_in_quote"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-244",
+      "area": "conflict_or_chronology_detector",
+      "feature": "decision_date_conflict",
+      "ok": true,
+      "observed": [
+        "decision_date_conflict"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-245",
+      "area": "conflict_or_chronology_detector",
+      "feature": "impossible_sequence",
+      "ok": true,
+      "observed": [
+        "impossible_sequence"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-246",
+      "area": "conflict_or_chronology_detector",
+      "feature": "authority_state_conflict",
+      "ok": true,
+      "observed": [
+        "authority_state_conflict"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-247",
+      "area": "conflict_or_chronology_detector",
+      "feature": "control_state_conflict",
+      "ok": true,
+      "observed": [
+        "control_state_conflict"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-248",
+      "area": "conflict_or_chronology_detector",
+      "feature": "control_state_conflict via RP-CON-01 log-review paraphrase",
+      "ok": true,
+      "observed": [
+        "control_state_conflict"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-249",
+      "area": "conflict_or_chronology_detector",
+      "feature": "risk_state_conflict",
+      "ok": false,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-250",
+      "area": "conflict_or_chronology_detector",
+      "feature": "assessment_after_decision",
+      "ok": true,
+      "observed": [
+        "assessment_after_decision"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-251",
+      "area": "conflict_or_chronology_detector",
+      "feature": "expiry_date_conflict",
+      "ok": true,
+      "observed": [
+        "expiry_date_conflict"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-252",
+      "area": "conflict_or_chronology_detector",
+      "feature": "duration_date_conflict",
+      "ok": true,
+      "observed": [
+        "duration_date_conflict"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-253",
+      "area": "conflict_or_chronology_detector",
+      "feature": "cited_evidence_conflict (K6) on opposite stated_decision quotations",
+      "ok": true,
+      "observed": [
+        "cited_evidence_conflict"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-254",
+      "area": "conflict_or_chronology_detector",
+      "feature": "K6 on two stated_date quotations of different known event roles (RP-CON-02 changes this in 0.3.2)",
+      "ok": true,
+      "observed": "none",
+      "version_dependent": "RP-CON-02",
+      "unreachable": false
+    },
+    {
+      "id": "FP-255",
+      "area": "conflict_or_chronology_detector",
+      "feature": "timeline TEMPORALLY_PRECEDES edges in workflow order",
+      "ok": true,
+      "observed": 2,
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-256",
+      "area": "conflict_or_chronology_detector",
+      "feature": "TEMPORALLY_CONFLICTS edge on impossible order",
+      "ok": true,
+      "observed": [
+        "impossible_sequence"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-257",
+      "area": "conflict_or_chronology_detector",
+      "feature": "certainty_language spans produce a control",
+      "ok": true,
+      "observed": [
+        "certainty_language"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-258",
+      "area": "conflict_or_chronology_detector",
+      "feature": "a conflict never resolves which statement is correct (fixed statement)",
+      "ok": true,
+      "observed": 1,
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-259",
+      "area": "rule_pack_seal_check",
+      "feature": "shipped packs validate and activate exactly the implemented rules",
+      "ok": true,
+      "observed": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-260",
+      "area": "rule_pack_seal_check",
+      "feature": "no rule packs supplied",
+      "ok": true,
+      "observed": [
+        "no rule packs supplied"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-261",
+      "area": "rule_pack_seal_check",
+      "feature": "pack not an object",
+      "ok": true,
+      "observed": [
+        "pack 0: not an object"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-262",
+      "area": "rule_pack_seal_check",
+      "feature": "missing field",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR: missing purpose"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-263",
+      "area": "rule_pack_seal_check",
+      "feature": "undeclared field",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR: undeclared field extra"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-264",
+      "area": "rule_pack_seal_check",
+      "feature": "duplicate pack_id",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR: duplicate pack_id",
+        "pack RPK-CHR: duplicate rule RP-CHR-01",
+        "pack RPK-CHR: duplicate rule RP-CHR-02"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-265",
+      "area": "rule_pack_seal_check",
+      "feature": "candidate_version mismatch",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR: candidate_version \"9.9.9\" does not match 0.3.2-candidate"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-266",
+      "area": "rule_pack_seal_check",
+      "feature": "pack_version malformed",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR: pack_version malformed"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-267",
+      "area": "rule_pack_seal_check",
+      "feature": "unsigned",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR: missing signature",
+        "pack RPK-CHR: unsigned"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-268",
+      "area": "rule_pack_seal_check",
+      "feature": "signature does not match content",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR: signature does not match content"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-269",
+      "area": "rule_pack_seal_check",
+      "feature": "no rules",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR: no rules"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-270",
+      "area": "rule_pack_seal_check",
+      "feature": "rule missing field",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR RP-CHR-01: missing limitation"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-271",
+      "area": "rule_pack_seal_check",
+      "feature": "rule undeclared field",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR RP-CHR-01: undeclared field note"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-272",
+      "area": "rule_pack_seal_check",
+      "feature": "forbidden designation field",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR RP-CHR-01: undeclared field release_ready",
+        "pack RPK-CHR RP-CHR-01: forbidden designation field release_ready"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-273",
+      "area": "rule_pack_seal_check",
+      "feature": "rule not implemented by this candidate",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR: rule RP-XXX-99 is not implemented by this candidate"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-274",
+      "area": "rule_pack_seal_check",
+      "feature": "duplicate rule",
+      "ok": true,
+      "observed": [
+        "pack RPK-CON: duplicate rule RP-CHR-01"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-275",
+      "area": "rule_pack_seal_check",
+      "feature": "expected_safe_outcome not permitted",
+      "ok": true,
+      "observed": [
+        "pack RPK-CHR RP-CHR-01: expected_safe_outcome must be one of review_required, refusal, conflict_and_review, assertion_withheld_and_review"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-276",
+      "area": "graph_validation",
+      "feature": "unmutated base graph validates",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-277",
+      "area": "graph_validation",
+      "feature": "GV-01",
+      "ok": true,
+      "observed": [
+        "GV-01: compiler_version is \"9.9\""
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-278",
+      "area": "graph_validation",
+      "feature": "GV-01",
+      "ok": true,
+      "observed": [
+        "GV-01: provider or network calls recorded"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-279",
+      "area": "graph_validation",
+      "feature": "GV-02",
+      "ok": true,
+      "observed": [
+        "GV-02: as:O1 has undeclared field extra"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-280",
+      "area": "graph_validation",
+      "feature": "GV-02",
+      "ok": true,
+      "observed": [
+        "GV-02: unknown node type opinion"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-281",
+      "area": "graph_validation",
+      "feature": "GV-03",
+      "ok": true,
+      "observed": [
+        "GV-03: dangling edge X"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-282",
+      "area": "graph_validation",
+      "feature": "GV-03",
+      "ok": true,
+      "observed": [
+        "GV-03: edge LIMITS:lim:chronology_integrity->find:chronology_integrity carries a non-standard meaning",
+        "GV-11: $.edges[23].meaning claims proof or correctness"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-283",
+      "area": "graph_validation",
+      "feature": "GV-04",
+      "ok": true,
+      "observed": [
+        "GV-04: span:235-262 text does not match the record at its offsets",
+        "GV-05: ev:O4 does not quote exactly one matching span"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-284",
+      "area": "graph_validation",
+      "feature": "GV-05",
+      "ok": true,
+      "observed": [
+        "GV-05: as:O1 must require human interpretation"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-285",
+      "area": "graph_validation",
+      "feature": "GV-06",
+      "ok": true,
+      "observed": [
+        "GV-06: findings must be the five conditions once each"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-286",
+      "area": "graph_validation",
+      "feature": "GV-07",
+      "ok": true,
+      "observed": [
+        "GV-07: sufficiency can never be supported"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-287",
+      "area": "graph_validation",
+      "feature": "GV-08",
+      "ok": true,
+      "observed": [
+        "GV-08: find:reconstructability must have exactly one limitation"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-288",
+      "area": "graph_validation",
+      "feature": "GV-09",
+      "ok": true,
+      "observed": [
+        "GV-09: conf:01 statement altered",
+        "GV-11: $.nodes[10].statement claims proof or correctness"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-289",
+      "area": "graph_validation",
+      "feature": "GV-10",
+      "ok": true,
+      "observed": [
+        "GV-07: find:reconstructability supported after a stopped intake",
+        "GV-07: find:identifiable_basis supported after a stopped intake"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-290",
+      "area": "graph_validation",
+      "feature": "GV-11",
+      "ok": true,
+      "observed": [
+        "GV-11: $.findings[0].explanation claims proof or correctness",
+        "GV-11: $.findings[0].explanation \"decision was correct\""
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-291",
+      "area": "graph_validation",
+      "feature": "GV-12",
+      "ok": true,
+      "observed": [
+        "GV-12: nodes and edges must be sorted by id"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-292",
+      "area": "graph_validation",
+      "feature": "GV-13",
+      "ok": true,
+      "observed": [
+        "GV-13: GCC:x correct_contains_directive_or_recommendation"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-293",
+      "area": "graph_validation",
+      "feature": "GV-14",
+      "ok": true,
+      "observed": [
+        "GV-14: prohibited key $.overall_score"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-294",
+      "area": "adapter_response_check",
+      "feature": "V1 transport_timeout",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "transport_timeout",
+        "step": "V1",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-295",
+      "area": "adapter_response_check",
+      "feature": "V2 provider_error",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "provider_error",
+        "step": "V2",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-296",
+      "area": "adapter_response_check",
+      "feature": "V2 provider_error",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "provider_error",
+        "step": "V2",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-297",
+      "area": "adapter_response_check",
+      "feature": "V3 response_truncated",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "response_truncated",
+        "step": "V3",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-298",
+      "area": "adapter_response_check",
+      "feature": "V4 unexpected_content_type",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "unexpected_content_type",
+        "step": "V4",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-299",
+      "area": "adapter_response_check",
+      "feature": "V5 response_too_large",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "response_too_large",
+        "step": "V5",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-300",
+      "area": "adapter_response_check",
+      "feature": "V6 model_refusal",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "model_refusal",
+        "step": "V6",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-301",
+      "area": "adapter_response_check",
+      "feature": "V7 content_outside_json_object",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "content_outside_json_object",
+        "step": "V7",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-302",
+      "area": "adapter_response_check",
+      "feature": "V8 prompt_version_mismatch",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "prompt_version_mismatch",
+        "step": "V8",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-303",
+      "area": "adapter_response_check",
+      "feature": "V9 quote_null_requires_not_assessed",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "code": "quote_null_requires_not_assessed",
+        "step": "V9",
+        "replayed": false,
+        "transport_called": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-304",
+      "area": "adapter_pre_request",
+      "feature": "synthetic_record_id_missing",
+      "ok": true,
+      "observed": {
+        "outcome": "REJECT-PRE",
+        "code": "synthetic_record_id_missing",
+        "transport_called": false
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-305",
+      "area": "adapter_pre_request",
+      "feature": "not_declared_synthetic",
+      "ok": true,
+      "observed": "not_declared_synthetic",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-306",
+      "area": "adapter_pre_request",
+      "feature": "transport_disabled",
+      "ok": true,
+      "observed": "transport_disabled",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-307",
+      "area": "adapter_pre_request",
+      "feature": "request_id_missing",
+      "ok": true,
+      "observed": "request_id_missing",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-308",
+      "area": "adapter_pre_request",
+      "feature": "duplicate_request_id (A-DUP)",
+      "ok": true,
+      "observed": "duplicate_request_id",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-309",
+      "area": "adapter_pre_request",
+      "feature": "duplicate_synthetic_record_id",
+      "ok": true,
+      "observed": "duplicate_synthetic_record_id",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-310",
+      "area": "adapter_pre_request",
+      "feature": "request_limit_reached after 10 requests",
+      "ok": true,
+      "observed": "request_limit_reached",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-311",
+      "area": "adapter_pre_request",
+      "feature": "provider_override_present: forbidden variable names detected (synthetic env object, process env untouched)",
+      "ok": true,
+      "observed": [
+        "ANTHROPIC_BASE_URL",
+        "OPENAI_API_KEY"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-312",
+      "area": "provenance_label",
+      "feature": "mock transport records mock_transport_fixture / mocked, never live",
+      "ok": true,
+      "observed": "mock_transport_fixture",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-313",
+      "area": "capture_pairing",
+      "feature": "pair check passes on an untouched replay",
+      "ok": true,
+      "observed": {
+        "ok": true
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-314",
+      "area": "capture_pairing",
+      "feature": "execution_record_missing_or_unreadable",
+      "ok": true,
+      "observed": {
+        "ok": false,
+        "code": "execution_record_missing_or_unreadable"
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-315",
+      "area": "capture_pairing",
+      "feature": "graph_missing",
+      "ok": true,
+      "observed": {
+        "ok": false,
+        "code": "graph_missing"
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-316",
+      "area": "capture_pairing",
+      "feature": "captured_response_missing",
+      "ok": true,
+      "observed": {
+        "ok": false,
+        "code": "captured_response_missing"
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-317",
+      "area": "capture_pairing",
+      "feature": "graph_sha256_mismatch",
+      "ok": true,
+      "observed": {
+        "ok": false,
+        "code": "graph_sha256_mismatch"
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-318",
+      "area": "capture_pairing",
+      "feature": "captured_response_sha256_mismatch",
+      "ok": true,
+      "observed": {
+        "ok": false,
+        "code": "captured_response_sha256_mismatch"
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-319",
+      "area": "capture_pairing",
+      "feature": "synthetic_record_id_not_registered",
+      "ok": true,
+      "observed": {
+        "ok": false,
+        "code": "synthetic_record_id_not_registered"
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-320",
+      "area": "capture_pairing",
+      "feature": "adapter_identity_mismatch",
+      "ok": true,
+      "observed": {
+        "ok": false,
+        "code": "adapter_identity_mismatch"
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-321",
+      "area": "capture_pairing",
+      "feature": "binding_digest_mismatch",
+      "ok": true,
+      "observed": {
+        "ok": false,
+        "code": "binding_digest_mismatch"
+      },
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-322",
+      "area": "capture_binding_field",
+      "feature": "canonical binding refuses an invalid field",
+      "ok": true,
+      "observed": true,
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-323",
+      "area": "transport",
+      "feature": "write-once raw capture: an existing capture file is never overwritten",
+      "ok": true,
+      "observed": true,
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-324",
+      "area": "live_boundary_refusal",
+      "feature": "fully authorized context has no refusal (reference case)",
+      "ok": true,
+      "observed": [],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-325",
+      "area": "live_boundary_refusal",
+      "feature": "offline_mode_live_transport_not_permitted",
+      "ok": true,
+      "observed": [
+        "offline_mode_live_transport_not_permitted"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-326",
+      "area": "live_boundary_refusal",
+      "feature": "gate1_not_cleared",
+      "ok": true,
+      "observed": [
+        "gate1_not_cleared"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-327",
+      "area": "live_boundary_refusal",
+      "feature": "authorization_absent",
+      "ok": true,
+      "observed": [
+        "authorization_absent"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-328",
+      "area": "live_boundary_refusal",
+      "feature": "authorization_integrity_mismatch",
+      "ok": true,
+      "observed": [
+        "authorization_integrity_mismatch"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-329",
+      "area": "live_boundary_refusal",
+      "feature": "authorization_field_absent:owner_signature",
+      "ok": true,
+      "observed": [
+        "authorization_field_absent:owner_signature"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-330",
+      "area": "live_boundary_refusal",
+      "feature": "credential_field_must_be_a_variable_name",
+      "ok": true,
+      "observed": [
+        "credential_field_must_be_a_variable_name"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-331",
+      "area": "live_boundary_refusal",
+      "feature": "authorization_expired_or_invalid_expiry",
+      "ok": true,
+      "observed": [
+        "authorization_expired_or_invalid_expiry"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-332",
+      "area": "live_boundary_refusal",
+      "feature": "maximum_requests_outside_cap",
+      "ok": true,
+      "observed": [
+        "maximum_requests_outside_cap"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-333",
+      "area": "live_boundary_refusal",
+      "feature": "provider_differs_from_authorization",
+      "ok": true,
+      "observed": [
+        "provider_differs_from_authorization"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-334",
+      "area": "live_boundary_refusal",
+      "feature": "model_identifier_differs_from_authorization",
+      "ok": true,
+      "observed": [
+        "model_identifier_differs_from_authorization"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-335",
+      "area": "live_boundary_refusal",
+      "feature": "material_not_classified_synthetic_development",
+      "ok": true,
+      "observed": [
+        "material_not_classified_synthetic_development"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-336",
+      "area": "live_boundary_refusal",
+      "feature": "duplicate_synthetic_record_id",
+      "ok": true,
+      "observed": [
+        "duplicate_synthetic_record_id"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-337",
+      "area": "live_boundary_refusal",
+      "feature": "request_absent",
+      "ok": true,
+      "observed": [
+        "request_absent"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-338",
+      "area": "live_boundary_refusal",
+      "feature": "request_limit_would_be_exceeded",
+      "ok": true,
+      "observed": [
+        "request_limit_would_be_exceeded"
+      ],
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-339",
+      "area": "live_boundary_refusal",
+      "feature": "live_dispatch_not_enabled_in_this_build: sender never called even when authorized",
+      "ok": true,
+      "observed": "live_dispatch_not_enabled_in_this_build",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-340",
+      "area": "live_boundary_refusal",
+      "feature": "safe writer refuses a registered sentinel value",
+      "ok": true,
+      "observed": "credential_value_in_output",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-341",
+      "area": "live_boundary_refusal",
+      "feature": "safe writer refuses a credential-shaped string",
+      "ok": true,
+      "observed": "credential_shaped_value_in_output",
+      "version_dependent": null,
+      "unreachable": false
+    },
+    {
+      "id": "FP-342",
+      "area": "transport",
+      "feature": "network guard: fetch and sockets are trapped and counted",
+      "ok": true,
+      "observed": 2,
+      "version_dependent": null,
+      "unreachable": false
+    }
+  ]
+}

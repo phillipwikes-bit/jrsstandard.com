@@ -1,0 +1,1 @@
+Incident review record. The review concludes that the payments portal outage on 11 November was caused by an operational fault. The fault is identified as the cause because it was the reason for the outage, and the outage is explained by the fault.
