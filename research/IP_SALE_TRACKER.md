@@ -15,8 +15,8 @@
 | | |
 |---|---|
 | **Created** | 2026-08-13 |
-| **Last revised** | 2026-10-27 (rev 37) |
-| **Revisions** | 37 |
+| **Last revised** | 2026-10-27 (rev 38) |
+| **Revisions** | 38 |
 | **Current stage** | **Zero buyer conversations held, because I advised waiting. Gate withdrawn 2026-08-13** |
 | **Sale probability, as-is** | **5 to 10%** over ~12 months (owner's own anchor, `Path_to_Sale_Action_Plan.md`, unchanged) |
 
@@ -179,6 +179,7 @@ GRC / compliance software vendors · E-discovery and legal-tech · HR-tech and p
 
 | # | Date | Change |
 |---|---|---|
+| 38 | 2026-10-27 | **Correction to revision 37: the 156-record study package is now committed and public on GitHub.** Revision 37 recorded the package as uncommitted. On the owner's explicit approval it was committed as `0c8b98a` and pushed to `claude/engine-reliability-phase6-local` (draft PR #42). The repository is public, so the package (synthetic records, research rules, mock candidates, blinded forms and their key, reports) is now disclosed on GitHub. `research/` stays excluded from deployment by `.vercelignore`, and nothing is merged to `main`. No credential, capture or personal data is in the package. **The asset position in revision 37 is unchanged: no accuracy, validation or readiness claim follows from the study.** |
 | 37 | 2026-10-27 | **Engine study evidence: offline only; no asset claim changes.** A 156-record offline study of the Review Engine (`research/study-156-2026-10-27/`, uncommitted) gives a buyer's technical reviewer a reproducible record of the Engine's offline behaviour: it refuses what it should, never raises a status, gives no verdicts, and is deterministic. It also gives the failures that reviewer would find: an irrelevant dated or numbered sentence lets an over-claiming candidate make flawed records look clean (15 of 24); indirect injection is not detected; agreement drops on record families the rules were not written on. Nothing is independent; references are AI-authored; no model was run. **No accuracy, validation or readiness claim may be made from it**, and none was added to any page. Bears on asset value only as diligence evidence of what is and is not established. |
 | 36 | 2026-09-22 | **The exit-strategy website release is published and verified live.** GitHub `main` now contains the licensing-readiness corrections, revised homepage, expanded enterprise pathway, public Manifest package, unified API contract, preserved free resources, navigation repairs, and website-quality controls. The production homepage and the Enterprise, Manifest, and Resources pathways were inspected directly at `https://www.jrsstandard.com/`. The temporary release transport was removed from the repository. Publication improves public comprehension and transaction inquiry readiness; it does not establish buyer demand, cleared exclusive rights, an executed licence, or readiness to sign an asset purchase agreement. Counsel determinations remain open. |
 | 35 | 2026-09-22 | **The repaired website is not live because the release never reached GitHub `main`.** The files and verified commits exist only in this workspace. Git rejected the terminal push for lack of credentials; browser authentication did not transfer a Git credential to the terminal; Vercel therefore received no new commit. The failure concerns publication access only. It does not change the repaired content, test results, rights status, or exit-strategy position. |
