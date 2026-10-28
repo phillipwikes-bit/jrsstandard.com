@@ -466,7 +466,8 @@
       "created": "2026-10-28",
       "note": "Recorded: the fact and date of the exposure and the owner's request to use the credential, ONLY. Deliberately not recorded: the value, prefix, length, hash or any derivative. The PRE check is not held by this record alone: it also needs the owner's signature and date, an expiry, the account's provider-retention arrangement and a capture deletion rule (PRE_CHECK_STATUS_2026-10-28.md). Closure follows the B-001 precedent: the owner's attestation of revocation is the evidence class.",
       "next_action_by": "OWNER",
-      "next_action_basis": "Revocation is performed in the provider console, outside the repository; only the account holder can do it."
+      "next_action_basis": "Revocation is performed in the provider console, outside the repository; only the account holder can do it.",
+      "update_2026_10_28_second_paste": "A second credential was pasted into the session conversation on 2026-10-28, after the owner's execution authorization named the environment secret JRS_STUDY_ANTHROPIC_KEY as the only credential source and excluded the previously pasted key. It is exposed by that act and is treated as compromised. It was not used, tested, recovered, reproduced or hashed, and no provider request was sent. Both pasted credentials must be revoked; the key configured as JRS_STUDY_ANTHROPIC_KEY must be newly issued and never pasted. Status unchanged: OPEN."
     }
   ],
   "_decisions_recorded_2026_09_15": {
