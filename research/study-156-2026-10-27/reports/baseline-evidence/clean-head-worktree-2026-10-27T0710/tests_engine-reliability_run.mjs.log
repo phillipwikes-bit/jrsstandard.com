@@ -1,0 +1,353 @@
+
+# A. Starting state, prior packages and protected surfaces preserved
+FAIL  HEAD is the starting commit 428c307 (no commit made)
+FAIL  working branch is claude/engine-reliability-phase6-local
+PASS  PR #40 branch still points at 428c307
+FAIL  no tracked file differs from the starting commit
+        lib/engine-evidence-graph-v0.3.1-candidate/assertions.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/conditions.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/contract.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/controls.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/evaluation/factory.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/graph-validate.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/quote-resolution.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/record.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/response.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/rule-pack
+PASS  every new file is inside the four Phase 6 locations
+PASS  no new file under a prior package, public route, API, deployment or canonical record path
+PASS  B-018 remains OPEN and BLOCKERS.json is unchanged
+PASS  public Engine routes remain refusal-only
+PASS  v0.3 release status remains NO_GO_NOT_VERIFIED
+PASS  no holdout, label or adjudication file in the Phase 6 package
+PASS  no source-aligned controlling file in the work
+
+# B. Baseline behaviour manifest
+PASS  every existing synthetic scenario has a baseline record (192 of 192, counted from the prior registers)
+PASS  manifest hash matches its content
+PASS  every record carries the required fields
+PASS  every record has a deterministic output hash
+PASS  every record hash recomputes from its content
+PASS  only the five baseline classes are used
+PASS  every class is represented
+PASS  documented open failures carried as known_open_failure
+PASS  no record, class or basis uses a forbidden status word
+PASS  release status recorded as NO_GO_NOT_VERIFIED
+PASS  rebuilt manifest reproduces the recorded hash
+PASS  differential replay of rebuilt against recorded: no behavioural difference
+PASS  PHASE6_BASELINE_HASHES.json agrees with the manifest
+PASS  summary carries the three required statements
+
+# C. Synthetic regression library
+PASS  at least 60 new scenarios (62)
+PASS  category evidence_quotation_span_integrity has at least 10 (11)
+PASS  category presence_versus_semantic_support has at least 10 (10)
+PASS  category chronology_ambiguity_conflict_omission has at least 10 (10)
+PASS  category reasoning_traceability_unsupported_conclusions has at least 8 (8)
+PASS  category sufficiency_missing_decision_basis has at least 8 (8)
+PASS  category cognitive_controls_neutrality_bounded_language has at least 6 (6)
+PASS  category excluded_domain_reworded_scope has at least 4 (4)
+PASS  category instruction_injection_malformed_input has at least 4 (5)
+PASS  every scenario admitted: marker, provenance, category, kind, safe behaviour, limitation
+PASS  every scenario begins with the synthetic-material marker
+PASS  every expectation kind is one of the four
+PASS  expectation seal holds (expectations, inputs and evaluator unchanged since sealing)
+PASS  seal predates the first execution
+PASS  first run was against the same seal
+PASS  no authoring-defect record exists, so no expectation was revised
+PASS  current run reproduces the recorded results
+PASS  current run reproduces the first run exactly
+PASS  no known open failure is reported as not reproduced
+PASS  every known_open_failure scenario reproduced its predicted failure (10)
+PASS  every known_open_failure scenario names a register entry
+PASS  every unexpected result is recorded as an open register entry from the first run (P6-RT-07)
+PASS  every invariant, degradation and refusal scenario other than recorded unexpected results is as expected
+PASS  no universal invariant violation in any compiled scenario
+PASS  no scenario reached a status above its sealed ceiling except a recorded known open failure
+
+# D. Direct probes on the unmutated framework (differ, register, library, baseline, stability)
+PASS  d.identical_no_difference
+PASS  d.never_applies
+PASS  d.inputs_not_mutated
+PASS  d.limitation_kind_loss_fails_closed
+PASS  d.limitation_absent_fails_closed
+PASS  d.review_route_removed_fails_closed
+PASS  d.refusal_loss_fails_closed
+PASS  d.quote_refusal_loss_fails_closed
+PASS  d.low_to_favorable_fails_closed
+PASS  d.gap_to_supported_routes_review
+PASS  d.supported_without_trail_fails_closed
+PASS  d.offset_change_unexplained_fails_closed
+PASS  d.offset_change_explained_presentation
+PASS  d.quote_text_change_unexplained_fails_closed
+PASS  d.quote_text_change_explained_presentation
+PASS  d.quote_becomes_usable_unexplained_fails_closed
+PASS  d.degradation_unexplained_review
+PASS  d.degradation_explained_expected
+PASS  d.refusal_gained_classified
+PASS  d.gate_refuse_to_proceed_scope_defect
+PASS  d.instruction_detection_lost_scope_defect
+PASS  d.candidate_refusal_lost_scope_defect
+PASS  d.version_mismatch_fails_closed
+PASS  d.version_change_recorded_allowed
+PASS  d.package_mismatch_fails_closed
+PASS  d.malformed_input_fails_closed
+PASS  d.missing_condition_fails_closed
+PASS  d.tampered_hash_fails_closed
+PASS  d.release_status_change_scope_defect
+PASS  d.structure_change_classified
+PASS  d.manifest_identical_no_difference
+PASS  d.manifest_incomplete_fails_closed
+PASS  d.manifest_hash_tamper_fails_closed
+PASS  d.manifest_format_checked
+PASS  d.manifest_drift_detected
+PASS  r.valid_chain
+PASS  r.edited_entry_detected
+PASS  r.rewritten_entry_breaks_chain
+PASS  r.deleted_entry_breaks_chain
+PASS  r.reordered_entries_break_chain
+PASS  r.append_only_detects_rewrite
+PASS  r.personal_data_refused
+PASS  r.forbidden_status_word_refused
+PASS  r.duplicate_id_detected
+PASS  r.supersedes_must_be_earlier
+PASS  l.marker_required
+PASS  l.provenance_required
+PASS  l.category_prefix_required
+PASS  l.known_failure_needs_prediction
+PASS  l.personal_data_refused
+PASS  l.real_scenario_admitted
+PASS  l.seal_detects_expectation_edit
+PASS  l.seal_detects_record_edit
+PASS  l.seal_detects_evaluator_change
+PASS  l.ceiling_enforced
+PASS  l.known_failure_reproduced
+PASS  l.known_failure_prediction_checked
+PASS  l.known_failure_not_reproduced_routed
+PASS  l.expected_gate_checked
+PASS  l.universal_limitation_required
+PASS  l.universal_duplicate_limitation_detected
+PASS  l.universal_review_route_required
+PASS  l.universal_no_assessment_after_refusal
+PASS  l.universal_sufficiency_never_supported
+PASS  l.universal_instruction_limitation
+PASS  l.universal_evidence_trail
+PASS  l.universal_clean_graph_has_none
+PASS  b.limitation_kinds_v03
+PASS  b.behaviour_hash_excludes_offsets
+PASS  b.evidence_trail_counted
+PASS  b.refusal_class
+PASS  b.known_failure_precedence
+PASS  b.not_assessed_class
+PASS  b.unsupported_class
+PASS  b.expected_class
+PASS  b.manifest_hash_tamper_detected
+PASS  s.invariant_requires_invariant_verdict
+PASS  s.damage_cannot_be_invariant
+PASS  s.invariant_degradation_flagged
+PASS  s.real_invariant_passes
+
+# E. Knowledge register
+PASS  hash chain and every entry valid (14 entries)
+PASS  every entry records origin, layer, risk, scenarios, expected behaviour, limitation, state, suite and independent-evaluation flag
+PASS  only open, reproduced, mitigated or deferred states
+PASS  register has no personal data, contributor field, external link or forbidden status word
+PASS  register rebuild is append-only and idempotent
+PASS  every scenario referenced by the register exists
+
+# F. Metamorphic stability
+PASS  at least 20 transforms (27)
+PASS  at least half of the invariant transforms start from a non-favourable base (7 of 10)
+PASS  transform family present: formatting
+PASS  transform family present: irrelevant additions
+PASS  transform family present: reordered sections
+PASS  transform family present: duplicate quotations
+PASS  transform family present: missing decision dates
+PASS  transform family present: conflicting dates
+PASS  transform family present: ambiguous language
+PASS  transform family present: reworded out-of-scope material
+PASS  transform family present: instruction-like text
+PASS  transform family present: missing evidence
+PASS  transform family present: weakened limitation text
+PASS  transform seal holds
+PASS  transform seal predates the first run
+PASS  every transform as expected or a reproduced documented open failure
+PASS  no invariant transform shows a favourable transition
+PASS  every invariant transform from a non-favourable base kept its non-favourable statuses
+PASS  every damaged-output transform failed closed
+PASS  results reproduce the recorded and first runs
+
+# G. Determinism: five full passes
+PASS  five passes: identical library_results_hash
+PASS  five passes: identical library_records_hash
+PASS  five passes: identical stability_results_hash
+PASS  five passes: identical baseline_manifest_hash
+PASS  five passes: identical graph_hashes
+
+# H. Local engineering performance budgets (not production performance)
+PASS  budget replay_completion_ms: 3667.3 <= 20000
+PASS  budget baseline_comparison_ms: 102.5 <= 1000
+PASS  budget fixture_loading_ms: 9.1 <= 1000
+PASS  budget malformed_input_refusal_ms_per_1000: 8.5 <= 1000
+PASS  budget failure_cleanup_ms: 17.2 <= 3000
+PASS  cleanup left no temporary directory
+PASS  replay verify ran offline with no network attempt
+
+# I. Mutation tests (64 deliberate defects in copies of lib/engine-reliability)
+PASS  every probe passes on the unmutated framework (80)
+PASS  MU-01 (limitation removal detection, differ.mjs) killed by d.limitation_kind_loss_fails_closed
+PASS  MU-02 (limitation removal detection, differ.mjs) killed by d.limitation_absent_fails_closed
+PASS  MU-03 (limitation removal detection, differ.mjs) killed by d.review_route_removed_fails_closed
+PASS  MU-04 (refusal-loss detection, differ.mjs) killed by d.refusal_loss_fails_closed, d.quote_refusal_loss_fails_closed
+PASS  MU-05 (refusal-loss detection, differ.mjs) killed by d.quote_refusal_loss_fails_closed
+PASS  MU-06 (refusal-loss detection, differ.mjs) killed by d.gate_refuse_to_proceed_scope_defect
+PASS  MU-07 (refusal-loss detection, differ.mjs) killed by d.candidate_refusal_lost_scope_defect
+PASS  MU-08 (refusal-loss detection, differ.mjs) killed by d.instruction_detection_lost_scope_defect
+PASS  MU-09 (favorable-transition detection, differ.mjs) killed by d.low_to_favorable_fails_closed, d.manifest_drift_detected
+PASS  MU-10 (favorable-transition detection, differ.mjs) killed by d.low_to_favorable_fails_closed, d.gap_to_supported_routes_review, d.manifest_drift_detected
+PASS  MU-11 (favorable-transition detection, differ.mjs) killed by d.supported_without_trail_fails_closed
+PASS  MU-12 (favorable-transition detection, differ.mjs) killed by d.gap_to_supported_routes_review
+PASS  MU-13 (quote and offset integrity, differ.mjs) killed by d.offset_change_unexplained_fails_closed
+PASS  MU-14 (quote and offset integrity, differ.mjs) killed by d.quote_text_change_unexplained_fails_closed
+PASS  MU-15 (quote and offset integrity, differ.mjs) killed by d.quote_becomes_usable_unexplained_fails_closed
+PASS  MU-16 (hash integrity, differ.mjs) killed by d.tampered_hash_fails_closed
+PASS  MU-17 (version mismatch, differ.mjs) killed by d.version_mismatch_fails_closed
+PASS  MU-18 (version mismatch, differ.mjs) killed by d.package_mismatch_fails_closed
+PASS  MU-19 (malformed comparison inputs, differ.mjs) killed by d.malformed_input_fails_closed
+PASS  MU-20 (malformed comparison inputs, differ.mjs) killed by d.missing_condition_fails_closed
+PASS  MU-22 (differential classifications, differ.mjs) killed by d.limitation_kind_loss_fails_closed, d.limitation_absent_fails_closed, d.review_route_removed_fails_closed (+18)
+PASS  MU-23 (differential classifications, differ.mjs) killed by d.limitation_kind_loss_fails_closed, d.limitation_absent_fails_closed, d.review_route_removed_fails_closed (+13)
+PASS  MU-24 (differential classifications, differ.mjs) killed by d.degradation_unexplained_review
+PASS  MU-25 (differential classifications, differ.mjs) killed by d.refusal_gained_classified
+PASS  MU-26 (differential classifications, differ.mjs) killed by d.structure_change_classified
+PASS  MU-27 (differential classifications, differ.mjs) killed by d.release_status_change_scope_defect
+PASS  MU-28 (differential classifications, differ.mjs) killed by d.never_applies
+PASS  MU-29 (differential classifications, differ.mjs) killed by d.inputs_not_mutated
+PASS  MU-30 (malformed comparison inputs, differ.mjs) killed by d.manifest_incomplete_fails_closed
+PASS  MU-31 (hash integrity, differ.mjs) killed by d.manifest_hash_tamper_fails_closed
+PASS  MU-32 (version mismatch, differ.mjs) killed by d.manifest_format_checked
+PASS  MU-33 (hash-chain integrity, register.mjs) killed by r.rewritten_entry_breaks_chain, r.deleted_entry_breaks_chain, r.reordered_entries_break_chain
+PASS  MU-34 (hash-chain integrity, register.mjs) killed by r.edited_entry_detected
+PASS  MU-35 (hash-chain integrity, register.mjs) killed by r.append_only_detects_rewrite
+PASS  MU-36 (scenario provenance, register.mjs) killed by r.personal_data_refused
+PASS  MU-37 (hash-chain integrity, register.mjs) killed by r.duplicate_id_detected
+PASS  MU-38 (scenario provenance, register.mjs) killed by r.forbidden_status_word_refused
+PASS  MU-39 (hash-chain integrity, register.mjs) killed by r.supersedes_must_be_earlier
+PASS  MU-40 (scenario provenance, library.mjs) killed by l.marker_required
+PASS  MU-41 (scenario provenance, library.mjs) killed by l.provenance_required
+PASS  MU-42 (scenario provenance, library.mjs) killed by l.known_failure_needs_prediction
+PASS  MU-43 (scenario provenance, library.mjs) killed by l.category_prefix_required
+PASS  MU-44 (scenario provenance, library.mjs) killed by l.personal_data_refused
+PASS  MU-45 (scenario provenance, library.mjs) killed by l.seal_detects_expectation_edit
+PASS  MU-46 (scenario provenance, library.mjs) killed by l.seal_detects_record_edit
+PASS  MU-47 (scenario provenance, library.mjs) killed by l.seal_detects_evaluator_change
+PASS  MU-48 (favorable-transition detection, library.mjs) killed by l.ceiling_enforced, l.known_failure_reproduced, l.known_failure_prediction_checked
+PASS  MU-49 (differential classifications, library.mjs) killed by l.known_failure_prediction_checked
+PASS  MU-50 (differential classifications, library.mjs) killed by l.known_failure_not_reproduced_routed
+PASS  MU-51 (limitation removal detection, library.mjs) killed by l.universal_duplicate_limitation_detected
+PASS  MU-52 (limitation removal detection, library.mjs) killed by l.universal_review_route_required
+PASS  MU-53 (refusal-loss detection, library.mjs) killed by l.universal_no_assessment_after_refusal
+PASS  MU-54 (favorable-transition detection, library.mjs) killed by l.universal_sufficiency_never_supported
+PASS  MU-55 (limitation removal detection, library.mjs) killed by l.universal_instruction_limitation
+PASS  MU-56 (favorable-transition detection, library.mjs) killed by l.universal_evidence_trail
+PASS  MU-57 (refusal-loss detection, library.mjs) killed by l.expected_gate_checked
+PASS  MU-58 (limitation removal detection, baseline.mjs) killed by d.limitation_kind_loss_fails_closed, l.known_failure_reproduced, l.known_failure_not_reproduced_routed (+3)
+PASS  MU-59 (quote and offset integrity, baseline.mjs) killed by d.identical_no_difference, d.limitation_kind_loss_fails_closed, d.limitation_absent_fails_closed (+19)
+PASS  MU-60 (favorable-transition detection, baseline.mjs) killed by d.gap_to_supported_routes_review, d.supported_without_trail_fails_closed, d.offset_change_explained_presentation (+8)
+PASS  MU-61 (differential classifications, baseline.mjs) killed by b.known_failure_precedence
+PASS  MU-62 (differential classifications, baseline.mjs) killed by b.refusal_class
+PASS  MU-63 (differential classifications, stability.mjs) killed by s.invariant_requires_invariant_verdict
+PASS  MU-64 (differential classifications, stability.mjs) killed by s.damage_cannot_be_invariant
+PASS  MU-65 (differential classifications, stability.mjs) killed by s.invariant_degradation_flagged
+PASS  at least 40 mutations, all killed by a direct probe, none a load failure (64/64)
+PASS  every required mutation area is covered
+PASS  mutation temporary directories cleaned up
+
+# J. Static review workbench
+PASS  workbench pages present (9)
+PASS  baseline.html: three required statements
+PASS  baseline.html: no script, form, input, upload, iframe or network URL
+PASS  baseline.html: links only to local workbench pages
+PASS  baseline.html: no unnegated readiness or validation claim
+PASS  classifications.html: three required statements
+PASS  classifications.html: no script, form, input, upload, iframe or network URL
+PASS  classifications.html: links only to local workbench pages
+PASS  classifications.html: no unnegated readiness or validation claim
+PASS  decisions.html: three required statements
+PASS  decisions.html: no script, form, input, upload, iframe or network URL
+PASS  decisions.html: links only to local workbench pages
+PASS  decisions.html: no unnegated readiness or validation claim
+PASS  index.html: three required statements
+PASS  index.html: no script, form, input, upload, iframe or network URL
+PASS  index.html: links only to local workbench pages
+PASS  index.html: no unnegated readiness or validation claim
+PASS  limitations.html: three required statements
+PASS  limitations.html: no script, form, input, upload, iframe or network URL
+PASS  limitations.html: links only to local workbench pages
+PASS  limitations.html: no unnegated readiness or validation claim
+PASS  mutations.html: three required statements
+PASS  mutations.html: no script, form, input, upload, iframe or network URL
+PASS  mutations.html: links only to local workbench pages
+PASS  mutations.html: no unnegated readiness or validation claim
+PASS  open-failures.html: three required statements
+PASS  open-failures.html: no script, form, input, upload, iframe or network URL
+PASS  open-failures.html: links only to local workbench pages
+PASS  open-failures.html: no unnegated readiness or validation claim
+PASS  scenarios.html: three required statements
+PASS  scenarios.html: no script, form, input, upload, iframe or network URL
+PASS  scenarios.html: links only to local workbench pages
+PASS  scenarios.html: no unnegated readiness or validation claim
+PASS  stability.html: three required statements
+PASS  stability.html: no script, form, input, upload, iframe or network URL
+PASS  stability.html: links only to local workbench pages
+PASS  stability.html: no unnegated readiness or validation claim
+PASS  rendered every page at desktop and mobile widths
+PASS  zero non-file requests while rendering
+PASS  no horizontal overflow on desktop or mobile
+PASS  no script executed (JavaScript disabled while rendering)
+
+# K. Handoff documents
+PASS  README.md: exists with the local-engineering status line
+PASS  README.md: no unnegated readiness or validation claim
+PASS  README.md: no em-dash
+PASS  PHASE6_HANDOFF.md: exists with the local-engineering status line
+PASS  PHASE6_HANDOFF.md: no unnegated readiness or validation claim
+PASS  PHASE6_HANDOFF.md: no em-dash
+PASS  BASELINE_PROTOCOL.md: exists with the local-engineering status line
+PASS  BASELINE_PROTOCOL.md: no unnegated readiness or validation claim
+PASS  BASELINE_PROTOCOL.md: no em-dash
+PASS  REGRESSION_LIBRARY_PROTOCOL.md: exists with the local-engineering status line
+PASS  REGRESSION_LIBRARY_PROTOCOL.md: no unnegated readiness or validation claim
+PASS  REGRESSION_LIBRARY_PROTOCOL.md: no em-dash
+PASS  CHANGE_IMPACT_CLASSIFICATION.md: exists with the local-engineering status line
+PASS  CHANGE_IMPACT_CLASSIFICATION.md: no unnegated readiness or validation claim
+PASS  CHANGE_IMPACT_CLASSIFICATION.md: no em-dash
+PASS  FIXTURE_GOVERNANCE.md: exists with the local-engineering status line
+PASS  FIXTURE_GOVERNANCE.md: no unnegated readiness or validation claim
+PASS  FIXTURE_GOVERNANCE.md: no em-dash
+PASS  MUTATION_TEST_RECORD.md: exists with the local-engineering status line
+PASS  MUTATION_TEST_RECORD.md: no unnegated readiness or validation claim
+PASS  MUTATION_TEST_RECORD.md: no em-dash
+PASS  STABILITY_TEST_RECORD.md: exists with the local-engineering status line
+PASS  STABILITY_TEST_RECORD.md: no unnegated readiness or validation claim
+PASS  STABILITY_TEST_RECORD.md: no em-dash
+PASS  PERFORMANCE_RECORD.md: exists with the local-engineering status line
+PASS  PERFORMANCE_RECORD.md: no unnegated readiness or validation claim
+PASS  PERFORMANCE_RECORD.md: no em-dash
+PASS  KNOWN_FAILURE_MODES.md: exists with the local-engineering status line
+PASS  KNOWN_FAILURE_MODES.md: no unnegated readiness or validation claim
+PASS  KNOWN_FAILURE_MODES.md: no em-dash
+PASS  OWNER_DECISION_REGISTER.md: exists with the local-engineering status line
+PASS  OWNER_DECISION_REGISTER.md: no unnegated readiness or validation claim
+PASS  OWNER_DECISION_REGISTER.md: no em-dash
+PASS  EXECUTION_RECORD.md: exists with the local-engineering status line
+PASS  EXECUTION_RECORD.md: no unnegated readiness or validation claim
+PASS  EXECUTION_RECORD.md: no em-dash
+PASS  handoff separates local engineering evidence from independent evaluation evidence
+PASS  handoff states NO_GO_NOT_VERIFIED is unchanged
+PASS  suite made no network attempt
+
+316 checks: 313 passed, 3 failed, 0 skipped
+failed: HEAD is the starting commit 428c307 (no commit made); working branch is claude/engine-reliability-phase6-local; no tracked file differs from the starting commit

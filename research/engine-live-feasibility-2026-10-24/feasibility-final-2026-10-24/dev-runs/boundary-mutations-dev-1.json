@@ -1,0 +1,163 @@
+{
+  "mutations": [
+    {
+      "id": "B01",
+      "description": "Gate 1 check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-01"
+      ],
+      "observed_failures": [
+        "LT-01"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B02",
+      "description": "Dispatch lock released",
+      "applied": true,
+      "expected_failures": [
+        "LT-13"
+      ],
+      "observed_failures": [
+        "LT-13"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B03",
+      "description": "Model check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-05"
+      ],
+      "observed_failures": [
+        "LT-05"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B04",
+      "description": "Provider check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-04"
+      ],
+      "observed_failures": [
+        "LT-04"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B05",
+      "description": "Credential sentinel check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-12"
+      ],
+      "observed_failures": [
+        "LT-12"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B06",
+      "description": "Offline-mode check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-11"
+      ],
+      "observed_failures": [
+        "LT-11"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B07",
+      "description": "Request cap check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-06"
+      ],
+      "observed_failures": [
+        "LT-06"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B08",
+      "description": "Duplicate record check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-10"
+      ],
+      "observed_failures": [
+        "LT-10"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B09",
+      "description": "Expiry check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-03"
+      ],
+      "observed_failures": [
+        "LT-03"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B10",
+      "description": "Brand check removed from adapter",
+      "applied": true,
+      "expected_failures": [
+        "LT-15"
+      ],
+      "observed_failures": [
+        "LT-15"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B11",
+      "description": "Synthetic classification check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-09"
+      ],
+      "observed_failures": [
+        "LT-09"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B12",
+      "description": "Required-field check removed",
+      "applied": true,
+      "expected_failures": [
+        "LT-07",
+        "LT-08"
+      ],
+      "observed_failures": [
+        "LT-07",
+        "LT-08"
+      ],
+      "detected": true
+    },
+    {
+      "id": "B13",
+      "description": "Mock response labeled as live",
+      "applied": true,
+      "expected_failures": [
+        "LT-14"
+      ],
+      "observed_failures": [
+        "LT-14"
+      ],
+      "detected": true
+    }
+  ],
+  "all_detected": true
+}

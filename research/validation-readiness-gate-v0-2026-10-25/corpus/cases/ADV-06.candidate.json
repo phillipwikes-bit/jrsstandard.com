@@ -1,0 +1,8 @@
+{
+  "envelope": {
+    "status": "error",
+    "error": {
+      "type": "synthetic_error"
+    }
+  }
+}

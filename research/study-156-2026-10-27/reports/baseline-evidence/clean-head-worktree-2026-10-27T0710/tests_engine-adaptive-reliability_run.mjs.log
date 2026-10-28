@@ -1,0 +1,298 @@
+
+# A. Prior versions and protected surfaces preserved
+PASS  lib/engine-assurance unchanged since 5d5374b
+PASS  lib/engine-evidence-contract unchanged since 5d5374b
+PASS  lib/engine-evidence-graph unchanged since 5d5374b
+PASS  lib/manifest unchanged since 5d5374b
+PASS  api unchanged since 5d5374b
+PASS  research/engine-assurance-2026-10-10 unchanged since 5d5374b
+PASS  research/engine-evidence-contract-2026-10-10 unchanged since 5d5374b
+PASS  research/evidence-graph-compiler-2026-10-10 unchanged since 5d5374b
+PASS  tests/engine-assurance unchanged since 5d5374b
+PASS  tests/engine-evidence-contract unchanged since 5d5374b
+PASS  tests/engine-evidence-graph unchanged since 5d5374b
+FAIL  tools unchanged since 5d5374b
+PASS  .jrs unchanged since 5d5374b
+PASS  docs unchanged since 5d5374b
+PASS  vercel.json unchanged since 5d5374b
+PASS  openapi.json unchanged since 5d5374b
+PASS  sitemap.xml unchanged since 5d5374b
+PASS  .vercelignore unchanged since 5d5374b
+PASS  .github unchanged since 5d5374b
+PASS  public pages unchanged (52 root HTML files)
+PASS  historical v1 copy still hashes to git blob baebb512
+PASS  public Engine routes remain refusal-only
+PASS  B-018 remains OPEN
+PASS  v0.1, v0.2 and v0.3 suites remain separately identifiable
+PASS  no holdout, label or adjudication file in the Phase 4 package
+
+# B. Reliability Knowledge Base
+PASS  at least 40 entries (60)
+PASS  hash chain and every entry valid
+PASS  all nine required failure classes covered
+PASS  only permitted source types and statuses
+PASS  no entry uses a forbidden status word
+PASS  every entry requires a human decision and states a limitation
+PASS  every open failure has a knowledge entry
+PASS  a superseding entry names an earlier entry
+
+# C. Change proposals, observed change, impact analysis and regression selection
+PASS  R-01 -> awaiting_human_review
+PASS  R-02 -> awaiting_human_review
+PASS  R-03 -> blocked_missing_observed_change
+PASS  R-04 -> blocked_missing_observed_change
+PASS  R-05 -> awaiting_human_review
+PASS  R-06 -> awaiting_human_review
+PASS  R-07 -> awaiting_human_review
+PASS  R-08 -> awaiting_human_review
+PASS  R-09 -> blocked_missing_observed_change
+PASS  R-10 -> blocked_missing_observed_change
+PASS  X-01 -> rejected_by_compiler (scope_expansion_into_regulated_domain)
+PASS  X-02 -> rejected_by_compiler (observed_refusal_removed)
+PASS  X-03 -> rejected_by_compiler (evidence_requirement_lowered)
+PASS  X-04 -> rejected_by_compiler (behavioural_change_without_test_plan)
+PASS  X-05 -> rejected_by_compiler (external_result_claimed_from_local_material)
+PASS  X-06 -> rejected_by_compiler (production_or_public_target)
+PASS  X-07 -> rejected_by_compiler (rollback_missing)
+PASS  X-08 -> rejected_by_compiler (synthetic_fixture_treated_as_independent)
+PASS  X-09 -> rejected_by_compiler (self_authorization_attempt)
+PASS  X-10 -> rejected_by_compiler (limitation_removed_or_weakened)
+PASS  Y-01 -> rejected_by_compiler (scope_expansion_into_regulated_domain)
+PASS  Y-02 -> rejected_by_compiler (observed_excluded_domain_unrefused)
+PASS  Y-03 -> blocked_pending_human_disposition
+PASS  Y-04 -> rejected_by_compiler (observed_refusal_removed)
+PASS  Y-05 -> rejected_by_compiler (external_result_claimed_from_local_material)
+PASS  Y-06 -> rejected_by_compiler (release_gate_advancement_not_authorized)
+PASS  Y-07 -> rejected_by_compiler (observed_limitation_removed)
+PASS  Y-08 -> rejected_by_compiler (production_or_public_target)
+PASS  Y-09 -> awaiting_human_review
+PASS  Y-10 -> rejected_by_compiler (external_result_claimed_from_local_material)
+PASS  Y-11 -> rejected_by_compiler (self_declared_drift_not_accepted)
+PASS  Y-12 -> rejected_by_compiler (human_disposition_not_settable)
+PASS  every request has an expected state
+PASS  only the four permitted authorization states occur
+PASS  every behavioural proposal awaiting review carries a verified observed-change record
+PASS  every recorded observed-change record verifies against its request and the current packages
+PASS  no proposal or observed record carries a human disposition
+PASS  no request supplies expected drift except the refused Y-11
+PASS  every awaiting proposal has a traceable trigger, impact, test plan, rollback and human-review state
+PASS  behavioural proposals carry regression and mutation tests and a version increment
+PASS  impact is classified from observation for every behavioural proposal with a record
+PASS  behavioural proposals without a verified record are not assessed by the impact analyzer
+PASS  any favourable, scope, limitation or refusal change is at least local_behavioral_change with review
+PASS  no regression plan declares a change safe
+PASS  behavioural plans require the full suite
+
+# D. Refusal boundaries
+PASS  GC-008 stopped at intake (refuse)
+PASS  GC-022 stopped at intake (refuse)
+PASS  GC-023 stopped at intake (refuse)
+PASS  GC-027 stopped at intake (refuse)
+PASS  GC-028 stopped at intake (refuse)
+PASS  GC-029 stopped at intake (refuse)
+PASS  GC-030 stopped at intake (refuse)
+PASS  AR-031 stopped at intake (escalate)
+PASS  AR-040 is a documented open failure and still behaves as recorded (not refused)
+PASS  AR-041 stopped at intake (refuse)
+PASS  AR-042 stopped at intake (refuse)
+PASS  AR-043 stopped at intake (refuse)
+PASS  AR-048 stopped at intake (refuse)
+
+# E. Metamorphic Stability Laboratory
+PASS  at least 14 transformations (24)
+PASS  at least six lower-baseline invariant transforms (8)
+PASS  every lower-baseline base starts below maximum favourability
+PASS  lower-baseline bases cover review_required, gap, not_assessed and refusal
+PASS  no invariant transform shows any favourable transition
+PASS  every lower-baseline transform behaves as expected
+PASS  both invariant and changed expectations exist
+PASS  every transformation predefines review effect and limitation or graph expectation
+PASS  all fourteen required transformation types present
+PASS  live run open failures equal the documented set (ST-14)
+PASS  recorded results match the live run
+PASS  the one expectation correction is disclosed with its reason
+PASS  statement bounds the results to the synthetic context
+
+# F. Synthetic corpus expansion
+PASS  at least 50 new synthetic fixtures (50)
+PASS  every fixture admitted by the expansion protocol
+PASS  every fixture traced to a knowledge entry or documented coverage gap
+PASS  all thirteen required coverage areas used
+PASS  every expected file is engineering-authored, not adjudicated
+PASS  every fixture carries executable refusal, quote, limitation and graph expectations
+PASS  control-defect expectations are executable except where labelled descriptive
+PASS  no register field claims an executed check it does not run
+PASS  live corpus open failures equal the documented set (AR-010,AR-011,AR-025,AR-035,AR-040)
+PASS  unsafe-direction flags match the documented open failures
+PASS  v0.3 replay still 35/35 on the frozen fixtures
+
+# G. Behavioral Drift Ledger
+PASS  R-01 isolated run: no violation; only AR-040 changes
+PASS  R-02 isolated run: no violation; only AR-010 changes
+PASS  X-02 isolated run fails closed (refusal disappeared, excluded domain no longer refused)
+PASS  Y-03 isolated run flags the favourable transition as unsafe until a human disposition
+PASS  Y-07 isolated run flags removed limitations
+PASS  every isolated run carries complete run identity
+PASS  every drift row has every required field, requires human review and has no recorded disposition
+PASS  no drift row carries a self-declared expectation
+PASS  cross-version comparison carries complete run identity
+PASS  cross-version rows explained and never migrated
+
+# H. Local Release Candidate Gate Simulator
+PASS  statement present
+PASS  external categories never satisfied locally
+PASS  owner release authorization not_authorized
+PASS  no score, green light, recommendation or readiness field
+PASS  only permitted states used
+PASS  production status unchanged
+
+# I. Operator Review Console
+PASS  at least eight examples plus index (8)
+PASS  no script, form, input, button, iframe, storage, analytics, authentication or external URL
+PASS  no approval, deployment or authorisation control wording
+PASS  every example shows the ten sections in order
+PASS  every example states the four required things
+PASS  every example carries the non-authorising banner and gate statement
+PASS  rendered text carries no unsupported claim
+PASS  screenshots and rendered pages match the current examples exactly
+PASS  16 screenshots (desktop and mobile), 0 non-file requests, no horizontal page overflow
+PASS  present_local_artifact uses a neutral label and treatment, never the ready colour
+PASS  every example shows the human disposition as not_recorded
+PASS  console builder has no server, listener, network client or file intake
+
+# J. Determinism and local performance budgets
+PASS  every local budget held
+PASS  one output hash across repeated runs
+PASS  no malformed input returned a favourable finding
+PASS  performance record bounded to local engineering language
+PASS  no budget failure record outstanding
+PASS  performance record carries complete run identity
+PASS  deterministic: same output hash on two live passes
+PASS  a pass with a failing case is never complete
+
+# K. Claim guards over Phase 4 outputs
+PASS  no unsupported claim in proposals/PROPOSALS.json (accepted proposals)
+PASS  no unsupported claim in drift-ledger/DRIFT_LEDGER.json
+PASS  no unsupported claim in gate-simulator/GATE_SIMULATION.json
+PASS  no unsupported claim in stability-laboratory/STABILITY_RESULTS.json
+PASS  no Phase 4 source file contains a URL host
+
+# L. Direct probes and mutation testing
+PASS  all 143 direct probes pass on the unmutated library
+PASS  MA-01 kb: forbidden-word check removed: killed by kb.forbidden_word_rejected, kb.forbidden_underscore_word_rejected
+PASS  MA-02 kb: status vocabulary unchecked: killed by kb.unknown_status_rejected
+PASS  MA-03 kb: source vocabulary unchecked: killed by kb.bad_source_rejected
+PASS  MA-04 kb: human decision may be false: killed by kb.human_decision_must_be_true
+PASS  MA-05 kb: entry hash not verified: killed by kb.tamper_detected
+PASS  MA-06 kb: chain link not verified: killed by kb.chain_link_checked
+PASS  MA-07 kb: undeclared fields allowed: killed by kb.undeclared_field_rejected
+PASS  MA-08 pc: declared scope broadening allowed: killed by pc.scope_broaden_rejected
+PASS  MA-09 pc: summary widening ignored: killed by pc.scope_text_widening_rejected
+PASS  MA-10 pc: refusal narrowing allowed: killed by pc.refusal_narrow_rejected
+PASS  MA-11 pc: evidence lowering allowed: killed by pc.evidence_lower_rejected
+PASS  MA-12 pc: limitation weakening allowed: killed by pc.limitation_weaken_rejected
+PASS  MA-13 pc: test plan needs only one kind: killed by pc.flag_without_test_plan_rejected
+PASS  MA-14 pc: behaviour flags ignored: killed by pc.flag_without_test_plan_rejected
+PASS  MA-15 pc: unqualified claims allowed: killed by pc.claim_in_summary_rejected, pc.claim_in_rollback_rejected, pc.claim_in_compat_rejected, pc.claim_in_notes_rejected, pc.loose_negation_rejected
+PASS  MA-16 pc: protected targets allowed after normalisation: killed by pc.path_inner_traversal_protected, pc.path_repeated_separators_protected, pc.path_windows_separators_protected, pc.protected_target_rejected, pc.traversal_target_rejected_in_proposal
+PASS  MA-17 pc: rollback optional: killed by pc.rollback_missing_rejected
+PASS  MA-18 pc: compatibility optional: killed by pc.compat_missing_rejected
+PASS  MA-19 pc: synthetic may be claimed independent: killed by pc.synthetic_independent_rejected
+PASS  MA-20 pc: self authorisation accepted: killed by pc.self_authorization_rejected
+PASS  MA-21 pc: unknown triggers accepted: killed by pc.unknown_trigger_rejected
+PASS  MA-22 pc: rejections do not set the state: killed by pc.expected_drift_rejected, pc.human_disposition_rejected, pc.scope_broaden_rejected, pc.scope_text_widening_rejected, pc.refusal_narrow_rejected, pc.refusal_remove_rejected, pc.evidence_lower_rejected, pc.limitation_remove_rejected, pc.limitation_weaken_rejected, pc.no_test_plan_rejected, pc.rollback_missing_rejected, pc.compat_missing_rejected, pc.synthetic_independent_rejected, pc.label_status_independent_rejected, pc.self_authorization_rejected, pc.unknown_trigger_rejected, pc.unknown_change_type_rejected, pc.forbidden_wording_rejected, pc.protected_target_rejected, pc.traversal_target_rejected_in_proposal, pc.claim_in_summary_rejected, pc.claim_in_rollback_rejected, pc.claim_in_compat_rejected, pc.claim_in_notes_rejected, pc.loose_negation_rejected, pc.release_target_rejected, pc.release_component_rejected, pc.release_text_rejected
+PASS  MA-23 vocab: negation qualifier ignored: killed by pc.qualified_negation_allowed
+PASS  MA-24 ia: favourability does not force review class: killed by ia.favourable_requires_review, ia.refusal_alter_flagged, ia.limitation_weaken_flagged
+PASS  MA-25 ia: scope class lost: killed by ia.scope_class, ia.observed_scope_escalates
+PASS  MA-26 ia: evidence class lost: killed by ia.evidence_class, ia.observed_favourable_escalates
+PASS  MA-27 ia: release class lost: killed by ia.release_class
+PASS  MA-28 ia: version identity not required: killed by ia.behaviour_needs_version
+PASS  MA-29 rs: full suite not mandatory: killed by rs.behavioural_full_suite
+PASS  MA-30 rs: plan declares change safe: killed by rs.no_safety_decision_field
+PASS  MA-31 rs: missing fixture not reported: killed by rs.gap_when_no_fixture
+PASS  MA-32 rs: refusal impact does not select refusal tests: killed by rs.refusal_selects_refusal_test
+PASS  MA-33 dl: review to supported removed from the unsafe list: killed by pc.observed_favourable_blocks_pending, dl.review_to_supported_unsafe, dl.proposer_documentation_ignored
+PASS  MA-34 dl: missing fixture not flagged: killed by dl.missing_fixture_fails
+PASS  MA-35 dl: refusal disappearance allowed: killed by pc.observed_refusal_removed_rejects, dl.refusal_disappear_fails
+PASS  MA-36 dl: excluded domain may stop being refused: killed by pc.observed_excluded_unrefused_rejects, dl.excluded_domain_fails
+PASS  MA-37 dl: limitation disappearance allowed: killed by pc.observed_limitation_removed_rejects, dl.limitation_disappear_fails
+PASS  MA-38 dl: withdrawn-under-refusal exemption widened to any not_assessed: killed by pc.observed_limitation_removed_rejects, dl.limitation_disappear_fails
+PASS  MA-39 dl: proof edges allowed: killed by dl.edge_proof_fails
+PASS  MA-40 dl: contradiction review not checked: killed by dl.contradiction_review_fails
+PASS  MA-41 dl: independent relabelling allowed: killed by dl.independent_label_fails
+PASS  MA-42 gs: external categories can be satisfied locally: killed by gs.external_never_present
+PASS  MA-43 gs: owner authorization can be present: killed by gs.owner_not_authorized
+PASS  MA-44 gs: gate outputs a readiness score: killed by gs.no_score_fields
+PASS  MA-45 cp: non-synthetic fixtures admitted: killed by cp.non_synthetic_rejected
+PASS  MA-46 cp: untraced triggers admitted: killed by cp.untraced_trigger_rejected
+PASS  MA-47 cp: independence statement may change: killed by cp.altered_independence_rejected
+PASS  MA-48 sm: invariant new refusals ignored: killed by sm.invariant_new_refusal_detected
+PASS  MA-49 sm: missing review route ignored: killed by sm.review_route_missing_detected
+PASS  MA-50 cr: unsafe direction not reported: killed by cr.unsafe_direction_detected
+PASS  MB-01 path: percent-encoded paths accepted: killed by pc.path_encoded_rejected
+PASS  MB-02 path: absolute paths accepted: killed by pc.path_absolute_rejected
+PASS  MB-03 path: escaping paths accepted: killed by pc.path_dotdot_root_rejected
+PASS  MB-04 path: dot segments not resolved: killed by pc.path_inner_traversal_protected, pc.path_windows_separators_protected, pc.path_valid_allowed, pc.traversal_target_rejected_in_proposal
+PASS  MB-05 path: Windows separators not converted: killed by pc.path_windows_separators_protected
+PASS  MB-06 path: workspace boundary not enforced: killed by pc.path_outside_workspace
+PASS  MB-07 observed: missing record not blocking: killed by pc.behavioural_without_record_blocked, pc.engine_target_makes_behavioural, pc.flag_without_test_plan_rejected
+PASS  MB-08 observed: record hash not checked: killed by pc.record_tampered_blocked
+PASS  MB-09 observed: request binding not checked: killed by pc.record_bound_to_request_text
+PASS  MB-10 observed: run identity not validated: killed by pc.record_incomplete_identity_blocked
+PASS  MB-11 observed: compile failures not blocking: killed by pc.record_compile_failure_blocked
+PASS  MB-12 observed: human disposition in a record accepted: killed by pc.record_disposition_set_blocked
+PASS  MB-13 compiler: engine targets do not make a proposal behavioural: killed by pc.engine_target_makes_behavioural
+PASS  MB-14 compiler: observed favourable transitions do not block: killed by pc.observed_favourable_blocks_pending
+PASS  MB-15 compiler: observed refusal removal ignored: killed by pc.observed_refusal_removed_rejects
+PASS  MB-16 compiler: observed limitation removal ignored: killed by pc.observed_limitation_removed_rejects
+PASS  MB-17 compiler: observed excluded-domain loss ignored: killed by pc.observed_excluded_unrefused_rejects
+PASS  MB-18 compiler: self-declared drift accepted: killed by pc.expected_drift_rejected
+PASS  MB-19 compiler: human disposition in a request accepted: killed by pc.human_disposition_rejected
+PASS  MB-20 claims: rollback text not scanned: killed by pc.claim_in_rollback_rejected
+PASS  MB-21 claims: compatibility text not scanned: killed by pc.claim_in_compat_rejected
+PASS  MB-22 claims: loose negation window: killed by pc.loose_negation_rejected
+PASS  MB-23 claims: `certified` dropped from the controlled terms: killed by pc.claim_in_notes_rejected, pc.every_claim_term_caught
+PASS  MB-24 release: release-gate targets not refused: killed by pc.release_target_rejected
+PASS  MB-25 release: advancement wording not refused: killed by pc.release_text_rejected
+PASS  MB-26 drift: gap to supported not unsafe: killed by dl.gap_to_supported_unsafe
+PASS  MB-27 drift: review to gap not unsafe: killed by dl.review_to_gap_unsafe
+PASS  MB-28 drift: not_assessed to supported not unsafe: killed by dl.not_assessed_to_supported_unsafe
+PASS  MB-29 drift: not_assessed to gap not unsafe: killed by dl.not_assessed_to_gap_unsafe
+PASS  MB-30 drift: rows carry a recorded disposition: killed by dl.disposition_never_recorded
+PASS  MB-31 drift: favourable violation not raised: killed by pc.observed_favourable_blocks_pending, dl.review_to_supported_unsafe, dl.review_to_gap_unsafe, dl.gap_to_supported_unsafe, dl.not_assessed_to_supported_unsafe, dl.not_assessed_to_gap_unsafe, dl.proposer_documentation_ignored
+PASS  MB-32 stability: favourable transitions not reported: killed by sm.favourable_reported
+PASS  MB-33 fixtures: limitation expectations not executed: killed by cr.limitation_kind_checked
+PASS  MB-34 fixtures: conflict-node expectation not executed: killed by cr.conflict_node_count_checked
+PASS  MB-35 fixtures: textual-support expectation not executed: killed by cr.textual_support_count_checked
+PASS  MB-36 identity: synthetic marker not required: killed by id.synthetic_marker_isolated
+PASS  MB-37 identity: run id not bound: killed by id.run_id_bound
+PASS  MB-38 identity: fixture set not bound: killed by id.fixture_set_bound
+PASS  MB-39 identity: missing fields allowed: killed by id.missing_field_incomplete
+PASS  MB-40 impact: observed favourable change does not escalate: killed by ia.observed_favourable_escalates
+PASS  MB-41 impact: behavioural without observation is assessed anyway: killed by ia.behavioural_without_observation_not_assessed
+
+# M. Package documents
+PASS  thirteen required documents present
+PASS  every document separates claim, evidence, interpretation, limitation and external evidence
+PASS  content guard: ADAPTIVE_RELIABILITY_ARCHITECTURE.md
+PASS  content guard: RELIABILITY_KNOWLEDGE_BASE_SPECIFICATION.md
+PASS  content guard: CHANGE_PROPOSAL_COMPILER_SPECIFICATION.md
+PASS  content guard: CHANGE_IMPACT_ANALYSIS_PROTOCOL.md
+PASS  content guard: METAMORPHIC_STABILITY_LAB_PROTOCOL.md
+PASS  content guard: BEHAVIORAL_DRIFT_LEDGER_SPECIFICATION.md
+PASS  content guard: SYNTHETIC_CORPUS_EXPANSION_PROTOCOL.md
+PASS  content guard: REGRESSION_SELECTION_POLICY.md
+PASS  content guard: LOCAL_GATE_SIMULATOR_SPECIFICATION.md
+PASS  content guard: OPERATOR_REVIEW_CONSOLE_GUIDE.md
+PASS  content guard: DETERMINISM_AND_PERFORMANCE_RECORD.md
+PASS  content guard: ADAPTIVE_FAILURE_MODE_REGISTER.md
+PASS  content guard: PHASE_4_HANDOFF.md
+PASS  no em-dash in any document
+PASS  no canonical Evidence Ledger ID created
+PASS  change log present, content-guarded and discloses the post-run R-02 edit
+PASS  no document says a proposal cannot loosen a boundary
+PASS  handoff ends with the required statement
+PASS  suite made no network attempt
+
+269 checks: 268 passed, 1 failed, 0 skipped
+Failed: tools unchanged since 5d5374b

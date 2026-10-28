@@ -1,0 +1,189 @@
+{
+  "results_format": "jrs-v0-02-correction-mutations/1.0.0",
+  "date": "2026-10-25T09:15:08.739Z",
+  "baseline": {
+    "probes": 8,
+    "passing": 8,
+    "failures": []
+  },
+  "totals": {
+    "mutations": 13,
+    "applied": 13,
+    "detected": 13,
+    "survivors": []
+  },
+  "network_attempts": 0,
+  "mutations": [
+    {
+      "id": "X01",
+      "file": "contradictions.mjs",
+      "description": "Remove the event-role skip",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "EV-32"
+      ]
+    },
+    {
+      "id": "X02",
+      "file": "contradictions.mjs",
+      "description": "Treat an unknown role as a different role (not conservative)",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-05"
+      ]
+    },
+    {
+      "id": "X03",
+      "file": "contradictions.mjs",
+      "description": "Skip comparison even when roles are equal",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-03",
+        "RC-04"
+      ]
+    },
+    {
+      "id": "X04",
+      "file": "contradictions.mjs",
+      "description": "Ignore the rule-pack gate (rule never active)",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "EV-32"
+      ]
+    },
+    {
+      "id": "X05",
+      "file": "contradictions.mjs",
+      "description": "Break the span-overlap test in eventRoleOf",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "EV-32"
+      ]
+    },
+    {
+      "id": "X06",
+      "file": "contradictions.mjs",
+      "description": "eventRoleOf always unknown",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "EV-32"
+      ]
+    },
+    {
+      "id": "X07",
+      "file": "compiler.mjs",
+      "description": "Compiler stops passing dated events to K6",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "EV-32"
+      ]
+    },
+    {
+      "id": "X08",
+      "file": "compiler.mjs",
+      "description": "Compiler stops passing active rules to K6",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "EV-32"
+      ]
+    },
+    {
+      "id": "X09",
+      "file": "rule-packs.mjs",
+      "description": "RP-CON-02 not listed as implemented (pack set must fail closed)",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "RC-03",
+        "RC-04",
+        "RC-05",
+        "RC-06",
+        "EV-32",
+        "EV-01"
+      ]
+    },
+    {
+      "id": "X10",
+      "file": "rule-packs/RPK-ECR.json",
+      "description": "RPK-ECR content altered without re-signing",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "RC-03",
+        "RC-04",
+        "RC-05",
+        "RC-06",
+        "EV-32",
+        "EV-01"
+      ]
+    },
+    {
+      "id": "X11",
+      "file": "rule-packs/RPK-ECR.json",
+      "description": "RPK-ECR bound to the wrong candidate version",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "RC-03",
+        "RC-04",
+        "RC-05",
+        "RC-06",
+        "EV-32",
+        "EV-01"
+      ]
+    },
+    {
+      "id": "X12",
+      "file": "contract.mjs",
+      "description": "Compiler version label reverted to 0.3.1",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-01",
+        "RC-02",
+        "RC-03",
+        "RC-04",
+        "RC-05",
+        "RC-06",
+        "EV-32",
+        "EV-01"
+      ]
+    },
+    {
+      "id": "X13",
+      "file": "contradictions.mjs",
+      "description": "Extend the role skip to decision assertions",
+      "applied": true,
+      "detected": true,
+      "failing_probes": [
+        "RC-06"
+      ]
+    }
+  ]
+}

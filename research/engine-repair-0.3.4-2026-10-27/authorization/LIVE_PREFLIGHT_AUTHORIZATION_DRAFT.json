@@ -1,0 +1,56 @@
+{
+  "format": "jrs-0.3.4-live-preflight-authorization-draft/1.0.0",
+  "status": "UNSIGNED DRAFT. Authorizes nothing. Refused as written (see refusal_reasons).",
+  "authorization_id": "PREFLIGHT-0.3.4-DRAFT",
+  "purpose": "Provider compatibility only (protocol/LIVE_PREFLIGHT_PROPOSAL.md). Not an evaluation.",
+  "not_reused": [
+    "Stage A authorization (spent)",
+    "research/study-156-2026-10-27/authorization/STUDY156_LIVE_AUTHORIZATION_DRAFT.json (unsigned)"
+  ],
+  "candidate_version": "0.3.4-research-candidate",
+  "candidate_manifest_sha256": "TO BE COPIED FROM seals/freeze/SEAL.json AT SIGNING",
+  "prompt_version": "jrs-engine-local-0.3.4-research/prompt-1",
+  "prompt_sha256": "TO BE COPIED FROM CANDIDATE_0.3.4_MANIFEST_SHA256.txt AT SIGNING",
+  "model_identifier": null,
+  "model_options_for_owner": ["claude-haiku-5-5", "claude-opus-5-5"],
+  "destination": "https://api.anthropic.com/v1/messages",
+  "api_version": "2026-10-21",
+  "request_fields": {
+    "sent": ["model", "max_tokens", "system", "messages", "output_config.effort"],
+    "max_tokens": 4000,
+    "effort": "medium",
+    "not_sent": ["temperature", "top_p", "top_k", "thinking", "fallbacks", "assistant prefill"]
+  },
+  "records": [
+    { "request_id": "P1", "source_id": "S-001", "construction": "unaltered" },
+    { "request_id": "P2", "source_id": "S-003", "construction": "unaltered" },
+    { "request_id": "P3", "source_id": "S-004", "construction": "instruction IN-01 inserted after the first sentence (tests/injection-suite.mjs)" }
+  ],
+  "record_set_sha256": "TO BE COMPUTED AT SIGNING",
+  "requests": 3,
+  "max_retries_per_request": 2,
+  "retryable_status": [429, 500, 529],
+  "max_attempts": 9,
+  "spend_cap_usd": null,
+  "spend_cap_options": { "claude-haiku-5-5": 0.05, "claude-opus-5-5": 1.00 },
+  "credential_variable_name": null,
+  "credential_rule": "Read only from an approved session secret under the named variable. Never written to a file, log or capture; never pasted into a conversation.",
+  "retention_confirmed_by_owner": false,
+  "captures": "write-once, session scratch, not committed unless the owner decides",
+  "stop_conditions": [
+    "credential variable absent", "destination not allowed", "status 400, 401, 403, 404 or 413", "stop_reason refusal",
+    "stop_reason max_tokens (recorded, not retried)", "first contract-invalid response", "spend cap reached", "guard violation or graph-validation failure in the offline compile"
+  ],
+  "signed_by": null,
+  "signed_at_utc": null,
+  "refusal_reasons": [
+    "model_identifier is not chosen",
+    "spend_cap_usd is not set",
+    "credential_variable_name is not set",
+    "retention_confirmed_by_owner is false",
+    "candidate_manifest_sha256, prompt_sha256 and record_set_sha256 are placeholders",
+    "the transport is not rebound to 0.3.4 and live dispatch is disabled",
+    "live documentation not re-checked",
+    "not signed"
+  ]
+}

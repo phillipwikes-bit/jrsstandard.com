@@ -1,0 +1,1 @@
+Incident review record. The payments portal outage was a short disruption that the team handled well. The cause was a configuration issue that has now been resolved. The review is satisfied that the incident is closed and will not recur.

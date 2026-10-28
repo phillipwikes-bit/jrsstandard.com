@@ -1,0 +1,37 @@
+{
+  "case_id": "RC-03",
+  "purpose": "Two different decision dates cited as stated_date (same event role): the conflict must persist.",
+  "record_source": "V0 sealed corpus cases/EV-12.record.txt",
+  "record_sha256": "2db19f055b975b9dde28d868d0cf3f399a3a1a3b0acbae06a31aebcfff86539a",
+  "expected": {
+    "0.3.1-candidate": {
+      "intake_decision": "proceed",
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "cited_evidence_conflict",
+        "decision_date_conflict"
+      ]
+    },
+    "0.3.2-candidate": {
+      "intake_decision": "proceed",
+      "statuses": {
+        "reconstructability": "review_required",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "cited_evidence_conflict",
+        "decision_date_conflict"
+      ]
+    }
+  },
+  "expectation_authority": "owner-authorized correction scope (V0-02); AI-assisted drafting; not ground truth"
+}

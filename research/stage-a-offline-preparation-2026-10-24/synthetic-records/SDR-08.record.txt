@@ -1,0 +1,10 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-1108
+Supplier: Ravensholt Pest Control (fictional)
+Access requested: Read-only access to the site inspection calendar (SITE-INSP-04).
+Requested by: Health and Safety Coordinator, 2026-09-17.
+Decision basis: Pending.
+Authority: Pending.
+Decision: Pending.
+Chronology: 2026-09-17 request received.

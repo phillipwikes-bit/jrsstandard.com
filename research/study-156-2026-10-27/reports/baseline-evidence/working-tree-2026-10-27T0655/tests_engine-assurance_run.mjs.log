@@ -1,0 +1,188 @@
+
+# A. Candidate source identity
+PASS  candidate core is byte-identical to the last executable v1 handler
+PASS  candidate prompt is the v1 prompt
+PASS  public review routes remain refusal stubs (no condition logic in api/)
+PASS  assurance code is excluded from deployment (lib/, tools/, tests/, research/ in .vercelignore)
+
+# B. Review Run Envelope contract
+PASS  positive control: SAE-001 envelope is valid
+PASS  rejects unknown engine_version
+PASS  rejects unknown codebook_version
+PASS  rejects unknown schema_version
+PASS  rejects unknown assurance_layer_version
+PASS  rejects unsupported execution mode
+PASS  rejects unsupported provider mode
+PASS  rejects missing record hash
+PASS  rejects missing fixture hash
+PASS  rejects malformed hash
+PASS  rejects empty code-hash map
+PASS  rejects contradictory status: local_mocked with provider not_used
+PASS  rejects contradictory status: local_deterministic with mocked provider
+PASS  rejects contradictory status: refused gate with assessed conditions
+PASS  rejects an envelope marked production ready (extra field)
+PASS  rejects a production-ready release status
+PASS  rejects "production-ready" alongside human review required
+PASS  rejects human_review_required false
+PASS  rejects a status-claim key nested in the envelope
+PASS  rejects a non-RFC 3339 timestamp
+
+# C. Exact-source-span enforcement
+PASS  positive control: every span in SAE-001 re-verifies
+PASS  rejects a span whose offsets are shifted by one
+PASS  rejects a span whose quote differs by case
+PASS  rejects supported without a span
+PASS  rejects supported classified other than contains_record
+PASS  locateQuote does not normalise whitespace
+PASS  locateQuote refuses trivially short anchors
+PASS  offsets are UTF-16 code units and re-verify on non-ASCII text
+
+# D. Fabricated citation rejection
+PASS  fabricated quotation is not reported as a span
+PASS  fabricated quotation produces a withhold entry
+PASS  the note resting on a fabricated quotation is withheld
+PASS  no Manifest is produced after a fabricated quotation
+PASS  provider-supplied offsets are ignored and recomputed
+PASS  one fabricated quotation among real ones still blocks a favourable outcome
+
+# E. Required limitations
+PASS  rejects a finding without the span limitation
+PASS  rejects an envelope missing limitation L-03
+PASS  positive control: span limitation states presence, not semantic support
+
+# F. JSON key-order normalisation
+PASS  reordered provider and request keys give the same normalised output
+PASS  reordered keys give the same fixture content hash
+PASS  normalised output of a key-reversed envelope is unchanged
+PASS  positive control: a content change does change the normalised output
+
+# G. Output schema drift
+PASS  envelope schema matches its recorded pin (a change must be deliberate and recorded)
+PASS  rejects an undeclared output field
+PASS  schema declares every field the envelope emits
+PASS  rejects an undeclared top-level field
+
+# H. Unrecognised condition labels
+PASS  candidate status "excellent" fails closed (all not_assessed)
+PASS  rejects the v1 label "pass" as an envelope outcome
+PASS  rejects a Codebook identifier in place of an Engine key
+PASS  rejects four condition findings
+PASS  rejects a duplicated condition
+
+# I. False pass after a refusal trigger
+PASS  SAE-010: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-011: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-012: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-013: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-019: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-020: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-021: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-022: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-024: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-028: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-030: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  SAE-031: all-pass mock never yields a favourable result and the provider is not invoked
+PASS  rejects an envelope that reports supported after an injection refusal
+PASS  rejects a pre-analysis refusal recorded under a proceed decision
+PASS  v1-shaped all-pass output without quotations yields no favourable outcome
+
+# J. review_required is never converted into supported
+PASS  rejects candidate review promoted to supported
+PASS  rejects supported resting on a review candidate status
+PASS  candidate review with a valid quotation stays review_required
+
+# K. Engine, codebook and Manifest version conflicts
+PASS  positive control: SAE-001 Manifest reference matches envelope versions
+PASS  rejects a Manifest engine version that conflicts with the envelope
+PASS  rejects a Manifest codebook version that conflicts with the envelope
+PASS  rejects an unsupported Manifest version
+PASS  gate refuses a request declaring an unsupported codebook version
+
+# L. Unapproved execution mode
+PASS  external_not_authorized produces only a refusal
+PASS  an unknown mode is recorded as external_not_authorized and refused
+PASS  rejects an assessed condition under external_not_authorized
+PASS  local_deterministic never invokes the provider
+
+# M. Unsafe claim language
+PASS  content guard flags: "This candidate is production-ready."
+PASS  content guard allows: "The candidate is not production-ready."
+PASS  content guard flags: "Results were validated by the team."
+PASS  content guard allows: "The engine is not independently validated."
+PASS  content guard flags: "The exception is compliant."
+PASS  content guard allows: "This does not establish that the record is compliant."
+PASS  content guard flags: "The output is guaranteed."
+PASS  content guard allows: "Nothing here is guaranteed."
+PASS  content guard allows: "Prohibited terms include \"certified\" and `sale-ready`."
+PASS  content guard flags: "The asset is buyer-ready."
+PASS  content guard allows: "Version 0.1.0-validation is pinned."
+PASS  content guard allows: "Field compliant_version is ignored."
+PASS  content guard flags: "It is license-ready and sale-ready."
+PASS  content guard flags: "independently verified results"
+PASS  content guard allows: "It has not been independently verified."
+PASS  rejects an envelope whose explanation implies compliance
+PASS  candidate note claiming compliance is withheld and downgraded
+
+# N. Network refusal
+PASS  harness refuses to start when ANTHROPIC_API_KEY is configured
+PASS  harness refuses to start when OPENAI_API_KEY is configured
+PASS  harness refuses to start when ANTHROPIC_BASE_URL is configured
+PASS  harness refuses to start when SUPABASE_SERVICE_ROLE_KEY is configured
+PASS  detector reports the variable name, never its value
+PASS  request-level live provider configuration is refused by the gate
+PASS  trap blocks and counts fetch and http.request
+
+# O. Cognitive Controls are record controls only
+PASS  no record-control output describes a person (10 detections scanned)
+PASS  every detection has detect, reflect, correct and learn
+PASS  every record-control span re-verifies against its record
+PASS  control source emits no person-describing vocabulary
+
+# P. Pre-analysis gate
+PASS  refuses housing content
+PASS  refuses lending content
+PASS  refuses insurance content
+PASS  refuses legal-outcome content
+PASS  refuses hiring content
+PASS  positive control: "promotion to production" is not treated as employment
+PASS  positive control: "professional judgment" is not treated as legal outcome
+PASS  refuses "system:" role injection
+PASS  refuses certification request embedded in the record
+PASS  escalates TODO placeholder
+PASS  refuses a record declared truncated and escalates
+PASS  refuses an unknown requested output
+PASS  refuses a missing version declaration
+PASS  boundary statements make no legal or compliance determination
+
+# Q. Existing Manifest adapter continuity
+PASS  existing adapter accepts candidate-core output and the Manifest validates offline
+PASS  Manifest keeps v1 vocabulary and Engine keys (no Codebook relabel)
+PASS  candidate core still truncates at 8000 as v1 did (assurance gate refuses instead)
+
+# R. Replay harness
+PASS  replay of all fixtures passes
+PASS  replay reports zero trapped network attempts
+PASS  two replays with a fixed clock produce byte-identical execution records
+PASS  two replays produce identical envelope hashes for every fixture
+PASS  execution record carries fixture, expected, actual and envelope hashes
+PASS  register holds at least 20 supplier-access fixtures, each marked synthetic
+PASS  mutation: a wrong expected outcome makes the harness fail
+PASS  mutation: a record edit that removes a quoted passage makes the harness fail
+PASS  mutation: removing the refusal trigger is caught as a mismatch, not passed silently
+
+# S. Package documents carry no unsupported claims
+PASS  content guard: research/engine-assurance-2026-10-10/CAPABILITY_AND_LIMITATION_MATRIX.md
+PASS  content guard: research/engine-assurance-2026-10-10/CHANGELOG.md
+PASS  content guard: research/engine-assurance-2026-10-10/COMPATIBILITY_DECISION_CD-001.md
+PASS  content guard: research/engine-assurance-2026-10-10/ENGINE_ASSURANCE_README.md
+PASS  content guard: research/engine-assurance-2026-10-10/FAILURE_MODE_REGISTER.md
+PASS  content guard: research/engine-assurance-2026-10-10/FINAL_ASSURANCE_HANDOFF.md
+PASS  content guard: research/engine-assurance-2026-10-10/INHERITED_FAILURES.md
+PASS  content guard: research/engine-assurance-2026-10-10/REPOSITORY_AND_CONTRACT_AUDIT.md
+PASS  content guard: research/engine-assurance-2026-10-10/VALIDATION_READINESS_PROTOCOL.md
+PASS  content guard: research/engine-assurance-2026-10-10/contracts/REVIEW_RUN_ENVELOPE.md
+PASS  content guard: research/engine-assurance-2026-10-10/fixtures/FIXTURE_REGISTER.md
+PASS  content guard: research/engine-assurance-2026-10-10/execution-record/EXECUTION_RECORD.md
+PASS  suite made no network attempt
+
+148 checks: 148 passed, 0 failed, 0 skipped

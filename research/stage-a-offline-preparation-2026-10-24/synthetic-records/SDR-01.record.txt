@@ -1,0 +1,13 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-1101
+Supplier: Brindlemoor Pallet Services (fictional)
+Access requested: Read-only access to the dock scheduling calendar (DOCK-CAL-01).
+Requested by: Warehouse Systems Lead, 2026-09-01.
+Decision basis: Risk assessment RA-2026-0903, completed 2026-09-04, found that the calendar shows bay numbers and time slots only. The supplier needs it to plan deliveries under contract CTR-2026-071 section 3.
+Residual risk: low, per RA-2026-0903 section 2.
+Compensating controls: Access is limited to the DOCK-CAL-01 view; sessions require multi-factor authentication; access logs are reviewed weekly by the Warehouse Systems Lead.
+Authority: Information Security Exception Board, minutes ISEB-2026-22 item 1, dated 2026-09-08.
+Decision: Exception granted for 90 days.
+Expiry and renewal: Expires 2026-12-07. Renewal requires a new request with an updated risk assessment.
+Chronology: 2026-09-01 request received; 2026-09-04 risk assessment RA-2026-0903 completed; 2026-09-08 board decision recorded.

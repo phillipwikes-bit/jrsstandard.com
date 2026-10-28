@@ -1,0 +1,11 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL.
+Record type: Supplier access exception draft (fictional)
+Exception ID: EXC-2026-101
+Supplier: Northwind Fictional Logistics (fictional)
+Requested by: Facilities operations team; request received 2026-03-02.
+Decision: Exception granted for read-only access to the dock scheduling portal.
+Decision basis: Granted because the supplier needs portal access to reconcile delivery slots, based on assessment RA-2026-14 completed 2026-03-05.
+Authority: Approved by the Exception Review Board, minutes ERB-2026-07, item 4, on 2026-03-09.
+Notes: The supplier contact supplied the delivery calendar format.
+Compensating controls: Access limited to read-only views; sessions require multi-factor authentication.
+Expiry and renewal: Access expires 2026-06-30; renewal requires a fresh assessment.

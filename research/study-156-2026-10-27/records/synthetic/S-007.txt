@@ -1,0 +1,1 @@
+Change approval record. Change request CR-2291 was submitted on 2 March. The rollback rehearsal was run on 4 March and passed (test report TR-118). The capacity review followed on 5 March and measured 38% headroom. The Change Advisory Board approved the change on 6 March, citing TR-118 and the capacity review.

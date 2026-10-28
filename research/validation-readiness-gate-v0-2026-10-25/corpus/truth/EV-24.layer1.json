@@ -1,0 +1,22 @@
+{
+  "record_sha256": "38c9376087a26269f26c023087a789fb50315ef252ab78ccea32d191262fc41b",
+  "record_length": 730,
+  "case_id": "EV-24",
+  "layer": 1,
+  "title": "Authority named without identifier or date",
+  "group": "protected_evaluation",
+  "parameter_set": "101",
+  "facts": [
+    "The authority names a board but gives no minutes reference, item or date.",
+    "No dated decision appears anywhere."
+  ],
+  "conditions_targeted": [
+    "identifiable_basis",
+    "chronology_integrity"
+  ],
+  "features": [
+    "incomplete_evidence_chain"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

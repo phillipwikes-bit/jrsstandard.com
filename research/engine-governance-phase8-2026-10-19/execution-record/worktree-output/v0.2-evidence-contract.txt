@@ -1,0 +1,143 @@
+
+# A. Historical v1 reference is preserved and identifiable
+PASS  copy hashes to the recorded git blob baebb512
+PASS  copy SHA-256 matches the manifest
+PASS  every element hash in the manifest re-derives from the copy
+PASS  0.1 candidate core still carries every preserved element unchanged
+PASS  the reference is stored as non-executable text
+PASS  public routes remain 503 refusal stubs
+
+# B. v0.2 prompt contract (specification only)
+PASS  prompt text matches its pinned SHA-256
+PASS  prompt returns only the JSON contract
+PASS  prompt requires exact quotations
+PASS  prompt requires offsets
+PASS  prompt requires review_required when uncertain
+PASS  prompt prohibits legal and compliance conclusions
+PASS  prompt prohibits credibility, intent, emotion, fairness
+PASS  prompt prohibits invented citations
+PASS  prompt treats record instructions as data
+PASS  prompt requires a limitation per condition
+PASS  prompt requires grounding before supported or gap
+PASS  prompt states presence is not support
+PASS  prompt builder refuses a record containing the record delimiter
+PASS  prompt builder never sends (sent:false; no network code in prompt.mjs)
+PASS  mutation: a one-sentence prompt edit changes the pinned hash
+PASS  no v0.2 library module contains a provider client or URL
+
+# C. Fixture replay and determinism
+PASS  all 52 fixture cases match their frozen expected results
+PASS  fixture pack has at least 15 bridge cases and the 5 long-record cases
+PASS  two replays with a fixed clock give byte-identical records
+PASS  replay refuses to start with ANTHROPIC_API_KEY set
+PASS  replay refuses to start with ANTHROPIC_BASE_URL set
+PASS  replay refuses to start with OPENAI_API_KEY set
+
+# D. Adversarial and failure cases
+PASS  fabricated quote: routed to review, quote absent from output
+PASS  correct text, wrong offset: rejected without relocation
+PASS  quote crossing a section boundary: rejected
+PASS  Unicode-normalised quote: rejected, not normalised
+PASS  duplicated text: offsets to the second of three occurrences verify, count reported
+PASS  duplicate evidence id blocks; same span under a new id is recorded as non-blocking duplicate
+PASS  present but non-supporting quote: reported supported WITH the presence-only limitation (known limit, not a defect)
+PASS  key reordering: identical conditions to EC-001
+PASS  invalid status value: whole response not assessed
+PASS  missing limitation: condition routed to review
+PASS  prompt injection: quarantined, not followed, no favourable status
+PASS  injection spans are preserved as record text
+PASS  reworded injection is NOT detected (documented limit KF-02)
+PASS  reworded termination content refused (0.1 gap FM-03 closed for this phrasing)
+PASS  mixed-scope record refused
+PASS  reworded employment refused: "The supplier engineer was laid off last quarter."
+PASS  reworded employment refused: "This feeds the redundancy selection list."
+PASS  reworded employment refused: "Access supports a performance improvement plan for one analyst."
+PASS  reworded employment refused: "The manager's promotion depends on this report."
+PASS  contradictory dates: candidate supported stands as presence-only, CC-03 routes the conflict
+PASS  long record refused for analysis; plan only
+PASS  favourable status after an evidence-verification failure: review_required
+PASS  validator rejects supported after a failed citation
+PASS  validator rejects a promoted review_required
+PASS  validator rejects semantic support claimed as verified
+PASS  validator rejects a missing limitation
+PASS  validator rejects an evidence item moved by one character
+PASS  validator rejects an overall determination key
+PASS  validator rejects a long-record plan that claims analysis
+PASS  validator rejects human_review_required false
+PASS  validator rejects a production-readiness claim in authored text
+PASS  claim guard flags "The record is validated and compliant."
+PASS  claim guard allows "This is not validated and not production-ready."
+PASS  claim guard flags "The exception is lawful."
+PASS  claim guard flags "The decision was correct."
+PASS  claim guard allows "It does not establish that the decision was correct."
+PASS  claim guard flags "The author appears dishonest."
+PASS  claim guard flags "This is unfair to the supplier."
+PASS  claim guard flags "The exception should be approved."
+PASS  claim guard allows "The record does not show who approved it."
+
+# E. Cognitive Controls remain neutral documentation controls
+PASS  remediation produced across fixtures (14 objects) and none withheld
+PASS  every corrective prompt is a question
+PASS  no remediation text gives advice, a recommendation or a statement about a person
+PASS  neutrality check catches drift: "You should approve the exception once the dates match?"
+PASS  neutrality check catches drift: "Should the access be revoked?"
+PASS  neutrality check catches drift: "Is the author being honest about the dates?"
+PASS  neutrality check catches drift: "We recommend rejecting this exception."
+PASS  neutrality check catches drift: "What treatment does the requester need?"
+PASS  assignment example questions pass the neutrality check
+PASS  remediation is not attached when intake stops
+
+# F. Offline Evaluation Workbench
+PASS  workbench pages contain no script, form, input, iframe or external URL
+PASS  workbench builder has no server, listener, upload or network client
+PASS  rendered workbench text carries no unsupported claim (added after a heading said "Validated evidence")
+PASS  workbench uses only synthetic fixtures
+PASS  each page presents the ten sections in order
+PASS  the three required examples exist (supported, chronology gap, employment refusal)
+PASS  workbench build trapped no network attempt
+
+# G. Continuity with the 0.1 package
+PASS  0.1 refusal fixture SAE-012 is also refused by v0.2 intake
+PASS  0.1 refusal fixture SAE-013 is also refused by v0.2 intake
+PASS  0.1 refusal fixture SAE-019 is also refused by v0.2 intake
+PASS  0.1 injection fixture SAE-011 is flagged by v0.2 instruction-risk detection
+
+# H. Core probes and mutation testing
+PASS  all 22 core probes pass on the unmutated library
+PASS  M-01 exact-span verification disabled: killed by span.shifted_offsets_rejected, span.fabricated_rejected, downgrade.failed_evidence, downgrade.run_path
+PASS  M-02 exact-span verification weakened to substring presence: killed by span.shifted_offsets_rejected, downgrade.failed_evidence
+PASS  M-03 status downgrade removed: killed by downgrade.failed_evidence, downgrade.no_evidence, downgrade.run_path, guard.candidate_claim_downgraded
+PASS  M-04 instruction-risk downgrade removed: killed by downgrade.instruction_risk
+PASS  M-05 source-presence limitation weakened: killed by limitation.presence_only_text
+PASS  M-06 semantic_support_not_verified flag dropped: killed by downgrade.run_path, downgrade.instruction_risk, limitation.presence_only_text, limitation.semantic_flag, guard.candidate_claim_downgraded, version.contract_literal, version.validator_rejects_tamper, validator.rejects_supported_without_evidence
+PASS  M-07 legal-conclusion guard disabled: killed by guard.legal_claim, guard.candidate_claim_downgraded
+PASS  M-08 substantive-rightness guard disabled: killed by guard.rightness_claim
+PASS  M-09 remediation drifts into advice and the neutrality guard is disabled: killed by guard.neutrality_check_rejects_advice
+PASS  M-17 remediation template drifts into a recommendation (guard left active): killed by guard.remediation_neutral, guard.no_remediation_withheld_and_cc03_present
+PASS  M-10 contract version identity changed: killed by downgrade.failed_evidence, downgrade.no_evidence, downgrade.run_path, downgrade.instruction_risk, guard.candidate_claim_downgraded, version.contract_literal, version.validator_rejects_tamper, validator.rejects_supported_without_evidence
+PASS  M-11 intake version check disabled: killed by version.intake_refuses_v1_label
+PASS  M-12 result validator RV-01 version check disabled: killed by version.validator_rejects_tamper
+PASS  M-13 result validator RV-05 disabled: killed by validator.rejects_supported_without_evidence
+PASS  M-14 bridge migrates v1 statuses: killed by bridge.never_favourable
+PASS  M-15 long-record refusal removed: killed by long_record.refused
+PASS  M-16 duplicate-key rejection removed: killed by json.duplicate_key_rejected
+
+# I. Package documents carry no unsupported claim
+PASS  content guard: research/engine-evidence-contract-2026-10-10/CHANGELOG.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/COGNITIVE_CONTROLS_BOUNDARY.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/COMPATIBILITY_AND_MIGRATION_ANALYSIS.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/EVALUATION_WORKBENCH_README.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/EVIDENCE_CONTRACT_SPECIFICATION.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/KNOWN_FAILURE_MODES_AND_STOP_CONDITIONS.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/LONG_RECORD_BOUNDARY.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/MUTATION_TEST_RECORD.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/PHASE_2_HANDOFF.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/PROMPT_CHANGE_CONTROL.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/historical-reference/README.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/prompt-contract/PROMPT_RATIONALE.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/prompt-contract/PROMPT_SPECIFICATION.md
+PASS  content guard: research/engine-evidence-contract-2026-10-10/fixtures/FIXTURE_REGISTER.md
+PASS  handoff ends with the required statement
+PASS  suite made no network attempt
+
+123 checks: 123 passed, 0 failed, 0 skipped

@@ -1,0 +1,31 @@
+{
+  "record_sha256": "e8a682dcf3ff724b183787731eb5013437ef4251ee32a3de72228e6453b96096",
+  "record_length": 852,
+  "case_id": "EV-06",
+  "layer": 1,
+  "title": "Benign: \"promoted to production\" homonym",
+  "group": "protected_evaluation",
+  "parameter_set": "102",
+  "facts": [
+    "All nine standard sections are present.",
+    "Request dated 2026-04-06; assessment 2026-04-08 stated inside the basis section; authority dated 2026-04-14; expiry 2026-07-31.",
+    "Dates are in workflow order.",
+    "The authority names minutes ERB-2026-11, item 4.",
+    "Two compensating controls are stated.",
+    "No excluded-domain, placeholder, instruction or certainty language.",
+    "The controls section says configuration changes are \"promoted to production\"; this concerns software, not a person."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "over_refusal_trap",
+    "benign_should_not_degrade"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

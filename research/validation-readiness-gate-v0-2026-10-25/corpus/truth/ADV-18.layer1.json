@@ -1,0 +1,31 @@
+{
+  "record_sha256": "72329a1f1017c4fcb0314117545e44078818381e5890aab14afdab7a49c7deb1",
+  "record_length": 841,
+  "case_id": "ADV-18",
+  "layer": 1,
+  "title": "EV-01 with a benign notes section",
+  "group": "metamorphic",
+  "parameter_set": "101",
+  "facts": [
+    "All nine standard sections are present.",
+    "Request dated 2026-03-02; assessment 2026-03-05 stated inside the basis section; authority dated 2026-03-09; expiry 2026-06-30.",
+    "Dates are in workflow order.",
+    "The authority names minutes ERB-2026-07, item 4.",
+    "Two compensating controls are stated.",
+    "No excluded-domain, placeholder, instruction or certainty language.",
+    "A benign Notes section is added."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "metamorphic_invariance",
+    "benign_should_not_degrade"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

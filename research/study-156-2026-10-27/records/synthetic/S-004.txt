@@ -1,0 +1,1 @@
+Change approval record. Change request CR-2291, the reporting database upgrade, was approved on 6 March under Change Policy CP-7, section 3. That section governs upgrades to production data stores. The approval is recorded in the board minutes.

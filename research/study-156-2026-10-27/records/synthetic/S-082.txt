@@ -1,0 +1,1 @@
+Control test record, backup restoration. The control is rated effective with one exception because 14 of the 15 Q2 backups we restored met the 4-hour target (median 2.1 hours) and the one late restore, backup BK-2207 at 6 hours, was re-run successfully on 3 July. Restore logs are filed as working paper WP-14.

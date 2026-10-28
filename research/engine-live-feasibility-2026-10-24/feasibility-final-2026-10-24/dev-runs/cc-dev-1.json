@@ -1,0 +1,249 @@
+{
+  "result_format": "jrs-cognitive-controls-offline-results/0.1.0",
+  "run_id": "cc-2026-10-24T14-06-05-146Z",
+  "run_at_utc": "2026-10-24T14:06:05.268Z",
+  "validator_sha256": "6c5a9cf2eb2eaf32d99c882937ff52284b7c8e36dd83e777bdf03fc71ed74bd4",
+  "form_sha256": "3258932b910de801b5a2d7f0b11afaa532284a3b53a0986f87d26760fd20ea28",
+  "totals": {
+    "tests": 15,
+    "passed": 15,
+    "failed": 0,
+    "skipped": 0,
+    "load_or_setup_errors": 0
+  },
+  "network_attempts_total": 0,
+  "isolation": {
+    "copy_unchanged_after_run": true,
+    "copy_deleted": true
+  },
+  "statement": "Offline tests of a human-review control layer on synthetic notes and mock-produced graphs. No human review of pilot material occurred. B-018 OPEN. NO_GO_NOT_VERIFIED.",
+  "tests": [
+    {
+      "id": "CC-01",
+      "name": "Valid paired review note accepted",
+      "result": "pass",
+      "observed": {
+        "accepted": true,
+        "outcome": "uncertain",
+        "control_states": {
+          "RC-01": "observed",
+          "RC-02": "observed",
+          "RC-03": "uncertain",
+          "RC-04": "observed",
+          "RC-05": "observed",
+          "RC-06": "observed",
+          "RC-07": "observed",
+          "RC-08": "uncertain"
+        },
+        "graph_sha256_unchanged": true,
+        "engine_output_modified": false
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-02",
+      "name": "Missing execution record blocked",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "review_blocked",
+        "code": "provenance_check_failed",
+        "provenance": {
+          "ok": false,
+          "code": "execution_record_missing_or_unreadable"
+        }
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-03",
+      "name": "Graph-hash mismatch blocked",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "review_blocked",
+        "code": "provenance_check_failed",
+        "provenance": {
+          "ok": false,
+          "code": "graph_sha256_mismatch"
+        }
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-04",
+      "name": "Response-hash mismatch blocked",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "review_blocked",
+        "code": "provenance_check_failed",
+        "provenance": {
+          "ok": false,
+          "code": "captured_response_sha256_mismatch"
+        }
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-05",
+      "name": "Binding-digest mismatch blocked",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "review_blocked",
+        "code": "provenance_check_failed",
+        "provenance": {
+          "ok": false,
+          "code": "binding_digest_mismatch"
+        }
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-06",
+      "name": "Missing required review-control field rejected",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "rejected",
+        "code": "control_missing:RC-02"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-07",
+      "name": "Unsupported support claim rejected",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "rejected",
+        "code": "unsupported_support_claim"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-08",
+      "name": "Omitted uncertainty treatment rejected",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "rejected",
+        "code": "uncertainty_treatment_missing"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-09",
+      "name": "Omitted escalation treatment rejected",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "rejected",
+        "code": "escalation_treatment_missing"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-10",
+      "name": "Uncertain state preserved",
+      "result": "pass",
+      "observed": {
+        "accepted": true,
+        "outcome": "uncertain",
+        "control_states": {
+          "RC-01": "observed",
+          "RC-02": "observed",
+          "RC-03": "uncertain",
+          "RC-04": "observed",
+          "RC-05": "observed",
+          "RC-06": "observed",
+          "RC-07": "observed",
+          "RC-08": "uncertain"
+        },
+        "graph_sha256_unchanged": true,
+        "engine_output_modified": false
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-11",
+      "name": "Escalated state preserved",
+      "result": "pass",
+      "observed": {
+        "accepted": true,
+        "outcome": "escalated",
+        "control_states": {
+          "RC-01": "observed",
+          "RC-02": "observed",
+          "RC-03": "uncertain",
+          "RC-04": "observed",
+          "RC-05": "observed",
+          "RC-06": "observed",
+          "RC-07": "escalated",
+          "RC-08": "uncertain"
+        },
+        "graph_sha256_unchanged": true,
+        "engine_output_modified": false
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-12",
+      "name": "Attempted Engine-output override rejected; graph unchanged",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "rejected",
+        "code": "engine_output_override_attempt",
+        "at": "note.support_observations.1.final_status",
+        "graph_unchanged": true
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-13",
+      "name": "Prohibited characterization rejected",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "rejected",
+        "code": "prohibited_characterization"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-14",
+      "name": "Misreported graph status rejected",
+      "result": "pass",
+      "observed": {
+        "accepted": false,
+        "outcome": "rejected",
+        "code": "graph_status_misreported"
+      },
+      "network_attempts": 0
+    },
+    {
+      "id": "CC-15",
+      "name": "Review-blocked state preserved, never favorable",
+      "result": "pass",
+      "observed": {
+        "accepted": true,
+        "outcome": "review_blocked",
+        "control_states": {
+          "RC-01": "review_blocked",
+          "RC-02": "observed",
+          "RC-03": "uncertain",
+          "RC-04": "observed",
+          "RC-05": "observed",
+          "RC-06": "observed",
+          "RC-07": "observed",
+          "RC-08": "uncertain"
+        },
+        "graph_sha256_unchanged": true,
+        "engine_output_modified": false
+      },
+      "network_attempts": 0
+    }
+  ]
+}

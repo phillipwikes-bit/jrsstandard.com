@@ -1,0 +1,15 @@
+{
+  "record_format": "jrs-stage-a-mapping-record/0.1.0",
+  "request_id": "REQ-MT-21",
+  "synthetic_record_id": "HF-001",
+  "provider_request_id": "synthetic-provider-req-21",
+  "model_identifier": "claude-haiku-5-5",
+  "mapping_version": "0.1.0-offline",
+  "mapping_sha256": "1e289b0687d8b14a4c3dd74db1bd977af0f32d50dee2ad523da412f515a159b8",
+  "raw_capture_sha256": "8803fe1e8ba53a9ca878757af3be87a57068bfde4ea410ac82fb738c4fd4fab9",
+  "response_origin": "mock_transport_fixture",
+  "adapter_transport_mode": "mocked",
+  "engine_execution_mode": "recorded_response_replay",
+  "adapter_version": "0.2.0-offline",
+  "note": "Synthetic capture; no provider produced it."
+}

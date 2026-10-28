@@ -1,0 +1,22 @@
+{
+  "record_sha256": "5be4400976a5e4b1dec9bf20c4d2ef39f7d2324c72993ded10aef9ba0cd05081",
+  "record_length": 682,
+  "case_id": "EV-25",
+  "layer": 1,
+  "title": "No authority section",
+  "group": "protected_evaluation",
+  "parameter_set": "102",
+  "facts": [
+    "The Authority section is absent; no dated decision appears."
+  ],
+  "conditions_targeted": [
+    "identifiable_basis",
+    "chronology_integrity"
+  ],
+  "features": [
+    "incomplete_evidence_chain",
+    "missing_decision_basis"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

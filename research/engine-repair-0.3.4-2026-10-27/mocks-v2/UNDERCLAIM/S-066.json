@@ -1,0 +1,27 @@
+{
+  "envelope": {
+    "status": "ok",
+    "stop_reason": "end_turn",
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"contract_version\": \"jrs-engine-local-0.3.0-evidence-graph\",\n  \"prompt_version\": \"jrs-engine-local-0.3.4-research/prompt-1\",\n  \"observations\": [\n    {\n      \"observation_id\": \"M1\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"The move of 6,000 from the venue line to the materials line was approved on 10 October\",\n      \"assertion_type\": \"stated_decision\"\n    },\n    {\n      \"observation_id\": \"M2\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"The board approved it because the money was better placed in materials\",\n      \"assertion_type\": \"stated_rationale\"\n    },\n    {\n      \"observation_id\": \"M3\",\n      \"condition_id\": \"identifiable_basis\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"The board approved it because the money was better placed in materials\",\n      \"assertion_type\": \"stated_rationale\"\n    },\n    {\n      \"observation_id\": \"M4\",\n      \"condition_id\": \"chronology_integrity\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"The move of 6,000 from the venue line to the materials line was approved on 10 October\",\n      \"assertion_type\": \"stated_date\"\n    },\n    {\n      \"observation_id\": \"M5\",\n      \"condition_id\": \"reasoning_traceability\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"The board approved it because the money was better placed in materials\",\n      \"assertion_type\": \"stated_rationale\"\n    },\n    {\n      \"observation_id\": \"M6\",\n      \"condition_id\": \"sufficiency\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"The move of 6,000 from the venue line to the materials line was approved on 10 October\",\n      \"assertion_type\": \"stated_source_reference\"\n    }\n  ]\n}"
+      }
+    ],
+    "model": "MOCK-POLICY-UNDERCLAIM-NOT-A-MODEL",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "provenance": {
+    "response_origin": "mock_policy_fixture",
+    "policy": "UNDERCLAIM",
+    "generator": "research/study-156-2026-10-27/tools/mock-candidates.mjs",
+    "reference_used": {
+      "e1": "UNGROUNDED",
+      "chronology_conflict": false
+    },
+    "observations_equal_to_study_mock": true
+  }
+}

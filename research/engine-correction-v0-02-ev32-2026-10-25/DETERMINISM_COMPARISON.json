@@ -1,0 +1,11 @@
+{
+  "comparison": "run-3 vs run-4 (after RC-06 supplement): adapter outcome, normalized graph digest, observed behaviour (V0 criterion). Runs 1 and 2: DETERMINISM_COMPARISON_RUNS_1_2.json",
+  "items": 72,
+  "identical": 72,
+  "differences": [],
+  "summaries_identical": true,
+  "rc06": [
+    "0.3.1-candidate {\"reconstructability\":\"review_required\",\"identifiable_basis\":\"supported\",\"chronology_integrity\":\"supported\",\"reasoning_traceability\":\"supported\",\"sufficiency\":\"review_required\"} cited_evidence_conflict",
+    "0.3.2-candidate {\"reconstructability\":\"review_required\",\"identifiable_basis\":\"supported\",\"chronology_integrity\":\"supported\",\"reasoning_traceability\":\"supported\",\"sufficiency\":\"review_required\"} cited_evidence_conflict"
+  ]
+}

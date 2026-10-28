@@ -1,0 +1,32 @@
+{
+  "seal_format": "jrs-study-156-seal/1.0.0",
+  "name": "freeze",
+  "note": "Study freeze before scored execution: candidate 0.3.3 and its manifest, every tool (runners, scoring, analysis, variants, mocks, probes, mutation, recovery, transport), mock and variant inputs, registers, protocol (codebook, proposed acceptance criteria with owner approval NOT GIVEN, request and cost plan, provider record, reviewer-benefit protocol), blinded forms and sealed keys, development log and history",
+  "sealed_at_utc": "2026-10-27T13:16:24.333Z",
+  "file_count": 2215,
+  "manifest_file": "seals/freeze/MANIFEST_SHA256.txt",
+  "manifest_sha256": "0d1230d0f19124f133f92a765a1d4f1089e04ad44658620b22ca90977238fe20",
+  "roots": [
+    "CANDIDATE_0.3.3_MANIFEST_SHA256.txt",
+    "SOURCE_COPY_SHA256_BEFORE_CHANGE.txt",
+    "DEVELOPMENT_LOG.md",
+    "candidate",
+    "tools",
+    "mocks",
+    "mocks-variants",
+    "variants",
+    "protocol",
+    "registers/RECORD_INVENTORY_V2.json",
+    "registers/RECORD_INVENTORY.md",
+    "registers/FEATURE_COVERAGE_MATRIX_PRE.json",
+    "registers/LABEL_REGISTER.json",
+    "registers/CONTAMINATION_REGISTER.json",
+    "registers/history",
+    "forms/BLINDED_REFERENCE_FORM.md",
+    "forms/BLINDED_REFERENCE_FORM.csv",
+    "forms/BENEFIT_SESSION_SHEET.csv",
+    "sealed",
+    "history"
+  ],
+  "rule": "Post-seal modification of any listed file is prohibited. A listed directory may not gain files."
+}

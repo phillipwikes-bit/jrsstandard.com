@@ -1,0 +1,6 @@
+tests/engine-remediation-phase7/run.mjs rc=1 4 FAIL-lines
+tests/engine-governance-phase8/run.mjs rc=1 39 FAIL-lines
+tests/engine-human-review-phase9/run.mjs rc=1 6 FAIL-lines
+tests/engine/activity-projection.mjs rc=1 6 FAIL-lines
+tests/engine-reliability/run.mjs rc=1 3 FAIL-lines
+tests/engine-adaptive-reliability/run.mjs rc=1 1 FAIL-lines

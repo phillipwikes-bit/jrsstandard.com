@@ -1,0 +1,33 @@
+{
+  "record_type": "jrs-phase8-admissions/1.0.0",
+  "rule": "Each admission is written once, before any file of the package exists, and is never rewritten.",
+  "admissions": [
+    {
+      "package_id": "phase9-human-evidence-adjudication",
+      "package_version": "0.1.0",
+      "owner_decision_reference": "OWNER_WORK_ASSIGNMENT_2026-10-20_PHASE9_HUMAN_ADJUDICATION_LAYER",
+      "approved_paths": [
+        "lib/engine-human-review-phase9/",
+        "tests/engine-human-review-phase9/",
+        "tools/engine-human-review-phase9-replay.mjs",
+        "research/engine-human-review-phase9-2026-10-20/"
+      ],
+      "manifest_file": "research/engine-human-review-phase9-2026-10-20/PHASE9_FILE_MANIFEST_SHA256.txt",
+      "status": "local_construction_only",
+      "reason": "Local, synthetic-only human evidence adjudication layer around the v0.3.1 candidate: dossiers, decision model, Cognitive Controls, sealed rehearsal packets, execution-disabled review and measurement protocols.",
+      "restrictions": "No provider use, real records, external labels, holdouts, independent evaluation, deployment, public use, commercial use, licensing, release or production. The package does not label, score, approve or commercialize the Engine.",
+      "required_conditions": [
+        "EC-P4-TOOLS",
+        "EC-P6-OWNERSHIP",
+        "EC-P7-OWNERSHIP",
+        "EC-P7-TOOLS",
+        "EC-P8-SCOPE"
+      ],
+      "gate_result": "admissible",
+      "authorizes_work_beyond_owner_reference": false,
+      "admitted_at": "2026-10-20T12:12:54.948Z",
+      "files_present_at_admission": 0,
+      "proposal_sha256": "sha256:694c9d4150d334f369f9decda1fc602623efc9cec3a74330affc0b6c66a8c2e2"
+    }
+  ]
+}

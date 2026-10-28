@@ -1,0 +1,1 @@
+Control test record, backup restoration. Fieldwork began on 1 July. We restored 15 of the 60 Q2 weekly backups between 1 and 2 July; backup BK-2207 overran at 6 hours and was re-run successfully on 3 July. The rating of effective with one exception was agreed with the control owner on 5 July, based on working paper WP-14.

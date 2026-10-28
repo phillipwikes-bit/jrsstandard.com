@@ -1,0 +1,20 @@
+{
+  "record_sha256": "8aecbbe1c01e4e8d2657794735b9639adab692c5d85524f054521a7696e35a3b",
+  "record_length": 831,
+  "case_id": "EV-33",
+  "layer": 1,
+  "title": "Certainty language in a risk statement",
+  "group": "protected_evaluation",
+  "parameter_set": "105",
+  "facts": [
+    "A Residual risk section uses \"No risk\" and \"fully secure\"."
+  ],
+  "conditions_targeted": [
+    "sufficiency"
+  ],
+  "features": [
+    "false_reassurance_trap"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

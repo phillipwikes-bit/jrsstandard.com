@@ -1,0 +1,12 @@
+tests/engine-remediation-phase7/run.mjs rc=1
+tests/engine-governance-phase8/run.mjs rc=1
+tests/engine-reliability/run.mjs rc=1
+tests/engine-adaptive-reliability/run.mjs rc=1
+tests/engine-assurance/run.mjs rc=0
+tests/engine-evidence-contract/run.mjs rc=0
+tests/engine-human-review-phase9/run.mjs rc=1
+tests/manifest/run.mjs rc=0
+tests/platform-evaluation/run.mjs rc=0
+tests/engine/activity-projection.mjs rc=1
+tests/engine/retention.mjs rc=0
+tests/engine/score-holdout.mjs rc=0

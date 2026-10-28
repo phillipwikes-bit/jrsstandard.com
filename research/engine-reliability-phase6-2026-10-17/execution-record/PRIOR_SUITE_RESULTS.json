@@ -1,0 +1,18 @@
+{
+  "record_type": "prior-version suite results, run unchanged after the Phase 6 files were added",
+  "run_date": "2026-10-19",
+  "commands": "env -u ANTHROPIC_BASE_URL node tests/<suite>/run.mjs",
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "before_phase6": { "date": "2026-10-17", "engine-assurance": "148/148", "engine-evidence-contract": "123/123", "engine-evidence-graph": "140/140", "engine-adaptive-reliability": "269/269" },
+  "after_phase6": { "engine-assurance": "148/148", "engine-evidence-contract": "123/123", "engine-evidence-graph": "140/140", "engine-adaptive-reliability": "268/269" },
+  "cross_package_conflict": {
+    "suite": "tests/engine-adaptive-reliability/run.mjs (Phase 4)",
+    "check": "tools unchanged since 5d5374b",
+    "reported_path": "tools/engine-reliability-replay.mjs",
+    "cause": "The Phase 4 preservation check fails when any untracked or changed file exists under tools/. The Phase 6 assignment requires a new file at tools/engine-reliability-replay.mjs. No existing file under tools/ was changed.",
+    "status": "declared cross-package compatibility conflict; unresolved; owner decision OD-02",
+    "suite_modified": false
+  },
+  "suites_modified": false,
+  "network_attempts": 0
+}

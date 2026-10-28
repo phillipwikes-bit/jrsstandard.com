@@ -1,0 +1,1 @@
+Release decision record. Release 5.2 was authorized on 19 September. The build was approved for release because it was fit to be released, and its fitness is shown by the decision to release it.

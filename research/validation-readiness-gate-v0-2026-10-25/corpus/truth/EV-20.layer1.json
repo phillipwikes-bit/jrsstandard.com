@@ -1,0 +1,21 @@
+{
+  "record_sha256": "bbad91ec10116480fe011e19074dab8fbbf76d19c1d65baf122e7674c548c38d",
+  "record_length": 777,
+  "case_id": "EV-20",
+  "layer": 1,
+  "title": "Quotation differs from the record in case",
+  "group": "protected_evaluation",
+  "parameter_set": "102",
+  "facts": [
+    "The authority quotation begins with a lower-case letter; the record does not."
+  ],
+  "conditions_targeted": [
+    "identifiable_basis"
+  ],
+  "features": [
+    "ambiguous_quotation",
+    "false_reassurance_trap"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

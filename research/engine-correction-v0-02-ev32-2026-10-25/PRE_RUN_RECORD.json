@@ -1,0 +1,14 @@
+{
+  "recorded_at_utc": "2026-10-25T09:12:01.683Z",
+  "engine_runs_of_032_before_this_record": 0,
+  "files": {
+    "tools/evaluate-correction.mjs": "b0ac0fc75a7f7ea9c7d3cabd053b1723728e27beea0edec2af946ca20c892cdc",
+    "tools/v0/controls.mjs": "ff0ead8638c44a8b48dcd1bf79e2e6882167a63a9c787e58e58d4781e999c136",
+    "tools/v0/harness/adapter.mjs": "aa2b97797a9ed2d9476e901f2a54e10b3c7f898af6a9df8b473ac27482d81fb6",
+    "tools/v0/harness/isolate.mjs": "922e84d8cdb5c3c1bab8958c726b31e675fd66c1140139e395dc3c82f180853f",
+    "CANDIDATE_0.3.2_MANIFEST_SHA256.txt": "2276bbc22e1e226220b471b27b793119d37ceb6e093a91d1ecbafae31a200f18",
+    "regression/SEAL.json": "287f0bc0c3ce2d19bcc050ceab1460aafa28a68b3a3c76cefb2d0f0f89c55452",
+    "regression/REGRESSION_SEAL_MANIFEST_SHA256.txt": "643ef9bee4b42f001a9f05d926c45d6e6eba9e04a9491f6dea64b022ed6b6c92",
+    "CORRECTION_DIFF.patch": "4626342347e1817b48586633f8421eb3b9798f7d8f457ed6a70f53a88dd8f532"
+  }
+}

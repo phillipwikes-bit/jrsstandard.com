@@ -1,0 +1,99 @@
+{
+  "manifest_type": "jrs-phase8-cross-package-compatibility-manifest/1.0.0",
+  "status_lines": ["LOCAL ENGINEERING MATERIAL ONLY", "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED", "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"],
+  "defined_on": "2026-10-19",
+  "defined_before_phase8_code": true,
+  "language_rule": "Earlier package results remain historically recorded results for their sealed package scope. A later whole-worktree run may show a declared compatibility condition without establishing a defect in the earlier package.",
+  "condition_class": "declared_environmental_compatibility_condition",
+  "never_labelled": "pass",
+  "conditions": [
+    {
+      "condition_id": "CPC-01",
+      "name": "Phase 4 tools-path condition",
+      "originating_package": "phase4-change-control",
+      "originating_suite": "tests/engine-adaptive-reliability/run.mjs",
+      "exact_check": "tools unchanged since 5d5374b",
+      "check_source": "tests/engine-adaptive-reliability/run.mjs:51 (loop over protected paths; p = 'tools')",
+      "offending_rule": "untracked_under_tools",
+      "triggering_paths": [
+        { "path": "tools/engine-reliability-replay.mjs", "later_package": "phase6-reliability", "cause": "existing" },
+        { "path": "tools/engine-governance-phase8-replay.mjs", "later_package": "phase8-governance", "cause": "additional_phase8" }
+      ],
+      "protected_packages_confirmed_unchanged": ["v1-historical", "v0.1-assurance", "v0.2-evidence-contract", "v0.3-evidence-graph", "phase4-change-control"],
+      "first_observed": [
+        { "date": "2026-10-19", "cause": "existing", "record": "research/engine-reliability-phase6-2026-10-17/execution-record/PRIOR_SUITE_RESULTS.json" },
+        { "date": "2026-10-19", "cause": "additional_phase8", "record": "research/engine-governance-phase8-2026-10-19/execution-record/WORKTREE_RUN_RECORD.json" }
+      ],
+      "meaning": "Later local tooling exists under tools/. Phase 4 protected files remain unchanged.",
+      "why_visible_not_rewritten": "The Phase 4 check fails on any untracked file under tools/, including files that later packages add. No tracked tools/ file differs from 5d5374b. The Phase 4 recorded result stays as recorded for its sealed scope; the condition is reported, never relabelled as a pass and never suppressed.",
+      "owner_decision_before_redesign": "P7-OD-04 and P8-OD-02: whether the Phase 4 file-ownership check should ever be redesigned. Until then it is not edited."
+    },
+    {
+      "condition_id": "CPC-02",
+      "name": "Phase 6 package-ownership condition",
+      "originating_package": "phase6-reliability",
+      "originating_suite": "tests/engine-reliability/run.mjs",
+      "exact_check": "every new file is inside the four Phase 6 locations",
+      "check_source": "tests/engine-reliability/run.mjs:64",
+      "offending_rule": "untracked_outside_phase6",
+      "triggering_paths": [
+        { "path": "lib/engine-evidence-graph-v0.3.1-candidate/", "later_package": "phase7-candidate", "cause": "existing" },
+        { "path": "tests/engine-remediation-phase7/", "later_package": "phase7-candidate", "cause": "existing" },
+        { "path": "research/engine-remediation-phase7-2026-10-19/", "later_package": "phase7-candidate", "cause": "existing" },
+        { "path": "lib/engine-governance-phase8/", "later_package": "phase8-governance", "cause": "additional_phase8" },
+        { "path": "tests/engine-governance-phase8/", "later_package": "phase8-governance", "cause": "additional_phase8" },
+        { "path": "tools/engine-governance-phase8-replay.mjs", "later_package": "phase8-governance", "cause": "additional_phase8" },
+        { "path": "research/engine-governance-phase8-2026-10-19/", "later_package": "phase8-governance", "cause": "additional_phase8" }
+      ],
+      "protected_packages_confirmed_unchanged": ["phase6-reliability"],
+      "first_observed": [
+        { "date": "2026-10-19", "cause": "existing", "record": "research/engine-remediation-phase7-2026-10-19/execution-record/PRIOR_SUITE_RESULTS.json" },
+        { "date": "2026-10-19", "cause": "additional_phase8", "record": "research/engine-governance-phase8-2026-10-19/execution-record/WORKTREE_RUN_RECORD.json" }
+      ],
+      "meaning": "Later packages exist. Phase 6 protected files remain unchanged.",
+      "why_visible_not_rewritten": "The Phase 6 check fails on any untracked file outside the four Phase 6 locations. Phase 7 and Phase 8 files are outside them by design. Every Phase 6 file is byte-identical to its manifest. The Phase 6 recorded result (316/316) stays as recorded for its sealed scope.",
+      "owner_decision_before_redesign": "P7-OD-04 and P8-OD-02."
+    },
+    {
+      "condition_id": "CPC-03",
+      "name": "Phase 7 package-ownership condition",
+      "originating_package": "phase7-candidate",
+      "originating_suite": "tests/engine-remediation-phase7/run.mjs",
+      "exact_check": "every new file is a Phase 6 file or inside the three Phase 7 locations",
+      "check_source": "tests/engine-remediation-phase7/run.mjs:58",
+      "offending_rule": "untracked_outside_phase6_and_phase7",
+      "triggering_paths": [
+        { "path": "lib/engine-governance-phase8/", "later_package": "phase8-governance", "cause": "new_phase8" },
+        { "path": "tests/engine-governance-phase8/", "later_package": "phase8-governance", "cause": "new_phase8" },
+        { "path": "tools/engine-governance-phase8-replay.mjs", "later_package": "phase8-governance", "cause": "new_phase8" },
+        { "path": "research/engine-governance-phase8-2026-10-19/", "later_package": "phase8-governance", "cause": "new_phase8" }
+      ],
+      "protected_packages_confirmed_unchanged": ["phase6-reliability", "phase7-candidate"],
+      "first_observed": [
+        { "date": "2026-10-19", "cause": "new_phase8", "record": "research/engine-governance-phase8-2026-10-19/execution-record/WORKTREE_RUN_RECORD.json" }
+      ],
+      "meaning": "The Phase 7 suite was written before Phase 8 existed. No Phase 7 protected file has changed.",
+      "why_visible_not_rewritten": "The Phase 7 check fails on any untracked file that is neither a Phase 6 file nor inside the three Phase 7 locations. Phase 8 files are outside them by design. Every Phase 7 file is byte-identical to the Phase 8 Phase 7 manifest. The Phase 7 recorded result (328/328 at 2026-10-19T13:57:52Z) stays as a time-bound recorded result.",
+      "owner_decision_before_redesign": "P8-OD-02."
+    },
+    {
+      "condition_id": "CPC-04",
+      "name": "Phase 7 tools-path condition",
+      "originating_package": "phase7-candidate",
+      "originating_suite": "tests/engine-remediation-phase7/run.mjs",
+      "exact_check": "no Phase 7 file under tools/, api/, docs/, .jrs/ or a public page",
+      "check_source": "tests/engine-remediation-phase7/run.mjs:59",
+      "offending_rule": "untracked_non_phase6_under_restricted_roots",
+      "triggering_paths": [
+        { "path": "tools/engine-governance-phase8-replay.mjs", "later_package": "phase8-governance", "cause": "new_phase8" }
+      ],
+      "protected_packages_confirmed_unchanged": ["phase7-candidate", "v1-historical"],
+      "first_observed": [
+        { "date": "2026-10-19", "cause": "new_phase8", "record": "research/engine-governance-phase8-2026-10-19/execution-record/WORKTREE_RUN_RECORD.json" }
+      ],
+      "meaning": "Phase 8 uses a required local replay tool. No Phase 7 protected file, public route, deployment file or public page has changed.",
+      "why_visible_not_rewritten": "The Phase 7 check treats any non-Phase-6 untracked file under tools/, api/, docs/, .jrs/, .github/ or a root HTML page as a Phase 7 file. The only such file is the required Phase 8 replay tool. No tracked file differs from 428c307. The Phase 7 recorded result stays as recorded.",
+      "owner_decision_before_redesign": "P8-OD-02."
+    }
+  ]
+}

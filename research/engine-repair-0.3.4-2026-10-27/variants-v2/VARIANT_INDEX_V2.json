@@ -1,0 +1,198 @@
+{
+  "format": "jrs-0.3.4-variant-index/2.0.0",
+  "spec_version": "jrs-study-156-variants/2.0.0",
+  "built_at_utc": "2026-10-27T21:51:18.363Z",
+  "generator_sha256": "a5db28ac134fc466dda73ab6630781da65e80170d135f2a8752b08b3064c7568",
+  "study_variants_file_sha256": "caaefb04f34e011677f8a96401c7e511090abf6f6e4b4487f911f023cf5e944f",
+  "base_records": 104,
+  "variant_rows": 832,
+  "constructible": 806,
+  "variants_file": {
+    "path": "variants-v2/VARIANTS_V2.jsonl",
+    "sha256": "e1034dd876488ae4de08cfb5da8a4d320553190ec705d59ab9d383b0b90d3927"
+  },
+  "mock_files": {
+    "ORACLE": {
+      "sha256": "8c2c1b833e146fc755dbdaf01a187a617762dcfac59e4fe1a17745534137f0a6",
+      "rows": 806
+    },
+    "OVERCLAIM": {
+      "sha256": "8d86c17c493a29d664414c1909af3fda7ae9abbba2992ae333ad052058a72535",
+      "rows": 806
+    },
+    "ORACLE-R": {
+      "sha256": "3eb1ab2d6bac198a82012b340cae10780022cafcbb893ac91c915f4a03464960",
+      "rows": 806
+    },
+    "OVERCLAIM-R": {
+      "sha256": "53e792471a7da8b3d18f378210702150d9cd2f35412145eb22c11b28c45ae259",
+      "rows": 806
+    },
+    "ADV": {
+      "sha256": "e0780db63f161fdfdea12006200db3e6e615dabfc05e93a8587bebfd570d1804",
+      "rows": 208
+    }
+  },
+  "mock_files_for_0_3_3": {
+    "ORACLE": {
+      "sha256": "4944c26d09c1a1a1ffbcb9bfb4a41e4bb3709360dc21fadcb86c5f94d23aebd7",
+      "rows": 89
+    },
+    "OVERCLAIM": {
+      "sha256": "58f7f5f80654d52cd94d81128fb9ad86242d26e79106a555c18ec0baa3619f53",
+      "rows": 89
+    },
+    "ORACLE-R": {
+      "sha256": "004af0bde1f4ddcca47cf29bf774d31d5805e4df804ed89844907b1b1f00bb11",
+      "rows": 89
+    },
+    "OVERCLAIM-R": {
+      "sha256": "cc757bd19c029c0693a6173198fb5221c6ce4d422f5cf5d2311eff07d479bfcb",
+      "rows": 89
+    }
+  },
+  "by_type": {
+    "V1": {
+      "constructible": 104,
+      "not_constructible": []
+    },
+    "V2": {
+      "constructible": 104,
+      "not_constructible": []
+    },
+    "V3": {
+      "constructible": 102,
+      "not_constructible": [
+        "S-062: fewer than two sentences after the title",
+        "S-072: fewer than two sentences after the title"
+      ]
+    },
+    "V4": {
+      "constructible": 95,
+      "not_constructible": [
+        "R03: no dated sentence and no decision sentence",
+        "S-023: decision sentence has no reversible outcome word",
+        "S-043: decision sentence has no reversible outcome word",
+        "S-063: no dated sentence and no decision sentence",
+        "S-073: decision sentence has no reversible outcome word",
+        "S-083: decision sentence has no reversible outcome word",
+        "S-086: decision sentence has no reversible outcome word",
+        "S-089: decision sentence has no reversible outcome word",
+        "S-093: decision sentence has no reversible outcome word"
+      ]
+    },
+    "V5": {
+      "constructible": 89,
+      "not_constructible": [
+        "R03: no decision sentence",
+        "S-022: evidence remains in the decision clause after removal: evidential_verb,count_of_total,evidence_document",
+        "S-025: evidence stated before the decision verb: evidential_verb,evidence_document",
+        "S-041: no decision sentence",
+        "S-042: no decision sentence",
+        "S-047: no decision sentence",
+        "S-048: no decision sentence",
+        "S-050: no decision sentence",
+        "S-063: no decision sentence",
+        "S-071: no decision sentence",
+        "S-072: no decision sentence",
+        "S-076: no decision sentence",
+        "S-078: no decision sentence",
+        "S-080: no decision sentence",
+        "S-081: evidence remains in the decision clause after removal: count_of_total"
+      ]
+    },
+    "V6": {
+      "constructible": 104,
+      "not_constructible": []
+    },
+    "V7": {
+      "constructible": 104,
+      "not_constructible": []
+    },
+    "V8": {
+      "constructible": 104,
+      "not_constructible": []
+    }
+  },
+  "v5_changes": [
+    {
+      "variant_id": "S-022~V5",
+      "change": "newly_not_constructible",
+      "v1_text": "Records request determination. Seven of the nine contracts located in the register search of 2 June were released on 3 June.",
+      "v2_text": null,
+      "v2_reason": "evidence remains in the decision clause after removal: evidential_verb,count_of_total,evidence_document"
+    },
+    {
+      "variant_id": "S-025~V5",
+      "change": "newly_not_constructible",
+      "v1_text": "Records request determination. For request RQ-0912, contracts FM-22 and FM-31 carry that marking on their cover pages, and they were withheld on 3 June.",
+      "v2_text": null,
+      "v2_reason": "evidence stated before the decision verb: evidential_verb,evidence_document"
+    },
+    {
+      "variant_id": "S-030~V5",
+      "change": "text_changed",
+      "v1_text": "Records request determination. Request RQ-0912 was granted in part on 3 June: seven of nine contracts located in the 2 June register search were released, and contracts FM-22 and FM-31 were withheld.",
+      "v2_text": "Records request determination. Request RQ-0912 was granted in part on 3 June.",
+      "v2_reason": null
+    },
+    {
+      "variant_id": "S-037~V5",
+      "change": "text_changed",
+      "v1_text": "Retention exception record. The records manager approved the exception on 16 January, and the retention log was updated on 17 January.",
+      "v2_text": "Retention exception record. The records manager approved the exception on 16 January.",
+      "v2_reason": null
+    },
+    {
+      "variant_id": "S-079~V5",
+      "change": "text_changed",
+      "v1_text": "Incident review record. Incident INC-6602, the payments portal outage, was attributed to the expiry of certificate CERT-19, shown in the load-balancer log.",
+      "v2_text": "Incident review record. Incident INC-6602, the payments portal outage, was attributed to the expiry of certificate CERT-19.",
+      "v2_reason": null
+    },
+    {
+      "variant_id": "S-081~V5",
+      "change": "newly_not_constructible",
+      "v1_text": "Control test record, backup restoration. We selected 15 of the 60 weekly backups taken in Q2 and restored each to the test environment.",
+      "v2_text": null,
+      "v2_reason": "evidence remains in the decision clause after removal: count_of_total"
+    },
+    {
+      "variant_id": "S-090~V5",
+      "change": "text_changed",
+      "v1_text": "Control test record, backup restoration. The control is rated effective with one exception: 14 of 15 sampled Q2 restores met the 4-hour target, and backup BK-2207 was re-run successfully on 3 July.",
+      "v2_text": "Control test record, backup restoration. The control is rated effective with one exception.",
+      "v2_reason": null
+    }
+  ],
+  "checks": {
+    "non_v5_lines_identical": 728,
+    "non_v5_lines_compared": 728,
+    "heuristic_equal_to_study": 1604,
+    "heuristic_compared": 1604,
+    "heuristic_differing": [],
+    "for033_equal_to_study_body": 340,
+    "for033_compared": 340,
+    "for033_differing": []
+  },
+  "engines": {
+    "0.3.4-research-candidate": {
+      "snapshot_sha256": "59d33bdf515410fd5ac69a7e85f143e85aace2da99fa1e09ea2ec9cd507b926a",
+      "released": {
+        "unchanged": true,
+        "changed": [],
+        "deleted": true
+      }
+    },
+    "0.3.3-research-candidate": {
+      "manifest_sha256": "fad69b62554a8e8cb6aa97ba9a85b5ee4f80ebfff565a3705dfc91f8dc100477",
+      "released": {
+        "unchanged": true,
+        "changed": [],
+        "deleted": true
+      }
+    }
+  },
+  "network_attempts": 0,
+  "note": "Variant texts come from fixed transforms that import no Engine code. Designed references for variants are AI-authored construction intent, not human findings. Mock candidates are not model output. Every variant is exposed development material for 0.3.4."
+}

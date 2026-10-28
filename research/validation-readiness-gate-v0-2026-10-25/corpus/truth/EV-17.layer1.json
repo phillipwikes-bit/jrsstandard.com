@@ -1,0 +1,22 @@
+{
+  "record_sha256": "cbcc2c9184692028b5a8c1a04afd692c8c02a2573a5cc3df0b5dc0ca66001e2c",
+  "record_length": 778,
+  "case_id": "EV-17",
+  "layer": 1,
+  "title": "No explicit dates anywhere",
+  "group": "protected_evaluation",
+  "parameter_set": "105",
+  "facts": [
+    "No ISO date appears anywhere in the record.",
+    "The candidate cites an undated phrase as a stated date."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity"
+  ],
+  "features": [
+    "incomplete_evidence_chain",
+    "false_reassurance_trap"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

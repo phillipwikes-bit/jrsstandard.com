@@ -1,0 +1,12 @@
+{
+  "case_id": "ADV-05",
+  "expectation_authority": "owner-authored specification (AI-assisted drafting); not ground truth",
+  "adapter": {
+    "outcome": "REJECT-PRE-REPLAY",
+    "step": "V6",
+    "code": "model_refusal"
+  },
+  "graph": null,
+  "metamorphic_of": null,
+  "semantic_questions": []
+}

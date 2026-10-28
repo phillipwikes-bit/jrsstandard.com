@@ -1,0 +1,20 @@
+{
+  "record_sha256": "62b989342426d2bc545a45571e8975386f8284adcb0d0230b972ce350483597c",
+  "record_length": 778,
+  "case_id": "EV-36",
+  "layer": 1,
+  "title": "Candidate note attributes a purpose",
+  "group": "protected_evaluation",
+  "parameter_set": "103",
+  "facts": [
+    "The candidate note attributes a purpose to the board; the record states none."
+  ],
+  "conditions_targeted": [
+    "identifiable_basis"
+  ],
+  "features": [
+    "scope_boundary_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

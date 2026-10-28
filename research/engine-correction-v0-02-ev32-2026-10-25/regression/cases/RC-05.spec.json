@@ -1,0 +1,35 @@
+{
+  "case_id": "RC-05",
+  "purpose": "A date in the basis section (no event role) and the request date: an unknown role keeps the conflict (conservative).",
+  "record_source": "V0 sealed corpus cases/EV-01.record.txt",
+  "record_sha256": "12ea2e933c4c84d416826e0900022f1f49dd3d13a85d2a00d28090f47185e49f",
+  "expected": {
+    "0.3.1-candidate": {
+      "intake_decision": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "cited_evidence_conflict"
+      ]
+    },
+    "0.3.2-candidate": {
+      "intake_decision": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflict_kinds": [
+        "cited_evidence_conflict"
+      ]
+    }
+  },
+  "expectation_authority": "owner-authorized correction scope (V0-02); AI-assisted drafting; not ground truth"
+}

@@ -1,0 +1,547 @@
+
+# A. Boundaries
+PASS  HEAD is still 428c307 (no commit)
+PASS  branch unchanged (claude/engine-reliability-phase6-local)
+PASS  PR #40 branch still at 428c307
+PASS  no tracked file differs from 428c307 (public routes, deployment, B-018, trackers, ledgers)
+PASS  B-018 remains OPEN
+PASS  every untracked file belongs to a registered package or a declared later package
+COND  DCC-EC-P8-SCOPE-phase9-human-evidence-adjudication: 101 files of phase9-human-evidence-adjudication, construction state manifest_verified (declared composition condition, not a historical-package defect)
+PASS  no Phase 8 file name suggests source-aligned, sealed evaluation or label material
+PASS  no provider identifier, key, key name, endpoint, environment access or SDK import in Phase 8 code
+
+# B. Version registry and manifests
+PASS  registry lists the seven earlier packages
+PASS  v1-historical: identity, paths, file count, package hash, command, recorded result, limitations and status recorded
+PASS  v1-historical: byte-identical to its manifest (1 files)
+PASS  v0.1-assurance: identity, paths, file count, package hash, command, recorded result, limitations and status recorded
+PASS  v0.1-assurance: byte-identical to its manifest (183 files)
+PASS  v0.2-evidence-contract: identity, paths, file count, package hash, command, recorded result, limitations and status recorded
+PASS  v0.2-evidence-contract: byte-identical to its manifest (235 files)
+PASS  v0.3-evidence-graph: identity, paths, file count, package hash, command, recorded result, limitations and status recorded
+PASS  v0.3-evidence-graph: byte-identical to its manifest (218 files)
+PASS  phase4-change-control: identity, paths, file count, package hash, command, recorded result, limitations and status recorded
+PASS  phase4-change-control: byte-identical to its manifest (277 files)
+PASS  phase6-reliability: identity, paths, file count, package hash, command, recorded result, limitations and status recorded
+PASS  phase6-reliability: byte-identical to its manifest (139 files)
+PASS  phase7-candidate: identity, paths, file count, package hash, command, recorded result, limitations and status recorded
+PASS  phase7-candidate: byte-identical to its manifest (147 files)
+PASS  Phase 7 manifest covers every Phase 7 file (147) with SHA-256
+PASS  Phase 7 manifest reproduces byte-for-byte on a second build
+PASS  Phase 6 manifest equals the Phase 7 start snapshot
+PASS  Phase 7 corroboration: seal verifies and no file modified after the final handoff
+PASS  registry hash verifies
+PASS  registry makes no readiness, validation, ownership, commercial or release claim
+PASS  Phase 6 and Phase 7 recorded results kept as time-bound records
+
+# C. Cross-package governance
+PASS  compatibility manifest defines exactly four conditions CPC-01 to CPC-04
+PASS  compatibility manifest carries the language rule verbatim
+PASS  CPC-01: originating check exists at tests/engine-adaptive-reliability/run.mjs:51 (loop over protected paths; p = 'tools') and the suite file is unchanged
+PASS  CPC-02: originating check exists at tests/engine-reliability/run.mjs:64 and the suite file is unchanged
+PASS  CPC-03: originating check exists at tests/engine-remediation-phase7/run.mjs:58 and the suite file is unchanged
+PASS  CPC-04: originating check exists at tests/engine-remediation-phase7/run.mjs:59 and the suite file is unchanged
+PASS  whole-worktree run record exists and is complete for all six earlier suites
+PASS  recomputed classification: declared conditions only
+PASS  recorded run verdict matches recomputation
+PASS  v0.1, v0.2 and v0.3 show no failing check in the whole-worktree run
+PASS  Phase 4 shows only CPC-01, Phase 6 only CPC-02, Phase 7 only CPC-03 and CPC-04
+PASS  packages unchanged by the whole-worktree run
+PASS  whole-worktree run made no network attempt
+
+# D. Qualification, protocol, change model and decisions as recorded
+PASS  qualification record matches a fresh build from the recorded Phase 7 artifacts
+PASS  qualification record validates
+PASS  qualification record states what local checks do not establish
+PASS  protocol file is sealed and unchanged
+PASS  protocol is execution-disabled, not authorized, not conducted
+PASS  protocol defines eight measures, none calculated
+PASS  change model records the conservative rule and ten classes
+PASS  owner-decision register validates and carries all Phase 7 decisions
+PASS  no Phase 8 module can start a process (other than read-only git), fetch, or reach a URL
+
+# D2. Phase 8.1 registry, composition, isolated replay and handoff freeze as recorded
+PASS  later-package registry file present and valid (three retroactive seeds; counts derived)
+PASS  registry is excluded from the Phase 8 manifest and binds its hash
+PASS  historical compatibility manifest (CPC-01 to CPC-04) retained
+PASS  whole-worktree record carries a registry-derived composition bound to this registry's governance content
+PASS  recorded composition verdict: declared composition conditions only
+PASS  recorded composition: seed-derived conditions are six and cover CPC-01 to CPC-04; the total is derived from the registry
+PASS  recomputed composition equals the recorded composition
+PASS  recorded dual context keeps historical, isolated and composition results separate for six packages
+PASS  isolated replay record: Phase 4, 6 and 7 replayed, clean, temporary copies deleted, no network
+PASS  isolated replay results equal the historical records (269/269, 316/316, 328/328)
+PASS  no isolated replay temporary directory remains
+PASS  handoff freeze file validates and is execution-disabled
+PASS  handoff freeze records B-018 as OPEN
+PASS  no Phase 8 record presents B-018 as resolved
+
+# D3. Phase 8.2 amendment: Phase 8 as a governed historical package
+PASS  Phase 8 historical record: 370/370 at 2026-10-20T03:38:10.929Z, time-bound to the 8.1 scope
+PASS  Phase 8 historical manifest present and bound to the historical record
+PASS  Phase 8 isolated replay recorded separately (370/370, first attempt disclosed)
+PASS  owner authorization recorded with local-construction scope only
+PASS  at Phase 8.2 completion no Phase 9 reservation existed (historical scope)
+PASS  at Phase 8.2 completion no Phase 9 path existed (historical scope)
+PASS  Phase 8.2 historical result preserved (435/435, 85/85; isolated replay 435/435)
+PASS  any reservation under the Phase 9 authorization exists only through a valid admission after Phase 8.2 completed
+PASS  every Phase 9 path is permitted only through the registry (an unadmitted path fails closed)
+PASS  registry records entry classes and derived counts
+PASS  whole-worktree record carries the Phase 8 composition result (self-run: recorded after this run)
+PASS  dual context includes Phase 8 with its historical result unchanged (self-run)
+
+# E. Direct and adversarial probes
+PASS  reg.phase7_manifest_reproduces
+PASS  reg.phase7_manifest_complete
+PASS  reg.every_package_verifies
+PASS  reg.package_hash_is_hash_of_manifest_text
+PASS  reg.v1_git_object_matches
+PASS  reg.statuses_allowed
+PASS  reg.phase8_files_owned
+PASS  neg.changed_protected_file_detected
+PASS  neg.missing_protected_file_detected
+PASS  neg.added_file_in_protected_package_detected
+PASS  neg.missing_manifest_fails_closed
+PASS  neg.malformed_manifest_line_detected
+PASS  neg.recorded_package_hash_mismatch_detected
+PASS  gov.manifest_valid
+PASS  gov.recorded_run_declared_conditions_only
+PASS  gov.all_four_conditions_detected
+PASS  gov.conditions_never_called_pass
+PASS  gov.worktree_results_reported_separately
+PASS  gov.recorded_phase7_result_preserved
+PASS  gov.parse_suite_output
+PASS  neg.undeclared_conflict_fails_closed
+PASS  neg.genuine_regression_fails_closed
+PASS  neg.removed_condition_is_undeclared
+PASS  neg.relabelled_check_detected
+PASS  neg.condition_labelled_pass_rejected
+PASS  neg.missing_description_rejected
+PASS  neg.inconsistent_description_rejected
+PASS  neg.language_rule_required
+PASS  neg.trigger_outside_declared_paths
+PASS  neg.package_outside_registry
+PASS  neg.changed_protected_file_classified
+PASS  neg.missing_package_classified
+PASS  neg.missing_test_record_fails_closed
+PASS  neg.inconsistent_test_counts_fail_closed
+PASS  neg.missing_output_hash_fails_closed
+PASS  neg.hidden_condition_detected
+PASS  neg.pass_claim_with_failures_refused
+PASS  neg.pass_claim_without_basis_refused
+PASS  neg.recorded_result_mismatch_refused
+PASS  neg.condition_relabel_refused
+PASS  q.record_valid
+PASS  q.recorded_values_copied
+PASS  q.issues_active
+PASS  q.local_check_distinct_from_independent
+PASS  neg.score_field_rejected
+PASS  neg.issue_closed_without_record_rejected
+PASS  neg.local_tests_as_independent_rejected
+PASS  neg.validation_claim_in_record_rejected
+PASS  neg.source_hash_mismatch_rejected
+PASS  ev.protocol_valid
+PASS  ev.execution_refused
+PASS  ev.sealed_file_matches
+PASS  neg.execution_enabled_rejected
+PASS  neg.missing_sealed_material_separation
+PASS  neg.sealed_material_in_repository_rejected
+PASS  neg.post_freeze_change_rule_required
+PASS  neg.post_freeze_rule_change_invalidates
+PASS  neg.measure_with_value_rejected
+PASS  neg.operator_label_access_rejected
+PASS  neg.missing_stop_condition_rejected
+PASS  neg.labeler_independence_required
+PASS  ch.ten_classes_complete
+PASS  ch.documentation_change_neutral
+PASS  neg.sensitive_surface_never_neutral
+PASS  neg.rule_pack_path_escalates_test_only
+PASS  neg.refusal_boundary_escalates
+PASS  neg.model_change_without_evaluation_review
+PASS  neg.missing_rollback_rejected
+PASS  neg.public_claim_without_counsel_rejected
+PASS  od.register_valid
+PASS  od.required_questions_present
+PASS  neg.incomplete_decision_rejected
+PASS  neg.decision_closed_without_record
+PASS  neg.dropped_phase7_decision_detected
+PASS  neg.readiness_claim_detected
+PASS  neg.local_validation_claim_detected
+PASS  neg.organization_claim_detected
+PASS  cl.negated_claims_allowed
+PASS  h.exec_regex_exec_permitted
+PASS  h.exec_git_execfilesync_permitted
+PASS  h.exec_real_phase8_modules_clean
+PASS  h.exec_child_process_member_detected
+PASS  h.exec_aliased_cp_exec_detected
+PASS  h.exec_namespace_cp_exec_detected
+PASS  h.exec_bare_imported_exec_detected
+PASS  h.exec_execfile_detected
+PASS  h.exec_execfilesync_non_git_detected
+PASS  h.exec_spawn_detected
+PASS  h.exec_spawnsync_detected
+PASS  h.exec_fork_detected
+PASS  h.exec_destructured_alias_detected
+PASS  h.exec_dynamic_aliased_import_detected
+PASS  h.exec_require_detected
+PASS  h.exec_bun_spawn_detected
+PASS  h.prov_model_identifier_detected
+PASS  h.prov_endpoint_detected
+PASS  h.prov_env_key_access_detected
+PASS  h.prov_env_bracket_access_detected
+PASS  h.prov_sdk_import_detected
+PASS  h.prov_split_identifier_detected
+PASS  h.prov_benign_comment_permitted
+PASS  h.prov_scanner_and_suite_do_not_self_match
+PASS  r81.registry_valid
+PASS  r81.seeds_phase6_phase7_phase8
+PASS  r81.phase6_affects_phase4_tools_only
+PASS  r81.phase7_affects_phase6_ownership_only
+PASS  r81.phase8_affects_four_checks
+PASS  r81.statuses_recorded
+PASS  r81.permissions_never_historical_or_public
+PASS  r81.manifest_hashes_bound
+PASS  r81.owner_references_cite_recorded_evidence
+PASS  r81.b018_claim_detector_bounds
+PASS  r81.b018_recorded_open
+PASS  r81.earlier_check_catalogue_maps_cpc
+PASS  c81.recorded_run_declared_only
+PASS  c81.conditions_registry_derived_cover_cpc
+PASS  c81.condition_fields_complete
+PASS  c81.condition_label_exact
+PASS  c81.phase4_condition_attributed_to_two_packages
+PASS  c81.dual_context_never_merged
+PASS  c81.dual_context_phase7
+PASS  c81.dual_context_isolated_phase4
+PASS  i81.plan_phase4_baseline_only
+PASS  i81.plan_phase6_own_manifest_only
+PASS  i81.plan_phase7_excludes_later_packages
+PASS  i81.record_uncontaminated_and_cleaned
+PASS  i81.isolated_results_equal_historical
+PASS  a81.well_formed_proposal_admissible
+PASS  a81.admission_never_authorizes_work
+PASS  a81.computed_analysis_for_research_only_package
+PASS  a81.registered_manifest_verifies
+PASS  f81.freeze_valid
+PASS  f81.freeze_file_matches_build
+PASS  f81.freeze_execution_disabled
+PASS  f81.freeze_b018_open
+PASS  f81.freeze_roles_and_candidate
+PASS  f81.decisions_p8od08_p8od09_open
+PASS  n81.undeclared_future_path_fails_closed
+PASS  n81.undeclared_affected_check_fails_closed
+PASS  n81.changed_protected_file_remains_failure
+PASS  n81.condition_flags_protected_change
+PASS  n81.declared_check_without_later_file_is_regression
+PASS  n81.uncatalogued_failing_check_is_regression
+PASS  n81.registry_missing_owner_reference
+PASS  n81.registry_b018_closed_rejected
+PASS  n81.registry_b018_resolved_text_rejected
+PASS  n81.registry_historical_permission_rejected
+PASS  n81.registry_public_permission_rejected
+PASS  n81.registry_forbidden_path_rejected
+PASS  n81.registry_affected_checks_understated
+PASS  n81.registry_stale_manifest_rejected
+PASS  n81.registry_reserved_with_files_rejected
+PASS  n81.registry_unadmitted_entry_rejected
+PASS  n81.registry_historical_override_rejected
+PASS  n81.self_admission_after_file_creation_rejected
+PASS  n81.missing_owner_reference_fails_admission
+PASS  n81.unrecorded_owner_reference_fails_admission
+PASS  n81.readiness_claim_fails_admission
+PASS  n81.commercial_claim_fails_admission
+PASS  n81.planned_file_outside_paths_rejected
+PASS  n81.historical_redefinition_rejected
+PASS  n81.incomplete_prior_analysis_rejected
+PASS  n81.forbidden_root_rejected_at_admission
+PASS  n81.manifest_mismatch_detected
+PASS  n81.isolated_plan_refuses_missing_manifest
+PASS  n81.isolated_plan_refuses_missing_command
+PASS  n81.isolated_contamination_detected
+PASS  n81.freeze_execution_enabled_rejected
+PASS  n81.freeze_b018_resolved_rejected
+PASS  n81.freeze_labels_rejected
+PASS  n81.freeze_closed_issue_rejected
+PASS  p82.phase8_historical_370_preserved
+PASS  p82.dual_context_phase8_separate
+PASS  p82.historical_unchanged_by_failing_composition
+PASS  p82.additional_entry_valid
+PASS  p82.counts_derived_from_entries
+PASS  p82.seed_and_admitted_distinguishable
+PASS  p82.current_registry_seeds_and_admissions_valid
+PASS  p82.phase8_scope_declared_condition
+PASS  p82.phase8_scope_current_worktree_derived
+PASS  p82.authorization_recorded_with_limited_scope
+PASS  p82.authorization_is_a_decided_reference
+PASS  p82.authorization_reservations_only_through_admission
+PASS  p82.future_admission_representable
+PASS  p82.registered_package_cannot_be_readmitted
+PASS  p82.freeze_unaffected_by_admitted_entries
+PASS  n82.undeclared_future_path_fails_closed
+PASS  n82.reserved_package_with_files_fails
+PASS  n82.files_older_than_admission_fail
+PASS  n82.invalid_reservation_fails
+PASS  n82.changed_phase8_file_remains_failure
+PASS  n82.missing_owner_reference_fails_admission
+PASS  n82.authorization_overreach_rejected
+PASS  n82.authorization_undecided_rejected
+PASS  n82.authorization_creating_reservation_rejected
+PASS  n82.deployed_status_rejected
+PASS  n82.validated_licensed_ready_rejected
+PASS  n82.admitted_without_decided_reference_rejected
+PASS  n82.admitted_with_files_at_admission_rejected
+PASS  n82.future_package_as_seed_rejected
+PASS  n82.unknown_entry_class_rejected
+PASS  s82.admitted_no_files_valid_reservation
+PASS  s82.no_manifest_required_before_files
+PASS  s82.files_without_manifest_is_incomplete_construction
+PASS  s82.incomplete_construction_declared_not_defect
+PASS  s82.valid_manifest_is_verified_present_package
+PASS  s82.manifest_history_preserved_for_regeneration
+PASS  s82.admitted_files_attributed_in_composition
+PASS  n82.changed_file_after_manifest_integrity_failure
+PASS  n82.unlisted_file_integrity_failure
+PASS  n82.regeneration_without_history_integrity_failure
+PASS  n82.manifest_without_version_integrity_failure
+PASS  n82.malformed_manifest_integrity_failure
+PASS  n82.package_state_missing_fails_closed
+PASS  n82.manifest_outside_research_path_rejected
+PASS  n82.admitted_package_with_seed_status_rejected
+PASS  n82.phase9_like_unadmitted_path_fails_closed
+PASS  p83.phase9_files_present_for_probes
+PASS  p83.valid_phase9_with_manifest_declared
+PASS  p83.no_phase9_package_outside_registry
+PASS  p83.no_phase9_unexplained_conflict
+PASS  p83.admission_before_files_valid
+PASS  p83.no_manifest_declared_incomplete
+PASS  p83.cpc_kept_as_historical_references
+PASS  p83.composition_conditions_listed_separately
+PASS  p83.without_registry_context_unchanged
+PASS  p83.historical_results_preserved
+PASS  p83.pre_correction_failure_recorded
+PASS  p83.condition_label_not_defect
+PASS  p83.report_six_kinds_separate
+PASS  p83.check_ids_and_rules_mapped
+PASS  p83.seed_package_files_not_reclassified
+PASS  p83.phase9_only_composition_declared
+PASS  p83.recorded_run_declared_only_self_run
+PASS  n83.changed_after_manifest_integrity_failure
+PASS  n83.outside_approved_path_fails
+PASS  n83.phase10_like_path_fails
+PASS  n83.imitation_paths_fail
+PASS  n83.invalid_owner_decision_fails
+PASS  n83.missing_owner_evidence_fails
+PASS  n83.altered_admission_unhashed_fails
+PASS  n83.altered_admission_rehashed_fails
+PASS  n83.undeclared_affected_check_fails
+PASS  n83.files_before_admission_fail
+PASS  n83.state_not_determined_fails
+PASS  n83.registry_missing_fails
+PASS  n83.changed_protected_file_still_fails
+PASS  n83.genuine_regression_still_fails
+PASS  n83.unplaced_file_on_unmanifested_check_unexplained
+
+# F. Required documents
+PASS  PHASE8_HANDOFF.md: carries the three required statements
+PASS  PHASE8_HANDOFF.md: no unsupported claim
+PASS  PHASE8_HANDOFF.md: no em-dash
+PASS  VERSION_REGISTRY.md: carries the three required statements
+PASS  VERSION_REGISTRY.md: no unsupported claim
+PASS  VERSION_REGISTRY.md: no em-dash
+PASS  CROSS_PACKAGE_TEST_GOVERNANCE.md: carries the three required statements
+PASS  CROSS_PACKAGE_TEST_GOVERNANCE.md: no unsupported claim
+PASS  CROSS_PACKAGE_TEST_GOVERNANCE.md: no em-dash
+PASS  CANDIDATE_QUALIFICATION_RECORD.md: carries the three required statements
+PASS  CANDIDATE_QUALIFICATION_RECORD.md: no unsupported claim
+PASS  CANDIDATE_QUALIFICATION_RECORD.md: no em-dash
+PASS  INDEPENDENT_EVALUATION_PROTOCOL.md: carries the three required statements
+PASS  INDEPENDENT_EVALUATION_PROTOCOL.md: no unsupported claim
+PASS  INDEPENDENT_EVALUATION_PROTOCOL.md: no em-dash
+PASS  EVALUATION_MEASUREMENT_DICTIONARY.md: carries the three required statements
+PASS  EVALUATION_MEASUREMENT_DICTIONARY.md: no unsupported claim
+PASS  EVALUATION_MEASUREMENT_DICTIONARY.md: no em-dash
+PASS  CHANGE_IMPACT_AND_ROLLBACK_MODEL.md: carries the three required statements
+PASS  CHANGE_IMPACT_AND_ROLLBACK_MODEL.md: no unsupported claim
+PASS  CHANGE_IMPACT_AND_ROLLBACK_MODEL.md: no em-dash
+PASS  KNOWN_LIMITATIONS_AND_OPEN_ISSUES.md: carries the three required statements
+PASS  KNOWN_LIMITATIONS_AND_OPEN_ISSUES.md: no unsupported claim
+PASS  KNOWN_LIMITATIONS_AND_OPEN_ISSUES.md: no em-dash
+PASS  OWNER_DECISION_REGISTER.md: carries the three required statements
+PASS  OWNER_DECISION_REGISTER.md: no unsupported claim
+PASS  OWNER_DECISION_REGISTER.md: no em-dash
+PASS  EXECUTION_RECORD.md: carries the three required statements
+PASS  EXECUTION_RECORD.md: no unsupported claim
+PASS  EXECUTION_RECORD.md: no em-dash
+PASS  MUTATION_TEST_RECORD.md: carries the three required statements
+PASS  MUTATION_TEST_RECORD.md: no unsupported claim
+PASS  MUTATION_TEST_RECORD.md: no em-dash
+PASS  PHASE8_FILE_MANIFEST_SHA256.txt: carries the three required statements
+PASS  TEST_GOVERNANCE_SCALABILITY_MODEL.md: carries the three required statements
+PASS  TEST_GOVERNANCE_SCALABILITY_MODEL.md: no unsupported claim
+PASS  TEST_GOVERNANCE_SCALABILITY_MODEL.md: no em-dash
+PASS  LATER_PACKAGE_REGISTRY.md: carries the three required statements
+PASS  LATER_PACKAGE_REGISTRY.md: no unsupported claim
+PASS  LATER_PACKAGE_REGISTRY.md: no em-dash
+PASS  DUAL_CONTEXT_RESULT_MODEL.md: carries the three required statements
+PASS  DUAL_CONTEXT_RESULT_MODEL.md: no unsupported claim
+PASS  DUAL_CONTEXT_RESULT_MODEL.md: no em-dash
+PASS  ISOLATED_HISTORICAL_REPLAY_PROTOCOL.md: carries the three required statements
+PASS  ISOLATED_HISTORICAL_REPLAY_PROTOCOL.md: no unsupported claim
+PASS  ISOLATED_HISTORICAL_REPLAY_PROTOCOL.md: no em-dash
+PASS  FUTURE_PACKAGE_ADMISSION_GATE.md: carries the three required statements
+PASS  FUTURE_PACKAGE_ADMISSION_GATE.md: no unsupported claim
+PASS  FUTURE_PACKAGE_ADMISSION_GATE.md: no em-dash
+PASS  INDEPENDENT_EVALUATION_HANDOFF_FREEZE.md: carries the three required statements
+PASS  INDEPENDENT_EVALUATION_HANDOFF_FREEZE.md: no unsupported claim
+PASS  INDEPENDENT_EVALUATION_HANDOFF_FREEZE.md: no em-dash
+PASS  PHASE8_1_EXECUTION_RECORD.md: carries the three required statements
+PASS  PHASE8_1_EXECUTION_RECORD.md: no unsupported claim
+PASS  PHASE8_1_EXECUTION_RECORD.md: no em-dash
+PASS  PHASE8_1_MUTATION_RECORD.md: carries the three required statements
+PASS  PHASE8_1_MUTATION_RECORD.md: no unsupported claim
+PASS  PHASE8_1_MUTATION_RECORD.md: no em-dash
+PASS  PHASE8_2_GOVERNANCE_AMENDMENT.md: carries the three required statements
+PASS  PHASE8_2_GOVERNANCE_AMENDMENT.md: no unsupported claim
+PASS  PHASE8_2_GOVERNANCE_AMENDMENT.md: no em-dash
+PASS  PHASE8_2_EXECUTION_RECORD.md: carries the three required statements
+PASS  PHASE8_2_EXECUTION_RECORD.md: no unsupported claim
+PASS  PHASE8_2_EXECUTION_RECORD.md: no em-dash
+PASS  PHASE8_2_MUTATION_RECORD.md: carries the three required statements
+PASS  PHASE8_2_MUTATION_RECORD.md: no unsupported claim
+PASS  PHASE8_2_MUTATION_RECORD.md: no em-dash
+PASS  CHANGELOG.md: carries the three required statements
+PASS  CHANGELOG.md: no unsupported claim
+PASS  CHANGELOG.md: no em-dash
+PASS  PHASE8_2_ADMISSION_CORRECTION_HANDOFF.md: carries the three required statements
+PASS  PHASE8_2_ADMISSION_CORRECTION_HANDOFF.md: no unsupported claim
+PASS  PHASE8_2_ADMISSION_CORRECTION_HANDOFF.md: no em-dash
+PASS  PHASE8_3_CLASSIFIER_CORRECTION.md: carries the three required statements
+PASS  PHASE8_3_CLASSIFIER_CORRECTION.md: no unsupported claim
+PASS  PHASE8_3_CLASSIFIER_CORRECTION.md: no em-dash
+PASS  handoff carries the language rule
+PASS  governance record names all four conditions and calls none a pass
+
+# G. Phase 8 file manifest
+PASS  manifest lists every Phase 8 file except the declared exclusions
+PASS  every Phase 8 file matches its manifest hash
+
+# H. Mutation tests (112 deliberate defects in copies)
+PASS  every probe passes on the unmutated modules (249)
+PASS  MG-01 (protected-file alteration) killed by neg.changed_protected_file_detected
+PASS  MG-02 (protected-file alteration) killed by neg.missing_protected_file_detected
+PASS  MG-03 (protected-file alteration) killed by neg.added_file_in_protected_package_detected
+PASS  MG-04 (missing record) killed by neg.missing_manifest_fails_closed
+PASS  MG-05 (Phase 7 manifest integrity) killed by reg.phase7_manifest_reproduces, reg.package_hash_is_hash_of_manifest_text
+PASS  MG-06 (undeclared conflict) killed by neg.undeclared_conflict_fails_closed, neg.genuine_regression_fails_closed, neg.removed_condition_is_undeclared (+3)
+PASS  MG-07 (undeclared conflict) killed by neg.trigger_outside_declared_paths
+PASS  MG-08 (hidden condition) killed by neg.relabelled_check_detected, neg.hidden_condition_detected
+PASS  MG-09 (relabelled condition) killed by neg.condition_labelled_pass_rejected
+PASS  MG-10 (missing test record) killed by neg.inconsistent_test_counts_fail_closed, neg.missing_output_hash_fails_closed
+PASS  MG-11 (unsupported pass claim) killed by neg.pass_claim_with_failures_refused
+PASS  MG-12 (package outside registry) killed by neg.trigger_outside_declared_paths, neg.package_outside_registry, p83.no_manifest_declared_incomplete (+12)
+PASS  MG-13 (conflict description) killed by neg.language_rule_required
+PASS  MG-14 (local test as independent evaluation) killed by neg.local_tests_as_independent_rejected
+PASS  MG-15 (score or readiness field) killed by neg.score_field_rejected
+PASS  MG-16 (unresolved issue treated as closed) killed by q.record_valid, q.issues_active
+PASS  MG-17 (sealed material separation) killed by neg.missing_sealed_material_separation, neg.sealed_material_in_repository_rejected
+PASS  MG-18 (post-freeze change) killed by neg.post_freeze_change_rule_required
+PASS  MG-19 (post-freeze change) killed by neg.post_freeze_rule_change_invalidates
+PASS  MG-20 (execution disabled) killed by neg.execution_enabled_rejected
+PASS  MG-21 (model or provider change) killed by neg.model_change_without_evaluation_review
+PASS  MG-22 (conservative rule) killed by neg.sensitive_surface_never_neutral, neg.refusal_boundary_escalates
+PASS  MG-23 (incomplete owner decision) killed by neg.incomplete_decision_rejected
+PASS  MG-24 (readiness or commercial claim) killed by neg.readiness_claim_detected
+PASS  MG-25 (local test as independent evaluation) killed by neg.local_validation_claim_detected
+PASS  MG-26 (process execution: child_process member) killed by h.exec_child_process_member_detected
+PASS  MG-27 (process execution: aliased cp.exec) killed by h.exec_aliased_cp_exec_detected, h.exec_namespace_cp_exec_detected, h.exec_require_detected
+PASS  MG-28 (process execution: named import) killed by h.exec_bare_imported_exec_detected, h.exec_execfile_detected, h.exec_spawn_detected (+3)
+PASS  MG-29 (process execution: destructured alias) killed by h.exec_destructured_alias_detected
+PASS  MG-30 (process execution: non-git execFileSync) killed by h.exec_execfilesync_non_git_detected
+PASS  MG-31 (process execution: regex .exec false positive) killed by h.exec_regex_exec_permitted, h.exec_real_phase8_modules_clean
+PASS  MG-32 (process execution: member call) killed by h.exec_bun_spawn_detected
+PASS  MG-33 (provider: environment access) killed by h.prov_env_key_access_detected, h.prov_env_bracket_access_detected
+PASS  MG-34 (provider: SDK import) killed by h.prov_sdk_import_detected
+PASS  MG-35 (provider: split identifier) killed by h.prov_split_identifier_detected
+PASS  MG-36 (provider: endpoint) killed by h.prov_endpoint_detected
+PASS  MG-37 (provider: violating file reported) killed by h.prov_model_identifier_detected, h.prov_endpoint_detected, h.prov_env_key_access_detected (+2)
+PASS  MG-38 (undeclared later path) killed by n81.undeclared_future_path_fails_closed
+PASS  MG-39 (undeclared affected check) killed by n81.undeclared_affected_check_fails_closed
+PASS  MG-40 (changed protected file) killed by n81.changed_protected_file_remains_failure
+PASS  MG-41 (composition label) killed by c81.condition_label_exact, p82.phase8_scope_declared_condition, p83.condition_label_not_defect
+PASS  MG-42 (protected change flag) killed by n81.condition_flags_protected_change
+PASS  MG-43 (B-018 open) killed by n81.registry_b018_closed_rejected
+PASS  MG-44 (B-018 resolution wording) killed by r81.b018_claim_detector_bounds, n81.registry_b018_resolved_text_rejected, n81.freeze_b018_resolved_rejected
+PASS  MG-45 (owner reference) killed by n81.registry_missing_owner_reference, n83.missing_owner_evidence_fails
+PASS  MG-46 (historical permission) killed by n81.registry_historical_permission_rejected
+PASS  MG-47 (public permission) killed by n81.registry_public_permission_rejected
+PASS  MG-48 (forbidden path in registry) killed by n81.registry_forbidden_path_rejected
+PASS  MG-49 (affected checks in registry) killed by n81.registry_affected_checks_understated
+PASS  MG-50 (stale manifest) killed by n81.registry_stale_manifest_rejected
+PASS  MG-51 (declared check without later file) killed by n81.declared_check_without_later_file_is_regression
+PASS  MG-52 (uncatalogued failing check) killed by n81.uncatalogued_failing_check_is_regression
+PASS  MG-53 (self-admission after file creation) killed by n81.self_admission_after_file_creation_rejected
+PASS  MG-54 (unrecorded owner reference) killed by n81.unrecorded_owner_reference_fails_admission, n82.missing_owner_reference_fails_admission
+PASS  MG-55 (licensing or commercial claim) killed by n81.commercial_claim_fails_admission
+PASS  MG-56 (planned file outside paths) killed by n81.planned_file_outside_paths_rejected
+PASS  MG-57 (prior-package analysis) killed by n81.incomplete_prior_analysis_rejected
+PASS  MG-58 (historical redefinition) killed by n81.historical_redefinition_rejected
+PASS  MG-59 (admission never authorizes work) killed by a81.admission_never_authorizes_work
+PASS  MG-60 (manifest mismatch) killed by n81.manifest_mismatch_detected
+PASS  MG-61 (isolated replay missing manifest) killed by n81.isolated_plan_refuses_missing_manifest
+PASS  MG-62 (isolated replay contamination) killed by n81.isolated_contamination_detected
+PASS  MG-63 (isolated replay missing command) killed by n81.isolated_plan_refuses_missing_command
+PASS  MG-64 (freeze execution disabled) killed by n81.freeze_execution_enabled_rejected
+PASS  MG-65 (freeze B-018) killed by n81.freeze_b018_resolved_rejected
+PASS  MG-66 (freeze labels or scores) killed by n81.freeze_labels_rejected
+PASS  MG-67 (freeze open issues) killed by n81.freeze_closed_issue_rejected
+PASS  MG-68 (Phase 8 scope: undeclared future path) killed by n82.undeclared_future_path_fails_closed, n82.phase9_like_unadmitted_path_fails_closed
+PASS  MG-69 (Phase 8 scope: invalid reservation) killed by n82.invalid_reservation_fails, n83.invalid_owner_decision_fails, n83.missing_owner_evidence_fails (+1)
+PASS  MG-70 (Phase 8 scope: reserved package with files) killed by n82.reserved_package_with_files_fails
+PASS  MG-71 (Phase 8 scope: files older than admission) killed by n82.files_older_than_admission_fail, n83.files_before_admission_fail
+PASS  MG-72 (Phase 8 scope: changed protected file) killed by n82.changed_phase8_file_remains_failure
+PASS  MG-73 (Phase 8 scope: condition label) killed by p82.phase8_scope_declared_condition
+PASS  MG-74 (entry class) killed by n82.unknown_entry_class_rejected
+PASS  MG-75 (seed set) killed by n82.future_package_as_seed_rejected
+PASS  MG-76 (admitted package needs recorded decision) killed by n82.admitted_without_decided_reference_rejected, n83.altered_admission_rehashed_fails
+PASS  MG-77 (files at admission) killed by n82.admitted_with_files_at_admission_rejected
+PASS  MG-78 (registry status-word rule) killed by n82.deployed_status_rejected, n82.validated_licensed_ready_rejected
+PASS  MG-79 (derived counts) killed by p82.counts_derived_from_entries, p82.seed_and_admitted_distinguishable, p82.current_registry_seeds_and_admissions_valid
+PASS  MG-80 (authorization scope) killed by n82.authorization_overreach_rejected
+PASS  MG-81 (authorization decided) killed by n82.authorization_undecided_rejected
+PASS  MG-82 (authorization creates no reservation) killed by n82.authorization_creating_reservation_rejected
+PASS  MG-83 (freeze lineage) killed by f81.freeze_file_matches_build, p82.freeze_unaffected_by_admitted_entries
+PASS  MG-84 (Phase 8 historical result) killed by p82.dual_context_phase8_separate, p82.historical_unchanged_by_failing_composition
+PASS  MG-85 (Phase 8 scope in affected-check analysis) killed by r81.registry_valid, a81.well_formed_proposal_admissible, a81.computed_analysis_for_research_only_package (+5)
+PASS  MG-86 (admitted package manifest location) killed by n82.manifest_outside_research_path_rejected
+PASS  MG-87 (admitted package statuses) killed by n82.admitted_package_with_seed_status_rejected
+PASS  MG-88 (incomplete construction state) killed by s82.files_without_manifest_is_incomplete_construction, s82.incomplete_construction_declared_not_defect
+PASS  MG-89 (file changed after manifest) killed by n82.changed_file_after_manifest_integrity_failure
+PASS  MG-90 (manifest file set) killed by n82.unlisted_file_integrity_failure
+PASS  MG-91 (manifest version header) killed by n82.manifest_without_version_integrity_failure
+PASS  MG-92 (manifest history preserved) killed by n82.regeneration_without_history_integrity_failure
+PASS  MG-93 (integrity failure classified) killed by n82.changed_file_after_manifest_integrity_failure, n83.changed_after_manifest_integrity_failure
+PASS  MG-94 (package state required) killed by n82.package_state_missing_fails_closed, n83.state_not_determined_fails
+PASS  MG-95 (incomplete construction declared) killed by s82.incomplete_construction_declared_not_defect
+PASS  MG-96 (admitted files attributed in composition) killed by s82.admitted_files_attributed_in_composition
+PASS  MG-97 (no manifest required before files) killed by r81.registry_valid, p82.additional_entry_valid, s82.admitted_no_files_valid_reservation (+2)
+PASS  MG-98 (malformed manifest line) killed by n82.malformed_manifest_integrity_failure
+PASS  MG-99 (unregistered later path) killed by neg.trigger_outside_declared_paths, neg.package_outside_registry, p83.without_registry_context_unchanged (+4)
+PASS  MG-100 (only accepted paths pass) killed by p83.no_manifest_declared_incomplete, n83.changed_after_manifest_integrity_failure, n83.invalid_owner_decision_fails (+5)
+PASS  MG-101 (only declared states attributed) killed by n83.changed_after_manifest_integrity_failure
+PASS  MG-102 (affected check must be declared) killed by n83.undeclared_affected_check_fails
+PASS  MG-103 (incomplete construction reported) killed by p83.no_manifest_declared_incomplete
+PASS  MG-104 (registry attribution of later files) killed by p83.valid_phase9_with_manifest_declared, p83.no_phase9_unexplained_conflict, p83.no_manifest_declared_incomplete (+4)
+PASS  MG-105 (fail-closed class set) killed by n83.undeclared_affected_check_fails
+PASS  MG-106 (composition conditions listed) killed by p83.composition_conditions_listed_separately
+PASS  MG-107 (unmanifested check needs placed files) killed by n83.unplaced_file_on_unmanifested_check_unexplained
+PASS  MG-108 (condition label) killed by p83.condition_label_not_defect
+PASS  MG-109 (registry-level problem invalidates admissions) killed by n83.altered_admission_unhashed_fails
+PASS  MG-110 (failure states carried per file) killed by n83.changed_after_manifest_integrity_failure, n83.invalid_owner_decision_fails, n83.missing_owner_evidence_fails (+3)
+PASS  MG-111 (integrity failures reported separately) killed by p83.report_six_kinds_separate
+PASS  MG-112 (incomplete construction distinguished) killed by p83.no_manifest_declared_incomplete
+PASS  at least 15 mutations, all killed by a direct probe, none a load failure (112/112)
+PASS  mutation temporary directories cleaned up
+PASS  suite made no network attempt
+
+523 checks: 523 passed, 0 failed
+by kind: direct 266, negative 145, mutation 112

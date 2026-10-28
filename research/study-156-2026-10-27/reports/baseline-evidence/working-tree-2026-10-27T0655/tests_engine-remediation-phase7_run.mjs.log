@@ -1,0 +1,368 @@
+
+# A. Preservation and isolation
+FAIL  HEAD is still 428c307 (no commit)
+PASS  working branch unchanged (claude/engine-reliability-phase6-local)
+PASS  PR #40 branch and its remote-tracking reference still at 428c307
+FAIL  no tracked file differs from 428c307 (v1, v0.1, v0.2, v0.3, Phase 4, public routes, deployment, B-018, trackers)
+        lib/engine-evidence-graph-v0.3.1-candidate/assertions.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/conditions.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/contract.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/controls.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/evaluation/factory.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/graph-validate.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/quote-resolution.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/record.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/response.mjs
+lib/engine-evidence-graph-v0.3.1-candidate/rule-pack
+PASS  all 139 Phase 6 files byte-identical to the Phase 7 start snapshot
+FAIL  every new file is a Phase 6 file or inside the three Phase 7 locations
+        research/study-156-2026-10-27/inventory/RECORD_INVENTORY_V1.json, research/study-156-2026-10-27/inventory/history/RECORD_INVENTORY_V1_DEFECTIVE_KEY_PARSE.json, research/study-156-2026-10-27/records/original/R01.txt, research/study-156-2026-10-27/records/original/R02.txt, research/study-156-2026-10-27/records/original/R03.txt, research/study-156-2026-10-27/records/original/R04.txt, research/study-156-2026-10-27/records/original/R05.txt, research/study-156-2026-10-27/records/original/R06.txt, research/study-156-2026-10-27/records/original/R07.txt, research/study-156-2026-10-27/records/original/R08.txt, research/study-156-2026-10-27/records/original/R09.txt, research/study-156-2026-10-27/record
+PASS  no Phase 7 file under tools/, api/, docs/, .jrs/ or a public page
+PASS  frozen v0.3 still compiles as 0.3.0-local with its own release status
+PASS  candidate is a separate directory; logic differs from v0.3 only in the remediated modules
+PASS  both contracts keep release status NO_GO_NOT_VERIFIED
+PASS  B-018 remains OPEN
+PASS  public Engine routes remain refusal-only
+PASS  no source-aligned controlling file, holdout or label file in the work
+
+# B. Frozen remediation contract and seal
+PASS  seal intact: contract, scenarios, transforms, rule packs, intended change set, input manifest and evaluator files unchanged
+PASS  seal recorded the candidate logic as identical to v0.3 at sealing time
+PASS  seal predates the first recorded candidate run
+PASS  no authoring-defect record exists, so no sealed expectation was revised
+PASS  intended change set covers 23 of 194 existing inputs, each with named rules
+
+# C. Phase 7 regression scenarios
+PASS  at least 48 sealed scenarios (50)
+PASS  area p6_rt_07_safe_routing has at least 6 (6)
+PASS  area chronology_controls has at least 14 (16)
+PASS  area negated_and_ambiguous_reasoning has at least 8 (8)
+PASS  area evidence_link_abstention has at least 8 (8)
+PASS  area conflict_controls has at least 6 (6)
+PASS  area scope_excluded_domain has at least 6 (6)
+PASS  every scenario admitted (marker, provenance, rule, role, limitation, route, differential)
+PASS  RP-STR-01 has a positive scenario
+PASS  RP-STR-01 has a benign scenario
+PASS  RP-STR-01 has a malformed scenario
+PASS  RP-STR-01 has a duplicate_or_reordered scenario
+PASS  RP-CHR-01 has a positive scenario
+PASS  RP-CHR-01 has a benign scenario
+PASS  RP-CHR-01 has a malformed scenario
+PASS  RP-CHR-01 has a duplicate_or_reordered scenario
+PASS  RP-CHR-02 has a positive scenario
+PASS  RP-CHR-02 has a benign scenario
+PASS  RP-CHR-02 has a malformed scenario
+PASS  RP-CHR-02 has a duplicate_or_reordered scenario
+PASS  RP-CHR-03 has a positive scenario
+PASS  RP-CHR-03 has a benign scenario
+PASS  RP-CHR-03 has a malformed scenario
+PASS  RP-CHR-03 has a duplicate_or_reordered scenario
+PASS  RP-CHR-04 has a positive scenario
+PASS  RP-CHR-04 has a benign scenario
+PASS  RP-CHR-04 has a malformed scenario
+PASS  RP-CHR-04 has a duplicate_or_reordered scenario
+PASS  RP-NEG-01 has a positive scenario
+PASS  RP-NEG-01 has a benign scenario
+PASS  RP-NEG-01 has a malformed scenario
+PASS  RP-NEG-01 has a duplicate_or_reordered scenario
+PASS  RP-EVL-01 has a positive scenario
+PASS  RP-EVL-01 has a benign scenario
+PASS  RP-EVL-01 has a malformed scenario
+PASS  RP-EVL-01 has a duplicate_or_reordered scenario
+PASS  RP-CON-01 has a positive scenario
+PASS  RP-CON-01 has a benign scenario
+PASS  RP-CON-01 has a malformed scenario
+PASS  RP-CON-01 has a duplicate_or_reordered scenario
+PASS  RP-SCO-01 has a positive scenario
+PASS  RP-SCO-01 has a benign scenario
+PASS  RP-SCO-01 has a malformed scenario
+PASS  RP-SCO-01 has a duplicate_or_reordered scenario
+PASS  every scenario states an expected limitation or a refusal route
+PASS  candidate: P7-CHR-01 as sealed
+PASS  candidate: P7-CHR-02 as sealed
+PASS  candidate: P7-CHR-03 as sealed
+PASS  candidate: P7-CHR-04 as sealed
+PASS  candidate: P7-CHR-05 as sealed
+PASS  candidate: P7-CHR-06 as sealed
+PASS  candidate: P7-CHR-07 as sealed
+PASS  candidate: P7-CHR-08 as sealed
+PASS  candidate: P7-CHR-09 as sealed
+PASS  candidate: P7-CHR-10 as sealed
+PASS  candidate: P7-CHR-11 as sealed
+PASS  candidate: P7-CHR-12 as sealed
+PASS  candidate: P7-CHR-13 as sealed
+PASS  candidate: P7-CHR-14 as sealed
+PASS  candidate: P7-CHR-15 as sealed
+PASS  candidate: P7-CHR-16 as sealed
+PASS  candidate: P7-CON-01 as sealed
+PASS  candidate: P7-CON-02 as sealed
+PASS  candidate: P7-CON-03 as sealed
+PASS  candidate: P7-CON-04 as sealed
+PASS  candidate: P7-CON-05 as sealed
+PASS  candidate: P7-CON-06 as sealed
+PASS  candidate: P7-EVL-01 as sealed
+PASS  candidate: P7-EVL-02 as sealed
+PASS  candidate: P7-EVL-03 as sealed
+PASS  candidate: P7-EVL-04 as sealed
+PASS  candidate: P7-EVL-05 as sealed
+PASS  candidate: P7-EVL-06 as sealed
+PASS  candidate: P7-EVL-07 as sealed
+PASS  candidate: P7-EVL-08 as sealed
+PASS  candidate: P7-NEG-01 as sealed
+PASS  candidate: P7-NEG-02 as sealed
+PASS  candidate: P7-NEG-03 as sealed
+PASS  candidate: P7-NEG-04 as sealed
+PASS  candidate: P7-NEG-05 as sealed
+PASS  candidate: P7-NEG-06 as sealed
+PASS  candidate: P7-NEG-07 as sealed
+PASS  candidate: P7-NEG-08 as sealed
+PASS  candidate: P7-R07-01 as sealed
+PASS  candidate: P7-R07-02 as sealed
+PASS  candidate: P7-R07-03 as sealed
+PASS  candidate: P7-R07-04 as sealed
+PASS  candidate: P7-R07-05 as sealed
+PASS  candidate: P7-R07-06 as sealed
+PASS  candidate: P7-SCO-01 as sealed
+PASS  candidate: P7-SCO-02 as sealed
+PASS  candidate: P7-SCO-03 as sealed
+PASS  candidate: P7-SCO-04 as sealed
+PASS  candidate: P7-SCO-05 as sealed
+PASS  candidate: P7-SCO-06 as sealed
+PASS  P6-RT-07 family: the candidate never fails to compile
+
+# D. Differential qualification: frozen v0.3 against the candidate
+PASS  every existing input (194) is unchanged or an intended change
+PASS  the candidate changed exactly the 23 sealed existing inputs and no other
+PASS  every Phase 7 scenario (50) is unchanged or an intended change
+PASS  every benign Phase 7 scenario is unchanged from v0.3
+PASS  no condition anywhere became more favourable than in v0.3
+PASS  P6-RT-07: v0.3 fails, the candidate routes it safely
+PASS  P6K-001 scenarios (P6-SP-02, P6-SP-04, P6-SP-06): no supported status from presence alone
+PASS  P6K-008 cases never favourable: refused (P6-XD-03, P6-ST-17, ST-14)
+PASS  Phase 6 library on the candidate: every scenario as expected or a remediated open failure
+
+# E. Rule packs
+PASS  six packs, nine rules, all valid and active
+PASS  the five required pack families are present
+PASS  every rule carries every schema field
+PASS  register matches the pack files
+PASS  no pack field carries a release, approval or production designation
+PASS  every candidate graph records its pack identity and active rules
+
+# F. Stability (Phase 6 runner, unchanged, with the candidate)
+PASS  at least 30 transforms (32)
+PASS  at least 12 from non-favourable bases (17)
+PASS  at least half of the invariant transforms from non-favourable bases (10 of 17)
+PASS  every transform as expected
+PASS  no favourable transition on any invariant transform
+PASS  family present: wording
+PASS  family present: punctuation
+PASS  family present: section reorder
+PASS  family present: duplicate dates
+PASS  family present: omitted dates
+PASS  family present: negated language
+PASS  family present: unrelated quotations
+PASS  family present: paraphrased conflict
+PASS  family present: reworded excluded-domain
+PASS  family present: benign pattern words
+PASS  family present: multiple defects
+PASS  results reproduce the recorded and first runs
+
+# G. Over-refusal review
+PASS  one row per implemented rule (9)
+PASS  RP-CHR-01: 3/3 target cases as sealed; 0/1 benign cases refused or degraded
+PASS  RP-CHR-02: 3/3 target cases as sealed; 0/1 benign cases refused or degraded
+PASS  RP-CHR-03: 3/3 target cases as sealed; 0/1 benign cases refused or degraded
+PASS  RP-CHR-04: 3/3 target cases as sealed; 0/1 benign cases refused or degraded
+PASS  RP-CON-01: 4/4 target cases as sealed; 0/2 benign cases refused or degraded
+PASS  RP-EVL-01: 4/4 target cases as sealed; 0/2 benign cases refused or degraded
+PASS  RP-NEG-01: 4/4 target cases as sealed; 0/2 benign cases refused or degraded
+PASS  RP-STR-01: 4/4 target cases as sealed; 0/1 benign cases refused or degraded
+PASS  RP-SCO-01: 4/4 target cases as sealed; 0/2 benign cases refused or degraded
+
+# H. Remediation backlog
+PASS  hash chain and every entry valid (14 entries)
+PASS  separate backlog entry for P6-RT-07
+PASS  separate backlog entry for P6K-001
+PASS  separate backlog entry for P6K-002
+PASS  separate backlog entry for P6K-003
+PASS  separate backlog entry for P6K-004
+PASS  separate backlog entry for P6K-005
+PASS  separate backlog entry for P6K-006
+PASS  separate backlog entry for P6K-007
+PASS  separate backlog entry for P6K-008
+PASS  included, deferred and rejected decisions all recorded
+PASS  an edited entry breaks the chain
+
+# I. Determinism: five full candidate runs
+PASS  five full runs (scenarios, qualification of every input, stability, Phase 6 library on the candidate) give one hash
+
+# J. Mutation tests (79 deliberate defects in copies)
+PASS  every probe passes on the unmutated candidate and tooling (94)
+PASS  MX-01 (rule trigger: RP-CHR-01) killed by p7.P7-CHR-01, p7.P7-CHR-03, p7.P7-CHR-04 (+4)
+PASS  MX-02 (rule trigger: RP-CHR-01) killed by d.chr01_non_risk_assessment_outside_followup_not_conflict
+PASS  MX-03 (rule trigger: RP-CHR-01) killed by d.chr01_action_section_excluded
+PASS  MX-04 (date parsing and date-role logic) killed by d.chr01_same_day_not_conflict
+PASS  MX-05 (rule trigger: RP-CHR-02) killed by p7.P7-CHR-05, p7.P7-CHR-07, p7.P7-CHR-08 (+2)
+PASS  MX-06 (rule trigger: RP-CHR-02) killed by p7.P7-CHR-05, p7.P7-CHR-07, p7.P7-CHR-08 (+2)
+PASS  MX-07 (rule trigger: RP-CHR-02) killed by p7.P7-CHR-06
+PASS  MX-08 (rule trigger: RP-CHR-03) killed by p7.P7-CHR-09, p7.P7-CHR-11, p7.P7-CHR-12 (+3)
+PASS  MX-09 (rule trigger: RP-CHR-03) killed by p7.P7-CHR-09, p7.P7-CHR-11, p7.P7-CHR-12 (+3)
+PASS  MX-10 (rule trigger: RP-CHR-04) killed by p7.P7-CHR-08, p7.P7-CHR-13, p7.P7-CHR-15 (+4)
+PASS  MX-11 (rule trigger: RP-CHR-04) killed by p7.P7-CHR-14
+PASS  MX-12 (rule trigger: RP-CHR-04) killed by p7.P7-CHR-08, p7.P7-CHR-13, p7.P7-CHR-15 (+3)
+PASS  MX-13 (date parsing and date-role logic) killed by p7.P7-CHR-08, p7.P7-CHR-13, p7.P7-CHR-15 (+4)
+PASS  MX-14 (rule trigger: RP-NEG-01) killed by p7.P7-NEG-01, p7.P7-NEG-02, p7.P7-NEG-03 (+2)
+PASS  MX-15 (negation handling) killed by p7.P7-NEG-03
+PASS  MX-16 (negation handling) killed by p7.P7-NEG-03
+PASS  MX-17 (negation handling) killed by p7.P7-NEG-01, p7.P7-NEG-02, p7.P7-NEG-03 (+2)
+PASS  MX-18 (negation handling) killed by p7.P7-NEG-01, p7.P7-NEG-02, p7.P7-NEG-03 (+2)
+PASS  MX-19 (rule trigger: RP-EVL-01) killed by p7.P7-EVL-01, p7.P7-EVL-02, p7.P7-EVL-03 (+3)
+PASS  MX-20 (rule trigger: RP-EVL-01) killed by p7.P7-EVL-01, existing.phase6-library
+PASS  MX-21 (rule trigger: RP-EVL-01) killed by p7.P7-EVL-02, existing.phase6-library
+PASS  MX-22 (rule trigger: RP-EVL-01) killed by p7.P7-EVL-03, p7.P7-EVL-07, existing.phase4-stability (+1)
+PASS  MX-23 (rule trigger: RP-EVL-01) killed by p7.P7-EVL-05
+PASS  MX-24 (rule trigger: RP-EVL-01) killed by p7.P7-CHR-01, p7.P7-CHR-02, p7.P7-CHR-04 (+41)
+PASS  MX-25 (rule trigger: RP-CON-01) killed by p7.P7-CON-01, p7.P7-CON-02, p7.P7-CON-05 (+3)
+PASS  MX-26 (rule trigger: RP-CON-01) killed by p7.P7-CON-01, p7.P7-CON-02, p7.P7-CON-05 (+2)
+PASS  MX-27 (rule trigger: RP-CON-01) killed by p7.P7-CON-01, p7.P7-CON-02, p7.P7-CON-05 (+2)
+PASS  MX-28 (rule trigger: RP-CON-01) killed by d.con_on_state_requires_implemented
+PASS  MX-29 (contradiction detection) killed by d.con_single_conflict_when_k4
+PASS  MX-30 (rule trigger: RP-SCO-01) killed by p7.P7-SCO-01, p7.P7-SCO-02, p7.P7-SCO-05 (+4)
+PASS  MX-31 (rule trigger: RP-SCO-01) killed by p7.P7-SCO-04
+PASS  MX-32 (rule trigger: RP-SCO-01) killed by p7.P7-SCO-02
+PASS  MX-33 (rule trigger: RP-STR-01) killed by p7.P7-R07-01, p7.P7-R07-02, p7.P7-R07-03 (+2)
+PASS  MX-34 (rule trigger: RP-STR-01) killed by p7.P7-R07-01, p7.P7-R07-02, p7.P7-R07-03 (+2)
+PASS  MX-35 (date parsing and date-role logic) killed by d.invalid_dates_ignored
+PASS  MX-36 (date parsing and date-role logic) killed by d.renewal_date_not_expiry
+PASS  MX-37 (date parsing and date-role logic) killed by p7.P7-CHR-01, p7.P7-CHR-03, p7.P7-CHR-04 (+4)
+PASS  MX-38 (date parsing and date-role logic) killed by p7.P7-CHR-08, existing.v0.3-fixture, existing.phase4-corpus (+3)
+PASS  MX-39 (contradiction detection) killed by existing.v0.3-fixture, existing.phase4-corpus, existing.phase4-stability (+2)
+PASS  MX-40 (contradiction detection) killed by d.expiry_between_request_and_decision_is_impossible_sequence
+PASS  MX-41 (contradiction detection) killed by existing.v0.3-fixture, existing.phase4-corpus
+PASS  MX-42 (contradiction detection) killed by existing.v0.3-fixture, existing.phase4-corpus, existing.phase6-library
+PASS  MX-43 (contradiction detection) killed by existing.v0.3-fixture, existing.phase4-corpus
+PASS  MX-44 (candidate output validation) killed by existing.v0.3-fixture, existing.phase4-corpus, existing.phase6-library (+1)
+PASS  MX-45 (candidate output validation) killed by d.duplicate_observation_ids
+PASS  MX-46 (candidate output validation) killed by d.max_observations
+PASS  MX-47 (candidate output validation) killed by existing.phase4-corpus, d.contract_version_checked
+PASS  MX-48 (candidate output validation) killed by d.status_vocabulary
+PASS  MX-49 (refusal preservation) killed by p7.P7-SCO-01, p7.P7-SCO-02, p7.P7-SCO-05 (+6)
+PASS  MX-50 (refusal preservation) killed by existing.phase4-corpus, existing.phase6-library
+PASS  MX-51 (refusal preservation) killed by p7.P7-CHR-03, p7.P7-CHR-07, p7.P7-CHR-11 (+8)
+PASS  MX-52 (refusal preservation) killed by rp.empty_set_refuses, rp.compile_refuses_on_invalid_set
+PASS  MX-53 (version and hash mismatches) killed by existing.v0.3-fixture, existing.phase4-corpus
+PASS  MX-54 (version and hash mismatches) killed by existing.v0.3-fixture
+PASS  MX-55 (limitation preservation) killed by p7.P7-CHR-01, p7.P7-CHR-02, p7.P7-CHR-03 (+58)
+PASS  MX-56 (limitation preservation) killed by p7.P7-CHR-01, p7.P7-CHR-04, p7.P7-CHR-05 (+11)
+PASS  MX-57 (limitation preservation) killed by existing.v0.3-fixture, existing.phase4-corpus, existing.phase4-stability (+2)
+PASS  MX-58 (limitation preservation) killed by p7.P7-CHR-01, p7.P7-CHR-02, p7.P7-CHR-03 (+69)
+PASS  MX-59 (limitation preservation) killed by d.sufficiency_outcome_reason_and_limitation
+PASS  MX-60 (rule-pack validation) killed by rp.tampered_rejected, rp.rejected_set_activates_nothing, rp.compile_refuses_on_invalid_set
+PASS  MX-61 (rule-pack validation) killed by rp.invalid_signature_method_or_value_rejected
+PASS  MX-62 (version and hash mismatches) killed by rp.version_mismatch_rejected
+PASS  MX-63 (rule-pack validation) killed by rp.duplicate_pack_id_rejected
+PASS  MX-64 (rule-pack validation) killed by rp.duplicate_rule_rejected
+PASS  MX-65 (rule-pack validation) killed by rp.incomplete_rejected
+PASS  MX-66 (rule-pack validation) killed by rp.unknown_rule_rejected
+PASS  MX-67 (rule-pack validation) killed by rp.unsafe_outcome_rejected
+PASS  MX-68 (rule-pack validation) killed by rp.designation_field_rejected
+PASS  MX-69 (rule-pack validation) killed by rp.tampered_rejected, rp.unsigned_rejected, rp.invalid_signature_method_or_value_rejected (+9)
+PASS  MX-70 (rule-pack validation) killed by rp.empty_set_refuses
+PASS  MX-71 (baseline comparison) killed by q.unchanged_difference_flagged
+PASS  MX-72 (baseline comparison) killed by q.bad_findings_flagged
+PASS  MX-73 (baseline comparison) killed by q.statuses_checked
+PASS  MX-74 (baseline comparison) killed by q.conflicts_checked
+PASS  MX-75 (baseline comparison) killed by q.complete_refusal_required
+PASS  MX-76 (baseline comparison) killed by q.base_error_requires_mode
+PASS  MX-77 (baseline comparison) killed by q.candidate_error_flagged
+PASS  MX-78 (version and hash mismatches) killed by q.unchanged_accepted, q.intended_accepted
+PASS  MX-79 (version and hash mismatches) killed by existing.v0.3-fixture, q.version_mapping_exact
+PASS  at least 60 mutations, all killed by a direct probe, none a load failure (79/79)
+PASS  every required mutation area covered, and every rule trigger
+FAIL  mutation temporary directories cleaned up
+
+# K. Static workbench
+PASS  workbench pages present (9)
+PASS  backlog.html: three required statements
+PASS  backlog.html: no script, form, input, upload, iframe or network URL
+PASS  backlog.html: links only to local workbench pages
+PASS  backlog.html: no unnegated readiness or validation claim
+PASS  decisions.html: three required statements
+PASS  decisions.html: no script, form, input, upload, iframe or network URL
+PASS  decisions.html: links only to local workbench pages
+PASS  decisions.html: no unnegated readiness or validation claim
+PASS  index.html: three required statements
+PASS  index.html: no script, form, input, upload, iframe or network URL
+PASS  index.html: links only to local workbench pages
+PASS  index.html: no unnegated readiness or validation claim
+PASS  mutations.html: three required statements
+PASS  mutations.html: no script, form, input, upload, iframe or network URL
+PASS  mutations.html: links only to local workbench pages
+PASS  mutations.html: no unnegated readiness or validation claim
+PASS  over-refusal.html: three required statements
+PASS  over-refusal.html: no script, form, input, upload, iframe or network URL
+PASS  over-refusal.html: links only to local workbench pages
+PASS  over-refusal.html: no unnegated readiness or validation claim
+PASS  qualification.html: three required statements
+PASS  qualification.html: no script, form, input, upload, iframe or network URL
+PASS  qualification.html: links only to local workbench pages
+PASS  qualification.html: no unnegated readiness or validation claim
+PASS  rule-packs.html: three required statements
+PASS  rule-packs.html: no script, form, input, upload, iframe or network URL
+PASS  rule-packs.html: links only to local workbench pages
+PASS  rule-packs.html: no unnegated readiness or validation claim
+PASS  scenarios.html: three required statements
+PASS  scenarios.html: no script, form, input, upload, iframe or network URL
+PASS  scenarios.html: links only to local workbench pages
+PASS  scenarios.html: no unnegated readiness or validation claim
+PASS  stability.html: three required statements
+PASS  stability.html: no script, form, input, upload, iframe or network URL
+PASS  stability.html: links only to local workbench pages
+PASS  stability.html: no unnegated readiness or validation claim
+PASS  render record: every page at desktop and mobile, 0 non-file requests, no overflow, JavaScript disabled
+
+# L. Required documents
+PASS  PHASE7_HANDOFF.md: carries the three required statements
+PASS  PHASE7_HANDOFF.md: no unnegated readiness or validation claim
+PASS  PHASE7_HANDOFF.md: no em-dash
+PASS  REMEDIATION_CONTRACT.md: carries the three required statements
+PASS  REMEDIATION_CONTRACT.md: no unnegated readiness or validation claim
+PASS  REMEDIATION_CONTRACT.md: no em-dash
+PASS  RULE_PACK_SPECIFICATION.md: carries the three required statements
+PASS  RULE_PACK_SPECIFICATION.md: no unnegated readiness or validation claim
+PASS  RULE_PACK_SPECIFICATION.md: no em-dash
+PASS  RULE_PACK_REGISTER.json: carries the three required statements
+PASS  RULE_PACK_REGISTER.json: no unnegated readiness or validation claim
+PASS  RULE_PACK_REGISTER.json: no em-dash
+PASS  DIFFERENTIAL_QUALIFICATION_RECORD.md: carries the three required statements
+PASS  DIFFERENTIAL_QUALIFICATION_RECORD.md: no unnegated readiness or validation claim
+PASS  DIFFERENTIAL_QUALIFICATION_RECORD.md: no em-dash
+PASS  REGRESSION_SCENARIO_REGISTER.md: carries the three required statements
+PASS  REGRESSION_SCENARIO_REGISTER.md: no unnegated readiness or validation claim
+PASS  REGRESSION_SCENARIO_REGISTER.md: no em-dash
+PASS  MUTATION_EVIDENCE.md: carries the three required statements
+PASS  MUTATION_EVIDENCE.md: no unnegated readiness or validation claim
+PASS  MUTATION_EVIDENCE.md: no em-dash
+PASS  STABILITY_AND_OVER_REFUSAL_RECORD.md: carries the three required statements
+PASS  STABILITY_AND_OVER_REFUSAL_RECORD.md: no unnegated readiness or validation claim
+PASS  STABILITY_AND_OVER_REFUSAL_RECORD.md: no em-dash
+PASS  REMEDIATION_BACKLOG.md: carries the three required statements
+PASS  REMEDIATION_BACKLOG.md: no unnegated readiness or validation claim
+PASS  REMEDIATION_BACKLOG.md: no em-dash
+PASS  KNOWN_LIMITATIONS.md: carries the three required statements
+PASS  KNOWN_LIMITATIONS.md: no unnegated readiness or validation claim
+PASS  KNOWN_LIMITATIONS.md: no em-dash
+PASS  OWNER_DECISION_REGISTER.md: carries the three required statements
+PASS  OWNER_DECISION_REGISTER.md: no unnegated readiness or validation claim
+PASS  OWNER_DECISION_REGISTER.md: no em-dash
+PASS  EXECUTION_RECORD.md: carries the three required statements
+PASS  EXECUTION_RECORD.md: no unnegated readiness or validation claim
+PASS  EXECUTION_RECORD.md: no em-dash
+PASS  handoff states NO_GO_NOT_VERIFIED is unchanged
+PASS  suite made no network attempt
+
+328 checks: 324 passed, 4 failed
+failed: HEAD is still 428c307 (no commit); no tracked file differs from 428c307 (v1, v0.1, v0.2, v0.3, Phase 4, public routes, deployment, B-018, trackers); every new file is a Phase 6 file or inside the three Phase 7 locations; mutation temporary directories cleaned up

@@ -1,0 +1,6060 @@
+{
+  "results_format": "jrs-v0-02-correction-evaluation/1.0.0",
+  "run": "run-3",
+  "finished_at_utc": "2026-10-25T09:15:02.237Z",
+  "statement": "Offline correction evaluation against sealed owner-authorized expectations. Not validation.",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "identities": {
+    "v031_package_sha256": "815c5d5671d0cfcaf62edca0a11938b920e37d058d3e8655ae9e4f9c735925c3",
+    "v032_candidate_manifest_sha256": "2276bbc22e1e226220b471b27b793119d37ceb6e093a91d1ecbafae31a200f18",
+    "prompt_sha256": "0ceda8887463a515d241751133c9b0d3bf3364f89b63fa6ac5dda6ac70c8eec2",
+    "adapter_version": "0.2.0-offline",
+    "adapter_sha256": "aa2b97797a9ed2d9476e901f2a54e10b3c7f898af6a9df8b473ac27482d81fb6",
+    "model": "MOCK-MODEL-NOT-A-PROVIDER",
+    "node": "v22.22.0"
+  },
+  "summary": {
+    "v0_corpus_under_032": {
+      "cases": 60,
+      "mechanical_failures": 0,
+      "expectation_matches": 60,
+      "differing": [],
+      "delta_cases": [
+        "EV-32"
+      ]
+    },
+    "regression": {
+      "runs": 12,
+      "matches": 12,
+      "mechanical_failures": 0,
+      "differing": []
+    },
+    "differential": {
+      "cases": 60,
+      "behaviour_differs": [
+        "EV-32"
+      ],
+      "v031_mechanical_failures": 0
+    },
+    "network_attempts": 0,
+    "isolated_031_unchanged_and_deleted": true,
+    "isolated_032_unchanged": true,
+    "isolated_032_deleted": true
+  },
+  "v0_corpus_032": [
+    {
+      "case_id": "ADV-01",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V8",
+        "code": "candidate_supplied_untrusted_field"
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": null,
+      "graph_digest": null,
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-02",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V7",
+        "code": "content_outside_json_object"
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": null,
+      "graph_digest": null,
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-03",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V9",
+        "code": "quote_null_requires_not_assessed"
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": null,
+      "graph_digest": null,
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-04",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V3",
+        "code": "response_truncated"
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": null,
+      "graph_digest": null,
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-05",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V6",
+        "code": "model_refusal"
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": null,
+      "graph_digest": null,
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-06",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V2",
+        "code": "provider_error"
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": null,
+      "graph_digest": null,
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-07",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V5",
+        "code": "response_too_large"
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": null,
+      "graph_digest": null,
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-08",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REJECT-PRE-REPLAY",
+        "step": "V8",
+        "code": "observation_id_invalid_or_duplicate"
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": null,
+      "graph_digest": null,
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-09",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "refuse",
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "excluded_domain_content"
+        ],
+        "quote_statuses": {},
+        "instruction_risk": "not_detected",
+        "span_origins": []
+      },
+      "graph_digest": "d5a4ba988c8a20f84729b5ddfea62f11b4d9dd14d98fe2e7b60ec4bd2b973daf",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-10",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "refuse",
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "record_exceeds_local_size_limit"
+        ],
+        "quote_statuses": {},
+        "instruction_risk": "not_detected",
+        "span_origins": []
+      },
+      "graph_digest": "6c7200259a6769a03dadb67cd1b65fbae75faf3a816002f4438066ea2ef6f6dd",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-11",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_malformed"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "malformed",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "a39adbe951545d4ea11f1f4737ccf0d411af83d30c2952fef6f48360807665f5",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-12",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "f00f9c692ac98d666ef46d7b6ec9203cd78de9c0e6add15ff1aaa437feec87bd",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-13",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "candidate_did_not_assess"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "not_assessed"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "5628aae0382925647d43b90c1ac93f095a542e42e3c753d92138467ff5faee85",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-14",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "0701a97fbc467af88198d4ef904a7bac69f31813780459104c77f4e400456cae",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-15",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "5975b63947cd958cb2702bdd23fceb0d1e6bff5f2483d311b627676a11f5de4b",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-16",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "d93acb4b3347e5107c18d68eaf1677c72cd9f6f6112f7fda8af56ea67505a75f",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-17",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "1820586421bcd6075f7a496fb85b4db98d863284a64f94d9dabea9b4113e4a8d",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-18",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "86a9b2edde5adbfd4837448f5ecf0d381dc1cbb226780d458cc4cfc7f10007d7",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-19",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_disambiguated",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "f9afeceb87e5ccaef888aa449692aba2deab1bad31e746f883f9056d393b19ff",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "ADV-20",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "295f253e0353740b0fddef59e52343871191d5c65fac969033fbd855bcaf0a0a",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-01",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "9512d1d58f5e034ade53b6715aa8a6d6d99550c60ae97d524a7622bc012d8bd7",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-02",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "2a0c36e59ab32637ab29f1ab34b0bb645f6a05901bf27a2fa0050d69664d8e98",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-03",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "73c5ca62fccd385eb16b20fded75225555c93e3163b32e3a4253617e8f937595",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-04",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "92e5fa3b786b2b0b87f063d265d1269a69484343fb4e2c3b0268c8a6238a7e13",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-05",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "91ab8ec869b5fc6ab13d2199dd276d41df34698b7202c6b96df863dfb6276908",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-06",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "9d20d3540c791670b9396ac284f25ed747fa60905417b4ebaeaf6aeac80ffa9b",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-07",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "a460963aff1e17b4f55839b575f22c73b3c97d9c5cf5f9a8c183fdc9baa3a89e",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-08",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "1fc06d8b79fa0e6aea41a8d8ccf35cfeca3c33526b1c1f6205722e31c486c9d8",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-09",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "2a1fd6b97aaf7496077eaa18d19534014d9cc625cae1028a4239db1a527f3989",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-10",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "4f489601ff04067de1f8775fe045e3f68a0d6b9b80caea93b9eb0c6e5bafda19",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-11",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "impossible_sequence"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "2ad3c67ed4d698485d2fd95d598d9b4d29a06d0eacace7adc87d27e5ebb5ee08",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-12",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "decision_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "d67b73abee9a2af5f3a2e4dd145b7e788ee29af0e0edc0e2e96e0348be320bc7",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-13",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "assessment_after_decision"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "7d9b0636b3196427521cce36f126c9b91428ad89297b913ba93e405a2740ab5e",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-14",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "expiry_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "adbe48f68f13f1c8d5a2e0bbbbe28e03f3158c13e538939c24a09db9ac0bd9f0",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-15",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "duration_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "7c324553c8724550aed618e11ceb3c5892717fd08d884c21acc7a3b09438b979",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-16",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "770211bc8b741560d68faa38cb666828b3345a86f7aeb93725efebbd65f5961e",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-17",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "12993439e003b40a25463cad1a1af5fa160e3ac439ed14b06ba5182c99a0d083",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-18",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_ambiguous"
+        ],
+        "quote_statuses": {
+          "O1": "ambiguous",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "candidate_quote_ambiguous",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "7b8277e7a6c53c4d9040d23539e6cc5903cc3f32802bfcd79e98b4ba8cf4c144",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-19",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_disambiguated",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "e8ed4281b716c53c5b8562bd9fbea0028bf4dcd2d925f37273a2db0c99af6ada",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-20",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_absent"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "absent",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "641e7219a85df07c46277e397007f7d26cd2b9882301ce34edf21abfd112accc",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-21",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_malformed"
+        ],
+        "quote_statuses": {
+          "O1": "malformed",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "6c01c6d6b59be4b52a67f234f25aaae8c02735ac37f1ec87092fb5188836062e",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-22",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "27735b11e0f25ab8541d74e4e4cdd0ca2958a59bdcd1de2fa2a4bde6dcd075ab",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-23",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "7a3d3a3ec699062f1a7b4110c07fd08cc68f36e9ddd29014cd20bf14cdc50ccd",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-24",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "7e91eeddf3321ff9d0154ed2315907984c24ee5f5a24624d23952324ddef89ac",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-25",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "5ba709ca04be4b9a94f286389fc4f9c4ba22be5ce259c291e762599b00cfdcd5",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-26",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "gap"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "fdbf91babd8d584e56a623758158ffb3228ead76f8d189490ac98b007737b864",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-27",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "gap",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "87713a9d9840561b6e972e3d9c07b0bdd5e24080868514f707fd37628b2c6e2e",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-28",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "authority_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "ad22b2ea6b47b742959cbfef8e9160261fdf2d3d55f3dcf9e2749d604cf7aa88",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-29",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "control_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "11ecd755ca31daed3b353bc116827d79c0c5f4e866af58070ecccdf463d4b76e",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-30",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "risk_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "8ef719d5c151035e470361610a419513ccdf529d5f8b525c75466693c4187322",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-31",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "control_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "57d432b385baf3ea8ada39f396c1abff28aed7171f52d8aba0d5221b5606da72",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-32",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "1a55d26fee0bda44f5c271ccb7e8402ba5a91b572d5f487fab40d16584298347",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": true
+    },
+    {
+      "case_id": "EV-33",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_certainty",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "a4b2d5f1716f9c96e6b2fdfd596c3e7441dab2a5dd6cd4b864db233c98b6b9c9",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-34",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_absent"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "absent",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "c08af2f8ebb825ff499727283c8a05cb073739a11e198e3b71e8cddfab281ecf",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-35",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "e545801a18bd96fe51814c1dcb3e18f4d630032f7e37ffee8fc7447cfdcfb6ac",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-36",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "1197f012bef6306535a8f0d2da5df0888f2fbcd304b44b2acf160b2fcb504e6e",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-37",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "refuse",
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "excluded_domain_content"
+        ],
+        "quote_statuses": {},
+        "instruction_risk": "not_detected",
+        "span_origins": []
+      },
+      "graph_digest": "3963bbcd69712dea9a2594517f751d52c340be81161b47f6d8b3e85cfe7f46e6",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-38",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "refuse",
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "excluded_domain_content"
+        ],
+        "quote_statuses": {},
+        "instruction_risk": "not_detected",
+        "span_origins": []
+      },
+      "graph_digest": "879a47fcfaf68f90fe75cfe7180342786fa8e8bc0e73cd3c5698490b01794af0",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-39",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "escalate",
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "incomplete_record"
+        ],
+        "quote_statuses": {},
+        "instruction_risk": "not_detected",
+        "span_origins": []
+      },
+      "graph_digest": "3d5915678b34468940940d1b3a1e437a526cbad1fc632dbf7d77e439f9a4f7db",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    },
+    {
+      "case_id": "EV-40",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "instruction_risk": "detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_instruction_quarantine",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "a4c2bf95d159f030553fd0693c1ce5f0f2f1f663a7bc2868cdb8eb31a72664fa",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": [],
+      "expected_with_delta": false
+    }
+  ],
+  "regression": [
+    {
+      "case_id": "RC-01",
+      "engine": "0.3.1-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "b6089861f538257b574332e21c03ff9402ca819df87b6c293b61c1ccd6f1deb5",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-01",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "6d01e7355448454f15d1e5089c6ecb6e18f09bd081f353eb85f018775ff5b1bb",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-02",
+      "engine": "0.3.1-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "d3833d51b6feee7d3a5138f13a2f7cbbb78bf7af3b2ef7922fdd47784097c86a",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-02",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "2144aa71810c7942a75f4be6447948cea2a0d0eee52856c32596d663ce346665",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-03",
+      "engine": "0.3.1-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict",
+          "decision_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique",
+          "O8": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "079004068bad0a7adeeddc50863baca46d20685bf8bbc480ee338943c4c382bd",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-03",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict",
+          "decision_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique",
+          "O8": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "d5244c258008707f0397eb28c21c953bc5422007a1f014c05c910dd53381664c",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-04",
+      "engine": "0.3.1-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict",
+          "expiry_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique",
+          "O8": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "9b7fb5b8a506a98d302f11a4ed79520772d70e47708b6230c351afb37018cda8",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-04",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict",
+          "expiry_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique",
+          "O8": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_conflict",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "91cbc5bec843e1b9af176db6cd867297a14822d6314961c67ea364753739e140",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-05",
+      "engine": "0.3.1-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "5ff65b48ad884aeae8b5308d148ce8040a0512d65876495d49b3c1de7c3042bb",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-05",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "259581f6fb0fcf75c83cae6c605db020ad561ae2350951e2dc4625e5e0ed244e",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-06",
+      "engine": "0.3.1-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "18cc30e3c3fe1faf3fc55978b338e711c7f4dedc29cfa2dc388727eed3021cc2",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    },
+    {
+      "case_id": "RC-06",
+      "engine": "0.3.2-candidate",
+      "adapter": {
+        "outcome": "REPLAYED",
+        "step": null,
+        "code": null
+      },
+      "error": null,
+      "mechanical": [],
+      "observed": {
+        "intake_decision": "proceed",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "instruction_risk": "not_detected",
+        "span_origins": [
+          "candidate_quote",
+          "compiler_dated_event",
+          "compiler_section"
+        ]
+      },
+      "graph_digest": "cb0cda024180fc43234e23de2fd5752c31a3d5a3c2166357a956a797e1cf9dc7",
+      "active_rules": [
+        "RP-CHR-01",
+        "RP-CHR-02",
+        "RP-CHR-03",
+        "RP-CHR-04",
+        "RP-CON-01",
+        "RP-CON-02",
+        "RP-EVL-01",
+        "RP-NEG-01",
+        "RP-SCO-01",
+        "RP-STR-01"
+      ],
+      "expectation_differences": []
+    }
+  ],
+  "differential": [
+    {
+      "case_id": "ADV-01",
+      "behaviour_differs": false,
+      "v031": null,
+      "v032": null,
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-02",
+      "behaviour_differs": false,
+      "v031": null,
+      "v032": null,
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-03",
+      "behaviour_differs": false,
+      "v031": null,
+      "v032": null,
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-04",
+      "behaviour_differs": false,
+      "v031": null,
+      "v032": null,
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-05",
+      "behaviour_differs": false,
+      "v031": null,
+      "v032": null,
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-06",
+      "behaviour_differs": false,
+      "v031": null,
+      "v032": null,
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-07",
+      "behaviour_differs": false,
+      "v031": null,
+      "v032": null,
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-08",
+      "behaviour_differs": false,
+      "v031": null,
+      "v032": null,
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-09",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "excluded_domain_content"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "refuse",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "excluded_domain_content"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "refuse",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-10",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "record_exceeds_local_size_limit"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "refuse",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "record_exceeds_local_size_limit"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "refuse",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-11",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_malformed"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "malformed",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_malformed"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "malformed",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-12",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-13",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "candidate_did_not_assess"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "not_assessed"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "candidate_did_not_assess"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "not_assessed"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-14",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-15",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-16",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-17",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-18",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-19",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_disambiguated",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_disambiguated",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "ADV-20",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-01",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-02",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-03",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-04",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-05",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-06",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-07",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-08",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-09",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-10",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-11",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "impossible_sequence"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "impossible_sequence"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-12",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "decision_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "decision_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-13",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "assessment_after_decision"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "assessment_after_decision"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-14",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "expiry_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "expiry_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-15",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "duration_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "duration_date_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-16",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-17",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-18",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_ambiguous"
+        ],
+        "quote_statuses": {
+          "O1": "ambiguous",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_ambiguous"
+        ],
+        "quote_statuses": {
+          "O1": "ambiguous",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-19",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_disambiguated",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_disambiguated",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-20",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_absent"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "absent",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_absent"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "absent",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-21",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_malformed"
+        ],
+        "quote_statuses": {
+          "O1": "malformed",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_malformed"
+        ],
+        "quote_statuses": {
+          "O1": "malformed",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-22",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-23",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-24",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-25",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-26",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "gap"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "gap"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-27",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "gap",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "gap",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-28",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "authority_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "authority_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-29",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "control_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "control_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-30",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "risk_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "risk_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-31",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "control_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "control_state_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-32",
+      "behaviour_differs": true,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [
+          "cited_evidence_conflict"
+        ],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique",
+          "O7": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-33",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-34",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_absent"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "absent",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "quote_absent"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "absent",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-35",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-36",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "assertion_rejected"
+        ],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-37",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "excluded_domain_content"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "refuse",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "excluded_domain_content"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "refuse",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-38",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "excluded_domain_content"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "refuse",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "excluded_domain_content"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "refuse",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-39",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "incomplete_record"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "escalate",
+        "instruction_risk": "not_detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "not_assessed",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "not_assessed",
+          "sufficiency": "not_assessed"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [
+          "incomplete_record"
+        ],
+        "quote_statuses": {},
+        "intake_decision": "escalate",
+        "instruction_risk": "not_detected"
+      },
+      "v031_mechanical": []
+    },
+    {
+      "case_id": "EV-40",
+      "behaviour_differs": false,
+      "v031": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "detected"
+      },
+      "v032": {
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        },
+        "conflict_kinds": [],
+        "refusal_codes": [],
+        "quote_statuses": {
+          "O1": "verified_unique",
+          "O2": "verified_unique",
+          "O3": "verified_unique",
+          "O4": "verified_unique",
+          "O5": "verified_unique",
+          "O6": "verified_unique"
+        },
+        "intake_decision": "proceed",
+        "instruction_risk": "detected"
+      },
+      "v031_mechanical": []
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "record_type": "post-stop owner-authorized test-coverage repair (Phase 7)",
+  "stop": { "date": "2026-10-19", "condition": "mutations survived", "survivors": ["MX-02", "MX-40", "MX-59", "MX-61"], "mutations": 79, "killed": 75 },
+  "authorization": "Owner instruction in session: add four direct tests (MX-02 later non-risk assessment outside follow-up; MX-40 expiry between request and decision; MX-59 sufficiency outcome plus reason and limitation; MX-61 invalid signature method or value with required fields present), rerun the full mutation group, continue only if every mutation is caught.",
+  "added_probes": ["d.chr01_non_risk_assessment_outside_followup_not_conflict", "d.expiry_between_request_and_decision_is_impossible_sequence", "d.sufficiency_outcome_reason_and_limitation", "rp.invalid_signature_method_or_value_rejected"],
+  "not_changed": ["candidate logic", "sealed scenarios, transforms, contract, rule packs, intended change set", "frozen v0.3", "PR #40", "B-018", "public surfaces"]
+}

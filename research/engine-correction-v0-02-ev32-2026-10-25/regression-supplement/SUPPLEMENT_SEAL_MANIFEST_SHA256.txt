@@ -1,0 +1,5 @@
+# EV-32 correction supplementary seal v1 (RC-06, survivor X13)
+8720c45d8cfc4da152bc1cf0689a8146d7bf5b87faba5528c153a5c41a92a31c  build-supplement.mjs
+fa4f81aaf008df9ba4e05aa3bd9872259a1b7d38294c94acb813dad5316bcbcb  cases/RC-06.candidate.json
+c94901f262a94bef718a8fdc80b1671cbc69d92102ab1dfb0e7c5414ef926ad2  cases/RC-06.record.txt
+d83d1021675242705a28238c281d2f2b7db96728b42462bf7c194a2023f57478  cases/RC-06.spec.json

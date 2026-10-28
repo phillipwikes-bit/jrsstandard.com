@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-10-19T13:57:52.546Z",
+  "command": "node tests/engine-remediation-phase7/run.mjs --record",
+  "node": "v22.22.0",
+  "network_attempts": 0,
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "passed": 328,
+  "failed": 0,
+  "failed_checks": [],
+  "scenarios": {
+    "counts": {
+      "as_expected": 50
+    }
+  },
+  "qualification": {
+    "existing": {
+      "no_behavioral_difference": 171,
+      "intended_safe_degradation": 19,
+      "intended_refusal": 3,
+      "intended_safe_routing": 1
+    },
+    "phase7": {
+      "intended_safe_degradation": 24,
+      "no_behavioral_difference": 18,
+      "intended_safe_routing": 4,
+      "intended_refusal": 4
+    },
+    "hash": "sha256:6be752fa7387460246d3880f0dff9f9850029397692fa34d2bd0ddddbe060bcd"
+  }
+}

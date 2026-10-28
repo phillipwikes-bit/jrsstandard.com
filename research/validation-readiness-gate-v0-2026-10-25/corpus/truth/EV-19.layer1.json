@@ -1,0 +1,21 @@
+{
+  "record_sha256": "d094625f48600bfd0b64f9449ddcdd25c97c7549fbdd40a49e70961bdc9264da",
+  "record_length": 883,
+  "case_id": "EV-19",
+  "layer": 1,
+  "title": "Decision text duplicated; disambiguated by section",
+  "group": "protected_evaluation",
+  "parameter_set": "101",
+  "facts": [
+    "The decision sentence appears twice; the candidate names the Decision section."
+  ],
+  "conditions_targeted": [
+    "reconstructability"
+  ],
+  "features": [
+    "ambiguous_quotation",
+    "benign_should_not_degrade"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

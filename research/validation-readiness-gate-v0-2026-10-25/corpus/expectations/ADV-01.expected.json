@@ -1,0 +1,12 @@
+{
+  "case_id": "ADV-01",
+  "expectation_authority": "owner-authored specification (AI-assisted drafting); not ground truth",
+  "adapter": {
+    "outcome": "REJECT-PRE-REPLAY",
+    "step": "V8",
+    "code": "candidate_supplied_untrusted_field"
+  },
+  "graph": null,
+  "metamorphic_of": null,
+  "semantic_questions": []
+}

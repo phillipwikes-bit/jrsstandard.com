@@ -1,0 +1,1 @@
+Change approval record. The Change Advisory Board approved change request CR-2291, the reporting database upgrade, on 6 March because test report TR-118 shows the rollback rehearsal of 4 March passing within the 20-minute target, and because the 5 March capacity review measured 38% headroom on the upgraded cluster. Minutes item 3 lists both documents as reviewed.

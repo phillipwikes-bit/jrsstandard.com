@@ -1,0 +1,1145 @@
+{
+  "generated_at": "2026-10-19T13:57:52.546Z",
+  "command": "node tests/engine-remediation-phase7/run.mjs --record",
+  "node": "v22.22.0",
+  "network_attempts": 0,
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "total": 79,
+  "killed": 79,
+  "survived": 0,
+  "load_failures": 0,
+  "setup_errors": 0,
+  "probes": 94,
+  "results": [
+    {
+      "id": "MX-01",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CHR-01",
+      "description": "if (rules.has('RP-CHR-01') && fd) {",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-01",
+        "p7.P7-CHR-03",
+        "p7.P7-CHR-04",
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-02",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CHR-01",
+      "description": "/\\brisk assessment\\b/i.test(e.text) && ",
+      "result": "killed",
+      "killed_by": [
+        "d.chr01_non_risk_assessment_outside_followup_not_conflict"
+      ]
+    },
+    {
+      "id": "MX-03",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CHR-01",
+      "description": "roleOf(e.section) !== 'action' && ",
+      "result": "killed",
+      "killed_by": [
+        "d.chr01_action_section_excluded"
+      ]
+    },
+    {
+      "id": "MX-04",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "date parsing and date-role logic",
+      "description": "e.date > fd.date",
+      "result": "killed",
+      "killed_by": [
+        "d.chr01_same_day_not_conflict"
+      ]
+    },
+    {
+      "id": "MX-05",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CHR-02",
+      "description": "if (rules.has('RP-CHR-02')) {",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-05",
+        "p7.P7-CHR-07",
+        "p7.P7-CHR-08",
+        "existing.phase4-corpus",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-06",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CHR-02",
+      "description": "if (ex.length > 1) add('expiry_date_conflict'",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-05",
+        "p7.P7-CHR-07",
+        "p7.P7-CHR-08",
+        "existing.phase4-corpus",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-07",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CHR-02",
+      "description": ".map((e) => [e.date, e])).values()];\n    if (ex.length",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-06"
+      ]
+    },
+    {
+      "id": "MX-08",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/conditions.mjs",
+      "area": "rule trigger: RP-CHR-03",
+      "description": "if (rules.has('RP-CHR-03') && !events.some((e) => e.role === 'decision'))",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-09",
+        "p7.P7-CHR-11",
+        "p7.P7-CHR-12",
+        "existing.phase6-library",
+        "existing.phase6-stability",
+        "d.invalid_dates_ignored"
+      ]
+    },
+    {
+      "id": "MX-09",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/conditions.mjs",
+      "area": "rule trigger: RP-CHR-03",
+      "description": "!events.some((e) => e.role === 'decision')) r.visible_gaps.push('no_dated_decision')",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-09",
+        "p7.P7-CHR-11",
+        "p7.P7-CHR-12",
+        "existing.phase6-library",
+        "existing.phase6-stability",
+        "d.invalid_dates_ignored"
+      ]
+    },
+    {
+      "id": "MX-10",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CHR-04",
+      "description": "if (rules.has('RP-CHR-04') && fd && fe) {",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-08",
+        "p7.P7-CHR-13",
+        "p7.P7-CHR-15",
+        "p7.P7-CHR-16",
+        "existing.phase4-corpus",
+        "existing.phase6-library",
+        "existing.phase6-stability"
+      ]
+    },
+    {
+      "id": "MX-11",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CHR-04",
+      "description": "if (Math.abs(days - n) > 1)",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-14"
+      ]
+    },
+    {
+      "id": "MX-12",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CHR-04",
+      "description": "if (Math.abs(days - n) > 1)",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-08",
+        "p7.P7-CHR-13",
+        "p7.P7-CHR-15",
+        "p7.P7-CHR-16",
+        "existing.phase4-corpus",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-13",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "date parsing and date-role logic",
+      "description": "const DURATION = /\\bfor (\\d{1,4}) days?\\b/i;",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-08",
+        "p7.P7-CHR-13",
+        "p7.P7-CHR-15",
+        "p7.P7-CHR-16",
+        "existing.phase4-corpus",
+        "existing.phase6-library",
+        "existing.phase6-stability"
+      ]
+    },
+    {
+      "id": "MX-14",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/conditions.mjs",
+      "area": "rule trigger: RP-NEG-01",
+      "description": "rules.has('RP-NEG-01') && e.assertion_type === 'stated_rationale'",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-NEG-01",
+        "p7.P7-NEG-02",
+        "p7.P7-NEG-03",
+        "p7.P7-NEG-06",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-15",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/conditions.mjs",
+      "area": "negation handling",
+      "description": "(?:[A-Za-z]+\\s+){0,2}?",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-NEG-03"
+      ]
+    },
+    {
+      "id": "MX-16",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/conditions.mjs",
+      "area": "negation handling",
+      "description": "(?:not|no|never|without)\\s+",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-NEG-03"
+      ]
+    },
+    {
+      "id": "MX-17",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/conditions.mjs",
+      "area": "negation handling",
+      "description": "(?:need|needs|needed|require|requires|required|because|based on)\\b/i",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-NEG-01",
+        "p7.P7-NEG-02",
+        "p7.P7-NEG-03",
+        "p7.P7-NEG-06",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-18",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/conditions.mjs",
+      "area": "negation handling",
+      "description": "e.assertion_type) && !negated(e));",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-NEG-01",
+        "p7.P7-NEG-02",
+        "p7.P7-NEG-03",
+        "p7.P7-NEG-06",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-19",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "rule trigger: RP-EVL-01",
+      "description": "else if (rules.has('RP-EVL-01') && LINKED_SECTION_ROLES[c]",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-EVL-01",
+        "p7.P7-EVL-02",
+        "p7.P7-EVL-03",
+        "p7.P7-EVL-07",
+        "existing.phase4-stability",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-20",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "rule trigger: RP-EVL-01",
+      "description": "identifiable_basis: ['authority', 'basis'],",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-EVL-01",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-21",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "rule trigger: RP-EVL-01",
+      "description": "'decision', 'expiry'], reasoning_traceability",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-EVL-02",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-22",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "rule trigger: RP-EVL-01",
+      "description": "reasoning_traceability: ['basis'] });",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-EVL-03",
+        "p7.P7-EVL-07",
+        "existing.phase4-stability",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-23",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "rule trigger: RP-EVL-01",
+      "description": "chronology_integrity: ['chronology', 'request', 'authority', 'decision', 'expiry']",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-EVL-05"
+      ]
+    },
+    {
+      "id": "MX-24",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "rule trigger: RP-EVL-01",
+      "description": "span_id: sp, section: r.location.section });",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-01",
+        "p7.P7-CHR-02",
+        "p7.P7-CHR-04",
+        "p7.P7-CHR-05",
+        "p7.P7-CHR-06",
+        "p7.P7-CHR-08",
+        "p7.P7-CHR-09",
+        "p7.P7-CHR-10",
+        "p7.P7-CHR-12",
+        "p7.P7-CHR-13",
+        "p7.P7-CHR-14",
+        "p7.P7-CHR-16",
+        "p7.P7-CON-01",
+        "p7.P7-CON-02",
+        "p7.P7-CON-03",
+        "p7.P7-CON-04",
+        "p7.P7-CON-06",
+        "p7.P7-EVL-01",
+        "p7.P7-EVL-02",
+        "p7.P7-EVL-03",
+        "p7.P7-EVL-04",
+        "p7.P7-EVL-05",
+        "p7.P7-EVL-07",
+        "p7.P7-EVL-08",
+        "p7.P7-NEG-01",
+        "p7.P7-NEG-02",
+        "p7.P7-NEG-03",
+        "p7.P7-NEG-04",
+        "p7.P7-NEG-05",
+        "p7.P7-NEG-06",
+        "p7.P7-NEG-08",
+        "p7.P7-R07-01",
+        "p7.P7-R07-02",
+        "p7.P7-R07-03",
+        "p7.P7-R07-04",
+        "p7.P7-R07-06",
+        "p7.P7-SCO-03",
+        "p7.P7-SCO-04",
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library",
+        "existing.phase6-stability",
+        "d.candidate_base_unchanged"
+      ]
+    },
+    {
+      "id": "MX-25",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CON-01",
+      "description": "if (rules.has('RP-CON-01') && !controlConflict) {",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CON-01",
+        "p7.P7-CON-02",
+        "p7.P7-CON-05",
+        "p7.P7-CON-06",
+        "existing.phase4-corpus",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-26",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CON-01",
+      "description": "review of (?:the )?(?:access )?logs|",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CON-01",
+        "p7.P7-CON-02",
+        "p7.P7-CON-05",
+        "p7.P7-CON-06",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-27",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CON-01",
+      "description": "const NOT_STARTED = /\\b(?:has not started|not started|has not begun|not begun)\\b/i;",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CON-01",
+        "p7.P7-CON-02",
+        "p7.P7-CON-05",
+        "p7.P7-CON-06",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-28",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "rule trigger: RP-CON-01",
+      "description": "LOG_CONCEPT.test(c.text) && IMPLEMENTED.test(c.text) && !offState(c)",
+      "result": "killed",
+      "killed_by": [
+        "d.con_on_state_requires_implemented"
+      ]
+    },
+    {
+      "id": "MX-29",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "contradiction detection",
+      "description": "&& !controlConflict) {",
+      "result": "killed",
+      "killed_by": [
+        "d.con_single_conflict_when_k4"
+      ]
+    },
+    {
+      "id": "MX-30",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/scope.mjs",
+      "area": "rule trigger: RP-SCO-01",
+      "description": "(rules.has('RP-SCO-01') ? [...REGULATED, ['employment', REWORDED_EMPLOYMENT]] : REGULATED)",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-SCO-01",
+        "p7.P7-SCO-02",
+        "p7.P7-SCO-05",
+        "p7.P7-SCO-06",
+        "existing.phase4-stability",
+        "existing.phase6-library",
+        "existing.phase6-stability"
+      ]
+    },
+    {
+      "id": "MX-31",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/scope.mjs",
+      "area": "rule trigger: RP-SCO-01",
+      "description": "(?![-\\s]+(?:queue|queues|scheduler|runner|title|description|code|reference|log|logs))",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-SCO-04"
+      ]
+    },
+    {
+      "id": "MX-32",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/scope.mjs",
+      "area": "rule trigger: RP-SCO-01",
+      "description": "(?:keeps?|lose|loses|lost)\\s+",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-SCO-02"
+      ]
+    },
+    {
+      "id": "MX-33",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/assertions.mjs",
+      "area": "rule trigger: RP-STR-01",
+      "description": "? 'attributed_purpose' : cat",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-R07-01",
+        "p7.P7-R07-02",
+        "p7.P7-R07-03",
+        "p7.P7-R07-06",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-34",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/assertions.mjs",
+      "area": "rule trigger: RP-STR-01",
+      "description": "rules && rules.has('RP-STR-01')",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-R07-01",
+        "p7.P7-R07-02",
+        "p7.P7-R07-03",
+        "p7.P7-R07-06",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-35",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/record.mjs",
+      "area": "date parsing and date-role logic",
+      "description": "if (validDate(m[1], m[2], m[3])) out.push(",
+      "result": "killed",
+      "killed_by": [
+        "d.invalid_dates_ignored"
+      ]
+    },
+    {
+      "id": "MX-36",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/record.mjs",
+      "area": "date parsing and date-role logic",
+      "description": "(s.role === 'expiry' && !/\\brenew/i.test(c.text))",
+      "result": "killed",
+      "killed_by": [
+        "d.renewal_date_not_expiry"
+      ]
+    },
+    {
+      "id": "MX-37",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/record.mjs",
+      "area": "date parsing and date-role logic",
+      "description": "else if (/\\b(?:assessment|completed)\\b/i.test(c.text)) role = 'assessment';",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-01",
+        "p7.P7-CHR-03",
+        "p7.P7-CHR-04",
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-38",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "date parsing and date-role logic",
+      "description": "const first = (role) => events.filter((e) => e.role === role).sort((a, b) => a.start - b.s",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-08",
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library",
+        "existing.phase6-stability"
+      ]
+    },
+    {
+      "id": "MX-39",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "contradiction detection",
+      "description": "if (distinct.length > 1) add('decision_date_conflict'",
+      "result": "killed",
+      "killed_by": [
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library",
+        "existing.phase6-stability"
+      ]
+    },
+    {
+      "id": "MX-40",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "contradiction detection",
+      "description": "const pairs = [['request', 'decision'], ['decision', 'expiry'], ['request', 'expiry'], ['a",
+      "result": "killed",
+      "killed_by": [
+        "d.expiry_between_request_and_decision_is_impossible_sequence"
+      ]
+    },
+    {
+      "id": "MX-41",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "contradiction detection",
+      "description": "if (ap && pe) add('authority_state_conflict'",
+      "result": "killed",
+      "killed_by": [
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus"
+      ]
+    },
+    {
+      "id": "MX-42",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "contradiction detection",
+      "description": "if (lo && op) add('risk_state_conflict'",
+      "result": "killed",
+      "killed_by": [
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-43",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/contradictions.mjs",
+      "area": "contradiction detection",
+      "description": "if (value(vals[i]) !== value(vals[j])) {",
+      "result": "killed",
+      "killed_by": [
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus"
+      ]
+    },
+    {
+      "id": "MX-44",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/response.mjs",
+      "area": "candidate output validation",
+      "description": "if (Object.keys(o).some((k) => UNTRUSTED_FIELDS.includes(k))) return fail(",
+      "result": "killed",
+      "killed_by": [
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase6-library",
+        "d.untrusted_field_reason"
+      ]
+    },
+    {
+      "id": "MX-45",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/response.mjs",
+      "area": "candidate output validation",
+      "description": " || ids.has(o.observation_id)) return fail(",
+      "result": "killed",
+      "killed_by": [
+        "d.duplicate_observation_ids"
+      ]
+    },
+    {
+      "id": "MX-46",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/response.mjs",
+      "area": "candidate output validation",
+      "description": "if (v.observations.length > MAX_OBSERVATIONS) return fail(",
+      "result": "killed",
+      "killed_by": [
+        "d.max_observations"
+      ]
+    },
+    {
+      "id": "MX-47",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/response.mjs",
+      "area": "candidate output validation",
+      "description": "if (v.contract_version !== CONTRACT_VERSION) return fail(",
+      "result": "killed",
+      "killed_by": [
+        "existing.phase4-corpus",
+        "d.contract_version_checked"
+      ]
+    },
+    {
+      "id": "MX-48",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/response.mjs",
+      "area": "candidate output validation",
+      "description": "if (!STATUSES.includes(o.proposed_status)) return fail(",
+      "result": "killed",
+      "killed_by": [
+        "d.status_vocabulary"
+      ]
+    },
+    {
+      "id": "MX-49",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/scope.mjs",
+      "area": "refusal preservation",
+      "description": "if (m) { seen.add(domain); add('excluded_domain_content', 'refuse',",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-SCO-01",
+        "p7.P7-SCO-02",
+        "p7.P7-SCO-05",
+        "p7.P7-SCO-06",
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library",
+        "existing.phase6-stability"
+      ]
+    },
+    {
+      "id": "MX-50",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "refusal preservation",
+      "description": "if (intake.decision !== 'proceed') {",
+      "result": "killed",
+      "killed_by": [
+        "existing.phase4-corpus",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-51",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "refusal preservation",
+      "description": "if (status === 'not_assessed') refusal(reasons[0]",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-03",
+        "p7.P7-CHR-07",
+        "p7.P7-CHR-11",
+        "p7.P7-CHR-15",
+        "p7.P7-CON-05",
+        "p7.P7-EVL-06",
+        "p7.P7-NEG-07",
+        "p7.P7-R07-05",
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase6-library"
+      ]
+    },
+    {
+      "id": "MX-52",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/scope.mjs",
+      "area": "refusal preservation",
+      "description": "if (rulePackProblems.length) add('rule_pack_rejected'",
+      "result": "killed",
+      "killed_by": [
+        "rp.empty_set_refuses",
+        "rp.compile_refuses_on_invalid_set"
+      ]
+    },
+    {
+      "id": "MX-53",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/scope.mjs",
+      "area": "version and hash mismatches",
+      "description": "if (dv[k] !== v) add(",
+      "result": "killed",
+      "killed_by": [
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus"
+      ]
+    },
+    {
+      "id": "MX-54",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/scope.mjs",
+      "area": "version and hash mismatches",
+      "description": "if (fi !== undefined && (!fi || typeof fi !== 'object' || fi.fixture_hash !== computedFixt",
+      "result": "killed",
+      "killed_by": [
+        "existing.v0.3-fixture"
+      ]
+    },
+    {
+      "id": "MX-55",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "limitation preservation",
+      "description": "const lims = [LIMITATIONS.presence];",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-01",
+        "p7.P7-CHR-02",
+        "p7.P7-CHR-03",
+        "p7.P7-CHR-04",
+        "p7.P7-CHR-05",
+        "p7.P7-CHR-06",
+        "p7.P7-CHR-07",
+        "p7.P7-CHR-08",
+        "p7.P7-CHR-09",
+        "p7.P7-CHR-10",
+        "p7.P7-CHR-11",
+        "p7.P7-CHR-12",
+        "p7.P7-CHR-13",
+        "p7.P7-CHR-14",
+        "p7.P7-CHR-15",
+        "p7.P7-CHR-16",
+        "p7.P7-CON-01",
+        "p7.P7-CON-02",
+        "p7.P7-CON-03",
+        "p7.P7-CON-04",
+        "p7.P7-CON-05",
+        "p7.P7-CON-06",
+        "p7.P7-EVL-01",
+        "p7.P7-EVL-02",
+        "p7.P7-EVL-03",
+        "p7.P7-EVL-04",
+        "p7.P7-EVL-05",
+        "p7.P7-EVL-06",
+        "p7.P7-EVL-07",
+        "p7.P7-EVL-08",
+        "p7.P7-NEG-01",
+        "p7.P7-NEG-02",
+        "p7.P7-NEG-03",
+        "p7.P7-NEG-04",
+        "p7.P7-NEG-05",
+        "p7.P7-NEG-06",
+        "p7.P7-NEG-07",
+        "p7.P7-NEG-08",
+        "p7.P7-R07-01",
+        "p7.P7-R07-02",
+        "p7.P7-R07-03",
+        "p7.P7-R07-04",
+        "p7.P7-R07-05",
+        "p7.P7-R07-06",
+        "p7.P7-SCO-03",
+        "p7.P7-SCO-04",
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library",
+        "existing.phase6-stability",
+        "d.chr01_action_section_excluded",
+        "d.chr01_same_day_not_conflict",
+        "d.con_on_state_requires_implemented",
+        "d.con_single_conflict_when_k4",
+        "d.invalid_dates_ignored",
+        "d.renewal_date_not_expiry",
+        "d.candidate_base_unchanged",
+        "d.chr01_non_risk_assessment_outside_followup_not_conflict",
+        "d.expiry_between_request_and_decision_is_impossible_sequence",
+        "d.sufficiency_outcome_reason_and_limitation"
+      ]
+    },
+    {
+      "id": "MX-56",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "limitation preservation",
+      "description": "if (conflictAffects[c].length) lims.push(LIMITATIONS.conflict);",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-01",
+        "p7.P7-CHR-04",
+        "p7.P7-CHR-05",
+        "p7.P7-CHR-08",
+        "p7.P7-CHR-13",
+        "p7.P7-CHR-16",
+        "p7.P7-CON-01",
+        "p7.P7-CON-02",
+        "p7.P7-CON-06",
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library",
+        "existing.phase6-stability"
+      ]
+    },
+    {
+      "id": "MX-57",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "limitation preservation",
+      "description": "if (risk.record_instruction_risk === 'detected') lims.push(LIMITATIONS.instruction);",
+      "result": "killed",
+      "killed_by": [
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library",
+        "existing.phase6-stability"
+      ]
+    },
+    {
+      "id": "MX-58",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "limitation preservation",
+      "description": "    edge('ROUTES_TO_REVIEW', 'find:' + c, 'review');\n  };",
+      "result": "killed",
+      "killed_by": [
+        "p7.P7-CHR-01",
+        "p7.P7-CHR-02",
+        "p7.P7-CHR-03",
+        "p7.P7-CHR-04",
+        "p7.P7-CHR-05",
+        "p7.P7-CHR-06",
+        "p7.P7-CHR-07",
+        "p7.P7-CHR-08",
+        "p7.P7-CHR-09",
+        "p7.P7-CHR-10",
+        "p7.P7-CHR-11",
+        "p7.P7-CHR-12",
+        "p7.P7-CHR-13",
+        "p7.P7-CHR-14",
+        "p7.P7-CHR-15",
+        "p7.P7-CHR-16",
+        "p7.P7-CON-01",
+        "p7.P7-CON-02",
+        "p7.P7-CON-03",
+        "p7.P7-CON-04",
+        "p7.P7-CON-05",
+        "p7.P7-CON-06",
+        "p7.P7-EVL-01",
+        "p7.P7-EVL-02",
+        "p7.P7-EVL-03",
+        "p7.P7-EVL-04",
+        "p7.P7-EVL-05",
+        "p7.P7-EVL-06",
+        "p7.P7-EVL-07",
+        "p7.P7-EVL-08",
+        "p7.P7-NEG-01",
+        "p7.P7-NEG-02",
+        "p7.P7-NEG-03",
+        "p7.P7-NEG-04",
+        "p7.P7-NEG-05",
+        "p7.P7-NEG-06",
+        "p7.P7-NEG-07",
+        "p7.P7-NEG-08",
+        "p7.P7-R07-01",
+        "p7.P7-R07-02",
+        "p7.P7-R07-03",
+        "p7.P7-R07-04",
+        "p7.P7-R07-05",
+        "p7.P7-R07-06",
+        "p7.P7-SCO-01",
+        "p7.P7-SCO-02",
+        "p7.P7-SCO-03",
+        "p7.P7-SCO-04",
+        "p7.P7-SCO-05",
+        "p7.P7-SCO-06",
+        "existing.v0.3-fixture",
+        "existing.phase4-corpus",
+        "existing.phase4-stability",
+        "existing.phase6-library",
+        "existing.phase6-stability",
+        "d.chr01_action_section_excluded",
+        "d.chr01_same_day_not_conflict",
+        "d.con_on_state_requires_implemented",
+        "d.con_single_conflict_when_k4",
+        "d.invalid_dates_ignored",
+        "d.renewal_date_not_expiry",
+        "d.candidate_base_unchanged",
+        "d.chr01_non_risk_assessment_outside_followup_not_conflict",
+        "d.expiry_between_request_and_decision_is_impossible_sequence",
+        "d.sufficiency_outcome_reason_and_limitation",
+        "d.untrusted_field_reason",
+        "d.duplicate_observation_ids",
+        "d.max_observations",
+        "d.contract_version_checked",
+        "d.status_vocabulary",
+        "rp.empty_set_refuses",
+        "rp.compile_refuses_on_invalid_set"
+      ]
+    },
+    {
+      "id": "MX-59",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/compiler.mjs",
+      "area": "limitation preservation",
+      "description": "if (c === 'sufficiency') { status = 'review_required';",
+      "result": "killed",
+      "killed_by": [
+        "d.sufficiency_outcome_reason_and_limitation"
+      ]
+    },
+    {
+      "id": "MX-60",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "else if (k.signature.content_sha256 !== contentSeal(k)) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "rp.tampered_rejected",
+        "rp.rejected_set_activates_nothing",
+        "rp.compile_refuses_on_invalid_set"
+      ]
+    },
+    {
+      "id": "MX-61",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "typeof k.signature.content_sha256 !== 'string') p.push(at + ': unsigned');",
+      "result": "killed",
+      "killed_by": [
+        "rp.invalid_signature_method_or_value_rejected"
+      ]
+    },
+    {
+      "id": "MX-62",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "version and hash mismatches",
+      "description": "if (k.candidate_version !== COMPILER_VERSION) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "rp.version_mismatch_rejected"
+      ]
+    },
+    {
+      "id": "MX-63",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "if (packIds.has(k.pack_id)) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "rp.duplicate_pack_id_rejected"
+      ]
+    },
+    {
+      "id": "MX-64",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "if (ruleIds.has(rid)) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "rp.duplicate_rule_rejected"
+      ]
+    },
+    {
+      "id": "MX-65",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "for (const f of RULE_FIELDS) if (",
+      "result": "killed",
+      "killed_by": [
+        "rp.incomplete_rejected"
+      ]
+    },
+    {
+      "id": "MX-66",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "if (!IMPLEMENTED_RULES.includes(rid)) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "rp.unknown_rule_rejected"
+      ]
+    },
+    {
+      "id": "MX-67",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "if (!SAFE_OUTCOMES.includes(r.expected_safe_outcome)) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "rp.unsafe_outcome_rejected"
+      ]
+    },
+    {
+      "id": "MX-68",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "for (const f of Object.keys(r)) {",
+      "result": "killed",
+      "killed_by": [
+        "rp.designation_field_rejected"
+      ]
+    },
+    {
+      "id": "MX-69",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "active: ok ? ruleIds : new Set()",
+      "result": "killed",
+      "killed_by": [
+        "rp.tampered_rejected",
+        "rp.unsigned_rejected",
+        "rp.invalid_signature_method_or_value_rejected",
+        "rp.version_mismatch_rejected",
+        "rp.duplicate_pack_id_rejected",
+        "rp.duplicate_rule_rejected",
+        "rp.incomplete_rejected",
+        "rp.unknown_rule_rejected",
+        "rp.unsafe_outcome_rejected",
+        "rp.designation_field_rejected",
+        "rp.rejected_set_activates_nothing",
+        "rp.compile_refuses_on_invalid_set"
+      ]
+    },
+    {
+      "id": "MX-70",
+      "file": "lib/engine-evidence-graph-v0.3.1-candidate/rule-packs.mjs",
+      "area": "rule-pack validation",
+      "description": "return { ok: false, problems: ['no rule packs supplied']",
+      "result": "killed",
+      "killed_by": [
+        "rp.empty_set_refuses"
+      ]
+    },
+    {
+      "id": "MX-71",
+      "file": "research/engine-remediation-phase7-2026-10-19/tooling/qualify.mjs",
+      "area": "baseline comparison",
+      "description": "classification: INV.includes(diff.verdict) ? 'no_behavioral_difference' : failureClass(dif",
+      "result": "killed",
+      "killed_by": [
+        "q.unchanged_difference_flagged"
+      ]
+    },
+    {
+      "id": "MX-72",
+      "file": "research/engine-remediation-phase7-2026-10-19/tooling/qualify.mjs",
+      "area": "baseline comparison",
+      "description": "const bad = diff.findings.filter((f) => f.fail_closed || !OK_CLASSES.includes(f.class));",
+      "result": "killed",
+      "killed_by": [
+        "q.bad_findings_flagged"
+      ]
+    },
+    {
+      "id": "MX-73",
+      "file": "research/engine-remediation-phase7-2026-10-19/tooling/qualify.mjs",
+      "area": "baseline comparison",
+      "description": "if (spec.statuses && JSON.stringify(out.candidate_statuses) !== JSON.stringify(spec.status",
+      "result": "killed",
+      "killed_by": [
+        "q.statuses_checked"
+      ]
+    },
+    {
+      "id": "MX-74",
+      "file": "research/engine-remediation-phase7-2026-10-19/tooling/qualify.mjs",
+      "area": "baseline comparison",
+      "description": "if (spec.conflicts_gained && JSON.stringify(",
+      "result": "killed",
+      "killed_by": [
+        "q.conflicts_checked"
+      ]
+    },
+    {
+      "id": "MX-75",
+      "file": "research/engine-remediation-phase7-2026-10-19/tooling/qualify.mjs",
+      "area": "baseline comparison",
+      "description": "if (!completeRefusal(cand.graph)) P.push(",
+      "result": "killed",
+      "killed_by": [
+        "q.complete_refusal_required"
+      ]
+    },
+    {
+      "id": "MX-76",
+      "file": "research/engine-remediation-phase7-2026-10-19/tooling/qualify.mjs",
+      "area": "baseline comparison",
+      "description": "if (spec.mode !== 'base_error') return Object.assign(out, { classification: 'unintended_re",
+      "result": "killed",
+      "killed_by": [
+        "q.base_error_requires_mode"
+      ]
+    },
+    {
+      "id": "MX-77",
+      "file": "research/engine-remediation-phase7-2026-10-19/tooling/qualify.mjs",
+      "area": "baseline comparison",
+      "description": "if (cand.error) return Object.assign(out, { classification: 'unintended_regression'",
+      "result": "killed",
+      "killed_by": [
+        "q.candidate_error_flagged"
+      ]
+    },
+    {
+      "id": "MX-78",
+      "file": "research/engine-remediation-phase7-2026-10-19/tooling/qualify.mjs",
+      "area": "version and hash mismatches",
+      "description": "const VERSION = { from: '0.3.0-local', to: '0.3.1-candidate' };",
+      "result": "killed",
+      "killed_by": [
+        "q.unchanged_accepted",
+        "q.intended_accepted"
+      ]
+    },
+    {
+      "id": "MX-79",
+      "file": "research/engine-remediation-phase7-2026-10-19/tooling/candidate.mjs",
+      "area": "version and hash mismatches",
+      "description": "s.declared_versions.compiler_version === FROM) s.declared_versions",
+      "result": "killed",
+      "killed_by": [
+        "existing.v0.3-fixture",
+        "q.version_mapping_exact"
+      ]
+    }
+  ]
+}

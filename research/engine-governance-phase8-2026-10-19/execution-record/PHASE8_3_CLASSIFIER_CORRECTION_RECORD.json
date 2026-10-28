@@ -1,0 +1,60 @@
+{
+  "record_type": "jrs-phase8-3-classifier-correction/1.0.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "statement": "Narrow owner-authorized correction of the compatibility-manifest classifier so that it places paths of valid admitted later packages through the later-package registry. Not a new engineering phase. No Engine, Phase 1 to 7, Phase 9 logic, public or deployment file changed.",
+  "authorization": "Owner authorization 2026-10-21: Phase 8 Registry-Aware Compatibility Classifier Correction",
+  "defect": "tools/engine-governance-phase8-replay.mjs passed every untracked path to governance.classifyRun, which assigns packages with registry.packageOf over the static earlier-package list and the four CPC conditions only. Paths of a valid admitted later package (Phase 9) were therefore package_outside_registry, and CPC-01 to CPC-04 became unexplained_conflict because their declared triggering paths predate Phase 9. The overall verdict failed closed although the registry-derived composition declared every condition. The Phase 8 suite recomputed the classification over Phase 8-scope paths only, so it reported declared conditions only and disagreed with the recorded verdict.",
+  "correction": [
+    "classifyRun accepts an optional registry-derived context (later-packages.laterCompatibilityContext). Without it the classification is unchanged.",
+    "A path outside the statically registered packages is accepted only when it belongs to a valid admitted package in a declared state (manifest_verified, or incomplete_construction reported as declared_incomplete_construction). Invalid reservations, files before admission, undetermined states and integrity failures keep their fail-closed classes; any other path stays package_outside_registry. A registry-level validation problem invalidates every admitted package.",
+    "A failing earlier check is attributed to an admitted package only when that package declared the check; otherwise undeclared_affected_check, which fails closed. CPC-01 to CPC-04 remain historical compatibility references for the files they name.",
+    "The replay validates the registry before classifying, and records and prints six result kinds separately (historical, isolated replay, current composition, declared conditions, undeclared failures, integrity failures).",
+    "The Phase 8 suite recomputes the classification over the whole worktree with the same registry context."
+  ],
+  "pre_correction_state": {
+    "recorded_at": "2026-10-20T06:12:03.255Z",
+    "result": "474/474",
+    "by_kind": {
+      "direct": 246,
+      "negative": 130,
+      "mutation": 98
+    },
+    "mutations": "98/98",
+    "historical_manifest": {
+      "file": "registry/manifests/phase8-governance-8.2c-historical.sha256",
+      "sha256": "sha256:a947863533a9439e2676463fa2e772221e3b1495bc8c1452fe20ec5e0a9b31a7",
+      "files": 74
+    },
+    "preserved_records": [
+      {
+        "file": "execution-record/phase8-3-pre-correction/PHASE8_TEST_RESULTS.json",
+        "sha256": "sha256:3cfc887b395b839c1d3b29ffcc184ab01510c7dd52c1260a2e69aa9d6cacaca9"
+      },
+      {
+        "file": "execution-record/phase8-3-pre-correction/MUTATION_EVIDENCE.json",
+        "sha256": "sha256:c610d241815bab74d7950f3bf160ae84ae33de3442905acb366b7c3390e49184"
+      },
+      {
+        "file": "execution-record/phase8-3-pre-correction/WORKTREE_RUN_RECORD.json",
+        "sha256": "sha256:c7692b514f5cf0793b3b98d2f4fd33a5c8012e41326c3f00191b117cf1268fda"
+      }
+    ],
+    "worktree_run": {
+      "started_at": "2026-10-20T13:28:08.663Z",
+      "classification_verdict": "fail_closed",
+      "composition_verdict": "declared_composition_conditions_only",
+      "package_outside_registry": 100,
+      "unexplained_conflict": 4,
+      "genuine_regression": 0,
+      "phase8_self_run": "473/474",
+      "phase8_self_run_failed_checks": [
+        "recorded run verdict matches recomputation"
+      ]
+    },
+    "isolated_replay": "474/474"
+  }
+}

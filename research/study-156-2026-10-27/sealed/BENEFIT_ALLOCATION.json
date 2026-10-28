@@ -1,0 +1,563 @@
+{
+  "format": "jrs-study-156-benefit-allocation/1.0.0",
+  "seed": 1561027,
+  "status": "NOT RUN. No participant recruited or contacted.",
+  "conditions": [
+    "H_record_only",
+    "E_engine_without_controls",
+    "EC_engine_with_controls"
+  ],
+  "balance": {
+    "H_record_only": {
+      "records": 20,
+      "families": {
+        "F09": 3,
+        "F05": 4,
+        "F07": 3,
+        "F08": 4,
+        "F06": 3,
+        "F10": 3
+      },
+      "types": {
+        "C": 2,
+        "G": 2,
+        "S": 2,
+        "A": 2,
+        "M": 2,
+        "P": 2,
+        "L": 2,
+        "G2": 2,
+        "D": 2,
+        "U": 2
+      }
+    },
+    "EC_engine_with_controls": {
+      "records": 20,
+      "families": {
+        "F09": 3,
+        "F10": 4,
+        "F07": 4,
+        "F06": 3,
+        "F05": 3,
+        "F08": 3
+      },
+      "types": {
+        "L": 2,
+        "M": 2,
+        "G": 2,
+        "G2": 2,
+        "D": 2,
+        "A": 2,
+        "C": 2,
+        "U": 2,
+        "S": 2,
+        "P": 2
+      }
+    },
+    "E_engine_without_controls": {
+      "records": 20,
+      "families": {
+        "F06": 4,
+        "F10": 3,
+        "F08": 3,
+        "F09": 4,
+        "F05": 3,
+        "F07": 3
+      },
+      "types": {
+        "D": 2,
+        "C": 2,
+        "S": 2,
+        "G": 2,
+        "M": 2,
+        "A": 2,
+        "P": 2,
+        "U": 2,
+        "L": 2,
+        "G2": 2
+      }
+    }
+  },
+  "rows": [
+    {
+      "source_id": "S-086",
+      "blind_id": "B-088",
+      "family": "F09",
+      "type": "C",
+      "condition": "H_record_only",
+      "order": 1
+    },
+    {
+      "source_id": "S-085",
+      "blind_id": "B-074",
+      "family": "F09",
+      "type": "L",
+      "condition": "EC_engine_with_controls",
+      "order": 2
+    },
+    {
+      "source_id": "S-041",
+      "blind_id": "B-104",
+      "family": "F05",
+      "type": "G",
+      "condition": "H_record_only",
+      "order": 3
+    },
+    {
+      "source_id": "S-057",
+      "blind_id": "B-079",
+      "family": "F06",
+      "type": "D",
+      "condition": "E_engine_without_controls",
+      "order": 4
+    },
+    {
+      "source_id": "S-100",
+      "blind_id": "B-100",
+      "family": "F10",
+      "type": "M",
+      "condition": "EC_engine_with_controls",
+      "order": 5
+    },
+    {
+      "source_id": "S-068",
+      "blind_id": "B-094",
+      "family": "F07",
+      "type": "S",
+      "condition": "H_record_only",
+      "order": 6
+    },
+    {
+      "source_id": "S-061",
+      "blind_id": "B-099",
+      "family": "F07",
+      "type": "G",
+      "condition": "EC_engine_with_controls",
+      "order": 7
+    },
+    {
+      "source_id": "S-055",
+      "blind_id": "B-065",
+      "family": "F06",
+      "type": "L",
+      "condition": "EC_engine_with_controls",
+      "order": 8
+    },
+    {
+      "source_id": "S-074",
+      "blind_id": "B-086",
+      "family": "F08",
+      "type": "A",
+      "condition": "H_record_only",
+      "order": 9
+    },
+    {
+      "source_id": "S-080",
+      "blind_id": "B-068",
+      "family": "F08",
+      "type": "M",
+      "condition": "H_record_only",
+      "order": 10
+    },
+    {
+      "source_id": "S-096",
+      "blind_id": "B-085",
+      "family": "F10",
+      "type": "C",
+      "condition": "E_engine_without_controls",
+      "order": 11
+    },
+    {
+      "source_id": "S-078",
+      "blind_id": "B-046",
+      "family": "F08",
+      "type": "S",
+      "condition": "E_engine_without_controls",
+      "order": 12
+    },
+    {
+      "source_id": "S-070",
+      "blind_id": "B-071",
+      "family": "F07",
+      "type": "M",
+      "condition": "EC_engine_with_controls",
+      "order": 13
+    },
+    {
+      "source_id": "S-081",
+      "blind_id": "B-097",
+      "family": "F09",
+      "type": "G",
+      "condition": "E_engine_without_controls",
+      "order": 14
+    },
+    {
+      "source_id": "S-044",
+      "blind_id": "B-055",
+      "family": "F05",
+      "type": "A",
+      "condition": "H_record_only",
+      "order": 15
+    },
+    {
+      "source_id": "S-090",
+      "blind_id": "B-069",
+      "family": "F09",
+      "type": "M",
+      "condition": "E_engine_without_controls",
+      "order": 16
+    },
+    {
+      "source_id": "S-089",
+      "blind_id": "B-092",
+      "family": "F09",
+      "type": "P",
+      "condition": "H_record_only",
+      "order": 17
+    },
+    {
+      "source_id": "S-065",
+      "blind_id": "B-072",
+      "family": "F07",
+      "type": "L",
+      "condition": "H_record_only",
+      "order": 18
+    },
+    {
+      "source_id": "S-052",
+      "blind_id": "B-078",
+      "family": "F06",
+      "type": "G2",
+      "condition": "EC_engine_with_controls",
+      "order": 19
+    },
+    {
+      "source_id": "S-067",
+      "blind_id": "B-057",
+      "family": "F07",
+      "type": "D",
+      "condition": "EC_engine_with_controls",
+      "order": 20
+    },
+    {
+      "source_id": "S-094",
+      "blind_id": "B-052",
+      "family": "F10",
+      "type": "A",
+      "condition": "EC_engine_with_controls",
+      "order": 21
+    },
+    {
+      "source_id": "S-048",
+      "blind_id": "B-095",
+      "family": "F05",
+      "type": "S",
+      "condition": "E_engine_without_controls",
+      "order": 22
+    },
+    {
+      "source_id": "S-084",
+      "blind_id": "B-061",
+      "family": "F09",
+      "type": "A",
+      "condition": "E_engine_without_controls",
+      "order": 23
+    },
+    {
+      "source_id": "S-062",
+      "blind_id": "B-103",
+      "family": "F07",
+      "type": "G2",
+      "condition": "H_record_only",
+      "order": 24
+    },
+    {
+      "source_id": "S-047",
+      "blind_id": "B-054",
+      "family": "F05",
+      "type": "D",
+      "condition": "H_record_only",
+      "order": 25
+    },
+    {
+      "source_id": "S-066",
+      "blind_id": "B-082",
+      "family": "F07",
+      "type": "C",
+      "condition": "E_engine_without_controls",
+      "order": 26
+    },
+    {
+      "source_id": "S-053",
+      "blind_id": "B-066",
+      "family": "F06",
+      "type": "U",
+      "condition": "H_record_only",
+      "order": 27
+    },
+    {
+      "source_id": "S-046",
+      "blind_id": "B-075",
+      "family": "F05",
+      "type": "C",
+      "condition": "EC_engine_with_controls",
+      "order": 28
+    },
+    {
+      "source_id": "S-097",
+      "blind_id": "B-051",
+      "family": "F10",
+      "type": "D",
+      "condition": "EC_engine_with_controls",
+      "order": 29
+    },
+    {
+      "source_id": "S-043",
+      "blind_id": "B-067",
+      "family": "F05",
+      "type": "U",
+      "condition": "EC_engine_with_controls",
+      "order": 30
+    },
+    {
+      "source_id": "S-069",
+      "blind_id": "B-087",
+      "family": "F07",
+      "type": "P",
+      "condition": "E_engine_without_controls",
+      "order": 31
+    },
+    {
+      "source_id": "S-083",
+      "blind_id": "B-076",
+      "family": "F09",
+      "type": "U",
+      "condition": "H_record_only",
+      "order": 32
+    },
+    {
+      "source_id": "S-063",
+      "blind_id": "B-059",
+      "family": "F07",
+      "type": "U",
+      "condition": "E_engine_without_controls",
+      "order": 33
+    },
+    {
+      "source_id": "S-050",
+      "blind_id": "B-096",
+      "family": "F05",
+      "type": "M",
+      "condition": "H_record_only",
+      "order": 34
+    },
+    {
+      "source_id": "S-056",
+      "blind_id": "B-045",
+      "family": "F06",
+      "type": "C",
+      "condition": "H_record_only",
+      "order": 35
+    },
+    {
+      "source_id": "S-093",
+      "blind_id": "B-073",
+      "family": "F10",
+      "type": "U",
+      "condition": "E_engine_without_controls",
+      "order": 36
+    },
+    {
+      "source_id": "S-045",
+      "blind_id": "B-077",
+      "family": "F05",
+      "type": "L",
+      "condition": "E_engine_without_controls",
+      "order": 37
+    },
+    {
+      "source_id": "S-058",
+      "blind_id": "B-101",
+      "family": "F06",
+      "type": "S",
+      "condition": "EC_engine_with_controls",
+      "order": 38
+    },
+    {
+      "source_id": "S-077",
+      "blind_id": "B-083",
+      "family": "F08",
+      "type": "D",
+      "condition": "H_record_only",
+      "order": 39
+    },
+    {
+      "source_id": "S-075",
+      "blind_id": "B-048",
+      "family": "F08",
+      "type": "L",
+      "condition": "E_engine_without_controls",
+      "order": 40
+    },
+    {
+      "source_id": "S-079",
+      "blind_id": "B-053",
+      "family": "F08",
+      "type": "P",
+      "condition": "EC_engine_with_controls",
+      "order": 41
+    },
+    {
+      "source_id": "S-064",
+      "blind_id": "B-050",
+      "family": "F07",
+      "type": "A",
+      "condition": "EC_engine_with_controls",
+      "order": 42
+    },
+    {
+      "source_id": "S-098",
+      "blind_id": "B-084",
+      "family": "F10",
+      "type": "S",
+      "condition": "H_record_only",
+      "order": 43
+    },
+    {
+      "source_id": "S-087",
+      "blind_id": "B-047",
+      "family": "F09",
+      "type": "D",
+      "condition": "E_engine_without_controls",
+      "order": 44
+    },
+    {
+      "source_id": "S-060",
+      "blind_id": "B-049",
+      "family": "F06",
+      "type": "M",
+      "condition": "E_engine_without_controls",
+      "order": 45
+    },
+    {
+      "source_id": "S-091",
+      "blind_id": "B-056",
+      "family": "F10",
+      "type": "G",
+      "condition": "EC_engine_with_controls",
+      "order": 46
+    },
+    {
+      "source_id": "S-059",
+      "blind_id": "B-070",
+      "family": "F06",
+      "type": "P",
+      "condition": "H_record_only",
+      "order": 47
+    },
+    {
+      "source_id": "S-042",
+      "blind_id": "B-081",
+      "family": "F05",
+      "type": "G2",
+      "condition": "E_engine_without_controls",
+      "order": 48
+    },
+    {
+      "source_id": "S-073",
+      "blind_id": "B-098",
+      "family": "F08",
+      "type": "U",
+      "condition": "EC_engine_with_controls",
+      "order": 49
+    },
+    {
+      "source_id": "S-054",
+      "blind_id": "B-091",
+      "family": "F06",
+      "type": "A",
+      "condition": "E_engine_without_controls",
+      "order": 50
+    },
+    {
+      "source_id": "S-051",
+      "blind_id": "B-062",
+      "family": "F06",
+      "type": "G",
+      "condition": "E_engine_without_controls",
+      "order": 51
+    },
+    {
+      "source_id": "S-099",
+      "blind_id": "B-060",
+      "family": "F10",
+      "type": "P",
+      "condition": "E_engine_without_controls",
+      "order": 52
+    },
+    {
+      "source_id": "S-092",
+      "blind_id": "B-063",
+      "family": "F10",
+      "type": "G2",
+      "condition": "H_record_only",
+      "order": 53
+    },
+    {
+      "source_id": "S-071",
+      "blind_id": "B-089",
+      "family": "F08",
+      "type": "G",
+      "condition": "H_record_only",
+      "order": 54
+    },
+    {
+      "source_id": "S-072",
+      "blind_id": "B-064",
+      "family": "F08",
+      "type": "G2",
+      "condition": "E_engine_without_controls",
+      "order": 55
+    },
+    {
+      "source_id": "S-082",
+      "blind_id": "B-102",
+      "family": "F09",
+      "type": "G2",
+      "condition": "EC_engine_with_controls",
+      "order": 56
+    },
+    {
+      "source_id": "S-049",
+      "blind_id": "B-058",
+      "family": "F05",
+      "type": "P",
+      "condition": "EC_engine_with_controls",
+      "order": 57
+    },
+    {
+      "source_id": "S-088",
+      "blind_id": "B-093",
+      "family": "F09",
+      "type": "S",
+      "condition": "EC_engine_with_controls",
+      "order": 58
+    },
+    {
+      "source_id": "S-095",
+      "blind_id": "B-090",
+      "family": "F10",
+      "type": "L",
+      "condition": "H_record_only",
+      "order": 59
+    },
+    {
+      "source_id": "S-076",
+      "blind_id": "B-080",
+      "family": "F08",
+      "type": "C",
+      "condition": "EC_engine_with_controls",
+      "order": 60
+    }
+  ]
+}

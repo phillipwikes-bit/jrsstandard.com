@@ -1,0 +1,40 @@
+{
+  "results_format": "jrs-0.3.4-compile-row-check/1.0.0",
+  "correction": "TC-04 (registers/TOOL_CORRECTIONS.json)",
+  "profiles": {
+    "1.0": "study research profile (156-record study authorization reference)",
+    "2.0": {
+      "profile_id": "jrs-study-research-profile/1",
+      "enabled": true,
+      "authorization_ref": "0.3.4 repair assignment; offline research use only"
+    }
+  },
+  "statement": "Scored fields compared exclude only the graph digests, timings and the normalized default-path hash. Mocks are the study's stored mocks, relabelled for 0.3.4.",
+  "network_attempts": 0,
+  "result": {
+    "0.3.3-research-candidate": {
+      "compared": 624,
+      "scored_fields_identical": 624,
+      "differing": [],
+      "graph_digests_differ": 624,
+      "manifest_sha256": "fad69b62554a8e8cb6aa97ba9a85b5ee4f80ebfff565a3705dfc91f8dc100477",
+      "released": {
+        "unchanged": true,
+        "changed": [],
+        "deleted": true
+      }
+    },
+    "0.3.4-research-candidate": {
+      "compared": 624,
+      "scored_fields_identical": 624,
+      "differing": [],
+      "graph_digests_differ": 624,
+      "manifest_sha256": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad",
+      "released": {
+        "unchanged": true,
+        "changed": [],
+        "deleted": true
+      }
+    }
+  }
+}

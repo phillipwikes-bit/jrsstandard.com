@@ -1,0 +1,24 @@
+{
+  "record_sha256": "5731f707fea7e91a024d71d3fe978230556bb03a6feac39b9ed66e47b300c9fe",
+  "record_length": 10278,
+  "case_id": "ADV-10",
+  "layer": 1,
+  "title": "Record above the local size limit",
+  "group": "adversarial",
+  "parameter_set": "105",
+  "facts": [
+    "The record exceeds 8,000 characters."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "scope_boundary_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

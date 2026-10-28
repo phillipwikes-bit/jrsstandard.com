@@ -1,0 +1,11 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL.
+Record type: Supplier access exception draft (fictional)
+Exception ID: EXC-2026-103
+Supplier: Meridian Fictional Packaging (fictional)
+Requested by: Procurement support team; request received 2026-05-04.
+Decision: Exception granted for read-only access to the packaging order dashboard.
+Decision basis: Granted because the supplier needs dashboard access to reconcile purchase orders, based on assessment RA-2026-33 completed 2026-05-06.
+Authority: Approved by the Exception Review Board, minutes ERB-2026-15, item 4, on 2026-05-11.
+Compensating controls: Access limited to read-only views; sessions require multi-factor authentication; access logs are reviewed weekly.
+Expiry and renewal: Access expires 2026-08-31; renewal requires a fresh assessment.
+Notes: The review of access logs has not started.

@@ -1,0 +1,11 @@
+LOCAL ENGINEERING MATERIAL ONLY. NOT INDEPENDENTLY EVALUATED. NO RELEASE, DEPLOYMENT, OR COMMERCIAL READINESS DETERMINATION.
+HOLDS baseline: current Engine behaviour matches the recorded manifest (192 scenarios)
+HOLDS baseline: manifest hash reproduced
+HOLDS library: expectation seal holds
+HOLDS library: results reproduce the recorded run
+HOLDS stability: results reproduce the recorded run
+HOLDS register: hash chain and entries valid
+HOLDS isolation: no network attempt
+library: {"as_expected":51,"known_open_failure_reproduced":10,"known_open_failure_not_reproduced":0,"unexpected":1}; routed to review: P6-RT-07 (unexpected)
+stability: 25/27 as expected; routed to review: none
+verdict: human_review_required; network attempts trapped: 0; this tool applies no change.

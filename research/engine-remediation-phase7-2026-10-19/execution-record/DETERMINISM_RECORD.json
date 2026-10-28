@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-10-19T13:57:52.546Z",
+  "command": "node tests/engine-remediation-phase7/run.mjs --record",
+  "node": "v22.22.0",
+  "network_attempts": 0,
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "passes": [
+    "sha256:6be752fa7387460246d3880f0dff9f9850029397692fa34d2bd0ddddbe060bcd",
+    "sha256:6be752fa7387460246d3880f0dff9f9850029397692fa34d2bd0ddddbe060bcd",
+    "sha256:6be752fa7387460246d3880f0dff9f9850029397692fa34d2bd0ddddbe060bcd",
+    "sha256:6be752fa7387460246d3880f0dff9f9850029397692fa34d2bd0ddddbe060bcd",
+    "sha256:6be752fa7387460246d3880f0dff9f9850029397692fa34d2bd0ddddbe060bcd"
+  ]
+}

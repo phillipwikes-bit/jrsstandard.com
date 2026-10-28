@@ -1,0 +1,286 @@
+{
+  "map_format": "jrs-validation-evidence-map/0.1.0",
+  "date": "2026-10-25",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "statement": "Local synthetic evidence cannot establish model reliability, real-world accuracy, independent validation or production readiness.",
+  "suitability_values": [
+    "suitable",
+    "partial_support_only",
+    "not_suitable"
+  ],
+  "areas": [
+    {
+      "claim_area": "deterministic_compiler_behavior",
+      "claim_category": "Determinism",
+      "evidence_available": "Phase 6 and 7 determinism and stability records; this package's two clean-run comparison over 60 new cases.",
+      "evidence_quality": "Local, repeatable, hash-compared.",
+      "provenance_class": "offline_engineering_synthetic",
+      "known_limitations": "Same machine class and runtime only; identical inputs only; no cross-platform or cross-runtime run.",
+      "missing_evidence": "Cross-environment reproducibility; characterization under a live model, where inputs vary.",
+      "required_decision_authority": "Engineering owner",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "quote_and_provenance_pairing",
+      "claim_category": "Evidence integrity",
+      "evidence_available": "Quote resolution in the frozen compiler (offsets computed locally); nine-field binding and pair check in adapter 0.2.0; mapping MT-28 to MT-32; this package's pairing probes.",
+      "evidence_quality": "Directly tested with mutations.",
+      "provenance_class": "offline_engineering_synthetic",
+      "known_limitations": "Pairing proves byte integrity of stored artifacts, not that a quotation is relevant or correct.",
+      "missing_evidence": "Pairing under live capture; custody across real storage.",
+      "required_decision_authority": "Engineering owner",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "suitable",
+        "independent_validation": "partial_support_only",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "chronology_handling",
+      "claim_category": "Condition logic",
+      "evidence_available": "RPK-CHR rule packs (Phase 7); dated-event extraction; this corpus's chronology-conflict cases.",
+      "evidence_quality": "Lexical rules over explicit ISO dates; owner-authored cases.",
+      "provenance_class": "owner_authored_expectation",
+      "known_limitations": "Only explicit YYYY-MM-DD dates and fixed role words; undated or narrative chronology is not inferred.",
+      "missing_evidence": "Real-record chronology variety; independent adjudication of what counts as a conflict.",
+      "required_decision_authority": "Owner; future independent adjudicator",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "contradiction_handling",
+      "claim_category": "Condition logic",
+      "evidence_available": "K1 to K6 conflict detectors and RP-CON-01; this corpus's conflicting-source cases.",
+      "evidence_quality": "Bounded lexical detectors; owner-authored cases.",
+      "provenance_class": "owner_authored_expectation",
+      "known_limitations": "Paraphrased contradictions outside the listed nouns and phrases are not detected; the Engine never resolves a conflict.",
+      "missing_evidence": "Recall on paraphrased real contradictions; independent labelling.",
+      "required_decision_authority": "Owner; future independent adjudicator",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "scope_refusal_behavior",
+      "claim_category": "Boundary",
+      "evidence_available": "Intake gate (excluded-domain lexicons, RP-SCO-01), size, scope and version checks; this corpus's scope-boundary cases.",
+      "evidence_quality": "Lexical; tested on owner-authored triggers.",
+      "provenance_class": "owner_authored_expectation",
+      "known_limitations": "Reworded or novel excluded-domain language may pass; over-refusal on benign homonyms is possible.",
+      "missing_evidence": "Measured false-acceptance and over-refusal on independent material.",
+      "required_decision_authority": "Owner; counsel where a real-data scope question arises",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "human_review_routing",
+      "claim_category": "Boundary",
+      "evidence_available": "Every graph carries the fixed documentation_quality_reviewer route; findings, conflicts and refusals carry ROUTES_TO_REVIEW edges.",
+      "evidence_quality": "Structural and always on; directly checked.",
+      "provenance_class": "offline_engineering_synthetic",
+      "known_limitations": "Routing is unconditional by design, so it shows a route exists, not that a reviewer acts.",
+      "missing_evidence": "Evidence that human reviewers act on the route; operator records.",
+      "required_decision_authority": "Owner",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "suitable",
+        "independent_validation": "partial_support_only",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "mapping_integrity",
+      "claim_category": "Adapter",
+      "evidence_available": "Anthropic mapping 0.1.0-offline: 33 tests, 12 mutations, all with synthetic captures.",
+      "evidence_quality": "Offline only; the response shape is assumed from documentation, never observed live.",
+      "provenance_class": "offline_engineering_synthetic",
+      "known_limitations": "Never exercised on a real provider response.",
+      "missing_evidence": "A controlled live capture under a valid authorization.",
+      "required_decision_authority": "Owner under a new restart authorization",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "transport_boundary_controls",
+      "claim_category": "Adapter",
+      "evidence_available": "Live-transport boundary with dispatch lock (LT tests, B mutations); network guard in every harness.",
+      "evidence_quality": "Directly tested offline; the lock has never been released.",
+      "provenance_class": "offline_engineering_synthetic",
+      "known_limitations": "The live path has never run, so its behaviour under real transport is untested.",
+      "missing_evidence": "A supervised live run; incident and stop-procedure evidence.",
+      "required_decision_authority": "Owner under a new restart authorization",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "cognitive_controls",
+      "claim_category": "Review layer",
+      "evidence_available": "Cognitive-controls validator and graph defect templates; their test and mutation results.",
+      "evidence_quality": "Offline, synthetic.",
+      "provenance_class": "offline_engineering_synthetic",
+      "known_limitations": "Neutrality is checked lexically; no reviewer has used the controls.",
+      "missing_evidence": "Use by independent reviewers; effect on review quality.",
+      "required_decision_authority": "Owner; future independent evaluator",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "mutation_resistance",
+      "claim_category": "Test strength",
+      "evidence_available": "Phase 6 to 9 mutation records; adapter, mapping, boundary and cognitive-control mutations; 30 or more new mutations in this package.",
+      "evidence_quality": "Each mutation has a named direct probe.",
+      "provenance_class": "offline_engineering_synthetic",
+      "known_limitations": "Mutations show that the probes detect the faults they target; they do not show the absence of other faults.",
+      "missing_evidence": "Independent review of mutation coverage.",
+      "required_decision_authority": "Engineering owner",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "reproducibility",
+      "claim_category": "Determinism",
+      "evidence_available": "Graph hashes exclude run id and timestamp; identity records compiler, package and prompt hashes.",
+      "evidence_quality": "Characterized offline only.",
+      "provenance_class": "offline_engineering_synthetic",
+      "known_limitations": "Live-model output variability is uncharacterized (CLAUDE.md section 21).",
+      "missing_evidence": "Repeated live runs and an empirical variability study.",
+      "required_decision_authority": "Owner; future independent evaluator",
+      "suitability": {
+        "offline_engineering_evidence": "suitable",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "model_behavior",
+      "claim_category": "Model",
+      "evidence_available": "None. No live model response has ever been processed by this Engine path.",
+      "evidence_quality": "None.",
+      "provenance_class": "no_evidence",
+      "known_limitations": "Mocked responses are authored to test the compiler, not to represent any model.",
+      "missing_evidence": "The Stage A feasibility pilot (stopped) and any later controlled study.",
+      "required_decision_authority": "Owner under a new restart authorization",
+      "suitability": {
+        "offline_engineering_evidence": "not_suitable",
+        "owner_led_feasibility_evidence": "not_suitable",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "diagnostic_accuracy",
+      "claim_category": "Accuracy",
+      "evidence_available": "None. Owner-authored expectations are not ground truth.",
+      "evidence_quality": "None.",
+      "provenance_class": "no_evidence",
+      "known_limitations": "Agreement with owner-authored expectations measures conformance to the owner's specification, not accuracy.",
+      "missing_evidence": "Independent adjudicated reference labels; pre-specified accuracy measures; adequate sample.",
+      "required_decision_authority": "Independent evaluator; owner",
+      "suitability": {
+        "offline_engineering_evidence": "not_suitable",
+        "owner_led_feasibility_evidence": "not_suitable",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "false_reassurance",
+      "claim_category": "Accuracy",
+      "evidence_available": "This corpus's false-reassurance trap cases test that mechanically unsupported support is lowered.",
+      "evidence_quality": "Mechanical, owner-authored.",
+      "provenance_class": "owner_authored_expectation",
+      "known_limitations": "Covers only the trap forms authored here; a missed real gap would not be detected by this method.",
+      "missing_evidence": "Independent measurement of the false-reassurance rate on independent material.",
+      "required_decision_authority": "Independent evaluator",
+      "suitability": {
+        "offline_engineering_evidence": "partial_support_only",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "independent_evaluation",
+      "claim_category": "Process",
+      "evidence_available": "None conducted. Phase 8 evaluation-handoff freeze and this package's handoff drafts describe what would be needed.",
+      "evidence_quality": "Planning documents only.",
+      "provenance_class": "no_evidence",
+      "known_limitations": "No evaluator, no independent corpus, no adjudication exists.",
+      "missing_evidence": "All conditions in INDEPENDENT_EVALUATION_PROTOCOL_DRAFT.md.",
+      "required_decision_authority": "Owner; independent evaluator; counsel where applicable",
+      "suitability": {
+        "offline_engineering_evidence": "not_suitable",
+        "owner_led_feasibility_evidence": "not_suitable",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "operator_controls",
+      "claim_category": "Operations",
+      "evidence_available": "Stage A authorization, readiness checklist and stop records; dispatch lock; retention terms.",
+      "evidence_quality": "Documented, not exercised; the only exercise was a stop.",
+      "provenance_class": "owner_authored_expectation",
+      "known_limitations": "Access, logging, recovery and incident procedures have not been demonstrated in operation.",
+      "missing_evidence": "A demonstrated operating record: access, retention, recovery, logging and stop drills.",
+      "required_decision_authority": "Owner",
+      "suitability": {
+        "offline_engineering_evidence": "partial_support_only",
+        "owner_led_feasibility_evidence": "partial_support_only",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    },
+    {
+      "claim_area": "release_readiness",
+      "claim_category": "Release",
+      "evidence_available": "None. NO_GO_NOT_VERIFIED in effect; B-018 OPEN.",
+      "evidence_quality": "None.",
+      "provenance_class": "no_evidence",
+      "known_limitations": "No release criterion is met.",
+      "missing_evidence": "Every item above, plus a separate release decision.",
+      "required_decision_authority": "Owner (separate release decision)",
+      "suitability": {
+        "offline_engineering_evidence": "not_suitable",
+        "owner_led_feasibility_evidence": "not_suitable",
+        "independent_validation": "not_suitable",
+        "production_qualification": "not_suitable"
+      }
+    }
+  ]
+}

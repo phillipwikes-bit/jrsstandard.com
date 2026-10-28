@@ -1,0 +1,14 @@
+SYNTHETIC HARNESS FIXTURE. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-0907
+Supplier: Kestrel Lane Archiving Co. (fictional)
+Access requested: Read-only access to the archived invoice index in the finance records system (FIN-IDX-02).
+Requested by: Finance Records Lead, 2026-08-03.
+Decision basis: Risk assessment RA-2026-0812, completed 2026-08-06, found that the index lists invoice numbers and filing dates only. The supplier needs it to confirm box locations under contract CTR-2026-044 section 2.
+Residual risk: low, per RA-2026-0812 section 4.
+Compensating controls: Access is limited to the FIN-IDX-02 index view; sessions require multi-factor authentication; access logs are reviewed weekly by the Finance Records Lead, as set out in RA-2026-0812 section 6.
+Authority: Information Security Exception Board, minutes ISEB-2026-19 item 2, dated 2026-08-10.
+Decision: Exception granted for 60 days.
+Expiry and renewal: Expires 2026-10-09. Renewal requires a new request with an updated risk assessment.
+Revocation: The Finance Records Lead will revoke access on 2026-10-09 unless a renewal is approved before that date.
+Chronology: 2026-08-03 request received; 2026-08-06 risk assessment RA-2026-0812 completed; 2026-08-10 board decision recorded.

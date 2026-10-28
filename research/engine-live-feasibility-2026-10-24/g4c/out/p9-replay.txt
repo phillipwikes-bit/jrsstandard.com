@@ -1,0 +1,21 @@
+{
+  "statements": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO RELEASE, DEPLOYMENT OR COMMERCIAL READINESS DETERMINATION"
+  ],
+  "seal_sha256": "sha256:be2cda74ff82d58844c6ebe4e335ea2be8c4d55e076b635e36d19a3e09e9fcc8",
+  "packets": 50,
+  "as_sealed": 49,
+  "differs": [
+    "R9-CON-04"
+  ],
+  "results_identical_to_first_run": true,
+  "stability": {
+    "total": 44,
+    "as_expected": 44,
+    "from_unfavourable_or_escalation": 27,
+    "more_favourable": 0
+  },
+  "network_attempts": 0
+}

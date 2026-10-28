@@ -1,0 +1,7 @@
+{
+  "sealed_at_utc": "2026-10-25T09:09:33.698Z",
+  "file_count": 12,
+  "manifest_sha256": "643ef9bee4b42f001a9f05d926c45d6e6eba9e04a9491f6dea64b022ed6b6c92",
+  "code_changes_before_seal": 0,
+  "rule": "Post-seal modification prohibited."
+}

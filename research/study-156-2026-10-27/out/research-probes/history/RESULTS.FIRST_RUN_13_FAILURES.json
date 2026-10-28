@@ -1,0 +1,837 @@
+{
+  "probe_format": "jrs-study-156-research-probes/1.0.0",
+  "engine_snapshot_sha256": "9e4ea4cd591f06ebf8ab476725e8d700f0ed7f993fae305f65ce8c747318cee2",
+  "engine_manifest_sha256": null,
+  "isolated_copy": {
+    "unchanged": true,
+    "changed": [],
+    "deleted": true
+  },
+  "network_attempts": 0,
+  "totals": {
+    "probes": 89,
+    "passed": 76,
+    "failed": 13
+  },
+  "results": [
+    {
+      "id": "RP-001",
+      "area": "gating",
+      "feature": "a study record without a research profile is refused by the default scope",
+      "ok": true,
+      "observed": [
+        "non_synthetic_record_not_authorized",
+        "prompt_version_mismatch"
+      ]
+    },
+    {
+      "id": "RP-002",
+      "area": "gating",
+      "feature": "a valid research profile proceeds and is recorded in the graph",
+      "ok": true,
+      "observed": "proceed"
+    },
+    {
+      "id": "RP-003",
+      "area": "gating",
+      "feature": "fail closed: wrong profile id",
+      "ok": false,
+      "observed": "threw: graph_self_validation_failed: GV-01: prompt_version is \"jrs-engine-local-0.3.3-research/prompt-1\""
+    },
+    {
+      "id": "RP-004",
+      "area": "gating",
+      "feature": "fail closed: enabled false",
+      "ok": false,
+      "observed": "threw: graph_self_validation_failed: GV-01: prompt_version is \"jrs-engine-local-0.3.3-research/prompt-1\""
+    },
+    {
+      "id": "RP-005",
+      "area": "gating",
+      "feature": "fail closed: enabled \"true\" (string)",
+      "ok": false,
+      "observed": "threw: graph_self_validation_failed: GV-01: prompt_version is \"jrs-engine-local-0.3.3-research/prompt-1\""
+    },
+    {
+      "id": "RP-006",
+      "area": "gating",
+      "feature": "fail closed: missing authorization_ref",
+      "ok": false,
+      "observed": "threw: graph_self_validation_failed: GV-01: prompt_version is \"jrs-engine-local-0.3.3-research/prompt-1\""
+    },
+    {
+      "id": "RP-007",
+      "area": "gating",
+      "feature": "fail closed: undeclared field",
+      "ok": false,
+      "observed": "threw: graph_self_validation_failed: GV-01: prompt_version is \"jrs-engine-local-0.3.3-research/prompt-1\""
+    },
+    {
+      "id": "RP-008",
+      "area": "gating",
+      "feature": "fail closed: not an object",
+      "ok": false,
+      "observed": "threw: graph_self_validation_failed: GV-01: prompt_version is \"jrs-engine-local-0.3.3-research/prompt-1\""
+    },
+    {
+      "id": "RP-009",
+      "area": "gating",
+      "feature": "fail closed: null",
+      "ok": false,
+      "observed": "threw: graph_self_validation_failed: GV-01: prompt_version is \"jrs-engine-local-0.3.3-research/prompt-1\""
+    },
+    {
+      "id": "RP-010",
+      "area": "gating",
+      "feature": "fail closed: tampered research pack (signature no longer matches)",
+      "ok": true,
+      "observed": [
+        "research_rule_pack: pack RPK-SRP: signature does not match content"
+      ]
+    },
+    {
+      "id": "RP-011",
+      "area": "gating",
+      "feature": "fail closed: research pack missing a rule",
+      "ok": true,
+      "observed": [
+        "research_rule_pack: pack RPK-SRP: signature does not match content"
+      ]
+    },
+    {
+      "id": "RP-012",
+      "area": "gating",
+      "feature": "fail closed: no research pack",
+      "ok": true,
+      "observed": [
+        "research_rule_pack: no rule packs supplied"
+      ]
+    },
+    {
+      "id": "RP-013",
+      "area": "scope",
+      "feature": "research profile with a supplier-access declaration is refused",
+      "ok": true,
+      "observed": [
+        "non_synthetic_record_not_authorized"
+      ]
+    },
+    {
+      "id": "RP-014",
+      "area": "scope",
+      "feature": "hr_content true is refused under the research profile",
+      "ok": true,
+      "observed": [
+        "invalid_scope_declaration"
+      ]
+    },
+    {
+      "id": "RP-015",
+      "area": "scope",
+      "feature": "regulated_decision_content not established is refused",
+      "ok": true,
+      "observed": [
+        "invalid_scope_declaration"
+      ]
+    },
+    {
+      "id": "RP-016",
+      "area": "scope",
+      "feature": "operational (non-constructed) content is refused",
+      "ok": true,
+      "observed": [
+        "non_synthetic_record_not_authorized"
+      ]
+    },
+    {
+      "id": "RP-017",
+      "area": "scope",
+      "feature": "constructed_study_vignette content origin is accepted",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-018",
+      "area": "scope",
+      "feature": "excluded-domain lexicon still refuses under the research profile: employment",
+      "ok": true,
+      "observed": [
+        "excluded_domain:employment"
+      ]
+    },
+    {
+      "id": "RP-019",
+      "area": "scope",
+      "feature": "excluded-domain lexicon still refuses under the research profile: legal_outcome",
+      "ok": true,
+      "observed": [
+        "excluded_domain:legal_outcome"
+      ]
+    },
+    {
+      "id": "RP-020",
+      "area": "scope",
+      "feature": "excluded-domain lexicon still refuses under the research profile: other_consequential",
+      "ok": true,
+      "observed": [
+        "excluded_domain:other_consequential"
+      ]
+    },
+    {
+      "id": "RP-021",
+      "area": "scope",
+      "feature": "excluded-domain lexicon still refuses under the research profile: medical",
+      "ok": true,
+      "observed": [
+        "excluded_domain:medical"
+      ]
+    },
+    {
+      "id": "RP-022",
+      "area": "size",
+      "feature": "size limit unchanged: over 8,000 characters refused, not truncated or segmented",
+      "ok": true,
+      "observed": 8909
+    },
+    {
+      "id": "RP-023",
+      "area": "contract",
+      "feature": "research prompt version required in the candidate",
+      "ok": true,
+      "observed": "prompt_version_mismatch"
+    },
+    {
+      "id": "RP-024",
+      "area": "contract",
+      "feature": "research prompt version required in the declaration",
+      "ok": true,
+      "observed": [
+        "prompt_version_mismatch"
+      ]
+    },
+    {
+      "id": "RP-025",
+      "area": "q1_authority",
+      "feature": "authority reference alone: authority-only reason, basis never supported, even with an over-claiming candidate",
+      "ok": false,
+      "observed": [
+        "rule:no_cited_basis_with_evidence_anchor"
+      ]
+    },
+    {
+      "id": "RP-026",
+      "area": "q1_authority",
+      "feature": "authority linked to facts: no authority-only signal",
+      "ok": true,
+      "observed": {
+        "requirement_visible": false,
+        "visible_gaps": [],
+        "review_reasons": [
+          "no_cited_basis_with_evidence_anchor"
+        ],
+        "anchor": {
+          "index": 0,
+          "label": "preamble",
+          "role": "preamble",
+          "start": 0,
+          "end": 235,
+          "content_start": 0,
+          "content_end": 235
+        },
+        "explanation": "Identifiable evidence is visible in the record."
+      }
+    },
+    {
+      "id": "RP-027",
+      "area": "q2_restated",
+      "feature": "restated conclusion: visible gap conclusion_restated_as_basis",
+      "ok": true,
+      "observed": {
+        "requirement_visible": false,
+        "visible_gaps": [
+          "conclusion_restated_as_basis"
+        ],
+        "review_reasons": [],
+        "anchor": {
+          "index": 0,
+          "label": "preamble",
+          "role": "preamble",
+          "start": 0,
+          "end": 193,
+          "content_start": 0,
+          "content_end": 193
+        },
+        "explanation": "The stated reason repeats the conclusion instead of giving a separate basis."
+      }
+    },
+    {
+      "id": "RP-028",
+      "area": "q2_restated",
+      "feature": "restated conclusion with an over-claiming candidate is never supported",
+      "ok": true,
+      "observed": [
+        "candidate_supported_but_visible_gap:conclusion_restated_as_basis"
+      ]
+    },
+    {
+      "id": "RP-029",
+      "area": "q2_restated",
+      "feature": "a genuine reason is not flagged as restated",
+      "ok": true,
+      "observed": {
+        "requirement_visible": false,
+        "visible_gaps": [],
+        "review_reasons": [
+          "rationale_path_not_cited"
+        ],
+        "anchor": {
+          "index": 0,
+          "label": "preamble",
+          "role": "preamble",
+          "start": 0,
+          "end": 166,
+          "content_start": 0,
+          "content_end": 166
+        },
+        "explanation": "Reasoning is traced only where the record states a reason linked to identifiable evidence. An outcome alone is not treated as reasoning."
+      }
+    },
+    {
+      "id": "RP-030",
+      "area": "q3_dates",
+      "feature": "one event, two dates: same_event_date_conflict",
+      "ok": true,
+      "observed": [
+        "inspection@-----03-03",
+        "null@-----03-04",
+        "inspection@-----03-08"
+      ]
+    },
+    {
+      "id": "RP-031",
+      "area": "q3_dates",
+      "feature": "different events, different dates: no conflict",
+      "ok": true,
+      "observed": [
+        "inspection@-----03-03",
+        "null@-----03-04",
+        "null@-----03-09"
+      ]
+    },
+    {
+      "id": "RP-032",
+      "area": "q3_dates",
+      "feature": "K6: two cited dates of different events are not compared",
+      "ok": false,
+      "observed": [
+        "cited_evidence_conflict"
+      ]
+    },
+    {
+      "id": "RP-033",
+      "area": "q3_dates",
+      "feature": "K6: two cited dates of the same event conflict",
+      "ok": true,
+      "observed": [
+        "same_event_date_conflict",
+        "cited_evidence_conflict"
+      ]
+    },
+    {
+      "id": "RP-034",
+      "area": "q3_dates",
+      "feature": "K6: cited dates with no event key keep the conservative comparison",
+      "ok": true,
+      "observed": [
+        "cited_evidence_conflict"
+      ]
+    },
+    {
+      "id": "RP-035",
+      "area": "q4_separate",
+      "feature": "opposite outcomes for separate requests: no contradiction (K6 and record level)",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-036",
+      "area": "q4_separate",
+      "feature": "opposite outcomes for the same request: decision_outcome_conflict",
+      "ok": false,
+      "observed": []
+    },
+    {
+      "id": "RP-037",
+      "area": "q4_separate",
+      "feature": "K6: opposite cited outcomes for the same request conflict",
+      "ok": true,
+      "observed": [
+        "cited_evidence_conflict"
+      ]
+    },
+    {
+      "id": "RP-038",
+      "area": "q4_separate",
+      "feature": "a partial outcome within one decision is not a contradiction",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-039",
+      "area": "structure",
+      "feature": "dates in words, ISO and abbreviated forms are read; impossible dates are not",
+      "ok": false,
+      "observed": [
+        "-----03-04",
+        "-----03-04",
+        "2026-03-04",
+        "2026-03-04",
+        "-----02-20"
+      ]
+    },
+    {
+      "id": "RP-040",
+      "area": "structure",
+      "feature": "sentence split protects \"Ex. A\" and \"sec. 4.2\"",
+      "ok": true,
+      "observed": [
+        "The contract (Ex. A, sec. 4.2) sets a date.",
+        "The receipt shows delivery."
+      ]
+    },
+    {
+      "id": "RP-041",
+      "area": "structure",
+      "feature": "the identifier of the thing decided and the decision date are not evidence",
+      "ok": true,
+      "observed": [
+        [],
+        [
+          "6 May:decision_date",
+          "CR-901:subject_reference"
+        ]
+      ]
+    },
+    {
+      "id": "RP-042",
+      "area": "structure",
+      "feature": "a decided quantity is a decision detail, not evidence",
+      "ok": true,
+      "observed": [
+        [],
+        [
+          "6 May:decision_date"
+        ]
+      ]
+    },
+    {
+      "id": "RP-043",
+      "area": "structure",
+      "feature": "a quantity in an evidential clause of a decision sentence is evidence",
+      "ok": false,
+      "observed": [
+        [],
+        []
+      ]
+    },
+    {
+      "id": "RP-044",
+      "area": "structure",
+      "feature": "an added conclusion without evidence is a visible gap",
+      "ok": true,
+      "observed": {
+        "requirement_visible": false,
+        "visible_gaps": [
+          "conclusion_without_identifiable_basis"
+        ],
+        "review_reasons": [],
+        "anchor": {
+          "index": 0,
+          "label": "preamble",
+          "role": "preamble",
+          "start": 0,
+          "end": 279,
+          "content_start": 0,
+          "content_end": 279
+        },
+        "explanation": "At least one conclusion has no identifiable evidence of its own."
+      }
+    },
+    {
+      "id": "RP-045",
+      "area": "structure",
+      "feature": "several decisions about different subjects each need their own evidence",
+      "ok": true,
+      "observed": {
+        "requirement_visible": false,
+        "visible_gaps": [
+          "conclusion_without_identifiable_basis"
+        ],
+        "review_reasons": [],
+        "anchor": {
+          "index": 0,
+          "label": "preamble",
+          "role": "preamble",
+          "start": 0,
+          "end": 147,
+          "content_start": 0,
+          "content_end": 147
+        },
+        "explanation": "At least one conclusion in the record has no identifiable evidence of its own."
+      }
+    },
+    {
+      "id": "RP-046",
+      "area": "applicability",
+      "feature": "expiry and compensating-control rules are not applied to study records",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-047",
+      "area": "applicability",
+      "feature": "a grounded probe record has no visible basis gap",
+      "ok": true,
+      "observed": [
+        [],
+        []
+      ]
+    },
+    {
+      "id": "RP-048",
+      "area": "guard",
+      "feature": "ORACLE on grounded: graph valid, guards hold, no status raised",
+      "ok": true,
+      "observed": {
+        "v": [],
+        "guards": [],
+        "raised": []
+      }
+    },
+    {
+      "id": "RP-049",
+      "area": "guard",
+      "feature": "ORACLE on authority-only: graph valid, guards hold, no status raised",
+      "ok": true,
+      "observed": {
+        "v": [],
+        "guards": [],
+        "raised": []
+      }
+    },
+    {
+      "id": "RP-050",
+      "area": "guard",
+      "feature": "ORACLE on restated: graph valid, guards hold, no status raised",
+      "ok": true,
+      "observed": {
+        "v": [],
+        "guards": [],
+        "raised": []
+      }
+    },
+    {
+      "id": "RP-051",
+      "area": "guard",
+      "feature": "OVERCLAIM on grounded: graph valid, guards hold, no status raised",
+      "ok": true,
+      "observed": {
+        "v": [],
+        "guards": [],
+        "raised": []
+      }
+    },
+    {
+      "id": "RP-052",
+      "area": "guard",
+      "feature": "OVERCLAIM on authority-only: graph valid, guards hold, no status raised",
+      "ok": true,
+      "observed": {
+        "v": [],
+        "guards": [],
+        "raised": []
+      }
+    },
+    {
+      "id": "RP-053",
+      "area": "guard",
+      "feature": "OVERCLAIM on restated: graph valid, guards hold, no status raised",
+      "ok": true,
+      "observed": {
+        "v": [],
+        "guards": [],
+        "raised": []
+      }
+    },
+    {
+      "id": "RP-054",
+      "area": "guard",
+      "feature": "UNDERCLAIM on grounded: graph valid, guards hold, no status raised",
+      "ok": true,
+      "observed": {
+        "v": [],
+        "guards": [],
+        "raised": []
+      }
+    },
+    {
+      "id": "RP-055",
+      "area": "guard",
+      "feature": "UNDERCLAIM on authority-only: graph valid, guards hold, no status raised",
+      "ok": true,
+      "observed": {
+        "v": [],
+        "guards": [],
+        "raised": []
+      }
+    },
+    {
+      "id": "RP-056",
+      "area": "guard",
+      "feature": "UNDERCLAIM on restated: graph valid, guards hold, no status raised",
+      "ok": true,
+      "observed": {
+        "v": [],
+        "guards": [],
+        "raised": []
+      }
+    },
+    {
+      "id": "RP-057",
+      "area": "guard",
+      "feature": "over-claiming candidate on the restated record is not CLEAR",
+      "ok": true,
+      "observed": "FLAG"
+    },
+    {
+      "id": "RP-058",
+      "area": "guard",
+      "feature": "instruction risk under the research profile routes every condition to review",
+      "ok": true,
+      "observed": [
+        "review_required",
+        "review_required",
+        "review_required",
+        "review_required",
+        "review_required"
+      ]
+    },
+    {
+      "id": "RP-059",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: no_authority_section",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-060",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: authority_source_not_identified",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-061",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: no_compensating_control_stated",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-062",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: no_stated_expiry_date",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-063",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: no_explicit_dates (research wording, no \"exception\")",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-064",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: no_locatable_conclusion (research wording, no \"exception\")",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-065",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: conclusion_without_traceable_basis",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-066",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: conclusion_without_basis",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-067",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: basis_without_conclusion",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-068",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: basis_states_no_reason_or_source",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-069",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: decision_date_conflict",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-070",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: impossible_sequence",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-071",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: authority_state_conflict",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-072",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: control_state_conflict",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-073",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: risk_state_conflict",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-074",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: cited_evidence_conflict",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-075",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: ambiguous_quotation",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-076",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: absent_quotation",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-077",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: assessment_after_decision",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-078",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: expiry_date_conflict",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-079",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: duration_date_conflict",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-080",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: no_dated_decision",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-081",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: certainty_language",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-082",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: no_identifiable_basis_evidence (research wording, no \"exception\")",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-083",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: authority_reference_without_linked_facts (research wording, no \"exception\")",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-084",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: conclusion_restated_as_basis (research wording, no \"exception\")",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-085",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: conclusion_without_stated_basis (research wording, no \"exception\")",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-086",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: conclusion_without_identifiable_basis (research wording, no \"exception\")",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-087",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: same_event_date_conflict (research wording, no \"exception\")",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-088",
+      "area": "template",
+      "feature": "control template builds and passes the neutrality check: decision_outcome_conflict (research wording, no \"exception\")",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "RP-089",
+      "area": "template",
+      "feature": "every control a research graph emits uses research wording (no \"exception\" wording) for research defects",
+      "ok": false,
+      "observed": []
+    }
+  ]
+}

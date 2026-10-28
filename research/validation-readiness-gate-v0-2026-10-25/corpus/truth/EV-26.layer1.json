@@ -1,0 +1,20 @@
+{
+  "record_sha256": "55a8ac61d28ff4dd0d60d226462f4d9215b7ea81ecd09a4f82fe4aec35e1533d",
+  "record_length": 714,
+  "case_id": "EV-26",
+  "layer": 1,
+  "title": "No compensating control; candidate proposes a gap",
+  "group": "protected_evaluation",
+  "parameter_set": "103",
+  "facts": [
+    "The controls section states \"None identified.\""
+  ],
+  "conditions_targeted": [
+    "sufficiency"
+  ],
+  "features": [
+    "incomplete_evidence_chain"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

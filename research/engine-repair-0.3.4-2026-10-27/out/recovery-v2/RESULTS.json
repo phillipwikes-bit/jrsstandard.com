@@ -1,0 +1,162 @@
+{
+  "results_format": "jrs-0.3.4-recovery/2.0.0",
+  "derived_from": "research/study-156-2026-10-27/post-freeze/recovery-tests-v1.1.mjs (HF-01 corrections kept)",
+  "network_attempts_parent": 0,
+  "totals": {
+    "tests": 13,
+    "passed": 13,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "RT-01",
+      "name": "an interrupted scored run leaves no results file; the same label is refused; a new label completes with the same graphs as run-1",
+      "ok": true,
+      "observed": {
+        "interrupted_dir_left": true,
+        "interrupted_results_left": false,
+        "same_label_exit": 2,
+        "new_label_exit": 0,
+        "digests_equal_to_run1": "1452/1452"
+      }
+    },
+    {
+      "id": "RT-02",
+      "name": "a corrupted record stops a scored run before execution (study corpus seal)",
+      "ok": true,
+      "observed": {
+        "exit": 3,
+        "problems": [
+          "study corpus: modified records/synthetic/S-050.txt"
+        ]
+      }
+    },
+    {
+      "id": "RT-03",
+      "name": "a corrupted mock candidate stops a scored run before execution (freeze seal)",
+      "ok": true,
+      "observed": {
+        "exit": 3,
+        "problems": [
+          "freeze: modified mocks-v2/ORACLE/S-001.json"
+        ]
+      }
+    },
+    {
+      "id": "RT-04",
+      "name": "an altered candidate file stops a scored run before execution and fails an unscored tool at isolation",
+      "ok": true,
+      "observed": {
+        "scored_exit": 3,
+        "scored_problems": [
+          "freeze: modified candidate/lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs"
+        ],
+        "probes_exit": 1,
+        "probes_error": "isolated_copy_mismatch:' + version + ':' + f); verified++; }"
+      }
+    },
+    {
+      "id": "RT-05",
+      "name": "a missing freeze seal stops a scored run and a variant run before execution",
+      "ok": true,
+      "observed": {
+        "exit": [
+          3,
+          3
+        ],
+        "problems": [
+          [
+            "freeze: seal missing"
+          ],
+          [
+            "freeze: seal missing"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "RT-06",
+      "name": "a corrupted variant file stops a variant run before execution",
+      "ok": true,
+      "observed": {
+        "exit": 3,
+        "problems": [
+          "freeze: modified variants-v2/VARIANTS_V2.jsonl",
+          "variants_file_hash_mismatch"
+        ]
+      }
+    },
+    {
+      "id": "RT-07",
+      "name": "provider configuration is refused: forbidden variable names and network keys are detected (synthetic objects; the process environment is not touched)",
+      "ok": true,
+      "observed": [
+        "forbidden_env_present:ANTHROPIC_BASE_URL",
+        "forbidden_env_present:ANTHROPIC_API_KEY",
+        "forbidden_env_present:OPENAI_BASE_URL",
+        "network_config_key:provider.base_url",
+        "network_config_value:provider.base_url."
+      ]
+    },
+    {
+      "id": "RT-08",
+      "name": "the network guard traps an outbound attempt before any connection and counts it",
+      "ok": true,
+      "observed": {
+        "threw": "network_blocked:fetch",
+        "attempts": 1
+      }
+    },
+    {
+      "id": "RT-09",
+      "name": "a duplicate scored label is refused before any work",
+      "ok": true,
+      "observed": {
+        "exit": 2
+      }
+    },
+    {
+      "id": "RT-10",
+      "name": "the offline transport suite passes in a fresh copy (journal corruption, resume, duplicates, budget, stale authorization)",
+      "ok": true,
+      "observed": {
+        "tests": 49,
+        "passed": 49,
+        "failed": 0
+      }
+    },
+    {
+      "id": "RT-11",
+      "name": "an altered study scoring file stops a scored run before execution (study freeze seal)",
+      "ok": true,
+      "observed": {
+        "exit": 3,
+        "problems": [
+          "study freeze: modified tools/scoring.mjs"
+        ]
+      }
+    },
+    {
+      "id": "RT-12",
+      "name": "an altered study freeze manifest stops a scored run before execution (pin and study seal)",
+      "ok": true,
+      "observed": {
+        "exit": 3,
+        "problems": [
+          "freeze: pin mismatch ../study-156-2026-10-27/seals/freeze/MANIFEST_SHA256.txt",
+          "study freeze: manifest hash mismatch"
+        ]
+      }
+    },
+    {
+      "id": "RT-13",
+      "name": "the live-preflight authorization draft is refused as written, and the transport ships with live dispatch disabled",
+      "ok": true,
+      "observed": {
+        "unsigned": true,
+        "refusal_reasons": 8,
+        "live_dispatch_disabled": true
+      }
+    }
+  ]
+}

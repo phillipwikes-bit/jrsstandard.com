@@ -1,0 +1,3153 @@
+{
+  "results_format": "jrs-0.3.4-differential/2.0.0",
+  "candidate": "0.3.4-research-candidate",
+  "date": "2026-10-28T00:36:29.671Z",
+  "method": "Full-graph comparison after normalizing version labels, compiler and pack hashes and the identifiers derived from them. No research profile is passed to the candidate.",
+  "engines": {
+    "0.3.2-candidate": {
+      "snapshot_sha256": "bfe9db78b0762e6d1d09283becb572a90b96b73d46642fefb42765d7d8460ae9",
+      "manifest_sha256": "2276bbc22e1e226220b471b27b793119d37ceb6e093a91d1ecbafae31a200f18",
+      "released": {
+        "unchanged": true,
+        "changed": [],
+        "deleted": true
+      }
+    },
+    "0.3.4-research-candidate": {
+      "snapshot_sha256": "67389f194a357dbbc0adc95d0e7bfb77e71db547ec8958bf56ca57b4d707d72d",
+      "manifest_sha256": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad",
+      "released": {
+        "unchanged": true,
+        "changed": [],
+        "deleted": true
+      }
+    }
+  },
+  "totals": {
+    "inputs": 310,
+    "by_family": {
+      "v0.3-fixture": 35,
+      "phase4-corpus": 50,
+      "phase4-stability": 24,
+      "phase6-library": 62,
+      "phase6-stability": 23,
+      "phase7-scenario": 50,
+      "v0-corpus": 60,
+      "correction-regression": 6
+    },
+    "identical": 310,
+    "different": [],
+    "errors_032": 0,
+    "errors_candidate": 0,
+    "graph_validation_failures_candidate": 0,
+    "research_key_present_without_profile": 0,
+    "intake": {
+      "proceed": 277,
+      "refuse": 30,
+      "escalate": 3
+    },
+    "network_attempts": 0
+  },
+  "results": [
+    {
+      "id": "GC-001",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-002",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-003",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-004",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-005",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-006",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-007",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-008",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "GC-009",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-010",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-011",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-012",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-013",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-014",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-015",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-016",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-017",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-018",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-019",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-020",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-021",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-022",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "GC-023",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "GC-024",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-025",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-026",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-027",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "GC-028",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "GC-029",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "GC-030",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "GC-031",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-032",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-033",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-034",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "GC-035",
+      "family": "v0.3-fixture",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-001",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-002",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-003",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-004",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-005",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-006",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-007",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-008",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-009",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-010",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-011",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-012",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-013",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-014",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-015",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-016",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-017",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-018",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-019",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-020",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-021",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-022",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-023",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-024",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-025",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-026",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-027",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-028",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-029",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-030",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-031",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "escalate"
+    },
+    {
+      "id": "AR-032",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-033",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-034",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-035",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-036",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-037",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-038",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-039",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-040",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-041",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "AR-042",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "AR-043",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "AR-044",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-045",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-046",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-047",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-048",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "AR-049",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "AR-050",
+      "family": "phase4-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-01",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-02",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-03",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-04",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-05",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-06",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-07",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-08",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-09",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-10",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-11",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-12",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "ST-13",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-14",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "ST-15",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "ST-16",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "LB-01",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "LB-02",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "LB-03",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "LB-04",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "LB-05",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "LB-06",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "LB-07",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "LB-08",
+      "family": "phase4-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CC-01",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CC-02",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CC-03",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CC-04",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CC-05",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CC-06",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-01",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-02",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-03",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-04",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-05",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-06",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-07",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-08",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-09",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-CH-10",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-01",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-02",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-03",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-04",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-05",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-06",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-07",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-08",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-09",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-10",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-EQ-11",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-IN-01",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-IN-02",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-IN-03",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-IN-04",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-IN-05",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-RT-01",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-RT-02",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-RT-03",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-RT-04",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-RT-05",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-RT-06",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-RT-07",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-RT-08",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-01",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-02",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-03",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-04",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-05",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-06",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-07",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-08",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-09",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SP-10",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SU-01",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SU-02",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SU-03",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SU-04",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SU-05",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SU-06",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SU-07",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-SU-08",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "escalate"
+    },
+    {
+      "id": "P6-XD-01",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P6-XD-02",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P6-XD-03",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P6-XD-04",
+      "family": "phase6-library",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P6-ST-01",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-02",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-03",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-27",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P6-ST-04",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-05",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-06",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P6-ST-07",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-08",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-09",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-10",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-11",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-12",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-13",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-14",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-15",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-16",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-17",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P6-ST-18",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P6-ST-19",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-20",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-21",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P6-ST-22",
+      "family": "phase6-stability",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-01",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-02",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-03",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-04",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-05",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-06",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-07",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-08",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-09",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-10",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-11",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-12",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-13",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-14",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-15",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CHR-16",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CON-01",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CON-02",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CON-03",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CON-04",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CON-05",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-CON-06",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-EVL-01",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-EVL-02",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-EVL-03",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-EVL-04",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-EVL-05",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-EVL-06",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-EVL-07",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-EVL-08",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-NEG-01",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-NEG-02",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-NEG-03",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-NEG-04",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-NEG-05",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-NEG-06",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-NEG-07",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-NEG-08",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-R07-01",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-R07-02",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-R07-03",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-R07-04",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-R07-05",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-R07-06",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-SCO-01",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P7-SCO-02",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P7-SCO-03",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-SCO-04",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "P7-SCO-05",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "P7-SCO-06",
+      "family": "phase7-scenario",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "V0:ADV-01",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-02",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-03",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-04",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-05",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-06",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-07",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-08",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-09",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "V0:ADV-10",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "V0:ADV-11",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-12",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-13",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-14",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-15",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-16",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-17",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-18",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-19",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:ADV-20",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-01",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-02",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-03",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-04",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-05",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-06",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-07",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-08",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-09",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-10",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-11",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-12",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-13",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-14",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-15",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-16",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-17",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-18",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-19",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-20",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-21",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-22",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-23",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-24",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-25",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-26",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-27",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-28",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-29",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-30",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-31",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-32",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-33",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-34",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-35",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-36",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "V0:EV-37",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "V0:EV-38",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "refuse"
+    },
+    {
+      "id": "V0:EV-39",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "escalate"
+    },
+    {
+      "id": "V0:EV-40",
+      "family": "v0-corpus",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "RC:RC-01",
+      "family": "correction-regression",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "RC:RC-02",
+      "family": "correction-regression",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "RC:RC-03",
+      "family": "correction-regression",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "RC:RC-04",
+      "family": "correction-regression",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "RC:RC-05",
+      "family": "correction-regression",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    },
+    {
+      "id": "RC:RC-06",
+      "family": "correction-regression",
+      "identical_after_normalization": true,
+      "error_032": null,
+      "error_033": null,
+      "graph_validation_033": [],
+      "research_profile_key_absent": true,
+      "intake": "proceed"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "envelope": {
+    "status": "ok",
+    "stop_reason": "end_turn",
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"contract_version\": \"jrs-engine-local-0.3.0-evidence-graph\",\n  \"prompt_version\": \"jrs-engine-local-0.3.3-research/prompt-1\",\n  \"observations\": [\n    {\n      \"observation_id\": \"R1\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"The Change Advisory Board approved change request CR-2291 on 6 March\",\n      \"assertion_type\": \"stated_decision\"\n    },\n    {\n      \"observation_id\": \"R2\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"after the rollback rehearsal passed (test report TR-118, 4 March)\",\n      \"assertion_type\": \"stated_rationale\"\n    },\n    {\n      \"observation_id\": \"R3\",\n      \"condition_id\": \"identifiable_basis\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"rehearsal passed (test report TR-118, 4 March)\",\n      \"assertion_type\": \"stated_source_reference\"\n    },\n    {\n      \"observation_id\": \"R4\",\n      \"condition_id\": \"chronology_integrity\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"approved change request CR-2291 on 6 March\",\n      \"assertion_type\": \"stated_date\"\n    },\n    {\n      \"observation_id\": \"R5\",\n      \"condition_id\": \"chronology_integrity\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"rehearsal passed (test report TR-118, 4 March)\",\n      \"assertion_type\": \"stated_date\"\n    },\n    {\n      \"observation_id\": \"R6\",\n      \"condition_id\": \"reasoning_traceability\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"after the rollback rehearsal passed (test report TR-118, 4 March)\",\n      \"assertion_type\": \"stated_rationale\"\n    },\n    {\n      \"observation_id\": \"R7\",\n      \"condition_id\": \"sufficiency\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"rehearsal passed (test report TR-118, 4 March)\",\n      \"assertion_type\": \"stated_source_reference\"\n    }\n  ]\n}"
+      }
+    ],
+    "model": "MOCK-POLICY-OVERCLAIM-R-NOT-A-MODEL",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "provenance": {
+    "response_origin": "mock_policy_fixture",
+    "policy": "OVERCLAIM-R",
+    "generator": "tools/mock-candidates.mjs",
+    "reference_used": {
+      "e1": "UNGROUNDED",
+      "chronology_conflict": false
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "record_type": "jrs-phase8-2-corrected-isolated-replay/1.0.0",
+  "status_lines": [
+    "LOCAL ENGINEERING MATERIAL ONLY",
+    "INDEPENDENT EVALUATION NOT AUTHORIZED OR CONDUCTED",
+    "NO_GO_NOT_VERIFIED REMAINS IN EFFECT"
+  ],
+  "scope": "Phase 8 after the Phase 8.2 admission correction, before any Phase 9 admission",
+  "date": "2026-10-20",
+  "environment": "temporary git clone outside the repository at 428c307 plus the recorded Phase 6, Phase 7 and corrected Phase 8 files only (each matched to its hash; clone untracked set equal to the planned set)",
+  "files": 83,
+  "result": "474/474",
+  "failed": 0,
+  "output_sha256": "sha256:f6387ca89e5dfaa54529b5cbee5707a06da36165ab980593acf1dd2d75816033",
+  "temporary_copy_deleted": true
+}

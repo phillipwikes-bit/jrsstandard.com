@@ -1,0 +1,1 @@
+Release decision record. Two releases were considered on 19 September. Release 5.2 was authorized because regression run RS-5208 passed all 1,412 tests. Release 5.3 was held back because its regression run RS-5301 failed 14 tests. The two releases have separate tickets.

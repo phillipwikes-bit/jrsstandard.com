@@ -1,0 +1,1 @@
+Control test record, backup restoration. The backup restoration control was rated effective on 5 July under section 7 of the Internal Audit Methodology. Section 7 explains how control ratings are assigned. The rating is recorded in the audit file.

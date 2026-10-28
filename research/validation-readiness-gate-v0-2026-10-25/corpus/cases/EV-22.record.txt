@@ -1,0 +1,10 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL.
+Record type: Supplier access exception draft (fictional)
+Exception ID: EXC-2026-104
+Supplier: Juniper Fictional Couriers (fictional)
+Requested by: Mailroom coordination team; request received 2026-06-01.
+Decision: Exception granted for read-only access to the parcel tracking viewer.
+Decision basis: Granted although the supplier does not need write access, based on assessment RA-2026-40 completed 2026-06-03.
+Authority: Approved by the Exception Review Board, minutes ERB-2026-19, item 4, on 2026-06-08.
+Compensating controls: Access limited to read-only views; sessions require multi-factor authentication.
+Expiry and renewal: Access expires 2026-09-30; renewal requires a fresh assessment.

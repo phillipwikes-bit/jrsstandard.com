@@ -1,0 +1,26 @@
+{
+  "envelope": {
+    "status": "ok",
+    "stop_reason": "end_turn",
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"contract_version\": \"jrs-engine-local-0.3.0-evidence-graph\",\n  \"prompt_version\": \"jrs-engine-local-0.3.0/prompt-1\",\n  \"observations\": [\n    {\n      \"observation_id\": \"M1\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"Work order WO-3381 was raised to priority 1 on 9 May on the strength of that survey\",\n      \"assertion_type\": \"stated_decision\"\n    },\n    {\n      \"observation_id\": \"M2\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"Building survey BS-204 was carried out on 9 May and measured leakage of 2 litres per hour above the archive store\",\n      \"assertion_type\": \"stated_rationale\"\n    },\n    {\n      \"observation_id\": \"M3\",\n      \"condition_id\": \"identifiable_basis\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"Building survey BS-204 was carried out on 9 May and measured leakage of 2 litres per hour above the archive store\",\n      \"assertion_type\": \"stated_source_reference\"\n    },\n    {\n      \"observation_id\": \"M4\",\n      \"condition_id\": \"chronology_integrity\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"Building survey BS-204 was carried out on 9 May and measured leakage of 2 litres per hour above the archive store\",\n      \"assertion_type\": \"stated_date\"\n    },\n    {\n      \"observation_id\": \"M5\",\n      \"condition_id\": \"chronology_integrity\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"Work order WO-3381 was raised to priority 1 on 9 May on the strength of that survey\",\n      \"assertion_type\": \"stated_date\"\n    },\n    {\n      \"observation_id\": \"M6\",\n      \"condition_id\": \"reasoning_traceability\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"Building survey BS-204 was carried out on 9 May and measured leakage of 2 litres per hour above the archive store\",\n      \"assertion_type\": \"stated_rationale\"\n    },\n    {\n      \"observation_id\": \"M7\",\n      \"condition_id\": \"sufficiency\",\n      \"proposed_status\": \"review_required\",\n      \"quote\": \"Building survey BS-204 was carried out on 9 May and measured leakage of 2 litres per hour above the archive store\",\n      \"assertion_type\": \"stated_source_reference\"\n    }\n  ]\n}"
+      }
+    ],
+    "model": "MOCK-POLICY-ORACLE-default-NOT-A-MODEL",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "provenance": {
+    "response_origin": "mock_policy_fixture",
+    "policy": "ORACLE-default",
+    "generator": "tools/mock-candidates.mjs",
+    "reference_used": {
+      "e1": "GROUNDED",
+      "chronology_conflict": true
+    }
+  }
+}

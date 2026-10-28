@@ -1,0 +1,734 @@
+{
+  "generated_at": "2026-10-19T11:13:53.182Z",
+  "command": "node tests/engine-reliability/run.mjs --record",
+  "node": "v22.22.0",
+  "network_attempts": 0,
+  "repository_head": "428c307af510ff7378615777251fe252dab2dac7",
+  "total": 64,
+  "killed": 64,
+  "survived": 0,
+  "load_failures": 0,
+  "setup_errors": 0,
+  "probes": 80,
+  "results": [
+    {
+      "id": "MU-01",
+      "file": "differ.mjs",
+      "area": "limitation removal detection",
+      "description": "else if (x.limitation_kinds.some((k) => !y.limitation_kinds.includes(k)))",
+      "result": "killed",
+      "killed_by": [
+        "d.limitation_kind_loss_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-02",
+      "file": "differ.mjs",
+      "area": "limitation removal detection",
+      "description": "if (x.limitation_present && !y.limitation_present)",
+      "result": "killed",
+      "killed_by": [
+        "d.limitation_absent_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-03",
+      "file": "differ.mjs",
+      "area": "limitation removal detection",
+      "description": "if (x.review_routed === true && y.review_routed !== true)",
+      "result": "killed",
+      "killed_by": [
+        "d.review_route_removed_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-04",
+      "file": "differ.mjs",
+      "area": "refusal-loss detection",
+      "description": "for (const code of a.refusal_codes) if (!b.refusal_codes.includes(code))",
+      "result": "killed",
+      "killed_by": [
+        "d.refusal_loss_fails_closed",
+        "d.quote_refusal_loss_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-05",
+      "file": "differ.mjs",
+      "area": "refusal-loss detection",
+      "description": "add(QUOTE_CODES.test(code) ? 'quote_or_span_integrity_defect' : 'scope_boundary_defect', '",
+      "result": "killed",
+      "killed_by": [
+        "d.quote_refusal_loss_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-06",
+      "file": "differ.mjs",
+      "area": "refusal-loss detection",
+      "description": "if (stop(a.gate) && !stop(b.gate)) add('scope_boundary_defect'",
+      "result": "killed",
+      "killed_by": [
+        "d.gate_refuse_to_proceed_scope_defect"
+      ]
+    },
+    {
+      "id": "MU-07",
+      "file": "differ.mjs",
+      "area": "refusal-loss detection",
+      "description": "if (a.candidate_valid === false && b.candidate_valid !== false) add('scope_boundary_defect",
+      "result": "killed",
+      "killed_by": [
+        "d.candidate_refusal_lost_scope_defect"
+      ]
+    },
+    {
+      "id": "MU-08",
+      "file": "differ.mjs",
+      "area": "refusal-loss detection",
+      "description": "if (a.instruction_risk === 'detected' && b.instruction_risk !== 'detected') add('scope_bou",
+      "result": "killed",
+      "killed_by": [
+        "d.instruction_detection_lost_scope_defect"
+      ]
+    },
+    {
+      "id": "MU-09",
+      "file": "differ.mjs",
+      "area": "favorable-transition detection",
+      "description": "if (LOW_STATES.includes(x.status)) addFC(",
+      "result": "killed",
+      "killed_by": [
+        "d.low_to_favorable_fails_closed",
+        "d.manifest_drift_detected"
+      ]
+    },
+    {
+      "id": "MU-10",
+      "file": "differ.mjs",
+      "area": "favorable-transition detection",
+      "description": "if (rb > ra) {",
+      "result": "killed",
+      "killed_by": [
+        "d.low_to_favorable_fails_closed",
+        "d.gap_to_supported_routes_review",
+        "d.manifest_drift_detected"
+      ]
+    },
+    {
+      "id": "MU-11",
+      "file": "differ.mjs",
+      "area": "favorable-transition detection",
+      "description": "y.evidence_trail < 1) addFC",
+      "result": "killed",
+      "killed_by": [
+        "d.supported_without_trail_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-12",
+      "file": "differ.mjs",
+      "area": "favorable-transition detection",
+      "description": "else add('favorable_transition_requiring_human_review', c + ' ' + x.status",
+      "result": "killed",
+      "killed_by": [
+        "d.gap_to_supported_routes_review"
+      ]
+    },
+    {
+      "id": "MU-13",
+      "file": "differ.mjs",
+      "area": "quote and offset integrity",
+      "description": "add(ex.offsets_recomputed || ex.quote_changes ? 'presentation_only' : 'quote_or_span_integ",
+      "result": "killed",
+      "killed_by": [
+        "d.offset_change_unexplained_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-14",
+      "file": "differ.mjs",
+      "area": "quote and offset integrity",
+      "description": "add(ex.quote_changes ? 'presentation_only' : 'quote_or_span_integrity_defect', 'quotation ",
+      "result": "killed",
+      "killed_by": [
+        "d.quote_text_change_unexplained_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-15",
+      "file": "differ.mjs",
+      "area": "quote and offset integrity",
+      "description": "else addFC('quote_or_span_integrity_defect', 'quotation ' + k + ' became usable",
+      "result": "killed",
+      "killed_by": [
+        "d.quote_becomes_usable_unexplained_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-16",
+      "file": "differ.mjs",
+      "area": "hash integrity",
+      "description": "if (hb.behaviour_hash !== b.behaviour_hash || hb.offset_hash !== b.offset_hash) add(",
+      "result": "killed",
+      "killed_by": [
+        "d.tampered_hash_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-17",
+      "file": "differ.mjs",
+      "area": "version mismatch",
+      "description": "if (!ok) add('unknown_comparison_state', 'version mismatch",
+      "result": "killed",
+      "killed_by": [
+        "d.version_mismatch_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-18",
+      "file": "differ.mjs",
+      "area": "version mismatch",
+      "description": "if (a.package !== b.package) add(",
+      "result": "killed",
+      "killed_by": [
+        "d.package_mismatch_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-19",
+      "file": "differ.mjs",
+      "area": "malformed comparison inputs",
+      "description": "if (pa.length || pb.length) {",
+      "result": "killed",
+      "killed_by": [
+        "d.malformed_input_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-20",
+      "file": "differ.mjs",
+      "area": "malformed comparison inputs",
+      "description": "if (!x || !y) { add('unknown_comparison_state', 'condition '",
+      "result": "killed",
+      "killed_by": [
+        "d.missing_condition_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-22",
+      "file": "differ.mjs",
+      "area": "differential classifications",
+      "description": "if (findings.some((f) => f.fail_closed)) return 'fail_closed';",
+      "result": "killed",
+      "killed_by": [
+        "d.limitation_kind_loss_fails_closed",
+        "d.limitation_absent_fails_closed",
+        "d.review_route_removed_fails_closed",
+        "d.refusal_loss_fails_closed",
+        "d.quote_refusal_loss_fails_closed",
+        "d.low_to_favorable_fails_closed",
+        "d.supported_without_trail_fails_closed",
+        "d.offset_change_unexplained_fails_closed",
+        "d.quote_text_change_unexplained_fails_closed",
+        "d.quote_becomes_usable_unexplained_fails_closed",
+        "d.gate_refuse_to_proceed_scope_defect",
+        "d.instruction_detection_lost_scope_defect",
+        "d.candidate_refusal_lost_scope_defect",
+        "d.version_mismatch_fails_closed",
+        "d.package_mismatch_fails_closed",
+        "d.malformed_input_fails_closed",
+        "d.missing_condition_fails_closed",
+        "d.tampered_hash_fails_closed",
+        "d.release_status_change_scope_defect",
+        "d.manifest_incomplete_fails_closed",
+        "d.manifest_drift_detected"
+      ]
+    },
+    {
+      "id": "MU-23",
+      "file": "differ.mjs",
+      "area": "differential classifications",
+      "description": "fail_closed: FAIL_CLOSED_CLASSES.includes(cls), route:",
+      "result": "killed",
+      "killed_by": [
+        "d.limitation_kind_loss_fails_closed",
+        "d.limitation_absent_fails_closed",
+        "d.review_route_removed_fails_closed",
+        "d.refusal_loss_fails_closed",
+        "d.quote_refusal_loss_fails_closed",
+        "d.offset_change_unexplained_fails_closed",
+        "d.quote_text_change_unexplained_fails_closed",
+        "d.gate_refuse_to_proceed_scope_defect",
+        "d.instruction_detection_lost_scope_defect",
+        "d.candidate_refusal_lost_scope_defect",
+        "d.version_mismatch_fails_closed",
+        "d.package_mismatch_fails_closed",
+        "d.malformed_input_fails_closed",
+        "d.missing_condition_fails_closed",
+        "d.tampered_hash_fails_closed",
+        "d.release_status_change_scope_defect"
+      ]
+    },
+    {
+      "id": "MU-24",
+      "file": "differ.mjs",
+      "area": "differential classifications",
+      "description": "add(has(ex.expected_degradation, c) ? 'expected_safe_degradation' : 'unexpected_behavioral",
+      "result": "killed",
+      "killed_by": [
+        "d.degradation_unexplained_review"
+      ]
+    },
+    {
+      "id": "MU-25",
+      "file": "differ.mjs",
+      "area": "differential classifications",
+      "description": "add(has(ex.expected_refusal, code) || ex.expected_refusal === true ? 'expected_refusal' : ",
+      "result": "killed",
+      "killed_by": [
+        "d.refusal_gained_classified"
+      ]
+    },
+    {
+      "id": "MU-26",
+      "file": "differ.mjs",
+      "area": "differential classifications",
+      "description": "add(ex.structure_change ? 'presentation_only' : 'unexpected_behavioral_change', 'graph or ",
+      "result": "killed",
+      "killed_by": [
+        "d.structure_change_classified"
+      ]
+    },
+    {
+      "id": "MU-27",
+      "file": "differ.mjs",
+      "area": "differential classifications",
+      "description": "if (b.release_status !== a.release_status || (b.release_status && b.release_status !== REL",
+      "result": "killed",
+      "killed_by": [
+        "d.release_status_change_scope_defect"
+      ]
+    },
+    {
+      "id": "MU-28",
+      "file": "differ.mjs",
+      "area": "differential classifications",
+      "description": "return { scenario_id: id, findings: [], verdict: 'no_behavioral_difference', applies_chang",
+      "result": "killed",
+      "killed_by": [
+        "d.never_applies"
+      ]
+    },
+    {
+      "id": "MU-29",
+      "file": "differ.mjs",
+      "area": "differential classifications",
+      "description": "const ex = ctx.explanation || {};",
+      "result": "killed",
+      "killed_by": [
+        "d.inputs_not_mutated"
+      ]
+    },
+    {
+      "id": "MU-30",
+      "file": "differ.mjs",
+      "area": "malformed comparison inputs",
+      "description": "for (const k of ia.keys()) if (!ib.has(k)) top.push(",
+      "result": "killed",
+      "killed_by": [
+        "d.manifest_incomplete_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-31",
+      "file": "differ.mjs",
+      "area": "hash integrity",
+      "description": "if (!manifestHashValid(m)) return side + ' manifest hash does not match its content';",
+      "result": "killed",
+      "killed_by": [
+        "d.manifest_hash_tamper_fails_closed"
+      ]
+    },
+    {
+      "id": "MU-32",
+      "file": "differ.mjs",
+      "area": "version mismatch",
+      "description": "if (m.baseline_format_version !== BASELINE_FORMAT_VERSION) return",
+      "result": "killed",
+      "killed_by": [
+        "d.manifest_format_checked"
+      ]
+    },
+    {
+      "id": "MU-33",
+      "file": "register.mjs",
+      "area": "hash-chain integrity",
+      "description": "if (e.prev_hash !== prev) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "r.rewritten_entry_breaks_chain",
+        "r.deleted_entry_breaks_chain",
+        "r.reordered_entries_break_chain"
+      ]
+    },
+    {
+      "id": "MU-34",
+      "file": "register.mjs",
+      "area": "hash-chain integrity",
+      "description": "if (e.entry_hash !== entryHash(e)) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "r.edited_entry_detected"
+      ]
+    },
+    {
+      "id": "MU-35",
+      "file": "register.mjs",
+      "area": "hash-chain integrity",
+      "description": "return String(after).startsWith(String(before)) &&",
+      "result": "killed",
+      "killed_by": [
+        "r.append_only_detects_rewrite"
+      ]
+    },
+    {
+      "id": "MU-36",
+      "file": "register.mjs",
+      "area": "scenario provenance",
+      "description": "for (const re of PERSONAL) if (re.test(text)) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "r.personal_data_refused"
+      ]
+    },
+    {
+      "id": "MU-37",
+      "file": "register.mjs",
+      "area": "hash-chain integrity",
+      "description": "if (ids.has(e.entry_id)) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "r.duplicate_id_detected"
+      ]
+    },
+    {
+      "id": "MU-38",
+      "file": "register.mjs",
+      "area": "scenario provenance",
+      "description": "const w = findForbiddenStatusWord(text); if (w) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "r.forbidden_status_word_refused"
+      ]
+    },
+    {
+      "id": "MU-39",
+      "file": "register.mjs",
+      "area": "hash-chain integrity",
+      "description": "if (e.supersedes && !ids.has(e.supersedes)) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "r.supersedes_must_be_earlier"
+      ]
+    },
+    {
+      "id": "MU-40",
+      "file": "library.mjs",
+      "area": "scenario provenance",
+      "description": "if (typeof s.record_text !== 'string' || !s.record_text.startsWith(SYNTHETIC_MARKER)) p.pu",
+      "result": "killed",
+      "killed_by": [
+        "l.marker_required"
+      ]
+    },
+    {
+      "id": "MU-41",
+      "file": "library.mjs",
+      "area": "scenario provenance",
+      "description": "if (s.provenance_note !== PROVENANCE_NOTE) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "l.provenance_required"
+      ]
+    },
+    {
+      "id": "MU-42",
+      "file": "library.mjs",
+      "area": "scenario provenance",
+      "description": "if (!Array.isArray(s.predicted_failure) || !s.predicted_failure.length) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "l.known_failure_needs_prediction"
+      ]
+    },
+    {
+      "id": "MU-43",
+      "file": "library.mjs",
+      "area": "scenario provenance",
+      "description": "else if (!new RegExp('^P6-' + cat.prefix + '-\\\\d{2}$').test(String(s.scenario_id))) p.push",
+      "result": "killed",
+      "killed_by": [
+        "l.category_prefix_required"
+      ]
+    },
+    {
+      "id": "MU-44",
+      "file": "library.mjs",
+      "area": "scenario provenance",
+      "description": "for (const re of PERSONAL) if (typeof s.record_text === 'string' && re.test(s.record_text)",
+      "result": "killed",
+      "killed_by": [
+        "l.personal_data_refused"
+      ]
+    },
+    {
+      "id": "MU-45",
+      "file": "library.mjs",
+      "area": "scenario provenance",
+      "description": "expected: s.expected, predicted_failure:",
+      "result": "killed",
+      "killed_by": [
+        "l.seal_detects_expectation_edit"
+      ]
+    },
+    {
+      "id": "MU-46",
+      "file": "library.mjs",
+      "area": "scenario provenance",
+      "description": "record_sha: hashOf(s.record_text),",
+      "result": "killed",
+      "killed_by": [
+        "l.seal_detects_record_edit"
+      ]
+    },
+    {
+      "id": "MU-47",
+      "file": "library.mjs",
+      "area": "scenario provenance",
+      "description": "if (evaluatorSha !== undefined && seal.evaluator_sha256 !== evaluatorSha) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "l.seal_detects_evaluator_change"
+      ]
+    },
+    {
+      "id": "MU-48",
+      "file": "library.mjs",
+      "area": "favorable-transition detection",
+      "description": "if (!(RANK[statusOf(g, c)] <= RANK[s])) P.push(",
+      "result": "killed",
+      "killed_by": [
+        "l.ceiling_enforced",
+        "l.known_failure_reproduced",
+        "l.known_failure_prediction_checked"
+      ]
+    },
+    {
+      "id": "MU-49",
+      "file": "library.mjs",
+      "area": "differential classifications",
+      "description": "result = predictedObserved(g, s.predicted_failure) ? 'known_open_failure_reproduced' : 'un",
+      "result": "killed",
+      "killed_by": [
+        "l.known_failure_prediction_checked"
+      ]
+    },
+    {
+      "id": "MU-50",
+      "file": "library.mjs",
+      "area": "differential classifications",
+      "description": "else if (!mismatches.length) result = 'known_open_failure_not_reproduced';",
+      "result": "killed",
+      "killed_by": [
+        "l.known_failure_not_reproduced_routed"
+      ]
+    },
+    {
+      "id": "MU-51",
+      "file": "library.mjs",
+      "area": "limitation removal detection",
+      "description": "if (!f.limitation_present || f.limitation_count !== 1) V.push('U2 '",
+      "result": "killed",
+      "killed_by": [
+        "l.universal_duplicate_limitation_detected"
+      ]
+    },
+    {
+      "id": "MU-52",
+      "file": "library.mjs",
+      "area": "limitation removal detection",
+      "description": "if (!f.review_routed) V.push('U3 '",
+      "result": "killed",
+      "killed_by": [
+        "l.universal_review_route_required"
+      ]
+    },
+    {
+      "id": "MU-53",
+      "file": "library.mjs",
+      "area": "refusal-loss detection",
+      "description": "if (g.intake.decision !== 'proceed' && Object.values(rec.conditions).some((f) => f.status ",
+      "result": "killed",
+      "killed_by": [
+        "l.universal_no_assessment_after_refusal"
+      ]
+    },
+    {
+      "id": "MU-54",
+      "file": "library.mjs",
+      "area": "favorable-transition detection",
+      "description": "if (rec.conditions.sufficiency && rec.conditions.sufficiency.status === 'supported') V.pus",
+      "result": "killed",
+      "killed_by": [
+        "l.universal_sufficiency_never_supported"
+      ]
+    },
+    {
+      "id": "MU-55",
+      "file": "library.mjs",
+      "area": "limitation removal detection",
+      "description": "if (g.record_instruction_risk === 'detected' && f.status !== 'not_assessed' && !f.limitati",
+      "result": "killed",
+      "killed_by": [
+        "l.universal_instruction_limitation"
+      ]
+    },
+    {
+      "id": "MU-56",
+      "file": "library.mjs",
+      "area": "favorable-transition detection",
+      "description": "if (['supported', 'gap'].includes(f.status) && f.evidence_trail < 1) V.push(",
+      "result": "killed",
+      "killed_by": [
+        "l.universal_evidence_trail"
+      ]
+    },
+    {
+      "id": "MU-57",
+      "file": "library.mjs",
+      "area": "refusal-loss detection",
+      "description": "if (x.gate !== undefined && g.intake.decision !== x.gate) P.push(",
+      "result": "killed",
+      "killed_by": [
+        "l.expected_gate_checked"
+      ]
+    },
+    {
+      "id": "MU-58",
+      "file": "baseline.mjs",
+      "area": "limitation removal detection",
+      "description": "export function limitationKindsV03(text) { return V03_KINDS.filter(([, t]) => String(text ",
+      "result": "killed",
+      "killed_by": [
+        "d.limitation_kind_loss_fails_closed",
+        "l.known_failure_reproduced",
+        "l.known_failure_not_reproduced_routed",
+        "l.universal_clean_graph_has_none",
+        "b.limitation_kinds_v03",
+        "s.real_invariant_passes"
+      ]
+    },
+    {
+      "id": "MU-59",
+      "file": "baseline.mjs",
+      "area": "quote and offset integrity",
+      "description": "for (const q of Object.values(behaviour.quotes || {})) { delete q.start; delete q.end; }\n ",
+      "result": "killed",
+      "killed_by": [
+        "d.identical_no_difference",
+        "d.limitation_kind_loss_fails_closed",
+        "d.limitation_absent_fails_closed",
+        "d.review_route_removed_fails_closed",
+        "d.quote_refusal_loss_fails_closed",
+        "d.low_to_favorable_fails_closed",
+        "d.gap_to_supported_routes_review",
+        "d.offset_change_unexplained_fails_closed",
+        "d.offset_change_explained_presentation",
+        "d.quote_text_change_unexplained_fails_closed",
+        "d.quote_text_change_explained_presentation",
+        "d.quote_becomes_usable_unexplained_fails_closed",
+        "d.degradation_unexplained_review",
+        "d.degradation_explained_expected",
+        "d.refusal_gained_classified",
+        "d.instruction_detection_lost_scope_defect",
+        "d.version_change_recorded_allowed",
+        "d.release_status_change_scope_defect",
+        "d.structure_change_classified",
+        "d.manifest_identical_no_difference",
+        "b.behaviour_hash_excludes_offsets",
+        "s.real_invariant_passes"
+      ]
+    },
+    {
+      "id": "MU-60",
+      "file": "baseline.mjs",
+      "area": "favorable-transition detection",
+      "description": "e.to.startsWith('as:')).length",
+      "result": "killed",
+      "killed_by": [
+        "d.gap_to_supported_routes_review",
+        "d.supported_without_trail_fails_closed",
+        "d.offset_change_explained_presentation",
+        "d.quote_text_change_explained_presentation",
+        "d.degradation_unexplained_review",
+        "d.structure_change_classified",
+        "l.known_failure_reproduced",
+        "l.known_failure_not_reproduced_routed",
+        "l.universal_clean_graph_has_none",
+        "b.evidence_trail_counted",
+        "s.real_invariant_passes"
+      ]
+    },
+    {
+      "id": "MU-61",
+      "file": "baseline.mjs",
+      "area": "differential classifications",
+      "description": "if (knownOpenFailures[rec.scenario_id]) return",
+      "result": "killed",
+      "killed_by": [
+        "b.known_failure_precedence"
+      ]
+    },
+    {
+      "id": "MU-62",
+      "file": "baseline.mjs",
+      "area": "differential classifications",
+      "description": "if (['refuse', 'escalate'].includes(rec.gate)) return",
+      "result": "killed",
+      "killed_by": [
+        "b.refusal_class"
+      ]
+    },
+    {
+      "id": "MU-63",
+      "file": "stability.mjs",
+      "area": "differential classifications",
+      "description": "if (t.kind === 'invariant' && !(t.expected.verdict_in && t.expected.verdict_in.every((v) =",
+      "result": "killed",
+      "killed_by": [
+        "s.invariant_requires_invariant_verdict"
+      ]
+    },
+    {
+      "id": "MU-64",
+      "file": "stability.mjs",
+      "area": "differential classifications",
+      "description": "if (t.kind === 'invariant' && t.damage) p.push(",
+      "result": "killed",
+      "killed_by": [
+        "s.damage_cannot_be_invariant"
+      ]
+    },
+    {
+      "id": "MU-65",
+      "file": "stability.mjs",
+      "area": "differential classifications",
+      "description": "if (x.verdict_in && !x.verdict_in.includes(diff.verdict)) P.push(",
+      "result": "killed",
+      "killed_by": [
+        "s.invariant_degradation_flagged"
+      ]
+    }
+  ]
+}

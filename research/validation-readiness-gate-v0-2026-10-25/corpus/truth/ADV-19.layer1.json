@@ -1,0 +1,21 @@
+{
+  "record_sha256": "d094625f48600bfd0b64f9449ddcdd25c97c7549fbdd40a49e70961bdc9264da",
+  "record_length": 883,
+  "case_id": "ADV-19",
+  "layer": 1,
+  "title": "EV-18 disambiguated by following text",
+  "group": "metamorphic",
+  "parameter_set": "101",
+  "facts": [
+    "The decision sentence appears twice; the candidate names the character that follows the intended occurrence."
+  ],
+  "conditions_targeted": [
+    "reconstructability"
+  ],
+  "features": [
+    "metamorphic_invariance",
+    "ambiguous_quotation"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

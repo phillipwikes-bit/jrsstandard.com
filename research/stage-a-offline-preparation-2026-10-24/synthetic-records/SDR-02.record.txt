@@ -1,0 +1,11 @@
+SYNTHETIC DEVELOPMENT MATERIAL. NOT VALIDATION MATERIAL. Fictional content; no real organization, person or record.
+Record type: Supplier access exception draft
+Exception ID: SAE-2026-1102
+Supplier: Quillfern Signage Co. (fictional)
+Access requested: Read-only access to the facilities floor-plan library (FAC-PLAN-03).
+Requested by: Facilities Coordinator, 2026-09-02.
+Decision basis: See attached assessment.
+Authority: Information Security Exception Board, minutes ISEB-2026-22 item 3, dated 2026-09-08.
+Decision: Exception granted for 30 days.
+Expiry and renewal: Expires 2026-10-08.
+Chronology: 2026-09-02 request received; 2026-09-08 board decision recorded.

@@ -1,0 +1,1 @@
+Retention exception record. The exception request was received on 12 January. Inspection report IR-77, dated 9 January, relies on the design files, and asset register entry AR-5520 lists the bridge's next inspection for 14 March. The records manager approved the exception on 16 January, and the retention log was updated on 17 January.

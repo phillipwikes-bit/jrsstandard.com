@@ -1,0 +1,1 @@
+Change approval record. Change request CR-2291, the reporting database upgrade, was approved on 6 March. The board approved it because the change met the standard for approval. Since the upgrade was judged acceptable, approval was the appropriate outcome, and the minutes record that the change was approved.

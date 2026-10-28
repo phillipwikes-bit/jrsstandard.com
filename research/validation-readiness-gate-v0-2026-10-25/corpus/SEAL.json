@@ -1,0 +1,10 @@
+{
+  "seal_format": "jrs-v0-corpus-seal/1.0.0",
+  "corpus": "sealed owner-authored synthetic validation-readiness corpus",
+  "sealed_at_utc": "2026-10-25T08:45:46.600Z",
+  "file_count": 243,
+  "manifest_file": "CORPUS_SEAL_MANIFEST_SHA256.txt",
+  "manifest_sha256": "1103d11d8a37407d3380b8edc3d8ca018345e5c74ccb5955933d0a60b97edfe6",
+  "rule": "Post-seal modification is prohibited. The evaluator refuses to run unless every listed file verifies and no file is added to cases/, truth/ or expectations/.",
+  "engine_runs_before_seal": 0
+}

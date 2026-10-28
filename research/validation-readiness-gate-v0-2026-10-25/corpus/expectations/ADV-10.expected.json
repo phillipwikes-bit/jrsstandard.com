@@ -1,0 +1,30 @@
+{
+  "case_id": "ADV-10",
+  "expectation_authority": "owner-authored specification (AI-assisted drafting); not ground truth",
+  "adapter": {
+    "outcome": "REPLAYED"
+  },
+  "graph": {
+    "intake_decision": "refuse",
+    "statuses": {
+      "reconstructability": "not_assessed",
+      "identifiable_basis": "not_assessed",
+      "chronology_integrity": "not_assessed",
+      "reasoning_traceability": "not_assessed",
+      "sufficiency": "not_assessed"
+    },
+    "conflict_kinds": [],
+    "refusal_codes": [
+      "record_exceeds_local_size_limit"
+    ],
+    "quote_statuses": {},
+    "instruction_risk": "not_detected",
+    "required_span_origins": [],
+    "execution_mode": "local_mocked",
+    "provider_calls": 0,
+    "network_calls": 0,
+    "human_review_route": "documentation_quality_reviewer"
+  },
+  "metamorphic_of": null,
+  "semantic_questions": []
+}

@@ -1,0 +1,437 @@
+{
+  "results_format": "jrs-study-156-transport-tests/1.0.0",
+  "sender_version": "0.3.0-study-offline",
+  "live_dispatch_enabled": false,
+  "network_attempts": 0,
+  "totals": {
+    "tests": 49,
+    "passed": 49,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "T01",
+      "name": "request body has the model, a user turn last, thinking disabled at medium effort, and no sampling or fallback fields",
+      "ok": true,
+      "observed": [
+        "model",
+        "max_tokens",
+        "system",
+        "messages",
+        "thinking",
+        "output_config"
+      ]
+    },
+    {
+      "id": "T02",
+      "name": "a body carrying temperature, top_p, top_k or fallbacks is refused before any fetch",
+      "ok": true,
+      "observed": [
+        "forbidden_body_field:temperature",
+        "forbidden_body_field:top_p",
+        "forbidden_body_field:top_k",
+        "forbidden_body_field:fallbacks"
+      ]
+    },
+    {
+      "id": "T03",
+      "name": "thinking disabled with effort xhigh or max is refused (provider 400 avoided)",
+      "ok": true,
+      "observed": [
+        "thinking_disabled_requires_effort_high_or_below",
+        "thinking_disabled_requires_effort_high_or_below"
+      ]
+    },
+    {
+      "id": "T04",
+      "name": "headers: anthropic-version 2026-10-21, x-api-key from the injected value, JSON content type; nothing else",
+      "ok": true,
+      "observed": [
+        "content-type",
+        "x-api-key",
+        "anthropic-version"
+      ]
+    },
+    {
+      "id": "T05",
+      "name": "destination allow-list refuses every other protocol, host, port, path, query and userinfo",
+      "ok": true,
+      "observed": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "T06",
+      "name": "a refused destination never reaches fetch",
+      "ok": true,
+      "observed": "destination_host_not_allowed"
+    },
+    {
+      "id": "T07",
+      "name": "fetch is called with redirect \"error\", POST, and an abort signal",
+      "ok": true,
+      "observed": {
+        "redirect": "error",
+        "method": "POST"
+      }
+    },
+    {
+      "id": "T08",
+      "name": "429 with retry-after is retried after the stated delay, then succeeds",
+      "ok": true,
+      "observed": {
+        "r": "ok",
+        "waits": [
+          3000
+        ]
+      }
+    },
+    {
+      "id": "T09",
+      "name": "529 and 500 are retried with exponential backoff and stop after two retries",
+      "ok": true,
+      "observed": {
+        "r": "http_529",
+        "calls": 3,
+        "waits": [
+          1000,
+          2000
+        ]
+      }
+    },
+    {
+      "id": "T10",
+      "name": "400, 401, 403, 404 and 413 are never retried",
+      "ok": true,
+      "observed": [
+        "http_400_not_retryable:1",
+        "http_401_not_retryable:1",
+        "http_403_not_retryable:1",
+        "http_404_not_retryable:1",
+        "http_413_not_retryable:1"
+      ]
+    },
+    {
+      "id": "T11",
+      "name": "a refusal (200, stop_reason refusal) is final: no retry and no other model",
+      "ok": true,
+      "observed": "model_refusal"
+    },
+    {
+      "id": "T12",
+      "name": "stop_reason max_tokens is final and classified response_truncated",
+      "ok": true,
+      "observed": "response_truncated"
+    },
+    {
+      "id": "T13",
+      "name": "network errors are retried and end as network_error with no billing recorded",
+      "ok": true,
+      "observed": {
+        "r": "network_error",
+        "spent": 0
+      }
+    },
+    {
+      "id": "T14",
+      "name": "a timeout aborts the attempt, is retried, and is counted at the worst-case cost",
+      "ok": true,
+      "observed": {
+        "r": "ok",
+        "timeout_cost": 0.0041023
+      }
+    },
+    {
+      "id": "T15",
+      "name": "cancellation before send: no fetch",
+      "ok": true,
+      "observed": "cancelled_before_send"
+    },
+    {
+      "id": "T16",
+      "name": "cancellation in flight: the attempt is aborted, counted at worst case, and never resent",
+      "ok": true,
+      "observed": {
+        "r": "cancelled",
+        "calls": 1
+      }
+    },
+    {
+      "id": "T17",
+      "name": "cancellation during backoff stops further attempts",
+      "ok": true,
+      "observed": {
+        "r": "cancelled",
+        "calls": 1
+      }
+    },
+    {
+      "id": "T18",
+      "name": "a retry-after beyond the allowed window ends the request instead of waiting",
+      "ok": true,
+      "observed": "retry_after_beyond_window"
+    },
+    {
+      "id": "T19",
+      "name": "cost from usage on the standard card: 1,200 in and 800 out = $0.00052",
+      "ok": true,
+      "observed": 0.00052
+    },
+    {
+      "id": "T20",
+      "name": "cost on the long-prompt card above 100,000 prompt tokens, cache tokens included",
+      "ok": true,
+      "observed": {
+        "c": 0.0485,
+        "exp": 0.0485
+      }
+    },
+    {
+      "id": "T21",
+      "name": "budget exhaustion is decided before the request: no fetch once the worst case would exceed the budget",
+      "ok": true,
+      "observed": "budget_exhausted"
+    },
+    {
+      "id": "T22",
+      "name": "the request cap refuses the next request",
+      "ok": true,
+      "observed": "request_cap_reached"
+    },
+    {
+      "id": "T23",
+      "name": "spend accumulates in the journal from reported usage",
+      "ok": true,
+      "observed": 0.00104
+    },
+    {
+      "id": "T24",
+      "name": "a captured request id is never sent again",
+      "ok": true,
+      "observed": "duplicate_request_id"
+    },
+    {
+      "id": "T25",
+      "name": "resume after an interruption: a request left \"sent\" without a capture is not resent automatically",
+      "ok": true,
+      "observed": "ambiguous_prior_send_requires_review"
+    },
+    {
+      "id": "T26",
+      "name": "resume after an interruption: a request left only \"prepared\" is sent normally",
+      "ok": true,
+      "observed": "ok"
+    },
+    {
+      "id": "T27",
+      "name": "a corrupted journal refuses to load (hash chain)",
+      "ok": true,
+      "observed": "journal_corrupt"
+    },
+    {
+      "id": "T28",
+      "name": "an intact journal reloads and keeps its state",
+      "ok": true,
+      "observed": "captured"
+    },
+    {
+      "id": "T29",
+      "name": "captures are write-once",
+      "ok": true,
+      "observed": "capture_exists_write_once"
+    },
+    {
+      "id": "T30",
+      "name": "a capture never contains the credential value or request headers",
+      "ok": true,
+      "observed": [
+        "request_id",
+        "record_id",
+        "status",
+        "response_headers",
+        "response_body",
+        "captured_at_utc",
+        "sender_version",
+        "body_sha256"
+      ]
+    },
+    {
+      "id": "T31",
+      "name": "a response echoing the credential value is refused by the capture sink",
+      "ok": true,
+      "observed": "credential_value_in_capture"
+    },
+    {
+      "id": "T32",
+      "name": "a credential-shaped string in a response is refused",
+      "ok": true,
+      "observed": "credential_shaped_value_in_capture"
+    },
+    {
+      "id": "T33",
+      "name": "only the listed response headers are kept",
+      "ok": true,
+      "observed": {
+        "request-id": "req_1",
+        "anthropic-ratelimit-requests-remaining": "9"
+      }
+    },
+    {
+      "id": "T34",
+      "name": "a complete, current authorization verifies (reference case)",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "T35",
+      "name": "stale authorization (expired) is refused",
+      "ok": true,
+      "observed": [
+        "authorization_expired_or_invalid_expiry"
+      ]
+    },
+    {
+      "id": "T36",
+      "name": "the spent Stage A authorization can never authorize the study",
+      "ok": true,
+      "observed": [
+        "authorization_spent_or_superseded:STAGE-A-AUTH-20261025-01"
+      ]
+    },
+    {
+      "id": "T37",
+      "name": "a different model is refused",
+      "ok": true,
+      "observed": [
+        "model_identifier_differs_from_frozen_value",
+        "request_model_differs_from_authorization"
+      ]
+    },
+    {
+      "id": "T38",
+      "name": "an incompatible candidate version or manifest is refused",
+      "ok": true,
+      "observed": [
+        "candidate_manifest_sha256_differs_from_frozen_value"
+      ]
+    },
+    {
+      "id": "T39",
+      "name": "a record outside the authorized set is refused",
+      "ok": true,
+      "observed": [
+        "record_not_in_authorized_set"
+      ]
+    },
+    {
+      "id": "T40",
+      "name": "a credential variable name the SDK reads by itself is refused",
+      "ok": true,
+      "observed": [
+        "credential_variable_name_reserved_by_sdk"
+      ]
+    },
+    {
+      "id": "T41",
+      "name": "a value instead of a variable name is refused",
+      "ok": true,
+      "observed": [
+        "credential_field_must_be_a_variable_name"
+      ]
+    },
+    {
+      "id": "T42",
+      "name": "a request that would exceed the budget is refused",
+      "ok": true,
+      "observed": [
+        "budget_would_be_exceeded"
+      ]
+    },
+    {
+      "id": "T43",
+      "name": "an authorization altered after hashing is refused (integrity)",
+      "ok": true,
+      "observed": [
+        "authorization_integrity_mismatch"
+      ]
+    },
+    {
+      "id": "T44",
+      "name": "the live gate refuses in this build even with a valid authorization; the credential resolver and fetch are never called",
+      "ok": true,
+      "observed": "live_dispatch_not_enabled_in_this_build"
+    },
+    {
+      "id": "T45",
+      "name": "provider-routing variable names are detected (synthetic env object; the process environment is not touched)",
+      "ok": true,
+      "observed": [
+        "ANTHROPIC_BASE_URL",
+        "ANTHROPIC_API_KEY"
+      ]
+    },
+    {
+      "id": "T46",
+      "name": "text is read by block type; empty thinking blocks are counted and ignored",
+      "ok": true,
+      "observed": {
+        "ok": true,
+        "text": "{\"a\":1}",
+        "usage": {
+          "input_tokens": 1200,
+          "output_tokens": 800
+        },
+        "thinking_blocks": 1
+      }
+    },
+    {
+      "id": "T47",
+      "name": "two text blocks, or a tool_use block, are rejected (S5)",
+      "ok": true,
+      "observed": [
+        "unexpected_content_blocks",
+        "unexpected_content_blocks"
+      ]
+    },
+    {
+      "id": "T48",
+      "name": "refusal, truncation, empty text, oversize text and a model mismatch are classified, not repaired",
+      "ok": true,
+      "observed": [
+        "model_refusal",
+        "response_truncated",
+        "empty_response",
+        "response_too_large",
+        "model_identifier_mismatch",
+        "provider_error"
+      ]
+    },
+    {
+      "id": "T49",
+      "name": "pairing refuses a capture whose hash, request id, sender version or frozen request body differs",
+      "ok": true,
+      "observed": {
+        "good": [],
+        "badHash": [
+          "capture_hash_mismatch"
+        ],
+        "badVer": [
+          "sender_version_incompatible"
+        ],
+        "badBody": [
+          "request_body_differs_from_frozen_request"
+        ],
+        "badCand": [
+          "candidate_version_incompatible"
+        ]
+      }
+    }
+  ]
+}

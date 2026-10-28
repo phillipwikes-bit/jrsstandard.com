@@ -1,0 +1,1 @@
+Transaction review. The flagged activity was reviewed and determined to be consistent with normal customer behavior. No suspicious indicators were present, and the activity aligns with expectations. The alert is closed with no further action required.

@@ -1,0 +1,1 @@
+Control test record, backup restoration. The backup restoration control is rated effective. It earns that rating because it operates effectively, and it is regarded as operating effectively because it has been rated effective.

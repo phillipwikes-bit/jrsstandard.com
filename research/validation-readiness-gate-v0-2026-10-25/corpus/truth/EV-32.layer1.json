@@ -1,0 +1,21 @@
+{
+  "record_sha256": "ac49738e49f977c6a0224f43901d8f2460a30b8bbd2e43e7079753ca3cab0dcb",
+  "record_length": 773,
+  "case_id": "EV-32",
+  "layer": 1,
+  "title": "Two different dates cited for one chronology assertion type",
+  "group": "protected_evaluation",
+  "parameter_set": "104",
+  "facts": [
+    "The record is internally consistent; the candidate cites the request date and the expiry date, both as stated_date."
+  ],
+  "conditions_targeted": [
+    "chronology_integrity"
+  ],
+  "features": [
+    "over_refusal_trap",
+    "review_routing_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

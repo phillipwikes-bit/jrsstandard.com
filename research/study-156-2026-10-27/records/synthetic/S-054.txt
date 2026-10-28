@@ -1,0 +1,1 @@
+Release decision record. Release 5.2 of the scheduling application was authorized on 19 September under section 2.3 of the Release Management Procedure. Section 2.3 governs minor releases. The authorization is noted on the release calendar.

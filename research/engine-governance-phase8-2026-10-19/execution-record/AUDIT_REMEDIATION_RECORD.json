@@ -1,0 +1,64 @@
+{
+  "record_type": "Phase 8 harness remediation after read-only audit finding",
+  "date": "2026-10-19",
+  "execution_mode": "local, synthetic, offline",
+  "audit_finding": {
+    "disposition": "AUDIT FINDING: targeted rework required before owner review",
+    "weakened": "Process-execution check: cp.exec(...) and child_process.exec(...) were detected by the original pattern and not by the corrected pattern.",
+    "pre_existing_gaps": [
+      "execFile, execFileSync (non-git), fork and destructured aliases were never detected",
+      "provider environment access, provider key names and provider SDK imports were never detected",
+      "neither check named the violating file or rule"
+    ],
+    "record_inaccuracies": [
+      "\"still forbid the same things\" (EXECUTION_RECORD.md) was inaccurate",
+      "MUTATION_TEST_RECORD.md cited mutation evidence generated 2026-10-19T15:22:36.141Z, superseded by the equivalent final-run record generated 2026-10-19T15:23:13.477Z"
+    ]
+  },
+  "authorization": "Owner instruction in session: repair both harness safeguards, add direct isolated probes, correct the records, rerun the mutation group and suite, and perform a final isolated audit.",
+  "changes": {
+    "tests/engine-governance-phase8/harness-scan.mjs": "new: static process-execution and provider scanners; every finding names file and rule",
+    "tests/engine-governance-phase8/run.mjs": "the two safety checks call the scanners and report file and rule; the self-matching PROVIDER_RE line removed",
+    "tests/engine-governance-phase8/probes.mjs": "24 direct harness probes (h.*) and 12 harness mutations MG-26 to MG-37"
+  },
+  "process_rules": [
+    "EXEC-NAMESPACE-IMPORT",
+    "EXEC-DEFAULT-IMPORT",
+    "EXEC-REQUIRE",
+    "EXEC-MODULE-MEMBER",
+    "EXEC-MEMBER-CALL",
+    "EXEC-BARE-CALL",
+    "EXEC-NAMED-IMPORT",
+    "EXEC-ALIASED-IMPORT",
+    "EXEC-DESTRUCTURE",
+    "EXEC-HOLDER-ACCESS",
+    "EXEC-DYNAMIC-IMPORT",
+    "EXEC-NON-GIT-EXECFILESYNC",
+    "NET-FETCH",
+    "NET-URL"
+  ],
+  "process_permitted": [
+    "regular-expression .exec(",
+    "named import of execFileSync used with the literal git as first argument"
+  ],
+  "provider_rules": [
+    "PROV-MODEL-ID",
+    "PROV-KEY",
+    "PROV-KEY-NAME",
+    "PROV-ENDPOINT",
+    "PROV-ENV-ACCESS",
+    "PROV-SDK-IMPORT",
+    "PROV-SPLIT:<rule> (string-concatenated forms)"
+  ],
+  "limitations": [
+    "module names assembled at run time, eval and Function constructors, and computed access on values received from another module are not detected",
+    "the process scanner covers lib/engine-governance-phase8/ only; the replay tool starts the earlier suites by design"
+  ],
+  "mutation_authoring_defect": "In the first mutation run after the remediation, MG-33, MG-34 and MG-36 failed to load because their replacement text left an unbalanced parenthesis. None survived. The three definitions were corrected and the full group rerun with every mutation caught directly.",
+  "not_changed": [
+    "lib/engine-governance-phase8/",
+    "earlier packages and their tests",
+    "compatibility conditions CPC-01 to CPC-04",
+    "tracked files, public routes, deployment, PR #40, B-018, trackers, branches"
+  ]
+}

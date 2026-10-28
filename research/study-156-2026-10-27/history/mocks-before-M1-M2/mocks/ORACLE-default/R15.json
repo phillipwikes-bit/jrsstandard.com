@@ -1,0 +1,26 @@
+{
+  "envelope": {
+    "status": "ok",
+    "stop_reason": "end_turn",
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"contract_version\": \"jrs-engine-local-0.3.0-evidence-graph\",\n  \"prompt_version\": \"jrs-engine-local-0.3.0/prompt-1\",\n  \"observations\": [\n    {\n      \"observation_id\": \"M1\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"Quarterly access reviews are performed and provide reasonable assurance that terminated users are removed in a timely manner and that privileged access is limited to authorized personnel\",\n      \"assertion_type\": \"stated_decision\"\n    },\n    {\n      \"observation_id\": \"M2\",\n      \"condition_id\": \"identifiable_basis\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"Quarterly access reviews are performed and provide reasonable assurance that terminated users are removed in a timely manner and that privileged access is limited to authorized personnel\",\n      \"assertion_type\": \"stated_authority\"\n    },\n    {\n      \"observation_id\": \"M3\",\n      \"condition_id\": \"chronology_integrity\",\n      \"proposed_status\": \"not_assessed\",\n      \"quote\": null,\n      \"assertion_type\": \"stated_date\"\n    },\n    {\n      \"observation_id\": \"M4\",\n      \"condition_id\": \"reasoning_traceability\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"Quarterly access reviews are performed and provide reasonable assurance that terminated users are removed in a timely manner and that privileged access is limited to authorized personnel\",\n      \"assertion_type\": \"stated_rationale\"\n    },\n    {\n      \"observation_id\": \"M5\",\n      \"condition_id\": \"sufficiency\",\n      \"proposed_status\": \"gap\",\n      \"quote\": \"Quarterly access reviews are performed and provide reasonable assurance that terminated users are removed in a timely manner and that privileged access is limited to authorized personnel\",\n      \"assertion_type\": \"stated_source_reference\"\n    }\n  ]\n}"
+      }
+    ],
+    "model": "MOCK-POLICY-ORACLE-default-NOT-A-MODEL",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "provenance": {
+    "response_origin": "mock_policy_fixture",
+    "policy": "ORACLE-default",
+    "generator": "tools/mock-candidates.mjs",
+    "reference_used": {
+      "e1": "UNGROUNDED",
+      "chronology_conflict": false
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "record_sha256": "f7bf221dcdd077599fca18af814c8d405a022de752685bcc77c6b078bcd41139",
+  "record_length": 627,
+  "case_id": "EV-08",
+  "layer": 1,
+  "title": "Missing decision basis section",
+  "group": "protected_evaluation",
+  "parameter_set": "101",
+  "facts": [
+    "The Decision basis section is absent.",
+    "A decision and an identified authority are present.",
+    "The candidate cites the decision text for reasoning traceability."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "reasoning_traceability",
+    "identifiable_basis"
+  ],
+  "features": [
+    "missing_decision_basis",
+    "review_routing_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

@@ -1,0 +1,29 @@
+{
+  "candidate_version": "0.3.2-candidate",
+  "pack_id": "RPK-ECR",
+  "pack_version": "1.0.0",
+  "purpose": "Cited-evidence conflict scoping by event role (owner decision V0-02, finding U-04 / EV-32).",
+  "rules": [
+    {
+      "rule_id": "RP-CON-02",
+      "purpose": "Address V0 finding U-04 (EV-32): two cited dates of different event roles were flagged as a cited-evidence conflict on a consistent record.",
+      "trigger": "In detector K6, for stated_date and stated_expiry quotations only: when both quotations overlap an explicitly dated event clause with exactly one role, and the two roles differ, the pair is not compared. An unknown role on either side keeps the comparison. stated_decision is unchanged.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Roles come from the lexical dated-event extraction; a quotation outside any dated clause, or overlapping clauses of two roles, keeps the 0.3.1 behaviour.",
+      "false_positive_risk": "Two genuinely conflicting dates mislabelled with different roles by the lexical extractor would no longer be flagged by K6 (record-level detectors K1, K2, RP-CHR-02 still apply).",
+      "linked_scenarios": [
+        "V0 EV-32",
+        "RC-01",
+        "RC-02",
+        "RC-03",
+        "RC-04",
+        "RC-05"
+      ],
+      "owner_decision_for_expansion": "Any widening beyond date and expiry assertions, or any change to role assignment, requires a recorded owner decision and a new sealed scenario set."
+    }
+  ],
+  "signature": {
+    "method": "sha256-canonical-content-seal",
+    "content_sha256": "sha256:25725c12811b30589a23109f2e3245b05afeb1d6e793a1cebcf25c337e0f8cb3"
+  }
+}

@@ -1,0 +1,546 @@
+{
+  "statement": "Predicted before candidate logic existed, by an independent implementation of each rule trigger over frozen v0.3 helpers and output. Outcomes follow REMEDIATION_CONTRACT.md.",
+  "existing_inputs": 194,
+  "triggered": 23,
+  "changes": [
+    {
+      "id": "GC-004",
+      "family": "v0.3-fixture",
+      "rules": [
+        "RP-CHR-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "assessment_after_decision"
+      ]
+    },
+    {
+      "id": "AR-009",
+      "family": "phase4-corpus",
+      "rules": [
+        "RP-CHR-04"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "duration_date_conflict"
+      ]
+    },
+    {
+      "id": "AR-010",
+      "family": "phase4-corpus",
+      "rules": [
+        "RP-CHR-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "assessment_after_decision"
+      ]
+    },
+    {
+      "id": "AR-011",
+      "family": "phase4-corpus",
+      "rules": [
+        "RP-CHR-02"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "expiry_date_conflict"
+      ]
+    },
+    {
+      "id": "AR-025",
+      "family": "phase4-corpus",
+      "rules": [
+        "RP-CON-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "control_state_conflict"
+      ]
+    },
+    {
+      "id": "ST-06",
+      "family": "phase4-stability",
+      "rules": [
+        "RP-EVL-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": []
+    },
+    {
+      "id": "ST-14",
+      "family": "phase4-stability",
+      "rules": [
+        "RP-SCO-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "refuse",
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "conflicts_gained": []
+    },
+    {
+      "id": "LB-02",
+      "family": "phase4-stability",
+      "rules": [
+        "RP-CHR-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "assessment_after_decision"
+      ]
+    },
+    {
+      "id": "P6-CH-02",
+      "family": "phase6-library",
+      "rules": [
+        "RP-CHR-04"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "duration_date_conflict"
+      ]
+    },
+    {
+      "id": "P6-CH-06",
+      "family": "phase6-library",
+      "rules": [
+        "RP-CHR-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "assessment_after_decision"
+      ]
+    },
+    {
+      "id": "P6-CH-07",
+      "family": "phase6-library",
+      "rules": [
+        "RP-CHR-02"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "expiry_date_conflict"
+      ]
+    },
+    {
+      "id": "P6-CH-09",
+      "family": "phase6-library",
+      "rules": [
+        "RP-CHR-03"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": []
+    },
+    {
+      "id": "P6-CH-10",
+      "family": "phase6-library",
+      "rules": [
+        "RP-CHR-04"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "duration_date_conflict"
+      ]
+    },
+    {
+      "id": "P6-RT-07",
+      "family": "phase6-library",
+      "rules": [
+        "RP-STR-01"
+      ],
+      "v03_statuses": null,
+      "base_error": true
+    },
+    {
+      "id": "P6-SP-02",
+      "family": "phase6-library",
+      "rules": [
+        "RP-EVL-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": []
+    },
+    {
+      "id": "P6-SP-04",
+      "family": "phase6-library",
+      "rules": [
+        "RP-EVL-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": []
+    },
+    {
+      "id": "P6-SP-06",
+      "family": "phase6-library",
+      "rules": [
+        "RP-EVL-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": []
+    },
+    {
+      "id": "P6-SP-07",
+      "family": "phase6-library",
+      "rules": [
+        "RP-NEG-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "review_required",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": []
+    },
+    {
+      "id": "P6-SU-07",
+      "family": "phase6-library",
+      "rules": [
+        "RP-CON-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "control_state_conflict"
+      ]
+    },
+    {
+      "id": "P6-XD-03",
+      "family": "phase6-library",
+      "rules": [
+        "RP-SCO-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "refuse",
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "conflicts_gained": []
+    },
+    {
+      "id": "P6-ST-12",
+      "family": "phase6-stability",
+      "rules": [
+        "RP-CHR-03"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": []
+    },
+    {
+      "id": "P6-ST-14",
+      "family": "phase6-stability",
+      "rules": [
+        "RP-CHR-04"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "proceed",
+      "statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "review_required",
+        "chronology_integrity": "review_required",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "conflicts_gained": [
+        "duration_date_conflict"
+      ]
+    },
+    {
+      "id": "P6-ST-17",
+      "family": "phase6-stability",
+      "rules": [
+        "RP-SCO-01"
+      ],
+      "v03_statuses": {
+        "reconstructability": "supported",
+        "identifiable_basis": "supported",
+        "chronology_integrity": "supported",
+        "reasoning_traceability": "supported",
+        "sufficiency": "review_required"
+      },
+      "gate": "refuse",
+      "statuses": {
+        "reconstructability": "not_assessed",
+        "identifiable_basis": "not_assessed",
+        "chronology_integrity": "not_assessed",
+        "reasoning_traceability": "not_assessed",
+        "sufficiency": "not_assessed"
+      },
+      "conflicts_gained": []
+    }
+  ]
+}

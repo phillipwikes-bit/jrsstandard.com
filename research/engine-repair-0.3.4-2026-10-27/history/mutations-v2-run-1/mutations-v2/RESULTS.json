@@ -1,0 +1,1839 @@
+{
+  "results_format": "jrs-0.3.4-mutations/2.0.0",
+  "target_files": {
+    "R": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+    "C": "lib/engine-evidence-graph-v0.3.4-research-candidate/compiler.mjs"
+  },
+  "retired_study_mutants": {
+    "MU-23": "the 0.3.3 noReason line is replaced; ported as MU-23-p",
+    "MU-24": "ported as MU-24-p"
+  },
+  "baseline": {
+    "dev_summary": {
+      "flag_on_ungrounded": 49,
+      "flag_on_grounded": 15,
+      "clear_on_ungrounded": 0,
+      "question_checks_passed": 96,
+      "technical_failures": 0
+    },
+    "research_probes_failed": 0,
+    "regression_probes_failed": 0,
+    "paired_failures": 0
+  },
+  "network_attempts": 0,
+  "totals": {
+    "mutants": 66,
+    "valid": 66,
+    "invalid": 0,
+    "killed_by_tests": 49,
+    "killed_by_dev_labels": 17,
+    "killed_any": 55,
+    "survived": 9,
+    "survived_equivalent": 2,
+    "killed_only_by_change": 4
+  },
+  "note": "Kill rates measure how much of the research code the tests exercise. They are not accuracy.",
+  "results": [
+    {
+      "id": "MU-01-p",
+      "kind": "defect_reintroduction",
+      "target": "D1",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "2b40325bc80498594a3712a596db0f0a779f5e3c6ceb1a61636ac9a1e5322720",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-01:D1"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 4,
+      "mutated_sha256": "687006b277a1a82b4bb2991a8e433af6a7e88dbdc1bb47b3bc67edb589897616"
+    },
+    {
+      "id": "MU-02-p",
+      "kind": "defect_reintroduction",
+      "target": "D9",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "fbdc45fbda4d27376bffd0a4d56255af2713d7c4d770c16f92ff49b262fa0a88",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-15:D9"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 4,
+      "mutated_sha256": "f3cf0b451f56cae7cd604519d1c69135643310a0c69e747b1f0ea65baa0872b6"
+    },
+    {
+      "id": "MU-03-p",
+      "kind": "defect_reintroduction",
+      "target": "D2",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "d35b1d1ac4a3102ec031511aee620e8588e3cf55514a7c6385d53780a3e287c7",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-02:D2"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 18,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 4,
+      "mutated_sha256": "e4bcb35a548321128b59c75bf39f3e463263655230cd7c0bf7b6cbc034c6567b"
+    },
+    {
+      "id": "MU-04-p",
+      "kind": "defect_reintroduction",
+      "target": "D3",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "e0f06992fbbe891fea46925bf36f857b702c306ba592f3914397c2d24bfaa814",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-26:MU-04 (D3)"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "2760df0e367ef6096e4c6e714576244a7a18a976e376e208d159631578934ab5"
+    },
+    {
+      "id": "MU-05-p",
+      "kind": "defect_reintroduction",
+      "target": "D3",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "dadd7060c9e6c8f7ba2ea67e92b51f63174d981d0a11e3113ba5b938d1740320",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-04:D3"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "25812ebd8cc508234188fb1454980c51d600daedc0f70942667d66b636620cdb"
+    },
+    {
+      "id": "MU-06-p",
+      "kind": "defect_reintroduction",
+      "target": "D4",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "26a07d185a873f6a8c0d35c4fc995749b7e50e5f2e0f965c6d730508f7a2865a",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-05:D4"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "5ae64919ceb6d4249ca1855f71ed39d44d31f8602bba9f736c6a784dcb6d8c70"
+    },
+    {
+      "id": "MU-07-p",
+      "kind": "defect_reintroduction",
+      "target": "D5",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "b4ac7c0ae7f8989378e1a0a7567a1302cb3cd3fa73ff8f1ebeb0386df33204b6",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-06:D5",
+        "RG-07:D5",
+        "RG-08:D5"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 37,
+        "flag_on_grounded": 9,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 80,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 32,
+      "mutated_sha256": "712e1dced19bf6745a118cb11c3c5194601a447c42e8b600797e62ee6a23e6a2"
+    },
+    {
+      "id": "MU-08-p",
+      "kind": "defect_reintroduction",
+      "target": "D6",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "db64ecebb47d52a3135afeb80adcafda5946c833f26c0001472a8e3de2d3f285",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-10:D6",
+        "RG-25:D18"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 92,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 8,
+      "mutated_sha256": "7be459b15d91e5292915531955460ce901514ae5d6ad83a60503c9f8a13b17da"
+    },
+    {
+      "id": "MU-09-p",
+      "kind": "defect_reintroduction",
+      "target": "D7",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "8947d4888d784867ec47c54a4a99cd9e06eb5a8ad2d8eaa431db5a2d6e122b9c",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-27:MU-09 (D7)"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "f61d20e687af5aa7d925db43bf6be47b94f8bdc0ce80db0f4871f5ca29e2301e"
+    },
+    {
+      "id": "MU-10-p",
+      "kind": "defect_reintroduction",
+      "target": "D8",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "6f3a86e4bfafe9269079a8b3c08703fbc6bcbff711044c4cd5c1805c36d49447",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-28:MU-10 (D8)"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "802750611b5ffed67aec8e2cc01050644986df2505b9357d3ed3194ae5136fab"
+    },
+    {
+      "id": "MU-11-p",
+      "kind": "defect_reintroduction",
+      "target": "D10",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "633b3aab5c72da11b2e7f631624f2c9ff4bc87503e8fba0f9a34c18ecb0d7217",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-16:D10"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 46,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 92,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 4,
+      "mutated_sha256": "be39e571feead7fe62bca42ac2d5ccce155e1d2791a026d23b89496be931c76f"
+    },
+    {
+      "id": "MU-12-p",
+      "kind": "defect_reintroduction",
+      "target": "D11",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "ea7da43a9d336b4bd6d9fae3a679eb7685da9599692e120f84a67305db1eec04",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-17:D11"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 4,
+      "mutated_sha256": "259553f1c1346be9a42837867daf0764f60a1ec4641f27c99035c234624e8ed9"
+    },
+    {
+      "id": "MU-13-p",
+      "kind": "defect_reintroduction",
+      "target": "D13",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "d0e791296757ced753268be8b456cdc804df45342c1a5ea7a3ce12cb2e555d57",
+      "status": "killed",
+      "killed_by": [
+        "paired",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [
+        "S-019:evidence_removed:CLEAR"
+      ],
+      "paired_failure_count": 1,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 28,
+      "mutated_sha256": "317dc125ad8d7528ec76b050a28a25d3b14e8645777a1305b68bc2827b8fec11"
+    },
+    {
+      "id": "MU-14-p",
+      "kind": "defect_reintroduction",
+      "target": "D14",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "b91dd30245940d8c1d3da4b232947a31d25c65945616f39c9c498ece1c9ccf73",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-21:D14"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "5955afd5cf737b5680c322bae68a3b3fd12ee260f380614f486065babe2f256a"
+    },
+    {
+      "id": "MU-15-p",
+      "kind": "defect_reintroduction",
+      "target": "D15",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "b06184e5fb17079609ed308edc3afa34daf67b9e6de92dd04b1c54ecf0b33f1f",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [
+        "RP-043"
+      ],
+      "regression_probe_failures": [
+        "RG-22:D15",
+        "RG-42:EF-02"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 8,
+      "mutated_sha256": "3f484118603dd88257f9f763ce0f337021dae811309d991e632a16e884a5c4dd"
+    },
+    {
+      "id": "MU-16-p",
+      "kind": "defect_reintroduction",
+      "target": "D16",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "0c27e204c47a31f12b771d904acbfdad08720e8dd8d9a91823acb751df2f3e3c",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-23:D16"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 41,
+      "mutated_sha256": "0d11d1b73c5dc0c08ffd5a34d2eab68f9163bd5d039c50f7d73d134f9c861250"
+    },
+    {
+      "id": "MU-17-p",
+      "kind": "defect_reintroduction",
+      "target": "D17",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "fe225d554586e0082bf49b2da1d9503aaf72ecdaf0fd3e2ab8431216dffa9ae9",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-24:D17"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 93,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 5,
+      "mutated_sha256": "49514f04ee7990a2da9b298aff4fd962fe4b805abea333c7abbbf13621c6294c"
+    },
+    {
+      "id": "MU-18-p",
+      "kind": "defect_reintroduction",
+      "target": "D18",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "56f794dbe1136c3fa034e52ac2e2871550a20659e75f85504e3d81a31520557a",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-25:D18"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 95,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 2,
+      "mutated_sha256": "ce0133dce99bf5a8797a18004857ebeda13970e8a2d92aba7bda5c6d5b0371a1"
+    },
+    {
+      "id": "MU-19-p",
+      "kind": "operator",
+      "target": "RP-SRP-03",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "236f32c0389fd68d287b781c4c52e170302234e533174c92d6177d653199dcd1",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [
+        "RP-030"
+      ],
+      "regression_probe_failures": [
+        "RG-11:D7",
+        "RG-23:D16",
+        "RG-26:MU-04 (D3)",
+        "RG-27:MU-09 (D7)",
+        "RG-50:EF-07",
+        "RG-52:VF-05",
+        "RG-53:VF-05",
+        "RG-54:VF-05"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 84,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 20,
+      "mutated_sha256": "55695671d86c388156139496feebb2d6843c624b71beee10b1fa4c708f17b45f"
+    },
+    {
+      "id": "MU-20-p",
+      "kind": "operator",
+      "target": "RP-SRP-03",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "4d5d278c3eeb330fc7cebbff289c0e155a7cb60c4a9ff5f637fa6d5cf65dbfbd",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-29:MU-20"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "fa879590781a3a0080557d298ceca051d12e5b4c0180f2bf8fc70d6d5a9f9e41"
+    },
+    {
+      "id": "MU-21-p",
+      "kind": "operator",
+      "target": "RP-SRP-05",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "73f52c4a06f551747ef6ab00bb818d2799e9be77838a804b86f1b05637c643b9",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [
+        "RP-035"
+      ],
+      "regression_probe_failures": [
+        "RG-14:D8",
+        "RG-56:VF-05"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 27,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 88,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 16,
+      "mutated_sha256": "d551e34944ab96997381de4fce7f9600cbd48f5242dc1c5afd42e8aee1b6c7a4"
+    },
+    {
+      "id": "MU-22-p",
+      "kind": "operator",
+      "target": "RP-SRP-07",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "1a2bbf8f365e9d74f06a0c9f1626d0fca4ef12aee4a602b714e20592c7f58f1c",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [
+        "RP-027"
+      ],
+      "regression_probe_failures": [
+        "RG-48:EF-06"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 80,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 20,
+      "mutated_sha256": "efc0374ab45cdfa2124233251b064e0a82f3d2f96eb9d36ac366038c9573f0cf"
+    },
+    {
+      "id": "MU-23-p",
+      "kind": "operator",
+      "target": "RP-SRP-07",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "74165037ae061eee6a1b675e8a86efe986bb68d0c271e645880560c2a800fd09",
+      "status": "killed",
+      "killed_by": [
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 48,
+      "mutated_sha256": "0c539a8b9fb450b810cb5ef1fa94cf2a0e8c0ee476dcf3b2c83fa118ae635efb"
+    },
+    {
+      "id": "MU-24-p",
+      "kind": "operator",
+      "target": "RP-SRP-06",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "bbcc3f3016d2ca0e85cecdd470399a8467626476b77007472ab0121f33ae12da",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-47:EF-05"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 20,
+      "mutated_sha256": "44b3029f14f0d1578da30599a970a3d2c2b8728b63b07007a424a80bb431c73b"
+    },
+    {
+      "id": "MU-25-p",
+      "kind": "operator",
+      "target": "RP-SRP-08",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "a1029dde573e1fd70eace27449d2956da586cf1541404d3f56a324784383f050",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [
+        "RP-044",
+        "RP-045"
+      ],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 37,
+        "flag_on_grounded": 12,
+        "clear_on_ungrounded": 3,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 32,
+      "mutated_sha256": "ca7d361750d8949a48a0cb23f3502ec9cd9f2a32e1055d18113808c6930ede7b"
+    },
+    {
+      "id": "MU-26-p",
+      "kind": "operator",
+      "target": "identifiable_basis",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "9f0b2c43757ff7d016ccc6f30c8aa7a144cdbc57a981b6648be14b72979d2b28",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-31:MU-26"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 17,
+      "mutated_sha256": "956919a574ec94d941ce92c8b30d4a0931d86643bcde78fb402295f70d67386d"
+    },
+    {
+      "id": "MU-27-p",
+      "kind": "operator",
+      "target": "reasoning_traceability",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "951e6a8f522cf1c4d0d4c347c250c7b1fa12b6e49c2765c4a2610db3d9f959e9",
+      "status": "survived",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "bd873b7e09bc125be4a49019151986e540984562219f62d1d3218c66548a9649"
+    },
+    {
+      "id": "MU-28-p",
+      "kind": "operator",
+      "target": "RP-SRP-02",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "410832857ba01c4b440f52ce62cbc779331a27ca4fd7cf644e58bad2ede6f345",
+      "status": "killed",
+      "killed_by": [
+        "paired",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [
+        "S-019:evidence_removed:CLEAR"
+      ],
+      "paired_failure_count": 1,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 28,
+      "mutated_sha256": "14bf56f0bfdff0b11300ee5a2d7904fc4c6d01f28dbab848c3166ce2a58ae2e6"
+    },
+    {
+      "id": "MU-29-p",
+      "kind": "operator",
+      "target": "RP-SRP-02",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "179b58c08d1599966534bcd1e8cddff7630eca83211d4ed1a5c7b73bb4236088",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [
+        "RP-025",
+        "RP-027",
+        "RP-041",
+        "RP-042",
+        "RP-090"
+      ],
+      "regression_probe_failures": [
+        "RG-33:VF-01",
+        "RG-35:VF-01",
+        "RG-36:VF-02",
+        "RG-38:VF-02",
+        "RG-47:EF-05",
+        "RG-48:EF-06"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 25,
+        "flag_on_grounded": 6,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 64,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 56,
+      "mutated_sha256": "1e0c2df1f44be4fe4c9eb92c4cbf3d24ce02a6e1c8091275d5954d43113a4db3"
+    },
+    {
+      "id": "MU-30-p",
+      "kind": "operator",
+      "target": "RP-SRP-02",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "a9b82acf3e20a68c9b7b7b4954d9e528ed283b06a22a32e65ad0a70f9fb6d710",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [
+        "RP-025",
+        "RP-090"
+      ],
+      "regression_probe_failures": [
+        "RG-05:D4",
+        "RG-33:VF-01",
+        "RG-35:VF-01",
+        "RG-36:VF-02",
+        "RG-47:EF-05",
+        "RG-61:RP-SRP-09"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 37,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 80,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 29,
+      "mutated_sha256": "9920594851fb81265ced882a04b3ce39e516f4c3803775a89c1d4a5bda9fd743"
+    },
+    {
+      "id": "MU-31-p",
+      "kind": "operator",
+      "target": "reasoning_traceability",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "f836c94250b95404976cb48357e9abb2a211563ecca984ade49d513d98170ebb",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-30:MU-31"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "91570348e37637d7115fb24f064555e230df845d6a0a7d6b5d987fa249deb0be"
+    },
+    {
+      "id": "MU-32-p",
+      "kind": "operator",
+      "target": "chronology_integrity",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "2ed1b4a44104013869d42f12103b0a39d0af7fbb70cefb67c1b700f393693cdf",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-32:MU-32"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 39,
+      "mutated_sha256": "a2c7f01d62195bcca6601bca6e36f985a9f01bc6bc39a24c954e4c7718daa34a"
+    },
+    {
+      "id": "MU-33-p",
+      "kind": "operator",
+      "target": "research linkage",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "fceb1f9e2d8cb35c202154a054574283551ac4fd73e047dd5309301b9f98841c",
+      "status": "survived_equivalent",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "57fbe445c3be83018cafd0c9fe04a7cc1ec69c93cb6b3ea7c75d3ca33556de52"
+    },
+    {
+      "id": "MU-34-p",
+      "kind": "operator",
+      "target": "sufficiency",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "f95e80101bfcf59c85aad885e1d1bd337617dadb477b834a92f4103228567ed1",
+      "status": "survived_equivalent",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "0dd1f84fea0d8da0e026b4376fcddde019e6d3a434b2a715dabfd1e42d47d5da"
+    },
+    {
+      "id": "MU-35-p",
+      "kind": "operator",
+      "target": "profile gating",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "2ab745a6b55fa1b446e754ebf0382d829345e2596dba7f47fb2e0dc703dbebd8",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [
+        "RP-009",
+        "RP-010",
+        "RP-011",
+        "RP-012"
+      ],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "ddfb09b6b6635ac56e44395fd87aa016c134158127551b0738fe0547f7b7ff38"
+    },
+    {
+      "id": "MV-01",
+      "kind": "repair_off",
+      "target": "RP-SRP-09 linkage (all anchors count, the 0.3.3 rule)",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "ef7d30d6a8c77a0bf18a35518842f6de02c336f4ec829467b22bcc8a098129ef",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "paired",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-33:VF-01",
+        "RG-34:VF-01",
+        "RG-35:VF-01",
+        "RG-36:VF-02",
+        "RG-37:VF-02",
+        "RG-38:VF-02",
+        "RG-39:VF-01",
+        "RG-40:VF-01",
+        "RG-61:RP-SRP-09"
+      ],
+      "paired_failures": [
+        "S-004:irrelevant_date:FLAG>INDETERMINATE",
+        "S-004:irrelevant_identifier:FLAG>CLEAR",
+        "S-006:irrelevant_date:FLAG>INDETERMINATE",
+        "S-006:irrelevant_identifier:FLAG>CLEAR",
+        "S-014:irrelevant_date:FLAG>INDETERMINATE",
+        "S-014:irrelevant_identifier:FLAG>CLEAR",
+        "S-016:irrelevant_date:FLAG>INDETERMINATE",
+        "S-016:irrelevant_identifier:FLAG>CLEAR",
+        "S-023:irrelevant_date:FLAG>INDETERMINATE",
+        "S-023:irrelevant_identifier:FLAG>CLEAR"
+      ],
+      "paired_failure_count": 20,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 3,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 62,
+      "mutated_sha256": "f280da3d97000ad5013b32a474ee118e91dbfc27c4628b17a96134243093f2c6"
+    },
+    {
+      "id": "MV-02",
+      "kind": "repair_off",
+      "target": "RP-SRP-09 pass 1 (decision-sentence links)",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "fa9d88db5ea85a2ae68e3e71ffc403ec96f7af8c1ae52f14ef08d772df441bc6",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [
+        "RP-029",
+        "RP-043"
+      ],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 45,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 92,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 80,
+      "mutated_sha256": "89542f314647a08e2679a15957c00ab55fd56dd9a537df9a12c94288ed3f765a"
+    },
+    {
+      "id": "MV-03",
+      "kind": "repair_off",
+      "target": "RP-SRP-09 pass 2 (reason sentences that refer to a decision)",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "d59458388c34c0e0faf1300106c59237bee7a6fc09ef9840ebf1f94c6f028144",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-23:D16"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 8,
+      "mutated_sha256": "a285f29a754248b06e575442528836d16c8a5d53e3d4b197a53e0a7b119b35b5"
+    },
+    {
+      "id": "MV-04",
+      "kind": "repair_off",
+      "target": "RP-SRP-09 pass 3 (shared source)",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "86287614ef76f8e52a71e9360e10a6450ab87a93aab5f50d0240eb578cfb4005",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-23:D16"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 8,
+      "mutated_sha256": "a12f5f7826e24542767bcc62d1397d35f7ac042da9aa4788006ba66dc7b5d9b9"
+    },
+    {
+      "id": "MV-05",
+      "kind": "repair_weakened",
+      "target": "RP-SRP-09 inferred authority link counted as stated",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "bac0fb1a182b3c88e54e93276cfc90fff51fb2efa2449b548fc17c8484c88062",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-61:RP-SRP-09"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 4,
+      "mutated_sha256": "a41ec9035813bea98ce45cd4a1da73993d0d439cdb628509af97ef2bf5294a8d"
+    },
+    {
+      "id": "MV-06",
+      "kind": "repair_weakened",
+      "target": "RP-SRP-09 inferred related link counted as stated",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "bac0fb1a182b3c88e54e93276cfc90fff51fb2efa2449b548fc17c8484c88062",
+      "status": "killed",
+      "killed_by": [
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 20,
+      "mutated_sha256": "a21987a5de9a428b3370d141cfb357167541cab778f028fea8f5eae9cbd53b13"
+    },
+    {
+      "id": "MV-07",
+      "kind": "repair_off",
+      "target": "RP-SRP-09 title metadata",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "8e919dd91d5b2eeb0f1574ec53bfa833dfd4c30b2bcead00695dfccbf146e222",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-47:EF-05"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 29,
+      "mutated_sha256": "fa562cf75157e4a55350c8e68274e9bfe0898a086b09a0e21c81eadfc5184f9f"
+    },
+    {
+      "id": "MV-08",
+      "kind": "repair_off",
+      "target": "RP-SRP-11 research instruction screen",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "6b616248d91611f5f3442587784db56154102644b18baae442477cf0a2dc8925",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "paired"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-57:VF-03",
+        "RG-59:VF-03"
+      ],
+      "paired_failures": [
+        "S-001:IN-02:not_detected",
+        "S-001:IN-03:not_detected",
+        "S-001:IN-06:not_detected",
+        "S-001:IN-07:not_detected",
+        "S-001:IN-08:not_detected",
+        "S-002:IN-02:not_detected",
+        "S-002:IN-03:not_detected",
+        "S-002:IN-06:not_detected",
+        "S-002:IN-07:not_detected",
+        "S-002:IN-08:not_detected"
+      ],
+      "paired_failure_count": 10,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "f2602eb8b6dfd9ec5f41cd498e7f4bc12b0c0a07dc74d983b47cc1590f424244"
+    },
+    {
+      "id": "MV-09",
+      "kind": "repair_off",
+      "target": "visible gaps stated while a status is held at review",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/compiler.mjs",
+      "find_sha256": "d98958aab1aa558c30a4d2ef4d10c2ca6c98de72a011778f90ee56cd3d4998b2",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-58:VF-03"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 47,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 86,
+      "mutated_sha256": "f73c2cf039bcfbc21b6d5aeb39d6a97a1fc0d1e1ef8537611920047422648d3d"
+    },
+    {
+      "id": "MV-10",
+      "kind": "repair_off",
+      "target": "EF-02 verb forms excluded from plural quantities",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "dfebef5792cb5aca8e808ee8f5978c77304ae0eea70504f3127f9369ea86c9a8",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-41:EF-02"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "f8ae67933a7334f47cad4a376c95f374f953ba5c945bd726d788bd2fb4d3f9fb"
+    },
+    {
+      "id": "MV-11",
+      "kind": "repair_off",
+      "target": "RP-SRP-12 decision verb families",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "7be1147847c4c602ee0d3256e178e997e9eff23f094f953af118ad3385740413",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "paired",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-43:EF-01",
+        "RG-44:EF-03",
+        "RG-51:VF-04"
+      ],
+      "paired_failures": [
+        "S-027:evidence_removed:CLEAR",
+        "S-028:evidence_removed:CLEAR"
+      ],
+      "paired_failure_count": 2,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 12,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 23,
+      "mutated_sha256": "4c19329730eae6a9a87298c63df544dc723a90f354a6947bb60bb1aab45cc13f"
+    },
+    {
+      "id": "MV-12",
+      "kind": "repair_off",
+      "target": "RP-SRP-12 candidate-located decision routed to review",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "b5ec2b032cac5e7fbf242e7e51b56d0072b362c36c7cb5f06b7e70478a7ce8d5",
+      "status": "survived",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "cec3f69409c02e50ef86a9892eb47e914cf603dc2b3d9a42e1f5b81a7a19cf9c"
+    },
+    {
+      "id": "MV-13",
+      "kind": "repair_off",
+      "target": "RP-SRP-10 instance words",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "ec0c0d04d2a6d783b2638f7477a4feaac7d523bb33822f08e0617a90f4ded53d",
+      "status": "survived",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "87e55deb7de1ee2a58fd2dba66987aeeb2bc3822413e2682bb763f7c44a64640"
+    },
+    {
+      "id": "MV-14",
+      "kind": "repair_off",
+      "target": "RP-SRP-10 comma inside a number",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "c349dc718d165c11cceef9f67c2a7e307c3f9284c785da1050e48cced80aea59",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-52:VF-05"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "510a8689120208488845b65ba0482340fa59bea8ef2414af8aed6c05022baf02"
+    },
+    {
+      "id": "MV-15",
+      "kind": "repair_off",
+      "target": "RP-SRP-10 unnumbered decision object",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "678ef40d467dac25b671d766a0916f31ec00150ca16eeea0ea8c99cbd35f4200",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-55:VF-05"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "07c3aa8ab761ba2b44dfd7cfac5eca37289c7fca5f4e5f80c6fa2cb6ad6aa28b"
+    },
+    {
+      "id": "MV-16",
+      "kind": "repair_off",
+      "target": "attributed cause is conclusion content",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "85d67915c98dbd715dddd53137cc9ddbf1ee8225fd993c0526702d9ad843d084",
+      "status": "survived",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "42ab6dac9b206c0d05d0ef58098ad67e110803dc092fdb3de83d2087e7d8ade7"
+    },
+    {
+      "id": "MV-17",
+      "kind": "repair_off",
+      "target": "RP-SRP-11 roles read outside instruction spans",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "924470a380f3d0c8e0ebd5ac3d0adf7a887f2a772876a14f0e1c25d84f6fb536",
+      "status": "survived",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "1a1af1de34893c2d268e2c03abcfa47d34292a1df2c39c413ea6a608a9d5d142"
+    },
+    {
+      "id": "MV-18",
+      "kind": "repair_off",
+      "target": "RP-SRP-11 addressed note extended over its content",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "0d5b29b29e36591cbb9ed0abc50f64c3d2befe122643ad422bf0f1f06b270f71",
+      "status": "killed",
+      "killed_by": [
+        "probes"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-59:VF-03"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "62c5d84f45b336494bbbd7378754ef79013ffb8236f5d92fc7052ecc23e45e4b"
+    },
+    {
+      "id": "MV-19",
+      "kind": "repair_off",
+      "target": "RP-SRP-13 consolidated controls",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/compiler.mjs",
+      "find_sha256": "a2028904db23953e3b5f7b94072969de7735cb3c84fd35bfb115004f69240af0",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-60:CF-01"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 111,
+      "mutated_sha256": "5f15e50319b57ed16d67db093f3d921907f1b4f85cf99b1739503c6c43514665"
+    },
+    {
+      "id": "MV-20",
+      "kind": "repair_off",
+      "target": "only an authority a decision cites counts",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "9467bf3818672c08bcd6e21bfd4f4ac3335f2c94ef36397eba20cb10de8bcf09",
+      "status": "killed",
+      "killed_by": [
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 4,
+      "mutated_sha256": "9e23ddcace9cc80e15b44792ff5bc12b709d71e72207a5e02033ab5e4b340085"
+    },
+    {
+      "id": "MV-21",
+      "kind": "repair_weakened",
+      "target": "restated reason ignores inferred links",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "022c79f9d3735ed6fe65fb6355e4cfefdefb54b37067fdca0af3eda46d357b2d",
+      "status": "survived",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "7ff68226211f239c54bbedb84df2c9061c6a4066966b2755b0988c6acb97bb98"
+    },
+    {
+      "id": "MV-22",
+      "kind": "repair_weakened",
+      "target": "no-evidence gap ignores inferred links",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "4797d189b6062eca25a4e85ce6b8f9c0dda8bebc010d8f26ca3d8b3edb3a628f",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [
+        "RP-026"
+      ],
+      "regression_probe_failures": [
+        "RG-61:RP-SRP-09"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 27,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 16,
+      "mutated_sha256": "9681ae0fd66b56bd9d30149bf2f17cabf3f08626d254007c14412f5011a0b54c"
+    },
+    {
+      "id": "MV-23",
+      "kind": "repair_off",
+      "target": "RP-SRP-10 chronology on the decision path",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "c0cf0f4d68f4c3a18b3e924905b75d543ce6cae21ced4322e3ef64325b566102",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-62:RP-SRP-10"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 32,
+      "mutated_sha256": "460ea6301d7f85c5689add1989e84ea4c59f6882263ce69fe6d396eece92af8d"
+    },
+    {
+      "id": "MV-24",
+      "kind": "repair_off",
+      "target": "VF-04 identifiers the decision verb acts on",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "542b2eae84acd25243e13eb5f49e0402458b5f98ffaa64828d0f5b24dc65ecd0",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "paired",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-51:VF-04"
+      ],
+      "paired_failures": [
+        "S-027:evidence_removed:CLEAR",
+        "S-028:evidence_removed:CLEAR"
+      ],
+      "paired_failure_count": 2,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 9,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 11,
+      "mutated_sha256": "e537ab0e9b10a4a8217f2a3b0d552fa8cfb2de98abead9803b3eda5ed929a3c1"
+    },
+    {
+      "id": "MV-25",
+      "kind": "repair_off",
+      "target": "inferred link: shared decision values",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "11ac20cd57f6e39177af6feada21134d84ea374f0104a83cb0c4156ab0b3d06d",
+      "status": "killed",
+      "killed_by": [
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 18,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 92,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 4,
+      "mutated_sha256": "139e4e711bee59b5ffc759db3b689bfff82be9d3ce08921eb235e38dc64da551"
+    },
+    {
+      "id": "MV-26",
+      "kind": "repair_off",
+      "target": "inferred link: shared names",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "d34bc1bbf7f8eee130f8da9a48d879dc0914f2883a48caf5c0fa8c2036912a01",
+      "status": "killed",
+      "killed_by": [
+        "dev_labels",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 18,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 8,
+      "mutated_sha256": "253676ce421ceb1e1194da840c48c74a38f2fe53366cd6cbb2593e1a4673e2b7"
+    },
+    {
+      "id": "MV-27",
+      "kind": "repair_off",
+      "target": "inferred link: the record's only subject",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "39f9d5962ab9a6ed00e7e70a1b90d29d877ce3b54cbde16fab4e91926a3ef5b1",
+      "status": "killed",
+      "killed_by": [
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 12,
+      "mutated_sha256": "38ea70d940e5a8765047e1e585dea3e58ead36418bf533edf879355640df2910"
+    },
+    {
+      "id": "MV-28",
+      "kind": "repair_off",
+      "target": "pass 2b: anaphoric source",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "619ee0671d081291da45d5456cd319d265c2f2179615fd71cb4cd577be8c0dd8",
+      "status": "survived",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "3eb000aa55e35f718cd82a0661e5c9414e8a1fb5ab24c3d1be9567b8e07955bc"
+    },
+    {
+      "id": "MV-29",
+      "kind": "repair_off",
+      "target": "counted noun as a measurement unit",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "a91da8c2d545fed3ba6eea486928e3a23cc0a695644f3e0c3a108fbca2e32591",
+      "status": "survived",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "07d19500e554ce01c31d29fb85e0ab5a4c2c4a1177cc40ce318a7f2a52101af3"
+    },
+    {
+      "id": "MV-30",
+      "kind": "repair_off",
+      "target": "RP-SRP-11 anchors in instruction spans excluded",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "985c8d4ee89d80b8f778c71e3794ced9ba75dd5d610e03723083c9271807ecd3",
+      "status": "survived",
+      "killed_by": [],
+      "research_probe_failures": [],
+      "regression_probe_failures": [],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 15,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 0,
+      "mutated_sha256": "66cdbf1d71f7eef63e4d812c4650ebde43b6b03fc12f6480be8899a4f3b833b0"
+    },
+    {
+      "id": "MV-31",
+      "kind": "repair_weakened",
+      "target": "shared everyday words as a link (the defect found in development)",
+      "file": "lib/engine-evidence-graph-v0.3.4-research-candidate/research-profile.mjs",
+      "find_sha256": "9b842922bfe203ea5c4b3f0fdf7089876db9ade6a7f2d0ba820f053c0e141cd8",
+      "status": "killed",
+      "killed_by": [
+        "probes",
+        "any_change"
+      ],
+      "research_probe_failures": [],
+      "regression_probe_failures": [
+        "RG-40:VF-01"
+      ],
+      "paired_failures": [],
+      "paired_failure_count": 0,
+      "dev_summary": {
+        "flag_on_ungrounded": 49,
+        "flag_on_grounded": 9,
+        "clear_on_ungrounded": 0,
+        "question_checks_passed": 96,
+        "technical_failures": 0
+      },
+      "dev_rows_changed": 24,
+      "mutated_sha256": "4793ed2102afb85eec92e7cf39c745fa4a51851f770be1db1fd99ffafe9a0014"
+    }
+  ]
+}

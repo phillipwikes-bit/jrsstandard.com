@@ -1,0 +1,419 @@
+{
+  "results_format": "jrs-0.3.4-wording-results/1.0.0",
+  "spec": "jrs-0.3.4-wording/1.0.0",
+  "engine": {
+    "version": "0.3.3-research-candidate",
+    "manifest_sha256": "fad69b62554a8e8cb6aa97ba9a85b5ee4f80ebfff565a3705dfc91f8dc100477",
+    "released": {
+      "unchanged": true,
+      "changed": [],
+      "deleted": true
+    }
+  },
+  "statement": "Probe texts were written by the rule author. \"boundary\" probes record expected misses. Nothing here measures performance on wording the author did not anticipate.",
+  "network_attempts": 0,
+  "by": {
+    "decision_verbs/capability": {
+      "n": 11,
+      "as_expected": 1
+    },
+    "decision_verbs/boundary": {
+      "n": 7,
+      "as_expected": 7
+    },
+    "structure/capability": {
+      "n": 5,
+      "as_expected": 4
+    },
+    "references/capability": {
+      "n": 4,
+      "as_expected": 2
+    },
+    "references/boundary": {
+      "n": 1,
+      "as_expected": 0
+    },
+    "dates/capability": {
+      "n": 12,
+      "as_expected": 7
+    },
+    "dates/boundary": {
+      "n": 1,
+      "as_expected": 1
+    }
+  },
+  "rows": [
+    {
+      "id": "WD-01",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. The panel endorsed the proposal on 4 May."
+    },
+    {
+      "id": "WD-02",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. The board resolved to fund the pilot."
+    },
+    {
+      "id": "WD-03",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. The committee voted against the change."
+    },
+    {
+      "id": "WD-04",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": true,
+      "observed": true,
+      "text": "Decision record. The deadline was moved to 12 May by the sponsor."
+    },
+    {
+      "id": "WD-05",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. The supplier contract was terminated on 1 July."
+    },
+    {
+      "id": "WD-06",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. Funding was reallocated to the materials line."
+    },
+    {
+      "id": "WD-07",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. The trial was paused on 8 August."
+    },
+    {
+      "id": "WD-08",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. The manager signed off the budget for 2027."
+    },
+    {
+      "id": "WD-09",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. The steering group was content to extend the pilot."
+    },
+    {
+      "id": "WD-10",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit (a decision noun issued)",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. The award to Delta Ltd was issued on 2 June."
+    },
+    {
+      "id": "WD-11",
+      "area": "decision_verbs",
+      "class": "capability",
+      "expectation": "decision unit",
+      "ok": false,
+      "observed": false,
+      "text": "Decision record. The safety lead prioritised the east wing repairs."
+    },
+    {
+      "id": "WD-12",
+      "area": "decision_verbs",
+      "class": "boundary",
+      "expectation": "missed: \"turned down\" is not in the lists",
+      "ok": true,
+      "observed": false,
+      "text": "Decision record. The request was turned down on 9 June."
+    },
+    {
+      "id": "WD-13",
+      "area": "decision_verbs",
+      "class": "boundary",
+      "expectation": "missed: \"goes ahead\"",
+      "ok": true,
+      "observed": false,
+      "text": "Decision record. The proposal goes ahead from next month."
+    },
+    {
+      "id": "WD-14",
+      "area": "decision_verbs",
+      "class": "boundary",
+      "expectation": "missed: \"stands\"",
+      "ok": true,
+      "observed": false,
+      "text": "Decision record. Permission stands for the second phase."
+    },
+    {
+      "id": "WD-15",
+      "area": "decision_verbs",
+      "class": "boundary",
+      "expectation": "missed: outcome as an adjective",
+      "ok": true,
+      "observed": false,
+      "text": "Decision record. The appeal was successful."
+    },
+    {
+      "id": "WD-16",
+      "area": "decision_verbs",
+      "class": "boundary",
+      "expectation": "missed: \"got\"",
+      "ok": true,
+      "observed": false,
+      "text": "Decision record. The vendor got the contract."
+    },
+    {
+      "id": "WD-17",
+      "area": "decision_verbs",
+      "class": "boundary",
+      "expectation": "missed: verbless go-ahead",
+      "ok": true,
+      "observed": false,
+      "text": "Decision record. Go-ahead given for phase 2."
+    },
+    {
+      "id": "WD-41",
+      "area": "decision_verbs",
+      "class": "boundary",
+      "expectation": "missed: actor outside the role list, object starting with a number",
+      "ok": true,
+      "observed": false,
+      "text": "Decision record. The librarian approved 18 metres of new shelving for the reading room."
+    },
+    {
+      "id": "WD-18",
+      "area": "structure",
+      "class": "capability",
+      "expectation": "labelled line still links TR-3",
+      "ok": true,
+      "text": "Decision record.\nDecision: The board approved change CR-7 on 6 March because test report TR-3 of 4 March shows the rollback passing."
+    },
+    {
+      "id": "WD-19",
+      "area": "structure",
+      "class": "capability",
+      "expectation": "evidence before the decision, linked by the stated reliance",
+      "ok": true,
+      "text": "Decision record. Test report TR-3 of 4 March shows the rollback passing. The board approved change CR-7 on 6 March. The approval relies on test report TR-3."
+    },
+    {
+      "id": "WD-20",
+      "area": "structure",
+      "class": "capability",
+      "expectation": "evidence after the decision, linked through the shared identifier",
+      "ok": true,
+      "text": "Decision record. The board approved change CR-7 on 6 March. The approval relies on test report TR-3. Test report TR-3 of 4 March shows the rollback passing."
+    },
+    {
+      "id": "WD-21",
+      "area": "structure",
+      "class": "capability",
+      "expectation": "headings on their own lines; TR-3 linked",
+      "ok": true,
+      "text": "Background\nThe rollback was rehearsed.\nBasis\nTest report TR-3 of 4 March shows the rollback passing.\nOutcome\nThe board approved change CR-7 on 6 March, citing test report TR-3."
+    },
+    {
+      "id": "WD-22",
+      "area": "structure",
+      "class": "capability",
+      "expectation": "a title with a version and a date is metadata: no evidence",
+      "ok": false,
+      "observed": [],
+      "text": "Change approval summary, version 2, 4 March. The board approved change CR-7 on 6 March."
+    },
+    {
+      "id": "WD-23",
+      "area": "references",
+      "class": "capability",
+      "expectation": "anaphoric source (\"that survey\") is a stated link",
+      "ok": true,
+      "text": "Decision record. The survey of 9 May (report SV-2) measured 2 litres per hour of ingress. The order was raised to priority 1 on the strength of that survey."
+    },
+    {
+      "id": "WD-24",
+      "area": "references",
+      "class": "capability",
+      "expectation": "facts not linked in words: no stated link",
+      "ok": false,
+      "observed": "stated link",
+      "text": "Decision record. The survey of 9 May (report SV-2) measured 2 litres per hour of ingress. The order was raised to priority 1."
+    },
+    {
+      "id": "WD-25",
+      "area": "references",
+      "class": "boundary",
+      "expectation": "missed: \"as noted above\" is not read as a link",
+      "ok": false,
+      "observed": "stated link",
+      "text": "Decision record. The survey of 9 May (report SV-2) measured 2 litres per hour of ingress. As noted above, the order was raised to priority 1."
+    },
+    {
+      "id": "WD-26",
+      "area": "references",
+      "class": "capability",
+      "expectation": "facts naming the decided item are an inferred link: they stop the no-evidence flag",
+      "ok": true,
+      "observed": [],
+      "text": "Decision record. Work order WO-55 was raised to priority 1 on 9 May. Work order WO-55 was surveyed on 8 May and the survey measured 2 litres per hour."
+    },
+    {
+      "id": "WD-27",
+      "area": "references",
+      "class": "capability",
+      "expectation": "an unrelated identifier does not stop the no-evidence flag",
+      "ok": false,
+      "observed": [],
+      "text": "Decision record. Work order WO-55 was raised to priority 1 on 9 May. Locker LK-4 was cleaned on 3 February."
+    },
+    {
+      "id": "WD-28",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "same event, two dates: conflict",
+      "ok": true,
+      "observed": [
+        "same_event_date_conflict"
+      ],
+      "text": "Decision record. The committee meeting was held on 7 August. The minutes record that the committee meeting was held on 9 August."
+    },
+    {
+      "id": "WD-29",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "different events: no conflict",
+      "ok": true,
+      "observed": [],
+      "text": "Decision record. The request was received on 3 May. The request was approved on 9 May."
+    },
+    {
+      "id": "WD-30",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "different requests: no conflict",
+      "ok": true,
+      "observed": [],
+      "text": "Decision record. Request RQ-1 was received on 3 May. Request RQ-2 was received on 9 May."
+    },
+    {
+      "id": "WD-31",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "title date and the next meeting: no conflict",
+      "ok": false,
+      "observed": [
+        "same_event_date_conflict"
+      ],
+      "text": "Meeting summary, steering committee, 7 August. The next committee meeting is on 4 September."
+    },
+    {
+      "id": "WD-32",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "original and revised instances: no conflict",
+      "ok": false,
+      "observed": [
+        "same_event_date_conflict"
+      ],
+      "text": "Decision record. The original deadline was 3 May. The revised deadline was 10 May."
+    },
+    {
+      "id": "WD-33",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "previous and current review: no conflict",
+      "ok": false,
+      "observed": [
+        "same_event_date_conflict"
+      ],
+      "text": "Decision record. The previous review took place on 2 March. The review took place on 6 April and found no defects. The board approved the change on 8 April because the review found no defects."
+    },
+    {
+      "id": "WD-34",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "a title date is not on the decision path",
+      "ok": true,
+      "observed": [],
+      "text": "Committee summary, 7 August. The pilot was extended to 30 November under paragraph 4."
+    },
+    {
+      "id": "WD-35",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "decision date and linked evidence date are both on the path",
+      "ok": false,
+      "observed": [],
+      "text": "Decision record. The manager approved the repair on 5 April because inspection report IR-9 of 2 April found a cracked weld."
+    },
+    {
+      "id": "WD-36",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "an extraction date is not on the decision path",
+      "ok": true,
+      "observed": [],
+      "text": "Decision record. This summary was extracted from the case system on 30 October. The manager approved the repair on 5 April because inspection report IR-9 of 2 April found a cracked weld."
+    },
+    {
+      "id": "WD-37",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "a publication date inside an authority citation is not linked evidence",
+      "ok": true,
+      "observed": "unlinked",
+      "text": "Decision record. Policy P-3, published 1 May, sets out repair limits. The manager approved the repair on 5 April under Policy P-3 because inspection report IR-9 of 2 April found a cracked weld."
+    },
+    {
+      "id": "WD-38",
+      "area": "dates",
+      "class": "boundary",
+      "expectation": "a planned and an actual mention of one report are not compared",
+      "ok": true,
+      "observed": [],
+      "text": "Decision record. The vendor report is due on 29 August. The vendor report was received on 3 September."
+    },
+    {
+      "id": "WD-39",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "opposite outcomes for the same unnumbered object: conflict",
+      "ok": false,
+      "observed": [],
+      "text": "Decision record. The release manager authorized deployment on 19 September. The release manager refused deployment on 19 September."
+    },
+    {
+      "id": "WD-40",
+      "area": "dates",
+      "class": "capability",
+      "expectation": "opposite outcomes for different items: no conflict",
+      "ok": true,
+      "observed": [],
+      "text": "Decision record. Release 5.2 was approved on 19 September because run RS-1 passed. Release 5.3 was refused on 19 September because scan SC-4 failed."
+    }
+  ]
+}

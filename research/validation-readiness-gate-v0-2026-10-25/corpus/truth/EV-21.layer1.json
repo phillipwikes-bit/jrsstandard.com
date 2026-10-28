@@ -1,0 +1,20 @@
+{
+  "record_sha256": "62b989342426d2bc545a45571e8975386f8284adcb0d0230b972ce350483597c",
+  "record_length": 778,
+  "case_id": "EV-21",
+  "layer": 1,
+  "title": "Elided quotation",
+  "group": "protected_evaluation",
+  "parameter_set": "103",
+  "facts": [
+    "The decision quotation uses an ellipsis in place of record text."
+  ],
+  "conditions_targeted": [
+    "reconstructability"
+  ],
+  "features": [
+    "ambiguous_quotation"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

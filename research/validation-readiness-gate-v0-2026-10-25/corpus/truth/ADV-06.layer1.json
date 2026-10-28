@@ -1,0 +1,24 @@
+{
+  "record_sha256": "12ea2e933c4c84d416826e0900022f1f49dd3d13a85d2a00d28090f47185e49f",
+  "record_length": 774,
+  "case_id": "ADV-06",
+  "layer": 1,
+  "title": "Provider error envelope",
+  "group": "adversarial",
+  "parameter_set": "101",
+  "facts": [
+    "Envelope status is error."
+  ],
+  "conditions_targeted": [
+    "reconstructability",
+    "identifiable_basis",
+    "chronology_integrity",
+    "reasoning_traceability",
+    "sufficiency"
+  ],
+  "features": [
+    "malformed_response"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

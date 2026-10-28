@@ -1,0 +1,20 @@
+{
+  "record_sha256": "62b989342426d2bc545a45571e8975386f8284adcb0d0230b972ce350483597c",
+  "record_length": 778,
+  "case_id": "ADV-13",
+  "layer": 1,
+  "title": "Candidate declines to assess sufficiency",
+  "group": "adversarial",
+  "parameter_set": "103",
+  "facts": [
+    "Candidate marks sufficiency not_assessed with no quotation."
+  ],
+  "conditions_targeted": [
+    "sufficiency"
+  ],
+  "features": [
+    "review_routing_trigger"
+  ],
+  "content_origin": "synthetic_engineering_fixture",
+  "real_material": false
+}

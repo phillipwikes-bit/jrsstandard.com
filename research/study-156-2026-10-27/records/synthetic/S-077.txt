@@ -1,0 +1,1 @@
+Incident review record. Certificate CERT-19 expired at 02:09 on 11 November, and the payments portal went down at 02:10 (incident INC-6602). The certificate was renewed at 03:20 under ticket RT-881, and service was restored at 03:25. The post-incident review held on 14 November attributed the outage to the expiry, citing the load-balancer log.

@@ -1,0 +1,24 @@
+{
+  "envelope": {
+    "status": "ok",
+    "stop_reason": "end_turn",
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"contract_version\": \"jrs-engine-local-0.3.0-evidence-graph\",\n  \"prompt_version\": \"jrs-engine-local-0.3.4-research/prompt-1\",\n  \"observations\": [\n    {\n      \"observation_id\": \"X1\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"We reviewed the 12 privileged accounts against approved-role mappings, and each tied to an approved access ticket\",\n      \"assertion_type\": \"stated_decision\"\n    },\n    {\n      \"observation_id\": \"X2\",\n      \"condition_id\": \"reconstructability\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"Twenty-four were de-provisioned within the three-day SLA (average 1.2 days); one contractor account (ref #4471) remained active for six days post-termination and was remediated during fieldwork\",\n      \"assertion_type\": \"stated_source_reference\"\n    },\n    {\n      \"observation_id\": \"X3\",\n      \"condition_id\": \"identifiable_basis\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"Twenty-four were de-provisioned within the three-day SLA (average 1.2 days); one contractor account (ref #4471) remained active for six days post-termination and was remediated during fieldwork\",\n      \"assertion_type\": \"stated_source_reference\"\n    },\n    {\n      \"observation_id\": \"X4\",\n      \"condition_id\": \"reasoning_traceability\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"Twenty-four were de-provisioned within the three-day SLA (average 1.2 days); one contractor account (ref #4471) remained active for six days post-termination and was remediated during fieldwork\",\n      \"assertion_type\": \"stated_source_reference\"\n    },\n    {\n      \"observation_id\": \"X5\",\n      \"condition_id\": \"sufficiency\",\n      \"proposed_status\": \"supported\",\n      \"quote\": \"Twenty-four were de-provisioned within the three-day SLA (average 1.2 days); one contractor account (ref #4471) remained active for six days post-termination and was remediated during fieldwork\",\n      \"assertion_type\": \"stated_source_reference\"\n    },\n    {\n      \"observation_id\": \"X6\",\n      \"condition_id\": \"chronology_integrity\",\n      \"proposed_status\": \"not_assessed\",\n      \"quote\": null,\n      \"assertion_type\": \"stated_date\"\n    }\n  ]\n}"
+      }
+    ],
+    "model": "MOCK-POLICY-ADV-NOT-A-MODEL",
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "provenance": {
+    "response_origin": "mock_policy_fixture",
+    "policy": "ADV",
+    "generator": "tests/paired-suite.mjs advCandidate (0.3.4 markers)",
+    "reference_used": null,
+    "observations_equal_to_study_mock": null
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "record_type": "owner-authorized mutation area relabel (Phase 7, post-seal test metadata)",
+  "date": "2026-10-19",
+  "finding": "After the post-stop rerun killed all 79 mutations directly, the coverage check 'every required mutation area covered, and every rule trigger' still failed: no mutation carried the area label 'rule trigger: RP-NEG-01'. The same check had also failed in the earlier 75 of 79 run.",
+  "authorization": "Owner chose option 1: relabel MX-14 as 'rule trigger: RP-NEG-01', because it already directly disables and tests that trigger; a new MX-80 was declined as duplicate coverage.",
+  "change": { "mutation": "MX-14", "from_area": "negation handling", "to_area": "rule trigger: RP-NEG-01", "mutation_text_changed": false, "probes_changed": false },
+  "not_changed": ["candidate logic", "sealed expectations", "frozen v0.3", "PR #40", "B-018", "public surfaces", "POST_STOP_REPAIR_RECORD.json"]
+}

@@ -1,0 +1,6182 @@
+{
+  "results_format": "jrs-0.3.4-variant-spec-check/1.0.0",
+  "spec_v1": "jrs-study-156-variants/1.0.0",
+  "spec_v2": "jrs-study-156-variants/2.0.0",
+  "totals": {
+    "variants": 832,
+    "recomputed_1_0_equals_frozen": 832,
+    "non_v5_identical": 728,
+    "non_v5_different": 0,
+    "v5": {
+      "total": 104,
+      "v1_constructible": 92,
+      "v1_texts_with_evidence_left": 7,
+      "v2_constructible": 89,
+      "v2_changed_text": 4,
+      "v2_newly_not_constructible": 3
+    }
+  },
+  "v5_audit": [
+    {
+      "variant_id": "R03~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "R08~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control assessment, logical access. The control is rated Effective with one observation.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control assessment, logical access. The control is rated Effective with one observation.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "R15~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control assessment, logical access. The control is rated Effective.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control assessment, logical access. The control is rated Effective.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "R22~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "AI-assisted meeting summary, human-reviewed. Decisions: the budget was increased to $50,000.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "AI-assisted meeting summary, human-reviewed. Decisions: the budget was increased to $50,000.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-001~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. The Change Advisory Board approved CR-2291 at its meeting of 6 March.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. The Change Advisory Board approved CR-2291 at its meeting of 6 March.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-002~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. The Change Advisory Board approved change request CR-2291, the reporting database upgrade, on 6 March.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. The Change Advisory Board approved change request CR-2291, the reporting database upgrade, on 6 March.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-003~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. Change request CR-2291 for the reporting database upgrade was reviewed thoroughly and approved.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. Change request CR-2291 for the reporting database upgrade was reviewed thoroughly and approved.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-004~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. Change request CR-2291, the reporting database upgrade, was approved on 6 March.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. Change request CR-2291, the reporting database upgrade, was approved on 6 March.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-005~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. The Change Advisory Board approved CR-2291 on 6 March.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. The Change Advisory Board approved CR-2291 on 6 March.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-006~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. Change request CR-2291, the reporting database upgrade, was approved on 6 March.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. Change request CR-2291, the reporting database upgrade, was approved on 6 March.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-007~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. The Change Advisory Board approved the change on 6 March.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. The Change Advisory Board approved the change on 6 March.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-008~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. The Change Advisory Board approved the change on 6 March.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. The Change Advisory Board approved the change on 6 March.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-009~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. Change request CR-2291, the reporting database upgrade, was approved.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. Change request CR-2291, the reporting database upgrade, was approved.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-010~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Change approval record. The Change Advisory Board approved change request CR-2291 on 6 March.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Change approval record. The Change Advisory Board approved change request CR-2291 on 6 March.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-011~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. The contract was awarded to Northline Print on 22 April.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. The contract was awarded to Northline Print on 22 April.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-012~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. Northline Print was awarded tender T-0417 on 22 April.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. Northline Print was awarded tender T-0417 on 22 April.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-013~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. Tender T-0417 was run in line with good procurement practice and the award went to the strongest bidder.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. Tender T-0417 was run in line with good procurement practice and the award went to the strongest bidder.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-014~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. Tender T-0417 for document printing services was awarded to Northline Print on 22 April.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. Tender T-0417 for document printing services was awarded to Northline Print on 22 April.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-015~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. The contract was awarded to Northline Print on 22 April.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. The contract was awarded to Northline Print on 22 April.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-016~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. Tender T-0417 was awarded to Northline Print on 22 April.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. Tender T-0417 was awarded to Northline Print on 22 April.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-017~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. The award to Northline Print was issued on 22 April, and the standstill period ended on 2 May.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. The award to Northline Print was issued on 22 April, and the standstill period ended on 2 May.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-018~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. The award to Northline Print was issued on 22 April.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. The award to Northline Print was issued on 22 April.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-019~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. Lot 1, document printing, was awarded to Northline Print on 22 April.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. Lot 1, document printing, was awarded to Northline Print on 22 April.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-020~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Procurement award record. Tender T-0417 was awarded to Northline Print on 22 April.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Procurement award record. Tender T-0417 was awarded to Northline Print on 22 April.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-021~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. Two contracts were withheld.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Records request determination. Two contracts were withheld.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-022~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. Seven of the nine contracts located in the register search of 2 June were released on 3 June.",
+      "v1_evidence_left": [
+        "evidential_verb",
+        "count_of_total",
+        "evidence_document"
+      ],
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "evidence remains in the decision clause after removal: evidential_verb,count_of_total,evidence_document",
+      "changed": true
+    },
+    {
+      "variant_id": "S-023~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. The requester has received everything that could properly be released.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Records request determination. The requester has received everything that could properly be released.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-024~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. Request RQ-0912 for the 2025 facilities maintenance contracts was partly refused on 3 June.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Records request determination. Request RQ-0912 for the 2025 facilities maintenance contracts was partly refused on 3 June.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-025~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. For request RQ-0912, contracts FM-22 and FM-31 carry that marking on their cover pages, and they were withheld on 3 June.",
+      "v1_evidence_left": [
+        "evidential_verb",
+        "evidence_document"
+      ],
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "evidence stated before the decision verb: evidential_verb,evidence_document",
+      "changed": true
+    },
+    {
+      "variant_id": "S-026~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. Request RQ-0912 was partly refused on 3 June.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Records request determination. Request RQ-0912 was partly refused on 3 June.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-027~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. Seven were released on 3 June, and contracts FM-22 and FM-31 were withheld.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Records request determination. Seven were released on 3 June, and contracts FM-22 and FM-31 were withheld.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-028~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. Seven were released on 3 June, and contracts FM-22 and FM-31 were withheld.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Records request determination. Seven were released on 3 June, and contracts FM-22 and FM-31 were withheld.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-029~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. Two requests from the same requester were decided on 3 June.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Records request determination. Two requests from the same requester were decided on 3 June.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-030~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Records request determination. Request RQ-0912 was granted in part on 3 June: seven of nine contracts located in the 2 June register search were released, and contracts FM-22 and FM-31 were withheld.",
+      "v1_evidence_left": [
+        "evidential_verb",
+        "count_of_total",
+        "evidence_document"
+      ],
+      "v2_constructible": true,
+      "v2_text": "Records request determination. Request RQ-0912 was granted in part on 3 June.",
+      "v2_reason": null,
+      "changed": true
+    },
+    {
+      "variant_id": "S-031~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. The records manager approved the exception on 16 January.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. The records manager approved the exception on 16 January.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-032~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. The Riverside design files will be kept until 2031, three years past the schedule.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. The Riverside design files will be kept until 2031, three years past the schedule.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-033~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. The records manager considered the request and agreed that an exception is sensible.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. The records manager considered the request and agreed that an exception is sensible.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-034~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. An exception to keep the Riverside design files for 3 years beyond the schedule was approved on 16 January.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. An exception to keep the Riverside design files for 3 years beyond the schedule was approved on 16 January.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-035~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. The records manager approved keeping the design files until 2031.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. The records manager approved keeping the design files until 2031.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-036~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. The exception to keep the Riverside design files for 3 years beyond the schedule was approved on 16 January.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. The exception to keep the Riverside design files for 3 years beyond the schedule was approved on 16 January.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-037~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. The records manager approved the exception on 16 January, and the retention log was updated on 17 January.",
+      "v1_evidence_left": [
+        "evidence_document"
+      ],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. The records manager approved the exception on 16 January.",
+      "v2_reason": null,
+      "changed": true
+    },
+    {
+      "variant_id": "S-038~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. The exception request was received on 12 January, and the records manager approved it on 16 January.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. The exception request was received on 12 January, and the records manager approved it on 16 January.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-039~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. Two retention requests for Riverside project material were decided on 16 January.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. Two retention requests for Riverside project material were decided on 16 January.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-040~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Retention exception record. The records manager approved keeping the Riverside design files until 2031 on 16 January.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Retention exception record. The records manager approved keeping the Riverside design files until 2031 on 16 January.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-041~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-042~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-043~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Work-order priority record. The facilities manager judged it to be a top priority, and the team agreed it was the most important job in the queue.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Work-order priority record. The facilities manager judged it to be a top priority, and the team agreed it was the most important job in the queue.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-044~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Work-order priority record. Work order WO-3381 was set to priority 1 on 9 May.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Work-order priority record. Work order WO-3381 was set to priority 1 on 9 May.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-045~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Work-order priority record. Work order WO-3381 was set to priority 1.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Work-order priority record. Work order WO-3381 was set to priority 1.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-046~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Work-order priority record. Work order WO-3381 was set to priority 1 on 9 May.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Work-order priority record. Work order WO-3381 was set to priority 1 on 9 May.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-047~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-048~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-049~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Work-order priority record. WO-3384, a sticking office door, was set to priority 4.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Work-order priority record. WO-3384, a sticking office door, was set to priority 4.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-050~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-051~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. The release manager authorized deployment on 19 September.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. The release manager authorized deployment on 19 September.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-052~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. Release 5.2 was authorized on 19 September.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. Release 5.2 was authorized on 19 September.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-053~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. The release manager authorized deployment with full confidence.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. The release manager authorized deployment with full confidence.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-054~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. Release 5.2 of the scheduling application was authorized on 19 September.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. Release 5.2 of the scheduling application was authorized on 19 September.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-055~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. Release 5.2 was authorized.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. Release 5.2 was authorized.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-056~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. Release 5.2 was authorized on 19 September.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. Release 5.2 was authorized on 19 September.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-057~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. The release manager authorized deployment on 19 September.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. The release manager authorized deployment on 19 September.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-058~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. The release manager authorized deployment on 19 September.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. The release manager authorized deployment on 19 September.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-059~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. Release 5.2 was authorized.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. Release 5.2 was authorized.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-060~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Release decision record. Release 5.2 was authorized on 19 September.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Release decision record. Release 5.2 was authorized on 19 September.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-061~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Budget reallocation record. The programme board approved the move on 10 October.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Budget reallocation record. The programme board approved the move on 10 October.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-062~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Budget reallocation record. The programme board moved 6,000 from the venue line to the materials line on 10 October.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Budget reallocation record. The programme board moved 6,000 from the venue line to the materials line on 10 October.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-063~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-064~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Budget reallocation record. A move of 6,000 from the venue line to the materials line was approved on 10 October.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Budget reallocation record. A move of 6,000 from the venue line to the materials line was approved on 10 October.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-065~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Budget reallocation record. The programme board approved the move.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Budget reallocation record. The programme board approved the move.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-066~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Budget reallocation record. The move of 6,000 from the venue line to the materials line was approved on 10 October.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Budget reallocation record. The move of 6,000 from the venue line to the materials line was approved on 10 October.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-067~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Budget reallocation record. The board approved the move of 6,000 to materials on 10 October.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Budget reallocation record. The board approved the move of 6,000 to materials on 10 October.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-068~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Budget reallocation record. The board approved the move at its meeting on 10 October.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Budget reallocation record. The board approved the move at its meeting on 10 October.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-069~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Budget reallocation record. Two requests were decided on 10 October.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Budget reallocation record. Two requests were decided on 10 October.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-070~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Budget reallocation record. The board approved moving 6,000 from venue to materials on 10 October.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Budget reallocation record. The board approved moving 6,000 from venue to materials on 10 October.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-071~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-072~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-073~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Incident review record. The review is satisfied that the incident is closed and will not recur.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Incident review record. The review is satisfied that the incident is closed and will not recur.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-074~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Incident review record. Incident INC-6602, the payments portal outage on 11 November, was classified as severity 2.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Incident review record. Incident INC-6602, the payments portal outage on 11 November, was classified as severity 2.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-075~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Incident review record. The incident was classified as severity 2.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Incident review record. The incident was classified as severity 2.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-076~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-077~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Incident review record. The post-incident review held on 14 November attributed the outage to the expiry.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Incident review record. The post-incident review held on 14 November attributed the outage to the expiry.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-078~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-079~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Incident review record. Incident INC-6602, the payments portal outage, was attributed to the expiry of certificate CERT-19, shown in the load-balancer log.",
+      "v1_evidence_left": [
+        "evidential_verb",
+        "evidence_document"
+      ],
+      "v2_constructible": true,
+      "v2_text": "Incident review record. Incident INC-6602, the payments portal outage, was attributed to the expiry of certificate CERT-19.",
+      "v2_reason": null,
+      "changed": true
+    },
+    {
+      "variant_id": "S-080~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": false,
+      "v1_text": null,
+      "v1_evidence_left": null,
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "no decision sentence",
+      "changed": false
+    },
+    {
+      "variant_id": "S-081~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record, backup restoration. We selected 15 of the 60 weekly backups taken in Q2 and restored each to the test environment.",
+      "v1_evidence_left": [
+        "count_of_total",
+        "evidence_document"
+      ],
+      "v2_constructible": false,
+      "v2_text": null,
+      "v2_reason": "evidence remains in the decision clause after removal: count_of_total",
+      "changed": true
+    },
+    {
+      "variant_id": "S-082~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record, backup restoration. The control is rated effective with one exception.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control test record, backup restoration. The control is rated effective with one exception.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-083~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record, backup restoration. No significant issues were noted, and the control is rated effective.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control test record, backup restoration. No significant issues were noted, and the control is rated effective.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-084~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record, backup restoration. The backup restoration control was rated effective on 5 July.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control test record, backup restoration. The backup restoration control was rated effective on 5 July.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-085~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record, backup restoration. The control was rated effective with one exception.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control test record, backup restoration. The control was rated effective with one exception.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-086~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record, backup restoration. The backup restoration control is rated effective.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control test record, backup restoration. The backup restoration control is rated effective.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-087~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record, backup restoration. The rating of effective with one exception was agreed with the control owner on 5 July.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control test record, backup restoration. The rating of effective with one exception was agreed with the control owner on 5 July.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-088~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record, backup restoration. The rating of effective with one exception was agreed on 5 July.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control test record, backup restoration. The rating of effective with one exception was agreed on 5 July.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-089~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record. Backup restoration was rated effective with one exception.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Control test record. Backup restoration was rated effective with one exception.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-090~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Control test record, backup restoration. The control is rated effective with one exception: 14 of 15 sampled Q2 restores met the 4-hour target, and backup BK-2207 was re-run successfully on 3 July.",
+      "v1_evidence_left": [
+        "evidential_verb",
+        "count_of_total",
+        "percentage_or_measure"
+      ],
+      "v2_constructible": true,
+      "v2_text": "Control test record, backup restoration. The control is rated effective with one exception.",
+      "v2_reason": null,
+      "changed": true
+    },
+    {
+      "variant_id": "S-091~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Decision 1: the pilot was extended to 30 November.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Decision 1: the pilot was extended to 30 November.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-092~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "The committee extended the pilot to 30 November.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "The committee extended the pilot to 30 November.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-093~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "AI-assisted meeting summary, steering committee. The committee agreed a clear way forward and made several good decisions.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "AI-assisted meeting summary, steering committee. The committee agreed a clear way forward and made several good decisions.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-094~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "The pilot was extended to 30 November.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "The pilot was extended to 30 November.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-095~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "The pilot was extended to 30 November.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "The pilot was extended to 30 November.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-096~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "The committee extended the pilot to 30 November.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "The committee extended the pilot to 30 November.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-097~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "The pilot began on 1 June and was extended to 30 November.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "The pilot began on 1 June and was extended to 30 November.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-098~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "The pilot was extended to 30 November.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "The pilot was extended to 30 November.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-099~V5",
+      "base_reference": "GROUNDED",
+      "v1_constructible": true,
+      "v1_text": "Two proposals were decided.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "Two proposals were decided.",
+      "v2_reason": null,
+      "changed": false
+    },
+    {
+      "variant_id": "S-100~V5",
+      "base_reference": "UNGROUNDED",
+      "v1_constructible": true,
+      "v1_text": "The pilot was extended to 30 November.",
+      "v1_evidence_left": [],
+      "v2_constructible": true,
+      "v2_text": "The pilot was extended to 30 November.",
+      "v2_reason": null,
+      "changed": false
+    }
+  ],
+  "rows": [
+    {
+      "variant_id": "R03~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R03~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R03~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R03~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R03~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R03~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R03~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R03~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R08~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R08~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R08~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R08~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R08~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R08~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R08~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R08~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R15~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R15~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R15~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R15~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R15~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R15~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R15~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R15~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R22~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R22~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R22~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R22~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R22~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R22~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R22~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "R22~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-001~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-001~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-001~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-001~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-001~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-001~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-001~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-001~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-002~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-002~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-002~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-002~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-002~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-002~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-002~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-002~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-003~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-003~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-003~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-003~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-003~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-003~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-003~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-003~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-004~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-004~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-004~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-004~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-004~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-004~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-004~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-004~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-005~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-005~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-005~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-005~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-005~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-005~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-005~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-005~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-006~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-006~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-006~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-006~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-006~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-006~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-006~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-006~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-007~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-007~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-007~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-007~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-007~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-007~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-007~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-007~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-008~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-008~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-008~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-008~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-008~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-008~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-008~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-008~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-009~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-009~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-009~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-009~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-009~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-009~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-009~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-009~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-010~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-010~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-010~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-010~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-010~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-010~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-010~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-010~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-011~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-011~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-011~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-011~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-011~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-011~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-011~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-011~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-012~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-012~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-012~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-012~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-012~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-012~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-012~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-012~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-013~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-013~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-013~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-013~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-013~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-013~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-013~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-013~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-014~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-014~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-014~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-014~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-014~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-014~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-014~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-014~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-015~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-015~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-015~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-015~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-015~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-015~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-015~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-015~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-016~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-016~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-016~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-016~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-016~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-016~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-016~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-016~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-017~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-017~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-017~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-017~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-017~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-017~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-017~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-017~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-018~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-018~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-018~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-018~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-018~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-018~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-018~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-018~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-019~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-019~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-019~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-019~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-019~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-019~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-019~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-019~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-020~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-020~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-020~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-020~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-020~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-020~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-020~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-020~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-021~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-021~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-021~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-021~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-021~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-021~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-021~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-021~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-022~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-022~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-022~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-022~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-022~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": false
+    },
+    {
+      "variant_id": "S-022~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-022~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-022~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-023~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-023~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-023~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-023~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-023~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-023~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-023~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-023~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-024~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-024~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-024~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-024~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-024~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-024~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-024~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-024~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-025~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-025~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-025~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-025~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-025~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": false
+    },
+    {
+      "variant_id": "S-025~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-025~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-025~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-026~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-026~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-026~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-026~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-026~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-026~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-026~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-026~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-027~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-027~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-027~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-027~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-027~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-027~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-027~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-027~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-028~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-028~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-028~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-028~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-028~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-028~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-028~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-028~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-029~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-029~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-029~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-029~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-029~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-029~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-029~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-029~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-030~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-030~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-030~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-030~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-030~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": false
+    },
+    {
+      "variant_id": "S-030~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-030~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-030~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-031~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-031~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-031~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-031~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-031~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-031~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-031~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-031~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-032~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-032~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-032~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-032~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-032~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-032~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-032~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-032~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-033~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-033~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-033~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-033~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-033~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-033~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-033~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-033~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-034~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-034~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-034~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-034~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-034~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-034~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-034~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-034~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-035~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-035~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-035~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-035~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-035~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-035~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-035~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-035~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-036~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-036~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-036~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-036~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-036~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-036~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-036~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-036~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-037~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-037~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-037~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-037~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-037~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": false
+    },
+    {
+      "variant_id": "S-037~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-037~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-037~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-038~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-038~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-038~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-038~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-038~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-038~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-038~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-038~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-039~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-039~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-039~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-039~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-039~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-039~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-039~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-039~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-040~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-040~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-040~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-040~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-040~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-040~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-040~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-040~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-041~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-041~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-041~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-041~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-041~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-041~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-041~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-041~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-042~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-042~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-042~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-042~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-042~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-042~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-042~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-042~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-043~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-043~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-043~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-043~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-043~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-043~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-043~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-043~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-044~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-044~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-044~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-044~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-044~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-044~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-044~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-044~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-045~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-045~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-045~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-045~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-045~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-045~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-045~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-045~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-046~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-046~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-046~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-046~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-046~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-046~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-046~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-046~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-047~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-047~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-047~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-047~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-047~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-047~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-047~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-047~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-048~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-048~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-048~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-048~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-048~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-048~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-048~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-048~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-049~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-049~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-049~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-049~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-049~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-049~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-049~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-049~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-050~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-050~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-050~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-050~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-050~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-050~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-050~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-050~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-051~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-051~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-051~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-051~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-051~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-051~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-051~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-051~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-052~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-052~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-052~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-052~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-052~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-052~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-052~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-052~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-053~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-053~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-053~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-053~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-053~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-053~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-053~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-053~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-054~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-054~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-054~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-054~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-054~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-054~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-054~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-054~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-055~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-055~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-055~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-055~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-055~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-055~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-055~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-055~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-056~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-056~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-056~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-056~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-056~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-056~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-056~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-056~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-057~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-057~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-057~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-057~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-057~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-057~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-057~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-057~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-058~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-058~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-058~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-058~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-058~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-058~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-058~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-058~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-059~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-059~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-059~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-059~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-059~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-059~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-059~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-059~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-060~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-060~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-060~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-060~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-060~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-060~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-060~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-060~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-061~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-061~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-061~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-061~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-061~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-061~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-061~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-061~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-062~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-062~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-062~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-062~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-062~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-062~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-062~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-062~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-063~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-063~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-063~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-063~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-063~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-063~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-063~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-063~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-064~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-064~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-064~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-064~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-064~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-064~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-064~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-064~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-065~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-065~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-065~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-065~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-065~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-065~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-065~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-065~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-066~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-066~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-066~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-066~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-066~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-066~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-066~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-066~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-067~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-067~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-067~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-067~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-067~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-067~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-067~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-067~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-068~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-068~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-068~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-068~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-068~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-068~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-068~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-068~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-069~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-069~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-069~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-069~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-069~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-069~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-069~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-069~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-070~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-070~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-070~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-070~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-070~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-070~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-070~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-070~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-071~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-071~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-071~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-071~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-071~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-071~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-071~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-071~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-072~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-072~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-072~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-072~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-072~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-072~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-072~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-072~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-073~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-073~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-073~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-073~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-073~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-073~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-073~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-073~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-074~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-074~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-074~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-074~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-074~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-074~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-074~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-074~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-075~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-075~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-075~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-075~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-075~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-075~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-075~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-075~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-076~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-076~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-076~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-076~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-076~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-076~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-076~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-076~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-077~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-077~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-077~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-077~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-077~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-077~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-077~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-077~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-078~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-078~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-078~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-078~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-078~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-078~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-078~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-078~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-079~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-079~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-079~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-079~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-079~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": false
+    },
+    {
+      "variant_id": "S-079~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-079~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-079~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-080~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-080~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-080~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-080~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-080~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-080~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-080~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-080~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-081~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-081~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-081~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-081~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-081~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": false
+    },
+    {
+      "variant_id": "S-081~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-081~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-081~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-082~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-082~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-082~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-082~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-082~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-082~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-082~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-082~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-083~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-083~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-083~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-083~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-083~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-083~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-083~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-083~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-084~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-084~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-084~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-084~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-084~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-084~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-084~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-084~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-085~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-085~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-085~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-085~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-085~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-085~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-085~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-085~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-086~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-086~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-086~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-086~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-086~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-086~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-086~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-086~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-087~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-087~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-087~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-087~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-087~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-087~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-087~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-087~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-088~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-088~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-088~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-088~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-088~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-088~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-088~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-088~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-089~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-089~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-089~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-089~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-089~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-089~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-089~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-089~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-090~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-090~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-090~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-090~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-090~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": false
+    },
+    {
+      "variant_id": "S-090~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-090~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-090~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-091~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-091~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-091~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-091~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-091~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-091~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-091~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-091~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-092~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-092~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-092~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-092~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-092~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-092~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-092~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-092~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-093~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-093~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-093~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-093~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-093~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-093~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-093~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-093~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-094~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-094~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-094~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-094~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-094~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-094~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-094~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-094~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-095~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-095~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-095~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-095~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-095~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-095~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-095~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-095~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-096~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-096~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-096~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-096~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-096~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-096~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-096~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-096~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-097~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-097~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-097~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-097~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-097~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-097~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-097~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-097~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-098~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-098~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-098~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-098~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-098~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-098~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-098~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-098~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-099~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-099~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-099~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-099~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-099~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-099~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-099~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-099~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-100~V1",
+      "type": "V1",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-100~V2",
+      "type": "V2",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-100~V3",
+      "type": "V3",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-100~V4",
+      "type": "V4",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-100~V5",
+      "type": "V5",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-100~V6",
+      "type": "V6",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-100~V7",
+      "type": "V7",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    },
+    {
+      "variant_id": "S-100~V8",
+      "type": "V8",
+      "recomputed_1_0_equals_frozen": true,
+      "v2_equals_v1": true
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "seal_format": "jrs-0.3.4-seal/1.0.0",
+  "name": "freeze",
+  "note": "0.3.4 freeze before scored execution: candidate 0.3.4 and its manifest, every tool and test, mocks 2.0, variant set 2.0 and its mocks, protocol (criteria S156-AC-2.0 with owner approval NOT GIVEN), registers, forms, the unsigned authorization draft, history, and the sibling inputs the runs import",
+  "sealed_at_utc": "2026-10-28T00:29:23.117Z",
+  "file_count": 1083,
+  "manifest_file": "seals/freeze/MANIFEST_SHA256.txt",
+  "manifest_sha256": "8f7f362a695d2a75838a3c84ecd38001faa921aa0ff47b84b1339b7d32e75ef7",
+  "roots": [
+    "CANDIDATE_0.3.4_MANIFEST_SHA256.txt",
+    "PARENT.json",
+    "BASELINE_VERIFICATION.md",
+    "SOURCE_COPY_SHA256_BEFORE_CHANGE.txt",
+    "candidate",
+    "tools",
+    "tests",
+    "mocks-v2",
+    "variants-v2",
+    "mocks-variants-v2",
+    "protocol",
+    "registers",
+    "forms",
+    "authorization",
+    "history",
+    "../validation-readiness-gate-v0-2026-10-25/tools",
+    "../validation-readiness-gate-v0-2026-10-25/corpus",
+    "../engine-correction-v0-02-ev32-2026-10-25/candidate",
+    "../engine-correction-v0-02-ev32-2026-10-25/CANDIDATE_0.3.2_MANIFEST_SHA256.txt",
+    "../engine-correction-v0-02-ev32-2026-10-25/regression",
+    "../engine-correction-v0-02-ev32-2026-10-25/regression-supplement",
+    "../engine-remediation-phase7-2026-10-19/tooling"
+  ],
+  "pins": [
+    {
+      "path": "../study-156-2026-10-27/seals/corpus/MANIFEST_SHA256.txt",
+      "sha256": "19a2c89e09d6759f5fd564c1c437d5bd81bb47dcec4f8f49aca9c3a032907f5b"
+    },
+    {
+      "path": "../study-156-2026-10-27/seals/freeze/MANIFEST_SHA256.txt",
+      "sha256": "0d1230d0f19124f133f92a765a1d4f1089e04ad44658620b22ca90977238fe20"
+    },
+    {
+      "path": "../study-156-2026-10-27/CANDIDATE_0.3.3_MANIFEST_SHA256.txt",
+      "sha256": "fad69b62554a8e8cb6aa97ba9a85b5ee4f80ebfff565a3705dfc91f8dc100477"
+    },
+    {
+      "path": "../engine-correction-v0-02-ev32-2026-10-25/CANDIDATE_0.3.2_MANIFEST_SHA256.txt",
+      "sha256": "2276bbc22e1e226220b471b27b793119d37ceb6e093a91d1ecbafae31a200f18"
+    },
+    {
+      "path": "../engine-governance-phase8-2026-10-19/registry/manifests/phase7-candidate.sha256",
+      "sha256": "815c5d5671d0cfcaf62edca0a11938b920e37d058d3e8655ae9e4f9c735925c3"
+    }
+  ],
+  "rule": "Post-seal modification of any listed file is prohibited. A listed directory may not gain files. Every pin must still match."
+}

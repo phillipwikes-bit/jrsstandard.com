@@ -1,0 +1,42 @@
+TMP /tmp/g4c-drill-hC07oj
+LIVE_PRE 20bba1b61f9543c4b2b3bb44437af3c45bf860ae210670a2c9bc0c899ab72056 e93fed1d3fa1b4e65d85fa3551ad1e97760a7c0f54ce81e7a6bf3e0e6b705b76 428c307af510ff7378615777251fe252dab2dac7 
+ARCHIVE_HASH OK
+ARCHIVE_MANIFEST OK (501 entries)
+TOPLEVEL ARCHIVE_MANIFEST_SHA256.txt OUTSIDE_REPOSITORY_B018 RESTORATION_NOTE.md gate-records local-packages 
+STRUCTURE OK
+EXCLUSIONS OK
+CLONE HEAD 428c307af510ff7378615777251fe252dab2dac7 branch claude/engine-reliability-phase6-local pr40branch 428c307af510ff7378615777251fe252dab2dac7
+CLONE_TRACKED_FP 20bba1b61f9543c4b2b3bb44437af3c45bf860ae210670a2c9bc0c899ab72056 untracked 0
+RESTORED_PATHS EQUAL ARCHIVE (482)
+RESTORED_BYTES OK
+COUNT lib/engine-reliability 9
+COUNT lib/engine-evidence-graph-v0.3.1-candidate 19
+COUNT lib/engine-governance-phase8 11
+COUNT lib/engine-human-review-phase9 8
+COUNT research/engine-reliability-phase6-2026-10-17 127
+COUNT research/engine-remediation-phase7-2026-10-19 126
+COUNT research/engine-governance-phase8-2026-10-19 77
+COUNT research/engine-human-review-phase9-2026-10-20 90
+COUNT tests 12
+COUNT tools 3
+UNTRACKED_FP_CLONE e93fed1d3fa1b4e65d85fa3551ad1e97760a7c0f54ce81e7a6bf3e0e6b705b76
+MANIFEST OK v1-historical.sha256
+MANIFEST OK v0.1-assurance.sha256
+MANIFEST OK v0.2-evidence-contract.sha256
+MANIFEST OK v0.3-evidence-graph.sha256
+MANIFEST OK phase4-change-control.sha256
+MANIFEST OK phase6-reliability.sha256
+MANIFEST OK phase7-candidate.sha256
+MANIFEST OK PHASE8_FILE_MANIFEST
+MANIFEST OK PHASE9 v2 (# manifest_version: 2)
+PHASE9 v1 preserved edd4e6358b6f85905082ee3a7b62fc46ff675509b845e25cdd7c422904f6bdfc # manifest_version: 1
+P7_SEAL exit=0 
+P6_REPLAY exit=10 stability: 25/27 as expected; routed to review: none verdict: human_review_required; network attempts trapped: 0; this tool applies no change. 
+COMPOSITION exit=0 registry-derived composition: declared_composition_conditions_only verdict: declared_conditions_only 
+P8 exit=0 523 checks: 523 passed, 0 failed
+P9 exit=0 {"total":318,"pass":318,"fail":0,"skipped":0,"counts":{"direct":86,"adversarial":60,"mutation":40,"stability":44,"determinism":3,"structural":85},"network_attempts":0}
+P9_REPLAY exit=0 "as_sealed":49 "results_identical_to_first_run":true "more_favourable":0 "network_attempts":0 
+CLONE_UNCHANGED_BY_CHECKS
+LIVE_POST 20bba1b61f9543c4b2b3bb44437af3c45bf860ae210670a2c9bc0c899ab72056 e93fed1d3fa1b4e65d85fa3551ad1e97760a7c0f54ce81e7a6bf3e0e6b705b76 428c307af510ff7378615777251fe252dab2dac7 
+CLEANUP OK (/tmp/g4c-drill-hC07oj removed)
+DONE

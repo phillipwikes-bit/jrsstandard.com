@@ -1,0 +1,18 @@
+{
+  "record": "Pre-run custody record: hashes of the method, evaluator and seal immediately before the first Engine run.",
+  "recorded_at_utc": "2026-10-25T08:51:20.787Z",
+  "engine_runs_before_this_record": 0,
+  "files": {
+    "EVALUATION_METHOD_PRESPECIFIED.md": "963ec66e0cb18e37d2a6a81c1869245f58abce705c7234cae3eb1470a606a773",
+    "tools/controls.mjs": "ff0ead8638c44a8b48dcd1bf79e2e6882167a63a9c787e58e58d4781e999c136",
+    "tools/evaluate.mjs": "673701ec60d51c01fb9da2dc703fccbfa08f529b79420a5a0943670b171169cf",
+    "tools/run-mechanical.mjs": "b6db5392242fe35351e9af63171853a7d6e16e9af51058d8a1ade6ea0ad0c5c4",
+    "tools/harness/adapter.mjs": "aa2b97797a9ed2d9476e901f2a54e10b3c7f898af6a9df8b473ac27482d81fb6",
+    "tools/harness/isolate.mjs": "922e84d8cdb5c3c1bab8958c726b31e675fd66c1140139e395dc3c82f180853f",
+    "tools/harness/transport.mjs": "d056ea8fd130b9d59398c6fe8a65766de6083fb5ca6a8f46880afb8e19c9c933",
+    "tools/harness/net-guard.mjs": "eb379b68ee86b615b78c27b3091653b75303b6452c2be78b4aa7dd5403b2bfca",
+    "tools/harness/live-boundary.mjs": "3986f8e4ac5ce5f217c259327b1291e49c2dfb2fa6331542d78f645a76d62a4f",
+    "corpus/SEAL.json": "736ba428e7c767389fbd92845c2d285a8c18ad6db5490dccf7dd27569fd33b7f",
+    "corpus/CORPUS_SEAL_MANIFEST_SHA256.txt": "1103d11d8a37407d3380b8edc3d8ca018345e5c74ccb5955933d0a60b97edfe6"
+  }
+}
