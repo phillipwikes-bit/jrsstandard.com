@@ -17,7 +17,7 @@
 import { createHash } from 'node:crypto';
 
 export const SENDER_VERSION = '0.3.4-study-completion-bound-1';   // B1
-export const LIVE_DISPATCH_ENABLED = true;
+export const LIVE_DISPATCH_ENABLED = false;
 export const DESTINATION = Object.freeze({ url: 'https://api.anthropic.com/v1/messages', protocol: 'https:', hostname: 'api.anthropic.com', port: '', pathname: '/v1/messages' });
 export const API_VERSION = '2026-10-21';
 export const MODEL = 'claude-haiku-5-5';
