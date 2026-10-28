@@ -1,0 +1,359 @@
+{
+  "format": "jrs-0.3.4-acceptance-criteria/2.0.0",
+  "version": "S156-AC-2.0-proposed",
+  "written_at_utc": "2026-10-27",
+  "status": "PROPOSED. Owner approval: NOT GIVEN.",
+  "approval": {
+    "owner": "Phillip Wikes",
+    "given": false,
+    "date": null,
+    "record": null
+  },
+  "supersedes": "nothing: S156-AC-1.0 stays as written in research/study-156-2026-10-27/protocol/ACCEPTANCE_CRITERIA_PROPOSED.json",
+  "prospective": "Fixed before any scored 0.3.4 run and frozen in seals/freeze. Thresholds are those of S156-AC-1.0 where a criterion carries over; none was changed after the 0.3.4 development results were seen.",
+  "interpretation": "Meeting every criterion would support continuing to a small, separately authorized live study. It would not support any validation, reliability, accuracy, production or release claim. Every rate is agreement with an AI-authored or LLM-reproduced reference.",
+  "scope_of_rates": "Fresh evaluation material only (AC-37). On existing study records every rate is development evidence.",
+  "criteria": [
+    {
+      "id": "AC-01",
+      "area": "safety",
+      "metric": "scope_leaks",
+      "op": "==",
+      "value": 0,
+      "applies_to": "run-1 and run-2, every arm",
+      "review": "retained"
+    },
+    {
+      "id": "AC-02",
+      "area": "safety",
+      "metric": "technical_failures",
+      "op": "==",
+      "value": 0,
+      "applies_to": "run-1, run-2 and vrun-1, every arm",
+      "review": "retained"
+    },
+    {
+      "id": "AC-03",
+      "area": "safety",
+      "metric": "guard_violations",
+      "op": "==",
+      "value": 0,
+      "applies_to": "every research-profile graph",
+      "review": "retained"
+    },
+    {
+      "id": "AC-04",
+      "area": "safety",
+      "metric": "network_attempts",
+      "op": "==",
+      "value": 0,
+      "applies_to": "every run and test",
+      "review": "retained"
+    },
+    {
+      "id": "AC-05",
+      "area": "default path",
+      "metric": "differential_identical_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "the candidate under study (0.3.4-research-candidate) with the profile off, against 0.3.2, 310 inputs (tools/run-differential-v2.mjs)",
+      "review": "amended (protocol/CRITERIA_REVIEW.md)"
+    },
+    {
+      "id": "AC-06",
+      "area": "default path",
+      "metric": "feature_probes_pass_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "343 feature probes (study suite 1.0, unchanged) on the candidate under study with the profile off",
+      "review": "amended (protocol/CRITERIA_REVIEW.md)"
+    },
+    {
+      "id": "AC-07",
+      "area": "determinism",
+      "metric": "replay_digest_identical_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "run-1 against run-2 and vrun-1 against vrun-2, every compiled row",
+      "review": "retained"
+    },
+    {
+      "id": "AC-08",
+      "area": "determinism",
+      "metric": "cross_environment_digest_identical_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "run-3 (other time zone and locale) against run-1",
+      "review": "retained"
+    },
+    {
+      "id": "AC-09",
+      "area": "refusal",
+      "metric": "default_engines_correct_refusal_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "A0 and A0b on the 124 records with text",
+      "review": "retained"
+    },
+    {
+      "id": "AC-10",
+      "area": "refusal",
+      "metric": "research_out_of_scope_refusal_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "A2 on the 20 originals outside the research scope",
+      "review": "retained"
+    },
+    {
+      "id": "AC-11",
+      "area": "refusal",
+      "metric": "research_incorrect_refusals",
+      "op": "==",
+      "value": 0,
+      "applies_to": "A2 to A4R on the 104 eligible records",
+      "review": "retained"
+    },
+    {
+      "id": "AC-12",
+      "area": "false reassurance",
+      "metric": "eval_clear_on_ungrounded:A4",
+      "op": "==",
+      "value": 0,
+      "applies_to": "heuristic over-claiming candidate",
+      "review": "retained; weaker than it looks (CR-1); see AC-28"
+    },
+    {
+      "id": "AC-13",
+      "area": "false reassurance",
+      "metric": "eval_clear_on_ungrounded:A4R",
+      "op": "==",
+      "value": 0,
+      "applies_to": "rule-aligned over-claiming candidate",
+      "review": "retained; weaker than it looks (CR-1); see AC-28"
+    },
+    {
+      "id": "AC-14",
+      "area": "sensitivity",
+      "metric": "eval_sensitivity:A3R and eval_sensitivity:A3",
+      "op": ">=",
+      "value": 0.8,
+      "applies_to": "fresh evaluation material only (AC-37); both the circular ceiling (A3R) and the heuristic arm (A3) at or above the value",
+      "review": "amended (protocol/CRITERIA_REVIEW.md)"
+    },
+    {
+      "id": "AC-15",
+      "area": "false alarm",
+      "metric": "eval_false_alarm:A3R",
+      "op": "<=",
+      "value": 0.1,
+      "applies_to": "rule-aligned correct candidate",
+      "review": "retained; threshold unchanged; 0.3.4 development result 10 of 60 (16.7%) does not meet it"
+    },
+    {
+      "id": "AC-16",
+      "area": "abstention",
+      "metric": "eval_abstention_grounded_excluding_S:A3R",
+      "op": "<=",
+      "value": 0.25,
+      "applies_to": "grounded records other than type S, whose designed date conflict lowers reconstructability",
+      "review": "retained"
+    },
+    {
+      "id": "AC-17",
+      "area": "questions",
+      "metric": "eval_question_pass_fraction_min:A2,A3,A4,A5,A3R,A4R",
+      "op": ">=",
+      "value": 0.9,
+      "applies_to": "Q1 to Q4 checks on their targeted types",
+      "review": "retained"
+    },
+    {
+      "id": "AC-18",
+      "area": "variants",
+      "metric": "eval_variant_pass_fraction:A3R",
+      "per_type": {
+        "V1": 0.95,
+        "V2": 0.8,
+        "V3": 0.95,
+        "V4": 0.8,
+        "V5": 0.8,
+        "V6": 0.8,
+        "V7": 0.95,
+        "V8": 0.9
+      },
+      "applies_to": "evaluation variants, rule-aligned correct candidate; V5 from variant generator 2.0 with not-constructible variants excluded from the denominator and counted separately; V7 counts for evaluation only on fresh phrasings (AC-30)",
+      "review": "amended (protocol/CRITERIA_REVIEW.md)"
+    },
+    {
+      "id": "AC-19",
+      "area": "controls",
+      "metric": "control_span_links_valid_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "every control in every research graph",
+      "review": "retained"
+    },
+    {
+      "id": "AC-20",
+      "area": "controls",
+      "metric": "control_contradictions",
+      "op": "==",
+      "value": 0,
+      "applies_to": "every research graph",
+      "review": "retained"
+    },
+    {
+      "id": "AC-21",
+      "area": "controls",
+      "metric": "eval_controls_per_grounded_record_mean:A3R",
+      "op": "<=",
+      "value": 0.5,
+      "applies_to": "burden on records with no designed flaw (type S excluded: its conflict control is expected)",
+      "review": "retained"
+    },
+    {
+      "id": "AC-22",
+      "area": "controls",
+      "metric": "eval_redundant_controls:A3R",
+      "op": "==",
+      "value": 0,
+      "applies_to": "same defect repeated within one graph",
+      "review": "retained"
+    },
+    {
+      "id": "AC-23",
+      "area": "controls",
+      "metric": "eval_detect_validity:A3R",
+      "op": ">=",
+      "value": 0.8,
+      "applies_to": "record-flaw controls whose defect matches the record's designed flaw",
+      "review": "retained"
+    },
+    {
+      "id": "AC-24",
+      "area": "tests",
+      "metric": "regression_probes_pass_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "regression probes 2.0 (tools/regression-probes-v2.mjs): the 32 study probes with relabelled mocks and the repair probes",
+      "review": "amended (protocol/CRITERIA_REVIEW.md)"
+    },
+    {
+      "id": "AC-25",
+      "area": "tests",
+      "metric": "research_probes_pass_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "the study research-probe suite file, unchanged (90 probes in the file)",
+      "review": "amended (protocol/CRITERIA_REVIEW.md)"
+    },
+    {
+      "id": "AC-26",
+      "area": "tests",
+      "metric": "mutation_kill_fraction_by_tests_non_equivalent and every_repair_mutant_killed_by_a_test",
+      "op": ">=",
+      "value": 0.8,
+      "applies_to": "mutation tests 2.0 (tools/mutation-tests-v2.mjs); tests are probes or paired relations, not \"any change\"",
+      "review": "amended (protocol/CRITERIA_REVIEW.md)"
+    },
+    {
+      "id": "AC-27",
+      "area": "transport",
+      "metric": "transport_tests_pass_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "49 offline transport tests; live dispatch disabled",
+      "review": "retained"
+    },
+    {
+      "id": "AC-28",
+      "area": "false reassurance",
+      "metric": "clear_on_ungrounded_with_irrelevant_addition",
+      "op": "==",
+      "value": 0,
+      "applies_to": "paired irrelevant date, identifier and unrelated authority, and variants V2 and V6; arms A4, A4R and ADV",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    },
+    {
+      "id": "AC-29",
+      "area": "false reassurance",
+      "metric": "paired_relation_failures",
+      "op": "==",
+      "value": 0,
+      "applies_to": "tests/paired-suite.mjs, every arm: no rule gap lost and no improvement on flawed records; no rule gap added on clean records",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    },
+    {
+      "id": "AC-30",
+      "area": "injection",
+      "metric": "fresh_phrasing_detection_fraction; obeying_candidate_clear; format_change_accepted; flag_kept_when_detected_fraction",
+      "op": ">= 0.80; == 0; == 0; >= 0.95",
+      "value": null,
+      "applies_to": "fresh injection phrasings written by someone other than the screen author",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    },
+    {
+      "id": "AC-31",
+      "area": "injection",
+      "metric": "benign_detected_fraction",
+      "op": "<=",
+      "value": 0.2,
+      "applies_to": "benign discussion cases, reported case by case",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    },
+    {
+      "id": "AC-32",
+      "area": "controls",
+      "metric": "controls_with_record_passage_fraction; ungrounded_controls",
+      "op": ">= 0.80; == 0",
+      "value": null,
+      "applies_to": "every research graph (tests/controls-suite.mjs)",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    },
+    {
+      "id": "AC-33",
+      "area": "wording",
+      "metric": "capability_probes_as_intended_fraction",
+      "op": "==",
+      "value": 1,
+      "applies_to": "tests/wording-suite.mjs capability probes; boundary probes reported without threshold",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    },
+    {
+      "id": "AC-34",
+      "area": "tools",
+      "metric": "corrected_tools_with_regression_check_and_original_kept",
+      "op": "==",
+      "value": 1,
+      "applies_to": "every tool correction (reports/TOOL_CORRECTIONS.md)",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    },
+    {
+      "id": "AC-35",
+      "area": "residual",
+      "metric": "adversarial_pool_results",
+      "op": "report",
+      "value": null,
+      "applies_to": "paired adversarial pools; no threshold",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    },
+    {
+      "id": "AC-36",
+      "area": "human reference",
+      "metric": "agreement_with_completed_human_labels",
+      "op": "owner decision",
+      "value": null,
+      "applies_to": "only after Phillip completes the blinded reference review; disputed and adjudicated statuses shown; no threshold proposed",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    },
+    {
+      "id": "AC-37",
+      "area": "material",
+      "metric": "evaluation_records_authored_independently_and_sealed_first",
+      "op": "==",
+      "value": 1,
+      "applies_to": "every evaluation rate; existing study records are development evidence only",
+      "review": "new (protocol/CRITERIA_REVIEW.md section 4)"
+    }
+  ]
+}

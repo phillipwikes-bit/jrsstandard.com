@@ -1,0 +1,4397 @@
+{
+  "format": "jrs-0.3.4-mock-index/2.0.0",
+  "built_at_utc": "2026-10-27T21:51:16.609Z",
+  "records": 104,
+  "policies": [
+    "ORACLE",
+    "OVERCLAIM",
+    "UNDERCLAIM",
+    "ORACLE-R",
+    "OVERCLAIM-R",
+    "ADV"
+  ],
+  "files": 624,
+  "candidate_snapshot_sha256": "59d33bdf515410fd5ac69a7e85f143e85aace2da99fa1e09ea2ec9cd507b926a",
+  "isolated_copy": {
+    "unchanged": true,
+    "changed": [],
+    "deleted": true
+  },
+  "network_attempts": 0,
+  "heuristic_observations_equal_to_study": {
+    "equal": 312,
+    "compared": 312,
+    "differing": []
+  },
+  "note": "Scripted mock fixtures, not model output. ORACLE and ORACLE-R are told the reference label; OVERCLAIM, UNDERCLAIM, OVERCLAIM-R and ADV are told nothing but their policy. The -R policies and ADV read the 0.3.4 research rules or markers (circular for -R: a ceiling only). ORACLE-default is the study file, unchanged.",
+  "rows": [
+    {
+      "id": "R03",
+      "policy": "ORACLE",
+      "sha256": "287a0192c6b9a40631421cbf93b1f42697f8e83818ec6d81db55844fc547d1a7",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R03",
+      "policy": "OVERCLAIM",
+      "sha256": "b7cf3ec9e0141e878d027132e370fcb648e5546ae29049dcc2cde86bc9d2336a",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R03",
+      "policy": "UNDERCLAIM",
+      "sha256": "456e8609eeaf424e977677ac29e04623b96e11666dc52b1bc24befd635681aba",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R03",
+      "policy": "ORACLE-R",
+      "sha256": "00bb7cb8e9b4f9f67107e1e2163a9a47acbeabc68500c8483cfc596dc3032ade",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R03",
+      "policy": "OVERCLAIM-R",
+      "sha256": "0cc11db8c00b26af467e3ebfde0fb3184d3ef0aa2c56fe13f4c83518ce5412ca",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R03",
+      "policy": "ADV",
+      "sha256": "b0b52d88441fea5f4ac1a1d91b13ed8c2395ce36281fd16d0447775a14ec7f0d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R08",
+      "policy": "ORACLE",
+      "sha256": "fdfeb584a4dcc8051270abc4c2a1c62ee7ca79674f8d10e61965577805ea0c97",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R08",
+      "policy": "OVERCLAIM",
+      "sha256": "8323f4b71f7ffb4e669a928310852da3beb8ba6b1da45e06a132d4467b1626e5",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R08",
+      "policy": "UNDERCLAIM",
+      "sha256": "71d3b19ab830912cff70ee72944f93d9c90e4ca9604ba12fdadb135c4ff4e697",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R08",
+      "policy": "ORACLE-R",
+      "sha256": "38f95b008aea2bca54f97395502be2d43fffd277d32fd5637a5ff5049f2c72fd",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R08",
+      "policy": "OVERCLAIM-R",
+      "sha256": "1c0c8600c2d2398102fa6d896bc700113f21ba65bd1eeed6309f96158b174ce2",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R08",
+      "policy": "ADV",
+      "sha256": "ca14e484a1e33a11edd10da601e87f3153987d1e9e82d55ea877e6fffac00336",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R15",
+      "policy": "ORACLE",
+      "sha256": "d1675260fd018d4feb7bbeee5548d6d035d3074f56b25aa4b7212cb64ee46410",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R15",
+      "policy": "OVERCLAIM",
+      "sha256": "f2c79d392337d284755a6e6b9ae49d719f212fef5b0809da2d894b2661e1ef97",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R15",
+      "policy": "UNDERCLAIM",
+      "sha256": "e6177485df3d9666eedc730bafd867e365908cc5634eb249fbd28563b3f597b1",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R15",
+      "policy": "ORACLE-R",
+      "sha256": "93434d5ddb20949bbfda67d6fcdb60bc82cc2c9d3c07ba690bba66dff2ce2e83",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R15",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b49591a2dd2ad50d7382e98f18915869fdccef5b5a4de91bba30a507b56b4009",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R15",
+      "policy": "ADV",
+      "sha256": "35956c1f984e932ee5489c8b66c3abe1fd71de517bb5ede69c51c90b6ec6b8ff",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R22",
+      "policy": "ORACLE",
+      "sha256": "8b41bbd7d52bdaa0ebb3b3e524652c9ef324f3a46df4eac465a5516795da69bc",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R22",
+      "policy": "OVERCLAIM",
+      "sha256": "d4120598d9d36a2f0528ae63266171bda958d7647e6fcc7a9327bf5903d213d8",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R22",
+      "policy": "UNDERCLAIM",
+      "sha256": "b8d4216df34f7e88d26d2f312ebcf8eccbbb7cab5d4d4bebdad3611e970c8f0e",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "R22",
+      "policy": "ORACLE-R",
+      "sha256": "471717929cbee96b333fa1ff118874c4807a93d936476d28a91b8799dfe7a47a",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R22",
+      "policy": "OVERCLAIM-R",
+      "sha256": "142917edd276c6d865cda4d1215e2aced144af397c952fb108440f63a773cc9c",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "R22",
+      "policy": "ADV",
+      "sha256": "066a2085cfe83d7e6fd107b99e79bd9733c7eb0671e2587f6cbe6e071ad3cd9a",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-001",
+      "policy": "ORACLE",
+      "sha256": "9064e4b74a56e63b64649ea5b9892398c49092d70670264760091e185148d7f9",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-001",
+      "policy": "OVERCLAIM",
+      "sha256": "0b86b76798da4c158b03344c0bc9f852397afce7f10f500914d4ed7a260e8418",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-001",
+      "policy": "UNDERCLAIM",
+      "sha256": "967021cbfaa3a75688ce10aa4a7295217ef812fe8b98c5957420be913e68972c",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-001",
+      "policy": "ORACLE-R",
+      "sha256": "d186d08946298c8d2176ce3feb0217276ca8714114858867e718401a56f269fc",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-001",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ede847f060e828210b1dc975ae330018a991e4193ec931f72e0973bc1d60304e",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-001",
+      "policy": "ADV",
+      "sha256": "82c621f5f688cd1285e2c5c56b692082553685f527a8d2c003789db2ea9ad6ef",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-002",
+      "policy": "ORACLE",
+      "sha256": "96866ac37d7ed5a08ef203b29a5175660b59406b89c012f9ec3c6e31ad0e73ba",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-002",
+      "policy": "OVERCLAIM",
+      "sha256": "dae9d3e42fb716009dbfb2a046f63b6cb1b34913d81f39b97120a732744bb5ea",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-002",
+      "policy": "UNDERCLAIM",
+      "sha256": "28392b1b61d655721674055e34809333cda06967583fc8e5be56b29af60c84a1",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-002",
+      "policy": "ORACLE-R",
+      "sha256": "93ed56b284f0eedfc384d11f8bf481a09feeafd502835cb669e5020042899e57",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-002",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b2ee75adffb52b0db9494fcbb5c37f7a970e5c24b6f3cc66e27c32d3675437d2",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-002",
+      "policy": "ADV",
+      "sha256": "b0b52d88441fea5f4ac1a1d91b13ed8c2395ce36281fd16d0447775a14ec7f0d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-003",
+      "policy": "ORACLE",
+      "sha256": "92b4dfcc93e29ceb24589e40e467ad3f7fb633762ccca7320c3ed5aafec90ade",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-003",
+      "policy": "OVERCLAIM",
+      "sha256": "64d9f9f99db168fa48b5220b70d4a4ac0ab6888f245dc25fd4ba28daf192baae",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-003",
+      "policy": "UNDERCLAIM",
+      "sha256": "687d7e3567b82f3b7c7e4327c33a24e0ec401f8a96e4b2121e68b9af00100c9f",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-003",
+      "policy": "ORACLE-R",
+      "sha256": "92c6f7b03f13af3deeeff5c307f540a654d6c58ae8879cd1b05a8154f4048d49",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-003",
+      "policy": "OVERCLAIM-R",
+      "sha256": "15ac85e5c9d2ba418fbf5b91a9a3a161995fbfa177090962bb9a7401ba19f153",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-003",
+      "policy": "ADV",
+      "sha256": "595fdfb4a99f63e873cd504cac1cc81a2929317400ff9ac820a4bdcd70407d9a",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-004",
+      "policy": "ORACLE",
+      "sha256": "17200f4b11f180deb174cc0792f0a55c1f2f79bca2a672f433755c8c95cbd313",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-004",
+      "policy": "OVERCLAIM",
+      "sha256": "b063dee9e1d83cc5f628646838a8d5f86e9f7b0dfba3adc9cec93b3c51bc7477",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-004",
+      "policy": "UNDERCLAIM",
+      "sha256": "363b6210bd91c9e64014e0de90342e07338a54dd26165024c008edd27f59d6c4",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-004",
+      "policy": "ORACLE-R",
+      "sha256": "e0793ee22bf9c972aab95976db8d0032f760e973793fe0c2563701bc6af97b21",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-004",
+      "policy": "OVERCLAIM-R",
+      "sha256": "0efd7a7a9b3b3807ca2dbef1ac18f2cbcfbda41ce42490729e5ddfa8765f1ddb",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-004",
+      "policy": "ADV",
+      "sha256": "1e74a87996fae529752d695545795f69d8b1a048d110eb9397c482af07ea0343",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-005",
+      "policy": "ORACLE",
+      "sha256": "7774bf376ff847fb4e5119686462eb9dd02bdb491fadf77c585fca97fcb8a2a6",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-005",
+      "policy": "OVERCLAIM",
+      "sha256": "1312b409fc9a025d4f595aa9ce1118e728ddfbc34eda45fc1fc84ace6f9b4bb6",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-005",
+      "policy": "UNDERCLAIM",
+      "sha256": "2719754efe3ce9beef09db9883106380aba1f5898ba69da3eb2d98299b21a4b6",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-005",
+      "policy": "ORACLE-R",
+      "sha256": "4f050a37165022e7da8d5ee21cfffdeb60b6c4d7eaa882bdd2a5e0fed02ee488",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-005",
+      "policy": "OVERCLAIM-R",
+      "sha256": "6a4341b65d28e49d28481452f6b0925f8c13717674381d84df1232ecbc348082",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-005",
+      "policy": "ADV",
+      "sha256": "25f4f49a5b6bf280a5e671ec15a8bf84ccbcda731c5015acbb22895717bb0166",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-006",
+      "policy": "ORACLE",
+      "sha256": "68900b2ea0c06f7eb2a4ba6701e745e5eb5d23bcafdb1d408336b3dfe53e4067",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-006",
+      "policy": "OVERCLAIM",
+      "sha256": "4d00c18dca3421327a2d37b63c52fe26b15b9aac272c019d33a9a45206de54be",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-006",
+      "policy": "UNDERCLAIM",
+      "sha256": "e16cf67439557994316606d649efb470155b1cd092458b98260776de1b9ea87d",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-006",
+      "policy": "ORACLE-R",
+      "sha256": "95a21efe116abe4d39677e1810d3d9f12d82d6bfc5463bfe9003849701e64d16",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-006",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b1db28893d0fa16c74c386668e32db6f8b7819a64921741026780e18443be98e",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-006",
+      "policy": "ADV",
+      "sha256": "eb535f4c38adf7f7e630eb8359f2e518ce46d03ef4236984459d6e8f1d0132d6",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-007",
+      "policy": "ORACLE",
+      "sha256": "89ea3cdd724b0e19c48839caff659e5567f5c6a1cf2f60fb06208d40a43d4bcd",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-007",
+      "policy": "OVERCLAIM",
+      "sha256": "dabf76b5cb1cf01a25b89ba8f9d12267e11856ba8e3a08fb82095b00763d1757",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-007",
+      "policy": "UNDERCLAIM",
+      "sha256": "606d10372d722b7b8d1d518fd75079e8824fe02ee99c0e1a7a10bd7c91ea1d83",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-007",
+      "policy": "ORACLE-R",
+      "sha256": "23966b111cee52ff07790b03b4bb90e6bf166fa9a35bd2fe710ef7e1d2db55b7",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-007",
+      "policy": "OVERCLAIM-R",
+      "sha256": "684a0aef0586c3fc312a52a4d8ff13236b531098b82edbf842f778ad481b677e",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-007",
+      "policy": "ADV",
+      "sha256": "a551829f0a66ac0c343fec5bbbf00187da7178f9ceb90ee067c741fa47a6af3b",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-008",
+      "policy": "ORACLE",
+      "sha256": "3fc241030ad396bbcf29bbcf32d747a8bd4b97783ad5d3863c5ff7ce90a894d7",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-008",
+      "policy": "OVERCLAIM",
+      "sha256": "afc711da8edb3448b19e20d1dc99f965a7fcbfdeefc29aa96c783e40bef87697",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-008",
+      "policy": "UNDERCLAIM",
+      "sha256": "4a61620419c8e87b68a6afefd80fdf7c51eb7b78d25750fef0eebf55e2e12c67",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-008",
+      "policy": "ORACLE-R",
+      "sha256": "63083c38ebc1430b9ef7f4c9cf9ccd4528bc822fad61d89c46c16c3d3de676c7",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-008",
+      "policy": "OVERCLAIM-R",
+      "sha256": "fef0cca1d609ce7072e9f5b76d0b73492103beb940e0c144546b8ca128959404",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-008",
+      "policy": "ADV",
+      "sha256": "87e55b8ff68140540d23ccaa520a543dab11fafd326bd1c2cf2a0def9f06a275",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-009",
+      "policy": "ORACLE",
+      "sha256": "cc0b2d8f1827b6e8c7a4fd7849332cbf12c7ffd29697f54d31a820707d6c026c",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-009",
+      "policy": "OVERCLAIM",
+      "sha256": "7188eee6094392c24c3a9ccc464a8669b1b03f11ae3c75445712bae39cdb58ee",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-009",
+      "policy": "UNDERCLAIM",
+      "sha256": "a4521b1c953bf0c7ef32fda1f5b118a7038d282b5c3e7ecb7f447d38e2a31ab3",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-009",
+      "policy": "ORACLE-R",
+      "sha256": "c31979c6835ec4fd546020a865cf12326a7ebce35920aafb22da760e6bb43c9e",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-009",
+      "policy": "OVERCLAIM-R",
+      "sha256": "4736910408a83c6b0596536a7c928b13da3df95aa2e9b451fefc2a1f7d9c890e",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-009",
+      "policy": "ADV",
+      "sha256": "a5b3805522addb4ce50b356b20da5d43ac64382728b5d47034f88c8a579ee901",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-010",
+      "policy": "ORACLE",
+      "sha256": "f8071107f443efb6672b9fc08eaa33ead0e83d19aab85e204ed582c8014ebfa0",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-010",
+      "policy": "OVERCLAIM",
+      "sha256": "bb9ec2c3518ac10a16f3aa3b6eee24e840d20e536306d8ff2d20370f2a0ea35b",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-010",
+      "policy": "UNDERCLAIM",
+      "sha256": "7c5e52be69b077bc4c2f6c85d659cc45035165a4deb9951080d0ce4c70e564b2",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-010",
+      "policy": "ORACLE-R",
+      "sha256": "cc35c5a7d252f7aa74163ca88951c9ef7cc4753e16a09cb719828a34856de9a8",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-010",
+      "policy": "OVERCLAIM-R",
+      "sha256": "90c7359c6e2f00dbf74c622566934c11afadc7c8cecd03b59ee5b2cacc36a994",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-010",
+      "policy": "ADV",
+      "sha256": "dc4edd628f911c501d2d372082775c486ebca0794c090138aca817ec7aff5fc9",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-011",
+      "policy": "ORACLE",
+      "sha256": "336a3c60d327458a14734ed1c1dc3d89990386e074c499e2050cf13f50de21ec",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-011",
+      "policy": "OVERCLAIM",
+      "sha256": "d49764ff0061df64a506c3dc5e68a627a0faae6a20360677dce788b773750cef",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-011",
+      "policy": "UNDERCLAIM",
+      "sha256": "7607f053629a5fa057198dd4e1900583a5715b36ec365e236cbfbef373ca96bc",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-011",
+      "policy": "ORACLE-R",
+      "sha256": "545f211f73146b52f66abc8ebb045a6715991d29f07333b88d916dac9eccaefc",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-011",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d1583910438af170382084047fa40d90dc2bfea7db983a4bf880c69b14268b8d",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-011",
+      "policy": "ADV",
+      "sha256": "22285678a0854f1541420fc7d117897273fc8e30a1cae64e3b4ec5cf48de9ac2",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-012",
+      "policy": "ORACLE",
+      "sha256": "a45f43de7715136eeda9d356c35e56823cb1098f858a7a73167f454542f6e06c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-012",
+      "policy": "OVERCLAIM",
+      "sha256": "a9084cf65477f6df2371b2ba3107486ce50176b4251c091c9e6ab0e08208d328",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-012",
+      "policy": "UNDERCLAIM",
+      "sha256": "5f1cfcf30e65a61718fd383ae23df3cab46989539d663064b60487a16f840a17",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-012",
+      "policy": "ORACLE-R",
+      "sha256": "ef25d5bf17197e7567dcee642d7ddaa9da5985f9f86bd9b3a8e5db5721bc2a59",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-012",
+      "policy": "OVERCLAIM-R",
+      "sha256": "5fac0b2f581dcc39d93ac1642bc8f4e3f70f1ff3376d06dab1ae4cb3478fe490",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-012",
+      "policy": "ADV",
+      "sha256": "f04b570e2b738a614faf07917784480f08dba0b612d9c54457d925a81779a99d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-013",
+      "policy": "ORACLE",
+      "sha256": "075523bab36c5882ba1586c1b6c2c81c41395658174874aa652c0f2c601ec4cd",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-013",
+      "policy": "OVERCLAIM",
+      "sha256": "469d96213c231fb81e80e217242749805134fbb5430b3360f7336140bf84346f",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-013",
+      "policy": "UNDERCLAIM",
+      "sha256": "47db1b23a6ac71906f3e415648adeafea75c64076b89724d9055adf4cead234f",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-013",
+      "policy": "ORACLE-R",
+      "sha256": "00bb7cb8e9b4f9f67107e1e2163a9a47acbeabc68500c8483cfc596dc3032ade",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-013",
+      "policy": "OVERCLAIM-R",
+      "sha256": "0cc11db8c00b26af467e3ebfde0fb3184d3ef0aa2c56fe13f4c83518ce5412ca",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-013",
+      "policy": "ADV",
+      "sha256": "89746d83be08ad1f48b06cc1d0abfaac0a5405b4eaa0afa4cada1c059455852d",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-014",
+      "policy": "ORACLE",
+      "sha256": "4497f7639482334863199688ba84186aabbc933b3819b94a7da764379249aa97",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-014",
+      "policy": "OVERCLAIM",
+      "sha256": "b07dcd3d0a6856c616d0a7c9ced86923dc494e1e70f41c976a9774add930b8cd",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-014",
+      "policy": "UNDERCLAIM",
+      "sha256": "f4446176af956cad9ed2252f50f81dfe5148c41624970efff18ef96cb9089ef3",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-014",
+      "policy": "ORACLE-R",
+      "sha256": "1d17374ccc981977f5e5a226a611d9c0134b320e02b45b52b286c11fae651b39",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-014",
+      "policy": "OVERCLAIM-R",
+      "sha256": "742211c90cfcf04b0d1fa7fd7481dd776b12dcae242b018c4505532f0f2d391f",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-014",
+      "policy": "ADV",
+      "sha256": "007e5a039216c4b065243756c20e172ef8b84515e2a09573f3547a8c262ef25b",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-015",
+      "policy": "ORACLE",
+      "sha256": "bfa9d28781b833fc62cda9261fd528b6605b97935dad102ac061abc3742d9755",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-015",
+      "policy": "OVERCLAIM",
+      "sha256": "ee610d82bb0b841dff39fbc90f77946b3318b27fc0986c4ead9be671ed10a923",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-015",
+      "policy": "UNDERCLAIM",
+      "sha256": "ab31c7b7bc1d4d723291bd639e6ea1f6a89cc31dcf65cf63a81e06ee810b480a",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-015",
+      "policy": "ORACLE-R",
+      "sha256": "19e442da2911e6277a6219e258aef44feb4223290a7633d1d30a11158a9676d9",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-015",
+      "policy": "OVERCLAIM-R",
+      "sha256": "138cac963aae1c776acb119c6adb4977d98861280c76996127c2559266ee2b09",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-015",
+      "policy": "ADV",
+      "sha256": "b0a17b694fe891210899a6653a63d45e20159f9ca5db34ed6593972c33e90c09",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-016",
+      "policy": "ORACLE",
+      "sha256": "8c9ebdc480761e7854d07a920852d6529779a4945e7600042e6f13dc0901566d",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-016",
+      "policy": "OVERCLAIM",
+      "sha256": "3b6c4a31a9a59d61904a4dd4ac2924845766ef118ed2c0c840da1561464d38b6",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-016",
+      "policy": "UNDERCLAIM",
+      "sha256": "e445048abc90eb867a4d8aeb072a18cba8105fa6fd593017dd638323f10021bc",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-016",
+      "policy": "ORACLE-R",
+      "sha256": "f532cf3458fc01ee52408945342a39109fd3dbbd999a047b1e5112a43956bb29",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-016",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d83ff1510ba6aaf1381cd936b8db7dbfc7e46020cec05ab480a38c286a2055af",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-016",
+      "policy": "ADV",
+      "sha256": "8460a92b40000aaf52f347c6b18b22ac3824e02dd36100e391bda18a90aa4867",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-017",
+      "policy": "ORACLE",
+      "sha256": "452e681a52bf9181da93c9c584abde223a7f9c8040057f7afe05973c4ad19824",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-017",
+      "policy": "OVERCLAIM",
+      "sha256": "97d4924a982c62d7242ad4ed64989ff1988ce3b9c66260cca35b00ed6ec6a9db",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-017",
+      "policy": "UNDERCLAIM",
+      "sha256": "445e9a00a8304288c0a375c795106aa262f3865d67de28f32a07e4038bc4fce5",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-017",
+      "policy": "ORACLE-R",
+      "sha256": "ef4561460e22c8ebe7e7f2de50ef49a6592c57c50d6ed7b0a741b7bc256ff294",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-017",
+      "policy": "OVERCLAIM-R",
+      "sha256": "a5b6e136ea96f06181b6caa59badc406e0c299c6cf1fa2545d5cdab064fdba5b",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-017",
+      "policy": "ADV",
+      "sha256": "bd31dcdd79c44a99e8805f31b734fd1d6a951590e1e24f47bcb8b82371641cb0",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-018",
+      "policy": "ORACLE",
+      "sha256": "825cac345687a25d2f97267f28efa1a75090b225b7e5bee3e1e60ef6e15c2b54",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-018",
+      "policy": "OVERCLAIM",
+      "sha256": "d918f5e7c4bb7fb63484d90c364acc04838c56b7850267ddb64f9b165f63340b",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-018",
+      "policy": "UNDERCLAIM",
+      "sha256": "b58ddcb16b25732695005bdb13a0cb0a10d040218f7242b7c31136bd82b16b05",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-018",
+      "policy": "ORACLE-R",
+      "sha256": "51d986173bc3cc743d4af819ef8dc4b9862fa6361133982bb1fd7e0fa157cf50",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-018",
+      "policy": "OVERCLAIM-R",
+      "sha256": "308753c3ed6db7b3180d712a4967fa105cdfd3a3024e9cbe635d4bc36edd8d69",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-018",
+      "policy": "ADV",
+      "sha256": "edbb377a30a0c0b8cc87e1f813e218f8097150e37958f47d50e8807f7dcb7c64",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-019",
+      "policy": "ORACLE",
+      "sha256": "fcd9dccfc8a6f1846d0f64ca727a47578bd7035bfe9fdf7a4443b4d05ff786f4",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-019",
+      "policy": "OVERCLAIM",
+      "sha256": "5328270644dd836290ca8dc257c9d7675fedaf1f0485f5dbb1edecd46b400fac",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-019",
+      "policy": "UNDERCLAIM",
+      "sha256": "8b779f61564e5eae893bf52b4f60877f53734d80c612d7468b442370310105e3",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-019",
+      "policy": "ORACLE-R",
+      "sha256": "eea62460e14f438b2c277121873dd7574606246783ca56f5f2f4bc1fb8fd6edc",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-019",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b2417923d660aae13e5d2757775e718ae2a29866f2ef5402d4b114f9fb3678c2",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-019",
+      "policy": "ADV",
+      "sha256": "ed3a2db472d6cc99b19af7b300f190e5f823582234db10e60429959307e11b8b",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-020",
+      "policy": "ORACLE",
+      "sha256": "c9e8a2954920a27f49d35a2ad8a67209581fff086dfe4a16c8eff6495c511658",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-020",
+      "policy": "OVERCLAIM",
+      "sha256": "1c29674f9af31c9db4ce915368c6bf871844cbca2213d405b8891a7b5caad3c9",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-020",
+      "policy": "UNDERCLAIM",
+      "sha256": "1baad2cf7e744b57c2b7d2e05a36a5f374c4fd65b9bf82117a309f9a1e764548",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-020",
+      "policy": "ORACLE-R",
+      "sha256": "f5adc0bfbb9a9d1b9200dffc5f714dfda1afa54f29c208b809535cc60cf1fd50",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-020",
+      "policy": "OVERCLAIM-R",
+      "sha256": "817c46edc7c36799dad35bb181aacf4bf2d7a60ce18b951d035cafff1fe08ca0",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-020",
+      "policy": "ADV",
+      "sha256": "32bc35f3b972546e1ea062134c472f6e47271f5ff30d4a859a730e8d4dbd9a89",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-021",
+      "policy": "ORACLE",
+      "sha256": "091fc49fe65b08fb3acc4c093206b9af609bf830b675e165baa28e9decf3c946",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-021",
+      "policy": "OVERCLAIM",
+      "sha256": "490a66d17b6fcb315187260b86d43a5cb0a10e917e7bce543f47ad75df662503",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-021",
+      "policy": "UNDERCLAIM",
+      "sha256": "c409b269a2eca1503f918473fee5b916a13cf13e52cfd45d7a672d2649e1ce45",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-021",
+      "policy": "ORACLE-R",
+      "sha256": "0cc99077e43a7611bb71340f9caf26637db5a096f2df74bc57ff8a66c02024ce",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-021",
+      "policy": "OVERCLAIM-R",
+      "sha256": "3cb7a542618477cbab819029331865754f509838342f05da77adbf7e27719acd",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-021",
+      "policy": "ADV",
+      "sha256": "4764bdf57b77c0f5a582bf8baa04b78c24dba0e6bbfa85d56cbad23d19c40def",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-022",
+      "policy": "ORACLE",
+      "sha256": "84e55e12fdcf7d345c655caae5648129ee55f8adc10b53ea98281bdda039248c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-022",
+      "policy": "OVERCLAIM",
+      "sha256": "5c534c3843889b7a6c8afd219305afb11ea2903a0db28367754d6636d5f1d274",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-022",
+      "policy": "UNDERCLAIM",
+      "sha256": "84beaf6a2befe0e1270735b4b251ae6c32689c1e78efe03299a74fa6af0fb552",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-022",
+      "policy": "ORACLE-R",
+      "sha256": "b3737f439fcfa8c5976442e33d57d25164daf6d6fef54e74ec6a7010a09ab25a",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-022",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ecc0fde080f22b3a13455db87a2d480874a7a5761d9d7adf778c71b700a05426",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-022",
+      "policy": "ADV",
+      "sha256": "f3519f99df91b0099bf8ab79ad7b8a039ae13608c59d204df03917e854e5cea8",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-023",
+      "policy": "ORACLE",
+      "sha256": "a8b0429770f28961703d3308a42fd3363a9143a80ede46a9daa733f82ff72339",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-023",
+      "policy": "OVERCLAIM",
+      "sha256": "826cf2d17d08340d4331c640465bcb07f2a3974d69d53896d9a2d4f9227e12d8",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-023",
+      "policy": "UNDERCLAIM",
+      "sha256": "c45550bae252cbb2c256623c37a17ea2825dfdbd96f6a46398dae31fc066d152",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-023",
+      "policy": "ORACLE-R",
+      "sha256": "ecf1c28751967ec2ecf3f5f7cfc8ac2d24cb1bbe3dbe18e465ea8082b58cce8d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-023",
+      "policy": "OVERCLAIM-R",
+      "sha256": "44a4b15e16c9c5986b9c3b96915b8abe2837bd2e90bcc215323c1a8c2a165a35",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-023",
+      "policy": "ADV",
+      "sha256": "ddf9a49cb60f732e14ea3c5f6e30660d9656080fa96eb05119c63ed33303c476",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-024",
+      "policy": "ORACLE",
+      "sha256": "1820298365eed1d57fa3a91950431949d017c3ed5f7a640bc7625b12b50e57e7",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-024",
+      "policy": "OVERCLAIM",
+      "sha256": "71aaf3642c25a796ba2df1601a144037a6376bd45050a2aa3f31c242aa388e79",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-024",
+      "policy": "UNDERCLAIM",
+      "sha256": "e8b4751b9eb74c69016a34d6be8d94d3c9634ebf6ffcdbc8df32b8a173730ddb",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-024",
+      "policy": "ORACLE-R",
+      "sha256": "01b28897836264b983eb3a6fe48a1d47db6f344235541f935d605753734592e0",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-024",
+      "policy": "OVERCLAIM-R",
+      "sha256": "df1aec164f261c9fcc26310000716f986afe39a62299a33e0789c3d3c385a475",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-024",
+      "policy": "ADV",
+      "sha256": "3db0c3192aaad1095853a102266c0d75ec2b8e30f325ed7f788fbfe4b4f7d61c",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-025",
+      "policy": "ORACLE",
+      "sha256": "a0d10ea8701b479eaffc9887a532d4ce3be217b2d90c5b6ad4bf9c54729babb4",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-025",
+      "policy": "OVERCLAIM",
+      "sha256": "83120069b23e508b82757dca5c3185982ed273f545c5cf114c438733a53b1741",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-025",
+      "policy": "UNDERCLAIM",
+      "sha256": "51c79c2fba6cbcaa1cf90c0ff6e4fe8f0ddc25099c6aa3de7f26bc77f8bf3938",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-025",
+      "policy": "ORACLE-R",
+      "sha256": "bdcc29f6494cc9acd3d2039bd9957d495db0a285edda24478bc72d2a9d1773cd",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-025",
+      "policy": "OVERCLAIM-R",
+      "sha256": "975517216995ce6526ecd6cb200e53678da5b2967f6b78d60d4aeb03efaf162f",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-025",
+      "policy": "ADV",
+      "sha256": "081a285ac6b2fe89c22543501f191f98f8fbbbd1bb8e2b79abb7581cf7736d80",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-026",
+      "policy": "ORACLE",
+      "sha256": "2866b8dc194bcaeac50b66104061e678b0b881b131926bb1ddac12284df6a134",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-026",
+      "policy": "OVERCLAIM",
+      "sha256": "98d38cce679ae9787e19ab99cf84a3fa7977d60224e08d9cce5087f78ed38745",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-026",
+      "policy": "UNDERCLAIM",
+      "sha256": "9a58b6a9c9c20aec40f0d3278ea1792a0894fb11df08b0fe2c958adcb7f4e3ee",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-026",
+      "policy": "ORACLE-R",
+      "sha256": "652dd41892b3195b7736c984bf2c7b2bf64babfe3853395b38571773dfed92bc",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-026",
+      "policy": "OVERCLAIM-R",
+      "sha256": "dd5e44dace8c078a86d5faba0d1ae7be8b83b98dac44fcecb8d13f449bba5da9",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-026",
+      "policy": "ADV",
+      "sha256": "b28dedbe1499dfb1236bee9ffca76548511ebdd91ad90df10a2ad72e1eaf9e8f",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-027",
+      "policy": "ORACLE",
+      "sha256": "d5dc1729140ee085a7e00a9736d981093a40534840309cf091b46ea76a768648",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-027",
+      "policy": "OVERCLAIM",
+      "sha256": "3d223943da5347087d55f955a9a537e42385aef1179ace3351d4f2bcd3724e23",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-027",
+      "policy": "UNDERCLAIM",
+      "sha256": "71b068348ae98b1ad97ad3e4b100b6af806f234d0899f0696a4e60c7ab42b79d",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-027",
+      "policy": "ORACLE-R",
+      "sha256": "0ef14febe4690df0f91e492815430e5d2856e5ed3b98c37c20920801620b3b18",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-027",
+      "policy": "OVERCLAIM-R",
+      "sha256": "a1118367ee1e52e5c806431a30cd0ff1691fc28d84b9907e5896b7aecf3b4cf0",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-027",
+      "policy": "ADV",
+      "sha256": "8606ac78c945ec985183bd1e070fe911fa6453227b49056f530701d6dcf900aa",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-028",
+      "policy": "ORACLE",
+      "sha256": "83469904308e0dfae569ac9e02fa4c6fe7d25d3dd8cd2201c4e01c9e9e23bded",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-028",
+      "policy": "OVERCLAIM",
+      "sha256": "97a1cefcc2968de9564fd7090cf8df40ea28cdcf77891cb4a26c9fec8de6a2a2",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-028",
+      "policy": "UNDERCLAIM",
+      "sha256": "e234cbffb6d4d6043b71d5d0c2462c214463fec46f2e9595931d142d5b93544c",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-028",
+      "policy": "ORACLE-R",
+      "sha256": "3006d9d5a6b4c46d14b53a1ba78c1e81da9cbb33857f765f8b1acd56879e0bb6",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-028",
+      "policy": "OVERCLAIM-R",
+      "sha256": "907aa10d87fbc4f09d46e56d35a44750580782259b27a95fd70e4919631b97a7",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-028",
+      "policy": "ADV",
+      "sha256": "0f57965bf5f82ed75d2b010d4d2dd10468a784863108fb3c4d5faa404dcf8e0d",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-029",
+      "policy": "ORACLE",
+      "sha256": "778d24ec9eb83b213d6777aa5ee75e38762766a0cc92bcd35fd823a2347916d2",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-029",
+      "policy": "OVERCLAIM",
+      "sha256": "f8a1ada3bfe857c4bfc015b3c0eddfbbab96864cca97d7bec4275df20f8dd6d2",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-029",
+      "policy": "UNDERCLAIM",
+      "sha256": "39f4afa40c05d4cb8a09c7a78e6d3d4c4e669dbd870006937644eceb11771c59",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-029",
+      "policy": "ORACLE-R",
+      "sha256": "5ccbb143ce39618a2d799b21f5510fbbcd5643987cbb8bfea6faab6b4bd7bc97",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-029",
+      "policy": "OVERCLAIM-R",
+      "sha256": "0ba6c7c97e840c7b6d37d4892d0b1418d0de4ac91bc5445b891a3d5174dc6a47",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-029",
+      "policy": "ADV",
+      "sha256": "5790f304764f9e87ac46ea984049c765dc38dc8bebe079e3639eec3d6f6cea2e",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-030",
+      "policy": "ORACLE",
+      "sha256": "a0050a06f9f4223a8ec920da2a8e0bf5f4a65e89ce385a5ce7d4346479816499",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-030",
+      "policy": "OVERCLAIM",
+      "sha256": "575dce9b63e25993d282a5a07044be7613a55cb3ad41e09d8320d11a584f569d",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-030",
+      "policy": "UNDERCLAIM",
+      "sha256": "301808f28d0ad32b1bfa1fc0c6500f19298701c508572e2e1e2f0b0b67472a6c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-030",
+      "policy": "ORACLE-R",
+      "sha256": "da6e00670cd3d82a39c1c7331c9e250affc7b3f67f1421bd13d73be08ceba201",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-030",
+      "policy": "OVERCLAIM-R",
+      "sha256": "49bc563761a7c608a57305e8c8bebb9b83c35f288e8fa3cf1a844c4f0daf1a79",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-030",
+      "policy": "ADV",
+      "sha256": "3db0c3192aaad1095853a102266c0d75ec2b8e30f325ed7f788fbfe4b4f7d61c",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-031",
+      "policy": "ORACLE",
+      "sha256": "b61f2379e997a37a23cafca8307a335cd40fffb13168fe85fbb0b0c6dfeb75d7",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-031",
+      "policy": "OVERCLAIM",
+      "sha256": "7e9bd34403341be3d0eea0ebb2977fb04efaaf4dedb511097e89ba9f52a488d5",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-031",
+      "policy": "UNDERCLAIM",
+      "sha256": "7b8c78954f5e09abc7eb50290120574dbff81b565c28194ac53697e82d5df868",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-031",
+      "policy": "ORACLE-R",
+      "sha256": "b14c742bee6871cf95defe218eef3989373d94d1fccd89f2ce7452dbf6be0750",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-031",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ddfd0a2663947e01f4f74aec2ecaed0bc063cc7f7f6a1485d6df37f257ebd19f",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-031",
+      "policy": "ADV",
+      "sha256": "9858a3adcf75f59fb8c14f6c550959735ec4515d79289985b6c85be02f692b00",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-032",
+      "policy": "ORACLE",
+      "sha256": "abe1727b48e5b5fd9968c20381d32e94a8e562143c73975992ccfd556f3553ea",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-032",
+      "policy": "OVERCLAIM",
+      "sha256": "4cbcbd40f9736328984c34fc4cb38a83d8e824ce9c03d74003ad6133b6cdb4ca",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-032",
+      "policy": "UNDERCLAIM",
+      "sha256": "14a06ee75af0156555980b6ca4431fc2a550d1ee4e0cb71349662741d6d17205",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-032",
+      "policy": "ORACLE-R",
+      "sha256": "0189844f440745abf871fcca5bb8dfdbe89d5b6adfed6eeeb4ba362278f2f048",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-032",
+      "policy": "OVERCLAIM-R",
+      "sha256": "8529ffe5a559316f0370763999c59f90d2d9dfdf07c8ce3a9d5d20bcb3c32e88",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-032",
+      "policy": "ADV",
+      "sha256": "661807c01c9c6be28ef63ffd829da41ed19217eaa169b2cbc4e79e1fc105e5ee",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-033",
+      "policy": "ORACLE",
+      "sha256": "d3661e1d9cc31eb3fe65301c0eb04c7cad1c61a639788984376b5453e25f836c",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-033",
+      "policy": "OVERCLAIM",
+      "sha256": "b3f016ba057b374efa85434281cd015b784b34956e1cd2923e927a0456d2f9b6",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-033",
+      "policy": "UNDERCLAIM",
+      "sha256": "f9cbbb8236742df28e540ecf4f1fcd233c45c112e1e95b54db108581dd289b4d",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-033",
+      "policy": "ORACLE-R",
+      "sha256": "7340bf3ad2dae1dca1df8d2747e44ba74a77e68f7b8ddaacf8e0bc472dbd8665",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-033",
+      "policy": "OVERCLAIM-R",
+      "sha256": "11e533c0fc6890be155a27d11a94b7e9bed6e93a076b01905bc824b0b8ff7a47",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-033",
+      "policy": "ADV",
+      "sha256": "7c7f4dc3aa8a658cf84d2327b60c6525c3ae1d236218fff77c18f574edd93aa4",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-034",
+      "policy": "ORACLE",
+      "sha256": "7c924402665131174915d8c91c271820f0665aa0dfec9c9e587205d5c6f581df",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-034",
+      "policy": "OVERCLAIM",
+      "sha256": "c35e39b6d3240c66757dbdb29981d6dc45d3718506b245234aca86dd043e4019",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-034",
+      "policy": "UNDERCLAIM",
+      "sha256": "ab2aef4dca2cbea2a2688809c8c4beb1d2450e6e5cfcafa2435d49f2556b6896",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-034",
+      "policy": "ORACLE-R",
+      "sha256": "378e12112e900a36a5d0cd7cd3a7dd8643ec379bc9e0c8f828bbae7b4a1de822",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-034",
+      "policy": "OVERCLAIM-R",
+      "sha256": "21868bae0395e3beb70519a67cd511f23b2fcb7232792c8713f3539cc776d125",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-034",
+      "policy": "ADV",
+      "sha256": "42da8c96ebd2f7013e59d31afb66e410d5e6c3b8de9265064d268c18b7e0920f",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-035",
+      "policy": "ORACLE",
+      "sha256": "aeb0581c470e1dc46ce031c1575272cd7a88c47c94edebb3fb1c9f0a04b75e7f",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-035",
+      "policy": "OVERCLAIM",
+      "sha256": "59d73ee15a36c4cfa3fc2e3de1c4f03c87970920491b23faf916e6da5564804d",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-035",
+      "policy": "UNDERCLAIM",
+      "sha256": "1be66a8e3cdfc7202d0081bca562f0d506d80604d8ffe63f33b1333eef5c3e9c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-035",
+      "policy": "ORACLE-R",
+      "sha256": "c933076c522b75fe36154db3995383fceb89d81fae4abd54f2614aa758049aa7",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-035",
+      "policy": "OVERCLAIM-R",
+      "sha256": "c1094761b5213b310f50e2e2ba599b4e08d6c28a23a3a72a569dee41df160810",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-035",
+      "policy": "ADV",
+      "sha256": "2773031f1c44121f35a6d198d7282372f55c2ec52542c72a9e54b155aa15804e",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-036",
+      "policy": "ORACLE",
+      "sha256": "7a2e3582daa7cf099e92b62e4ba0aef5a928eb771ef3f63cee392507dfd88c64",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-036",
+      "policy": "OVERCLAIM",
+      "sha256": "a959abb5e1e7dc402a3da1d7d9f038281843f0f7723a313babd4de61b85c3317",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-036",
+      "policy": "UNDERCLAIM",
+      "sha256": "2410f01ab3ace361e7defa986320950defeac9638799a67c0370f90d36c3a1ec",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-036",
+      "policy": "ORACLE-R",
+      "sha256": "70a3e92ea6a5f6a2f5ec2c8f93f36450f8a7a1504e611057287dc321974ce577",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-036",
+      "policy": "OVERCLAIM-R",
+      "sha256": "f721d111d5c9ef312c4f76ac1623c4f621d8c77bbb5c3e43a85722b52e547d04",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-036",
+      "policy": "ADV",
+      "sha256": "79a7669aa04cbf801149d5606319efefcae1595a4c3a6181598e9f5c63759b93",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-037",
+      "policy": "ORACLE",
+      "sha256": "538720da7d88b9c4d72208ba6113485364f8720dbd2dbf02437b1bdec84244f0",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-037",
+      "policy": "OVERCLAIM",
+      "sha256": "04b838183e6256b1495a7510a91f41771d872e72226dd330e9a815973101bef6",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-037",
+      "policy": "UNDERCLAIM",
+      "sha256": "8d571fb64b7a1bdc537decc2fecbcfbf0b16d4e6d3532838d44d9756ffd9ecc6",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-037",
+      "policy": "ORACLE-R",
+      "sha256": "dde43118a5036a4f53df9e1ecf2e1ffe25e54b65d63d7f3b9666b596ed02adc1",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-037",
+      "policy": "OVERCLAIM-R",
+      "sha256": "8bf1c3a89b4c6357c213d514cf1252e892f094696be8e08db98bd1d328d471d4",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-037",
+      "policy": "ADV",
+      "sha256": "c718697e872c6fa48c641a5448aa08e6390172e95725d6c6583ae70b7ddff1ad",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-038",
+      "policy": "ORACLE",
+      "sha256": "f41e86907b6236ac9118b52da52b6a854b62c7a9edff48cbc67b28b8c42f1cc4",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-038",
+      "policy": "OVERCLAIM",
+      "sha256": "ad4839da91142887e4fc168389a3f462bbe70064645324be42faac4f62110ac9",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-038",
+      "policy": "UNDERCLAIM",
+      "sha256": "145a154cf289b21f00c532299b9af4bde350d53520de5aeb7bc96a947f3cfb34",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-038",
+      "policy": "ORACLE-R",
+      "sha256": "c36efc546abeddb0d92602fa9f5d0b6fc048651caa0819f107cb744c4a592a46",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-038",
+      "policy": "OVERCLAIM-R",
+      "sha256": "604717b84940442a5babe967027dbf091bb8e43d810561f610d961559fc0af02",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-038",
+      "policy": "ADV",
+      "sha256": "cc86a2d8d0fb16d21e9de2f420005f2ccb13543276f841a710fad6478c6adef4",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-039",
+      "policy": "ORACLE",
+      "sha256": "09706a2782f289fbd8a6153e9501b5bea2ee91eb07432b6ecd6185c76393956c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-039",
+      "policy": "OVERCLAIM",
+      "sha256": "105847ee6f4a9b372b8f022497de38d954abd19e4c7b15e046ab6ab9e56fe743",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-039",
+      "policy": "UNDERCLAIM",
+      "sha256": "1fb5d126efdf861af80c4acea6f74742e48b82bcab5b1cdf1a63dc22d492a6b7",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-039",
+      "policy": "ORACLE-R",
+      "sha256": "356840c6054704d76a2a0ac400ced1a18efbc6d2cf1a97a8b45ba4b45d40872b",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-039",
+      "policy": "OVERCLAIM-R",
+      "sha256": "327727667dc65b1c36f397e099e5307f3536e5cf5e51cdb34795e983e8251aaa",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-039",
+      "policy": "ADV",
+      "sha256": "8cc0fe2c6769b253ca7a7ef8c20527664ef5915c1ff929d0031a2f985372956b",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-040",
+      "policy": "ORACLE",
+      "sha256": "9189eb3aa11319ef9605c62a4eb63f83a75200753cb5ad4d5b21b332986a00f2",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-040",
+      "policy": "OVERCLAIM",
+      "sha256": "92528405b14ddf9e11bbd391bac3e356812796ac701b77ba688a1ba4c453588f",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-040",
+      "policy": "UNDERCLAIM",
+      "sha256": "b4fce99e59e0ab27d5f1d7f0c0a4bb550809b4340e8939c2acb3bb36918973ec",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-040",
+      "policy": "ORACLE-R",
+      "sha256": "3af9df3c3e91eb5da199cb91ddf9b57becf85e57278df364d7df3c2cea3531b0",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-040",
+      "policy": "OVERCLAIM-R",
+      "sha256": "2f3d6dc21cf87a22d0e0acd7ab387ba735157a34cb78428d5f354ee79a33cc3f",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-040",
+      "policy": "ADV",
+      "sha256": "b0b52d88441fea5f4ac1a1d91b13ed8c2395ce36281fd16d0447775a14ec7f0d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-041",
+      "policy": "ORACLE",
+      "sha256": "2e42b4c18887337e15da7d6a1e0050ca2f442937fe80f9926eef36b81354b0c4",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-041",
+      "policy": "OVERCLAIM",
+      "sha256": "2afddaa986760f8b361e8288eb4d558129cbd275b0d467ca5ed9e5a76673679e",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-041",
+      "policy": "UNDERCLAIM",
+      "sha256": "15fa82692ea03cfd078e99b4726901987c469511083e59ed8b1499ce80da12ca",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-041",
+      "policy": "ORACLE-R",
+      "sha256": "39037246c2c14f6567ca43a4e234ab63b55f61ecc4d611fb30bc8e0b7bbe52a7",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-041",
+      "policy": "OVERCLAIM-R",
+      "sha256": "dfa8f96d1cdf4513fec4cf85d4de23a4557c9898dcd01f7720490461811e088c",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-041",
+      "policy": "ADV",
+      "sha256": "578b7171c08f30bbe63fda362c02af90eb462320c0daa79ab8986530f2565d56",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-042",
+      "policy": "ORACLE",
+      "sha256": "fb50fb25362e502d3e5c46f1733f4d450a8ad3a2d3df30e86d98ad0e32a3a923",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-042",
+      "policy": "OVERCLAIM",
+      "sha256": "630091780140e5089d4c612186e906c11990a1a48e254ca07a4577b7e9c7d408",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-042",
+      "policy": "UNDERCLAIM",
+      "sha256": "cdd8dcaf56b8e41bc6eb9cbe7a3e09e17c4fd003d9f1611eb91024b16140e5d9",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-042",
+      "policy": "ORACLE-R",
+      "sha256": "f488a4b8b107cd045f925130d2a77248643aab7c352f76d3ae92f07882f241de",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-042",
+      "policy": "OVERCLAIM-R",
+      "sha256": "eab437706d922d8d2e7288d3693436a372d869f6e8fa29400c03fa43bafd9c94",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-042",
+      "policy": "ADV",
+      "sha256": "b47dde2c6f42b126d99640a70298f14581108581d86cd4b540e3d903ec3539eb",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-043",
+      "policy": "ORACLE",
+      "sha256": "ee1b7a817534ff135a98d395b5572a37b1b0b7aab4fae69ac47082e775c8a51f",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-043",
+      "policy": "OVERCLAIM",
+      "sha256": "452bf2f16b2b143ce33bc6a1c8b53b00e1b668114a48ba78e284635b35ec5963",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-043",
+      "policy": "UNDERCLAIM",
+      "sha256": "3ba8cd140dbbac3f232ad8473e7c595f075b76e2040f2b99aa348922cc3d31ec",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-043",
+      "policy": "ORACLE-R",
+      "sha256": "7cc1d7d1b26448ec3e7ca4737c6eec956efe1f79b1483d8d13d2c34a58a54532",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-043",
+      "policy": "OVERCLAIM-R",
+      "sha256": "f69b575c3d8cf0a26d4e0be7c0d2b0c6eab44e121b255ac9e787e321e1cbf8a3",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-043",
+      "policy": "ADV",
+      "sha256": "330613a0303d2f256aad37d3966d916fcf3703786cd1d1470efd2ad240c2f231",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-044",
+      "policy": "ORACLE",
+      "sha256": "94a1f27145809fbc8992a2bfb0948accd842ab734c1f822bd9fd460351b7da98",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-044",
+      "policy": "OVERCLAIM",
+      "sha256": "8632f777c57e6a2c86dcca6f309afb3c134fa314c548ef534b353b64ab5f5f60",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-044",
+      "policy": "UNDERCLAIM",
+      "sha256": "c4dc459f87afb51f26dd45ff8ac57d3d74224fa038b52d5c0b26e45219956262",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-044",
+      "policy": "ORACLE-R",
+      "sha256": "47311c559a56a1e6449fc12f1e4561e5debd93c2572c76448c7885ec50a583ac",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-044",
+      "policy": "OVERCLAIM-R",
+      "sha256": "9f6ae5ca9e11664a6d453268e94e89f8cc355473c0f9a70b367f499c68c075b1",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-044",
+      "policy": "ADV",
+      "sha256": "de71b4b32da3e6099a1c9fd1f1e3868d4d07d22deafc5846df9c261f4c5d6649",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-045",
+      "policy": "ORACLE",
+      "sha256": "2b4dbc09a1a6dcf01cfb54ea9b71dccb1c3e16b58111f65d57095dc363e215ae",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-045",
+      "policy": "OVERCLAIM",
+      "sha256": "71d5e0ce9ce391e177679612939a44aa6bf0365b15f8692b5543270a648f824c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-045",
+      "policy": "UNDERCLAIM",
+      "sha256": "8fb0f2d03c0c3fb4cc9a66a008ad7d7a84be793e052f20b824ce73ca56778201",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-045",
+      "policy": "ORACLE-R",
+      "sha256": "9968879034bc357b1f2a514b196fd46f120a12beb6ebad79c7b204c5cc089e8a",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-045",
+      "policy": "OVERCLAIM-R",
+      "sha256": "26015f1e1f21fb224882c81682766863e24c4d18ee62dddddf4b22b61177ee24",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-045",
+      "policy": "ADV",
+      "sha256": "2a636a4884e0405d7e638633bb9794db5db69b879aba24ee668b838e6ce1bf8c",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-046",
+      "policy": "ORACLE",
+      "sha256": "a029524d867e293e29f6354570f63e6f85e228c8e5496c12d241efbb540df4a3",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-046",
+      "policy": "OVERCLAIM",
+      "sha256": "af43acbd40c72694349225c90a21e7048baa53a0cced0fa6ced9648017b56a82",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-046",
+      "policy": "UNDERCLAIM",
+      "sha256": "9d4d6c7271e2c92b020485f9450bbfe9c1fabccaf9129a61a04f1c4717427f32",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-046",
+      "policy": "ORACLE-R",
+      "sha256": "50b4afe1892d34b4f085a09f91255c570599b2038f7c9c683c0abf4799a306af",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-046",
+      "policy": "OVERCLAIM-R",
+      "sha256": "4241a043ff1d7319878ffb21558901388edb4f897e375e62472c83560877bd37",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-046",
+      "policy": "ADV",
+      "sha256": "5001ae74592944fc8723d3387603aeae0670003b28df6a5db0c53d649ab8e56d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-047",
+      "policy": "ORACLE",
+      "sha256": "4807281f27e5f0154059bb9820230e7aac578d5911987b13b010ed27d462e38d",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-047",
+      "policy": "OVERCLAIM",
+      "sha256": "fdebc3dbd8248fb090ec08bee1f66dda44c4eb7e83cbf99aa3bf0f8975038048",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-047",
+      "policy": "UNDERCLAIM",
+      "sha256": "a113f599276ec6bf75e7afcf4fc7308c55a16a83c4c9ebd296c9f58d24722863",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-047",
+      "policy": "ORACLE-R",
+      "sha256": "651564e7cbc121100b8ff64ad257a17e89826be33f48a48b11c66d1a040d9fa4",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-047",
+      "policy": "OVERCLAIM-R",
+      "sha256": "c094ac81ae6768642313410ddad51d17622e3dc658758e2f6cc87663530e3111",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-047",
+      "policy": "ADV",
+      "sha256": "db81e9884e86a5342cb7b967ee67a012db1e55b89816a1d8b1d91f782b57c179",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-048",
+      "policy": "ORACLE",
+      "sha256": "246431ec9e24ed5ef9f58e6a102ad0187e9beb6aeb1d9bb93f59ddce8f7c895d",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-048",
+      "policy": "OVERCLAIM",
+      "sha256": "f44f6b70904946c177753894476c7aaf9e15a8cc15afb1038c04f9731bf7d987",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-048",
+      "policy": "UNDERCLAIM",
+      "sha256": "6fbeefccd5074cd701ec6409ea082610ec999e77b2f6a4071460a4387a2601c9",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-048",
+      "policy": "ORACLE-R",
+      "sha256": "00d1ebd833ffa732cbe1886b5fc0b5607dc79e8e8a311d2092a54de9804f3ff7",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-048",
+      "policy": "OVERCLAIM-R",
+      "sha256": "be67ae457a54fcd303500d03ef06a6f9535a6b32219264f12aaa1f632929d95e",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-048",
+      "policy": "ADV",
+      "sha256": "7e6a68ef52b0b7f374b84dcf4c78afe1b24a838acea26bf30c7ab23c55e68d58",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-049",
+      "policy": "ORACLE",
+      "sha256": "aab31fc2fb1100bdb695faa804acbdf09c5649c7ce91ca603941d3edd7ccd877",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-049",
+      "policy": "OVERCLAIM",
+      "sha256": "96c2c0c684636071e19c6cae26db2d7953017d67c37d26f49e518fd23c07a11c",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-049",
+      "policy": "UNDERCLAIM",
+      "sha256": "cba2e52a72570d5fa8752ad6f109df2923ac154d64f3398941bfa51838a0f67c",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-049",
+      "policy": "ORACLE-R",
+      "sha256": "957c99cacddc28c926a71a0a2fd11eb33dd0676d0721afc28773884f19276063",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-049",
+      "policy": "OVERCLAIM-R",
+      "sha256": "aad09a3d86c60f2a3f1ae7abb836a52ea8400f5ed26e547ffd5d5ab5ffd5932a",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-049",
+      "policy": "ADV",
+      "sha256": "c71a420a84194fcea6a57da5c4096722e809092c6aa32a76178b1afdfa6bf6d1",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-050",
+      "policy": "ORACLE",
+      "sha256": "16a49230c1337f477f8232bf02963d6033a9aac7cb60a053cf6a00b7b5a0c2a0",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-050",
+      "policy": "OVERCLAIM",
+      "sha256": "0bdf7a4a8290703bf23fdd469e255d15f907a472545c257c95ee04d8d353b1a8",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-050",
+      "policy": "UNDERCLAIM",
+      "sha256": "5bd9549770fafd880566adab48c1e18818d3b8b8a67aa850f54fbfb824052a66",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-050",
+      "policy": "ORACLE-R",
+      "sha256": "1daf5444947e306f7730a2dc3ddff251a2bfe02909c4d82c86bd15548d9ed077",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-050",
+      "policy": "OVERCLAIM-R",
+      "sha256": "23a996d12ed4a92e949bcd614a0d556581777b5e27d68424e56eb57ca482dd3d",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-050",
+      "policy": "ADV",
+      "sha256": "b7b3f45dfb82de4e0393df3e1e1cbefc3bc31ca0991de1628c143c0d6420c41e",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-051",
+      "policy": "ORACLE",
+      "sha256": "468c5f61e385a6d4743d81ba03668a57ced691c9e65f5d99089c1164bab3e855",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-051",
+      "policy": "OVERCLAIM",
+      "sha256": "a8f808cd225a003d8af7272aa217b05f9e7732cd52b472d5450dd6307389476e",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-051",
+      "policy": "UNDERCLAIM",
+      "sha256": "9aa1c0b4eddff9ca20b2c16d6e7852ef947ccd9b9d3cd14d39c6594ea91e26a4",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-051",
+      "policy": "ORACLE-R",
+      "sha256": "a84fb6c218e17af300c6777a54a296417e765f08ad3d20704a3634af41406392",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-051",
+      "policy": "OVERCLAIM-R",
+      "sha256": "3f8476cfb3d13534f0b47212c041697550cb3123e99b710550e7c5db917f9add",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-051",
+      "policy": "ADV",
+      "sha256": "8cba4e320e51c6c28dd84a867d5e18f81c802c3affd348a4fcbab645962a5780",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-052",
+      "policy": "ORACLE",
+      "sha256": "5bf819ca56034d5e8c533273e5173e5d4bf1bbf445f2d49d459ebe5471b2a145",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-052",
+      "policy": "OVERCLAIM",
+      "sha256": "81bc97bde725623102ec77ccf11ccdd279b95c09a8395adc04643915f4cd4c35",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-052",
+      "policy": "UNDERCLAIM",
+      "sha256": "769f7df707095720a791a0dedbdc268a2a528108744024f10954a3859dca2e12",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-052",
+      "policy": "ORACLE-R",
+      "sha256": "1461aa789834536c3bfe29daa2e41a24fda9142e44e04f0bc5c9810b4bf8501a",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-052",
+      "policy": "OVERCLAIM-R",
+      "sha256": "8200baef6178dbc997ad9f3e30b1db10b5e691bad57085e3639a883341639593",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-052",
+      "policy": "ADV",
+      "sha256": "c728beb28da4afc1005d8514b0d1651dd1dd2cf240dc35dea81e2135310f5e93",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-053",
+      "policy": "ORACLE",
+      "sha256": "b150488fcd32528c7f274722a755aa2ce49a44e99ef42ca935908ad855d6b62c",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-053",
+      "policy": "OVERCLAIM",
+      "sha256": "26f70a84f8d112aeceac5d7a498c4455da82c5a1be674d4b31befb048ec1af84",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-053",
+      "policy": "UNDERCLAIM",
+      "sha256": "e9c5670dbda280707b90c0f1ea5cdb434b95a750c7cd61d4170e4062f72f0a9a",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-053",
+      "policy": "ORACLE-R",
+      "sha256": "be5f68b413259783a2fb8b7c6dbc86ef47415b1a03c362b123be161df9c49b90",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-053",
+      "policy": "OVERCLAIM-R",
+      "sha256": "767724ed64d672fde2623ba0687617905fe2850ecf0c3cd3090cd2ecc42a5c19",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-053",
+      "policy": "ADV",
+      "sha256": "c728beb28da4afc1005d8514b0d1651dd1dd2cf240dc35dea81e2135310f5e93",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-054",
+      "policy": "ORACLE",
+      "sha256": "2ac6efcb46412aa7eff51afdfa10da9681a8330ac99fd5919d5653b44c614fc5",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-054",
+      "policy": "OVERCLAIM",
+      "sha256": "2c336a277801aa09966b6cf5db273d7d864ef90184351687a2efebf77c9481a4",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-054",
+      "policy": "UNDERCLAIM",
+      "sha256": "8536d08f5d53abc4e5157497806ece6d8fc78fe38f5e217bfd7ed581d391b6cf",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-054",
+      "policy": "ORACLE-R",
+      "sha256": "77bb5942e395de2647768747dbc103219b42437c2882485d8fb4bb9ecfc33290",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-054",
+      "policy": "OVERCLAIM-R",
+      "sha256": "8eed5298a753b7e0057dd0784d2ab0588dcc1420f8cdf0eee1a7b407d5c65fd9",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-054",
+      "policy": "ADV",
+      "sha256": "c728beb28da4afc1005d8514b0d1651dd1dd2cf240dc35dea81e2135310f5e93",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-055",
+      "policy": "ORACLE",
+      "sha256": "d860eae0559a9917afe9b980e64fa7690d705661f50dc6ebcb5568c4589a7dd0",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-055",
+      "policy": "OVERCLAIM",
+      "sha256": "48d5aa57272e5430354fdcb941359c477af504efd57cec6b7c14e185d58e5ece",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-055",
+      "policy": "UNDERCLAIM",
+      "sha256": "dd0703a98bd8fbbba14fe0a6e9410e632c394854d671297029658d7fe48439eb",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-055",
+      "policy": "ORACLE-R",
+      "sha256": "dd1cbd36ad295ab09c2d336eb404f91c62f07c4532ea75c6da71f70bce81743c",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-055",
+      "policy": "OVERCLAIM-R",
+      "sha256": "1abb5075335b530db103ef8bacba6aa81ecef7d4213789fb6f721d939bcdd0b3",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-055",
+      "policy": "ADV",
+      "sha256": "ce671e39f9caeff58fa707e5a39663ba50b946dda2a18cde8e0f9dc4abdb0338",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-056",
+      "policy": "ORACLE",
+      "sha256": "50064412b9dcfdadc577728334f1e955c662562eb8aae3cbed70b43acc5a06e1",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-056",
+      "policy": "OVERCLAIM",
+      "sha256": "8b16611888954862b0f8b5422f883dcac1a701b9f51b901b248d10f035e87ee8",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-056",
+      "policy": "UNDERCLAIM",
+      "sha256": "7c44e1b2222eb70f51c56f3fdf6685cda05a3de62066432215fdf7df8c2398ba",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-056",
+      "policy": "ORACLE-R",
+      "sha256": "49e464b1656cd1a98765f6603109248f9a21e44499477d799f128fdeec69763f",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-056",
+      "policy": "OVERCLAIM-R",
+      "sha256": "682c1dcaa121f54b83f6bf86de211f8852f46339b7d244f82714576292478af1",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-056",
+      "policy": "ADV",
+      "sha256": "001f4c738f2c1ec46b4d313d5f09b1bce6dffc6959accba01b6a509652d7f443",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-057",
+      "policy": "ORACLE",
+      "sha256": "2f9fcbed1e0a507db614b1f086980ca8992571d90789b1660dd5f4c1037c6301",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-057",
+      "policy": "OVERCLAIM",
+      "sha256": "569fb521ddd1e5b1c22cb1f8c7740f294ba0b794c265b10034a05d393aad3d6a",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-057",
+      "policy": "UNDERCLAIM",
+      "sha256": "5a1602d8a68704d8af18316e7fe406cb5f32050ed8db9eacf237c0cddd9e0187",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-057",
+      "policy": "ORACLE-R",
+      "sha256": "46a7b3cf5684113e343108dc4dcc1b3cc6cbdc7315e771e553905ef9693bf1d8",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-057",
+      "policy": "OVERCLAIM-R",
+      "sha256": "14015edf619f8df7d8eaea3f468d7fcc9449dba126db832ad08d0b81eafd36eb",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-057",
+      "policy": "ADV",
+      "sha256": "3608c2f64ec0d18d1a5130cd77f51c5d9645cfbce514f6c64cef38fceddbcc47",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-058",
+      "policy": "ORACLE",
+      "sha256": "a3b9d4419ae73370382d2d7645198f609ae9fb112d800f5c7330cb493e23370d",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-058",
+      "policy": "OVERCLAIM",
+      "sha256": "56a496ab76eaad943701d41367256c696b96e59c4424b3c3befc270780cf1021",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-058",
+      "policy": "UNDERCLAIM",
+      "sha256": "7b5d9eb7cd92dc85f5b56146a6ab7bffd71db4032797aca495fd588fbfd63b74",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-058",
+      "policy": "ORACLE-R",
+      "sha256": "76ca8f63beb341c73c1585d28122a6e0e9e976d364dd9003b4e7036a91323d29",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-058",
+      "policy": "OVERCLAIM-R",
+      "sha256": "dbbcaa6a9ab160df63d54f8482d0f3c38bcecfec35dea829cc8d761bdc138848",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-058",
+      "policy": "ADV",
+      "sha256": "46fce3c37cfa8c98dfcfe02b7bd2276d4a5eb44a1b26703e52097a0a0de47b23",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-059",
+      "policy": "ORACLE",
+      "sha256": "26f6d62171a9d29390bdf59fd389d7099d3ac3f38793c87f0a8158dbd5dedf8c",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-059",
+      "policy": "OVERCLAIM",
+      "sha256": "32728b040cf36c38074932d4afd89a5654dd302720f80788833bdfe39edbf1eb",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-059",
+      "policy": "UNDERCLAIM",
+      "sha256": "985a8a68f9e76f0f19711979eda55f3ea1ec3f1b371f6a536aa922e9a71a2fdc",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-059",
+      "policy": "ORACLE-R",
+      "sha256": "aad3ae65ac7159390e7b692ceef981aac1887a08e34a66736e302bf5e2095de2",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-059",
+      "policy": "OVERCLAIM-R",
+      "sha256": "2bd617c46994c8a5956b18d47a7e27995951c8a785dec4247ff527622ef2c007",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-059",
+      "policy": "ADV",
+      "sha256": "7af3c0ad51706dc64451d5d5cd5a7e3186954a0d2cf333bb037569d2b4df36ef",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-060",
+      "policy": "ORACLE",
+      "sha256": "c978c91d91f4709e3a2a8db59b0b222b4cc560a06b6c5fd6f6d74ad703e66f15",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-060",
+      "policy": "OVERCLAIM",
+      "sha256": "59386554f47927cfe3e69b46515f0a4704a76584fd6b7f3c8a373bd8539c8645",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-060",
+      "policy": "UNDERCLAIM",
+      "sha256": "9c8b60ca659c66335e58d8898daf6b58cb39a08251d290d1784a1d8eb0c446b7",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-060",
+      "policy": "ORACLE-R",
+      "sha256": "27038ee67bd2e380a3f97f058c5e67d03abbc2d51d0db0e33145122af98495d9",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-060",
+      "policy": "OVERCLAIM-R",
+      "sha256": "4669d2812b096589d43f19a45567b1103398435236b155d32dca21dd3daeea90",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-060",
+      "policy": "ADV",
+      "sha256": "956d90d61fbb3e6b1118994e78a9b180d649b6fed468b1b641950d1749ce256b",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-061",
+      "policy": "ORACLE",
+      "sha256": "4b9284248b6fa72599145ee90218c62c1b8b9352c2180b7b1cde5de47bc444de",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-061",
+      "policy": "OVERCLAIM",
+      "sha256": "6384bc199b6ae5a78d6e2cc8c0d3b26dba974472662c13ed64809fde6950fcf9",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-061",
+      "policy": "UNDERCLAIM",
+      "sha256": "560df71e6fbbdb71c0fbe8722ba260e5df994df160d6dc9b9244b6c251019348",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-061",
+      "policy": "ORACLE-R",
+      "sha256": "f18f68882efc8263a5cc5e209d7be89e579fac02457a1f865e050cdfc602b103",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-061",
+      "policy": "OVERCLAIM-R",
+      "sha256": "4e0bd5b99e2c575a7d5c658ed5f89063c41420ae5ee1df916af8cd5a4a0bd4fa",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-061",
+      "policy": "ADV",
+      "sha256": "0a209f5be62b3d5f2ddd8e5f4db30739043313df339bca34b376fa4a7c50ef58",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-062",
+      "policy": "ORACLE",
+      "sha256": "a6634f58bb36a3a75a400b32cc0e3f92dd0e112a0437ac446144d140dee34b9a",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-062",
+      "policy": "OVERCLAIM",
+      "sha256": "aac22576ab97e1db138a26c59623d3d13590bb9b853b69d637a46fe50936b4cd",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-062",
+      "policy": "UNDERCLAIM",
+      "sha256": "a811d1be82deec52d435a662c90eac2d5fc1868b18532130c39a5982e9ffb049",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-062",
+      "policy": "ORACLE-R",
+      "sha256": "a77b82f261080a8e172775a0e23944cafc00ebb7b8a9d863014b83c0e1936ac6",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-062",
+      "policy": "OVERCLAIM-R",
+      "sha256": "8e35c4efe31fa90affa564317d7e9ce0f29c206627a45aedee99939b7c9d541d",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-062",
+      "policy": "ADV",
+      "sha256": "b0b52d88441fea5f4ac1a1d91b13ed8c2395ce36281fd16d0447775a14ec7f0d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-063",
+      "policy": "ORACLE",
+      "sha256": "287a0192c6b9a40631421cbf93b1f42697f8e83818ec6d81db55844fc547d1a7",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-063",
+      "policy": "OVERCLAIM",
+      "sha256": "b7cf3ec9e0141e878d027132e370fcb648e5546ae29049dcc2cde86bc9d2336a",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-063",
+      "policy": "UNDERCLAIM",
+      "sha256": "456e8609eeaf424e977677ac29e04623b96e11666dc52b1bc24befd635681aba",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-063",
+      "policy": "ORACLE-R",
+      "sha256": "00bb7cb8e9b4f9f67107e1e2163a9a47acbeabc68500c8483cfc596dc3032ade",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-063",
+      "policy": "OVERCLAIM-R",
+      "sha256": "0cc11db8c00b26af467e3ebfde0fb3184d3ef0aa2c56fe13f4c83518ce5412ca",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-063",
+      "policy": "ADV",
+      "sha256": "dcb71cfb74588daa439dccfd76ed272a0a9c62349654580cb123dd7f1f2f2ff6",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-064",
+      "policy": "ORACLE",
+      "sha256": "4a6b35b20748d0c4bcd0286ed28edc161421fcdea7a6a23a9acceae8f8898f71",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-064",
+      "policy": "OVERCLAIM",
+      "sha256": "839c291c24078301c037b71d5b1dcb9cf7b0bab580f561fce4510ac38475f4f3",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-064",
+      "policy": "UNDERCLAIM",
+      "sha256": "7789f6130376fdd51a0d01a018dd37550762ad54fa911217dcee9565b14f9e77",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-064",
+      "policy": "ORACLE-R",
+      "sha256": "bd6bea3746c57b5a0527380cf077f4fb6762c9f39b0aad4fa0187c1d4bd8ba31",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-064",
+      "policy": "OVERCLAIM-R",
+      "sha256": "a116b97f030408279957c300a2d21e6131bdc6361b51d3537b2203f514fbe206",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-064",
+      "policy": "ADV",
+      "sha256": "b0b52d88441fea5f4ac1a1d91b13ed8c2395ce36281fd16d0447775a14ec7f0d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-065",
+      "policy": "ORACLE",
+      "sha256": "a0493d6e8cd98dcc2b81be7fa2b16ecfff96078660f2fc1cc4857651260d340a",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-065",
+      "policy": "OVERCLAIM",
+      "sha256": "3e5a166f88090ce8934d56adea27da4c9aa2ea74ca05b0c8ecef44419a0ff1e2",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-065",
+      "policy": "UNDERCLAIM",
+      "sha256": "886bca06719d7b77f5f6aa213bbdb81da07487a775381fd2446cfb8aa6e9bb7b",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-065",
+      "policy": "ORACLE-R",
+      "sha256": "5256eec2dc3bf99bc0ed185a83c4b6a68addc370a932d562a144ecadd8f8d8b0",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-065",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ae6453eec57deb849ec8d66b8e395c7da7f3ff535b4dd04b72514af8d71f0e29",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-065",
+      "policy": "ADV",
+      "sha256": "b57724ff537aefeb5ffa97d67b0105bc6fbbcb8ff59b0b25c1400bb4d1b97cad",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-066",
+      "policy": "ORACLE",
+      "sha256": "52401902abf28e376e38d2b91bfcc904be431eff88a938aa10a254a0f245649f",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-066",
+      "policy": "OVERCLAIM",
+      "sha256": "fb0b8b9117de3399d93d28ef89d1f0f1ec337059a9baeaae772a080bb6abd8a6",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-066",
+      "policy": "UNDERCLAIM",
+      "sha256": "20d9e5762a4711b1d11248d75bc7588b9a2782af168250487db4d6323aa22b8c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-066",
+      "policy": "ORACLE-R",
+      "sha256": "c9d90e7c552a2eed443c426c508f267ae2fc724734d5a224c3d8dac2cfc6083a",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-066",
+      "policy": "OVERCLAIM-R",
+      "sha256": "9f146a719327304d6cc2a3dc98927bb42cff0cf1883dc58d5f30eed801ebb1f8",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-066",
+      "policy": "ADV",
+      "sha256": "bd2bdb92d462d6fb6e28ee30b8589bb1104915ecf5a7272812bfd243ea4c3606",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-067",
+      "policy": "ORACLE",
+      "sha256": "19495164170ac788d64c5d41168e66dca5fd70847dca2c9ee72671f92c3d4d8f",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-067",
+      "policy": "OVERCLAIM",
+      "sha256": "5da92aebaca61934f9dd871dad987ee4f20ae15e1dbe89c9d439e9c720ef46d3",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-067",
+      "policy": "UNDERCLAIM",
+      "sha256": "ef7db9ddc5c11ef9373eaa3b93ff2a02652815d8469a8321690d12ce735b099a",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-067",
+      "policy": "ORACLE-R",
+      "sha256": "0bbc02fbbf99541463ba82702fb4c1e28bcfef3af24bc888177345c4ea6494a0",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-067",
+      "policy": "OVERCLAIM-R",
+      "sha256": "6cb8cecd81e68cd8ee6a9763e5ed65223b4f309ef4e52c37eaf0ce1e24752d42",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-067",
+      "policy": "ADV",
+      "sha256": "2f15b5fb2ef98bba7efd3e698aeb8bec1eff872da6604787da6a44b3c284e2c8",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-068",
+      "policy": "ORACLE",
+      "sha256": "155c5382363b5a3848cba2b1d2eeb409a3e26849b5f33da639a94fd806ee3588",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-068",
+      "policy": "OVERCLAIM",
+      "sha256": "f4f44c779309419ddcdbc54fe35e06c2db98a842e5e86b9aa0f0e2141cbba1c5",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-068",
+      "policy": "UNDERCLAIM",
+      "sha256": "a43bc479f4d0828fdf6dd4a373851734bba9d5e4dec75c992c33cb28a88111c1",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-068",
+      "policy": "ORACLE-R",
+      "sha256": "6045afe4fa0058266d31a7ea931901a7a31a4bc8344419cd6b93241c150decfd",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-068",
+      "policy": "OVERCLAIM-R",
+      "sha256": "49e30eabb39c4bbdfe2b54830a92fba7118b0a6cd8cd5e7f441a47af19f58d4e",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-068",
+      "policy": "ADV",
+      "sha256": "a5d6abc4f4ee3c0b9fd3374cbfe44e0edd022c24d2fe4d1d95182a6f0316286a",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-069",
+      "policy": "ORACLE",
+      "sha256": "acd50b302e14f4b4a108150750c8177dc9ccca81fa9b7f41763056af16fa5b09",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-069",
+      "policy": "OVERCLAIM",
+      "sha256": "86ce4699169491214f8b5acc7359fb0a1f7a33792cf234c5c88aab031ad0630f",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-069",
+      "policy": "UNDERCLAIM",
+      "sha256": "0d66c7cb98b1311f8ee5a49cda7d44f7284e1cecc87448e7933a2cf496a22502",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-069",
+      "policy": "ORACLE-R",
+      "sha256": "5c0a9a009950106bef66179c3de1057d6a0e3cb83b9ee95008397a4ff8dafb28",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-069",
+      "policy": "OVERCLAIM-R",
+      "sha256": "268478f0e7e05eed12f6b96909476937275e468d0553b31936343fc6697baef0",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-069",
+      "policy": "ADV",
+      "sha256": "4196eb3dfc7436eb331d01244a7e7254b717990f641f6e92c94dcb997b68b86b",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-070",
+      "policy": "ORACLE",
+      "sha256": "386c5294b4561b84b4465fe25b1d77f736f442e29ddf60669a151e9ac369d47b",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-070",
+      "policy": "OVERCLAIM",
+      "sha256": "464512a6cd70e24c7aab2ce43726bd1631309f943b0bacd6bf7fae7b9bdbb5be",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-070",
+      "policy": "UNDERCLAIM",
+      "sha256": "91f0e994914b84984695434c9e6c258654edf91d82fbdd2826fadfdf2307244e",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-070",
+      "policy": "ORACLE-R",
+      "sha256": "55014691fbfe173b8d57d348d211f31654f8227358bf7e9be19d5d14ba60e31c",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-070",
+      "policy": "OVERCLAIM-R",
+      "sha256": "0a4bd0eb19459a026b78a14299555ce8d423e16886c46562e8f62cfe903e185c",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-070",
+      "policy": "ADV",
+      "sha256": "5798ff8134134fd899ea6987c74cdf2c1baee7c937253754cd5c7eb459676fbf",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-071",
+      "policy": "ORACLE",
+      "sha256": "322b8618e4ffb52e746a30a8594d777ec9fdac034a1434cdae2844c4679632bf",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-071",
+      "policy": "OVERCLAIM",
+      "sha256": "b63b7df4bee74b41ee8221e2cbc13a2a19f1a7db0b54216864a16c45cdecba1b",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-071",
+      "policy": "UNDERCLAIM",
+      "sha256": "6383aebaa0602fec3fb79fb39e357f48c4952df61a76bca7d76b074c48f5a791",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-071",
+      "policy": "ORACLE-R",
+      "sha256": "d0a8addafb30f905b376b5fbb8ed25577f988bc76b35218e6aa75f7bb454540f",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-071",
+      "policy": "OVERCLAIM-R",
+      "sha256": "68caa9e29d5025c9431556dceebaf490374cdd6dba89047cbfc87077eae3fa98",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-071",
+      "policy": "ADV",
+      "sha256": "bd992b6e3c1db09b5949beaed45b7380d727a3cbf341e1fcd502321f927810c5",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-072",
+      "policy": "ORACLE",
+      "sha256": "da7f5c49c9addc4f6e8ed9c4256ee3240332d6d1f68868e8df8b909be0ad1989",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-072",
+      "policy": "OVERCLAIM",
+      "sha256": "eaa5e8e44b6c3ab87eff8222c22ef67ad2a1a265815d83a31f3f69afe720a624",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-072",
+      "policy": "UNDERCLAIM",
+      "sha256": "80f9497e067a471ce73916e3bc7d43cd0e984d0020642c01f4bc72a563cf337a",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-072",
+      "policy": "ORACLE-R",
+      "sha256": "680d816541794b1693f7b25d4ad859ab6f6e1660dc29fa0ac8661b49bca81903",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-072",
+      "policy": "OVERCLAIM-R",
+      "sha256": "d86e836a6cd70a8c34207abe05e418c12f284effa208560e1977db4e22dfc511",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-072",
+      "policy": "ADV",
+      "sha256": "b0b52d88441fea5f4ac1a1d91b13ed8c2395ce36281fd16d0447775a14ec7f0d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-073",
+      "policy": "ORACLE",
+      "sha256": "11f709e5e0756a939a24bfa78b99fb7e42105c4e2585708e94f0bc3c10b340e9",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-073",
+      "policy": "OVERCLAIM",
+      "sha256": "b58783f8e8c5a63a0e141b07dacc07bcb71e0eed7e409e8149686c8379a3267f",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-073",
+      "policy": "UNDERCLAIM",
+      "sha256": "0cf891033a865879229dbc16c99e466820089eca028fcc43a50955685b5b9d8f",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-073",
+      "policy": "ORACLE-R",
+      "sha256": "23562294de0fd6da3afb69ba3ce8112236cff88b7ff00fd2033e3fb0b2e59a26",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-073",
+      "policy": "OVERCLAIM-R",
+      "sha256": "c26cec7ccccde4cb9ad6d44e1c94d1de848a06207f80c7024a707c951dc6218e",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-073",
+      "policy": "ADV",
+      "sha256": "29bc400328dba36e7bbeca31acd97b451b62294bf288b486ce44865e28abb979",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-074",
+      "policy": "ORACLE",
+      "sha256": "c5f58d8f8066cf3e4481e27b0c7b8e36baa79019b42be1f84f8de86afed59076",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-074",
+      "policy": "OVERCLAIM",
+      "sha256": "06ac88f9943e8c225bc5949242a34dbf5748f600cb30f921e9ec7f40b21a8687",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-074",
+      "policy": "UNDERCLAIM",
+      "sha256": "a50b55048edde2847c3c136c7f4ba926fa37ba8f26b4989d618ddc42a9f15a37",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-074",
+      "policy": "ORACLE-R",
+      "sha256": "7bae1f76c357add41f004e25dde25a3b2e96321f6c3357f04a67ef2d6271fc0f",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-074",
+      "policy": "OVERCLAIM-R",
+      "sha256": "050d26e5915ce90a49411d3449126f276fa8599273e9081a03b020ce829eced2",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-074",
+      "policy": "ADV",
+      "sha256": "b0b52d88441fea5f4ac1a1d91b13ed8c2395ce36281fd16d0447775a14ec7f0d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-075",
+      "policy": "ORACLE",
+      "sha256": "06b48974e194c5aa285941653df24e4a6cbc89b3509dc3bf008ae5a651104a65",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-075",
+      "policy": "OVERCLAIM",
+      "sha256": "1758c086275d93ff753d3fe831c02eb4415424a56093701be7252bc9a43f92f9",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-075",
+      "policy": "UNDERCLAIM",
+      "sha256": "176b4ded04c2d8f9080d4e510b42e974273b866e03f56ba1edcc73524c561d40",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-075",
+      "policy": "ORACLE-R",
+      "sha256": "cb0b27154863907c493fbd3c2b29c6a275ccec71f39573148b8042e9892555ff",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-075",
+      "policy": "OVERCLAIM-R",
+      "sha256": "cd1409f24149c52a469a1ec1928695d56baecf439649d2b89c1dd007b89fa6d9",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-075",
+      "policy": "ADV",
+      "sha256": "b0313fa6b39a0bc3c9f17860a932e30672da51c87eae8e463d2cd7cf1c09c358",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-076",
+      "policy": "ORACLE",
+      "sha256": "978e1d50a39a454da87745ec57a4afc160205c90839cf7139c69f27b7b8cf25c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-076",
+      "policy": "OVERCLAIM",
+      "sha256": "e95f2e8e8b9cf66b33a8397c93b995859644d8e5703a7bd871e64ed46e339225",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-076",
+      "policy": "UNDERCLAIM",
+      "sha256": "d28bc89ec8b1dd83da617773e891dd31b9ca29f89f40cc61d674ba27dd69a062",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-076",
+      "policy": "ORACLE-R",
+      "sha256": "17ee6b01bf6d1688915465a07a6a5d5f0d4d4f38f3c1bd161efb1d4659aca7c5",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-076",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ea99d1945b19528a8135e190fcc4ad43201215cec04f187dcd76a75b8a5c481a",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-076",
+      "policy": "ADV",
+      "sha256": "9a7be6c439793019662581ff50783a06799a87896aea62d8403833be1b455db6",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-077",
+      "policy": "ORACLE",
+      "sha256": "05d95aa62825ddc5d59b056ba370e839592efd74471f111eb15baebb372b47a1",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-077",
+      "policy": "OVERCLAIM",
+      "sha256": "b870692aa6b7a289fa1400d7cdb35ade1e5458b9654a757c0d51b80c53eb828d",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-077",
+      "policy": "UNDERCLAIM",
+      "sha256": "dac9bab91cc69b4c545e91364f88b27b925fdfec19ffdb932fe6fb42ce133dc1",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-077",
+      "policy": "ORACLE-R",
+      "sha256": "631788bdd5f83719d06e079eabfe2a58b611f058d83c8f4e288ade8974e3a925",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-077",
+      "policy": "OVERCLAIM-R",
+      "sha256": "c91a913abddbeb573a0d257279c7dce4172fe66af51862b4de07325afad3fe45",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-077",
+      "policy": "ADV",
+      "sha256": "a876eb6fef8c2b28ae761d64d2918dfc8f4a4ededed7a899a36dc90def11d241",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-078",
+      "policy": "ORACLE",
+      "sha256": "e010fbc3427c19c0f87ec0514130435eff9ff80e1794d9c7b318dd88710468ba",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-078",
+      "policy": "OVERCLAIM",
+      "sha256": "c4028a6da85ba405c748bf9dcf657ac2dd0bb6c6b1c39cc88b5c1f6919e09cb5",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-078",
+      "policy": "UNDERCLAIM",
+      "sha256": "ad0cd9e0cc338a913370996996da3614f17ab57d792b567f78c49f1eedd6e5f5",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-078",
+      "policy": "ORACLE-R",
+      "sha256": "49b0047835f90588273309f150f4a98c9fd4946227a531f400fa60900379e444",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-078",
+      "policy": "OVERCLAIM-R",
+      "sha256": "ffba407a95f3d082f6ec76d844440ea5d890953dd5df4e7caee0ffb87e35eca2",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-078",
+      "policy": "ADV",
+      "sha256": "ac618e3a75980166697375d6d265f2930824954c4faec24b2cad03309a1adbca",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-079",
+      "policy": "ORACLE",
+      "sha256": "a946c3e1e745db4b42c867e2c270583c501f5f2e91e370ec3a72382ab08a125e",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-079",
+      "policy": "OVERCLAIM",
+      "sha256": "3ea26025f903cea1684c410f2277166b12f7c1176d38dda295a566d906d1dfd9",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-079",
+      "policy": "UNDERCLAIM",
+      "sha256": "029a202f6b329629d689a348b89c60e6364fc7f9753167abd9333db387fc345c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-079",
+      "policy": "ORACLE-R",
+      "sha256": "b756da956d61d5e8f3dc1988c6be31562c743624e4cf0741d0be8ca30faa07a3",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-079",
+      "policy": "OVERCLAIM-R",
+      "sha256": "62a4bc40d41f5487bec737359abbc4342e088ed6775def7ec0725b487a3838e6",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-079",
+      "policy": "ADV",
+      "sha256": "a3aa0c98d7b7934a605109f4b365802a91ec73b7349d2b665791ce99033ee9bc",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-080",
+      "policy": "ORACLE",
+      "sha256": "31fd40afe6d7121ed511a58174cbd1b28a162579fda4ed050b9116c4c8126d95",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-080",
+      "policy": "OVERCLAIM",
+      "sha256": "eb50154f59032570501ffea45e4bfb0c470e22748378c0de2bc07aa2c931fa51",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-080",
+      "policy": "UNDERCLAIM",
+      "sha256": "2f5a4011a5e27df27d4adff69f68392cd8806a9cffdf3223095d1e38fa529813",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-080",
+      "policy": "ORACLE-R",
+      "sha256": "c9c282fc2011129dd555ac08b20e395cf3364c1e4ce48dd44d34986c1d3f1d7d",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-080",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b6686981062e9d259916bd812ecf41ae61c0e86ee0059577d6d4339929e0da7c",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-080",
+      "policy": "ADV",
+      "sha256": "a0dc31b284c27059b4d429a92b7f820236d519b11673379aea77214976cae4de",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-081",
+      "policy": "ORACLE",
+      "sha256": "d2940746e4c77f5396f33fd09798fd3dac0f7dea77b480f2f376bbeee8e2c87c",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-081",
+      "policy": "OVERCLAIM",
+      "sha256": "2f49f29c587a137d1964a11048fcb50d202c02a61c48c350331bff69a44bad6f",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-081",
+      "policy": "UNDERCLAIM",
+      "sha256": "b0472de45c1e2cd74e3c44a16bbd6a7d65e01db3fb20e0ea527576dc0767bb95",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-081",
+      "policy": "ORACLE-R",
+      "sha256": "20dc7ba60d9f17d9a87287265acd631dd2dab6e63e13cfdf5bbfd732e882c9bd",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-081",
+      "policy": "OVERCLAIM-R",
+      "sha256": "f7347cc8fc24b42d5620c9a303cbe9ee4a3bffeac025e099c2114fb46376efee",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-081",
+      "policy": "ADV",
+      "sha256": "c46bd639460a357d3e6a50be92d45da8a0ca82105ffc17fccf297a69ff6d6d06",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-082",
+      "policy": "ORACLE",
+      "sha256": "b532d873894070e07dcbd7ebfe035d9f6bec92c159e2f4ddf7a01696cacba6a9",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-082",
+      "policy": "OVERCLAIM",
+      "sha256": "e978e2f7509f318dcedb1a8ff32d35a3d050d809152f1bc9255ff583fcbd2084",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-082",
+      "policy": "UNDERCLAIM",
+      "sha256": "b962374fa81749dc3ce6395f2ba2b224b86d7c6f8ad298b6b264bee90b813faa",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-082",
+      "policy": "ORACLE-R",
+      "sha256": "85e9e7b7399250ed6dd84403e83f09a3256a7e36c9e98bb986c235558dbc34f6",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-082",
+      "policy": "OVERCLAIM-R",
+      "sha256": "74c040d45e50f31ecf88a02ca820afbd6c7a332c3d23276d25091b732acb55d6",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-082",
+      "policy": "ADV",
+      "sha256": "b0b52d88441fea5f4ac1a1d91b13ed8c2395ce36281fd16d0447775a14ec7f0d",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-083",
+      "policy": "ORACLE",
+      "sha256": "cd2c4f321505be496e0aedbcb00f8f77ea159d3695cba9e9b4cf00bf71806c45",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-083",
+      "policy": "OVERCLAIM",
+      "sha256": "5fbff039ec942dbef146ec1bf975d80bb56c5704e8b782283e0c0c2ef4494364",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-083",
+      "policy": "UNDERCLAIM",
+      "sha256": "369a6cb2a8bc36299ebfe8da57cd3e1b3a6c122d7adf526211a85a3130412f22",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-083",
+      "policy": "ORACLE-R",
+      "sha256": "7bed01e6d0e975a539575048ea12025eab32dca9ee37cde5019d45dbfce174a6",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-083",
+      "policy": "OVERCLAIM-R",
+      "sha256": "9049552187715b3b3e97c6e220e5bb12f8af76ab2ec00fb080b2d4f041e912ac",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-083",
+      "policy": "ADV",
+      "sha256": "3fbc25e3fd447a81d48d2f53b1a6d6ba07eb3a835db19ac9e20276dab4a54da6",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-084",
+      "policy": "ORACLE",
+      "sha256": "44451a62a46c83bbe3be3fba4b2ea0993f6a7abcd07e39766903fc147f5e5a41",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-084",
+      "policy": "OVERCLAIM",
+      "sha256": "32a1178b8c3764633de5026fb92ad798148258e2517b826b55b7f1c2c00d29b2",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-084",
+      "policy": "UNDERCLAIM",
+      "sha256": "bebbd070fe581d51620bd79a8ddb9d74c6a9ee5adca33ca85c426dbf0ed49cec",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-084",
+      "policy": "ORACLE-R",
+      "sha256": "2bf5082c1b40197c38076dcac1d94c036e065d7f32fc8bf2b82472d8670ad2d1",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-084",
+      "policy": "OVERCLAIM-R",
+      "sha256": "0414c6a4e6875cc66357278835496842bb25dab677b1f58e29f7ec41af266b07",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-084",
+      "policy": "ADV",
+      "sha256": "9f186968e86cbb1926b9b2431216df63c8c3d0d953465b77400ed8f78b760455",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-085",
+      "policy": "ORACLE",
+      "sha256": "a301e953845cdb0fd0fb882e917daaf03bda7de07e0b71d16a16cb9baa946251",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-085",
+      "policy": "OVERCLAIM",
+      "sha256": "516a6850482a99d7707b3556510ed3999bdf00b421d250a3e5dc8057c84fdef5",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-085",
+      "policy": "UNDERCLAIM",
+      "sha256": "bf5aa548151f37fc07c42247fd7e5060f402d0b19da18d49c7ede57cb94a5372",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-085",
+      "policy": "ORACLE-R",
+      "sha256": "335eff303248b0a667bb7b7579801182defbd9a06ed24bc3b0ca132cfef3174f",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-085",
+      "policy": "OVERCLAIM-R",
+      "sha256": "f85586169bd7d185b7a4635ffc6437babc558a3990291f00403f0447eb749173",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-085",
+      "policy": "ADV",
+      "sha256": "bed273698c50c67d00c83f5b9a0058b914fe02e26c3a2d041207960cdecdb9f2",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-086",
+      "policy": "ORACLE",
+      "sha256": "e03bd4d287f121ff1e11aa42d3c52a628ddd9f8f87ea9e3e1882222d7dfaa8be",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-086",
+      "policy": "OVERCLAIM",
+      "sha256": "e135de718fc79b3bce5e28991e1219378965e44fc49c844be21c43311e53b7f6",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-086",
+      "policy": "UNDERCLAIM",
+      "sha256": "37e4f767b7b22697a6ce7eb67c86597d422e81e6441323f0063b197e3cb3a03e",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-086",
+      "policy": "ORACLE-R",
+      "sha256": "a0971c303466030b7e1d19030260992de2d2612b5de6b47b369fd84994615655",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-086",
+      "policy": "OVERCLAIM-R",
+      "sha256": "81d1c4a7c832f095529220a0d030d308715a64e99cbf6c5665262fc3bf7afd4b",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-086",
+      "policy": "ADV",
+      "sha256": "245991df5635a8540a6e4e648c920ba8046c88fe005b22f0949ab0c2a2d061ad",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-087",
+      "policy": "ORACLE",
+      "sha256": "77bf450cc48189b3a321f9b9f3d8519433f68740e2d8f12745c2c2ba73023ec6",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-087",
+      "policy": "OVERCLAIM",
+      "sha256": "1dc0c10d0f600b52899604a0e64a80210058f84e7ed3d4514120fe5bc17c6dc0",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-087",
+      "policy": "UNDERCLAIM",
+      "sha256": "ea1f98517f9623bddab7d6b4b6a82f5bc4768489835bcf0d901717fafa9a045d",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-087",
+      "policy": "ORACLE-R",
+      "sha256": "e303c7dcddc8a9a5eb69422a40fdf57ea8eb8674f5ee09b50555eb1c2af73f7d",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-087",
+      "policy": "OVERCLAIM-R",
+      "sha256": "286b15bd7c7c9d19a0d912b57a3b9e645bcc2e876605a6d30673a93407e5e740",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-087",
+      "policy": "ADV",
+      "sha256": "6b9e29966b0abe3f1f191b266505d038f91a0dc1438745b6104221ab81d6a49f",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-088",
+      "policy": "ORACLE",
+      "sha256": "2f427436953ed472bd9cfc07f2c99918d22d1c81bfffdd93af727fe64e8c1b28",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-088",
+      "policy": "OVERCLAIM",
+      "sha256": "48901841885d97658a34e2895b717fd9777d0486c113b1ae7823b8744d0084e5",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-088",
+      "policy": "UNDERCLAIM",
+      "sha256": "dbd750dc9096f00e755236a1bcc8578a2d4bce79c986b8994dd3fc47472d0ecf",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-088",
+      "policy": "ORACLE-R",
+      "sha256": "6f60acce94738e020a2817369ad4e75d7906697faf0ca770c69383aa330fde54",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-088",
+      "policy": "OVERCLAIM-R",
+      "sha256": "1147cb7d57a7c844926769f87c2a4a24305377d0eae8c5ada72bb4ca05fd93d2",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-088",
+      "policy": "ADV",
+      "sha256": "865524f1cd0357bffe1e606a714106ae8a1a30639e1afe11bf3aa7b7e72beaba",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-089",
+      "policy": "ORACLE",
+      "sha256": "a217842b47284b4396ba70a03ae6ddae29dbf63c34d155f528ccf95904963699",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-089",
+      "policy": "OVERCLAIM",
+      "sha256": "0cdc708ce7a2ffdef4525e718854bc93028e7088cb2ce537e1582cddd0b9c8fe",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-089",
+      "policy": "UNDERCLAIM",
+      "sha256": "53f54608cb89cdb5439a1cdbedf72412318d36fb977615dcae601145e393d4e8",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-089",
+      "policy": "ORACLE-R",
+      "sha256": "f005eb8f2a08931f3d23213cefdf38cedef5520c2e4a56404b17798a2708d5ba",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-089",
+      "policy": "OVERCLAIM-R",
+      "sha256": "203aa6b70fe956ca0aef973cb077f41c37d81e8f8302e1c0e1219132b9a4577d",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-089",
+      "policy": "ADV",
+      "sha256": "49900dfc24f6171f8a0266f945537a08b03d30c83d2cd4ddf3d1d27757cd5c68",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-090",
+      "policy": "ORACLE",
+      "sha256": "029e3d479fed3ccbfb14fe21be101e684983133a07ef58eb9e5281051cc27e5f",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-090",
+      "policy": "OVERCLAIM",
+      "sha256": "6ad309f069ceeafdb62355d3403c775f767c8babc9da415d6016bc272933b6b9",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-090",
+      "policy": "UNDERCLAIM",
+      "sha256": "489dc73b68d3e48be6f40ecbe438520859ccdf263a82a054b7682237429d62fc",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-090",
+      "policy": "ORACLE-R",
+      "sha256": "6f1a1ed15ea4c44ea121e6c983ec92b37a5a55c65f5991ea5baad927a5fe3b69",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-090",
+      "policy": "OVERCLAIM-R",
+      "sha256": "3734c3b92f13a479f950938875b05771814bfb9aa2d3ee2cc766642ea97f939f",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-090",
+      "policy": "ADV",
+      "sha256": "8b9d43b1161ecfb8f70dfe6464d5c1f2372a64cf3032dd7df5f55367d5f84a61",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-091",
+      "policy": "ORACLE",
+      "sha256": "3279ca9c8b98bcd3faef2344a3ce2acc1301bffa5791e6673cdc9a6137b2f68e",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-091",
+      "policy": "OVERCLAIM",
+      "sha256": "38cba59e08031d1d95f19f1ef88ae0a79c4e10f0e059e60618377bd48b5ca52e",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-091",
+      "policy": "UNDERCLAIM",
+      "sha256": "e0f25da28f431aa49a187d9612ae1d391f79b97163332c55a0352c11e3b3c7a2",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-091",
+      "policy": "ORACLE-R",
+      "sha256": "a94a2f6084e30818a2f686e36292a41705f10367aa699f4ec42921ea16832837",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-091",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b7ec42c7907894d2ab282473a5559e501a972d8ae108702ad3a109649aa4a5c6",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-091",
+      "policy": "ADV",
+      "sha256": "e24874fbaf755e4c727337480c2bc9ff06484d56259e01fd5fa0439beb6adf28",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-092",
+      "policy": "ORACLE",
+      "sha256": "94100030c544cf7824f8b5ebba0fdf7c0276bdfe5d4083290d43d2d17150a907",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-092",
+      "policy": "OVERCLAIM",
+      "sha256": "07421b6b7f362356ec3cd2e6ffa5ff1be69815b6c23c01f8abb978e1918810ea",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-092",
+      "policy": "UNDERCLAIM",
+      "sha256": "0d213447f5e50731853ad6eb5180f4f0eb3917a329cfca4259ea02bef91823a5",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-092",
+      "policy": "ORACLE-R",
+      "sha256": "bffa5796c952a1b154e3e59c091625459b7a9f0501df5d2f41721644b50f1ae0",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-092",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b4ae025ddbbcc26be61e6da946086f07164dd5566a9e40c1b67be168a1c8cd00",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-092",
+      "policy": "ADV",
+      "sha256": "11493e0e1e36859d7dc4b70989f3a984c6ab758ce765aa7f3795ded3c2836e90",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-093",
+      "policy": "ORACLE",
+      "sha256": "f288c2403f4500454b97b050c9db7bb3309cb8e44ebda6331b973ba657e0e266",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-093",
+      "policy": "OVERCLAIM",
+      "sha256": "6daba94c23a0cf085dbed2ba36dc35ea9e3d8ac70423c3c52063c98b4a9a2195",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-093",
+      "policy": "UNDERCLAIM",
+      "sha256": "1e7bfe8503a2715438bcbd42296e6a20a2a90693aba0e6e5d1dfd19309d03df4",
+      "observations": 5,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-093",
+      "policy": "ORACLE-R",
+      "sha256": "f62f64532532637f28c0b5a88f2173c117ed6b49b1316ad8280ee4483a241ed8",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-093",
+      "policy": "OVERCLAIM-R",
+      "sha256": "e1ed689b0c6197a8a7a468ba716aca977ab45391a99b1f8a53c9cdbb9f091e6e",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-093",
+      "policy": "ADV",
+      "sha256": "9e1f7c4f49d8ec341c6d314473c58ff30f7a93d91201db557d22f4e80c0d8216",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-094",
+      "policy": "ORACLE",
+      "sha256": "f42288739e5f5c6c43168e64c045c077b9f504e7651e5a260f114df8945d0f99",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-094",
+      "policy": "OVERCLAIM",
+      "sha256": "ea1be71e7cd0fd2b5eb9f54e3bd97171b0da1288672628b0237e4d28cd3fb45e",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-094",
+      "policy": "UNDERCLAIM",
+      "sha256": "a1a1e238e86d49121546fab0ac55fcb91a5d8a0dd1aea577c052978af24b2913",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-094",
+      "policy": "ORACLE-R",
+      "sha256": "8949f13b6cd6ef24fee988edc1c13377d06aab1481067b2a2c23bd389444a38e",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-094",
+      "policy": "OVERCLAIM-R",
+      "sha256": "dc509d1a1652e07bbd54f5ffacb1e4d915c42c3fcaee925c34fa6047d746187e",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-094",
+      "policy": "ADV",
+      "sha256": "cb1be39892cbe24866e5ca1a6442e341ba1d0f2771e5711f02052092dabb7561",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-095",
+      "policy": "ORACLE",
+      "sha256": "eeb03b6021f64aac99a72e2776265d03b3e4a7c72cce8a84f5ec4f0aa2509eeb",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-095",
+      "policy": "OVERCLAIM",
+      "sha256": "d230fc631e0a086e52ba18392982c41f3f0decde39ca3183faee366611c3a62f",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-095",
+      "policy": "UNDERCLAIM",
+      "sha256": "3b7104f58704a94801559530bfc5f378cd6f282b982b506c5f97d8a8aae3edb6",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-095",
+      "policy": "ORACLE-R",
+      "sha256": "d0274c35e2203faad7a4ceae155728784d788673f792da44fca31ef49c4f5605",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-095",
+      "policy": "OVERCLAIM-R",
+      "sha256": "06b1d423c139a56f952883272b93ba15a6ed824c6f7f01b6b6be56964040f2b3",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-095",
+      "policy": "ADV",
+      "sha256": "405d543cd7922c17a93ceb6a18578aa2fd58c127c14165d24975e0c88f52696b",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-096",
+      "policy": "ORACLE",
+      "sha256": "e6788fee116a3c6e391041ddf9a14a707c50f7f92109661e3f32e1fdd63b992d",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-096",
+      "policy": "OVERCLAIM",
+      "sha256": "e9dac19737b9c94af0b496e944bfe142651cbb4e4cb4f575a2f7323b086e9457",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-096",
+      "policy": "UNDERCLAIM",
+      "sha256": "b2225c83117f6242cf508ab8d3246b05d1032ff52fc50fb0cdab8e725d76c6d6",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-096",
+      "policy": "ORACLE-R",
+      "sha256": "db095c2ec91ef260f6fd8cfa84776d8e6794e1e5924d08359967fa05a30f702a",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-096",
+      "policy": "OVERCLAIM-R",
+      "sha256": "60f6769c6870f7875ca49f2f51e6e4feb199e3709d3b06199a73a8ad287e2341",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-096",
+      "policy": "ADV",
+      "sha256": "8287ee4c18afbe8815582698b24c3eebbc77336704675537273a0edc7693babb",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-097",
+      "policy": "ORACLE",
+      "sha256": "7810fe56ebf537406a2278b91029af3fd973e932e928135afac6903384bf3ce1",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-097",
+      "policy": "OVERCLAIM",
+      "sha256": "90c1212111f9e12cb7eef23dd26f3dbdfdd3d912bc6f7f3e67407fda4cfb5384",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-097",
+      "policy": "UNDERCLAIM",
+      "sha256": "bd4669e986030f353e4fa040ec713cc28f5e90fe19d5ea915182746063688f8a",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-097",
+      "policy": "ORACLE-R",
+      "sha256": "bf3d8a6042109b1ad03997143c8b444a41c6b064520a885c8c24009e1506dfea",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-097",
+      "policy": "OVERCLAIM-R",
+      "sha256": "e209a67c799627acaf6cf48edf7a131cdd103923c70819d69d21cddf6542e68b",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-097",
+      "policy": "ADV",
+      "sha256": "b54d01b47b7ca96b4f7eccc7266d112ff14c84673fc73303faabeaa90150301f",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-098",
+      "policy": "ORACLE",
+      "sha256": "75f5c3d0b7f1ef0f7a7ce515d46178e01936fdd7d8f915d5dd58d7340695fad7",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-098",
+      "policy": "OVERCLAIM",
+      "sha256": "91f10e7100becba7f5a753d071778c7e4c7bdcbef786529d29e26bf9e0da571a",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-098",
+      "policy": "UNDERCLAIM",
+      "sha256": "74dce47017fac2ac83c152d5ee4e0f660197c7e1becc770677ada1f681195289",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-098",
+      "policy": "ORACLE-R",
+      "sha256": "3e769ef862a3f31e539866b595a23661aebb2fc81f60251bb56e9f6ac847c5aa",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-098",
+      "policy": "OVERCLAIM-R",
+      "sha256": "18723174f7f72be4ea4302f00626522c4a1eab9dbb6e9fd48d306fdf881aa037",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-098",
+      "policy": "ADV",
+      "sha256": "501000fcbde5ad9c794412c2e670b70315f2905d9c16e112f93b8a65fb94bf0c",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-099",
+      "policy": "ORACLE",
+      "sha256": "e53465b6aa8ad30e27af03d88c3f9ef308a6bdbe832c1a60c6a48fd6cda9319a",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-099",
+      "policy": "OVERCLAIM",
+      "sha256": "4baabdbdd62de846342e2557b542739a3ac6e84613b09f38f0ad5bd2cc7f6e33",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-099",
+      "policy": "UNDERCLAIM",
+      "sha256": "30eafc074dd9ecae06e23bd3a29b0120494650159c3ba13ec1f17cfe72d7072b",
+      "observations": 7,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-099",
+      "policy": "ORACLE-R",
+      "sha256": "e56daf2d3486e66bd7ffe286857459e5d4d3e0a1bb25257ca503bb77cea997be",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-099",
+      "policy": "OVERCLAIM-R",
+      "sha256": "b83e5c95953067b63dd0bc6e810886db6f6b439a04dbe3ae6ab842e6e38fed15",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-099",
+      "policy": "ADV",
+      "sha256": "48ad31809afabca9d4d9598feaec0aca67c069f9bcc9cd000e9f27ca2b159642",
+      "observations": 6,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-100",
+      "policy": "ORACLE",
+      "sha256": "9ff5147a660ff2ddc39ebcbc4877b3f6366b943f5d4f89370e3e0c894940c574",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-100",
+      "policy": "OVERCLAIM",
+      "sha256": "26eb09c701afb8d01bd6247a25049f91911da139ba72a77d3e26daafe8484631",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-100",
+      "policy": "UNDERCLAIM",
+      "sha256": "d9aff1f9d52b1d999e345c35a1f3ec74c45c3a4674d1b94abb85939e65815774",
+      "observations": 6,
+      "observations_equal_to_study_mock": true
+    },
+    {
+      "id": "S-100",
+      "policy": "ORACLE-R",
+      "sha256": "0db0223619a8047052b90c1f9b6a1ced5a794ae85b211fa22e212163860082a8",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-100",
+      "policy": "OVERCLAIM-R",
+      "sha256": "457a8c630df7e46baab09422255d060353a4c5ee6df5c7ff49109f4e337cafcb",
+      "observations": 7,
+      "observations_equal_to_study_mock": null
+    },
+    {
+      "id": "S-100",
+      "policy": "ADV",
+      "sha256": "501000fcbde5ad9c794412c2e670b70315f2905d9c16e112f93b8a65fb94bf0c",
+      "observations": 5,
+      "observations_equal_to_study_mock": null
+    }
+  ]
+}

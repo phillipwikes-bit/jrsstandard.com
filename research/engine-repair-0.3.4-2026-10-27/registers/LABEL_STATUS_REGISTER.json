@@ -1,0 +1,3145 @@
+{
+  "format": "jrs-0.3.4-label-status-register/1.0.0",
+  "written_at_utc": "2026-10-27",
+  "statuses": {
+    "AI-proposed": "written or reproduced by an AI; never a human reference",
+    "human-reviewed": "the development reviewer (Phillip Wikes) recorded a label on a dated completed form under reviews/",
+    "disputed": "the human label and the AI-proposed label differ; both kept",
+    "adjudicated": "a person named by the owner settled a dispute; who and when recorded"
+  },
+  "rule": "A status changes only when a dated completed form or an adjudication record exists. This register records no human label: none has been given. Agreement between the Engine and an AI-proposed label is not accuracy.",
+  "source": "research/study-156-2026-10-27/registers/LABEL_REGISTER.json (unchanged)",
+  "counts": {
+    "records": 156,
+    "ai_proposed": 124,
+    "human_reviewed": 0,
+    "disputed": 0,
+    "adjudicated": 0
+  },
+  "completed_forms_found": {
+    "checked": "2026-10-27, and again on 2026-10-28 before the 0.3.4 freeze: search of the repository for a completed reference form or a reviews/ folder",
+    "found": 0
+  },
+  "rows": [
+    {
+      "source_id": "R01",
+      "blind_id": "B-115",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R02",
+      "blind_id": "B-116",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R03",
+      "blind_id": "B-018",
+      "cohort": "original_study_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R04",
+      "blind_id": "B-122",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R05",
+      "blind_id": "B-123",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R06",
+      "blind_id": "B-107",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R07",
+      "blind_id": "B-119",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R08",
+      "blind_id": "B-017",
+      "cohort": "original_study_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R09",
+      "blind_id": "B-114",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R10",
+      "blind_id": "B-121",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R11",
+      "blind_id": "B-109",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R12",
+      "blind_id": "B-118",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R13",
+      "blind_id": "B-113",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R14",
+      "blind_id": "B-112",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R15",
+      "blind_id": "B-028",
+      "cohort": "original_study_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R16",
+      "blind_id": "B-120",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R17",
+      "blind_id": "B-117",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R18",
+      "blind_id": "B-105",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R19",
+      "blind_id": "B-106",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R20",
+      "blind_id": "B-110",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R21",
+      "blind_id": "B-111",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R22",
+      "blind_id": "B-012",
+      "cohort": "original_study_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R23",
+      "blind_id": "B-124",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "R24",
+      "blind_id": "B-108",
+      "cohort": "original_study_record",
+      "study_partition": "outside_research_scope",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (reproduced by three LLM instances; not human raters)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-01",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-02",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-03",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-04",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-05",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-06",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Needs work",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-07",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Needs work",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-08",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-09",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-10",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-11",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Needs work",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-12",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-13",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-14",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-15",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-16",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-17",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-18",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-19",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-20",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-21",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Needs work",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-22",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Ready",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-23",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Needs work",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-24",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Needs work",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-25",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Needs work",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-26",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Needs work",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-27",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Needs work",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-28",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Gap",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-29",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Gap",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-30",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Gap",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-31",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Gap",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "PR-32",
+      "blind_id": null,
+      "cohort": "public_case",
+      "study_partition": "not_held",
+      "reference_value": "Gap",
+      "status": "not a study label: jrs_read",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-001",
+      "blind_id": "B-026",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-002",
+      "blind_id": "B-025",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-003",
+      "blind_id": "B-001",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-004",
+      "blind_id": "B-007",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-005",
+      "blind_id": "B-034",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-006",
+      "blind_id": "B-038",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-007",
+      "blind_id": "B-016",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-008",
+      "blind_id": "B-019",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-009",
+      "blind_id": "B-040",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-010",
+      "blind_id": "B-011",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-011",
+      "blind_id": "B-023",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-012",
+      "blind_id": "B-029",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-013",
+      "blind_id": "B-020",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-014",
+      "blind_id": "B-003",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-015",
+      "blind_id": "B-044",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-016",
+      "blind_id": "B-002",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-017",
+      "blind_id": "B-036",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-018",
+      "blind_id": "B-004",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-019",
+      "blind_id": "B-009",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-020",
+      "blind_id": "B-042",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-021",
+      "blind_id": "B-032",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-022",
+      "blind_id": "B-008",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-023",
+      "blind_id": "B-005",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-024",
+      "blind_id": "B-037",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-025",
+      "blind_id": "B-030",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-026",
+      "blind_id": "B-039",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-027",
+      "blind_id": "B-015",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-028",
+      "blind_id": "B-031",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-029",
+      "blind_id": "B-033",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-030",
+      "blind_id": "B-024",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-031",
+      "blind_id": "B-043",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-032",
+      "blind_id": "B-041",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-033",
+      "blind_id": "B-022",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-034",
+      "blind_id": "B-027",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-035",
+      "blind_id": "B-010",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-036",
+      "blind_id": "B-006",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-037",
+      "blind_id": "B-013",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-038",
+      "blind_id": "B-014",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-039",
+      "blind_id": "B-021",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-040",
+      "blind_id": "B-035",
+      "cohort": "synthetic_record",
+      "study_partition": "development",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-041",
+      "blind_id": "B-104",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-042",
+      "blind_id": "B-081",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-043",
+      "blind_id": "B-067",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-044",
+      "blind_id": "B-055",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-045",
+      "blind_id": "B-077",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-046",
+      "blind_id": "B-075",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-047",
+      "blind_id": "B-054",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-048",
+      "blind_id": "B-095",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-049",
+      "blind_id": "B-058",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-050",
+      "blind_id": "B-096",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-051",
+      "blind_id": "B-062",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-052",
+      "blind_id": "B-078",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-053",
+      "blind_id": "B-066",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-054",
+      "blind_id": "B-091",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-055",
+      "blind_id": "B-065",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-056",
+      "blind_id": "B-045",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-057",
+      "blind_id": "B-079",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-058",
+      "blind_id": "B-101",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-059",
+      "blind_id": "B-070",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-060",
+      "blind_id": "B-049",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-061",
+      "blind_id": "B-099",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-062",
+      "blind_id": "B-103",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-063",
+      "blind_id": "B-059",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-064",
+      "blind_id": "B-050",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-065",
+      "blind_id": "B-072",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-066",
+      "blind_id": "B-082",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-067",
+      "blind_id": "B-057",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-068",
+      "blind_id": "B-094",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-069",
+      "blind_id": "B-087",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-070",
+      "blind_id": "B-071",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-071",
+      "blind_id": "B-089",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-072",
+      "blind_id": "B-064",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-073",
+      "blind_id": "B-098",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-074",
+      "blind_id": "B-086",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-075",
+      "blind_id": "B-048",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-076",
+      "blind_id": "B-080",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-077",
+      "blind_id": "B-083",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-078",
+      "blind_id": "B-046",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-079",
+      "blind_id": "B-053",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-080",
+      "blind_id": "B-068",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-081",
+      "blind_id": "B-097",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-082",
+      "blind_id": "B-102",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-083",
+      "blind_id": "B-076",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-084",
+      "blind_id": "B-061",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-085",
+      "blind_id": "B-074",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-086",
+      "blind_id": "B-088",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-087",
+      "blind_id": "B-047",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-088",
+      "blind_id": "B-093",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-089",
+      "blind_id": "B-092",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-090",
+      "blind_id": "B-069",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-091",
+      "blind_id": "B-056",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-092",
+      "blind_id": "B-063",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-093",
+      "blind_id": "B-073",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-094",
+      "blind_id": "B-052",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-095",
+      "blind_id": "B-090",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-096",
+      "blind_id": "B-085",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-097",
+      "blind_id": "B-051",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-098",
+      "blind_id": "B-084",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-099",
+      "blind_id": "B-060",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "GROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    },
+    {
+      "source_id": "S-100",
+      "blind_id": "B-100",
+      "cohort": "synthetic_record",
+      "study_partition": "evaluation",
+      "reference_value": "UNGROUNDED",
+      "status": "AI-proposed (AI-authored construction intent)",
+      "human_reviewed": false,
+      "human_label": null,
+      "disputed": false,
+      "adjudicated": false,
+      "adjudicator": null,
+      "history": [
+        {
+          "date": "2026-10-27",
+          "event": "carried over from the study label register unchanged",
+          "by": "0.3.4 repair package (no judgement made)"
+        }
+      ]
+    }
+  ]
+}

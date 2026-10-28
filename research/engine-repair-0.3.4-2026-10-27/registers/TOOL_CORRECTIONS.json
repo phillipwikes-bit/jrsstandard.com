@@ -1,0 +1,51 @@
+{
+  "format": "jrs-0.3.4-tool-corrections/1.0.0",
+  "written_at_utc": "2026-10-27",
+  "rule": "A defective tool is never edited in place. The original stays unchanged where it was frozen; the corrected copy is a new version in this package; a regression check shows the copy still gives the original's results where the original was right; any rerun with a corrected tool is a corrected analysis, not an unchanged reproduction.",
+  "corrections": [
+    {
+      "id": "TC-01",
+      "finding": "HF-05 (study failure register): the V5 evidence-removal transform kept text that still states evidence in at least 4 of 92 variants, so their UNGROUNDED label was wrong.",
+      "original_kept": "../study-156-2026-10-27/tools/variant-spec.mjs",
+      "corrected": "tools/variant-spec-v2.mjs",
+      "change": "V5 only: cut at a colon or semicolon, keep clauses up to the clause holding the decision verb, then verify independently that no evidence remains; otherwise the record is marked not constructible with its reason. V1 to V4 and V6 to V8 unchanged.",
+      "regression_check": "out/variant-spec-v2-check/RESULTS.json",
+      "regression_check_expected": "the 728 non-V5 variants are byte-identical to 1.0; every 1.0 V5 text is audited",
+      "impact": "out/corrected-v5-0.3.3/RESULTS.json (corrected analysis of 0.3.3); 0.3.4 variant runs use the 2.0 V5 texts",
+      "relabelled_as": "corrected analysis"
+    },
+    {
+      "id": "TC-02",
+      "finding": "HF-01 (study failure register): recovery tests 1.0 read the error from the last 600 characters of stderr (stack frames) and left history/ out of the scratch copies, so RT-04 failed although the runner behaved correctly.",
+      "original_kept": "../study-156-2026-10-27/tools/recovery-tests.mjs",
+      "corrected": "tools/recovery-tests-v2.mjs",
+      "change": "Carries the study's v1.1 corrections (../study-156-2026-10-27/post-freeze/recovery-tests-v1.1.mjs, also kept) into a version for this package's runners, with three new scenarios (altered study scoring, altered study freeze manifest, unsigned preflight authorization).",
+      "regression_check": "out/recovery-v2/RESULTS.json",
+      "regression_check_expected": "every scenario passes, including the RT-04 case that 1.0 mis-scored",
+      "impact": "none on scored results; the tests concern fail-closed behaviour",
+      "relabelled_as": "new version"
+    },
+    {
+      "id": "TC-03",
+      "finding": "Regression probes 1.0 replay stored mocks that carry the 0.3.3 research prompt version. 0.3.4 correctly rejects that version, so on 0.3.4 one stored-mock probe fails (RG-23) and two pass with no candidate at all (RG-24, RG-25).",
+      "original_kept": "../study-156-2026-10-27/tools/regression-probes.mjs",
+      "corrected": "tools/regression-probes-v2.mjs",
+      "change": "Part 1 relabels only the prompt_version field of a stored mock (observations unchanged); Parts 2 to 4 add repair probes.",
+      "regression_check": "out/regression-probes-v2-0.3.3-research-candidate/RESULTS.json",
+      "regression_check_expected": "on 0.3.3 (where relabelling is a no-op) the 32 Part 1 probes pass, as 1.0 did; the repair probes are expected to fail there, which records the original behaviour",
+      "impact": "out/study-suites-0.3.4-research-candidate/RESULTS.json keeps the 1.0 result (RG-23 failing) unchanged",
+      "relabelled_as": "new version"
+    },
+    {
+      "id": "TC-04",
+      "finding": "Compile-row 1.0 passes the study's research profile, whose authorization reference names the 156-record study, so 0.3.4 graphs compiled through it would record the wrong authorization reference.",
+      "original_kept": "../study-156-2026-10-27/tools/compile-row.mjs",
+      "corrected": "tools/compile-row-v2.mjs",
+      "change": "The profile is a parameter; this package passes its own reference. Arms for 0.3.4 added; the study arms and the scoring are unchanged.",
+      "regression_check": "out/compile-row-v2-check/RESULTS.json",
+      "regression_check_expected": "every scored field identical between 1.0 and 2.0 on 0.3.3 and 0.3.4; only graph digests differ",
+      "impact": "graph digests of research-profile rows; no scored field",
+      "relabelled_as": "new version"
+    }
+  ]
+}
