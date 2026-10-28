@@ -1,6 +1,6 @@
 {
   "format": "jrs-study-completion-review-batches/1.0.0",
-  "form_version": "S156-COMPLETION-REVIEW-1.0",
+  "form_version": "S156-COMPLETION-REVIEW-1.1",
   "release_status": "NO_GO_NOT_VERIFIED",
   "b018": "OPEN",
   "candidate_adopted": false,
@@ -36,9 +36,9 @@
         "B-011": "25302b7c7b7b33ed9df5a281dbbf8f9abe6cf795c3418b7821fe026729911269"
       },
       "file_sha256": {
-        "html": "60557ce329e76f234845fdb75822aadabe5b2666f20ae8f06fb64017eca17807",
-        "csv": "710b5279cbb906c07e36954a005ebefd05642e40cc8718a782d03f34297c6b8d",
-        "md": "622ac1b2960df8550ce0200ef9e4394878504533227ea56607d9dfca9b11557e"
+        "html": "8a5f47e1bb88da5fb8413ad33d19ae2bd0fe84d1911bbf91227ca34188108124",
+        "csv": "dea4ec4ecfe3c488522927780c497d7cda303e3344317fb1ea6cc5cbf105c507",
+        "md": "1a64ffffe7406afbeebaa825c2891abe0a7aa2832999e1e8980569b8c0051678"
       }
     },
     {
@@ -70,9 +70,9 @@
         "B-022": "1adf17e13a7c8eca08c64e73063f8f7b6aacbf753677751aeee055cfdc5d3031"
       },
       "file_sha256": {
-        "html": "0bc40a0f653d136c88fd776ac9ac32bfbe76a90091e9203bf6eee07374c36057",
-        "csv": "3d6e66b428b223f88b9326e7affea1f9849ea471ca6c1ff2472bedcc3a831a60",
-        "md": "d7fbff0975ce57f54c763c453c877af6d3928c3cde6122d17b2ebb32c90097f1"
+        "html": "c9a028909c1cf3ae93f8a022cf78ce26e3aa5727429833ae41ed49fe58f6af9c",
+        "csv": "c4940d886e1df68e620ac5bcd7f22b02ff2aa1ef87da4101547c426f4b3b2423",
+        "md": "7cd9b4ab7ec5d7afc6ce10a1f87523d6cd071c571e1542296c1db43895fca9a6"
       }
     },
     {
@@ -104,9 +104,9 @@
         "B-033": "2f87a8009675b8f505b817b5c90cbe29877a3a38481e1ac8676b6e42e8360001"
       },
       "file_sha256": {
-        "html": "8febe49f9e20f2077b39c4d0b4e5cc2bd35505ec3047a84d0c874c0c6f8b544f",
-        "csv": "a946753eb84b925fec9276fdc2538449f909bf8c38c78d61e5dfdbabf7b31351",
-        "md": "1c9c0bfa186dee8c23a1d84d7c6da25d9d5e31ac1b3e72e57803d5a689e01c3c"
+        "html": "e20fd296fda1ca20d48b94498c7b5237503c955329120f71f7898ac0b90e00d4",
+        "csv": "80b98ff4d739b741d0945110793192f1223caf5bcb1067b1dfe08fd006cbc332",
+        "md": "ec8da595742eb4dca7e2203adf126ec7987a6bc8c0bda85f60a54f0ecd3fb0fe"
       }
     },
     {
@@ -138,9 +138,9 @@
         "B-044": "ec7e1a6387d7f45387c7e01f35f73334ad0a49197a8405e3fa78eb81227185d6"
       },
       "file_sha256": {
-        "html": "3edc01dfaeff814e7fda6e25015d6283a43891e4563826ba3972f6e420ed362f",
-        "csv": "4ad56341d5c6226c403c95a705caf054e9aeee33eea0afb64fb99814d6a821b6",
-        "md": "1d8538de4d7fa16dc45281eab86eae2bde05a174813624d5321d98c901a525c1"
+        "html": "64a48984967932f0513c0635ca75da81ca315aaf8aeb8ea0831b8c01672cc4f2",
+        "csv": "9a14d0874b9fcff26067ab5ca6fc9ecd7a7e84dce5e873ba5ed8f84fb3a68ffa",
+        "md": "b828df4ff42ff7817842b9641d00179c2b799475d39f6fe42baf7a341aa4ca86"
       }
     }
   ]

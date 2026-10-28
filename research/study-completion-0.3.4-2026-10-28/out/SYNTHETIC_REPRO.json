@@ -1,0 +1,99 @@
+{
+  "format": "jrs-study-completion-synthetic-repro/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "network_attempts": 0,
+  "statement": "Synthetic text only. Each case changes one thing against R1.",
+  "synthetic_record": "SYNTHETIC TEST RECORD SYN-REPRO-01\nDate: 2026-01-10\nDecision: The synthetic vendor access request was approved.\nBasis: The approval rests on the signed synthetic security review dated 2026-01-08.\nReviewer: Synthetic Reviewer",
+  "cases": {
+    "R1_id_24_chars": {
+      "id_length": 24,
+      "validator": "ok",
+      "compile": {
+        "disposition": "substantive_mock",
+        "e1": "INDETERMINATE",
+        "refused_invalid": false,
+        "quote_statuses": {
+          "basis-security-review-ab": "verified_unique"
+        }
+      }
+    },
+    "R2_id_25_chars": {
+      "id_length": 25,
+      "validator": "observation_id_invalid_or_duplicate",
+      "compile": {
+        "disposition": "partial",
+        "e1": "NOT_ASSESSED",
+        "refused_invalid": true,
+        "quote_statuses": {}
+      }
+    },
+    "R3_id_renamed_o1": {
+      "id_length": 2,
+      "validator": "ok",
+      "compile": {
+        "disposition": "substantive_mock",
+        "e1": "INDETERMINATE",
+        "refused_invalid": false,
+        "quote_statuses": {
+          "o1": "verified_unique"
+        }
+      }
+    },
+    "R4_unlisted_condition": {
+      "validator": "unrecognised_condition_id",
+      "compile": {
+        "disposition": "partial",
+        "e1": "NOT_ASSESSED",
+        "refused_invalid": true,
+        "quote_statuses": {}
+      }
+    },
+    "R5_fenced_response": {
+      "strict_parser": "ok, fence removed and recorded",
+      "compile": {
+        "disposition": "substantive_mock",
+        "e1": "INDETERMINATE",
+        "refused_invalid": false,
+        "quote_statuses": {
+          "o1": "verified_unique"
+        }
+      },
+      "scorer_expression_present": true,
+      "scorer_expression_result": "throws (scorer records 0 quotations)"
+    }
+  },
+  "checks": [
+    {
+      "id": "R1_24_character_identifier_accepted",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "R2_25_character_identifier_refused_whole_response",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "R3_identifier_carries_no_evidence",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "R4_unlisted_condition_refused",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "R5_fenced_response_compiles_but_scorer_counts_zero",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "no_network_attempts",
+      "ok": true,
+      "detail": 0
+    }
+  ]
+}

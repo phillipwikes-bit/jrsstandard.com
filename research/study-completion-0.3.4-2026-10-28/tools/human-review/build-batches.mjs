@@ -9,7 +9,12 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { DIR, ROOT, STUDY, STATUS, sha, readJson, checker, finish, writeJson, writeOut } from '../common.mjs';
 
-export const FORM_VERSION = 'S156-COMPLETION-REVIEW-1.0';
+// 1.1 (2026-10-28): the judgement options carry plain gap wording ("no gap identified", "gap identified"), a
+// documentation-gap instruction is added, and a free-text gap_findings column is added. Stored values are unchanged,
+// so answers on a 1.0 form still import. No reviewer had used 1.0 when it was replaced.
+export const FORM_VERSION = 'S156-COMPLETION-REVIEW-1.1';
+export const ACCEPTED_FORM_VERSIONS = Object.freeze(['S156-COMPLETION-REVIEW-1.0', FORM_VERSION]);
+export const E1_LABELS = Object.freeze({ GROUNDED: 'GROUNDED: no gap identified', UNGROUNDED: 'UNGROUNDED: gap identified', UNCERTAIN: 'UNCERTAIN: cannot tell' });
 export const OPTIONS = Object.freeze({
   e1: ['GROUNDED', 'UNGROUNDED', 'UNCERTAIN'],
   link: ['stated link', 'plain link', 'no supporting passage'],
@@ -21,13 +26,14 @@ export const OPTIONS = Object.freeze({
   disputed: ['no', 'yes'],
 });
 export const COLUMNS = ['form_version', 'batch', 'reviewer', 'blind_id', 'record_text_sha256', 'e1', 'conclusion_1', 'passage_1', 'link_1', 'conclusion_2', 'passage_2', 'link_2', 'conclusion_3', 'passage_3', 'link_3',
-  'unsupported_conclusion', 'q1_authority', 'q2_reason', 'q3_dates', 'q4_outcomes', 'confidence', 'disputed', 'dispute_reason', 'rationale', 'minutes'];
+  'unsupported_conclusion', 'gap_findings', 'q1_authority', 'q2_reason', 'q3_dates', 'q4_outcomes', 'confidence', 'disputed', 'dispute_reason', 'rationale', 'minutes'];
 const INSTRUCTIONS = [
   'Read each record on its own terms. Judge whether its conclusions can be traced to evidence written in the record. Do not judge whether the decision itself was right, and do not use outside knowledge.',
-  'Overall judgement. GROUNDED: every material conclusion is traceable to identifiable evidence in the record. UNGROUNDED: at least one material conclusion is not. UNCERTAIN: you cannot tell; say why in the rationale.',
+  'What a documentation gap is. A gap exists when the record states a material conclusion but does not write down the evidence it rests on: no source, no fact, no document, or a reason that only repeats the outcome. A gap is about what the record shows, not whether the decision was right.',
+  'Overall judgement. GROUNDED (no gap identified): every material conclusion is traceable to identifiable evidence in the record. UNGROUNDED (gap identified): at least one material conclusion is not. UNCERTAIN (cannot tell): say why in the rationale. Leaving it blank means not yet judged.',
   'Material conclusions. A material conclusion is a statement that, if wrong, would change the decision or its defensibility. List up to three, a few words each.',
   'Supporting passages. For each conclusion, copy the exact words from the record that support it (copy and paste; do not paraphrase). Choose "stated link" if the record says the conclusion rests on that evidence, "plain link" if the evidence plainly concerns the same item, or "no supporting passage".',
-  'If UNGROUNDED, name the conclusion that has no basis.',
+  'If UNGROUNDED, name the conclusion that has no basis. Under "Documentation gaps found", list each gap you see in your own words, one per line, and copy the exact passage that shows it into a supporting passage field where you can.',
   'Answer the four questions: Q1 is a rule or policy cited, and do facts show its conditions were met; Q2 does the stated reason give a separate basis or only repeat the outcome; Q3 is one event given two different dates (a next, previous or revised event is a different event); Q4 are opposite outcomes about the same item or separate items.',
   'Dispute. If the record, the questions or these instructions seem flawed or unclear for this record, choose "yes" and say why. A dispute is recorded with your answers; it is not an error.',
   'Rationale. A few sentences on how you decided. Note the minutes you spent if you can.',
@@ -41,9 +47,10 @@ const sel = (name, opts) => '<select name="' + name + '"><option value="">choose
 function html(b) {
   const recHtml = b.records.map((r, n) => '<section class="rec" data-id="' + r.blind_id + '" data-sha="' + r.text_sha256 + '"><h2>' + (n + 1) + '. Record ' + r.blind_id + '</h2>'
     + '<blockquote class="txt">' + esc(r.text) + '</blockquote>'
-    + '<div class="row"><span class="lab">Overall judgement</span>' + OPTIONS.e1.map((o) => '<label class="pill"><input type="radio" name="' + r.blind_id + '_e1" value="' + o + '"> ' + o + '</label>').join('') + '</div>'
+    + '<div class="row"><span class="lab">Overall judgement</span>' + OPTIONS.e1.map((o) => '<label class="pill"><input type="radio" name="' + r.blind_id + '_e1" value="' + o + '"> ' + esc(E1_LABELS[o]) + '</label>').join('') + '</div>'
     + [1, 2, 3].map((k) => '<div class="grid"><label>Conclusion ' + k + '<input name="conclusion_' + k + '" placeholder="a few words"></label><label>Exact supporting passage<textarea name="passage_' + k + '" rows="2" placeholder="copy the exact words from the record"></textarea></label><label>Link' + sel('link_' + k, OPTIONS.link) + '</label></div>').join('')
     + '<label class="wide">If UNGROUNDED, the conclusion without a basis<input name="unsupported_conclusion"></label>'
+    + '<label class="wide">Documentation gaps found (one per line; leave empty if none)<textarea name="gap_findings" rows="2"></textarea></label>'
     + '<div class="grid4"><label>Q1 authority' + sel('q1_authority', OPTIONS.q1_authority) + '</label><label>Q2 reason' + sel('q2_reason', OPTIONS.q2_reason) + '</label><label>Q3 dates' + sel('q3_dates', OPTIONS.q3_dates) + '</label><label>Q4 outcomes' + sel('q4_outcomes', OPTIONS.q4_outcomes) + '</label></div>'
     + '<div class="grid4"><label>Confidence' + sel('confidence', OPTIONS.confidence) + '</label><label>Dispute this record or the questions?' + sel('disputed', OPTIONS.disputed) + '</label><label class="span2">If yes, why<input name="dispute_reason"></label></div>'
     + '<label class="wide">Rationale<textarea name="rationale" rows="3"></textarea></label><label class="mins">Minutes spent<input name="minutes" inputmode="numeric"></label><p class="chk" aria-live="polite"></p></section>').join('\n');
@@ -86,8 +93,8 @@ function md(b) {
   const f = (label, opts) => '- ' + label + (opts ? ' (' + opts.join(' / ') + ')' : '') + ': ____';
   return ['# Record review, batch ' + b.id.slice(-1) + ' of 4', '', '**Form ' + FORM_VERSION + '.** ' + b.records.length + ' records. Nothing has been filled in on your behalf. No Engine output, AI-proposed label or score appears here.', '',
     '## Instructions', '', ...INSTRUCTIONS.map((x, i) => (i + 1) + '. ' + x), '', 'Reviewer name: ____', '',
-    ...b.records.flatMap((r, n) => ['## ' + (n + 1) + '. Record ' + r.blind_id, '', '> ' + r.text.replace(/\n/g, '\n> '), '', f('Overall judgement', OPTIONS.e1),
-      ...[1, 2, 3].flatMap((k) => [f('Conclusion ' + k), f('Exact supporting passage ' + k), f('Link ' + k, OPTIONS.link)]), f('If UNGROUNDED, the conclusion without a basis'),
+    ...b.records.flatMap((r, n) => ['## ' + (n + 1) + '. Record ' + r.blind_id, '', '> ' + r.text.replace(/\n/g, '\n> '), '', f('Overall judgement', OPTIONS.e1.map((o) => E1_LABELS[o])),
+      ...[1, 2, 3].flatMap((k) => [f('Conclusion ' + k), f('Exact supporting passage ' + k), f('Link ' + k, OPTIONS.link)]), f('If UNGROUNDED, the conclusion without a basis'), f('Documentation gaps found (one per line; leave empty if none)'),
       f('Q1 authority', OPTIONS.q1_authority), f('Q2 reason', OPTIONS.q2_reason), f('Q3 dates', OPTIONS.q3_dates), f('Q4 outcomes', OPTIONS.q4_outcomes), f('Confidence', OPTIONS.confidence),
       f('Dispute this record or the questions?', OPTIONS.disputed), f('If yes, why'), f('Rationale'), f('Minutes spent'), ''])].join('\n');
 }

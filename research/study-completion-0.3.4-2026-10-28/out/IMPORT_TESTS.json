@@ -6,8 +6,8 @@
   "network_attempts": 0,
   "statement": "Every answer in these tests is a TEST FIXTURE written to scratch. No human judgement was recorded or invented.",
   "totals": {
-    "tests": 13,
-    "passed": 13,
+    "tests": 16,
+    "passed": 16,
     "failed": 0
   },
   "results": [
@@ -191,6 +191,114 @@
         2,
         0,
         1
+      ]
+    },
+    {
+      "id": "TI-14",
+      "name": "form 1.1: an answer from a 1.0 form (no gap_findings column) still imports; gap findings from a 1.1 form are kept one per line; the AI label is untouched",
+      "ok": true,
+      "observed": [
+        [
+          {
+            "blind_id": "B-021",
+            "status": "human-reviewed"
+          },
+          {
+            "blind_id": "B-022",
+            "status": "human-reviewed"
+          }
+        ],
+        [],
+        [
+          "TEST gap one",
+          "TEST gap two"
+        ]
+      ]
+    },
+    {
+      "id": "TI-15",
+      "name": "static: every batch form shows the record ID and full record text for 11 records, offers \"no gap identified\" and \"UNCERTAIN\", has the gap findings field, and is blank (nothing checked, selected or typed)",
+      "ok": true,
+      "observed": [
+        {
+          "n": 1,
+          "textsShown": true,
+          "fullText": true,
+          "blank": true,
+          "noGap": true,
+          "uncertain": true,
+          "gapField": true,
+          "version": true
+        },
+        {
+          "n": 2,
+          "textsShown": true,
+          "fullText": true,
+          "blank": true,
+          "noGap": true,
+          "uncertain": true,
+          "gapField": true,
+          "version": true
+        },
+        {
+          "n": 3,
+          "textsShown": true,
+          "fullText": true,
+          "blank": true,
+          "noGap": true,
+          "uncertain": true,
+          "gapField": true,
+          "version": true
+        },
+        {
+          "n": 4,
+          "textsShown": true,
+          "fullText": true,
+          "blank": true,
+          "noGap": true,
+          "uncertain": true,
+          "gapField": true,
+          "version": true
+        }
+      ]
+    },
+    {
+      "id": "TI-16",
+      "name": "browser: each of the four forms loads with every judgement empty; the downloaded untouched CSV imports nothing",
+      "ok": true,
+      "observed": [
+        {
+          "n": 1,
+          "filled": 0,
+          "blocked": 0,
+          "imported": 0,
+          "rejected": 0,
+          "rows": 11
+        },
+        {
+          "n": 2,
+          "filled": 0,
+          "blocked": 0,
+          "imported": 0,
+          "rejected": 0,
+          "rows": 11
+        },
+        {
+          "n": 3,
+          "filled": 0,
+          "blocked": 0,
+          "imported": 0,
+          "rejected": 0,
+          "rows": 11
+        },
+        {
+          "n": 4,
+          "filled": 0,
+          "blocked": 0,
+          "imported": 0,
+          "rejected": 0,
+          "rows": 11
+        }
       ]
     },
     {

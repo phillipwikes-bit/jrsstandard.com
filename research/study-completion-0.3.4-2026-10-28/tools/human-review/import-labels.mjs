@@ -11,7 +11,7 @@ import { attempts } from '../guard.mjs';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import { DIR, ROOT, STUDY, STATUS, sha, readJson, writeJson, writeOut } from '../common.mjs';
-import { OPTIONS, COLUMNS, FORM_VERSION } from './build-batches.mjs';
+import { OPTIONS, COLUMNS, ACCEPTED_FORM_VERSIONS } from './build-batches.mjs';
 
 export function parseCsv(text) {
   const rows = []; let row = [], cell = '', q = false;
@@ -53,13 +53,13 @@ export function importFiles({ files, labels, key, texts, ai, now }) {
     else answers = parseCsv(raw);
     for (const a of answers) {
       if (!a.e1 && !COLUMNS.slice(6).some((c) => norm(a[c]))) continue;   // an untouched record: nothing to import
-      if (a.form_version && a.form_version !== FORM_VERSION) { report.rejected.push({ file: basename(f), blind_id: a.blind_id, problems: ['form_version_differs'] }); continue; }
+      if (a.form_version && !ACCEPTED_FORM_VERSIONS.includes(a.form_version)) { report.rejected.push({ file: basename(f), blind_id: a.blind_id, problems: ['form_version_differs'] }); continue; }
       if ('ai_label' in a || 'reference' in a || 'engine_e1' in a) { report.rejected.push({ file: basename(f), blind_id: a.blind_id, problems: ['file_contains_label_or_engine_columns'] }); continue; }
       const v = validateAnswer(a, key, texts);
       if (v.problems.length) { report.rejected.push({ file: basename(f), blind_id: a.blind_id, problems: v.problems }); continue; }
       const k = key.get(a.blind_id), sid = k.source_id, aiLabel = ai.get(sid);
       const prev = labels.records[sid] || { source_id: sid, blind_id: a.blind_id, ai_proposed: aiLabel, status: 'AI-proposed', human: null, history: [] };
-      const human = { e1: a.e1, reviewer: norm(a.reviewer) || null, passages: v.passages, unsupported_conclusion: norm(a.unsupported_conclusion) || null, q1_authority: a.q1_authority || null, q2_reason: a.q2_reason || null,
+      const human = { e1: a.e1, reviewer: norm(a.reviewer) || null, passages: v.passages, unsupported_conclusion: norm(a.unsupported_conclusion) || null, gap_findings: String(a.gap_findings || '').split(/\r?\n/).map(norm).filter(Boolean), q1_authority: a.q1_authority || null, q2_reason: a.q2_reason || null,
         q3_dates: a.q3_dates || null, q4_outcomes: a.q4_outcomes || null, confidence: a.confidence || null, reviewer_disputes_record: a.disputed === 'yes', dispute_reason: norm(a.dispute_reason) || null, rationale: norm(a.rationale) || null, minutes: a.minutes ? Number(a.minutes) : null, batch: a.batch || null };
       const same = prev.human && JSON.stringify(prev.human) === JSON.stringify(human);
       if (same) continue;

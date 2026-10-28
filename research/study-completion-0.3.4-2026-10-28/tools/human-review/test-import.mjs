@@ -106,6 +106,7 @@ await test('TI-11', 'browser: the batch 1 form loads from disk with all network 
     if (aiOf('B-001') === 'UNGROUNDED') await sec.locator('[name="unsupported_conclusion"]').fill('test conclusion');
     for (const [k, v] of [['q1_authority', 'no authority cited'], ['q2_reason', 'gives a separate basis'], ['q3_dates', 'no dated events'], ['q4_outcomes', 'no opposite outcomes'], ['confidence', 'confident'], ['disputed', 'no']]) await sec.locator('[name="' + k + '"]').selectOption(v);
     await sec.locator('[name="rationale"]').fill('TEST FIXTURE');
+    await sec.locator('[name="gap_findings"]').fill('TEST gap finding');
     const sec2 = page.locator('section.rec[data-id="B-002"]'); await sec2.locator('[name="passage_1"]').fill('words that are not in the record');
     await page.click('#check');
     const marked = await sec2.locator('.chk').textContent();
@@ -114,7 +115,7 @@ await test('TI-11', 'browser: the batch 1 form loads from disk with all network 
     const saved = join(SCRATCH, 'browser.csv'); await dl.saveAs(saved);
     const { labels, rep } = run([saved]);
     const r = labels.records[ctx.key.get('B-001').source_id];
-    return { ok: blocked.length === 0 && /not exact/.test(marked) && /^1 of 11/.test(progress) && rep.imported.length === 1 && rep.rejected.length === 1 && rep.rejected[0].blind_id === 'B-002' && r.status === 'human-reviewed' && r.human.passages[0].exact === true && r.human.reviewer === 'TEST FIXTURE (not a review)',
+    return { ok: r.human.gap_findings[0] === 'TEST gap finding' && blocked.length === 0 && /not exact/.test(marked) && /^1 of 11/.test(progress) && rep.imported.length === 1 && rep.rejected.length === 1 && rep.rejected[0].blind_id === 'B-002' && r.status === 'human-reviewed' && r.human.passages[0].exact === true && r.human.reviewer === 'TEST FIXTURE (not a review)',
       observed: { blocked: blocked.length, marked, progress, imported: rep.imported, rejected: rep.rejected.map((x) => x.blind_id + ':' + x.problems.join('|')), dialogs: dialogs.length } };
   } finally { await browser.close(); }
 });
@@ -124,6 +125,39 @@ await test('TI-12', 'the command line refuses no arguments (exit 2), writes only
   const a = cli([]); const out = join(SCRATCH, 'cli', 'LABELS.json'); mkdirSync(join(SCRATCH, 'cli'), { recursive: true });
   const b = cli(['--out', out, writeCsv('t12.csv', [answer('B-019')])]); const c = cli(['--out', out, writeCsv('t12b.csv', [answer('B-020', { e1: 'MAYBE' })])]);
   return { ok: a.status === 2 && b.status === 0 && existsSync(out) && readJson(out).summary.records_with_human_answer === 1 && c.status === 1, observed: [a.status, b.status, c.status] };
+});
+await test('TI-14', 'form 1.1: an answer from a 1.0 form (no gap_findings column) still imports; gap findings from a 1.1 form are kept one per line; the AI label is untouched', () => {
+  const COLS10 = COLUMNS.filter((c) => c !== 'gap_findings'); const p = join(SCRATCH, 't14a.csv');
+  writeFileSync(p, COLS10.join(',') + '\r\n' + COLS10.map((c) => csvCell(c === 'form_version' ? 'S156-COMPLETION-REVIEW-1.0' : answer('B-021')[c] === undefined ? '' : answer('B-021')[c])).join(',') + '\r\n');
+  const q = writeCsv('t14b.csv', [answer('B-022', { e1: 'UNGROUNDED', unsupported_conclusion: 'test conclusion', gap_findings: 'TEST gap one\r\nTEST gap two' })]);
+  const { labels, rep } = run([p, q]); const a = labels.records[ctx.key.get('B-021').source_id], b = labels.records[ctx.key.get('B-022').source_id];
+  return { ok: rep.imported.length === 2 && rep.rejected.length === 0 && a.human.gap_findings.length === 0 && b.human.gap_findings.join('|') === 'TEST gap one|TEST gap two' && b.ai_proposed === aiOf('B-022'), observed: [rep.imported, a.human.gap_findings, b.human.gap_findings] };
+});
+await test('TI-15', 'static: every batch form shows the record ID and full record text for 11 records, offers "no gap identified" and "UNCERTAIN", has the gap findings field, and is blank (nothing checked, selected or typed)', () => {
+  const man = readJson(join(DIR, 'human-review', 'BATCH_MANIFEST.json'));
+  const r = [1, 2, 3, 4].map((n) => { const h = readFileSync(join(DIR, 'human-review', 'batches', 'BATCH_0' + n + '.html'), 'utf8'); const b = man.batches[n - 1];
+    const textsShown = b.blind_ids.every((id) => h.includes('Record ' + id + '</h2>') && h.includes('data-sha="' + b.text_sha256[id] + '"'));
+    const fullText = b.blind_ids.every((id) => { const t = ctx.texts.get(id).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); return h.includes('<blockquote class="txt">' + t + '</blockquote>'); });
+    const form = h.replace(/<blockquote class="txt">[\s\S]*?<\/blockquote>/g, '');   // record text may contain any word
+    const blank = !/\schecked\b|\sselected\b/.test(form) && !/<textarea[^>]*>[^<]+<\/textarea>/.test(form) && !/<input(?![^>]*type="radio")[^>]*\svalue="[^"]+"/.test(form);
+    return { n, textsShown, fullText, blank, noGap: (h.match(/GROUNDED: no gap identified/g) || []).length === 11, uncertain: (h.match(/UNCERTAIN: cannot tell/g) || []).length === 11, gapField: (h.match(/name="gap_findings"/g) || []).length === 11, version: h.includes('S156-COMPLETION-REVIEW-1.1') }; });
+  return { ok: r.every((x) => x.textsShown && x.fullText && x.blank && x.noGap && x.uncertain && x.gapField && x.version), observed: r };
+});
+await test('TI-16', 'browser: each of the four forms loads with every judgement empty; the downloaded untouched CSV imports nothing', async () => {
+  const require = createRequire(import.meta.url); let pw; try { pw = require('playwright'); } catch { return { ok: false, observed: 'playwright not available' }; }
+  const browser = await pw.chromium.launch(); const out = [];
+  try {
+    for (const n of [1, 2, 3, 4]) {
+      const page = await (await browser.newContext({ acceptDownloads: true })).newPage(); const blocked = [];
+      await page.route('**/*', (route) => { const u = route.request().url(); if (u.startsWith('file://')) return route.continue(); blocked.push(u); return route.abort(); });
+      page.on('dialog', (d) => d.accept());
+      await page.goto('file://' + join(DIR, 'human-review', 'batches', 'BATCH_0' + n + '.html'));
+      const filled = await page.evaluate(() => answers().filter((a) => Object.keys(a).some((k) => !['form_version', 'batch', 'reviewer', 'blind_id', 'record_text_sha256'].includes(k) && a[k])).length);
+      const [dl] = await Promise.all([page.waitForEvent('download'), page.click('#csv')]); const saved = join(SCRATCH, 'blank_' + n + '.csv'); await dl.saveAs(saved);
+      const { rep } = run([saved]); out.push({ n, filled, blocked: blocked.length, imported: rep.imported.length, rejected: rep.rejected.length, rows: parseCsv(readFileSync(saved, 'utf8')).length });
+    }
+  } finally { await browser.close(); }
+  return { ok: out.every((x) => x.filled === 0 && x.blocked === 0 && x.imported === 0 && x.rejected === 0 && x.rows === 11), observed: out };
 });
 await test('TI-13', 'no test wrote the real label file, and the frozen blind key and AI proposals are unchanged', () => {
   const after = [join(STUDY, 'sealed', 'AI_PROPOSED_REFERENCE.json'), join(STUDY, 'sealed', 'BLIND_KEY.json')].map(shaFile);

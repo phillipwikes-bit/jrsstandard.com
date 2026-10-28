@@ -21,6 +21,7 @@ node tools/live/rehearse-enable.mjs "$S/rehearse"
 node tools/live/mutate-live.mjs "$S/mutate"
 node tools/human-review/build-batches.mjs
 node tools/human-review/test-import.mjs "$S/testimport"
+node tools/diagnosis/repro-synthetic.mjs "$S/repro"
 node tools/summarize-verification.mjs
 node tools/write-manifest.mjs
 echo "study completion: all offline steps passed"
