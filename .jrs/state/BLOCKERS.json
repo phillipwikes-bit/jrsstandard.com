@@ -447,6 +447,26 @@
       "note": "Not a CRITICAL blocker for local, mocked, synthetic work; it blocks any use of the package as evidence for release status or public claims.",
       "next_action_by": "OWNER",
       "next_action_basis": "Files are held outside the repository."
+    },
+    {
+      "blocker_id": "B-019",
+      "severity": "HIGH",
+      "category": "SECURITY",
+      "description": "An Anthropic API credential was pasted into the session conversation on 2026-10-28, while the owner-approved three-request compatibility check (PRE) of the existing 0.3.4 records study waited for the environment secret JRS_STUDY_ANTHROPIC_KEY. It is exposed by that act. The owner then asked for it to be used and the study run. It was not used, tested, recovered, reproduced or hashed, no provider request was sent, and live dispatch stayed disabled.",
+      "evidence_refs": [
+        "research/study-completion-0.3.4-2026-10-28/reports/PRE_CHECK_STATUS_2026-10-28.md, section 'Credential exposure, 2026-10-28'",
+        "research/MASTER_TRACKER.md, session log entries dated 2026-10-28"
+      ],
+      "affected_assets": [
+        "research/study-completion-0.3.4-2026-10-28/"
+      ],
+      "required_action": "Owner revokes the pasted credential on the provider console's API keys page and issues a new one. The new key is configured only as the environment secret JRS_STUDY_ANTHROPIC_KEY in the cloud environment settings, which a new session picks up. No replacement is to be pasted into the repository or conversation, and none is requested.",
+      "owner": "Phillip Wikes",
+      "status": "OPEN",
+      "created": "2026-10-28",
+      "note": "Recorded: the fact and date of the exposure and the owner's request to use the credential, ONLY. Deliberately not recorded: the value, prefix, length, hash or any derivative. The PRE check is not held by this record alone: it also needs the owner's signature and date, an expiry, the account's provider-retention arrangement and a capture deletion rule (PRE_CHECK_STATUS_2026-10-28.md). Closure follows the B-001 precedent: the owner's attestation of revocation is the evidence class.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Revocation is performed in the provider console, outside the repository; only the account holder can do it."
     }
   ],
   "_decisions_recorded_2026_09_15": {
