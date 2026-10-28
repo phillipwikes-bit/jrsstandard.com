@@ -3037,3 +3037,16 @@ Only four line groups differ between v7 and v8.
 - 2026-10-28 (**"Execute study": NOT STARTED; NOTHING CHANGED SINCE THE PREVIOUS ENTRY**): `JRS_STUDY_ANTHROPIC_KEY` still absent from this session (checked by name only); the key pasted into chat is still not used; provider retention still unstated. No request sent; dispatch stayed disabled.
 - 2026-10-28 (**A CREDENTIAL WAS PASTED INTO CHAT AGAIN: NOT USED, NOT STORED; B-019 STAYS OPEN**): not used, tested or repeated; found in no repository file or git history (generic prefix check only); no request sent; dispatch stayed disabled. The study still needs a new key in `JRS_STUDY_ANTHROPIC_KEY`, read by a new session, and the provider-retention line.
 - 2026-10-28 (**OWNER INSTRUCTED "Push it" AGAIN; THREE TRACKER COMMITS PUSHED TO PR #44**): `b2bb5d0d`, `c372e86b` and `bbd9fd14` pushed with this line. Secret scan of the added lines: none found. Tracker lines only; nothing merged or deployed; no request sent. B-018 and B-019 OPEN; NO_GO_NOT_VERIFIED.
+
+
+### 2026-10-28 - Shared Claude Code / ChatGPT engine checkpoint workflow
+
+Owner directed setup in the existing repository despite public visibility.
+Added root ENGINE_HANDOFF.md and AGENTS.md; added a pointer to CLAUDE.md while
+preserving its historical contents. Shared branch is
+claude/study-completion-0.3.4-local. Both assistants are instructed to fetch
+before work and publish reviewed checkpoints without owner file relay.
+This is a repository handoff workflow, not a persistent session connection.
+Latest local 0.3.5 source remains unavailable until its holder publishes it.
+No engine source, private capture, credential, authorization, dispatch setting,
+production branch, or adoption status was changed in this checkpoint.

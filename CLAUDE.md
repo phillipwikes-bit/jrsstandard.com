@@ -1,3 +1,11 @@
+> **SHARED ENGINE CHECKPOINT WORKFLOW - 2026-10-28.**
+> For engine tasks, also read `ENGINE_HANDOFF.md` and `AGENTS.md`.
+> Fetch the shared branch before work and publish reviewed completed checkpoints
+> under the owner's authorization. Preserve local changes and frozen packages.
+> Retrieve routine handoffs yourself rather than asking the owner to relay files.
+> These instructions do not authorize live inference, deployment, private-data
+> publication or automatic launch of another assistant.
+
 # JRS CLAUDE CODE MASTER PROMPT
 ## ENTERPRISE ASSET ORCHESTRATOR
 
