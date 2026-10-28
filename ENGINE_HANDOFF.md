@@ -1,6 +1,6 @@
 # Shared Engine Handoff
 
-Updated: 2026-10-28 21:25 UTC (Claude Code, reconciling two concurrent drafts)
+Updated: 2026-10-28 21:21 UTC (Claude Code, correcting checkpoint times)
 Repository: phillipwikes-bit/jrsstandard.com (verified **public** on 2026-10-28)
 Shared working branch: `claude/study-completion-0.3.4-local`
 
@@ -80,7 +80,7 @@ All agreement figures below are against AI-proposed references, not human labels
 
 No provider calls. Run with `ANTHROPIC_BASE_URL` unset. Do not regenerate or overwrite frozen outputs to make checks pass. No single command covers the unpublished 0.3.5 candidate; its package README gives its commands once it is published.
 
-| Command (from the repository root unless noted) | Result at the 2026-10-28 21:25 UTC checkpoint |
+| Command (from the repository root unless noted) | Result at the 2026-10-28 21:15 UTC checkpoint (`87186653`) |
 |---|---|
 | `node tests/engine/auth-matrix.mjs` | pass, 10 of 10 |
 | `node scripts/test_review_incomplete.mjs` | pass |
@@ -135,10 +135,8 @@ This workflow does not authorize dispatch, live inference, merge to `main`, depl
 ## Latest completed checkpoint
 
 - **Author:** Claude Code (session `session_01C2VvunVHW3n8JJeZKqdXSV`).
-- **Change:**
-  - reconciled the two handoff drafts;
-  - published Claude Code's local records: tracker entries, B-019 updates, correction C-11 to the live-run key instructions, and this file.
-- **Validation:** the commands above; drift guard verdicts unchanged; outgoing diff inspected; a secret-pattern scan of the added lines found none.
+- **Change:** corrected the checkpoint times in this file, and two times in the tracker, against the commit timestamps and this session's message log. Nothing else changed.
+- **Validation:** the commands above were re-run with the same results; outgoing diff inspected; a secret-pattern scan of the added lines found none.
 - **Engine behavior changed:** none.
 - **Next action:** see above.
 
@@ -147,5 +145,8 @@ This workflow does not authorize dispatch, live inference, merge to `main`, depl
 | When (UTC) | Who | Checkpoint | Commit |
 |---|---|---|---|
 | 2026-10-28 21:08 | ChatGPT/Codex | Shared handoff, `AGENTS.md`, `CLAUDE.md` pointer, tracker section | `b11a487a` |
-| 2026-10-28 21:10 | Claude Code | Local handoff draft on `engine/shared-working` | not published; merged here |
-| 2026-10-28 21:25 | Claude Code | Reconciled handoff; published local records | the merge commit carrying this file |
+| 2026-10-28 21:11 | Claude Code | Local handoff draft on `engine/shared-working` | `4f63c1de`, published as part of the history of `87186653` |
+| 2026-10-28 21:15 | Claude Code | Reconciled the two handoff drafts; published local records (tracker entries, B-019 updates, correction C-11 to the live-run key instructions) | `87186653` |
+| 2026-10-28 21:21 | Claude Code | Corrected checkpoint times | the commit carrying this file |
+
+**Correction (2026-10-28 21:21 UTC).** The `87186653` version of this file gave 21:25 for the reconciliation and 21:10 for the local draft, and called the draft unpublished. The commit timestamps are 21:15:39 and 21:11:36 UTC, and the draft commit is in the published history. The times had been estimated instead of read from the record.
