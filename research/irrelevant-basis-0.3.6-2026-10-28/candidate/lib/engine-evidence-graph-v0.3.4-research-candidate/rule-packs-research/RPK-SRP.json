@@ -1,0 +1,270 @@
+{
+  "candidate_version": "0.3.6-research-candidate",
+  "pack_id": "RPK-SRP",
+  "pack_version": "3.0.0",
+  "purpose": "Study research profile for prose decision records, repaired after the 156-record study (0.3.4 repair assignment). Active only through an enabled research profile.",
+  "rules": [
+    {
+      "rule_id": "RP-SRP-01",
+      "purpose": "Read study records that have no \"Label:\" headings.",
+      "trigger": "Split the record into sentence units and mark each with lexical roles: decision, basis cue, authority reference, added conclusion. A first sentence with no verb is a title and has no role.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Lexical role words only; a decision or reason phrased without the listed words is missed.",
+      "false_positive_risk": "Descriptive sentences that use a decision word are treated as decision units.",
+      "linked_scenarios": [
+        "R03",
+        "R08",
+        "R15",
+        "R22",
+        "S-001",
+        "S-002",
+        "S-003",
+        "S-004",
+        "S-005",
+        "S-006",
+        "S-007",
+        "S-008",
+        "S-009",
+        "S-010"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-02",
+      "purpose": "Find identifiable material in prose.",
+      "trigger": "Find dates, identifiers, quantities, measurements and on-file documents, excluding the identifier of the thing decided, the figures inside an authority statement, the date attached to a decision verb, title metadata and instruction text. Verb forms are not read as plural quantities.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "An anchor shows that something specific is mentioned, not that it supports the conclusion; whether it counts is decided by RP-SRP-09.",
+      "false_positive_risk": "A count written as a word or an unlisted unit is missed.",
+      "linked_scenarios": [
+        "R08",
+        "R15",
+        "S-001",
+        "S-002",
+        "S-003",
+        "S-004",
+        "S-005",
+        "S-006",
+        "S-007",
+        "S-008",
+        "S-009",
+        "S-010",
+        "S-011",
+        "S-012",
+        "S-013",
+        "S-014",
+        "S-015",
+        "S-016",
+        "S-017",
+        "S-018",
+        "S-019",
+        "S-020",
+        "S-043"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-03",
+      "purpose": "Question 3: do two dates concern the same event or different events?",
+      "trigger": "Give each date an event key from the nearest event word. Two dates conflict only when their keys, instance words, planned status and any identifiers match. In K6, two cited dates with different known keys are not compared; an unknown key keeps the comparison.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Event words are a fixed list; an unlisted event gets no key.",
+      "false_positive_risk": "Two different events named with the same word and no instance word are flagged as one event with two dates.",
+      "linked_scenarios": [
+        "S-007",
+        "S-008",
+        "S-017",
+        "S-018",
+        "S-027",
+        "S-028",
+        "S-037",
+        "S-038"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-04",
+      "purpose": "Question 4: do apparent contradictions concern separate requests?",
+      "trigger": "In K6, opposite cited decisions are not compared when their units name different subject identifiers, when the record marks several decisions and the units differ, or when one unit records a partial outcome.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Subject identifiers and multi-decision markers are lexical.",
+      "false_positive_risk": "A real contradiction between two differently numbered items for the same request would be missed.",
+      "linked_scenarios": [
+        "S-009",
+        "S-019",
+        "S-029",
+        "S-039"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-05",
+      "purpose": "Flag opposite outcomes for the same item.",
+      "trigger": "Two decision units with opposite outcomes that share a subject identifier, or with no identifier share the object of the outcome verb, neither partial, raise a decision_outcome_conflict affecting reconstructability and reasoning traceability.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Needs a shared identifier or the same verb object; other contradictions are not detected.",
+      "false_positive_risk": "A record that reverses an outcome on appeal is flagged.",
+      "linked_scenarios": [
+        "S-009",
+        "S-019",
+        "S-029",
+        "S-039"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-06",
+      "purpose": "Question 1: does an authority reference establish the basis?",
+      "trigger": "When a decision cites an authority and no evidence is linked to the decision, stated or inferred, identifiable basis is routed to review with authority_reference_without_linked_facts; it can never be supported.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Whether the cited authority itself settles the outcome is a judgement the rule cannot make.",
+      "false_positive_risk": "A record whose authority alone settles the outcome, with the facts described in words, is flagged.",
+      "linked_scenarios": [
+        "S-004",
+        "S-005",
+        "S-014",
+        "S-015",
+        "S-024",
+        "S-025",
+        "S-034",
+        "S-035"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-07",
+      "purpose": "Question 2: does a repeated conclusion explain the decision?",
+      "trigger": "With no stated-link evidence, a reason that repeats the decision or uses a listed restatement phrase is a visible gap conclusion_restated_as_basis; a decision with no reason, no linked evidence and no cited authority is conclusion_without_stated_basis.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "The restatement phrase list is short and lexical.",
+      "false_positive_risk": "A brief but genuine reason without a date or identifier is flagged.",
+      "linked_scenarios": [
+        "S-003",
+        "S-006",
+        "S-013",
+        "S-016",
+        "S-023",
+        "S-026",
+        "S-033",
+        "S-036"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-08",
+      "purpose": "Apply only the checks that fit study records.",
+      "trigger": "Expiry, compensating-control and labelled-section linkage rules are not applied. An added conclusion, or one of several decisions about different subjects, needs linked evidence of its own; otherwise a visible gap conclusion_without_identifiable_basis is recorded.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Which checks fit a record type is a design choice, not a finding.",
+      "false_positive_risk": "A secondary decision whose basis is an absence (for example \"no test report was submitted\") is flagged.",
+      "linked_scenarios": [
+        "S-009",
+        "S-010",
+        "S-019",
+        "S-020",
+        "S-029",
+        "S-030",
+        "S-039",
+        "S-040"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-09",
+      "purpose": "Count only evidence the record links to a decision.",
+      "trigger": "An anchor supports a condition only when it sits in a decision sentence, in a sentence that gives a reason and refers to a decision, in an earlier sentence that such a reason names by reference (\"that survey\"), or in a sentence naming the same identifier or the same dated event as linked evidence. Two kinds of inferred link prevent a no-evidence flag and never support: facts stating a measurement in the same unit as a condition of a cited authority, and a sentence reporting evidence about what a decision concerns (its subject identifier, a named party or item, or a value the decision sentence states). Shared ordinary words are not used. Other anchors are reported as unlinked and not counted. Title metadata is never evidence.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Links are words. An irrelevant item the record explicitly states as the basis is treated as a stated basis; an irrelevant sentence that shares a decision value or names the decided subject is an inferred link and can stop a no-evidence flag; a relevant fact the record does not link is not counted.",
+      "false_positive_risk": "A grounded record that states its evidence without linking it to the decision is flagged or routed to review.",
+      "linked_scenarios": [
+        "S-001",
+        "S-004",
+        "S-041",
+        "S-075",
+        "S-094",
+        "S-096",
+        "TPA-01",
+        "TPA-02"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-10",
+      "purpose": "Tell events apart and keep chronology on the decision path.",
+      "trigger": "Instance words (next, previous, second, revised and similar) and planned wording make a different event; a comma inside a number does not cut the event window; added process words carry event keys; chronology counts dated events in decision sentences and linked-evidence sentences only, never a title date.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Instance and planned words are a fixed list.",
+      "false_positive_risk": "A real conflict between a planned and a past mention of one event is not flagged.",
+      "linked_scenarios": [
+        "S-097",
+        "S-009",
+        "S-049",
+        "S-062"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-11",
+      "purpose": "Screen study records for instructions to the reviewing system.",
+      "trigger": "Text addressed to a reviewing system, or directing how the record is assessed, is quarantined: its anchors and roles are dropped, every condition is routed to review, and visible gaps in the rest of the record are still reported.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Lexical patterns; a phrasing with no pattern is missed. The screen does not prevent a model from obeying text it misses.",
+      "false_positive_risk": "A record that quotes or discusses an instruction (for example a phishing email) is routed to review.",
+      "linked_scenarios": [
+        "TIN-01",
+        "TIN-02",
+        "TIN-03"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-12",
+      "purpose": "Find decisions phrased with other verbs.",
+      "trigger": "Decision verb families (change of state with a target, endorsement by a named decision-maker, willingness or resolution to act, stopping or reversing, go-ahead) mark decision units. When the rules find none and the candidate quotes a verified decision, reconstructability is routed to review instead of a no-conclusion gap.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Still a word list; a decision phrased outside the families is missed. The candidate-located decision is never used to link evidence.",
+      "false_positive_risk": "A descriptive sentence using a family verb is read as a decision.",
+      "linked_scenarios": [
+        "S-041",
+        "S-063",
+        "TWD-01"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-13",
+      "purpose": "One control per defect, traced to record passages.",
+      "trigger": "Controls are consolidated by defect; each lists every affected condition and the record passages concerned, and labels detect as observed or absent, reflect as an inferred concern, correct as a requested clarification and learn as a template suggestion.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Passages are the decision and anchor spans the rules used; a control does not show which fact is missing.",
+      "false_positive_risk": "One control may group passages that a reviewer would treat separately.",
+      "linked_scenarios": [
+        "S-029",
+        "TCC-01"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Any use outside this study, any widening of a trigger, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-SRP-14",
+      "purpose": "Keep a stated link from supporting a basis condition until a separately identified person has assessed its relevance.",
+      "trigger": "A stated link (a reason sentence that says the decision rests on or was based on identified material, or a decision sentence's own dates and identifiers) counts as a stated basis but supports no basis condition unless a relevance assessment by a named person, supplied in the research profile, marks that sentence relevant. A sentence assessed as not relevant loses its links.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "The rules cannot judge relevance; without a human assessment every stated link stays unresolved, so a clean result is unreachable. Assessments are matched to the exact sentence text.",
+      "false_positive_risk": "None added: unresolved relevance routes to review and creates no gap. A sound record whose links are unassessed loses its supported findings (more review).",
+      "linked_scenarios": [
+        "IB-03",
+        "IB-05",
+        "IB-06",
+        "IB-07",
+        "IB-09",
+        "IB-10",
+        "IB-12"
+      ],
+      "owner_decision_for_expansion": "Not adopted. Implements option b of Owner Decision Sheet V2, Decision 3, with a human relevance channel, under the owner instruction of 2026-10-28. Any use outside this study requires a recorded owner decision."
+    }
+  ],
+  "signature": {
+    "method": "sha256-canonical-content-seal",
+    "content_sha256": "sha256:6e60cdf57c0d078ad13da1a6b89f9cc5e6f669044532297421eca984b8f53772"
+  }
+}

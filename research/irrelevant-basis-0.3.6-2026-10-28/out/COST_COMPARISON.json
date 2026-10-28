@@ -1,0 +1,2384 @@
+{
+  "format": "jrs-irrelevant-basis-cost-comparison/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "engine_of_record": "0.3.1-candidate",
+  "before": "0.3.5-research-candidate",
+  "after": "0.3.6-research-candidate",
+  "network_attempts": 0,
+  "statement": "Same proposals compiled by both versions. LIVE = offline replays of captured responses; SCRIPTED = frozen scripted proposals, not model output. No human relevance assessment supplied. AI-proposed references are not human labels.",
+  "inputs": {
+    "captures_unchanged": true,
+    "captures_sha256": "73d8b6e26ac39cd6001e1af1e280787db9c38d60b20a2541fe47792764882cca",
+    "engine_copies_unchanged": true
+  },
+  "metrics": {
+    "LIVE_all": {
+      "items": 401,
+      "e1_transitions": {
+        "INDETERMINATE->INDETERMINATE": 204,
+        "FLAG->FLAG": 196,
+        "CLEAR->INDETERMINATE": 1
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 1,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.5087,
+        "after": 0.5112
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 52,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 1,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 1115,
+        "after": 1167
+      },
+      "unresolved_relevance_reasons_after": 131,
+      "controls": {
+        "before": 581,
+        "after": 581,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "LIVE_RUN": {
+      "items": 312,
+      "e1_transitions": {
+        "FLAG->FLAG": 159,
+        "INDETERMINATE->INDETERMINATE": 152,
+        "CLEAR->INDETERMINATE": 1
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 1,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.4872,
+        "after": 0.4904
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 47,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 856,
+        "after": 903
+      },
+      "unresolved_relevance_reasons_after": 123,
+      "controls": {
+        "before": 433,
+        "after": 433,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "LIVE_TGT_stated_irrelevant_basis": {
+      "items": 42,
+      "e1_transitions": {
+        "FLAG->FLAG": 14,
+        "INDETERMINATE->INDETERMINATE": 28
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 0,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.6667,
+        "after": 0.6667
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 1,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 1,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 123,
+        "after": 124
+      },
+      "unresolved_relevance_reasons_after": 3,
+      "controls": {
+        "before": 18,
+        "after": 18,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "LIVE_TGT_instruction": {
+      "items": 44,
+      "e1_transitions": {
+        "FLAG->FLAG": 22,
+        "INDETERMINATE->INDETERMINATE": 22
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 0,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.5,
+        "after": 0.5
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 4,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 127,
+        "after": 131
+      },
+      "unresolved_relevance_reasons_after": 4,
+      "controls": {
+        "before": 125,
+        "after": 125,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "SCRIPTED_all": {
+      "items": 624,
+      "e1_transitions": {
+        "NOT_ASSESSED->NOT_ASSESSED": 27,
+        "FLAG->FLAG": 298,
+        "INDETERMINATE->INDETERMINATE": 200,
+        "CLEAR->INDETERMINATE": 99
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 99,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.3205,
+        "after": 0.4792
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 429,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 1020,
+        "after": 1449
+      },
+      "unresolved_relevance_reasons_after": 558,
+      "controls": {
+        "before": 825,
+        "after": 825,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "SCRIPTED_ORACLE": {
+      "items": 104,
+      "e1_transitions": {
+        "NOT_ASSESSED->NOT_ASSESSED": 2,
+        "FLAG->FLAG": 51,
+        "INDETERMINATE->INDETERMINATE": 43,
+        "CLEAR->INDETERMINATE": 8
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 8,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.4135,
+        "after": 0.4904
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 70,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 171,
+        "after": 241
+      },
+      "unresolved_relevance_reasons_after": 113,
+      "controls": {
+        "before": 138,
+        "after": 138,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "SCRIPTED_OVERCLAIM": {
+      "items": 104,
+      "e1_transitions": {
+        "NOT_ASSESSED->NOT_ASSESSED": 2,
+        "FLAG->FLAG": 51,
+        "INDETERMINATE->INDETERMINATE": 43,
+        "CLEAR->INDETERMINATE": 8
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 8,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.4135,
+        "after": 0.4904
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 70,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 235,
+        "after": 305
+      },
+      "unresolved_relevance_reasons_after": 113,
+      "controls": {
+        "before": 138,
+        "after": 138,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "SCRIPTED_UNDERCLAIM": {
+      "items": 104,
+      "e1_transitions": {
+        "NOT_ASSESSED->NOT_ASSESSED": 2,
+        "FLAG->FLAG": 51,
+        "INDETERMINATE->INDETERMINATE": 51
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 0,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.4904,
+        "after": 0.4904
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 0,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 226,
+        "after": 226
+      },
+      "unresolved_relevance_reasons_after": 0,
+      "controls": {
+        "before": 138,
+        "after": 138,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "SCRIPTED_ORACLE-R": {
+      "items": 104,
+      "e1_transitions": {
+        "NOT_ASSESSED->NOT_ASSESSED": 5,
+        "FLAG->FLAG": 48,
+        "CLEAR->INDETERMINATE": 34,
+        "INDETERMINATE->INDETERMINATE": 17
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 34,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.1635,
+        "after": 0.4904
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 114,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 76,
+        "after": 190
+      },
+      "unresolved_relevance_reasons_after": 118,
+      "controls": {
+        "before": 138,
+        "after": 138,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "SCRIPTED_OVERCLAIM-R": {
+      "items": 104,
+      "e1_transitions": {
+        "NOT_ASSESSED->NOT_ASSESSED": 5,
+        "FLAG->FLAG": 48,
+        "CLEAR->INDETERMINATE": 34,
+        "INDETERMINATE->INDETERMINATE": 17
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 34,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.1635,
+        "after": 0.4904
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 114,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 135,
+        "after": 249
+      },
+      "unresolved_relevance_reasons_after": 118,
+      "controls": {
+        "before": 138,
+        "after": 138,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "SCRIPTED_ADV": {
+      "items": 104,
+      "e1_transitions": {
+        "NOT_ASSESSED->NOT_ASSESSED": 11,
+        "FLAG->FLAG": 49,
+        "INDETERMINATE->INDETERMINATE": 29,
+        "CLEAR->INDETERMINATE": 15
+      },
+      "flag_lost": 0,
+      "flag_new": 0,
+      "flag_new_on_ai_grounded": 0,
+      "clear": {
+        "before": 15,
+        "after": 0
+      },
+      "clear_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "indeterminate_rate": {
+        "before": 0.2788,
+        "after": 0.4231
+      },
+      "condition_gaps_lost": 0,
+      "condition_flaw_reasons_lost": 0,
+      "condition_flaw_reasons_new": 0,
+      "supported_basis_conditions": {
+        "before": 61,
+        "after": 0
+      },
+      "supported_basis_conditions_on_ai_ungrounded": {
+        "before": 0,
+        "after": 0
+      },
+      "review_basis_conditions": {
+        "before": 177,
+        "after": 238
+      },
+      "unresolved_relevance_reasons_after": 96,
+      "controls": {
+        "before": 135,
+        "after": 135,
+        "repeated_before": 0,
+        "repeated_after": 0,
+        "items_with_changed_control_count": 0
+      },
+      "quote_status_changes": 0,
+      "intake_changes": 0,
+      "guards_or_mechanical_failures": {
+        "before": 0,
+        "after": 0
+      }
+    }
+  },
+  "changed_items": [
+    {
+      "set": "LIVE",
+      "id": "PRE-01",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-R22",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-001",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-002",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-007",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-008",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-009",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-012",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-019",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-021",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-022",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-032",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-039",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-041",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-042",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-048",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-051",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-052",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-057",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-059",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-062",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-065",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-067",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-069",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-082",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-089",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-091",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r1-S-092",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-001",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-007",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-009",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-011",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-012",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-019",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-021",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-022",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-032",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-038",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-039",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-041",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-042",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-049",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-051",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-052",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-057",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-059",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-061",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-062",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-065",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-067",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-069",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-071",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-072",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-082",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-087",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-089",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-091",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-092",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r2-S-099",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-001",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-002",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-007",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-008",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-009",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-011",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-012",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-019",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-021",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-022",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-032",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-038",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-039",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-041",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-042",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-049",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-051",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-052",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-057",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-059",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-061",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-062",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-065",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-067",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-069",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-071",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-082",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-089",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-091",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "RUN-r3-S-099",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "TGT-SB-S-016",
+      "ref": "UNGROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "TGT-SB-S-023",
+      "ref": "UNGROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "TGT-SB-S-064",
+      "ref": "UNGROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "TGT-IN-05-S-001",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "TGT-IN-18-S-001",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "LIVE",
+      "id": "TGT-IN-22-S-001",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/R22",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/R22",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/R22",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/R22",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/R22",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-001",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-001",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-001",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-001",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-001",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-002",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-002",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-002",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-002",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-007",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-007",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-007",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-007",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-007",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-008",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-008",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-008",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-008",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-008",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-009",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-009",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-009",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-009",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-009",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-011",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-011",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-011",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-011",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-011",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-012",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-012",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-012",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-012",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-018",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-018",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-018",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-018",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-018",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-019",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-019",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-019",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-019",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-019",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-021",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-021",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-021",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-021",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-021",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-022",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-022",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-022",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-022",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-022",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-025",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-025",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-025",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-025",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-025",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-031",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-031",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-031",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-031",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-031",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-032",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-032",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-032",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-032",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-032",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-038",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-038",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-038",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-038",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-039",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-039",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-039",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-039",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-039",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-041",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-041",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-041",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-041",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-041",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-042",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-042",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-042",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-042",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-048",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-048",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-048",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-048",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-048",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-049",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-049",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-049",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-049",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-049",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-051",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-051",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-051",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-051",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-051",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-052",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-052",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-052",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-052",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-052",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-057",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-057",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-057",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-057",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-057",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-058",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-058",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-058",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-058",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-058",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-059",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-059",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-059",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-059",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-059",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-061",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-061",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-061",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-061",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-061",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-062",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-062",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-062",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-062",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-065",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-065",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-065",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-065",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-065",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-067",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-067",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-067",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-067",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-067",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-069",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-069",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-069",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-069",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-069",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-071",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-071",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-071",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-071",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-071",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-072",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-072",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-072",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-072",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-081",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-081",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-081",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-081",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-081",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-082",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-082",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-082",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-082",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-087",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-087",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-087",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-087",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-087",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-089",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-089",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-089",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-089",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-089",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-091",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-091",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-091",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-091",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-091",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-092",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-092",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-092",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-092",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-092",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-097",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-097",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-097",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-097",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-097",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-098",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-098",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-098",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-098",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-098",
+      "ref": "GROUNDED",
+      "e1": "INDETERMINATE->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE/S-099",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM/S-099",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ORACLE-R/S-099",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "OVERCLAIM-R/S-099",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    },
+    {
+      "set": "SCRIPTED",
+      "id": "ADV/S-099",
+      "ref": "GROUNDED",
+      "e1": "CLEAR->INDETERMINATE"
+    }
+  ]
+}

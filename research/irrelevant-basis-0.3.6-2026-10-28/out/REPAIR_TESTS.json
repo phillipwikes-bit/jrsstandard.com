@@ -1,0 +1,367 @@
+{
+  "format": "jrs-irrelevant-basis-repair-tests/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "engine_of_record": "0.3.1-candidate",
+  "network_attempts": 0,
+  "statement": "Synthetic records and scripted proposals only; no model output. \"before\" is the frozen 0.3.5, \"after\" is 0.3.6.",
+  "totals": {
+    "tests": 12,
+    "as_expected": 12,
+    "mutants": 8,
+    "killed": 8
+  },
+  "self_check": {
+    "fail_exit": 1,
+    "pass_exit": 0
+  },
+  "tests": [
+    {
+      "id": "IB-01",
+      "kind": "control",
+      "name": "flawed record + an unrelated sentence with no stated link: still FLAG, with the over-claimer and with a gap proposal",
+      "before_0_3_5": true,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "FLAG",
+        "FLAG",
+        []
+      ],
+      "observed_after": [
+        "FLAG",
+        "FLAG",
+        []
+      ]
+    },
+    {
+      "id": "IB-02",
+      "kind": "control",
+      "name": "flawed record + an unrelated sentence sharing the decision date and an identifier (inferred link only): never supported, never CLEAR",
+      "before_0_3_5": true,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "INDETERMINATE",
+        []
+      ],
+      "observed_after": [
+        "INDETERMINATE",
+        []
+      ]
+    },
+    {
+      "id": "IB-03",
+      "kind": "repair",
+      "name": "flawed record + \"the decision rests on\" irrelevant material, over-claiming proposal: the stated link alone supports nothing; review with relevance unresolved; not CLEAR",
+      "before_0_3_5": false,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "CLEAR",
+        [
+          "reconstructability",
+          "identifiable_basis",
+          "reasoning_traceability"
+        ],
+        {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        }
+      ],
+      "observed_after": [
+        "INDETERMINATE",
+        [],
+        {
+          "reconstructability": "review_required",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        }
+      ]
+    },
+    {
+      "id": "IB-04",
+      "kind": "control",
+      "name": "the same stated irrelevant link with a gap proposal is not turned into a defect: no FLAG without a demonstrated gap (unresolved relevance stays unresolved)",
+      "before_0_3_5": true,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "INDETERMINATE",
+        {
+          "reconstructability": "review_required",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        }
+      ],
+      "observed_after": [
+        "INDETERMINATE",
+        {
+          "reconstructability": "review_required",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        }
+      ]
+    },
+    {
+      "id": "IB-05",
+      "kind": "repair",
+      "name": "genuinely relevant new evidence, NOT assessed by a person: no support from the stated link; review with relevance unresolved; no gap",
+      "before_0_3_5": false,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "CLEAR",
+        [
+          "reconstructability",
+          "identifiable_basis",
+          "reasoning_traceability"
+        ]
+      ],
+      "observed_after": [
+        "INDETERMINATE",
+        []
+      ]
+    },
+    {
+      "id": "IB-06",
+      "kind": "repair",
+      "name": "the same relevant evidence ASSESSED RELEVANT by a separately identified person: the three basis conditions may be supported (a legitimate change, recorded with the assessor)",
+      "before_0_3_5": false,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "refuse",
+        "NOT_ASSESSED",
+        []
+      ],
+      "observed_after": [
+        "proceed",
+        "CLEAR",
+        [
+          "reconstructability",
+          "identifiable_basis",
+          "reasoning_traceability"
+        ]
+      ]
+    },
+    {
+      "id": "IB-07",
+      "kind": "repair",
+      "name": "the irrelevant stated link ASSESSED IRRELEVANT by a person: the link is excluded and the record's demonstrated absence of linked evidence is reported again (FLAG)",
+      "before_0_3_5": false,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "refuse",
+        "NOT_ASSESSED",
+        [
+          "intake_refuse"
+        ]
+      ],
+      "observed_after": [
+        "proceed",
+        "FLAG",
+        [
+          "assertion_rejected:assertion_type_not_permitted_for_condition",
+          "visible_gap:no_identifiable_basis_evidence"
+        ]
+      ]
+    },
+    {
+      "id": "IB-08",
+      "kind": "control",
+      "name": "a sound record (decision plus its own stated, relevant basis) acquires no gap with a gap proposal, before or after: no invented defect",
+      "before_0_3_5": true,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "INDETERMINATE",
+        {
+          "reconstructability": "review_required",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        }
+      ],
+      "observed_after": [
+        "INDETERMINATE",
+        {
+          "reconstructability": "review_required",
+          "identifiable_basis": "review_required",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "review_required",
+          "sufficiency": "review_required"
+        }
+      ]
+    },
+    {
+      "id": "IB-09",
+      "kind": "repair",
+      "name": "ambiguous relevance (a stated link to an unexplained file), not assessed: stays unresolved: not supported, not a gap",
+      "before_0_3_5": false,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "CLEAR",
+        [
+          "reconstructability",
+          "identifiable_basis",
+          "reasoning_traceability"
+        ]
+      ],
+      "observed_after": [
+        "INDETERMINATE",
+        []
+      ]
+    },
+    {
+      "id": "IB-10",
+      "kind": "repair",
+      "name": "an assessment not made by a person is refused (assessor_kind \"model\"; a model name as assessor): the profile fails closed and nothing is assessed",
+      "before_0_3_5": false,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "refuse",
+        "refuse",
+        "refuse"
+      ],
+      "observed_after": [
+        "refuse",
+        "refuse",
+        "proceed"
+      ]
+    },
+    {
+      "id": "IB-11",
+      "kind": "control",
+      "name": "the model cannot supply a relevance judgement: a response carrying a relevance field is refused as a whole",
+      "before_0_3_5": true,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "NOT_ASSESSED",
+        [
+          "candidate_response_invalid"
+        ]
+      ],
+      "observed_after": [
+        "NOT_ASSESSED",
+        [
+          "candidate_response_invalid"
+        ]
+      ]
+    },
+    {
+      "id": "IB-12",
+      "kind": "repair",
+      "name": "an assessment of a sentence that is not in the record changes nothing (no support, no exclusion)",
+      "before_0_3_5": false,
+      "after_0_3_6": true,
+      "as_expected": true,
+      "observed_before": [
+        "refuse",
+        "NOT_ASSESSED",
+        []
+      ],
+      "observed_after": [
+        "proceed",
+        "INDETERMINATE",
+        []
+      ]
+    }
+  ],
+  "mutants": [
+    {
+      "id": "RM-01",
+      "what": "an unassessed stated link counts as support again",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "IB-03",
+        "IB-05",
+        "IB-09",
+        "IB-12"
+      ]
+    },
+    {
+      "id": "RM-02",
+      "what": "a person's \"not relevant\" assessment is ignored",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "IB-07"
+      ]
+    },
+    {
+      "id": "RM-03",
+      "what": "an assessor that is not a person is accepted",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "IB-10"
+      ]
+    },
+    {
+      "id": "RM-04",
+      "what": "an assessor named like a model is accepted",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "IB-10"
+      ]
+    },
+    {
+      "id": "RM-05",
+      "what": "the identifiable-basis support gate is removed (stated link supports again for that condition only)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "IB-03",
+        "IB-05",
+        "IB-09",
+        "IB-12"
+      ]
+    },
+    {
+      "id": "RM-06",
+      "what": "the compiler never applies the assessments",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "IB-06",
+        "IB-07"
+      ]
+    },
+    {
+      "id": "RM-07",
+      "what": "the unresolved-relevance reason is dropped for identifiable basis",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "IB-03"
+      ]
+    },
+    {
+      "id": "RM-08",
+      "what": "an assessment matches any sentence (statement identity not checked)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "IB-12"
+      ]
+    }
+  ]
+}
