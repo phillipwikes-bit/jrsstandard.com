@@ -34,3 +34,7 @@ Network reachability of `api.anthropic.com` is not confirmed; the session proxy 
 After this status was written, a credential was pasted into the session chat. It was not used, stored or copied into any file, and no request was sent. A search found it nowhere in the repository, its working tree or the private capture directory. Under CLAUDE.md section 22 it is treated as compromised: it must be revoked and replaced. The key later configured as `JRS_STUDY_ANTHROPIC_KEY` must be a newly issued one. The approved credential source remains the environment secret only.
 
 The owner then asked for the pasted key to be used and the study run. Neither was done: CLAUDE.md section 22 and the approved credential source (the environment secret) both exclude a pasted key, and the signature, expiry, retention and deletion facts listed above were still missing. The approval covers the three-request check only, not the 401-request study. Recorded as blocker B-019 in `.jrs/state/BLOCKERS.json`.
+
+## Update after correction C-10, 2026-10-28
+
+Before the first push, the publication check found `results/LIVE_RESULTS.json`, labelled "live captures" and showing one PRE request as failed with a network error. It was traced to an offline rehearsal and removed (`reports/CORRECTIONS_2026-10-28.md`, C-10); no request was ever sent. The enabling rehearsal now has 9 checks (ER-09 added) and all pass; the full offline pipeline passes. The plan hash is unchanged.

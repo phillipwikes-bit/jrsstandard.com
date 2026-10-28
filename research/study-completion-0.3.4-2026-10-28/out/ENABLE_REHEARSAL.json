@@ -4,10 +4,10 @@
   "b018": "OPEN",
   "candidate_adopted": false,
   "network_attempts": 0,
-  "statement": "Offline rehearsal of the enabling step in a mirror; mock responses marked MOCK; the network guard was installed in every child before the mock fetch; a test sentinel stood in for the credential. No repository file was modified.",
+  "statement": "Offline rehearsal of the enabling step in a mirror; mock responses marked MOCK; the network guard was installed in every child before the mock fetch; a test sentinel stood in for the credential. out/ and results/ are fresh folders in the mirror; ER-09 checks that the repository results/ is unchanged.",
   "totals": {
-    "rehearsals": 8,
-    "passed": 8
+    "rehearsals": 9,
+    "passed": 9
   },
   "results": [
     {
@@ -72,6 +72,18 @@
       "name": "the repository command, unflipped, refuses (exit 4)",
       "ok": true,
       "observed": 4
+    },
+    {
+      "id": "ER-09",
+      "name": "a failed rehearsal run scored as real writes only inside the mirror; the repository results/ is unchanged (C-10)",
+      "ok": true,
+      "observed": {
+        "stopped": "SR-06:network_error",
+        "score_exit": 0,
+        "written_in_mirror": true,
+        "repository_results_changed": false,
+        "output_sha256": "ccb8e5b80433962d9360ad822d3e5637fffb5c93ea10aaac83b964a0f00b9419"
+      }
     }
   ]
 }

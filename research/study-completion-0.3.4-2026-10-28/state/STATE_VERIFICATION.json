@@ -1,13 +1,13 @@
 {
   "format": "jrs-study-completion-state/1.0.0",
-  "verified_at_utc": "2026-10-28T07:58:57.271Z",
+  "verified_at_utc": "2026-10-28T08:43:40.523Z",
   "network_attempts": 0,
   "release_status": "NO_GO_NOT_VERIFIED",
   "b018": "OPEN",
   "candidate_adopted": false,
   "statement": "Starting state verified from the repository by this tool. Nothing in the frozen study package or the frozen 0.3.4 package was modified.",
   "repository": {
-    "head": "1431281c2cc62b9557f6e5eb666242455c35369b",
+    "head": "178204f1be5330fd7888500795cb2c27c30abeb8",
     "branch": "claude/study-completion-0.3.4-local",
     "upstream": null,
     "head_equals_upstream": false,
@@ -20,7 +20,7 @@
       "claude/engine-assurance-2026-10-10 428c307a",
       "claude/engine-reliability-phase6-local d64b7183",
       "claude/engine-repair-0.3.4-local cc79f83e",
-      "claude/study-completion-0.3.4-local 1431281c",
+      "claude/study-completion-0.3.4-local 178204f1",
       "main 97087e91"
     ]
   },
@@ -265,6 +265,10 @@
     {
       "id": "B-018",
       "status": "OPEN"
+    },
+    {
+      "id": "B-019",
+      "status": "OPEN"
     }
   ],
   "b018_limitation": {
@@ -280,7 +284,7 @@
     {
       "id": "git_head_readable",
       "ok": true,
-      "detail": "1431281c2cc62b9557f6e5eb666242455c35369b"
+      "detail": "178204f1be5330fd7888500795cb2c27c30abeb8"
     },
     {
       "id": "no_uncommitted_change_outside_continuation_dir",
@@ -479,6 +483,10 @@
         },
         {
           "id": "B-018",
+          "status": "OPEN"
+        },
+        {
+          "id": "B-019",
           "status": "OPEN"
         }
       ]

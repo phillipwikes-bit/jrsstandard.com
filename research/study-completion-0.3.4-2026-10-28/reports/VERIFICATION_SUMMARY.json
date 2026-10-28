@@ -64,8 +64,8 @@
     {
       "name": "Enabling rehearsal (mirror, mock fetch)",
       "file": "out/ENABLE_REHEARSAL.json",
-      "passed": 8,
-      "total": 8,
+      "passed": 9,
+      "total": 9,
       "network_attempts": 0,
       "extra": ""
     },
@@ -185,8 +185,8 @@
       "ok": true,
       "detail": {
         "counts": {
-          "passed": 8,
-          "total": 8
+          "passed": 9,
+          "total": 9
         },
         "network": 0
       }
@@ -247,6 +247,14 @@
         "pre": 0.0014,
         "typAll": "0.18",
         "worstAll": "2.93"
+      }
+    },
+    {
+      "id": "no_live_results_without_dispatch_enabled_in_history",
+      "ok": true,
+      "detail": {
+        "live_results_present": false,
+        "dispatch_enabled_in_history": false
       }
     }
   ]
