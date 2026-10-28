@@ -38,3 +38,5 @@ The owner then asked for the pasted key to be used and the study run. Neither wa
 ## Update after correction C-10, 2026-10-28
 
 Before the first push, the publication check found `results/LIVE_RESULTS.json`, labelled "live captures" and showing one PRE request as failed with a network error. It was traced to an offline rehearsal and removed (`reports/CORRECTIONS_2026-10-28.md`, C-10); no request was ever sent. The enabling rehearsal now has 9 checks (ER-09 added) and all pass; the full offline pipeline passes. The plan hash is unchanged.
+
+Update after correction C-11, 2026-10-28: the key goes under **Environment variables**, not Network secrets (the runner reads it from the process environment), and an existing session reads it after its paused VM is restored, so item 5 above does not need a new session.
