@@ -1,0 +1,203 @@
+diff --git a/../engine-repair-0.3.4-2026-10-27/tools/transport/sender.mjs b/tools/live/sender-bound.mjs
+index 376c3254..a7e8e466 100644
+--- a/../engine-repair-0.3.4-2026-10-27/tools/transport/sender.mjs
++++ b/tools/live/sender-bound.mjs
+@@ -1,4 +1,6 @@
+-// 156-record study: live-sender DESIGN for a future, separately authorized run. DISABLED IN THIS BUILD.
++// Study completion (0.3.4): bound copy of the 156-study live sender (tools/transport/sender.mjs in the frozen packages,
++// unchanged there). DISABLED IN THIS BUILD. Changes B1 to B11 are listed in protocol/TRANSPORT_BINDING.md and shown in
++// protocol/SENDER_BOUND.diff; each is covered by tools/live/test-live.mjs.
+ //
+ // Two layers:
+ //   dispatchCore()  pure request logic with an injected fetch, clock, sleep and capture sink. It is what the offline
+@@ -10,20 +12,22 @@
+ // ANTHROPIC_AUTH_TOKEN, on-disk profiles, federation variables) and honours ANTHROPIC_BASE_URL. This study's rules
+ // allow exactly one credential, named in a signed authorization, and one destination. Decision DEC-T1 in
+ // PROVIDER_COMPATIBILITY_RECORD.md; it is to be reviewed when a live run is authorized.
+-// Provider facts (model, header, sampling rule, thinking, errors, prices) come from the bundled Claude API reference,
+-// cached 2026-10-06, and were not re-fetched (no network in this study). Re-verify them at authorization.
++// Provider facts (model, header, sampling rule, thinking, errors, prices) were checked against the official documentation
++// on 2026-10-28 (protocol/PROVIDER_VERIFICATION.md). Re-verify them when an authorization is signed.
+ import { createHash } from 'node:crypto';
+ 
+-export const SENDER_VERSION = '0.3.0-study-offline';
++export const SENDER_VERSION = '0.3.4-study-completion-bound-1';   // B1
+ export const LIVE_DISPATCH_ENABLED = false;
+ export const DESTINATION = Object.freeze({ url: 'https://api.anthropic.com/v1/messages', protocol: 'https:', hostname: 'api.anthropic.com', port: '', pathname: '/v1/messages' });
+ export const API_VERSION = '2026-10-21';
+ export const MODEL = 'claude-haiku-5-5';
+ export const PRICE = Object.freeze({ input_per_mtok: 0.10, output_per_mtok: 0.50, long_prompt_threshold_tokens: 100000, long_input_per_mtok: 0.50, long_output_per_mtok: 2.50,
+-  cache_read_multiplier: 0.1, cache_write_5m_multiplier: 1.25, source: 'Bundled Claude API reference, cached 2026-10-06. Not re-fetched; re-verify at authorization.' });
++  cache_read_multiplier: 0.1, cache_write_5m_multiplier: 1.25, source: 'Official pricing page, checked 2026-10-28 (protocol/PROVIDER_VERIFICATION.md); values unchanged. Re-verify at authorization.' });   // B2
+ export const FORBIDDEN_BODY_FIELDS = Object.freeze(['temperature', 'top_p', 'top_k', 'fallbacks']);
+ export const RETRYABLE_STATUS = Object.freeze([429, 500, 529]);
+-export const NON_RETRYABLE_STATUS = Object.freeze([400, 401, 403, 404, 413]);
++export const NON_RETRYABLE_STATUS = Object.freeze([400, 401, 402, 403, 404, 409, 413]);   // B3: 402 and 409 named
++// B3: a final status whose billing is unknown (504 timeout_error: the request may have been processed) is counted at the worst case.
++export const UNKNOWN_BILLING_STATUS = Object.freeze([504]);
+ const sha = (s) => createHash('sha256').update(s).digest('hex');
+ const CREDENTIAL_SHAPES = [/sk-ant-[A-Za-z0-9_-]{8,}/, /\bsk-[A-Za-z0-9]{16,}/, /\bBearer\s+[A-Za-z0-9._-]{8,}/i, /x-api-key\s*[:=]\s*\S+/i];
+ 
+@@ -69,10 +73,14 @@ export function costOf(usage, price = PRICE) {
+ }
+ // Conservative upper bound used before a request and for any attempt whose billing is unknown.
+ export function worstCaseCost(estInputTokens, maxTokens, price = PRICE) { return costOf({ input_tokens: estInputTokens, output_tokens: maxTokens }, price); }
+-export const estimateTokens = (text) => Math.ceil(String(text).length / 3);   // conservative for English with the newer tokenizer
++// B4: one token per UTF-8 byte, an assumed upper bound (not a documented tokenizer property). The frozen ceil(length / 3)
++// is not conservative: the provider documents about 2.5 characters per token on the current tokenizer. Reported usage
++// above this estimate is a stop condition of the plan.
++export const estimateTokens = (text) => Buffer.byteLength(String(text), 'utf8');
+ 
+ // ------------------------------------------------------------------ classification of one HTTP outcome
+ export function classify(status, json, headers = {}) {
++  if (status >= 300 && status < 400) return { final: true, outcome: 'redirect_refused', retry: false };   // B5
+   if (status === 200) {
+     const sr = json && json.stop_reason;
+     if (sr === 'refusal') return { final: true, outcome: 'model_refusal', retry: false };
+@@ -88,7 +96,9 @@ export function classify(status, json, headers = {}) {
+ }
+ 
+ // ------------------------------------------------------------------ journal (append-only, hash-chained) for recovery and duplicates
+-export function createJournal(lines = []) {
++// B10: onAppend writes each entry through to storage before the call returns, so the 'sent' entry is on disk before the
++// request leaves; the frozen copy returned lines for the caller to persist after the request, which a crash could lose.
++export function createJournal(lines = [], onAppend = null) {
+   const entries = [];
+   let prev = '0'.repeat(64);
+   for (const [i, l] of lines.entries()) {
+@@ -99,18 +109,43 @@ export function createJournal(lines = []) {
+   }
+   return {
+     entries,
+-    append(fields) { const body = Object.assign({}, fields, { seq: entries.length + 1, prev_sha256: prev }); const e = Object.assign(body, { entry_sha256: sha(JSON.stringify(body)) }); entries.push(e); prev = e.entry_sha256; return JSON.stringify(e); },
++    append(fields) { const body = Object.assign({}, fields, { seq: entries.length + 1, prev_sha256: prev }); const e = Object.assign(body, { entry_sha256: sha(JSON.stringify(body)) }); const line = JSON.stringify(e); if (onAppend) onAppend(line); entries.push(e); prev = e.entry_sha256; return line; },
+     stateOf(requestId) { const es = entries.filter((x) => x.request_id === requestId); return es.length ? es[es.length - 1].state : null; },
+     spentUsd() { return Number(entries.filter((x) => typeof x.cost_usd === 'number').reduce((n, x) => n + x.cost_usd, 0).toFixed(8)); },
+     requestCount() { return new Set(entries.filter((x) => x.state === 'sent').map((x) => x.request_id)).size; },
++    attemptCount() { return entries.filter((x) => x.state === 'sent').length; },   // B6
++    attemptsOf(requestId) { return entries.filter((x) => x.request_id === requestId && x.state === 'sent').length; },   // B7
+   };
+ }
++// B8: after a crash, a request whose last entry is 'sent' may have reached the provider. If its capture was written
++// (the crash fell between the capture and its journal entry), the capture is verified and recorded. Otherwise the request
++// is marked interrupted_unknown, counted at its worst case, and never resent automatically.
++export function recoverJournal(J, now, captureStore = null) {
++  const ids = [...new Set(J.entries.map((x) => x.request_id))];
++  const lines = [];
++  for (const id of ids) {
++    if (J.stateOf(id) !== 'sent') continue;
++    const prep = [...J.entries].reverse().find((x) => x.request_id === id && x.state === 'prepared');
++    const text = captureStore && captureStore.has(id) ? captureStore.get(id) : null;
++    let cap = null; try { cap = text ? JSON.parse(text) : null; } catch { cap = null; }
++    if (cap && cap.request_id === id && prep && cap.body_sha256 === prep.body_sha256) {
++      let json = null; try { json = JSON.parse(cap.response_body); } catch { json = null; }
++      const c = classify(cap.status, json, cap.response_headers || {});
++      lines.push(J.append({ request_id: id, state: c.outcome === 'ok' ? 'captured' : 'failed_final', outcome: c.outcome, recovered_from_capture: true, cost_usd: cap.status === 200 && json ? costOf(json.usage) : prep.worst_case_usd,
++        billing: cap.status === 200 && json ? 'usage_reported' : 'unknown_counted_worst_case', capture_sha256: sha(text), usage: json && json.usage ? json.usage : null, model: json && json.model ? json.model : null, at: now() }));
++      continue;
++    }
++    lines.push(J.append({ request_id: id, state: 'interrupted_unknown', outcome: 'interrupted_in_flight', cost_usd: prep ? prep.worst_case_usd : 0, billing: 'unknown_counted_worst_case', at: now() }));
++  }
++  return lines;
++}
+ 
+ // ------------------------------------------------------------------ safe capture: write-once, response only, never a credential
+ export function createCaptureSink(store) {
+   const sentinels = new Set();
+   return {
+     registerSentinel(v) { if (typeof v === 'string' && v.length >= 8) sentinels.add(v); },
++    get(requestId) { return store.get(requestId); },
+     write(requestId, capture) {
+       const text = JSON.stringify(capture);
+       for (const s of sentinels) if (text.includes(s)) throw new SenderRefusal('credential_value_in_capture');
+@@ -133,13 +168,16 @@ export async function dispatchCore(ctx, { requestId, recordId, body, url = DESTI
+   const bodyProblems = checkBody(body); if (bodyProblems.length) refuse(bodyProblems[0]);
+   const st = J.stateOf(requestId);
+   if (st === 'captured' || st === 'failed_final' || st === 'cancelled') refuse('duplicate_request_id', st);
+-  if (st === 'sent' && !allowAmbiguousResend) refuse('ambiguous_prior_send_requires_review');
++  if ((st === 'sent' || st === 'interrupted_unknown') && !allowAmbiguousResend) refuse('ambiguous_prior_send_requires_review');   // B8
+   if (J.requestCount() >= ctx.maxRequests) refuse('request_cap_reached');
+   const est = worstCaseCost(estimateTokens(JSON.stringify(body)), body.max_tokens);
+   const payload = JSON.stringify(body);
+   const lines = [];
+   lines.push(J.append({ request_id: requestId, record_id: recordId, state: 'prepared', body_sha256: sha(payload), worst_case_usd: est, at: ctx.now() }));
+-  for (let attempt = 0; attempt <= ctx.maxRetries; attempt++) {
++  // B7: attempts made before a resume count toward this request's retry limit.
++  for (let attempt = J.attemptsOf(requestId); attempt <= ctx.maxRetries; attempt++) {
++    // B6: a global cap on HTTP attempts across the run, in addition to the request cap.
++    if (Number.isInteger(ctx.maxAttempts) && J.attemptCount() >= ctx.maxAttempts) { lines.push(J.append({ request_id: requestId, state: 'failed_final', outcome: 'attempt_cap_reached', at: ctx.now() })); return { outcome: 'attempt_cap_reached', attempts: attempt, lines }; }
+     if (J.spentUsd() + est > ctx.budgetUsd) { lines.push(J.append({ request_id: requestId, state: 'failed_final', outcome: 'budget_exhausted', at: ctx.now() })); return { outcome: 'budget_exhausted', attempts: attempt, lines }; }
+     if (signal && signal.aborted) { lines.push(J.append({ request_id: requestId, state: 'cancelled', at: ctx.now() })); return { outcome: 'cancelled', attempts: attempt, lines }; }
+     const ac = new AbortController();
+@@ -149,16 +187,21 @@ export async function dispatchCore(ctx, { requestId, recordId, body, url = DESTI
+     lines.push(J.append({ request_id: requestId, state: 'sent', attempt, at: ctx.now() }));
+     let res = null, errKind = null;
+     try { res = await ctx.fetchImpl(url, { method: 'POST', headers: buildHeaders(ctx.credential), body: payload, redirect: 'error', signal: ac.signal }); }
+-    catch (e) { errKind = signal && signal.aborted ? 'cancelled' : ac.signal.aborted ? 'timeout' : 'network_error'; }
++    catch (e) { errKind = signal && signal.aborted ? 'cancelled' : ac.signal.aborted ? 'timeout' : /redirect/i.test(String(e && e.message) + ' ' + String(e && e.cause && e.cause.message)) ? 'redirect_refused' : 'network_error'; }   // B5
+     finally { clearTimeout(timer); if (signal) signal.removeEventListener('abort', onAbort); }
+     if (errKind === 'cancelled') {
+       // The request may have reached the provider: count it at the worst case, never resend it automatically.
+       lines.push(J.append({ request_id: requestId, state: 'cancelled', outcome: 'cancelled_in_flight', cost_usd: est, billing: 'unknown_counted_worst_case', at: ctx.now() }));
+       return { outcome: 'cancelled', attempts: attempt + 1, lines };
+     }
++    if (errKind === 'redirect_refused') {   // B5: a redirect is a destination event: final, never retried, nothing followed
++      lines.push(J.append({ request_id: requestId, state: 'failed_final', attempt, outcome: 'redirect_refused', cost_usd: 0, billing: 'none_redirect_not_followed', at: ctx.now() }));
++      return { outcome: 'redirect_refused', attempts: attempt + 1, lines };
++    }
+     if (errKind) {
+-      const billing = errKind === 'timeout' ? 'unknown_counted_worst_case' : 'none_no_response';
+-      lines.push(J.append({ request_id: requestId, state: 'attempt_failed', attempt, outcome: errKind, cost_usd: errKind === 'timeout' ? est : 0, billing, at: ctx.now() }));
++      // B9: a network error after the request left may still be processed and billed: count it at the worst case.
++      const billing = 'unknown_counted_worst_case';
++      lines.push(J.append({ request_id: requestId, state: 'attempt_failed', attempt, outcome: errKind, cost_usd: est, billing, at: ctx.now() }));
+       if (attempt < ctx.maxRetries) { await ctx.sleep(Math.min(ctx.maxDelayMs, ctx.baseDelayMs * 2 ** attempt + Math.floor(ctx.random() * ctx.baseDelayMs))); continue; }
+       lines.push(J.append({ request_id: requestId, state: 'failed_final', outcome: errKind, at: ctx.now() }));
+       return { outcome: errKind, attempts: attempt + 1, lines };
+@@ -167,7 +210,7 @@ export async function dispatchCore(ctx, { requestId, recordId, body, url = DESTI
+     const text = await res.text();
+     let json = null; try { json = JSON.parse(text); } catch { json = null; }
+     const c = classify(res.status, json, headers);
+-    const cost = res.status === 200 && json ? costOf(json.usage) : 0;
++    const cost = res.status === 200 && json ? costOf(json.usage) : UNKNOWN_BILLING_STATUS.includes(res.status) ? est : 0;   // B3
+     if (!c.final) {
+       lines.push(J.append({ request_id: requestId, state: 'attempt_failed', attempt, outcome: c.outcome, cost_usd: 0, billing: 'not_billed_error_status', at: ctx.now() }));
+       if (attempt < ctx.maxRetries) {
+@@ -180,23 +223,31 @@ export async function dispatchCore(ctx, { requestId, recordId, body, url = DESTI
+     }
+     const capture = { request_id: requestId, record_id: recordId, status: res.status, response_headers: headers, response_body: text, captured_at_utc: ctx.now(), sender_version: SENDER_VERSION, body_sha256: sha(payload) };
+     const capSha = ctx.sink.write(requestId, capture);
+-    lines.push(J.append({ request_id: requestId, state: c.outcome === 'ok' ? 'captured' : 'failed_final', attempt, outcome: c.outcome, cost_usd: cost, billing: 'usage_reported', capture_sha256: capSha, at: ctx.now() }));
++    const billingTag = res.status === 200 ? 'usage_reported' : UNKNOWN_BILLING_STATUS.includes(res.status) ? 'unknown_counted_worst_case' : 'not_billed_error_status';
++    lines.push(J.append({ request_id: requestId, state: c.outcome === 'ok' ? 'captured' : 'failed_final', attempt, outcome: c.outcome, cost_usd: cost, billing: billingTag, capture_sha256: capSha, usage: json && json.usage ? json.usage : null, model: json && json.model ? json.model : null, at: ctx.now() }));
+     return { outcome: c.outcome, attempts: attempt + 1, cost_usd: cost, capture_sha256: capSha, lines };
+   }
+   return { outcome: 'unreachable', attempts: ctx.maxRetries + 1, lines };
+ }
+ 
+ // ------------------------------------------------------------------ the gate (the only path that could ever reach the network)
+-export function createLiveSender({ authorization, verifyAuthorization, credentialResolver, fetchImpl, sink, journal, now = () => new Date().toISOString() }) {
++// config comes from the frozen plan (protocol/LIVE_RUN_PLAN.json): { maxRetries, baseDelayMs, maxDelayMs, timeoutMs }.
++// The destination is never taken from a request: DESTINATION.url only.
++// B11: the gate's checks are in createGate, which the offline tests drive with enabled true and a mock fetch;
++// createLiveSender, the only export a real run uses, always passes LIVE_DISPATCH_ENABLED (false in this build).
++export function createGate({ enabled, authorization, verifyAuthorization, credentialResolver, fetchImpl, sink, journal, config, now = () => new Date().toISOString(), sleep = (ms) => new Promise((r) => setTimeout(r, ms)), random = Math.random }) {
+   return {
+     async send(request) {
+-      if (!LIVE_DISPATCH_ENABLED) throw new SenderRefusal('live_dispatch_not_enabled_in_this_build');
++      if (enabled !== true) throw new SenderRefusal('live_dispatch_not_enabled_in_this_build');
++      if (request.url !== undefined) throw new SenderRefusal('destination_override_refused');
+       const problems = verifyAuthorization(authorization, request, now());
+       if (problems.length) throw new SenderRefusal(problems[0], problems);
+-      const credential = credentialResolver(authorization.credential_environment_variable_name);   // unreachable in this build
++      const credential = credentialResolver(authorization.credential_environment_variable_name);
++      if (typeof credential !== 'string' || credential.length < 8) throw new SenderRefusal('credential_absent');
+       sink.registerSentinel(credential);
+-      return dispatchCore({ fetchImpl, credential, sink, journal, budgetUsd: authorization.max_budget_usd, maxRequests: authorization.max_requests, maxRetries: 2, baseDelayMs: 1000, maxDelayMs: 20000, timeoutMs: 60000,
+-        sleep: (ms) => new Promise((r) => setTimeout(r, ms)), now, random: Math.random }, request);
++      return dispatchCore({ fetchImpl, credential, sink, journal, budgetUsd: authorization.max_budget_usd, maxRequests: authorization.max_requests, maxAttempts: authorization.max_attempts,
++        maxRetries: config.maxRetries, baseDelayMs: config.baseDelayMs, maxDelayMs: config.maxDelayMs, timeoutMs: config.timeoutMs, sleep, now, random }, { requestId: request.requestId, recordId: request.recordId, body: request.body, signal: request.signal });
+     },
+   };
+ }
++export function createLiveSender(opts) { return createGate(Object.assign({}, opts, { enabled: LIVE_DISPATCH_ENABLED })); }

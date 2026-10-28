@@ -1,0 +1,318 @@
+{
+  "results_format": "jrs-study-completion-live-mutation-tests/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "network_attempts": 0,
+  "statement": "Each mutant is one deliberate defect in the bound live machinery, run from a mirror; no repository file was modified.",
+  "unmutated_baseline": {
+    "exit": 0,
+    "failed": []
+  },
+  "totals": {
+    "mutants": 26,
+    "applied": 26,
+    "killed": 26,
+    "survived_or_not_applied": 0
+  },
+  "rows": [
+    {
+      "id": "MV-01",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "token estimate back to length / 3 (B4)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-31",
+        "TL-33",
+        "TL-34",
+        "TL-38",
+        "TL-42"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-02",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "redirect fetch error treated as a network error (B5)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-17"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-03",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "3xx status not classified as a redirect (B5)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-17"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-04",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "attempts before a resume not counted (B7)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-25"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-05",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "interrupted_unknown no longer blocks a resend (B8)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-22"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-06",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "journal not written through (B10)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-22",
+        "TL-23",
+        "TL-25",
+        "TL-27",
+        "TL-31",
+        "TL-33",
+        "TL-36",
+        "TL-42"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-07",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "network errors not counted (B9)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-11",
+        "TL-18"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-08",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "504 not counted at the worst case (B3)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-16"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-09",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "global attempt cap removed (B6)",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-21"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-10",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "destination host not checked",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-19"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-11",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "credential value not checked in captures",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-32"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-12",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "credential resolved before the authorization is verified",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-31"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-13",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "build gate opened",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-30"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-14",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "redirects followed",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-03"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-15",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "budget check removed",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-20"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-16",
+      "file": "tools/live/sender-bound.mjs",
+      "what": "400 made retryable",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-15"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-17",
+      "file": "tools/live/authorization-bound.mjs",
+      "what": "draft identifiers accepted",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-28"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-18",
+      "file": "tools/live/authorization-bound.mjs",
+      "what": "plan hash not compared",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-29"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-19",
+      "file": "tools/live/authorization-bound.mjs",
+      "what": "placeholder signature accepted",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-28"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-20",
+      "file": "tools/live/runner.mjs",
+      "what": "redirect does not stop the run",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-17"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-21",
+      "file": "tools/live/runner.mjs",
+      "what": "capture location inside the repository accepted",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-37"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-22",
+      "file": "tools/live/runner.mjs",
+      "what": "PRE gate ignores contract failures",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-34"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-26",
+      "file": "tools/live/runner.mjs",
+      "what": "PRE gate judged only on requests sent by this process",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-42"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-23",
+      "file": "tools/live/runner.mjs",
+      "what": "ambiguous state on resume not stopped",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-22"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-24",
+      "file": "tools/live/runner.mjs",
+      "what": "authorization not checked before the first request",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-41"
+      ],
+      "exit": 1
+    },
+    {
+      "id": "MV-25",
+      "file": "tools/live/runner.mjs",
+      "what": "missing credential not reported as SR-01",
+      "applied": true,
+      "killed": true,
+      "failed_tests": [
+        "TL-41"
+      ],
+      "exit": 1
+    }
+  ]
+}

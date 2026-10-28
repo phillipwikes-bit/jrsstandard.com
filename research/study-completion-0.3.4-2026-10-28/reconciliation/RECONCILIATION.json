@@ -1,0 +1,796 @@
+{
+  "format": "jrs-study-completion-reconciliation/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "network_attempts": 0,
+  "statement": "Computed from raw rows and executable tools. Scripted offline results only; no model output exists. Agreement with AI-proposed labels is not accuracy.",
+  "ac15": {
+    "all_eligible": {
+      "flagged": 10,
+      "grounded": 62,
+      "rate": 0.1613
+    },
+    "synthetic_only": {
+      "flagged": 9,
+      "grounded": 60,
+      "rate": 0.15
+    },
+    "originals": {
+      "flagged": 1,
+      "grounded": 2
+    },
+    "flagged_ids": [
+      "R08",
+      "S-027",
+      "S-028",
+      "S-029",
+      "S-037",
+      "S-045",
+      "S-055",
+      "S-068",
+      "S-079",
+      "S-088"
+    ],
+    "analysis_value": 0.1613,
+    "threshold": 0.1,
+    "prose": {
+      "criteria_json_review": "retained; threshold unchanged; 0.3.4 development result 10 of 60 (16.7%) does not meet it",
+      "criteria_review_md_says_10_of_60": true
+    },
+    "pre_freeze_scored_run_exists": false
+  },
+  "rg23": {
+    "record": "S-001",
+    "mock": "ORACLE-R (study stored mock)",
+    "stored_prompt_label": "jrs-engine-local-0.3.3-research/prompt-1",
+    "labels": {
+      "0.3.3": "jrs-engine-local-0.3.3-research/prompt-1",
+      "0.3.4": "jrs-engine-local-0.3.4-research/prompt-1"
+    },
+    "cells": {
+      "0.3.3 engine + stored mock (0.3.3 label)": {
+        "e1": "CLEAR",
+        "candidate_rejected": false,
+        "refusal_codes": []
+      },
+      "0.3.4 engine + stored mock (0.3.3 label): the 1.0 probe": {
+        "e1": "NOT_ASSESSED",
+        "candidate_rejected": true,
+        "refusal_codes": [
+          "candidate_response_invalid"
+        ]
+      },
+      "0.3.4 engine + mock relabelled to 0.3.4 (2.0 probe)": {
+        "e1": "CLEAR",
+        "candidate_rejected": false,
+        "refusal_codes": []
+      },
+      "0.3.3 engine + mock relabelled to 0.3.4": {
+        "e1": "NOT_ASSESSED",
+        "candidate_rejected": true,
+        "refusal_codes": [
+          "candidate_response_invalid"
+        ]
+      }
+    },
+    "frozen_outputs": {
+      "study suites 1.0 on 0.3.4": {
+        "id": "RG-23",
+        "defect": "D16",
+        "record": "S-001",
+        "expect": "a cited quotation holding an evidence anchor supports the basis (ORACLE-R gives CLEAR)",
+        "ok": false,
+        "observed": "NOT_ASSESSED"
+      },
+      "regression 2.0 on 0.3.4": {
+        "id": "RG-23",
+        "defect": "D16",
+        "record": "S-001",
+        "expect": "a cited quotation holding an evidence anchor supports the basis (ORACLE-R gives CLEAR)",
+        "ok": true,
+        "observed": "CLEAR"
+      },
+      "regression 2.0 on 0.3.3": {
+        "id": "RG-23",
+        "defect": "D16",
+        "record": "S-001",
+        "expect": "a cited quotation holding an evidence anchor supports the basis (ORACLE-R gives CLEAR)",
+        "ok": true,
+        "observed": "CLEAR"
+      },
+      "study regression 1.0 on 0.3.3": {
+        "id": "RG-23",
+        "defect": "D16",
+        "record": "S-001",
+        "expect": "a cited quotation holding an evidence anchor supports the basis (ORACLE-R gives CLEAR)",
+        "ok": true,
+        "observed": "CLEAR"
+      }
+    }
+  },
+  "probes": {
+    "research_probes_1_0": {
+      "0.3.3 (study run)": {
+        "probes": 89,
+        "passed": 89
+      },
+      "0.3.4 (study suites run)": {
+        "probes": 90,
+        "passed": 90
+      },
+      "defect_templates": {
+        "0.3.3": 30,
+        "0.3.4": 31,
+        "added_in_0_3_4": [
+          "instruction_text_in_record"
+        ],
+        "removed": []
+      },
+      "explanation": "tools/research-probes.mjs 1.0 emits one template probe per entry of the engine's RESEARCH_DEFECT_TEMPLATES, so its count depends on the engine. Probe identifiers are positional; identifiers after the template loop shift by the number of added templates."
+    },
+    "regression_probes": {
+      "1.0 on 0.3.3 (study)": {
+        "probes": 32,
+        "passed": 32,
+        "failed": 0
+      },
+      "1.0 on 0.3.4 (study suites)": {
+        "probes": 32,
+        "passed": 31,
+        "failed": [
+          "RG-23"
+        ]
+      },
+      "2.0 on 0.3.4": {
+        "probes": 77,
+        "passed": 77,
+        "part1": "32/32",
+        "repair_probes": "45/45"
+      },
+      "2.0 on 0.3.3": {
+        "probes": 77,
+        "passed": 40,
+        "part1": "32/32",
+        "repair_probes_failing": "37/45"
+      }
+    }
+  },
+  "variants": {
+    "by_type": {
+      "V1": {
+        "constructible": 104,
+        "not_constructible": 0,
+        "reasons": [],
+        "arms": [
+          "A2",
+          "A3",
+          "A3R",
+          "A4",
+          "A4R"
+        ],
+        "rows": 520,
+        "rows_not_constructible": 0
+      },
+      "V2": {
+        "constructible": 104,
+        "not_constructible": 0,
+        "reasons": [],
+        "arms": [
+          "A2",
+          "A3",
+          "A3R",
+          "A4",
+          "A4R",
+          "ADV"
+        ],
+        "rows": 624,
+        "rows_not_constructible": 0
+      },
+      "V3": {
+        "constructible": 102,
+        "not_constructible": 2,
+        "reasons": [
+          "S-062: fewer than two sentences after the title",
+          "S-072: fewer than two sentences after the title"
+        ],
+        "arms": [
+          "A2",
+          "A3",
+          "A3R",
+          "A4",
+          "A4R"
+        ],
+        "rows": 520,
+        "rows_not_constructible": 10
+      },
+      "V4": {
+        "constructible": 95,
+        "not_constructible": 9,
+        "reasons": [
+          "R03: no dated sentence and no decision sentence",
+          "S-023: decision sentence has no reversible outcome word",
+          "S-043: decision sentence has no reversible outcome word",
+          "S-063: no dated sentence and no decision sentence",
+          "S-073: decision sentence has no reversible outcome word",
+          "S-083: decision sentence has no reversible outcome word",
+          "S-086: decision sentence has no reversible outcome word",
+          "S-089: decision sentence has no reversible outcome word",
+          "S-093: decision sentence has no reversible outcome word"
+        ],
+        "arms": [
+          "A2",
+          "A3",
+          "A3R",
+          "A4",
+          "A4R"
+        ],
+        "rows": 520,
+        "rows_not_constructible": 45
+      },
+      "V5": {
+        "constructible": 89,
+        "not_constructible": 15,
+        "reasons": [
+          "R03: no decision sentence",
+          "S-022: evidence remains in the decision clause after removal: evidential_verb,count_of_total,evidence_document",
+          "S-025: evidence stated before the decision verb: evidential_verb,evidence_document",
+          "S-041: no decision sentence",
+          "S-042: no decision sentence",
+          "S-047: no decision sentence",
+          "S-048: no decision sentence",
+          "S-050: no decision sentence",
+          "S-063: no decision sentence",
+          "S-071: no decision sentence",
+          "S-072: no decision sentence",
+          "S-076: no decision sentence",
+          "S-078: no decision sentence",
+          "S-080: no decision sentence",
+          "S-081: evidence remains in the decision clause after removal: count_of_total"
+        ],
+        "arms": [
+          "A2",
+          "A3",
+          "A3R",
+          "A4",
+          "A4R"
+        ],
+        "rows": 520,
+        "rows_not_constructible": 75
+      },
+      "V6": {
+        "constructible": 104,
+        "not_constructible": 0,
+        "reasons": [],
+        "arms": [
+          "A2",
+          "A3",
+          "A3R",
+          "A4",
+          "A4R",
+          "ADV"
+        ],
+        "rows": 624,
+        "rows_not_constructible": 0
+      },
+      "V7": {
+        "constructible": 104,
+        "not_constructible": 0,
+        "reasons": [],
+        "arms": [
+          "A2",
+          "A3",
+          "A3R",
+          "A4",
+          "A4R"
+        ],
+        "rows": 520,
+        "rows_not_constructible": 0
+      },
+      "V8": {
+        "constructible": 104,
+        "not_constructible": 0,
+        "reasons": [],
+        "arms": [
+          "A2",
+          "A3",
+          "A3R",
+          "A4",
+          "A4R"
+        ],
+        "rows": 520,
+        "rows_not_constructible": 0
+      }
+    },
+    "v5_audit": {
+      "study_index_v5_constructible": 92,
+      "total": 104,
+      "v1_constructible": 92,
+      "v1_texts_with_evidence_left": 7,
+      "v2_constructible": 89,
+      "v2_changed_text": 4,
+      "v2_newly_not_constructible": 3
+    }
+  },
+  "identities": {
+    "scorer_label_mismatches": 0,
+    "study_label_mismatches": 0,
+    "arm_mismatches": 0,
+    "run_1_engine_manifest": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad",
+    "frozen_manifest": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad",
+    "mock_prompt_labels": [
+      "jrs-engine-local-0.3.4-research/prompt-1"
+    ]
+  },
+  "exit_codes": {
+    "regression-probes-v2 on 0.3.3 (37 probes fail)": {
+      "status": 0,
+      "output_written": true,
+      "totals": {
+        "probes": 77,
+        "passed": 40,
+        "failed": 37
+      },
+      "stderr_tail": ""
+    },
+    "run-study-suites on 0.3.4 (RG-23 fails)": {
+      "status": 0,
+      "output_written": true,
+      "totals": {
+        "research_probes_1_0": {
+          "probes": 90,
+          "passed": 90,
+          "failed": []
+        },
+        "regression_probes_1_0": {
+          "probes": 32,
+          "passed": 31,
+          "failed": [
+            "RG-23"
+          ]
+        },
+        "feature_probes_1_0": {
+          "probes": 343,
+          "passed": 343,
+          "failed": []
+        }
+      },
+      "stderr_tail": ""
+    },
+    "check-results --expect-all-pass on the regression output": {
+      "status": 1,
+      "stdout_head": "check-results (single file): 1 of 2 checks passed"
+    },
+    "check-results --expect-all-pass on the study-suites output": {
+      "status": 1,
+      "stdout_head": "check-results (single file): 5 of 6 checks passed"
+    },
+    "test-transport (static)": {
+      "exits_nonzero_on_failure": true
+    }
+  },
+  "e1_table": {
+    "A3": {
+      "stated": [
+        [
+          33,
+          40
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          18,
+          8
+        ]
+      ],
+      "computed": [
+        [
+          33,
+          40
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          18,
+          8
+        ]
+      ]
+    },
+    "A4": {
+      "stated": [
+        [
+          35,
+          40
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          18,
+          8
+        ]
+      ],
+      "computed": [
+        [
+          35,
+          40
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          18,
+          8
+        ]
+      ]
+    },
+    "A5": {
+      "stated": [
+        [
+          33,
+          40
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "computed": [
+        [
+          33,
+          40
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          11
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    "A3R": {
+      "stated": [
+        [
+          35,
+          38
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          48,
+          34
+        ]
+      ],
+      "computed": [
+        [
+          35,
+          38
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          48,
+          34
+        ]
+      ]
+    },
+    "A4R": {
+      "stated": [
+        [
+          35,
+          38
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          48,
+          34
+        ]
+      ],
+      "computed": [
+        [
+          35,
+          38
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          10
+        ],
+        [
+          48,
+          34
+        ]
+      ]
+    }
+  },
+  "discrepancies": [
+    {
+      "id": "AC-15-prose-10-of-60",
+      "stated": "10 of 60 (16.7%)",
+      "computed": "10 of 62 (16.1%) all eligible; 9 of 60 (15.0%) synthetic only",
+      "where": "protocol/ACCEPTANCE_CRITERIA_V2_PROPOSED.json AC-15.review; protocol/CRITERIA_REVIEW.md AC-15 row"
+    }
+  ],
+  "checks": [
+    {
+      "id": "ac15_analysis_value_equals_raw_all_eligible",
+      "ok": true,
+      "detail": [
+        0.1613,
+        0.1613
+      ]
+    },
+    {
+      "id": "ac15_threshold_missed_on_every_denominator",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "ac15_no_pre_freeze_scored_run_to_source_10_of_60",
+      "ok": true,
+      "detail": [
+        "controls-0.3.3-research-candidate",
+        "controls-0.3.4-research-candidate",
+        "dev-study-suites-1",
+        "differential-0.3.4-research-candidate",
+        "injection-0.3.3-research-candidate",
+        "injection-0.3.4-research-candidate",
+        "paired-0.3.3-research-candidate",
+        "paired-0.3.4-research-candidate",
+        "regression-probes-v2-0.3.4-research-candidate",
+        "reproduction-0.3.3",
+        "transport",
+        "variant-spec-v2-check",
+        "wording-0.3.3-research-candidate",
+        "wording-0.3.4-research-candidate"
+      ]
+    },
+    {
+      "id": "rg23_stored_mock_carries_0.3.3_label",
+      "ok": true,
+      "detail": "jrs-engine-local-0.3.3-research/prompt-1"
+    },
+    {
+      "id": "rg23_matching_label_gives_CLEAR_on_each_engine",
+      "ok": true,
+      "detail": [
+        "CLEAR",
+        "CLEAR"
+      ]
+    },
+    {
+      "id": "rg23_mismatched_label_rejected_on_each_engine",
+      "ok": true,
+      "detail": [
+        {
+          "e1": "NOT_ASSESSED",
+          "candidate_rejected": true,
+          "refusal_codes": [
+            "candidate_response_invalid"
+          ]
+        },
+        {
+          "e1": "NOT_ASSESSED",
+          "candidate_rejected": true,
+          "refusal_codes": [
+            "candidate_response_invalid"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rg23_frozen_outputs_agree_with_demonstration",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "research_probe_count_difference_equals_added_templates",
+      "ok": true,
+      "detail": [
+        89,
+        90,
+        30,
+        31
+      ]
+    },
+    {
+      "id": "regression_2_0_counts",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "variants_832_rows_806_constructible",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "adv_arm_only_on_V2_and_V6",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "not_constructible_rows_match_index",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "v5_1_0_to_2_0_audit",
+      "ok": true,
+      "detail": {
+        "study_index_v5_constructible": 92,
+        "total": 104,
+        "v1_constructible": 92,
+        "v1_texts_with_evidence_left": 7,
+        "v2_constructible": 89,
+        "v2_changed_text": 4,
+        "v2_newly_not_constructible": 3
+      }
+    },
+    {
+      "id": "scorer_labels_equal_inventory_0.3.4_run_1",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "scorer_labels_equal_inventory_study_run_1",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "arm_identities_match_arm_table",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "run_1_engine_manifest_is_frozen_0.3.4_manifest",
+      "ok": true,
+      "detail": [
+        "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad",
+        "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad"
+      ]
+    },
+    {
+      "id": "mocks_v2_carry_0.3.4_prompt_label_only",
+      "ok": true,
+      "detail": [
+        "jrs-engine-local-0.3.4-research/prompt-1"
+      ]
+    },
+    {
+      "id": "frozen_regression_cli_exits_0_despite_failures",
+      "ok": true,
+      "detail": {
+        "status": 0,
+        "output_written": true,
+        "totals": {
+          "probes": 77,
+          "passed": 40,
+          "failed": 37
+        },
+        "stderr_tail": ""
+      }
+    },
+    {
+      "id": "frozen_study_suites_cli_exits_0_despite_failure",
+      "ok": true,
+      "detail": {
+        "status": 0,
+        "output_written": true,
+        "totals": {
+          "research_probes_1_0": {
+            "probes": 90,
+            "passed": 90,
+            "failed": []
+          },
+          "regression_probes_1_0": {
+            "probes": 32,
+            "passed": 31,
+            "failed": [
+              "RG-23"
+            ]
+          },
+          "feature_probes_1_0": {
+            "probes": 343,
+            "passed": 343,
+            "failed": []
+          }
+        },
+        "stderr_tail": ""
+      }
+    },
+    {
+      "id": "check_results_exits_1_on_each_failing_output",
+      "ok": true,
+      "detail": [
+        {
+          "status": 1,
+          "stdout_head": "check-results (single file): 1 of 2 checks passed"
+        },
+        {
+          "status": 1,
+          "stdout_head": "check-results (single file): 5 of 6 checks passed"
+        }
+      ]
+    },
+    {
+      "id": "frozen_transport_test_exits_nonzero_on_failure",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "nothing_written_into_frozen_out",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "no_unrecorded_discrepancy",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "every_known_discrepancy_still_present",
+      "ok": true,
+      "detail": [
+        "AC-15-prose-10-of-60"
+      ]
+    }
+  ]
+}
