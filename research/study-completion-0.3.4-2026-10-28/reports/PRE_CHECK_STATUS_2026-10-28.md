@@ -28,3 +28,7 @@
 6. Because a new session starts from GitHub, the prepared work on the local branch `claude/study-completion-0.3.4-local` must reach it (owner decision: pushing that branch, which is public on GitHub, or another route).
 
 Network reachability of `api.anthropic.com` is not confirmed; the session proxy routes that host directly. A blocked first request would stop the check (SR-06) with no spend.
+
+## Credential exposure, 2026-10-28
+
+After this status was written, a credential was pasted into the session chat. It was not used, stored or copied into any file, and no request was sent. A search found it nowhere in the repository, its working tree or the private capture directory. Under CLAUDE.md section 22 it is treated as compromised: it must be revoked and replaced. The key later configured as `JRS_STUDY_ANTHROPIC_KEY` must be a newly issued one. The approved credential source remains the environment secret only.
