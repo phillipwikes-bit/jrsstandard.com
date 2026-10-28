@@ -1,8 +1,8 @@
-# PACKAGE research/study-continuation-0.3.5-2026-10-28: 84 files, 2563464 bytes, written 2026-10-28T15:12:00.628Z. Offline; network attempts 0.
+# PACKAGE research/study-continuation-0.3.5-2026-10-28: 84 files, 2563653 bytes, written 2026-10-28T21:47:43.915Z. Offline; network attempts 0.
 9f96dd487fe968b7589124116ce7218f1c010ad8a3a482559212ebbc49020e92  CANDIDATE_0.3.5_MANIFEST_SHA256.txt
 9b77253f644cd8193f1d5e90c206b9365362db9bf059cbbc553c144a511024a6  CHANGES_FROM_0.3.4.md
 f724ffe94d0fa081710937b4ce5eb833374ea86498f97614011023f354884e15  CONTINUATION_FREEZE.json
-56fc2cb299d03fd38b7001138d76931d772649dfa6eb659d2152ef35b4eaa3c3  README.md
+4d32596c7d42a57ab78b61f5227869fa13b5a0da7cdb4a1188cdf0a66f8b0646  README.md
 5e2f31d8e51915b39ca60f9f2c7f1e94af9f54a4c03c6f3caa8dafd0149e6ea2  authorization/LIVE_AUTHORIZATION_DRAFT.json
 cb0e1df14aea31c5a58809b36e0f91d8c951c35f75c75d7916360041b476f45d  candidate/lib/engine-assurance/candidate-core.mjs
 b038932dd14e7c926ede70816051badb91989e88f3f185ced08b59f718053cf4  candidate/lib/engine-assurance/cognitive-controls.mjs

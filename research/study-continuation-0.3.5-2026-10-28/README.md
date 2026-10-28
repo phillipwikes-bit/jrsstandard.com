@@ -1,6 +1,6 @@
 # Study continuation 0.3.5 (arm L2): corrected prompt and corrected scorer
 
-Dated 2026-10-28. **Frozen for review; not authorized; live dispatch disabled; nothing adopted.** 0.3.1-candidate stays the engine of record; B-018 OPEN; NO_GO_NOT_VERIFIED.
+Dated 2026-10-28. **STATUS: NON-ADOPTED RESEARCH CHECKPOINT.** Live run RUN-LIVE-AUTH-20261028-02 (arm L2) executed under a signed owner authorization (kept privately, not in this repository) and finished; results in `results/LIVE_RESULTS.json`. Live dispatch disabled; nothing adopted. 0.3.1-candidate stays the engine of record; B-018 OPEN; NO_GO_NOT_VERIFIED.
 
 This package continues the existing JRS records study after run RUN-LIVE-AUTH-20261028-01 (0.3.4, arm L1) stopped on SR-10. It is not a new study and not a rebuild: the records, requests, compiler, rules, stop rules and safety controls are the 0.3.4 ones.
 

@@ -2,7 +2,7 @@
 
 Dated 2026-10-28. Investigation of live run RUN-LIVE-AUTH-20261028-02 (arm L2, 0.3.5-research-candidate). Offline only: no provider request was sent. 0.3.1-candidate remains the engine of record; B-018 OPEN; NO_GO_NOT_VERIFIED; 0.3.6 is not adopted. All references below are AI-proposed, not human labels; agreement with them is not accuracy.
 
-**Disposition: BOUNDED_REPAIR_IMPLEMENTED_OFFLINE.** The repair corrects a demonstrated defect: a stated link alone can establish support and a clean result. By design it does **not** restore the 28 weakened flags. Under the evidence contract, that weakening is the honest outcome while relevance is unassessed (section 3).
+**Status (2026-10-28): non-adopted research checkpoint; 0.3.6 is a PARTIAL SAFEGUARD, not a repair** (owner classification; it removes unsupported support but does not distinguish relevant from irrelevant evidence). Disposition as first recorded under the 16:13 assignment: BOUNDED_REPAIR_IMPLEMENTED_OFFLINE. The repair corrects a demonstrated defect: a stated link alone can establish support and a clean result. By design it does **not** restore the 28 weakened flags. Under the evidence contract, that weakening is the honest outcome while relevance is unassessed (section 3).
 
 ## 1. Verified baseline (FACT)
 

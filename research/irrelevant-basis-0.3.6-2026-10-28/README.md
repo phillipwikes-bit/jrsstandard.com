@@ -1,6 +1,6 @@
 # Irrelevant-basis investigation and 0.3.6-research-candidate
 
-Dated 2026-10-28. **Offline; not adopted; no provider request sent.** 0.3.1-candidate stays the engine of record; B-018 OPEN; NO_GO_NOT_VERIFIED. Disposition: **BOUNDED_REPAIR_IMPLEMENTED_OFFLINE**.
+Dated 2026-10-28. **STATUS: NON-ADOPTED RESEARCH CHECKPOINT. 0.3.6 IS A PARTIAL SAFEGUARD, NOT A REPAIR** (owner classification, 2026-10-28): it stops a stated link from supporting a finding or producing a clean result, but it cannot tell relevant evidence from irrelevant evidence, and the 28 weakened findings stay INDETERMINATE. Offline; no provider request sent. 0.3.1-candidate stays the engine of record; B-018 OPEN; NO_GO_NOT_VERIFIED. Disposition as first recorded: BOUNDED_REPAIR_IMPLEMENTED_OFFLINE; reclassified by the owner as a partial safeguard.
 
 | What | Where |
 |---|---|
