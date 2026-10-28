@@ -1,0 +1,377 @@
+{
+  "results_format": "jrs-study-continuation-correction-tests/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "network_attempts": 0,
+  "statement": "Synthetic records and frozen scripted proposals; the original run is used only as diagnostic material (derived counts and booleans). No provider request.",
+  "original_run_rederived_v2": {
+    "pre": {
+      "responses": 3,
+      "observations": 18,
+      "observations_without_quotation": 1,
+      "quotations": 17,
+      "verified": 17,
+      "missing_from_source": 0,
+      "not_assessed": 0,
+      "not_assessed_by_status": {},
+      "status_counts_by_observation": {
+        "verified_unique": 17,
+        "not_assessed": 1
+      },
+      "every_response_reconciles": true,
+      "reconciles": true
+    },
+    "run": {
+      "responses": 49,
+      "observations": 306,
+      "observations_without_quotation": 5,
+      "quotations": 301,
+      "verified": 300,
+      "missing_from_source": 1,
+      "not_assessed": 0,
+      "not_assessed_by_status": {},
+      "status_counts_by_observation": {
+        "verified_unique": 300,
+        "not_assessed": 5,
+        "absent": 1
+      },
+      "every_response_reconciles": true,
+      "reconciles": true
+    },
+    "run_unusable": {
+      "responses": 17,
+      "observations": 119,
+      "quotations_never_assessed": 119
+    },
+    "classifications_equal": true,
+    "unchanged": true
+  },
+  "totals": {
+    "tests": 16,
+    "passed": 16,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "CT-01",
+      "name": "the validator rule is unchanged from 0.3.4 (same response.mjs bytes) and is the rule the 0.3.5 prompt states: 1 to 24 characters, A-Z a-z 0-9 - _, unique; the examples satisfy it",
+      "ok": true,
+      "observed": {
+        "examples": [
+          "ib-1",
+          "chron_2",
+          "recon-3"
+        ],
+        "q2": "Q2. Each observation has exactly these keys: \"observation_id\", \"condition_id\", \"proposed_status\", \"quote\", \"assertion_ty"
+      }
+    },
+    {
+      "id": "CT-02",
+      "name": "the 0.3.5 prompt keeps the five-condition restriction, equal to the validator list; it differs from 0.3.4 only in the header, Q1 version string, Q2 identifier rule and Q3 rejection sentence",
+      "ok": true,
+      "observed": {
+        "listed": [
+          "reconstructability",
+          "identifiable_basis",
+          "chronology_integrity",
+          "reasoning_traceability",
+          "sufficiency"
+        ],
+        "changedLabels": [
+          "prompt_version:",
+          "status:",
+          "Q1.",
+          "Q2.",
+          "Q3."
+        ]
+      }
+    },
+    {
+      "id": "CT-03",
+      "name": "identifier length boundary through the full 0.3.5 compile: 1 and 24 characters accepted; 25 and 35 refused as a whole (candidate_response_invalid), with the validator reason",
+      "ok": true,
+      "observed": {
+        "1": {
+          "valid": true,
+          "reason": null,
+          "refused": false,
+          "e1": "INDETERMINATE"
+        },
+        "24": {
+          "valid": true,
+          "reason": null,
+          "refused": false,
+          "e1": "INDETERMINATE"
+        },
+        "25": {
+          "valid": false,
+          "reason": "observation_id_invalid_or_duplicate",
+          "refused": true,
+          "e1": "NOT_ASSESSED"
+        },
+        "35": {
+          "valid": false,
+          "reason": "observation_id_invalid_or_duplicate",
+          "refused": true,
+          "e1": "NOT_ASSESSED"
+        }
+      }
+    },
+    {
+      "id": "CT-04",
+      "name": "duplicate identifiers and invalid characters (space, dot, colon, slash, non-ASCII letter, empty) are refused; no identifier is renamed or repaired",
+      "ok": true,
+      "observed": [
+        [
+          "ib 1",
+          "observation_id_invalid_or_duplicate",
+          true
+        ],
+        [
+          "ib.1",
+          "observation_id_invalid_or_duplicate",
+          true
+        ],
+        [
+          "ib:1",
+          "observation_id_invalid_or_duplicate",
+          true
+        ],
+        [
+          "ib/1",
+          "observation_id_invalid_or_duplicate",
+          true
+        ],
+        [
+          "ïb-1",
+          "observation_id_invalid_or_duplicate",
+          true
+        ],
+        [
+          "",
+          "observation_id_invalid_or_duplicate",
+          true
+        ],
+        [
+          "dup",
+          "observation_id_invalid_or_duplicate",
+          true
+        ]
+      ]
+    },
+    {
+      "id": "CT-05",
+      "name": "an unlisted condition name (\"identifiable_authority\", the name in the C2 failure) is refused as a whole; it is not substituted",
+      "ok": true,
+      "observed": [
+        "unrecognised_condition_id",
+        true
+      ]
+    },
+    {
+      "id": "CT-06",
+      "name": "a response carrying the 0.3.4 prompt version is refused by 0.3.5 and the reverse (prompt identity is enforced, not relaxed)",
+      "ok": true,
+      "observed": [
+        true,
+        true,
+        false
+      ]
+    },
+    {
+      "id": "CT-07",
+      "name": "fenced and unfenced versions of the same response: identical compile and identical scorer v2 counts and cited spans (S-001, S-003, S-008 scripted proposals)",
+      "ok": true,
+      "observed": [
+        {
+          "id": "S-001",
+          "same": true,
+          "fenceFlag": true,
+          "quotations": 7,
+          "spans": 7
+        },
+        {
+          "id": "S-003",
+          "same": true,
+          "fenceFlag": true,
+          "quotations": 2,
+          "spans": 2
+        },
+        {
+          "id": "S-008",
+          "same": true,
+          "fenceFlag": true,
+          "quotations": 6,
+          "spans": 6
+        }
+      ]
+    },
+    {
+      "id": "CT-08",
+      "name": "the defect is real and fixed: scorer version 1 (preserved, unchanged) records 0 quotations and no spans for the fenced response; version 2 records them",
+      "ok": true,
+      "observed": [
+        0,
+        7,
+        7
+      ]
+    },
+    {
+      "id": "CT-09",
+      "name": "observations without a quotation (null quote, not_assessed) are counted as observations, not as quotations, and reconcile with the compiler status",
+      "ok": true,
+      "observed": {
+        "observations": 3,
+        "observations_without_quotation": 2,
+        "quotations": 1,
+        "assessed": true,
+        "verified": 1,
+        "missing_from_source": 0,
+        "not_assessed": 0,
+        "not_assessed_by_status": {},
+        "status_counts_by_observation": {
+          "not_assessed": 2,
+          "verified_unique": 1
+        },
+        "reconciles": true
+      }
+    },
+    {
+      "id": "CT-10",
+      "name": "every quotation unit: verified (unique and disambiguated), missing from the source (absent), not assessed (ambiguous, malformed); totals reconcile within each unit and fenced equals unfenced",
+      "ok": true,
+      "observed": {
+        "k": {
+          "observations": 6,
+          "observations_without_quotation": 1,
+          "quotations": 5,
+          "assessed": true,
+          "verified": 2,
+          "missing_from_source": 1,
+          "not_assessed": 2,
+          "not_assessed_by_status": {
+            "ambiguous": 1,
+            "malformed": 1
+          },
+          "status_counts_by_observation": {
+            "absent": 1,
+            "ambiguous": 1,
+            "malformed": 1,
+            "not_assessed": 1,
+            "verified_disambiguated": 1,
+            "verified_unique": 1
+          },
+          "reconciles": true
+        },
+        "statuses": {
+          "absent-1": "absent",
+          "ambig-1": "ambiguous",
+          "malf-1": "malformed",
+          "none-1": "not_assessed",
+          "v-dis": "verified_disambiguated",
+          "v-uniq": "verified_unique"
+        }
+      }
+    },
+    {
+      "id": "CT-11",
+      "name": "reconciliation fails when a unit is inconsistent (the check is not vacuous)",
+      "ok": true,
+      "observed": [
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "id": "CT-12",
+      "name": "identical candidate responses compile identically under 0.3.4 and 0.3.5: all 624 frozen scripted proposals (6 policies x 104 records), each labelled with its own prompt version; the graphs are identical apart from the prompt version string and the identity hashes derived from inputs and source",
+      "ok": true,
+      "observed": {
+        "compared": 624,
+        "with_candidate_quotations_compiled": 624,
+        "differing": []
+      }
+    },
+    {
+      "id": "CT-13",
+      "name": "the original run (diagnostic only), re-derived offline with scorer v2 counting on 0.3.4: every classification equals the original results; quotation totals equal the dated correction (PRE 17 of 18 observations, RUN 301 of 306, 119 never assessed); the captures are unchanged",
+      "ok": true,
+      "observed": {
+        "pre": {
+          "responses": 3,
+          "observations": 18,
+          "observations_without_quotation": 1,
+          "quotations": 17,
+          "verified": 17,
+          "missing_from_source": 0,
+          "not_assessed": 0,
+          "not_assessed_by_status": {},
+          "status_counts_by_observation": {
+            "verified_unique": 17,
+            "not_assessed": 1
+          },
+          "every_response_reconciles": true,
+          "reconciles": true
+        },
+        "run": {
+          "responses": 49,
+          "observations": 306,
+          "observations_without_quotation": 5,
+          "quotations": 301,
+          "verified": 300,
+          "missing_from_source": 1,
+          "not_assessed": 0,
+          "not_assessed_by_status": {},
+          "status_counts_by_observation": {
+            "verified_unique": 300,
+            "not_assessed": 5,
+            "absent": 1
+          },
+          "every_response_reconciles": true,
+          "reconciles": true
+        },
+        "run_unusable": {
+          "responses": 17,
+          "observations": 119,
+          "quotations_never_assessed": 119
+        },
+        "classifications_equal": true,
+        "unchanged": true
+      }
+    },
+    {
+      "id": "CT-14a",
+      "name": "diagnostic: the 17 captured failures, unchanged apart from the prompt version label, are still refused by 0.3.5 with their original validator reasons (no automatic renaming or substitution)",
+      "ok": true,
+      "observed": []
+    },
+    {
+      "id": "CT-14",
+      "name": "a failed assertion gives a nonzero exit code: the self-check child exits 1 with one deliberate failure and 0 without it",
+      "ok": true,
+      "observed": [
+        1,
+        0
+      ]
+    },
+    {
+      "id": "CT-15",
+      "name": "both isolated Engine copies are unchanged after use and deleted",
+      "ok": true,
+      "observed": [
+        {
+          "unchanged": true,
+          "changed": [],
+          "deleted": true
+        },
+        {
+          "unchanged": true,
+          "changed": [],
+          "deleted": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "format": "jrs-study-continuation-freeze/1.0.0",
+  "frozen_on": "2026-10-28",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "engine_of_record": "0.3.1-candidate",
+  "dispatch_enabled": false,
+  "statement": "Frozen for review and authorization. Not authorized; no provider request has been sent for this continuation. Not adopted.",
+  "parent": {
+    "candidate": "0.3.4-research-candidate",
+    "candidate_manifest_sha256": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad",
+    "prompt_sha256": "94429a1404c1c3cc80ce40d3ed41f1211b0473939fc8f07227ff41247ababec2",
+    "run": "RUN-LIVE-AUTH-20261028-01 (arm L1, stopped on SR-10 after 69 requests; unchanged)",
+    "plan_sha256": "f5dd8e92006c8af9539cc42e7b21747cda3cebe57740bbc35a63083a62dcbc03",
+    "results": {
+      "path": "research/study-completion-0.3.4-2026-10-28/results/LIVE_RESULTS.json",
+      "sha256": "6d55ef2efe6272022b16aae9ecbe4d8cfc604612b27079ecf9e61bc2eb940daa"
+    },
+    "scorer_v1": {
+      "path": "research/study-completion-0.3.4-2026-10-28/tools/live/score-live.mjs",
+      "sha256": "359c46948cef5abe1e84dca25f0b2eecefdc33c7ec536705e92ba5ddd80d090e"
+    }
+  },
+  "changes": {
+    "path": "research/study-continuation-0.3.5-2026-10-28/CHANGES_FROM_0.3.4.md",
+    "sha256": "9b77253f644cd8193f1d5e90c206b9365362db9bf059cbbc553c144a511024a6"
+  },
+  "candidate": {
+    "version": "0.3.5-research-candidate",
+    "compiler_version": "0.3.4-research-candidate (unchanged)",
+    "manifest": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/CANDIDATE_0.3.5_MANIFEST_SHA256.txt",
+      "sha256": "9f96dd487fe968b7589124116ce7218f1c010ad8a3a482559212ebbc49020e92"
+    },
+    "prompt": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/candidate/prompt/PROMPT_research-0.3.5-1.txt",
+      "sha256": "0c76c09cfad66bddbcbafad13e65545116b90cf16a5a88ebcb85f16c614a942f",
+      "prompt_version": "jrs-engine-local-0.3.5-research/prompt-1"
+    }
+  },
+  "scorer": {
+    "path": "research/study-continuation-0.3.5-2026-10-28/tools/live/score-live-v2.mjs",
+    "sha256": "36ec524512cb1ca0135c86eea08ce3e887f34bb9c6b07d8481c15de942b95059",
+    "version": "score-live-v2 (0.3.5 continuation)"
+  },
+  "dataset": {
+    "record_set": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/records/LIVE_RECORD_SET.json",
+      "sha256": "982ba5f2e908368d5fa106cff35f88388d8080d9d54204b0c31e1e3942d1c7c4"
+    },
+    "requests_sha256": "c40a285299b4f448a8d3eb5d905a2d904918cf7910be55feeda3d21c2edf95bf",
+    "targeted_texts": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/records/TARGETED_TEXTS.jsonl",
+      "sha256": "d1c015e667e3f8a14dd2085f1f7a2b8e6112556a75b8c56425c58dbe2b0f3d20"
+    },
+    "by_phase": {
+      "PRE": 3,
+      "RUN": 312,
+      "TGT": 86
+    }
+  },
+  "configuration": {
+    "study": "JRS records study continuation: 0.3.5 research candidate (0.3.4 compiler, corrected prompt), live model run, arm L2",
+    "model": "claude-haiku-5-5",
+    "api_version": "2026-10-21",
+    "sender_version": "0.3.5-study-continuation-bound-1",
+    "request": {
+      "max_tokens": 4096,
+      "thinking": {
+        "type": "disabled"
+      },
+      "output_config": {
+        "effort": "medium"
+      },
+      "streaming": false,
+      "not_sent": [
+        "temperature",
+        "top_p",
+        "top_k",
+        "fallbacks",
+        "tools",
+        "stop_sequences",
+        "metadata",
+        "assistant prefill"
+      ]
+    },
+    "transport": {
+      "maxRetries": 2,
+      "baseDelayMs": 1000,
+      "maxDelayMs": 20000,
+      "timeoutMs": 120000
+    },
+    "pacing": {
+      "concurrency": 1,
+      "min_interval_ms": 1000
+    },
+    "plan": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/protocol/LIVE_RUN_PLAN.json",
+      "sha256": "3577628a3964cafcdf6fbdd163d56d0173972df01785c875794d9a2569440be2",
+      "plan_sha256": "5273c4db76f901d4f8fd6f0cbce359e532059579d33cbe55c479a0591201848d"
+    },
+    "proposed_authorizations": {
+      "PRE only": {
+        "phases_authorized": [
+          "PRE"
+        ],
+        "max_requests": 3,
+        "max_attempts": 9,
+        "max_budget_usd": 0.05
+      },
+      "PRE, then RUN and TGT if the PRE gate passes": {
+        "phases_authorized": [
+          "PRE",
+          "RUN",
+          "TGT"
+        ],
+        "max_requests": 401,
+        "max_attempts": 450,
+        "max_budget_usd": 1
+      }
+    },
+    "stop_rules": [
+      "SR-01",
+      "SR-02",
+      "SR-03",
+      "SR-04",
+      "SR-05",
+      "SR-06",
+      "SR-07",
+      "SR-08",
+      "SR-09",
+      "SR-10",
+      "SR-11",
+      "SR-12",
+      "SR-13",
+      "SR-14",
+      "SR-15",
+      "SR-16",
+      "SR-17",
+      "SR-18"
+    ],
+    "authorization_draft": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/authorization/LIVE_AUTHORIZATION_DRAFT.json",
+      "sha256": "5e2f31d8e51915b39ca60f9f2c7f1e94af9f54a4c03c6f3caa8dafd0149e6ea2"
+    }
+  },
+  "protocol": [
+    {
+      "path": "research/study-continuation-0.3.5-2026-10-28/protocol/CONTINUATION_PROTOCOL.md",
+      "sha256": "b865921fe3300d0b2ee3796e04e65ad667c89063803beb93a311d00493dba56f"
+    },
+    {
+      "path": "research/study-continuation-0.3.5-2026-10-28/protocol/LIVE_RUN_PLAN.md",
+      "sha256": "544e5fc9b5bd225b2dc7ce576aa9cbb8ac05120fabc16c855cfb90903a9e1072"
+    }
+  ],
+  "tests": {
+    "correction": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/out/CORRECTION_TESTS.json",
+      "sha256": "ec0a1853c16cacee1357dbbaef1bb3eb4d389bbac78014a84b75a0a19e69baae",
+      "tests": 16,
+      "passed": 16,
+      "failed": 0
+    },
+    "live_machinery": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/out/LIVE_MACHINERY_TESTS.json",
+      "sha256": "d8684efac36b7c8fa742699e5dfc84777ee140e902eef8dd53ae21812d2776a3",
+      "tests": 42,
+      "passed": 42,
+      "failed": 0
+    },
+    "enable_rehearsal": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/out/ENABLE_REHEARSAL.json",
+      "sha256": "13c44508db1cc9ad71a66c879308568bb19428eec4fe0de2c133d885562dd1fc"
+    },
+    "mutation": {
+      "path": "research/study-continuation-0.3.5-2026-10-28/out/LIVE_MUTATION_TESTS.json",
+      "sha256": "9c99d5396b083d908196e0676cd4f1fe4f9c64e03f900cc59bd926fbd4e124d8",
+      "mutants": 26,
+      "applied": 26,
+      "killed": 26,
+      "survived_or_not_applied": 0
+    }
+  },
+  "checks": [
+    {
+      "id": "candidate_copy_verifies_against_manifest",
+      "ok": true,
+      "detail": 46
+    },
+    {
+      "id": "manifest_hash_pinned_in_harness",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "parent_manifest_unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "parent_prompt_unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "original_results_unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "original_plan_unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "plan_hash_matches_content",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "plan_names_this_candidate_and_prompt",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "every_executed_file_matches_the_plan",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "record_set_hash_matches_content",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "dispatch_disabled",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "old_authorization_never_valid",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "correction_tests_all_passed",
+      "ok": true,
+      "detail": {
+        "tests": 16,
+        "passed": 16,
+        "failed": 0
+      }
+    },
+    {
+      "id": "live_machinery_tests_all_passed",
+      "ok": true,
+      "detail": {
+        "tests": 42,
+        "passed": 42,
+        "failed": 0
+      }
+    },
+    {
+      "id": "enable_rehearsal_all_passed",
+      "ok": true,
+      "detail": {
+        "rehearsals": 9,
+        "passed": 9
+      }
+    },
+    {
+      "id": "every_mutant_killed",
+      "ok": true,
+      "detail": {
+        "mutants": 26,
+        "applied": 26,
+        "killed": 26,
+        "survived_or_not_applied": 0
+      }
+    },
+    {
+      "id": "no_network_attempts",
+      "ok": true,
+      "detail": null
+    }
+  ],
+  "freeze_sha256": "d5533a073432e19b73ef959331c6d7917339b075761b9c08aca1720ed8871f04"
+}

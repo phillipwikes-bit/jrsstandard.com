@@ -1,0 +1,516 @@
+{
+  "results_format": "jrs-study-continuation-live-machinery-tests/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "sender_version": "0.3.5-study-continuation-bound-1",
+  "live_dispatch_enabled": false,
+  "network_attempts": 0,
+  "statement": "Offline tests with mock fetch implementations and mock responses (marked MOCK). No model was called, no credential or environment value was read, and no network attempt was made.",
+  "totals": {
+    "tests": 42,
+    "passed": 42,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "TL-01",
+      "name": "every PRE body rebuilds from the frozen prompt and texts to its frozen hash, with exactly the planned fields",
+      "ok": true,
+      "observed": "max_tokens,messages,model,output_config,system,thinking"
+    },
+    {
+      "id": "TL-02",
+      "name": "all 401 frozen bodies rebuild to their hashes; a changed record text is refused",
+      "ok": true,
+      "observed": [
+        401,
+        "record_text_hash_mismatch"
+      ]
+    },
+    {
+      "id": "TL-03",
+      "name": "headers are exactly content-type, x-api-key (the injected value) and anthropic-version 2026-10-21; POST to the one URL with redirect \"error\"",
+      "ok": true,
+      "observed": [
+        "content-type",
+        "x-api-key",
+        "anthropic-version"
+      ]
+    },
+    {
+      "id": "TL-04",
+      "name": "a forbidden body field (temperature, top_p, top_k, fallbacks) or a non-user final turn is refused before any request",
+      "ok": true,
+      "observed": [
+        [
+          "forbidden_body_field:temperature",
+          "forbidden_body_field:top_p",
+          "forbidden_body_field:top_k",
+          "forbidden_body_field:fallbacks"
+        ],
+        "thinking_disabled_requires_effort_high_or_below"
+      ]
+    },
+    {
+      "id": "TL-05",
+      "name": "a 200 response is captured once, journalled with its hash and usage, and maps to the candidate text",
+      "ok": true,
+      "observed": [
+        "ok",
+        "captured"
+      ]
+    },
+    {
+      "id": "TL-06",
+      "name": "exact quotations verify through the frozen 0.3.5 compile (scorer v2 units); a one-character change makes that quotation absent and withdraws its support",
+      "ok": true,
+      "observed": [
+        {
+          "observations": 7,
+          "observations_without_quotation": 0,
+          "quotations": 7,
+          "assessed": true,
+          "verified": 7,
+          "missing_from_source": 0,
+          "not_assessed": 0,
+          "not_assessed_by_status": {},
+          "status_counts_by_observation": {
+            "verified_unique": 7
+          },
+          "reconciles": true
+        },
+        {
+          "observations": 7,
+          "observations_without_quotation": 0,
+          "quotations": 7,
+          "assessed": true,
+          "verified": 6,
+          "missing_from_source": 1,
+          "not_assessed": 0,
+          "not_assessed_by_status": {},
+          "status_counts_by_observation": {
+            "absent": 1,
+            "verified_unique": 6
+          },
+          "reconciles": true
+        },
+        "reconstructability",
+        "review_required"
+      ]
+    },
+    {
+      "id": "TL-07",
+      "name": "strict parsing: non-JSON text, an extra key, the wrong prompt version, a missing key, a fence with extra text: each rejected; one exact fence is accepted (documented in the frozen strict-json.mjs) and counted",
+      "ok": true,
+      "observed": {
+        "non_json": "contract",
+        "extra_key": "contract",
+        "wrong_prompt": "contract",
+        "missing_key": "contract",
+        "fence_plus_text": "contract",
+        "exact_fence": "compiled"
+      }
+    },
+    {
+      "id": "TL-08",
+      "name": "adapter: two text blocks, a tool_use block, empty text, text over 64 KiB and a different model are each refused",
+      "ok": true,
+      "observed": {
+        "two_text": "unexpected_content_blocks",
+        "tool": "unexpected_content_blocks",
+        "empty": "empty_response",
+        "large": "response_too_large",
+        "model": "model_identifier_mismatch"
+      }
+    },
+    {
+      "id": "TL-09",
+      "name": "a truncated response (stop_reason max_tokens) is final, captured, never retried, and the adapter refuses it",
+      "ok": true,
+      "observed": [
+        "response_truncated",
+        1
+      ]
+    },
+    {
+      "id": "TL-10",
+      "name": "a refusal (stop_reason refusal) is final with its category, never retried and never sent to another model",
+      "ok": true,
+      "observed": [
+        "model_refusal",
+        "test_category"
+      ]
+    },
+    {
+      "id": "TL-11",
+      "name": "a timeout aborts the attempt, is retried twice, and every attempt is counted at the worst case",
+      "ok": true,
+      "observed": [
+        "timeout",
+        3,
+        0.0074751
+      ]
+    },
+    {
+      "id": "TL-12",
+      "name": "cancellation in flight stops the request, counts it at the worst case, and a resend of the same request is refused",
+      "ok": true,
+      "observed": [
+        "cancelled",
+        "duplicate_request_id",
+        "cancelled_before_send"
+      ]
+    },
+    {
+      "id": "TL-13",
+      "name": "retry accounting: 429 (retry-after honoured), 529 and 500 are retried; error statuses are not billed; the final 200 is billed from usage",
+      "ok": true,
+      "observed": [
+        "ok",
+        3,
+        [
+          10,
+          2
+        ],
+        "http_500"
+      ]
+    },
+    {
+      "id": "TL-14",
+      "name": "a retry-after beyond the 20-second window ends the request without waiting; the runner stops (SR-07)",
+      "ok": true,
+      "observed": [
+        "retry_after_beyond_window",
+        "SR-07:retry_after_beyond_window"
+      ]
+    },
+    {
+      "id": "TL-15",
+      "name": "HTTP 400, 401, 402, 403, 404, 409 and 413 are final after one attempt and stop the run (SR-03)",
+      "ok": true,
+      "observed": [
+        {
+          "400": "http_400_not_retryable/1",
+          "401": "http_401_not_retryable/1",
+          "402": "http_402_not_retryable/1",
+          "403": "http_403_not_retryable/1",
+          "404": "http_404_not_retryable/1",
+          "409": "http_409_not_retryable/1",
+          "413": "http_413_not_retryable/1"
+        },
+        "SR-03:http_401_not_retryable"
+      ]
+    },
+    {
+      "id": "TL-16",
+      "name": "HTTP 504 is final, counted at the worst case (billing unknown), and stops the run (SR-05)",
+      "ok": true,
+      "observed": [
+        "http_504_unexpected",
+        0.0024917,
+        "SR-05:http_504_unexpected"
+      ]
+    },
+    {
+      "id": "TL-17",
+      "name": "redirects are refused, never followed and never retried: a 3xx status, or the fetch error a redirect raises under redirect \"error\" (SR-04)",
+      "ok": true,
+      "observed": [
+        "redirect_refused",
+        "redirect_refused",
+        "SR-04"
+      ]
+    },
+    {
+      "id": "TL-18",
+      "name": "a network error is retried twice, counted at the worst case each time (B9), then stops the run (SR-06)",
+      "ok": true,
+      "observed": [
+        "network_error",
+        0.0074751,
+        "SR-06:network_error"
+      ]
+    },
+    {
+      "id": "TL-19",
+      "name": "the destination allow-list refuses every other scheme, host, port, path, query, fragment or user part before any request; the gate refuses a destination override",
+      "ok": true,
+      "observed": [
+        [
+          "destination_protocol_not_https",
+          "destination_host_not_allowed",
+          "destination_port_not_allowed",
+          "destination_path_not_allowed",
+          "destination_query_or_fragment_not_allowed",
+          "destination_query_or_fragment_not_allowed",
+          "destination_userinfo_not_allowed",
+          "destination_unparseable"
+        ],
+        "destination_override_refused"
+      ]
+    },
+    {
+      "id": "TL-20",
+      "name": "budget enforcement: an attempt whose worst case would pass the cap is refused before it is sent; spend never passes the cap",
+      "ok": true,
+      "observed": [
+        "budget_exhausted",
+        "ok",
+        "ok",
+        0.0009
+      ]
+    },
+    {
+      "id": "TL-21",
+      "name": "request cap and global attempt cap (B6) each stop further sending; the runner reports SR-12 or SR-18",
+      "ok": true,
+      "observed": [
+        "request_cap_reached",
+        "attempt_cap_reached",
+        2
+      ]
+    },
+    {
+      "id": "TL-22",
+      "name": "interrupted run: the \"sent\" entry is on disk before the request leaves (B10); on resume it becomes interrupted_unknown at the worst case and is never resent automatically (SR-16)",
+      "ok": true,
+      "observed": [
+        [
+          "prepared",
+          "sent"
+        ],
+        "ambiguous_prior_send_requires_review",
+        "SR-16:PRE-01"
+      ]
+    },
+    {
+      "id": "TL-23",
+      "name": "interrupted after the capture was written: recovery verifies the capture against the prepared body hash and records it with its reported cost",
+      "ok": true,
+      "observed": [
+        "captured",
+        0.00045
+      ]
+    },
+    {
+      "id": "TL-24",
+      "name": "interrupted before sending (\"prepared\" only): the request is sent normally on resume",
+      "ok": true,
+      "observed": [
+        0,
+        "ok"
+      ]
+    },
+    {
+      "id": "TL-25",
+      "name": "attempts made before a resume count toward the retry limit (B7): two earlier attempts leave one",
+      "ok": true,
+      "observed": [
+        1,
+        "http_529"
+      ]
+    },
+    {
+      "id": "TL-26",
+      "name": "a completed request is never sent twice: dispatch refuses it, and the runner skips it on resume without calling the sender",
+      "ok": true,
+      "observed": [
+        "duplicate_request_id",
+        0,
+        1
+      ]
+    },
+    {
+      "id": "TL-27",
+      "name": "the journal hash chain detects an edited or removed entry",
+      "ok": true,
+      "observed": [
+        "journal_corrupt",
+        "journal_corrupt"
+      ]
+    },
+    {
+      "id": "TL-28",
+      "name": "authorization: absent, the three unsigned drafts, a signed copy that keeps a draft identifier, the spent Stage A authorization, and missing or placeholder fields are refused",
+      "ok": true,
+      "observed": [
+        [
+          31,
+          40,
+          10
+        ],
+        [
+          "authorization_spent_superseded_or_draft:STAGE-A-AUTH-20261025-01"
+        ],
+        [
+          "authorization_spent_superseded_or_draft:COMPLETION-LIVE-DRAFT-SIGNED-COPY"
+        ]
+      ]
+    },
+    {
+      "id": "TL-29",
+      "name": "authorization: expired, dated in the future, wrong model, prompt, plan, record set or API version, reserved credential name, unauthorized phase, request outside the plan, later phase without PRE, caps exceeded: each refused",
+      "ok": true,
+      "observed": {
+        "expired": true,
+        "future": true,
+        "model": true,
+        "prompt": true,
+        "plan": true,
+        "records": true,
+        "api": true,
+        "reserved": true,
+        "phase": true,
+        "nopre": true,
+        "attempts": true,
+        "not_in_plan": true,
+        "over_budget": true,
+        "over_requests": true,
+        "tampered": true,
+        "complete_fixture_passes": true
+      }
+    },
+    {
+      "id": "TL-30",
+      "name": "the build gate refuses before any check, credential lookup or request; the command exits 4 having read nothing",
+      "ok": true,
+      "observed": [
+        "live_dispatch_not_enabled_in_this_build",
+        0,
+        0,
+        4
+      ]
+    },
+    {
+      "id": "TL-31",
+      "name": "the credential is looked up only after the authorization verifies, only under its one named variable, and never reaches the journal or a capture",
+      "ok": true,
+      "observed": [
+        null,
+        0,
+        [
+          "JRS_STUDY_ANTHROPIC_KEY"
+        ],
+        0
+      ]
+    },
+    {
+      "id": "TL-32",
+      "name": "a credential value, or a credential-shaped string, in a response is refused at capture (SR-15)",
+      "ok": true,
+      "observed": [
+        "credential_value_in_capture",
+        "credential_shaped_value_in_capture"
+      ]
+    },
+    {
+      "id": "TL-33",
+      "name": "PRE end to end with mock responses: frozen bodies, gate, journal, captures, offline compile; the PRE gate passes; the scorer classifies every request and marks it MOCK",
+      "ok": true,
+      "observed": [
+        null,
+        [
+          "clear_on_grounded",
+          "flag_on_ungrounded",
+          "unresolved_on_grounded"
+        ]
+      ]
+    },
+    {
+      "id": "TL-34",
+      "name": "PRE gate: two invalid contract outputs of three fail the gate and stop before RUN; one of three still passes",
+      "ok": true,
+      "observed": [
+        "PRE_GATE_FAILED",
+        [
+          "PRE:done",
+          "RUN:done"
+        ]
+      ]
+    },
+    {
+      "id": "TL-35",
+      "name": "stop rules: refusal and truncation in PRE (SR-08, SR-09), input above the frozen estimate (SR-13), wrong model (SR-14), a compiler-side failure (SR-11)",
+      "ok": true,
+      "observed": [
+        "SR-08",
+        "SR-09",
+        "SR-13",
+        "SR-14",
+        "SR-11"
+      ]
+    },
+    {
+      "id": "TL-36",
+      "name": "the scorer refuses a capture whose hash differs from its journal entry, and one whose body differs from the frozen request",
+      "ok": true,
+      "observed": [
+        "capture_hash_mismatch",
+        "journal_rejected:journal_corrupt"
+      ]
+    },
+    {
+      "id": "TL-37",
+      "name": "private location: the repository and any git working tree are refused; the session scratch is accepted",
+      "ok": true,
+      "observed": [
+        true,
+        true,
+        true
+      ]
+    },
+    {
+      "id": "TL-38",
+      "name": "the token estimate (B4) is at or above the documented average for every frozen body; the frozen length/3 estimate is below it",
+      "ok": true,
+      "observed": [
+        401,
+        4437,
+        1775,
+        1479
+      ]
+    },
+    {
+      "id": "TL-39",
+      "name": "the network guard blocks a real request in a child process; this process recorded no network attempt",
+      "ok": true,
+      "observed": "network_blocked:fetch 1"
+    },
+    {
+      "id": "TL-40",
+      "name": "fail closed: a failing check makes a tool exit 1",
+      "ok": true,
+      "observed": 1
+    },
+    {
+      "id": "TL-41",
+      "name": "an authorization that does not verify stops the run before any request (SR-02); a missing credential variable stops it at the gate before the request is sent (SR-01)",
+      "ok": true,
+      "observed": [
+        [
+          "SR-02:authorization_spent_superseded_or_draft:CONTINUATION-LIVE-DRAFT",
+          0
+        ],
+        [
+          "SR-01",
+          0
+        ]
+      ]
+    },
+    {
+      "id": "TL-42",
+      "name": "resume across phases: after PRE completes, a resumed run skips PRE, passes the PRE gate from the journal and captures, and continues to RUN",
+      "ok": true,
+      "observed": [
+        null,
+        null,
+        1,
+        [
+          "PRE:true",
+          "RUN:-"
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "authorization_id": "CONTINUATION-LIVE-DRAFT",
+  "study": "JRS records study continuation: 0.3.5 research candidate (0.3.4 compiler, corrected prompt), live model run, arm L2",
+  "model_identifier": "claude-haiku-5-5",
+  "api_version": "2026-10-21",
+  "candidate_version": "0.3.5-research-candidate",
+  "candidate_manifest_sha256": "9f96dd487fe968b7589124116ce7218f1c010ad8a3a482559212ebbc49020e92",
+  "prompt_sha256": "0c76c09cfad66bddbcbafad13e65545116b90cf16a5a88ebcb85f16c614a942f",
+  "plan_sha256": "5273c4db76f901d4f8fd6f0cbce359e532059579d33cbe55c479a0591201848d",
+  "record_set_sha256": "c40a285299b4f448a8d3eb5d905a2d904918cf7910be55feeda3d21c2edf95bf",
+  "phases_authorized": [
+    "PRE"
+  ],
+  "max_requests": 3,
+  "max_attempts": 9,
+  "max_budget_usd": 0.05,
+  "expiry_utc": "",
+  "retention_location": "",
+  "retention_deletion_rule": "Captures and journal kept privately until the owner decides; deleted or exported on the owner's instruction; hashes and derived results kept in the repository.",
+  "provider_retention_confirmed": "",
+  "credential_environment_variable_name": "JRS_STUDY_ANTHROPIC_KEY",
+  "destination": "https://api.anthropic.com/v1/messages",
+  "stop_rules_approved": false,
+  "owner_signature": "",
+  "signed_at_utc": "",
+  "note": "UNSIGNED DRAFT. Refused as written. The owner fills expiry_utc, retention_location, provider_retention_confirmed, chooses the phases and caps (see the plan's proposed_authorizations), sets stop_rules_approved to true, signs and dates it, and gives it a new authorization_id. A copy of the signed file is kept outside the repository with the captures."
+}

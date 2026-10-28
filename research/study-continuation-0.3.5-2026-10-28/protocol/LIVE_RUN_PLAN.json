@@ -1,0 +1,257 @@
+{
+  "format": "jrs-study-continuation-live-plan/1.0.0",
+  "plan_date": "2026-10-28",
+  "study": "JRS records study continuation: 0.3.5 research candidate (0.3.4 compiler, corrected prompt), live model run, arm L2",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "status": "PROPOSED. Not authorized. Live dispatch is disabled in this build.",
+  "candidate": {
+    "version": "0.3.5-research-candidate",
+    "adopted": false,
+    "manifest_sha256": "9f96dd487fe968b7589124116ce7218f1c010ad8a3a482559212ebbc49020e92",
+    "prompt_path": "research/study-continuation-0.3.5-2026-10-28/candidate/prompt/PROMPT_research-0.3.5-1.txt",
+    "prompt_sha256": "0c76c09cfad66bddbcbafad13e65545116b90cf16a5a88ebcb85f16c614a942f",
+    "prompt_version": "jrs-engine-local-0.3.5-research/prompt-1",
+    "research_profile": "jrs-study-research-profile/1",
+    "compiler_version": "0.3.4-research-candidate (unchanged)",
+    "parent": {
+      "version": "0.3.4-research-candidate",
+      "manifest_sha256": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad",
+      "prompt_sha256": "94429a1404c1c3cc80ce40d3ed41f1211b0473939fc8f07227ff41247ababec2"
+    },
+    "changes": "research/study-continuation-0.3.5-2026-10-28/CHANGES_FROM_0.3.4.md"
+  },
+  "continuation": {
+    "arm": "L2",
+    "parent_run": {
+      "authorization_id": "RUN-LIVE-AUTH-20261028-01",
+      "arm": "L1",
+      "stopped_by": "SR-10",
+      "requests_sent": 69,
+      "results": "research/study-completion-0.3.4-2026-10-28/results/LIVE_RESULTS.json (unchanged)"
+    },
+    "pooling": "Never pooled. L2 is a separate arm with a changed prompt; L1 and L2 are reported side by side, never as one unchanged run.",
+    "old_authorization": "RUN-LIVE-AUTH-20261028-01 does not cover this plan (different study name, candidate, prompt, plan and record set hashes; listed as never valid).",
+    "human_labels": "Not required for technical preparation or execution. Human agreement stays unmeasured until imported labels exist."
+  },
+  "engine_of_record": "0.3.1-candidate (unchanged; this run tests 0.3.5 without adopting it)",
+  "provider": {
+    "destination": "https://api.anthropic.com/v1/messages",
+    "model": "claude-haiku-5-5",
+    "api_version": "2026-10-21",
+    "sender_version": "0.3.5-study-continuation-bound-1",
+    "price_per_mtok": {
+      "input": 0.1,
+      "output": 0.5,
+      "long_prompt_threshold_tokens": 100000
+    },
+    "verification": "protocol/PROVIDER_VERIFICATION.md (official documentation, 2026-10-28)"
+  },
+  "request": {
+    "max_tokens": 4096,
+    "thinking": {
+      "type": "disabled"
+    },
+    "output_config": {
+      "effort": "medium"
+    },
+    "streaming": false,
+    "not_sent": [
+      "temperature",
+      "top_p",
+      "top_k",
+      "fallbacks",
+      "tools",
+      "stop_sequences",
+      "metadata",
+      "assistant prefill"
+    ]
+  },
+  "transport": {
+    "config": {
+      "maxRetries": 2,
+      "baseDelayMs": 1000,
+      "maxDelayMs": 20000,
+      "timeoutMs": 120000
+    },
+    "pacing": {
+      "concurrency": 1,
+      "min_interval_ms": 1000
+    },
+    "retried": [
+      "HTTP 429",
+      "HTTP 500",
+      "HTTP 529",
+      "network error",
+      "timeout"
+    ],
+    "never_retried": [
+      "HTTP 3xx (redirect)",
+      "HTTP 400, 401, 402, 403, 404, 409, 413",
+      "HTTP 504 and any other status",
+      "refusal",
+      "max_tokens",
+      "cancellation"
+    ],
+    "files": {
+      "sender": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/live/sender-bound.mjs",
+        "sha256": "92482f7a4a6034d35bb0eccff30e60bb05033108972c2c17a9241d5bd9678cf8",
+        "note": "dispatch flag line normalized"
+      },
+      "authorization_verifier": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/live/authorization-bound.mjs",
+        "sha256": "69a7d0ec249a260f08f446c6259bfab937dc7ba7c5e705c3561ae3f3cde2eac0"
+      },
+      "runner": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/live/runner.mjs",
+        "sha256": "11e41d98be59e0de78bcc1f70848022570ddbb7060f05e6d1ffc28ab1dbc0540"
+      },
+      "scorer": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/live/score-live-v2.mjs",
+        "sha256": "36ec524512cb1ca0135c86eea08ce3e887f34bb9c6b07d8481c15de942b95059"
+      },
+      "command": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/live/run-live.mjs",
+        "sha256": "846b77f16e41f885dc903c7d192d539dbc6f20e7fa1f03c6a5a41448e33d9413"
+      },
+      "plan_files": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/live/plan-files.mjs",
+        "sha256": "a0c6a5cb4683d48d0a21268923d649bfd4d0d297efd8b5132efc72f127bcc5bf"
+      },
+      "child_inspector": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/live/child-inspector.mjs",
+        "sha256": "053c7018f6309714e2d6998788acaaf4d5ba11d514150665675ac35e9eb5a000"
+      },
+      "inspect_capture": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/live/inspect-capture.mjs",
+        "sha256": "9b0e9520b97491dd44e2d7174448de5338deb1fbd6ff64c2170d959a52ec6c32"
+      },
+      "guard": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/guard.mjs",
+        "sha256": "67b525c35c6016dc8df3c59f76507a80ef06eac89b0ebec720254199cd25416f"
+      },
+      "common": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/common.mjs",
+        "sha256": "de2de0855c6b016e56e0ccbf4bb7946ded99bcc1cc3034aa79cf4281c6894ae9"
+      },
+      "adapter_frozen": {
+        "path": "research/engine-repair-0.3.4-2026-10-27/tools/transport/study-adapter.mjs",
+        "sha256": "5926e94efa326313cedc43f2ce675667584e7b76570c71e11d36797657de2162"
+      },
+      "assembly_frozen": {
+        "path": "research/engine-repair-0.3.4-2026-10-27/tools/transport/prompt-assembly.mjs",
+        "sha256": "510995bbb1ffe31a1cec865aef7526dc3b7ea46915be048bc5981b1bb654f91e"
+      },
+      "compile_row_frozen": {
+        "path": "research/engine-repair-0.3.4-2026-10-27/tools/compile-row-v2.mjs",
+        "sha256": "52e3b0e66c0577f9623be9689d0e2399456536ef5f25faf92f32deaa4008ea65"
+      },
+      "harness_continuation": {
+        "path": "research/study-continuation-0.3.5-2026-10-28/tools/harness/engines.mjs",
+        "sha256": "71b63f22ca44abcdb821354b8e90571909843f0b939a2c515d54de940c655907"
+      },
+      "harness_frozen": {
+        "path": "research/engine-repair-0.3.4-2026-10-27/tools/harness/engines.mjs",
+        "sha256": "bfe4f911f765c189b7c5eab2eaa0d0f64fdf0ca843af6b5560d2dbb95dfb7bcd"
+      }
+    }
+  },
+  "phases": {
+    "PRE": {
+      "requests": 3,
+      "request_ids_sha256": "ce4fec136e5af537ac257c03538f3a24863317d10aa0a67b51694695de05231e",
+      "purpose": "Provider compatibility only: contract adherence, quotation verification, latency and cost on three records. Says nothing about Engine quality.",
+      "typical_usd_estimate": 0.0015,
+      "worst_case_one_attempt_each_usd": 0.0074,
+      "worst_case_bound_usd": 0.0223,
+      "max_input_tokens_upper": 4437,
+      "output_proxy_tokens_max": 787
+    },
+    "RUN": {
+      "requests": 312,
+      "request_ids_sha256": "e72b79b5b6b8f142af1d58a6bbf0c68a05e5c9494edad800e6332f53fab93c95",
+      "purpose": "The study: every eligible record, three repeats, scored against the AI-proposed references and, where recorded, human labels. Repeats measure run-to-run variation.",
+      "typical_usd_estimate": 0.1477,
+      "worst_case_one_attempt_each_usd": 0.7741,
+      "worst_case_bound_usd": 2.3222,
+      "max_input_tokens_upper": 4539,
+      "output_proxy_tokens_max": 787
+    },
+    "TGT": {
+      "requests": 86,
+      "request_ids_sha256": "7a1e95276c3d612bf02897b875ddfb5aff1d422a3d97bc84937cca50b260ca12",
+      "purpose": "The two known weaknesses with a real model: a stated but irrelevant basis (42 UNGROUNDED records) and direct or indirect instructions in the record (22 phrasings, one flawed and one clean base).",
+      "typical_usd_estimate": 0.0402,
+      "worst_case_one_attempt_each_usd": 0.2139,
+      "worst_case_bound_usd": 0.6418,
+      "max_input_tokens_upper": 4537,
+      "output_proxy_tokens_max": 787
+    }
+  },
+  "proposed_authorizations": {
+    "PRE only": {
+      "phases_authorized": [
+        "PRE"
+      ],
+      "max_requests": 3,
+      "max_attempts": 9,
+      "max_budget_usd": 0.05
+    },
+    "PRE, then RUN and TGT if the PRE gate passes": {
+      "phases_authorized": [
+        "PRE",
+        "RUN",
+        "TGT"
+      ],
+      "max_requests": 401,
+      "max_attempts": 450,
+      "max_budget_usd": 1
+    }
+  },
+  "stop_rules": {
+    "SR-01": "the credential variable named in the authorization is absent (found at the gate, before the request is sent)",
+    "SR-02": "the authorization does not verify against the frozen plan (checked before the first request)",
+    "SR-03": "HTTP 400, 401, 402, 403, 404, 409 or 413",
+    "SR-04": "a redirect (never followed)",
+    "SR-05": "HTTP 504 or any other unexpected status",
+    "SR-06": "a network error or timeout that remains after the retries",
+    "SR-07": "three consecutive requests that end on 429, 500 or 529 after their retries, or a retry-after beyond the 20-second window",
+    "SR-08": "a refusal in PRE; the third refusal in RUN or TGT",
+    "SR-09": "a truncated response in PRE; in RUN or TGT, three or more truncations that are also at least 5% of completed requests",
+    "SR-10": "in RUN or TGT, ten or more responses that fail the quote-only contract that are also more than 25% of completed requests",
+    "SR-11": "a guard violation, mechanical-check failure or graph-validation failure when a capture is compiled offline",
+    "SR-12": "the spend cap, request cap or attempt cap is reached",
+    "SR-13": "reported input tokens above the frozen upper estimate",
+    "SR-14": "a response model identifier different from the authorized model",
+    "SR-15": "a capture refused because it contains a credential value or a credential-shaped string",
+    "SR-16": "a request found in an ambiguous state (sent with no outcome) on resume",
+    "SR-17": "cancellation by the operator",
+    "SR-18": "any refusal by the sender gate or the authorization (stops before the request)"
+  },
+  "pre_gate": "All three PRE requests complete with HTTP 200; at least two of the three return a valid quote-only contract that compiles offline with no guard, mechanical or graph-validation failure; no stop rule fires; spend within the PRE cap.",
+  "capture": {
+    "location": "A private directory outside the repository and outside any git working tree, named in the authorization (retention_location). The command refuses any other location.",
+    "format": "One JSON file per request, written once, mode 0600. JOURNAL.jsonl: append-only, hash-chained, each entry written through before the request leaves.",
+    "committed": "Only hashes, counts and derived results. No response text, no request body beyond its hash, no credential.",
+    "provider_side": "Anthropic commercial policy (checked 2026-10-28): inputs and outputs deleted within 30 days by default; flagged content up to 2 years; zero-data-retention agreements override. The account arrangement is NOT ESTABLISHED and is confirmed by the owner in the authorization."
+  },
+  "scoring": {
+    "tool": "research/study-continuation-0.3.5-2026-10-28/tools/live/score-live-v2.mjs",
+    "arm": "L2: the captured response compiled offline by the frozen 0.3.5 continuation candidate (0.3.4 compiler) with the research profile; scorer version 2",
+    "references": "AI-proposed references (agreement, never accuracy); human labels only where recorded, reported separately",
+    "outputs": "research/study-continuation-0.3.5-2026-10-28/results/LIVE_RESULTS.json and generated tables"
+  },
+  "record_set": {
+    "path": "research/study-continuation-0.3.5-2026-10-28/records/LIVE_RECORD_SET.json",
+    "requests_sha256": "c40a285299b4f448a8d3eb5d905a2d904918cf7910be55feeda3d21c2edf95bf",
+    "targeted_texts_sha256": "d1c015e667e3f8a14dd2085f1f7a2b8e6112556a75b8c56425c58dbe2b0f3d20",
+    "by_phase": {
+      "PRE": 3,
+      "RUN": 312,
+      "TGT": 86
+    }
+  },
+  "plan_sha256": "5273c4db76f901d4f8fd6f0cbce359e532059579d33cbe55c479a0591201848d"
+}
