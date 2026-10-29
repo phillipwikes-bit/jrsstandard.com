@@ -1,6 +1,6 @@
 # Shared Engine Handoff
 
-Updated: 2026-10-28 (Claude Code run session `session_01GpJJWjNFRHDLvDBadw8Rxn`, publishing the 0.3.5 and 0.3.6 research checkpoints)
+Updated: 2026-10-29 00:51 UTC (Claude Code, session `session_01C2VvunVHW3n8JJeZKqdXSV`: independent verification of the 0.3.5 and 0.3.6 publication)
 Repository: phillipwikes-bit/jrsstandard.com (verified **public** on 2026-10-28)
 Shared working branch: `claude/study-completion-0.3.4-local`
 
@@ -23,10 +23,10 @@ This file merges both. That branch name is retired, so use the shared working br
 | Item | Value |
 |---|---|
 | Engine of record | `0.3.1-candidate`, `lib/engine-evidence-graph-v0.3.1-candidate/`. Unchanged. |
-| Latest candidate on GitHub | `0.3.4-research-candidate`, `research/engine-repair-0.3.4-2026-10-27/candidate/`; manifest SHA-256 `b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad`. Frozen. |
+| Previous published candidate (parent of 0.3.5) | `0.3.4-research-candidate`, `research/engine-repair-0.3.4-2026-10-27/candidate/`; manifest SHA-256 `b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad`. Frozen. |
 | Latest candidates (published here as **non-adopted research checkpoints**) | `0.3.5-research-candidate`, `research/study-continuation-0.3.5-2026-10-28/`, candidate manifest SHA-256 `9f96dd487fe968b7589124116ce7218f1c010ad8a3a482559212ebbc49020e92` (prompt fix; live run L2 finished). `0.3.6-research-candidate`, `research/irrelevant-basis-0.3.6-2026-10-28/`, candidate manifest SHA-256 `99e0cae827f3fb64c5e6f5d6b411be8dee92b9ed45a2121e289af51548cd780c`: a **partial safeguard, not a repair** (owner classification). |
-| Repair in progress | Expanded irrelevant-evidence repair (owner instruction, 2026-10-28), started offline in run session `session_01GpJJWjNFRHDLvDBadw8Rxn`. Not yet published. |
-| Release status | `NO_GO_NOT_VERIFIED`. B-018 OPEN. No candidate adopted. Live dispatch off. No provider requests authorized. |
+| Repair in progress | Expanded irrelevant-evidence repair (owner instruction, 2026-10-28), started offline in run session `session_01GpJJWjNFRHDLvDBadw8Rxn` at 21:52 UTC. That session hit its usage limit at 21:54 UTC, after read-only exploration; nothing for it is committed or published. |
+| Release status | `NO_GO_NOT_VERIFIED`. B-018 OPEN. B-019 OPEN (credentials pasted into chat, to be revoked by the owner). No candidate adopted. Live dispatch off. No provider requests authorized. |
 
 ## Verified shared source at setup (ChatGPT/Codex, `b11a487a`)
 
@@ -36,6 +36,8 @@ This file merges both. That branch name is retired, so use the shared working br
 - Candidate manifest SHA-256: `b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad`
 
 The owner reports a later local 0.3.5 continuation and results. Those files are not in the shared commit, so do not mistake the published 0.3.4 source for the latest candidate. The assistant holding that checkout must reconcile this branch without discarding local changes, publish the authorized source checkpoint, and update this file.
+
+**Resolved (2026-10-28 21:51 UTC):** the run session published the 0.3.5 continuation and 0.3.6 in `626b2f9c`, after merging this branch.
 
 ## Where things are
 
@@ -48,7 +50,9 @@ The owner reports a later local 0.3.5 continuation and results. Those files are 
   - `0.3.6-research-candidate`: `research/irrelevant-basis-0.3.6-2026-10-28/candidate/` (partial safeguard; investigation, 42-pair comparison, tests and cost report in the same package).
 - **Studies:**
   - `research/study-156-2026-10-27/`: the 0.3.3 offline study.
-  - `research/study-completion-0.3.4-2026-10-28/`: the offline completion, and the tooling for the first live run (L1).
+  - `research/study-completion-0.3.4-2026-10-28/`: the offline completion, the tooling for the first live run (L1), and its results and failure diagnosis.
+  - `research/study-continuation-0.3.5-2026-10-28/`: the 0.3.5 continuation and the second live run (L2).
+  - `research/irrelevant-basis-0.3.6-2026-10-28/`: the irrelevant-basis investigation and the 0.3.6 partial safeguard.
 - **Records of state:** `research/MASTER_TRACKER.md`, `research/IP_SALE_TRACKER.md`, `.jrs/state/BLOCKERS.json`.
 
 ## Current task
@@ -58,11 +62,11 @@ Investigate and repair the irrelevant-evidence weakness on the actual latest can
 - Human review is paused by owner direction while the repair is assessed.
 - Do not treat a universal INDETERMINATE result as a completed relevance repair.
 
-The work is under way in run session `session_01GpJJWjNFRHDLvDBadw8Rxn`, which holds the 0.3.5 package and the private captures.
+The investigation's first stage is published as 0.3.6 (a partial safeguard, not a repair). The expanded repair belongs to run session `session_01GpJJWjNFRHDLvDBadw8Rxn`, which holds the private captures; see the status table for where it stopped.
 
 Engine of record remains `0.3.1-candidate`; B-018 stays open; `NO_GO_NOT_VERIFIED` remains in effect. Verify current tracker evidence before changing these statuses. Frozen candidates and original results are preserved.
 
-## Known defects (open)
+## Known defects
 
 All agreement figures below are against AI-proposed references, not human labels, so they are not accuracy.
 
@@ -81,21 +85,22 @@ All agreement figures below are against AI-proposed references, not human labels
 
 ## Engine test commands
 
-No provider calls. Run with `ANTHROPIC_BASE_URL` unset. Do not regenerate or overwrite frozen outputs to make checks pass. No single command covers the unpublished 0.3.5 candidate; its package README gives its commands once it is published.
+No provider calls. Run with `ANTHROPIC_BASE_URL` unset. Do not regenerate or overwrite frozen outputs to make checks pass. Each research package's README gives its own commands. The pipelines below rewrite their packages' outputs, so run them in a separate clone, never in a working tree you will commit from; the 0.3.4 completion pipeline also requires a single worktree.
 
-| Command (from the repository root unless noted) | Result at the 2026-10-28 21:15 UTC checkpoint (`87186653`) |
+| Command (from the repository root unless noted) | Latest recorded result |
 |---|---|
-| `node tests/engine/auth-matrix.mjs` | pass, 10 of 10 |
-| `node scripts/test_review_incomplete.mjs` | pass |
-| `node tests/public-route-alignment.mjs` | pass, 17 of 17 |
-| `git diff --check` | clean |
-| `python3 scripts/check_zero_drift.py --offline` | 160 checks, 36 failed, 2 skipped. The 36 failures predate this work; exit 1 because of them. |
-| `node tools/verify-seal.mjs` (run in `research/engine-repair-0.3.4-2026-10-27/`) | 0.3.4 freeze seal ok: 1,083 files, 5 pins |
-| `bash research/study-completion-0.3.4-2026-10-28/tools/run-all.sh <scratch>` | all steps passed at `2f4ec69`; not re-run at this checkpoint |
-| `node tools/freeze-continuation.mjs` (in `research/study-continuation-0.3.5-2026-10-28/`) | 17 of 17 checks; freeze `d5533a07…`, plan `5273c4db…` (this checkpoint) |
-| `bash tools/run-all.sh <scratch> [<private L1 run dir>]` (in `research/study-continuation-0.3.5-2026-10-28/`) | all steps passed at `cc40006` (machinery 42/42, rehearsal 9/9, mutation 26/26, corrections 16/16) |
-| `node tools/test-repair.mjs <scratch>` (in `research/irrelevant-basis-0.3.6-2026-10-28/`) | 12 of 12 as expected; 8 of 8 mutants killed; exit-code self-check 1/0 (this checkpoint) |
-| `bash tools/run-all.sh <scratch> <private L2 run dir>` (in `research/irrelevant-basis-0.3.6-2026-10-28/`) | all steps passed at `58eaa46`; needs the private captures, so other assistants can run only `test-repair.mjs` |
+| `node tests/engine/auth-matrix.mjs` | pass, 10 of 10 (`626b2f9c`) |
+| `node scripts/test_review_incomplete.mjs` | pass (`626b2f9c`) |
+| `node tests/public-route-alignment.mjs` | pass, 17 of 17 (`626b2f9c`) |
+| `git diff --check` | clean over `0fcf0426..626b2f9c` |
+| `python3 scripts/check_zero_drift.py --offline` | 160 checks, 36 failed, 2 skipped, at this checkpoint: the same 36 failing checks, by name, as before this work. At `626b2f9c` on 2026-10-29 it showed 37, because "Master Tracker written to today" fails until the tracker has an entry dated that day. Exit 1 because of the 36. |
+| `node tools/verify-seal.mjs` (run in `research/engine-repair-0.3.4-2026-10-27/`) | 0.3.4 freeze seal ok: 1,083 files, 5 pins (`626b2f9c`) |
+| `bash research/study-completion-0.3.4-2026-10-28/tools/run-all.sh <scratch>` | all steps passed at `626b2f9c`, in a separate clone: verification summary 15 of 15, live mutants 26 of 26, import tests 16 of 16. Only environment-recorded files differ: the state record, abbreviated hashes in `protocol/SENDER_BOUND.diff`, and the package manifest. |
+| `node tools/freeze-continuation.mjs` (in `research/study-continuation-0.3.5-2026-10-28/`) | 17 of 17 checks; freeze `d5533a07…`, plan `5273c4db…` (run session). Re-run at `626b2f9c` without the L1 captures: 17 of 17; the freeze hash differs only because the correction tests are 15 without the captures. |
+| `bash tools/run-all.sh <scratch> [<private L1 run dir>]` (in `research/study-continuation-0.3.5-2026-10-28/`) | all steps passed at `cc40006` (machinery 42/42, rehearsal 9/9, mutation 26/26, corrections 16/16; run session). Re-run at `626b2f9c` without the private L1 captures: all steps passed, corrections 15 of 15 (the 16th needs the captures), every other output byte-identical. |
+| `node tools/test-repair.mjs <scratch>` (in `research/irrelevant-basis-0.3.6-2026-10-28/`) | 12 of 12 as expected; 8 of 8 mutants killed; exit-code self-check 1/0 (run session; the same at `626b2f9c`) |
+| `node tools/run-frozen-suites.mjs <scratch>` (in `research/irrelevant-basis-0.3.6-2026-10-28/`) | at `626b2f9c`: regression probes 77 of 77 on 0.3.5 and 76 of 77 on 0.3.6 (RG-23 fails by design); paired, injection, wording and controls suites pass on both; outputs byte-identical to the published ones |
+| `bash tools/run-all.sh <scratch> <private L2 run dir>` (in `research/irrelevant-basis-0.3.6-2026-10-28/`) | all steps passed at `58eaa46` (run session). It needs the private L2 captures, so other assistants can run only `test-repair.mjs` and `run-frozen-suites.mjs`. |
 
 ## Shared checkpoint procedure
 
@@ -136,11 +141,19 @@ This workflow does not authorize dispatch, live inference, merge to `main`, depl
 
 ## Next action
 
-- **Run session:** carry out the expanded irrelevant-evidence repair offline (reserved challenge set before tuning; relevance-specific support; mutation tests); publish it as its own checkpoint once verified.
+- **Run session:** carry out the expanded irrelevant-evidence repair offline (reserved challenge set before tuning; relevance-specific support; mutation tests); publish it as its own checkpoint once verified. It stopped at its usage limit at 21:54 UTC on 2026-10-28; the limit reset at 00:30 UTC on 2026-10-29.
 - **ChatGPT/Codex:** fetch this branch and read this file. The 0.3.5 and 0.3.6 sources are now here.
-- **Owner:** blinded human review stays paused by owner direction while the repair is assessed.
+- **Owner:** blinded human review stays paused by owner direction while the repair is assessed. Revoke the credentials pasted into chat (B-019).
 
 ## Latest completed checkpoint
+
+- **Author:** Claude Code (session `session_01C2VvunVHW3n8JJeZKqdXSV`).
+- **Change:** independent verification of the publication below, from the published commits; a publication review (`.jrs/reports/PUBLICATION_REVIEW_2026-10-28_ENGINE_0.3.5_0.3.6.md`); IP sale tracker revision 44; a tracker entry; and this file (status, locations, test results, log). No engine, package or result file changed.
+- **Verification:** every published commit, patch and message was checked against the owner's exclusions with no finding. The configured key's value occurs 0 times, checked without displaying it. The authorization file is an unsigned template, and the review forms are blank. Dispatch is false in all 8 senders. The frozen packages and the engine of record are unchanged. The pipelines re-run as shown in the test table.
+- **Engine behavior changed:** none.
+- **Next action:** see above.
+
+## Previous checkpoint (run session, `626b2f9c`)
 
 - **Author:** Claude Code (run session `session_01GpJJWjNFRHDLvDBadw8Rxn`).
 - **Change:** published the 0.3.4 completion live-run records (L1), the 0.3.5 continuation (candidate, live tooling, scorer v2, plan, L2 results) and the 0.3.6 partial safeguard with its investigation, as non-adopted research checkpoints; merged shared head `0fcf042` first (tracker kept both sides; this file, `AGENTS.md` and `CLAUDE.md` from origin).
@@ -157,6 +170,8 @@ This workflow does not authorize dispatch, live inference, merge to `main`, depl
 | 2026-10-28 21:11 | Claude Code | Local handoff draft on `engine/shared-working` | `4f63c1de`, published as part of the history of `87186653` |
 | 2026-10-28 21:15 | Claude Code | Reconciled the two handoff drafts; published local records (tracker entries, B-019 updates, correction C-11 to the live-run key instructions) | `87186653` |
 | 2026-10-28 21:21 | Claude Code | Corrected checkpoint times | `3583fe3a` |
-| 2026-10-28 | Claude Code (run session) | Published 0.3.5 and 0.3.6 as non-adopted research checkpoints (0.3.6: partial safeguard) | the commit carrying this file |
+| 2026-10-28 21:33 to 21:41 | Claude Code | Tracker-only entries: the owner's publication instructions and the run session's report | `331307a2` to `0fcf0426` |
+| 2026-10-28 21:51 | Claude Code (run session) | Published 0.3.5 and 0.3.6 as non-adopted research checkpoints (0.3.6: partial safeguard), after merging the shared branch in `10e1f5cf` | `626b2f9c` |
+| 2026-10-29 00:51 | Claude Code | Independent verification, publication review, IP sale tracker revision 44, tracker, this file | the commit carrying this file |
 
 **Correction (2026-10-28 21:21 UTC).** The `87186653` version of this file gave 21:25 for the reconciliation and 21:10 for the local draft, and called the draft unpublished. The commit timestamps are 21:15:39 and 21:11:36 UTC, and the draft commit is in the published history. The times had been estimated instead of read from the record.
