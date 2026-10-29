@@ -1,0 +1,960 @@
+{
+  "format": "jrs-study-completion-failure-diagnosis/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "run": "RUN-LIVE-AUTH-20261028-01",
+  "date": "2026-10-28",
+  "network_attempts": 0,
+  "statement": "Derived fields only; no record, quotation or response text. The original results stay as recorded. The sensitivity replay is not a result of the run.",
+  "causes": {
+    "C1_unstated_identifier_length_limit": {
+      "category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "explanation": "The validator (response.mjs) accepts an observation_id only if it matches ^[A-Za-z0-9_-]{1,24}$. The frozen prompt (Q2) asks only for an identifier that is \"short and unique\" and states no length or character limit. The model wrote descriptive identifiers of 25 to 35 characters, with no duplicate and no invalid character. The whole response is then refused, including quotations that resolve in the record."
+    },
+    "C2_model_noncompliance_condition_id": {
+      "category": "model_noncompliance",
+      "explanation": "The prompt (Q3) lists the five condition identifiers explicitly. The response used one that is not on the list. The validator refuses the whole response."
+    },
+    "UNRESOLVED": {
+      "category": "unresolved",
+      "explanation": "The trace does not establish the cause."
+    }
+  },
+  "by_cause": {
+    "C1_unstated_identifier_length_limit": 16,
+    "C2_model_noncompliance_condition_id": 1
+  },
+  "identifier_lengths": {
+    "failing_responses_max": 35,
+    "compiled_responses_max": 24,
+    "compiled_responses_with_identifier_over_24": 0
+  },
+  "prompt_q2": "Q2. Each observation has exactly these keys: \"observation_id\" (short and unique), \"condition_id\", \"proposed_status\", \"quote\", \"assertion_type\", and optionally \"disambiguator\" and \"note\". Do not supply offsets, positions, sections, locations, evidence status, graph links, or final status. A response containing any of these is rejected.",
+  "validator_rule": "observation_id must match ^[A-Za-z0-9_-]{1,24}$ and be unique (response.mjs)",
+  "sensitivity_summary": {
+    "replayed": 16,
+    "outcome": {
+      "INDETERMINATE_on_grounded": 11,
+      "FLAG_on_ungrounded": 4,
+      "FLAG_on_grounded": 1
+    },
+    "label": "SENSITIVITY ONLY; descriptive; agreement with AI-proposed references is not accuracy"
+  },
+  "failures": [
+    {
+      "request_id": "RUN-r1-S-002",
+      "record_id": "S-002",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 6,
+        "quotations": 6,
+        "observation_id_lengths": [
+          16,
+          20,
+          25,
+          24,
+          21,
+          26
+        ],
+        "observation_ids_over_24": 2,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 6,
+        "quote_status_counts": {
+          "verified_unique": 6
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-005",
+      "record_id": "S-005",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 9,
+        "quotations": 9,
+        "observation_id_lengths": [
+          17,
+          11,
+          16,
+          17,
+          13,
+          25,
+          25,
+          21,
+          24
+        ],
+        "observation_ids_over_24": 2,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 9,
+        "quote_status_counts": {
+          "verified_unique": 9
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-006",
+      "record_id": "S-006",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "UNGROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 6,
+        "quotations": 6,
+        "observation_id_lengths": [
+          19,
+          13,
+          30,
+          18,
+          17,
+          19
+        ],
+        "observation_ids_over_24": 1,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "FLAG",
+        "disposition": "substantive_mock",
+        "quotations": 6,
+        "quote_status_counts": {
+          "verified_unique": 6
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-018",
+      "record_id": "S-018",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": true,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 9,
+        "quotations": 9,
+        "observation_id_lengths": [
+          19,
+          25,
+          17,
+          25,
+          28,
+          20,
+          21,
+          21,
+          28
+        ],
+        "observation_ids_over_24": 4,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 9,
+        "quote_status_counts": {
+          "verified_unique": 9
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-019",
+      "record_id": "S-019",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 7,
+        "quotations": 7,
+        "observation_id_lengths": [
+          19,
+          20,
+          21,
+          25,
+          14,
+          21,
+          25
+        ],
+        "observation_ids_over_24": 2,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 7,
+        "quote_status_counts": {
+          "verified_unique": 7
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-022",
+      "record_id": "S-022",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 5,
+        "quotations": 5,
+        "observation_id_lengths": [
+          20,
+          19,
+          19,
+          21,
+          30
+        ],
+        "observation_ids_over_24": 1,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 5,
+        "quote_status_counts": {
+          "verified_unique": 5
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-032",
+      "record_id": "S-032",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": true,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 7,
+        "quotations": 7,
+        "observation_id_lengths": [
+          23,
+          29,
+          26,
+          18,
+          13,
+          21,
+          28
+        ],
+        "observation_ids_over_24": 3,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 7,
+        "quote_status_counts": {
+          "verified_unique": 7
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-036",
+      "record_id": "S-036",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "UNGROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": true,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 7,
+        "quotations": 7,
+        "observation_id_lengths": [
+          18,
+          15,
+          18,
+          30,
+          24,
+          16,
+          28
+        ],
+        "observation_ids_over_24": 2,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "FLAG",
+        "disposition": "substantive_mock",
+        "quotations": 7,
+        "quote_status_counts": {
+          "verified_unique": 7
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-037",
+      "record_id": "S-037",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 8,
+        "quotations": 8,
+        "observation_id_lengths": [
+          25,
+          20,
+          19,
+          17,
+          23,
+          28,
+          22,
+          23
+        ],
+        "observation_ids_over_24": 2,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "FLAG",
+        "disposition": "substantive_mock",
+        "quotations": 8,
+        "quote_status_counts": {
+          "verified_unique": 8
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-041",
+      "record_id": "S-041",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 6,
+        "quotations": 6,
+        "observation_id_lengths": [
+          34,
+          29,
+          24,
+          24,
+          29,
+          35
+        ],
+        "observation_ids_over_24": 4,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 6,
+        "quote_status_counts": {
+          "verified_unique": 6
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-042",
+      "record_id": "S-042",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 7,
+        "quotations": 7,
+        "observation_id_lengths": [
+          15,
+          12,
+          18,
+          22,
+          25,
+          25,
+          18
+        ],
+        "observation_ids_over_24": 2,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 7,
+        "quote_status_counts": {
+          "verified_unique": 6,
+          "malformed": 1
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-050",
+      "record_id": "S-050",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "UNGROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 6,
+        "quotations": 6,
+        "observation_id_lengths": [
+          20,
+          12,
+          13,
+          23,
+          26,
+          27
+        ],
+        "observation_ids_over_24": 2,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "FLAG",
+        "disposition": "substantive_mock",
+        "quotations": 6,
+        "quote_status_counts": {
+          "verified_unique": 6
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-051",
+      "record_id": "S-051",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 8,
+        "quotations": 8,
+        "observation_id_lengths": [
+          9,
+          14,
+          19,
+          17,
+          10,
+          15,
+          17,
+          27
+        ],
+        "observation_ids_over_24": 1,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 8,
+        "quote_status_counts": {
+          "verified_unique": 8
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-056",
+      "record_id": "S-056",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "UNGROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": true,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 6,
+        "quotations": 6,
+        "observation_id_lengths": [
+          16,
+          17,
+          15,
+          26,
+          35,
+          26
+        ],
+        "observation_ids_over_24": 3,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "FLAG",
+        "disposition": "substantive_mock",
+        "quotations": 6,
+        "quote_status_counts": {
+          "verified_unique": 6
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-057",
+      "record_id": "S-057",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": true,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 7,
+        "quotations": 7,
+        "observation_id_lengths": [
+          18,
+          21,
+          16,
+          24,
+          27,
+          12,
+          22
+        ],
+        "observation_ids_over_24": 1,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 7,
+        "quote_status_counts": {
+          "verified_unique": 7
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-061",
+      "record_id": "S-061",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "unrecognised_condition_id",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 7,
+        "quotations": 7,
+        "observation_id_lengths": [
+          8,
+          17,
+          16,
+          16,
+          16,
+          15,
+          22
+        ],
+        "observation_ids_over_24": 0,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": [
+          "identifiable_authority"
+        ]
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C2_model_noncompliance_condition_id",
+      "cause_category": "model_noncompliance",
+      "sensitivity_identifiers_renamed": {
+        "label": "not applicable: renaming identifiers would not address this failure, and dropping or repairing an observation would change evidence",
+        "stage": null
+      }
+    },
+    {
+      "request_id": "RUN-r1-S-062",
+      "record_id": "S-062",
+      "phase": "RUN",
+      "repeat": 1,
+      "reference_ai_proposed": "GROUNDED",
+      "trace": {
+        "http_status": 200,
+        "stop_reason": "end_turn",
+        "text_blocks": 1,
+        "adapter": "ok",
+        "strict_parser": "ok",
+        "fence_removed": false,
+        "validator": "observation_id_invalid_or_duplicate",
+        "prompt_version_returned": "jrs-engine-local-0.3.4-research/prompt-1",
+        "observations": 8,
+        "quotations": 8,
+        "observation_id_lengths": [
+          21,
+          25,
+          15,
+          27,
+          20,
+          14,
+          12,
+          23
+        ],
+        "observation_ids_over_24": 2,
+        "observation_ids_bad_characters": 0,
+        "observation_ids_duplicated": 0,
+        "unrecognised_condition_ids": []
+      },
+      "original_classification": "contract_failure",
+      "reproduced_by_frozen_compiler": true,
+      "cause": "C1_unstated_identifier_length_limit",
+      "cause_category": "conflicting_or_underspecified_instructions (prompt and validator disagree); the model output is the proximate trigger",
+      "sensitivity_identifiers_renamed": {
+        "label": "SENSITIVITY ONLY: identifiers renamed o1..oN; not a result of the run and not a reclassification",
+        "stage": "compiled",
+        "e1": "INDETERMINATE",
+        "disposition": "substantive_mock",
+        "quotations": 8,
+        "quote_status_counts": {
+          "verified_unique": 8
+        },
+        "guards": 0,
+        "mechanical": 0
+      }
+    }
+  ],
+  "inputs_sha256": {
+    "journal": "c102199d36395339296a898422b174c3b8d63a4a49ab0edbeac14e29a5e5cb22",
+    "captures": "858b445446a603e55d833a04fb1540f0388c00f7cd0f2d256fb46fe9f53ab30c",
+    "results": "6d55ef2efe6272022b16aae9ecbe4d8cfc604612b27079ecf9e61bc2eb940daa",
+    "candidate_manifest": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad",
+    "prompt": "94429a1404c1c3cc80ce40d3ed41f1211b0473939fc8f07227ff41247ababec2"
+  },
+  "checks": [
+    {
+      "id": "prompt_sha256_is_the_authorized_prompt",
+      "ok": true,
+      "detail": "94429a1404c1c3cc80ce40d3ed41f1211b0473939fc8f07227ff41247ababec2"
+    },
+    {
+      "id": "candidate_manifest_is_the_authorized_candidate",
+      "ok": true,
+      "detail": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad"
+    },
+    {
+      "id": "prompt_q2_states_no_identifier_length_or_character_limit",
+      "ok": true,
+      "detail": "Q2. Each observation has exactly these keys: \"observation_id\" (short and unique), \"condition_id\", \"proposed_status\", \"qu"
+    },
+    {
+      "id": "journal_hash_chain_valid",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "seventeen_contract_failures_in_results",
+      "ok": true,
+      "detail": 17
+    },
+    {
+      "id": "every_failure_reproduced_by_frozen_compiler",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "every_failure_transport_ok",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "status_counts_cover_every_observation:PRE",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "not_assessed_equals_observations_without_quotation:PRE",
+      "ok": true,
+      "detail": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "original_total_equals_quotations_minus_fenced:PRE",
+      "ok": true,
+      "detail": [
+        12,
+        17,
+        5
+      ]
+    },
+    {
+      "id": "status_counts_cover_every_observation:RUN",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "not_assessed_equals_observations_without_quotation:RUN",
+      "ok": true,
+      "detail": [
+        5,
+        5
+      ]
+    },
+    {
+      "id": "original_total_equals_quotations_minus_fenced:RUN",
+      "ok": true,
+      "detail": [
+        289,
+        301,
+        12
+      ]
+    },
+    {
+      "id": "originals_unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "no_network_attempts",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "id": "capture_hashes_match_journal",
+      "ok": true,
+      "detail": 69
+    }
+  ]
+}

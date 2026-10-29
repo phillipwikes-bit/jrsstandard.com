@@ -1,0 +1,89 @@
+{
+  "results_format": "jrs-study-completion-enable-rehearsal/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "network_attempts": 0,
+  "statement": "Offline rehearsal of the enabling step in a mirror; mock responses marked MOCK; the network guard was installed in every child before the mock fetch; a test sentinel stood in for the credential. out/ and results/ are fresh folders in the mirror; ER-09 checks that the repository results/ is unchanged.",
+  "totals": {
+    "rehearsals": 9,
+    "passed": 9
+  },
+  "results": [
+    {
+      "id": "ER-01",
+      "name": "flag flipped in a mirror: the real command runs PRE end to end on mock responses and the PRE gate passes",
+      "ok": true,
+      "observed": {
+        "status": 0,
+        "stopped": null,
+        "captures": 3,
+        "leaked": 0,
+        "stderr": ""
+      }
+    },
+    {
+      "id": "ER-02",
+      "name": "the scorer scores the rehearsal run only as MOCK and refuses to score it as real",
+      "ok": true,
+      "observed": "MOCK scored 401 planned requests; {\"PRE\":\"3 compiled of 3\",\"RUN\":\"0 compiled of 312\",\"TGT\":\"0 compiled of 86\"}; network attempts 0"
+    },
+    {
+      "id": "ER-03",
+      "name": "running the same authorization again resends nothing (every request already complete)",
+      "ok": true,
+      "observed": {
+        "completed": 0,
+        "refusals": 0,
+        "truncations": 0,
+        "contractFailures": 0,
+        "consecutiveTransient": 0,
+        "skippedDone": 3,
+        "sent": 0,
+        "contractOk": 0
+      }
+    },
+    {
+      "id": "ER-04",
+      "name": "any change to the sender besides the flag line stops the command before any request",
+      "ok": true,
+      "observed": "stopped before any request: file differs from the plan: sender research/study-completion-0.3.4-2026-10-28/tools/live/sender-bound.mjs\n"
+    },
+    {
+      "id": "ER-05",
+      "name": "an authorization file inside the repository is refused",
+      "ok": true,
+      "observed": "stopped before any request: the authorization must be a file outside the repository\n"
+    },
+    {
+      "id": "ER-06",
+      "name": "a run directory inside the repository is refused",
+      "ok": true,
+      "observed": "stopped before any request: capture_location_inside_repository\n"
+    },
+    {
+      "id": "ER-07",
+      "name": "the command refuses to start while ANTHROPIC_BASE_URL is set",
+      "ok": true,
+      "observed": "stopped before any request: ANTHROPIC_BASE_URL is set; unset it (the sender never uses it, and the run refuses to start beside it)\n"
+    },
+    {
+      "id": "ER-08",
+      "name": "the repository command, unflipped, refuses (exit 4)",
+      "ok": true,
+      "observed": 4
+    },
+    {
+      "id": "ER-09",
+      "name": "a failed rehearsal run scored as real writes only inside the mirror; the repository results/ is unchanged (C-10)",
+      "ok": true,
+      "observed": {
+        "stopped": "SR-06:network_error",
+        "score_exit": 0,
+        "written_in_mirror": true,
+        "repository_results_changed": false,
+        "output_sha256": "ccb8e5b80433962d9360ad822d3e5637fffb5c93ea10aaac83b964a0f00b9419"
+      }
+    }
+  ]
+}

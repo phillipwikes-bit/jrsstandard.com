@@ -1,0 +1,115 @@
+{
+  "format": "jrs-study-completion-check-results/1.0.0",
+  "network_attempts": 0,
+  "statement": "Each frozen output checked against an explicit expectation; totals checked against rows. Offline; nothing frozen was modified.",
+  "rows": [
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/regression-probes-v2-0.3.4-research-candidate/RESULTS.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/regression-probes-v2-0.3.3-research-candidate/RESULTS.json",
+      "list": null,
+      "note": "0.3.3 reference run: Part 1 passes; 37 of 45 repair probes show the original behaviour",
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/study-suites-0.3.4-research-candidate/RESULTS.json",
+      "list": "research_probes_1_0",
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/study-suites-0.3.4-research-candidate/RESULTS.json",
+      "list": "regression_probes_1_0",
+      "note": "RG-23: stored mock carries the 0.3.3 prompt label, which 0.3.4 rejects (TC-03); see RECONCILIATION",
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/study-suites-0.3.4-research-candidate/RESULTS.json",
+      "list": "feature_probes_1_0",
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/recovery-v2/RESULTS.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/transport/RESULTS.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/study-156-2026-10-27/out/regression-probes/RESULTS.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/study-156-2026-10-27/out/research-probes/RESULTS.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/study-156-2026-10-27/out/feature-probes/0.3.1-candidate.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/study-156-2026-10-27/out/feature-probes/0.3.2-candidate.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/study-156-2026-10-27/out/feature-probes/0.3.3-research-candidate.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/study-156-2026-10-27/out/transport/RESULTS.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/differential-0.3.4-research-candidate/DIFFERENTIAL_DEFAULT_PATH.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/differential-0.3.3-research-candidate/DIFFERENTIAL_DEFAULT_PATH.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/mutations-v2/RESULTS.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/variant-spec-v2-check/RESULTS.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    },
+    {
+      "file": "research/engine-repair-0.3.4-2026-10-27/out/compile-row-v2-check/RESULTS.json",
+      "list": null,
+      "note": null,
+      "problems": []
+    }
+  ]
+}

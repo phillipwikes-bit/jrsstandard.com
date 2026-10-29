@@ -1,0 +1,147 @@
+{
+  "format": "jrs-study-completion-review-batches/1.0.0",
+  "form_version": "S156-COMPLETION-REVIEW-1.1",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "network_attempts": 0,
+  "statement": "Part 1 of the human reference (44 records), four batches of 11. Built from the frozen blind key and record texts; nothing filled in; no Engine output or AI label included.",
+  "batches": [
+    {
+      "batch": "BATCH_01",
+      "blind_ids": [
+        "B-001",
+        "B-002",
+        "B-003",
+        "B-004",
+        "B-005",
+        "B-006",
+        "B-007",
+        "B-008",
+        "B-009",
+        "B-010",
+        "B-011"
+      ],
+      "text_sha256": {
+        "B-001": "5fcbb9fb589a0fafbb317800cc47a21abef75739564c13f66ca1f6062b58f9ab",
+        "B-002": "c706e4375821f3ffd58b8db37ab33510d87c47cf4db4a83ae27236de028d8093",
+        "B-003": "73f61d9bbc9d8102ff1dd8aeae3325152a810c0fddd04f66208719108b3f845b",
+        "B-004": "c446b3a01cf4271c69af1efbf7885de0ba67b6ae72b552c70ae57d30dace3f01",
+        "B-005": "d928ba424d1afddc7e9d4fa39c4cecaaf2c67dd21514264c7989dfc590230b71",
+        "B-006": "15b16ef800ed11c2b8a8ff2d22228c0c3872723c3c1e988ba43778d5eddfa8ec",
+        "B-007": "88538baf4d2504158d641eb05f6f7de05561156ad8eed8d44731648e75357c98",
+        "B-008": "5b91947f43960e8b44e2773fc5feb57041f3539a9636a353e967c4cac0c89e6f",
+        "B-009": "b00c71b1733776534daf53d24dfa0a477a97e0802b95743047ed27dad7d5c9fb",
+        "B-010": "04491f5c45724d53aecc197989eb6fe6100ee261d349be6d92577a94fdd3294f",
+        "B-011": "25302b7c7b7b33ed9df5a281dbbf8f9abe6cf795c3418b7821fe026729911269"
+      },
+      "file_sha256": {
+        "html": "8a5f47e1bb88da5fb8413ad33d19ae2bd0fe84d1911bbf91227ca34188108124",
+        "csv": "dea4ec4ecfe3c488522927780c497d7cda303e3344317fb1ea6cc5cbf105c507",
+        "md": "1a64ffffe7406afbeebaa825c2891abe0a7aa2832999e1e8980569b8c0051678"
+      }
+    },
+    {
+      "batch": "BATCH_02",
+      "blind_ids": [
+        "B-012",
+        "B-013",
+        "B-014",
+        "B-015",
+        "B-016",
+        "B-017",
+        "B-018",
+        "B-019",
+        "B-020",
+        "B-021",
+        "B-022"
+      ],
+      "text_sha256": {
+        "B-012": "977aab60e800a960536a36607aa9d2331918e3c3db9d9debce6eb5ffd2144cd2",
+        "B-013": "b88e8d0c32f4c50ccf7079696e58a68159e22c7a974167410f5a62fbce129199",
+        "B-014": "55d6ae55196d79ee362c0767a0ccb71737a411ea916a850d3414fc673243bfdf",
+        "B-015": "c038973f769b32d4bc9f82a1d525ea8a456953fd9a6b6a1aec547ef2e3f36e0d",
+        "B-016": "2ce507ea4427b15e989328c7fdeeed3c07e2f2436e34db5d4b775503582a15c4",
+        "B-017": "4d94bb828f85cf90e7225737756fd9c080ede44b3510ee35544fba16d4604601",
+        "B-018": "cdc2fa3c4ef7b8df2fdd9fe6292b4c9fe665ffd8249b45c3e70e03099660d334",
+        "B-019": "e37ed3d2b46011202f3a9c67e533f1b018dc70f29644cc5f558a2d84926df6e3",
+        "B-020": "1b397c455094e6493a9ccd0447eed1374e451c6607796b59e03ce4d48f9c2e1a",
+        "B-021": "de994dc9157fe75de7a6fd14290a25ee9efc94ec6290ae30764a00774b52aa68",
+        "B-022": "1adf17e13a7c8eca08c64e73063f8f7b6aacbf753677751aeee055cfdc5d3031"
+      },
+      "file_sha256": {
+        "html": "c9a028909c1cf3ae93f8a022cf78ce26e3aa5727429833ae41ed49fe58f6af9c",
+        "csv": "c4940d886e1df68e620ac5bcd7f22b02ff2aa1ef87da4101547c426f4b3b2423",
+        "md": "7cd9b4ab7ec5d7afc6ce10a1f87523d6cd071c571e1542296c1db43895fca9a6"
+      }
+    },
+    {
+      "batch": "BATCH_03",
+      "blind_ids": [
+        "B-023",
+        "B-024",
+        "B-025",
+        "B-026",
+        "B-027",
+        "B-028",
+        "B-029",
+        "B-030",
+        "B-031",
+        "B-032",
+        "B-033"
+      ],
+      "text_sha256": {
+        "B-023": "367935c3715b3f83f49d8c95d65340f087c2d6ee18d51cd48c23f6cd9f7dc485",
+        "B-024": "5fcd8d4b18d59bf7095ff7f0309b1c5ff0c76e6ca53cbb5fe34ca6b19fb69f37",
+        "B-025": "8a53bb877e7f1c13cc9db283529bce6e0016fac361dad6c78a077a5ecc4bbdce",
+        "B-026": "5c9a7dfdf9ba4348c91d11d643005f388b091d42ea0136aed502e9fc7c645ab1",
+        "B-027": "271af86a9585cf6f76c032830d6301aeb7a70130509528ba51a18599d5e609d8",
+        "B-028": "bd1f162052731609955b33f25d376432328d82553814048f2f7b164ed8de89bb",
+        "B-029": "a161710545e63d3f016b6559c8069756897091188c7ee838316776a4288b263c",
+        "B-030": "2f1ba094711628f6a33e65f3d238138384224eafbb290383f95037df8c26a899",
+        "B-031": "5404b085c909437c951bf398804acf8d4c58edeefff06cbd7040a485867428bc",
+        "B-032": "b3765329ca0115fe543fd79064e7c999c527aa0a40bdb0f3e8c137be9b8cc2f7",
+        "B-033": "2f87a8009675b8f505b817b5c90cbe29877a3a38481e1ac8676b6e42e8360001"
+      },
+      "file_sha256": {
+        "html": "e20fd296fda1ca20d48b94498c7b5237503c955329120f71f7898ac0b90e00d4",
+        "csv": "80b98ff4d739b741d0945110793192f1223caf5bcb1067b1dfe08fd006cbc332",
+        "md": "ec8da595742eb4dca7e2203adf126ec7987a6bc8c0bda85f60a54f0ecd3fb0fe"
+      }
+    },
+    {
+      "batch": "BATCH_04",
+      "blind_ids": [
+        "B-034",
+        "B-035",
+        "B-036",
+        "B-037",
+        "B-038",
+        "B-039",
+        "B-040",
+        "B-041",
+        "B-042",
+        "B-043",
+        "B-044"
+      ],
+      "text_sha256": {
+        "B-034": "c10d96a5a537c6a0635c442e62f1ff19a7402fc1a7d9e34c4fdce9d9f7708ce2",
+        "B-035": "ef3564741fdd881104c509e1f93391247d833c0af2b5eaab49803ce870d12ca6",
+        "B-036": "3cc620dd13b9902c337b10cb04808bc63d40988b18a8d1b07da8890fa2b24bad",
+        "B-037": "fa26bb6840c9c61e8fb218498164a6178a274611f52f5a748512712af4684cec",
+        "B-038": "9b40f6d260bdec31dbffacc61cabad21cad3b85893b1c46c7632ff7710169335",
+        "B-039": "8727c36afac570b75061d48306587bbcbebfc82d366e0d04c48cff9072367ffa",
+        "B-040": "542cefa771aff12d6e78093d47f768282ded135c06fb9f977400768d710c8774",
+        "B-041": "6661677b599c415c36a7ce58f86d07f39af978116c8303109de078e843527413",
+        "B-042": "9578958db73cc270964013efed1f80d4af203ffd6e75b66361c8c949bcbe7abb",
+        "B-043": "fc668a22ba34616fbab2fea350eb64997af0be003658612ef5c684706f70574d",
+        "B-044": "ec7e1a6387d7f45387c7e01f35f73334ad0a49197a8405e3fa78eb81227185d6"
+      },
+      "file_sha256": {
+        "html": "64a48984967932f0513c0635ca75da81ca315aaf8aeb8ea0831b8c01672cc4f2",
+        "csv": "9a14d0874b9fcff26067ab5ca6fc9ecd7a7e84dce5e873ba5ed8f84fb3a68ffa",
+        "md": "b828df4ff42ff7817842b9641d00179c2b799475d39f6fe42baf7a341aa4ca86"
+      }
+    }
+  ]
+}

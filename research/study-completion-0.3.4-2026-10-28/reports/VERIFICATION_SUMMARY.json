@@ -1,0 +1,261 @@
+{
+  "format": "jrs-study-completion-verification-summary/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "network_attempts": 0,
+  "rows": [
+    {
+      "name": "State verification",
+      "file": "state/STATE_VERIFICATION.json",
+      "passed": 37,
+      "total": 37,
+      "network_attempts": 0,
+      "extra": ""
+    },
+    {
+      "name": "156-record accounting",
+      "file": "accounting/ACCOUNTING_156.json",
+      "passed": 14,
+      "total": 14,
+      "network_attempts": 0,
+      "extra": "eligible_text_held_in_scope 104; outside_research_scope_refused 20; public_case_text_not_held 32"
+    },
+    {
+      "name": "Frozen outputs against explicit expectations",
+      "file": "reconciliation/CHECK_RESULTS.json",
+      "passed": 18,
+      "total": 18,
+      "network_attempts": 0,
+      "extra": ""
+    },
+    {
+      "name": "Reconciliation",
+      "file": "reconciliation/RECONCILIATION.json",
+      "passed": 25,
+      "total": 25,
+      "network_attempts": 0,
+      "extra": "1 discrepancy recorded and corrected"
+    },
+    {
+      "name": "Live request set",
+      "file": "records/LIVE_RECORD_SET.json",
+      "passed": 1,
+      "total": 1,
+      "network_attempts": 0,
+      "extra": "PRE 3, RUN 312, TGT 86; not constructible 0"
+    },
+    {
+      "name": "Live machinery tests (mock fetch)",
+      "file": "out/LIVE_MACHINERY_TESTS.json",
+      "passed": 42,
+      "total": 42,
+      "network_attempts": 0,
+      "extra": "live dispatch enabled: false"
+    },
+    {
+      "name": "Live machinery mutants killed",
+      "file": "out/LIVE_MUTATION_TESTS.json",
+      "passed": 26,
+      "total": 26,
+      "network_attempts": 0,
+      "extra": "unmutated baseline exit 0"
+    },
+    {
+      "name": "Enabling rehearsal (mirror, mock fetch)",
+      "file": "out/ENABLE_REHEARSAL.json",
+      "passed": 9,
+      "total": 9,
+      "network_attempts": 0,
+      "extra": ""
+    },
+    {
+      "name": "Review batches and importer tests",
+      "file": "out/IMPORT_TESTS.json",
+      "passed": 16,
+      "total": 16,
+      "network_attempts": 0,
+      "extra": ""
+    },
+    {
+      "name": "Review batches built",
+      "file": "human-review/BATCH_MANIFEST.json",
+      "passed": 4,
+      "total": 4,
+      "network_attempts": 0,
+      "extra": "4 batches, 44 records"
+    },
+    {
+      "name": "Offline scripted per-record results",
+      "file": "results/OFFLINE_SCRIPTED_PER_RECORD.json",
+      "passed": 1,
+      "total": 1,
+      "network_attempts": 0,
+      "extra": "156 records"
+    },
+    {
+      "name": "Live run plan",
+      "file": "protocol/LIVE_RUN_PLAN.json",
+      "passed": 1,
+      "total": 1,
+      "network_attempts": 0,
+      "extra": "plan_sha256 f5dd8e92006c8af9539cc42e7b21747cda3cebe57740bbc35a63083a62dcbc03"
+    }
+  ],
+  "checks": [
+    {
+      "id": "State verification",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 37,
+          "total": 37
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "156-record accounting",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 14,
+          "total": 14
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Frozen outputs against explicit expectations",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 18,
+          "total": 18
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Reconciliation",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 25,
+          "total": 25
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Live request set",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 1,
+          "total": 1
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Live machinery tests (mock fetch)",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 42,
+          "total": 42
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Live machinery mutants killed",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 26,
+          "total": 26
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Enabling rehearsal (mirror, mock fetch)",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 9,
+          "total": 9
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Review batches and importer tests",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 16,
+          "total": 16
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Review batches built",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 4,
+          "total": 4
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Offline scripted per-record results",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 1,
+          "total": 1
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "Live run plan",
+      "ok": true,
+      "detail": {
+        "counts": {
+          "passed": 1,
+          "total": 1
+        },
+        "network": 0
+      }
+    },
+    {
+      "id": "quoted_plan_hashes_equal_the_plan",
+      "ok": true,
+      "detail": []
+    },
+    {
+      "id": "checkpoint_costs_equal_the_plan",
+      "ok": true,
+      "detail": {
+        "pre": 0.0014,
+        "typAll": "0.18",
+        "worstAll": "2.93"
+      }
+    },
+    {
+      "id": "no_live_results_without_dispatch_enabled_in_history",
+      "ok": true,
+      "detail": {
+        "live_results_present": true,
+        "dispatch_enabled_in_history": true
+      }
+    }
+  ]
+}

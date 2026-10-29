@@ -1,0 +1,76 @@
+{
+  "candidate_version": "0.3.6-research-candidate",
+  "pack_id": "RPK-CHR",
+  "pack_version": "1.0.0",
+  "purpose": "Chronology integrity controls over explicitly dated, role-labelled events.",
+  "rules": [
+    {
+      "rule_id": "RP-CHR-01",
+      "purpose": "Repair P6K-003.",
+      "trigger": "An assessment-role event whose clause contains \"risk assessment\", outside an action-role section (revocation, follow-up, corrective action), is dated after the first decision-role event. Adds conflict \"assessment_after_decision\" affecting chronology_integrity.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Only risk assessments with an ISO date are compared; reassessments in action sections are excluded by design.",
+      "false_positive_risk": "A legitimate later reassessment written outside an action section would be flagged.",
+      "linked_scenarios": [
+        "P6-CH-06",
+        "P7-CHR-01",
+        "P7-CHR-02",
+        "P7-CHR-03",
+        "P7-CHR-04"
+      ],
+      "owner_decision_for_expansion": "Any widening of the trigger, any new pattern, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-CHR-02",
+      "purpose": "Repair P6K-004.",
+      "trigger": "Expiry-role events state more than one distinct date. Adds conflict \"expiry_date_conflict\" affecting chronology_integrity.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Renewal clauses are not expiry events, so a stated renewal date never conflicts.",
+      "false_positive_risk": "A record that deliberately states an original and an extended expiry would be flagged.",
+      "linked_scenarios": [
+        "P6-CH-07",
+        "P7-CHR-05",
+        "P7-CHR-06",
+        "P7-CHR-07",
+        "P7-CHR-08"
+      ],
+      "owner_decision_for_expansion": "Any widening of the trigger, any new pattern, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-CHR-03",
+      "purpose": "Repair P6K-005.",
+      "trigger": "No decision-role dated event exists. Adds visible gap \"no_dated_decision\" to chronology_integrity, so a proposed supported status becomes review_required.",
+      "expected_safe_outcome": "review_required",
+      "limitation": "A decision date written in a form the date reader does not recognise counts as missing.",
+      "false_positive_risk": "A record that dates its decision only in prose without a role keyword would be routed to review.",
+      "linked_scenarios": [
+        "P6-CH-09",
+        "P7-CHR-09",
+        "P7-CHR-10",
+        "P7-CHR-11",
+        "P7-CHR-12"
+      ],
+      "owner_decision_for_expansion": "Any widening of the trigger, any new pattern, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    },
+    {
+      "rule_id": "RP-CHR-04",
+      "purpose": "Repair P6K-006.",
+      "trigger": "The first decision-role section states \"for N days\", and the first decision and first expiry dates differ from N by more than one day. Adds conflict \"duration_date_conflict\" affecting chronology_integrity.",
+      "expected_safe_outcome": "conflict_and_review",
+      "limitation": "Only \"for N days\" is read; months, weeks and business days are not.",
+      "false_positive_risk": "A grant counted in business days would be flagged.",
+      "linked_scenarios": [
+        "P6-CH-10",
+        "P7-CHR-13",
+        "P7-CHR-14",
+        "P7-CHR-15",
+        "P7-CHR-16"
+      ],
+      "owner_decision_for_expansion": "Any widening of the trigger, any new pattern, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    }
+  ],
+  "signature": {
+    "method": "sha256-canonical-content-seal",
+    "content_sha256": "sha256:5d50ca20fb7989dc3f03c1c661f2fbfe63a52abfeaeecb1ef6e7d7fcbfc2fb15"
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "results_format": "jrs-study-completion-import-tests/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "network_attempts": 0,
+  "statement": "Every answer in these tests is a TEST FIXTURE written to scratch. No human judgement was recorded or invented.",
+  "totals": {
+    "tests": 16,
+    "passed": 16,
+    "failed": 0
+  },
+  "results": [
+    {
+      "id": "TI-01",
+      "name": "a CSV with two answered records imports both; an equal label is human-reviewed, a different one is disputed; untouched records are not imported; the AI label is kept",
+      "ok": true,
+      "observed": [
+        "human-reviewed",
+        "disputed"
+      ]
+    },
+    {
+      "id": "TI-02",
+      "name": "the JSON export format imports; an unknown format is rejected",
+      "ok": true,
+      "observed": [
+        1,
+        [
+          {
+            "file": "t2b.json",
+            "problem": "unknown_format"
+          }
+        ]
+      ]
+    },
+    {
+      "id": "TI-03",
+      "name": "an unknown blind code, a Part 2 or 3 record, an invalid judgement or option, a changed record hash: each rejected",
+      "ok": true,
+      "observed": [
+        "unknown_blind_id:B-999",
+        "not_a_part_1_record:B-045",
+        "e1_missing_or_invalid",
+        "q3_dates_invalid",
+        "record_text_hash_differs_from_blind_key"
+      ]
+    },
+    {
+      "id": "TI-04",
+      "name": "passages: an exact copy (with or without quotation marks) is exact; a paraphrase is imported but listed as not exact",
+      "ok": true,
+      "observed": [
+        {
+          "blind_id": "B-010",
+          "n": 1
+        }
+      ]
+    },
+    {
+      "id": "TI-05",
+      "name": "UNGROUNDED without the conclusion named, and a dispute without a reason, are rejected; UNCERTAIN is recorded as uncertain",
+      "ok": true,
+      "observed": [
+        [
+          "ungrounded_without_named_conclusion"
+        ],
+        [
+          "dispute_without_reason"
+        ]
+      ]
+    },
+    {
+      "id": "TI-06",
+      "name": "a corrected answer appends a \"corrected\" event and keeps the earlier answer; re-importing the same answer adds nothing",
+      "ok": true,
+      "observed": [
+        "imported:human-reviewed",
+        "corrected:disputed"
+      ]
+    },
+    {
+      "id": "TI-07",
+      "name": "adjudication: refused without a named adjudicator or date, refused for a record not in dispute, applied with history when complete",
+      "ok": true,
+      "observed": [
+        [
+          "adjudicator_not_named",
+          "adjudication_date_invalid"
+        ],
+        [
+          "nothing_to_adjudicate:B-016"
+        ],
+        "adjudicated"
+      ]
+    },
+    {
+      "id": "TI-08",
+      "name": "a file carrying label or Engine columns, or another form version, is rejected",
+      "ok": true,
+      "observed": [
+        [
+          {
+            "file": "t8.csv",
+            "blind_id": "B-017",
+            "problems": [
+              "file_contains_label_or_engine_columns"
+            ]
+          }
+        ],
+        [
+          {
+            "file": "t8b.csv",
+            "blind_id": "B-018",
+            "problems": [
+              "form_version_differs"
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "id": "TI-09",
+      "name": "the untouched batch CSVs import nothing and reject nothing",
+      "ok": true,
+      "observed": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "TI-10",
+      "name": "static checks of every batch form: 11 records, the answer columns, no browser storage, no network call, no external resource",
+      "ok": true,
+      "observed": [
+        {
+          "recs": 11,
+          "cols": true,
+          "storage": false,
+          "net": false,
+          "ext": false
+        },
+        {
+          "recs": 11,
+          "cols": true,
+          "storage": false,
+          "net": false,
+          "ext": false
+        },
+        {
+          "recs": 11,
+          "cols": true,
+          "storage": false,
+          "net": false,
+          "ext": false
+        },
+        {
+          "recs": 11,
+          "cols": true,
+          "storage": false,
+          "net": false,
+          "ext": false
+        }
+      ]
+    },
+    {
+      "id": "TI-11",
+      "name": "browser: the batch 1 form loads from disk with all network aborted, takes an answer, checks passages, downloads a CSV that the importer accepts",
+      "ok": true,
+      "observed": {
+        "blocked": 0,
+        "marked": "passage 1 is not exact",
+        "progress": "1 of 11 judged",
+        "imported": [
+          {
+            "blind_id": "B-001",
+            "status": "human-reviewed"
+          }
+        ],
+        "rejected": [
+          "B-002:e1_missing_or_invalid"
+        ],
+        "dialogs": 1
+      }
+    },
+    {
+      "id": "TI-12",
+      "name": "the command line refuses no arguments (exit 2), writes only to the --out file, and exits 1 when an answer is rejected",
+      "ok": true,
+      "observed": [
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "id": "TI-14",
+      "name": "form 1.1: an answer from a 1.0 form (no gap_findings column) still imports; gap findings from a 1.1 form are kept one per line; the AI label is untouched",
+      "ok": true,
+      "observed": [
+        [
+          {
+            "blind_id": "B-021",
+            "status": "human-reviewed"
+          },
+          {
+            "blind_id": "B-022",
+            "status": "human-reviewed"
+          }
+        ],
+        [],
+        [
+          "TEST gap one",
+          "TEST gap two"
+        ]
+      ]
+    },
+    {
+      "id": "TI-15",
+      "name": "static: every batch form shows the record ID and full record text for 11 records, offers \"no gap identified\" and \"UNCERTAIN\", has the gap findings field, and is blank (nothing checked, selected or typed)",
+      "ok": true,
+      "observed": [
+        {
+          "n": 1,
+          "textsShown": true,
+          "fullText": true,
+          "blank": true,
+          "noGap": true,
+          "uncertain": true,
+          "gapField": true,
+          "version": true
+        },
+        {
+          "n": 2,
+          "textsShown": true,
+          "fullText": true,
+          "blank": true,
+          "noGap": true,
+          "uncertain": true,
+          "gapField": true,
+          "version": true
+        },
+        {
+          "n": 3,
+          "textsShown": true,
+          "fullText": true,
+          "blank": true,
+          "noGap": true,
+          "uncertain": true,
+          "gapField": true,
+          "version": true
+        },
+        {
+          "n": 4,
+          "textsShown": true,
+          "fullText": true,
+          "blank": true,
+          "noGap": true,
+          "uncertain": true,
+          "gapField": true,
+          "version": true
+        }
+      ]
+    },
+    {
+      "id": "TI-16",
+      "name": "browser: each of the four forms loads with every judgement empty; the downloaded untouched CSV imports nothing",
+      "ok": true,
+      "observed": [
+        {
+          "n": 1,
+          "filled": 0,
+          "blocked": 0,
+          "imported": 0,
+          "rejected": 0,
+          "rows": 11
+        },
+        {
+          "n": 2,
+          "filled": 0,
+          "blocked": 0,
+          "imported": 0,
+          "rejected": 0,
+          "rows": 11
+        },
+        {
+          "n": 3,
+          "filled": 0,
+          "blocked": 0,
+          "imported": 0,
+          "rejected": 0,
+          "rows": 11
+        },
+        {
+          "n": 4,
+          "filled": 0,
+          "blocked": 0,
+          "imported": 0,
+          "rejected": 0,
+          "rows": 11
+        }
+      ]
+    },
+    {
+      "id": "TI-13",
+      "name": "no test wrote the real label file, and the frozen blind key and AI proposals are unchanged",
+      "ok": true,
+      "observed": null
+    }
+  ]
+}

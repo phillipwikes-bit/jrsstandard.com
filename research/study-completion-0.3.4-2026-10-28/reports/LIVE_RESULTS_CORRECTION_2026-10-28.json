@@ -1,0 +1,300 @@
+{
+  "format": "jrs-study-completion-live-results-correction/1.0.0",
+  "release_status": "NO_GO_NOT_VERIFIED",
+  "b018": "OPEN",
+  "candidate_adopted": false,
+  "run": "RUN-LIVE-AUTH-20261028-01",
+  "date": "2026-10-28",
+  "network_attempts": 0,
+  "corrects": "results/LIVE_RESULTS.json (kept unchanged)",
+  "statement": "Counts derived from the raw captures and the journal. Agreement with AI-proposed references is not accuracy. No human label exists.",
+  "counting_units": {
+    "request": "one planned request identifier; one HTTP exchange per attempt",
+    "record": "a base record identifier; PRE and RUN can send the same record",
+    "usable_result": "a captured response the frozen compiler accepted (stage compiled)",
+    "observation": "one entry in the response observations array",
+    "quotation": "an observation whose quote is text (not null)",
+    "status_count": "one quote-resolution status per observation, including not_assessed for an observation without a quotation"
+  },
+  "defects_found": [
+    {
+      "id": "D1",
+      "what": "quotations.total and quotations.by_status count different units",
+      "detail": "total counts quotations (observations with text quotes); by_status counts every observation, including not_assessed for observations without a quotation."
+    },
+    {
+      "id": "D2",
+      "what": "score-live.mjs reads quotations with JSON.parse on the raw text",
+      "detail": "A response in one exact markdown fence, which the frozen strict parser accepts and records, fails JSON.parse, so its quotes_total and cited_spans are recorded as 0 and empty. Compilation and E1 are unaffected (the compiler uses the strict parser). cited_spans feeds the TGT stated-irrelevant-basis measure, so a fenced TGT response would be scored as not citing the inserted sentence.",
+      "rows": [
+        {
+          "request_id": "PRE-02",
+          "usable": true,
+          "quotations": 5,
+          "reported_quotes_total": 0,
+          "reported_cited_spans": 0
+        },
+        {
+          "request_id": "RUN-r1-S-018",
+          "usable": false,
+          "quotations": 9,
+          "reported_quotes_total": 0,
+          "reported_cited_spans": 0
+        },
+        {
+          "request_id": "RUN-r1-S-032",
+          "usable": false,
+          "quotations": 7,
+          "reported_quotes_total": 0,
+          "reported_cited_spans": 0
+        },
+        {
+          "request_id": "RUN-r1-S-036",
+          "usable": false,
+          "quotations": 7,
+          "reported_quotes_total": 0,
+          "reported_cited_spans": 0
+        },
+        {
+          "request_id": "RUN-r1-S-044",
+          "usable": true,
+          "quotations": 5,
+          "reported_quotes_total": 0,
+          "reported_cited_spans": 0
+        },
+        {
+          "request_id": "RUN-r1-S-052",
+          "usable": true,
+          "quotations": 7,
+          "reported_quotes_total": 0,
+          "reported_cited_spans": 0
+        },
+        {
+          "request_id": "RUN-r1-S-056",
+          "usable": false,
+          "quotations": 6,
+          "reported_quotes_total": 0,
+          "reported_cited_spans": 0
+        },
+        {
+          "request_id": "RUN-r1-S-057",
+          "usable": false,
+          "quotations": 7,
+          "reported_quotes_total": 0,
+          "reported_cited_spans": 0
+        }
+      ]
+    }
+  ],
+  "overall": {
+    "requests_sent": 69,
+    "attempts": 69,
+    "unique_records_sent": 66,
+    "records_in_both_pre_and_run": 3,
+    "unique_records_usable": 49,
+    "usable_results": 52,
+    "unusable_results": 17,
+    "cost_usd": 0.032949
+  },
+  "by_phase": {
+    "PRE": {
+      "planned": 3,
+      "sent": 3,
+      "attempts": 3,
+      "http_200": 3,
+      "unique_records_sent": 3,
+      "repeats_sent": [
+        1
+      ],
+      "usable_results": 3,
+      "unique_records_usable": 3,
+      "unusable_results": 0,
+      "usable": {
+        "observations": 18,
+        "quotations_proposed": 17,
+        "observations_without_quotation": 1,
+        "fenced_responses": 1,
+        "status_counts_by_observation": {
+          "verified_unique": 17,
+          "not_assessed": 1
+        }
+      },
+      "unusable": {
+        "observations": 0,
+        "quotations_proposed_not_assessed": 0
+      },
+      "original_report": {
+        "quotations_total": 12,
+        "by_status": {
+          "verified_unique": 17,
+          "not_assessed": 1
+        }
+      }
+    },
+    "RUN": {
+      "planned": 312,
+      "sent": 66,
+      "attempts": 66,
+      "http_200": 66,
+      "unique_records_sent": 66,
+      "repeats_sent": [
+        1
+      ],
+      "usable_results": 49,
+      "unique_records_usable": 49,
+      "unusable_results": 17,
+      "usable": {
+        "observations": 306,
+        "quotations_proposed": 301,
+        "observations_without_quotation": 5,
+        "fenced_responses": 2,
+        "status_counts_by_observation": {
+          "verified_unique": 300,
+          "not_assessed": 5,
+          "absent": 1
+        }
+      },
+      "unusable": {
+        "observations": 119,
+        "quotations_proposed_not_assessed": 119
+      },
+      "original_report": {
+        "quotations_total": 289,
+        "by_status": {
+          "verified_unique": 300,
+          "not_assessed": 5,
+          "absent": 1
+        }
+      }
+    },
+    "TGT": {
+      "planned": 86,
+      "sent": 0,
+      "attempts": 0,
+      "http_200": 0,
+      "unique_records_sent": 0,
+      "repeats_sent": [],
+      "usable_results": 0,
+      "unique_records_usable": 0,
+      "unusable_results": 0,
+      "usable": {
+        "observations": 0,
+        "quotations_proposed": 0,
+        "observations_without_quotation": 0,
+        "fenced_responses": 0,
+        "status_counts_by_observation": {}
+      },
+      "unusable": {
+        "observations": 0,
+        "quotations_proposed_not_assessed": 0
+      },
+      "original_report": {
+        "quotations_total": 0,
+        "by_status": {}
+      }
+    }
+  },
+  "inputs_sha256": {
+    "journal": "c102199d36395339296a898422b174c3b8d63a4a49ab0edbeac14e29a5e5cb22",
+    "captures": "858b445446a603e55d833a04fb1540f0388c00f7cd0f2d256fb46fe9f53ab30c",
+    "results": "6d55ef2efe6272022b16aae9ecbe4d8cfc604612b27079ecf9e61bc2eb940daa",
+    "candidate_manifest": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad",
+    "prompt": "94429a1404c1c3cc80ce40d3ed41f1211b0473939fc8f07227ff41247ababec2"
+  },
+  "checks": [
+    {
+      "id": "prompt_sha256_is_the_authorized_prompt",
+      "ok": true,
+      "detail": "94429a1404c1c3cc80ce40d3ed41f1211b0473939fc8f07227ff41247ababec2"
+    },
+    {
+      "id": "candidate_manifest_is_the_authorized_candidate",
+      "ok": true,
+      "detail": "b454d4b858c81655b6ff56bde27a68c1ead9639305e2600a6fcf1746c8c304ad"
+    },
+    {
+      "id": "prompt_q2_states_no_identifier_length_or_character_limit",
+      "ok": true,
+      "detail": "Q2. Each observation has exactly these keys: \"observation_id\" (short and unique), \"condition_id\", \"proposed_status\", \"qu"
+    },
+    {
+      "id": "journal_hash_chain_valid",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "seventeen_contract_failures_in_results",
+      "ok": true,
+      "detail": 17
+    },
+    {
+      "id": "every_failure_reproduced_by_frozen_compiler",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "every_failure_transport_ok",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "status_counts_cover_every_observation:PRE",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "not_assessed_equals_observations_without_quotation:PRE",
+      "ok": true,
+      "detail": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "original_total_equals_quotations_minus_fenced:PRE",
+      "ok": true,
+      "detail": [
+        12,
+        17,
+        5
+      ]
+    },
+    {
+      "id": "status_counts_cover_every_observation:RUN",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "not_assessed_equals_observations_without_quotation:RUN",
+      "ok": true,
+      "detail": [
+        5,
+        5
+      ]
+    },
+    {
+      "id": "original_total_equals_quotations_minus_fenced:RUN",
+      "ok": true,
+      "detail": [
+        289,
+        301,
+        12
+      ]
+    },
+    {
+      "id": "originals_unchanged",
+      "ok": true,
+      "detail": null
+    },
+    {
+      "id": "no_network_attempts",
+      "ok": true,
+      "detail": 0
+    },
+    {
+      "id": "capture_hashes_match_journal",
+      "ok": true,
+      "detail": 69
+    }
+  ]
+}

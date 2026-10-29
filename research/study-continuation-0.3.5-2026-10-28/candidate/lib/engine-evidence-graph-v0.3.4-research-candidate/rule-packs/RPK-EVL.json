@@ -1,0 +1,34 @@
+{
+  "candidate_version": "0.3.4-research-candidate",
+  "pack_id": "RPK-EVL",
+  "pack_version": "1.0.0",
+  "purpose": "Evidence-link abstention: a supported status needs at least one cited quotation from a section linked to the condition.",
+  "rules": [
+    {
+      "rule_id": "RP-EVL-01",
+      "purpose": "Address P6K-001 by abstention.",
+      "trigger": "When identifiable_basis, chronology_integrity or reasoning_traceability would be supported, at least one cited quotation for it must sit in a linked section role (identifiable_basis: authority or basis; chronology_integrity: chronology, request, authority, decision or expiry; reasoning_traceability: basis). Otherwise the status is review_required with reason \"evidence_not_in_linked_section\".",
+      "expected_safe_outcome": "review_required",
+      "limitation": "Section linkage is not semantic support; a linked section can still hold irrelevant text.",
+      "false_positive_risk": "A relevant sentence placed in an unlinked section (for example a rationale moved into residual risk, Phase 4 ST-06) is routed to review.",
+      "linked_scenarios": [
+        "P6-SP-02",
+        "P6-SP-04",
+        "P6-SP-06",
+        "P7-EVL-01",
+        "P7-EVL-02",
+        "P7-EVL-03",
+        "P7-EVL-04",
+        "P7-EVL-05",
+        "P7-EVL-06",
+        "P7-EVL-07",
+        "P7-EVL-08"
+      ],
+      "owner_decision_for_expansion": "Any widening of the trigger, any new pattern, or any change of outcome requires a recorded owner decision and a new sealed scenario set."
+    }
+  ],
+  "signature": {
+    "method": "sha256-canonical-content-seal",
+    "content_sha256": "sha256:351bb11932f5de20d3c8db79b4044e0e66ece5bc078afa3b6bb054df4f78e47e"
+  }
+}

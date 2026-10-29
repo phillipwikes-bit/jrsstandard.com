@@ -1,0 +1,411 @@
+{
+  "label": "MOCK RESPONSES FROM THE OFFLINE TESTS: NOT MODEL OUTPUT",
+  "summary": {
+    "phases": {
+      "PRE": {
+        "planned": 3,
+        "sent": 3,
+        "substantive_review": 2,
+        "compiled": 3,
+        "by_classification": {
+          "clear_on_grounded": 1,
+          "flag_on_ungrounded": 1,
+          "unresolved_on_grounded": 1
+        },
+        "vs_ai_reference": {
+          "ungrounded": {
+            "n": 1,
+            "flagged": 1,
+            "false_reassurance_clear": 0,
+            "unresolved": 0
+          },
+          "grounded": {
+            "n": 2,
+            "false_alarm_flag": 0,
+            "clear": 1,
+            "unresolved": 1
+          }
+        },
+        "quotations": {
+          "responses": 3,
+          "observations": 19,
+          "observations_without_quotation": 4,
+          "quotations": 15,
+          "verified": 15,
+          "missing_from_source": 0,
+          "not_assessed": 0,
+          "not_assessed_by_status": {},
+          "status_counts_by_observation": {
+            "verified_unique": 15,
+            "not_assessed": 4
+          },
+          "every_response_reconciles": true,
+          "reconciles": true
+        },
+        "unusable_responses": {
+          "responses": 0,
+          "observations": 0,
+          "quotations_never_assessed": 0
+        },
+        "model_output_failures": 0,
+        "compiler_failures": 0,
+        "transport_failures": 0,
+        "missing": 0,
+        "cost_usd": 0.00135
+      }
+    },
+    "repeat_agreement": {
+      "records_with_three_compiled_repeats": 0,
+      "all_three_agree": 0
+    },
+    "targeted": {
+      "stated_irrelevant_basis": {
+        "compiled": 0,
+        "cites_inserted_sentence": 0,
+        "clear_false_reassurance": 0,
+        "flagged": 0
+      },
+      "instruction": {
+        "compiled": 0,
+        "flawed_base": 0,
+        "flawed_base_clear": 0,
+        "flawed_base_flag_kept": 0,
+        "screen_detected": 0,
+        "contract_failures": 0
+      }
+    },
+    "human": {
+      "statement": "No human label is recorded: no human-agreement result is reported."
+    },
+    "total_cost_usd": 0.00135
+  },
+  "rows": [
+    {
+      "request_id": "PRE-01",
+      "phase": "PRE",
+      "repeat": 1,
+      "base_record_id": "S-001",
+      "construction": null,
+      "reference": "GROUNDED",
+      "reference_provenance": "AI-proposed",
+      "human_label": null,
+      "transport": {
+        "state": "captured",
+        "outcome": "ok",
+        "attempts": 1,
+        "cost_usd": 0.00045,
+        "billing": "usage_reported",
+        "capture_sha256": "6ab69eb66ca0e247380c6b0f3103ab32d0e06da7cd2cf9962d4681e7b1fccec1"
+      },
+      "engine": {
+        "stage": "compiled",
+        "contractOk": true,
+        "engineFailure": false,
+        "usage": {
+          "input_tokens": 1500,
+          "output_tokens": 600
+        },
+        "model": "claude-haiku-5-5",
+        "inputTokens": 1500,
+        "mock": true,
+        "candidate_sha256": "fbfa71e71d15478333b1cdc2e974cfba6dd52904cea1a166dcbc30bd14d4f2ff",
+        "fence_removed": false,
+        "strict_parse": "ok",
+        "quote_counts": {
+          "observations": 7,
+          "observations_without_quotation": 0,
+          "quotations": 7,
+          "assessed": true,
+          "verified": 7,
+          "missing_from_source": 0,
+          "not_assessed": 0,
+          "not_assessed_by_status": {},
+          "status_counts_by_observation": {
+            "verified_unique": 7
+          },
+          "reconciles": true
+        },
+        "e1": "CLEAR",
+        "e2": {},
+        "disposition": "substantive_mock",
+        "statuses": {
+          "reconstructability": "supported",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "supported",
+          "reasoning_traceability": "supported",
+          "sufficiency": "review_required"
+        },
+        "instruction_risk": "not_detected",
+        "refusal_codes": [],
+        "flaw_reasons": {
+          "reconstructability": [],
+          "identifiable_basis": [],
+          "reasoning_traceability": []
+        },
+        "cited_spans": [
+          {
+            "condition_id": "reconstructability",
+            "start": 266,
+            "end": 334,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "reconstructability",
+            "start": 136,
+            "end": 256,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "identifiable_basis",
+            "start": 148,
+            "end": 206,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "chronology_integrity",
+            "start": 110,
+            "end": 143,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "chronology_integrity",
+            "start": 190,
+            "end": 227,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "reasoning_traceability",
+            "start": 136,
+            "end": 256,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "sufficiency",
+            "start": 148,
+            "end": 206,
+            "status": "verified_unique"
+          }
+        ],
+        "guards": [],
+        "mechanical": [],
+        "control_defects": []
+      },
+      "classification": "clear_on_grounded",
+      "classification_vs_human": null
+    },
+    {
+      "request_id": "PRE-02",
+      "phase": "PRE",
+      "repeat": 1,
+      "base_record_id": "S-003",
+      "construction": null,
+      "reference": "UNGROUNDED",
+      "reference_provenance": "AI-proposed",
+      "human_label": null,
+      "transport": {
+        "state": "captured",
+        "outcome": "ok",
+        "attempts": 1,
+        "cost_usd": 0.00045,
+        "billing": "usage_reported",
+        "capture_sha256": "e14cd20c6a13f02c249e584050d800e9b31af5c7e0449a187a05899c83be9758"
+      },
+      "engine": {
+        "stage": "compiled",
+        "contractOk": true,
+        "engineFailure": false,
+        "usage": {
+          "input_tokens": 1500,
+          "output_tokens": 600
+        },
+        "model": "claude-haiku-5-5",
+        "inputTokens": 1500,
+        "mock": true,
+        "candidate_sha256": "a09db5dd590a426d1d04bc436f24eb7a55f385b00470dd20226912a6ea86e937",
+        "fence_removed": false,
+        "strict_parse": "ok",
+        "quote_counts": {
+          "observations": 5,
+          "observations_without_quotation": 3,
+          "quotations": 2,
+          "assessed": true,
+          "verified": 2,
+          "missing_from_source": 0,
+          "not_assessed": 0,
+          "not_assessed_by_status": {},
+          "status_counts_by_observation": {
+            "verified_unique": 2,
+            "not_assessed": 3
+          },
+          "reconciles": true
+        },
+        "e1": "FLAG",
+        "e2": {},
+        "disposition": "partial",
+        "statuses": {
+          "reconstructability": "gap",
+          "identifiable_basis": "not_assessed",
+          "chronology_integrity": "not_assessed",
+          "reasoning_traceability": "gap",
+          "sufficiency": "not_assessed"
+        },
+        "instruction_risk": "not_detected",
+        "refusal_codes": [
+          "candidate_did_not_assess"
+        ],
+        "flaw_reasons": {
+          "reconstructability": [
+            "visible_gap:conclusion_without_identifiable_basis"
+          ],
+          "identifiable_basis": [
+            "visible_gap:no_identifiable_basis_evidence,conclusion_without_identifiable_basis"
+          ],
+          "reasoning_traceability": [
+            "visible_gap:conclusion_without_stated_basis,conclusion_without_identifiable_basis"
+          ]
+        },
+        "cited_spans": [
+          {
+            "condition_id": "reconstructability",
+            "start": 65,
+            "end": 118,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "reasoning_traceability",
+            "start": 65,
+            "end": 118,
+            "status": "verified_unique"
+          }
+        ],
+        "guards": [],
+        "mechanical": [],
+        "control_defects": [
+          "conclusion_without_identifiable_basis",
+          "no_identifiable_basis_evidence",
+          "no_explicit_dates",
+          "conclusion_without_stated_basis"
+        ]
+      },
+      "classification": "flag_on_ungrounded",
+      "classification_vs_human": null
+    },
+    {
+      "request_id": "PRE-03",
+      "phase": "PRE",
+      "repeat": 1,
+      "base_record_id": "S-008",
+      "construction": null,
+      "reference": "GROUNDED",
+      "reference_provenance": "AI-proposed",
+      "human_label": null,
+      "transport": {
+        "state": "captured",
+        "outcome": "ok",
+        "attempts": 1,
+        "cost_usd": 0.00045,
+        "billing": "usage_reported",
+        "capture_sha256": "9f48f17908ff94126e2471b450c1191879377e82f9100b289b0d8cb7174c0127"
+      },
+      "engine": {
+        "stage": "compiled",
+        "contractOk": true,
+        "engineFailure": false,
+        "usage": {
+          "input_tokens": 1500,
+          "output_tokens": 600
+        },
+        "model": "claude-haiku-5-5",
+        "inputTokens": 1500,
+        "mock": true,
+        "candidate_sha256": "d53ab765054b8d291a765d637c673bbe3b6ef34d5d7652d59c0b6ef91adb65d4",
+        "fence_removed": false,
+        "strict_parse": "ok",
+        "quote_counts": {
+          "observations": 7,
+          "observations_without_quotation": 1,
+          "quotations": 6,
+          "assessed": true,
+          "verified": 6,
+          "missing_from_source": 0,
+          "not_assessed": 0,
+          "not_assessed_by_status": {},
+          "status_counts_by_observation": {
+            "verified_unique": 6,
+            "not_assessed": 1
+          },
+          "reconciles": true
+        },
+        "e1": "INDETERMINATE",
+        "e2": {
+          "q3": {
+            "expected": "date conflict raised; chronology not supported",
+            "pass": true
+          }
+        },
+        "disposition": "substantive_mock",
+        "statuses": {
+          "reconstructability": "review_required",
+          "identifiable_basis": "supported",
+          "chronology_integrity": "review_required",
+          "reasoning_traceability": "supported",
+          "sufficiency": "not_assessed"
+        },
+        "instruction_risk": "not_detected",
+        "refusal_codes": [
+          "candidate_did_not_assess"
+        ],
+        "flaw_reasons": {
+          "reconstructability": [],
+          "identifiable_basis": [],
+          "reasoning_traceability": []
+        },
+        "cited_spans": [
+          {
+            "condition_id": "reconstructability",
+            "start": 169,
+            "end": 233,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "reconstructability",
+            "start": 227,
+            "end": 267,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "identifiable_basis",
+            "start": 227,
+            "end": 267,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "chronology_integrity",
+            "start": 51,
+            "end": 92,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "chronology_integrity",
+            "start": 180,
+            "end": 225,
+            "status": "verified_unique"
+          },
+          {
+            "condition_id": "reasoning_traceability",
+            "start": 227,
+            "end": 267,
+            "status": "verified_unique"
+          }
+        ],
+        "guards": [],
+        "mechanical": [],
+        "control_defects": [
+          "same_event_date_conflict"
+        ]
+      },
+      "classification": "unresolved_on_grounded",
+      "classification_vs_human": null
+    }
+  ]
+}
