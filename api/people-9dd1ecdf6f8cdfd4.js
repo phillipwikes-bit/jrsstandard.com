@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
@@ -77,14 +78,16 @@ function isTest(v){
 function json(o, s){
   return new Response(JSON.stringify(o), {
     status: s || 200,
-    headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store' }
+    headers: { 'Content-Type':'application/json', 'Cache-Control':'no-store' }
   });
 }
 
 export default async function handler(req){
+  const denied=await ownerAccess(req);
+  if(denied)return denied;
   if (req.method === 'OPTIONS') {
     return new Response(null, { status:204, headers:{
-      'Access-Control-Allow-Origin':'*',
+      
       'Access-Control-Allow-Methods':'GET, OPTIONS',
       'Access-Control-Allow-Headers':'Content-Type'
     }});
