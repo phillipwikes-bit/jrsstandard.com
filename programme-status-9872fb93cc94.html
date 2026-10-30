@@ -1363,12 +1363,40 @@ function renderCompletions(s){
   });
   el.innerHTML=html;
 }
+function renderDownloadQuality(d){
+  var body=document.getElementById('download-quality-rows');
+  var note=document.getElementById('download-quality-note');
+  var summary=document.getElementById('buyer-requests');
+  if(!body || !note) return;
+  var q=d && d.quality;
+  if(!q || !q.reconciles_to_legacy_raw_scope || !Array.isArray(q.by_asset)){
+    body.innerHTML='<tr><td colspan="5">Data unavailable or reconciliation incomplete. Do not use these counts in buyer materials.</td></tr>';
+    note.textContent='Unavailable is not zero. Verify the data source and classification.';
+    if(summary) summary.textContent='Unverified: analytics reconciliation';
+    return;
+  }
+  var rows='';
+  q.by_asset.forEach(function(x){
+    rows+='<tr><td>'+esc(x.asset)+'</td><td>'+Number(x.raw_requests||0)+'</td><td>'
+      +Number(x.declared_crawler||0)+'</td><td>'+Number(x.user_agent_missing||0)
+      +'</td><td>'+Number(x.not_identified_as_crawler||0)+'</td></tr>';
+  });
+  body.innerHTML=rows || '<tr><td colspan="5">No tracked requests in scope.</td></tr>';
+  note.textContent='Included resources: '+q.raw_requests+' tracked requests; '
+    +q.declared_crawler+' declared crawler requests; '
+    +q.user_agent_missing+' without user agent; '
+    +q.not_identified_as_crawler+' other user agents. The last group is NOT verified people. '
+    +'Test-tagged and retired-kit events are outside this scope.';
+  if(summary) summary.textContent=q.raw_requests+' raw requests; '+q.declared_crawler
+    +' flagged crawlers; '+q.user_agent_missing+' cannot be classified by user agent';
+}
 function loadItems(){
   var el=document.getElementById('itemsbycountry');
   if(!el) return;
   fetch('/api/geo-stats')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
+      renderDownloadQuality(d);
       var items=(d&&d.assets_detail)||[];
       if(!items.length){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No downloads recorded yet.</div>'; return; }
       var html='';
@@ -1389,7 +1417,7 @@ function loadItems(){
       });
       el.innerHTML=html;
     })
-    .catch(function(){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
+    .catch(function(){ renderDownloadQuality(null); el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
 }
 function renderEndorseDays(d){
   var el=document.getElementById('endorseday');
