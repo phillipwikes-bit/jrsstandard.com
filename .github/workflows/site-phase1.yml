@@ -1,0 +1,32 @@
+name: JRS public site standard-first phase 1 checks
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'enterprise.html'
+      - 'resources.html'
+      - 'research.html'
+      - 'contact.html'
+      - 'tests/site-phase1.mjs'
+      - '.github/workflows/site-phase1.yml'
+  push:
+    paths:
+      - 'index.html'
+      - 'enterprise.html'
+      - 'resources.html'
+      - 'research.html'
+      - 'contact.html'
+      - 'tests/site-phase1.mjs'
+      - '.github/workflows/site-phase1.yml'
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/site-phase1.mjs
+      - run: node tests/public-route-alignment.mjs
