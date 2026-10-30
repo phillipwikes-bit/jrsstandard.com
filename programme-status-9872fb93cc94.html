@@ -106,14 +106,24 @@ tr.today td{background:rgba(93,191,130,.07)}
        It reads /api/leads-4b7e2c9af106d385, which returns names, emails and
        organisations and is secured the same way this page is: an opaque,
        unlinked, noindex URL with no token. If either slug leaks, rename BOTH. -->
-  <h2 style="font-size:22px">Commercial Inbox</h2>
-  <p class="sub">Everyone who submitted details or tried to pay, newest first. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
+  <h2 style="font-size:22px">Contacts and Commercial Activity</h2>
+  <p class="sub">Recent identified contacts and historic payment-screen attempts, newest first. Website research and training inquiries are measured separately from commercial interest. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
   <div class="cards" id="lead-cards" style="grid-template-columns:repeat(4,1fr)">
-    <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Identified leads</div></div>
+    <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Legacy leads shown</div></div>
     <div class="card"><div class="cv" id="ld-attempts">&middot;</div><div class="ck">Pay-screen attempts</div></div>
     <div class="card"><div class="cv" id="ld-lost">&middot;</div><div class="ck">Attempts that <b style="color:var(--stop-text)">could not pay</b></div></div>
     <div class="card"><div class="cv" id="ld-value">&middot;</div><div class="ck">Stated intent, unpaid</div></div>
   </div>
+
+  <section aria-label="Categorized website inquiry measurements">
+   <h3 style="font-size:18px;margin:18px 0 10px">Website inquiries, separate from commercial leads</h3>
+   <div class="cards" style="grid-template-columns:repeat(2,1fr)">
+    <div class="card"><div class="cv" id="ld-site-total">&middot;</div><div class="ck">Website inquiries, all time</div></div>
+    <div class="card"><div class="cv" id="ld-site-30d">&middot;</div><div class="ck">Website inquiries, last 30 days</div></div>
+   </div>
+   <p class="note" id="ld-site-types">Loading inquiry categories...</p>
+   <p class="note">These counts include only records submitted through the categorized website form. Research, resource and general questions are not evidence of commercial demand. Existing downloads, training, pilots and historic commercial activity are measured in their original categories.</p>
+  </section>
 
   <div class="tablewrap">
    <table>
@@ -1766,7 +1776,9 @@ function ldRender(d){
   var leads = (d && d.leads) || [];
   var att = (d && d.attempts) || [];
 
-  document.getElementById('ld-leads').textContent = leads.length;
+  // Website information inquiries are not commercial leads or purchase intent.
+  document.getElementById('ld-leads').textContent =
+    leads.filter(function(x){return x.source !== 'site-inquiry'}).length;
   document.getElementById('ld-attempts').textContent = att.length;
   document.getElementById('ld-lost').textContent = (d && d.attempts_unconfigured) || 0;
 
@@ -1844,6 +1856,26 @@ function loadLeads(){
     });
 }
 loadLeads();
+function loadSiteInquiryStats(){
+  return fetch('/api/site-inquiry-stats',{credentials:'same-origin',cache:'no-store'})
+    .then(function(r){if(!r.ok)throw new Error('inquiry-stats-'+r.status);return r.json()})
+    .then(function(d){
+      document.getElementById('ld-site-total').textContent=d.total;
+      document.getElementById('ld-site-30d').textContent=d.last_30_days;
+      var names={organization:'Organizations',research:'Research',training:'Training',commercial:'Prospective Spellchecker',general:'General'};
+      var cats=Object.keys(names).map(function(k){return names[k]+': '+(d.by_category[k]||0);});
+      if(d.unclassified_count)cats.push('Unclassified: '+d.unclassified_count);
+      document.getElementById('ld-site-types').textContent=cats.join(' | ');
+    })
+    .catch(function(){
+      document.getElementById('ld-site-total').textContent='Unavailable';
+      document.getElementById('ld-site-30d').textContent='Unavailable';
+      document.getElementById('ld-site-types').textContent='Categorized inquiry totals unavailable; no zero assumed.';
+    });
+}
+loadSiteInquiryStats();
+setInterval(loadSiteInquiryStats,60000);
+setInterval(loadLeads,60000);
 </script>
 <!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
      publishes a panel figure, and scripts/check_zero_drift.py fails the commit
