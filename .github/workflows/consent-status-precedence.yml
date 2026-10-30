@@ -6,11 +6,13 @@ on:
       - 'CLAUDE.md'
       - 'docs/enterprise-diligence/**'
       - 'tests/consent-status-precedence.mjs'
+      - 'docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md'
   push:
     paths:
       - 'CLAUDE.md'
       - 'docs/enterprise-diligence/**'
       - 'tests/consent-status-precedence.mjs'
+      - 'docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md'
   workflow_dispatch:
 
 permissions:
