@@ -38,6 +38,9 @@ on:
       - 'package.json'
       - 'proxy.js'
       - 'tests/owner-router.mjs'
+      - 'api/site-inquiry-stats.js'
+      - 'tests/site-inquiry-stats.mjs'
+      - 'privacy-notice.html'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
   push:
@@ -78,6 +81,9 @@ on:
       - 'package.json'
       - 'proxy.js'
       - 'tests/owner-router.mjs'
+      - 'api/site-inquiry-stats.js'
+      - 'tests/site-inquiry-stats.mjs'
+      - 'privacy-notice.html'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
 permissions:
@@ -95,5 +101,6 @@ jobs:
       - run: node tests/notify-gmail-readiness.mjs
       - run: node tests/owner-access.mjs
       - run: node tests/site-inquiry.mjs
+      - run: node tests/site-inquiry-stats.mjs
       - run: node tests/site-phase1.mjs
       - run: node tests/public-route-alignment.mjs
