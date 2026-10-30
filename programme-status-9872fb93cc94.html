@@ -90,7 +90,7 @@ tr.today td{background:rgba(93,191,130,.07)}
 </script>
 
 <a href="#main-content" class="skip-link">Skip to content</a>
-<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Pilot Submissions</div></div></header>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Private Programme Status <button type="button" id="owner-signout" style="margin-left:12px;background:none;color:inherit;border:1px solid #665b46;padding:5px 10px;cursor:pointer;min-height:36px">Sign out</button></div></div></header>
 <main id="main-content"><div class="wrap">
   <h1>JRS Programme Status</h1>
   <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Figures refresh automatically every 60 seconds and are read from the production database at the moment you open the page.</p>
@@ -2009,5 +2009,16 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 })();
 </script>
 <!-- /JRS SECTION COLLAPSE v1 -->
+<script>
+(function(){
+ var out=document.getElementById('owner-signout');
+ if(!out)return;
+ out.addEventListener('click',function(){
+  fetch('/api/owner-session',{method:'DELETE',credentials:'same-origin',cache:'no-store'})
+   .then(function(){location.replace('/owner-login.html')})
+   .catch(function(){location.replace('/owner-login.html')});
+ });
+})();
+</script>
 </body>
 </html>
