@@ -18,7 +18,7 @@
 ## Changes prepared here
 
 1. Homepage navigation becomes Home / Standard / Resources / Research / Training / For Organizations / Contact & Inquiries.
-2. Four principal pages use the same navigation. On mobile, it wraps and keeps choices visible without sideways scrolling.
+2. Fourteen existing public pages and the new Contact page use the same navigation. On mobile, it wraps and keeps choices visible without sideways scrolling.
 3. Homepage replaces the prominent technical integration section with a four-resource practice path.
 4. Public copy separates the JRS methodology from controlled-development Spellchecker and avoids availability, accuracy, registration or licensing claims.
 5. Organization page presents manual method use instead of an available enterprise product. Existing form and storage contract remain unchanged.
@@ -34,7 +34,7 @@
 
 - Local/CI test: `node tests/site-phase1.mjs`; separately `node tests/public-route-alignment.mjs`. Save actual results.
 - Must inspect iPhone Safari wrapping, click targets, link reachability and accessibility in preview before release.
-- Site navigation audit remains due across additional JRS pages not modified in this first increment. Do not represent the entire site as redesigned.
+- A further inventory of legacy and specialized pages is required; this patch covers fifteen public pages, not every historical or standalone route. Do not represent the entire site as redesigned.
 - **Priority security gate:** audit anonymous and authenticated access to the owner dashboard and every endpoint returning named contacts; complete a secure owner sign-in design with a tested recovery path, without silently blocking existing operational access.
 - Record pre-change historical metrics at a UTC cutoff, including field definitions and download attribution, before any production release.
 - Build durable, spam-resistant category-based inquiries with a private owner inbox and tested Gmail delivery only after the sender provider, domain, and privacy/abuse protections are configured.
