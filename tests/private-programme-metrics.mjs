@@ -51,6 +51,7 @@ try{
     }
     assert.equal(calls,0);
   });
+  globalThis.fetch=async()=>{calls++;return Response.json([])};
   await test('valid signed owner cookie is not rejected by authentication',async()=>{
     const cookie=(await createOwnerCookie()).split(';')[0];
     for(const [name,handler] of Object.entries(handlers)){
