@@ -3,7 +3,7 @@ import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate stats for the contributor-confirmation tile on the private status
-// dashboard, token-free. Reads contributor-confirm rows from pilot_contacts
+// dashboard, owner-authenticated. Reads contributor-confirm rows from pilot_contacts
 // using the server-side service-role key and returns ONLY counts and the roster
 // codes that have responded.
 //
@@ -13,8 +13,8 @@ export const config = { runtime: 'edge' };
 // /api/enroll-stats and /api/access-stats.
 //
 // The codes list is included deliberately: it is the owner's outstanding-chase
-// list before the fallback date, and a bare study code identifies nobody
-// outside the private roster held in /api/contributor. GET only.
+// list before the fallback date, and study codes may be linkable to identities through repository history.
+// These results are restricted to the owner. GET only.
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
@@ -28,7 +28,7 @@ import { ROSTER_SIZE } from './_contributor-roster.js';
 function json(o, s){
   return new Response(JSON.stringify(o), {
     status: s || 200,
-    headers: { 'Content-Type':'application/json', 'Cache-Control':'private, no-store', 'Cache-Control':'no-store' }
+    headers: { 'Content-Type':'application/json', 'Cache-Control':'private, no-store', 'X-Robots-Tag':'noindex, nofollow', 'Referrer-Policy':'no-referrer' }
   });
 }
 
