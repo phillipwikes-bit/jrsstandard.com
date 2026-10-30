@@ -62,7 +62,7 @@ const ALERTS_ENABLED = ((typeof process !== 'undefined' && process.env) || {})
 // No notification is sent to a fallback mailbox, even if a provider key exists.
 function configuredAddress(v) {
   const s = String(v || '').trim();
-  return /^[^\\s@<>]+@[^\\s@<>]+\\.[^\\s@<>]+$/.test(s) ? s : '';
+  return /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(s) ? s : '';
 }
 
 function env() {
