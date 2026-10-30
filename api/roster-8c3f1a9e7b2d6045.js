@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
@@ -34,6 +35,8 @@ async function sha256hex(str){
 }
 
 export default async function handler(req){
+  const denied=await ownerAccess(req);
+  if(denied)return denied;
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   const H = { 'Content-Type':'text/html; charset=utf-8', 'X-Robots-Tag':'noindex, nofollow', 'Cache-Control':'no-store' };
