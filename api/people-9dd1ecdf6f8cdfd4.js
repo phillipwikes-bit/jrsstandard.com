@@ -34,6 +34,7 @@ import { resolveCountries } from './_country-backfill.js';
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 const LABEL = {
+  'site-inquiry':        'Website inquiry',
   'guide-register':      'Investigator Guide',
   'support-register':    'Initiative',
   'contributor-confirm': 'Study contributor',
