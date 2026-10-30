@@ -31,7 +31,8 @@ const paths = [
   'docs/enterprise-diligence/RIGHTS_AND_AGREEMENTS_EVIDENCE_REGISTER.md',
   'docs/enterprise-diligence/ASSET_AND_CHAIN_OF_TITLE_EVIDENCE_COMPLETION_UPDATE.md',
   'docs/enterprise-diligence/ASSET_AND_CHAIN_OF_TITLE_REGISTER.md',
-  'docs/enterprise-diligence/EVIDENCE_LEDGER.md'
+  'docs/enterprise-diligence/EVIDENCE_LEDGER.md',
+  'docs/architecture/CURRENT_ENGINE_HANDOFF_2026-10-05.md'
 ];
 
 for (const path of paths) {
@@ -50,4 +51,4 @@ for (const path of paths) {
   assert.ok(!/\b(?:Tanvi|Stacyann)\s+(?:has no consent|did not consent|lacks consent)\b/i.test(current),
     path + ': false consent claim in controlling block');
 }
-console.log('PASS: contributor consent E-002/E-003 recognized; E-005 scoped to coauthor form; eight controlling documents consistent.');
+console.log('PASS: contributor consent E-002/E-003 recognized; E-005 scoped to coauthor form; nine controlling documents consistent.');
