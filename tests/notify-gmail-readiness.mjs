@@ -31,7 +31,15 @@ try {
   assert.equal(absent.provider,'none');
 
   process.env.RESEND_API_KEY='dummy-test-key';
+  assert.equal(enabled.notifyConfigured(),false);
+  const noAddress=await enabled.notify('test',{text:'test',html:'test'});
+  assert.equal(noAddress.sent,false);
+  assert.equal(noAddress.detail,'recipient_or_verified_sender_not_configured');
+
   process.env.NOTIFY_TO='owner@example.test';
+  assert.equal(enabled.notifyConfigured(),false);
+  process.env.NOTIFY_FROM='not-an-address';
+  assert.equal(enabled.notifyConfigured(),false);
   process.env.NOTIFY_FROM='alerts@example.test';
   assert.equal(enabled.notifyConfigured(),true);
   let calls=[];
@@ -54,7 +62,7 @@ try {
   const failure=await enabled.notify('New inquiry',{text:'test',html:'test'});
   assert.equal(failure.sent,false);
   assert.equal(failure.provider,'resend');
-  console.log('PASS: disabled-by-default, missing-provider, Gmail routing, reply-to, provider outage');
+  console.log('PASS: disabled-by-default, missing-provider, Gmail routing, reply-to, provider outage, no fallback recipient/sender');
 } finally {
   globalThis.fetch=originalFetch;
   for(const [k,v] of Object.entries(original)) {
