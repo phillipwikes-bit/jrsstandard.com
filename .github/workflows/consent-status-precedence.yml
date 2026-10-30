@@ -1,0 +1,26 @@
+name: Verify contributor consent status interpretation
+
+on:
+  pull_request:
+    paths:
+      - 'CLAUDE.md'
+      - 'docs/enterprise-diligence/**'
+      - 'tests/consent-status-precedence.mjs'
+  push:
+    paths:
+      - 'CLAUDE.md'
+      - 'docs/enterprise-diligence/**'
+      - 'tests/consent-status-precedence.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  consent-status:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Verify evidence and controlling consent interpretation
+        run: node tests/consent-status-precedence.mjs
