@@ -1,0 +1,23 @@
+name: JRS inquiry email readiness regression
+on:
+  pull_request:
+    paths:
+      - 'api/_notify.js'
+      - 'tests/notify-gmail-readiness.mjs'
+      - '.github/workflows/notify-gmail-readiness.yml'
+  push:
+    paths:
+      - 'api/_notify.js'
+      - 'tests/notify-gmail-readiness.mjs'
+      - '.github/workflows/notify-gmail-readiness.yml'
+permissions:
+  contents: read
+jobs:
+  offline-notify-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/notify-gmail-readiness.mjs
