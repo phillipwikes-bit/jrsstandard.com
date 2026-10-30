@@ -2,7 +2,7 @@ import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
-// Aggregate commercial-funnel stats for the private status dashboard, token-free.
+// Aggregate commercial-funnel stats for the private status dashboard, owner-authenticated.
 //
 // WHY THIS EXISTS. api/checkout.js writes two things: a 'checkout-click' event
 // for every arrival at the pay screen, and a 'checkout-fallback' contact row for
@@ -47,7 +47,8 @@ function json(o, s) {
     headers: {
       'Content-Type': 'application/json',
       'Cache-Control': 'private, no-store',
-      'Cache-Control': 'no-store'
+      'X-Robots-Tag': 'noindex, nofollow',
+      'Referrer-Policy': 'no-referrer'
     }
   });
 }
