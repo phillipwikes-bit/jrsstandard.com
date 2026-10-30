@@ -93,19 +93,22 @@ tr.today td{background:rgba(93,191,130,.07)}
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Private Programme Status <button type="button" id="owner-signout" style="margin-left:12px;background:none;color:inherit;border:1px solid #665b46;padding:5px 10px;cursor:pointer;min-height:36px">Sign out</button></div></div></header>
 <main id="main-content"><div class="wrap">
   <h1>JRS Programme Status</h1>
-  <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Figures refresh automatically every 60 seconds and are read from the production database at the moment you open the page.</p>
-  <!-- COMMERCIAL INBOX. Added 2026-08-25, at the TOP, above the reviewer panel.
-       Everything else on this page is a count. This is the only block that is a
-       QUEUE: rows here are people waiting on a reply, and a person waiting is
-       more urgent than any figure below.
+  <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Supported figures refresh automatically every 60 seconds. Some owner-only reads may show unavailable when authentication or backend configuration is missing; that must not be interpreted as zero.</p>
+  <section aria-label="Owner-only contact and research records">
+   <h2 style="font-size:18px">Owner records</h2>
+   <p class="sub">These views contain names and contact details and require the signed owner session. Use the sign-out control when finished. The links do not send these records to the public website or Google Analytics.</p>
+   <p class="note">
+    <a href="/api/enroll-admin" style="color:var(--accent)">Training enrollments and completions</a>
+    &nbsp;·&nbsp;
+    <a href="/api/support-contacts" style="color:var(--accent)">Supporters and requested follow-ups</a>
+   </p>
+   <p class="note">Owner-access data can contain consent choices. A contact record is not permission to publish a name or transfer personal information.</p>
+  </section>
 
-       Thirteen buyers reached the pay screen between 14 and 21 August 2026 and
-       the owner found out weeks later by querying a table. That is the failure
-       this block exists to end.
-
-       It reads /api/leads-4b7e2c9af106d385, which returns names, emails and
-       organisations and is secured the same way this page is: an opaque,
-       unlinked, noindex URL with no token. If either slug leaks, rename BOTH. -->
+  <!-- This is an owner-only response queue, not a commercial conversion claim.
+       URL secrecy is not an access control. The page is protected by the
+       server-side owner proxy, and private API readers require ownerAccess().
+       Site inquiries are grouped separately from historical commercial paths. -->
   <h2 style="font-size:22px">Contacts and Commercial Activity</h2>
   <p class="sub">Recent identified contacts and historic payment-screen attempts, newest first. Website research and training inquiries are measured separately from commercial interest. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
   <div class="cards" id="lead-cards" style="grid-template-columns:repeat(4,1fr)">
