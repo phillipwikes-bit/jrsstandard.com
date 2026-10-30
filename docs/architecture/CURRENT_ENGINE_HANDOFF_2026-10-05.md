@@ -1,5 +1,9 @@
 # Current JRS Engine Handoff
 
+<!-- CONSENT_STATUS_PRECEDENCE_2026_10_30_START -->
+> **Rights/evidence interpretation supplement (2026-10-30).** Tanvi Pokhriyal is **COVERED** by executed contributor consent E-002 dated **2026-08-22**; Stacyann Young is **COVERED** by executed contributor consent E-003 dated **2026-08-27**. The separate coauthor-specific form's **0 of 3** confirmations (E-005) refers **only** to that form, not to missing overall consent. Never report either person as unconsented or request duplicate consent merely because that instrument was unused. Ubayet Hossain's authorship approval is separately evidenced; commercial/successor rights require separate disposition. Consent is not an assignment, software equity, or unrestricted commercial grant. Current source: `docs/enterprise-diligence/JRS_MASTER_ASSET_EVIDENCE_AND_CHAIN_OF_TITLE_REGISTER.md` controlling 2026-10-30 amendment and `docs/enterprise-diligence/EVIDENCE_LEDGER.md`. The original October 3 source-aligned files remain preserved as the historic baseline and are not retrospectively rewritten.
+<!-- CONSENT_STATUS_PRECEDENCE_2026_10_30_END -->
+
 **Effective date:** 2026-10-05  
 **Applies to:** Claude Code and any other temporary development agent.  
 **Status:** Current operating override for Engine and public-boundary work.  
