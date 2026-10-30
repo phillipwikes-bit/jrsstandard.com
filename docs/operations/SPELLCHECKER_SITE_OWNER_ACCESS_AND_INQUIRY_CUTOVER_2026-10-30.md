@@ -93,3 +93,9 @@ All tests are synthetic and no actual Gmail delivery, record-subject consent, pa
 ### Decision rule
 
 **Keep PR #48 in draft; no production merge.** A green CI run or a Vercel preview status is an engineering prerequisite, not release, market, rights or validation evidence. The historical Review Engine remains `NO_GO_NOT_VERIFIED`.
+
+### 2026-10-30 notification destination fail-closed correction
+
+The integrated sender now requires an explicit `NOTIFY_TO` and `NOTIFY_FROM` as well as the mail-provider key and enabled owner gate. No default recipient or default sender is used. This prevents a provider credential added later from silently forwarding contact details to an obsolete or unintended mailbox. `notifyConfigured()` reports false if any of those inputs is missing. A syntactically valid sender address is not proof of domain verification; a real provider acceptance and Gmail inbox receipt remain mandatory. This correction is recorded in the same regression suite.
+
+The Vercel project has the intended recipient configured privately. **The provider key and explicit verified sender have not been established**. Production delivery is therefore not verified and must not be described as live.
