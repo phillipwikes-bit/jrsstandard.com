@@ -76,6 +76,8 @@ export default async function handler(req) {
     name,email,organization,source:SOURCE,
     message:JSON.stringify({
       kind:SOURCE,category,note,country,consent_to_contact:true,
+      consent_version:'contact-v1-2026-10-30',
+      consent_to_transfer:false,
       created_at:new Date().toISOString(),
       software_access_requested:false
     })
