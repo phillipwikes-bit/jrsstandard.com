@@ -602,5 +602,11 @@
         }
       ]
     }
-  ]
+  ],
+  "proxy": {
+    "entrypoint": "proxy.js",
+    "matcher": [
+      "/programme-status-9872fb93cc94.html"
+    ]
+  }
 }
