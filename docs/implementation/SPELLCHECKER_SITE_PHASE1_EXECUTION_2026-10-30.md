@@ -1,8 +1,8 @@
-# Spellchecker/JRS public-site implementation, first controlled increment
+# Decision Spellchecker / JRS public-site implementation, first controlled increment
 
 **Date:** 2026-10-30  
 **Status:** REVIEW BRANCH ONLY. NOT PRODUCTION.  
-**Controlling programme:** Spellchecker Comprehensive Programme v1.0 (2026-10-30), sections 00, 01, 08, 09, 10 and 11.  
+**Controlling programme:** `Spellchecker Comprehensive Programme v1.0` (historical planning-document title; product name: **Decision Spellchecker**) (2026-10-30), sections 00, 01, 08, 09, 10 and 11.  
 **Source alignment:** 2026-10-03 asset register, evidence ledger, architecture blueprint; exact three handoff SHA-256 hashes checked and matched before editing.
 
 ## What was verified before work
@@ -20,7 +20,7 @@
 1. Homepage navigation becomes Home / Standard / Resources / Research / Training / For Organizations / Contact & Inquiries.
 2. Fourteen existing public pages and the new Contact page use the same navigation. On mobile, it wraps and keeps choices visible without sideways scrolling.
 3. Homepage replaces the prominent technical integration section with a four-resource practice path.
-4. Public copy separates the JRS methodology from controlled-development Spellchecker and avoids availability, accuracy, registration or licensing claims.
+4. Public copy separates the JRS methodology from controlled-development Decision Spellchecker and avoids availability, accuracy, registration or licensing claims.
 5. Organization page presents manual method use instead of an available enterprise product. Existing form and storage contract remain unchanged.
 6. A new `contact.html` offers the existing organizational form and explicit subject-routed email links for research, resources and prospective product interest, with a confidentiality warning. The future full category-based inquiry portal remains open.
 
