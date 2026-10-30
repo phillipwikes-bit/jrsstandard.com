@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
 // Owner-only reader for the blind second-read submissions.
@@ -17,7 +18,7 @@ export const config = { runtime: 'edge' };
 //
 // Historical rationale below is superseded. The public repository exposes
 // the path; owner bearer authentication now gates access before DB use.
-// Secured by its own opaque URL and no token, matching
+// Historically used its own opaque URL; now requires authenticated owner access, matching
 // api/people-9dd1ecdf6f8cdfd4.js and api/leads-4b7e2c9af106d385.js. Never linked
 // from a public page, never given an analytics tag. If it leaks, rename the file
 // to rotate it.
@@ -37,6 +38,8 @@ function json(body, status) {
 }
 
 export default async function handler(req) {
+  const denied=await ownerAccess(req);
+  if(denied)return denied;
   const env = (typeof process !== 'undefined' && process.env) ? process.env : {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return json({ ok: false, error: 'service_key_missing' }, 503);
