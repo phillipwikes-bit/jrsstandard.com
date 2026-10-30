@@ -10,7 +10,7 @@ function request(auth){return new Request(route,{headers:auth?{Authorization:'Be
 let calls=[];
 try{
  let r=await handler(request());
- assert.equal(r.status,401===r.status?401:503); // no configured token must fail closed
+ assert.equal(r.status,503); // no configured token must fail closed
  process.env.OWNER_DASHBOARD_TOKEN=owner;
  r=await handler(request());
  assert.equal(r.status,401);
