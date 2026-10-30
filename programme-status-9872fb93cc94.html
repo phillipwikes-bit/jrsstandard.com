@@ -1862,7 +1862,7 @@ function loadSiteInquiryStats(){
     .then(function(d){
       document.getElementById('ld-site-total').textContent=d.total;
       document.getElementById('ld-site-30d').textContent=d.last_30_days;
-      var names={organization:'Organizations',research:'Research',training:'Training',commercial:'Prospective Spellchecker',general:'General'};
+      var names={organization:'Organizations',research:'Research',training:'Training',commercial:'Prospective Decision Spellchecker',general:'General'};
       var cats=Object.keys(names).map(function(k){return names[k]+': '+(d.by_category[k]||0);});
       if(d.unclassified_count)cats.push('Unclassified: '+d.unclassified_count);
       document.getElementById('ld-site-types').textContent=cats.join(' | ');
