@@ -1,4 +1,5 @@
 import { fetchAllRows } from './_sb-fetch.js';
+import { CRAWLER, isCrawler } from './_traffic-quality.js';
 export const config = { runtime: 'edge' };
 
 // Asset engagement statistics for acquisition diligence.
@@ -177,8 +178,7 @@ export default async function handler(req){
   // Applied to the public view and device aggregates only. It is a user-agent
   // match, so it catches declared crawlers and nothing else; it is not a
   // fraud control and does not pretend to be one.
-  const CRAWLER = /googlebot|bingbot|baiduspider|yandexbot|duckduckbot|applebot|GoogleOther|bingpreview|facebookexternalhit|bot|spider|crawl|slurp|preview|headless|python-requests|curl|wget/i;
-  function isCrawler(p){ return CRAWLER.test(String((p || {}).user_agent || '')); }
+  // Shared declared-crawler heuristic. Do not treat nonmatches as verified people.
 
   // Device split, now that user-agent is captured. Only rows written since that
   // change carry the flag, so the denominator is stated rather than implied.
