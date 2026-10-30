@@ -91,6 +91,8 @@ try{
    const message=JSON.parse(stored.message);
    assert.equal(message.category,'research');
    assert.equal(message.consent_to_contact,true);
+   assert.equal(message.consent_version,'contact-v1-2026-10-30');
+   assert.equal(message.consent_to_transfer,false);
    assert.equal(message.software_access_requested,false);
    assert.ok(!stored.message.includes('synthetic-pass'));
    assert.ok(!stored.message.includes('synthetic-bot-secret'));
