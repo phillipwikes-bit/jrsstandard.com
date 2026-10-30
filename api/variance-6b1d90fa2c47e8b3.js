@@ -338,14 +338,9 @@ function profileSd(scored, which, fit){
 }
 
 export default async function handler(req){
+  if (req.method !== 'GET') return json({ok:false,error:'method_not_allowed'},405);
   const denied=await ownerAccess(req);
   if(denied)return denied;
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, OPTIONS'
-    }});
-  }
 
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
