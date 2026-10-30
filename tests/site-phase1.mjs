@@ -28,7 +28,7 @@ for(const v of ['other','evaluation'])check('inquiry topic matches server allowl
 const contact=readFileSync('contact.html','utf8');
 check('contact has distinct routes',()=>{for(const t of ['Organizational use','Research collaboration','Training and resources','Prospective Spellchecker interest'])assert.ok(contact.includes(t))});
 check('contact disallows confidential records',()=>assert.ok(contact.includes('Do not transmit identifiable case records')));
-check('contact does not claim operational Gmail delivery',()=>assert.ok(contact.includes('not represented as operational')));
+check('contact does not claim operational Gmail delivery',()=>assert.ok(contact.includes('not yet been confirmed as operational')));
 check('dashboard never gains GA4 from this change',()=>assert.ok(!readFileSync('programme-status-9872fb93cc94.html','utf8').includes('googletagmanager.com/gtag/js')));
 const routes=JSON.parse(readFileSync('vercel.json','utf8'));
 check('existing enterprise compatibility redirect preserved',()=>assert.ok(routes.redirects.some(x=>x.source==='/enterprise')));
