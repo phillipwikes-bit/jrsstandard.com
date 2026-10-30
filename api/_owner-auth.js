@@ -26,6 +26,9 @@ function urlToBytes(value){
   let raw;try{raw=atob(s+'='.repeat((4-s.length%4)%4));}catch{return null;}
   const out=new Uint8Array(raw.length);
   for(let i=0;i<raw.length;i++)out[i]=raw.charCodeAt(i);
+  // Reject noncanonical base64url encodings, including signatures with
+  // changed pad bits that decode to identical bytes.
+  if(bytesToUrl(out)!==value)return null;
   return out;
 }
 async function key(secret){
