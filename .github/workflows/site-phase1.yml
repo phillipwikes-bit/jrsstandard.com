@@ -17,6 +17,12 @@ on:
       - 'terms.html'
       - 'simulations.html'
       - 'implementation-scenarios.html'
+      - 'api/site-inquiry.js'
+      - 'api/site-inquiry-config.js'
+      - 'api/leads-4b7e2c9af106d385.js'
+      - 'api/people-9dd1ecdf6f8cdfd4.js'
+      - 'vercel.json'
+      - 'tests/site-inquiry.mjs'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
   push:
@@ -36,6 +42,12 @@ on:
       - 'terms.html'
       - 'simulations.html'
       - 'implementation-scenarios.html'
+      - 'api/site-inquiry.js'
+      - 'api/site-inquiry-config.js'
+      - 'api/leads-4b7e2c9af106d385.js'
+      - 'api/people-9dd1ecdf6f8cdfd4.js'
+      - 'vercel.json'
+      - 'tests/site-inquiry.mjs'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
 permissions:
@@ -48,5 +60,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: node tests/site-inquiry.mjs
       - run: node tests/site-phase1.mjs
       - run: node tests/public-route-alignment.mjs
