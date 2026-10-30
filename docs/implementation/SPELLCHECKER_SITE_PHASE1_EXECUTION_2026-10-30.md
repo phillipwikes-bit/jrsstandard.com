@@ -41,3 +41,22 @@
 - Merge/release is separate human approval. No live database writes, external provider calls or production deployment were performed here.
 
 **Gate decision:** DEVELOPMENT INCREMENT PREPARED; PRODUCTION HOLD. No legal, research, model-performance or commercial status has changed.
+
+
+## 2026-10-30 continuation: category-based intake on review branch
+
+**Implemented in branch, not in production:**
+- `contact.html`: full five-category intake form with required name, email, message, explicit permission to contact, optional organization and no record attachments; failure and confirmation statuses distinguish a stored record from email notification.
+- `api/site-inquiry-config.js`: returns only a public Turnstile site key after required server configuration exists.
+- `api/site-inquiry.js`: accepts only same-origin JSON POST; requires Cloudflare Turnstile verification with hostname agreement; rejects malformed and oversize input; stores in existing `pilot_contacts` under source `site-inquiry` before attempting a separately controlled email alert.
+- `api/leads-4b7e2c9af106d385.js`: includes this inquiry source in the owner inbox with a category label and note, retaining older lead sources.
+- `api/people-9dd1ecdf6f8cdfd4.js`: recognizes site-inquiry rows in the existing named-contact list.
+- `vercel.json`: admits only the Turnstile challenge host under the page's CSP for challenge script/frame/connection.
+- `tests/site-inquiry.mjs`: isolated regression checks for method, origin, required fields, absent configuration, rejected/mismatched challenge, non-storage of honeypots, storage failure and success path.
+
+**Operational requirements, not yet met:**
+- Cloudflare Turnstile site and secret keys, with the actual public/preview hostnames correctly configured and verified. The inquiry form deliberately remains disabled without this anti-abuse prerequisite.
+- PR #47's owner-approved notifier change, verified sender domain and configured email provider are required before a Gmail arrival can be claimed. The current branch keeps the existing notifier disabled, so stored submissions do not imply alert delivery.
+- Authenticated owner access to all named-contact endpoints, not merely a hard-to-guess URL. Current owner dashboard source still includes direct Supabase browser reads for participation data; separate privacy/security remediation is required before a release.
+- Browser acceptance in actual iPhone Safari, network interruptions, keyboard focus, screen readers, and false duplicate submissions. The system does not claim exactly-once writes across distinct challenge completions.
+- Privacy notice, data retention/subject-rights processes, and operational incident notification review. Live traffic, actual contact, payment, and production database writes were **not** used in this engineering task.
