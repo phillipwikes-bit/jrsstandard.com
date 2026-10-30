@@ -37,33 +37,27 @@
 // keeps the function edge-compatible.
 
 // ============================================================================
-// EMAIL ALERTS ARE DISABLED. OWNER DIRECTIVE, 2026-08-25.
+// INQUIRY EMAIL ALERTS: OWNER REQUEST, 2026-10-30.
 //
-// "The owner relies exclusively on the dashboard for leads. Do NOT configure or
-// send email alerts."
+// This supersedes the 2026-08-25 owner directive to use the dashboard only.
+// The original disabled default is preserved as an explicit server-side gate:
+// JRS_INQUIRY_ALERTS_ENABLED must be exactly "true". In addition, a configured
+// RESEND_API_KEY or SENDGRID_API_KEY is required to transmit anything. NOTIFY_TO
+// is a private Vercel environment setting, never a committed email address.
 //
-// The switch is HERE, at the single point every caller passes through, rather
-// than by unwiring api/checkout.js and api/enterprise-inquiry.js. Two reasons.
+// Do not treat an inquiry as successfully emailed merely because database
+// capture succeeded: notifyConfigured() requires BOTH the switch and provider.
+// Every caller must still persist its database record BEFORE calling notify().
+// Mail failure must not erase a lead or cause the visitor to resubmit it.
 //
-// 1. Unwiring the callers would leave the capture paths edited for a reason
-//    unrelated to capture, and the next person to read them would have no idea
-//    an alert was ever intended. The wiring documents the decision; the flag
-//    enforces it.
-// 2. A kill switch at one point cannot be partially applied. Removing calls one
-//    file at a time can be, and a half-removed alert path is how a directive
-//    gets silently violated by the endpoint nobody remembered.
-//
-// notify() now returns before reading any key, so setting RESEND_API_KEY or
-// SENDGRID_API_KEY in the environment does NOT re-enable sending. Turning
-// alerts back on is a deliberate code change to this constant, which is a
-// visible act in a diff.
-//
-// NOTHING ELSE CHANGES. Leads still write to pilot_contacts, the visitor still
-// sees success, and the Commercial Inbox on the private status page still shows
-// every row. The alert was always the secondary path; the row was always the
-// durable one.
+// Operational prerequisites before declaring Gmail notifications working:
+// verified sender domain, active mail-provider key in server environment,
+// preview test with a synthetic inquiry, actual inbox receipt, and a tested
+// provider-failure path. Production deployment requires separate release review.
 // ============================================================================
-const ALERTS_ENABLED = false;
+// The environment gate is read when the server module is initialized.
+const ALERTS_ENABLED = ((typeof process !== 'undefined' && process.env) || {})
+  .JRS_INQUIRY_ALERTS_ENABLED === 'true';
 
 const DEFAULT_TO = 'info@jrsstandard.com';
 const DEFAULT_FROM = 'alerts@jrsstandard.com';
@@ -189,10 +183,10 @@ async function sendViaSendGrid(key, to, from, subject, body, replyTo) {
  * @param {string} [replyTo]                  the prospect's own address
  */
 export async function notify(subject, body, replyTo) {
-  // Hard stop, before any key is read. See ALERTS_ENABLED above.
+  // Explicit owner-controlled gate, before reading any provider key.
   if (!ALERTS_ENABLED) {
     return { sent: false, provider: 'disabled',
-             detail: 'alerts_disabled_by_owner_directive' };
+             detail: 'alerts_disabled_by_environment_gate' };
   }
 
   const E = env();
@@ -238,8 +232,8 @@ export function notifyConfigured() {
   return !!(E.RESEND_API_KEY || E.SENDGRID_API_KEY);
 }
 
-// Exported so a guard or a status endpoint can assert the directive is still in
-// force without parsing this file.
+// Exposes whether the explicit environment gate is on, not delivery success.
+// Use notifyConfigured() to require both gate and provider.
 export function alertsEnabled() {
   return ALERTS_ENABLED;
 }
