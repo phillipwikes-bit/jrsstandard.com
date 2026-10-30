@@ -59,7 +59,7 @@ try {
     return new Response('synthetic upstream interruption',{status:503});
   };
   await check('any incomplete research dataset is refused instead of silently truncated',async()=>{
-    for(const [name,handler] of Object.entries({recheck,roster,geo})){
+    for(const [name,handler] of Object.entries({recheck,roster,geo,variance})){
       const r=await handler(request(name,'GET',true));
       assert.equal(r.status,502,name);
       assert.ok(!(await r.text()).includes('synthetic-server-only-db-key'));
