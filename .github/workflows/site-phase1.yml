@@ -32,6 +32,9 @@ on:
       - 'api/variance-6b1d90fa2c47e8b3.js'
       - 'owner-login.html'
       - 'programme-status-9872fb93cc94.html'
+      - 'api/enroll-admin.js'
+      - 'api/support-contacts.js'
+      - 'tests/owner-data-views.mjs'
       - 'tests/owner-access.mjs'
       - 'api/_notify.js'
       - 'tests/notify-gmail-readiness.mjs'
@@ -77,6 +80,9 @@ on:
       - 'api/variance-6b1d90fa2c47e8b3.js'
       - 'owner-login.html'
       - 'programme-status-9872fb93cc94.html'
+      - 'api/enroll-admin.js'
+      - 'api/support-contacts.js'
+      - 'tests/owner-data-views.mjs'
       - 'tests/owner-access.mjs'
       - 'api/_notify.js'
       - 'tests/notify-gmail-readiness.mjs'
@@ -104,6 +110,7 @@ jobs:
       - run: node tests/owner-router.mjs
       - run: node tests/notify-gmail-readiness.mjs
       - run: node tests/owner-access.mjs
+      - run: node tests/owner-data-views.mjs
       - run: node tests/site-inquiry.mjs
       - run: node tests/site-inquiry-stats.mjs
       - run: node tests/decision-spellchecker-name.mjs
