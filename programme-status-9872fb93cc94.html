@@ -70,8 +70,25 @@ tr.today td{background:rgba(93,191,130,.07)}
 .skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
 .skip-link:focus{left:0}
 </style>
+<style>
+#owner-auth-cover{position:fixed;inset:0;background:#080807;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:system-ui,sans-serif;color:#f3ede2}
+#owner-auth-cover p{max-width:390px;text-align:center;padding:26px}
+</style>
 </head>
 <body>
+<div id="owner-auth-cover" aria-live="polite"><p>Checking private dashboard access...</p></div>
+<script>
+(function(){
+ fetch('/api/owner-session',{credentials:'same-origin',cache:'no-store'})
+ .then(function(r){
+   if(!r.ok){location.replace('/owner-login.html');return;}
+   var cover=document.getElementById('owner-auth-cover');
+   if(cover)cover.remove();
+ })
+ .catch(function(){location.replace('/owner-login.html')});
+})();
+</script>
+
 <a href="#main-content" class="skip-link">Skip to content</a>
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Pilot Submissions</div></div></header>
 <main id="main-content"><div class="wrap">
@@ -539,7 +556,7 @@ tr.today td{background:rgba(93,191,130,.07)}
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &middot; confidential &middot; not indexed</div></footer>
 <script>
-var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
+// All record-level reads now use authenticated, server-side owner routes.
 function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
 function rel(iso){
   if(!iso) return 'not started';
@@ -551,7 +568,7 @@ function rel(iso){
 }
 function loadDetection(){
   document.getElementById('live').textContent='Updating…';
-  return fetch(U+'/rest/v1/pilot_progress?select=code,name,total_reads,reads_today,last_at&order=total_reads.desc,code.asc',{headers:HDR})
+  return fetch('/api/owner-progress?view=pilot',{credentials:'same-origin',cache:'no-store'})
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(rows){
       rows = rows || [];
@@ -592,7 +609,7 @@ function loadDetection(){
     .catch(function(){ document.getElementById('live').textContent='Could not load. Tap Refresh.'; });
 }
 function loadRealcase(){
-  return fetch(U+'/rest/v1/realcase_progress?select=*&order=cases.desc',{headers:HDR})
+  return fetch('/api/owner-progress?view=realcase',{credentials:'same-origin',cache:'no-store'})
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(rows){
       rows = rows || [];
@@ -742,7 +759,7 @@ function loadDownloads(){
    .catch(function(){ document.getElementById('dlchart').innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load downloads. Tap Refresh.</div>'; });
 }
 function loadArmB(){
-  return fetch(U+'/rest/v1/armb_progress?select=code,arm_code,reads,reads_today,last_at&order=reads.desc,code.asc',{headers:HDR})
+  return fetch('/api/owner-progress?view=armb',{credentials:'same-origin',cache:'no-store'})
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
    .then(function(rows){
      rows=rows||[];
