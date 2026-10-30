@@ -41,6 +41,8 @@ on:
       - 'api/site-inquiry-stats.js'
       - 'tests/site-inquiry-stats.mjs'
       - 'privacy-notice.html'
+      - 'tests/decision-spellchecker-name.mjs'
+      - 'docs/implementation/DECISION_SPELLCHECKER_PRODUCT_NAMING_STANDARD_2026-10-30.md'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
   push:
@@ -84,6 +86,8 @@ on:
       - 'api/site-inquiry-stats.js'
       - 'tests/site-inquiry-stats.mjs'
       - 'privacy-notice.html'
+      - 'tests/decision-spellchecker-name.mjs'
+      - 'docs/implementation/DECISION_SPELLCHECKER_PRODUCT_NAMING_STANDARD_2026-10-30.md'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
 permissions:
@@ -102,5 +106,6 @@ jobs:
       - run: node tests/owner-access.mjs
       - run: node tests/site-inquiry.mjs
       - run: node tests/site-inquiry-stats.mjs
+      - run: node tests/decision-spellchecker-name.mjs
       - run: node tests/site-phase1.mjs
       - run: node tests/public-route-alignment.mjs
