@@ -26,11 +26,10 @@
 //   SENDGRID_API_KEY   https://sendgrid.com
 //
 // Optional:
-//   NOTIFY_TO          destination, defaults to info@jrsstandard.com
-//   NOTIFY_FROM        sender, defaults to alerts@jrsstandard.com
-//                      This address must be on a domain verified with the
-//                      provider or the send is rejected. That is a provider
-//                      requirement, not something this code can work around.
+//   NOTIFY_TO          explicit private owner recipient; no fallback is allowed
+//   NOTIFY_FROM        explicit sender on a provider-verified domain
+//                      Do not assume a valid-looking address is verified by
+//                      the provider. Actual delivery must be tested.
 //
 // Neither provider ships an SDK here. Both are a single fetch to a documented
 // REST endpoint, which matches this repository's no-dependency convention and
@@ -59,8 +58,12 @@
 const ALERTS_ENABLED = ((typeof process !== 'undefined' && process.env) || {})
   .JRS_INQUIRY_ALERTS_ENABLED === 'true';
 
-const DEFAULT_TO = 'info@jrsstandard.com';
-const DEFAULT_FROM = 'alerts@jrsstandard.com';
+// Fail closed: destination and verified sender are explicit server settings.
+// No notification is sent to a fallback mailbox, even if a provider key exists.
+function configuredAddress(v) {
+  const s = String(v || '').trim();
+  return /^[^\\s@<>]+@[^\\s@<>]+\\.[^\\s@<>]+$/.test(s) ? s : '';
+}
 
 function env() {
   return (typeof process !== 'undefined' && process.env) || {};
@@ -190,8 +193,12 @@ export async function notify(subject, body, replyTo) {
   }
 
   const E = env();
-  const to = E.NOTIFY_TO || DEFAULT_TO;
-  const from = E.NOTIFY_FROM || DEFAULT_FROM;
+  const to = configuredAddress(E.NOTIFY_TO);
+  const from = configuredAddress(E.NOTIFY_FROM);
+  if (!to || !from) {
+    return { sent: false, provider: 'none',
+             detail: 'recipient_or_verified_sender_not_configured' };
+  }
   const subj = subjectSafe(subject);
 
   const resendKey = E.RESEND_API_KEY || '';
@@ -229,7 +236,9 @@ export function notifyConfigured() {
   // if a flag were flipped.
   if (!ALERTS_ENABLED) return false;
   const E = env();
-  return !!(E.RESEND_API_KEY || E.SENDGRID_API_KEY);
+  return !!(configuredAddress(E.NOTIFY_TO)
+    && configuredAddress(E.NOTIFY_FROM)
+    && (E.RESEND_API_KEY || E.SENDGRID_API_KEY));
 }
 
 // Exposes whether the explicit environment gate is on, not delivery success.
