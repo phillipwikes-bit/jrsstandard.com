@@ -18,7 +18,7 @@ for(const page of pages){
 }
 for(const target of navTargets)check('nav target exists '+target,()=>assert.ok(existsSync(target)));
 const home=readFileSync('index.html','utf8');
-check('homepage explicitly differentiates Spellchecker',()=>assert.match(home,/Spellchecker is a separate/));
+check('homepage explicitly differentiates Decision Spellchecker',()=>assert.match(home,/Decision Spellchecker is a separate/));
 check('homepage free resource pathway',()=>assert.ok(home.includes('Apply the method without buying software')));
 check('homepage remains method and research centered',()=>assert.ok(home.includes('Five review conditions')));
 const org=readFileSync('enterprise.html','utf8');
@@ -26,7 +26,7 @@ const api=readFileSync('api/enterprise-inquiry.js','utf8');
 check('organizational form retains working API route',()=>assert.ok(org.includes("fetch('/api/enterprise-inquiry'")));
 for(const v of ['other','evaluation'])check('inquiry topic matches server allowlist: '+v,()=>assert.ok(api.includes("'"+v+"'")&&org.includes('value="'+v+'"')));
 const contact=readFileSync('contact.html','utf8');
-check('contact has distinct routes',()=>{for(const t of ['Organizational use','Research collaboration','Training and resources','Prospective Spellchecker interest'])assert.ok(contact.includes(t))});
+check('contact has distinct routes',()=>{for(const t of ['Organizational use','Research collaboration','Training and resources','Prospective Decision Spellchecker interest'])assert.ok(contact.includes(t))});
 check('contact disallows confidential records',()=>assert.ok(contact.includes('Do not transmit identifiable case records')));
 check('contact does not claim operational Gmail delivery',()=>assert.ok(contact.includes('not yet been confirmed as operational')));
 check('dashboard never gains GA4 from this change',()=>assert.ok(!readFileSync('programme-status-9872fb93cc94.html','utf8').includes('googletagmanager.com/gtag/js')));
