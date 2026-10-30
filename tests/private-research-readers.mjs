@@ -51,8 +51,12 @@ try {
   let ranges=[];
   globalThis.fetch=async(url,options={})=>{
     calls++;
-    ranges.push(options.headers?.Range||'none');
-    return Response.json(fullBatch);
+    const range=options.headers?.Range||'none';
+    ranges.push(range);
+    // First page looks plausible. A second-page provider failure must prevent
+    // the entire incomplete dataset from being presented as a full result.
+    if(range==='0-999')return Response.json(fullBatch);
+    return new Response('synthetic upstream interruption',{status:503});
   };
   await check('any incomplete research dataset is refused instead of silently truncated',async()=>{
     for(const [name,handler] of Object.entries({recheck,roster,geo})){
