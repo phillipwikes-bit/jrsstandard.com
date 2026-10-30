@@ -99,3 +99,17 @@ All tests are synthetic and no actual Gmail delivery, record-subject consent, pa
 The integrated sender now requires an explicit `NOTIFY_TO` and `NOTIFY_FROM` as well as the mail-provider key and enabled owner gate. No default recipient or default sender is used. This prevents a provider credential added later from silently forwarding contact details to an obsolete or unintended mailbox. `notifyConfigured()` reports false if any of those inputs is missing. A syntactically valid sender address is not proof of domain verification; a real provider acceptance and Gmail inbox receipt remain mandatory. This correction is recorded in the same regression suite.
 
 The Vercel project has the intended recipient configured privately. **The provider key and explicit verified sender have not been established**. Production delivery is therefore not verified and must not be described as live.
+
+## 7. Additional owner-only programme metrics access remediation (2026-10-30)
+
+Three previously unauthenticated private dashboard statistics readers have been updated in the development branch:
+
+- `api/coauthor-stats.js`: co-author response codes and answers can be reidentified against historical roster evidence. Owner session required before any database access.
+- `api/contributor-stats.js`: consent/confirmation response codes may be linkable to identified contributors. Owner session required before any database access.
+- `api/checkout-stats.js`: legacy offer and geographic funnel information is restricted to the owner, separate from public research or training statistics.
+
+The three routes now reject anonymous access, reject legacy query-string tokens, and no longer advertise permissive wildcard CORS. Their source-level checks are enforced by `tests/private-programme-metrics.mjs` in the phase-one CI workflow. No underlying database records, event writers, denominators, or historical classifications were modified.
+
+**Not yet a complete privacy certification:** this increment does not establish that all other private routes or Supabase RLS policies are correct. The complete endpoint inventory and external preview denial tests remain mandatory before a production release. Existing owner dashboard visibility depends on a configured owner credential, which remains unconfigured at this checkpoint.
+
+**Programme boundary:** this security hardening protects the existing JRS owner reporting surface. It is not a production launch, external record-processing authorization, or model-quality validation for **Decision Spellchecker**.
