@@ -1,3 +1,4 @@
+import { fetchAll } from './_sb-fetch.js';
 import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
@@ -38,29 +39,22 @@ function json(body, status) {
 }
 
 export default async function handler(req) {
+  if (req.method !== 'GET') return json({ ok: false, error: 'method_not_allowed' }, 405);
   const denied=await ownerAccess(req);
   if(denied)return denied;
   const env = (typeof process !== 'undefined' && process.env) ? process.env : {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return json({ ok: false, error: 'service_key_missing' }, 503);
 
-  const url = SB + '/rest/v1/pilot_contacts'
-            + '?source=eq.recheck-submit'
-            + '&select=name,email,organization,message,created_at'
-            + '&order=created_at.asc';
-
-  let rows;
-  try {
-    const res = await fetch(url, {
-      headers: { apikey: SERVICE, Authorization: 'Bearer ' + SERVICE }
-    });
-    if (!res.ok) {
-      return json({ ok: false, error: 'db_read_failed', status: res.status }, 502);
-    }
-    rows = await res.json();
-  } catch (e) {
-    return json({ ok: false, error: 'db_unreachable' }, 502);
-  }
+  const result = await fetchAll(SB,
+    'pilot_contacts?source=eq.recheck-submit'
+      + '&select=name,email,organization,message,created_at'
+      + '&order=created_at.asc',
+    { apikey: SERVICE, Authorization: 'Bearer ' + SERVICE });
+  // Never return a partial set of sensitive second-reader submissions as if it
+  // were the complete review population. A truncated page is an error.
+  if (!result.complete) return json({ ok: false, error: 'recheck_rows_incomplete' }, 502);
+  const rows = result.rows;
 
   const out = [];
   for (let i = 0; i < rows.length; i++) {
