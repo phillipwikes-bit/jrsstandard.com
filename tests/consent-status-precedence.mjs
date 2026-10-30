@@ -29,7 +29,9 @@ const paths = [
   'docs/enterprise-diligence/CHAIN_OF_TITLE_STATUS.md',
   'docs/enterprise-diligence/ASSET_PERSON_EVIDENCE_CROSS_REFERENCE.md',
   'docs/enterprise-diligence/RIGHTS_AND_AGREEMENTS_EVIDENCE_REGISTER.md',
-  'docs/enterprise-diligence/ASSET_AND_CHAIN_OF_TITLE_EVIDENCE_COMPLETION_UPDATE.md'
+  'docs/enterprise-diligence/ASSET_AND_CHAIN_OF_TITLE_EVIDENCE_COMPLETION_UPDATE.md',
+  'docs/enterprise-diligence/ASSET_AND_CHAIN_OF_TITLE_REGISTER.md',
+  'docs/enterprise-diligence/EVIDENCE_LEDGER.md'
 ];
 
 for (const path of paths) {
@@ -45,7 +47,7 @@ for (const path of paths) {
   assert.ok(/(contributor consent|contributor-consent)/i.test(current), path + ': contributor-consent scope missing');
   assert.ok(/(only|alone)/i.test(current), path + ': distinct coauthor count not qualified');
   assert.ok(/(assignment|commercial)/i.test(current), path + ': rights boundary missing');
-  assert.ok(!/Tanvi[^\\n.]{0,80}(has no consent|not consented)|Stacyann[^\\n.]{0,80}(has no consent|not consented)/i.test(current),
+  assert.ok(!/(Tanvi|Stacyann)[^\n.]{0,120}(?:has no consent|not consented|consent missing|unconfirmed overall)/i.test(current),
     path + ': reintroduced false consent claim in controlling block');
 }
-console.log('PASS: contributor consent E-002/E-003 recognized; E-005 scoped to coauthor form; six controlling documents consistent.');
+console.log('PASS: contributor consent E-002/E-003 recognized; E-005 scoped to coauthor form; eight controlling documents consistent.');
