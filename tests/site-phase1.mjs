@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 
-const pages=['index.html','resources.html','research.html','enterprise.html','contact.html'];
+const pages=["index.html","resources.html","research.html","enterprise.html","contact.html","about.html","review-engine.html","manifest.html","decision-reconstruction-risk.html","codebook.html","investigator-guides.html","engagement.html","terms.html","simulations.html","implementation-scenarios.html"];
 const navTargets=['index.html','jrsstandard.html','resources.html','research.html','training.html','enterprise.html','contact.html'];
 let checked=0;
 function check(label,fn){try{fn();checked++;console.log('PASS '+label)}catch(e){console.error('FAIL '+label+': '+e.message);process.exitCode=1}}
