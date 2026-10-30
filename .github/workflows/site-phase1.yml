@@ -48,6 +48,8 @@ on:
       - 'api/checkout-stats.js'
       - 'tests/private-programme-metrics.mjs'
       - 'tests/private-research-readers.mjs'
+      - 'tests/route-access-inventory.mjs'
+      - 'docs/security/JRS_DECISION_SPELLCHECKER_READONLY_RLS_INVENTORY_2026-10-30.sql'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
   push:
@@ -98,6 +100,8 @@ on:
       - 'api/checkout-stats.js'
       - 'tests/private-programme-metrics.mjs'
       - 'tests/private-research-readers.mjs'
+      - 'tests/route-access-inventory.mjs'
+      - 'docs/security/JRS_DECISION_SPELLCHECKER_READONLY_RLS_INVENTORY_2026-10-30.sql'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
 permissions:
@@ -113,6 +117,7 @@ jobs:
       - run: npm install --ignore-scripts --no-audit --no-fund
       - run: node tests/owner-router.mjs
       - run: node tests/notify-gmail-readiness.mjs
+      - run: node tests/route-access-inventory.mjs
       - run: node tests/private-research-readers.mjs
       - run: node tests/private-programme-metrics.mjs
       - run: node tests/owner-access.mjs
