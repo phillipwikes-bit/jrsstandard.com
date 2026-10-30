@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
@@ -9,7 +10,9 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
-export default async function handler(){
+export default async function handler(req){
+  const denied=await ownerAccess(req);
+  if(denied)return denied;
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return new Response('Service unavailable', { status: 503 });
