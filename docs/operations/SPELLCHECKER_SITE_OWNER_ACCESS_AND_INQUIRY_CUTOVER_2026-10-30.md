@@ -65,3 +65,31 @@ All tests are synthetic and no actual Gmail delivery, record-subject consent, pa
 **Follow-up work:** consolidate old organizational form into the new portal after verified success; add controlled follow-up status and resolved/unresolved queue counts, with a versioned definition; create incident alerting and notification retry tracking; preserve all old download and pilot measurements; inspect public GitHub and repository history for material mistakenly treated as confidential.
 
 **Do not merge solely because CI passes.** The programme's Engine `NO_GO_NOT_VERIFIED` status, application scope restrictions and the owner-side licensing/rights constraints remain in force.
+
+## 6. Continuation: owner page routing, notification integration and inquiry measurement
+
+**State checked:** 2026-10-30, development branch `feat/spellchecker-site-separation-phase1-2026-10-30`. This section supersedes earlier statements that PR #47 code remains unintegrated into PR #48.
+
+### Completed in branch
+
+1. Integrated the `api/_notify.js` provider-gated change and `tests/notify-gmail-readiness.mjs` from draft PR #47. A provider key and verified sender are still prerequisites. PR #47 remains open for separate historical traceability; the code is now proposed in PR #48 as well.
+2. Added `proxy.js`, `package.json` with pinned `@vercel/functions` dependency, and `vercel.json` proxy matching the exact private Programme Status page. The owner session must pass server-side verification before the static HTML can be served. The former browser-only overlay remains secondary UX protection, not the security boundary.
+3. Extended tests to verify unauthenticated GET/HEAD is blocked before the static page and malformed session-signature encodings are rejected. The signed owner session remains eight hours, HttpOnly, Secure and SameSite=Strict.
+4. Added `api/site-inquiry-stats.js` to count only `source=site-inquiry` stored records, grouped into organization, research, training, prospective commercial and general inquiry types. The endpoint is owner-authenticated and returns no names, emails or message text. Unknown and malformed payloads are counted visibly rather than silently dropped.
+5. Updated Programme Status to show all-time and last-30-day categorized inquiry counts separately. Historical commercial leads, checkout attempts, research cohorts, training and download tracking continue to have distinct definitions. The existing lead table remains an owner response queue, not a population-wide count.
+6. Updated `privacy-notice.html` and the public contact form's consent language, excluding publication and transfer permission. The old extended privacy page remains a historical route; the current public redirect points to the revised notice.
+7. GitHub Actions now runs the server-side routing, notification, owner access, categorized inquiry, inquiry statistics, public navigation and closed-route regression groups. `vercel.json` and current deployment builds require preview acceptance in addition to these offline tests.
+
+### Still required
+
+- Owner authentication secret with a secure owner-controlled recovery path, and verified operation on a real supported phone. It is not yet configured. **Do not merge this change without it:** otherwise the owner dashboard will correctly fail closed.
+- Turnstile keys and authorized hostnames; the categorized form remains deliberately disabled until both server and browser keys are present.
+- Verified transactional sender domain, provider key, actual Gmail receipt and alert failure exercise. A private recipient environment variable alone does not make email operational.
+- Verification of database RLS/anonymous data access, all other owner-only routes, and the public GitHub exposure inventory, including historical commits.
+- Actual pre-release/download/enrollment/research/lead count baseline and post-release reconciliation, with metadata and dates. The offline continuity checks do not prove live database preservation.
+- Preview-route inspection confirming the routing middleware executes before static HTML, not merely that the build reaches READY.
+- Privacy/data retention and subject-access implementation approval, actual mobile/keyboard tests, and explicit recorded production release authorization.
+
+### Decision rule
+
+**Keep PR #48 in draft; no production merge.** A green CI run or a Vercel preview status is an engineering prerequisite, not release, market, rights or validation evidence. The historical Review Engine remains `NO_GO_NOT_VERIFIED`.
