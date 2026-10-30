@@ -94,7 +94,33 @@ tr.today td{background:rgba(93,191,130,.07)}
 <main id="main-content"><div class="wrap">
   <h1>JRS Programme Status</h1>
   <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Supported figures refresh automatically every 60 seconds. Some owner-only reads may show unavailable when authentication or backend configuration is missing; that must not be interpreted as zero.</p>
-  <section aria-label="Owner-only contact and research records">
+  
+  <!-- Owner-only diligence orientation; not a public acquisition prospectus. -->
+  <h2 id="buyer-evidence-snapshot" style="font-size:22px">Licensing and Acquisition Evidence Snapshot</h2>
+  <p class="sub">Owner-only decision summary. A download request is not a person, buyer, deployment or transaction. Current evidence is separated from inferences and outstanding checks.</p>
+  <div class="chart">
+    <h3>What can be established from the records</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Evidence category</th><th scope="col">Observed status</th><th scope="col">Buyer interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>Resource requests</td><td id="buyer-requests">Loading classification...</td><td>Tracked redirects only; not verified practitioners or unique downloads.</td></tr>
+        <tr><td>Practitioner application</td><td>Not established by downloads</td><td>Requires documented, consented application in a real workflow.</td></tr>
+        <tr><td>Organization pilots</td><td>No instrumented invitations as of 30 Oct 2026</td><td>Zero sessions do not constitute rejected offers.</td></tr>
+        <tr><td>Buyer commitment</td><td>Not established by these analytics</td><td>Qualifying purchase, evaluation and acquisition enquiries must be evidenced separately.</td></tr>
+        <tr><td>Decision Spellchecker</td><td>NO_GO_NOT_VERIFIED as of 30 Oct 2026</td><td>Draft code and offline checks are not production validation.</td></tr>
+        <tr><td>Conveyable rights</td><td>Grant-specific review outstanding</td><td>Public authorship, contributor consent and commercial rights are separate.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">These are dated status classifications, not an automated sale-readiness certification. Use the asset register, evidence ledger, release records and actual transaction correspondence to substantiate future buyer claims. Do not share the private owner dashboard with prospects.</div>
+  </div>
+  <nav class="bar" aria-label="Evidence review navigation">
+    <a class="btn" href="#buyer-evidence-snapshot">Overview</a>
+    <a class="btn" href="#contacts-and-commercial">Contacts</a>
+    <a class="btn" href="#training-adoption">Training</a>
+    <a class="btn" href="#resource-downloads">Download quality</a>
+    <a class="btn" href="#sale-dossier">Historical sale dossier</a>
+  </nav>
+<section aria-label="Owner-only contact and research records">
    <h2 style="font-size:18px">Owner records</h2>
    <p class="sub">These views contain names and contact details and require the signed owner session. Use the sign-out control when finished. The links do not send these records to the public website or Google Analytics.</p>
    <p class="note">
@@ -109,7 +135,7 @@ tr.today td{background:rgba(93,191,130,.07)}
        URL secrecy is not an access control. The page is protected by the
        server-side owner proxy, and private API readers require ownerAccess().
        Site inquiries are grouped separately from historical commercial paths. -->
-  <h2 style="font-size:22px">Contacts and Commercial Activity</h2>
+  <h2 id="contacts-and-commercial" style="font-size:22px">Contacts and Commercial Activity</h2>
   <p class="sub">Recent identified contacts and historic payment-screen attempts, newest first. Website research and training inquiries are measured separately from commercial interest. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
   <div class="cards" id="lead-cards" style="grid-template-columns:repeat(4,1fr)">
     <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Legacy leads shown</div></div>
@@ -384,7 +410,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="cb-note">Confirmations will appear here once the first contributor opens their link.</div>
 
-  <h2 style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h2>
+  <h2 id="training-adoption" style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h2>
   <p class="sub">Consented enrollments in the JRS training. Aggregate counts only; no personal data is shown here. The named, consented list is stored privately and is a transfer-ready asset.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="tr-today">&middot;</div><div class="ck">New today (UTC)</div></div>
@@ -399,15 +425,25 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="note" style="margin-top:8px">Country of each training completion. Recorded automatically at completion (geo live since Jul 17, 2026); completions from before then are backfilled from reviewer records. Aggregate counts only.</div>
   </div>
 
-  <h2 style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h2>
+  <h2 id="resource-downloads" style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h2>
   <p class="sub">Downloads of the three Investigator Guide editions: EEO, Fair Housing, and International. By day and by country, from one source, so the by-day total, the by-country total, and the by-asset total are the same number. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
+
   <div class="chart">
-    <h3>Downloads by day</h3>
+    <h3>Request quality by individual resource</h3>
+    <p class="sub">Historical raw requests are preserved. Other user agents have not matched the declared-crawler pattern but are NOT verified humans.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Resource</th><th>Raw</th><th>Declared crawler</th><th>User agent missing</th><th>Other user agents</th></tr></thead>
+      <tbody id="download-quality-rows"><tr><td colspan="5">Loading classified requests...</td></tr></tbody>
+    </table></div>
+    <p class="note" id="download-quality-note">These count tracked redirect requests, not readers, document use or buyer interest.</p>
+  </div>
+  <div class="chart">
+    <h3>Raw tracked guide requests by day</h3>
     <div id="dlchart" style="overflow-x:auto">Loading&hellip;</div>
     <div class="legend" id="dllegend"></div>
   </div>
   <div class="chart">
-    <h3>Each item's downloads by country</h3>
+    <h3>Raw requests by item and country</h3>
     <div id="itemsbycountry">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three Investigator Guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Investigator Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
   </div>
@@ -468,6 +504,7 @@ tr.today td{background:rgba(93,191,130,.07)}
        because CLAUDE.md records that there is one private owner page and a
        second must not be created. Static content: it does not refresh. -->
   <h2 id="sale-dossier" style="font-size:22px;margin-top:44px;border-top:1px solid var(--accent-dim);padding-top:26px">Sale Dossier</h2>
+  <div class="note" style="border-left:3px solid var(--accent)"><b>Historical archive, dated 13 August 2026.</b> Preserved for provenance, not current transaction diligence. Statements below about outreach, technical readiness, rights, accuracy, buyers and deployment require fresh review. The current Decision Spellchecker designation and NO_GO_NOT_VERIFIED status supersede older product descriptions. Do not export this archive as a present-day prospectus.</div>
   <p class="sub">Everything built for the sale of the JRS / DRR asset, what each piece contains, and its state as of 13 August 2026. Assembled from the files on disk, not from memory. The live tracker is <code>research/IP_SALE_TRACKER.md</code>, which is revised every turn.</p>
 
   <div class="chart" style="border-color:var(--accent)">
@@ -1326,12 +1363,40 @@ function renderCompletions(s){
   });
   el.innerHTML=html;
 }
+function renderDownloadQuality(d){
+  var body=document.getElementById('download-quality-rows');
+  var note=document.getElementById('download-quality-note');
+  var summary=document.getElementById('buyer-requests');
+  if(!body || !note) return;
+  var q=d && d.quality;
+  if(!q || !q.reconciles_to_legacy_raw_scope || !Array.isArray(q.by_asset)){
+    body.innerHTML='<tr><td colspan="5">Data unavailable or reconciliation incomplete. Do not use these counts in buyer materials.</td></tr>';
+    note.textContent='Unavailable is not zero. Verify the data source and classification.';
+    if(summary) summary.textContent='Unverified: analytics reconciliation';
+    return;
+  }
+  var rows='';
+  q.by_asset.forEach(function(x){
+    rows+='<tr><td>'+esc(x.asset)+'</td><td>'+Number(x.raw_requests||0)+'</td><td>'
+      +Number(x.declared_crawler||0)+'</td><td>'+Number(x.user_agent_missing||0)
+      +'</td><td>'+Number(x.not_identified_as_crawler||0)+'</td></tr>';
+  });
+  body.innerHTML=rows || '<tr><td colspan="5">No tracked requests in scope.</td></tr>';
+  note.textContent='Included resources: '+q.raw_requests+' tracked requests; '
+    +q.declared_crawler+' declared crawler requests; '
+    +q.user_agent_missing+' without user agent; '
+    +q.not_identified_as_crawler+' other user agents. The last group is NOT verified people. '
+    +'Test-tagged and retired-kit events are outside this scope.';
+  if(summary) summary.textContent=q.raw_requests+' raw requests; '+q.declared_crawler
+    +' flagged crawlers; '+q.user_agent_missing+' cannot be classified by user agent';
+}
 function loadItems(){
   var el=document.getElementById('itemsbycountry');
   if(!el) return;
   fetch('/api/geo-stats')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
+      renderDownloadQuality(d);
       var items=(d&&d.assets_detail)||[];
       if(!items.length){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No downloads recorded yet.</div>'; return; }
       var html='';
@@ -1352,7 +1417,7 @@ function loadItems(){
       });
       el.innerHTML=html;
     })
-    .catch(function(){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
+    .catch(function(){ renderDownloadQuality(null); el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
 }
 function renderEndorseDays(d){
   var el=document.getElementById('endorseday');
