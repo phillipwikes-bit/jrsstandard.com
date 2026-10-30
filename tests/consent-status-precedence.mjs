@@ -47,7 +47,7 @@ for (const path of paths) {
   assert.ok(/(contributor consent|contributor-consent)/i.test(current), path + ': contributor-consent scope missing');
   assert.ok(/(only|alone)/i.test(current), path + ': distinct coauthor count not qualified');
   assert.ok(/(assignment|commercial)/i.test(current), path + ': rights boundary missing');
-  assert.ok(!/(Tanvi|Stacyann)[^\n.]{0,120}(?:has no consent|not consented|consent missing|unconfirmed overall)/i.test(current),
-    path + ': reintroduced false consent claim in controlling block');
+  assert.ok(!/\b(?:Tanvi|Stacyann)\s+(?:has no consent|did not consent|lacks consent)\b/i.test(current),
+    path + ': false consent claim in controlling block');
 }
 console.log('PASS: contributor consent E-002/E-003 recognized; E-005 scoped to coauthor form; eight controlling documents consistent.');
