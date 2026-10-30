@@ -1,13 +1,13 @@
-# Spellchecker / JRS site release: private owner access and categorized inquiry runbook
+# Decision Spellchecker / JRS site release: private owner access and categorized inquiry runbook
 
 **Date:** 2026-10-30  
 **Status:** DEVELOPMENT ONLY. Draft Pull Request #48 is NOT merged or deployed.  
-**Scope:** JRS public method site navigation, multi-category professional inquiries, owner-private reporting. Spellchecker software availability, validation, commercial rights, and public Engine use remain unchanged.
+**Scope:** JRS public method site navigation, multi-category professional inquiries, owner-private reporting. Decision Spellchecker software availability, validation, commercial rights, and public Engine use remain unchanged.
 
 ## 1. Architecture and boundaries
 
 - Public JRS website: method, free resources, research, reviewer training, For Organizations, and Contact & Inquiries.
-- Commercial software identity: **Spellchecker**, separate from JRS's historical research and methodology. The product remains closed and under controlled development.
+- Commercial software identity: **Decision Spellchecker**, separate from JRS's historical research and methodology. The product remains closed and under controlled development.
 - Inquiries: `contact.html` -> `/api/site-inquiry` -> durable `pilot_contacts` row (`source=site-inquiry`) -> best-effort notifier. An email is not the primary record, and an email failure cannot invalidate an already stored inquiry.
 - Contacts: `/api/leads-4b7e2c9af106d385` returns the inbox and labels category; `/api/people-9dd1ecdf6f8cdfd4` shows a named contact record. Both must require owner authentication before any database access.
 - Owner sign-in: `/owner-login.html` -> `/api/owner-session`. The server checks a distinct, high-entropy `OWNER_DASHBOARD_TOKEN` and issues an eight-hour signed, `HttpOnly; Secure; SameSite=Strict` cookie. The browser must not store the original access code in localStorage, sessionStorage or URLs.
@@ -53,7 +53,7 @@ Configure these in Vercel using secret settings. Do not put values in GitHub, br
 
 - `node tests/owner-access.mjs`: no-token 503, missing/invalid bearer 401, signed cookie acceptance and tamper rejection, sign-in/logout, all identified private readers gated before DB access, authenticated progress proxy and no direct browser Supabase calls.
 - `node tests/site-inquiry.mjs`: no-config rejection, malformed/foreign/oversized requests, Turnstile verified/unverified and hostname mismatch, storage success/error, correct category and explicit contact-consent version, no automatic transfer permission.
-- `node tests/site-phase1.mjs`: 15 public primary navs, stable URLs, explicit Spellchecker distinction, preserved organizational form and dashboard GA4 removal.
+- `node tests/site-phase1.mjs`: 15 public primary navs, stable URLs, explicit Decision Spellchecker distinction, preserved organizational form and dashboard GA4 removal.
 - `node tests/public-route-alignment.mjs`: legacy public API/intake closure constraints.
 
 All tests are synthetic and no actual Gmail delivery, record-subject consent, payment, public Engine use or real iPhone acceptance is inferred from their results.
