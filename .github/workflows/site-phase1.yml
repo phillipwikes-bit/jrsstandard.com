@@ -23,6 +23,16 @@ on:
       - 'api/people-9dd1ecdf6f8cdfd4.js'
       - 'vercel.json'
       - 'tests/site-inquiry.mjs'
+      - 'api/_owner-auth.js'
+      - 'api/owner-session.js'
+      - 'api/owner-progress.js'
+      - 'api/roster-8c3f1a9e7b2d6045.js'
+      - 'api/recheck-answers-b1a768e88d3e48bd.js'
+      - 'api/geo-4e8b2d7f9a1c3065.js'
+      - 'api/variance-6b1d90fa2c47e8b3.js'
+      - 'owner-login.html'
+      - 'programme-status-9872fb93cc94.html'
+      - 'tests/owner-access.mjs'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
   push:
@@ -48,6 +58,16 @@ on:
       - 'api/people-9dd1ecdf6f8cdfd4.js'
       - 'vercel.json'
       - 'tests/site-inquiry.mjs'
+      - 'api/_owner-auth.js'
+      - 'api/owner-session.js'
+      - 'api/owner-progress.js'
+      - 'api/roster-8c3f1a9e7b2d6045.js'
+      - 'api/recheck-answers-b1a768e88d3e48bd.js'
+      - 'api/geo-4e8b2d7f9a1c3065.js'
+      - 'api/variance-6b1d90fa2c47e8b3.js'
+      - 'owner-login.html'
+      - 'programme-status-9872fb93cc94.html'
+      - 'tests/owner-access.mjs'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
 permissions:
@@ -60,6 +80,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: node tests/owner-access.mjs
       - run: node tests/site-inquiry.mjs
       - run: node tests/site-phase1.mjs
       - run: node tests/public-route-alignment.mjs
