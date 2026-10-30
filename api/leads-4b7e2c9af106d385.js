@@ -37,6 +37,7 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 const LEAD_SOURCES = [
   'checkout-fallback',
   'enterprise-inquiry',
+  'site-inquiry',
   'org-pilot',
   'pilot'
 ];
@@ -46,6 +47,7 @@ const LEAD_SOURCES = [
 const LABEL = {
   'checkout-fallback': 'Checkout lead',
   'enterprise-inquiry': 'Enterprise inquiry',
+  'site-inquiry': 'Website inquiry',
   'org-pilot': 'Organisation pilot',
   'pilot': 'Direct contact'
 };
@@ -151,6 +153,7 @@ export default async function handler(req) {
     if (p.volume) detail.push(str(p.volume, 60));
     if (p.role) detail.push(str(p.role, 120));
     if (p.interest) detail.push(str(p.interest, 40));
+    if (p.category) detail.push(str(p.category, 40));
     if (p.platform) detail.push(str(p.platform, 160));
     if (p.scale) detail.push(str(p.scale, 40) + '/yr');
     if (p.timeline) detail.push(str(p.timeline, 40));
