@@ -35,6 +35,9 @@ on:
       - 'tests/owner-access.mjs'
       - 'api/_notify.js'
       - 'tests/notify-gmail-readiness.mjs'
+      - 'package.json'
+      - 'proxy.js'
+      - 'tests/owner-router.mjs'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
   push:
@@ -72,6 +75,9 @@ on:
       - 'tests/owner-access.mjs'
       - 'api/_notify.js'
       - 'tests/notify-gmail-readiness.mjs'
+      - 'package.json'
+      - 'proxy.js'
+      - 'tests/owner-router.mjs'
       - 'tests/site-phase1.mjs'
       - '.github/workflows/site-phase1.yml'
 permissions:
@@ -84,6 +90,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: node tests/owner-router.mjs
       - run: node tests/notify-gmail-readiness.mjs
       - run: node tests/owner-access.mjs
       - run: node tests/site-inquiry.mjs
