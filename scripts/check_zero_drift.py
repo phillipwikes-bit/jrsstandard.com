@@ -4510,8 +4510,10 @@ def check_free_track_bridges_to_the_licence(offline):
     into a product. Before 2026-08-26 it mentioned the enterprise track zero
     times and linked to it zero times.
     """
-    pages = ("jrsstandard.html", "codebook.html", "simulations.html",
-             "investigator-guides.html", "check.html")
+    # Issue 3.4 explicitly supersedes the old buyer-route requirement for
+    # Investigator Guides. Preserve the old check for the untouched legacy
+    # pages, but require a stronger free-access, no-product-claim check below.
+    pages = ("jrsstandard.html", "codebook.html", "simulations.html", "check.html")
     missing, incomplete = [], []
     for page in pages:
         src = read(page)
@@ -4538,6 +4540,28 @@ def check_free_track_bridges_to_the_licence(offline):
           "; ".join(incomplete) if incomplete else
           "%d pages each preserve free access and link to the API contract and enterprise inquiry"
           % len(pages))
+
+    guide = read("investigator-guides.html")
+    pdfs = (
+        "JRS_Investigator_Field_Guide_Employment.pdf",
+        "JRS_Investigator_Field_Guide_FairHousing.pdf",
+        "JRS_Investigator_Field_Guide_International.pdf",
+    )
+    direct = all(('href="/' + name + '"') in guide for name in pdfs)
+    no_legacy = (
+        'same review runs as one call' not in guide
+        and 'The text is transmitted to the model provider' not in guide
+        and 'enterprise.html#enterprise-inquiry' not in guide
+        and '/api/dl?e=' not in guide
+    )
+    method = (
+        'No automated software integration or public record-processing API is available'
+        in guide
+        and 'No account, payment or registration' in guide
+    )
+    check("investigator guides: direct free PDFs and no unsupported software offer",
+          direct and no_legacy and method,
+          "direct=%s no_legacy=%s manual_scope=%s" % (direct, no_legacy, method))
 
 
 def check_api_contract_has_a_runnable_example(offline):
