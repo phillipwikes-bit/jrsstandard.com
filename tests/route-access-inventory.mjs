@@ -10,6 +10,7 @@ const protectedRoutes=[
  'api/variance-6b1d90fa2c47e8b3.js',
  'api/owner-progress.js',
  'api/site-inquiry-stats.js',
+ 'api/owner-release-readiness.js',
  'api/enroll-admin.js',
  'api/support-contacts.js',
  'api/coauthor-stats.js',
