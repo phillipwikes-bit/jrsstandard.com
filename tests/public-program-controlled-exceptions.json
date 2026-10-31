@@ -31,14 +31,14 @@
     },
     "api/enroll-stats.js": {
       "before_blob_sha": "168f75843b838ca8effccd4570d14d750e1aa90c",
-      "candidate_blob_sha": "e95f6f239fa90d7d6dc52800db92e20c4ad4704d",
-      "reason": "Service-role-backed private statistics handler lacked a direct owner-session check and emitted permissive cross-origin response headers; Increment 18 proxy protection alone is deployment dependent.",
-      "scope": "Require signed cookie inside handler before any service-role access, refuse non-GET, eliminate wildcard CORS, set private/no-store/noindex, and leave existing counting/aggregation/source query logic unchanged.",
+      "candidate_blob_sha": "4c87bfc398d0f86c73a57ab6d6a1b3694e53431b",
+      "reason": "Service-role private training metrics originally lacked a direct signed owner check, used wildcard CORS, and issued a single potentially capped training-completion fetch with best-effort zero on failure. Increment 21 adds complete-only pagination and refuses incomplete completion metrics.",
+      "scope": "Retain original training enrolment/completion definitions and original 24-file baseline. Require owner before source access, private no-store response, no wildcard CORS, complete paginated training-complete rows and HTTP 502 on any completion read failure; do not change history or consent.",
       "rights_effect": "none",
       "database_migration": false,
       "history_rewrite": false,
       "public_identity_expansion": false,
-      "release_gate": "PROPOSED_NOT_RELEASE_APPROVED: owner signoff on this exact change; independent direct endpoint, proxy, RLS, fixed-cutoff counts, browser and rollback tests required before any production merge."
+      "release_gate": "PROPOSED_NOT_RELEASE_APPROVED: owner must review BOTH security and completeness changes, validate original source-family totals at a fixed UTC cutoff, verify live positive/negative auth and direct Supabase RLS before production release."
     },
     "api/gate-stats.js": {
       "before_blob_sha": "1cfa25240760555c4f7d1697f5b774717718b1c0",

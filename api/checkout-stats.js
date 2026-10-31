@@ -80,7 +80,7 @@ export default async function handler(req) {
   } catch (e) {
     return json({ error: 'db_unreachable' }, 502);
   }
-  if (!Array.isArray(clicks)) clicks = [];
+  if (!Array.isArray(clicks)) return json({ error: 'checkout_source_incomplete' }, 502);
 
   const byOffer = {}, byCountry = {}, byState = {};
   let intentUsd = 0;
@@ -101,9 +101,10 @@ export default async function handler(req) {
   try {
     leads = await fetchAllUrl(SB + feed('checkout-fallback'), H);
   } catch (e) {
-    leads = [];
+    // A failed secondary source is not a legitimate zero-lead finding.
+    return json({ error: 'checkout_source_incomplete' }, 502);
   }
-  if (!Array.isArray(leads)) leads = [];
+  if (!Array.isArray(leads)) return json({ error: 'checkout_source_incomplete' }, 502);
 
   const leadsByOffer = {}, leadsByCountry = {};
   let leadValueUsd = 0, withVolume = 0;
@@ -122,9 +123,10 @@ export default async function handler(req) {
   try {
     inq = await fetchAllUrl(SB + feed('enterprise-inquiry'), H);
   } catch (e) {
-    inq = [];
+    // Do not publish a complete commercial funnel with missing inquiries.
+    return json({ error: 'checkout_source_incomplete' }, 502);
   }
-  if (!Array.isArray(inq)) inq = [];
+  if (!Array.isArray(inq)) return json({ error: 'checkout_source_incomplete' }, 502);
 
   const inqByInterest = {}, inqByScale = {}, inqByTimeline = {}, inqByCountry = {};
   let namedPlatform = 0;
