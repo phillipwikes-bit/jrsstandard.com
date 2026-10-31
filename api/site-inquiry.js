@@ -9,6 +9,7 @@ import { notify, renderAlert } from './_notify.js';
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 const SOURCE = 'site-inquiry';
 const CATEGORIES = ['organization', 'research', 'training', 'commercial', 'general'];
+const COMMERCIAL_PURPOSES = ['method-licence', 'software-evaluation', 'integration', 'asset-acquisition'];
 
 function reply(obj, status=200) {
   return new Response(JSON.stringify(obj), {status,headers:{
@@ -48,12 +49,17 @@ export default async function handler(req) {
   const email=clean(b.email,160).toLowerCase();
   const organization=clean(b.organization,160);
   const category=clean(b.category,32);
+  const commercialPurpose=clean(b.commercial_purpose,40);
   const note=clean(b.message,1200);
   const token=clean(b.turnstileToken,2048);
   const consent=b.consent===true;
   if(name.length<2 || !validEmail(email) || !CATEGORIES.includes(category) || note.length<12 || !consent) {
     return reply({error:'required_fields_invalid'},400);
   }
+  if(category==='commercial' && !COMMERCIAL_PURPOSES.includes(commercialPurpose))
+    return reply({error:'commercial_purpose_required'},400);
+  if(category!=='commercial' && commercialPurpose)
+    return reply({error:'commercial_purpose_not_applicable'},400);
   if(!token)return reply({error:'challenge_required'},400);
   // Do not accept unverified records, including if the challenge vendor fails.
   let checked;
@@ -75,7 +81,8 @@ export default async function handler(req) {
   const record={
     name,email,organization,source:SOURCE,
     message:JSON.stringify({
-      kind:SOURCE,category,note,country,consent_to_contact:true,
+      kind:SOURCE,category,commercial_purpose:category==='commercial'?commercialPurpose:null,
+      note,country,consent_to_contact:true,
       consent_version:'contact-v1-2026-10-30',
       consent_to_transfer:false,
       created_at:new Date().toISOString(),
@@ -97,9 +104,10 @@ export default async function handler(req) {
   if(!stored.ok)return reply({error:'storage_unavailable'},502);
   // A mail-provider failure cannot make a successfully saved record disappear.
   const sent=await notify(
-    'JRS inquiry: '+category,
+    'JRS inquiry: '+category+(category==='commercial'?' / '+commercialPurpose:''),
     renderAlert('JRS website inquiry',[
-      ['Category',category],['Name',name],['Email',email],
+      ['Category',category],['Commercial purpose',category==='commercial'?commercialPurpose:'not applicable'],
+      ['Name',name],['Email',email],
       ['Organization',organization],['Message',note],['Country',country],
       ['Source',SOURCE]
     ]),email
