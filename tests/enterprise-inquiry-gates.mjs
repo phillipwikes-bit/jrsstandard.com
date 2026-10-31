@@ -80,6 +80,12 @@ try{
     }
     assert.equal(calls.length,0);
   });
+  await check('reject unsafe controls instead of changing enterprise notes',async()=>{
+    const response=await endpoint(req({...good,note:'Initial facts\u0000altered'}));
+    assert.equal(response.status,400);
+    assert.equal((await response.json()).error,'message_controls_invalid');
+    assert.equal(calls.length,0);
+  });
   await check('honeypot is not stored',async()=>{
     const r=await endpoint(req({...good,company_website:'somewhere'}));
     assert.equal(r.status,200);assert.equal((await r.json()).stored,false);
@@ -146,6 +152,14 @@ try{
     assert.equal(calls.length,2);
     const stored=JSON.parse(calls[1].options.body);
     assert.equal(JSON.parse(stored.message).note,note);
+  });
+  await check('normalize CRLF in enterprise notes without dropping words',async()=>{
+    calls=[];
+    const note='First issue.\r\nSecond issue on exception authority.';
+    const response=await endpoint(req({...good,note}));
+    assert.equal(response.status,200);
+    const stored=JSON.parse(calls[1].options.body);
+    assert.equal(JSON.parse(stored.message).note,note.replace(/\r\n/g,'\n'));
   });
   globalThis.fetch=async(url,options)=>{
     calls.push({url:String(url),options});
