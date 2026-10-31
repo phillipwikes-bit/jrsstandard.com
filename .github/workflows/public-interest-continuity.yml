@@ -37,3 +37,5 @@ jobs:
         run: |
           node --test tests/integrated-release-evidence.test.mjs
           node tools/check-integrated-release-evidence.mjs docs/program-status/INCREMENT_11_OBSERVED_EVIDENCE_SNAPSHOT_2026-10-31.json > /tmp/jrs-increment11-preflight.json
+      - name: Verify original-source candidate custody admission with fabricated archives only
+        run: python3 -m unittest discover -s tests -p 'test_original_source_candidate_intake.py' -v
