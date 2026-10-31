@@ -1,0 +1,101 @@
+{
+  "schema": "jrs-integrated-release-evidence-v1",
+  "as_of": "2026-10-31",
+  "website": {
+    "pr_number": 62,
+    "pr_head_sha": "ff07784c5666c6a89ea50e59b83fef2f484a8c87",
+    "pr_state": "open",
+    "pr_draft": true,
+    "pr_merged": false,
+    "preview_git_sha": "e2182eaa1cea04c2961310bdc512ccd602017074",
+    "preview_target": "preview",
+    "preview_live_verified": false,
+    "postrelease_watch_plan_ready": false,
+    "owner_decision": null,
+    "pst_gates": [
+      {
+        "id": "PST-01",
+        "status": "NOT_VERIFIED"
+      },
+      {
+        "id": "PST-02",
+        "status": "PARTIAL"
+      },
+      {
+        "id": "PST-03",
+        "status": "PARTIAL"
+      },
+      {
+        "id": "PST-04",
+        "status": "CONTROLLED_DRAFT"
+      },
+      {
+        "id": "PST-05",
+        "status": "NOT_VERIFIED"
+      },
+      {
+        "id": "PST-06",
+        "status": "NOT_VERIFIED"
+      },
+      {
+        "id": "PST-07",
+        "status": "PARTIAL"
+      },
+      {
+        "id": "PST-08",
+        "status": "NOT_VERIFIED"
+      },
+      {
+        "id": "PST-09",
+        "status": "NOT_VERIFIED"
+      },
+      {
+        "id": "PST-10",
+        "status": "NOT_VERIFIED"
+      },
+      {
+        "id": "PST-11",
+        "status": "NOT_AUTHORIZED"
+      },
+      {
+        "id": "PST-12",
+        "status": "NOT_ASSESSED"
+      }
+    ]
+  },
+  "product": {
+    "original_source_reproduced": false,
+    "original_source_independently_authenticated": false,
+    "original_18_features_verified": false,
+    "r9_test_results": {
+      "passed": 80,
+      "failed": 0,
+      "adversarial_passed": 16,
+      "evidence_class": "owner_report_not_rerun"
+    },
+    "r6_hash_report": {
+      "matched": 71,
+      "total": 71,
+      "evidence_class": "owner_report_not_rerun"
+    }
+  },
+  "study": {
+    "h2_vs_h3_independent_completed": false,
+    "actual_156_record_study_conducted": false,
+    "simulated_156": {
+      "status": "BLOCKED",
+      "findings": 21,
+      "evidence_class": "owner_report_not_rerun"
+    }
+  },
+  "rights": {
+    "r6_total": 32,
+    "r6_authorized": 0,
+    "transaction_specific_counsel_cleared": false
+  },
+  "evidence_limits": [
+    "The connected GitHub and Vercel commit identities were directly checked; local synthetic tests do not authenticate original product.",
+    "R9/R6 numerical reports and 21 fictional demonstration findings are owner-reported and not rerun from primary archives here.",
+    "Available uploaded source: 186-page Issue 3.2 with Increments 04/05. The claimed later 223-page master was not provided for byte-level verification."
+  ]
+}
