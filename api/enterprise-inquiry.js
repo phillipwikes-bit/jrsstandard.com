@@ -26,12 +26,12 @@ function clean(v,n){
     .replace(/[\u0000-\u001f\u007f]/g,'').trim().slice(0,n);
 }
 function cleanInquiryText(v) {
-  // Preserve user-authored paragraph boundaries in durable inquiry records.
-  // Normalize CRLF/CR to LF; omit non-text controls, never truncate.
-  return String(typeof v==='string'?v:'')
-    .replace(/\r\n?/g,'\n')
-    .replace(/[\u0000-\u0009\u000b-\u001f\u007f]/g,'')
-    .trim();
+  // Preserve authored text and paragraphs, normalizing only line endings.
+  // Invalid controls and oversize fields are rejected before this conversion.
+  return String(typeof v==='string'?v:'').replace(/\r\n?/g,'\n');
+}
+function hasUnsafeControls(v) {
+  return typeof v==='string' && /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(v);
 }
 function exceedsFieldLimit(body,limits) {
   return limits.some(([field,max])=>
@@ -74,6 +74,7 @@ export default async function handler(req){
     ['role',120],['interest',40],['scale',40],['timeline',40],
     ['platform',160],['note',1200],['turnstileToken',2048]]))
     return json({error:'field_too_long'},400);
+  if(hasUnsafeControls(b.note))return json({error:'message_controls_invalid'},400);
   if(clean(b.company_website,100))return json({ok:true,stored:false},200);
 
   const name=clean(b.name,120);
