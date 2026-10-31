@@ -22,6 +22,18 @@ function reply(obj, status=200) {
 function clean(v,n) {
   return String(typeof v==='string'?v:'').replace(/[\u0000-\u001f\u007f]/g,'').trim().slice(0,n);
 }
+function cleanInquiryText(v) {
+  // Preserve authored text and paragraphs, normalizing only line endings.
+  // Invalid controls and oversize fields are rejected before this conversion.
+  return String(typeof v==='string'?v:'').replace(/\r\n?/g,'\n');
+}
+function hasUnsafeControls(v) {
+  return typeof v==='string' && /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(v);
+}
+function exceedsFieldLimit(body,limits) {
+  return limits.some(([field,max])=>
+    typeof body[field]==='string' && body[field].length>max);
+}
 function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) && v.length<=160; }
 export default async function handler(req) {
   if(req.method!=='POST')return reply({error:'method_not_allowed'},405);
@@ -43,6 +55,12 @@ export default async function handler(req) {
   try{b=JSON.parse(raw);}catch{return reply({error:'bad_json'},400)}
   if(!b || typeof b!=='object' || Array.isArray(b))return reply({error:'bad_input'},400);
 
+  // Reject oversized fields before cleaning: stored evidence must not silently
+  // lose the end of a prospect's inquiry, including acquisition questions.
+  if(exceedsFieldLimit(b,[['name',120],['email',160],['organization',160],
+    ['category',32],['commercial_purpose',40],['message',1200],
+    ['turnstileToken',2048]]))return reply({error:'field_too_long'},400);
+  if(hasUnsafeControls(b.message))return reply({error:'message_controls_invalid'},400);
   // A honeypot is a secondary filter; Turnstile remains mandatory.
   if(clean(b.company_website,100))return reply({ok:true,stored:false},200);
   const name=clean(b.name,120);
@@ -50,10 +68,10 @@ export default async function handler(req) {
   const organization=clean(b.organization,160);
   const category=clean(b.category,32);
   const commercialPurpose=clean(b.commercial_purpose,40);
-  const note=clean(b.message,1200);
+  const note=cleanInquiryText(b.message);
   const token=clean(b.turnstileToken,2048);
   const consent=b.consent===true;
-  if(name.length<2 || !validEmail(email) || !CATEGORIES.includes(category) || note.length<12 || !consent) {
+  if(name.length<2 || !validEmail(email) || !CATEGORIES.includes(category) || note.trim().length<12 || !consent) {
     return reply({error:'required_fields_invalid'},400);
   }
   if(category==='commercial' && !COMMERCIAL_PURPOSES.includes(commercialPurpose))

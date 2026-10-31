@@ -25,6 +25,18 @@ function clean(v,n){
   return String(typeof v==='string'?v:'')
     .replace(/[\u0000-\u001f\u007f]/g,'').trim().slice(0,n);
 }
+function cleanInquiryText(v) {
+  // Preserve authored text and paragraphs, normalizing only line endings.
+  // Invalid controls and oversize fields are rejected before this conversion.
+  return String(typeof v==='string'?v:'').replace(/\r\n?/g,'\n');
+}
+function hasUnsafeControls(v) {
+  return typeof v==='string' && /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(v);
+}
+function exceedsFieldLimit(body,limits) {
+  return limits.some(([field,max])=>
+    typeof body[field]==='string' && body[field].length>max);
+}
 function oneOf(v,list){
   const s=clean(v,40).toLowerCase();
   return list.includes(s)?s:'';
@@ -56,6 +68,13 @@ export default async function handler(req){
   let b;
   try{b=JSON.parse(text)}catch{return json({error:'bad_json'},400)}
   if(!b || typeof b!=='object' || Array.isArray(b))return json({error:'bad_input'},400);
+  // Reject oversized fields before cleaning: truncation would misrepresent
+  // the actual organization inquiry that the owner later reviews.
+  if(exceedsFieldLimit(b,[['name',120],['email',160],['organization',160],
+    ['role',120],['interest',40],['scale',40],['timeline',40],
+    ['platform',160],['note',1200],['turnstileToken',2048]]))
+    return json({error:'field_too_long'},400);
+  if(hasUnsafeControls(b.note))return json({error:'message_controls_invalid'},400);
   if(clean(b.company_website,100))return json({ok:true,stored:false},200);
 
   const name=clean(b.name,120);
@@ -66,7 +85,7 @@ export default async function handler(req){
   const scale=oneOf(b.scale,SCALE);
   const timeline=oneOf(b.timeline,TIMELINE);
   const platform=clean(b.platform,160);
-  const note=clean(b.note,1200);
+  const note=cleanInquiryText(b.note);
   const token=clean(b.turnstileToken,2048);
 
   if(name.length<2 || !organization || !validEmail(email) || !interest ||

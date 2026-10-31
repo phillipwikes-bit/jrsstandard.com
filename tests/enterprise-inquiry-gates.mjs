@@ -67,6 +67,25 @@ try{
     const long=await endpoint(req({...good,note:'a'.repeat(8500)}));
     assert.equal(long.status,413);
   });
+  await check('reject overlong contact fields without silent evidence loss',async()=>{
+    for(const change of [
+      {note:'A'.repeat(1201)},
+      {name:'N'.repeat(121)},
+      {organization:'O'.repeat(161)},
+      {role:'R'.repeat(121)}
+    ]){
+      const response=await endpoint(req({...good,...change}));
+      assert.equal(response.status,400);
+      assert.equal((await response.json()).error,'field_too_long');
+    }
+    assert.equal(calls.length,0);
+  });
+  await check('reject unsafe controls instead of changing enterprise notes',async()=>{
+    const response=await endpoint(req({...good,note:'Initial facts\u0000altered'}));
+    assert.equal(response.status,400);
+    assert.equal((await response.json()).error,'message_controls_invalid');
+    assert.equal(calls.length,0);
+  });
   await check('honeypot is not stored',async()=>{
     const r=await endpoint(req({...good,company_website:'somewhere'}));
     assert.equal(r.status,200);assert.equal((await r.json()).stored,false);
@@ -124,6 +143,23 @@ try{
     assert.ok(!calls[1].options.body.includes('synthetic-captcha-secret'));
     assert.equal(JSON.stringify(body).includes('synthetic@example.test'),false);
     assert.equal(r.headers.get('Access-Control-Allow-Origin'),null);
+  });
+  await check('preserve enterprise note line breaks in the durable record',async()=>{
+    calls=[];
+    const note='Acquisition question: scope.\nEvidence needed: source provenance.';
+    const response=await endpoint(req({...good,note}));
+    assert.equal(response.status,200);
+    assert.equal(calls.length,2);
+    const stored=JSON.parse(calls[1].options.body);
+    assert.equal(JSON.parse(stored.message).note,note);
+  });
+  await check('normalize CRLF in enterprise notes without dropping words',async()=>{
+    calls=[];
+    const note='First issue.\r\nSecond issue on exception authority.';
+    const response=await endpoint(req({...good,note}));
+    assert.equal(response.status,200);
+    const stored=JSON.parse(calls[1].options.body);
+    assert.equal(JSON.parse(stored.message).note,note.replace(/\r\n/g,'\n'));
   });
   globalThis.fetch=async(url,options)=>{
     calls.push({url:String(url),options});
