@@ -159,4 +159,5 @@ jobs:
       - run: node tests/owner-release-readiness.mjs
       - run: node tests/enterprise-inquiry-gates.mjs
       - run: node tests/preview-route-gates.mjs
+      - run: node --test tests/study-runner-stop-and-preview-coverage.test.mjs
       - run: node tests/asset-evidence-integrity.mjs
