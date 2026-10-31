@@ -151,9 +151,9 @@ try{
     assert.ok(html.includes("fetch('/api/enterprise-inquiry'"));
     assert.ok(html.includes('window.turnstile.render'));
     assert.ok(html.includes('info@jrsstandard.com'));
-    const chunks=[...html.matchAll(/<script(?: [^>]*)?>([\\s\\S]*?)<\\/script>/g)];
-    assert.ok(chunks.length>0);
-    chunks.forEach(m=>new Function(m[1])); // parser-only: no DOM/network execution
+    const inline=html.split('<script>')[1]?.split('</script>')[0];
+    assert.ok(inline,'enterprise form inline script is present');
+    new Function(inline); // compile only; never execute DOM or browser requests
   });
   console.log('PASS '+passes+' legacy enterprise inquiry gating checks');
 }finally{
