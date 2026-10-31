@@ -40,19 +40,52 @@ footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
 <footer>JRS · Private owner surface · No marketing analytics on this page</footer>
 <script>
 (function(){
- const f=document.getElementById('login'),i=document.getElementById('secret'),b=document.getElementById('go'),s=document.getElementById('status');
- fetch('/api/owner-session',{credentials:'same-origin',cache:'no-store'}).then(function(r){if(r.ok)location.replace('/programme-status-9872fb93cc94.html')}).catch(function(){});
+ const f=document.getElementById('login'),i=document.getElementById('secret'),
+       b=document.getElementById('go'),s=document.getElementById('status');
+ let available=false;
+ const unavailable='Owner sign-in is not enabled on this deployment. No password can work until the preview has been rebuilt with the private owner setting. Refresh this page after the new preview is ready.';
+ const suspend=function(message){
+   available=false;i.disabled=true;b.disabled=true;s.textContent=message;
+ };
+ // Check readiness without sending a password, reading personal records or
+ // relying on a private URL for security. Only HTTP 401 means configured and
+ // awaiting sign-in. HTTP 503 is server-side configuration, NOT a bad password.
+ suspend('Checking owner sign-in availability...');
+ fetch('/api/owner-session',{credentials:'same-origin',cache:'no-store'})
+ .then(function(r){
+   if(r.ok){location.replace('/programme-status-9872fb93cc94.html');return;}
+   if(r.status===401){
+     available=true;i.disabled=false;b.disabled=false;s.textContent='Owner sign-in is ready.';
+     return;
+   }
+   suspend(r.status===503?unavailable:
+     'Unable to verify owner sign-in on this deployment. Refresh to retry.');
+ })
+ .catch(function(){
+   suspend('Cannot reach the owner sign-in service. Refresh to retry.');
+ });
  f.addEventListener('submit',async function(event){
-  event.preventDefault();if(!f.reportValidity())return;
+  event.preventDefault();
+  if(!available)return;
+  if(!f.reportValidity())return;
   b.disabled=true;s.textContent='Verifying...';
   try{
     const response=await fetch('/api/owner-session',{method:'POST',credentials:'same-origin',
       headers:{'Content-Type':'application/json'},body:JSON.stringify({token:i.value})});
     i.value='';
-    if(!response.ok){s.textContent='Sign-in failed. Verify the owner access code or its server configuration.';b.disabled=false;return;}
+    if(response.status===503){suspend(unavailable);return;}
+    if(response.status===401){
+      s.textContent='Access code not accepted. Check the code and try again.';
+      b.disabled=false;return;
+    }
+    if(!response.ok){
+      s.textContent='Owner sign-in could not be completed. Refresh to retry.';
+      b.disabled=false;return;
+    }
     location.replace('/programme-status-9872fb93cc94.html');
   }catch{
-    i.value='';s.textContent='Sign-in service unavailable. No access code was stored by this page.';b.disabled=false;
+    i.value='';
+    suspend('Cannot reach the owner sign-in service. Refresh to retry.');
   }
  });
 })();
