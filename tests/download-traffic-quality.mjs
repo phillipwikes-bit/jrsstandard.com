@@ -57,9 +57,9 @@ assert.equal(ref.user_agent_missing,1);
 assert.equal(ref.not_identified_as_crawler,0);
 
 // A partial read and a failed database read must not be misreported as 0 downloads.
-const partial = buildHandler(async () => ({rows:[rows[0]],complete:false}),classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,env);
+const partial = buildHandler(async () => ({rows:[rows[0]],complete:false}),classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,async()=>null,env);
 assert.equal((await partial(new Request('https://www.jrsstandard.com/api/geo-stats'))).status,502);
-const broken = buildHandler(async () => {throw Error('synthetic database failure')},classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,env);
+const broken = buildHandler(async () => {throw Error('synthetic database failure')},classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,async()=>null,env);
 assert.equal((await broken(new Request('https://www.jrsstandard.com/api/geo-stats'))).status,502);
 
 const html = readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
