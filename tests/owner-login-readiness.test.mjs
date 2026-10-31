@@ -7,7 +7,7 @@ import session from '../api/owner-session.js';
 const html=readFileSync(new URL('../owner-login.html',import.meta.url),'utf8');
 const script=html.match(/<script>([\s\S]*?)<\/script>/i)?.[1];
 assert(script,'owner login must contain browser script');
-const URL='https://www.jrsstandard.com/api/owner-session';
+const OWNER_ENDPOINT='https://www.jrsstandard.com/api/owner-session';
 const original=process.env.OWNER_DASHBOARD_TOKEN;
 test.after(()=>{
   if(original===undefined)delete process.env.OWNER_DASHBOARD_TOKEN;
@@ -98,7 +98,7 @@ test('POST network failure does not claim invalid password or successful access'
 });
 test('server-side missing secret returns distinct 503 on valid POST',async()=>{
  delete process.env.OWNER_DASHBOARD_TOKEN;
- const req=new Request(URL,{method:'POST',
+ const req=new Request(OWNER_ENDPOINT,{method:'POST',
   headers:{Origin:'https://www.jrsstandard.com','Content-Type':'application/json'},
   body:JSON.stringify({token:'synthetic-password'})});
  const response=await session(req);
@@ -109,7 +109,7 @@ test('server-side missing secret returns distinct 503 on valid POST',async()=>{
 });
 test('server-side configured secret rejects incorrect password with 401',async()=>{
  process.env.OWNER_DASHBOARD_TOKEN='synthetic_owner_login_fixture_31_oct_2026_abcdefghijklmnopqrstuvwxyz';
- const req=new Request(URL,{method:'POST',
+ const req=new Request(OWNER_ENDPOINT,{method:'POST',
   headers:{Origin:'https://www.jrsstandard.com','Content-Type':'application/json'},
   body:JSON.stringify({token:'definitely-not-the-owner-secret'})});
  const response=await session(req);
