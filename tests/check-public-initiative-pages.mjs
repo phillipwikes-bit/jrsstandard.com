@@ -34,9 +34,26 @@ check('support actions are explicitly submitted, not automatic navigation',()=>{
  assert(js.includes("result.recorded === true"));
  assert(js.includes("result.already_recorded === true"));
 });
-check('legacy support redirections retained without mutation',()=>{
+check('short initiative URLs read free pages without a support-event side effect',()=>{
  const redirects=config.redirects;
- for(const [path,target] of [['/right-to-know-why','/api/support?c=rtkw'],['/decisions-you-can-defend','/api/support?c=defend']])
-  assert(redirects.some(r=>r.source===path&&r.destination===target));
+ const targets=[['/right-to-know-why','/right-to-know-why.html'],
+                ['/decisions-you-can-defend','/decisions-you-can-defend.html']];
+ for(const [source,target] of targets){
+   const matches=redirects.filter(r=>r.source===source);
+   assert.equal(matches.length,1,'expected exactly one redirect for '+source);
+   assert.equal(matches[0].destination,target,'short URL should open free educational page');
+   assert.equal(matches[0].permanent,false,'preserve reversible routing for '+source);
+   assert(!matches[0].destination.includes('/api/support'));
+   assert(!redirects.some(r=>r.source===target),'must not chain back to support or loop');
+ }
 });
+check('historical direct campaign support endpoint and writers remain present, not rewritten',()=>{
+ const support=read('api/support.js');
+ assert(support.includes("const SB = 'https://pjzxkeviouofdseagvpf.supabase.co'"));
+ assert(support.includes("source: 'support', type: 'endorse'"));
+ assert(support.includes("normCampaign"));
+ assert(support.includes("TEST_SRC"));
+ assert(read('api/initiative-support.js').includes("req.method !== 'POST'"));
+});
+
 console.log('PASS: '+n+' public-initiative static checks. No production or live database claims.');
