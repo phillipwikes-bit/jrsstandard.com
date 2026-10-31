@@ -84,16 +84,67 @@ def checked_member_name(name, seen):
     pieces = trimmed.split("/")
     if not trimmed or any(x in ("", ".", "..") or ":" in x for x in pieces):
         raise AdmissionError("UNSAFE_ARCHIVE_ENTRY")
+    # Reconstructability requires names with unambiguous semantics on common
+    # case-insensitive filesystems. The archive is never extracted here.
+    reserved = {"con", "prn", "aux", "nul"}
+    reserved.update("com" + str(i) for i in range(1, 10))
+    reserved.update("lpt" + str(i) for i in range(1, 10))
+    for piece in pieces:
+        if (piece != piece.rstrip(" .")
+                or any(ord(ch) < 32 or ord(ch) == 127 for ch in piece)
+                or piece.split(".", 1)[0].casefold() in reserved):
+            raise AdmissionError("ARCHIVE_NONPORTABLE_NAME")
     canonical = unicodedata.normalize("NFC", trimmed).casefold()
     if canonical in seen:
         raise AdmissionError("DUPLICATE_OR_CASE_COLLIDING_ENTRY")
     seen.add(canonical)
     return trimmed
 
+def register_archive_path(path, is_directory, directories, files):
+    """Detect both explicit and implicit parent path conflicts.
+
+    This validates a logical archive inventory; it does not authorize
+    extraction or imply any recovered software can be reconstructed.
+    """
+    display = tuple(path.split("/"))
+    canonical = tuple(unicodedata.normalize("NFC", c).casefold() for c in display)
+    for depth in range(1, len(canonical)):
+        key, spelling = canonical[:depth], display[:depth]
+        if key in files:
+            raise AdmissionError("ARCHIVE_FILE_DIRECTORY_CONFLICT")
+        old = directories.get(key)
+        if old is not None and old != spelling:
+            raise AdmissionError("ARCHIVE_DIRECTORY_CASE_COLLISION")
+        directories[key] = spelling
+    if is_directory:
+        if canonical in files:
+            raise AdmissionError("ARCHIVE_FILE_DIRECTORY_CONFLICT")
+        old = directories.get(canonical)
+        if old is not None and old != display:
+            raise AdmissionError("ARCHIVE_DIRECTORY_CASE_COLLISION")
+        directories[canonical] = display
+    else:
+        if canonical in directories:
+            raise AdmissionError("ARCHIVE_FILE_DIRECTORY_CONFLICT")
+        files[canonical] = display
+
+
+def looks_like_archive_payload(prefix):
+    """Conservative first-block signature screening, not content-type proof."""
+    return (prefix.startswith((
+        b"PK\x03\x04", b"PK\x05\x06", b"PK\x07\x08",
+        b"\x1f\x8b", b"7z\xbc\xaf\x27\x1c",
+        b"\xfd7zXZ\x00", b"Rar!\x1a\x07",
+        b"BZh", b"\x28\xb5\x2f\xfd",
+    )) or (len(prefix) >= 263 and prefix[257:262] == b"ustar"))
+
+
 def inspect_zip(fd, max_total, max_members):
     members = []
     total = 0
     seen = set()
+    directories = {}
+    files = {}
     with os.fdopen(os.dup(fd), "rb") as file:
         try:
             with zipfile.ZipFile(file, "r") as archive:
@@ -104,6 +155,7 @@ def inspect_zip(fd, max_total, max_members):
                     if getattr(info, "orig_filename", info.filename) != info.filename:
                         raise AdmissionError("ZIP_FILENAME_NORMALIZED_OR_TRUNCATED")
                     path = checked_member_name(info.filename, seen)
+                    register_archive_path(path, info.is_dir(), directories, files)
                     mode = (info.external_attr >> 16) & 0xffff
                     kind = stat.S_IFMT(mode)
                     if kind == stat.S_IFLNK or (kind not in (0, stat.S_IFREG, stat.S_IFDIR)):
@@ -130,6 +182,8 @@ def inspect_zip(fd, max_total, max_members):
                             part = member.read(CHUNK)
                             if not part:
                                 break
+                            if count == 0 and looks_like_archive_payload(part):
+                                raise AdmissionError("HIDDEN_NESTED_ARCHIVE")
                             count += len(part)
                             if count > info.file_size:
                                 raise AdmissionError("ARCHIVE_SIZE_CONFLICT")
@@ -137,7 +191,7 @@ def inspect_zip(fd, max_total, max_members):
                     if count != info.file_size:
                         raise AdmissionError("ARCHIVE_SIZE_CONFLICT")
                     members.append({"relative_path": path, "size_bytes": count, "sha256": digest.hexdigest()})
-        except (zipfile.BadZipFile, RuntimeError, EOFError, ValueError, OSError) as exc:
+        except (zipfile.BadZipFile, RuntimeError, EOFError, ValueError, OSError, NotImplementedError) as exc:
             raise AdmissionError("ZIP_INTEGRITY_FAILURE") from exc
     return members
 

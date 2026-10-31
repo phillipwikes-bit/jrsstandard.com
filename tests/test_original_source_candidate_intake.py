@@ -214,5 +214,80 @@ class SourceCandidateAdmission(unittest.TestCase):
         self.write_zip([("a.txt", "a"), ("b.txt", "b")])
         self.rejected("ARCHIVE_MEMBER_COUNT_REJECTED", max_members=1)
 
+
+    def test_31_file_as_implicit_directory_is_rejected(self):
+        self.write_zip([("source", "a file"), ("source/module.py", "x")])
+        self.rejected("ARCHIVE_FILE_DIRECTORY_CONFLICT")
+
+    def test_32_file_as_implicit_directory_reverse_order(self):
+        self.write_zip([("source/module.py", "x"), ("source", "a file")])
+        self.rejected("ARCHIVE_FILE_DIRECTORY_CONFLICT")
+
+    def test_33_implicit_parent_case_alias_rejected(self):
+        self.write_zip([("SRC/a.py", "a"), ("src/b.py", "b")])
+        self.rejected("ARCHIVE_DIRECTORY_CASE_COLLISION")
+
+    def test_34_explicit_implicit_parent_case_alias_rejected(self):
+        self.write_zip([("SRC/", ""), ("src/a.py", "a")])
+        self.rejected("ARCHIVE_DIRECTORY_CASE_COLLISION")
+
+    def test_35_unicode_normalization_parent_alias_rejected(self):
+        self.write_zip([("docs/café/a.py", "a"), ("docs/cafe\u0301/b.py", "b")])
+        self.rejected("ARCHIVE_DIRECTORY_CASE_COLLISION")
+
+    def test_36_portable_nonconflicting_tree_accepted(self):
+        self.write_zip([
+            ("src/", ""), ("src/docs/", ""), ("src/a.py", "a"),
+            ("src/docs/b.py", "b"), ("README.txt", "c"),
+        ])
+        result = self.admit()
+        self.assertEqual(result["archive_members_count"], 3)
+        self.assertEqual(result["original_decision_spellchecker_identity"], "NOT_AUTHENTICATED")
+
+    def test_37_hidden_zip_with_dat_extension_rejected(self):
+        embedded = io.BytesIO()
+        with zipfile.ZipFile(embedded, "w") as z:
+            z.writestr("fake_source.py", "fake content")
+        self.write_zip([("src/payload.dat", embedded.getvalue())])
+        self.rejected("HIDDEN_NESTED_ARCHIVE")
+
+    def test_38_hidden_gzip_with_txt_extension_rejected(self):
+        import gzip
+        self.write_zip([("src/payload.txt", gzip.compress(b"fabricated data"))])
+        self.rejected("HIDDEN_NESTED_ARCHIVE")
+
+    def test_39_hidden_tar_with_bin_extension_rejected(self):
+        import tarfile
+        embedded = io.BytesIO()
+        with tarfile.open(fileobj=embedded, mode="w") as t:
+            data = b"fictional"
+            item = tarfile.TarInfo("fake.txt")
+            item.size = len(data)
+            t.addfile(item, io.BytesIO(data))
+        self.write_zip([("src/payload.bin", embedded.getvalue())])
+        self.rejected("HIDDEN_NESTED_ARCHIVE")
+
+    def test_40_windows_device_filename_rejected(self):
+        self.write_zip([("tools/CON.py", "fake")])
+        self.rejected("ARCHIVE_NONPORTABLE_NAME")
+
+    def test_41_windows_trailing_dot_or_space_rejected(self):
+        for name in ("src/a.txt.", "src/a.txt ", "src/subdir. /source.py"):
+            with self.subTest(name=name):
+                self.write_zip([(name, "fake")])
+                self.rejected("ARCHIVE_NONPORTABLE_NAME")
+
+    def test_42_control_character_entry_name_rejected(self):
+        self.write_zip([("src/a\nb.py", "fake")])
+        self.rejected("ARCHIVE_NONPORTABLE_NAME")
+
+    def test_43_short_pk_prefix_is_not_zip_magic(self):
+        self.write_zip([("readme.txt", b"PK means present knowledge")])
+        self.assertEqual(self.admit()["archive_members_count"], 1)
+
+    def test_44_nested_zip_extension_still_refused(self):
+        self.write_zip([("nested/source.zip", b"not-real-content")])
+        self.rejected("NESTED_ARCHIVE_NOT_REVIEWED")
+
 if __name__ == "__main__":
     unittest.main()
