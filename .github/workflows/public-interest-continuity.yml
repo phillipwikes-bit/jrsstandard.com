@@ -43,3 +43,7 @@ jobs:
         run: |
           node --test tests/source-claim-boundaries.test.mjs
           node tools/check-source-claim-boundaries.mjs docs/source-custody/INCREMENT_14_EVIDENCE_SCOPE_SNAPSHOT_2026-10-31.json > /tmp/jrs-source-claim-preflight.json
+      - name: Reject owner-preview token-scope and exact-SHA false readiness
+        run: |
+          node --test tests/owner-preview-admission.test.mjs
+          node tools/check-owner-preview-admission.mjs docs/program-status/INCREMENT_15_OWNER_PREVIEW_OBSERVATIONS_2026-10-31.json > /tmp/jrs-owner-preview-preflight.json
