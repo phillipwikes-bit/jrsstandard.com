@@ -1,4 +1,4 @@
-import { fetchAllRows } from './_sb-fetch.js';
+import { fetchAll } from './_sb-fetch.js';
 import { CRAWLER, isCrawler } from './_traffic-quality.js';
 export const config = { runtime: 'edge' };
 
@@ -67,18 +67,28 @@ export default async function handler(req){
   // the query's own limit, with HTTP 200 and no marker. interaction_events
   // passed 2,000 rows, so the limit=20000 below was returning half the table
   // and every figure built from it was silently short. See api/_sb-fetch.js.
+  // A partial database response is not a valid public diligence count.
+  // fetchAllRows intentionally discards the completeness flag; never use it
+  // for metrics exposed as source-of-record or acquisition evidence.
   async function get(path){
-    return await fetchAllRows(SB, path, H);
+    const result = await fetchAll(SB, path, H);
+    if (!result.complete) throw new Error('incomplete_aggregate_read');
+    return result.rows;
   }
 
-  const [events, contacts, armA, armB, labels, outcomes] = await Promise.all([
-    get('interaction_events?select=source,type,payload,created_at'),
-    get('pilot_contacts?select=source,message,created_at'),
-    get('pilot_progress?select=code,total_reads,reads_today&limit=500'),
-    get('armb_progress?select=code,reads,reads_today&limit=500'),
-    get('bench_labels?select=labeler_code,record_id'),
-    get('bench_outcomes?select=contributor,domain')
-  ]);
+  let events, contacts, armA, armB, labels, outcomes;
+  try {
+    [events, contacts, armA, armB, labels, outcomes] = await Promise.all([
+      get('interaction_events?select=source,type,payload,created_at'),
+      get('pilot_contacts?select=source,message,created_at'),
+      get('pilot_progress?select=code,total_reads,reads_today&limit=500'),
+      get('armb_progress?select=code,reads,reads_today&limit=500'),
+      get('bench_labels?select=labeler_code,record_id'),
+      get('bench_outcomes?select=contributor,domain')
+    ]);
+  } catch (_) {
+    return json({ error: 'aggregate_statistics_incomplete_or_unavailable' }, 502);
+  }
 
   // Link programmes. "Opened" counts distinct people rather than distinct hits,
   // because one person reopening a link four times is one engaged person, not
