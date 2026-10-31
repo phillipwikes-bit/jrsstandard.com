@@ -22,7 +22,7 @@ const iso=v=>{
  if(typeof v!=='string'|| !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(v))
    throw Error('invalid_cutoff');
  const d=new Date(v);
- if(!Number.isFinite(d.getTime())||d.toISOString()!==v.replace(/\.000Z$/,'Z').replace(/Z$/,'.000Z').replace(/\.000\.000Z$/,'.000Z'))
+ if(!Number.isFinite(d.getTime())||d.toISOString()!==(v.includes('.') ? v : v.slice(0,-1)+'.000Z'))
    throw Error('invalid_cutoff');
  return v;
 };
