@@ -1,0 +1,57 @@
+{
+  "schema": "jrs-owner-preview-admission-v1",
+  "candidate": {
+    "head_sha": "e460e490d11a1638d4f2544ac0406705d0dfcac0",
+    "branch": "docs/increment14-governing-source-claims-2026-10-31",
+    "draft": true,
+    "merged": false
+  },
+  "preview": {
+    "deployment_id": "dpl_3J3y6ZwpQbXWadJbsCSYrfwf8JAu",
+    "git_sha": "4c39b3d249654a8e41e59144f5c45a0f25fef7b1",
+    "branch": "docs/increment14-governing-source-claims-2026-10-31",
+    "state": "READY",
+    "target": "NOT_CONFIRMED"
+  },
+  "credential_metadata": {
+    "key": "OWNER_DASHBOARD_TOKEN",
+    "inspected_without_decryption": true,
+    "current_branch_scope_present": false,
+    "unscoped_preview_scope_present": false,
+    "different_branch_scope_present": true,
+    "owner_confirms_prior_exposure_rotated": false
+  },
+  "anonymous_routes": [
+    {
+      "route": "/api/owner-session",
+      "http_status": 503,
+      "error_code": "owner_access_unavailable",
+      "private_cache": true,
+      "noindex": true
+    },
+    {
+      "route": "/programme-status-9872fb93cc94.html",
+      "http_status": 503,
+      "error_code": "owner_access_unavailable",
+      "private_cache": true,
+      "noindex": true
+    },
+    {
+      "route": "/api/support-contacts",
+      "http_status": 503,
+      "error_code": "owner_access_unavailable",
+      "private_cache": true,
+      "noindex": true
+    }
+  ],
+  "acceptance": {
+    "valid_owner_session_tested": false,
+    "expired_cookie_tested": false,
+    "revoked_cookie_tested": false,
+    "direct_anonymous_rls_tested": false,
+    "fixed_cutoff_counts_reconciled": false,
+    "owner_signed_exact_sha": false,
+    "rollback_verified": false,
+    "mobile_safari_tested": false
+  }
+}
