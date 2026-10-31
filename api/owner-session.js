@@ -13,7 +13,16 @@ export default async function handler(req){
    if(gate)return gate;
    return json({authenticated:true});
  }
- if(req.method==='DELETE')return json({signed_out:true},200,{'Set-Cookie':revokeOwnerCookie()});
+ if(req.method==='DELETE'){
+   // Browser-initiated sign-out must be same-origin. Clearing a browser
+   // cookie is not server-side session revocation: a captured stateless
+   // signed cookie remains usable until expiry or signing-key rotation.
+   const origin=req.headers.get('origin');
+   if(!origin || origin!==new URL(req.url).origin)
+     return json({error:'origin_not_allowed'},403);
+   return json({signed_out:true,server_session_revoked:false,
+     revocation_scope:'browser_cookie_only'},200,{'Set-Cookie':revokeOwnerCookie()});
+ }
  if(req.method!=='POST')return json({error:'method_not_allowed'},405);
  const origin=req.headers.get('origin');
  if(!origin || origin!==new URL(req.url).origin)return json({error:'origin_not_allowed'},403);

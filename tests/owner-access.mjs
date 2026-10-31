@@ -23,9 +23,9 @@ try{
  process.env.OWNER_DASHBOARD_TOKEN=SECRET;
  await check('missing cookie rejected',async()=>assert.equal((await ownerAccess(req())).status,401));
  await check('invalid bearer rejected',async()=>assert.equal((await ownerAccess(req('any',{Authorization:'Bearer incorrect'}))).status,401));
- await check('exact high entropy bearer accepted',async()=>{
+ await check('master bearer refused for private data routes; POST-only exchange retained',async()=>{
   assert.equal(await ownerSecretMatches(SECRET),true);
-  assert.equal(await ownerAccess(req('any',{Authorization:'Bearer '+SECRET})),null);
+  assert.equal((await ownerAccess(req('any',{Authorization:'Bearer '+SECRET}))).status,401);
   assert.equal(await ownerSecretMatches(SECRET+'extra'),false);
  });
  const cookie=await createOwnerCookie();
@@ -58,10 +58,13 @@ try{
    }));
    assert.equal(r.status,403);
  });
- await check('logout revokes cookie',async()=>{
-   const r=await session(new Request('https://www.jrsstandard.com/api/owner-session',{method:'DELETE'}));
+ await check('logout only clears browser cookie; server revocation is not claimed',async()=>{
+   const r=await session(new Request('https://www.jrsstandard.com/api/owner-session',{
+     method:'DELETE',headers:{Origin:'https://www.jrsstandard.com'}
+   }));
    assert.equal(r.status,200);
    assert.ok((r.headers.get('set-cookie')||'').includes('Max-Age=0'));
+   assert.equal((await r.json()).server_session_revoked,false);
  });
  let calls=0;
  globalThis.fetch=async()=>{calls++;throw Error('No unauthenticated fetch allowed')};

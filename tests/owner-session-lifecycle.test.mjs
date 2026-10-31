@@ -53,11 +53,14 @@ test('configured owner endpoint denies unsigned GET',async()=>{
  const res=await session(ownerReq());
  assert.equal(res.status,401);assertPrivate(res);
 });
-test('correct bearer owner secret passes while incorrect value fails',async()=>{
+test('master owner code cannot authorize a private GET bearer request',async()=>{
  configured();
- assert.equal(await ownerAccess(ownerReq({authorization:'Bearer '+SYNTHETIC_SECRET})),null);
- const denied=await ownerAccess(ownerReq({authorization:'Bearer '+ROTATED_SECRET}));
- assert.equal(denied.status,401);assertPrivate(denied);
+ for(const bearer of [SYNTHETIC_SECRET,ROTATED_SECRET]){
+   const denied=await ownerAccess(ownerReq({authorization:'Bearer '+bearer}));
+   assert.equal(denied.status,401);assertPrivate(denied);
+ }
+ assert.equal(await ownerSecretMatches(SYNTHETIC_SECRET),true,
+   'The master secret still authenticates only in the origin-checked POST exchange');
 });
 test('owner login requires exact same origin, JSON and correct token',async()=>{
  configured();
@@ -114,9 +117,12 @@ test('rotating the master owner secret invalidates all older signed cookies',asy
 });
 test('DELETE clears the browser cookie with secure flags; cleared browser GET denied',async()=>{
  configured();
- const res=await session(new Request(OWNER_URL,{method:'DELETE'}));
+ const res=await session(new Request(OWNER_URL,{method:'DELETE',headers:{Origin:'https://www.jrsstandard.com'}}));
  assert.equal(res.status,200);
- assert.equal((await res.json()).signed_out,true);
+ const result=await res.json();
+ assert.equal(result.signed_out,true);
+ assert.equal(result.server_session_revoked,false);
+ assert.equal(result.revocation_scope,'browser_cookie_only');
  assertPrivate(res);
  assert.match(res.headers.get('set-cookie')||'',/^__Host-jrs-owner=; Path=\/; Max-Age=0; HttpOnly; Secure; SameSite=Strict/);
  const after=await session(ownerReq({cookie:'__Host-jrs-owner='}));
@@ -125,13 +131,31 @@ test('DELETE clears the browser cookie with secure flags; cleared browser GET de
 test('KNOWN LIMITATION: captured cookie remains server-valid after browser sign-out',async()=>{
  configured();
  const stolenCookie=valueFromSetCookie(await createOwnerCookie());
- const signout=await session(new Request(OWNER_URL,{method:'DELETE',headers:{Cookie:stolenCookie}}));
+ const signout=await session(new Request(OWNER_URL,{method:'DELETE',headers:{
+   Cookie:stolenCookie,Origin:'https://www.jrsstandard.com'
+ }}));
  assert.equal(signout.status,200);
+ assert.equal((await signout.json()).server_session_revoked,false);
  const replay=await session(ownerReq({cookie:stolenCookie}));
  // This is an observed control gap, NOT acceptance of per-session revocation.
  // Stateless HMAC cookies remain valid until expiry or master-secret rotation.
  assert.equal(replay.status,200);
  assert.equal((await replay.json()).authenticated,true);
+});
+test('cross-origin and origin-absent DELETE cannot change owner cookie',async()=>{
+ configured();
+ for(const origin of [null,'https://attacker.example']){
+   const headers=origin?{Origin:origin}:{};
+   const res=await session(new Request(OWNER_URL,{method:'DELETE',headers}));
+   assert.equal(res.status,403);assertPrivate(res);
+   assert.equal(res.headers.has('set-cookie'),false);
+ }
+});
+test('bearer plus valid cookie is authenticated by cookie only',async()=>{
+ configured();
+ const cookie=valueFromSetCookie(await createOwnerCookie());
+ const res=await session(ownerReq({cookie,authorization:'Bearer '+ROTATED_SECRET}));
+ assert.equal(res.status,200);assert.equal((await res.json()).authenticated,true);
 });
 test('invalid POST bodies do not yield signed cookies',async()=>{
  configured();

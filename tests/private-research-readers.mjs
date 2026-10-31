@@ -4,6 +4,7 @@ import recheck from '../api/recheck-answers-b1a768e88d3e48bd.js';
 import roster from '../api/roster-8c3f1a9e7b2d6045.js';
 import geo from '../api/geo-4e8b2d7f9a1c3065.js';
 import variance from '../api/variance-6b1d90fa2c47e8b3.js';
+import {createOwnerCookie} from '../api/_owner-auth.js';
 
 const handlers={recheck,roster,geo,variance};
 const previous={};
@@ -12,9 +13,10 @@ for(const k of ['OWNER_DASHBOARD_TOKEN','SUPABASE_SERVICE_ROLE_KEY']) {
 }
 const previousFetch=globalThis.fetch;
 const ownerSecret='synthetic-research-reader-owner-code-with-adequate-length';
-let calls=0,passes=0;
-function request(name,method='GET',authorization=false){
-  const headers=authorization?{Authorization:'Bearer '+ownerSecret}:{};
+let calls=0,passes=0,ownerCookie='';
+function request(name,method='GET',authorization=false,rawBearer=false){
+  const headers=authorization?{Cookie:ownerCookie}:
+    (rawBearer?{Authorization:'Bearer '+ownerSecret}:{});
   return new Request('https://www.jrsstandard.com/api/'+name,{method,headers});
 }
 async function check(name,fn){await fn();passes++;console.log('PASS '+name);}
@@ -29,12 +31,20 @@ try {
   });
   process.env.OWNER_DASHBOARD_TOKEN=ownerSecret;
   process.env.SUPABASE_SERVICE_ROLE_KEY='synthetic-server-only-db-key';
+  ownerCookie=(await createOwnerCookie()).split(';')[0];
   await check('anonymous and forged owner credentials cannot read research responses',async()=>{
     for(const [name,handler] of Object.entries(handlers)){
       for(const authorized of [false]){
         const r=await handler(request(name,'GET',authorized));
         assert.equal(r.status,401,name);
       }
+    }
+    assert.equal(calls,0);
+  });
+  await check('raw owner master bearer cannot read protected research data',async()=>{
+    for(const [name,handler] of Object.entries(handlers)){
+      const r=await handler(request(name,'GET',false,true));
+      assert.equal(r.status,401,name);
     }
     assert.equal(calls,0);
   });
