@@ -77,9 +77,20 @@ footer{border-top:1px solid var(--rule);padding:25px 22px;color:var(--muted);fon
       <option value="organization">Organizational use</option>
       <option value="research">Research collaboration</option>
       <option value="training">Training and resources</option>
-      <option value="commercial">Prospective Decision Spellchecker interest</option>
+      <option value="commercial">Prospective Decision Spellchecker interest, JRS licensing or acquisition</option>
       <option value="general">General inquiry</option>
      </select>
+    </div>
+    <div class="full" id="commercial-purpose-field" hidden>
+     <label for="inq-commercial-purpose">Commercial enquiry purpose *</label>
+     <select id="inq-commercial-purpose" name="commercial_purpose" disabled>
+      <option value="">Select a purpose</option>
+      <option value="method-licence">Potential licence to use the JRS methodology</option>
+      <option value="software-evaluation">Future controlled Decision Spellchecker evaluation</option>
+      <option value="integration">Potential integration or module arrangement</option>
+      <option value="asset-acquisition">Exploratory acquisition of JRS or related assets</option>
+     </select>
+     <p style="color:var(--muted);font-size:12px">An enquiry is not a licensing offer, invitation to access software, accepted transaction, or confirmation that rights are available for transfer.</p>
     </div>
     <div class="full"><label for="inq-msg">Message (12 to 1,200 characters) *</label><textarea id="inq-msg" name="message" minlength="12" maxlength="1200" required placeholder="Describe your inquiry in general terms only. Do not include record content or other individuals' personal data."></textarea></div>
     <div class="trap" aria-hidden="true"><label for="inq-web">Company website</label><input id="inq-web" name="company_website" autocomplete="off" tabindex="-1"></div>
@@ -108,6 +119,21 @@ footer{border-top:1px solid var(--rule);padding:25px 22px;color:var(--muted);fon
   const params=new URLSearchParams(location.search);
   const category=params.get('category');
   if(['organization','research','training','commercial','general'].includes(category))form.elements.category.value=category;
+  const purposeField=document.getElementById('commercial-purpose-field');
+  const purposeSelect=document.getElementById('inq-commercial-purpose');
+  function updateCommercialPurpose(){
+    const isCommercial=form.elements.category.value==='commercial';
+    purposeField.hidden=!isCommercial;
+    purposeSelect.disabled=!isCommercial;
+    purposeSelect.required=isCommercial;
+    if(!isCommercial)purposeSelect.value='';
+  }
+  form.elements.category.addEventListener('change',updateCommercialPurpose);
+  updateCommercialPurpose();
+  const purpose=params.get('purpose');
+  if(form.elements.category.value==='commercial'
+     && ['method-licence','software-evaluation','integration','asset-acquisition'].includes(purpose))
+     purposeSelect.value=purpose;
   fetch('/api/site-inquiry-config',{credentials:'same-origin'})
     .then(r=>{if(!r.ok)throw new Error('configuration unavailable');return r.json()})
     .then(d=>{
@@ -139,7 +165,7 @@ footer{border-top:1px solid var(--rule);padding:25px 22px;color:var(--muted);fon
         headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
       const result=await response.json();
       if(!response.ok||result.stored!==true)throw new Error(result.error||'not_stored');
-      form.reset();token='';ready=false;
+      form.reset();updateCommercialPurpose();token='';ready=false;
       if(widget!==null&&window.turnstile)window.turnstile.reset(widget);
       say('Inquiry received and stored for review. This confirmation does not mean an email alert was delivered.');
     }catch{

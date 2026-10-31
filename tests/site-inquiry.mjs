@@ -40,6 +40,9 @@ try{
  await test('bad inputs fail without network',async()=>{
    for(const bad of [
      {...defaultBody,category:'random'},
+     {...defaultBody,category:'commercial'},
+     {...defaultBody,category:'research',commercial_purpose:'asset-acquisition'},
+     {...defaultBody,category:'commercial',commercial_purpose:'unknown'},
      {...defaultBody,message:'too short'},
      {...defaultBody,consent:false},
      {...defaultBody,email:'not-an-email'},
@@ -98,6 +101,18 @@ try{
    assert.ok(!stored.message.includes('synthetic-bot-secret'));
  });
  calls=[];
+ await test('a commercial acquisition enquiry is recorded as interest, not permission',async()=>{
+   const response=await inquiry(make({...defaultBody,category:'commercial',commercial_purpose:'asset-acquisition'}));
+   assert.equal(response.status,200);
+   assert.equal(calls.length,2);
+   const stored=JSON.parse(calls[1].opts.body);
+   const message=JSON.parse(stored.message);
+   assert.equal(message.category,'commercial');
+   assert.equal(message.commercial_purpose,'asset-acquisition');
+   assert.equal(message.consent_to_transfer,false);
+   assert.equal(message.software_access_requested,false);
+ });
+ calls=[];
  globalThis.fetch=async(url,opts)=>{
    calls.push({url:String(url),opts});
    if(String(url).includes('siteverify'))return Response.json({success:true,hostname:'www.jrsstandard.com'});
@@ -122,6 +137,12 @@ try{
    assert.ok(html.includes("fetch('/api/site-inquiry-config'"));
    assert.ok(html.includes('name="consent"'));
    assert.ok(html.includes('name="category"'));
+   assert.ok(html.includes('name="commercial_purpose"'));
+   assert.ok(html.includes('purposeSelect.required=isCommercial'));
+   const enterprise=readFileSync(new URL('../enterprise.html',import.meta.url),'utf8');
+   assert.ok(enterprise.includes('purpose=asset-acquisition'));
+   assert.ok(enterprise.includes('value="acquisition"'));
+   assert.ok(enterprise.includes('value="framework-licence"'));
    assert.ok(html.includes('not yet been confirmed as operational'));
    const csp=vercel.headers.flatMap(o=>o.headers||[]).find(h=>h.key==='Content-Security-Policy')?.value||'';
    assert.ok(csp.includes('https://challenges.cloudflare.com'));

@@ -4,6 +4,7 @@ import { fetchAll } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 const SB='https://pjzxkeviouofdseagvpf.supabase.co';
 const CATEGORIES=['organization','research','training','commercial','general'];
+const COMMERCIAL_PURPOSES=['method-licence','software-evaluation','integration','asset-acquisition'];
 const SOURCE='site-inquiry';
 
 function json(value,status=200){
@@ -31,6 +32,8 @@ export default async function handler(req){
   if(!result.complete)return json({error:'source_incomplete'},502);
   const now=Date.now(),cutoff=now-30*24*60*60*1000;
   const byCategory=Object.fromEntries(CATEGORIES.map(k=>[k,0]));
+  const commercialByPurpose=Object.fromEntries(COMMERCIAL_PURPOSES.map(k=>[k,0]));
+  commercialByPurpose.unspecified=0;
   let recent=0,unclassified=0,consented=0,malformed=0,last=null;
   const byMonth={};
   for(const r of result.rows){
@@ -48,6 +51,12 @@ export default async function handler(req){
     const category=m&&typeof m.category==='string'?m.category:'';
     if(Object.hasOwn(byCategory,category))byCategory[category]++;
     else unclassified++;
+    if(category==='commercial') {
+      const purpose=m&&typeof m.commercial_purpose==='string'?m.commercial_purpose:'';
+      if(Object.hasOwn(commercialByPurpose,purpose) && purpose!=='unspecified')
+        commercialByPurpose[purpose]++;
+      else commercialByPurpose.unspecified++;
+    }
     if(m&&m.consent_to_contact===true)consented++;
   }
   return json({
@@ -55,11 +64,12 @@ export default async function handler(req){
     total:result.rows.length,
     last_30_days:recent,
     by_category:byCategory,
+    commercial_by_purpose:commercialByPurpose,
     by_month:byMonth,
     unclassified_count:unclassified,
     malformed_payload_count:malformed,
     contact_consent_count:consented,
     latest_utc:last,
-    basis:'Stored pilot_contacts rows with source=site-inquiry only. Historical enterprise, checkout, training and research records are excluded.'
+    basis:'Stored pilot_contacts rows with source=site-inquiry only. Historical enterprise, checkout, training and research records are excluded. Commercial purpose is self-declared and does not establish a qualified purchaser, agreement or offer.'
   });
 }
