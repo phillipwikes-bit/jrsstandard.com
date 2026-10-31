@@ -25,3 +25,5 @@ jobs:
         run: node --test tests/snapshot-public-program-counts.test.mjs
       - name: Verify support-statistics failures do not report false zeros
         run: node --test tests/support-stats-completeness.test.mjs
+      - name: Test owner login, cookie expiry, rotation and explicitly documented logout replay limitation
+        run: node --test tests/owner-session-lifecycle.test.mjs
