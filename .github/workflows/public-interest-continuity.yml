@@ -20,6 +20,8 @@ jobs:
           node-version: '22'
       - name: Verify private aggregate route inventory without Vercel runtime dependency
         run: node --test tests/owner-aggregate-proxy-static.test.mjs
+      - name: Preserve disabled research runner and cover six new G2 preview probes
+        run: node --test tests/study-runner-stop-and-preview-coverage.test.mjs
       - name: Preserve 24 existing collection and owner-report sources
         run: node tests/check-public-program-continuity.mjs
       - name: Verify accessible free initiative links and old campaign routes
