@@ -1,5 +1,5 @@
 export const config={runtime:'edge'};
-import {ownerAccess,ownerSecretMatches,createOwnerCookie,revokeOwnerCookie} from './_owner-auth.js';
+import {ownerAccess,ownerAccessConfigured,ownerSecretMatches,createOwnerCookie,revokeOwnerCookie} from './_owner-auth.js';
 function json(o,status=200,extra={}){
  return new Response(JSON.stringify(o),{status,headers:{
   'Content-Type':'application/json; charset=utf-8',
@@ -25,6 +25,8 @@ export default async function handler(req){
    if(raw.length>1200)return json({error:'request_too_large'},413);
    body=JSON.parse(raw);
  }catch{return json({error:'bad_input'},400)}
+ // Service unavailable must not be misreported as an incorrect access code.
+ if(!ownerAccessConfigured())return json({error:'owner_access_unavailable'},503);
  const secret=typeof body.token==='string'?body.token:'';
  if(!await ownerSecretMatches(secret))return json({error:'unauthorized'},401);
  const cookie=await createOwnerCookie();

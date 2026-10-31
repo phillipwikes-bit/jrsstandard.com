@@ -8,6 +8,7 @@ const MAX_AGE=8*60*60;
 
 const encoder=new TextEncoder();
 function envSecret(){return ((typeof process!=='undefined' && process.env) || {}).OWNER_DASHBOARD_TOKEN || '';}
+export function ownerAccessConfigured(){return envSecret().length>=32;}
 function denied(error,status){
   return new Response(JSON.stringify({error}),{status,headers:{
     'Content-Type':'application/json; charset=utf-8',
