@@ -23,7 +23,7 @@ verify('source exception is narrow, documented and not release-approved',()=>{
  assert.equal(exception.status,'PROPOSED_NOT_RELEASE_APPROVED');
  assert.equal(exception.owner_approval,'NOT_PROVIDED');
  assert.equal(exception.production_status,'HOLD');
- assert.deepEqual(Object.keys(exception.entries),['api/support-stats.js']);
+ assert.deepEqual(Object.keys(exception.entries).sort(),['api/support-stats.js','api/support.js']);
  for(const [path,x] of Object.entries(exception.entries)){
   assert.equal(baseline.files[path],x.before_blob_sha);
   assert.notEqual(x.before_blob_sha,x.candidate_blob_sha);

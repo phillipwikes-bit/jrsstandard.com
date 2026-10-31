@@ -95,8 +95,13 @@ export default async function handler(req){
   // click, so the redirect is issued whatever happens here.
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
+  // Preview/local routes may share production storage credentials.
+  // Only a genuine production GET may generate a historical support event.
+  // Direct historical support links remain functional, but navigation is never
+  // evidence of a unique individual or organizational endorsement.
+  const allowedWrite = env.VERCEL_ENV === 'production' && req.method === 'GET';
   let wrote = false;
-  if (SERVICE && !isAgent && !alreadyCounted && !prefetched) {
+  if (allowedWrite && SERVICE && !isAgent && !alreadyCounted && !prefetched) {
     try {
       const country = String(req.headers.get('x-vercel-ip-country') || '')
         .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || null;
@@ -104,7 +109,7 @@ export default async function handler(req){
       // series and the country breakdown stay one continuous history rather
       // than two incompatible halves. No `registered` flag: nobody registered,
       // and gate-stats uses that flag to tell a registration from a click.
-      await fetch(SB + '/rest/v1/interaction_events', {
+      const stored = await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
@@ -123,8 +128,10 @@ export default async function handler(req){
           user_agent: ua.slice(0, 300)
         }})
       });
-      wrote = true;
-    } catch (e) { /* never block the redirect */ }
+      // A resolved HTTP 401/409/429/500 is NOT an accepted database write.
+      // Do not set the browser marker or report r=1 after an upstream error.
+      wrote = stored.ok === true;
+    } catch (e) { /* never block the redirect or claim an accepted write */ }
   }
 
   // r=1 tells the campaign screen the endorsement is already on record, so it
