@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
@@ -27,7 +28,7 @@ const GATE_START = '2026-08-02T00:00:00Z';
 function json(o, s){
   return new Response(JSON.stringify(o), {
     status: s || 200,
-    headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store' }
+    headers: { 'Content-Type':'application/json', 'X-Robots-Tag':'noindex, nofollow', 'Referrer-Policy':'no-referrer', 'Cache-Control':'no-store, private' }
   });
 }
 
@@ -46,14 +47,9 @@ function isTestSrc(v){
 }
 
 export default async function handler(req){
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { status:204, headers:{
-      'Access-Control-Allow-Origin':'*',
-      'Access-Control-Allow-Methods':'GET, OPTIONS',
-      'Access-Control-Allow-Headers':'Content-Type'
-    }});
-  }
   if (req.method !== 'GET') return json({ error:'method_not_allowed' }, 405);
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
 
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
