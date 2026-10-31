@@ -76,7 +76,7 @@ test('09 fixed original public interest source baseline is not silently redefine
  const x=JSON.parse(read('tests/public-program-baseline.json'));
  const y=JSON.parse(read('tests/public-program-controlled-exceptions.json'));
  assert.equal(Object.keys(x.files).length,24);
- assert.deepEqual(Object.keys(y.entries).sort(),['api/support-stats.js','api/support.js']);
+ assert.deepEqual(Object.keys(y.entries).sort(),["api/access-stats.js","api/asset-stats.js","api/enroll-stats.js","api/gate-stats.js","api/geo-stats.js","api/orgpilot-stats.js","api/support-stats.js","api/support.js"]);
  assert.equal(y.production_status,'HOLD');
  assert.equal(y.owner_approval,'NOT_PROVIDED');
 });

@@ -25,12 +25,12 @@ let compiled = src
   .replace('export default async function handler(req){','async function handler(req){');
 assert.doesNotMatch(compiled,/^import /m);
 const factory = new Function('fetchAll','process','CRAWLER','isCrawler',
-  'classifyDownloadTraffic','isInternalTestSource','isCurrentDownloadResource',
+  'classifyDownloadTraffic','isInternalTestSource','isCurrentDownloadResource','ownerAccess',
   compiled+'\nreturn handler;');
 const env = {env:{SUPABASE_SERVICE_ROLE_KEY:'not-a-real-credential'}};
 const request = new Request('https://www.jrsstandard.com/api/asset-stats',{method:'GET'});
 const setup = reader=>factory(reader,env,CRAWLER,isCrawler,
-  classifyDownloadTraffic,isInternalTestSource,isCurrentDownloadResource);
+  classifyDownloadTraffic,isInternalTestSource,isCurrentDownloadResource,async()=>null);
 
 // Fail closed if any of six required source views is incomplete.
 const partial = setup(async(_base,path) => ({rows:[],complete:!path.startsWith('pilot_progress?')}));

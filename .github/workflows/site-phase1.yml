@@ -145,6 +145,7 @@ jobs:
       - run: npm install --ignore-scripts --no-audit --no-fund
       - run: node tests/owner-router.mjs
       - run: node --test tests/owner-aggregate-proxy.test.mjs
+      - run: node --test tests/private-owner-metrics-defense.test.mjs
       - run: node tests/notify-gmail-readiness.mjs
       - run: node tests/route-access-inventory.mjs
       - run: node tests/private-research-readers.mjs

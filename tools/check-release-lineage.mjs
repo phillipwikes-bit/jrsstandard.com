@@ -48,7 +48,7 @@ export function assessReleaseLineage(facts,policy,baseline,exceptions){
  assert(Object.keys(baseline.files||{}).length===24,'expected 24 immutable baseline paths');
  assert(exceptions?.schema==='jrs_controlled_source_exception_v1','invalid source exceptions');
  assert(exceptions.production_status==='HOLD'&&exceptions.owner_approval==='NOT_PROVIDED','exception release authorization not allowed');
- assert(Object.keys(exceptions.entries||{}).sort().join('|')==='api/support-stats.js|api/support.js','unexpected exception inventory');
+ assert(Object.keys(exceptions.entries||{}).sort().join('|')==="api/access-stats.js|api/asset-stats.js|api/enroll-stats.js|api/gate-stats.js|api/geo-stats.js|api/orgpilot-stats.js|api/support-stats.js|api/support.js",'unexpected exception inventory');
  const issues=[],fail=(code,detail)=>issues.push({code,detail});
  if(facts.main_sha!==policy.observed_main_sha)fail('MAIN_BASE_MOVED','Main SHA changed since inspected baseline');
  if(facts.merge_base_sha!==facts.main_sha)fail('HEAD_DIVERGED_FROM_MAIN','Main is not an ancestor');

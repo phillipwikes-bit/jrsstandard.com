@@ -34,16 +34,18 @@ test('05 unsupported methods are refused without wildcard cross-origin authoriza
  assert.match(proxySource,/status: 405/);
  assert.doesNotMatch(proxySource,/Access-Control-Allow-Origin/);
 });
-test('06 all six historically frozen source modules are unchanged source-control scope',()=>{
+test('06 original baseline preserved with six newly scoped security exceptions',()=>{
  assert.equal(Object.keys(frozen.files).length,24);
  for(const path of metrics)assert.match(frozen.files[path.slice(1)+'.js'],/^[0-9a-f]{40}$/,path);
- assert.deepEqual(Object.keys(exceptions.entries).sort(),['api/support-stats.js','api/support.js']);
+ assert.deepEqual(Object.keys(exceptions.entries).sort(),["api/access-stats.js","api/asset-stats.js","api/enroll-stats.js","api/gate-stats.js","api/geo-stats.js","api/orgpilot-stats.js","api/support-stats.js","api/support.js"]);
 });
-test('07 metric sources remain unsafe without effective edge enforcement',()=>{
+test('07 metric source modules also require signed sessions and private response headers',()=>{
  for(const path of metrics){
   const src=text(path.slice(1)+'.js');
   assert.match(src,/SUPABASE_SERVICE_ROLE_KEY/);
-  assert.doesNotMatch(src,/ownerAccess\(req\)/);
+  assert.match(src,/ownerAccess\(req\)/);
+  assert.doesNotMatch(src,/Access-Control-Allow-Origin/);
+  assert.match(src,/no-store, private/);
  }
 });
 test('08 public aggregate endpoints not in owner route inventory',()=>{
