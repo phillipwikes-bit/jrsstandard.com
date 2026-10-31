@@ -436,6 +436,7 @@ tr.today td{background:rgba(93,191,130,.07)}
       <tbody id="download-quality-rows"><tr><td colspan="5">Loading classified requests...</td></tr></tbody>
     </table></div>
     <p class="note" id="download-quality-note">These count tracked redirect requests, not readers, document use or buyer interest.</p>
+    <p class="note" id="download-scope-bridge">Reconciling request-source populations with the aggregate report...</p>
   </div>
   <div class="chart">
     <h3>Raw tracked guide requests by day</h3>
@@ -780,7 +781,7 @@ function loadDownloads(){
      h+='</div></div>';
 
      h+='<div style="font-size:11.5px;color:var(--muted-soft);margin-top:10px">'
-       +'<b style="color:var(--text)">'+grand+'</b> downloads over <b style="color:var(--text)">'+days.length+'</b> '
+       +'<b style="color:var(--text)">'+grand+'</b> raw tracked requests over <b style="color:var(--text)">'+days.length+'</b> '
        +(days.length===1?'day':'days')+', of which <b style="color:var(--text)">'+(d.days_with_activity||0)+'</b> had any activity. '
        +'Busiest day <b style="color:var(--text)">'+(d.peak_day_downloads||0)+'</b>. First '+esc(days[0].day)+', latest '+esc(days[days.length-1].day)+'.</div>';
 
@@ -1030,10 +1031,31 @@ function renderSuppressed(list){
   });
   el.innerHTML=h;
 }
+function renderDownloadScopeBridge(engagement){
+  var el=document.getElementById('download-scope-bridge');
+  if(!el)return;
+  var b=engagement && engagement.download_scope_bridge;
+  if(!b || !b.source_scope_reconciles){
+    el.textContent='Same-source request reconciliation unavailable or incomplete. No denominator can be asserted.';
+    return;
+  }
+  var diff=b.difference_between_legacy_download_events_and_current_resource_requests;
+  el.textContent='Same-event-source audit: '+b.counted_all_source_download_type_events
+    +' legacy all-source type=download events versus '
+    +b.current_resource_redirect_requests+' current-resource redirect requests (includes '
+    +b.current_resource_other_type_events+' other-type events). Difference: '+diff
+    +'. Of the all-source download events, '
+    +b.outside_current_resource_download_type_events
+    +' are outside the current-resource scope. Test-tagged redirect rows: '
+    +b.internal_test_rows_in_redirect_sources
+    +'; retired or unrecognized kit rows: '+b.retired_or_unknown_kit_rows
+    +'. These populations use different inclusion rules. The difference is not evidence of additional readers, missing readers or lost conversions.';
+}
 function loadToday(){
   fetch('/api/asset-stats')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
+      renderDownloadScopeBridge(d&&d.open_engagement);
       var t=(d&&d.today)||null;
       function setv(id,v){ var e=document.getElementById(id); if(e) e.textContent=(v===undefined||v===null)?'0':v; }
       if(!t){ document.getElementById('td-note').textContent='Could not load today. Tap Refresh.'; return; }
@@ -1060,7 +1082,7 @@ function loadToday(){
       setv('td-evopen',t.evaluation_opens);           setv('td-evsub',t.evaluation_submissions);
       setv('td-dl',t.guide_downloads);                setv('td-reads',t.records_reviewed);
       var parts=[];
-      parts.push((t.total_human_events||0)+' human '+(((t.total_human_events||0)===1)?'event':'events')+' recorded today');
+      parts.push((t.total_human_events||0)+' logged '+(((t.total_human_events||0)===1)?'event':'events')+' not flagged as declared crawler traffic today (not verified people)');
       if(t.crawler_rows_excluded) parts.push(t.crawler_rows_excluded+' crawler '+((t.crawler_rows_excluded===1)?'row':'rows')+' excluded');
       if(t.records_reviewed) parts.push(t.records_reviewed+' records reviewed ('+(t.records_reviewed_detection||0)+' detection, '+(t.records_reviewed_comparison||0)+' comparison)');
       document.getElementById('td-note').textContent=parts.join(' \u00b7 ')+'. '+t.note;
@@ -1110,7 +1132,7 @@ function loadToday(){
       renderCompletedEvaluations(d.completed_evaluations);
       renderSuppressed(d.suppressed_cohorts);
     })
-    .catch(function(){ var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; var rr=document.getElementById('td-recon'); if(rr) rr.textContent='Could not load. Tap Refresh.'; var cn=document.getElementById('ce-names'); if(cn) cn.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; var sp=document.getElementById('suppressed'); if(sp) sp.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
+    .catch(function(){ renderDownloadScopeBridge(null); var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; var rr=document.getElementById('td-recon'); if(rr) rr.textContent='Could not load. Tap Refresh.'; var cn=document.getElementById('ce-names'); if(cn) cn.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; var sp=document.getElementById('suppressed'); if(sp) sp.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
 }
 function loadEvalFunnel(){
   return fetch('/api/asset-stats')
@@ -1404,7 +1426,7 @@ function loadItems(){
         var max=1; it.by_country.forEach(function(x){ if(x.downloads>max) max=x.downloads; });
         html+='<div style="margin:0 0 20px;padding-top:12px;border-top:1px solid var(--rule)">';
         html+='<div style="font-family:\'Bodoni Moda\',serif;font-size:16px;color:var(--text);margin-bottom:2px">'+esc(it.asset)+'</div>';
-        html+='<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.08em;color:var(--accent-dim);margin-bottom:9px"><b style="color:var(--accent)">'+it.total+'</b> download'+(it.total===1?'':'s')+' &middot; '+it.countries+' '+(it.countries===1?'country':'countries')+'</div>';
+        html+='<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.08em;color:var(--accent-dim);margin-bottom:9px"><b style="color:var(--accent)">'+it.total+'</b> raw request'+(it.total===1?'':'s')+' &middot; '+it.countries+' '+(it.countries===1?'country':'countries')+'</div>';
         it.by_country.forEach(function(x){
           var label = x.country==='unknown' ? 'Unknown' : esc(x.country);
           var w = Math.max(4, Math.round((x.downloads/max)*100));

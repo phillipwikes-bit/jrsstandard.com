@@ -10,20 +10,20 @@ assert.equal(classifier.classifyDownloadTraffic({}),'user_agent_missing');
 assert.equal(classifier.classifyDownloadTraffic({user_agent:'curl/8.0'}),'declared_crawler');
 
 const assetSource = readFileSync(new URL('../api/asset-stats.js', import.meta.url),'utf8');
-assert.match(assetSource,/import \{ CRAWLER, isCrawler \} from '\.\/_traffic-quality\.js';/);
+assert.match(assetSource,/import \{ CRAWLER, isCrawler, classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource \} from '\.\/_traffic-quality\.js';/);
 
 let geoSource = readFileSync(new URL('../api/geo-stats.js', import.meta.url),'utf8');
-assert.match(geoSource,/import \{ classifyDownloadTraffic \} from '\.\/_traffic-quality\.js';/);
+assert.match(geoSource,/import \{ classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource \} from '\.\/_traffic-quality\.js';/);
 assert.match(geoSource,/if \(!complete\) return json\(\{ error:'incomplete_download_event_read' \}, 502\)/);
 assert.match(geoSource,/reconciles_to_legacy_raw_scope:/);
 
 geoSource = geoSource
   .replace("import { fetchAll } from './_sb-fetch.js';",'')
-  .replace("import { classifyDownloadTraffic } from './_traffic-quality.js';",'')
+  .replace("import { classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource } from './_traffic-quality.js';",'')
   .replace("export const config = { runtime: 'edge' };",'')
   .replace('export default async function handler(){','async function handler(){');
 assert.equal(geoSource.includes('import '),false);
-const buildHandler = new Function('fetchAll','classifyDownloadTraffic','process',geoSource+'\nreturn handler;');
+const buildHandler = new Function('fetchAll','classifyDownloadTraffic','isInternalTestSource','isCurrentDownloadResource','process',geoSource+'\nreturn handler;');
 
 const rows = [
   {source:'guide-dl', payload:{edition:'employment',country:'US',user_agent:'Mozilla/5.0 Chrome/124'},created_at:'2026-10-30'},
@@ -35,7 +35,7 @@ const rows = [
   {source:'kit-dl', payload:{file:'JRS_Kit_Retired.pdf',country:'US',user_agent:'Mozilla/5.0'},created_at:'2026-10-30'}
 ];
 const env = {env:{SUPABASE_SERVICE_ROLE_KEY:'fake-test-key'}};
-const handler = buildHandler(async () => ({rows,complete:true}),classifier.classifyDownloadTraffic,env);
+const handler = buildHandler(async () => ({rows,complete:true}),classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,env);
 const response = await handler();
 assert.equal(response.status,200);
 const d = await response.json();
@@ -56,9 +56,9 @@ assert.equal(ref.user_agent_missing,1);
 assert.equal(ref.not_identified_as_crawler,0);
 
 // A partial read and a failed database read must not be misreported as 0 downloads.
-const partial = buildHandler(async () => ({rows:[rows[0]],complete:false}),classifier.classifyDownloadTraffic,env);
+const partial = buildHandler(async () => ({rows:[rows[0]],complete:false}),classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,env);
 assert.equal((await partial()).status,502);
-const broken = buildHandler(async () => {throw Error('synthetic database failure')},classifier.classifyDownloadTraffic,env);
+const broken = buildHandler(async () => {throw Error('synthetic database failure')},classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,env);
 assert.equal((await broken()).status,502);
 
 const html = readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');

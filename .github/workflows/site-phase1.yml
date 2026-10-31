@@ -55,6 +55,8 @@ on:
       - 'api/geo-stats.js'
       - 'api/asset-stats.js'
       - 'tests/download-traffic-quality.mjs'
+      - 'tests/asset-evidence-integrity.mjs'
+      - 'api/dl.js'
       - 'docs/commercial/JRS_DOWNLOAD_QUALITY_AND_BUYER_EVIDENCE_INDEX_2026-10-30.md'
       - '.github/workflows/site-phase1.yml'
   push:
@@ -112,6 +114,8 @@ on:
       - 'api/geo-stats.js'
       - 'api/asset-stats.js'
       - 'tests/download-traffic-quality.mjs'
+      - 'tests/asset-evidence-integrity.mjs'
+      - 'api/dl.js'
       - 'docs/commercial/JRS_DOWNLOAD_QUALITY_AND_BUYER_EVIDENCE_INDEX_2026-10-30.md'
       - '.github/workflows/site-phase1.yml'
 permissions:
@@ -137,3 +141,4 @@ jobs:
       - run: node tests/site-phase1.mjs
       - run: node tests/public-route-alignment.mjs
       - run: node tests/download-traffic-quality.mjs
+      - run: node tests/asset-evidence-integrity.mjs
