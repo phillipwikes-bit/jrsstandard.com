@@ -1,5 +1,5 @@
 import { fetchAll } from './_sb-fetch.js';
-import { CRAWLER, isCrawler } from './_traffic-quality.js';
+import { CRAWLER, isCrawler, classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource } from './_traffic-quality.js';
 export const config = { runtime: 'edge' };
 
 // Asset engagement statistics for acquisition diligence.
@@ -220,13 +220,55 @@ export default async function handler(req){
   const CERT_SOURCES = { 'honor-cert': 1, 'reviewer-cert-render': 1 };
 
   let downloads = 0, downloadsCrawlers = 0, downloadsUnattributed = 0;
+  const scope = {
+    counted_all_source_download_type_events: 0,
+    current_resource_redirect_requests: 0,
+    current_resource_download_type_events: 0,
+    current_resource_other_type_events: 0,
+    declared_crawler: 0,
+    user_agent_missing: 0,
+    not_identified_as_crawler: 0,
+    internal_test_rows_in_redirect_sources: 0,
+    retired_or_unknown_kit_rows: 0,
+    outside_current_resource_download_type_events: 0
+  };
   events.forEach(function(e){
-    if (e.type !== 'download' || CERT_SOURCES[e.source]) return;
-    const p = e.payload || {};
-    if (isCrawler(p)) { downloadsCrawlers++; return; }
-    if (!p.user_agent) downloadsUnattributed++;
-    downloads++;
+    // The legacy aggregate counts every type=download source except
+    // certificates; geo-stats counts current-resource redirect sources.
+    // Preserve both populations and explicitly report their difference.
+    if (e.type === 'download' && !CERT_SOURCES[e.source]) {
+      scope.counted_all_source_download_type_events++;
+      const p = e.payload || {};
+      if (isCrawler(p)) downloadsCrawlers++;
+      else {
+        if (classifyDownloadTraffic(p) === 'user_agent_missing') downloadsUnattributed++;
+        downloads++;
+      }
+    }
+    if (e.source !== 'guide-dl' && e.source !== 'pdf-dl' && e.source !== 'kit-dl') {
+      if (e.type === 'download' && !CERT_SOURCES[e.source]) scope.outside_current_resource_download_type_events++;
+      return;
+    }
+    if (isInternalTestSource((e.payload || {}).src)) {
+      scope.internal_test_rows_in_redirect_sources++;
+      if (e.type === 'download') scope.outside_current_resource_download_type_events++;
+      return;
+    }
+    if (!isCurrentDownloadResource(e)) {
+      scope.retired_or_unknown_kit_rows++;
+      if (e.type === 'download') scope.outside_current_resource_download_type_events++;
+      return;
+    }
+    scope.current_resource_redirect_requests++;
+    if (e.type === 'download') scope.current_resource_download_type_events++;
+    else scope.current_resource_other_type_events++;
+    scope[classifyDownloadTraffic(e.payload)]++;
   });
+  const scopeReconciles =
+    scope.counted_all_source_download_type_events === downloads + downloadsCrawlers &&
+    scope.current_resource_redirect_requests === scope.current_resource_download_type_events + scope.current_resource_other_type_events &&
+    scope.current_resource_redirect_requests === scope.declared_crawler + scope.user_agent_missing + scope.not_identified_as_crawler &&
+    scope.counted_all_source_download_type_events === scope.current_resource_download_type_events + scope.outside_current_resource_download_type_events;
 
   // THE REVIEWER EVALUATION FUNNEL. Three numbers, and they answer three
   // different questions that were previously collapsed into one:
@@ -929,7 +971,20 @@ export default async function handler(req){
       downloads_predating_user_agent_capture: downloadsUnattributed,
       downloads_basis: 'Declared crawlers are excluded where the row can be tested. '
              + 'User agent was not written on download rows until 2026-08-11, so rows '
-             + 'before that date carry no flag and are still counted.',
+             + 'before that date carry no flag and are still counted. Other user agents '
+             + 'are not independently verified people.',
+      download_scope_bridge: {
+        ...scope,
+        difference_between_legacy_download_events_and_current_resource_requests:
+          scope.counted_all_source_download_type_events - scope.current_resource_redirect_requests,
+        source_scope_reconciles: scopeReconciles,
+        note: 'All values are built from this one complete interaction_events read. '
+            + 'The legacy all-source type=download metric and the geographic '
+            + 'current-resource redirect-request metric differ in source and '
+            + 'event-type inclusion. A difference is not proof of missing people. '
+            + 'Compare endpoints only at an aligned data snapshot; concurrent '
+            + 'requests may span different event times.'
+      },
       device_split: {
         mobile: mobile,
         desktop: desktop,
