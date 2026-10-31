@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAll } from './_sb-fetch.js';
 import { classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource } from './_traffic-quality.js';
 export const config = { runtime: 'edge' };
@@ -33,7 +34,10 @@ function assetOf(row){
   return 'Investigator Guide';
 }
 
-export default async function handler(){
+export default async function handler(req){
+  if (req.method !== 'GET') return json({error:'method_not_allowed'},405);
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
@@ -197,6 +201,6 @@ export default async function handler(){
 function json(obj, status = 200){
   return new Response(JSON.stringify(obj), {
     status,
-    headers:{'Content-Type':'application/json','Cache-Control':'no-store','Access-Control-Allow-Origin':'*'}
+    headers:{'Content-Type':'application/json', 'X-Robots-Tag':'noindex, nofollow', 'Referrer-Policy':'no-referrer','Cache-Control':'no-store, private',}
   });
 }
