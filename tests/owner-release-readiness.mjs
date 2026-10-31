@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import readiness from '../api/owner-release-readiness.js';
+import {createOwnerCookie} from '../api/_owner-auth.js';
 
 const KEYS=[
  'OWNER_DASHBOARD_TOKEN','SUPABASE_SERVICE_ROLE_KEY',
@@ -23,7 +24,10 @@ try {
  const unauthorized=await readiness(new Request(base));
  assert.equal(unauthorized.status,401);
  assert.equal(fetches,0);
- const request=new Request(base,{headers:{Authorization:'Bearer '+SECRET}});
+ const bearerOnly=await readiness(new Request(base,{headers:{Authorization:'Bearer '+SECRET}}));
+ assert.equal(bearerOnly.status,401,'Persistent owner code cannot bypass signed cookie');
+ const cookie=(await createOwnerCookie()).split(';')[0];
+ const request=new Request(base,{headers:{Cookie:cookie}});
  const missing=await readiness(request);
  assert.equal(missing.status,200);
  let obj=await missing.json();
