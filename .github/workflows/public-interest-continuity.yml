@@ -23,3 +23,5 @@ jobs:
         run: node --test tests/initiative-support.test.mjs
       - name: Verify owner historical aggregate snapshots fail closed and reconcile
         run: node --test tests/snapshot-public-program-counts.test.mjs
+      - name: Verify support-statistics failures do not report false zeros
+        run: node --test tests/support-stats-completeness.test.mjs
