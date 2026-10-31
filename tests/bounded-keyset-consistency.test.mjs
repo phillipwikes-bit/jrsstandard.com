@@ -47,9 +47,12 @@ function scripted(rows,{errorCall=-1,malformedCall=-1,mutate}={}){
    assert(match,'keyset predicate must preserve both cursor components');
    assert.equal(match[1],match[2]);
    const instant=match[1],id=BigInt(match[3]);
+   const sortedTime=value=>value.replace(/\+00:00$/,'Z')
+     .replace(/\.(\d{1,6})Z$/,(_,part)=>'.'+part.padEnd(6,'0')+'Z')
+     .replace(/(\d{2})Z$/,(_,s)=>s+'.000000Z');
    result=result.filter(x=>
-    Date.parse(x.created_at)>Date.parse(instant) ||
-    (x.created_at===instant && BigInt(x.id)>id)
+    sortedTime(x.created_at)>sortedTime(instant) ||
+    (sortedTime(x.created_at)===sortedTime(instant) && BigInt(x.id)>id)
    );
   }
   return Response.json(result.slice(0,n),{status:206});
