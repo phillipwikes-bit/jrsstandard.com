@@ -121,12 +121,11 @@ export default async function handler(req){
     // fetches at all. Truncated, and no other request header is read.
     const ua = String(req.headers.get('user-agent')||'').slice(0,300);
 
-    // Self-healing purge of any test-tagged download rows already stored.
-    // (deploytest* variants are also hidden by the geo-stats read filter.)
-    try {
-      await fetch(SB+"/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&payload->>src=in.(verify,test,selftest,deploytest-geo2)",
-        { method:'DELETE', headers:H });
-    } catch(e){ /* best-effort */ }
+    // Historical records are immutable for evidence purposes. Never purge
+    // interaction_events during an ordinary public download request.
+    // Synthetic test tags are omitted at write time and excluded during
+    // reporting. Any historical cleanup requires a separately authorized,
+    // logged and reviewable maintenance operation.
 
     try {
       if (isTest || prefetched) {
