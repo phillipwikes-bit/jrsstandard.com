@@ -120,6 +120,26 @@ tr.today td{background:rgba(93,191,130,.07)}
     <a class="btn" href="#resource-downloads">Download quality</a>
     <a class="btn" href="#sale-dossier">Historical sale dossier</a>
   </nav>
+<section aria-label="Owner-only release readiness" id="owner-release-readiness">
+  <h2 style="font-size:22px">Release Readiness and Access Controls</h2>
+  <p class="sub">Current server configuration is shown separately from the independent checks required before release. A configured credential does not prove its associated function works. Software status remains NO_GO_NOT_VERIFIED.</p>
+  <div class="chart">
+    <h3>Environment configuration, owner-only</h3>
+    <p class="note" id="release-readiness-note" role="status" aria-live="polite">Checking configuration presence...</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Prerequisite</th><th scope="col">Configuration</th></tr></thead>
+      <tbody id="release-readiness-config"><tr><td colspan="2">Loading...</td></tr></tbody>
+    </table></div>
+  </div>
+  <div class="chart">
+    <h3>Required independent release checks</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Verification</th><th scope="col">Status</th></tr></thead>
+      <tbody id="release-readiness-verification"><tr><td colspan="2">Loading...</td></tr></tbody>
+    </table></div>
+    <p class="note">No item is considered verified by this inventory. Complete signed-owner access, database RLS inspection, email-delivery testing, privacy review, mobile acceptance and the release decision separately. Do not publish or forward this owner dashboard as the buyer package.</p>
+  </div>
+</section>
 <section aria-label="Owner-only contact and research records">
    <h2 style="font-size:18px">Owner records</h2>
    <p class="sub">These views contain names and contact details and require the signed owner session. Use the sign-out control when finished. The links do not send these records to the public website or Google Analytics.</p>
@@ -2128,6 +2148,54 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     document.addEventListener('DOMContentLoaded', boot);
   else boot();
   setInterval(function(){ try { evaluate(); } catch(e){} }, 61000);
+})();
+</script>
+<script>
+(function(){
+  function cell(tr,value){
+    var td=document.createElement('td');
+    td.textContent=String(value);
+    tr.appendChild(td);
+  }
+  function fill(id,rows){
+    var body=document.getElementById(id);
+    if(!body)return;
+    body.textContent='';
+    rows.forEach(function(values){
+      var tr=document.createElement('tr');
+      values.forEach(function(value){cell(tr,value);});
+      body.appendChild(tr);
+    });
+  }
+  function unavailable(reason){
+    var note=document.getElementById('release-readiness-note');
+    if(note)note.textContent=reason;
+    fill('release-readiness-config',[['Configuration inventory','Unavailable, not zero']]);
+    fill('release-readiness-verification',[['Independent verification','Not verified']]);
+  }
+  function refreshReleaseReadiness(){
+    fetch('/api/owner-release-readiness',{credentials:'same-origin',cache:'no-store'})
+     .then(function(r){if(!r.ok)throw Error('readiness unavailable');return r.json();})
+     .then(function(d){
+       if(!d || d.assessment!=='configuration_inventory_not_release_authorization'
+         || !Array.isArray(d.requirements) || !Array.isArray(d.required_independent_verifications)){
+         throw Error('invalid inventory response');
+       }
+       fill('release-readiness-config',d.requirements.map(function(x){
+         return [x.label,x.configured?'Configured, not yet verified':'Configuration missing'];
+       }));
+       fill('release-readiness-verification',d.required_independent_verifications.map(function(x){
+         return [x.description,'Independent verification outstanding'];
+       }));
+       var note=document.getElementById('release-readiness-note');
+       if(note)note.textContent='Production release blocked. '
+         +d.missing_configuration.length+' configuration prerequisites missing; '
+         +d.required_independent_verifications.length+' independent checks not established. '
+         +'Inventory read '+new Date(d.generated_at).toLocaleString()+'.';
+     }).catch(function(){unavailable('Release configuration inventory unavailable. Production release must remain blocked.');});
+  }
+  refreshReleaseReadiness();
+  setInterval(refreshReleaseReadiness,60000);
 })();
 </script>
 <!-- /JRS SECTION COLLAPSE v1 -->
