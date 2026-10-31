@@ -195,5 +195,22 @@ class SourceCandidateAdmission(unittest.TestCase):
         self.assertEqual(data["original_decision_spellchecker_identity"], "NOT_AUTHENTICATED")
         self.assertEqual(data["software_performance"], "NOT_EVALUATED")
 
+    def test_28_path_disappears_while_reading_is_structured_refusal(self):
+        moved = self.root / "moved.zip"
+        def tamper(index):
+            if index == 0:
+                self.path.rename(moved)
+        self.rejected("PATH_FILE_CHANGED", during_read=tamper)
+
+    def test_29_zip_filename_embedded_nul_rejected(self):
+        self.write_zip([("a1.txt", "test")])
+        data = self.path.read_bytes().replace(b"a1.txt", b"a\x00.txt")
+        self.path.write_bytes(data)
+        self.rejected("ZIP_FILENAME_NORMALIZED_OR_TRUNCATED")
+
+    def test_30_member_count_bound_enforced(self):
+        self.write_zip([("a.txt", "a"), ("b.txt", "b")])
+        self.rejected("ARCHIVE_MEMBER_COUNT_REJECTED", max_members=1)
+
 if __name__ == "__main__":
     unittest.main()
