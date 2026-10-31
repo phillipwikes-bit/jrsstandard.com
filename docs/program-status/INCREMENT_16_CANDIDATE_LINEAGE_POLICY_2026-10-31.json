@@ -1,0 +1,42 @@
+{
+  "schema": "jrs-candidate-lineage-policy-v1",
+  "as_of": "2026-10-31",
+  "observed_main_sha": "97087e915245a15808f121e2263a7385a6bf5a04",
+  "last_reviewed_pr_head_sha": "a97db02f2770156ea382850274a58cc992b4103e",
+  "production_authorization": "HOLD",
+  "policy_scope": "G0 development lineage and 24 immutable source Git blob identities only. No deployment or study authorization.",
+  "required_ancestry": [
+    {
+      "label": "PR56",
+      "sha": "b525e05adc7bda978e8987262f6504cd266dca5e"
+    },
+    {
+      "label": "PR57",
+      "sha": "55f119b4e200fcf4cf749b7c1eec7f5f0a7f963f"
+    },
+    {
+      "label": "PR62",
+      "sha": "ff07784c5666c6a89ea50e59b83fef2f484a8c87"
+    },
+    {
+      "label": "PR63",
+      "sha": "b2ad4a687e729c97dfd1d53613d9673d496450f9"
+    },
+    {
+      "label": "PR64",
+      "sha": "92971bed84254a57600d4d05de3900250f592640"
+    },
+    {
+      "label": "PR65",
+      "sha": "749e99b516444de1c73522ed6db455a964c19319"
+    },
+    {
+      "label": "PR66",
+      "sha": "e460e490d11a1638d4f2544ac0406705d0dfcac0"
+    },
+    {
+      "label": "PR67",
+      "sha": "a97db02f2770156ea382850274a58cc992b4103e"
+    }
+  ]
+}
