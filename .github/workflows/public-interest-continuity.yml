@@ -27,3 +27,5 @@ jobs:
         run: node --test tests/support-stats-completeness.test.mjs
       - name: Test owner login, cookie expiry, rotation and explicitly documented logout replay limitation
         run: node --test tests/owner-session-lifecycle.test.mjs
+      - name: Reject legacy support false success and preview contamination
+        run: node --test tests/legacy-support-write-ack.test.mjs
