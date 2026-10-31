@@ -5,6 +5,8 @@ import handler from '../api/initiative-support.js';
 const endpoint='https://jrs.example.test/api/initiative-support';
 const originalFetch=globalThis.fetch;
 const originalService=process.env.SUPABASE_SERVICE_ROLE_KEY;
+const originalVercelEnv=process.env.VERCEL_ENV;
+process.env.VERCEL_ENV='production';
 function request({method='POST',origin='https://jrs.example.test',campaign='rtkw',
                   body,headers={}}={}){
   const h={'content-type':'application/json','user-agent':'Mozilla/5.0 HumanBrowser',
@@ -22,6 +24,8 @@ async function run(args={},fetchResponse=new Response(null,{status:201}),service
   return {res,data:await res.json(),calls};
 }
 test.after(()=>{globalThis.fetch=originalFetch;
+ if(originalVercelEnv===undefined)delete process.env.VERCEL_ENV;
+ else process.env.VERCEL_ENV=originalVercelEnv;
  if(originalService===undefined)delete process.env.SUPABASE_SERVICE_ROLE_KEY;
  else process.env.SUPABASE_SERVICE_ROLE_KEY=originalService;
 });
@@ -85,6 +89,24 @@ test('already-counted browser does not post twice',async()=>{
  assert.equal(res.status,200);assert.equal(data.already_recorded,true);
  assert.equal(data.recorded,false);assert.equal(calls.length,0);
  assert.equal(res.headers.get('set-cookie'),null);
+});
+test('preview environment cannot write or count an action',async()=>{
+ process.env.VERCEL_ENV='preview';
+ try{
+  const {res,data,calls}=await run();
+  assert.equal(res.status,200);assert.equal(data.recorded,false);
+  assert.equal(data.preview_only,true);assert.equal(calls.length,0);
+  assert.equal(res.headers.get('set-cookie'),null);
+ }finally{process.env.VERCEL_ENV='production'}
+});
+test('unset environment cannot write or count an action',async()=>{
+ delete process.env.VERCEL_ENV;
+ try{
+  const {res,data,calls}=await run();
+  assert.equal(res.status,200);assert.equal(data.recorded,false);
+  assert.equal(data.preview_only,true);assert.equal(calls.length,0);
+  assert.equal(res.headers.get('set-cookie'),null);
+ }finally{process.env.VERCEL_ENV='production'}
 });
 test('missing database credential fails closed, not successful',async()=>{
  const {res,data,calls}=await run({},new Response(null,{status:201}),null);
