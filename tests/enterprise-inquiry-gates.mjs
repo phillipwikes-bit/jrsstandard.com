@@ -140,7 +140,7 @@ try{
   });
   await check('preserve enterprise note line breaks in the durable record',async()=>{
     calls=[];
-    const note='Acquisition question: scope.\\nEvidence needed: source provenance.';
+    const note='Acquisition question: scope.\nEvidence needed: source provenance.';
     const response=await endpoint(req({...good,note}));
     assert.equal(response.status,200);
     assert.equal(calls.length,2);
