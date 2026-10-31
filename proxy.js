@@ -4,10 +4,10 @@ import { ownerAccess } from './api/_owner-auth.js';
 // This is a server-side routing gate, applied BEFORE the static HTML response.
 // Client-side overlays and noindex headers do not protect participant PII.
 // Never log a cookie, bearer token, or request headers.
-const OWNER_PATH = '/programme-status-9872fb93cc94.html';
+const OWNER_PATHS = new Set(['/programme-status-9872fb93cc94.html', '/programme--9872fb93cc94.html']);
 export default async function proxy(request) {
   const { pathname } = new URL(request.url);
-  if (pathname !== OWNER_PATH) return next();
+  if (!OWNER_PATHS.has(pathname)) return next();
   if (request.method !== 'GET' && request.method !== 'HEAD') {
     return new Response('Method not allowed', {
       status: 405,
