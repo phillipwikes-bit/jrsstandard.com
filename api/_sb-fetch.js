@@ -55,10 +55,12 @@ export async function fetchAll(base, path, headers) {
   return { rows: out, complete: false };
 }
 
-// Convenience wrapper for callers that only want the rows. Kept separate so the
-// completeness flag has to be discarded deliberately rather than by accident.
+// A caller asking for rows rather than an explicit completeness flag must
+// NEVER receive a partial array. The fetchAll() result still supports
+// explicit failure handling, but wrappers throw on incomplete/unavailable.
 export async function fetchAllRows(base, path, headers) {
-  const { rows } = await fetchAll(base, path, headers);
+  const { rows, complete } = await fetchAll(base, path, headers);
+  if (!complete) throw new Error('source_read_incomplete');
   return rows;
 }
 
@@ -71,9 +73,11 @@ export async function fetchAllUrl(url, headers) {
     .replace(/([?&])limit=\d+&/g, '$1')
     .replace(/[?&]limit=\d+$/g, '');
   const cut = clean.indexOf('/rest/v1/');
-  if (cut < 0) return [];
-  const { rows } = await fetchAll(clean.slice(0, cut),
-                                  clean.slice(cut + '/rest/v1/'.length),
-                                  headers);
+  // An invalid source path is not evidence of an empty dataset.
+  if (cut < 0) throw new Error('source_url_invalid');
+  const { rows, complete } = await fetchAll(clean.slice(0, cut),
+                                            clean.slice(cut + '/rest/v1/'.length),
+                                            headers);
+  if (!complete) throw new Error('source_read_incomplete');
   return rows;
 }
