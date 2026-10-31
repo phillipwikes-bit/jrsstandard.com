@@ -33,7 +33,7 @@ const setup = reader=>factory(reader,env,CRAWLER,isCrawler,
   classifyDownloadTraffic,isInternalTestSource,isCurrentDownloadResource);
 
 // Fail closed if any of six required source views is incomplete.
-const partial = setup(async(path) => ({rows:[],complete:!path.startsWith('pilot_progress?')}));
+const partial = setup(async(_base,path) => ({rows:[],complete:!path.startsWith('pilot_progress?')}));
 const partialResponse = await partial(request);
 assert.equal(partialResponse.status,502);
 assert.equal((await partialResponse.json()).error,'aggregate_statistics_incomplete_or_unavailable');
@@ -52,7 +52,7 @@ const rows=[
   make('guide-dl','download',{edition:'employment',src:'deploytest-check',user_agent:'Mozilla/5.0'}),
   make('guide-dl','view',{edition:'employment',user_agent:'Mozilla/5.0'})
 ];
-const complete = setup(async path=>({
+const complete = setup(async (_base,path)=>({
   rows: path.startsWith('interaction_events?') ? rows : [],complete:true
 }));
 const completeResponse = await complete(request);
