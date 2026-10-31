@@ -23,12 +23,12 @@ function clean(v,n) {
   return String(typeof v==='string'?v:'').replace(/[\u0000-\u001f\u007f]/g,'').trim().slice(0,n);
 }
 function cleanInquiryText(v) {
-  // Preserve user-authored paragraph boundaries in durable inquiry records.
-  // Normalize CRLF/CR to LF; omit non-text controls, never truncate.
-  return String(typeof v==='string'?v:'')
-    .replace(/\r\n?/g,'\n')
-    .replace(/[\u0000-\u0009\u000b-\u001f\u007f]/g,'')
-    .trim();
+  // Preserve authored text and paragraphs, normalizing only line endings.
+  // Invalid controls and oversize fields are rejected before this conversion.
+  return String(typeof v==='string'?v:'').replace(/\r\n?/g,'\n');
+}
+function hasUnsafeControls(v) {
+  return typeof v==='string' && /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(v);
 }
 function exceedsFieldLimit(body,limits) {
   return limits.some(([field,max])=>
@@ -60,6 +60,7 @@ export default async function handler(req) {
   if(exceedsFieldLimit(b,[['name',120],['email',160],['organization',160],
     ['category',32],['commercial_purpose',40],['message',1200],
     ['turnstileToken',2048]]))return reply({error:'field_too_long'},400);
+  if(hasUnsafeControls(b.message))return reply({error:'message_controls_invalid'},400);
   // A honeypot is a secondary filter; Turnstile remains mandatory.
   if(clean(b.company_website,100))return reply({ok:true,stored:false},200);
   const name=clean(b.name,120);
@@ -70,7 +71,7 @@ export default async function handler(req) {
   const note=cleanInquiryText(b.message);
   const token=clean(b.turnstileToken,2048);
   const consent=b.consent===true;
-  if(name.length<2 || !validEmail(email) || !CATEGORIES.includes(category) || note.length<12 || !consent) {
+  if(name.length<2 || !validEmail(email) || !CATEGORIES.includes(category) || note.trim().length<12 || !consent) {
     return reply({error:'required_fields_invalid'},400);
   }
   if(category==='commercial' && !COMMERCIAL_PURPOSES.includes(commercialPurpose))
