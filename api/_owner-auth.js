@@ -77,8 +77,10 @@ async function validCookie(value,secret){
 export async function ownerAccess(req){
   const secret=envSecret();
   if(secret.length<32)return denied('owner_access_unavailable',503);
-  const authorization=req.headers.get('authorization')||'';
-  if(/^Bearer [^\s]+$/i.test(authorization) && await ownerSecretMatches(authorization.slice(7)))return null;
+  // Raw long-lived owner secret is accepted ONLY at the origin-checked
+  // POST /api/owner-session exchange. It must not authorize ordinary
+  // owner data reads. A copied Authorization header cannot bypass cookie
+  // expiry, sign-out or owner-session controls.
   if(await validCookie(cookieValue(req),secret))return null;
   return denied('unauthorized',401);
 }
