@@ -1,12 +1,13 @@
 import assert from 'node:assert/strict';
 import handler from '../api/site-inquiry-stats.js';
 import { readFileSync } from 'node:fs';
+import {createOwnerCookie} from '../api/_owner-auth.js';
 const old={};
 for(const k of ['OWNER_DASHBOARD_TOKEN','SUPABASE_SERVICE_ROLE_KEY']){old[k]=process.env[k];delete process.env[k];}
 const oldFetch=globalThis.fetch;
 const owner='synthetic-secret-for-owner-inquiry-stats-that-is-long';
 const route='https://www.jrsstandard.com/api/site-inquiry-stats';
-function request(auth){return new Request(route,{headers:auth?{Authorization:'Bearer '+auth}:{}})}
+function request(cookie){return new Request(route,{headers:cookie?{Cookie:cookie}:{}})}
 let calls=[];
 try{
  let r=await handler(request());
@@ -33,7 +34,11 @@ try{
  r=await handler(request());
  assert.equal(r.status,401);
  assert.equal(calls.length,0);
- r=await handler(request(owner));
+ const bearerDenied=await handler(new Request(route,{headers:{Authorization:'Bearer '+owner}}));
+ assert.equal(bearerDenied.status,401,'Correct persistent owner bearer is not a session');
+ assert.equal(calls.length,0);
+ const cookie=(await createOwnerCookie()).split(';')[0];
+ r=await handler(request(cookie));
  assert.equal(r.status,200);
  const d=await r.json();
  assert.equal(d.source,'site-inquiry');
