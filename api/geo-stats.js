@@ -1,5 +1,5 @@
 import { fetchAll } from './_sb-fetch.js';
-import { classifyDownloadTraffic } from './_traffic-quality.js';
+import { classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource } from './_traffic-quality.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate ALL download geography (counts only, no PII), for the
@@ -13,11 +13,6 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 // Internal smoke/deploy-test tags. Downloads recorded during development
 // verification, excluded from every count so the dashboard shows real traffic.
-function isTestSrc(s){
-  s = String(s || '');
-  return s === 'verify' || s === 'test' || s === 'selftest' || s.indexOf('deploytest') === 0;
-}
-
 function assetOf(row){
   const p = row.payload || {};
   if (row.source === 'kit-dl'){
@@ -52,14 +47,14 @@ export default async function handler(){
       {'apikey':SERVICE,'Authorization':'Bearer '+SERVICE});
     if (!complete) return json({ error:'incomplete_download_event_read' }, 502);
     // Drop internal test/deploy download rows so every total is real traffic.
-    const clean = allRows.filter(row => !isTestSrc(row.payload && row.payload.src));
+    const clean = allRows.filter(row => !isInternalTestSource(row.payload && row.payload.src));
 
     // Split: guide editions (top-level, the "Investigator Guide Downloads"
     // section) vs every other asset (JRS Standard PDF, Rapid Review Card,
     // training kit, reviewer reference) which drive enterprise value.
     const guideRows = clean.filter(row => row.source === 'guide-dl');
     // Enterprise assets exclude the retired training kit (no longer downloadable).
-    const assetRows = clean.filter(row => row.source !== 'guide-dl' && assetOf(row) !== 'Training kit');
+    const assetRows = clean.filter(row => row.source !== 'guide-dl' && isCurrentDownloadResource(row));
 
     // ---- Guide group (3 editions only): total, by_country, by_asset, by_day ----
     const gC = {}, gA = {}, gS = {}, gD = {};
@@ -128,7 +123,7 @@ export default async function handler(){
     const perItem = {};
     for (const row of clean){
       const a = assetOf(row);
-      if (a === 'Training kit') continue; // retired, not shown
+      if (!isCurrentDownloadResource(row)) continue; // historical retired kit remains excluded
       const label = a === 'Reviewer Reference' ? 'JRS Reviewer Reference' : a;
       if (!perItem[label]) perItem[label] = { asset: label, group: (row.source === 'guide-dl' ? 'guide' : 'asset'), total: 0, byC: {} };
       const c = (row.payload && row.payload.country) || 'unknown';
@@ -154,7 +149,7 @@ export default async function handler(){
     const qualityMap = {};
     for (const row of clean) {
       const a = assetOf(row);
-      if (a === 'Training kit') continue; // legacy retired kit excluded above too
+      if (!isCurrentDownloadResource(row)) continue; // same scope as legacy current assets
       const label = a === 'Reviewer Reference' ? 'JRS Reviewer Reference' : a;
       const group = row.source === 'guide-dl' ? 'guide' : 'asset';
       if (!qualityMap[label]) qualityMap[label] = {
