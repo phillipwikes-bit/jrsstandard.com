@@ -18,12 +18,13 @@ assert.match(geoSource,/if \(!complete\) return json\(\{ error:'incomplete_downl
 assert.match(geoSource,/reconciles_to_legacy_raw_scope:/);
 
 geoSource = geoSource
+  .replace("import { ownerAccess } from './_owner-auth.js';",'')
   .replace("import { fetchAll } from './_sb-fetch.js';",'')
   .replace("import { classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource } from './_traffic-quality.js';",'')
   .replace("export const config = { runtime: 'edge' };",'')
-  .replace('export default async function handler(){','async function handler(){');
+  .replace('export default async function handler(req){','async function handler(req){');
 assert.equal(geoSource.includes('import '),false);
-const buildHandler = new Function('fetchAll','classifyDownloadTraffic','isInternalTestSource','isCurrentDownloadResource','process',geoSource+'\nreturn handler;');
+const buildHandler = new Function('fetchAll','classifyDownloadTraffic','isInternalTestSource','isCurrentDownloadResource','ownerAccess','process',geoSource+'\nreturn handler;');
 
 const rows = [
   {source:'guide-dl', payload:{edition:'employment',country:'US',user_agent:'Mozilla/5.0 Chrome/124'},created_at:'2026-10-30'},
@@ -35,8 +36,8 @@ const rows = [
   {source:'kit-dl', payload:{file:'JRS_Kit_Retired.pdf',country:'US',user_agent:'Mozilla/5.0'},created_at:'2026-10-30'}
 ];
 const env = {env:{SUPABASE_SERVICE_ROLE_KEY:'fake-test-key'}};
-const handler = buildHandler(async () => ({rows,complete:true}),classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,env);
-const response = await handler();
+const handler = buildHandler(async () => ({rows,complete:true}),classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,async()=>null,env);
+const response = await handler(new Request('https://www.jrsstandard.com/api/geo-stats'));
 assert.equal(response.status,200);
 const d = await response.json();
 assert.equal(d.total,2);                    // legacy raw guide geography preserved
@@ -57,9 +58,9 @@ assert.equal(ref.not_identified_as_crawler,0);
 
 // A partial read and a failed database read must not be misreported as 0 downloads.
 const partial = buildHandler(async () => ({rows:[rows[0]],complete:false}),classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,env);
-assert.equal((await partial()).status,502);
+assert.equal((await partial(new Request('https://www.jrsstandard.com/api/geo-stats'))).status,502);
 const broken = buildHandler(async () => {throw Error('synthetic database failure')},classifier.classifyDownloadTraffic,classifier.isInternalTestSource,classifier.isCurrentDownloadResource,env);
-assert.equal((await broken()).status,502);
+assert.equal((await broken(new Request('https://www.jrsstandard.com/api/geo-stats'))).status,502);
 
 const html = readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
 assert.match(html,/id="buyer-evidence-snapshot"/);
