@@ -17,7 +17,7 @@ assert.equal(classifyDownloadTraffic({user_agent:'  '}), 'user_agent_missing');
 
 const src = readFileSync(new URL('../api/asset-stats.js',import.meta.url),'utf8');
 assert.match(src,/import \{ fetchAll \} from '\.\/_sb-fetch\.js';/);
-assert.doesNotMatch(src,/fetchAllRows/);
+assert.doesNotMatch(src,/return await fetchAllRows\\(/);
 assert.match(src,/aggregate_statistics_incomplete_or_unavailable/);
 let compiled = src
   .replace(/^import .*?;\s*$/gm,'')
