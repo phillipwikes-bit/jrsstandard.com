@@ -117,11 +117,12 @@ test('11 proper signed session is accepted by auth gate, not a release certifica
  }
  assert.equal(networkCalls,0);
 });
-test('12 source handlers remain historical: proxy is the only added admission barrier',()=>{
+test('12 each protected reader adds its own session gate while proxy stays an outer barrier',()=>{
  for(const path of OWNER_METRIC_PATHS){
   const source=readFileSync(new URL('..'+path+'.js',import.meta.url),'utf8');
   assert.match(source,/SUPABASE_SERVICE_ROLE_KEY/);
-  assert.doesNotMatch(source,/ownerAccess\(req\)/);
+  assert.match(source,/ownerAccess\(req\)/);
+  assert.doesNotMatch(source,/Access-Control-Allow-Origin/);
  }
 });
 test('13 privacy review must remain independent of all synthetic PASS responses',()=>{
