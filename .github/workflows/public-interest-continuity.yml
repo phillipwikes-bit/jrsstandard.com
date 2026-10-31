@@ -12,6 +12,9 @@ jobs:
     timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -47,3 +50,7 @@ jobs:
         run: |
           node --test tests/owner-preview-admission.test.mjs
           node tools/check-owner-preview-admission.mjs docs/program-status/INCREMENT_15_OWNER_PREVIEW_OBSERVATIONS_2026-10-31.json > /tmp/jrs-owner-preview-preflight.json
+      - name: Verify exact G0 release-candidate ancestry and frozen source hashes
+        run: |
+          node --test tests/release-lineage.test.mjs
+          node tools/check-release-lineage.mjs docs/program-status/INCREMENT_16_CANDIDATE_LINEAGE_POLICY_2026-10-31.json > /tmp/jrs-increment16-live-git-audit.json
