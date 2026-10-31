@@ -62,9 +62,14 @@ export default async function handler(req){
   // the stored country (message.country) and backfill by email-hash when absent.
   const compCountry = {}; // email -> ISO code or '' (unresolved)
   try {
-    const cr = await fetch(SB + '/rest/v1/pilot_contacts?select=email,message&source=eq.training-complete&limit=10000', { headers: AH });
-    const done = cr.ok ? await cr.json() : [];
-    if (Array.isArray(done)){
+    // A direct fetch could silently stop at the backend page cap and treat a
+    // failure as zero recorded completions. Use the complete-only page reader.
+    const done = await fetchAllUrl(
+      SB + '/rest/v1/pilot_contacts?select=email,message&source=eq.training-complete&limit=10000',
+      AH
+    );
+    if (!Array.isArray(done)) throw new Error('training_completions_invalid');
+    {
       for (let i=0; i<done.length; i++){
         const em = (done[i].email==null ? '' : String(done[i].email)).trim().toLowerCase();
         if (!em) continue;
@@ -92,7 +97,11 @@ export default async function handler(req){
         if (COMPLETION_COUNTRY_BACKFILL[h]) compCountry[enrolled[i]] = COMPLETION_COUNTRY_BACKFILL[h];
       }
     }
-  } catch(e){ /* leave compCountry as-is; completions block is best-effort */ }
+  } catch(e){
+    // A partial or unavailable completion source cannot be reported as zero.
+    // The owner dashboard must distinguish source failure from no activity.
+    return json({ error:'training_completions_unavailable' }, 502);
+  }
 
   const byCountry = {};
   let completions = 0;
