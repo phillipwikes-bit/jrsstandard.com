@@ -31,3 +31,5 @@ jobs:
         run: node --test tests/legacy-support-write-ack.test.mjs
       - name: Verify owner login distinguishes unavailable server from rejected password
         run: node --test tests/owner-login-readiness.test.mjs
+      - name: Reject registry consent expansion, cross-origin PII writes and false acknowledgements
+        run: node --test tests/support-registry-consent-integrity.test.mjs
