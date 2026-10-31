@@ -21,3 +21,5 @@ jobs:
         run: node tests/check-public-initiative-pages.mjs
       - name: Verify initiative support acknowledges database write failures
         run: node --test tests/initiative-support.test.mjs
+      - name: Verify owner historical aggregate snapshots fail closed and reconcile
+        run: node --test tests/snapshot-public-program-counts.test.mjs
