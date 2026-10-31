@@ -152,7 +152,7 @@ class SourceCandidateAdmission(unittest.TestCase):
             if index == 0:
                 original.rename(self.root / "inner_old")
                 original.mkdir()
-                (original / "inside.zip").write_bytes(nested.read_bytes())
+                (original / "inside.zip").write_bytes((self.root / "inner_old" / "inside.zip").read_bytes())
         with self.assertRaises(module.AdmissionError) as caught:
             module.admit_candidate(str(self.root), "inner/inside.zip", during_read=tamper)
         self.assertEqual(caught.exception.code, "PARENT_PATH_CHANGED")
