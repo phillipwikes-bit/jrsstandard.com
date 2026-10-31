@@ -3,10 +3,76 @@
   "status": "PROPOSED_NOT_RELEASE_APPROVED",
   "date_utc": "2026-10-31",
   "base_parent": "feat/jrs-drr-public-initiatives-2026-10-31",
-  "baseline_sha_policy": "Original 24-file manifest remains immutable. Only the specifically recorded replacement blob is accepted by this draft's source-level tests.",
+  "baseline_sha_policy": "Original 24-file manifest remains unchanged. Two earlier proposed exceptions and six separately identified private-reader security exceptions are draft-only, exact-hash matched and NOT owner release-approved. Unlisted changes must fail.",
   "owner_approval": "NOT_PROVIDED",
   "production_status": "HOLD",
   "entries": {
+    "api/access-stats.js": {
+      "before_blob_sha": "27c77c77a54cc43d8f586d7d341bff2adf425f6a",
+      "candidate_blob_sha": "78680624628672b9f456c78aa28b8cb96ac48613",
+      "reason": "Service-role-backed private statistics handler lacked a direct owner-session check and emitted permissive cross-origin response headers; Increment 18 proxy protection alone is deployment dependent.",
+      "scope": "Require signed cookie inside handler before any service-role access, refuse non-GET, eliminate wildcard CORS, set private/no-store/noindex, and leave existing counting/aggregation/source query logic unchanged.",
+      "rights_effect": "none",
+      "database_migration": false,
+      "history_rewrite": false,
+      "public_identity_expansion": false,
+      "release_gate": "PROPOSED_NOT_RELEASE_APPROVED: owner signoff on this exact change; independent direct endpoint, proxy, RLS, fixed-cutoff counts, browser and rollback tests required before any production merge."
+    },
+    "api/asset-stats.js": {
+      "before_blob_sha": "1cde4b0b51de4841d831b66f57b612e68da41dda",
+      "candidate_blob_sha": "3ca43240a9b4273a9797f9385dc7db6eba80a79b",
+      "reason": "Service-role-backed private statistics handler lacked a direct owner-session check and emitted permissive cross-origin response headers; Increment 18 proxy protection alone is deployment dependent.",
+      "scope": "Require signed cookie inside handler before any service-role access, refuse non-GET, eliminate wildcard CORS, set private/no-store/noindex, and leave existing counting/aggregation/source query logic unchanged.",
+      "rights_effect": "none",
+      "database_migration": false,
+      "history_rewrite": false,
+      "public_identity_expansion": false,
+      "release_gate": "PROPOSED_NOT_RELEASE_APPROVED: owner signoff on this exact change; independent direct endpoint, proxy, RLS, fixed-cutoff counts, browser and rollback tests required before any production merge."
+    },
+    "api/enroll-stats.js": {
+      "before_blob_sha": "168f75843b838ca8effccd4570d14d750e1aa90c",
+      "candidate_blob_sha": "e95f6f239fa90d7d6dc52800db92e20c4ad4704d",
+      "reason": "Service-role-backed private statistics handler lacked a direct owner-session check and emitted permissive cross-origin response headers; Increment 18 proxy protection alone is deployment dependent.",
+      "scope": "Require signed cookie inside handler before any service-role access, refuse non-GET, eliminate wildcard CORS, set private/no-store/noindex, and leave existing counting/aggregation/source query logic unchanged.",
+      "rights_effect": "none",
+      "database_migration": false,
+      "history_rewrite": false,
+      "public_identity_expansion": false,
+      "release_gate": "PROPOSED_NOT_RELEASE_APPROVED: owner signoff on this exact change; independent direct endpoint, proxy, RLS, fixed-cutoff counts, browser and rollback tests required before any production merge."
+    },
+    "api/gate-stats.js": {
+      "before_blob_sha": "1cfa25240760555c4f7d1697f5b774717718b1c0",
+      "candidate_blob_sha": "4fa2687a8416f2fcac473477c9f7e81db29372d2",
+      "reason": "Service-role-backed private statistics handler lacked a direct owner-session check and emitted permissive cross-origin response headers; Increment 18 proxy protection alone is deployment dependent.",
+      "scope": "Require signed cookie inside handler before any service-role access, refuse non-GET, eliminate wildcard CORS, set private/no-store/noindex, and leave existing counting/aggregation/source query logic unchanged.",
+      "rights_effect": "none",
+      "database_migration": false,
+      "history_rewrite": false,
+      "public_identity_expansion": false,
+      "release_gate": "PROPOSED_NOT_RELEASE_APPROVED: owner signoff on this exact change; independent direct endpoint, proxy, RLS, fixed-cutoff counts, browser and rollback tests required before any production merge."
+    },
+    "api/geo-stats.js": {
+      "before_blob_sha": "4ffffaf11cd0e4495dd64612817aa3c99a41211c",
+      "candidate_blob_sha": "cfe9ecdf8b640b13a576902bf02af4cfc1f13120",
+      "reason": "Service-role-backed private statistics handler lacked a direct owner-session check and emitted permissive cross-origin response headers; Increment 18 proxy protection alone is deployment dependent.",
+      "scope": "Require signed cookie inside handler before any service-role access, refuse non-GET, eliminate wildcard CORS, set private/no-store/noindex, and leave existing counting/aggregation/source query logic unchanged.",
+      "rights_effect": "none",
+      "database_migration": false,
+      "history_rewrite": false,
+      "public_identity_expansion": false,
+      "release_gate": "PROPOSED_NOT_RELEASE_APPROVED: owner signoff on this exact change; independent direct endpoint, proxy, RLS, fixed-cutoff counts, browser and rollback tests required before any production merge."
+    },
+    "api/orgpilot-stats.js": {
+      "before_blob_sha": "9600e75d6e2c1258c1f28d1cdf80a21c358685a8",
+      "candidate_blob_sha": "fa86c2d064dcd2ea731b962661403fbbf0c1a5b4",
+      "reason": "Service-role-backed private statistics handler lacked a direct owner-session check and emitted permissive cross-origin response headers; Increment 18 proxy protection alone is deployment dependent.",
+      "scope": "Require signed cookie inside handler before any service-role access, refuse non-GET, eliminate wildcard CORS, set private/no-store/noindex, and leave existing counting/aggregation/source query logic unchanged.",
+      "rights_effect": "none",
+      "database_migration": false,
+      "history_rewrite": false,
+      "public_identity_expansion": false,
+      "release_gate": "PROPOSED_NOT_RELEASE_APPROVED: owner signoff on this exact change; independent direct endpoint, proxy, RLS, fixed-cutoff counts, browser and rollback tests required before any production merge."
+    },
     "api/support-stats.js": {
       "before_blob_sha": "29e7d37f570f1089bc2c814cacd158899a9545d4",
       "candidate_blob_sha": "82ea4d90c4859a8e25061d7a81c6226d1ef1c48e",
