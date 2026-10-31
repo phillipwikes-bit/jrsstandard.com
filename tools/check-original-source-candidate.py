@@ -63,11 +63,17 @@ def open_parent(root, relative):
         raise
 
 def check_parent_stability(root, relpath, original):
-    fd, visited, leaf = open_parent(root, relpath)
+    try:
+        fd, visited, leaf = open_parent(root, relpath)
+    except OSError as exc:
+        raise AdmissionError("PARENT_PATH_CHANGED") from exc
     try:
         if visited != original:
             raise AdmissionError("PARENT_PATH_CHANGED")
-        return os.stat(leaf, dir_fd=fd, follow_symlinks=False)
+        try:
+            return os.stat(leaf, dir_fd=fd, follow_symlinks=False)
+        except OSError as exc:
+            raise AdmissionError("PATH_FILE_CHANGED") from exc
     finally:
         os.close(fd)
 
@@ -95,6 +101,8 @@ def inspect_zip(fd, max_total, max_members):
                 if len(infos) == 0 or len(infos) > max_members:
                     raise AdmissionError("ARCHIVE_MEMBER_COUNT_REJECTED")
                 for info in infos:
+                    if getattr(info, "orig_filename", info.filename) != info.filename:
+                        raise AdmissionError("ZIP_FILENAME_NORMALIZED_OR_TRUNCATED")
                     path = checked_member_name(info.filename, seen)
                     mode = (info.external_attr >> 16) & 0xffff
                     kind = stat.S_IFMT(mode)
@@ -139,6 +147,8 @@ def admit_candidate(root, relative, *, kind="zip", expected_sha256=None,
     """The optional during_read callback exists solely for synthetic race tests."""
     if kind not in ("zip", "file"):
         raise AdmissionError("INVALID_CANDIDATE_KIND")
+    if not all(hasattr(os, name) for name in ("O_NOFOLLOW", "O_DIRECTORY", "pread")):
+        raise AdmissionError("PLATFORM_CONTROLS_UNAVAILABLE")
     if expected_sha256 is not None and (
         not isinstance(expected_sha256, str) or len(expected_sha256) != 64
         or any(c not in "0123456789abcdef" for c in expected_sha256)
@@ -188,7 +198,11 @@ def admit_candidate(root, relative, *, kind="zip", expected_sha256=None,
                 members = []
             if signature(os.fstat(fd)) != signature(before):
                 raise AdmissionError("FILE_MODIFIED_DURING_READ")
-            if signature(os.stat(leaf, dir_fd=parent, follow_symlinks=False)) != signature(before):
+            try:
+                current_leaf = os.stat(leaf, dir_fd=parent, follow_symlinks=False)
+            except OSError as exc:
+                raise AdmissionError("PATH_FILE_CHANGED") from exc
+            if signature(current_leaf) != signature(before):
                 raise AdmissionError("PATH_FILE_CHANGED")
             final_path = check_parent_stability(root, relative, path_chain)
             if signature(final_path) != signature(before):
