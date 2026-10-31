@@ -33,6 +33,13 @@ export default async function handler(req) {
   if (!input || typeof input !== 'object' || Array.isArray(input) ||
       !campaigns.has(input.campaign))
     return simple({ok:false,code:'invalid_campaign'},422);
+  // Source-isolated preview/local verification. A preview can inherit the
+  // production database configuration. No historic support event may be
+  // created or acknowledged by a nonproduction deployment.
+  const deploymentEnv = (typeof process!=='undefined' && process.env &&
+                         process.env.VERCEL_ENV) || '';
+  if (deploymentEnv !== 'production')
+    return simple({ok:true,recorded:false,preview_only:true},200);
 
   // Align with the existing historical support cookie. One recorded action per
   // browser/campaign is only a coarse dedupe; it is not a unique-person count.
