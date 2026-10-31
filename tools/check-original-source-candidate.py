@@ -132,10 +132,10 @@ def register_archive_path(path, is_directory, directories, files):
 def looks_like_archive_payload(prefix):
     """Conservative first-block signature screening, not content-type proof."""
     return (prefix.startswith((
-        b"PK\\x03\\x04", b"PK\\x05\\x06", b"PK\\x07\\x08",
-        b"\\x1f\\x8b", b"7z\\xbc\\xaf\\x27\\x1c",
-        b"\\xfd7zXZ\\x00", b"Rar!\\x1a\\x07",
-        b"BZh", b"\\x28\\xb5\\x2f\\xfd",
+        b"PK\x03\x04", b"PK\x05\x06", b"PK\x07\x08",
+        b"\x1f\x8b", b"7z\xbc\xaf\x27\x1c",
+        b"\xfd7zXZ\x00", b"Rar!\x1a\x07",
+        b"BZh", b"\x28\xb5\x2f\xfd",
     )) or (len(prefix) >= 263 and prefix[257:262] == b"ustar"))
 
 
