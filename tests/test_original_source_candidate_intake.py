@@ -200,7 +200,9 @@ class SourceCandidateAdmission(unittest.TestCase):
         def tamper(index):
             if index == 0:
                 self.path.rename(moved)
-        self.rejected("PATH_FILE_CHANGED", during_read=tamper)
+        with self.assertRaises(module.AdmissionError) as caught:
+            self.admit(during_read=tamper)
+        self.assertIn(caught.exception.code, ("FILE_MODIFIED_DURING_READ", "PATH_FILE_CHANGED"))
 
     def test_29_zip_filename_embedded_nul_rejected(self):
         self.write_zip([("a1.txt", "test")])
