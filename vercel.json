@@ -8,6 +8,11 @@
   ],
   "redirects": [
     {
+      "source": "/programme--9872fb93cc94.html",
+      "destination": "/programme-status-9872fb93cc94.html",
+      "permanent": false
+    },
+    {
       "source": "/evidence-ledger",
       "destination": "/research.html",
       "permanent": false
@@ -601,12 +606,30 @@
           "value": "noindex, nofollow"
         }
       ]
+    },
+    {
+      "source": "/programme--9872fb93cc94.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ],
   "proxy": {
     "entrypoint": "proxy.js",
     "matcher": [
-      "/programme-status-9872fb93cc94.html"
+      "/programme-status-9872fb93cc94.html",
+      "/programme--9872fb93cc94.html"
     ]
   }
 }
