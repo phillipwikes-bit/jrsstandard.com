@@ -57,7 +57,11 @@ try{
   await check('route config and dependency are pinned to private page',async()=>{
     const j=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url),'utf8'));
     assert.equal(j.proxy.entrypoint,'proxy.js');
-    assert.deepEqual(j.proxy.matcher,['/programme-status-9872fb93cc94.html','/programme--9872fb93cc94.html']);
+    assert.deepEqual(j.proxy.matcher,[
+      '/programme-status-9872fb93cc94.html','/programme--9872fb93cc94.html',
+      '/api/access-stats','/api/enroll-stats','/api/orgpilot-stats',
+      '/api/gate-stats','/api/geo-stats','/api/asset-stats'
+    ]);
     const pkg=JSON.parse(readFileSync(new URL('../package.json',import.meta.url),'utf8'));
     assert.equal(pkg.dependencies['@vercel/functions'],'3.10.4');
     assert.equal(pkg.type,'module');

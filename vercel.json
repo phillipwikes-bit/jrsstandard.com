@@ -629,7 +629,13 @@
     "entrypoint": "proxy.js",
     "matcher": [
       "/programme-status-9872fb93cc94.html",
-      "/programme--9872fb93cc94.html"
+      "/programme--9872fb93cc94.html",
+      "/api/access-stats",
+      "/api/enroll-stats",
+      "/api/orgpilot-stats",
+      "/api/gate-stats",
+      "/api/geo-stats",
+      "/api/asset-stats"
     ]
   }
 }
