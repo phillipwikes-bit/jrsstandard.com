@@ -151,6 +151,9 @@ try{
     assert.ok(html.includes("fetch('/api/enterprise-inquiry'"));
     assert.ok(html.includes('window.turnstile.render'));
     assert.ok(html.includes('info@jrsstandard.com'));
+    const chunks=[...html.matchAll(/<script(?: [^>]*)?>([\\s\\S]*?)<\\/script>/g)];
+    assert.ok(chunks.length>0);
+    chunks.forEach(m=>new Function(m[1])); // parser-only: no DOM/network execution
   });
   console.log('PASS '+passes+' legacy enterprise inquiry gating checks');
 }finally{
