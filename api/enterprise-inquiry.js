@@ -1,152 +1,128 @@
-export const config = { runtime: 'edge' };
+export const config = { runtime:'edge' };
 
-// ENTERPRISE LICENSING INQUIRY. POST /api/enterprise-inquiry
-//
-// The private channel for GRC platform and legal-tech evaluation. Routes to
-// pilot_contacts under source='enterprise-inquiry', read back by
-// /api/checkout-stats, so it is not an orphan writer.
-//
-// WHY IT IS A FORM AND NOT A mailto: LINK. Thirteen buyers reached the pay
-// screen between 14 and 21 August 2026 and every one left no name, because the
-// only thing offered was an email address. An enterprise evaluator who has to
-// compose a cold email from scratch is an evaluator you find out about only if
-// they bother. The fields below are the ones that actually qualify a licensing
-// conversation: platform, seat scale, deployment posture and timeline.
-//
-// FAILS LOUD. If the row does not land, the caller is told. A capture form that
-// silently drops a licensing lead is worse than no form, because it reports
-// success while losing the thing it exists to keep.
-
+// Legacy enterprise information-enquiry writer. Historic rows retain
+// source='enterprise-inquiry' and are not rewritten or reclassified.
+// This is a contact-only path: no confidential case submissions, buyer
+// qualification, commercial offer or software evaluation authorization.
 import { notify, renderAlert } from './_notify.js';
 
-const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
+const SB='https://pjzxkeviouofdseagvpf.supabase.co';
+const SOURCE='enterprise-inquiry';
+const INTEREST=['engine-licence','oem-embed','framework-licence',
+                'evaluation','acquisition','not-sure','other'];
+const SCALE=['under-1k','1k-10k','10k-100k','over-100k','unknown'];
+const TIMELINE=['immediate','this-quarter','this-year','exploratory'];
 
-// Named rather than inlined so this file is findable as the writer, and so
-// scripts/check_zero_drift.py can pair it with its reader.
-const SOURCE = 'enterprise-inquiry';
-
-// Closed vocabularies. A free-text deployment answer cannot be counted, and an
-// uncountable field on a qualification form is decoration.
-// 'acquisition' and 'not-sure' added 2026-08-29 for the Commercial Inquiries
-// pathway. The allowlist is the reason this file changes at all: oneOf() drops
-// any value not listed, so a new <option> added to the form alone would be
-// stored as an empty string and reach the dashboard as "unspecified", which is
-// precisely the inquiry type the change exists to capture. The five existing
-// values are unchanged.
-const INTEREST = ['engine-licence', 'oem-embed', 'framework-licence',
-                  'evaluation', 'acquisition', 'not-sure', 'other'];
-const SCALE = ['under-1k', '1k-10k', '10k-100k', 'over-100k', 'unknown'];
-const TIMELINE = ['immediate', 'this-quarter', 'this-year', 'exploratory'];
-
-function json(o, s) {
-  return new Response(JSON.stringify(o), {
-    status: s || 200,
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'no-store'
-    }
-  });
+function json(o,status=200){
+  return new Response(JSON.stringify(o),{status,headers:{
+    'Content-Type':'application/json; charset=utf-8',
+    'Cache-Control':'no-store',
+    'X-Content-Type-Options':'nosniff',
+    'Referrer-Policy':'no-referrer'
+  }});
+}
+function clean(v,n){
+  return String(typeof v==='string'?v:'')
+    .replace(/[\u0000-\u001f\u007f]/g,'').trim().slice(0,n);
+}
+function oneOf(v,list){
+  const s=clean(v,40).toLowerCase();
+  return list.includes(s)?s:'';
+}
+function validEmail(s){
+  return s.length<=160 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s);
 }
 
-function clean(v, n) {
-  return String(v == null ? '' : v)
-    .replace(/[\u0000-\u001f\u007f]/g, '')
-    .trim()
-    .slice(0, n);
-}
+export default async function handler(req){
+  // No wildcard CORS or unauthenticated cross-site submission.
+  if(req.method!=='POST')return json({error:'method_not_allowed'},405);
+  const url=new URL(req.url);
+  const origin=req.headers.get('origin');
+  if(!origin || origin!==url.origin)return json({error:'origin_not_allowed'},403);
+  if(!(req.headers.get('content-type')||'').toLowerCase().startsWith('application/json'))
+    return json({error:'json_required'},415);
+  const declared=Number(req.headers.get('content-length')||'0');
+  if(!Number.isFinite(declared)||declared>8192)return json({error:'request_too_large'},413);
+  const E=(typeof process!=='undefined'&&process.env)||{};
+  const service=E.SUPABASE_SERVICE_ROLE_KEY||'';
+  const challengeSecret=E.TURNSTILE_SECRET_KEY||'';
+  // No legacy bypass when the new categorized enquiry service is unavailable.
+  if(!service||!challengeSecret||!E.TURNSTILE_SITE_KEY)
+    return json({error:'inquiry_protection_unavailable'},503);
 
-// An answer outside the vocabulary becomes '' rather than being coerced to the
-// first option. A qualification field guessed from bad input is worse than an
-// empty one, because it looks answered.
-function oneOf(v, list) {
-  const s = clean(v, 40).toLowerCase();
-  return list.indexOf(s) === -1 ? '' : s;
-}
+  let text='';
+  try{text=await req.text()}catch{return json({error:'body_unreadable'},400)}
+  if(text.length>8192)return json({error:'request_too_large'},413);
+  let b;
+  try{b=JSON.parse(text)}catch{return json({error:'bad_json'},400)}
+  if(!b || typeof b!=='object' || Array.isArray(b))return json({error:'bad_input'},400);
+  if(clean(b.company_website,100))return json({ok:true,stored:false},200);
 
-export default async function handler(req) {
-  if (req.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type'
-      }
+  const name=clean(b.name,120);
+  const email=clean(b.email,160).toLowerCase();
+  const organization=clean(b.organization,160);
+  const role=clean(b.role,120);
+  const interest=oneOf(b.interest,INTEREST);
+  const scale=oneOf(b.scale,SCALE);
+  const timeline=oneOf(b.timeline,TIMELINE);
+  const platform=clean(b.platform,160);
+  const note=clean(b.note,1200);
+  const token=clean(b.turnstileToken,2048);
+
+  if(name.length<2 || !organization || !validEmail(email) || !interest ||
+    b.consent!==true)return json({error:'required_fields_invalid'},400);
+  if(!token)return json({error:'challenge_required'},400);
+
+  let verified;
+  try{
+    const challenge=await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify',{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:new URLSearchParams({secret:challengeSecret,response:token})
     });
-  }
-  if (req.method !== 'POST') return json({ error: 'method_not_allowed' }, 405);
+    if(!challenge.ok)return json({error:'challenge_unavailable'},503);
+    verified=await challenge.json();
+  }catch{return json({error:'challenge_unavailable'},503)}
+  if(!verified || verified.success!==true)return json({error:'challenge_rejected'},403);
+  const expected=String(E.JRS_TURNSTILE_HOSTNAME||url.hostname).toLowerCase();
+  if(String(verified.hostname||'').toLowerCase()!==expected)
+    return json({error:'challenge_host_mismatch'},403);
 
-  let b = {};
-  try { b = await req.json(); } catch (e) { return json({ error: 'bad_json' }, 400); }
-
-  const name = clean(b.name, 120);
-  const email = clean(b.email, 160);
-  const org = clean(b.organization, 160);
-  const role = clean(b.role, 120);
-
-  if (!name || !org || !email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
-    return json({ error: 'name_email_organization_required',
-                  detail: 'Name, work email and organisation are required.' }, 400);
-  }
-
-  const env = (typeof process !== 'undefined' && process.env) || {};
-  const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  if (!SERVICE) return json({ error: 'not_configured' }, 503);
-
-  const res = await fetch(SB + '/rest/v1/pilot_contacts', {
-    method: 'POST',
-    headers: {
-      'apikey': SERVICE,
-      'Authorization': 'Bearer ' + SERVICE,
-      'Content-Type': 'application/json',
-      'Prefer': 'return=minimal'
-    },
-    body: JSON.stringify({
-      name: name,
-      email: email,
-      organization: org,
-      source: SOURCE,
-      message: JSON.stringify({
-        kind: SOURCE,
-        role: role,
-        interest: oneOf(b.interest, INTEREST),
-        scale: oneOf(b.scale, SCALE),
-        timeline: oneOf(b.timeline, TIMELINE),
-        platform: clean(b.platform, 160),
-        note: clean(b.note, 1200),
-        country: String(req.headers.get('x-vercel-ip-country') || '')
-          .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2),
-        ts: new Date().toISOString()
-      })
+  const country=clean(req.headers.get('x-vercel-ip-country')||'',2)
+    .toUpperCase().replace(/[^A-Z]/g,'');
+  const storedRecord={
+    name,email,organization,source:SOURCE,
+    message:JSON.stringify({
+      kind:SOURCE,role,interest,scale,timeline,platform,note,country,
+      ts:new Date().toISOString(),
+      consent_to_contact:true,
+      consent_version:'enterprise-contact-v1-2026-10-30',
+      consent_to_transfer:false,
+      software_access_requested:false
     })
-  }).catch(function () { return null; });
+  };
+  let saved;
+  try{
+    saved=await fetch(SB+'/rest/v1/pilot_contacts',{
+      method:'POST',
+      headers:{
+        'apikey':service,'Authorization':'Bearer '+service,
+        'Content-Type':'application/json','Prefer':'return=minimal'
+      },
+      body:JSON.stringify(storedRecord)
+    });
+  }catch{return json({error:'storage_unavailable'},502)}
+  // Do not reflect provider error content: it may contain personal data.
+  if(!saved.ok)return json({error:'storage_unavailable'},502);
 
-  if (!res || !res.ok) {
-    const detail = res ? await res.text().catch(function () { return ''; }) : 'network';
-    return json({ error: 'db_insert_failed',
-                  status: res ? res.status : 0,
-                  detail: String(detail).slice(0, 200) }, 502);
-  }
-  // Alert only after the row is durable. See api/_notify.js for why this order
-  // is not negotiable.
-  const alert = await notify(
-    'Enterprise inquiry: ' + org + ' (' + (oneOf(b.interest, INTEREST) || 'unspecified') + ')',
-    renderAlert('Enterprise licensing inquiry', [
-      ['Name', name],
-      ['Email', email],
-      ['Organisation', org],
-      ['Role', role],
-      ['Interest', oneOf(b.interest, INTEREST)],
-      ['Platform', clean(b.platform, 160)],
-      ['Records per year', oneOf(b.scale, SCALE)],
-      ['Timeline', oneOf(b.timeline, TIMELINE)],
-      ['Country', String(req.headers.get('x-vercel-ip-country') || '')],
-      ['Note', clean(b.note, 1200)],
-      ['Source', SOURCE]
-    ]),
-    email
+  const alert=await notify(
+    'Enterprise information inquiry: '+organization+' ('+interest+')',
+    renderAlert('Enterprise information inquiry',[
+      ['Name',name],['Email',email],['Organisation',organization],
+      ['Role',role],['Interest',interest],['Platform',platform],
+      ['Records per year',scale],['Timeline',timeline],
+      ['Country',country],['Note',note],['Source',SOURCE]
+    ]),email
   );
-
-  return json({ ok: true, stored: true, alerted: alert.sent === true });
+  return json({ok:true,stored:true,alerted:alert.sent===true});
 }
