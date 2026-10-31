@@ -77,12 +77,78 @@
    <label>Role<input class="field" name="role" maxlength="120" placeholder="Head of GRC, Platform Architect"></label>
    <label>Topic<select class="field" name="interest"><option value="other">Method information</option><option value="framework-licence">Methodology licensing inquiry</option><option value="engine-licence">Future software licensing inquiry</option><option value="oem-embed">Future integration inquiry</option><option value="acquisition">Exploratory asset acquisition inquiry</option><option value="evaluation">Future controlled evaluation (not currently offered)</option></select></label>
    <label>Context<textarea class="field" name="note" maxlength="600" rows="3" placeholder="State the general purpose only. Do not include records or sensitive information."></textarea></label>
-  </div><p class="fine">Submission is a request for information only. It does not create an offer, evaluation right, licence, confidentiality obligation, exclusivity commitment, or transaction agreement.</p><button class="btn primary" type="submit" id="ei-b">Send request</button><p id="ei-m" role="status" class="fine"></p></form>
+  </div>
+  <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="ei-honey">Company website</label><input id="ei-honey" name="company_website" tabindex="-1" autocomplete="off"></div>
+  <label style="display:block;margin:14px 0" class="fine"><input name="consent" type="checkbox" required> I agree to retention of this contact inquiry and a reply as described in the <a href="privacy-notice.html" target="_blank" rel="noopener noreferrer">privacy notice</a>. No publication, transfer of my contact details or access to software is authorized. I will not submit confidential records or third-party personal information. *</label>
+  <div id="ei-captcha" aria-label="Abuse-prevention verification"></div>
+  <p class="fine">Submission is a request for information only. It does not create an offer, evaluation right, licence, confidentiality obligation, exclusivity commitment, or transaction agreement.</p>
+  <button class="btn primary" type="submit" id="ei-b" disabled>Send request</button>
+  <p id="ei-m" role="status" aria-live="polite" class="fine">Checking enquiry availability...</p>
+  </form>
  </section>
 </main>
 <footer class="site-footer" role="contentinfo"><div class="site-footer-inner">JRS&#8482; and Justification Review Standard&#8482; are marks used by Phillip Wikes. Registration and transfer status are not represented by this notice. &nbsp;·&nbsp; <a href="privacy.html">Privacy</a> &nbsp;·&nbsp; <a href="operational-boundaries.html">Terms and boundaries</a></div></footer>
 <script>
-(function(){var f=document.getElementById('ei-form');if(!f)return;var m=document.getElementById('ei-m'),b=document.getElementById('ei-b');f.addEventListener('submit',function(e){e.preventDefault();b.disabled=true;m.style.color='var(--muted)';m.textContent='Sending...';var d={};new FormData(f).forEach(function(v,k){d[k]=v});fetch('/api/enterprise-inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){return r.json()}).then(function(j){if(j&&j.ok){f.innerHTML='<p class="status"><strong>Inquiry received.</strong> The submission was stored for review. It does not create an offer, licence, agreement, or commitment.</p>'}else{m.style.color='var(--stop)';m.textContent='That did not save. Email info@jrsstandard.com.';b.disabled=false}}).catch(function(){m.style.color='var(--stop)';m.textContent='Network error. Email info@jrsstandard.com.';b.disabled=false})})})();
+(function(){
+  var form=document.getElementById('ei-form');
+  if(!form)return;
+  var status=document.getElementById('ei-m');
+  var button=document.getElementById('ei-b');
+  var widget=null, token='', available=false;
+  function say(message,isError){
+    status.textContent=message;
+    status.style.color=isError?'var(--stop)':'var(--muted)';
+  }
+  fetch('/api/site-inquiry-config',{credentials:'same-origin',cache:'no-store'})
+   .then(function(r){if(!r.ok)throw Error('config unavailable');return r.json();})
+   .then(function(d){
+     if(!d.enabled||!d.site_key){
+       say('The protected enquiry form is not yet available. Email info@jrsstandard.com to request information.',true);
+       return;
+     }
+     var script=document.createElement('script');
+     script.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+     script.async=true;
+     script.onload=function(){
+       if(!window.turnstile){say('Verification could not be loaded.',true);return;}
+       widget=window.turnstile.render('#ei-captcha',{
+         sitekey:d.site_key,
+         callback:function(value){token=value;available=true;button.disabled=false;say('Verification complete.');},
+         'expired-callback':function(){token='';available=false;button.disabled=true;say('Verification expired. Please complete it again.',true);},
+         'error-callback':function(){token='';available=false;button.disabled=true;say('Verification unavailable.',true);}
+       });
+     };
+     script.onerror=function(){say('Verification service unavailable.',true);};
+     document.head.appendChild(script);
+   }).catch(function(){say('The protected enquiry form is not configured. Email info@jrsstandard.com to request information.',true);});
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    if(!available||!token){say('Complete verification before submitting.',true);return;}
+    if(!form.reportValidity())return;
+    button.disabled=true;
+    say('Submitting enquiry...');
+    var values=Object.fromEntries(new FormData(form).entries());
+    values.consent=form.elements.consent.checked;
+    values.turnstileToken=token;
+    try{
+      var response=await fetch('/api/enterprise-inquiry',{
+        method:'POST',credentials:'same-origin',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(values)
+      });
+      var data=await response.json();
+      if(!response.ok||data.stored!==true)throw Error('not_stored');
+      form.reset();
+      token='';available=false;
+      if(widget!==null&&window.turnstile)window.turnstile.reset(widget);
+      say('Your enquiry was stored for owner follow-up. Email delivery is not guaranteed. No licence, software access or other transaction is established.');
+    }catch(e){
+      token='';available=false;
+      if(widget!==null&&window.turnstile)window.turnstile.reset(widget);
+      say('The enquiry could not be confirmed as stored. Email info@jrsstandard.com to request information.',true);
+    }
+  });
+})();
 </script>
 </body>
 </html>

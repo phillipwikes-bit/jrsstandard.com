@@ -57,6 +57,8 @@ on:
       - 'tests/download-traffic-quality.mjs'
       - 'api/owner-release-readiness.js'
       - 'tests/owner-release-readiness.mjs'
+      - 'tests/enterprise-inquiry-gates.mjs'
+      - 'api/enterprise-inquiry.js'
       - 'tests/asset-evidence-integrity.mjs'
       - 'api/dl.js'
       - 'docs/commercial/JRS_DOWNLOAD_QUALITY_AND_BUYER_EVIDENCE_INDEX_2026-10-30.md'
@@ -118,6 +120,8 @@ on:
       - 'tests/download-traffic-quality.mjs'
       - 'api/owner-release-readiness.js'
       - 'tests/owner-release-readiness.mjs'
+      - 'tests/enterprise-inquiry-gates.mjs'
+      - 'api/enterprise-inquiry.js'
       - 'tests/asset-evidence-integrity.mjs'
       - 'api/dl.js'
       - 'docs/commercial/JRS_DOWNLOAD_QUALITY_AND_BUYER_EVIDENCE_INDEX_2026-10-30.md'
@@ -146,4 +150,5 @@ jobs:
       - run: node tests/public-route-alignment.mjs
       - run: node tests/download-traffic-quality.mjs
       - run: node tests/owner-release-readiness.mjs
+      - run: node tests/enterprise-inquiry-gates.mjs
       - run: node tests/asset-evidence-integrity.mjs
