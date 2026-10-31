@@ -1,5 +1,5 @@
 import { ownerAccess } from './_owner-auth.js';
-import { fetchAllUrl } from './_sb-fetch.js';
+import { fetchBoundedKeyset } from './_sb-bounded-keyset.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate commercial-funnel stats for the private status dashboard, owner-authenticated.
@@ -30,9 +30,9 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 // written anywhere in api/ has no endpoint consuming it, and a source buried in
 // a URL literal is invisible to that check and to anyone grepping for it.
 const SOURCES = {
-  'checkout-click': { table: 'interaction_events', select: 'created_at,payload' },
-  'checkout-fallback': { table: 'pilot_contacts', select: 'created_at,message' },
-  'enterprise-inquiry': { table: 'pilot_contacts', select: 'created_at,message' }
+  'checkout-click': { table: 'interaction_events', select: 'id,created_at,payload' },
+  'checkout-fallback': { table: 'pilot_contacts', select: 'id,created_at,message' },
+  'enterprise-inquiry': { table: 'pilot_contacts', select: 'id,created_at,message' }
 };
 
 function feed(src) {
@@ -72,11 +72,22 @@ export default async function handler(req) {
     'Content-Type': 'application/json'
   };
 
+  // All three source families use the same recorded cutoff. Keyset pages are
+  // strictly ordered and checked for duplicated/omitted boundary keys. They
+  // are NOT an atomic database snapshot across requests.
+  const cutoffUtc = new Date().toISOString();
+  const readEvidence = {};
+  async function readSource(name) {
+    const result = await fetchBoundedKeyset(SB + feed(name), H, {cutoffUtc});
+    readEvidence[name] = result.evidence;
+    return result.rows;
+  }
+
   // ---- arrivals at the pay screen -----------------------------------------
   let clicks = [];
   try {
     // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
-    clicks = await fetchAllUrl(SB + feed('checkout-click'), H);
+    clicks = await readSource('checkout-click');
   } catch (e) {
     return json({ error: 'db_unreachable' }, 502);
   }
@@ -99,7 +110,7 @@ export default async function handler(req) {
   // ---- leads captured on the fallback form ---------------------------------
   let leads = [];
   try {
-    leads = await fetchAllUrl(SB + feed('checkout-fallback'), H);
+    leads = await readSource('checkout-fallback');
   } catch (e) {
     // A failed secondary source is not a legitimate zero-lead finding.
     return json({ error: 'checkout_source_incomplete' }, 502);
@@ -121,7 +132,7 @@ export default async function handler(req) {
   // ---- enterprise and licensing inquiries ---------------------------------
   let inq = [];
   try {
-    inq = await fetchAllUrl(SB + feed('enterprise-inquiry'), H);
+    inq = await readSource('enterprise-inquiry');
   } catch (e) {
     // Do not publish a complete commercial funnel with missing inquiries.
     return json({ error: 'checkout_source_incomplete' }, 502);
@@ -147,6 +158,12 @@ export default async function handler(req) {
 
   return json({
     generated_at: new Date().toISOString(),
+    read_consistency: {
+      cutoff_utc: cutoffUtc,
+      method: 'strict_keyset_created_at_id',
+      qualification: 'Bounded ordered read, not an atomic multi-table snapshot',
+      source_evidence: readEvidence
+    },
     pay_screen_arrivals: clicks.length,
     arrivals_by_offer: byOffer,
     arrivals_by_country: byCountry,
