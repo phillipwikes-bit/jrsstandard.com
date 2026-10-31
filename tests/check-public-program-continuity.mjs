@@ -15,9 +15,27 @@ const fileSha = file => {
  const hdr = Buffer.from('blob ' + data.length + '\0');
  return createHash('sha1').update(hdr).update(data).digest('hex');
 };
+// A controlled change is permitted only when it names the frozen original,
+// expected new blob, exact scope and the outstanding owner release decision.
+// The immutable original 24-file baseline is not rewritten by this draft.
+const exception=JSON.parse(text('tests/public-program-controlled-exceptions.json'));
+verify('source exception is narrow, documented and not release-approved',()=>{
+ assert.equal(exception.status,'PROPOSED_NOT_RELEASE_APPROVED');
+ assert.equal(exception.owner_approval,'NOT_PROVIDED');
+ assert.equal(exception.production_status,'HOLD');
+ assert.deepEqual(Object.keys(exception.entries),['api/support-stats.js']);
+ for(const [path,x] of Object.entries(exception.entries)){
+  assert.equal(baseline.files[path],x.before_blob_sha);
+  assert.notEqual(x.before_blob_sha,x.candidate_blob_sha);
+  assert.equal(x.database_migration,false);
+  assert.equal(x.history_rewrite,false);
+ }
+});
 for (const [file, sha] of Object.entries(baseline.files)) {
- verify('pre-renovation source identity ' + file, () => {
-  assert.equal(fileSha(file), sha, 'Measurement, reader or owner dashboard changed without baseline review');
+ verify('frozen source identity or exact draft exception '+file,()=>{
+  const allow=exception.entries[file];
+  assert.equal(fileSha(file),allow?allow.candidate_blob_sha:sha,
+    'Unrecorded change to existing data writer, statistics reader or owner dashboard');
  });
 }
 const canonical = '/programme-status-9872fb93cc94.html';
