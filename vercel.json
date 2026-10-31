@@ -1,11 +1,5 @@
 {
   "ignoreCommand": "exit 1",
-  "crons": [
-    {
-      "path": "/api/run-study",
-      "schedule": "0 6 * * *"
-    }
-  ],
   "redirects": [
     {
       "source": "/programme--9872fb93cc94.html",

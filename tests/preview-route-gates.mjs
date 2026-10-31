@@ -72,6 +72,17 @@ try{
   ]) assert.throws(()=>validatedPreviewOrigin(origin));
   assert.equal(validatedPreviewOrigin(ORIGIN+'/'),ORIGIN);
 
+  // G2 coverage must be explicit. A generic count can stay green while a
+  // newly private endpoint is omitted from the list altogether.
+  const g2OwnerMetrics=[
+    '/api/access-stats','/api/enroll-stats','/api/orgpilot-stats',
+    '/api/gate-stats','/api/geo-stats','/api/asset-stats'
+  ];
+  assert.equal(PRIVATE_PATHS.length,22,'PST-03 exact-preview private route inventory drifted');
+  for(const path of g2OwnerMetrics)assert(PRIVATE_PATHS.includes(path),'Missing G2 private route: '+path);
+  assert.equal(new Set(PRIVATE_PATHS).size,PRIVATE_PATHS.length,
+    'Private route probes must not duplicate paths');
+
   const all=mockFetch();
   const result=await checkPreview({baseUrl:ORIGIN+'/',expectedSha:SHA,fetchImpl:all.fetchImpl});
   assert.equal(result.verified_commit,SHA);
@@ -99,10 +110,14 @@ try{
     fetchImpl:mockFetch({leakPath:'/programme-status-9872fb93cc94.html'}).fetchImpl}),/private_route_not_proven_closed/);
   await assert.rejects(checkPreview({baseUrl:ORIGIN+'/',expectedSha:SHA,
     fetchImpl:mockFetch({leakPath:'/api/people-9dd1ecdf6f8cdfd4',overrideStatus:307}).fetchImpl}),/private_route_not_proven_closed/);
+  await assert.rejects(checkPreview({baseUrl:ORIGIN+'/',expectedSha:SHA,
+    fetchImpl:mockFetch({leakPath:'/api/access-stats',overrideStatus:200}).fetchImpl}),/private_route_not_proven_closed/);
+  await assert.rejects(checkPreview({baseUrl:ORIGIN+'/',expectedSha:SHA,
+    fetchImpl:mockFetch({leakPath:'/api/asset-stats',overrideStatus:302}).fetchImpl}),/private_route_not_proven_closed/);
   await assert.rejects(checkPreview({baseUrl:ORIGIN+'/',expectedSha:'short',
     fetchImpl:mockFetch().fetchImpl}),/expected_sha_invalid/);
 
-  console.log('PASS preview acceptance: exact source SHA, 16 anonymous private routes, fail closed on public leak, redirects, cache and missing build identity');
+  console.log('PASS preview acceptance: exact source SHA, 22 anonymous private routes, fail closed on public leak, redirects, cache and missing build identity');
 }finally{
   for(const [key,value] of Object.entries(originalEnv)){
     if(value===undefined)delete process.env[key];else process.env[key]=value;

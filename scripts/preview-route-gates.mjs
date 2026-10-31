@@ -24,7 +24,16 @@ export const PRIVATE_PATHS=Object.freeze([
   '/api/support-contacts',
   '/api/coauthor-stats',
   '/api/contributor-stats',
-  '/api/checkout-stats'
+  '/api/checkout-stats',
+  // G2/PST-03, added in Increment 18. These six service-role-backed
+  // aggregate readers are private. Omitting them from the exact-deployment
+  // negative-path probe would leave the new edge gate unobserved.
+  '/api/access-stats',
+  '/api/enroll-stats',
+  '/api/orgpilot-stats',
+  '/api/gate-stats',
+  '/api/geo-stats',
+  '/api/asset-stats'
 ]);
 
 export function validatedPreviewOrigin(input) {
