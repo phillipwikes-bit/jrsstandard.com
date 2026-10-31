@@ -33,3 +33,7 @@ jobs:
         run: node --test tests/owner-login-readiness.test.mjs
       - name: Reject registry consent expansion, cross-origin PII writes and false acknowledgements
         run: node --test tests/support-registry-consent-integrity.test.mjs
+      - name: Verify integrated release evidence cannot convert fixtures into production or transfer approval
+        run: |
+          node --test tests/integrated-release-evidence.test.mjs
+          node tools/check-integrated-release-evidence.mjs docs/program-status/INCREMENT_11_OBSERVED_EVIDENCE_SNAPSHOT_2026-10-31.json > /tmp/jrs-increment11-preflight.json
