@@ -1,0 +1,33 @@
+name: Free investigator guide source and PDF integrity
+on:
+  pull_request:
+    paths:
+      - 'investigator-guides.html'
+      - 'JRS_Investigator_Field_Guide_*.pdf'
+      - 'api/dl.js'
+      - 'tests/free-investigator-guides.test.mjs'
+      - 'scripts/check_zero_drift.py'
+      - '.github/workflows/free-investigator-guides.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'investigator-guides.html'
+      - 'JRS_Investigator_Field_Guide_*.pdf'
+      - 'api/dl.js'
+      - 'tests/free-investigator-guides.test.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  free-guides:
+    name: Verify three free guide PDF assets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify the exact published PDF bytes and all direct links
+        run: node --test tests/free-investigator-guides.test.mjs
+      - name: Validate legacy drift guard syntax
+        run: python3 -m py_compile scripts/check_zero_drift.py
