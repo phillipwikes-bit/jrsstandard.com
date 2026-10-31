@@ -18,6 +18,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Reject anonymous requests to owner-only service-role analytics
+        run: node --test tests/owner-aggregate-proxy.test.mjs
       - name: Preserve 24 existing collection and owner-report sources
         run: node tests/check-public-program-continuity.mjs
       - name: Verify accessible free initiative links and old campaign routes
