@@ -5,10 +5,19 @@ const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 const DECIMAL_ID=/^(0|[1-9][0-9]{0,38})$/;
 const EXACT_UTC=/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
 function assert(value,code){if(!value)throw new Error(code)}
+// Preserve source microseconds in the cursor and monotonicity comparison.
+// JavaScript Date.toISOString truncates microseconds to milliseconds and would
+// otherwise make equality filters skip or duplicate same-millisecond records.
+const SOURCE_UTC=/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.(\d{1,6}))?(Z|\+00:00)$/;
 function iso(value,code){
  const ms=Date.parse(value);
  assert(typeof value==='string'&&Number.isFinite(ms),code);
  return new Date(ms).toISOString();
+}
+function timestampKey(value){
+ const match=typeof value==='string'?value.match(SOURCE_UTC):null;
+ assert(match&&Number.isFinite(Date.parse(value)),'source_timestamp_invalid');
+ return {raw:value,sort:match[1]+'.'+(match[2]||'').padEnd(6,'0')+'Z'};
 }
 function idValue(value){
  if(typeof value==='number'){
@@ -28,7 +37,7 @@ function compareId(a,b){
  return a<b?-1:a>b?1:0;
 }
 function compareTuple(a,b){
- return a.timestamp<b.timestamp?-1:a.timestamp>b.timestamp?1:compareId(a.id,b.id);
+ return a.sort<b.sort?-1:a.sort>b.sort?1:compareId(a.id,b.id);
 }
 function prepareUrl(raw,cutoff){
  let u;
@@ -84,9 +93,10 @@ export async function fetchBoundedKeyset(sourceUrl,headers,{cutoffUtc,pageSize=D
   pages++;
   for(const row of batch){
    assert(row&&typeof row==='object'&&!Array.isArray(row),'source_row_invalid');
-   const id=idValue(row.id),timestamp=iso(row.created_at,'source_timestamp_invalid');
-   const key={id,timestamp};
-   assert(timestamp<=cutoff,'source_row_after_cutoff');
+   const id=idValue(row.id),time=timestampKey(row.created_at);
+   const key={id,timestamp:time.raw,sort:time.sort};
+   const bound=cutoff.slice(0,-1)+'000Z';
+   assert(key.sort<=bound,'source_row_after_cutoff');
    assert(!seen.has(id),'source_duplicate_id');
    if(cursor)assert(compareTuple(key,cursor)>0,'source_order_invalid');
    seen.add(id);out.push(row);cursor=key;
