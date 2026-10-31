@@ -114,7 +114,7 @@ try{
  });
  calls=[];
  await test('retain paragraph boundaries and complete inquiry notes after storage',async()=>{
-   const note='First line: evidence requested.\\nSecond line: version and contract scope.';
+   const note='First line: evidence requested.\nSecond line: version and contract scope.';
    const response=await inquiry(make({...defaultBody,message:note}));
    assert.equal(response.status,200);
    assert.equal(calls.length,2);
