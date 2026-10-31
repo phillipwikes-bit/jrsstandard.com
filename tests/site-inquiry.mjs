@@ -62,6 +62,16 @@ try{
      assert.equal((await response.json()).error,'field_too_long');
    }
  });
+ await test('reject unsafe controls rather than alter submitted wording',async()=>{
+   for(const message of [
+     'Synthetic case information\u0000with hidden control',
+     'Synthetic case information\u001bwith escape code'
+   ]){
+     const response=await inquiry(make({...defaultBody,message}));
+     assert.equal(response.status,400);
+     assert.equal((await response.json()).error,'message_controls_invalid');
+   }
+ });
  await test('honeypot is never persisted',async()=>{
    const data=await(await inquiry(make({...defaultBody,company_website:'fake.biz'}))).json();
    assert.equal(data.stored,false);
@@ -121,6 +131,14 @@ try{
    const stored=JSON.parse(calls[1].opts.body);
    assert.equal(JSON.parse(stored.message).note,note);
    assert.ok(stored.message.includes('Second line: version'));
+ });
+ calls=[];
+ await test('normalize CRLF while preserving all words and paragraphs',async()=>{
+   const note='First paragraph.\r\nSecond paragraph with meaningful context.';
+   const response=await inquiry(make({...defaultBody,message:note}));
+   assert.equal(response.status,200);
+   const stored=JSON.parse(calls[1].opts.body);
+   assert.equal(JSON.parse(stored.message).note,note.replace(/\r\n/g,'\n'));
  });
  calls=[];
  await test('a commercial acquisition enquiry is recorded as interest, not permission',async()=>{
