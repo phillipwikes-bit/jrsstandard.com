@@ -1,0 +1,55 @@
+{
+  "schema": "jrs-source-claims-snapshot-v1",
+  "evidence_date": "2026-10-31",
+  "master": {
+    "title": "Comprehensive Integrated Master Program through Increment 10",
+    "pages": 223,
+    "page_text_inspected": true,
+    "raw_bytes_inspected": false,
+    "source_type": "owner-library PDF reviewed by indexed page text; no verified raw bytes",
+    "note": "Prior 198-page available-source compilation does not supersede this governing document"
+  },
+  "original": {
+    "subject": "DS-A original private Decision Spellchecker",
+    "source_located": false,
+    "source_authenticated": false,
+    "clean_build_reproduced": false,
+    "sp_verified_count": 0,
+    "version_context": "Reported original v0.6.11 and private mobile workflow 0.7.0; no complete original source/build independently admitted"
+  },
+  "local_candidate": {
+    "developer_candidate": true,
+    "reported_synthetic_pass": 307,
+    "primary_archive_rerun": false,
+    "origin": "Separately indexed local candidate v0.6.11; historical report only",
+    "claim_limit": "Do not silently treat developer package as original"
+  },
+  "r6": {
+    "component_total": 32,
+    "component_transfer_authorized": 0,
+    "commercial_digest_conflict_reported": true,
+    "signed_erratum_verified": false,
+    "primary_archive_bytes_rerun": false,
+    "primary_manifest_entries_reported": 71,
+    "primary_manifest_matches_reported": 71,
+    "claim_limit": "Internal consistency does not establish title or transfer"
+  },
+  "r9": {
+    "zip_metadata_located": true,
+    "primary_bytes_inspected": false,
+    "reported_synthetic_pass": 80,
+    "source": "Increment 10 user-library report, page 1; no primary archive byte-level replay",
+    "claim_limit": "Source-custody regressions do not establish H3 efficacy"
+  },
+  "study": {
+    "h2_h3_independent_completed": false,
+    "record_count_target": 156,
+    "actual_independently_adjudicated_h3_lift": null
+  },
+  "website": {
+    "owner_login_live_verified": false,
+    "production_release_approved": false,
+    "source": "Earlier exact-preview restricted GET returned owner_access_unavailable; no valid owner session tested"
+  },
+  "documentation_rule": "The independent 223-page governing master must be used as source baseline. Do not attach or claim to preserve byte-identical pages unless exact master bytes are actually available to the producing runtime. Supplemental reports must not replace it."
+}

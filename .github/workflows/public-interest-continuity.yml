@@ -39,3 +39,7 @@ jobs:
           node tools/check-integrated-release-evidence.mjs docs/program-status/INCREMENT_11_OBSERVED_EVIDENCE_SNAPSHOT_2026-10-31.json > /tmp/jrs-increment11-preflight.json
       - name: Verify original-source candidate custody admission with fabricated archives only
         run: python3 -m unittest discover -s tests -p 'test_original_source_candidate_intake.py' -v
+      - name: Verify governing source boundary, distinct product lineages and unresolved release claims
+        run: |
+          node --test tests/source-claim-boundaries.test.mjs
+          node tools/check-source-claim-boundaries.mjs docs/source-custody/INCREMENT_14_EVIDENCE_SCOPE_SNAPSHOT_2026-10-31.json > /tmp/jrs-source-claim-preflight.json
