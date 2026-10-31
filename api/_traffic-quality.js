@@ -12,3 +12,22 @@ export function classifyDownloadTraffic(p) {
   if (!ua) return 'user_agent_missing';
   return CRAWLER.test(ua) ? 'declared_crawler' : 'not_identified_as_crawler';
 }
+
+// Use a single source-tag rule for historic metric reconstruction. Internal
+// verification remains recorded separately, never deleted during normal traffic.
+export function isInternalTestSource(src) {
+  const s = String(src || '');
+  return s === 'verify' || s === 'test' || s === 'selftest' || s.startsWith('deploytest');
+}
+
+export function isCurrentDownloadResource(row) {
+  if (!row || !['guide-dl', 'pdf-dl', 'kit-dl'].includes(row.source)) return false;
+  const p = row.payload || {};
+  if (isInternalTestSource(p.src)) return false;
+  if (row.source === 'kit-dl') {
+    return p.file === 'JRS_Rapid_Review_Card.pdf' ||
+      p.file === 'JRS_Investigator_Field_Guide.pdf' ||
+      p.file === 'JRS-Reference-9d4f2a7c.pdf';
+  }
+  return true;
+}
