@@ -9,6 +9,15 @@ test('parse count from full and empty postgrest headers',()=>{
  assert.throws(()=>parseCount(null),/missing_count_header/);
  assert.throws(()=>parseCount('*/unknown'),/invalid_count_header/);
 });
+test('valid fractional UTC cutoffs accepted, invalid calendar dates refused',async()=>{
+ const stamp='2026-10-31T00:00:00.123Z';
+ let called=0;
+ const r=await capture({cutoff:stamp,service:'synthetic-service-key',
+  fetchImpl:async()=>{called++;return header(1)},now:()=>fixed});
+ assert.equal(r.cutoff_utc,stamp);assert.equal(called,GROUPS.length);
+ await assert.rejects(capture({cutoff:'2026-02-30T00:00:00.000Z',service:'synthetic-service-key',
+  fetchImpl:async()=>{throw Error('unexpected request')}}),/invalid_cutoff/);
+});
 test('missing service credential refuses before network',async()=>{
  let hits=0;
  await assert.rejects(capture({cutoff:fixed,service:'',fetchImpl:async()=>{hits++}}),/missing_service_configuration/);
