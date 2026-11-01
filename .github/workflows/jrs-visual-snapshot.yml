@@ -66,6 +66,15 @@ jobs:
           ls -lh /tmp/jrs-visual || true
           if [ "$a" -ne 0 ] || [ "$b" -ne 0 ] || [ "$e" -ne 0 ] || [ "$f" -ne 0 ] || [ "$g" -ne 0 ] || [ "$h" -ne 0 ] || [ "$k" -ne 0 ] || [ "$l" -ne 0 ] || [ "$m" -ne 0 ] || [ "$n" -ne 0 ]; then tail -15 /tmp/chrome1.log /tmp/chrome2.log /tmp/chrome5.log /tmp/chrome6.log /tmp/chrome7.log /tmp/chrome8.log; exit 1; fi
           if [ "$c" -ne 0 ] || [ "$d" -ne 0 ]; then echo "Preview screenshots unavailable, not treated as evidence of the exact PR head"; fi
+      - name: Preserve source-rendered screenshots and measurements
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-local-visual-${{ github.event.pull_request.head.sha }}
+          path: |
+            /tmp/jrs-visual/pr-*.png
+            /tmp/jrs-layout-audit-output.html
+          if-no-files-found: error
+          retention-days: 14
       - name: Record viewports for human design inspection
         run: |
           python3 - <<'PY'
