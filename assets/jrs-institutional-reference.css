@@ -1064,3 +1064,30 @@ body.jrs-institutional.jrs-training-page nav.jrs-sitenav a[aria-current="page"]{
  color:#17364f!important;background:#e7eff4!important;
  border-bottom:3px solid #9b712d!important;font-weight:700!important
 }
+
+/* Simulations: one global site menu, with subject-specific destinations in
+   the page's content sequence instead of a second competing header menu. */
+body.jrs-institutional.jrs-simulation-page .jrs-simulation-related{
+ display:flex!important;flex-wrap:wrap!important;align-items:center!important;
+ gap:8px 10px!important;margin:15px 0 23px!important;padding:13px 0!important;
+ border-top:1px solid #ccdae4!important;border-bottom:1px solid #ccdae4!important
+}
+body.jrs-institutional.jrs-simulation-page .jrs-simulation-related span{
+ font:700 12px/1.5 Inter,system-ui,sans-serif!important;
+ letter-spacing:.04em!important;text-transform:uppercase!important;color:#496278!important;
+ margin-right:6px!important
+}
+body.jrs-institutional.jrs-simulation-page .jrs-simulation-related a{
+ display:inline-flex!important;align-items:center!important;min-height:44px!important;
+ padding:9px 12px!important;border:1px solid #a8c0d1!important;
+ background:#fff!important;color:#173d5b!important;border-radius:3px!important;
+ font:600 14px/1.5 Inter,system-ui,sans-serif!important;text-decoration:none!important
+}
+body.jrs-institutional.jrs-simulation-page .jrs-simulation-related a:hover{text-decoration:underline!important}
+body.jrs-institutional.jrs-simulation-page .jrs-simulation-related a:focus-visible{
+ outline:3px solid #0b679c!important;outline-offset:3px!important
+}
+@media(max-width:760px){
+ body.jrs-institutional.jrs-simulation-page .jrs-simulation-related span{width:100%!important}
+ body.jrs-institutional.jrs-simulation-page .jrs-simulation-related a{flex:1 1 auto!important}
+}
