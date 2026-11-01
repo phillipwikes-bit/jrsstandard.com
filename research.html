@@ -76,10 +76,10 @@ footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:var
   <h2 id="route-title">Explore the evidence by purpose</h2>
   <p class="section-intro">Select the level of detail needed for your review. The summary is intentionally short; original methods, records and limitations remain available.</p>
   <div class="cards">
-   <article class="card"><div class="card-k">01 · Findings and limitations</div><h3>What was measured?</h3><p>Expert detection accuracy on constructed records, differences between reviewers, agreement measures and the limits on interpretation.</p><a href="research-summary.html">Read the research findings and limitations</a></article>
-   <article class="card"><div class="card-k">02 · Study methods</div><h3>How were the findings produced?</h3><p>Study designs, participant and record sets, scoring rules, pre-registered criteria, measurement choices and analytic constraints.</p><a href="methodology.html">Examine the methods and criteria</a></article>
-   <article class="card"><div class="card-k">03 · Evidence and provenance</div><h3>Can the underlying claims be traced?</h3><p>Research chronology, documentation and available aggregate datasets. Restricted participant and source materials are not published here.</p><a href="evidence-ledger.html">Open the public evidence chronology</a></article>
-   <article class="card"><div class="card-k">04 · Open questions</div><h3>What must still be tested?</h3><p>Field performance, individual reviewer dependability, construct validity and consistent application in real organizational workflows.</p><a href="questions.html">Review the open research questions</a></article>
+   <article class="card"><div class="card-k">01 · Findings and limitations</div><h3>What was measured?</h3><p>Expert detection accuracy on constructed records, differences between reviewers, agreement measures and the limits on interpretation.</p><a href="research-summary.html" data-research-category="findings">Read the research findings and limitations</a></article>
+   <article class="card"><div class="card-k">02 · Study methods</div><h3>How were the findings produced?</h3><p>Study designs, participant and record sets, scoring rules, pre-registered criteria, measurement choices and analytic constraints.</p><a href="methodology.html" data-research-category="methods">Examine the methods and criteria</a></article>
+   <article class="card"><div class="card-k">03 · Evidence and provenance</div><h3>Can the underlying claims be traced?</h3><p>Research chronology, documentation and available aggregate datasets. Restricted participant and source materials are not published here.</p><a href="evidence-ledger.html" data-research-category="provenance">Open the public evidence chronology</a></article>
+   <article class="card"><div class="card-k">04 · Open questions</div><h3>What must still be tested?</h3><p>Field performance, individual reviewer dependability, construct validity and consistent application in real organizational workflows.</p><a href="questions.html" data-research-category="open-questions">Review the open research questions</a></article>
   </div>
  </section>
  <section aria-labelledby="evidence-title">
@@ -95,9 +95,9 @@ footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:var
   <h2 id="further-title">Supporting research records</h2>
   <p class="section-intro">The full technical detail is preserved for reviewers who need to examine the complete record.</p>
   <div class="compact-links">
-   <a href="research-register.html">Detailed study register and full research page</a>
-   <a href="datasets.html">Available aggregate datasets and reports</a>
-   <a href="results.html">Participation and challenge results</a>
+   <a href="research-register.html" data-research-category="full-register">Detailed study register and full research page</a>
+   <a href="datasets.html" data-research-category="aggregate-datasets">Available aggregate datasets and reports</a>
+   <a href="results.html" data-research-category="participation-results">Participation and challenge results</a>
    <a href="research-summary.html">Detailed expert detection analysis</a>
   </div>
   <p class="caption">The public study pages do not confer certification, regulatory compliance, access to confidential research datasets or authorization to process records using the Review Engine.</p>
@@ -105,5 +105,27 @@ footer{border-top:1px solid var(--line);padding:20px;text-align:center;color:var
  <p class="caption">For corrections or a methodological inquiry, use the <a href="contact.html">public Contact form</a>. Free practitioner resources remain available without submitting contact details.</p>
 </main>
 <footer>Justification Review Standard™ · Research and limitations · © 2026</footer>
+<script>
+/* Anonymous, allowlisted category-navigation signals. No names, messages,
+   study answers, visitor identifiers, URL queries or form contents. */
+(function(){
+ var allowed=['findings','methods','provenance','open-questions','full-register','aggregate-datasets','participation-results'];
+ document.querySelectorAll('a[data-research-category]').forEach(function(link){
+  link.addEventListener('click',function(){
+   var category=link.getAttribute('data-research-category')||'';
+   if(allowed.indexOf(category)===-1)return;
+   var body=JSON.stringify({origin_url:location.origin+'/research.html',
+    target_url:link.href,
+    meta:{src:'research-hub',label:category}});
+   try {
+    var blob=new Blob([body],{type:'application/json'});
+    if(navigator.sendBeacon && navigator.sendBeacon('/api/telemetry',blob))return;
+    fetch('/api/telemetry',{method:'POST',headers:{'Content-Type':'application/json'},
+     body:body,keepalive:true}).catch(function(){});
+   }catch(e){}
+  });
+ });
+})();
+</script>
 </body>
 </html>
