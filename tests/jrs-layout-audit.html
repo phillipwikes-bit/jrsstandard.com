@@ -81,11 +81,47 @@
      .slice(0,8).map(e=>({element:e.tagName.toLowerCase(),
        selector:e.id?'#'+e.id:(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\\s+/).slice(0,2).join('.'):e.tagName.toLowerCase()),
        right:Math.round(e.getBoundingClientRect().right)})) : [];
+   // Verify that the secondary Standard document index is actually functional,
+   // closed initially at both viewport sizes, and closes after selecting a section.
+   let documentIndexValid=true;
+   if(item.page==='jrsstandard.html'){
+     const sectionToggle=d.getElementById('nav-hamburger');
+     const sectionMenu=d.getElementById('primary-nav-items');
+     const selectConditions=sectionMenu?.querySelector('button[onclick="showSection(\'doccond\')"]');
+     documentIndexValid=!!sectionToggle && !!sectionMenu && !!selectConditions &&
+       sectionToggle.getAttribute('aria-controls')==='primary-nav-items' &&
+       w.getComputedStyle(sectionMenu).display==='none';
+     if(documentIndexValid){
+       sectionToggle.click();
+       documentIndexValid=sectionToggle.getAttribute('aria-expanded')==='true' &&
+         w.getComputedStyle(sectionMenu).display!=='none';
+       selectConditions.click();
+       documentIndexValid=documentIndexValid &&
+         sectionToggle.getAttribute('aria-expanded')==='false' &&
+         w.getComputedStyle(sectionMenu).display==='none' &&
+         !!d.querySelector('#section-doccond.page-section.active');
+     }
+   }
+   // The mobile simulation choices must remain usable after being stacked.
+   let simulationControlsValid=true;
+   if(item.page==='training.html' && narrow){
+     const second=d.getElementById('sim-tab-1');
+     const first=d.getElementById('sim-tab-0');
+     simulationControlsValid=!!second && !!first && !!w.showSimTab;
+     if(simulationControlsValid){
+       second.click();
+       simulationControlsValid=second.getAttribute('aria-pressed')==='true' &&
+         first.getAttribute('aria-pressed')==='false' &&
+         w.getComputedStyle(d.getElementById('sim-panel-1')).display!=='none';
+       first.click();
+       simulationControlsValid=simulationControlsValid && first.getAttribute('aria-pressed')==='true';
+     }
+   }
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
+      controlsValid && documentIndexValid && simulationControlsValid && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,controlsValid,overflowElements,
+     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
