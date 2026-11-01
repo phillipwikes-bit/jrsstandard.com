@@ -11,6 +11,7 @@
   {page:'training.html',width:390,selector:'#training-modules h2',maxTop:990},
   {page:'index.html',width:320,selector:'.jr-action-main',maxTop:890},
   {page:'resources.html',width:320,selector:'.jrs-resource-primary-actions a',maxTop:780},
+  {page:'resources.html',width:1440,selector:'.jrs-resource-primary-actions a',maxTop:520},
   {page:'jrsstandard.html',width:1440,selector:'.page-title',maxTop:560},
   {page:'training.html',width:1440,selector:'.hero-ctas a',maxTop:580},
   {page:'investigator-guides.html',width:390,selector:'main h1',maxTop:720},
@@ -118,6 +119,44 @@
        simulationControlsValid=simulationControlsValid && first.getAttribute('aria-pressed')==='true';
      }
    }
+   // Full resource-finder interaction: progressively enhanced search, format,
+   // responsibility filters, no-match announcement and keyboard-focused reset.
+   let catalogValid=true;
+   let catalogIssue='';
+   if(item.page==='resources.html'){
+     const search=d.getElementById('jrs-resource-search');
+     const query=d.getElementById('jrs-resource-query');
+     const role=d.getElementById('jrs-resource-role');
+     const format=d.getElementById('jrs-resource-format');
+     const clear=d.getElementById('jrs-resource-reset');
+     const count=d.getElementById('jrs-resource-count');
+     const empty=d.getElementById('jrs-resource-empty');
+     const grid=d.getElementById('jrs-resource-results');
+     const items=grid?[...grid.querySelectorAll('.jrs-resource-entry')]:[];
+     const visible=()=>items.filter(e=>!e.hidden).length;
+     const shown=()=>items.filter(e=>!e.hidden && w.getComputedStyle(e).display!=='none').length;
+     catalogValid=!!search && !search.hidden && !!query && !!role &&
+       !!format && !!clear && !!count && !!empty && items.length===16 &&
+       visible()===16 && shown()===16 &&
+       count.getAttribute('aria-live')==='polite';
+     if(catalogValid){
+       query.value='housing';query.dispatchEvent(new w.Event('input',{bubbles:true}));
+       catalogValid=visible()===1 && shown()===1 && /1 of 16/.test(count.textContent);
+       query.value='';query.dispatchEvent(new w.Event('input',{bubbles:true}));
+       format.value='PDF';format.dispatchEvent(new w.Event('change',{bubbles:true}));
+       catalogValid=catalogValid && visible()===6 && shown()===6;
+       role.value='training';role.dispatchEvent(new w.Event('change',{bubbles:true}));
+       catalogValid=catalogValid && visible()===1 && shown()===1;
+       query.value='zz-no-match-zz';query.dispatchEvent(new w.Event('input',{bubbles:true}));
+       catalogValid=catalogValid && visible()===0 && !empty.hidden &&
+         /0 of 16/.test(count.textContent);
+       clear.click();
+       catalogValid=catalogValid && visible()===16 && shown()===16 &&
+         empty.hidden && role.value==='all' && format.value==='all' &&
+         query.value==='' && d.activeElement===query;
+     }
+     if(!catalogValid)catalogIssue='Search/filter/zero-state/keyboard reset or 16-item catalog failed';
+   }
    // Measured visual contrast and publication-metadata readability.
    // A current-page link must not regress to pale gold on a light background.
    const colorRGB=value=>{const m=value.match(/rgba?\(([^)]+)\)/);
@@ -220,10 +259,10 @@
      (w.getComputedStyle(toggle).justifyContent==='flex-end' &&
       /site menu/i.test(siteMenuLabel));
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && documentIndexValid && simulationControlsValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
+      controlsValid && documentIndexValid && simulationControlsValid && catalogValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,catalogValid,catalogIssue,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
