@@ -6,11 +6,11 @@
   var editingIncome = null, editingCost = null;
   var $ = function (id) { return document.getElementById(id); };
   var usd = new Intl.NumberFormat("en-US", { style:"currency", currency:"USD", minimumFractionDigits:2, maximumFractionDigits:2 });
-  var CATEGORIES = ["research","evaluation","business","royalty","rental","interest","dividend","investment","reward","recovery","other"];
-  var COST_CATEGORIES = ["platform","software","equipment","internet","travel","training","professional","supplies","investing","tax","other"];
+  var CATEGORIES = ["research","evaluation","business","royalty","rental","interest","dividend","investment","reward","recovery","employment","pension","retirement","socialsecurity","unemployment","other"];
+  var COST_CATEGORIES = ["platform","software","equipment","internet","travel","training","professional","supplies","investing","tax","homeoffice","advertising","other"];
   var EXPENSE_TYPES = ["expense","taxpayment","capital","other"];
   var SCOPES = ["income","nonincome","proceeds"];
-  var TAX_FORMS = ["None / unknown","1099-NEC","1099-MISC","1099-K","1099-INT","1099-DIV","1099-B","Schedule K-1","W-2","Other form"];
+  var TAX_FORMS = ["None / unknown","1099-NEC","1099-MISC","1099-K","1099-INT","1099-DIV","1099-B","Schedule K-1","W-2","1099-R","SSA-1099","1099-G","Other form"];
   var STATUS = ["paid","pending"];
   var DOCSTATUS = ["not-expected","expected","received","reconciled"];
   var EVIDENCE_STATUS = ["missing","email","bank","both"];
