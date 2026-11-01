@@ -64,8 +64,27 @@
   }
   function restore(storage,record) {
     verify(record);
-    // Call only after explicit user confirmation; unknown keys are never imported.
-    KEYS.forEach(function(k){if(Object.prototype.hasOwnProperty.call(record.values,k))storage.setItem(k,record.values[k]);else storage.removeItem(k);});
+    // All-or-rollback best effort for browser storage. This is not a database transaction.
+    // Call only after explicit owner confirmation and outside the staging lock.
+    if (!storage || typeof storage.getItem!=="function" || typeof storage.setItem!=="function" || typeof storage.removeItem!=="function")throw new Error("Storage interface is unavailable");
+    var previous={};
+    KEYS.forEach(function(k){previous[k]=storage.getItem(k);});
+    var attempted=[];
+    try {
+      KEYS.forEach(function(k){
+        attempted.push(k); // Include a write that mutates and then throws.
+        if(Object.prototype.hasOwnProperty.call(record.values,k))storage.setItem(k,record.values[k]);
+        else storage.removeItem(k);
+      });
+    } catch (err) {
+      var rollbackFailed=false;
+      attempted.reverse().forEach(function(k){
+        try { if(previous[k]===null)storage.removeItem(k);else storage.setItem(k,previous[k]); }
+        catch(_err){rollbackFailed=true;}
+      });
+      if(rollbackFailed)throw new Error("Restore failed and rollback was incomplete; recover from an independent encrypted backup");
+      throw new Error("Restore failed; original browser records were restored");
+    }
   }
   window.IncomeOSVault = Object.freeze({capture:capture,encrypt:encrypt,decrypt:decrypt,restore:restore,verify:verify});
 }());
