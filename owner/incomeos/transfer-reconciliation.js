@@ -42,8 +42,8 @@
     });
     input.bindings.forEach(function(b,i){
       try{
-        exact(b,["postedEventId","bankSourceId","sourceEvidenceId"]);
-        if(!id(b.postedEventId)||typeof b.bankSourceId!=="string"||!id(b.sourceEvidenceId))
+        exact(b,["postedEventId","bankSourceId","journalSourceId","sourceEvidenceId"]);
+        if(!id(b.postedEventId)||typeof b.bankSourceId!=="string"||!id(b.journalSourceId)||!id(b.sourceEvidenceId))
           throw Error("Invalid binding identity");
         if(bindings.has(b.postedEventId)||usedBankIds.has(b.bankSourceId))
           throw Error("Bank or journal posting reused by another source binding");
@@ -81,7 +81,8 @@
           throw Error("Each posting must have its own unambiguous external bank reference");
         var a=banks.get(first.bankSourceId),b=banks.get(last.bankSourceId);
         if(!a||!b)throw Error("Referenced posted bank rows missing");
-        if(first.sourceEvidenceId!==debit.data.evidenceId||last.sourceEvidenceId!==credit.data.evidenceId)
+        if(first.sourceEvidenceId!==debit.data.evidenceId||last.sourceEvidenceId!==credit.data.evidenceId||
+          first.journalSourceId!==debit.data.sourceId||last.journalSourceId!==credit.data.sourceId)
           throw Error("Owner source binding evidence disagrees with journal posting");
         if(a.direction!=="debit"||b.direction!=="credit"||
           a.amountCents!==debit.data.amountCents||b.amountCents!==credit.data.amountCents||
@@ -108,6 +109,7 @@
         issues.push(problem("UNPAIRED_CLASSIFIED_TRANSFER","Source posting "+postId+" lacks a complete reviewed opposing entry"));
       }
     });
+    if(!input.pairs.length)issues.push(problem("NO_PAIR_EVIDENCE","No confirmed internal transfer or card-payment pairs supplied"));
     var total=0,bankTransfer=0,cardPayment=0;
     matched.forEach(function(p){
       total+=p.amountCents;
