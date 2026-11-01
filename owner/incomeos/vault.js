@@ -63,6 +63,7 @@
     return verify(JSON.parse(decoder.decode(data)));
   }
   function restore(storage,record) {
+    if(window.IncomeOSFinancialReadOnly===true)throw new Error("Restore disabled until protected owner storage passes release testing");
     verify(record);
     // All-or-rollback best effort for browser storage. This is not a database transaction.
     // Call only after explicit owner confirmation and outside the staging lock.
