@@ -10,7 +10,7 @@
     button.setAttribute('aria-controls','jrs-global-nav-links');
     button.setAttribute('aria-expanded','false');
     button.setAttribute('aria-label','Open site navigation');
-    button.innerHTML='<span aria-hidden="true">&#9776;</span><span>Menu</span>';
+    button.innerHTML='<span aria-hidden="true">&#9776;</span><span>Site menu</span>';
     nav.id='jrs-global-nav-links';
     nav.setAttribute('data-open','false');
     nav.insertAdjacentElement('beforebegin',button);
@@ -19,7 +19,7 @@
       nav.setAttribute('data-open',String(open));
       button.setAttribute('aria-expanded',String(open));
       button.setAttribute('aria-label',open?'Close site navigation':'Open site navigation');
-      button.innerHTML=open?'<span aria-hidden="true">&#215;</span><span>Close menu</span>':'<span aria-hidden="true">&#9776;</span><span>Menu</span>';
+      button.innerHTML=open?'<span aria-hidden="true">&#215;</span><span>Close site menu</span>':'<span aria-hidden="true">&#9776;</span><span>Menu</span>';
     }
     button.addEventListener('click',function(){
       setOpen(nav.getAttribute('data-open')!=='true');
