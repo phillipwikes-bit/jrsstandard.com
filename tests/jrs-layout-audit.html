@@ -197,9 +197,12 @@
    }
    if(item.page==='research.html'){
      const boundary=d.querySelector('.boundary');
+     const tm=d.querySelector('.wordmark .jrs-trademark');
      editorialValid=editorialValid && !!boundary &&
        /constructed/.test(boundary.textContent) &&
-       /do not establish effectiveness/i.test(boundary.textContent);
+       /do not establish effectiveness/i.test(boundary.textContent) &&
+       !!tm && parseFloat(w.getComputedStyle(tm).fontSize)<=12 &&
+       w.getComputedStyle(tm).verticalAlign==='super';
      if(!editorialValid)editorialIssue='Research limitations unavailable';
    }
    if(item.page==='index.html'){
