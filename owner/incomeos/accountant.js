@@ -203,7 +203,7 @@
     if(!rows.length)place($("ledger-list"),"div","empty","No records in this year/filter. You can enter income or expenses from any source.");
     else rows.forEach(showEntry);
   }
-  function render(){renderSummary();renderList();}
+  function render(){renderSummary();renderList();if(typeof window.dispatchEvent==="function" && typeof window.CustomEvent==="function")window.dispatchEvent(new window.CustomEvent("incomeos:ledger-updated"));}
   function csvSafe(x){var s=String(x??"");if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
   function csv(arr){return arr.map(function(row){return row.map(csvSafe).join(",");}).join("\r\n")+"\r\n";}
   function download(text,name,type){
@@ -356,5 +356,5 @@
     });});
     render();
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){db={version:2,entries:[]};write();render();},totals:totals,importCsv:importCsv,parseCsv:splitCsv};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){db={version:2,entries:[]};write();render();},totals:totals,importCsv:importCsv,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();
