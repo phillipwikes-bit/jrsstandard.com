@@ -8,6 +8,7 @@ on:
       - 'tests/incomeos-intelligence.mjs'
       - 'tests/incomeos-accounting-controls.mjs'
       - 'tests/incomeos-recovery.mjs'
+      - 'tests/incomeos-event-journal.mjs'
       - '.github/workflows/incomeos-private-prototype.yml'
   workflow_dispatch:
 permissions:
@@ -20,4 +21,4 @@ jobs:
         with:
           persist-credentials: false
       - name: Verify source integrity and public-surface isolation
-        run: node tests/incomeos-owner-prototype.mjs && node tests/incomeos-controls.mjs && node tests/incomeos-intelligence.mjs && node tests/incomeos-accounting-controls.mjs && node tests/incomeos-recovery.mjs
+        run: node tests/incomeos-owner-prototype.mjs && node tests/incomeos-controls.mjs && node tests/incomeos-intelligence.mjs && node tests/incomeos-accounting-controls.mjs && node tests/incomeos-recovery.mjs && node tests/incomeos-event-journal.mjs
