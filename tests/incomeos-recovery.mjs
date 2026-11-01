@@ -23,18 +23,21 @@ assert.equal(rec.duplicateCandidates([expense("one","2026-10-01",25,"a"),expense
 const refund={id:"refund1",kind:"income",scope:"nonincome",status:"paid",date:"2026-10-05",grossUsd:10,refundOf:"one"};
 const report={matches:[{entryId:"one",state:"OWNER_REVIEWED_BANK_MATCH"},{entryId:"refund1",state:"OWNER_REVIEWED_BANK_MATCH"}]};
 result=rec.analyze([rows[0],refund],report,[]);
-assert.equal(result.refundReviews[0].state,"OWNER_REVIEWED_BANK_CREDIT");
+assert.equal(result.refundReviews[0].state,"OWNER_REVIEWED_BOTH_BANK_POSTINGS");
 assert.equal(result.refundReviews[0].countsAsNewEarnings,false);
-assert.equal(result.refundReviews[0].confirmedRecoveredUsd,10);
+assert.equal(result.refundReviews[0].ownerReviewedRecoveredUsd,10);
+result=rec.analyze([rows[0],refund],{matches:[{entryId:"refund1",state:"OWNER_REVIEWED_BANK_MATCH"}]},[]);
+assert.equal(result.refundReviews[0].state,"ORIGINAL_CHARGE_NOT_RECONCILED");
+assert.equal(result.refundReviews[0].ownerReviewedRecoveredUsd,0);
 result=rec.analyze([rows[0],refund],{matches:[]},[]);
 assert.equal(result.refundReviews[0].state,"OWNER_REFUND_ENTRY_UNCONFIRMED");
-assert.equal(result.refundReviews[0].confirmedRecoveredUsd,0);
+assert.equal(result.refundReviews[0].ownerReviewedRecoveredUsd,0);
 result=rec.analyze([rows[0],{...refund,grossUsd:30}],report,[]);
 assert.equal(result.refundReviews[0].state,"AMOUNT_OR_DATE_CONFLICT");
-assert.equal(result.refundReviews[0].confirmedRecoveredUsd,0);
+assert.equal(result.refundReviews[0].ownerReviewedRecoveredUsd,0);
 result=rec.analyze([rows[0],{...refund,refundOf:"not-found"}],report,[]);
 assert.equal(result.refundReviews[0].state,"UNLINKED_NONINCOME_RECEIPT");
-assert.equal(result.refundReviews[0].confirmedRecoveredUsd,0);
+assert.equal(result.refundReviews[0].ownerReviewedRecoveredUsd,0);
 function bill(month,amountUsd,verified=true){return {provider:"Example ISP",service:"Home internet same plan",month,amountUsd,confirmedEquivalentService:verified,sourceStatus:"owner-reviewed-bill-and-bank"};}
 const billRows=[bill("2026-07",100),bill("2026-08",80),bill("2026-09",80)];
 const savings=rec.savingReview(billRows);
