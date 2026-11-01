@@ -30,8 +30,9 @@
     if(e.kind==="income")return CATEGORIES.includes(e.category) && num(e.grossUsd)>0 && num(e.grossUsd)<=1e10 && num(e.feesUsd)>=0 && num(e.feesUsd)<=num(e.grossUsd) && STATUS.includes(e.status) && SCOPES.includes(e.scope);
     return EXPENSE_TYPES.includes(e.type) && COST_CATEGORIES.includes(e.category) && num(e.amountUsd)>0 && num(e.amountUsd)<=1e10 && (e.businessUse===null || (num(e.businessUse)>=0 && num(e.businessUse)<=100));
   }
-  function write(){try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){alert("IncomeOS could not save locally. Available browser storage may be full.");return false;}}
+  function write(){if(window.IncomeOSFinancialReadOnly===true)return false;try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){alert("IncomeOS could not save locally. Available browser storage may be full.");return false;}}
   function migrateLegacy(){
+    if(window.IncomeOSFinancialReadOnly===true)return;
     try {
       if(localStorage.getItem(KEY)!==null)return;
       var raw=JSON.parse(localStorage.getItem(LEGACY_KEY)||"{}");
@@ -84,6 +85,7 @@
   }
   function paidTotal(){return totals(db.entries).gross;}
   function addOrUpdate(e,editId){
+    if(window.IncomeOSFinancialReadOnly===true)throw new Error("Financial entry is disabled in unapproved staging");
     var found=editId?db.entries.findIndex(function(x){return x.id===editId;}):-1;
     if(found>=0)db.entries[found]=Object.assign({},e,{id:editId,createdAt:db.entries[found].createdAt,updatedAt:new Date().toISOString()});
     else db.entries.push(Object.assign({},e,{id:uid(),createdAt:new Date().toISOString()}));
@@ -122,6 +124,7 @@
   }
   function setValue(id,value){if($(id))$(id).value=value==null?"":String(value);}
   function startEdit(e){
+    if(window.IncomeOSFinancialReadOnly===true)return;
     var isIncome=e.kind==="income";var p=isIncome?"receipt":"cost";
     if(isIncome){
       editingIncome=e.id;editingCost=null;
@@ -187,6 +190,7 @@
     var buttons=place(right,"div","entry-buttons"),ed=place(buttons,"button","","Edit"),del=place(buttons,"button","","Remove");
     ed.type="button";del.type="button";ed.addEventListener("click",function(){startEdit(e);});
     del.addEventListener("click",function(){
+      if(window.IncomeOSFinancialReadOnly===true)return;
       if(!confirm("Delete this local record? This cannot be undone without a backup."))return;
       db.entries=db.entries.filter(function(x){return x.id!==e.id;});write();render();
     });
@@ -272,6 +276,7 @@
     return h;
   }
   function importCsv(text){
+    if(window.IncomeOSFinancialReadOnly===true)throw new Error("Financial import is disabled in unapproved staging");
     var rows=splitCsv(text);if(rows.length<2)throw new Error("No data rows found");
     if(rows.length>5001)throw new Error("Import limit is 5,000 rows per file");
     var h=findImportFields(rows[0]),idx=function(k){return h.indexOf(k);};
@@ -309,6 +314,7 @@
     return {accepted:accepted.length,skipped:skipped,rejected:rejected};
   }
   function importJson(text){
+    if(window.IncomeOSFinancialReadOnly===true)throw new Error("Financial restoration is disabled in unapproved staging");
     var parsed=JSON.parse(text);
     if(!parsed||parsed.format!=="incomeos-accountant"||!Array.isArray(parsed.entries)||parsed.entries.length>15000)throw new Error("Not a supported IncomeOS accountant backup");
     var entries=parsed.entries.filter(validate);
@@ -356,5 +362,5 @@
     });});
     render();
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){db={version:2,entries:[]};write();render();},totals:totals,importCsv:importCsv,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){db={version:2,entries:[]};try{if(window.IncomeOSFinancialReadOnly===true)localStorage.removeItem(KEY);else write();localStorage.removeItem(LEGACY_KEY);}catch(_e){alert("Some locally stored accounting records could not be erased.");}render();},totals:totals,importCsv:importCsv,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();
