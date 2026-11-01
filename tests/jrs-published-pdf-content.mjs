@@ -54,6 +54,28 @@ const stdText=execFileSync('pdftotext',['-layout',join(root,'JRS-Standard.pdf'),
 for(const term of ['Reconstructability','Basis Identification','Chronology',
  'Decision-Process Traceability','Evidentiary Sufficiency'])
  assert.ok(new RegExp(term,'i').test(stdText),'v2.0 Standard missing '+term);
+const byName=name=>results.find(d=>d.file===name);
+assert.equal(byName('JRS-Standard.pdf').pages,7,'Standard PDF changed page count; review catalog');
+assert.equal(byName('JRS_Rapid_Review_Card.pdf').pages,2,
+ 'Rapid Review Card PDF is two pages, not one');
+assert.equal(byName('JRS-Reference-9d4f2a7c.pdf').pages,19,
+ 'Reviewer Reference PDF is labeled 19 pages');
+assert.equal(byName('JRS_Research_Paper.pdf').pages,10,
+ 'Working Research Paper is identified as a 10-page document');
+for(const name of guidePaths)assert.equal(byName(name).pages,9,
+ 'Investigator field guide page count differs: '+name);
+for(const html of ['resources.html','training.html','jrsstandard.html']){
+ assert.ok(/Two-page|two-page/.test(readFileSync(join(root,html),'utf8')),
+  html+' must describe the two-page Rapid Review Card accurately');
+}
+const trainingCopy=readFileSync(join(root,'training.html'),'utf8');
+assert.ok(trainingCopy.includes('Reviewer Reference (Version 1.0, May 2026)')&&
+ trainingCopy.includes('Standard PDF is Version 2.0'),
+ 'training must explicitly separate reviewer-reference and Standard PDF editions');
+const summaryCopy=readFileSync(join(root,'research-summary.html'),'utf8');
+assert.ok(summaryCopy.includes('JRS Working Research Paper, v1.0'),
+ 'working paper must be identified as a versioned v1.0 document');
+
 const oldDraft=execFileSync('pdftotext',['-layout',join(root,'JRS_Reliability_Accuracy.pdf'),'-'],
  {encoding:'utf8',maxBuffer:20000000});
 assert.match(oldDraft,/accuracy.*(?:preliminary|ongoing)/i,
