@@ -5,6 +5,7 @@
   // This module never calls recruiters, submits forms, or changes financial records.
   var STAGES=["APPLIED","INVITED","COMPLETED","ACCEPTED","PAID","DECLINED","INELIGIBLE"];
   var ID=/^[a-z0-9][a-z0-9._:-]{3,119}$/i;
+  function isId(x){return typeof x==="string"&&ID.test(x);}
   function validDate(s){
     if(typeof s!=="string"||!/^20\d\d-\d\d-\d\d$/.test(s))return false;
     var t=Date.parse(s+"T00:00:00Z");return Number.isFinite(t)&&new Date(t).toISOString().slice(0,10)===s;
@@ -15,11 +16,11 @@
     return input.map(function(e,i){
       if(!e||typeof e!=="object"||Array.isArray(e))throw Error("Invalid stage record "+(i+1));
       if(Object.keys(e).some(function(k){return !["id","studyId","stage","date","evidenceId","minutes","bankEventId","payoutDocumentId"].includes(k);}))throw Error("Unexpected research record fields");
-      if(!ID.test(e.id)||!ID.test(e.studyId)||!STAGES.includes(e.stage)||!validDate(e.date)||!ID.test(e.evidenceId))throw Error("Invalid research stage identity");
+      if(!isId(e.id)||!isId(e.studyId)||!STAGES.includes(e.stage)||!validDate(e.date)||!isId(e.evidenceId))throw Error("Invalid research stage identity");
       if(ids.has(e.id))throw Error("Duplicate research stage identity");ids.add(e.id);
       var minutes=e.minutes==null?null:Number(e.minutes);
       if(minutes!==null&&(!Number.isInteger(minutes)||minutes<0||minutes>10080))throw Error("Invalid reported effort");
-      if(e.stage==="PAID"&&(!ID.test(e.bankEventId)||!ID.test(e.payoutDocumentId)))throw Error("Bank payout requires source and matching payment evidence IDs");
+      if(e.stage==="PAID"&&(!isId(e.bankEventId)||!isId(e.payoutDocumentId)))throw Error("Bank payout requires source and matching payment evidence IDs");
       if(e.stage!=="PAID"&&(e.bankEventId!==undefined||e.payoutDocumentId!==undefined))throw Error("Bank source references are allowed only for payout stage");
       return {id:e.id,studyId:e.studyId,stage:e.stage,date:e.date,evidenceId:e.evidenceId,minutes:minutes,
         bankEventId:e.stage==="PAID"?e.bankEventId:null,payoutDocumentId:e.stage==="PAID"?e.payoutDocumentId:null};
