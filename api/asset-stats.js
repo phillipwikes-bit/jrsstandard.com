@@ -545,6 +545,23 @@ export default async function handler(req){
       .map(function(k){ return { key: k, count: m[k] }; });
   }
 
+  // Research hub: aggregate click events by declared professional research
+  // category. These are link activations, NOT unique visitors or study reads.
+  // Existing telemetry stores paths without query strings and no form data.
+  const RESEARCH_CATEGORIES = ['findings','methods','provenance','open-questions',
+    'full-register','aggregate-datasets','participation-results'];
+  const researchCategoryCounts = Object.fromEntries(RESEARCH_CATEGORIES.map(k=>[k,0]));
+  let researchCategoryToday = 0;
+  let researchCategoryTotal = 0;
+  clickRows.forEach(function(e){
+    const p=e.payload||{};
+    if(p.src!=='research-hub' || p.origin!=='/research.html')return;
+    if(!Object.hasOwn(researchCategoryCounts,p.label))return;
+    researchCategoryCounts[p.label]++;
+    researchCategoryTotal++;
+    if(isToday(e))researchCategoryToday++;
+  });
+
   return json({
     generated_at: new Date().toISOString(),
     note: 'Aggregate counts only. No name, email, organization or key is exposed by this endpoint. '
@@ -586,6 +603,17 @@ export default async function handler(req){
           + 'deploy-check tags are excluded, and a browser prefetch is not recorded as intent.'
     },
 
+    research_navigation: {
+      total: researchCategoryTotal,
+      today: researchCategoryToday,
+      by_category: RESEARCH_CATEGORIES.map(function(key){
+        return {key,clicks:researchCategoryCounts[key]};
+      }),
+      counting_basis: 'Allowlisted clicks from the simplified research hub, since the new '
+        +'page was deployed. Not page views, unique visitors, contact submissions '
+        +'or study participation. Synthetic deployment checks and declared crawlers '
+        +'are excluded. Zero can also mean telemetry is blocked or absent.'
+    },
     link_clicks: {
       total: clickRows.length,
       today: clickRows.filter(isToday).length,
