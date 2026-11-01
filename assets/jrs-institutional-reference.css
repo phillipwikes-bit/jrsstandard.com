@@ -801,3 +801,81 @@ body.jrs-institutional :where(.meta-line,.jrs-edition-note){
 body.jrs-institutional .jrs-standard-page .page-eyebrow{
   font-size:12px!important;
 }
+
+/* JRS A-target editorial hierarchy correction, 2026-11-01.
+   Restrained typography and document-first hierarchy; no method/content deletion. */
+@media(max-width:760px){
+ body.jrs-institutional.jrs-nav-ready .jrs-global-nav-toggle{
+  justify-content:flex-end!important;gap:9px!important;
+  letter-spacing:0!important;padding:10px 20px!important
+ }
+ body.jrs-institutional.jrs-nav-ready .jrs-global-nav-toggle span:first-child{
+  font-size:19px!important;line-height:1!important
+ }
+ body.jrs-institutional.jrs-home .jr-hero{padding:24px 0 27px!important}
+ body.jrs-institutional.jrs-home .jr-hero .jr-intro{margin-bottom:12px!important}
+ body.jrs-institutional.jrs-home .jr-hero .jr-hero-note{
+  margin:0!important;font-size:14px!important;line-height:1.58!important
+ }
+ body.jrs-institutional.jrs-training-page .hero-section{padding:20px 0 22px!important}
+ body.jrs-institutional.jrs-training-page .jrs-training-context{margin:12px 0 0!important}
+ body.jrs-institutional.jrs-training-page .hero-ctas{margin-bottom:7px!important}
+ body.jrs-institutional.jrs-standard-page .jrs-standard-entry-actions{margin:12px 0 15px!important}
+ body.jrs-institutional.jrs-standard-page .jrs-publication-notes{margin:13px 0 17px!important}
+}
+body.jrs-institutional :where(
+ .jr-overline,.page-eyebrow,.core-principle-label,.hero-eyebrow,
+ .eyebrow,.jr-fact-row dt,.hero-tag,.card-k,.section-label
+){
+ font-size:12px!important;line-height:1.52!important;
+ letter-spacing:.055em!important
+}
+body.jrs-institutional :where(.meta-line,.jrs-edition-note){
+ font-size:14px!important;line-height:1.55!important;letter-spacing:.012em!important
+}
+body.jrs-institutional :where(.jr-hero-note,.jr-fact-row dd,.access-note){
+ line-height:1.6!important
+}
+body.jrs-institutional.jrs-standard-page .page-subtitle{
+ font-size:16px!important;line-height:1.58!important;
+ margin:0 0 14px!important
+}
+body.jrs-institutional.jrs-standard-page .core-principle-text{
+ font-size:15px!important;line-height:1.67!important
+}
+body.jrs-institutional.jrs-standard-page .jrs-standard-context{
+ margin:12px 0 24px!important;border:1px solid #cbd9e3!important;
+ border-radius:3px!important;background:#f0f5f7!important;
+ max-width:950px!important
+}
+body.jrs-institutional.jrs-standard-page .jrs-standard-context summary{
+ cursor:pointer!important;min-height:46px!important;
+ display:list-item!important;padding:12px 18px!important;
+ font:700 14px/1.5 Inter,system-ui,sans-serif!important;
+ color:#173d5b!important
+}
+body.jrs-institutional.jrs-standard-page .jrs-standard-context summary:focus-visible{
+ outline:3px solid #0b679c!important;outline-offset:2px!important
+}
+body.jrs-institutional.jrs-standard-page .jrs-standard-context-body{
+ padding:0 18px 17px!important;background:#fff!important
+}
+body.jrs-institutional.jrs-standard-page .jrs-standard-context-body p{
+ font-size:15px!important;line-height:1.66!important
+}
+body.jrs-institutional.jrs-standard-page .jrs-standard-context-body .page-subtitle{
+ margin:0 0 14px!important;padding-top:16px!important;font-size:15px!important
+}
+body.jrs-institutional.jrs-training-page .jrs-training-context .hero-tags{
+ display:flex!important;gap:7px!important;flex-wrap:wrap!important;
+ padding:0 16px 16px!important;margin:0!important
+}
+body.jrs-institutional.jrs-training-page .jrs-training-context .hero-tag{
+ font-size:12px!important;padding:5px 9px!important;letter-spacing:.01em!important
+}
+body.jrs-institutional.jrs-resource-page .hero .sub{
+ font-size:16px!important;line-height:1.58!important
+}
+body.jrs-institutional.jrs-research-page .lead{
+ font-size:17px!important;line-height:1.6!important
+}
