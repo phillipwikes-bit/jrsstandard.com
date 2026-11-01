@@ -15,6 +15,9 @@
 <script defer src="./accountant.js"></script>
 <script defer src="./accounting-controls.js"></script>
 <script defer src="./statement-close.js"></script>
+<script defer src="./financial-event-journal.js"></script>
+<script defer src="./transfer-reconciliation.js"></script>
+<script defer src="./transfer-review-ui.js"></script>
 <script defer src="./capital-readiness.js"></script>
 <script defer src="./capital-review-ui.js"></script>
 <script defer src="./accounting-controls-ui.js"></script>
@@ -114,6 +117,12 @@
       <p class="muted">Identify possible duplicate merchant charges and check refunds or returned principal separately from new earnings. Similar dates and amounts are not proof of erroneous billing. The system cannot determine credit-card disputes or recover funds from these local records alone.</p>
       <p class="muted" id="recovery-review-status" role="status" aria-live="polite">Recovery diagnostics pending.</p>
       <div id="recovery-review-list"></div>
+    </div>
+    <div class="panel" id="transfer-review-panel">
+      <div class="panelrow"><h3>Bank transfer and card-payment controls</h3><button type="button" class="smallbtn" id="transfer-review-refresh">Review transfer evidence</button></div>
+      <p class="muted">Moving funds between owned accounts is not income. Paying a credit-card balance is not a second purchase expense. Transfers may be excluded from those financial totals only after both posted sides have traceable source references and reviewed classifications.</p>
+      <p id="transfer-review-status" class="muted" role="status" aria-live="polite">Transfer review not yet completed.</p>
+      <div id="transfer-review-results" class="muted"></div>
     </div>
     <div class="panel" id="spend-intelligence-panel">
       <div class="panelrow"><h3>Spending intelligence and cash-flow planning</h3><button type="button" class="smallbtn" id="spend-refresh">Analyze records</button></div>
