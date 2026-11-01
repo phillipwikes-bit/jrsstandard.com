@@ -13,7 +13,7 @@
   var TAX_FORMS = ["None / unknown","1099-NEC","1099-MISC","1099-K","1099-INT","1099-DIV","1099-B","Schedule K-1","W-2","1099-R","SSA-1099","1099-G","Other form"];
   var STATUS = ["paid","pending"];
   var DOCSTATUS = ["not-expected","expected","received","reconciled"];
-  var EVIDENCE_STATUS = ["missing","email","bank","both"];
+  var EVIDENCE_STATUS = ["missing","email","bank","both-unverified","both"];
   function node(tag, cls, text) { var e = document.createElement(tag); if(cls)e.className=cls; if(text!==undefined)e.textContent=String(text); return e; }
   function place(el,tag,cls,text){var n=node(tag,cls,text);el.appendChild(n);return n;}
   function limit(x,n){return String(x==null?"":x).trim().slice(0,n);}
@@ -296,7 +296,7 @@
         var rawBusiness=get("business_use_pct").trim(),bus=rawBusiness===""?null:num(rawBusiness);if(bus!==null&&(!Number.isFinite(bus)||bus<0||bus>100)){rejected++;continue;}
         e={kind:"outflow",type:kind==="expense"||kind==="outflow"?"expense":kind,label:label,payer:limit(get("vendor"),100),date:date,
         category:COST_CATEGORIES.includes(category)?category:"other",amountUsd:round(amount),businessUse:bus,
-        evidenceStatus:"missing",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv"};
+        evidenceStatus:EVIDENCE_STATUS.includes(get("evidence_status").toLowerCase())?get("evidence_status").toLowerCase():"missing",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv"};
       }else{rejected++;continue;}
       if(!validate(e)){rejected++;continue;}
       var evidenceKey=fingerprint(e);
