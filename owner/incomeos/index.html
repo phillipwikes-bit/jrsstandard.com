@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="theme-color" content="#11292b">
 <meta name="description" content="Private IncomeOS prototype. Verified individual research leads, alternative-asset research, earnings tracking and compounding scenarios.">
 <title>IncomeOS | Private Opportunity Command Center</title>
@@ -12,7 +13,11 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="stylesheet" href="./incomeos.css">
 <script defer src="./accountant.js"></script>
+<script defer src="./decision-engine.js"></script>
+<script defer src="./vault.js"></script>
 <script defer src="./incomeos.js"></script>
+<script defer src="./decision-ui.js"></script>
+<script defer src="./vault-ui.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to dashboard</a>
@@ -146,6 +151,49 @@
       <p class="muted">Monthly contributions occur at month end. Return is an assumption, not an expected or guaranteed yield. Positive projections omit fees and taxes; negative returns and asset write-downs are possible.</p>
     </div>
     <div class="panel" style="margin-top:14px"><h3>Recorded received income, all years</h3><p><strong id="cash-assessed">$0.00</strong> in manually recorded, received potential income. This is not an investable balance; deduct fees, costs, taxes, withdrawals, and reserves before making any allocation.</p></div>
+    <div class="panel" id="decision-review-panel">
+      <h3>Owner investment review gate</h3>
+      <p class="muted">Assess source freshness and essential transaction evidence before even considering an investment. Every item starts on HOLD. Completing this checklist never authorizes a purchase.</p>
+      <form id="decision-review-form">
+        <label for="decision-asset">Candidate from dated public research</label>
+        <select id="decision-asset" aria-describedby="decision-feed-note"><option value="">Loading research snapshot</option></select>
+        <p id="decision-feed-note" class="muted">A listing is not a verified available offer. Source evidence expires after seven days for this review.</p>
+        <div class="formgrid">
+          <div><label for="decision-amount">Proposed capital ($)</label><input id="decision-amount" type="number" min="0" step="0.01" placeholder="No allocation set" inputmode="decimal"></div>
+          <div><label for="decision-capacity">Independently verified uncommitted capacity ($)</label><input id="decision-capacity" type="number" min="0" step="0.01" placeholder="Unknown" inputmode="decimal"></div>
+        </div>
+        <fieldset class="decision-gates"><legend>Evidence verified independently</legend>
+          <label><input type="checkbox" name="specificOffer"> Individual live offer and availability verified</label>
+          <label><input type="checkbox" name="eligibility"> Owner eligibility and restrictions verified</label>
+          <label><input type="checkbox" name="counterparty"> Counterparty identity, legal rights and terms reviewed</label>
+          <label><input type="checkbox" name="cashflow"> Cash-flow documentation and assumptions reviewed</label>
+          <label><input type="checkbox" name="fees"> Acquisition costs, ongoing fees and tax considerations reviewed</label>
+          <label><input type="checkbox" name="liquidity"> Loss exposure and exit restrictions reviewed</label>
+          <label><input type="checkbox" name="reserve"> Investable capacity excludes reserves and outstanding obligations</label>
+          <label><input type="checkbox" name="ownerDecision"> I approve this candidate for further manual review only</label>
+        </fieldset>
+        <button type="submit" class="mainbtn">Assess evidence and decision readiness</button>
+      </form>
+      <div class="review-result" id="decision-review-result" role="status" aria-live="polite" hidden></div>
+    </div>
+    <div class="panel" id="net-scenario-panel">
+      <h3>Fees, tax drag and purchasing power</h3>
+      <p class="muted">A separate scenario incorporating annual fees, assumed tax drag on positive gains, and inflation. This is not a return forecast.</p>
+      <form id="net-scenario-form">
+        <div class="formgrid">
+          <div><label for="net-initial">Initial capital ($)</label><input id="net-initial" type="number" value="0" min="0" step="0.01"></div>
+          <div><label for="net-monthly">Monthly contributions ($)</label><input id="net-monthly" type="number" value="0" min="0" step="0.01"></div>
+          <div><label for="net-years">Whole years</label><input id="net-years" type="number" value="10" min="1" max="40" step="1"></div>
+          <div><label for="net-return">Hypothetical annual total return (%)</label><input id="net-return" type="number" value="0" min="-99" max="100" step="0.1"></div>
+          <div><label for="net-fees">Assumed annual fees (%)</label><input id="net-fees" type="number" value="0" min="0" max="40" step="0.1"></div>
+          <div><label for="net-tax">Assumed tax drag on positive gains (%)</label><input id="net-tax" type="number" value="0" min="0" max="100" step="0.1"></div>
+          <div><label for="net-inflation">Annual inflation assumption (%)</label><input id="net-inflation" type="number" value="0" min="-20" max="100" step="0.1"></div>
+        </div>
+        <button type="submit" class="mainbtn">Calculate net scenario</button>
+      </form>
+      <p id="net-scenario-result" role="status" aria-live="polite" hidden></p>
+      <p class="muted">Annual percentage changes are converted to effective monthly factors. Contributions occur at month-end. Actual tax rules may differ; a modeled tax drag is not an accountant-approved tax estimate.</p>
+    </div>
   </section>
   <section id="view-about" class="view" aria-labelledby="about-heading" hidden>
     <div class="sectionintro"><div><span class="kicker">05 / CONTROLS</span><h2 id="about-heading">Owner controls</h2><p>This is a single-user prototype, not a bank, broker, marketplace, or trading service.</p></div></div>
@@ -156,6 +204,18 @@
       <p class="muted">This page does not subscribe to browser push and does not automatically synchronize with ChatGPT task results yet.</p>
     </div>
     <div class="panel" style="margin-top:14px"><h3>Security and data boundaries</h3><p>The preview branch is intended for Vercel-authenticated access. Hidden URLs and noindex do not make a page private. Do not merge this route into the publicly accessible JRS domain until server-side owner authentication, authorization tests and path-specific no-store controls are in place.</p><p>Local study status, bookmarks and ledger entries remain on this device only. Clearing browser storage removes them. Do not input account credentials.</p><button id="clear-local" class="destructive" type="button">Clear local IncomeOS data</button></div>
+    <div class="panel" id="vault-panel">
+      <h3>Encrypted local backup and recovery</h3>
+      <p class="muted">Download a password-encrypted backup of IncomeOS browser records, or restore one only after explicit confirmation. Encryption protects the exported file. <strong>Your active records in browser localStorage are not encrypted.</strong> This is not a substitute for private account access or server-side storage controls.</p>
+      <label for="vault-passphrase">Backup passphrase, at least 16 characters</label>
+      <input id="vault-passphrase" type="password" minlength="16" maxlength="1024" autocomplete="new-password" placeholder="Passphrase is never saved" aria-describedby="vault-warning">
+      <p id="vault-warning" class="muted">Keep the passphrase separately. Lost passphrases cannot be recovered. Do not use account passwords.</p>
+      <div class="formbuttons"><button type="button" class="mainbtn" id="vault-export">Download encrypted backup</button></div>
+      <label for="vault-file">Select encrypted IncomeOS backup for recovery</label>
+      <input id="vault-file" type="file" accept=".json,application/json">
+      <div class="formbuttons"><button type="button" class="smallbtn" id="vault-import">Decrypt and review restore</button></div>
+      <p id="vault-status" role="status" aria-live="polite" class="muted"></p>
+    </div>
     <div class="panel" style="margin-top:14px"><h3>Scope</h3><p>Single-owner research and creative-income discovery, direct recruiter applications, manually verified payments, and realistic investment underwriting. No selling, client acquisition, commercial subscriptions, background financial transactions or performance guarantees.</p><p class="muted">IncomeOS remains entirely separate from JRS evaluation tooling and protected records.</p></div>
   </section>
 </main>
