@@ -910,11 +910,11 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
         </div>
         <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">The implementation sequence supports phased rollout within existing workflows. Each step can be applied independently. Organizations may begin with the forms and refer back to reviewer materials as questions arise, or proceed through the full sequence before deployment.</p>
         <div class="sampling-list">
-          <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with KIT-F1. Establish it as the baseline reference for the five JRS review conditions.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Complete Reviewer Onboarding</div><div class="sampling-desc">Work through KIT-B1 with new and returning reviewers. Establish risk-level routing expectations before the first review cycle.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">Apply the Pre-Finalization Worksheet</div><div class="sampling-desc">Use KIT-A1 for all records in scope. Begin with elevated-risk categories if phased rollout is required.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Establish Escalation Routing</div><div class="sampling-desc">Identify secondary reviewer contacts. Distribute KIT-A2 and KIT-E1A to routing decision-makers. Document any local variance from the reference routing conditions.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">5</div><div class="sampling-body"><div class="sampling-title">Complete AI Documentation Integration</div><div class="sampling-desc">Apply KIT-C1 to all AI-assisted records. Establish human confirmation as a required step before system entry.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with the publicly available Rapid Review Card (KIT-F1). Use it as a concise reference for the five review conditions.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Complete Reviewer Onboarding</div><div class="sampling-desc">Complete the free reviewer training modules and consult the current Reviewer Reference PDF. Establish local escalation expectations before the first review cycle. The historical KIT-B1 PDF is not publicly distributed.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">Apply the Pre-Finalization Worksheet</div><div class="sampling-desc">Use the pre-finalization worksheet on this training page, or an approved equivalent in the organization's existing workflow. The historical KIT-A1 PDF is not a current public download.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Establish Escalation Routing</div><div class="sampling-desc">Identify secondary reviewer contacts and document local escalation triggers using current review references. KIT-A2 and KIT-E1A are historical identifiers, not currently distributed standalone PDFs.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">5</div><div class="sampling-body"><div class="sampling-title">Complete AI Documentation Integration</div><div class="sampling-desc">Apply the five JRS review conditions and public AI-assisted documentation guidance. Require a responsible human to check source support before finalization; the historical KIT-C1 PDF is retired.</div></div></div>
           <div class="sampling-item"><div class="sampling-num">6</div><div class="sampling-body"><div class="sampling-title">Initiate Periodic Sampling</div><div class="sampling-desc">Establish a review sampling schedule. See the Periodic Review Sampling reference section below for sampling categories and scope guidance.</div></div></div>
           <div class="sampling-item"><div class="sampling-num">7</div><div class="sampling-body"><div class="sampling-title">Document Variances</div><div class="sampling-desc">Where local workflow differs from a reference condition, document the basis. Variance documentation supports later review and reduces audit exposure.</div></div></div>
         </div>
@@ -2812,7 +2812,9 @@ var ROLE_PATHS = {
     simTab: 0, simLabel: 'Document Reconstruction Review',
     modules: ['03: Secondary Review and Escalation', '05: Investigation Review', '02: Common Documentation Conditions'],
     kits: [
-      {code:'KIT-INV', name:'Investigator Guide (Combined Overview)', href:'JRS_Investigator_Field_Guide.pdf'},
+      {code:'001-INV-E', name:'Employment / EEO Field Guide (v1.1)', edition:'employment'},
+      {code:'001-INV-H', name:'Fair Housing Field Guide (v1.1)', edition:'fairhousing'},
+      {code:'001-INV-INT', name:'International Field Guide (v1.1)', edition:'international'},
       {code:'REF', name:'JRS Reviewer Reference', href:'JRS-Reference-9d4f2a7c.pdf'},
       {code:'KIT-F1', name:'Rapid Review Card', href:'JRS_Rapid_Review_Card.pdf'}
     ]
@@ -2883,7 +2885,7 @@ function selectRole(key) {
   data.kits.forEach(function(k){
     col3 += '<div style="margin-bottom:10px">'
       + '<div style="font-family:\'JetBrains Mono\',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:2px">'+k.code+'</div>'
-      + '<a href="/api/dl?f='+encodeURIComponent(k.href)+'&src=training-role" style="font-size:12.5px;color:var(--text);text-decoration:none;display:block">'+k.name+' <span style="color:var(--accent)">&#8595;</span></a>'
+      + '<a href="'+(k.edition?'/api/dl?e='+encodeURIComponent(k.edition):'/api/dl?f='+encodeURIComponent(k.href))+'&src=training-role" style="font-size:12.5px;color:var(--text);text-decoration:none;display:block">'+k.name+' <span style="color:var(--accent)">&#8595;</span></a>'
       + '</div>';
   });
   col3 += '</div>';
