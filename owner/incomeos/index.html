@@ -14,6 +14,9 @@
 <link rel="stylesheet" href="./incomeos.css">
 <script defer src="./accountant.js"></script>
 <script defer src="./accounting-controls.js"></script>
+<script defer src="./statement-close.js"></script>
+<script defer src="./capital-readiness.js"></script>
+<script defer src="./capital-review-ui.js"></script>
 <script defer src="./accounting-controls-ui.js"></script>
 <script defer src="./recovery-engine.js"></script>
 <script defer src="./recovery-ui.js"></script>
@@ -234,6 +237,12 @@
       <p class="muted">Monthly contributions occur at month end. Return is an assumption, not an expected or guaranteed yield. Positive projections omit fees and taxes; negative returns and asset write-downs are possible.</p>
     </div>
     <div class="panel" style="margin-top:14px"><h3>Recorded received income, all years</h3><p><strong id="cash-assessed">$0.00</strong> in manually recorded, received potential income. This is not an investable balance; deduct fees, costs, taxes, withdrawals, and reserves before making any allocation.</p></div>
+    <div class="panel" id="capital-readiness-panel">
+      <div class="panelrow"><h3>Capital readiness and investment evidence</h3><button type="button" class="smallbtn" id="capital-readiness-refresh">Review controls</button></div>
+      <p class="muted">Cash must be reconciled to covered financial statements, reduced for restrictions and unsettled debits, and reviewed against near-term obligations and emergency and tax reserves before a proposed allocation can proceed to owner review. Credit limits and noncash holdings are not available funds.</p>
+      <p id="capital-readiness-status" role="status" aria-live="polite" class="muted">Capital readiness assessment not yet run.</p>
+      <div id="capital-readiness-results"></div>
+    </div>
     <div class="panel" id="decision-review-panel">
       <h3>Owner investment review gate</h3>
       <p class="muted">Assess source freshness and essential transaction evidence before even considering an investment. Every item starts on HOLD. Completing this checklist never authorizes a purchase.</p>
