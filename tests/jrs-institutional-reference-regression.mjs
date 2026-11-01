@@ -154,3 +154,13 @@ assert.ok(css.includes('jrs-standard-page .util-bar{display:none!important}'),
 assert.ok(read('training.html').includes('jrs-training-context') &&
  read('training.html').includes('aria-label="JRS home"'),
  'training must retain explanation while enabling a compact header and home link');
+
+assert.ok(read('investigator-guides.html').includes('jrs-guide-quick-actions') &&
+ read('investigator-guides.html').includes('Edition and terminology notice'),
+ 'guide PDFs need early access and edition provenance');
+for(const anchor of ['rc1','rc2','rc3','rc4','rc5'])
+ assert.ok(read('codebook.html').includes('id="'+anchor+'"'),
+ 'codebook condition cross-reference missing '+anchor);
+assert.ok(read('research.html').includes('jrs-research-primary-links') &&
+ read('research.html').includes('Read this first.'),
+ 'research quick paths must preserve evidence limitations');
