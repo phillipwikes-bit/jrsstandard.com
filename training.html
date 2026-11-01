@@ -552,7 +552,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
       <a href="#training-modules" class="btn-hero-primary">&#9654; Start the Six Modules</a>
       <a href="#simulator" onclick="showSimTab(0)" class="btn-hero-secondary">Explore Simulation Exercises</a>
       <a href="#roles" class="btn-hero-ghost">Explore by Role</a>
-      <a href="#record-review-workspace" class="btn-hero-ghost">Practice with constructed examples</a>
+      <a href="#practice-guidance" class="btn-hero-ghost">Reviewer practice guidance</a>
     </div>
     <div class="hero-tags">
       <span class="hero-tag">No registration required</span>
@@ -1287,11 +1287,11 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
      no claim that any security assessment is avoided. -->
 <div class="dual-track">
  <div class="dt-card dt-enterprise">
-  <div class="dt-tag">Applied documentation review</div>
-  <div class="dt-head">Use the five conditions</div>
-  <p class="dt-body">JRS is a human-applied review method. It can be used within existing investigation, HR, audit and compliance workflows without software or external record submission.</p>
-  <p class="dt-body">Training exercises use constructed records. They do not certify professional competence or establish effectiveness on actual organizational records.</p>
-  <div class="dt-links"><a href="jrsstandard.html">Read the standard</a> <a href="research.html">Evidence and limits</a></div>
+  <div class="dt-tag">Institutional Review Practice</div>
+  <div class="dt-head">Apply the JRS method</div>
+  <p class="dt-body">The five conditions help practitioners examine whether the basis, chronology, evidence and reasoning recorded in a file are independently reviewable.</p>
+  <p class="dt-body">These exercises use constructed records. The site does not accept actual case records or offer automated assessment. Human reviewer judgment remains necessary.</p>
+  <div class="dt-links"><a href="jrsstandard.html">Review the Standard</a> <a href="research.html">Evidence and limitations</a></div>
  </div>
  <div class="dt-card dt-public">
   <div class="dt-tag">Track 2 &middot; Practitioner</div>
@@ -1635,12 +1635,16 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
 </main>
 
-<section id="record-review-workspace" style="background:var(--surface);border-top:1px solid var(--rule);padding:48px 24px 64px">
+<section id="practice-guidance" aria-labelledby="practice-guidance-title" style="background:var(--surface);border-top:1px solid var(--rule);padding:46px 24px 58px">
  <div style="max-width:860px;margin:0 auto">
-  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Human-led practice</div>
-  <h2 style="font-family:'Bodoni Moda',serif;font-size:28px;font-weight:500;color:var(--text);margin-bottom:12px">Practice without submitting records</h2>
-  <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:700px;margin-bottom:18px">The public training programme uses constructed examples and self-guided reviewer exercises. It does not accept organizational case files, upload record text, or generate automated JRS determinations. Apply the five conditions directly in your own controlled documentation workflow.</p>
-  <div style="display:flex;gap:12px;flex-wrap:wrap"><a href="#simulator" style="display:inline-block;border:1px solid var(--accent);color:var(--accent);padding:12px 16px;text-decoration:none">Open constructed simulations</a><a href="resources.html#quick-review" style="display:inline-block;border:1px solid var(--rule);color:var(--text);padding:12px 16px;text-decoration:none">Use a self-guided review tool</a></div>
+  <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Practice boundary</div>
+  <h2 id="practice-guidance-title" style="font-family:'Bodoni Moda',serif;font-size:28px;font-weight:500;color:var(--text);margin:0 0 14px">Practice with constructed records, not identifiable case files.</h2>
+  <p style="font-size:15px;color:var(--muted);line-height:1.8;max-width:710px">JRS reviewer training is self-paced. The exercises help you identify missing evidentiary anchors, disrupted chronology, untraceable reasoning, and insufficient documentation. The website does not provide an automated record-assessment service, and no record text should be submitted.</p>
+  <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px">
+   <a href="simulations.html" style="color:var(--accent);font-size:14px;min-height:44px;display:inline-flex;align-items:center">Open constructed-record simulations →</a>
+   <a href="resources.html#quick-review" style="color:var(--accent);font-size:14px;min-height:44px;display:inline-flex;align-items:center">Use the manual review check →</a>
+   <a href="research.html" style="color:var(--accent);font-size:14px;min-height:44px;display:inline-flex;align-items:center">Review the evidence limits →</a>
+  </div>
  </div>
 </section>
 
@@ -2062,6 +2066,8 @@ function resetFM() {
   document.getElementById('fm-complete').style.display = 'none';
   renderFM();
 }
+
+// Record submission is not available on this public training page.
 
 // ── INIT SIMULATORS ───────────────────────────────
 renderDR();

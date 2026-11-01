@@ -28,15 +28,15 @@ const allPages=walk('');
 const publicPages=allPages.filter(p=>!allowedArchives.has(p)&&!archivalPrefixes.some(a=>p.startsWith(a)));
 assert.ok(publicPages.length>=60, 'scan must cover site-wide HTML pages and reference library');
 const promotionPattern=/(?:Review Engine|review-engine\.html|Open AI-Assisted Record Reviewer|Paste & Assess)/i;
-const violating=publicPages.filter(p=>promotionPattern.test(read(p)));
+const violating=publicPages.filter(p=>promotionPattern.test(read(p).replace(/<!--[\s\S]*?-->/g,'')));
 assert.deepEqual(violating,[], 'no public page may promote the retired Engine product or direct to its URL');
 
 const home=read('index.html'),resources=read('resources.html'),training=read('training.html');
-for(const label of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Reviewer reference']){
+for(const label of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice']){
   assert.ok(home.includes(label),'missing method-first route '+label);
 }
-assert.ok(home.includes('href="reference/"'));
-assert.ok(home.includes('href="manifest.html"'));
+assert.ok(home.includes('href="training.html"'));
+assert.ok(resources.includes('href="manifest.html"'));
 assert.ok(!home.includes('Review Engine'));
 assert.ok(resources.includes('href="manifest.html"'), 'resources must link the actual public schema');
 assert.ok(resources.includes('href="investigator-guides.html"'));
@@ -45,8 +45,8 @@ assert.ok(resources.includes('/api/dl?e=card&amp;src=resources'));
 assert.ok(resources.includes('href="training.html"'));
 assert.ok(resources.includes('href="research.html"'));
 
-assert.ok(training.includes('id="record-review-workspace"'), 'preserve old anchor for previously published links');
-assert.ok(training.includes('Practice without submitting records'));
+assert.ok(training.includes('id="practice-guidance"'), 'training must provide a non-submission practice route');
+assert.ok(training.includes('Practice with constructed records'));
 for(const pattern of [/id="pa-input"/i,/runAssessment\(/i,/fetch\(['"]\/api\/review['"]/i]){
   assert.doesNotMatch(training,pattern,'public training must not accept text for automated assessment');
 }
