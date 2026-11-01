@@ -140,3 +140,12 @@ The iPhone compounding view now includes a read-only `capital-review-ui.js` pane
 Synthetic regression suites `tests/incomeos-capital-readiness.mjs` and `tests/incomeos-investment-cashflow.mjs` were added to required CI. The secure-deployment gate and the prohibition on actual financial execution remain unchanged.
 
 Neither the private account population nor actual owner investment holdings, fees, dividends, basis or reinvestment elections have been verified. Production use still requires a separate protected financial service, independently tested access controls, authenticated statement ingestion, and an explicit owner release decision.
+
+
+## Internal account transfer and card-payment accounting (Version 1.0 alignment)
+
+`transfer-reconciliation.js` provides a synthetic-testable, source-identified pairing control for owner-reviewed movements between two cash accounts and payments from cash to a credit-card liability. It requires complete statement scope and both corresponding bank postings, reviewed source and document references, equal amounts and distinct accounts. It rejects duplicates, unsupported account pairings and unpaired journal transfers. Neither kind of movement creates new earned income or additional operating expense.
+
+`transfer-review-ui.js` adds a read-only evidence-control panel to the staging accountant workspace. It intentionally supplies no actual statement data and therefore displays HOLD. It does not infer transfers from amount or merchant text or send private financial records anywhere. `tests/incomeos-transfer-reconciliation.mjs` is required in GitHub CI.
+
+This source increment does not add an authenticated bank connector or private account access. Continue enforcing all P0 production release requirements before real financial records are entered.
