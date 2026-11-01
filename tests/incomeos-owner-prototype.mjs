@@ -101,4 +101,20 @@ assert.equal(totals.capital,70);
 const parsed=win.IncomeOSAccountant.parseCsv('kind,date,description,amount_usd\r\nexpense,2026-11-01,"Monthly AI, Extra usage",12.50\r\n');
 assert.equal(parsed[1][2],'Monthly AI, Extra usage','Quoted CSV commas must be preserved');
 assert.equal(parsed[1][3],'12.50');
+// Bank imports must keep distinct same-day, same-amount charges when source references differ.
+const prompts=[];
+const sandbox={
+  window:{}, Intl, Date, Number, Math, String, Array, Object, Set, JSON, console,
+  confirm:message=>{prompts.push(message);return false;}
+};
+runInNewContext(accountant,sandbox);
+const header='kind,date,description,vendor,category,amount_usd,status,business_use_pct,evidence_ref,notes';
+const twins=[
+  'expense,2026-10-02,Anthropic API,Anthropic,software,20.60,paid,0,Bank txn A,receipt A',
+  'expense,2026-10-02,Anthropic API,Anthropic,software,20.60,paid,0,Bank txn B,receipt B'
+];
+sandbox.window.IncomeOSAccountant.importCsv([header,...twins].join('\\n'));
+assert.match(prompts.pop(),/Import 2 new records/, 'Same-day identical payments with different bank references must survive import');
+sandbox.window.IncomeOSAccountant.importCsv([header,twins[0],twins[0]].join('\\n'));
+assert.match(prompts.pop(),/Import 1 new records/, 'Repeated exact bank reference must be deduplicated');
 console.log('IncomeOS source QA passed: 5 views, ' + feed.studies.length + ' studies, ' + feed.assets.length + ' asset candidates, syntax and privacy checks.');
