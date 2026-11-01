@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Website Privacy Notice | JRS™</title>
-  <meta name="description" content="Current public-site privacy boundary for JRS.">
+  <meta name="description" content="How JRS handles public professional inquiries, optional training enrollment, downloads and analytics, with stated access and retention limitations.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://www.jrsstandard.com/privacy-notice.html">
-  <style>body{margin:0;background:#050505;color:#f2f2f2;font:16px/1.65 Arial,sans-serif}main{max-width:760px;margin:auto;padding:56px 22px}a{color:#be9447}h1{font:400 42px Georgia,serif;line-height:1.15}h2{font:400 26px Georgia,serif;margin-top:32px}.label{font:11px monospace;letter-spacing:.12em;text-transform:uppercase;color:#be9447}.box{border-left:3px solid #be9447;background:#121212;padding:16px 18px}</style>
+  <style>body{margin:0;background:#050505;color:#f2f2f2;font:16px/1.65 Arial,sans-serif}main{max-width:760px;margin:auto;padding:56px 22px}a{color:#be9447}h1{font:400 42px Georgia,serif;line-height:1.15}h2{font:400 26px Georgia,serif;margin-top:32px}.label{font:11px monospace;letter-spacing:.12em;text-transform:uppercase;color:#be9447}.box{border-left:3px solid #be9447;background:#121212;padding:16px 18px}body.jrs-institutional .box{background:#edf3f6!important;color:#203a50!important;border-left:4px solid #a57f45;padding:20px 24px;margin:22px 0}body.jrs-institutional .label{color:#765827;font:700 13px Inter,system-ui,sans-serif!important;letter-spacing:.035em!important}body.jrs-institutional code{background:#e6edf2;padding:2px 5px;color:#183d58;border-radius:3px}body.jrs-institutional main{max-width:850px!important;margin:0 auto;padding:49px 23px 76px!important}</style>
 <link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 </head>
 <body class="jrs-institutional">
@@ -28,18 +28,24 @@
 </nav>
 <!-- /JRS SITE NAV v1 -->
 <main id="main-content">
-  <p class="label">Current public-site boundary</p>
+  <p class="label">JRS public website · Data and consent boundaries</p>
   <h1>Website privacy notice</h1>
-  <div class="box"><strong>Do not submit decision records, third-party personal information, confidential material, credentials, or privileged material through this website.</strong> Contact forms request only the sender's own basic contact details and a general, non-sensitive inquiry. This website does not provide automated record processing or evaluations.</div>
-  <h2>What this notice covers</h2>
-  <p>This notice describes the current limited public contact route. It is not a statement that a processor agreement, retention schedule, independent privacy audit or security certification has been completed. Controlled evaluation involving decision records remains unavailable pending separate evidence, review and authorization.</p>
-  <h2>Public materials and inquiries</h2>
-  <p>Public resources are available without providing contact details. The Contact page requests a name, reply email, inquiry category, optional organization and a general non-sensitive message. Contact consent is limited to responding to that inquiry. It is not consent for marketing, research enrollment, publication or transfer.</p>
-  <p><strong>Current contact processing.</strong> The public Contact form sends a visitor's name, reply email, optional organization, selected topic and message through the existing third-party Formspree form service. Formspree handles the submission in its account inbox and sends the configured notification to the JRS Gmail inbox. JRS uses this information only for inquiry response; it is not entered into the JRS research participant ledger or treated as permission for commercial marketing, licensing or transfer.</p>
-  <p>The contact form uses an existing Formspree account previously employed by JRS for pilot inquiries. Submissions are identified as public professional contact requests by distinct source and type fields. The provider's detailed retention and deletion settings have not been independently verified; visitors should submit only routine, non-sensitive inquiries. Provider acceptance confirms submission receipt by Formspree, not guaranteed inbox delivery. The sender may alternatively use the direct email link.</p>
-  <h2>Future controlled use</h2>
-  <p>Any future authorized implementation must define its actual data flows, permitted record class, access controls, retention, deletion, evaluation protocol, and legal terms before processing begins. Public statements will be updated only after those controls are independently evidenced, reviewed by counsel, and authorized by the owner.</p>
-  <p><a href="index.html">Return home</a> · <a href="resources.html">Practitioner resources</a> · <a href="research.html">Research and limitations</a></p>
+  <p>Public review resources and self-paced training may be read without registration or submission of personal information. This notice covers the site's public contact form and optional named training registration. It does not authorize submission or automated processing of organizational decision records.</p>
+  <div class="box"><strong>Do not submit case records, third-party personal information, confidential material, credentials, or privileged information.</strong> This site provides manual reference materials, not a public automated record-assessment service.</div>
+  <h2 id="public-contact">General professional contact</h2>
+  <p>The public Contact form requests a visitor's name and reply email, with optional organization, inquiry category and a general non-sensitive message. It sends the inquiry to Formspree, whose existing account inbox receives the submission and may forward an email notification to the JRS mailbox. The information is used for responding to that inquiry, not as authorization for marketing, research enrollment or transfer.</p>
+  <p>Provider acceptance confirms the form service received a submission; it is not evidence that an email notification reached the intended mailbox. Formspree retention and deletion settings have not been independently verified.</p>
+  <h2 id="training-enrollment">Optional reviewer training registration</h2>
+  <p>The training modules are open without registration. A visitor choosing optional named enrollment supplies a name and email address, and may provide an organization, professional title and an answer to an optional software-related question. The server also records a limited source tag, country code derived from the request, consent values and a timestamp.</p>
+  <p>The website sends these fields to the existing JRS Supabase-backed <code>pilot_contacts</code> record store with the source tag <code>training-enroll</code>. This uses the site's server-side enrollment endpoint, not the Formspree contact form. The endpoint does not return the registration details publicly. The privacy and access design depends on actual deployed credentials, database permissions and administrator controls; independent production assurance of these controls and the provider's retention/deletion configuration has not been completed.</p>
+  <p>Enrollment is voluntary. The required contact checkbox covers communication about the requested named completion record and JRS project updates. A separate, optional checkbox concerns whether the enrollment record could be transferred with the JRS project to a future successor. That checkbox is not an authorization for commercial sale, public disclosure or release of protected records. No name is published through enrollment. A training completion record is not a professional certification or accreditation.</p>
+  <h2 id="measurement">Resource access and site measurement</h2>
+  <p>Public guide and PDF downloads may be counted through the site's existing interaction-event system, including document identifiers and limited technical metadata such as country and user agent. Selected public pages use Google Analytics. Download counts are activity indicators, not proof that the documents were read, adopted or used in actual professional review. Research datasets, reviewer records and owner-private dashboards are governed separately.</p>
+  <h2 id="access-deletion">Access, correction and deletion requests</h2>
+  <p>For a question about your own submitted information, or to request access, correction or deletion, contact <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. Requests require appropriate verification and review. No universal retention period or guaranteed immediate deletion is asserted while provider settings and governing obligations remain under review.</p>
+  <h2 id="limits">Limitations and future changes</h2>
+  <p>This notice describes observed website source behavior and current public uses, not an independent privacy audit, formal certification, processor agreement or legal compliance determination. Future controlled evaluations involving decision records require a separately authorized data-flow, retention, deletion and legal review before any such processing begins.</p>
+  <p><a href="index.html">Home</a> · <a href="training.html">Open training</a> · <a href="contact.html">Contact</a> · <a href="research.html">Research boundaries</a></p>
 </main>
 </body>
 </html>
