@@ -86,7 +86,7 @@ for(const [all,attrs,content] of match){
    'retired implementation kits must not appear as available downloads');
 }
 assert.equal(pdfs,6);assert.equal(web,9);assert.equal(interactive,1);
-assert.ok(html.includes('Standard PDF v2.0 compatibility is not established') &&
+assert.ok(html.includes('has not been established as compatible with the separately versioned PDF') &&
  html.includes('Version 1.1 (July 2026)') && html.includes('Version 2.0 (2026)'),
  'edition labeling must remain in searchable resource directory');
 console.log('PASS: 16 accessible, progressively enhanced catalog entries; 6 tracked PDF assets; 10 web/interactive targets; no personal-query transmission.');
