@@ -35,6 +35,44 @@ for(const p of pages){
  assert.doesNotMatch(h,/id="pa-input"|fetch\(['"]\/api\/review['"]/i,
    p+' must not expose retired public assessor');
 }
+
+// Complete the system across the public sitemap and reference corpus.
+const additionalPages=[
+ 'implementation-scenarios.html',
+ 'operational-boundaries.html',
+ 'reference/index.html',
+ 'reference/ai-assisted-record-failure-modes/index.html',
+ 'reference/ai-verification-controls/index.html',
+ 'reference/decision-context-loss/index.html',
+ 'reference/deployment-models/index.html',
+ 'reference/documentation-risk-tiers/index.html',
+ 'reference/escalation-triggers/index.html',
+ 'reference/field-conditions/index.html',
+ 'reference/implementation-maturity-levels/index.html',
+ 'reference/later-review-failure-cascades/index.html',
+ 'reference/missing-chronology/index.html',
+ 'reference/record-survivability/index.html',
+ 'reference/reviewer-responsibility-boundaries/index.html',
+ 'reference/reviewer-worksheet/index.html',
+ 'reference/second-line-review-model/index.html',
+ 'reference/traveler-test/index.html',
+ 'reference/unsupported-generalization/index.html',
+ 'reviewer/index.html',
+ 'ai-governance-record.html',
+ 'compliance.html',
+ 'datasets.html',
+ 'finding.html',
+ 'results.html',
+ 'why-good-decisions-fail.html',
+ 'privacy-notice.html',
+];
+for(const p of additionalPages){
+ const h=read(p);
+ assert.ok(h.includes('<body class="jrs-institutional'),p+' missing institutional body opt-in');
+ assert.ok(h.includes('<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">'),p+' missing shared theme');
+ assert.ok(h.includes('viewport'),p+' missing responsive viewport');
+}
+
 const main=read('index.html');
 for(const token of [
  '01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice',
@@ -62,5 +100,5 @@ for(const path of [
  'JRS_Investigator_Field_Guide_FairHousing.pdf',
  'JRS_Investigator_Field_Guide_International.pdf'
 ])assert.ok(existsSync(join(root,path)),'preserve protected access or document '+path);
-console.log('PASS: institutional reference system present on '+pages.length+
+console.log('PASS: institutional reference system present on '+(pages.length+additionalPages.length)+
  ' pages, core paths and privacy boundaries preserved.');
