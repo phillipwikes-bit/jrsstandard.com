@@ -166,10 +166,22 @@
    }
    if(item.page==='training.html'){
      const info=d.querySelector('.jrs-training-context');
+     const desk=d.querySelector('.jrs-training-desk-reference');
+     const firstModule=d.getElementById('module-row-0');
+     const firstModuleTop=firstModule?Math.round(firstModule.getBoundingClientRect().top):null;
      editorialValid=editorialValid && !!info && !info.open &&
        !!info.querySelector('.hero-tags') &&
-       /Operates within existing workflows/.test(info.textContent);
-     if(!editorialValid)editorialIssue='Training context or access scope missing';
+       /Operates within existing workflows/.test(info.textContent) &&
+       !!desk && !desk.open && !!firstModule &&
+       (item.width>760 || firstModuleTop<=1100) &&
+       /Standard PDF is Version 2\.0/.test(desk.textContent);
+     if(editorialValid){
+       desk.querySelector('summary').click();
+       editorialValid=desk.open && !!desk.querySelector('a[href*="api/dl"]');
+       desk.querySelector('summary').click();
+       editorialValid=editorialValid && !desk.open;
+     }
+     if(!editorialValid)editorialIssue='Training module access or historical PDF edition notice missing';
    }
    if(item.page==='research.html'){
      const boundary=d.querySelector('.boundary');
