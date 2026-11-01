@@ -7,7 +7,7 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="theme-color" content="#11292b">
-<meta name="description" content="Private IncomeOS prototype. Verified individual research leads, alternative-asset research, earnings tracking and compounding scenarios.">
+<meta name="description" content="Private IncomeOS prototype. Dated public-source research, owner-recorded receipts, opportunity review, and hypothetical compounding.">
 <title>IncomeOS | Private Opportunity Command Center</title>
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="manifest" href="./manifest.webmanifest">
@@ -33,7 +33,7 @@
 <main id="main">
   <div class="status" id="feed-status" role="status">Loading saved opportunity snapshot…</div>
   <div class="metrics" aria-label="Current record summary">
-    <div class="metric"><span>PAID & VERIFIED</span><strong id="metric-paid">$0</strong></div>
+    <div class="metric"><span>RECEIPTS · SELF-REPORTED</span><strong id="metric-paid">$0</strong></div>
     <div class="metric"><span>STUDIES TO REVIEW</span><strong id="metric-study">0</strong></div>
     <div class="metric"><span>ASSETS WATCHED</span><strong id="metric-asset">0</strong></div>
   </div>
@@ -49,12 +49,12 @@
     <div id="asset-cards" class="stack"></div>
   </section>
   <section id="view-ledger" class="view" aria-labelledby="ledger-heading" hidden>
-    <div class="sectionintro"><div><span class="kicker">03 / ACCOUNTANT RECORDS</span><h2 id="ledger-heading">Complete earnings report</h2><p>All income sources, eligible expense candidates and financial movements, entered by you.</p></div></div>
+    <div class="sectionintro"><div><span class="kicker">03 / ACCOUNTANT RECORDS</span><h2 id="ledger-heading">Income and expense register</h2><p>All income sources, eligible expense candidates and financial movements, entered by you.</p></div></div>
     <div class="callout"><strong>One consolidated personal ledger.</strong> Record research studies, contracts, royalties, dividends, rental income, reimbursements, asset sales and any other opportunities, including those found outside IncomeOS. No automatic IRS tax classification is made. Export the annual report for your accountant.</div>
     <div class="panel">
       <div class="panelrow"><h3>Tax-year overview</h3><label class="yearpicker" for="report-year">Year <input type="number" id="report-year" min="2000" max="2100" step="1" value="2026" inputmode="numeric"></label></div>
       <div class="reportmetrics">
-        <div><small>Received gross income</small><strong id="ledger-total">$0.00</strong></div>
+        <div><small>Recorded gross receipts</small><strong id="ledger-total">$0.00</strong></div>
         <div><small>Fees withheld</small><strong id="ledger-fees">$0.00</strong></div>
         <div><small>Other recorded expenses</small><strong id="ledger-expenses">$0.00</strong></div>
         <div><small>Cash after listed costs*</small><strong id="ledger-net">$0.00</strong></div>
@@ -145,7 +145,7 @@
     <div class="callout"><strong>Scenario only.</strong> No money is invested, transferred, or reinvested by this application. Market returns, losses, fees and taxes may differ substantially.</div>
     <div class="panel">
       <label for="initial">Initial amount hypothetically invested (USD)</label><input type="number" id="initial" min="0" max="100000000" value="0" step="100" inputmode="decimal">
-      <div class="formgrid"><div><label for="monthly">Additional monthly investment</label><input type="number" id="monthly" min="0" max="1000000" value="100" step="25" inputmode="decimal"></div><div><label for="assumed-return">Assumed annual return (%)</label><input type="number" id="assumed-return" min="-100" max="40" value="5" step="0.5" inputmode="decimal"></div></div>
+      <div class="formgrid"><div><label for="monthly">Additional monthly investment</label><input type="number" id="monthly" min="0" max="1000000" value="0" step="25" inputmode="decimal"></div><div><label for="assumed-return">Assumed annual return (%)</label><input type="number" id="assumed-return" min="-100" max="40" value="5" step="0.5" inputmode="decimal"></div></div>
       <label for="years">Period: <span id="years-text">10 years</span></label><input type="range" id="years" min="1" max="30" value="10" step="1">
       <div class="projection"><span>Illustrative future value</span><strong id="future-value">$0</strong><div><span>Contributions <b id="contributions">$0</b></span><span>Illustrative change <b id="growth">$0</b></span></div></div>
       <p class="muted">Monthly contributions occur at month end. Return is an assumption, not an expected or guaranteed yield. Positive projections omit fees and taxes; negative returns and asset write-downs are possible.</p>
