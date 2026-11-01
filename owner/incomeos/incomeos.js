@@ -225,8 +225,9 @@
       if (!confirm("Erase ALL locally saved IncomeOS bookmarks, application status and accountant records? Export a JSON backup first if needed.")) return;
       state = { saved: [], stages: {}, receipts: [] }; save();
       if (window.IncomeOSAccountant) window.IncomeOSAccountant.clear();
-      renderStudies(); renderAssets();
-      alert("Local IncomeOS records erased from this browser.");
+      try { localStorage.removeItem("incomeos.spend.preferences.v1"); localStorage.removeItem("incomeos.research.radar.v1"); } catch (_e) { alert("Some local browser records could not be cleared. Verify device storage permissions."); return; }
+      alert("IncomeOS local records cleared. The page will reload to reset the research and spending views.");
+      location.reload();
     });
     ["initial", "monthly", "assumed-return", "years"].forEach(function (id) { $(id).addEventListener("input", calculate); });
     renderLedger(); calculate(); loadFeed();
