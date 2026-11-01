@@ -5,7 +5,7 @@
   // account records, study participation state, credentials or personal notes.
   var radar=window.IncomeOSResearchRadar;
   var PUBLIC=["id","title","recruiter","incentive_usd","incentive_label","incentive_type","duration_minutes","format","online_only","participation_dates","apply_deadline","eligibility","flags","application_url","source_url","access_type","availability_status","source_checked_on","is_active","summary","created_at","updated_at"];
-  var NATIVE=["id","title","provider","paymentUsd","minutes","screenMinutes","mode","eventEnd","reviewed","url","sourceUrl","dates","linkKind","eligibility","risk","status","eligibilityStatus","dateType"];
+  var NATIVE=["id","title","provider","paymentUsd","paymentMethod","minutes","screenMinutes","mode","eventEnd","reviewed","url","sourceUrl","dates","linkKind","eligibility","risk","status","eligibilityStatus","dateType"];
   var MAX=200;
   function plain(x){return x&&typeof x==="object"&&!Array.isArray(x);}
   function check(x,fields){
