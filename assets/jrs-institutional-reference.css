@@ -1057,3 +1057,10 @@ body.jrs-institutional.jrs-resource-page .jrs-resource-directory-link a{
  color:#1b5277!important;text-decoration:underline!important;text-underline-offset:3px!important
 }
 body.jrs-institutional.jrs-resource-page #resource-catalog{scroll-margin-top:18px!important}
+
+/* Training active navigation must remain legible on desktop as well as mobile.
+   Previous computed-browser samples intermittently resolved low contrast. */
+body.jrs-institutional.jrs-training-page nav.jrs-sitenav a[aria-current="page"]{
+ color:#17364f!important;background:#e7eff4!important;
+ border-bottom:3px solid #9b712d!important;font-weight:700!important
+}
