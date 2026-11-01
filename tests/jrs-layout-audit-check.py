@@ -15,9 +15,9 @@ try:
 except (ValueError,TypeError) as exc:
     print("FAIL: invalid browser measurements",exc)
     sys.exit(1)
-assert len(records)==20, f"Expected twenty viewport samples, received {len(records)}"
+assert len(records)==21, f"Expected twenty-one viewport samples, received {len(records)}"
 for rec in records:
     print(("PASS" if rec.get("pass") else "FAIL"),json.dumps(rec,ensure_ascii=False))
 if not all(rec.get("pass") for rec in records):
     sys.exit("FAIL: at least one mobile/desktop structural gate is not met")
-print("PASS: twenty local browser viewport checks. Screenshot judgment remains separate.")
+print("PASS: twenty-one local browser viewport checks. Screenshot judgment remains separate.")
