@@ -117,11 +117,32 @@
        simulationControlsValid=simulationControlsValid && first.getAttribute('aria-pressed')==='true';
      }
    }
+   // Measured visual contrast and publication-metadata readability.
+   // A current-page link must not regress to pale gold on a light background.
+   const colorRGB=value=>{const m=value.match(/rgba?\\(([^)]+)\\)/);
+     return m?m[1].split(',').slice(0,3).map(Number):null;};
+   const relativeLuminance=rgb=>rgb.map(v=>v/255)
+     .map(v=>v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4))
+     .reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+   const wcagContrast=(fg,bg)=>{
+     const a=colorRGB(fg),b=colorRGB(bg);
+     if(!a||!b)return 0;
+     const A=relativeLuminance(a),B=relativeLuminance(b);
+     return (Math.max(A,B)+0.05)/(Math.min(A,B)+0.05);
+   };
+   const activeLink=d.querySelector('nav.jrs-sitenav a[aria-current="page"]');
+   const activeContrast=activeLink?wcagContrast(w.getComputedStyle(activeLink).color,
+     w.getComputedStyle(activeLink).backgroundColor):null;
+   const contrastValid=item.page==='jrsstandard.html' ?
+     activeContrast!==null && activeContrast>=4.5 : activeContrast===null || activeContrast>=4.5;
+   const meta=d.querySelector('.meta-line');
+   const metaFontSize=meta?Number.parseFloat(w.getComputedStyle(meta).fontSize):null;
+   const metadataValid=!meta || metaFontSize>=12;
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && documentIndexValid && simulationControlsValid && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
+      controlsValid && documentIndexValid && simulationControlsValid && contrastValid && metadataValid && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,overflowElements,
+     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,activeContrast,contrastValid,metaFontSize,metadataValid,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
