@@ -3,7 +3,7 @@
   // This is an intentionally unconditional staging interlock, NOT authentication.
   // Remove only in a separate, reviewed, owner-authenticated deployment.
   function lock(){
-    var lockIds=["receipt-form","cost-form","import-trigger","import-csv-trigger","import-ledger","import-csv","import-csv-trigger","import-trigger","import-ledger","vault-file","vault-import"];
+    var lockIds=["receipt-form","cost-form","import-trigger","import-csv-trigger","import-ledger","import-csv","vault-file","vault-import"];
     lockIds.forEach(function(id){
       var el=document.getElementById(id);if(!el)return;
       if(el.tagName==="FORM"){
