@@ -109,3 +109,7 @@ Release dates are estimates, not authorization to ship. A failed P0 gate prevent
 | Source regression suite | GitHub `IncomeOS private prototype checks` | Eight code/source suites now required by workflow | Hosted browser testing and external security review |
 
 No financial events were sent to the public study feed. No revenue, recovered money, bank import, investment order, deployment or private-account connection was executed during this increment.
+
+## Increment: public research interoperability and audited-value model
+
+The November 1 continuation adds `public-feed-adapter.js` for strict public-field source mapping and unknown deadline handling; `financial-value.js` for independent owner-reviewed financial classifications and no research-payment double count; and rollback protection during encrypted-backup restoration. Both new synthetic test files are required by CI. No personal financial feed was connected and the owner-only deployment security gate remains open. The public Lovable research site and private owner staging branch are not automatically synchronized.
