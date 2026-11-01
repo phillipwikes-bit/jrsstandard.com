@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import {execFileSync} from "node:child_process";
 import {readFileSync} from "node:fs";
 const paths=execFileSync("git",["ls-files","-z","owner/incomeos"],{encoding:"utf8"}).split("\0").filter(Boolean);
-const extensions=new Set(["html","js","css","json","svg","webmanifest","md"]);
+const extensions=new Set(["html","js","css","json","svg","webmanifest","md","sql"]);
 assert.ok(paths.length>=12,"Expected reviewed IncomeOS source tree");
 for(const path of paths){
   assert.match(path,/^owner\/incomeos\/[A-Za-z0-9_.-]+$/,"No arbitrary paths inside publicly readable owner subtree");
@@ -13,6 +13,16 @@ for(const path of paths){
   assert.doesNotMatch(filename,/(bank.statement|invoice|receipt[0-9]|financial.records|private.key|token|credentials|secret|\.env)/i,
     "Private data/secret-shaped file name must not be committed: "+path);
 }
+const privateSql=readFileSync("owner/incomeos/OWNER-PRIVATE-SCHEMA.sql","utf8");
+assert.match(privateSql,/Not applied to any database/);
+assert.match(privateSql,/revoke all on schema incomeos_private from anon/i);
+assert.match(privateSql,/single_slot smallint not null default 1 unique/i);
+assert.match(privateSql,/security definer\s+set search_path = ''/i);
+assert.match(privateSql,/grant select, insert on table incomeos_private.financial_events to authenticated/i);
+assert.match(privateSql,/force row level security/);
+assert.match(privateSql,/with check \(/);
+assert.match(privateSql,/before update or delete on incomeos_private.financial_events/i);
+assert.doesNotMatch(privateSql,/insert into incomeos_private.allowed_owners/i,"Never commit an owner identity seed");
 const page=readFileSync("owner/incomeos/index.html","utf8");
 const interlock=readFileSync("owner/incomeos/staging-interlock.js","utf8");
 const accountant=readFileSync("owner/incomeos/accountant.js","utf8");
