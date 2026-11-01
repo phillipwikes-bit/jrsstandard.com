@@ -110,7 +110,7 @@
       if(a.saleProceedsCents>0)issues.push(issue("SALE_BASIS_AND_LOTS_NOT_ESTABLISHED",a.assetId));
       // A cost-basis or remaining-capital figure is not inferred from proceeds.
     });
-    var result={asOf:asOf,acceptedMovements:accepted.size,rejectedMovementCount:records.length-accepted.size-linkedIncome.size*0-links.length,
+    var result={asOf:asOf,acceptedMovements:accepted.size,rejectedMovementCount:records.length-accepted.size-links.length,
       journalHeadHash:check.headHash,
       ownerReviewedCashIncomeCents:cash.DISTRIBUTION||0,
       ownerReviewedCapitalDeployedCents:cash.CAPITAL_DEPLOYED||0,
