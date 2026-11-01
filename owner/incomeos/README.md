@@ -149,3 +149,13 @@ Neither the private account population nor actual owner investment holdings, fee
 `transfer-review-ui.js` adds a read-only evidence-control panel to the staging accountant workspace. It intentionally supplies no actual statement data and therefore displays HOLD. It does not infer transfers from amount or merchant text or send private financial records anywhere. `tests/incomeos-transfer-reconciliation.mjs` is required in GitHub CI.
 
 This source increment does not add an authenticated bank connector or private account access. Continue enforcing all P0 production release requirements before real financial records are entered.
+
+
+## Protected preview release retry and staging read-only hardening (November 1, 2026)
+
+- The separate `incomeos-opportunity-desk` Vercel project requires authentication for all targets. A new exact-commit preview request was blocked by HTTP 402 daily deployment quota. The existing daily wealth automation includes a bounded preview retry; it must not deploy production or change billing.
+- `vercel.json` supplies proposed security headers for **this separate IncomeOS project only**. `manifest.webmanifest` uses relative start and scope so the owner's iPhone home-screen shortcut can work at a dedicated project root.
+- `tests/incomeos-preview-probe.mjs` is an opt-in anonymous HTTP acceptance checker. It requires source-reported exact SHA and a READY, protected preview, then checks unauthenticated HTTP denial. It is **not** automatic evidence of authenticated owner access, secure data storage, or production readiness. Synthetic QA is in `tests/incomeos-preview-probe-qa.mjs`.
+- The staging financial interlock now initializes before accountant scripts and is enforced inside write/import/edit/migration and encrypted restore paths. It does not replace server authentication. Existing local backup export and erasure remain available.
+
+Do not enter or import financial data into the unapproved preview, and do not infer production release permission from green source tests.
