@@ -1,4 +1,5 @@
-import { fetchAllRows } from './_sb-fetch.js';
+import { fetchAll } from './_sb-fetch.js';
+import { CRAWLER, isCrawler, classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource } from './_traffic-quality.js';
 export const config = { runtime: 'edge' };
 
 // Asset engagement statistics for acquisition diligence.
@@ -66,18 +67,28 @@ export default async function handler(req){
   // the query's own limit, with HTTP 200 and no marker. interaction_events
   // passed 2,000 rows, so the limit=20000 below was returning half the table
   // and every figure built from it was silently short. See api/_sb-fetch.js.
+  // A partial database response is not a valid public diligence count.
+  // fetchAllRows intentionally discards the completeness flag; never use it
+  // for metrics exposed as source-of-record or acquisition evidence.
   async function get(path){
-    return await fetchAllRows(SB, path, H);
+    const result = await fetchAll(SB, path, H);
+    if (!result.complete) throw new Error('incomplete_aggregate_read');
+    return result.rows;
   }
 
-  const [events, contacts, armA, armB, labels, outcomes] = await Promise.all([
-    get('interaction_events?select=source,type,payload,created_at'),
-    get('pilot_contacts?select=source,message,created_at'),
-    get('pilot_progress?select=code,total_reads,reads_today&limit=500'),
-    get('armb_progress?select=code,reads,reads_today&limit=500'),
-    get('bench_labels?select=labeler_code,record_id'),
-    get('bench_outcomes?select=contributor,domain')
-  ]);
+  let events, contacts, armA, armB, labels, outcomes;
+  try {
+    [events, contacts, armA, armB, labels, outcomes] = await Promise.all([
+      get('interaction_events?select=source,type,payload,created_at'),
+      get('pilot_contacts?select=source,message,created_at'),
+      get('pilot_progress?select=code,total_reads,reads_today&limit=500'),
+      get('armb_progress?select=code,reads,reads_today&limit=500'),
+      get('bench_labels?select=labeler_code,record_id'),
+      get('bench_outcomes?select=contributor,domain')
+    ]);
+  } catch (_) {
+    return json({ error: 'aggregate_statistics_incomplete_or_unavailable' }, 502);
+  }
 
   // Link programmes. "Opened" counts distinct people rather than distinct hits,
   // because one person reopening a link four times is one engaged person, not
@@ -177,8 +188,7 @@ export default async function handler(req){
   // Applied to the public view and device aggregates only. It is a user-agent
   // match, so it catches declared crawlers and nothing else; it is not a
   // fraud control and does not pretend to be one.
-  const CRAWLER = /googlebot|bingbot|baiduspider|yandexbot|duckduckbot|applebot|GoogleOther|bingpreview|facebookexternalhit|bot|spider|crawl|slurp|preview|headless|python-requests|curl|wget/i;
-  function isCrawler(p){ return CRAWLER.test(String((p || {}).user_agent || '')); }
+  // Shared declared-crawler heuristic. Do not treat nonmatches as verified people.
 
   // Device split, now that user-agent is captured. Only rows written since that
   // change carry the flag, so the denominator is stated rather than implied.
@@ -210,13 +220,55 @@ export default async function handler(req){
   const CERT_SOURCES = { 'honor-cert': 1, 'reviewer-cert-render': 1 };
 
   let downloads = 0, downloadsCrawlers = 0, downloadsUnattributed = 0;
+  const scope = {
+    counted_all_source_download_type_events: 0,
+    current_resource_redirect_requests: 0,
+    current_resource_download_type_events: 0,
+    current_resource_other_type_events: 0,
+    declared_crawler: 0,
+    user_agent_missing: 0,
+    not_identified_as_crawler: 0,
+    internal_test_rows_in_redirect_sources: 0,
+    retired_or_unknown_kit_rows: 0,
+    outside_current_resource_download_type_events: 0
+  };
   events.forEach(function(e){
-    if (e.type !== 'download' || CERT_SOURCES[e.source]) return;
-    const p = e.payload || {};
-    if (isCrawler(p)) { downloadsCrawlers++; return; }
-    if (!p.user_agent) downloadsUnattributed++;
-    downloads++;
+    // The legacy aggregate counts every type=download source except
+    // certificates; geo-stats counts current-resource redirect sources.
+    // Preserve both populations and explicitly report their difference.
+    if (e.type === 'download' && !CERT_SOURCES[e.source]) {
+      scope.counted_all_source_download_type_events++;
+      const p = e.payload || {};
+      if (isCrawler(p)) downloadsCrawlers++;
+      else {
+        if (classifyDownloadTraffic(p) === 'user_agent_missing') downloadsUnattributed++;
+        downloads++;
+      }
+    }
+    if (e.source !== 'guide-dl' && e.source !== 'pdf-dl' && e.source !== 'kit-dl') {
+      if (e.type === 'download' && !CERT_SOURCES[e.source]) scope.outside_current_resource_download_type_events++;
+      return;
+    }
+    if (isInternalTestSource((e.payload || {}).src)) {
+      scope.internal_test_rows_in_redirect_sources++;
+      if (e.type === 'download') scope.outside_current_resource_download_type_events++;
+      return;
+    }
+    if (!isCurrentDownloadResource(e)) {
+      scope.retired_or_unknown_kit_rows++;
+      if (e.type === 'download') scope.outside_current_resource_download_type_events++;
+      return;
+    }
+    scope.current_resource_redirect_requests++;
+    if (e.type === 'download') scope.current_resource_download_type_events++;
+    else scope.current_resource_other_type_events++;
+    scope[classifyDownloadTraffic(e.payload)]++;
   });
+  const scopeReconciles =
+    scope.counted_all_source_download_type_events === downloads + downloadsCrawlers &&
+    scope.current_resource_redirect_requests === scope.current_resource_download_type_events + scope.current_resource_other_type_events &&
+    scope.current_resource_redirect_requests === scope.declared_crawler + scope.user_agent_missing + scope.not_identified_as_crawler &&
+    scope.counted_all_source_download_type_events === scope.current_resource_download_type_events + scope.outside_current_resource_download_type_events;
 
   // THE REVIEWER EVALUATION FUNNEL. Three numbers, and they answer three
   // different questions that were previously collapsed into one:
@@ -561,6 +613,7 @@ export default async function handler(req){
     researchCategoryTotal++;
     if(isToday(e))researchCategoryToday++;
   });
+
 
   return json({
     generated_at: new Date().toISOString(),
@@ -947,7 +1000,20 @@ export default async function handler(req){
       downloads_predating_user_agent_capture: downloadsUnattributed,
       downloads_basis: 'Declared crawlers are excluded where the row can be tested. '
              + 'User agent was not written on download rows until 2026-08-11, so rows '
-             + 'before that date carry no flag and are still counted.',
+             + 'before that date carry no flag and are still counted. Other user agents '
+             + 'are not independently verified people.',
+      download_scope_bridge: {
+        ...scope,
+        difference_between_legacy_download_events_and_current_resource_requests:
+          scope.counted_all_source_download_type_events - scope.current_resource_redirect_requests,
+        source_scope_reconciles: scopeReconciles,
+        note: 'All values are built from this one complete interaction_events read. '
+            + 'The legacy all-source type=download metric and the geographic '
+            + 'current-resource redirect-request metric differ in source and '
+            + 'event-type inclusion. A difference is not proof of missing people. '
+            + 'Compare endpoints only at an aligned data snapshot; concurrent '
+            + 'requests may span different event times.'
+      },
       device_split: {
         mobile: mobile,
         desktop: desktop,

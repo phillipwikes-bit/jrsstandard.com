@@ -1,0 +1,29 @@
+name: JRS download evidence and completeness
+on:
+  pull_request:
+    paths:
+      - 'api/asset-stats.js'
+      - 'api/dl.js'
+      - 'api/geo-stats.js'
+      - 'api/support-stats.js'
+      - 'api/_traffic-quality.js'
+      - 'tests/asset-evidence-integrity.mjs'
+      - 'tests/download-traffic-quality.mjs'
+      - 'tests/support-stats-completeness.test.mjs'
+      - '.github/workflows/jrs-download-evidence-integrity.yml'
+  push:
+    branches:
+      - 'fix/jrs-download-measurement-integrity-2026-11-01'
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/asset-evidence-integrity.mjs
+      - run: node tests/download-traffic-quality.mjs
+      - run: node --test tests/support-stats-completeness.test.mjs
