@@ -71,20 +71,15 @@ create index if not exists incomeos_financial_events_owner_time
 alter table incomeos_private.financial_events enable row level security;
 alter table incomeos_private.financial_events force row level security;
 revoke all on table incomeos_private.financial_events from PUBLIC, anon, authenticated;
-grant select, insert on table incomeos_private.financial_events to authenticated;
+-- Owner may read only. All appends require a separately reviewed server-owned
+-- transaction that validates actor, head hash, sequence, provenance and payload.
+-- Never grant INSERT/UPDATE/DELETE to browser-facing roles.
+grant select on table incomeos_private.financial_events to authenticated;
 
 create policy "incomeos_owner_read_events"
 on incomeos_private.financial_events
 for select to authenticated
 using (
-  owner_id = (select auth.uid())
-  and (select incomeos_private.is_allowed_owner())
-);
-
-create policy "incomeos_owner_append_events"
-on incomeos_private.financial_events
-for insert to authenticated
-with check (
   owner_id = (select auth.uid())
   and (select incomeos_private.is_allowed_owner())
 );
@@ -105,7 +100,9 @@ create table if not exists incomeos_private.evidence_index (
 alter table incomeos_private.evidence_index enable row level security;
 alter table incomeos_private.evidence_index force row level security;
 revoke all on table incomeos_private.evidence_index from PUBLIC, anon, authenticated;
-grant select, insert on table incomeos_private.evidence_index to authenticated;
+-- Document evidence cannot be labeled owner-reviewed by a direct browser insert.
+-- Verified source matching and appends belong in a protected server transaction.
+grant select on table incomeos_private.evidence_index to authenticated;
 
 create policy "incomeos_owner_read_evidence"
 on incomeos_private.evidence_index
@@ -114,14 +111,6 @@ using (
   owner_id = (select auth.uid())
   and (select incomeos_private.is_allowed_owner())
 );
-create policy "incomeos_owner_append_evidence"
-on incomeos_private.evidence_index
-for insert to authenticated
-with check (
-  owner_id = (select auth.uid())
-  and (select incomeos_private.is_allowed_owner())
-);
-
 -- No UPDATE/DELETE grants or policies. Trigger blocks even privileged edits
 -- unless an administrator explicitly replaces the controlled function.
 create or replace function incomeos_private.reject_mutation()
@@ -149,11 +138,11 @@ commit;
 -- POST-MIGRATION ACCEPTANCE (must be executed against separate, throwaway test DB):
 --  anon: no schema/table permissions, no function execute privilege.
 --  authenticated non-owner: no rows and no append rights.
---  authenticated allowlisted owner: own select and append only.
+--  authenticated allowlisted owner: own SELECT only; direct INSERT denied.
 --  owner cannot write with a different owner_id.
 --  owner cannot UPDATE or DELETE any event or evidence.
 --  repeated seq/event_id/hash rejected; size and shape constraints enforced.
---  concurrent append head sequencing must be enforced by a separately reviewed
+--  all event and evidence appends must be performed by a separately reviewed
 --  serialized server API; unique seq alone is insufficient.
 --  schema policies remain effective after exposure changes and migrations.
 --  server must independently verify SHA-256 hash chain, session, owner allowlist.
