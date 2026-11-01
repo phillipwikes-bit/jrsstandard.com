@@ -333,3 +333,107 @@ body.jrs-institutional.jrs-longform :where(.module-status,.kit-doc-meta,.section
  body.jrs-institutional :where(main){box-shadow:none!important;border:0!important}
  body.jrs-institutional a{color:#123e5a!important}
 }
+
+/* Layer 2: long-form publications retain their own tools, but share reading scale. */
+body.jrs-institutional.jrs-longform :where(.page-section){
+ background:#f5f7f8!important;color:#1e354b!important
+}
+body.jrs-institutional.jrs-longform :where(.page-section p,.page-section li,
+ .page-section .intro-text,.page-section .card-text,.hero-section p){
+ font-size:16px!important;line-height:1.75!important;color:#40576a!important
+}
+body.jrs-institutional.jrs-longform :where(.page-section h1,.page-title,.hero-h1){
+ font:normal clamp(38px,4.4vw,57px)/1.16 Georgia,serif!important;color:#193148!important
+}
+body.jrs-institutional.jrs-longform :where(.page-section h2,.page-section .section-head,
+ .hero-section h2){
+ font:normal clamp(26px,2.35vw,34px)/1.25 Georgia,serif!important;color:#193148!important
+}
+body.jrs-institutional.jrs-longform :where(.page-section h3){
+ font:600 22px/1.36 Inter,system-ui,sans-serif!important;color:#213d55!important
+}
+body.jrs-institutional.jrs-longform :where(.hero-section){
+ background:#ebf2f6!important;border-bottom:1px solid #d1dfe6!important
+}
+body.jrs-institutional.jrs-longform :where(.hero-inner){
+ max-width:1160px!important
+}
+body.jrs-institutional.jrs-longform :where(.hero-eyebrow,.hero-tag){
+ color:#6d5125!important;font:700 13px/1.5 Inter,system-ui,sans-serif!important;
+ letter-spacing:.02em!important;text-transform:none!important
+}
+body.jrs-institutional.jrs-longform :where(.hero-h1){
+ max-width:970px!important
+}
+body.jrs-institutional.jrs-longform :where(.hero-sub){
+ max-width:880px!important;color:#3f596d!important;
+ font:400 18px/1.75 Inter,system-ui,sans-serif!important
+}
+body.jrs-institutional.jrs-longform :where(.btn-hero-primary,.btn-hero-secondary,.btn-hero-ghost){
+ font:700 15px/1.45 Inter,system-ui,sans-serif!important;letter-spacing:0!important;
+ text-transform:none!important;min-height:48px!important;padding:12px 17px!important;
+ border-radius:4px!important
+}
+body.jrs-institutional.jrs-longform :where(.btn-hero-primary){
+ background:#173e5b!important;color:white!important;border-color:#173e5b!important
+}
+body.jrs-institutional.jrs-longform :where(.btn-hero-secondary,.btn-hero-ghost){
+ background:#fff!important;color:#193d58!important;border:1px solid #a9bfcb!important
+}
+body.jrs-institutional.jrs-longform :where(.primary-nav,.sticky-nav){
+ background:#edf3f6!important;border-bottom:1px solid #d0dde5!important;
+ box-shadow:none!important
+}
+body.jrs-institutional.jrs-longform :where(.primary-nav .nav-item,.sticky-nav .sticky-nav-link,.sticky-nav .sticky-nav-cta){
+ background:transparent!important;color:#2a5069!important;border-bottom:2px solid transparent!important;
+ font:600 13px/1.35 Inter,system-ui,sans-serif!important;
+ letter-spacing:0!important;text-transform:none!important;
+ min-height:43px!important;padding:11px 13px!important
+}
+body.jrs-institutional.jrs-longform :where(.primary-nav .nav-item.active,
+ .primary-nav .nav-item:hover,.sticky-nav .sticky-nav-link:hover){
+ border-bottom-color:#a17a3f!important;background:#e4edf2!important;color:#143c59!important
+}
+body.jrs-institutional.jrs-longform :where(.primary-nav-inner){
+ max-width:1200px!important;margin:auto!important;justify-content:flex-start!important;
+ display:flex!important;flex-wrap:wrap!important
+}
+body.jrs-institutional.jrs-longform :where(.nav-current-section,.nav-hamburger){
+ color:#23445c!important;font:600 14px Inter,system-ui,sans-serif!important
+}
+body.jrs-institutional.jrs-longform :where(.page-section .card,.page-section .callout,
+ .page-section .onboarding-strip,.page-section .onboarding-inner,.page-section .visitor-orient-cell,
+ .page-section .ob-step,.page-section .review-grid,.page-section .worksheet-header){
+ background:#ffffff!important;color:#1e354b!important;border-color:#d7e2e9!important
+}
+body.jrs-institutional.jrs-longform :where(.ob-text,.visitor-orient-text,.ob-label,
+ .visitor-orient-title,.visitor-orient-label,.module-status,.kit-doc-type,.kit-doc-meta,
+ .kit-notice,.progress-label-row,.progress-section-label,.condition-label,.condition-title){
+ font-size:14px!important;line-height:1.6!important;letter-spacing:.01em!important
+}
+body.jrs-institutional.jrs-longform :where(.back-to-site){
+ color:#f0f4f7!important;font:600 14px Inter,system-ui,sans-serif!important
+}
+body.jrs-institutional :where(.gcard-title){
+ color:#1d384f!important;font:600 23px/1.3 Inter,system-ui,sans-serif!important
+}
+body.jrs-institutional :where(.gcard .dl,.gcard a.dl-direct){
+ background:#173d5b!important;color:white!important;border-color:#173d5b!important
+}
+body.jrs-institutional :where(.start-grid){gap:14px!important}
+body.jrs-institutional :where(.start-link){min-height:110px!important;padding:18px!important}
+body.jrs-institutional :where(.section-label){margin-top:38px!important}
+body.jrs-institutional :where(.cards){gap:17px!important}
+body.jrs-institutional :where(.card){min-height:0!important}
+body.jrs-institutional :where(.card-title){font:600 24px/1.32 Inter,system-ui,sans-serif!important}
+body.jrs-institutional :where(.stats .stat strong){color:#203b52!important}
+body.jrs-institutional :where(.cred,.microcopy,.gcard-meta,.footer-note){
+ color:#4f6475!important;font-size:14px!important;line-height:1.6!important
+}
+@media(max-width:680px){
+ body.jrs-institutional.jrs-longform :where(.primary-nav-inner){justify-content:flex-start!important}
+ body.jrs-institutional.jrs-longform :where(.primary-nav-mobile-bar){background:#e6eef3!important}
+ body.jrs-institutional.jrs-longform :where(.hero-inner){padding-left:18px!important;padding-right:18px!important}
+ body.jrs-institutional.jrs-longform :where(.hero-h1){font-size:clamp(35px,9vw,45px)!important}
+ body.jrs-institutional :where(.start-grid,.cards){grid-template-columns:1fr!important}
+}
