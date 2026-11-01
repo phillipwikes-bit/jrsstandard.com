@@ -18,3 +18,5 @@ jobs:
         run: node --version
       - name: Run institutional reference source gate
         run: node tests/jrs-institutional-reference-regression.mjs
+      - name: Verify public resources, downloads, anchors and evidence boundaries
+        run: node tests/jrs-public-resource-integrity.mjs
