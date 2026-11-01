@@ -1,6 +1,6 @@
 "use strict";
 (function(){
-  var KEY="incomeos.research.radar.v1",engine=window.IncomeOSResearchRadar;
+  var KEY="incomeos.research.radar.v1",engine=window.IncomeOSResearchRadar,adapter=window.IncomeOSPublicFeedAdapter;
   var db={version:1,preferences:{minPay:100,maxScreenMinutes:15,remoteOnly:true},leads:[],progress:{}},publicLeads=[],latest=null;
   var statuses=["New","Reviewing","Applied","Invited","Completed","Paid (self-reported)","Declined","Not eligible"];
   var $=function(id){return document.getElementById(id);};
@@ -31,7 +31,7 @@
     visible.forEach(function(v){
       var s=v.candidate,div=add(root,"article","radar-card"),heading=add(div,"div","radar-heading");
       add(heading,"strong","",s.title);add(heading,"span","",v.priority.replaceAll("_"," "));
-      add(div,"p","muted",s.provider+" · "+s.mode+" · "+s.minutes+" minute session · advertised "+usd(s.paymentUsd)+" · deadline "+s.eventEnd);
+      add(div,"p","muted",s.provider+" · "+s.mode+" · "+s.minutes+" minute session · advertised "+usd(s.paymentUsd)+" · "+(s.eventEnd?(s.dateType==="application-deadline"?"application deadline ":"last published session date ")+s.eventEnd:"no published application deadline"));
       add(div,"p","muted","Session-only equivalent "+usd(v.sessionRate)+"/hr"+(v.sessionPlusScreenRate===null?" · screening effort unknown":" · including specified screening "+usd(v.sessionPlusScreenRate)+"/hr")+". Selection and payment are not guaranteed.");
       if(s.eligibility.length)add(div,"p","muted","Published requirements: "+s.eligibility.join("; "));
       var flags=v.reasons.concat(v.warnings);
@@ -57,8 +57,8 @@
   }
   function quote(x){var s=String(x==null?"":x);if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
   function exportCsv(){
-    var rows=[["ID","Provider","Title","Advertised USD","Session minutes","Screen minutes","Mode","Deadline","Source reviewed","Screening priority","Review flags","Owner progress","Application URL","Source URL"]];
-    latest.results.forEach(function(v){var s=v.candidate;rows.push([s.id,s.provider,s.title,s.paymentUsd,s.minutes,s.screenMinutes??"",s.mode,s.eventEnd,s.reviewed,v.priority,v.reasons.concat(v.warnings).join("; "),db.progress[s.id]||"New",s.url,s.sourceUrl]);});
+    var rows=[["ID","Provider","Title","Advertised USD","Session minutes","Screen minutes","Mode","Published End Date","Date Type","Source reviewed","Screening priority","Review flags","Owner progress","Application URL","Source URL"]];
+    latest.results.forEach(function(v){var s=v.candidate;rows.push([s.id,s.provider,s.title,s.paymentUsd,s.minutes,s.screenMinutes??"",s.mode,s.eventEnd||"",s.dateType,s.reviewed,v.priority,v.reasons.concat(v.warnings).join("; "),db.progress[s.id]||"New",s.url,s.sourceUrl]);});
     download(rows.map(function(x){return x.map(quote).join(",");}).join("\r\n")+"\r\n","IncomeOS-research-radar-"+today()+".csv","text/csv;charset=utf-8");
   }
   async function importLeads(){
@@ -66,21 +66,21 @@
     if(!f){notice.textContent="Select a JSON file containing reviewed public research candidates.";return;}
     if(f.size>250000){notice.textContent="The research file exceeds the 250 KB limit.";return;}
     try{
-      var doc=JSON.parse(await f.text()),records=Array.isArray(doc)?doc:doc&&doc.studies;
-      if(!Array.isArray(records)||!records.length||records.length>200)throw new Error("Expected one to 200 sourced studies");
-      var parsed=records.map(function(x){return engine.candidate(x);});
+      var doc=JSON.parse(await f.text()),result=adapter.collect(doc);
+      if(!result.accepted)throw new Error("No public opportunities passed intake verification ("+result.rejected.length+" rejected)");
+      var parsed=result.items;
       var existing=engine.dedupe(combined()).items,unique=engine.dedupe(existing.concat(parsed));
       var incoming=unique.items.filter(function(x){return !publicLeads.some(function(p){return p.id===x.id;});});
       var added=incoming.filter(function(x){return !db.leads.some(function(e){return e.id===x.id;});}).length;
-      if(!confirm("Import "+parsed.length+" public research rows, including "+added+" new local candidates? Their availability and eligibility are not confirmed."))return;
+      if(!confirm("Review "+result.received+" public rows: "+result.accepted+" validated, "+result.rejected.length+" rejected, "+added+" new local candidates. Import validated records only? Availability and eligibility remain unconfirmed."))return;
       db.leads=incoming.slice(0,200);
-      if(persist()){view();notice.textContent="Imported for local triage. "+unique.skipped+" duplicate candidate(s) skipped. No recruiter was contacted."; }
+      if(persist()){view();notice.textContent="Public-source intake complete: "+result.accepted+" accepted, "+result.rejected.length+" rejected, "+unique.skipped+" duplicate(s) suppressed. No recruiter was contacted."; }
     }catch(e){notice.textContent="No research candidates imported: "+e.message;}finally{$("radar-import-file").value="";}
   }
   function template(){
     var d=today(),sample={
       id:"source-study-1234",title:"Sample participant interview",provider:"Example recruiter",paymentUsd:125,minutes:60,screenMinutes:null,mode:"online",
-      eventEnd:d,reviewed:d,dates:d,eligibility:["Eligibility must be verified"],risk:["Sample only, not an available study"],status:"Availability unconfirmed",
+      eventEnd:d,dateType:"application-deadline",reviewed:d,dates:d,eligibility:["Eligibility must be verified"],risk:["Sample only, not an available study"],status:"Availability unconfirmed",
       linkKind:"Direct screener",url:"https://example.org/survey/1234",sourceUrl:"https://example.org/study/1234"
     };
     download(JSON.stringify({asOf:d,studies:[sample]},null,2),"IncomeOS-research-import-example.json","application/json");
@@ -90,12 +90,14 @@
       var response=await fetch("./opportunities.json",{cache:"no-store",credentials:"same-origin"});
       if(!response.ok)throw new Error("No current research feed");
       var data=await response.json();
-      publicLeads=Array.isArray(data.studies)?data.studies.map(function(x){try{return engine.candidate(x);}catch(e){return null;}}).filter(Boolean):[];
+      var result=adapter.collect(data);
+      publicLeads=result.items;
       view();
+      $("radar-status").textContent="Dated, local public snapshot: "+result.accepted+" verified-format records accepted, "+result.rejected.length+" rejected. Not a live recruiter or financial account connection.";
     }catch(e){$("radar-status").textContent="Public research snapshot unavailable. Only previously imported local candidates are shown.";view();}
   }
   function init(){
-    if(!$("radar-results")||!engine)return;
+    if(!$("radar-results")||!engine||!adapter)return;
     load();
     $("radar-min-pay").value=db.preferences.minPay;$("radar-max-screen").value=db.preferences.maxScreenMinutes;$("radar-remote").checked=db.preferences.remoteOnly;
     $("radar-preferences").addEventListener("submit",function(e){
