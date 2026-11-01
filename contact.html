@@ -21,6 +21,19 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
 .button{display:inline-block;background:var(--gold);color:#0a0907;text-decoration:none;font-weight:700;padding:14px 19px;min-height:48px}
 .small{font-size:14px}footer{border-top:1px solid var(--line);padding:22px 24px;font-size:13px;color:var(--muted);text-align:center}
 @media(max-width:600px){main{padding:40px 19px 64px}.card{padding:22px}.jrs-sitenav a{font-size:10px;padding:13px 10px}}
+
+.form-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;margin:18px 0}
+.form-fields label{display:block;color:var(--muted);font-size:14px;margin-bottom:6px}
+.form-fields input,.form-fields select,.form-fields textarea{width:100%;padding:12px;background:#0d0d0c;color:var(--text);border:1px solid #9b907d;font:inherit;font-size:16px;border-radius:2px}
+.form-fields .wide{grid-column:1/-1}
+.form-fields .check{display:flex;gap:11px;align-items:flex-start;line-height:1.5}
+.form-fields .check input{flex:none;width:20px;height:20px;margin-top:2px}
+.form-fields .honeypot{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.submit{border:none;cursor:pointer;font:inherit}
+.submit:disabled{opacity:.55;cursor:not-allowed}
+#captcha{margin:8px 0;min-height:0}
+#contact-status{min-height:42px}
+@media(max-width:650px){.form-fields{grid-template-columns:1fr}.form-fields .wide{grid-column:auto}}
 </style>
 </head>
 <body>
@@ -40,15 +53,91 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
 <main id="main">
  <div class="kicker">Public-interest resources · Voluntary contact</div>
  <h1>Contact JRS</h1>
- <p>Questions about the Justification Review Standard, corrections to published materials, accessibility concerns and voluntary professional feedback are welcome. The investigator guides, training and reviewer references remain free to use without contacting JRS.</p>
- <section class="card" aria-labelledby="emailtitle">
-  <h2 id="emailtitle">Email your inquiry</h2>
-  <p>Select the link below to open your own email application. You will review and send the message yourself. This website does not submit a form or store a contact record when you open the link.</p>
-  <p><a class="button" href="mailto:phillipwikes@gmail.com?subject=JRS%20professional%20inquiry">Email JRS</a></p>
-  <p class="small">This opens your device's mail app. If none is configured, copy the destination address from the link into your preferred mail application.</p>
+ <p>Questions about the Justification Review Standard, corrections to published materials, accessibility concerns and voluntary professional feedback are welcome. The investigator guides, training and reviewer references remain free without registration or contact.</p>
+ <section class="card" aria-labelledby="inquiry-title">
+  <h2 id="inquiry-title">Send an inquiry</h2>
+  <p>Complete the form below. Professional inquiries are separate from research enrollment, marketing and any software transaction. No case records or attachments are accepted.</p>
+  <form id="jrs-inquiry" novalidate>
+   <div class="form-fields">
+    <div><label for="contact-name">Name *</label><input id="contact-name" name="name" autocomplete="name" required minlength="2" maxlength="120"></div>
+    <div><label for="contact-email">Email address *</label><input id="contact-email" name="email" autocomplete="email" type="email" required maxlength="160"></div>
+    <div><label for="contact-org">Organization (optional)</label><input id="contact-org" name="organization" autocomplete="organization" maxlength="160"></div>
+    <div><label for="contact-category">Inquiry category *</label><select id="contact-category" name="category" required>
+     <option value="">Select a topic</option>
+     <option value="method">JRS method and implementation questions</option>
+     <option value="research">Research and collaboration</option>
+     <option value="training">Free guides, training and references</option>
+     <option value="organization">Organizational practitioner use</option>
+     <option value="accessibility">Accessibility or corrections</option>
+     <option value="general">Other professional inquiry</option>
+    </select></div>
+    <div class="wide"><label for="contact-message">Message (12 to 1,200 characters) *</label><textarea id="contact-message" name="message" required minlength="12" maxlength="1200" rows="6" placeholder="Describe the general question. Do not include records or personal details about third parties."></textarea></div>
+    <div class="honeypot" aria-hidden="true"><label for="contact-website">Website</label><input id="contact-website" name="company_website" autocomplete="off" tabindex="-1"></div>
+    <div class="wide"><label class="check"><input id="contact-consent" name="consent" type="checkbox" required><span>I agree to be contacted about this inquiry. This does not authorize research enrollment, marketing, publication, or transfer of my details. I have read the <a href="privacy-notice.html">privacy notice</a>. *</span></label></div>
+   </div>
+   <div id="captcha" aria-label="Submission verification"></div>
+   <button class="button submit" id="contact-submit" type="submit">Prepare email in my email app</button>
+   <p class="small" id="contact-status" role="status" aria-live="polite">The email-app option is available now. Website submission will activate only after independent storage, spam protection and notification checks.</p>
+  </form>
+  <p class="small">If your device has no email application configured, email <a href="mailto:phillipwikes@gmail.com?subject=JRS%20professional%20inquiry">phillipwikes@gmail.com</a> directly.</p>
  </section>
  <p><strong>Privacy and scope.</strong> Do not email case files, confidential employment or housing records, credentials, privileged material or identifying information about third parties. An inquiry does not create research enrollment, a software license, a commercial commitment or consent to marketing.</p>
  <p><a href="privacy-notice.html">Read the privacy notice</a> · <a href="resources.html">Return to free JRS resources</a></p>
 </main>
 <footer>JRS™ and Justification Review Standard™ · Public professional resources · © 2026</footer>
+<script>
+(function(){
+  const f=document.getElementById('jrs-inquiry');
+  const button=document.getElementById('contact-submit');
+  const status=document.getElementById('contact-status');
+  let mode='email',token='',widget=null;
+  function say(value){status.textContent=value;}
+  function fallback(){mode='email';token='';button.disabled=false;button.textContent='Prepare email in my email app';say('The secure website inbox is not yet active. Complete this form to prepare an email, then press Send in your email app. The website itself will not send it.');}
+  function mail(){
+    const d=new FormData(f),cat=f.elements.category.selectedOptions[0]?.textContent||'General inquiry';
+    const lines=['JRS professional inquiry','', 'Name: '+d.get('name'),'Email: '+d.get('email'),'Organization: '+(d.get('organization')||'Not supplied'),'Topic: '+cat,'','Message:',d.get('message')];
+    const to='phillipwikes@gmail.com';
+    const link='mailto:'+to+'?subject='+encodeURIComponent('JRS inquiry: '+cat)+'&body='+encodeURIComponent(lines.join('\n'));
+    say('Your email application should open with the completed message. Review it and press Send there. No email has been sent by the website.');
+    window.location.href=link;
+  }
+  const params=new URLSearchParams(window.location.search);
+  const requested=params.get('category');
+  if(['method','research','training','organization','accessibility','general'].includes(requested))f.elements.category.value=requested;
+  fetch('/api/site-inquiry-config',{credentials:'same-origin',cache:'no-store'}).then(r=>{if(!r.ok)throw Error('service');return r.json()}).then(cfg=>{
+    if(!cfg.enabled || !cfg.site_key){fallback();return}
+    const s=document.createElement('script');s.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';s.async=true;
+    s.onload=function(){
+      if(!window.turnstile){fallback();return}
+      button.disabled=true;button.textContent='Verify to send inquiry';
+      widget=window.turnstile.render('#captcha',{sitekey:cfg.site_key,
+        callback:function(t){token=t;mode='web';button.disabled=false;button.textContent='Submit inquiry';say('Verification complete. Submit your inquiry to the private JRS contact record.');},
+        'expired-callback':function(){token='';button.disabled=true;say('Verification expired. Please complete it again.');},
+        'error-callback':function(){fallback();}
+      });
+    };s.onerror=fallback;document.head.appendChild(s);
+  }).catch(fallback);
+  f.addEventListener('submit',async function(event){
+    event.preventDefault();
+    if(!f.reportValidity())return;
+    if(mode==='email'){mail();return}
+    if(!token){say('Complete the verification before submitting.');return}
+    button.disabled=true;say('Submitting securely...');
+    const d=Object.fromEntries(new FormData(f).entries());
+    d.consent=f.elements.consent.checked;d.turnstileToken=token;
+    try{
+      const r=await fetch('/api/site-inquiry',{method:'POST',credentials:'same-origin',
+        headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
+      const payload=await r.json();
+      if(!r.ok || payload.stored!==true)throw Error('not_confirmed');
+      f.reset();token='';if(widget!==null&&window.turnstile)window.turnstile.reset(widget);
+      button.disabled=true;say('Inquiry received and recorded for owner review. A separate Gmail alert is attempted only when configured and may not have been delivered.');
+    }catch{
+      token='';if(widget!==null&&window.turnstile)window.turnstile.reset(widget);
+      button.disabled=true;say('The website could not confirm storage. Please use the email-app fallback link below.');
+      const a=document.createElement('a');a.href='mailto:phillipwikes@gmail.com?subject=JRS%20professional%20inquiry';a.textContent='Open email app';a.style.display='block';status.appendChild(document.createTextNode(' '));status.appendChild(a);
+    }
+  });
+})();
+</script>
 </body></html>

@@ -1,0 +1,30 @@
+name: Public JRS contact form safety
+on:
+  pull_request:
+    paths:
+      - 'contact.html'
+      - 'privacy-notice.html'
+      - 'api/site-inquiry*.js'
+      - 'api/_contact-notify.js'
+      - 'tests/public-site-inquiry.test.mjs'
+      - '.github/workflows/public-site-inquiry.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'contact.html'
+      - 'privacy-notice.html'
+      - 'api/site-inquiry*.js'
+      - 'api/_contact-notify.js'
+      - 'tests/public-site-inquiry.test.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-contact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --test tests/public-site-inquiry.test.mjs
