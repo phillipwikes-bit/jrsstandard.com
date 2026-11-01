@@ -19,6 +19,7 @@
 <script defer src="./recovery-ui.js"></script>
 <script defer src="./spend-intelligence.js"></script>
 <script defer src="./research-radar.js"></script>
+<script defer src="./public-feed-adapter.js"></script>
 <script defer src="./decision-engine.js"></script>
 <script defer src="./vault.js"></script>
 <script defer src="./incomeos.js"></script>
@@ -52,7 +53,7 @@
     <div class="panel" id="research-radar-panel">
       <div class="panelrow"><h3>Paid research opportunity radar</h3><button type="button" class="smallbtn" id="radar-rescan">Recheck local feed</button></div>
       <p class="muted">Detect and prioritize sourced survey, interview, usability and focus-group candidates by compensation, screening effort, location, date and published eligibility. Research leads remain distinct from earned income and from passive investments.</p>
-      <p class="muted"><strong>No live recruiter connection.</strong> The radar checks a dated research snapshot and reviewed JSON imports. The existing ChatGPT hourly research alerts are separate and do not synchronize automatically into this browser workspace. An advertised incentive is not a confirmed seat or payment.</p>
+      <p class="muted"><strong>No live recruiter connection.</strong> The radar checks a dated research snapshot and reviewed public JSON imports, including the public opportunity-feed export structure. The existing ChatGPT hourly research alerts are separate and do not synchronize automatically into this browser workspace. An advertised incentive is not a confirmed seat or payment.</p>
       <form id="radar-preferences">
         <div class="formgrid">
           <div><label for="radar-min-pay">Minimum advertised compensation ($)</label><input type="number" id="radar-min-pay" value="100" min="0" max="100000" step="1" inputmode="decimal"></div>
