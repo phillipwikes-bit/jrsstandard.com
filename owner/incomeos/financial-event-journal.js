@@ -166,7 +166,8 @@
     var outstanding=state.posted.size-reviewed;
     return {count:v.count,hash:v.headHash,activePostings:state.posted.size,ownerReviewedPostings:reviewed,
       nonReviewedPostings:outstanding,unclassified:unclassified,pendingReview:pending,ownerReviewedByClass:totals,
-      earnedIncomeUsd:(totals.earned_income||0)+(totals.investment_income||0),
+      earnedIncomeUsd:(totals.earned_income||0),investmentCashIncomeUsd:(totals.investment_income||0),
+      totalReceivedIncomeUsd:(totals.earned_income||0)+(totals.investment_income||0),
       returnedCapitalUsd:(totals.refund||0)+(totals.returned_principal||0),
       issues:issues,
       closeGate:{status:outstanding===0?"JOURNAL_REVIEW_COMPLETE_ONLY":"HOLD",readyForTaxFiling:false,
