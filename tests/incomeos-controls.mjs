@@ -55,8 +55,20 @@ let tampered=JSON.parse(encrypted),data=tampered.data;
 tampered.data=(data[0]==="A"?"B":"A")+data.slice(1);
 await assert.rejects(()=>safe.decrypt(pass,JSON.stringify(tampered)));
 const newMap=new Map();
-safe.restore({setItem:(k,v)=>newMap.set(k,v),removeItem:(k)=>newMap.delete(k)},decoded);
+safe.restore({getItem:(k)=>newMap.get(k)??null,setItem:(k,v)=>newMap.set(k,v),removeItem:(k)=>newMap.delete(k)},decoded);
 assert.equal(newMap.get("incomeos.owner.prototype.v1"),map.get("incomeos.owner.prototype.v1"));
+const beforeFailure=new Map([["incomeos.accountant.v1",JSON.stringify({version:2,entries:[{id:"old-synthetic"}]})],["incomeos.spend.preferences.v1",JSON.stringify({version:1,budgets:{},plans:[]})]]);
+const originalFailureState=Array.from(beforeFailure.entries());
+let threwAfterMutate=false;
+const flaky={
+  getItem:k=>beforeFailure.get(k)??null,
+  setItem(k,v){beforeFailure.set(k,v);if(k==="incomeos.owner.prototype.v1"&&!threwAfterMutate){threwAfterMutate=true;throw Error("Synthetic quota error");}},
+  removeItem(k){beforeFailure.delete(k);}
+};
+assert.throws(()=>safe.restore(flaky,decoded),/original browser records were restored/);
+assert.deepEqual(Array.from(beforeFailure.entries()),originalFailureState,"Failed restore must roll back attempted writes, including a mutation-before-throw");
+assert.throws(()=>safe.restore({setItem:()=>{},removeItem:()=>{}},decoded),/Storage interface/);
+
 assert.throws(()=>safe.verify({version:1,values:{"localStorage.any":JSON.stringify({})}}));
 assert.match(html,/id="decision-review-form"/);
 assert.match(html,/id="net-scenario-form"/);
