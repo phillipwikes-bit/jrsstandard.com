@@ -57,7 +57,7 @@
       if(types.length===1&&["transfer_in","transfer_out"].includes(types[0].data.classification))
         activeTransfers.add(postId);
     });
-    var usedEvents=new Set(),matched=[],pairedBankIds=new Set();
+    var usedEvents=new Set(),matched=[];
     input.pairs.forEach(function(pair,i){
       try{
         exact(pair,["id","kind","debitEventId","creditEventId","reviewEvidenceId"]);
@@ -96,7 +96,6 @@
           to.balanceType!==(pair.kind==="CREDIT_CARD_PAYMENT"?"liability":"asset"))
           throw Error("Destination and source account ownership and types must be supported");
         usedEvents.add(pair.debitEventId);usedEvents.add(pair.creditEventId);
-        pairedBankIds.add(first.bankSourceId);pairedBankIds.add(last.bankSourceId);
         matched.push({pairId:pair.id,kind:pair.kind,amountCents:debit.data.amountCents,
           debitEventId:pair.debitEventId,creditEventId:pair.creditEventId,
           accounts:{from:sourceAccount,to:targetAccount},ownerReviewedSourceOnly:true});
@@ -118,9 +117,12 @@
     });
     if(!Number.isSafeInteger(total)||!Number.isSafeInteger(bankTransfer)||!Number.isSafeInteger(cardPayment))
       throw Error("Transfer sum exceeds safe integer precision");
-    return {status:issues.length?"HOLD":"READY_FOR_ACCOUNTANT_PAIR_REVIEW_ONLY",sourceStatus:source.gate.status,
-      matchedPairs:matched,unpairedTransferEventIds:unpaired,issues:issues,
-      ownerReviewedInternalTransferCents:bankTransfer,ownerReviewedCardPaymentCents:cardPayment,
+    var clear=issues.length===0;
+    return {status:clear?"READY_FOR_ACCOUNTANT_PAIR_REVIEW_ONLY":"HOLD",sourceStatus:source.gate.status,
+      matchedPairs:clear?matched:[],unpairedTransferEventIds:unpaired,issues:issues,
+      tentativePairCount:matched.length,
+      ownerReviewedInternalTransferCents:clear?bankTransfer:null,
+      ownerReviewedCardPaymentCents:clear?cardPayment:null,
       earnedIncomeAddedCents:0,operatingExpenseAddedCents:0,
       independentStatementAuthentication:false,actualOwnerAccountAccess:false,
       executable:false,taxConclusion:false,
