@@ -13,6 +13,8 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="stylesheet" href="./incomeos.css">
 <script defer src="./accountant.js"></script>
+<script defer src="./accounting-controls.js"></script>
+<script defer src="./accounting-controls-ui.js"></script>
 <script defer src="./spend-intelligence.js"></script>
 <script defer src="./research-radar.js"></script>
 <script defer src="./decision-engine.js"></script>
@@ -91,6 +93,13 @@
       </div>
       <p class="muted">*Not taxable profit or cash available to invest. Reported fees and costs are not necessarily tax deductible. Pending payments, recovered principal, and unreconciled sale proceeds are tracked separately.</p>
       <div class="reportactions"><button type="button" class="mainbtn" id="print-accountant">Print / Save annual report as PDF</button><button type="button" class="smallbtn" id="export-ledger">Export detailed CSV</button><button type="button" class="smallbtn" id="backup-ledger">Download private JSON backup</button></div>
+    </div>
+    <div class="panel" id="accounting-control-panel">
+      <div class="panelrow"><h3>Accounting evidence and close control</h3><button type="button" class="smallbtn" id="accounting-control-refresh">Check record controls</button></div>
+      <p class="muted">Independent source coverage and bank matching are required before a period can be considered ready for accountant review. The current browser interface cannot access your connected accounts and will hold the close until verified source data becomes available through a protected service.</p>
+      <p class="muted">Manual reconciliation checkboxes are self-reported and are not independent financial verification. Amount/date similarities are never sufficient to classify a bank credit as earned income. Do not import bank statements into this public-source development branch or an unprotected deployment.</p>
+      <p id="accounting-control-status" class="muted" role="status" aria-live="polite">Accounting close not assessed.</p>
+      <div id="accounting-control-results" class="accounting-control-results"></div>
     </div>
     <div class="panel" id="spend-intelligence-panel">
       <div class="panelrow"><h3>Spending intelligence and cash-flow planning</h3><button type="button" class="smallbtn" id="spend-refresh">Analyze records</button></div>
