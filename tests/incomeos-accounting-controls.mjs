@@ -82,4 +82,24 @@ assert.match(html,/accounting-controls-ui\.js/);
 assert.match(ui,/analyze\(entries,\[\],\[\]\)/,"Browser must not pretend to receive bank transactions");
 assert.doesNotMatch(source+ui,/XMLHttpRequest|WebSocket|sendBeacon|fetch\s*\(/);
 assert.match(security,/P0, blocking/);
+const staging=read("staging-interlock.js");
+new Script(staging);
+const controls = new Map();
+const makeControl=(id,form=false)=>{
+  const x={disabled:false,hidden:true,dataset:{},attributes:{},setAttribute(k,v){this.attributes[k]=v;},tagName:form?"FORM":"BUTTON",
+    children:form?[{disabled:false,attributes:{},setAttribute(k,v){this.attributes[k]=v;}}]:[],
+    querySelectorAll(){return this.children;}};
+  controls.set(id,x);return x;
+};
+makeControl("receipt-form",true);makeControl("cost-form",true);
+makeControl("import-trigger");makeControl("import-csv-trigger");makeControl("vault-import");makeControl("vault-file");
+makeControl("financial-staging-interlock");makeControl("accounting-control-status");
+runInNewContext(staging,{document:{readyState:"complete",getElementById:id=>controls.get(id)||null}});
+assert.equal(controls.get("receipt-form").children[0].disabled,true);
+assert.equal(controls.get("cost-form").children[0].disabled,true);
+assert.equal(controls.get("vault-import").disabled,true);
+assert.equal(controls.get("financial-staging-interlock").hidden,false);
+assert.equal(controls.get("accounting-control-status").dataset.stagingLock,"active");
+assert.match(html,/id="financial-staging-interlock"/);
+assert.match(html,/staging-interlock\.js/);
 console.log("IncomeOS accounting controls QA passed: cents, source identity, reconciliation, duplicate references, refund classification, fail-closed close gate and privacy.");
