@@ -19,7 +19,7 @@
       nav.setAttribute('data-open',String(open));
       button.setAttribute('aria-expanded',String(open));
       button.setAttribute('aria-label',open?'Close site navigation':'Open site navigation');
-      button.innerHTML=open?'<span aria-hidden="true">&#215;</span><span>Close site menu</span>':'<span aria-hidden="true">&#9776;</span><span>Menu</span>';
+      button.innerHTML=open?'<span aria-hidden="true">&#215;</span><span>Close site menu</span>':'<span aria-hidden="true">&#9776;</span><span>Site menu</span>';
     }
     button.addEventListener('click',function(){
       setOpen(nav.getAttribute('data-open')!=='true');
