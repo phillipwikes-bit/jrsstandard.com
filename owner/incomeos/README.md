@@ -126,3 +126,17 @@ The current publicly readable GitHub repo cannot itself provide owner-only priva
 The public-feed adapter now reads both the dated local study snapshot and exported public opportunity records, retaining source dates and unknown application deadlines. It excludes unrecognized or personal fields. The financial-value model separates owner-reviewed earned income, investment income, refunds, returned capital, sale proceeds, and observed bill savings, while preventing research income from being counted twice. Interrupted encrypted-backup restoration now attempts to roll back earlier browser writes. Synthetic regressions cover these cases.
 
 These changes are development-only, not a deployed or authenticated financial service. Do not enter private financial data until the P0 deployment protections are independently verified.
+
+
+## 2026-11-01 capital and investment controls increment
+
+This incremental release provides two new source-only modules:
+
+- `capital-readiness.js` calculates a **preliminary, non-executable** cash capacity from owner-declared cash account usage and statement-close evidence. It excludes liability accounts, credit limits, noncash holdings, restricted cash, unsettled debits, confirmed near-term obligations, and separately reviewed emergency/tax/other reserves. Missing sources, classifications, coverage, or approvals produce a HOLD and a null preliminary capacity. Even a clean result is only `READY_FOR_OWNER_CAPITAL_REVIEW_ONLY`, not a verified account balance or permission to invest.
+- `investment-cashflow.js` reconciles cash distributions, capital deployed, returned principal, and sale proceeds to distinct reviewed financial-journal postings and matched documentation. It can link a distribution to a distinct capital-deployment posting for review of a potential reinvestment, without counting the same receipt again. Sale proceeds cannot establish profit without lots and cost-basis records. A source-linked reinvestment is not independent confirmation from the brokerage or provider.
+
+The iPhone compounding view now includes a read-only `capital-review-ui.js` panel. Staging intentionally has no bank, broker, cash-balance or obligation evidence, so the panel displays a HOLD with no fictional available-to-invest number. No owner financial input was enabled.
+
+Synthetic regression suites `tests/incomeos-capital-readiness.mjs` and `tests/incomeos-investment-cashflow.mjs` were added to required CI. The secure-deployment gate and the prohibition on actual financial execution remain unchanged.
+
+Neither the private account population nor actual owner investment holdings, fees, dividends, basis or reinvestment elections have been verified. Production use still requires a separate protected financial service, independently tested access controls, authenticated statement ingestion, and an explicit owner release decision.
