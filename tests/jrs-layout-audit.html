@@ -66,10 +66,25 @@
    const scrollWidth=d.documentElement.scrollWidth;
    const vw=w.innerWidth;
    const title=d.title;
-   const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw+8 &&
-      !!toggle && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed): buttonDisplay==='none');
+   const controlsValid=!!toggle && toggle.getAttribute('aria-controls')===nav?.id;
+   let escapeClosed=true;
+   if(narrow && toggle && nav){
+     toggle.click();
+     d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+     escapeClosed=toggle.getAttribute('aria-expanded')==='false' &&
+       w.getComputedStyle(nav).display==='none' && d.activeElement===toggle;
+   }
+   // No horizontal overflow tolerance: one pixel is a failure, not a rounding allowance.
+   const overflowElements=scrollWidth>vw ? [...d.body.querySelectorAll('*')]
+     .filter(e=>{const rect=e.getBoundingClientRect();return rect.width>0 && rect.right>vw+0.5;})
+     .slice(0,8).map(e=>({element:e.tagName.toLowerCase(),
+       selector:e.id?'#'+e.id:(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\\s+/).slice(0,2).join('.'):e.tagName.toLowerCase()),
+       right:Math.round(e.getBoundingClientRect().right)})) : [];
+   const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
+      controlsValid && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
+     escapeClosed,controlsValid,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
