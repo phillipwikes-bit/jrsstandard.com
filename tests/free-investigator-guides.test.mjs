@@ -76,7 +76,7 @@ test('07 the site-wide canonical navigation is preserved unaltered for this scop
 });
 
 test('08 ordinary reading links and accurate research limitations remain',()=>{
-  for(const url of ['check.html','training.html','resources.html','review-engine.html'])
+  for(const url of ['check.html','training.html','resources.html','research.html'])
     assert(html.includes('href="'+url+'"'),url);
   assert(html.includes('They do not constitute legal advice'));
 });
