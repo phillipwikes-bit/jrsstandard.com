@@ -28,7 +28,7 @@
     if(!e || !["income","outflow"].includes(e.kind) || !datesMatch(e))return false;
     if(!e.label || typeof e.label!=="string" || e.label.length>120)return false;
     if(e.kind==="income")return CATEGORIES.includes(e.category) && num(e.grossUsd)>0 && num(e.grossUsd)<=1e10 && num(e.feesUsd)>=0 && num(e.feesUsd)<=num(e.grossUsd) && STATUS.includes(e.status) && SCOPES.includes(e.scope);
-    return EXPENSE_TYPES.includes(e.type) && COST_CATEGORIES.includes(e.category) && num(e.amountUsd)>0 && num(e.amountUsd)<=1e10 && num(e.businessUse)>=0 && num(e.businessUse)<=100;
+    return EXPENSE_TYPES.includes(e.type) && COST_CATEGORIES.includes(e.category) && num(e.amountUsd)>0 && num(e.amountUsd)<=1e10 && (e.businessUse===null || (num(e.businessUse)>=0 && num(e.businessUse)<=100));
   }
   function write(){try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){alert("IncomeOS could not save locally. Available browser storage may be full.");return false;}}
   function migrateLegacy(){
@@ -70,7 +70,8 @@
       gross:sum(income,function(e){return e.grossUsd}),
       fees:sum(income,function(e){return e.feesUsd}),
       expenses:sum(expenses,function(e){return e.amountUsd}),
-      possibleBusinessUse:sum(expenses,function(e){return e.amountUsd*e.businessUse/100}),
+      possibleBusinessUse:sum(expenses,function(e){return e.businessUse===null ? 0 : e.amountUsd*e.businessUse/100}),
+      allocationPending:expenses.filter(function(e){return e.businessUse===null || e.businessUse===undefined;}).length,
       taxPaid:sum(taxpayments,function(e){return e.amountUsd}),
       capital:sum(capital,function(e){return e.amountUsd}),
       otherOutflow:sum(other,function(e){return e.amountUsd}),
@@ -92,7 +93,7 @@
     $(formId).reset();
     $(kind==="income"?"receipt-date":"cost-date").value=today();
     if(kind==="income"){$("receipt-fx").value="1";$("receipt-fees").value="0";$("receipt-cancel").hidden=true;$("receipt-save").textContent="Save income entry";editingIncome=null;}
-    else{$("cost-business-use").value="0";$("cost-cancel").hidden=true;$("cost-save").textContent="Save outflow";editingCost=null;}
+    else{$("cost-business-use").value="";$("cost-cancel").hidden=true;$("cost-save").textContent="Save outflow";editingCost=null;}
   }
   function readIncome(){
     var amount=num($("receipt-amount").value),fx=num($("receipt-fx").value),fees=num($("receipt-fees").value||0);
@@ -110,13 +111,13 @@
     return e;
   }
   function readCost(){
-    var amount=num($("cost-amount").value),pct=num($("cost-business-use").value);
+    var amount=num($("cost-amount").value),rawPct=$("cost-business-use").value.trim(),pct=rawPct===""?null:num(rawPct);
     var e={kind:"outflow",label:limit($("cost-label").value,100),payer:limit($("cost-payee").value,100),
       category:$("cost-category").value,date:$("cost-date").value,type:$("cost-type").value,
       amountUsd:round(amount),businessUse:pct,evidenceStatus:$("cost-evidence-status").value,
       reference:limit($("cost-reference").value,120),notes:limit($("cost-notes").value,500),
       reconciled:$("cost-evidence-status").value==="both",importedFrom:"manual"};
-    if(!Number.isFinite(amount)||amount<=0||!Number.isFinite(pct)||pct<0||pct>100||!validate(e)){alert("Please enter a valid expense description, date, positive amount and business-use percentage from 0 to 100.");return null;}
+    if(!Number.isFinite(amount)||amount<=0||(pct!==null&&(!Number.isFinite(pct)||pct<0||pct>100))||!validate(e)){alert("Please enter a valid expense description, date, positive amount and business-use percentage from 0 to 100.");return null;}
     return e;
   }
   function setValue(id,value){if($(id))$(id).value=value==null?"":String(value);}
@@ -136,7 +137,7 @@
       editingCost=e.id;editingIncome=null;
       setValue("cost-label",e.label);setValue("cost-payee",e.payer);setValue("cost-category",e.category);
       setValue("cost-date",e.date);setValue("cost-amount",e.amountUsd);setValue("cost-type",e.type);
-      setValue("cost-business-use",e.businessUse===undefined?100:e.businessUse);
+      setValue("cost-business-use",e.businessUse);
       setValue("cost-evidence-status",e.evidenceStatus||"missing");
       setValue("cost-reference",e.reference);setValue("cost-notes",e.notes);
       $("cost-save").textContent="Update outflow";$("cost-cancel").hidden=false;
@@ -162,7 +163,7 @@
       ["Asset purchases / contributions, not an expense",t.capital],["Other recorded outflows",t.otherOutflow]
     ];
     data.forEach(function(pair){var row=place(box,"div","accountant-line");place(row,"span","",pair[0]);place(row,"strong","",money(pair[1]));});
-    var note=place(box,"p","muted",t.unreconciled+" item(s) not marked reconciled. "+t.pendingCount+" pending receipt(s). Tax form classification, deductible percentages, capital gains and tax treatment require accountant review.");
+    var note=place(box,"p","muted",t.unreconciled+" item(s) not marked reconciled. "+t.allocationPending+" expense allocation(s) not determined. "+t.pendingCount+" pending receipt(s). A blank allocation is unknown, not 0% or 100%. Tax form classification, deductible percentages, capital gains and tax treatment require accountant review.");
     note.style.marginTop="13px";
     var grp={},forms={};
     rows.forEach(function(e){
@@ -179,7 +180,7 @@
     place(left,"strong","",e.label);
     place(left,"small","",e.date+" · "+(e.kind==="income"?"RECEIPT · "+e.category+" · "+(e.status==="paid"?"Recorded received":"Pending"):"OUTFLOW · "+e.category+" · "+e.type));
     place(left,"small","",e.payer||"Source not identified");
-    if(e.kind==="outflow")place(left,"small","","Business use "+(e.businessUse??100)+"% · Evidence "+(e.evidenceStatus||"missing"));
+    if(e.kind==="outflow")place(left,"small","","Business use "+(e.businessUse===null||e.businessUse===undefined?"not determined":String(e.businessUse))+"% · Evidence "+(e.evidenceStatus||"missing"));
     if(!e.reconciled)place(left,"small notice","Not reconciled to source evidence");
     var right=place(out,"div","entry-actions");
     place(right,"div","amt"+((e.status==="pending")?" pending":""),(e.kind==="outflow"?"−":"+")+money(e.kind==="income"?e.grossUsd:e.amountUsd));
@@ -213,7 +214,7 @@
   function exportDetail(){
     var rows=[["Date","Kind","Type / scope","Category","Description","Payer / payee","Original amount","Currency","USD per unit","Gross USD","Platform fees USD","Other paid outflows USD","Business-use %","Status","Tax form","Form status","Evidence status","Evidence reference","Reconciled","Notes","Entry ID"]];
     yearEntries().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(e){
-      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"?e.amountUsd:"",e.kind==="outflow"?e.businessUse:"",e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id]);
+      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"?e.amountUsd:"",e.kind==="outflow"?e.businessUse==null?"":e.businessUse,e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id]);
     });
     download(csv(rows),"IncomeOS-accountant-detail-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
@@ -225,7 +226,7 @@
       ["Pending receipts",t.pending],["Recovered principal / refunds",t.returned],
       ["Asset sale proceeds, review basis",t.proceeds],["Estimated tax payments",t.taxPaid],
       ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],
-      ["Unreconciled record count",t.unreconciled]];
+      ["Unreconciled record count",t.unreconciled],["Expense allocations not determined",t.allocationPending]];
     download(csv([["IncomeOS personal tax-year summary",currentYear()]].concat([["Category","Amount or count"]],pairs)),"IncomeOS-accountant-summary-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
   function backup(){download(JSON.stringify({format:"incomeos-accountant",version:2,exportedAt:new Date().toISOString(),entries:db.entries},null,2),"IncomeOS-accountant-private-backup-"+today()+".json","application/json");}
@@ -244,7 +245,7 @@
     var tb=place(dt,"tbody");
     yearEntries().slice().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(e){
       var tr=place(tb,"tr");
-      [e.date,e.kind,e.label+(e.payer?" · "+e.payer:""),e.category,e.kind==="income"?money(e.grossUsd):"",e.kind==="income"?money(e.feesUsd):"",e.kind==="outflow"?money(e.amountUsd):"",e.kind==="income"?e.status+" / "+e.scope:(e.type+" / "+e.businessUse+"% business use")].forEach(function(x){place(tr,"td","",x);});
+      [e.date,e.kind,e.label+(e.payer?" · "+e.payer:""),e.category,e.kind==="income"?money(e.grossUsd):"",e.kind==="income"?money(e.feesUsd):"",e.kind==="outflow"?money(e.amountUsd):"",e.kind==="income"?e.status+" / "+e.scope:(e.type+" / "+(e.businessUse==null?"allocation unknown":e.businessUse+"% business use"))].forEach(function(x){place(tr,"td","",x);});
     });
     place(r,"p","","Document and source reference fields, bank matching, invoices, tax forms, and business-use substantiation should be reviewed alongside detailed CSV. Expenses are not automatically tax deductions. Asset proceeds require basis and holding-period review.");
     window.print();
@@ -292,7 +293,7 @@
         e={kind:"income",label:label,payer:limit(get("vendor"),100),date:date,category:CATEGORIES.includes(category)?category:"other",amountOriginal:amount,currency:"USD",fx:1,grossUsd:round(amount),feesUsd:0,
         status:get("status")==="paid"?"paid":"pending",scope:"income",method:"Unknown",taxForm:"None / unknown",docStatus:"not-expected",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv"};
       }else if(["expense","outflow","taxpayment","capital","other"].includes(kind)){
-        var bus=num(get("business_use_pct"));if(!Number.isFinite(bus)||bus<0||bus>100)bus=0;
+        var rawBusiness=get("business_use_pct").trim(),bus=rawBusiness===""?null:num(rawBusiness);if(bus!==null&&(!Number.isFinite(bus)||bus<0||bus>100)){rejected++;continue;}
         e={kind:"outflow",type:kind==="expense"||kind==="outflow"?"expense":kind,label:label,payer:limit(get("vendor"),100),date:date,
         category:COST_CATEGORIES.includes(category)?category:"other",amountUsd:round(amount),businessUse:bus,
         evidenceStatus:"missing",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv"};
