@@ -37,8 +37,13 @@ test('dashboard aggregation counts category selections only',()=>{
 test('public release does not include modified owner-private dashboard page',()=>{
  assert.ok(!dashboard.includes('id="research-engagement"'));
 });
-test('home offers clear job-specific pathways and free guides',()=>{
- for(const s of ['Investigations · EEO · Fair Housing','HR · Compliance · Audit','Legal · Research · Governance','Open free Investigator Guides'])assert.ok(home.includes(s));
+test('home offers four clear routes and preserves access to free guides',()=>{
+ for(const s of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Technical reference','Open the three field guides']){
+  assert.ok(home.includes(s), 'missing path or free-guide access: ' + s);
+ }
+ for(const link of ['jrsstandard.html','resources.html','research.html','review-engine.html','investigator-guides.html']){
+  assert.ok(home.includes('href="'+link+'"'), 'missing public link: ' + link);
+ }
 });
 test('shared accessibility style addresses nav, focus and motion',()=>{
  assert.match(css,/:focus-visible/);
