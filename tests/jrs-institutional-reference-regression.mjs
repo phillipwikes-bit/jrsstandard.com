@@ -73,6 +73,15 @@ for(const p of additionalPages){
  assert.ok(h.includes('viewport'),p+' missing responsive viewport');
 }
 
+// A stray build/tool warning before DOCTYPE forces the Standard into quirks mode.
+for(const page of [...pages,...additionalPages]){
+ const source=read(page).trimStart();
+ assert.ok(/^<!doctype html>/i.test(source),
+   page+' must begin with a real HTML doctype, without generated tool output or diagnostic banners');
+ assert.ok(!source.includes('Warning: truncated output'),
+   page+' must not contain connector output truncation markers');
+}
+
 const main=read('index.html');
 for(const token of [
  '01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice',
