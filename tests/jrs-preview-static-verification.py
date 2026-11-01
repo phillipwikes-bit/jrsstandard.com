@@ -7,6 +7,7 @@ A Vercel sign-in page, stale preview, HTTP error or missing URL is a release HOL
 """
 import hashlib
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -35,6 +36,41 @@ DOWNLOADS = {
     "international": "JRS_Investigator_Field_Guide_International.pdf",
 }
 REFERENCE_FILE = "JRS-Reference-9d4f2a7c.pdf"
+
+# Vercel may append its own preview feedback script AFTER the published HTML.
+# Accept only this exact platform trailer, never changes to the JRS source.
+VERCEL_LIVE_TRAILER = re.compile(
+    rb'<script async data-explicit-opt-in="true" data-deployment-id="dpl_[A-Za-z0-9]+" '
+    rb'src="https://vercel\.live/_next-live/feedback/feedback\.js"></script>'
+)
+
+def matches_release_source(received, expected, local):
+    if received == expected:
+        return True
+    return (local.endswith(".html")
+            and received.startswith(expected)
+            and bool(VERCEL_LIVE_TRAILER.fullmatch(received[len(expected):])))
+
+def self_test():
+    original = b"<html><body>JRS</body></html>\n"
+    trailer = (b'<script async data-explicit-opt-in="true" '
+               b'data-deployment-id="dpl_A1b2C3" '
+               b'src="https://vercel.live/_next-live/feedback/feedback.js"></script>')
+    checks = [
+        ("unaltered HTML", original, original, "index.html", True),
+        ("exact Vercel appendix", original + trailer, original, "index.html", True),
+        ("changed body", original.replace(b"JRS", b"BAD") + trailer, original, "index.html", False),
+        ("unexpected HTML appendix", original + b"<script>bad</script>", original, "index.html", False),
+        ("duplicate Vercel appendix", original + trailer + trailer, original, "index.html", False),
+        ("altered Vercel host", original + trailer.replace(b"vercel.live", b"other.live"), original, "index.html", False),
+        ("modified CSS", b"body{}" + trailer, b"body{}", "assets/site.css", False),
+        ("modified PDF", b"%PDF-" + trailer, b"%PDF-", "JRS-Standard.pdf", False),
+    ]
+    for name, received, expected, local, wanted in checks:
+        if matches_release_source(received, expected, local) is not wanted:
+            fail("preview verifier regression: " + name)
+        print("PASS: preview verifier", name)
+    print("PASS: narrow Vercel feedback allowance, no arbitrary source modifications.")
 
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
@@ -94,6 +130,9 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 def main():
+    if len(sys.argv) == 2 and sys.argv[1] == "--self-test":
+        self_test()
+        return
     if len(sys.argv) != 2:
         fail("expected preview URL argument")
     base = sys.argv[1].rstrip("/")
@@ -126,9 +165,11 @@ def main():
         if b"Log in to Vercel" in received or b"Vercel Authentication" in received:
             fail(local + ": authentication page is not a published JRS preview")
         expected = (ROOT / local).read_bytes()
-        if received != expected:
+        if not matches_release_source(received, expected, local):
             fail(local + ": hosted bytes do not match PR head (" +
                  sha(received)[:12] + " != " + sha(expected)[:12] + ")")
+        if received != expected:
+            print("INFO: exact Vercel Live footer verified for", local)
         print("PASS:", local, sha(expected)[:16])
     verify_downloads(base, parsed)
     print("PASS: sampled hosted static source matches the exact PR head.")

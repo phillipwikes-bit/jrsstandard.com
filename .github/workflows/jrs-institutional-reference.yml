@@ -22,3 +22,5 @@ jobs:
         run: node tests/jrs-public-resource-integrity.mjs
       - name: Verify searchable resource directory, accessibility structure and PDF inventory
         run: node tests/jrs-resource-directory.mjs
+      - name: Regression-check exact-preview source verification
+        run: python3 tests/jrs-preview-static-verification.py --self-test
