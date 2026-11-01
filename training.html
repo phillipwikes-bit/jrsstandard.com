@@ -506,7 +506,7 @@ a:hover{text-decoration:underline}
 }
 /* Focus mode: a clean, training-only view (six modules + Reviewer Reference + certificate). Triggered by ?focus=1 in the link. Hides the hero, role paths, simulations, kit docs, survey, and navigation so there is exactly one path. */
 body.focus-mode > *:not(#training-modules):not(#cert-section):not(footer):not(#enroll-overlay):not(script):not(.skip-link){display:none !important}
-body.focus-mode #module-list ~ *{display:none !important}
+body.focus-mode #module-list ~ *:not(#preview-banner){display:none !important}
 body.focus-mode #participation-survey{display:none !important}
 body.focus-mode #training-modules{border-top:none;padding-top:34px}
 </style>
