@@ -1,7 +1,7 @@
 "use strict";
 (function () {
   // Encrypted export protects the downloaded backup, NOT unencrypted browser localStorage.
-  var KEYS = Object.freeze(["incomeos.accountant.v1", "incomeos.owner.prototype.v1"]);
+  var KEYS = Object.freeze(["incomeos.accountant.v1", "incomeos.owner.prototype.v1", "incomeos.spend.preferences.v1", "incomeos.research.radar.v1"]);
   var ITERATIONS = 600000;
   var FORMAT = "incomeos-local-backup";
   var encoder = new TextEncoder();
@@ -39,6 +39,8 @@
       if (!obj || typeof obj!=="object" || Array.isArray(obj)) throw new Error("Invalid stored data object.");
       if (k==="incomeos.accountant.v1" && (!Array.isArray(obj.entries)||obj.entries.length>15000)) throw new Error("Invalid accountant ledger.");
       if (k==="incomeos.owner.prototype.v1" && (obj.saved!==undefined&&!Array.isArray(obj.saved)))throw new Error("Invalid saved opportunity data.");
+      if (k==="incomeos.spend.preferences.v1" && (obj.version!==1 || !obj.budgets || typeof obj.budgets!=="object" || !Array.isArray(obj.plans) || obj.plans.length>100))throw new Error("Invalid spending plans.");
+      if (k==="incomeos.research.radar.v1" && (obj.version!==1 || !obj.preferences || typeof obj.preferences!=="object" || !Array.isArray(obj.leads) || obj.leads.length>200 || !obj.progress || typeof obj.progress!=="object"))throw new Error("Invalid research radar.");
     });
     return record;
   }
