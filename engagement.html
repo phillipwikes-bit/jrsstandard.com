@@ -157,13 +157,13 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 </header>
 <!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
 <nav class="jrs-sitenav" aria-label="Site">
+ <a href="investigator-guides.html">Guides</a>
+ <a href="training.html">Training</a>
+ <a href="resources.html">References</a>
  <a href="jrsstandard.html">The Standard</a>
- <a href="resources.html">Free Resources</a>
  <a href="research.html">Research</a>
- <a href="review-engine.html">Review Engine</a>
- <a href="manifest.html">Manifest</a>
- <a href="enterprise.html">Enterprise</a>
  <a href="about.html">About</a>
+ <a href="contact.html">Contact</a>
 </nav>
 <!-- /JRS SITE NAV v1 -->
 <main id="main-content">
@@ -177,7 +177,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 <div style="border:1px solid var(--review-text);background:rgba(212,160,85,.06);padding:16px 18px;margin:0 0 26px;max-width:680px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--review-text);margin-bottom:8px;">Closed to new requests</div>
  <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0 0 8px;">These reviews are no longer offered. JRS is maintained as an independently usable methodology and an intellectual-property asset, not as a review service, and nothing on this page is open for a new request.</p>
- <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0;">The methodology, the Investigator Guides, the reviewer training and the simulations remain free and open, and the commercial pathways that remain are licensing of the <a href="review-engine.html" style="color:var(--accent);">JRS Review Engine</a>, technical integration, and acquisition: <a href="enterprise.html#enterprise-inquiry" style="color:var(--accent);">enterprise inquiry</a>.</p>
+ <p style="font-size:13.5px;color:var(--muted);line-height:1.7;margin:0;">The published JRS methodology, investigator guides, reviewer training and constructed-record simulations remain free. This page documents historical service concepts and terms only. There is no active automated review, commercial integration or licensing service. See <a href="resources.html" style="color:var(--accent);">current practitioner resources</a>.</p>
 </div>
 <article>
 
@@ -192,10 +192,10 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 <div class="dual-track">
  <div class="dt-card dt-enterprise">
   <div class="dt-tag">Track 1 &middot; Enterprise Platform</div>
-  <div class="dt-head">The Enterprise Platform Track</div>
-  <p class="dt-body">Dedicated B2B API licensing of the JRS review engine, so mid-market GRC platforms and legal-tech providers can embed a <b>pre-finalization decision gate</b> directly into their own workflows. One record in, a structured determination across the five review conditions out, returned with a request identifier your audit trail can cite.</p>
+  <div class="dt-head">Historical platform concept (closed)</div>
+  <p class="dt-body">Historical design concept for a possible future software integration. It was not a generally available licensed service and is not currently offered to organizations. The published method remains usable without software.</p>
   <p class="dt-body"><b>Stateless between requests, and your record text is not stored.</b> Record text is assessed in memory and is not written to any table, not echoed back, and not logged. It is transmitted to Anthropic, the model provider, to be assessed. On the versioned route, what the model writes about the record is kept as programme telemetry: a short note against each condition and a suggested rewrite of the passage. Per-partner tokens, revocable independently, on a versioned route. This narrows what a vendor security review has to examine; <b>it does not remove the review</b>, and it is not a substitute for any certification your procurement requires.</p>
-  <div class="dt-links"><a href="review-engine.html">Integration schema</a> <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a></div>
+  <div class="dt-links"><a href="enterprise.html">Current scope</a> <a href="research.html">Research limits</a></div>
  </div>
  <div class="dt-card dt-public">
   <div class="dt-tag">Track 2 &middot; Practitioner</div>
@@ -226,7 +226,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
   <div class="iso">
     <b class="h">Data isolation, and exactly what it covers</b>
-    <p style="margin:0 0 11px;font-size:14.5px;line-height:1.7;color:var(--muted)">All customer files and sample records submitted for diagnostic evaluation are processed in ephemeral working memory and deleted upon delivery of the diagnostic report. Customer records supplied for a human-delivered engagement are not stored, not logged to public research sets, and not used for model training. <b>This describes the human-delivered work, not the public review engine</b>, which transmits record text to the model provider and keeps model-written output about the record.</p>
+    <p style="margin:0 0 11px;font-size:14.5px;line-height:1.7;color:var(--muted)">All customer files and sample records submitted for diagnostic evaluation are processed in ephemeral working memory and deleted upon delivery of the diagnostic report. Customer records supplied for a human-delivered engagement are not stored, not logged to public research sets, and not used for model training. <b>This refers to the former human-delivered engagement, not to a currently available software service</b>, which transmits record text to the model provider and keeps model-written output about the record.</p>
     <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.04em;color:var(--muted-soft)">Processed in ephemeral memory and purged immediately upon report generation.</div>
   </div>
 
@@ -235,7 +235,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   <ul style="margin:0 0 18px 20px">
     <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">De-identification.</b> Records are supplied de-identified by you, to a standard agreed at scoping. If a record arrives carrying an identifier, it is returned rather than redacted, so the decision about your data stays with you.</li>
     <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">Retention.</b> Records are held only for the duration of the read and destroyed on delivery. The finding is retained; the records are not.</li>
-    <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">No sub-processing.</b> Records are read by one person. They are not sent to a third-party service, and they are not put through the public review engine or any model for training.</li>
+    <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">No sub-processing.</b> Records are read by one person. These were stated historical terms for the former engagement model, not a representation about any active service.</li>
     <li style="font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:7px"><b style="color:var(--text)">Confidentiality.</b> An NDA on your paper is welcome and is signed before scoping if you prefer that order.</li>
   </ul>
 
@@ -275,7 +275,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 
 </article>
 <nav class="track-links" aria-label="Related">
- <a href="review-engine.html">Review Engine API</a>
+ <a href="resources.html">Current practitioner resources</a>
  <a href="enterprise.html#enterprise-inquiry">Enterprise inquiry</a>
  <a href="engagement.html">Engagement terms</a>
  <a href="terms.html">Terms</a>

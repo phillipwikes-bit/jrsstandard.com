@@ -60,3 +60,26 @@ html{scroll-padding-top:3.5rem}
    transition-duration:.01ms!important
  }
 }
+
+/* JRS practitioner readability v2026.11: consistent across public reference pages.
+   Increase reading comfort, preserve contrast and focus, and avoid decorative
+   microtype as the primary language for interactive tasks. */
+.jrs-sitenav a{font-size:13px!important;letter-spacing:.035em!important;line-height:1.55!important}
+:where(.hero-sub,.section-intro,.sub,.lead){font-size:clamp(16px,1.25vw,18px)!important;line-height:1.7!important}
+:where(.path .card p,.cards .card-copy,.status-copy){font-size:15px!important;line-height:1.7!important}
+:where(.path .card a,.cards .card-link){font-size:14px!important;line-height:1.5!important;min-height:44px;display:inline-flex;align-items:center;overflow-wrap:anywhere}
+:where(.hero .boundary,.access-note,.boundary p){font-size:14px!important;line-height:1.7!important}
+:where(.proof-v,.start-v){font-size:15px!important}
+:where(.utility-inner,.footer-link,.footer-copy){font-size:12px!important;line-height:1.6!important}
+:where(.section-label,.card-tag,.card-k,.start-k,.proof-k){font-size:12px!important;line-height:1.5!important}
+:where([id]){scroll-margin-top:24px}
+:where(.card,.start-link,.path>article,.cards>article){min-width:0}
+@media(max-width:600px){
+ .jrs-sitenav a{font-size:13px!important;padding:12px 8px!important}
+ :where(.path .card,.cards .card){padding:20px!important}
+ .hero::after{opacity:.18}
+}
+@media(prefers-contrast:more){
+ .jrs-sitenav a,.footer-link,.footer-copy{color:var(--text,#f5f3ed)!important}
+ .card,.start-link{border-color:var(--muted,#bbb7ad)!important}
+}

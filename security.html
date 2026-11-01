@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Security and Data Handling | JRS Standard</title>
 <meta property="og:title" content="JRS™ Decision Defensibility at Enterprise Scale" />
@@ -248,28 +249,30 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
 <nav class="jrs-sitenav" aria-label="Site">
+ <a href="investigator-guides.html">Guides</a>
+ <a href="training.html">Training</a>
+ <a href="resources.html">References</a>
  <a href="jrsstandard.html">The Standard</a>
- <a href="resources.html">Free Resources</a>
  <a href="research.html">Research</a>
- <a href="review-engine.html">Review Engine</a>
- <a href="manifest.html">Manifest</a>
- <a href="enterprise.html">Enterprise</a>
  <a href="about.html">About</a>
+ <a href="contact.html">Contact</a>
 </nav>
 <!-- /JRS SITE NAV v1 -->
 
 <main class="container" id="main-content">
 
 <div class="page-eyebrow">Enterprise: Security and Data Handling</div>
-<h1 class="page-title">What happens to a record when it passes through the review call</h1>
-<p class="page-subtitle">This page summarizes the current Review Engine data flow for security review: what is transmitted, what JRS does not persist, what derived telemetry may be retained, and what the interface does not claim. Implementation and contract details remain subject to the versioned API materials and current production controls.</p>
+<h1 class="page-title">Historical implementation and data-flow notes</h1>
+<p class="page-subtitle">This is a dated technical design reference. It does not describe an available production service or authorize case-record transmission. For current practitioner use, consult the published JRS method, evidence limitations and privacy notice.</p>
 
 <div class="btn-row" style="margin-top:0;">
- <a href="enterprise.html#enterprise-inquiry" class="btn btn-primary">Make a technical integration inquiry &rarr;</a>
- <a href="review-engine.html" class="btn btn-accent">Review Engine status &rarr;</a>
- <a href="/openapi.json" class="btn btn-ghost">OpenAPI 3.1 specification</a>
+ <a href="resources.html" class="btn btn-primary">Practitioner resources &rarr;</a>
+ <a href="privacy.html" class="btn btn-accent">Current privacy notice &rarr;</a>
+ <a href="research.html" class="btn btn-ghost">Evidence and limitations &rarr;</a>
 </div>
 
+<section aria-label="Historical-document notice" style="margin:22px 0;padding:17px 20px;border-left:3px solid #d3ad64;background:#161612;color:#e7e2d7"><strong>Archive, not an active interface.</strong> The technical descriptions below preserve past design assumptions. They are not verified production commitments about data transfer, retention, availability, consent or security. Do not submit case records to this website.</section>
+<details style="margin:16px 0 35px;border:1px solid #35332d;padding:16px 20px"><summary style="cursor:pointer;min-height:44px;display:list-item;font-size:16px;color:#f0d49a">Examine the historical technical notes</summary><div style="padding-top:15px">
 <div style="margin-bottom:20px;">
  <h2 class="section-head">The short version</h2>
  <div class="callout callout-gold">
@@ -340,6 +343,7 @@ Content-Type: application/json</pre>
  </div>
 </div>
 
+</div></details>
 </main>
 
 <footer class="site-footer" role="contentinfo">
