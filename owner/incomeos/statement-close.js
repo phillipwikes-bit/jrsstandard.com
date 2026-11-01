@@ -12,6 +12,12 @@
   function nextDay(x) {return new Date(Date.parse(x+"T00:00:00Z")+86400000).toISOString().slice(0,10);}
   function integer(x) {return Number.isSafeInteger(x)&&Math.abs(x)<=100000000000000;}
   function opaque(x) {return typeof x==="string"&&/^[a-z0-9][a-z0-9._:-]{3,119}$/i.test(x)&&!(/^\d{9,}$/.test(x))&&!x.includes("@");}
+  function bankIdentity(x) {
+    if(typeof x!=="string")return false;
+    var parts=x.split("|");
+    try{return parts.length===3&&identity(parts[0],parts[1])===parts[0]+"|"+parts[1]&&opaque(parts[2]);}
+    catch(_e){return false;}
+  }
   function identity(institution,token) {
     if(typeof institution!=="string"||!institution.trim()||institution.length>100||institution.includes("|")||!opaque(token))throw Error("Invalid financial source identity");
     return institution.trim()+"|"+token;
@@ -68,7 +74,7 @@
       }catch(e){fail(issues,"INVALID_POSTING","Posting "+(i+1)+": "+e.message);}
     });
     input.accountingMatches.forEach(function(x,i){
-      if(!x||typeof x!=="object"||!opaque(x.entryId)||!opaque(x.bankId)||x.state!=="OWNER_REVIEWED_BANK_MATCH") {
+      if(!x||typeof x!=="object"||!opaque(x.entryId)||!bankIdentity(x.bankId)||x.state!=="OWNER_REVIEWED_BANK_MATCH") {
         fail(issues,"INVALID_OWNER_REVIEW_LINK","Link "+(i+1)+" is not a supported owner-reviewed bank match");return;
       }
       if(links.has(x.bankId))fail(issues,"REUSED_BANK_MATCH","Bank posting associated with multiple ledger entries");
