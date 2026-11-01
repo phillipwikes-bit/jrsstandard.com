@@ -884,3 +884,22 @@ body.jrs-institutional.jrs-research-page .lead{
 body.jrs-institutional.jrs-home .jr-overline{
  font-size:12px!important;line-height:1.52!important;letter-spacing:.055em!important
 }
+
+/* Keep training modules primary; the historical reviewer PDF remains opt-in. */
+body.jrs-institutional.jrs-training-page .jrs-training-desk-reference{
+ border:1px solid #cbd9e3!important;background:#f0f5f7!important;
+ border-radius:3px!important;margin:0 0 15px!important;
+}
+body.jrs-institutional.jrs-training-page .jrs-training-desk-reference summary{
+ cursor:pointer!important;padding:12px 17px!important;min-height:46px!important;
+ color:#173d5b!important;font:700 14px/1.5 Inter,system-ui,sans-serif!important
+}
+body.jrs-institutional.jrs-training-page .jrs-training-desk-reference summary:focus-visible{
+ outline:3px solid #0b679c!important;outline-offset:2px!important
+}
+body.jrs-institutional.jrs-training-page .jrs-training-desk-reference-body{
+ padding:7px 13px 1px!important;background:#fff!important
+}
+body.jrs-institutional.jrs-training-page .jrs-training-desk-reference-body div[style*="font-size:13.5px"]{
+ font-size:14px!important;line-height:1.64!important
+}
