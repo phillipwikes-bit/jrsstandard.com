@@ -15,9 +15,11 @@ This single-user research and cash-flow decision interface is intended for the e
 
 ## Contents
 
-- index.html: dashboard tabs, individual study links, alternative-asset watchlist, manual earnings ledger and scenario modeling.
+- index.html: dashboard tabs, individual study links, alternative-asset watchlist, manual earnings ledger, source review gates and scenario modeling.
 - opportunities.json: dated public-source research and investment research candidates with explicit caveats. No live feed is claimed.
 - incomeos.js and incomeos.css: static client-only controls without external scripts.
+- decision-engine.js and decision-ui.js: evidence-gated owner reviews and fee/tax/inflation-aware hypothetical modeling, with no transaction execution.
+- vault.js and vault-ui.js: user-passphrase-encrypted local backup/restore with authenticated decryption and explicit replacement confirmation. The active browser storage remains plaintext.
 - manifest.webmanifest and icon.svg: home-screen support. No website push notification service.
 
 ## Validation and release gates
@@ -42,7 +44,7 @@ The owner can manually record income and expenses from any legitimate source, in
 - Payment status is self-reported; pending income, investment-sale proceeds awaiting cost basis, refunded principal, withholding/fees, outflows, estimated tax payments and capital investments are separated in accountant totals.
 - Outflow entries may carry a **user-estimated business-use percentage**, document reference and proof status. An estimate is not an approved deduction, and partial household use requires substantiation. Fees recorded on receipts should not be duplicated as separate expenses.
 - Tax-year filtering, source/category breakdown, editable entries, item deletion, detail CSV, summary CSV, browser Print/Save as PDF, and private JSON backup/restore are provided.
-- The local **CSV import** accepts a deliberately strict template, downloadable from the app: `kind,date,description,vendor,category,amount_usd,status,business_use_pct,evidence_ref,notes`. Use positive USD amounts, with `kind` explicitly specifying income, expense, taxpayment, capital, or other. Entries imported from outside sources start **unreconciled**, and possible duplicate entries are flagged/skipped by date, type, description and amount. A matched vendor charge is not proof of business purpose.
+- The local **CSV import** accepts a deliberately strict template, downloadable from the app: `kind,date,description,vendor,category,amount_usd,status,business_use_pct,evidence_ref,notes` and optional `evidence_status`. The latter may be `missing`, `email`, `bank`, `both-unverified`, or `both`. Use positive USD amounts, with `kind` explicitly specifying income, expense, taxpayment, capital, or other. Entries imported from outside sources start **unreconciled**, and possible duplicate entries are flagged/skipped by date, type, description and amount. A matched vendor charge is not proof of business purpose.
 - ChatGPT can help discover and review permitted linked Gmail receipts or authorized linked Finances transactions and prepare this CSV in-chat when asked. **The static owner web app cannot directly call ChatGPT connectors or read private connected accounts.** This prevents accidental disclosure to the public repository. Never commit financial statements, receipt attachments, private Gmail links or tax files.
 - Supported document formats and tax-form identifiers are reference fields only. The prototype does not import, store, or verify PDF attachments. Secure backup and source documents should be supplied separately to the accountant.
 - Browser localStorage is device/browser scoped and can be erased. Use private backup exports and keep them securely stored. The app is not a system of record for complete tax compliance, not integrated with payroll or tax filing, and cannot assert all expenses and income have been captured. Accountant review is required before tax reporting.
@@ -50,3 +52,11 @@ The owner can manually record income and expenses from any legitimate source, in
 ## Accounting
 
 Only received, manually recorded payments count as paid income. Advertised incentives are not earnings. Financial asset examples carry risk and are not recommendations. Investing or reinvesting requires owner approval and an authorized provider.
+
+## Current hardening and data-stage distinctions
+
+- A purchase without a substantiated business-use allocation now stores `null`, meaning **unknown**. Zero percent means a deliberate zero allocation, not missing information. Display, summary, import and export preserve that distinction.
+- All automatically prepared CSV rows remain unreconciled even when bank or email evidence is referenced. `both-unverified` means two source types are present but linkage is unresolved; a verified payment requires further review.
+- The top-level paid receipt total is now labeled **self-reported**, not verified or available to invest. Advertised incentives and unreceived study rewards never appear there.
+- Private workbook-to-CSV conversion occurs outside the public GitHub repository. Bank references and supporting owner documents must stay in owner-controlled files, not in this branch.
+- See `SECURITY-AND-RELEASE.md` for documented OWASP ASVS 5.0, NIST SSDF 1.1 and WCAG 2.2 AA targets, residual risks and release gates. The source and CI checks are not an independent audit.
