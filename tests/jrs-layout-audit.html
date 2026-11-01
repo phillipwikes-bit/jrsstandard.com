@@ -178,9 +178,28 @@
        .map(el=>el?wcagContrast(w.getComputedStyle(el).borderTopColor,
          w.getComputedStyle(el).backgroundColor):0) : [];
    const searchControlBordersValid=searchControlBorderContrast.every(x=>x>=3);
+   // Composite translucent/transparent backgrounds over their actual parents.
+   // Transparent CSS cannot be treated as black: doing so falsely fails
+   // dark text on the white site-navigation surface.
+   const effectiveBackground=element=>{
+     const parents=[];
+     for(let e=element;e;e=e.parentElement)parents.unshift(e);
+     let behind=[255,255,255];
+     parents.forEach(e=>{
+       const raw=w.getComputedStyle(e).backgroundColor;
+       const match=raw.match(/rgba?\\(([^)]+)\\)/);
+       if(!match)return;
+       const parts=match[1].split(',').map(Number);
+       if(parts.length<3||parts.slice(0,3).some(v=>!Number.isFinite(v)))return;
+       const alpha=parts.length>3&&Number.isFinite(parts[3])?Math.max(0,Math.min(1,parts[3])):1;
+       behind=behind.map((under,i)=>parts[i]*alpha+under*(1-alpha));
+     });
+     return 'rgb('+behind.map(x=>Math.round(x)).join(', ')+')';
+   };
    const activeLink=d.querySelector('nav.jrs-sitenav a[aria-current="page"]');
    const activeForeground=activeLink?w.getComputedStyle(activeLink).color:null;
-   const activeBackground=activeLink?w.getComputedStyle(activeLink).backgroundColor:null;
+   const activeRawBackground=activeLink?w.getComputedStyle(activeLink).backgroundColor:null;
+   const activeBackground=activeLink?effectiveBackground(activeLink):null;
    const activeContrast=activeLink?wcagContrast(activeForeground,activeBackground):null;
    const contrastValid=item.page==='jrsstandard.html' ?
      activeContrast!==null && activeContrast>=4.5 : activeContrast===null || activeContrast>=4.5;
@@ -271,7 +290,7 @@
       controlsValid && documentIndexValid && simulationControlsValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
