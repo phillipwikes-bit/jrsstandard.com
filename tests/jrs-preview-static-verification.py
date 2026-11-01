@@ -69,7 +69,7 @@ def verify_downloads(base, parsed):
         if target.query or target.fragment:
             fail(path + ": redirect contains unexpected query or fragment")
         try:
-            with urlopen(req.__class__(location, headers={
+            with urlopen(Request(location, headers={
                 "User-Agent": "JRS-publication-preview-verifier/1.0",
                 "Cache-Control": "no-cache",
             }), timeout=30) as resp:
@@ -132,7 +132,7 @@ def main():
         print("PASS:", local, sha(expected)[:16])
     verify_downloads(base, parsed)
     print("PASS: sampled hosted static source matches the exact PR head.")
-    print("PASS: seven tracked PDF routes redirect and deliver identical files.")
+    print("PASS: six tracked PDF routes redirect and deliver identical files.")
     print("NOT CERTIFIED: screen reader testing, PDF tagging, runtime privacy, or production deployment.")
 
 if __name__ == "__main__":
