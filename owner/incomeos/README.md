@@ -60,3 +60,32 @@ Only received, manually recorded payments count as paid income. Advertised incen
 - The top-level paid receipt total is now labeled **self-reported**, not verified or available to invest. Advertised incentives and unreceived study rewards never appear there.
 - Private workbook-to-CSV conversion occurs outside the public GitHub repository. Bank references and supporting owner documents must stay in owner-controlled files, not in this branch.
 - See `SECURITY-AND-RELEASE.md` for documented OWASP ASVS 5.0, NIST SSDF 1.1 and WCAG 2.2 AA targets, residual risks and release gates. The source and CI checks are not an independent audit.
+
+## Competitor-pattern features: expenses and research intelligence
+
+The owner interface now adds the following original, evidence-labeled workflows, informed by established budgeting and subscription-management products:
+
+- **Recurring charge radar:** detect repeated expense merchants from three weekly/monthly/quarterly paid observations, or two plausible annual paid observations, and show an estimated next date. Same-day duplicate API charges are not treated as renewals. A recurring pattern is not proof of an active subscription, bill amount, cancellation entitlement or authorized charge.
+- **Monthly category targets:** owner controls spending caps and compares them with recorded spending for the current month. No zero-source-completeness claim and no automatic tax deduction is inferred.
+- **Upcoming bill calendar:** manually entered names, amounts, dates and recurrence. Estimated dates are not bank bill-pay authorization or guaranteed due dates.
+- **Twelve-month trend and exception review:** display recorded income, withheld fees and expenses, unknown business-use allocations, incomplete evidence, unreconciled charges, and material merchant-pattern increases. The result is not a household bank balance, realized investment gain, or complete financial forecast.
+- **Survey and interview opportunity radar:** source-dated public leads, application URLs, published participant requirements, paid-incentive thresholds, online-only settings, screening effort, same-source duplicate suppression, deadline expiry, review freshness and owner application-progress tags. Results are identified as sourced candidates, never as actual available seats or earned income.
+- **Reviewed public-lead JSON import and CSV export:** use the downloaded source template or a ChatGPT-prepared JSON file. Never upload personal screening answers, payment details, or application credentials. The public source snapshot and imports are distinct from the connected hourly ChatGPT research alert automation.
+
+Spending settings are kept under `incomeos.spend.preferences.v1`; research intake and owner pipeline under `incomeos.research.radar.v1`. Both are included in the owner-encrypted backup facility and removed by the full local-data erasure function. Active browser localStorage remains plaintext and is **not appropriate for confidential owner data without verified private deployment and endpoint controls**.
+
+### Interoperability constraints
+
+A separate, publicly presented **research-opportunity feed** is maintained through the existing IncomeOS Priority Study Alerts workflow when authorized connections can verify listings and update the permitted public-data service. It is separate from the JRS-branch owner workspace. This GitHub prototype deliberately does not fetch that external database or store its anonymous keys, because route-level private access and source-to-record synchronization are not yet verified. No one should infer that importing JSON in the owner page automatically synchronizes external services.
+
+### Validation
+
+Run from repository root:
+
+```bash
+node tests/incomeos-owner-prototype.mjs
+node tests/incomeos-controls.mjs
+node tests/incomeos-intelligence.mjs
+```
+
+Passing these checks is necessary but not sufficient for the production release gates in `SECURITY-AND-RELEASE.md`. Verify actual iPhone Safari behavior and anonymous private-page access independently.
