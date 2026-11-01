@@ -1,0 +1,30 @@
+name: JRS public navigation regression
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'resources.html'
+      - 'research.html'
+      - 'review-engine.html'
+      - 'contact.html'
+      - 'tests/public-reference-navigation.mjs'
+      - '.github/workflows/jrs-public-navigation.yml'
+  push:
+    branches:
+      - 'feat/jrs-practitioner-navigation-2026-11-01'
+    paths:
+      - 'index.html'
+      - 'resources.html'
+      - 'tests/public-reference-navigation.mjs'
+      - '.github/workflows/jrs-public-navigation.yml'
+permissions:
+  contents: read
+jobs:
+  navigation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/public-reference-navigation.mjs
