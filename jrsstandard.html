@@ -3820,6 +3820,13 @@ function showSection(id){
  var sectionToggle=document.getElementById('nav-hamburger');
  if(sectionMenu)sectionMenu.classList.remove('nav-open');
  if(sectionToggle){sectionToggle.setAttribute('aria-expanded','false');sectionToggle.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Sections';}
+ // Move keyboard and screen-reader focus into the newly displayed document
+ // section. Without this, selecting a collapsed index item leaves focus hidden.
+ if(sec){
+   var nextHeading=sec.querySelector('h1,h2,[role="heading"]')||sec;
+   if(!nextHeading.hasAttribute('tabindex'))nextHeading.setAttribute('tabindex','-1');
+   nextHeading.focus({preventScroll:true});
+ }
  window.scrollTo(0,0);
 }
 
