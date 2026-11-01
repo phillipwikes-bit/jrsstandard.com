@@ -275,7 +275,14 @@
     if(rows.length>5001)throw new Error("Import limit is 5,000 rows per file");
     var h=findImportFields(rows[0]),idx=function(k){return h.indexOf(k);};
     var accepted=[],skipped=0,rejected=0;
-    var fingerprints=new Set(db.entries.map(function(e){return [e.kind,e.date,e.label.toLowerCase(),e.kind==="income"?e.grossUsd:e.amountUsd].join("|")}));
+    // A dated bank transaction identifier is more reliable than merchant/amount matching:
+    // two valid API charges can share the same day, vendor and dollar amount.
+    function fingerprint(e) {
+      var ref=String(e.reference||"").trim().toLowerCase(),amount=e.kind==="income"?e.grossUsd:e.amountUsd;
+      return ref ? [e.kind,"ref",ref].join("|") :
+        [e.kind,"legacy",e.date,e.label.toLowerCase(),Number(amount).toFixed(2)].join("|");
+    }
+    var fingerprints=new Set(db.entries.map(fingerprint));
     for(var i=1;i<rows.length;i++){
       var row=rows[i],get=function(k){return limit(row[idx(k)]??"",500);};
       var kind=get("kind").toLowerCase(),amount=num(get("amount_usd")),date=get("date"),label=limit(get("description"),100),category=get("category").toLowerCase();
@@ -291,9 +298,9 @@
         evidenceStatus:"missing",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv"};
       }else{rejected++;continue;}
       if(!validate(e)){rejected++;continue;}
-      var fingerprint=[e.kind,e.date,e.label.toLowerCase(),e.kind==="income"?e.grossUsd:e.amountUsd].join("|");
-      if(fingerprints.has(fingerprint)){skipped++;continue;}
-      fingerprints.add(fingerprint);accepted.push(Object.assign({id:uid()+"-"+i,createdAt:new Date().toISOString()},e));
+      var evidenceKey=fingerprint(e);
+      if(fingerprints.has(evidenceKey)){skipped++;continue;}
+      fingerprints.add(evidenceKey);accepted.push(Object.assign({id:uid()+"-"+i,createdAt:new Date().toISOString()},e));
     }
     if(!accepted.length)return {accepted:0,skipped:skipped,rejected:rejected};
     if(!confirm("Import "+accepted.length+" new records? They are not yet reconciled to supporting evidence. "+skipped+" possible duplicates skipped; "+rejected+" invalid records rejected."))return {cancelled:true};
