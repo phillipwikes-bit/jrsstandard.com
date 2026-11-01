@@ -79,6 +79,9 @@ function codes(r){return r.issues.map(x=>x.code);}
 async function hold(overrides,code){
  const r=await T.assess({...input,...overrides});
  assert.equal(r.status,"HOLD","Expected HOLD on "+code);
+ assert.equal(r.ownerReviewedInternalTransferCents,null,"Source or pair failure must not expose cleared transfer totals");
+ assert.equal(r.ownerReviewedCardPaymentCents,null,"Source or pair failure must not expose cleared card-payment totals");
+ assert.equal(r.matchedPairs.length,0,"Partial evidence cannot appear as fully reconciled pairs");
  assert.ok(codes(r).includes(code),"Expected "+code+"; found "+codes(r).join(","));
  return r;
 }
