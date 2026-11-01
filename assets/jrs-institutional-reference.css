@@ -483,3 +483,37 @@ body.jrs-institutional :where(.cred,.microcopy,.gcard-meta,.footer-note){
   min-width:0!important;box-sizing:border-box!important
  }
 }
+
+/* JRS publication controls: concise summary with complete accessible disclosures. */
+body.jrs-institutional.jrs-longform .jrs-publication-notes{
+ max-width:1100px;margin:19px auto 22px;padding:0 15px
+}
+body.jrs-institutional.jrs-longform .jrs-publication-notes details{
+ border:1px solid #c7d8e2;border-left:4px solid #a78042;background:#eef3f6;
+ border-radius:3px;overflow:hidden;color:#254257
+}
+body.jrs-institutional.jrs-longform .jrs-publication-notes summary{
+ padding:17px 22px;cursor:pointer;color:#21415c!important;
+ font:700 15px/1.55 Inter,system-ui,sans-serif!important;
+}
+body.jrs-institutional.jrs-longform .jrs-publication-notes summary:hover{
+ background:#e3eef4
+}
+body.jrs-institutional.jrs-longform .jrs-publication-notes summary:focus-visible{
+ outline:3px solid #0b679c!important;outline-offset:-3px!important
+}
+body.jrs-institutional.jrs-longform .jrs-publication-note-detail{
+ padding:0 14px 14px
+}
+body.jrs-institutional.jrs-longform .jrs-publication-note-detail>.jrs-version-disclosure{
+ margin:12px 0!important;padding:17px 18px!important;
+ background:#fff!important;border-left:3px solid #a78042!important
+}
+@media(max-width:650px){
+ body.jrs-institutional.jrs-longform .jrs-publication-notes{
+  padding:0 12px!important;margin:14px auto 18px!important
+ }
+ body.jrs-institutional.jrs-longform .jrs-publication-notes summary{
+  padding:14px 16px;font-size:14px!important
+ }
+}
