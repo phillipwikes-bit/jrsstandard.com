@@ -1,0 +1,18 @@
+name: JRS Published PDF Content Audit
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  pdf-content:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source documents
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Ensure poppler text extraction is available
+        run: command -v pdftotext && command -v pdfinfo || { sudo apt-get update -qq && sudo apt-get install -y poppler-utils; }
+      - name: Extract and verify public PDF document content
+        run: node tests/jrs-published-pdf-content.mjs
