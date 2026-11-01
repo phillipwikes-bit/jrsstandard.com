@@ -7,33 +7,146 @@
     }
   ],
   "redirects": [
-    { "source": "/evidence-ledger", "destination": "/research.html", "permanent": false },
-    { "source": "/evidence-ledger.html", "destination": "/research.html", "permanent": false },
-    { "source": "/datasets", "destination": "/research.html", "permanent": false },
-    { "source": "/datasets.html", "destination": "/research.html", "permanent": false },
-    { "source": "/audit-request.html", "destination": "/enterprise.html", "permanent": false },
-    { "source": "/calibration-request.html", "destination": "/enterprise.html", "permanent": false },
-    { "source": "/governance-request.html", "destination": "/enterprise.html", "permanent": false },
-    { "source": "/organizational-evaluation.html", "destination": "/enterprise.html", "permanent": false },
-    { "source": "/controlled-evaluation-package.html", "destination": "/enterprise.html", "permanent": false },
-    { "source": "/licensing-acquisition.html", "destination": "/enterprise.html", "permanent": false },
-    { "source": "/platform-integration.html", "destination": "/review-engine.html", "permanent": false },
-    { "source": "/platform-evaluation-001.html", "destination": "/review-engine.html", "permanent": false },
-    { "source": "/manifest.html", "destination": "/review-engine.html", "permanent": false },
-    { "source": "/security.html", "destination": "/review-engine.html", "permanent": false },
-    { "source": "/privacy.html", "destination": "/privacy-notice.html", "permanent": false },
-    { "source": "/pilot.html", "destination": "/research.html", "permanent": false },
-    { "source": "/org-pilot.html", "destination": "/review-engine.html", "permanent": false },
-    { "source": "/contributor.html", "destination": "/resources.html", "permanent": false },
-    { "source": "/supported.html", "destination": "/resources.html", "permanent": false },
-    { "source": "/research-summary.html", "destination": "/research.html", "permanent": false },
-    { "source": "/research-data.html", "destination": "/research.html", "permanent": false },
-    { "source": "/bench-results.html", "destination": "/research.html", "permanent": false },
-    { "source": "/engine-activity.html", "destination": "/review-engine.html", "permanent": false },
-    { "source": "/acquisition-9f3c2a7d4b.html", "destination": "/enterprise.html", "permanent": false },
-    { "source": "/submit-record.html", "destination": "/review-engine.html", "permanent": false },
-    { "source": "/submit-validation.html", "destination": "/research.html", "permanent": false },
-    { "source": "/openapi.json", "destination": "/review-engine.html", "permanent": false },
+    {
+      "source": "/programme--9872fb93cc94.html",
+      "destination": "/programme-status-9872fb93cc94.html",
+      "permanent": false
+    },
+    {
+      "source": "/evidence-ledger",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/evidence-ledger.html",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/datasets",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/datasets.html",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/audit-request.html",
+      "destination": "/enterprise.html",
+      "permanent": false
+    },
+    {
+      "source": "/calibration-request.html",
+      "destination": "/enterprise.html",
+      "permanent": false
+    },
+    {
+      "source": "/governance-request.html",
+      "destination": "/enterprise.html",
+      "permanent": false
+    },
+    {
+      "source": "/organizational-evaluation.html",
+      "destination": "/enterprise.html",
+      "permanent": false
+    },
+    {
+      "source": "/controlled-evaluation-package.html",
+      "destination": "/enterprise.html",
+      "permanent": false
+    },
+    {
+      "source": "/licensing-acquisition.html",
+      "destination": "/enterprise.html",
+      "permanent": false
+    },
+    {
+      "source": "/platform-integration.html",
+      "destination": "/review-engine.html",
+      "permanent": false
+    },
+    {
+      "source": "/platform-evaluation-001.html",
+      "destination": "/review-engine.html",
+      "permanent": false
+    },
+    {
+      "source": "/manifest.html",
+      "destination": "/review-engine.html",
+      "permanent": false
+    },
+    {
+      "source": "/security.html",
+      "destination": "/review-engine.html",
+      "permanent": false
+    },
+    {
+      "source": "/privacy.html",
+      "destination": "/privacy-notice.html",
+      "permanent": false
+    },
+    {
+      "source": "/pilot.html",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/org-pilot.html",
+      "destination": "/review-engine.html",
+      "permanent": false
+    },
+    {
+      "source": "/contributor.html",
+      "destination": "/resources.html",
+      "permanent": false
+    },
+    {
+      "source": "/supported.html",
+      "destination": "/resources.html",
+      "permanent": false
+    },
+    {
+      "source": "/research-summary.html",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/research-data.html",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/bench-results.html",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/engine-activity.html",
+      "destination": "/review-engine.html",
+      "permanent": false
+    },
+    {
+      "source": "/acquisition-9f3c2a7d4b.html",
+      "destination": "/enterprise.html",
+      "permanent": false
+    },
+    {
+      "source": "/submit-record.html",
+      "destination": "/review-engine.html",
+      "permanent": false
+    },
+    {
+      "source": "/submit-validation.html",
+      "destination": "/research.html",
+      "permanent": false
+    },
+    {
+      "source": "/openapi.json",
+      "destination": "/review-engine.html",
+      "permanent": false
+    },
     {
       "source": "/reviewer",
       "destination": "/reviewer/index.html",
@@ -301,7 +414,7 @@
     },
     {
       "source": "/right-to-know-why",
-      "destination": "/api/support?c=rtkw",
+      "destination": "/right-to-know-why.html",
       "permanent": false
     },
     {
@@ -311,7 +424,7 @@
     },
     {
       "source": "/decisions-you-can-defend",
-      "destination": "/api/support?c=defend",
+      "destination": "/decisions-you-can-defend.html",
       "permanent": false
     },
     {
@@ -434,7 +547,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://formspree.io https://pjzxkeviouofdseagvpf.supabase.co; form-action 'self' https://formspree.io mailto:; upgrade-insecure-requests"
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://challenges.cloudflare.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://analytics.google.com https://formspree.io https://pjzxkeviouofdseagvpf.supabase.co; frame-src https://challenges.cloudflare.com; form-action 'self' https://formspree.io mailto:; upgrade-insecure-requests"
         },
         {
           "key": "Cross-Origin-Opener-Policy",
@@ -459,6 +572,64 @@
           "value": "public, max-age=0, must-revalidate"
         }
       ]
+    },
+    {
+      "source": "/programme-status-9872fb93cc94.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/owner-login.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/programme--9872fb93cc94.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
-  ]
+  ],
+  "proxy": {
+    "entrypoint": "proxy.js",
+    "matcher": [
+      "/programme-status-9872fb93cc94.html",
+      "/programme--9872fb93cc94.html"
+    ]
+  }
 }

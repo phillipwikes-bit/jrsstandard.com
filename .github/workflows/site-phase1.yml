@@ -1,0 +1,161 @@
+name: JRS public site standard-first phase 1 checks
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'enterprise.html'
+      - 'resources.html'
+      - 'research.html'
+      - 'contact.html'
+      - 'about.html'
+      - 'review-engine.html'
+      - 'manifest.html'
+      - 'decision-reconstruction-risk.html'
+      - 'codebook.html'
+      - 'investigator-guides.html'
+      - 'engagement.html'
+      - 'terms.html'
+      - 'simulations.html'
+      - 'implementation-scenarios.html'
+      - 'api/site-inquiry.js'
+      - 'api/site-inquiry-config.js'
+      - 'api/leads-4b7e2c9af106d385.js'
+      - 'api/people-9dd1ecdf6f8cdfd4.js'
+      - 'vercel.json'
+      - 'tests/site-inquiry.mjs'
+      - 'api/_owner-auth.js'
+      - 'api/owner-session.js'
+      - 'api/owner-progress.js'
+      - 'api/roster-8c3f1a9e7b2d6045.js'
+      - 'api/recheck-answers-b1a768e88d3e48bd.js'
+      - 'api/geo-4e8b2d7f9a1c3065.js'
+      - 'api/variance-6b1d90fa2c47e8b3.js'
+      - 'owner-login.html'
+      - 'programme-status-9872fb93cc94.html'
+      - 'tests/owner-access.mjs'
+      - 'api/_notify.js'
+      - 'tests/notify-gmail-readiness.mjs'
+      - 'package.json'
+      - 'proxy.js'
+      - 'tests/owner-router.mjs'
+      - 'api/site-inquiry-stats.js'
+      - 'tests/site-inquiry-stats.mjs'
+      - 'privacy-notice.html'
+      - 'tests/decision-spellchecker-name.mjs'
+      - 'docs/implementation/DECISION_SPELLCHECKER_PRODUCT_NAMING_STANDARD_2026-10-30.md'
+      - 'api/coauthor-stats.js'
+      - 'api/contributor-stats.js'
+      - 'api/checkout-stats.js'
+      - 'tests/private-programme-metrics.mjs'
+      - 'tests/private-research-readers.mjs'
+      - 'tests/route-access-inventory.mjs'
+      - 'docs/security/JRS_DECISION_SPELLCHECKER_READONLY_RLS_INVENTORY_2026-10-30.sql'
+      - 'tests/site-phase1.mjs'
+      - 'api/_traffic-quality.js'
+      - 'api/geo-stats.js'
+      - 'api/asset-stats.js'
+      - 'tests/download-traffic-quality.mjs'
+      - 'api/owner-release-readiness.js'
+      - 'tests/owner-release-readiness.mjs'
+      - 'tests/enterprise-inquiry-gates.mjs'
+      - 'api/enterprise-inquiry.js'
+      - 'api/deployment-identity.js'
+      - 'scripts/preview-route-gates.mjs'
+      - 'tests/preview-route-gates.mjs'
+      - 'tests/asset-evidence-integrity.mjs'
+      - 'api/dl.js'
+      - 'docs/commercial/JRS_DOWNLOAD_QUALITY_AND_BUYER_EVIDENCE_INDEX_2026-10-30.md'
+      - '.github/workflows/site-phase1.yml'
+  push:
+    paths:
+      - 'index.html'
+      - 'enterprise.html'
+      - 'resources.html'
+      - 'research.html'
+      - 'contact.html'
+      - 'about.html'
+      - 'review-engine.html'
+      - 'manifest.html'
+      - 'decision-reconstruction-risk.html'
+      - 'codebook.html'
+      - 'investigator-guides.html'
+      - 'engagement.html'
+      - 'terms.html'
+      - 'simulations.html'
+      - 'implementation-scenarios.html'
+      - 'api/site-inquiry.js'
+      - 'api/site-inquiry-config.js'
+      - 'api/leads-4b7e2c9af106d385.js'
+      - 'api/people-9dd1ecdf6f8cdfd4.js'
+      - 'vercel.json'
+      - 'tests/site-inquiry.mjs'
+      - 'api/_owner-auth.js'
+      - 'api/owner-session.js'
+      - 'api/owner-progress.js'
+      - 'api/roster-8c3f1a9e7b2d6045.js'
+      - 'api/recheck-answers-b1a768e88d3e48bd.js'
+      - 'api/geo-4e8b2d7f9a1c3065.js'
+      - 'api/variance-6b1d90fa2c47e8b3.js'
+      - 'owner-login.html'
+      - 'programme-status-9872fb93cc94.html'
+      - 'tests/owner-access.mjs'
+      - 'api/_notify.js'
+      - 'tests/notify-gmail-readiness.mjs'
+      - 'package.json'
+      - 'proxy.js'
+      - 'tests/owner-router.mjs'
+      - 'api/site-inquiry-stats.js'
+      - 'tests/site-inquiry-stats.mjs'
+      - 'privacy-notice.html'
+      - 'tests/decision-spellchecker-name.mjs'
+      - 'docs/implementation/DECISION_SPELLCHECKER_PRODUCT_NAMING_STANDARD_2026-10-30.md'
+      - 'api/coauthor-stats.js'
+      - 'api/contributor-stats.js'
+      - 'api/checkout-stats.js'
+      - 'tests/private-programme-metrics.mjs'
+      - 'tests/private-research-readers.mjs'
+      - 'tests/route-access-inventory.mjs'
+      - 'docs/security/JRS_DECISION_SPELLCHECKER_READONLY_RLS_INVENTORY_2026-10-30.sql'
+      - 'tests/site-phase1.mjs'
+      - 'api/_traffic-quality.js'
+      - 'api/geo-stats.js'
+      - 'api/asset-stats.js'
+      - 'tests/download-traffic-quality.mjs'
+      - 'api/owner-release-readiness.js'
+      - 'tests/owner-release-readiness.mjs'
+      - 'tests/enterprise-inquiry-gates.mjs'
+      - 'api/enterprise-inquiry.js'
+      - 'api/deployment-identity.js'
+      - 'scripts/preview-route-gates.mjs'
+      - 'tests/preview-route-gates.mjs'
+      - 'tests/asset-evidence-integrity.mjs'
+      - 'api/dl.js'
+      - 'docs/commercial/JRS_DOWNLOAD_QUALITY_AND_BUYER_EVIDENCE_INDEX_2026-10-30.md'
+      - '.github/workflows/site-phase1.yml'
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --ignore-scripts --no-audit --no-fund
+      - run: node tests/owner-router.mjs
+      - run: node tests/notify-gmail-readiness.mjs
+      - run: node tests/route-access-inventory.mjs
+      - run: node tests/private-research-readers.mjs
+      - run: node tests/private-programme-metrics.mjs
+      - run: node tests/owner-access.mjs
+      - run: node tests/site-inquiry.mjs
+      - run: node tests/site-inquiry-stats.mjs
+      - run: node tests/decision-spellchecker-name.mjs
+      - run: node tests/site-phase1.mjs
+      - run: node tests/public-route-alignment.mjs
+      - run: node tests/download-traffic-quality.mjs
+      - run: node tests/owner-release-readiness.mjs
+      - run: node tests/enterprise-inquiry-gates.mjs
+      - run: node tests/preview-route-gates.mjs
+      - run: node tests/asset-evidence-integrity.mjs

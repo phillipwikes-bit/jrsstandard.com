@@ -1,3 +1,5 @@
+import { fetchAll } from './_sb-fetch.js';
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
 // Appendix C: crossed reviewer and item variance, computed server-side.
@@ -76,27 +78,12 @@ function predict(det){
 
 async function fetchReads(SERVICE){
   const H = { apikey: SERVICE, Authorization: 'Bearer ' + SERVICE, Accept: 'application/json' };
-  const rows = [];
-  let from = 0;
-  const page = 1000;
-  for (;;) {
-    const url = SB + '/rest/v1/ai_pilot_reads'
-      + '?select=reviewer_code,record_ref,jrs_read,rely,batch,created_at'
-      + '&order=created_at.asc';
-    const res = await fetch(url, {
-      headers: Object.assign({}, H, { Range: from + '-' + (from + page - 1) })
-    });
-    if (!res.ok) {
-      const t = await res.text();
-      throw new Error('ai_pilot_reads ' + res.status + ': ' + String(t).slice(0, 200));
-    }
-    const chunk = await res.json();
-    if (!chunk.length) break;
-    for (let i = 0; i < chunk.length; i++) rows.push(chunk[i]);
-    if (chunk.length < page) break;
-    from += page;
-  }
-  return rows;
+  const result = await fetchAll(SB,
+    'ai_pilot_reads?select=reviewer_code,record_ref,jrs_read,rely,batch,created_at'
+      + '&order=created_at.asc',H);
+  // No mixed-effects model should be fitted to a silently truncated population.
+  if (!result.complete) throw new Error('ai_pilot_reads_incomplete');
+  return result.rows;
 }
 
 // --- Crossed random-intercept logistic model -------------------------------
@@ -337,12 +324,9 @@ function profileSd(scored, which, fit){
 }
 
 export default async function handler(req){
-  if (req.method === 'OPTIONS') {
-    return new Response(null, { status: 204, headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, OPTIONS'
-    }});
-  }
+  if (req.method !== 'GET') return json({ok:false,error:'method_not_allowed'},405);
+  const denied=await ownerAccess(req);
+  if(denied)return denied;
 
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';

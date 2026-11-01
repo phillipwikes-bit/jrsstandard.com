@@ -1,15 +1,10 @@
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
-// OWNER-ONLY view of the named initiative supporters held in the private,
-// RLS-locked pilot_contacts table (source='support'). This returns PII
-// (name, organization, optional email) and is therefore token-gated: the
-// caller must present ?token= equal to BENCH_ADMIN_TOKEN or RUN_TOKEN (the
-// same tokens already set in Vercel). Without a valid token it returns 401 and
-// no data. The PUBLIC dashboard (/api/support-stats) stays counts-only, which
-// is what supporters were promised on supported.html ("public status pages
-// show counts only; your details stay private"). This endpoint exists so the
-// owner can see and export the consented list without exposing it publicly.
-
+// Owner-only named supporters and reviewer follow-up requests.
+// A signed owner session or owner bearer credential is required before
+// reading database records. URL query tokens and cross-origin CORS are removed
+// to avoid disclosing PII through browser history, referrers or foreign sites.
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 const CAMPAIGN_LABEL = {
@@ -21,27 +16,16 @@ const CAMPAIGN_LABEL = {
 function json(o, s){
   return new Response(JSON.stringify(o), {
     status: s || 200,
-    headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store' }
+    headers: { 'Content-Type':'application/json', 'Cache-Control':'no-store, private', 'X-Robots-Tag':'noindex, nofollow', 'Referrer-Policy':'no-referrer' }
   });
 }
 
 export default async function handler(req){
-  if (req.method === 'OPTIONS') return new Response(null, { status:204, headers:{ 'Access-Control-Allow-Origin':'*', 'Access-Control-Allow-Methods':'GET, OPTIONS', 'Access-Control-Allow-Headers':'Content-Type' } });
-
+  if (req.method !== 'GET') return json({ error:'method_not_allowed' }, 405);
+  const gate = await ownerAccess(req);
+  if (gate) return gate;
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  const ADMIN = env.BENCH_ADMIN_TOKEN || '';
-  const RUN = env.RUN_TOKEN || '';
-
-  let token = '';
-  try { token = new URL(req.url).searchParams.get('token') || ''; } catch(e){ token = ''; }
-
-  // Auth gate: a valid owner token is required before any PII is returned.
-  // The unauthorized response reports ONLY whether a token is configured
-  // server-side (booleans, never the value) so a broken gate is diagnosable.
-  if (!((ADMIN && token === ADMIN) || (RUN && token === RUN))) {
-    return json({ error:'unauthorized', admin_token_configured: !!ADMIN, run_token_configured: !!RUN, service_key_configured: !!SERVICE }, 401);
-  }
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
 
   const AH = { 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE };

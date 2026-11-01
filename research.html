@@ -73,6 +73,9 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
 .jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
 @media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:7.5px} }
 /* /JRS SITE NAV v1 */
+
+/* Standard-first navigation: accessible on mobile without horizontal scrolling. */
+@media (max-width:740px){.jrs-sitenav{display:flex;flex-wrap:wrap;justify-content:center;overflow-x:visible}.jrs-sitenav a{min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;padding:11px 12px}}
 </style>
 <link rel="stylesheet" href="public-experience.css">
 </head>
@@ -84,17 +87,17 @@ h1{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:400;line-height:1.
     <div class="header-meta">Justification Review Standard<br>Research &amp; Validation</div>
   </div>
 </header>
-<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<!-- JRS SITE NAV v2 :: STANDARD-FIRST -->
 <nav class="jrs-sitenav" aria-label="Site">
- <a href="jrsstandard.html">The Standard</a>
- <a href="resources.html">Free Resources</a>
+ <a href="index.html">Home</a>
+ <a href="jrsstandard.html">Standard</a>
+ <a href="resources.html">Resources</a>
  <a href="research.html">Research</a>
- <a href="review-engine.html">Review Engine</a>
- <a href="manifest.html">Manifest</a>
- <a href="enterprise.html">Enterprise</a>
- <a href="about.html">About</a>
+ <a href="training.html">Training</a>
+ <a href="enterprise.html">For Organizations</a>
+ <a href="contact.html">Contact &amp; Inquiries</a>
 </nav>
-<!-- /JRS SITE NAV v1 -->
+<!-- /JRS SITE NAV v2 -->
 <main id="main-content">
 <div class="wrap">
   <div class="hero">

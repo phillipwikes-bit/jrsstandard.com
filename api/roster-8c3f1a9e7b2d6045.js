@@ -1,13 +1,12 @@
-import { fetchAllUrl } from './_sb-fetch.js';
+import { ownerAccess } from './_owner-auth.js';
+import { fetchAll } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Historical rationale below is superseded. The public repository exposes
 // the path; owner bearer authentication now gates access before DB use.
-// Private training roster viewer. Secured by this opaque, unlinked, noindex URL
-// (same model as the acquisition page), so it needs NO token. Reads pilot_contacts
-// with the server-side service-role key and renders name, title, email,
-// organization, consents, enrolled date, country, and completion status. If this
-// URL ever leaks, rename this file to rotate it.
+// Private training roster viewer. A signed owner session is required before
+// any database read. The URL alone does not authorize access. It renders
+// enrollment and completion metadata for authorized owner review.
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
@@ -34,21 +33,22 @@ async function sha256hex(str){
 }
 
 export default async function handler(req){
+  if (req.method !== 'GET') return new Response('Method not allowed', {status:405,headers:{'Cache-Control':'private, no-store'}});
+  const denied=await ownerAccess(req);
+  if(denied)return denied;
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  const H = { 'Content-Type':'text/html; charset=utf-8', 'X-Robots-Tag':'noindex, nofollow', 'Cache-Control':'no-store' };
+  const H = { 'Content-Type':'text/html; charset=utf-8', 'X-Robots-Tag':'noindex, nofollow', 'Cache-Control':'private, no-store', 'Referrer-Policy':'no-referrer' };
   if (!SERVICE) return new Response('<p>service key missing</p>', { status:503, headers:H });
 
   const AH = { 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE };
-  let enroll, done;
-  try {
-    const enrollRows = await fetchAllUrl(SB + "/rest/v1/pilot_contacts?select=name,email,organization,message,created_at&source=eq.training-enroll&order=created_at.asc", AH);
-    enroll = enrollRows;
-    const doneRows = await fetchAllUrl(SB + "/rest/v1/pilot_contacts?select=email,message,created_at&source=eq.training-complete", AH);
-    done = doneRows;
-  } catch(e){ return new Response('<p>database unreachable</p>', { status:502, headers:H }); }
-  if (!Array.isArray(enroll)) enroll = [];
-  if (!Array.isArray(done)) done = [];
+  const enrollResult = await fetchAll(SB, 'pilot_contacts?select=name,email,organization,message,created_at&source=eq.training-enroll&order=created_at.asc', AH);
+  const doneResult = await fetchAll(SB, 'pilot_contacts?select=email,message,created_at&source=eq.training-complete', AH);
+  if (!enrollResult.complete || !doneResult.complete) {
+    return new Response('Training roster unavailable: database read incomplete', { status:502, headers:H });
+  }
+  const enroll = enrollResult.rows;
+  const done = doneResult.rows;
 
   const doneMap = {}, doneCountry = {};
   done.forEach(function(x){
@@ -118,7 +118,7 @@ export default async function handler(req){
     + (countryLine ? ('<p class="sub" style="color:#c4963d">'+countryLine+'</p>') : '')
     + '<table><thead><tr><th>#</th><th>Name</th><th>Title</th><th>Email</th><th>Organization</th><th>Channel</th>'
     + '<th>Contact</th><th>Transfer</th><th>Enrolled</th><th>Country</th><th>Completed</th></tr></thead><tbody>'+rows+'</tbody></table>'
-    + '<p class="note">This page is the private, consented list of people who enrolled in the JRS training. It is secured by this unlisted URL. If it ever leaks, ask to have it rotated. Completion is recorded when someone finishes all six modules; entries marked "(records)" are reviewers who completed through the panel and whose completion and country are taken from the reviewer records.</p>'
+    + '<p class="note">This page is the private, consented list of people who enrolled in the JRS training. It requires owner authentication. An unlisted URL is not access control. Completion is recorded when someone finishes all six modules; entries marked "(records)" are reviewers who completed through the panel and whose completion and country are taken from the reviewer records.</p>'
     + '</body></html>';
 
   return new Response(html, { status:200, headers:H });

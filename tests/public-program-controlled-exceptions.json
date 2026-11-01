@@ -1,0 +1,33 @@
+{
+  "schema": "jrs_controlled_source_exception_v1",
+  "status": "PROPOSED_NOT_RELEASE_APPROVED",
+  "date_utc": "2026-10-31",
+  "base_parent": "feat/jrs-drr-public-initiatives-2026-10-31",
+  "baseline_sha_policy": "Original 24-file manifest remains immutable. Only the specifically recorded replacement blob is accepted by this draft's source-level tests.",
+  "owner_approval": "NOT_PROVIDED",
+  "production_status": "HOLD",
+  "entries": {
+    "api/support-stats.js": {
+      "before_blob_sha": "29e7d37f570f1089bc2c814cacd158899a9545d4",
+      "candidate_blob_sha": "82ea4d90c4859a8e25061d7a81c6226d1ef1c48e",
+      "reason": "Existing public aggregate reader returned HTTP 200 with zero on missing credentials/failure; fetchAllUrl discarded pagination completeness and could publish truncated results.",
+      "scope": "Return 503 or 502 unavailable on read failure/incomplete page, preserve successful aggregate schema and historical records; require all existing contributing sources to complete.",
+      "rights_effect": "none",
+      "database_migration": false,
+      "history_rewrite": false,
+      "public_identity_expansion": false,
+      "release_gate": "Owner approves exact diff and reconciles live counters against frozen historical data before merge."
+    },
+    "api/support.js": {
+      "before_blob_sha": "6b720f1241424d495a2e2dd64380bb77464e8ac0",
+      "candidate_blob_sha": "327bc0ac6c78b253b1ec9bf8ae3de086e02a41dc",
+      "reason": "Legacy GET support writer treated all resolved HTTP database responses as stored events, even when status was 4xx/5xx. Preview traffic sharing storage credentials could also pollute historic counters.",
+      "scope": "Only production GET requests can create an event; mark browser counted and r=1 only when service acknowledges success. Existing successful production record shape, direct link redirect destination and historic rows unchanged.",
+      "rights_effect": "none",
+      "database_migration": false,
+      "history_rewrite": false,
+      "public_identity_expansion": false,
+      "release_gate": "Requires owner review of exact changed source, frozen-count reconciliation, historical direct-link compatibility and explicit production authorization."
+    }
+  }
+}

@@ -75,6 +75,9 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 .jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
 @media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:7.5px} }
 /* /JRS SITE NAV v1 */
+
+/* Phase 1 shared navigation: keep every primary link visible on narrow screens. */
+@media(max-width:740px){.jrs-sitenav{display:flex;flex-wrap:wrap;justify-content:center;overflow-x:visible}.jrs-sitenav a{min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;padding:11px 12px}}
 </style>
 <link rel="stylesheet" href="public-experience.css">
 </head>
@@ -86,17 +89,17 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     <div class="header-meta">Justification Review Standard<br>Origin &amp; Approach</div>
   </div>
 </header>
-<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<!-- JRS SITE NAV v2 :: STANDARD-FIRST -->
 <nav class="jrs-sitenav" aria-label="Site">
- <a href="jrsstandard.html">The Standard</a>
- <a href="resources.html">Free Resources</a>
+ <a href="index.html">Home</a>
+ <a href="jrsstandard.html">Standard</a>
+ <a href="resources.html">Resources</a>
  <a href="research.html">Research</a>
- <a href="review-engine.html">Review Engine</a>
- <a href="manifest.html">Manifest</a>
- <a href="enterprise.html">Enterprise</a>
- <a href="about.html">About</a>
+ <a href="training.html">Training</a>
+ <a href="enterprise.html">For Organizations</a>
+ <a href="contact.html">Contact &amp; Inquiries</a>
 </nav>
-<!-- /JRS SITE NAV v1 -->
+<!-- /JRS SITE NAV v2 -->
 <main id="main-content">
 <div class="wrap">
   <div class="hero">
@@ -135,7 +138,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   <p class="body-text">JRS evaluates whether records identify the basis for conclusions, connect reasoning to identifiable information or events, remain understandable during later review, support accountability and oversight, and remain reviewable whether or not AI-assisted drafting was involved. It returns records to drafters for clarification. It does not make findings about individuals, investigate conduct, or replace any system of record.</p>
 
   <div class="section-label">Who Develops It</div>
-  <p class="body-text">JRS is developed by Phillip Wikes, drawing on the investigative, documentation-review, cognitive-behavioral, and AI-governance experience described above. The published standard and practitioner resources are available without cost. The Review Engine and implementation materials are maintained separately as a controlled local-development candidate. The framework's claims are limited to what the current evidence supports, which is why the program publishes open questions, negative findings, and limitations rather than presenting validation as complete.</p>
+  <p class="body-text">JRS is developed by Phillip Wikes, drawing on civil rights enforcement and evidence review, cognitive-behavioral program development and evaluation, applied behavioral research, negotiation, and conflict resolution. He previously served as a Lead Civil Rights Officer with the Maryland Commission on Civil Rights. These experiences inform the instrument's attention to source attribution, chronology, reviewable reasoning and documentation sufficiency. The published standard and practitioner resources are available without cost. The Review Engine and implementation materials are maintained separately as a controlled local-development candidate. The framework's claims are limited to what the current evidence supports, which is why the program publishes open questions, negative findings, and limitations rather than presenting validation as complete.</p>
   <p><a class="btn" href="mailto:info@jrsstandard.com">Contact</a><a class="btn" href="research.html">Research &amp; Validation</a><a class="btn solid" href="resources.html">Explore free resources</a></p>
 
   <div class="section-label">Why JRS is neutral</div>

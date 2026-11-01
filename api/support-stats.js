@@ -1,4 +1,4 @@
-import { fetchAllUrl } from './_sb-fetch.js';
+import { fetchAll } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate initiative-support endorsements (counts only, no PII) for the
@@ -22,12 +22,15 @@ const TEST_SOURCES = { verify: true, test: true, selftest: true };
 export default async function handler(){
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  if (!SERVICE) return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
+  if (!SERVICE) return json({ error:'support_stats_unavailable', reason:'storage_not_configured' },503);
 
   try {
     // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
-    const rows = await fetchAllUrl(SB + '/rest/v1/interaction_events?source=eq.support&select=payload,created_at&order=created_at.asc',
+    const { rows, complete } = await fetchAll(SB,
+      'interaction_events?source=eq.support&select=payload,created_at&order=created_at.asc',
       { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE });
+    // An interrupted paginated read must not become a plausible but lower total.
+    if (!complete) throw new Error('incomplete_support_source');
 
     const byC = {}, byK = {}, perK = {}, byS = {}, byDay = {};
     let counted = 0;
@@ -105,21 +108,19 @@ export default async function handler(){
     const OUTAGE_TO   = '2026-08-11T08:30:00Z';
     let lostClicks = 0;
     const lostDevices = {};
-    try {
-      const grows = await fetchAllUrl(SB + '/rest/v1/interaction_events'
-        + '?source=eq.gate-view&select=payload,created_at'
-        + '&created_at=gte.' + encodeURIComponent(OUTAGE_FROM)
-        + '&created_at=lt.' + encodeURIComponent(OUTAGE_TO),
-        { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE });
-      {
-        for (const g of grows) {
-          const gp = g.payload || {};
-          if (!gp.campaign) continue;
-          lostClicks++;
-          lostDevices[String(gp.user_agent || 'unknown')] = 1;
-        }
-      }
-    } catch (e) { /* the rest of the payload must still return */ }
+    const outageQuery = 'interaction_events?source=eq.gate-view&select=payload,created_at'
+      + '&created_at=gte.' + encodeURIComponent(OUTAGE_FROM)
+      + '&created_at=lt.' + encodeURIComponent(OUTAGE_TO);
+    const { rows: grows, complete: outageComplete } = await fetchAll(SB, outageQuery,
+      { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE });
+    // No zero-valued lost-click estimate unless this historical source was read.
+    if (!outageComplete) throw new Error('incomplete_outage_source');
+    for (const g of grows) {
+      const gp = g.payload || {};
+      if (!gp.campaign) continue;
+      lostClicks++;
+      lostDevices[String(gp.user_agent || 'unknown')] = 1;
+    }
     const by_source = Object.entries(byS)
       .map(([src, hits]) => ({ src, hits }))
       .sort((a, b) => b.hits - a.hits);
@@ -159,14 +160,15 @@ export default async function handler(){
     // the registration-gate rows (source='support-register') count, because a
     // person who registered by name through the gate is a named supporter by
     // exactly the same standard as one who came through the older route.
-    let named = 0;
-    try {
-      const nr = await fetch(SB + '/rest/v1/pilot_contacts?source=in.(support,support-register)&select=id', {
-        headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE, 'Prefer': 'count=exact', 'Range': '0-0' } });
-      const cr = nr.headers.get('content-range') || '';
-      const m = cr.match(/\/(\d+)$/);
-      if (m) named = parseInt(m[1], 10) || 0;
-    } catch (e) { /* count is best-effort */ }
+    const nr = await fetch(SB + '/rest/v1/pilot_contacts?source=in.(support,support-register)&select=id', {
+      headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
+                 'Prefer': 'count=exact', 'Range': '0-0' } });
+    if (!nr.ok) throw new Error('named_count_unavailable');
+    const cr = nr.headers.get('content-range') || '';
+    const m = cr.match(/\/(\d+)$/);
+    if (!m) throw new Error('named_count_missing');
+    const named = Number(m[1]);
+    if (!Number.isSafeInteger(named) || named < 0) throw new Error('named_count_invalid');
 
     // Public supporter wall: ONLY rows whose supporter explicitly ticked the
     // "list my name publicly" box (payload.consent_public_list === true).
@@ -174,25 +176,23 @@ export default async function handler(){
     // never returned, never shown. This is the no-token public list: it holds
     // exactly the people who asked to be listed, and nobody else.
     let public_supporters = [];
-    try {
-      const pr = await fetch(SB + '/rest/v1/pilot_contacts?source=in.(support,support-register,guide-register,training-enroll)&select=name,organization,message&order=created_at.asc', {
-        headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE } });
-      if (pr.ok) {
-        const prows = await pr.json();
-        for (const row of prows) {
-          let p = {};
-          try { p = JSON.parse(row.message || '{}'); } catch (e) { p = {}; }
-          if (p.consent_public_list === true && row.name) {
-            const camp = p.campaign || 'general';
-            public_supporters.push({
-              name: row.name,
-              organization: row.organization || '',
-              initiative: CAMPAIGN_LABEL[camp] || camp
-            });
-          }
-        }
+    const { rows: prows, complete: wallComplete } = await fetchAll(SB,
+      'pilot_contacts?source=in.(support,support-register,guide-register,training-enroll)'
+      + '&select=name,organization,message&order=created_at.asc',
+      { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE });
+    if (!wallComplete) throw new Error('incomplete_public_consent_source');
+    for (const row of prows) {
+      let p = {};
+      try { p = JSON.parse(row.message || '{}'); } catch (e) { p = {}; }
+      if (p.consent_public_list === true && row.name) {
+        const camp = p.campaign || 'general';
+        public_supporters.push({
+          name: row.name,
+          organization: row.organization || '',
+          initiative: CAMPAIGN_LABEL[camp] || camp
+        });
       }
-    } catch (e) { /* public wall is best-effort */ }
+    }
 
     return json({ total: counted, countries: countries, named_supporters: named, public_supporters: public_supporters, by_country: by_country, by_campaign: by_campaign, by_source: by_source, campaigns: campaigns,
       by_day: by_day,
@@ -221,12 +221,14 @@ export default async function handler(){
               + 'is applied and none is needed. Days with no endorsements are present '
               + 'with a zero rather than omitted.' });
   } catch (e) {
-    return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
+    // Data unavailable is not an observed zero. Preserve historical rows.
+    return json({ error:'support_stats_unavailable', reason:'source_incomplete_or_unavailable' },502);
   }
 }
 
-function json(obj){
+function json(obj,status=200){
   return new Response(JSON.stringify(obj), {
+    status,
     headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'Access-Control-Allow-Origin': '*' }
   });
 }

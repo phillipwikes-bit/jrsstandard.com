@@ -1,27 +1,23 @@
 import { fetchAllUrl } from './_sb-fetch.js';
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
-// Admin read of training enrollments and completion. Returns PII (name, title,
-// email, organization), so it is TOKEN-GATED: ?token= must equal BENCH_ADMIN_TOKEN
-// or RUN_TOKEN (reuse the one already set in Vercel). Reads pilot_contacts with the
-// server-side service-role key. Fails safe: if no admin token is configured, or no
-// valid token is supplied, it returns 401 and never returns data. GET only.
-
+// Owner-only training enrollment and completion reader. Returns named contact
+// data and cannot be authorized by a URL query token. Requires the same signed
+// owner session or owner bearer credential as the private Programme Status page.
+// Legacy ?token= tokens must NOT bypass the owner gate.
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
-function json(o, s){ return new Response(JSON.stringify(o, null, 2), { status: s||200, headers: { 'Content-Type':'application/json', 'Cache-Control':'no-store' } }); }
+function json(o, s){ return new Response(JSON.stringify(o, null, 2), { status: s||200, headers: { 'Content-Type':'application/json', 'Cache-Control':'no-store, private', 'X-Robots-Tag':'noindex, nofollow', 'Referrer-Policy':'no-referrer' } }); }
 
 export default async function handler(req){
   if (req.method !== 'GET') return json({ error:'method_not_allowed' }, 405);
+  const gate = await ownerAccess(req);
+  if (gate) return gate;
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  const ADMIN = env.BENCH_ADMIN_TOKEN || '';
-  const RUN = env.RUN_TOKEN || '';
-  const tok = new URL(req.url).searchParams.get('token') || '';
 
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
-  if (!ADMIN && !RUN) return json({ error:'no_admin_token_configured' }, 401);
-  if (!tok || (tok !== ADMIN && tok !== RUN)) return json({ error:'unauthorized' }, 401);
 
   const H = { 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE };
   let enroll, done;

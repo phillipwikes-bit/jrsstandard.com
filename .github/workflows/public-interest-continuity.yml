@@ -1,0 +1,29 @@
+name: Public interest and private dashboard continuity
+on:
+  push:
+    branches:
+      - feat/jrs-drr-public-initiatives-2026-10-31
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Preserve 24 existing collection and owner-report sources
+        run: node tests/check-public-program-continuity.mjs
+      - name: Verify accessible free initiative links and old campaign routes
+        run: node tests/check-public-initiative-pages.mjs
+      - name: Verify initiative support acknowledges database write failures
+        run: node --test tests/initiative-support.test.mjs
+      - name: Verify owner historical aggregate snapshots fail closed and reconcile
+        run: node --test tests/snapshot-public-program-counts.test.mjs
+      - name: Verify support-statistics failures do not report false zeros
+        run: node --test tests/support-stats-completeness.test.mjs
+      - name: Test owner login, cookie expiry, rotation and explicitly documented logout replay limitation
+        run: node --test tests/owner-session-lifecycle.test.mjs

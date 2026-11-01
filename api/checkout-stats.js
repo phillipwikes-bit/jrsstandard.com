@@ -1,7 +1,8 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
-// Aggregate commercial-funnel stats for the private status dashboard, token-free.
+// Aggregate commercial-funnel stats for the private status dashboard, owner-authenticated.
 //
 // WHY THIS EXISTS. api/checkout.js writes two things: a 'checkout-click' event
 // for every arrival at the pay screen, and a 'checkout-fallback' contact row for
@@ -45,8 +46,9 @@ function json(o, s) {
     status: s || 200,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'no-store'
+      'Cache-Control': 'private, no-store',
+      'X-Robots-Tag': 'noindex, nofollow',
+      'Referrer-Policy': 'no-referrer'
     }
   });
 }
@@ -58,6 +60,8 @@ function bump(map, k) {
 
 export default async function handler(req) {
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
 
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';

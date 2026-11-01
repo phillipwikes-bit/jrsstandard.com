@@ -1,0 +1,32 @@
+{
+  "schema": "jrs-public-program-continuity-v1",
+  "captured_utc": "2026-10-31",
+  "source_branch_sha": "74834befb6e724eb321376a6b070a002ac80001e",
+  "meaning": "Git blob SHAs of existing owner report and collection/reader code. These hashes are source-control evidence only. They do not establish live database health, data completeness or successful delivery. Any legitimate change requires explicit baseline approval and before/after reconciliation.",
+  "files": {
+    "programme-status-9872fb93cc94.html": "e57ccb4efe7ddce1898e5b50559040257b136e0e",
+    "api/dl.js": "eedc066351a1524235b021d99f68b2925630d43a",
+    "api/support.js": "6b720f1241424d495a2e2dd64380bb77464e8ac0",
+    "api/access.js": "c358461f1fc0cfbff34a4d0e38546dc231d6aa47",
+    "api/enroll.js": "a0cc9177dc0a0a3e19a1bd26d8e1791b2562ca13",
+    "api/telemetry.js": "acc8772bcbe25bff54b1600426760d8e364da163",
+    "api/asset-stats.js": "1cde4b0b51de4841d831b66f57b612e68da41dda",
+    "api/access-stats.js": "27c77c77a54cc43d8f586d7d341bff2adf425f6a",
+    "api/contributor-stats.js": "abeb0fab8c48fafc91568b38a18e23dc76ebf9f1",
+    "api/enroll-stats.js": "168f75843b838ca8effccd4570d14d750e1aa90c",
+    "api/gate-stats.js": "1cfa25240760555c4f7d1697f5b774717718b1c0",
+    "api/geo-stats.js": "4ffffaf11cd0e4495dd64612817aa3c99a41211c",
+    "api/orgpilot-stats.js": "9600e75d6e2c1258c1f28d1cdf80a21c358685a8",
+    "api/panel-stats.js": "c160c6a827c83cb7772bb59cb81452c0eafeb2ea",
+    "api/owner-progress.js": "6ab07e85717214cbdbef87f8c5bc77423c9f060e",
+    "api/owner-release-readiness.js": "6dfda4efcbb47fae5cc616dde4eceed11562326a",
+    "api/site-inquiry-stats.js": "d85f497e483cf79db3c0e2d4ac71043b7c71a93c",
+    "api/support-contacts.js": "06434b3d2a42fb5bc58adc2f11fe804bb006bb16",
+    "api/support-stats.js": "29e7d37f570f1089bc2c814cacd158899a9545d4",
+    "api/people-9dd1ecdf6f8cdfd4.js": "6b1a780e7ed44b95def186980ed5962896bbc847",
+    "api/leads-4b7e2c9af106d385.js": "2709d2906851efeac4ec8a5de8c37fc98ddb3c11",
+    "api/offer-info.js": "d05b9f44e00a242f78bd8858e6138636507ea9ff",
+    "api/site-inquiry.js": "7dd8f043e2bd1d3e6451ec9c3ca734229c5bcdb1",
+    "api/enroll-admin.js": "2ca96518ccc420e637fe07d34cfa4ca91abddfd9"
+  }
+}
