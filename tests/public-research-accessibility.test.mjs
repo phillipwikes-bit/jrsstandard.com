@@ -65,3 +65,12 @@ test('existing Formspree contact delivery remains installed',()=>{
  assert.ok(contact.includes('id="jrs-inquiry"'));
  assert.ok(read('api/site-inquiry.js').includes('https://formspree.io/f/mreddwdg'));
 });
+
+test('research evidence links do not redirect back to the overview',()=>{
+ const c=JSON.parse(read('vercel.json'));
+ for(const p of ['/research-summary.html','/evidence-ledger.html','/datasets.html']){
+  assert.ok(!c.redirects.some(x=>x.source===p),p);
+ }
+ assert.equal(c.redirects.find(x=>x.source==='/evidence-ledger')?.destination,'/evidence-ledger.html');
+ assert.equal(c.redirects.find(x=>x.source==='/datasets')?.destination,'/datasets.html');
+});
