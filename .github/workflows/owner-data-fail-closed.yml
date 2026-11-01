@@ -1,0 +1,24 @@
+name: Owner data fail-closed security
+on:
+  pull_request:
+    paths:
+      - 'proxy.js'
+      - 'package.json'
+      - 'vercel.json'
+      - 'api/**'
+      - 'tests/owner-data-fail-closed.mjs'
+      - '.github/workflows/owner-data-fail-closed.yml'
+  push:
+    branches:
+      - 'security/owner-data-fail-closed-2026-11-01'
+permissions:
+  contents: read
+jobs:
+  owner-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/owner-data-fail-closed.mjs
