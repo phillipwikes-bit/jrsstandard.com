@@ -32,9 +32,6 @@ for(const f of files){
  try{const info=execFileSync('pdfinfo',[path],{encoding:'utf8',timeout:30000});
  pages=Number((info.match(/^Pages:\s*(\d+)/m)||[])[1]||0);}
  catch(e){pages=null;}
- if(/Investigator_Field_Guide_(Employment|FairHousing|International)|Reliability_Accuracy/.test(f))
-  console.log('PDF-CONTENT-CHECK '+JSON.stringify({file:f,excerpt:plain.slice(0,6500),
-  terms:['Reconstructability','Reconstruction','Basis Identification','Chronology','Decision-Process Traceability','Evidentiary Sufficiency','83.9','accuracy','preliminary','ongoing'].filter(x=>new RegExp(x,'i').test(plain))}));
  results.push({file:f,pages,chars:plain.length,versions:matches,head:first});
 }
 for(const d of results)console.log('PDF-AUDIT '+JSON.stringify(d));
@@ -47,11 +44,31 @@ const guidePaths=['JRS_Investigator_Field_Guide_Employment.pdf',
  'JRS_Investigator_Field_Guide_International.pdf'];
 for(const name of guidePaths){
  const text=execFileSync('pdftotext',['-layout',join(root,name),'-'],{encoding:'utf8',maxBuffer:20000000});
- for(const c of ['Reconstructability','Chronology'])assert.ok(
-  new RegExp(c,'i').test(text),name+' missing core requirement '+c);
+ for(const c of ['Record Self-Sufficiency','Evidentiary Anchoring','Chronological Integrity',
+   'Decision-Process Traceability','Evidentiary Sufficiency'])assert.ok(
+  new RegExp(c,'i').test(text),name+' missing edition-specific requirement '+c);
+ assert.match(text,/Version\s+1\.1/i,name+' must identify its own 1.1 edition');
 }
+const stdText=execFileSync('pdftotext',['-layout',join(root,'JRS-Standard.pdf'),'-'],
+ {encoding:'utf8',maxBuffer:20000000});
+for(const term of ['Reconstructability','Basis Identification','Chronology',
+ 'Decision-Process Traceability','Evidentiary Sufficiency'])
+ assert.ok(new RegExp(term,'i').test(stdText),'v2.0 Standard missing '+term);
+const oldDraft=execFileSync('pdftotext',['-layout',join(root,'JRS_Reliability_Accuracy.pdf'),'-'],
+ {encoding:'utf8',maxBuffer:20000000});
+assert.match(oldDraft,/accuracy.*(?:preliminary|ongoing)/i,
+ 'Historical accuracy PDF not identified as a preliminary-stage draft');
+const guideListing=readFileSync(join(root,'investigator-guides.html'),'utf8');
+const researchListing=readFileSync(join(root,'research-summary.html'),'utf8');
+assert.ok(guideListing.includes('Edition and terminology notice') &&
+ guideListing.includes('Record Self-Sufficiency') &&
+ guideListing.includes('Basis Identification'),
+ 'Current guide landing page must disclose legacy vocabulary');
+assert.ok(researchListing.includes('Historical Reliability') &&
+ researchListing.includes('Archival PDF warning.'),
+ 'Historical research draft must be clearly distinguished from current evidence');
 const ref=results.find(x=>x.file==='JRS-Reference-9d4f2a7c.pdf');
 console.log('REFERENCE-PAGE-COUNT '+ref.pages+
  ' (site labels it a 19-page reference; investigate if different).');
 console.log('PASS: '+results.length+
- ' published PDFs are machine-readable; Standard identity and core guide terms checked.');
+ ' published PDFs machine-readable; edition-specific guide vocabulary and historical study-PDF warnings verified.');
