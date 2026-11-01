@@ -2,6 +2,12 @@ name: JRS Visual Reference Snapshots
 on:
   pull_request:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      preview_url:
+        description: Exact-commit Vercel preview URL (must serve JRS, not login)
+        required: true
+        type: string
 permissions:
   contents: read
 jobs:
@@ -11,7 +17,7 @@ jobs:
       - name: Checkout exact PR source
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
       - name: Select browser
         run: |
@@ -69,7 +75,7 @@ jobs:
       - name: Preserve source-rendered screenshots and measurements
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: jrs-local-visual-${{ github.event.pull_request.head.sha }}
+          name: jrs-local-visual-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             /tmp/jrs-visual/pr-*.png
             /tmp/jrs-layout-audit-output.html
@@ -94,9 +100,10 @@ jobs:
 
       - name: Verify preview source identity before any release certification
         env:
-          JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
-          JRS_PREVIEW_URL: https://jrsstandard-bu0n4kdly-phillip-wikes-projects.vercel.app
+          JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          JRS_PREVIEW_URL: ${{ inputs.preview_url || vars.JRS_VERIFIED_PREVIEW_URL }}
         run: |
-          # The visual test may succeed locally while the hosted URL serves a
-          # protected Vercel sign-in screen or an older deployment. Block release.
+          # No authenticated exact-commit preview URL means certification stays HOLD.
+          # Use manual workflow_dispatch preview_url or configured repository variable.
+          # A stale build, Vercel sign-in page or content mismatch is never a pass.
           python3 tests/jrs-preview-static-verification.py "$JRS_PREVIEW_URL"
