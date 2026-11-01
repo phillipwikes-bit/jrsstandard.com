@@ -903,3 +903,22 @@ body.jrs-institutional.jrs-training-page .jrs-training-desk-reference-body{
 body.jrs-institutional.jrs-training-page .jrs-training-desk-reference-body div[style*="font-size:13.5px"]{
  font-size:14px!important;line-height:1.64!important
 }
+
+/* Training module reading scale: avoid 8px status labels in live tasks. */
+body.jrs-institutional.jrs-training-page #training-modules > div > div[style*="font-size:7.5px"]{
+ font-size:12px!important;line-height:1.5!important;letter-spacing:.055em!important
+}
+body.jrs-institutional.jrs-training-page .module-title{
+ font-size:16px!important;line-height:1.45!important
+}
+body.jrs-institutional.jrs-training-page .module-outcome{
+ font-size:14px!important;line-height:1.55!important
+}
+body.jrs-institutional.jrs-training-page .module-status,
+body.jrs-institutional.jrs-training-page .progress-section-label,
+body.jrs-institutional.jrs-training-page .progress-count{
+ font-size:12px!important;line-height:1.5!important;letter-spacing:.03em!important
+}
+body.jrs-institutional.jrs-training-page .jrs-training-desk-reference-body div[style*="font-size:8px"]{
+ font-size:12px!important;line-height:1.5!important;letter-spacing:.04em!important
+}
