@@ -89,3 +89,17 @@ node tests/incomeos-intelligence.mjs
 ```
 
 Passing these checks is necessary but not sufficient for the production release gates in `SECURITY-AND-RELEASE.md`. Verify actual iPhone Safari behavior and anonymous private-page access independently.
+
+## 2026-11-01 master-plan implementation increment
+
+The full current-and-future feature register, data boundaries, acceptance standards and phased dependencies are maintained in [IMPLEMENTATION-REGISTER.md](./IMPLEMENTATION-REGISTER.md). It controls the implementation scope and supersedes informal feature-only release assumptions.
+
+New development-only source modules:
+
+- `accounting-controls.js`: source-backed bank identity, precise USD cents, record validation, conservative one-to-one source linkage, reconciliation candidates, duplicate/conflicting bank IDs, separate receipt categories, exceptions and close readiness. It makes no tax or independently audited claims.
+- `accounting-controls-ui.js`: read-only reconciliation quality panel. Deliberately passes empty source/coverage arrays because the static app cannot fetch authorized private financial statements and must not imply it did.
+- `recovery-engine.js`: conservatively flags potential multiple charges, links user-recorded nonincome receipts to original expense references when available and requires at least two comparable, evidence-reviewed lower bills before describing observed recurring savings.
+- `recovery-ui.js`: owner-only candidate review. It does not request refunds, dispute card charges, cancel services or calculate guaranteed income.
+- `tests/incomeos-accounting-controls.mjs` and `tests/incomeos-recovery.mjs`: synthetic, source-privacy-safe controls added to GitHub CI.
+
+These modules strengthen evidence integrity but **do not change the release hold**. Do not enter sensitive owner financial records in the publicly sourced app until a separate protected, encrypted production data store has been verified. The public study radar and the private owner ledger remain operationally separate.
