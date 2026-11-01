@@ -48,11 +48,11 @@
       var value;
       try{value=cents(e.grossUsd);}catch(_err){return;}
       var original=byId.get(String(e.refundOf||"")),plausible=!!original&&value<=original.amountCents&&e.date>=original.date;
-      var bankMatched=approved.has(String(e.id));
+      var bankMatched=approved.has(String(e.id)),originalMatched=original&&approved.has(original.id),bothMatched=plausible&&bankMatched&&originalMatched;
       out.push({id:String(e.id||""),originalId:original?original.id:null,valueUsd:value/100,
-        state:!original?"UNLINKED_NONINCOME_RECEIPT":!plausible?"AMOUNT_OR_DATE_CONFLICT":!bankMatched?"OWNER_REFUND_ENTRY_UNCONFIRMED":"OWNER_REVIEWED_BANK_CREDIT",
-        countsAsNewEarnings:false,confirmedRecoveredUsd:plausible&&bankMatched?value/100:0,
-        note:"A return of funds or principal does not create earned income. A local match is not an independent audit."});
+        state:!original?"UNLINKED_NONINCOME_RECEIPT":!plausible?"AMOUNT_OR_DATE_CONFLICT":!bankMatched?"OWNER_REFUND_ENTRY_UNCONFIRMED":!originalMatched?"ORIGINAL_CHARGE_NOT_RECONCILED":"OWNER_REVIEWED_BOTH_BANK_POSTINGS",
+        countsAsNewEarnings:false,ownerReviewedRecoveredUsd:bothMatched?value/100:0,
+        note:"A refund requires original-charge and credit evidence. Even two owner-reviewed bank postings are not an independent audit."});
     });
     return out;
   }
