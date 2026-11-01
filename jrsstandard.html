@@ -687,14 +687,12 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <nav class="primary-nav" aria-label="Standard sections">
  <div class="primary-nav-mobile-bar">
-  <span class="nav-current-section">Standard</span>
-  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
-   <span class="nav-hamburger-icon">&#9776;</span> Menu
+  <span class="nav-current-section">Standard sections</span>
+  <button type="button" class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle Standard sections" aria-controls="primary-nav-items" aria-expanded="false">
+   <span class="nav-hamburger-icon">&#9776;</span> Sections
   </button>
  </div>
  <div class="primary-nav-inner" id="primary-nav-items">
- <a href="index.html" class="nav-item" style="text-decoration:none;">Home</a>
- <a href="investigator-guides.html" class="nav-item" style="text-decoration:none;">Investigator Guides &#8599;</a>
  <button class="nav-item active" onclick="showSection('home')">Overview</button>
  <button class="nav-item" onclick="showSection('doccond')">Documentation Conditions</button>
  <button class="nav-item" onclick="showSection('tools')">Field References</button>
@@ -3821,7 +3819,7 @@ function showSection(id){
  var sectionMenu=document.getElementById('primary-nav-items');
  var sectionToggle=document.getElementById('nav-hamburger');
  if(sectionMenu)sectionMenu.classList.remove('nav-open');
- if(sectionToggle){sectionToggle.setAttribute('aria-expanded','false');sectionToggle.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Menu';}
+ if(sectionToggle){sectionToggle.setAttribute('aria-expanded','false');sectionToggle.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Sections';}
  window.scrollTo(0,0);
 }
 
@@ -4028,9 +4026,22 @@ function toggleMobileNav(){
   hamburger.classList.toggle('open');
   hamburger.setAttribute('aria-expanded',String(!isOpen));
   hamburger.innerHTML=isOpen
-    ?'<span class="nav-hamburger-icon">&#9776;</span> Menu'
-    :'<span class="nav-hamburger-icon">&#10005;</span> Close';
+    ?'<span class="nav-hamburger-icon">&#9776;</span> Sections'
+    :'<span class="nav-hamburger-icon">&#10005;</span> Close sections';
 }
+// Close the document index with Escape and return keyboard focus to its control.
+document.addEventListener('keydown',function(event){
+  if(event.key!=='Escape')return;
+  const menu=document.getElementById('primary-nav-items');
+  const toggle=document.getElementById('nav-hamburger');
+  if(menu&&toggle&&menu.classList.contains('nav-open')){
+    menu.classList.remove('nav-open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Sections';
+    toggle.focus();
+  }
+});
 </script>
 <script>
 /* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
