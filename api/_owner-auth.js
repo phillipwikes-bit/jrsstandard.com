@@ -7,7 +7,8 @@ export async function ownerAccess(req) {
     'X-Robots-Tag': 'noindex, nofollow',
     'Content-Type': 'application/json; charset=utf-8'
   };
-  if (!token) return new Response(JSON.stringify({ error: 'owner_access_unavailable' }), { status: 503, headers });
+  // A short or missing credential must never enable owner-data access.
+  if (token.length < 32) return new Response(JSON.stringify({ error: 'owner_access_unavailable' }), { status: 503, headers });
   const authorization = req.headers.get('authorization') || '';
   const presented = /^Bearer [^\s]+$/i.test(authorization) ? authorization.slice(7) : '';
   if (!presented || presented.length !== token.length) {
