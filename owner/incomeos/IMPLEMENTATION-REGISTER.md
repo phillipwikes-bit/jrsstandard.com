@@ -125,3 +125,15 @@ The November 1 continuation adds `public-feed-adapter.js` for strict public-fiel
 | Database authorization correction | Browser direct INSERT revoked for private financial and evidence data in draft SQL; owner receives SELECT-only access | Static security policy checks | Separate database provision and real owner/nonowner/anonymous tests before migration |
 
 No site was deployed and no owner financial data was imported. The JRS custom production domains remain unchanged. Public research data remains separated from any future private financial service. No tax determination or new financial income is established by passing synthetic tests.
+
+
+## Latest source increment: capital readiness and investment cash flows
+
+| Workstream | Development delivered | Acceptance and limits |
+| --- | --- | --- |
+| Capital sufficiency and reserves | `capital-readiness.js` consumes the statement-close evidence model, identifies owner-classified cash, excludes liabilities and noncash assets, reduces cash by holds, unsettled debits, near-term obligations and emergency/tax/other reserves | A result is preliminary and non-executable; any missing account, disputed posting, reserve or obligation evidence produces HOLD with no estimated capacity |
+| Investment accounting and reinvestment | `investment-cashflow.js` attributes cash distributions, invested capital, returned principal and sale proceeds to owner-reviewed journal postings and exact document links, with optional one-to-one reinvestment pairing | No automatic trade, bank transfer or reinvestment; sale proceeds cannot be called gain without cost basis; pair matching does not independently establish provider execution |
+| iPhone experience | `capital-review-ui.js` shows the true staging blocker and release prerequisites within the compounding view | No private financial amounts entered, no misleading cash balances, no automatic banking connection |
+| Regression suite | `tests/incomeos-capital-readiness.mjs` and `tests/incomeos-investment-cashflow.mjs` | The existing workflow now includes 14 synthetic IncomeOS suites plus the separate JRS site gate |
+
+The next implementation dependency remains real, separately authenticated owner storage and verified bank/investment statement import. The code and tests are not evidence of earned investment returns, recovered principal, available capital, approved tax basis, or a completed reinvestment.
