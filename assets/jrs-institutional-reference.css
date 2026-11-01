@@ -1047,3 +1047,13 @@ body.jrs-institutional.jrs-resource-page .jrs-resource-catalog-note{
    transition:none!important
  }
 }
+
+/* Directory discovery from the primary Resources introduction. */
+body.jrs-institutional.jrs-resource-page .jrs-resource-directory-link{
+ margin:10px 0 0!important;font:600 14px/1.55 Inter,system-ui,sans-serif!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-directory-link a{
+ display:inline-flex!important;align-items:center!important;min-height:44px!important;
+ color:#1b5277!important;text-decoration:underline!important;text-underline-offset:3px!important
+}
+body.jrs-institutional.jrs-resource-page #resource-catalog{scroll-margin-top:18px!important}
