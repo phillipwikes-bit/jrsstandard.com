@@ -1,0 +1,53 @@
+name: JRS Visual Reference Snapshots
+on:
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  visual-snapshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Select browser
+        run: |
+          for c in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "$c" >/dev/null; then echo "JRS_BROWSER=$(command -v $c)" >> "$GITHUB_ENV"; "$c" --version; exit 0; fi
+          done
+          echo "Chrome not installed on runner" >&2; exit 1
+      - name: Serve locally for current branch comparison
+        run: |
+          nohup python3 -m http.server 8791 --bind 127.0.0.1 > /tmp/jrs-visual-local-server.log 2>&1 &
+          echo $! > /tmp/jrs-server.pid
+          sleep 2
+          curl -fIs http://127.0.0.1:8791/ | head -5
+      - name: Capture desktop and mobile viewport screenshots
+        run: |
+          mkdir -p /tmp/jrs-visual
+          set +e
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=1440,1200 --screenshot=/tmp/jrs-visual/pr-desktop.png 'http://127.0.0.1:8791/' > /tmp/chrome1.log 2>&1
+          a=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-mobile.png 'http://127.0.0.1:8791/' > /tmp/chrome2.log 2>&1
+          b=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=1440,1200 --screenshot=/tmp/jrs-visual/preview-desktop.png 'https://jrsstandard-bu0n4kdly-phillip-wikes-projects.vercel.app/' > /tmp/chrome3.log 2>&1
+          c=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/preview-mobile.png 'https://jrsstandard-bu0n4kdly-phillip-wikes-projects.vercel.app/' > /tmp/chrome4.log 2>&1
+          d=$?
+          echo "CHROME_EXIT=$a,$b,$c,$d"
+          ls -lh /tmp/jrs-visual || true
+          if [ "$a" -ne 0 ] || [ "$b" -ne 0 ] || [ "$c" -ne 0 ] || [ "$d" -ne 0 ]; then tail -15 /tmp/chrome1.log /tmp/chrome2.log /tmp/chrome3.log /tmp/chrome4.log; exit 1; fi
+      - name: Record viewports for human design inspection
+        run: |
+          python3 - <<'PY'
+          import base64
+          for key in ['pr-desktop','pr-mobile','preview-desktop','preview-mobile']:
+            p='/tmp/jrs-visual/'+key+'.png'
+            b=open(p,'rb').read()
+            print('JRS_VISUAL_'+key+'_BEGIN size='+str(len(b)),flush=True)
+            v=base64.b64encode(b).decode('ascii')
+            for i in range(0,len(v),50000): print(v[i:i+50000],flush=True)
+            print('JRS_VISUAL_'+key+'_END',flush=True)
+          PY
