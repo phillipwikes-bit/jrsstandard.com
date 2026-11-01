@@ -140,6 +140,24 @@ assert.ok(privacyNow.includes('It does not authorize unrelated marketing or proj
 assert.ok(htmlTraining.includes('id="en-transfer"'),
  'successor transfer choice must remain optional and distinct');
 
+// Public evidence exports must identify source and temporal coverage.
+const aggregatePage=read('datasets.html'),publicResearch=read('research-summary.html');
+const publicChronology=read('evidence-ledger.html');
+const fallback=JSON.parse(read('results.json'));
+assert.ok(aggregatePage.includes("DATA_SOURCE='dated historical snapshot'") &&
+ aggregatePage.includes('Archived fallback, not current research data'),
+ 'public aggregate exports must explicitly label use of dated fallback data');
+assert.ok(aggregatePage.includes('2026-06-03') &&
+ fallback.updated==='2026-06-03' && fallback.participants===1,
+ 'public fallback snapshot date and scope must agree with the notice');
+assert.ok(aggregatePage.includes('not the current evidence base for the 16-expert detection result'),
+ 'challenge aggregates must be separated from method-validation datasets');
+assert.ok(publicResearch.includes('Public Challenge Aggregates') &&
+ publicResearch.includes('Public Programme Chronology'),
+ 'research hub must distinguish aggregate exports from controlled evidence ledger');
+assert.ok(publicChronology.includes('not the authoritative internal evidence register'),
+ 'public chronology must disclose that it is not the complete evidence ledger');
+
 if(errors.length){
  console.error('FAIL: '+errors.length+' issues across '+pages.length+
  ' pages, '+links+' links, '+tracked+' downloads and '+fragments+' fragments.');
