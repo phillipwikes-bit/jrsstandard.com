@@ -155,6 +155,18 @@ assert.ok(read('training.html').includes('jrs-training-context') &&
  read('training.html').includes('aria-label="JRS home"'),
  'training must retain explanation while enabling a compact header and home link');
 
+
+assert.ok(mobileNav.includes("addEventListener('focusin'"),
+ 'expanded mobile menu must close when keyboard focus leaves it');
+const simulations=read('simulations.html');
+assert.ok(!simulations.includes('id="nav-toggle"') &&
+ !simulations.includes('id="nav-links"') &&
+ simulations.includes('class="jrs-simulation-related"'),
+ 'Simulations must have one global navigation and accessible contextual links');
+for(const href of ['workflow-fit.html','implementation-scenarios.html','enterprise.html']){
+ assert.ok(simulations.includes('href="'+href+'"'),'simulation context link missing '+href);
+}
+
 assert.ok(read('investigator-guides.html').includes('jrs-guide-quick-actions') &&
  read('investigator-guides.html').includes('Edition and terminology notice'),
  'guide PDFs need early access and edition provenance');
