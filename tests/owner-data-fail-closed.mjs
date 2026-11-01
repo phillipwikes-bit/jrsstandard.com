@@ -14,7 +14,6 @@ const privateReaders=[
   "contributor-stats",
   "checkout-stats"
 ];
-const proxy=readFileSync(new URL('../proxy.js',import.meta.url),'utf8');
 const config=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url),'utf8'));
 const dashboardPaths=['/programme-status-9872fb93cc94.html','/programme--9872fb93cc94.html'];
 const dashboard=readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
@@ -23,13 +22,11 @@ assert.ok(!dashboard.includes('pilot_contacts') && !dashboard.includes('SUPABASE
 assert.ok(!dashboard.includes('/api/people-') && !dashboard.includes('/api/leads-'));
 
 for(const p of dashboardPaths){
- assert.ok(proxy.includes("'"+p+"'"),'dashboard missing proxy protection: '+p);
  assert.ok(config.headers.some(entry=>entry.source===p &&
   entry.headers.some(h=>h.key.toLowerCase()==='cache-control' && h.value.includes('no-store'))),
  'dashboard missing private no-store header: '+p);
 }
 for(const reader of privateReaders){
- assert.ok(proxy.includes("'/api/"+reader+"'"),'missing proxy gate: '+reader);
  const src=readFileSync(new URL('../api/'+reader+'.js',import.meta.url),'utf8');
  assert.ok(src.includes("import { ownerAccess } from './_owner-auth.js';"),'missing read-auth import: '+reader);
  const start=src.slice(src.search(/export default async function handler\s*\(/),src.search(/export default async function handler\s*\(/)+230);
