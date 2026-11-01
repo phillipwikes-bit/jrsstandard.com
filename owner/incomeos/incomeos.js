@@ -172,30 +172,8 @@
     if (!feed.assets.length) sectionText(root, "div", "empty", "No alternative asset candidates in this snapshot.");
     else feed.assets.forEach(function (a) { append(root, assetCard(a)); });
   }
-  function paidTotal() {
-    return state.receipts.reduce(function (sum, r) { return sum + (r.status === "paid" ? Number(r.amount) : 0); }, 0);
-  }
-  function renderLedger() {
-    var total = paidTotal();
-    $("metric-paid").textContent = money0.format(total);
-    $("ledger-total").textContent = money.format(total);
-    $("cash-assessed").textContent = money.format(total);
-    var root = $("ledger-list"); root.replaceChildren();
-    if (!state.receipts.length) { sectionText(root, "div", "empty", "No income has been recorded. Prospective study incentives are not earnings."); return; }
-    state.receipts.slice().reverse().forEach(function (r) {
-      var entry = append(root, node("div", "entry")), summary = append(entry, node("div")), right = append(entry, node("div"));
-      sectionText(summary, "strong", "", r.label);
-      sectionText(summary, "small", "", r.date + " · " + (r.status === "paid" ? "Received" : "Pending, not earned"));
-      sectionText(right, "div", "amt" + (r.status === "pending" ? " pending" : ""), money.format(Number(r.amount)));
-      var remove = append(right, node("button", "", "Remove"));
-      remove.type = "button"; remove.setAttribute("aria-label", "Remove " + r.label);
-      remove.addEventListener("click", function () {
-        if (!confirm("Remove this entry from the local ledger?")) return;
-        state.receipts = state.receipts.filter(function (x) { return x.id !== r.id; });
-        save(); renderLedger();
-      });
-    });
-  }
+  function paidTotal() { return window.IncomeOSAccountant ? window.IncomeOSAccountant.paidTotal() : 0; }
+  function renderLedger() { if (window.IncomeOSAccountant) window.IncomeOSAccountant.render(); }
   function calculate() {
     var p = Number($("initial").value), m = Number($("monthly").value), annual = Number($("assumed-return").value), y = Number($("years").value);
     if (!Number.isFinite(p) || !Number.isFinite(m) || !Number.isFinite(annual) || !Number.isFinite(y) || p < 0 || m < 0 || annual < -100 || annual > 40 || y < 1 || y > 30) return;
@@ -206,15 +184,6 @@
     $("future-value").textContent = money0.format(fv);
     $("contributions").textContent = money0.format(contribution);
     $("growth").textContent = money0.format(fv - contribution);
-  }
-  function csvCell(s) { return '"' + String(s).replace(/"/g, '""') + '"'; }
-  function exportLedger() {
-    var csv = [["Date", "Source", "Amount USD", "Status"].join(",")];
-    state.receipts.forEach(function (r) { csv.push([r.date, csvCell(r.label), Number(r.amount).toFixed(2), r.status].join(",")); });
-    var blob = new Blob([csv.join("\r\n") + "\r\n"], { type: "text/csv;charset=utf-8" });
-    var url = URL.createObjectURL(blob), a = document.createElement("a");
-    a.href = url; a.download = "IncomeOS-personal-earnings.csv"; document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
   }
   async function loadFeed() {
     var status = $("feed-status");
@@ -251,21 +220,13 @@
     $("research-filter").addEventListener("change", renderStudies);
     $("research-search").addEventListener("input", renderStudies);
     $("refresh").addEventListener("click", loadFeed);
-    $("receipt-date").value = localDate();
-    $("receipt-form").addEventListener("submit", function (event) {
-      event.preventDefault();
-      var label = $("receipt-label").value.trim(), amount = Number($("receipt-amount").value), date = $("receipt-date").value, status = $("receipt-state").value;
-      if (!label || !Number.isFinite(amount) || amount <= 0 || amount > 10000000 || !/^\d{4}-\d{2}-\d{2}$/.test(date) || !["paid", "pending"].includes(status)) {
-        alert("Enter a valid source, positive amount, date and payment status."); return;
-      }
-      state.receipts.push({ id: "local-" + Date.now() + "-" + Math.floor(Math.random() * 100000), label: label.slice(0, 100), amount: amount, date: date, status: status });
-      save(); $("receipt-form").reset(); $("receipt-date").value = localDate(); renderLedger();
-    });
-    $("export-ledger").addEventListener("click", exportLedger);
+    if (window.IncomeOSAccountant) window.IncomeOSAccountant.init();
     $("clear-local").addEventListener("click", function () {
-      if (!confirm("Erase all locally saved IncomeOS statuses, bookmarks and income entries on this device?")) return;
+      if (!confirm("Erase ALL locally saved IncomeOS bookmarks, application status and accountant records? Export a JSON backup first if needed.")) return;
       state = { saved: [], stages: {}, receipts: [] }; save();
-      renderLedger(); renderStudies(); renderAssets(); alert("Local IncomeOS data cleared.");
+      if (window.IncomeOSAccountant) window.IncomeOSAccountant.clear();
+      renderStudies(); renderAssets();
+      alert("Local IncomeOS records erased from this browser.");
     });
     ["initial", "monthly", "assumed-return", "years"].forEach(function (id) { $(id).addEventListener("input", calculate); });
     renderLedger(); calculate(); loadFeed();
