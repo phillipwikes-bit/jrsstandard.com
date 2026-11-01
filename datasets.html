@@ -107,7 +107,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   <div class="hero">
     <div class="eyebrow">Research Layer &middot; Exports</div>
     <h1>Datasets &amp; Reports</h1>
-    <p class="sub">Download the current aggregate evidence from the documentation-review challenges. Exports contain aggregate, anonymous data only: counts, response distribution, and role breakdown. No personal information is included.</p>
+    <p class="sub">Download available public challenge aggregates. A live source is attempted first; if unavailable, a dated historical snapshot may be shown. These exports do not reproduce the expert detection or reviewer reliability analyses. Exports contain aggregate, anonymous data only: counts, response distribution, and role breakdown. No personal information is included.</p>
   </div>
 
   <div class="section-label">Aggregate Results Dataset</div>
@@ -119,6 +119,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
     <span class="status" id="status">Loading current dataset&hellip;</span>
   </div>
 
+  <div class="note"><strong>Provenance caution.</strong> The fallback snapshot at <code>results.json</code> is dated 2026-06-03 and contains one challenge participant. It is not the current evidence base for the 16-expert detection result or the separate reliability study. The source and update date are displayed beneath the export buttons; verify them before citing an export.</div>
   <div class="note">Row-level research datasets (individual responses, with consent fields) are <strong>not</strong> exported here to protect participant privacy. Those are available only to the program administrator via the secured Supabase dashboard. Reproducibility, accuracy, and validation are distinct; figures are observational, not validated findings.</div>
 
   <p class="sub" style="margin-top:18px;font-size:13px"><a href="research.html">&larr; Research &amp; Validation</a> &nbsp;&middot;&nbsp; <a href="results.html">Live results</a> &nbsp;&middot;&nbsp; <a href="methodology.html">Methodology</a></p>
@@ -142,12 +143,13 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 var SUPABASE_URL='https://pjzxkeviouofdseagvpf.supabase.co';
 var SUPABASE_ANON_KEY='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e';
 var DATA=null;
+var DATA_SOURCE='unavailable';
 function load(){
-  var fb=function(){ return fetch('results.json?ts='+Date.now()).then(function(r){return r.json();}); };
+  var fb=function(){ return fetch('results.json?ts='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){DATA_SOURCE='dated historical snapshot';return d;}); };
   var p = (SUPABASE_URL && SUPABASE_ANON_KEY)
-    ? fetch(SUPABASE_URL+'/rest/v1/rpc/omc_results',{method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json'},body:'{}'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).catch(fb)
+    ? fetch(SUPABASE_URL+'/rest/v1/rpc/omc_results',{method:'POST',headers:{'apikey':SUPABASE_ANON_KEY,'Authorization':'Bearer '+SUPABASE_ANON_KEY,'Content-Type':'application/json'},body:'{}'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){DATA_SOURCE='live public aggregate';return d;}).catch(fb)
     : fb();
-  return p.then(function(d){ DATA=d; document.getElementById('status').textContent='Dataset ready. Based on '+(d.participants||0)+' participant(s), updated '+(d.updated||'')+'.'; return d; })
+  return p.then(function(d){ DATA=d; document.getElementById('status').textContent=(DATA_SOURCE==='dated historical snapshot'?'Archived fallback, not current research data. ':'Live public challenge aggregate. ')+'Based on '+(d.participants||0)+' participant(s); source updated '+(d.updated||'date unknown')+'.'; return d; })
           .catch(function(){ document.getElementById('status').textContent='Dataset not available right now.'; });
 }
 function trigger(name,content,type){
