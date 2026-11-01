@@ -96,7 +96,16 @@ for(const p of ['resources.html','investigator-guides.html','training.html']){
 }
 assert.ok(read('training.html').includes('id="practice-guidance"'),
  'training must retain manual, non-submission practice guidance');
+// Mobile Standard navigation must be collapsible, not a permanent 14-item list.
+assert.ok(css.includes('JRS mobile navigation corrections, 2026-11-01') &&
+ css.includes('.primary-nav-inner.nav-open') &&
+ css.includes('flex:1 1 25%'),
+ 'mobile publication style must retain compact site nav and collapsible Standard sections');
 const standard=read('jrsstandard.html');
+assert.ok(standard.includes('toggleMobileNav()') &&
+ standard.includes('id="primary-nav-items"') &&
+ standard.includes('aria-expanded="false"'),
+ 'Standard mobile menu control and expanded state must remain wired');
 assert.ok(standard.includes('showSection('),'Standard section interactions must remain intact');
 for(const p of ['index.html','resources.html','research.html','investigator-guides.html',
  'jrsstandard.html','training.html']){
