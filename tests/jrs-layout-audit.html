@@ -139,11 +139,64 @@
    const meta=d.querySelector('.meta-line');
    const metaFontSize=meta?Number.parseFloat(w.getComputedStyle(meta).fontSize):null;
    const metadataValid=!meta || metaFontSize>=12;
+   // Editorial A-gate: distinguish publication editions, preserve expandable
+   // explanatory material, and avoid hiding the training or evidence boundary.
+   let editorialValid=true;
+   let editorialIssue='';
+   if(item.page==='jrsstandard.html'){
+     const eyebrow=d.querySelector('#section-home .page-eyebrow');
+     const edition=d.querySelector('#section-home .jrs-edition-note');
+     const context=d.querySelector('#section-home .jrs-standard-context');
+     const controls=d.querySelector('#section-home .jrs-publication-notes details');
+     editorialValid=!!eyebrow && /online methodology/i.test(eyebrow.textContent) &&
+       /Version 1\.0/i.test(eyebrow.textContent) &&
+       !!edition && /Separate publication/i.test(edition.textContent) &&
+       /Version 2\.0/i.test(edition.textContent) &&
+       /equivalence has not been established/i.test(edition.textContent) &&
+       !!context && !context.open && !!controls &&
+       /not software/i.test(context.textContent);
+     if(editorialValid){
+       w.showSection('home');
+       context.querySelector('summary').click();
+       editorialValid=context.open &&
+         /No case-record submission/.test(context.textContent);
+       context.querySelector('summary').click();
+       editorialValid=editorialValid && !context.open;
+     }else editorialIssue='Standard edition identity or preserved context unavailable';
+   }
+   if(item.page==='training.html'){
+     const info=d.querySelector('.jrs-training-context');
+     editorialValid=editorialValid && !!info && !info.open &&
+       !!info.querySelector('.hero-tags') &&
+       /Operates within existing workflows/.test(info.textContent);
+     if(!editorialValid)editorialIssue='Training context or access scope missing';
+   }
+   if(item.page==='research.html'){
+     const boundary=d.querySelector('.boundary');
+     editorialValid=editorialValid && !!boundary &&
+       /constructed/.test(boundary.textContent) &&
+       /do not establish effectiveness/i.test(boundary.textContent);
+     if(!editorialValid)editorialIssue='Research limitations unavailable';
+   }
+   if(item.page==='index.html'){
+     const privacy=d.querySelector('.jr-hero-note');
+     editorialValid=editorialValid && !!privacy &&
+       /Do not submit identifiable case records/.test(privacy.textContent) &&
+       !!d.querySelector('.jr-actions .jr-action-main');
+     if(!editorialValid)editorialIssue='Visible privacy or primary tool action missing';
+   }
+   const eye=d.querySelector('.page-eyebrow,.jr-overline,.hero-eyebrow,.eyebrow');
+   const eyeSize=eye?parseFloat(w.getComputedStyle(eye).fontSize):null;
+   const readingScaleValid=eyeSize===null || eyeSize>=12;
+   const siteMenuLabel=toggle?.textContent?.replace(/\\s+/g,' ').trim()||'';
+   const siteMenuGrouped=!narrow ||
+     (w.getComputedStyle(toggle).justifyContent==='flex-end' &&
+      /site menu/i.test(siteMenuLabel));
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && documentIndexValid && simulationControlsValid && contrastValid && metadataValid && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
+      controlsValid && documentIndexValid && simulationControlsValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,activeContrast,contrastValid,metaFontSize,metadataValid,overflowElements,
+     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
