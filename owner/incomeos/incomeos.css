@@ -53,3 +53,34 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 #vault-panel .formbuttons{margin:12px 0 19px}
 #net-scenario-result{font-weight:600;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
 @media(max-width:350px){.decision-gates{padding:10px}.review-result{padding:10px}}
+
+
+/* IncomeOS spending and public research intelligence, 2026-11-01 */
+#research-radar-panel,#spend-intelligence-panel{margin:12px 0 20px;min-width:0}
+#research-radar-panel h4,#spend-intelligence-panel h4{font-size:14px;margin:23px 0 11px;font-weight:750}
+#research-radar-panel p,#spend-intelligence-panel p{line-height:1.5}
+.radar-import{border-top:1px solid #dce9e1;border-bottom:1px solid #dce9e1;padding:13px 0;margin:15px 0}
+.radar-import input[type="file"]{display:block;width:100%;box-sizing:border-box;margin:9px 0;padding:11px;background:white;border:1px solid #d1ded8;border-radius:9px}
+.radar-results{display:grid;gap:12px;margin:12px 0}
+.radar-card{border:1px solid #d9e5de;border-radius:12px;padding:13px;background:#fafcfa;min-width:0;overflow-wrap:anywhere}
+.radar-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.radar-heading strong{font-size:14px;line-height:1.35}
+.radar-heading span{font-size:10px;white-space:nowrap;font-weight:750;background:#e6eee8;color:#385b50;border-radius:12px;padding:4px 7px}
+.radar-card p{font-size:12px;margin:8px 0}
+.radar-flags{background:#f7f1e5;padding:9px;border-left:2px solid #b28b3a;border-radius:4px}
+.radar-controls{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:13px}
+.radar-controls a,.radar-controls button,.radar-controls select{min-height:40px;box-sizing:border-box;font-size:12px}
+.radar-controls a{display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;white-space:normal}
+.radar-controls select{max-width:100%;flex:1 1 130px}
+#spend-intelligence-panel .formbuttons{margin:12px 0 14px}
+#spend-intelligence-panel .accountant-line{align-items:center;flex-wrap:wrap;overflow-wrap:anywhere}
+#spend-intelligence-panel .accountant-line strong{white-space:normal;font-size:11px}
+#spend-intelligence-panel .accountant-line .textbtn{min-height:36px}
+.spend-row{margin:12px 0}
+.spend-row span{display:block;font-size:12px;margin-bottom:6px}
+.spend-bar{height:10px;border-radius:10px;background:#e4eee8;overflow:hidden}
+.spend-bar i{display:block;height:100%;background:#347b65;border-radius:10px}
+.spend-issue{border-bottom:1px solid #dce9e1;padding:9px 0;font-size:12px}
+.spend-issue strong{display:block;overflow-wrap:anywhere}
+.spend-issue p{margin:4px 0;color:#66533c}
+@media(max-width:350px){.radar-heading{flex-wrap:wrap}.radar-heading span{white-space:normal}.radar-controls{flex-direction:column;align-items:stretch}.radar-controls a,.radar-controls select{width:100%}}
