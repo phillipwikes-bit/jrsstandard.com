@@ -1,5 +1,19 @@
 # Chain-of-Title Status
 
+<!-- CONSENT_STATUS_PRECEDENCE_2026_10_30_START -->
+## CURRENT CONTROLLING CONSENT INTERPRETATION (2026-10-30)
+
+**Tanvi Pokhriyal is COVERED by executed contributor consent E-002 (2026-08-22). Stacyann Young is COVERED by executed contributor consent E-003 (2026-08-27).** Both records state named/use/transfer = true. These are recorded contributor-consent permissions within the actual scope of the contributor instrument. They are not missing consents, and neither person should be asked to execute a duplicate form merely because a different instrument was unused.
+
+**The separate coauthor-specific form `coauthor-v1.0-2026-08-24` had 0 of 3 confirmations at the dated audit (E-005).** This count describes that instrument alone, **not** total consent across instruments. Do not use the count to state or imply that Tanvi or Stacyann failed to consent, remain unconfirmed overall, or lack their documented contributor consent.
+
+An executed structured tick-box consent is not represented here as a handwritten signature, a copyright assignment, an unrestricted commercial license, or equity relinquishment. Its permissions remain limited to the recorded terms.
+
+**Ubayet Hossain is a separate matter.** His authorship and methodological approval are evidenced in E-006 to E-008. E-034 is the owner's account of approved uses, not a located express commercial grant; no executed structured contributor/coauthor consent was located for him in the dated audit. Commercial-use and successor-transfer questions remain for the identified rights/counsel process. No research coauthorship is silently converted into software equity or an assignment.
+
+**Precedence:** This current interpretation controls over older summary tables, isolated `not confirmed` cells, and historical `0 of 3` statements in this repository. Preserve those earlier entries as dated evidence; do not silently rewrite or erase history. Primary sources: `docs/enterprise-diligence/EVIDENCE_LEDGER.md` E-002, E-003, E-005, E-006 to E-008, E-034; Master Asset Register sections 8, 9, 12, 17.
+<!-- CONSENT_STATUS_PRECEDENCE_2026_10_30_END -->
+
 **This is a documentation and status exercise. It is not legal advice.** Material
 acquisition questions belong with counsel.
 
