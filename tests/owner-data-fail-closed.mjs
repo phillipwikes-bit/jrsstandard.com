@@ -17,6 +17,11 @@ const privateReaders=[
 const proxy=readFileSync(new URL('../proxy.js',import.meta.url),'utf8');
 const config=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url),'utf8'));
 const dashboardPaths=['/programme-status-9872fb93cc94.html','/programme--9872fb93cc94.html'];
+const dashboard=readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
+assert.ok(dashboard.includes('Owner dashboard temporarily restricted'));
+assert.ok(!dashboard.includes('pilot_contacts') && !dashboard.includes('SUPABASE_SERVICE_ROLE_KEY'));
+assert.ok(!dashboard.includes('/api/people-') && !dashboard.includes('/api/leads-'));
+
 for(const p of dashboardPaths){
  assert.ok(proxy.includes("'"+p+"'"),'dashboard missing proxy protection: '+p);
  assert.ok(config.headers.some(entry=>entry.source===p &&
