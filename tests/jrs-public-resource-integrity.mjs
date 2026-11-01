@@ -56,8 +56,7 @@ for(const p of pages){
  const html=read(p),base='https://www.jrsstandard.com/'+p;
  for(const m of html.matchAll(/<a\b[^>]*\bhref\s*=\s*(['"])(.*?)\1/gi)){
   const href=m[2].replace(/&amp;/g,'&').trim();
-  if(!href||/^(mailto:|tel:|sms:|javascript:|data:)/i.test(href)||
-    href.includes(')continue;
+  if(!href||/^(mailto:|tel:|sms:|javascript:|data:)/i.test(href)||/encodeURIComponent|\s\+\s/.test(href))continue;
   let u;try{u=new URL(href,base)}catch{fail(p,'malformed href '+href);continue}
   if(u.origin!=='https://www.jrsstandard.com')continue;
   links++;
