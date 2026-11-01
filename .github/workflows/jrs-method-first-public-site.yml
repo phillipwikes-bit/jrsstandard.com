@@ -1,0 +1,35 @@
+name: JRS method-first public site release gate
+on:
+  pull_request:
+    paths:
+      - '**/*.html'
+      - 'sitemap.xml'
+      - 'vercel.json'
+      - 'tests/public-method-first-release.mjs'
+      - 'tests/public-reference-navigation.mjs'
+      - 'tests/public-research-accessibility.test.mjs'
+      - '.github/workflows/jrs-method-first-public-site.yml'
+  push:
+    branches:
+      - 'fix/jrs-public-method-first-remove-engine-promotion-2026-11-01'
+    paths:
+      - '**/*.html'
+      - 'sitemap.xml'
+      - 'vercel.json'
+      - 'tests/public-method-first-release.mjs'
+      - 'tests/public-reference-navigation.mjs'
+      - 'tests/public-research-accessibility.test.mjs'
+      - '.github/workflows/jrs-method-first-public-site.yml'
+permissions:
+  contents: read
+jobs:
+  method-first:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/public-method-first-release.mjs
+      - run: node tests/public-reference-navigation.mjs
+      - run: node --test tests/public-research-accessibility.test.mjs
