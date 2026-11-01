@@ -127,6 +127,18 @@ console.log('PASS: institutional reference system present on '+(pages.length+add
  ' pages, core paths and privacy boundaries preserved.');
 
 
+// First-use guide hierarchy: clear edition warning, technical detail only on request.
+const guideMarkup=read('investigator-guides.html');
+assert.ok(guideMarkup.includes('class="boundary jrs-guide-version-boundary"') &&
+ guideMarkup.includes('class="jrs-guide-version-summary"') &&
+ guideMarkup.includes('<details class="jrs-guide-version-details">') &&
+ guideMarkup.includes('<summary>Review condition terminology and edition limitations</summary>'),
+ 'guide edition detail must be progressively disclosed with a visible caution');
+assert.ok(guideMarkup.includes('Record Self-Sufficiency, Evidentiary Anchoring') &&
+ guideMarkup.includes('Reconstructability, Basis Identification, Chronology') &&
+ guideMarkup.includes('Terminology and assessment logic are not certified as identical'),
+ 'complete published edition distinctions must be preserved');
+
 // Structural remediation, 2026-11-01: no wrapped site nav with JS, prompt first actions, preserved editions.
 const mobileNav=read('assets/jrs-mobile-navigation.js');
 for(const token of ['aria-controls','aria-expanded','jrs-nav-ready','Escape','data-open','jrs-global-nav-toggle'])

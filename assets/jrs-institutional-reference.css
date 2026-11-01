@@ -1121,3 +1121,37 @@ body.jrs-institutional.jrs-resource-page .jrs-resource-entry a{
   padding:18px!important
  }
 }
+
+/* Investigator Guides: keep the edition caution visible, with full vocabulary
+   detail on demand. Native details remain accessible without JavaScript. */
+body.jrs-institutional.jrs-guides-page .jrs-guide-version-boundary{
+ padding:18px 20px!important;margin:20px 0 28px!important
+}
+body.jrs-institutional.jrs-guides-page .jrs-guide-version-boundary .boundary-title{
+ margin:0 0 8px!important
+}
+body.jrs-institutional.jrs-guides-page .jrs-guide-version-summary{
+ font-size:16px!important;line-height:1.6!important;
+ color:#304d62!important;margin:0 0 11px!important
+}
+body.jrs-institutional.jrs-guides-page .jrs-guide-version-details summary{
+ display:list-item!important;cursor:pointer!important;
+ min-height:44px!important;padding:10px 4px!important;
+ font:700 14px/1.55 Inter,system-ui,sans-serif!important;
+ color:#173d5b!important;list-style-position:inside!important;
+ border-top:1px solid #cbd9e3!important
+}
+body.jrs-institutional.jrs-guides-page .jrs-guide-version-details summary:focus-visible{
+ outline:3px solid #0b679c!important;outline-offset:2px!important
+}
+body.jrs-institutional.jrs-guides-page .jrs-guide-version-detail-body{
+ padding:13px 2px 3px!important;border-top:1px solid #dce5eb!important
+}
+body.jrs-institutional.jrs-guides-page .jrs-guide-version-detail-body p{
+ font-size:15px!important;line-height:1.7!important;color:#395468!important
+}
+@media(max-width:760px){
+ body.jrs-institutional.jrs-guides-page .jrs-guide-version-boundary{
+  padding:16px 18px!important
+ }
+}
