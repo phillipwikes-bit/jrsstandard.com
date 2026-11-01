@@ -96,3 +96,16 @@ Release dates are estimates, not authorization to ship. A failed P0 gate prevent
 6. Verified financial results and owner administrative time, reported separately.
 
 **Current economic result:** No verified IncomeOS-generated revenue or autonomous financial execution has been established by the code or CI alone. Keep the program in controlled development until evidence exists.
+
+
+## 2026-11-01 follow-on: immutable events, payout attribution and private schema
+
+| Engineering component | Implementation | Current verified state | Remaining dependency |
+| --- | --- | --- | --- |
+| Financial event journal | `financial-event-journal.js` | Pure SHA-256 event-chain verification, reversal sequencing, owner-reviewed class totals; synthetic tests | Signed/authenticated server append, serializable sequence, private storage and bank integration |
+| Paid-study payment attribution | `research-outcomes.js` | Strict application-to-payment stages, study-specific documented bank credit, duplicate prevention | Private owner pipeline and verified actual provider/payout sources |
+| Proposed private persistence | `OWNER-PRIVATE-SCHEMA.sql` | Reviewed SQL source with single-owner allowlist, RLS policies and append-only tables; **not applied** | Separate private project, admin owner enrollment, real anon/non-owner/owner RLS tests, encryption review |
+| Public-source safety gate | `tests/incomeos-source-boundary.mjs` | Source-only extension and credential-shaped filename checks | Independent secret scan and deployment authorization tests |
+| Source regression suite | GitHub `IncomeOS private prototype checks` | Eight code/source suites now required by workflow | Hosted browser testing and external security review |
+
+No financial events were sent to the public study feed. No revenue, recovered money, bank import, investment order, deployment or private-account connection was executed during this increment.
