@@ -2,59 +2,109 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <meta name="referrer" content="no-referrer">
-<title>Owner Sign-In | JRS</title>
+<meta name="color-scheme" content="dark">
+<title>JRS | Private Owner Sign-In</title>
 <style>
-:root{color-scheme:dark;--bg:#080807;--panel:#181715;--text:#f4f1e9;--muted:#c6c0b3;--gold:#d5b374}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,sans-serif;display:flex;flex-direction:column}
-header{padding:22px;border-bottom:1px solid #37332d}header a{font:24px Georgia,serif;color:var(--gold);text-decoration:none}
-main{width:min(100%,440px);margin:auto;padding:32px 22px}
-h1{font:38px Georgia,serif;margin:8px 0 10px}
-p{color:var(--muted);font-size:14px}
-form{background:var(--panel);padding:24px;border:1px solid #40392d;margin-top:25px}
-label{display:block;font-size:14px;margin:0 0 8px}
-input{display:block;width:100%;font-size:16px;min-height:48px;padding:12px;background:#0d0d0c;border:1px solid #9b907d;color:var(--text)}
-button{margin-top:16px;width:100%;min-height:48px;background:var(--gold);border:0;color:#191510;font-weight:700;font-size:15px;cursor:pointer}
-button:disabled{opacity:.5}
+:root{--bg:#090909;--panel:#1a1917;--border:#554d3f;--gold:#d5b374;--text:#f2f0eb;--muted:#c7c1b5}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
+header{padding:20px 24px;border-bottom:1px solid #36312a}header a{font:24px Georgia,serif;color:var(--gold);text-decoration:none}
+main{width:min(100%,500px);margin:auto;padding:32px 24px}h1{font:clamp(32px,7vw,44px)/1.15 Georgia,serif;margin:10px 0 14px}h2{font:22px Georgia,serif;margin:0 0 12px}p{color:var(--muted)}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.panel{background:var(--panel);border:1px solid var(--border);padding:24px;margin:22px 0}
+label{display:block;margin:12px 0 7px;font-size:15px}input{display:block;width:100%;min-height:50px;padding:12px;font-size:18px;color:var(--text);background:#0d0d0d;border:1px solid #aaa18d;border-radius:0}
+button{display:block;width:100%;min-height:50px;margin-top:16px;padding:12px 16px;background:var(--gold);color:#15120d;border:0;font-weight:700;font-size:17px;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}button.secondary{background:transparent;color:var(--gold);border:1px solid var(--gold)}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
-#status{min-height:34px;margin-top:15px}
-footer{padding:20px;text-align:center;color:var(--muted);font-size:12px}
+#email-status,#access-status{min-height:25px;margin-top:12px;overflow-wrap:anywhere}
+.help{font-size:13px}details{margin-top:22px;border-top:1px solid var(--border);padding-top:18px}summary{color:var(--gold);cursor:pointer;font-size:14px}footer{padding:24px;text-align:center;color:var(--muted);font-size:12px}
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
-<header><a href="index.html">JRS™</a></header>
+<header><a href="/index.html">JRS™</a></header>
 <main>
-  <p style="letter-spacing:.1em;text-transform:uppercase;color:var(--gold)">Private owner access</p>
-  <h1>Programme Status</h1>
-  <p>Sign in using your separately configured JRS owner access code. This is not your Gmail password or a model-provider API key. The sign-in expires after eight hours.</p>
-  <form id="login">
-    <label for="secret">Owner access code</label>
-    <input id="secret" type="password" required minlength="32" maxlength="512" autocomplete="current-password">
-    <button id="go">Sign in</button>
-    <p id="status" role="status" aria-live="polite"></p>
-  </form>
-  <p>This page is for access to your private measurement and inquiry records. Do not share access codes or submit case records here.</p>
+<p class="eyebrow">Private owner access</p>
+<h1>Programme Status</h1>
+<p>Sign in to your protected JRS reports and inquiry records. No Gmail password is required.</p>
+<section class="panel" aria-labelledby="email-heading">
+<h2 id="email-heading">Sign in using Gmail</h2>
+<p>Request a six-digit, one-time sign-in code. It is delivered only to your previously configured owner email address.</p>
+<button type="button" id="send-code" disabled>Checking sign-in availability...</button>
+<form id="verify-code" hidden>
+<label for="otp">Six-digit email code</label>
+<input type="text" id="otp" name="one-time-code" inputmode="numeric" pattern="[0-9]{6}" minlength="6" maxlength="6" autocomplete="one-time-code" required>
+<button id="verify-button" type="submit">Verify code and sign in</button>
+</form>
+<p id="email-status" role="status" aria-live="polite"></p>
+<p class="help">A code expires automatically. If the email is missing, check your Spam folder. Do not share codes or confidential case records.</p>
+<details>
+<summary>Use an existing owner access code instead</summary>
+<form id="access-form">
+<label for="secret">Owner access code</label>
+<input id="secret" type="password" required minlength="32" maxlength="512" autocomplete="current-password">
+<button id="access-button" type="submit" class="secondary">Sign in with access code</button>
+<p id="access-status" role="status" aria-live="polite"></p>
+</form>
+</details>
+</section>
+<p class="help">The dashboard is restricted to authorized owner access. Login and sign-out do not change public JRS materials or the private software-asset portfolio.</p>
 </main>
-<footer>JRS · Private owner surface · No marketing analytics on this page</footer>
+<footer>JRS · Private owner surface · No marketing analytics</footer>
 <script>
-(function(){
- const f=document.getElementById('login'),i=document.getElementById('secret'),b=document.getElementById('go'),s=document.getElementById('status');
- fetch('/api/owner-session',{credentials:'same-origin',cache:'no-store'}).then(function(r){if(r.ok)location.replace('/programme-status-9872fb93cc94.html')}).catch(function(){});
- f.addEventListener('submit',async function(event){
-  event.preventDefault();if(!f.reportValidity())return;
-  b.disabled=true;s.textContent='Verifying...';
-  try{
-    const response=await fetch('/api/owner-session',{method:'POST',credentials:'same-origin',
-      headers:{'Content-Type':'application/json'},body:JSON.stringify({token:i.value})});
-    i.value='';
-    if(!response.ok){s.textContent='Sign-in failed. Verify the owner access code or its server configuration.';b.disabled=false;return;}
-    location.replace('/programme-status-9872fb93cc94.html');
-  }catch{
-    i.value='';s.textContent='Sign-in service unavailable. No access code was stored by this page.';b.disabled=false;
-  }
- });
+(() => {
+'use strict';
+const byId=id=>document.getElementById(id);
+const send=byId('send-code'),verify=byId('verify-code'),otp=byId('otp'),message=byId('email-status');
+const accessForm=byId('access-form'),accessButton=byId('access-button'),access=byId('secret'),accessStatus=byId('access-status');
+const dashboard='/programme-status-9872fb93cc94.html';
+async function post(url,data) {return fetch(url,{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json'},cache:'no-store',body:JSON.stringify(data)});}
+async function startup(){
+ try {
+   const existing=await fetch('/api/owner-session',{credentials:'same-origin',cache:'no-store'});
+   if(existing.ok){location.replace(dashboard);return;}
+ }catch{}
+ try{
+   const r=await fetch('/api/owner-email-login',{credentials:'same-origin',cache:'no-store'});
+   if(r.ok){send.disabled=false;send.textContent='Send code to my Gmail';message.textContent='';}
+   else{send.disabled=true;send.textContent='Email sign-in unavailable';message.textContent='Email sign-in is not yet configured on this deployment. The previous access-code method remains available below.';}
+ }catch{send.disabled=true;send.textContent='Email sign-in unavailable';message.textContent='Sign-in service unavailable. No message was sent.';}
+}
+send.addEventListener('click',async()=>{
+ send.disabled=true;message.textContent='Requesting a code...';
+ try{
+   const r=await post('/api/owner-email-login',{action:'send'});
+   if(!r.ok){message.textContent=r.status===429?'Too many requests. Try again later.':'The email provider could not issue a code. No sign-in occurred.';return;}
+   verify.hidden=false;message.textContent='If your provider accepted the request, check Gmail for a six-digit code.';
+   otp.focus();
+ }catch{message.textContent='Unable to request a code. Check your connection.';}
+ finally{send.disabled=false;send.textContent='Send another code';}
+});
+verify.addEventListener('submit',async event=>{
+ event.preventDefault();if(!verify.reportValidity())return;
+ byId('verify-button').disabled=true;message.textContent='Checking code...';
+ try{
+   const r=await post('/api/owner-email-login',{action:'verify',otp:otp.value});
+   otp.value='';
+   if(r.ok){location.replace(dashboard);return;}
+   message.textContent=r.status===429?'Too many attempts. Request another code later.':'Invalid or expired code. Request a new code if necessary.';
+ }catch{otp.value='';message.textContent='Verification service unavailable. Please try again.';}
+ finally{byId('verify-button').disabled=false;}
+});
+accessForm.addEventListener('submit',async event=>{
+ event.preventDefault();if(!accessForm.reportValidity())return;
+ accessButton.disabled=true;accessStatus.textContent='Checking access...';
+ try{
+   const r=await post('/api/owner-session',{token:access.value});
+   access.value='';
+   if(r.ok){location.replace(dashboard);return;}
+   accessStatus.textContent=r.status===503?'Legacy sign-in not configured on this deployment.':'Access code not accepted.';
+ }catch{access.value='';accessStatus.textContent='Sign-in service unavailable.';}
+ finally{accessButton.disabled=false;}
+});
+startup();
 })();
 </script>
 </body>
