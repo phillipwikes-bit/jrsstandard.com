@@ -154,3 +154,17 @@ The accounting module now includes `transfer-reconciliation.js`, a pure, source-
 - The staging accounting panel deliberately uses **no** private bank statements or journal data, displays HOLD, and cannot import, classify or execute financial transactions.
 
 **Acceptance status:** Synthetic source-level regression tests only; no real bank ingestion or independently verified transfer reconciliation. Further work remains: secure owner backend, authorized account synchronization, counterpart evidence, double-entry general ledger, transaction splitting, validated tax workpapers and annual accounting package. The public JRS site and public research feed remain independent.
+
+
+## Latest release-control increment: protected preview and staging write denial
+
+| Component | Implemented | Verified | Remaining release dependency |
+| --- | --- | --- | --- |
+| Vercel owner staging | Existing `incomeos-opportunity-desk` project protected with all-target Vercel Authentication; preview-only deployment attempted | Provider confirmed HTTP 402 daily deployment limit and 24-hour retry window | Actual READY exact-head preview and independently executed HTTP/browser checks |
+| Reproducible anonymous probe | `tests/incomeos-preview-probe.mjs` plus synthetic QA | Exact team/project/SHA/READY/SSO checks and 401/403 responses for sampled paths; rejects public 200, missing 404 and uncertain 302 | Execute against exact Vercel deployment with provider metadata and separately verify authenticated sessions |
+| Dedicated static security policy | `owner/incomeos/vercel.json`: no-store, restrictive CSP/frame denial, HSTS, permissions, noindex | JSON/source-asserted policy; no hosted evidence yet | Confirm response headers at Vercel and on iPhone |
+| Home-screen installation | Relative app start/scope in `manifest.webmanifest` | Source QA | Protected hosted Safari Add-to-Home-Screen verification |
+| Financial entry safeguard | Staging flag before accountant initialization; blocked edits, writes, legacy migration, CSV/JSON imports and vault restore | Synthetic regression tests | Separate authenticated/secure financial service needed to permit any private input |
+| Bounded retry | Existing `IncomeOS Passive Wealth Cycle` automation updated; no change to schedule | Tool confirmed automation update | The preview check runs only within existing recurring task and is not a substitute for production security |
+
+**Gate resolution:** Source CI can pass, but the overall release remains HOLD while external deployment quota and live security evidence are outstanding. No new application income, refunds, investment execution or private account access was established by this increment.
