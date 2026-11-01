@@ -1,0 +1,37 @@
+name: Public research and accessibility integrity
+on:
+  push:
+    branches:
+      - fix/public-research-accessibility-release-2026-11-01
+      - main
+    paths:
+      - 'research.html'
+      - 'research-register.html'
+      - 'index.html'
+      - 'investigator-guides.html'
+      - 'training.html'
+      - 'jrsstandard.html'
+      - 'api/asset-stats.js'
+      - 'assets/jrs-professional-accessibility.css'
+      - 'assets/jrs-keyboard-controls.js'
+      - 'tests/public-research-accessibility.test.mjs'
+  pull_request:
+    paths:
+      - 'research.html'
+      - 'research-register.html'
+      - 'index.html'
+      - 'api/asset-stats.js'
+      - 'assets/jrs-professional-accessibility.css'
+      - 'assets/jrs-keyboard-controls.js'
+      - 'tests/public-research-accessibility.test.mjs'
+permissions:
+  contents: read
+jobs:
+  research-accessibility:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node --test tests/public-research-accessibility.test.mjs
