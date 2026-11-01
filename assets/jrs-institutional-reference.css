@@ -782,3 +782,22 @@ body.jrs-institutional.jrs-standard-page .primary-nav .nav-item{
   background:#e7eff4!important
  }
 }
+
+/* A-level active site navigation contrast gate.
+   The shared professional-accessibility layer used pale gold (#f4d89d) on a
+   light background for aria-current: approximately 1.24:1 contrast.
+   Current page identification must remain readable at every viewport. */
+body.jrs-institutional nav.jrs-sitenav a[aria-current="page"]{
+  color:#17364f!important;
+  background:#e7eff4!important;
+  border-bottom:3px solid #9b712d!important;
+  font-weight:700!important;
+}
+body.jrs-institutional :where(.meta-line,.jrs-edition-note){
+  font-size:13px!important;
+  line-height:1.55!important;
+  letter-spacing:.025em!important;
+}
+body.jrs-institutional .jrs-standard-page .page-eyebrow{
+  font-size:12px!important;
+}
