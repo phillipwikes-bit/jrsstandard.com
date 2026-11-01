@@ -18,11 +18,13 @@
     if(!url(raw.sourceUrl)||!url(raw.url))throw new Error("Both source and direct study HTTPS links are required");
     var payment=Number(raw.paymentUsd),mins=Number(raw.minutes),screen=raw.screenMinutes===null||raw.screenMinutes===undefined||raw.screenMinutes===""?null:Number(raw.screenMinutes);
     if(!Number.isFinite(payment)||payment<=0||payment>100000||!Number.isFinite(mins)||mins<5||mins>10080||screen!==null&&(!Number.isFinite(screen)||screen<0||screen>720))throw new Error("Invalid advertised compensation or participation time");
-    if(!Number.isFinite(date(raw.reviewed))||!Number.isFinite(date(raw.eventEnd)))throw new Error("Verified calendar dates required");
+    if(!Number.isFinite(date(raw.reviewed))||(raw.eventEnd!==null&&raw.eventEnd!==undefined&&!Number.isFinite(date(raw.eventEnd))))throw new Error("Verified source date and valid published end date when available required");
+    var eventEnd=raw.eventEnd===null||raw.eventEnd===undefined?null:raw.eventEnd;
+    var dateType=["application-deadline","published-session-end"].includes(raw.dateType)?raw.dateType:"published-session-end";
     if(!["online","hybrid","in-person"].includes(raw.mode))throw new Error("Mode must be online, hybrid or in-person");
     var eligibility=Array.isArray(raw.eligibility)?raw.eligibility.slice(0,8).map(function(x){return clean(x,160);}):[];
     var risks=Array.isArray(raw.risk)?raw.risk.slice(0,8).map(function(x){return clean(x,160);}):[];
-    return {id:id,title:title,provider:provider,paymentUsd:payment,minutes:mins,screenMinutes:screen,mode:raw.mode,reviewed:raw.reviewed,eventEnd:raw.eventEnd,
+    return {id:id,title:title,provider:provider,paymentUsd:payment,minutes:mins,screenMinutes:screen,mode:raw.mode,reviewed:raw.reviewed,eventEnd:eventEnd,dateType:dateType,
       url:raw.url,sourceUrl:raw.sourceUrl,dates:clean(raw.dates,100),linkKind:clean(raw.linkKind,80),eligibility:eligibility,risk:risks,status:clean(raw.status,150)||"Availability unconfirmed",eligibilityStatus:["unknown","owner-reports-possible","owner-reports-ineligible"].includes(raw.eligibilityStatus)?raw.eligibilityStatus:"unknown"};
   }
   function assess(raw,prefs,asOf){
@@ -32,10 +34,11 @@
     var minPay=Number(prefs.minPay),maxScreen=Number(prefs.maxScreenMinutes);
     if(!Number.isFinite(minPay)||minPay<0||minPay>100000)minPay=100;
     if(!Number.isFinite(maxScreen)||maxScreen<0||maxScreen>720)maxScreen=15;
-    var remoteOnly=prefs.remoteOnly!==false, reasons=[],warnings=[],expired=x.eventEnd<asOf,
+    var remoteOnly=prefs.remoteOnly!==false, reasons=[],warnings=[],expired=x.eventEnd!==null&&x.eventEnd<asOf,
       staleDays=Math.floor((date(asOf)-date(x.reviewed))/86400000),stale=staleDays>3||staleDays<0,
       disqualified=x.eligibilityStatus==="owner-reports-ineligible";
     if(expired)reasons.push("Published study date passed; confirm any reopening");
+    if(x.eventEnd===null)warnings.push("No application deadline published; status must be rechecked with the recruiter");
     if(stale)reasons.push("Source review is more than three days old or future-dated");
     if(disqualified)reasons.push("Owner marked eligibility as ineligible");
     if(remoteOnly&&x.mode!=="online")reasons.push("Not a fully remote study");
@@ -64,7 +67,7 @@
   function digest(items,prefs,asOf){
     var d=dedupe(items),results=d.items.map(function(x){return assess(x,prefs,asOf);});
     var order={PRIORITY_TO_SCREEN:0,REVIEW_CANDIDATE:1,HOLD:2};
-    results.sort(function(a,b){return order[a.priority]-order[b.priority]||b.candidate.paymentUsd-a.candidate.paymentUsd||a.deadline.localeCompare(b.deadline);});
+    results.sort(function(a,b){return order[a.priority]-order[b.priority]||b.candidate.paymentUsd-a.candidate.paymentUsd||(a.deadline||"9999-12-31").localeCompare(b.deadline||"9999-12-31");});
     return {date:asOf,scanned:d.items.length,duplicateCount:d.skipped,results:results,priority:results.filter(function(x){return x.priority==="PRIORITY_TO_SCREEN"||x.priority==="REVIEW_CANDIDATE";}).length,
       notice:"Sourced candidates only. This interface neither crawls recruiters nor confirms selection or earnings."};
   }
