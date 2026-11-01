@@ -64,22 +64,7 @@
     },
     {
       "source": "/platform-integration.html",
-      "destination": "/review-engine.html",
-      "permanent": false
-    },
-    {
-      "source": "/platform-evaluation-001.html",
-      "destination": "/review-engine.html",
-      "permanent": false
-    },
-    {
-      "source": "/manifest.html",
-      "destination": "/review-engine.html",
-      "permanent": false
-    },
-    {
-      "source": "/security.html",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -94,7 +79,7 @@
     },
     {
       "source": "/org-pilot.html",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -119,7 +104,7 @@
     },
     {
       "source": "/engine-activity.html",
-      "destination": "/review-engine.html",
+      "destination": "/research.html",
       "permanent": false
     },
     {
@@ -129,7 +114,7 @@
     },
     {
       "source": "/submit-record.html",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -139,7 +124,7 @@
     },
     {
       "source": "/openapi.json",
-      "destination": "/review-engine.html",
+      "destination": "/manifest.html",
       "permanent": false
     },
     {
@@ -234,7 +219,7 @@
     },
     {
       "source": "/engine-activity",
-      "destination": "/review-engine.html",
+      "destination": "/research.html",
       "permanent": false
     },
     {
@@ -249,7 +234,7 @@
     },
     {
       "source": "/platform-integration",
-      "destination": "/platform-integration.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -354,7 +339,7 @@
     },
     {
       "source": "/submit-record",
-      "destination": "/submit-record.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -404,7 +389,7 @@
     },
     {
       "source": "/diagnostic",
-      "destination": "/org-pilot.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -479,22 +464,27 @@
     },
     {
       "source": "/openapi",
-      "destination": "/review-engine.html",
+      "destination": "/manifest.html",
       "permanent": false
     },
     {
       "source": "/openapi-review-engine.json",
-      "destination": "/openapi.json",
+      "destination": "/manifest.html",
       "permanent": true
     },
     {
       "source": "/sandbox",
-      "destination": "/review-engine.html#sandbox",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
       "source": "/pricing",
       "destination": "/resources.html",
+      "permanent": false
+    },
+    {
+      "source": "/manifest",
+      "destination": "/manifest.html",
       "permanent": false
     }
   ],
