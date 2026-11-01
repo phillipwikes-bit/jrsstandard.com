@@ -437,3 +437,49 @@ body.jrs-institutional :where(.cred,.microcopy,.gcard-meta,.footer-note){
  body.jrs-institutional.jrs-longform :where(.hero-h1){font-size:clamp(35px,9vw,45px)!important}
  body.jrs-institutional :where(.start-grid,.cards){grid-template-columns:1fr!important}
 }
+
+
+/* JRS mobile navigation corrections, 2026-11-01.
+   Restore the Standard's built-in accessible collapsible section navigation.
+   The legacy mobile toggle updates aria-expanded and .nav-open; the generic
+   publication styles must not force the underlying list permanently visible. */
+@media(max-width:760px){
+ body.jrs-institutional.jrs-longform .primary-nav-mobile-bar{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  background:#e9f1f5!important;color:#243f56!important;
+  height:auto!important;min-height:52px!important;padding:7px 18px!important
+ }
+ body.jrs-institutional.jrs-longform .nav-hamburger{
+  display:inline-flex!important;min-height:44px!important;
+  background:#fff!important;color:#184363!important;border:1px solid #9db2bf!important;
+  font:600 14px/1.45 Inter,system-ui,sans-serif!important;border-radius:4px!important;
+  padding:9px 14px!important
+ }
+ body.jrs-institutional.jrs-longform .primary-nav-inner{
+  display:none!important;flex-direction:column!important;overflow:visible!important;
+  padding:0!important;max-width:100%!important;align-items:stretch!important
+ }
+ body.jrs-institutional.jrs-longform .primary-nav-inner.nav-open{
+  display:flex!important
+ }
+ body.jrs-institutional.jrs-longform .primary-nav .nav-item{
+  display:block!important;width:100%!important;min-height:46px!important;
+  text-align:left!important;padding:12px 20px!important;
+  font:600 14px/1.5 Inter,system-ui,sans-serif!important;
+  border-bottom:1px solid #d6e0e7!important
+ }
+ body.jrs-institutional.jrs-longform .util-bar-inner{
+  display:flex!important;flex-wrap:nowrap!important;
+  overflow-x:auto!important;overscroll-behavior-x:contain!important;
+  -webkit-overflow-scrolling:touch;white-space:nowrap!important
+ }
+ body.jrs-institutional.jrs-longform .util-bar-inner a{
+  flex:0 0 auto!important;min-height:44px!important;white-space:nowrap!important
+ }
+}
+@media(max-width:650px){
+ body.jrs-institutional .jrs-sitenav a{
+  flex:1 1 25%!important;font-size:12.5px!important;padding:11px 5px!important;
+  min-width:0!important;box-sizing:border-box!important
+ }
+}
