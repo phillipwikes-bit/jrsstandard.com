@@ -1602,10 +1602,10 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:24px;line-height:1.7"><strong style="color:var(--text)">Reviewer Judgment Required</strong>: Outputs are intended to support reviewer analysis and do not replace organizational judgment, investigative review, legal review, or escalation procedures.</div>
 
-  <div style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
-    <button class="sim-tab active" id="sim-tab-0" onclick="showSimTab(0)">1. Document Review</button>
-    <button class="sim-tab" id="sim-tab-1" onclick="showSimTab(1)">2. Routing Decisions</button>
-    <button class="sim-tab" id="sim-tab-2" onclick="showSimTab(2)">3. Review Instability ID</button>
+  <div id="jrs-simulation-tabs" role="group" aria-label="Simulation exercise categories" style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
+    <button type="button" class="sim-tab active" id="sim-tab-0" aria-controls="sim-panel-0" aria-pressed="true" onclick="showSimTab(0)">1. Document Review</button>
+    <button type="button" class="sim-tab" id="sim-tab-1" aria-controls="sim-panel-1" aria-pressed="false" onclick="showSimTab(1)">2. Routing Decisions</button>
+    <button type="button" class="sim-tab" id="sim-tab-2" aria-controls="sim-panel-2" aria-pressed="false" onclick="showSimTab(2)">3. Review Instability ID</button>
   </div>
 
   
@@ -1865,7 +1865,7 @@ var fmState = { answered:{}, scores:[] };
 
 // ── TAB SWITCHING ──────────────────────────────────
 function showSimTab(idx) {
-  document.querySelectorAll('.sim-tab').forEach(function(t,i){t.classList.toggle('active',i===idx);});
+  document.querySelectorAll('.sim-tab').forEach(function(t,i){t.classList.toggle('active',i===idx);t.setAttribute('aria-pressed',String(i===idx));});
   document.querySelectorAll('.sim-panel').forEach(function(p,i){p.style.display=i===idx?'block':'none';});
 }
 
