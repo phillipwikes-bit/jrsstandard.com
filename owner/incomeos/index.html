@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#11292b">
+<meta name="description" content="Private IncomeOS prototype. Verified individual research leads, alternative-asset research, earnings tracking and compounding scenarios.">
+<title>IncomeOS | Private Opportunity Command Center</title>
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="stylesheet" href="./incomeos.css">
+<script defer src="./incomeos.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to dashboard</a>
+<div class="app">
+<header class="sitehead">
+  <div class="topline"><div class="identity"><div class="mark">↗</div><div><strong>IncomeOS</strong><small>OWNER WORKSPACE · PROTOTYPE</small></div></div><span class="tag">Staging</span></div>
+  <div class="greeting">
+    <p class="overline">PRIVATE OPPORTUNITY INTELLIGENCE</p>
+    <h1>Discover. Capture.<br><em>Compound.</em></h1>
+    <p>One interface. Legitimate opportunities. Minimal owner effort.</p>
+  </div>
+</header>
+<main id="main">
+  <div class="status" id="feed-status" role="status">Loading saved opportunity snapshot…</div>
+  <div class="metrics" aria-label="Current record summary">
+    <div class="metric"><span>PAID & VERIFIED</span><strong id="metric-paid">$0</strong></div>
+    <div class="metric"><span>STUDIES TO REVIEW</span><strong id="metric-study">0</strong></div>
+    <div class="metric"><span>ASSETS WATCHED</span><strong id="metric-asset">0</strong></div>
+  </div>
+  <section id="view-research" class="view active" aria-labelledby="research-heading">
+    <div class="sectionintro"><div><span class="kicker">01 / INCOME DISCOVERY</span><h2 id="research-heading">Paid research</h2><p>Specific recruiter applications, not marketplace search pages.</p></div><button type="button" class="smallbtn" id="refresh" aria-label="Refresh reviewed opportunity file">Refresh</button></div>
+    <div class="callout"><strong>Qualification is not guaranteed.</strong> Incentives require recruiter selection and successful participation. Review timestamps and remaining-place uncertainty on each card.</div>
+    <div class="filterbar"><label class="sr-only" for="research-filter">Filter research leads</label><select id="research-filter"><option value="current">Upcoming sessions</option><option value="online">Online only</option><option value="direct">Direct screeners</option><option value="highpay">Highest session pay</option><option value="all">All, including past dates</option></select><label class="sr-only" for="research-search">Search research leads</label><input id="research-search" type="search" placeholder="Search studies and recruiters" autocomplete="off"></div>
+    <div id="research-cards" class="stack"></div>
+  </section>
+  <section id="view-assets" class="view" aria-labelledby="assets-heading" hidden>
+    <div class="sectionintro"><div><span class="kicker">02 / CAPITAL OPPORTUNITIES</span><h2 id="assets-heading">Unconventional assets</h2><p>Income-producing rights and operator-managed assets. No generic savings-account comparisons.</p></div></div>
+    <div class="callout danger"><strong>Research only.</strong> No deal has passed full underwriting. Amounts shown are prior earnings or quoted prices, not promised income, and links may lead to a catalog rather than an individually verified active offer.</div>
+    <div id="asset-cards" class="stack"></div>
+  </section>
+  <section id="view-ledger" class="view" aria-labelledby="ledger-heading" hidden>
+    <div class="sectionintro"><div><span class="kicker">03 / DOCUMENTED CASH</span><h2 id="ledger-heading">Earnings ledger</h2><p>Track actual payments separately from applications and expectations.</p></div></div>
+    <div class="ledger-total"><span>Confirmed received income</span><strong id="ledger-total">$0.00</strong><small>Manually recorded receipts only, before taxes. No bank link.</small></div>
+    <div class="panel">
+      <h3>Add a study or income entry</h3>
+      <form id="receipt-form">
+        <label for="receipt-label">Source / description</label><input id="receipt-label" name="label" required maxlength="100" placeholder="e.g., Research interview" autocomplete="off">
+        <div class="formgrid"><div><label for="receipt-amount">Amount (USD)</label><input id="receipt-amount" name="amount" type="number" min="0.01" max="10000000" step="0.01" inputmode="decimal" required></div><div><label for="receipt-date">Date</label><input id="receipt-date" name="date" type="date" required></div></div>
+        <label for="receipt-state">Payment status</label><select id="receipt-state" name="status"><option value="pending">Expected, not received</option><option value="paid">Received and verified</option></select>
+        <button class="mainbtn" type="submit">Save entry locally</button>
+      </form>
+    </div>
+    <div class="panel" style="margin-top:14px"><div class="panelrow"><h3>Payment records</h3><button class="textbtn" type="button" id="export-ledger">Export CSV</button></div><p class="muted" style="margin:4px 0 12px">Saved only in this browser. Do not enter account numbers, passwords, or personal identifying details.</p><div id="ledger-list" class="stack"></div></div>
+  </section>
+  <section id="view-compound" class="view" aria-labelledby="compound-heading" hidden>
+    <div class="sectionintro"><div><span class="kicker">04 / CAPITAL FLYWHEEL</span><h2 id="compound-heading">Compounding laboratory</h2><p>Measure illustrative growth from received income and optional recurring contributions.</p></div></div>
+    <div class="callout"><strong>Scenario only.</strong> No money is invested, transferred, or reinvested by this application. Market returns, losses, fees and taxes may differ substantially.</div>
+    <div class="panel">
+      <label for="initial">Initial amount hypothetically invested (USD)</label><input type="number" id="initial" min="0" max="100000000" value="0" step="100" inputmode="decimal">
+      <div class="formgrid"><div><label for="monthly">Additional monthly investment</label><input type="number" id="monthly" min="0" max="1000000" value="100" step="25" inputmode="decimal"></div><div><label for="assumed-return">Assumed annual return (%)</label><input type="number" id="assumed-return" min="-100" max="40" value="5" step="0.5" inputmode="decimal"></div></div>
+      <label for="years">Period: <span id="years-text">10 years</span></label><input type="range" id="years" min="1" max="30" value="10" step="1">
+      <div class="projection"><span>Illustrative future value</span><strong id="future-value">$0</strong><div><span>Contributions <b id="contributions">$0</b></span><span>Illustrative change <b id="growth">$0</b></span></div></div>
+      <p class="muted">Monthly contributions occur at month end. Return is an assumption, not an expected or guaranteed yield. Positive projections omit fees and taxes; negative returns and asset write-downs are possible.</p>
+    </div>
+    <div class="panel" style="margin-top:14px"><h3>Cash available to assess</h3><p><strong id="cash-assessed">$0.00</strong> in manually recorded, received payments. This is not an investable balance until expenses, taxes, reserves and other obligations are considered.</p></div>
+  </section>
+  <section id="view-about" class="view" aria-labelledby="about-heading" hidden>
+    <div class="sectionintro"><div><span class="kicker">05 / CONTROLS</span><h2 id="about-heading">Owner controls</h2><p>This is a single-user prototype, not a bank, broker, marketplace, or trading service.</p></div></div>
+    <div class="panel">
+      <h3>iPhone alerts and response</h3>
+      <p>IncomeOS Priority Study Alerts currently checks for individual, worth-your-time studies on an hourly ChatGPT schedule. Alerts are delivered by ChatGPT when supported and enabled, not by this website.</p>
+      <ol><li>On iPhone, open Settings → Notifications → ChatGPT.</li><li>Enable Allow Notifications and confirm ChatGPT task notifications are enabled.</li><li>Open an alert's direct recruiter link, or come here to compare research leads.</li></ol>
+      <p class="muted">This page does not subscribe to browser push and does not automatically synchronize with ChatGPT task results yet.</p>
+    </div>
+    <div class="panel" style="margin-top:14px"><h3>Security and data boundaries</h3><p>The preview branch is intended for Vercel-authenticated access. Hidden URLs and noindex do not make a page private. Do not merge this route into the publicly accessible JRS domain until server-side owner authentication, authorization tests and path-specific no-store controls are in place.</p><p>Local study status, bookmarks and ledger entries remain on this device only. Clearing browser storage removes them. Do not input account credentials.</p><button id="clear-local" class="destructive" type="button">Clear local IncomeOS data</button></div>
+    <div class="panel" style="margin-top:14px"><h3>Scope</h3><p>Single-owner research and creative-income discovery, direct recruiter applications, manually verified payments, and realistic investment underwriting. No selling, client acquisition, commercial subscriptions, background financial transactions or performance guarantees.</p><p class="muted">IncomeOS does not read, alter or connect to the JRS review engine.</p></div>
+  </section>
+</main>
+<nav class="bottomnav" aria-label="IncomeOS main navigation">
+<button data-view="research" class="selected" aria-current="page"><span class="navicon">⌕</span>Research</button>
+<button data-view="assets"><span class="navicon">◇</span>Assets</button>
+<button data-view="ledger"><span class="navicon">▤</span>Income</button>
+<button data-view="compound"><span class="navicon">↗</span>Compound</button>
+<button data-view="about"><span class="navicon">⚙</span>Controls</button>
+</nav>
+<footer><small>IncomeOS private prototype. Data last reviewed <span id="review-date">November 1, 2026</span>. No external data collection or investment execution.</small></footer>
+</div>
+</body>
+</html>
