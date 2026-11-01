@@ -20,3 +20,5 @@ jobs:
         run: node tests/jrs-institutional-reference-regression.mjs
       - name: Verify public resources, downloads, anchors and evidence boundaries
         run: node tests/jrs-public-resource-integrity.mjs
+      - name: Verify searchable resource directory, accessibility structure and PDF inventory
+        run: node tests/jrs-resource-directory.mjs
