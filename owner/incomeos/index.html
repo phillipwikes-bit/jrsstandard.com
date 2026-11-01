@@ -43,18 +43,94 @@
     <div id="asset-cards" class="stack"></div>
   </section>
   <section id="view-ledger" class="view" aria-labelledby="ledger-heading" hidden>
-    <div class="sectionintro"><div><span class="kicker">03 / DOCUMENTED CASH</span><h2 id="ledger-heading">Earnings ledger</h2><p>Track actual payments separately from applications and expectations.</p></div></div>
-    <div class="ledger-total"><span>Confirmed received income</span><strong id="ledger-total">$0.00</strong><small>Manually recorded receipts only, before taxes. No bank link.</small></div>
+    <div class="sectionintro"><div><span class="kicker">03 / ACCOUNTANT RECORDS</span><h2 id="ledger-heading">Complete earnings report</h2><p>All income sources, eligible expense candidates and financial movements, entered by you.</p></div></div>
+    <div class="callout"><strong>One consolidated personal ledger.</strong> Record research studies, contracts, royalties, dividends, rental income, reimbursements, asset sales and any other opportunities, including those found outside IncomeOS. No automatic IRS tax classification is made. Export the annual report for your accountant.</div>
     <div class="panel">
-      <h3>Add a study or income entry</h3>
+      <div class="panelrow"><h3>Tax-year overview</h3><label class="yearpicker" for="report-year">Year <input type="number" id="report-year" min="2000" max="2100" step="1" value="2026" inputmode="numeric"></label></div>
+      <div class="reportmetrics">
+        <div><small>Received gross income</small><strong id="ledger-total">$0.00</strong></div>
+        <div><small>Fees withheld</small><strong id="ledger-fees">$0.00</strong></div>
+        <div><small>Other recorded expenses</small><strong id="ledger-expenses">$0.00</strong></div>
+        <div><small>Cash after listed costs*</small><strong id="ledger-net">$0.00</strong></div>
+      </div>
+      <p class="muted">*Not taxable profit or cash available to invest. Reported fees and costs are not necessarily tax deductible. Pending payments, recovered principal, and unreconciled sale proceeds are tracked separately.</p>
+      <div class="reportactions"><button type="button" class="mainbtn" id="print-accountant">Print / Save annual report as PDF</button><button type="button" class="smallbtn" id="export-ledger">Export detailed CSV</button><button type="button" class="smallbtn" id="backup-ledger">Download private JSON backup</button></div>
+    </div>
+    <div class="panel">
+      <h3 id="receipt-form-title">Record any income or receipt</h3>
+      <p class="muted">Include studies completed elsewhere. Enter the gross amount before platform fees, not merely the money deposited. Mark principal recoveries and investment-sale proceeds for tax review instead of automatically treating them as earnings.</p>
       <form id="receipt-form">
-        <label for="receipt-label">Source / description</label><input id="receipt-label" name="label" required maxlength="100" placeholder="e.g., Research interview" autocomplete="off">
-        <div class="formgrid"><div><label for="receipt-amount">Amount (USD)</label><input id="receipt-amount" name="amount" type="number" min="0.01" max="10000000" step="0.01" inputmode="decimal" required></div><div><label for="receipt-date">Date</label><input id="receipt-date" name="date" type="date" required></div></div>
-        <label for="receipt-state">Payment status</label><select id="receipt-state" name="status"><option value="pending">Expected, not received</option><option value="paid">Received and verified</option></select>
-        <button class="mainbtn" type="submit">Save entry locally</button>
+        <label for="receipt-label">Description / opportunity</label><input id="receipt-label" name="label" required maxlength="100" placeholder="e.g., Research interview, royalties" autocomplete="off">
+        <div class="formgrid">
+          <div><label for="receipt-payer">Payer / source</label><input id="receipt-payer" name="payer" maxlength="100" placeholder="Recruiter, platform, or company" autocomplete="off"></div>
+          <div><label for="receipt-category">Income category</label><select id="receipt-category" name="category">
+            <option value="research">Paid studies and interviews</option><option value="evaluation">AI evaluation / independent work</option>
+            <option value="business">Business / consulting receipts</option><option value="royalty">Royalties and licensing</option>
+            <option value="rental">Rental / property income</option><option value="interest">Interest / lending</option>
+            <option value="dividend">Dividends / distributions</option><option value="investment">Investment proceeds / gains (review basis)</option>
+            <option value="reward">Rewards / cashback</option><option value="recovery">Reimbursements / refunds / unclaimed funds</option>
+            <option value="other">Other receipt</option>
+          </select></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-amount">Gross amount in original currency</label><input id="receipt-amount" name="amount" type="number" min="0.01" max="10000000" step="0.01" inputmode="decimal" required></div>
+          <div><label for="receipt-date">Receipt / expected payment date</label><input id="receipt-date" name="date" type="date" required></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-currency">Currency</label><select id="receipt-currency" name="currency"><option value="USD">USD</option><option value="GBP">GBP</option><option value="EUR">EUR</option><option value="OTHER">Other</option></select></div>
+          <div><label for="receipt-fx">USD per 1 unit (manual rate)</label><input type="number" id="receipt-fx" name="fx" min="0.000001" max="1000000" step="any" value="1" inputmode="decimal" required></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-fees">Platform fees withheld (USD)</label><input type="number" id="receipt-fees" name="fees" min="0" max="10000000" step="0.01" value="0" inputmode="decimal"></div>
+          <div><label for="receipt-state">Payment status</label><select id="receipt-state" name="status"><option value="pending">Expected, not received</option><option value="paid">Received (self-reported)</option></select></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-scope">Accounting treatment flag</label><select id="receipt-scope" name="scope"><option value="income">Potential income, review tax treatment</option><option value="nonincome">Possible non-income / refunded principal</option><option value="proceeds">Investment sale proceeds, basis review needed</option></select></div>
+          <div><label for="receipt-method">Payment route</label><select id="receipt-method" name="method"><option value="Unknown">Unknown / pending</option><option value="Bank transfer">Bank transfer</option><option value="Check">Check</option><option value="PayPal">PayPal</option><option value="Gift card">Gift card</option><option value="Platform balance">Platform balance</option><option value="Cash">Cash</option><option value="Other">Other</option></select></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-doc">Supporting tax form</label><select id="receipt-doc" name="taxForm"><option value="None / unknown">None / unknown</option><option value="1099-NEC">1099-NEC</option><option value="1099-MISC">1099-MISC</option><option value="1099-K">1099-K</option><option value="1099-INT">1099-INT</option><option value="1099-DIV">1099-DIV</option><option value="1099-B">1099-B</option><option value="Schedule K-1">Schedule K-1</option><option value="W-2">W-2</option><option value="Other form">Other form</option></select></div>
+          <div><label for="receipt-doc-status">Supporting document status</label><select id="receipt-doc-status" name="docStatus"><option value="not-expected">Not expected / unknown</option><option value="expected">Expected</option><option value="received">Received</option><option value="reconciled">Received and matched</option></select></div>
+        </div>
+        <label for="receipt-reference">Evidence reference (no account numbers)</label><input id="receipt-reference" name="reference" maxlength="120" placeholder="e.g., receipt date, confirmation ID fragment" autocomplete="off">
+        <label for="receipt-notes">Accountant notes (optional)</label><textarea id="receipt-notes" name="notes" maxlength="500" rows="2" placeholder="e.g., payment partly returned principal, W-9 supplied"></textarea>
+        <label class="checkline"><input type="checkbox" id="receipt-reconciled" name="reconciled"> I personally matched this receipt to a payment record</label>
+        <div class="formbuttons"><button class="mainbtn" type="submit" id="receipt-save">Save income entry</button><button class="smallbtn" type="button" id="receipt-cancel" hidden>Cancel edit</button></div>
       </form>
     </div>
-    <div class="panel" style="margin-top:14px"><div class="panelrow"><h3>Payment records</h3><button class="textbtn" type="button" id="export-ledger">Export CSV</button></div><p class="muted" style="margin:4px 0 12px">Saved only in this browser. Do not enter account numbers, passwords, or personal identifying details.</p><div id="ledger-list" class="stack"></div></div>
+    <div class="panel">
+      <h3 id="cost-form-title">Record fees, expenses and tax payments</h3>
+      <p class="muted">Expenses and withheld fees are separate from estimated tax payments and capital contributions. Record platform fees withheld on an income entry only once.</p>
+      <form id="cost-form">
+        <label for="cost-label">Description</label><input id="cost-label" name="label" required maxlength="100" placeholder="e.g., subscription, travel, estimated tax" autocomplete="off">
+        <div class="formgrid">
+          <div><label for="cost-payee">Payee / provider</label><input id="cost-payee" name="payee" maxlength="100" autocomplete="off"></div>
+          <div><label for="cost-type">Type</label><select id="cost-type" name="type"><option value="expense">Possible business / investment expense</option><option value="taxpayment">Estimated tax payment (not an expense deduction)</option><option value="capital">Asset purchase / capital contribution (not an expense deduction)</option><option value="other">Other outflow, review</option></select></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="cost-amount">Amount paid (USD)</label><input id="cost-amount" name="amount" type="number" min="0.01" max="10000000" step="0.01" inputmode="decimal" required></div>
+          <div><label for="cost-date">Date paid</label><input id="cost-date" name="date" type="date" required></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="cost-category">Cost category</label><select id="cost-category" name="category"><option value="platform">Platform / processing fees</option><option value="software">Software and subscriptions</option><option value="equipment">Equipment and hardware</option><option value="internet">Internet / telephone</option><option value="travel">Travel / mileage</option><option value="training">Education / training</option><option value="professional">Professional services</option><option value="supplies">Office supplies</option><option value="investing">Investment fees or asset costs</option><option value="tax">Estimated federal / state taxes</option><option value="other">Other / accountant review</option></select></div>
+          <div><label for="cost-reference">Evidence reference</label><input id="cost-reference" maxlength="120" name="reference" placeholder="Receipt or invoice reference" autocomplete="off"></div>
+        </div>
+        <label for="cost-notes">Accountant notes (optional)</label><textarea id="cost-notes" name="notes" rows="2" maxlength="500"></textarea>
+        <div class="formbuttons"><button class="mainbtn" type="submit" id="cost-save">Save outflow</button><button class="smallbtn" type="button" id="cost-cancel" hidden>Cancel edit</button></div>
+      </form>
+    </div>
+    <div class="panel">
+      <div class="panelrow"><h3>All recorded items</h3><span class="muted" id="ledger-count">0 items</span></div>
+      <div class="filterbar"><label class="sr-only" for="ledger-filter">Record filter</label><select id="ledger-filter"><option value="all">All entries</option><option value="income">Income / receipts</option><option value="outflow">Expenses / outflows</option><option value="pending">Pending payments</option></select><label class="sr-only" for="ledger-search">Search records</label><input id="ledger-search" type="search" placeholder="Search source / category"></div>
+      <div id="ledger-list" class="stack"></div>
+    </div>
+    <div class="panel">
+      <div class="panelrow"><h3>Accountant handoff</h3><button type="button" class="textbtn" id="refresh-accountant">Refresh summary</button></div>
+      <div id="report-preview" class="summary-preview"></div>
+      <p class="muted">Attach third-party statements and relevant tax forms separately. CSV and printed PDF reflect only what you entered. Keep the exported file secure; it can contain sensitive financial details.</p>
+      <div class="reportactions"><button type="button" class="smallbtn" id="import-trigger">Restore a local backup</button><input id="import-ledger" type="file" accept=".json,application/json" hidden><button type="button" class="smallbtn" id="download-summary">Download annual summary CSV</button></div>
+    </div>
+    <section id="print-report" aria-label="Accountant annual report" hidden></section>
   </section>
   <section id="view-compound" class="view" aria-labelledby="compound-heading" hidden>
     <div class="sectionintro"><div><span class="kicker">04 / CAPITAL FLYWHEEL</span><h2 id="compound-heading">Compounding laboratory</h2><p>Measure illustrative growth from received income and optional recurring contributions.</p></div></div>
