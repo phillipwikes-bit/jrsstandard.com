@@ -726,3 +726,38 @@ body.jrs-institutional.jrs-codebook-page .cond{scroll-margin-top:18px}
  body.jrs-institutional.jrs-codebook-page .jrs-codebook-quick{gap:7px!important;margin:14px 0 17px!important}
  body.jrs-institutional.jrs-codebook-page .jrs-codebook-quick a{padding:8px 10px!important;font-size:13px!important}
 }
+
+/* Standard navigation release fix: one document index at every viewport.
+   Site navigation remains separate, while the section index is closed by default.
+   No redundant Home/Guides links or permanently expanded secondary toolbar. */
+body.jrs-institutional.jrs-standard-page .primary-nav .primary-nav-mobile-bar{
+  display:flex!important;align-items:center!important;justify-content:space-between!important;
+  min-height:49px!important;padding:5px clamp(16px,3vw,28px)!important;
+  background:#e7eff4!important;
+}
+body.jrs-institutional.jrs-standard-page .primary-nav .nav-current-section{
+  font:700 13px/1.5 Inter,system-ui,sans-serif!important;
+  letter-spacing:.06em!important;color:#284b62!important;
+}
+body.jrs-institutional.jrs-standard-page .primary-nav .nav-hamburger{
+  display:inline-flex!important;align-items:center!important;min-height:44px!important;
+  font:700 14px/1.5 Inter,system-ui,sans-serif!important;
+}
+body.jrs-institutional.jrs-standard-page .primary-nav .primary-nav-inner{
+  display:none!important;max-width:1160px!important;overflow:visible!important;
+  margin:0 auto!important;padding:0!important;
+}
+body.jrs-institutional.jrs-standard-page .primary-nav .primary-nav-inner.nav-open{
+  display:grid!important;grid-template-columns:repeat(auto-fit,minmax(215px,1fr))!important;
+  align-items:stretch!important;gap:0!important;padding:10px!important;
+}
+body.jrs-institutional.jrs-standard-page .primary-nav .nav-item{
+  min-height:46px!important;padding:12px 16px!important;
+  font:600 14px/1.5 Inter,system-ui,sans-serif!important;
+  text-align:left!important;white-space:normal!important;
+}
+@media(max-width:760px){
+ body.jrs-institutional.jrs-standard-page .primary-nav .primary-nav-inner.nav-open{
+   grid-template-columns:minmax(0,1fr)!important;
+ }
+}
