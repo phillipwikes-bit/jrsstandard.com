@@ -214,7 +214,7 @@
   function exportDetail(){
     var rows=[["Date","Kind","Type / scope","Category","Description","Payer / payee","Original amount","Currency","USD per unit","Gross USD","Platform fees USD","Other paid outflows USD","Business-use %","Status","Tax form","Form status","Evidence status","Evidence reference","Reconciled","Notes","Entry ID"]];
     yearEntries().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(e){
-      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"?e.amountUsd:"",e.kind==="outflow"?e.businessUse==null?"":e.businessUse,e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id]);
+      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"?e.amountUsd:"",e.kind==="outflow"?(e.businessUse==null?"":e.businessUse):"",e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id]);
     });
     download(csv(rows),"IncomeOS-accountant-detail-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
