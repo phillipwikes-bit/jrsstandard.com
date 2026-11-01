@@ -22,3 +22,5 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/owner-data-fail-closed.mjs
+      - run: node --test tests/public-research-accessibility.test.mjs
+      - run: node tests/public-reference-navigation.mjs
