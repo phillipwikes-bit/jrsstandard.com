@@ -18,7 +18,7 @@ for (const [label, target] of routes) {
   assert.ok(home.includes('href="' + target + '"'), 'homepage route missing destination ' + target);
   assert.ok(existsSync(new URL('../' + target, import.meta.url)), 'missing target ' + target);
 }
-assert.equal((home.match(/<div class="card-k">0[1-4] · /g) || []).length, 4, 'four pathways should each appear once');
+assert.equal((home.match(/<div class="card-k">0[1-4] · (?:Start here|Use the method|Examine the evidence|Technical reference)<\/div>/g) || []).length, 4, 'four pathways should each appear once');
 for (const id of ['quick-review', 'field-guides', 'learn', 'review-references', 'supporting-detail']) {
   assert.ok(tools.includes('id="' + id + '"'), 'resources missing section ' + id);
 }
