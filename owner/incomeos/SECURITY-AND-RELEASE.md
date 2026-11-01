@@ -74,6 +74,17 @@ Allowed practical stages include source-only, bank-only, receipt-only, amount/da
 - Operational demonstration: owner adds record, edits it, reconciles it, exports an encrypted backup, restores it, downloads annual report and erases records.
 - Income verification: provider-confirmed receipts or bank deposits, never modeled projections.
 
+## Verified hosting and incremental control state, November 1, 2026
+
+The connected Vercel project `jrsstandard-com` serves the JRS custom production domains. Its observed `ssoProtection` setting is enabled for `all_except_custom_domains`, while direct project password protection is disabled. This supports protected noncustom preview access but **does not protect the JRS production custom domains or constitute owner-only app authentication**. Creating a sensitive owner page at a public JRS path is not authorized.
+
+Development modules added during master-plan implementation:
+- `accounting-controls.js` and `accounting-controls-ui.js`: source identity, exact source-link candidates, amount/date conflict checks, owner-review status, false-positive controls and fail-closed close readiness. The static app intentionally provides no bank rows or coverage attestations. A "ready for additional accountant review" result from the pure engine is never a tax filing or audit authorization.
+- `recovery-engine.js` and `recovery-ui.js`: potential duplicate billing, refund original-source linkage and observation of two documented periods of comparable lower charges. No claims, filings, transfers, refunds or cancellations occur.
+- `IMPLEMENTATION-REGISTER.md` records active features, dependent releases and financial reporting standards.
+
+Passing the five Node regression suites and the public-site isolation check is an engineering prerequisite only. The next blocking release task is verified separately deployed, owner-authorized infrastructure with encrypted active storage and private authenticated source ingestion.
+
 ## Current release assessment
 
 Draft development branch. Security and unit checks may pass; public source branch remains unmerged. Verified production authentication and encrypted active storage have not been established. A Vercel build-rate limit may block preview deployment. Do not represent the system as deployed, revenue-generating, independently audited, or production-ready.
