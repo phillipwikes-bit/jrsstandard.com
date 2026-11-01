@@ -1,8 +1,9 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate stats for the co-author confirmation tile on the private status
-// dashboard, token-free. Reads coauthor-confirm rows from pilot_contacts using
+// dashboard, owner-authenticated. Reads coauthor-confirm rows from pilot_contacts using
 // the server-side service-role key.
 //
 // NO PERSONAL DATA LEAVES THIS ENDPOINT. Name, email, organisation and the free
@@ -28,14 +29,17 @@ function json(o, s){
     status: s || 200,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'no-store'
+      'Cache-Control': 'private, no-store',
+      'X-Robots-Tag': 'noindex, nofollow',
+      'Referrer-Policy': 'no-referrer'
     }
   });
 }
 
 export default async function handler(req){
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
 
   const SERVICE = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return json({ error: 'not_configured' }, 503);

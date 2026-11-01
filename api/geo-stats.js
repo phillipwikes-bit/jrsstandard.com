@@ -1,4 +1,5 @@
 import { fetchAll } from './_sb-fetch.js';
+import { classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource } from './_traffic-quality.js';
 export const config = { runtime: 'edge' };
 
 // Aggregate ALL download geography (counts only, no PII), for the
@@ -12,11 +13,6 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 // Internal smoke/deploy-test tags. Downloads recorded during development
 // verification, excluded from every count so the dashboard shows real traffic.
-function isTestSrc(s){
-  s = String(s || '');
-  return s === 'verify' || s === 'test' || s === 'selftest' || s.indexOf('deploytest') === 0;
-}
-
 function assetOf(row){
   const p = row.payload || {};
   if (row.source === 'kit-dl'){
@@ -40,7 +36,7 @@ function assetOf(row){
 export default async function handler(){
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  if (!SERVICE) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[] });
+  if (!SERVICE) return json({ error:'service_key_missing' }, 503);
 
   try {
     // PAGED, NOT LIMITED. The old call asked for limit=20000 and Supabase
@@ -49,16 +45,16 @@ export default async function handler(){
     const { rows: allRows, complete } = await fetchAll(
       SB, 'interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&select=source,payload,created_at',
       {'apikey':SERVICE,'Authorization':'Bearer '+SERVICE});
-    if (!complete && !allRows.length) return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[], assets:{ total:0, countries:0, by_country:[], by_asset:[] }, assets_detail:[] });
+    if (!complete) return json({ error:'incomplete_download_event_read' }, 502);
     // Drop internal test/deploy download rows so every total is real traffic.
-    const clean = allRows.filter(row => !isTestSrc(row.payload && row.payload.src));
+    const clean = allRows.filter(row => !isInternalTestSource(row.payload && row.payload.src));
 
     // Split: guide editions (top-level, the "Investigator Guide Downloads"
     // section) vs every other asset (JRS Standard PDF, Rapid Review Card,
     // training kit, reviewer reference) which drive enterprise value.
     const guideRows = clean.filter(row => row.source === 'guide-dl');
     // Enterprise assets exclude the retired training kit (no longer downloadable).
-    const assetRows = clean.filter(row => row.source !== 'guide-dl' && assetOf(row) !== 'Training kit');
+    const assetRows = clean.filter(row => row.source !== 'guide-dl' && isCurrentDownloadResource(row));
 
     // ---- Guide group (3 editions only): total, by_country, by_asset, by_day ----
     const gC = {}, gA = {}, gS = {}, gD = {};
@@ -127,7 +123,7 @@ export default async function handler(){
     const perItem = {};
     for (const row of clean){
       const a = assetOf(row);
-      if (a === 'Training kit') continue; // retired, not shown
+      if (!isCurrentDownloadResource(row)) continue; // historical retired kit remains excluded
       const label = a === 'Reviewer Reference' ? 'JRS Reviewer Reference' : a;
       if (!perItem[label]) perItem[label] = { asset: label, group: (row.source === 'guide-dl' ? 'guide' : 'asset'), total: 0, byC: {} };
       const c = (row.payload && row.payload.country) || 'unknown';
@@ -145,6 +141,34 @@ export default async function handler(){
       return (ia<0?99:ia) - (ib<0?99:ib);
     });
 
+    // Decision-grade traffic-quality reconciliation. These fields never claim
+    // a human audience, distinct reader or verified file consumption. They
+    // classify the SAME tracked requests as the legacy geo counters above.
+    // Do not recast or erase the raw historical country/asset figures.
+    const qualityCounts = { raw_requests:0, declared_crawler:0, user_agent_missing:0, not_identified_as_crawler:0 };
+    const qualityMap = {};
+    for (const row of clean) {
+      const a = assetOf(row);
+      if (!isCurrentDownloadResource(row)) continue; // same scope as legacy current assets
+      const label = a === 'Reviewer Reference' ? 'JRS Reviewer Reference' : a;
+      const group = row.source === 'guide-dl' ? 'guide' : 'asset';
+      if (!qualityMap[label]) qualityMap[label] = {
+        asset:label, group, raw_requests:0, declared_crawler:0,
+        user_agent_missing:0, not_identified_as_crawler:0
+      };
+      const classification = classifyDownloadTraffic(row.payload);
+      qualityMap[label].raw_requests++;
+      qualityMap[label][classification]++;
+      qualityCounts.raw_requests++;
+      qualityCounts[classification]++;
+    }
+    const qualityAssets = Object.values(qualityMap)
+      .sort((a,b)=>b.raw_requests-a.raw_requests || a.asset.localeCompare(b.asset));
+    const qualityReconciles =
+      qualityCounts.raw_requests === qualityCounts.declared_crawler +
+      qualityCounts.user_agent_missing + qualityCounts.not_identified_as_crawler &&
+      qualityCounts.raw_requests === guideRows.length + assetRows.length;
+
     return json({
       total: guideRows.length, countries: countries,
       by_country: by_country, by_asset: by_asset, by_source: by_source, by_day: by_day,
@@ -152,15 +176,27 @@ export default async function handler(){
       peak_day_downloads: dl_peak, last_download_at: dl_last,
       days_since_last_download: dl_days_since,
       assets: { total: assetRows.length, countries: a_countries, by_country: a_by_country, by_asset: a_by_asset },
-      assets_detail: assets_detail
+      assets_detail: assets_detail,
+      quality: {
+        classification: 'heuristic_user_agent_screen_only',
+        counting_unit: 'Tracked download endpoint requests, not unique users, confirmed file opens, practitioners or purchasers',
+        source_scope: 'guide-dl, pdf-dl and kit-dl requests; internal test source tags and retired training kit omitted',
+        internal_test_rows_excluded: allRows.length - clean.length,
+        retired_kit_rows_excluded: clean.length - qualityCounts.raw_requests,
+        ...qualityCounts,
+        reconciles_to_legacy_raw_scope: qualityReconciles,
+        by_asset: qualityAssets,
+        note: 'Declared crawlers are flagged by user agent. User-agent-missing requests cannot be classified, and not-identified-as-crawler is NOT equivalent to verified human use. Geo counters above remain raw.'
+      }
     });
   } catch(e){
-    return json({ total:0, countries:0, by_country:[], by_asset:[], by_source:[], by_day:[], assets:{ total:0, countries:0, by_country:[], by_asset:[] }, assets_detail:[] });
+    return json({ error:'download_statistics_unavailable' }, 502);
   }
 }
 
-function json(obj){
+function json(obj, status = 200){
   return new Response(JSON.stringify(obj), {
+    status,
     headers:{'Content-Type':'application/json','Cache-Control':'no-store','Access-Control-Allow-Origin':'*'}
   });
 }

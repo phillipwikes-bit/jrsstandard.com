@@ -70,33 +70,110 @@ tr.today td{background:rgba(93,191,130,.07)}
 .skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#050505;padding:10px 16px;z-index:100;font-family:'JetBrains Mono',monospace;font-size:11px}
 .skip-link:focus{left:0}
 </style>
+<style>
+#owner-auth-cover{position:fixed;inset:0;background:#080807;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:system-ui,sans-serif;color:#f3ede2}
+#owner-auth-cover p{max-width:390px;text-align:center;padding:26px}
+</style>
 </head>
 <body>
+<div id="owner-auth-cover" aria-live="polite"><p>Checking private dashboard access...</p></div>
+<script>
+(function(){
+ fetch('/api/owner-session',{credentials:'same-origin',cache:'no-store'})
+ .then(function(r){
+   if(!r.ok){location.replace('/owner-login.html');return;}
+   var cover=document.getElementById('owner-auth-cover');
+   if(cover)cover.remove();
+ })
+ .catch(function(){location.replace('/owner-login.html')});
+})();
+</script>
+
 <a href="#main-content" class="skip-link">Skip to content</a>
-<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Pilot Submissions</div></div></header>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Private Programme Status <button type="button" id="owner-signout" style="margin-left:12px;background:none;color:inherit;border:1px solid #665b46;padding:5px 10px;cursor:pointer;min-height:36px">Sign out</button></div></div></header>
 <main id="main-content"><div class="wrap">
   <h1>JRS Programme Status</h1>
-  <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Figures refresh automatically every 60 seconds and are read from the production database at the moment you open the page.</p>
-  <!-- COMMERCIAL INBOX. Added 2026-08-25, at the TOP, above the reviewer panel.
-       Everything else on this page is a count. This is the only block that is a
-       QUEUE: rows here are people waiting on a reply, and a person waiting is
-       more urgent than any figure below.
+  <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Supported figures refresh automatically every 60 seconds. Some owner-only reads may show unavailable when authentication or backend configuration is missing; that must not be interpreted as zero.</p>
+  
+  <!-- Owner-only diligence orientation; not a public acquisition prospectus. -->
+  <h2 id="buyer-evidence-snapshot" style="font-size:22px">Licensing and Acquisition Evidence Snapshot</h2>
+  <p class="sub">Owner-only decision summary. A download request is not a person, buyer, deployment or transaction. Current evidence is separated from inferences and outstanding checks.</p>
+  <div class="chart">
+    <h3>What can be established from the records</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Evidence category</th><th scope="col">Observed status</th><th scope="col">Buyer interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>Resource requests</td><td id="buyer-requests">Loading classification...</td><td>Tracked redirects only; not verified practitioners or unique downloads.</td></tr>
+        <tr><td>Practitioner application</td><td>Not established by downloads</td><td>Requires documented, consented application in a real workflow.</td></tr>
+        <tr><td>Organization pilots</td><td>No instrumented invitations as of 30 Oct 2026</td><td>Zero sessions do not constitute rejected offers.</td></tr>
+        <tr><td>Buyer commitment</td><td>Not established by these analytics</td><td>Qualifying purchase, evaluation and acquisition enquiries must be evidenced separately.</td></tr>
+        <tr><td>Decision Spellchecker</td><td>NO_GO_NOT_VERIFIED as of 30 Oct 2026</td><td>Draft code and offline checks are not production validation.</td></tr>
+        <tr><td>Conveyable rights</td><td>Grant-specific review outstanding</td><td>Public authorship, contributor consent and commercial rights are separate.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">These are dated status classifications, not an automated sale-readiness certification. Use the asset register, evidence ledger, release records and actual transaction correspondence to substantiate future buyer claims. Do not share the private owner dashboard with prospects.</div>
+  </div>
+  <nav class="bar" aria-label="Evidence review navigation">
+    <a class="btn" href="#buyer-evidence-snapshot">Overview</a>
+    <a class="btn" href="#contacts-and-commercial">Contacts</a>
+    <a class="btn" href="#training-adoption">Training</a>
+    <a class="btn" href="#resource-downloads">Download quality</a>
+    <a class="btn" href="#sale-dossier">Historical sale dossier</a>
+  </nav>
+<section aria-label="Owner-only release readiness" id="owner-release-readiness">
+  <h2 style="font-size:22px">Release Readiness and Access Controls</h2>
+  <p class="sub">Current server configuration is shown separately from the independent checks required before release. A configured credential does not prove its associated function works. Software status remains NO_GO_NOT_VERIFIED.</p>
+  <div class="chart">
+    <h3>Environment configuration, owner-only</h3>
+    <p class="note" id="release-readiness-note" role="status" aria-live="polite">Checking configuration presence...</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Prerequisite</th><th scope="col">Configuration</th></tr></thead>
+      <tbody id="release-readiness-config"><tr><td colspan="2">Loading...</td></tr></tbody>
+    </table></div>
+  </div>
+  <div class="chart">
+    <h3>Required independent release checks</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Verification</th><th scope="col">Status</th></tr></thead>
+      <tbody id="release-readiness-verification"><tr><td colspan="2">Loading...</td></tr></tbody>
+    </table></div>
+    <p class="note">No item is considered verified by this inventory. Complete signed-owner access, database RLS inspection, email-delivery testing, privacy review, mobile acceptance and the release decision separately. Do not publish or forward this owner dashboard as the buyer package.</p>
+  </div>
+</section>
+<section aria-label="Owner-only contact and research records">
+   <h2 style="font-size:18px">Owner records</h2>
+   <p class="sub">These views contain names and contact details and require the signed owner session. Use the sign-out control when finished. The links do not send these records to the public website or Google Analytics.</p>
+   <p class="note">
+    <a href="/api/enroll-admin" style="color:var(--accent)">Training enrollments and completions</a>
+    &nbsp;·&nbsp;
+    <a href="/api/support-contacts" style="color:var(--accent)">Supporters and requested follow-ups</a>
+   </p>
+   <p class="note">Owner-access data can contain consent choices. A contact record is not permission to publish a name or transfer personal information.</p>
+  </section>
 
-       Thirteen buyers reached the pay screen between 14 and 21 August 2026 and
-       the owner found out weeks later by querying a table. That is the failure
-       this block exists to end.
-
-       It reads /api/leads-4b7e2c9af106d385, which returns names, emails and
-       organisations and is secured the same way this page is: an opaque,
-       unlinked, noindex URL with no token. If either slug leaks, rename BOTH. -->
-  <h2 style="font-size:22px">Commercial Inbox</h2>
-  <p class="sub">Everyone who submitted details or tried to pay, newest first. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
+  <!-- This is an owner-only response queue, not a commercial conversion claim.
+       URL secrecy is not an access control. The page is protected by the
+       server-side owner proxy, and private API readers require ownerAccess().
+       Site inquiries are grouped separately from historical commercial paths. -->
+  <h2 id="contacts-and-commercial" style="font-size:22px">Contacts and Commercial Activity</h2>
+  <p class="sub">Recent identified contacts and historic payment-screen attempts, newest first. Website research and training inquiries are measured separately from commercial interest. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
   <div class="cards" id="lead-cards" style="grid-template-columns:repeat(4,1fr)">
-    <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Identified leads</div></div>
+    <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Legacy leads shown</div></div>
     <div class="card"><div class="cv" id="ld-attempts">&middot;</div><div class="ck">Pay-screen attempts</div></div>
     <div class="card"><div class="cv" id="ld-lost">&middot;</div><div class="ck">Attempts that <b style="color:var(--stop-text)">could not pay</b></div></div>
     <div class="card"><div class="cv" id="ld-value">&middot;</div><div class="ck">Stated intent, unpaid</div></div>
   </div>
+
+  <section aria-label="Categorized website inquiry measurements">
+   <h3 style="font-size:18px;margin:18px 0 10px">Website inquiries, separate from commercial leads</h3>
+   <div class="cards" style="grid-template-columns:repeat(2,1fr)">
+    <div class="card"><div class="cv" id="ld-site-total">&middot;</div><div class="ck">Website inquiries, all time</div></div>
+    <div class="card"><div class="cv" id="ld-site-30d">&middot;</div><div class="ck">Website inquiries, last 30 days</div></div>
+   </div>
+   <p class="note" id="ld-site-types">Loading inquiry categories...</p>
+   <p class="note" id="ld-site-commercial">Loading separately classified commercial purposes...</p>
+   <p class="note">These counts include only records submitted through the categorized website form. Research, resource and general questions are not evidence of commercial demand. Existing downloads, training, pilots and historic commercial activity are measured in their original categories.</p>
+  </section>
 
   <div class="tablewrap">
    <table>
@@ -354,7 +431,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
   <div class="note" id="cb-note">Confirmations will appear here once the first contributor opens their link.</div>
 
-  <h2 style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h2>
+  <h2 id="training-adoption" style="font-size:22px;margin-top:34px">Training &amp; Certification Adoption</h2>
   <p class="sub">Consented enrollments in the JRS training. Aggregate counts only; no personal data is shown here. The named, consented list is stored privately and is a transfer-ready asset.</p>
   <div class="cards">
     <div class="card"><div class="cv hot" id="tr-today">&middot;</div><div class="ck">New today (UTC)</div></div>
@@ -369,15 +446,26 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="note" style="margin-top:8px">Country of each training completion. Recorded automatically at completion (geo live since Jul 17, 2026); completions from before then are backfilled from reviewer records. Aggregate counts only.</div>
   </div>
 
-  <h2 style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h2>
+  <h2 id="resource-downloads" style="font-size:22px;margin-top:34px">Investigator Guide Downloads</h2>
   <p class="sub">Downloads of the three Investigator Guide editions: EEO, Fair Housing, and International. By day and by country, from one source, so the by-day total, the by-country total, and the by-asset total are the same number. Counted at the redirect endpoint, so emailed and shared links are included too. Aggregate counts only.</p>
+
   <div class="chart">
-    <h3>Downloads by day</h3>
+    <h3>Request quality by individual resource</h3>
+    <p class="sub">Historical raw requests are preserved. Other user agents have not matched the declared-crawler pattern but are NOT verified humans.</p>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Resource</th><th>Raw</th><th>Declared crawler</th><th>User agent missing</th><th>Other user agents</th></tr></thead>
+      <tbody id="download-quality-rows"><tr><td colspan="5">Loading classified requests...</td></tr></tbody>
+    </table></div>
+    <p class="note" id="download-quality-note">These count tracked redirect requests, not readers, document use or buyer interest.</p>
+    <p class="note" id="download-scope-bridge">Reconciling request-source populations with the aggregate report...</p>
+  </div>
+  <div class="chart">
+    <h3>Raw tracked guide requests by day</h3>
     <div id="dlchart" style="overflow-x:auto">Loading&hellip;</div>
     <div class="legend" id="dllegend"></div>
   </div>
   <div class="chart">
-    <h3>Each item's downloads by country</h3>
+    <h3>Raw requests by item and country</h3>
     <div id="itemsbycountry">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three Investigator Guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Investigator Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
   </div>
@@ -438,6 +526,7 @@ tr.today td{background:rgba(93,191,130,.07)}
        because CLAUDE.md records that there is one private owner page and a
        second must not be created. Static content: it does not refresh. -->
   <h2 id="sale-dossier" style="font-size:22px;margin-top:44px;border-top:1px solid var(--accent-dim);padding-top:26px">Sale Dossier</h2>
+  <div class="note" style="border-left:3px solid var(--accent)"><b>Historical archive, dated 13 August 2026.</b> Preserved for provenance, not current transaction diligence. Statements below about outreach, technical readiness, rights, accuracy, buyers and deployment require fresh review. The current Decision Spellchecker designation and NO_GO_NOT_VERIFIED status supersede older product descriptions. Do not export this archive as a present-day prospectus.</div>
   <p class="sub">Everything built for the sale of the JRS / DRR asset, what each piece contains, and its state as of 13 August 2026. Assembled from the files on disk, not from memory. The live tracker is <code>research/IP_SALE_TRACKER.md</code>, which is revised every turn.</p>
 
   <div class="chart" style="border-color:var(--accent)">
@@ -539,7 +628,7 @@ tr.today td{background:rgba(93,191,130,.07)}
 </div></main>
 <footer class="ft"><div class="wrap" style="padding:0">&#169; 2026 Phillip Wikes &middot; JRS&#8482; &middot; <a href="privacy.html" style="color:inherit">Privacy</a> &middot; confidential &middot; not indexed</div></footer>
 <script>
-var U='https://pjzxkeviouofdseagvpf.supabase.co', K='sb_publishable_mkdtg6-NgJ44_JVr9vZf6Q_30BVgY4e', HDR={'apikey':K,'Authorization':'Bearer '+K};
+// All record-level reads now use authenticated, server-side owner routes.
 function esc(t){var d=document.createElement('div');d.textContent=(t==null?'':String(t));return d.innerHTML;}
 function rel(iso){
   if(!iso) return 'not started';
@@ -551,7 +640,7 @@ function rel(iso){
 }
 function loadDetection(){
   document.getElementById('live').textContent='Updating…';
-  return fetch(U+'/rest/v1/pilot_progress?select=code,name,total_reads,reads_today,last_at&order=total_reads.desc,code.asc',{headers:HDR})
+  return fetch('/api/owner-progress?view=pilot',{credentials:'same-origin',cache:'no-store'})
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(rows){
       rows = rows || [];
@@ -592,7 +681,7 @@ function loadDetection(){
     .catch(function(){ document.getElementById('live').textContent='Could not load. Tap Refresh.'; });
 }
 function loadRealcase(){
-  return fetch(U+'/rest/v1/realcase_progress?select=*&order=cases.desc',{headers:HDR})
+  return fetch('/api/owner-progress?view=realcase',{credentials:'same-origin',cache:'no-store'})
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(rows){
       rows = rows || [];
@@ -713,7 +802,7 @@ function loadDownloads(){
      h+='</div></div>';
 
      h+='<div style="font-size:11.5px;color:var(--muted-soft);margin-top:10px">'
-       +'<b style="color:var(--text)">'+grand+'</b> downloads over <b style="color:var(--text)">'+days.length+'</b> '
+       +'<b style="color:var(--text)">'+grand+'</b> raw tracked requests over <b style="color:var(--text)">'+days.length+'</b> '
        +(days.length===1?'day':'days')+', of which <b style="color:var(--text)">'+(d.days_with_activity||0)+'</b> had any activity. '
        +'Busiest day <b style="color:var(--text)">'+(d.peak_day_downloads||0)+'</b>. First '+esc(days[0].day)+', latest '+esc(days[days.length-1].day)+'.</div>';
 
@@ -742,7 +831,7 @@ function loadDownloads(){
    .catch(function(){ document.getElementById('dlchart').innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load downloads. Tap Refresh.</div>'; });
 }
 function loadArmB(){
-  return fetch(U+'/rest/v1/armb_progress?select=code,arm_code,reads,reads_today,last_at&order=reads.desc,code.asc',{headers:HDR})
+  return fetch('/api/owner-progress?view=armb',{credentials:'same-origin',cache:'no-store'})
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
    .then(function(rows){
      rows=rows||[];
@@ -963,10 +1052,31 @@ function renderSuppressed(list){
   });
   el.innerHTML=h;
 }
+function renderDownloadScopeBridge(engagement){
+  var el=document.getElementById('download-scope-bridge');
+  if(!el)return;
+  var b=engagement && engagement.download_scope_bridge;
+  if(!b || !b.source_scope_reconciles){
+    el.textContent='Same-source request reconciliation unavailable or incomplete. No denominator can be asserted.';
+    return;
+  }
+  var diff=b.difference_between_legacy_download_events_and_current_resource_requests;
+  el.textContent='Same-event-source audit: '+b.counted_all_source_download_type_events
+    +' legacy all-source type=download events versus '
+    +b.current_resource_redirect_requests+' current-resource redirect requests (includes '
+    +b.current_resource_other_type_events+' other-type events). Difference: '+diff
+    +'. Of the all-source download events, '
+    +b.outside_current_resource_download_type_events
+    +' are outside the current-resource scope. Test-tagged redirect rows: '
+    +b.internal_test_rows_in_redirect_sources
+    +'; retired or unrecognized kit rows: '+b.retired_or_unknown_kit_rows
+    +'. These populations use different inclusion rules. The difference is not evidence of additional readers, missing readers or lost conversions.';
+}
 function loadToday(){
   fetch('/api/asset-stats')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
+      renderDownloadScopeBridge(d&&d.open_engagement);
       var t=(d&&d.today)||null;
       function setv(id,v){ var e=document.getElementById(id); if(e) e.textContent=(v===undefined||v===null)?'0':v; }
       if(!t){ document.getElementById('td-note').textContent='Could not load today. Tap Refresh.'; return; }
@@ -993,7 +1103,7 @@ function loadToday(){
       setv('td-evopen',t.evaluation_opens);           setv('td-evsub',t.evaluation_submissions);
       setv('td-dl',t.guide_downloads);                setv('td-reads',t.records_reviewed);
       var parts=[];
-      parts.push((t.total_human_events||0)+' human '+(((t.total_human_events||0)===1)?'event':'events')+' recorded today');
+      parts.push((t.total_human_events||0)+' logged '+(((t.total_human_events||0)===1)?'event':'events')+' not flagged as declared crawler traffic today (not verified people)');
       if(t.crawler_rows_excluded) parts.push(t.crawler_rows_excluded+' crawler '+((t.crawler_rows_excluded===1)?'row':'rows')+' excluded');
       if(t.records_reviewed) parts.push(t.records_reviewed+' records reviewed ('+(t.records_reviewed_detection||0)+' detection, '+(t.records_reviewed_comparison||0)+' comparison)');
       document.getElementById('td-note').textContent=parts.join(' \u00b7 ')+'. '+t.note;
@@ -1043,7 +1153,7 @@ function loadToday(){
       renderCompletedEvaluations(d.completed_evaluations);
       renderSuppressed(d.suppressed_cohorts);
     })
-    .catch(function(){ var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; var rr=document.getElementById('td-recon'); if(rr) rr.textContent='Could not load. Tap Refresh.'; var cn=document.getElementById('ce-names'); if(cn) cn.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; var sp=document.getElementById('suppressed'); if(sp) sp.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
+    .catch(function(){ renderDownloadScopeBridge(null); var n=document.getElementById('td-note'); if(n) n.textContent='Could not load today. Tap Refresh.'; var rr=document.getElementById('td-recon'); if(rr) rr.textContent='Could not load. Tap Refresh.'; var cn=document.getElementById('ce-names'); if(cn) cn.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; var sp=document.getElementById('suppressed'); if(sp) sp.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
 }
 function loadEvalFunnel(){
   return fetch('/api/asset-stats')
@@ -1296,12 +1406,40 @@ function renderCompletions(s){
   });
   el.innerHTML=html;
 }
+function renderDownloadQuality(d){
+  var body=document.getElementById('download-quality-rows');
+  var note=document.getElementById('download-quality-note');
+  var summary=document.getElementById('buyer-requests');
+  if(!body || !note) return;
+  var q=d && d.quality;
+  if(!q || !q.reconciles_to_legacy_raw_scope || !Array.isArray(q.by_asset)){
+    body.innerHTML='<tr><td colspan="5">Data unavailable or reconciliation incomplete. Do not use these counts in buyer materials.</td></tr>';
+    note.textContent='Unavailable is not zero. Verify the data source and classification.';
+    if(summary) summary.textContent='Unverified: analytics reconciliation';
+    return;
+  }
+  var rows='';
+  q.by_asset.forEach(function(x){
+    rows+='<tr><td>'+esc(x.asset)+'</td><td>'+Number(x.raw_requests||0)+'</td><td>'
+      +Number(x.declared_crawler||0)+'</td><td>'+Number(x.user_agent_missing||0)
+      +'</td><td>'+Number(x.not_identified_as_crawler||0)+'</td></tr>';
+  });
+  body.innerHTML=rows || '<tr><td colspan="5">No tracked requests in scope.</td></tr>';
+  note.textContent='Included resources: '+q.raw_requests+' tracked requests; '
+    +q.declared_crawler+' declared crawler requests; '
+    +q.user_agent_missing+' without user agent; '
+    +q.not_identified_as_crawler+' other user agents. The last group is NOT verified people. '
+    +'Test-tagged and retired-kit events are outside this scope.';
+  if(summary) summary.textContent=q.raw_requests+' raw requests; '+q.declared_crawler
+    +' flagged crawlers; '+q.user_agent_missing+' cannot be classified by user agent';
+}
 function loadItems(){
   var el=document.getElementById('itemsbycountry');
   if(!el) return;
   fetch('/api/geo-stats')
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(d){
+      renderDownloadQuality(d);
       var items=(d&&d.assets_detail)||[];
       if(!items.length){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">No downloads recorded yet.</div>'; return; }
       var html='';
@@ -1309,7 +1447,7 @@ function loadItems(){
         var max=1; it.by_country.forEach(function(x){ if(x.downloads>max) max=x.downloads; });
         html+='<div style="margin:0 0 20px;padding-top:12px;border-top:1px solid var(--rule)">';
         html+='<div style="font-family:\'Bodoni Moda\',serif;font-size:16px;color:var(--text);margin-bottom:2px">'+esc(it.asset)+'</div>';
-        html+='<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.08em;color:var(--accent-dim);margin-bottom:9px"><b style="color:var(--accent)">'+it.total+'</b> download'+(it.total===1?'':'s')+' &middot; '+it.countries+' '+(it.countries===1?'country':'countries')+'</div>';
+        html+='<div style="font-family:\'JetBrains Mono\',monospace;font-size:11px;letter-spacing:.08em;color:var(--accent-dim);margin-bottom:9px"><b style="color:var(--accent)">'+it.total+'</b> raw request'+(it.total===1?'':'s')+' &middot; '+it.countries+' '+(it.countries===1?'country':'countries')+'</div>';
         it.by_country.forEach(function(x){
           var label = x.country==='unknown' ? 'Unknown' : esc(x.country);
           var w = Math.max(4, Math.round((x.downloads/max)*100));
@@ -1322,7 +1460,7 @@ function loadItems(){
       });
       el.innerHTML=html;
     })
-    .catch(function(){ el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
+    .catch(function(){ renderDownloadQuality(null); el.innerHTML='<div style="color:var(--muted-soft);font-size:12px">Could not load. Tap Refresh.</div>'; });
 }
 function renderEndorseDays(d){
   var el=document.getElementById('endorseday');
@@ -1749,7 +1887,9 @@ function ldRender(d){
   var leads = (d && d.leads) || [];
   var att = (d && d.attempts) || [];
 
-  document.getElementById('ld-leads').textContent = leads.length;
+  // Website information inquiries are not commercial leads or purchase intent.
+  document.getElementById('ld-leads').textContent =
+    leads.filter(function(x){return x.source !== 'site-inquiry'}).length;
   document.getElementById('ld-attempts').textContent = att.length;
   document.getElementById('ld-lost').textContent = (d && d.attempts_unconfigured) || 0;
 
@@ -1827,6 +1967,41 @@ function loadLeads(){
     });
 }
 loadLeads();
+function loadSiteInquiryStats(){
+  return fetch('/api/site-inquiry-stats',{credentials:'same-origin',cache:'no-store'})
+    .then(function(r){if(!r.ok)throw new Error('inquiry-stats-'+r.status);return r.json()})
+    .then(function(d){
+      document.getElementById('ld-site-total').textContent=d.total;
+      document.getElementById('ld-site-30d').textContent=d.last_30_days;
+      var names={organization:'Organizations',research:'Research',training:'Training',commercial:'Prospective Decision Spellchecker',general:'General'};
+      var cats=Object.keys(names).map(function(k){return names[k]+': '+(d.by_category[k]||0);});
+      if(d.unclassified_count)cats.push('Unclassified: '+d.unclassified_count);
+      document.getElementById('ld-site-types').textContent=cats.join(' | ');
+      var purposes=d.commercial_by_purpose||null;
+      var out=document.getElementById('ld-site-commercial');
+      if(out && purposes) {
+        var labels=[
+          ['method-licence','JRS methodology licensing'],
+          ['software-evaluation','Future software evaluation'],
+          ['integration','Integration or module enquiry'],
+          ['asset-acquisition','Exploratory asset acquisition'],
+          ['unspecified','Unclassified commercial enquiry']
+        ];
+        out.textContent='Self-declared commercial enquiry purpose: '
+          +labels.map(function(p){return p[1]+': '+(purposes[p[0]]||0);}).join(' | ')
+          +'. These are recorded enquiries, not verified purchasers, offers, licences or completed evaluations.';
+      } else if(out) out.textContent='Commercial purpose detail unavailable; no zero assumed.';
+    })
+    .catch(function(){
+      document.getElementById('ld-site-total').textContent='Unavailable';
+      document.getElementById('ld-site-30d').textContent='Unavailable';
+      document.getElementById('ld-site-types').textContent='Categorized inquiry totals unavailable; no zero assumed.';
+      document.getElementById('ld-site-commercial').textContent='Commercial purpose detail unavailable; no zero assumed.';
+    });
+}
+loadSiteInquiryStats();
+setInterval(loadSiteInquiryStats,60000);
+setInterval(loadLeads,60000);
 </script>
 <!-- JRS PANEL BINDER v2 :: CANONICAL BLOCK. Byte-identical on every page that
      publishes a panel figure, and scripts/check_zero_drift.py fails the commit
@@ -1991,6 +2166,65 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   setInterval(function(){ try { evaluate(); } catch(e){} }, 61000);
 })();
 </script>
+<script>
+(function(){
+  function cell(tr,value){
+    var td=document.createElement('td');
+    td.textContent=String(value);
+    tr.appendChild(td);
+  }
+  function fill(id,rows){
+    var body=document.getElementById(id);
+    if(!body)return;
+    body.textContent='';
+    rows.forEach(function(values){
+      var tr=document.createElement('tr');
+      values.forEach(function(value){cell(tr,value);});
+      body.appendChild(tr);
+    });
+  }
+  function unavailable(reason){
+    var note=document.getElementById('release-readiness-note');
+    if(note)note.textContent=reason;
+    fill('release-readiness-config',[['Configuration inventory','Unavailable, not zero']]);
+    fill('release-readiness-verification',[['Independent verification','Not verified']]);
+  }
+  function refreshReleaseReadiness(){
+    fetch('/api/owner-release-readiness',{credentials:'same-origin',cache:'no-store'})
+     .then(function(r){if(!r.ok)throw Error('readiness unavailable');return r.json();})
+     .then(function(d){
+       if(!d || d.assessment!=='configuration_inventory_not_release_authorization'
+         || !Array.isArray(d.requirements) || !Array.isArray(d.required_independent_verifications)){
+         throw Error('invalid inventory response');
+       }
+       fill('release-readiness-config',d.requirements.map(function(x){
+         return [x.label,x.configured?'Configured, not yet verified':'Configuration missing'];
+       }));
+       fill('release-readiness-verification',d.required_independent_verifications.map(function(x){
+         return [x.description,'Independent verification outstanding'];
+       }));
+       var note=document.getElementById('release-readiness-note');
+       if(note)note.textContent='Production release blocked. '
+         +d.missing_configuration.length+' configuration prerequisites missing; '
+         +d.required_independent_verifications.length+' independent checks not established. '
+         +'Inventory read '+new Date(d.generated_at).toLocaleString()+'.';
+     }).catch(function(){unavailable('Release configuration inventory unavailable. Production release must remain blocked.');});
+  }
+  refreshReleaseReadiness();
+  setInterval(refreshReleaseReadiness,60000);
+})();
+</script>
 <!-- /JRS SECTION COLLAPSE v1 -->
+<script>
+(function(){
+ var out=document.getElementById('owner-signout');
+ if(!out)return;
+ out.addEventListener('click',function(){
+  fetch('/api/owner-session',{method:'DELETE',credentials:'same-origin',cache:'no-store'})
+   .then(function(){location.replace('/owner-login.html')})
+   .catch(function(){location.replace('/owner-login.html')});
+ });
+})();
+</script>
 </body>
 </html>

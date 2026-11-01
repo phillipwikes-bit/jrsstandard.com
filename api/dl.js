@@ -68,6 +68,13 @@ function normKit(f){
 }
 
 export default async function handler(req){
+  // A HEAD request inspects link metadata and must not be counted as a
+  // download. Other non-GET methods do not request downloadable resources.
+  if (req.method !== 'GET' && req.method !== 'HEAD') {
+    return new Response('Method not allowed', {
+      status:405, headers:{'Allow':'GET, HEAD','Cache-Control':'no-store'}
+    });
+  }
   const url = new URL(req.url);
   const rawE = url.searchParams.get('e');
   const edition = normEdition(rawE);
@@ -103,12 +110,12 @@ export default async function handler(req){
 
   const target = url.origin + '/' + (edition ? FILES[edition] : doc ? DOCS[doc] : kit);
 
-  // Internal smoke/deploy-test tags: never recorded, and any existing ones are
-  // purged server-side so the download counts stay clean automatically.
+  // Internal smoke/deploy-test tags are never newly recorded. Historical
+  // test events are excluded at read time and preserved for audit provenance.
   const isTest = !!src && (src === 'verify' || src === 'test' || src === 'selftest' || src.indexOf('deploytest') === 0);
   // A prefetched download link is not a download. Same reasoning as
   // /api/support: the file is still served, only the count is protected.
-  const prefetched = isNotAClick(req);
+  const prefetched = req.method !== 'GET' || isNotAClick(req);
 
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
@@ -121,12 +128,11 @@ export default async function handler(req){
     // fetches at all. Truncated, and no other request header is read.
     const ua = String(req.headers.get('user-agent')||'').slice(0,300);
 
-    // Self-healing purge of any test-tagged download rows already stored.
-    // (deploytest* variants are also hidden by the geo-stats read filter.)
-    try {
-      await fetch(SB+"/rest/v1/interaction_events?source=in.(guide-dl,pdf-dl,kit-dl)&payload->>src=in.(verify,test,selftest,deploytest-geo2)",
-        { method:'DELETE', headers:H });
-    } catch(e){ /* best-effort */ }
+    // Historical records are immutable for evidence purposes. Never purge
+    // interaction_events during an ordinary public download request.
+    // Synthetic test tags are omitted at write time and excluded during
+    // reporting. Any historical cleanup requires a separately authorized,
+    // logged and reviewable maintenance operation.
 
     try {
       if (isTest || prefetched) {

@@ -1,26 +1,29 @@
-import { fetchAllUrl } from './_sb-fetch.js';
+import { ownerAccess } from './_owner-auth.js';
+import { fetchAll } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
-// JRS guide-download geography viewer (no token; secured only by this opaque,
-// unlinked, noindex URL — same model as the roster viewer). Reads the
-// 'guide-dl' rows from public.interaction_events via the service role and
-// renders download counts by country, edition, and channel.
-// If the URL ever leaks, rotate it by renaming this file.
+// Private JRS guide-download geography viewer, authenticated before any read.
+// Reads guide-dl rows from interaction_events and displays counts by country,
+// edition and channel. The route name alone does not confer authorization.
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
-export default async function handler(){
+export default async function handler(req){
+  if (req.method !== 'GET') return new Response('Method not allowed', {status:405,headers:{'Cache-Control':'private, no-store'}});
+  const denied=await ownerAccess(req);
+  if(denied)return denied;
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return new Response('Service unavailable', { status: 503 });
 
   const H = {'apikey':SERVICE,'Authorization':'Bearer '+SERVICE};
-  let rows = [];
-  try {
-    // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
-    const pagedRows = await fetchAllUrl(SB+'/rest/v1/interaction_events?source=eq.guide-dl&select=payload,created_at&order=created_at.desc', H);
-    rows = pagedRows;
-  } catch(e){ return new Response('Upstream error', { status: 502 }); }
+  const result = await fetchAll(SB,
+    'interaction_events?source=eq.guide-dl&select=payload,created_at&order=created_at.desc', H);
+  if (!result.complete) {
+    return new Response('Guide geography unavailable: database read incomplete',
+      {status:502,headers:{'Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow'}});
+  }
+  const rows = result.rows;
 
   const total = rows.length;
   const byCountry = {}, byEdition = {}, bySrc = {};
@@ -56,5 +59,5 @@ export default async function handler(){
     +table('By channel (src tag)', bySrc)
     +'</body></html>';
 
-  return new Response(html, { headers: {'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'} });
+  return new Response(html, { headers: {'Content-Type':'text/html; charset=utf-8','Cache-Control':'private, no-store','X-Robots-Tag':'noindex, nofollow','Referrer-Policy':'no-referrer'} });
 }

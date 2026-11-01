@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
 // OWNER-ONLY COMMERCIAL INBOX. Every lead, in full, newest first.
@@ -11,7 +12,7 @@ export const config = { runtime: 'edge' };
 //
 // Historical rationale below is superseded: this path appears in public source.
 // Owner bearer authentication now gates this route before DB use.
-// SECURED BY THIS OPAQUE, UNLINKED, NOINDEX URL. NO TOKEN.
+// The public path is not a control; ownerAccess() now gates all reads.
 // Same model as api/people-9dd1ecdf6f8cdfd4.js and
 // api/roster-8c3f1a9e7b2d6045.js, and the same rotation rule: if this slug ever
 // leaks, rename this file and update the one page that calls it.
@@ -37,6 +38,7 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 const LEAD_SOURCES = [
   'checkout-fallback',
   'enterprise-inquiry',
+  'site-inquiry',
   'org-pilot',
   'pilot'
 ];
@@ -46,6 +48,7 @@ const LEAD_SOURCES = [
 const LABEL = {
   'checkout-fallback': 'Checkout lead',
   'enterprise-inquiry': 'Enterprise inquiry',
+  'site-inquiry': 'Website inquiry',
   'org-pilot': 'Organisation pilot',
   'pilot': 'Direct contact'
 };
@@ -100,6 +103,8 @@ function isTestRow(row) {
 }
 
 export default async function handler(req) {
+  const denied=await ownerAccess(req);
+  if(denied)return denied;
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
 
   const env = (typeof process !== 'undefined' && process.env) || {};
@@ -151,6 +156,7 @@ export default async function handler(req) {
     if (p.volume) detail.push(str(p.volume, 60));
     if (p.role) detail.push(str(p.role, 120));
     if (p.interest) detail.push(str(p.interest, 40));
+    if (p.category) detail.push(str(p.category, 40));
     if (p.platform) detail.push(str(p.platform, 160));
     if (p.scale) detail.push(str(p.scale, 40) + '/yr');
     if (p.timeline) detail.push(str(p.timeline, 40));
@@ -209,7 +215,7 @@ export default async function handler(req) {
     attempt_count: attempts.length,
     attempts_unconfigured: unconfigured,
     note: 'Owner-only. Carries names, emails and organisations. Secured by an '
-        + 'opaque unlinked URL with no token, matching the other owner surfaces. '
+        + 'server owner authentication. '
         + 'Pay-screen attempts are anonymous by definition and are listed '
         + 'separately from identified leads.'
   });
