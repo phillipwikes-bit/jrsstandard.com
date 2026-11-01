@@ -135,23 +135,15 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <link rel="stylesheet" href="public-experience.css">
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 </head>
-<body>
+<body class="jrs-institutional jrs-simulation-page">
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="site-header" role="banner">
  <div class="container">
   <div class="header-inner">
    <a href="index.html"><div class="wordmark">JRS<span style="font-size:8px;vertical-align:super;position:relative;top:-2px;letter-spacing:0;color:var(--accent);">&#8482;</span></div></a>
-   <button class="nav-toggle" id="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">&#9776; Menu</button>
-   <nav class="nav-links" id="nav-links" role="navigation" aria-label="Site navigation">
-    <a href="index.html">Home</a>
-    <a href="simulations.html" class="active">Simulations</a>
-    <a href="training.html">Training</a>
-    <a href="workflow-fit.html">Workflow Fit</a>
-    <a href="implementation-scenarios.html">Implementation</a>
-    <a href="enterprise.html">Enterprise</a>
-   </nav>
    <div class="header-meta">Operational Review Tools<br>Pre-Submission Review Controls</div>
   </div>
  </div>
@@ -195,6 +187,12 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <a href="resources.html#quick-review" class="cta-primary">Open the manual review check</a>
  <a href="training.html" class="cta-ghost">Open the Full Training →</a>
 </div>
+<nav class="jrs-simulation-related" aria-label="Related implementation information">
+ <span>Additional guidance</span>
+ <a href="workflow-fit.html">Workflow fit</a>
+ <a href="implementation-scenarios.html">Implementation examples</a>
+ <a href="enterprise.html">Organizational evaluation</a>
+</nav>
 
 <div style="border:1px solid var(--rule);background:var(--surface);overflow:hidden;margin:20px 0;">
  <div style="padding:8px 14px;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:10px;">
@@ -497,15 +495,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 </footer>
 
 <script>
-function toggleMobileNav(){
-  var nav=document.getElementById('nav-links');
-  var btn=document.getElementById('nav-toggle');
-  if(!nav||!btn)return;
-  var isOpen=nav.classList.contains('nav-open');
-  nav.classList.toggle('nav-open');
-  btn.setAttribute('aria-expanded',String(!isOpen));
-  btn.innerHTML=isOpen?'&#9776; Menu':'&#10005; Close';
-}
+
 </script>
 <script>
 /* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
@@ -614,5 +604,6 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
   }, true);
 })();
 </script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body>
 </html>

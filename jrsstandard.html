@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 127217)
-Total output lines: 4316
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -664,8 +661,9 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 </style>
 <link rel="stylesheet" href="public-experience.css">
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 </head>
-<body>
+<body class="jrs-institutional jrs-longform jrs-standard-page">
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="site-header" role="banner">
@@ -675,16 +673,26 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  </div>
 </header>
 
-<nav class="primary-nav" aria-label="Site navigation">
+<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<nav class="jrs-sitenav" aria-label="Site">
+ <a href="investigator-guides.html">Guides</a>
+ <a href="training.html">Training</a>
+ <a href="resources.html">References</a>
+ <a href="jrsstandard.html">The Standard</a>
+ <a href="research.html">Research</a>
+ <a href="about.html">About</a>
+ <a href="contact.html">Contact</a>
+</nav>
+<!-- /JRS SITE NAV v1 -->
+
+<nav class="primary-nav" aria-label="Standard sections">
  <div class="primary-nav-mobile-bar">
-  <span class="nav-current-section">Standard</span>
-  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
-   <span class="nav-hamburger-icon">&#9776;</span> Menu
+  <span class="nav-current-section">Within this document</span>
+  <button type="button" class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle Standard sections" aria-controls="primary-nav-items" aria-expanded="false">
+   <span class="nav-hamburger-icon">&#9776;</span> Sections
   </button>
  </div>
  <div class="primary-nav-inner" id="primary-nav-items">
- <a href="index.html" class="nav-item" style="text-decoration:none;">Home</a>
- <a href="investigator-guides.html" class="nav-item" style="text-decoration:none;">Investigator Guides &#8599;</a>
  <button class="nav-item active" onclick="showSection('home')">Overview</button>
  <button class="nav-item" onclick="showSection('doccond')">Documentation Conditions</button>
  <button class="nav-item" onclick="showSection('tools')">Field References</button>
@@ -704,56 +712,46 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <div class="util-bar">
  <div class="util-bar-inner">
   <span class="util-label">Review Standard</span>
-  <a href="/api/dl?e=standard&amp;src=jrsstandard" class="util-link accent-link">View Standard</a>
+  <a href="/api/dl?e=standard&amp;src=jrsstandard" class="util-link accent-link">PDF Standard v2.0</a>
   <a href="/api/dl?e=card&amp;src=jrsstandard" class="util-link">Rapid Review Card</a>
-  <a href="/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=jrsstandard" class="util-link">Investigator Guide (Combined Overview)</a>
-  <a href="pilot.html" class="util-link accent-link">Pilot Program</a>
+  <a href="investigator-guides.html" class="util-link">Current v1.1 Investigator Guides</a>
+  <a href="research.html" class="util-link accent-link">Research status</a>
   <a href="check.html" class="util-link">Record Defensibility Check</a>
   <a href="#" onclick="showSection('kit');return false;" class="util-link" style="color:var(--accent-dim);">Operational References</a>
  </div>
 </div>
 
+
 <div id="section-home" class="page-section active">
-
-<div class="onboarding-strip">
- <div class="onboarding-inner">
- <div class="ob-step"><div class="ob-num">A</div><div class="ob-label">What JRS Is</div><div class="ob-text">A pre-finalization documentation review structure for organizational records.</div></div>
- <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are read later by people who were not there. Most hold up or fail at that point, not at drafting.</div></div>
- <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five questions applied before the record enters the system. Most organizations start with one record type. The gaps appear quickly.</div></div>
- <div class="ob-step"><div class="ob-num">D</div><div class="ob-label">Where It Fits</div><div class="ob-text">HR, compliance, investigations, administrative review. Works inside existing workflows, including ones that have been running for years without a formal review step.</div></div>
- <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Deployment Kit</div><div class="ob-text">Reviewer onboarding, training materials, and operational forms. Available on the Operational References page.</div></div>
- </div>
-</div>
-
-<div class="visitor-orient">
- <div class="visitor-orient-grid">
-  <div class="visitor-orient-cell" onclick="showSection('home')">
-   <div class="visitor-orient-label">Framework Overview</div>
-   <div class="visitor-orient-title">Standard</div>
-   <div class="visitor-orient-text">What JRS is, the five conditions, and how review works.</div>
-  </div>
-  <div class="visitor-orient-cell" onclick="showSection('tools')">
-   <div class="visitor-orient-label">Pre-Submission Tools</div>
-   <div class="visitor-orient-title">Field References</div>
-   <div class="visitor-orient-text">Worksheets and rapid review tools.</div>
-  </div>
-  <div class="visitor-orient-cell" onclick="showSection('guidance')">
-   <div class="visitor-orient-label">Implementation Guidance</div>
-   <div class="visitor-orient-title">Implementation</div>
-   <div class="visitor-orient-text">Deployment models and rollout guidance.</div>
-  </div>
-  <div class="visitor-orient-cell" onclick="showSection('kit')">
-   <div class="visitor-orient-label">Operational Resources</div>
-   <div class="visitor-orient-title">References</div>
-   <div class="visitor-orient-text">Review Reference, Reviewer Reference, and Implementation Kit.</div>
-  </div>
- </div>
-</div>
 
 <div class="container" id="main-content" role="main">
 
-<div class="page-eyebrow">Justification Review Standard</div>
+<div class="page-eyebrow">Online methodology · Version 1.0 (May 2026)</div>
 <h1 class="page-title">JRS Decision Defensibility Methodology</h1>
+<p class="jrs-edition-note"><strong>Separate publication:</strong> JRS Standard PDF Version 2.0 (2026). Edition equivalence has not been established.</p>
+<div class="jrs-standard-entry-actions" aria-label="Start reading the Standard">
+ <button type="button" onclick="showSection('doccond')">Read the five review conditions</button>
+ <a href="/api/dl?e=standard&amp;src=jrsstandard">Download Standard PDF v2.0</a>
+</div>
+<div class="core-principle">
+ <div class="core-principle-label">Core principle</div>
+ <div class="core-principle-text">A later reviewer with no prior knowledge of the matter should be able to identify what happened, what information existed at the time, and what reasoning produced the conclusion, from the record alone, without access to the original author or institutional context that no longer exists in the file. This is the review condition applied to organizational records in the JRS methodology.</div>
+</div>
+<section class="jrs-publication-notes" aria-label="Publication status and version controls">
+<details>
+ <summary>Publication controls: web v1.0, Standard PDF v2.0 and retired implementation kits</summary>
+ <div class="jrs-publication-note-detail">
+<div role="note" class="jrs-version-disclosure" style="max-width:1100px;margin:20px auto;padding:17px 24px;border-left:4px solid #a88043;background:#edf3f6;color:#254257;font:15px/1.7 Inter,system-ui,sans-serif"><strong>Publication versions:</strong> This online methodology identifies v1.0 (May 2026). Its linked <a href="/api/dl?e=standard&amp;src=web-version-note">Standard PDF</a> is labeled Version 2.0 (2026). The Manifest schema 1.0.1 accepts Standard v1.0 identifiers only. The two editions must not be treated as identical or as automatically compatible. <a href="manifest.html">See Manifest limits.</a></div>
+<div role="note" class="jrs-version-disclosure" style="max-width:1100px;margin:12px auto 20px;padding:16px 24px;border-left:4px solid #b9a183;background:#edf3f6;color:#254257;font:15px/1.7 Inter,system-ui,sans-serif"><strong>Archived implementation-kit inventory:</strong> KIT-A1, KIT-A2, KIT-A3, KIT-B1, KIT-C1, KIT-D1, KIT-E1 and KIT-E1A are preserved as historical reference identifiers. Their standalone PDFs are retired from public distribution. For currently available review aids, use the <a href="resources.html">resource library</a>, <a href="investigator-guides.html">three field-guide editions</a> and <a href="training.html">open training materials</a>. The historical inventory is not a current public download catalog.</div>
+
+ </div>
+</details>
+</section>
+
+<p class="page-subtitle">A pre-finalization review of whether a consequential record explains why a decision was made.</p>
+<details class="jrs-standard-context">
+ <summary>Method, application and limits</summary>
+ <div class="jrs-standard-context-body">
 <p class="page-subtitle">When a consequential decision is questioned long after it is made, the record becomes the only witness. This is a pre-finalization standard that evaluates whether a record can explain why a decision was made, before the record is finalized.</p>
 
 <!-- IP HIERARCHY. Added 2026-09-05. This page carried the standard in full
@@ -766,10 +764,9 @@ once, near the top, so the distinction is made before the standard begins. -->
  <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">Use JRS in the review process you already have.</b> The five conditions guide a documented human review and do not replace professional evidence assessment, investigative judgment, or applicable organizational controls. No case-record submission or automated assessment is provided through this website.</p>
 </div>
 
-<div class="core-principle">
- <div class="core-principle-label">Core principle</div>
- <div class="core-principle-text">A later reviewer with no prior knowledge of the matter should be able to identify what happened, what information existed at the time, and what reasoning produced the conclusion, from the record alone, without access to the original author or institutional context that no longer exists in the file. This is the review condition applied to organizational records in the JRS methodology.</div>
-</div>
+
+ </div>
+</details>
 
 <div class="core-principle">
  <div class="core-principle-label">Substrate neutrality</div>
@@ -799,6 +796,43 @@ once, near the top, so the distinction is made before the standard begins. -->
  <p class="body-text">Review is applied at the drafting stage, before records enter formal systems. The review checks whether conclusions are understandable, supportable, and reconstructable from the file alone.</p>
  <p class="body-text">Most organizations start with one record type. Termination records are a common starting point, as documentation gaps tend to become visible there first. The review tends to expand from there without being announced.</p>
 <p class="body-text">No software required. Works inside existing workflows. Can be introduced incrementally without structural change.</p>
+<details class="jrs-standard-orientation" style="margin:20px 0"><summary style="cursor:pointer;min-height:44px;padding:10px 12px;background:#eaf0f4;color:#183d58;font-weight:700">Optional reading guide and section shortcuts</summary><div class="onboarding-strip">
+ <div class="onboarding-inner">
+ <div class="ob-step"><div class="ob-num">A</div><div class="ob-label">What JRS Is</div><div class="ob-text">A pre-finalization documentation review structure for organizational records.</div></div>
+ <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are read later by people who were not there. Most hold up or fail at that point, not at drafting.</div></div>
+ <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five questions applied before the record enters the system. Most organizations start with one record type. The gaps appear quickly.</div></div>
+ <div class="ob-step"><div class="ob-num">D</div><div class="ob-label">Where It Fits</div><div class="ob-text">HR, compliance, investigations, administrative review. Works inside existing workflows, including ones that have been running for years without a formal review step.</div></div>
+ <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Current Resources</div><div class="ob-text">Free field guides, reviewer training, and rapid review aids are available. Historical standalone kit PDFs are retired.</div></div>
+ </div>
+</div>
+
+<div class="visitor-orient">
+ <div class="visitor-orient-grid">
+  <div class="visitor-orient-cell" onclick="showSection('home')">
+   <div class="visitor-orient-label">Framework Overview</div>
+   <div class="visitor-orient-title">Standard</div>
+   <div class="visitor-orient-text">What JRS is, the five conditions, and how review works.</div>
+  </div>
+  <div class="visitor-orient-cell" onclick="showSection('tools')">
+   <div class="visitor-orient-label">Pre-Submission Tools</div>
+   <div class="visitor-orient-title">Field References</div>
+   <div class="visitor-orient-text">Worksheets and rapid review tools.</div>
+  </div>
+  <div class="visitor-orient-cell" onclick="showSection('guidance')">
+   <div class="visitor-orient-label">Implementation Guidance</div>
+   <div class="visitor-orient-title">Implementation</div>
+   <div class="visitor-orient-text">Deployment models and rollout guidance.</div>
+  </div>
+  <div class="visitor-orient-cell" onclick="showSection('kit')">
+   <div class="visitor-orient-label">Operational Resources</div>
+   <div class="visitor-orient-title">References</div>
+   <div class="visitor-orient-text">Rapid Review Card, current investigator guides and free reviewer training. Older implementation kits are archived.</div>
+  </div>
+ </div>
+</div>
+
+</details>
+
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No dedicated platform required</span>
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Existing workflow compatible</span>
@@ -995,7 +1029,7 @@ once, near the top, so the distinction is made before the standard begins. -->
   </div>
   <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">F1</div>
-      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">Rapid Review Card</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">One-page reviewer quick reference. Five questions, submission readiness key, and secondary review triggers. Print-ready PDF.</div><div style="margin-top:6px;"><a href="/api/dl?e=card&amp;src=jrsstandard" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Download PDF</a></div></div>
+      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">Rapid Review Card</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Two-page reviewer quick reference. Five questions, submission readiness key, and secondary review triggers. Print-ready PDF.</div><div style="margin-top:6px;"><a href="/api/dl?e=card&amp;src=jrsstandard" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Download PDF</a></div></div>
   </div>
   <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">CPL</div>
@@ -1393,56 +1427,56 @@ once, near the top, so the distinction is made before the standard begins. -->
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Secondary Review Escalation Form</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A2</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Reviewer Signoff Template</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A3</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Reviewer Onboarding Guide</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-B1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">AI Verification Checklist</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-C1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Redlined Examples</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-D1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Implementation Playbook</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-E1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Secondary Review Trigger Reference</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-E1A</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;padding:7px 12px;background:rgba(255,255,255,.01);">
       <div style="font-size:12px;color:var(--muted-soft);font-style:italic;">HR Documentation Review Guide</div>
@@ -1512,7 +1546,7 @@ once, near the top, so the distinction is made before the standard begins. -->
  <div class="btn-row">
  <a href="/api/dl?e=standard&amp;src=jrsstandard" class="btn btn-primary">View Standard</a>
  <button class="btn btn-ghost" onclick="showSection('kit')">Operational References</button>
- <a href="pilot.html" class="btn btn-ghost">Pilot Program &rarr;</a>
+ <a href="research.html" class="btn btn-ghost">Research status &rarr;</a>
  </div>
 </div>
 
@@ -3360,7 +3394,7 @@ once, near the top, so the distinction is made before the standard begins. -->
       <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Access</div>
     </div>
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);padding:12px 14px;align-items:center;">
-      <div><div style="font-size:13px;font-weight:600;color:var(--text);">JRS Review Reference</div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted-soft);margin-top:2px;">v1.0 &middot; May 2026</div></div>
+      <div><div style="font-size:13px;font-weight:600;color:var(--text);">JRS Review Reference</div><div style="font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin-top:2px;">PDF Version 2.0 &middot; 2026</div></div>
       <div style="font-size:13px;color:var(--muted);line-height:1.6;padding-right:16px;">Five review conditions, reviewer lens, submission readiness criteria, and failure-mode catalog. Primary reference document for the review methodology.</div>
       <div><a href="/api/dl?e=standard&amp;src=jrsstandard" class="lib-btn primary">View PDF</a></div>
     </div>
@@ -3627,14 +3661,14 @@ once, near the top, so the distinction is made before the standard begins. -->
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Implementation Package</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-E1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;background:rgba(255,255,255,.01);">
       <div style="font-size:12px;color:var(--muted-soft);font-style:italic;">HR Documentation Review Guide</div>
@@ -3783,13 +3817,24 @@ once, near the top, so the distinction is made before the standard begins. -->
 // ── NAVIGATION ────────────────────────────────────
 function showSection(id){
  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
- document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+ document.querySelectorAll('.primary-nav-inner button.nav-item').forEach(n=>n.classList.remove('active'));
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
  if(id==='roles'&&typeof showRoleEnv==='function'){setTimeout(()=>showRoleEnv('hr'),30);}
  const sectionMap={'home':0,'doccond':1,'tools':2,'scenarios':3,'guidance':4,'roles':5,'maturity':6,'ai':7,'usecases':8,'training':9,'about':10,'library':11,'kit':12};
- const navItems=document.querySelectorAll('.nav-item');
+ const navItems=document.querySelectorAll('.primary-nav-inner button.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
+ var sectionMenu=document.getElementById('primary-nav-items');
+ var sectionToggle=document.getElementById('nav-hamburger');
+ if(sectionMenu)sectionMenu.classList.remove('nav-open');
+ if(sectionToggle){sectionToggle.setAttribute('aria-expanded','false');sectionToggle.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Sections';}
+ // Move keyboard and screen-reader focus into the newly displayed document
+ // section. Without this, selecting a collapsed index item leaves focus hidden.
+ if(sec){
+   var nextHeading=sec.querySelector('h1,h2,[role="heading"]')||sec;
+   if(!nextHeading.hasAttribute('tabindex'))nextHeading.setAttribute('tabindex','-1');
+   nextHeading.focus({preventScroll:true});
+ }
  window.scrollTo(0,0);
 }
 
@@ -3996,9 +4041,22 @@ function toggleMobileNav(){
   hamburger.classList.toggle('open');
   hamburger.setAttribute('aria-expanded',String(!isOpen));
   hamburger.innerHTML=isOpen
-    ?'<span class="nav-hamburger-icon">&#9776;</span> Menu'
-    :'<span class="nav-hamburger-icon">&#10005;</span> Close';
+    ?'<span class="nav-hamburger-icon">&#9776;</span> Sections'
+    :'<span class="nav-hamburger-icon">&#10005;</span> Close sections';
 }
+// Close the document index with Escape and return keyboard focus to its control.
+document.addEventListener('keydown',function(event){
+  if(event.key!=='Escape')return;
+  const menu=document.getElementById('primary-nav-items');
+  const toggle=document.getElementById('nav-hamburger');
+  if(menu&&toggle&&menu.classList.contains('nav-open')){
+    menu.classList.remove('nav-open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Sections';
+    toggle.focus();
+  }
+});
 </script>
 <script>
 /* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
@@ -4108,5 +4166,6 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
 })();
 </script>
 <script defer src="/assets/jrs-keyboard-controls.js"></script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body>
 </html>

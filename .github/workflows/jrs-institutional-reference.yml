@@ -1,0 +1,26 @@
+name: JRS Institutional Reference Release Gate
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  institutional-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reviewed source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Confirm Node
+        run: node --version
+      - name: Run institutional reference source gate
+        run: node tests/jrs-institutional-reference-regression.mjs
+      - name: Verify public resources, downloads, anchors and evidence boundaries
+        run: node tests/jrs-public-resource-integrity.mjs
+      - name: Verify searchable resource directory, accessibility structure and PDF inventory
+        run: node tests/jrs-resource-directory.mjs
+      - name: Regression-check exact-preview source verification
+        run: python3 tests/jrs-preview-static-verification.py --self-test

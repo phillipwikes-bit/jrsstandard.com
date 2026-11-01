@@ -91,8 +91,9 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 /* /JRS SITE NAV v1 */
 </style>
 <link rel="stylesheet" href="public-experience.css">
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 </head>
-<body>
+<body class="jrs-institutional jrs-codebook-page">
 <a href="#main-content" class="skip-link">Skip to content</a>
 <header class="site-header" role="banner">
   <div class="site-header-inner">
@@ -116,8 +117,17 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   <div class="hero">
     <div class="eyebrow">Governance &middot; Measurement Instrument</div>
     <h1>JRS Codebook</h1>
-    <p class="sub">The authoritative definition of the five components of decision defensibility: the conditions used to evaluate whether a record can explain why a consequential decision was made, before that decision is questioned long after the fact. This codebook is the measurement instrument: review and analysis reference these definitions, and changes are version-controlled.</p>
     <div class="meta-line">Version 1.0 &nbsp;&middot;&nbsp; 2026-06-03 &nbsp;&middot;&nbsp; Status: Experimental (method research phase)</div>
+    <nav class="jrs-codebook-quick" aria-label="Go to review condition definitions">
+     <a href="#rc1">Reconstructability</a>
+     <a href="#rc2">Basis</a>
+     <a href="#rc3">Chronology</a>
+     <a href="#rc4">Decision trace</a>
+     <a href="#rc5">Sufficiency</a>
+    </nav>
+
+    <p class="sub">The authoritative definition of the five components of decision defensibility: the conditions used to evaluate whether a record can explain why a consequential decision was made, before that decision is questioned long after the fact. This codebook is the measurement instrument: review and analysis reference these definitions, and changes are version-controlled.</p>
+
   </div>
 
   <div class="note">Maturity note: all conditions are currently classified <strong>Experimental</strong>. JRS is in a method-research phase. Nothing in this codebook constitutes validated measurement, a claim that the controlled Engine is validated, certification, or legal guidance.</div>
@@ -125,7 +135,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   <div class="note" style="border-left-color:var(--accent);"><strong style="color:var(--text);">Conformance.</strong> A record conforms when it satisfies all five conditions, assessed against the record as it stands by a reviewer with no access to the original participants and no institutional memory of the events. A record is non-conforming when one or more conditions are not met, and the review identifies the specific condition not satisfied. Conformance reflects documentation sufficiency, not the correctness, lawfulness, or merits of the underlying decision.</div>
 
   <!-- RC1 -->
-  <div class="cond">
+  <div class="cond" id="rc1">
     <div class="cond-head"><div><div class="cond-id">RC 1</div><div class="cond-title">Reconstructability</div></div><span class="maturity">Experimental</span></div>
     <div class="cond-body">
       <div class="f"><div class="f-label">Definition</div><div class="f-body">Whether the conclusion in a record can be reconstructed from the record itself: a future reviewer can trace the path from documented evidence to the conclusion reached, without relying on the author's recollection or added explanation.</div></div>
@@ -142,7 +152,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   </div>
 
   <!-- RC2 -->
-  <div class="cond">
+  <div class="cond" id="rc2">
     <div class="cond-head"><div><div class="cond-id">RC 2</div><div class="cond-title">Basis Identification</div></div><span class="maturity">Experimental</span></div>
     <div class="cond-body">
       <div class="f"><div class="f-label">Definition</div><div class="f-body">Whether the source of each characterization (observation, measurement, audit finding, reported incident) is visible and traceable, rather than implied or summarized without attribution.</div></div>
@@ -159,7 +169,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   </div>
 
   <!-- RC3 -->
-  <div class="cond">
+  <div class="cond" id="rc3">
     <div class="cond-head"><div><div class="cond-id">RC 3</div><div class="cond-title">Chronology</div></div><span class="maturity">Experimental</span></div>
     <div class="cond-body">
       <div class="f"><div class="f-label">Definition</div><div class="f-body">Whether the sequence of events is followable from the record alone, including timing of prior interventions, escalation steps, and the period under review.</div></div>
@@ -176,7 +186,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   </div>
 
   <!-- RC4 -->
-  <div class="cond">
+  <div class="cond" id="rc4">
     <div class="cond-head"><div><div class="cond-id">RC 4</div><div class="cond-title">Decision-Process Traceability</div></div><span class="maturity">Experimental</span></div>
     <div class="cond-body">
       <div class="f"><div class="f-label">Definition</div><div class="f-body">Whether a future reviewer can determine how the conclusion was reached: who reviewed the matter, what criteria or threshold triggered it, and whether responsive or mitigating information was considered before finalization.</div></div>
@@ -193,7 +203,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   </div>
 
   <!-- RC5 -->
-  <div class="cond">
+  <div class="cond" id="rc5">
     <div class="cond-head"><div><div class="cond-id">RC 5</div><div class="cond-title">Evidentiary Sufficiency</div></div><span class="maturity">Experimental</span></div>
     <div class="cond-body">
       <div class="f"><div class="f-label">Definition</div><div class="f-body">The aggregate condition: whether the record stands on its own as an evidentiary document, such that an independent reviewer with no prior knowledge could assess whether the conclusion is supported by the documented evidence.</div></div>
@@ -356,5 +366,6 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
   }, true);
 })();
 </script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body>
 </html>
