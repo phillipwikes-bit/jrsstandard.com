@@ -32,6 +32,9 @@ for(const f of files){
  try{const info=execFileSync('pdfinfo',[path],{encoding:'utf8',timeout:30000});
  pages=Number((info.match(/^Pages:\s*(\d+)/m)||[])[1]||0);}
  catch(e){pages=null;}
+ if(/Investigator_Field_Guide_(Employment|FairHousing|International)|Reliability_Accuracy/.test(f))
+  console.log('PDF-CONTENT-CHECK '+JSON.stringify({file:f,excerpt:plain.slice(0,6500),
+  terms:['Reconstructability','Reconstruction','Basis Identification','Chronology','Decision-Process Traceability','Evidentiary Sufficiency','83.9','accuracy','preliminary','ongoing'].filter(x=>new RegExp(x,'i').test(plain))}));
  results.push({file:f,pages,chars:plain.length,versions:matches,head:first});
 }
 for(const d of results)console.log('PDF-AUDIT '+JSON.stringify(d));
