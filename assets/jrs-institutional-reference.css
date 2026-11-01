@@ -879,3 +879,8 @@ body.jrs-institutional.jrs-resource-page .hero .sub{
 body.jrs-institutional.jrs-research-page .lead{
  font-size:17px!important;line-height:1.6!important
 }
+
+/* Specificity guard: the homepage overline previously remained 11px at 390px. */
+body.jrs-institutional.jrs-home .jr-overline{
+ font-size:12px!important;line-height:1.52!important;letter-spacing:.055em!important
+}
