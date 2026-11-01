@@ -53,7 +53,7 @@ assert.equal(redirects.find(r=>r.source==='/sandbox')?.destination,'/resources.h
 assert.ok(read('manifest.html').includes('jrs-decision-reconstruction-manifest-v1.0.1.schema.json'),
  'technical specification did not survive as direct public reference');
 assert.ok(existsSync(new URL('../review-engine.html',import.meta.url)),'archival technical evidence removed');
-assert.match(read('review-engine.html'),/name="robots" content="noindex,follow"/);
+assert.match(read('review-engine.html'),/name="robots" content="noindex,nofollow,noarchive"/);
 assert.doesNotMatch(read('sitemap.xml'),/\/(?:review-engine|pilot|platform-evaluation-001)\.html/);
 for(const path of ['security.html','engagement.html']){
  assert.match(read(path),/name="robots" content="noindex,nofollow"/,'historical page indexed: '+path);
