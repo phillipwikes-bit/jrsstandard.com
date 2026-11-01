@@ -35,3 +35,21 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
   #print-report tbody tr{break-inside:avoid}
 }
 @media(max-width:350px){.reportmetrics strong{font-size:18px}.entry{align-items:start}.entry-actions .amt{font-size:12px}}
+
+
+/* Industry-control extension: accessible underwriting, recovery and scenario forms */
+#decision-review-panel,#net-scenario-panel,#vault-panel{margin-top:14px}
+.decision-gates{border:1px solid #d0dfd7;border-radius:12px;padding:13px 12px;margin:16px 0}
+.decision-gates legend{font-size:13px;font-weight:700;padding:0 5px}
+.decision-gates label{display:flex;align-items:flex-start;gap:9px;font-weight:500;margin:9px 0;line-height:1.4}
+.decision-gates input[type="checkbox"]{width:18px;height:18px;min-width:18px;margin-top:2px;accent-color:var(--green)}
+.review-result{border-left:3px solid #8e6c22;padding:10px 12px;margin-top:14px;background:#fbf7ed;font-size:13px}
+.review-result strong{display:block;margin-bottom:6px}
+.review-result p{margin:6px 0}
+.review-result ul{padding-left:19px;margin:10px 0;line-height:1.5}
+.review-result a{display:inline-block;margin-top:8px;overflow-wrap:anywhere}
+#vault-panel input[type="password"],#vault-panel input[type="file"]{width:100%;max-width:100%;box-sizing:border-box;margin-bottom:11px}
+#vault-panel input[type="file"]{padding:12px 10px;background:white;border:1px solid #cbdad0;border-radius:10px}
+#vault-panel .formbuttons{margin:12px 0 19px}
+#net-scenario-result{font-weight:600;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+@media(max-width:350px){.decision-gates{padding:10px}.review-result{padding:10px}}
