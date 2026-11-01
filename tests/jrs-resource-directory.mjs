@@ -10,6 +10,17 @@ const read=p=>readFileSync(join(root,p),'utf8');
 const html=read('resources.html');
 const js=read('assets/jrs-resource-catalog.js');
 const css=read('assets/jrs-institutional-reference.css');
+const homepage=read('index.html');
+assert.ok(homepage.includes('href="resources.html">Use a free review tool</a>'),
+ 'homepage primary action must lead to visible Resources first-use actions');
+assert.ok(homepage.includes('href="resources.html#resource-catalog">Browse tools</a>'),
+ 'homepage Browse tools must reach searchable directory');
+assert.ok(!homepage.includes('resources.html#quick-review'),
+ 'homepage must not bypass the searchable directory');
+assert.ok(css.includes('.jrs-resource-entry:focus-within') &&
+ css.includes('font-size:16px!important') &&
+ css.includes('font-size:15px!important'),
+ 'catalog card reading size and keyboard focus treatment must remain');
 const dl=read('api/dl.js');
 const expected={
   standard:'JRS-Standard.pdf',

@@ -1091,3 +1091,33 @@ body.jrs-institutional.jrs-simulation-page .jrs-simulation-related a:focus-visib
  body.jrs-institutional.jrs-simulation-page .jrs-simulation-related span{width:100%!important}
  body.jrs-institutional.jrs-simulation-page .jrs-simulation-related a{flex:1 1 auto!important}
 }
+
+/* Editorial scanability pass: publication catalog at accessible reading size.
+   This is presentation-only; publication editions and download paths are unchanged. */
+body.jrs-institutional.jrs-resource-page .jrs-resource-results{
+ gap:16px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry{
+ padding:20px 22px!important;
+ border-color:#bfd0db!important;
+ box-shadow:0 2px 9px rgba(24,49,69,.035)!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry:hover,
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry:focus-within{
+ border-color:#6f91a6!important;
+ box-shadow:0 5px 20px rgba(24,49,69,.09)!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry-meta{
+ font-size:13px!important;line-height:1.55!important;margin-bottom:8px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry p{
+ font-size:16px!important;line-height:1.62!important;margin-bottom:13px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry a{
+ font-size:15px!important;line-height:1.55!important
+}
+@media(max-width:760px){
+ body.jrs-institutional.jrs-resource-page .jrs-resource-entry{
+  padding:18px!important
+ }
+}
