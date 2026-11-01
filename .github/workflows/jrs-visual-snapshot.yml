@@ -11,6 +11,7 @@ jobs:
       - name: Checkout exact PR source
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
+          ref: ${{ github.event.pull_request.head.sha }}
           persist-credentials: false
       - name: Select browser
         run: |
@@ -81,3 +82,12 @@ jobs:
             for i in range(0,len(v),50000): print(v[i:i+50000],flush=True)
             print('JRS_VISUAL_'+key+'_END',flush=True)
           PY
+
+      - name: Verify preview source identity before any release certification
+        env:
+          JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha }}
+          JRS_PREVIEW_URL: https://jrsstandard-bu0n4kdly-phillip-wikes-projects.vercel.app
+        run: |
+          # The visual test may succeed locally while the hosted URL serves a
+          # protected Vercel sign-in screen or an older deployment. Block release.
+          python3 tests/jrs-preview-static-verification.py "$JRS_PREVIEW_URL"
