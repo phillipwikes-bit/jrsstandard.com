@@ -381,6 +381,12 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div id="itemsbycountry">Loading&hellip;</div>
     <div class="note" style="margin-top:8px">Every downloadable item on its own, counted by country: the three Investigator Guide editions, the JRS Standard PDF, the Rapid Review Card, the JRS Reviewer Reference (training companion), and the combined Investigator Guide. Nothing is grouped into a shared total. Country recorded at the redirect endpoint. Aggregate counts only.</div>
   </div>
+  <details class="chart" id="research-engagement" style="margin:22px 0;padding:16px">
+    <summary style="font-size:18px;color:var(--text);cursor:pointer;min-height:44px">Research navigation: what readers chose to explore</summary>
+    <p class="sub" style="margin-top:14px">Counts of category links selected on the new public Research overview. These are interactions, not unique people or research-study participation. Recorded after the new page was published; blocked tracking can cause undercounts.</p>
+    <div id="research-navigation" role="status" aria-live="polite">Loading research navigation activity…</div>
+    <p class="note" style="margin-top:14px"><b>General website inquiries:</b> Formspree stores contact-form submissions and sends email notifications to Gmail. They are not copied into the JRS research database or this dashboard. Review the separate Formspree/Gmail inbox for names, reply addresses, organizations, inquiry categories and messages. Do not count them as research participants or qualified software prospects.</p>
+  </details>
   <h2 style="font-size:22px;margin-top:34px">Link Clicks Across the Site</h2>
   <p class="sub">Every link click beaconed by the site dispatcher, by destination, by page of origin and by country. This is not total site clicks: guide downloads and endorsements are recorded inside their own redirect, which is a stronger record than a beacon, and are counted in the two sections above instead of here. Query strings are stripped before storage, so a destination is a path only. Aggregate counts only.</p>
   <div class="cards" style="grid-template-columns:1fr 1fr 1fr 1fr">
@@ -1145,6 +1151,36 @@ function loadLinkClicks(){
    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
    .then(function(d){
      var lc=(d&&d.link_clicks)||null;
+     var research=(d&&d.research_navigation)||null;
+     var researchElement=document.getElementById('research-navigation');
+     if(researchElement){
+       researchElement.textContent='';
+       if(!research || !Array.isArray(research.by_category)){
+         researchElement.textContent='Research category data unavailable.';
+       }else{
+         var intro=document.createElement('p');
+         intro.textContent=(research.total||0)+' recorded category selections; '+(research.today||0)+' today.';
+         researchElement.appendChild(intro);
+         var labels={
+           'findings':'Findings and limitations',
+           'methods':'Study methods',
+           'provenance':'Evidence and provenance',
+           'open-questions':'Open questions',
+           'full-register':'Detailed research register',
+           'aggregate-datasets':'Aggregate datasets',
+           'participation-results':'Challenge participation results'
+         };
+         var list=document.createElement('ul');
+         research.by_category.forEach(function(row){
+           if(!Object.prototype.hasOwnProperty.call(labels,row.key))return;
+           var item=document.createElement('li');
+           item.textContent=labels[row.key]+': '+(Number(row.clicks)||0)+' selections';
+           list.appendChild(item);
+         });
+         researchElement.appendChild(list);
+       }
+     }
+
      // setv is declared inside each loader on this page, never globally.
      function setv(id,v){ var e=document.getElementById(id); if(e) e.textContent=(v===undefined||v===null)?'0':v; }
      if(!lc) throw 0;
