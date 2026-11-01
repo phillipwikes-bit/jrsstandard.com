@@ -56,8 +56,8 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
  <p>Questions about the Justification Review Standard, corrections to published materials, accessibility concerns and voluntary professional feedback are welcome. The investigator guides, training and reviewer references remain free without registration or contact.</p>
  <section class="card" aria-labelledby="inquiry-title">
   <h2 id="inquiry-title">Send an inquiry</h2>
-  <p>Complete the form below. Professional inquiries are separate from research enrollment, marketing and any software transaction. No case records or attachments are accepted.</p>
-  <form id="jrs-inquiry" novalidate>
+  <p>Complete the fields and select Submit inquiry. JRS uses its existing Formspree submission service to receive the message and send a notification to the designated JRS Gmail inbox. No email application is required. Do not include case records, confidential documents or personal information about other people.</p>
+  <form id="jrs-inquiry" action="https://formspree.io/f/mreddwdg" method="POST">
    <div class="form-fields">
     <div><label for="contact-name">Name *</label><input id="contact-name" name="name" autocomplete="name" required minlength="2" maxlength="120"></div>
     <div><label for="contact-email">Email address *</label><input id="contact-email" name="email" autocomplete="email" type="email" required maxlength="160"></div>
@@ -72,14 +72,18 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
      <option value="general">Other professional inquiry</option>
     </select></div>
     <div class="wide"><label for="contact-message">Message (12 to 1,200 characters) *</label><textarea id="contact-message" name="message" required minlength="12" maxlength="1200" rows="6" placeholder="Describe the general question. Do not include records or personal details about third parties."></textarea></div>
-    <div class="honeypot" aria-hidden="true"><label for="contact-website">Website</label><input id="contact-website" name="company_website" autocomplete="off" tabindex="-1"></div>
-    <div class="wide"><label class="check"><input id="contact-consent" name="consent" type="checkbox" required><span>I agree to be contacted about this inquiry. This does not authorize research enrollment, marketing, publication, or transfer of my details. I have read the <a href="privacy-notice.html">privacy notice</a>. *</span></label></div>
+    <div class="honeypot" aria-hidden="true"><label for="contact-website">Website</label><input id="contact-website" name="company_website" autocomplete="off" tabindex="-1"><label for="contact-gotcha">Leave empty</label><input id="contact-gotcha" name="_gotcha" autocomplete="off" tabindex="-1"></div>
+    <input type="hidden" name="_subject" value="JRS Public Professional Inquiry">
+    <input type="hidden" name="source" value="public-jrs-professional-contact">
+    <input type="hidden" name="form_type" value="jrs-general-professional-inquiry-2026-11-01">
+    <div class="wide"><label class="check"><input id="contact-consent" name="consent" type="checkbox" required><span>I consent to JRS using my contact details and message to respond to this inquiry, including processing by Formspree and email notification to the JRS Gmail inbox. This does not authorize research enrollment, marketing, publication or transfer for commercial sale. I have read the <a href="privacy-notice.html">privacy notice</a>. *</span></label></div>
    </div>
-   <div id="captcha" aria-label="Submission verification"></div>
-   <button class="button submit" id="contact-submit" type="submit">Prepare email in my email app</button>
-   <p class="small" id="contact-status" role="status" aria-live="polite">The email-app option is available now. Website submission will activate only after independent storage, spam protection and notification checks.</p>
+   <p class="small">The submission is processed by Formspree, which applies its own spam filtering. This is a contact channel, not a secure record-submission system.</p>
+   <button class="button submit" id="contact-submit" type="submit">Submit inquiry</button>
+   <p class="small" id="contact-status" role="status" aria-live="polite">After submission, a receipt will appear when the inquiry service accepts the message. A receipt does not establish that a particular email arrived in the inbox.</p>
   </form>
-  <p class="small">If your device has no email application configured, email <a href="mailto:phillipwikes@gmail.com?subject=JRS%20professional%20inquiry">phillipwikes@gmail.com</a> directly.</p>
+  <p class="small">Prefer email? You can also write directly to <a href="mailto:phillipwikes@gmail.com?subject=JRS%20professional%20inquiry">phillipwikes@gmail.com</a>.</p>
+  <noscript><p class="small">JavaScript is optional. Submit the form normally and Formspree will display the confirmation page.</p></noscript>
  </section>
  <p><strong>Privacy and scope.</strong> Do not email case files, confidential employment or housing records, credentials, privileged material or identifying information about third parties. An inquiry does not create research enrollment, a software license, a commercial commitment or consent to marketing.</p>
  <p><a href="privacy-notice.html">Read the privacy notice</a> · <a href="resources.html">Return to free JRS resources</a></p>
@@ -90,53 +94,38 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
   const f=document.getElementById('jrs-inquiry');
   const button=document.getElementById('contact-submit');
   const status=document.getElementById('contact-status');
-  let mode='email',token='',widget=null;
-  function say(value){status.textContent=value;}
-  function fallback(){mode='email';token='';button.disabled=false;button.textContent='Prepare email in my email app';say('The secure website inbox is not yet active. Complete this form to prepare an email, then press Send in your email app. The website itself will not send it.');}
-  function mail(){
-    const d=new FormData(f),cat=f.elements.category.selectedOptions[0]?.textContent||'General inquiry';
-    const lines=['JRS professional inquiry','', 'Name: '+d.get('name'),'Email: '+d.get('email'),'Organization: '+(d.get('organization')||'Not supplied'),'Topic: '+cat,'','Message:',d.get('message')];
-    const to='phillipwikes@gmail.com';
-    const link='mailto:'+to+'?subject='+encodeURIComponent('JRS inquiry: '+cat)+'&body='+encodeURIComponent(lines.join('\n'));
-    say('Your email application should open with the completed message. Review it and press Send there. No email has been sent by the website.');
-    window.location.href=link;
-  }
-  const params=new URLSearchParams(window.location.search);
-  const requested=params.get('category');
-  if(['method','research','training','organization','accessibility','general'].includes(requested))f.elements.category.value=requested;
-  fetch('/api/site-inquiry-config',{credentials:'same-origin',cache:'no-store'}).then(r=>{if(!r.ok)throw Error('service');return r.json()}).then(cfg=>{
-    if(!cfg.enabled || !cfg.site_key){fallback();return}
-    const s=document.createElement('script');s.src='https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';s.async=true;
-    s.onload=function(){
-      if(!window.turnstile){fallback();return}
-      button.disabled=true;button.textContent='Verify to send inquiry';
-      widget=window.turnstile.render('#captcha',{sitekey:cfg.site_key,
-        callback:function(t){token=t;mode='web';button.disabled=false;button.textContent='Submit inquiry';say('Verification complete. Submit your inquiry to the private JRS contact record.');},
-        'expired-callback':function(){token='';button.disabled=true;say('Verification expired. Please complete it again.');},
-        'error-callback':function(){fallback();}
-      });
-    };s.onerror=fallback;document.head.appendChild(s);
-  }).catch(fallback);
+  const categories=['method','research','training','organization','accessibility','general'];
+  const requested=new URLSearchParams(window.location.search).get('category');
+  if(categories.includes(requested))f.elements.category.value=requested;
+  let sending=false;
+  function say(text,isError){status.textContent=text;status.style.color=isError?'#f0aaa7':'var(--muted)';}
   f.addEventListener('submit',async function(event){
     event.preventDefault();
-    if(!f.reportValidity())return;
-    if(mode==='email'){mail();return}
-    if(!token){say('Complete the verification before submitting.');return}
-    button.disabled=true;say('Submitting securely...');
-    const d=Object.fromEntries(new FormData(f).entries());
-    d.consent=f.elements.consent.checked;d.turnstileToken=token;
+    if(sending||!f.reportValidity())return;
+    if(f.elements.company_website.value.trim()||f.elements._gotcha.value.trim()){say('Submission was not accepted.',true);return;}
+    if(!f.elements.consent.checked){say('Consent is required to send a contact inquiry.',true);return;}
+    const payload={
+      name:f.elements.name.value.trim(),
+      email:f.elements.email.value.trim(),
+      organization:f.elements.organization.value.trim(),
+      category:f.elements.category.value,
+      message:f.elements.message.value.trim(),
+      company_website:'',
+      consent:true
+    };
+    sending=true;button.disabled=true;say('Sending your inquiry securely...');
     try{
-      const r=await fetch('/api/site-inquiry',{method:'POST',credentials:'same-origin',
-        headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});
-      const payload=await r.json();
-      if(!r.ok || payload.stored!==true)throw Error('not_confirmed');
-      f.reset();token='';if(widget!==null&&window.turnstile)window.turnstile.reset(widget);
-      button.disabled=true;say('Inquiry received and recorded for owner review. A separate Gmail alert is attempted only when configured and may not have been delivered.');
+      const response=await fetch('/api/site-inquiry',{
+        method:'POST',credentials:'same-origin',cache:'no-store',
+        headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+      });
+      const outcome=await response.json();
+      if(!response.ok||outcome.accepted!==true)throw new Error('unconfirmed');
+      f.reset();
+      say('Inquiry accepted. JRS receives submissions through Formspree, with an email notification to the owner. You do not need to send a separate email.');
     }catch{
-      token='';if(widget!==null&&window.turnstile)window.turnstile.reset(widget);
-      button.disabled=true;say('The website could not confirm storage. Please use the email-app fallback link below.');
-      const a=document.createElement('a');a.href='mailto:phillipwikes@gmail.com?subject=JRS%20professional%20inquiry';a.textContent='Open email app';a.style.display='block';status.appendChild(document.createTextNode(' '));status.appendChild(a);
-    }
+      say('Submission could not be confirmed. Please do not submit repeatedly. You may contact JRS using the direct email link below.',true);
+    }finally{sending=false;button.disabled=false}
   });
 })();
 </script>
