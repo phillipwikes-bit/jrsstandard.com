@@ -71,4 +71,18 @@ for (const script of [decision,vault,ui,vaultUi]) {
   assert.doesNotMatch(script,/fetch\s*\(\s*["']https?:/);
 }
 assert.match(vault,/AES-GCM/);assert.match(vault,/PBKDF2/);assert.match(vault,/600000/);
+const accountant=read("accountant.js");
+new Script(accountant);
+assert.doesNotMatch(accountant,/businessUse\\?\\?100/);
+const accounting={window:{},Intl,Date,Math,Number,Array,Object,Set,JSON,String,console};
+runInNewContext(accountant,accounting);
+const sums=accounting.window.IncomeOSAccountant.totals([
+ {kind:"outflow",type:"expense",amountUsd:100,businessUse:null,reconciled:false},
+ {kind:"outflow",type:"expense",amountUsd:100,businessUse:0,reconciled:false},
+ {kind:"outflow",type:"expense",amountUsd:100,businessUse:100,reconciled:false}
+]);
+assert.equal(sums.expenses,300);
+assert.equal(sums.possibleBusinessUse,100,"Unassigned is not automatically an eligible allocation");
+assert.equal(sums.allocationPending,1,"Unknown must not merge with a reviewed zero percent");
+assert.match(html,/placeholder="Unknown"/);
 console.log("IncomeOS controls QA passed: manual authorization holds, effective-return math, AES-GCM backup/restore, tamper rejection, CSP and client privacy.");
