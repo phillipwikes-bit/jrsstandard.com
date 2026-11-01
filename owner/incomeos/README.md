@@ -120,3 +120,9 @@ The current publicly readable GitHub repo cannot itself provide owner-only priva
 **Migration sequence (blocked until a private host is provisioned and approved):** verify server-side owner identity and deny-by-default, apply and test RLS to a separate private database, secure encrypted active financial storage, verify P0 access and recovery tests, develop an authenticated import adapter, verify the journal head hash and event chain server-side, then migrate existing unencrypted local records only with explicit owner approval. Keep financial entry disabled in staging.
 
 **Important:** All these changes are source-only increments, not a completed authenticated service. The user should not upload statements, tax forms or account details to the public prototype.
+
+## Research feed and financial-value extensions (November 1, 2026)
+
+The public-feed adapter now reads both the dated local study snapshot and exported public opportunity records, retaining source dates and unknown application deadlines. It excludes unrecognized or personal fields. The financial-value model separates owner-reviewed earned income, investment income, refunds, returned capital, sale proceeds, and observed bill savings, while preventing research income from being counted twice. Interrupted encrypted-backup restoration now attempts to roll back earlier browser writes. Synthetic regressions cover these cases.
+
+These changes are development-only, not a deployed or authenticated financial service. Do not enter private financial data until the P0 deployment protections are independently verified.
