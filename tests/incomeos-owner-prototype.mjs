@@ -113,8 +113,8 @@ const twins=[
   'expense,2026-10-02,Anthropic API,Anthropic,software,20.60,paid,0,Bank txn A,receipt A',
   'expense,2026-10-02,Anthropic API,Anthropic,software,20.60,paid,0,Bank txn B,receipt B'
 ];
-sandbox.window.IncomeOSAccountant.importCsv([header,...twins].join('\\n'));
+sandbox.window.IncomeOSAccountant.importCsv([header,...twins].join(String.fromCharCode(10)));
 assert.match(prompts.pop(),/Import 2 new records/, 'Same-day identical payments with different bank references must survive import');
-sandbox.window.IncomeOSAccountant.importCsv([header,twins[0],twins[0]].join('\\n'));
+sandbox.window.IncomeOSAccountant.importCsv([header,twins[0],twins[0]].join(String.fromCharCode(10)));
 assert.match(prompts.pop(),/Import 1 new records/, 'Repeated exact bank reference must be deduplicated');
 console.log('IncomeOS source QA passed: 5 views, ' + feed.studies.length + ' studies, ' + feed.assets.length + ' asset candidates, syntax and privacy checks.');
