@@ -44,7 +44,7 @@
     var expected=KINDS[x.kind];
     if(post.data.direction!==expected.direction||post.data.amountCents!==x.amountCents)
       return "BANK_AMOUNT_OR_DIRECTION_MISMATCH";
-    if(post.data.postedDate>x.date || Math.abs((Date.parse(x.date+"T00:00:00Z")-Date.parse(post.data.postedDate+"T00:00:00Z"))/86400000)>7)
+    if(Math.abs((Date.parse(x.date+"T00:00:00Z")-Date.parse(post.data.postedDate+"T00:00:00Z"))/86400000)>7)
       return "BANK_POSTING_DATE_MISMATCH";
     var classes=state.classes.get(x.bankEventId)||[],matches=state.matches.get(x.bankEventId)||[],
       reviews=state.reconciled.get(x.bankEventId)||[];
