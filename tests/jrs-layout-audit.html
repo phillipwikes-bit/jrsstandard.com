@@ -99,7 +99,8 @@
        documentIndexValid=documentIndexValid &&
          sectionToggle.getAttribute('aria-expanded')==='false' &&
          w.getComputedStyle(sectionMenu).display==='none' &&
-         !!d.querySelector('#section-doccond.page-section.active');
+         !!d.querySelector('#section-doccond.page-section.active') &&
+         d.getElementById('section-doccond').contains(d.activeElement);
      }
    }
    // The mobile simulation choices must remain usable after being stacked.
