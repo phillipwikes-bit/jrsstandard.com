@@ -33,6 +33,11 @@
     document.addEventListener('click',function(e){
       if(nav.getAttribute('data-open')==='true' && !nav.contains(e.target) && !button.contains(e.target))setOpen(false);
     });
+    // Close the disclosure when keyboard focus leaves it. This prevents a
+    // long, expanded navigation list remaining open during page interaction.
+    document.addEventListener('focusin',function(e){
+      if(nav.getAttribute('data-open')==='true' && !nav.contains(e.target) && !button.contains(e.target))setOpen(false);
+    });
     var here=location.pathname.replace(/\/$/,'/index.html').replace(/^\//,'');
     nav.querySelectorAll('a').forEach(function(a){
       try{
