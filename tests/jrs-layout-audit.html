@@ -169,7 +169,12 @@
      const desk=d.querySelector('.jrs-training-desk-reference');
      const firstModule=d.getElementById('module-row-0');
      const firstModuleTop=firstModule?Math.round(firstModule.getBoundingClientRect().top):null;
-     editorialValid=editorialValid && !!info && !info.open &&
+     const status=d.querySelector('.module-status');
+     const outcome=d.querySelector('.module-outcome');
+     const moduleTextValid=!!status && !!outcome &&
+       parseFloat(w.getComputedStyle(status).fontSize)>=12 &&
+       parseFloat(w.getComputedStyle(outcome).fontSize)>=14;
+     editorialValid=editorialValid && moduleTextValid && !!info && !info.open &&
        !!info.querySelector('.hero-tags') &&
        /Operates within existing workflows/.test(info.textContent) &&
        !!desk && !desk.open && !!firstModule &&
