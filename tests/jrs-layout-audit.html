@@ -170,6 +170,14 @@
      const A=relativeLuminance(a),B=relativeLuminance(b);
      return (Math.max(A,B)+0.05)/(Math.min(A,B)+0.05);
    };
+   // Resource controls must have perceptible borders on their white surfaces
+   // even without keyboard focus. WCAG non-text boundary target: >=3:1.
+   const searchControlBorderContrast=item.page==='resources.html' ?
+     ['jrs-resource-query','jrs-resource-role','jrs-resource-format']
+       .map(id=>d.getElementById(id))
+       .map(el=>el?wcagContrast(w.getComputedStyle(el).borderTopColor,
+         w.getComputedStyle(el).backgroundColor):0) : [];
+   const searchControlBordersValid=searchControlBorderContrast.every(x=>x>=3);
    const activeLink=d.querySelector('nav.jrs-sitenav a[aria-current="page"]');
    const activeForeground=activeLink?w.getComputedStyle(activeLink).color:null;
    const activeBackground=activeLink?w.getComputedStyle(activeLink).backgroundColor:null;
@@ -260,10 +268,10 @@
      (w.getComputedStyle(toggle).justifyContent==='flex-end' &&
       /site menu/i.test(siteMenuLabel));
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && documentIndexValid && simulationControlsValid && catalogValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
+      controlsValid && documentIndexValid && simulationControlsValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,catalogValid,catalogIssue,activeForeground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     escapeClosed,controlsValid,documentIndexValid,simulationControlsValid,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
