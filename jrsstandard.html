@@ -663,7 +663,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
 <link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 </head>
-<body class="jrs-institutional jrs-longform">
+<body class="jrs-institutional jrs-longform jrs-standard-page">
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="site-header" role="banner">
@@ -735,45 +735,15 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 </section>
 <div id="section-home" class="page-section active">
 
-<div class="onboarding-strip">
- <div class="onboarding-inner">
- <div class="ob-step"><div class="ob-num">A</div><div class="ob-label">What JRS Is</div><div class="ob-text">A pre-finalization documentation review structure for organizational records.</div></div>
- <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are read later by people who were not there. Most hold up or fail at that point, not at drafting.</div></div>
- <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five questions applied before the record enters the system. Most organizations start with one record type. The gaps appear quickly.</div></div>
- <div class="ob-step"><div class="ob-num">D</div><div class="ob-label">Where It Fits</div><div class="ob-text">HR, compliance, investigations, administrative review. Works inside existing workflows, including ones that have been running for years without a formal review step.</div></div>
- <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Current Resources</div><div class="ob-text">Free field guides, reviewer training, and rapid review aids are available. Historical standalone kit PDFs are retired.</div></div>
- </div>
-</div>
-
-<div class="visitor-orient">
- <div class="visitor-orient-grid">
-  <div class="visitor-orient-cell" onclick="showSection('home')">
-   <div class="visitor-orient-label">Framework Overview</div>
-   <div class="visitor-orient-title">Standard</div>
-   <div class="visitor-orient-text">What JRS is, the five conditions, and how review works.</div>
-  </div>
-  <div class="visitor-orient-cell" onclick="showSection('tools')">
-   <div class="visitor-orient-label">Pre-Submission Tools</div>
-   <div class="visitor-orient-title">Field References</div>
-   <div class="visitor-orient-text">Worksheets and rapid review tools.</div>
-  </div>
-  <div class="visitor-orient-cell" onclick="showSection('guidance')">
-   <div class="visitor-orient-label">Implementation Guidance</div>
-   <div class="visitor-orient-title">Implementation</div>
-   <div class="visitor-orient-text">Deployment models and rollout guidance.</div>
-  </div>
-  <div class="visitor-orient-cell" onclick="showSection('kit')">
-   <div class="visitor-orient-label">Operational Resources</div>
-   <div class="visitor-orient-title">References</div>
-   <div class="visitor-orient-text">Rapid Review Card, current investigator guides and free reviewer training. Older implementation kits are archived.</div>
-  </div>
- </div>
-</div>
-
 <div class="container" id="main-content" role="main">
 
 <div class="page-eyebrow">Justification Review Standard</div>
 <h1 class="page-title">JRS Decision Defensibility Methodology</h1>
+<p class="jrs-edition-note">Online methodology v1.0 (May 2026). The downloadable Standard PDF is separately labeled v2.0 (2026); edition equivalence is not established.</p>
+<div class="jrs-standard-entry-actions" aria-label="Start reading the Standard">
+ <button type="button" onclick="showSection('doccond')">Read the five review conditions</button>
+ <a href="/api/dl?e=standard&amp;src=jrsstandard">Download Standard PDF v2.0</a>
+</div>
 <p class="page-subtitle">When a consequential decision is questioned long after it is made, the record becomes the only witness. This is a pre-finalization standard that evaluates whether a record can explain why a decision was made, before the record is finalized.</p>
 
 <!-- IP HIERARCHY. Added 2026-09-05. This page carried the standard in full
@@ -819,6 +789,43 @@ once, near the top, so the distinction is made before the standard begins. -->
  <p class="body-text">Review is applied at the drafting stage, before records enter formal systems. The review checks whether conclusions are understandable, supportable, and reconstructable from the file alone.</p>
  <p class="body-text">Most organizations start with one record type. Termination records are a common starting point, as documentation gaps tend to become visible there first. The review tends to expand from there without being announced.</p>
 <p class="body-text">No software required. Works inside existing workflows. Can be introduced incrementally without structural change.</p>
+<details class="jrs-standard-orientation" style="margin:20px 0"><summary style="cursor:pointer;min-height:44px;padding:10px 12px;background:#eaf0f4;color:#183d58;font-weight:700">Optional reading guide and section shortcuts</summary><div class="onboarding-strip">
+ <div class="onboarding-inner">
+ <div class="ob-step"><div class="ob-num">A</div><div class="ob-label">What JRS Is</div><div class="ob-text">A pre-finalization documentation review structure for organizational records.</div></div>
+ <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are read later by people who were not there. Most hold up or fail at that point, not at drafting.</div></div>
+ <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five questions applied before the record enters the system. Most organizations start with one record type. The gaps appear quickly.</div></div>
+ <div class="ob-step"><div class="ob-num">D</div><div class="ob-label">Where It Fits</div><div class="ob-text">HR, compliance, investigations, administrative review. Works inside existing workflows, including ones that have been running for years without a formal review step.</div></div>
+ <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Current Resources</div><div class="ob-text">Free field guides, reviewer training, and rapid review aids are available. Historical standalone kit PDFs are retired.</div></div>
+ </div>
+</div>
+
+<div class="visitor-orient">
+ <div class="visitor-orient-grid">
+  <div class="visitor-orient-cell" onclick="showSection('home')">
+   <div class="visitor-orient-label">Framework Overview</div>
+   <div class="visitor-orient-title">Standard</div>
+   <div class="visitor-orient-text">What JRS is, the five conditions, and how review works.</div>
+  </div>
+  <div class="visitor-orient-cell" onclick="showSection('tools')">
+   <div class="visitor-orient-label">Pre-Submission Tools</div>
+   <div class="visitor-orient-title">Field References</div>
+   <div class="visitor-orient-text">Worksheets and rapid review tools.</div>
+  </div>
+  <div class="visitor-orient-cell" onclick="showSection('guidance')">
+   <div class="visitor-orient-label">Implementation Guidance</div>
+   <div class="visitor-orient-title">Implementation</div>
+   <div class="visitor-orient-text">Deployment models and rollout guidance.</div>
+  </div>
+  <div class="visitor-orient-cell" onclick="showSection('kit')">
+   <div class="visitor-orient-label">Operational Resources</div>
+   <div class="visitor-orient-title">References</div>
+   <div class="visitor-orient-text">Rapid Review Card, current investigator guides and free reviewer training. Older implementation kits are archived.</div>
+  </div>
+ </div>
+</div>
+
+</details>
+
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No dedicated platform required</span>
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Existing workflow compatible</span>
@@ -3803,13 +3810,17 @@ once, near the top, so the distinction is made before the standard begins. -->
 // ── NAVIGATION ────────────────────────────────────
 function showSection(id){
  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
- document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+ document.querySelectorAll('.primary-nav-inner button.nav-item').forEach(n=>n.classList.remove('active'));
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
  if(id==='roles'&&typeof showRoleEnv==='function'){setTimeout(()=>showRoleEnv('hr'),30);}
  const sectionMap={'home':0,'doccond':1,'tools':2,'scenarios':3,'guidance':4,'roles':5,'maturity':6,'ai':7,'usecases':8,'training':9,'about':10,'library':11,'kit':12};
- const navItems=document.querySelectorAll('.nav-item');
+ const navItems=document.querySelectorAll('.primary-nav-inner button.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
+ var sectionMenu=document.getElementById('primary-nav-items');
+ var sectionToggle=document.getElementById('nav-hamburger');
+ if(sectionMenu)sectionMenu.classList.remove('nav-open');
+ if(sectionToggle){sectionToggle.setAttribute('aria-expanded','false');sectionToggle.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Menu';}
  window.scrollTo(0,0);
 }
 
@@ -4128,5 +4139,6 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
 })();
 </script>
 <script defer src="/assets/jrs-keyboard-controls.js"></script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body>
 </html>

@@ -24,6 +24,10 @@ jobs:
           echo $! > /tmp/jrs-server.pid
           sleep 2
           curl -fIs http://127.0.0.1:8791/ | head -5
+      - name: Verify mobile and desktop layout in a real browser
+        run: |
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=17000 --window-size=1440,1200 --dump-dom 'http://127.0.0.1:8791/tests/jrs-layout-audit.html' > /tmp/jrs-layout-audit-output.html 2> /tmp/jrs-layout-audit-errors.log
+          python3 tests/jrs-layout-audit-check.py /tmp/jrs-layout-audit-output.html
       - name: Capture desktop and mobile viewport screenshots
         run: |
           mkdir -p /tmp/jrs-visual
@@ -51,13 +55,18 @@ jobs:
           echo "EXTRA_CAPTURE_EXIT=$e,$f,$g,$h,$i,$j"
           echo "CHROME_EXIT=$a,$b,$c,$d"
           ls -lh /tmp/jrs-visual || true
-          if [ "$a" -ne 0 ] || [ "$b" -ne 0 ] || [ "$c" -ne 0 ] || [ "$d" -ne 0 ]; then tail -15 /tmp/chrome1.log /tmp/chrome2.log /tmp/chrome3.log /tmp/chrome4.log; exit 1; fi
+          if [ "$a" -ne 0 ] || [ "$b" -ne 0 ] || [ "$e" -ne 0 ] || [ "$f" -ne 0 ] || [ "$g" -ne 0 ] || [ "$h" -ne 0 ]; then tail -15 /tmp/chrome1.log /tmp/chrome2.log /tmp/chrome5.log /tmp/chrome6.log /tmp/chrome7.log /tmp/chrome8.log; exit 1; fi
+          if [ "$c" -ne 0 ] || [ "$d" -ne 0 ]; then echo "Preview screenshots unavailable, not treated as evidence of the exact PR head"; fi
       - name: Record viewports for human design inspection
         run: |
           python3 - <<'PY'
           import base64
           for key in ['pr-desktop','pr-mobile','preview-desktop','preview-mobile','pr-standard-desktop','pr-standard-mobile','pr-resources-mobile','pr-training-mobile','peer-nist-desktop','peer-ansi-desktop']:
             p='/tmp/jrs-visual/'+key+'.png'
+            import os
+            if not os.path.exists(p):
+              print('JRS_VISUAL_'+key+'_MISSING',flush=True)
+              continue
             b=open(p,'rb').read()
             print('JRS_VISUAL_'+key+'_BEGIN size='+str(len(b)),flush=True)
             v=base64.b64encode(b).decode('ascii')

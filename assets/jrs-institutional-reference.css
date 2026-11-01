@@ -517,3 +517,135 @@ body.jrs-institutional.jrs-longform .jrs-publication-note-detail>.jrs-version-di
   padding:14px 16px;font-size:14px!important
  }
 }
+
+/* A-level structural remediation: compact navigation, hierarchy and reading scale.
+   Append last to take precedence over historic page-specific CSS. */
+body.jrs-institutional .jrs-global-nav-toggle{display:none!important}
+@media(max-width:760px){
+ body.jrs-institutional.jrs-nav-ready .jrs-global-nav-toggle{
+  display:flex!important;align-items:center;justify-content:space-between;gap:12px;
+  width:100%;min-height:48px;padding:10px 20px;cursor:pointer;
+  background:#ffffff;color:#17364f;border:0;border-bottom:1px solid #cbd9e3;
+  font:700 15px/1.45 Inter,system-ui,sans-serif;letter-spacing:0;
+ }
+ body.jrs-institutional.jrs-nav-ready .jrs-global-nav-toggle span:first-child{font-size:21px;line-height:1}
+ body.jrs-institutional.jrs-nav-ready nav.jrs-sitenav:not([data-open="true"]){display:none!important}
+ body.jrs-institutional.jrs-nav-ready nav.jrs-sitenav[data-open="true"]{
+  display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;
+  align-items:stretch!important;justify-content:flex-start!important;
+  overflow:visible!important;padding:4px 0!important;border-bottom:2px solid #d7e1e8;
+ }
+ body.jrs-institutional.jrs-nav-ready nav.jrs-sitenav a{
+  display:block!important;width:100%!important;max-width:100%!important;flex:none!important;
+  text-align:left!important;min-height:46px!important;padding:12px 22px!important;
+  font:600 15px/1.45 Inter,system-ui,sans-serif!important;border-bottom:1px solid #e4ebf0!important;
+ }
+ body.jrs-institutional .site-header-inner{min-height:62px!important;padding:12px 19px!important}
+ body.jrs-institutional.jrs-home .utility-bar{display:none!important}
+ body.jrs-institutional .jr-hero{padding:25px 0 32px!important}
+ body.jrs-institutional .jr-overline{margin:0 0 13px!important;font-size:11px!important}
+ body.jrs-institutional .jr-hero h1{font-size:clamp(34px,8.6vw,42px)!important;line-height:1.13!important;margin-bottom:12px!important}
+ body.jrs-institutional .jr-firstline{font-size:16px!important;line-height:1.55!important;margin:0 0 16px!important}
+ body.jrs-institutional .jr-actions{margin:0 0 15px!important}
+ body.jrs-institutional .jr-actions a{min-height:46px!important;padding:11px 13px!important;font-size:14px!important}
+ body.jrs-institutional .jr-hero .jr-intro{margin:0 0 15px!important;font-size:16px!important;line-height:1.62!important}
+ body.jrs-institutional .jr-section{padding:32px 0!important}
+ body.jrs-institutional :where(.section){padding:32px 0!important}
+ body.jrs-institutional :where(.section-label){margin-top:24px!important}
+ body.jrs-institutional.jrs-resource-page .hero{padding:23px 0 17px!important}
+ body.jrs-institutional.jrs-resource-page .hero h1{font-size:33px!important;line-height:1.17!important}
+ body.jrs-institutional.jrs-resource-page .jrs-resource-primary-actions{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0 4px}
+ body.jrs-institutional.jrs-resource-page .jrs-resource-primary-actions a{
+  display:inline-flex;align-items:center;min-height:45px;padding:10px 13px;
+  background:#173d5b;color:#fff!important;text-decoration:none;
+  border:1px solid #173d5b;font-weight:700;font-size:14px
+ }
+ body.jrs-institutional.jrs-resource-page .jrs-resource-primary-actions a+ a{
+  background:#fff;color:#173d5b!important
+ }
+ body.jrs-institutional.jrs-resource-page .jrs-resource-secondary{margin:22px 0 18px}
+ body.jrs-institutional.jrs-resource-page .start-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important}
+ body.jrs-institutional.jrs-resource-page .start-link{min-height:85px!important;padding:11px!important}
+ body.jrs-institutional.jrs-resource-page .access-note{font-size:14px!important;line-height:1.55!important;margin-top:13px!important}
+ body.jrs-institutional.jrs-training-page .sticky-nav{display:none!important}
+ body.jrs-institutional.jrs-training-page .site-header-meta,
+ body.jrs-institutional.jrs-training-page .site-header .back-to-site + .back-to-site{display:none!important}
+ body.jrs-institutional.jrs-training-page .site-header .site-header-inner{gap:5px!important;padding:10px 18px!important}
+ body.jrs-institutional.jrs-training-page .site-header-title{font-size:13px!important;line-height:1.4!important}
+ body.jrs-institutional.jrs-training-page .site-header .back-to-site{font-size:13px!important;margin-top:4px!important;padding:4px 8px!important}
+ body.jrs-institutional.jrs-training-page .hero-section{padding:24px 0 26px!important}
+ body.jrs-institutional.jrs-training-page .hero-h1{font-size:clamp(30px,8vw,38px)!important;line-height:1.16!important}
+ body.jrs-institutional.jrs-training-page .jrs-training-lead{font-size:16px!important;margin:10px 0 14px!important;color:#334e63!important}
+ body.jrs-institutional.jrs-training-page .hero-ctas{margin:12px 0!important}
+ body.jrs-institutional.jrs-training-page .hero-ctas a:nth-child(n+3){display:none!important}
+ body.jrs-institutional.jrs-training-page .hero-sub{font-size:15px!important;line-height:1.6!important}
+ body.jrs-institutional.jrs-training-page .hero-tags{margin-top:12px!important}
+ body.jrs-institutional.jrs-standard-page .util-bar{display:none!important}
+ body.jrs-institutional.jrs-standard-page .jrs-publication-notes{margin:7px auto 8px!important}
+ body.jrs-institutional.jrs-standard-page .jrs-publication-notes summary{padding:9px 13px!important;font-size:13px!important}
+ body.jrs-institutional.jrs-standard-page .container#main-content{padding-top:18px!important}
+ body.jrs-institutional.jrs-standard-page .page-title{font-size:clamp(32px,8vw,43px)!important;margin-bottom:11px!important}
+ body.jrs-institutional.jrs-standard-page .page-subtitle{font-size:16px!important;line-height:1.6!important;margin-bottom:12px!important}
+ body.jrs-institutional.jrs-standard-page .jrs-standard-entry-actions{flex-wrap:wrap;gap:9px;margin:12px 0 18px}
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-primary-actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+body.jrs-institutional.jrs-resource-page .jrs-resource-primary-actions a{
+ display:inline-flex;align-items:center;justify-content:center;min-height:46px;
+ background:#173d5b;color:#fff!important;border:1px solid #173d5b;border-radius:4px;
+ padding:11px 16px;text-decoration:none;font-weight:700;font-size:15px
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-primary-actions a+a{
+ background:#fff;color:#173d5b!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-secondary{padding:19px 0}
+body.jrs-institutional .jr-firstline{font-size:17px;line-height:1.55;color:#36546a;margin:0 0 17px}
+body.jrs-institutional.jrs-standard-page .primary-nav-mobile-bar{
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ min-height:48px!important;padding:6px 20px!important;background:#e7eff4!important
+}
+body.jrs-institutional.jrs-standard-page .primary-nav .nav-hamburger{
+ display:inline-flex!important;align-items:center!important;min-height:42px!important;
+ padding:8px 14px!important;background:#fff!important;color:#173d5b!important;
+ border:1px solid #b6c8d5!important;border-radius:3px!important;
+ font:700 14px Inter,system-ui,sans-serif!important
+}
+body.jrs-institutional.jrs-standard-page .primary-nav .primary-nav-inner{display:none!important}
+body.jrs-institutional.jrs-standard-page .primary-nav .primary-nav-inner.nav-open{
+ display:grid!important;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))!important;
+ align-items:stretch!important;justify-content:stretch!important;
+ padding:9px 12px!important;gap:2px!important;max-width:1150px!important
+}
+body.jrs-institutional.jrs-standard-page .primary-nav .nav-item{
+ display:block!important;width:100%!important;min-height:43px!important;
+ text-align:left!important;padding:10px 12px!important;font-size:14px!important
+}
+body.jrs-institutional.jrs-standard-page .jrs-standard-entry-actions{
+ display:flex;gap:10px;flex-wrap:wrap;margin:17px 0 23px
+}
+body.jrs-institutional.jrs-standard-page .jrs-standard-entry-actions button,
+body.jrs-institutional.jrs-standard-page .jrs-standard-entry-actions a{
+ display:inline-flex;align-items:center;justify-content:center;min-height:46px;
+ padding:11px 16px;background:#173d5b;color:#fff!important;border:1px solid #173d5b;
+ border-radius:4px;font:700 15px Inter,system-ui,sans-serif!important;text-decoration:none;cursor:pointer
+}
+body.jrs-institutional.jrs-standard-page .jrs-standard-entry-actions a{background:#fff;color:#173d5b!important}
+body.jrs-institutional.jrs-standard-page .jrs-edition-note{
+ font-size:14px!important;color:#506779!important;line-height:1.55!important
+}
+body.jrs-institutional.jrs-standard-page :is(div,span,p,a,small,li):where(
+ [style*="font-size:7px"],[style*="font-size:7.5px"],[style*="font-size:8px"],
+ [style*="font-size:8.5px"],[style*="font-size:9px"],[style*="font-size:9.5px"],
+ [style*="font-size:10px"],[style*="font-size:10.5px"],[style*="font-size:11px"],
+ [style*="font-size:11.5px"]){font-size:13px!important;line-height:1.48!important}
+body.jrs-institutional.jrs-longform .page-section :where(p,li,.body-text){max-width:78ch}
+body.jrs-institutional.jrs-longform .page-section :where(h2,h3){scroll-margin-top:18px}
+@media(min-width:761px){
+ body.jrs-institutional .jr-hero-grid{column-gap:42px!important}
+ body.jrs-institutional .jr-hero{padding:52px 0 44px!important}
+ body.jrs-institutional .jr-section{padding:43px 0!important}
+ body.jrs-institutional.jrs-standard-page .container#main-content{padding-top:24px!important}
+ body.jrs-institutional.jrs-training-page .sticky-nav{
+  display:flex!important;flex-wrap:nowrap!important;overflow-x:auto!important;
+  white-space:nowrap!important;scrollbar-width:thin
+ }
+}

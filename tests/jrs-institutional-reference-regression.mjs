@@ -99,7 +99,7 @@ assert.ok(read('training.html').includes('id="practice-guidance"'),
 // Mobile Standard navigation must be collapsible, not a permanent 14-item list.
 assert.ok(css.includes('JRS mobile navigation corrections, 2026-11-01') &&
  css.includes('.primary-nav-inner.nav-open') &&
- css.includes('flex:1 1 25%'),
+ css.includes('jrs-nav-ready'),
  'mobile publication style must retain compact site nav and collapsible Standard sections');
 const standard=read('jrsstandard.html');
 assert.ok(standard.includes('toggleMobileNav()') &&
@@ -125,3 +125,26 @@ for(const path of [
 ])assert.ok(existsSync(join(root,path)),'preserve protected access or document '+path);
 console.log('PASS: institutional reference system present on '+(pages.length+additionalPages.length)+
  ' pages, core paths and privacy boundaries preserved.');
+
+
+// Structural remediation, 2026-11-01: no wrapped site nav with JS, prompt first actions, preserved editions.
+const mobileNav=read('assets/jrs-mobile-navigation.js');
+for(const token of ['aria-controls','aria-expanded','jrs-nav-ready','Escape','data-open','jrs-global-nav-toggle'])
+ assert.ok(mobileNav.includes(token),'accessible global nav missing '+token);
+for(const p of [...pages,...additionalPages]){
+ assert.ok(read(p).includes('/assets/jrs-mobile-navigation.js'),p+' missing shared mobile navigation');
+}
+assert.ok(css.includes('nav.jrs-sitenav:not([data-open="true"])')&&
+ css.includes('jrs-standard-entry-actions')&&css.includes('jrs-resource-primary-actions'),
+ 'responsive navigation and first-action CSS missing');
+assert.ok(read('index.html').indexOf('class="jr-actions"')<
+ read('index.html').indexOf('class="jr-intro"'),'homepage action should precede long intro');
+assert.ok(read('resources.html').indexOf('jrs-resource-primary-actions')<
+ read('resources.html').indexOf('class="access-note"'),'resources must expose tool before disclosures');
+assert.ok(read('jrsstandard.html').includes('jrs-standard-entry-actions')&&
+ read('jrsstandard.html').includes('jrs-standard-orientation')&&
+ read('jrsstandard.html').includes('jrs-standard-page'),
+ 'Standard must show content and actions before optional orientation');
+assert.ok(read('training.html').indexOf('jrs-training-lead')<
+ read('training.html').indexOf('class="hero-sub"'),
+ 'training modules must be accessible ahead of long explanation');

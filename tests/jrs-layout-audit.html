@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>JRS local viewport audit</title></head>
+<body><h1>JRS structural rendering audit (local source)</h1><pre id="results">Pending</pre>
+<script>
+(async function(){
+ const checks=[
+  {page:'index.html',width:390,selector:'.jr-action-main',maxTop:740},
+  {page:'resources.html',width:390,selector:'.jrs-resource-primary-actions a',maxTop:660},
+  {page:'jrsstandard.html',width:390,selector:'.core-principle-text',maxTop:1050},
+  {page:'training.html',width:390,selector:'.hero-ctas a',maxTop:790},
+  {page:'index.html',width:320,selector:'.jr-action-main',maxTop:890},
+  {page:'resources.html',width:320,selector:'.jrs-resource-primary-actions a',maxTop:780},
+  {page:'jrsstandard.html',width:1440,selector:'.page-title',maxTop:560},
+  {page:'training.html',width:1440,selector:'.hero-ctas a',maxTop:580}
+ ];
+ const records=[];
+ for(const item of checks){
+  const f=document.createElement('iframe');
+  f.width=item.width;
+  f.height=1100;
+  f.style.cssText='width:'+item.width+'px;height:1100px;border:0;display:block';
+  f.title=item.page+' '+item.width;
+  const loaded=new Promise((resolve,reject)=>{
+   f.addEventListener('load',resolve,{once:true});
+   f.addEventListener('error',()=>reject(Error('load failed')),{once:true});
+  });
+  document.body.appendChild(f);
+  f.src='/'+item.page;
+  try{
+   await loaded;
+   await new Promise(resolve=>setTimeout(resolve,80));
+   const d=f.contentDocument,w=f.contentWindow;
+   const action=d.querySelector(item.selector);
+   const nav=d.querySelector('nav.jrs-sitenav');
+   const toggle=d.querySelector('.jrs-global-nav-toggle');
+   const narrow=item.width<=760;
+   const before=nav? w.getComputedStyle(nav).display:null;
+   const buttonDisplay=toggle? w.getComputedStyle(toggle).display:null;
+   let opened=false,closed=false;
+   if(narrow && toggle && nav){
+    toggle.click();
+    opened=toggle.getAttribute('aria-expanded')==='true' && w.getComputedStyle(nav).display!=='none';
+    toggle.click();
+    closed=toggle.getAttribute('aria-expanded')==='false' && w.getComputedStyle(nav).display==='none';
+   }
+   const top=action? Math.round(action.getBoundingClientRect().top):null;
+   const scrollWidth=d.documentElement.scrollWidth;
+   const vw=w.innerWidth;
+   const title=d.title;
+   const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw+8 &&
+      !!toggle && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed): buttonDisplay==='none');
+   records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
+     menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
+     menuButtonDisplay:buttonDisplay,title,pass:ok});
+  }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
+  f.remove();
+ }
+ const marker='JRS_'+'AUDIT_JSON_';
+ document.getElementById('results').textContent=marker+'BEGIN'+JSON.stringify(records)+marker+'END';
+ document.body.setAttribute('data-audit-complete','true');
+})();
+</script>
+</body></html>
