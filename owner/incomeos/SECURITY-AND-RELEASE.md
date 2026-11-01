@@ -109,3 +109,18 @@ Mandatory remaining release gates:
 6. Complete iPhone Safari and assistive-technology tests, encrypted primary-storage verification, backup/restore, private data deletion and production authorization.
 
 **No accounting file should be uploaded to the draft public repository, a public app preview, or the published research-opportunity database.**
+
+
+## November 1 continuation: deployment quota and reproducible hosted gate
+
+**Current blocker:** A new exact-head PR #91 preview deployment was attempted against Vercel project `incomeos-opportunity-desk` with Vercel Authentication enabled for **all** deployment targets. Vercel returned HTTP 402 `api-deployments-free-per-day` and specified a 24-hour retry interval. The local runtime does not have an authenticated Vercel CLI fallback. No user plan, production deployment, public JRS route, authentication rule, or financial transaction was modified to work around it.
+
+The owner requested continued release validation until the appropriate gate passes. The existing daily `IncomeOS Passive Wealth Cycle` automation has been updated, without changing its schedule or its original financial-discovery remit, to perform at most one protected-preview retry during a daily run when the quota allows it. A separate retry automation could not be created because the account already has the allowed five scheduled tasks. Preview success is not the same as permission to release or process private data.
+
+Staging deployment configuration now includes `owner/incomeos/vercel.json` as a proposed **separate-project** HTTP security policy: private no-store caching, deny framing, CSP, referrer and browser permissions limits, HSTS, and noindex. The installed iPhone manifest now uses relative app start and scope URLs so it can run from the separate owner project root. These headers and routing rules remain **unverified on a hosted deployment** until Vercel permits a build and returns provider evidence.
+
+`tests/incomeos-preview-probe.mjs` provides an opt-in anonymous HTTP probe requiring exact GitHub PR SHA, provider deployment SHA, matching Vercel project/team, READY preview target, all-target SSO, and explicit GET/HEAD denial for HTML, JavaScript, JSON, and manifest routes. It never treats a missing page (404), ambiguous redirect (302), or public 200 as a passed access-control check. `tests/incomeos-preview-probe-qa.mjs` validates the probe using **synthetic responses only**; CI passing this fixture is NOT a hosted access-control result. When a real preview becomes available, obtain the metadata from connected GitHub/Vercel, run the opt-in probe, and separately review authenticated owner access and network headers.
+
+Staging hardening: `staging-interlock.js` now loads **before** the accountant and sets `IncomeOSFinancialReadOnly` immediately. Accountant writes, legacy migration, edit, remove, CSV import and JSON restoration are refused while this flag is set. `vault.js` likewise refuses restoration into unapproved browser storage. Export and local erasure remain available for existing records. Client-side guards are not authentication and are insufficient on their own for production security.
+
+**Production status remains HOLD** regardless of synthetic tests or protected-preview authentication: independent owner identity validation, transactional private backend, separately authenticated RLS, encrypted active storage, real bank coverage, negative owner/nonowner access tests, iPhone functional/VoiceOver QA, and explicit owner release authorization remain unmet.
