@@ -107,6 +107,11 @@ assert.ok(standard.includes('toggleMobileNav()') &&
  standard.includes('aria-expanded="false"'),
  'Standard mobile menu control and expanded state must remain wired');
 assert.ok(standard.includes('showSection('),'Standard section interactions must remain intact');
+assert.ok(standard.includes('<details>')&&standard.includes('jrs-publication-note-detail')&&
+ standard.includes('Publication versions:')&&standard.includes('Archived implementation-kit inventory:'),
+ 'Version and retired-kit disclosures must remain available in accessible details');
+assert.ok(!standard.includes('Available on the Operational References page.'),
+ 'Standard may not advertise unavailable retired implementation-kit assets');
 for(const p of ['index.html','resources.html','research.html','investigator-guides.html',
  'jrsstandard.html','training.html']){
  assert.ok(read(p).includes('<!-- JRS SITE NAV v1 :: CANONICAL BLOCK.'),
