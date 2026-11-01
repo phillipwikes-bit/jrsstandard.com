@@ -1,0 +1,62 @@
+/* JRS public-facing professional readability and keyboard-access layer.
+   Limited enhancement: preserves original page copy, data, layout and evidence. */
+:root{--jrs-access-focus:#f4d89d}
+html{scroll-padding-top:3.5rem}
+:where(a,button,input,textarea,select,[role="button"],[tabindex="0"]):focus-visible{
+ outline:3px solid var(--jrs-access-focus)!important;
+ outline-offset:3px!important;
+ box-shadow:0 0 0 2px #070706!important
+}
+:where(a,button,input,textarea,select,[role="button"]){touch-action:manipulation}
+:where(input,select,textarea){font-size:16px!important;max-width:100%}
+.jrs-sitenav{
+ display:flex!important;
+ flex-wrap:wrap!important;
+ align-items:stretch!important;
+ justify-content:center!important;
+ overflow:visible!important;
+ scrollbar-width:auto!important
+}
+.jrs-sitenav a{
+ font-size:12px!important;
+ line-height:1.45!important;
+ letter-spacing:.055em!important;
+ min-height:44px!important;
+ padding:12px 14px!important;
+ text-align:center
+}
+.jrs-sitenav a[aria-current="page"]{
+ color:#f4d89d!important;
+ border-bottom:2px solid #d1a760!important
+}
+:where(.eyebrow,.section-label,.card-k,.card-tag,.gcard-tag,.start-k,.proof-k,.gcard-meta,.microcopy,.header-meta,.card-meta){
+ font-size:12px!important;
+ line-height:1.55!important;
+ letter-spacing:.07em!important
+}
+:where(.btn,.dl,.card-link,.gcard a,.start-link){
+ font-size:13px!important;
+ line-height:1.5!important;
+ min-height:44px
+}
+:where(.gcard-text,.card-copy,.card-text,.access-note){font-size:14px!important}
+:where(main,article,section) p,
+:where(main,article,section) li{overflow-wrap:break-word}
+:where(.role-path-card,.sim-card,.visitor-orient-cell,.role-card,
+ .worksheet-header,.maturity-level-header)[role="button"]{
+ cursor:pointer;
+ min-height:44px
+}
+@media(max-width:600px){
+ .jrs-sitenav a{flex:1 1 auto;max-width:50%;padding:12px 10px!important}
+ :where(.btn,.dl,.card-link){min-height:46px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto!important}
+ *,*::before,*::after{
+   animation-duration:.01ms!important;
+   animation-iteration-count:1!important;
+   scroll-behavior:auto!important;
+   transition-duration:.01ms!important
+ }
+}
