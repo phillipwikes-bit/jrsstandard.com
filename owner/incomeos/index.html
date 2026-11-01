@@ -15,6 +15,8 @@
 <script defer src="./accountant.js"></script>
 <script defer src="./accounting-controls.js"></script>
 <script defer src="./accounting-controls-ui.js"></script>
+<script defer src="./recovery-engine.js"></script>
+<script defer src="./recovery-ui.js"></script>
 <script defer src="./spend-intelligence.js"></script>
 <script defer src="./research-radar.js"></script>
 <script defer src="./decision-engine.js"></script>
@@ -100,6 +102,12 @@
       <p class="muted">Manual reconciliation checkboxes are self-reported and are not independent financial verification. Amount/date similarities are never sufficient to classify a bank credit as earned income. Do not import bank statements into this public-source development branch or an unprotected deployment.</p>
       <p id="accounting-control-status" class="muted" role="status" aria-live="polite">Accounting close not assessed.</p>
       <div id="accounting-control-results" class="accounting-control-results"></div>
+    </div>
+    <div class="panel" id="recovery-review-panel">
+      <div class="panelrow"><h3>Recovery and billing exception radar</h3><button type="button" class="smallbtn" id="recovery-review-refresh">Review candidates</button></div>
+      <p class="muted">Identify possible duplicate merchant charges and check refunds or returned principal separately from new earnings. Similar dates and amounts are not proof of erroneous billing. The system cannot determine credit-card disputes or recover funds from these local records alone.</p>
+      <p class="muted" id="recovery-review-status" role="status" aria-live="polite">Recovery diagnostics pending.</p>
+      <div id="recovery-review-list"></div>
     </div>
     <div class="panel" id="spend-intelligence-panel">
       <div class="panelrow"><h3>Spending intelligence and cash-flow planning</h3><button type="button" class="smallbtn" id="spend-refresh">Analyze records</button></div>
