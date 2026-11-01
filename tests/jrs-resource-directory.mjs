@@ -23,6 +23,13 @@ const categories=new Set(['PDF','Web','Interactive']);
 const roles=new Set(['investigation','hr','legal','audit','research','training']);
 const match=Array.from(html.matchAll(/<article class="jrs-resource-entry"([^>]*)>([\s\S]*?)<\/article>/g));
 assert.equal(match.length,16,'catalog must contain exactly 16 verified initial resources');
+assert.ok(html.indexOf('jrs-resource-primary-actions') < html.indexOf('id="resource-catalog"'),
+  'primary review-tool action must precede the complete resource directory');
+assert.ok(html.indexOf('id="resource-catalog"') < html.indexOf('id="quick-review"'),
+  'searchable resource directory must precede duplicate quick-use cards');
+assert.ok(html.indexOf('id="resource-catalog"') < html.indexOf('class="jrs-resource-secondary"'),
+  'resource discovery must precede longer role-specific orientation');
+
 assert.ok(html.includes('id="resource-catalog"') && html.includes('aria-labelledby="jrs-catalog-heading"'));
 for(const id of ['jrs-resource-query','jrs-resource-role','jrs-resource-format']){
  assert.ok(html.includes('for="'+id+'"'),'missing explicit label for '+id);
