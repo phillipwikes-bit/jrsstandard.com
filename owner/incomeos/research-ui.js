@@ -70,7 +70,7 @@
       if(!Array.isArray(records)||!records.length||records.length>200)throw new Error("Expected one to 200 sourced studies");
       var parsed=records.map(function(x){return engine.candidate(x);});
       var existing=engine.dedupe(combined()).items,unique=engine.dedupe(existing.concat(parsed));
-      var incoming=unique.items.filter(function(x){return !publicLeads.some(function(p){return p.id===x.id;}));
+      var incoming=unique.items.filter(function(x){return !publicLeads.some(function(p){return p.id===x.id;});});
       var added=incoming.filter(function(x){return !db.leads.some(function(e){return e.id===x.id;})).length;
       if(!confirm("Import "+parsed.length+" public research rows, including "+added+" new local candidates? Their availability and eligibility are not confirmed."))return;
       db.leads=incoming.slice(0,200);
