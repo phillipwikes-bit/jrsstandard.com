@@ -1,6 +1,8 @@
 "use strict";
 (function(){
   // This is an intentionally unconditional staging interlock, NOT authentication.
+  // Set before any financial module is evaluated; DOM disabling alone is insufficient.
+  window.IncomeOSFinancialReadOnly=true;
   // Remove only in a separate, reviewed, owner-authenticated deployment.
   function lock(){
     var lockIds=["receipt-form","cost-form","import-trigger","import-csv-trigger","import-ledger","import-csv","vault-file","vault-import"];
