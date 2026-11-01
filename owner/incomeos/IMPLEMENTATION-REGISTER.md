@@ -137,3 +137,20 @@ No site was deployed and no owner financial data was imported. The JRS custom pr
 | Regression suite | `tests/incomeos-capital-readiness.mjs` and `tests/incomeos-investment-cashflow.mjs` | The existing workflow now includes 14 synthetic IncomeOS suites plus the separate JRS site gate |
 
 The next implementation dependency remains real, separately authenticated owner storage and verified bank/investment statement import. The code and tests are not evidence of earned investment returns, recovered principal, available capital, approved tax basis, or a completed reinvestment.
+
+
+## Version 1.0 plan alignment: internal transfers and credit-card payments (November 1, 2026)
+
+The owner's complete IncomeOS Master Development and Operating Plan, Version 1.0 dated November 1, 2026, governs the project's modules, priorities, economic measurements and release controls. Where implementation source and plan descriptions differ, label the source state clearly and do not claim production readiness.
+
+The accounting module now includes `transfer-reconciliation.js`, a pure, source-only ledger review engine, plus `transfer-review-ui.js` and `tests/incomeos-transfer-reconciliation.mjs`. It implements the planned internal transfer and credit-card payment matching controls:
+
+- Consumes the SHA-256 validated, owner-reviewed financial journal and the existing complete-statement source coverage gate.
+- Requires two distinct posted bank references and active `transfer_out`/`transfer_in` journal classifications, reviewed by the owner, with bounded date differences, equal USD amounts, specific source evidence references and different confirmed owner accounts.
+- Differentiates bank-to-bank transfers between two declared asset accounts from credit-card payments between an asset account and a declared liability account.
+- Rejects duplicate event pairing, source binding reuse, unexpected fields, missing source rows, mismatched directions, incomplete statement coverage, wrong account types and unpaired classified transfers.
+- Returns matched capital movements **without contributing a cent to earned income or operating expense**.
+- Does not infer transfers from similar descriptions, amounts or dates; independent account ownership remains unverified until authenticated financial sources exist.
+- The staging accounting panel deliberately uses **no** private bank statements or journal data, displays HOLD, and cannot import, classify or execute financial transactions.
+
+**Acceptance status:** Synthetic source-level regression tests only; no real bank ingestion or independently verified transfer reconciliation. Further work remains: secure owner backend, authorized account synchronization, counterpart evidence, double-entry general ledger, transaction splitting, validated tax workpapers and annual accounting package. The public JRS site and public research feed remain independent.
