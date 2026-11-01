@@ -40,6 +40,18 @@ for(const f of ['JRS_Investigator_Field_Guide_Employment.pdf',
 assert.match(read('contact.html'),/https:\/\/formspree\.io\/f\/mreddwdg/,'contact delivery changed');
 assert.ok(read('research.html').includes('href="evidence-ledger.html"'),'research evidence trace lost');
 assert.ok(read('resources.html').includes('href="manifest.html"'),'technical schema trace lost');
+const redirects=JSON.parse(read('vercel.json')).redirects;
+for(const direct of ['/manifest.html','/security.html','/platform-evaluation-001.html']){
+ assert.ok(!redirects.some(r=>r.source===direct),'public reference incorrectly redirected: '+direct);
+}
+for(const r of redirects){
+ assert.doesNotMatch(String(r.destination),/review-engine\.html/,'obsolete route promotes unavailable software: '+r.source);
+}
+assert.equal(redirects.find(r=>r.source==='/openapi')?.destination,'/manifest.html');
+assert.equal(redirects.find(r=>r.source==='/submit-record.html')?.destination,'/resources.html');
+assert.equal(redirects.find(r=>r.source==='/sandbox')?.destination,'/resources.html');
+assert.ok(read('manifest.html').includes('jrs-decision-reconstruction-manifest-v1.0.1.schema.json'),
+ 'technical specification did not survive as direct public reference');
 assert.ok(existsSync(new URL('../review-engine.html',import.meta.url)),'archival technical evidence removed');
 assert.match(read('review-engine.html'),/name="robots" content="noindex,follow"/);
 assert.doesNotMatch(read('sitemap.xml'),/\/(?:review-engine|pilot|platform-evaluation-001)\.html/);
