@@ -88,3 +88,24 @@ Passing the five Node regression suites and the public-site isolation check is a
 ## Current release assessment
 
 Draft development branch. Security and unit checks may pass; public source branch remains unmerged. Verified production authentication and encrypted active storage have not been established. A Vercel build-rate limit may block preview deployment. Do not represent the system as deployed, revenue-generating, independently audited, or production-ready.
+
+
+## November 1 continuation: protected staging and server-only financial writes
+
+The connected Vercel project `incomeos-opportunity-desk` was inspected and updated with Vercel Authentication protection for **all** deployment targets, including any future custom-domain target. The project has no custom domains and no deployment. A protected preview deployment from the exact PR #91 commit was attempted but Vercel returned HTTP 402, `api-deployments-free-per-day`, with a 24-hour retry indication. No plan upgrade, public fallback, unprotected deployment or financial data transfer occurred. Source code remains in the unmerged draft PR.
+
+A draft statement-close engine (`statement-close.js`) verifies owner-declared account scope, contiguous bank/credit-card statement periods, posting counts, USD credit/debit sums, asset-versus-liability balance arithmetic, unique reviewed ledger links and source-document hash shape. Its status READY_FOR_ACCOUNTANT_SOURCE_REVIEW is **not** independent bank verification, coverage of undisclosed accounts, final accounting close, tax approval or spendable cash.
+
+Security correction: `OWNER-PRIVATE-SCHEMA.sql` now grants the browser's authenticated database role **SELECT only** on financial and evidence tables. All direct browser INSERT/UPDATE/DELETE access is prohibited. The previously drafted client insert policies were removed before any migration was applied.
+
+`private-append-handler.js` is an **unrouted, dependency-injected contract**, not a deployed endpoint. It requires a trusted server-side identity verifier, owner-allowlist check, CSRF verifier, valid signed source history, strict event format, and an appendAtomic persistence operation that independently rechecks previous hash and sequence under a database transaction. The browser must never supply verification flags treated as authoritative. A real production server implementation must be tested against the separate private DB before applying data migrations or removing the staging interlock.
+
+Mandatory remaining release gates:
+1. Remove the Vercel deployment-rate barrier without paid-plan changes or bypasses, then deploy a protected preview only after exact-commit source and project-target verification.
+2. Independently test anonymous and nonowner denial, actual owner session authorization, direct asset access, session expiry and HTTP cache protections.
+3. Provision and authenticate a **separate** private database. Apply RLS migration only to that environment after administrative review. Test authorization with real accounts and verify there is no direct browser financial write permission.
+4. Implement a transactional, server-owned journal append with trust-boundary validation, idempotency, rate limits, canonical hashing, and external head-hash anchoring. The source-only append handler and hash-chained browser module are not substitutes.
+5. Integrate bank and receipt sources only with owner-authorized scopes. Verify posted bank IDs, source count, statement balances, all covered accounts, transaction evidence and corrections.
+6. Complete iPhone Safari and assistive-technology tests, encrypted primary-storage verification, backup/restore, private data deletion and production authorization.
+
+**No accounting file should be uploaded to the draft public repository, a public app preview, or the published research-opportunity database.**
