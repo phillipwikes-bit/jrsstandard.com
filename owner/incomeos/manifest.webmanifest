@@ -1,0 +1,17 @@
+{
+  "name": "IncomeOS Private Opportunity Command Center",
+  "short_name": "IncomeOS",
+  "start_url": "/owner/incomeos/",
+  "scope": "/owner/incomeos/",
+  "display": "standalone",
+  "background_color": "#f4f8f5",
+  "theme_color": "#11292b",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
