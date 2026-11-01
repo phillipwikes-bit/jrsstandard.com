@@ -148,3 +148,9 @@ assert.ok(read('jrsstandard.html').includes('jrs-standard-entry-actions')&&
 assert.ok(read('training.html').indexOf('jrs-training-lead')<
  read('training.html').indexOf('class="hero-sub"'),
  'training modules must be accessible ahead of long explanation');
+
+assert.ok(css.includes('jrs-standard-page .util-bar{display:none!important}'),
+ 'Standard must not show a third competing navigation toolbar');
+assert.ok(read('training.html').includes('jrs-training-context') &&
+ read('training.html').includes('aria-label="JRS home"'),
+ 'training must retain explanation while enabling a compact header and home link');
