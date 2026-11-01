@@ -36,8 +36,9 @@
    f.addEventListener('load',resolve,{once:true});
    f.addEventListener('error',()=>reject(Error('load failed')),{once:true});
   });
-  document.body.appendChild(f);
+  // Navigate before inserting the frame so its first load event is for the target.
   f.src='/'+item.page;
+  document.body.appendChild(f);
   try{
    await loaded;
    // A load event is not a stable render boundary. Wait for the page action
