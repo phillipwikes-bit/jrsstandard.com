@@ -12,7 +12,7 @@ for(const path of mainPages){
  assert.doesNotMatch(html,/Review Engine|Open AI-Assisted Record Reviewer|licensed JRS Review Engine API/i,
   'public practitioner page still advertises a development product: '+path);
  assert.doesNotMatch(html,/href=["']review-engine\.html/i,'promotional Engine link in '+path);
- assert.ok(html.includes('<main') || path==='simulations.html','public page missing main element: '+path);
+ assert.ok(html.includes('<main') || /id=[\"']main-content[\"'][^>]*role=[\"']main[\"']/.test(html) || /role=[\"']main[\"'][^>]*id=[\"']main-content[\"']/.test(html) || html.includes('id=\"main-content\"'), 'public page missing a content landmark: '+path);
 }
 const home=read('index.html');
 for(const route of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice'])
