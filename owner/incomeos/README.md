@@ -104,3 +104,19 @@ New development-only source modules:
 - `tests/incomeos-accounting-controls.mjs` and `tests/incomeos-recovery.mjs`: synthetic, source-privacy-safe controls added to GitHub CI.
 
 These modules strengthen evidence integrity but **do not change the release hold**. Do not enter sensitive owner financial records in the publicly sourced app until a separate protected, encrypted production data store has been verified. The public study radar and the private owner ledger remain operationally separate.
+
+
+## 2026-11-01 continuation: financial provenance and private backend readiness
+
+**New evidence modules, not active personal financial storage:**
+
+- `financial-event-journal.js`: pure SHA-256 hash-chained event history with source-identified posted amounts, classification, matching document, owner review and explicit reversal. Corrections do not overwrite the original history. A hash chain is tamper-evident only, not an owner signature, independently audited record or bank authentication.
+- `research-outcomes.js`: strict pipeline event validator for applications, invitations, participation, acceptance and payments. A paid research entry contributes to the owner-reviewed research receipt tally only when a documented bank posting is classified as earned income, independently owner-reconciled in the journal, and matched to the study-specific payout evidence. A bank posting cannot be claimed by two studies; incomplete stage trails remain unverified.
+- `OWNER-PRIVATE-SCHEMA.sql`: an **unapplied** Supabase/Postgres migration template for a separate private project. A one-person administrative allowlist, no anon grants, row-level security and append-only financial/evidence records are specified. The SQL file contains no owner identifiers, secrets or private transactions. Its policies have NOT been validated against a running database.
+- `tests/incomeos-event-journal.mjs`, `tests/incomeos-research-outcomes.mjs`, and `tests/incomeos-source-boundary.mjs`: synthetic-data regression suites; required in GitHub Actions.
+
+The current publicly readable GitHub repo cannot itself provide owner-only private hosting. The connected GitHub tool also does not presently expose private-repository creation, and no new backend project was provisioned. The public study application is a separate source of **public** recruitment information; it must not receive personal financial data.
+
+**Migration sequence (blocked until a private host is provisioned and approved):** verify server-side owner identity and deny-by-default, apply and test RLS to a separate private database, secure encrypted active financial storage, verify P0 access and recovery tests, develop an authenticated import adapter, verify the journal head hash and event chain server-side, then migrate existing unencrypted local records only with explicit owner approval. Keep financial entry disabled in staging.
+
+**Important:** All these changes are source-only increments, not a completed authenticated service. The user should not upload statements, tax forms or account details to the public prototype.
