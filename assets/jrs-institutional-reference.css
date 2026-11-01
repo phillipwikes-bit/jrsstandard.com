@@ -922,3 +922,128 @@ body.jrs-institutional.jrs-training-page .progress-count{
 body.jrs-institutional.jrs-training-page .jrs-training-desk-reference-body div[style*="font-size:8px"]{
  font-size:12px!important;line-height:1.5!important;letter-spacing:.04em!important
 }
+
+/* JRS 2026-11 resource discovery: accessible progressive-enhancement catalog.
+   Consistent with the institutional reference palette; all items exist in HTML
+   even when JavaScript is disabled. */
+body.jrs-institutional.jrs-resource-page .jrs-resource-catalog{
+ margin:32px 0 42px!important;
+ padding:27px clamp(16px,3vw,28px) 25px!important;
+ background:#eaf1f5!important;border:1px solid #cddce6!important;
+ border-radius:4px!important;max-width:100%!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-catalog-heading{
+ display:flex!important;align-items:flex-end!important;
+ justify-content:space-between!important;gap:12px 24px!important;
+ flex-wrap:wrap!important;margin:0 0 20px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-catalog-heading .section-label{
+ margin:0 0 7px!important;font:700 12px/1.5 Inter,system-ui,sans-serif!important;
+ text-transform:uppercase!important;letter-spacing:.05em!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-catalog-heading h2{
+ font:400 clamp(26px,3vw,35px)/1.2 Georgia,serif!important;
+ color:#17364f!important;margin:0 0 10px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-catalog-heading p:not(.section-label){
+ font:400 15px/1.6 Inter,system-ui,sans-serif!important;
+ color:#38556a!important;margin:0!important;max-width:670px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-catalog-guide-link{
+ display:inline-flex!important;align-items:center!important;min-height:44px!important;
+ font:600 14px/1.4 Inter,system-ui,sans-serif!important;
+ color:#1d5276!important;max-width:100%!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-search[hidden],
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry[hidden],
+body.jrs-institutional.jrs-resource-page .jrs-resource-empty[hidden]{
+ display:none!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-search{
+ display:grid!important;grid-template-columns:minmax(0,1.6fr) repeat(2,minmax(0,1fr))!important;
+ align-items:end!important;gap:12px!important;padding:18px!important;margin:0 0 14px!important;
+ border:1px solid #c4d4df!important;border-radius:4px!important;background:#fff!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-search-field{
+ display:flex!important;flex-direction:column!important;gap:5px!important;min-width:0!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-search-field label{
+ font:700 13px/1.4 Inter,system-ui,sans-serif!important;color:#17364f!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-search :where(input,select){
+ width:100%!important;max-width:100%!important;min-width:0!important;
+ box-sizing:border-box!important;border:1px solid #8ca5b7!important;
+ border-radius:3px!important;background:#fff!important;color:#142f46!important;
+ padding:11px 12px!important;font:400 16px/1.45 Inter,system-ui,sans-serif!important;
+ min-height:47px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-search :where(input,select,button):focus-visible,
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry a:focus-visible{
+ outline:3px solid #0b679c!important;outline-offset:3px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-reset{
+ grid-column:1 / -1!important;justify-self:start!important;
+ min-height:44px!important;background:transparent!important;
+ color:#1d5276!important;border:1px solid #8aa5b6!important;
+ border-radius:3px!important;padding:10px 16px!important;
+ font:700 14px/1.4 Inter,system-ui,sans-serif!important;cursor:pointer!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-count{
+ font:600 14px/1.55 Inter,system-ui,sans-serif!important;
+ color:#2b506b!important;margin:0 0 14px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-results{
+ display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;
+ gap:12px!important;min-width:0!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry{
+ display:flex!important;flex-direction:column!important;min-width:0!important;
+ background:#fff!important;border:1px solid #cddae4!important;
+ border-radius:3px!important;padding:17px 19px!important;
+ overflow-wrap:anywhere!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry[hidden]{display:none!important}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry-meta{
+ font:700 12px/1.55 Inter,system-ui,sans-serif!important;
+ color:#865c22!important;letter-spacing:.02em!important;
+ margin:0 0 6px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry h3{
+ font:700 18px/1.35 Inter,system-ui,sans-serif!important;
+ color:#17364f!important;margin:0 0 8px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry p{
+ font:400 14px/1.6 Inter,system-ui,sans-serif!important;
+ color:#38566b!important;margin:0 0 11px!important;flex:1!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-entry a{
+ display:inline-flex!important;align-items:center!important;align-self:flex-start!important;
+ min-height:44px!important;padding:7px 0!important;
+ color:#155077!important;font:700 14px/1.5 Inter,system-ui,sans-serif!important;
+ text-decoration:underline!important;text-underline-offset:3px!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-empty{
+ padding:15px!important;border:1px dashed #809bab!important;
+ color:#25455f!important;background:#fff!important;
+ font:600 15px/1.55 Inter,system-ui,sans-serif!important
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-catalog-note{
+ color:#416078!important;margin:19px 0 0!important;
+ font:400 13px/1.6 Inter,system-ui,sans-serif!important
+}
+@media(max-width:760px){
+ body.jrs-institutional.jrs-resource-page .jrs-resource-catalog{
+   margin:25px 0 30px!important;padding:20px 15px!important
+ }
+ body.jrs-institutional.jrs-resource-page .jrs-resource-search,
+ body.jrs-institutional.jrs-resource-page .jrs-resource-results{
+   grid-template-columns:minmax(0,1fr)!important
+ }
+ body.jrs-institutional.jrs-resource-page .jrs-resource-search{padding:14px!important;gap:11px!important}
+ body.jrs-institutional.jrs-resource-page .jrs-resource-entry{padding:16px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.jrs-institutional.jrs-resource-page .jrs-resource-entry{
+   transition:none!important
+ }
+}
