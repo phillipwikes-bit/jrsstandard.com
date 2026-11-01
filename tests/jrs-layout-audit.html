@@ -80,7 +80,7 @@
    // a different landmark, not only on pointer clicks or Escape.
    let focusLeaveClosed=true;
    if(narrow && toggle && nav){
-     const external=d.querySelector('.wordmark')||d.querySelector('a[href]');
+     const external=d.querySelector('.wordmark')?.closest('a[href]')||d.querySelector('a[href]');
      focusLeaveClosed=!!external && !nav.contains(external);
      if(focusLeaveClosed){
        toggle.click();
