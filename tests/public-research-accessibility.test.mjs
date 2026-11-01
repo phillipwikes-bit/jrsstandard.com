@@ -38,10 +38,10 @@ test('public release does not include modified owner-private dashboard page',()=
  assert.ok(!dashboard.includes('id="research-engagement"'));
 });
 test('home offers four clear routes and preserves access to free guides',()=>{
- for(const s of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Reviewer reference','Open the three field guides']){
+ for(const s of ['01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice','Open the three field guides']){
   assert.ok(home.includes(s), 'missing path or free-guide access: ' + s);
  }
- for(const link of ['jrsstandard.html','resources.html','research.html','reference/','investigator-guides.html']){
+ for(const link of ['jrsstandard.html','resources.html','research.html','training.html','investigator-guides.html']){
   assert.ok(home.includes('href="'+link+'"'), 'missing public link: ' + link);
  }
 });

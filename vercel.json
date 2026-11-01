@@ -68,16 +68,6 @@
       "permanent": false
     },
     {
-      "source": "/platform-evaluation-001.html",
-      "destination": "/resources.html",
-      "permanent": false
-    },
-    {
-      "source": "/security.html",
-      "destination": "/privacy-notice.html",
-      "permanent": false
-    },
-    {
       "source": "/privacy.html",
       "destination": "/privacy-notice.html",
       "permanent": false
@@ -89,7 +79,7 @@
     },
     {
       "source": "/org-pilot.html",
-      "destination": "/research.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -114,7 +104,7 @@
     },
     {
       "source": "/engine-activity.html",
-      "destination": "/resources.html",
+      "destination": "/research.html",
       "permanent": false
     },
     {
@@ -134,7 +124,7 @@
     },
     {
       "source": "/openapi.json",
-      "destination": "/resources.html",
+      "destination": "/manifest.html",
       "permanent": false
     },
     {
@@ -229,7 +219,7 @@
     },
     {
       "source": "/engine-activity",
-      "destination": "/resources.html",
+      "destination": "/research.html",
       "permanent": false
     },
     {
@@ -259,7 +249,7 @@
     },
     {
       "source": "/platform-evaluation-001",
-      "destination": "/resources.html",
+      "destination": "/platform-evaluation-001.html",
       "permanent": false
     },
     {
@@ -299,7 +289,7 @@
     },
     {
       "source": "/org-pilot",
-      "destination": "/research.html",
+      "destination": "/org-pilot.html",
       "permanent": false
     },
     {
@@ -339,7 +329,7 @@
     },
     {
       "source": "/review-status",
-      "destination": "/resources.html",
+      "destination": "/review-status.html",
       "permanent": false
     },
     {
@@ -399,7 +389,7 @@
     },
     {
       "source": "/diagnostic",
-      "destination": "/org-pilot.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -474,22 +464,27 @@
     },
     {
       "source": "/openapi",
-      "destination": "/resources.html",
+      "destination": "/manifest.html",
       "permanent": false
     },
     {
       "source": "/openapi-review-engine.json",
-      "destination": "/openapi.json",
+      "destination": "/manifest.html",
       "permanent": true
     },
     {
       "source": "/sandbox",
-      "destination": "/review-engine.html#sandbox",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
       "source": "/pricing",
       "destination": "/resources.html",
+      "permanent": false
+    },
+    {
+      "source": "/manifest",
+      "destination": "/manifest.html",
       "permanent": false
     }
   ],

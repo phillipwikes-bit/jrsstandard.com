@@ -1,0 +1,27 @@
+name: JRS professional public reference
+on:
+  pull_request:
+    paths:
+      - '*.html'
+      - 'assets/jrs-professional-accessibility.css'
+      - 'sitemap.xml'
+      - 'tests/public-practitioner-identity.mjs'
+      - 'tests/public-reference-navigation.mjs'
+      - 'tests/public-research-accessibility.test.mjs'
+      - '.github/workflows/jrs-professional-reference.yml'
+  push:
+    branches:
+      - 'fix/jrs-public-methodology-first-2026-11-01'
+permissions:
+  contents: read
+jobs:
+  public-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/public-practitioner-identity.mjs
+      - run: node tests/public-reference-navigation.mjs
+      - run: node --test tests/public-research-accessibility.test.mjs
