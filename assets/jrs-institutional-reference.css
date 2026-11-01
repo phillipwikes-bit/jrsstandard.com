@@ -972,7 +972,7 @@ body.jrs-institutional.jrs-resource-page .jrs-resource-search-field label{
 }
 body.jrs-institutional.jrs-resource-page .jrs-resource-search :where(input,select){
  width:100%!important;max-width:100%!important;min-width:0!important;
- box-sizing:border-box!important;border:1px solid #8ca5b7!important;
+ box-sizing:border-box!important;border:1px solid #56738a!important;
  border-radius:3px!important;background:#fff!important;color:#142f46!important;
  padding:11px 12px!important;font:400 16px/1.45 Inter,system-ui,sans-serif!important;
  min-height:47px!important
@@ -984,7 +984,7 @@ body.jrs-institutional.jrs-resource-page .jrs-resource-entry a:focus-visible{
 body.jrs-institutional.jrs-resource-page .jrs-resource-reset{
  grid-column:1 / -1!important;justify-self:start!important;
  min-height:44px!important;background:transparent!important;
- color:#1d5276!important;border:1px solid #8aa5b6!important;
+ color:#1d5276!important;border:1px solid #56738a!important;
  border-radius:3px!important;padding:10px 16px!important;
  font:700 14px/1.4 Inter,system-ui,sans-serif!important;cursor:pointer!important
 }
