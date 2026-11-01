@@ -186,7 +186,14 @@
        desk.querySelector('summary').click();
        editorialValid=editorialValid && !desk.open;
      }
-     if(!editorialValid)editorialIssue='Training module access or historical PDF edition notice missing';
+     if(!editorialValid)editorialIssue=JSON.stringify({
+       info:!!info,infoClosed:!!info&&!info.open,tags:!!info?.querySelector('.hero-tags'),
+       desk:!!desk,deskClosed:!!desk&&!desk.open,firstModule:!!firstModule,firstModuleTop,
+       statusFont:status?parseFloat(w.getComputedStyle(status).fontSize):null,
+       outcomeFont:outcome?parseFloat(w.getComputedStyle(outcome).fontSize):null,
+       oldEdition:!!desk && /Standard PDF is Version 2\\.0/.test(desk.textContent),
+       moduleTextValid
+     });
    }
    if(item.page==='research.html'){
      const boundary=d.querySelector('.boundary');
