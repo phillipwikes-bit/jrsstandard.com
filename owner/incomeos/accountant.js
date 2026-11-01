@@ -343,7 +343,7 @@
     $("backup-ledger").addEventListener("click",backup);
     $("print-accountant").addEventListener("click",printReport);
     $("download-template").addEventListener("click",function(){
-      download(csv([["kind","date","description","vendor","category","amount_usd","status","business_use_pct","evidence_ref","notes"],["expense","2026-01-01","Claude extra API usage","Anthropic","software","0.00","paid","100","example only","Replace or delete example"]]),"IncomeOS-import-template.csv","text/csv;charset=utf-8");
+      download(csv([["kind","date","description","vendor","category","amount_usd","status","business_use_pct","evidence_ref","notes","evidence_status"],["expense","2026-01-01","Claude extra API usage","Anthropic","software","0.00","paid","","example only","Replace or delete example","missing"]]),"IncomeOS-import-template.csv","text/csv;charset=utf-8");
     });
     $("import-trigger").addEventListener("click",function(){$("import-ledger").click();});
     $("import-csv-trigger").addEventListener("click",function(){$("import-csv").click();});
