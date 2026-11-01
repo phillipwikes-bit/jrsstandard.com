@@ -113,3 +113,15 @@ No financial events were sent to the public study feed. No revenue, recovered mo
 ## Increment: public research interoperability and audited-value model
 
 The November 1 continuation adds `public-feed-adapter.js` for strict public-field source mapping and unknown deadline handling; `financial-value.js` for independent owner-reviewed financial classifications and no research-payment double count; and rollback protection during encrypted-backup restoration. Both new synthetic test files are required by CI. No personal financial feed was connected and the owner-only deployment security gate remains open. The public Lovable research site and private owner staging branch are not automatically synchronized.
+
+
+## Development continuation: statement close and protected append gate
+
+| Component | Built in current increment | Validation status | Release dependency |
+| --- | --- | --- | --- |
+| Isolated staging target | Existing Vercel `incomeos-opportunity-desk` configured with authentication on all deployments, no custom domains | Protection configuration read back | Preview blocked by free-tier deployment API quota (HTTP 402); no hosted browser or network tests |
+| Multi-account statement close | `statement-close.js`: required owner-declared scope, bank and card balance conventions, exact statement arithmetic, source counts, linked entries, contiguous periods and evidence checks | Synthetic tests `tests/incomeos-statement-close.mjs` | Authenticated import, source completeness, genuine statement documents, independent bank reconciliation |
+| Financial journal persistence | `private-append-handler.js`: an unrouted fail-closed server adapter contract for origin, authentication, owner allowlist, CSRF, exact head and atomic append | Synthetic tests `tests/incomeos-private-append.mjs` | Trusted server authentication, verified CSRF, transactional repository, idempotency, KMS/at-rest encryption, deployed endpoint |
+| Database authorization correction | Browser direct INSERT revoked for private financial and evidence data in draft SQL; owner receives SELECT-only access | Static security policy checks | Separate database provision and real owner/nonowner/anonymous tests before migration |
+
+No site was deployed and no owner financial data was imported. The JRS custom production domains remain unchanged. Public research data remains separated from any future private financial service. No tax determination or new financial income is established by passing synthetic tests.
