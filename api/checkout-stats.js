@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
@@ -57,6 +58,8 @@ function bump(map, k) {
 }
 
 export default async function handler(req) {
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
 
   const env = (typeof process !== 'undefined' && process.env) || {};

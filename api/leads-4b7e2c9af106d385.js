@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
 // OWNER-ONLY COMMERCIAL INBOX. Every lead, in full, newest first.
@@ -99,7 +100,9 @@ function isTestRow(row) {
   return false;
 }
 
-export default async function handler(req) {
+export default async function handler(req){
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
 
   const env = (typeof process !== 'undefined' && process.env) || {};

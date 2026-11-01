@@ -64,22 +64,17 @@
     },
     {
       "source": "/platform-integration.html",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
       "source": "/platform-evaluation-001.html",
-      "destination": "/review-engine.html",
-      "permanent": false
-    },
-    {
-      "source": "/manifest.html",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
       "source": "/security.html",
-      "destination": "/review-engine.html",
+      "destination": "/privacy-notice.html",
       "permanent": false
     },
     {
@@ -94,7 +89,7 @@
     },
     {
       "source": "/org-pilot.html",
-      "destination": "/review-engine.html",
+      "destination": "/research.html",
       "permanent": false
     },
     {
@@ -119,7 +114,7 @@
     },
     {
       "source": "/engine-activity.html",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -129,7 +124,7 @@
     },
     {
       "source": "/submit-record.html",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -139,7 +134,7 @@
     },
     {
       "source": "/openapi.json",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -234,7 +229,7 @@
     },
     {
       "source": "/engine-activity",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -249,7 +244,7 @@
     },
     {
       "source": "/platform-integration",
-      "destination": "/platform-integration.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -264,7 +259,7 @@
     },
     {
       "source": "/platform-evaluation-001",
-      "destination": "/platform-evaluation-001.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -304,7 +299,7 @@
     },
     {
       "source": "/org-pilot",
-      "destination": "/org-pilot.html",
+      "destination": "/research.html",
       "permanent": false
     },
     {
@@ -344,7 +339,7 @@
     },
     {
       "source": "/review-status",
-      "destination": "/review-status.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -354,7 +349,7 @@
     },
     {
       "source": "/submit-record",
-      "destination": "/submit-record.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -479,7 +474,7 @@
     },
     {
       "source": "/openapi",
-      "destination": "/review-engine.html",
+      "destination": "/resources.html",
       "permanent": false
     },
     {
@@ -565,6 +560,40 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/programme-status-9872fb93cc94.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
+    },
+    {
+      "source": "/programme--9872fb93cc94.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
         }
       ]
     }

@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
@@ -12,6 +13,8 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 function json(o, s){ return new Response(JSON.stringify(o, null, 2), { status: s||200, headers: { 'Content-Type':'application/json', 'Cache-Control':'no-store' } }); }
 
 export default async function handler(req){
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   if (req.method !== 'GET') return json({ error:'method_not_allowed' }, 405);
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';

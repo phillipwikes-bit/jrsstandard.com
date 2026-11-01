@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
@@ -81,6 +82,8 @@ function json(o, s){
 }
 
 export default async function handler(req){
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   if (req.method === 'OPTIONS') {
     return new Response(null, { status:204, headers:{
       'Access-Control-Allow-Origin':'*',
