@@ -13,10 +13,14 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="stylesheet" href="./incomeos.css">
 <script defer src="./accountant.js"></script>
+<script defer src="./spend-intelligence.js"></script>
+<script defer src="./research-radar.js"></script>
 <script defer src="./decision-engine.js"></script>
 <script defer src="./vault.js"></script>
 <script defer src="./incomeos.js"></script>
 <script defer src="./decision-ui.js"></script>
+<script defer src="./spend-ui.js"></script>
+<script defer src="./research-ui.js"></script>
 <script defer src="./vault-ui.js"></script>
 </head>
 <body>
@@ -40,6 +44,32 @@
   <section id="view-research" class="view active" aria-labelledby="research-heading">
     <div class="sectionintro"><div><span class="kicker">01 / INCOME DISCOVERY</span><h2 id="research-heading">Paid research</h2><p>Specific recruiter applications, not marketplace search pages.</p></div><button type="button" class="smallbtn" id="refresh" aria-label="Refresh reviewed opportunity file">Refresh</button></div>
     <div class="callout"><strong>Qualification is not guaranteed.</strong> Incentives require recruiter selection and successful participation. Review timestamps and remaining-place uncertainty on each card.</div>
+    <div class="panel" id="research-radar-panel">
+      <div class="panelrow"><h3>Paid research opportunity radar</h3><button type="button" class="smallbtn" id="radar-rescan">Recheck local feed</button></div>
+      <p class="muted">Detect and prioritize sourced survey, interview, usability and focus-group candidates by compensation, screening effort, location, date and published eligibility. Research leads remain distinct from earned income and from passive investments.</p>
+      <p class="muted"><strong>No live recruiter connection.</strong> The radar checks a dated research snapshot and reviewed JSON imports. The existing ChatGPT hourly research alerts are separate and do not synchronize automatically into this browser workspace. An advertised incentive is not a confirmed seat or payment.</p>
+      <form id="radar-preferences">
+        <div class="formgrid">
+          <div><label for="radar-min-pay">Minimum advertised compensation ($)</label><input type="number" id="radar-min-pay" value="100" min="0" max="100000" step="1" inputmode="decimal"></div>
+          <div><label for="radar-max-screen">Maximum screening effort (minutes)</label><input type="number" id="radar-max-screen" value="15" min="0" max="720" step="1" inputmode="numeric"></div>
+        </div>
+        <label class="checkline"><input id="radar-remote" type="checkbox" checked> Prioritize fully remote opportunities</label>
+        <button class="smallbtn" type="submit">Apply detection criteria</button>
+      </form>
+      <div class="radar-import">
+        <label for="radar-import-file">Reviewed public opportunity data (JSON)</label>
+        <input type="file" id="radar-import-file" accept=".json,application/json">
+        <div class="reportactions">
+          <button type="button" class="smallbtn" id="radar-import">Import and analyze leads</button>
+          <button type="button" class="smallbtn" id="radar-template">Download sample format</button>
+          <button type="button" class="smallbtn" id="radar-export">Export screening results CSV</button>
+        </div>
+        <p class="muted">Import only publicly sourced opportunity descriptions, never application answers, passwords, financial statements or recruiter login data.</p>
+      </div>
+      <p id="radar-count" role="status" aria-live="polite" class="muted"></p>
+      <p id="radar-status" role="status" aria-live="polite" class="muted"></p>
+      <div id="radar-results" class="radar-results"></div>
+    </div>
     <div class="filterbar"><label class="sr-only" for="research-filter">Filter research leads</label><select id="research-filter"><option value="current">Upcoming sessions</option><option value="online">Online only</option><option value="direct">Direct screeners</option><option value="highpay">Highest session pay</option><option value="all">All, including past dates</option></select><label class="sr-only" for="research-search">Search research leads</label><input id="research-search" type="search" placeholder="Search studies and recruiters" autocomplete="off"></div>
     <div id="research-cards" class="stack"></div>
   </section>
@@ -61,6 +91,39 @@
       </div>
       <p class="muted">*Not taxable profit or cash available to invest. Reported fees and costs are not necessarily tax deductible. Pending payments, recovered principal, and unreconciled sale proceeds are tracked separately.</p>
       <div class="reportactions"><button type="button" class="mainbtn" id="print-accountant">Print / Save annual report as PDF</button><button type="button" class="smallbtn" id="export-ledger">Export detailed CSV</button><button type="button" class="smallbtn" id="backup-ledger">Download private JSON backup</button></div>
+    </div>
+    <div class="panel" id="spend-intelligence-panel">
+      <div class="panelrow"><h3>Spending intelligence and cash-flow planning</h3><button type="button" class="smallbtn" id="spend-refresh">Analyze records</button></div>
+      <p id="spend-coverage" class="muted">Only locally entered or imported records are analyzed.</p>
+      <p class="muted">Inspired by modern personal-budgeting workflows: inferred recurring merchants, editable monthly category targets, manually planned bills, twelve-month recorded cash flow and an evidence review queue. These are estimates, not verified upcoming obligations or a bank balance.</p>
+      <h4>Monthly spending targets</h4>
+      <form id="spend-budget-form">
+        <div class="formgrid">
+          <div><label for="spend-budget-category">Category</label><select id="spend-budget-category"></select></div>
+          <div><label for="spend-budget-limit">Monthly target ($)</label><input id="spend-budget-limit" type="number" min="0" max="1000000" step="0.01" placeholder="Not set" inputmode="decimal"></div>
+        </div>
+        <div class="formbuttons"><button type="submit" class="smallbtn">Save target</button><button type="button" class="smallbtn" id="spend-budget-remove">Remove target</button></div>
+      </form>
+      <div id="spend-budget-results"></div>
+      <h4>Possible recurring charges</h4>
+      <p class="muted">An inferred charge pattern requires repeated observations. It must be checked against the merchant before treating it as an active subscription or upcoming bill.</p>
+      <div id="spend-patterns"></div>
+      <h4>Owner-entered expected bills</h4>
+      <form id="spend-plan-form">
+        <label for="spend-plan-name">Biller or payment description</label><input id="spend-plan-name" maxlength="80" placeholder="e.g., Internet service" autocomplete="off" required>
+        <div class="formgrid">
+          <div><label for="spend-plan-amount">Expected amount ($)</label><input id="spend-plan-amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" required></div>
+          <div><label for="spend-plan-date">Next expected date</label><input id="spend-plan-date" type="date" required></div>
+          <div><label for="spend-plan-period">Recurrence</label><select id="spend-plan-period"><option value="monthly">Monthly</option><option value="quarterly">Quarterly</option><option value="annual">Annual</option></select></div>
+        </div>
+        <button type="submit" class="smallbtn">Add expected bill</button>
+      </form>
+      <div id="spend-plans"></div>
+      <h4>Recorded monthly receipts and expenses</h4>
+      <div id="spend-cashflow"></div>
+      <div class="panelrow"><h4>Exception review</h4><span class="muted" id="spend-review-count"></span></div>
+      <div id="spend-review"></div>
+      <p class="muted" id="spend-status" role="status" aria-live="polite"></p>
     </div>
     <div class="panel">
       <h3 id="receipt-form-title">Record any income or receipt</h3>
