@@ -45,6 +45,27 @@ try{
   assert.match(result.headers.get('cache-control')||'',/no-store/,reader);
  }
  assert.equal(called,0,'no Supabase calls can precede authorization');
+ // A configured but invalid credential also cannot reach private storage.
+ process.env.OWNER_DASHBOARD_TOKEN='synthetic-owner-credential-abcdefghijklmnopqrstuvwxyz0123456789';
+ for (const reader of privateReaders) {
+   const mod=await import('../api/'+reader+'.js');
+   for (const supplied of [undefined, 'Bearer invalid-credential']) {
+     const request=new Request('https://www.jrsstandard.com/api/'+reader,{
+       headers:supplied?{authorization:supplied}:{}
+     });
+     const response=await mod.default(request);
+     assert.equal(response.status,401,reader+' must deny missing or invalid owner credential');
+     assert.match(response.headers.get('cache-control')||'',/no-store/,reader);
+   }
+ }
+ assert.equal(called,0,'unauthorized callers must never reach the database with an owner secret configured');
+ process.env.OWNER_DASHBOARD_TOKEN='short';
+ for (const reader of privateReaders) {
+   const mod=await import('../api/'+reader+'.js');
+   const response=await mod.default(new Request('https://www.jrsstandard.com/api/'+reader));
+   assert.equal(response.status,503,reader+' must reject an undersized configured secret');
+ }
+ assert.equal(called,0,'undersized secret must not reach the database');
 }finally{
  globalThis.fetch=savedFetch;
  if(previous===undefined)delete process.env.OWNER_DASHBOARD_TOKEN;
