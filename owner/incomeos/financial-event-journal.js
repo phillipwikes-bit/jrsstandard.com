@@ -24,7 +24,7 @@
   }
   function instant(x){
     return typeof x==="string"&&/^20\d\d-\d\d-\d\dT(?:[01]\d|2[0-3]):[0-5]\d:[0-5]\d(?:\.\d{3})?Z$/.test(x)
-      &&Number.isFinite(Date.parse(x)) &&new Date(x).toISOString()===new Date(Date.parse(x)).toISOString();
+      &&date(x.slice(0,10))&&Number.isFinite(Date.parse(x));
   }
   function cents(v){return Number.isSafeInteger(v)&&v>0&&v<=1000000000000;}
   function ref(x){return id(x)&&!/^\d{9,}$/.test(x);}
@@ -131,6 +131,7 @@
       if(row.seq!==sequence+1 || row.prevHash!==prev ||typeof row.hash!=="string"||!/^[0-9a-f]{64}$/.test(row.hash))throw Error("Journal sequence or hash broken at event "+(i+1));
       var normalized=input({id:row.id,type:row.type,timestamp:row.timestamp,data:row.data});
       assertEligible(normalized,history);
+      if(history.length && normalized.timestamp<history[history.length-1].timestamp)throw Error("Journal timestamp chronology violated");
       var content={seq:row.seq,prevHash:row.prevHash,id:normalized.id,type:normalized.type,timestamp:normalized.timestamp,data:normalized.data};
       var expected=await digest(JSON.stringify(content));
       if(expected!==row.hash)throw Error("Journal has been modified at event "+(i+1));
@@ -143,6 +144,7 @@
     var check=await verify(history),normalized=input(event);
     if(history.length>=MAX)throw Error("Journal event cap reached");
     assertEligible(normalized,history);
+    if(history.length && normalized.timestamp<history[history.length-1].timestamp)throw Error("Journal timestamp must not precede prior entry");
     var row={seq:check.count+1,prevHash:check.headHash,id:normalized.id,type:normalized.type,timestamp:normalized.timestamp,data:normalized.data};
     var next={...row,hash:await digest(JSON.stringify(row))};
     return history.concat([next]);
