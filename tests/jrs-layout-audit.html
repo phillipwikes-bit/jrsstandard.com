@@ -28,7 +28,14 @@
   f.src='/'+item.page;
   try{
    await loaded;
-   await new Promise(resolve=>setTimeout(resolve,80));
+   // A load event is not a stable render boundary. Wait for the page action
+   // and deferred shared menu before measuring either geometry or accessibility.
+   for(let attempts=0;attempts<24;attempts++){
+     if(f.contentDocument?.querySelector(item.selector) &&
+        f.contentDocument?.querySelector('.jrs-global-nav-toggle'))break;
+     await new Promise(resolve=>setTimeout(resolve,90));
+   }
+   await new Promise(resolve=>setTimeout(resolve,100));
    const d=f.contentDocument,w=f.contentWindow;
    const action=d.querySelector(item.selector);
    const nav=d.querySelector('nav.jrs-sitenav');
