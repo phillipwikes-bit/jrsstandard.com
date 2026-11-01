@@ -17,6 +17,7 @@ on:
       - 'tests/incomeos-private-append.mjs'
       - 'tests/incomeos-capital-readiness.mjs'
       - 'tests/incomeos-investment-cashflow.mjs'
+      - 'tests/incomeos-transfer-reconciliation.mjs'
       - '.github/workflows/incomeos-private-prototype.yml'
   workflow_dispatch:
 permissions:
@@ -29,4 +30,4 @@ jobs:
         with:
           persist-credentials: false
       - name: Verify source integrity and public-surface isolation
-        run: node tests/incomeos-owner-prototype.mjs && node tests/incomeos-controls.mjs && node tests/incomeos-intelligence.mjs && node tests/incomeos-accounting-controls.mjs && node tests/incomeos-recovery.mjs && node tests/incomeos-event-journal.mjs && node tests/incomeos-research-outcomes.mjs && node tests/incomeos-source-boundary.mjs && node tests/incomeos-feed-adapter.mjs && node tests/incomeos-financial-value.mjs && node tests/incomeos-statement-close.mjs && node tests/incomeos-private-append.mjs && node tests/incomeos-capital-readiness.mjs && node tests/incomeos-investment-cashflow.mjs
+        run: node tests/incomeos-owner-prototype.mjs && node tests/incomeos-controls.mjs && node tests/incomeos-intelligence.mjs && node tests/incomeos-accounting-controls.mjs && node tests/incomeos-recovery.mjs && node tests/incomeos-event-journal.mjs && node tests/incomeos-research-outcomes.mjs && node tests/incomeos-source-boundary.mjs && node tests/incomeos-feed-adapter.mjs && node tests/incomeos-financial-value.mjs && node tests/incomeos-statement-close.mjs && node tests/incomeos-private-append.mjs && node tests/incomeos-capital-readiness.mjs && node tests/incomeos-investment-cashflow.mjs && node tests/incomeos-transfer-reconciliation.mjs
