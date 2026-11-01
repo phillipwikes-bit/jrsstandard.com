@@ -92,7 +92,7 @@
     $(formId).reset();
     $(kind==="income"?"receipt-date":"cost-date").value=today();
     if(kind==="income"){$("receipt-fx").value="1";$("receipt-fees").value="0";$("receipt-cancel").hidden=true;$("receipt-save").textContent="Save income entry";editingIncome=null;}
-    else{$("cost-business-use").value="100";$("cost-cancel").hidden=true;$("cost-save").textContent="Save outflow";editingCost=null;}
+    else{$("cost-business-use").value="0";$("cost-cancel").hidden=true;$("cost-save").textContent="Save outflow";editingCost=null;}
   }
   function readIncome(){
     var amount=num($("receipt-amount").value),fx=num($("receipt-fx").value),fees=num($("receipt-fees").value||0);
