@@ -24,22 +24,12 @@
     },
     {
       "source": "/evidence-ledger",
-      "destination": "/research.html",
-      "permanent": false
-    },
-    {
-      "source": "/evidence-ledger.html",
-      "destination": "/research.html",
+      "destination": "/evidence-ledger.html",
       "permanent": false
     },
     {
       "source": "/datasets",
-      "destination": "/research.html",
-      "permanent": false
-    },
-    {
-      "source": "/datasets.html",
-      "destination": "/research.html",
+      "destination": "/datasets.html",
       "permanent": false
     },
     {
@@ -115,11 +105,6 @@
     {
       "source": "/supported.html",
       "destination": "/resources.html",
-      "permanent": false
-    },
-    {
-      "source": "/research-summary.html",
-      "destination": "/research.html",
       "permanent": false
     },
     {
