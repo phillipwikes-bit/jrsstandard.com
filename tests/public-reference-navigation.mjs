@@ -11,14 +11,14 @@ const routes = [
   ['01 · Start here', 'jrsstandard.html'],
   ['02 · Use the method', 'resources.html'],
   ['03 · Examine the evidence', 'research.html'],
-  ['04 · Technical reference', 'review-engine.html']
+  ['04 · Reviewer reference', 'reference/']
 ];
 for (const [label, target] of routes) {
   assert.ok(home.includes(label), 'homepage missing route ' + label);
   assert.ok(home.includes('href="' + target + '"'), 'homepage route missing destination ' + target);
   assert.ok(existsSync(new URL('../' + target, import.meta.url)), 'missing target ' + target);
 }
-assert.equal((home.match(/<div class="card-k">0[1-4] · (?:Start here|Use the method|Examine the evidence|Technical reference)<\/div>/g) || []).length, 4, 'four pathways should each appear once');
+assert.equal((home.match(/<div class="card-k">0[1-4] · (?:Start here|Use the method|Examine the evidence|Reviewer reference)<\/div>/g) || []).length, 4, 'four pathways should each appear once');
 for (const id of ['quick-review', 'field-guides', 'learn', 'review-references', 'supporting-detail']) {
   assert.ok(tools.includes('id="' + id + '"'), 'resources missing section ' + id);
 }
@@ -34,11 +34,11 @@ for (const original of [
   'simulations.html',
   'reference/',
   'research.html',
-  'review-engine.html'
+  'manifest.html'
 ]) assert.ok(tools.includes(original), 'public asset/link lost: ' + original);
 for (const target of ['research-summary.html', 'methodology.html', 'evidence-ledger.html', 'questions.html', 'research-register.html']) {
   assert.ok(evidence.includes('href="' + target + '"'), 'research traceability link lost: ' + target);
 }
 assert.ok(contact.includes('action="https://formspree.io/f/mreddwdg"'), 'existing inquiry workflow must remain unchanged');
-assert.ok(file('review-engine.html').includes('not a public record-processing service'), 'technical release boundary removed');
+assert.ok(file('review-engine.html').includes('No online record processing'), 'historical service boundary removed');
 console.log('JRS public navigation: 4 routes, 5 resource sections, research traceability and preserved integrations verified.');
