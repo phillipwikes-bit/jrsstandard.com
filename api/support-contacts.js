@@ -1,3 +1,4 @@
+import { ownerAccess } from './_owner-auth.js';
 export const config = { runtime: 'edge' };
 
 // OWNER-ONLY view of the named initiative supporters held in the private,
@@ -26,6 +27,8 @@ function json(o, s){
 }
 
 export default async function handler(req){
+  const denied = await ownerAccess(req);
+  if (denied) return denied;
   if (req.method === 'OPTIONS') return new Response(null, { status:204, headers:{ 'Access-Control-Allow-Origin':'*', 'Access-Control-Allow-Methods':'GET, OPTIONS', 'Access-Control-Allow-Headers':'Content-Type' } });
 
   const env = (typeof process !== 'undefined' && process.env) || {};
