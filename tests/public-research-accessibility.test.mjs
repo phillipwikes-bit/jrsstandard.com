@@ -14,7 +14,7 @@ test('research hub separates four professional research tasks',()=>{
  for(const p of ['research-summary.html','methodology.html','evidence-ledger.html','questions.html'])assert.ok(hub.includes('href="'+p+'"'),p);
 });
 test('research evidence and limits remain explicit',()=>{
- for(const s of ['83.9%','36 experts','16 experts','58 reviewers','384 graded reads','constructed','not been established'])assert.ok(hub.includes(s),s);
+ for(const s of ['83.9%','36 reviewers','16 experts','58 reviewers','384 graded reads','constructed','not been established'])assert.ok(hub.includes(s),s);
  assert.ok(hub.includes('95% participant-level CI 72.7% to 95.1%'));
 });
 test('old research register remains accessible and preserves reliability caveat',()=>{
@@ -62,7 +62,7 @@ test('shared CSS installed on leading public pages',()=>{
  }
 });
 test('public expert designation and direct PDFs retained',()=>{
- assert.ok(guides.includes('36</span> independent experts'));
+ assert.ok(guides.includes('36</span> reviewers completed')); assert.ok(guides.includes('separate expert detection analysis'));
  for(const f of ['JRS_Investigator_Field_Guide_Employment.pdf','JRS_Investigator_Field_Guide_FairHousing.pdf','JRS_Investigator_Field_Guide_International.pdf'])assert.ok(guides.includes(f));
 });
 test('existing Formspree contact delivery remains installed',()=>{
