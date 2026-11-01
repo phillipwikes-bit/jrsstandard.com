@@ -114,6 +114,32 @@ assert.ok(!read('training.html').includes('encodeURIComponent(email);'),
  'training must not leak enrollment PII through URL query strings');
 assert.ok(read('privacy-notice.html').includes('id="training-enrollment"'),
  'privacy notice must explicitly describe enrollment data flow');
+// Cross-document active-resource and optional registration controls.
+const htmlStandard=read('jrsstandard.html'),htmlTraining=read('training.html');
+for(const id of ['KIT-A1','KIT-A2','KIT-A3','KIT-B1','KIT-C1','KIT-D1','KIT-E1','KIT-E1A']){
+ assert.ok(htmlStandard.includes('>'+id+'</div>'),'retired kit inventory identifier absent '+id);
+ const active=new RegExp('>'+id+'<\\/div>[\\s\\S]{0,420}>Active<\\/div>');
+ assert.ok(!active.test(htmlStandard),'retired standalone PDF incorrectly marked active '+id);
+}
+assert.ok(htmlStandard.includes('Archived implementation-kit inventory'),
+ 'retired materials require explicit publication-availability legend');
+for(const edition of ["edition:'employment'","edition:'fairhousing'","edition:'international'"]){
+ assert.ok(htmlTraining.includes(edition),'training role guide missing current edition '+edition);
+}
+assert.ok(htmlTraining.includes("k.edition?'/api/dl?e='"),
+ 'training role link generator must use edition-based download routing');
+assert.ok(!htmlTraining.includes("href:'JRS_Investigator_Field_Guide.pdf'"),
+ 'training must not offer historical combined guide as current edition');
+assert.ok(htmlTraining.includes('The historical KIT-A1 PDF is not a current public download'),
+ 'training must disclose kit retirement in workflow instructions');
+const privacyNow=read('privacy-notice.html');
+assert.ok(!privacyNow.includes('<code>pilot_contacts</code>'),
+ 'public privacy notice must not disclose internal data table identifiers');
+assert.ok(privacyNow.includes('It does not authorize unrelated marketing or project updates'),
+ 'training contact consent must not be treated as marketing consent');
+assert.ok(htmlTraining.includes('id="en-transfer"'),
+ 'successor transfer choice must remain optional and distinct');
+
 if(errors.length){
  console.error('FAIL: '+errors.length+' issues across '+pages.length+
  ' pages, '+links+' links, '+tracked+' downloads and '+fragments+' fragments.');
