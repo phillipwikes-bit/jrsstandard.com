@@ -41,7 +41,7 @@ for(const reader of privateReaders){
  const src=readFileSync(new URL('../api/'+reader+'.js',import.meta.url),'utf8');
  assert.ok(src.includes("import { ownerAccess } from './_owner-auth.js';"),'missing read-auth import: '+reader);
  const start=src.slice(src.search(/export default async function handler\s*\(/),src.search(/export default async function handler\s*\(/)+230);
- assert.match(start,/const denied = await ownerAccess\(req\);\s*if \(denied\) return denied;/,'reader must fail closed before storage access: '+reader);
+ assert.match(start,/const\s+denied\s*=\s*await\s+ownerAccess\(req\);\s*if\s*\(denied\)\s*return\s+denied;/,'reader must fail closed before storage access: '+reader);
 }
 const previous=process.env.OWNER_DASHBOARD_TOKEN;
 delete process.env.OWNER_DASHBOARD_TOKEN;
