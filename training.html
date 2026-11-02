@@ -2740,7 +2740,11 @@ function downloadCert() {
     return;
   }
   recordCompletion();
-  var safeName = name.replace(/[^a-zA-Z0-9._ -]+/g,'').trim().replace(/\s+/g,'-') || 'Reviewer';
+  // Preserve international reviewer names in filenames while excluding
+  // file-system control characters and punctuation. The image keeps the
+  // complete recipient spelling entered by the reviewer.
+  var safeName = name.normalize('NFKC')
+    .replace(/[^\p{L}\p{M}\p{N}._ -]+/gu,'').trim().replace(/\s+/g,'-') || 'Reviewer';
   var a = document.createElement('a');
   a.download = 'JRS-Completion-' + safeName + '.png';
   a.href = document.getElementById('cert-canvas').toDataURL('image/png');
