@@ -59,6 +59,8 @@ assert.ok(html.includes('pplConsentText('));
 assert.ok(html.includes('p.activity_family'));
 assert.ok(html.includes('p.consent_contact_state'));
 assert.ok(html.includes('Conflicting, review required'));
+assert.ok(html.includes('No blanket transfer authority is established.'));
+assert.ok(!html.includes('is a transfer-ready asset.'));
 assert.ok(html.includes('p.publication_scope'));
 assert.ok(html.includes('consent_organization_named_state'));
 assert.ok(html.includes('window.confirm('));
