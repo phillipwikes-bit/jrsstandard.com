@@ -694,7 +694,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   </button>
  </div>
  <div class="primary-nav-inner" id="primary-nav-items">
- <button class="nav-item active" onclick="showSection('home')">Overview</button>
+ <button class="nav-item active" aria-current="location" onclick="showSection('home')">Overview</button>
  <button class="nav-item" onclick="showSection('doccond')">Documentation Conditions</button>
  <button class="nav-item" onclick="showSection('tools')">Field References</button>
  <button class="nav-item" onclick="showSection('scenarios')">Review Examples</button>
@@ -3827,7 +3827,7 @@ function showSection(id){
  const sec=document.getElementById('section-'+contentId);
  if(!sec)return;
  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
- document.querySelectorAll('.primary-nav-inner button.nav-item').forEach(n=>n.classList.remove('active'));
+ document.querySelectorAll('.primary-nav-inner button.nav-item').forEach(n=>{n.classList.remove('active');n.removeAttribute('aria-current');});
  sec.classList.add('active');
  if(id==='roles'&&typeof showRoleEnv==='function'){
    // Render default context synchronously, without stealing focus from the
@@ -3836,7 +3836,7 @@ function showSection(id){
  }
  const sectionMap={'home':0,'doccond':1,'tools':2,'scenarios':3,'guidance':4,'roles':5,'maturity':6,'ai':7,'usecases':8,'training':9,'about':10,'library':11,'kit':12};
  const navItems=document.querySelectorAll('.primary-nav-inner button.nav-item');
- if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
+ if(sectionMap[id]!==undefined&&navItems[sectionMap[id]]){navItems[sectionMap[id]].classList.add('active');navItems[sectionMap[id]].setAttribute('aria-current','location');}
  var sectionMenu=document.getElementById('primary-nav-items');
  var sectionToggle=document.getElementById('nav-hamburger');
  if(sectionMenu)sectionMenu.classList.remove('nav-open');
