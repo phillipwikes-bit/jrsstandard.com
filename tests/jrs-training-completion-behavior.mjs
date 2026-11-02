@@ -138,3 +138,67 @@ const flush=()=>new Promise(resolve=>setImmediate(resolve));
  assert.equal(x.store.get('jrs-training-completed-sent'),'1');
 }
 console.log('PASS: free modules do not solicit email; enrollment gate, HTTP/body receipts, retries, deduplication and single-field payload are enforced.');
+
+
+// Historical reviewer receipt must validate against a private issuer record.
+// No live Supabase traffic is made, no personal data is created or modified.
+{
+ const receiptSource=readFileSync(new URL('../api/reviewer-cert.js',import.meta.url),'utf8');
+ const completionSource=readFileSync(new URL('../reviewer/completion.html',import.meta.url),'utf8');
+ assert.match(receiptSource,/source=eq\.reviewer-cert/,'Only historical issuer rows may attest a receipt');
+ assert.match(receiptSource,/sameName\(name,recordName\)/,'Issuer name must be checked');
+ assert.doesNotMatch(completionSource,/Certificate issued to/,'The browser must not issue a credential');
+ assert.doesNotMatch(completionSource,/Six modules complete and the reviewer evaluation submitted/,'Do not overclaim training');
+ assert.doesNotMatch(completionSource,/linkedin\.com\/profile\/add/,'Do not promote a self-issued professional credential');
+
+ const priorFetch=globalThis.fetch;
+ const hadService=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
+ const priorService=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ const handler=(await import('../api/reviewer-cert.js')).default;
+ const code='JRS-R-AB23CD45';
+ let rows=[{name:'Alex Reviewer',created_at:'2026-08-17T12:30:00Z',
+   message:JSON.stringify({kind:'reviewer-cert',completion_code:code,
+     printed_name:'Alex Reviewer',printed_title:'Compliance Analyst'})}];
+ let requests=[];
+ process.env.SUPABASE_SERVICE_ROLE_KEY='unit-test-only';
+ globalThis.fetch=async(url,options={})=>{
+   requests.push({url:String(url),method:options.method||'GET'});
+   return new Response(JSON.stringify(rows),{status:200,headers:{'Content-Type':'application/json'}});
+ };
+ const run=async(args)=>handler(new Request('https://jrsstandard.com/api/reviewer-cert?'+new URLSearchParams(args)));
+ try {
+   let res=await run({code,name:'Alex Reviewer',title:'Invented Chief Executive',src:'verify'});
+   assert.equal(res.status,200,'Verified historical record may be rendered');
+   const verified=await res.text();
+   assert.match(verified,/Reviewer evaluation receipt/);
+   assert.match(verified,/Alex Reviewer/);
+   assert.match(verified,/Compliance Analyst/);
+   assert.match(verified,/August 17, 2026/,'Issue date must derive from issuer record');
+   assert.doesNotMatch(verified,/Invented Chief Executive/,'Caller title is not evidence');
+   assert.ok(requests.every(r=>r.method==='GET'),'Read-only verification must not mutate participant data');
+
+   res=await run({code,name:'Another Name',src:'verify'});
+   assert.equal(res.status,404,'A valid code with another person name must not mint a receipt');
+   res=await run({code:'JRS-R-FAKE0000',name:'Alex Reviewer',src:'verify'});
+   assert.equal(res.status,404,'Wrong code must not mint a receipt');
+   rows=[];
+   res=await run({code,name:'Alex Reviewer',src:'verify'});
+   assert.equal(res.status,404,'No issuer row must fail closed');
+
+   rows=[{name:'Alex Reviewer',created_at:'2026-08-17T12:30:00Z',
+     message:'{"kind":"reviewer-cert","completion_code":"JRS-R-FAKE0000"}'}];
+   res=await run({code,name:'Alex Reviewer',src:'verify'});
+   assert.equal(res.status,404,'Payload must match code exactly');
+   globalThis.fetch=async()=>new Response('unavailable',{status:502});
+   res=await run({code,name:'Alex Reviewer',src:'verify'});
+   assert.equal(res.status,503,'Issuer database failure must not mint a receipt');
+   delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+   res=await run({code,name:'Alex Reviewer',src:'verify'});
+   assert.equal(res.status,503,'Missing issuer verification credentials must fail closed');
+ } finally {
+   globalThis.fetch=priorFetch;
+   if(hadService)process.env.SUPABASE_SERVICE_ROLE_KEY=priorService;
+   else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ }
+}
+console.log('PASS: reviewer receipt code, name, title and issuance date are issuer-validated; false and unavailable records fail closed.');
