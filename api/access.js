@@ -85,9 +85,22 @@ export default async function handler(req){
     return json({ ok: true });
   }
   if (req.method !== 'POST') return json({ error:'method_not_allowed' }, 405);
+  const origin = req.headers.get('origin');
+  if (origin && origin !== new URL(req.url).origin)
+    return json({ error:'origin_not_allowed' }, 403);
   if (!SERVICE) return json({ error:'service_unavailable' }, 503);
 
-  let b; try { b = await req.json(); } catch(e){ return json({ error:'invalid_json' }, 400); }
+  // Named access requests must remain small and must be JSON objects.
+  const suppliedLength = Number(req.headers.get('content-length') || '0');
+  if (suppliedLength > 8192) return json({ error:'request_too_large' }, 413);
+  let b;
+  try {
+    const raw = await req.text();
+    if (raw.length > 8192) return json({ error:'request_too_large' }, 413);
+    b = JSON.parse(raw);
+    if (!b || typeof b !== 'object' || Array.isArray(b))
+      return json({ error:'invalid_json' }, 400);
+  } catch(e) { return json({ error:'invalid_json' }, 400); }
 
   const mode     = (clean(b.mode, 20) === 'support') ? 'support' : 'guide';
 
