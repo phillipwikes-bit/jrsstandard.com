@@ -188,3 +188,45 @@ for(const anchor of ['rc1','rc2','rc3','rc4','rc5'])
 assert.ok(read('research.html').includes('jrs-research-primary-links') &&
  read('research.html').includes('Read this first.'),
  'research quick paths must preserve evidence limitations');
+
+
+// Regression: a Standard section nested inside an inactive predecessor remains
+// invisible even when the section navigation adds .active to the child.
+// Track actual source div nesting, excluding scripts, styles and comments.
+// This deliberately fails on unmatched containers and hidden nested sections.
+{
+  const standardMarkup=read('jrsstandard.html')
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,'')
+    .replace(/<!--[\s\S]*?-->/g,'');
+  const stack=[],found=new Set(),nested=[],underflow=[];
+  let footerAncestors=null;
+  for(const match of standardMarkup.matchAll(/<\/?div\b[^>]*>|<footer\b[^>]*>/gi)){
+    const tag=match[0];
+    if(/^<\/div/i.test(tag)){
+      if(!stack.length)underflow.push(match.index);
+      else stack.pop();
+    }else if(/^<footer/i.test(tag)){
+      footerAncestors=stack.map(x=>x.id||x.className||'div');
+    }else{
+      const id=tag.match(/\bid=["']([^"']+)["']/i)?.[1]||null;
+      const className=tag.match(/\bclass=["']([^"']+)["']/i)?.[1]||'';
+      if(className.split(/\s+/).includes('page-section')){
+        found.add(id);
+        const prior=stack.filter(x=>x.className.split(/\s+/).includes('page-section'));
+        if(prior.length)nested.push({id,parents:prior.map(x=>x.id)});
+      }
+      stack.push({id,className});
+    }
+  }
+  assert.deepEqual(underflow,[],'Standard has orphan </div> closings');
+  assert.deepEqual(stack,[],'Standard has unclosed HTML div containers');
+  assert.deepEqual(nested,[],'Standard document sections must be siblings, never nested under another section');
+  assert.deepEqual(footerAncestors,[],'Standard footer must remain outside hidden document sections');
+  for(const id of ['section-home','section-doccond','section-tools','section-guidance',
+     'section-roles','section-maturity','section-ai','section-usecases',
+     'section-training','section-library']){
+    assert.ok(found.has(id),'Standard section unavailable: '+id);
+  }
+  console.log('PASS: Standard sections are independently addressable; no hidden nesting, orphan containers or footer containment.');
+}
