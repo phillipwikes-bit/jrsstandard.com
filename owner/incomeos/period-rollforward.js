@@ -54,18 +54,22 @@
     return values;
   }
   async function assess(input){
-    if(!obj(input)||!Array.isArray(input.periods)||input.periods.length<2||
+    if(!obj(input)||Object.keys(input).some(function(k){
+      return !["periods","initialOpeningReviewed","initialOpeningEvidenceId"].includes(k);
+    })||!Array.isArray(input.periods)||input.periods.length<2||
        input.periods.length>MAX_MONTHS)throw Error("Require 2 to 24 complete calendar-month source packages");
     if(!window.IncomeOSMonthlyClose||!window.IncomeOSDoubleEntry||!window.IncomeOSEventJournal)
       throw Error("Monthly close, journal and double-entry dependencies unavailable");
     var issues=[],processed=[],seenEventIds=new Set(),seenSourceIds=new Set(),seenBankIds=new Set(),
       seenEntryIds=new Set(),seenDocumentIds=new Set(),lastMonth=null,lastStatements=null,
-      baselineChart=null,baselineAccountMap=null,prevMonthEnd=null,previousHead=null,
-      previousMonthClose=null;
+      baselineChart=null,baselineAccountMap=null;
     for(var i=0;i<input.periods.length;i++){
       var p=input.periods[i];
-      if(!obj(p)||!obj(p.statementPackage)||!date(p.asOf)||!Array.isArray(p.entries)||
-         !Array.isArray(p.journal)||!Array.isArray(p.chart)||!Array.isArray(p.sourceAccountMap))
+      if(!obj(p)||Object.keys(p).some(function(k){
+        return !["asOf","journal","chart","entries","statementPackage","sourceAccountMap","sourceBindings"].includes(k);
+      })||!obj(p.statementPackage)||!date(p.asOf)||!Array.isArray(p.entries)||
+         !Array.isArray(p.journal)||!Array.isArray(p.chart)||!Array.isArray(p.sourceAccountMap)||
+         !Array.isArray(p.sourceBindings))
         throw Error("Each month requires dated full source/ledger packages");
       var pkg=p.statementPackage,from=pkg.from,to=pkg.to,month=p.asOf.slice(0,7);
       if(lastMonth!==null&&from!==nextDay(lastMonth))
@@ -97,6 +101,10 @@
            !chart.has(m.accountId)||usedAccounts.has(m.bankAccountId)||map.has(m.accountId))
           issues.push(issue("INVALID_ACCOUNT_MAPPING",month));
         else{map.set(m.accountId,m.bankAccountId);usedAccounts.add(m.bankAccountId);}
+      });
+      chart.forEach(function(kind,key){
+        if(["cash_asset","card_liability"].includes(kind)&&!map.has(key))
+          issues.push(issue("UNMAPPED_FINANCIAL_CHART_ACCOUNT",month,key));
       });
       if(baselineChart){
         if(chart.size!==baselineChart.size||
@@ -162,8 +170,7 @@
       processed.push({month:month,from:from,to:to,closeStatus:close.status,
         sourceHeadHash:verified.headHash,statementAccountCount:statements.size,
         balancedEntries:close.balancedEntries,verifiedOwnerOnly:true});
-      lastMonth=to;lastStatements=statements;previousHead=verified.headHash;
-      previousMonthClose=close;
+      lastMonth=to;lastStatements=statements;
     }
     // No period may be disclosed as successfully rolled forward if any failed.
     var accepted=issues.length===0;
