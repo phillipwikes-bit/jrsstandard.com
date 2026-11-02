@@ -2550,9 +2550,10 @@ function toggleModule(idx) {
   var isOpen = panel.classList.contains('open');
   // Close all panels
   document.querySelectorAll('.module-panel').forEach(function(p) { p.classList.remove('open'); });
-  document.querySelectorAll('.btn-open:not(.done)').forEach(function(b) {
-    b.textContent = '► Open';
+  document.querySelectorAll('.btn-open').forEach(function(b) {
+    // A completed module can still be reopened; closed state must be accurate.
     b.setAttribute('aria-expanded', 'false');
+    if (!b.classList.contains('done')) b.textContent = '► Open';
   });
   if (!isOpen) {
     panel.classList.add('open');
