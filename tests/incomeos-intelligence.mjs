@@ -1,0 +1,68 @@
+// Synthetic-only IncomeOS recurring charges, budgets, cash-flow and research candidate verification.
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import {resolve} from "node:path";
+import {Script,runInNewContext} from "node:vm";
+const root=resolve("owner/incomeos");
+const read=x=>readFileSync(resolve(root,x),"utf8");
+const engine=read("spend-intelligence.js"),radar=read("research-radar.js");
+const spendUi=read("spend-ui.js"),researchUi=read("research-ui.js");
+const page=read("index.html"),vault=read("vault.js"),main=read("incomeos.js");
+for(const code of [engine,radar,spendUi,researchUi])new Script(code);
+const sandbox={window:{},Date,Math,Number,Array,Object,JSON,String,Set,Map,URL,Error};
+runInNewContext(engine,sandbox);runInNewContext(radar,sandbox);
+const x=sandbox.window.IncomeOSIntelligence;
+const R=sandbox.window.IncomeOSResearchRadar;
+assert.equal(x.validDate("2026-02-29"),false);
+assert.equal(x.validDate("2028-02-29"),true);
+assert.equal(x.shiftMonth("2026-01-31",1),"2026-02-28");
+const out=(id,date,amount,vendor="Sample software")=>({id,kind:"outflow",type:"expense",category:"software",date,amountUsd:amount,payer:vendor,reference:id,evidenceStatus:"bank",businessUse:null,reconciled:false});
+const series=[out("s1","2026-08-01",10),out("s2","2026-09-01",10),out("s3","2026-10-01",15)];
+const patterns=x.recurring(series,"2026-11-01");
+assert.equal(patterns.length,1);
+assert.equal(patterns[0].nextEstimated,"2026-11-01");
+assert.equal(patterns[0].spike,true);
+assert.equal(patterns[0].status,"UNVERIFIED_PATTERN");
+assert.equal(x.recurring(series.slice(0,2),"2026-11-01").length,0,"Two monthly observations are insufficient");
+assert.equal(x.recurring([out("a","2026-10-01",5),out("b","2026-10-01",5),out("c","2026-10-01",5)],"2026-11-01").length,0,"Same-day API purchases are not recurring renewals");
+const res=x.analyze([...series,{kind:"income",status:"paid",scope:"income",date:"2026-10-20",grossUsd:120,feesUsd:5},{kind:"income",status:"pending",scope:"income",date:"2026-10-18",grossUsd:800,feesUsd:0},{kind:"outflow",type:"capital",date:"2026-10-01",amountUsd:90}],{budgets:{software:10},plans:[{id:"internet",name:"Internet",amount:55,nextDate:"2026-10-15",cadence:"monthly"}]},"2026-11-01");
+assert.equal(res.cashflow.find(t=>t.month==="2026-10").receipts,120);
+assert.equal(res.cashflow.find(t=>t.month==="2026-10").expenses,15);
+assert.equal(res.cashflow.find(t=>t.month==="2026-10").recordedMargin,100);
+assert.equal(res.cashflow.find(t=>t.month==="2026-10").incomeEntries,1);
+assert.equal(res.budgets[0].actual,0,"Current month budget uses current recorded month");
+assert.equal(res.planned[0].nextDate,"2026-11-15");
+assert.equal(res.reviewQueue.filter(t=>t.type==="entry").length,3);
+assert.equal(x.budgetVsActual(series,{software:10},"2026-10-30")[0].over,true);
+assert.throws(()=>x.budgetVsActual(series,{software:-1},"2026-10-30"));
+const study={id:"research-eligible-103",title:"Participant experience interview",provider:"Example Research",paymentUsd:150,minutes:60,screenMinutes:8,mode:"online",eventEnd:"2026-11-12",reviewed:"2026-11-01",url:"https://example.org/apply/103",sourceUrl:"https://example.org/listing/103",eligibility:["US residents, eligibility unconfirmed"],status:"Screener accessible; seats unconfirmed",linkKind:"Direct screener",risk:[]};
+const p={minPay:100,maxScreenMinutes:15,remoteOnly:true};
+let a=R.assess(study,p,"2026-11-01");
+assert.equal(a.priority,"PRIORITY_TO_SCREEN");
+assert.equal(a.availability,"UNCONFIRMED");
+assert.equal(a.paid,false);
+assert.ok(a.sessionRate>a.sessionPlusScreenRate,"Screening time lowers effective compensation");
+assert.ok(a.warnings.some(s=>s.includes("eligibility")));
+a=R.assess({...study,eventEnd:"2026-10-30"},p,"2026-11-01");assert.equal(a.priority,"HOLD");assert.ok(a.reasons.some(s=>/passed/.test(s)));
+a=R.assess({...study,mode:"hybrid"},p,"2026-11-01");assert.equal(a.priority,"HOLD");
+a=R.assess({...study,reviewed:"2026-10-20"},p,"2026-11-01");assert.equal(a.priority,"HOLD");
+a=R.assess({...study,eligibilityStatus:"owner-reports-ineligible"},p,"2026-11-01");assert.equal(a.priority,"HOLD");
+assert.throws(()=>R.candidate({...study,url:"javascript:alert(1)"}));
+assert.throws(()=>R.candidate({...study,sourceUrl:"http://example.org"}));
+assert.throws(()=>R.candidate({...study,sourceUrl:"https://localhost:8000/x"}));
+const sorted=R.digest([study,{...study}, {...study,id:"research-other-104",title:"Different study",url:"https://example.org/apply/104",sourceUrl:"https://example.org/listing/104",paymentUsd:200}],p,"2026-11-01");
+assert.equal(sorted.scanned,2);
+assert.equal(sorted.duplicateCount,1);
+assert.equal(sorted.results[0].candidate.paymentUsd,200);
+for(const id of ["spend-intelligence-panel","spend-budget-form","spend-plan-form","spend-patterns","spend-review","research-radar-panel","radar-preferences","radar-import-file","radar-results","radar-export"])
+  assert.match(page,new RegExp('id="'+id+'"'));
+for(const file of ["spend-intelligence.js","research-radar.js","spend-ui.js","research-ui.js"])
+  assert.match(page,new RegExp(file.replaceAll(".","\\.")));
+assert.match(vault,/incomeos\.spend\.preferences\.v1/);
+assert.match(vault,/incomeos\.research\.radar\.v1/);
+assert.match(main,/removeItem\("incomeos\.research\.radar\.v1"\)/);
+for(const code of [engine,radar,spendUi,researchUi]){
+  assert.doesNotMatch(code,/XMLHttpRequest|sendBeacon|WebSocket/);
+  assert.doesNotMatch(code,/fetch\s*\(\s*["']https?:/,"No requests directly to third-party websites");
+}
+console.log("IncomeOS competitor feature QA passed: recurring detection, calendar, forecasts, budgets, owner-review queue and study eligibility triage.");

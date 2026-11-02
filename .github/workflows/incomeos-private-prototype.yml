@@ -1,0 +1,40 @@
+name: IncomeOS private prototype checks
+on:
+  pull_request:
+    paths:
+      - 'owner/incomeos/**'
+      - 'tests/incomeos-owner-prototype.mjs'
+      - 'tests/incomeos-controls.mjs'
+      - 'tests/incomeos-intelligence.mjs'
+      - 'tests/incomeos-accounting-controls.mjs'
+      - 'tests/incomeos-recovery.mjs'
+      - 'tests/incomeos-event-journal.mjs'
+      - 'tests/incomeos-research-outcomes.mjs'
+      - 'tests/incomeos-source-boundary.mjs'
+      - 'tests/incomeos-feed-adapter.mjs'
+      - 'tests/incomeos-financial-value.mjs'
+      - 'tests/incomeos-statement-close.mjs'
+      - 'tests/incomeos-private-append.mjs'
+      - 'tests/incomeos-capital-readiness.mjs'
+      - 'tests/incomeos-investment-cashflow.mjs'
+      - 'tests/incomeos-transfer-reconciliation.mjs'
+      - 'tests/incomeos-preview-probe.mjs'
+      - 'tests/incomeos-preview-probe-qa.mjs'
+      - 'tests/incomeos-accountant-persistence.mjs'
+      - 'tests/incomeos-staging-privacy.mjs'
+      - 'tests/incomeos-double-entry.mjs'
+      - 'tests/incomeos-monthly-close.mjs'
+      - 'tests/incomeos-period-rollforward.mjs'
+      - '.github/workflows/incomeos-private-prototype.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  private-prototype:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verify source integrity and public-surface isolation
+        run: node tests/incomeos-owner-prototype.mjs && node tests/incomeos-controls.mjs && node tests/incomeos-intelligence.mjs && node tests/incomeos-accounting-controls.mjs && node tests/incomeos-recovery.mjs && node tests/incomeos-event-journal.mjs && node tests/incomeos-research-outcomes.mjs && node tests/incomeos-source-boundary.mjs && node tests/incomeos-feed-adapter.mjs && node tests/incomeos-financial-value.mjs && node tests/incomeos-statement-close.mjs && node tests/incomeos-private-append.mjs && node tests/incomeos-capital-readiness.mjs && node tests/incomeos-investment-cashflow.mjs && node tests/incomeos-transfer-reconciliation.mjs && node tests/incomeos-preview-probe-qa.mjs && node tests/incomeos-accountant-persistence.mjs && node tests/incomeos-staging-privacy.mjs && node tests/incomeos-double-entry.mjs && node tests/incomeos-monthly-close.mjs && node tests/incomeos-period-rollforward.mjs

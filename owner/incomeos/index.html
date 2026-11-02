@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="theme-color" content="#11292b">
+<meta name="description" content="Private IncomeOS prototype. Dated public-source research, owner-recorded receipts, opportunity review, and hypothetical compounding.">
+<title>IncomeOS | Private Opportunity Command Center</title>
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="stylesheet" href="./incomeos.css">
+<script defer src="./staging-interlock.js"></script>
+<script defer src="./accountant.js"></script>
+<script defer src="./accounting-controls.js"></script>
+<script defer src="./statement-close.js"></script>
+<script defer src="./financial-event-journal.js"></script>
+<script defer src="./transfer-reconciliation.js"></script>
+<script defer src="./transfer-review-ui.js"></script>
+<script defer src="./capital-readiness.js"></script>
+<script defer src="./capital-review-ui.js"></script>
+<script defer src="./accounting-controls-ui.js"></script>
+<script defer src="./recovery-engine.js"></script>
+<script defer src="./recovery-ui.js"></script>
+<script defer src="./spend-intelligence.js"></script>
+<script defer src="./research-radar.js"></script>
+<script defer src="./public-feed-adapter.js"></script>
+<script defer src="./decision-engine.js"></script>
+<script defer src="./vault.js"></script>
+<script defer src="./incomeos.js"></script>
+<script defer src="./decision-ui.js"></script>
+<script defer src="./spend-ui.js"></script>
+<script defer src="./research-ui.js"></script>
+<script defer src="./vault-ui.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to dashboard</a>
+<div class="app">
+<header class="sitehead">
+  <div class="topline"><div class="identity"><div class="mark">↗</div><div><strong>IncomeOS</strong><small>OWNER WORKSPACE · PROTOTYPE</small></div></div><span class="tag">Staging</span></div>
+  <div class="greeting">
+    <p class="overline">PRIVATE OPPORTUNITY INTELLIGENCE</p>
+    <h1>Discover. Capture.<br><em>Compound.</em></h1>
+    <p>One interface. Legitimate opportunities. Minimal owner effort.</p>
+  </div>
+</header>
+<main id="main">
+  <div class="status" id="feed-status" role="status">Loading saved opportunity snapshot…</div>
+  <div class="metrics" aria-label="Current record summary">
+    <div class="metric"><span>RECEIPTS · SELF-REPORTED</span><strong id="metric-paid">$0</strong></div>
+    <div class="metric"><span>STUDIES TO REVIEW</span><strong id="metric-study">0</strong></div>
+    <div class="metric"><span>ASSETS WATCHED</span><strong id="metric-asset">0</strong></div>
+  </div>
+  <section id="view-research" class="view active" aria-labelledby="research-heading">
+    <div class="sectionintro"><div><span class="kicker">01 / INCOME DISCOVERY</span><h2 id="research-heading">Paid research</h2><p>Specific recruiter applications, not marketplace search pages.</p></div><button type="button" class="smallbtn" id="refresh" aria-label="Refresh reviewed opportunity file">Refresh</button></div>
+    <div class="callout"><strong>Qualification is not guaranteed.</strong> Incentives require recruiter selection and successful participation. Review timestamps and remaining-place uncertainty on each card.</div>
+    <div class="panel" id="research-radar-panel">
+      <div class="panelrow"><h3>Paid research opportunity radar</h3><button type="button" class="smallbtn" id="radar-rescan">Recheck local feed</button></div>
+      <p class="muted">Detect and prioritize sourced survey, interview, usability and focus-group candidates by compensation, screening effort, location, date and published eligibility. Research leads remain distinct from earned income and from passive investments.</p>
+      <p class="muted"><strong>No live recruiter connection.</strong> The radar checks a dated research snapshot and reviewed public JSON imports, including the public opportunity-feed export structure. The existing ChatGPT hourly research alerts are separate and do not synchronize automatically into this browser workspace. An advertised incentive is not a confirmed seat or payment.</p>
+      <form id="radar-preferences">
+        <div class="formgrid">
+          <div><label for="radar-min-pay">Minimum advertised compensation ($)</label><input type="number" id="radar-min-pay" value="100" min="0" max="100000" step="1" inputmode="decimal"></div>
+          <div><label for="radar-max-screen">Maximum screening effort (minutes)</label><input type="number" id="radar-max-screen" value="15" min="0" max="720" step="1" inputmode="numeric"></div>
+        </div>
+        <label class="checkline"><input id="radar-remote" type="checkbox" checked> Prioritize fully remote opportunities</label>
+        <button class="smallbtn" type="submit">Apply detection criteria</button>
+      </form>
+      <div class="radar-import">
+        <label for="radar-import-file">Reviewed public opportunity data (JSON)</label>
+        <input type="file" id="radar-import-file" accept=".json,application/json">
+        <div class="reportactions">
+          <button type="button" class="smallbtn" id="radar-import">Import and analyze leads</button>
+          <button type="button" class="smallbtn" id="radar-template">Download sample format</button>
+          <button type="button" class="smallbtn" id="radar-export">Export screening results CSV</button>
+        </div>
+        <p class="muted">Import only publicly sourced opportunity descriptions, never application answers, passwords, financial statements or recruiter login data.</p>
+      </div>
+      <p id="radar-count" role="status" aria-live="polite" class="muted"></p>
+      <p id="radar-status" role="status" aria-live="polite" class="muted"></p>
+      <div id="radar-results" class="radar-results"></div>
+    </div>
+    <div class="filterbar"><label class="sr-only" for="research-filter">Filter research leads</label><select id="research-filter"><option value="current">Upcoming sessions</option><option value="online">Online only</option><option value="direct">Direct screeners</option><option value="highpay">Highest session pay</option><option value="all">All, including past dates</option></select><label class="sr-only" for="research-search">Search research leads</label><input id="research-search" type="search" placeholder="Search studies and recruiters" autocomplete="off"></div>
+    <div id="research-cards" class="stack"></div>
+  </section>
+  <section id="view-assets" class="view" aria-labelledby="assets-heading" hidden>
+    <div class="sectionintro"><div><span class="kicker">02 / CAPITAL OPPORTUNITIES</span><h2 id="assets-heading">Unconventional assets</h2><p>Income-producing rights and operator-managed assets. No generic savings-account comparisons.</p></div></div>
+    <div class="callout danger"><strong>Research only.</strong> No deal has passed full underwriting. Amounts shown are prior earnings or quoted prices, not promised income, and links may lead to a catalog rather than an individually verified active offer.</div>
+    <div id="asset-cards" class="stack"></div>
+  </section>
+  <section id="view-ledger" class="view" aria-labelledby="ledger-heading" hidden>
+    <div class="callout danger" id="financial-staging-interlock" role="status" hidden><strong>Financial entry disabled in staging.</strong> Private accounting records cannot be entered, imported, edited or restored until a separately protected owner deployment and encrypted active storage pass release verification. Existing local records, if any, may still be exported or erased. This interface does not verify financial accounts.</div>
+    <div class="sectionintro"><div><span class="kicker">03 / ACCOUNTANT RECORDS</span><h2 id="ledger-heading">Income and expense register</h2><p>All income sources, eligible expense candidates and financial movements, entered by you.</p></div></div>
+    <div class="callout"><strong>One consolidated personal ledger.</strong> Record research studies, contracts, royalties, dividends, rental income, reimbursements, asset sales and any other opportunities, including those found outside IncomeOS. No automatic IRS tax classification is made. Export the annual report for your accountant.</div>
+    <div class="panel">
+      <div class="panelrow"><h3>Tax-year overview</h3><label class="yearpicker" for="report-year">Year <input type="number" id="report-year" min="2000" max="2100" step="1" value="2026" inputmode="numeric"></label></div>
+      <div class="reportmetrics">
+        <div><small>Recorded gross receipts</small><strong id="ledger-total">$0.00</strong></div>
+        <div><small>Fees withheld</small><strong id="ledger-fees">$0.00</strong></div>
+        <div><small>Other recorded expenses</small><strong id="ledger-expenses">$0.00</strong></div>
+        <div><small>Income less listed costs*</small><strong id="ledger-net">$0.00</strong></div>
+      </div>
+      <p class="muted">*Not taxable profit or cash available to invest. Refunds/credits are reported separately until matched to original charges. Reported fees and costs are not necessarily tax deductible. Pending payments, recovered principal, and unreconciled sale proceeds are tracked separately.</p>
+      <div class="reportactions"><button type="button" class="mainbtn" id="print-accountant">Print / Save annual report as PDF</button><button type="button" class="smallbtn" id="export-ledger">Export detailed CSV</button><button type="button" class="smallbtn" id="backup-ledger">Download private JSON backup</button></div>
+    </div>
+    <div class="panel" id="accounting-control-panel">
+      <div class="panelrow"><h3>Accounting evidence and close control</h3><button type="button" class="smallbtn" id="accounting-control-refresh">Check record controls</button></div>
+      <p class="muted">Independent source coverage and bank matching are required before a period can be considered ready for accountant review. The current browser interface cannot access your connected accounts and will hold the close until verified source data becomes available through a protected service.</p>
+      <p class="muted">Manual reconciliation checkboxes are self-reported and are not independent financial verification. Amount/date similarities are never sufficient to classify a bank credit as earned income. Do not import bank statements into this public-source development branch or an unprotected deployment.</p>
+      <p id="accounting-control-status" class="muted" role="status" aria-live="polite">Accounting close not assessed.</p>
+      <div id="accounting-control-results" class="accounting-control-results"></div>
+    </div>
+    <div class="panel" id="recovery-review-panel">
+      <div class="panelrow"><h3>Recovery and billing exception radar</h3><button type="button" class="smallbtn" id="recovery-review-refresh">Review candidates</button></div>
+      <p class="muted">Identify possible duplicate merchant charges and check refunds or returned principal separately from new earnings. Similar dates and amounts are not proof of erroneous billing. The system cannot determine credit-card disputes or recover funds from these local records alone.</p>
+      <p class="muted" id="recovery-review-status" role="status" aria-live="polite">Recovery diagnostics pending.</p>
+      <div id="recovery-review-list"></div>
+    </div>
+    <div class="panel" id="transfer-review-panel">
+      <div class="panelrow"><h3>Bank transfer and card-payment controls</h3><button type="button" class="smallbtn" id="transfer-review-refresh">Review transfer evidence</button></div>
+      <p class="muted">Moving funds between owned accounts is not income. Paying a credit-card balance is not a second purchase expense. Transfers may be excluded from those financial totals only after both posted sides have traceable source references and reviewed classifications.</p>
+      <p id="transfer-review-status" class="muted" role="status" aria-live="polite">Transfer review not yet completed.</p>
+      <div id="transfer-review-results" class="muted"></div>
+    </div>
+    <div class="panel" id="spend-intelligence-panel">
+      <div class="panelrow"><h3>Spending intelligence and cash-flow planning</h3><button type="button" class="smallbtn" id="spend-refresh">Analyze records</button></div>
+      <p id="spend-coverage" class="muted">Only locally entered or imported records are analyzed.</p>
+      <p class="muted">Inspired by modern personal-budgeting workflows: inferred recurring merchants, editable monthly category targets, manually planned bills, twelve-month recorded cash flow and an evidence review queue. These are estimates, not verified upcoming obligations or a bank balance.</p>
+      <h4>Monthly spending targets</h4>
+      <form id="spend-budget-form">
+        <div class="formgrid">
+          <div><label for="spend-budget-category">Category</label><select id="spend-budget-category"></select></div>
+          <div><label for="spend-budget-limit">Monthly target ($)</label><input id="spend-budget-limit" type="number" min="0" max="1000000" step="0.01" placeholder="Not set" inputmode="decimal"></div>
+        </div>
+        <div class="formbuttons"><button type="submit" class="smallbtn">Save target</button><button type="button" class="smallbtn" id="spend-budget-remove">Remove target</button></div>
+      </form>
+      <div id="spend-budget-results"></div>
+      <h4>Possible recurring charges</h4>
+      <p class="muted">An inferred charge pattern requires repeated observations. It must be checked against the merchant before treating it as an active subscription or upcoming bill.</p>
+      <div id="spend-patterns"></div>
+      <h4>Owner-entered expected bills</h4>
+      <form id="spend-plan-form">
+        <label for="spend-plan-name">Biller or payment description</label><input id="spend-plan-name" maxlength="80" placeholder="e.g., Internet service" autocomplete="off" required>
+        <div class="formgrid">
+          <div><label for="spend-plan-amount">Expected amount ($)</label><input id="spend-plan-amount" type="number" min="0.01" max="1000000" step="0.01" inputmode="decimal" required></div>
+          <div><label for="spend-plan-date">Next expected date</label><input id="spend-plan-date" type="date" required></div>
+          <div><label for="spend-plan-period">Recurrence</label><select id="spend-plan-period"><option value="monthly">Monthly</option><option value="quarterly">Quarterly</option><option value="annual">Annual</option></select></div>
+        </div>
+        <button type="submit" class="smallbtn">Add expected bill</button>
+      </form>
+      <div id="spend-plans"></div>
+      <h4>Recorded monthly receipts and expenses</h4>
+      <div id="spend-cashflow"></div>
+      <div class="panelrow"><h4>Exception review</h4><span class="muted" id="spend-review-count"></span></div>
+      <div id="spend-review"></div>
+      <p class="muted" id="spend-status" role="status" aria-live="polite"></p>
+    </div>
+    <div class="panel">
+      <h3 id="receipt-form-title">Record any income or receipt</h3>
+      <p class="muted">Include studies completed elsewhere. Enter the gross amount before platform fees, not merely the money deposited. Mark principal recoveries and investment-sale proceeds for tax review instead of automatically treating them as earnings.</p>
+      <form id="receipt-form">
+        <label for="receipt-label">Description / opportunity</label><input id="receipt-label" name="label" required maxlength="100" placeholder="e.g., Research interview, royalties" autocomplete="off">
+        <div class="formgrid">
+          <div><label for="receipt-payer">Payer / source</label><input id="receipt-payer" name="payer" maxlength="100" placeholder="Recruiter, platform, or company" autocomplete="off"></div>
+          <div><label for="receipt-category">Income category</label><select id="receipt-category" name="category">
+            <option value="research">Paid studies and interviews</option><option value="evaluation">AI evaluation / independent work</option>
+            <option value="business">Business / consulting receipts</option><option value="royalty">Royalties and licensing</option>
+            <option value="rental">Rental / property income</option><option value="interest">Interest / lending</option>
+            <option value="dividend">Dividends / distributions</option><option value="investment">Investment proceeds / gains (review basis)</option>
+            <option value="reward">Rewards / cashback</option><option value="recovery">Reimbursements / refunds / unclaimed funds</option>
+            <option value="employment">W-2 / employment</option><option value="pension">Pension / annuity</option><option value="retirement">Retirement distributions</option><option value="socialsecurity">Social Security</option><option value="unemployment">Unemployment / benefits</option><option value="other">Other receipt</option>
+          </select></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-amount">Gross amount in original currency</label><input id="receipt-amount" name="amount" type="number" min="0.01" max="10000000" step="0.01" inputmode="decimal" required></div>
+          <div><label for="receipt-date">Receipt / expected payment date</label><input id="receipt-date" name="date" type="date" required></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-currency">Currency</label><select id="receipt-currency" name="currency"><option value="USD">USD</option><option value="GBP">GBP</option><option value="EUR">EUR</option><option value="OTHER">Other</option></select></div>
+          <div><label for="receipt-fx">USD per 1 unit (manual rate)</label><input type="number" id="receipt-fx" name="fx" min="0.000001" max="1000000" step="any" value="1" inputmode="decimal" required></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-fees">Platform fees withheld (USD)</label><input type="number" id="receipt-fees" name="fees" min="0" max="10000000" step="0.01" value="0" inputmode="decimal"></div>
+          <div><label for="receipt-state">Payment status</label><select id="receipt-state" name="status"><option value="pending">Expected, not received</option><option value="paid">Received (self-reported)</option></select></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-scope">Accounting treatment flag</label><select id="receipt-scope" name="scope"><option value="income">Potential income, review tax treatment</option><option value="nonincome">Possible non-income / refunded principal</option><option value="proceeds">Investment sale proceeds, basis review needed</option></select></div>
+          <div><label for="receipt-method">Payment route</label><select id="receipt-method" name="method"><option value="Unknown">Unknown / pending</option><option value="Bank transfer">Bank transfer</option><option value="Check">Check</option><option value="PayPal">PayPal</option><option value="Gift card">Gift card</option><option value="Platform balance">Platform balance</option><option value="Cash">Cash</option><option value="Other">Other</option></select></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="receipt-doc">Supporting tax form</label><select id="receipt-doc" name="taxForm"><option value="None / unknown">None / unknown</option><option value="1099-NEC">1099-NEC</option><option value="1099-MISC">1099-MISC</option><option value="1099-K">1099-K</option><option value="1099-INT">1099-INT</option><option value="1099-DIV">1099-DIV</option><option value="1099-B">1099-B</option><option value="Schedule K-1">Schedule K-1</option><option value="W-2">W-2</option><option value="1099-R">1099-R</option><option value="SSA-1099">SSA-1099</option><option value="1099-G">1099-G</option><option value="Other form">Other form</option></select></div>
+          <div><label for="receipt-doc-status">Supporting document status</label><select id="receipt-doc-status" name="docStatus"><option value="not-expected">Not expected / unknown</option><option value="expected">Expected</option><option value="received">Received</option><option value="reconciled">Received and matched</option></select></div>
+        </div>
+        <label for="receipt-reference">Evidence reference (no account numbers)</label><input id="receipt-reference" name="reference" maxlength="120" placeholder="e.g., receipt date, confirmation ID fragment" autocomplete="off">
+        <label for="receipt-notes">Accountant notes (optional)</label><textarea id="receipt-notes" name="notes" maxlength="500" rows="2" placeholder="e.g., payment partly returned principal, W-9 supplied"></textarea>
+        <label class="checkline"><input type="checkbox" id="receipt-reconciled" name="reconciled"> I personally matched this receipt to a payment record</label>
+        <div class="formbuttons"><button class="mainbtn" type="submit" id="receipt-save">Save income entry</button><button class="smallbtn" type="button" id="receipt-cancel" hidden>Cancel edit</button></div>
+      </form>
+    </div>
+    <div class="panel">
+      <h3 id="cost-form-title">Record expenses, tax payments and refunds</h3>
+      <p class="muted">Expenses and withheld fees are separate from estimated tax payments and capital contributions. Record platform fees withheld on an income entry only once.</p>
+      <div class="quickvendors" aria-label="Expense examples"><span class="muted">Quick add:</span><button type="button" data-vendor="ChatGPT" data-cost-category="software">ChatGPT</button><button type="button" data-vendor="Claude / Anthropic" data-cost-category="software">Claude</button><button type="button" data-vendor="OpenAI API" data-cost-category="software">OpenAI API</button><button type="button" data-vendor="Grammarly" data-cost-category="software">Grammarly</button><button type="button" data-vendor="Namecheap domain" data-cost-category="software">Domain</button><button type="button" data-vendor="Namecheap email" data-cost-category="software">JRS email</button><button type="button" data-vendor="Sejda PDF" data-cost-category="software">Sejda</button><button type="button" data-vendor="Home internet" data-cost-category="internet">Internet</button><button type="button" data-vendor="Mobile phone" data-cost-category="internet">Cell phone</button><button type="button" data-vendor="Printer and ink" data-cost-category="equipment">Printer</button></div>
+      <form id="cost-form">
+        <label for="cost-label">Description</label><input id="cost-label" name="label" required maxlength="100" placeholder="e.g., subscription, travel, estimated tax" autocomplete="off">
+        <div class="formgrid">
+          <div><label for="cost-payee">Payee / provider</label><input id="cost-payee" name="payee" maxlength="100" autocomplete="off"></div>
+          <div><label for="cost-type">Type</label><select id="cost-type" name="type"><option value="expense">Possible business / investment expense</option><option value="taxpayment">Estimated tax payment (not an expense deduction)</option><option value="capital">Asset purchase / capital contribution (not an expense deduction)</option><option value="other">Other outflow, review</option><option value="refund">Refund / credit received (requires original-charge match)</option></select></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="cost-amount">Amount (USD, use positive amount for refunds)</label><input id="cost-amount" name="amount" type="number" min="0.01" max="10000000" step="0.01" inputmode="decimal" required></div>
+          <div><label for="cost-date">Date paid</label><input id="cost-date" name="date" type="date" required></div>
+        </div>
+        <div class="formgrid">
+          <div><label for="cost-category">Cost category</label><select id="cost-category" name="category"><option value="platform">Platform / processing fees</option><option value="software">Software and subscriptions</option><option value="equipment">Equipment and hardware</option><option value="internet">Internet / telephone</option><option value="travel">Travel / mileage</option><option value="training">Education / training</option><option value="professional">Professional services</option><option value="supplies">Office supplies</option><option value="investing">Investment fees or asset costs</option><option value="tax">Estimated federal / state taxes</option><option value="homeoffice">Home office / shared expenses</option><option value="advertising">Advertising / marketing</option><option value="other">Other / accountant review</option></select></div>
+          <div><label for="cost-reference">Evidence reference</label><input id="cost-reference" maxlength="120" name="reference" placeholder="Receipt or invoice reference" autocomplete="off"></div>
+        </div>
+        <div class="formgrid"><div><label for="cost-business-use">Estimated business-use share (%)</label><input id="cost-business-use" name="businessUse" type="number" min="0" max="100" step="1" value="" inputmode="numeric" placeholder="Unknown"><p class="muted">Leave blank until supported by an owner-verified business-use method. A blank is unknown, not 0%. This is not an approved deduction.</p></div><div><label for="cost-evidence-status">Evidence status</label><select id="cost-evidence-status" name="evidenceStatus"><option value="missing">Receipt not located</option><option value="email">Email receipt or invoice</option><option value="bank">Bank/card statement only</option><option value="both-unverified">Receipt and bank record available; linkage not resolved</option><option value="both">Receipt and statement matched after review</option></select></div></div>
+        <label for="cost-notes">Accountant notes (optional)</label><textarea id="cost-notes" name="notes" rows="2" maxlength="500"></textarea>
+        <div class="formbuttons"><button class="mainbtn" type="submit" id="cost-save">Save outflow</button><button class="smallbtn" type="button" id="cost-cancel" hidden>Cancel edit</button></div>
+      </form>
+    </div>
+    <div class="panel">
+      <div class="panelrow"><h3>All recorded items</h3><span class="muted" id="ledger-count">0 items</span></div>
+      <div class="filterbar"><label class="sr-only" for="ledger-filter">Record filter</label><select id="ledger-filter"><option value="all">All entries</option><option value="income">Income / receipts</option><option value="outflow">Expenses / outflows</option><option value="pending">Pending payments</option><option value="refund">Unallocated refunds / credits</option></select><label class="sr-only" for="ledger-search">Search records</label><input id="ledger-search" type="search" placeholder="Search source / category"></div>
+      <div id="ledger-list" class="stack"></div>
+    </div>
+    <div class="panel">
+      <div class="panelrow"><h3>Accountant handoff</h3><button type="button" class="textbtn" id="refresh-accountant">Refresh summary</button></div>
+      <div id="report-preview" class="summary-preview"></div>
+      <p class="muted">Import records from connected services only after reviewing the exported CSV. The web app itself does not have direct access to ChatGPT, Gmail or linked bank data. Imported expenses are not automatically deductible. Attach third-party statements and relevant tax forms separately. CSV and printed PDF reflect only what you entered. Keep the exported file secure; it can contain sensitive financial details.</p>
+      <div class="reportactions"><button type="button" class="smallbtn" id="import-trigger">Restore a local backup</button><input id="import-ledger" type="file" accept=".json,application/json" hidden><button type="button" class="smallbtn" id="download-summary">Download annual summary CSV</button><button type="button" class="smallbtn" id="import-csv-trigger">Import ChatGPT-prepared CSV</button><input id="import-csv" type="file" accept=".csv,text/csv" hidden><button type="button" class="smallbtn" id="download-template">Download import template</button></div>
+    </div>
+    <section id="print-report" aria-label="Accountant annual report" hidden></section>
+  </section>
+  <section id="view-compound" class="view" aria-labelledby="compound-heading" hidden>
+    <div class="sectionintro"><div><span class="kicker">04 / CAPITAL FLYWHEEL</span><h2 id="compound-heading">Compounding laboratory</h2><p>Measure illustrative growth from received income and optional recurring contributions.</p></div></div>
+    <div class="callout"><strong>Scenario only.</strong> No money is invested, transferred, or reinvested by this application. Market returns, losses, fees and taxes may differ substantially.</div>
+    <div class="panel">
+      <label for="initial">Initial amount hypothetically invested (USD)</label><input type="number" id="initial" min="0" max="100000000" value="0" step="100" inputmode="decimal">
+      <div class="formgrid"><div><label for="monthly">Additional monthly investment</label><input type="number" id="monthly" min="0" max="1000000" value="0" step="25" inputmode="decimal"></div><div><label for="assumed-return">Assumed annual return (%)</label><input type="number" id="assumed-return" min="-100" max="40" value="5" step="0.5" inputmode="decimal"></div></div>
+      <label for="years">Period: <span id="years-text">10 years</span></label><input type="range" id="years" min="1" max="30" value="10" step="1">
+      <div class="projection"><span>Illustrative future value</span><strong id="future-value">$0</strong><div><span>Contributions <b id="contributions">$0</b></span><span>Illustrative change <b id="growth">$0</b></span></div></div>
+      <p class="muted">Monthly contributions occur at month end. Return is an assumption, not an expected or guaranteed yield. Positive projections omit fees and taxes; negative returns and asset write-downs are possible.</p>
+    </div>
+    <div class="panel" style="margin-top:14px"><h3>Recorded received income, all years</h3><p><strong id="cash-assessed">$0.00</strong> in manually recorded, received potential income. This is not an investable balance; deduct fees, costs, taxes, withdrawals, and reserves before making any allocation.</p></div>
+    <div class="panel" id="capital-readiness-panel">
+      <div class="panelrow"><h3>Capital readiness and investment evidence</h3><button type="button" class="smallbtn" id="capital-readiness-refresh">Review controls</button></div>
+      <p class="muted">Cash must be reconciled to covered financial statements, reduced for restrictions and unsettled debits, and reviewed against near-term obligations and emergency and tax reserves before a proposed allocation can proceed to owner review. Credit limits and noncash holdings are not available funds.</p>
+      <p id="capital-readiness-status" role="status" aria-live="polite" class="muted">Capital readiness assessment not yet run.</p>
+      <div id="capital-readiness-results"></div>
+    </div>
+    <div class="panel" id="decision-review-panel">
+      <h3>Owner investment review gate</h3>
+      <p class="muted">Assess source freshness and essential transaction evidence before even considering an investment. Every item starts on HOLD. Completing this checklist never authorizes a purchase.</p>
+      <form id="decision-review-form">
+        <label for="decision-asset">Candidate from dated public research</label>
+        <select id="decision-asset" aria-describedby="decision-feed-note"><option value="">Loading research snapshot</option></select>
+        <p id="decision-feed-note" class="muted">A listing is not a verified available offer. Source evidence expires after seven days for this review.</p>
+        <div class="formgrid">
+          <div><label for="decision-amount">Proposed capital ($)</label><input id="decision-amount" type="number" min="0" step="0.01" placeholder="No allocation set" inputmode="decimal"></div>
+          <div><label for="decision-capacity">Independently verified uncommitted capacity ($)</label><input id="decision-capacity" type="number" min="0" step="0.01" placeholder="Unknown" inputmode="decimal"></div>
+        </div>
+        <fieldset class="decision-gates"><legend>Evidence verified independently</legend>
+          <label><input type="checkbox" name="specificOffer"> Individual live offer and availability verified</label>
+          <label><input type="checkbox" name="eligibility"> Owner eligibility and restrictions verified</label>
+          <label><input type="checkbox" name="counterparty"> Counterparty identity, legal rights and terms reviewed</label>
+          <label><input type="checkbox" name="cashflow"> Cash-flow documentation and assumptions reviewed</label>
+          <label><input type="checkbox" name="fees"> Acquisition costs, ongoing fees and tax considerations reviewed</label>
+          <label><input type="checkbox" name="liquidity"> Loss exposure and exit restrictions reviewed</label>
+          <label><input type="checkbox" name="reserve"> Investable capacity excludes reserves and outstanding obligations</label>
+          <label><input type="checkbox" name="ownerDecision"> I approve this candidate for further manual review only</label>
+        </fieldset>
+        <button type="submit" class="mainbtn">Assess evidence and decision readiness</button>
+      </form>
+      <div class="review-result" id="decision-review-result" role="status" aria-live="polite" hidden></div>
+    </div>
+    <div class="panel" id="net-scenario-panel">
+      <h3>Fees, tax drag and purchasing power</h3>
+      <p class="muted">A separate scenario incorporating annual fees, assumed tax drag on positive gains, and inflation. This is not a return forecast.</p>
+      <form id="net-scenario-form">
+        <div class="formgrid">
+          <div><label for="net-initial">Initial capital ($)</label><input id="net-initial" type="number" value="0" min="0" step="0.01"></div>
+          <div><label for="net-monthly">Monthly contributions ($)</label><input id="net-monthly" type="number" value="0" min="0" step="0.01"></div>
+          <div><label for="net-years">Whole years</label><input id="net-years" type="number" value="10" min="1" max="40" step="1"></div>
+          <div><label for="net-return">Hypothetical annual total return (%)</label><input id="net-return" type="number" value="0" min="-99" max="100" step="0.1"></div>
+          <div><label for="net-fees">Assumed annual fees (%)</label><input id="net-fees" type="number" value="0" min="0" max="40" step="0.1"></div>
+          <div><label for="net-tax">Assumed tax drag on positive gains (%)</label><input id="net-tax" type="number" value="0" min="0" max="100" step="0.1"></div>
+          <div><label for="net-inflation">Annual inflation assumption (%)</label><input id="net-inflation" type="number" value="0" min="-20" max="100" step="0.1"></div>
+        </div>
+        <button type="submit" class="mainbtn">Calculate net scenario</button>
+      </form>
+      <p id="net-scenario-result" role="status" aria-live="polite" hidden></p>
+      <p class="muted">Annual percentage changes are converted to effective monthly factors. Contributions occur at month-end. Actual tax rules may differ; a modeled tax drag is not an accountant-approved tax estimate.</p>
+    </div>
+  </section>
+  <section id="view-about" class="view" aria-labelledby="about-heading" hidden>
+    <div class="sectionintro"><div><span class="kicker">05 / CONTROLS</span><h2 id="about-heading">Owner controls</h2><p>This is a single-user prototype, not a bank, broker, marketplace, or trading service.</p></div></div>
+    <div class="panel">
+      <h3>iPhone alerts and response</h3>
+      <p>IncomeOS Priority Study Alerts currently checks for individual, worth-your-time studies on an hourly ChatGPT schedule. Alerts are delivered by ChatGPT when supported and enabled, not by this website.</p>
+      <ol><li>On iPhone, open Settings → Notifications → ChatGPT.</li><li>Enable Allow Notifications and confirm ChatGPT task notifications are enabled.</li><li>Open an alert's direct recruiter link, or come here to compare research leads.</li></ol>
+      <p class="muted">This page does not subscribe to browser push and does not automatically synchronize with ChatGPT task results yet.</p>
+    </div>
+    <div class="panel" style="margin-top:14px"><h3>Security and data boundaries</h3><p>The preview branch is intended for Vercel-authenticated access. Hidden URLs and noindex do not make a page private. Do not merge this route into the publicly accessible JRS domain until server-side owner authentication, authorization tests and path-specific no-store controls are in place.</p><p>Local study status, bookmarks and ledger entries remain on this device only. Clearing browser storage removes them. Do not input account credentials.</p><button id="clear-local" class="destructive" type="button">Clear local IncomeOS data</button></div>
+    <div class="panel" id="vault-panel">
+      <h3>Encrypted local backup and recovery</h3>
+      <p class="muted">Download a password-encrypted backup of IncomeOS browser records, or restore one only after explicit confirmation. Encryption protects the exported file. <strong>Your active records in browser localStorage are not encrypted.</strong> This is not a substitute for private account access or server-side storage controls.</p>
+      <label for="vault-passphrase">Backup passphrase, at least 16 characters</label>
+      <input id="vault-passphrase" type="password" minlength="16" maxlength="1024" autocomplete="new-password" placeholder="Passphrase is never saved" aria-describedby="vault-warning">
+      <p id="vault-warning" class="muted">Keep the passphrase separately. Lost passphrases cannot be recovered. Do not use account passwords.</p>
+      <div class="formbuttons"><button type="button" class="mainbtn" id="vault-export">Download encrypted backup</button></div>
+      <label for="vault-file">Select encrypted IncomeOS backup for recovery</label>
+      <input id="vault-file" type="file" accept=".json,application/json">
+      <div class="formbuttons"><button type="button" class="smallbtn" id="vault-import">Decrypt and review restore</button></div>
+      <p id="vault-status" role="status" aria-live="polite" class="muted"></p>
+    </div>
+    <div class="panel" style="margin-top:14px"><h3>Scope</h3><p>Single-owner research and creative-income discovery, direct recruiter applications, manually verified payments, and realistic investment underwriting. No selling, client acquisition, commercial subscriptions, background financial transactions or performance guarantees.</p><p class="muted">IncomeOS remains entirely separate from JRS evaluation tooling and protected records.</p></div>
+  </section>
+</main>
+<nav class="bottomnav" aria-label="IncomeOS main navigation">
+<button data-view="research" class="selected" aria-current="page"><span class="navicon">⌕</span>Research</button>
+<button data-view="assets"><span class="navicon">◇</span>Assets</button>
+<button data-view="ledger"><span class="navicon">▤</span>Income</button>
+<button data-view="compound"><span class="navicon">↗</span>Compound</button>
+<button data-view="about"><span class="navicon">⚙</span>Controls</button>
+</nav>
+<footer><small>IncomeOS private prototype. Data last reviewed <span id="review-date">November 1, 2026</span>. No external data collection or investment execution.</small></footer>
+</div>
+</body>
+</html>
