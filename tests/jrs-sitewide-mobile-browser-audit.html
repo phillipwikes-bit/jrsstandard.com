@@ -130,6 +130,16 @@
             }
             if(!navAvailable)failures.push('mobile-navigation-semantics');
             if(!title)failures.push('document-title');
+            if(item.path==='jrsstandard.html'){
+              const sections=[...d.querySelectorAll('.page-section')];
+              const nested=sections.filter(section=>
+                section.parentElement && section.parentElement.closest('.page-section')
+              );
+              if(nested.length)failures.push('nested-document-sections-'+nested.length);
+              const roleSection=d.getElementById('section-roles');
+              if(roleSection&&roleSection.closest('.page-section')!==roleSection)
+                failures.push('role-section-nested');
+            }
             finish({...item,pass:failures.length===0,failures,
               documentWidth,viewport,visibleHeadings:h1.length,
               controlCount:controls.length,keyboardCards,keyboardActivation,undersizedControls:undersized,
