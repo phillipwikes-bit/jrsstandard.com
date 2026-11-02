@@ -148,7 +148,21 @@
            focusAfterClick,roleMenuHidden,
            currentActive:d.activeElement?.outerHTML?.slice(0,150),
            returnFocus,returnMenu,roleTabIndex:selectedRole.getAttribute('tabindex'),
-           roleSelected:w.jrsSelectedRoleEnv||null
+           roleSelected:w.jrsSelectedRoleEnv||null,
+           focusChain:(function(){
+             var chain=[],el=selectedRole;
+             while(el && chain.length<14){
+               var computed=w.getComputedStyle(el);
+               chain.push({
+                 id:el.id||null,cls:String(el.className||'').slice(0,60),
+                 display:computed.display,visibility:computed.visibility,
+                 inert:!!el.inert,hidden:!!el.hidden,
+                 rects:el.getClientRects().length
+               });
+               el=el.parentElement;
+             }
+             return chain;
+           })()
          });
        }
      }
