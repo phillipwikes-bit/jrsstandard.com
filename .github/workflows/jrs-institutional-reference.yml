@@ -28,6 +28,8 @@ jobs:
         run: node tests/jrs-resource-directory.mjs
       - name: Verify Standard and Training readability and disabled poll states
         run: node tests/jrs-contrast-guards.mjs
+      - name: Exercise consented training-completion and retry behavior
+        run: node tests/jrs-training-completion-behavior.mjs
       - name: Verify worked-record journey and distinct research evidence
         run: node tests/jrs-practitioner-journey.mjs
       - name: Regression-check exact-preview source verification
