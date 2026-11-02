@@ -91,7 +91,7 @@ export default async function handler(req){
         source_scope:'formspree_nonspam_submissions',
         current_form_marker_matches:items.filter(r=>r.form_marker_status==='matches_current_contact_form_fields').length,
         unattributed_submissions:items.filter(r=>r.form_marker_status==='unattributed').length,
-        coverage:'All nonspam submissions returned from Formspree form mreddwdg. Some rows may lack current JRS contact-form markers, and fields naming the form are self-declared, not proof of origin. Formspree spam items are not included. Recorded contact consent is self-declared; no publication, marketing, research enrollment or transfer permission is inferred. Submissions are not verified unique people or commercial leads.'});
+        coverage:'All nonspam submissions returned by the Formspree submissions API for form mreddwdg. This API excludes over-limit submissions until the provider reprocesses them; therefore these counts are not the total of all attempted contacts. Spam is excluded. Some rows lack current JRS contact-form markers, and source markers are self-declared. Recorded contact consent is self-declared; no publication, marketing, research enrollment or transfer permission is inferred. Submissions are not verified unique people or commercial leads.'});
     }
   }
   return json({error:'formspree_pagination_limit',complete:false,
