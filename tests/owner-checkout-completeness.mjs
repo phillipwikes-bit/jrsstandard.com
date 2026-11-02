@@ -11,7 +11,11 @@ const req=auth=>new Request('https://www.jrsstandard.com/api/checkout-stats',{
   headers:auth?{authorization:'Bearer '+auth}:{}
 });
 const click=i=>({created_at:'2026-10-02T00:00:00Z',
-  payload:{offer:'audit',state:i%2?'unconfigured':'configured',country:'US'}});
+  payload:{
+    offer:i===0?'__proto__':i===1?'toString':i===2?'constructor':'audit',
+    state:i===4?'constructor':i%2?'unconfigured':'configured',
+    country:i===3?'__proto__':'US'
+  }});
 const fallback=i=>({created_at:'2026-10-02T00:00:00Z',
   message:JSON.stringify({offer:'audit',price_usd:250,volume:'synthetic-'+i})});
 const inquiry=i=>({created_at:'2026-10-02T00:00:00Z',
@@ -75,7 +79,17 @@ try{
     assert.equal(d.fallback_leads,1001);
     assert.equal(d.enterprise_inquiries,1001);
     assert.equal(d.arrivals_by_state.unconfigured,500);
+    assert.equal(d.arrivals_by_offer['__proto__'],1);
+    assert.equal(d.arrivals_by_offer.toString,1);
+    assert.equal(d.arrivals_by_offer.constructor,1);
+    assert.equal(d.arrivals_by_country['__proto__'],1);
+    assert.equal(d.arrivals_by_state.constructor,1);
+    assert.equal(d.unconfigured_intent_usd,499*250);
+    assert.ok(Number.isFinite(d.unconfigured_intent_usd));
     assert.equal(d.leads_by_offer.audit,1001);
+    assert.equal(Object.values(d.arrivals_by_offer).reduce((a,b)=>a+b,0),1001);
+    assert.equal(Object.values(d.arrivals_by_country).reduce((a,b)=>a+b,0),1001);
+    assert.equal(Object.values(d.arrivals_by_state).reduce((a,b)=>a+b,0),1001);
     assert.deepEqual(d.source_coverage,['checkout-click','checkout-fallback','enterprise-inquiry']);
     assert.equal(calls.length,6);
     assert.ok(!JSON.stringify(d).includes(service));
