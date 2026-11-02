@@ -14,7 +14,8 @@ const req = (authorization) => new Request(
 );
 const lead = (i) => ({
   created_at:'2026-10-20T00:00:00Z',source:'site-inquiry',
-  name:'Synthetic contact '+i,email:'synthetic'+i+'@example.test',
+  name:i===0?'Synthetic audit test 0':i===1?'Do Not Contact (genuine contact)':'Synthetic contact '+i,
+  email:'synthetic'+i+'@example.test',
   organization:'Synthetic organization',message:JSON.stringify({category:'research',country:'US'})
 });
 const attempt = (i) => ({
@@ -91,6 +92,15 @@ try {
     const data=await response.json();
     assert.equal(data.complete,true);
     assert.equal(data.lead_count,1001);
+    assert.equal(data.source_row_count,1001);
+    assert.equal(data.retained_source_rows,1001);
+    assert.equal(data.possible_test_rows,1);
+    assert.equal(data.leads[0].name,'Synthetic audit test 0');
+    assert.equal(data.leads[0].possible_test_marker,true);
+    assert.equal(data.leads[1].name,'Do Not Contact (genuine contact)');
+    assert.equal(data.leads[1].possible_test_marker,false);
+    assert.ok(!('suppressed_test_rows' in data));
+    assert.match(data.test_marker_basis,/not confirmed synthetic/);
     assert.equal(data.attempt_count,1001);
     assert.equal(data.leads[1000].email,'synthetic1000@example.test');
     assert.equal(data.attempts_unconfigured,500);
@@ -113,6 +123,10 @@ try {
     assert.ok(html.includes('historical_catalogue_price_usd'));
     assert.ok(html.includes('not revenue'));
     assert.ok(html.includes('A recorded redirect does not establish payment completion'));
+    assert.ok(html.includes('id="ld-source-coverage"'));
+    assert.ok(html.includes('Historical contact source unavailable. Retained row counts cannot be verified.'));
+    assert.ok(html.includes('Possible test marker, verify'));
+    assert.ok(html.includes('d.source_row_count!==d.leads.length'));
     assert.ok(!html.includes('Every pay-screen arrival reached a working payment link.'));
     assert.ok(!html.includes('LD_PRICES[att[i].offer]'));
   });
