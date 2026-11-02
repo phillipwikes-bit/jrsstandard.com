@@ -10,6 +10,7 @@ on:
         type: string
 permissions:
   contents: read
+  deployments: read
 jobs:
   visual-snapshots:
     runs-on: ubuntu-latest
@@ -25,6 +26,8 @@ jobs:
             if command -v "$c" >/dev/null; then echo "JRS_BROWSER=$(command -v $c)" >> "$GITHUB_ENV"; "$c" --version; exit 0; fi
           done
           echo "Chrome not installed on runner" >&2; exit 1
+      - name: Regression-check fail-closed deployment preview discovery
+        run: python3 tests/jrs-resolve-preview.py --self-test
       - name: Serve locally for current branch comparison
         run: |
           nohup python3 -m http.server 8791 --bind 127.0.0.1 > /tmp/jrs-visual-local-server.log 2>&1 &
@@ -131,23 +134,24 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+      - name: Resolve exact-head preview through owner input or read-only GitHub deployment status
+        env:
+          JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          JRS_PREVIEW_URL_INPUT: ${{ inputs.preview_url || vars.JRS_VERIFIED_PREVIEW_URL }}
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 tests/jrs-resolve-preview.py "$GITHUB_ENV"
+
       - name: Verify preview source identity before any release certification
         env:
           JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
-          JRS_PREVIEW_URL: ${{ inputs.preview_url || vars.JRS_VERIFIED_PREVIEW_URL }}
         run: |
-          # No authenticated exact-commit preview URL means certification stays HOLD.
-          # Use manual workflow_dispatch preview_url or configured repository variable.
-          # A stale build, Vercel sign-in page or content mismatch is never a pass.
-          if [ -z "${JRS_PREVIEW_URL:-}" ]; then
-            echo "::error title=Exact-head preview input missing::No JRS_VERIFIED_PREVIEW_URL repository variable or workflow_dispatch preview_url was provided. Source-rendered evidence passed independently; hosted release remains on hold."
-            exit 1
-          fi
+          # The resolver is fail-closed and never uses a branch alias. This
+          # verifier still requires exact hosted source bytes and six PDFs.
           python3 tests/jrs-preview-static-verification.py "$JRS_PREVIEW_URL"
 
       - name: Capture verified exact-head preview screenshots
-        env:
-          JRS_PREVIEW_URL: ${{ inputs.preview_url || vars.JRS_VERIFIED_PREVIEW_URL }}
         run: |
           # This step is reachable only after the preceding exact-commit,
           # seven-static-file and six-tracked-PDF verification succeeds.
