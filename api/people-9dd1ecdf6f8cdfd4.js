@@ -9,12 +9,9 @@ import { resolveCountries } from './_country-backfill.js';
 
 // OWNER-ONLY named list of every person in the private contact table.
 //
-// Historical rationale below is superseded: a public repository exposes the
-// opaque path. Owner bearer authentication now gates this route before DB use.
-// Secured by this opaque, unlinked, noindex URL, so it needs NO token. Same
-// model already used by api/roster-8c3f1a9e7b2d6045.js, the acquisition page,
-// and the supporters page. If this URL ever leaks, rename this file and its
-// page to rotate it.
+// Authentication relies on the signed owner session or authorized bearer
+// credential, never on the obscurity of this route. The page and API are
+// private and fail closed when the underlying source is incomplete.
 //
 // It covers every stream in one place, so there is one list to look at:
 //   guide-register       Investigator Guide registrations (which edition)
@@ -45,11 +42,8 @@ const LABEL = {
   'org-pilot':           'Ran records',
   'support':             'Initiative (pre-gate)',
   'pilot':               'Pilot contact',
-  // Added 2026-08-12. These three streams existed in the table and appeared in
-  // no owner-readable list, so a recommendation request, a certificate request
-  // and an honor quote were all invisible unless a token was typed into a URL
-  // by hand. This endpoint needs no token: it is secured by its opaque URL, the
-  // same model the roster, geo and supporters pages already use.
+  // These three historical streams require separate owner follow-up.
+  // They remain visible only inside the authenticated private directory.
   'reviewer-eval-incentive': 'Asked for a LinkedIn recommendation',
   'reviewer-cert':           'Asked for a certificate',
   'honor-accept':            'Accepted the Honor'
@@ -67,7 +61,9 @@ const CAMPAIGN = {
   general: 'General'
 };
 
-// Deploy and smoke-check rows never appear in the owner's list.
+// Historical test metadata are only REVIEW FLAGS. A marker can be attached
+// to a legitimate contact, and this private record must not silently exclude
+// either a genuine person or a diagnostic row from the stored population.
 const TEST_SRC = ['verify','test','selftest'];
 function isTest(v){
   const s = String(v || '');
@@ -137,19 +133,19 @@ export default async function handler(req){
   const geo = await resolveCountries(rows);
 
   const out = [];
+  let possibleTestRows = 0;
   for (let i = 0; i < rows.length; i++){
     const r = rows[i] || {};
     let p = {};
     try { p = JSON.parse(r.message || '{}') || {}; } catch(e){ p = {}; }
-    if (isTest(p.page_source) || isTest(p.src)) continue;
-    if (String(p.code || '') === 'TEST-00') continue;
-    // A DIAGNOSTIC TEST row from 2026-06-03 sat in this list as if it were a
-    // person. An owner list is a work list, so a row nobody has to act on does
-    // not belong in it.
-    if (String(r.source || '') === 'diagnostic') continue;
-    if (String(r.name || '').toUpperCase() === 'DIAGNOSTIC TEST') continue;
-
     const src = String(r.source || '');
+    const possibleTest = isTest(p.page_source) || isTest(p.src)
+      || String(p.code || '') === 'TEST-00'
+      || src === 'diagnostic'
+      || String(r.name || '').trim().toUpperCase() === 'DIAGNOSTIC TEST';
+    if (possibleTest) possibleTestRows++;
+    // No source row is discarded on the basis of a self-declared field,
+    // diagnostic source, code or free-text name. All remain owner-reviewable.
     // Public naming choices are purpose-specific, not a blanket permission.
     // Keep each source flag separately and choose the relevant display scope.
     const namedResearch = permissionState(p,['consent_named']);
@@ -181,6 +177,8 @@ export default async function handler(req){
 
     out.push({
       date: r.created_at || '',
+      source_position: i,
+      possible_test_marker: possibleTest,
       // A completion row is written with no name, so it is filled from the
       // enrolment row that shares the email. Without this the four completions
       // read as four blanks on the owner sheet.
@@ -245,7 +243,12 @@ export default async function handler(req){
     });
   }
 
-  // Named training completions, so a buyer sees people rather than a count.
+  // Source-population integrity is a hard requirement, not a best-effort
+  // display rule. No record may vanish between a complete read and the list.
+  if (out.length !== rows.length)
+    return json({error:'private_participant_reconciliation_failed',complete:false},502);
+
+  // Named training completions for owner review, not buyer qualification.
   const trainingCompletedNames = [];
   for (let i = 0; i < out.length; i++){
     if (out[i].source === 'training-enroll' && out[i].training_completed) {
@@ -271,6 +274,11 @@ export default async function handler(req){
   const peopleNoCountry = Object.keys(noCountry).sort();
 
   return json({
+    complete: true,
+    source_row_count: rows.length,
+    retained_source_rows: out.length,
+    possible_test_rows: possibleTestRows,
+    test_marker_basis: 'Historical diagnostic, deploy or test metadata only. Flagged for owner review, not independently verified as synthetic; no source record excluded.',
     training_completed_named: trainingCompletedNames,
     training_completed_named_count: trainingCompletedNames.length,
     training_completion_note: 'Names come from the enrolment row joined to the completion row '

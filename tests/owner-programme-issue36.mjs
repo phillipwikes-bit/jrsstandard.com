@@ -43,6 +43,9 @@ assert.match(people,/permissionState\(p,\['consent_contact','consent_to_contact'
 assert.match(people,/fetchAll\(SB,/);
 assert.match(people,/!result\.complete/);
 assert.match(people,/private_participant_source_incomplete/);
+assert.match(people,/private_participant_reconciliation_failed/);
+assert.match(people,/possible_test_marker: possibleTest/);
+assert.match(people,/source_row_count: rows.length/);
 assert.ok(!/\.delete\(\)|method:\s*['"]DELETE/.test(people));
 
 const html=readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
@@ -58,6 +61,9 @@ assert.ok(html.includes('Not recorded'));
 assert.ok(html.includes('pplConsentText('));
 assert.ok(html.includes('p.activity_family'));
 assert.ok(html.includes('p.consent_contact_state'));
+assert.ok(html.includes('p.possible_test_marker'));
+assert.ok(html.includes('d.source_row_count!==d.people.length'));
+assert.ok(html.includes('Source totals unavailable, not zero.'));
 assert.ok(html.includes('Conflicting, review required'));
 assert.ok(html.includes('No blanket transfer authority is established.'));
 assert.ok(!html.includes('is a transfer-ready asset.'));

@@ -16,6 +16,11 @@ try{
     email:'fixture-'+i+'@example.test',organization:'Synthetic Laboratory',
     source:'training-enroll',message:'{}'
   }));
+  sample[0]={...sample[0],name:'DIAGNOSTIC TEST',source:'diagnostic',
+    message:JSON.stringify({page_source:'deploytest-2026'})};
+  sample[1]={...sample[1],name:'Legitimate contact with historic test code',
+    message:JSON.stringify({code:'TEST-00'})};
+  sample[2]={...sample[2],name:'Do Not Contact',message:'{}'};
   globalThis.fetch=async(_url,options)=>{
     calls++;
     if(calls===1){
@@ -47,11 +52,22 @@ try{
   assert.equal(r.status,200);
   body=await r.json();
   assert.equal(body.ok,true);
+  assert.equal(body.complete,true);
+  assert.equal(body.source_row_count,1001);
+  assert.equal(body.retained_source_rows,1001);
   assert.equal(body.total_rows,1001);
   assert.equal(body.people.length,1001);
+  assert.equal(body.possible_test_rows,2);
+  assert.match(body.test_marker_basis,/no source record excluded/);
+  assert.equal(body.people[0].name,'DIAGNOSTIC TEST');
+  assert.equal(body.people[0].possible_test_marker,true);
+  assert.equal(body.people[1].possible_test_marker,true);
+  assert.equal(body.people[2].name,'Do Not Contact');
+  assert.equal(body.people[2].possible_test_marker,false);
+  assert.equal(body.people[1000].source_position,1000);
   assert.equal(body.people[1000].name,'Last fixture');
   assert.equal(calls,2);
-  console.log('PASS complete 1001-row source preserves all participant names and email addresses');
+  console.log('PASS complete 1001-row source retains flagged historical tests and genuine contacts without suppression');
 }finally{
   globalThis.fetch=originalFetch;
   for(const [key,value] of Object.entries(prev)){
