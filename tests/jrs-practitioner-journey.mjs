@@ -12,7 +12,7 @@ for(const p of pages){
 const home=read('index.html');
 // The first visitor action opens the actual ungated, non-scoring reading aid.
 // Avoid routing the primary task through another catalog page.
-assert.match(home,/<a class="jr-action-main" href="check\\.html\\?src=home">Open seven-point record check<\\/a>/);
+assert.ok(home.includes('<a class="jr-action-main" href="check.html?src=home">Open seven-point record check</a>'),'Primary action must open the free record check');
 assert.ok(home.includes('href="#worked-record">See the three-step fictional example</a>'));
 assert.ok(home.includes('href="resources.html">browse all free practitioner resources</a>'));
 assert.ok(read('resources.html').includes('href="check.html?src=resources">Open seven-point record check</a>'));
