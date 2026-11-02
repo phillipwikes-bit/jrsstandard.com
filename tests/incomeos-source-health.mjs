@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
-import {createRequire} from "node:module";
-const require=createRequire(import.meta.url);
-const gate=require("../owner/incomeos/source-health.js");
+import {readFileSync} from "node:fs";
+import vm from "node:vm";
+const context={window:{}};
+vm.runInNewContext(readFileSync(new URL("../owner/incomeos/source-health.js",import.meta.url),"utf8"),context);
+const gate=context.window.IncomeOSSourceHealth;
 const ok={id:"bank-a",connectionStatus:"linked",coverageComplete:true,freshness:"current",balanceSourceVerified:true};
 assert.equal(gate.assess([ok]).status,"SOURCE_REVIEW_ONLY");
 assert.equal(gate.assess([ok]).availableToInvestCents,null);
