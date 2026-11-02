@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Check sitewide source-rendered mobile presentation evidence.
 
-This validates only 58 institutional route sources at 320px, 390px and 1440px.
+This validates only 58 institutional route sources at 320px, 390px, 768px and 1440px.
 It is NOT WCAG certification, PDF accessibility, VoiceOver testing or a live
 submission/consent acceptance test. Preserve small-control observations
 for manual investigation without implying all targets have been certified.
@@ -21,13 +21,13 @@ try:
     rows=json.loads(html.unescape(match.group(1)))
 except (ValueError,TypeError) as exc:
     raise SystemExit(f"FAIL: invalid sitewide browser JSON ({exc})")
-if len(rows)!=174:
-    raise SystemExit(f"FAIL: expected 174 route-viewport samples; received {len(rows)}")
+if len(rows)!=232:
+    raise SystemExit(f"FAIL: expected 232 route-viewport samples; received {len(rows)}")
 pairs={(r.get("path"),r.get("width")) for r in rows}
 pages={r.get("path") for r in rows}
-if len(pairs)!=174 or len(pages)!=58:
+if len(pairs)!=232 or len(pages)!=58:
     raise SystemExit("FAIL: missing or duplicate page/viewport samples")
-if Counter(r.get("width") for r in rows)!={320:58,390:58,1440:58}:
+if Counter(r.get("width") for r in rows)!={320:58,390:58,768:58,1440:58}:
     raise SystemExit("FAIL: unexpected viewport coverage")
 failed=[r for r in rows if not r.get("pass")]
 small=[r for r in rows if r.get("undersizedControls")]
@@ -35,6 +35,7 @@ for r in failed:
     print("FAIL",r.get("path"),r.get("width"),r.get("failures") or r.get("error"))
 print(f"Measured {len(pages)} distinct public routes and {len(rows)} responsive viewport samples.")
 print(f"Potentially undersized controls on {len(small)} viewport samples; require review of target-size exceptions.")
+print(f"Advisory: {sum(r.get('advisoryUnder44px',0) for r in rows)} visible control samples shorter than 44px; not all may fail WCAG target spacing or exception rules.")
 if small:
     for r in small[:15]:
         print("REVIEW",r["path"],r["width"],r["undersizedControls"])
