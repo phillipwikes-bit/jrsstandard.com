@@ -11,8 +11,14 @@ const html=read('resources.html');
 const js=read('assets/jrs-resource-catalog.js');
 const css=read('assets/jrs-institutional-reference.css');
 const homepage=read('index.html');
-assert.ok(homepage.includes('href="resources.html">Use a free review tool</a>'),
- 'homepage primary action must lead to visible Resources first-use actions');
+assert.ok(homepage.includes('class="jr-action-main" href="check.html?src=home">Open seven-point record check</a>'),
+ 'homepage primary action must open the actual free, non-scoring record check');
+assert.ok(homepage.includes('href="resources.html">browse all free practitioner resources</a>'),
+ 'the homepage must retain a clear path to the complete practitioner directory');
+const check=read('check.html');
+assert.ok(check.includes('does not score your record') &&
+ (check.includes('no registration, no account, no upload') || check.includes('There is no registration, no account, no upload')),
+ 'the linked record check must remain non-scoring, public and upload-free');
 assert.ok(homepage.includes('href="resources.html#resource-catalog">Browse tools</a>'),
  'homepage Browse tools must reach searchable directory');
 assert.ok(!homepage.includes('resources.html#quick-review'),
