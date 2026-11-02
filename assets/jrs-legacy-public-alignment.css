@@ -1,0 +1,117 @@
+/* JRS public legacy-route presentation alignment, 2026-11-02.
+   Opt-in only. This file changes visual presentation, not form actions,
+   participant consent, completion rules, submissions or owner access.
+   Private owner screens and historically retired person routes opt out. */
+body.jrs-institutional.jrs-legacy-public{
+  color-scheme:light;
+  --bg:#f5f7f8;
+  --surface:#ffffff;
+  --surface2:#edf2f5;
+  --surface3:#e7eef3;
+  --panel:#ffffff;
+  --text:#193148;
+  --muted:#42576b;
+  --muted-soft:#526778;
+  --rule:#d8e1e7;
+  --accent:#7f5e26;
+  --accent-dim:#7b5b26;
+  --gold:#805e27;
+  --ready-text:#1d6247;
+  --review-text:#855920;
+  --stop-text:#9a3b3b;
+  background:#f5f7f8!important;
+  color:#193148!important;
+  font:400 16px/1.72 Inter,system-ui,-apple-system,"Segoe UI",sans-serif!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(.wordmark){
+  font-family:Georgia,"Iowan Old Style",serif!important;
+  font-size:30px!important;line-height:1.2!important;
+  letter-spacing:-.025em!important;color:#17364f!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(.site-header .wordmark){
+  color:#fff!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(.eyebrow,.header-meta,.q .n,.caseno,.counter,.fc,.footer-copy,label.fl,.li .k,.codebox .k){
+  font:700 13px/1.55 Inter,system-ui,sans-serif!important;
+  letter-spacing:.025em!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(.lede,.sub,.q .t,.recline,.rulebox,.privacy,.cred,.fine,.trust,.tip,.hook,.boundary,.knew,.srcline,.li .row,.deftable td){
+  font-size:15px!important;line-height:1.65!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(.card,.rulebox,.privacy,.hook,.codebox,.li,.opts label,.chk.core,.snippet){
+  border-color:#cbd9e3!important;
+  box-shadow:none!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(.opts label,.chk.core,.codebox,.li,.snippet,.hook){
+  background:#f4f7f9!important;color:#2b455a!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(.opts label.sel){
+  border-color:#426a85!important;background:#e7f0f5!important;
+  color:#17364f!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(input:not([type=checkbox]):not([type=radio]),textarea,select){
+  background:#fff!important;color:#17364f!important;
+  border:1px solid #9cb1c0!important;border-radius:4px!important;
+  font:400 16px/1.5 Inter,system-ui,sans-serif!important;
+  min-height:44px!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(.opts label,.chk){
+  font-size:15px!important;line-height:1.55!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(button:not(.ghost):not(.copybtn),.cta,.btn-primary,.btn-accent){
+  background:#193e58!important;color:#fff!important;
+  border:1px solid #193e58!important;border-radius:4px!important;
+  font:700 14px/1.5 Inter,system-ui,sans-serif!important;
+  letter-spacing:.015em!important;text-transform:none!important;
+  min-height:44px!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(button.ghost,.copybtn,.btn-ghost){
+  background:#fff!important;color:#17486a!important;
+  border:1px solid #8caabf!important;border-radius:4px!important;
+  font:700 14px/1.5 Inter,system-ui,sans-serif!important;
+  min-height:44px!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(a:not(.wordmark)){
+  text-underline-offset:3px;
+}
+body.jrs-institutional.jrs-legacy-public :where(.fine,.footer-copy,.fc,.counter){
+  color:#526778!important;font-size:13px!important;
+}
+body.jrs-institutional.jrs-legacy-public :where(.skip-link:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible){
+  outline:3px solid #0b679c!important;outline-offset:3px!important;
+}
+body.jrs-institutional.jrs-legacy-public :where([hidden],.hidden){
+  display:none!important;
+}
+/* Historic Review Engine status page lacks the normal site-header classes.
+   Leave the closed/local-only engine status and its URLs unchanged. */
+body.jrs-institutional.jrs-legacy-public.jrs-technical-route header{
+  background:#162f46!important;border-bottom:3px solid #a27a39!important;
+  color:#fff!important;
+}
+body.jrs-institutional.jrs-legacy-public.jrs-technical-route header a{
+  color:#fff!important;font:normal 30px/1.2 Georgia,serif!important;
+}
+body.jrs-institutional.jrs-legacy-public.jrs-technical-route main{
+  max-width:780px!important;
+}
+body.jrs-institutional.jrs-legacy-public.jrs-technical-route .notice{
+  border-left:4px solid #a27a39!important;
+  background:#fff!important;color:#193148!important;
+}
+@media(max-width:640px){
+ body.jrs-institutional.jrs-legacy-public :where(.wrap,.container){
+   padding-left:18px!important;padding-right:18px!important;
+ }
+ body.jrs-institutional.jrs-legacy-public :where(.card){
+   padding:20px 17px!important;
+ }
+ body.jrs-institutional.jrs-legacy-public :where(.opts label){
+   min-height:44px!important;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ body.jrs-institutional.jrs-legacy-public *{
+   scroll-behavior:auto!important;
+ }
+}
