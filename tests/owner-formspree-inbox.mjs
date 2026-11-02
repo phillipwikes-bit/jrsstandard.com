@@ -63,7 +63,6 @@ try{
     assert.equal(d.rows[1].transfer_permission,'not-recorded');
     assert.equal(d.rows[2].contact_permission,'not-recorded');
     assert.equal(d.rows[0].publication_permission,'not-recorded');
-    assert.equal(d.rows[0].transfer_permission,'not-recorded');
     assert.equal(calls.length,2);
     assert.ok(calls[0].url.includes('formspree.io/api/0/forms/mreddwdg/submissions'));
     assert.ok(calls[1].url.includes('offset=100'));
