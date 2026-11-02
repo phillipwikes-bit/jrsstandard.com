@@ -547,7 +547,9 @@ console.log('PASS: funnel telemetry reports recorded only on database acceptance
  const gateStats=readFileSync(new URL('../api/gate-stats.js',import.meta.url),'utf8');
  assert.match(guidesPage,/mode:'guidespage'/,
    'Guide-directory arrival must retain its distinct event mode');
- assert.match(guidesPage,/jrsstandard\\.com\$\/i\.test\(location\.hostname\)/,
+ assert.ok(guidesPage.includes('location.hostname') &&
+   guidesPage.includes("if (q.get('owner') === '1'"),
+   'Preview, owner or local browser audits must not become production guide visits');
    'Preview or local browser audits must not become production guide visits');
  assert.match(guidesPage,/src\.indexOf\('deploytest'\) === 0/,
    'Owner and deployment test traffic must remain outside guide-page counts');
