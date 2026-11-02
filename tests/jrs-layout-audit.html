@@ -132,6 +132,57 @@
        simulationControlsValid=simulationControlsValid && first.getAttribute('aria-pressed')==='true';
      }
    }
+   // Optional training enrollment must behave as a keyboard-operable dialog.
+   // No consent, registration, completion or external write is submitted here.
+   let enrollmentDialogValid=true, enrollmentDialogIssue='';
+   let moduleDisclosureValid=true;
+   if(item.page==='training.html' && narrow){
+     const dialog=d.getElementById('enroll-overlay');
+     const trigger=d.querySelector('button[onclick="openEnroll()"]');
+     const nameInput=d.getElementById('en-name');
+     const moduleButton=d.getElementById('module-btn-0');
+     const modulePanel=d.getElementById('module-panel-0');
+     moduleDisclosureValid=!!moduleButton && !!modulePanel;
+     if(moduleDisclosureValid){
+       moduleButton.click();
+       moduleDisclosureValid=moduleButton.getAttribute('aria-expanded')==='true' &&
+         w.getComputedStyle(modulePanel).display!=='none';
+       moduleButton.click();
+       moduleDisclosureValid=moduleDisclosureValid &&
+         moduleButton.getAttribute('aria-expanded')==='false' &&
+         w.getComputedStyle(modulePanel).display==='none';
+     }
+     enrollmentDialogValid=!!dialog && !!trigger && !!nameInput &&
+       typeof w.openEnroll==='function' && typeof w.dismissEnroll==='function';
+     if(enrollmentDialogValid){
+       trigger.focus();
+       w.openEnroll();
+       enrollmentDialogValid=dialog.getAttribute('role')==='dialog' &&
+         dialog.getAttribute('aria-modal')==='true' &&
+         dialog.getAttribute('aria-labelledby')==='en-dialog-title' &&
+         d.activeElement===nameInput &&
+         w.getComputedStyle(dialog).display!=='none';
+       const focusables=[...dialog.querySelectorAll(
+         'a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled])'
+       )].filter(el=>el.getClientRects().length>0);
+       const last=focusables.at(-1);
+       if(enrollmentDialogValid && last){
+         nameInput.dispatchEvent(new w.KeyboardEvent('keydown',
+           {key:'Tab',shiftKey:true,bubbles:true,cancelable:true}));
+         enrollmentDialogValid=d.activeElement===last;
+         last.dispatchEvent(new w.KeyboardEvent('keydown',
+           {key:'Tab',bubbles:true,cancelable:true}));
+         enrollmentDialogValid=enrollmentDialogValid && d.activeElement===nameInput;
+       }else enrollmentDialogValid=false;
+       d.dispatchEvent(new w.KeyboardEvent('keydown',
+         {key:'Escape',bubbles:true,cancelable:true}));
+       enrollmentDialogValid=enrollmentDialogValid &&
+         w.getComputedStyle(dialog).display==='none' &&
+         d.activeElement===trigger &&
+         !d.body.classList.contains('jrs-training-dialog-open');
+     }
+     if(!enrollmentDialogValid) enrollmentDialogIssue='Dialog labeling, focus trap, Escape or focus restoration failed';
+   }
    // Full resource-finder interaction: progressively enhanced search, format,
    // responsibility filters, no-match announcement and keyboard-focused reset.
    let catalogValid=true;
@@ -300,10 +351,10 @@
      (w.getComputedStyle(toggle).justifyContent==='flex-end' &&
       /site menu/i.test(siteMenuLabel));
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && documentIndexValid && simulationControlsValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
+      controlsValid && documentIndexValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,simulationControlsValid,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
