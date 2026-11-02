@@ -130,17 +130,22 @@
        roleFocusValid=!!selectedRole;
        if(selectedRole){
          selectedRole.focus();
+         const focusBeforeClick=d.activeElement===selectedRole;
+         const rolesSection=d.getElementById('section-roles');
+         const roleSectionActive=!!rolesSection && rolesSection.classList.contains('active');
+         const roleSectionDisplay=rolesSection?w.getComputedStyle(rolesSection).display:null;
          selectedRole.click();
          const roleTitle=d.querySelector('#role-env-content h2');
-         roleFocusValid=roleFocusValid && !!roleTitle &&
-           d.activeElement===roleTitle &&
-           w.getComputedStyle(d.getElementById('roles-menu')).display==='none';
+         const focusAfterClick=!!roleTitle && d.activeElement===roleTitle;
+         const roleMenuHidden=w.getComputedStyle(d.getElementById('roles-menu')).display==='none';
+         roleFocusValid=roleFocusValid && !!roleTitle && focusAfterClick && roleMenuHidden;
          w.showRolesMenu();
          const returnFocus=d.activeElement===selectedRole;
          const returnMenu=w.getComputedStyle(d.getElementById('roles-menu')).display!=='none';
          roleFocusValid=roleFocusValid && returnFocus && returnMenu;
          if(!roleFocusValid)roleFocusIssue=JSON.stringify({
-           titleFocused:!!roleTitle && d.activeElement===roleTitle,
+           focusBeforeClick,roleSectionActive,roleSectionDisplay,
+           focusAfterClick,roleMenuHidden,
            currentActive:d.activeElement?.outerHTML?.slice(0,150),
            returnFocus,returnMenu,roleTabIndex:selectedRole.getAttribute('tabindex'),
            roleSelected:w.jrsSelectedRoleEnv||null
