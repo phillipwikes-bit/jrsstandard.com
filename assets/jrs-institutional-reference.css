@@ -278,6 +278,14 @@ body.jrs-institutional.jrs-longform :where(.section-head){
  color:#1c3a53!important;line-height:1.3!important
 }
 body.jrs-institutional.jrs-longform :where(.container,main){max-width:1160px!important}
+/* The Standard's long-form main surface has a max width but was anchored
+   to the left on desktop, leaving an unintended blank right gutter.
+   Center this single reading surface; preserve mobile and print behavior. */
+@media screen and (min-width:1161px){
+ body.jrs-institutional.jrs-standard-page > main#main-content{
+   margin-left:auto!important;margin-right:auto!important;
+ }
+}
 body.jrs-institutional.jrs-longform :where(.nav-item,.sticky-nav-link,.util-link,.btn-open,.btn-download){
  font:600 14px/1.5 Inter,system-ui,sans-serif!important;letter-spacing:0!important
 }
