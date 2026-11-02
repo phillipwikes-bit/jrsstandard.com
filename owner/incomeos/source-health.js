@@ -5,15 +5,15 @@
     if(!Array.isArray(sources))throw Error("Source list required");
     var issues=[],seen=new Set(),statuses=[];
     sources.forEach(function(s,i){
-      if(!s||typeof s!=="object"||typeof s.id!=="string"||!s.id.trim()||seen.has(s.id)){
+      if(!s||typeof s!=="object"||typeof s.id!=="string"||!s.id.trim()||seen.has(s.id.trim())){
         issues.push({code:"INVALID_OR_DUPLICATE_SOURCE",index:i});return;
       }
-      seen.add(s.id);
+      seen.add(s.id.trim());
       var connected=s.connectionStatus==="linked";
       var complete=s.coverageComplete===true;
       var current=s.freshness==="current";
       var eligible=connected&&complete&&current&&s.balanceSourceVerified===true;
-      statuses.push({id:s.id,eligibleForReview:eligible,
+      statuses.push({id:s.id.trim(),eligibleForReview:eligible,
         reason:!connected?"CONNECTION_NOT_LINKED":!complete?"COVERAGE_INCOMPLETE":
           !current?"FRESHNESS_UNVERIFIED":s.balanceSourceVerified!==true?"BALANCE_UNVERIFIED":"SOURCE_REVIEW_ONLY"});
     });
