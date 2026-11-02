@@ -1,0 +1,83 @@
+{
+  "schema": "jrs-published-pdf-identity.v1",
+  "as_of": "2026-11-02",
+  "source_base_commit": "781559b50043eeb219cba758ab8de63ef117389e",
+  "status": "current published originals; typography remediation pending controlled source-based reissue",
+  "note": "Git blob SHA-1 hashes are exact-file identity locks, not security or accessibility attestations. Updating any approved PDF requires an authorized new edition/reissue decision, content-diff and visual review.",
+  "institutional_print_target": {
+    "paper": "#ffffff",
+    "navy": "#193148",
+    "secondary_navy": "#17364f",
+    "muted": "#42576b",
+    "gold": "#7f5e26",
+    "body": "Inter or authorized equivalent",
+    "display": "Georgia or authorized serif equivalent"
+  },
+  "assets": [
+    {
+      "file": "JRS-Standard.pdf",
+      "blob_sha": "83b0804d48491fee25773232244c632dd797a4cd",
+      "bytes": 326013,
+      "role": "published normative Standard",
+      "edition": "Version 2.0 (2026)",
+      "fonts_observed": "Poppins, Lora and fallback",
+      "authoritative_editable_master_verified": false
+    },
+    {
+      "file": "JRS_Rapid_Review_Card.pdf",
+      "blob_sha": "65f94b3e444caf25831c2687c535df7c4de78d00",
+      "bytes": 4532,
+      "role": "field tool",
+      "fonts_observed": "Helvetica"
+    },
+    {
+      "file": "JRS_Investigator_Field_Guide_Employment.pdf",
+      "blob_sha": "9c058a63cae65f99628b3175a112480d7b2bc3df",
+      "bytes": 19723,
+      "role": "employment investigator guide",
+      "fonts_observed": "Helvetica and Times"
+    },
+    {
+      "file": "JRS_Investigator_Field_Guide_FairHousing.pdf",
+      "blob_sha": "4cf48a778d82db3a8d91954cc0c897b71313bb87",
+      "bytes": 20032,
+      "role": "fair housing investigator guide",
+      "fonts_observed": "Helvetica and Times"
+    },
+    {
+      "file": "JRS_Investigator_Field_Guide_International.pdf",
+      "blob_sha": "1455fa544d98709cd78926939b662789795c71ae",
+      "bytes": 20463,
+      "role": "international investigator guide",
+      "fonts_observed": "Helvetica and Times"
+    },
+    {
+      "file": "JRS-Reference-9d4f2a7c.pdf",
+      "blob_sha": "944991c58392b774a040c4d364925b84860542fa",
+      "bytes": 2308034,
+      "role": "reviewer reference",
+      "fonts_observed": "Poppins, Lora and fallback"
+    },
+    {
+      "file": "JRS_Reliability_Accuracy.pdf",
+      "blob_sha": "44cd4242e429d4dc14cb791c6ba260acc4e53b1c",
+      "bytes": 11078,
+      "role": "research evidence report",
+      "fonts_observed": "Helvetica, Times and Courier"
+    },
+    {
+      "file": "JRS_Research_Paper.pdf",
+      "blob_sha": "5c1d42450b7019e439f97d97dbf23ce960539f24",
+      "bytes": 36125,
+      "role": "research paper",
+      "fonts_observed": "Helvetica, Times and Courier"
+    },
+    {
+      "file": "JRS_Investigator_Field_Guide.pdf",
+      "blob_sha": "5a2543756471222fe5deb7bde97f31266b9981a0",
+      "bytes": 24471,
+      "role": "legacy general investigator guide",
+      "fonts_observed": "Helvetica"
+    }
+  ]
+}
