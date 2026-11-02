@@ -67,6 +67,17 @@
    const top=action? Math.round(action.getBoundingClientRect().top):null;
    const scrollWidth=d.documentElement.scrollWidth;
    const vw=w.innerWidth;
+   // At desktop widths the Standard's long-form document must use balanced
+   // outer gutters. A max-width alone previously left the reading pane
+   // anchored at x=0 with hundreds of pixels unused on the right.
+   let documentCenteredValid=true;
+   if(item.page==='jrsstandard.html' && item.width>=1200){
+     const surface=d.querySelector('main#main-content');
+     const rect=surface?.getBoundingClientRect();
+     const usable=d.documentElement.clientWidth;
+     documentCenteredValid=!!rect && rect.width>=900 &&
+       Math.abs(rect.left-(usable-rect.right))<=20;
+   }
    const title=d.title;
    const controlsValid=!!toggle && toggle.getAttribute('aria-controls')===nav?.id;
    let escapeClosed=true;
@@ -541,10 +552,10 @@
      (w.getComputedStyle(toggle).justifyContent==='flex-end' &&
       /site menu/i.test(siteMenuLabel));
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && documentIndexValid && roleFocusValid && scenarioNavValid && workedExampleTabsValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && trainingJourneyValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
+      controlsValid && documentCenteredValid && documentIndexValid && roleFocusValid && scenarioNavValid && workedExampleTabsValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && trainingJourneyValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,roleFocusValid,roleFocusIssue,scenarioNavValid,workedExampleTabsValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     escapeClosed,focusLeaveClosed,controlsValid,documentCenteredValid,documentIndexValid,roleFocusValid,roleFocusIssue,scenarioNavValid,workedExampleTabsValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
