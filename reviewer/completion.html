@@ -7,6 +7,30 @@
 <meta name="description" content="Verify a previously issued JRS reviewer evaluation receipt against its issuer record. No professional certification is conveyed.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://www.jrsstandard.com/reviewer/completion.html" />
+<meta name="referrer" content="no-referrer">
+<script>
+/* Retained historical links may contain a name and issuer code in the URL.
+   Remove both from the visible address before loading external resources.
+   Prefill only; no verification, issuance or telemetry occurs without a
+   deliberate form submission. Original incoming server logs are outside
+   this browser-level protection. */
+(function(){
+  var params = new URLSearchParams(location.search);
+  var code = (params.get('code') || '').toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 40);
+  var name = (params.get('name') || '').slice(0, 200);
+  if (params.has('code') || params.has('name')) {
+    params.delete('code');
+    params.delete('name');
+    var remaining = params.toString();
+    var cleanUrl = location.pathname + (remaining ? '?' + remaining : '') + location.hash;
+    try { history.replaceState(null, '', cleanUrl); } catch (_) {}
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    if (code) document.getElementById('f-code').value = code;
+    if (name) document.getElementById('f-name').value = name;
+  }, {once:true});
+})();
+</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,7 +108,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 .jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
 @media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:12px} }
 /* /JRS SITE NAV v1 */
-a:focus-visible,button:focus-visible{outline:3px solid #0b679c;outline-offset:3px}\n</style>
+a:focus-visible,button:focus-visible{outline:3px solid #0b679c;outline-offset:3px}
+</style>
 
 <link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 <link rel="stylesheet" href="/assets/jrs-legacy-public-alignment.css">
@@ -132,125 +157,8 @@ a:focus-visible,button:focus-visible{outline:3px solid #0b679c;outline-offset:3p
   <div class="fc">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="/check.html" style="color:inherit">Record Defensibility Check</a> &nbsp;&middot;&nbsp; <a href="/reviewer/">Training</a> &nbsp;&middot;&nbsp; <a href="/investigator-guides.html">Investigator Guides</a></div>
 </footer>
 
-<script>
-(function(){
-  // Prefill historical codes when supplied. Do not create a credential in
-  // browser storage, make a verification claim, or submit personal information
-  // before the user explicitly activates the form.
-  var q = new URLSearchParams(location.search);
-  var code = (q.get('code') || '').toUpperCase().replace(/[^A-Z0-9-]/g,'');
-  var name = q.get('name') || '';
-  if (code) document.getElementById('f-code').value = code;
-  if (name) document.getElementById('f-name').value = name;
-})();
-</script>
-<script>
-/* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
-   Posts to /api/telemetry, which is a real endpoint in this repository. */
-/**
- * Zero-Drift Telemetry Dispatcher
- * Guarantees event delivery without delaying navigation or blocking the main thread.
- */
-function trackClickAndNavigate(event, targetUrl, eventMetaData) {
-  eventMetaData = eventMetaData || {};
-  // 1. Prevent default immediate navigation
-  if (event && typeof event.preventDefault === 'function') {
-    event.preventDefault();
-  }
 
-  // 2. Construct immutable telemetry payload
-  var payload = JSON.stringify({
-    timestamp: new Date().toISOString(),
-    origin_url: window.location.href,
-    target_url: targetUrl,
-    meta: eventMetaData
-  });
 
-  // 3. Primary Dispatch: Non-blocking navigator.sendBeacon
-  var isDispatched = false;
-  if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
-    var blob = new Blob([payload], { type: 'application/json' });
-    isDispatched = navigator.sendBeacon('/api/telemetry', blob);
-  }
-
-  // 4. Secondary Dispatch: Fetch API with keepalive flag
-  if (!isDispatched && typeof fetch === 'function') {
-    fetch('/api/telemetry', {
-      method: 'POST',
-      body: payload,
-      headers: { 'Content-Type': 'application/json' },
-      keepalive: true
-    }).catch(function() {
-      /* Swallowing non-critical network drops to prioritize UX */
-    });
-  }
-
-  // 5. Deterministic Fail-safe Navigation Fallback (150ms timeout)
-  setTimeout(function() {
-    window.location.href = targetUrl;
-  }, 150);
-}
-
-/* DELEGATION LAYER.
-   One document-level listener, so links rendered by JavaScript after load are
-   captured too and no per-link handler is needed anywhere.
-
-   It decides WHEN to call the dispatcher. It does not alter it.
-
-   Three classes of link are deliberately NOT routed through the dispatcher:
-     - /api/dl and /api/support already count inside their own 302. A redirect
-       cannot be blocked or raced, so it is strictly stronger than a beacon and
-       routing them here would double-count.
-     - mailto, tel, in-page anchors and downloads are not navigations to count.
-     - modifier and middle clicks. preventDefault on those would break "open in
-       new tab", so the beacon is sent WITHOUT preventDefault and the browser is
-       left to do what the reader asked for. */
-(function(){
-  var COUNTED_SERVER_SIDE = /^\/api\/(dl|support)\b/;
-  function beacon(target, meta){
-    try {
-      var payload = JSON.stringify({
-        timestamp: new Date().toISOString(),
-        origin_url: window.location.href,
-        target_url: target,
-        meta: meta || {}
-      });
-      var sent = false;
-      if (navigator.sendBeacon) {
-        sent = navigator.sendBeacon('/api/telemetry', new Blob([payload], { type: 'application/json' }));
-      }
-      if (!sent && typeof fetch === 'function') {
-        fetch('/api/telemetry', { method: 'POST', body: payload,
-          headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(function(){});
-      }
-    } catch (e) { /* never let telemetry break a click */ }
-  }
-  document.addEventListener('click', function(ev){
-    try {
-      var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
-      if (!a) return;
-      var href = a.getAttribute('href') || '';
-      if (!href || href.charAt(0) === '#') return;
-      if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
-      if (a.hasAttribute('download')) return;
-      if (COUNTED_SERVER_SIDE.test(href)) return;
-
-      var label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
-      var meta = { label: label, src: 'link' };
-
-      // Modifier or middle click: the reader wants a new tab. Record it, do not
-      // hijack it.
-      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) {
-        beacon(a.href, meta);
-        return;
-      }
-      if (a.target && a.target !== '_self') { beacon(a.href, meta); return; }
-
-      trackClickAndNavigate(ev, a.href, meta);
-    } catch (e) { /* a telemetry fault must never block navigation */ }
-  }, true);
-})();
-</script>
 <script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body>
 </html>
