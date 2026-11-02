@@ -1,0 +1,14 @@
+import assert from "node:assert/strict";
+import {createRequire} from "node:module";
+const require=createRequire(import.meta.url);
+const gate=require("../owner/incomeos/source-health.js");
+const ok={id:"bank-a",connectionStatus:"linked",coverageComplete:true,freshness:"current",balanceSourceVerified:true};
+assert.equal(gate.assess([ok]).status,"SOURCE_REVIEW_ONLY");
+assert.equal(gate.assess([ok]).availableToInvestCents,null);
+assert.equal(gate.assess([{...ok,connectionStatus:"error"}]).sources[0].reason,"CONNECTION_NOT_LINKED");
+assert.equal(gate.assess([{...ok,coverageComplete:false}]).status,"HOLD");
+assert.equal(gate.assess([{...ok,freshness:"unknown"}]).status,"HOLD");
+assert.equal(gate.assess([{...ok,balanceSourceVerified:false}]).status,"HOLD");
+assert.equal(gate.assess([ok,ok]).status,"HOLD");
+assert.equal(gate.assess([]).status,"HOLD");
+console.log("IncomeOS source-health tests passed");
