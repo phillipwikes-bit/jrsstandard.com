@@ -74,6 +74,18 @@ tr.today td{background:rgba(93,191,130,.07)}
 #owner-auth-cover{position:fixed;inset:0;background:#080807;display:flex;align-items:center;justify-content:center;z-index:99999;font-family:system-ui,sans-serif;color:#f3ede2}
 #owner-auth-cover p{max-width:390px;text-align:center;padding:26px}
 </style>
+<style id="jrs-issue36-owner-alignment">
+.jrs-overview{margin:22px 0 18px;padding:18px;background:var(--surface);border:1px solid var(--rule)}
+.jrs-source{font:10px/1.5 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.jrs-lanes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:15px 0}
+.jrs-lane{border:1px solid var(--rule);padding:14px;min-width:0;background:#0c0c0c}
+.jrs-lane h3{font-size:13px;font-weight:600;letter-spacing:0;color:var(--text);margin:0 0 8px}
+.jrs-lane p{font-size:12px;color:var(--muted);line-height:1.55;margin:0 0 10px}
+.jrs-lane a{display:block;color:var(--accent);font-size:12px;min-height:29px;line-height:1.4;margin:4px 0;overflow-wrap:anywhere}
+.jrs-overview .note{margin:14px 0 0}
+#ppl-group,#ppl-contact{background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font:16px 'Inter',sans-serif;padding:9px 11px;max-width:100%}
+@media(max-width:640px){.jrs-lanes{grid-template-columns:1fr}.jrs-overview{padding:12px}.jrs-lane{padding:12px}}
+</style>
 </head>
 <body>
 <div id="owner-auth-cover" aria-live="polite"><p>Checking private dashboard access...</p></div>
@@ -93,32 +105,49 @@ tr.today td{background:rgba(93,191,130,.07)}
 <header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Private Programme Status <button type="button" id="owner-signout" style="margin-left:12px;background:none;color:inherit;border:1px solid #665b46;padding:5px 10px;cursor:pointer;min-height:36px">Sign out</button></div></div></header>
 <main id="main-content"><div class="wrap">
   <h1>JRS Programme Status</h1>
-  <p class="sub">Live participation, adoption and reach across every JRS study, pilot and initiative. Supported figures refresh automatically every 60 seconds. Some owner-only reads may show unavailable when authentication or backend configuration is missing; that must not be interpreted as zero.</p>
+  <p class="sub">Private, source-bounded reporting across free resources, training, research and separately governed software preparation. A tracked request is not established adoption. Supported figures refresh automatically every 60 seconds. Some owner-only reads may show unavailable when authentication or backend configuration is missing; that must not be interpreted as zero.</p>
   
-  <!-- Owner-only diligence orientation; not a public acquisition prospectus. -->
-  <h2 id="buyer-evidence-snapshot" style="font-size:22px">Licensing and Acquisition Evidence Snapshot</h2>
-  <p class="sub">Owner-only decision summary. A download request is not a person, buyer, deployment or transaction. Current evidence is separated from inferences and outstanding checks.</p>
-  <div class="chart">
-    <h3>What can be established from the records</h3>
-    <div class="tablewrap"><table>
-      <thead><tr><th scope="col">Evidence category</th><th scope="col">Observed status</th><th scope="col">Buyer interpretation</th></tr></thead>
-      <tbody>
-        <tr><td>Resource requests</td><td id="buyer-requests">Loading classification...</td><td>Tracked redirects only; not verified practitioners or unique downloads.</td></tr>
-        <tr><td>Practitioner application</td><td>Not established by downloads</td><td>Requires documented, consented application in a real workflow.</td></tr>
-        <tr><td>Organization pilots</td><td>No instrumented invitations as of 30 Oct 2026</td><td>Zero sessions do not constitute rejected offers.</td></tr>
-        <tr><td>Buyer commitment</td><td>Not established by these analytics</td><td>Qualifying purchase, evaluation and acquisition enquiries must be evidenced separately.</td></tr>
-        <tr><td>Decision Spellchecker</td><td>NO_GO_NOT_VERIFIED as of 30 Oct 2026</td><td>Draft code and offline checks are not production validation.</td></tr>
-        <tr><td>Conveyable rights</td><td>Grant-specific review outstanding</td><td>Public authorship, contributor consent and commercial rights are separate.</td></tr>
-      </tbody>
-    </table></div>
-    <div class="note">These are dated status classifications, not an automated sale-readiness certification. Use the asset register, evidence ledger, release records and actual transaction correspondence to substantiate future buyer claims. Do not share the private owner dashboard with prospects.</div>
+  <!-- Issue 3.6 organizational alignment. No data copied, stored or exposed here.
+       The existing authenticated API sources and historic panels remain intact. -->
+  <div id="programme-map" class="jrs-overview" role="region" aria-label="Private JRS programme index">
+    <p class="jrs-source">Owner operating index | Issue 3.6 proposed 31 October 2026 | Owner adoption not recorded</p>
+    <p class="sub">Two independent programme tiers, with private participation and governance records. The figures below retain their original source definitions. Neither a guide request nor a named contact establishes practitioner adoption or commercial demand.</p>
+    <div class="jrs-lanes">
+      <div class="jrs-lane"><h3>Tier I | Free practitioner resources</h3>
+        <p>Free Investigator Guides, self-paced Training and Reviewer Resources, and Practical Review References. No compulsory registration or research participation.</p>
+        <a href="#resource-downloads">Resource and download evidence</a>
+        <a href="#training-adoption">Training activity</a>
+        <a href="#reviewer-panel">Reviewer panel and study activity</a>
+        <a href="/resources.html">Public resource catalogue</a>
+      </div>
+      <div class="jrs-lane"><h3>Private | Participants and contacts</h3>
+        <p>Retain the recorded names, email addresses, organizations, source activity and individual permission fields. No automatic contact or commercial reuse.</p>
+        <a href="#everyone-on-the-record">Search all private contact records</a>
+        <a href="#private-contact-detail">Recommendations, certificates and quotes</a>
+        <a href="#contacts-and-commercial">Categorized enquiries</a>
+      </div>
+      <div class="jrs-lane"><h3>Tier II | Separate software candidates</h3>
+        <p>Original DS-A, three proposed standalone modules and the separate R6 experimental laboratory. No software sale or transfer is authorized by this dashboard.</p>
+        <a href="#tier-two-portfolio">Five-asset status and evidence</a>
+        <a href="#buyer-evidence-snapshot">Buyer evidence limitations</a>
+        <a href="#sale-dossier">Archived sale documents</a>
+      </div>
+      <div class="jrs-lane"><h3>Governance | Evidence and decisions</h3>
+        <p>Current public delivery and private-source verification remain distinct. Access control, consent, release decisions and incidents cannot be inferred from healthy page-loads.</p>
+        <a href="#owner-release-readiness">Access and release checks</a>
+        <a href="#programme-control-notes">Source definitions and privacy boundaries</a>
+      </div>
+    </div>
+    <div id="programme-control-notes" class="note">
+      <strong>Measurement boundaries:</strong> Public guide clicks, tracked redirect requests, final PDF delivery, research responses, training completions and verified organizational adoption are different populations. Historical registration rows stay in their original record and do not create a current download gate. The private contact directory is for authorized owner review, not a buyer prospect list. Unknown, incomplete or unverified data must never be shown as zero.
+    </div>
   </div>
-  <nav class="bar" aria-label="Evidence review navigation">
-    <a class="btn" href="#buyer-evidence-snapshot">Overview</a>
-    <a class="btn" href="#contacts-and-commercial">Contacts</a>
-    <a class="btn" href="#training-adoption">Training</a>
-    <a class="btn" href="#resource-downloads">Download quality</a>
-    <a class="btn" href="#sale-dossier">Historical sale dossier</a>
+  <nav class="bar" aria-label="Private programme quick navigation">
+    <a class="btn" href="#resource-downloads">Free resources</a>
+    <a class="btn" href="#everyone-on-the-record">Participants</a>
+    <a class="btn" href="#contacts-and-commercial">Inquiries</a>
+    <a class="btn" href="#tier-two-portfolio">Private assets</a>
+    <a class="btn" href="#owner-release-readiness">Controls</a>
   </nav>
 <section aria-label="Owner-only release readiness" id="owner-release-readiness">
   <h2 style="font-size:22px">Release Readiness and Access Controls</h2>
@@ -155,7 +184,7 @@ tr.today td{background:rgba(93,191,130,.07)}
        URL secrecy is not an access control. The page is protected by the
        server-side owner proxy, and private API readers require ownerAccess().
        Site inquiries are grouped separately from historical commercial paths. -->
-  <h2 id="contacts-and-commercial" style="font-size:22px">Contacts and Commercial Activity</h2>
+  <h2 id="contacts-and-commercial" style="font-size:22px">Inquiries and historic commercial activity</h2>
   <p class="sub">Recent identified contacts and historic payment-screen attempts, newest first. Website research and training inquiries are measured separately from commercial interest. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
   <div class="cards" id="lead-cards" style="grid-template-columns:repeat(4,1fr)">
     <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Legacy leads shown</div></div>
@@ -196,7 +225,7 @@ tr.today td{background:rgba(93,191,130,.07)}
        international reviewer bench, appeared nowhere on the owner's own
        dashboard. Everything else on the page counts contacts, clicks or
        downloads, which is why the country figures looked contradictory. -->
-  <h2 style="font-size:22px">The Reviewer Panel</h2>
+  <h2 id="reviewer-panel" style="font-size:22px">The Reviewer Panel</h2>
   <p class="sub">The international bench across all three studies. This is the asset. Every other figure on this page counts a click, a contact or a download; this one counts credentialed people who graded records.</p>
   <div class="cards" id="panel-cards" style="grid-template-columns:repeat(4,1fr)">
     <div class="card"><div class="cv hot" id="pn-completers">&middot;</div><div class="ck">Completed a full 24-record set</div></div>
@@ -361,7 +390,7 @@ tr.today td{background:rgba(93,191,130,.07)}
   <!-- MERGED FROM THE OWNER SHEET 2026-08-12. That page duplicated this one's
        roster and Today tiles while holding these four blocks nowhere else, so
        the unique parts moved here and the duplicate page was deleted. One URL. -->
-  <h2 style="font-size:22px;margin-top:34px">Private Contact Detail</h2>
+  <h2 id="private-contact-detail" style="font-size:22px;margin-top:34px">Private contact requests and permissions</h2>
   <p class="sub">The parts of the record that are not counts: who asked for a recommendation or a certificate, and the quotes honorees wrote with their publication clearance. Nothing here appears on any other page.</p>
   <div class="chart">
     <h3>Asked for a LinkedIn recommendation</h3>
@@ -521,6 +550,39 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="note" style="margin-top:8px">Only people who ticked "list my name publicly" when they added their support. Name and organization only, never email. Everyone else stays a private count.</div>
   </div>
 
+  <!-- Private Tier II source-document inventory, not an executed Form A/B/D/E. -->
+  <h2 id="tier-two-portfolio" style="font-size:22px;margin-top:42px">Tier II | Separately governed software assets</h2>
+  <p class="sub">Issue 3.6 (31 October 2026), proposed for owner adoption. These five candidate identities are separate from the free public JRS programme and its participants. No product is represented as commercially operational or transferable.</p>
+  <div class="chart">
+    <div class="tablewrap"><table>
+      <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted);padding-bottom:8px">Owner-document classifications, not new live product tests</caption>
+      <thead><tr><th scope="col">Asset</th><th scope="col">Evidenced status</th><th scope="col">Next evidence required</th></tr></thead><tbody>
+      <tr><td>PORT-01 / DS-A<br>Original Decision Spellchecker</td><td>NO_GO_NOT_VERIFIED. Authentic original source/build not established; 0/18 original SP conditions independently accepted.</td><td>Authenticate original v0.6.11/0.7.0 source, rights, build and SP-01..18 evidence.</td></tr>
+      <tr><td>PORT-02<br>Evidence Integrity Verifier</td><td>Proposed standalone module; separate product and source rights not established.</td><td>Map shared dependencies; reproduce source, input/output, tamper and provenance checks.</td></tr>
+      <tr><td>PORT-03<br>Decision Record Report Generator</td><td>Local examples reported; independent product and title not established.</td><td>Prove eight-part reporting contract, deterministic synthetic output, accessibility and rights.</td></tr>
+      <tr><td>PORT-04<br>Documentation Review Training Simulator</td><td>Constructed-scenario concept; standalone product and efficacy not verified.</td><td>Separate public training rights, synthetic scenarios, feedback rubric and buyer need.</td></tr>
+      <tr><td>LAB-R6 / DS-B<br>Experimental constructed-case laboratory</td><td>Developer evidence only; 0/32 component transfer grants and source digest discrepancy remain open.</td><td>Resolve original evidence, source digests and grants. Experimental, not original DS-A or field validated.</td></tr>
+      </tbody></table></div>
+    <p class="note">Private planning and independently authorized synthetic work may continue. External demos, real-record use, paid listings, source disclosure, licensing, transfers and buyer-directed communication require distinct exact-scope owner decisions. Forms A to F in Issue 3.6 are unsigned and do not imply authorization.</p>
+  </div>
+  <!-- Owner-only diligence orientation; not a public acquisition prospectus. -->
+  <h2 id="buyer-evidence-snapshot" style="font-size:22px">Licensing and Acquisition Evidence Snapshot</h2>
+  <p class="sub">Owner-only decision summary. A download request is not a person, buyer, deployment or transaction. Current evidence is separated from inferences and outstanding checks.</p>
+  <div class="chart">
+    <h3>What can be established from the records</h3>
+    <div class="tablewrap"><table>
+      <thead><tr><th scope="col">Evidence category</th><th scope="col">Observed status</th><th scope="col">Buyer interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>Resource requests</td><td id="buyer-requests">Loading classification...</td><td>Tracked redirects only; not verified practitioners or unique downloads.</td></tr>
+        <tr><td>Practitioner application</td><td>Not established by downloads</td><td>Requires documented, consented application in a real workflow.</td></tr>
+        <tr><td>Organization pilots</td><td>No instrumented invitations as of 30 Oct 2026</td><td>Zero sessions do not constitute rejected offers.</td></tr>
+        <tr><td>Buyer commitment</td><td>Not established by these analytics</td><td>Qualifying purchase, evaluation and acquisition enquiries must be evidenced separately.</td></tr>
+        <tr><td>Decision Spellchecker</td><td>NO_GO_NOT_VERIFIED as of 30 Oct 2026</td><td>Draft code and offline checks are not production validation.</td></tr>
+        <tr><td>Conveyable rights</td><td>Grant-specific review outstanding</td><td>Public authorship, contributor consent and commercial rights are separate.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="note">These are dated status classifications, not an automated sale-readiness certification. Use the asset register, evidence ledger, release records and actual transaction correspondence to substantiate future buyer claims. Do not share the private owner dashboard with prospects.</div>
+  </div>
   <!-- SALE DOSSIER. Added 2026-08-13 on the owner's request for one detailed
        summary at a single link. Placed on THIS page rather than a new one,
        because CLAUDE.md records that there is one private owner page and a
