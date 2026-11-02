@@ -40,7 +40,9 @@ assert.match(people,/activity_family: participantGroup\(src,p\)/);
 assert.match(people,/consent_contact_state: contactPermission/);
 assert.match(people,/publication_scope: publicScope/);
 assert.match(people,/permissionState\(p,\['consent_contact','consent_to_contact'\]\)/);
-assert.match(people,/fetchAllUrl\(/);
+assert.match(people,/fetchAll\(SB,/);
+assert.match(people,/!result\.complete/);
+assert.match(people,/private_participant_source_incomplete/);
 assert.ok(!/\.delete\(\)|method:\s*['"]DELETE/.test(people));
 
 const html=readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
