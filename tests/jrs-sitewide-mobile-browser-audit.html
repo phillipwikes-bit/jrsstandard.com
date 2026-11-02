@@ -146,6 +146,10 @@
                 if(previous)w.showSection('doccond');
                 if(!previous||!isVisible(w,nonhome)||!isVisible(w,documentMain))
                   failures.push('main-landmark-hidden-after-navigation');
+                const selectedButton=d.querySelector('.primary-nav-inner button.nav-item[aria-current="location"]');
+                if(!selectedButton||!(selectedButton.getAttribute('onclick')||'').includes("'doccond'"))
+                  failures.push('standard-current-section-not-announced');
+
                 if(previous)w.showSection('home');
               }
 
