@@ -3822,7 +3822,11 @@ function showSection(id){
  document.querySelectorAll('.primary-nav-inner button.nav-item').forEach(n=>n.classList.remove('active'));
  const sec=document.getElementById('section-'+id);
  if(sec)sec.classList.add('active');
- if(id==='roles'&&typeof showRoleEnv==='function'){setTimeout(()=>showRoleEnv('hr'),30);}
+ if(id==='roles'&&typeof showRoleEnv==='function'){
+   // Render default context synchronously, without stealing focus from the
+   // section navigation that brought the reader here.
+   showRoleEnv('hr', false);
+ }
  const sectionMap={'home':0,'doccond':1,'tools':2,'scenarios':3,'guidance':4,'roles':5,'maturity':6,'ai':7,'usecases':8,'training':9,'about':10,'library':11,'kit':12};
  const navItems=document.querySelectorAll('.primary-nav-inner button.nav-item');
  if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
@@ -3961,7 +3965,7 @@ const ROLE_ENVS={
 };
 
 var jrsSelectedRoleEnv='hr';
-function showRoleEnv(id){
+function showRoleEnv(id, moveFocus){
  const env=ROLE_ENVS[id];if(!env)return;
  jrsSelectedRoleEnv=id;
  document.getElementById('roles-menu').style.display='none';
@@ -3972,7 +3976,7 @@ function showRoleEnv(id){
  const title=document.querySelector('#role-env-content h2');
  if(title){
    title.setAttribute('tabindex','-1');
-   title.focus({preventScroll:true});
+   if(moveFocus!==false)title.focus({preventScroll:true});
  }
 }
 function showRolesMenu(){
