@@ -1238,6 +1238,16 @@ body.jrs-institutional.jrs-training-page #poll-submit-btn:disabled{
     box-shadow:none!important;
     break-inside:avoid-page!important;
   }
+  /* The online methodology and the published Standard PDF are distinct
+     editions. Make this boundary explicit in any browser-printed copy. */
+  body.jrs-institutional.jrs-standard-page #main-content::before{
+    content:"JRS online methodology (web version 1.0). This browser printout is not the separately published JRS Standard PDF version 2.0.";
+    display:block!important;margin:0 0 15pt!important;
+    padding:8pt 10pt!important;background:#edf3f6!important;
+    border-left:3pt solid #7f5e26!important;
+    color:#193148!important;
+    font:700 9pt/1.45 Inter,Arial,sans-serif!important;
+  }
   body.jrs-institutional.jrs-standard-page :where(
     .worksheet-body,.maturity-level-body
   ){display:block!important;}
