@@ -64,7 +64,7 @@ try{
   calls=[];
   globalThis.fetch=async(url,opt)=>{
     const source=sourceType(url),range=opt.headers?.Range;
-    calls.push({source,range});
+    calls.push({source,range,url:String(url)});
     assert.equal(opt.headers.Authorization,'Bearer '+service);
     if(range==='0-999')return Response.json(Array.from({length:1000},(_,i)=>fixtures[source](i)));
     if(range==='1000-1999')return Response.json([fixtures[source](1000)]);
@@ -92,6 +92,16 @@ try{
     assert.equal(Object.values(d.arrivals_by_state).reduce((a,b)=>a+b,0),1001);
     assert.deepEqual(d.source_coverage,['checkout-click','checkout-fallback','enterprise-inquiry']);
     assert.equal(calls.length,6);
+    assert.equal(typeof d.coverage_through_utc,'string');
+    assert.equal(d.generated_at,d.coverage_through_utc);
+    assert.match(d.pagination_basis,/fixed UTC upper bound/);
+    assert.ok(calls.every(x=>x.url.includes('order=created_at.asc')));
+    const bounds=calls.map(x=>{
+      const m=x.url.match(/[?&]created_at=lte\.([^&]+)/);
+      assert.ok(m,'each source must carry a time bound');
+      return decodeURIComponent(m[1]);
+    });
+    assert.ok(bounds.every(x=>x===d.coverage_through_utc));
     assert.ok(!JSON.stringify(d).includes(service));
     assert.ok(d.note.includes('neither confirmed purchase intent, lost revenue'));
     assert.equal(response.headers.get('access-control-allow-origin'),null);
