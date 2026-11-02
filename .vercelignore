@@ -13,6 +13,15 @@
 # vercel.json also carries a 404 redirect for /*.md as defence in depth, so a
 # markdown file added later is blocked even if this list is not updated.
 
+# ---- owner-only IncomeOS prototype, not part of the public JRS deployment ---
+# The JRS Vercel project builds the entire repository root on preview branches.
+# Exclude all owner workspace assets, including HTML, JS, JSON and SQL, so a
+# release preview cannot accidentally publish an unauthenticated owner app.
+# A separately protected IncomeOS project must use owner/incomeos as its root
+# with its own project-level .vercelignore. Authentication and encryption remain
+# independent release prerequisites, not properties of this exclusion.
+owner/incomeos/
+
 # ---- internal documentation and working notes -------------------------------
 *.md
 !404.md
