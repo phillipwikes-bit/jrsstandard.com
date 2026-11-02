@@ -80,8 +80,9 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
 /* /JRS SITE NAV v1 */
 </style>
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 </head>
-<body>
+<body class="jrs-institutional jrs-guides-page">
 <a href="#main-content" class="skip-link">Skip to content</a>
 <header class="site-header" role="banner">
   <div class="site-header-inner">
@@ -105,10 +106,25 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
   <div class="hero">
     <div class="eyebrow">Free Investigator Guides &middot; Public-interest resources</div>
     <h1>Investigator Guides</h1>
-    <p class="sub">A free, operational method for assessing whether an administrative record contains sufficient, traceable support for its conclusions, particularly where AI-assisted drafting has contributed to the record. Three editions, for employment (EEO), fair-housing, and international equality and human-rights investigations, each built around five review conditions and a Record Interrogation Framework a reviewer can apply at intake or before finalization.</p>
-    <p class="cred">Written by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights, M.S. Negotiation and Conflict Management. The method behind these guides has been graded record by record by <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b>, including an expert panel of <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b>, each completing a full 24-record set.</p>
+    <div class="jrs-guide-quick" aria-label="Current free guide editions">
+     <p><strong>Choose a guide:</strong> Three PDF supplements, Version 1.1 (July 2026). Their condition terminology is not identical to the separate Standard PDF v2.0.</p>
+     <nav class="jrs-guide-quick-actions" aria-label="Download a guide">
+      <a data-ed="employment" href="/JRS_Investigator_Field_Guide_Employment.pdf" download="JRS_Investigator_Field_Guide_Employment.pdf">Employment / EEO PDF</a>
+      <a data-ed="fairhousing" href="/JRS_Investigator_Field_Guide_FairHousing.pdf" download="JRS_Investigator_Field_Guide_FairHousing.pdf">Fair Housing PDF</a>
+      <a data-ed="international" href="/JRS_Investigator_Field_Guide_International.pdf" download="JRS_Investigator_Field_Guide_International.pdf">International PDF</a>
+     </nav>
+    </div>
+
   </div>
 
+  <section aria-labelledby="guide-version-note" class="boundary jrs-guide-version-boundary" style="margin:20px 0 28px">
+ <h2 id="guide-version-note" class="boundary-title">Edition and terminology notice</h2>
+ <p class="jrs-guide-version-summary">The Version 1.1 (July 2026) investigator guides and the separate Standard PDF v2.0 use different condition terminology and assessment logic. Identify the edition used before applying a guide.</p>
+ <details class="jrs-guide-version-details">
+  <summary>Review condition terminology and edition limitations</summary>
+  <div class="jrs-guide-version-detail-body"><p>These are three <strong>Version 1.1 investigator technical supplements (July 2026)</strong>. They identify their five conditions as Record Self-Sufficiency, Evidentiary Anchoring, Chronological Integrity, Decision-Process Traceability, and Evidentiary Sufficiency. The separately published <a href="/JRS-Standard.pdf">JRS Standard PDF, Version 2.0 (2026)</a>, uses Reconstructability, Basis Identification, Chronology, Decision-Process Traceability, and Evidentiary Sufficiency, with a different treatment of the overarching reconstructability requirement. Terminology and assessment logic are not certified as identical between these editions. For current technical application, consult the Standard, document which edition governed the review, and follow the applicable professional procedures.</p></div>
+ </details>
+ </section>
   <div class="section-label">Download</div>
   <p class="microcopy">All three guides are free &middot; No account, payment or registration &middot; Direct PDF access</p>
   <div class="cards">
@@ -137,6 +153,11 @@ h1{font-family:'Bodoni Moda',serif;font-size:33px;font-weight:400;line-height:1.
       <a href="/JRS_Investigator_Field_Guide_International.pdf" target="_blank" rel="noopener" aria-label="View International guide PDF in a new tab" style="margin-top:12px;font-size:12px;align-self:flex-start;">View PDF in new tab</a>
     </div>
   </div>
+
+  <section class="jrs-guide-background" aria-label="Guide scope and research context">
+    <p class="sub">A free, operational method for assessing whether an administrative record contains sufficient, traceable support for its conclusions, particularly where AI-assisted drafting has contributed to the record. Three editions, for employment (EEO), fair-housing, and international equality and human-rights investigations, each organized around five guide-specific review conditions and a Record Interrogation Framework a reviewer can apply at intake or before finalization.</p>
+    <p class="cred">Written by <b>Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights, M.S. Negotiation and Conflict Management. The research program records <b><span data-panel="reviewers_all">58</span> reviewers who graded at least one constructed record across three studies</b>. Of these, <b><span data-panel="completers_all">36</span> reviewers completed a full 24-record set across <span data-panel="countries_all">16</span> countries</b>. The separate expert detection analysis involved 16 experts and 384 graded reads. Completion counts are not accuracy or reliability estimates.</p>
+  </section>
 
   <!-- Supplementary resources are always visible and never condition guide access. -->
   <section class="whatis" aria-labelledby="more-free-guides" style="margin-top:22px;">
@@ -388,5 +409,6 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
   }, true);
 })();
 </script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body>
 </html>

@@ -66,8 +66,9 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
 :root{--bg:#070706;--surface:#121210;--surface2:#1a1a17;--rule:#302f2a;--text:#f5f3ed;--muted:#bbb7ad;--muted-soft:#928d82;--accent:#d3ad64;--accent-dim:#ac823b;--ready:#7bc49b;--focus:#f4d18b}html,body{background:radial-gradient(900px 500px at 96% -150px,rgba(211,173,100,.12),transparent 66%),var(--bg)}a:focus-visible{outline:2px solid var(--focus);outline-offset:3px}.site-header{background:rgba(7,7,6,.88);backdrop-filter:blur(12px)}.wordmark{font-size:27px;letter-spacing:-.025em}.jrs-sitenav a:hover,.jrs-sitenav a[aria-current="page"]{background:rgba(211,173,100,.08)}.hero{padding:60px 0 38px}h1{font-size:42px;letter-spacing:-.03em;line-height:1.12}.start-grid{margin-top:26px}.start-link{background:linear-gradient(135deg,rgba(255,255,255,.02),transparent 70%),var(--surface);padding:15px;min-height:94px;transition:transform .18s ease,border-color .18s ease,background .18s ease}.start-link:hover,.start-link:focus{transform:translateY(-2px);border-color:var(--accent);background:linear-gradient(135deg,rgba(211,173,100,.08),transparent 70%),var(--surface)}.start-v{font-size:17px}.card{background:linear-gradient(135deg,rgba(255,255,255,.02),transparent 66%),var(--surface);padding:23px;transition:transform .2s ease,border-color .2s ease}.card:hover{transform:translateY(-3px);border-color:rgba(211,173,100,.62)}.card.primary{border-color:rgba(211,173,100,.55);background:linear-gradient(145deg,rgba(211,173,100,.1),var(--surface) 58%)}.card-link{transition:transform .18s ease,background .18s ease}.card-link:hover{transform:translateY(-1px);background:#e0bc76}.boundary{background:linear-gradient(135deg,rgba(211,173,100,.045),transparent 50%),var(--surface2);padding:20px 21px;margin:34px 0 48px}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}@media(max-width:680px){h1{font-size:33px}}
 </style>
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 </head>
-<body>
+<body class="jrs-institutional jrs-resource-page">
 <a href="#main-content" class="skip-link">Skip to content</a>
 <header class="site-header" role="banner">
  <div class="site-header-inner">
@@ -91,16 +92,156 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
   <section class="hero">
    <div class="eyebrow">Public resources &middot; Free and ungated</div>
    <h1>JRS practitioner tools and references.</h1>
-   <p class="sub">These tools help practitioners examine whether a consequential decision record preserves the basis, evidence, reasoning, and chronology needed for later independent review.</p>
-   <p class="access-note"><strong>No purchase, account, or registration is required.</strong> Training is open without registration. Contact details are requested only if you choose to receive a named completion certificate and project updates with consent.</p>
-   <p class="access-note"><strong>Practice within established workflows.</strong> The free materials support manual documentation review and training. They do not process case records, establish a legal conclusion, or substitute for professional judgment.</p>
-   <nav class="start-grid" aria-label="Find resources by professional responsibility">
-    <a class="start-link" href="#field-guides"><span class="start-k">Investigations and EEO</span><span class="start-v">Field guides</span></a>
-    <a class="start-link" href="#quick-review"><span class="start-k">HR and compliance</span><span class="start-v">Quick review tools</span></a>
-    <a class="start-link" href="#review-references"><span class="start-k">Legal and audit</span><span class="start-v">Reviewer references</span></a>
-    <a class="start-link" href="#supporting-detail"><span class="start-k">Research and governance</span><span class="start-v">Research and specifications</span></a>
-   </nav>
+   <p class="sub">Free tools for checking whether a consequential record preserves the basis, evidence, reasoning and chronology needed for independent review.</p>
+   <div class="jrs-resource-primary-actions" aria-label="Start with a tool">
+    <a href="check.html?src=resources">Start a record review</a>
+    <a href="/api/dl?e=card&amp;src=resources">Rapid Review Card (PDF)</a>
+   </div>
+   <p class="jrs-resource-directory-link"><a href="#resource-catalog">Search all 16 resources by topic, role or format</a></p>
+
+
   </section>
+
+  <section class="jrs-resource-catalog" id="resource-catalog" tabindex="-1" aria-labelledby="jrs-catalog-heading">
+   <div class="jrs-resource-catalog-heading">
+    <div>
+     <p class="section-label">Resource directory</p>
+     <h2 id="jrs-catalog-heading">Find a tool or publication</h2>
+     <p>Browse 16 public resources by keyword, professional responsibility or format. Documents retain their own edition labels.</p>
+    </div>
+    <a href="#field-guides" class="jrs-catalog-guide-link">About field-guide editions</a>
+   </div>
+   <form class="jrs-resource-search" id="jrs-resource-search" role="search" hidden aria-label="Filter JRS public resources">
+    <div class="jrs-resource-search-field">
+     <label for="jrs-resource-query">Search resources</label>
+     <input id="jrs-resource-query" type="search" autocomplete="off" placeholder="e.g., chronology" aria-controls="jrs-resource-results">
+    </div>
+    <div class="jrs-resource-search-field">
+     <label for="jrs-resource-role">Professional responsibility</label>
+     <select id="jrs-resource-role" aria-controls="jrs-resource-results">
+      <option value="all">All responsibilities</option>
+      <option value="investigation">Investigations</option>
+      <option value="hr">HR and employee relations</option>
+      <option value="legal">Legal</option>
+      <option value="audit">Compliance and audit</option>
+      <option value="research">Research and governance</option>
+      <option value="training">Training</option>
+     </select>
+    </div>
+    <div class="jrs-resource-search-field">
+     <label for="jrs-resource-format">Resource format</label>
+     <select id="jrs-resource-format" aria-controls="jrs-resource-results">
+      <option value="all">All formats</option>
+      <option value="PDF">PDF downloads</option>
+      <option value="Web">Web references</option>
+      <option value="Interactive">Interactive tools</option>
+     </select>
+    </div>
+    <button type="button" id="jrs-resource-reset" class="jrs-resource-reset">Clear filters</button>
+   </form>
+   <p id="jrs-resource-count" class="jrs-resource-count" role="status" aria-live="polite" aria-atomic="true">16 resources listed. All links remain available if search is unavailable.</p>
+   <div class="jrs-resource-results" id="jrs-resource-results">
+    <article class="jrs-resource-entry" data-format="Interactive" data-roles="investigation hr legal audit" data-keywords="record quick review evidence documentation check decision">
+     <div class="jrs-resource-entry-meta">Interactive review</div>
+     <h3>Seven-Point Record Defensibility Check</h3>
+     <p>Browser-based review of a closed matter. No record upload or registration.</p>
+     <a href="check.html?src=resources">Open interactive check</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="PDF" data-roles="investigation hr legal audit research" data-keywords="standard publication method five conditions">
+     <div class="jrs-resource-entry-meta">Standard PDF · Version 2.0 (2026)</div>
+     <h3>JRS Standard, published PDF</h3>
+     <p>Separately versioned publication. Do not assume equivalence with the online methodology.</p>
+     <a href="/api/dl?e=standard&amp;src=resources">Download Standard PDF</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="PDF" data-roles="investigation hr legal audit" data-keywords="record quick card review">
+     <div class="jrs-resource-entry-meta">Field aid · PDF · Two pages</div>
+     <h3>Rapid Review Card</h3>
+     <p>Concise reference for the five review conditions and routing decisions.</p>
+     <a href="/api/dl?e=card&amp;src=resources">Download Rapid Review Card</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="PDF" data-roles="investigation hr legal" data-keywords="employment discrimination civil rights eeo">
+     <div class="jrs-resource-entry-meta">Investigator supplement · Version 1.1 (July 2026) · PDF</div>
+     <h3>Employment and EEO Investigator Guide</h3>
+     <p>Discipline-specific technical supplement. Terminology differs from Standard PDF v2.0.</p>
+     <a href="/api/dl?e=employment&amp;src=resources">Download Employment and EEO guide</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="PDF" data-roles="investigation legal" data-keywords="housing discrimination fair housing">
+     <div class="jrs-resource-entry-meta">Investigator supplement · Version 1.1 (July 2026) · PDF</div>
+     <h3>Fair Housing Investigator Guide</h3>
+     <p>Discipline-specific technical supplement. Terminology differs from Standard PDF v2.0.</p>
+     <a href="/api/dl?e=fairhousing&amp;src=resources">Download Fair Housing guide</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="PDF" data-roles="investigation legal research" data-keywords="international human rights investigation">
+     <div class="jrs-resource-entry-meta">Investigator supplement · Version 1.1 (July 2026) · PDF</div>
+     <h3>International Investigator Guide</h3>
+     <p>Technical supplement for international equality and human-rights contexts.</p>
+     <a href="/api/dl?e=international&amp;src=resources">Download International guide</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="PDF" data-roles="investigation hr legal audit training" data-keywords="reviewer guidance historical manual escalation">
+     <div class="jrs-resource-entry-meta">Historical reviewer reference · Version 1.0 (May 2026) · PDF</div>
+     <h3>Reviewer Desk Reference</h3>
+     <p>Nineteen-page reviewer reference. Earlier edition; cite the document actually used.</p>
+     <a href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf&amp;src=resources">Download Reviewer Desk Reference</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="Web" data-roles="investigation hr legal audit research" data-keywords="online standard methodology documentation conditions">
+     <div class="jrs-resource-entry-meta">Online methodology · Version 1.0 (May 2026)</div>
+     <h3>Online JRS Methodology</h3>
+     <p>The web methodology is separate from the published Standard PDF v2.0.</p>
+     <a href="jrsstandard.html">Read online methodology</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="Web" data-roles="investigation hr legal audit research" data-keywords="definitions codebook reconstructability">
+     <div class="jrs-resource-entry-meta">Measurement instrument · Version 1.0 (June 2026)</div>
+     <h3>JRS Codebook</h3>
+     <p>Five condition definitions and maturity disclosures. Experimental method research.</p>
+     <a href="codebook.html">Read Codebook definitions</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="Web" data-roles="training investigation hr legal audit" data-keywords="learning calibration modules">
+     <div class="jrs-resource-entry-meta">Self-paced training · Web</div>
+     <h3>Six-Module Reviewer Training</h3>
+     <p>Six modules and applied exercises. Registration is not required to begin.</p>
+     <a href="training.html">Open reviewer training</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="Web" data-roles="training investigation hr legal audit" data-keywords="practice simulations scenarios">
+     <div class="jrs-resource-entry-meta">Practice exercises · Web</div>
+     <h3>Decision Record Simulations</h3>
+     <p>Compare stronger and weaker documentation examples and review risks.</p>
+     <a href="simulations.html">Open record simulations</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="Web" data-roles="investigation hr legal audit" data-keywords="worksheet review form">
+     <div class="jrs-resource-entry-meta">Field reference · Web</div>
+     <h3>Reviewer Worksheet</h3>
+     <p>Reference material for structuring a record review.</p>
+     <a href="reference/reviewer-worksheet/">Open reviewer worksheet</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="Web" data-roles="investigation hr legal audit" data-keywords="escalation evidence threshold">
+     <div class="jrs-resource-entry-meta">Field reference · Web</div>
+     <h3>Escalation Triggers</h3>
+     <p>Review prompts for documenting when a record needs further examination.</p>
+     <a href="reference/escalation-triggers/">Read escalation triggers</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="Web" data-roles="research legal audit" data-keywords="research reliability validation">
+     <div class="jrs-resource-entry-meta">Evidence and limitations · Web</div>
+     <h3>Research Record</h3>
+     <p>Evidence status, study boundaries and limitations for constructed-record findings.</p>
+     <a href="research.html">Read the research record</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="Web" data-roles="research legal audit" data-keywords="methods research studies">
+     <div class="jrs-resource-entry-meta">Study methods · Web</div>
+     <h3>Research Methodology</h3>
+     <p>Study procedures and interpretation boundaries; not an operational effectiveness claim.</p>
+     <a href="methodology.html">Review study methodology</a>
+    </article>
+    <article class="jrs-resource-entry" data-format="Web" data-roles="research legal audit" data-keywords="schema manifest specification technical">
+     <div class="jrs-resource-entry-meta">Technical specification · Web</div>
+     <h3>Decision Reconstruction Manifest</h3>
+     <p>Manifest schema 1.0.1 accepts Standard v1.0 identifiers; PDF v2.0 compatibility is not established.</p>
+     <a href="manifest.html">Read Manifest limits</a>
+    </article>
+   </div>
+   <p class="jrs-resource-empty" id="jrs-resource-empty" hidden>No resources match these filters. Clear filters to see all available materials.</p>
+   <p class="jrs-resource-catalog-note">PDF links use the existing public download routes. A working link is not evidence of a current accessibility audit of the PDF itself. <a href="privacy-notice.html">Privacy and data handling</a>.</p>
+  </section>
+
 
   <div class="section-label" id="quick-review">Quick-use tools · Start with a record</div>
   <div class="cards">
@@ -112,18 +253,28 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
    </article>
    <article class="card">
     <div class="card-tag">Reference PDF</div>
-    <h2 class="card-title">JRS Review Controls</h2>
-    <p class="card-copy">Download the core review controls for use before a consequential record is finalized.</p>
+    <h2 class="card-title">JRS Standard, PDF Version 2.0</h2>
+    <p class="card-copy">Download the published Standard PDF (Version 2.0, 2026). The detailed online methodology retains its own v1.0 identifier.</p>
     <a class="card-link secondary" href="/api/dl?e=standard&amp;src=resources" download>Download PDF &darr;</a>
    </article>
    <article class="card">
-    <div class="card-tag">One-page field aid</div>
+    <div class="card-tag">Two-page field aid</div>
     <h2 class="card-title">Rapid Review Card</h2>
     <p class="card-copy">Keep the five review conditions and routing logic close at hand during a document review.</p>
     <a class="card-link secondary" href="/api/dl?e=card&amp;src=resources" download>Download card &darr;</a>
    </article>
   </div>
 
+  <section class="jrs-resource-secondary" aria-label="Browse resources by role">
+   <p class="access-note"><strong>No purchase, account, or registration is required.</strong> Training is open without registration. Contact details are requested only for optional named training registration and associated completion-record communication, subject to the <a href="privacy-notice.html#training-enrollment">registration privacy notice</a>. Enrollment is not required to use these materials.</p>
+   <p class="access-note"><strong>Practice within established workflows.</strong> The free materials support manual documentation review and training. They do not process case records, establish a legal conclusion, or substitute for professional judgment.</p>
+   <nav class="start-grid" aria-label="Find resources by professional responsibility">
+    <a class="start-link" href="#field-guides"><span class="start-k">Investigations and EEO</span><span class="start-v">Field guides</span></a>
+    <a class="start-link" href="#quick-review"><span class="start-k">HR and compliance</span><span class="start-v">Quick review tools</span></a>
+    <a class="start-link" href="#review-references"><span class="start-k">Legal and audit</span><span class="start-v">Reviewer references</span></a>
+    <a class="start-link" href="#supporting-detail"><span class="start-k">Research and governance</span><span class="start-v">Research and specifications</span></a>
+   </nav>  </section>
+  <div class="boundary"><div class="boundary-title">Publication version control</div><p>The downloadable JRS Standard is labeled Version 2.0 (2026). The online methodology identifies v1.0 (May 2026). The current Manifest schema 1.0.1 accepts Standard v1.0 identifiers and has not been established as compatible with the separately versioned PDF. Do not cite these as an identical edition. <a href="manifest.html">Review Manifest version limitations.</a></p></div>
   <div class="section-label" id="field-guides">Field guides by discipline</div>
   <div class="cards">
    <article class="card">
@@ -205,5 +356,7 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
   <div class="footer-copy">&#169; 2026 JRS&#8482; &middot; Phillip Wikes, principal</div>
  </div>
 </footer>
+<script src="/assets/jrs-resource-catalog.js" defer></script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body>
 </html>
