@@ -6,6 +6,8 @@
     var issues=[],used=new Set(),totals={};
     if(!Array.isArray(outcomes)||!Array.isArray(entries))
       return {status:"HOLD",issues:[{code:"INVALID_INPUT"}],matchedCents:null,transferAuthorized:false};
+    if(!outcomes.length)issues.push({code:"NO_OUTCOMES"});
+    if(!entries.length)issues.push({code:"NO_STATEMENT_ENTRIES"});
     var byId=new Map();
     entries.forEach(function(e,i){
       if(!e||typeof e.id!=="string"||!e.id.trim()||byId.has(e.id.trim())||
