@@ -99,6 +99,8 @@ try{
     assert.ok(html.includes('from%3Aformspree.io+after%3A2026%2F10%2F29'));
     assert.ok(!html.includes('from%3Aformspree.io+subject%3A%22JRS+Public+Inquiry%22'));
     assert.ok(html.includes('historical Supabase participant register'));
+    assert.ok(html.includes("d.source_scope!=='formspree_nonspam_submissions'"));
+    assert.ok(html.includes('Spam excluded; submissions are not verified unique people or qualified leads.'));
     assert.ok(html.includes('jrs-current-formspree-private-inquiries.csv'));
     assert.ok(html.includes("s.trimStart()"));
     assert.ok(html.includes("window.confirm('Export '"));
