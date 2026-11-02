@@ -1320,6 +1320,15 @@ body.jrs-institutional.jrs-training-page :where(
   min-height:44px!important;
   font-size:14px!important;
 }
+body.jrs-institutional.jrs-training-page #cert-name{
+  font-size:16px!important;line-height:1.5!important;min-height:48px!important;
+}
+body.jrs-institutional.jrs-training-page #cert-section :where(button){
+  min-height:44px!important;font-size:14px!important;
+}
+body.jrs-institutional.jrs-training-page :where(#cert-heading):focus{
+  outline:3px solid #0b679c!important;outline-offset:4px!important;
+}
 body.jrs-institutional.jrs-training-page #en-msg:not(:empty){
   border-left:3px solid #925e24!important;
   padding:8px 10px!important;
