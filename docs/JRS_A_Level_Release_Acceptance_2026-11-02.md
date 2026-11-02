@@ -16,6 +16,19 @@ Current corrective note: commit `7a42a4a554984ff38f883ae2cc3b36d2ef0314eb` inclu
 
 A successful source test, HTTP 200 response, preview build, screenshot, or nominal numeric score is not by itself an accessibility or training-acceptance pass. Mark a criterion **PASS** only when the required measured evidence exists for the exact release commit. Do not merge, promote, or claim an A-grade site from a partial test set. Protect private owner routes, training consent, the Review Engine restrictions and all published PDF binary identities.
 
+## Recovery of truncated online Standard content
+
+During the November 2 corrective pass, repository evidence established that the online Standard contained a **literal truncation marker** in place of substantial source material. This was verified against the stored Git blob SHA. The issue also existed in the prior production-base source and escaped the earlier sitewide responsive audit.
+
+- Restored **28,935 source characters** between stable documentary anchors using intact historical commit `532366a2f957e8370723e52375edb7d288464ae5`. Restoration commit: `13f24cf6591977f617ed56d7122f55b548f24a60`.
+- Removed two redundant closing HTML containers left at the subsequent section boundary after recovery, commit `a35378b4998ff2b128eee36ba73f5849257d0069`. Document structure was rechecked: **13 independent sections, zero nested document sections, zero unmatched div containers, footer outside main document sections**.
+- Recovered the original first worked-example tab group. All five worked-example groups and **15 associated panels** are again represented.
+- Added accessible tablist/tabpanel relationships, current tab state, roving tabindex and Arrow/Home/End keyboard activation in `assets/jrs-keyboard-controls.js`. Added a responsive readable-label rule in the institutional stylesheet.
+- Added source regressions for truncation markers across the entire public/root/reference/reviewer HTML inventory, unique pane IDs and complete tab destinations, plus executed browser interaction checks.
+- Reviewed actual local CI screenshots of the homepage, online Standard, Resources, Training and reference pages at mobile/desktop widths. These are **source-rendered** evidence and do not substitute for accessible exact-commit hosting or physical assistive-technology acceptance.
+
+At commit `d923a4ab0d4f8ecc82fca33ea3708b5210957746`, seven supporting GitHub workflows passed. The visual workflow passed its local Chrome layout, palette/typography, 58-route x four-viewport responsive checks, screenshot capture and source screenshot inventory; it still failed closed on exact-head hosted preview discovery. A hosted deployment and production A-grade are therefore **NOT VERIFIED**. Subsequent evidence-only commits require a fresh exact-head workflow check.
+
 ## Required benchmarks
 
 | Category | A / PASS condition | Current verification boundary |
