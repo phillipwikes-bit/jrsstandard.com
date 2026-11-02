@@ -66,6 +66,10 @@
           throw Error("Source reuse, unrecognized bank posting, or invalid identity");
         var post=v.state.posted.get(b.postedEventId),row=bank.get(b.bankSourceId),
           entry=sourceEntry.get(b.postedEventId);
+        if(!post||post.data.postedDate<input.statementPackage.from||
+          post.data.postedDate>input.statementPackage.to||
+          row.date<input.statementPackage.from||row.date>input.statementPackage.to)
+          throw Error("Historical or future bank source is outside the calendar close");
         if(!post||!entry||entry.id!==b.ledgerEntryId||
           post.data.sourceId!==b.journalSourceId||post.data.evidenceId!==b.evidenceId)
           throw Error("Evidence binding does not match owner-reviewed journal");
@@ -108,6 +112,15 @@
     var issues=[];
     if(input.statementPackage.to!==input.asOf)
       issues.push(fault("CLOSE_DATE_MISMATCH"));
+    var from=input.statementPackage.from,to=input.statementPackage.to;
+    if(typeof from!=="string"||!/^20\d\d-\d\d-01$/.test(from)||
+      typeof to!=="string"||from.slice(0,7)!==to.slice(0,7)||
+      to!==new Date(Date.UTC(Number(from.slice(0,4)),Number(from.slice(5,7)),0)).toISOString().slice(0,10))
+      issues.push(fault("INVALID_CALENDAR_MONTH_WINDOW"));
+    input.entries.forEach(function(e){
+      if(!object(e)||typeof e.date!=="string"||e.date<from||e.date>to)
+        issues.push(fault("ENTRY_OUTSIDE_CLOSE_WINDOW",e&&e.id));
+    });
     if(double.status!=="BALANCED_OWNER_REVIEW_ONLY")
       issues.push(fault("DOUBLE_ENTRY_REVIEW_HOLD"));
     if(statement.gate.status!=="READY_FOR_ACCOUNTANT_SOURCE_REVIEW")
