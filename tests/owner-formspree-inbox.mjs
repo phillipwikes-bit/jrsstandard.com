@@ -68,7 +68,8 @@ try{
     assert.equal(d.rows[0].transfer_permission,'not-recorded');
     assert.equal(d.rows[3].transfer_permission,'not-recorded');
     assert.equal(d.source_scope,'formspree_nonspam_submissions');
-    assert.match(d.coverage,/spam items are not included/);
+    assert.match(d.coverage,/Spam is excluded/);
+    assert.match(d.coverage,/excludes over-limit submissions until the provider reprocesses them/);
     assert.match(d.coverage,/no publication, marketing, research enrollment or transfer permission/);
     assert.equal(d.rows[1].contact_permission,'recorded-yes');
     assert.equal(d.rows[1].transfer_permission,'not-recorded');
@@ -106,7 +107,8 @@ try{
     assert.ok(!html.includes('from%3Aformspree.io+subject%3A%22JRS+Public+Inquiry%22'));
     assert.ok(html.includes('historical Supabase participant register'));
     assert.ok(html.includes("d.source_scope!=='formspree_nonspam_submissions'"));
-    assert.ok(html.includes('Spam excluded; submissions are not verified unique people or qualified leads.'));
+    assert.ok(html.includes('Spam and unreprocessed provider over-limit submissions excluded; submissions are not verified unique people or qualified leads.'));
+    assert.ok(html.includes("Check Formspree's Over Limit folder separately"));
     assert.ok(html.includes('d.current_form_marker_matches+d.unattributed_submissions!==d.rows.length'));
     assert.ok(html.includes('form_marker_status'));
     assert.ok(html.includes('Markers are self-declared, not independently verified.'));
