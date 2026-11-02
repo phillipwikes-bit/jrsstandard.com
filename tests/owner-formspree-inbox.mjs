@@ -57,6 +57,12 @@ try{
     const r=await handler(req(secret));assert.equal(r.status,200);
     const d=await r.json();assert.equal(d.complete,true);
     assert.equal(d.total,101);assert.equal(d.rows.length,101);
+    assert.equal(d.current_form_marker_matches,1);
+    assert.equal(d.unattributed_submissions,100);
+    assert.equal(d.rows[1].form_marker_status,'matches_current_contact_form_fields');
+    assert.equal(d.rows[0].form_marker_status,'unattributed');
+    assert.equal(d.rows[2].form_marker_status,'unattributed');
+    assert.equal(d.current_form_marker_matches+d.unattributed_submissions,d.total);
     assert.equal(d.rows[100].contact_permission,'recorded-no');
     assert.equal(d.rows[0].contact_permission,'recorded-yes');
     assert.equal(d.rows[0].transfer_permission,'not-recorded');
@@ -101,6 +107,9 @@ try{
     assert.ok(html.includes('historical Supabase participant register'));
     assert.ok(html.includes("d.source_scope!=='formspree_nonspam_submissions'"));
     assert.ok(html.includes('Spam excluded; submissions are not verified unique people or qualified leads.'));
+    assert.ok(html.includes('d.current_form_marker_matches+d.unattributed_submissions!==d.rows.length'));
+    assert.ok(html.includes('form_marker_status'));
+    assert.ok(html.includes('Markers are self-declared, not independently verified.'));
     assert.ok(html.includes('jrs-current-formspree-private-inquiries.csv'));
     assert.ok(html.includes("s.trimStart()"));
     assert.ok(html.includes("window.confirm('Export '"));
