@@ -6,6 +6,26 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 
 const source=readFileSync(new URL('../training.html',import.meta.url),'utf8');
+
+assert.match(source, /id="enroll-overlay" role="dialog" aria-modal="true" aria-labelledby="en-dialog-title"/,
+  'Named training enrollment must be a modal dialog for assistive technologies');
+assert.match(source, /id="en-dialog-description"/,
+  'The optional enrollment purpose must be explained on the dialog');
+assert.match(source, /id="en-msg" role="status" aria-live="polite"/,
+  'Enrollment feedback must be announced without moving focus');
+assert.match(source, /jrsEnrollReturnFocus = document.activeElement/,
+  'Dialog must remember its initiating control');
+assert.match(source, /e.key === 'Escape'[\s\S]*dismissEnroll\(\)/,
+  'Escape must dismiss enrollment without requiring consent');
+assert.match(source, /e.shiftKey[\s\S]*last.focus\(\)/,
+  'Shift+Tab must wrap focus inside the dialog');
+assert.match(source, /document.body.classList.remove\('jrs-training-dialog-open'\)/,
+  'Closing enrollment must restore body scrolling');
+assert.match(source, /Enrollment not confirmed/,
+  'Registration must check service acceptance, not HTTP status alone');
+assert.ok(!source.includes('consent to project updates. Free for practitioners.'),
+  'Registration must not imply unrelated project-update consent');
+
 const start=source.indexOf('var jrsCompletionPending = false;');
 const end=source.indexOf('function jrsSanitizeCheck(text)',start);
 assert.ok(start>=0&&end>start,'Cannot locate the production completion function');
