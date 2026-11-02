@@ -1,0 +1,51 @@
+name: Owner dashboard mainline integration gates
+on:
+  push:
+    branches:
+      - fix/owner-dashboard-mainline-integration-2026-11-02
+  pull_request:
+    paths:
+      - 'api/_owner-auth.js'
+      - 'api/_owner-record-groups.js'
+      - 'api/owner-*.js'
+      - 'api/people-9dd1ecdf6f8cdfd4.js'
+      - 'api/leads-4b7e2c9af106d385.js'
+      - 'api/site-inquiry-stats.js'
+      - 'owner-login.html'
+      - 'programme-status-9872fb93cc94.html'
+      - 'proxy.js'
+      - 'vercel.json'
+      - 'package.json'
+      - 'tests/owner-*.mjs'
+      - 'tests/owner-*.test.mjs'
+      - 'tests/site-inquiry-stats.mjs'
+      - '.github/workflows/owner-dashboard-integration.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Vercel proxy runtime without scripts
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Confirm owner routes and proxy gates fail closed
+        run: node tests/owner-router.mjs
+      - name: Confirm authenticated owner access and private readers
+        run: |
+          node tests/owner-access.mjs
+          node tests/private-research-readers.mjs
+      - name: Confirm OTP diagnostics, cookie lifecycle and sign-out behavior
+        run: |
+          node --test tests/owner-neon-otp-failures.test.mjs
+          node --test tests/owner-session-lifecycle.test.mjs
+      - name: Confirm Issue 3.6 participant classification and protected export
+        run: node tests/owner-programme-issue36.mjs
+      - name: Confirm historical inquiry totals and explicit source coverage
+        run: node tests/site-inquiry-stats.mjs
+      - name: Confirm release inventory does not authorize publication
+        run: node tests/owner-release-readiness.mjs
