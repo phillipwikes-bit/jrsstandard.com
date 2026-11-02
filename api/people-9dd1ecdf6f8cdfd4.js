@@ -151,6 +151,20 @@ export default async function handler(req){
     if (String(r.name || '').toUpperCase() === 'DIAGNOSTIC TEST') continue;
 
     const src = String(r.source || '');
+    // Public naming choices are purpose-specific, not a blanket permission.
+    // Keep each source flag separately and choose the relevant display scope.
+    const namedResearch = permissionState(p,['consent_named']);
+    const namedOrganization = permissionState(p,['consent_named_org']);
+    const listedSupporter = permissionState(p,['consent_public_list']);
+    const publicPermissionKey = src === 'contributor-confirm' ? 'consent_named'
+      : src === 'org-pilot' ? 'consent_named_org'
+      : (src === 'support-register' || src === 'support') ? 'consent_public_list' : '';
+    const publicPermission = publicPermissionKey ? permissionState(p,[publicPermissionKey]) : 'not-recorded';
+    const publicScope = publicPermissionKey === 'consent_named' ? 'Research attribution'
+      : publicPermissionKey === 'consent_named_org' ? 'Organization naming'
+      : publicPermissionKey === 'consent_public_list' ? 'Supporter listing'
+      : 'No established public-naming scope';
+    const contactPermission = permissionState(p,['consent_contact','consent_to_contact']);
 
     // One plain-English line saying what this person actually did.
     let detail = '';
@@ -190,14 +204,19 @@ export default async function handler(req){
       inquiry_category: src==='site-inquiry' ? String(p.category||'') : '',
       commercial_purpose: src==='site-inquiry' && p.category==='commercial' ? String(p.commercial_purpose||'') : '',
       detail: detail,
-      consent_contact: p.consent_contact === true || p.consent_to_contact === true,
-      consent_transfer: p.consent_transfer === true,
-      consent_public: (p.consent_named === true) || (p.consent_named_org === true) || (p.consent_public_list === true),
-      // Preserve the exact missing-vs-no distinction for private review.
-      // These flags never confer broader marketing, publication or transfer rights.
-      consent_contact_state: permissionState(p,['consent_contact','consent_to_contact']),
+      consent_contact: contactPermission === 'recorded-yes',
+      consent_transfer: permissionState(p,['consent_transfer']) === 'recorded-yes',
+      consent_public: publicPermission === 'recorded-yes',
+      // Preserve exact unknown, negative, and conflicting permission states.
+      // Research attribution, organization naming and supporter listing are
+      // separately scoped. None authorizes buyer outreach or data transfer.
+      consent_contact_state: contactPermission,
       consent_transfer_state: permissionState(p,['consent_transfer']),
-      consent_public_state: permissionState(p,['consent_named','consent_named_org','consent_public_list']),
+      consent_public_state: publicPermission,
+      publication_scope: publicScope,
+      consent_research_named_state: namedResearch,
+      consent_organization_named_state: namedOrganization,
+      consent_supporter_listed_state: listedSupporter,
       campaign: String(p.campaign || ''),
       edition: String(p.edition || ''),
       records_run: parseInt(p.records_run, 10) || 0,
