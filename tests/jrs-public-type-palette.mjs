@@ -61,10 +61,33 @@ const pdfFiles=[
  'JRS_Investigator_Field_Guide_Employment.pdf',
  'JRS_Investigator_Field_Guide_FairHousing.pdf',
  'JRS_Investigator_Field_Guide_International.pdf',
- 'JRS-Reference-9d4f2a7c.pdf'
+ 'JRS-Reference-9d4f2a7c.pdf',
+ 'JRS_Reliability_Accuracy.pdf','JRS_Research_Paper.pdf',
+ 'JRS_Investigator_Field_Guide.pdf'
 ];
 for(const path of pdfFiles){
  const bytes=readFileSync(new URL('../'+path,import.meta.url));
  assert.ok(bytes.length>1000 && bytes.subarray(0,5).toString()==='%PDF-',path+': invalid published PDF');
 }
-console.log('PASS: 6 legacy public pages, 6 principal pages, 17 reference pages and 6 unchanged published PDFs guarded. PDF font harmonization remains a separate controlled publication task.');
+// Training's locally generated certificate must follow the current public
+// institutional palette and must not describe itself as an internal distribution.
+// The educational-only boundary and PNG download must remain intact.
+const cert=training.slice(training.indexOf('function generateCert() {'),
+ training.indexOf('function downloadCert() {'));
+assert.ok(cert.length>1500,'training certificate drawing function missing');
+for(const token of ["'#F5F7F8'","'#FFFFFF'","'#17364F'","'#193148'","Georgia,serif",
+ 'Inter,system-ui,sans-serif',"RECORD OF COMPLETION","all six learning modules",
+ 'Not professional certification','© 2026 Phillip Wikes']){
+ assert.ok(cert.includes(token),'training PNG presentation/identity changed: '+token);
+}
+assert.ok(!cert.includes('INTERNAL DISTRIBUTION')&&!cert.includes("ctx.fillStyle = '#0A0A0A'"),
+ 'legacy black-and-gold certificate is not aligned with current website');
+assert.ok(training.includes("a.download = 'JRS-Completion-'")&&training.includes(".png';"),
+ 'training completion must remain a locally downloadable PNG');
+const researchSummary=load('research-summary.html');
+assert.ok(researchSummary.includes('/api/dl?e=accuracy&amp;src=research-summary')&&
+ researchSummary.includes('/api/dl?e=paper&amp;src=research-summary'),
+ 'research PDF routes missing');
+assert.ok(standard.includes('/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=jrsstandard'),
+ 'legacy general investigator guide route missing');
+console.log('PASS: 6 legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.');
