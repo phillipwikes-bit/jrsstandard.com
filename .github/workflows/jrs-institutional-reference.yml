@@ -20,6 +20,8 @@ jobs:
         run: node tests/jrs-institutional-reference-regression.mjs
       - name: Verify sitewide institutional palette, typography and legacy public routes
         run: node tests/jrs-public-type-palette.mjs
+      - name: Lock nine published PDF identities including the JRS Standard v2.0
+        run: node tests/jrs-published-pdf-identity.mjs
       - name: Verify public resources, downloads, anchors and evidence boundaries
         run: node tests/jrs-public-resource-integrity.mjs
       - name: Verify external professional publications and evidentiary separation
