@@ -21,6 +21,14 @@
     if (window.IncomeOSFinancialReadOnly !== false)
       throw new Error("Encrypted financial writes are unavailable until the separate owner-only release gate approves them.");
   }
+  // Use browser-provided cross-tab exclusive locking for all writes.
+  // Missing Web Locks must block writes, not fall back to unsafe localStorage.
+  async function withWriteLock(action) {
+    if (typeof navigator === "undefined" || !navigator.locks ||
+        typeof navigator.locks.request !== "function")
+      throw new Error("Exclusive browser storage locking is unavailable; encrypted writes remain disabled.");
+    return navigator.locks.request(NAME, { mode: "exclusive" }, action);
+  }
   function checkPassphrase(passphrase) {
     if (typeof passphrase !== "string" || passphrase.length < 16 ||
         passphrase.length > 1024)
@@ -123,20 +131,25 @@
         committing = true;
         const expectedRaw = previousRaw, expectedRevision = rev, initialKey = activeKey;
         try {
-          const serialized = await seal(next, activeKey, activeSalt, rev + 1);
-          // Encryption is asynchronous. Recheck AFTER it completes so another tab
-          // cannot change the ledger while this tab is deriving ciphertext.
-          permitted(); ensure();
-          if (initialKey !== activeKey)
-            throw new Error("Owner ledger was locked during encryption.");
-          if (storage.getItem(NAME) !== expectedRaw || rev !== expectedRevision)
-            throw new Error("Encrypted ledger changed during save. Unlock the latest version before editing.");
-          // localStorage is not a real transactional database. A stronger
-          // server-side compare-and-swap remains a production release gate.
-          try { storage.setItem(NAME, serialized); }
-          catch (_err) { throw new Error("Encrypted ledger could not be persisted. No entry was accepted."); }
-          previousRaw = serialized; current = JSON.parse(JSON.stringify(next)); rev += 1;
-          return rev;
+          return await withWriteLock(async () => {
+            permitted(); ensure();
+            if (storage.getItem(NAME) !== expectedRaw)
+              throw new Error("Encrypted ledger changed before save. Unlock the latest version before editing.");
+            const serialized = await seal(next, activeKey, activeSalt, rev + 1);
+            // The exclusive Web Lock spans encryption and the final storage write.
+            permitted(); ensure();
+            if (initialKey !== activeKey)
+              throw new Error("Owner ledger was locked during encryption.");
+            if (storage.getItem(NAME) !== expectedRaw || rev !== expectedRevision)
+              throw new Error("Encrypted ledger changed during save. Unlock the latest version before editing.");
+            // Web Locks coordinate participating same-origin tabs, not external
+            // devices or hostile storage modification. Production still requires
+            // a trusted server-side compare-and-swap for shared ledgers.
+            try { storage.setItem(NAME, serialized); }
+            catch (_err) { throw new Error("Encrypted ledger could not be persisted. No entry was accepted."); }
+            previousRaw = serialized; current = JSON.parse(JSON.stringify(next)); rev += 1;
+            return rev;
+          });
         } finally { committing = false; }
       },
       lock() { current = null; activeKey = null; activeSalt = null; previousRaw = null; rev = null; }
@@ -144,14 +157,18 @@
   }
   async function create(storage, passphrase, data) {
     permitted(); storageOK(storage); checkPassphrase(passphrase); validateData(data);
-    if (storage.getItem(NAME) !== null) throw new Error("An encrypted ledger already exists.");
-    const salt = crypto.getRandomValues(new Uint8Array(16));
-    const key = await derive(passphrase, salt);
-    const raw = await seal(data, key, salt, 1);
-    if (storage.getItem(NAME) !== null) throw new Error("A ledger appeared during setup.");
-    try { storage.setItem(NAME, raw); }
-    catch (_err) { throw new Error("Could not save encrypted ledger; setup was not completed."); }
-    return session(storage, raw, key, salt, 1, JSON.parse(JSON.stringify(data)));
+    return withWriteLock(async () => {
+      permitted();
+      if (storage.getItem(NAME) !== null) throw new Error("An encrypted ledger already exists.");
+      const salt = crypto.getRandomValues(new Uint8Array(16));
+      const key = await derive(passphrase, salt);
+      const raw = await seal(data, key, salt, 1);
+      permitted();
+      if (storage.getItem(NAME) !== null) throw new Error("A ledger appeared during setup.");
+      try { storage.setItem(NAME, raw); }
+      catch (_err) { throw new Error("Could not save encrypted ledger; setup was not completed."); }
+      return session(storage, raw, key, salt, 1, JSON.parse(JSON.stringify(data)));
+    });
   }
   async function unlock(storage, passphrase) {
     storageOK(storage); checkPassphrase(passphrase);
