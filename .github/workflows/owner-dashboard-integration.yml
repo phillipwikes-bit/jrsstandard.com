@@ -46,6 +46,8 @@ jobs:
         run: |
           node --test tests/owner-neon-otp-failures.test.mjs
           node --test tests/owner-session-lifecycle.test.mjs
+      - name: Verify sign-out browser session confirmation and failure handling
+        run: node tests/owner-logout-interface.mjs
       - name: Confirm Issue 3.6 participant classification and protected export
         run: node tests/owner-programme-issue36.mjs
       - name: Confirm historical inquiry totals and explicit source coverage
