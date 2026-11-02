@@ -400,3 +400,50 @@ console.log('PASS: telemetry acknowledges upstream writes only and removes sensi
  }
 }
 console.log('PASS: completion service checks source scope, rejects cross-origin/oversize requests and avoids sequential duplicates.');
+
+
+// Training enrollment rejects unrelated origins and oversized payloads and
+// never reports private database errors. No production enrollment takes place.
+{
+ const handler=(await import('../api/enroll.js')).default;
+ const oldFetch=globalThis.fetch;
+ const hadKey=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
+ const previousKey=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ const calls=[];
+ let upstreamStatus=400;
+ process.env.SUPABASE_SERVICE_ROLE_KEY='unit-test-only';
+ globalThis.fetch=async(url,options={})=>{
+   calls.push({url:String(url),method:options.method,body:options.body});
+   return new Response(upstreamStatus===400?'SENSITIVE_DB_DIAGNOSTIC':'',{status:upstreamStatus});
+ };
+ const data={name:'Example Participant',email:'example@example.org',consent_contact:true};
+ const send=(origin,body)=>handler(new Request('https://jrsstandard.com/api/enroll',{
+   method:'POST',headers:{'origin':origin,'content-type':'application/json'},
+   body:JSON.stringify(body)
+ }));
+ try {
+   let r=await send('https://unrelated.example',data);
+   assert.equal(r.status,403,'External browser origins must be rejected');
+   assert.equal(calls.length,0,'Rejected origin must not create registration');
+   r=await send('https://jrsstandard.com',{...data,name:'X'.repeat(8500)});
+   assert.equal(r.status,413,'Oversized registrations must be rejected');
+   assert.equal(calls.length,0,'Oversized request must not write personal data');
+   r=await send('https://jrsstandard.com',{...data,consent_contact:false});
+   assert.equal(r.status,400,'No enrollment without explicit contact consent');
+   assert.equal(calls.length,0);
+   r=await send('https://jrsstandard.com',data);
+   assert.equal(r.status,502,'Database rejection must not appear as success');
+   assert.doesNotMatch(await r.text(),/SENSITIVE_DB_DIAGNOSTIC|service_key_missing/,
+     'Public responses must not expose provider diagnostics');
+   upstreamStatus=201;
+   r=await send('https://jrsstandard.com',data);
+   assert.equal(r.status,200,'Consent-based enrollment behavior must remain usable');
+   assert.deepEqual(await r.json(),{ok:true});
+   assert.equal(calls.length,2,'Only valid consented submissions may reach the database');
+ } finally {
+   globalThis.fetch=oldFetch;
+   if(hadKey)process.env.SUPABASE_SERVICE_ROLE_KEY=previousKey;
+   else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ }
+}
+console.log('PASS: training enrollment origin, consent, size and error minimization enforced.');
