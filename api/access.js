@@ -35,7 +35,7 @@ const FILES = {
 function json(o, s){
   return new Response(JSON.stringify(o), {
     status: s || 200,
-    headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*' }
+    headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store' }
   });
 }
 function clean(v, n){ return (v == null ? '' : String(v)).trim().slice(0, n || 200); }
@@ -56,34 +56,15 @@ function normCampaign(c){
   return 'general';
 }
 
-// Deploy and smoke-check tags. Registrations carrying one of these are never
-// stored, and any that already exist are physically deleted on the next request,
-// so the consented-contact counts stay clean with no manual database work. Same
-// self-healing pattern already used by /api/dl and /api/support.
+// Synthetic verification tags never create registration records.
+// Historical cleanup, if needed, is a separately authorized maintenance task.
+// Public requests must not trigger deletes of participant data.
 const TEST_SRC = ['verify', 'test', 'selftest', 'deploytest'];
 function isTestTag(s){
   s = String(s || '');
   if (!s) return false;
   if (TEST_SRC.indexOf(s) !== -1) return true;
   return s.indexOf('deploytest') === 0;
-}
-
-async function purgeTestRows(H){
-  // Delete any registration rows written by a deploy check.
-  //
-  // pilot_contacts.message is a TEXT column holding serialized JSON, not jsonb,
-  // so a `message->>page_source` filter matches nothing. Match the serialized
-  // payload as text instead, one exact tag at a time, so the pattern stays
-  // precise and cannot catch a real registration by accident.
-  for (let i = 0; i < TEST_SRC.length; i++){
-    const pat = '*' + encodeURIComponent('"page_source":"' + TEST_SRC[i]) + '*';
-    try {
-      await fetch(SB + '/rest/v1/pilot_contacts'
-        + '?source=in.(guide-register,support-register)'
-        + '&message=like.' + pat,
-        { method: 'DELETE', headers: H });
-    } catch (e) { /* best-effort */ }
-  }
 }
 
 export default async function handler(req){
@@ -99,15 +80,9 @@ export default async function handler(req){
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
 
   if (req.method === 'GET') {
-    // A plain GET is the health check, and it also runs the self-healing purge
-    // so a deploy-test registration never lingers in the contact counts.
-    if (SERVICE) {
-      await purgeTestRows({
-        'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
-        'Content-Type': 'application/json', 'Prefer': 'return=minimal'
-      });
-    }
-    return json({ ok:true, serviceKey: !!SERVICE });
+    // Public health checks are read-only. Never reveal private service-key
+    // configuration or trigger a database read, write or deletion.
+    return json({ ok: true });
   }
   if (req.method !== 'POST') return json({ error:'method_not_allowed' }, 405);
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
@@ -321,9 +296,6 @@ export default async function handler(req){
     'Content-Type': 'application/json',
     'Prefer': 'return=minimal'
   };
-
-  // Self-healing purge of any deploy-test rows already stored.
-  await purgeTestRows(H);
 
   // A deploy check never creates a contact row or a counter row, but still
   // resolves normally so the smoke test can confirm the whole path works.
