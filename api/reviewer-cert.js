@@ -79,7 +79,7 @@ function page(o){
   return '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">'
     + '<meta name="viewport" content="width=device-width, initial-scale=1">'
     + '<meta name="robots" content="noindex, nofollow">'
-    + '<title>' + esc(o.name) + ' · JRS Reviewer Certificate</title>'
+    + '<title>' + esc(o.name) + ' · JRS Reviewer Evaluation Receipt</title>'
     + '<style>'
     + '*{margin:0;padding:0;box-sizing:border-box}'
     + 'body{background:#3a3a3a;font-family:Georgia,"Times New Roman",Times,serif;padding:22px 14px 60px}'
