@@ -1761,7 +1761,7 @@ function drawPeople(){
     cell(tr,(p.country||'Not on file')+(p.country_source==='reviewer records'?' (roster)':''));
     var emailCell=cell(tr,'');
     var address=String(p.email||'').trim();
-    if(/^[^\\s@<>]+@[^\\s@<>]+\\.[^\\s@<>]+$/.test(address)){
+    if(/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+[.][A-Za-z]{2,}$/.test(address)){
       var a=document.createElement('a');a.href='mailto:'+address;
       a.textContent=address;a.style.color='var(--accent)';emailCell.appendChild(a);
     }else{emailCell.textContent=address||'Not provided';}
@@ -1863,7 +1863,19 @@ function loadPeople(){
           return '<option value="'+esc(c)+'">'+esc(c)+' ('+ctry[c]+')</option>'; }).join('');
         sel.addEventListener('change', drawPeople);
       }
-      var q=document.getElementById('ppl-q'); if(q) q.addEventListener('input', drawPeople);
+      var group=document.getElementById('ppl-group');
+      if(group){
+        var previousGroup=group.value, groups={};
+        PPL.forEach(function(p){var v=p.activity_family||'Unclassified historical source';groups[v]=(groups[v]||0)+1;});
+        group.innerHTML='<option value="">All programme purposes</option>'+Object.keys(groups).sort().map(function(k){
+          return '<option value="'+esc(k)+'">'+esc(k)+' ('+groups[k]+')</option>';
+        }).join('');
+        if(Object.hasOwn(groups,previousGroup))group.value=previousGroup;
+        if(!group.dataset.wired){group.dataset.wired='1';group.addEventListener('change',drawPeople);}
+      }
+      var contact=document.getElementById('ppl-contact');
+      if(contact&&!contact.dataset.wired){contact.dataset.wired='1';contact.addEventListener('change',drawPeople);}
+      var q=document.getElementById('ppl-q'); if(q&&!q.dataset.wired){q.dataset.wired='1';q.addEventListener('input',drawPeople);}
       var cs=document.getElementById('ppl-csv'); if(cs && !cs.dataset.wired){ cs.dataset.wired='1'; cs.addEventListener('click', pplCsv); }
       var note=document.getElementById('ppl-note');
       if(note){
