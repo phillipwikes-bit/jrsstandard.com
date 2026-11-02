@@ -9,9 +9,9 @@ export const config = { runtime: 'edge' };
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 export default async function handler(req){
-  if (req.method !== 'GET') return new Response('Method not allowed', {status:405,headers:{'Cache-Control':'private, no-store'}});
   const denied=await ownerAccess(req);
   if(denied)return denied;
+  if (req.method !== 'GET') return new Response('Method not allowed', {status:405,headers:{'Cache-Control':'private, no-store'}});
   const env = (typeof process!=='undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return new Response('Service unavailable', { status: 503 });
