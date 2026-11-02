@@ -1,5 +1,5 @@
 import { ownerAccess } from './_owner-auth.js';
-import { fetchAllUrl } from './_sb-fetch.js';
+import { fetchAll } from './_sb-fetch.js';
 import { participantGroup, permissionState } from './_owner-record-groups.js';
 export const config = { runtime: 'edge' };
 
@@ -99,16 +99,15 @@ export default async function handler(req){
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
 
-  const q = SB + '/rest/v1/pilot_contacts'
-    + '?select=created_at,name,email,organization,message,source'
-    + '&order=created_at.desc&limit=20000';
-
-  let rows;
-  try {
-    // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
-    rows = await fetchAllUrl(q, { 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE });
-  } catch(e){ return json({ error:'db_unreachable' }, 502); }
-  if (!Array.isArray(rows)) rows = [];
+  // Never present a partial participant population as a complete roster.
+  // The shared reader reports incomplete pages without throwing. Require
+  // complete=true before any names, email addresses or derived totals return.
+  const result=await fetchAll(SB,
+    'pilot_contacts?select=created_at,name,email,organization,message,source&order=created_at.desc',
+    {apikey:SERVICE,Authorization:'Bearer '+SERVICE});
+  if(!result.complete||!Array.isArray(result.rows))
+    return json({error:'private_participant_source_incomplete',complete:false},502);
+  const rows=result.rows;
 
   // WHO COMPLETED TRAINING, BY NAME.
   //
