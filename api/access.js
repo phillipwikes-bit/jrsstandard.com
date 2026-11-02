@@ -134,8 +134,9 @@ export default async function handler(req){
   // engaged" and "started and left". Writes an event row only.
   if (String(b.event || '') === 'field_touched') {
     if (gateCheck) return json({ ok: true, field_touched: true, recorded: false, check: true, is_mobile: isMobile });
+    let accepted = false;
     try {
-      await fetch(SB + '/rest/v1/interaction_events', {
+      const upstream = await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
@@ -151,8 +152,9 @@ export default async function handler(req){
           is_mobile: isMobile
         }})
       });
+      accepted = upstream.ok;
     } catch (e) { /* a telemetry ping must never block the form */ }
-    return json({ ok: true, field_touched: true });
+    return json({ ok: true, field_touched: true, recorded: accepted });
   }
 
   // FALLBACK ENDORSEMENT WRITE, for readers who reach the campaign screen
@@ -174,8 +176,9 @@ export default async function handler(req){
     if (gateCheck || isCrawler) {
       return json({ ok: true, endorse: true, recorded: false, check: true });
     }
+    let accepted = false;
     try {
-      await fetch(SB + '/rest/v1/interaction_events', {
+      const upstream = await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
@@ -186,8 +189,9 @@ export default async function handler(req){
             .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || null
         }})
       });
+      accepted = upstream.ok;
     } catch (e) { /* never block the page */ }
-    return json({ ok: true, endorse: true, recorded: true });
+    return json({ ok: true, endorse: accepted, recorded: accepted });
   }
 
   if (String(b.event || '') === 'view') {
@@ -203,8 +207,9 @@ export default async function handler(req){
     // source='gate-view' as a campaign form open, is untouched by the change.
     const PAGE_SOURCE = { reviewer: 'reviewer-view', training: 'train-view' };
     const viewSource = PAGE_SOURCE[String(b.page || '')] || 'gate-view';
+    let accepted = false;
     try {
-      await fetch(SB + '/rest/v1/interaction_events', {
+      const upstream = await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
@@ -219,8 +224,9 @@ export default async function handler(req){
           is_mobile: isMobile
         }})
       });
+      accepted = upstream.ok;
     } catch (e) { /* a view ping must never block the form */ }
-    return json({ ok: true, view: true });
+    return json({ ok: true, view: true, recorded: accepted });
   }
 
   // Historical listing action accepted an email address alone and then
