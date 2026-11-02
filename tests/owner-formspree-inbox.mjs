@@ -36,7 +36,8 @@ try{
     _date:'2026-11-02T08:00:00Z'}));
   // The public form has two legitimate delivery paths: AJAX posts an explicit
   // consent_to_contact field, while no-JS Formspree posts consent=on.
-  first[0].consent_to_transfer='false';
+  first[0].consent_to_transfer='true'; // Injected field cannot create transfer permission.
+  first[3].consent_to_transfer=true; // Boolean variant is equally unsupported.
   delete first[1].consent_to_contact;
   Object.assign(first[1],{
     consent:'on',source:'public-jrs-professional-contact',
@@ -58,7 +59,11 @@ try{
     assert.equal(d.total,101);assert.equal(d.rows.length,101);
     assert.equal(d.rows[100].contact_permission,'recorded-no');
     assert.equal(d.rows[0].contact_permission,'recorded-yes');
-    assert.equal(d.rows[0].transfer_permission,'recorded-no');
+    assert.equal(d.rows[0].transfer_permission,'not-recorded');
+    assert.equal(d.rows[3].transfer_permission,'not-recorded');
+    assert.equal(d.source_scope,'formspree_nonspam_submissions');
+    assert.match(d.coverage,/spam items are not included/);
+    assert.match(d.coverage,/no publication, marketing, research enrollment or transfer permission/);
     assert.equal(d.rows[1].contact_permission,'recorded-yes');
     assert.equal(d.rows[1].transfer_permission,'not-recorded');
     assert.equal(d.rows[2].contact_permission,'not-recorded');
@@ -66,6 +71,7 @@ try{
     assert.equal(calls.length,2);
     assert.ok(calls[0].url.includes('formspree.io/api/0/forms/mreddwdg/submissions'));
     assert.ok(calls[1].url.includes('offset=100'));
+    assert.ok(calls.every(x=>x.url.includes('spam=false')));
     assert.ok(calls.every(x=>x.redirect==='manual'&&x.method==='GET'));
     assert.ok(calls.every(x=>x.auth==='Bearer synthetic-formspree-readonly-key-not-real'));
     assert.ok(!JSON.stringify(d).includes('synthetic-formspree-readonly-key-not-real'));
