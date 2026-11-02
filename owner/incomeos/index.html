@@ -36,6 +36,8 @@
 <script defer src="./decision-ui.js"></script>
 <script defer src="./spend-ui.js"></script>
 <script defer src="./research-ui.js"></script>
+<script defer src="./project-radar.js"></script>
+<script defer src="./project-ui.js"></script>
 <script defer src="./vault-ui.js"></script>
 </head>
 <body>
@@ -84,6 +86,16 @@
       <p id="radar-count" role="status" aria-live="polite" class="muted"></p>
       <p id="radar-status" role="status" aria-live="polite" class="muted"></p>
       <div id="radar-results" class="radar-results"></div>
+      <section id="project-opportunity-panel" class="panel" aria-labelledby="project-opportunity-heading">
+        <h3 id="project-opportunity-heading">AI platform project opportunities</h3>
+        <p class="muted">Screen paid AI evaluation, model testing, annotation, policy and quality-assurance contracts on Handshake AI and other internet platforms. This is active project work, not passive income. Listings and earnings are not automatically verified.</p>
+        <p class="muted">Import reviewed public listing JSON. Never include account credentials, screening answers, personal profiles or financial records.</p>
+        <label for="project-import-file">Public project listing JSON</label>
+        <input id="project-import-file" type="file" accept=".json,application/json">
+        <button id="project-import" class="smallbtn" type="button">Screen project listings</button>
+        <p id="project-status" role="status" aria-live="polite" class="muted"></p>
+        <div id="project-results" class="radar-results"></div>
+      </section>
     </div>
     <div class="filterbar"><label class="sr-only" for="research-filter">Filter research leads</label><select id="research-filter"><option value="current">Upcoming sessions</option><option value="online">Online only</option><option value="direct">Direct screeners</option><option value="highpay">Highest session pay</option><option value="all">All, including past dates</option></select><label class="sr-only" for="research-search">Search research leads</label><input id="research-search" type="search" placeholder="Search studies and recruiters" autocomplete="off"></div>
     <div id="research-cards" class="stack"></div>
