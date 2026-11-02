@@ -213,6 +213,29 @@ assert.ok(read('research.html').includes('jrs-research-primary-links') &&
  'research quick paths must preserve evidence limitations');
 
 
+// Historical reviewer access must not leak a name or receipt code through
+// link-click telemetry or cross-origin referrer information. These source
+// checks supplement, but cannot replace, browser/network verification.
+{
+  const receipt = read('reviewer/completion.html');
+  assert.ok(receipt.includes('<meta name="referrer" content="no-referrer">'),
+    'historical receipt must suppress referer headers');
+  assert.ok(receipt.includes("params.delete('code')") &&
+    receipt.includes("params.delete('name')") &&
+    receipt.includes("history.replaceState("),
+    'legacy GET parameters must be cleared from the browser URL');
+  assert.ok(receipt.indexOf("history.replaceState(") <
+    receipt.indexOf('<link rel="preconnect" href="https://fonts.googleapis.com">'),
+    'legacy parameters must be stripped before third-party assets load');
+  assert.doesNotMatch(receipt, /\\/api\\/telemetry|trackClickAndNavigate|googletagmanager/i,
+    'receipt must not broadcast full navigation URLs or use analytics');
+  assert.ok(receipt.includes('method="post"'),
+    'new historical verification submissions must not use GET');
+  assert.ok(receipt.includes('name="code"') && receipt.includes('name="name"'),
+    'issuer record verification requires both historical code and recorded name');
+  console.log('PASS: historic reviewer receipt minimizes legacy-link exposure and prevents click telemetry leakage.');
+}
+
 // Regression: a Standard section nested inside an inactive predecessor remains
 // invisible even when the section navigation adds .active to the child.
 // Track actual source div nesting, excluding scripts, styles and comments.
