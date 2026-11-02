@@ -175,7 +175,7 @@ assert.ok(!simulations.includes('id="nav-toggle"') &&
  !simulations.includes('id="nav-links"') &&
  simulations.includes('class="jrs-simulation-related"'),
  'Simulations must have one global navigation and accessible contextual links');
-for(const href of ['workflow-fit.html','implementation-scenarios.html','enterprise.html']){
+for(const href of ['workflow-fit.html','implementation-scenarios.html','resources.html']){
  assert.ok(simulations.includes('href="'+href+'"'),'simulation context link missing '+href);
 }
 
