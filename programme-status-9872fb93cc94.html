@@ -226,6 +226,7 @@ tr.today td{background:rgba(93,191,130,.07)}
     </div>
   </section>
 
+  <p class="note" id="ld-source-coverage" role="status" aria-live="polite">Historical source coverage not yet verified.</p>
   <div class="tablewrap">
    <table>
     <thead><tr><th>When</th><th>Type</th><th>Name</th><th>Email</th><th>Organisation</th><th>Detail</th><th>Country</th></tr></thead>
@@ -2035,6 +2036,10 @@ function ldWhen(iso){
 function ldRender(d){
   var leads = (d && d.leads) || [];
   var att = (d && d.attempts) || [];
+  var suspected = leads.filter(function(x){return x.possible_test_marker===true;}).length;
+  document.getElementById('ld-source-coverage').textContent =
+    'All '+leads.length+' historical contact records retained; '+suspected+
+    ' contain possible test markers requiring manual review. These are not verified tests and remain in the list.';
 
   // Website information inquiries are not commercial leads or purchase intent.
   document.getElementById('ld-leads').textContent =
@@ -2059,7 +2064,8 @@ function ldRender(d){
     var L = leads[j];
     html += '<tr>'
       + '<td style="white-space:nowrap">' + esc(ldWhen(L.at)) + '</td>'
-      + '<td>' + esc(L.label) + '</td>'
+      + '<td>' + esc(L.label) + (L.possible_test_marker===true
+        ? '<br><span style="color:var(--review-text)">Possible test marker, verify</span>' : '') + '</td>'
       + '<td><b>' + esc(L.name) + '</b></td>'
       + '<td><a href="mailto:' + esc(L.email) + '" style="color:var(--accent)">' + esc(L.email) + '</a></td>'
       + '<td>' + esc(L.organization) + '</td>'
@@ -2099,6 +2105,10 @@ function loadLeads(){
     .then(function(d){
       if(!d || d.complete!==true || !Array.isArray(d.leads) || !Array.isArray(d.attempts))
         throw new Error('historical_sources_incomplete');
+      if(d.source_row_count!==d.leads.length || d.retained_source_rows!==d.leads.length ||
+         !Number.isInteger(d.possible_test_rows) ||
+         d.possible_test_rows!==d.leads.filter(function(x){return x.possible_test_marker===true;}).length)
+         throw new Error('historical_contact_population_unreconciled');
       ldRender(d);
     })
     .catch(function(){
@@ -2109,6 +2119,8 @@ function loadLeads(){
       });
       document.getElementById('ld-note').textContent=
         'Historical inquiry or pay-screen source unavailable. No complete count can be inferred.';
+      document.getElementById('ld-source-coverage').textContent=
+        'Historical contact source unavailable. Retained row counts cannot be verified.';
       document.getElementById('ld-rows').innerHTML =
         '<tr><td colspan="7" style="color:var(--stop-text)">Could not verify complete historical leads. Tap Refresh.</td></tr>';
       document.getElementById('ld-att').innerHTML =
