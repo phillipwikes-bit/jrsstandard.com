@@ -167,6 +167,21 @@
        }
      }
    }
+   // Review Examples had a navigation control but no corresponding DOM
+   // section. It now resolves to the published Use Cases collection and
+   // rejects unknown destinations without blanking existing content.
+   let scenarioNavValid=true;
+   if(item.page==='jrsstandard.html'){
+     w.showSection('scenarios');
+     const cases=d.getElementById('section-usecases');
+     scenarioNavValid=!!cases && cases.classList.contains('active') &&
+       w.getComputedStyle(cases).display!=='none' && cases.contains(d.activeElement);
+     if(scenarioNavValid){
+       w.showSection('missing-destination');
+       scenarioNavValid=cases.classList.contains('active') &&
+         w.getComputedStyle(cases).display!=='none';
+     }
+   }
    // The mobile simulation choices must remain usable after being stacked.
    let simulationControlsValid=true;
    if(item.page==='training.html' && narrow){
@@ -487,10 +502,10 @@
      (w.getComputedStyle(toggle).justifyContent==='flex-end' &&
       /site menu/i.test(siteMenuLabel));
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && documentIndexValid && roleFocusValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && trainingJourneyValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
+      controlsValid && documentIndexValid && roleFocusValid && scenarioNavValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && trainingJourneyValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,roleFocusValid,roleFocusIssue,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,roleFocusValid,roleFocusIssue,scenarioNavValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
