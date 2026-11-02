@@ -29,8 +29,8 @@
       if(el.matches('button,a,input,select,textarea'))return;
       set(el,'data-jrs-keyboard-enhanced','true');
       set(el,'data-jrs-keyboard-control','true');
-      if(!el.hasAttribute('role'))set(el,'role','button');
-      if(!el.hasAttribute('tabindex'))set(el,'tabindex','0');
+      if(!el.hasAttribute('role'))el.setAttribute('role','button');
+      if(!el.hasAttribute('tabindex'))el.setAttribute('tabindex','0');
       var preferred=el.querySelector(
         '.role-card-title,.role-path-title,.sim-card-title,.worksheet-title,'+
         '.maturity-level-title,.visitor-orient-title,.visitor-orient-label'
