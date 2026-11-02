@@ -1516,3 +1516,46 @@ body.jrs-institutional.jrs-training-page #jrs-named-record-open{
   white-space:normal!important;
   overflow-wrap:anywhere!important;
 }
+
+
+/* JRS optional formative practice self-check. Progressive disclosure, readable
+   fieldsets, full-label touch targets and visible keyboard focus. */
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration{
+  max-width:960px;margin:0 auto 34px;padding:0 24px;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration details{
+  border:1px solid #afc0cc;background:#fff;border-radius:5px;padding:16px 20px;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration summary{
+  font-size:17px;font-weight:700;line-height:1.5;cursor:pointer;
+  color:#17364f;min-height:44px;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration :where(p,legend,li){
+  font-size:16px;line-height:1.65;color:#193148;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration fieldset{
+  border:1px solid #d8e1e7;padding:15px;margin:20px 0;
+  min-width:0;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration legend{
+  padding:0 7px;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration label{
+  display:flex;align-items:center;gap:10px;padding:11px 10px;
+  min-height:44px;cursor:pointer;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration input[type="radio"]{
+  width:20px;height:20px;flex:0 0 20px;accent-color:#173d5b;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration button{
+  min-height:48px;padding:12px 16px;background:#173d5b;color:#fff;
+  font-size:16px;font-weight:700;white-space:normal;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-result:not(:empty){
+  border-left:4px solid #9b712d;padding:12px 16px;margin-top:18px;
+  background:#edf2f5;
+}
+body.jrs-institutional.jrs-training-page #jrs-practice-result li{margin-bottom:8px}
+body.jrs-institutional.jrs-training-page #jrs-practice-calibration :where(summary,button,input):focus-visible{
+  outline:3px solid #08659a!important;outline-offset:3px!important;
+}
