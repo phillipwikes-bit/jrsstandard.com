@@ -28,5 +28,7 @@ jobs:
         run: node tests/jrs-resource-directory.mjs
       - name: Verify Standard and Training readability and disabled poll states
         run: node tests/jrs-contrast-guards.mjs
+      - name: Verify worked-record journey and distinct research evidence
+        run: node tests/jrs-practitioner-journey.mjs
       - name: Regression-check exact-preview source verification
         run: python3 tests/jrs-preview-static-verification.py --self-test
