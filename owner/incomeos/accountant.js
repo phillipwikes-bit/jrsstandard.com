@@ -57,6 +57,7 @@
       if(localStorage.getItem(KEY)!==null)return;
       var raw=JSON.parse(localStorage.getItem(LEGACY_KEY)||"{}");
       if(!Array.isArray(raw.receipts))return;
+      var proposed=[];
       raw.receipts.forEach(function(x){
         if(!x || !x.label || !x.date || num(x.amount)<=0)return;
         var e={id:uid(),kind:"income",category:"other",label:limit(x.label,100),payer:"",date:limit(x.date,10),
@@ -64,9 +65,9 @@
           status:x.status==="paid"?"paid":"pending",scope:"income",method:"Unknown",taxForm:"None / unknown",
           docStatus:"not-expected",reference:"Legacy IncomeOS entry",notes:"Imported from earlier ledger; review category and evidence.",
           reconciled:false,importedFrom:"legacy",createdAt:new Date().toISOString()};
-        if(validate(e))db.entries.push(e);
+        if(validate(e))proposed.push(e);
       });
-      if(db.entries.length)write();
+      if(proposed.length)commitEntries(db.entries.concat(proposed));
     }catch(_e){}
   }
   function load(){
@@ -386,5 +387,5 @@
     });});
     render();
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){db={version:2,entries:[]};try{if(window.IncomeOSFinancialReadOnly===true)localStorage.removeItem(KEY);else write();localStorage.removeItem(LEGACY_KEY);}catch(_e){alert("Some locally stored accounting records could not be erased.");}render();},totals:totals,importCsv:importCsv,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,importCsv:importCsv,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();
