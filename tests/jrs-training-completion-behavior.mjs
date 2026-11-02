@@ -26,6 +26,20 @@ assert.match(source, /Enrollment not confirmed/,
 assert.ok(!source.includes('consent to project updates. Free for practitioners.'),
   'Registration must not imply unrelated project-update consent');
 
+// Public enrollment endpoints must not expose credential state or database
+// diagnostics in a response. This is a structural check, not a live POST.
+const enrollmentEndpoint=readFileSync(new URL('../api/enroll.js',import.meta.url),'utf8');
+const completionEndpoint=readFileSync(new URL('../api/complete.js',import.meta.url),'utf8');
+assert.doesNotMatch(enrollmentEndpoint, /serviceKey\s*:/, 'Do not disclose service-key configuration');
+for(const endpoint of [enrollmentEndpoint,completionEndpoint]){
+  assert.doesNotMatch(endpoint, /detail\s*:\s*String\(/,
+    'Do not return internal database errors to clients');
+  assert.match(endpoint, /error:'service_unavailable'/,
+    'Database errors must be returned as generic unavailable responses');
+}
+assert.match(enrollmentEndpoint, /consent_required/,
+  'Enrollment must require explicit consent');
+
 const start=source.indexOf('var jrsCompletionPending = false;');
 const end=source.indexOf('function jrsSanitizeCheck(text)',start);
 assert.ok(start>=0&&end>start,'Cannot locate the production completion function');
