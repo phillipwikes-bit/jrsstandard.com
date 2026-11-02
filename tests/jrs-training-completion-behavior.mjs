@@ -258,3 +258,43 @@ console.log('PASS: reviewer receipt code, name, title and issuance date are issu
  }
 }
 console.log('PASS: access health checks are side-effect-free and disclose no secret configuration.');
+
+
+// Unverified listing requests must not change a contact record. A sender who
+// knows someone's email must not be able to publish their identity. Exercise
+// actual handler code with all networking replaced by a rejecting test stub.
+{
+ const handler=(await import('../api/access.js')).default;
+ const priorFetch=globalThis.fetch;
+ const hadKey=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
+ const previousKey=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ const calls=[];
+ process.env.SUPABASE_SERVICE_ROLE_KEY='unit-test-only';
+ globalThis.fetch=async(url,options={})=>{
+   calls.push({url:String(url),method:options.method||'GET'});
+   return new Response('PRIVATE_DIAGNOSTIC_SHOULD_NEVER_ESCAPE',{status:400});
+ };
+ const post=async(data)=>handler(new Request('https://jrsstandard.com/api/access',{
+   method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
+ }));
+ try {
+   let res=await post({event:'listing',email:'someone-else@example.org'});
+   assert.equal(res.status,403,'Unverified public listing must fail closed');
+   assert.deepEqual(await res.json(),{error:'verified_consent_required'});
+   assert.equal(calls.length,0,'No database lookup or consent mutation is allowed for an unverified email');
+   res=await post({mode:'guide',edition:'employment',name:'Example Reviewer',
+     email:'example@example.org',organization:'Example',consent_contact:true,
+     src:'organic'});
+   assert.equal(res.status,502,'Failed database insertion must not be reported as success');
+   const body=await res.text();
+   assert.doesNotMatch(body,/PRIVATE_DIAGNOSTIC_SHOULD_NEVER_ESCAPE|service_key_missing|db_insert_failed|status\\"/,
+     'Public registration failures must not reveal raw database diagnostics');
+   assert.ok(calls.some(c=>c.method==='POST'),
+     'Normal consented registration should still attempt the intended database write');
+ } finally {
+   globalThis.fetch=priorFetch;
+   if(hadKey)process.env.SUPABASE_SERVICE_ROLE_KEY=previousKey;
+   else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ }
+}
+console.log('PASS: unverified public listing cannot change consent; registration failures conceal database details.');
