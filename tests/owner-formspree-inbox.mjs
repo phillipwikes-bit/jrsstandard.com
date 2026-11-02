@@ -88,6 +88,10 @@ try{
     assert.ok(html.includes('id="current-formspree-inquiries"'));
     assert.ok(html.includes("fetch('/api/owner-formspree-inbox'"));
     assert.ok(html.includes('Formspree and the designated email inbox'));
+    // Formspree subject lines can be customized, including source verification
+    // messages. Subject-only Gmail filters silently omit valid notifications.
+    assert.ok(html.includes('from%3Aformspree.io+after%3A2026%2F10%2F29'));
+    assert.ok(!html.includes('from%3Aformspree.io+subject%3A%22JRS+Public+Inquiry%22'));
     assert.ok(html.includes('historical Supabase participant register'));
     assert.ok(html.includes('jrs-current-formspree-private-inquiries.csv'));
     assert.ok(html.includes("s.trimStart()"));
