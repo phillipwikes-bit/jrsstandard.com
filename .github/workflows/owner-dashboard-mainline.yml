@@ -40,6 +40,8 @@ jobs:
         run: node tests/owner-access.mjs
       - name: Session issuance, expiry and sign-out
         run: node --test tests/owner-session-lifecycle.test.mjs
+      - name: Verify sign-out browser session confirmation and failure handling
+        run: node tests/owner-logout-interface.mjs
       - name: Neon OTP failure handling, no real email
         run: node tests/owner-neon-otp-failures.test.mjs
       - name: Owner readiness inventory and release-hold requirements
