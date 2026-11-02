@@ -220,8 +220,8 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="tablewrap" style="margin-top:12px">
       <table id="current-formspree-table">
         <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding-bottom:8px">Authenticated owner read only. Source records remain in Formspree.</caption>
-        <thead><tr><th>Date</th><th>Purpose</th><th>Name</th><th>Email</th><th>Organization</th><th>Message</th><th>Contact permission</th></tr></thead>
-        <tbody id="current-formspree-rows"><tr><td colspan="7">Current source not yet connected. No zero asserted.</td></tr></tbody>
+        <thead><tr><th>Date</th><th>Purpose</th><th>Name</th><th>Email</th><th>Organization</th><th>Message</th><th>Contact permission</th><th>Form marker</th></tr></thead>
+        <tbody id="current-formspree-rows"><tr><td colspan="8">Current source not yet connected. No zero asserted.</td></tr></tbody>
       </table>
     </div>
   </section>
@@ -2412,7 +2412,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
    tbody.textContent='';
    if(!rows.length){
      var tr=document.createElement('tr'),td=document.createElement('td');
-     td.colSpan=7;td.textContent='The connected Formspree source reported no submissions.';
+     td.colSpan=8;td.textContent='The connected Formspree source reported no nonspam submissions.';
      tr.appendChild(td);tbody.appendChild(tr);return;
    }
    rows.slice(0,250).forEach(function(r){
@@ -2430,6 +2430,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
      cell(tr,r.organization||'');
      cell(tr,r.message||'');
      cell(tr,r.contact_permission||'not-recorded');
+     cell(tr,r.form_marker_status==='matches_current_contact_form_fields'
+       ?'Current form marker matches (self-declared)':'Source marker unattributed');
      tbody.appendChild(tr);
    });
  }
@@ -2439,7 +2441,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
      var response=await fetch('/api/owner-formspree-inbox',{credentials:'same-origin',cache:'no-store'});
      if(!response.ok){
        rows=[];exportButton.disabled=true;tbody.textContent='';
-       var tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=7;
+       var tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=8;
        td.textContent='Source unavailable, not a zero count. Use the Formspree or Gmail inbox.';
        tr.appendChild(td);tbody.appendChild(tr);
        status.textContent=response.status===503
@@ -2448,17 +2450,20 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
        return;
      }
      var d=await response.json();
-     if(!d||d.complete!==true||d.source_scope!=='formspree_nonspam_submissions'||!Array.isArray(d.rows))throw Error('incomplete');
+     if(!d||d.complete!==true||d.source_scope!=='formspree_nonspam_submissions'||!Array.isArray(d.rows)||
+        !Number.isInteger(d.current_form_marker_matches)||!Number.isInteger(d.unattributed_submissions)||
+        d.current_form_marker_matches<0||d.unattributed_submissions<0||
+        d.current_form_marker_matches+d.unattributed_submissions!==d.rows.length)throw Error('incomplete');
      rows=d.rows;
      exportButton.disabled=rows.length===0;
-     status.textContent='Complete nonspam Formspree read: '+rows.length+' source submissions. Spam excluded; submissions are not verified unique people or qualified leads. '
+     status.textContent='Complete nonspam Formspree read: '+rows.length+' source submissions; '+d.current_form_marker_matches+' matching current form markers and '+d.unattributed_submissions+' unattributed. Markers are self-declared, not independently verified. Spam excluded; submissions are not verified unique people or qualified leads. '
        +(rows.length>250?'Showing 250; export includes all.':'Showing all.')+
        ' No duplication into the historic Supabase register.';
      redraw();
    }catch{
      rows=[];exportButton.disabled=true;tbody.textContent='';
      var tr=document.createElement('tr'),td=document.createElement('td');
-     td.colSpan=7;td.textContent='Connection unavailable. No source records loaded.';
+     td.colSpan=8;td.textContent='Connection unavailable. No source records loaded.';
      tr.appendChild(td);tbody.appendChild(tr);
      status.textContent='Unable to verify current source. Unavailable is not zero.';
    }finally{button.disabled=false;}
@@ -2471,7 +2476,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  exportButton.addEventListener('click',function(){
    if(!rows.length)return;
    if(!window.confirm('Export '+rows.length+' Formspree contact records, including names and email addresses? Keep the file private.'))return;
-   var keys=['date','category','name','email','organization','message','contact_permission','source','source_record_id'];
+   var keys=['date','category','name','email','organization','message','contact_permission','form_marker_status','source','source_record_id'];
    var out=[keys.map(quote).join(',')];
    rows.forEach(function(r){out.push(keys.map(function(k){return quote(r[k])}).join(','));});
    var blob=new Blob(['\uFEFF'+out.join('\r\n')],{type:'text/csv;charset=utf-8'});
