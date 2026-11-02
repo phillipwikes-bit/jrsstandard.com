@@ -5,7 +5,7 @@ const ctx={window:{}};
 vm.runInNewContext(readFileSync(new URL("../owner/incomeos/economic-outcomes.js",import.meta.url),"utf8"),ctx);
 const review=ctx.window.IncomeOSEconomicOutcomes.review;
 const base={id:"a",type:"EARNED_INCOME",amountCents:10000,posted:true,sourceVerified:true,evidenceId:"bank-row-1"};
-const verified=review([base,{...base,id:"b",type:"BILL_SAVINGS",amountCents:2500,baselineVerified:true},{...base,id:"c",type:"REFUND",amountCents:500,originalChargeVerified:true},{...base,id:"d",type:"RETURNED_PRINCIPAL",amountCents:3000,principalBasisVerified:true}]);
+const verified=review([base,{...base,id:"b",evidenceId:"bill-2",type:"BILL_SAVINGS",amountCents:2500,baselineVerified:true},{...base,id:"c",evidenceId:"refund-3",type:"REFUND",amountCents:500,originalChargeVerified:true},{...base,id:"d",evidenceId:"principal-4",type:"RETURNED_PRINCIPAL",amountCents:3000,principalBasisVerified:true}]);
 assert.equal(verified.status,"EVIDENCE_REVIEW_ONLY");
 assert.equal(verified.verifiedBenefitCents,12500);
 assert.equal(verified.totals.REFUND,500);
@@ -28,5 +28,10 @@ for(const [change,code] of [
  assert.equal(x.issues[0].code,code);
 }
 assert.equal(review([base,{...base,id:" a "}]).status,"HOLD");
+const duplicatedEvidence=review([base,{...base,id:"different-id"}]);
+assert.equal(duplicatedEvidence.status,"HOLD");
+assert.equal(duplicatedEvidence.issues[0].code,"DUPLICATE_EVIDENCE_REFERENCE");
+assert.equal(duplicatedEvidence.verifiedBenefitCents,null);
+assert.equal(review([base,{...base,id:"other",evidenceId:"new",posted:false}]).verifiedBenefitCents,null);
 assert.equal(review(null).status,"HOLD");
 console.log("IncomeOS economic outcomes tests passed");
