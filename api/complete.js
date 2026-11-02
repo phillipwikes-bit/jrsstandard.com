@@ -37,6 +37,6 @@ export default async function handler(req){
     headers:{ 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE, 'Content-Type':'application/json', 'Prefer':'return=minimal' },
     body: JSON.stringify(row)
   });
-  if (!res.ok){ const t = await res.text(); return json({ error:'db_insert_failed', status:res.status, detail:String(t).slice(0,300) }, 502); }
+  if (!res.ok) return json({ error:'service_unavailable' }, 502);
   return json({ ok:true });
 }
