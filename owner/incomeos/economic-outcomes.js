@@ -4,7 +4,7 @@
   var types=new Set(["EARNED_INCOME","INVESTMENT_DISTRIBUTION","BILL_SAVINGS","REFUND","RETURNED_PRINCIPAL"]);
   function review(events){
     if(!Array.isArray(events))return {status:"HOLD",issues:["INVALID_EVENTS"],verifiedBenefitCents:0,availableToInvestCents:null};
-    var seen=new Set(),issues=[],totals={EARNED_INCOME:0,INVESTMENT_DISTRIBUTION:0,BILL_SAVINGS:0,REFUND:0,RETURNED_PRINCIPAL:0};
+    var seen=new Set(),evidenceSeen=new Set(),issues=[],totals={EARNED_INCOME:0,INVESTMENT_DISTRIBUTION:0,BILL_SAVINGS:0,REFUND:0,RETURNED_PRINCIPAL:0};
     events.forEach(function(e,i){
       if(!e||typeof e!=="object"||typeof e.id!=="string"||!e.id.trim()||seen.has(e.id.trim())){
         issues.push({index:i,code:"DUPLICATE_OR_INVALID_ID"});return;
@@ -15,6 +15,11 @@
       if(e.posted!==true||e.sourceVerified!==true||typeof e.evidenceId!=="string"||!e.evidenceId.trim()){
         issues.push({index:i,code:"UNVERIFIED_OUTCOME"});return;
       }
+      var evidenceKey=e.evidenceId.trim();
+      if(evidenceSeen.has(evidenceKey)){
+        issues.push({index:i,code:"DUPLICATE_EVIDENCE_REFERENCE"});return;
+      }
+      evidenceSeen.add(evidenceKey);
       if(e.type==="BILL_SAVINGS"&&e.baselineVerified!==true){
         issues.push({index:i,code:"SAVINGS_BASELINE_MISSING"});return;
       }
@@ -31,8 +36,8 @@
     });
     var verifiedBenefitCents=totals.EARNED_INCOME+totals.INVESTMENT_DISTRIBUTION+totals.BILL_SAVINGS;
     if(!Number.isSafeInteger(verifiedBenefitCents)){issues.push({code:"BENEFIT_OVERFLOW"});verifiedBenefitCents=null;}
-    return {status:issues.length?"HOLD":"EVIDENCE_REVIEW_ONLY",issues:issues,totals:totals,
-      verifiedBenefitCents:verifiedBenefitCents,availableToInvestCents:null,transferAuthorized:false,
+    return {status:issues.length?"HOLD":"EVIDENCE_REVIEW_ONLY",issues:issues,totals:issues.length?null:totals,
+      verifiedBenefitCents:issues.length?null:verifiedBenefitCents,availableToInvestCents:null,transferAuthorized:false,
       note:"Bill savings are avoided costs, not deposits. Refunds and returned principal are not new income."};
   }
   var api=Object.freeze({review:review});
