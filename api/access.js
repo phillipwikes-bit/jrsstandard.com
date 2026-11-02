@@ -287,12 +287,14 @@ export default async function handler(req){
   // The consented contact record is the point of this endpoint. If it fails the
   // request fails: no file is released and no support is recorded, so a stored
   // aggregate can never exist without the identity behind it.
-  const res = await fetch(SB + '/rest/v1/pilot_contacts', {
-    method: 'POST', headers: H, body: JSON.stringify(row)
-  });
-  if (!res.ok) {
-    // Never include database error details or internal response codes in a
-    // public registration response. Such messages can contain private data.
+  try {
+    const res = await fetch(SB + '/rest/v1/pilot_contacts', {
+      method: 'POST', headers: H, body: JSON.stringify(row)
+    });
+    if (!res.ok) return json({ error:'registration_unavailable' }, 502);
+  } catch (e) {
+    // Transport failures are indistinguishable from provider rejections to
+    // the caller. Do not release files, count support or expose diagnostics.
     return json({ error:'registration_unavailable' }, 502);
   }
 
