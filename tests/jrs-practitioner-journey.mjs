@@ -13,7 +13,7 @@ const home=read('index.html');
 assert.equal((home.match(/data-jrs-example-phase="/g)||[]).length,3);
 for(const stage of ['before','review','verified'])
  assert.ok(home.includes('data-jrs-example-phase="'+stage+'"'),'Missing worked stage: '+stage);
-for(const phrase of ['fictional supplier-access','only if the underlying sources','invented solely','not an automated Engine','rather than inventing support'])
+for(const phrase of ['fictional supplier-access','only if the underlying sources','invented solely','not an automated assessment','rather than inventing support'])
  assert.ok(home.toLowerCase().includes(phrase.toLowerCase()),'Missing example boundary: '+phrase);
 for(const source of ['research-summary.html','methodology.html','evidence-ledger.html','questions.html'])
  assert.ok(home.includes('href="'+source+'"'),'Missing research destination: '+source);
