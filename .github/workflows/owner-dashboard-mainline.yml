@@ -43,6 +43,8 @@ jobs:
         run: node tests/owner-readiness-mainline.mjs
       - name: Current public contact inbox is private and source-complete
         run: node tests/owner-formspree-inbox.mjs
+      - name: Reject partial participant directory reads
+        run: node tests/owner-participant-completeness.mjs
       - name: JRS programme model, consent and browser JS
         run: node tests/owner-programme-issue36.mjs
       - name: Complete historical download quality reconciliation
