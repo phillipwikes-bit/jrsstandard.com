@@ -72,7 +72,7 @@
               const card=cards.find(el=>isVisible(w,el));
               if(card&&!invalid.length){
                 let activated=0;
-                card.addEventListener('click',()=>activated++,{once:true});
+                card.addEventListener('click',()=>activated++);
                 card.focus();
                 card.dispatchEvent(new w.KeyboardEvent('keydown',{
                   key:'Enter',bubbles:true,cancelable:true
