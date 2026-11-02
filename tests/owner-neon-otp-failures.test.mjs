@@ -120,19 +120,24 @@ try {
 
   // A different preview branch or unexpected alias is not trusted by proxy.
   process.env.VERCEL_GIT_COMMIT_REF='feature/not-owner-branch';
+  delete process.env.VERCEL_BRANCH_URL;
   await handler(request('send'));
   assert.equal(sent[2].origin,origin);
+  delete process.env.VERCEL_GIT_COMMIT_REF;
+  process.env.VERCEL_BRANCH_URL=trusted.slice(8);
+  await handler(request('send'));
+  assert.equal(sent[3].origin,trusted,'exact trusted branch alias works without commit-ref metadata');
   process.env.VERCEL_GIT_COMMIT_REF=exactBranch;
   process.env.VERCEL_BRANCH_URL='unexpected-other-branch.vercel.app';
   await handler(request('send'));
-  assert.equal(sent[3].origin,origin);
+  assert.equal(sent[4].origin,origin);
   process.env.VERCEL_ENV='production';
   process.env.VERCEL_BRANCH_URL=trusted.slice(8);
   await handler(request('send'));
-  assert.equal(sent[4].origin,origin,'production must never use preview trust');
+  assert.equal(sent[5].origin,origin,'production must never use preview trust');
   response=await handler(request('send','https://cross-site.example.test'));
   assert.equal(response.status,403);
-  assert.equal(sent.length,5,'cross-origin request cannot reach Neon');
+  assert.equal(sent.length,6,'cross-origin request cannot reach Neon');
 
   console.log('PASS Neon preview origin: exact branch allowlist, send and verify, production isolation, anti-CSRF');
   console.log('PASS owner Neon OTP: safe diagnostic status, no PII, same-origin, retry and timeout');
