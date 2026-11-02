@@ -53,7 +53,12 @@
         const headingOk=!!h1 && (headingFont.includes('Georgia') || headingFont.includes('Iowan')) &&
                          colorIs(headingColor,'rgb(25,49,72)');
         const buttonOk=!buttonStyle || buttonStyle.backgroundColor!=='rgb(5, 5, 5)';
-        const visible=!!main && mainStyle.display!=='none';
+        // The second-read study deliberately hides its record form until a valid
+        // assignment is loaded. On an unassigned local run, inspect its visible gate.
+        const gate=d.getElementById('gate');
+        const visible=path==='recheck.html'
+          ? !!gate && w.getComputedStyle(gate).display!=='none'
+          : !!main && mainStyle.display!=='none';
         const ok=sheet && bridge && bodyOk && headingOk && buttonOk &&
                 visible && rootScroll<=viewport;
         records.push({path,width,body:bg,foreground:fg,bodyFont,headingFont,headingColor,
