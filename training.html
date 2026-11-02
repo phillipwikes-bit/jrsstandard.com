@@ -2624,9 +2624,14 @@ function jrsSanitizeCheck(text) {
   }
   return true;
 }
-function generateCert() {
+async function generateCert() {
   if (!jrsSanitizeCheck(document.getElementById('cert-name').value || '')) return;
-  var name = (document.getElementById('cert-name').value.trim()) || 'Reviewer';
+  var name = (document.getElementById('cert-name').value || '').replace(/\s+/g, ' ').trim() || 'Reviewer';
+  // Wait for the site's web font to become available before rasterizing.
+  // The same source remains usable when the font request is blocked.
+  if (document.fonts && document.fonts.ready) {
+    try { await document.fonts.ready; } catch(e) { /* use system fallback */ }
+  }
   var canvas = document.getElementById('cert-canvas');
   var W = 900, H = 636, B = 28;
   canvas.width = W; canvas.height = H;
@@ -2656,30 +2661,39 @@ function generateCert() {
   ctx.font = 'italic 20px Georgia,serif';
   ctx.fillText('This records that', W/2, 197);
 
-  // Fit the named recipient on the document, including two-line long names.
-  // Do not truncate or silently alter the name supplied for the certificate.
-  var cleanName = name.replace(/\s+/g, ' ').trim();
+  // Fit the recipient without cropping, silently changing or discarding
+  // words. Unusually long names can use two or three lines. If no legible
+  // layout fits, leave the record hidden and let the reviewer revise the input.
   ctx.fillStyle = '#193148';
-  var nameSize = 43, maxWidth = W - (B+68)*2;
-  while (nameSize > 23) {
-    ctx.font = 'normal '+nameSize+'px Georgia,serif';
-    if (ctx.measureText(cleanName).width <= maxWidth) break;
+  var maxWidth = W - (B+68)*2;
+  var words = name.split(' ');
+  function nameLines(size) {
+    ctx.font = 'normal '+size+'px Georgia,serif';
+    var lines = [], line = '';
+    for (var wi=0; wi<words.length; wi++) {
+      if (ctx.measureText(words[wi]).width > maxWidth) return null;
+      var candidate = (line ? line+' ' : '') + words[wi];
+      if (ctx.measureText(candidate).width <= maxWidth) line = candidate;
+      else { if (line) lines.push(line); line = words[wi]; }
+    }
+    if (line) lines.push(line);
+    return lines.length <= 3 ? lines : null;
+  }
+  var nameSize = 43, lines = null;
+  while (nameSize >= 18) {
+    lines = nameLines(nameSize);
+    if (lines) break;
     nameSize--;
   }
-  var twoLines = ctx.measureText(cleanName).width > maxWidth;
-  if (twoLines) {
-    var words = cleanName.split(' '), first = '', second = '';
-    for (var wi=0; wi<words.length; wi++) {
-      var candidate = (first ? first+' ' : '') + words[wi];
-      if (ctx.measureText(candidate).width <= maxWidth || !first) first = candidate;
-      else second += (second ? ' ' : '') + words[wi];
-    }
-    ctx.font = 'normal 23px Georgia,serif';
-    ctx.fillText(first, W/2, 236);
-    if (second) ctx.fillText(second, W/2, 266);
-  } else {
-    ctx.fillText(cleanName, W/2, 247);
+  if (!lines) {
+    canvas.style.display = 'none';
+    document.getElementById('cert-actions').style.display = 'none';
+    alert('The name is too long to fit on the completion record. Please use a shorter display name.');
+    return;
   }
+  ctx.font = 'normal '+nameSize+'px Georgia,serif';
+  var positions = lines.length === 1 ? [247] : lines.length === 2 ? [235,264] : [218,239,260];
+  for (var ni=0; ni<lines.length; ni++) ctx.fillText(lines[ni], W/2, positions[ni]);
 
   ctx.strokeStyle = '#A27A39'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(B+160, 279); ctx.lineTo(W-B-160, 279); ctx.stroke();
