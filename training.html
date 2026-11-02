@@ -2726,14 +2726,23 @@ async function generateCert() {
   ctx.font = '400 12px Inter,system-ui,sans-serif';
   ctx.fillText('© 2026 Phillip Wikes', W/2, 581);
 
+  canvas.dataset.issuedName = name;
   canvas.style.display = 'block';
   document.getElementById('cert-actions').style.display = 'flex';
 }
 function downloadCert() {
+  var canvas = document.getElementById('cert-canvas');
+  var name = (document.getElementById('cert-name').value || '').replace(/\s+/g,' ').trim() || 'Reviewer';
+  // Never issue a PNG under a filename naming someone other than the person
+  // actually drawn on its face. Regenerate after any recipient-name change.
+  if (!canvas.dataset.issuedName || canvas.dataset.issuedName !== name) {
+    alert('The name has changed. Generate the completion record again before downloading.');
+    return;
+  }
   recordCompletion();
-  var name = (document.getElementById('cert-name').value.trim().replace(/\s+/g,'-')) || 'JRS-Reviewer';
+  var safeName = name.replace(/[^a-zA-Z0-9._ -]+/g,'').trim().replace(/\s+/g,'-') || 'Reviewer';
   var a = document.createElement('a');
-  a.download = 'JRS-Completion-' + name + '.png';
+  a.download = 'JRS-Completion-' + safeName + '.png';
   a.href = document.getElementById('cert-canvas').toDataURL('image/png');
   a.click();
 }
