@@ -20,7 +20,9 @@ for(const path of requiredMobileNav){
    path+': shared keyboard-operated mobile navigation missing');
  assert.equal((html.match(/<nav class="jrs-sitenav"/g)||[]).length,1,
    path+': redundant competing navigation');
- const nav=html.match(/<nav class="jrs-sitenav"[\\s\\S]*?<\\/nav>/)?.[0]||'';
+ const navStart=html.indexOf('<nav class="jrs-sitenav"');
+ const navEnd=html.indexOf('</nav>',navStart);
+ const nav=navStart>=0 && navEnd>navStart ? html.slice(navStart,navEnd+6) : '';
  assert.equal((nav.match(/<a href=/g)||[]).length,7,
    path+': canonical seven-link mobile navigation missing');
  assert.ok(!nav.includes('enterprise.html'),
