@@ -69,6 +69,21 @@
                 ||el.classList.contains('maturity-level-header'));
               if(accordions.some(el=>!el.getAttribute('aria-controls')
                 ||el.getAttribute('aria-expanded')===null))failures.push('accordion-aria-state');
+              if(item.path==='training.html'){
+                const quiz=d.getElementById('jrs-practice-calibration');
+                const fields=quiz?[...quiz.querySelectorAll('fieldset[data-correct]')]:[];
+                if(fields.length!==6)failures.push('formative-six-question-check');
+                else if(item.width===390){
+                  const outcome=d.getElementById('jrs-practice-result');
+                  fields.forEach(field=>{
+                    const answer=field.querySelector('input[value="'+field.getAttribute('data-correct')+'"]');
+                    if(answer)answer.checked=true;
+                  });
+                  d.getElementById('jrs-practice-score').click();
+                  if(!outcome || !outcome.textContent.includes('6 of 6'))
+                    failures.push('formative-practice-feedback');
+                }
+              }
               const card=cards.find(el=>isVisible(w,el));
               if(card&&!invalid.length){
                 let activated=0;
