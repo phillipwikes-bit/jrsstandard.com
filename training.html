@@ -2124,7 +2124,7 @@ renderFM();
       <label style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:6px">Observation (Optional)</label>
       <textarea id="poll-comment" aria-label="Participation observation" placeholder="Describe what you noticed about this record or your reasoning..." style="width:100%;background:#121212;border:1px solid var(--rule);color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;line-height:1.65;padding:12px 14px;resize:vertical;min-height:60px;box-sizing:border-box"></textarea>
     </div>
-    <button id="poll-submit-btn" onclick="submitPoll()" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 24px;cursor:pointer;opacity:.4;pointer-events:none">Submit Observation</button>
+    <button id="poll-submit-btn" onclick="submitPoll()" disabled style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 24px;cursor:pointer;opacity:.4;pointer-events:none">Submit Observation</button>
 
     <div id="poll-result" style="display:none;margin-top:20px;max-width:700px;border:1px solid var(--rule);background:var(--surface);padding:18px 20px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Reviewer Analysis</div>
@@ -2912,7 +2912,7 @@ function selectPoll(btn, answer) {
   document.querySelectorAll('.poll-btn').forEach(function(b){ b.classList.remove('poll-selected'); });
   btn.classList.add('poll-selected');
   var submitBtn = document.getElementById('poll-submit-btn');
-  if (submitBtn) { submitBtn.style.opacity='1'; submitBtn.style.pointerEvents='auto'; }
+  if (submitBtn) { submitBtn.disabled=false; submitBtn.style.opacity='1'; submitBtn.style.pointerEvents='auto'; }
   window._pollAnswer = answer;
 }
 function submitPoll() {

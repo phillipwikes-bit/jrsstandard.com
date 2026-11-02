@@ -60,6 +60,9 @@ for(const path of linked){
   assert.doesNotMatch(html,/href="(?:pilot|enterprise|org-pilot)\.html"/i,
     path+': retained action to a retired public route');
 }
+const training=read('training.html');
+assert.match(training,/<button id="poll-submit-btn" onclick="submitPoll\(\)" disabled/);
+assert.match(training,/submitBtn\.disabled=false/);
 assert.match(read('assets/jrs-institutional-reference.css'),
   /@media\(max-width:760px\)\{\s*body\.jrs-institutional\.jrs-home \.jr-example-grid/);
 const accessibility=read('assets/jrs-institutional-reference.css');

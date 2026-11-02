@@ -1235,3 +1235,17 @@ body.jrs-institutional.jrs-training-page p a{
  text-decoration:underline!important;
  text-underline-offset:3px!important;
 }
+
+/* Disabled poll control and survey submit affordance. Retain original behavior. */
+body.jrs-institutional.jrs-training-page #poll-submit-btn:disabled{
+ opacity:1!important;background:#e0e8ed!important;color:#294456!important;
+ cursor:not-allowed!important;pointer-events:none!important;
+}
+body.jrs-institutional.jrs-training-page #poll-submit-btn:not(:disabled),
+body.jrs-institutional.jrs-training-page .btn-survey-submit{
+ color:#fff!important;
+}
+body.jrs-institutional.jrs-training-page .btn-survey-submit:hover,
+body.jrs-institutional.jrs-training-page .btn-survey-submit:focus-visible{
+ background:#67481b!important;color:#fff!important;
+}
