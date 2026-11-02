@@ -298,3 +298,51 @@ console.log('PASS: access health checks are side-effect-free and disclose no sec
  }
 }
 console.log('PASS: unverified public listing cannot change consent; registration failures conceal database details.');
+
+
+// Telemetry must not claim durable delivery on rejected writes or retain
+// sensitive URL parameters. This exercises the real endpoint with a mock
+// response; no actual analytics records are generated.
+{
+ const handler=(await import('../api/telemetry.js')).default;
+ const previousFetch=globalThis.fetch;
+ const hadKey=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
+ const oldKey=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ const inserted=[];
+ let upstreamStatus=502;
+ process.env.SUPABASE_SERVICE_ROLE_KEY='unit-test-only';
+ globalThis.fetch=async(url,options)=>{
+   inserted.push({url:String(url),data:JSON.parse(options.body)});
+   return new Response(upstreamStatus===200?'':'upstream unavailable',{status:upstreamStatus});
+ };
+ const payload={
+   origin_url:'https://www.jrsstandard.com/reviewer/completion.html?name=Sensitive%20Name&code=JRS-R-FAKE1234',
+   target_url:'https://www.jrsstandard.com/training.html?email=private%40example.org',
+   meta:{label:'Training',src:'link'}
+ };
+ const send=()=>handler(new Request('https://jrsstandard.com/api/telemetry',{
+   method:'POST',
+   headers:{'content-type':'application/json','user-agent':'Mozilla/5.0 Safari/605.1.15'},
+   body:JSON.stringify(payload)
+ }));
+ try {
+   let response=await send();
+   assert.deepEqual(await response.json(),{ok:true,recorded:false,reason:'write_failed'},
+     'A rejected upstream insert cannot be counted as recorded');
+   assert.equal(inserted.length,1);
+   assert.equal(inserted[0].data.payload.origin,'/reviewer/completion.html');
+   assert.equal(inserted[0].data.payload.target,'/training.html');
+   const stored=JSON.stringify(inserted[0].data);
+   assert.doesNotMatch(stored,/Sensitive.Name|FAKE1234|private%40example|private@example/,
+     'Analytics may store paths but never sensitive URL query parameters');
+   upstreamStatus=200;
+   response=await send();
+   assert.deepEqual(await response.json(),{ok:true,recorded:true},
+     'Only an accepted upstream write may be recorded as delivered');
+ } finally {
+   globalThis.fetch=previousFetch;
+   if(hadKey)process.env.SUPABASE_SERVICE_ROLE_KEY=oldKey;
+   else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ }
+}
+console.log('PASS: telemetry acknowledges upstream writes only and removes sensitive URL parameters.');
