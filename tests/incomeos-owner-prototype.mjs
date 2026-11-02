@@ -87,7 +87,8 @@ const totals=win.IncomeOSAccountant.totals([
   {kind:'income',status:'paid',scope:'proceeds',grossUsd:150,reconciled:false},
   {kind:'outflow',type:'expense',amountUsd:30,businessUse:50,reconciled:false},
   {kind:'outflow',type:'taxpayment',amountUsd:10,reconciled:true},
-  {kind:'outflow',type:'capital',amountUsd:70,reconciled:false}
+  {kind:'outflow',type:'capital',amountUsd:70,reconciled:false},
+  {kind:'outflow',type:'refund',amountUsd:12,businessUse:null,reconciled:false}
 ]);
 assert.equal(totals.gross,100,'Paid income excludes unreceived, refunded principal and sale proceeds');
 assert.equal(totals.pending,200,'Pending reported separately');
@@ -98,6 +99,8 @@ assert.equal(totals.expenses,30,'Tax and capital outflow excluded from expense s
 assert.equal(totals.possibleBusinessUse,15,'Business-use percentage remains an estimate');
 assert.equal(totals.taxPaid,10);
 assert.equal(totals.capital,70);
+assert.equal(totals.refundCredits,12,'Unallocated refunds cannot inflate earnings or automatically reduce expense candidates');
+assert.equal(totals.expenses,30,'Refund must not erase the original charged expense before source matching');
 const parsed=win.IncomeOSAccountant.parseCsv('kind,date,description,amount_usd\r\nexpense,2026-11-01,"Monthly AI, Extra usage",12.50\r\n');
 assert.equal(parsed[1][2],'Monthly AI, Extra usage','Quoted CSV commas must be preserved');
 assert.equal(parsed[1][3],'12.50');
@@ -117,4 +120,9 @@ sandbox.window.IncomeOSAccountant.importCsv([header,...twins].join(String.fromCh
 assert.match(prompts.pop(),/Import 2 new records/, 'Same-day identical payments with different bank references must survive import');
 sandbox.window.IncomeOSAccountant.importCsv([header,twins[0],twins[0]].join(String.fromCharCode(10)));
 assert.match(prompts.pop(),/Import 1 new records/, 'Repeated exact bank reference must be deduplicated');
+// A provider credit is a separate evidence item, never wages or an automatic deduction.
+sandbox.window.IncomeOSAccountant.importCsv([header,
+  'refund,2026-10-03,OpenAI refund,OpenAI,software,20.00,paid,,Original charge not verified,Refund pending link'
+].join(String.fromCharCode(10)));
+assert.match(prompts.pop(),/Import 1 new records/,'CSV should explicitly accept refund credits as unallocated records');
 console.log('IncomeOS source QA passed: 5 views, ' + feed.studies.length + ' studies, ' + feed.assets.length + ' asset candidates, syntax and privacy checks.');
