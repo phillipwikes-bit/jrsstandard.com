@@ -17,9 +17,20 @@ const privateReaders=[
 const config=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url),'utf8'));
 const dashboardPaths=['/programme-status-9872fb93cc94.html','/programme--9872fb93cc94.html'];
 const dashboard=readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
-assert.ok(dashboard.includes('Owner dashboard temporarily restricted'));
-assert.ok(!dashboard.includes('pilot_contacts') && !dashboard.includes('SUPABASE_SERVICE_ROLE_KEY'));
-assert.ok(!dashboard.includes('/api/people-') && !dashboard.includes('/api/leads-'));
+// The private dashboard now contains an authenticated reporting UI, not the
+// former placeholder. The proxy must gate the static HTML before any response.
+assert.ok(dashboard.includes('id="owner-auth-cover"'));
+assert.ok(dashboard.includes("fetch('/api/owner-session'"));
+assert.ok(dashboard.includes("location.replace('/owner-login.html')"));
+assert.ok(!dashboard.includes('SUPABASE_SERVICE_ROLE_KEY'));
+assert.ok(config.proxy && config.proxy.entrypoint === 'proxy.js');
+assert.deepEqual(config.proxy.matcher,dashboardPaths);
+const proxy=readFileSync(new URL('../proxy.js',import.meta.url),'utf8');
+assert.match(proxy,/import \{ ownerAccess \} from '\.\/api\/_owner-auth\.js'/);
+assert.match(proxy,/const denied = await ownerAccess\(request\)/);
+assert.match(proxy,/return next\(\)/);
+const signIn=readFileSync(new URL('../owner-login.html',import.meta.url),'utf8');
+assert.ok(signIn.includes('noindex,nofollow'));
 
 for(const p of dashboardPaths){
  assert.ok(config.headers.some(entry=>entry.source===p &&
