@@ -35,6 +35,22 @@ async function callNeon(base, route, origin, payload) {
     });
   } finally { clearTimeout(timeout); }
 }
+// Record only provider status and a constrained error identifier. Never log the
+// owner email, OTP, response body, cookies, or authentication credentials.
+async function logDeliveryFailure(response) {
+  let code = 'unknown';
+  try {
+    const body = await response.clone().json();
+    const candidate = typeof body?.code === 'string' ? body.code
+      : typeof body?.error === 'string' ? body.error
+      : typeof body?.error?.code === 'string' ? body.error.code : '';
+    if (/^[A-Za-z0-9_-]{1,64}$/.test(candidate)) code = candidate;
+  } catch { /* Upstream may not return JSON. */ }
+  console.error('jrs_owner_email_provider_failure', JSON.stringify({
+    phase: 'send', status: response.status, code
+  }));
+}
+
 export default async function handler(request) {
   const cfg = settings();
   if (request.method === 'GET') return cfg
@@ -61,8 +77,12 @@ export default async function handler(request) {
     if (body.action === 'send') {
       const response = await callNeon(cfg.base, '/email-otp/send-verification-otp', origin,
         { email: cfg.email, type: 'sign-in' });
-      if (response.status === 429) return reply({ error: 'rate_limited' }, 429);
-      if (!response.ok) return reply({ error: 'email_code_provider_unavailable' }, 502);
+      if (!response.ok) {
+        await logDeliveryFailure(response);
+        return response.status === 429
+          ? reply({ error: 'rate_limited' }, 429)
+          : reply({ error: 'email_code_provider_unavailable' }, 502);
+      }
       return reply({ requested: true, note: 'If email delivery is enabled, check your owner Gmail inbox.' }, 202);
     }
     if (body.action === 'verify') {
@@ -79,5 +99,11 @@ export default async function handler(request) {
       return reply({ authenticated: true }, 200, { 'Set-Cookie': await createOwnerCookie() });
     }
     return reply({ error: 'unknown_action' }, 400);
-  } catch { return reply({ error: 'email_code_service_unavailable' }, 502); }
+  } catch (err) {
+    console.error('jrs_owner_email_service_failure', JSON.stringify({
+      phase: body.action === 'send' ? 'send' : 'verify',
+      kind: err?.name === 'AbortError' ? 'timeout' : 'transport'
+    }));
+    return reply({ error: 'email_code_service_unavailable' }, 502);
+  }
 }
