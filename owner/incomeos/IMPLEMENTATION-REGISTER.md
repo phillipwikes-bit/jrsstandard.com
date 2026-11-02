@@ -191,3 +191,15 @@ The candidate expenses remain unverified; no new deductions, income, savings, re
 | CI expansion | `tests/incomeos-double-entry.mjs` and `tests/incomeos-monthly-close.mjs` | Synthetic tests added to required incomeOS checks; JRS isolation unchanged | Hosted preview, private RLS, iPhone Safari, authenticated access and full financial acceptance |
 
 **Explicit coverage limitation:** the close engine cannot yet reconcile multiple months or prior-year cost-basis / refund rollforwards. No cumulative balance sheet, operating cash flow, taxable income, independently verified financial benefit, or automatic compounding is established by this change. Do not enable private financial input in staging.
+
+
+## Multi-month financial integrity increment
+
+| Workstream | Delivered | Source-level acceptance | Outstanding dependency |
+| --- | --- | --- | --- |
+| Consecutive monthly rollforward | `period-rollforward.js` | Source-reviewed full calendar months in order, account mapping continuity, GL movement to statement deltas, prior closing to current opening balances, cross-month duplicate detection | Real authenticated statements and certified opening balances, external journal-head anchoring and independent source completeness |
+| Cross-period report protection | Rollforward HOLD suppresses closing balances if any month is incomplete or an identifier/mapping conflicts | Synthetic negative cases in `tests/incomeos-period-rollforward.mjs` | Authorized private storage and production policy gating |
+| Historical refund and capital basis | Held explicitly, not inferred | Prior-period unsupported references do not silently become current-period earnings | Controlled historical evidence links, prior-period refund totals and investment lot/basis rollforwards |
+| CI | New 21st IncomeOS synthetic suite and separate JRS/owner-data isolation gates | Completed exact-head GitHub workflow checks where recorded | Protected Vercel preview, authenticated iPhone tests, bank integrations and financial audit |
+
+This is an incremental source-control improvement, not an operational wealth or investment service. No owner balances, receipts, refunds or interest earnings were verified by this module.
