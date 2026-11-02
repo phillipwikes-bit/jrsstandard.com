@@ -1701,51 +1701,78 @@ function renderSupWall(d){
 // saying whether it was captured at submission or read from the reviewer roster,
 // so an inferred country is never displayed as a measured one.
 var PPL = [];
+// Source-specific permission is displayed; it never authorizes a new purpose.
+function pplConsentText(state){
+  if(state==='recorded-yes')return 'Yes (source-specific)';
+  if(state==='recorded-no')return 'No';
+  return 'Not recorded';
+}
 function pplFiltered(){
   var q=((document.getElementById('ppl-q')||{}).value||'').trim().toLowerCase();
-  var c=((document.getElementById('ppl-country')||{}).value||'');
+  var country=((document.getElementById('ppl-country')||{}).value||'');
+  var group=((document.getElementById('ppl-group')||{}).value||'');
+  var contact=((document.getElementById('ppl-contact')||{}).value||'');
   return PPL.filter(function(p){
-    if(c && (p.country||'')!==c) return false;
-    if(!q) return true;
-    return [p.name,p.organization,p.country,p.title,p.activity,p.detail].join(' ').toLowerCase().indexOf(q)!==-1;
+    if(country && (p.country||'')!==country)return false;
+    if(group && (p.activity_family||'Unclassified historical source')!==group)return false;
+    if(contact && (p.consent_contact_state||'not-recorded')!==contact)return false;
+    if(!q)return true;
+    return [p.name,p.email,p.title,p.organization,p.country,p.activity,p.detail,
+      p.source,p.activity_family,p.inquiry_category,p.commercial_purpose]
+      .join(' ').toLowerCase().indexOf(q)!==-1;
   });
 }
 function drawPeople(){
-  var t=document.getElementById('ppl-tbl'), cnt=document.getElementById('ppl-cnt');
-  if(!t) return;
-  var list=pplFiltered();
-  if(cnt) cnt.textContent='Showing '+list.length+' of '+PPL.length+' records.';
-  // caption and scope="col": a screen reader announces what the table is and which
-  // column each cell belongs to. Without them this reads as 8 unlabelled columns.
-  var h='<caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding:0 0 8px">'
-      + 'Every person on the record, with their country, what they did and what they consented to.</caption>'
-      + '<thead><tr>'+['Date','Name','Organization','Country','Email','What they did','Completed','Public','Transfer']
-    .map(function(x){return '<th scope="col" style="font-family:\'JetBrains Mono\',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap">'+x+'</th>';}).join('')+'</tr></thead><tbody>';
-  if(!list.length){
-    h+='<tr><td colspan="9" style="padding:10px;color:var(--muted-soft);font-size:12.5px">Nothing matches that filter.</td></tr>';
-  } else {
-    list.forEach(function(p){
-      var inferred=(p.country_source==='reviewer records');
-      var ctry=p.country
-        ? ('<span style="color:var(--text)">'+esc(p.country)+'</span>'
-           + (inferred?'<span title="Row predates geo capture on 2026-07-17; read from the dated reviewer roster" style="font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.1em;color:var(--review-text);margin-left:5px">ROSTER</span>':''))
-        : '<span style="color:var(--muted-soft);font-size:11px">not on file</span>';
-      h+='<tr>'
-        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);white-space:nowrap;color:var(--muted-soft);font-size:12px">'+esc(String(p.date||'').slice(0,10))+'</td>'
-        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--text);font-size:12.5px">'+esc(p.name||'(not given)')+'</td>'
-        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">'+esc(p.organization)+'</td>'
-        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;white-space:nowrap">'+ctry+'</td>'
-        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px">'
-          +(p.email?('<a href="mailto:'+esc(p.email)+'" style="color:var(--accent)">'+esc(p.email)+'</a>'):'<span style="color:var(--muted-soft)">&middot;</span>')+'</td>'
-        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);color:var(--muted);font-size:12px">'+esc(p.activity||p.source)+'</td>'
-        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;white-space:nowrap;color:'+(p.training_completed?'var(--ready-text)':'var(--muted-soft)')+'">'
-          +(p.training_completed?esc(String(p.training_completed_on||'').slice(0,10)||'yes'):'·')+'</td>'
-        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;color:'+(p.consent_public?'var(--ready-text)':'var(--muted-soft)')+'">'+(p.consent_public?'Yes':'No')+'</td>'
-        +'<td style="padding:8px 10px;border-bottom:1px solid var(--rule);font-size:12px;color:'+(p.consent_transfer?'var(--ready-text)':'var(--muted-soft)')+'">'+(p.consent_transfer?'Yes':'No')+'</td>'
-        +'</tr>';
-    });
+  var table=document.getElementById('ppl-tbl'),count=document.getElementById('ppl-cnt');
+  if(!table)return;
+  var rows=pplFiltered();
+  if(count)count.textContent='Showing '+rows.length+' of '+PPL.length
+    +' source records. One person may have multiple activities; rows are not unique people.';
+  // DOM text nodes prevent name, organization and email strings from becoming HTML.
+  table.textContent='';
+  var caption=document.createElement('caption');
+  caption.textContent='Private source records: identities, activity purpose and purpose-specific permission states.';
+  caption.style.cssText='caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding:0 0 8px';
+  table.appendChild(caption);
+  var headers=['Date','Programme','Name','Title','Organization','Country','Email',
+    'Source activity','Training completed','Contact','Public naming','Transfer'];
+  var thead=document.createElement('thead'),thr=document.createElement('tr');
+  headers.forEach(function(label){
+    var th=document.createElement('th');
+    th.scope='col'; th.textContent=label;thr.appendChild(th);
+  });thead.appendChild(thr);table.appendChild(thead);
+  var tbody=document.createElement('tbody');
+  function cell(tr,value){
+    var td=document.createElement('td');
+    td.textContent=value==null?'':String(value);tr.appendChild(td);return td;
   }
-  t.innerHTML=h+'</tbody>';
+  if(!rows.length){
+    var empty=document.createElement('tr'),td=document.createElement('td');
+    td.colSpan=headers.length;td.textContent='No records match these filters.';
+    empty.appendChild(td);tbody.appendChild(empty);
+  }
+  rows.forEach(function(p){
+    var tr=document.createElement('tr');
+    cell(tr,String(p.date||'').slice(0,10));
+    cell(tr,p.activity_family||'Unclassified historical source');
+    cell(tr,p.name||'(not given)');
+    cell(tr,p.title||'');
+    cell(tr,p.organization||'');
+    cell(tr,(p.country||'Not on file')+(p.country_source==='reviewer records'?' (roster)':''));
+    var emailCell=cell(tr,'');
+    var address=String(p.email||'').trim();
+    if(/^[^\\s@<>]+@[^\\s@<>]+\\.[^\\s@<>]+$/.test(address)){
+      var a=document.createElement('a');a.href='mailto:'+address;
+      a.textContent=address;a.style.color='var(--accent)';emailCell.appendChild(a);
+    }else{emailCell.textContent=address||'Not provided';}
+    cell(tr,p.activity||p.source||'');
+    cell(tr,p.training_completed?(String(p.training_completed_on||'').slice(0,10)||'Yes'):'Not recorded');
+    cell(tr,pplConsentText(p.consent_contact_state));
+    cell(tr,pplConsentText(p.consent_public_state));
+    cell(tr,pplConsentText(p.consent_transfer_state));
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
 }
 // MERGED FROM supporters-b78f5ff2c08d.html, which was deleted on 2026-08-12
 // because it duplicated this page's roster and Today tiles. These three blocks
