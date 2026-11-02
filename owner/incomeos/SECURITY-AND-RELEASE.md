@@ -124,3 +124,14 @@ Staging deployment configuration now includes `owner/incomeos/vercel.json` as a 
 Staging hardening: `staging-interlock.js` now loads **before** the accountant and sets `IncomeOSFinancialReadOnly` immediately. Accountant writes, legacy migration, edit, remove, CSV import and JSON restoration are refused while this flag is set. `vault.js` likewise refuses restoration into unapproved browser storage. Export and local erasure remain available for existing records. Client-side guards are not authentication and are insufficient on their own for production security.
 
 **Production status remains HOLD** regardless of synthetic tests or protected-preview authentication: independent owner identity validation, transactional private backend, separately authenticated RLS, encrypted active storage, real bank coverage, negative owner/nonowner access tests, iPhone functional/VoiceOver QA, and explicit owner release authorization remain unmet.
+
+
+## November 1 continuation: accountant import integrity and plaintext staging restrictions
+
+The source-only accountant CSV importer now validates real ISO calendar dates and rejects unknown/duplicate CSV headers. It persists proposed ledger entries **before** replacing the in-memory accounting state. A failed browser-storage write is treated as an unsuccessful import or edit rather than as a completed financial change. Legacy-entry migration and ledger deletion have distinct failure handling. Synthetic persistence tests cover quota failure, repeated imports, invalid dates and unassigned business-use percentages.
+
+The available 2026 accountant import file was examined locally, not committed or uploaded. It contains 96 candidate expense rows totaling $3,857.24, with 96 distinct nonempty evidence references. Business-use percentages are blank for all 96 entries; the file is not a complete annual accounting population and does not establish tax deductibility, banking authenticity or a production migration.
+
+Additional staging controls explicitly suppress storing personal research application stages, local research imports, budget preferences and bill plans in plaintext browser storage. These complement but do not replace owner authentication and encrypted primary persistence. The read-only source view and locally held-record erasure remain available; the browser storage legacy is not a trusted production account system.
+
+The added `tests/incomeos-accountant-persistence.mjs` and `tests/incomeos-staging-privacy.mjs` run in source CI. Successful synthetic results do not satisfy deployed browser, private session, encrypted storage or bank-data verification gates.
