@@ -54,6 +54,33 @@
              }).length;
              const title=(d.title||'').trim();
             const failures=[];
+            // Exercise actual card semantics and a keyboard activation against
+            // source-rendered Standard and Training routes.
+            let keyboardCards=0;
+            let keyboardActivation=false;
+            if(item.path==='jrsstandard.html'||item.path==='training.html'){
+              const cards=[...d.querySelectorAll('div[onclick]')];
+              keyboardCards=cards.length;
+              const invalid=cards.filter(el=>el.getAttribute('role')!=='button'
+                ||el.getAttribute('tabindex')!=='0'
+                ||!el.hasAttribute('data-jrs-keyboard-control'));
+              if(invalid.length)failures.push('keyboard-cards-unbound-'+invalid.length);
+              const accordions=cards.filter(el=>el.classList.contains('worksheet-header')
+                ||el.classList.contains('maturity-level-header'));
+              if(accordions.some(el=>!el.getAttribute('aria-controls')
+                ||el.getAttribute('aria-expanded')===null))failures.push('accordion-aria-state');
+              const card=cards.find(el=>isVisible(w,el));
+              if(card&&!invalid.length){
+                let activated=0;
+                card.addEventListener('click',()=>activated++,{once:true});
+                card.focus();
+                card.dispatchEvent(new w.KeyboardEvent('keydown',{
+                  key:'Enter',bubbles:true,cancelable:true
+                }));
+                keyboardActivation=activated===1;
+                if(!keyboardActivation)failures.push('keyboard-activation');
+              }else if(!card)failures.push('no-focusable-action-card');
+            }
             if(!d.doctype || d.doctype.name.toLowerCase()!=='html')failures.push('doctype');
             if((d.documentElement.lang||'').toLowerCase()!=='en')failures.push('language');
             if(!d.querySelector('meta[name="viewport"]'))failures.push('viewport-meta');
@@ -66,7 +93,7 @@
             if(!title)failures.push('document-title');
             finish({...item,pass:failures.length===0,failures,
               documentWidth,viewport,visibleHeadings:h1.length,
-              controlCount:controls.length,undersizedControls:undersized,
+              controlCount:controls.length,keyboardCards,keyboardActivation,undersizedControls:undersized,
                advisoryUnder44px:advisoryTargetCount,
               bodyFont:style.fontFamily,background:style.backgroundColor,
               title:title.slice(0,84)});
