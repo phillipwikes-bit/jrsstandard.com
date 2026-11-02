@@ -3,8 +3,9 @@
   // Pure evidence review. Does not calculate investable cash or initiate payment.
   var types=new Set(["EARNED_INCOME","INVESTMENT_DISTRIBUTION","BILL_SAVINGS","REFUND","RETURNED_PRINCIPAL"]);
   function review(events){
-    if(!Array.isArray(events))return {status:"HOLD",issues:["INVALID_EVENTS"],verifiedBenefitCents:0,availableToInvestCents:null};
+    if(!Array.isArray(events))return {status:"HOLD",issues:["INVALID_EVENTS"],verifiedBenefitCents:null,availableToInvestCents:null};
     var seen=new Set(),evidenceSeen=new Set(),issues=[],totals={EARNED_INCOME:0,INVESTMENT_DISTRIBUTION:0,BILL_SAVINGS:0,REFUND:0,RETURNED_PRINCIPAL:0};
+    if(events.length===0)issues.push({code:"NO_OUTCOME_EVIDENCE"});
     events.forEach(function(e,i){
       if(!e||typeof e!=="object"||typeof e.id!=="string"||!e.id.trim()||seen.has(e.id.trim())){
         issues.push({index:i,code:"DUPLICATE_OR_INVALID_ID"});return;
@@ -34,10 +35,10 @@
       }
       totals[e.type]+=e.amountCents;
     });
-    var verifiedBenefitCents=totals.EARNED_INCOME+totals.INVESTMENT_DISTRIBUTION+totals.BILL_SAVINGS;
+    var verifiedBenefitCents=totals.EARNED_INCOME+totals.INVESTMENT_DISTRIBUTION;
     if(!Number.isSafeInteger(verifiedBenefitCents)){issues.push({code:"BENEFIT_OVERFLOW"});verifiedBenefitCents=null;}
     return {status:issues.length?"HOLD":"EVIDENCE_REVIEW_ONLY",issues:issues,totals:issues.length?null:totals,
-      verifiedBenefitCents:issues.length?null:verifiedBenefitCents,availableToInvestCents:null,transferAuthorized:false,
+      verifiedBenefitCents:issues.length?null:verifiedBenefitCents,avoidedCostCents:issues.length?null:totals.BILL_SAVINGS,availableToInvestCents:null,transferAuthorized:false,
       note:"Bill savings are avoided costs, not deposits. Refunds and returned principal are not new income."};
   }
   var api=Object.freeze({review:review});
