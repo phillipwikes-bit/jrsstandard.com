@@ -3091,8 +3091,12 @@ function dismissEnroll(){
   var o = document.getElementById('enroll-overlay');
   if (o) o.style.display = 'none';
   document.body.classList.remove('jrs-training-dialog-open');
-  if (jrsEnrollReturnFocus && document.contains(jrsEnrollReturnFocus) &&
-      typeof jrsEnrollReturnFocus.focus === 'function') jrsEnrollReturnFocus.focus();
+  var restoreFocus = jrsEnrollReturnFocus;
+  if (!restoreFocus || !document.contains(restoreFocus) ||
+      !restoreFocus.getClientRects || restoreFocus.getClientRects().length === 0) {
+    restoreFocus = document.getElementById('module-btn-0');
+  }
+  if (restoreFocus && typeof restoreFocus.focus === 'function') restoreFocus.focus();
   jrsEnrollReturnFocus = null;
 }
 // Modal focus containment is active only while optional enrollment is visible.
@@ -3176,8 +3180,8 @@ function enrollSubmit(){
       // Never include the enrollee's name, email, title or organization in links.
       inner.innerHTML =
         '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">Registered</div>'
-      + '<h2 style="font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">You are in</h2>'
-      + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">Your certificate will be issued in that name. Finish all six modules and it records completion of the JRS reviewer training. <b style="color:var(--text)">It is a certificate of completion, not professional certification, accreditation, licensure, or a regulatory credential.</b></p>'
+      + '<h2 id="en-dialog-title" style="font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Registration received</h2>'
+      + '<p id="en-dialog-description" style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">Your certificate will be issued in that name. Finish all six modules and it records completion of the JRS reviewer training. <b style="color:var(--text)">It is a certificate of completion, not professional certification, accreditation, licensure, or a regulatory credential.</b></p>'
       + '<a href="resources.html" class="jrs-enroll-resources-link">Explore free review resources</a>'
       + '<button type="button" onclick="dismissEnroll()" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Return to training</button>';
       var successTitle = inner.querySelector('h2');
