@@ -40,9 +40,9 @@ function row(x,index){
   };
 }
 export default async function handler(req){
-  if(req.method!=='GET')return json({error:'method_not_allowed'},405);
   const denied=await ownerAccess(req);
   if(denied)return denied;
+  if(req.method!=='GET')return json({error:'method_not_allowed'},405);
   const key=((typeof process!=='undefined'&&process.env)||{}).FORMSPREE_READ_API_KEY||'';
   if(!key)return json({
     source:'formspree-public-jrs-contact',configured:false,complete:false,
