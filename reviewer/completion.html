@@ -11,8 +11,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <style>
 :root{
   --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
@@ -117,7 +115,7 @@ a:focus-visible,button:focus-visible{outline:3px solid #0b679c;outline-offset:3p
     <div class="eyebrow">Historical evaluation receipt</div>
     <h1>Retrieve an issued reviewer evaluation receipt</h1>
     <p class="sub">This page serves historical JRS reviewer evaluation receipts. It does not issue a new certificate, establish completion of the six training modules, or assess professional competence.</p>
-    <form class="card" action="/api/reviewer-cert" method="get" target="_blank" rel="noopener">
+    <form class="card" action="/api/reviewer-cert" method="post" target="_blank" rel="noopener">
       <label class="fl" for="f-code">Issued receipt code</label>
       <input id="f-code" name="code" type="text" placeholder="JRS-R-XXXXXXXX" autocomplete="off" autocapitalize="characters" maxlength="40" required>
       <label class="fl" for="f-name">Name on the original issuer record</label>
