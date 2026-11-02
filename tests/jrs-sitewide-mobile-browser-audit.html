@@ -136,6 +136,19 @@
                 section.parentElement && section.parentElement.closest('.page-section')
               );
               if(nested.length)failures.push('nested-document-sections-'+nested.length);
+              const documentMain=d.getElementById('main-content');
+              if(!documentMain||documentMain.tagName!=='MAIN'||
+                !isVisible(w,documentMain)||!sections.every(section=>documentMain.contains(section)))
+                failures.push('main-landmark-not-persistent');
+              const nonhome=d.getElementById('section-doccond');
+              if(nonhome&&documentMain){
+                const previous=typeof w.showSection==='function';
+                if(previous)w.showSection('doccond');
+                if(!previous||!isVisible(w,nonhome)||!isVisible(w,documentMain))
+                  failures.push('main-landmark-hidden-after-navigation');
+                if(previous)w.showSection('home');
+              }
+
               const roleSection=d.getElementById('section-roles');
               if(roleSection&&roleSection.closest('.page-section')!==roleSection)
                 failures.push('role-section-nested');
