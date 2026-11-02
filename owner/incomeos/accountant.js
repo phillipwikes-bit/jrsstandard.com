@@ -141,7 +141,7 @@
     var amount=num($("cost-amount").value),rawPct=$("cost-business-use").value.trim(),pct=rawPct===""?null:num(rawPct);
     var e={kind:"outflow",label:limit($("cost-label").value,100),payer:limit($("cost-payee").value,100),
       category:$("cost-category").value,date:$("cost-date").value,type:$("cost-type").value,
-      amountUsd:round(amount),businessUse:pct,evidenceStatus:$("cost-evidence-status").value,
+      amountUsd:round(amount),businessUse:$("cost-type").value==="refund"?null:pct,evidenceStatus:$("cost-evidence-status").value,
       reference:limit($("cost-reference").value,120),notes:limit($("cost-notes").value,500),
       reconciled:$("cost-evidence-status").value==="both",importedFrom:"manual"};
     if(!Number.isFinite(amount)||amount<=0||(pct!==null&&(!Number.isFinite(pct)||pct<0||pct>100))||!validate(e)){alert("Please enter a valid expense description, date, positive amount and business-use percentage from 0 to 100.");return null;}
