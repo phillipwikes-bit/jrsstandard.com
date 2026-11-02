@@ -207,6 +207,10 @@ export default async function handler(req){
     // source='gate-view' as a campaign form open, is untouched by the change.
     const PAGE_SOURCE = { reviewer: 'reviewer-view', training: 'train-view' };
     const viewSource = PAGE_SOURCE[String(b.page || '')] || 'gate-view';
+    // Keep guide-directory arrivals distinct from registration-form openings.
+    // gate-stats explicitly treats mode=guidespage as page traffic, not a
+    // conversion denominator; normalizing it to guide corrupted the funnel.
+    const viewMode = String(b.mode || '') === 'guidespage' ? 'guidespage' : mode;
     let accepted = false;
     try {
       const upstream = await fetch(SB + '/rest/v1/interaction_events', {
@@ -214,7 +218,7 @@ export default async function handler(req){
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
         body: JSON.stringify({ source: viewSource, type: 'view', payload: {
-          mode: mode,
+          mode: viewMode,
           edition: normEdition(b.edition) || '',
           campaign: b.campaign ? normCampaign(b.campaign) : '',
           src: tag(b.src, 40) || '',
