@@ -2427,10 +2427,10 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
        return;
      }
      var d=await response.json();
-     if(!d||d.complete!==true||!Array.isArray(d.rows))throw Error('incomplete');
+     if(!d||d.complete!==true||d.source_scope!=='formspree_nonspam_submissions'||!Array.isArray(d.rows))throw Error('incomplete');
      rows=d.rows;
      exportButton.disabled=rows.length===0;
-     status.textContent='Complete Formspree read: '+rows.length+' source records. '
+     status.textContent='Complete nonspam Formspree read: '+rows.length+' source submissions. Spam excluded; submissions are not verified unique people or qualified leads. '
        +(rows.length>250?'Showing 250; export includes all.':'Showing all.')+
        ' No duplication into the historic Supabase register.';
      redraw();
