@@ -1406,3 +1406,19 @@ body.jrs-institutional.jrs-training-page #enroll-overlay{
     outline-offset:3px!important;
   }
 }
+
+
+/* 2026-11-02: legacy compact navigation toggle target-size fix.
+   Public page browser audit identified four routes whose single mobile menu
+   toggle was only 36px tall. Preserve the existing menu implementation. */
+body.jrs-institutional .nav-toggle{
+  min-height:44px!important;
+  padding:10px 16px!important;
+  font-size:13px!important;
+  line-height:1.5!important;
+  letter-spacing:.035em!important;
+}
+body.jrs-institutional .nav-toggle:focus-visible{
+  outline:3px solid #09689e!important;
+  outline-offset:3px!important;
+}
