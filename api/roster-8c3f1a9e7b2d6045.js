@@ -33,9 +33,9 @@ async function sha256hex(str){
 }
 
 export default async function handler(req){
-  if (req.method !== 'GET') return new Response('Method not allowed', {status:405,headers:{'Cache-Control':'private, no-store'}});
   const denied=await ownerAccess(req);
   if(denied)return denied;
+  if (req.method !== 'GET') return new Response('Method not allowed', {status:405,headers:{'Cache-Control':'private, no-store'}});
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   const H = { 'Content-Type':'text/html; charset=utf-8', 'X-Robots-Tag':'noindex, nofollow', 'Cache-Control':'private, no-store', 'Referrer-Policy':'no-referrer' };
