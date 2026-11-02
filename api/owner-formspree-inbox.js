@@ -32,6 +32,9 @@ function row(x,index){
     source:'formspree-public-jrs-contact',
     source_record_id:str(y._id||y.id||y._submission_id,160),
     source_position:index,
+    // Both form markers are client-controlled. Matching them establishes only
+    // the declared form type, not independent proof of where submission began.
+    form_marker_status:directPublicForm?'matches_current_contact_form_fields':'unattributed',
     date:str(y._date||y.date||y.submitted_at||'',64),
     name:str(y.name,160),
     email:str(y.email,180),
@@ -86,7 +89,9 @@ export default async function handler(req){
       return json({source:'formspree-public-jrs-contact',configured:true,complete:true,
         total:items.length,rows:items,
         source_scope:'formspree_nonspam_submissions',
-        coverage:'Only Formspree public contact form submissions not marked as spam. Formspree spam items are not included. Recorded contact consent is self-declared; no publication, marketing, research enrollment or transfer permission is inferred. Submissions are not verified unique people or commercial leads.'});
+        current_form_marker_matches:items.filter(r=>r.form_marker_status==='matches_current_contact_form_fields').length,
+        unattributed_submissions:items.filter(r=>r.form_marker_status==='unattributed').length,
+        coverage:'All nonspam submissions returned from Formspree form mreddwdg. Some rows may lack current JRS contact-form markers, and fields naming the form are self-declared, not proof of origin. Formspree spam items are not included. Recorded contact consent is self-declared; no publication, marketing, research enrollment or transfer permission is inferred. Submissions are not verified unique people or commercial leads.'});
     }
   }
   return json({error:'formspree_pagination_limit',complete:false,
