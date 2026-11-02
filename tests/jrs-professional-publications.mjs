@@ -23,3 +23,14 @@ for(const file of sites){
  assert.match(text,/<a[^>]+target="_blank"[^>]+rel="noopener noreferrer"/,'external publisher links must have tab isolation');
 }
 console.log('PASS: both attributed publisher links, safe external navigation, research boundary and 16-item practitioner directory.');
+
+const publicHtmlFiles=readdirSync(new URL('../',import.meta.url)).filter(name=>name.endsWith('.html'));
+for(const name of publicHtmlFiles){
+ const text=page(name);
+ assert.doesNotMatch(text,/<a\b[^>]*href="(?:pilot|org-pilot|enterprise)\.html"/i,
+  name+' should not offer obsolete pilot / enterprise navigation');
+}
+const summary=page('research-summary.html');
+assert.ok(summary.includes('Operational Validation'),'research summary must identify validation status');
+assert.ok(summary.includes('Review validation status'),'validation call to action must not promise an unavailable pilot signup');
+console.log('PASS: public top-level pages contain no obsolete pilot or enterprise destinations.');
