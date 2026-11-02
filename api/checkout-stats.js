@@ -56,6 +56,8 @@ function json(o, s) {
 
 function bump(map, k) {
   const key = k || 'unknown';
+  // Payloads can contain arbitrary strings, including inherited Object keys.
+  // Counter maps must have no prototype to avoid corrupting or losing totals.
   map[key] = (map[key] || 0) + 1;
 }
 
@@ -80,7 +82,7 @@ export default async function handler(req) {
     return json({error:'checkout_source_incomplete',source:'checkout-click',complete:false},502);
   const clicks=clickResult.rows;
 
-  const byOffer = {}, byCountry = {}, byState = {};
+  const byOffer = Object.create(null), byCountry = Object.create(null), byState = Object.create(null);
   let intentUsd = 0;
   for (let i = 0; i < clicks.length; i++) {
     const p = (clicks[i] || {}).payload || {};
@@ -90,7 +92,10 @@ export default async function handler(req) {
     bump(byState, String(p.state || ''));
     // Legacy offer-price exposure for events labeled unconfigured.
     // Clicks do not establish a payment, purchaser commitment, or lost revenue.
-    if (p.state === 'unconfigured' && OFFERS[offer]) intentUsd += OFFERS[offer].price_usd;
+    if (p.state === 'unconfigured' && Object.hasOwn(OFFERS, offer)) {
+      const face = OFFERS[offer].price_usd;
+      if (typeof face === 'number' && Number.isFinite(face) && face >= 0) intentUsd += face;
+    }
   }
 
   // ---- leads captured on the fallback form ---------------------------------
@@ -99,7 +104,7 @@ export default async function handler(req) {
     return json({error:'checkout_source_incomplete',source:'checkout-fallback',complete:false},502);
   const leads=leadResult.rows;
 
-  const leadsByOffer = {}, leadsByCountry = {};
+  const leadsByOffer = Object.create(null), leadsByCountry = Object.create(null);
   let leadValueUsd = 0, withVolume = 0;
   for (let i = 0; i < leads.length; i++) {
     let p = {};
@@ -107,7 +112,8 @@ export default async function handler(req) {
     const offer = String(p.offer || '');
     bump(leadsByOffer, offer);
     bump(leadsByCountry, String(p.country || ''));
-    if (typeof p.price_usd === 'number') leadValueUsd += p.price_usd;
+    if (typeof p.price_usd === 'number' && Number.isFinite(p.price_usd) && p.price_usd >= 0)
+      leadValueUsd += p.price_usd;
     if (p.volume) withVolume++;
   }
 
@@ -117,7 +123,8 @@ export default async function handler(req) {
     return json({error:'checkout_source_incomplete',source:'enterprise-inquiry',complete:false},502);
   const inq=inquiryResult.rows;
 
-  const inqByInterest = {}, inqByScale = {}, inqByTimeline = {}, inqByCountry = {};
+  const inqByInterest = Object.create(null), inqByScale = Object.create(null),
+        inqByTimeline = Object.create(null), inqByCountry = Object.create(null);
   let namedPlatform = 0;
   for (let i = 0; i < inq.length; i++) {
     let p = {};
