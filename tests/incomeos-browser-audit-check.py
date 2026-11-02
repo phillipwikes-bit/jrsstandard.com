@@ -9,7 +9,7 @@ if len(sys.argv) != 2:
     raise SystemExit("Usage: incomeos-browser-audit-check.py DOM_FILE")
 body = pathlib.Path(sys.argv[1]).read_text(encoding="utf-8", errors="replace")
 match = re.search(
-    r'<output\\b[^>]*id=["\\']incomeos-browser-audit["\\'][^>]*>(.*?)</output>',
+    r"""<output[^>]*id=["']incomeos-browser-audit["'][^>]*>(.*?)</output>""",
     body,
     re.IGNORECASE | re.DOTALL,
 )
