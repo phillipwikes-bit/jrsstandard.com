@@ -128,14 +128,23 @@ function page(o){
 }
 
 export default async function handler(req){
-  if (req.method !== 'GET') return html('Method not allowed', 405);
+  if (req.method !== 'GET' && req.method !== 'POST') return html('Method not allowed', 405);
 
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
 
   const url = new URL(req.url);
-  const code  = clean(url.searchParams.get('code'), 40).toUpperCase().replace(/[^A-Z0-9-]/g, '');
-  const name  = clean(url.searchParams.get('name'), 200);
+  // POST avoids exposing new participant details in browser URLs and history.
+  // Read-only legacy GET links are retained for already issued historical copies.
+  let params=url.searchParams;
+  if (req.method==='POST'){
+    if (!/^application\/x-www-form-urlencoded(?:;|$)/i.test(req.headers.get('content-type')||'')) return badCode();
+    const raw=await req.text();
+    if (raw.length>2048) return badCode();
+    params=new URLSearchParams(raw);
+  }
+  const code  = clean(params.get('code'), 40).toUpperCase().replace(/[^A-Z0-9-]/g, '');
+  const name  = clean(params.get('name'), 200);
   // Caller-supplied title is never authoritative. Print only the issuer record.
 
   if (!/^JRS-R-[A-Z0-9]{6,12}$/.test(code) || !name) return badCode();
