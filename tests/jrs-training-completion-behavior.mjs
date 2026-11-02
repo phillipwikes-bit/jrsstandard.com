@@ -13,6 +13,12 @@ assert.match(source, /id="en-dialog-description"/,
   'The optional enrollment purpose must be explained on the dialog');
 assert.match(source, /id="en-msg" role="status" aria-live="polite"/,
   'Enrollment feedback must be announced without moving focus');
+assert.match(source, /id="en-close" class="jrs-enroll-close"/,
+  'Registration must provide a visible, keyboard-operated Close control');
+assert.match(source, /jrsSetEnrollmentInert\(true\)/,
+  'Background must be excluded from keyboard navigation while modal is open');
+assert.match(source, /jrsSetEnrollmentInert\(false\)/,
+  'Background focusability must be restored after the modal closes');
 assert.match(source, /jrsEnrollReturnFocus = document.activeElement/,
   'Dialog must remember its initiating control');
 assert.match(source, /e.key === 'Escape'[\s\S]*dismissEnroll\(\)/,
