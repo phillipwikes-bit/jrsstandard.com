@@ -1214,3 +1214,24 @@ body.jrs-institutional.jrs-resource-page .jrs-publication-resources .card-title{
   white-space:normal;overflow-wrap:anywhere;
  }
 }
+
+/* Source-identified WCAG text contrast repairs, 2026-11-02.
+   Target the informational Standard and Training pages only. */
+body.jrs-institutional.jrs-standard-page .failure-bad{
+ color:#8b4444!important;
+}
+body.jrs-institutional.jrs-standard-page [style*="color:#5DBF82"]{
+ color:#1d6745!important;
+}
+body.jrs-institutional.jrs-training-page .severity-level.high,
+body.jrs-institutional.jrs-training-page [style*="color:#E8A84A"]{
+ color:#925c16!important;
+}
+body.jrs-institutional.jrs-training-page button[style*="background:var(--accent)"],
+body.jrs-institutional.jrs-training-page a[style*="background:var(--accent)"]{
+ color:#fff!important;
+}
+body.jrs-institutional.jrs-training-page p a{
+ text-decoration:underline!important;
+ text-underline-offset:3px!important;
+}

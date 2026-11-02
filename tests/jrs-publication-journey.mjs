@@ -62,5 +62,8 @@ for(const path of linked){
 }
 assert.match(read('assets/jrs-institutional-reference.css'),
   /@media\(max-width:760px\)\{\s*body\.jrs-institutional\.jrs-home \.jr-example-grid/);
+const accessibility=read('assets/jrs-institutional-reference.css');
+for(const selector of ['.jrs-standard-page .failure-bad','.jrs-training-page .severity-level.high','.jrs-training-page p a'])
+ assert.ok(accessibility.includes(selector),'Missing targeted accessibility repair: '+selector);
 console.log('PASS: 2 external articles x 3 public pages, attribution, editorial/validation boundary,');
 console.log('PASS: fictional walkthrough, directory count, 20 route corrections and mobile layout rules.');
