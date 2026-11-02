@@ -73,6 +73,14 @@ assert.ok(regular.drawn.some(x=>/RECORD OF COMPLETION/.test(x.text)));
 assert.ok(regular.drawn.some(x=>/not professional certification/i.test(x.text)));
 assert.ok(!regular.drawn.some(x=>/internal distribution/i.test(x.text)));
 
+const international=fixture('José María García');
+await international.run();
+international.download();
+assert.equal(international.downloads[0].name,'JRS-Completion-José-María-García.png',
+ 'international recipient names must not lose diacritics in the download');
+assert.ok(international.drawn.some(x=>x.text==='José María García'),
+ 'full international recipient name must remain on the certificate');
+
 const long='Alexandria Elizabeth-Margaret Jordan-James Montgomery Spencer Alexandra James';
 const wrapped=fixture(long);
 await wrapped.run();
