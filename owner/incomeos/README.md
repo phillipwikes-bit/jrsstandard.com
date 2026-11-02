@@ -159,3 +159,12 @@ This source increment does not add an authenticated bank connector or private ac
 - The staging financial interlock now initializes before accountant scripts and is enforced inside write/import/edit/migration and encrypted restore paths. It does not replace server authentication. Existing local backup export and erasure remain available.
 
 Do not enter or import financial data into the unapproved preview, and do not infer production release permission from green source tests.
+
+
+## Source validation and staging privacy continuation (November 1, 2026)
+
+The accountant now rejects duplicate or unknown CSV columns, nonexistent calendar dates and edits/imports when staging storage is disabled. Proposed changes are persisted before becoming live in the in-memory ledger; quota failures must not appear as completed imports. Local erasure is retained.
+
+The locally available 2026 import file has 96 candidate expenses totaling $3,857.24. All 96 business-use allocations remain unknown. No personal source rows, receipts or account identifiers were committed to this public repository.
+
+Research application status, locally imported leads, budget targets and planned bills are also write-disabled in static staging. This avoids treating unencrypted browser-local persistence as acceptable for private operational records. A protected backend and real authentication remain mandatory before owner data entry.
