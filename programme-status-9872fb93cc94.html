@@ -102,7 +102,7 @@ tr.today td{background:rgba(93,191,130,.07)}
 </script>
 
 <a href="#main-content" class="skip-link">Skip to content</a>
-<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Private Programme Status <button type="button" id="owner-signout" style="margin-left:12px;background:none;color:inherit;border:1px solid #665b46;padding:5px 10px;cursor:pointer;min-height:36px">Sign out</button></div></div></header>
+<header class="hd"><div class="hd-in"><a href="/" class="wm">JRS<span style="font-size:9px;vertical-align:super">&#8482;</span></a><div class="meta">Private Programme Status <button type="button" id="owner-signout" style="margin-left:12px;background:none;color:inherit;border:1px solid #665b46;padding:5px 10px;cursor:pointer;min-height:36px">Sign out</button><span id="owner-signout-status" role="status" aria-live="polite" style="display:block;font-size:12px;color:#d5b374"></span></div></div></header>
 <main id="main-content"><div class="wrap">
   <h1>JRS Programme Status</h1>
   <p class="sub">Private, source-bounded reporting across free resources, training, research and separately governed software preparation. A tracked request is not established adoption. Supported figures refresh automatically every 60 seconds. Some owner-only reads may show unavailable when authentication or backend configuration is missing; that must not be interpreted as zero.</p>
@@ -2366,12 +2366,33 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <!-- /JRS SECTION COLLAPSE v1 -->
 <script>
 (function(){
+ 'use strict';
  var out=document.getElementById('owner-signout');
- if(!out)return;
- out.addEventListener('click',function(){
-  fetch('/api/owner-session',{method:'DELETE',credentials:'same-origin',cache:'no-store'})
-   .then(function(){location.replace('/owner-login.html')})
-   .catch(function(){location.replace('/owner-login.html')});
+ var status=document.getElementById('owner-signout-status');
+ if(!out||!status)return;
+ var busy=false;
+ out.addEventListener('click',async function(){
+  if(busy)return;
+  busy=true;out.disabled=true;out.textContent='Signing out...';
+  status.textContent='Verifying current browser session closure.';
+  try{
+   var response=await fetch('/api/owner-session',{
+     method:'DELETE',credentials:'same-origin',cache:'no-store'
+   });
+   if(!response.ok)throw Error('signout_failed');
+   var data=await response.json();
+   if(!data||data.signed_out!==true)throw Error('unconfirmed_signout');
+   // A success response alone cannot prove the browser discarded its cookie.
+   // Verify a fresh protected read is denied before presenting login.
+   var verify=await fetch('/api/owner-session',{
+     method:'GET',credentials:'same-origin',cache:'no-store'
+   });
+   if(verify.status!==401)throw Error('session_still_available');
+   location.replace('/owner-login.html');
+  }catch{
+   status.textContent='Sign-out could not be verified. Your session may still be active. Retry.';
+   out.textContent='Retry sign-out';out.disabled=false;
+  }finally{busy=false;}
  });
 })();
 </script>
