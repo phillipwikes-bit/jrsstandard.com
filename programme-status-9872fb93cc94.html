@@ -189,7 +189,7 @@ tr.today td{background:rgba(93,191,130,.07)}
        server-side owner proxy, and private API readers require ownerAccess().
        Site inquiries are grouped separately from historical commercial paths. -->
   <h2 id="contacts-and-commercial" style="font-size:22px">Inquiries and historic commercial activity</h2>
-  <p class="sub">Recent identified contacts and historic payment-screen attempts, newest first. Website research and training inquiries are measured separately from commercial interest. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
+  <p class="sub">Historical database contacts and payment-screen attempts, newest first. Current public-site inquiries use the Formspree contact relay and are not automatically included in these database records. Research and training enquiries are not software sales leads. <b style="color:var(--review-text)">This is a queue, not a statistic.</b> Names and emails are shown because a lead you cannot see is a lead you cannot answer.</p>
   <div class="cards" id="lead-cards" style="grid-template-columns:repeat(4,1fr)">
     <div class="card"><div class="cv hot" id="ld-leads">&middot;</div><div class="ck">Legacy leads shown</div></div>
     <div class="card"><div class="cv" id="ld-attempts">&middot;</div><div class="ck">Pay-screen attempts</div></div>
@@ -198,14 +198,14 @@ tr.today td{background:rgba(93,191,130,.07)}
   </div>
 
   <section aria-label="Categorized website inquiry measurements">
-   <h3 style="font-size:18px;margin:18px 0 10px">Website inquiries, separate from commercial leads</h3>
+   <h3 style="font-size:18px;margin:18px 0 10px">Historical database inquiries, separate from commercial leads</h3>
    <div class="cards" style="grid-template-columns:repeat(2,1fr)">
-    <div class="card"><div class="cv" id="ld-site-total">&middot;</div><div class="ck">Website inquiries, all time</div></div>
-    <div class="card"><div class="cv" id="ld-site-30d">&middot;</div><div class="ck">Website inquiries, last 30 days</div></div>
+    <div class="card"><div class="cv" id="ld-site-total">&middot;</div><div class="ck">Historical database inquiries, all time</div></div>
+    <div class="card"><div class="cv" id="ld-site-30d">&middot;</div><div class="ck">Historical database inquiries, last 30 days</div></div>
    </div>
    <p class="note" id="ld-site-types">Loading inquiry categories...</p>
    <p class="note" id="ld-site-commercial">Loading separately classified commercial purposes...</p>
-   <p class="note">These counts include only records submitted through the categorized website form. Research, resource and general questions are not evidence of commercial demand. Existing downloads, training, pilots and historic commercial activity are measured in their original categories.</p>
+   <p class="note">These counts include only historical Supabase contact rows with source=site-inquiry. The redesigned public website sends its current contact form to Formspree, not to this Supabase table. Newer messages, including names and emails, remain with that independent recipient and are NOT in these counts or the Supabase participant register unless separately imported with provenance and lawful purpose. No unavailable source may be interpreted as zero. Research, resource and general questions are not evidence of commercial demand.</p>
   </section>
 
   <div class="tablewrap">
@@ -2109,7 +2109,7 @@ function loadSiteInquiryStats(){
     .then(function(d){
       document.getElementById('ld-site-total').textContent=d.total;
       document.getElementById('ld-site-30d').textContent=d.last_30_days;
-      var names={organization:'Organizations',research:'Research',training:'Training',commercial:'Prospective Decision Spellchecker',general:'General'};
+      var names={organization:'Organizations',research:'Research',training:'Training',commercial:'Historical commercial inquiry',general:'General'};
       var cats=Object.keys(names).map(function(k){return names[k]+': '+(d.by_category[k]||0);});
       if(d.unclassified_count)cats.push('Unclassified: '+d.unclassified_count);
       document.getElementById('ld-site-types').textContent=cats.join(' | ');
@@ -2340,11 +2340,11 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
          return [x.description,'Independent verification outstanding'];
        }));
        var note=document.getElementById('release-readiness-note');
-       if(note)note.textContent='Production release blocked. '
+       if(note)note.textContent='Private owner-dashboard release blocked. '
          +d.missing_configuration.length+' configuration prerequisites missing; '
          +d.required_independent_verifications.length+' independent checks not established. '
          +'Inventory read '+new Date(d.generated_at).toLocaleString()+'.';
-     }).catch(function(){unavailable('Release configuration inventory unavailable. Production release must remain blocked.');});
+     }).catch(function(){unavailable('Release configuration inventory unavailable. Private owner-dashboard release must remain blocked.');});
   }
   refreshReleaseReadiness();
   setInterval(refreshReleaseReadiness,60000);
