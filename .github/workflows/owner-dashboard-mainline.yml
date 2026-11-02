@@ -39,6 +39,8 @@ jobs:
         run: node --test tests/owner-session-lifecycle.test.mjs
       - name: Neon OTP failure handling, no real email
         run: node tests/owner-neon-otp-failures.test.mjs
+      - name: Owner readiness inventory and release-hold requirements
+        run: node tests/owner-readiness-mainline.mjs
       - name: JRS programme model, consent and browser JS
         run: node tests/owner-programme-issue36.mjs
       - name: Complete historical download quality reconciliation
