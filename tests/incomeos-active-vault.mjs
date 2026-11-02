@@ -5,7 +5,22 @@ import { runInNewContext, Script } from "node:vm";
 
 const source = readFileSync("owner/incomeos/active-vault.js", "utf8");
 new Script(source, { filename: "active-vault.js" });
-const sandbox = { window: { IncomeOSFinancialReadOnly: false }, crypto,
+// The same lock broker is shared by synthetic tabs. A pending operation keeps
+// the named lock until the asynchronous callback finishes.
+function createLockBroker() {
+  const queues = new Map();
+  return {
+    request(name, options, callback) {
+      assert.equal(options.mode, "exclusive");
+      const previous = queues.get(name) || Promise.resolve();
+      const current = previous.catch(() => {}).then(callback);
+      queues.set(name, current.catch(() => {}));
+      return current;
+    }
+  };
+}
+const navigator = { locks: createLockBroker() };
+const sandbox = { window: { IncomeOSFinancialReadOnly: false }, navigator, crypto,
   TextEncoder, TextDecoder, Uint8Array, JSON, Number, String, Array, Object,
   Math, btoa, atob, Error, console };
 runInNewContext(source, sandbox);
@@ -99,7 +114,7 @@ const guardedCrypto = {
     decrypt: (...args) => crypto.subtle.decrypt(...args)
   }
 };
-const guardSandbox = { window: { IncomeOSFinancialReadOnly: false }, crypto: guardedCrypto,
+const guardSandbox = { window: { IncomeOSFinancialReadOnly: false }, navigator, crypto: guardedCrypto,
   TextEncoder, TextDecoder, Uint8Array, JSON, Number, String, Array, Object,
   Math, btoa, atob, Error, console };
 runInNewContext(source, guardSandbox);
@@ -129,13 +144,26 @@ pauseEncryption = true;
 startedEncryption = new Promise(resolve => { encryptStarted = resolve; });
 const stale = guarded.commit(next);
 await startedEncryption;
-await competitor.commit({ version: 1, entries: [] });
-const competingCiphertext = guardStore.getItem(guardVault.keyName);
+const competing = competitor.commit({ version: 1, entries: [] });
+assert.equal(guardStore.getItem(guardVault.keyName), guardInitialCiphertext,
+  "Other tab cannot write while first encryption holds the exclusive lock");
 releaseEncryption();
-await assert.rejects(stale, /changed during save/,
-  "Competing tab update during encryption must not be overwritten");
-assert.equal(guardStore.getItem(guardVault.keyName), competingCiphertext,
-  "Delayed stale save preserves the newer tab's ciphertext");
+await stale;
+const savedByFirst = guardStore.getItem(guardVault.keyName);
+await assert.rejects(competing, /changed before save/,
+  "Second tab must not overwrite a write committed under Web Locks");
+assert.equal(guardStore.getItem(guardVault.keyName), savedByFirst,
+  "Only one of the competing tabs is allowed to commit");
 guarded.lock();
 competitor.lock();
-console.log("IncomeOS active vault: encrypted-at-rest, independent copy, lock/unlock, wrong password, tamper, rollback-by-conflict, failed write and staging holds passed.");
+const noLockEnvironment = { window: { IncomeOSFinancialReadOnly: false }, crypto,
+  TextEncoder, TextDecoder, Uint8Array, JSON, Number, String, Array, Object,
+  Math, btoa, atob, Error, console };
+runInNewContext(source, noLockEnvironment);
+const noLockVault = noLockEnvironment.window.IncomeOSActiveVault;
+await assert.rejects(noLockVault.create({
+  getItem: () => null, setItem: () => { throw Error("should not write"); }, removeItem: () => {}
+}, password, v1), /locking is unavailable/,
+  "Missing Web Locks must block encrypted writes even with a correct passphrase");
+
+console.log("IncomeOS active vault: AES-GCM, Web Locks, same-tab serialization, cross-tab conflict, lock cancellation, tamper, failed writes, and staging holds passed.");
