@@ -79,4 +79,63 @@ const hold = await api.unlock(storage, password);
 await assert.rejects(hold.commit(next), /unavailable/);
 hold.lock();
 assert.throws(() => session.snapshot(), /locked/);
+// Simulate a delayed native WebCrypto encryption step. This exercises the
+// vulnerable window between first version check and committing ciphertext.
+let pauseEncryption = false, releaseEncryption = null, encryptStarted = null;
+let startedEncryption = new Promise(resolve => { encryptStarted = resolve; });
+const guardedCrypto = {
+  getRandomValues: a => crypto.getRandomValues(a),
+  subtle: {
+    importKey: (...args) => crypto.subtle.importKey(...args),
+    deriveKey: (...args) => crypto.subtle.deriveKey(...args),
+    encrypt: async (...args) => {
+      if (pauseEncryption) {
+        pauseEncryption = false;
+        encryptStarted();
+        await new Promise(resolve => { releaseEncryption = resolve; });
+      }
+      return crypto.subtle.encrypt(...args);
+    },
+    decrypt: (...args) => crypto.subtle.decrypt(...args)
+  }
+};
+const guardSandbox = { window: { IncomeOSFinancialReadOnly: false }, crypto: guardedCrypto,
+  TextEncoder, TextDecoder, Uint8Array, JSON, Number, String, Array, Object,
+  Math, btoa, atob, Error, console };
+runInNewContext(source, guardSandbox);
+const guardVault = guardSandbox.window.IncomeOSActiveVault;
+const guardMap = new Map();
+const guardStore = {
+  getItem: k => guardMap.has(k) ? guardMap.get(k) : null,
+  setItem: (k, v) => { guardMap.set(k, v); },
+  removeItem: k => guardMap.delete(k)
+};
+let guarded = await guardVault.create(guardStore, password, v1);
+const guardInitialCiphertext = guardStore.getItem(guardVault.keyName);
+pauseEncryption = true;
+const delayed = guarded.commit(next);
+await startedEncryption;
+await assert.rejects(guarded.commit(v1), /already in progress/,
+  "Second save in same session cannot overtake ongoing encryption");
+guarded.lock();
+releaseEncryption();
+await assert.rejects(delayed, /locked/,
+  "Locking the account during asynchronous encryption blocks the write");
+assert.equal(guardStore.getItem(guardVault.keyName), guardInitialCiphertext,
+  "No ciphertext written after owner locks the session");
+guarded = await guardVault.unlock(guardStore, password);
+const competitor = await guardVault.unlock(guardStore, password);
+pauseEncryption = true;
+startedEncryption = new Promise(resolve => { encryptStarted = resolve; });
+const stale = guarded.commit(next);
+await startedEncryption;
+await competitor.commit({ version: 1, entries: [] });
+const competingCiphertext = guardStore.getItem(guardVault.keyName);
+releaseEncryption();
+await assert.rejects(stale, /changed during save/,
+  "Competing tab update during encryption must not be overwritten");
+assert.equal(guardStore.getItem(guardVault.keyName), competingCiphertext,
+  "Delayed stale save preserves the newer tab's ciphertext");
+guarded.lock();
+competitor.lock();
 console.log("IncomeOS active vault: encrypted-at-rest, independent copy, lock/unlock, wrong password, tamper, rollback-by-conflict, failed write and staging holds passed.");
