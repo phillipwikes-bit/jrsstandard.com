@@ -32,6 +32,27 @@ assert.ok(training.includes('result.focus({preventScroll:true})'),'Move focus to
 assert.match(training,/The observation field is not submitted, retained or analyzed by JRS/,'Do not imply remote submission');
 assert.ok(training.includes('>Reveal reviewer analysis</button>'),'Action label must match local behavior');
 assert.doesNotMatch(training,/Every reviewer who has started this training has finished it/,'Remove unsupported 100 percent training completion claim');
+
+// Optional completion must not solicit email from free-training visitors,
+// claim a server record after a non-2xx response, or block local PNG creation.
+assert.ok(training.includes("if (localStorage.getItem('jrs-training-enrolled') !== '1') return;"),
+ 'Only an already-successful opt-in enrollment may transmit a named completion');
+assert.ok(training.includes("if (!response.ok) throw new Error('Completion service did not accept the request');"),
+ 'Non-success HTTP response must not mark named completion as sent');
+assert.ok(training.includes("result.ok !== true"),
+ 'Completion receipt must affirmatively confirm acceptance');
+assert.ok(training.includes("jrsCompletionPending")&&training.includes("finally(function(){ jrsCompletionPending = false; })"),
+ 'Concurrent completion requests must be deduplicated and retryable');
+assert.ok(!training.includes("recordCompletion(true)")&&!training.includes("window.prompt('Enter the email you registered with"),
+ 'Unregistered training must not prompt for a completion email');
+assert.ok(training.includes("recordCompletion(); // when named enrollment follows six already-completed modules"),
+ 'Late named registration may record a legitimately enrolled completer');
+assert.ok(training.includes('The PNG is generated locally without enrollment'),
+ 'Describe local PNG accurately');
+const privacy=read('privacy-notice.html');
+assert.ok(privacy.includes('Training progress and completion.')&&privacy.includes('optional survey responses'),
+ 'Privacy notice must disclose browser storage and unregistered training telemetry');
+
 // Contrast measured against white and light institutional panel background, not
 // every possible browser-computed background. Visually confirm before release.
 function srgb(v){const t=v/255;return t<=.04045?t/12.92:((t+.055)/1.055)**2.4}
