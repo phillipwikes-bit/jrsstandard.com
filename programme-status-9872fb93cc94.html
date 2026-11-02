@@ -2109,15 +2109,26 @@ function loadLeads(){
           if(typeof o.offers[k].price_usd === 'number') LD_PRICES[k] = o.offers[k].price_usd;
         });
       }
-      return fetch(LEADS_URL);
+      return fetch(LEADS_URL,{credentials:'same-origin',cache:'no-store'});
     })
     .then(function(r){ if(!r.ok) throw new Error('status ' + r.status); return r.json(); })
-    .then(ldRender)
+    .then(function(d){
+      if(!d || d.complete!==true || !Array.isArray(d.leads) || !Array.isArray(d.attempts))
+        throw new Error('historical_sources_incomplete');
+      ldRender(d);
+    })
     .catch(function(){
+      // Never leave the prior successful counts on screen after a source
+      // failure. Unavailable cannot be interpreted as zero inquiries.
+      ['ld-leads','ld-attempts','ld-lost','ld-value'].forEach(function(id){
+        document.getElementById(id).textContent='Unavailable';
+      });
+      document.getElementById('ld-note').textContent=
+        'Historical inquiry or pay-screen source unavailable. No complete count can be inferred.';
       document.getElementById('ld-rows').innerHTML =
-        '<tr><td colspan="7" style="color:var(--stop-text)">Could not load leads. Tap Refresh.</td></tr>';
+        '<tr><td colspan="7" style="color:var(--stop-text)">Could not verify complete historical leads. Tap Refresh.</td></tr>';
       document.getElementById('ld-att').innerHTML =
-        '<tr><td colspan="5" style="color:var(--stop-text)">Could not load attempts.</td></tr>';
+        '<tr><td colspan="5" style="color:var(--stop-text)">Could not verify complete pay-screen attempts.</td></tr>';
     });
 }
 loadLeads();
