@@ -2658,7 +2658,7 @@ function generateCert() {
 
   // Fit the named recipient on the document, including two-line long names.
   // Do not truncate or silently alter the name supplied for the certificate.
-  var cleanName = name.replace(/\\s+/g, ' ').trim();
+  var cleanName = name.replace(/\s+/g, ' ').trim();
   ctx.fillStyle = '#193148';
   var nameSize = 43, maxWidth = W - (B+68)*2;
   while (nameSize > 23) {
