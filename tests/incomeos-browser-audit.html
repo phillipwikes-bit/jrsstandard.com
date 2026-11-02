@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>IncomeOS synthetic mobile browser audit</title>
+<meta name="robots" content="noindex">
+<style>body{font:14px system-ui;margin:20px}iframe{display:block;border:0;margin:0 auto 15px;background:#fff;max-width:none}output{white-space:pre-wrap;word-break:break-word}</style>
+</head>
+<body>
+<h1>IncomeOS source-rendered mobile test</h1>
+<output id="incomeos-browser-audit" data-status="running">running</output>
+<script>
+(async function () {
+ "use strict";
+ const result={status:"RUNNING",widths:[],checks:[],errors:[]};
+ const out=document.getElementById("incomeos-browser-audit");
+ const settle=()=>{result.status=result.errors.length?"FAIL":"PASS";out.dataset.status=result.status;out.textContent=JSON.stringify(result);};
+ const assert=(condition,message)=>{if(!condition)throw Error(message);result.checks.push(message);};
+ const delay=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+ async function runWidth(width){
+   const frame=document.createElement("iframe");
+   frame.style.width=width+"px";frame.style.height="850px";
+   frame.setAttribute("aria-label","IncomeOS source-rendered viewport "+width+" pixels");
+   document.body.insertBefore(frame,out);
+   const loaded=new Promise((resolve,reject)=>{
+      frame.onload=resolve;frame.onerror=()=>reject(Error("Unable to load IncomeOS iframe"));
+   });
+   frame.src="/owner/incomeos/?synthetic-layout-audit="+width;
+   await loaded;
+   const win=frame.contentWindow,doc=frame.contentDocument;
+   if(!win||!doc)throw Error("Cross-origin or inaccessible frame");
+   for(let wait=0;wait<100;wait++){
+      if(doc.getElementById("feed-status")?.textContent.includes("Reviewed source snapshot"))break;
+      await delay(60);
+   }
+   const status=doc.getElementById("feed-status")?.textContent||"";
+   assert(status.includes("Reviewed source snapshot"),"Opportunity snapshot loaded at "+width);
+   const cards=doc.querySelectorAll("#research-cards article.card").length;
+   assert(cards>=1,"At least one research card rendered at "+width);
+   assert(doc.querySelectorAll("#asset-cards article.card").length>=1,"Alternative asset cards available at "+width);
+   assert(win.IncomeOSFinancialReadOnly===true,"Financial staging is fail-closed at "+width);
+   for(const name of ["receipt-form","cost-form"]){
+      const form=doc.getElementById(name);
+      assert(!!form,"Expected accountant form "+name+" at "+width);
+      assert([...form.querySelectorAll("input,select,textarea,button")].every(el=>el.disabled),
+             "All accountant entry controls are disabled at "+width+": "+name);
+   }
+   assert(doc.querySelectorAll('script[src^="https:"]').length===0,"No third-party scripts at "+width);
+   const actualWidth=doc.documentElement.scrollWidth,viewport=win.innerWidth;
+   assert(actualWidth<=viewport+2,"No horizontal page overflow at "+width+"; actual "+actualWidth+", viewport "+viewport);
+   for(const view of ["assets","ledger","compound","about","research"]){
+      const b=doc.querySelector('.bottomnav button[data-view="'+view+'"]');
+      assert(!!b,"Navigation control present "+view);
+      b.click();
+      const target=doc.getElementById("view-"+view);
+      assert(target.classList.contains("active")&&!target.hidden,"Navigation opens "+view+" at "+width);
+   }
+   doc.getElementById("research-filter").value="online";
+   doc.getElementById("research-filter").dispatchEvent(new Event("change",{bubbles:true}));
+   const onlineCards=doc.querySelectorAll("#research-cards article.card").length;
+   assert(onlineCards<=cards,"Online filter does not increase results at "+width);
+   const bar=doc.querySelector(".bottomnav").getBoundingClientRect();
+   assert(bar.width<=viewport+2,"Mobile navigation fits viewport "+width);
+   result.widths.push({width,viewport,contentWidth:actualWidth,studies:cards,onlineCards});
+   frame.remove();
+ }
+ try{
+    for(const width of [320,375,430,650])await runWidth(width);
+ }catch(e){result.errors.push(String(e?.message||e));}
+ settle();
+})();
+</script>
+</body>
+</html>
