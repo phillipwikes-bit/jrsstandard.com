@@ -309,6 +309,40 @@ console.log('PASS: access health checks are side-effect-free and disclose no sec
 }
 console.log('PASS: unverified public listing cannot change consent; registration failures conceal database details.');
 
+// Access registration transport exceptions must return a controlled JSON
+// rejection, without claiming a successful registration or guide delivery.
+{
+ const handler=(await import('../api/access.js')).default;
+ const oldFetch=globalThis.fetch;
+ const hadKey=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
+ const savedKey=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ const calls=[];
+ process.env.SUPABASE_SERVICE_ROLE_KEY='unit-test-only';
+ globalThis.fetch=async(url,options={})=>{
+   calls.push({url:String(url),method:options.method||'GET'});
+   throw new Error('PRIVATE_TRANSPORT_DIAGNOSTIC');
+ };
+ try {
+   const r=await handler(new Request('https://jrsstandard.com/api/access',{
+     method:'POST',
+     headers:{'content-type':'application/json','origin':'https://jrsstandard.com'},
+     body:JSON.stringify({mode:'guide',edition:'employment',
+       name:'Example Reviewer',email:'example@example.org',
+       consent_contact:true,src:'organic'})
+   }));
+   assert.equal(r.status,502,'Transport failure must fail closed');
+   assert.deepEqual(await r.json(),{error:'registration_unavailable'});
+   assert.equal(calls.length,1,'No aggregate counts after a failed registration');
+ } finally {
+   globalThis.fetch=oldFetch;
+   if(hadKey)process.env.SUPABASE_SERVICE_ROLE_KEY=savedKey;
+   else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ }
+}
+console.log('PASS: access registration rejects transport failures without exposing diagnostics.');
+
+
+
 
 // Telemetry must not claim durable delivery on rejected writes or retain
 // sensitive URL parameters. This exercises the real endpoint with a mock
