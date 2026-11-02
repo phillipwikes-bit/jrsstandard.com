@@ -15,8 +15,11 @@
     if(x.deadline!=null&&(!validDate(x.deadline)||x.deadline<asOf))problems.push("DEADLINE_EXPIRED_OR_INVALID");
     if(x.remote!==true&&prefs.remoteOnly!==false)problems.push("NOT_CONFIRMED_REMOTE");
     if(x.eligibility==="ineligible")problems.push("INELIGIBLE");
-    if(x.eligibility!=="verified")warnings.push("ELIGIBILITY_UNCONFIRMED");
-    if(x.openingsVerified!==true)warnings.push("OPENINGS_UNCONFIRMED");
+    if(x.eligibility!=="verified")problems.push("ELIGIBILITY_UNCONFIRMED");
+    if(x.eligibility==="verified"&&(!validUrl(x.eligibilityEvidenceUrl)||!validDate(x.eligibilityCheckedOn)))problems.push("ELIGIBILITY_EVIDENCE_MISSING");
+    if(x.eligibility==="verified"&&validDate(x.eligibilityCheckedOn)&&validDate(asOf)&&((Date.parse(asOf+"T00:00:00Z")-Date.parse(x.eligibilityCheckedOn+"T00:00:00Z"))/86400000>7||x.eligibilityCheckedOn>asOf))problems.push("ELIGIBILITY_EVIDENCE_STALE");
+    if(x.requiresUnverifiedCredential===true||x.requiresUnknownWorkAuthorization===true||x.requiresUnmetExperience===true)problems.push("QUALIFICATION_NOT_ESTABLISHED");
+    if(x.openingsVerified!==true)problems.push("OPENINGS_UNCONFIRMED");
     if(x.paymentVerified!==true)warnings.push("COMPENSATION_UNCONFIRMED");
     if(x.requiresUpfrontPayment===true||x.requestsCredentials===true)problems.push("POTENTIAL_SCAM");
     var pay=Number(x.payUsd),hours=Number(x.workHours),screen=Number(x.screenHours),fees=Number(x.feesUsd||0);
@@ -34,7 +37,7 @@
     items.forEach(function(x){var key=x&&typeof x.id==="string"?x.id.trim():"";if(key&&seen.has(key))return;if(key)seen.add(key);rows.push({listing:x,assessment:review(x,asOf,prefs)});});
     var rank={REVIEW:0,SCREEN:1,HOLD:2};
     rows.sort(function(a,b){return rank[a.assessment.status]-rank[b.assessment.status]||(b.assessment.effectiveHourlyUsd||0)-(a.assessment.effectiveHourlyUsd||0);});
-    return {results:rows,notice:"Public listing screening only. No live platform connection or application submission."};
+    return {results:rows.filter(function(row){return row.assessment.status!=="HOLD";}),withheld:rows.filter(function(row){return row.assessment.status==="HOLD";}).length,notice:"Only evidence-screened listings are displayed. Eligibility evidence is listing-specific, not proof of recruiter acceptance. No live platform connection or application submission."};
   }
   var api=Object.freeze({platforms:platforms.slice(),review:review,digest:digest});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
