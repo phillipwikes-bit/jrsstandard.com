@@ -1,0 +1,10 @@
+{
+  "name": "jrs-spellchecker-public-site",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Controlled public site and private owner dashboard routing",
+  "dependencies": {
+    "@vercel/functions": "3.10.4"
+  }
+}
