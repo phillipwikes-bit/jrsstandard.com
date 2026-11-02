@@ -21,7 +21,7 @@ const accountMap=[{accountId:"acct.cash",bankAccountId:sourceRef(cash),evidenceI
 function line(d,c,n){return [
  {accountId:d,side:"debit",amountCents:n},{accountId:c,side:"credit",amountCents:n}
 ];}
-async function makePeriod(period,openingCash,earned,expense,payment,openingCard=0){
+async function makePeriod(period,openingCash,earned,expense,payment,openingCard=0,overrideSourceId=null){
  const start=period+"-01",y=Number(period.slice(0,4)),m=Number(period.slice(5,7)),
    end=new Date(Date.UTC(y,m,0)).toISOString().slice(0,10);
  const timestamp=new Date(Date.parse(end+"T12:00:00Z")+86400000).toISOString().replace(".000Z",".000Z");
@@ -35,7 +35,8 @@ async function makePeriod(period,openingCash,earned,expense,payment,openingCard=
  const classifications=["earned_income","business_expense","transfer_out","transfer_in"];
  for(let i=0;i<rows.length;i++){
    const n=period.replace("-","")+"."+i,eventId="post."+n,
-     c="class."+n,sourceId="source."+n,amountCents=Math.round(Number(rows[i].amountUsd)*100);
+     c="class."+n,sourceId=i===0&&overrideSourceId?overrideSourceId:"source."+n,
+     amountCents=Math.round(Number(rows[i].amountUsd)*100);
    for(const e of [
      {id:eventId,type:"POSTED",timestamp,data:{sourceId,postedDate:end,direction:rows[i].direction,
        amountCents,currency:"USD",evidenceId:"bank.statement."+period.replace("-","")}},
@@ -109,11 +110,18 @@ await hold({periods:[sept,{...oct,statementPackage:{...oct.statementPackage,
  ]},"BALANCE_CARRYFORWARD_MISMATCH");
 await hold({periods:[sept,{...oct,sourceAccountMap:oct.sourceAccountMap.slice(0,1)}]},"ACCOUNT_MAP_CHANGED_WITHOUT_MIGRATION");
 await hold({periods:[sept,{...oct,chart:oct.chart.slice(0,3)}]},"CHART_CHANGED_WITHOUT_MIGRATION");
-await hold({periods:[sept,{...oct,journal:oct.journal.map(e=>e.type==="POSTED"&&e.id===oct.journal[0].id?
- {...e,data:{...e.data,sourceId:sept.journal[0].data.sourceId}}:e)}]},"REUSED_PROVIDER_SOURCE_ID").catch(e=>{
- // Hash chain cannot be altered without recomputing; verify tamper rejection.
- assert.match(String(e),/modified/);
-});
+await hold({periods:[sept,{...oct,chart:[...oct.chart,
+ {id:"acct.unmapped",kind:"cash_asset",evidenceId:"owner.chart.001",ownerReviewed:true}]}]},"UNMAPPED_FINANCIAL_CHART_ACCOUNT");
+const reusedProviderSource=await makePeriod("2026-10",18000,5000,1000,1000,0,sept.journal[0].data.sourceId);
+await hold({periods:[sept,reusedProviderSource]},"REUSED_PROVIDER_SOURCE_ID");
+const reusedBankId=JSON.parse(JSON.stringify(oct));
+reusedBankId.statementPackage.bankRows[0].transactionId=sept.statementPackage.bankRows[0].transactionId;
+const oldBankKey=[reusedBankId.statementPackage.bankRows[0].institution,
+ reusedBankId.statementPackage.bankRows[0].accountToken,
+ reusedBankId.statementPackage.bankRows[0].transactionId].join("|");
+reusedBankId.statementPackage.accountingMatches[0].bankId=oldBankKey;
+reusedBankId.sourceBindings[0].bankSourceId=oldBankKey;
+await hold({periods:[sept,reusedBankId]},"REUSED_BANK_TRANSACTION");
 await hold({periods:[sept,{...oct,entries:oct.entries.map((e,i)=>i===0?{...e,id:sept.entries[0].id}:e),
  sourceBindings:oct.sourceBindings.map((x,i)=>i===0?{...x,ledgerEntryId:sept.entries[0].id}:x),
  statementPackage:{...oct.statementPackage,
@@ -121,6 +129,7 @@ await hold({periods:[sept,{...oct,entries:oct.entries.map((e,i)=>i===0?{...e,id:
 await hold({periods:[sept,{...oct,entries:[{...oct.entries[0],date:"2026-09-30"},...oct.entries.slice(1)]}]},"MONTH_CLOSE_NOT_ACCEPTED");
 await hold({periods:[sept,{...oct,statementPackage:{...oct.statementPackage,bankRows:oct.statementPackage.bankRows.slice(0,3)}}]},"MONTH_CLOSE_NOT_ACCEPTED");
 await assert.rejects(R.assess({periods:[sept],initialOpeningReviewed:true,initialOpeningEvidenceId:"owner.opening.001"}),/2 to 24/);
+await assert.rejects(R.assess({...input,providerApproved:true}),/2 to 24/);
 const tampered=JSON.parse(JSON.stringify(oct));tampered.journal[0].data.amountCents=999;
 await assert.rejects(R.assess({...input,periods:[sept,tampered]}),/modified/);
 assert.doesNotMatch(read("period-rollforward.js"),/fetch\s*\(|localStorage|XMLHttpRequest|WebSocket|sendBeacon/);
