@@ -491,3 +491,49 @@ console.log('PASS: completion service checks source scope, rejects cross-origin/
  }
 }
 console.log('PASS: training enrollment origin, consent, size and error minimization enforced.');
+
+
+// Public campaign and training funnel measurements must not report a view,
+// first field touch or support endorsement as recorded when the database
+// rejects the write. All network calls below are in-memory mocks.
+{
+ const handler=(await import('../api/access.js')).default;
+ const priorFetch=globalThis.fetch;
+ const hadKey=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
+ const priorKey=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ process.env.SUPABASE_SERVICE_ROLE_KEY='unit-test-only';
+ let status=503;
+ const calls=[];
+ globalThis.fetch=async(url,options={})=>{
+   calls.push({url:String(url),method:options.method||'GET'});
+   return new Response(null,{status});
+ };
+ const send=(event)=>handler(new Request('https://jrsstandard.com/api/access',{
+   method:'POST',
+   headers:{'content-type':'application/json','origin':'https://jrsstandard.com',
+     'user-agent':'Mozilla/5.0 Safari/605.1.15'},
+   body:JSON.stringify({event,campaign:'rtkw',src:'organic',page:'training',mode:'support'})
+ }));
+ try {
+   for(const event of ['field_touched','endorse','view']){
+     const rejected=await send(event);
+     assert.equal(rejected.status,200,'Noncritical telemetry failure must not interrupt navigation');
+     const data=await rejected.json();
+     assert.equal(data.recorded,false,event+' must not report a rejected database write');
+     if(event==='endorse')assert.equal(data.endorse,false,
+       'Rejected public support endorsement cannot be described as recorded');
+   }
+   status=201;
+   for(const event of ['field_touched','endorse','view']){
+     const accepted=await send(event);
+     assert.equal((await accepted.json()).recorded,true,
+       event+' may only report recorded after upstream acceptance');
+   }
+   assert.equal(calls.length,6,'Each funnel event must make exactly one server write attempt');
+ } finally {
+   globalThis.fetch=priorFetch;
+   if(hadKey)process.env.SUPABASE_SERVICE_ROLE_KEY=priorKey;
+   else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ }
+}
+console.log('PASS: funnel telemetry reports recorded only on database acceptance.');
