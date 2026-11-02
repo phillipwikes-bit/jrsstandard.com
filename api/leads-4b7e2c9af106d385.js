@@ -1,4 +1,5 @@
 import { ownerAccess } from './_owner-auth.js';
+import { fetchAll } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
 // OWNER-ONLY COMMERCIAL INBOX. Every lead, in full, newest first.
@@ -116,27 +117,20 @@ export default async function handler(req) {
     'Content-Type': 'application/json'
   };
 
-  const url = new URL(req.url);
-  const limit = Math.min(Math.max(parseInt(url.searchParams.get('limit') || '100', 10) || 100, 1), 500);
+  // Preserve complete source populations, not just the first 100/500 rows.
+  // Do not accept a user-supplied limit as authority to report partial totals.
 
   // ---- identified leads ----------------------------------------------------
   const inList = LEAD_SOURCES.map(function (s) { return '"' + s + '"'; }).join(',');
-  let rows = [];
-  try {
-    const r = await fetch(SB + '/rest/v1/pilot_contacts'
-      + '?select=created_at,name,email,organization,source,message'
+  const leadRead = await fetchAll(SB,
+    'pilot_contacts?select=created_at,name,email,organization,source,message'
       + '&source=in.(' + inList + ')'
-      + '&order=created_at.desc&limit=' + limit, { headers: H });
-    if (!r.ok) {
-      const t = await r.text();
-      return json({ error: 'db_read_failed', status: r.status,
-                    detail: String(t).slice(0, 300) }, 502);
-    }
-    rows = await r.json();
-  } catch (e) {
-    return json({ error: 'db_unreachable' }, 502);
-  }
-  if (!Array.isArray(rows)) rows = [];
+      + '&order=created_at.desc', H);
+  // The paginated reader returns partial rows on a failed later page.
+  // Those rows must never be displayed as a complete private inbox.
+  if (!leadRead.complete || !Array.isArray(leadRead.rows))
+    return json({error:'historical_leads_source_incomplete',complete:false},502);
+  const rows = leadRead.rows;
 
   const leads = [];
   let suppressed = 0;
@@ -179,16 +173,12 @@ export default async function handler(req) {
   // ---- anonymous pay-screen arrivals --------------------------------------
   // Kept apart from leads on purpose. These have no identity and must never be
   // shown in a way that suggests one is attached.
-  let arrivals = [];
-  try {
-    const r = await fetch(SB + '/rest/v1/interaction_events'
-      + '?select=created_at,payload&source=eq.checkout-click'
-      + '&order=created_at.desc&limit=' + limit, { headers: H });
-    arrivals = r.ok ? await r.json() : [];
-  } catch (e) {
-    arrivals = [];
-  }
-  if (!Array.isArray(arrivals)) arrivals = [];
+  const attemptRead = await fetchAll(SB,
+    'interaction_events?select=created_at,payload&source=eq.checkout-click'
+      + '&order=created_at.desc', H);
+  if (!attemptRead.complete || !Array.isArray(attemptRead.rows))
+    return json({error:'historical_attempts_source_incomplete',complete:false},502);
+  const arrivals = attemptRead.rows;
 
   const attempts = arrivals.map(function (a) {
     const p = (a || {}).payload || {};
@@ -205,6 +195,8 @@ export default async function handler(req) {
 
   return json({
     generated_at: new Date().toISOString(),
+    complete: true,
+    sources: ['pilot_contacts', 'interaction_events'],
     leads: leads,
     lead_count: leads.length,
     // Reported rather than hidden. A count that silently drops rows is the same
