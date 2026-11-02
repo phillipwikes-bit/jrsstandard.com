@@ -10,8 +10,13 @@ const start=html.indexOf('async function generateCert() {');
 const end=html.indexOf('\nfunction downloadCert() {',start);
 assert.ok(start>=0 && end>start,'training completion renderer missing');
 const code=html.slice(start,end);
+const downloadStart=html.indexOf('function downloadCert() {',end);
+const downloadEnd=html.indexOf('\nupdateProgressDisplay();',downloadStart);
+assert.ok(downloadStart>=0 && downloadEnd>downloadStart,'training PNG download function missing');
+const downloadCode=html.slice(downloadStart,downloadEnd);
 function fixture(value,ready=Promise.resolve()){
-  const drawn=[],colors=[],alerts=[],actions={style:{display:'none'}};
+  const drawn=[],colors=[],alerts=[],downloads=[],actions={style:{display:'none'}};
+  let completionCalls=0;
   const input={value};
   const context={
     font:'normal 16px Georgia,serif',
@@ -25,16 +30,26 @@ function fixture(value,ready=Promise.resolve()){
     get fillStyle(){return this._fillStyle},
     lineWidth:0,strokeStyle:'',textAlign:'left'
   };
-  const canvas={style:{display:'none'},getContext(){return context}};
+  const canvas={style:{display:'none'},dataset:{},getContext(){return context},
+    toDataURL(){return 'data:image/png;base64,dGVzdA=='}};
   const byId={'cert-name':input,'cert-canvas':canvas,'cert-actions':actions};
   const env=vm.createContext({
-    document:{fonts:{ready},getElementById(id){return byId[id]}},
+    document:{fonts:{ready},getElementById(id){return byId[id]},
+      createElement(tag){
+        assert.equal(tag,'a');
+        const a={download:'',href:'',click(){downloads.push({name:a.download,url:a.href})}};
+        return a;
+      }},
     jrsSanitizeCheck(){return true},
+    recordCompletion(){completionCalls++},
     alert(message){alerts.push(message)},
     Date,Promise
   });
-  vm.runInContext(code+'\nthis.generateCert=generateCert;',env,{timeout:500});
-  return {drawn,colors,alerts,actions,canvas,run:()=>env.generateCert()};
+  vm.runInContext(code+'\n'+downloadCode+
+    '\nthis.generateCert=generateCert;this.downloadCert=downloadCert;',env,{timeout:500});
+  return {input,drawn,colors,alerts,downloads,actions,canvas,
+    run:()=>env.generateCert(),download:()=>env.downloadCert(),
+    completions:()=>completionCalls};
 }
 
 const regular=fixture('  Jordan    Example  ');
@@ -43,6 +58,16 @@ assert.equal(regular.alerts.length,0);
 assert.ok(regular.drawn.some(x=>x.text==='Jordan Example'),'name must be normalized, not dropped');
 assert.equal(regular.canvas.style.display,'block');
 assert.equal(regular.actions.style.display,'flex');
+assert.equal(regular.canvas.dataset.issuedName,'Jordan Example');
+regular.download();
+assert.equal(regular.downloads.length,1);
+assert.equal(regular.downloads[0].name,'JRS-Completion-Jordan-Example.png');
+assert.equal(regular.completions(),1);
+regular.input.value='Taylor Example';
+regular.download();
+assert.equal(regular.downloads.length,1,'stale recipient name must not produce misleading download');
+assert.equal(regular.completions(),1,'stale recipient should not record completion');
+assert.match(regular.alerts.at(-1),/name has changed/i);
 assert.ok(regular.colors.includes('#F5F7F8')&&regular.colors.includes('#17364F'));
 assert.ok(regular.drawn.some(x=>/RECORD OF COMPLETION/.test(x.text)));
 assert.ok(regular.drawn.some(x=>/not professional certification/i.test(x.text)));
@@ -73,4 +98,4 @@ releaseFont();
 await drawing;
 assert.ok(delayed.drawn.length>0);
 
-console.log('PASS: Training completion PNG uses institutional colors, waits for fonts, preserves wrapped names and fails visibly without clipping.');
+console.log('PASS: Training completion PNG uses institutional colors, waits for fonts, preserves wrapped names, prevents stale identities and fails without clipping.');
