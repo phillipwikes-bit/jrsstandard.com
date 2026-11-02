@@ -208,7 +208,7 @@
     place(left,"strong","",e.label);
     place(left,"small","",e.date+" · "+(e.kind==="income"?"RECEIPT · "+e.category+" · "+(e.status==="paid"?"Recorded received":"Pending"):(e.type==="refund"?"REFUND/CREDIT, UNALLOCATED · ":"OUTFLOW · ")+e.category+" · "+e.type));
     place(left,"small","",e.payer||"Source not identified");
-    if(e.kind==="outflow"&&e.type!=="refund")place(left,"small","","Business use (e.businessUse===null||e.businessUse===undefined?"not determined":String(e.businessUse)+"%")+" · Evidence "+(e.evidenceStatus||"missing"));
+    if(e.kind==="outflow"&&e.type!=="refund")place(left,"small","","Business use "+(e.businessUse===null||e.businessUse===undefined?"not determined":String(e.businessUse)+"%")+" · Evidence "+(e.evidenceStatus||"missing"));
     if(!e.reconciled)place(left,"small notice","Not reconciled to source evidence");
     var right=place(out,"div","entry-actions");
     place(right,"div","amt"+((e.status==="pending")?" pending":""),(e.kind==="outflow"&&e.type!=="refund"?"−":"+")+money(e.kind==="income"?e.grossUsd:e.amountUsd));
