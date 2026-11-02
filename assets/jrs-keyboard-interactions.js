@@ -28,7 +28,7 @@
       set(el,'data-jrs-keyboard-control','true');
       var preferred=el.querySelector('.visitor-orient-title, .sim-card-title, .role-path-title, .role-card-title, .maturity-level-title, .worksheet-title');
       if(preferred&&!el.hasAttribute('aria-label')){
-        var name=(preferred.textContent||'').replace(/\\s+/g,' ').trim();
+        var name=(preferred.textContent||'').replace(/\s+/g,' ').trim();
         if(name)set(el,'aria-label',name.slice(0,120));
       }
       if(hasClass(el,'worksheet-header')||hasClass(el,'maturity-level-header')){
@@ -40,7 +40,7 @@
       }
       if(hasClass(el,'visitor-orient-cell')){
         var onclick=el.getAttribute('onclick')||'';
-        var m=onclick.match(/showSection\\('([a-z-]+)'\\)/);
+        var m=onclick.match(/showSection\('([a-z-]+)'\)/);
         if(m){
           var target=document.getElementById('section-'+m[1]);
           if(target)set(el,'aria-controls',target.id);
@@ -51,7 +51,7 @@
         if(sim)set(el,'aria-controls',sim.id);
       }
       if(!el.hasAttribute('aria-label')){
-        var label=(el.textContent||'').replace(/\\s+/g,' ').trim();
+        var label=(el.textContent||'').replace(/\s+/g,' ').trim();
         if(label)set(el,'aria-label',label.slice(0,160));
       }
       el.addEventListener('keydown',function(e){
