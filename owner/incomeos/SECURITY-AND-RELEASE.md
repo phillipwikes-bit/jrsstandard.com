@@ -135,3 +135,12 @@ The available 2026 accountant import file was examined locally, not committed or
 Additional staging controls explicitly suppress storing personal research application stages, local research imports, budget preferences and bill plans in plaintext browser storage. These complement but do not replace owner authentication and encrypted primary persistence. The read-only source view and locally held-record erasure remain available; the browser storage legacy is not a trusted production account system.
 
 The added `tests/incomeos-accountant-persistence.mjs` and `tests/incomeos-staging-privacy.mjs` run in source CI. Successful synthetic results do not satisfy deployed browser, private session, encrypted storage or bank-data verification gates.
+
+
+## Additional financial release blockers: double-entry and period continuity
+
+Source checks now require every supported journal posting to map to balanced debit/credit movements and to the bank/card statement evidence for a full calendar-month close. All apparent income, credit-card payments, refunds, returned principal and transfers remain segregated. Any reconciliation exception causes the monthly close review to HOLD and suppresses its proposed figures.
+
+The source-only double-entry engine does **not** establish complete books, provider-certified ownership of bank accounts, or a validated opening balance. Month-end acceptance is currently restricted to one complete calendar month with every active source posting within that period. Prior-period refund evidence, investment position rollforwards, confirmed cost basis, beginning balances, signed month closes, corrections and periods spanning multiple reporting months require separate controlled implementation and validation.
+
+Production authorization is still blocked by separately protected owner hosting, independently tested RLS, trusted server append/API, encrypted active storage, bank statement completeness, accountant review, mobile testing and explicit owner approval. This module is not an autonomous trading or filing capability.
