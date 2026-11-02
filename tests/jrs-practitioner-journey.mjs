@@ -10,6 +10,15 @@ for(const p of pages){
  assert.ok(html.includes('class="jrs-sitenav"'),p+' global navigation preserved');
 }
 const home=read('index.html');
+// The first visitor action opens the actual ungated, non-scoring reading aid.
+// Avoid routing the primary task through another catalog page.
+assert.match(home,/<a class="jr-action-main" href="check\\.html\\?src=home">Open seven-point record check<\\/a>/);
+assert.ok(home.includes('href="#worked-record">See the three-step fictional example</a>'));
+assert.ok(home.includes('href="resources.html">browse all free practitioner resources</a>'));
+assert.ok(read('resources.html').includes('href="check.html?src=resources">Open seven-point record check</a>'));
+const check=read('check.html');
+assert.ok(check.includes('No registration, no upload')||check.includes('no account, no upload'),'Check must remain ungated and upload-free');
+assert.ok(check.includes('does not score your record'),'Do not frame the free aid as an automated risk score');
 assert.equal((home.match(/data-jrs-example-phase="/g)||[]).length,3);
 for(const stage of ['before','review','verified'])
  assert.ok(home.includes('data-jrs-example-phase="'+stage+'"'),'Missing worked stage: '+stage);
