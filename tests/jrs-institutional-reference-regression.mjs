@@ -228,5 +228,19 @@ assert.ok(read('research.html').includes('jrs-research-primary-links') &&
      'section-training','section-library']){
     assert.ok(found.has(id),'Standard section unavailable: '+id);
   }
+  // Every document navigation destination must resolve. The historical
+  // Review Examples control intentionally opens the existing Use Cases view.
+  const aliases={scenarios:'usecases'};
+  const targets=[...read('jrsstandard.html').matchAll(/onclick=["']showSection\\('([a-z-]+)'\\)/g)]
+    .map(match=>match[1]);
+  for(const target of targets){
+    assert.ok(found.has('section-'+(aliases[target]||target)),
+      'Standard navigation has no visible section: '+target);
+  }
+  assert.match(read('jrsstandard.html'),
+    /const contentId=id==='scenarios'\\?'usecases':id;/,
+    'Review Examples must resolve to the existing use-cases section');
+  assert.ok(read('jrsstandard.html').includes('if(!sec)return;'),
+    'Unknown section navigation must never blank the Standard');
   console.log('PASS: Standard sections are independently addressable; no hidden nesting, orphan containers or footer containment.');
 }
