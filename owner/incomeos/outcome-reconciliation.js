@@ -27,7 +27,8 @@
       if(used.has(id)){issues.push({code:"STATEMENT_ENTRY_REUSED",index:i});return;}
       used.add(id);
       if(!entry){issues.push({code:"STATEMENT_ENTRY_MISSING",index:i});return;}
-      if(entry.accountId!==o.accountId||entry.amountCents!==o.amountCents){
+      if(entry.accountId!==o.accountId||entry.amountCents!==o.amountCents||
+        entry.currency!==o.currency||entry.institutionId!==o.institutionId||entry.postedDate!==o.postedDate){
         issues.push({code:"STATEMENT_MISMATCH",index:i});return;
       }
       if(o.type==="BILL_SAVINGS"){
