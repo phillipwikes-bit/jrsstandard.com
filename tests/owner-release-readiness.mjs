@@ -1,12 +1,7 @@
 import assert from 'node:assert/strict';
 import readiness from '../api/owner-release-readiness.js';
 
-const KEYS=[
- 'OWNER_DASHBOARD_TOKEN','SUPABASE_SERVICE_ROLE_KEY',
- 'TURNSTILE_SITE_KEY','TURNSTILE_SECRET_KEY',
- 'NOTIFY_TO','NOTIFY_FROM','RESEND_API_KEY','SENDGRID_API_KEY',
- 'JRS_INQUIRY_ALERTS_ENABLED'
-];
+const KEYS=['OWNER_DASHBOARD_TOKEN','SUPABASE_SERVICE_ROLE_KEY','JRS_OWNER_EMAIL','NEON_AUTH_BASE_URL'];
 const before=Object.fromEntries(KEYS.map(k=>[k,process.env[k]]));
 const originalFetch=globalThis.fetch;
 const SECRET='a-synthetic-owner-authorization-token-longer-than-32-chars';
@@ -27,41 +22,36 @@ try {
  const missing=await readiness(request);
  assert.equal(missing.status,200);
  let obj=await missing.json();
- assert.equal(obj.production_release,'BLOCKED_UNTIL_INDEPENDENT_VERIFICATION_AND_AUTHORIZATION');
+ assert.equal(obj.production_release,'PRIVATE_DASHBOARD_HOLD_UNTIL_VERIFICATION_AND_OWNER_AUTHORIZATION');
  assert.equal(obj.engine_release,'NO_GO_NOT_VERIFIED');
  assert.equal(obj.assessment,'configuration_inventory_not_release_authorization');
- assert.equal(obj.missing_configuration.length,7);
+ assert.equal(obj.missing_configuration.length,3);
  assert.ok(obj.requirements.find(x=>x.code==='owner_secret').configured);
  assert.ok(obj.requirements.filter(x=>x.code!=='owner_secret').every(x=>!x.configured));
  assert.ok(obj.required_independent_verifications.every(x=>x.state==='not_verified_by_this_endpoint'));
 
  process.env.SUPABASE_SERVICE_ROLE_KEY='synthetic-database-service-role-key';
- process.env.TURNSTILE_SITE_KEY='synthetic-public-widget-key';
- process.env.TURNSTILE_SECRET_KEY='synthetic-challenge-secret';
- process.env.NOTIFY_TO='owner-synthetic@example.com';
- process.env.NOTIFY_FROM='mailer-synthetic@example.com';
- process.env.RESEND_API_KEY='synthetic-resend-key';
- process.env.JRS_INQUIRY_ALERTS_ENABLED='true';
+ process.env.JRS_OWNER_EMAIL='owner-synthetic@example.test';
+ process.env.NEON_AUTH_BASE_URL='https://synthetic-project.neon.tech/neondb/auth';
  const configured=await readiness(request);
  assert.equal(configured.status,200);
  obj=await configured.json();
  assert.deepEqual(obj.missing_configuration,[]);
  assert.ok(obj.requirements.every(x=>x.configured));
  assert.ok(obj.required_independent_verifications.every(x=>x.state==='not_verified_by_this_endpoint'));
- assert.equal(obj.production_release,'BLOCKED_UNTIL_INDEPENDENT_VERIFICATION_AND_AUTHORIZATION');
+ assert.equal(obj.production_release,'PRIVATE_DASHBOARD_HOLD_UNTIL_VERIFICATION_AND_OWNER_AUTHORIZATION');
  const data=JSON.stringify(obj);
  for(const value of [SECRET,'synthetic-database-service-role-key',
-   'synthetic-public-widget-key','synthetic-challenge-secret',
-   'owner-synthetic@example.com','mailer-synthetic@example.com',
-   'synthetic-resend-key']){
+   'owner-synthetic@example.test','synthetic-project.neon.tech']){
    assert.ok(!data.includes(value),'sensitive configuration leaked');
  }
  assert.equal(fetches,0,'owner readiness cannot read private database');
 
- // A superficially configured but unapproved notification switch is reported as missing.
- process.env.JRS_INQUIRY_ALERTS_ENABLED='false';
+ // A malformed upstream hostname cannot be treated as an approved identity provider.
+ process.env.NEON_AUTH_BASE_URL='http://synthetic-project.neon.tech/neondb/auth';
  const gated=await readiness(request);
- assert.ok((await gated.json()).missing_configuration.includes('notification_enabled'));
+ assert.ok((await gated.json()).missing_configuration.includes('neon_auth_base'));
+ process.env.NEON_AUTH_BASE_URL='https://synthetic-project.neon.tech/neondb/auth';
 
  const html=(await import('node:fs')).readFileSync(
    new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
