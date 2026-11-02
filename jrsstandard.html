@@ -3821,10 +3821,14 @@ once, near the top, so the distinction is made before the standard begins. -->
 
 // ── NAVIGATION ────────────────────────────────────
 function showSection(id){
+ // Review Examples uses the existing worked Use Cases collection rather
+ // than a non-existent section. Unknown destinations never blank the page.
+ const contentId=id==='scenarios'?'usecases':id;
+ const sec=document.getElementById('section-'+contentId);
+ if(!sec)return;
  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
  document.querySelectorAll('.primary-nav-inner button.nav-item').forEach(n=>n.classList.remove('active'));
- const sec=document.getElementById('section-'+id);
- if(sec)sec.classList.add('active');
+ sec.classList.add('active');
  if(id==='roles'&&typeof showRoleEnv==='function'){
    // Render default context synchronously, without stealing focus from the
    // section navigation that brought the reader here.
