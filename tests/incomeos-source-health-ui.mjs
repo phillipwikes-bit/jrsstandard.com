@@ -14,7 +14,7 @@ const document={
   createElement(tag){return {tag,textContent:"",className:"",id:""};},
   addEventListener(type,fn){listeners[type]=fn;}
 };
-const window={IncomeOSSourceHealth:{assess(sources){assert.deepEqual(sources,[]);return {status:"HOLD"};}}};
+const window={IncomeOSSourceHealth:{assess(sources){assert.equal(Array.isArray(sources),true);assert.equal(sources.length,0);return {status:"HOLD"};}}};
 const context={document,window,queueMicrotask:fn=>fn()};
 vm.runInNewContext(readFileSync(new URL("../owner/incomeos/source-health-ui.js",import.meta.url),"utf8"),context);
 const first=node("capital-readiness-results").children[0];
