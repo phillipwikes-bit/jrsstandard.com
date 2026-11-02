@@ -13,6 +13,7 @@
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="stylesheet" href="./incomeos.css">
 <script defer src="./staging-interlock.js"></script>
+<script defer src="./accountant-review.js"></script>
 <script defer src="./accountant.js"></script>
 <script defer src="./accounting-controls.js"></script>
 <script defer src="./statement-close.js"></script>
@@ -230,6 +231,11 @@
     <div class="panel">
       <div class="panelrow"><h3>Accountant handoff</h3><button type="button" class="textbtn" id="refresh-accountant">Refresh summary</button></div>
       <div id="report-preview" class="summary-preview"></div>
+      <section class="accountant-review" aria-labelledby="review-heading">
+        <div class="panelrow"><h4 id="review-heading">Outstanding documentation review</h4><button type="button" class="textbtn" id="export-review">Export exception CSV</button></div>
+        <p class="muted" id="review-summary" role="status" aria-live="polite">The evidence review will appear here after the accountant ledger is loaded.</p>
+        <div id="review-list" class="review-list"></div>
+      </section>
       <p class="muted">Import records from connected services only after reviewing the exported CSV. The web app itself does not have direct access to ChatGPT, Gmail or linked bank data. Imported expenses are not automatically deductible. Attach third-party statements and relevant tax forms separately. CSV and printed PDF reflect only what you entered. Keep the exported file secure; it can contain sensitive financial details.</p>
       <div class="reportactions"><button type="button" class="smallbtn" id="import-trigger">Restore a local backup</button><input id="import-ledger" type="file" accept=".json,application/json" hidden><button type="button" class="smallbtn" id="download-summary">Download annual summary CSV</button><button type="button" class="smallbtn" id="import-csv-trigger">Import ChatGPT-prepared CSV</button><input id="import-csv" type="file" accept=".csv,text/csv" hidden><button type="button" class="smallbtn" id="download-template">Download import template</button></div>
     </div>
