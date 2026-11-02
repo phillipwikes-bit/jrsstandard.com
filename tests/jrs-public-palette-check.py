@@ -14,11 +14,11 @@ try:
     rows = json.loads(html.unescape(m.group(1)))
 except ValueError as exc:
     sys.exit(f"FAIL: invalid browser theme JSON ({exc})")
-if len(rows) != 16:
-    sys.exit(f"FAIL: expected 16 page/viewport measurements, got {len(rows)}")
+if len(rows) != 26:
+    sys.exit(f"FAIL: expected 26 page/viewport measurements, got {len(rows)}")
 for item in rows:
     state = "PASS" if item.get("pass") else "FAIL"
     print(state, json.dumps(item, ensure_ascii=False))
 if not all(item.get("pass") for item in rows):
     sys.exit("FAIL: at least one JRS source-rendered light-theme sample disagrees")
-print("PASS: computed-color/type samples on 8 routes at 390px and 1440px (not a full accessibility audit)")
+print("PASS: computed-color/type samples on 13 routes at 390px and 1440px (not a full accessibility audit)")
