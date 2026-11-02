@@ -3,7 +3,7 @@ import { fetchAll } from './_sb-fetch.js';
 
 export const config = { runtime: 'edge' };
 const SB='https://pjzxkeviouofdseagvpf.supabase.co';
-const CATEGORIES=['organization','research','training','commercial','general'];
+const CATEGORIES=['method','research','training','organization','accessibility','general','commercial'];
 const COMMERCIAL_PURPOSES=['method-licence','software-evaluation','integration','asset-acquisition'];
 const SOURCE='site-inquiry';
 
