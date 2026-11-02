@@ -1,0 +1,67 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>JRS public route computed style audit</title></head>
+<body><h1>JRS local public-route visual audit</h1><pre id="result">Pending</pre>
+<script>
+(async function(){
+ const pages=[
+  '404.html','access.html','recheck.html','reviewer/evaluation.html',
+  'reviewer/completion.html','security.html','review-engine.html',
+  'ai-records-arm-b.html','coauthor.html','honor.html','people.html'
+ ];
+ const cases=pages.map(page=>({page,width:390})).concat([
+  {page:'access.html',width:1440},
+  {page:'reviewer/evaluation.html',width:1440},
+  {page:'reviewer/completion.html',width:1440},
+  {page:'security.html',width:1440},
+  {page:'review-engine.html',width:1440},
+  {page:'recheck.html',width:320},
+  {page:'reviewer/evaluation.html',width:320},
+  {page:'reviewer/completion.html',width:320}
+ ]);
+ const records=[];
+ for(const item of cases){
+  const frame=document.createElement('iframe');
+  frame.title=item.page+' '+item.width;
+  frame.style.cssText='display:block;width:'+item.width+'px;height:900px;border:0';
+  const loaded=new Promise((resolve,reject)=>{
+   frame.addEventListener('load',resolve,{once:true});
+   frame.addEventListener('error',()=>reject(Error('iframe failed to load')),{once:true});
+  });
+  frame.src='/'+item.page;
+  document.body.appendChild(frame);
+  try{
+   await loaded;
+   await new Promise(resolve=>setTimeout(resolve,55));
+   const d=frame.contentDocument,w=frame.contentWindow;
+   if(!d||!w)throw Error('No same-origin document');
+   const cs=e=>w.getComputedStyle(e);
+   const body=d.body,head=d.querySelector('h1'),card=d.querySelector('.card');
+   const nav=d.querySelector('.jrs-sitenav'),label=d.querySelector('.eyebrow,.mono,label.fl');
+   const input=d.querySelector('input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]),textarea,select');
+   const header=d.querySelector('header');
+   const bg=cs(body).backgroundColor,ink=cs(body).color;
+   const font=cs(body).fontFamily,headFont=head?cs(head).fontFamily:null;
+   const labelSize=label?Number.parseFloat(cs(label).fontSize):null;
+   const inputSize=input?Number.parseFloat(cs(input).fontSize):null;
+   const cardBg=card?cs(card).backgroundColor:null;
+   const headerBg=header?cs(header).backgroundColor:null;
+   const navBg=nav?cs(nav).backgroundColor:null;
+   const overflow=d.documentElement.scrollWidth>w.innerWidth+1;
+   const linked=!!d.querySelector('link[href="/assets/jrs-public-route-alignment.css"]');
+   const pass=linked && bg==='rgb(245, 247, 248)' && ink==='rgb(25, 49, 72)' &&
+    font.toLowerCase().includes('inter') &&
+    !!headFont && headFont.toLowerCase().includes('georgia') &&
+    (labelSize===null||labelSize>=12) &&
+    (inputSize===null||inputSize>=16) &&
+    (cardBg===null||cardBg==='rgb(255, 255, 255)') &&
+    (navBg===null||navBg==='rgb(255, 255, 255)') &&
+    (headerBg===null||headerBg==='rgb(22, 47, 70)') &&
+    !overflow;
+   records.push({page:item.page,width:item.width,pass,bg,ink,font,headFont,
+    labelSize,inputSize,cardBg,headerBg,navBg,overflow,scrollWidth:d.documentElement.scrollWidth,viewport:w.innerWidth,linked});
+  }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
+  frame.remove();
+ }
+ document.getElementById('result').textContent='JRS_LEGACY_JSON_BEGIN'+JSON.stringify(records)+'JRS_LEGACY_JSON_END';
+ document.body.setAttribute('data-complete','true');
+})();
+</script></body></html>
