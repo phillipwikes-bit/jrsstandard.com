@@ -1,5 +1,6 @@
 import { ownerAccess } from './_owner-auth.js';
 import { fetchAllUrl } from './_sb-fetch.js';
+import { participantGroup, permissionState } from './_owner-record-groups.js';
 export const config = { runtime: 'edge' };
 
 // Country resolution is shared with api/enroll-stats.js so the two endpoints can
@@ -78,7 +79,7 @@ function isTest(v){
 function json(o, s){
   return new Response(JSON.stringify(o), {
     status: s || 200,
-    headers: { 'Content-Type':'application/json', 'Cache-Control':'no-store' }
+    headers: { 'Content-Type':'application/json; charset=utf-8', 'Cache-Control':'no-store, private', 'X-Robots-Tag':'noindex, nofollow', 'Referrer-Policy':'no-referrer' }
   });
 }
 
@@ -185,10 +186,18 @@ export default async function handler(req){
         : (geo.source[String(r.email || '').trim().toLowerCase()] || 'not on file'),
       activity: LABEL[src] || src,
       source: src,
+      activity_family: participantGroup(src,p),
+      inquiry_category: src==='site-inquiry' ? String(p.category||'') : '',
+      commercial_purpose: src==='site-inquiry' && p.category==='commercial' ? String(p.commercial_purpose||'') : '',
       detail: detail,
-      consent_contact: p.consent_contact === true,
+      consent_contact: p.consent_contact === true || p.consent_to_contact === true,
       consent_transfer: p.consent_transfer === true,
       consent_public: (p.consent_named === true) || (p.consent_named_org === true) || (p.consent_public_list === true),
+      // Preserve the exact missing-vs-no distinction for private review.
+      // These flags never confer broader marketing, publication or transfer rights.
+      consent_contact_state: permissionState(p,['consent_contact','consent_to_contact']),
+      consent_transfer_state: permissionState(p,['consent_transfer']),
+      consent_public_state: permissionState(p,['consent_named','consent_named_org','consent_public_list']),
       campaign: String(p.campaign || ''),
       edition: String(p.edition || ''),
       records_run: parseInt(p.records_run, 10) || 0,
