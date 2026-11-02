@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>JRS institutional public theme browser audit</title></head>
+<body><h1>Institutional palette comparison, local source only</h1><pre id="results">Pending</pre>
+<script>
+(async function(){
+  const cases=[
+    'jrsstandard.html','training.html',
+    'access.html','reviewer/evaluation.html','reviewer/completion.html',
+    'recheck.html','security.html','review-engine.html'
+  ];
+  const records=[];
+  function colorIs(value,want){
+    return value.replace(/\s+/g,'')===want;
+  }
+  for(const path of cases){
+    for(const width of [390,1440]){
+      const f=document.createElement('iframe');
+      f.title=path+' '+width;
+      f.width=width;
+      f.height=1100;
+      f.style.cssText='width:'+width+'px;height:1100px;border:0;display:block';
+      const loaded=new Promise((resolve,reject)=>{
+        f.addEventListener('load',resolve,{once:true});
+        f.addEventListener('error',()=>reject(Error('frame failed')),{once:true});
+      });
+      f.src='/'+path;
+      document.body.appendChild(f);
+      try{
+        await loaded;
+        const d=f.contentDocument,w=f.contentWindow;
+        const body=d.body;
+        const bodyStyle=w.getComputedStyle(body);
+        const h1=d.querySelector('h1');
+        const headingStyle=h1 ? w.getComputedStyle(h1):null;
+        const main=d.querySelector('main')||body;
+        const mainStyle=w.getComputedStyle(main);
+        const button=d.querySelector('button:not(.ghost):not(.copybtn)')||d.querySelector('.cta');
+        const buttonStyle=button?w.getComputedStyle(button):null;
+        const rootScroll=d.documentElement.scrollWidth;
+        const viewport=w.innerWidth;
+        const bg=bodyStyle.backgroundColor;
+        const fg=bodyStyle.color;
+        const bodyFont=bodyStyle.fontFamily;
+        const headingFont=headingStyle?.fontFamily||'';
+        const headingColor=headingStyle?.color||'';
+        const sheet=[...d.styleSheets].some(x=>x.href?.includes('jrs-institutional-reference.css'));
+        const bridge=path==='jrsstandard.html'||path==='training.html'||
+          [...d.styleSheets].some(x=>x.href?.includes('jrs-legacy-public-alignment.css'));
+        const bodyOk=colorIs(bg,'rgb(245,247,248)') &&
+                     colorIs(fg,'rgb(25,49,72)') &&
+                     bodyFont.includes('Inter');
+        const headingOk=!!h1 && (headingFont.includes('Georgia') || headingFont.includes('Iowan')) &&
+                         colorIs(headingColor,'rgb(25,49,72)');
+        const buttonOk=!buttonStyle || buttonStyle.backgroundColor!=='rgb(5, 5, 5)';
+        const visible=!!main && mainStyle.display!=='none';
+        const ok=sheet && bridge && bodyOk && headingOk && buttonOk &&
+                visible && rootScroll<=viewport;
+        records.push({path,width,body:bg,foreground:fg,bodyFont,headingFont,headingColor,
+          buttonBackground:buttonStyle?.backgroundColor||null,viewport,scrollWidth:rootScroll,
+          sharedStyle:sheet,legacyBridge:bridge,pass:ok});
+      }catch(e){records.push({path,width,pass:false,error:String(e)});}
+      f.remove();
+    }
+  }
+  document.getElementById('results').textContent='JRS_THEME_JSON_BEGIN'+
+    JSON.stringify(records)+'JRS_THEME_JSON_END';
+  document.body.setAttribute('data-audit-complete','true');
+})();
+</script>
+</body></html>
