@@ -29,4 +29,13 @@ const reused=reconcile([outcome,outcome],[entry]);
 assert.equal(reused.status,"HOLD");
 assert.equal(reused.issues.some(x=>x.code==="STATEMENT_ENTRY_REUSED"),true);
 assert.equal(reconcile(null,[]).status,"HOLD");
+assert.equal(reconcile([],[]).status,"HOLD");
+assert.equal(reconcile([outcome],[]).status,"HOLD");
+for(const field of ["currency","institutionId","postedDate"]){
+ const mismatched={...outcome,[field]:"different"};
+ assert.equal(reconcile([mismatched],[entry]).status,"HOLD",field);
+ const missing={...outcome};delete missing[field];
+ assert.equal(reconcile([missing],[entry]).status,"HOLD",field);
+}
+
 console.log("IncomeOS outcome reconciliation tests passed");
