@@ -1291,6 +1291,13 @@ body.jrs-institutional.jrs-training-page #enroll-overlay :where(button,.jrs-enro
   min-height:48px!important;font:700 14px/1.45 Inter,system-ui,sans-serif!important;
   letter-spacing:0!important;text-transform:none!important;
 }
+body.jrs-institutional.jrs-training-page #enroll-overlay #en-close{
+  display:block!important;margin:0 0 10px auto!important;
+  min-height:44px!important;padding:10px 16px!important;
+  border:1px solid #9fb4c3!important;border-radius:4px!important;
+  background:#fff!important;color:#173d5b!important;
+  cursor:pointer!important;font:700 14px/1.4 Inter,system-ui,sans-serif!important;
+}
 body.jrs-institutional.jrs-training-page #enroll-overlay #en-dismiss button{
   width:100%!important;color:#173d5b!important;background:#fff!important;
   border:1px solid #9fb4c3!important;cursor:pointer!important;
