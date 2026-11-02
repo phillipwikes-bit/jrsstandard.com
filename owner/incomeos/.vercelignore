@@ -1,0 +1,8 @@
+# Project-level exclusions for the future owner/incomeos-root deployment.
+# This file takes precedence over the repository-root .vercelignore when the
+# separately protected IncomeOS project is configured with this Root Directory.
+# This file does NOT authorize publication; owner authentication, encrypted
+# active storage, privacy verification and explicit release approval are still
+# required before any hosted IncomeOS data entry.
+*.md
+*.sql
