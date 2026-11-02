@@ -9,6 +9,7 @@
   function today(){var d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");}
   function usd(n){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(n);}
   function load(){
+    if(window.IncomeOSFinancialReadOnly===true)return;
     try{var v=JSON.parse(localStorage.getItem(KEY)||"{}");
       if(v&&typeof v==="object"&&!Array.isArray(v)){
         var p=v.preferences||{},min=Number(p.minPay),screen=Number(p.maxScreenMinutes);
@@ -20,7 +21,7 @@
       }
     }catch(e){$("radar-status").textContent="Saved research data could not be read. No changes have been written.";}
   }
-  function persist(){try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){$("radar-status").textContent="Research changes could not be saved to local storage.";return false;}}
+  function persist(){if(window.IncomeOSFinancialReadOnly===true){$("radar-status").textContent="Personal study tracking is disabled in unapproved staging.";return false;}try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){$("radar-status").textContent="Research changes could not be saved to local storage.";return false;}}
   function combined(){return publicLeads.concat(db.leads);}
   function view(){
     var root=$("radar-results");root.replaceChildren();
@@ -44,7 +45,8 @@
       sel.setAttribute("aria-label","Owner progress for "+s.title);
       statuses.forEach(function(x){var o=add(sel,"option","",x);o.value=x;});
       sel.value=statuses.includes(db.progress[s.id])?db.progress[s.id]:"New";
-      sel.addEventListener("change",function(){db.progress[s.id]=sel.value;persist();});
+      if(window.IncomeOSFinancialReadOnly===true){sel.disabled=true;sel.title="Private study tracking requires secured owner storage";}
+      else sel.addEventListener("change",function(){db.progress[s.id]=sel.value;persist();});
       if(db.leads.some(function(x){return x.id===s.id;})){
         var del=add(controls,"button","textbtn","Remove imported lead");del.type="button";
         del.addEventListener("click",function(){if(!confirm("Remove this locally imported research lead?"))return;db.leads=db.leads.filter(function(x){return x.id!==s.id;});delete db.progress[s.id];persist();view();});
@@ -62,6 +64,7 @@
     download(rows.map(function(x){return x.map(quote).join(",");}).join("\r\n")+"\r\n","IncomeOS-research-radar-"+today()+".csv","text/csv;charset=utf-8");
   }
   async function importLeads(){
+    if(window.IncomeOSFinancialReadOnly===true){$("radar-status").textContent="Local imports require secured owner storage.";return;}
     var f=$("radar-import-file").files?.[0],notice=$("radar-status");
     if(!f){notice.textContent="Select a JSON file containing reviewed public research candidates.";return;}
     if(f.size>250000){notice.textContent="The research file exceeds the 250 KB limit.";return;}
@@ -99,6 +102,7 @@
   function init(){
     if(!$("radar-results")||!engine||!adapter)return;
     load();
+    if(window.IncomeOSFinancialReadOnly===true){$("radar-import").disabled=true;$("radar-import-file").disabled=true;$("radar-preferences").querySelectorAll("input,button").forEach(function(e){e.disabled=true;});}
     $("radar-min-pay").value=db.preferences.minPay;$("radar-max-screen").value=db.preferences.maxScreenMinutes;$("radar-remote").checked=db.preferences.remoteOnly;
     $("radar-preferences").addEventListener("submit",function(e){
       e.preventDefault();var pay=Number($("radar-min-pay").value),screen=Number($("radar-max-screen").value);
