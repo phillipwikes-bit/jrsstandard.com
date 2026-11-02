@@ -4,15 +4,25 @@ import assert from "node:assert/strict";
 import {execFileSync} from "node:child_process";
 import {readFileSync} from "node:fs";
 const paths=execFileSync("git",["ls-files","-z","owner/incomeos"],{encoding:"utf8"}).split("\0").filter(Boolean);
-const extensions=new Set(["html","js","css","json","svg","webmanifest","md","sql"]);
+const extensions=new Set(["html","js","css","json","svg","webmanifest","md","sql","vercelignore"]);
 assert.ok(paths.length>=12,"Expected reviewed IncomeOS source tree");
 for(const path of paths){
   assert.match(path,/^owner\/incomeos\/[A-Za-z0-9_.-]+$/,"No arbitrary paths inside publicly readable owner subtree");
   const filename=path.split("/").at(-1),extension=filename.split(".").at(-1);
+  if(filename.startsWith("."))assert.equal(filename,".vercelignore","Unexpected owner dotfile: "+path);
   assert.ok(extensions.has(extension),"Potential financial document or secret file in public repo: "+path);
   assert.doesNotMatch(filename,/(bank.statement|invoice|receipt[0-9]|financial.records|private.key|token|credentials|secret|\.env)/i,
     "Private data/secret-shaped file name must not be committed: "+path);
 }
+// Public JRS previews must not package or serve the owner-only workspace.
+// The separate IncomeOS project can use its own project-level ignore file.
+const jrsIgnore=readFileSync(".vercelignore","utf8");
+assert.match(jrsIgnore,/^owner\/incomeos\/$/m,"JRS root deployment must exclude IncomeOS");
+assert.doesNotMatch(jrsIgnore,/^!owner\/incomeos(?:\/|$)/m,"No re-inclusion of owner assets on JRS previews");
+const incomeIgnore=readFileSync("owner/incomeos/.vercelignore","utf8");
+assert.match(incomeIgnore,/^\*\.md$/m,"IncomeOS project must exclude internal working documents");
+assert.match(incomeIgnore,/^\*\.sql$/m,"IncomeOS project must exclude database schema source");
+assert.doesNotMatch(incomeIgnore,/^!\*\.(?:md|sql)$/m,"No re-inclusion of internal working documents");
 const privateSql=readFileSync("owner/incomeos/OWNER-PRIVATE-SCHEMA.sql","utf8");
 assert.match(privateSql,/Not applied to any database/);
 assert.match(privateSql,/revoke all on schema incomeos_private from anon/i);
