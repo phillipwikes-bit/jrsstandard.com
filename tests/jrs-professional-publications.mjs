@@ -27,15 +27,15 @@ for(const file of sites){
   [scce,/SCCE|Society of Corporate Compliance and Ethics/i,'When the record cannot speak for itself','Phillip Wikes','November 1, 2026']
  ];
  for(const [url,publisher,title,author,date] of links){
-  const matches=Array.from(html.matchAll(/<a\\b[^>]*>[\\s\\S]*?<\\/a>/gi))
+  const matches=Array.from(html.matchAll(/<a\b[^>]*>[\s\S]*?<\/a>/gi))
    .filter(match=>match[0].includes('href="'+url+'"'));
   assert.equal(matches.length,1,file+' must have one anchor to '+url);
   const tag=matches[0][0].slice(0,matches[0][0].indexOf('>')+1);
-  assert.match(tag,/\\btarget="_blank"/,file+' publisher link must announce a new tab');
-  const rel=tag.match(/\\brel="([^"]+)"/)?.[1]?.split(/\\s+/)||[];
+  assert.match(tag,/\btarget="_blank"/,file+' publisher link must announce a new tab');
+  const rel=tag.match(/\brel="([^"]+)"/)?.[1]?.split(/\s+/)||[];
   assert.ok(rel.includes('noopener')&&rel.includes('noreferrer'),
    file+' publisher link must isolate the new tab: '+url);
-  const label=tag.match(/\\baria-label="([^"]+)"/)?.[1]||'';
+  const label=tag.match(/\baria-label="([^"]+)"/)?.[1]||'';
   assert.match(label,/opens in a new tab/i,file+' must disclose new-tab behavior');
   assert.match(label,publisher,file+' must identify the publisher in the accessible name');
   const lead=html.slice(Math.max(0,matches[0].index-700),matches[0].index);
