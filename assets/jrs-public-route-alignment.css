@@ -1,0 +1,120 @@
+/* JRS secondary public route alignment, 2026-11-02.
+   Opt-in presentation layer only. No changes to study logic, forms, record storage,
+   current Standards, participant data, PDF publication assets, or private owner access.
+   Loaded after each legacy route's inline styles so the publication design can
+   override its historical dark palette without rewriting functional styles. */
+:root{color-scheme:light}
+html{background:#f5f7f8!important;color-scheme:light!important}
+body.jrs-public-route-aligned{
+ --bg:#f5f7f8;--surface:#ffffff;--surface2:#edf2f5;--surface3:#e7eef3;
+ --panel:#ffffff;--rule:#d8e1e7;--rule-soft:#e5ebef;
+ --text:#193148;--muted:#42576b;--muted-soft:#526778;
+ --accent:#7f5e26;--accent-dim:#7b5b26;--gold:#805e27;
+ --ready:#27674e;--ready-text:#1d6247;
+ --review:#925e24;--review-text:#855920;
+ --stop:#9a3b3b;--stop-text:#9a3b3b;
+ background:#f5f7f8!important;color:#193148!important;
+ font:400 16px/1.72 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif!important;
+ -webkit-font-smoothing:antialiased;
+}
+body.jrs-public-route-aligned :where(main,main p,main li,.lede,.sub,.card p,.privacy,.notice,.rulebox){
+ color:#193148;line-height:1.72;
+}
+body.jrs-public-route-aligned :where(main p,main li,.lede,.sub){font-size:16px!important}
+body.jrs-public-route-aligned :where(.fine,.trust,.hint,.footnote){font-size:14px!important;line-height:1.65!important;color:#42576b!important}
+body.jrs-public-route-aligned :where(h1,h2,.h1-look){
+ font-family:Georgia,"Iowan Old Style",serif!important;
+ font-weight:400!important;color:#193148!important;
+ letter-spacing:-.025em!important;text-transform:none!important;
+}
+body.jrs-public-route-aligned :where(h1,.h1-look){font-size:clamp(31px,4.25vw,49px)!important;line-height:1.19!important}
+body.jrs-public-route-aligned h2{font-size:clamp(24px,2.65vw,34px)!important;line-height:1.28!important}
+body.jrs-public-route-aligned h3{font:600 20px/1.4 Inter,system-ui,sans-serif!important;color:#193148!important}
+body.jrs-public-route-aligned :where(.eyebrow,.mono,.header-meta,label.fl,.card-label,.section-label){
+ font-family:Inter,system-ui,sans-serif!important;
+ font-size:12px!important;font-weight:700!important;
+ letter-spacing:.035em!important;line-height:1.55!important;
+ color:#745523!important;
+}
+body.jrs-public-route-aligned :where(a){color:#235478;text-underline-offset:3px}
+body.jrs-public-route-aligned :where(a:hover){color:#144366}
+body.jrs-public-route-aligned :where(.wordmark){
+ color:#17364f!important;font:600 29px/1.2 Georgia,serif!important;
+ letter-spacing:-.02em!important;text-decoration:none!important;
+}
+body.jrs-public-route-aligned :where(header,.site-header){
+ background:#162f46!important;color:#ffffff!important;
+ border-bottom:3px solid #a27a39!important
+}
+body.jrs-public-route-aligned :where(header .wordmark,.site-header .wordmark){
+ color:#fff!important
+}
+body.jrs-public-route-aligned :where(header .header-meta,.site-header .header-meta){
+ color:#dae5eb!important;font:500 13px/1.55 Inter,system-ui,sans-serif!important;
+ letter-spacing:.01em!important
+}
+body.jrs-public-route-aligned .jrs-sitenav{
+ background:#fff!important;border-top:0!important;
+ border-bottom:1px solid #cfdbe3!important;display:flex!important;
+ justify-content:center!important;flex-wrap:wrap!important;
+}
+body.jrs-public-route-aligned .jrs-sitenav a{
+ color:#213d55!important;background:transparent!important;
+ font:600 14px/1.5 Inter,system-ui,sans-serif!important;
+ letter-spacing:0!important;text-transform:none!important;
+ min-height:48px!important;padding:12px 16px!important;
+ border:0!important;border-bottom:3px solid transparent!important;
+ display:inline-flex!important;align-items:center!important;text-decoration:none!important
+}
+body.jrs-public-route-aligned .jrs-sitenav a:hover,
+body.jrs-public-route-aligned .jrs-sitenav a[aria-current="page"]{
+ background:#edf3f6!important;border-bottom-color:#a47b3b!important
+}
+body.jrs-public-route-aligned :where(.card,.notice,.privacy,.rulebox,.tip,.panel,.gate){
+ background:#fff!important;color:#193148!important;
+ border-color:#d8e1e7!important;border-radius:5px!important;
+}
+body.jrs-public-route-aligned :where(.card.gold,.notice,.rulebox){
+ border-left-color:#9b712d!important
+}
+body.jrs-public-route-aligned :where(input:not([type="radio"]):not([type="checkbox"]),textarea,select){
+ background:#fff!important;color:#193148!important;
+ border:1px solid #a8bbc9!important;font:400 16px/1.5 Inter,system-ui,sans-serif!important;
+ max-width:100%
+}
+body.jrs-public-route-aligned :where(button,.cta,.btn,input[type="submit"]){
+ min-height:44px!important;font:600 14px/1.5 Inter,system-ui,sans-serif!important;
+ letter-spacing:0!important;text-transform:none!important;
+ text-decoration:none!important;
+}
+body.jrs-public-route-aligned :where(button:not(:disabled),.cta,.btn,input[type="submit"]:not(:disabled)){
+ background:#173d5b!important;border-color:#173d5b!important;color:#fff!important
+}
+body.jrs-public-route-aligned :where(button:disabled,input[type="submit"]:disabled){
+ background:#e0e8ed!important;color:#294456!important;opacity:1!important
+}
+body.jrs-public-route-aligned :where(a,button,input,textarea,select,[role="button"]):focus-visible{
+ outline:3px solid #0b679c!important;outline-offset:3px!important;
+ box-shadow:0 0 0 4px #ffffff!important
+}
+body.jrs-public-route-aligned :where(footer,.site-footer){
+ background:#e8eff3!important;color:#42576b!important;border-top:1px solid #d1dce4!important
+}
+body.jrs-public-route-aligned :where(footer a,.site-footer a){color:#235478!important}
+body.jrs-public-route-aligned section[aria-label="Historical-document notice"]{
+ background:#edf2f5!important;color:#193148!important;border-left-color:#9b712d!important
+}
+body.jrs-public-route-aligned :where(.skip-link):focus{
+ left:6px!important;top:6px!important;z-index:9999!important;
+ background:#fff!important;color:#173d5b!important;font-size:14px!important
+}
+@media(max-width:650px){
+ body.jrs-public-route-aligned :where(.wrap,.container){padding-left:18px!important;padding-right:18px!important}
+ body.jrs-public-route-aligned .jrs-sitenav a{flex:1 1 45%;min-width:0!important;justify-content:center;padding:12px 9px!important}
+ body.jrs-public-route-aligned :where(h1,.h1-look){font-size:clamp(30px,8vw,39px)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.jrs-public-route-aligned *,body.jrs-public-route-aligned *::before,body.jrs-public-route-aligned *::after{
+  animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important
+ }
+}
