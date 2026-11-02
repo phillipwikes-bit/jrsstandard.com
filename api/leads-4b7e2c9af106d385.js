@@ -73,21 +73,15 @@ function str(v, n) {
   return String(v == null ? '' : v).slice(0, n || 300);
 }
 
-// TEST AND OWNER ROWS NEVER APPEAR IN THE INBOX.
+// HISTORICAL TEST MARKERS ARE HEURISTIC, NOT EVIDENCE.
 //
-// Three rows landed in the live inbox on 2026-08-25 from the repository audit's
-// end-to-end capture test. They were correctly stored, because the capture path
-// worked exactly as designed, and that is the point: this endpoint cannot tell a
-// real buyer from a self-test by looking at the write path, so it filters on the
-// content the test itself stamps.
-//
-// Filtering here is deliberate and is NOT a substitute for deleting the rows.
-// The dashboard is a queue of people waiting for a reply, and a test row in that
-// queue is noise that trains the reader to skim. Deletion needs the service key
-// and is the owner's action; this makes the queue correct in the meantime.
+// Earlier versions omitted records if names, emails or organization text
+// resembled smoke tests. That suppresses genuine inquiries as readily as tests
+// and makes the source population unreconstructable. Preserve every record,
+// report suspected fixtures as a separate count, and require human review
+// before treating a marker match as a verified test or deleting any row.
 const TEST_MARKERS = [
   'audit test',
-  'do not contact',
   'safe to delete',
   'selftest',
   'deploytest',
@@ -134,10 +128,11 @@ export default async function handler(req) {
   const rows = leadRead.rows;
 
   const leads = [];
-  let suppressed = 0;
+  let possibleTestRows = 0;
   for (let i = 0; i < rows.length; i++) {
     const r = rows[i] || {};
-    if (isTestRow(r)) { suppressed++; continue; }
+    const possibleTest = isTestRow(r);
+    if (possibleTest) possibleTestRows++;
     let p = {};
     try { p = JSON.parse(r.message || '{}') || {}; } catch (e) { p = {}; }
     const src = str(r.source, 40);
@@ -162,6 +157,7 @@ export default async function handler(req) {
       at: r.created_at || null,
       source: src,
       label: LABEL[src] || src,
+      possible_test_marker: possibleTest,
       name: str(r.name, 120),
       email: str(r.email, 160),
       organization: str(r.organization, 160),
@@ -210,16 +206,18 @@ export default async function handler(req) {
     sources: ['pilot_contacts', 'interaction_events'],
     leads: leads,
     lead_count: leads.length,
-    // Reported rather than hidden. A count that silently drops rows is the same
-    // defect this programme measures, so the number of suppressed rows is shown
-    // and the owner can see that suppression is happening at all.
-    suppressed_test_rows: suppressed,
+    // No records omitted based on free-text patterns; test marker matches may
+    // be genuine inquiries and must be assessed by the owner.
+    source_row_count: rows.length,
+    possible_test_rows: possibleTestRows,
+    test_marker_basis: 'Heuristic match in name, email or organization; not confirmed synthetic',
+    retained_source_rows: leads.length,
     attempts: attempts,
     attempt_count: attempts.length,
     attempts_unconfigured: unconfigured,
     attempt_price_basis: 'Archived listed offer prices, not purchase commitments or lost revenue',
-    note: 'Owner-only. Carries names, emails and organisations. Secured by an '
-        + 'server owner authentication. '
+    note: 'Owner-only. Carries all source names, emails and organisations including possible test-marker matches; no text-based omission. Secured by an '
+        + 'server owner authentication. 
         + 'Pay-screen attempts are anonymous by definition and are listed '
         + 'separately from identified leads.'
   });
