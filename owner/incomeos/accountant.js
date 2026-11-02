@@ -8,7 +8,7 @@
   var usd = new Intl.NumberFormat("en-US", { style:"currency", currency:"USD", minimumFractionDigits:2, maximumFractionDigits:2 });
   var CATEGORIES = ["research","evaluation","business","royalty","rental","interest","dividend","investment","reward","recovery","employment","pension","retirement","socialsecurity","unemployment","other"];
   var COST_CATEGORIES = ["platform","software","equipment","internet","travel","training","professional","supplies","investing","tax","homeoffice","advertising","other"];
-  var EXPENSE_TYPES = ["expense","taxpayment","capital","other"];
+  var EXPENSE_TYPES = ["expense","taxpayment","capital","other","refund"];
   var SCOPES = ["income","nonincome","proceeds"];
   var TAX_FORMS = ["None / unknown","1099-NEC","1099-MISC","1099-K","1099-INT","1099-DIV","1099-B","Schedule K-1","W-2","1099-R","SSA-1099","1099-G","Other form"];
   var STATUS = ["paid","pending"];
@@ -88,6 +88,7 @@
     var taxpayments=entries.filter(function(e){return e.kind==="outflow"&&e.type==="taxpayment";});
     var capital=entries.filter(function(e){return e.kind==="outflow"&&e.type==="capital";});
     var other=entries.filter(function(e){return e.kind==="outflow"&&e.type==="other";});
+    var refunds=entries.filter(function(e){return e.kind==="outflow"&&e.type==="refund";});
     return {
       gross:sum(income,function(e){return e.grossUsd}),
       fees:sum(income,function(e){return e.feesUsd}),
@@ -97,6 +98,8 @@
       taxPaid:sum(taxpayments,function(e){return e.amountUsd}),
       capital:sum(capital,function(e){return e.amountUsd}),
       otherOutflow:sum(other,function(e){return e.amountUsd}),
+      refundCredits:sum(refunds,function(e){return e.amountUsd}),
+      refundCount:refunds.length,
       proceeds:sum(proceeds,function(e){return e.grossUsd}),
       returned:sum(nonincome,function(e){return e.grossUsd}),
       pending:sum(pending,function(e){return e.grossUsd}),
@@ -181,14 +184,14 @@
     var box=$("report-preview");box.replaceChildren();
     var data=[
       ["Gross received, potentially income",t.gross],["Platform fees already withheld",t.fees],
-      ["Other paid expense candidates",t.expenses],["Business-use allocation estimate (review)",t.possibleBusinessUse],
+      ["Other paid expense candidates",t.expenses],["Unallocated refunds / credits, NOT netted",t.refundCredits],["Business-use allocation estimate (review)",t.possibleBusinessUse],
       ["Cash after recorded fees and other paid expenses",round(t.gross-t.fees-t.expenses)],
       ["Pending / unpaid incentives",t.pending],["Possible returned principal / refunds",t.returned],
       ["Asset sale proceeds, cost basis not resolved",t.proceeds],["Estimated tax payments, not an expense",t.taxPaid],
       ["Asset purchases / contributions, not an expense",t.capital],["Other recorded outflows",t.otherOutflow]
     ];
     data.forEach(function(pair){var row=place(box,"div","accountant-line");place(row,"span","",pair[0]);place(row,"strong","",money(pair[1]));});
-    var note=place(box,"p","muted",t.unreconciled+" item(s) not marked reconciled. "+t.allocationPending+" expense allocation(s) not determined. "+t.pendingCount+" pending receipt(s). A blank allocation is unknown, not 0% or 100%. Tax form classification, deductible percentages, capital gains and tax treatment require accountant review.");
+    var note=place(box,"p","muted","Refunds/credits are not counted as earnings or netted against expenses until supported by original-charge evidence and reviewed. "+t.unreconciled+" item(s) not marked reconciled. "+t.allocationPending+" expense allocation(s) not determined. "+t.pendingCount+" pending receipt(s). A blank allocation is unknown, not 0% or 100%. Tax form classification, deductible percentages, capital gains and tax treatment require accountant review.");
     note.style.marginTop="13px";
     var grp={},forms={};
     rows.forEach(function(e){
@@ -203,12 +206,12 @@
   function showEntry(e){
     var out=place($("ledger-list"),"div","entry");var left=place(out,"div","entry-info");
     place(left,"strong","",e.label);
-    place(left,"small","",e.date+" · "+(e.kind==="income"?"RECEIPT · "+e.category+" · "+(e.status==="paid"?"Recorded received":"Pending"):"OUTFLOW · "+e.category+" · "+e.type));
+    place(left,"small","",e.date+" · "+(e.kind==="income"?"RECEIPT · "+e.category+" · "+(e.status==="paid"?"Recorded received":"Pending"):(e.type==="refund"?"REFUND/CREDIT, UNALLOCATED · ":"OUTFLOW · ")+e.category+" · "+e.type));
     place(left,"small","",e.payer||"Source not identified");
-    if(e.kind==="outflow")place(left,"small","","Business use "+(e.businessUse===null||e.businessUse===undefined?"not determined":String(e.businessUse)+"%")+" · Evidence "+(e.evidenceStatus||"missing"));
+    if(e.kind==="outflow"&&e.type!=="refund")place(left,"small","","Business use (e.businessUse===null||e.businessUse===undefined?"not determined":String(e.businessUse)+"%")+" · Evidence "+(e.evidenceStatus||"missing"));
     if(!e.reconciled)place(left,"small notice","Not reconciled to source evidence");
     var right=place(out,"div","entry-actions");
-    place(right,"div","amt"+((e.status==="pending")?" pending":""),(e.kind==="outflow"?"−":"+")+money(e.kind==="income"?e.grossUsd:e.amountUsd));
+    place(right,"div","amt"+((e.status==="pending")?" pending":""),(e.kind==="outflow"&&e.type!=="refund"?"−":"+")+money(e.kind==="income"?e.grossUsd:e.amountUsd));
     var buttons=place(right,"div","entry-buttons"),ed=place(buttons,"button","","Edit"),del=place(buttons,"button","","Remove");
     ed.type="button";del.type="button";ed.addEventListener("click",function(){startEdit(e);});
     del.addEventListener("click",function(){
@@ -222,7 +225,8 @@
     var filter=$("ledger-filter").value,q=$("ledger-search").value.trim().toLowerCase();
     var rows=yearEntries().filter(function(e){
       if(filter==="income"&&e.kind!=="income")return false;
-      if(filter==="outflow"&&e.kind!=="outflow")return false;
+      if(filter==="outflow"&&!(e.kind==="outflow"&&e.type!=="refund"))return false;
+      if(filter==="refund"&&!(e.kind==="outflow"&&e.type==="refund"))return false;
       if(filter==="pending"&&!(e.kind==="income"&&e.status==="pending"))return false;
       return !q || [e.label,e.category,e.payer,e.reference,e.notes].join(" ").toLowerCase().includes(q);
     }).sort(function(a,b){return b.date.localeCompare(a.date);});
@@ -239,9 +243,9 @@
     setTimeout(function(){URL.revokeObjectURL(url);},2000);
   }
   function exportDetail(){
-    var rows=[["Date","Kind","Type / scope","Category","Description","Payer / payee","Original amount","Currency","USD per unit","Gross USD","Platform fees USD","Other paid outflows USD","Business-use %","Status","Tax form","Form status","Evidence status","Evidence reference","Reconciled","Notes","Entry ID"]];
+    var rows=[["Date","Kind","Type / scope","Category","Description","Payer / payee","Original amount","Currency","USD per unit","Gross USD","Platform fees USD","Other paid outflows USD","Unallocated refund credit USD","Business-use %","Status","Tax form","Form status","Evidence status","Evidence reference","Reconciled","Notes","Entry ID"]];
     yearEntries().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(e){
-      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"?e.amountUsd:"",e.kind==="outflow"?(e.businessUse==null?"":e.businessUse):"",e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id]);
+      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"&&e.type!=="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type==="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type!=="refund"?(e.businessUse==null?"":e.businessUse):"",e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id]);
     });
     download(csv(rows),"IncomeOS-accountant-detail-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
@@ -252,7 +256,7 @@
       ["Recorded cash after fees and expenses, not taxable profit",round(t.gross-t.fees-t.expenses)],
       ["Pending receipts",t.pending],["Recovered principal / refunds",t.returned],
       ["Asset sale proceeds, review basis",t.proceeds],["Estimated tax payments",t.taxPaid],
-      ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],
+      ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],["Unallocated refunds / credits, not netted",t.refundCredits],
       ["Unreconciled record count",t.unreconciled],["Expense allocations not determined",t.allocationPending]];
     download(csv([["IncomeOS personal tax-year summary",currentYear()]].concat([["Category","Amount or count"]],pairs)),"IncomeOS-accountant-summary-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
@@ -265,14 +269,14 @@
     place(r,"p","","Tax year: "+currentYear()+" | Generated: "+today()+" | Self-reported records, not tax determinations");
     place(r,"h2","","Annual reconciliation");
     var table=place(r,"table");var body=place(table,"tbody");
-    [["Received gross potential income",t.gross],["Withheld platform fees",t.fees],["Other recorded expense candidates",t.expenses],["Business-use estimate (not approved deduction)",t.possibleBusinessUse],["Recorded receipts less fees/expenses",round(t.gross-t.fees-t.expenses)],["Pending unpaid receipts",t.pending],["Possible nonincome / refunded principal",t.returned],["Asset sale proceeds, basis not determined",t.proceeds],["Estimated tax payments",t.taxPaid],["Capital contributions / asset costs",t.capital],["Unreconciled records",t.unreconciled]].forEach(function(p){var tr=place(body,"tr");place(tr,"th","",p[0]);place(tr,"td","",typeof p[1]==="number"&&p[0]!=="Unreconciled records"?money(p[1]):p[1]);});
+    [["Received gross potential income",t.gross],["Withheld platform fees",t.fees],["Other recorded expense candidates",t.expenses],["Business-use estimate (not approved deduction)",t.possibleBusinessUse],["Recorded receipts less fees/expenses",round(t.gross-t.fees-t.expenses)],["Pending unpaid receipts",t.pending],["Possible nonincome / refunded principal",t.returned],["Asset sale proceeds, basis not determined",t.proceeds],["Estimated tax payments",t.taxPaid],["Capital contributions / asset costs",t.capital],["Unallocated refunds / credits, not netted",t.refundCredits],["Unreconciled records",t.unreconciled]].forEach(function(p){var tr=place(body,"tr");place(tr,"th","",p[0]);place(tr,"td","",typeof p[1]==="number"&&p[0]!=="Unreconciled records"?money(p[1]):p[1]);});
     place(r,"h2","","Detailed entries");
     var dt=place(r,"table"),th=place(dt,"thead"),htr=place(th,"tr");
-    ["Date","Kind","Source","Category","Gross USD","Fees USD","Outflow USD","Status / review"].forEach(function(x){place(htr,"th","",x);});
+    ["Date","Kind","Source","Category","Gross USD","Fees USD","Outflow USD","Refund credit USD","Status / review"].forEach(function(x){place(htr,"th","",x);});
     var tb=place(dt,"tbody");
     yearEntries().slice().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(e){
       var tr=place(tb,"tr");
-      [e.date,e.kind,e.label+(e.payer?" · "+e.payer:""),e.category,e.kind==="income"?money(e.grossUsd):"",e.kind==="income"?money(e.feesUsd):"",e.kind==="outflow"?money(e.amountUsd):"",e.kind==="income"?e.status+" / "+e.scope:(e.type+" / "+(e.businessUse==null?"allocation unknown":e.businessUse+"% business use"))].forEach(function(x){place(tr,"td","",x);});
+      [e.date,e.kind,e.label+(e.payer?" · "+e.payer:""),e.category,e.kind==="income"?money(e.grossUsd):"",e.kind==="income"?money(e.feesUsd):"",e.kind==="outflow"&&e.type!=="refund"?money(e.amountUsd):"",e.kind==="outflow"&&e.type==="refund"?money(e.amountUsd):"",e.kind==="income"?e.status+" / "+e.scope:(e.type+" / "+(e.businessUse==null?"allocation unknown":e.businessUse+"% business use"))].forEach(function(x){place(tr,"td","",x);});
     });
     place(r,"p","","Document and source reference fields, bank matching, invoices, tax forms, and business-use substantiation should be reviewed alongside detailed CSV. Expenses are not automatically tax deductions. Asset proceeds require basis and holding-period review.");
     window.print();
@@ -322,10 +326,10 @@
       if(kind==="income"){
         e={kind:"income",label:label,payer:limit(get("vendor"),100),date:date,category:CATEGORIES.includes(category)?category:"other",amountOriginal:amount,currency:"USD",fx:1,grossUsd:round(amount),feesUsd:0,
         status:get("status")==="paid"?"paid":"pending",scope:"income",method:"Unknown",taxForm:"None / unknown",docStatus:"not-expected",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv"};
-      }else if(["expense","outflow","taxpayment","capital","other"].includes(kind)){
+      }else if(["expense","outflow","taxpayment","capital","other","refund"].includes(kind)){
         var rawBusiness=get("business_use_pct").trim(),bus=rawBusiness===""?null:num(rawBusiness);if(bus!==null&&(!Number.isFinite(bus)||bus<0||bus>100)){rejected++;continue;}
         e={kind:"outflow",type:kind==="expense"||kind==="outflow"?"expense":kind,label:label,payer:limit(get("vendor"),100),date:date,
-        category:COST_CATEGORIES.includes(category)?category:"other",amountUsd:round(amount),businessUse:bus,
+        category:COST_CATEGORIES.includes(category)?category:"other",amountUsd:round(amount),businessUse:kind==="refund"?null:bus,
         evidenceStatus:EVIDENCE_STATUS.includes(get("evidence_status").toLowerCase())?get("evidence_status").toLowerCase():"missing",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv"};
       }else{rejected++;continue;}
       if(!validate(e)){rejected++;continue;}
