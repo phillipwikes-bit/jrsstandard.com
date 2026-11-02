@@ -2449,7 +2449,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  }
  function quote(v){
    var s=String(v==null?'':v);
-   if(/^[\\x00-\\x20]*[=+@-]/.test(s))s="'"+s;
+   if(/^[=+@-]/.test(s.trimStart()))s="'"+s;
    return '"'+s.replace(/"/g,'""')+'"';
  }
  exportButton.addEventListener('click',function(){
@@ -2458,7 +2458,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
    var keys=['date','category','name','email','organization','message','contact_permission','source','source_record_id'];
    var out=[keys.map(quote).join(',')];
    rows.forEach(function(r){out.push(keys.map(function(k){return quote(r[k])}).join(','));});
-   var blob=new Blob(['\\uFEFF'+out.join('\\r\\n')],{type:'text/csv;charset=utf-8'});
+   var blob=new Blob(['\uFEFF'+out.join('\r\n')],{type:'text/csv;charset=utf-8'});
    var url=URL.createObjectURL(blob),a=document.createElement('a');
    a.href=url;a.download='jrs-current-formspree-private-inquiries.csv';a.click();
    URL.revokeObjectURL(url);
