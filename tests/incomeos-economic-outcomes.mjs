@@ -34,4 +34,8 @@ assert.equal(duplicatedEvidence.issues[0].code,"DUPLICATE_EVIDENCE_REFERENCE");
 assert.equal(duplicatedEvidence.verifiedBenefitCents,null);
 assert.equal(review([base,{...base,id:"other",evidenceId:"new",posted:false}]).verifiedBenefitCents,null);
 assert.equal(review(null).status,"HOLD");
+assert.equal(review(null).verifiedBenefitCents,null);
+assert.equal(review([]).status,"HOLD");
+assert.equal(review([]).verifiedBenefitCents,null);
+assert.equal(verified.avoidedCostCents,2500);
 console.log("IncomeOS economic outcomes tests passed");
