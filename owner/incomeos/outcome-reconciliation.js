@@ -13,7 +13,9 @@
       if(!e||typeof e.id!=="string"||!e.id.trim()||byId.has(e.id.trim())||
         !Number.isSafeInteger(e.amountCents)||typeof e.accountId!=="string"||!e.accountId.trim()||
         e.posted!==true||e.sourceVerified!==true||
-        !e.currency||!e.institutionId||!e.postedDate){
+        typeof e.currency!=="string"||!e.currency.trim()||
+        typeof e.institutionId!=="string"||!e.institutionId.trim()||
+        typeof e.postedDate!=="string"||!e.postedDate.trim()){
         issues.push({code:"INVALID_STATEMENT_ENTRY",index:i});return;
       }
       byId.set(e.id.trim(),e);
@@ -22,7 +24,9 @@
       if(!o||typeof o.statementEntryId!=="string"||!o.statementEntryId.trim()||
         typeof o.accountId!=="string"||!o.accountId.trim()||
         !Number.isSafeInteger(o.amountCents)||o.amountCents<=0||
-        !o.currency||!o.institutionId||!o.postedDate){
+        typeof o.currency!=="string"||!o.currency.trim()||
+        typeof o.institutionId!=="string"||!o.institutionId.trim()||
+        typeof o.postedDate!=="string"||!o.postedDate.trim()){
         issues.push({code:"INVALID_OUTCOME",index:i});return;
       }
       var id=o.statementEntryId.trim(),entry=byId.get(id);
