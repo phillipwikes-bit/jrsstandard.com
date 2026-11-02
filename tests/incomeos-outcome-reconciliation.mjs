@@ -38,4 +38,5 @@ for(const field of ["currency","institutionId","postedDate"]){
  assert.equal(reconcile([missing],[entry]).status,"HOLD",field);
 }
 
+assert.equal(reconcile([{...outcome,currency:123}],[entry]).status,"HOLD");
 console.log("IncomeOS outcome reconciliation tests passed");
