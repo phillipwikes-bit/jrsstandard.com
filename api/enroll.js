@@ -14,7 +14,7 @@ export const config = { runtime: 'edge' };
 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
-function json(o, s){ return new Response(JSON.stringify(o), { status: s||200, headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*' } }); }
+function json(o, s){ return new Response(JSON.stringify(o), { status: s||200, headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store' } }); }
 function clean(v, n){ return (v==null ? '' : String(v)).trim().slice(0, n||200); }
 
 export default async function handler(req){
@@ -23,9 +23,22 @@ export default async function handler(req){
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (req.method === 'GET') return json({ ok:true });
   if (req.method !== 'POST') return json({ error:'method_not_allowed' }, 405);
-  if (!SERVICE) return json({ error:'service_key_missing' }, 503);
+  const origin = req.headers.get('origin');
+  if (origin && origin !== new URL(req.url).origin)
+    return json({ error:'origin_not_allowed' }, 403);
+  if (!SERVICE) return json({ error:'service_unavailable' }, 503);
 
-  let b; try { b = await req.json(); } catch(e){ return json({ error:'invalid_json' }, 400); }
+  // Named enrollment is small; reject unexpectedly large or malformed bodies.
+  const suppliedLength = Number(req.headers.get('content-length') || '0');
+  if (suppliedLength > 8192) return json({ error:'request_too_large' }, 413);
+  let b;
+  try {
+    const raw = await req.text();
+    if (raw.length > 8192) return json({ error:'request_too_large' }, 413);
+    b = JSON.parse(raw);
+    if (!b || typeof b !== 'object' || Array.isArray(b))
+      return json({ error:'invalid_json' }, 400);
+  } catch(e) { return json({ error:'invalid_json' }, 400); }
   const email = clean(b.email, 200);
   const name = clean(b.name, 200);
   if (!name) return json({ error:'name_required' }, 400);
@@ -59,11 +72,16 @@ export default async function handler(req){
     source: 'training-enroll'
   };
 
-  const res = await fetch(SB + '/rest/v1/pilot_contacts', {
-    method:'POST',
-    headers:{ 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE, 'Content-Type':'application/json', 'Prefer':'return=minimal' },
-    body: JSON.stringify(row)
-  });
-  if (!res.ok) return json({ error:'service_unavailable' }, 502);
-  return json({ ok:true });
+  try {
+    const res = await fetch(SB + '/rest/v1/pilot_contacts', {
+      method:'POST',
+      headers:{ 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE,
+        'Content-Type':'application/json', 'Prefer':'return=minimal' },
+      body: JSON.stringify(row)
+    });
+    if (!res.ok) return json({ error:'service_unavailable' }, 502);
+    return json({ ok:true });
+  } catch(e) {
+    return json({ error:'service_unavailable' }, 502);
+  }
 }
