@@ -2982,6 +2982,7 @@ function submitPoll() {
 </script>
 <div id="enroll-overlay" role="dialog" aria-modal="true" aria-labelledby="en-dialog-title" aria-describedby="en-dialog-description" tabindex="-1" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
   <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin:24px 0">
+    <button type="button" id="en-close" class="jrs-enroll-close" onclick="dismissEnroll()" aria-label="Close registration and return to training">Close</button>
     <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Reviewer Training Program</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px" id="en-dialog-title">Start the JRS Reviewer Training Program</h2>
     <p id="en-dialog-description" style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">All six training modules are freely available without registration. Enter your name and email only if you choose an optional named completion record. Consent covers only that record and related enrollment inquiries, not unrelated marketing or project updates.</p>
@@ -3075,6 +3076,23 @@ function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,
   } catch(e){}
 })();
 var jrsEnrollReturnFocus = null;
+var jrsEnrollInertStates = [];
+function jrsSetEnrollmentInert(open){
+  var overlay=document.getElementById('enroll-overlay');
+  if(open){
+    jrsEnrollInertStates=[];
+    Array.prototype.forEach.call(document.body.children,function(el){
+      if(el===overlay) return;
+      jrsEnrollInertStates.push({element:el,wasInert:el.inert});
+      el.inert=true;
+    });
+  }else{
+    jrsEnrollInertStates.forEach(function(item){
+      if(item.element.isConnected) item.element.inert=item.wasInert;
+    });
+    jrsEnrollInertStates=[];
+  }
+}
 function openEnroll(){
   var o = document.getElementById('enroll-overlay');
   if (!o) return;
@@ -3082,6 +3100,7 @@ function openEnroll(){
   jrsEnrollReturnFocus = document.activeElement;
   o.style.display = 'flex';
   document.body.classList.add('jrs-training-dialog-open');
+  jrsSetEnrollmentInert(true);
   var dl = document.getElementById('en-dismiss');
   if (dl) dl.style.display = 'block';
   var input = document.getElementById('en-name');
@@ -3091,6 +3110,7 @@ function dismissEnroll(){
   var o = document.getElementById('enroll-overlay');
   if (o) o.style.display = 'none';
   document.body.classList.remove('jrs-training-dialog-open');
+  jrsSetEnrollmentInert(false);
   var restoreFocus = jrsEnrollReturnFocus;
   if (!restoreFocus || !document.contains(restoreFocus) ||
       !restoreFocus.getClientRects || restoreFocus.getClientRects().length === 0) {
