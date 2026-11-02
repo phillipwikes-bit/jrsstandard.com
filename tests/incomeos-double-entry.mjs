@@ -98,7 +98,7 @@ await hold({entries:[{...entries[0],date:"2026-10-30"},...entries.slice(1)]},"PR
 await hold({entries:[{...entries[8],sourceEventIds:[refs.cardOut,refs.transferIn]},...entries.slice(0,8),entries[9]]},"SOURCE_AMOUNT_MISMATCH");
 await hold({entries:[{...entries[4],originalExpenseEventId:refs.earned},...entries.slice(0,4),...entries.slice(5)]},"REFUND_ORIGINAL_NOT_REVIEWED");
 await hold({entries:[{...entries[4],lines:lines("credit.card","refund.reversal",2500)},...entries.slice(0,4),...entries.slice(5)]},"SOURCE_AMOUNT_MISMATCH");
-await hold({entries:entries.map(e=>e.id==="entry.bill"?{...e,sourceEventIds:[refs.personal]}:e)},"UNREVIEWED_SOURCE_CLASSIFICATION");
+await hold({entries:entries.map(e=>e.id==="entry.bill"?{...e,kind:"PERSONAL_EXPENSE",lines:lines("expense.personal","credit.card",2000)}:e)},"UNREVIEWED_SOURCE_CLASSIFICATION");
 await hold({accounts:chart.map(a=>a.id==="cash.savings"?{...a,ownerReviewed:false}:a)},"INVALID_ACCOUNT");
 await hold({accounts:[...chart,{...chart[0]}]},"INVALID_ACCOUNT");
 await hold({entries:entries.concat({...entries[0],id:"entry.earned",sourceEventIds:[refs.earned]})},"DUPLICATE_ENTRY");
