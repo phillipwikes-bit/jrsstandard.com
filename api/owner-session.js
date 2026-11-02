@@ -25,6 +25,7 @@ export default async function handler(req){
    if(raw.length>1200)return json({error:'request_too_large'},413);
    body=JSON.parse(raw);
  }catch{return json({error:'bad_input'},400)}
+ if(!body || typeof body!=='object' || Array.isArray(body))return json({error:'bad_input'},400);
  const secret=typeof body.token==='string'?body.token:'';
  if(!await ownerSecretMatches(secret))return json({error:'unauthorized'},401);
  const cookie=await createOwnerCookie();
