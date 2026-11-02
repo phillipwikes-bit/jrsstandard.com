@@ -32,5 +32,7 @@ jobs:
         run: node tests/jrs-training-completion-behavior.mjs
       - name: Verify worked-record journey and distinct research evidence
         run: node tests/jrs-practitioner-journey.mjs
+      - name: Verify public route palette and typography continuity
+        run: node tests/jrs-public-route-alignment.mjs
       - name: Regression-check exact-preview source verification
         run: python3 tests/jrs-preview-static-verification.py --self-test
