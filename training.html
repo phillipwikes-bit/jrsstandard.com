@@ -2972,11 +2972,11 @@ function submitPoll() {
   if (result) { result.style.display='block'; result.focus({preventScroll:true}); result.scrollIntoView({behavior:'smooth',block:'nearest'}); }
 }
 </script>
-<div id="enroll-overlay" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
+<div id="enroll-overlay" role="dialog" aria-modal="true" aria-labelledby="en-dialog-title" aria-describedby="en-dialog-description" tabindex="-1" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
   <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin:24px 0">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Reviewer Training Program</div>
-    <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Start the JRS Reviewer Training Program</h2>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">The six modules are already open and stay open without registration. Your name and work email are requested only if you choose a named certificate and consent to project updates. Free for practitioners.</p>
+    <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px" id="en-dialog-title">Start the JRS Reviewer Training Program</h2>
+    <p id="en-dialog-description" style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">All six training modules are freely available without registration. Enter your name and email only if you choose an optional named completion record. Consent covers only that record and related enrollment inquiries, not unrelated marketing or project updates.</p>
     <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:10px;margin:0 0 16px">Written by <b style="color:var(--muted);font-weight:500">Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b> have graded records for this work, including <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b> who each completed a full 24-record set.</p>
     <input id="en-name" type="text" aria-label="Full name" placeholder="Full name" autocomplete="name" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
     <input id="en-email" type="email" aria-label="Work email" placeholder="Work email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
@@ -2994,13 +2994,13 @@ function submitPoll() {
      <option value="vendor">Yes, we build or sell a platform</option>
     </select>
 
-    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I consent to JRS storing my optional enrollment information and contacting me about the requested named training completion record and related registration inquiries. This is not consent for marketing or unrelated project updates. See the <a href="privacy-notice.html#training-enrollment" id="en-terms-link" style="color:var(--accent);text-decoration:underline">registration privacy notice</a>. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I consent to JRS storing my optional enrollment information and contacting me about the requested named training completion record and related registration inquiries. This is not consent for marketing or unrelated project updates. See the <a href="privacy-notice.html#training-enrollment" id="en-terms-link" aria-controls="en-terms" aria-expanded="false" style="color:var(--accent);text-decoration:underline">registration privacy notice</a>. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
     <label style="display:flex;gap:9px;align-items:flex-start;font-size:12px;line-height:1.55;color:var(--text);margin:0 0 12px"><input type="checkbox" id="en-transfer" style="width:auto;flex:0 0 auto;margin-top:3px"><span>Optional: I consent to my enrollment record being transferred with the JRS project to an authorized successor, subject to applicable obligations. This choice is not required for training or a completion record.</span></label>
-<div id="en-terms" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 12px;font-size:12px;color:var(--muted);line-height:1.6">The required enrollment checkbox allows JRS to retain the name and contact details you submit and communicate about the requested completion record and registration-related inquiries. It does not authorize marketing or unrelated project updates. Transfer of the enrollment record with the project to a successor is a separate, optional choice below. Enrollment does <b style="color:var(--text)">not</b> publish your name. See the <a href="privacy-notice.html#training-enrollment" style="color:var(--accent)">current privacy notice</a>.</div>
-    <div id="en-msg" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
-    <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start module 1 now</button>
+<div id="en-terms" role="region" aria-label="Registration privacy details" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 12px;font-size:12px;color:var(--muted);line-height:1.6">The required enrollment checkbox allows JRS to retain the name and contact details you submit and communicate about the requested completion record and registration-related inquiries. It does not authorize marketing or unrelated project updates. Transfer of the enrollment record with the project to a successor is a separate, optional choice below. Enrollment does <b style="color:var(--text)">not</b> publish your name. See the <a href="privacy-notice.html#training-enrollment" style="color:var(--accent)">current privacy notice</a>.</div>
+    <div id="en-msg" role="status" aria-live="polite" aria-atomic="true" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
+    <button type="button" id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Register for a named completion record</button>
     <p style="font-size:11px;color:var(--ready-text);text-align:center;margin:9px 0 0">Free &middot; No credit card &middot; The training is already open below</p>
-    <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><a href="#" onclick="dismissEnroll();return false;" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none">Back to the training</a></div>
+    <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><button type="button" onclick="dismissEnroll()" class="jrs-enroll-dismiss">Back to the training</button></div>
     <p style="font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin:12px 0 0">Optional enrollment details are handled as described in the <a href="privacy-notice.html#training-enrollment" style="color:var(--accent-dim)">current registration notice</a>. Request access or deletion at info@jrsstandard.com.</p>
   </div>
 </div>
@@ -3066,18 +3066,45 @@ function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,
     }
   } catch(e){}
 })();
+var jrsEnrollReturnFocus = null;
 function openEnroll(){
   var o = document.getElementById('enroll-overlay');
-  if (o) o.style.display = 'flex';
-  // Always offered, never forced. This overlay is now only ever opened by the
-  // reader pressing a button, so it must always carry a way back out.
+  if (!o) return;
+  // Preserve the initiating control so keyboard users return to their place.
+  jrsEnrollReturnFocus = document.activeElement;
+  o.style.display = 'flex';
+  document.body.classList.add('jrs-training-dialog-open');
   var dl = document.getElementById('en-dismiss');
   if (dl) dl.style.display = 'block';
+  var input = document.getElementById('en-name');
+  (input || o).focus();
 }
 function dismissEnroll(){
   var o = document.getElementById('enroll-overlay');
   if (o) o.style.display = 'none';
+  document.body.classList.remove('jrs-training-dialog-open');
+  if (jrsEnrollReturnFocus && document.contains(jrsEnrollReturnFocus) &&
+      typeof jrsEnrollReturnFocus.focus === 'function') jrsEnrollReturnFocus.focus();
+  jrsEnrollReturnFocus = null;
 }
+// Modal focus containment is active only while optional enrollment is visible.
+document.addEventListener('keydown', function(e){
+  var o = document.getElementById('enroll-overlay');
+  if (!o || o.style.display === 'none') return;
+  if (e.key === 'Escape') { e.preventDefault(); dismissEnroll(); return; }
+  if (e.key !== 'Tab') return;
+  var nodes = Array.prototype.filter.call(
+    o.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'),
+    function(el){ return el.getClientRects().length > 0; }
+  );
+  if (!nodes.length) { e.preventDefault(); o.focus(); return; }
+  var first = nodes[0], last = nodes[nodes.length-1], active = document.activeElement;
+  if (e.shiftKey && (active === first || !o.contains(active))) {
+    e.preventDefault(); last.focus();
+  } else if (!e.shiftKey && (active === last || !o.contains(active))) {
+    e.preventDefault(); first.focus();
+  }
+});
 
 // The terms link sits inside the consent label, so a bare anchor does two wrong
 // things: the label swallows the tap and toggles the box, and target="_blank" is
@@ -3096,6 +3123,7 @@ function dismissEnroll(){
     // The panel opens below the tick box, which on a phone is usually below the
     // fold. Without this the tap produces no visible change and reads as dead.
     tl.textContent = open ? 'hide the details' : 'registration terms';
+    tl.setAttribute('aria-expanded', String(open));
     if (open && p.scrollIntoView) p.scrollIntoView({ behavior:'smooth', block:'nearest' });
   });
 })();
@@ -3126,7 +3154,8 @@ function enrollSubmit(){
   var btn = document.getElementById('en-go'); btn.disabled = true; msg.style.color = 'var(--muted-soft)'; msg.textContent = 'Submitting...';
   fetch('/api/enroll', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ name:name, organization:org, title:title, email:email, audience:aud, builds_software:builds, source:enrollSource, consent_contact:c1, consent_transfer:c2, consent_named:c3 }) })
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(){
+    .then(function(result){
+      if (!result || result.ok !== true) throw new Error('Enrollment not confirmed');
       try{ localStorage.setItem('jrs-training-enrolled','1'); localStorage.setItem('jrs-training-email', email); }catch(e){}
       recordCompletion(); // when named enrollment follows six already-completed modules
       window._jrsPreview = false;
@@ -3135,14 +3164,16 @@ function enrollSubmit(){
       // is offered here because this is the moment the registration is fresh.
       var ov = document.getElementById('enroll-overlay');
       var inner = ov ? ov.firstElementChild : null;
-      if (!inner) { if (ov) ov.style.display = 'none'; return; }
+      if (!inner) { dismissEnroll(); return; }
       // Never include the enrollee's name, email, title or organization in links.
       inner.innerHTML =
         '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">Registered</div>'
       + '<h2 style="font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">You are in</h2>'
       + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">Your certificate will be issued in that name. Finish all six modules and it records completion of the JRS reviewer training. <b style="color:var(--text)">It is a certificate of completion, not professional certification, accreditation, licensure, or a regulatory credential.</b></p>'
-      + '<a href="resources.html" style="text-decoration:none"><button type="button" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer;margin-bottom:10px">Explore free review resources</button></a>'
-      + '<button type="button" onclick="document.getElementById(\'enroll-overlay\').style.display=\'none\'" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Start the training</button>';
+      + '<a href="resources.html" class="jrs-enroll-resources-link">Explore free review resources</a>'
+      + '<button type="button" onclick="dismissEnroll()" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Return to training</button>';
+      var successTitle = inner.querySelector('h2');
+      if (successTitle) { successTitle.setAttribute('tabindex','-1'); successTitle.focus(); }
     })
     .catch(function(){ msg.style.color = 'var(--review-text)'; msg.textContent = 'Could not register just now. Please try again, or email info@jrsstandard.com.'; btn.disabled = false; });
 }
