@@ -3,6 +3,11 @@
   "crons": [],
   "redirects": [
     {
+      "source": "/programme-status-9872fb93cc94l.html",
+      "destination": "/programme-status-9872fb93cc94.html",
+      "permanent": false
+    },
+    {
       "source": "/programme--9872fb93cc94.html",
       "destination": "/programme-status-9872fb93cc94.html",
       "permanent": false
@@ -613,13 +618,31 @@
           "value": "no-referrer"
         }
       ]
+    },
+    {
+      "source": "/programme-status-9872fb93cc94l.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store, max-age=0"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
     }
   ],
   "proxy": {
     "entrypoint": "proxy.js",
     "matcher": [
       "/programme-status-9872fb93cc94.html",
-      "/programme--9872fb93cc94.html"
+      "/programme--9872fb93cc94.html",
+      "/programme-status-9872fb93cc94l.html"
     ]
   }
 }

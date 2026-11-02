@@ -15,7 +15,7 @@ const privateReaders=[
   "checkout-stats"
 ];
 const config=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url),'utf8'));
-const dashboardPaths=['/programme-status-9872fb93cc94.html','/programme--9872fb93cc94.html'];
+const dashboardPaths=['/programme-status-9872fb93cc94.html','/programme--9872fb93cc94.html','/programme-status-9872fb93cc94l.html'];
 const dashboard=readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
 // The private dashboard now contains an authenticated reporting UI, not the
 // former placeholder. The proxy must gate the static HTML before any response.

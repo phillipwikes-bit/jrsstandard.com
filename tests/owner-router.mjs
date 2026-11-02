@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 
 const home='https://www.jrsstandard.com/programme-status-9872fb93cc94.html';
 const legacy='https://www.jrsstandard.com/programme--9872fb93cc94.html';
+const original='https://www.jrsstandard.com/programme-status-9872fb93cc94l.html';
 const secret='synthetic-private-owner-secret-0123456789-across-tests-only';
 const old=process.env.OWNER_DASHBOARD_TOKEN;
 let pass=0;
@@ -28,6 +29,16 @@ try{
     assert.equal(result.status,302);
     assert.equal(result.headers.get('location'),'/owner-login.html');
     assert.equal(result.headers.get('cache-control'),'private, no-store');
+  });
+  await check('original owner link is protected before any HTML is returned',async()=>{
+    const result=await proxy(new Request(original));
+    assert.equal(result.status,302);
+    assert.equal(result.headers.get('location'),'/owner-login.html');
+    assert.equal(result.headers.get('cache-control'),'private, no-store');
+  });
+  await check('original owner link denies HEAD and POST without session',async()=>{
+    assert.equal((await proxy(new Request(original,{method:'HEAD'}))).status,302);
+    assert.equal((await proxy(new Request(original,{method:'POST'}))).status,405);
   });
   await check('legacy URL denies HEAD before static HTML',async()=>{
     const result=await proxy(new Request(legacy,{method:'HEAD'}));
@@ -57,7 +68,9 @@ try{
   await check('route config and dependency are pinned to private page',async()=>{
     const j=JSON.parse(readFileSync(new URL('../vercel.json',import.meta.url),'utf8'));
     assert.equal(j.proxy.entrypoint,'proxy.js');
-    assert.deepEqual(j.proxy.matcher,['/programme-status-9872fb93cc94.html','/programme--9872fb93cc94.html']);
+    assert.deepEqual(j.proxy.matcher,['/programme-status-9872fb93cc94.html','/programme--9872fb93cc94.html','/programme-status-9872fb93cc94l.html']);
+    assert.ok(j.redirects.some(r=>r.source==='/programme-status-9872fb93cc94l.html' && r.destination==='/programme-status-9872fb93cc94.html'));
+    assert.ok(j.headers.some(h=>h.source==='/programme-status-9872fb93cc94l.html' && h.headers.some(e=>e.key==='Cache-Control' && e.value.includes('no-store'))));
     const pkg=JSON.parse(readFileSync(new URL('../package.json',import.meta.url),'utf8'));
     assert.equal(pkg.dependencies['@vercel/functions'],'3.10.4');
     assert.equal(pkg.type,'module');
