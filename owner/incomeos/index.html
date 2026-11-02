@@ -100,9 +100,9 @@
         <div><small>Recorded gross receipts</small><strong id="ledger-total">$0.00</strong></div>
         <div><small>Fees withheld</small><strong id="ledger-fees">$0.00</strong></div>
         <div><small>Other recorded expenses</small><strong id="ledger-expenses">$0.00</strong></div>
-        <div><small>Cash after listed costs*</small><strong id="ledger-net">$0.00</strong></div>
+        <div><small>Income less listed costs*</small><strong id="ledger-net">$0.00</strong></div>
       </div>
-      <p class="muted">*Not taxable profit or cash available to invest. Reported fees and costs are not necessarily tax deductible. Pending payments, recovered principal, and unreconciled sale proceeds are tracked separately.</p>
+      <p class="muted">*Not taxable profit or cash available to invest. Refunds/credits are reported separately until matched to original charges. Reported fees and costs are not necessarily tax deductible. Pending payments, recovered principal, and unreconciled sale proceeds are tracked separately.</p>
       <div class="reportactions"><button type="button" class="mainbtn" id="print-accountant">Print / Save annual report as PDF</button><button type="button" class="smallbtn" id="export-ledger">Export detailed CSV</button><button type="button" class="smallbtn" id="backup-ledger">Download private JSON backup</button></div>
     </div>
     <div class="panel" id="accounting-control-panel">
@@ -200,17 +200,17 @@
       </form>
     </div>
     <div class="panel">
-      <h3 id="cost-form-title">Record fees, expenses and tax payments</h3>
+      <h3 id="cost-form-title">Record expenses, tax payments and refunds</h3>
       <p class="muted">Expenses and withheld fees are separate from estimated tax payments and capital contributions. Record platform fees withheld on an income entry only once.</p>
       <div class="quickvendors" aria-label="Expense examples"><span class="muted">Quick add:</span><button type="button" data-vendor="ChatGPT" data-cost-category="software">ChatGPT</button><button type="button" data-vendor="Claude / Anthropic" data-cost-category="software">Claude</button><button type="button" data-vendor="OpenAI API" data-cost-category="software">OpenAI API</button><button type="button" data-vendor="Grammarly" data-cost-category="software">Grammarly</button><button type="button" data-vendor="Namecheap domain" data-cost-category="software">Domain</button><button type="button" data-vendor="Namecheap email" data-cost-category="software">JRS email</button><button type="button" data-vendor="Sejda PDF" data-cost-category="software">Sejda</button><button type="button" data-vendor="Home internet" data-cost-category="internet">Internet</button><button type="button" data-vendor="Mobile phone" data-cost-category="internet">Cell phone</button><button type="button" data-vendor="Printer and ink" data-cost-category="equipment">Printer</button></div>
       <form id="cost-form">
         <label for="cost-label">Description</label><input id="cost-label" name="label" required maxlength="100" placeholder="e.g., subscription, travel, estimated tax" autocomplete="off">
         <div class="formgrid">
           <div><label for="cost-payee">Payee / provider</label><input id="cost-payee" name="payee" maxlength="100" autocomplete="off"></div>
-          <div><label for="cost-type">Type</label><select id="cost-type" name="type"><option value="expense">Possible business / investment expense</option><option value="taxpayment">Estimated tax payment (not an expense deduction)</option><option value="capital">Asset purchase / capital contribution (not an expense deduction)</option><option value="other">Other outflow, review</option></select></div>
+          <div><label for="cost-type">Type</label><select id="cost-type" name="type"><option value="expense">Possible business / investment expense</option><option value="taxpayment">Estimated tax payment (not an expense deduction)</option><option value="capital">Asset purchase / capital contribution (not an expense deduction)</option><option value="other">Other outflow, review</option><option value="refund">Refund / credit received (requires original-charge match)</option></select></div>
         </div>
         <div class="formgrid">
-          <div><label for="cost-amount">Amount paid (USD)</label><input id="cost-amount" name="amount" type="number" min="0.01" max="10000000" step="0.01" inputmode="decimal" required></div>
+          <div><label for="cost-amount">Amount (USD, use positive amount for refunds)</label><input id="cost-amount" name="amount" type="number" min="0.01" max="10000000" step="0.01" inputmode="decimal" required></div>
           <div><label for="cost-date">Date paid</label><input id="cost-date" name="date" type="date" required></div>
         </div>
         <div class="formgrid">
@@ -224,7 +224,7 @@
     </div>
     <div class="panel">
       <div class="panelrow"><h3>All recorded items</h3><span class="muted" id="ledger-count">0 items</span></div>
-      <div class="filterbar"><label class="sr-only" for="ledger-filter">Record filter</label><select id="ledger-filter"><option value="all">All entries</option><option value="income">Income / receipts</option><option value="outflow">Expenses / outflows</option><option value="pending">Pending payments</option></select><label class="sr-only" for="ledger-search">Search records</label><input id="ledger-search" type="search" placeholder="Search source / category"></div>
+      <div class="filterbar"><label class="sr-only" for="ledger-filter">Record filter</label><select id="ledger-filter"><option value="all">All entries</option><option value="income">Income / receipts</option><option value="outflow">Expenses / outflows</option><option value="pending">Pending payments</option><option value="refund">Unallocated refunds / credits</option></select><label class="sr-only" for="ledger-search">Search records</label><input id="ledger-search" type="search" placeholder="Search source / category"></div>
       <div id="ledger-list" class="stack"></div>
     </div>
     <div class="panel">
