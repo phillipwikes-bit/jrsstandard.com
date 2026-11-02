@@ -39,7 +39,7 @@ assert.match(people,/const denied=await ownerAccess\(req\)/);
 assert.match(people,/activity_family: participantGroup\(src,p\)/);
 assert.match(people,/consent_contact_state: contactPermission/);
 assert.match(people,/publication_scope: publicScope/);
-assert.match(people,/consent_to_contact === true/);
+assert.match(people,/permissionState\(p,\['consent_contact','consent_to_contact'\]\)/);
 assert.match(people,/fetchAllUrl\(/);
 assert.ok(!/\.delete\(\)|method:\s*['"]DELETE/.test(people));
 
