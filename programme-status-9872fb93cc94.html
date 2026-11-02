@@ -375,16 +375,24 @@ tr.today td{background:rgba(93,191,130,.07)}
   <div class="chart">
     <div id="ppl-tiles" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:12px"></div>
     <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px">
-      <input id="ppl-q" type="search" placeholder="Search name, organization, country"
-             aria-label="Search the record by name, organization or country"
+      <input id="ppl-q" type="search" placeholder="Search name, email, organization or activity"
+             aria-label="Search private records by name, email, organization, country or activity"
              style="flex:1 1 240px;background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px">
       <select id="ppl-country" aria-label="Filter the record by country"
               style="background:#0d0d0d;border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:12.5px;padding:9px 11px"></select>
+      <select id="ppl-group" aria-label="Filter records by programme purpose"><option value="">All programme purposes</option></select>
+      <select id="ppl-contact" aria-label="Filter records by contact permission">
+        <option value="">All contact-permission states</option>
+        <option value="recorded-yes">Contact permission recorded</option>
+        <option value="recorded-no">Contact permission declined</option>
+        <option value="not-recorded">Contact permission not recorded</option>
+      </select>
     </div>
     <div id="ppl-cnt" class="note" style="margin:0 0 6px"></div>
     <div style="overflow-x:auto"><table id="ppl-tbl" style="min-width:940px"></table></div>
     <div class="note" id="ppl-note" style="margin-top:10px"></div>
-    <div style="margin-top:12px"><button class="btn" type="button" id="ppl-csv">Download full CSV</button></div>
+    <p class="note">Names, email addresses and source activity remain in this signed-in owner view. Consent is shown at the individual source-event level. “Not recorded” is not consent. Do not merge free-resource, training or research identities into software buyer outreach. Exports are personal-data records, not marketing lists.</p>
+    <div style="margin-top:12px"><button class="btn" type="button" id="ppl-csv">Export filtered private contact register (CSV)</button></div>
   </div>
 
   <!-- MERGED FROM THE OWNER SHEET 2026-08-12. That page duplicated this one's
@@ -1688,7 +1696,7 @@ function renderSupWall(d){
   w.innerHTML=h;
 }
 // EVERYONE ON THE RECORD, WITH COUNTRY.
-// Reads the same no-token endpoint the owner sheet reads. Country arrives
+// Reads an explicitly owner-authenticated server endpoint. Country arrives
 // already resolved per person by api/_country-backfill.js, with country_source
 // saying whether it was captured at submission or read from the reviewer roster,
 // so an inferred country is never displayed as a measured one.
