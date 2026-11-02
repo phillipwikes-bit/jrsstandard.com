@@ -67,6 +67,17 @@ try {
   assert.deepEqual(await response.json(),{error:'rate_limited'});
 
   logs.length=0;
+  // Redirect responses are inspected without following an unexpected location.
+  globalThis.fetch=async(_url,options)=>{
+    assert.equal(options.redirect,'manual');
+    return new Response(null,{status:307,headers:{location:'https://untrusted.example.test/redirect'}});
+  };
+  response=await handler(request());
+  assert.equal(response.status,502);
+  assert.match(logs.join(' '),/"status":307/);
+  assert.ok(!logs.join(' ').includes('untrusted.example.test'));
+
+  logs.length=0;
   globalThis.fetch=async()=>{throw new DOMException('private transport failure','AbortError');};
   response=await handler(request());
   assert.equal(response.status,502);
