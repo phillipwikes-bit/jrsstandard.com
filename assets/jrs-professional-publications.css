@@ -1,0 +1,28 @@
+/* Professional article references. Opt-in, public pages only. */
+body.jrs-institutional .jrs-editorial-section{scroll-margin-top:28px}
+body.jrs-institutional .jrs-professional-note{
+  max-width:86ch;margin:17px 0 23px;color:var(--muted,#42576b);
+  font:400 14px/1.65 Inter,system-ui,sans-serif;
+}
+body.jrs-institutional .jrs-editorial-section .jr-publication a,
+body.jrs-institutional .jrs-editorial-section .card a,
+body.jrs-institutional.jrs-resource-page .jrs-professional-article a{
+  display:inline-flex;align-items:center;min-height:44px;
+  text-underline-offset:4px;text-decoration-thickness:1px;
+}
+body.jrs-institutional .jrs-editorial-section a:focus-visible,
+body.jrs-institutional .jrs-professional-article a:focus-visible{
+  outline:3px solid #0b679c!important;outline-offset:3px!important;
+}
+body.jrs-institutional.jrs-resource-page .jrs-professional-article{
+  min-width:0;
+}
+body.jrs-institutional.jrs-resource-page .jrs-professional-article .card-tag{
+  text-wrap:pretty;
+}
+body.jrs-institutional .jrs-editorial-section :is(h2,h3),
+body.jrs-institutional .jrs-professional-article :is(h2,h3){text-wrap:balance}
+@media(max-width:660px){
+ body.jrs-institutional .jrs-professional-note{font-size:14px;line-height:1.65}
+ body.jrs-institutional .jrs-editorial-section .jr-publication a{width:max-content;max-width:100%}
+}
