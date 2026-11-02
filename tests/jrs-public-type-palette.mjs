@@ -7,11 +7,12 @@ const bridge=load('assets/jrs-legacy-public-alignment.css');
 const shared=load('assets/jrs-institutional-reference.css');
 const legacy=[
  'access.html','reviewer/evaluation.html','reviewer/completion.html',
- 'recheck.html','security.html','review-engine.html'
+ 'recheck.html','security.html','review-engine.html',
+ 'coauthor.html','honor.html','ai-records-arm-b.html','404.html','people.html'
 ];
 for(const path of legacy){
  const html=load(path);
- assert.match(html,/<body class="jrs-institutional jrs-legacy-public(?: jrs-technical-route)?">/,path+': required opt-in missing');
+ assert.match(html,/<body class="jrs-institutional jrs-legacy-public(?: [^"]+)?">/,path+': required opt-in missing');
  assert.ok(html.includes('href="/assets/jrs-institutional-reference.css"'),path+': shared theme missing');
  assert.ok(html.includes('href="/assets/jrs-legacy-public-alignment.css"'),path+': legacy bridge missing');
  assert.equal((html.match(/href="\/assets\/jrs-legacy-public-alignment.css"/g)||[]).length,1,path+': duplicate theme');
@@ -90,4 +91,4 @@ assert.ok(researchSummary.includes('/api/dl?e=accuracy&amp;src=research-summary'
  'research PDF routes missing');
 assert.ok(standard.includes('/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=jrsstandard'),
  'legacy general investigator guide route missing');
-console.log('PASS: 6 legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.');
+console.log('PASS: 11 public/retained legacy routes, 6 principal pages, 17 reference pages, 9 linked PDF assets and locally generated training completion PNG guarded. PDF harmonization remains a separate controlled publication task.');
