@@ -33,12 +33,14 @@ const OWNER_PREVIEW_REF='fix/owner-dashboard-mainline-integration-2026-11-02';
 const OWNER_PREVIEW_ALIAS='jrsstandard-com-git-fix-owner-das-a30b69-phillip-wikes-projects.vercel.app';
 function neonRequestOrigin(browserOrigin) {
   const env=(typeof process!=='undefined'&&process.env)||{};
-  if (env.VERCEL_ENV !== 'preview' ||
-      env.VERCEL_GIT_COMMIT_REF !== OWNER_PREVIEW_REF) return browserOrigin;
+  if (env.VERCEL_ENV !== 'preview') return browserOrigin;
   const branchUrl=env.VERCEL_BRANCH_URL || '';
-  // If the host is different from the one explicitly approved in Neon,
-  // let the provider reject the browser origin rather than spoofing trust.
-  if (branchUrl && branchUrl !== OWNER_PREVIEW_ALIAS) return browserOrigin;
+  // Either exact branch identity is sufficient, provided a supplied branch
+  // hostname does not contradict the known approved alias.
+  const verifiedBranch=(env.VERCEL_GIT_COMMIT_REF === OWNER_PREVIEW_REF ||
+    branchUrl === OWNER_PREVIEW_ALIAS);
+  if (!verifiedBranch || (branchUrl && branchUrl !== OWNER_PREVIEW_ALIAS))
+    return browserOrigin;
   return 'https://'+OWNER_PREVIEW_ALIAS;
 }
 
