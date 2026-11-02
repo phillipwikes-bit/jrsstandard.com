@@ -43,7 +43,9 @@ function row(x,index){
     // Source-specific recipient permission is not marketing, publication,
     // research enrollment, transfer authorization or commercial qualification.
     publication_permission:'not-recorded',
-    transfer_permission:consent(y.consent_to_transfer)
+    // The public inquiry form expressly disclaims transfer authority. An
+    // injected optional field is not an approved transfer-permission capture.
+    transfer_permission:'not-recorded'
   };
 }
 export default async function handler(req){
@@ -62,7 +64,7 @@ export default async function handler(req){
     try{
       const ctrl=new AbortController(),timer=setTimeout(()=>ctrl.abort(),7500);
       try{
-        response=await fetch(ENDPOINT+'?limit='+PAGE_SIZE+'&offset='+offset+'&order=desc',{
+        response=await fetch(ENDPOINT+'?limit='+PAGE_SIZE+'&offset='+offset+'&order=desc&spam=false',{
           method:'GET',headers:{Authorization:'Bearer '+key,Accept:'application/json'},
           redirect:'manual',signal:ctrl.signal
         });
@@ -83,7 +85,8 @@ export default async function handler(req){
     if(data.submissions.length<PAGE_SIZE){
       return json({source:'formspree-public-jrs-contact',configured:true,complete:true,
         total:items.length,rows:items,
-        coverage:'Formspree response records for public contact form only; not historical Supabase research or participant rows; no publication or transfer consent inferred.'});
+        source_scope:'formspree_nonspam_submissions',
+        coverage:'Only Formspree public contact form submissions not marked as spam. Formspree spam items are not included. Recorded contact consent is self-declared; no publication, marketing, research enrollment or transfer permission is inferred. Submissions are not verified unique people or commercial leads.'});
     }
   }
   return json({error:'formspree_pagination_limit',complete:false,
