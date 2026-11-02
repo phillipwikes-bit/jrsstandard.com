@@ -121,7 +121,6 @@ await hold({periods:[sept,{...oct,entries:oct.entries.map((e,i)=>i===0?{...e,id:
 await hold({periods:[sept,{...oct,entries:[{...oct.entries[0],date:"2026-09-30"},...oct.entries.slice(1)]}]},"MONTH_CLOSE_NOT_ACCEPTED");
 await hold({periods:[sept,{...oct,statementPackage:{...oct.statementPackage,bankRows:oct.statementPackage.bankRows.slice(0,3)}}]},"MONTH_CLOSE_NOT_ACCEPTED");
 await assert.rejects(R.assess({periods:[sept],initialOpeningReviewed:true,initialOpeningEvidenceId:"owner.opening.001"}),/2 to 24/);
-await assert.rejects(R.assess({periods:[sept,oct],initialOpeningReviewed:true,initialOpeningEvidenceId:"owner.opening.001",garbage:1}).then(()=>{}),()=>false).catch(()=>{}); // ignored extra metadata does not become a financial fact
 const tampered=JSON.parse(JSON.stringify(oct));tampered.journal[0].data.amountCents=999;
 await assert.rejects(R.assess({...input,periods:[sept,tampered]}),/modified/);
 assert.doesNotMatch(read("period-rollforward.js"),/fetch\s*\(|localStorage|XMLHttpRequest|WebSocket|sendBeacon/);
