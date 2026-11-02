@@ -25,16 +25,21 @@
     var pay=Number(x.payUsd),hours=Number(x.workHours),screen=Number(x.screenHours),fees=Number(x.feesUsd||0);
     if(!Number.isFinite(pay)||pay<=0||!Number.isFinite(hours)||hours<=0||!Number.isFinite(screen)||screen<0||!Number.isFinite(fees)||fees<0)problems.push("PAY_OR_EFFORT_INVALID");
     var effective=problems.includes("PAY_OR_EFFORT_INVALID")?null:Math.round((pay-fees)/(hours+screen)*100)/100;
-    if(effective!==null&&effective<(Number.isFinite(Number(prefs.minHourlyUsd))?Number(prefs.minHourlyUsd):25))warnings.push("BELOW_TARGET_RATE");
+    if(effective!==null&&effective<(Number.isFinite(Number(prefs.minHourlyUsd))?Number(prefs.minHourlyUsd):25))problems.push("BELOW_TARGET_RATE");
     if(x.paymentModel!=="hourly"&&x.paymentModel!=="fixed")warnings.push("PAYMENT_MODEL_UNCONFIRMED");
     return {status:problems.length?"HOLD":warnings.length?"SCREEN":"REVIEW",problems:problems,warnings:warnings,effectiveHourlyUsd:effective,
-      opportunityType:"ACTIVE_PROJECT_WORK",availability:"UNCONFIRMED",earnedUsd:0,applicationSubmitted:false,
+      opportunityType:"ACTIVE_PROJECT_WORK",availability:x.openingsVerified===true?"LISTING_REPORTED_OPEN":"UNCONFIRMED",earnedUsd:0,applicationSubmitted:false,
       note:"Advertised compensation is not earned income. Screening, onboarding, unpaid tests and taxes may reduce realized value."};
   }
   function digest(items,asOf,prefs){
     if(!Array.isArray(items)||items.length>200)throw Error("Expected at most 200 sourced project listings");
-    var seen=new Set(),rows=[];
-    items.forEach(function(x){var key=x&&typeof x.id==="string"?x.id.trim():"";if(key&&seen.has(key))return;if(key)seen.add(key);rows.push({listing:x,assessment:review(x,asOf,prefs)});});
+    var counts=new Map(),rows=[];
+    items.forEach(function(x){var key=x&&typeof x.id==="string"?x.id.trim():"";if(key)counts.set(key,(counts.get(key)||0)+1);});
+    items.forEach(function(x){
+      var key=x&&typeof x.id==="string"?x.id.trim():"",assessment=review(x,asOf,prefs);
+      if(key&&counts.get(key)>1){assessment.status="HOLD";assessment.problems.push("DUPLICATE_LISTING_ID");}
+      rows.push({listing:x,assessment:assessment});
+    });
     var rank={REVIEW:0,SCREEN:1,HOLD:2};
     rows.sort(function(a,b){return rank[a.assessment.status]-rank[b.assessment.status]||(b.assessment.effectiveHourlyUsd||0)-(a.assessment.effectiveHourlyUsd||0);});
     return {results:rows.filter(function(row){return row.assessment.status!=="HOLD";}),withheld:rows.filter(function(row){return row.assessment.status==="HOLD";}).length,notice:"Only evidence-screened listings are displayed. Eligibility evidence is listing-specific, not proof of recruiter acceptance. No live platform connection or application submission."};
