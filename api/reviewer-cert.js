@@ -59,7 +59,11 @@ function sameName(a,b){
 
 function html(s, code){
   return new Response(s, { status: code || 200,
-    headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
+    headers: { 'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'private, no-store',
+      'Referrer-Policy': 'no-referrer',
+      'X-Robots-Tag': 'noindex, nofollow',
+      'X-Content-Type-Options': 'nosniff' } });
 }
 
 function badCode(){
