@@ -234,6 +234,22 @@
              w.getComputedStyle(canvas).display!=='none' &&
              w.getComputedStyle(actions).display!=='none' &&
              png.startsWith('data:image/png;base64,') && png.length>1500;
+           if(trainingJourneyValid){
+             // Completed modules remain readable and must not announce
+             // an expanded state after a different module closes them.
+             const btn0=d.getElementById('module-btn-0');
+             const btn1=d.getElementById('module-btn-1');
+             w.toggleModule(0);
+             const firstOpen=btn0.getAttribute('aria-expanded')==='true';
+             w.toggleModule(1);
+             trainingJourneyValid=firstOpen &&
+               btn0.getAttribute('aria-expanded')==='false' &&
+               btn1.getAttribute('aria-expanded')==='true' &&
+               w.getComputedStyle(d.getElementById('module-panel-0')).display==='none';
+             w.toggleModule(1);
+             trainingJourneyValid=trainingJourneyValid &&
+               btn1.getAttribute('aria-expanded')==='false';
+           }
          }else trainingJourneyValid=false;
        }
      }catch(e){
