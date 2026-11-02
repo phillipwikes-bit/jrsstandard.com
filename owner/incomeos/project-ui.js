@@ -15,7 +15,7 @@
       try{
         var doc=JSON.parse(await file.text()),items=Array.isArray(doc)?doc:doc&&doc.projects;
         if(!Array.isArray(items)||items.length===0||items.length>200)throw Error("Expected 1 to 200 project listings");
-        var allowed=["id","title","platform","sourceUrl","applyUrl","reviewed","deadline","remote","eligibility","openingsVerified","paymentVerified","payUsd","workHours","screenHours","feesUsd","paymentModel","requiresUpfrontPayment","requestsCredentials"];
+        var allowed=["id","title","platform","sourceUrl","applyUrl","reviewed","deadline","remote","eligibility","openingsVerified","paymentVerified","payUsd","workHours","screenHours","feesUsd","paymentModel","requiresUpfrontPayment","requestsCredentials","eligibilityEvidenceUrl","eligibilityCheckedOn","requiresUnverifiedCredential","requiresUnknownWorkAuthorization","requiresUnmetExperience"];
         if(items.some(function(x){return !x||typeof x!=="object"||Array.isArray(x)||Object.keys(x).some(function(k){return !allowed.includes(k);});}))throw Error("Unrecognized or private fields are prohibited");
         var d=new Date(),today=[d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");
         var result=engine.digest(items,today,{remoteOnly:true,minHourlyUsd:25});
@@ -29,7 +29,7 @@
           }
           root.appendChild(card);
         });
-        status.textContent=result.results.length+" sourced project candidates screened locally. No live search, application, or earnings occurred.";
+        status.textContent=result.results.length+" evidence-screened candidates displayed; "+result.withheld+" withheld because eligibility, availability, evidence or other requirements were not established. No live search, application, or earnings occurred.";
       }catch(err){status.textContent="Import rejected: "+err.message;}
       finally{input.value="";}
     });
