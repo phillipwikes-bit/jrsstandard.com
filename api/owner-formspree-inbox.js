@@ -21,6 +21,13 @@ const str=(x,n)=>typeof x==='string'?x.slice(0,n):(typeof x==='number'?String(x)
 const consent=x=>x===true||x==='true'?'recorded-yes':x===false||x==='false'?'recorded-no':'not-recorded';
 function row(x,index){
   const y=x&&typeof x==='object'&&!Array.isArray(x)?x:{};
+  // The public form's no-JavaScript fallback submits a checked consent=on;
+  // the AJAX relay submits consent_to_contact=true. Preserve both recorded
+  // source paths without inferring permission from unrelated forms.
+  const directPublicForm=y.source==='public-jrs-professional-contact' &&
+    y.form_type==='jrs-general-professional-inquiry-2026-11-01';
+  const contactValue=Object.hasOwn(y,'consent_to_contact')?y.consent_to_contact:
+    (directPublicForm && y.consent==='on'?true:undefined);
   return {
     source:'formspree-public-jrs-contact',
     source_record_id:str(y._id||y.id||y._submission_id,160),
@@ -31,12 +38,12 @@ function row(x,index){
     organization:str(y.organization,160),
     category:str(y.category,64),
     message:str(y.message,1600),
-    contact_permission:consent(y.consent_to_contact),
+    contact_permission:consent(contactValue),
     source_type:str(y.form_type||y.source,120),
     // Source-specific recipient permission is not marketing, publication,
     // research enrollment, transfer authorization or commercial qualification.
     publication_permission:'not-recorded',
-    transfer_permission:'not-recorded'
+    transfer_permission:consent(y.consent_to_transfer)
   };
 }
 export default async function handler(req){
