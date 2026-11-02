@@ -41,6 +41,8 @@ jobs:
         run: node tests/owner-neon-otp-failures.test.mjs
       - name: JRS programme model, consent and browser JS
         run: node tests/owner-programme-issue36.mjs
+      - name: Complete historical download quality reconciliation
+        run: node tests/download-traffic-quality.mjs
       - name: Public contact continuity
         run: node --test tests/public-site-inquiry.test.mjs
       - name: Free public resources remain navigable
