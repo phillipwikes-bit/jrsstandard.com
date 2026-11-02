@@ -119,6 +119,17 @@ assert.ok(standard.indexOf('</main>')>standard.indexOf('id="section-kit"') &&
   'Main landmark must enclose last document section and exclude footer');
 assert.ok(!standard.includes('role="main"'),'No second or hidden main landmark is allowed');
 
+// Access landing page must have a valid document/landmark boundary. Earlier
+// markup closed main inside the footer and browsers repaired the DOM implicitly.
+const accessMarkup=read('access.html');
+assert.equal((accessMarkup.match(/<main\b/g)||[]).length,1,'Access route must have one main landmark');
+assert.equal((accessMarkup.match(/<\/main>/g)||[]).length,1,'Access route must close the main landmark');
+assert.ok(accessMarkup.indexOf('</main>')<accessMarkup.indexOf('<footer>'),
+  'Access route footer must be a sibling of main, never nested inside main');
+assert.ok(accessMarkup.indexOf('<footer>')<accessMarkup.indexOf('</footer>'),
+  'Access route footer must close after it opens');
+
+
 assert.ok(standard.includes('<details>')&&standard.includes('jrs-publication-note-detail')&&
  standard.includes('Publication versions:')&&standard.includes('Archived implementation-kit inventory:'),
  'Version and retired-kit disclosures must remain available in accessible details');
