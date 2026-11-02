@@ -1,8 +1,8 @@
 import { ownerAccess } from './_owner-auth.js';
-import { fetchAllUrl } from './_sb-fetch.js';
+import { fetchAll } from './_sb-fetch.js';
 export const config = { runtime: 'edge' };
 
-// Aggregate commercial-funnel stats for the private status dashboard, token-free.
+// Historical aggregate checkout activity for the authenticated owner dashboard.
 //
 // WHY THIS EXISTS. api/checkout.js writes two things: a 'checkout-click' event
 // for every arrival at the pay screen, and a 'checkout-fallback' contact row for
@@ -46,8 +46,10 @@ function json(o, s) {
     status: s || 200,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Cache-Control': 'no-store'
+      'Cache-Control': 'private, no-store',
+      'X-Robots-Tag': 'noindex, nofollow',
+      'Referrer-Policy': 'no-referrer',
+      'X-Content-Type-Options': 'nosniff'
     }
   });
 }
@@ -72,14 +74,11 @@ export default async function handler(req) {
   };
 
   // ---- arrivals at the pay screen -----------------------------------------
-  let clicks = [];
-  try {
-    // Paged: a limit above Supabase's 1,000-row cap was silently truncated.
-    clicks = await fetchAllUrl(SB + feed('checkout-click'), H);
-  } catch (e) {
-    return json({ error: 'db_unreachable' }, 502);
-  }
-  if (!Array.isArray(clicks)) clicks = [];
+  // Require complete pagination, never partial historical populations.
+  const clickResult=await fetchAll(SB,feed('checkout-click').slice('/rest/v1/'.length),H);
+  if(!clickResult.complete || !Array.isArray(clickResult.rows))
+    return json({error:'checkout_source_incomplete',source:'checkout-click',complete:false},502);
+  const clicks=clickResult.rows;
 
   const byOffer = {}, byCountry = {}, byState = {};
   let intentUsd = 0;
@@ -89,20 +88,16 @@ export default async function handler(req) {
     bump(byOffer, offer);
     bump(byCountry, String(p.country || ''));
     bump(byState, String(p.state || ''));
-    // Stated intent is only meaningful for clicks that could NOT complete. A
-    // redirected click may or may not have converted, and counting it here would
-    // overstate lost revenue as if every redirect had also failed.
+    // Legacy offer-price exposure for events labeled unconfigured.
+    // Clicks do not establish a payment, purchaser commitment, or lost revenue.
     if (p.state === 'unconfigured' && OFFERS[offer]) intentUsd += OFFERS[offer].price_usd;
   }
 
   // ---- leads captured on the fallback form ---------------------------------
-  let leads = [];
-  try {
-    leads = await fetchAllUrl(SB + feed('checkout-fallback'), H);
-  } catch (e) {
-    leads = [];
-  }
-  if (!Array.isArray(leads)) leads = [];
+  const leadResult=await fetchAll(SB,feed('checkout-fallback').slice('/rest/v1/'.length),H);
+  if(!leadResult.complete || !Array.isArray(leadResult.rows))
+    return json({error:'checkout_source_incomplete',source:'checkout-fallback',complete:false},502);
+  const leads=leadResult.rows;
 
   const leadsByOffer = {}, leadsByCountry = {};
   let leadValueUsd = 0, withVolume = 0;
@@ -117,13 +112,10 @@ export default async function handler(req) {
   }
 
   // ---- enterprise and licensing inquiries ---------------------------------
-  let inq = [];
-  try {
-    inq = await fetchAllUrl(SB + feed('enterprise-inquiry'), H);
-  } catch (e) {
-    inq = [];
-  }
-  if (!Array.isArray(inq)) inq = [];
+  const inquiryResult=await fetchAll(SB,feed('enterprise-inquiry').slice('/rest/v1/'.length),H);
+  if(!inquiryResult.complete || !Array.isArray(inquiryResult.rows))
+    return json({error:'checkout_source_incomplete',source:'enterprise-inquiry',complete:false},502);
+  const inq=inquiryResult.rows;
 
   const inqByInterest = {}, inqByScale = {}, inqByTimeline = {}, inqByCountry = {};
   let namedPlatform = 0;
@@ -144,6 +136,8 @@ export default async function handler(req) {
 
   return json({
     generated_at: new Date().toISOString(),
+    complete: true,
+    source_coverage: ['checkout-click','checkout-fallback','enterprise-inquiry'],
     pay_screen_arrivals: clicks.length,
     arrivals_by_offer: byOffer,
     arrivals_by_country: byCountry,
@@ -161,8 +155,6 @@ export default async function handler(req) {
     inquiries_by_country: inqByCountry,
     inquiries_naming_a_platform: namedPlatform,
     checkout_configured: configured,
-    note: 'Aggregate only. No name, email or organisation is exposed by this '
-        + 'endpoint. unconfigured_intent_usd counts only arrivals that could not '
-        + 'complete, so it is lost intent rather than lost revenue.'
+    note: 'Aggregate only, sourced from three complete historical populations. No names, emails or organizations are returned. The legacy unconfigured_intent_usd field sums the listed historical offer prices attached to unconfigured click events. It is neither confirmed purchase intent, lost revenue nor evidence of completed payments. These offers are retired.'
   });
 }
