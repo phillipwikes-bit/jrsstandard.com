@@ -1,0 +1,18 @@
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import vm from "node:vm";
+const ctx={window:{},URL};
+vm.runInNewContext(readFileSync(new URL("../owner/incomeos/project-radar.js",import.meta.url),"utf8"),ctx);
+const {review,digest}=ctx.window.IncomeOSProjectRadar;
+const sample={id:"job-123",title:"AI response evaluator",platform:"Handshake AI",sourceUrl:"https://example.org/listing",applyUrl:"https://example.org/apply",reviewed:"2026-11-02",deadline:null,remote:true,eligibility:"unknown",openingsVerified:false,paymentVerified:false,payUsd:400,workHours:10,screenHours:2,feesUsd:0,paymentModel:"fixed"};
+assert.equal(review(sample,"2026-11-02",{}).status,"SCREEN");
+assert.equal(review(sample,"2026-11-02",{}).effectiveHourlyUsd,33.33);
+assert.equal(review({...sample,reviewed:"2026-10-20"},"2026-11-02",{}).status,"HOLD");
+assert.equal(review({...sample,requiresUpfrontPayment:true},"2026-11-02",{}).status,"HOLD");
+assert.equal(review({...sample,remote:false},"2026-11-02",{}).status,"HOLD");
+assert.equal(review({...sample,payUsd:0},"2026-11-02",{}).status,"HOLD");
+assert.equal(review({...sample,sourceUrl:"http://example.org"},"2026-11-02",{}).status,"HOLD");
+assert.equal(digest([sample,sample],"2026-11-02",{}).results.length,1);
+assert.equal(review(sample,"2026-11-02",{}).earnedUsd,0);
+assert.equal(review(sample,"2026-11-02",{}).applicationSubmitted,false);
+console.log("IncomeOS project radar tests passed");
