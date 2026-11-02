@@ -155,29 +155,36 @@
      enrollmentDialogValid=!!dialog && !!trigger && !!nameInput &&
        typeof w.openEnroll==='function' && typeof w.dismissEnroll==='function';
      if(enrollmentDialogValid){
+       const background=[...d.body.children].find(el=>el!==dialog && el.tagName!=='SCRIPT');
+       const priorInert=background ? background.inert : false;
+       const visibleClose=d.getElementById('en-close');
        trigger.focus();
        w.openEnroll();
        enrollmentDialogValid=dialog.getAttribute('role')==='dialog' &&
          dialog.getAttribute('aria-modal')==='true' &&
          dialog.getAttribute('aria-labelledby')==='en-dialog-title' &&
          d.activeElement===nameInput &&
+         !!visibleClose && w.getComputedStyle(visibleClose).display!=='none' &&
+         !!background && background.inert===true &&
          w.getComputedStyle(dialog).display!=='none';
        const focusables=[...dialog.querySelectorAll(
          'a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled])'
        )].filter(el=>el.getClientRects().length>0);
-       const last=focusables.at(-1);
-       if(enrollmentDialogValid && last){
-         nameInput.dispatchEvent(new w.KeyboardEvent('keydown',
+       const first=focusables[0],last=focusables.at(-1);
+       if(enrollmentDialogValid && first && last){
+         first.focus();
+         first.dispatchEvent(new w.KeyboardEvent('keydown',
            {key:'Tab',shiftKey:true,bubbles:true,cancelable:true}));
          enrollmentDialogValid=d.activeElement===last;
          last.dispatchEvent(new w.KeyboardEvent('keydown',
            {key:'Tab',bubbles:true,cancelable:true}));
-         enrollmentDialogValid=enrollmentDialogValid && d.activeElement===nameInput;
+         enrollmentDialogValid=enrollmentDialogValid && d.activeElement===first;
        }else enrollmentDialogValid=false;
        d.dispatchEvent(new w.KeyboardEvent('keydown',
          {key:'Escape',bubbles:true,cancelable:true}));
        enrollmentDialogValid=enrollmentDialogValid &&
          w.getComputedStyle(dialog).display==='none' &&
+         background.inert===priorInert &&
          d.activeElement===trigger &&
          !d.body.classList.contains('jrs-training-dialog-open');
      }
