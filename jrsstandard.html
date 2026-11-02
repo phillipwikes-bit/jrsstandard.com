@@ -3960,15 +3960,29 @@ const ROLE_ENVS={
  `}
 };
 
+var jrsSelectedRoleEnv='hr';
 function showRoleEnv(id){
  const env=ROLE_ENVS[id];if(!env)return;
+ jrsSelectedRoleEnv=id;
  document.getElementById('roles-menu').style.display='none';
  document.getElementById('role-env-container').style.display='block';
  document.getElementById('role-env-content').innerHTML=`<div style="margin-bottom:28px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">${env.sub}</div><h2 style="font-family:'Bodoni Moda',serif;font-size:28px;font-weight:400;line-height:1.15;margin-bottom:20px;">${env.title}</h2></div>${env.content}`;
+ // The selected role card disappears. Transfer focus to the new content
+ // rather than leaving keyboard focus in a hidden subtree.
+ const title=document.querySelector('#role-env-content h2');
+ if(title){
+   title.setAttribute('tabindex','-1');
+   title.focus({preventScroll:true});
+ }
 }
 function showRolesMenu(){
  document.getElementById('roles-menu').style.display='block';
  document.getElementById('role-env-container').style.display='none';
+ // The return action hides the Back button. Restore focus to the role
+ // originally selected so keyboard users can make another choice.
+ const selected=document.querySelector('.role-card[onclick="showRoleEnv(\''+jrsSelectedRoleEnv+'\')"]')
+   ||document.querySelector('#roles-menu .role-card');
+ if(selected&&typeof selected.focus==='function')selected.focus({preventScroll:true});
 }
 
 // ── TRAINING MODULES ──────────────────────────────
