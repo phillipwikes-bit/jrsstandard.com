@@ -37,6 +37,12 @@
    assert(cards>=1,"At least one research card rendered at "+width);
    assert(doc.querySelectorAll("#asset-cards article.card").length>=1,"Alternative asset cards available at "+width);
    assert(win.IncomeOSFinancialReadOnly===true,"Financial staging is fail-closed at "+width);
+   const exceptionStatus=doc.getElementById("review-summary");
+   assert(!!exceptionStatus && exceptionStatus.textContent.includes("No records entered"),
+     "Accountant evidence review loads safely with no private entries at "+width);
+   const exceptionCsv=doc.getElementById("export-review");
+   assert(!!exceptionCsv && exceptionCsv.type==="button",
+     "Annual documentation exception export control available at "+width);
    for(const name of ["receipt-form","cost-form"]){
       const form=doc.getElementById(name);
       assert(!!form,"Expected accountant form "+name+" at "+width);
