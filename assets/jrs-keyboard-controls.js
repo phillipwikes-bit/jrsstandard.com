@@ -17,7 +17,61 @@
       if(hasClass(el,'role-path-card'))set(el,'aria-pressed',hasClass(el,'role-active'));
     });
   }
+  // Worked examples use native buttons. Enhance them with an actual tablist,
+  // roving keyboard focus, panel ownership and accessible selected state.
+  // The HTML remains usable with pointer clicks if this enhancement fails.
+  function enhanceScenarioTabs(){
+    document.querySelectorAll('.scenario-block .scenario-tabs').forEach(function(tabs){
+      if(tabs.hasAttribute('data-jrs-tabs-enhanced'))return;
+      var block=tabs.closest('.scenario-block');
+      var buttons=Array.from(tabs.querySelectorAll('button.scenario-tab'));
+      if(!block||buttons.length<2)return;
+      var pairs=buttons.map(function(button){
+        var match=(button.getAttribute('onclick')||'').match(/showScenarioPane\(this,\s*'([^']+)'\)/);
+        var panel=match&&document.getElementById(match[1]);
+        return panel&&block.contains(panel)?{button:button,panel:panel}:null;
+      });
+      if(pairs.some(function(pair){return !pair;}))return;
+      var title=block.querySelector('.scenario-title');
+      tabs.setAttribute('role','tablist');
+      tabs.setAttribute('aria-label',title?
+        'Review panels: '+title.textContent.trim():'Worked example review panels');
+      pairs.forEach(function(pair){
+        var button=pair.button,panel=pair.panel;
+        button.type='button';
+        button.id=button.id||'jrs-tab-'+panel.id;
+        button.setAttribute('role','tab');
+        button.setAttribute('aria-controls',panel.id);
+        panel.setAttribute('role','tabpanel');
+        panel.setAttribute('aria-labelledby',button.id);
+        if(!panel.hasAttribute('tabindex'))panel.setAttribute('tabindex','0');
+      });
+      function sync(){
+        pairs.forEach(function(pair){
+          var selected=pair.button.classList.contains('active');
+          pair.button.setAttribute('aria-selected',String(selected));
+          pair.button.tabIndex=selected?0:-1;
+          pair.panel.hidden=!selected;
+        });
+      }
+      tabs.addEventListener('click',sync);
+      tabs.addEventListener('keydown',function(event){
+        var key=event.key;
+        if(!['ArrowLeft','ArrowRight','Home','End'].includes(key))return;
+        var current=pairs.findIndex(function(pair){return pair.button===event.target;});
+        if(current<0)return;
+        event.preventDefault();
+        var next=key==='Home'?0:key==='End'?pairs.length-1:
+          (current+(key==='ArrowRight'?1:-1)+pairs.length)%pairs.length;
+        pairs[next].button.focus();
+        pairs[next].button.click();
+      });
+      tabs.setAttribute('data-jrs-tabs-enhanced','true');
+      sync();
+    });
+  }
   function install(){
+    enhanceScenarioTabs();
     var selectors=[
       '.sim-card[onclick]','.role-path-card[onclick]','.visitor-orient-cell[onclick]',
       '.role-card[onclick]','.worksheet-header[onclick]',
