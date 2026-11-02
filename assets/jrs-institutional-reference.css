@@ -1559,3 +1559,23 @@ body.jrs-institutional.jrs-training-page #jrs-practice-result li{margin-bottom:8
 body.jrs-institutional.jrs-training-page #jrs-practice-calibration :where(summary,button,input):focus-visible{
   outline:3px solid #08659a!important;outline-offset:3px!important;
 }
+
+/* JRS restored worked-example tab presentation, 2026-11-02.
+   Responsive labels must remain readable and keyboard focus must never be
+   clipped when three panel tabs share a narrow handset viewport. */
+body.jrs-institutional.jrs-standard-page .scenario-tabs{
+  display:flex;flex-wrap:wrap;min-width:0;gap:0;
+}
+body.jrs-institutional.jrs-standard-page .scenario-tabs .scenario-tab{
+  flex:1 1 145px;min-width:0;min-height:44px;
+  padding:12px 14px!important;
+  font:600 13px/1.4 Inter,system-ui,sans-serif!important;
+  letter-spacing:0!important;text-transform:none!important;
+  white-space:normal!important;text-align:center;
+}
+body.jrs-institutional.jrs-standard-page .scenario-tabs .scenario-tab:focus-visible{
+  outline:3px solid #0b679c!important;outline-offset:-3px!important;
+}
+body.jrs-institutional.jrs-standard-page .scenario-pane{
+  min-width:0;overflow-wrap:anywhere;
+}
