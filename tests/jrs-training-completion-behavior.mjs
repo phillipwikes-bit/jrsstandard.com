@@ -550,7 +550,6 @@ console.log('PASS: funnel telemetry reports recorded only on database acceptance
  assert.ok(guidesPage.includes('location.hostname') &&
    guidesPage.includes("if (q.get('owner') === '1'"),
    'Preview, owner or local browser audits must not become production guide visits');
-   'Preview or local browser audits must not become production guide visits');
  assert.match(guidesPage,/src\.indexOf\('deploytest'\) === 0/,
    'Owner and deployment test traffic must remain outside guide-page counts');
  assert.match(gateStats,/String\(p\.mode\) === 'guidespage'/,
