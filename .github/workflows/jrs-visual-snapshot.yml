@@ -84,22 +84,48 @@ jobs:
             /tmp/jrs-layout-audit-output.html
           if-no-files-found: error
           retention-days: 14
-      - name: Record viewports for human design inspection
+      - name: Inventory local visual evidence without embedding screenshots in logs
         run: |
+          # The PNG artifacts above are the evidence. Do not duplicate their
+          # Base64 content in a public Actions log or mislabel source renders as
+          # hosted visual certification.
           python3 - <<'PY'
-          import base64
-          for key in ['pr-desktop','pr-mobile','pr-standard-desktop','pr-standard-mobile','pr-resources-mobile','pr-training-mobile','pr-guides-mobile','pr-research-mobile','pr-reference-mobile','pr-codebook-mobile','pr-catalog-desktop','pr-catalog-mobile','peer-nist-desktop','peer-ansi-desktop']:
-            p='/tmp/jrs-visual/'+key+'.png'
-            import os
-            if not os.path.exists(p):
-              print('JRS_VISUAL_'+key+'_MISSING',flush=True)
-              continue
-            b=open(p,'rb').read()
-            print('JRS_VISUAL_'+key+'_BEGIN size='+str(len(b)),flush=True)
-            v=base64.b64encode(b).decode('ascii')
-            for i in range(0,len(v),50000): print(v[i:i+50000],flush=True)
-            print('JRS_VISUAL_'+key+'_END',flush=True)
+          import hashlib
+          import struct
+          from pathlib import Path
+          root = Path('/tmp/jrs-visual')
+          expected = (
+              'pr-desktop', 'pr-mobile', 'pr-standard-desktop',
+              'pr-standard-mobile', 'pr-resources-mobile',
+              'pr-training-mobile', 'pr-guides-mobile',
+              'pr-research-mobile', 'pr-reference-mobile',
+              'pr-codebook-mobile', 'pr-catalog-desktop',
+              'pr-catalog-mobile',
+          )
+          manifest = []
+          for stem in expected:
+              path = root / (stem + '.png')
+              data = path.read_bytes()
+              if data[:8] != bytes((137,80,78,71,13,10,26,10)) or len(data) < 24:
+                  raise SystemExit('Invalid source screenshot: ' + stem)
+              width, height = struct.unpack('>II', data[16:24])
+              if not width or not height or width > 10000 or height > 10000:
+                  raise SystemExit('Invalid PNG dimensions: ' + stem)
+              digest = hashlib.sha256(data).hexdigest()
+              manifest.append(f'{stem}: {width}x{height}, {len(data)} bytes, sha256={digest}')
+          target = root / 'jrs-source-screenshot-manifest.txt'
+          target.write_text('Source-rendered PNG inventory; not hosted or accessibility certification.' + chr(10)
+                            + chr(10).join(manifest) + chr(10))
+          print(f'PASS: {len(manifest)} local screenshot PNGs validated and inventoried.')
+          print('Screenshot bytes remain in the uploaded artifact, not the workflow log.')
           PY
+      - name: Preserve local screenshot inventory
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-local-visual-manifest-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-visual/jrs-source-screenshot-manifest.txt
+          if-no-files-found: error
+          retention-days: 14
 
       - name: Verify preview source identity before any release certification
         env:
@@ -109,6 +135,10 @@ jobs:
           # No authenticated exact-commit preview URL means certification stays HOLD.
           # Use manual workflow_dispatch preview_url or configured repository variable.
           # A stale build, Vercel sign-in page or content mismatch is never a pass.
+          if [ -z "${JRS_PREVIEW_URL:-}" ]; then
+            echo "::error title=Exact-head preview input missing::No JRS_VERIFIED_PREVIEW_URL repository variable or workflow_dispatch preview_url was provided. Source-rendered evidence passed independently; hosted release remains on hold."
+            exit 1
+          fi
           python3 tests/jrs-preview-static-verification.py "$JRS_PREVIEW_URL"
 
       - name: Capture verified exact-head preview screenshots

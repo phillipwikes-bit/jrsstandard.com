@@ -1,0 +1,81 @@
+/* Shared JRS practitioner journey, 2026-11-02. Public experience only.
+   No changes to review logic, published editions, data handling or private areas. */
+body.jrs-institutional .jrs-worked-example,
+body.jrs-institutional .jrs-evidence-snapshot{scroll-margin-top:24px}
+body.jrs-institutional .jrs-worked-grid,
+body.jrs-institutional .jrs-evidence-grid{
+ list-style:none!important;margin:24px 0 18px!important;padding:0!important;
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px
+}
+body.jrs-institutional .jrs-worked-step,
+body.jrs-institutional .jrs-evidence-grid>li{
+ margin:0!important;min-width:0;padding:22px!important;border:1px solid #cbd9e3;
+ border-radius:6px;background:#fff;color:#263f53;
+ box-shadow:0 3px 13px rgba(23,54,79,.035)
+}
+body.jrs-institutional .jrs-worked-kicker{
+ margin:0 0 12px!important;color:#795621!important;
+ font-size:13px!important;line-height:1.5!important;font-weight:700;
+ letter-spacing:.03em
+}
+body.jrs-institutional .jrs-worked-step h3{
+ margin:0 0 11px!important;font-size:20px!important;line-height:1.3!important
+}
+body.jrs-institutional .jrs-worked-step blockquote{
+ margin:12px 0 14px!important;padding:12px 14px!important;
+ border-left:3px solid #9e7a41;background:#f3f6f8;color:#1f3e55;
+ font-size:16px;line-height:1.65;overflow-wrap:anywhere
+}
+body.jrs-institutional .jrs-worked-step p,
+body.jrs-institutional .jrs-evidence-grid span{
+ color:#3d5366!important;font-size:15px!important;line-height:1.68!important
+}
+body.jrs-institutional .jrs-evidence-grid strong{
+ display:block;margin-bottom:10px;font-size:18px!important;
+ line-height:1.35;color:#173d5a
+}
+body.jrs-institutional .jrs-evidence-grid span{display:block}
+body.jrs-institutional .jrs-example-boundary,
+body.jrs-institutional .jrs-evidence-sources{
+ max-width:90ch!important;color:#405669!important;
+ font-size:15px!important;line-height:1.7!important
+}
+body.jrs-institutional .jrs-journey-actions{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 0}
+body.jrs-institutional .jrs-journey-actions a{
+ display:inline-flex;align-items:center;min-height:46px;padding:10px 16px;
+ font:600 15px/1.5 Inter,system-ui,sans-serif;text-decoration:none;
+ color:#173d5a;border:1px solid #a9c0d1;border-radius:4px;background:#fff
+}
+body.jrs-institutional .jrs-journey-actions a.jrs-journey-primary{
+ background:#173d5a;color:#fff;border-color:#173d5a
+}
+body.jrs-institutional :is(.jrs-journey-actions a,.jrs-journey-bridge a,.jrs-evidence-sources a):focus-visible{
+ outline:3px solid #0b679c!important;outline-offset:3px!important
+}
+body.jrs-institutional .jrs-journey-bridge{
+ font:400 15px/1.65 Inter,system-ui,sans-serif!important;
+ color:#385269!important;margin:12px 0 18px!important
+}
+body.jrs-institutional .jrs-journey-bridge a{
+ color:#17486a!important;text-decoration:underline;text-underline-offset:3px;font-weight:650
+}
+body.jrs-institutional .jrs-reliability-note{
+ padding:18px 22px;margin:18px 0 26px;background:#f4f7f9;
+ border:1px solid #d1dfe7;border-left:4px solid #93713d;
+ border-radius:4px;max-width:100%
+}
+body.jrs-institutional .jrs-reliability-note h3{
+ font-size:20px!important;line-height:1.4!important;margin:0 0 10px!important
+}
+body.jrs-institutional .jrs-reliability-note p{
+ font-size:15px!important;line-height:1.7!important;margin:8px 0!important
+}
+@media(max-width:900px){
+ body.jrs-institutional .jrs-worked-grid,
+ body.jrs-institutional .jrs-evidence-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+ body.jrs-institutional .jrs-worked-step,
+ body.jrs-institutional .jrs-evidence-grid>li{padding:18px!important}
+ body.jrs-institutional .jrs-journey-actions a{width:100%;justify-content:center}
+}

@@ -140,6 +140,27 @@ assert.ok(privacyNow.includes('It does not authorize unrelated marketing or proj
 assert.ok(htmlTraining.includes('id="en-transfer"'),
  'successor transfer choice must remain optional and distinct');
 
+
+// Alternative-format requests must follow the existing privacy-controlled
+// contact path. Source checks do not certify PDF accessibility or delivery.
+const contact=read('contact.html'),guides=read('investigator-guides.html');
+for(const page of [read('resources.html'),guides]){
+ assert.ok(page.includes('href="contact.html?category=accessibility"'),'Accessible-format link must preselect contact category');
+}
+assert.ok(contact.includes('<option value="accessibility">Accessibility, alternative document formats, or corrections</option>'),
+ 'Contact form must identify the appropriate alternative-format category');
+assert.ok(contact.includes("if(categories.includes(requested))f.elements.category.value=requested;"),
+ 'Contact form must apply a permitted query category without automatic submission');
+assert.ok(contact.includes('document title, edition and format needed'),
+ 'Alternative-format guidance must state the minimum information to identify the requested edition');
+assert.ok(contact.includes('not a representation that any PDF has passed an accessibility audit'),
+ 'Do not imply PDF accessibility certification');
+assert.ok(contact.includes('id="contact-consent"')&&contact.includes('name="consent"'),
+ 'Contact response still requires a distinct consent decision');
+assert.ok(read('api/site-inquiry.js').includes("'accessibility'"),
+ 'The existing contact handler must recognize accessibility inquiries');
+assert.ok(!contact.includes('upload a case record'), 'The contact route must not solicit private case records');
+
 // Public evidence exports must identify source and temporal coverage.
 const aggregatePage=read('datasets.html'),publicResearch=read('research-summary.html');
 const publicChronology=read('evidence-ledger.html');

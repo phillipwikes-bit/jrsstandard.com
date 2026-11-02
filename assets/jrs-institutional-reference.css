@@ -1155,3 +1155,29 @@ body.jrs-institutional.jrs-guides-page .jrs-guide-version-detail-body p{
   padding:16px 18px!important
  }
 }
+
+/* JRS publication-round contrast safeguards: Standard and Training only.
+   Correct low-contrast legacy semantic colors on the institutional light theme.
+   These selectors do not change condition ratings, operational routes or data. */
+body.jrs-institutional.jrs-standard-page .failure-bad{
+  color:#8b4444!important;
+}
+body.jrs-institutional.jrs-standard-page [style*="color:#5DBF82"]{
+  color:#1d6745!important;
+}
+body.jrs-institutional.jrs-training-page .severity-level.high,
+body.jrs-institutional.jrs-training-page .rt-btn.rt-high,
+body.jrs-institutional.jrs-training-page [style*="color:#E8A84A"]{
+  color:#925c16!important;
+}
+body.jrs-institutional.jrs-training-page p a{
+  text-decoration:underline!important;
+  text-underline-offset:3px!important;
+}
+body.jrs-institutional.jrs-training-page #poll-submit-btn:disabled{
+  opacity:1!important;
+  background:#e0e8ed!important;
+  color:#294456!important;
+  cursor:not-allowed!important;
+  pointer-events:none!important;
+}
