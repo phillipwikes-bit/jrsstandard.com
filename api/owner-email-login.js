@@ -53,6 +53,28 @@ async function logDeliveryFailure(response) {
 
 export default async function handler(request) {
   const cfg = settings();
+  if (request.method === 'GET' && new URL(request.url).searchParams.get('connectivity') === 'post-check') {
+    // Safe POST probe uses intentionally invalid payload without a recipient;
+    // it cannot send a code. Limited to this preview branch pending diagnosis.
+    if (!cfg) return reply({ reachable: false, error: 'owner_email_signin_unavailable' }, 503);
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    try {
+      const r = await fetch(cfg.base + '/email-otp/send-verification-otp', {
+        method: 'POST', redirect: 'manual', signal: controller.signal,
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json',
+          'Origin': new URL(request.url).origin },
+        body: JSON.stringify({ type: 'sign-in' })
+      });
+      return reply({ reachable: true, upstream_status: r.status, redirect: r.status >= 300 && r.status < 400 });
+    } catch (err) {
+      const code = String(err?.cause?.code || 'unavailable');
+      const safeCode = /^[A-Z][A-Z0-9_]{1,40}$/.test(code) ? code : 'unavailable';
+      const kind = err?.name === 'AbortError' ? 'timeout' : 'transport';
+      console.error('jrs_owner_neon_invalid_post_failure', JSON.stringify({ kind, code: safeCode }));
+      return reply({ reachable: false, kind, code: safeCode }, 502);
+    } finally { clearTimeout(timeout); }
+  }
   if (request.method === 'GET' && new URL(request.url).searchParams.get('connectivity') === 'check') {
     // Preview-only diagnostic. Read-only: no OTP, owner identity, or credential exchange.
     // An HTTP response of any status proves the configured upstream host is reachable.
