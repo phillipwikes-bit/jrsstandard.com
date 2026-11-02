@@ -119,6 +119,10 @@ tr.today td{background:rgba(93,191,130,.07)}
         <a href="#training-adoption">Training activity</a>
         <a href="#reviewer-panel">Reviewer panel and study activity</a>
         <a href="/resources.html">Public resource catalogue</a>
+        <a href="/investigator-guides.html">Investigator Guides</a>
+        <a href="/training.html">Free reviewer training</a>
+        <a href="/reference/">Practical review references</a>
+        <a href="/research.html">Research and limitations</a>
       </div>
       <div class="jrs-lane"><h3>Private | Participants and contacts</h3>
         <p>Retain the recorded names, email addresses, organizations, source activity and individual permission fields. No automatic contact or commercial reuse.</p>
@@ -336,7 +340,8 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div class="note" style="margin-top:8px">Investigator Guide registrations by edition and initiative support by campaign. The guide and support gates went live on Aug 2, 2026; downloads and support recorded before that date were anonymous and cannot be attributed to a person.</div>
   </div>
 
-  <h2 style="font-size:22px;margin-top:34px">Since the Registration Gate</h2>
+  <h2 style="font-size:22px;margin-top:34px">Historical registration-era activity</h2>
+  <p class="note">This section preserves records from the August 2026 registration workflow. The redesigned public JRS materials are free and must not require registration or research enrollment. Historical named registrations do not establish a current download gate or unique completed downloads.</p>
   <div class="note" style="border-left-color:var(--accent)"><b style="color:var(--text)">Need the actual names?</b> The counts in this section are aggregate. The named roster is further down this page: see <a href="#everyone-on-the-record" style="color:var(--accent)">Everyone on the record</a>, which lists every person with their organization, title, country, email, what they did and what they consented to. Recommendation and certificate requests and the honor quotes are under <b>Private Contact Detail</b> below that. Everything is on this one page.</div>
   <p class="sub">Everything below counts activity from 2 August 2026 forward, the date the guides and the initiative support action moved behind a registration form. Earlier downloads and support clicks were anonymous and cannot be attributed to a person, so they are excluded here rather than blended in. Training is the exception and is shown all-time, because enrollment always required identity and consent. Aggregate counts only; the named list stays private.</p>
   <div class="cards">
@@ -1835,7 +1840,8 @@ function pplCsv(){
             'training_completed','training_completed_on','consent_public','consent_transfer','consent_contact',
             'campaign','completion_code','honor_code','linkedin_url','source',
             'activity_family','inquiry_category','commercial_purpose',
-            'consent_contact_state','consent_public_state','consent_transfer_state'];
+            'consent_contact_state','consent_public_state','consent_transfer_state',
+            'edition','records_run','quote','quote_cleared_for_publication','byline_ok'];
   var lines=[head.join(',')];
   list.forEach(function(r){
     lines.push([q(String(r.date||'').slice(0,10)),q(r.name),q(r.organization),q(r.title),q(r.country),
@@ -1844,7 +1850,9 @@ function pplCsv(){
       q(r.consent_transfer?'yes':'no'),q(r.consent_contact?'yes':'no'),q(r.campaign),
       q(r.completion_code),q(r.honor_code),q(r.linkedin_url),q(r.source),
       q(r.activity_family),q(r.inquiry_category),q(r.commercial_purpose),
-      q(r.consent_contact_state),q(r.consent_public_state),q(r.consent_transfer_state)].join(','));
+      q(r.consent_contact_state),q(r.consent_public_state),q(r.consent_transfer_state),
+      q(r.edition),q(r.records_run),q(r.quote),q(r.quote_cleared_for_publication?'yes':'no'),
+      q(r.byline_ok?'yes':'no')].join(','));
   });
   var blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'});
   var url=URL.createObjectURL(blob);
