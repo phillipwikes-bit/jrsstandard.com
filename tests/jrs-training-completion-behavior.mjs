@@ -274,11 +274,21 @@ console.log('PASS: access health checks are side-effect-free and disclose no sec
    calls.push({url:String(url),method:options.method||'GET'});
    return new Response('PRIVATE_DIAGNOSTIC_SHOULD_NEVER_ESCAPE',{status:400});
  };
- const post=async(data)=>handler(new Request('https://jrsstandard.com/api/access',{
-   method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)
- }));
+ const post=async(data,origin='https://jrsstandard.com')=>
+   handler(new Request('https://jrsstandard.com/api/access',{
+     method:'POST',headers:{'Content-Type':'application/json','Origin':origin},
+     body:JSON.stringify(data)
+   }));
  try {
-   let res=await post({event:'listing',email:'someone-else@example.org'});
+   let res=await post({event:'listing',email:'someone-else@example.org'},
+     'https://unrelated.example');
+   assert.equal(res.status,403,'External browser origins must be denied');
+   assert.equal(calls.length,0,'Rejected origin must not read or write private contact data');
+   res=await post({name:'X'.repeat(9000),email:'example@example.org',
+     mode:'guide',edition:'employment',consent_contact:true});
+   assert.equal(res.status,413,'Oversize access submissions must be rejected');
+   assert.equal(calls.length,0,'Oversized access payload must not reach the database');
+   res=await post({event:'listing',email:'someone-else@example.org'});
    assert.equal(res.status,403,'Unverified public listing must fail closed');
    assert.deepEqual(await res.json(),{error:'verified_consent_required'});
    assert.equal(calls.length,0,'No database lookup or consent mutation is allowed for an unverified email');
