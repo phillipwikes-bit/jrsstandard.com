@@ -182,6 +182,45 @@
          w.getComputedStyle(cases).display!=='none';
      }
    }
+   // The restored Standard worked examples must expose all five tab
+   // groups and fifteen panels, with keyboard navigation that actually
+   // changes the visible content and announced selected state.
+   let workedExampleTabsValid=true;
+   if(item.page==='jrsstandard.html'){
+     const groups=[...d.querySelectorAll('.scenario-block .scenario-tabs')];
+     workedExampleTabsValid=groups.length===5 && groups.every(group=>{
+       const tabs=[...group.querySelectorAll('button[role="tab"]')];
+       return group.getAttribute('role')==='tablist' &&
+         !!group.getAttribute('aria-label') && tabs.length===3 &&
+         tabs.filter(tab=>tab.getAttribute('aria-selected')==='true').length===1 &&
+         tabs.every(tab=>{
+           const panel=d.getElementById(tab.getAttribute('aria-controls')||'');
+           return !!panel && group.closest('.scenario-block').contains(panel) &&
+             panel.getAttribute('role')==='tabpanel' &&
+             panel.getAttribute('aria-labelledby')===tab.id &&
+             (panel.hidden===(tab.getAttribute('aria-selected')!=='true'));
+         });
+     });
+     if(workedExampleTabsValid){
+       const group=groups.find(group=>group.querySelector('[aria-controls="uc1-context"]'));
+       const tabs=group?[...group.querySelectorAll('button[role="tab"]')]:[];
+       workedExampleTabsValid=tabs.length===3;
+       if(workedExampleTabsValid){
+         tabs[0].focus();
+         tabs[0].dispatchEvent(new w.KeyboardEvent('keydown',{
+           key:'ArrowRight',bubbles:true,cancelable:true
+         }));
+         const selected=d.getElementById('uc1-review');
+         const previous=d.getElementById('uc1-context');
+         workedExampleTabsValid=d.activeElement===tabs[1] &&
+           tabs[1].getAttribute('aria-selected')==='true' &&
+           tabs[1].tabIndex===0 && tabs[0].tabIndex===-1 &&
+           !selected.hidden && previous.hidden &&
+           w.getComputedStyle(selected).display!=='none';
+         tabs[0].click();
+       }
+     }
+   }
    // The mobile simulation choices must remain usable after being stacked.
    let simulationControlsValid=true;
    if(item.page==='training.html' && narrow){
@@ -502,10 +541,10 @@
      (w.getComputedStyle(toggle).justifyContent==='flex-end' &&
       /site menu/i.test(siteMenuLabel));
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && documentIndexValid && roleFocusValid && scenarioNavValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && trainingJourneyValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
+      controlsValid && documentIndexValid && roleFocusValid && scenarioNavValid && workedExampleTabsValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && trainingJourneyValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,roleFocusValid,roleFocusIssue,scenarioNavValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,roleFocusValid,roleFocusIssue,scenarioNavValid,workedExampleTabsValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
