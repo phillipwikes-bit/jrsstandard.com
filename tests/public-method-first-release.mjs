@@ -12,7 +12,9 @@ const allowedArchives=new Set([
   'review-engine.html', // Deliberately retained as historical, non-indexed route.
   'programme-status-9872fb93cc94.html' // Preexisting private dashboard; separate P0 security release.
 ]);
-const archivalPrefixes=['research/deliverables_'];
+// Test fixtures are intentionally returned as 404 by the public Vercel site.
+// Scan all public content, excluding only retained source-only test/archival files.
+const archivalPrefixes=['research/deliverables_','tests/'];
 function walk(base){
   return readdirSync(join(root,base)).flatMap(name=>{
     const path=base?base+'/'+name:name;
