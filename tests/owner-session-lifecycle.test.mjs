@@ -137,6 +137,9 @@ test('invalid POST bodies do not yield signed cookies',async()=>{
  configured();
  const invalid=[
   new Request(OWNER_URL,{method:'POST',headers:{Origin:'https://www.jrsstandard.com','Content-Type':'application/json'},body:'not-json'}),
+  new Request(OWNER_URL,{method:'POST',headers:{Origin:'https://www.jrsstandard.com','Content-Type':'application/json'},body:'null'}),
+  new Request(OWNER_URL,{method:'POST',headers:{Origin:'https://www.jrsstandard.com','Content-Type':'application/json'},body:'[]'}),
+  new Request(OWNER_URL,{method:'POST',headers:{Origin:'https://www.jrsstandard.com','Content-Type':'application/json'},body:'"unexpected"'}),
   new Request(OWNER_URL,{method:'POST',headers:{Origin:'https://www.jrsstandard.com','Content-Type':'application/json'},body:JSON.stringify({token:SYNTHETIC_SECRET+'x'.repeat(1201)})})
  ];
  for(const req of invalid){
