@@ -161,8 +161,10 @@ body.jrs-institutional.jrs-legacy-public.jrs-error-route{
   text-align:center!important;padding:24px!important;
 }
 body.jrs-institutional.jrs-legacy-public.jrs-error-route .wrap{
-  max-width:580px!important;background:#fff!important;
+  box-sizing:border-box!important;width:100%!important;min-width:0!important;
+  max-width:580px!important;margin:0 auto!important;background:#fff!important;
   border:1px solid #d8e1e7!important;padding:38px 34px!important;
+  overflow-wrap:anywhere!important;
 }
 body.jrs-institutional.jrs-legacy-public.jrs-error-route :where(p,.mono){
   color:#42576b!important;font:400 16px/1.7 Inter,system-ui,sans-serif!important;
