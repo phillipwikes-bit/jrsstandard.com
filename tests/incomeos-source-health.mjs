@@ -12,5 +12,7 @@ assert.equal(gate.assess([{...ok,coverageComplete:false}]).status,"HOLD");
 assert.equal(gate.assess([{...ok,freshness:"unknown"}]).status,"HOLD");
 assert.equal(gate.assess([{...ok,balanceSourceVerified:false}]).status,"HOLD");
 assert.equal(gate.assess([ok,ok]).status,"HOLD");
+assert.equal(gate.assess([ok,{...ok,id:" bank-a "}]).status,"HOLD");
+assert.equal(gate.assess([{...ok,id:"   "}]).status,"HOLD");
 assert.equal(gate.assess([]).status,"HOLD");
 console.log("IncomeOS source-health tests passed");
