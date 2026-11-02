@@ -216,7 +216,7 @@ tr.today td{background:rgba(93,191,130,.07)}
       <button type="button" class="btn" id="current-formspree-export" disabled>Export connected inbox CSV</button>
       <a class="btn" href="https://mail.google.com/mail/u/0/#search/from%3Aformspree.io+after%3A2026%2F10%2F29" target="_blank" rel="noopener noreferrer">Find recent JRS Formspree emails</a>
     </div>
-    <p class="note">The Gmail link searches Formspree notifications since October 29, 2026, including messages whose subjects differ from the default inquiry title. It opens Gmail without transmitting any email content to this page. If direct Formspree read access is not configured, consult the existing Formspree and Gmail records. Do not copy names into a sales list without purpose-specific authorization.</p>
+    <p class="note">The Gmail link searches Formspree notifications since October 29, 2026, including messages whose subjects differ from the default inquiry title. It opens Gmail without transmitting any email content to this page. If direct Formspree read access is not configured, consult the existing Formspree and Gmail records. Check Formspree's Over Limit folder separately: the submission API does not return over-limit entries until they are reprocessed, and notification email may not have been sent. Do not copy names into a sales list without purpose-specific authorization.</p>
     <div class="tablewrap" style="margin-top:12px">
       <table id="current-formspree-table">
         <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding-bottom:8px">Authenticated owner read only. Source records remain in Formspree.</caption>
@@ -2456,7 +2456,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
         d.current_form_marker_matches+d.unattributed_submissions!==d.rows.length)throw Error('incomplete');
      rows=d.rows;
      exportButton.disabled=rows.length===0;
-     status.textContent='Complete nonspam Formspree read: '+rows.length+' source submissions; '+d.current_form_marker_matches+' matching current form markers and '+d.unattributed_submissions+' unattributed. Markers are self-declared, not independently verified. Spam excluded; submissions are not verified unique people or qualified leads. '
+     status.textContent='Complete nonspam Formspree read: '+rows.length+' source submissions; '+d.current_form_marker_matches+' matching current form markers and '+d.unattributed_submissions+' unattributed. Markers are self-declared, not independently verified. Spam and unreprocessed provider over-limit submissions excluded; submissions are not verified unique people or qualified leads. '
        +(rows.length>250?'Showing 250; export includes all.':'Showing all.')+
        ' No duplication into the historic Supabase register.';
      redraw();
