@@ -183,6 +183,46 @@
      }
      if(!enrollmentDialogValid) enrollmentDialogIssue='Dialog labeling, focus trap, Escape or focus restoration failed';
    }
+   // Complete the six-module local training journey without registration or
+   // live participant writes. Restore state so this audit is non-persistent.
+   let trainingJourneyValid=true, trainingJourneyIssue='';
+   if(item.page==='training.html' && narrow){
+     const originalProgress=w.progress;
+     const keys=['jrs-training-progress','jrs-training-enrolled',
+                 'jrs-training-email','jrs-training-completed-sent'];
+     const saved={};
+     const originalRecorder=w.jrsRec;
+     try {
+       for(const key of keys) saved[key]=w.localStorage.getItem(key);
+       w.progress={};
+       for(const key of keys) w.localStorage.removeItem(key);
+       // This browser test is not a participant. Do not record training analytics.
+       w.jrsRec=function(){};
+       for(let module=0;module<6;module++) w.markComplete(module);
+       const progress=d.getElementById('progress-display');
+       const section=d.getElementById('cert-section');
+       const stored=JSON.parse(w.localStorage.getItem('jrs-training-progress')||'{}');
+       trainingJourneyValid=!!progress && /Complete.*6 of 6/.test(progress.textContent) &&
+         !!section && w.getComputedStyle(section).display!=='none' &&
+         [0,1,2,3,4,5].every(i=>stored[i]===true) &&
+         !w.localStorage.getItem('jrs-training-completed-sent');
+     }catch(e){
+       trainingJourneyValid=false;
+       trainingJourneyIssue=String(e);
+     }finally{
+       w.progress=originalProgress;
+       w.jrsRec=originalRecorder;
+       for(const key of keys){
+         if(saved[key]===undefined) continue;
+         try{
+           if(saved[key]===null) w.localStorage.removeItem(key);
+           else w.localStorage.setItem(key,saved[key]);
+         }catch(e){}
+       }
+     }
+     if(!trainingJourneyValid && !trainingJourneyIssue)
+       trainingJourneyIssue='Six modules failed local completion/progress/certificate gate';
+   }
    // Full resource-finder interaction: progressively enhanced search, format,
    // responsibility filters, no-match announcement and keyboard-focused reset.
    let catalogValid=true;
@@ -351,10 +391,10 @@
      (w.getComputedStyle(toggle).justifyContent==='flex-end' &&
       /site menu/i.test(siteMenuLabel));
    const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
-      controlsValid && documentIndexValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
+      controlsValid && documentIndexValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && trainingJourneyValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
