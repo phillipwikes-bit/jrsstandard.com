@@ -150,6 +150,8 @@ console.log('PASS: free modules do not solicit email; enrollment gate, HTTP/body
  assert.doesNotMatch(completionSource,/Certificate issued to/,'The browser must not issue a credential');
  assert.doesNotMatch(completionSource,/Six modules complete and the reviewer evaluation submitted/,'Do not overclaim training');
  assert.doesNotMatch(completionSource,/linkedin\.com\/profile\/add/,'Do not promote a self-issued professional credential');
+ assert.match(completionSource,/method="post"/,'Receipt lookup must not put new names and codes in URLs');
+ assert.doesNotMatch(completionSource,/googletagmanager\.com\/gtag/,'Personal receipt route must not load analytics before clearing legacy query data');
 
  const priorFetch=globalThis.fetch;
  const hadService=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
@@ -166,6 +168,10 @@ console.log('PASS: free modules do not solicit email; enrollment gate, HTTP/body
    return new Response(JSON.stringify(rows),{status:200,headers:{'Content-Type':'application/json'}});
  };
  const run=async(args)=>handler(new Request('https://jrsstandard.com/api/reviewer-cert?'+new URLSearchParams(args)));
+ const post=async(args)=>handler(new Request('https://jrsstandard.com/api/reviewer-cert?src=verify',{
+   method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},
+   body:new URLSearchParams(args)
+ }));
  try {
    let res=await run({code,name:'Alex Reviewer',title:'Invented Chief Executive',src:'verify'});
    assert.equal(res.status,200,'Verified historical record may be rendered');
@@ -176,6 +182,14 @@ console.log('PASS: free modules do not solicit email; enrollment gate, HTTP/body
    assert.match(verified,/August 17, 2026/,'Issue date must derive from issuer record');
    assert.doesNotMatch(verified,/Invented Chief Executive/,'Caller title is not evidence');
    assert.ok(requests.every(r=>r.method==='GET'),'Read-only verification must not mutate participant data');
+   res=await post({code,name:'Alex Reviewer',title:'Forged Title'});
+   assert.equal(res.status,200,'POST form may retrieve a previously issued receipt');
+   const posted=await res.text();
+   assert.match(posted,/Compliance Analyst/);
+   assert.doesNotMatch(posted,/Forged Title/);
+   assert.ok(requests.every(r=>r.method==='GET'),'POST receipt verification is still a read-only database operation');
+   res=await post({code,name:'Wrong Name'});
+   assert.equal(res.status,404,'POST must not mint a mismatched receipt');
 
    res=await run({code,name:'Another Name',src:'verify'});
    assert.equal(res.status,404,'A valid code with another person name must not mint a receipt');
