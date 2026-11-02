@@ -8,6 +8,7 @@
   var money=new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"});
   function stamp(){var x=new Date();return x.getFullYear()+"-"+String(x.getMonth()+1).padStart(2,"0")+"-"+String(x.getDate()).padStart(2,"0");}
   function load(){
+    if(window.IncomeOSFinancialReadOnly===true)return;
     try{
       var x=JSON.parse(localStorage.getItem(KEY)||"{}");
       if(x&&typeof x==="object"&&!Array.isArray(x)){
@@ -17,7 +18,7 @@
       }
     }catch(e){$("spend-status").textContent="Saved spending preferences are not readable. No previous settings were overwritten.";}
   }
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(state));return true;}catch(e){$("spend-status").textContent="Browser storage unavailable. Changes were not saved.";return false;}}
+  function save(){if(window.IncomeOSFinancialReadOnly===true){$("spend-status").textContent="Budget and bill tracking is disabled in staging until owner storage is protected.";return false;}try{localStorage.setItem(KEY,JSON.stringify(state));return true;}catch(e){$("spend-status").textContent="Browser storage unavailable. Changes were not saved.";return false;}}
   function entries(){return window.IncomeOSAccountant&&typeof window.IncomeOSAccountant.entriesForAnalysis==="function"?window.IncomeOSAccountant.entriesForAnalysis():[];}
   function render(){
     if(!window.IncomeOSIntelligence)return;
@@ -67,11 +68,12 @@
       text(row,"strong",x.vendor+" · "+x.date+" · "+money.format(x.amount));
       text(row,"p",x.flags.join("; "));
     });
-    $("spend-status").textContent="Updated from local records "+stamp()+". Inferred bills and price changes require invoice verification. No cancellation or payment was made.";
+    $("spend-status").textContent=(window.IncomeOSFinancialReadOnly===true?"Read-only staging. No personal spending preferences or bill plans may be saved. ":"")+"Updated from local records "+stamp()+". Inferred bills and price changes require invoice verification. No cancellation or payment was made.";
   }
   function initialize(){
     if(!$("spend-refresh")||!window.IncomeOSIntelligence)return;
     load();
+    if(window.IncomeOSFinancialReadOnly===true){["spend-budget-form","spend-plan-form"].forEach(function(id){$(id).querySelectorAll("input,select,button").forEach(function(el){el.disabled=true;});});$("spend-budget-remove").disabled=true;}
     var category=$("spend-budget-category"),current=$("spend-budget-limit");
     CATS.forEach(function(c){var o=document.createElement("option");o.value=c;o.textContent=c;category.appendChild(o);});
     function fill(){current.value=Object.prototype.hasOwnProperty.call(state.budgets,category.value)?state.budgets[category.value]:"";}
