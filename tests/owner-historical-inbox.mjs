@@ -1,5 +1,6 @@
 // Synthetic-only historical owner inbox completeness regression.
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import handler from '../api/leads-4b7e2c9af106d385.js';
 
 const original = Object.fromEntries(['OWNER_DASHBOARD_TOKEN','SUPABASE_SERVICE_ROLE_KEY']
@@ -18,7 +19,7 @@ const lead = (i) => ({
 });
 const attempt = (i) => ({
   created_at:'2026-10-20T00:00:00Z',
-  payload:{offer:'synthetic-offer',state:i%2?'unconfigured':'configured',src:'fixture',country:'US'}
+  payload:{offer:(i===0||i===1)?'audit':'synthetic-offer',state:i%2?'unconfigured':'configured',src:'fixture',country:'US'}
 });
 let checks=0, requests=[];
 async function check(title, run) {
@@ -93,6 +94,11 @@ try {
     assert.equal(data.attempt_count,1001);
     assert.equal(data.leads[1000].email,'synthetic1000@example.test');
     assert.equal(data.attempts_unconfigured,500);
+    assert.equal(data.attempts[0].historical_catalogue_price_usd,250);
+    assert.equal(data.attempts[0].offer_retired,true);
+    assert.equal(data.attempts[1].historical_catalogue_price_usd,250);
+    assert.equal(data.attempts[2].historical_catalogue_price_usd,null);
+    assert.equal(data.attempts[2].offer_retired,false);
     assert.deepEqual(data.sources,['pilot_contacts','interaction_events']);
     assert.deepEqual(requests.map(x=>x.range),['0-999','1000-1999','0-999','1000-1999']);
     assert.ok(requests.every(x=>x.auth==='Bearer '+dbKey));
@@ -101,6 +107,14 @@ try {
     assert.ok(!JSON.stringify(data).includes(dbKey));
     assert.match(response.headers.get('cache-control'),/no-store/);
     assert.equal(response.headers.get('access-control-allow-origin'),null);
+  });
+  await check('dashboard distinguishes old offer prices from verified payment outcomes',async()=>{
+    const html=readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
+    assert.ok(html.includes('historical_catalogue_price_usd'));
+    assert.ok(html.includes('not revenue'));
+    assert.ok(html.includes('A recorded redirect does not establish payment completion'));
+    assert.ok(!html.includes('Every pay-screen arrival reached a working payment link.'));
+    assert.ok(!html.includes('LD_PRICES[att[i].offer]'));
   });
   console.log('PASS '+checks+' historical owner inbox checks');
 } finally {
