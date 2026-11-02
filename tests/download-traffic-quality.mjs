@@ -10,7 +10,9 @@ assert.equal(classifier.classifyDownloadTraffic({}),'user_agent_missing');
 assert.equal(classifier.classifyDownloadTraffic({user_agent:'curl/8.0'}),'declared_crawler');
 
 const assetSource = readFileSync(new URL('../api/asset-stats.js', import.meta.url),'utf8');
-assert.match(assetSource,/import \{ CRAWLER, isCrawler, classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource \} from '\.\/_traffic-quality\.js';/);
+// Public research navigation contract remains unchanged. Traffic quality is
+// served by geo-stats, and does not replace existing public engagement APIs.
+assert.match(assetSource,/research_navigation:/);
 
 let geoSource = readFileSync(new URL('../api/geo-stats.js', import.meta.url),'utf8');
 assert.match(geoSource,/import \{ classifyDownloadTraffic, isInternalTestSource, isCurrentDownloadResource \} from '\.\/_traffic-quality\.js';/);
