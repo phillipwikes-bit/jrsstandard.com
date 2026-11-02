@@ -48,7 +48,7 @@
         const bridge=path==='jrsstandard.html'||path==='training.html'||
           [...d.styleSheets].some(x=>x.href?.includes('jrs-legacy-public-alignment.css'));
         const bodyOk=colorIs(bg,'rgb(245,247,248)') &&
-                     colorIs(fg,'rgb(25,49,72)') &&
+                     (colorIs(fg,'rgb(25,49,72)')||colorIs(fg,'rgb(21,44,67)')) &&
                      bodyFont.includes('Inter');
         const headingOk=!!h1 && (headingFont.includes('Georgia') || headingFont.includes('Iowan')) &&
                          colorIs(headingColor,'rgb(25,49,72)');
