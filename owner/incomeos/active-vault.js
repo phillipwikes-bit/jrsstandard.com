@@ -109,21 +109,35 @@
   }
   function session(storage, initialRaw, key, salt, revision, initialData) {
     let activeKey = key, previousRaw = initialRaw, current = initialData, rev = revision, activeSalt = salt;
+    let committing = false;
     function ensure() { if (!activeKey || !current) throw new Error("Owner ledger is locked."); }
     return Object.freeze({
       status() { return { unlocked: !!activeKey, revision: activeKey ? rev : null }; },
       snapshot() { ensure(); return JSON.parse(JSON.stringify(current)); },
       async commit(next) {
         permitted(); ensure();
+        if (committing) throw new Error("An encrypted ledger save is already in progress.");
         validateData(next);
         if (storage.getItem(NAME) !== previousRaw)
           throw new Error("Encrypted ledger changed in another tab. Unlock the latest version before editing.");
-        const serialized = await seal(next, activeKey, activeSalt, rev + 1);
-        // All-or-nothing browser storage write. Update memory only after success.
-        try { storage.setItem(NAME, serialized); }
-        catch (_err) { throw new Error("Encrypted ledger could not be persisted. No entry was accepted."); }
-        previousRaw = serialized; current = JSON.parse(JSON.stringify(next)); rev += 1;
-        return rev;
+        committing = true;
+        const expectedRaw = previousRaw, expectedRevision = rev, initialKey = activeKey;
+        try {
+          const serialized = await seal(next, activeKey, activeSalt, rev + 1);
+          // Encryption is asynchronous. Recheck AFTER it completes so another tab
+          // cannot change the ledger while this tab is deriving ciphertext.
+          permitted(); ensure();
+          if (initialKey !== activeKey)
+            throw new Error("Owner ledger was locked during encryption.");
+          if (storage.getItem(NAME) !== expectedRaw || rev !== expectedRevision)
+            throw new Error("Encrypted ledger changed during save. Unlock the latest version before editing.");
+          // localStorage is not a real transactional database. A stronger
+          // server-side compare-and-swap remains a production release gate.
+          try { storage.setItem(NAME, serialized); }
+          catch (_err) { throw new Error("Encrypted ledger could not be persisted. No entry was accepted."); }
+          previousRaw = serialized; current = JSON.parse(JSON.stringify(next)); rev += 1;
+          return rev;
+        } finally { committing = false; }
       },
       lock() { current = null; activeKey = null; activeSalt = null; previousRaw = null; rev = null; }
     });
