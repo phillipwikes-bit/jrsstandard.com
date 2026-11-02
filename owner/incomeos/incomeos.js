@@ -17,14 +17,17 @@
   function append(parent, child) { parent.appendChild(child); return child; }
   function sectionText(parent, type, className, text) { return append(parent, node(type, className, text)); }
   function save() {
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (_e) { alert("This device is not allowing local storage. Entries may not be retained."); }
+    if(window.IncomeOSFinancialReadOnly===true)return false;
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(state));return true; }
+    catch (_e) { alert("This device is not allowing local storage. Entries may not be retained.");return false; }
   }
   function restore() {
     try {
       var raw = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
       state.saved = Array.isArray(raw.saved) ? raw.saved.filter(function (v) { return typeof v === "string"; }) : [];
-      state.stages = raw.stages && typeof raw.stages === "object" && !Array.isArray(raw.stages) ? raw.stages : {};
-      state.receipts = Array.isArray(raw.receipts) ? raw.receipts.filter(function (r) {
+      state.stages = window.IncomeOSFinancialReadOnly===true ? {} :
+        (raw.stages && typeof raw.stages === "object" && !Array.isArray(raw.stages) ? raw.stages : {});
+      state.receipts = window.IncomeOSFinancialReadOnly===true ? [] : Array.isArray(raw.receipts) ? raw.receipts.filter(function (r) {
         return r && typeof r.label === "string" && Number.isFinite(Number(r.amount)) && Number(r.amount) > 0 && ["pending", "paid"].includes(r.status);
       }) : [];
     } catch (_e) { state = { saved: [], stages: {}, receipts: [] }; }
@@ -124,7 +127,10 @@
     select.setAttribute("aria-label", "Application stage for " + s.title);
     stages.forEach(function (v) { var o = node("option", "", v); o.value = v; select.appendChild(o); });
     select.value = stages.includes(state.stages[s.id]) ? state.stages[s.id] : "New";
-    select.addEventListener("change", function () { state.stages[s.id] = select.value; save(); });
+    if(window.IncomeOSFinancialReadOnly===true){
+      select.disabled=true;
+      select.title="Participation tracking is disabled in unapproved staging";
+    }else select.addEventListener("change", function () { state.stages[s.id] = select.value; save(); });
     sectionText(card, "div", "stamp", "Public listing reviewed " + s.reviewed + ". Source-specific availability is not live verified.");
     return card;
   }
@@ -223,9 +229,10 @@
     if (window.IncomeOSAccountant) window.IncomeOSAccountant.init();
     $("clear-local").addEventListener("click", function () {
       if (!confirm("Erase ALL locally saved IncomeOS bookmarks, application status and accountant records? Export a JSON backup first if needed.")) return;
-      state = { saved: [], stages: {}, receipts: [] }; save();
-      if (window.IncomeOSAccountant) window.IncomeOSAccountant.clear();
+      try {localStorage.removeItem(STORE_KEY);}catch(_e){alert("Local owner records could not be erased. Verify browser storage permissions.");return;}
+      if (window.IncomeOSAccountant&&window.IncomeOSAccountant.clear()===false)return;
       try { localStorage.removeItem("incomeos.spend.preferences.v1"); localStorage.removeItem("incomeos.research.radar.v1"); } catch (_e) { alert("Some local browser records could not be cleared. Verify device storage permissions."); return; }
+      state = { saved: [], stages: {}, receipts: [] };
       alert("IncomeOS local records cleared. The page will reload to reset the research and spending views.");
       location.reload();
     });
