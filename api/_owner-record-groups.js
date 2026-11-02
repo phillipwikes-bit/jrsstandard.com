@@ -42,7 +42,14 @@ export function participantGroup(source,payload={}) {
 // Positive consent for one particular activity remains restricted to its source.
 export function permissionState(payload,keys) {
   const p=payload&&typeof payload==='object'&&!Array.isArray(payload)?payload:{};
-  for(const key of keys)if(p[key]===true)return 'recorded-yes';
-  for(const key of keys)if(p[key]===false)return 'recorded-no';
+  let yes=false,no=false;
+  for(const key of keys) {
+    if(p[key]===true)yes=true;
+    if(p[key]===false)no=true;
+  }
+  // Contradictory flags cannot be promoted to an affirmative permission.
+  if(yes&&no)return 'conflicting';
+  if(yes)return 'recorded-yes';
+  if(no)return 'recorded-no';
   return 'not-recorded';
 }
