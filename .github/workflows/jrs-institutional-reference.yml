@@ -32,6 +32,8 @@ jobs:
         run: node tests/jrs-contrast-guards.mjs
       - name: Exercise consented training-completion and retry behavior
         run: node tests/jrs-training-completion-behavior.mjs
+      - name: Exercise actual Training PNG certificate drawing with named and long recipients
+        run: node tests/jrs-training-certificate-render.mjs
       - name: Verify worked-record journey and distinct research evidence
         run: node tests/jrs-practitioner-journey.mjs
       - name: Regression-check exact-preview source verification
