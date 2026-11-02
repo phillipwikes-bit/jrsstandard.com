@@ -144,3 +144,10 @@ Source checks now require every supported journal posting to map to balanced deb
 The source-only double-entry engine does **not** establish complete books, provider-certified ownership of bank accounts, or a validated opening balance. Month-end acceptance is currently restricted to one complete calendar month with every active source posting within that period. Prior-period refund evidence, investment position rollforwards, confirmed cost basis, beginning balances, signed month closes, corrections and periods spanning multiple reporting months require separate controlled implementation and validation.
 
 Production authorization is still blocked by separately protected owner hosting, independently tested RLS, trusted server append/API, encrypted active storage, bank statement completeness, accountant review, mobile testing and explicit owner approval. This module is not an autonomous trading or filing capability.
+
+
+## Multi-period financial release hold
+
+The new `period-rollforward.js` composes month-specific source-to-ledger closes and enforces contiguous owner-declared bank/card balance continuity and unique source identifiers. It cannot transform self-attested historical opening balances into independent bank certification. The existing monthly close is deliberately limited to a complete calendar month, and historical refunds/asset basis require additional source-linked workflows. Reported cross-period closing balances remain withheld if any period fails its source or mapping gate.
+
+These modules contain no bank connector, storage, transfer mechanism, public API or private files. The new regression uses synthetic examples only. Release remains blocked by separately protected authenticated hosting, encrypted active private persistence, real provider evidence and owner account coverage, authenticated negative-access tests, hosted mobile accessibility and explicit final release authorization.
