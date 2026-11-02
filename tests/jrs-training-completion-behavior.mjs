@@ -145,6 +145,14 @@ console.log('PASS: free modules do not solicit email; enrollment gate, HTTP/body
 {
  const receiptSource=readFileSync(new URL('../api/reviewer-cert.js',import.meta.url),'utf8');
  const completionSource=readFileSync(new URL('../reviewer/completion.html',import.meta.url),'utf8');
+ assert.match(receiptSource, /'Referrer-Policy': 'no-referrer'/,
+  'Historical receipts must not disclose code/name through downstream referrers');
+ assert.match(receiptSource, /'Cache-Control': 'private, no-store'/,
+  'Issuer receipts must not be stored in shared or browser caches');
+ assert.match(receiptSource, /'X-Robots-Tag': 'noindex, nofollow'/,
+  'Historic named receipts must not be indexed');
+ assert.match(receiptSource, /'X-Content-Type-Options': 'nosniff'/,
+  'Receipt content must use its declared HTML content type');
  assert.match(receiptSource,/source=eq\.reviewer-cert/,'Only historical issuer rows may attest a receipt');
  assert.match(receiptSource,/sameName\(name,recordName\)/,'Issuer name must be checked');
  assert.doesNotMatch(completionSource,/Certificate issued to/,'The browser must not issue a credential');
