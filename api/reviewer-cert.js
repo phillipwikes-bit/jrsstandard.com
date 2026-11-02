@@ -53,7 +53,7 @@ function longDate(iso){
   return MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
 }
 function sameName(a,b){
-  const norm = v => String(v||'').normalize('NFKC').trim().replace(/\\s+/g,' ').toLowerCase();
+  const norm = v => String(v||'').normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase();
   return !!norm(a) && norm(a) === norm(b);
 }
 
