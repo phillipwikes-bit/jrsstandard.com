@@ -49,3 +49,5 @@ jobs:
         run: node tests/site-inquiry-stats.mjs
       - name: Confirm release inventory does not authorize publication
         run: node tests/owner-release-readiness.mjs
+      - name: Current public contact inbox is private and source-complete
+        run: node tests/owner-formspree-inbox.mjs
