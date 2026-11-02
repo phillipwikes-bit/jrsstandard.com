@@ -200,10 +200,16 @@
        w.jrsRec=function(){};
        for(let module=0;module<6;module++) w.markComplete(module);
        const progress=d.getElementById('progress-display');
+       const bar=d.getElementById('progress-bar');
        const section=d.getElementById('cert-section');
+       const heading=d.getElementById('cert-heading');
        const stored=JSON.parse(w.localStorage.getItem('jrs-training-progress')||'{}');
-       trainingJourneyValid=!!progress && /Complete.*6 of 6/.test(progress.textContent) &&
+       trainingJourneyValid=!!progress && progress.getAttribute('aria-live')==='polite' &&
+         /Complete.*6 of 6/.test(progress.textContent) &&
+         !!bar && bar.getAttribute('role')==='progressbar' &&
+         bar.getAttribute('aria-valuenow')==='6' &&
          !!section && w.getComputedStyle(section).display!=='none' &&
+         !!heading && d.activeElement===heading &&
          [0,1,2,3,4,5].every(i=>stored[i]===true) &&
          !w.localStorage.getItem('jrs-training-completed-sent');
      }catch(e){
