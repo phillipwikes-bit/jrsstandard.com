@@ -99,6 +99,10 @@ async function hold(over,code){
  assert.ok(out.issues.some(x=>x.code===code),"Missing "+code+" in "+JSON.stringify(out.issues));
 }
 await hold({asOf:"2026-11-01"},"CLOSE_DATE_MISMATCH");
+await hold({statementPackage:{...statementPackage,from:"2026-10-02"}},"INVALID_CALENDAR_MONTH_WINDOW");
+await hold({statementPackage:{...statementPackage,to:"2026-10-30"}},"INVALID_CALENDAR_MONTH_WINDOW");
+await hold({entries:[{...entries[0],date:"2026-09-30"},...entries.slice(1)]},"ENTRY_OUTSIDE_CLOSE_WINDOW");
+
 await hold({sourceBindings:sourceBindings.slice(1)},"UNBOUND_JOURNAL_POSTING");
 await hold({sourceBindings:[...sourceBindings,sourceBindings[0]]},"INVALID_BANK_TO_LEDGER_BINDING");
 await hold({sourceBindings:sourceBindings.map((x,i)=>i===0?{...x,journalSourceId:"bad.source.001"}:x)},"INVALID_BANK_TO_LEDGER_BINDING");
