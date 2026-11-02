@@ -230,6 +230,13 @@ export default async function handler(req){
     form_views_guide: viewsGuide,
     form_views_support: viewsSupport,
     conversion_pct: rate,
+    // The previous access-ingestion path normalized 'guidespage' arrivals to
+    // 'guide', so historical directory visits may be mixed with true form opens.
+    // The stored rows do not provide enough information to repair that split
+    // retrospectively without assumptions. Keep the raw rate for continuity,
+    // but mark it provisional rather than presenting it as a verified funnel.
+    form_view_classification_status: 'historical_unverified',
+    form_view_classification_note: 'Earlier investigator-guide directory visits may have been counted as guide registration-form opens. Historical form views, abandonment and conversion percentages are provisional until a separately evidenced historical reconciliation is possible.',
     guides_page_views: viewsGuidesPage,
     abandoned: Math.max(0, views - (guide + support)),
     views_by_day: Object.keys(viewsByDay).sort().map(function(d){ return { day: d, views: viewsByDay[d] }; }),
