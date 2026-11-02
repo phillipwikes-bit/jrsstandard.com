@@ -412,7 +412,7 @@ tr.today td{background:rgba(93,191,130,.07)}
     <div style="overflow-x:auto"><table id="ppl-tbl" style="min-width:940px"></table></div>
     <div class="note" id="ppl-note" style="margin-top:10px"></div>
     <p class="note">Names, email addresses and source activity remain in this signed-in owner view. Consent is shown at the individual source-event level. “Not recorded” is not consent. Do not merge free-resource, training or research identities into software buyer outreach. Exports are personal-data records, not marketing lists.</p>
-    <div style="margin-top:12px"><button class="btn" type="button" id="ppl-csv">Export filtered private contact register (CSV)</button></div>
+    <div style="margin-top:12px"><button class="btn" type="button" id="ppl-csv" disabled>Export filtered private contact register (CSV)</button></div>
   </div>
 
   <!-- MERGED FROM THE OWNER SHEET 2026-08-12. That page duplicated this one's
@@ -1882,6 +1882,22 @@ function pplCsv(){
   document.body.appendChild(link);link.click();link.remove();
   setTimeout(function(){URL.revokeObjectURL(url);},1000);
 }
+// An interrupted refresh must clear any previously displayed private rows.
+// An unavailable source is never represented by an empty/zero count.
+function clearUnavailablePeople(tiles){
+  PPL=[];
+  tiles.textContent='Historical private source unavailable or incomplete. No partial record population shown.';
+  var table=document.getElementById('ppl-tbl');if(table)table.textContent='';
+  var count=document.getElementById('ppl-cnt');if(count)count.textContent='Source totals unavailable, not zero.';
+  var note=document.getElementById('ppl-note');if(note)note.textContent='Original source could not be verified. No identities or country totals are asserted.';
+  var exportButton=document.getElementById('ppl-csv');if(exportButton)exportButton.disabled=true;
+  ['ppl-rec','ppl-cert','ppl-honor'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.textContent='Source unavailable, not zero.';
+  });
+  ['sd-people','sd-people-countries'].forEach(function(id){
+    var el=document.getElementById(id);if(el)el.textContent='Unavailable';
+  });
+}
 function loadPeople(){
   var tiles=document.getElementById('ppl-tiles'); if(!tiles) return;
   fetch('/api/people-9dd1ecdf6f8cdfd4')
@@ -1893,10 +1909,7 @@ function loadPeople(){
          d.retained_source_rows!==d.source_row_count||
          !Number.isInteger(d.possible_test_rows)||d.possible_test_rows<0||
          d.people.filter(function(p){return p.possible_test_marker===true;}).length!==d.possible_test_rows){
-        PPL=[];
-        tiles.textContent='Historical private source unavailable or incomplete. No partial record population shown.';
-        var oldTable=document.getElementById('ppl-tbl');if(oldTable)oldTable.textContent='';
-        var oldCount=document.getElementById('ppl-cnt');if(oldCount)oldCount.textContent='Source totals unavailable, not zero.';
+        clearUnavailablePeople(tiles);
         return;
       }
       PPL=d.people;
@@ -1932,7 +1945,11 @@ function loadPeople(){
       var contact=document.getElementById('ppl-contact');
       if(contact&&!contact.dataset.wired){contact.dataset.wired='1';contact.addEventListener('change',drawPeople);}
       var q=document.getElementById('ppl-q'); if(q&&!q.dataset.wired){q.dataset.wired='1';q.addEventListener('input',drawPeople);}
-      var cs=document.getElementById('ppl-csv'); if(cs && !cs.dataset.wired){ cs.dataset.wired='1'; cs.addEventListener('click', pplCsv); }
+      var cs=document.getElementById('ppl-csv');
+      if(cs){
+        cs.disabled=false;
+        if(!cs.dataset.wired){cs.dataset.wired='1';cs.addEventListener('click',pplCsv);}
+      }
       var note=document.getElementById('ppl-note');
       if(note){
         var miss=(d.people_without_country)||[];
@@ -1954,12 +1971,7 @@ function loadPeople(){
       }
       drawPeople();
     })
-    .catch(function(){
-      PPL=[];
-      tiles.textContent='Historical private source unavailable. No partial record population shown.';
-      var oldTable=document.getElementById('ppl-tbl');if(oldTable)oldTable.textContent='';
-      var oldCount=document.getElementById('ppl-cnt');if(oldCount)oldCount.textContent='Source totals unavailable, not zero.';
-    });
+    .catch(function(){clearUnavailablePeople(tiles);});
 }
 // THE REVIEWER PANEL, plus the reconciliation of every country figure on this
 // page. Five endpoints report a country count and they measure five DIFFERENT

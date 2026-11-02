@@ -55,6 +55,8 @@ try{
   assert.equal(body.complete,true);
   assert.equal(body.source_row_count,1001);
   assert.equal(body.retained_source_rows,1001);
+  assert.ok(!Number.isNaN(Date.parse(body.coverage_through_utc)));
+  assert.match(body.pagination_basis,/not a transactional snapshot/);
   assert.equal(body.total_rows,1001);
   assert.equal(body.people.length,1001);
   assert.equal(body.possible_test_rows,2);

@@ -98,8 +98,14 @@ export default async function handler(req){
   // Never present a partial participant population as a complete roster.
   // The shared reader reports incomplete pages without throwing. Require
   // complete=true before any names, email addresses or derived totals return.
+  // Fix the upper time boundary before pagination. Without it, a new
+  // insertion between pages can shift offset boundaries and hide a record
+  // without producing an HTTP error. This is not a transaction snapshot.
+  const snapshotUtc=new Date().toISOString();
   const result=await fetchAll(SB,
-    'pilot_contacts?select=created_at,name,email,organization,message,source&order=created_at.desc',
+    'pilot_contacts?select=created_at,name,email,organization,message,source'
+      +'&created_at=lte.'+encodeURIComponent(snapshotUtc)
+      +'&order=created_at.desc',
     {apikey:SERVICE,Authorization:'Bearer '+SERVICE});
   if(!result.complete||!Array.isArray(result.rows))
     return json({error:'private_participant_source_incomplete',complete:false},502);
@@ -277,6 +283,8 @@ export default async function handler(req){
     complete: true,
     source_row_count: rows.length,
     retained_source_rows: out.length,
+    coverage_through_utc: snapshotUtc,
+    pagination_basis: 'Created-at descending with a fixed UTC upper bound; not a transactional snapshot',
     possible_test_rows: possibleTestRows,
     test_marker_basis: 'Historical diagnostic, deploy or test metadata only. Flagged for owner review, not independently verified as synthetic; no source record excluded.',
     training_completed_named: trainingCompletedNames,
