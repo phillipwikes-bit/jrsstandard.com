@@ -119,7 +119,7 @@
    }
    // Moving between an interactive role card and its detail panel must not
    // abandon keyboard focus in the hidden role-selection subtree.
-   let roleFocusValid=true;
+   let roleFocusValid=true,roleFocusIssue='';
    if(item.page==='jrsstandard.html'){
      roleFocusValid=typeof w.showSection==='function' &&
        typeof w.showRoleEnv==='function' && typeof w.showRolesMenu==='function';
@@ -136,9 +136,15 @@
            d.activeElement===roleTitle &&
            w.getComputedStyle(d.getElementById('roles-menu')).display==='none';
          w.showRolesMenu();
-         roleFocusValid=roleFocusValid &&
-           d.activeElement===selectedRole &&
-           w.getComputedStyle(d.getElementById('roles-menu')).display!=='none';
+         const returnFocus=d.activeElement===selectedRole;
+         const returnMenu=w.getComputedStyle(d.getElementById('roles-menu')).display!=='none';
+         roleFocusValid=roleFocusValid && returnFocus && returnMenu;
+         if(!roleFocusValid)roleFocusIssue=JSON.stringify({
+           titleFocused:!!roleTitle && d.activeElement===roleTitle,
+           currentActive:d.activeElement?.outerHTML?.slice(0,150),
+           returnFocus,returnMenu,roleTabIndex:selectedRole.getAttribute('tabindex'),
+           roleSelected:w.jrsSelectedRoleEnv||null
+         });
        }
      }
    }
@@ -465,7 +471,7 @@
       controlsValid && documentIndexValid && roleFocusValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && trainingJourneyValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
    records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
      menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
-     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,roleFocusValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     escapeClosed,focusLeaveClosed,controlsValid,documentIndexValid,roleFocusValid,roleFocusIssue,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
      menuButtonDisplay:buttonDisplay,title,pass:ok});
   }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
   f.remove();
