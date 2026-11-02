@@ -212,6 +212,23 @@
          !!heading && d.activeElement===heading &&
          [0,1,2,3,4,5].every(i=>stored[i]===true) &&
          !w.localStorage.getItem('jrs-training-completed-sent');
+       // Generate the actual browser canvas (not the VM fake) without requesting
+       // a registration, a contact record or a server-issued credential.
+       if(trainingJourneyValid){
+         const recipient=d.getElementById('cert-name');
+         const canvas=d.getElementById('cert-canvas');
+         const actions=d.getElementById('cert-actions');
+         if(recipient && canvas && actions && typeof w.generateCert==='function'){
+           recipient.value='Browser Audit Reviewer';
+           await w.generateCert();
+           const png=canvas.toDataURL('image/png');
+           trainingJourneyValid=canvas.dataset.issuedName==='Browser Audit Reviewer' &&
+             canvas.width===900 && canvas.height===636 &&
+             w.getComputedStyle(canvas).display!=='none' &&
+             w.getComputedStyle(actions).display!=='none' &&
+             png.startsWith('data:image/png;base64,') && png.length>1500;
+         }else trainingJourneyValid=false;
+       }
      }catch(e){
        trainingJourneyValid=false;
        trainingJourneyIssue=String(e);
