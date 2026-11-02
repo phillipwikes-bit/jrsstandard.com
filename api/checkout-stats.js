@@ -35,10 +35,15 @@ const SOURCES = {
   'enterprise-inquiry': { table: 'pilot_contacts', select: 'created_at,message' }
 };
 
-function feed(src) {
+function feed(src, asOf) {
   const s = SOURCES[src];
+  // All sources share one time boundary. New events cannot shift the numbered
+  // pages while the three independent reads are in progress. The result is not
+  // a cross-table transaction snapshot, so the boundary is reported plainly.
   return '/rest/v1/' + s.table + '?select=' + s.select
-       + '&source=eq.' + src;
+       + '&source=eq.' + src
+       + '&created_at=lte.' + encodeURIComponent(asOf)
+       + '&order=created_at.asc';
 }
 
 function json(o, s) {
@@ -69,6 +74,7 @@ export default async function handler(req) {
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
   if (!SERVICE) return json({ error: 'not_configured' }, 503);
+  const asOf = new Date().toISOString();
   const H = {
     'apikey': SERVICE,
     'Authorization': 'Bearer ' + SERVICE,
@@ -77,7 +83,7 @@ export default async function handler(req) {
 
   // ---- arrivals at the pay screen -----------------------------------------
   // Require complete pagination, never partial historical populations.
-  const clickResult=await fetchAll(SB,feed('checkout-click').slice('/rest/v1/'.length),H);
+  const clickResult=await fetchAll(SB,feed('checkout-click',asOf).slice('/rest/v1/'.length),H);
   if(!clickResult.complete || !Array.isArray(clickResult.rows))
     return json({error:'checkout_source_incomplete',source:'checkout-click',complete:false},502);
   const clicks=clickResult.rows;
@@ -99,7 +105,7 @@ export default async function handler(req) {
   }
 
   // ---- leads captured on the fallback form ---------------------------------
-  const leadResult=await fetchAll(SB,feed('checkout-fallback').slice('/rest/v1/'.length),H);
+  const leadResult=await fetchAll(SB,feed('checkout-fallback',asOf).slice('/rest/v1/'.length),H);
   if(!leadResult.complete || !Array.isArray(leadResult.rows))
     return json({error:'checkout_source_incomplete',source:'checkout-fallback',complete:false},502);
   const leads=leadResult.rows;
@@ -118,7 +124,7 @@ export default async function handler(req) {
   }
 
   // ---- enterprise and licensing inquiries ---------------------------------
-  const inquiryResult=await fetchAll(SB,feed('enterprise-inquiry').slice('/rest/v1/'.length),H);
+  const inquiryResult=await fetchAll(SB,feed('enterprise-inquiry',asOf).slice('/rest/v1/'.length),H);
   if(!inquiryResult.complete || !Array.isArray(inquiryResult.rows))
     return json({error:'checkout_source_incomplete',source:'enterprise-inquiry',complete:false},502);
   const inq=inquiryResult.rows;
@@ -142,8 +148,10 @@ export default async function handler(req) {
   Object.keys(OFFERS).forEach(function (k) { configured[k] = isConfigured(OFFERS[k]); });
 
   return json({
-    generated_at: new Date().toISOString(),
+    generated_at: asOf,
     complete: true,
+    coverage_through_utc: asOf,
+    pagination_basis: 'Created-at ascending with a fixed UTC upper bound, not a transactional snapshot across sources',
     source_coverage: ['checkout-click','checkout-fallback','enterprise-inquiry'],
     pay_screen_arrivals: clicks.length,
     arrivals_by_offer: byOffer,
