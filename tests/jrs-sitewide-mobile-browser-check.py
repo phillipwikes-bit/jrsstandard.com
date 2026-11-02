@@ -36,6 +36,9 @@ for r in failed:
 print(f"Measured {len(pages)} distinct public routes and {len(rows)} responsive viewport samples.")
 print(f"Potentially undersized controls on {len(small)} viewport samples; require review of target-size exceptions.")
 print(f"Advisory: {sum(r.get('advisoryUnder44px',0) for r in rows)} visible control samples shorter than 44px; not all may fail WCAG target spacing or exception rules.")
+for r in rows:
+    if r.get('advisoryUnder44px',0):
+        print('REVIEW TOUCH TARGET', r.get('path'), r.get('width'), 'control count', r['advisoryUnder44px'])
 if small:
     for r in small[:15]:
         print("REVIEW",r["path"],r["width"],r["undersizedControls"])
