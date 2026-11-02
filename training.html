@@ -940,7 +940,25 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
   </div>
 
-  <!-- Optional certificate naming follows open module access. -->
+  
+<section id="jrs-practice-calibration" aria-labelledby="jrs-practice-heading">
+  <details>
+    <summary id="jrs-practice-heading">Optional six-question documentation review self-check</summary>
+    <p>Practice applying the five JRS conditions and source verification. This local knowledge check does not send, store or certify answers, and does not affect completion of the six open modules. A practice score is not an independent competence assessment.</p>
+    <form id="jrs-practice-form" autocomplete="off">
+      <fieldset data-correct="2" data-reason="Reconstructability requires the retained record to explain the path without the author's memory."><legend><strong>1. A later reviewer cannot reconstruct why a documented conclusion was reached without asking the original author. What is missing?</strong></legend><label><input type="radio" name="jrs-practice-q1" value="1"> <span>A more polished summary</span></label><label><input type="radio" name="jrs-practice-q1" value="2"> <span>A retained evidence-to-conclusion path</span></label><label><input type="radio" name="jrs-practice-q1" value="3"> <span>An additional signature</span></label></fieldset>
+<fieldset data-correct="1" data-reason="Basis identification requires traceable support for material characterizations, not unsupported labels."><legend><strong>2. A record describes an employee as repeatedly uncooperative but does not identify the incidents or reports behind the description. What should the reviewer request?</strong></legend><label><input type="radio" name="jrs-practice-q2" value="1"> <span>Identifiable source support for the characterization</span></label><label><input type="radio" name="jrs-practice-q2" value="2"> <span>Stronger language to signal seriousness</span></label><label><input type="radio" name="jrs-practice-q2" value="3"> <span>Removal of every adverse observation</span></label></fieldset>
+<fieldset data-correct="1" data-reason="Chronology requires a discernible sequence of material events and investigative steps."><legend><strong>3. A finding refers to several interviews but omits their dates and sequence. Which condition is most directly implicated?</strong></legend><label><input type="radio" name="jrs-practice-q3" value="1"> <span>Chronology</span></label><label><input type="radio" name="jrs-practice-q3" value="2"> <span>Visual consistency</span></label><label><input type="radio" name="jrs-practice-q3" value="3"> <span>Public attribution</span></label></fieldset>
+<fieldset data-correct="2" data-reason="Reasoning trace makes the connection between retained source facts and the actual decision reviewable."><legend><strong>4. The source evidence is present, but the record does not explain how it supports the selected outcome. What should be documented?</strong></legend><label><input type="radio" name="jrs-practice-q4" value="1"> <span>A conclusion with greater confidence</span></label><label><input type="radio" name="jrs-practice-q4" value="2"> <span>The reasoning connecting the evidence to the outcome</span></label><label><input type="radio" name="jrs-practice-q4" value="3"> <span>A new unrelated source</span></label></fieldset>
+<fieldset data-correct="2" data-reason="Sufficiency requires the file to contain or account for the material necessary for later independent review."><legend><strong>5. A consequential determination relies on attachments that are referenced but absent from the retained file. What should happen before finalization?</strong></legend><label><input type="radio" name="jrs-practice-q5" value="1"> <span>Treat the document as complete because attachments are named</span></label><label><input type="radio" name="jrs-practice-q5" value="2"> <span>Record the deficiency and obtain or clearly account for the missing material</span></label><label><input type="radio" name="jrs-practice-q5" value="3"> <span>Ask the reviewer to rely on recollection</span></label></fieldset>
+<fieldset data-correct="3" data-reason="AI-assisted drafting must not convert uncertainty into unsupported certainty or erase source traceability."><legend><strong>6. An AI-generated summary states a disputed allegation as established fact, while the source notes preserve uncertainty. Which response is appropriate?</strong></legend><label><input type="radio" name="jrs-practice-q6" value="1"> <span>Keep the summary because it is fluent</span></label><label><input type="radio" name="jrs-practice-q6" value="2"> <span>Delete the source notes</span></label><label><input type="radio" name="jrs-practice-q6" value="3"> <span>Reconcile the summary against source materials and retain the uncertainty</span></label></fieldset>
+      <button type="button" id="jrs-practice-score">Review my practice answers</button>
+      <div id="jrs-practice-result" role="status" aria-live="polite" aria-atomic="true"></div>
+    </form>
+  </details>
+</section>
+
+<!-- Optional certificate naming follows open module access. -->
   <div id="preview-banner" style="display:none;background:var(--surface2);border:1px solid var(--accent-dim);border-left:3px solid var(--accent);padding:14px 16px;margin-bottom:16px">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px">Open access</div>
     <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
@@ -3429,5 +3447,40 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <!-- /JRS PANEL BINDER v2 -->
 <script defer src="/assets/jrs-keyboard-controls.js"></script>
 <script src="/assets/jrs-mobile-navigation.js" defer></script>
+
+<script>
+(function(){
+  'use strict';
+  var form=document.getElementById('jrs-practice-form');
+  var button=document.getElementById('jrs-practice-score');
+  var result=document.getElementById('jrs-practice-result');
+  if(!form||!button||!result)return;
+  button.addEventListener('click',function(){
+    var items=[...form.querySelectorAll('fieldset[data-correct]')];
+    var missing=items.find(function(field){return !field.querySelector('input[type="radio"]:checked');});
+    if(missing){
+      result.textContent='Answer all six practice questions before reviewing your responses.';
+      var first=missing.querySelector('input[type="radio"]');
+      if(first)first.focus();
+      return;
+    }
+    var correct=0;
+    var explanations=document.createElement('ol');
+    items.forEach(function(field,i){
+      var choice=field.querySelector('input[type="radio"]:checked');
+      var passed=Number(choice.value)===Number(field.getAttribute('data-correct'));
+      if(passed)correct++;
+      var li=document.createElement('li');
+      li.textContent='Question '+(i+1)+': '+(passed?'Correct. ':'Review needed. ')
+        +field.getAttribute('data-reason');
+      explanations.appendChild(li);
+    });
+    var header=document.createElement('p');
+    header.textContent='Practice result: '+correct+' of '+items.length
+      +' responses aligned with the stated review conditions. This is formative feedback, not a professional credential.';
+    result.replaceChildren(header,explanations);
+  });
+})();
+</script>
 </body>
 </html>
