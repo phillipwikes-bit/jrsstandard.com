@@ -1,5 +1,10 @@
 {
   "ignoreCommand": "exit 1",
+  "git": {
+    "deploymentEnabled": {
+      "feature/incomeos-*": false
+    }
+  },
   "crons": [],
   "redirects": [
     {
