@@ -10,6 +10,23 @@ const legacy=[
  'recheck.html','security.html','review-engine.html',
  'coauthor.html','honor.html','ai-records-arm-b.html','404.html','people.html'
 ];
+const requiredMobileNav=[
+ 'reviewer/evaluation.html','reviewer/completion.html','recheck.html',
+ 'security.html','ai-records-arm-b.html'
+];
+for(const path of requiredMobileNav){
+ const html=load(path);
+ assert.ok(html.includes('<script src="/assets/jrs-mobile-navigation.js" defer></script>'),
+   path+': shared keyboard-operated mobile navigation missing');
+ assert.equal((html.match(/<nav class="jrs-sitenav"/g)||[]).length,1,
+   path+': redundant competing navigation');
+ const nav=html.match(/<nav class="jrs-sitenav"[\\s\\S]*?<\\/nav>/)?.[0]||'';
+ assert.equal((nav.match(/<a href=/g)||[]).length,7,
+   path+': canonical seven-link mobile navigation missing');
+ assert.ok(!nav.includes('enterprise.html'),
+   path+': retired enterprise destination must not be promoted');
+}
+
 for(const path of legacy){
  const html=load(path);
  assert.match(html,/<body class="jrs-institutional jrs-legacy-public(?: [^"]+)?">/,path+': required opt-in missing');
