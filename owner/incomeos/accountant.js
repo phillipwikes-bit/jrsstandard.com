@@ -23,14 +23,34 @@
   function uid(){return "i"+Date.now()+"-"+Math.random().toString(36).slice(2,10);}
   function today(){var d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");}
   function currentYear(){return String($("report-year")?.value||new Date().getFullYear());}
-  function datesMatch(e){return typeof e.date==="string" && /^\d{4}-\d{2}-\d{2}$/.test(e.date);}
+  function datesMatch(e){
+    if(!e||typeof e.date!=="string"||!/^20\d\d-\d\d-\d\d$/.test(e.date))return false;
+    var t=Date.parse(e.date+"T00:00:00Z");
+    return Number.isFinite(t)&&new Date(t).toISOString().slice(0,10)===e.date;
+  }
   function validate(e){
     if(!e || !["income","outflow"].includes(e.kind) || !datesMatch(e))return false;
     if(!e.label || typeof e.label!=="string" || e.label.length>120)return false;
     if(e.kind==="income")return CATEGORIES.includes(e.category) && num(e.grossUsd)>0 && num(e.grossUsd)<=1e10 && num(e.feesUsd)>=0 && num(e.feesUsd)<=num(e.grossUsd) && STATUS.includes(e.status) && SCOPES.includes(e.scope);
     return EXPENSE_TYPES.includes(e.type) && COST_CATEGORIES.includes(e.category) && num(e.amountUsd)>0 && num(e.amountUsd)<=1e10 && (e.businessUse===null || (num(e.businessUse)>=0 && num(e.businessUse)<=100));
   }
-  function write(){if(window.IncomeOSFinancialReadOnly===true)return false;try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){alert("IncomeOS could not save locally. Available browser storage may be full.");return false;}}
+  function write(){
+    if(window.IncomeOSFinancialReadOnly===true)return false;
+    try{localStorage.setItem(KEY,JSON.stringify(db));return true;}
+    catch(_e){alert("IncomeOS could not save locally. Available browser storage may be full.");return false;}
+  }
+  // Persist first, then update the current ledger. An interrupted storage write
+  // must never appear as an accepted accounting record in the running interface.
+  function commitEntries(entries){
+    if(window.IncomeOSFinancialReadOnly===true)throw new Error("Financial changes are disabled in unapproved staging");
+    if(!Array.isArray(entries)||entries.length>15000||entries.some(function(x){return !validate(x);}))
+      throw new Error("Financial records are invalid or exceed the ledger limit");
+    var next={version:2,entries:entries};
+    try{localStorage.setItem(KEY,JSON.stringify(next));}
+    catch(_e){throw new Error("Financial records could not be saved. No ledger update was accepted.");}
+    db=next;
+    return true;
+  }
   function migrateLegacy(){
     if(window.IncomeOSFinancialReadOnly===true)return;
     try {
@@ -87,9 +107,10 @@
   function addOrUpdate(e,editId){
     if(window.IncomeOSFinancialReadOnly===true)throw new Error("Financial entry is disabled in unapproved staging");
     var found=editId?db.entries.findIndex(function(x){return x.id===editId;}):-1;
-    if(found>=0)db.entries[found]=Object.assign({},e,{id:editId,createdAt:db.entries[found].createdAt,updatedAt:new Date().toISOString()});
-    else db.entries.push(Object.assign({},e,{id:uid(),createdAt:new Date().toISOString()}));
-    write();render();
+    var next=db.entries.slice();
+    if(found>=0)next[found]=Object.assign({},e,{id:editId,createdAt:db.entries[found].createdAt,updatedAt:new Date().toISOString()});
+    else next.push(Object.assign({},e,{id:uid(),createdAt:new Date().toISOString()}));
+    commitEntries(next);render();
   }
   function resetForm(formId,kind){
     $(formId).reset();
@@ -192,7 +213,8 @@
     del.addEventListener("click",function(){
       if(window.IncomeOSFinancialReadOnly===true)return;
       if(!confirm("Delete this local record? This cannot be undone without a backup."))return;
-      db.entries=db.entries.filter(function(x){return x.id!==e.id;});write();render();
+      try{commitEntries(db.entries.filter(function(x){return x.id!==e.id;}));render();}
+      catch(err){alert(err.message);}
     });
   }
   function renderList(){
@@ -272,7 +294,9 @@
   function findImportFields(row){
     var h=row.map(function(x){return x.toLowerCase().trim().replace(/[\s\-]+/g,"_");});
     var expected=["kind","date","description","vendor","category","amount_usd","status","business_use_pct","evidence_ref","notes"];
-    if(expected.some(function(x){return !h.includes(x)}))throw new Error("CSV must use the IncomeOS import template. Download the template and ask ChatGPT to prepare rows from connected receipts or transactions.");
+    var allowed=expected.concat(["evidence_status"]);
+    if(expected.some(function(x){return !h.includes(x)})||h.some(function(x){return !allowed.includes(x)})||new Set(h).size!==h.length)
+      throw new Error("CSV headers must match the IncomeOS import template without duplicate or unsupported fields");
     return h;
   }
   function importCsv(text){
@@ -292,7 +316,7 @@
     for(var i=1;i<rows.length;i++){
       var row=rows[i],get=function(k){return limit(row[idx(k)]??"",500);};
       var kind=get("kind").toLowerCase(),amount=num(get("amount_usd")),date=get("date"),label=limit(get("description"),100),category=get("category").toLowerCase();
-      if(!label||!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isFinite(amount)||amount<=0||amount>1e10){rejected++;continue;}
+      if(!label||!datesMatch({date:date})||!Number.isFinite(amount)||amount<=0||amount>1e10){rejected++;continue;}
       var e;
       if(kind==="income"){
         e={kind:"income",label:label,payer:limit(get("vendor"),100),date:date,category:CATEGORIES.includes(category)?category:"other",amountOriginal:amount,currency:"USD",fx:1,grossUsd:round(amount),feesUsd:0,
@@ -310,7 +334,7 @@
     }
     if(!accepted.length)return {accepted:0,skipped:skipped,rejected:rejected};
     if(!confirm("Import "+accepted.length+" new records? They are not yet reconciled to supporting evidence. "+skipped+" possible duplicates skipped; "+rejected+" invalid records rejected."))return {cancelled:true};
-    db.entries=db.entries.concat(accepted);write();render();
+    commitEntries(db.entries.concat(accepted));render();
     return {accepted:accepted.length,skipped:skipped,rejected:rejected};
   }
   function importJson(text){
@@ -323,7 +347,7 @@
     entries.forEach(function(e){if(!ids.has(e.id)){accepted.push(e);ids.add(e.id);}});
     if(!accepted.length)return {accepted:0,skipped:entries.length};
     if(!confirm("Restore "+accepted.length+" entries from local backup (existing IDs will not be overwritten)?"))return {cancelled:true};
-    db.entries=db.entries.concat(accepted);write();render();return {accepted:accepted.length,skipped:entries.length-accepted.length};
+    commitEntries(db.entries.concat(accepted));render();return {accepted:accepted.length,skipped:entries.length-accepted.length};
   }
   async function handleFile(input,format){
     var f=input.files?.[0];if(!f)return;
