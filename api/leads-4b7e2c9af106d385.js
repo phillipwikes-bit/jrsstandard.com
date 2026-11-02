@@ -217,7 +217,7 @@ export default async function handler(req) {
     attempts_unconfigured: unconfigured,
     attempt_price_basis: 'Archived listed offer prices, not purchase commitments or lost revenue',
     note: 'Owner-only. Carries all source names, emails and organisations including possible test-marker matches; no text-based omission. Secured by an '
-        + 'server owner authentication. 
+        + 'server owner authentication. '
         + 'Pay-screen attempts are anonymous by definition and are listed '
         + 'separately from identified leads.'
   });
