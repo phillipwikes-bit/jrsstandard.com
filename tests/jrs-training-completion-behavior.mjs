@@ -224,3 +224,37 @@ console.log('PASS: free modules do not solicit email; enrollment gate, HTTP/body
  }
 }
 console.log('PASS: reviewer receipt code, name, title and issuance date are issuer-validated; false and unavailable records fail closed.');
+
+
+// Public access health requests must be read-only and must not expose
+// credential configuration. This regression exercises the actual Edge handler,
+// with networking replaced by an in-memory spy. No real data is accessed.
+{
+ const accessSource=readFileSync(new URL('../api/access.js',import.meta.url),'utf8');
+ assert.doesNotMatch(accessSource,/purgeTestRows\s*\(/,
+   'Anonymous access requests must never trigger historical participant deletion');
+ assert.doesNotMatch(accessSource,/serviceKey\s*:/,
+   'Access endpoint must not report presence of private service credentials');
+ const accessHandler=(await import('../api/access.js')).default;
+ const originalFetch=globalThis.fetch;
+ const wasSet=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
+ const previousKey=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ let calls=0;
+ globalThis.fetch=async()=>{ calls++;throw new Error('Forbidden network access on public health check'); };
+ try {
+   for(const present of [true,false]){
+     if(present)process.env.SUPABASE_SERVICE_ROLE_KEY='unit-test-only';
+     else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+     const res=await accessHandler(new Request('https://jrsstandard.com/api/access',{method:'GET'}));
+     assert.equal(res.status,200,'GET health check must remain available');
+     assert.deepEqual(await res.json(),{ok:true},'Health response must be independent of credential state');
+     assert.equal(res.headers.get('Cache-Control'),'no-store','Public health response must not be cached');
+   }
+   assert.equal(calls,0,'GET health checks must perform no external reads, writes or deletes');
+ } finally {
+   globalThis.fetch=originalFetch;
+   if(wasSet)process.env.SUPABASE_SERVICE_ROLE_KEY=previousKey;
+   else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ }
+}
+console.log('PASS: access health checks are side-effect-free and disclose no secret configuration.');
