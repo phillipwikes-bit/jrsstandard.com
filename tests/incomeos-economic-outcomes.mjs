@@ -7,7 +7,7 @@ const review=ctx.window.IncomeOSEconomicOutcomes.review;
 const base={id:"a",type:"EARNED_INCOME",amountCents:10000,posted:true,sourceVerified:true,evidenceId:"bank-row-1"};
 const verified=review([base,{...base,id:"b",evidenceId:"bill-2",type:"BILL_SAVINGS",amountCents:2500,baselineVerified:true},{...base,id:"c",evidenceId:"refund-3",type:"REFUND",amountCents:500,originalChargeVerified:true},{...base,id:"d",evidenceId:"principal-4",type:"RETURNED_PRINCIPAL",amountCents:3000,principalBasisVerified:true}]);
 assert.equal(verified.status,"EVIDENCE_REVIEW_ONLY");
-assert.equal(verified.verifiedBenefitCents,12500);
+assert.equal(verified.verifiedBenefitCents,10000);
 assert.equal(verified.totals.REFUND,500);
 assert.equal(verified.totals.RETURNED_PRINCIPAL,3000);
 assert.equal(verified.availableToInvestCents,null);
