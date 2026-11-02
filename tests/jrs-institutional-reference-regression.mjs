@@ -227,7 +227,7 @@ assert.ok(read('research.html').includes('jrs-research-primary-links') &&
   assert.ok(receipt.indexOf("history.replaceState(") <
     receipt.indexOf('<link rel="preconnect" href="https://fonts.googleapis.com">'),
     'legacy parameters must be stripped before third-party assets load');
-  assert.doesNotMatch(receipt, /\\/api\\/telemetry|trackClickAndNavigate|googletagmanager/i,
+  assert.doesNotMatch(receipt, /\/api\/telemetry|trackClickAndNavigate|googletagmanager/i,
     'receipt must not broadcast full navigation URLs or use analytics');
   assert.ok(receipt.includes('method="post"'),
     'new historical verification submissions must not use GET');
