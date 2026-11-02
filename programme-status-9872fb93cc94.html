@@ -391,6 +391,7 @@ tr.today td{background:rgba(93,191,130,.07)}
         <option value="recorded-yes">Contact permission recorded</option>
         <option value="recorded-no">Contact permission declined</option>
         <option value="not-recorded">Contact permission not recorded</option>
+        <option value="conflicting">Conflicting permission flags, review required</option>
       </select>
     </div>
     <div id="ppl-cnt" class="note" style="margin:0 0 6px"></div>
@@ -1710,6 +1711,7 @@ var PPL = [];
 function pplConsentText(state){
   if(state==='recorded-yes')return 'Yes (source-specific)';
   if(state==='recorded-no')return 'No';
+  if(state==='conflicting')return 'Conflicting, review required';
   return 'Not recorded';
 }
 function pplFiltered(){
@@ -1773,7 +1775,7 @@ function drawPeople(){
     cell(tr,p.activity||p.source||'');
     cell(tr,p.training_completed?(String(p.training_completed_on||'').slice(0,10)||'Yes'):'Not recorded');
     cell(tr,pplConsentText(p.consent_contact_state));
-    cell(tr,pplConsentText(p.consent_public_state));
+    cell(tr,pplConsentText(p.consent_public_state)+' ('+(p.publication_scope||'Scope not established')+')');
     cell(tr,pplConsentText(p.consent_transfer_state));
     tbody.appendChild(tr);
   });
@@ -1841,7 +1843,9 @@ function pplCsv(){
             'campaign','completion_code','honor_code','linkedin_url','source',
             'activity_family','inquiry_category','commercial_purpose',
             'consent_contact_state','consent_public_state','consent_transfer_state',
-            'edition','records_run','quote','quote_cleared_for_publication','byline_ok'];
+            'edition','records_run','quote','quote_cleared_for_publication','byline_ok',
+            'publication_scope','consent_research_named_state',
+            'consent_organization_named_state','consent_supporter_listed_state'];
   var lines=[head.join(',')];
   list.forEach(function(r){
     lines.push([q(String(r.date||'').slice(0,10)),q(r.name),q(r.organization),q(r.title),q(r.country),
@@ -1852,7 +1856,8 @@ function pplCsv(){
       q(r.activity_family),q(r.inquiry_category),q(r.commercial_purpose),
       q(r.consent_contact_state),q(r.consent_public_state),q(r.consent_transfer_state),
       q(r.edition),q(r.records_run),q(r.quote),q(r.quote_cleared_for_publication?'yes':'no'),
-      q(r.byline_ok?'yes':'no')].join(','));
+      q(r.byline_ok?'yes':'no'),q(r.publication_scope),q(r.consent_research_named_state),
+      q(r.consent_organization_named_state),q(r.consent_supporter_listed_state)].join(','));
   });
   var blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'});
   var url=URL.createObjectURL(blob);
@@ -1883,7 +1888,7 @@ function loadPeople(){
       if(sel){
         sel.innerHTML='<option value="">All countries</option>'+Object.keys(ctry).sort().map(function(c){
           return '<option value="'+esc(c)+'">'+esc(c)+' ('+ctry[c]+')</option>'; }).join('');
-        sel.addEventListener('change', drawPeople);
+        if(!sel.dataset.wired){sel.dataset.wired='1';sel.addEventListener('change',drawPeople);}
       }
       var group=document.getElementById('ppl-group');
       if(group){
