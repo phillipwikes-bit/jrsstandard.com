@@ -34,6 +34,16 @@ try{
   const first=Array.from({length:100},(_,i)=>({name:'Fixture '+i,email:'synthetic'+i+'@example.test',
     message:'Synthetic inquiry '+i,category:'general',consent_to_contact:'true',
     _date:'2026-11-02T08:00:00Z'}));
+  // The public form has two legitimate delivery paths: AJAX posts an explicit
+  // consent_to_contact field, while no-JS Formspree posts consent=on.
+  first[0].consent_to_transfer='false';
+  delete first[1].consent_to_contact;
+  Object.assign(first[1],{
+    consent:'on',source:'public-jrs-professional-contact',
+    form_type:'jrs-general-professional-inquiry-2026-11-01'
+  });
+  delete first[2].consent_to_contact;
+  first[2].consent='on'; // Unknown source cannot borrow public-form permission.
   calls=[];
   globalThis.fetch=async(url,opt)=>{
     calls.push({url:String(url),auth:opt.headers.Authorization,redirect:opt.redirect,method:opt.method});
@@ -48,6 +58,10 @@ try{
     assert.equal(d.total,101);assert.equal(d.rows.length,101);
     assert.equal(d.rows[100].contact_permission,'recorded-no');
     assert.equal(d.rows[0].contact_permission,'recorded-yes');
+    assert.equal(d.rows[0].transfer_permission,'recorded-no');
+    assert.equal(d.rows[1].contact_permission,'recorded-yes');
+    assert.equal(d.rows[1].transfer_permission,'not-recorded');
+    assert.equal(d.rows[2].contact_permission,'not-recorded');
     assert.equal(d.rows[0].publication_permission,'not-recorded');
     assert.equal(d.rows[0].transfer_permission,'not-recorded');
     assert.equal(calls.length,2);
