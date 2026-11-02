@@ -1155,3 +1155,62 @@ body.jrs-institutional.jrs-guides-page .jrs-guide-version-detail-body p{
   padding:16px 18px!important
  }
 }
+
+
+/* Publication and fictional-example improvements, 2026-11-02.
+   Scoped to public institutional layouts. No auth or record-processing changes. */
+body.jrs-institutional.jrs-home .jr-example-grid{
+ display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;
+}
+body.jrs-institutional.jrs-home .jr-example-step{
+ min-width:0;padding:22px 23px;border:1px solid #cad9e3;
+ background:#fff;border-radius:5px;
+}
+body.jrs-institutional.jrs-home .jr-example-step h3{
+ font-size:19px!important;line-height:1.35!important;margin:7px 0 10px!important;
+ color:#17344d!important;
+}
+body.jrs-institutional.jrs-home .jr-example-step p{
+ margin:0;color:#314e62;font-size:15px;line-height:1.65;
+ overflow-wrap:anywhere;
+}
+body.jrs-institutional.jrs-home .jr-example-step .jr-example-label{
+ font-size:12px!important;color:#7a5722!important;font-weight:700;
+ letter-spacing:.06em;text-transform:uppercase;
+}
+body.jrs-institutional.jrs-home .jr-example-step .jr-example-quote{
+ font-family:Georgia,serif;font-size:18px!important;line-height:1.55!important;
+ color:#183e5b!important;
+}
+body.jrs-institutional.jrs-home .jr-example-next{
+ margin:16px 0 0;color:#40586a;font-size:14px;line-height:1.7;
+}
+body.jrs-institutional.jrs-home .jr-example-next a{
+ color:#173d5b;font-weight:700;text-decoration:underline;text-underline-offset:3px;
+}
+body.jrs-institutional.jrs-home .jr-external-publications .jr-publication h3{
+ overflow-wrap:anywhere;
+}
+body.jrs-institutional.jrs-research-page .jrs-practice-publications .card{
+ min-width:0;
+}
+body.jrs-institutional.jrs-research-page .jrs-practice-publications .card h3{
+ overflow-wrap:anywhere;
+}
+body.jrs-institutional.jrs-resource-page .jrs-publication-resources{
+ margin-top:34px;margin-bottom:32px;
+}
+body.jrs-institutional.jrs-resource-page .jrs-publication-resources .card{
+ min-width:0;
+}
+body.jrs-institutional.jrs-resource-page .jrs-publication-resources .card-title{
+ overflow-wrap:anywhere;
+}
+@media(max-width:760px){
+ body.jrs-institutional.jrs-home .jr-example-grid{grid-template-columns:1fr;gap:10px}
+ body.jrs-institutional.jrs-home .jr-example-step{padding:18px}
+ body.jrs-institutional.jrs-home .jr-example-step .jr-example-quote{font-size:17px!important}
+ body.jrs-institutional.jrs-home .jr-external-publications .jr-publication a{
+  white-space:normal;overflow-wrap:anywhere;
+ }
+}
