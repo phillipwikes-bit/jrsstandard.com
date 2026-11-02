@@ -107,6 +107,18 @@ assert.ok(standard.includes('toggleMobileNav()') &&
  standard.includes('aria-expanded="false"'),
  'Standard mobile menu control and expanded state must remain wired');
 assert.ok(standard.includes('showSection('),'Standard section interactions must remain intact');
+
+const standardMainOpen='<main id="main-content" tabindex="-1" aria-label="JRS online methodology">';
+assert.ok(standard.includes(standardMainOpen),'Standard must contain a stable main landmark');
+assert.equal((standard.match(/<main\b/g)||[]).length,1,'Standard must have exactly one main landmark');
+assert.equal((standard.match(/<\/main>/g)||[]).length,1,'Standard main landmark must close');
+assert.ok(standard.indexOf(standardMainOpen)<standard.indexOf('id="section-home"'),
+  'Main landmark must wrap all document sections, not only the overview');
+assert.ok(standard.indexOf('</main>')>standard.indexOf('id="section-kit"') &&
+  standard.indexOf('</main>')<standard.indexOf('<footer class="site-footer"'),
+  'Main landmark must enclose last document section and exclude footer');
+assert.ok(!standard.includes('role="main"'),'No second or hidden main landmark is allowed');
+
 assert.ok(standard.includes('<details>')&&standard.includes('jrs-publication-note-detail')&&
  standard.includes('Publication versions:')&&standard.includes('Archived implementation-kit inventory:'),
  'Version and retired-kit disclosures must remain available in accessible details');
