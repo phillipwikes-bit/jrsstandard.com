@@ -1,5 +1,6 @@
 import { ownerAccess } from './_owner-auth.js';
 import { fetchAll } from './_sb-fetch.js';
+import { OFFERS } from './_offer-config.js';
 export const config = { runtime: 'edge' };
 
 // OWNER-ONLY COMMERCIAL INBOX. Every lead, in full, newest first.
@@ -182,12 +183,22 @@ export default async function handler(req) {
 
   const attempts = arrivals.map(function (a) {
     const p = (a || {}).payload || {};
+    const offer = str(p.offer, 40);
+    // Historical checkout offers are retired and deliberately hidden from the
+    // public pricing API. Resolve their archived face value here instead.
+    // A click is not a purchase, purchaser commitment or lost revenue.
+    const historic=Object.hasOwn(OFFERS,offer)?OFFERS[offer]:null;
+    const cataloguePrice=historic && typeof historic.price_usd==='number'
+      && Number.isFinite(historic.price_usd) && historic.price_usd>=0
+      ? historic.price_usd:null;
     return {
       at: a.created_at || null,
-      offer: str(p.offer, 40),
+      offer: offer,
       state: str(p.state, 40),
       from: str(p.src, 60),
-      country: str(p.country, 2)
+      country: str(p.country, 2),
+      historical_catalogue_price_usd: cataloguePrice,
+      offer_retired: !!(historic && historic.retired === true)
     };
   });
 
@@ -206,6 +217,7 @@ export default async function handler(req) {
     attempts: attempts,
     attempt_count: attempts.length,
     attempts_unconfigured: unconfigured,
+    attempt_price_basis: 'Archived listed offer prices, not purchase commitments or lost revenue',
     note: 'Owner-only. Carries names, emails and organisations. Secured by an '
         + 'server owner authentication. '
         + 'Pay-screen attempts are anonymous by definition and are listed '
