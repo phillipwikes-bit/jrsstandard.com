@@ -537,3 +537,56 @@ console.log('PASS: training enrollment origin, consent, size and error minimizat
  }
 }
 console.log('PASS: funnel telemetry reports recorded only on database acceptance.');
+
+
+// Guide-directory arrivals must not contaminate registration-form conversion.
+// The public gate-stats aggregator identifies them by mode='guidespage'.
+// Preserve the distinction through ingestion, with no real database writes.
+{
+ const guidesPage=readFileSync(new URL('../investigator-guides.html',import.meta.url),'utf8');
+ const gateStats=readFileSync(new URL('../api/gate-stats.js',import.meta.url),'utf8');
+ assert.match(guidesPage,/mode:'guidespage'/,
+   'Guide-directory arrival must retain its distinct event mode');
+ assert.match(guidesPage,/jrsstandard\\.com\$\/i\.test\(location\.hostname\)/,
+   'Preview or local browser audits must not become production guide visits');
+ assert.match(guidesPage,/src\.indexOf\('deploytest'\) === 0/,
+   'Owner and deployment test traffic must remain outside guide-page counts');
+ assert.match(gateStats,/String\(p\.mode\) === 'guidespage'/,
+   'Reporting must exclude guide-directory visits from registration-form views');
+ const handler=(await import('../api/access.js')).default;
+ const originalFetch=globalThis.fetch;
+ const hadKey=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
+ const previousKey=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ const requests=[];
+ process.env.SUPABASE_SERVICE_ROLE_KEY='unit-test-only';
+ globalThis.fetch=async(url,options={})=>{
+   requests.push(JSON.parse(options.body));
+   return new Response(null,{status:201});
+ };
+ const send=(mode,src)=>handler(new Request('https://jrsstandard.com/api/access',{
+   method:'POST',headers:{'content-type':'application/json',
+     'origin':'https://jrsstandard.com','user-agent':'Mozilla/5.0 Safari/605.1.15'},
+   body:JSON.stringify({event:'view',mode,src})
+ }));
+ try {
+   const guides=await send('guidespage','organic');
+   assert.equal(guides.status,200);
+   assert.equal((await guides.json()).recorded,true);
+   assert.equal(requests.length,1);
+   assert.equal(requests[0].source,'gate-view');
+   assert.equal(requests[0].payload.mode,'guidespage',
+     'Directory traffic must not inflate guide-registration form views');
+   const form=await send('guide','organic');
+   assert.equal((await form.json()).recorded,true);
+   assert.equal(requests[1].payload.mode,'guide',
+     'Actual registration-form view remains a separate event');
+   const test=await send('guidespage','deploytest-hosted');
+   assert.equal((await test.json()).recorded,false);
+   assert.equal(requests.length,2,'Smoke-test guide view cannot write database rows');
+ } finally {
+   globalThis.fetch=originalFetch;
+   if(hadKey)process.env.SUPABASE_SERVICE_ROLE_KEY=previousKey;
+   else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ }
+}
+console.log('PASS: guide-directory visits and registration-form views are distinct; preview traffic is excluded.');
