@@ -68,5 +68,5 @@ for(const required of ["function renderReview()","function annualReview()","func
     '"click",exportReview','place(r,"h2","","Outstanding documentation review")'])
  assert.ok(accountant.includes(required),"Accountant report missing review integration: "+required);
 const browserAudit=readFileSync("tests/incomeos-browser-audit.html","utf8");
-assert.ok(browserAudit.includes("view-ledger"),"Existing mobile tests must exercise ledger navigation");
+assert.ok(browserAudit.includes('"assets","ledger","compound","about","research"'),"Existing mobile tests must exercise ledger navigation");
 console.log("IncomeOS accountant documentation exceptions QA passed: 11 evidence categories, annual scope, no silent deduction, display/CSV/PDF integration and source privacy.");
