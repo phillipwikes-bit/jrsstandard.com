@@ -82,6 +82,37 @@ for(const page of [...pages,...additionalPages]){
    page+' must not contain connector output truncation markers');
 }
 
+// Standard source restoration and semantic worked-example coverage.
+// The online document previously contained a literal middle-truncation
+// placeholder that removed 28,935 characters and one complete tab group.
+{
+  for(const page of [...pages,...additionalPages]){
+    assert.doesNotMatch(read(page), /\u2026\d+ tokens truncated\u2026|Warning: truncated output/i,
+      page+' contains an accidentally committed source truncation');
+  }
+  const standard=read('jrsstandard.html');
+  const groups=(standard.match(/class="scenario-tabs"/g)||[]).length;
+  const paneIds=[...standard.matchAll(/id="([^"]+)" class="scenario-pane(?: active)?"/g)]
+    .map(match=>match[1]);
+  const tabDestinations=[...standard.matchAll(/onclick="showScenarioPane\(this,'([^']+)'\)"/g)]
+    .map(match=>match[1]);
+  assert.equal(groups,5,'five worked-example tab groups must remain available');
+  assert.equal(paneIds.length,15,'all 15 worked-example panes must exist');
+  assert.equal(tabDestinations.length,15,'each worked-example pane needs a navigation button');
+  assert.equal(new Set(paneIds).size,15,'worked-example pane IDs must be unique');
+  assert.deepEqual(new Set(tabDestinations),new Set(paneIds),
+    'every panel must have exactly one corresponding navigation tab');
+  const enhancement=read('assets/jrs-keyboard-controls.js');
+  for(const token of [
+    "function enhanceScenarioTabs()", "setAttribute('role','tablist')",
+    "setAttribute('role','tab')", "setAttribute('role','tabpanel')",
+    "setAttribute('aria-selected'", "setAttribute('aria-controls'",
+    "setAttribute('aria-labelledby'", "'ArrowLeft','ArrowRight','Home','End'",
+    "pairs[next].button.click()"
+  ])assert.ok(enhancement.includes(token),'worked-example tabs missing '+token);
+  console.log('PASS: restored Standard examples retain 5 tab groups, 15 panels and accessible keyboard interaction.');
+}
+
 const main=read('index.html');
 for(const token of [
  '01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice',
