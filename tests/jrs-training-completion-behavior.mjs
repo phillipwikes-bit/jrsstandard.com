@@ -554,6 +554,9 @@ console.log('PASS: funnel telemetry reports recorded only on database acceptance
    'Owner and deployment test traffic must remain outside guide-page counts');
  assert.match(gateStats,/String\(p\.mode\) === 'guidespage'/,
    'Reporting must exclude guide-directory visits from registration-form views');
+ assert.ok(gateStats.includes("form_view_classification_status: 'historical_unverified'") &&
+   gateStats.includes('form_view_classification_note:'),
+   'Historically ambiguous directory and form views must be explicitly qualified');
  const handler=(await import('../api/access.js')).default;
  const originalFetch=globalThis.fetch;
  const hadKey=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
