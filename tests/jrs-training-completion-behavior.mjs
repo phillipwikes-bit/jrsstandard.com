@@ -346,3 +346,57 @@ console.log('PASS: unverified public listing cannot change consent; registration
  }
 }
 console.log('PASS: telemetry acknowledges upstream writes only and removes sensitive URL parameters.');
+
+
+// Server-side self-attested completion may not duplicate an email on sequential
+// retries. This is not identity verification; a database unique constraint is
+// still needed for an absolute concurrency guarantee. All calls are mocked.
+{
+ const handler=(await import('../api/complete.js')).default;
+ const previousFetch=globalThis.fetch;
+ const hadKey=Object.prototype.hasOwnProperty.call(process.env,'SUPABASE_SERVICE_ROLE_KEY');
+ const oldKey=process.env.SUPABASE_SERVICE_ROLE_KEY;
+ const calls=[];
+ let saved=[];
+ process.env.SUPABASE_SERVICE_ROLE_KEY='unit-test-only';
+ globalThis.fetch=async(url,options={})=>{
+   const method=options.method||'GET';
+   calls.push({url:String(url),method,body:options.body||''});
+   if(method==='GET')return new Response(JSON.stringify(saved),
+     {status:200,headers:{'Content-Type':'application/json'}});
+   if(method==='POST')return new Response(null,{status:201});
+   throw new Error('Unexpected test request');
+ };
+ const send=(options={})=>handler(new Request('https://jrsstandard.com/api/complete',{
+   method:'POST',headers:{'content-type':'application/json',
+      'origin':options.origin||'https://jrsstandard.com'},
+   body:JSON.stringify(options.data||{email:'reader@example.org'})
+ }));
+ try {
+   let res=await send({origin:'https://unauthorized.example'});
+   assert.equal(res.status,403,'Cross-origin browser completion must be rejected');
+   assert.equal(calls.length,0,'Rejected origin must not query private records');
+   res=await send({data:{email:'x'.repeat(2500)+'@example.org'}});
+   assert.equal(res.status,413,'Oversized completion payload must fail closed');
+   assert.equal(calls.length,0,'Oversized request must not reach the database');
+
+   res=await send();
+   assert.equal(res.status,200,'First self-attested completion may be accepted');
+   assert.deepEqual(await res.json(),{ok:true});
+   assert.deepEqual(calls.map(c=>c.method),['GET','POST']);
+   assert.match(calls[0].url,/source=eq.training-complete/);
+   assert.equal(JSON.parse(calls[1].body).source,'training-complete');
+
+   saved=[{id:'existing-record'}];calls.length=0;
+   res=await send();
+   assert.equal(res.status,200,'Repeat completion must acknowledge the existing record');
+   assert.deepEqual(await res.json(),{ok:true});
+   assert.deepEqual(calls.map(c=>c.method),['GET'],
+     'Sequential retry must not insert another completion record');
+ } finally {
+   globalThis.fetch=previousFetch;
+   if(hadKey)process.env.SUPABASE_SERVICE_ROLE_KEY=oldKey;
+   else delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+ }
+}
+console.log('PASS: completion service checks source scope, rejects cross-origin/oversize requests and avoids sequential duplicates.');
