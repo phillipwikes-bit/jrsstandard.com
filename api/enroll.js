@@ -21,7 +21,7 @@ export default async function handler(req){
   if (req.method === 'OPTIONS') return new Response(null, { status:204, headers:{ 'Access-Control-Allow-Origin':'*', 'Access-Control-Allow-Methods':'POST, GET, OPTIONS', 'Access-Control-Allow-Headers':'Content-Type' } });
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
-  if (req.method === 'GET') return json({ ok:true, serviceKey: !!SERVICE });
+  if (req.method === 'GET') return json({ ok:true });
   if (req.method !== 'POST') return json({ error:'method_not_allowed' }, 405);
   if (!SERVICE) return json({ error:'service_key_missing' }, 503);
 
@@ -64,6 +64,6 @@ export default async function handler(req){
     headers:{ 'apikey':SERVICE, 'Authorization':'Bearer '+SERVICE, 'Content-Type':'application/json', 'Prefer':'return=minimal' },
     body: JSON.stringify(row)
   });
-  if (!res.ok){ const t = await res.text(); return json({ error:'db_insert_failed', status:res.status, detail:String(t).slice(0,300) }, 502); }
+  if (!res.ok) return json({ error:'service_unavailable' }, 502);
   return json({ ok:true });
 }
