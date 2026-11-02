@@ -81,6 +81,7 @@
     var b = node("button", "iconbtn", "★"); b.type = "button";
     b.setAttribute("aria-label", "Save this opportunity");
     markSaved(id, b);
+    if(window.IncomeOSFinancialReadOnly===true){b.disabled=true;b.title="Owner bookmarks require protected storage";return b;}
     b.addEventListener("click", function () {
       if (state.saved.includes(id)) state.saved = state.saved.filter(function (x) { return x !== id; });
       else state.saved.push(id);
