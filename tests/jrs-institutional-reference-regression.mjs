@@ -1,7 +1,7 @@
 // JRS institutional reference release gate.
 // Source-only assertions. Not a substitute for rendered accessibility testing.
 import assert from 'node:assert/strict';
-import {readFileSync, existsSync} from 'node:fs';
+import {readFileSync, existsSync, readdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -86,7 +86,23 @@ for(const page of [...pages,...additionalPages]){
 // The online document previously contained a literal middle-truncation
 // placeholder that removed 28,935 characters and one complete tab group.
 {
-  for(const page of [...pages,...additionalPages]){
+  // Check the actual HTML publication surface, not only the 47 core pages.
+  // Include root-level and preserved reference/reviewer routes. Exclude test
+  // fixtures and nonpublished working documents from this source guard.
+  const publicHtml=[];
+  function collectHtml(dir){
+    for(const entry of readdirSync(join(root,dir),{withFileTypes:true})){
+      const path=dir?dir+'/'+entry.name:entry.name;
+      if(entry.isFile()&&entry.name.endsWith('.html'))publicHtml.push(path);
+      if(entry.isDirectory()&&
+        ((dir===''&&['reference','reviewer'].includes(entry.name))||
+          dir==='reference'||dir==='reviewer'))collectHtml(path);
+    }
+  }
+  collectHtml('');
+  assert.ok(publicHtml.length>=58,
+    'source truncation audit must cover all documented public and retained HTML routes');
+  for(const page of publicHtml){
     assert.doesNotMatch(read(page), /\u2026\d+ tokens truncated\u2026|Warning: truncated output/i,
       page+' contains an accidentally committed source truncation');
   }
