@@ -44,6 +44,16 @@ for(const fragment of ['#f5f7f8','#193148','#193e58','#fff','font:400 16px','min
 }
 assert.ok(shared.includes('--jrs-navy:#17364f'),'shared institutional palette changed');
 assert.ok(shared.includes('font-family:Inter'),'shared institutional type changed');
+assert.ok(shared.includes('Standards-grade browser print layout for online JRS Standard and Training'),
+ 'shared institutional browser-print styles missing');
+assert.ok(shared.includes('web version 1.0') && shared.includes('Standard PDF version 2.0'),
+ 'online methodology printout must not impersonate the published Standard v2.0');
+assert.ok(shared.includes('jrs-training-page .module-panel') &&
+ shared.includes('display:block!important;break-inside:auto'),
+ 'training printout must expand all modules instead of omitting collapsed material');
+assert.ok(shared.includes('.worksheet-body,.maturity-level-body'),
+ 'online Standard printout must show collapsible document sections');
+
 const protectedLogin=load('owner-login.html');
 assert.ok(!protectedLogin.includes('jrs-legacy-public-alignment.css') &&
  !protectedLogin.includes('class="jrs-institutional jrs-legacy-public"'),
