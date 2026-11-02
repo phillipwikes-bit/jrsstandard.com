@@ -4,6 +4,14 @@ Baseline: 2026-11-02 production main at `b8664b37fd9ab5c77c1b1f3fa2a2b8a6505a76e
 Corrective branch: `fix/jrs-training-mobile-a11y-quality-2026-11-02`
 Scope: public web pages, practitioner resources and optional reviewer training.
 
+## Owner release direction, 2026-11-02
+
+The owner has expressly directed continued improvement toward an A-level institutional website and **publication as soon as a verified, releasable candidate is available**. This is a standing conditional release instruction, not an instruction to publish an incomplete or mismatched build. Do not request repeated strategic approval simply because the candidate SHA changes during the authorized remediation.
+
+For each candidate, the release executor must record the final exact source commit, hosted deployment identity, required acceptance results, protected owner-dashboard continuity and publication outcome. Publication is authorized when the mandated gates are satisfied; unresolved security, privacy, content-integrity and required accessibility checks still fail closed. If any gate is unavailable, continue corrective work and retain the existing production version. Never describe a preview-only deployment as a production release.
+
+Current corrective note: commit `7a42a4a554984ff38f883ae2cc3b36d2ef0314eb` includes a historical reviewer privacy repair. The receipt page no longer dispatches full-URL link telemetry, sets a no-referrer policy and removes legacy code/name query parameters from the browser address before third-party resources load. Legacy incoming server request logs are a separate exposure boundary. The latest source checks passed seven supporting workflows; exact-head preview and hosted acceptance remain unresolved. A direct preview deployment request at this commit returned Vercel HTTP 402, `api-deployments-free-per-day`, on 2026-11-02. An older, different-commit preview cannot satisfy the gate.
+
 ## Evidence rule
 
 A successful source test, HTTP 200 response, preview build, screenshot, or nominal numeric score is not by itself an accessibility or training-acceptance pass. Mark a criterion **PASS** only when the required measured evidence exists for the exact release commit. Do not merge, promote, or claim an A-grade site from a partial test set. Protect private owner routes, training consent, the Review Engine restrictions and all published PDF binary identities.
@@ -37,7 +45,7 @@ A successful source test, HTTP 200 response, preview build, screenshot, or nomin
 - [ ] Consent-controlled end-to-end enrollment and completion verified without writing fabricated participant records.
 - [ ] Audit of all nine PDF editions for tagging, reading order and readable print; authoritative master required before any reissue.
 - [ ] Manual review of the full current sitemap, including redirect, private, historical and study-only routes by correct category.
-- [ ] Explicit release approval for final exact commit; verify canonical aliases and owner sign-in after production build.
+- [ ] Record the owner's standing conditional authorization, final exact release commit, full gate evidence, canonical aliases and protected owner sign-in after production build. Additional owner permission is not required solely because the candidate SHA advances; missing gate evidence remains a publication blocker.
 
 ## Outstanding risks
 
