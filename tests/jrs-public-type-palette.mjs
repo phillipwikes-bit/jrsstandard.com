@@ -29,6 +29,20 @@ for(const path of requiredMobileNav){
    path+': retired enterprise destination must not be promoted');
 }
 
+// Prevent the sitewide rendered browser audit from silently omitting an active
+// public/retained HTML route when the source inventory changes.
+const mobileAudit=load('tests/jrs-sitewide-mobile-browser-audit.html');
+const sourceInventory=load('tests/jrs-public-resource-integrity.mjs');
+const inventoryMatch=sourceInventory.match(/const pages=\[([\s\S]*?)\];/);
+const auditMatch=mobileAudit.match(/const paths=(\[[^\n;]*\]);/);
+assert.ok(inventoryMatch&&auditMatch,'sitewide browser inventory missing');
+const activeInventory=[...inventoryMatch[1].matchAll(/'([^']+)'/g)].map(x=>x[1]);
+const browserInventory=JSON.parse(auditMatch[1]);
+assert.equal(new Set(browserInventory).size,browserInventory.length,
+ 'sitewide browser audit must not duplicate routes');
+assert.deepEqual([...browserInventory].sort(),[...new Set([...activeInventory,...legacy])].sort(),
+ 'sitewide browser audit does not cover the current public and legacy route inventories');
+
 for(const path of legacy){
  const html=load(path);
  assert.match(html,/<body class="jrs-institutional jrs-legacy-public(?: [^"]+)?">/,path+': required opt-in missing');
