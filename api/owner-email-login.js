@@ -24,6 +24,24 @@ function settings() {
   if (!/^\/(?:[A-Za-z0-9_./-]+)$/.test(url.pathname)) return null;
   return { email, base: url.href.replace(/\/$/, '') };
 }
+// Neon Auth's trusted-origin list includes the stable Vercel Git branch
+// alias for this isolated preview, not every immutable deployment URL.
+// The browser request is separately required to be same-origin below.
+// Only the exact configured preview branch may use its existing trusted alias.
+// Do not add wildcards or disable the provider's origin verification.
+const OWNER_PREVIEW_REF='fix/owner-dashboard-mainline-integration-2026-11-02';
+const OWNER_PREVIEW_ALIAS='jrsstandard-com-git-fix-owner-das-a30b69-phillip-wikes-projects.vercel.app';
+function neonRequestOrigin(browserOrigin) {
+  const env=(typeof process!=='undefined'&&process.env)||{};
+  if (env.VERCEL_ENV !== 'preview' ||
+      env.VERCEL_GIT_COMMIT_REF !== OWNER_PREVIEW_REF) return browserOrigin;
+  const branchUrl=env.VERCEL_BRANCH_URL || '';
+  // If the host is different from the one explicitly approved in Neon,
+  // let the provider reject the browser origin rather than spoofing trust.
+  if (branchUrl && branchUrl !== OWNER_PREVIEW_ALIAS) return browserOrigin;
+  return 'https://'+OWNER_PREVIEW_ALIAS;
+}
+
 async function callNeon(base, route, origin, payload) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
@@ -59,6 +77,7 @@ export default async function handler(request) {
   if (request.method !== 'POST') return reply({ error: 'method_not_allowed' }, 405, { Allow: 'GET, POST' });
   if (!cfg) return reply({ error: 'owner_email_signin_unavailable' }, 503);
   const origin = new URL(request.url).origin;
+  const trustedProviderOrigin = neonRequestOrigin(origin);
   if (request.headers.get('origin') !== origin ||
       !String(request.headers.get('content-type') || '').toLowerCase().startsWith('application/json'))
     return reply({ error: 'request_not_allowed' }, 403);
@@ -75,7 +94,7 @@ export default async function handler(request) {
   if (Object.hasOwn(body, 'email') || Object.hasOwn(body, 'token')) return reply({ error: 'unsupported_field' }, 400);
   try {
     if (body.action === 'send') {
-      const response = await callNeon(cfg.base, '/email-otp/send-verification-otp', origin,
+      const response = await callNeon(cfg.base, '/email-otp/send-verification-otp', trustedProviderOrigin,
         { email: cfg.email, type: 'sign-in' });
       if (!response.ok) {
         await logDeliveryFailure(response);
@@ -87,7 +106,7 @@ export default async function handler(request) {
     }
     if (body.action === 'verify') {
       if (typeof body.otp !== 'string' || !/^\d{6}$/.test(body.otp)) return reply({ error: 'six_digit_code_required' }, 400);
-      const response = await callNeon(cfg.base, '/sign-in/email-otp', origin,
+      const response = await callNeon(cfg.base, '/sign-in/email-otp', trustedProviderOrigin,
         { email: cfg.email, otp: body.otp, name: 'JRS Owner' });
       if (!response.ok) return reply({ error: response.status === 429 ? 'rate_limited' : 'invalid_or_expired_code' },
         response.status === 429 ? 429 : 401);
