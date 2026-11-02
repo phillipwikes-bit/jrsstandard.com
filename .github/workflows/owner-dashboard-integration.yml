@@ -51,5 +51,7 @@ jobs:
         run: node tests/owner-release-readiness.mjs
       - name: Current public contact inbox is private and source-complete
         run: node tests/owner-formspree-inbox.mjs
+      - name: Historical owner inquiries and pay-screen sources must be complete
+        run: node tests/owner-historical-inbox.mjs
       - name: Reject partial participant directory reads
         run: node tests/owner-participant-completeness.mjs
