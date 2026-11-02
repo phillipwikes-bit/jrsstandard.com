@@ -10,6 +10,7 @@ on:
       - 'tests/incomeos-recovery.mjs'
       - 'tests/incomeos-event-journal.mjs'
       - 'tests/incomeos-research-outcomes.mjs'
+      - '.vercelignore'
       - 'tests/incomeos-source-boundary.mjs'
       - 'tests/incomeos-feed-adapter.mjs'
       - 'tests/incomeos-financial-value.mjs'
