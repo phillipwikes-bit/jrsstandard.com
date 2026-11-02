@@ -1360,3 +1360,49 @@ body.jrs-institutional.jrs-training-page #en-msg:not(:empty){
     transition:none!important;animation:none!important;
   }
 }
+
+
+/* Additional reading-size and zoom resilience for reviewer training.
+   Historic author-set 7.5-11px microtext is insufficient in a dense module.
+   Promote the text without editing the normative programme material. */
+body.jrs-institutional.jrs-training-page :where(
+  [style*="font-size:7.5px"],[style*="font-size:8px"],
+  [style*="font-size:8.5px"],[style*="font-size:9px"],
+  [style*="font-size:9.5px"],[style*="font-size:10px"],
+  [style*="font-size:10.5px"],[style*="font-size:11px"]
+){
+  font-size:13px!important;line-height:1.5!important;
+  letter-spacing:.035em!important;
+}
+body.jrs-institutional.jrs-training-page :where(
+  .module-panel a[href],.module-panel button,.module-row button
+){
+  min-height:44px!important;
+  white-space:normal!important;
+  overflow-wrap:anywhere!important;
+}
+body.jrs-institutional.jrs-training-page :where(
+  .module-panel a[href],.module-panel button,.module-row button,
+  #enroll-overlay button,#enroll-overlay a[href]
+):focus-visible{
+  outline:3px solid #09689e!important;
+  outline-offset:3px!important;
+}
+body.jrs-institutional.jrs-training-page #enroll-overlay{
+  max-height:100dvh!important;overflow-y:auto!important;
+}
+@media(max-width:650px){
+  body.jrs-institutional.jrs-training-page #enroll-overlay > div{
+    max-height:calc(100dvh - 24px)!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain!important;
+  }
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-training-page :where(
+    button,a[href],input,select,#en-close
+  ):focus-visible{
+    outline:3px solid Highlight!important;
+    outline-offset:3px!important;
+  }
+}
