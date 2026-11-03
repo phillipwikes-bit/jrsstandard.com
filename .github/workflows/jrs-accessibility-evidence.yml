@@ -82,7 +82,7 @@ jobs:
           done
           browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
           test -n "$browser"
-          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=30000 --window-size=1440,1100 --dump-dom http://127.0.0.1:8795/tests/jrs-check-a11y-browser.html > /tmp/jrs-check-a11y-dom.txt 2>/tmp/jrs-check-a11y-errors.log
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=60000 --window-size=1440,1100 --dump-dom http://127.0.0.1:8795/tests/jrs-check-a11y-browser.html > /tmp/jrs-check-a11y-dom.txt 2>/tmp/jrs-check-a11y-errors.log
           python3 tests/jrs-browser-gate-check.py /tmp/jrs-check-a11y-dom.txt check /tmp/jrs-check-a11y-evidence.json
       - name: Retain inspected test output
         if: always()

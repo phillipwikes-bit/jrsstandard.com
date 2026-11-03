@@ -9,10 +9,22 @@
  document.body.appendChild(frame);
  function expect(ok,name){checks.push(name);if(!ok)throw Error(name);}
  try{
+  // Do not wait for iframe load: third-party analytic/font resources can stall
+  // the load event even though the public review is interactive. Poll until
+  // the full HTML parser and local inline scripts have finished.
+  frame.src='/check.html?src=resources&name=not-an-analytics-field%40example.invalid';
   await new Promise(function(resolve,reject){
-   frame.onload=resolve;
-   frame.onerror=function(){reject(Error('record check failed to load'))};
-   frame.src='/check.html?src=resources&name=not-an-analytics-field%40example.invalid';
+    var tries=0;
+    var poll=setInterval(function(){
+      try {
+        var doc=frame.contentDocument;
+        if(doc && doc.readyState!=='loading' &&
+           doc.querySelector('#sa-out')&&doc.querySelector('#sa-announcement')){
+          clearInterval(poll);resolve();return;
+        }
+        if(++tries>=150){clearInterval(poll);reject(Error('interactive check never became ready'));}
+      }catch(err){clearInterval(poll);reject(err);}
+    },40);
   });
   var d=frame.contentDocument,w=frame.contentWindow;
   expect(!!d&&!!d.querySelector('main'),'same-origin review loaded');
