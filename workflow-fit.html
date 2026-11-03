@@ -144,6 +144,24 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 .jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
 @media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:7.5px} }
 /* /JRS SITE NAV v1 */
+
+/* Public first-use guidance, adopted after 2026-11-03 competitive review.
+   Native HTML and links, with no application, data collection or scoring. */
+.jrs-first-use{padding:24px;margin:26px 0 34px;background:#172637;border:1px solid #71869a;border-radius:9px;color:#edf3f7}
+.jrs-first-use-label{font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:#f4d79a;font-weight:700;margin:0 0 8px}
+.jrs-first-use h2{font-family:Georgia,serif;font-size:clamp(23px,2.7vw,30px);line-height:1.28;font-weight:600;color:#fff;margin:0 0 10px}
+.jrs-first-use-intro{color:#e0e9ef;line-height:1.6;max-width:74ch;font-size:15px}
+.jrs-first-use-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;list-style:none;counter-reset:jrs-review-step;padding:0;margin:22px 0}
+.jrs-first-use-steps li{counter-increment:jrs-review-step;padding:17px;border:1px solid #8294a4;background:#20354b;border-radius:6px;min-width:0}
+.jrs-first-use-steps h3{font:600 17px/1.4 Inter,Arial,sans-serif;color:#fff;margin:0 0 10px}
+.jrs-first-use-steps h3:before{content:counter(jrs-review-step) ". ";color:#f4d79a}
+.jrs-first-use-steps p{font:400 15px/1.6 Inter,Arial,sans-serif;color:#e6edf2;margin:0}
+.jrs-first-use a{color:#ffe1a5;text-decoration:underline;text-underline-offset:2px}
+.jrs-first-use a:focus-visible{outline:3px solid #f6d99f;outline-offset:3px}
+.jrs-first-use-footnote{font:400 14px/1.6 Inter,Arial,sans-serif;color:#e7eef3;border-top:1px solid #71869a;padding-top:14px;margin:0}
+@media(max-width:700px){.jrs-first-use{padding:17px;margin:21px 0 26px}.jrs-first-use-steps{grid-template-columns:1fr}.jrs-first-use h2{font-size:23px}}
+@media(forced-colors:active){.jrs-first-use,.jrs-first-use-steps li{background:Canvas;color:CanvasText;border:1px solid CanvasText}.jrs-first-use :where(p,h2,h3){color:CanvasText!important}.jrs-first-use a{color:LinkText!important}}
+
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
@@ -198,6 +216,19 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 11px;background:var(--surface);">Onboarding Documentation</span>
 </div>
 
+
+<section class="jrs-first-use" aria-labelledby="jrs-first-use-title">
+ <p class="jrs-first-use-label">Practical first use</p>
+ <h2 id="jrs-first-use-title">Review one draft within the workflow you already use.</h2>
+ <p class="jrs-first-use-intro">JRS provides reviewer questions, not a new case-management application. Apply them before a draft advances to approval or permanent filing. Keep case files and supporting evidence within your organization's authorized systems.</p>
+ <ol class="jrs-first-use-steps">
+  <li><h3>Identify the record and its sources</h3><p>Select a draft record at an existing review checkpoint. Identify the evidence the author relied upon, including relevant dates, source documents and prior decisions. Do not submit records or identifying case details to this website.</p></li>
+  <li><h3>Check the five documentation conditions</h3><p>Review reconstructability, identifiable basis, chronology, reasoning trace and sufficiency. Verify the source trail and any AI-assisted wording against the underlying file. The <a href="check.html?src=workflow-fit">seven-point record check</a> provides a free, non-scoring browser aid.</p></li>
+  <li><h3>Document the disposition locally</h3><p>Record any missing basis, chronology or reasoning within your existing approval or case-review process. Return the draft for correction or escalate under local procedures where needed. Only the authorized reviewer or decision-maker determines whether it may advance.</p></li>
+ </ol>
+ <p class="jrs-first-use-footnote"><strong>Review boundary:</strong> The method does not determine legal correctness, certify compliance, process live case files or generate an automated approval. For the underlying conditions, <a href="jrsstandard.html">consult the online JRS methodology</a>; <a href="research.html">research findings and their limits</a> are reported separately.</p>
+</section>
+
 <h2 class="section-head" style="margin-top:0;">The Insertion Point</h2>
 <p class="body-text">JRS is a pre-finalization review standard that evaluates whether a record can explain why a consequential decision was made: the basis, reasoning, evidence, and chronology, before the record is finalized. It is applied at the stage between drafting and official system entry. This stage already exists in every documentation workflow. It is the point where a reviewer or approver looks at the record before it advances. JRS inserts here as a structured question set. The workflow step does not change. The question applied within it does.</p>
 
@@ -219,10 +250,10 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  </div>
 </div>
 
-<div class="reviewer-note"><div class="reviewer-note-label">The control point</div>Once a record enters an official system, the opportunity to resolve a gap without consequence has passed. What gets filed is what the next reviewer will have. There is no practical intervention point after that.</div>
+<div class="reviewer-note"><div class="reviewer-note-label">The control point</div>Errors or gaps discovered after a record is filed may require a documented amendment or supplemental entry under the organization's retention procedures. Pre-finalization review is intended to identify gaps while the source material and firsthand context are still available.</div>
 
 <h2 class="section-head">By Review Environment</h2>
-<p class="body-text">JRS applies to any organizational documentation environment where records are reviewed before they enter official systems. Below is how it inserts by review context.</p>
+<p class="body-text">JRS offers review questions for documentation environments with an existing pre-finalization approval step. The examples below illustrate possible insertion points. Each organization must determine applicability and escalation under its own procedures; field performance across these settings has not been established.</p>
 
 <div class="fit-grid">
  <div class="fit-card">
