@@ -62,3 +62,8 @@ The corrective candidate makes the two Manifest table scroll containers keyboard
 ## Correction to full-route fix: narrow viewport overflow (3 November 2026)
 
 The first full-route repair `333d344b7eecbf713a7d431ffa90d6e1c68a1725` passed static regressions but **failed the actual 120-observation reflow check** because the blanket footer link enlargement made `people.html` 327 CSS pixels wide at a 320px viewport (7px page-wide overflow). Rather than conceal the overflow, the amended candidate retains high-contrast, visibly underlined error-page links and applies a 44px minimum target width only to the previously undersized Home link. The public retired page remains non-disclosing. The corrected full matrix must pass before this repair is accepted.
+
+
+## 404 footer background defect retained and addressed (3 November 2026)
+
+The `39de554ee7abe758c6b8c4f88f559fd8cedf741f` run restored **120/120 source-rendered reflow passes** after narrowing the People link sizing correction. Its pinned axe scan still failed the `404.html` footer links, at both viewport widths. The 404 stylesheet has a broad legacy `a{background:#BE9447}` rule; the institutional dark-blue link text was therefore drawn over that gold background, which did not meet the text-contrast threshold. The repair explicitly makes only the error-footer link backgrounds transparent, exposing the light institutional footer surface behind the blue text. It does not alter primary error-page actions, link destinations, registration claims or the private People route. This remains a **candidate** pending a fresh 120-scan pass.

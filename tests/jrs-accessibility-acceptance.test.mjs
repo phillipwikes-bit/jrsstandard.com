@@ -127,8 +127,8 @@ assert.match(trainingPalette, contrastActionSelector,
  assert.match(privacy,/\.legal p a\{color:var\(--accent\);text-decoration:underline!important/,
   'privacy email links need non-color identification');
  const shared=read('assets/jrs-institutional-reference.css');
- assert.match(shared,/body\.jrs-institutional\.jrs-error-route footer\.site-footer a\[href\]\{[\s\S]*?color:#173d5b!important;[\s\S]*?text-decoration:underline!important/,
-  'retired and not-found footer navigation requires contrast and non-colour links');
+ assert.match(shared,/body\.jrs-institutional\.jrs-error-route footer\.site-footer a\[href\]\{[\s\S]*?color:#173d5b!important;background:transparent!important;[\s\S]*?text-decoration:underline!important/,
+  'retired and not-found footer navigation must remove legacy gold link backgrounds and remain underlined');
  assert.match(shared,/body\.jrs-institutional\.jrs-error-route footer\.site-footer a\[href="index\.html"\]\{[\s\S]*?min-width:44px!important/,
   'retired Home link needs a minimum 44px width without expanding entire footer');
  const people=read('people.html');
