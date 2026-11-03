@@ -10,6 +10,7 @@
    {id:'mobile-navigation-open',url:'/editions.html'},
    {id:'training-module-expanded',url:'/training.html'},
    {id:'training-optional-dialog',url:'/training.html'},
+   {id:'training-completion-text',url:'/training.html'},
    {id:'accessible-format-routing',url:'/contact.html?category=accessibility'}
  ];
  const widths=[390,1440],reports=[],errors=[];
@@ -76,6 +77,34 @@
        'dialog initial keyboard focus not established');
      return {dialogOpen:true};
    }
+   if(id==='training-completion-text'){
+     const section=doc.querySelector('#cert-section'),input=doc.querySelector('#cert-name');
+     const canvas=doc.querySelector('#cert-canvas'),summary=doc.querySelector('#cert-accessible-summary');
+     const actions=doc.querySelector('#cert-actions');
+     expect(section&&input&&canvas&&summary&&actions,'completion controls missing');
+     // Open the completion-only state with synthetic data. No enrollment is sent.
+     section.style.display='block';
+     input.value='Sample Reviewer';
+     expect(typeof win.generateCert==='function','local generator missing');
+     await win.generateCert();
+     expect(!summary.hidden&&summary.getAttribute('role')==='status'&&
+       summary.getAttribute('aria-live')==='polite','accessible completion status missing');
+     expect(summary.textContent.includes('Sample Reviewer')&&
+       summary.textContent.includes('all six learning modules')&&
+       summary.textContent.includes('Not professional certification'),
+       'on-page text is not equivalent to the PNG');
+     expect(canvas.getAttribute('aria-hidden')==='true'&&
+       canvas.dataset.issuedName==='Sample Reviewer','canvas name not synchronized');
+     input.value='Revised Name';
+     input.dispatchEvent(new win.Event('input',{bubbles:true}));
+     expect(summary.hidden&&summary.textContent===''&&
+       !canvas.dataset.issuedName&&actions.style.display==='none',
+       'stale record was not invalidated');
+     input.value='Sample Reviewer';
+     await win.generateCert();
+     expect(!summary.hidden,'regeneration did not restore readable text');
+     return {localText:true,staleNameRejected:true};
+   }
    if(id==='accessible-format-routing'){
      const select=doc.querySelector('#contact-category');
      const status=doc.querySelector('#contact-status');
@@ -101,7 +130,7 @@
      });
      expect(typeof win.axe?.run==='function','axe-core not loaded');
      const scan=await win.axe.run(doc,{
-       runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']},
+       runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22a','wcag22aa']},
        resultTypes:['violations','incomplete']
      });
      const violations=scan.violations.map(x=>({

@@ -24,6 +24,7 @@ Record the GitHub commit SHA, Vercel deployment ID and immutable URL, production
 | W-08 | Disable animation, enable system high contrast/forced colors and test both light and dark system preferences on key routes. | Focus is visible, contrast remains usable, and motion preferences are respected; no reliance on hue alone. |
 | W-09 | Screen-reader navigation using iPhone VoiceOver + Safari and a desktop screen reader (NVDA + Firefox or another documented combination). | Logical headings, landmarks, link names, dynamic updates and interactive focus order across all primary journeys. |
 | W-10 | Verify accessibility request and privacy statements on publicly linked pages. | Users can identify a usable assistance route, known PDF limitations, publication editions and data-handling restrictions without uploading records. |
+| W-11 | After six Training modules, use a synthetic name to generate the local completion PNG and compare it to the visible screen-reader-readable text. Change the name and regenerate. | The text and PNG agree on recipient, date and non-certification status. Editing the name invalidates both representations. No real contact details are submitted. |
 
 Use separate dated observations for Chrome and Safari. Automated axe-core results are supporting evidence only and cannot substitute for W-01 through W-10.
 

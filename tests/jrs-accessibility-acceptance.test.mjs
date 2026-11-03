@@ -51,3 +51,13 @@ console.log('PDF ACCESSIBILITY NOT CERTIFIED: ' + absent.length +
   ' of ' + manifest.assets.length + ' published PDFs lack a detected structure-tree marker. ' +
   'Tag presence alone would not establish correct reading order or WCAG conformance.');
 console.log('NOT ASSESSED: VoiceOver, PDF/UA, every WCAG criterion, full-site independent QA and protected-preview authentication.');
+
+const trainingCompletion = read('training.html');
+assert.match(trainingCompletion, /<canvas id="cert-canvas" aria-hidden="true"/);
+assert.match(trainingCompletion, /id="cert-accessible-summary" role="status" aria-live="polite" hidden/);
+assert.match(trainingCompletion, /summary\.textContent = 'JRS Reviewer Training, record of completion/);
+assert.match(trainingCompletion, /addEventListener\('input', invalidateCert\)/);
+assert.match(trainingCompletion, /requestedName\) return;/);
+const interactionCoverage = read('tests/jrs-interaction-a11y-browser.html');
+assert.match(interactionCoverage, /id:'training-completion-text'/);
+assert.match(interactionCoverage, /'wcag22a'/);

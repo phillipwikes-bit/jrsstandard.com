@@ -2491,7 +2491,8 @@ renderFM();
         Generate Completion Record
       </button>
     </div>
-    <canvas id="cert-canvas" style="display:none;max-width:100%;border:1px solid var(--rule);margin-bottom:12px"></canvas>
+    <canvas id="cert-canvas" aria-hidden="true" style="display:none;max-width:100%;border:1px solid var(--rule);margin-bottom:12px"></canvas>
+    <p id="cert-accessible-summary" role="status" aria-live="polite" hidden style="font-size:15px;line-height:1.65;color:var(--text);margin:12px 0"></p>
     <div id="cert-actions" style="display:none;gap:12px;flex-wrap:wrap">
       <button onclick="downloadCert()"
         style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid rgba(190,148,71,.4);padding:9px 18px;cursor:pointer">
@@ -2656,13 +2657,16 @@ function jrsSanitizeCheck(text) {
   return true;
 }
 async function generateCert() {
-  if (!jrsSanitizeCheck(document.getElementById('cert-name').value || '')) return;
-  var name = (document.getElementById('cert-name').value || '').replace(/\s+/g, ' ').trim() || 'Reviewer';
+  var requestedName = document.getElementById('cert-name').value || '';
+  if (!jrsSanitizeCheck(requestedName)) return;
+  var name = requestedName.replace(/\s+/g, ' ').trim() || 'Reviewer';
   // Wait for the site's web font to become available before rasterizing.
   // The same source remains usable when the font request is blocked.
   if (document.fonts && document.fonts.ready) {
     try { await document.fonts.ready; } catch(e) { /* use system fallback */ }
   }
+  // A name change during font loading must not leave an obsolete record.
+  if ((document.getElementById('cert-name').value || '') !== requestedName) return;
   var canvas = document.getElementById('cert-canvas');
   var W = 900, H = 636, B = 28;
   canvas.width = W; canvas.height = H;
@@ -2717,8 +2721,7 @@ async function generateCert() {
     nameSize--;
   }
   if (!lines) {
-    canvas.style.display = 'none';
-    document.getElementById('cert-actions').style.display = 'none';
+    invalidateCert();
     alert('The name is too long to fit on the completion record. Please use a shorter display name.');
     return;
   }
@@ -2736,9 +2739,10 @@ async function generateCert() {
   ctx.fillText('JRS REVIEWER TRAINING', W/2, 349);
   ctx.fillStyle = '#526778';
   ctx.font = '400 15px Inter,system-ui,sans-serif';
-  ctx.fillText('Completed '+new Date().toLocaleDateString('en-US',{
+  var completionDate = new Date().toLocaleDateString('en-US',{
     year:'numeric',month:'long',day:'numeric'
-  }), W/2, 391);
+  });
+  ctx.fillText('Completed '+completionDate, W/2, 391);
 
   ctx.fillStyle = '#42576B';
   ctx.font = '400 13px Inter,system-ui,sans-serif';
@@ -2759,8 +2763,24 @@ async function generateCert() {
 
   canvas.dataset.issuedName = name;
   canvas.style.display = 'block';
+  var summary = document.getElementById('cert-accessible-summary');
+  summary.textContent = 'JRS Reviewer Training, record of completion. ' + name +
+    ' completed all six learning modules on ' + completionDate +
+    '. Educational completion record only. Not professional certification, legal qualification, or compliance accreditation. Generated locally in this browser.';
+  summary.hidden = false;
   document.getElementById('cert-actions').style.display = 'flex';
 }
+// Recipient edits invalidate both the PNG and its equivalent on-page text.
+function invalidateCert() {
+  var canvas = document.getElementById('cert-canvas');
+  delete canvas.dataset.issuedName;
+  canvas.style.display = 'none';
+  var summary = document.getElementById('cert-accessible-summary');
+  summary.textContent = '';
+  summary.hidden = true;
+  document.getElementById('cert-actions').style.display = 'none';
+}
+document.getElementById('cert-name').addEventListener('input', invalidateCert);
 function downloadCert() {
   var canvas = document.getElementById('cert-canvas');
   var name = (document.getElementById('cert-name').value || '').replace(/\s+/g,' ').trim() || 'Reviewer';

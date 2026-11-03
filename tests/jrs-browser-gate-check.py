@@ -48,7 +48,7 @@ WIDTHS = (390, 1440)
 STATES = (
     "resource-filter", "resource-empty", "mobile-navigation-open",
     "training-module-expanded", "training-optional-dialog",
-    "accessible-format-routing",
+    "training-completion-text", "accessible-format-routing",
 )
 
 
@@ -91,20 +91,21 @@ def verify(html, expected):
             raise ValueError("interaction fixture not finished: " + value[:300]) from exc
         expected_pairs = {(state, width) for state in STATES for width in WIDTHS}
         reports = data.get("reports") if isinstance(data, dict) else None
+        expected_count = len(STATES) * len(WIDTHS)
         if (not isinstance(reports, list) or
-                data.get("scans") != 12 or data.get("expectedScans") != 12):
+                data.get("scans") != expected_count or data.get("expectedScans") != expected_count):
             raise ValueError("incomplete interaction-state coverage: " +
                              json.dumps({"scans": data.get("scans") if isinstance(data, dict) else None,
                                          "errors": data.get("errors", []) if isinstance(data, dict) else []},
                                         ensure_ascii=False)[:9000])
         observed_pairs = {(r.get("state"), r.get("width")) for r in reports}
-        if observed_pairs != expected_pairs or len(reports) != 12:
+        if observed_pairs != expected_pairs or len(reports) != expected_count:
             raise ValueError("duplicate or missing interaction-state evidence")
         if data.get("status") != "PASS" or data.get("errors") or any(
                 r.get("violations") for r in reports):
             raise ValueError("interaction-state violations: " +
                              json.dumps(data.get("errors", []), ensure_ascii=False)[:9000])
-        print("PASS: 12/12 dynamic interaction-state scans; WCAG-tagged automated rules report zero violations.")
+        print("PASS: 14/14 dynamic interaction-state scans; WCAG-tagged automated rules report zero violations.")
         print("No form was submitted and no personal data was supplied.")
     else:
         raise ValueError("unknown fixture")
@@ -132,7 +133,8 @@ def self_test():
         pass
     else:
         raise ValueError("unexecuted axe fixture accepted")
-    active = {"status": "PASS", "scans": 12, "expectedScans": 12,
+    active = {"status": "PASS", "scans": len(STATES) * len(WIDTHS),
+              "expectedScans": len(STATES) * len(WIDTHS),
               "errors": [], "reports": [
                   {"state": state, "width": width, "violations": [], "incomplete": []}
                   for state in STATES for width in WIDTHS]}
