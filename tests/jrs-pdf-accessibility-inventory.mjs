@@ -10,11 +10,11 @@ assert.equal(manifest.schema, 'jrs-published-pdf-identity.v1');
 assert.equal(manifest.assets.length,9);
 const statuses = manifest.assets.map(asset=>{
   const bytes=read(asset.file), latin1=bytes.toString('latin1');
-  const checksum=createHash('sha1').update('blob '+bytes.length+'\\0').update(bytes).digest('hex');
+  const checksum=createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex');
   assert.equal(checksum,asset.blob_sha,'edited published PDF identity: '+asset.file);
-  const tags= /\\/StructTreeRoot\\b/.test(latin1);
-  const markInfo=/\\/MarkInfo\\s*<</.test(latin1);
-  const language=/\\/Lang\\s*(?:\\(|<)/.test(latin1);
+  const tags= /\/StructTreeRoot\b/.test(latin1);
+  const markInfo=/\/MarkInfo\s*<</.test(latin1);
+  const language=/\/Lang\s*(?:\(|<)/.test(latin1);
   return {
     file:asset.file,
     edition:asset.edition || 'edition recorded in source manifest',
