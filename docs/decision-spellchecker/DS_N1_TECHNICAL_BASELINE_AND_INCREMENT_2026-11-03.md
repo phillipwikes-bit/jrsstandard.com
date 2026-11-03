@@ -409,3 +409,58 @@ Drift guard, with `main` unchanged at `40989da6`: 164 checks; **51 failed on `ma
 * This was checked by applying the ignore file to the tracked paths (`git ls-files -ci --exclude-from=.vercelignore`), with `index.html` as a positive control that correctly stays deployable.
 * This uses gitignore semantics, which `.vercelignore` follows. It is **not** an inspection of the Vercel upload. The preview URL is unreachable from this sandbox (connection refused), so live absence is **NOT ESTABLISHED** by byte check.
 * `[skip ci]` and the deployment configuration were not altered, and nothing was triggered to clear the Vercel status.
+
+## 15. Corrective review directive for PR #119 (2026-11-03): disposition
+
+DS-N1 is now `0.5.0-dev`. Rules are unchanged at `ds-n1.rules/0.2.0`. Report schema is `ds-n1.report/1.1`.
+
+| # | Directive item | Disposition | Evidence |
+|---|---|---|---|
+| 1 | Preserve `[skip ci]` | Preserved. Every commit carries it on line 3. A skipped Cloudflare build is not treated as a defect, nor as a CI pass | `git log` messages |
+| 2 | Vercel quota failure separate | No build triggered, no upgrade, no protection change, no merge. The status is left red | `vercel.json`, `.vercelignore` and `.github/` have no diff against `main` |
+| 3 | Reconcile 25/18 against 28/20 | Dated table in section 14 and in the PR description. Current: **35 unit, 20 browser** at `1a72adc8` | Clean-tree run below |
+| 4 | SP-18 contradiction | Bounded scope stated (section 14): the `finding_feedback` event plus research-only suppression ablation. Correspondence to the historical SP-18 is NOT ESTABLISHED | Sections 4, 13 and 14 |
+| 5 | Event-chain and verifier audit | **Two wording defects found and fixed.** (a) Report part 8 said `chain_verified: true` and the HTML said "chain verified"; this is now `chain_internally_consistent`, `chain_signed: false` and a provenance note (schema 1.1). (b) The verifier misreported an unsupported report schema as INCONSISTENT ("incomplete export"); it now returns INDETERMINATE. The verifier's meaning text and the report limitations state that the chain is unsigned and identities are self-declared | `b04e5a02`; tests `#5 ...`; mutations M21 and M22 caught |
+| 6 | Override of a critical finding leading to READY | Possible **by design** (control rationale below). Visible in: state reasons and flag; report `status_qualifier`; report part 7; JSON export; HTML alert above part 1; UI status box and summary. **New control:** acceptance for finalisation needs `acknowledge_critical_overrides === true`, and the acknowledged finding IDs are recorded in the event. Adverse paths are tested: plain, false or non-boolean acknowledgement is refused; a second unresolved critical finding still holds; correcting the claim removes the qualifier while keeping the override in history | `9ae7bb20` and `b04e5a02`; mutations M15, M16 and M19 caught; browser check |
+| 7 | Misleading metadata | The identifier gate (`9ae7bb20`) is now joined by an **excluded-domain content gate**: employment, housing, lending, insurance, medical or legal-outcome wording is refused whatever `record_class` says, and the text is not echoed. Ordinary supplier vocabulary ("contract termination", "supplier employee") is accepted. These are pattern screens: they **cannot prove** that a record is fictional or in scope | Tests `#7 ...`; mutations M17, M18 and M20 caught |
+| 8 | Preserve failures; new holdout; protocol | RUN-001, STRESS-DEV-001, STRESS-HOLDOUT-001 and all three expectation files were each added once and **never modified** (`git log --diff-filter=M` returns none). HOLDOUT-1 refuses to rerun. **HOLDOUT-2**: 10 new cases in a different scenario world, labels committed first, **never run**; its harness refuses without an owner authorisation, with a dirty engine, or a second time. Independent-review protocol **proposed, not adopted** | `d371355e`; `DS_N1_INDEPENDENT_REVIEW_PROTOCOL.md` |
+| 9 | Asset boundaries | DS-A `AUTHENTIC_SOURCE_NOT_RECOVERED` / `NO_GO_NOT_VERIFIED`; DS-N1 separate; LAB-R6 not accessible; Review Engine untouched | `git diff --name-only origin/main` lists only DS-N1 paths, `ASSET_REGISTER.json` and the two trackers |
+| 10 | Production safety | All **92** tracked DS-N1 files match `.vercelignore`; positive control `index.html` is not excluded. No website file changed. Live absence from the Vercel upload: **NOT ESTABLISHED** (the preview is unreachable from the sandbox) | Command output below |
+
+**Control rationale (item 6).** DS-N1 is a review aid and the human reviewer holds authority, so a reasoned override must be possible. Blocking it would make the tool decide in place of the person. The risk is that an override is later read as evidence. The controls work against that:
+
+* the override needs the reviewer's own rationale of 20 or more characters, stored verbatim;
+* the claim trace still shows the claim as unsupported;
+* the qualifier appears on every surface listed above;
+* acceptance requires a separate, explicit acknowledgement that names the overridden findings.
+
+Whether such a record should carry a distinct status rather than READY with a qualifier is an **owner decision** and has not been made.
+
+**Clean-tree run.** Commit `1a72adc87b90`, Node v22.23.4:
+
+| Check | Result |
+|---|---|
+| Unit | tests 35, pass 35, fail 0 |
+| Base harness | 0 critical false-ready; 24/24; 24/24; 5/5; 24/24; PASS (developer fixtures only) |
+| Stress dev | 0 critical false-ready; 0 false holds; 10/10 |
+| Holdout-1 | refused, exit 3 |
+| Holdout-2 | refused, exit 3; no result file |
+| Browser | 20/20 (Chromium emulation) |
+| Reproduction | fresh clone, all steps pass, 40/40 identical against the baseline from `d371355e` |
+
+Regression: all 40 reports are identical to 0.4.0 (`45859238`) after normalising the version, schema ID and chain head and the renamed or added fields. The renamed chain field carries the same value in every report.
+
+**Remaining deficiencies and independent-validation requirements**
+
+* All labels are the developer's own, and the case sets are developer-authored.
+* Required before any performance or readiness claim:
+  * the owner adopts the protocol;
+  * labels from someone other than the developer;
+  * an owner-authorised run of HOLDOUT-2;
+  * preferably, an independently authored holdout.
+* The repository is public, so labels and keys are visible on GitHub. Independence of labelling cannot be assured until that is resolved.
+* The rules are lexical. HOLDOUT-2 H08 (read-only claimed, read-and-write recorded, with no negation words) is a case the current rules may not detect. That is recorded as a prediction only; the case has not been run.
+* Not tested on a real device or with assistive technology. PDF export, SP-07, SP-13 and SP-14 are not implemented.
+* `check_zero_drift.py`: 51 failures on `main` and 50 on this branch, the same set except one tracker-date check this branch clears. They are pre-existing, not waived.
+
+**Readiness for further review:** ready for **further technical review** as a draft. **Not** ready for merge, deployment, or any claim of independent verification.
