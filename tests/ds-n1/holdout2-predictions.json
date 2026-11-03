@@ -1,0 +1,19 @@
+{
+  "prediction_set": "ds-n1.holdout2-predictions/0.1.0",
+  "made": "2026-11-03",
+  "method": "Hand-traced against lib/ds-n1 rules 0.2.0 / application 0.5.0-dev. The engine was NOT run on any HOLDOUT-2 case. Committed before the owner-authorised run so prediction accuracy can be checked.",
+  "purpose": "Measures how well the developer understands the engine's blind spots. It is not a performance estimate.",
+  "predictions": {
+    "H01": { "predicted_status": "READY_FOR_HUMAN_FINALIZATION", "predicted_codes": [], "vs_label": "agree" },
+    "H02": { "predicted_status": "READY_FOR_HUMAN_FINALIZATION", "predicted_codes": [], "vs_label": "agree", "trace": "'gave approval' stems to 'approval', not 'approv', but remote/access/exception give 3 of 5 shared terms (>= 0.5)" },
+    "H03": { "predicted_status": "HOLD", "predicted_codes": ["DATE_MISMATCH"], "vs_label": "agree" },
+    "H04": { "predicted_status": "HOLD", "predicted_codes": ["QUOTE_NOT_FOUND", "UNTRACEABLE_AUTHORITY"], "vs_label": "agree", "trace": "quote not in T3; appears in T2, which the finding should name" },
+    "H05": { "predicted_status": "HOLD", "predicted_codes": ["SUBJECT_MISMATCH", "UNTRACEABLE_AUTHORITY"], "vs_label": "agree" },
+    "H06": { "predicted_status": "READY_FOR_HUMAN_FINALIZATION", "predicted_codes": [], "vs_label": "CRITICAL FALSE-READY", "trace": "the withdrawal is in a LATER sentence; citation checks read only the sentence containing the quote, and the contrary-clause rule is sentence-scoped" },
+    "H07": { "predicted_status": "READY_FOR_HUMAN_FINALIZATION", "predicted_codes": [], "vs_label": "agree" },
+    "H08": { "predicted_status": "REVIEW_REQUIRED", "predicted_codes": ["RELEVANCE_NOT_ESTABLISHED"], "vs_label": "UNDER-SEVERITY (label HOLD)", "trace": "no rule detects read-only vs read-and-write as a contradiction; the second citation shares only read/dispatch (2 of 7 terms), so relevance fails and the claim stays supported via T2" },
+    "H09": { "predicted_status": "REVIEW_REQUIRED", "predicted_codes": ["UNMAPPED_ASSERTION"], "vs_label": "agree" },
+    "H10": { "predicted_status": "REVIEW_REQUIRED", "predicted_codes": ["QUALIFICATION_OMITTED"], "vs_label": "agree", "trace": "'pending' in the cited sentence, absent from the claim" }
+  },
+  "predicted_summary": { "critical_false_ready": 1, "false_hold": 0, "reference_agreement": "8/10" }
+}

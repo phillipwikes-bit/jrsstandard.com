@@ -513,3 +513,14 @@ My first M27 measurement counted output lines, read the crash as "none caught", 
 * For each of the 10 sealed cases, the developer commits a written prediction of the engine's output before the owner-authorised run, without running it. For example, H08, a read-only versus read-and-write contradiction with no negation words, is predicted to be a **critical false-ready**.
 * Comparing predictions with the actual run then shows how well the developer understands the engine's blind spots, which matters for a handoff.
 * This needs no owner action until the run itself.
+
+### 16.1 Correction (appended): HOLDOUT-2 H08 prediction
+
+* **OLD STATEMENT** (sections 15 and 16): H08 "may not be detected" and is "predicted to be a critical false-ready".
+* **NEW EVIDENCE:** a hand trace of rules 0.2.0. H08's second citation shares only *read* and *dispatch* (2 of 7 proposition terms) with the claim, so `RELEVANCE_NOT_ESTABLISHED` fires. The claim stays supported through T2, and the status is REVIEW_REQUIRED.
+* **CORRECTED STATUS:** H08 is predicted to be **under-severity** (REVIEW_REQUIRED against the HOLD label), **not** a critical false-ready. No rule detects the read-only versus read-and-write contradiction itself; the case is caught for the wrong reason.
+* **EXPLANATION:** the earlier statement was made without tracing the relevance rule.
+
+The predicted critical false-ready on HOLDOUT-2 is **H06**: an approval withdrawn in a *later* sentence of the same source, which every rule misses because every rule is scoped to a single sentence.
+
+All 10 predictions are committed in `tests/ds-n1/holdout2-predictions.json` **before any run**. The engine was not run on HOLDOUT-2 to make them. Predicted outcome: 1 critical false-ready (H06), 0 false holds, 8 of 10 agreement. If that holds, HOLDOUT-2 would **fail** its mandatory criterion, and that result must be recorded, not tuned away.
