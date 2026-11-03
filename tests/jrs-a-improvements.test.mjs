@@ -49,6 +49,17 @@ for(const evt of ['tool_open','guide_open','training_entry','training_start','ed
   assert.ok(js.includes("'"+evt+"'"),'missing allowlisted event '+evt);
 assert.ok(js.includes('source_surface')&&js.includes('resource_id'));
 assert.match(read('privacy-notice.html'),/fixed resource identifiers and public page categories/);
+// Semantic heading hierarchy and keyboard focus for newly published guidance.
+for(const file of ['editions.html','organization.html']){
+  const html=read(file);
+  assert.equal((html.match(/<article><h2>/g)||[]).length,4,
+    file+' must expose four article headings at level 2');
+  assert.ok(!html.includes('<h3>'),file+' must not skip heading levels in its card section');
+  assert.match(html,/<a class="skip-link" href="#main-content">Skip to content<\/a>/);
+}
+assert.match(css,/jrs-guide-grid article h2/);
+assert.match(css,/@media\(forced-colors:active\)/);
+assert.match(css,/outline:3px solid Highlight!important/);
 new vm.Script(js,{filename:'assets/jrs-engagement.js'});
 // Synthetic cross-origin refusal and event-only telemetry payload check.
 function harness(pathname){
