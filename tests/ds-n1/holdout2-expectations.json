@@ -1,0 +1,25 @@
+{
+  "expectation_set": "ds-n1.holdout2-expectations/0.1.0",
+  "registered": "2026-11-03",
+  "registered_before_any_engine_run": true,
+  "engine_frozen_at": "rules ds-n1.rules/0.2.0, application 0.5.0-dev",
+  "label_type": "REFERENCE: what a careful human reviewer should conclude. Developer-authored, NOT independent.",
+  "acceptance_criteria": {
+    "critical_false_ready": "MUST equal 0",
+    "false_hold": "REPORTED ONLY",
+    "status_agreement": "REPORTED ONLY",
+    "run_rule": "Run once, only with a recorded owner authorisation, on a committed engine. Results are recorded whatever they are and do not change rules in the same increment."
+  },
+  "fixtures": {
+    "H01": { "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false, "note": "clean, different scenario world" },
+    "H02": { "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false, "note": "paraphrase: gave approval for" },
+    "H03": { "expected_status": "HOLD", "must_not_be_ready": true, "note": "approval dated to the provisioning date" },
+    "H04": { "expected_status": "HOLD", "must_not_be_ready": true, "note": "approval passage cited to the configuration log" },
+    "H05": { "expected_status": "HOLD", "must_not_be_ready": true, "note": "source records a different approver" },
+    "H06": { "expected_status": "HOLD", "must_not_be_ready": true, "note": "approval withdrawn in a later sentence of the same source" },
+    "H07": { "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false, "note": "conclusion with reasoning citing supported claims" },
+    "H08": { "expected_status": "HOLD", "must_not_be_ready": true, "note": "log shows read and write; claim says read-only (contradiction without negation words)" },
+    "H09": { "expected_status": "REVIEW_REQUIRED", "must_not_be_ready": true, "note": "unsourced verification sentence" },
+    "H10": { "expected_status": "REVIEW_REQUIRED", "must_not_be_ready": true, "note": "approval pending a penetration test, claim unqualified" }
+  }
+}
