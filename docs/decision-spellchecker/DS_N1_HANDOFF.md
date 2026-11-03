@@ -34,7 +34,8 @@ A run that exits 0 with `"identical": true` means your clone reproduced the reco
 | `node tests/ds-n1/pdf.check.mjs` | 9 PDF checks via poppler (needs Chromium) |
 | `node lib/ds-n1/export-pdf.mjs <export.json> <out.pdf>` | Render a verified export to a tagged A4 PDF |
 | `node tests/ds-n1/ablation.mjs [exports...]` | Rule ablation: NEVER_FIRED / REDUNDANT / DECISIVE per rule, plus reviewer feedback from exports |
-| `node lib/ds-n1/serve.mjs` | Reviewer UI at `http://127.0.0.1:4317/` (loopback only) |
+| `node lib/ds-n1/serve.mjs` | Reviewer UI at `http://127.0.0.1:4317/`, authoring UI at `/author` (loopback only) |
+| `node tests/ds-n1/author.browser.mjs` | 18 authoring checks, desktop and iPhone 13 emulation |
 
 `eval-holdout2.mjs` is **sealed**: it refuses without `--owner-authorisation "<decision reference>"` and runs once. See `DS_N1_INDEPENDENT_REVIEW_PROTOCOL.md`.
 

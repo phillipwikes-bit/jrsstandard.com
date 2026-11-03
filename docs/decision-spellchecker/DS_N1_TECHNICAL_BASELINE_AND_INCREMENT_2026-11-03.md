@@ -558,3 +558,41 @@ Section 4 recorded "PDF not implemented" for SP-15. That row is preserved; this 
 * Real-device and assistive-technology testing are still not performed.
 
 Still not implemented: SP-07, SP-13 and SP-14 (the historical definitions were not recovered).
+
+## 18. Increment J (appended 2026-11-03): record authoring screen
+
+This closes **operability gap 1**, identified on 2026-11-03: records, claims and citations could only be written by hand as JSON. DS-N1 is now `0.7.0-dev`. Rules (`0.2.0`), report schema (`1.1`) and the engine are unchanged.
+
+* **The screen.** `node lib/ds-n1/serve.mjs`, then open `http://127.0.0.1:4317/author`. A person can:
+  * enter the record and its sources;
+  * select a sentence in the record to mark it as a claim (fact, dated event, approval or conclusion);
+  * select a passage in a source to cite it;
+  * record dated events in sources, the event a claim asserts, actors, and the reasoning for conclusions.
+* **Live feedback.** The engine's own validation and review status update as the person types: refusals, errors, findings and the neutral reviewer questions.
+* **Saving.** "Download record" writes a `ds-n1.record/1.0` file, which the reviewer screen at `/` opens unchanged.
+* **Scope controls.**
+  * The person must tick a confirmation that the record is constructed and fictional. That confirmation is **never** inherited from a reopened file.
+  * The identifier and excluded-domain gates apply live.
+  * Records that are ERROR or REFUSED_SCOPE cannot be saved.
+  * There is no storage and no network access, and all text is rendered as text.
+* **Checks.** `tests/ds-n1/author.browser.mjs` passes **18 of 18** in Chromium, on desktop and with iPhone 13 emulation. The checks cover:
+  * refusal and no save when the record is unconfirmed;
+  * a typed and selected record moving from HOLD to READY once a passage is cited;
+  * no panel or page overflow;
+  * the downloaded file validating in the engine and reviewing READY;
+  * the reviewer screen opening the authored file;
+  * identifier content refused without echo and not saved;
+  * a reopened file not inheriting confirmation;
+  * hostile text kept inert;
+  * no console errors and no external requests.
+* **Mutations, all caught on both viewports:** M31 (confirmation inherited from the file), M32 (refused records saveable), M33 (classification set without confirmation).
+* **First run 18 of 18.** After reviewing a screenshot, two presentation fixes were made: the checkbox now sits beside its sentence, and the duplicate "must finalise" sentence was removed. The checks were then re-run, 18 of 18.
+* **Regression.**
+  * JSON reports: 52 of 52 identical apart from version-derived fields. The baseline was regenerated from a clean clone of `96586f45`, and reproduction at `ddcf6d9f` is identical.
+  * Reviewer browser 20 of 20, PDF 9 of 9, unit 35 of 35, and the base, stress-dev and isolation suites all pass.
+  * Both holdouts still refuse to run.
+  * 115 of 115 DS-N1 files are excluded from deployment.
+
+**Remaining operability gaps** (from the 2026-11-03 assessment): local only; no saving except by download; constructed records only; nothing independently validated.
+
+**Limits.** Usability is untested with anyone other than the developer. Real-device and assistive-technology testing are not done. Claims must be single contiguous selections, and a revised record text that no longer contains a marked claim shows `CLAIM_NOT_IN_RECORD` in the live check rather than being repaired automatically.
