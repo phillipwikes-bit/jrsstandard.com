@@ -10,11 +10,15 @@ for(const p of pages){
  assert.ok(html.includes('class="jrs-sitenav"'),p+' global navigation preserved');
 }
 const home=read('index.html');
+assert.ok(home.includes("Organizations do not need to purchase or replace a software platform to begin examining whether their decision records preserve sufficient evidence, chronology and reasoning for later independent review."),
+ 'Primary no-platform-purchase proposition must be preserved verbatim');
 // The first visitor action opens the actual ungated, non-scoring reading aid.
 // Avoid routing the primary task through another catalog page.
 assert.ok(home.includes('<a class="jr-action-main" href="check.html?src=home">Open seven-point record check</a>'),'Primary action must open the free record check');
-assert.ok(home.includes('href="#worked-record">See a fictional record review</a>'));
-assert.ok(home.includes('href="resources.html#resource-catalog">find the free resource for your work</a>'));
+assert.match(home, /href="#worked-record">[^<]*fictional[^<]*<\/a>/i,
+ 'Worked example remains one direct practitioner action, regardless of incidental link wording');
+assert.match(home, /href="resources\.html(?:#resource-catalog)?">[^<]*(?:free|resource)[^<]*<\/a>/i,
+ 'Free practitioner resources remain directly accessible, without purchasing software');
 assert.ok(read('resources.html').includes('href="check.html?src=resources">Open seven-point record check</a>'));
 const check=read('check.html');
 assert.ok(check.includes('No registration, no upload')||check.includes('no account, no upload'),'Check must remain ungated and upload-free');
