@@ -57,3 +57,8 @@ Following the 34-route source-rendered axe and reflow PASS at commit `413a94e086
 At candidate `90c84442ce71dbe59badb2c401a2a15b740727c6`, the **120/120 narrow-viewport reflow observations passed**, but the strict 120-scan pinned axe audit **failed** with six route/width findings: two unfocusable horizontally scrolling Manifest table regions at mobile width, two Privacy email links lacking non-color identification across both widths, low-contrast Not Found footer links at both widths, and an undersized retired People-page footer target at mobile width.
 
 The corrective candidate makes the two Manifest table scroll containers keyboard-focusable, provides their distinct accessible names, underlines the Privacy email links, and styles the public error-page footer links with high-contrast navy and touch-target dimensions of at least 44 CSS pixels in each direction. It leaves the intentional People-page retirement and private data boundary intact. Full 120/120 retesting and manual assistive-technology review remain required.
+
+
+## Correction to full-route fix: narrow viewport overflow (3 November 2026)
+
+The first full-route repair `333d344b7eecbf713a7d431ffa90d6e1c68a1725` passed static regressions but **failed the actual 120-observation reflow check** because the blanket footer link enlargement made `people.html` 327 CSS pixels wide at a 320px viewport (7px page-wide overflow). Rather than conceal the overflow, the amended candidate retains high-contrast, visibly underlined error-page links and applies a 44px minimum target width only to the previously undersized Home link. The public retired page remains non-disclosing. The corrected full matrix must pass before this repair is accepted.
