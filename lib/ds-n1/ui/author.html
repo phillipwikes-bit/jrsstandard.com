@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>DS-N1 Record Authoring</title>
+<style>
+:root{--bg:#050505;--surface:#121212;--surface2:#1A1A1A;--accent:#BE9447;--accent-dim:#7A5E28;--muted:#B3B3B3;--muted-soft:#8A8A8A;--text:#F2F2F2;--rule:#2A2A2A;--stop:#8B2020;--stop-text:#E88080;--review-text:#D4A055;--ready-text:#5DBF82}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,sans-serif}
+header{padding:12px 16px;border-bottom:1px solid var(--rule)}
+h1{font:600 1.05rem/1.2 'Bodoni Moda',Georgia,serif;margin:0 0 4px;color:var(--accent)}
+.banner{font:.75rem 'JetBrains Mono',monospace;color:var(--muted)}
+h2{font:.8rem 'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin:0 0 8px}
+label,.lbl{font:.72rem 'JetBrains Mono',monospace;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+select,input,textarea,button{font:inherit;color:var(--text);background:var(--surface2);border:1px solid var(--rule);border-radius:4px;padding:6px 8px;min-height:36px;max-width:100%}
+textarea{width:100%;min-height:96px}
+button{cursor:pointer;border-color:var(--accent-dim)}
+button:hover,button:focus-visible{border-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+main{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:12px;padding:12px 16px}
+section{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:12px;min-width:0;margin-bottom:12px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0}
+.muted{color:var(--muted)}
+.err{color:var(--stop-text)}
+.item{border:1px solid var(--rule);border-radius:4px;padding:8px;margin:6px 0;background:var(--surface2)}
+.item[aria-current="true"]{border-color:var(--accent)}
+.status{font:600 .8rem 'JetBrains Mono',monospace;padding:4px 8px;border-radius:4px;border:1px solid var(--rule)}
+.s-READY_FOR_HUMAN_FINALIZATION{color:var(--ready-text)}
+.s-REVIEW_REQUIRED,.s-INCOMPLETE{color:var(--review-text)}
+.s-HOLD,.s-ERROR,.s-REFUSED_SCOPE{color:var(--stop-text)}
+.sev-critical{color:var(--stop-text)}.sev-review{color:var(--review-text)}
+code{word-break:break-all}
+@media (max-width:900px){main{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>DS-N1 Record Authoring</h1>
+  <div class="banner">Write a constructed fictional record for review. Select text to mark claims and citations. Nothing is stored or sent anywhere; download the record when done. Experimental candidate; not the original Decision Spellchecker.</div>
+</header>
+<p id="msg" class="err" role="alert" style="padding:0 16px;margin:8px 0 0"></p>
+<main>
+  <div>
+    <section aria-labelledby="h-meta"><h2 id="h-meta">1. Record</h2>
+      <div class="row"><label for="rec-id">Record ID</label><input id="rec-id" value="SAX-NEW-1" size="14"><label for="rec-ver">Version</label><input id="rec-ver" value="1" size="4"></div>
+      <div class="row"><label for="rec-title">Title</label><input id="rec-title" style="flex:1" value="Supplier access exception (fictional)"></div>
+      <div class="row"><label for="rec-class">Record class</label><select id="rec-class"><option value="supplier_access_exception">Supplier access exception</option></select></div>
+      <p><label style="text-transform:none;font:inherit;color:var(--text);display:flex;gap:8px;align-items:flex-start"><input type="checkbox" id="rec-fictional" style="min-height:auto;margin-top:4px"><span>I confirm this record and its sources are constructed and fictional, with no real people, organisations, identifiers or events.</span></label></p>
+      <label for="rec-text">Record text (the draft being reviewed)</label>
+      <textarea id="rec-text" rows="7"></textarea>
+    </section>
+    <section aria-labelledby="h-src"><h2 id="h-src">2. Sources</h2>
+      <div id="sources"></div>
+      <div class="row"><button type="button" id="add-source">Add a source</button></div>
+    </section>
+    <section aria-labelledby="h-ent"><h2 id="h-ent">3. People and organisations (optional, improves actor checks)</h2>
+      <div id="entities"></div>
+      <div class="row"><input id="ent-name" aria-label="Name" placeholder="name"><input id="ent-alias" aria-label="Other names, comma separated" placeholder="other names, comma separated"><button type="button" id="add-entity">Add</button></div>
+    </section>
+  </div>
+  <div>
+    <section aria-labelledby="h-claims"><h2 id="h-claims">4. Claims</h2>
+      <p class="muted">Select a statement in the record text, choose its type, then mark it.</p>
+      <div class="row"><select id="claim-kind" aria-label="Claim type"><option value="fact">Fact</option><option value="chronology">Dated event</option><option value="authority">Approval or authority</option><option value="conclusion">Conclusion</option></select><button type="button" id="mark-claim">Mark selection as claim</button></div>
+      <div id="claims"></div>
+    </section>
+    <section aria-labelledby="h-check"><h2 id="h-check">5. Check and save</h2>
+      <div id="check"></div>
+      <div class="row"><button type="button" id="download">Download record (JSON)</button>
+        <label for="load">or open a record JSON to edit</label><input id="load" type="file" accept="application/json"></div>
+      <p class="muted">Open the downloaded file in the reviewer at <code>/</code> to review it.</p>
+    </section>
+  </div>
+</main>
+<script type="module" src="/lib/ui/author.mjs"></script>
+</body>
+</html>
