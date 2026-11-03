@@ -444,11 +444,12 @@
       ],
       "required_action": "Owner and Tanvi Pokhriyal to read both official decisions and decide: (a) whether Gannett and Kohler-Hausmann are excluded under the FOIL-AO rule, (b) Gannett's correct outcome code, (c) which decision the Kohler-Hausmann row actually describes. Sensitivity computed, not adopted: excluding both gives 6/8 vs 2/10, Fisher p = 0.0536; excluding Gannett only gives p = 0.0237; keeping Gannett but coding it adverse gives p = 0.0648. Current figures (p = 0.0194) stand only if both rows are retained as coded. No DB row was changed.",
       "owner": "OWNER",
-      "status": "OPEN",
+      "status": "CLOSED BY OWNER STATEMENT 2026-11-03",
       "created": "2026-11-03",
       "note": "INFERENCE, not FACT: that the agency's position did not survive in Gannett rests on the row's own note; the official decision was not read in full here (nycourts.gov not reachable from this session). Do not submit the Compliance Today manuscript or send the pitch with the 75%/16.7% figures until resolved.",
-      "next_action_by": "OWNER",
-      "next_action_basis": "Classification and coding decisions belong to the study authors; Claude may not resolve a contradiction by guessing (CLAUDE.md s.5)."
+      "next_action_by": "NONE",
+      "next_action_basis": "Classification and coding decisions belong to the study authors; Claude may not resolve a contradiction by guessing (CLAUDE.md s.5).",
+      "owner_decision": "Owner, 2026-11-03, verbatim: \"The statistics have already been dealt with.\" Recorded as the owner retaining both rows as coded for the Compliance Today manuscript. No database row was changed. The specific Gannett outcome coding and the Kohler-Hausmann citation/content mismatch are not shown as reviewed in any repository record; that remains a documented observation, not a resolved finding."
     }
   ],
   "_decisions_recorded_2026_09_15": {

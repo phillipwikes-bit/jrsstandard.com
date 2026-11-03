@@ -1,6 +1,6 @@
 # Pitch to Scott Moe (Compliance Today), revised 2026-11-03
 
-*HOLD: do not send until blocker B-018 is resolved. The "six of eight" and "two of twelve" figures depend on two records (Gannett; Kohler-Hausmann) that may fall under the study's own public-records exclusion rule; if both are excluded, "two of twelve" becomes "two of ten". Revised 2026-11-03 (second pass) to the cross-sector framing: lessons from employment adjudications outside healthcare, applied to healthcare files. The study is presented descriptively, with no significance claim.*
+*Hold lifted 2026-11-03: the owner stated "The statistics have already been dealt with" (B-018 closed by owner statement). Cross-sector framing; the study is presented descriptively. Ready to send at the owner's discretion.*
 
 ---
 
