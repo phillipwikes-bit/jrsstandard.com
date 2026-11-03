@@ -51,6 +51,20 @@ jobs:
           assert report['status'] == 'EXTRACTION_ONLY_NOT_CERTIFIED'
           assert all(not item['public_release_approved'] and item['manual_reading_order'] == 'NOT_ASSESSED' for item in report['assets'])
           assert all((out/item['candidate_html']).is_file() for item in report['assets'])
+          import csv
+          with (out/'page-editorial-review-worksheet.csv').open(newline='',encoding='utf-8') as handle:
+              rows=list(csv.DictReader(handle))
+          expected=sum(max(a['raw_pages'],a['layout_pages']) for a in report['assets'])
+          assert len(rows)==expected, (len(rows),expected)
+          assert all(row['reading_order_review']=='NOT_ASSESSED'
+                     and row['source_equivalence_review']=='NOT_ASSESSED'
+                     and not row['reviewer'] and not row['review_date']
+                     for row in rows)
+          assert {(row['source_pdf'],row['source_blob_sha'],int(row['page']))
+                  for row in rows}=={
+                      (asset['source_pdf'],asset['source_blob_sha'],page['page'])
+                      for asset in report['assets'] for page in asset['page_review']
+                  }
           # Page-level extraction observations must be complete, typed and
           # explicitly unreviewed; a zero flag count is not human acceptance.
           for item in report['assets']:
