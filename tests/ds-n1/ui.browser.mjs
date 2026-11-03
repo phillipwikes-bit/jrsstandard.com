@@ -107,6 +107,19 @@ try {
       await page.selectOption('#mode', 'guided');
     });
 
+    await check(`${label}: finding feedback is recorded without changing the review`, async () => {
+      await page.selectOption('#fixture', 'D12');
+      await page.waitForFunction(() => /UNMAPPED_ASSERTION/.test(document.getElementById('sumbody').textContent));
+      await page.click('#sumbody button:has-text("UNMAPPED_ASSERTION")');
+      const card = page.locator('.finding', { hasText: 'UNMAPPED_ASSERTION' });
+      await card.locator('button:text-is("Wrong")').click();
+      assert.match(await page.textContent('#msg'), /REASON_REQUIRED/);
+      await card.locator('.fb input').fill('Background sentence, not a decision basis.');
+      await card.locator('button:text-is("Not useful")').click();
+      await page.waitForFunction(() => /finding marked not_useful/.test(document.getElementById('findings').textContent));
+      assert.equal(await page.textContent('#statusbox'), 'REVIEW_REQUIRED');
+    });
+
     await check(`${label}: no control overflows its panel`, async () => {
       for (const fx of ['D02', 'P02']) {
         await page.selectOption('#fixture', fx);

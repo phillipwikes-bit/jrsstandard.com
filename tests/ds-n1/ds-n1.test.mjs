@@ -274,3 +274,43 @@ test('date attached to another event in source text is role confusion (no struct
   ok.sources[2].text = 'Approval memo AM-12. Dana Reyes approved the access exception for Northwind Analytics on 2026-09-22.';
   assert.ok(!codesOf(ok).includes('EVENT_ROLE_CONFUSION'));
 });
+
+// ---- SP-18 reviewer feedback and suppression ablation -----------------------
+test('feedback on a finding is recorded but never changes status or dispositions', () => {
+  let s = open('D12');
+  const f = findingOf(s, 'UNMAPPED_ASSERTION');
+  const before = deriveState(s);
+  s = act(s, { type: 'finding_feedback', finding_id: f.finding_id, usefulness: 'not_useful', reason: 'Sentence is background, not a decision basis.' });
+  const after = deriveState(s);
+  assert.equal(after.status, before.status);
+  const g = after.findings.find((x) => x.finding_id === f.finding_id);
+  assert.equal(g.status, 'OPEN');
+  assert.equal(g.feedback.length, 1);
+  assert.equal(g.feedback[0].usefulness, 'not_useful');
+  assert.equal(g.feedback[0].reason, 'Sentence is background, not a decision basis.');
+  const rep = buildReport(s, { generated_at: ts(2) });
+  assert.deepEqual(rep.parts['7_human_disposition'].reviewer_feedback_on_findings.by_rule.UNMAPPED_ASSERTION, { useful: 0, not_useful: 1, wrong: 0 });
+});
+
+test('feedback requires a reason unless useful, works on superseded findings, and does not stale a disposition', () => {
+  let s = open('D06');
+  const f = findingOf(s, 'UNSUPPORTED_CLAIM');
+  assert.throws(() => act(s, { type: 'finding_feedback', finding_id: f.finding_id, usefulness: 'wrong' }), (e) => e.code === 'REASON_REQUIRED');
+  assert.throws(() => act(s, { type: 'finding_feedback', finding_id: f.finding_id, usefulness: 'great' }), (e) => e.code === 'INVALID_FEEDBACK');
+  s = act(s, { type: 'attach_citation', claim_id: 'C2', source_id: 'S2', quote: 'completed the vendor security assessment' }, 1);
+  s = act(s, { type: 'final_disposition', disposition: 'accepted_for_finalization', note: 'Source attached and checked.' }, 2);
+  s = act(s, { type: 'finding_feedback', finding_id: f.finding_id, usefulness: 'useful' }, 3);
+  const st = deriveState(s);
+  assert.equal(st.findings.find((x) => x.finding_id === f.finding_id).status, 'SUPERSEDED');
+  assert.equal(st.final_disposition.stale, false, 'feedback is about the tool, not the record');
+  assert.equal(verifyExport(serializeExport(buildExport(s, { generated_at: ts(4) }))).verdict, VERDICT.CONSISTENT);
+});
+
+test('suppression ablation is research-only: it changes derived status, never the log or the report API', () => {
+  const s = open('D02');
+  assert.equal(deriveState(s).status, STATUS.HOLD);
+  const ab = deriveState(s, { suppress: ['SUBJECT_MISMATCH'] });
+  assert.equal(ab.status, STATUS.READY, 'removing the only decisive rule exposes the false-ready it prevents');
+  assert.deepEqual(ab.suppressed_codes, ['SUBJECT_MISMATCH']);
+  assert.equal(buildReport(s, { generated_at: T0 }).status, STATUS.HOLD, 'reports never apply suppression');
+});
