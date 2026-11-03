@@ -31,3 +31,8 @@ The seven-point check's constructed-corpus benchmark remains visible on the webs
 Source commit `2c266ee8a50ef176be77418f1193808a514f0840` expanded the test population from 20 to 24 public routes. Its GitHub Actions reflow run completed **48 of 48 layout observations successfully**. Its axe-core scan **failed**, identifying `link-in-text-block` issues on the Review Conditions Reference page (one link at both widths) and the Governance Adoption page (two inline links at both widths). The new parser correctly held the run rather than hiding those findings behind an aggregate grade.
 
 The subsequent candidate adds persistent underlining to those in-prose links and a focused source regression while keeping the destinations, publication content and navigation controls intact. This is a **repair candidate** until the expanded browser scan is rerun successfully. It is not evidence of manual screen-reader conformance, PDF tagging or production parity.
+
+
+## Third accessibility coverage expansion (3 November 2026)
+
+This renovation candidate widens the source-rendered preflight from 24 to **34** public routes, producing **68** pinned axe WCAG-tagged observations and **68** narrow CSS-viewport reflow observations when completed. Newly included are the Reviewer Worksheet, Escalation Triggers, Record Survivability, Reviewer portal, Evidence Ledger, Datasets, Questions, Security, Results, and Finding. This is an **unverified new test scope** until exact-head CI completes. It intentionally retains fail-closed detection of violations and the separate release restrictions for a protected current-head preview, manual VoiceOver/NVDA, physical 400% browser zoom, published PDF accessibility, and owner authorization.

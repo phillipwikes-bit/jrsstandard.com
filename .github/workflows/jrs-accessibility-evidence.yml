@@ -33,13 +33,13 @@ jobs:
           done
           browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
           test -n "$browser"
-          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=240000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8794/tests/jrs-400-percent-reflow-browser.html > /tmp/jrs-reflow-dom.txt 2>/tmp/jrs-reflow-errors.log
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=330000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8794/tests/jrs-400-percent-reflow-browser.html > /tmp/jrs-reflow-dom.txt 2>/tmp/jrs-reflow-errors.log
           python3 tests/jrs-browser-gate-check.py /tmp/jrs-reflow-dom.txt reflow /tmp/jrs-reflow-evidence.json
       - name: Install pinned axe-core for CI only
         run: |
           npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund axe-core@4.10.3
           test -s node_modules/axe-core/axe.min.js
-      - name: Scan 24 public routes at mobile and desktop widths
+      - name: Scan 34 public routes at mobile and desktop widths
         shell: bash
         run: |
           set -euo pipefail
@@ -52,7 +52,7 @@ jobs:
           done
           browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
           test -n "$browser"
-          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=240000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8792/tests/jrs-wcag-axe-browser.html > /tmp/jrs-axe-dom.txt 2>/tmp/jrs-axe-errors.log
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=330000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8792/tests/jrs-wcag-axe-browser.html > /tmp/jrs-axe-dom.txt 2>/tmp/jrs-axe-errors.log
           python3 tests/jrs-browser-gate-check.py /tmp/jrs-axe-dom.txt axe /tmp/jrs-axe-evidence.json
       - name: Scan seven dynamic states at mobile and desktop widths
         shell: bash

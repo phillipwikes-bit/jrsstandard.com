@@ -42,6 +42,7 @@ ROUTES = (
     "/research-summary.html", "/privacy-notice.html", "/operational-boundaries.html",
     "/implementation-scenarios.html", "/review-engine.html", "/research-register.html",
     "/codebook.html", "/reference/index.html", "/recheck.html", "/compliance.html",
+    "/reference/reviewer-worksheet/index.html", "/reference/escalation-triggers/index.html", "/reference/record-survivability/index.html", "/reviewer/index.html", "/evidence-ledger.html", "/datasets.html", "/questions.html", "/security.html", "/results.html", "/finding.html",
 
 )
 WIDTHS = (390, 1440)
@@ -70,12 +71,12 @@ def verify(html, expected):
             raise ValueError("axe fixture did not complete with JSON evidence: " + value[:200]) from exc
         if not isinstance(data, dict):
             raise ValueError("invalid axe result schema")
-        if data.get("scans") != 48 or data.get("expectedScans") != 48:
+        if data.get("scans") != 68 or data.get("expectedScans") != 68:
             raise ValueError("incomplete browser test coverage: " + str(data.get("scans")))
         if data.get("status") != "PASS" or data.get("errors"):
             raise ValueError("WCAG-tagged automated rule violations: " +
                              json.dumps(data.get("errors", []), ensure_ascii=False)[:9000])
-        if len(data.get("reports", [])) != 48:
+        if len(data.get("reports", [])) != 68:
             raise ValueError("missing per-route axe audit records")
         expected_pairs = {(r, w) for r in ROUTES for w in WIDTHS}
         observed_pairs = {(row.get("route"), row.get("width")) for row in data["reports"]}
@@ -83,7 +84,7 @@ def verify(html, expected):
             raise ValueError("non-exhaustive or duplicate route/width set in axe evidence")
         if any(row.get("violations") for row in data["reports"]):
             raise ValueError("axe report contains violations despite PASS summary")
-        print("Axe WCAG-tagged preflight: 48/48 scans with zero automated violations.")
+        print("Axe WCAG-tagged preflight: 68/68 scans with zero automated violations.")
         print("Manual screen reader, zoom, PDF structure, and full WCAG acceptance remain separate.")
     elif expected == "reflow":
         try:
@@ -97,7 +98,7 @@ def verify(html, expected):
         if not isinstance(rows, list) or len(rows) != len(expected_pairs):
             raise ValueError("missing or duplicated reflow observations")
         observed_pairs = {(r.get("route"), r.get("width")) for r in rows}
-        if observed_pairs != expected_pairs or data.get("scans") != 48 or data.get("expectedScans") != 48:
+        if observed_pairs != expected_pairs or data.get("scans") != 68 or data.get("expectedScans") != 68:
             raise ValueError("incomplete or mismatched reflow coverage")
         for row in rows:
             width = row["width"]
@@ -109,7 +110,7 @@ def verify(html, expected):
                 raise ValueError("reflow overflow or invalid geometry: " + json.dumps(row))
         if data.get("status") != "PASS" or data.get("errors"):
             raise ValueError("reflow audit failed: " + json.dumps(data.get("errors", []))[:9000])
-        print("PASS: 48/48 320/400 CSS-pixel layout reflow observations across 24 public routes.")
+        print("PASS: 68/68 320/400 CSS-pixel layout reflow observations across 34 public routes.")
         print("This is NOT independent browser-zoom, VoiceOver or PDF/UA acceptance.")
     elif expected == "states":
         try:
@@ -175,7 +176,7 @@ def self_test():
         pass
     else:
         raise ValueError("PASS-in-script false positive accepted")
-    sample = {"status": "PASS", "scans": 48, "expectedScans": 48,
+    sample = {"status": "PASS", "scans": 68, "expectedScans": 68,
               "errors": [], "reports": [{"route": r, "width": w, "violations": [],
                                      "incomplete": []} for r in ROUTES for w in WIDTHS]}
     verify('<html><pre id="result">' + json.dumps(sample) + '</pre></html>', "axe")
@@ -185,7 +186,7 @@ def self_test():
         pass
     else:
         raise ValueError("unexecuted axe fixture accepted")
-    reflow = {"status": "PASS", "scans": 48, "expectedScans": 48,
+    reflow = {"status": "PASS", "scans": 68, "expectedScans": 68,
               "errors": [], "reports": [
                   {"route": route, "width": width, "clientWidth": width-15,
                    "scrollWidth": width-15, "status": "PASS"}
