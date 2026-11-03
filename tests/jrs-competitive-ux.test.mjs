@@ -10,6 +10,20 @@ const guides=read('investigator-guides.html');
 const about=read('about.html');
 const organization=read('organization.html');
 const css=read('assets/jrs-a-pathways.css');
+// Expert participants must be identified accurately, separately from the main
+// no-purchase message. Constructed-record findings do not certify field use.
+const research=read('research.html');
+const summary=read('research-summary.html');
+assert.match(home,/<p class="jr-expert-evidence"><strong>For practitioners, studied with international experts\.<\/strong>/);
+assert.match(home,/16 independent experts across 11 countries and five continents evaluated constructed decision records/);
+assert.match(home,/href="research-summary\.html">See the findings and limitations<\/a>/);
+assert.match(research,/16 independent experts from 11 countries across five continents/);
+assert.match(research,/not certification of JRS or proof of effectiveness in live organizational records/);
+assert.match(summary,/16 independent experts across 11 countries and 5 continents/);
+assert.match(css,/\.jr-expert-evidence/);
+assert.ok(!home.match(/<span class="jrs-header-motto">[^<]*international/i),
+ 'expert research is supplemental, not inserted into the brand/header');
+
 const vercel=JSON.parse(read('vercel.json'));
 
 const exactPromise='Organizations do not need to purchase or replace a software platform to begin examining whether their decision records preserve sufficient evidence, chronology and reasoning for later independent review.';
