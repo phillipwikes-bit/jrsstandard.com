@@ -74,6 +74,50 @@ def self_test():
             fail("preview verifier regression: " + name)
         print("PASS: preview verifier", name)
     print("PASS: narrow Vercel feedback allowance, no arbitrary source modifications.")
+    # Diagnostics must not expose a response body, host or query token in
+    # public CI logs. Do not infer which authorization layer rejected a 403.
+    hidden = "private-token-do-not-print"
+    for code, expected in [
+        (401, "HTTP 401: access refused"),
+        (403, "HTTP 403: access refused"),
+        (404, "HTTP 404: exact preview"),
+        (402, "HTTP 402: deployment"),
+        (429, "HTTP 429: request"),
+        (503, "HTTP 503: preview")
+    ]:
+        error = HTTPError("https://secret.example/path?" + hidden,
+                          code, hidden, {"x-secret": hidden}, None)
+        message = network_failure(error)
+        assert message.startswith(expected), (code, message)
+        assert hidden not in message and "secret.example" not in message
+    assert network_failure(TimeoutError(hidden)) == "TimeoutError"
+    print("PASS: hosted network errors report status without exposing credentials or response data.")
+
+
+def network_failure(error):
+    """Return a bounded public CI diagnostic, never raw URL, body or headers.
+
+    HTTP errors can be Vercel SSO/Trusted Sources denials, application denials,
+    missing resources or rate limits. A numeric status is useful evidence but
+    does not by itself establish the responsible security control.
+    """
+    if isinstance(error, HTTPError):
+        code = error.code
+        if code in (401, 403):
+            return ("HTTP " + str(code) +
+                    ": access refused; inspect Vercel preview authentication/"
+                    "Trusted Sources and application authorization")
+        if code == 404:
+            return "HTTP 404: exact preview file or route unavailable"
+        if code == 402:
+            return "HTTP 402: deployment or account limit may apply"
+        if code == 429:
+            return "HTTP 429: request rate limited"
+        if isinstance(code, int) and 500 <= code <= 599:
+            return "HTTP " + str(code) + ": preview server error"
+        return "HTTP " + str(code) if isinstance(code, int) else "HTTP error"
+    return type(error).__name__
+
 
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
@@ -124,11 +168,13 @@ def verify_downloads(base, parsed):
             location = exc.headers.get("Location", "")
         except (URLError, TimeoutError, OSError) as error:
             fail(path + ": tracked download did not respond (" +
-                 type(error).__name__ + ")")
+                 network_failure(error) + ")")
         expected_target = "/" + path
         target = urlparse(location)
         if status != 302 or target.scheme != "https" or target.netloc != parsed.netloc or target.path != expected_target:
-            fail(path + ": tracked route did not issue an exact-file 302 redirect")
+            detail = ("HTTP " + str(status) + ": " if status != 302 else "")
+            fail(path + ": tracked route did not issue an exact-file 302 redirect (" +
+                 detail + "source/host/target mismatch)")
         if target.query or target.fragment:
             fail(path + ": redirect contains unexpected query or fragment")
         try:
@@ -139,7 +185,7 @@ def verify_downloads(base, parsed):
                 kind = resp.headers.get("Content-Type", "").split(";")[0].lower().strip()
         except (HTTPError, URLError, TimeoutError, OSError) as error:
             fail(path + ": PDF could not be downloaded (" +
-                 type(error).__name__ + ")")
+                 network_failure(error) + ")")
         if not data.startswith(b"%PDF-") or kind != "application/pdf":
             fail(path + ": download is not served as a PDF")
         expected = (ROOT / path).read_bytes()
@@ -183,7 +229,7 @@ def main():
                     fail(local + ": preview redirected or did not return HTTP 200")
                 received = response.read(3_000_001)
         except (HTTPError, URLError, TimeoutError, OSError) as error:
-            fail(local + ": preview unavailable (" + type(error).__name__ + ")")
+            fail(local + ": preview unavailable (" + network_failure(error) + ")")
         if len(received) > 3_000_000:
             fail(local + ": unexpectedly large preview response")
         if b"Log in to Vercel" in received or b"Vercel Authentication" in received:

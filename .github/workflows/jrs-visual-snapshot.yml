@@ -187,7 +187,7 @@ jobs:
           JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
         run: |
           # The resolver is fail-closed and never uses a branch alias. This
-          # verifier still requires exact hosted source bytes and six PDFs.
+          # verifier still requires exact hosted source bytes and nine PDFs.
           python3 tests/jrs-preview-static-verification.py "$JRS_PREVIEW_URL"
 
       - name: Capture verified exact-head preview screenshots
