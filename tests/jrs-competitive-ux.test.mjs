@@ -7,6 +7,41 @@ const home=read('index.html');
 const resources=read('resources.html');
 const css=read('assets/jrs-a-pathways.css');
 const vercel=JSON.parse(read('vercel.json'));
+
+const training=read('training.html');
+const guides=read('investigator-guides.html');
+const about=read('about.html');
+const org=read('organization.html');
+const exactPromise='Organizations do not need to purchase or replace a software platform to begin examining whether their decision records preserve sufficient evidence, chronology and reasoning for later independent review.';
+for(const [path,markup] of [['homepage',home],['resources',resources],['organizational information',org]]){
+  assert.equal(markup.split(exactPromise).length-1,1,
+    path+': exact no-platform-purchase proposition must be preserved once');
+}
+assert.match(home,/<p class="jr-platform-promise"><strong>Organizations do not need to purchase or replace a software platform/);
+assert.match(resources,/<p class="jrs-practitioner-promise"><strong>Organizations do not need to purchase or replace a software platform/);
+assert.match(css,/\.jr-platform-promise/);
+assert.match(css,/\.jrs-practitioner-promise/);
+assert.ok(home.indexOf('id="jrs-main-heading"')<home.indexOf(exactPromise)
+ && home.indexOf(exactPromise)<home.indexOf('id="task-chooser"'),
+ 'primary public-interest promise must appear within the first homepage hero');
+assert.ok(home.indexOf('id="task-chooser"')<home.indexOf('id="professional-paths"')
+ && home.indexOf('id="professional-paths"')<home.indexOf('id="worked-record"')
+ && home.indexOf('id="worked-record"')<home.indexOf('id="evidence-snapshot"'),
+ 'homepage must carry one coherent progression: action, guidance, example, evidence');
+for(const [path,markup] of [['homepage',home],['resources',resources],['training',training],
+ ['investigator guides',guides],['about',about],['organization',org]]){
+  assert.ok(markup.includes('Decision Reconstruction Risk'),
+   path+': the documentation problem must remain explicit');
+}
+for(const page of [home,resources,org]){
+  assert.ok(!/request (?:a )?demo|start paid trial|buy a license/i.test(page),
+   'practitioner pages must not become commercial funnels');
+}
+assert.match(training,/Six self-paced modules|six training modules|six modules/i);
+assert.match(guides,/Version 1\.1.*July 2026/);
+assert.match(resources,/published PDFs have not been certified/i);
+assert.match(home,/Field effectiveness not established/);
+
 const redir=vercel.redirects.find(x=>x.source==='/workflow-fit.html');
 assert.ok(redir&&redir.destination==='/resources.html',
  'retired workflow route must retain its current redirect');
