@@ -270,7 +270,23 @@ def main():
         rows = list(reader)
         if len(rows) != sum(len(asset["page_review"]) for asset in reports):
             raise SystemExit("Release hold: PDF reviewer worksheet page count mismatch")
+        expected_pages = {
+            (asset["source_pdf"], asset["source_blob_sha"], str(page["page"]))
+            for asset in reports for page in asset["page_review"]
+        }
+        observed_pages = [
+            (row["source_pdf"], row["source_blob_sha"], row["page"])
+            for row in rows
+        ]
+        if len(set(observed_pages)) != len(observed_pages) or set(observed_pages) != expected_pages:
+            raise SystemExit("Release hold: PDF worksheet source identity or page coverage mismatch")
         for row in rows:
+            if any(row[field] != "NOT_ASSESSED" for field in (
+                "reading_order_review", "heading_structure_review",
+                "table_and_list_review", "link_and_reference_review",
+                "figures_and_alt_text_review", "source_equivalence_review",
+            )):
+                raise SystemExit("Release hold: PDF worksheet must not pre-approve human review")
             if None in row or not row["automated_review_focus"] or row["source_equivalence_review"] != "NOT_ASSESSED":
                 raise SystemExit("Release hold: malformed or prematurely approved PDF review row")
             if row["reviewer"] or row["review_date"] or row["issue_reference"]:
