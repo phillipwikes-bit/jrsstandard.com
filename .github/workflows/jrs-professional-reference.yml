@@ -6,6 +6,7 @@ on:
       - 'assets/jrs-professional-accessibility.css'
       - 'sitemap.xml'
       - 'tests/public-practitioner-identity.mjs'
+      - 'tests/jrs-seven-point-selection-guidance.mjs'
       - 'tests/public-reference-navigation.mjs'
       - 'tests/public-research-accessibility.test.mjs'
       - '.github/workflows/jrs-professional-reference.yml'
@@ -23,5 +24,6 @@ jobs:
         with:
           node-version: '22'
       - run: node tests/public-practitioner-identity.mjs
+      - run: node tests/jrs-seven-point-selection-guidance.mjs
       - run: node tests/public-reference-navigation.mjs
       - run: node --test tests/public-research-accessibility.test.mjs
