@@ -155,3 +155,27 @@ body.jrs-institutional.jrs-resource-page .jrs-resource-first-use a:focus-visible
   }
   body.jrs-institutional.jrs-resource-page .jrs-resource-first-use a{color:LinkText!important}
 }
+
+/* Public-interest promise: readable, prominent typography without a marketing callout.
+   The first primary record-check link remains ahead of this statement. */
+body.jrs-institutional.jrs-home .jr-platform-promise{
+  margin:0 0 18px!important;
+  padding:1px 0 1px 17px;
+  max-width:730px;
+  border-left:4px solid #8f6b33;
+  font:600 clamp(17px,1.55vw,20px)/1.53 Inter,Arial,sans-serif!important;
+  color:#193b50!important
+}
+body.jrs-institutional.jrs-home .jr-platform-promise strong{
+  font-weight:600;color:inherit
+}
+@media(max-width:650px){
+  body.jrs-institutional.jrs-home .jr-platform-promise{
+    font-size:17px!important;line-height:1.5!important;padding-left:12px
+  }
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-home .jr-platform-promise{
+    border-left-color:CanvasText;color:CanvasText!important
+  }
+}
