@@ -12,12 +12,8 @@ const organization=read('organization.html');
 const css=read('assets/jrs-a-pathways.css');
 const vercel=JSON.parse(read('vercel.json'));
 
-const training=read('training.html');
-const guides=read('investigator-guides.html');
-const about=read('about.html');
-const org=read('organization.html');
 const exactPromise='Organizations do not need to purchase or replace a software platform to begin examining whether their decision records preserve sufficient evidence, chronology and reasoning for later independent review.';
-for(const [path,markup] of [['homepage',home],['resources',resources],['organizational information',org]]){
+for(const [path,markup] of [['homepage',home],['resources',resources],['organizational information',organization]]){
   assert.equal(markup.split(exactPromise).length-1,1,
     path+': exact no-platform-purchase proposition must be preserved once');
 }
@@ -37,7 +33,7 @@ for(const [path,markup] of [['homepage',home],['resources',resources],['training
   assert.ok(markup.includes('Decision Reconstruction Risk'),
    path+': the documentation problem must remain explicit');
 }
-for(const page of [home,resources,org]){
+for(const page of [home,resources,organization]){
   assert.ok(!/request (?:a )?demo|start paid trial|buy a license/i.test(page),
    'practitioner pages must not become commercial funnels');
 }
@@ -45,6 +41,27 @@ assert.match(training,/Six self-paced modules|six training modules|six modules/i
 assert.match(guides,/Version 1\.1.*July 2026/);
 assert.match(resources,/published PDFs have not been certified/i);
 assert.match(home,/Field effectiveness not established/);
+
+
+// The short, deliberate header cue must stay within the existing brand and must
+// never displace the detailed promise, working tools or edition-specific metadata.
+const motto='<span class="jrs-header-motto">Check the record. <strong>No new software required.</strong></span>';
+for(const filename of ['index.html','resources.html','investigator-guides.html','jrsstandard.html',
+ 'research.html','about.html','codebook.html']){
+ const html=read(filename);
+ const header=html.match(/<header\b[^>]*>[\s\S]*?<\/header>/i)?.[0];
+ assert.ok(header,filename+': public page header exists');
+ assert.equal(header.split(motto).length-1,1,
+  filename+': restrained single header motto must be present');
+ assert.ok(header.includes('class="wordmark"'),
+  filename+': original JRS brand link remains intact');
+}
+const sharedHeaderCSS=read('assets/jrs-institutional-reference.css');
+assert.match(sharedHeaderCSS,/\.site-header-inner > \.jrs-header-motto/);
+assert.match(sharedHeaderCSS,/@media\(max-width:1020px\)/);
+assert.ok(home.includes('If it does not stand on its own') ||
+ home.includes('Can the record explain the decision after its author is gone?'),
+ 'original JRS governing narrative must remain visible');
 
 const redir=vercel.redirects.find(x=>x.source==='/workflow-fit.html');
 assert.ok(redir&&redir.destination==='/resources.html',
