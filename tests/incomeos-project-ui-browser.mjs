@@ -147,6 +147,42 @@ await page.waitForFunction(()=>/memory only/.test(document.getElementById("brief
 assert.equal((await page.locator("#briefing-output").textContent()).match(/(\d+) proposal\(s\)/)[1],after,"reloaded workspace keeps the accepted change");
 assert.equal(await page.evaluate(()=>window.__writes),0,"actions and saving never write browser storage");
 assert.equal(await page.evaluate(()=>{try{return Object.keys(localStorage).filter(k=>/workspace|briefing/i.test(k)).length;}catch(e){return 0;}}),0);
+// ---------- Profile editor drives screening live ----------
+const draft={schema:"incomeos.owner-profile.v1",education:[{level:"masters",fieldKeys:["x"],degree:"SYN MS",evidence:{status:"attested",ref:null,verifiedOn:null}}],completeness:{education:true},
+  location:{country:"US",region:"MD",evidence:{status:"attested"}},workAuthorization:[],conflicts:{organizations:null},availability:{maxHoursPerWeek:null},
+  preferences:{remoteOnly:true,acceptedClassifications:["contractor"],minHourlyUsd:30,defaultScreeningHours:2,defaultEngagementHours:40}};
+await page.locator("#profile-edit-panel summary").click();
+await page.locator("#profile-edit-file").setInputFiles({name:"p.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(draft))});
+await page.locator("#profile-edit-load").click();
+await page.waitForFunction(()=>/loaded/.test(document.getElementById("profile-status").textContent));
+assert.match(await page.locator("#project-status").textContent(),/^0 eligible/,"undocumented profile yields no eligibility");
+assert.match(await page.locator("#profile-editor").textContent(),/Still blocking eligibility: .*not yet documented/);
+const edu=page.locator("#profile-editor .briefing-actions",{hasText:"SYN MS"});
+await edu.locator("input[type=text]").fill("SYN diploma, file cabinet");
+await edu.getByRole("button",{name:"Mark documented"}).click();
+assert.match(await page.locator("#profile-status").textContent(),/Marked documented/);
+assert.match(await page.locator("#project-status").textContent(),/^0 eligible/,"conflict review still missing");
+await page.locator("#profile-editor").getByRole("button",{name:"I reviewed my conflicts today"}).click();
+assert.match(await page.locator("#project-status").textContent(),/^2 eligible/,"documented profile restores eligibility without reloading");
+const [pdl]=await Promise.all([page.waitForEvent("download"),page.locator("#profile-save").click()]);
+assert.match(pdl.suggestedFilename(),/^incomeos-profile-\d{4}-\d{2}-\d{2}\.json$/);
+assert.match(await page.locator("#profile-status").textContent(),/WITHOUT encryption/);
+// ---------- New workspace and record forms ----------
+await page.locator("#briefing-new").click();
+assert.match(await page.locator("#briefing-status").textContent(),/New empty workspace/);
+assert.equal(await page.locator("#yp-months").inputValue(),"12","saved settings appear as values, not placeholders");
+await page.locator("#add-acct-name").fill("Main Checking");await page.locator("#add-acct-type").selectOption("checking");
+await page.locator("#briefing-output").getByRole("button",{name:"Add account"}).click();
+assert.match(await page.locator("#briefing-status").textContent(),/Account added/);
+await page.locator("#bal-amount").fill("1200");await page.locator("#bal-ref").fill("SYN statement");
+await page.locator("#briefing-output").getByRole("button",{name:"Add balance"}).click();
+assert.match(await page.locator("#briefing-output").textContent(),/Net worth: \$1,200\.00/);
+await page.locator("#add-payer").fill("Comcast");await page.locator("#add-amount").fill("-3");
+await page.locator("#briefing-output").getByRole("button",{name:"Add entry"}).click();
+assert.match(await page.locator("#briefing-status").textContent(),/Not changed: Enter a positive amount/);
+await page.locator("#add-amount").fill("85.00");
+await page.locator("#briefing-output").getByRole("button",{name:"Add entry"}).click();
+assert.match(await page.locator("#briefing-status").textContent(),/Entry added/);
 const unlabeled=await page.evaluate(()=>[...document.querySelectorAll("#briefing-panel input,#briefing-panel select,#project-opportunity-panel input,#project-opportunity-panel select")].filter(e=>!(e.labels&&e.labels.length)&&!e.getAttribute("aria-label")).map(e=>e.id||e.name||e.type));
 assert.deepEqual(unlabeled,[],"every control in the owner panels has a label");
 assert.deepEqual(errors,[]);

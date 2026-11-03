@@ -52,6 +52,8 @@
 <script defer src="./weekly-briefing.js"></script>
 <script defer src="./workspace-store.js"></script>
 <script defer src="./briefing-ui.js"></script>
+<script defer src="./profile-editor.js"></script>
+<script defer src="./profile-ui.js"></script>
 <script defer src="./vault-ui.js"></script>
 </head>
 <body>
@@ -81,6 +83,7 @@
       <label for="briefing-passphrase">Passphrase (for an encrypted workspace, or to encrypt when saving)</label>
       <input id="briefing-passphrase" type="password" autocomplete="off" minlength="16">
       <div class="reportactions"><button id="briefing-load" class="smallbtn" type="button">Show my week</button>
+      <button id="briefing-new" class="smallbtn" type="button">Start a new workspace</button>
       <button id="briefing-undo" class="smallbtn" type="button" hidden>Undo last change</button>
       <button id="briefing-save" class="smallbtn" type="button" hidden>Save updated workspace</button></div>
       <p id="briefing-status" role="status" aria-live="polite" class="muted"></p>
@@ -117,7 +120,19 @@
         <h3 id="project-opportunity-heading">Eligible projects and expert work</h3>
         <p class="muted">Screens discovered public listings against your private qualification profile. An opportunity is listed as eligible only when every mandatory requirement is documented as satisfied. Eligible is not accepted, assigned or paid.</p>
         <div id="project-summary" class="project-summary" role="status" aria-live="polite"></div>
-        <label for="project-profile-file">Private qualification profile JSON (kept in memory only)</label>
+        <details id="profile-edit-panel">
+          <summary>Your qualification profile (load, complete, save)</summary>
+          <p class="muted">Loading here also uses the profile for screening below. Kept in memory only until you save the file.</p>
+          <label for="profile-edit-file">Profile file (plain or encrypted JSON)</label>
+          <input id="profile-edit-file" type="file" accept=".json,application/json">
+          <label for="profile-passphrase">Passphrase (to open an encrypted profile, or to encrypt when saving)</label>
+          <input id="profile-passphrase" type="password" autocomplete="off" minlength="16">
+          <div class="reportactions"><button id="profile-edit-load" class="smallbtn" type="button">Open profile</button>
+          <button id="profile-save" class="smallbtn" type="button" hidden>Save profile</button></div>
+          <p id="profile-status" role="status" aria-live="polite" class="muted"></p>
+          <div id="profile-editor"></div>
+        </details>
+        <label for="project-profile-file">Or load a plain profile JSON for screening only</label>
         <input id="project-profile-file" type="file" accept=".json,application/json">
         <label for="project-import-file">Discovery snapshot or reviewed listing JSON</label>
         <input id="project-import-file" type="file" accept=".json,application/json">

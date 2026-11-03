@@ -23,7 +23,7 @@
       catch(err){status.textContent="Not changed: "+err.message;}
     }
     function btn(p,text,onClick){var b=el(p,"button",text,"smallbtn");b.type="button";b.addEventListener("click",onClick);return b;}
-    function field(p,id,label,type,ph){var w=el(p,"div");var l=el(w,"label",label);l.htmlFor=id;var i=el(w,"input");i.id=id;i.type=type||"text";if(ph)i.placeholder=ph;i.autocomplete="off";return i;}
+    function field(p,id,label,type,value){var w=el(p,"div");var l=el(w,"label",label);l.htmlFor=id;var i=el(w,"input");i.id=id;i.type=type||"text";if(value!=null&&value!=="")i.value=value;i.autocomplete="off";return i;}
     function download(text,name){
       var url=URL.createObjectURL(new Blob([text],{type:"application/json"})),a=document.createElement("a");
       a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},2000);
@@ -43,7 +43,7 @@
         r.claims=E.claims.review(arr(ws.claims),asOf);
         r.due=E.claims.searchesDue(arr(ws.livedInStates).length?ws.livedInStates:["MD"],arr(ws.searchHistory),asOf);
         r.ren=E.ren.review(E.intel.recurring(arr(ws.ledger),asOf),arr(ws.serviceNotes),asOf);
-        r.yc=arr(ws.offers).length&&ws.yieldParams?E.yc.compare(ws.offers,ws.yieldParams,asOf):null;
+        r.yc=arr(ws.offers).length&&ws.yieldParams&&Number(ws.yieldParams.amountUsd)>0?E.yc.compare(ws.offers,ws.yieldParams,asOf):null;
         r.rh=arr(ws.researchStages).length?E.rh.summarize(ws.researchStages,ws.recruiterOf||{},ws.verifiedPayments||{}):null;
         r.income=arr(ws.lifecycle).length?E.life.verifiedIncome(ws.lifecycle):null;
         r.wb=E.wb.build({screen:state.screen,claims:r.claims,renewals:r.ren,rules:r.rules,netWorth:r.nw,income:r.income,discoveryReceipt:receiptFrom(state.screen),previousAlertIds:arr(ws.previousAlertIds)},asOf);
@@ -83,7 +83,7 @@
         r.nw.gaps.concat(r.nw.excluded).forEach(function(g){el(s,"p","Missing or stale: "+(g.name||g.accountId)+(g.balanceAsOf?" (last "+g.balanceAsOf+")":""),"tag-hold");});
         var bf=el(s,"div",null,"briefing-actions");var asel=el(bf,"select");asel.id="bal-account";asel.setAttribute("aria-label","Account");
         arr(state.ws.accounts).forEach(function(a){var o=el(asel,"option",a.name||a.id);o.value=a.id;});
-        var bdate=field(bf,"bal-date","Statement date","date"),bamt=field(bf,"bal-amount","Balance (USD)","number"),bsrc=field(bf,"bal-ref","Where the statement is kept");
+        var bdate=field(bf,"bal-date","Statement date","date",asOf),bamt=field(bf,"bal-amount","Balance (USD)","number"),bsrc=field(bf,"bal-ref","Where the statement is kept");
         btn(bf,"Add balance",function(){act(function(w){return WS.addBalance(w,{accountId:asel.value,asOf:bdate.value,balanceUsd:bamt.value,source:"statement",sourceRef:bsrc.value});},"Balance added");});}
       if(r.ren.items.length){s=section("Renewals and prices");var u4=el(s,"ul");r.ren.items.forEach(function(i){el(u4,"li",i.vendor+": next about "+i.nextEstimated+", "+money(i.typicalAmount)+" "+i.cadence+(i.noticeBy?", notice by "+i.noticeBy:"")+". "+i.proposal.replace(/_/g," ").toLowerCase());});}
       if(r.yc){s=section("Cash and Treasury comparison (after estimated tax)");var u5=el(s,"ul");r.yc.ranked.slice(0,5).forEach(function(y){var li=el(u5,"li",y.provider+" "+y.product.replace(/_/g," ")+": "+y.effectiveAfterTaxPct+"% after tax (APY "+y.apyPct+"%), checked "+y.checkedOn+(y.flags.length?". "+y.flags.join("; ").toLowerCase().replace(/_/g," "):"")+" ");link(li,y.sourceUrl,"provider page");});
@@ -94,6 +94,31 @@
           var box=el(s,"div",null,"briefing-actions");el(box,"p",(e.date||"")+" "+(e.payer||e.label||pr.entryId)+": "+(pr.split?"split into "+pr.split.map(function(x){return x.category+" "+money(x.amountUsd);}).join(" + "):(pr.currentCategory||"none")+" to "+pr.category)+(pr.businessUsePct!=null?", business use "+pr.businessUsePct+"% (estimate)":""));
           btn(box,"Accept",function(){act(function(w){return WS.acceptProposal(w,pr,asOf);},"Change accepted");});});}
       if(a.highestValue.length&&state.ws){var ab=el(out,"div",null,"briefing-actions");btn(ab,"Mark this week's opportunities as seen",function(){act(function(w){return WS.markAlerted(w,a.highestValue.map(function(h){return h.id;}).concat((state.screen&&state.screen.eligible||[]).map(function(x){return x.opportunity.opportunityId;})),asOf);},"Marked as seen");});}
+      if(state.ws){
+        s=section("Add to your workspace");
+        function select(p,id,label,opts){var w=el(p,"div");var l=el(w,"label",label);l.htmlFor=id;var x=el(w,"select");x.id=id;opts.forEach(function(o){var op=el(x,"option",o[1]);op.value=o[0];});return x;}
+        var f1=el(s,"div",null,"briefing-actions");el(f1,"p","Income or expense");
+        var lk=select(f1,"add-kind","Type",[["outflow","Expense"],["income","Income"]]),ld=field(f1,"add-date","Date","date",asOf),lp=field(f1,"add-payer","Payer or vendor"),
+          ll=field(f1,"add-label","Description"),la=field(f1,"add-amount","Amount (USD)","text"),lc=select(f1,"add-cat","Category",WS.COST_CATS.concat(WS.INCOME_CATS.filter(function(c){return WS.COST_CATS.indexOf(c)<0;})).map(function(c){return [c,c];}));
+        btn(f1,"Add entry",function(){act(function(w){return WS.addRecord(w,"ledger",{kind:lk.value,date:ld.value,payer:lp.value,label:ll.value,amountUsd:la.value,category:lc.value},asOf);},"Entry added");});
+        var f2=el(s,"div",null,"briefing-actions");el(f2,"p","Account (for net worth)");
+        var an=field(f2,"add-acct-name","Account name"),at=select(f2,"add-acct-type","Account type",WS.ACCOUNT_TYPES.map(function(t){return [t,t.replace(/_/g," ")];}));
+        btn(f2,"Add account",function(){act(function(w){return WS.addRecord(w,"accounts",{name:an.value,type:at.value},asOf);},"Account added");});
+        var f3=el(s,"div",null,"briefing-actions");el(f3,"p","Subscription or service note");
+        var sv=field(f3,"add-svc","Vendor (as it appears on charges)"),sn=select(f3,"add-svc-need","Needed?",[["yes","Necessary"],["no","Not necessary"]]),
+          sd=field(f3,"add-svc-notice","Cancellation notice (days)","number"),su=field(f3,"add-svc-used","Last used","date");
+        btn(f3,"Save note",function(){act(function(w){return WS.addRecord(w,"serviceNotes",{vendor:sv.value,necessary:sn.value==="yes",cancelNoticeDays:sd.value,lastUsedOn:su.value},asOf);},"Service note saved");});
+        var f4=el(s,"div",null,"briefing-actions");el(f4,"p","Savings, CD or Treasury rate you checked today");
+        var op=field(f4,"add-off-prov","Provider"),opr=select(f4,"add-off-prod","Product",[["savings","Savings"],["money_market","Money market"],["cd","CD"],["treasury_bill","Treasury bill"],["treasury_note","Treasury note"],["i_bond","I bond"]]),
+          oa=field(f4,"add-off-apy","APY (%)","text"),ot=field(f4,"add-off-term","Term (months, if any)","number"),oe=field(f4,"add-off-pen","Early withdrawal penalty (months of interest)","number"),
+          oi=select(f4,"add-off-ins","Insurance",[["FDIC","FDIC"],["NCUA","NCUA"],["US_TREASURY","US Treasury"],["NONE","None"]]),ou=field(f4,"add-off-url","Provider page (https)","url");
+        btn(f4,"Add rate",function(){act(function(w){return WS.addRecord(w,"offers",{provider:op.value,product:opr.value,apyPct:oa.value,termMonths:ot.value,earlyPenaltyMonths:oe.value,insurance:oi.value,sourceUrl:ou.value},asOf);},"Rate added");});
+        var yp=state.ws.yieldParams||{},f5=el(s,"div",null,"briefing-actions");el(f5,"p","Comparison settings (use your verified spare cash and your own marginal tax rates)");
+        var ya=field(f5,"yp-amount","Amount to compare (USD)","number",yp.amountUsd||""),yh=field(f5,"yp-months","Months until you may need it","number",yp.horizonMonths||12),
+          yf=field(f5,"yp-fed","Federal marginal rate (%)","number",yp.federalRatePct||""),ys=field(f5,"yp-state","State marginal rate (%)","number",yp.stateRatePct||""),
+          yl=select(f5,"yp-liquid","Must stay withdrawable?",[["yes","Yes"],["no","No"]]);yl.value=yp.needLiquidity===false?"no":"yes";
+        btn(f5,"Save settings",function(){act(function(w){return WS.setYieldParams(w,{amountUsd:ya.value,horizonMonths:yh.value,federalRatePct:yf.value,stateRatePct:ys.value,needLiquidity:yl.value==="yes"},asOf);},"Comparison settings saved");});
+      }
       s=section("System health");a.systemHealth.forEach(function(h){el(s,"p",(h.ok?"OK: ":"Problem: ")+h.text,h.ok?"tag-ok":"tag-hold");});
       if(saveBtn)saveBtn.hidden=!state.ws;
       if(undoBtn)undoBtn.hidden=!state.history.length;
@@ -103,10 +128,12 @@
       var f=input.files&&input.files[0];
       if(!f){status.textContent="Choose your workspace file first.";return;}
       if(f.size>5000000){status.textContent="Workspace file exceeds 5 MB.";return;}
-      try{state.ws=await WS.load(await f.text(),passInput&&passInput.value||"");state.dirty=false;state.history=[];render();}
+      try{var loaded=await WS.load(await f.text(),passInput&&passInput.value||"");if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");state.ws=loaded;state.dirty=false;state.history=[];render();}
       catch(err){status.textContent="Workspace rejected: "+err.message;}
       finally{input.value="";}
     });
+    var newBtn=document.getElementById("briefing-new");
+    if(newBtn)newBtn.addEventListener("click",function(){state.ws=WS.newWorkspace(today());state.history=[];state.dirty=true;render();status.textContent="New empty workspace. Add accounts and entries below, then save it encrypted.";});
     if(undoBtn)undoBtn.addEventListener("click",function(){
       if(!state.history.length)return;
       state.ws=state.history.pop();state.dirty=true;render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
