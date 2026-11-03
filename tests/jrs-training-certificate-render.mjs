@@ -17,7 +17,18 @@ const downloadCode=html.slice(downloadStart,downloadEnd);
 function fixture(value,ready=Promise.resolve()){
   const drawn=[],colors=[],alerts=[],downloads=[],actions={style:{display:'none'}};
   let completionCalls=0;
-  const input={value};
+  const input={
+    value,
+    addEventListener(type,handler){
+      assert.equal(type,'input');
+      this.inputHandler=handler;
+    },
+    changeTo(next){
+      this.value=next;
+      if(typeof this.inputHandler==='function')this.inputHandler();
+    }
+  };
+  const summary={hidden:true,textContent:''};
   const context={
     font:'normal 16px Georgia,serif',
     fillRect(){},strokeRect(){},beginPath(){},moveTo(){},lineTo(){},stroke(){},
@@ -32,7 +43,8 @@ function fixture(value,ready=Promise.resolve()){
   };
   const canvas={style:{display:'none'},dataset:{},getContext(){return context},
     toDataURL(){return 'data:image/png;base64,dGVzdA=='}};
-  const byId={'cert-name':input,'cert-canvas':canvas,'cert-actions':actions};
+  const byId={'cert-name':input,'cert-canvas':canvas,'cert-actions':actions,
+    'cert-accessible-summary':summary};
   const env=vm.createContext({
     document:{fonts:{ready},getElementById(id){return byId[id]},
       createElement(tag){
@@ -47,7 +59,7 @@ function fixture(value,ready=Promise.resolve()){
   });
   vm.runInContext(code+'\n'+downloadCode+
     '\nthis.generateCert=generateCert;this.downloadCert=downloadCert;',env,{timeout:500});
-  return {input,drawn,colors,alerts,downloads,actions,canvas,
+  return {input,summary,drawn,colors,alerts,downloads,actions,canvas,
     run:()=>env.generateCert(),download:()=>env.downloadCert(),
     completions:()=>completionCalls};
 }
@@ -59,11 +71,19 @@ assert.ok(regular.drawn.some(x=>x.text==='Jordan Example'),'name must be normali
 assert.equal(regular.canvas.style.display,'block');
 assert.equal(regular.actions.style.display,'flex');
 assert.equal(regular.canvas.dataset.issuedName,'Jordan Example');
+assert.equal(regular.summary.hidden,false,'locally generated completion must have readable text');
+assert.match(regular.summary.textContent,/Jordan Example completed all six learning modules/);
+assert.match(regular.summary.textContent,/Not professional certification/);
 regular.download();
 assert.equal(regular.downloads.length,1);
 assert.equal(regular.downloads[0].name,'JRS-Completion-Jordan-Example.png');
 assert.equal(regular.completions(),1);
-regular.input.value='Taylor Example';
+regular.input.changeTo('Taylor Example');
+assert.equal(regular.summary.hidden,true,'recipient edit must hide stale readable record');
+assert.equal(regular.summary.textContent,'','recipient edit must clear stale readable record');
+assert.equal(regular.canvas.style.display,'none','recipient edit must hide stale visual record');
+assert.equal(regular.actions.style.display,'none','stale PNG download must be hidden');
+assert.equal(regular.canvas.dataset.issuedName,undefined,'old issued name must be invalidated');
 regular.download();
 assert.equal(regular.downloads.length,1,'stale recipient name must not produce misleading download');
 assert.equal(regular.completions(),1,'stale recipient should not record completion');
@@ -96,6 +116,7 @@ await impossible.run();
 assert.equal(impossible.alerts.length,1,'unrenderable name must be disclosed');
 assert.equal(impossible.canvas.style.display,'none');
 assert.equal(impossible.actions.style.display,'none');
+assert.equal(impossible.summary.hidden,true,'unrenderable name must not show an accessible record');
 
 let releaseFont;
 const deferred=new Promise(resolve=>releaseFont=resolve);
@@ -105,5 +126,17 @@ assert.equal(delayed.drawn.length,0,'must wait for webfonts');
 releaseFont();
 await drawing;
 assert.ok(delayed.drawn.length>0);
+
+let releaseEdited;
+const waitingOnFonts=new Promise(resolve=>releaseEdited=resolve);
+const edited=fixture('Original Reviewer',waitingOnFonts);
+const staleGeneration=edited.run();
+edited.input.changeTo('Updated Reviewer');
+releaseEdited();
+await staleGeneration;
+assert.equal(edited.drawn.length,0,
+  'recipient edit during webfont loading must cancel obsolete rendering');
+assert.equal(edited.summary.hidden,true,
+  'cancelled generation must not issue an obsolete readable record');
 
 console.log('PASS: Training completion PNG uses institutional colors, waits for fonts, preserves wrapped names, prevents stale identities and fails without clipping.');
