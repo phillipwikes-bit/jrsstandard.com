@@ -8,6 +8,8 @@
   function add(el,tag,cls,content){var n=elem(tag,cls,content);el.appendChild(n);return n;}
   function today(){var d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");}
   function usd(n){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",maximumFractionDigits:0}).format(n);}
+  // Hourly rates are shown to the cent so the card matches the engine and the CSV (e.g. $66.67, not $67).
+  function rate(n){return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:2,maximumFractionDigits:2}).format(n);}
   function load(){
     if(window.IncomeOSFinancialReadOnly===true)return;
     try{var v=JSON.parse(localStorage.getItem(KEY)||"{}");
@@ -23,7 +25,16 @@
     }catch(e){$("radar-status").textContent="Saved research data could not be read. No changes have been written.";}
   }
   function persist(){if(window.IncomeOSFinancialReadOnly===true){$("radar-status").textContent="Personal study tracking is disabled in unapproved staging.";return false;}try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){$("radar-status").textContent="Research changes could not be saved to local storage.";return false;}}
-  function combined(){return publicLeads.concat(db.leads);}
+  // Owner-entered time components, held in page memory only (never stored).
+  // They fill gaps the source did not publish; a source value is never overwritten silently.
+  var timeOverrides={},profileForNotes=null;
+  document.addEventListener("incomeos:profile",function(ev){profileForNotes=ev.detail||null;if(latest)view();});
+  function combined(){
+    return publicLeads.concat(db.leads).map(function(x){
+      var o=timeOverrides[x.id];if(!o)return x;
+      return Object.assign({},x,{screenMinutes:o.screenMinutes,prepMinutes:o.prepMinutes,adminMinutes:o.adminMinutes,timeConfidence:o.timeConfidence});
+    });
+  }
   function view(){
     var root=$("radar-results");root.replaceChildren();
     latest=engine.digest(combined(),db.preferences,today());
@@ -34,9 +45,9 @@
       var s=v.candidate,div=add(root,"article","radar-card"),heading=add(div,"div","radar-heading");
       add(heading,"strong","",s.title);add(heading,"span","",v.priority.replaceAll("_"," "));
       add(div,"p","muted",s.provider+" · "+s.mode+" · "+s.minutes+" minute session · advertised "+usd(s.paymentUsd)+" · "+(s.eventEnd?(s.dateType==="application-deadline"?"application deadline ":"last published session date ")+s.eventEnd:"no published application deadline"));
-      add(div,"p","muted",v.effectiveHourlyYield===null?"EHY unavailable: "+(v.ehyMissing&&v.ehyMissing.length?"missing "+v.ehyMissing.join(", ")+" time.":"time not established."):("Effective hourly yield "+usd(v.effectiveHourlyYield)+"/hr · "+v.totalMinutes+" minutes total ("+s.minutes+" session + "+s.screenMinutes+" screener + "+s.prepMinutes+" prep + "+s.adminMinutes+" follow-up) · time "+v.timeConfidence));
+      add(div,"p","muted",v.effectiveHourlyYield===null?"EHY unavailable: "+(v.ehyMissing&&v.ehyMissing.length?"missing "+v.ehyMissing.join(", ")+" time.":"time not established."):("Effective hourly yield "+rate(v.effectiveHourlyYield)+"/hr · "+v.totalMinutes+" minutes total ("+s.minutes+" session + "+s.screenMinutes+" screener + "+s.prepMinutes+" prep + "+s.adminMinutes+" follow-up) · time "+v.timeConfidence));
       add(div,"p","muted","Advertised "+usd(s.paymentUsd)+" ("+({cash:"cash",gift_card:"gift card",points:"points",unknown:"payment form not stated"}[v.paymentForm]||"payment form not stated")+"). Advertised pay is not earned income.");
-      add(div,"p","muted","Session-only equivalent "+usd(v.sessionRate)+"/hr"+(v.sessionPlusScreenRate===null?" · screening effort unknown":" · including specified screening "+usd(v.sessionPlusScreenRate)+"/hr")+". Selection and payment are not guaranteed.");
+      add(div,"p","muted","Session-only equivalent "+rate(v.sessionRate)+"/hr"+(v.sessionPlusScreenRate===null?" · screening effort unknown":" · including specified screening "+rate(v.sessionPlusScreenRate)+"/hr")+". Selection and payment are not guaranteed.");
       if(s.eligibility.length)add(div,"p","muted","Published requirements: "+s.eligibility.join("; "));
       var flags=v.reasons.concat(v.warnings);
       if(flags.length)add(div,"p","radar-flags",flags.join("; "));
@@ -50,6 +61,34 @@
       sel.value=statuses.includes(db.progress[s.id])?db.progress[s.id]:"New";
       if(window.IncomeOSFinancialReadOnly===true){sel.disabled=true;sel.title="Private study tracking requires secured owner storage";}
       else sel.addEventListener("change",function(){db.progress[s.id]=sel.value;persist();});
+      // Enter missing or corrected time components (memory only; labelled as owner-entered).
+      var tdet=add(div,"details","radar-time");var tsum=add(tdet,"summary","",timeOverrides[s.id]?"Your time entries ("+timeOverrides[s.id].timeConfidence+")":"Enter screener, prep and follow-up time");
+      var tgrid=add(tdet,"div","formgrid");
+      function tfield(key,label,val){var w=add(tgrid,"div");var l=add(w,"label","",label);var i=add(w,"input");i.type="number";i.min="0";i.max="1440";i.step="1";i.inputMode="numeric";i.id="t-"+key+"-"+s.id;l.htmlFor=i.id;if(val!==null&&val!==undefined)i.value=val;return i;}
+      var tS=tfield("screen","Screener minutes",s.screenMinutes),tP=tfield("prep","Preparation minutes",s.prepMinutes),tA=tfield("admin","Follow-up minutes",s.adminMinutes);
+      var cw=add(tgrid,"div");var cl=add(cw,"label","","These times are");var tc=add(cw,"select");tc.id="t-conf-"+s.id;cl.htmlFor=tc.id;
+      [["estimated","My estimate"],["verified","Confirmed by the recruiter or study page"]].forEach(function(o){var op=add(tc,"option","",o[1]);op.value=o[0];});
+      if(timeOverrides[s.id])tc.value=timeOverrides[s.id].timeConfidence;
+      var tb=add(tdet,"button","smallbtn","Use these times");tb.type="button";
+      tb.addEventListener("click",function(){
+        function val(i){return i.value===""?null:Number(i.value);}
+        var o={screenMinutes:val(tS),prepMinutes:val(tP),adminMinutes:val(tA),timeConfidence:tc.value};
+        try{engine.candidate(Object.assign({},s,o));}catch(e){$("radar-status").textContent="Times not used: "+e.message;return;}
+        timeOverrides[s.id]=o;view();$("radar-status").textContent="Times applied in this session only for "+s.title+". EHY and ranking updated; nothing was stored.";
+      });
+      if(timeOverrides[s.id]){var tr=add(tdet,"button","textbtn","Clear my times");tr.type="button";tr.addEventListener("click",function(){delete timeOverrides[s.id];view();});}
+      // Application notes from the loaded qualification profile (documented items only).
+      var nb=add(controls,"button","textbtn","Prepare application notes");nb.type="button";
+      nb.addEventListener("click",function(){
+        var PE=window.IncomeOSProfileEditor,pre=div.querySelector("pre.app-notes");if(pre)pre.remove();
+        if(!profileForNotes||!PE){$("radar-status").textContent="Open your qualification profile in the opportunities panel first.";return;}
+        var docd=PE.items(profileForNotes).filter(function(i){return i.status==="documented";}).map(function(i){return "- "+i.label;});
+        var lines=["Application notes: "+s.title+" ("+s.provider+")","","Published requirements (compare yourself; IncomeOS does not judge study eligibility):"]
+          .concat(s.eligibility.length?s.eligibility.map(function(x){return "- "+x;}):["- none published"])
+          .concat(["","Your documented qualifications:"]).concat(docd.length?docd:["- none documented yet"])
+          .concat(["","Never invent answers to screener questions. Nothing has been submitted."]);
+        var out=add(div,"pre","app-notes",lines.join("\n"));out.tabIndex=0;
+      });
       if(db.leads.some(function(x){return x.id===s.id;})){
         var del=add(controls,"button","textbtn","Remove imported lead");del.type="button";
         del.addEventListener("click",function(){if(!confirm("Remove this locally imported research lead?"))return;db.leads=db.leads.filter(function(x){return x.id!==s.id;});delete db.progress[s.id];persist();view();});
