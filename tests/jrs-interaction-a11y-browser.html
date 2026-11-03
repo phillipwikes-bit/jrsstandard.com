@@ -7,6 +7,7 @@
  const cases=[
    {id:'resource-filter',url:'/resources.html'},
    {id:'resource-empty',url:'/resources.html'},
+   {id:'resource-focus-recovery',url:'/resources.html'},
    {id:'mobile-navigation-open',url:'/editions.html'},
    {id:'training-module-expanded',url:'/training.html'},
    {id:'training-optional-dialog',url:'/training.html'},
@@ -46,6 +47,21 @@
      if(id==='resource-empty')
        expect(doc.querySelector('#jrs-resource-empty')?.hidden===false,'no-result message absent');
      return {shown:shown.length};
+   }
+   if(id==='resource-focus-recovery'){
+     const query=doc.querySelector('#jrs-resource-query');
+     const articles=[...doc.querySelectorAll('#jrs-resource-results article.jrs-resource-entry')];
+     const link=articles[0]?.querySelector('a[href]');
+     const status=doc.querySelector('#jrs-resource-count');
+     expect(query&&link&&status&&articles.length===16,'resource focus fixture unavailable');
+     link.focus();
+     expect(doc.activeElement===link,'resource link could not receive keyboard focus');
+     query.value='zzjrsnomatch2026';
+     query.dispatchEvent(new win.Event('input',{bubbles:true}));
+     expect(articles.every(a=>a.hidden),'filter did not hide focused result');
+     expect(doc.activeElement===query,'focus stranded inside hidden result');
+     expect(status.textContent.includes('0 of 16'),'result count not updated');
+     return {hiddenResultFocusRecovered:true};
    }
    if(id==='mobile-navigation-open'){
      const button=doc.querySelector('.jrs-global-nav-toggle');
