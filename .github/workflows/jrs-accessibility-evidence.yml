@@ -51,6 +51,35 @@ jobs:
           assert report['status'] == 'EXTRACTION_ONLY_NOT_CERTIFIED'
           assert all(not item['public_release_approved'] and item['manual_reading_order'] == 'NOT_ASSESSED' for item in report['assets'])
           assert all((out/item['candidate_html']).is_file() for item in report['assets'])
+          # Validate generated editorial navigation and page warnings, not
+          # merely the presence of HTML files.
+          from html.parser import HTMLParser
+          class CandidateParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids=set()
+                  self.targets=[]
+                  self.text=[]
+              def handle_starttag(self, tag, attrs):
+                  attrs=dict(attrs)
+                  if 'id' in attrs:
+                      assert attrs['id'] not in self.ids, ('duplicate id',attrs['id'])
+                      self.ids.add(attrs['id'])
+                  if tag=='a' and attrs.get('href','').startswith('#'):
+                      self.targets.append(attrs['href'][1:])
+              def handle_data(self, data):
+                  self.text.append(data)
+          for asset in report['assets']:
+              candidate=CandidateParser()
+              candidate.feed((out/asset['candidate_html']).read_text('utf-8'))
+              assert all(target in candidate.ids for target in candidate.targets), asset['source_pdf']
+              assert {f"page-{p['page']}" for p in asset['page_review']} <= candidate.ids
+              assert 'source-page-navigation' in candidate.ids
+              assert 'NOT AN APPROVED ACCESSIBLE EDITION' in ''.join(candidate.text)
+              assert 'NOT ASSESSED' in ''.join(candidate.text)
+              for page in asset['page_review']:
+                  for flag in page['flags']:
+                      assert flag in ''.join(candidate.text), (asset['source_pdf'],page['page'],flag)
           import csv
           with (out/'page-editorial-review-worksheet.csv').open(newline='',encoding='utf-8') as handle:
               rows=list(csv.DictReader(handle))
