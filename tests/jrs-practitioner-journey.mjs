@@ -13,8 +13,8 @@ const home=read('index.html');
 // The first visitor action opens the actual ungated, non-scoring reading aid.
 // Avoid routing the primary task through another catalog page.
 assert.ok(home.includes('<a class="jr-action-main" href="check.html?src=home">Open seven-point record check</a>'),'Primary action must open the free record check');
-assert.ok(home.includes('href="#worked-record">See the three-step fictional example</a>'));
-assert.ok(home.includes('href="resources.html">browse all free practitioner resources</a>'));
+assert.ok(home.includes('href="#worked-record">See a fictional record review</a>'));
+assert.ok(home.includes('href="resources.html#resource-catalog">find the free resource for your work</a>'));
 assert.ok(read('resources.html').includes('href="check.html?src=resources">Open seven-point record check</a>'));
 const check=read('check.html');
 assert.ok(check.includes('No registration, no upload')||check.includes('no account, no upload'),'Check must remain ungated and upload-free');
