@@ -10,6 +10,28 @@ const read=path=>readFileSync(join(root,path),'utf8');
 const theme='assets/jrs-institutional-reference.css';
 assert.ok(existsSync(join(root,theme)),'institutional stylesheet must exist');
 const css=read(theme);
+// Public positioning is the human-applied method, not a product-status notice.
+// Preserve the actual international detection-study scope in sitewide claims.
+const publicNarrativePages=[
+  'index.html','about.html','research.html','research-summary.html',
+  'investigator-guides.html','research-register.html','resources.html',
+  'codebook.html','manifest.html'
+];
+for(const page of publicNarrativePages){
+  const body=read(page);
+  assert.doesNotMatch(body,/JRS Review Engine|The Engine remains unvalidated|controlled Engine|Engine-to-Codebook correspondence/i,
+    page+' must not introduce product-status narrative into public practitioner copy');
+}
+for(const page of ['index.html','about.html','research.html','investigator-guides.html']){
+  assert.match(read(page),/16 independent international experts from 11 countries across five continents/,
+    page+' must identify the international detection panel and geographic scope');
+}
+assert.match(read('research-summary.html'),/independent international experts from <span data-panel="countries_detection">11<\/span> countries across/);
+assert.match(read('research-register.html'),/independent international experts on the detection panel/);
+assert.match(read('privacy.html'),/programme telemetry/,'privacy disclosure must retain data-processing detail');
+assert.match(read('manifest.html'),/<code>engine<\/code>/,
+  'literal schema field identity must be preserved as technical provenance, not promotional copy');
+
 for(const token of [
  'body.jrs-institutional','--jrs-ink:','--jrs-navy:',
  '.jr-hero-grid','.jr-paths','.jr-five','.jr-publications',
