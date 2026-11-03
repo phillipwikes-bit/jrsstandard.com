@@ -42,17 +42,21 @@ def tokens(s):
     return Counter(re.findall(r"\w+", s.casefold(), re.UNICODE))
 
 
-def candidate_html(item, raw_pages, layout_pages, identity):
+def candidate_html(item, raw_pages, layout_pages, identity, page_reviews):
     filename = item["file"]
     title = item.get("role") or filename
     edition = item.get("edition") or "Edition must be verified against published source"
-    toc = " ".join(f'<a href="#page-{n}">Page {n}</a>' for n in range(1, len(raw_pages) + 1))
+    toc = " ".join(f'<a href="#page-{n}">Page {n}</a>' for n in range(1, len(page_reviews) + 1))
     sections = []
-    for index, raw in enumerate(raw_pages, start=1):
+    for index, review in enumerate(page_reviews, start=1):
+        raw = raw_pages[index - 1] if index <= len(raw_pages) else ""
         layout = layout_pages[index - 1] if index <= len(layout_pages) else ""
+        warnings = ", ".join(review["flags"]) if review["flags"] else "No automatic extraction warning"
+        raw_note = "Raw extraction missing for this page." if index > len(raw_pages) else ""
+        layout_note = "Layout extraction missing for this page." if index > len(layout_pages) else ""
         sections.append(f'''<section id="page-{index}" aria-labelledby="page-h-{index}">
 <h2 id="page-h-{index}">Source PDF page {index}</h2>
-<p class="context">Machine-extracted plain text; headings, tables, links and reading order have not been checked.</p>
+<p class="context"><strong>Editorial status: NOT ASSESSED.</strong> Automatic extraction observations: {escape(warnings)}. {escape(raw_note)} {escape(layout_note)} Headings, tables, links and reading order have not been checked.</p>
 <pre class="reading">{escape(raw)}</pre>
 <details><summary>Compare layout-based extraction for page {index}</summary>
 <pre class="reading">{escape(layout)}</pre></details>
@@ -144,7 +148,7 @@ def main():
             for page in page_reviews:
                 page["flags"].append("PAGE_COUNT_MISMATCH")
         stem = pdf_path.stem + ".reading-candidate.html"
-        (out / stem).write_text(candidate_html(item, raw_pages, layout_pages, identity), encoding="utf-8")
+        (out / stem).write_text(candidate_html(item, raw_pages, layout_pages, identity, page_reviews), encoding="utf-8")
         reports.append({
             "source_pdf": filename, "source_blob_sha": identity, "source_bytes": len(data),
             "candidate_html": stem, "raw_pages": len(raw_pages), "layout_pages": len(layout_pages),
