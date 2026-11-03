@@ -197,7 +197,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   <div class="statrow">
     <div class="st-k">1. The participant-level mean and its interval</div>
     <p>The 83.9 percent figure is the <b style="color:var(--text)">mean of the <span data-panel="completers_detection">16</span> individual reviewer accuracy scores</b>, each scored out of 24 records. It is not a pooled proportion over the 384 reads, and it is not an estimate of field performance. The reviewer is the unit of observation, which avoids treating 384 correlated reads as 384 independent trials.</p>
-    <span class="st-f">83.9 &plusmn; t(15, .975) &times; 21.0 / &radic;16  =  72.7 to 95.1</span>
+    <span class="st-f" tabindex="0">83.9 &plusmn; t(15, .975) &times; 21.0 / &radic;16  =  72.7 to 95.1</span>
     <p>The interval is a Student t interval on the <span data-panel="completers_detection">16</span> reviewer scores, with 15 degrees of freedom. It accounts for variation between reviewers. It does not account for the possibility that this particular draw of 24 records was easier than another draw from the same construct, which is the limitation the crossed model below was fitted to size.</p>
   </div>
 
@@ -215,7 +215,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   <div class="statrow">
     <div class="st-k">4. The crossed mixed-effects model <span class="badge b-explore" style="margin-left:6px">Exploratory</span></div>
     <p>The primary analysis treats the reviewer as the unit of observation and does not model record difficulty. To size that omission rather than argue about it, a mixed-effects logistic model was fitted over all 384 graded reads, crossing both random factors:</p>
-    <span class="st-f">correct ~ 1 + (1 | reviewer) + (1 | record)</span>
+    <span class="st-f" tabindex="0">correct ~ 1 + (1 | reviewer) + (1 | record)</span>
     <p>Fitted by Laplace-approximated maximum likelihood, with no participant excluded by the pre-registered rule. The intercept places an average reviewer on an average record at <b style="color:var(--text)">89.2 percent</b>. Reviewer SD is <b style="color:var(--text)">1.769</b> (profile interval 1.292 to 3.000); record SD is <b style="color:var(--text)">0.011</b> and sits at the boundary, with a profile interval of 0.001 to 0.556. The latent-scale intraclass correlation is <b style="color:var(--text)">0.488 for reviewers and 0.0000 for records</b>.</p>
     <p>Two things follow, and only two. Modelling item difficulty does not materially move the panel estimate, because the participant-level mean sits inside the reviewer-level spread the model estimates. And the variation that matters on this corpus is between reviewers, not between records, which is the same conclusion the raw dispersion reaches by a different route. <b style="color:var(--text)">This analysis was added after pre-registration and is labelled exploratory throughout.</b> The record component is weakly identified, and its profile interval permits a materially larger record effect than the point estimate suggests.</p>
   </div>
