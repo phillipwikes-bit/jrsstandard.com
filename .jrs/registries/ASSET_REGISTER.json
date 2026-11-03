@@ -191,6 +191,16 @@
       "classification": "CONTROLLED",
       "status": "ACTIVE",
       "note": "Single source of truth for the model identifier. Treats the model as versioned infrastructure, not methodology (B-005)."
+    },
+    {
+      "asset_id": "DS-N1",
+      "name": "Decision Spellchecker new experimental candidate 1",
+      "type": "software",
+      "location": ["lib/ds-n1/", "tests/ds-n1/", "docs/decision-spellchecker/DS_N1_TECHNICAL_BASELINE_AND_INCREMENT_2026-11-03.md"],
+      "classification": "CONTROLLED",
+      "status": "EXPERIMENTAL_LOCAL_DEVELOPMENT",
+      "added": "2026-11-03",
+      "note": "NEW candidate developed 2026-11-03 by an AI development agent. NOT DS-A (original v0.6.11/v0.7.0, AUTHENTIC_SOURCE_NOT_RECOVERED), NOT LAB-R6, NOT the JRS Review Engine. Deterministic, zero model calls, constructed fictional records only. Excluded from deployment by .vercelignore (lib/, tests/, *.md). DEVELOPER VERIFIED on developer fixtures only; NOT INDEPENDENTLY VERIFIED. No rights, licensing or transfer position is asserted."
     }
   ],
   "_classification_meaning": "PUBLIC, CONTROLLED and RESTRICTED describe how information is handled. They are NOT a statement that an asset is legally protected and confer no rights.",
