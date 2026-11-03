@@ -20,11 +20,7 @@ Every time a HIPAA sanction, a nurse's termination, or discipline after a hotlin
 
 It draws on an original study that works backward from the adjudicator's decision. We examined 20 published employment decisions from federal agencies, unemployment appeal boards, courts, and tribunals and asked what the file in front of each adjudicator actually contained. In this exploratory pilot, six of eight files with material documentation gaps were associated with adverse findings, compared with two of twelve complete files.
 
-The article opens on a case in which a worker was discharged for an alleged disclosure of health information and the appeal board overturned the decision. The file held a policy, a prior warning, and the comment, but nothing that connected them to the conduct. It then gives readers:
-
-- six lessons from the cases, each applied to healthcare files: HIPAA sanctions, discipline that follows a hotline report, and decisions prompted by patient or family complaints;
-- a five-checkpoint review, worked through on a privacy sanction file;
-- program steps they can adopt: template fields, a documented second review for high-risk decisions, sampling and committee reporting, rules for repairing a file without rewriting it, and a 90-day plan.
+The article opens on a case in which a worker was discharged for an alleged disclosure of health information and the appeal board overturned the decision. The file held a policy, a prior warning, and the comment, but nothing that connected them to the conduct. It then applies six lessons from the cases to healthcare files, including HIPAA sanctions, discipline that follows a hotline report, and decisions prompted by patient or family complaints. Readers get a five-checkpoint review, worked through on a privacy sanction file, and program steps they can adopt: template fields, a documented second review for high-risk decisions, sampling and committee reporting, rules for repairing a file without rewriting it, and a 90-day plan.
 
 It is original and unpublished, not under consideration elsewhere, and distinct from my CEP article, which addressed AI-assisted documentation broadly.
 
