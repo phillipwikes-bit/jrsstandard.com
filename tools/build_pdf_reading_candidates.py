@@ -114,6 +114,35 @@ def main():
         if len(raw.strip()) < 40:
             raise SystemExit("Release hold: extracted text is insufficient for review: " + filename)
         difference = sum((tokens(raw) - tokens(layout)).values()) + sum((tokens(layout) - tokens(raw)).values())
+        # Expose page-level extraction risks for editorial review. Aggregate
+        # token agreement can conceal omissions or page-order displacement.
+        page_reviews = []
+        for page_index in range(max(len(raw_pages), len(layout_pages))):
+            raw_page = raw_pages[page_index] if page_index < len(raw_pages) else ""
+            layout_page = layout_pages[page_index] if page_index < len(layout_pages) else ""
+            raw_tokens, layout_tokens = tokens(raw_page), tokens(layout_page)
+            page_difference = (sum((raw_tokens - layout_tokens).values())
+                               + sum((layout_tokens - raw_tokens).values()))
+            flags = []
+            if not raw_page.strip() or not layout_page.strip():
+                flags.append("EMPTY_EXTRACTION")
+            if page_difference:
+                flags.append("TOKEN_DISCREPANCY")
+            if "\\ufffd" in raw_page or "\\ufffd" in layout_page:
+                flags.append("REPLACEMENT_CHARACTER")
+            page_reviews.append({
+                "page": page_index + 1,
+                "raw_characters": len(raw_page),
+                "layout_characters": len(layout_page),
+                "token_discrepancy": page_difference,
+                "flags": flags,
+                "editorial_disposition": "NOT_ASSESSED",
+            })
+        if len(raw_pages) != len(layout_pages):
+            # Never silently associate the wrong layout transcript with a
+            # source page. Preserve the candidates but flag this for review.
+            for page in page_reviews:
+                page["flags"].append("PAGE_COUNT_MISMATCH")
         stem = pdf_path.stem + ".reading-candidate.html"
         (out / stem).write_text(candidate_html(item, raw_pages, layout_pages, identity), encoding="utf-8")
         reports.append({
@@ -121,6 +150,8 @@ def main():
             "candidate_html": stem, "raw_pages": len(raw_pages), "layout_pages": len(layout_pages),
             "raw_character_count": len(raw), "raw_replacement_characters": raw.count("\ufffd"),
             "raw_layout_token_discrepancy": difference,
+            "page_review": page_reviews,
+            "pages_flagged_for_editorial_review": sum(bool(p["flags"]) for p in page_reviews),
             "editorial_content_equivalence": "NOT_ASSESSED",
             "manual_reading_order": "NOT_ASSESSED", "accessible_pdf_tagging": "NOT_ASSESSED",
             "screen_reader_acceptance": "NOT_ASSESSED", "public_release_approved": False,
