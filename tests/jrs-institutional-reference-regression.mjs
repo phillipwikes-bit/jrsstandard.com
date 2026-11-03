@@ -19,6 +19,16 @@ let braces=0;
 for(const c of css){if(c==='{')braces++;if(c==='}')braces--;assert.ok(braces>=0,'unbalanced CSS closing brace');}
 assert.equal(braces,0,'unbalanced CSS blocks');
 
+// Guard international expert provenance and remove extraneous product-status copy.
+for(const page of ['index.html','about.html','research.html','research-summary.html','investigator-guides.html']){
+ assert.match(read(page),/16 independent international experts from 11 countries across five continents/,
+  page+' must identify the independent international detection panel');
+}
+for(const page of ['index.html','about.html','resources.html','research.html','research-summary.html','research-register.html','codebook.html','manifest.html']){
+ assert.doesNotMatch(read(page),/JRS Review Engine|controlled Engine|The Engine remains/i,
+  page+' must keep the public method narrative independent of software status');
+}
+
 /* The selected motto must remain in the visible responsive header.
    A previous <=1020px stylesheet hid it despite correct page source. */
 const homeHeader=read('index.html');
