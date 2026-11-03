@@ -32,9 +32,16 @@
     if(days(ev.verifiedOn,asOf)>maxAge)return {ok:false,reason:"EVIDENCE_STALE",ref:ev.ref};
     return {ok:true,reason:null,ref:ev.ref.trim().slice(0,200)};
   }
-  function result(req,status,reason,ownerEvidence){
+  // ownerItem: a short description of the exact profile item that satisfied the requirement,
+  // so downstream text (application notes) never has to guess it from a free-text reference.
+  function describeItem(it){
+    if(!it||typeof it!=="object")return null;
+    var d=it.degree||it.name||it.description||(it.level?it.level+" degree":null)||(it.key?String(it.key).replace(/_/g," "):null)||(Number.isFinite(Number(it.years))?it.years+" years of professional experience":null);
+    return d?String(d).slice(0,160):null;
+  }
+  function result(req,status,reason,ownerEvidence,item){
     return {requirementId:req.id,category:req.category,mandatory:req.mandatory!==false,status:status,reason:reason||null,
-      sourceText:typeof req.sourceText==="string"?req.sourceText.slice(0,500):null,ownerEvidence:ownerEvidence||null};
+      sourceText:typeof req.sourceText==="string"?req.sourceText.slice(0,500):null,ownerEvidence:ownerEvidence||null,ownerItem:status==="SATISFIED"?describeItem(item):null};
   }
   // Pick the best match among candidate profile items: documented beats undocumented.
   function bestMatch(items,matches,asOf,policy){
@@ -52,7 +59,7 @@
   }
   function fromMatch(req,m,complete,what){
     if(!m)return absent(req,complete,what);
-    if(m.evidence.ok)return result(req,SATISFIED,null,m.evidence.ref);
+    if(m.evidence.ok)return result(req,SATISFIED,null,m.evidence.ref,m.item);
     return result(req,NOT_ESTABLISHED,m.evidence.reason);
   }
 
@@ -64,6 +71,7 @@
       var m=bestMatch(arr(p.education),function(e){
         if((EDUCATION_RANK[e.level]||0)<min)return false;
         if(req.minLevel==="jd"&&e.level!=="jd")return false;
+        if(req.minLevel==="doctorate"&&e.level!=="doctorate")return false;
         if(!fields.length)return true;
         return arr(e.fieldKeys).map(key).some(function(f){return fields.indexOf(f)>=0;});
       },asOf,pol);
@@ -92,7 +100,7 @@
         if(!t||!Number.isFinite(Number(t.years)))return result(req,NOT_ESTABLISHED,"TOTAL_EXPERIENCE_UNKNOWN");
         var ev=evidenceState(t,asOf,pol);
         if(!ev.ok)return result(req,NOT_ESTABLISHED,ev.reason);
-        return Number(t.years)>=(Number.isFinite(min)?min:0)?result(req,SATISFIED,null,ev.ref):result(req,NOT_SATISFIED,"EXPERIENCE_BELOW_MINIMUM",ev.ref);
+        return Number(t.years)>=(Number.isFinite(min)?min:0)?result(req,SATISFIED,null,ev.ref,{years:t.years}):result(req,NOT_SATISFIED,"EXPERIENCE_BELOW_MINIMUM",ev.ref);
       }
       var inDomain=items.filter(function(e){return arr(e.domainKeys).map(key).some(function(d){return domains.indexOf(d)>=0;});});
       if(!inDomain.length)return absent(req,p.completeness&&p.completeness.experience,"DOMAIN_EXPERIENCE");
@@ -134,7 +142,7 @@
       if(!ev.ok)return result(req,NOT_ESTABLISHED,ev.reason);
       if(!wa.authorized)return result(req,NOT_SATISFIED,"NOT_AUTHORIZED",ev.ref);
       if(req.citizenshipRequired===true&&wa.citizen!==true)return wa.citizen===false?result(req,NOT_SATISFIED,"CITIZENSHIP_REQUIRED",ev.ref):result(req,NOT_ESTABLISHED,"CITIZENSHIP_UNKNOWN");
-      return result(req,SATISFIED,null,ev.ref);
+      return result(req,SATISFIED,null,ev.ref,{name:(req.citizenshipRequired===true?"Citizen of ":"Authorized to work in ")+(c==="US"?"the United States":c)});
     },
     clearance:function(req,p,asOf,pol){
       var need=CLEARANCE_RANK[req.level];if(!need)return result(req,NOT_ESTABLISHED,"REQUIREMENT_UNPARSED");

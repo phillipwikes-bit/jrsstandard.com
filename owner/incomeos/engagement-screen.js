@@ -58,17 +58,10 @@
     var lines=[],used={};
     decision.requirements.forEach(function(r){
       if(r.status!=="SATISFIED"||!r.mandatory||["requirement_set","conflict_of_interest","platform_restriction","remote","employment_classification","schedule"].indexOf(r.category)>=0)return;
-      var proof=null;
-      if(r.category==="education")proof=arr(profile.education).filter(function(e){return e.evidence&&e.evidence.ref===r.ownerEvidence;}).map(function(e){return describe(e,"education");})[0];
-      else if(r.category==="experience"){
-        var tot=profile.totalProfessionalYears;
-        proof=tot&&tot.evidence&&tot.evidence.ref===r.ownerEvidence?tot.years+" years of professional experience":arr(profile.experience).filter(function(e){return e.evidence&&e.evidence.ref===r.ownerEvidence;}).map(function(e){return describe(e,"experience");})[0];
-      }
-      else if(r.category==="certification")proof=arr(profile.credentials).filter(function(e){return e.evidence&&e.evidence.ref===r.ownerEvidence;}).map(function(e){return describe(e,"credentials");})[0];
-      else if(r.category==="license")proof=arr(profile.licenses).filter(function(e){return e.evidence&&e.evidence.ref===r.ownerEvidence;}).map(function(e){return describe(e,"licenses");})[0];
-      else if(r.category==="geography")proof="Based in "+(profile.location&&profile.location.region?profile.location.region+", ":"")+(profile.location&&profile.location.country||"");
-      else if(r.category==="work_authorization")proof="Authorized to work in the United States";
-      else if(r.category==="language")proof="Language requirement met";
+      // Use the exact profile item the engine matched; never guess it from a shared free-text reference.
+      var proof=r.ownerItem||null;
+      if(!proof&&r.category==="geography")proof="Based in "+(profile.location&&profile.location.region?profile.location.region+", ":"")+(profile.location&&profile.location.country||"");
+      if(!proof&&r.category==="language")proof="Language requirement met";
       if(!proof||used[proof])return;used[proof]=1;
       lines.push({requirement:r.sourceText?String(r.sourceText).slice(0,200):LABELS[r.category]||r.category,meets:proof,category:LABELS[r.category]||r.category});
     });

@@ -72,7 +72,8 @@
     function val(n,k){var v=Number(String(n).replace(/,/g,""));return k?v*1000:v;}
     var sym=(m[1]||"").toUpperCase(),code=(m[7]||"").toUpperCase();
     var currency=code||({"$":"USD","US$":"USD","USD":"USD","€":"EUR","EUR":"EUR","£":"GBP","GBP":"GBP","CAD":"CAD","C$":"CAD","AUD":"AUD","A$":"AUD","INR":"INR","₹":"INR"}[sym]||"UNKNOWN");
-    var lo=val(m[2],m[3]),hi=m[5]?val(m[5],m[6]):null,per=m[8].toLowerCase();
+    // "$80-120k": a k on the upper bound applies to a bare lower bound too.
+    var lo=val(m[2],m[3]||(m[6]&&!m[3]&&Number(String(m[2]).replace(/,/g,""))<1000?m[6]:"")),hi=m[5]?val(m[5],m[6]):null,per=m[8].toLowerCase();
     var period=/^(hour|hr|h)$/.test(per)?"hour":/^(year|yr|annum)$/.test(per)?"year":per;
     var upTo=/\bup to\s*$/i.test(t.slice(Math.max(0,m.index-8),m.index));
     var start=Math.max(0,m.index-120),excerpt=t.slice(start,Math.min(t.length,m.index+m[0].length+60)).trim();

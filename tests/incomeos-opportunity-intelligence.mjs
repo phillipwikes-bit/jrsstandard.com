@@ -114,6 +114,33 @@ assert.ok(R.riskSignals({descriptionText:"Please send your SSN and bank account 
 assert.ok(R.riskSignals({descriptionText:"Guaranteed income of $900 per day."}).includes("IMPLAUSIBLE_GUARANTEE"));
 assert.deepEqual(plain(R.riskSignals({descriptionText:"Contract role evaluating AI responses for policy compliance."})),[]);
 
+// ---------- Review findings, 2026-11-03 (each shown failing on c5b7452) ----------
+const exOf=t=>R.extract({title:"Role",descriptionText:t}).requirements;
+let rq=exOf("Candidates must have no more than 5 years of experience.");
+assert.ok(rq.some(r=>r.maxYears===5)&&!rq.some(r=>r.minYears===5),"a maximum is not also read as a minimum");
+rq=exOf("Must be a U.S. citizen. Requires an M.S. in statistics. Ph.D. preferred.");
+assert.ok(rq.some(r=>r.category==="work_authorization"&&r.citizenshipRequired===true),"U.S. citizen extracted");
+assert.ok(rq.some(r=>r.minLevel==="masters"),"M.S. extracted");
+assert.ok(rq.some(r=>r.minLevel==="doctorate"&&r.mandatory===false),"Ph.D. preferred extracted as optional");
+rq=exOf("Minimum 20 hours per week. Fixed shifts required.");
+assert.ok(rq.some(r=>r.minHoursPerWeek===20)&&rq.some(r=>r.fixedShift===true),"distinct schedule requirements both kept");
+rq=exOf("Python experience is a plus. Python is required.");
+assert.equal(rq.filter(r=>r.key==="python").length,1);assert.equal(rq.find(r=>r.key==="python").mandatory,true,"a later mandatory mention upgrades an optional one");
+assert.deepEqual(plain(exOf("Not available to residents of West Virginia.").find(r=>r.category==="geography").excludedRegions),["US-WV"],"West Virginia does not also exclude Virginia");
+assert.deepEqual(plain(exOf("Not available to residents of Virginia or West Virginia.").find(r=>r.category==="geography").excludedRegions),["US-VA","US-WV"]);
+assert.deepEqual(plain(R.riskSignals({descriptionText:"We pay weekly via direct deposit."})),[],"payroll direct deposit is not an upfront fee");
+assert.ok(R.riskSignals({descriptionText:"Send a $50 security deposit before training."}).includes("UPFRONT_PAYMENT_REQUESTED"),"real deposit demand still flagged");
+assert.equal(C.parseAdvertised("Salary $80-120k per year").min,80000,"shared k suffix applies to the lower bound");
+assert.equal(C.parseAdvertised("$80k-$120k per year").min,80000);
+assert.equal(C.parseAdvertised("$40 - $60 per hour").min,40,"no k: unchanged");
+// JD does not satisfy a doctorate requirement.
+const jdP={...P,education:[{level:"jd",fieldKeys:[],evidence:doc("SYN-jd")}],completeness:{education:true}};
+assert.equal(ev([req("education",{minLevel:"doctorate"})],{},jdP).status,"INELIGIBLE");
+assert.equal(ev([req("education",{minLevel:"masters"})],{},jdP).status,"ELIGIBLE","JD still meets a master's requirement");
+// Carried-forward records from a failed source are never fresh; a one-day UTC skew is tolerated, more is not.
+assert.equal(O.freshness({lastVerifiedOn:"2026-11-03",availability:"UNVERIFIED_SOURCE_FAILED"},"2026-11-03"),"UNVERIFIED");
+assert.equal(O.freshness({lastVerifiedOn:"2026-11-04",availability:"LISTED_BY_SOURCE"},"2026-11-03"),"FRESH","US evening vs UTC fetch date");
+assert.equal(O.freshness({lastVerifiedOn:"2026-11-06",availability:"LISTED_BY_SOURCE"},"2026-11-03"),"UNVERIFIED");
 // ---------- Compensation ----------
 // Directive example: $400, 10 h paid, 2 h unpaid screening -> $33.33.
 assert.equal(C.estimate({model:"fixed",amount:400,expectedHours:10,unpaidHours:2}).effectiveHourlyUsd,33.33);

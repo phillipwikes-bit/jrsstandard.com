@@ -38,6 +38,12 @@ assert.ok(n.text.includes("SYN Master of Science")&&n.text.includes("25 years of
 assert.ok(n.text.includes("SYN civil rights investigations"),"documented extra experience offered");
 assert.ok(!n.text.includes("undocumented AI work"),"attested-only experience never appears");
 assert.equal(n.submitted,false);assert.match(n.text,/nothing has been submitted/);
+// Shared free-text references: notes name the item the engine actually matched.
+const shared={...profile,education:[{level:"bachelors",degree:"SYN BA",evidence:doc("home file cabinet")},{level:"jd",degree:"SYN JD",evidence:doc("home file cabinet")}],completeness:{education:true}};
+const jdOpp={...opp,requirements:[{id:"j1",category:"education",minLevel:"jd",mandatory:true,sourceText:"JD required."}]};
+const jdD=E.evaluate(jdOpp,shared,T,{});assert.equal(jdD.status,"ELIGIBLE");
+const jdNotes=EG.applicationNotes(jdOpp,jdD,shared);
+assert.match(jdNotes.text,/Education: SYN JD/);assert.doesNotMatch(jdNotes.text,/Education: SYN BA/,"never the wrong item with the same reference");
 const withheld=E.evaluate({...opp,requirementSet:{ownerConfirmed:false}},profile,T,{});
 assert.throws(()=>EG.applicationNotes(opp,withheld,profile),/eligible on documented evidence/);
 console.log("IncomeOS engagement QA passed (synthetic data): consultation vs job vs study, confidentiality and former-employer flags, notes from documented evidence only");

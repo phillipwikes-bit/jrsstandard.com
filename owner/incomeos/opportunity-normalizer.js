@@ -131,9 +131,12 @@
     var maxAge=policy&&Number.isFinite(policy.maxListingAgeDays)?policy.maxListingAgeDays:3;
     if(!isDate(asOf)||!isDate(rec.lastVerifiedOn))return "UNVERIFIED";
     if(rec.availability==="WITHDRAWN")return "WITHDRAWN";
+    // Carried forward from a source that failed this run: never presented as current.
+    if(rec.availability&&rec.availability!=="LISTED_BY_SOURCE")return "UNVERIFIED";
     if(rec.deadline&&rec.deadline<asOf)return "EXPIRED";
     var age=(Date.parse(asOf+"T00:00:00Z")-Date.parse(rec.lastVerifiedOn+"T00:00:00Z"))/86400000;
-    if(age<0)return "UNVERIFIED";
+    // Fetch dates are UTC; an owner in a US evening can be one calendar day behind. Allow that one day only.
+    if(age<-1)return "UNVERIFIED";
     return age>maxAge?"STALE":"FRESH";
   }
   var api=Object.freeze({VERSION:VERSION,fnv:fnv,stable:stable,normalize:normalize,dedupe:dedupe,diff:diff,freshness:freshness,normTitle:normTitle,relevance:relevance,DEFAULT_FOCUS:DEFAULT_FOCUS.slice()});

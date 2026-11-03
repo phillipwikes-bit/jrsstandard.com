@@ -26,15 +26,20 @@
     s=s.replace(/<(script|style)[\s\S]*?<\/\1>/gi," ").replace(/<\/(p|li|div|h[1-6]|br|tr)>|<br\s*\/?>/gi,". ").replace(/<[^>]*>/g," ");
     return s.replace(/[\u0000-\u0008\u000b-\u001f\u007f]/g," ").replace(/\s+/g," ").trim().slice(0,40000);
   }
-  function sentences(text){return text.replace(/([.!?;])\s+/g,"$1\n").split(/\n|\s*[•●]\s*/).map(function(s){return s.trim();}).filter(function(s){return s.length>2;}).slice(0,800);}
+  // Collapse dotted abbreviations (U.S., M.S., B.A., Ph.D., e.g.) before splitting on periods,
+  // so "Must be a U.S. citizen" stays one sentence and still matches the citizenship pattern.
+  function dedot(t){return t.replace(/\bPh\.\s?D\./gi,"PhD").replace(/\b(?:[A-Za-z]\.){2,}/g,function(m){return m.replace(/\./g,"");});}
+  function sentences(text){text=dedot(text);return text.replace(/([.!?;])\s+/g,"$1\n").split(/\n|\s*[•●]\s*/).map(function(s){return s.trim();}).filter(function(s){return s.length>2;}).slice(0,800);}
   function optional(s){return /\b(preferred|nice to have|a plus|bonus|ideally|desirable|not required|optional|advantageous)\b/i.test(s);}
   function extract(listing){
     var text=strip([listing&&listing.title,listing&&listing.descriptionText,listing&&listing.locationText].filter(function(x){return typeof x==="string";}).join(". "));
     var out=[],seen={};
     function add(r,s){
-      var sig=r.category+":"+(r.key||r.minLevel||r.mode||r.country||r.type||r.level||JSON.stringify(r.excludedRegions||r.allowedCountries||r.minYears||""));
-      if(seen[sig])return;seen[sig]=1;
-      r.id="req-"+(out.length+1);r.mandatory=!optional(s);r.sourceText=s.slice(0,400);r.extraction=VERSION;out.push(r);
+      var sig=r.category+":"+JSON.stringify(Object.keys(r).sort().filter(function(k){return k!=="category";}).map(function(k){return [k,r[k]];}));
+      var mand=!optional(s);
+      if(seen[sig]){var prev=seen[sig];if(mand&&!prev.mandatory){prev.mandatory=true;prev.sourceText=s.slice(0,400);}return;}
+      seen[sig]=r;
+      r.id="req-"+(out.length+1);r.mandatory=mand;r.sourceText=s.slice(0,400);r.extraction=VERSION;out.push(r);
     }
     sentences(text).forEach(function(s){
       var l=s.toLowerCase(),m;
@@ -43,11 +48,13 @@
       else if(/\b(master'?s|m\.?s\.?|m\.?a\.?|mba)\b(?: degree| in)/i.test(s))add({category:"education",minLevel:"masters"},s);
       else if(/\b(bachelor'?s|b\.?a\.?|b\.?s\.?|undergraduate)\b(?: degree| in)|\bfour-year degree\b|\bcollege degree\b/i.test(s))add({category:"education",minLevel:"bachelors"},s);
       if(/\b(currently enrolled|current (undergraduate|graduate|phd) student|must be a (current )?student|enrolled in an? (accredited )?(university|degree))/i.test(s))add({category:"enrollment"},s);
-      if((m=s.match(/\b(\d{1,2})\s*\+?\s*(?:or more\s*)?years?(?:'|’)?\s*(?:of\s+)?(?:[a-z-]+\s+){0,4}experience\b/i)))add({category:"experience",minYears:Number(m[1]),domains:[]},s);
-      if((m=s.match(/\b(?:no more than|less than|up to|maximum of)\s*(\d{1,2})\s*years?\s*(?:of\s+)?(?:[a-z-]+\s+){0,3}experience/i)))add({category:"experience",maxYears:Number(m[1]),domains:[]},s);
+      var maxExp=/\b(?:no more than|less than|up to|maximum of|at most)\s*\d{1,2}\s*years?/i.test(s);
+      if(!maxExp&&(m=s.match(/\b(\d{1,2})\s*\+?\s*(?:or more\s*)?years?(?:'|’)?\s*(?:of\s+)?(?:[a-z-]+\s+){0,4}experience\b/i)))add({category:"experience",minYears:Number(m[1]),domains:[]},s);
+      if((m=s.match(/\b(?:no more than|less than|up to|maximum of|at most)\s*(\d{1,2})\s*years?\s*(?:of\s+)?(?:[a-z-]+\s+){0,3}experience/i)))add({category:"experience",maxYears:Number(m[1]),domains:[]},s);
       if(/\b(us[- ]based|based in the (us|u\.s\.|united states)|located in the (us|u\.s\.|united states)|must (live|reside) in the (us|u\.s\.|united states)|(us|u\.s\.) residents? only|united states only)\b/i.test(s))add({category:"geography",allowedCountries:["US"]},s);
       if((m=s.match(/\b(?:not (?:available|open) (?:to|in)|excluding|cannot (?:hire|accept applicants) (?:in|from)|except(?: for)? residents of)\s+([^.]{3,300})/i))){
-        var ex=[];Object.keys(STATES).forEach(function(n){if(new RegExp("\\b"+n+"\\b","i").test(m[1]))ex.push("US-"+STATES[n]);});
+        var ex=[],rest=m[1];Object.keys(STATES).sort(function(a,b){return b.length-a.length;}).forEach(function(n){var re=new RegExp("\\b"+n+"\\b","i");if(re.test(rest)){ex.push("US-"+STATES[n]);rest=rest.replace(new RegExp("\\b"+n+"\\b","gi")," ");}});
+        ex.sort();
         if(ex.length)add({category:"geography",excludedRegions:ex},s);
       }
       if(/\b(authori[sz]ed to work in the (us|u\.s\.|united states)|us work authori[sz]ation|without (the need for )?(visa )?sponsorship|eligible to work in the (us|u\.s\.|united states))\b/i.test(s))add({category:"work_authorization",country:"US",citizenshipRequired:false},s);
@@ -78,7 +85,7 @@
   }
   // Fraud and injection indicators. Matching any of these excludes the listing.
   var FRAUD=[
-    [/\b(pay|send|deposit)\b[^.]{0,40}\b(fee|deposit|starter kit|training cost|equipment)\b/i,"UPFRONT_PAYMENT_REQUESTED"],
+    [/\b(pay|send|wire|deposit)\b(?![^.]{0,20}\bdirect deposit\b)[^.]{0,40}\b(fee|security deposit|refundable deposit|starter kit|training cost|equipment cost|equipment fee)\b/i,"UPFRONT_PAYMENT_REQUESTED"],
     [/\b(gift ?cards?|bitcoin|crypto(currency)? wallet|usdt|zelle me|cash ?app)\b/i,"IRREGULAR_PAYMENT_CHANNEL"],
     [/\b(telegram|whatsapp|signal app|google hangouts?)\b[^.]{0,60}\b(contact|message|interview|reach)\b|\b(contact|message|interview|reach)\b[^.]{0,60}\b(telegram|whatsapp|google hangouts?)\b/i,"OFF_PLATFORM_CONTACT"],
     [/\b(social security number|ssn|bank (account|login)|routing number|online banking password)\b[^.]{0,60}\b(send|provide|submit|share|upfront|before)\b|\b(send|provide|submit|share)\b[^.]{0,60}\b(social security number|ssn|bank (account|login) details|routing number)\b/i,"SENSITIVE_DATA_REQUESTED"],
