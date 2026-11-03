@@ -44,3 +44,22 @@ th{background:#e9f0f4}
 .footer a{margin-right:12px}
 @media(max-width:640px){.header-inner{align-items:flex-start}.nav{gap:10px 16px}.main{padding:30px 15px 55px}.article{padding:18px 16px}dl{display:block}dt{border-bottom:0}dd{border-bottom:1px solid var(--line)}}
 @media print{body{background:#fff;color:#111;font:11pt/1.4 Georgia,serif}.header,.actions,.skip{display:none}.main{padding:0;max-width:none}.article{border:0;padding:0}.article section+section{break-inside:avoid}.notice{background:#fff}a{color:#111;text-decoration:none}a:after{content:" (" attr(href) ")";font-size:8pt}nav a:after{content:none}}
+
+/* Accessible sharing and fictional case challenge. */
+.jrs-share-box{background:#eef3f6;border:1px solid #c5d5df;border-radius:7px;padding:16px 20px;margin:0 0 28px}
+.jrs-share-box p{margin:0 0 12px}
+.jrs-share-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.jrs-share-controls button{font:600 .95rem/1.4 system-ui,-apple-system,"Segoe UI",sans-serif;padding:10px 15px;border-radius:4px;border:1px solid #22516b;background:#183c55;color:#fff;cursor:pointer;min-height:44px}
+.jrs-share-controls button[disabled]{opacity:.58;cursor:not-allowed}
+.jrs-share-controls button:focus-visible,.jrs-case-challenge summary:focus-visible{outline:3px solid #075e95;outline-offset:3px}
+.jrs-share-controls a{font-weight:650}
+.jrs-share-status{font-size:.87rem;color:#405a70;margin-top:9px!important}
+.jrs-case-challenge{border:2px solid #9eb8c8;background:#f6fafc;border-radius:7px;padding:20px 22px}
+.jrs-case-challenge h2{margin-top:0}
+.jrs-case-challenge details{background:#fff;border:1px solid #b9cad5;border-radius:5px;margin:14px 0;padding:12px 16px}
+.jrs-case-challenge summary{cursor:pointer;font-weight:700;min-height:30px}
+.jrs-case-challenge summary:hover{text-decoration:underline}
+.jrs-case-challenge details p{margin:12px 0 0}
+.jrs-case-caption{color:#465e71;font-size:.93rem}
+@media(max-width:640px){.jrs-share-box,.jrs-case-challenge{padding:15px}.jrs-share-controls button{width:100%}}
+@media print{.jrs-share-box{display:none}.jrs-case-challenge details{display:block}.jrs-case-challenge details p{display:block}}
