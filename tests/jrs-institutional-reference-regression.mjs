@@ -569,3 +569,22 @@ console.log('PASS: seven-point aid has no invented two-item threshold, distingui
    'automated browser witness must exercise the accessible question group');
  console.log('PASS: mixed-format question selection and labelled group have explicit release regression coverage.');
 }
+
+// The review is the primary practitioner task. Research figures and explanatory
+// patterns remain on the page, but must not block access to the actual tool.
+{
+ const html=read('check.html');
+ const action=html.indexOf('id="sa-group-heading"');
+ const evidence=html.indexOf('class="evidence-strip"');
+ const patterns=html.indexOf('>Seven documentation-risk patterns</h2>');
+ const conditions=html.indexOf('>The five conditions behind the check</h2>');
+ assert.ok(action>0 && evidence>action && patterns>evidence && conditions>patterns,
+   'interactive review must precede group-level research evidence and explanations');
+ assert.equal((html.match(/id="sa-out"/g)||[]).length,1,
+   'moving the tool must not duplicate the record-specific summary');
+ assert.equal((html.match(/class="evidence-strip"/g)||[]).length,1,
+   'moving the tool must preserve the separately scoped research statistics');
+ assert.match(html,/id="sa-question-group" role="group"/,
+   'primary interaction must keep its accessible group');
+ console.log('PASS: record-first review journey retains separate research and all reference content.');
+}
