@@ -17,9 +17,9 @@ GitHub Actions artifact `jrs-pdf-editorial-candidates-b087bb6b39883c07ace7ad635b
 | JRS_Reliability_Accuracy.pdf | 4 / 4 | 0 | None automatically detected |
 | JRS_Research_Paper.pdf | 10 / 10 | 10 | ORDER_DISAGREEMENT: 10 |
 | JRS_Investigator_Field_Guide.pdf | 9 / 9 | 9 | ORDER_DISAGREEMENT: 9 |
-| **Total** | **78 / 78** | **62** | **7 token warnings; 46 order warnings in this historical artifact** |
+| **Total** | **78 / 78** | **62** | **7 token warnings; 55 order warnings in this historical artifact** |
 
-The 62 figure counts pages with at least one warning, not verified accessibility defects. The historical artifact records 7 token-discrepancy warnings and 46 order-disagreement warnings. The category totals are lower than 62 because this version's categorization did not mark every flagged page with either of those two categories; use the full page inventory as the authoritative queue. 
+The 62 figure counts pages with at least one warning, not verified accessibility defects. The historical artifact records 7 token-discrepancy warnings and 55 order-disagreement warnings across 62 flagged pages. These categories did not overlap in this historical artifact; the newer extraction implementation permits both warnings on the same page. 
 
 ## Initial page-level observation
 
