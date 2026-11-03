@@ -9,6 +9,8 @@ const read=f=>readFileSync(new URL("../"+f,import.meta.url),"utf8");
 const tpl=JSON.parse(read("owner/incomeos/owner-profile.template.json"));
 assert.equal(tpl.schema,"incomeos.owner-profile.v1");
 const tplText=JSON.stringify(tpl);
+const wsTpl=JSON.stringify(JSON.parse(read("owner/incomeos/owner-workspace.template.json")));
+for(const s of ["Baltimore","Wheeling","Commission","Wikes"])assert.ok(!wsTpl.includes(s),"workspace template has no owner data: "+s);
 for(const s of ["Baltimore","Wheeling","Commission on Civil Rights","Moral Reconation","\"MD\"","Wikes"])assert.ok(!tplText.includes(s),"template must not contain owner data: "+s);
 assert.doesNotMatch(tplText,/"status":"documented"/,"template has no documented evidence");
 const ctx={window:{},URL,WeakSet};
@@ -22,7 +24,7 @@ const tracked=execFileSync("git",["ls-files"],{encoding:"utf8"}).split("\n");
 assert.ok(!tracked.some(p=>/owner-profile(?!\.template)\.json$/.test(p)||p.startsWith(".incomeos-private/")),"no private profile committed");
 
 // 3. New owner modules: no network, storage, dynamic code or HTML injection.
-const mods=["eligibility-engine.js","listing-requirements.js","compensation.js","opportunity-normalizer.js","opportunity-lifecycle.js","project-radar.js","project-ui.js","ledger-rules.js","net-worth.js","claims-tracker.js","renewal-monitor.js","recruiter-history.js","yield-compare.js","weekly-briefing.js"];
+const mods=["eligibility-engine.js","listing-requirements.js","compensation.js","opportunity-normalizer.js","opportunity-lifecycle.js","project-radar.js","project-ui.js","ledger-rules.js","net-worth.js","claims-tracker.js","renewal-monitor.js","recruiter-history.js","yield-compare.js","weekly-briefing.js","briefing-ui.js"];
 for(const m of mods){
   const src=read("owner/incomeos/"+m);
   assert.doesNotMatch(src,/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource/,m+": no network access");

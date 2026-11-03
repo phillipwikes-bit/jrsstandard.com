@@ -35,14 +35,17 @@ const browser=await chromium.launch();
 const ctx=await browser.newContext({...devices["iPhone 13"]});
 const page=await ctx.newPage();
 const errors=[];page.on("pageerror",e=>errors.push(String(e)));
-await page.addInitScript(()=>{window.__writes=0;const o=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(String(k).startsWith("incomeos.project"))window.__writes++;return o.call(this,k,v);};});
+await page.addInitScript(()=>{window.__writes=0;const o=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(String(k).startsWith("incomeos.project")||String(k).startsWith("incomeos.workspace")||String(k).startsWith("incomeos.briefing"))window.__writes++;return o.call(this,k,v);};});
 await page.goto(base);
 await page.locator("#project-profile-file").setInputFiles({name:"p.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(profile))});
 await page.locator("#project-import-file").setInputFiles({name:"l.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(listings))});
 await page.locator("#project-import").click();
 await page.waitForFunction(()=>/eligible,/.test(document.getElementById("project-status").textContent));
 let status=await page.locator("#project-status").textContent();
-assert.match(status,/^0 eligible, 2 awaiting verification, 3 excluded/,"nothing eligible before owner confirms requirements: "+status);
+assert.match(status,/^0 eligible, 1 awaiting verification, 3 excluded, 1 outside your focus areas hidden/,"nothing eligible before owner confirms; off-focus listing counted, not listed: "+status);
+await page.locator("#project-pending button",{hasText:"Show 1 listings outside your focus areas"}).click();
+status=await page.locator("#project-status").textContent();
+assert.match(status,/^0 eligible, 2 awaiting verification, 3 excluded/,"show-all reveals the hidden listing: "+status);
 // The injection listing is rendered as inert text and is not trusted.
 assert.equal(await page.evaluate(()=>window.__xss),undefined);
 assert.ok((await page.locator("#project-pending").textContent()).includes("<img src=x onerror"));
@@ -66,5 +69,39 @@ assert.ok(overflow<=1,"no horizontal scroll at iPhone width, overflow="+overflow
 assert.equal(await page.evaluate(()=>window.__writes),0);
 assert.deepEqual(errors,[]);
 if(process.env.INCOMEOS_SCREENSHOT)await page.locator("#project-opportunity-panel").screenshot({path:process.env.INCOMEOS_SCREENSHOT});
+// ---------- "This week" panel with a SYNTHETIC workspace ----------
+const ws={schema:"incomeos.workspace.v1",
+  ledger:[{id:"a1",kind:"outflow",type:"expense",date:"2026-08-05",payer:"StreamCo",label:"StreamCo",amountUsd:"20",category:"software"},
+    {id:"a2",kind:"outflow",type:"expense",date:"2026-09-05",payer:"StreamCo",label:"StreamCo",amountUsd:"20",category:"software"},
+    {id:"a3",kind:"outflow",type:"expense",date:"2026-10-05",payer:"StreamCo",label:"StreamCo",amountUsd:"26",category:"software"}],
+  rules:[{id:"stream",kind:"outflow",match:{vendorContains:"streamco"},category:"platform",approvedOn:"2026-11-01"}],
+  accounts:[{id:"chk",name:"Checking",type:"checking"},{id:"ira",name:"IRA",type:"retirement"}],
+  balances:[{accountId:"chk",asOf:today,balanceUsd:"2500.00",source:"statement",sourceRef:"SYN"}],
+  claims:[{id:"c1",kind:"billing_error",title:"Double charge",counterparty:"Card",sourceId:null,estimatedUsd:20,feeUsd:0,feeCharger:null,deadline:today,statementDate:null,state:"MATCH_FOUND",history:[{to:"MATCH_FOUND",on:today,evidenceRef:"opened"}]}],
+  offers:[{id:"hy",provider:"Bank A",product:"savings",apyPct:4,insurance:"FDIC",sourceUrl:"https://example.org/a",checkedOn:today},
+    {id:"tb",provider:"US Treasury",product:"treasury_bill",apyPct:3.9,termMonths:6,insurance:"US_TREASURY",sourceUrl:"javascript:alert(1)",checkedOn:today}],
+  yieldParams:{amountUsd:10000,horizonMonths:12,federalRatePct:22,stateRatePct:5,needLiquidity:false},
+  lifecycle:[]};
+await page.locator("#briefing-file").setInputFiles({name:"w.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(ws))});
+await page.locator("#briefing-load").click();
+await page.waitForFunction(()=>/memory only/.test(document.getElementById("briefing-status").textContent));
+const bt=await page.locator("#briefing-output").textContent();
+assert.match(bt,/Verified eligible/);assert.match(bt,/Urgent: deadline within 14 days \(c1\)/);
+assert.match(bt,/Missing or stale: IRA/);assert.match(bt,/StreamCo: next about/);assert.match(bt,/Bank A savings/);
+assert.match(bt,/Maryland Comptroller unclaimed property search/);
+assert.doesNotMatch(bt,/Maryland Comptroller unclaimed property search \(never searched\)\. Check the address first/,"confirmed source is not flagged");
+assert.match(bt,/Treasury Hunt \(matured savings bonds\) \(never searched\)\. Check the address first/,"unconfirmed source is flagged");
+assert.equal(await page.locator('#briefing-output a[href^="javascript"]').count(),0,"unsafe source link not rendered");
+assert.equal(await page.locator("#briefing-output a").filter({hasText:"provider page"}).count(),1);
+assert.match(bt,/2 eligible|Verified eligible/);
+await page.locator("#briefing-file").setInputFiles({name:"bad.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify({schema:"incomeos.workspace.v1",password:"x"}))});
+await page.locator("#briefing-load").click();
+await page.waitForFunction(()=>/Workspace rejected/.test(document.getElementById("briefing-status").textContent));
+assert.match(await page.locator("#briefing-status").textContent(),/Workspace rejected: Unrecognized sections: password/);
+const overflow2=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+assert.ok(overflow2<=1,"no horizontal scroll with briefing, overflow="+overflow2);
+assert.equal(await page.evaluate(()=>window.__writes),0);
+assert.deepEqual(errors,[]);
+if(process.env.INCOMEOS_BRIEFING_SCREENSHOT)await page.locator("#briefing-panel").screenshot({path:process.env.INCOMEOS_BRIEFING_SCREENSHOT});
 await browser.close();server.close();
 console.log("IncomeOS project UI browser QA passed (iPhone 13 emulation, synthetic data): confirm-gated eligibility, inert injection, HTTPS apply link, no overflow, no storage writes");

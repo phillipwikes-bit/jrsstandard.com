@@ -115,3 +115,7 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 .radar-card .tag-ok{color:#1d6b3a}
 .radar-card .tag-hold{color:#8a4b00}
 .radar-card button{margin-top:8px}
+.briefing-section ul{margin:4px 0;padding-left:18px;font-size:13px}
+.briefing-section p{font-size:13px;margin:4px 0}
+#briefing-output .tag-ok{color:#1d6b3a}
+#briefing-output .tag-hold{color:#8a4b00}

@@ -43,6 +43,14 @@
 <script defer src="./opportunity-lifecycle.js"></script>
 <script defer src="./project-radar.js"></script>
 <script defer src="./project-ui.js"></script>
+<script defer src="./ledger-rules.js"></script>
+<script defer src="./net-worth.js"></script>
+<script defer src="./claims-tracker.js"></script>
+<script defer src="./renewal-monitor.js"></script>
+<script defer src="./recruiter-history.js"></script>
+<script defer src="./yield-compare.js"></script>
+<script defer src="./weekly-briefing.js"></script>
+<script defer src="./briefing-ui.js"></script>
 <script defer src="./vault-ui.js"></script>
 </head>
 <body>
@@ -64,6 +72,15 @@
     <div class="metric"><span>ASSETS WATCHED</span><strong id="metric-asset">0</strong></div>
   </div>
   <section id="view-research" class="view active" aria-labelledby="research-heading">
+    <section id="briefing-panel" class="panel" aria-labelledby="briefing-heading">
+      <h3 id="briefing-heading">This week</h3>
+      <p class="muted">What needs you, what is verified, and whether the system is healthy. Load your private workspace file; it stays in this page's memory and is never stored or sent.</p>
+      <label for="briefing-file">Private workspace file (JSON)</label>
+      <input id="briefing-file" type="file" accept=".json,application/json">
+      <button id="briefing-load" class="smallbtn" type="button">Show my week</button>
+      <p id="briefing-status" role="status" aria-live="polite" class="muted"></p>
+      <div id="briefing-output"></div>
+    </section>
     <div class="sectionintro"><div><span class="kicker">01 / INCOME DISCOVERY</span><h2 id="research-heading">Paid research</h2><p>Specific recruiter applications, not marketplace search pages.</p></div><button type="button" class="smallbtn" id="refresh" aria-label="Refresh reviewed opportunity file">Refresh</button></div>
     <div class="callout"><strong>Qualification is not guaranteed.</strong> Incentives require recruiter selection and successful participation. Review timestamps and remaining-place uncertainty on each card.</div>
     <div class="panel" id="research-radar-panel">
