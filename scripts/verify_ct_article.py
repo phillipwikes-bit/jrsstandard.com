@@ -94,6 +94,10 @@ check("outcome-coding sensitivity disclosed in an endnote", "between 0.0044 and 
 for q in ("corroborated the alleged inappropriate", "failed to check the box for reprisal"):
     check("unverified case quote not presented verbatim: %s" % q, q not in flat)
 
+# ---- no unverified claim that the corpus contains no healthcare matters (2026-11-03)
+check("no claim that none of the matters is from healthcare",
+      re.search(r"[Nn]one of (its|the) 20 matters comes? from healthcare", ms) is None)
+
 # ---- supplement table reproduces the study totals
 rows = [[c.text.strip() for c in r.cells] for r in docx.Document(SUP).tables[0].rows][1:]
 reads = collections.Counter(r[2] for r in rows)
