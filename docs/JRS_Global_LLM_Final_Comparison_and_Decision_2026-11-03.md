@@ -199,4 +199,8 @@ Existing research documents contain **two alternative unapproved designs**, not 
 - [LlamaIndex citation engine](https://developers.llamaindex.ai/python/framework-api-reference/query_engine/citation/)
 - [Gemini Notebook source-citation behavior](https://support.google.com/gemininotebook/answer/16179559)
 
+**Machine-readable matrix:** [JRS Global LLM Comparison Data](JRS_Global_LLM_Comparison_Data_2026-11-03.json) records 15 representative model rows, five named alternative price conditions, formula assumptions, source links and null values for every unmeasured JRS outcome. The arithmetic has been recomputed from the rate inputs. The matrix is not an API measurement.
+
+**Synthetic scoring integrity:** The research-only fixture code in [research/llm-benchmark/score.mjs](../research/llm-benchmark/score.mjs) and its tests verifies metric computation using fabricated packet identifiers, annotated gaps and independently marked citations, with an explicit synthetic-only status and critical-event stop condition. It does not test a model's accuracy. The associated GitHub workflow has no authorized model API path or record ingestion.
+
 **Evidence lineage:** The earlier JRS_Global_LLM_Ecosystem_Benchmark_2026-11-03.md, JRS_Global_LLM_Source_Verification_Register_2026-11-03.md, JRS_Controlled_Cross_Model_Evidence_Evaluation_Protocol_2026-11-03.md and JRS_LLM_Documentary_Review_Evaluation_Protocol_2026-11-03.md remain inspectable. This final decision record reconciles their model, pricing, source edition and alternate protocol positions without asserting that any actual experiment took place.
