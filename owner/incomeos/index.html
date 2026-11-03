@@ -36,6 +36,11 @@
 <script defer src="./decision-ui.js"></script>
 <script defer src="./spend-ui.js"></script>
 <script defer src="./research-ui.js"></script>
+<script defer src="./eligibility-engine.js"></script>
+<script defer src="./listing-requirements.js"></script>
+<script defer src="./compensation.js"></script>
+<script defer src="./opportunity-normalizer.js"></script>
+<script defer src="./opportunity-lifecycle.js"></script>
 <script defer src="./project-radar.js"></script>
 <script defer src="./project-ui.js"></script>
 <script defer src="./vault-ui.js"></script>
@@ -87,14 +92,23 @@
       <p id="radar-status" role="status" aria-live="polite" class="muted"></p>
       <div id="radar-results" class="radar-results"></div>
       <section id="project-opportunity-panel" class="panel" aria-labelledby="project-opportunity-heading">
-        <h3 id="project-opportunity-heading">AI platform project opportunities</h3>
-        <p class="muted">Screen paid AI evaluation, model testing, annotation, policy and quality-assurance contracts on Handshake AI and other internet platforms. This is active project work, not passive income. Listings and earnings are not automatically verified.</p>
-        <p class="muted">Import reviewed public listing JSON. Never include account credentials, screening answers, personal profiles or financial records.</p>
-        <label for="project-import-file">Public project listing JSON</label>
+        <h3 id="project-opportunity-heading">Eligible projects and expert work</h3>
+        <p class="muted">Screens discovered public listings against your private qualification profile. An opportunity is listed as eligible only when every mandatory requirement is documented as satisfied. Eligible is not accepted, assigned or paid.</p>
+        <div id="project-summary" class="project-summary" role="status" aria-live="polite"></div>
+        <label for="project-profile-file">Private qualification profile JSON (kept in memory only)</label>
+        <input id="project-profile-file" type="file" accept=".json,application/json">
+        <label for="project-import-file">Discovery snapshot or reviewed listing JSON</label>
         <input id="project-import-file" type="file" accept=".json,application/json">
-        <button id="project-import" class="smallbtn" type="button">Screen project listings</button>
+        <button id="project-import" class="smallbtn" type="button">Screen opportunities</button>
         <p id="project-status" role="status" aria-live="polite" class="muted"></p>
+        <h4 class="project-subhead">System health</h4>
+        <div id="project-health" class="radar-results"></div>
+        <h4 class="project-subhead">Verified eligible</h4>
         <div id="project-results" class="radar-results"></div>
+        <h4 class="project-subhead">Awaiting your verification</h4>
+        <div id="project-pending" class="radar-results"></div>
+        <h4 class="project-subhead">Excluded</h4>
+        <div id="project-excluded" class="radar-results"></div>
       </section>
     </div>
     <div class="filterbar"><label class="sr-only" for="research-filter">Filter research leads</label><select id="research-filter"><option value="current">Upcoming sessions</option><option value="online">Online only</option><option value="direct">Direct screeners</option><option value="highpay">Highest session pay</option><option value="all">All, including past dates</option></select><label class="sr-only" for="research-search">Search research leads</label><input id="research-search" type="search" placeholder="Search studies and recruiters" autocomplete="off"></div>
