@@ -49,6 +49,16 @@ The four examples below were rechecked directly in the retained candidate HTML a
 
 **Editorial disposition for all four: NOT ASSESSED.** No finding above authorizes deletion, rewriting, retagging, or publication. A reviewer must inspect the original rendered PDF and its semantic structure before determining whether the difference is an extraction artifact or an actual defect.
 
+## Quantified word-inventory differences (historical artifact)
+
+Direct comparison of the two `<pre>` transcripts within each candidate establishes the following more specific observations:
+
+- **Standard, pages 2–7:** each page has a token discrepancy score of **3**. On page 2, raw extraction contains one `jrstm` token, whereas layout extraction contains separate `jrs` and `tm` tokens. The repeated three-token score across six pages is consistent with a running-header extraction effect. It does not establish six substantive omissions. The first page has no token discrepancy warning.
+- **Reviewer Reference, page 1:** token discrepancy score **49**. Raw extraction separates vertically arranged words such as `BASIS`, `CHRONOLOGY`, `REASONING` and `SUFFICIENCY` into single-letter tokens. Layout extraction retains these as whole words. Raw extraction also breaks professional-category labels into fragments, whereas layout extraction retains `HR`, `COMPLIANCE` and `INVESTIGATIONS` as complete terms. This is a confirmed extraction-tokenization difference, not yet a confirmed semantic-tagging failure.
+- **All remaining pages:** the historical inventory reports no token-inventory discrepancies. Some still have `ORDER_DISAGREEMENT` flags, which are separate observations.
+
+**Editorial priority:** assess the Reviewer Reference cover's vertical decorative text and professional-category labels first, then inspect the Standard's repeating header. Compare the rendered source and accessibility tag/reading sequence before deciding whether to mark text as an artifact, preserve it as meaningful content, or repair tags. Do not infer that extraction-mode agreement establishes PDF accessibility.
+
 ## Review sequence
 
 1. Compare all six flagged Standard pages with the source PDF, including headings, running headers, defined terms and the five review conditions.
