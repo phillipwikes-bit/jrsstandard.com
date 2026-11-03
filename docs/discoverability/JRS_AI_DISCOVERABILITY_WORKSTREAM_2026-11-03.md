@@ -134,3 +134,16 @@ Monitor separate evidence grades: (1) *indexed definition page*, (2) *direct JRS
 - What documentation-review methods help preserve chronology and evidence in personnel decisions?
 
 Acronym-only "DRR" searches must be excluded from qualified trend counts unless their context clearly means Decision Reconstruction Risk. No search-console, AI provider or publisher account action is required of the owner to prepare this work. Production publication still requires the existing independent release gates.
+
+## Site identity and navigation structure, 3 November 2026
+
+Google's public Search documentation recommends `WebSite` structured data on the home page for site-name recognition and `BreadcrumbList` when the actual page hierarchy is clear. The draft adds:
+- A separate `WebSite` JSON-LD block on `index.html` with `name: JRS™ Justification Review Standard`, `alternateName: JRS` and the existing canonical `https://www.jrsstandard.com/`. The existing definition metadata is retained rather than overwritten.
+- A matching visible breadcrumb path `Home > Free resources > [page]` on each of the constructed example, institutional briefing and terminology reference, plus the equivalent `BreadcrumbList` JSON-LD using their actual canonical URLs.
+- Responsive breadcrumb styling and a companion release regression test to guard the site-name value, breadcrumb item URLs and visible labels.
+
+This does not create a new JRS legal entity, certify JRS as an international standard or claim Google will show a rich result. Search recognition, crawl/index status, breadcrumb eligibility and traffic remain **NOT OBSERVED**. Avoid submitting a sitemap or changing verification accounts without independent authorization. All changes remain within dependent draft PR #121, under the preexisting release hold.
+
+References:
+- https://developers.google.com/search/docs/appearance/site-names
+- https://developers.google.com/search/docs/appearance/structured-data/breadcrumb

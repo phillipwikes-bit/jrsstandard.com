@@ -63,3 +63,10 @@ th{background:#e9f0f4}
 .jrs-case-caption{color:#465e71;font-size:.93rem}
 @media(max-width:640px){.jrs-share-box,.jrs-case-challenge{padding:15px}.jrs-share-controls button{width:100%}}
 @media print{.jrs-share-box{display:none}.jrs-case-challenge details{display:block}.jrs-case-challenge details p{display:block}}
+
+/* Visible, semantic path back to free resources; mirrors BreadcrumbList data. */
+.jrs-breadcrumb{display:flex;flex-wrap:wrap;align-items:center;gap:7px 11px;color:#435e71;font-size:.9rem;margin-bottom:27px}
+.jrs-breadcrumb a{color:#195579}
+.jrs-breadcrumb [aria-current="page"]{font-weight:700;color:#193148}
+@media(max-width:640px){.jrs-breadcrumb{gap:6px 9px;margin-bottom:20px}}
+@media print{.jrs-breadcrumb{display:none}}
