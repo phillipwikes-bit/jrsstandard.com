@@ -57,4 +57,12 @@ jobs:
           browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
           test -n "$browser"
           "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8792/tests/jrs-wcag-axe-browser.html > /tmp/jrs-axe-dom.txt 2>/tmp/jrs-axe-errors.log
-          python3 tests/jrs-browser-gate-check.py /tmp/jrs-axe-dom.txt axe
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-axe-dom.txt axe /tmp/jrs-axe-evidence.json
+      - name: Retain inspectable public-route automated accessibility evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-axe-evidence-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-axe-evidence.json
+          if-no-files-found: warn
+          retention-days: 30
