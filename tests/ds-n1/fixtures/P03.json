@@ -1,0 +1,78 @@
+{
+  "schema": "ds-n1.record/1.0",
+  "record_id": "SAX-0417-P03",
+  "record_version": "1",
+  "record_class": "supplier_access_exception",
+  "data_classification": "constructed_fictional",
+  "title": "Supplier access exception SAX-0417 (fictional)",
+  "text": "Bluefin Metrics requested SFTP access to the billing export on 2026-08-04. Omar Haddad approved the SFTP exception on 2026-08-11.",
+  "entities": [
+    {
+      "entity_id": "E1",
+      "name": "Bluefin Metrics"
+    },
+    {
+      "entity_id": "E3",
+      "name": "Omar Haddad"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "S1",
+      "title": "Ticket T-551",
+      "version": "v3",
+      "text": "Ticket T-551. Bluefin Metrics requested SFTP access to the billing export on 2026-08-04.",
+      "events": [
+        {
+          "role": "request",
+          "date": "2026-08-04"
+        }
+      ]
+    },
+    {
+      "source_id": "S2",
+      "title": "Approval record AP-9",
+      "version": "v1",
+      "text": "Approval record AP-9. Omar Haddad approved the SFTP exception for Bluefin Metrics on 2026-08-11.",
+      "events": [
+        {
+          "role": "approval",
+          "date": "2026-08-11"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "kind": "chronology",
+      "quote": "Bluefin Metrics requested SFTP access to the billing export on 2026-08-04.",
+      "event": {
+        "role": "request",
+        "date": "2026-08-04"
+      },
+      "citations": [
+        {
+          "source_id": "S1",
+          "quote": "requested SFTP access to the billing export"
+        }
+      ]
+    },
+    {
+      "claim_id": "C2",
+      "kind": "authority",
+      "quote": "Omar Haddad approved the SFTP exception on 2026-08-11.",
+      "actor": "E3",
+      "event": {
+        "role": "approval",
+        "date": "2026-08-11"
+      },
+      "citations": [
+        {
+          "source_id": "S2",
+          "quote": "approved the SFTP exception"
+        }
+      ]
+    }
+  ]
+}
