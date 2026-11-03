@@ -29,7 +29,7 @@ assert.ok(home.indexOf('id="task-chooser"')<home.indexOf('id="professional-paths
  && home.indexOf('id="worked-record"')<home.indexOf('id="evidence-snapshot"'),
  'homepage must carry one coherent progression: action, guidance, example, evidence');
 for(const [path,markup] of [['homepage',home],['resources',resources],['training',training],
- ['investigator guides',guides],['about',about],['organization',org]]){
+ ['investigator guides',guides],['about',about],['organization',organization]]){
   assert.ok(markup.includes('Decision Reconstruction Risk'),
    path+': the documentation problem must remain explicit');
 }
