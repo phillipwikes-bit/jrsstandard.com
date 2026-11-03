@@ -1,0 +1,23 @@
+{
+  "schema": "incomeos.discovery-sources.v1",
+  "reviewedOn": "2026-11-03",
+  "notice": "Public job-board identifiers only. Board tokens marked tokenVerified:false have NOT been confirmed to exist; the first live run records BOARD_NOT_FOUND or ok for each, and the registry is corrected from that receipt. Listing a source here is not an assertion that it currently has eligible openings or that any integration exists beyond the documented public endpoint.",
+  "sources": [
+    {"id": "gh-scaleai", "connector": "greenhouse", "token": "scaleai", "employer": "Scale AI", "platform": "Scale AI / Outlier", "employerDomains": ["scale.com"], "tokenVerified": false, "enabled": true},
+    {"id": "gh-invisible", "connector": "greenhouse", "token": "invisibletech", "employer": "Invisible Technologies", "platform": "Invisible Technologies", "employerDomains": ["invisible.co", "invisibletech.ai"], "tokenVerified": false, "enabled": true},
+    {"id": "ashby-mercor", "connector": "ashby", "token": "mercor", "employer": "Mercor", "platform": "Mercor", "employerDomains": ["mercor.com"], "tokenVerified": false, "enabled": true},
+    {"id": "ashby-handshake", "connector": "ashby", "token": "handshake", "employer": "Handshake", "platform": "Handshake AI", "employerDomains": ["joinhandshake.com"], "tokenVerified": false, "enabled": true},
+    {"id": "gh-labelbox", "connector": "greenhouse", "token": "labelbox", "employer": "Labelbox", "platform": "Alignerr (Labelbox)", "employerDomains": ["labelbox.com"], "tokenVerified": false, "enabled": true},
+    {"id": "lever-turing", "connector": "lever", "token": "turing", "employer": "Turing", "platform": "Turing", "employerDomains": ["turing.com"], "tokenVerified": false, "enabled": true},
+    {"id": "usajobs-civil-rights", "connector": "usajobs", "keyword": "civil rights investigator", "employer": "US federal agencies", "platform": "USAJOBS", "tokenVerified": true, "enabled": true, "note": "Disabled at run time until the owner registers a free USAJOBS API key and stores USAJOBS_API_KEY and USAJOBS_USER_AGENT as repository secrets."},
+    {"id": "usajobs-eeo", "connector": "usajobs", "keyword": "equal employment opportunity specialist", "employer": "US federal agencies", "platform": "USAJOBS", "tokenVerified": true, "enabled": true}
+  ],
+  "notListedReason": {
+    "DataAnnotation": "No documented public job-board API identified; manual import only.",
+    "Outlier": "Contributor work is offered inside its own logged-in platform; no public API. Parent company board covered by gh-scaleai.",
+    "Appen": "No documented public API identified for project listings; manual import only.",
+    "TELUS Digital": "No documented public API identified for project listings; manual import only.",
+    "OneForma": "No documented public API identified; manual import only.",
+    "Mindrift": "No documented public API identified; manual import only."
+  }
+}
