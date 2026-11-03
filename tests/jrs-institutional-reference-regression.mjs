@@ -19,6 +19,18 @@ let braces=0;
 for(const c of css){if(c==='{')braces++;if(c==='}')braces--;assert.ok(braces>=0,'unbalanced CSS closing brace');}
 assert.equal(braces,0,'unbalanced CSS blocks');
 
+/* The selected motto must remain in the visible responsive header.
+   A previous <=1020px stylesheet hid it despite correct page source. */
+const homeHeader=read('index.html');
+assert.match(homeHeader,/<span class="jrs-header-motto">Check the record\.\s*<strong>No new software required\.<\/strong><\/span>/,
+  'approved institutional motto must be retained in the homepage header');
+assert.ok(css.includes('flex-wrap:wrap!important')&&
+  css.includes('.site-header-inner > .jrs-header-motto{')&&
+  css.includes('display:block!important'),
+  'responsive header must provide visible layout for the selected motto');
+assert.doesNotMatch(css,/\.jrs-header-motto\s*\{\s*display:\s*none\s*!important/,
+  'responsive stylesheet must not hide the selected header on phones or tablets');
+
 const pages=[
  'index.html','resources.html','research.html','investigator-guides.html',
  'manifest.html','about.html','contact.html','jrsstandard.html','training.html',
