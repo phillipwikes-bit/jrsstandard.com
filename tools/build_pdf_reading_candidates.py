@@ -128,7 +128,7 @@ def main():
                 flags.append("EMPTY_EXTRACTION")
             if page_difference:
                 flags.append("TOKEN_DISCREPANCY")
-            if "\\ufffd" in raw_page or "\\ufffd" in layout_page:
+            if chr(0xfffd) in raw_page or chr(0xfffd) in layout_page:
                 flags.append("REPLACEMENT_CHARACTER")
             page_reviews.append({
                 "page": page_index + 1,
