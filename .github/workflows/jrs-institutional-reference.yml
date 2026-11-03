@@ -40,5 +40,7 @@ jobs:
         run: node tests/jrs-training-certificate-render.mjs
       - name: Verify worked-record journey and distinct research evidence
         run: node tests/jrs-practitioner-journey.mjs
+      - name: Verify server-side record-check event minimization
+        run: node tests/jrs-telemetry-view-integrity.mjs
       - name: Regression-check exact-preview source verification
         run: python3 tests/jrs-preview-static-verification.py --self-test
