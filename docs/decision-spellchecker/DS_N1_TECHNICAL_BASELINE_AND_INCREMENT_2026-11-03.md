@@ -464,3 +464,52 @@ Regression: all 40 reports are identical to 0.4.0 (`45859238`) after normalising
 * `check_zero_drift.py`: 51 failures on `main` and 50 on this branch, the same set except one tracker-date check this branch clears. They are pre-existing, not waived.
 
 **Readiness for further review:** ready for **further technical review** as a draft. **Not** ready for merge, deployment, or any claim of independent verification.
+
+## 16. Increment H (appended 2026-11-03): isolation fixtures close the ablation gap
+
+Section 13.1 found that only 7 of 19 rules were shown, by any labelled case, to prevent a false READY on their own. Two never fired, and ten always co-occurred with another rule. This increment adds test cases only. **Rules were frozen at `ds-n1.rules/0.2.0`, and no rule or expectation was changed.**
+
+* `tests/ds-n1/build-isolation.mjs` builds 12 cases, I01 to I12, one per NEVER_FIRED or REDUNDANT rule. Each is a single construction on the supported base P01. The specification `isolation-expectations.json` was committed in `dc85a16a` **before** the first run.
+* These are **specification tests of DS-N1's own rule design**, not reference labels of what a reviewer should conclude, and not accuracy evidence.
+* **Construction finding.** Six rules cannot be isolated with a single citation. These are `ACTOR_NOT_ESTABLISHED`, `DATE_NOT_ESTABLISHED`, `DATE_ROLE_UNVERIFIED`, `QUOTE_NOT_FOUND`, `RELEVANCE_NOT_ESTABLISHED` and `SOURCE_MISSING`.
+  * When a claim's only citation fails one of these checks, the claim loses support, which by design also raises `UNSUPPORTED_CLAIM`.
+  * Those six were therefore isolated by giving the claim its original good citation plus a second, flawed one.
+  * This is intended behaviour, not a defect. In real use these rules will usually appear together with `UNSUPPORTED_CLAIM`.
+* `tests/ds-n1/eval-isolation.mjs` requires three things for each case:
+  * the specified status;
+  * the rule as the **sole** active finding;
+  * READY when that rule alone is suppressed, so the rule is decisive.
+
+**Results**
+
+* **ISOLATION-001** (at `dc85a16a`, engine clean): **12 of 12 pass on the first run.**
+* Ablation over 46 cases (base, stress dev and isolation): **19 of 19 rules DECISIVE**, none NEVER_FIRED, none REDUNDANT.
+
+**Guards demonstrated to fire.** Because the first run passed, the harness had to be shown capable of failing:
+
+| Mutation | Caught by |
+|---|---|
+| M23 negation rule disabled | I07 (and the base suite) |
+| M24 date-mismatch branch disabled | I03 (and the base suite) |
+| M25 location-ambiguity rule disabled | **I02 only**; the base suite misses it |
+| M26 date-role-unverified branch disabled | **I05 only**; the base suite misses it |
+| M27 missing-source guard removed | the engine crashes; all three suites exit 1 |
+
+My first M27 measurement counted output lines, read the crash as "none caught", and was wrong. Re-measured by exit code, it is caught. This is recorded as a method flaw.
+
+**Reproduction**
+
+* `reproduce.mjs` now also regenerates the isolation fixtures, checks them byte-for-byte, runs the isolation specification, and hashes the 12 extra reports.
+* The new baseline from a clean clone of `4013578f` covers **52 reports**. The 40 existing hashes are unchanged; the only other diff is a JSON comma.
+* A fresh-clone reproduction at HEAD is identical.
+
+**Limits**
+
+* The isolation cases prove the rules work as designed on a single deliberate defect. They do not show the rules detect real-world defects, nor that their severities match what a reviewer would choose.
+* All cases are developer-authored.
+* The independent-review protocol, HOLDOUT-2 and independent labelling remain the route to evidence that is not the developer's.
+
+**Next increment proposal:** HOLDOUT-2 predictions written in advance.
+* For each of the 10 sealed cases, the developer commits a written prediction of the engine's output before the owner-authorised run, without running it. For example, H08, a read-only versus read-and-write contradiction with no negation words, is predicted to be a **critical false-ready**.
+* Comparing predictions with the actual run then shows how well the developer understands the engine's blind spots, which matters for a handoff.
+* This needs no owner action until the run itself.

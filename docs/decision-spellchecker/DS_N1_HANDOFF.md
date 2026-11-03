@@ -17,7 +17,7 @@ This handoff is a technical exercise only. It does not authorise any transfer of
 
 ```bash
 git clone <repo> && cd <repo> && git checkout claude/decision-spellchecker-ds-n1-2026-11-03
-node tests/ds-n1/reproduce.mjs        # fresh clone at HEAD, all suites, 40 report hashes vs REPRO_BASELINE.json
+node tests/ds-n1/reproduce.mjs        # fresh clone at HEAD, all suites, 52 report hashes vs REPRO_BASELINE.json
 ```
 
 A run that exits 0 with `"identical": true` means your clone reproduced the recorded behaviour exactly.
@@ -30,6 +30,7 @@ A run that exits 0 with `"identical": true` means your clone reproduced the reco
 | `node tests/ds-n1/eval.mjs --no-write` | 24 base records against pre-registered expectations |
 | `node tests/ds-n1/eval-stress.mjs --split dev --no-write` | 10 stress records; 0 critical false-ready required |
 | `node tests/ds-n1/ui.browser.mjs` | 20 Chromium checks, desktop and iPhone 13 emulation |
+| `node tests/ds-n1/eval-isolation.mjs --no-write` | 12 isolation cases: each rule alone decisive (specification tests) |
 | `node tests/ds-n1/ablation.mjs [exports...]` | Rule ablation: NEVER_FIRED / REDUNDANT / DECISIVE per rule, plus reviewer feedback from exports |
 | `node lib/ds-n1/serve.mjs` | Reviewer UI at `http://127.0.0.1:4317/` (loopback only) |
 
