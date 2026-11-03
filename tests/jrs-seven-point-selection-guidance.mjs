@@ -19,5 +19,5 @@ const expected=[
 const actual=[...html.matchAll(/<label class="chk"><input type="checkbox" class="sa" data-mode="([^"]+)"/g)]
  .map(match=>match[1]);
 assert.deepEqual(actual,expected,'all seven unchanged check categories must remain available');
-assert.match(html,/The count is not a score/,'the check must retain non-scoring disclosure');
+assert.match(html,/It does not score your record/,'the public check must retain its non-scoring limitation');
 console.log('PASS: selection guidance covers mixed question types without changing seven checks or making a diagnostic claim.');
