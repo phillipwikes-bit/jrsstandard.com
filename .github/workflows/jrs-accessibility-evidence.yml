@@ -74,9 +74,11 @@ jobs:
               assert all(p['editorial_disposition']=='NOT_ASSESSED' for p in pages)
               assert all(isinstance(p['token_discrepancy'],int) and p['token_discrepancy']>=0 for p in pages)
               assert all(isinstance(p['flags'],list) and set(p['flags'])<={
-                  'EMPTY_EXTRACTION','TOKEN_DISCREPANCY','REPLACEMENT_CHARACTER','PAGE_COUNT_MISMATCH'
+                  'EMPTY_EXTRACTION','TOKEN_DISCREPANCY','ORDER_DISAGREEMENT','REPLACEMENT_CHARACTER','PAGE_COUNT_MISMATCH'
               } for p in pages)
               assert item['pages_flagged_for_editorial_review']==sum(bool(p['flags']) for p in pages)
+              assert all(isinstance(p['order_agreement'],bool) for p in pages)
+              assert all('ORDER_DISAGREEMENT' not in p['flags'] or not p['order_agreement'] for p in pages)
               assert sum(p['token_discrepancy'] for p in pages)>=0
           print('PASS: nine candidate files retained for editorial review, with release state NOT ASSESSED.')
           PY
