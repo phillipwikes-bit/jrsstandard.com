@@ -29,7 +29,8 @@
       });
       const doc=frame.contentDocument;
       if(!doc?.querySelector('main'))throw Error('missing main landmark');
-      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      // Geometry reads force layout after the iframe load; avoid waiting on
+      // requestAnimationFrame, which can be suspended in headless CI.
       const root=doc.documentElement,body=doc.body;
       const scrollWidth=Math.max(root.scrollWidth,body.scrollWidth);
       const clientWidth=root.clientWidth;
