@@ -1,0 +1,25 @@
+name: JRS research-only synthetic evaluation integrity
+on:
+  pull_request:
+    paths:
+      - "research/llm-benchmark/**"
+      - ".github/workflows/jrs-research-synthetic-eval.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-fixture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact commit without persisted token
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Confirm offline Node evaluator regression
+        run: |
+          node --version
+          node research/llm-benchmark/score.test.mjs
+      - name: Confirm synthetic output cannot be mistaken for model validation
+        run: |
+          node research/llm-benchmark/score.mjs research/llm-benchmark/fixtures/gold.synthetic.json research/llm-benchmark/fixtures/reviewed.synthetic.json > /tmp/jrs-synthetic-scoring.json
+          node -e 'const fs=require("fs");const x=JSON.parse(fs.readFileSync("/tmp/jrs-synthetic-scoring.json"));if(x.status!=="SYNTHETIC_UNIT_TEST_ONLY_NOT_JRS_MODEL_VALIDATION"||x.gap_recall!==0.5||x.stop_required)process.exit(1)'
