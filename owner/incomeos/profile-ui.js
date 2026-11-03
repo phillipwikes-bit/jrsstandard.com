@@ -73,7 +73,8 @@
         else{text=JSON.stringify(state.profile,null,1);name="incomeos-profile-"+stamp+".json";}
         var url=URL.createObjectURL(new Blob([text],{type:"application/json"})),a=document.createElement("a");
         a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url);},2000);
-        state.dirty=false;status.textContent=p?"Encrypted profile saved. The passphrase cannot be recovered.":"Saved WITHOUT encryption. Add a passphrase of 16+ characters and save again.";
+        state.dirty=false;try{document.dispatchEvent(new CustomEvent("incomeos:profile-saved",{detail:{encrypted:!!p}}));}catch(e){}
+        status.textContent=p?"Encrypted profile saved. The passphrase cannot be recovered.":"Saved WITHOUT encryption. Add a passphrase of 16+ characters and save again.";
       }catch(err){status.textContent="Not saved: "+err.message;}
     });
     window.addEventListener("beforeunload",function(e){if(state.dirty){e.preventDefault();e.returnValue="";}});

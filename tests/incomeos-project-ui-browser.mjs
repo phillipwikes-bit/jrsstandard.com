@@ -40,6 +40,9 @@ const page=await ctx.newPage();
 const errors=[];page.on("pageerror",e=>errors.push(String(e)));
 await page.addInitScript(()=>{window.__writes=0;const o=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(String(k).startsWith("incomeos.project")||String(k).startsWith("incomeos.workspace")||String(k).startsWith("incomeos.briefing"))window.__writes++;return o.call(this,k,v);};});
 await page.goto(base);
+// "Start here" opens on the first step and points to it.
+assert.match(await page.locator("#start-here-next").textContent(),/^Next: Open your qualification profile\./);
+assert.equal(await page.locator("#start-here-steps li").count(),6);
 await page.locator("#project-profile-file").setInputFiles({name:"p.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(profile))});
 await page.locator("#project-import-file").setInputFiles({name:"l.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(listings))});
 await page.locator("#project-import").click();
@@ -193,6 +196,16 @@ assert.match(await page.locator("#briefing-status").textContent(),/Not changed: 
 await page.locator("#add-amount").fill("85.00");
 await page.locator("#briefing-output").getByRole("button",{name:"Add entry"}).click();
 assert.match(await page.locator("#briefing-status").textContent(),/Entry added/);
+// By now: profile opened but not complete; workspace started and changed but not saved encrypted; listings screened.
+const steps=await page.$$eval("#start-here-steps li",els=>els.map(e=>e.textContent));
+assert.ok(steps[0].startsWith("Done: Open your qualification profile"));
+assert.ok(!steps[1].startsWith("Done:"),"draft profile is not complete");
+assert.ok(steps[3].startsWith("Done: Start or open your workspace"));
+assert.ok(!steps[4].startsWith("Done:"),"unsaved workspace changes keep the save step open");
+assert.ok(steps[5].startsWith("Done: Load job listings"));
+assert.match(await page.locator("#start-here-next").textContent(),/^Next: Document your qualifications/);
+await page.locator("#start-here-next a").click();
+assert.equal(await page.locator("#profile-edit-panel").getAttribute("open"),"","Go there opens the profile section");
 const unlabeled=await page.evaluate(()=>[...document.querySelectorAll("#briefing-panel input,#briefing-panel select,#project-opportunity-panel input,#project-opportunity-panel select")].filter(e=>!(e.labels&&e.labels.length)&&!e.getAttribute("aria-label")).map(e=>e.id||e.name||e.type));
 assert.deepEqual(unlabeled,[],"every control in the owner panels has a label");
 assert.deepEqual(errors,[]);

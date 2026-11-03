@@ -20,7 +20,8 @@
     function section(title){var s=el(out,"section",null,"briefing-section");el(s,"h4",title,"project-subhead");return s;}
     function arr(x){return Array.isArray(x)?x:[];}
     function act(fn,label){
-      try{var before=state.ws;state.ws=fn(state.ws);state.history.push(before);if(state.history.length>20)state.history.shift();state.dirty=true;render();status.textContent=label+". Save the updated workspace to keep this change, or undo it.";}
+      try{var before=state.ws;state.ws=fn(state.ws);state.history.push(before);if(state.history.length>20)state.history.shift();state.dirty=true;
+        try{document.dispatchEvent(new CustomEvent("incomeos:workspace-changed"));}catch(e){}render();status.textContent=label+". Save the updated workspace to keep this change, or undo it.";}
       catch(err){status.textContent="Not changed: "+err.message;}
     }
     function btn(p,text,onClick){var b=el(p,"button",text,"smallbtn");b.type="button";b.addEventListener("click",onClick);return b;}
@@ -155,6 +156,7 @@
         if(p){download(await WS.encrypt(p,state.ws),"incomeos-workspace-"+stamp+".encrypted.json");status.textContent="Encrypted workspace saved. Keep the passphrase somewhere safe; it cannot be recovered.";}
         else{download(JSON.stringify(state.ws,null,1),"incomeos-workspace-"+stamp+".json");status.textContent="Saved WITHOUT encryption. Enter a passphrase of 16+ characters and save again to protect it.";}
         state.dirty=false;
+        try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:!!p}}));}catch(e){}
       }catch(err){status.textContent="Not saved: "+err.message;}
     });
     window.addEventListener("beforeunload",function(e){if(state.dirty){e.preventDefault();e.returnValue="";}});

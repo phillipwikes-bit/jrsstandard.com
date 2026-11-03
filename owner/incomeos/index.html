@@ -60,6 +60,7 @@
 <script defer src="./briefing-ui.js"></script>
 <script defer src="./profile-editor.js"></script>
 <script defer src="./profile-ui.js"></script>
+<script defer src="./getting-started.js"></script>
 <script defer src="./vault-ui.js"></script>
 </head>
 <body>
@@ -87,6 +88,11 @@
     <div class="metric"><span>ASSETS WATCHED</span><strong id="metric-asset">0</strong></div>
   </div>
   <section id="view-research" class="view active" aria-labelledby="research-heading">
+    <section id="start-here" class="panel" aria-labelledby="start-here-heading">
+      <h3 id="start-here-heading">Start here</h3>
+      <ol id="start-here-steps"></ol>
+      <p id="start-here-next" role="status" aria-live="polite"></p>
+    </section>
     <section id="briefing-panel" class="panel" aria-labelledby="briefing-heading">
       <h3 id="briefing-heading">This week</h3>
       <p class="muted">What needs you, what is verified, and whether the system is healthy. Load your private workspace file; it stays in this page's memory and is never stored or sent.</p>
