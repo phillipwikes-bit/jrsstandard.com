@@ -24,3 +24,10 @@ These are scripted browser and printed-text tests, not practitioner case studies
 ## Evidentiary boundary for portable check outputs
 
 The seven-point check's constructed-corpus benchmark remains visible on the website as research context. It is deliberately excluded from copied and printed single-record summaries. The portable note contains the chosen review questions, instructions for source verification, the generation date and the non-certification warning. This avoids presenting group-level detection accuracy as supporting a particular record's findings. A separate extracted-PDF witness normalizes whitespace before comparing complete required phrases and rejects accidental inclusion of navigation, action controls or research accuracy statistics. The original PDFs remain unchanged.
+
+
+## Expanded-scan defect and targeted correction, 3 November 2026
+
+Source commit `2c266ee8a50ef176be77418f1193808a514f0840` expanded the test population from 20 to 24 public routes. Its GitHub Actions reflow run completed **48 of 48 layout observations successfully**. Its axe-core scan **failed**, identifying `link-in-text-block` issues on the Review Conditions Reference page (one link at both widths) and the Governance Adoption page (two inline links at both widths). The new parser correctly held the run rather than hiding those findings behind an aggregate grade.
+
+The subsequent candidate adds persistent underlining to those in-prose links and a focused source regression while keeping the destinations, publication content and navigation controls intact. This is a **repair candidate** until the expanded browser scan is rerun successfully. It is not evidence of manual screen-reader conformance, PDF tagging or production parity.

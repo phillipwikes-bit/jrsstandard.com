@@ -74,3 +74,19 @@ const trainingPalette = read('assets/jrs-institutional-reference.css');
 const contrastActionSelector = /#cert-section button\[onclick="generateCert\(\)"\]\{[\s\S]*?background:#173d5b!important;color:#fff!important/;
 assert.match(trainingPalette, contrastActionSelector,
   'the previously hidden completion action must have an explicit high-contrast appearance');
+
+// Expanded 24-route axe scan identified links distinguishable only by color
+// on the reference and governance pages. Prevent recurrence in the source.
+{
+ const reference=read('reference/index.html');
+ const governance=read('compliance.html');
+ assert.match(reference,/body\.jrs-institutional main \.note a\[href\]\{text-decoration:underline!important/,
+  'reference note must visibly underline its inline Standard link');
+ assert.match(governance,/body\.jrs-institutional main p a\[href\]:not\(\.btn\)\{text-decoration:underline!important/,
+  'governance prose links must be recognizable without relying on color');
+ assert.match(reference,/href="\/jrsstandard\.html">jrsstandard\.html<\/a>/,
+  'reference must retain original Standard route');
+ for(const href of ['codebook.html','research.html'])
+  assert.ok(governance.includes('href="'+href+'"'),'governance must retain linked methodology evidence: '+href);
+ console.log('PASS: prose links are underlined without changing publication routes or navigation styles.');
+}
