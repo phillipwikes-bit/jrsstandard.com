@@ -90,6 +90,10 @@ for fig in ("Screened 22, analyzed 20", "12 Ready, 5 Needs work, 3 Gap",
 check("adverse finding defined as the reviewer's code", "the reviewer coded the matter as not surviving review" in flat)
 check("outcome-coding sensitivity disclosed in an endnote", "between 0.0044 and 0.1089" in flat)
 
+# ---- no unverified verbatim case quotes (2026-11-03: decisions could not be opened)
+for q in ("corroborated the alleged inappropriate", "failed to check the box for reprisal"):
+    check("unverified case quote not presented verbatim: %s" % q, q not in flat)
+
 # ---- supplement table reproduces the study totals
 rows = [[c.text.strip() for c in r.cells] for r in docx.Document(SUP).tables[0].rows][1:]
 reads = collections.Counter(r[2] for r in rows)

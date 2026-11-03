@@ -8,16 +8,19 @@ Labels follow the repository's evidence rules: **FACT** (inspected), **UNVERIFIE
 
 ## Priority 1: fix before sending (each one could sink the submission or embarrass the authors)
 
-### 1. Case quotes and facts: PARTLY VERIFIED 2026-11-03 (search-result text; decisions not opened)
-| Item | Status | Evidence |
+### 1. Case quotes and facts: RESOLVED FOR PRINT 2026-11-03
+Every court and agency host is refused by this session's proxy (uiappeals.ny.gov, eeoc.gov, govinfo, Justia, CourtListener, FindLaw and others were tested). Checks were made through search-result text.
+
+| Item | Result | Action taken |
 |---|---|---|
-| AB 637062, warning rule | **Verified as the Board's rule.** The article now attributes the quote to it and cites the Board's *Bench Manual*, Part 2, Chapter 2 (new endnote 9) | Bench Manual: "The prior warning must be related to the behavior comprising the final incident." |
-| AB 636070, hearsay | **Principle supported** | Board guidance: hearsay "may be considered, although it generally will not count as heavily as firsthand testimony" |
-| AB 636070, termination-letter quote | UNVERIFIED | Decision not found in search |
-| AB 634916, opening case | UNVERIFIED | Decision not found in search |
-| AB 638160, certified-letter facts | UNVERIFIED | Decision not found in search |
-| Valentine S. and Carson quotes | UNVERIFIED | Not searched; EEOC decisions are public |
-- **Remaining step.** Open AB 634916, 636070 and 638160 on uiappeals.ny.gov ("Searchable Decisions"), and the two EEOC appeals, and confirm the quoted phrases. **Pass when** 5 of 5 are confirmed or corrected.
+| AB 637062, warning rule | **Verified** as the Board's rule (Bench Manual, Part 2, Ch. 2) | Quote attributed to the rule; endnote 9 |
+| Valentine S. v. USPS, EEOC No. 2022004565 | **Facts confirmed** by the EEOC Digest: the dismissal was reversed and remanded; the record was confused about whether reprisal was raised in pre-complaint counseling; the agency did not dispute that it was. The counselor quote was NOT found | **Quote removed**; now paraphrased to the Digest's facts |
+| Carson v. DOJ, EEOC No. 0120100078 | **Remedy confirmed** by the EEOC Digest and Management Directive ch. 11 (retroactive promotion or equivalent position, back pay). The adverse inference and pretext finding were not found | Kept as paraphrase (no quote in the article) |
+| AB 636070, termination letter | Decision not found | **Quote removed**; now paraphrased ("stated that the employer's investigation had corroborated the alleged misconduct") |
+| AB 638160 | The Board listing confirms the matter exists (DOL disqualification effective Dec. 13, 2023; alternative misconduct ground). The certified-letter facts were not found | Paraphrase only; no quote in the article |
+| AB 634916, opening case | Decision not found | Paraphrase only; no quote in the article |
+
+**Result.** The article now contains **no unverified verbatim quotation from a case**. Two guards in `scripts/verify_ct_article.py` keep the removed quotes out. Remaining paraphrases rest on the study's case record, which endnote 1 discloses. **Optional:** you or Tanvi can still confirm the paraphrased facts for 634916, 636070, 638160 and Carson when convenient. They are not blocking.
 
 ### 2. Co-author approval of this new text
 - **Finding.** Tanvi approved the ISACA article. This article is largely new: new structure, program recommendations, and her bio shortened. No approval of this version is on record. **REQUIRES HUMAN REVIEW.**
