@@ -1,0 +1,89 @@
+# JRS Cross-Platform AI Discoverability Workstream
+
+**Date:** 2026-11-03  
+**Status:** Candidate changes on a branch based on website renovation PR #117. Not published.  
+**Scope:** Public, human-readable JRS documentation and resource discovery only. No Review Engine deployment, production configuration change, new record intake, or disclosure of controlled assets.
+
+## Purpose
+
+Increase the likelihood that investigators, compliance reviewers, internal auditors, HR practitioners, legal reviewers and AI governance professionals can find accurate JRS resources through traditional search and AI-assisted answers. Optimizations must benefit actual users rather than attempt to influence model outputs with hidden instructions, keyword stuffing or unsupported authority claims.
+
+The JRS method, research and publication versions remain separate. Discoverability is not validation, accreditation, licensing readiness or evidence of traffic/conversions.
+
+## Platforms and discovery routes
+
+| Reader-facing service | Discovery surface and site-side action | Verification limit |
+| --- | --- | --- |
+| ChatGPT / OpenAI search | `OAI-SearchBot` crawls public pages for search. Permit its public-IP requests when origin/WAF evidence supports them. `ChatGPT-User` may retrieve user-directed pages. | No guarantee of citations, responses or ranking. `GPTBot` training collection is a distinct control. |
+| Claude / Anthropic | `Claude-SearchBot` supports search discovery; `Claude-User` serves user-directed retrieval. | `ClaudeBot` training crawl is separate. Do not claim control over model behavior. |
+| Google Search AI Overviews / AI Mode | Googlebot indexing, canonical URLs, accessible HTML, crawlable internal links and reliable original content. | Google says there is no separate required AI markup or `llms.txt`. |
+| Gemini Apps | Google Search grounding and Google's separately documented `Google-Extended` product control. | `Google-Extended` is not a stand-alone crawler user agent or Google Search ranking factor. Changing training/grounding preferences needs an explicit owner decision, not an SEO assumption. |
+| Microsoft Copilot | Bingbot discovery and Bing indexing, canonical sitemap, crawlability and Bing Webmaster Tools. | Visibility depends on Bing eligibility and search relevance. |
+| Perplexity | `PerplexityBot` for search, `Perplexity-User` for user-directed retrieval; confirm any proposed WAF allowance using vendor-published IP ranges. | A robots allowance does not establish that hosting/WAF permits verified requests. |
+| Meta AI / Llama-powered assistants | Make public JRS material linkable and indexable; evaluate Meta's documented search agents and link-preview fetchers separately if available. | Llama is a model family, not a single web-indexing service. Do not promise coverage of every Llama deployment. |
+| Grok / xAI | Rely on high-quality public pages and widely used web indexes. Verify actual referral/crawler evidence before specialized access changes. | No verified official Grok crawler rule is assumed here. |
+| Mistral Le Chat and other AI search products | Preserve public HTML, ordinary search-index eligibility, clear source links and correct canonical metadata. | Vendor indexing behavior must be verified before introducing agent-specific rules. |
+
+### Official source material used
+
+- OpenAI: https://developers.openai.com/api/docs/bots
+- Anthropic: https://support.anthropic.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler
+- Google AI search guidance: https://developers.google.com/search/docs/appearance/ai-features
+- Google crawling controls: https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers
+- Google sitemap guidance: https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
+- Microsoft Bing: https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a
+- Perplexity: https://docs.perplexity.ai/docs/resources/perplexity-crawlers
+
+Source URLs explain vendor behavior; they do not verify JRS was crawled or cited.
+
+## Baseline, 3 November 2026
+
+1. The repository's `robots.txt` already has `User-agent: *` and `Allow: /`. It does not need a redundant roster of named search bots. This does not bypass Vercel authentication or other network restrictions.
+2. Public pages already use titles, descriptions, canonical links, an XML sitemap and substantial HTML text. The homepage has `DefinedTermSet` JSON-LD. Creating unnecessary AI-specific metadata or `llms.txt` is not a prerequisite.
+3. Sitemap canonical consistency needs targeted work. The robots sitemap location previously used the apex host, although the homepage's published canonical host is `www`. The sitemap included `privacy.html`, redirected to `privacy-notice.html`.
+4. Existing public reference articles and practitioner tools are more valuable than duplicative SEO articles. One existing AI failure-modes page receives a practical, question-led review sequence and a clear link from the resource directory.
+5. There is an independent *release hold* on renovation PR #117. Source changes are not production evidence, and exact-commit hosted checks plus accessibility and other release gates still apply.
+
+## Candidate implementation on this branch
+
+- `robots.txt`: canonicalize sitemap pointer to `https://www.jrsstandard.com/sitemap.xml`; retain general crawler permission.
+- `sitemap.xml`: replace redirected legacy `privacy.html` URL with the canonical `privacy-notice.html`.
+- `reference/ai-assisted-record-failure-modes/index.html`: insert a human-facing five-condition review workflow, evidence checks, escalation instructions and links to existing public tools.
+- `resources.html`: add a clear contextual link from the resource directory to the AI-assisted record review reference.
+- This workstream record: preserve platform assumptions, measurement design, publication restrictions and follow-up checks.
+
+## Required verification before incorporating changes into the renovation
+
+### Source and content checks
+
+- Confirm XML syntax, HTTPS host consistency and unique sitemap URLs.
+- Ensure the two sitemap corrections match deployed canonical and redirect behavior. Verify the reference page's trailing-slash behavior before any broader canonical rewrite.
+- Validate all linked routes and resource download targets, including direct HTTP response classes. Existing release checks are not replaced.
+- Check mobile layout, keyboard navigation, headings, contrast, 400% zoom, and assistive-technology review at the release gate.
+- Keep the public Standard PDF v2.0 distinct from online methodology v1.0 and earlier field-guide editions. Do not create claims of equivalence.
+- Maintain separate detection versus inter-rater reliability samples, including the *unmet* prespecified reliability criterion. Do not imply real-record or automated-Engine effectiveness.
+- Check all public statements against the evidence ledger, preserve the Review Engine's restricted local-only posture, and prohibit identifiable case-record uploads.
+
+### Hosted and independent checks
+
+- Inspect Google Search Console and Bing Webmaster Tools only if authorized and connected. Record indexing status, crawl errors, search queries and canonical selections. Do not infer rankings from site source.
+- Verify that public production URLs serve the expected HTML, robots file and sitemap without bot challenges. For any WAF exception, authenticate the bot with operator-backed IP/rDNS evidence; never allow solely on a spoofable user-agent string.
+- Use a fixed panel of *non-branded* user questions across supported assistants, recording the exact prompt, date, product, source citations, inclusion/exclusion and factual accuracy. No results have yet been collected.
+- Treat absent source citations as non-observation, not proof of permanent exclusion. Never claim coverage of a model solely because a crawler is permitted.
+
+## Measurement plan
+
+Weekly or monthly reporting can track:
+
+- **Google/Bing discoverability:** indexed canonical pages, impressions, clicks, non-branded query coverage and crawl errors, with the reporting window recorded.
+- **Assistant citations:** JRS cited in a fixed question set, source URL correctness and mischaracterizations (example: confusing constructed-record detection with real-world validation).
+- **Qualified engagement:** attributable referrals to the public Standard, reference pages, free guides, seven-point check and training; preserve referrer/UTM provenance and account for unclassified or direct traffic.
+- **Adoption evidence:** distinct voluntary resource interactions, verified downloads and practitioner feedback where already legitimately collected; not every page view is an adoption or pilot outcome.
+
+Publish no success percentage without an explicit denominator, dated data source, attribution method and stated uncertainty.
+
+## Release and rights controls
+
+No automatic publication, Vercel deployment, production DNS edit, external service submission, paid promotion or bot/WAF exception is authorized by this branch. Do not broaden training permissions as a side effect of improving search discoverability. The controlled JRS source, unpublished data, credentials, individual records, partner communications and licensing materials remain outside public discovery changes. Preserve PR #117's release hold and required owner authorization.
+
+**Disposition:** Source-level candidate prepared. Hosted discovery, real indexing, cross-assistant citations, accessibility and production release remain unverified.
