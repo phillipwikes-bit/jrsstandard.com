@@ -30,10 +30,9 @@ Labels follow the repository's evidence rules: **FACT** (inspected), **UNVERIFIE
 - **Steps.** Check each against eCFR, oig.hhs.gov and uscode.house.gov, and confirm each sentence in the article says no more than the source.
 - **Pass when** 4 of 4 citations are confirmed and the wording is adjusted where needed.
 
-### 5. The statement that ISACA is no longer considering the article
-- **Finding.** The pitch says the piece "is no longer under consideration by ISACA." No withdrawal or decision is recorded in the repository. **NOT ESTABLISHED** in the record.
-- **Steps.** Locate ISACA's decision or your withdrawal email and save it to `research/correspondence/`.
-- **Pass when** the written decision or withdrawal is on file before the pitch is sent.
+### 5. The statement that ISACA is no longer considering the article: RESOLVED 2026-11-03
+- **FACT.** ISACA Journal declined the article on 2026-10-27 (Abby Norton, Manager, Periodicals). The decision is transcribed in `research/correspondence/ISACA_Journal.md`. The pitch's statement is supported.
+- **Lesson carried forward.** ISACA's reviewers said the article lacked implementation guidance and specific, practical takeaways. The CT version's checkpoints, worked example, program section and 90-day plan respond directly to that.
 
 ## Priority 2: likely editor questions (prepare answers; small edits)
 
