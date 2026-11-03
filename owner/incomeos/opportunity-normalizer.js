@@ -114,6 +114,19 @@
   // Freshness decision. Withdrawn sources must be reported by the caller; a
   // listing absent from a SUCCESSFUL fetch is withdrawn, absent from a FAILED
   // fetch is unverified, never silently retained as active.
+  // Relevance to the owner's focus areas: deterministic keyword matching on the
+  // title (weight 3) and description (weight 1). It orders and filters what the
+  // owner sees; it is never part of eligibility and hides nothing silently.
+  var DEFAULT_FOCUS=["ai trainer","ai tutor","evaluator","evaluation","rater","annotat","red team","trust and safety","trust & safety","content policy","policy analyst",
+    "investigat","compliance","civil rights","eeo","equal employment","discrimination","human resources","hr ","governance","quality assurance","qa analyst",
+    "legal","paralegal","expert","subject matter","consultant","adjudicat","arbitrat","mediat","hearing officer","case review","reviewer","researcher","survey","interview","focus group","usability"];
+  function relevance(rec,focus){
+    var words=(Array.isArray(focus)&&focus.length?focus:DEFAULT_FOCUS).map(function(w){return String(w).toLowerCase();}).filter(Boolean);
+    var title=" "+String(rec.title||"").toLowerCase()+" ",desc=" "+String(rec.descriptionExcerpt||"").toLowerCase()+" ";
+    var matched=[],score=0;
+    words.forEach(function(w){if(title.indexOf(w)>=0){score+=3;matched.push(w);}else if(desc.indexOf(w)>=0){score+=1;matched.push(w);}});
+    return {score:score,matched:matched.slice(0,8)};
+  }
   function freshness(rec,asOf,policy){
     var maxAge=policy&&Number.isFinite(policy.maxListingAgeDays)?policy.maxListingAgeDays:3;
     if(!isDate(asOf)||!isDate(rec.lastVerifiedOn))return "UNVERIFIED";
@@ -123,7 +136,7 @@
     if(age<0)return "UNVERIFIED";
     return age>maxAge?"STALE":"FRESH";
   }
-  var api=Object.freeze({VERSION:VERSION,fnv:fnv,stable:stable,normalize:normalize,dedupe:dedupe,diff:diff,freshness:freshness,normTitle:normTitle});
+  var api=Object.freeze({VERSION:VERSION,fnv:fnv,stable:stable,normalize:normalize,dedupe:dedupe,diff:diff,freshness:freshness,normTitle:normTitle,relevance:relevance,DEFAULT_FOCUS:DEFAULT_FOCUS.slice()});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSOpportunity=api;
 }(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:null)));

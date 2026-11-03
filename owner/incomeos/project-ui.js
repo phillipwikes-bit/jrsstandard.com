@@ -75,17 +75,21 @@
       if(!state.snapshot)return;
       if(!state.profile){status.textContent="Load your private qualification profile. Without it nothing can be shown as eligible.";renderHealth(state.snapshot.connectors||[]);return;}
       var res;
-      try{res=radar.screen(state.snapshot,state.profile,today(),state.profile.preferences||{},{confirmations:state.confirmations});}
+      var prefs=Object.assign({},state.profile.preferences||{},{includeOffFocus:state.showAll===true});
+      try{res=radar.screen(state.snapshot,state.profile,today(),prefs,{confirmations:state.confirmations});}
       catch(e){status.textContent="Screening rejected: "+e.message;return;}
       renderHealth(res.connectors);
       res.eligible.forEach(function(r){card(eligibleRoot,r,"eligible");});
       res.pending.slice(0,50).forEach(function(r){card(pendingRoot,r,"pending");});
       if(!res.eligible.length)el(eligibleRoot,"p","No opportunity currently meets every documented mandatory requirement.","muted");
+      if(res.offFocusHidden){var t=el(pendingRoot,"button",(state.showAll?"Hide":"Show")+" "+res.offFocusHidden+" listings outside your focus areas");t.type="button";t.className="smallbtn";
+        t.addEventListener("click",function(){state.showAll=!state.showAll;render();});}
       var reasons=Object.keys(res.exclusionReasons).sort(function(a,b){return res.exclusionReasons[b]-res.exclusionReasons[a];}).slice(0,12);
       var ul=el(excludedRoot,"ul");reasons.forEach(function(k){el(ul,"li",res.exclusionReasons[k]+" × "+k.replace(/_/g," ").toLowerCase());});
       var healthy=res.connectors.filter(function(c){return c.status==="ok";}).length;
       [["Verified eligible",res.eligible.length],["Meets rate target",res.alerts.length],["Need your check",res.pending.length],["Sources healthy",healthy+"/"+res.connectors.length]].forEach(function(p){var d=el(summary,"div");el(d,"b",p[1]);el(d,"span",p[0]);});
-      status.textContent=res.eligible.length+" eligible, "+res.pending.length+" awaiting verification, "+res.excludedCount+" excluded. "+res.notice;
+      status.textContent=res.eligible.length+" eligible, "+res.pending.length+" awaiting verification, "+res.excludedCount+" excluded"+(res.offFocusHidden?", "+res.offFocusHidden+" outside your focus areas hidden":"")+". "+res.notice;
+      try{document.dispatchEvent(new CustomEvent("incomeos:screened",{detail:res}));}catch(e){}
     }
     button.addEventListener("click",async function(){
       try{

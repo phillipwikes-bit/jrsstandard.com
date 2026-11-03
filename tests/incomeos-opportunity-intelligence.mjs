@@ -179,6 +179,10 @@ let changes=O.diff([n1],[n2]);assert.equal(changes[0].type,"COMPENSATION_CHANGED
 changes=O.diff([n1],[]);assert.equal(changes[0].type,"WITHDRAWN_OR_UNLISTED");
 assert.equal(O.diff([n1],[O.normalize(raw,src,"2026-11-04T00:00:00Z")]).length,0,"unchanged listing yields no change");
 
+// Relevance: title matches weigh more than description matches; no match scores zero.
+assert.ok(O.relevance({title:"AI Policy Evaluator",descriptionExcerpt:""}).score>=3);
+assert.equal(O.relevance({title:"Senior Backend Engineer",descriptionExcerpt:"Kubernetes and Go."}).score,0);
+assert.equal(O.relevance({title:"Senior Backend Engineer",descriptionExcerpt:"x"},["backend"]).score,3,"owner focus keywords override defaults");
 // ---------- Screening pipeline ----------
 const snapshot=(ops)=>({schema:"incomeos.discovery-snapshot.v1",opportunities:ops,connectors:[]});
 let s=Radar.screen(snapshot([n1]),P,AS_OF,P.preferences,{});

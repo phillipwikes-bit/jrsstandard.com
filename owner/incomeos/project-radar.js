@@ -67,7 +67,7 @@
     if(snapshot.opportunities.length>5000)throw Error("Snapshot exceeds 5,000 opportunities");
     var confirmations=ownerState.confirmations||{};
     var groups=Opp.dedupe(snapshot.opportunities);
-    var eligible=[],pending=[],excluded=[],reasons={};
+    var eligible=[],pending=[],excluded=[],reasons={},offFocus=0;
     function exclude(row,why){excluded.push({opportunityId:row.opportunity.opportunityId,title:row.opportunity.title,reasons:why});why.forEach(function(r){reasons[r]=(reasons[r]||0)+1;});}
     groups.forEach(function(g){
       var o=g.opportunity,blocking=[];
@@ -83,18 +83,22 @@
         requirements:o.requirements.concat(o.employmentClassification?[{id:"attr-classification",category:"employment_classification",mandatory:true,type:o.employmentClassification,sourceText:"listing attribute"}]:[]),
         requirementSet:{ownerConfirmed:confirmed,confirmedOn:c&&c.confirmedOn}},profile,asOf,prefs);
       var econ=Comp.estimate(Comp.termsFromAdvertised(o.compensation,prefs),asOf);
-      var row={opportunity:o,decision:decision,economics:econ,duplicates:g.duplicates,independentPrimarySources:g.independentPrimarySources,freshness:fresh};
+      var rel=Opp.relevance(o,prefs.focusKeywords);
+      var row={opportunity:o,decision:decision,economics:econ,duplicates:g.duplicates,independentPrimarySources:g.independentPrimarySources,freshness:fresh,relevance:rel};
       if(blocking.length){exclude(row,blocking);return;}
       if(decision.status==="INELIGIBLE"){exclude(row,decision.blocking.map(function(b){return "INELIGIBLE:"+b.split(":")[1];}));return;}
       if(econ.effectiveHourlyUsd!==null&&econ.effectiveHourlyUsd<minRate(prefs)){exclude(row,["BELOW_TARGET_RATE"]);return;}
       row.meetsEconomicThreshold=econ.effectiveHourlyUsd!==null;
+      // Off-focus listings that still need owner verification are counted, not listed,
+      // unless the owner asks to see every role. Eligible listings are always shown.
+      if(decision.status!=="ELIGIBLE"&&rel.score===0&&prefs.includeOffFocus!==true){offFocus++;return;}
       (decision.status==="ELIGIBLE"?eligible:pending).push(row);
     });
     function byValue(a,b){
-      return (b.meetsEconomicThreshold?1:0)-(a.meetsEconomicThreshold?1:0)||(b.economics.effectiveHourlyUsd||0)-(a.economics.effectiveHourlyUsd||0)||String(a.opportunity.deadline||"9999").localeCompare(String(b.opportunity.deadline||"9999"));
+      return (b.relevance.score>0?1:0)-(a.relevance.score>0?1:0)||(b.meetsEconomicThreshold?1:0)-(a.meetsEconomicThreshold?1:0)||(b.economics.effectiveHourlyUsd||0)-(a.economics.effectiveHourlyUsd||0)||String(a.opportunity.deadline||"9999").localeCompare(String(b.opportunity.deadline||"9999"));
     }
     eligible.sort(byValue);pending.sort(byValue);
-    return {asOf:asOf,eligible:eligible,pending:pending,excludedCount:excluded.length,excluded:excluded,exclusionReasons:reasons,
+    return {asOf:asOf,eligible:eligible,pending:pending,offFocusHidden:offFocus,excludedCount:excluded.length,excluded:excluded,exclusionReasons:reasons,
       alerts:eligible.filter(function(r){return r.meetsEconomicThreshold;}).map(function(r){return {opportunityId:r.opportunity.opportunityId,title:r.opportunity.title,platform:r.opportunity.platform,effectiveHourlyUsd:r.economics.effectiveHourlyUsd,deadline:r.opportunity.deadline,sourceUrl:r.opportunity.sourceUrl,eligibilityBasis:r.decision.requirements.filter(function(q){return q.status==="SATISFIED";}).map(function(q){return q.category+": "+q.ownerEvidence;})};}),
       connectors:Array.isArray(snapshot.connectors)?snapshot.connectors:[],
       notice:"Eligible means every mandatory requirement is documented as satisfied or not applicable. It is not acceptance, assignment or guaranteed pay. No application was submitted and nothing was earned."};
