@@ -14,3 +14,9 @@ The previous PR #117 exact-commit Vercel preview `dpl_8iRbPnnNzkPVTh4puRTGbnMpdP
 The GitHub hosted visual workflow failed because its dedicated protected-preview credential was not configured in Actions. Vercel connector access does not authorize GitHub Actions. Never disable protection or embed a bypass credential in a URL, log, commit or artifact.
 
 **Uncompleted independent gates:** Approved GitHub Actions preview access, actual iPhone VoiceOver and desktop screen reader, witnessed 400% browser zoom, tagged and tested nine-PDF reissues, independent criterion-level WCAG review, exact production comparison, and dated owner acceptance. Release status: HOLD / NOT CERTIFIED.
+
+## Additional reviewer-output verification (3 November 2026)
+
+The seven-point check now has a separate synthetic two-selection Chrome DevTools Protocol print witness. It verifies that a populated review summary retains the two review prompts, the question count and non-scoring warning, and that navigation and website actions are excluded from the printed PDF. The companion browser test simulates clipboard denial and confirmed fallback success, verifies that temporary fields are removed and focus is restored, and checks that no answer is transmitted.
+
+These are scripted browser and printed-text tests, not practitioner case studies, physical 400% browser-zoom evidence, human VoiceOver testing, tagged-PDF accessibility or an independent WCAG/PDF/UA certification. No real case record or participant data is used in these fixtures.

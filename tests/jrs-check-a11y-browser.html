@@ -56,6 +56,35 @@
   expect(/2 questions selected for source verification/.test(live.textContent),
    'multiple checks announced');
   expect(live.textContent.includes('not a score'),'count not represented as score');
+  stage('testing clipboard failure and focus recovery');
+  var cp=d.querySelector('#sa-copy'), summary=d.querySelector('#sa-summary');
+  expect(!!cp&&!!summary,'summary isolated from page actions');
+  expect(!summary.textContent.includes('Copy summary') &&
+    !summary.textContent.includes('Print or save as PDF'),
+    'summary copy content excludes action control labels');
+  // Simulate browser clipboard refusal without relying on OS permissions.
+  Object.defineProperty(w.navigator,'clipboard',{configurable:true,value:undefined});
+  var copiedText='';
+  d.execCommand=function(){return false;};
+  cp.focus();cp.click();
+  expect(!/^Copied$/.test(cp.textContent),'failed clipboard command never reports success');
+  expect(/could not be confirmed/.test(live.textContent),'failed copy announced truthfully');
+  expect(!d.querySelector('textarea'),'temporary copy element cleaned after failure');
+  expect(d.activeElement===cp,'keyboard focus restored after copy failure');
+  d.execCommand=function(command){
+    copiedText=d.querySelector('textarea')?.value||'';
+    return command==='copy';
+  };
+  cp.click();
+  expect(cp.textContent==='Copied','confirmed fallback copy reports success');
+  expect(copiedText.includes('Fluent groundlessness') &&
+    copiedText.includes('Basis substitution') &&
+    !copiedText.includes('Make this a policy') &&
+    !copiedText.includes('Copy summary'),
+    'copied output contains selected review material without controls');
+  expect(d.activeElement===cp&&!d.querySelector('textarea'),
+    'confirmed copy restores keyboard focus and cleans up temporary field');
+  expect(sent.length===0,'copy actions do not send the record-check answers');
   boxes[0].checked=false;boxes[1].checked=false;
   boxes[0].dispatchEvent(new w.Event('change',{bubbles:true}));
   expect(/No review questions selected/.test(live.textContent),'clear selection announced');

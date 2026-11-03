@@ -117,8 +117,21 @@ jobs:
             echo 'RELEASE HOLD: unrelated source material leaked into review printout'
             exit 1
           fi
-          echo 'PASS: headless Chromium print contains only the on-page review state, not the wider JRS web article.'
-          echo 'LIMITATION: unselected-state PDF smoke only. Screen reader and PDF-UA conformance remain unassessed.'
+          export JRS_BROWSER="$browser"
+          node tests/jrs-check-selected-print.mjs \
+            http://127.0.0.1:8796/check.html /tmp/jrs-check-selected-preflight.pdf
+          test -s /tmp/jrs-check-selected-preflight.pdf
+          pdftotext -layout /tmp/jrs-check-selected-preflight.pdf /tmp/jrs-check-selected-text.txt
+          for required in 'Seven-Point Record Review Summary' 'Fluent groundlessness' 'Chronology collapse' '2 checked questions warrant review' 'A larger count does not establish a diagnostic category'; do
+            grep -Fq "$required" /tmp/jrs-check-selected-text.txt || \
+              { echo "RELEASE HOLD: selected print missing required review content"; exit 1; }
+          done
+          if grep -Eiq 'Site menu|Close site menu|Seven documentation-risk patterns|Check one record now|Take it further|Make this a policy|Copy summary' /tmp/jrs-check-selected-text.txt; then
+            echo 'RELEASE HOLD: selected summary print contains navigation or action controls'
+            exit 1
+          fi
+          echo 'PASS: both empty and synthetic two-selection review printouts retain only required record-check content.'
+          echo 'LIMITATION: unselected and synthetic selected browser print checks only. PDF/UA and human accessibility review remain unassessed.'
       - name: Retain inspected test output
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
@@ -131,5 +144,7 @@ jobs:
             /tmp/jrs-check-a11y-evidence.json
             /tmp/jrs-check-summary-preflight.pdf
             /tmp/jrs-check-print-text.txt
+            /tmp/jrs-check-selected-preflight.pdf
+            /tmp/jrs-check-selected-text.txt
           if-no-files-found: warn
           retention-days: 30

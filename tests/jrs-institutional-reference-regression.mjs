@@ -508,3 +508,20 @@ console.log('PASS: seven-point aid has no invented two-item threshold, distingui
     'printed text verification must explicitly reject mobile navigation labels');
   console.log('PASS: mobile menu and expanded disclosure cannot be printed alongside a review summary.');
 }
+
+// Validate the selected-state print witness remains wired into exact-head CI.
+{
+ const script=read('tests/jrs-check-selected-print.mjs');
+ const workflow=read('.github/workflows/jrs-accessibility-evidence.yml');
+ assert.match(script,/Page.printToPDF/,'selected-state output must use actual Chromium PDF rendering');
+ assert.match(script,/boxes\[0\]\.checked=true/,'first synthetic review selection must execute');
+ assert.match(script,/boxes\[2\]\.checked=true/,'second distinct selection must execute');
+ assert.match(script,/The count is not a score/,'selected review must state that count is not diagnostic');
+ assert.ok(workflow.includes('jrs-check-selected-print.mjs')&&
+    workflow.includes('jrs-check-selected-preflight.pdf')&&
+    workflow.includes('jrs-check-selected-text.txt'),
+   'selected PDF witness must run and archive output');
+ assert.ok(read('tests/jrs-check-a11y-browser.html').includes('failed clipboard command never reports success'),
+   'browser must fail when copy fallback claims success without confirmation');
+ console.log('PASS: synthetic populated print and clipboard denial witnesses remain in CI.');
+}
