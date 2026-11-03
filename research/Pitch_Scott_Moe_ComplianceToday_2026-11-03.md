@@ -20,7 +20,7 @@ Every time a HIPAA sanction, a nurse's termination, or discipline after a hotlin
 
 It draws on an original study that works backward from the adjudicator's decision. We examined 20 published employment decisions from federal agencies, unemployment appeal boards, courts, and tribunals and asked what the file in front of each adjudicator actually contained. In this exploratory pilot, six of eight files with material documentation gaps were associated with adverse findings, compared with two of twelve complete files.
 
-The article opens on a case in which a worker was discharged for an alleged disclosure of health information and the appeal board overturned the decision because the file could not connect the policy and the prior warning to the conduct. It then gives readers:
+The article opens on a case in which a worker was discharged for an alleged disclosure of health information and the appeal board overturned the decision. The file held a policy, a prior warning, and the comment, but nothing that connected them to the conduct. It then gives readers:
 
 - six lessons from the cases, each applied to healthcare files: HIPAA sanctions, discipline that follows a hotline report, and decisions prompted by patient or family complaints;
 - a five-checkpoint review, worked through on a privacy sanction file;
