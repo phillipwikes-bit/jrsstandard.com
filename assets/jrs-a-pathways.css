@@ -75,3 +75,160 @@ body.jrs-institutional.jrs-guide-page .jrs-version-table td::before{content:attr
 
 /* Preserve the original compact card typography after correcting heading semantics. */
 body.jrs-institutional.jrs-guide-page .jrs-guide-grid article h2{font:700 18px/1.4 Inter,Arial,sans-serif!important;margin:0 0 8px!important;color:#17334e!important}
+
+/* High-contrast and keyboard focus assurance for the two newer public guides.
+   Keep visual cards as named HTML headings and do not alter editorial text. */
+body.jrs-institutional.jrs-guide-page :where(
+ .jrs-guide-grid a,.jrs-guide-panel a,.jrs-guide-cta a,
+ .jrs-version-table a,.jrs-sitenav a
+):focus-visible{
+ outline:3px solid #75551f!important;
+ outline-offset:3px!important;
+}
+@media(forced-colors:active){
+ body.jrs-institutional.jrs-guide-page :where(
+  a,button,summary,input,select,textarea
+ ):focus-visible{
+  outline:3px solid Highlight!important;
+  outline-offset:3px!important;
+  box-shadow:none!important;
+ }
+ body.jrs-institutional.jrs-guide-page .jrs-guide-panel,
+ body.jrs-institutional.jrs-guide-page .jrs-guide-grid article{
+  border:1px solid CanvasText!important;
+  forced-color-adjust:auto;
+ }
+}
+
+/* Competitor-informed first-use guidance on the canonical public Resources page.
+   Native ordered steps; no case upload, new intake endpoint or automated scoring. */
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use{
+  margin:26px 0 30px;padding:22px;border:1px solid #a9becd;border-radius:10px;
+  background:#edf4f8;color:#163047
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use-kicker{
+  font:700 13px/1.5 Inter,Arial,sans-serif;letter-spacing:.045em;text-transform:uppercase;
+  color:#315369;margin:0 0 7px
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use h2{
+  font:600 clamp(23px,2.7vw,29px)/1.3 Georgia,serif;color:#163047;margin:0 0 10px
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use-intro{
+  font:400 16px/1.6 Inter,Arial,sans-serif;color:#27465d;max-width:77ch;margin:0
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use-steps{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px;
+  list-style:decimal;padding:0 0 0 26px;margin:20px 0 18px
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use-steps li{
+  border:1px solid #bfced9;border-radius:6px;background:#fff;padding:13px 13px 13px 16px;
+  font:400 15px/1.6 Inter,Arial,sans-serif;color:#213a4d;min-width:0
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use-steps h3{
+  font:650 17px/1.4 Inter,Arial,sans-serif;color:#17364f;margin:0 0 8px
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use-steps p{
+  font:400 15px/1.6 Inter,Arial,sans-serif;color:#29445a;margin:0
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use-scope{
+  border-top:1px solid #b4c5d0;padding-top:13px;margin:0;
+  font:400 15px/1.65 Inter,Arial,sans-serif;color:#29445a
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use a{
+  color:#164d72!important;text-decoration:underline!important;text-underline-offset:2px
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-first-use a:focus-visible{
+  outline:3px solid #0b679c!important;outline-offset:3px!important
+}
+@media(max-width:780px){
+  body.jrs-institutional.jrs-resource-page .jrs-resource-first-use-steps{
+    grid-template-columns:1fr;gap:13px
+  }
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-resource-page .jrs-resource-first-use,
+  body.jrs-institutional.jrs-resource-page .jrs-resource-first-use-steps li{
+    background:Canvas;color:CanvasText;border:1px solid CanvasText
+  }
+  body.jrs-institutional.jrs-resource-page .jrs-resource-first-use :where(h2,h3,p){
+    color:CanvasText!important
+  }
+  body.jrs-institutional.jrs-resource-page .jrs-resource-first-use a{color:LinkText!important}
+}
+
+/* Public-interest promise: readable, prominent typography without a marketing callout.
+   The first primary record-check link remains ahead of this statement. */
+body.jrs-institutional.jrs-home .jr-platform-promise{
+  margin:0 0 18px!important;
+  padding:1px 0 1px 17px;
+  max-width:730px;
+  border-left:4px solid #8f6b33;
+  font:600 clamp(17px,1.55vw,20px)/1.53 Inter,Arial,sans-serif!important;
+  color:#193b50!important
+}
+body.jrs-institutional.jrs-home .jr-platform-promise strong{
+  font-weight:600;color:inherit
+}
+@media(max-width:650px){
+  body.jrs-institutional.jrs-home .jr-platform-promise{
+    font-size:17px!important;line-height:1.5!important;padding-left:12px
+  }
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-home .jr-platform-promise{
+    border-left-color:CanvasText;color:CanvasText!important
+  }
+}
+
+/* Public practitioner promise is intentionally editorial, not an offer or sales card. */
+body.jrs-institutional.jrs-resource-page .jrs-practitioner-promise{
+  border-left:4px solid #8f6b33;
+  padding:2px 0 2px 15px;
+  margin:20px 0 16px;
+  max-width:780px;
+  font:600 clamp(16px,1.45vw,19px)/1.55 Inter,Arial,sans-serif;
+  color:#183b50;
+}
+body.jrs-institutional.jrs-resource-page .jrs-practitioner-promise strong{
+  font-weight:600;color:inherit;
+}
+@media(max-width:650px){
+  body.jrs-institutional.jrs-resource-page .jrs-practitioner-promise{
+    font-size:16px;padding-left:12px;
+  }
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-resource-page .jrs-practitioner-promise{
+    border-left-color:CanvasText;color:CanvasText!important;
+  }
+}
+
+/* The expert panel is supporting evidence, never the header tagline or a
+   general claim that international experts certified organizational use. */
+body.jrs-institutional.jrs-home .jr-expert-evidence{
+  margin:0 0 17px;
+  max-width:730px;
+  font:400 15px/1.58 Inter,Arial,sans-serif;
+  color:#365267!important;
+}
+body.jrs-institutional.jrs-home .jr-expert-evidence strong{
+  font-weight:700;
+  color:#183e56!important;
+}
+body.jrs-institutional.jrs-home .jr-expert-evidence a{
+  font-weight:650;
+  text-decoration:underline!important;
+  text-underline-offset:3px;
+}
+@media(max-width:650px){
+  body.jrs-institutional.jrs-home .jr-expert-evidence{
+    font-size:14px!important;
+    line-height:1.58!important;
+  }
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-home .jr-expert-evidence,
+  body.jrs-institutional.jrs-home .jr-expert-evidence strong{
+    color:CanvasText!important;
+  }
+}
