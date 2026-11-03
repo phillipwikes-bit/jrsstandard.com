@@ -1,9 +1,9 @@
 # Pitch to Scott Moe (Compliance Today), revised 2026-11-03
 
-*Hold lifted 2026-11-03: B-019 closed by owner decision (no recoding; the outcome-coding question is disclosed in the manuscript, endnote 6). Ready to send once checklist items 1 to 4 are complete.*
+*QUERY VERSION (owner decision 2026-11-03: "I wil attain their approvals after I first find out if magazine will accept it"). Send as a query with NO attachments. Do not send the manuscript until Tanvi has approved this version and Kyle has confirmed the acknowledgement or it has been removed.*
 
 **Send package (owner checks before sending):**
-- Attach `ComplianceToday_Supplement_Case_List_2026-11-03.docx` as well (the 20-case list for online publication).
+- After Scott asks for the manuscript, and after the approvals: attach `ComplianceToday_Supplement_Case_List_2026-11-03.docx` as well (the 20-case list for online publication).
 - Attach `ComplianceToday_Testing_Employment_Files_2026-11-03.docx` (the manuscript in this repository). Rename it for Scott, e.g. `Pokhriyal_Wikes_Testing_Employment_Files.docx`.
 - Confirm Tanvi has read the final manuscript and agrees to submission.
 - Add Tanvi's contact details to her bio if HCCA requires contact information for every author.
@@ -26,7 +26,7 @@ The article translates those findings into practical guidance for compliance pro
 
 Unlike my CEP article, which examines the broader risks of AI-assisted documentation, this piece focuses on original employment research and a specific, actionable review process. It is unpublished and is no longer under consideration by ISACA.
 
-I've attached the manuscript for your consideration. The article runs about 3,200 words including endnotes. A separate one-page supplement lists all 20 cases with their classifications and outcomes, which could run online. I would welcome your thoughts on whether it would be a suitable contribution to Compliance Today.
+The manuscript is complete at about 3,200 words including endnotes, with a one-page case-list supplement that could run online. I would welcome your thoughts on whether it would be a suitable contribution to Compliance Today, and I'd be happy to send it for your consideration.
 
 Thank you again for your earlier encouragement.
 

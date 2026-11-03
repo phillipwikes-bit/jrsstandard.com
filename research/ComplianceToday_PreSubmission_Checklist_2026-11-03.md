@@ -82,6 +82,9 @@ Every court and agency host is refused by this session's proxy (uiappeals.ny.gov
 
 ---
 
+## Owner decision on sequence (2026-11-03)
+The owner will send the pitch first as a query without attachments, and will seek Tanvi's and Kyle's approvals only if Scott wants the manuscript. Items 2 and 3 therefore gate sending the **manuscript**, not the **query**.
+
 ## Suggested order (about two to three hours of owner time)
 
 | Step | Action | Measurable outcome |
