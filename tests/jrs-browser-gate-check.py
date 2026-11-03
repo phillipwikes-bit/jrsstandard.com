@@ -237,6 +237,17 @@ def self_test():
         pass
     else:
         raise ValueError("duplicate interaction-state results accepted")
+    check_fixture={"status":"PASS","scans":1,"expectedScans":1,
+                   "errors":[],"checks":["check-"+str(i) for i in range(14)]}
+    verify('<pre id="result">'+json.dumps(check_fixture)+'</pre>', "check")
+    for change in ("RUNNING","missing","errors"):
+        bad=json.loads(json.dumps(check_fixture))
+        if change=="RUNNING":bad["status"]="RUNNING"
+        elif change=="missing":bad["checks"]=[]
+        else:bad["errors"]=["unsent data"]
+        try:verify('<pre id="result">'+json.dumps(bad)+'</pre>', "check")
+        except ValueError:pass
+        else:raise ValueError("unverified check privacy fixture accepted: "+change)
     print("PASS: parsed-result, unique interaction states and source-literal false-positive regressions.")
 
 
@@ -244,8 +255,8 @@ def main():
     if sys.argv[1:] == ["--self-test"]:
         self_test()
         return
-    if len(sys.argv) not in (3, 4) or (len(sys.argv) == 4 and sys.argv[2] not in ("axe", "states", "reflow")):
-        raise SystemExit("Usage: jrs-browser-gate-check.py OUTPUT_HTML responsive|axe|states|reflow [EVIDENCE_JSON]")
+    if len(sys.argv) not in (3, 4) or (len(sys.argv) == 4 and sys.argv[2] not in ("axe", "states", "reflow", "check")):
+        raise SystemExit("Usage: jrs-browser-gate-check.py OUTPUT_HTML responsive|axe|states|reflow|check [EVIDENCE_JSON]")
     try:
         result = verify(Path(sys.argv[1]).read_text(encoding="utf-8"), sys.argv[2])
         if len(sys.argv) == 4:
