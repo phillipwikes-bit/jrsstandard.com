@@ -14,17 +14,19 @@
 
 Hi Scott,
 
-I hope you're doing well. In July you suggested we reconnect once my article appeared in Compliance & Ethics Professional. "When the Record Cannot Speak for Itself" is in the November issue, so I'm following up with a separate piece written for Compliance Today.
+I hope you're doing well. In July you suggested we reconnect once my article appeared in Compliance & Ethics Professional. With "When the Record Cannot Speak for Itself" in the November issue, I'd like to propose a separate piece written for Compliance Today readers.
 
-"Testing employment files before they become evidence: Lessons for healthcare" is coauthored with Tanvi Pokhriyal, an organizational psychologist with more than 15 years in human resources and organizational development. Instead of starting from a drafter's checklist, it starts with the adjudicator's decision. We studied 20 published employment decisions from federal agencies, unemployment appeal boards, courts, and tribunals and asked what the file in front of each adjudicator actually contained. In this exploratory pilot, six of eight files with material documentation gaps were associated with adverse findings, compared with two of twelve complete files.
+Every time a HIPAA sanction, a nurse's termination, or discipline after a hotline report is challenged, a healthcare compliance team finds out whether the file can show why the decision was made. "Testing employment files before they become evidence: Lessons for healthcare," coauthored with organizational psychologist Tanvi Pokhriyal, gives those teams a way to test the file first.
 
-The article is built for practitioners. It opens on a case in which a worker was discharged for an alleged disclosure of health information, and the appeal board overturned the decision because the file could not connect the policy and the prior warning to the conduct. It then gives readers:
+It draws on an original study that works backward from the adjudicator's decision. We examined 20 published employment decisions from federal agencies, unemployment appeal boards, courts, and tribunals and asked what the file in front of each adjudicator actually contained. In this exploratory pilot, six of eight files with material documentation gaps were associated with adverse findings, compared with two of twelve complete files.
+
+The article opens on a case in which a worker was discharged for an alleged disclosure of health information and the appeal board overturned the decision because the file could not connect the policy and the prior warning to the conduct. It then gives readers:
 
 - six lessons from the cases, each applied to healthcare files: HIPAA sanctions, discipline that follows a hotline report, and decisions prompted by patient or family complaints;
 - a five-checkpoint review, worked through on a privacy sanction file;
 - program steps they can adopt: template fields, a documented second review for high-risk decisions, sampling and committee reporting, rules for repairing a file without rewriting it, and a 90-day plan.
 
-It is original and unpublished, and it is not under consideration elsewhere. It is also distinct from my CEP article, which addressed AI-assisted documentation broadly.
+It is original and unpublished, not under consideration elsewhere, and distinct from my CEP article, which addressed AI-assisted documentation broadly.
 
 I've attached the manuscript (about 3,200 words with endnotes) and a one-page case list that could run online. I'm happy to adjust length or emphasis to fit an issue.
 
