@@ -88,3 +88,20 @@ Publish no success percentage without an explicit denominator, dated data source
 No automatic publication, Vercel deployment, production DNS edit, external service submission, paid promotion or bot/WAF exception is authorized by this branch. Do not broaden training permissions as a side effect of improving search discoverability. The controlled JRS source, unpublished data, credentials, individual records, partner communications and licensing materials remain outside public discovery changes. Preserve PR #117's release hold and required owner authorization.
 
 **Disposition:** Source-level candidate prepared. Hosted discovery, real indexing, cross-assistant citations, accessibility and production release remain unverified.
+
+## Additional implementation, 3 November 2026
+
+This dependent draft now includes two new static public-reference candidates and integrates them into existing internal navigation, without expanding the 16-entry versioned resource catalog:
+
+- `/worked-example-ai-record.html`: fully constructed supplier-access evidence comparison, with explicit unsupported approval/closure claims and a bounded reviewer disposition.
+- `/institutional-briefing.html`: concise practitioner and institutional briefing, including the five-condition application sequence, separate research-sample limitations and verified links to existing public professional publications.
+- `/assets/jrs-public-awareness.css`: accessible, responsive, printable reference styling without external scripts, analytics or new data collection.
+- `/index.html`, `/resources.html` and the existing AI-assisted-failure-modes reference now link to the new references.
+- `/sitemap.xml` contains 47 unique canonical URLs, including the new references.
+- `docs/discoverability/JRS_AWARENESS_MEASUREMENT_2026-11-03.md` specifies awareness metrics using previously existing instrumentation, and explicitly records unobserved baselines.
+
+The homepage already contained a separate, short fictional worked example. The new reference expands that existing example and does not replace it. Pages identify their copy as AI-assisted editorial drafts and do not represent the owner as having personally written or reviewed them. No owner participation is required to complete these source-level preparations. Existing owner release authorization requirements are unchanged and are not bypassed.
+
+### Source checks
+
+21 targeted source-level assertions passed for internal links, canonical URLs, sitemap duplication, existing resource count, responsive/print styles, absence of new telemetry, research limits and fictional-case qualification. These are static assertions, not witnessed accessibility, hosted crawler/indexability tests or verified referrer performance. The renovation release hold remains in effect. No deployment was requested.
