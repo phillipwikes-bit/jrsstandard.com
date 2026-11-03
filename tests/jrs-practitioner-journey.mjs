@@ -55,7 +55,14 @@ console.log('PASS: fictional 3-stage example, separated detection/reliability/fi
  const allowlist=check.match(/src\s*=\s*\/\^\(([^)]+)\)\$\/\.test\(sourceCandidate\)/);
  assert.ok(allowlist,'Check-view telemetry must retain a bounded source allowlist');
  const accepted=new RegExp('^(?:'+allowlist[1]+')$');
- for(const category of ['home','quick','resources','training'])
+ for(const sourcePage of ['index.html','resources.html','about.html','organization.html']){
+  const content=read(sourcePage);
+  const sourceTags=[...content.matchAll(/href="check\.html\?src=([^"&]+)"/g)].map(m=>m[1]);
+  assert.ok(sourceTags.length>0,'Expected first-party check links on '+sourcePage);
+  for(const tag of sourceTags)
+   assert.ok(accepted.test(tag),sourcePage+' uses a source category that would be misclassified: '+tag);
+ }
+ for(const category of ['home','quick','about','organization','resources','training'])
   assert.ok(accepted.test(category),'First-party check-view source must be attributable: '+category);
  for(const untrusted of ['quick%26person%3DA','quick&person=A','someone@example.com','case-123',''])
   assert.ok(!accepted.test(untrusted),'Arbitrary URL source must not enter telemetry: '+untrusted);
