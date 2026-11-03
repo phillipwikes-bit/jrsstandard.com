@@ -1,0 +1,16 @@
+import assert from "node:assert/strict";
+import {readFileSync,existsSync} from "node:fs";
+const base=new URL("../owner/incomeos/",import.meta.url);
+const html=readFileSync(new URL("index.html",base),"utf8");
+const manifest=JSON.parse(readFileSync(new URL("manifest.webmanifest",base),"utf8"));
+const script=readFileSync(new URL("iphone-install.js",base),"utf8");
+assert.equal(manifest.display,"standalone");
+assert.equal(manifest.start_url,"./");
+assert.match(html,/apple-mobile-web-app-title/);
+assert.match(html,/id="iphone-install"/);
+assert.match(html,/iphone-install\.js/);
+assert.match(script,/navigator\.standalone/);
+assert.match(script,/display-mode: standalone/);
+assert.match(script,/Add to Home Screen|iphone-install/);
+assert.equal(existsSync(new URL("sw.js",base)),false,"Private owner records must not be cached by an unreviewed service worker");
+console.log("IncomeOS iPhone installation tests passed");
