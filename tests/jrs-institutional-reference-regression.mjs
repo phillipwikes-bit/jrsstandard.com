@@ -503,8 +503,8 @@ console.log('PASS: seven-point aid has no invented two-item threshold, distingui
     'mobile disclosure button must be suppressed at print-specific specificity');
   assert.match(page, /body\.jrs-institutional\.jrs-nav-ready > nav\.jrs-sitenav\[data-open\]/,
     'expanded mobile navigation must also be absent from review printouts');
-  const workflow=read('.github/workflows/jrs-accessibility-evidence.yml');
-  assert.ok(workflow.includes('Site menu|Close site menu'),
+  const witness=read('tests/jrs-check-print-evidence.py');
+  assert.ok(witness.includes('"Site menu", "Close site menu"'),
     'printed text verification must explicitly reject mobile navigation labels');
   console.log('PASS: mobile menu and expanded disclosure cannot be printed alongside a review summary.');
 }
