@@ -92,7 +92,10 @@ def verify(html, expected):
         reports = data.get("reports") if isinstance(data, dict) else None
         if (not isinstance(reports, list) or
                 data.get("scans") != 12 or data.get("expectedScans") != 12):
-            raise ValueError("incomplete interaction-state coverage")
+            raise ValueError("incomplete interaction-state coverage: " +
+                             json.dumps({"scans": data.get("scans") if isinstance(data, dict) else None,
+                                         "errors": data.get("errors", []) if isinstance(data, dict) else []},
+                                        ensure_ascii=False)[:9000])
         observed_pairs = {(r.get("state"), r.get("width")) for r in reports}
         if observed_pairs != expected_pairs or len(reports) != 12:
             raise ValueError("duplicate or missing interaction-state evidence")
