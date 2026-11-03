@@ -219,7 +219,7 @@ SITEWIDE_AUDIT = ROOT / "tests/jrs-wcag-axe-browser.html"
 CANONICAL_REDIRECTS = {"/privacy.html": "/privacy-notice.html"}
 
 def sitewide_paths():
-    match = re.search(r"const routes=(\\[[\\s\\S]*?\\]);", SITEWIDE_AUDIT.read_text("utf-8"))
+    match = re.search(r"const routes=(\[[\s\S]*?\]);", SITEWIDE_AUDIT.read_text("utf-8"))
     if not match:
         fail("source WCAG public-route inventory unavailable")
     try:
@@ -229,7 +229,7 @@ def sitewide_paths():
     if (not isinstance(paths, list) or len(paths) != 60 or
             len(set(paths)) != 60 or
             any(not isinstance(p, str) or
-                not re.fullmatch(r"/(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+\\.html", p)
+                not re.fullmatch(r"/(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+\.html", p)
                 for p in paths)):
         fail("expected exactly 60 safe, unique public HTML routes")
     redirects = json.loads((ROOT / "vercel.json").read_text("utf-8")).get("redirects", [])
