@@ -16,3 +16,5 @@ jobs:
         run: command -v pdftotext && command -v pdfinfo || { sudo apt-get update -qq && sudo apt-get install -y poppler-utils; }
       - name: Extract and verify public PDF document content
         run: node tests/jrs-published-pdf-content.mjs
+      - name: Inventory PDF structure markers without claiming PDF accessibility
+        run: node tests/jrs-pdf-accessibility-inventory.mjs
