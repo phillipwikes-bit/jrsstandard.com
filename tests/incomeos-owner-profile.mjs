@@ -24,7 +24,7 @@ const tracked=execFileSync("git",["ls-files"],{encoding:"utf8"}).split("\n");
 assert.ok(!tracked.some(p=>/owner-profile(?!\.template)\.json$/.test(p)||p.startsWith(".incomeos-private/")),"no private profile committed");
 
 // 3. New owner modules: no network, storage, dynamic code or HTML injection.
-const mods=["eligibility-engine.js","listing-requirements.js","compensation.js","opportunity-normalizer.js","opportunity-lifecycle.js","project-radar.js","project-ui.js","ledger-rules.js","net-worth.js","claims-tracker.js","renewal-monitor.js","recruiter-history.js","yield-compare.js","weekly-briefing.js","briefing-ui.js"];
+const mods=["eligibility-engine.js","listing-requirements.js","compensation.js","opportunity-normalizer.js","opportunity-lifecycle.js","project-radar.js","project-ui.js","ledger-rules.js","net-worth.js","claims-tracker.js","renewal-monitor.js","recruiter-history.js","yield-compare.js","weekly-briefing.js","briefing-ui.js","workspace-store.js"];
 for(const m of mods){
   const src=read("owner/incomeos/"+m);
   assert.doesNotMatch(src,/\bfetch\s*\(|XMLHttpRequest|sendBeacon|WebSocket|EventSource/,m+": no network access");

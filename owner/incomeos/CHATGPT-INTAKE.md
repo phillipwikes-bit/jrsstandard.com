@@ -30,3 +30,13 @@ ChatGPT gathers opportunities, including ones behind logins that only reach you 
 - ChatGPT can reach your inbox and logged-in platforms; IncomeOS cannot and must not.
 - IncomeOS treats imported text as untrusted: it re-extracts requirements, flags fraud and embedded instructions, rejects non-https or off-domain links, and requires a review date within 3 days.
 - A model's summary can drop a requirement and make a listing look eligible. Word-for-word text plus your confirmation prevents that.
+
+## Second task: ledger rows for the "This week" workspace
+
+> Once a month, read my Gmail receipts, invoices, payout notices and bank alerts from last month and output ONE JSON array of ledger rows, nothing else.
+>
+> Each row: `id` (sender plus the receipt or order number), `kind` ("income" or "outflow"), `type` ("expense" for purchases and bills; omit for income), `date` (YYYY-MM-DD of the charge or payment), `payer` (the company), `label` (what it was, under 100 characters), and either `amountUsd` (outflows, positive, like "85.00") or `grossUsd` and `feesUsd` (income), plus `category` ("other" unless the email states it clearly).
+>
+> Rules: copy amounts exactly as shown; never estimate or round. Skip anything that is not a completed charge or payment (quotes, carts, failed payments, marketing). Do not include card numbers, account numbers, addresses or passwords. If one email covers several charges, make one row per charge. After the JSON, list in plain text any email you could not read clearly.
+
+Paste the rows into the `ledger` array of your workspace file (keep the file outside this repository, ideally saved encrypted from the "This week" panel). IncomeOS then proposes categories from your approved rules, finds renewals and price increases, and flags possible duplicate charges. Emailed receipts are evidence of a charge, not proof it posted to your bank; reconcile against statements before treating totals as complete.
