@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>JRS automated WCAG tagged preflight</title></head>
+<body><h1>JRS scoped automated accessibility scan</h1>
+<pre id="result" role="status">RUNNING</pre>
+<script>
+(async function(){
+  const routes=['/index.html','/resources.html','/editions.html','/organization.html',
+    '/training.html','/jrsstandard.html','/investigator-guides.html','/contact.html',
+    '/research.html','/check.html','/simulations.html','/about.html',
+    '/methodology.html','/decision-reconstruction-risk.html','/research-summary.html',
+    '/privacy-notice.html','/operational-boundaries.html','/implementation-scenarios.html',
+    '/review-engine.html','/research-register.html'];
+  const widths=[390,1440], problems=[];
+  const report=[];
+  function fail(route,width,reason){problems.push({route,width,reason});}
+  for(const route of routes)for(const width of widths){
+    const frame=document.createElement('iframe');
+    frame.title='Automated audit '+route+' at '+width+' pixels';
+    frame.style.cssText='position:fixed;top:0;left:0;z-index:999;width:'+width+'px;height:1100px;border:0;background:#fff';
+    frame.width=width;frame.height=1100;
+    document.body.appendChild(frame);
+    try{
+      await new Promise(function(resolve,reject){
+        frame.addEventListener('load',resolve,{once:true});
+        frame.addEventListener('error',()=>reject(Error('frame load error')),{once:true});
+        frame.src=route;
+      });
+      const win=frame.contentWindow,doc=frame.contentDocument;
+      if(!doc||!win||!doc.querySelector('main'))throw Error('public page missing same-origin main');
+      if(doc.documentElement.scrollWidth>width+2)throw Error('horizontal overflow at '+width);
+      // The scanner is installed locally only during CI, never into public assets.
+      await new Promise(function(resolve,reject){
+        const script=doc.createElement('script');
+        script.src='/node_modules/axe-core/axe.min.js';
+        script.onload=resolve;
+        script.onerror=()=>reject(Error('pinned axe-core unavailable'));
+        doc.head.appendChild(script);
+      });
+      if(!win.axe||typeof win.axe.run!=='function')throw Error('axe-core not initialized');
+      const results=await win.axe.run(doc,{
+        runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']},
+        resultTypes:['violations','incomplete']
+      });
+      const violations=results.violations.map(x=>({
+        id:x.id,impact:x.impact,count:x.nodes.length,
+        targets:x.nodes.slice(0,3).map(n=>n.target.join(' '))
+      }));
+      const incomplete=results.incomplete.map(x=>({id:x.id,count:x.nodes.length}));
+      report.push({route,width,violations,incomplete});
+      if(violations.length)fail(route,width,violations);
+    }catch(e){fail(route,width,String(e&&e.message||e))}
+    finally{frame.remove()}
+  }
+  // Deliberately do not write a static PASS string into script source. The
+  // workflow parses textContent from the RESULT element, not a substring grep.
+  const node=document.getElementById('result');
+  node.textContent=JSON.stringify({
+    status:problems.length?'FAIL':'PASS',
+    scans:report.length,
+    expectedScans:routes.length*widths.length,
+    errors:problems,
+    reports:report
+  });
+})();
+</script></body></html>

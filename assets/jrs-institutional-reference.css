@@ -1341,6 +1341,12 @@ body.jrs-institutional.jrs-training-page #cert-name{
 body.jrs-institutional.jrs-training-page #cert-section :where(button){
   min-height:44px!important;font-size:14px!important;
 }
+/* The certificate generator is revealed after module completion. Give its
+   action the same high-contrast navy/white treatment as primary controls.
+   An earlier inline gold/black combination failed the dynamic axe audit. */
+body.jrs-institutional.jrs-training-page #cert-section button[onclick="generateCert()"]{
+  background:#173d5b!important;color:#fff!important;border:1px solid #173d5b!important;
+}
 body.jrs-institutional.jrs-training-page :where(#cert-heading):focus{
   outline:3px solid #0b679c!important;outline-offset:4px!important;
 }
@@ -1586,4 +1592,114 @@ body.jrs-institutional.jrs-standard-page .scenario-tabs .scenario-tab:focus-visi
 }
 body.jrs-institutional.jrs-standard-page .scenario-pane{
   min-width:0;overflow-wrap:anywhere;
+}
+
+/* 2026-11-03: computed-color-contrast repairs confirmed by a pinned axe-core
+   source-rendered audit. The institutional palette had redefined --accent and
+   --gold on light pages, leaving legacy dark text on dark gold buttons.
+   Keep these overrides narrow: public presentation only, no data or logic. */
+body.jrs-institutional.jrs-guide-page .jrs-guide-subtitle{
+  color:#e2ebf3!important; /* 11.39:1 against institutional header #162f46 */
+}
+body.jrs-institutional.jrs-training-page :where(
+  #jrs-named-record-open,a[href="#simulator"][onclick],.btn-survey-submit,#en-go
+),
+body.jrs-institutional #contact-submit{
+  background:#eed2a0!important;
+  color:#12273c!important; /* 10.4:1 on the solid pale-gold fill */
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-guide-page .jrs-guide-subtitle{
+    color:CanvasText!important;
+  }
+  body.jrs-institutional.jrs-training-page :where(
+    #jrs-named-record-open,a[href="#simulator"][onclick],.btn-survey-submit,#en-go
+  ),
+  body.jrs-institutional #contact-submit{
+    forced-color-adjust:auto;
+    color:ButtonText!important;
+    background:ButtonFace!important;
+    border:1px solid ButtonText!important;
+  }
+}
+
+/* Reviewer survey action remains a normal native button at an operable size. */
+body.jrs-institutional.jrs-training-page :where(.btn-survey-submit,#en-go){
+  font-size:15px!important;
+  min-height:44px!important;
+  line-height:1.5!important;
+}
+
+/* 2026-11-03 expanded 40-condition axe-core remediation.
+   The institutional light-theme variables made some old page-level gold
+   action backgrounds too dark for their inherited near-black labels. */
+body.jrs-institutional .cta-primary,
+body.jrs-institutional a[href="simulations.html"][style*="background:var(--accent)"]{
+  background:#eed2a0!important;
+  color:#12273c!important;
+  font-size:14px!important;
+  min-height:44px!important;
+  line-height:1.5!important;
+}
+body.jrs-institutional .site-header .nav-links a,
+body.jrs-institutional .site-header .nav-toggle{
+  color:#e2ebf3!important;
+}
+body.jrs-institutional .site-header .nav-toggle{
+  border-color:#d5e0e8!important;
+  background:transparent!important;
+  font-size:14px!important;
+  min-height:44px!important;
+}
+/* Historical research register has a dark inline notice even though the
+   remaining institutional page is light. Keep its return link legible. */
+body.jrs-institutional #main-content > p[style*="background:#1a1a1a"] a[href="research.html"]{
+  color:#f4d89d!important;
+  text-decoration:underline!important;
+}
+@media(forced-colors:active){
+  body.jrs-institutional :where(.cta-primary,.nav-toggle),
+  body.jrs-institutional a[href="simulations.html"][style*="background:var(--accent)"]{
+    forced-color-adjust:auto;
+    background:ButtonFace!important;
+    color:ButtonText!important;
+    border:1px solid ButtonText!important;
+  }
+  body.jrs-institutional .site-header .nav-links a{
+    color:LinkText!important;
+  }
+}
+
+
+
+/* Practitioner-versus-product distinction, November 2026.
+   Keep JRS institutional titles and edition labels unchanged. The compact
+   desktop motto occupies previously unused header space, but the longer
+   public-interest statement remains available within each primary pathway. */
+body.jrs-institutional .site-header-inner > .jrs-header-motto{
+ display:block;flex:1 1 360px;min-width:0;margin:0;padding:0 9px;
+ font:600 17px/1.42 Inter,system-ui,sans-serif!important;
+ letter-spacing:0!important;text-transform:none!important;
+ color:#f3f7fa!important;text-align:center;white-space:normal;
+}
+body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
+ color:#f4d79b!important;font-weight:750;
+}
+/* Small-screen navigation and record-check access outrank a repeated motto. */
+@media(max-width:1020px){
+ body.jrs-institutional .site-header-inner > .jrs-header-motto{display:none!important}
+}
+@media(forced-colors:active){
+ body.jrs-institutional .site-header-inner > .jrs-header-motto,
+ body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
+  color:CanvasText!important
+ }
+}
+
+/* Keep the first practitioner training module in the initial mobile journey
+   after the concise DRR introduction, without hiding the edition notice. */
+@media(max-width:760px){
+ body.jrs-institutional.jrs-training-page #training-modules{
+  padding-top:30px!important;
+ }
 }

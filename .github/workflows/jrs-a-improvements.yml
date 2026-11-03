@@ -16,6 +16,8 @@ jobs:
           persist-credentials: false
       - name: Validate practitioner routes and non-sensitive events
         run: node tests/jrs-a-improvements.test.mjs
+      - name: Preserve the competitor-informed first-use procedure and reviewer boundaries
+        run: node tests/jrs-competitive-ux.test.mjs
       - name: Check guide heading order and PDF structure preflight without certification claims
         run: node tests/jrs-accessibility-acceptance.test.mjs
       - name: Preserve existing homepage and resource directory contracts
@@ -36,7 +38,80 @@ jobs:
           browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
           if [[ -z "$browser" ]]; then echo 'Chromium is unavailable; release check cannot pass'; exit 1; fi
           "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=60000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8791/tests/jrs-a-improvements-browser.html > /tmp/jrs-a-grade-dom.txt
-          if ! grep -q 'PASS 12/12 responsive route checks' /tmp/jrs-a-grade-dom.txt; then
-            grep 'FAIL' /tmp/jrs-a-grade-dom.txt || true
-            exit 1
-          fi
+          python3 tests/jrs-browser-gate-check.py --self-test
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-a-grade-dom.txt responsive
+
+      - name: Check 400-percent-equivalent CSS reflow at 320/400 px across 20 public routes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8794 --bind 127.0.0.1 >/tmp/jrs-reflow-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8794/index.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8794/tests/jrs-400-percent-reflow-browser.html > /tmp/jrs-reflow-dom.txt 2>/tmp/jrs-reflow-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-reflow-dom.txt reflow /tmp/jrs-reflow-evidence.json
+      - name: Retain reflow geometry and route evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-reflow-evidence-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-reflow-evidence.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Scan 20 canonical public routes across 40 mobile/desktop conditions with pinned axe-core
+        shell: bash
+        run: |
+          set -euo pipefail
+          # axe-core is used in CI only. The test and node_modules directories
+          # are excluded from the published Vercel asset boundary.
+          npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund axe-core@4.10.3
+          test -s node_modules/axe-core/axe.min.js
+          python3 -m http.server 8792 --bind 127.0.0.1 >/tmp/jrs-axe-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8792/editions.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8792/tests/jrs-wcag-axe-browser.html > /tmp/jrs-axe-dom.txt 2>/tmp/jrs-axe-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-axe-dom.txt axe /tmp/jrs-axe-evidence.json
+      - name: Audit real interactive states without submitting information
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s node_modules/axe-core/axe.min.js
+          python3 -m http.server 8793 --bind 127.0.0.1 >/tmp/jrs-states-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8793/resources.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8793/tests/jrs-interaction-a11y-browser.html > /tmp/jrs-states-dom.txt 2>/tmp/jrs-states-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-states-dom.txt states /tmp/jrs-states-evidence.json
+      - name: Retain inspectable dynamic-state accessibility evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-dynamic-accessibility-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-states-evidence.json
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Retain inspectable public-route automated accessibility evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-axe-evidence-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-axe-evidence.json
+          if-no-files-found: warn
+          retention-days: 30

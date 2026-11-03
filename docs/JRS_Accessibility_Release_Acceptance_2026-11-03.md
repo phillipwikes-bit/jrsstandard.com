@@ -24,6 +24,19 @@ The practitioner-release workflow executes `tests/jrs-accessibility-acceptance.t
 | Production source and release identity | Earlier PR #102 commit `8e12c5978e0a1e2028d7b45dbd949e5f44b6337e` was READY and aliased to the public domains. Newer merge commits require independent live verification; PR #103 separately improved source-aware production checks | Verify exact newly published commit |
 | Cloudflare legacy Worker check | Separate failed check without evidence that the Worker serves the production public domains. Do not deploy/enable a Worker to clear a status | **UNRESOLVED** |
 
+## Engineering evidence update, 3 November 2026 (PR #106)
+
+This update records tested engineering controls, not a change to the required independent acceptance criteria.
+
+- **Automated accessible-web source audit:** the source-rendered Chrome workflow at commit `7f36313ace9fa2d85f72e4f930ca01e9e2528efe` passed 40 of 40 pinned axe-core v4.10.3 scans across 20 public routes at 390 and 1440 CSS pixels, with zero violations reported by the selected WCAG 2.0/2.1/2.2 A and AA tagged rules. Its documented limits include untested interaction states, other widths, manual-only criteria, device-specific assistive technology and the deployed production build.
+- **Inspectable evidence:** GitHub Actions run [41597693468](https://github.com/phillipwikes-bit/jrsstandard.com/actions/runs/41597693468) retained the per-route JSON as artifact `jrs-axe-evidence-7f36313ace9fa2d85f72e4f930ca01e9e2528efe`, retention 30 days. The final PR commit requires its own green run.
+- **Detected and corrected defects:** original automated checks found insufficient contrast in new publication guide subtitles, training calls to action, Contact submit, legacy simulation/implementation controls, navigation labels and the research-register banner link. Keyboard-inaccessible horizontal scroll regions were repaired on Research Summary and Implementation Scenarios. Failures were not excluded or downgraded.
+- **False-positive regression repaired:** the responsive browser gate now parses the actual rendered result element. It rejects a `PASS` literal in unexecuted JavaScript, incomplete runs and duplicated/unexpected results. The axe gate independently asserts every required route and viewport pair.
+- **PDF structure evidence:** all **nine of nine** locked published PDFs lack detected structure tree markers. None is declared PDF/UA conformant; the Standard v2.0 and supplements remain unchanged. Accessible PDF reissues require verified editorial sources and separate approval.
+- **Release control:** the authenticated exact-head hosted visual gate remains a **HOLD** due to the unavailable protected preview. No production deployment, Cloudflare configuration or bypass secret was changed under PR #106.
+
+**Gate position:** automated web accessibility assurance improved materially; full WCAG/PDF accessibility and production release certification remain **NOT ESTABLISHED**.
+
 ## Minimum controlled completion sequence
 
 1. Pass this branch's source and responsive-browser workflows at the exact head, with no source or PDF identity regressions.
