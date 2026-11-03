@@ -1,0 +1,281 @@
+{
+  "schema": "jrs-llm-comparison.v1",
+  "as_of": "2026-11-03",
+  "status": "documentary-research-only",
+  "interpretation": "Index points are independent general capability composites, not JRS record accuracy. Missing scores are null, not zero.",
+  "illustrative_cost_parameters": {
+    "requests": 1000,
+    "uncached_input_tokens_per_request": 20000,
+    "billed_output_tokens_per_request": 2000,
+    "cache_hits": 0,
+    "tool_calls": 0,
+    "reviewer_labor_included": false,
+    "formula": "usd = 20*input_usd_per_MTok + 2*output_usd_per_MTok"
+  },
+  "models": [
+    {
+      "model": "Gemini 4 Carbon",
+      "provider": "Google",
+      "index_v5": 59,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "restricted",
+      "price_usd_per_million_tokens": null,
+      "illustrative_usd_for_1000_requests": null,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://artificialanalysis.ai/models/releases/comparisons"
+    },
+    {
+      "model": "Claude Opus 5.5",
+      "provider": "Anthropic",
+      "index_v5": 58,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "hosted",
+      "price_usd_per_million_tokens": {
+        "input": 4,
+        "output": 20,
+        "tier": "standard"
+      },
+      "illustrative_usd_for_1000_requests": 120,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing"
+    },
+    {
+      "model": "GPT-6 Astra",
+      "provider": "OpenAI",
+      "index_v5": 57,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "hosted",
+      "price_usd_per_million_tokens": {
+        "input": 10,
+        "output": 50,
+        "tier": "standard"
+      },
+      "illustrative_usd_for_1000_requests": 300,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://developers.openai.com/api/docs/models"
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "provider": "OpenAI",
+      "index_v5": 55,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "hosted",
+      "price_usd_per_million_tokens": {
+        "input": 2,
+        "output": 10,
+        "tier": "standard"
+      },
+      "illustrative_usd_for_1000_requests": 60,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://developers.openai.com/api/docs/models"
+    },
+    {
+      "model": "Claude Sonnet 5.5",
+      "provider": "Anthropic",
+      "index_v5": 54,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "hosted",
+      "price_usd_per_million_tokens": {
+        "input": 2,
+        "output": 10,
+        "tier": "standard"
+      },
+      "illustrative_usd_for_1000_requests": 60,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing"
+    },
+    {
+      "model": "GPT-6.1 Terra",
+      "provider": "OpenAI",
+      "index_v5": 51,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "hosted",
+      "price_usd_per_million_tokens": {
+        "input": 1,
+        "output": 5,
+        "tier": "standard"
+      },
+      "illustrative_usd_for_1000_requests": 30,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://developers.openai.com/api/docs/models"
+    },
+    {
+      "model": "Gemini 4 Argon",
+      "provider": "Google",
+      "index_v5": 50,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "hosted",
+      "price_usd_per_million_tokens": {
+        "input": 2,
+        "output": 10,
+        "tier": "standard-intro-through-2026-11-30"
+      },
+      "illustrative_usd_for_1000_requests": 60,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://aistudio.google.com/docs/pricing"
+    },
+    {
+      "model": "Kimi K3.1 Pro",
+      "provider": "Moonshot AI",
+      "index_v5": 46,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "hosted-weights-pending",
+      "price_usd_per_million_tokens": null,
+      "illustrative_usd_for_1000_requests": null,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash 1017",
+      "provider": "DeepSeek",
+      "index_v5": 32,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "released-weights-and-hosted",
+      "price_usd_per_million_tokens": {
+        "input": 0.3,
+        "output": 1.2,
+        "tier": "aa-provider-endpoint"
+      },
+      "illustrative_usd_for_1000_requests": 8.4,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://artificialanalysis.ai/models/comparisons/deepseek-v4-1-flash-1017-vs-glm-5-3"
+    },
+    {
+      "model": "GLM-5.3",
+      "provider": "Z.ai",
+      "index_v5": 32,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "released-weights-and-hosted",
+      "price_usd_per_million_tokens": {
+        "input": 1.4,
+        "output": 4.4,
+        "tier": "aa-provider-endpoint"
+      },
+      "illustrative_usd_for_1000_requests": 36.8,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://artificialanalysis.ai/models/comparisons/deepseek-v4-1-flash-1017-vs-glm-5-3"
+    },
+    {
+      "model": "GPT-6 Luna",
+      "provider": "OpenAI",
+      "index_v5": null,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "hosted",
+      "price_usd_per_million_tokens": {
+        "input": 0.1,
+        "output": 0.5,
+        "tier": "standard"
+      },
+      "illustrative_usd_for_1000_requests": 3,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://developers.openai.com/api/docs/models"
+    },
+    {
+      "model": "Mistral Large 4",
+      "provider": "Mistral",
+      "index_v5": null,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "released-weights-and-hosted",
+      "price_usd_per_million_tokens": null,
+      "illustrative_usd_for_1000_requests": null,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://docs.mistral.ai/models/mistral-large-4-0"
+    },
+    {
+      "model": "Meta Muse Wonder Full",
+      "provider": "Meta",
+      "index_v5": null,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "hosted-restricted-client",
+      "price_usd_per_million_tokens": null,
+      "illustrative_usd_for_1000_requests": null,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://dev.meta.ai/docs/models"
+    },
+    {
+      "model": "Meta Muse Spark Open",
+      "provider": "Meta",
+      "index_v5": null,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "released-weights",
+      "price_usd_per_million_tokens": null,
+      "illustrative_usd_for_1000_requests": null,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://dev.meta.ai/docs/models"
+    },
+    {
+      "model": "Meta Muse Glimmer",
+      "provider": "Meta",
+      "index_v5": null,
+      "index_v5_is_jrs_accuracy": false,
+      "access": "released-weights",
+      "price_usd_per_million_tokens": null,
+      "illustrative_usd_for_1000_requests": null,
+      "jrs_evaluation_result": null,
+      "jrs_latency_p95_seconds": null,
+      "source": "https://dev.meta.ai/models/muse-glimmer"
+    }
+  ],
+  "price_alternatives": [
+    {
+      "model": "Gemini 4 Argon",
+      "tier": "batch-flex-intro-through-2026-11-30",
+      "input": 1,
+      "output": 5,
+      "hypothetical_usd": 30,
+      "source": "https://aistudio.google.com/docs/pricing"
+    },
+    {
+      "model": "Gemini 4 Argon",
+      "tier": "standard-from-2026-12-01-announced",
+      "input": 4,
+      "output": 20,
+      "hypothetical_usd": 120,
+      "source": "https://aistudio.google.com/docs/pricing"
+    },
+    {
+      "model": "Mistral Large 4",
+      "tier": "sale-snapshot",
+      "input": 0.68,
+      "output": 2.09,
+      "hypothetical_usd": 17.78,
+      "source": "https://docs.mistral.ai/models/mistral-large-4-0"
+    },
+    {
+      "model": "Mistral Large 4",
+      "tier": "launch-displayed",
+      "input": 0.7,
+      "output": 2.1,
+      "hypothetical_usd": 18.2,
+      "source": "https://docs.mistral.ai/models/mistral-large-4-0"
+    },
+    {
+      "model": "Mistral Large 4",
+      "tier": "undiscounted-displayed",
+      "input": 1.36,
+      "output": 4.18,
+      "hypothetical_usd": 35.56,
+      "source": "https://docs.mistral.ai/models/mistral-large-4-0"
+    }
+  ],
+  "evidence_limitations": [
+    "No JRS model benchmarks executed",
+    "No same-corpus latency or task cost measured",
+    "Model availability and pricing dynamic and tier-dependent",
+    "No protected case data transferred"
+  ]
+}
