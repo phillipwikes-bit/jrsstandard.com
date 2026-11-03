@@ -31,17 +31,23 @@ function settings() {
 // Do not add wildcards or disable the provider's origin verification.
 const OWNER_PREVIEW_REF='fix/owner-dashboard-mainline-integration-2026-11-02';
 const OWNER_PREVIEW_ALIAS='jrsstandard-com-git-fix-owner-das-a30b69-phillip-wikes-projects.vercel.app';
+const JRS_PREVIEW_REF='fix/jrs-training-mobile-a11y-quality-2026-11-02';
+const JRS_PREVIEW_ALIAS='jrsstandard-com-git-fix-jrs-train-decb75-phillip-wikes-projects.vercel.app';
 function neonRequestOrigin(browserOrigin) {
   const env=(typeof process!=='undefined'&&process.env)||{};
   if (env.VERCEL_ENV !== 'preview') return browserOrigin;
   const branchUrl=env.VERCEL_BRANCH_URL || '';
-  // Either exact branch identity is sufficient, provided a supplied branch
-  // hostname does not contradict the known approved alias.
-  const verifiedBranch=(env.VERCEL_GIT_COMMIT_REF === OWNER_PREVIEW_REF ||
-    branchUrl === OWNER_PREVIEW_ALIAS);
-  if (!verifiedBranch || (branchUrl && branchUrl !== OWNER_PREVIEW_ALIAS))
-    return browserOrigin;
-  return 'https://'+OWNER_PREVIEW_ALIAS;
+  // Keep per-branch trusted origins exact. Reject contradictory aliases.
+  for (const [branch, alias] of [
+    [OWNER_PREVIEW_REF, OWNER_PREVIEW_ALIAS],
+    [JRS_PREVIEW_REF, JRS_PREVIEW_ALIAS],
+  ]) {
+    if ((env.VERCEL_GIT_COMMIT_REF === branch || branchUrl === alias) &&
+        (!branchUrl || branchUrl === alias)) {
+      return 'https://'+alias;
+    }
+  }
+  return browserOrigin;
 }
 
 async function callNeon(base, route, origin, payload) {
