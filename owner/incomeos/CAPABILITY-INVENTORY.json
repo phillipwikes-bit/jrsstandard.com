@@ -36,17 +36,21 @@
       "featureId": "ELIG-002",
       "sourceFiles": [
         ".incomeos-private/owner-profile.json (git-ignored, not committed)",
-        "owner/incomeos/owner-profile.template.json"
+        "owner/incomeos/owner-profile.template.json",
+        "owner/incomeos/profile-editor.js",
+        "owner/incomeos/profile-ui.js"
       ],
-      "purpose": "Private owner qualification profile",
+      "purpose": "Private owner qualification profile; in-app editor marks items documented (record location and check date required), sets work authorization, conflict review, hours, rate and focus words, reports remaining gaps, and saves the profile optionally encrypted",
       "operationalState": "PARTIALLY_IMPLEMENTED",
       "externalDependencies": [],
       "securityClassification": "OWNER_PRIVATE",
       "knownDefects": [
-        "All items currently 'attested' from the directive; none documented; work authorization, conflicts review, availability unset"
+        "Owner has not yet documented any item; the engine cannot authenticate the referenced records"
       ],
       "testCoverage": [
-        "tests/incomeos-owner-profile.mjs"
+        "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-profile-editor.mjs",
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "requiredRemediation": "Owner documents each qualification and sets conflicts, availability and work authorization",
       "acceptanceCriteria": "Profile items carry record references; no private profile tracked by git"
@@ -556,7 +560,7 @@
         "owner/incomeos/owner-workspace.template.json",
         "owner/incomeos/workspace-store.js"
       ],
-      "purpose": "'This week' panel: five owner questions, needs-you list, official searches due, net worth, renewals, yields, recruiter history, proposals, system health; memory-only workspace file; owner actions (accept categorization, record official searches, advance claims with evidence, add sourced balances, mark seen) applied to an in-memory copy and kept only when the owner saves the file, optionally AES-256-GCM encrypted",
+      "purpose": "'This week' panel: five owner questions, needs-you list, official searches due, net worth, renewals, yields, recruiter history, proposals, system health; memory-only workspace file; owner actions (accept categorization, record official searches, advance claims with evidence, add sourced balances, mark seen) applied to an in-memory copy and kept only when the owner saves the file, optionally AES-256-GCM encrypted; start a new workspace and add accounts, ledger entries, service notes, rate offers and comparison settings through validated forms",
       "operationalState": "IMPLEMENTED_AND_VERIFIED",
       "externalDependencies": [],
       "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
@@ -567,6 +571,7 @@
       ],
       "testCoverage": [
         "tests/incomeos-owner-profile.mjs",
+        "tests/incomeos-profile-editor.mjs",
         "tests/incomeos-project-ui-browser.mjs",
         "tests/incomeos-workspace-store.mjs"
       ],
