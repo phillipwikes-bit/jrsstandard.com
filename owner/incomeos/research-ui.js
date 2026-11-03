@@ -1,7 +1,7 @@
 "use strict";
 (function(){
   var KEY="incomeos.research.radar.v1",engine=window.IncomeOSResearchRadar,adapter=window.IncomeOSPublicFeedAdapter;
-  var db={version:1,preferences:{minPay:100,maxScreenMinutes:15,remoteOnly:true},leads:[],progress:{}},publicLeads=[],latest=null;
+  var db={version:1,preferences:{minPay:0,minEhy:75,maxScreenMinutes:15,remoteOnly:true},leads:[],progress:{}},publicLeads=[],latest=null;
   var statuses=["New","Reviewing","Applied","Invited","Completed","Paid (self-reported)","Declined","Not eligible"];
   var $=function(id){return document.getElementById(id);};
   function elem(tag,cls,content){var n=document.createElement(tag);if(cls)n.className=cls;if(content!==undefined)n.textContent=String(content);return n;}
@@ -16,6 +16,7 @@
         if(Number.isFinite(min)&&min>=0&&min<=100000)db.preferences.minPay=min;
         if(Number.isFinite(screen)&&screen>=0&&screen<=720)db.preferences.maxScreenMinutes=screen;
         if(typeof p.remoteOnly==="boolean")db.preferences.remoteOnly=p.remoteOnly;
+        if(Number.isFinite(Number(p.minEhy))&&Number(p.minEhy)>=0&&Number(p.minEhy)<=100000)db.preferences.minEhy=Number(p.minEhy);
         db.leads=Array.isArray(v.leads)?v.leads.slice(0,200).map(function(x){try{return engine.candidate(x);}catch(e){return null;}}).filter(Boolean):[];
         db.progress=v.progress&&typeof v.progress==="object"&&!Array.isArray(v.progress)?v.progress:{};
       }
@@ -33,6 +34,7 @@
       var s=v.candidate,div=add(root,"article","radar-card"),heading=add(div,"div","radar-heading");
       add(heading,"strong","",s.title);add(heading,"span","",v.priority.replaceAll("_"," "));
       add(div,"p","muted",s.provider+" · "+s.mode+" · "+s.minutes+" minute session · advertised "+usd(s.paymentUsd)+" · "+(s.eventEnd?(s.dateType==="application-deadline"?"application deadline ":"last published session date ")+s.eventEnd:"no published application deadline"));
+      add(div,"p","muted",v.effectiveHourlyYield===null?"EHY unavailable: complete screening, preparation and follow-up estimates required.":("Effective hourly yield "+usd(v.effectiveHourlyYield)+"/hr · "+v.totalMinutes+" minutes total ("+s.minutes+" session + "+s.screenMinutes+" screener + "+s.prepMinutes+" prep + "+s.adminMinutes+" follow-up) · time confidence: "+v.timeConfidence+"."));
       add(div,"p","muted","Session-only equivalent "+usd(v.sessionRate)+"/hr"+(v.sessionPlusScreenRate===null?" · screening effort unknown":" · including specified screening "+usd(v.sessionPlusScreenRate)+"/hr")+". Selection and payment are not guaranteed.");
       if(s.eligibility.length)add(div,"p","muted","Published requirements: "+s.eligibility.join("; "));
       var flags=v.reasons.concat(v.warnings);
@@ -59,8 +61,8 @@
   }
   function quote(x){var s=String(x==null?"":x);if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
   function exportCsv(){
-    var rows=[["ID","Provider","Title","Advertised USD","Session minutes","Screen minutes","Mode","Published End Date","Date Type","Source reviewed","Screening priority","Review flags","Owner progress","Application URL","Source URL"]];
-    latest.results.forEach(function(v){var s=v.candidate;rows.push([s.id,s.provider,s.title,s.paymentUsd,s.minutes,s.screenMinutes??"",s.mode,s.eventEnd||"",s.dateType,s.reviewed,v.priority,v.reasons.concat(v.warnings).join("; "),db.progress[s.id]||"New",s.url,s.sourceUrl]);});
+    var rows=[["ID","Provider","Title","Advertised USD","Session minutes","Screen minutes","Prep minutes","Follow-up minutes","Total minutes","EHY USD/hour","Time confidence","Mode","Published End Date","Date Type","Source reviewed","Screening priority","Review flags","Owner progress","Application URL","Source URL"]];
+    latest.results.forEach(function(v){var s=v.candidate;rows.push([s.id,s.provider,s.title,s.paymentUsd,s.minutes,s.screenMinutes??"",s.prepMinutes??"",s.adminMinutes??"",v.totalMinutes??"",v.effectiveHourlyYield??"",v.timeConfidence,s.mode,s.eventEnd||"",s.dateType,s.reviewed,v.priority,v.reasons.concat(v.warnings).join("; "),db.progress[s.id]||"New",s.url,s.sourceUrl]);});
     download(rows.map(function(x){return x.map(quote).join(",");}).join("\r\n")+"\r\n","IncomeOS-research-radar-"+today()+".csv","text/csv;charset=utf-8");
   }
   async function importLeads(){
@@ -82,7 +84,7 @@
   }
   function template(){
     var d=today(),sample={
-      id:"source-study-1234",title:"Sample participant interview",provider:"Example recruiter",paymentUsd:125,minutes:60,screenMinutes:null,mode:"online",
+      id:"source-study-1234",title:"Sample participant interview",provider:"Example recruiter",paymentUsd:125,minutes:60,screenMinutes:null,prepMinutes:null,adminMinutes:null,timeConfidence:"unknown",mode:"online",
       eventEnd:d,dateType:"application-deadline",reviewed:d,dates:d,eligibility:["Eligibility must be verified"],risk:["Sample only, not an available study"],status:"Availability unconfirmed",
       linkKind:"Direct screener",url:"https://example.org/survey/1234",sourceUrl:"https://example.org/study/1234"
     };
@@ -103,11 +105,11 @@
     if(!$("radar-results")||!engine||!adapter)return;
     load();
     if(window.IncomeOSFinancialReadOnly===true){$("radar-import").disabled=true;$("radar-import-file").disabled=true;$("radar-preferences").querySelectorAll("input,button").forEach(function(e){e.disabled=true;});}
-    $("radar-min-pay").value=db.preferences.minPay;$("radar-max-screen").value=db.preferences.maxScreenMinutes;$("radar-remote").checked=db.preferences.remoteOnly;
+    $("radar-min-pay").value=db.preferences.minPay;$("radar-min-ehy").value=db.preferences.minEhy;$("radar-max-screen").value=db.preferences.maxScreenMinutes;$("radar-remote").checked=db.preferences.remoteOnly;
     $("radar-preferences").addEventListener("submit",function(e){
-      e.preventDefault();var pay=Number($("radar-min-pay").value),screen=Number($("radar-max-screen").value);
-      if(!Number.isFinite(pay)||pay<0||pay>100000||!Number.isFinite(screen)||screen<0||screen>720){$("radar-status").textContent="Enter valid payment and screening thresholds.";return;}
-      db.preferences={minPay:pay,maxScreenMinutes:screen,remoteOnly:$("radar-remote").checked};
+      e.preventDefault();var pay=Number($("radar-min-pay").value),ehy=Number($("radar-min-ehy").value),screen=Number($("radar-max-screen").value);
+      if(!Number.isFinite(pay)||pay<0||pay>100000||!Number.isFinite(ehy)||ehy<0||ehy>100000||!Number.isFinite(screen)||screen<0||screen>720){$("radar-status").textContent="Enter valid payment and screening thresholds.";return;}
+      db.preferences={minPay:pay,minEhy:ehy,maxScreenMinutes:screen,remoteOnly:$("radar-remote").checked};
       if(persist())view();
     });
     $("radar-import").addEventListener("click",importLeads);
