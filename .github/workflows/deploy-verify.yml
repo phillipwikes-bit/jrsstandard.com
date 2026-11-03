@@ -29,9 +29,12 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           fetch-depth: 2
+
+      - name: Verify source-aware route parity contract without network
+        run: python3 tests/preflight-deploy-contract.test.py -v
 
       - name: Wait for the deployment to propagate
         run: sleep 90
@@ -45,8 +48,8 @@ jobs:
           set -e
 
       # Issue 3.6: verification is read-only. A mismatch never creates a new deployment.
-      # Legacy byte-parity may misclassify redirect source paths; retain failures as
-      # investigatory findings until source-aware route adjudication is accepted.
+      # Source-aware parity distinguishes canonical redirect destinations, internal
+      # build inputs and the protected owner sign-in from public static assets.
       - name: Record failure without automatically deploying
         if: steps.check.outputs.rc != '0'
         run: |
