@@ -41,6 +41,7 @@ ROUTES = (
     "/about.html", "/methodology.html", "/decision-reconstruction-risk.html",
     "/research-summary.html", "/privacy-notice.html", "/operational-boundaries.html",
     "/implementation-scenarios.html", "/review-engine.html", "/research-register.html",
+    "/workflow-fit.html",
 )
 WIDTHS = (390, 1440)
 
@@ -68,12 +69,12 @@ def verify(html, expected):
             raise ValueError("axe fixture did not complete with JSON evidence: " + value[:200]) from exc
         if not isinstance(data, dict):
             raise ValueError("invalid axe result schema")
-        if data.get("scans") != 40 or data.get("expectedScans") != 40:
+        if data.get("scans") != 42 or data.get("expectedScans") != 42:
             raise ValueError("incomplete browser test coverage: " + str(data.get("scans")))
         if data.get("status") != "PASS" or data.get("errors"):
             raise ValueError("WCAG-tagged automated rule violations: " +
                              json.dumps(data.get("errors", []), ensure_ascii=False)[:9000])
-        if len(data.get("reports", [])) != 40:
+        if len(data.get("reports", [])) != 42:
             raise ValueError("missing per-route axe audit records")
         expected_pairs = {(r, w) for r in ROUTES for w in WIDTHS}
         observed_pairs = {(row.get("route"), row.get("width")) for row in data["reports"]}
@@ -81,7 +82,7 @@ def verify(html, expected):
             raise ValueError("non-exhaustive or duplicate route/width set in axe evidence")
         if any(row.get("violations") for row in data["reports"]):
             raise ValueError("axe report contains violations despite PASS summary")
-        print("Axe WCAG-tagged preflight: 40/40 scans with zero automated violations.")
+        print("Axe WCAG-tagged preflight: 42/42 scans with zero automated violations.")
         print("Manual screen reader, zoom, PDF structure, and full WCAG acceptance remain separate.")
     elif expected == "states":
         try:
@@ -121,7 +122,7 @@ def self_test():
         pass
     else:
         raise ValueError("PASS-in-script false positive accepted")
-    sample = {"status": "PASS", "scans": 40, "expectedScans": 40,
+    sample = {"status": "PASS", "scans": 42, "expectedScans": 42,
               "errors": [], "reports": [{"route": r, "width": w, "violations": [],
                                      "incomplete": []} for r in ROUTES for w in WIDTHS]}
     verify('<html><pre id="result">' + json.dumps(sample) + '</pre></html>', "axe")
