@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>JRS 400 percent equivalent reflow preflight</title></head>
+<body><h1>JRS narrow CSS viewport reflow preflight</h1>
+<pre id="result" role="status">RUNNING</pre>
+<script>
+(async function(){
+  // 320 and 400 CSS-pixel viewports model the available layout width
+  // at 400% browser zoom from 1280 and 1600 CSS-pixel viewports.
+  // This is automated reflow evidence, NOT a physical/browser zoom
+  // or assistive-technology acceptance test.
+  const routes=['/index.html','/resources.html','/editions.html','/organization.html',
+    '/training.html','/jrsstandard.html','/investigator-guides.html','/contact.html',
+    '/research.html','/check.html','/simulations.html','/about.html',
+    '/methodology.html','/decision-reconstruction-risk.html','/research-summary.html',
+    '/privacy-notice.html','/operational-boundaries.html','/implementation-scenarios.html',
+    '/review-engine.html','/research-register.html'];
+  const widths=[320,400],reports=[],errors=[];
+  for(const route of routes)for(const width of widths){
+    const frame=document.createElement('iframe');
+    frame.title='Reflow audit '+route+' at '+width+' CSS pixels';
+    frame.style.cssText='position:fixed;top:0;left:0;width:'+width+'px;height:960px;border:0;background:#fff';
+    frame.width=width;frame.height=960;
+    document.body.appendChild(frame);
+    try {
+      await new Promise((resolve,reject)=>{
+        frame.addEventListener('load',resolve,{once:true});
+        frame.addEventListener('error',()=>reject(Error('iframe load failed')),{once:true});
+        frame.src=route;
+      });
+      const doc=frame.contentDocument;
+      if(!doc?.querySelector('main'))throw Error('missing main landmark');
+      await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+      const root=doc.documentElement,body=doc.body;
+      const scrollWidth=Math.max(root.scrollWidth,body.scrollWidth);
+      const clientWidth=root.clientWidth;
+      const ok=clientWidth>=width-2 && clientWidth<=width+2 && scrollWidth<=width+2;
+      const row={route,width,clientWidth,scrollWidth,status:ok?'PASS':'FAIL'};
+      reports.push(row);
+      if(!ok)errors.push({...row,reason:'page-wide horizontal scroll or incorrect viewport'});
+    }catch(e){
+      errors.push({route,width,reason:String(e?.message||e)});
+    }finally{frame.remove();}
+  }
+  document.getElementById('result').textContent=JSON.stringify({
+    status:errors.length?'FAIL':'PASS',scans:reports.length,
+    expectedScans:routes.length*widths.length,reports,errors,
+    limitation:'Automated 320/400 CSS viewport reflow only. Independent 400% browser zoom, VoiceOver and PDF accessibility still NOT ASSESSED.'
+  });
+})();
+</script></body></html>
