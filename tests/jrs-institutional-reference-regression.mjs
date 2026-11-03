@@ -28,9 +28,11 @@ for(const path of ['index.html','resources.html','about.html','organization.html
  const html=read(path);
  assert.ok(html.includes('<strong>'+freeEntry+'</strong>'),
   path+' must visibly identify immediate free practitioner access');
- for(const href of ['investigator-guides.html','training.html#training-modules','simulations.html','resources.html#resource-catalog']){
+ for(const href of ['investigator-guides.html','training.html#training-modules','simulations.html']){
   assert.ok(html.includes('href="'+href+'"'),path+' missing free practitioner entry '+href);
  }
+ const catalogHref=path==='resources.html'?'#resource-catalog':'resources.html#resource-catalog';
+ assert.ok(html.includes('href="'+catalogHref+'"'),path+' missing direct searchable reference directory');
  assert.doesNotMatch(html,/for later independent review\.<\/strong>/,
   path+' contains unmatched emphasis after long-form non-purchase statement');
 }

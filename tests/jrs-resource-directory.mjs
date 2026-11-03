@@ -13,8 +13,8 @@ const css=read('assets/jrs-institutional-reference.css');
 const homepage=read('index.html');
 assert.ok(homepage.includes('class="jr-action-main" href="check.html?src=home">Open seven-point record check</a>'),
  'homepage primary action must open the actual free, non-scoring record check');
-assert.ok(homepage.includes('href="resources.html">browse all free practitioner resources</a>'),
- 'the homepage must retain a clear path to the complete practitioner directory');
+assert.ok(homepage.includes('href="resources.html#resource-catalog">16-resource reference directory</a>'),
+ 'the homepage must retain an explicit direct link to the searchable practitioner directory');
 const guides=read('investigator-guides.html');
 for(const [path,page] of [['resources.html',html],['investigator-guides.html',guides]]) {
  assert.ok(page.includes('Accessible-format requests.'),path+' must disclose alternative-format request route');
