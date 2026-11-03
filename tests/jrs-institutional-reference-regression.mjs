@@ -432,8 +432,8 @@ for (const required of [
 ]) assert.ok(sevenPointAid.includes(required), 'seven-point aid lost evidenced human-review framing: ' + required);
 assert.doesNotMatch(sevenPointAid, /two or more modes in one file is the pattern that matters|if two or more modes show up|likely to struggle to explain its own decision|probably cannot explain its own decision/i,
   'unsupported two-item decision-prediction threshold returned');
-assert.match(sevenPointAid, /out\.innerHTML = summary \+ actions/,
-  'local visible review summary and copy/print controls must remain');
+assert.match(sevenPointAid, /out\.innerHTML = summary \+ bench \+ actions/,
+  'review summary and separate on-screen research benchmark must remain');
 const checkLocalScript = sevenPointAid.match(/<script>\s*\(function\(\)\{\s*\/\/ Runs entirely in the browser\.[\s\S]*?<\/script>/);
 assert.ok(checkLocalScript, 'local-only record check is missing');
 assert.doesNotMatch(checkLocalScript[0], /\b(?:fetch|sendBeacon)\s*\(|\blocalStorage\s*\./,
@@ -524,4 +524,21 @@ console.log('PASS: seven-point aid has no invented two-item threshold, distingui
  assert.ok(read('tests/jrs-check-a11y-browser.html').includes('failed clipboard command never reports success'),
    'browser must fail when copy fallback claims success without confirmation');
  console.log('PASS: synthetic populated print and clipboard denial witnesses remain in CI.');
+}
+
+// Research evidence must not be copied or printed as though measured on the
+// particular record. Preserve source research on screen, but export only
+// the review note, its limitations and provenance.
+{
+ const check=read('check.html');
+ assert.match(check, /\+ head \+ tail \+ stamp \+ '<\/section>'/,
+    'record-specific summary must exclude constructed-corpus accuracy evidence');
+ assert.match(check, /out\.innerHTML = summary \+ bench \+ actions/,
+    'the benchmark must remain visible in the page as separate research context');
+ assert.match(check, /#sa-out > \.sa-bench\{display:none!important\}/,
+    'print must exclude the group-level benchmark independently of the record summary');
+ const fixture=read('tests/jrs-check-a11y-browser.html');
+ assert.match(fixture, /portable note does not incorporate group-level research benchmarks/,
+    'copy test must reject unrelated group-level research figures');
+ console.log('PASS: record-specific exports separate findings from constructed-corpus evidence.');
 }

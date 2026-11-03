@@ -164,10 +164,9 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   body.jrs-institutional #sa-out,
   body.jrs-institutional #sa-out *{color:#111!important;background:#fff!important;box-shadow:none!important}
   body.jrs-institutional #sa-out .sa-actions{display:none!important}
-  body.jrs-institutional #sa-out .sa-bench{
-    border:1px solid #999!important;border-left:3px solid #555!important;
-    margin:5mm 0!important;padding:4mm!important;break-inside:avoid;
-  }
+  /* This is constructed-corpus research, not evidence about the reviewed
+     record. Keep it visible on the page, but not in the portable record note. */
+  body.jrs-institutional #sa-out > .sa-bench{display:none!important}
   body.jrs-institutional #sa-out .sa-stamp{
     margin-top:5mm!important;padding-top:3mm!important;
     border-top:1px solid #999!important;font-size:9pt!important;
@@ -383,9 +382,11 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
       + '<button type="button" id="sa-print">Print or save as PDF</button>'
       + '<a href="compliance.html" class="sa-adopt">Make this a policy &rarr;</a></div>';
 
+    // Export only this record-specific review note. The study benchmark stays
+    // available on screen but must not travel as evidence about this record.
     var summary = '<section id="sa-summary" aria-label="Source-verification review summary">'
-      + head + tail + bench + stamp + '</section>';
-    out.innerHTML = summary + actions;
+      + head + tail + stamp + '</section>';
+    out.innerHTML = summary + bench + actions;
 
     var cp = document.getElementById('sa-copy');
     if (cp) cp.addEventListener('click', function(){

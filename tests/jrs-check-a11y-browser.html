@@ -62,6 +62,12 @@
   expect(!summary.textContent.includes('Copy summary') &&
     !summary.textContent.includes('Print or save as PDF'),
     'summary copy content excludes action control labels');
+  expect(!summary.textContent.includes('What trained reviewers found') &&
+    !summary.textContent.includes('83.9%'),
+    'portable note does not incorporate group-level research benchmarks');
+  expect(!!output.querySelector('.sa-bench') &&
+    output.querySelector('.sa-bench').textContent.includes('83.9%'),
+    'study evidence remains available on screen, separately from the note');
   // Simulate browser clipboard refusal without relying on OS permissions.
   Object.defineProperty(w.navigator,'clipboard',{configurable:true,value:undefined});
   var copiedText='';
@@ -80,8 +86,10 @@
   expect(copiedText.includes('Fluent groundlessness') &&
     copiedText.includes('Basis substitution') &&
     !copiedText.includes('Make this a policy') &&
-    !copiedText.includes('Copy summary'),
-    'copied output contains selected review material without controls');
+    !copiedText.includes('Copy summary') &&
+    !copiedText.includes('What trained reviewers found') &&
+    !copiedText.includes('83.9%'),
+    'copied output contains selected review material without controls or unrelated study accuracy');
   expect(d.activeElement===cp&&!d.querySelector('textarea'),
     'confirmed copy restores keyboard focus and cleans up temporary field');
   expect(sent.length===0,'copy actions do not send the record-check answers');

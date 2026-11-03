@@ -20,3 +20,7 @@ The GitHub hosted visual workflow failed because its dedicated protected-preview
 The seven-point check now has a separate synthetic two-selection Chrome DevTools Protocol print witness. It verifies that a populated review summary retains the two review prompts, the question count and non-scoring warning, and that navigation and website actions are excluded from the printed PDF. The companion browser test simulates clipboard denial and confirmed fallback success, verifies that temporary fields are removed and focus is restored, and checks that no answer is transmitted.
 
 These are scripted browser and printed-text tests, not practitioner case studies, physical 400% browser-zoom evidence, human VoiceOver testing, tagged-PDF accessibility or an independent WCAG/PDF/UA certification. No real case record or participant data is used in these fixtures.
+
+## Evidentiary boundary for portable check outputs
+
+The seven-point check's constructed-corpus benchmark remains visible on the website as research context. It is deliberately excluded from copied and printed single-record summaries. The portable note contains the chosen review questions, instructions for source verification, the generation date and the non-certification warning. This avoids presenting group-level detection accuracy as supporting a particular record's findings. A separate extracted-PDF witness normalizes whitespace before comparing complete required phrases and rejects accidental inclusion of navigation, action controls or research accuracy statistics. The original PDFs remain unchanged.
