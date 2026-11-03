@@ -8,12 +8,16 @@ Labels follow the repository's evidence rules: **FACT** (inspected), **UNVERIFIE
 
 ## Priority 1: fix before sending (each one could sink the submission or embarrass the authors)
 
-### 1. Case quotes and facts rest on summaries, not on the decisions
-- **Finding.** The opening case (AB 634916) and three quotes (AB 636070, 637062, 638160) come from Tanvi's de-identified summaries in `bench_outcomes`. The decisions themselves were not read, because uiappeals.ny.gov is blocked from this session and exact-phrase searches found nothing. **UNVERIFIED.**
-- **Why it matters.** The article's opening and four of its six lessons depend on them. A misquote in print, found by a reader, undercuts an article whose subject is records that match their evidence.
-- **Steps.** (a) Open each decision at `https://uiappeals.ny.gov/decisions/appeal-board-no-<number>`. (b) Confirm every quoted phrase character for character, and the facts paraphrased around it. (c) Correct the text or the quote, or replace the case.
-- **Pass when** 4 of 4 decisions are checked and every quote matches exactly. Record the result in MASTER_TRACKER.
-- **Owner:** Phillip or Tanvi. Alternatively, allow `uiappeals.ny.gov` in the environment's network settings and ask Claude to check.
+### 1. Case quotes and facts: PARTLY VERIFIED 2026-11-03 (search-result text; decisions not opened)
+| Item | Status | Evidence |
+|---|---|---|
+| AB 637062, warning rule | **Verified as the Board's rule.** The article now attributes the quote to it and cites the Board's *Bench Manual*, Part 2, Chapter 2 (new endnote 9) | Bench Manual: "The prior warning must be related to the behavior comprising the final incident." |
+| AB 636070, hearsay | **Principle supported** | Board guidance: hearsay "may be considered, although it generally will not count as heavily as firsthand testimony" |
+| AB 636070, termination-letter quote | UNVERIFIED | Decision not found in search |
+| AB 634916, opening case | UNVERIFIED | Decision not found in search |
+| AB 638160, certified-letter facts | UNVERIFIED | Decision not found in search |
+| Valentine S. and Carson quotes | UNVERIFIED | Not searched; EEOC decisions are public |
+- **Remaining step.** Open AB 634916, 636070 and 638160 on uiappeals.ny.gov ("Searchable Decisions"), and the two EEOC appeals, and confirm the quoted phrases. **Pass when** 5 of 5 are confirmed or corrected.
 
 ### 2. Co-author approval of this new text
 - **Finding.** Tanvi approved the ISACA article. This article is largely new: new structure, program recommendations, and her bio shortened. No approval of this version is on record. **REQUIRES HUMAN REVIEW.**
@@ -25,10 +29,12 @@ Labels follow the repository's evidence rules: **FACT** (inspected), **UNVERIFIE
 - **Steps.** Send message B below. If he declines or does not answer, remove the acknowledgement.
 - **Pass when** he confirms in writing, saved to `research/correspondence/McMullan_Kyle.md`, or the acknowledgement is removed.
 
-### 4. Legal and regulatory citations not checked against primary sources
-- **Finding.** 45 C.F.R. 164.530(e)(1) and (e)(2) and the 164.502(j) exclusion; OIG *General Compliance Program Guidance* (Nov. 2023); HHS-OIG and HCCA *Measuring Compliance Program Effectiveness* (27 Mar. 2017); 31 U.S.C. 3730(h). All were confirmed only through secondary sources. **UNVERIFIED.**
-- **Steps.** Check each against eCFR, oig.hhs.gov and uscode.house.gov, and confirm each sentence in the article says no more than the source.
-- **Pass when** 4 of 4 citations are confirmed and the wording is adjusted where needed.
+### 4. Legal and regulatory citations: VERIFIED OR CORRECTED 2026-11-03
+- **45 C.F.R. 164.530(e)(1) and (e)(2): verified** against the regulation text (Cornell LII, eLaws). Endnote 2 corrected to the full exclusion: "does not apply to actions that meet § 164.502(j) or § 164.530(g)(2)."
+- **31 U.S.C. 3730(h): consistent** with several sources quoting the statute ("other efforts to stop 1 or more violations"). The official U.S. Code page was not reached.
+- **OIG General Compliance Program Guidance (Nov. 2023): corrected.** The element is "Enforcing Standards: Consequences and Incentives", so the article now says OIG "names enforcing standards through consequences and incentives as an element"; the unsupported word "consistent" is gone.
+- **HHS-OIG and HCCA Resource Guide (Mar. 27, 2017): corrected** to its own metrics: discipline "proportionate to violation", "enforced consistently throughout all levels", and "a documented policy addressing discipline".
+- **Pass when:** met, apart from an optional look at uscode.house.gov for 3730(h).
 
 ### 5. The statement that ISACA is no longer considering the article: RESOLVED 2026-11-03
 - **FACT.** ISACA Journal declined the article on 2026-10-27 (Abby Norton, Manager, Periodicals). The decision is transcribed in `research/correspondence/ISACA_Journal.md`. The pitch's statement is supported.
