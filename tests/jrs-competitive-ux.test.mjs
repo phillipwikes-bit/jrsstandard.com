@@ -5,6 +5,10 @@ import {readFileSync} from 'node:fs';
 const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const home=read('index.html');
 const resources=read('resources.html');
+const training=read('training.html');
+const guides=read('investigator-guides.html');
+const about=read('about.html');
+const organization=read('organization.html');
 const css=read('assets/jrs-a-pathways.css');
 const vercel=JSON.parse(read('vercel.json'));
 
@@ -84,4 +88,34 @@ const nav=home.match(/<nav class="jrs-sitenav" aria-label="Site">([\s\S]*?)<\/na
 assert.ok(nav,'canonical navigation must remain');
 assert.equal((nav[1].match(/<a href=/g)||[]).length,7,
  'do not add more global navigation while optimizing user journeys');
+// Editorial narrative integrity: keep the original question and exact practitioner-first promise.
+// These assertions verify copy/route identity, not uptake, persuasive effect or field efficacy.
+const centralPromise='Organizations do not need to purchase or replace a software platform to begin examining whether their decision records preserve sufficient evidence, chronology and reasoning for later independent review.';
+assert.equal(home.split(centralPromise).length-1,1,
+ 'homepage must visibly state the full no-purchase/no-replacement proposition once');
+assert.equal(organization.split(centralPromise).length-1,1,
+ 'organizational information should repeat the exact no-purchase proposition without a sales CTA');
+assert.ok(home.indexOf('id="jrs-main-heading"')<home.indexOf(centralPromise) &&
+          home.indexOf(centralPromise)<home.indexOf('id="task-chooser"'),
+ 'preserve original headline and make the free practitioner promise visible before task navigation');
+assert.ok(home.indexOf('href="check.html?src=home"')<home.indexOf(centralPromise),
+ 'do not move the first actionable, free record check beneath long editorial copy');
+assert.ok(home.includes('href="#worked-record">See the three-step fictional example</a>') &&
+          home.includes('href="resources.html">browse all free practitioner resources</a>'),
+ 'preserve established links to a source-checked demonstration and complete resource library');
+assert.match(home,/Decision Reconstruction Risk \(DRR\)/);
+assert.match(resources,/Free JRS training and tools for practitioners/);
+assert.match(resources,/No platform purchase required/);
+assert.match(training,/Free, self-paced training for practitioners confronting Decision Reconstruction Risk \(DRR\)/);
+assert.match(guides,/For investigators doing the work/);
+assert.match(about,/Decision Reconstruction Risk \(DRR\)/);
+assert.match(organization,/No organizational software, license, certification or validated operational effectiveness/);
+assert.match(css,/jr-platform-promise/);
+for(const page of [home,resources,training,guides,organization]){
+ assert.ok(!page.includes('Buy Decision Spellchecker') &&
+   !page.includes('Get an enterprise quote') &&
+   !page.includes('Book a commercial demo'),
+   'public practitioner experience cannot become a commercial product funnel');
+}
+
 console.log('PASS: canonical first-use JRS procedure, existing tool routes, PDF/version and privacy boundaries preserved.');
