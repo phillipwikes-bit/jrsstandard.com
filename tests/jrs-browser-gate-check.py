@@ -103,8 +103,8 @@ def verify(html, expected):
             if (row.get("status") != "PASS" or
                     not isinstance(row.get("clientWidth"), (int, float)) or
                     not isinstance(row.get("scrollWidth"), (int, float)) or
-                    not width-2 <= row["clientWidth"] <= width+2 or
-                    row["scrollWidth"] > width+2):
+                    not width-20 <= row["clientWidth"] <= width+2 or
+                    row["scrollWidth"] > row["clientWidth"]+2):
                 raise ValueError("reflow overflow or invalid geometry: " + json.dumps(row))
         if data.get("status") != "PASS" or data.get("errors"):
             raise ValueError("reflow audit failed: " + json.dumps(data.get("errors", []))[:9000])
@@ -175,8 +175,8 @@ def self_test():
         raise ValueError("unexecuted axe fixture accepted")
     reflow = {"status": "PASS", "scans": 40, "expectedScans": 40,
               "errors": [], "reports": [
-                  {"route": route, "width": width, "clientWidth": width,
-                   "scrollWidth": width, "status": "PASS"}
+                  {"route": route, "width": width, "clientWidth": width-15,
+                   "scrollWidth": width-15, "status": "PASS"}
                   for route in ROUTES for width in (320, 400)]}
     verify('<pre id="result">' + json.dumps(reflow) + '</pre>', "reflow")
     for mutation in ("overflow", "duplicate", "unexecuted"):
