@@ -22,6 +22,20 @@ assert.equal(braces,0,'unbalanced CSS blocks');
 // Core positioning is a human-applied review instrument within existing workflows,
 // not a platform acquisition. Preserve the approved long-form proposition as well.
 const practicalPositioning='JRS is a practical review instrument that practitioners can use within existing workflows, not a software platform they must acquire.';
+
+const freeEntry='Free resources you can use today:';
+for(const path of ['index.html','resources.html','about.html','organization.html']){
+ const html=read(path);
+ assert.ok(html.includes('<strong>'+freeEntry+'</strong>'),
+  path+' must visibly identify immediate free practitioner access');
+ for(const href of ['investigator-guides.html','training.html#training-modules','simulations.html']){
+  assert.ok(html.includes('href="'+href+'"'),path+' missing free practitioner entry '+href);
+ }
+ const catalogHref=path==='resources.html'?'#resource-catalog':'resources.html#resource-catalog';
+ assert.ok(html.includes('href="'+catalogHref+'"'),path+' missing direct searchable reference directory');
+ assert.doesNotMatch(html,/for later independent review\.<\/strong>/,
+  path+' contains unmatched emphasis after long-form non-purchase statement');
+}
 for(const path of ['index.html','resources.html','about.html','organization.html']){
  const html=read(path);
  assert.equal(html.split(practicalPositioning).length-1,1,
