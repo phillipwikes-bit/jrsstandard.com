@@ -97,6 +97,11 @@ jobs:
           done
           browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
           test -n "$browser"
+          if ! command -v pdftotext >/dev/null; then
+            # CI-only text extraction, never added to deployed JRS assets.
+            sudo apt-get update -qq
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends poppler-utils
+          fi
           command -v pdftotext >/dev/null || { echo 'RELEASE HOLD: PDF text checker unavailable'; exit 1; }
           "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage \
             --virtual-time-budget=12000 --no-pdf-header-footer \
@@ -124,5 +129,7 @@ jobs:
             /tmp/jrs-axe-evidence.json
             /tmp/jrs-states-evidence.json
             /tmp/jrs-check-a11y-evidence.json
+            /tmp/jrs-check-summary-preflight.pdf
+            /tmp/jrs-check-print-text.txt
           if-no-files-found: warn
           retention-days: 30
