@@ -25,6 +25,17 @@ The 62 figure counts pages with at least one warning, not verified accessibility
 
 In the Standard's page 2 raw transcript, the running header begins `JRSTM Justification Review Standard Version 2.0`, followed by the Scope and Terms and Definitions text. Its extraction inventory reports `TOKEN_DISCREPANCY`. The difference may reflect layout or extraction artifacts. It is **not** evidence that the published wording is wrong. Compare both extracted views with the original rendered PDF before correcting anything.
 
+## Concrete transcript comparisons from the retained artifact
+
+The following observations were checked against the actual raw-mode and layout-mode HTML transcripts in artifact `13275402015`. **They are not comparisons against the visually rendered original PDF and are not human accessibility acceptance.**
+
+- **Standard, page 2:** The raw transcript begins `JRSTM Justification Review Standard Version 2.0`, while the layout transcript separates `JRS` and `TM` in the running header. The page is flagged `TOKEN_DISCREPANCY`. Editorial question: is the trademark marker and running header represented faithfully, and should the running header be excluded from the semantic reading flow?
+- **Employment / EEO guide, page 1:** Raw extraction places the footer-like sequence `JRS™ 001-INV-E v1.1 © 2026 Phillip Wikes jrsstandard.com Page 1` before the document title and purpose. Layout extraction places the technical supplement title and metadata ahead of the footer. This is a concrete extraction-order difference, but the intended accessible reading order must be established from the source page.
+- **Employment / EEO guide, page 2:** Raw extraction places the page identifier and footer before `Contents`; layout extraction places the contents and document notice before the page identifier. The contents list must be checked for navigable structure, not merely visually similar line breaks.
+- **Working research paper, page 1:** Both modes contain the working-paper status and preliminary-validation qualification, but the layout transcript positions the main title and metadata differently from the raw transcript. Preserve the exact qualification in any accessible edition.
+
+These examples show that repeated headers, footers and metadata placement contribute to extraction-order disagreements. They **do not** establish that every flagged page has an incorrect PDF tag tree, nor that the source document itself contains a content error. Resolve each case by visual comparison, semantic reading-order inspection, and assistive-technology testing.
+
 ## Review sequence
 
 1. Compare all six flagged Standard pages with the source PDF, including headings, running headers, defined terms and the five review conditions.
