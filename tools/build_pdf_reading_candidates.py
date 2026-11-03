@@ -165,8 +165,9 @@ def main():
                 flags.append("EMPTY_EXTRACTION")
             if page_difference:
                 flags.append("TOKEN_DISCREPANCY")
-            elif raw_page.strip() and layout_page.strip() and ordered_tokens(raw_page) != ordered_tokens(layout_page):
-                # Identical token inventories can still conceal reading-order changes.
+            if raw_page.strip() and layout_page.strip() and ordered_tokens(raw_page) != ordered_tokens(layout_page):
+                # Ordering and word-content discrepancies are independent risks.
+                # Report both when they occur on the same source page.
                 flags.append("ORDER_DISAGREEMENT")
             if chr(0xfffd) in raw_page or chr(0xfffd) in layout_page:
                 flags.append("REPLACEMENT_CHARACTER")
