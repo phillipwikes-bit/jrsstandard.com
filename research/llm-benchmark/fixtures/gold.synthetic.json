@@ -5,7 +5,15 @@
   "cases": [
     {
       "id": "SYN001",
-      "gaps": []
+      "gaps": [],
+      "source_spans": [
+        {
+          "source_id": "DOC_S1",
+          "spans": [
+            "SPAN_S1"
+          ]
+        }
+      ]
     },
     {
       "id": "SYN002",
@@ -13,6 +21,14 @@
         {
           "id": "G_BASIS_1",
           "condition": "identifiable_basis"
+        }
+      ],
+      "source_spans": [
+        {
+          "source_id": "DOC_S2",
+          "spans": [
+            "SPAN_S2"
+          ]
         }
       ]
     },
@@ -22,6 +38,14 @@
         {
           "id": "G_TIME_1",
           "condition": "chronology"
+        }
+      ],
+      "source_spans": [
+        {
+          "source_id": "DOC_S3",
+          "spans": [
+            "SPAN_S3"
+          ]
         }
       ]
     }
