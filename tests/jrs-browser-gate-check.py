@@ -84,6 +84,32 @@ def verify(html, expected):
             raise ValueError("axe report contains violations despite PASS summary")
         print("Axe WCAG-tagged preflight: 40/40 scans with zero automated violations.")
         print("Manual screen reader, zoom, PDF structure, and full WCAG acceptance remain separate.")
+    elif expected == "reflow":
+        try:
+            data = json.loads(value)
+        except ValueError as exc:
+            raise ValueError("reflow fixture did not finish: " + value[:300]) from exc
+        if not isinstance(data, dict):
+            raise ValueError("invalid reflow result schema")
+        expected_pairs = {(r, w) for r in ROUTES for w in (320, 400)}
+        rows = data.get("reports")
+        if not isinstance(rows, list) or len(rows) != len(expected_pairs):
+            raise ValueError("missing or duplicated reflow observations")
+        observed_pairs = {(r.get("route"), r.get("width")) for r in rows}
+        if observed_pairs != expected_pairs or data.get("scans") != 40 or data.get("expectedScans") != 40:
+            raise ValueError("incomplete or mismatched reflow coverage")
+        for row in rows:
+            width = row["width"]
+            if (row.get("status") != "PASS" or
+                    not isinstance(row.get("clientWidth"), (int, float)) or
+                    not isinstance(row.get("scrollWidth"), (int, float)) or
+                    not width-2 <= row["clientWidth"] <= width+2 or
+                    row["scrollWidth"] > width+2):
+                raise ValueError("reflow overflow or invalid geometry: " + json.dumps(row))
+        if data.get("status") != "PASS" or data.get("errors"):
+            raise ValueError("reflow audit failed: " + json.dumps(data.get("errors", []))[:9000])
+        print("PASS: 40/40 320/400 CSS-pixel layout reflow observations across 20 public routes.")
+        print("This is NOT independent browser-zoom, VoiceOver or PDF/UA acceptance.")
     elif expected == "states":
         try:
             data = json.loads(value)
@@ -123,7 +149,7 @@ def verify(html, expected):
         print("No form was submitted and no personal data was supplied.")
     else:
         raise ValueError("unknown fixture")
-    return data if expected in ("axe", "states") else True
+    return data if expected in ("axe", "states", "reflow") else True
 
 
 def self_test():
@@ -147,6 +173,27 @@ def self_test():
         pass
     else:
         raise ValueError("unexecuted axe fixture accepted")
+    reflow = {"status": "PASS", "scans": 40, "expectedScans": 40,
+              "errors": [], "reports": [
+                  {"route": route, "width": width, "clientWidth": width,
+                   "scrollWidth": width, "status": "PASS"}
+                  for route in ROUTES for width in (320, 400)]}
+    verify('<pre id="result">' + json.dumps(reflow) + '</pre>', "reflow")
+    for mutation in ("overflow", "duplicate", "unexecuted"):
+        bad = json.loads(json.dumps(reflow))
+        if mutation == "overflow":
+            bad["reports"][0]["scrollWidth"] = 800
+        elif mutation == "duplicate":
+            bad["reports"][0]["route"] = bad["reports"][1]["route"]
+            bad["reports"][0]["width"] = bad["reports"][1]["width"]
+        else:
+            bad = {"status": "RUNNING", "scans": 0, "reports": []}
+        try:
+            verify('<pre id="result">' + json.dumps(bad) + '</pre>', "reflow")
+        except ValueError:
+            pass
+        else:
+            raise ValueError("invalid reflow evidence accepted: " + mutation)
     active = {"status": "PASS", "scans": len(STATES) * len(WIDTHS),
               "expectedScans": len(STATES) * len(WIDTHS),
               "errors": [], "reports": [
@@ -186,8 +233,8 @@ def main():
     if sys.argv[1:] == ["--self-test"]:
         self_test()
         return
-    if len(sys.argv) not in (3, 4) or (len(sys.argv) == 4 and sys.argv[2] not in ("axe", "states")):
-        raise SystemExit("Usage: jrs-browser-gate-check.py OUTPUT_HTML responsive|axe|states [EVIDENCE_JSON]")
+    if len(sys.argv) not in (3, 4) or (len(sys.argv) == 4 and sys.argv[2] not in ("axe", "states", "reflow")):
+        raise SystemExit("Usage: jrs-browser-gate-check.py OUTPUT_HTML responsive|axe|states|reflow [EVIDENCE_JSON]")
     try:
         result = verify(Path(sys.argv[1]).read_text(encoding="utf-8"), sys.argv[2])
         if len(sys.argv) == 4:
