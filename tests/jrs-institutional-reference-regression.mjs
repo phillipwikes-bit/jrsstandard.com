@@ -19,6 +19,21 @@ let braces=0;
 for(const c of css){if(c==='{')braces++;if(c==='}')braces--;assert.ok(braces>=0,'unbalanced CSS closing brace');}
 assert.equal(braces,0,'unbalanced CSS blocks');
 
+// Core positioning is a human-applied review instrument within existing workflows,
+// not a platform acquisition. Preserve the approved long-form proposition as well.
+const practicalPositioning='JRS is a practical review instrument that practitioners can use within existing workflows, not a software platform they must acquire.';
+for(const path of ['index.html','resources.html','about.html','organization.html']){
+ const html=read(path);
+ assert.equal(html.split(practicalPositioning).length-1,1,
+  path+' must prominently state the approved practitioner-first proposition once');
+ assert.ok(html.includes('<strong>'+practicalPositioning+'</strong>'),
+  path+' must visibly emphasize the practitioner-first proposition');
+}
+for(const path of ['index.html','resources.html','organization.html']){
+ assert.ok(read(path).includes('Organizations do not need to purchase or replace a software platform'),
+  path+' must retain the exact longer non-purchase statement');
+}
+
 // Guard international expert provenance and remove extraneous product-status copy.
 for(const page of ['index.html','about.html','research.html','research-summary.html','investigator-guides.html']){
  assert.match(read(page),/16 independent international experts from 11 countries across five continents/,
