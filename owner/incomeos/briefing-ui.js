@@ -8,10 +8,10 @@
   // arrive from the opportunities panel through an in-page event.
   function init(){
     var input=document.getElementById("briefing-file"),button=document.getElementById("briefing-load"),status=document.getElementById("briefing-status"),out=document.getElementById("briefing-output"),
-      passInput=document.getElementById("briefing-passphrase"),saveBtn=document.getElementById("briefing-save"),WS=window.IncomeOSWorkspace;
+      passInput=document.getElementById("briefing-passphrase"),saveBtn=document.getElementById("briefing-save"),undoBtn=document.getElementById("briefing-undo"),WS=window.IncomeOSWorkspace;
     var E={rules:window.IncomeOSLedgerRules,nw:window.IncomeOSNetWorth,claims:window.IncomeOSClaims,ren:window.IncomeOSRenewals,intel:window.IncomeOSIntelligence,rh:window.IncomeOSRecruiterHistory,yc:window.IncomeOSYieldCompare,wb:window.IncomeOSWeeklyBriefing,life:window.IncomeOSLifecycle};
     if(!input||!button||!status||!out||!WS||Object.keys(E).some(function(k){return !E[k];}))return;
-    var state={ws:null,screen:null,dirty:false,last:null};
+    var state={ws:null,screen:null,dirty:false,history:[]};
     function today(){var d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");}
     function el(p,tag,text,cls){var e=document.createElement(tag);if(text!=null)e.textContent=String(text);if(cls)e.className=cls;p.appendChild(e);return e;}
     function link(p,url,label){try{var u=new URL(url);if(u.protocol!=="https:")return;}catch(e){return;}var a=el(p,"a",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.referrerPolicy="no-referrer";}
@@ -19,7 +19,7 @@
     function section(title){var s=el(out,"section",null,"briefing-section");el(s,"h4",title,"project-subhead");return s;}
     function arr(x){return Array.isArray(x)?x:[];}
     function act(fn,label){
-      try{state.ws=fn(state.ws);state.dirty=true;render();status.textContent=label+". Save the updated workspace to keep this change.";}
+      try{var before=state.ws;state.ws=fn(state.ws);state.history.push(before);if(state.history.length>20)state.history.shift();state.dirty=true;render();status.textContent=label+". Save the updated workspace to keep this change, or undo it.";}
       catch(err){status.textContent="Not changed: "+err.message;}
     }
     function btn(p,text,onClick){var b=el(p,"button",text,"smallbtn");b.type="button";b.addEventListener("click",onClick);return b;}
@@ -96,15 +96,20 @@
       if(a.highestValue.length&&state.ws){var ab=el(out,"div",null,"briefing-actions");btn(ab,"Mark this week's opportunities as seen",function(){act(function(w){return WS.markAlerted(w,a.highestValue.map(function(h){return h.id;}).concat((state.screen&&state.screen.eligible||[]).map(function(x){return x.opportunity.opportunityId;})),asOf);},"Marked as seen");});}
       s=section("System health");a.systemHealth.forEach(function(h){el(s,"p",(h.ok?"OK: ":"Problem: ")+h.text,h.ok?"tag-ok":"tag-hold");});
       if(saveBtn)saveBtn.hidden=!state.ws;
+      if(undoBtn)undoBtn.hidden=!state.history.length;
       status.textContent=state.ws?(state.dirty?"Unsaved changes. Save the updated workspace to keep them.":"Workspace loaded in memory only. Nothing is stored or sent."):"Showing system health only. Load your workspace file to see your finances.";
     }
     button.addEventListener("click",async function(){
       var f=input.files&&input.files[0];
       if(!f){status.textContent="Choose your workspace file first.";return;}
       if(f.size>5000000){status.textContent="Workspace file exceeds 5 MB.";return;}
-      try{state.ws=await WS.load(await f.text(),passInput&&passInput.value||"");state.dirty=false;render();}
+      try{state.ws=await WS.load(await f.text(),passInput&&passInput.value||"");state.dirty=false;state.history=[];render();}
       catch(err){status.textContent="Workspace rejected: "+err.message;}
       finally{input.value="";}
+    });
+    if(undoBtn)undoBtn.addEventListener("click",function(){
+      if(!state.history.length)return;
+      state.ws=state.history.pop();state.dirty=true;render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
     });
     if(saveBtn)saveBtn.addEventListener("click",async function(){
       if(!state.ws)return;
