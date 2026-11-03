@@ -1,6 +1,6 @@
 # Pitch to Scott Moe (Compliance Today), revised 2026-11-03
 
-*Hold lifted 2026-11-03: the owner stated "The statistics have already been dealt with" (B-018 closed by owner statement). Cross-sector framing; the study is presented descriptively. Ready to send at the owner's discretion.*
+*HOLD (2026-11-03, later): blocker B-019 questions how three study outcomes are labelled; the "six of eight / two of twelve" figures may change. Send once B-019 is decided. (B-018 remains closed by owner statement.)*
 
 **Send package (owner checks before sending):**
 - Attach `ComplianceToday_Supplement_Case_List_2026-11-03.docx` as well (the 20-case list for online publication).

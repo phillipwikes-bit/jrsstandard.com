@@ -448,6 +448,29 @@
       "next_action_by": "NONE",
       "next_action_basis": "Closed on the owner statement recorded in owner_decision; nothing further is routed. Any later change to the Gannett or Kohler-Hausmann classification is a new owner decision (see research/ComplianceToday_PreSubmission_Checklist_2026-11-03.md item 6).",
       "owner_decision": "Owner, 2026-11-03, verbatim: \"The statistics have already been dealt with.\" Recorded as the owner retaining both rows as coded for the Compliance Today manuscript. No database row was changed. The specific Gannett outcome coding and the Kohler-Hausmann citation/content mismatch are not shown as reviewed in any repository record; that remains a documented observation, not a resolved finding."
+    },
+    {
+      "blocker_id": "B-019",
+      "severity": "HIGH",
+      "category": "EVIDENCE",
+      "description": "The outcome labels in bench_outcomes (HR / Employment) may not consistently encode the article's stated definition of an adverse finding (the employer's position did not survive review, or an adverse audit or compliance finding). In at least two rows the note describes the employer prevailing while the label is adverse. (1) U.S. Small Business Administration and AFGE Local 228, 71 FLRA No. 124 (2020): labelled failed_appeal; the note says the FLRA set aside the arbitrator's modification of the agency's penalty, which is an agency win. (2) FOP DC Lodge 1 and DoD Pentagon Force Protection Agency, 73 FLRA No. 77 (2023): labelled failed_audit; the note says the arbitrator denied the grievance and the FLRA rejected the challenges. (3) McDonnell Douglas Corp. v. Green (1973): labelled failed_appeal; the note says the Court remanded without deciding. One plausible reading is that failed_appeal records the decision under review being overturned rather than the employer losing. This is distinct from B-018 (Gannett, Kohler-Hausmann), which the owner closed.",
+      "evidence_refs": [
+        "research/B-019_Evidence_2026-11-03.md",
+        "research/MASTER_TRACKER.md"
+      ],
+      "affected_assets": [
+        "JRS-RESEARCH",
+        "research/ComplianceToday_Testing_Employment_Files_2026-11-03.docx",
+        "research/ComplianceToday_Supplement_Case_List_2026-11-03.docx",
+        "research/Pitch_Scott_Moe_ComplianceToday_2026-11-03.md"
+      ],
+      "required_action": "Owner and Tanvi Pokhriyal to confirm what each outcome label means and whether SBA, FOP and McDonnell Douglas are coded as intended. Sensitivity computed, not adopted: SBA and FOP recoded non-adverse gives 5/8 vs 1/12, p = 0.0181; adding McDonnell Douglas gives 4/8 vs 1/12, p = 0.1089; FOP alone gives p = 0.0044; SBA alone gives p = 0.0623. Reported figure as coded: p = 0.0194. No DB row was changed and no article figure was changed.",
+      "owner": "OWNER",
+      "status": "OPEN",
+      "created": "2026-11-03",
+      "note": "INFERENCE, not FACT: the reading of each outcome rests on the study's own notes; the decisions were not read. The six case lessons in the article do not depend on these three rows, so only the statistical figures and the supplement would change.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Outcome coding belongs to the study authors; Claude may not resolve a contradiction by guessing (CLAUDE.md s.5)."
     }
   ],
   "_decisions_recorded_2026_09_15": {

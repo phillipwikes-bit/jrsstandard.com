@@ -34,6 +34,12 @@ Labels follow the repository's evidence rules: **FACT** (inspected), **UNVERIFIE
 - **FACT.** ISACA Journal declined the article on 2026-10-27 (Abby Norton, Manager, Periodicals). The decision is transcribed in `research/correspondence/ISACA_Journal.md`. The pitch's statement is supported.
 - **Lesson carried forward.** ISACA's reviewers said the article lacked implementation guidance and specific, practical takeaways. The CT version's checkpoints, worked example, program section and 90-day plan respond directly to that.
 
+### 5a. Outcome labels may not match the article's definition (blocker B-019, opened 2026-11-03)
+- **Finding (INFERENCE).** SBA (71 FLRA No. 124) and Pentagon Force Protection (73 FLRA No. 77) carry adverse labels, although their notes describe the agency prevailing. McDonnell Douglas carries an adverse label for a remand. Detail is in `research/B-019_Evidence_2026-11-03.md`.
+- **Why it matters.** The headline figures could move either way: p = 0.0181 if two rows are recoded, 0.1089 if all three are, and 0.0044 if only FOP is. The six lessons do not depend on these rows.
+- **Steps.** Confirm with Tanvi what each label means, and decide whether the three rows are coded as intended.
+- **Pass when** the decision is recorded in BLOCKERS.json and the article, supplement and pitch figures match it.
+
 ## Priority 2: likely editor questions (prepare answers; small edits)
 
 ### 6. The supplement shows two public-records cases inside an "employment" corpus
@@ -98,3 +104,13 @@ You kindly agreed to an acknowledgement on the ISACA employment article. That pi
 
 Best,
 Phillip
+
+---
+
+## Unused material from the study records (for revisions or a follow-up piece)
+- **Carson v. DOJ:** the selecting official's reported statement, "Those people that filed EEO complaints don't get promoted." The remedy was a retroactive promotion with back pay. *(The investigation-documentation point from this case is now in the article.)*
+- **AFGE Local 4012 / SSA (73 FLRA No. 106):** the charges were sustained, but the 14-day suspension was cut to 7 after mitigating factors (the Douglas factors) were reassessed. This supports a proportionality lesson: document why the penalty fits.
+- **DoDDS Europe (65 FLRA No. 122):** federal recordkeeping rules barred expunging a justified suspension record. Retention rules can override a settlement-style remedy. A possible tie-in is HIPAA's six-year documentation retention, 45 C.F.R. 164.530(j) (unverified).
+- **IFPTE Local 4 / Navy (73 FLRA No. 94):** evidence of inconsistent discipline was never heard because the grievance missed a 10-day deadline. This bears on comparator tracking.
+- **Gallon; unnamed capability case:** documented appraisals, warnings and review periods held up. These are Ready examples of a capability process.
+- **ISACA companion corpus:** a second practitioner applied the same five conditions, unmodified, to 32 public-records determinations. This is evidence that the method transfers between reviewers. It is reported in an unpublished companion manuscript, so cite with care.
