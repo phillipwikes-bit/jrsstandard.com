@@ -1587,3 +1587,32 @@ body.jrs-institutional.jrs-standard-page .scenario-tabs .scenario-tab:focus-visi
 body.jrs-institutional.jrs-standard-page .scenario-pane{
   min-width:0;overflow-wrap:anywhere;
 }
+
+/* 2026-11-03: computed-color-contrast repairs confirmed by a pinned axe-core
+   source-rendered audit. The institutional palette had redefined --accent and
+   --gold on light pages, leaving legacy dark text on dark gold buttons.
+   Keep these overrides narrow: public presentation only, no data or logic. */
+body.jrs-institutional.jrs-guide-page .jrs-guide-subtitle{
+  color:#e2ebf3!important; /* 11.39:1 against institutional header #162f46 */
+}
+body.jrs-institutional.jrs-training-page :where(
+  #jrs-named-record-open,a[href="#simulator"][onclick]
+),
+body.jrs-institutional #contact-submit{
+  background:#eed2a0!important;
+  color:#12273c!important; /* 10.4:1 on the solid pale-gold fill */
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-guide-page .jrs-guide-subtitle{
+    color:CanvasText!important;
+  }
+  body.jrs-institutional.jrs-training-page :where(
+    #jrs-named-record-open,a[href="#simulator"][onclick]
+  ),
+  body.jrs-institutional #contact-submit{
+    forced-color-adjust:auto;
+    color:ButtonText!important;
+    background:ButtonFace!important;
+    border:1px solid ButtonText!important;
+  }
+}
