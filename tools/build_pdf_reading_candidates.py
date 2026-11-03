@@ -52,6 +52,20 @@ def candidate_html(item, raw_pages, layout_pages, identity, page_reviews):
     title = item.get("role") or filename
     edition = item.get("edition") or "Edition must be verified against published source"
     toc = " ".join(f'<a href="#page-{n}">Page {n}</a>' for n in range(1, len(page_reviews) + 1))
+    flagged = [review for review in page_reviews if review["flags"]]
+    flagged_links = " ".join(
+        f'<li><a href="#page-{review["page"]}">Page {review["page"]}</a>: '
+        f'{escape(", ".join(review["flags"]))}</li>'
+        for review in flagged
+    )
+    issue_summary = (
+        f'<section aria-labelledby="extraction-issues"><h2 id="extraction-issues">Pages requiring extraction review</h2>'
+        f'<p>{len(flagged)} of {len(page_reviews)} pages have automatic extraction warnings. '
+        f'No warning does not establish accessible reading order.</p>'
+        f'<ul>{flagged_links}</ul></section>'
+        if flagged else
+        '<p>No automatic extraction warnings were detected. All pages still require editorial review.</p>'
+    )
     sections = []
     for index, review in enumerate(page_reviews, start=1):
         raw = raw_pages[index - 1] if index <= len(raw_pages) else ""
@@ -64,7 +78,8 @@ def candidate_html(item, raw_pages, layout_pages, identity, page_reviews):
 <p class="context"><strong>Editorial status: NOT ASSESSED.</strong> Automatic extraction observations: {escape(warnings)}. {escape(raw_note)} {escape(layout_note)} Headings, tables, links and reading order have not been checked.</p>
 <pre class="reading">{escape(raw)}</pre>
 <details><summary>Compare layout-based extraction for page {index}</summary>
-<pre class="reading">{escape(layout)}</pre></details>\n<p><a href="#source-page-navigation">Return to source page navigation</a></p>
+<pre class="reading">{escape(layout)}</pre></details>
+<p><a href="#source-page-navigation">Return to source page navigation</a></p>
 </section>''')
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -87,6 +102,7 @@ section{{padding:1.5rem 0;border-top:1px solid #aab5bf}}
 <p><strong>Locked Git PDF blob:</strong> <code>{identity}</code></p>
 <p>Text is extracted in two independent ordering modes for comparison. Mathematical notation, multi-column order, tables, illustrations, headers, footnotes and link destinations require editorial and assistive-technology review.</p>
 <nav id="source-page-navigation" aria-label="Source PDF pages">{toc}</nav>
+{issue_summary}
 {''.join(sections)}
 </main></body></html>'''
 
