@@ -41,6 +41,7 @@ jobs:
             sudo apt-get update -qq
             sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends poppler-utils
           fi
+          python3 tools/build_pdf_reading_candidates.py --self-test
           python3 tools/build_pdf_reading_candidates.py --out /tmp/jrs-pdf-reading-candidates
           python3 - <<'PY'
           import json
