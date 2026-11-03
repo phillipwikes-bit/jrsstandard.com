@@ -105,6 +105,7 @@
       }catch(err){status.textContent="Import rejected: "+err.message;}
       finally{input.value="";if(profileInput)profileInput.value="";}
     });
+    document.addEventListener("incomeos:profile",function(ev){state.profile=ev.detail||null;if(state.snapshot)render();});
     status.textContent="Memory only: load your private profile and a discovery snapshot. Nothing is stored, sent or submitted.";
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();

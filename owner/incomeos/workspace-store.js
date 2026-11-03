@@ -20,6 +20,58 @@
     KEYS.forEach(function(k){if(Array.isArray(doc[k])&&doc[k].length>20000)throw Error(k+" has too many rows.");});
     return doc;
   }
+  var PROFILE_SCHEMA="incomeos.owner-profile.v1";
+  function validateDoc(doc){
+    if(doc&&doc.schema===PROFILE_SCHEMA){if(typeof doc!=="object"||Array.isArray(doc))throw Error("Invalid profile");return doc;}
+    return validate(doc);
+  }
+  function newWorkspace(on){
+    return {schema:SCHEMA,note:"Private IncomeOS workspace created "+(isDate(on)?on:"")+". Keep outside the repository; save encrypted.",
+      ledger:[],rules:[],accounts:[],balances:[],claims:[],livedInStates:["MD"],searchHistory:[],serviceNotes:[],offers:[],
+      yieldParams:{amountUsd:0,horizonMonths:12,federalRatePct:0,stateRatePct:0,needLiquidity:true},researchStages:[],recruiterOf:{},verifiedPayments:{},lifecycle:[],previousAlertIds:[],changeLog:[]};
+  }
+  var ACCOUNT_TYPES=["checking","savings","money_market","cd","treasury","brokerage","retirement","hsa","real_estate","vehicle","receivable","other_asset","credit_card","mortgage","auto_loan","student_loan","personal_loan","tax_owed","other_liability"];
+  var INCOME_CATS=["research","evaluation","business","royalty","rental","interest","dividend","investment","reward","recovery","employment","pension","retirement","socialsecurity","unemployment","other"];
+  var COST_CATS=["platform","software","equipment","internet","travel","training","professional","supplies","investing","tax","homeoffice","advertising","other"];
+  function money(x){var s=String(x==null?"":x).trim();if(!/^\d{1,9}(\.\d{1,2})?$/.test(s)||Number(s)<=0)throw Error("Enter a positive amount like 85.00");return Number(s).toFixed(2);}
+  function text(x,max,what){var s=String(x==null?"":x).trim();if(!s)throw Error(what+" is required");return s.slice(0,max);}
+  function slug(x){return String(x).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40)||"item";}
+  // Add one record to a section, validated for that section. Returns the new workspace.
+  function addRecord(ws,section,x,on){
+    if(!isDate(on))throw Error("Date required");
+    var next=clone(validate(ws)),list=arr(next[section]),rec;
+    if(section==="accounts"){
+      if(ACCOUNT_TYPES.indexOf(x.type)<0)throw Error("Choose an account type");
+      var name=text(x.name,80,"Account name"),id="acct-"+slug(name);
+      if(list.some(function(a){return a.id===id;}))throw Error("An account with that name already exists");
+      rec={id:id,name:name,type:x.type};
+    }else if(section==="ledger"){
+      if(x.kind!=="income"&&x.kind!=="outflow")throw Error("Choose income or expense");
+      if(!isDate(x.date))throw Error("Date required");
+      var cats=x.kind==="income"?INCOME_CATS:COST_CATS,cat=cats.indexOf(x.category)>=0?x.category:"other";
+      rec={id:"m-"+x.date+"-"+slug(x.payer)+"-"+(list.length+1),kind:x.kind,date:x.date,payer:text(x.payer,100,"Payer or vendor"),label:text(x.label||x.payer,100,"Description"),category:cat,evidenceStatus:"missing",source:"manual"};
+      if(x.kind==="income"){rec.grossUsd=money(x.amountUsd);rec.feesUsd="0.00";}else{rec.type="expense";rec.amountUsd=money(x.amountUsd);}
+    }else if(section==="serviceNotes"){
+      var v=text(x.vendor,100,"Vendor");
+      list=list.filter(function(n){return String(n.vendor).toLowerCase()!==v.toLowerCase();});
+      rec={vendor:v,necessary:x.necessary===true,cancelNoticeDays:x.cancelNoticeDays===""||x.cancelNoticeDays==null?null:Math.max(0,Math.min(365,Math.round(Number(x.cancelNoticeDays)))),lastUsedOn:isDate(x.lastUsedOn)?x.lastUsedOn:null};
+    }else if(section==="offers"){
+      if(["savings","money_market","cd","treasury_bill","treasury_note","i_bond"].indexOf(x.product)<0)throw Error("Choose a product");
+      var apy=Number(x.apyPct);if(!(apy>=0&&apy<25))throw Error("Enter the APY in percent");
+      var url;try{url=new URL(x.sourceUrl);}catch(e){throw Error("Paste the provider's https page");}
+      if(url.protocol!=="https:")throw Error("Paste the provider's https page");
+      rec={id:"offer-"+slug(x.provider)+"-"+(list.length+1),provider:text(x.provider,80,"Provider"),product:x.product,apyPct:apy,insurance:x.insurance||"FDIC",sourceUrl:url.href,checkedOn:on};
+      if(x.termMonths)rec.termMonths=Math.round(Number(x.termMonths));
+      if(x.earlyPenaltyMonths!==""&&x.earlyPenaltyMonths!=null)rec.earlyPenaltyMonths=Number(x.earlyPenaltyMonths);
+    }else throw Error("Unknown section");
+    next[section]=list.concat([rec]);
+    return log(next,"ADD_"+section.toUpperCase(),{id:rec.id||rec.vendor},on);
+  }
+  function setYieldParams(ws,y,on){
+    var next=clone(validate(ws)),p={amountUsd:Number(y.amountUsd),horizonMonths:Number(y.horizonMonths),federalRatePct:Number(y.federalRatePct),stateRatePct:Number(y.stateRatePct),needLiquidity:y.needLiquidity===true};
+    if(!(p.amountUsd>0)||!(p.horizonMonths>0)||!(p.federalRatePct>=0&&p.federalRatePct<60)||!(p.stateRatePct>=0&&p.stateRatePct<20))throw Error("Enter amount, months and both tax rates");
+    next.yieldParams=p;return log(next,"SET_YIELD_PARAMS",{},on);
+  }
   function log(ws,action,detail,on){
     ws.changeLog=arr(ws.changeLog).concat([{on:on,action:action,detail:detail}]).slice(-5000);
     return ws;
@@ -96,7 +148,7 @@
     return crypto.subtle.deriveKey({name:"PBKDF2",salt:salt,iterations:ITERATIONS,hash:"SHA-256"},m,{name:"AES-GCM",length:256},false,["encrypt","decrypt"]);
   }
   async function encrypt(p,ws){
-    validate(ws);
+    validateDoc(ws);
     var salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12)),plain=enc.encode(JSON.stringify(ws));
     if(plain.byteLength>5000000)throw Error("Workspace exceeds 5 MB.");
     var ct=new Uint8Array(await crypto.subtle.encrypt({name:"AES-GCM",iv:iv},await deriveKey(p,salt),plain));
@@ -111,15 +163,15 @@
     var plain;
     try{plain=await crypto.subtle.decrypt({name:"AES-GCM",iv:iv},await deriveKey(p,salt),unb64(o.data));}
     catch(e){if(/passphrase/.test(e.message))throw e;throw Error("Wrong passphrase or damaged file.");}
-    return validate(JSON.parse(dec.decode(plain)));
+    return validateDoc(JSON.parse(dec.decode(plain)));
   }
   // Read either a plain or an encrypted workspace file's text.
   async function load(text,passphrase){
     if(typeof text!=="string"||text.length>8000000)throw Error("Workspace file is missing or too large.");
     if(isEncrypted(text)){if(!passphrase)throw Error("This workspace is encrypted. Enter its passphrase.");return decrypt(passphrase,text);}
-    return validate(JSON.parse(text));
+    return validateDoc(JSON.parse(text));
   }
-  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
+  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
     addBalance:addBalance,markAlerted:markAlerted,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSWorkspace=api;
