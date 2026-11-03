@@ -43,6 +43,10 @@ def tokens(s):
     return Counter(re.findall(r"\w+", s.casefold(), re.UNICODE))
 
 
+def ordered_tokens(s):
+    return re.findall(r"\w+", s.casefold(), re.UNICODE)
+
+
 def candidate_html(item, raw_pages, layout_pages, identity, page_reviews):
     filename = item["file"]
     title = item.get("role") or filename
@@ -133,6 +137,9 @@ def main():
                 flags.append("EMPTY_EXTRACTION")
             if page_difference:
                 flags.append("TOKEN_DISCREPANCY")
+            elif raw_page.strip() and layout_page.strip() and ordered_tokens(raw_page) != ordered_tokens(layout_page):
+                # Identical token inventories can still conceal reading-order changes.
+                flags.append("ORDER_DISAGREEMENT")
             if chr(0xfffd) in raw_page or chr(0xfffd) in layout_page:
                 flags.append("REPLACEMENT_CHARACTER")
             page_reviews.append({
@@ -140,6 +147,7 @@ def main():
                 "raw_characters": len(raw_page),
                 "layout_characters": len(layout_page),
                 "token_discrepancy": page_difference,
+                "order_agreement": ordered_tokens(raw_page) == ordered_tokens(layout_page),
                 "flags": flags,
                 "editorial_disposition": "NOT_ASSESSED",
             })
@@ -175,7 +183,7 @@ def main():
         writer = csv.writer(handle)
         writer.writerow([
             "source_pdf", "source_blob_sha", "page", "extraction_flags",
-            "raw_characters", "layout_characters", "token_discrepancy",
+            "raw_characters", "layout_characters", "token_discrepancy", "order_agreement",
             "reading_order_review", "heading_structure_review",
             "table_and_list_review", "link_and_reference_review",
             "figures_and_alt_text_review", "source_equivalence_review",
@@ -186,7 +194,7 @@ def main():
                 writer.writerow([
                     asset["source_pdf"], asset["source_blob_sha"], page["page"],
                     ";".join(page["flags"]), page["raw_characters"],
-                    page["layout_characters"], page["token_discrepancy"],
+                    page["layout_characters"], page["token_discrepancy"], page["order_agreement"],
                     "NOT_ASSESSED", "NOT_ASSESSED", "NOT_ASSESSED",
                     "NOT_ASSESSED", "NOT_ASSESSED", "NOT_ASSESSED",
                     "", "", "", ""
