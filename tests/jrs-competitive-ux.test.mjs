@@ -63,7 +63,7 @@ const motto='<span class="jrs-header-motto">Check the record. <strong>No new sof
 for(const filename of ['index.html','resources.html','investigator-guides.html',
  'jrsstandard.html','research.html','about.html','codebook.html']){
  const html=read(filename);
- const header=html.match(/<header\\b[^>]*>[\\s\\S]*?<\\/header>/i)?.[0];
+ const header=html.match(/<header\b[^>]*>[\s\S]*?<\/header>/i)?.[0];
  assert.ok(header && header.includes('class="wordmark"'),filename+': retain original JRS identity');
  assert.equal(header.split(motto).length-1,1,filename+': brand distinction should appear exactly once');
 }
