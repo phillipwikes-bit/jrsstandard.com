@@ -6,6 +6,7 @@ NOT a tagged-PDF reissue, approved alternative, PDF/UA finding or WCAG claim.
 """
 import argparse
 from collections import Counter
+import csv
 import hashlib
 from html import escape
 import json
@@ -167,6 +168,29 @@ def main():
         "human_editorial_approval": "NOT_ASSESSED", "assets": reports,
     }
     (out / "candidate-inventory.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    # Editable editorial worksheet is a review queue, not a verification result.
+    # It deliberately contains no pre-filled PASS or approval fields.
+    worksheet = out / "page-editorial-review-worksheet.csv"
+    with worksheet.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow([
+            "source_pdf", "source_blob_sha", "page", "extraction_flags",
+            "raw_characters", "layout_characters", "token_discrepancy",
+            "reading_order_review", "heading_structure_review",
+            "table_and_list_review", "link_and_reference_review",
+            "figures_and_alt_text_review", "source_equivalence_review",
+            "reviewer", "review_date", "issue_reference", "editorial_notes"
+        ])
+        for asset in reports:
+            for page in asset["page_review"]:
+                writer.writerow([
+                    asset["source_pdf"], asset["source_blob_sha"], page["page"],
+                    ";".join(page["flags"]), page["raw_characters"],
+                    page["layout_characters"], page["token_discrepancy"],
+                    "NOT_ASSESSED", "NOT_ASSESSED", "NOT_ASSESSED",
+                    "NOT_ASSESSED", "NOT_ASSESSED", "NOT_ASSESSED",
+                    "", "", "", ""
+                ])
     print(f"PASS: {len(reports)} locked public PDF sources extracted into unapproved editorial review candidates.")
     print("BLOCKED: PDF reading order, accessible reissues and screen-reader acceptance remain NOT ASSESSED.")
 
