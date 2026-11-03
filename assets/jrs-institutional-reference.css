@@ -1685,9 +1685,24 @@ body.jrs-institutional .site-header-inner > .jrs-header-motto{
 body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
  color:#f4d79b!important;font-weight:750;
 }
-/* Small-screen navigation and record-check access outrank a repeated motto. */
+/* The approved public-interest header statement must remain visible on mobile.
+   Give it its own row rather than competing with the wordmark or navigation. */
 @media(max-width:1020px){
- body.jrs-institutional .site-header-inner > .jrs-header-motto{display:none!important}
+ body.jrs-institutional .site-header-inner:has(> .jrs-header-motto){
+  flex-wrap:wrap!important;
+  column-gap:12px!important;
+  row-gap:8px!important;
+ }
+ body.jrs-institutional .site-header-inner > .jrs-header-motto{
+  display:block!important;
+  flex:0 0 100%!important;
+  order:3;
+  margin:0!important;
+  padding:0!important;
+  font-size:clamp(13px,2.2vw,16px)!important;
+  line-height:1.35!important;
+  text-align:left!important;
+ }
 }
 @media(forced-colors:active){
  body.jrs-institutional .site-header-inner > .jrs-header-motto,
