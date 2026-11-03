@@ -27,10 +27,22 @@ function selfTest(){
   }
   console.log('PASS: hosted capture origin and credential isolation self-test');
 }
-async function capture(input,output,bypass,browser){
-  const host=origin(input);
+function previewCredential(){
+  const oidc=process.env.JRS_VERCEL_TRUSTED_OIDC_TOKEN||'';
+  const bypass=process.env.JRS_VERCEL_PREVIEW_BYPASS||'';
+  if(oidc&&bypass)hold('ambiguous hosted verification credential');
+  if(oidc){
+    if(oidc.length<128||oidc.length>8192||
+       !/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(oidc))
+      hold('invalid short-lived GitHub identity');
+    return {name:'x-vercel-trusted-oidc-idp-token',value:oidc};
+  }
   if(!bypass||bypass.length<32||bypass.length>256||/[\r\n]/.test(bypass))
-    hold('dedicated GitHub CI bypass secret missing or invalid');
+    hold('GitHub OIDC Trusted Source not authorized and CI bypass secret absent');
+  return {name:'x-vercel-protection-bypass',value:bypass};
+}
+async function capture(input,output,credential,browser){
+  const host=origin(input);
   await mkdir(output,{recursive:true});
   const profile=await mkdtemp(path.join(tmpdir(),'jrs-cdp-'));
   let child,ws,seq=0,interceptError=null,documentStatus=null;
@@ -75,9 +87,9 @@ async function capture(input,output,bypass,browser){
             await send('Fetch.continueRequest',{requestId:m.params.requestId},m.sessionId);return;
           }
           const headers=Object.entries(req.headers||{})
-            .filter(([n])=>n.toLowerCase()!=='x-vercel-protection-bypass')
+            .filter(([n])=>!['x-vercel-protection-bypass','x-vercel-trusted-oidc-idp-token'].includes(n.toLowerCase()))
             .map(([name,value])=>({name,value:String(value)}));
-          headers.push({name:'x-vercel-protection-bypass',value:bypass});
+          headers.push(credential);
           await send('Fetch.continueRequest',{requestId:m.params.requestId,headers},m.sessionId);
         })().catch(e=>{interceptError=e});
       }
@@ -141,7 +153,7 @@ try{
   if(process.argv[2]==='--self-test')selfTest();
   else{
     if(process.argv.length!==4)hold('expected PREVIEW_URL and OUTPUT_DIR');
-    await capture(process.argv[2],process.argv[3],process.env.JRS_VERCEL_PREVIEW_BYPASS,process.env.JRS_BROWSER||'google-chrome');
+    await capture(process.argv[2],process.argv[3],previewCredential(),process.env.JRS_BROWSER||'google-chrome');
   }
 }catch(e){
   // Error messages never include headers or credential values.

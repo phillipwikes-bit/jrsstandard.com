@@ -11,6 +11,7 @@ on:
 permissions:
   contents: read
   deployments: read
+  id-token: write # short-lived trusted-source identity, never repository secret
 jobs:
   visual-snapshots:
     runs-on: ubuntu-latest
@@ -153,6 +154,32 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           python3 tests/jrs-resolve-preview.py "$GITHUB_ENV"
+
+      - name: Request short-lived GitHub identity for protected preview
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        shell: bash
+        env:
+          JRS_EXISTING_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
+        run: |
+          set -euo pipefail
+          # Only same-repository reviews may request an OIDC token. A Vercel
+          # Trusted Source must separately authorize this exact GitHub
+          # repository and PREVIEW environment. A token alone grants nothing.
+          if [[ -n "$JRS_EXISTING_BYPASS" ]]; then
+            echo "INFO: dedicated Actions bypass already configured"
+            exit 0
+          fi
+          test -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}"
+          test -n "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}"
+          oidc="$(curl -fsS --max-time 15 \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL" | python3 -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          if ! [[ "$oidc" =~ ^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$ ]] || (( ${#oidc} < 128 || ${#oidc} > 8192 )); then
+            echo "RELEASE HOLD: invalid ephemeral CI identity" >&2; exit 1
+          fi
+          echo "::add-mask::$oidc"
+          printf 'JRS_VERCEL_TRUSTED_OIDC_TOKEN=%s\n' "$oidc" >> "$GITHUB_ENV"
+          echo "INFO: obtained masked, short-lived same-repo GitHub OIDC identity; Vercel trust still required"
 
       - name: Verify preview source identity before any release certification
         env:

@@ -90,8 +90,16 @@ def verified_request(url, parsed):
         "User-Agent": "JRS-publication-preview-verifier/1.0",
         "Cache-Control": "no-cache",
     }
+    oidc = os.environ.get("JRS_VERCEL_TRUSTED_OIDC_TOKEN", "")
     secret = os.environ.get("JRS_VERCEL_PREVIEW_BYPASS", "")
-    if secret:
+    if oidc and secret:
+        fail("ambiguous CI preview credentials")
+    if oidc:
+        if not (128 <= len(oidc) <= 8192) or not re.fullmatch(
+                r"[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", oidc):
+            fail("invalid short-lived CI identity format")
+        headers["x-vercel-trusted-oidc-idp-token"] = oidc
+    elif secret:
         if not (32 <= len(secret) <= 256) or chr(13) in secret or chr(10) in secret:
             fail("invalid CI preview-bypass credential format")
         headers["x-vercel-protection-bypass"] = secret
