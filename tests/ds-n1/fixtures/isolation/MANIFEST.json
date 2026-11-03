@@ -1,0 +1,79 @@
+{
+  "fixture_set": "ds-n1.isolation/0.1.0",
+  "created": "2026-11-03",
+  "classification": "SPECIFICATION tests of DS-N1 rule design; developer-authored; not reference labels",
+  "fixtures": [
+    {
+      "id": "I01",
+      "rule": "ACTOR_NOT_ESTABLISHED",
+      "construction": "second citation to a source sentence that names no actor",
+      "sha256": "955eb60a5d28e80add36eead50acd3bf676fb0471c733c31f604281933e9d075"
+    },
+    {
+      "id": "I02",
+      "rule": "CLAIM_LOCATION_AMBIGUOUS",
+      "construction": "the C4 sentence appears twice in the record",
+      "sha256": "e3102c0944f456d8c8c8f3f50cbb9e8c36923c6cd24ade1a76d08eaea48e7cd3"
+    },
+    {
+      "id": "I03",
+      "rule": "DATE_MISMATCH",
+      "construction": "request claimed on 2026-09-03; the source event records 2026-09-02",
+      "sha256": "d631cbf0ea4dfa8fe4d79ce97168fb443fe074eb25c16dd348fbe9debea652c0"
+    },
+    {
+      "id": "I04",
+      "rule": "DATE_NOT_ESTABLISHED",
+      "construction": "second citation to an undated source sentence with no structured events",
+      "sha256": "850d497efc55d073abcf052734d60fe44ef7ba199692110fdd7824ba77e3d36d"
+    },
+    {
+      "id": "I05",
+      "rule": "DATE_ROLE_UNVERIFIED",
+      "construction": "second citation to a dated sentence in a source with no structured events",
+      "sha256": "7200205d7dcdb8bef0cf979cd246e06b82703126f06c450d128ed07e72c8f7ec"
+    },
+    {
+      "id": "I06",
+      "rule": "EVENT_ROLE_CONFUSION",
+      "construction": "assessment completion claimed on 2026-09-16, the submission-for-approval date",
+      "sha256": "1b478d9d4d04f5a82d126e2f8825637c37255380eaeefc500ccd82e879800391"
+    },
+    {
+      "id": "I07",
+      "rule": "NEGATION_CONFLICT",
+      "construction": "source sentence negates completion; only the quote and its clause change",
+      "sha256": "7a0be0de1db9948695408de0c92e0eff2847d895bdd9672fdf71a07134067985"
+    },
+    {
+      "id": "I08",
+      "rule": "QUOTE_NOT_FOUND",
+      "construction": "second citation whose quote is in no source",
+      "sha256": "6d2217c64bc6ef971dda8f4b031a35010f0a386328eab313c8b7a35cb7ec9f94"
+    },
+    {
+      "id": "I09",
+      "rule": "REASONING_NOT_TRACED",
+      "construction": "conclusion supported by a citation but with no stated reasoning",
+      "sha256": "1930b5a6521a608db5c5a4f65c406e9252ef44039d844ec681d128873cc83f8a"
+    },
+    {
+      "id": "I10",
+      "rule": "RELEVANCE_NOT_ESTABLISHED",
+      "construction": "second citation to a passage about a different matter",
+      "sha256": "a95e7df63a81eb7cc6280723cc058b7578a6a862a74f12da12b8345395fa9cff"
+    },
+    {
+      "id": "I11",
+      "rule": "SOURCE_MISSING",
+      "construction": "second citation to a source that is not in the package",
+      "sha256": "8807e123de79b20beba4eb853a3e7eedde682262f17d9569d3a3c6a2d14d55b1"
+    },
+    {
+      "id": "I12",
+      "rule": "UNTRACEABLE_AUTHORITY",
+      "construction": "approval claim with no citation at all",
+      "sha256": "bb8cffe8e403bf54c60258b0d0829a4c9ccf040689e643e6be50b07909484538"
+    }
+  ]
+}
