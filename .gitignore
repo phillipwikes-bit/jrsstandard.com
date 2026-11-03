@@ -28,3 +28,8 @@ tests/manifest/generated/
 
 # Local controlled evaluations can contain record-derived Engine notes.
 .local-evaluations/
+
+# IncomeOS private owner data: qualification profile, private screens, alert state.
+# Never commit. The repository is public.
+.incomeos-private/
+incomeos-discovery-out/

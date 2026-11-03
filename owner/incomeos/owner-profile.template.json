@@ -1,0 +1,22 @@
+{
+  "schema": "incomeos.owner-profile.v1",
+  "_notice": "TEMPLATE ONLY. Contains no owner data. Copy to a private, git-ignored location (for example .incomeos-private/owner-profile.json), fill in, and never commit. A requirement is satisfied only by an item whose evidence.status is \"documented\" with a ref to a record you hold and a verifiedOn date. \"attested\" items remain NOT ESTABLISHED.",
+  "updatedOn": null,
+  "education": [{"level": "bachelors|masters|jd|doctorate|associate|high_school", "fieldKeys": ["field_key"], "institution": null, "evidence": {"status": "documented|attested|unknown", "ref": null, "verifiedOn": null}}],
+  "enrollment": {"currentlyEnrolled": null, "evidence": {"status": "unknown", "ref": null, "verifiedOn": null}},
+  "totalProfessionalYears": {"years": null, "evidence": {"status": "unknown", "ref": null, "verifiedOn": null}},
+  "experience": [{"domainKeys": ["domain_key"], "years": null, "description": null, "evidence": {"status": "unknown", "ref": null, "verifiedOn": null}}],
+  "credentials": [{"key": "credential_key", "name": null, "expiresOn": null, "evidence": {"status": "unknown", "ref": null, "verifiedOn": null}}],
+  "licenses": [],
+  "skills": [],
+  "languages": [{"key": "english", "level": "basic|professional|fluent|native", "evidence": {"status": "unknown", "ref": null, "verifiedOn": null}}],
+  "clearances": [],
+  "completeness": {"education": false, "licenses": false, "clearances": false, "skills": false, "credentials": false, "experience": false, "languages": false},
+  "location": {"country": null, "region": null, "evidence": {"status": "unknown", "ref": null, "verifiedOn": null}},
+  "workAuthorization": [{"country": "US", "authorized": null, "citizen": null, "evidence": {"status": "unknown", "ref": null, "verifiedOn": null}}],
+  "conflicts": {"organizations": null, "evidence": {"status": "unknown", "ref": null, "verifiedOn": null}},
+  "platformStanding": [],
+  "availability": {"maxHoursPerWeek": null, "acceptsFixedShifts": false},
+  "preferences": {"remoteOnly": true, "acceptedClassifications": [], "minHourlyUsd": 25, "defaultScreeningHours": null, "defaultEngagementHours": null, "maxListingAgeDays": 3, "maxEvidenceAgeDays": 730},
+  "confirmations": {}
+}
