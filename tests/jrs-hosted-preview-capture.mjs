@@ -106,11 +106,24 @@ async function capture(input,output,credential,browser){
     await send('Network.setBlockedURLs',{urls:['*://www.google-analytics.com/*',
       '*://www.googletagmanager.com/*','*://analytics.google.com/*']},session);
     await send('Fetch.enable',{patterns:[{urlPattern:host+'/*',requestStage:'Request'}]},session);
-    const shots=[
-      ['/', 'verified-preview-home-desktop.png',1440,1200],
-      ['/', 'verified-preview-home-mobile.png',390,1100],
-      ['/resources.html','verified-preview-resources-desktop.png',1440,2000]
+    // All captures are of *public* practitioner pages. Do not add private
+    // dashboard, protected inquiry, historical reviewer or participant routes.
+    const shotPages=[
+      ['home','/'], ['standard','/jrsstandard.html'],
+      ['resources','/resources.html'], ['check','/check.html'],
+      ['training','/training.html'], ['research','/research.html'],
+      ['guides','/investigator-guides.html'], ['editions','/editions.html'],
+      ['contact','/contact.html']
     ];
+    const viewports=[
+      ['narrow',320,960], ['mobile',390,1100],
+      ['tablet',768,1100], ['desktop',1440,1200]
+    ];
+    const shots=shotPages.flatMap(([page,route])=>
+      viewports.map(([size,width,height])=>
+        [route,'verified-preview-'+page+'-'+size+'.png',width,height]));
+    if(shots.length!==36)hold('expected exactly 36 hosted screenshot cases');
+    const evidence=[];
     for(const [route,file,width,height] of shots){
       documentStatus=null;
       await send('Emulation.setDeviceMetricsOverride',
@@ -139,9 +152,23 @@ async function capture(input,output,credential,browser){
       const data=Buffer.from(shot.data,'base64');
       if(data.subarray(0,8).toString('hex')!=='89504e470d0a1a0a')
         hold('invalid hosted screenshot');
+      const pngWidth=data.readUInt32BE(16),pngHeight=data.readUInt32BE(20);
+      if(pngWidth!==width||pngHeight!==height||data.length<1600)
+        hold('hosted screenshot dimensions or length invalid: '+file);
       await writeFile(path.join(output,file),data);
-      console.log('PASS: hosted screenshot '+file+' sha256='+createHash('sha256').update(data).digest('hex').slice(0,16));
+      const hash=createHash('sha256').update(data).digest('hex');
+      evidence.push({route,viewport:{width,height},file,sha256:hash,
+        documentTitle:String(info.title||'').slice(0,180),status:documentStatus.status});
+      console.log('PASS: hosted screenshot '+file+' sha256='+hash.slice(0,16));
     }
+    if(evidence.length!==36)hold('hosted screenshot inventory incomplete');
+    await writeFile(path.join(output,'verified-preview-manifest.json'),
+      JSON.stringify({schema:'jrs-hosted-visual-evidence.v1',
+        scope:'Exact-commit protected public practitioner routes; not a human WCAG evaluation',
+        candidateCommit:process.env.JRS_EXPECTED_HEAD||'NOT_RECORDED',
+        samples:evidence,manualScreenReader:'NOT_ASSESSED',
+        physicalBrowserZoom:'NOT_ASSESSED',pdfAccessibility:'NOT_ASSESSED'},null,2)+'\n');
+    console.log('PASS: 36 hosted viewport captures inventoried without credential data');
   }finally{
     if(ws)ws.close();
     if(child)child.kill('SIGTERM');
