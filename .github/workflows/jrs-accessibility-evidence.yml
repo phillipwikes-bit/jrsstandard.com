@@ -13,7 +13,20 @@ jobs:
       - name: Checkout exact revision
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
           persist-credentials: false
+      - name: Confirm exact candidate checkout
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          if [[ "$actual" != "$EXPECTED_SHA" ]]; then
+            echo 'RELEASE HOLD: accessibility checkout is not the exact requested revision' >&2
+            exit 1
+          fi
+          echo "PASS: source accessibility tests pinned to exact commit $actual"
       - name: Document PDF tagging gaps and enforce original byte identities
         run: |
           node tests/jrs-accessibility-acceptance.test.mjs
