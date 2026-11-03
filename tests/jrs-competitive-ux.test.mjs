@@ -126,7 +126,8 @@ assert.match(resources,/No platform purchase required/);
 assert.match(training,/Free, self-paced training for practitioners confronting Decision Reconstruction Risk \(DRR\)/);
 assert.match(guides,/For investigators doing the work/);
 assert.match(about,/Decision Reconstruction Risk \(DRR\)/);
-assert.match(organization,/No organizational software, license, certification or validated operational effectiveness/);
+assert.match(organization,/does not offer organizational software, licensing, certification or validated operational effectiveness/i,
+ 'do not convert the public-interest organizational information page into a software offer');
 assert.match(css,/jr-platform-promise/);
 for(const page of [home,resources,training,guides,organization]){
  assert.ok(!page.includes('Buy Decision Spellchecker') &&
