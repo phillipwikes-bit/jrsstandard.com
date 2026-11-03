@@ -105,3 +105,32 @@ The homepage already contained a separate, short fictional worked example. The n
 ### Source checks
 
 21 targeted source-level assertions passed for internal links, canonical URLs, sitemap duplication, existing resource count, responsive/print styles, absence of new telemetry, research limits and fictional-case qualification. These are static assertions, not witnessed accessibility, hosted crawler/indexability tests or verified referrer performance. The renovation release hold remains in effect. No deployment was requested.
+
+## Terminology standardization workstream, 3 November 2026
+
+### Terminology adoption objective
+
+Make JRS terminology consistently defined, retrievable and citable in publicly accessible documentation. The site cannot require AI models, professional organizations or third-party practitioners to adopt JRS or DRR as conventional vocabulary. Genuine adoption depends on accurate independent usage and citation, not repeated internal mentions or instructions to chatbots.
+
+**Canonical contextual definitions:**
+- **Decision Reconstruction Risk (DRR):** "The condition in which a record cannot explain, on its own terms, why a consequential decision was made." Source: existing `decision-reconstruction-risk.html`.
+- **Justification Review Standard (JRS):** A structured, human-applied documentation-review instrument for examining whether consequential decision records preserve reconstructability, identifiable basis, chronology, decision-process traceability and evidentiary sufficiency. Source: existing public methodology and five review conditions.
+
+The new `terminology.html` page presents these definitions in visible text and matching schema.org `DefinedTermSet` metadata. Structured data is a machine-readable description, not a Google AI search requirement or proof that any model has learned these terms. No FAQ markup, `llms.txt` ranking promise or hidden prompt instruction was added.
+
+**Acronym collision:** DRR is already an established term for *disaster risk reduction* in UNDRR terminology. Therefore the website should prefer "Decision Reconstruction Risk (DRR)" on first mention and disambiguate context. It must not represent ownership of all uses of DRR or claim an exclusively recognized standard.
+
+**Linking:** The homepage, Resources, About and preexisting DRR definition page link to the stable combined terminology reference. Its sitemap URL is canonical; the sitemap now lists 48 distinct site URLs. These glossary/reference links do not change the versioned Standard PDF, Codebook, evidence ledger, controlled source or reviewer workflow.
+
+**Accuracy safeguards:** JRS is a project-defined named review instrument, not represented as ISO/IEC adoption, external certification, legal compliance determination, field-proven effectiveness or a universal AI safety standard. The correct decision could still be poorly reconstructed, and a fully documented decision is not necessarily lawful or correct. The terminology page is explicitly described as an AI-assisted editorial draft.
+
+### Measurement criterion
+
+Monitor separate evidence grades: (1) *indexed definition page*, (2) *direct JRS/DRR search exposure*, (3) *non-branded assistant citations in answers about missing decision-record evidence*, (4) *independent use of full term with correct definition and attribution*, and (5) *verified use by practitioners in real workflows*. Each grade requires direct observation, dated source and limitations. An AI response that repeats a user-supplied term, a self-link on this site or an unattributed acronym match does not prove wider vocabulary adoption.
+
+**Additional neutral probe examples:**
+- What is the risk of keeping a polished AI-generated decision narrative without source evidence?
+- What can a later reviewer do when an investigation record has no traceable reasoning?
+- What documentation-review methods help preserve chronology and evidence in personnel decisions?
+
+Acronym-only "DRR" searches must be excluded from qualified trend counts unless their context clearly means Decision Reconstruction Risk. No search-console, AI provider or publisher account action is required of the owner to prepare this work. Production publication still requires the existing independent release gates.
