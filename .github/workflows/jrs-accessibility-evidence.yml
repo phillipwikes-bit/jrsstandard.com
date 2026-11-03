@@ -31,6 +31,33 @@ jobs:
         run: |
           node tests/jrs-accessibility-acceptance.test.mjs
           node tests/jrs-pdf-accessibility-inventory.mjs
+      - name: Prepare nine unapproved PDF reading-order editorial candidates
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v pdftotext >/dev/null; then
+            sudo apt-get update -qq
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends poppler-utils
+          fi
+          python3 tools/build_pdf_reading_candidates.py --out /tmp/jrs-pdf-reading-candidates
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('/tmp/jrs-pdf-reading-candidates')
+          report=json.loads((out/'candidate-inventory.json').read_text('utf-8'))
+          assert len(report['assets']) == 9
+          assert report['status'] == 'EXTRACTION_ONLY_NOT_CERTIFIED'
+          assert all(not item['public_release_approved'] and item['manual_reading_order'] == 'NOT_ASSESSED' for item in report['assets'])
+          assert all((out/item['candidate_html']).is_file() for item in report['assets'])
+          print('PASS: nine candidate files retained for editorial review, with release state NOT ASSESSED.')
+          PY
+      - name: Preserve non-deployed PDF extraction and review inventory
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-pdf-editorial-candidates-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-pdf-reading-candidates/
+          if-no-files-found: error
+          retention-days: 30
       - name: Check strict browser evidence parser
         run: python3 tests/jrs-browser-gate-check.py --self-test
       - name: Test 400-percent-equivalent reflow at two narrow widths
