@@ -14,7 +14,8 @@
 // Optionally folds in reviewer feedback from exported review packages:
 //   node tests/ds-n1/ablation.mjs [export1.json export2.json ...]
 //
-// Uses base fixtures and the stress DEV split only. The holdout is not used for
+// Uses base fixtures, the stress DEV split and the isolation (coverage) set.
+// Isolation cases are specification tests: every one must not be READY. The holdout is not used for
 // anything that could steer rule changes.
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -35,6 +36,11 @@ for (const [id, e] of Object.entries(stress)) {
   cases.push({ id: `stress:${id}`, rec, mustNotReady: e.must_not_be_ready });
 }
 
+const iso = JSON.parse(readFileSync(new URL('isolation-expectations.json', here), 'utf8')).fixtures;
+for (const id of Object.keys(iso)) {
+  const rec = JSON.parse(readFileSync(new URL(`fixtures/isolation/${id}.json`, here), 'utf8'));
+  cases.push({ id: `isolation:${id}`, rec, mustNotReady: true });
+}
 const baseState = new Map(cases.map((c) => [c.id, deriveState(openReview(c.rec, { at: AT }))]));
 const baseline = new Map([...baseState].map(([k, v]) => [k, v.status]));
 const rows = [];
@@ -68,7 +74,7 @@ for (const file of process.argv.slice(2)) {
 }
 for (const r of rows) r.reviewer_feedback = feedback[r.code] || null;
 
-console.log(`cases: ${cases.length} (base + stress dev); exports read: ${process.argv.length - 2 - skipped.length}; skipped: ${JSON.stringify(skipped)}`);
+console.log(`cases: ${cases.length} (base + stress dev + isolation); exports read: ${process.argv.length - 2 - skipped.length}; skipped: ${JSON.stringify(skipped)}`);
 console.log('code'.padEnd(26), 'sev'.padEnd(9), 'class'.padEnd(11), 'firedOn', 'falseReadyIfRemoved', 'holdsReleased', 'feedback');
 for (const r of rows) {
   console.log(r.code.padEnd(26), r.severity.padEnd(9), r.class.padEnd(11), String(r.fired_on).padStart(7), String(r.false_ready_if_removed).padStart(19), String(r.holds_released).padStart(13),

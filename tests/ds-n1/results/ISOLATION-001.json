@@ -1,0 +1,203 @@
+{
+  "run_schema": "ds-n1.isolation-run/1.0",
+  "executed_at": "2026-11-03T17:42:57.640Z",
+  "application": {
+    "version": "0.5.0-dev",
+    "rule_version": "ds-n1.rules/0.2.0"
+  },
+  "source_commit": "dc85a16a4ed29748a9becd0403a0f4fa7064070e",
+  "engine_source_dirty": false,
+  "dataset": {
+    "manifest_sha256": "4c804328ac35d9edc271595460d2978cbd4c97cb4b6f43ff82586f555dbec196",
+    "records": 12
+  },
+  "expectations_sha256": "c209b0ef500c0b89ef28a17cb980bc45e843ae0209d01e68dff715c2e4d54c91",
+  "summary": {
+    "cases": 12,
+    "passed": 12,
+    "failed": 0,
+    "acceptance": "PASS (specification tests, developer-authored)"
+  },
+  "records": [
+    {
+      "id": "I01",
+      "rule": "ACTOR_NOT_ESTABLISHED",
+      "fixture_digest_ok": true,
+      "expected_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "observed_codes": [
+        "ACTOR_NOT_ESTABLISHED"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I02",
+      "rule": "CLAIM_LOCATION_AMBIGUOUS",
+      "fixture_digest_ok": true,
+      "expected_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "observed_codes": [
+        "CLAIM_LOCATION_AMBIGUOUS"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I03",
+      "rule": "DATE_MISMATCH",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "observed_codes": [
+        "DATE_MISMATCH"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I04",
+      "rule": "DATE_NOT_ESTABLISHED",
+      "fixture_digest_ok": true,
+      "expected_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "observed_codes": [
+        "DATE_NOT_ESTABLISHED"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I05",
+      "rule": "DATE_ROLE_UNVERIFIED",
+      "fixture_digest_ok": true,
+      "expected_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "observed_codes": [
+        "DATE_ROLE_UNVERIFIED"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I06",
+      "rule": "EVENT_ROLE_CONFUSION",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "observed_codes": [
+        "EVENT_ROLE_CONFUSION"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I07",
+      "rule": "NEGATION_CONFLICT",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "observed_codes": [
+        "NEGATION_CONFLICT"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I08",
+      "rule": "QUOTE_NOT_FOUND",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "observed_codes": [
+        "QUOTE_NOT_FOUND"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I09",
+      "rule": "REASONING_NOT_TRACED",
+      "fixture_digest_ok": true,
+      "expected_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "observed_codes": [
+        "REASONING_NOT_TRACED"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I10",
+      "rule": "RELEVANCE_NOT_ESTABLISHED",
+      "fixture_digest_ok": true,
+      "expected_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "observed_codes": [
+        "RELEVANCE_NOT_ESTABLISHED"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I11",
+      "rule": "SOURCE_MISSING",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "observed_codes": [
+        "SOURCE_MISSING"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    },
+    {
+      "id": "I12",
+      "rule": "UNTRACEABLE_AUTHORITY",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "observed_codes": [
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "status_ok": true,
+      "isolated": true,
+      "status_if_rule_suppressed": "READY_FOR_HUMAN_FINALIZATION",
+      "decisive": true,
+      "pass": true
+    }
+  ]
+}

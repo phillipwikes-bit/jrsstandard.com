@@ -46,12 +46,12 @@ try {
     return commit;
   });
   await step('fixtures regenerate byte-identical', () => {
-    for (const s of ['tests/ds-n1/build-fixtures.mjs', 'tests/ds-n1/build-stress.mjs']) {
+    for (const s of ['tests/ds-n1/build-fixtures.mjs', 'tests/ds-n1/build-stress.mjs', 'tests/ds-n1/build-isolation.mjs']) {
       const r = run(s); if (r.code !== 0) throw new Error(`${s} exit ${r.code}: ${r.out}`);
     }
     const diff = execFileSync('git', ['-C', clone, 'status', '--porcelain', '--', 'tests/ds-n1/fixtures'], { encoding: 'utf8' }).trim();
     if (diff) throw new Error('rebuilt fixtures differ from committed bytes:\n' + diff);
-    return 'base and stress fixtures match committed bytes';
+    return 'base, stress and isolation fixtures match committed bytes';
   });
   await step('unit tests', () => {
     const r = run('tests/ds-n1/ds-n1.test.mjs', [], ['--test']);
@@ -69,11 +69,16 @@ try {
     if (r.code !== 0) throw new Error(r.out);
     return 'PASS';
   });
+  await step('isolation specification (each rule alone decisive)', () => {
+    const r = run('tests/ds-n1/eval-isolation.mjs', ['--no-write']);
+    if (r.code !== 0) throw new Error(r.out);
+    return 'PASS';
+  });
   await step('canonical report hash per fixture', async () => {
     const ds = await import(pathToFileURL(join(clone, 'lib/ds-n1/index.mjs')).href);
     const text = await import(pathToFileURL(join(clone, 'lib/ds-n1/text.mjs')).href);
     const AT = '2026-11-03T00:00:00Z';
-    for (const [dir, set] of [['tests/ds-n1/fixtures', 'base'], ['tests/ds-n1/fixtures/stress', 'stress']]) {
+    for (const [dir, set] of [['tests/ds-n1/fixtures', 'base'], ['tests/ds-n1/fixtures/stress', 'stress'], ['tests/ds-n1/fixtures/isolation', 'isolation']]) {
       for (const f of readdirSync(join(clone, dir)).filter((x) => /^[A-Z]\d{2}\.json$/.test(x)).sort()) {
         const rec = JSON.parse(readFileSync(join(clone, dir, f), 'utf8'));
         hashes[`${set}:${f.slice(0, 3)}`] = sha(text.canonical(ds.buildReport(ds.openReview(rec, { at: AT }), { generated_at: AT })));
