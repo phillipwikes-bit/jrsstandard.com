@@ -50,3 +50,10 @@ The current repair candidate applies non-colour underline styling to all institu
 Following the 34-route source-rendered axe and reflow PASS at commit `413a94e08697bafe19cf7b588925bcdb114ed448`, the coverage expands to **60 distinct public HTML routes**. These comprise all **58 pages** in the existing source-rendered responsive inventory and two additional routes already included in the accessibility preflight (Editions and Organization). The exact-count parser now requires **120 pinned axe WCAG-tagged scans** at 390/1440 CSS px and **120 narrow-viewport reflow observations** at 320/400 CSS px. It continues to require 14 dynamic-state scans, reviewer print/privacy checks and separate PDF identity inventory.
 
 **No pass is asserted for the enlarged matrix until CI completes on this specific revision.** All pages remain test fixtures only, with no live submissions; original PDFs, publication routes, Vercel authentication, production configuration and current release hold remain unchanged. Passing automated checks cannot certify human VoiceOver/NVDA experience, actual 400% browser zoom, PDF tagging, or production usability.
+
+
+## Findings on complete 60-route sample (November 3, 2026)
+
+At candidate `90c84442ce71dbe59badb2c401a2a15b740727c6`, the **120/120 narrow-viewport reflow observations passed**, but the strict 120-scan pinned axe audit **failed** with six route/width findings: two unfocusable horizontally scrolling Manifest table regions at mobile width, two Privacy email links lacking non-color identification across both widths, low-contrast Not Found footer links at both widths, and an undersized retired People-page footer target at mobile width.
+
+The corrective candidate makes the two Manifest table scroll containers keyboard-focusable, provides their distinct accessible names, underlines the Privacy email links, and styles the public error-page footer links with high-contrast navy and touch-target dimensions of at least 44 CSS pixels in each direction. It leaves the intentional People-page retirement and private data boundary intact. Full 120/120 retesting and manual assistive-technology review remain required.

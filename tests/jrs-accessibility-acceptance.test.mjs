@@ -113,3 +113,26 @@ assert.match(trainingPalette, contrastActionSelector,
   'original response handler and control must remain unchanged');
  console.log('PASS: expanded accessibility issue controls retained on reference, reviewer, security and finding pages.');
 }
+
+
+// Full 60-route audit: keyboard access to horizontally scrollable specification
+// tables, non-color email links, and accessible public dead-end navigation.
+{
+ const manifest=read('manifest.html');
+ for(const label of ['Public and controlled-development positions table','Specification components table']){
+  assert.ok(manifest.includes('role="region" aria-label="'+label+'" tabindex="0"'),
+   'manifest table scroll region must be keyboard reachable with a unique name: '+label);
+ }
+ const privacy=read('privacy.html');
+ assert.match(privacy,/\.legal p a\{color:var\(--accent\);text-decoration:underline!important/,
+  'privacy email links need non-color identification');
+ const shared=read('assets/jrs-institutional-reference.css');
+ assert.match(shared,/body\.jrs-institutional\.jrs-error-route footer\.site-footer a\[href\]\{[\s\S]*?color:#173d5b!important;[\s\S]*?min-width:44px;min-height:44px/,
+  'retired and not-found navigation must provide contrast and 44px targets');
+ const people=read('people.html');
+ assert.match(people,/This page has moved\./,
+  'retired people route must remain non-disclosing');
+ assert.doesNotMatch(people,/href="\/people\/|mailto:[^" ]+@/,
+  'retired people route must not reveal identities or private contacts');
+ console.log('PASS: accessible manifest table scrolling, email link identification, and error-page navigation.');
+}

@@ -1750,3 +1750,12 @@ body.jrs-institutional main .crumb a[href]{
   text-decoration:underline!important;text-underline-offset:.16em;
   text-decoration-thickness:1px
 }
+
+/* 2026-11-03 A-grade: retired/not-found pages retain readable navigation
+   and 44px-tall/wide touch targets without revealing private destinations. */
+body.jrs-institutional.jrs-error-route footer.site-footer a[href]{
+  color:#173d5b!important;text-decoration:underline!important;
+  text-underline-offset:.16em;display:inline-flex;align-items:center;
+  justify-content:center;min-width:44px;min-height:44px;
+  padding:10px 12px!important
+}
