@@ -1,6 +1,6 @@
 {
   "baseline_schema": "ds-n1.repro-baseline/1.0",
-  "commit": "d371355ea3aac3248fb148889ba493d28a744b9a",
+  "commit": "4013578f932ae2dbae6372385425c635c8ba698e",
   "node": "v22.23.4",
   "report_sha256": {
     "base:D01": "68cce42981de8dd93e8502c4762dbdb2ec8770dfd6cedbbab1e4a141c1cf5ab8",
@@ -42,6 +42,18 @@
     "stress:X13": "b42eb5c3c6d7a292e2238abcab892e8a2284ea7ecc1a71bba6faac3cc9ae6853",
     "stress:X14": "79760fd358e31d324aee12b2eadf6e249f134be53dd2578882a201c58dcfe1b5",
     "stress:X15": "1f57dee9526d7efb527f3562bb6a5113e1bc35b6d434ff208d52bb0e31d6c1b6",
-    "stress:X16": "ff1f0247d59c9e52c12ec27a226f3e9705734a32d0b825fec8615daff4eb600b"
+    "stress:X16": "ff1f0247d59c9e52c12ec27a226f3e9705734a32d0b825fec8615daff4eb600b",
+    "isolation:I01": "0f3fc3c70f842d9690cd0b1af08f95cb5514ee931f52048df998b53ac7d02860",
+    "isolation:I02": "1b79953c686a331c09fd8b108e0f2cc2ac091f4229dc2ed2e01d0a44ef08239c",
+    "isolation:I03": "b309746ddc8c23229462179897a050d8591ca8aa300a297460c5f74be2109c37",
+    "isolation:I04": "30e09efcaf7ef0fe7f2d058a848f24977586288c0a21f82ec3a8ec27ff27476a",
+    "isolation:I05": "dcfc594e8d384b0ae8c6226f50c886d468eae7af7adb920e69bbc45f4c2b9e39",
+    "isolation:I06": "695b6c97cddaa3f5668fd3f7ace57fd3ff47524c5f7df06264e0c22c4ff93ca1",
+    "isolation:I07": "8617bca9c36e889e34cf55f502282c845b05c293499dc00c1cb519bf9983bf1a",
+    "isolation:I08": "ceec219799e8df4d209e52cdcc79402e23dd3f0e3741867d38da1528a8de0cbb",
+    "isolation:I09": "3b305e7a4471e55a81ea50ebe6f1cb07f5cc999da57108315c7f9d4d95099892",
+    "isolation:I10": "28ec0c9ab1511f1cfe6240334da792b87ea4f08de27a97658773c252907a15e8",
+    "isolation:I11": "85f2f0bba467e3ef7545720f73e2533daf5479469b047e4177c96a4acaff48a1",
+    "isolation:I12": "9437ad56e1ba5b8626c22df44720a0901e853632d490bef1f05266ca9792931d"
   }
 }
