@@ -7,18 +7,20 @@
     return Number.isFinite(d)&&new Date(d).toISOString().slice(0,10)===s;
   }
   function cents(n){
+    if(typeof n==="number"&&Number.isFinite(n)&&n>0){var r=Math.round(n*100);if(Number.isSafeInteger(r)&&r>0)return r;}
     var s=String(n);
     if(!/^\d{1,11}(\.\d{1,2})?$/.test(s))throw new Error("Invalid positive USD amount");
     var p=s.split("."),out=Number(p[0])*100+Number((p[1]||"").padEnd(2,"0"));
     if(!Number.isSafeInteger(out)||out<=0)throw new Error("Amount must be a positive number of cents");
     return out;
   }
-  function merchant(s){return String(s||"").trim().toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").slice(0,120);}
+  function merchant(s){return String(s||"").trim().toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim().slice(0,120);}
   function dayGap(a,b){return Math.abs((Date.parse(a+"T00:00:00Z")-Date.parse(b+"T00:00:00Z"))/86400000);}
   function source(e){
     if(!e||!e.bankSource)return null;
-    var b=e.bankSource;
-    return [b.institution,b.accountToken,b.transactionId].map(function(x){return String(x||"").trim();}).join("|");
+    var b=e.bankSource,parts=[b.institution,b.accountToken,b.transactionId].map(function(x){return String(x||"").trim();});
+    if(parts.some(function(x){return !x;}))return null;
+    return parts.join("|");
   }
   function charges(entries){
     return (Array.isArray(entries)?entries:[]).filter(function(e){return e&&e.kind==="outflow"&&e.type==="expense"&&date(e.date)&&e.id&&merchant(e.payer||e.label);}).flatMap(function(e){
@@ -42,12 +44,19 @@
   function refundCases(entries,reconciliation){
     var a=charges(entries),byId=new Map(a.map(function(x){return [x.id,x];}));
     var approved=new Set((reconciliation&&Array.isArray(reconciliation.matches)?reconciliation.matches:[]).filter(function(m){return m.state==="OWNER_REVIEWED_BANK_MATCH";}).map(function(m){return m.entryId;}));
-    var out=[];
+    var out=[],linked=new Map();
     (Array.isArray(entries)?entries:[]).forEach(function(e){
-      if(!e||e.kind!=="income"||e.scope!=="nonincome"||e.status!=="paid"||!date(e.date))return;
+      if(!e||!date(e.date))return;
+      // Refunds arrive two ways: a nonincome receipt, or the cost form's "refund" type.
+      var asReceipt=e.kind==="income"&&e.scope==="nonincome"&&e.status==="paid",asCostRefund=e.kind==="outflow"&&e.type==="refund";
+      if(!asReceipt&&!asCostRefund)return;
       var value;
-      try{value=cents(e.grossUsd);}catch(_err){return;}
-      var original=byId.get(String(e.refundOf||"")),plausible=!!original&&value<=original.amountCents&&e.date>=original.date;
+      try{value=cents(asReceipt?e.grossUsd:e.amountUsd);}catch(_err){return;}
+      var original=byId.get(String(e.refundOf||""));
+      var already=original?(linked.get(original.id)||0):0;
+      // Several partial refunds together may not exceed the original charge.
+      var plausible=!!original&&already+value<=original.amountCents&&e.date>=original.date;
+      if(plausible)linked.set(original.id,already+value);
       var bankMatched=approved.has(String(e.id)),originalMatched=original&&approved.has(original.id),bothMatched=plausible&&bankMatched&&originalMatched;
       out.push({id:String(e.id||""),originalId:original?original.id:null,valueUsd:value/100,
         state:!original?"UNLINKED_NONINCOME_RECEIPT":!plausible?"AMOUNT_OR_DATE_CONFLICT":!bankMatched?"OWNER_REFUND_ENTRY_UNCONFIRMED":!originalMatched?"ORIGINAL_CHARGE_NOT_RECONCILED":"OWNER_REVIEWED_BOTH_BANK_POSTINGS",
@@ -74,10 +83,18 @@
       var unique=new Map();rows.forEach(function(x){if(!unique.has(x.month))unique.set(x.month,x.amountCents);else unique.set(x.month,null);});
       var clean=Array.from(unique.entries()).filter(function(x){return x[1]!==null;});
       if(clean.length<3)return;
-      var prior=clean[clean.length-3],first=clean[clean.length-2],latest=clean[clean.length-1];
       var ix=function(s){return Number(s.slice(0,4))*12+Number(s.slice(5,7));};
-      if(ix(latest[0])-ix(first[0])!==1||ix(first[0])-ix(prior[0])!==1)return;
-      if(first[1]>=prior[1]||latest[1]>=prior[1])return;
+      // Find the latest baseline followed by two consecutive lower bills, with every later bill
+      // still below the baseline; a fourth reduced bill no longer erases the observation.
+      var prior=null,first=null,latest=null;
+      for(var k=clean.length-3;k>=0&&!prior;k--){
+        var b0=clean[k],b1=clean[k+1],b2=clean[k+2];
+        if(ix(b1[0])-ix(b0[0])!==1||ix(b2[0])-ix(b1[0])!==1)continue;
+        if(b1[1]>=b0[1]||b2[1]>=b0[1])continue;
+        if(clean.slice(k+3).some(function(x){return x[1]>=b0[1];}))continue;
+        prior=b0;first=b1;latest=b2;
+      }
+      if(!prior)return;
       // Two comparable paid bills after a reduction support observation, not future savings.
       var reduced=prior[1]*2-first[1]-latest[1];
       out.push({service:key,observedPeriod:first[0]+" to "+latest[0],

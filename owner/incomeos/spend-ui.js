@@ -35,6 +35,7 @@
     var budget=$("spend-budget-results");budget.replaceChildren();
     if(!data.budgets.length)text(budget,"p","Set a monthly category target to compare with recorded spending.","muted");
     data.budgets.forEach(function(b){
+      if(b.invalid){text(budget,"p",b.category+" · "+b.coverage,"muted");return;}
       var item=text(budget,"div",b.category,"spend-row");item.replaceChildren();
       text(item,"span",b.category+" · "+money.format(b.actual)+" / "+money.format(b.target)+(b.over?" · over target":""));
       var bar=text(item,"div","","spend-bar");bar.setAttribute("role","img");bar.setAttribute("aria-label",b.category+" "+money.format(b.actual)+" recorded of "+money.format(b.target)+" target");

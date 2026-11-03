@@ -32,14 +32,15 @@
   }
   function recurring(entries,asOf){
     var xs=expenseEntries(entries).filter(function(e){return e.date<=asOf;}),groups=new Map();
-    xs.forEach(function(x){var k=x.vendor.toLowerCase()+"|"+x.category; if(!groups.has(k))groups.set(k,[]);groups.get(k).push(x);});
+    function mkey(s){return String(s||"").trim().toLowerCase().replace(/[^\p{L}\p{N}]+/gu," ").replace(/\s+/g," ").trim();}
+    xs.forEach(function(x){var k=mkey(x.vendor)+"|"+x.category; if(!groups.has(k))groups.set(k,[]);groups.get(k).push(x);});
     var result=[];
     groups.forEach(function(a){
       a.sort(function(x,y){return x.date.localeCompare(y.date);});
       if(a.length<2) return;
       // Multiple payments to one merchant in one day are not evidence of a single renewal.
-      if(new Set(a.map(function(x){return x.date;})).size!==a.length)return;
       var recent=a.slice(-4),last=recent[recent.length-1];
+      if(new Set(recent.map(function(x){return x.date;})).size!==recent.length)return;
       var intervals=[];for(var i=1;i<recent.length;i++)intervals.push(days(recent[i-1].date,recent[i].date));
       var cadence=null,periodCount=0;
       // Require at least three actual payments for short recurring intervals, and two for long intervals.
@@ -76,11 +77,16 @@
     }
     return out;
   }
-  function budgetVsActual(entries,budgets,asOf){
+  // Direct calls reject an invalid target. analyze() passes lenient so one bad
+  // setting is reported on its own row instead of aborting the whole panel.
+  function budgetVsActual(entries,budgets,asOf,lenient){
     var current=asOf.slice(0,7),xs=expenseEntries(entries).filter(function(e){return e.month===current;});
     return CATEGORIES.filter(function(cat){return Object.prototype.hasOwnProperty.call(budgets||{},cat);}).map(function(category){
       var planned=Number(budgets[category]);
-      if(!Number.isFinite(planned)||planned<0||planned>1000000)throw new Error("Invalid budget target");
+      if(!Number.isFinite(planned)||planned<0||planned>1000000){
+        if(lenient!==true)throw new Error("Invalid budget target");
+        return {category:category,target:null,actual:null,remaining:null,over:false,invalid:true,coverage:"Invalid budget target; fix it in settings."};
+      }
       var actual=usd(xs.filter(function(e){return e.category===category;}).reduce(function(s,e){return s+e.amount;},0));
       return {category:category,target:usd(planned),actual:actual,remaining:usd(planned-actual),over:actual>planned,coverage:"Recorded expense entries only; not a full household budget."};
     });
@@ -90,7 +96,7 @@
     expenseEntries(entries).forEach(function(e){
       var flags=[];
       if(e.allocation===null)flags.push("Business-use share is unknown");
-      if(e.evidence==="missing" ||e.evidence==="bank" ||e.evidence==="email")flags.push("Supporting evidence incomplete");
+      if(e.evidence!=="both"&&e.evidence!=="both-unverified")flags.push("Supporting evidence incomplete");
       if(e.evidence==="both-unverified")flags.push("Receipt and bank linkage unresolved");
       if(!e.reconciled)flags.push("Not marked reconciled");
       if(flags.length)issues.push({type:"entry",id:e.id,date:e.date,vendor:e.vendor,amount:e.amount,flags:flags});
@@ -101,15 +107,16 @@
   function duePlans(plans,asOf){
     if(!Array.isArray(plans))return [];
     return plans.filter(function(p){return p&&typeof p.name==="string"&&validDate(p.nextDate)&&["monthly","quarterly","annual"].includes(p.cadence)&&Number.isFinite(Number(p.amount))&&Number(p.amount)>0;}).map(function(p){
+      // Roll forward from the original anchor so a 31st does not drift to the 28th after February.
       var due=p.nextDate,loops=0;
-      while(due<asOf && loops++<500)due=shiftMonth(due,PERIODS[p.cadence]);
+      while(due<asOf && loops++<500)due=shiftMonth(p.nextDate,PERIODS[p.cadence]*loops);
       return {id:String(p.id||""),name:p.name.slice(0,80),amount:usd(Number(p.amount)),nextDate:due,cadence:p.cadence,origin:"OWNER_PLAN_ONLY",catchupRequired:loops>1};
     }).sort(function(a,b){return a.nextDate.localeCompare(b.nextDate);});
   }
   function analyze(entries,config,asOf){
     if(!validDate(asOf))throw new Error("Valid as-of date required");
     config=config||{};
-    var x=expenseEntries(entries),patterns=recurring(entries,asOf),plans=duePlans(config.plans,asOf),cashflow=monthly(entries,asOf),budget=budgetVsActual(entries,config.budgets||{},asOf),queue=reviewQueue(entries,patterns);
+    var x=expenseEntries(entries),patterns=recurring(entries,asOf),plans=duePlans(config.plans,asOf),cashflow=monthly(entries,asOf),budget=budgetVsActual(entries,config.budgets||{},asOf,true),queue=reviewQueue(entries,patterns);
     var total=Array.isArray(entries)?entries.length:0;
     return {asOf:asOf,coverage:{all:total,expenses:x.length,warning:"Local ledger only. Missing sources and incomplete bank coverage can materially change results."},patterns:patterns,planned:plans,cashflow:cashflow,budgets:budget,reviewQueue:queue,reviewCount:queue.length,unplannedCost:usd(x.filter(function(e){return e.month===asOf.slice(0,7)&&!Object.prototype.hasOwnProperty.call(config.budgets||{},e.category);}).reduce(function(s,e){return s+e.amount;},0))};
   }
