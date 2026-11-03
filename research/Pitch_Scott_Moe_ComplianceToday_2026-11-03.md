@@ -2,6 +2,13 @@
 
 *Hold lifted 2026-11-03: the owner stated "The statistics have already been dealt with" (B-018 closed by owner statement). Cross-sector framing; the study is presented descriptively. Ready to send at the owner's discretion.*
 
+**Send package (owner checks before sending):**
+- Attach `ComplianceToday_Testing_Employment_Files_2026-11-03.docx` (the manuscript in this repository). Rename it for Scott, e.g. `Pokhriyal_Wikes_Testing_Employment_Files.docx`.
+- Confirm Tanvi has read the final manuscript and agrees to submission.
+- Add Tanvi's contact details to her bio if HCCA requires contact information for every author.
+- HCCA's submission process also asks for its Submission Guidelines form and a signed Copyright Transfer Agreement; Scott may ask for these once he accepts, so have them ready.
+- Verify the HIPAA (45 C.F.R. 164.530(e)) and OIG citations against the primary sources.
+
 ---
 
 Hi Scott,
@@ -18,7 +25,7 @@ The article translates those findings into practical guidance for compliance pro
 
 Unlike my CEP article, which examines the broader risks of AI-assisted documentation, this piece focuses on original employment research and a specific, actionable review process. It is unpublished and is no longer under consideration by ISACA.
 
-I would welcome your thoughts on whether this would be a suitable contribution to Compliance Today. I'd be happy to send the manuscript for your consideration.
+I've attached the manuscript for your consideration. The article runs about 3,200 words, with endnotes and a short case-list appendix that could run online or be removed if it counts toward the word limit. I would welcome your thoughts on whether it would be a suitable contribution to Compliance Today.
 
 Thank you again for your earlier encouragement.
 
