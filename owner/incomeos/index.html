@@ -7,12 +7,17 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="theme-color" content="#11292b">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="IncomeOS">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="description" content="Private IncomeOS prototype. Dated public-source research, owner-recorded receipts, opportunity review, and hypothetical compounding.">
 <title>IncomeOS | Private Opportunity Command Center</title>
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="stylesheet" href="./incomeos.css">
 <script defer src="./staging-interlock.js"></script>
+<script defer src="./iphone-install.js"></script>
 <script defer src="./accountant-review.js"></script>
 <script defer src="./accountant.js"></script>
 <script defer src="./accounting-controls.js"></script>
@@ -69,6 +74,12 @@
   </div>
 </header>
 <main id="main">
+  <section id="iphone-install" class="panel" aria-labelledby="iphone-install-heading" hidden>
+    <h2 id="iphone-install-heading">Add IncomeOS to your iPhone</h2>
+    <p>Open this protected site in Safari. Tap Share, choose Add to Home Screen, then tap Add. Your Home Screen icon opens IncomeOS directly.</p>
+    <p class="muted">Sign-in remains protected by the hosting provider until a dedicated owner login is implemented. Do not share protected access links.</p>
+    <button id="iphone-install-dismiss" class="smallbtn" type="button">Hide instructions for this visit</button>
+  </section>
   <div class="status" id="feed-status" role="status">Loading saved opportunity snapshot…</div>
   <div class="metrics" aria-label="Current record summary">
     <div class="metric"><span>RECEIPTS · SELF-REPORTED</span><strong id="metric-paid">$0</strong></div>
