@@ -54,7 +54,7 @@ jobs:
           import csv
           with (out/'page-editorial-review-worksheet.csv').open(newline='',encoding='utf-8') as handle:
               rows=list(csv.DictReader(handle))
-          expected=sum(max(a['raw_pages'],a['layout_pages']) for a in report['assets'])
+          expected=sum(max(a['source_pages'],a['raw_pages'],a['layout_pages']) for a in report['assets'])
           assert len(rows)==expected, (len(rows),expected)
           assert all(row['reading_order_review']=='NOT_ASSESSED'
                      and row['source_equivalence_review']=='NOT_ASSESSED'
@@ -69,7 +69,7 @@ jobs:
           # explicitly unreviewed; a zero flag count is not human acceptance.
           for item in report['assets']:
               pages=item['page_review']
-              assert len(pages)==max(item['raw_pages'],item['layout_pages'])
+              assert len(pages)==max(item['source_pages'],item['raw_pages'],item['layout_pages'])
               assert [p['page'] for p in pages]==list(range(1,len(pages)+1))
               assert all(p['editorial_disposition']=='NOT_ASSESSED' for p in pages)
               assert all(isinstance(p['token_discrepancy'],int) and p['token_discrepancy']>=0 for p in pages)
