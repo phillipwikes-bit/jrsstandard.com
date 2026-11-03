@@ -36,7 +36,25 @@ jobs:
           browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
           if [[ -z "$browser" ]]; then echo 'Chromium is unavailable; release check cannot pass'; exit 1; fi
           "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=60000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8791/tests/jrs-a-improvements-browser.html > /tmp/jrs-a-grade-dom.txt
-          if ! grep -q 'PASS 12/12 responsive route checks' /tmp/jrs-a-grade-dom.txt; then
-            grep 'FAIL' /tmp/jrs-a-grade-dom.txt || true
-            exit 1
-          fi
+          python3 tests/jrs-browser-gate-check.py --self-test
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-a-grade-dom.txt responsive
+
+      - name: Scan eight public routes at mobile and desktop with pinned axe-core
+        shell: bash
+        run: |
+          set -euo pipefail
+          # axe-core is used in CI only. The test and node_modules directories
+          # are excluded from the published Vercel asset boundary.
+          npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund axe-core@4.10.3
+          test -s node_modules/axe-core/axe.min.js
+          python3 -m http.server 8792 --bind 127.0.0.1 >/tmp/jrs-axe-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8792/editions.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8792/tests/jrs-wcag-axe-browser.html > /tmp/jrs-axe-dom.txt 2>/tmp/jrs-axe-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-axe-dom.txt axe
