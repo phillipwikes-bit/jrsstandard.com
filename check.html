@@ -506,8 +506,11 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
 (function(){
   function targetPath(raw){
     var link = new URL(raw, window.location.href);
-    if (link.protocol !== 'https:' && link.protocol !== 'http:') return '';
-    return (link.origin === window.location.origin ? '' : link.origin) + link.pathname;
+    // Only first-party navigation is eligible for internal journey counts.
+    // An external path is not a JRS route, even if the pathname looks familiar.
+    if ((link.protocol !== 'https:' && link.protocol !== 'http:') ||
+        link.origin !== window.location.origin) return '';
+    return link.pathname;
   }
   function recordClick(destination){
     try {
@@ -515,7 +518,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
         timestamp:new Date().toISOString(),
         origin_url:window.location.pathname,
         target_url:destination,
-        meta:{event:'link-click',source:'seven-point-check'}
+        meta:{event:'link-click',src:'check'}
       });
       var queued=false;
       if (typeof navigator.sendBeacon === 'function')
