@@ -39,7 +39,7 @@ jobs:
           python3 tests/jrs-browser-gate-check.py --self-test
           python3 tests/jrs-browser-gate-check.py /tmp/jrs-a-grade-dom.txt responsive
 
-      - name: Scan eight public routes at mobile and desktop with pinned axe-core
+      - name: Scan 20 public routes across 40 mobile/desktop conditions with pinned axe-core
         shell: bash
         run: |
           set -euo pipefail
