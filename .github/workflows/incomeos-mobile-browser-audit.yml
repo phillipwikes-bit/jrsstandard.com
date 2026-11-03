@@ -11,6 +11,11 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+# A newer push to the same PR cancels superseded runs; the latest commit is
+# always verified in full, so final verification is never skipped.
+concurrency:
+  group: incomeos-mobile-audit-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 jobs:
   source-rendered-mobile:
     runs-on: ubuntu-latest
