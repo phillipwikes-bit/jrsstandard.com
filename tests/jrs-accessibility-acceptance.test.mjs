@@ -61,3 +61,8 @@ assert.match(trainingCompletion, /requestedName\) return;/);
 const interactionCoverage = read('tests/jrs-interaction-a11y-browser.html');
 assert.match(interactionCoverage, /id:'training-completion-text'/);
 assert.match(interactionCoverage, /'wcag22a'/);
+
+const trainingPalette = read('assets/jrs-institutional-reference.css');
+const contrastActionSelector = /#cert-section button\[onclick="generateCert\(\)"\]\{[\s\S]*?background:#173d5b!important;color:#fff!important/;
+assert.match(trainingPalette, contrastActionSelector,
+  'the previously hidden completion action must have an explicit high-contrast appearance');

@@ -1341,6 +1341,12 @@ body.jrs-institutional.jrs-training-page #cert-name{
 body.jrs-institutional.jrs-training-page #cert-section :where(button){
   min-height:44px!important;font-size:14px!important;
 }
+/* The certificate generator is revealed after module completion. Give its
+   action the same high-contrast navy/white treatment as primary controls.
+   An earlier inline gold/black combination failed the dynamic axe audit. */
+body.jrs-institutional.jrs-training-page #cert-section button[onclick="generateCert()"]{
+  background:#173d5b!important;color:#fff!important;border:1px solid #173d5b!important;
+}
 body.jrs-institutional.jrs-training-page :where(#cert-heading):focus{
   outline:3px solid #0b679c!important;outline-offset:4px!important;
 }
