@@ -104,7 +104,7 @@ export default async function handler(req){
   const isView = VIEW_EVENTS.indexOf(evt) !== -1;
   // A page-view is an observation of the public check page, not a generic
   // caller-supplied path. This reduces accidental analytics misclassification.
-  if (isView && safePath(b.origin_url) !== '/check.html')
+  if (isView && b.origin_url !== '/check.html')
     return json({ ok: true, recorded: false, reason: 'invalid_view_origin' });
   const viewSrc = isView ? (CHECK_VIEW_SOURCES.has(src) ? src : 'other') : null;
   if (src && TEST_SRC.indexOf(src) !== -1) return json({ ok: true, recorded: false, reason: 'deploy_check' });

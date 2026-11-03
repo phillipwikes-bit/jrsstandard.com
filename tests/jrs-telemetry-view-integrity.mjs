@@ -60,6 +60,17 @@ try {
   assert.equal(result.recorded, false);
   assert.equal(result.reason, 'invalid_view_origin');
   assert.equal(rows.length, count, 'unrecognized origin must not generate a database write');
+  // An absolute off-site URL is not a genuine browser-local pathname.
+  for (const origin of [
+    'https://third-party.example/check.html',
+    'https://www.jrsstandard.com/check.html',
+    '/check.html?case=private',
+    '//third-party.example/check.html'
+  ]) {
+    result = await submit('check-view', 'home', origin);
+    assert.equal(result.recorded, false, 'non-path origin must be refused: ' + origin);
+    assert.equal(rows.length, count, 'invalid origin must not write a page view');
+  }
   result = await submit('check-view', 'verify');
   assert.equal(result.recorded, false);
   assert.equal(rows.length, count, 'verification request must not pollute view counts');
