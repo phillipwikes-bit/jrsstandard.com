@@ -1689,3 +1689,11 @@ body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
   color:CanvasText!important
  }
 }
+
+/* Keep the first practitioner training module in the initial mobile journey
+   after the concise DRR introduction, without hiding the edition notice. */
+@media(max-width:760px){
+ body.jrs-institutional.jrs-training-page #training-modules{
+  padding-top:30px!important;
+ }
+}
