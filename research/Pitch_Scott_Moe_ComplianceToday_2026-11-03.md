@@ -2,33 +2,33 @@
 
 *SEND WITH ATTACHMENTS (owner attestation 2026-11-03: "Tanvi and Kyle have given me the authorization to find a way to publish study in whatever format"). Attach the manuscript and the case-list supplement.*
 
-**Send package (owner checks before sending):**
-- Attach `ComplianceToday_Supplement_Case_List_2026-11-03.docx` as well (the 20-case list for online publication).
-- Attach `ComplianceToday_Testing_Employment_Files_2026-11-03.docx` (the manuscript in this repository). Rename it for Scott, e.g. `Pokhriyal_Wikes_Testing_Employment_Files.docx`.
-- Confirm Tanvi has read the final manuscript and agrees to submission.
-- Add Tanvi's contact details to her bio if HCCA requires contact information for every author.
-- HCCA's submission process also asks for its Submission Guidelines form and a signed Copyright Transfer Agreement; Scott may ask for these once he accepts, so have them ready.
-- Verify the HIPAA (45 C.F.R. 164.530(e)), OIG and HCCA-OIG resource guide citations against the primary sources, and the quoted case language against the published decisions at uiappeals.ny.gov (blocked from this session).
+**Send package:**
+- Paste the email below. Attach the manuscript and the supplement, renamed for Scott, for example `Pokhriyal_Wikes_Testing_Employment_Files.docx` and `Pokhriyal_Wikes_Case_List_Supplement.docx`.
+- Done: citations checked; no unverified verbatim case quotes; co-author authorization attested by the owner.
+- Have HCCA's Submission Guidelines form and Copyright Transfer Agreement ready in case Scott asks.
+- Add Tanvi's contact details if HCCA requires them for every author.
 
 ---
 
+**Subject:** Compliance Today proposal: Testing employment files before they become evidence
+
 Hi Scott,
 
-I hope you're doing well.
+I hope you're doing well. In July you suggested we reconnect once my article appeared in Compliance & Ethics Professional. "When the Record Cannot Speak for Itself" is in the November issue, so I'm following up with a separate piece written for Compliance Today.
 
-In July, you suggested we reconnect following publication of my article in Compliance & Ethics Professional. With "When the Record Cannot Speak for Itself" appearing in the November issue, I wanted to follow up and propose a separate article for Compliance Today.
+"Testing employment files before they become evidence: Lessons for healthcare" is coauthored with Tanvi Pokhriyal, an organizational psychologist with more than 15 years in human resources and organizational development. Instead of starting from a drafter's checklist, it starts with the adjudicator's decision. We studied 20 published employment decisions from federal agencies, unemployment appeal boards, courts, and tribunals and asked what the file in front of each adjudicator actually contained. In this exploratory pilot, six of eight files with material documentation gaps were associated with adverse findings, compared with two of twelve complete files.
 
-The proposed article, "Testing employment files before they become evidence: Lessons for healthcare," is coauthored with Tanvi Pokhriyal, an organizational psychologist with more than 15 years of experience in human resources and organizational development.
+The article is built for practitioners. It opens on a case in which a worker was discharged for an alleged disclosure of health information, and the appeal board overturned the decision because the file could not connect the policy and the prior warning to the conduct. It then gives readers:
 
-It draws on an original study of 20 adjudicated employment matters from federal agencies, unemployment boards, courts, and tribunals. The study works backward: it starts with what an adjudicator decided and asks what the file in front of that adjudicator contained. The study was not drawn from healthcare, which I think makes the findings more useful to your readers rather than less. Hospitals face the same forums, including EEOC charges, unemployment appeals, arbitration, and the courts, and those forums ask the same questions of a nurse's file as of anyone else's. In the pilot, six of eight records with material documentation gaps were associated with adverse findings, compared with two of twelve complete records. The findings are exploratory, but they raise important questions about how organizations review and preserve employment-decision evidence.
+- six lessons from the cases, each applied to healthcare files: HIPAA sanctions, discipline that follows a hotline report, and decisions prompted by patient or family complaints;
+- a five-checkpoint review, worked through on a privacy sanction file;
+- program steps they can adopt: template fields, a documented second review for high-risk decisions, sampling and committee reporting, rules for repairing a file without rewriting it, and a 90-day plan.
 
-The article translates those findings into practical guidance for compliance professionals: lessons from the cases, a five-point documentation review with a worked example of a HIPAA privacy sanction file, and program recommendations covering template design, second review for high-risk decisions, independent sampling, remediation, and a 90-day starting plan.
+It is original and unpublished, and it is not under consideration elsewhere. It is also distinct from my CEP article, which addressed AI-assisted documentation broadly.
 
-Unlike my CEP article, which examines the broader risks of AI-assisted documentation, this piece focuses on original employment research and a specific, actionable review process. It is unpublished and is no longer under consideration by ISACA.
+I've attached the manuscript (about 3,200 words with endnotes) and a one-page case list that could run online. I'm happy to adjust length or emphasis to fit an issue.
 
-I've attached the manuscript for your consideration. It runs about 3,200 words including endnotes, and a separate one-page supplement lists all 20 cases with their classifications and outcomes, which could run online. I would welcome your thoughts on whether it would be a suitable contribution to Compliance Today.
-
-Thank you again for your earlier encouragement.
+Thank you again for your encouragement.
 
 Best regards,
 Phillip Wikes
