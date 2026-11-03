@@ -1,0 +1,29 @@
+{
+  "schema": "jrs-synthetic-gold.v1",
+  "data_classification": "SYNTHETIC_ONLY",
+  "dataset_id": "JRS_SYNTHETIC_SCORER_UNIT_TEST_V1",
+  "cases": [
+    {
+      "id": "SYN001",
+      "gaps": []
+    },
+    {
+      "id": "SYN002",
+      "gaps": [
+        {
+          "id": "G_BASIS_1",
+          "condition": "identifiable_basis"
+        }
+      ]
+    },
+    {
+      "id": "SYN003",
+      "gaps": [
+        {
+          "id": "G_TIME_1",
+          "condition": "chronology"
+        }
+      ]
+    }
+  ]
+}
