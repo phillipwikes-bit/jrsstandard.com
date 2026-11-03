@@ -1596,7 +1596,7 @@ body.jrs-institutional.jrs-guide-page .jrs-guide-subtitle{
   color:#e2ebf3!important; /* 11.39:1 against institutional header #162f46 */
 }
 body.jrs-institutional.jrs-training-page :where(
-  #jrs-named-record-open,a[href="#simulator"][onclick]
+  #jrs-named-record-open,a[href="#simulator"][onclick],.btn-survey-submit
 ),
 body.jrs-institutional #contact-submit{
   background:#eed2a0!important;
@@ -1607,7 +1607,7 @@ body.jrs-institutional #contact-submit{
     color:CanvasText!important;
   }
   body.jrs-institutional.jrs-training-page :where(
-    #jrs-named-record-open,a[href="#simulator"][onclick]
+    #jrs-named-record-open,a[href="#simulator"][onclick],.btn-survey-submit
   ),
   body.jrs-institutional #contact-submit{
     forced-color-adjust:auto;
@@ -1615,4 +1615,11 @@ body.jrs-institutional #contact-submit{
     background:ButtonFace!important;
     border:1px solid ButtonText!important;
   }
+}
+
+/* Reviewer survey action remains a normal native button at an operable size. */
+body.jrs-institutional.jrs-training-page .btn-survey-submit{
+  font-size:15px!important;
+  min-height:44px!important;
+  line-height:1.5!important;
 }
