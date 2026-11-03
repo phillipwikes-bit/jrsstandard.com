@@ -35,10 +35,10 @@
      const articles=[...doc.querySelectorAll('#jrs-resource-results article.jrs-resource-entry')];
      const status=doc.querySelector('#jrs-resource-count');
      expect(query&&articles.length===16&&status,'resource search not initialized');
-     query.value=id==='resource-empty'?'zzjrsnomatch2026':'chronology';
+     query.value=id==='resource-empty'?'zzjrsnomatch2026':'rapid review card';
      query.dispatchEvent(new win.Event('input',{bubbles:true}));
      const shown=articles.filter(a=>!a.hidden);
-     expect(id==='resource-empty'?shown.length===0:shown.length>0&&shown.length<16,
+     expect(id==='resource-empty'?shown.length===0:shown.length===1,
        'resource search filtering not effective');
      expect(status.getAttribute('role')==='status'&&status.getAttribute('aria-live')==='polite',
        'resource status is not announced');
