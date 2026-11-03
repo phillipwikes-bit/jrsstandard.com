@@ -493,3 +493,18 @@ console.log('PASS: seven-point aid has no invented two-item threshold, distingui
     'keyboard focus must return after clipboard fallback');
   console.log('PASS: print scope and truthful clipboard fallback with keyboard focus restoration.');
 }
+
+// Specificity regression: the mobile navigation script inserts a sibling button
+// whose later shared stylesheet declares !important display:flex. A generic
+// body > :not(main) print rule is insufficient to suppress that control.
+{
+  const page=read('check.html');
+  assert.match(page, /body\.jrs-institutional\.jrs-nav-ready > button\.jrs-global-nav-toggle/,
+    'mobile disclosure button must be suppressed at print-specific specificity');
+  assert.match(page, /body\.jrs-institutional\.jrs-nav-ready > nav\.jrs-sitenav\[data-open\]/,
+    'expanded mobile navigation must also be absent from review printouts');
+  const workflow=read('.github/workflows/jrs-accessibility-evidence.yml');
+  assert.ok(workflow.includes('Site menu|Close site menu'),
+    'printed text verification must explicitly reject mobile navigation labels');
+  console.log('PASS: mobile menu and expanded disclosure cannot be printed alongside a review summary.');
+}

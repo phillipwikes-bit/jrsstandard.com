@@ -131,6 +131,12 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   @page{margin:16mm}
   html,body.jrs-institutional{background:#fff!important;color:#111!important}
   body.jrs-institutional > :not(main){display:none!important}
+  /* The later shared mobile stylesheet uses a higher-specificity !important
+     display:flex rule. Suppress its injected menu even when it is expanded. */
+  body.jrs-institutional.jrs-nav-ready > button.jrs-global-nav-toggle,
+  body.jrs-institutional.jrs-nav-ready > nav.jrs-sitenav[data-open]{
+    display:none!important;visibility:hidden!important;
+  }
   body.jrs-institutional #main-content,
   body.jrs-institutional #main-content > article{
     display:block!important;position:static!important;

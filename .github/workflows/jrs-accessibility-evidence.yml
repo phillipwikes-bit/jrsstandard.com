@@ -113,7 +113,7 @@ jobs:
             { echo 'RELEASE HOLD: printed summary title missing'; exit 1; }
           grep -Fq 'Tick the boxes that apply to the record' /tmp/jrs-check-print-text.txt || \
             { echo 'RELEASE HOLD: printed review state missing'; exit 1; }
-          if grep -Eiq 'Seven documentation-risk patterns|The five conditions behind the check|Check one record now|Take it further|Submit inquiry|Make this a policy' /tmp/jrs-check-print-text.txt; then
+          if grep -Eiq 'Site menu|Close site menu|Seven documentation-risk patterns|The five conditions behind the check|Check one record now|Take it further|Submit inquiry|Make this a policy' /tmp/jrs-check-print-text.txt; then
             echo 'RELEASE HOLD: unrelated source material leaked into review printout'
             exit 1
           fi
