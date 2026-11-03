@@ -5,7 +5,7 @@
 **Test provenance:** Scripts imported without claims of independent authorship from PR #106 commit `332158028c49620eb21c5eb354e36faa4be53866`.  
 **Scope:** Automated source-rendered checks, exact-candidate evidence preservation and release restrictions.
 
-The source-rendered workflow runs 40 reflow observations (20 routes at widths 320 and 400 CSS px), 40 pinned axe-core scans (20 routes at 390 and 1440 CSS px), and 14 dynamic interaction scans (seven states at two widths), with a strict JSON evidence parser and archived results. Passing these tests does not constitute physical 400% zoom, VoiceOver, PDF/UA or independent WCAG conformance certification.
+The source-rendered workflow is configured to run 48 reflow observations (24 routes at widths 320 and 400 CSS px), 48 pinned axe-core scans (24 routes at 390 and 1440 CSS px), and 14 dynamic interaction scans (seven states at two widths), with a strict JSON evidence parser and archived results. The four added public routes are Codebook, Review Conditions Reference, Independent Second Read and Adoption and Governance Language. Results for the enlarged route set remain pending at this change. Passing these tests would not constitute physical 400% zoom, VoiceOver, PDF/UA or independent WCAG conformance certification.
 
 The existing nine PDF original editions remain locked and must not be silently replaced. The source inventory tests only marker presence and original Git blob identities. Tagged accessible reissues require verified masters, editorial equivalence, reading-order tests, language and link structure, human screen-reader inspection, edition controls and separate release approval.
 
