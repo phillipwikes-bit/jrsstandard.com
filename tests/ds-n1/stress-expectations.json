@@ -1,0 +1,31 @@
+{
+  "expectation_set": "ds-n1.stress-expectations/0.1.0",
+  "registered": "2026-11-03",
+  "registered_before_first_harness_run": true,
+  "label_type": "REFERENCE: what a careful human reviewer should conclude. NOT the engine's current behaviour.",
+  "author": "AI development agent (Claude Code); developer-authored, NOT creator-reviewed, NOT independent",
+  "acceptance_criteria": {
+    "critical_false_ready": "MUST equal 0 for the split being run",
+    "false_hold": "REPORTED ONLY (no threshold): a case labelled must_not_be_ready=false that the engine does not mark READY",
+    "status_agreement": "REPORTED ONLY",
+    "holdout_rule": "holdout cases are run once, after engine changes for this increment are committed; results are recorded whatever they are and are not used to change rules in this increment"
+  },
+  "fixtures": {
+    "X01": { "split": "dev", "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false, "note": "accurate paraphrase" },
+    "X02": { "split": "dev", "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false, "note": "accurate paraphrase" },
+    "X04": { "split": "dev", "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false, "note": "reasoning stated in words" },
+    "X06": { "split": "dev", "expected_status": "HOLD", "must_not_be_ready": true },
+    "X07": { "split": "dev", "expected_status": "REVIEW_REQUIRED", "must_not_be_ready": true, "note": "material adverse clause after the quote" },
+    "X08": { "split": "dev", "expected_status": "HOLD", "must_not_be_ready": true },
+    "X10": { "split": "dev", "expected_status": "HOLD", "must_not_be_ready": true, "note": "date belongs to the request, not the approval" },
+    "X12": { "split": "dev", "expected_status": "REVIEW_REQUIRED", "must_not_be_ready": true, "note": "irrelevant second citation should be removed" },
+    "X14": { "split": "dev", "expected_status": "REVIEW_REQUIRED", "must_not_be_ready": true, "note": "instruction addressed to tools inside a source" },
+    "X16": { "split": "dev", "expected_status": "HOLD", "must_not_be_ready": true },
+    "X03": { "split": "holdout", "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false },
+    "X05": { "split": "holdout", "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false },
+    "X09": { "split": "holdout", "expected_status": "HOLD", "must_not_be_ready": true },
+    "X11": { "split": "holdout", "expected_status": "REVIEW_REQUIRED", "must_not_be_ready": true, "note": "citation text must be corrected" },
+    "X13": { "split": "holdout", "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false },
+    "X15": { "split": "holdout", "expected_status": "READY_FOR_HUMAN_FINALIZATION", "must_not_be_ready": false }
+  }
+}
