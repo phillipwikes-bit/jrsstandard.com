@@ -5,7 +5,7 @@ import {resolve,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
 const read=p=>readFileSync(join(root,p),'utf8');
-const pages=['index.html','resources.html','research.html','investigator-guides.html',
+const pages=['index.html','resources.html','editions.html','organization.html','research.html','investigator-guides.html',
 'manifest.html','about.html','contact.html','jrsstandard.html','training.html',
 'check.html','simulations.html','decision-reconstruction-risk.html',
 'research-summary.html','methodology.html','evidence-ledger.html','questions.html',
