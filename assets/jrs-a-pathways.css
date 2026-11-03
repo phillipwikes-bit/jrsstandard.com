@@ -1,0 +1,54 @@
+/* Task selection and source-bound public guidance. No changes to public intake or owner access. */
+body.jrs-institutional .jrs-fast-chooser{margin:12px 0 34px;padding:22px;border:1px solid #cdd9e1;border-radius:12px;background:#fff;color:#193148}
+body.jrs-institutional .jrs-fast-chooser h2{font-family:Georgia,serif!important;font-size:clamp(25px,3vw,34px)!important;color:#17334e!important}
+body.jrs-institutional .jrs-fast-chooser p{font-size:15px!important;color:#42576b!important}
+body.jrs-institutional .jrs-task-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:17px}
+body.jrs-institutional .jrs-task-links a{display:block;min-height:94px;padding:16px;border:1px solid #cbd8e1;border-radius:8px;background:#f4f8fa;color:#193148!important;text-decoration:none!important}
+body.jrs-institutional .jrs-task-links a strong{display:block;font-size:16px;line-height:1.35}
+body.jrs-institutional .jrs-task-links a span{display:block;font-size:14px;line-height:1.5;color:#42576b}
+body.jrs-institutional .jrs-task-links a:hover{background:#fff8e9;border-color:#75551f}
+body.jrs-institutional .jrs-task-links a:focus-visible,body.jrs-institutional .jrs-task-extras a:focus-visible{outline:3px solid #75551f!important;outline-offset:3px!important}
+body.jrs-institutional .jrs-task-extras{border-top:1px solid #dbe4e9;padding-top:14px!important}
+body.jrs-institutional.jrs-guide-page{background:#f5f7f8;color:#193148;font-family:Inter,Arial,sans-serif;line-height:1.65;margin:0}
+body.jrs-institutional.jrs-guide-page *{box-sizing:border-box}
+body.jrs-institutional.jrs-guide-page .jrs-guide-shell{width:min(1050px,calc(100% - 32px));margin-inline:auto}
+body.jrs-institutional.jrs-guide-page .site-header{background:#fff;border-bottom:1px solid #d5e0e7}
+body.jrs-institutional.jrs-guide-page .jrs-guide-header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 0}
+body.jrs-institutional.jrs-guide-page .wordmark{font:600 28px Georgia,serif;color:#193148;text-decoration:none}
+body.jrs-institutional.jrs-guide-page .jrs-guide-subtitle{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#526778}
+body.jrs-institutional.jrs-guide-page .jrs-sitenav{display:flex;flex-wrap:wrap;gap:2px;padding:3px max(16px,calc((100% - 1050px)/2));border-bottom:1px solid #dce5ea;background:#fff}
+body.jrs-institutional.jrs-guide-page .jrs-sitenav a{display:inline-flex;align-items:center;min-height:44px;padding:9px 12px!important;font-size:13px!important;color:#17334e!important;text-decoration:none!important}
+body.jrs-institutional.jrs-guide-page :where(a,button):focus-visible{outline:3px solid #75551f!important;outline-offset:3px!important}
+body.jrs-institutional.jrs-guide-page .jrs-guide-hero{padding:40px 0 24px}
+body.jrs-institutional.jrs-guide-page .jrs-guide-label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#75551f;font-weight:700}
+body.jrs-institutional.jrs-guide-page h1{font:500 clamp(32px,5vw,52px)/1.14 Georgia,serif;color:#17334e;margin:0 0 16px}
+body.jrs-institutional.jrs-guide-page h2{font:500 clamp(24px,3vw,33px)/1.25 Georgia,serif;color:#17334e;margin:0 0 12px}
+body.jrs-institutional.jrs-guide-page h3{font-size:18px;color:#17334e;margin:0 0 8px}
+body.jrs-institutional.jrs-guide-page p,body.jrs-institutional.jrs-guide-page li{font-size:15px;line-height:1.65;color:#344f63;overflow-wrap:anywhere}
+body.jrs-institutional.jrs-guide-page .jrs-guide-lead{font-size:18px;max-width:850px}
+body.jrs-institutional.jrs-guide-page a{color:#24577b;text-underline-offset:3px}
+body.jrs-institutional.jrs-guide-page .jrs-guide-cta{display:flex;gap:10px;flex-wrap:wrap;margin:19px 0}
+body.jrs-institutional.jrs-guide-page .jrs-guide-cta a{display:inline-flex;align-items:center;min-height:44px;padding:12px 17px;border:1px solid #173e5e;border-radius:7px;background:#173e5e;color:#fff!important;text-decoration:none;font-weight:700}
+body.jrs-institutional.jrs-guide-page .jrs-guide-cta a.secondary{background:#fff;color:#173e5e!important}
+body.jrs-institutional.jrs-guide-page .jrs-guide-panel{border:1px solid #d4e0e7;background:#fff;border-radius:11px;padding:22px;margin:0 0 22px}
+body.jrs-institutional.jrs-guide-page .jrs-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:12px 0 24px}
+body.jrs-institutional.jrs-guide-page .jrs-guide-grid article{border:1px solid #d4e0e7;background:#fff;border-radius:10px;padding:20px}
+body.jrs-institutional.jrs-guide-page .jrs-version-table{width:100%;border-collapse:collapse;text-align:left}
+body.jrs-institutional.jrs-guide-page .jrs-version-table th,body.jrs-institutional.jrs-guide-page .jrs-version-table td{padding:13px 11px;border-bottom:1px solid #d9e4eb;vertical-align:top;overflow-wrap:anywhere;font-size:14px}
+body.jrs-institutional.jrs-guide-page .jrs-version-table th{background:#eaf1f5;color:#17334e}
+body.jrs-institutional.jrs-guide-page .jrs-version-table caption{text-align:left;margin-bottom:12px;font-size:14px;color:#42576b}
+body.jrs-institutional.jrs-guide-page .jrs-guide-note{border-left:4px solid #8a6b38;background:#fcf8ef;padding:12px 16px;margin:17px 0}
+body.jrs-institutional.jrs-guide-page .jrs-steps{padding-left:25px}
+body.jrs-institutional.jrs-guide-page .jrs-steps li{margin:8px 0}
+body.jrs-institutional.jrs-guide-page .jrs-guide-footer{margin-top:34px;padding:26px 0;border-top:1px solid #d5e0e7}
+body.jrs-institutional.jrs-guide-page .jrs-guide-footer p{font-size:13px}
+body.jrs-institutional .jrs-training-edition-note{font-size:14px!important;line-height:1.55!important;max-width:900px;margin:10px auto!important}
+@media(max-width:760px){body.jrs-institutional .jrs-task-links,body.jrs-institutional.jrs-guide-page .jrs-guide-grid{grid-template-columns:1fr}
+body.jrs-institutional .jrs-fast-chooser{padding:17px}body.jrs-institutional .jrs-task-links a{min-height:76px}
+body.jrs-institutional.jrs-guide-page .jrs-guide-hero{padding:29px 0 20px}
+body.jrs-institutional.jrs-guide-page .jrs-guide-panel{padding:17px}
+body.jrs-institutional.jrs-guide-page .jrs-version-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+body.jrs-institutional.jrs-guide-page .jrs-version-table tr{display:block;margin:0 0 11px;border:1px solid #d4e0e7;border-radius:8px;padding:9px;background:#fff}
+body.jrs-institutional.jrs-guide-page .jrs-version-table td{display:block;padding:6px 8px;border:0}
+body.jrs-institutional.jrs-guide-page .jrs-version-table td::before{content:attr(data-label) ": ";display:block;font-weight:700;font-size:12px;color:#17334e}}
+@media(prefers-reduced-motion:reduce){body.jrs-institutional .jrs-fast-chooser *,body.jrs-institutional.jrs-guide-page *{scroll-behavior:auto!important;transition:none!important}}

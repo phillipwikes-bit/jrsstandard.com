@@ -29,7 +29,7 @@
     },
     {
       "source": "/enterprise.html",
-      "destination": "/resources.html",
+      "destination": "/organization.html",
       "permanent": false
     },
     {
@@ -234,7 +234,7 @@
     },
     {
       "source": "/enterprise",
-      "destination": "/resources.html",
+      "destination": "/organization.html",
       "permanent": false
     },
     {

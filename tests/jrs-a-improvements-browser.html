@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>JRS task pathway layout fixture</title></head>
+<body><h1>JRS responsive smoke check</h1><pre id="result" role="status">Running</pre>
+<script>
+(async function(){
+ var pages=['/editions.html','/organization.html','/index.html'], widths=[320,390,768,1440],done=[],errors=[];
+ for(var i=0;i<pages.length;i++)for(var j=0;j<widths.length;j++){
+  var f=document.createElement('iframe');
+  f.title='Responsive route under test';f.style.width=widths[j]+'px';f.style.height='700px';f.style.border='0';
+  document.body.appendChild(f);
+  await new Promise(function(resolve,reject){f.onload=resolve;f.onerror=function(){reject(Error('load failed'))};f.src=pages[i]});
+  var d=f.contentDocument;
+  var root=d.documentElement, main=d.querySelector('main'), title=d.querySelector('h1');
+  var scroll=root.scrollWidth, nav=d.querySelector('nav[aria-label]');
+  var good=!!main&&!!title&&!!nav&&scroll<=widths[j]+2;
+  done.push(pages[i]+' at '+widths[j]+': '+(good?'pass':'fail'));
+  if(!good)errors.push({path:pages[i],width:widths[j],scroll:scroll,main:!!main,title:!!title,nav:!!nav});
+  f.remove();
+ }
+ document.getElementById('result').textContent=errors.length?'FAIL '+JSON.stringify(errors):'PASS 12/12 responsive route checks';
+})();
+</script></body></html>
