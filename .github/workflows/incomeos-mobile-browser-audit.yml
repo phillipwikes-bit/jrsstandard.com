@@ -5,6 +5,7 @@ on:
       - 'owner/incomeos/**'
       - 'tests/incomeos-browser-audit.html'
       - 'tests/incomeos-browser-audit-check.py'
+      - 'tests/incomeos-project-ui-browser.mjs'
       - '.github/workflows/incomeos-mobile-browser-audit.yml'
   workflow_dispatch:
 permissions:
@@ -43,3 +44,9 @@ jobs:
             --dump-dom http://127.0.0.1:8793/tests/incomeos-browser-audit.html \
             > /tmp/incomeos-mobile-audit-dom.html 2>/tmp/incomeos-mobile-chrome-errors.log
           python3 tests/incomeos-browser-audit-check.py /tmp/incomeos-mobile-audit-dom.html
+      - name: Install pinned Playwright driver (no install scripts, no lockfile)
+        run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund playwright-core@1.63.0
+      - name: Verify owner panels at iPhone width (screening, This week, actions, encrypted save)
+        env:
+          CI: "true"
+        run: node tests/incomeos-project-ui-browser.mjs

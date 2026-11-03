@@ -33,3 +33,4 @@ tests/manifest/generated/
 # Never commit. The repository is public.
 .incomeos-private/
 incomeos-discovery-out/
+node_modules/

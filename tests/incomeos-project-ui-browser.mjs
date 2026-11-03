@@ -8,7 +8,10 @@ import {join,extname} from "node:path";
 import {createRequire} from "node:module";
 const require=createRequire(import.meta.url);
 let chromium,devices;
-try{({chromium,devices}=require("playwright"));}catch{console.log("SKIPPED: playwright not installed");process.exit(0);}
+try{({chromium,devices}=require("playwright"));}
+catch{try{({chromium,devices}=require("playwright-core"));}
+  catch{if(process.env.CI){console.error("playwright-core is required in CI");process.exit(1);}console.log("SKIPPED: playwright not installed");process.exit(0);}}
+const launchOptions=process.env.INCOMEOS_BROWSER?{executablePath:process.env.INCOMEOS_BROWSER,args:["--no-sandbox"]}:{};
 const root=new URL("../owner/incomeos/",import.meta.url).pathname;
 const types={".html":"text/html",".js":"text/javascript",".css":"text/css",".json":"application/json",".svg":"image/svg+xml",".webmanifest":"application/manifest+json"};
 const server=createServer((req,res)=>{const p=join(root,decodeURIComponent(req.url.split("?")[0]).replace(/^\/+/,"")||"index.html");
@@ -31,7 +34,7 @@ const listings=[
   listing("c","Onsite reviewer","Onsite role required 5 days a week. Contract. $80 per hour."),
   listing("d","Low pay annotator","Contract role. $10 per hour.")];
 
-const browser=await chromium.launch();
+const browser=await chromium.launch(launchOptions);
 const ctx=await browser.newContext({...devices["iPhone 13"],acceptDownloads:true});
 const page=await ctx.newPage();
 const errors=[];page.on("pageerror",e=>errors.push(String(e)));
@@ -113,6 +116,12 @@ await page.locator("#briefing-output .briefing-actions",{hasText:"StreamCo"}).fi
 assert.match(await page.locator("#briefing-status").textContent(),/Change accepted/);
 const after=(await page.locator("#briefing-output").textContent()).match(/(\d+) proposal\(s\)/)[1];
 assert.equal(Number(after),Number(before)-1,"accepted proposal leaves the queue");
+// Undo restores the previous in-memory workspace.
+await page.locator("#briefing-undo").click();
+assert.equal((await page.locator("#briefing-output").textContent()).match(/(\d+) proposal\(s\)/)[1],before,"undo restores the proposal");
+assert.match(await page.locator("#briefing-status").textContent(),/undone/);
+assert.equal(await page.locator("#briefing-undo").isHidden(),true,"nothing left to undo");
+await page.locator("#briefing-output .briefing-actions",{hasText:"StreamCo"}).first().getByRole("button",{name:"Accept"}).click();
 await page.locator("#briefing-output li",{hasText:"Maryland Comptroller"}).getByRole("button",{name:"Searched: nothing found"}).click();
 assert.match(await page.locator("#briefing-status").textContent(),/Search recorded/);
 assert.doesNotMatch(await page.locator("#briefing-output").textContent(),/Maryland Comptroller unclaimed property search \(never searched\)/);
@@ -138,6 +147,8 @@ await page.waitForFunction(()=>/memory only/.test(document.getElementById("brief
 assert.equal((await page.locator("#briefing-output").textContent()).match(/(\d+) proposal\(s\)/)[1],after,"reloaded workspace keeps the accepted change");
 assert.equal(await page.evaluate(()=>window.__writes),0,"actions and saving never write browser storage");
 assert.equal(await page.evaluate(()=>{try{return Object.keys(localStorage).filter(k=>/workspace|briefing/i.test(k)).length;}catch(e){return 0;}}),0);
+const unlabeled=await page.evaluate(()=>[...document.querySelectorAll("#briefing-panel input,#briefing-panel select,#project-opportunity-panel input,#project-opportunity-panel select")].filter(e=>!(e.labels&&e.labels.length)&&!e.getAttribute("aria-label")).map(e=>e.id||e.name||e.type));
+assert.deepEqual(unlabeled,[],"every control in the owner panels has a label");
 assert.deepEqual(errors,[]);
 if(process.env.INCOMEOS_BRIEFING_SCREENSHOT)await page.locator("#briefing-panel").screenshot({path:process.env.INCOMEOS_BRIEFING_SCREENSHOT});
 await browser.close();server.close();
