@@ -19,7 +19,7 @@ assert.match(home,/16 independent experts across 11 countries and five continent
 assert.match(home,/href="research-summary\.html">See the findings and limitations<\/a>/);
 assert.match(research,/16 independent experts from 11 countries across five continents/);
 assert.match(research,/not certification of JRS or proof of effectiveness in live organizational records/);
-assert.match(summary,/16 independent experts across 11 countries and 5 continents/);
+assert.match(summary,/<span data-panel="completers_detection">16<\/span> independent experts across <span data-panel="countries_detection">11<\/span> countries and <span data-panel="continents_detection">5<\/span> continents/);
 assert.match(css,/\.jr-expert-evidence/);
 assert.ok(!home.match(/<span class="jrs-header-motto">[^<]*international/i),
  'expert research is supplemental, not inserted into the brand/header');
