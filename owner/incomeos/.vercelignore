@@ -6,3 +6,5 @@
 # required before any hosted IncomeOS data entry.
 *.md
 *.sql
+# Internal engineering inventory: names known defects and blockers.
+CAPABILITY-INVENTORY.json

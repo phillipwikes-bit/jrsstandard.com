@@ -1,0 +1,402 @@
+{
+  "schema": "incomeos.capability-inventory.v1",
+  "generatedOn": "2026-11-03",
+  "branch": "feature/incomeos-owner-prototype-2026-11-01",
+  "method": "Source inspection of every owner/incomeos module header, storage and network calls; full test run; this cycle's changes. Existence of a file or a passing synthetic test is not treated as operational readiness.",
+  "stateDefinitions": {
+    "IMPLEMENTED_AND_VERIFIED": "Implemented, and its logic verified by tests in this repository. Not a claim of live operation unless stated.",
+    "IMPLEMENTED_NOT_VERIFIED": "Implemented; verification depends on an external run not yet observed.",
+    "PARTIALLY_IMPLEMENTED": "Some acceptance criteria unmet.",
+    "SIMULATED_OR_SYNTHETIC_ONLY": "Logic exists and is tested only with synthetic data; no authenticated real source.",
+    "ABSENT": "Not implemented.",
+    "BLOCKED_BY_EXTERNAL_DEPENDENCY": "Requires a credential, authorization or external action."
+  },
+  "capabilities": [
+    {
+      "featureId": "ELIG-001",
+      "sourceFiles": [
+        "owner/incomeos/eligibility-engine.js"
+      ],
+      "purpose": "Deterministic 15-category mandatory eligibility against a private owner profile with documented-evidence rule",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Evidence quality depends on owner-entered references; engine cannot authenticate the underlying record"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs",
+        "tests/incomeos-project-radar.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Owner adds documented evidence refs to the private profile",
+      "acceptanceCriteria": "0 ELIGIBLE results with any mandatory NOT_SATISFIED or NOT_ESTABLISHED requirement (verified by synthetic tests)"
+    },
+    {
+      "featureId": "ELIG-002",
+      "sourceFiles": [
+        ".incomeos-private/owner-profile.json (git-ignored, not committed)",
+        "owner/incomeos/owner-profile.template.json"
+      ],
+      "purpose": "Private owner qualification profile",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE",
+      "knownDefects": [
+        "All items currently 'attested' from the directive; none documented; work authorization, conflicts review, availability unset"
+      ],
+      "testCoverage": [
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Owner documents each qualification and sets conflicts, availability and work authorization",
+      "acceptanceCriteria": "Profile items carry record references; no private profile tracked by git"
+    },
+    {
+      "featureId": "REQ-001",
+      "sourceFiles": [
+        "owner/incomeos/listing-requirements.js"
+      ],
+      "purpose": "Pattern-based requirement extraction, fraud and embedded-instruction signals from untrusted listing text",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "UNTRUSTED_INPUT_HANDLER",
+      "knownDefects": [
+        "Extraction is incomplete by design; every listing needs owner confirmation of the full requirement set before eligibility"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "Expand patterns from observed live listings",
+      "acceptanceCriteria": "No extracted set is treated as complete; injection text never alters configuration"
+    },
+    {
+      "featureId": "COMP-001",
+      "sourceFiles": [
+        "owner/incomeos/compensation.js"
+      ],
+      "purpose": "Effective hourly compensation across hourly, fixed, per-task, interview, consultation, retainer, milestone; FX evidence; taxes separate",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "PUBLIC_LOGIC",
+      "knownDefects": [
+        "Currency rates must be supplied with source and date; no live FX feed"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "Optional authorized FX source",
+      "acceptanceCriteria": "Directive example $400/10h/2h = $33.33 reproduced; unknown burden returns UNVERIFIED"
+    },
+    {
+      "featureId": "OPP-001",
+      "sourceFiles": [
+        "owner/incomeos/opportunity-normalizer.js"
+      ],
+      "purpose": "Normalized opportunity record, provenance, cross-source de-duplication, conflicting-duplicate flags, version diff, freshness",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "PUBLIC_LOGIC",
+      "knownDefects": [
+        "Hashes are non-cryptographic identifiers (documented)",
+        "Fixed in this cycle: primary-source ranking treated rank 0 as falsy"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "None for current scope",
+      "acceptanceCriteria": "Aggregator copies never counted as independent; stale/expired/withdrawn excluded"
+    },
+    {
+      "featureId": "DISC-001",
+      "sourceFiles": [
+        "owner/incomeos/discovery-connectors.js",
+        "owner/incomeos/discovery-sources.json",
+        "scripts/incomeos/discover.mjs",
+        ".github/workflows/incomeos-discovery.yml"
+      ],
+      "purpose": "Live discovery from documented public job-board APIs (Greenhouse, Ashby, Lever) with receipts, retry/backoff, carry-forward-unverified on failure",
+      "operationalState": "IMPLEMENTED_NOT_VERIFIED",
+      "externalDependencies": [
+        "boards-api.greenhouse.io",
+        "api.ashbyhq.com",
+        "api.lever.co",
+        "GitHub Actions runner egress"
+      ],
+      "securityClassification": "PUBLIC_DATA_ONLY",
+      "knownDefects": [
+        "Development container network policy denies these hosts; live verification depends on the Actions run",
+        "Board tokens are unverified until the first live receipt"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs (synthetic HTTP)"
+      ],
+      "requiredRemediation": "Inspect first live Actions receipt; disable tokens that return BOARD_NOT_FOUND",
+      "acceptanceCriteria": "At least one source returns status ok with listings in a live receipt"
+    },
+    {
+      "featureId": "DISC-002",
+      "sourceFiles": [
+        "owner/incomeos/discovery-connectors.js (usajobs)"
+      ],
+      "purpose": "USAJOBS official API connector for federal civil-rights/EEO roles",
+      "operationalState": "BLOCKED_BY_EXTERNAL_DEPENDENCY",
+      "externalDependencies": [
+        "USAJOBS API key (free registration by owner)"
+      ],
+      "securityClassification": "CREDENTIAL_REQUIRED",
+      "knownDefects": [
+        "Disabled at run time without USAJOBS_API_KEY and USAJOBS_USER_AGENT secrets"
+      ],
+      "testCoverage": [
+        "synthetic parse test"
+      ],
+      "requiredRemediation": "Owner registers key and adds repository secrets",
+      "acceptanceCriteria": "Live receipt status ok"
+    },
+    {
+      "featureId": "DISC-003",
+      "sourceFiles": [
+        ".github/workflows/incomeos-discovery.yml"
+      ],
+      "purpose": "Scheduled discovery every 6 hours",
+      "operationalState": "BLOCKED_BY_EXTERNAL_DEPENDENCY",
+      "externalDependencies": [
+        "Workflow must exist on default branch"
+      ],
+      "securityClassification": "CI",
+      "knownDefects": [
+        "GitHub only runs schedules from the default branch; merge requires owner authorization"
+      ],
+      "testCoverage": [],
+      "requiredRemediation": "Owner authorizes merge of the workflow (or repository separation)",
+      "acceptanceCriteria": "Scheduled run receipts over 30 days"
+    },
+    {
+      "featureId": "RADAR-001",
+      "sourceFiles": [
+        "owner/incomeos/project-radar.js"
+      ],
+      "purpose": "Screening pipeline: freshness, risk, problems, engine eligibility, economics, ranking, alerts",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "PUBLIC_LOGIC",
+      "knownDefects": [
+        "Fixed in this cycle: listing self-asserted eligibility:'verified' produced REVIEW (proved against pre-fix code)"
+      ],
+      "testCoverage": [
+        "tests/incomeos-project-radar.mjs",
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "None for current scope",
+      "acceptanceCriteria": "Known ineligible, expired, risky or below-rate listings displayed: 0 in tests"
+    },
+    {
+      "featureId": "LIFE-001",
+      "sourceFiles": [
+        "owner/incomeos/opportunity-lifecycle.js"
+      ],
+      "purpose": "14-state evidence-bearing lifecycle; owner-only steps; transaction-specific application authorization; payment verified only by bank/payout evidence",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Engine tested; no persistence or UI because the staging interlock blocks owner storage"
+      ],
+      "testCoverage": [
+        "tests/incomeos-opportunity-intelligence.mjs"
+      ],
+      "requiredRemediation": "Persist in protected owner backend (Phase 5)",
+      "acceptanceCriteria": "No automatic advancement; duplicate payments counted once"
+    },
+    {
+      "featureId": "ALERT-001",
+      "sourceFiles": [
+        "scripts/incomeos/discover.mjs"
+      ],
+      "purpose": "Alert de-duplication per opportunity content version; local file delivery only",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE",
+      "knownDefects": [
+        "No external delivery provider authorized; alerts are written locally only"
+      ],
+      "testCoverage": [
+        "not yet automated beyond logic review"
+      ],
+      "requiredRemediation": "Owner selects and authorizes a delivery channel that receives no sensitive data",
+      "acceptanceCriteria": "0 duplicate alerts for an unchanged listing"
+    },
+    {
+      "featureId": "UI-001",
+      "sourceFiles": [
+        "owner/incomeos/project-ui.js",
+        "owner/incomeos/index.html",
+        "owner/incomeos/incomeos.css"
+      ],
+      "purpose": "Mobile dashboard panel: health, verified eligible, awaiting verification, excluded; memory-only",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Not deployed anywhere; verified only on a local server with iPhone 13 emulation",
+        "Five-question executive dashboard across all modules not yet built"
+      ],
+      "testCoverage": [
+        "tests/incomeos-project-ui-browser.mjs (local Playwright)"
+      ],
+      "requiredRemediation": "Protected deployment, then real-device check",
+      "acceptanceCriteria": "No storage writes, no HTML injection, no horizontal scroll at iPhone width"
+    },
+    {
+      "featureId": "RESEARCH-001",
+      "sourceFiles": [
+        "owner/incomeos/research-radar.js",
+        "owner/incomeos/research-ui.js",
+        "owner/incomeos/opportunities.json",
+        "owner/incomeos/public-feed-adapter.js"
+      ],
+      "purpose": "Paid research study screening from a dated public snapshot",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [
+        "Separate Lovable/Supabase public feed (not fetched by this app)"
+      ],
+      "securityClassification": "PUBLIC_DATA",
+      "knownDefects": [
+        "opportunities.json is a dated snapshot, not a live feed",
+        "Imports blocked by staging interlock"
+      ],
+      "testCoverage": [
+        "tests/incomeos-intelligence.mjs",
+        "tests/incomeos-feed-adapter.mjs"
+      ],
+      "requiredRemediation": "Route research studies through the discovery snapshot format",
+      "acceptanceCriteria": "Live source receipts for research studies"
+    },
+    {
+      "featureId": "FIN-001",
+      "sourceFiles": [
+        "owner/incomeos/accountant.js",
+        "owner/incomeos/accounting-controls.js",
+        "owner/incomeos/double-entry.js",
+        "owner/incomeos/financial-event-journal.js",
+        "owner/incomeos/monthly-close.js",
+        "owner/incomeos/statement-close.js",
+        "owner/incomeos/period-rollforward.js",
+        "owner/incomeos/transfer-reconciliation.js",
+        "owner/incomeos/outcome-reconciliation.js",
+        "owner/incomeos/source-attestation.js",
+        "owner/incomeos/financial-value.js",
+        "owner/incomeos/economic-outcomes.js",
+        "owner/incomeos/investment-cashflow.js",
+        "owner/incomeos/research-outcomes.js",
+        "owner/incomeos/recovery-engine.js",
+        "owner/incomeos/capital-readiness.js",
+        "owner/incomeos/spend-intelligence.js",
+        "owner/incomeos/accountant-review.js"
+      ],
+      "purpose": "Accounting, reconciliation, income classification and evidence logic",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [
+        "Authenticated financial sources (none connected)"
+      ],
+      "securityClassification": "FINANCIAL",
+      "knownDefects": [
+        "All logic tested with synthetic data only",
+        "Writes blocked by unconditional staging interlock",
+        "No authenticated source; client-side flags cannot prove authenticity (release-gate enforces this)"
+      ],
+      "testCoverage": [
+        "30 existing tests/incomeos-*.mjs suites, all passing"
+      ],
+      "requiredRemediation": "Phase 5 backend and Phase 6 authenticated sources",
+      "acceptanceCriteria": "Every realized outcome linked to authenticated evidence"
+    },
+    {
+      "featureId": "SEC-001",
+      "sourceFiles": [
+        "owner/incomeos/staging-interlock.js",
+        "owner/incomeos/vercel.json",
+        "owner/incomeos/.vercelignore",
+        ".vercelignore"
+      ],
+      "purpose": "Staging interlock, headers, deployment exclusion",
+      "operationalState": "PARTIALLY_IMPLEMENTED",
+      "externalDependencies": [
+        "Vercel"
+      ],
+      "securityClassification": "SECURITY_CONTROL",
+      "knownDefects": [
+        "Interlock is not authentication",
+        "No owner authentication exists",
+        "Hosted exclusion from JRS previews not yet proven by a fresh preview (PR #91 record)"
+      ],
+      "testCoverage": [
+        "tests/incomeos-staging-privacy.mjs",
+        "tests/incomeos-source-boundary.mjs"
+      ],
+      "requiredRemediation": "Server-side owner authentication in a separate protected project",
+      "acceptanceCriteria": "Anonymous access denied on the hosted owner app"
+    },
+    {
+      "featureId": "SEC-002",
+      "sourceFiles": [
+        "owner/incomeos/OWNER-PRIVATE-SCHEMA.sql",
+        "owner/incomeos/private-append-handler.js",
+        "owner/incomeos/encrypted-accountant-bridge.js",
+        "owner/incomeos/active-vault.js",
+        "owner/incomeos/vault.js"
+      ],
+      "purpose": "Future private backend contracts and client-side encryption",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [
+        "Supabase or equivalent (not applied)"
+      ],
+      "securityClassification": "SECURITY_CONTROL",
+      "knownDefects": [
+        "Schema not applied to any database; handler unrouted"
+      ],
+      "testCoverage": [
+        "tests/incomeos-private-append.mjs",
+        "tests/incomeos-active-vault.mjs",
+        "tests/incomeos-encrypted-accountant-bridge.mjs"
+      ],
+      "requiredRemediation": "Owner authorization for backend infrastructure",
+      "acceptanceCriteria": "Access-control and security tests pass against a deployed protected backend"
+    },
+    {
+      "featureId": "AUTH-001",
+      "sourceFiles": [],
+      "purpose": "Server-side authentication, sessions, authorization",
+      "operationalState": "ABSENT",
+      "externalDependencies": [
+        "Hosting and identity provider decision"
+      ],
+      "securityClassification": "SECURITY_CONTROL",
+      "knownDefects": [
+        "Absent"
+      ],
+      "testCoverage": [],
+      "requiredRemediation": "Phase 5",
+      "acceptanceCriteria": "Unauthorized, expired and cross-user access denied in tests"
+    },
+    {
+      "featureId": "DEPLOY-001",
+      "sourceFiles": [
+        "Vercel project incomeos-opportunity-desk"
+      ],
+      "purpose": "Separate protected IncomeOS deployment",
+      "operationalState": "BLOCKED_BY_EXTERNAL_DEPENDENCY",
+      "externalDependencies": [
+        "Vercel project not Git-connected (PR #91 record)",
+        "Owner authorization"
+      ],
+      "securityClassification": "DEPLOYMENT",
+      "knownDefects": [
+        "No deployment exists"
+      ],
+      "testCoverage": [],
+      "requiredRemediation": "Owner authorizes repository separation or project root connection",
+      "acceptanceCriteria": "Exact-commit protected preview verified by bytes"
+    }
+  ]
+}
