@@ -52,10 +52,18 @@
      const nav=doc.querySelector('nav.jrs-sitenav');
      expect(button&&nav,'shared menu missing');
      expect(button.getAttribute('aria-expanded')==='false','menu not initially collapsed');
+     if(win.innerWidth>760){
+       expect(win.getComputedStyle(button).display==='none',
+         'desktop menu toggle unexpectedly visible');
+       expect(win.getComputedStyle(nav).display!=='none'&&nav.querySelectorAll('a').length>=7,
+         'desktop navigation must remain visible without an expanded mobile menu');
+       return {layout:'desktop-visible'};
+     }
+     expect(win.getComputedStyle(button).display!=='none','mobile menu toggle hidden');
      button.focus();button.click();
      expect(button.getAttribute('aria-expanded')==='true'&&nav.getAttribute('data-open')==='true',
-       'menu open state not announced');
-     return {expanded:true};
+       'mobile menu open state not announced');
+     return {expanded:true,layout:'mobile-open'};
    }
    if(id==='training-module-expanded'){
      const button=doc.querySelector('#module-btn-0');
@@ -114,6 +122,46 @@
    }
    throw Error('unsupported test state '+id);
  }
+ function finishState(id,doc,win,width){
+   if(id==='resource-empty'){
+     const reset=doc.querySelector('#jrs-resource-reset');
+     const query=doc.querySelector('#jrs-resource-query');
+     const articles=[...doc.querySelectorAll('#jrs-resource-results article.jrs-resource-entry')];
+     expect(reset&&query,'resource reset unavailable');
+     reset.click();
+     expect(query.value===''&&articles.length===16&&articles.every(a=>!a.hidden),
+       'resource clear did not restore all resource links');
+     expect(doc.activeElement===query,'resource clear did not return focus to search');
+     return 'filter-reset-restored';
+   }
+   if(id==='mobile-navigation-open'){
+     if(width>760)return 'desktop-navigation-visible';
+     const button=doc.querySelector('.jrs-global-nav-toggle');
+     const nav=doc.querySelector('nav.jrs-sitenav');
+     doc.dispatchEvent(new win.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+     expect(button.getAttribute('aria-expanded')==='false'&&nav.getAttribute('data-open')==='false',
+       'Escape did not collapse the mobile navigation');
+     expect(doc.activeElement===button,'Escape did not restore focus to mobile menu button');
+     return 'menu-escape-focus-restored';
+   }
+   if(id==='training-module-expanded'){
+     const button=doc.querySelector('#module-btn-0'),panel=doc.querySelector('#module-panel-0');
+     button.click();
+     expect(button.getAttribute('aria-expanded')==='false'&&!panel.classList.contains('open'),
+       'training module could not be collapsed');
+     return 'module-collapse-restored';
+   }
+   if(id==='training-optional-dialog'){
+     const opener=doc.querySelector('#jrs-named-record-open');
+     const dialog=doc.querySelector('#enroll-overlay');
+     doc.dispatchEvent(new win.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+     expect(dialog.style.display==='none'&&!doc.body.classList.contains('jrs-training-dialog-open'),
+       'Escape did not dismiss optional training dialog');
+     expect(doc.activeElement===opener,'dismissed dialog did not return focus to initiator');
+     return 'dialog-escape-focus-restored';
+   }
+   return 'not-applicable';
+ }
  for(const item of cases)for(const width of widths){
    let frame;
    try{
@@ -138,7 +186,8 @@
        targets:x.nodes.slice(0,4).map(n=>n.target.join(' '))
      }));
      const incomplete=scan.incomplete.map(x=>({id:x.id,count:x.nodes.length}));
-     reports.push({state:item.id,route:item.url,width,observed:state,violations,incomplete});
+     const postCondition=finishState(item.id,doc,win,width);
+     reports.push({state:item.id,route:item.url,width,observed:state,postCondition,violations,incomplete});
      if(violations.length)errors.push({state:item.id,width,violations});
    }catch(e){errors.push({state:item.id,width,reason:String(e&&e.message||e)})}
    finally{if(frame)frame.remove()}

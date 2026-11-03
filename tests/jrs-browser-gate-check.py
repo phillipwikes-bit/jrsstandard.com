@@ -101,6 +101,20 @@ def verify(html, expected):
         observed_pairs = {(r.get("state"), r.get("width")) for r in reports}
         if observed_pairs != expected_pairs or len(reports) != expected_count:
             raise ValueError("duplicate or missing interaction-state evidence")
+        # A visual axe PASS without keyboard dismissal and restored focus
+        # is insufficient for dynamic-state acceptance.
+        for row in reports:
+            state, width = row.get("state"), row.get("width")
+            expected_post = {
+                "resource-empty": "filter-reset-restored",
+                "mobile-navigation-open": ("menu-escape-focus-restored"
+                                           if width == 390 else "desktop-navigation-visible"),
+                "training-module-expanded": "module-collapse-restored",
+                "training-optional-dialog": "dialog-escape-focus-restored",
+            }.get(state, "not-applicable")
+            if row.get("postCondition") != expected_post:
+                raise ValueError("missing keyboard focus/dismissal evidence: %s at %s"
+                                 % (state, width))
         if data.get("status") != "PASS" or data.get("errors") or any(
                 r.get("violations") for r in reports):
             raise ValueError("interaction-state violations: " +
@@ -136,9 +150,27 @@ def self_test():
     active = {"status": "PASS", "scans": len(STATES) * len(WIDTHS),
               "expectedScans": len(STATES) * len(WIDTHS),
               "errors": [], "reports": [
-                  {"state": state, "width": width, "violations": [], "incomplete": []}
+                  {"state": state, "width": width, "violations": [], "incomplete": [],
+                   "postCondition": {
+                       "resource-empty": "filter-reset-restored",
+                       "mobile-navigation-open": ("menu-escape-focus-restored"
+                                                  if width == 390 else "desktop-navigation-visible"),
+                       "training-module-expanded": "module-collapse-restored",
+                       "training-optional-dialog": "dialog-escape-focus-restored",
+                   }.get(state, "not-applicable")}
                   for state in STATES for width in WIDTHS]}
     verify('<pre id="result">' + json.dumps(active) + '</pre>', "states")
+    missing_dismissal = json.loads(json.dumps(active))
+    missing_dismissal["reports"][0]["postCondition"] = "not-applicable"
+    # First state is intentionally not applicable, so target the reset case.
+    next(row for row in missing_dismissal["reports"]
+         if row["state"] == "resource-empty")["postCondition"] = "not-applicable"
+    try:
+        verify('<pre id="result">' + json.dumps(missing_dismissal) + '</pre>', "states")
+    except ValueError:
+        pass
+    else:
+        raise ValueError("missing keyboard/clear-focus evidence accepted")
     duplicate = json.loads(json.dumps(active))
     duplicate["reports"][0]["state"] = "resource-empty"
     try:

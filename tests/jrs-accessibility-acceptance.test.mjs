@@ -28,6 +28,10 @@ const resourceIndex = read('resources.html');
 assert.match(resourceIndex, /Accessibility of PDF publications:/);
 assert.match(resourceIndex, /href="contact\.html\?category=accessibility"/);
 assert.match(resourceIndex, /not a verified equivalent of the Standard PDF/);
+const researchSummary = read('research-summary.html');
+assert.match(researchSummary, /PDF accessibility and editions/);
+assert.match(researchSummary, /href="contact\.html\?category=accessibility"/);
+assert.match(researchSummary, /have not been independently verified for tagged reading order/);
 const contact = read('contact.html');
 const inquiry = read('api/site-inquiry.js');
 assert.match(contact, /<option value="accessibility">/);
@@ -61,6 +65,10 @@ assert.match(trainingCompletion, /requestedName\) return;/);
 const interactionCoverage = read('tests/jrs-interaction-a11y-browser.html');
 assert.match(interactionCoverage, /id:'training-completion-text'/);
 assert.match(interactionCoverage, /'wcag22a'/);
+for(const required of ['filter-reset-restored','menu-escape-focus-restored','module-collapse-restored','dialog-escape-focus-restored']){
+  assert.ok(interactionCoverage.includes(required),'dynamic-state keyboard dismissal assurance missing: '+required);
+}
+assert.match(read('tests/jrs-browser-gate-check.py'), /missing keyboard focus\/dismissal evidence/);
 
 const trainingPalette = read('assets/jrs-institutional-reference.css');
 const contrastActionSelector = /#cert-section button\[onclick="generateCert\(\)"\]\{[\s\S]*?background:#173d5b!important;color:#fff!important/;
