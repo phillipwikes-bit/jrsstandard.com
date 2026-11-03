@@ -72,3 +72,6 @@ body.jrs-institutional.jrs-guide-page .jrs-version-table td::before{content:attr
  body.jrs-institutional.jrs-guide-page .jrs-guide-cta a{background:#fff!important;color:#193148!important;border-color:#999!important}
  body.jrs-institutional.jrs-guide-page :where(p,li){color:#182735!important}
 }
+
+/* Preserve the original compact card typography after correcting heading semantics. */
+body.jrs-institutional.jrs-guide-page .jrs-guide-grid article h2{font:700 18px/1.4 Inter,Arial,sans-serif!important;margin:0 0 8px!important;color:#17334e!important}
