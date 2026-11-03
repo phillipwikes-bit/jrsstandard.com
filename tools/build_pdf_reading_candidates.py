@@ -60,7 +60,7 @@ def candidate_html(item, raw_pages, layout_pages, identity, page_reviews):
 <p class="context"><strong>Editorial status: NOT ASSESSED.</strong> Automatic extraction observations: {escape(warnings)}. {escape(raw_note)} {escape(layout_note)} Headings, tables, links and reading order have not been checked.</p>
 <pre class="reading">{escape(raw)}</pre>
 <details><summary>Compare layout-based extraction for page {index}</summary>
-<pre class="reading">{escape(layout)}</pre></details>
+<pre class="reading">{escape(layout)}</pre></details>\n<p><a href="#source-page-navigation">Return to source page navigation</a></p>
 </section>''')
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -82,7 +82,7 @@ section{{padding:1.5rem 0;border-top:1px solid #aab5bf}}
 <p><strong>Edition:</strong> {escape(edition)}</p>
 <p><strong>Locked Git PDF blob:</strong> <code>{identity}</code></p>
 <p>Text is extracted in two independent ordering modes for comparison. Mathematical notation, multi-column order, tables, illustrations, headers, footnotes and link destinations require editorial and assistive-technology review.</p>
-<nav aria-label="Source PDF pages">{toc}</nav>
+<nav id="source-page-navigation" aria-label="Source PDF pages">{toc}</nav>
 {''.join(sections)}
 </main></body></html>'''
 
