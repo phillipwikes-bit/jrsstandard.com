@@ -27,6 +27,8 @@ jobs:
             exit 1
           fi
           echo "PASS: source accessibility tests pinned to exact commit $actual"
+      - name: Check accessible-edition register against nine locked original identities
+        run: python3 tests/jrs-pdf-remediation-register-check.py
       - name: Document PDF tagging gaps and enforce original byte identities
         run: |
           node tests/jrs-accessibility-acceptance.test.mjs
