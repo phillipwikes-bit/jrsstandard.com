@@ -59,7 +59,7 @@
             // at every audited viewport, including iPhone widths.
             const motto=d.querySelector('.site-header-inner > .jrs-header-motto');
             if(motto){
-              const label=motto.textContent.replace(/\\s+/g,' ').trim();
+              const label=motto.textContent.replace(/\s+/g,' ').trim();
               if(!label.includes('Check the record. No new software required.'))
                 failures.push('header-motto-wording');
               if(!isVisible(w,motto))failures.push('header-motto-hidden');
