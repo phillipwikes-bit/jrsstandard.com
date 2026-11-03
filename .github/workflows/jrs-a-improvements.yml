@@ -41,6 +41,29 @@ jobs:
           python3 tests/jrs-browser-gate-check.py --self-test
           python3 tests/jrs-browser-gate-check.py /tmp/jrs-a-grade-dom.txt responsive
 
+      - name: Check 400-percent-equivalent CSS reflow at 320/400 px across 20 public routes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8794 --bind 127.0.0.1 >/tmp/jrs-reflow-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8794/index.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8794/tests/jrs-400-percent-reflow-browser.html > /tmp/jrs-reflow-dom.txt 2>/tmp/jrs-reflow-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-reflow-dom.txt reflow /tmp/jrs-reflow-evidence.json
+      - name: Retain reflow geometry and route evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-reflow-evidence-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-reflow-evidence.json
+          if-no-files-found: warn
+          retention-days: 30
       - name: Scan 20 canonical public routes across 40 mobile/desktop conditions with pinned axe-core
         shell: bash
         run: |
