@@ -22,7 +22,7 @@ The JRS method, research and publication versions remain separate. Discoverabili
 | Perplexity | `PerplexityBot` for search, `Perplexity-User` for user-directed retrieval; confirm any proposed WAF allowance using vendor-published IP ranges. | A robots allowance does not establish that hosting/WAF permits verified requests. |
 | Meta AI / Llama-powered assistants | Make public JRS material linkable and indexable; evaluate Meta's documented search agents and link-preview fetchers separately if available. | Llama is a model family, not a single web-indexing service. Do not promise coverage of every Llama deployment. |
 | Grok / xAI | Rely on high-quality public pages and widely used web indexes. Verify actual referral/crawler evidence before specialized access changes. | No verified official Grok crawler rule is assumed here. |
-| Mistral Le Chat and other AI search products | Preserve public HTML, ordinary search-index eligibility, clear source links and correct canonical metadata. | Vendor indexing behavior must be verified before introducing agent-specific rules. |
+| Mistral AI search / Vibe and other products | Mistral documents `MistralAI-Index` for search indexing and `MistralAI-User` for user-directed retrieval. Maintain accessible public HTML and confirm network access before specialized rules. | `MistralAI-Training` is separate from search; no new training authorization is inferred. |
 
 ### Official source material used
 
@@ -33,6 +33,7 @@ The JRS method, research and publication versions remain separate. Discoverabili
 - Google sitemap guidance: https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
 - Microsoft Bing: https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a
 - Perplexity: https://docs.perplexity.ai/docs/resources/perplexity-crawlers
+- Mistral: https://docs.mistral.ai/robots
 
 Source URLs explain vendor behavior; they do not verify JRS was crawled or cited.
 
