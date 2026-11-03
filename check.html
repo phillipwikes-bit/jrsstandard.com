@@ -476,7 +476,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
   try {
     var sourceCandidate = (new URLSearchParams(window.location.search).get('src') || '').toLowerCase();
     // Bounded attribution categories, not arbitrary caller-supplied identifiers.
-    src = /^(home|homepage|quick|resources|training|standard|research|footer|header|nav|menu|direct|email|check|guide|investigator-guides|search|article|qr|social|dashboard)$/.test(sourceCandidate)
+    src = /^(home|homepage|quick|about|organization|resources|training|standard|research|footer|header|nav|menu|direct|email|check|guide|investigator-guides|search|article|qr|social|dashboard)$/.test(sourceCandidate)
       ? sourceCandidate : 'other';
   } catch (e) { src = ''; }
   try {
