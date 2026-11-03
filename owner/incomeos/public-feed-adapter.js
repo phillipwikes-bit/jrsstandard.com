@@ -32,7 +32,7 @@
       // Uncertain formats never qualify for fully-online filtering.
       if(raw.apply_deadline!==null&&raw.apply_deadline!==undefined&&!validDate(raw.apply_deadline))throw Error("Invalid published application deadline");
       var canonical={
-        id:raw.id,title:raw.title,provider:raw.recruiter,paymentUsd:raw.incentive_usd,
+        id:raw.id,title:raw.title,provider:raw.recruiter,paymentUsd:raw.incentive_usd,paymentForm:trim([raw.incentive_type,raw.incentive_label].filter(Boolean).join(" "),80),
         minutes:raw.duration_minutes,screenMinutes:null,mode:mode,
         eventEnd:raw.apply_deadline||null,dateType:"application-deadline",
         reviewed:raw.source_checked_on,dates:trim(raw.participation_dates,100),

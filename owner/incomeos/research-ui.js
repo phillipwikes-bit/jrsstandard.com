@@ -34,7 +34,8 @@
       var s=v.candidate,div=add(root,"article","radar-card"),heading=add(div,"div","radar-heading");
       add(heading,"strong","",s.title);add(heading,"span","",v.priority.replaceAll("_"," "));
       add(div,"p","muted",s.provider+" · "+s.mode+" · "+s.minutes+" minute session · advertised "+usd(s.paymentUsd)+" · "+(s.eventEnd?(s.dateType==="application-deadline"?"application deadline ":"last published session date ")+s.eventEnd:"no published application deadline"));
-      add(div,"p","muted",v.effectiveHourlyYield===null?"EHY unavailable: complete screening, preparation and follow-up estimates required.":("Effective hourly yield "+usd(v.effectiveHourlyYield)+"/hr · "+v.totalMinutes+" minutes total ("+s.minutes+" session + "+s.screenMinutes+" screener + "+s.prepMinutes+" prep + "+s.adminMinutes+" follow-up) · time confidence: "+v.timeConfidence+"."));
+      add(div,"p","muted",v.effectiveHourlyYield===null?"EHY unavailable: "+(v.ehyMissing&&v.ehyMissing.length?"missing "+v.ehyMissing.join(", ")+" time.":"time not established."):("Effective hourly yield "+usd(v.effectiveHourlyYield)+"/hr · "+v.totalMinutes+" minutes total ("+s.minutes+" session + "+s.screenMinutes+" screener + "+s.prepMinutes+" prep + "+s.adminMinutes+" follow-up) · time "+v.timeConfidence));
+      add(div,"p","muted","Advertised "+usd(s.paymentUsd)+" ("+({cash:"cash",gift_card:"gift card",points:"points",unknown:"payment form not stated"}[v.paymentForm]||"payment form not stated")+"). Advertised pay is not earned income.");
       add(div,"p","muted","Session-only equivalent "+usd(v.sessionRate)+"/hr"+(v.sessionPlusScreenRate===null?" · screening effort unknown":" · including specified screening "+usd(v.sessionPlusScreenRate)+"/hr")+". Selection and payment are not guaranteed.");
       if(s.eligibility.length)add(div,"p","muted","Published requirements: "+s.eligibility.join("; "));
       var flags=v.reasons.concat(v.warnings);
@@ -61,8 +62,8 @@
   }
   function quote(x){var s=String(x==null?"":x);if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
   function exportCsv(){
-    var rows=[["ID","Provider","Title","Advertised USD","Session minutes","Screen minutes","Prep minutes","Follow-up minutes","Total minutes","EHY USD/hour","Time confidence","Mode","Published End Date","Date Type","Source reviewed","Screening priority","Review flags","Owner progress","Application URL","Source URL"]];
-    latest.results.forEach(function(v){var s=v.candidate;rows.push([s.id,s.provider,s.title,s.paymentUsd,s.minutes,s.screenMinutes??"",s.prepMinutes??"",s.adminMinutes??"",v.totalMinutes??"",v.effectiveHourlyYield??"",v.timeConfidence,s.mode,s.eventEnd||"",s.dateType,s.reviewed,v.priority,v.reasons.concat(v.warnings).join("; "),db.progress[s.id]||"New",s.url,s.sourceUrl]);});
+    var rows=[["ID","Provider","Title","Advertised USD","Session minutes","Screen minutes","Prep minutes","Follow-up minutes","Total minutes","EHY USD/hour","EHY missing components","Time confidence","Payment form","Mode","Published End Date","Date Type","Source reviewed","Screening priority","Review flags","Owner progress","Application URL","Source URL"]];
+    latest.results.forEach(function(v){var s=v.candidate;rows.push([s.id,s.provider,s.title,s.paymentUsd,s.minutes,s.screenMinutes??"",s.prepMinutes??"",s.adminMinutes??"",v.totalMinutes??"",v.effectiveHourlyYield??"",(v.ehyMissing||[]).join("; "),v.timeConfidence,v.paymentForm,s.mode,s.eventEnd||"",s.dateType,s.reviewed,v.priority,v.reasons.concat(v.warnings).join("; "),db.progress[s.id]||"New",s.url,s.sourceUrl]);});
     download(rows.map(function(x){return x.map(quote).join(",");}).join("\r\n")+"\r\n","IncomeOS-research-radar-"+today()+".csv","text/csv;charset=utf-8");
   }
   async function importLeads(){
