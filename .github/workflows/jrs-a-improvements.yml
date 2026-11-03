@@ -16,6 +16,8 @@ jobs:
           persist-credentials: false
       - name: Validate practitioner routes and non-sensitive events
         run: node tests/jrs-a-improvements.test.mjs
+      - name: Preserve the competitor-informed first-use procedure and reviewer boundaries
+        run: node tests/jrs-competitive-ux.test.mjs
       - name: Check guide heading order and PDF structure preflight without certification claims
         run: node tests/jrs-accessibility-acceptance.test.mjs
       - name: Preserve existing homepage and resource directory contracts
@@ -39,7 +41,7 @@ jobs:
           python3 tests/jrs-browser-gate-check.py --self-test
           python3 tests/jrs-browser-gate-check.py /tmp/jrs-a-grade-dom.txt responsive
 
-      - name: Scan 20 public routes across 40 mobile/desktop conditions with pinned axe-core
+      - name: Scan 21 public routes across 42 mobile/desktop conditions with pinned axe-core
         shell: bash
         run: |
           set -euo pipefail
