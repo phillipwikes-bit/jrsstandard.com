@@ -93,3 +93,11 @@
 2. Owner documents profile evidence and sets work authorization, conflicts and availability (R-4).
 3. Owner decides repository separation (section 7), which unblocks scheduling and protected hosting.
 4. Phase 5: authentication and protected storage for confirmations, lifecycle and alerts.
+
+## 9. Addendum: first live discovery evidence (same day)
+
+- Run 1 (`456c3f4`) failed before any request: the GitHub runner loaded the engine files as ES modules, so `module.exports` was unset. Reproduced locally under a parent `package.json` with `"type":"module"`; fixed in `cd3764e` and verified in both module modes.
+- **Run 2, GitHub Actions run 41667377096, commit `cd3764e`: success.** `gh-scaleai` 166, `gh-invisible` 23, `ashby-mercor` 105, `ashby-handshake` 84, `gh-labelbox` 10 listings (all HTTP 200, one attempt each); `lever-turing` HTTP 404 `BOARD_NOT_FOUND`; both USAJOBS sources disabled for want of a key. 388 public listings in artifact `incomeos-discovery-41667377096`.
+- DISC-001 is now **implemented and verified** for pull-request runs. The registry records the five verified boards and disables `lever-turing`; its identifier is not guessed further.
+- What this does NOT establish: that any listing is open to the owner, eligible, or well paid. These are unscreened public postings (most are company staff roles); eligibility requires the private profile with documented evidence.
+- `visual-snapshots` fails on this PR because the workflow added to `main` on 2026-11-02 checks out this branch head, which predates its script. Not caused by this PR; remedy (merging `main`) held for owner decision because it touches root `vercel.json`.

@@ -3,14 +3,104 @@
   "reviewedOn": "2026-11-03",
   "notice": "Public job-board identifiers only. Board tokens marked tokenVerified:false have NOT been confirmed to exist; the first live run records BOARD_NOT_FOUND or ok for each, and the registry is corrected from that receipt. Listing a source here is not an assertion that it currently has eligible openings or that any integration exists beyond the documented public endpoint.",
   "sources": [
-    {"id": "gh-scaleai", "connector": "greenhouse", "token": "scaleai", "employer": "Scale AI", "platform": "Scale AI / Outlier", "employerDomains": ["scale.com"], "tokenVerified": false, "enabled": true},
-    {"id": "gh-invisible", "connector": "greenhouse", "token": "invisibletech", "employer": "Invisible Technologies", "platform": "Invisible Technologies", "employerDomains": ["invisible.co", "invisibletech.ai"], "tokenVerified": false, "enabled": true},
-    {"id": "ashby-mercor", "connector": "ashby", "token": "mercor", "employer": "Mercor", "platform": "Mercor", "employerDomains": ["mercor.com"], "tokenVerified": false, "enabled": true},
-    {"id": "ashby-handshake", "connector": "ashby", "token": "handshake", "employer": "Handshake", "platform": "Handshake AI", "employerDomains": ["joinhandshake.com"], "tokenVerified": false, "enabled": true},
-    {"id": "gh-labelbox", "connector": "greenhouse", "token": "labelbox", "employer": "Labelbox", "platform": "Alignerr (Labelbox)", "employerDomains": ["labelbox.com"], "tokenVerified": false, "enabled": true},
-    {"id": "lever-turing", "connector": "lever", "token": "turing", "employer": "Turing", "platform": "Turing", "employerDomains": ["turing.com"], "tokenVerified": false, "enabled": true},
-    {"id": "usajobs-civil-rights", "connector": "usajobs", "keyword": "civil rights investigator", "employer": "US federal agencies", "platform": "USAJOBS", "tokenVerified": true, "enabled": true, "note": "Disabled at run time until the owner registers a free USAJOBS API key and stores USAJOBS_API_KEY and USAJOBS_USER_AGENT as repository secrets."},
-    {"id": "usajobs-eeo", "connector": "usajobs", "keyword": "equal employment opportunity specialist", "employer": "US federal agencies", "platform": "USAJOBS", "tokenVerified": true, "enabled": true}
+    {
+      "id": "gh-scaleai",
+      "connector": "greenhouse",
+      "token": "scaleai",
+      "employer": "Scale AI",
+      "platform": "Scale AI / Outlier",
+      "employerDomains": [
+        "scale.com"
+      ],
+      "tokenVerified": true,
+      "enabled": true,
+      "verifiedBy": "GitHub Actions run 41667377096, commit cd3764e, 2026-11-03T15:46Z: HTTP 200, 166 listings"
+    },
+    {
+      "id": "gh-invisible",
+      "connector": "greenhouse",
+      "token": "invisibletech",
+      "employer": "Invisible Technologies",
+      "platform": "Invisible Technologies",
+      "employerDomains": [
+        "invisible.co",
+        "invisibletech.ai"
+      ],
+      "tokenVerified": true,
+      "enabled": true,
+      "verifiedBy": "GitHub Actions run 41667377096, commit cd3764e, 2026-11-03T15:46Z: HTTP 200, 23 listings"
+    },
+    {
+      "id": "ashby-mercor",
+      "connector": "ashby",
+      "token": "mercor",
+      "employer": "Mercor",
+      "platform": "Mercor",
+      "employerDomains": [
+        "mercor.com"
+      ],
+      "tokenVerified": true,
+      "enabled": true,
+      "verifiedBy": "GitHub Actions run 41667377096, commit cd3764e, 2026-11-03T15:46Z: HTTP 200, 105 listings"
+    },
+    {
+      "id": "ashby-handshake",
+      "connector": "ashby",
+      "token": "handshake",
+      "employer": "Handshake",
+      "platform": "Handshake AI",
+      "employerDomains": [
+        "joinhandshake.com"
+      ],
+      "tokenVerified": true,
+      "enabled": true,
+      "verifiedBy": "GitHub Actions run 41667377096, commit cd3764e, 2026-11-03T15:46Z: HTTP 200, 84 listings"
+    },
+    {
+      "id": "gh-labelbox",
+      "connector": "greenhouse",
+      "token": "labelbox",
+      "employer": "Labelbox",
+      "platform": "Alignerr (Labelbox)",
+      "employerDomains": [
+        "labelbox.com"
+      ],
+      "tokenVerified": true,
+      "enabled": true,
+      "verifiedBy": "GitHub Actions run 41667377096, commit cd3764e, 2026-11-03T15:46Z: HTTP 200, 10 listings"
+    },
+    {
+      "id": "lever-turing",
+      "connector": "lever",
+      "token": "turing",
+      "employer": "Turing",
+      "platform": "Turing",
+      "employerDomains": [
+        "turing.com"
+      ],
+      "tokenVerified": false,
+      "enabled": false,
+      "disabledReason": "GitHub Actions run 41667377096, commit cd3764e, 2026-11-03T15:46Z: HTTP 404 BOARD_NOT_FOUND. Board identifier unknown; not guessed further."
+    },
+    {
+      "id": "usajobs-civil-rights",
+      "connector": "usajobs",
+      "keyword": "civil rights investigator",
+      "employer": "US federal agencies",
+      "platform": "USAJOBS",
+      "tokenVerified": true,
+      "enabled": true,
+      "note": "Disabled at run time until the owner registers a free USAJOBS API key and stores USAJOBS_API_KEY and USAJOBS_USER_AGENT as repository secrets."
+    },
+    {
+      "id": "usajobs-eeo",
+      "connector": "usajobs",
+      "keyword": "equal employment opportunity specialist",
+      "employer": "US federal agencies",
+      "platform": "USAJOBS",
+      "tokenVerified": true,
+      "enabled": true
+    }
   ],
   "notListedReason": {
     "DataAnnotation": "No documented public job-board API identified; manual import only.",

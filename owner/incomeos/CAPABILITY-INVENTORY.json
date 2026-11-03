@@ -115,7 +115,7 @@
         ".github/workflows/incomeos-discovery.yml"
       ],
       "purpose": "Live discovery from documented public job-board APIs (Greenhouse, Ashby, Lever) with receipts, retry/backoff, carry-forward-unverified on failure",
-      "operationalState": "IMPLEMENTED_NOT_VERIFIED",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
       "externalDependencies": [
         "boards-api.greenhouse.io",
         "api.ashbyhq.com",
@@ -124,14 +124,16 @@
       ],
       "securityClassification": "PUBLIC_DATA_ONLY",
       "knownDefects": [
-        "Development container network policy denies these hosts; live verification depends on the Actions run",
-        "Board tokens are unverified until the first live receipt"
+        "Fixed in cd3764e: runner failed on the GitHub runner because engines loaded as ES modules",
+        "Verified on pull_request runs only; scheduled runs need the default branch",
+        "No eligible results are implied: listings are unscreened public postings"
       ],
       "testCoverage": [
         "tests/incomeos-opportunity-intelligence.mjs (synthetic HTTP)"
       ],
       "requiredRemediation": "Inspect first live Actions receipt; disable tokens that return BOARD_NOT_FOUND",
-      "acceptanceCriteria": "At least one source returns status ok with listings in a live receipt"
+      "acceptanceCriteria": "At least one source returns status ok with listings in a live receipt",
+      "liveEvidence": "GitHub Actions run 41667377096, commit cd3764e, 2026-11-03T15:46Z: 5 sources ok (HTTP 200), 388 public listings, 1 BOARD_NOT_FOUND (lever-turing, now disabled), 2 disabled (USAJOBS, no key). Artifact incomeos-discovery-41667377096 (7-day retention)."
     },
     {
       "featureId": "DISC-002",
