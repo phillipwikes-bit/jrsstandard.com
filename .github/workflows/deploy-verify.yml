@@ -34,7 +34,7 @@ jobs:
           fetch-depth: 2
 
       - name: Verify source-aware route parity contract without network
-        run: python3 -m unittest discover -s tests -p 'preflight-deploy-contract.test.py' -v
+        run: python3 tests/preflight-deploy-contract.test.py -v
 
       - name: Wait for the deployment to propagate
         run: sleep 90

@@ -81,7 +81,7 @@ class RouteContract(unittest.TestCase):
             def __exit__(self, *a): return False
             def read(self, _): return self.html.encode()
         good = FakeReply("private, no-store, max-age=0","noindex, nofollow",
-            "<title>Private Owner Sign-In</title><a href='/owner-login.html'>Continue</a>")
+            "<title>Private Owner Sign-In</title><form id="verify-code"></form><form id="access-form"></form>")
         no_cache = FakeReply("public, max-age=600","noindex, nofollow",good.html)
         exposed = FakeReply("private, no-store","noindex, nofollow",
             good.html+"<h1>JRS Owner Dashboard</h1>")
@@ -101,6 +101,8 @@ class RouteContract(unittest.TestCase):
         self.assertNotIn("jrs-a-pathways.css",
             (ROOT/"programme-status-9872fb93cc94.html").read_text())
         self.assertNotIn("jrs-a-pathways.css",(ROOT/"owner-login.html").read_text())
+        self.assertIn("@media print", css)
+        self.assertIn(".jrs-guide-page .jrs-version-table thead", css)
 
 
 if __name__ == "__main__":

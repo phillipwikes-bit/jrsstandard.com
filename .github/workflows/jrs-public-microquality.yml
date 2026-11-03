@@ -22,7 +22,7 @@ jobs:
       - name: Verify Python checker syntax
         run: python3 -m py_compile scripts/preflight_deploy_check.py tests/preflight-deploy-contract.test.py
       - name: Test redirect, confidential owner-gate and static route requirements
-        run: python3 -m unittest discover -s tests -p 'preflight-deploy-contract.test.py' -v
+        run: python3 tests/preflight-deploy-contract.test.py -v
       - name: Verify public practitioner page and typography invariants
         run: |
           node tests/jrs-a-improvements.test.mjs

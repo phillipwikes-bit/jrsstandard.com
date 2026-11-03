@@ -214,7 +214,7 @@ def fetch_private_gate(path):
             return (r.status == 200 and "Private Owner Sign-In" in body
                     and "private" in cache and "no-store" in cache
                     and "noindex" in robots and "nofollow" in robots
-                    and "/owner-login" in body and
+                    and 'id="verify-code"' in body and 'id="access-form"' in body and
                     "JRS Owner Dashboard" not in body)
     except (urllib.error.HTTPError, OSError, ValueError):
         return False

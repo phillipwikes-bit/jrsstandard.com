@@ -52,3 +52,23 @@ body.jrs-institutional.jrs-guide-page .jrs-version-table tr{display:block;margin
 body.jrs-institutional.jrs-guide-page .jrs-version-table td{display:block;padding:6px 8px;border:0}
 body.jrs-institutional.jrs-guide-page .jrs-version-table td::before{content:attr(data-label) ": ";display:block;font-weight:700;font-size:12px;color:#17334e}}
 @media(prefers-reduced-motion:reduce){body.jrs-institutional .jrs-fast-chooser *,body.jrs-institutional.jrs-guide-page *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Print-only publication presentation. Never a replacement for approved PDFs. */
+@media print{
+ body.jrs-institutional.jrs-guide-page{background:#fff!important;color:#121c24!important;font:11pt/1.4 Georgia,serif!important}
+ body.jrs-institutional.jrs-guide-page :where(.site-header,.jrs-sitenav,.jrs-guide-footer,.jrs-global-nav-toggle){display:none!important}
+ body.jrs-institutional.jrs-guide-page .jrs-guide-shell{width:100%!important;max-width:none!important;margin:0!important}
+ body.jrs-institutional.jrs-guide-page .jrs-guide-hero{padding:0 0 10pt!important}
+ body.jrs-institutional.jrs-guide-page .jrs-guide-panel{border-color:#9caeba!important;box-shadow:none!important}
+ body.jrs-institutional.jrs-guide-page .jrs-guide-grid{display:block!important}
+ body.jrs-institutional.jrs-guide-page .jrs-guide-grid article{break-inside:avoid;page-break-inside:avoid;margin:0 0 10pt!important}
+ body.jrs-institutional.jrs-guide-page .jrs-version-table{width:100%!important;border-collapse:collapse!important}
+ body.jrs-institutional.jrs-guide-page .jrs-version-table thead{position:static!important;width:auto!important;height:auto!important;clip-path:none!important;overflow:visible!important}
+ body.jrs-institutional.jrs-guide-page .jrs-version-table tr{display:table-row!important;border:0!important;padding:0!important}
+ body.jrs-institutional.jrs-guide-page .jrs-version-table th,
+ body.jrs-institutional.jrs-guide-page .jrs-version-table td{display:table-cell!important;padding:7pt 5pt!important;border-bottom:1px solid #b5c0c8!important;color:#182735!important;font-size:10pt!important}
+ body.jrs-institutional.jrs-guide-page .jrs-version-table td::before{display:none!important}
+ body.jrs-institutional.jrs-guide-page :where(.jrs-guide-panel,.jrs-guide-cta){break-inside:avoid-page}
+ body.jrs-institutional.jrs-guide-page .jrs-guide-cta a{background:#fff!important;color:#193148!important;border-color:#999!important}
+ body.jrs-institutional.jrs-guide-page :where(p,li){color:#182735!important}
+}
