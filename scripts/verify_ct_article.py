@@ -75,7 +75,7 @@ check("acknowledgement verbatim", ack in " ".join(ms.split()))
 
 # ---- illustrative example labelled; disclosures present
 check("worked example labelled as an illustrative composite",
-      "illustrative composite, not drawn from any organization" in ms)
+      "it is a composite, and its details are invented" in " ".join(ms.split()))
 check("financial-interest disclosure present", "may benefit from its adoption" in ms)
 
 # ---- study figures stated consistently
