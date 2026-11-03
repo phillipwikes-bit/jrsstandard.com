@@ -1623,3 +1623,43 @@ body.jrs-institutional.jrs-training-page .btn-survey-submit{
   min-height:44px!important;
   line-height:1.5!important;
 }
+
+/* 2026-11-03 expanded 40-condition axe-core remediation.
+   The institutional light-theme variables made some old page-level gold
+   action backgrounds too dark for their inherited near-black labels. */
+body.jrs-institutional .cta-primary,
+body.jrs-institutional a[href="simulations.html"][style*="background:var(--accent)"]{
+  background:#eed2a0!important;
+  color:#12273c!important;
+  font-size:14px!important;
+  min-height:44px!important;
+  line-height:1.5!important;
+}
+body.jrs-institutional .site-header .nav-links a,
+body.jrs-institutional .site-header .nav-toggle{
+  color:#e2ebf3!important;
+}
+body.jrs-institutional .site-header .nav-toggle{
+  border-color:#d5e0e8!important;
+  background:transparent!important;
+  font-size:14px!important;
+  min-height:44px!important;
+}
+/* Historical research register has a dark inline notice even though the
+   remaining institutional page is light. Keep its return link legible. */
+body.jrs-institutional #main-content > p[style*="background:#1a1a1a"] a[href="research.html"]{
+  color:#f4d89d!important;
+  text-decoration:underline!important;
+}
+@media(forced-colors:active){
+  body.jrs-institutional :where(.cta-primary,.nav-toggle),
+  body.jrs-institutional a[href="simulations.html"][style*="background:var(--accent)"]{
+    forced-color-adjust:auto;
+    background:ButtonFace!important;
+    color:ButtonText!important;
+    border:1px solid ButtonText!important;
+  }
+  body.jrs-institutional .site-header .nav-links a{
+    color:LinkText!important;
+  }
+}
