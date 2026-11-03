@@ -432,7 +432,7 @@ for (const required of [
 ]) assert.ok(sevenPointAid.includes(required), 'seven-point aid lost evidenced human-review framing: ' + required);
 assert.doesNotMatch(sevenPointAid, /two or more modes in one file is the pattern that matters|if two or more modes show up|likely to struggle to explain its own decision|probably cannot explain its own decision/i,
   'unsupported two-item decision-prediction threshold returned');
-assert.match(sevenPointAid, /out\.innerHTML = head \+ tail \+ bench \+ stamp \+ actions/,
+assert.match(sevenPointAid, /out\.innerHTML = summary \+ actions/,
   'local visible review summary and copy/print controls must remain');
 const checkLocalScript = sevenPointAid.match(/<script>\s*\(function\(\)\{\s*\/\/ Runs entirely in the browser\.[\s\S]*?<\/script>/);
 assert.ok(checkLocalScript, 'local-only record check is missing');
@@ -467,4 +467,29 @@ console.log('PASS: seven-point aid has no invented two-item threshold, distingui
   assert.match(check, /These questions are not validated diagnostic tests/,
     'SEO and public review claims must respect research limitations');
   console.log('PASS: check result announcements, no navigation hijack and path-only analytics.');
+}
+
+// Print and copy contract: printing only the current reading-aid result, never
+// dumping unrelated web navigation or silently claiming clipboard success.
+{
+  const page=read('check.html');
+  assert.match(page, /body\.jrs-institutional > :not\(main\)\{display:none!important\}/,
+    'print must exclude top-level site chrome');
+  assert.match(page, /#main-content > article > :not\(#sa-out\)/,
+    'print must exclude seven question prompts and research page furniture');
+  assert.match(page, /#sa-out \.sa-actions\{display:none!important\}/,
+    'action buttons and policy links must not be printed');
+  assert.match(page, /#sa-out::before\{/,
+    'printed one-record summary must identify itself');
+  assert.match(page, /id="sa-summary"/,
+    'copy must isolate the review summary from its UI action buttons');
+  assert.match(page, /out\.querySelector\('#sa-summary'\)/,
+    'copy source must target only the written summary');
+  assert.match(page, /document\.execCommand\('copy'\) !== true/,
+    'clipboard fallback must check actual copy return value before reporting success');
+  assert.match(page, /if \(ta\.parentNode\) ta\.parentNode\.removeChild\(ta\)/,
+    'temporary clipboard focus target must always be removed');
+  assert.match(page, /if \(prior && typeof prior\.focus === 'function'\) prior\.focus\(\)/,
+    'keyboard focus must return after clipboard fallback');
+  console.log('PASS: print scope and truthful clipboard fallback with keyboard focus restoration.');
 }

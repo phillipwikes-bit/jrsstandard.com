@@ -84,6 +84,36 @@ jobs:
           test -n "$browser"
           "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=60000 --window-size=1440,1100 --dump-dom http://127.0.0.1:8795/tests/jrs-check-a11y-browser.html > /tmp/jrs-check-a11y-dom.txt 2>/tmp/jrs-check-a11y-errors.log
           python3 tests/jrs-browser-gate-check.py /tmp/jrs-check-a11y-dom.txt check /tmp/jrs-check-a11y-evidence.json
+      - name: Verify printable reading aid excludes navigation and study body
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8796 --bind 127.0.0.1 >/tmp/jrs-check-print-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8796/check.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          command -v pdftotext >/dev/null || { echo 'RELEASE HOLD: PDF text checker unavailable'; exit 1; }
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --virtual-time-budget=12000 --no-pdf-header-footer \
+            --print-to-pdf=/tmp/jrs-check-summary-preflight.pdf \
+            http://127.0.0.1:8796/check.html >/tmp/jrs-check-print-chrome.log 2>&1
+          test -s /tmp/jrs-check-summary-preflight.pdf
+          pdftotext -layout /tmp/jrs-check-summary-preflight.pdf /tmp/jrs-check-print-text.txt
+          grep -Fq 'Seven-Point Record Review Summary' /tmp/jrs-check-print-text.txt || \
+            { echo 'RELEASE HOLD: printed summary title missing'; exit 1; }
+          grep -Fq 'Tick the boxes that apply to the record' /tmp/jrs-check-print-text.txt || \
+            { echo 'RELEASE HOLD: printed review state missing'; exit 1; }
+          if grep -Eiq 'Seven documentation-risk patterns|The five conditions behind the check|Check one record now|Take it further|Submit inquiry|Make this a policy' /tmp/jrs-check-print-text.txt; then
+            echo 'RELEASE HOLD: unrelated source material leaked into review printout'
+            exit 1
+          fi
+          echo 'PASS: headless Chromium print contains only the on-page review state, not the wider JRS web article.'
+          echo 'LIMITATION: unselected-state PDF smoke only. Screen reader and PDF-UA conformance remain unassessed.'
       - name: Retain inspected test output
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
