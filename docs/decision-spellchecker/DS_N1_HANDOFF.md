@@ -31,6 +31,8 @@ A run that exits 0 with `"identical": true` means your clone reproduced the reco
 | `node tests/ds-n1/eval-stress.mjs --split dev --no-write` | 10 stress records; 0 critical false-ready required |
 | `node tests/ds-n1/ui.browser.mjs` | 20 Chromium checks, desktop and iPhone 13 emulation |
 | `node tests/ds-n1/eval-isolation.mjs --no-write` | 12 isolation cases: each rule alone decisive (specification tests) |
+| `node tests/ds-n1/pdf.check.mjs` | 9 PDF checks via poppler (needs Chromium) |
+| `node lib/ds-n1/export-pdf.mjs <export.json> <out.pdf>` | Render a verified export to a tagged A4 PDF |
 | `node tests/ds-n1/ablation.mjs [exports...]` | Rule ablation: NEVER_FIRED / REDUNDANT / DECISIVE per rule, plus reviewer feedback from exports |
 | `node lib/ds-n1/serve.mjs` | Reviewer UI at `http://127.0.0.1:4317/` (loopback only) |
 
@@ -62,4 +64,4 @@ A run that exits 0 with `"identical": true` means your clone reproduced the reco
 * All labels are the developer's own; nothing is independently verified.
 * The rules are lexical. A passage can pass every check and still not support a claim.
 * Not tested on a real iPhone or with assistive technology.
-* PDF export and SP-07, SP-13 and SP-14 are not implemented. SP-18 (feedback and ablation) is implemented as of 0.3.0.
+* SP-07, SP-13 and SP-14 are not implemented. SP-18 (bounded) since 0.3.0; SP-15 PDF since 0.6.0 (PDF bytes not reproducible; text is). PDF accessibility not validated.

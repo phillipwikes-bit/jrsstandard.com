@@ -524,3 +524,37 @@ My first M27 measurement counted output lines, read the crash as "none caught", 
 The predicted critical false-ready on HOLDOUT-2 is **H06**: an approval withdrawn in a *later* sentence of the same source, which every rule misses because every rule is scoped to a single sentence.
 
 All 10 predictions are committed in `tests/ds-n1/holdout2-predictions.json` **before any run**. The engine was not run on HOLDOUT-2 to make them. Predicted outcome: 1 critical false-ready (H06), 0 false holds, 8 of 10 agreement. If that holds, HOLDOUT-2 would **fail** its mandatory criterion, and that result must be recorded, not tuned away.
+
+## 17. Increment I (appended 2026-11-03): SP-15 PDF export
+
+Section 4 recorded "PDF not implemented" for SP-15. That row is preserved; this section supersedes it for DS-N1 `0.6.0-dev`. Rules are unchanged (`0.2.0`), and so is the report schema (`1.1`).
+
+**SP-15 PDF status: IMPLEMENTED, DEVELOPER VERIFIED.** Correspondence to the historical SP-15 is NOT ESTABLISHED.
+
+* **Renderer: `lib/ds-n1/export-pdf.mjs`**
+  * Renders the HTML report with Chromium. JavaScript is disabled, the context is offline and every request is aborted.
+  * Output is A4, tagged, outlined, with a page-numbered footer.
+  * It is **local tooling**: it needs the pre-installed Playwright, so it is not exported from `index.mjs`, and the core library stays dependency-free.
+  * The CLI (`node lib/ds-n1/export-pdf.mjs <export.json> <out.pdf>`) **refuses any export the verifier does not find internally consistent** and then writes nothing.
+* **Binding.**
+  * The HTML report, and so the PDF, now prints the SHA-256 of the canonical JSON report.
+  * A PDF is evidence only of the JSON report with that checksum; the JSON remains the record of authority.
+  * **PDF bytes are not reproducible**, because Chromium embeds a creation date. The extracted text is reproducible and is what the checks compare.
+* **Checks: `tests/ds-n1/pdf.check.mjs`, 9 of 9 pass.**
+  * They use **independent** tools (poppler `pdftotext` and `pdfinfo`), never the renderer.
+  * Covered: parts 1 to 8 in reading order; checksum present and matching; `Tagged: yes`; `JavaScript: no`; A4.
+  * Also covered: the "not an approval" statement and the authenticity limitations survive into the PDF; the override qualifier appears before part 1; a hostile `<script>` title prints as text; the CLI refusal; and identical text across two renders.
+* **First run: 8 of 9.** My page-size check hard-coded 841 pt; Chromium's A4 is 842.88 pt, and `pdfinfo` classifies it as `(A4)`. The **test** was wrong and was fixed; the product was not changed.
+* **Mutations, all caught:** M28 (untagged PDF), M29 (checksum footer dropped), M30 (CLI renders inconsistent exports).
+* **Regression.**
+  * JSON reports: 52 of 52 identical to the committed baseline before the version bump. After it, they are identical apart from version-derived fields.
+  * HTML for P01: the diff is exactly three lines (version string, chain head, new footer).
+  * My first automated HTML comparison reported 0 of 52 because it ignored the newline the footer's separate output line introduces. That was a script flaw, recorded and **not** reported as a pass.
+  * The baseline was regenerated from a clean clone of `e4bf6a79`; reproduction at `d57a7bce` is identical on 52 of 52.
+
+**Limits.**
+* Tagging is Chromium's automatic structure tree. It has **not** been checked with a screen reader or a PDF/UA validator, so accessibility conformance is NOT ESTABLISHED.
+* Chromium alone produces the PDF, and the PDF has not been opened in any other viewer.
+* Real-device and assistive-technology testing are still not performed.
+
+Still not implemented: SP-07, SP-13 and SP-14 (the historical definitions were not recovered).
