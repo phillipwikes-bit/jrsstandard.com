@@ -58,6 +58,32 @@ def ordered_tokens(s):
     return re.findall(r"\w+", s.casefold(), re.UNICODE)
 
 
+def extraction_flags(raw_page, layout_page):
+    raw_tokens, layout_tokens = tokens(raw_page), tokens(layout_page)
+    difference = (sum((raw_tokens - layout_tokens).values())
+                  + sum((layout_tokens - raw_tokens).values()))
+    flags = []
+    if not raw_page.strip() or not layout_page.strip():
+        flags.append("EMPTY_EXTRACTION")
+    if difference:
+        flags.append("TOKEN_DISCREPANCY")
+    if raw_page.strip() and layout_page.strip() and ordered_tokens(raw_page) != ordered_tokens(layout_page):
+        flags.append("ORDER_DISAGREEMENT")
+    if chr(0xfffd) in raw_page or chr(0xfffd) in layout_page:
+        flags.append("REPLACEMENT_CHARACTER")
+    return difference, flags
+
+
+def self_test():
+    assert extraction_flags("alpha beta", "beta alpha")[1] == ["ORDER_DISAGREEMENT"]
+    assert extraction_flags("alpha beta", "gamma alpha")[1] == [
+        "TOKEN_DISCREPANCY", "ORDER_DISAGREEMENT"]
+    assert extraction_flags("alpha beta", "alpha beta")[1] == []
+    assert "EMPTY_EXTRACTION" in extraction_flags("", "alpha")[1]
+    assert "REPLACEMENT_CHARACTER" in extraction_flags("alpha " + chr(0xfffd), "alpha")[1]
+    print("PASS: extraction warning categories remain independent.")
+
+
 def candidate_html(item, raw_pages, layout_pages, identity, page_reviews):
     filename = item["file"]
     title = item.get("role") or filename
@@ -120,9 +146,13 @@ section{{padding:1.5rem 0;border-top:1px solid #aab5bf}}
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--self-test", action="store_true", help="Run extraction warning regression cases")
     parser.add_argument("--root", default=".", help="Checked-out repository root")
     parser.add_argument("--out", required=True, help="Non-deployed artifact output directory")
     args = parser.parse_args()
+    if args.self_test:
+        self_test()
+        return
     root = Path(args.root).resolve()
     out = Path(args.out).resolve()
     if out == root or root in out.parents:
@@ -157,20 +187,7 @@ def main():
         for page_index in range(max(source_pages, len(raw_pages), len(layout_pages))):
             raw_page = raw_pages[page_index] if page_index < len(raw_pages) else ""
             layout_page = layout_pages[page_index] if page_index < len(layout_pages) else ""
-            raw_tokens, layout_tokens = tokens(raw_page), tokens(layout_page)
-            page_difference = (sum((raw_tokens - layout_tokens).values())
-                               + sum((layout_tokens - raw_tokens).values()))
-            flags = []
-            if not raw_page.strip() or not layout_page.strip():
-                flags.append("EMPTY_EXTRACTION")
-            if page_difference:
-                flags.append("TOKEN_DISCREPANCY")
-            if raw_page.strip() and layout_page.strip() and ordered_tokens(raw_page) != ordered_tokens(layout_page):
-                # Ordering and word-content discrepancies are independent risks.
-                # Report both when they occur on the same source page.
-                flags.append("ORDER_DISAGREEMENT")
-            if chr(0xfffd) in raw_page or chr(0xfffd) in layout_page:
-                flags.append("REPLACEMENT_CHARACTER")
+            page_difference, flags = extraction_flags(raw_page, layout_page)
             page_reviews.append({
                 "page": page_index + 1,
                 "raw_characters": len(raw_page),
