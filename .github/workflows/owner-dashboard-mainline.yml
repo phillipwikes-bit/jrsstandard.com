@@ -56,6 +56,8 @@ jobs:
         run: node tests/owner-participant-completeness.mjs
       - name: JRS programme model, consent and browser JS
         run: node tests/owner-programme-issue36.mjs
+      - name: Verify private IP asset-sale dashboard content and boundaries
+        run: node tests/owner-ip-sale-dashboard.mjs
       - name: Complete historical download quality reconciliation
         run: node tests/download-traffic-quality.mjs
       - name: Public contact continuity

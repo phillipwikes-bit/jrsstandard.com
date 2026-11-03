@@ -50,6 +50,8 @@ jobs:
         run: node tests/owner-logout-interface.mjs
       - name: Confirm Issue 3.6 participant classification and protected export
         run: node tests/owner-programme-issue36.mjs
+      - name: Verify private IP asset-sale dashboard content and boundaries
+        run: node tests/owner-ip-sale-dashboard.mjs
       - name: Confirm historical inquiry totals and explicit source coverage
         run: node tests/site-inquiry-stats.mjs
       - name: Confirm release inventory does not authorize publication
