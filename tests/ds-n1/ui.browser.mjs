@@ -78,6 +78,14 @@ try {
       await page.waitForFunction(() => /critical finding\(s\) overridden/.test(document.getElementById('sumbody').textContent));
       assert.match(await page.textContent('#statusbox'), /ONLY BY CRITICAL OVERRIDE/);
       assert.match(await page.textContent('#sumbody'), /READY ONLY BY REVIEWER OVERRIDE/);
+      // Acceptance without the acknowledgement box is refused on screen.
+      await page.fill('#sumbody input[aria-label="Disposition note"]', 'Accepting the record.');
+      await page.click('#sumbody button:text-is("Record final disposition")');
+      assert.match(await page.textContent('#msg'), /ACKNOWLEDGEMENT_REQUIRED/);
+      await page.check('#ack-override');
+      await page.fill('#sumbody input[aria-label="Disposition note"]', 'Accepted knowing the actor discrepancy is overridden, not resolved.');
+      await page.click('#sumbody button:text-is("Record final disposition")');
+      await page.waitForFunction(() => /accepted_for_finalization by/.test(document.getElementById('sumbody').textContent));
     });
 
     await check(`${label}: hostile record text is rendered inert`, async () => {

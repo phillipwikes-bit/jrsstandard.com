@@ -373,3 +373,89 @@ test('authenticity limits are stated in reports and verifier output', () => {
   assert.equal(v.verdict, VERDICT.CONSISTENT);
   assert.match(v.meaning, /who performed the recorded actions/);
 });
+
+// ---- Corrective review directive for PR #119 (2026-11-03) ---------------------
+const overrideD02 = () => {
+  let s = open('D02');
+  const f = findingOf(s, 'SUBJECT_MISMATCH');
+  s = act(s, { type: 'override', finding_id: f.finding_id, rationale: 'Trading name used on the portal; confirmed by phone, evidence to follow.' }, 1);
+  return { s, f };
+};
+
+test('#5 event-chain consistency is never labelled as verification or provenance', () => {
+  const rep = buildReport(open('P01'), { generated_at: T0 });
+  const p8 = rep.parts['8_export_provenance'];
+  assert.equal(rep.schema, 'ds-n1.report/1.1');
+  assert.equal(p8.chain_internally_consistent, true);
+  assert.equal(p8.chain_signed, false);
+  assert.ok(!('chain_verified' in p8));
+  assert.match(p8.provenance_note, /does not authenticate who acted/);
+  const html = renderReportHtml(rep);
+  assert.ok(!/chain verified/i.test(html));
+  assert.match(html, /internally consistent: yes \(unsigned\)/);
+  // An export with an older report schema is not assessable: INDETERMINATE, not INCONSISTENT.
+  const old = JSON.parse(serializeExport(buildExport(open('P01'), { generated_at: T0 })));
+  old.report.schema = 'ds-n1.report/1.0';
+  assert.equal(verifyExport(old).verdict, VERDICT.INDETERMINATE);
+});
+
+test('#6 READY by critical override: visible in state, part 7, export, HTML; acceptance needs explicit acknowledgement', () => {
+  const { s, f } = overrideD02();
+  const st = deriveState(s);
+  assert.equal(st.ready_by_override_of_critical, true);
+  const bundle = JSON.parse(serializeExport(buildExport(s, { generated_at: ts(2) })));
+  assert.equal(bundle.report.status_qualifier, 'READY_ONLY_BY_REVIEWER_OVERRIDE_OF_CRITICAL_FINDINGS', 'export carries the qualifier');
+  assert.equal(bundle.report.parts['7_human_disposition'].ready_only_by_override_of_critical, true);
+  // Adverse: plain acceptance is refused; acknowledgement false is refused.
+  assert.throws(() => act(s, { type: 'final_disposition', disposition: 'accepted_for_finalization', note: 'Looks fine.' }, 3), (e) => e.code === 'ACKNOWLEDGEMENT_REQUIRED');
+  assert.throws(() => act(s, { type: 'final_disposition', disposition: 'accepted_for_finalization', note: 'Looks fine.', acknowledge_critical_overrides: false }, 3), (e) => e.code === 'ACKNOWLEDGEMENT_REQUIRED');
+  assert.throws(() => act(s, { type: 'final_disposition', disposition: 'accepted_for_finalization', note: 'Looks fine.', acknowledge_critical_overrides: 'yes' }, 3), (e) => e.code === 'ACKNOWLEDGEMENT_REQUIRED', 'only boolean true counts');
+  const done = act(s, { type: 'final_disposition', disposition: 'accepted_for_finalization', note: 'Accepted knowing the actor discrepancy is overridden, not resolved.', acknowledge_critical_overrides: true }, 3);
+  assert.deepEqual(deriveState(done).final_disposition.acknowledged_critical_overrides, [f.finding_id]);
+  // Returning to the author needs no acknowledgement.
+  act(s, { type: 'final_disposition', disposition: 'returned_to_author', note: 'Actor must be corrected at source.' }, 3);
+});
+
+test('#6 adverse paths: a second unresolved critical still holds; correcting the claim removes the qualifier', () => {
+  // Two critical findings, only one overridden -> still HOLD.
+  const r = fx('D02');
+  r.claims[2].citations = [{ source_id: 'S9', quote: 'approved by the chief information security officer' }];
+  let s = openReview(r, { at: T0 });
+  const f = deriveState(s).findings.find((x) => x.code === 'SUBJECT_MISMATCH');
+  s = act(s, { type: 'override', finding_id: f.finding_id, rationale: 'Trading name used on the portal; confirmed by phone, evidence to follow.' });
+  assert.equal(deriveState(s).status, STATUS.HOLD);
+  assert.equal(deriveState(s).ready_by_override_of_critical, false);
+  // Override, then correct the claim from documented information -> finding superseded, no qualifier.
+  let { s: s2 } = overrideD02();
+  s2 = act(s2, { type: 'revise_claim', claim_id: 'C2', text: 'Northwind Analytics completed the vendor security assessment on 2026-09-15.' }, 2);
+  const st2 = deriveState(s2);
+  assert.equal(st2.status, STATUS.READY);
+  assert.equal(st2.ready_by_override_of_critical, false);
+  assert.equal(buildReport(s2, { generated_at: ts(3) }).status_qualifier, undefined);
+  assert.equal(st2.findings.find((x) => x.code === 'SUBJECT_MISMATCH').actions[0].type, 'override', 'the override stays in history');
+});
+
+test('#7 misleading metadata: restricted-domain content is refused whatever record_class says', () => {
+  const refused = [
+    ['employment', (r) => { r.sources[2].text += ' The disciplinary panel upheld the dismissal.'; }],
+    ['medical', (r) => { r.text += ' The patient record was shared with the supplier.'; r.claims.push({ claim_id: 'C9', kind: 'fact', quote: 'The patient record was shared with the supplier.', citations: [] }); }],
+    ['housing', (r) => { r.sources[0].text += ' Tenant arrears were reviewed.'; }],
+    ['lending', (r) => { r.title = 'Mortgage exception'; }],
+    ['legal outcome', (r) => { r.sources[1].text += ' Sentencing was deferred.'; }],
+  ];
+  for (const [domain, mutate] of refused) {
+    const r = fx('P01'); mutate(r);
+    const v = validateRecord(r);
+    assert.equal(v.status, STATUS.REFUSED, domain);
+    assert.equal(v.errors[0].code, 'EXCLUDED_DOMAIN_CONTENT', domain);
+    assert.match(v.errors[0].detail, new RegExp(domain));
+    assert.ok(!/disciplinary|patient|Tenant|Mortgage|Sentencing/.test(JSON.stringify(v.errors)), `${domain}: text not echoed`);
+  }
+  // Ordinary supplier vocabulary is not refused.
+  const ok = fx('P01');
+  ok.sources[2].text += ' Contract termination rights and supplier employee access were reviewed.';
+  assert.equal(validateRecord(ok).status, null);
+  // An excluded class with innocuous content is still refused by class.
+  const cls = fx('P01'); cls.record_class = 'medical';
+  assert.equal(validateRecord(cls).errors[0].code, 'EXCLUDED_RECORD_CLASS');
+});
