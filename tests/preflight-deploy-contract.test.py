@@ -81,7 +81,7 @@ class RouteContract(unittest.TestCase):
             def __exit__(self, *a): return False
             def read(self, _): return self.html.encode()
         good = FakeReply("private, no-store, max-age=0","noindex, nofollow",
-            "<title>Private Owner Sign-In</title><form id="verify-code"></form><form id="access-form"></form>")
+            '<title>Private Owner Sign-In</title><form id="verify-code"></form><form id="access-form"></form>')
         no_cache = FakeReply("public, max-age=600","noindex, nofollow",good.html)
         exposed = FakeReply("private, no-store","noindex, nofollow",
             good.html+"<h1>JRS Owner Dashboard</h1>")
