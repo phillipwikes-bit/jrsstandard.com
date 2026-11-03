@@ -1743,3 +1743,10 @@ body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
   padding-top:30px!important;
  }
 }
+
+/* 2026-11-03 A-target correction: reference breadcrumbs must remain
+   distinguishable without color perception in the institutional theme. */
+body.jrs-institutional main .crumb a[href]{
+  text-decoration:underline!important;text-underline-offset:.16em;
+  text-decoration-thickness:1px
+}

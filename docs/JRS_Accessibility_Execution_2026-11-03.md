@@ -36,3 +36,10 @@ The subsequent candidate adds persistent underlining to those in-prose links and
 ## Third accessibility coverage expansion (3 November 2026)
 
 This renovation candidate widens the source-rendered preflight from 24 to **34** public routes, producing **68** pinned axe WCAG-tagged observations and **68** narrow CSS-viewport reflow observations when completed. Newly included are the Reviewer Worksheet, Escalation Triggers, Record Survivability, Reviewer portal, Evidence Ledger, Datasets, Questions, Security, Results, and Finding. This is an **unverified new test scope** until exact-head CI completes. It intentionally retains fail-closed detection of violations and the separate release restrictions for a protected current-head preview, manual VoiceOver/NVDA, physical 400% browser zoom, published PDF accessibility, and owner authorization.
+
+
+## Defects revealed by 34-route scan (November 3, 2026)
+
+Commit `af1536dba6128dbacd59f05751df162b62f639a3` **passed all 68 reflow observations** but **failed** the expanded automated axe test. Issues were `link-in-text-block` on the breadcrumb links in three reference pages (two viewport widths each) and text `color-contrast` on the Reviewer primary training link, Security historical-note disclosure summary and Finding response submission button (two widths each). These are genuine new audit findings, not a failure of the release infrastructure.
+
+The current repair candidate applies non-colour underline styling to all institutional reference breadcrumbs and explicit navy-on-white/white-on-navy contrast treatments to the three affected controls. The selected dark navy (`#173d5b`) has a computed relative contrast ratio of approximately **10.53:1** against the base institutional `#f5f7f8` background; white text against navy is approximately **11.32:1**. These calculations do not replace computed-style axe/assistive-technology verification. All fixes are provisional until exact-head 68-scan CI passes. No publication or dashboard authentication setting changed.

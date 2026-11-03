@@ -59,6 +59,8 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:400;line-height:1.
 .mod p{font-size:12.5px;color:var(--muted);line-height:1.55}
 .cta{display:block;width:100%;text-align:center;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;text-decoration:none;padding:15px;font-weight:600}
 .cta.ghost{background:none;color:var(--accent);border:1px solid var(--accent);margin-top:10px}
+/* Protected against legacy accent colours on the institutional light theme. */
+body.jrs-institutional main a.cta:not(.ghost){background:#173d5b!important;color:#fff!important}
 .trust{font-size:11.5px;color:var(--ready-text);text-align:center;margin-top:10px}
 .deskref{border:1px dashed var(--accent-dim);background:var(--surface2);padding:18px 20px;margin-top:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
 .deskref .t{font-size:14px;color:var(--text);margin-bottom:4px}

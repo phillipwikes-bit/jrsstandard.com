@@ -90,3 +90,26 @@ assert.match(trainingPalette, contrastActionSelector,
   assert.ok(governance.includes('href="'+href+'"'),'governance must retain linked methodology evidence: '+href);
  console.log('PASS: prose links are underlined without changing publication routes or navigation styles.');
 }
+
+
+// Additional 34-route axe coverage identified breadcrumb and control contrast
+// failures previously outside the sampled pages. Lock the scoped repairs.
+{
+ const shared=read('assets/jrs-institutional-reference.css');
+ assert.match(shared,/body\.jrs-institutional main \.crumb a\[href\]\{[\s\S]*?text-decoration:underline!important/,
+  'reference breadcrumbs require persistent non-colour link identification');
+ const reviewer=read('reviewer/index.html');
+ assert.match(reviewer,/body\.jrs-institutional main a\.cta:not\(\.ghost\)\{background:#173d5b!important;color:#fff!important\}/,
+  'reviewer training primary CTA requires verified navy/white contrast');
+ const security=read('security.html');
+ assert.match(security,/class="jrs-technical-summary"/,
+  'security technical note requires a stable, visible disclosure control');
+ assert.match(security,/body\.jrs-institutional main \.jrs-technical-summary\{color:#173d5b!important;font-weight:700\}/,
+  'security disclosure summary requires institutional high contrast');
+ const finding=read('finding.html');
+ assert.match(finding,/body\.jrs-institutional main #resp-btn\{background:#173d5b!important;color:#fff!important/,
+  'research response button requires institutional high contrast');
+ assert.match(finding,/id="resp-btn" class="respbtn" onclick="submitResponse\(\)"/,
+  'original response handler and control must remain unchanged');
+ console.log('PASS: expanded accessibility issue controls retained on reference, reviewer, security and finding pages.');
+}
