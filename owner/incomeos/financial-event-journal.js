@@ -59,39 +59,44 @@
     return {id:e.id,type:e.type,timestamp:e.timestamp,data:dataOf(e.type,e.data)};
   }
   async function digest(value){
-    if(!crypto||!crypto.subtle)throw Error("Cryptographic hash unavailable");
+    if(typeof crypto==="undefined"||!crypto||!crypto.subtle)throw Error("Cryptographic hash unavailable");
     var hash=await crypto.subtle.digest("SHA-256",ENCODER.encode(value));
     return Array.from(new Uint8Array(hash)).map(function(b){return b.toString(16).padStart(2,"0");}).join("");
   }
-  function snapshot(events){
-    var byId=new Map(),reversed=new Set(),sourceIds=new Set();
-    events.forEach(function(e){byId.set(e.id,e);if(e.type==="REVERSED")reversed.add(e.data.targetEventId);});
-    var posted=new Map(),classes=new Map(),matches=new Map(),reconciled=new Map();
-    events.forEach(function(e){
-      if(reversed.has(e.id)||e.type==="REVERSED")return;
-      var d=e.data;
-      if(e.type==="POSTED"){posted.set(e.id,e);sourceIds.add(d.sourceId);}
-      else if(e.type==="CLASSIFIED"){
-        if(!classes.has(d.postedEventId))classes.set(d.postedEventId,[]);
-        classes.get(d.postedEventId).push(e);
-      }else if(e.type==="DOCUMENT_MATCHED"){
-        if(!matches.has(d.postedEventId))matches.set(d.postedEventId,[]);
-        matches.get(d.postedEventId).push(e);
-      }else if(e.type==="OWNER_RECONCILED"){
-        if(!reconciled.has(d.postedEventId))reconciled.set(d.postedEventId,[]);
-        reconciled.get(d.postedEventId).push(e);
-      }
-    });
-    return {byId:byId,reversed:reversed,posted:posted,classes:classes,matches:matches,reconciled:reconciled,sourceIds:sourceIds};
+  // State is folded event by event so verify() stays linear in journal length.
+  function emptyState(){
+    return {byId:new Map(),reversed:new Set(),posted:new Map(),classes:new Map(),matches:new Map(),reconciled:new Map(),
+      sourceIds:new Set(),everSourceIds:new Set(),activeDocuments:new Map()};
   }
+  function push(map,key,e){if(!map.has(key))map.set(key,[]);map.get(key).push(e);}
+  function drop(map,key,e){var a=map.get(key);if(!a)return;a=a.filter(function(x){return x!==e;});if(a.length)map.set(key,a);else map.delete(key);}
+  function apply(state,e){
+    state.byId.set(e.id,e);
+    var d=e.data;
+    if(e.type==="REVERSED"){
+      var t=state.byId.get(d.targetEventId);state.reversed.add(d.targetEventId);
+      if(!t)return state;var td=t.data;
+      if(t.type==="POSTED"){state.posted.delete(t.id);state.sourceIds.delete(td.sourceId);}
+      else if(t.type==="CLASSIFIED")drop(state.classes,td.postedEventId,t);
+      else if(t.type==="DOCUMENT_MATCHED"){drop(state.matches,td.postedEventId,t);state.activeDocuments.delete(td.documentId);}
+      else if(t.type==="OWNER_RECONCILED")drop(state.reconciled,td.postedEventId,t);
+      return state;
+    }
+    if(e.type==="POSTED"){state.posted.set(e.id,e);state.sourceIds.add(d.sourceId);state.everSourceIds.add(d.sourceId);}
+    else if(e.type==="CLASSIFIED")push(state.classes,d.postedEventId,e);
+    else if(e.type==="DOCUMENT_MATCHED"){push(state.matches,d.postedEventId,e);state.activeDocuments.set(d.documentId,e);}
+    else if(e.type==="OWNER_RECONCILED")push(state.reconciled,d.postedEventId,e);
+    return state;
+  }
+  function snapshot(events){var st=emptyState();events.forEach(function(e){apply(st,e);});return st;}
   function expectedDirection(label){
     return CREDIT.has(label)?"credit":DEBIT.has(label)?"debit":null;
   }
-  function assertEligible(e,events){
-    var state=snapshot(events),d=e.data;
+  function assertEligible(e,state){
+    var d=e.data;
     if(state.byId.has(e.id))throw Error("Duplicate event ID");
     if(e.type==="POSTED"){
-      if(events.some(function(x){return x.type==="POSTED"&&x.data.sourceId===d.sourceId;}))throw Error("Source ID already recorded, including reversed histories");
+      if(state.everSourceIds.has(d.sourceId))throw Error("Source ID already recorded, including reversed histories");
     }else if(e.type==="CLASSIFIED"){
       var posted=state.posted.get(d.postedEventId);
       if(!posted)throw Error("Classification requires an active posted source");
@@ -101,9 +106,10 @@
       if((state.reconciled.get(d.postedEventId)||[]).length)throw Error("Cannot reclassify active reconciliation");
     }else if(e.type==="DOCUMENT_MATCHED"){
       var source=state.posted.get(d.postedEventId);
-      if(!source ||source.data.amountCents!==d.amountCents)throw Error("Document amount does not match posted amount");
-      if((state.matches.get(d.postedEventId)||[]).some(function(x){return x.data.documentId===d.documentId;}))throw Error("Document already matched to posting");
-      if(events.some(function(x){return x.type==="DOCUMENT_MATCHED"&&!state.reversed.has(x.id)&&x.data.documentId===d.documentId;}))throw Error("Document evidence reused against another posting");
+      if(!source)throw Error("Document match requires an active posted source");
+      if(source.data.amountCents!==d.amountCents)throw Error("Document amount does not match posted amount");
+      var prior=state.activeDocuments.get(d.documentId);
+      if(prior)throw Error(prior.data.postedEventId===d.postedEventId?"Document already matched to posting":"Document evidence reused against another posting");
     }else if(e.type==="OWNER_RECONCILED"){
       var post=state.posted.get(d.postedEventId),cl=(state.classes.get(d.postedEventId)||[]).find(function(x){return x.id===d.classificationEventId;});
       if(!post||!cl||cl.data.classification==="unclassified")throw Error("Reconciliation requires an active, classified posting");
@@ -115,36 +121,37 @@
         if((state.reconciled.get(target.data.postedEventId)||[]).some(function(x){return x.data.classificationEventId===target.id;}))throw Error("Reverse reconciliation before reversing classification");
       }
       if(target.type==="POSTED"){
-        var dependent=events.some(function(x){return !state.reversed.has(x.id)&&x.type!=="REVERSED"&&(
-          (x.data.postedEventId===target.id) || (x.type==="OWNER_RECONCILED"&&x.data.postedEventId===target.id)
-        );});
+        var dependent=[state.classes,state.matches,state.reconciled].some(function(m){return (m.get(target.id)||[]).length>0;});
         if(dependent)throw Error("Reverse dependent records before reversing source posting");
       }
     }
   }
   async function verify(events){
     if(!Array.isArray(events)||events.length>MAX)throw Error("Journal length invalid");
-    var history=[],prev=ZERO,sequence=0;
+    var history=[],prev=ZERO,sequence=0,state=emptyState(),lastTime=null;
     for(var i=0;i<events.length;i++){
       var row=events[i];
       keys(row,["seq","prevHash","hash","id","type","timestamp","data"],["seq","prevHash","hash","id","type","timestamp","data"]);
       if(row.seq!==sequence+1 || row.prevHash!==prev ||typeof row.hash!=="string"||!/^[0-9a-f]{64}$/.test(row.hash))throw Error("Journal sequence or hash broken at event "+(i+1));
       var normalized=input({id:row.id,type:row.type,timestamp:row.timestamp,data:row.data});
-      assertEligible(normalized,history);
-      if(history.length && normalized.timestamp<history[history.length-1].timestamp)throw Error("Journal timestamp chronology violated");
+      assertEligible(normalized,state);
+      // Compare instants, not strings: "...:00Z" and "...:00.500Z" do not sort lexically by time.
+      var t=Date.parse(normalized.timestamp);
+      if(lastTime!==null&&t<lastTime)throw Error("Journal timestamp chronology violated");
       var content={seq:row.seq,prevHash:row.prevHash,id:normalized.id,type:normalized.type,timestamp:normalized.timestamp,data:normalized.data};
       var expected=await digest(JSON.stringify(content));
       if(expected!==row.hash)throw Error("Journal has been modified at event "+(i+1));
-      history.push({...content,hash:expected});
+      var stored={...content,hash:expected};
+      history.push(stored);apply(state,stored);lastTime=t;
       prev=expected;sequence++;
     }
-    return {valid:true,count:history.length,headHash:prev,state:snapshot(history)};
+    return {valid:true,count:history.length,headHash:prev,state:state};
   }
   async function append(history,event){
     var check=await verify(history),normalized=input(event);
     if(history.length>=MAX)throw Error("Journal event cap reached");
-    assertEligible(normalized,history);
-    if(history.length && normalized.timestamp<history[history.length-1].timestamp)throw Error("Journal timestamp must not precede prior entry");
+    assertEligible(normalized,check.state);
+    if(history.length && Date.parse(normalized.timestamp)<Date.parse(history[history.length-1].timestamp))throw Error("Journal timestamp must not precede prior entry");
     var row={seq:check.count+1,prevHash:check.headHash,id:normalized.id,type:normalized.type,timestamp:normalized.timestamp,data:normalized.data};
     var next={...row,hash:await digest(JSON.stringify(row))};
     return history.concat([next]);
@@ -163,12 +170,14 @@
       summary[label]=(summary[label]||0)+post.data.amountCents;
     });
     var totals={};Object.keys(summary).forEach(function(k){totals[k]=summary[k]/100;});
+    function sum(){var c=0;for(var i=0;i<arguments.length;i++)c+=summary[arguments[i]]||0;return c/100;}
     var outstanding=state.posted.size-reviewed;
     return {count:v.count,hash:v.headHash,activePostings:state.posted.size,ownerReviewedPostings:reviewed,
       nonReviewedPostings:outstanding,unclassified:unclassified,pendingReview:pending,ownerReviewedByClass:totals,
       earnedIncomeUsd:(totals.earned_income||0),investmentCashIncomeUsd:(totals.investment_income||0),
-      totalReceivedIncomeUsd:(totals.earned_income||0)+(totals.investment_income||0),
-      returnedCapitalUsd:(totals.refund||0)+(totals.returned_principal||0),
+      // Summed in integer cents, then converted once.
+      totalReceivedIncomeUsd:sum("earned_income","investment_income"),
+      returnedCapitalUsd:sum("refund","returned_principal"),
       issues:issues,
       closeGate:{status:outstanding===0?"JOURNAL_REVIEW_COMPLETE_ONLY":"HOLD",readyForTaxFiling:false,
         independentlyAudited:false,allAccountsCovered:false,canTransferFunds:false,

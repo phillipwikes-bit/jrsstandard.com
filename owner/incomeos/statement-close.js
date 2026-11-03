@@ -15,7 +15,9 @@
   function bankIdentity(x) {
     if(typeof x!=="string")return false;
     var parts=x.split("|");
-    try{return parts.length===3&&identity(parts[0],parts[1])===parts[0]+"|"+parts[1]&&opaque(parts[2]);}
+    // Transaction IDs follow the bank-row rule (accounting-controls sourceId): any trimmed, non-empty
+    // value up to 100 characters. Numeric bank references are transaction IDs, not account numbers.
+    try{return parts.length===3&&identity(parts[0],parts[1])===parts[0]+"|"+parts[1]&&!!parts[2]&&parts[2]===parts[2].trim()&&parts[2].length<=100;}
     catch(_e){return false;}
   }
   function identity(institution,token) {
@@ -71,20 +73,27 @@
           else fail(issues,"REPEATED_POSTED_SOURCE","Repeated bank posting, not an additional transaction",acct);
         } else {usedIds.set(b.id,b);bank.push({...b,accountId:acct});}
         if(!accounts.has(acct))fail(issues,"UNDECLARED_BANK_ACCOUNT","Bank posting outside account manifest",acct);
-      }catch(e){fail(issues,"INVALID_POSTING","Posting "+(i+1)+": "+e.message);}
+      }catch(e){
+        // Attribute the bad row to its account when its identity is readable.
+        var owner=null;try{owner=identity(x&&x.institution,x&&x.accountToken);}catch(_e){}
+        fail(issues,"INVALID_POSTING","Posting "+(i+1)+": "+e.message,owner);
+      }
     });
     input.accountingMatches.forEach(function(x,i){
       if(!x||typeof x!=="object"||!opaque(x.entryId)||!bankIdentity(x.bankId)||x.state!=="OWNER_REVIEWED_BANK_MATCH") {
         fail(issues,"INVALID_OWNER_REVIEW_LINK","Link "+(i+1)+" is not a supported owner-reviewed bank match");return;
       }
       if(links.has(x.bankId))fail(issues,"REUSED_BANK_MATCH","Bank posting associated with multiple ledger entries");
+      // One ledger entry may cover two postings (a transfer or card payment touches both accounts).
       else links.set(x.bankId,x.entryId);
     });
-    var details=[];
+    var details=[],byAccount=new Map();
+    bank.forEach(function(b){if(!byAccount.has(b.accountId))byAccount.set(b.accountId,[]);byAccount.get(b.accountId).push(b);});
     accounts.forEach(function(acct) {
       var segments=statements.filter(function(s){return s.id===acct.id&&s.startDate<=to&&s.endDate>=from;})
         .sort(function(a,b){return a.startDate.localeCompare(b.startDate);});
-      if(!segments.length){fail(issues,"MISSING_STATEMENT","No statement covers the period",acct.id);details.push({accountId:acct.id,complete:false,statements:0,postings:0});return;}
+      if(!segments.length){fail(issues,"MISSING_STATEMENT","No statement covers the period",acct.id);details.push({accountId:acct.id,balanceType:acct.balanceType,complete:false,statements:0,postings:0,expectedPostings:0,creditsUsd:0,debitsUsd:0});return;}
+      var acctRows=byAccount.get(acct.id)||[];
       if(segments[0].startDate>from||segments[segments.length-1].endDate<to)fail(issues,"INCOMPLETE_DATE_COVERAGE","Statements do not span full requested interval",acct.id);
       var count=0,expectedCount=0,credits=0,debits=0;
       segments.forEach(function(s,i){
@@ -92,7 +101,7 @@
           if(nextDay(segments[i-1].endDate)!==s.startDate)fail(issues,"GAPPED_OR_OVERLAPPING_STATEMENTS","Adjacent statement periods are not contiguous",acct.id);
           if(segments[i-1].closingCents!==s.openingCents)fail(issues,"BALANCE_CONTINUITY_FAILURE","Adjacent statement balances differ",acct.id);
         }
-        var rows=bank.filter(function(b){return b.accountId===acct.id&&b.date>=s.startDate&&b.date<=s.endDate;});
+        var rows=acctRows.filter(function(b){return b.date>=s.startDate&&b.date<=s.endDate;});
         var cr=0,db=0;
         rows.forEach(function(b){if(b.direction==="credit")cr+=b.amountCents;else db+=b.amountCents;
           if(b.date>=from&&b.date<=to&&!links.has(b.id))fail(issues,"UNRECONCILED_POSTING","Bank posting lacks unique owner-reviewed ledger link",acct.id);
@@ -105,11 +114,11 @@
           fail(issues,"STATEMENT_BALANCE_MISMATCH","Statement opening plus movement does not equal closing balance",acct.id);
         count+=rows.length;expectedCount+=s.postingCount;credits+=cr;debits+=db;
       });
-      bank.filter(function(b){return b.accountId===acct.id&&b.date>=from&&b.date<=to;}).forEach(function(b) {
+      acctRows.filter(function(b){return b.date>=from&&b.date<=to;}).forEach(function(b) {
         if(!segments.some(function(s){return b.date>=s.startDate&&b.date<=s.endDate;}))
           fail(issues,"UNASSIGNED_PERIOD_POSTING","Posting is outside all supplied statement spans",acct.id);
       });
-      details.push({accountId:acct.id,balanceType:acct.balanceType,complete:!issues.some(function(i){return i.accountId===acct.id;}),
+      details.push({accountId:acct.id,balanceType:acct.balanceType,complete:!issues.some(function(i){return i.accountId===acct.id||i.accountId===null;}),
         statements:segments.length,postings:count,expectedPostings:expectedCount,creditsUsd:credits/100,debitsUsd:debits/100});
     });
     links.forEach(function(_,bankId){if(!usedIds.has(bankId))fail(issues,"MATCH_WITHOUT_SOURCE","Reviewed link references a bank source not in this statement package");});
