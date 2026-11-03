@@ -1,0 +1,30 @@
+name: JRS public micro-adjustment release contract
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/preflight_deploy_check.py'
+      - '.github/workflows/deploy-verify.yml'
+      - 'tests/preflight-deploy-contract.test.py'
+      - 'assets/jrs-a-pathways.css'
+      - '.github/workflows/jrs-public-microquality.yml'
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  production-parity-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Verify Python checker syntax
+        run: python3 -m py_compile scripts/preflight_deploy_check.py tests/preflight-deploy-contract.test.py
+      - name: Test redirect, confidential owner-gate and static route requirements
+        run: python3 -m unittest discover -s tests -p 'preflight-deploy-contract.test.py' -v
+      - name: Verify public practitioner page and typography invariants
+        run: |
+          node tests/jrs-a-improvements.test.mjs
+          node tests/jrs-practitioner-journey.mjs
+          node tests/jrs-public-type-palette.mjs
