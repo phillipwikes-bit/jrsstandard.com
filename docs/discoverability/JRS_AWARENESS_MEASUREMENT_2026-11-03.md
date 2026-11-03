@@ -61,3 +61,13 @@ No growth target, conversion benchmark, financial value or percent improvement i
 - Do not infer the constructed example demonstrates field performance. Report research detection, reliability and cross-vendor consistency as distinct samples and properties.
 - Do not request paid promotion, mass outreach, publisher edits, search-account verification, social posting or authentication bypass on the owner's behalf.
 - Preserve the existing PR #117 release hold. PR #121 and its dependent artifacts may be prepared without production publication.
+
+## Source-labelled, privacy-preserving practitioner journeys (3 November 2026)
+
+The three new public references now link to the established record check and resource pages using fixed `src` strings (`worked-example`, `institutional-briefing`, `terminology`); the AI-assisted record reference uses `ai-failure-modes`. Briefing-to-training uses `src=institutional-briefing`. These are non-personal labels consistent with the site's existing first-party links, not session IDs or visitor tracking. They may appear in the existing destination URL reporting where authorized and available. No GA4 code, cookie, form, backend endpoint or third-party call was added to the new pages.
+
+The reference page gained one non-branded practitioner question and a source-checking response pointing to the constructed example and free check. No new SEO article or redundant resources were created.
+
+`tests/public-discoverability-journey.test.mjs` is now invoked by the existing method-first release gate; it checks search metadata, sitemap identity, share controls, static journey links, constructed-case disclaimers and no new analytics code on newly created reference pages. These are source tests, not hosted behavior, search indexing, social sharing or qualified adoption.
+
+No owner action, new account, outbound outreach, manual Vercel deployment, publication or release override is part of this change.

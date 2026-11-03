@@ -81,3 +81,6 @@ for(const p of ['research-summary.html','methodology.html','evidence-ledger.html
 const guide=read('investigator-guides.html');
 for(const f of ['JRS_Investigator_Field_Guide_Employment.pdf','JRS_Investigator_Field_Guide_FairHousing.pdf','JRS_Investigator_Field_Guide_International.pdf'])assert.ok(guide.includes(f));
 console.log('PASS: '+publicPages.length+' public pages screened, '+checked+' training scripts parsed; no Engine promotion, no record-entry assessor, Manifest route restored, evidence/download/contact preserved.');
+// Keep cross-platform discovery evidence consistent with the method-first release gate.
+await import('./public-discoverability-journey.test.mjs');
+
