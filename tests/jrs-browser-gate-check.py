@@ -34,6 +34,17 @@ class ResultParser(HTMLParser):
             self.fragments.append(data)
 
 
+ROUTES = (
+    "/index.html", "/resources.html", "/editions.html", "/organization.html",
+    "/training.html", "/jrsstandard.html", "/investigator-guides.html",
+    "/contact.html", "/research.html", "/check.html", "/simulations.html",
+    "/about.html", "/methodology.html", "/decision-reconstruction-risk.html",
+    "/research-summary.html", "/privacy-notice.html", "/operational-boundaries.html",
+    "/implementation-scenarios.html", "/review-engine.html", "/research-register.html",
+)
+WIDTHS = (390, 1440)
+
+
 def verify(html, expected):
     parser = ResultParser()
     parser.feed(html)
@@ -57,11 +68,17 @@ def verify(html, expected):
                              json.dumps(data.get("errors", []), ensure_ascii=False)[:9000])
         if len(data.get("reports", [])) != 40:
             raise ValueError("missing per-route axe audit records")
+        expected_pairs = {(r, w) for r in ROUTES for w in WIDTHS}
+        observed_pairs = {(row.get("route"), row.get("width")) for row in data["reports"]}
+        if observed_pairs != expected_pairs:
+            raise ValueError("non-exhaustive or duplicate route/width set in axe evidence")
+        if any(row.get("violations") for row in data["reports"]):
+            raise ValueError("axe report contains violations despite PASS summary")
         print("Axe WCAG-tagged preflight: 40/40 scans with zero automated violations.")
         print("Manual screen reader, zoom, PDF structure, and full WCAG acceptance remain separate.")
     else:
         raise ValueError("unknown fixture")
-    return True
+    return data if expected == "axe" else True
 
 
 def self_test():
@@ -76,7 +93,8 @@ def self_test():
     else:
         raise ValueError("PASS-in-script false positive accepted")
     sample = {"status": "PASS", "scans": 40, "expectedScans": 40,
-              "errors": [], "reports": [{} for _ in range(40)]}
+              "errors": [], "reports": [{"route": r, "width": w, "violations": [],
+                                     "incomplete": []} for r in ROUTES for w in WIDTHS]}
     verify('<html><pre id="result">' + json.dumps(sample) + '</pre></html>', "axe")
     try:
         verify('<html><script>PASS</script><pre id="result">RUNNING</pre></html>', "axe")
@@ -91,10 +109,15 @@ def main():
     if sys.argv[1:] == ["--self-test"]:
         self_test()
         return
-    if len(sys.argv) != 3:
-        raise SystemExit("Usage: jrs-browser-gate-check.py OUTPUT_HTML responsive|axe")
+    if len(sys.argv) not in (3, 4) or (len(sys.argv) == 4 and sys.argv[2] != "axe"):
+        raise SystemExit("Usage: jrs-browser-gate-check.py OUTPUT_HTML responsive|axe [EVIDENCE_JSON]")
     try:
-        verify(Path(sys.argv[1]).read_text(encoding="utf-8"), sys.argv[2])
+        result = verify(Path(sys.argv[1]).read_text(encoding="utf-8"), sys.argv[2])
+        if len(sys.argv) == 4:
+            Path(sys.argv[3]).write_text(
+                json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            print("PASS: wrote public-route-only machine-readable audit evidence.")
+
     except (ValueError, OSError) as exc:
         raise SystemExit("RELEASE HOLD: " + str(exc)) from None
 
