@@ -312,3 +312,100 @@ Meaning:
 * This is a test-design gap, not evidence that those rules are unnecessary.
 
 **Next increment (H): isolation fixtures.** Add one constructed case per NEVER_FIRED or REDUNDANT rule, built so that rule is the only thing standing between the record and READY, with labels registered before the run. Accept when every rule classifies DECISIVE, and record any rule that cannot be isolated, with the reason.
+
+## 14. Owner scoped review of PR #119 (2026-11-03) and response
+
+The owner posted a scoped technical review at `60600017` (GitHub review 5756590185). The review states it is not independent validation and does not approve merging or deployment. This section records each item, the evidence, and any change made. DS-N1 is now `0.4.0-dev`; rules are unchanged at `ds-n1.rules/0.2.0`.
+
+### Item 1: dated test counts
+
+| Snapshot | Unit | Browser | Where recorded |
+|---|---|---|---|
+| Increments A to D (commit `6a405078`) | 20 | 18 | sections 5 and 6 above |
+| Increment E-1 (`50f6f73e`) | 25 | 18 | section 11 |
+| Increment G, SP-18 (`7ac1ec50`) | 28 | 20 | section 13 |
+| Owner-review response (`45859238`) | **31** | **20** | this section |
+
+Each figure was true for its commit. Earlier sections are left as written.
+
+### Item 2: SP-18 bounded scope
+
+DS-N1's SP-18 is **only** two things:
+* the `finding_feedback` event (useful, not useful or wrong, with a reason);
+* research-only suppression ablation, `deriveState(..., { suppress })` and `tests/ds-n1/ablation.mjs`.
+
+It is **not** the historical SP-18 "Reviewer Feedback and Ablation" contract, which was not recovered. Its correspondence to that contract is **NOT ESTABLISHED**. Section 4's "NOT IMPLEMENTED" row described the 2026-11-03 morning state and is preserved.
+
+### Item 3: what reproduction and verification do and do not show
+
+* The 40 report hashes and `reproduce.mjs` show **deterministic reconstruction**: the same code, fixtures and inputs give the same bytes. They do not show correctness, authentication or validation.
+* `verifyExport` checks **internal consistency** only. The checksums and the event hash chain are unsigned and self-contained, so anyone can construct a consistent package. They do not show who performed an action, when it happened, or that the package is authentic.
+* Reviewer names and IDs are self-declared.
+
+These limits are now stated:
+* in every report's `limitations`;
+* in the verifier's `meaning` text;
+* in the UI banner ("Reviewer names are self-declared and the log is unsigned: it does not prove who acted").
+
+### Item 4: READY after overriding a critical finding (substantiated defect, fixed)
+
+Observed at `60600017`: overriding the critical `SUBJECT_MISMATCH` on D02 produced `READY_FOR_HUMAN_FINALIZATION`. The only reason given was "No unresolved DS-N1 finding remains". The HTML report's top note did not mention the override; its first mention came at character 5,922 of 7,424, in part 7. The claim trace stayed correct throughout (C2 `CONTRADICTED_OR_CONFLICTING`, sufficiency `NOT_ESTABLISHED`).
+
+Change in `9ae7bb20`:
+* The first reason now reads "READY ONLY BY REVIEWER OVERRIDE: n critical finding(s) (codes and IDs) were overridden, not resolved. An override records the reviewer's rationale; it is not evidence…".
+* The state flag `ready_by_override_of_critical` is set.
+* The report carries `status_qualifier: READY_ONLY_BY_REVIEWER_OVERRIDE_OF_CRITICAL_FINDINGS`.
+* The HTML shows an alert above part 1.
+* The UI status box adds "ONLY BY CRITICAL OVERRIDE" in the stop colour.
+
+A non-critical override does not trigger the qualifier. The status vocabulary itself is unchanged; whether such a record should hold a distinct status is left to the owner.
+
+Tests: one unit test (state, reasons, claim support, report qualifier, HTML position, non-critical control) and an extended browser check. Mutations M15 (reason suppressed) and M16 (HTML alert removed) are caught.
+
+### Item 5: data_classification is self-declared (gate added)
+
+* Before this change, `data_classification` was the only fictional-data control, and anyone preparing a record can set it.
+* DS-N1 now refuses (`REFUSED_SCOPE`, `PERSONAL_IDENTIFIER_PATTERN`) any record whose text fields contain an email address, a national-ID-like number (`ddd-dd-dddd`), or a run of 9 or more digits in phone or account form, with ISO dates excepted.
+* The matched value is never returned.
+* Near-miss classifications (`Constructed_Fictional`, a trailing space, `fictional`, missing) are refused rather than normalised.
+
+Limitation: this is a pattern screen. It **cannot prove a record is fictional**; real names and real events without such identifiers would pass. The scope limit is stated in the report limitations and the UI banner.
+
+Tests: email, national ID, phone and card-like cases are each refused without echo; clean fixtures are unaffected. Mutation M17 (gate disabled) is caught.
+
+M18 (value echoed) was first attempted with a leak truncated to 400 characters, which fell before the identifier values. That attempt was invalid and is recorded as such. Re-run with a full leak, M18 is caught.
+
+### Item 6: clean-tree rerun (exact outputs)
+
+Run at commit `4585923862ebf5c11917907c038abeb7bda446ef`, Node v22.23.4, tree clean:
+
+| Suite | Result |
+|---|---|
+| Unit | tests 31, pass 31, fail 0 |
+| Base harness | 24 records; 0 critical false-ready; status 24/24; required codes 24/24; controls clean 5/5; repeatable 24/24; PASS (developer fixtures only) |
+| Stress dev | 10 records; 0 critical false-ready; 0 false holds; 10/10 |
+| Holdout | refused, exit 3 (spent, not rerun) |
+| Reproduction | fresh clone at `45859238`, all six steps pass, identical on 40/40 against the baseline from `9ae7bb20` |
+
+Before that baseline was regenerated, the 40 reports were shown identical to `60600017` once three fields were normalised: `generator.version`, `event_chain_head` and the limitations list.
+
+**A new untouched holdout and independently produced labels are both required before any performance or readiness claim.** Neither exists.
+
+### Item 7: preserved boundaries
+
+* DS-A remains `AUTHENTIC_SOURCE_NOT_RECOVERED` and `NO_GO_NOT_VERIFIED`.
+* DS-N1 is a separate identity.
+* No JRS Review Engine code was touched.
+* The production release hold stands.
+
+Drift guard, with `main` unchanged at `40989da6`: 164 checks; **51 failed on `main` and 50 on this branch (`45859238`)**.
+* The single difference is "Master Tracker written to today", which fails on `main` and passes here because of this session's dated tracker entries.
+* The other 50 are the same set on both refs, so they are pre-existing, not waived.
+* During the run the sandbox's network policy refused connections to jrsstandard.com and Supabase. Some of the 50 may therefore be environment failures rather than drift. That was not separated here, and is not material to the comparison.
+
+### Deployment exclusion (CI distinction)
+
+* All 77 tracked DS-N1 files, including `tests/ds-n1/labelling/KEY_DO_NOT_SHARE.json`, match `.vercelignore` patterns (`lib/` line 117, `tests/` line 119, `*.md` line 17).
+* This was checked by applying the ignore file to the tracked paths (`git ls-files -ci --exclude-from=.vercelignore`), with `index.html` as a positive control that correctly stays deployable.
+* This uses gitignore semantics, which `.vercelignore` follows. It is **not** an inspection of the Vercel upload. The preview URL is unreachable from this sandbox (connection refused), so live absence is **NOT ESTABLISHED** by byte check.
+* `[skip ci]` and the deployment configuration were not altered, and nothing was triggered to clear the Vercel status.
