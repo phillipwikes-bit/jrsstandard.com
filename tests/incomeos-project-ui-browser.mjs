@@ -32,7 +32,7 @@ const listings=[
   listing("d","Low pay annotator","Contract role. $10 per hour.")];
 
 const browser=await chromium.launch();
-const ctx=await browser.newContext({...devices["iPhone 13"]});
+const ctx=await browser.newContext({...devices["iPhone 13"],acceptDownloads:true});
 const page=await ctx.newPage();
 const errors=[];page.on("pageerror",e=>errors.push(String(e)));
 await page.addInitScript(()=>{window.__writes=0;const o=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(String(k).startsWith("incomeos.project")||String(k).startsWith("incomeos.workspace")||String(k).startsWith("incomeos.briefing"))window.__writes++;return o.call(this,k,v);};});
@@ -73,7 +73,9 @@ if(process.env.INCOMEOS_SCREENSHOT)await page.locator("#project-opportunity-pane
 const ws={schema:"incomeos.workspace.v1",
   ledger:[{id:"a1",kind:"outflow",type:"expense",date:"2026-08-05",payer:"StreamCo",label:"StreamCo",amountUsd:"20",category:"software"},
     {id:"a2",kind:"outflow",type:"expense",date:"2026-09-05",payer:"StreamCo",label:"StreamCo",amountUsd:"20",category:"software"},
-    {id:"a3",kind:"outflow",type:"expense",date:"2026-10-05",payer:"StreamCo",label:"StreamCo",amountUsd:"26",category:"software"}],
+    {id:"a3",kind:"outflow",type:"expense",date:"2026-10-05",payer:"StreamCo",label:"StreamCo",amountUsd:"26",category:"software"},
+    {id:"d1",kind:"outflow",type:"expense",date:"2026-10-12",payer:"HardwareMart",label:"Cable",amountUsd:"19.99",category:"equipment"},
+    {id:"d2",kind:"outflow",type:"expense",date:"2026-10-12",payer:"HardwareMart",label:"Cable",amountUsd:"19.99",category:"equipment"}],
   rules:[{id:"stream",kind:"outflow",match:{vendorContains:"streamco"},category:"platform",approvedOn:"2026-11-01"}],
   accounts:[{id:"chk",name:"Checking",type:"checking"},{id:"ira",name:"IRA",type:"retirement"}],
   balances:[{accountId:"chk",asOf:today,balanceUsd:"2500.00",source:"statement",sourceRef:"SYN"}],
@@ -101,6 +103,41 @@ assert.match(await page.locator("#briefing-status").textContent(),/Workspace rej
 const overflow2=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
 assert.ok(overflow2<=1,"no horizontal scroll with briefing, overflow="+overflow2);
 assert.equal(await page.evaluate(()=>window.__writes),0);
+assert.deepEqual(errors,[]);
+// ---------- Actions: accept a proposal, record a search, save encrypted, reload ----------
+await page.locator("#briefing-file").setInputFiles({name:"w.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(ws))});
+await page.locator("#briefing-load").click();
+await page.waitForFunction(()=>/memory only/.test(document.getElementById("briefing-status").textContent));
+const before=(await page.locator("#briefing-output").textContent()).match(/(\d+) proposal\(s\)/)[1];
+await page.locator("#briefing-output .briefing-actions",{hasText:"StreamCo"}).first().getByRole("button",{name:"Accept"}).click();
+assert.match(await page.locator("#briefing-status").textContent(),/Change accepted/);
+const after=(await page.locator("#briefing-output").textContent()).match(/(\d+) proposal\(s\)/)[1];
+assert.equal(Number(after),Number(before)-1,"accepted proposal leaves the queue");
+await page.locator("#briefing-output li",{hasText:"Maryland Comptroller"}).getByRole("button",{name:"Searched: nothing found"}).click();
+assert.match(await page.locator("#briefing-status").textContent(),/Search recorded/);
+assert.doesNotMatch(await page.locator("#briefing-output").textContent(),/Maryland Comptroller unclaimed property search \(never searched\)/);
+assert.match(await page.locator("#briefing-output").textContent(),/Possible duplicate charges/);
+await page.locator("#briefing-output .briefing-actions",{hasText:"hardwaremart"}).getByRole("button",{name:"Open billing-error claim"}).click();
+assert.match(await page.locator("#briefing-status").textContent(),/Claim opened/);
+assert.doesNotMatch(await page.locator("#briefing-output").textContent(),/Possible duplicate charges/,"pair with an open claim leaves the duplicate list");
+assert.match(await page.locator("#briefing-output").textContent(),/Possible duplicate: hardwaremart/);
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+const [dl]=await Promise.all([page.waitForEvent("download"),page.locator("#briefing-save").click()]);
+assert.match(dl.suggestedFilename(),/^incomeos-workspace-\d{4}-\d{2}-\d{2}\.encrypted\.json$/);
+const saved=readFileSync(await dl.path(),"utf8");
+assert.ok(saved.includes('"format":"incomeos-workspace"')&&!saved.includes("StreamCo"),"saved file is encrypted");
+await page.locator("#briefing-passphrase").fill("wrong passphrase value!!");
+await page.locator("#briefing-file").setInputFiles({name:"e.json",mimeType:"application/json",buffer:Buffer.from(saved)});
+await page.locator("#briefing-load").click();
+await page.waitForFunction(()=>/rejected/.test(document.getElementById("briefing-status").textContent),null,{timeout:30000});
+assert.match(await page.locator("#briefing-status").textContent(),/Wrong passphrase/);
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+await page.locator("#briefing-file").setInputFiles({name:"e.json",mimeType:"application/json",buffer:Buffer.from(saved)});
+await page.locator("#briefing-load").click();
+await page.waitForFunction(()=>/memory only/.test(document.getElementById("briefing-status").textContent),null,{timeout:30000});
+assert.equal((await page.locator("#briefing-output").textContent()).match(/(\d+) proposal\(s\)/)[1],after,"reloaded workspace keeps the accepted change");
+assert.equal(await page.evaluate(()=>window.__writes),0,"actions and saving never write browser storage");
+assert.equal(await page.evaluate(()=>{try{return Object.keys(localStorage).filter(k=>/workspace|briefing/i.test(k)).length;}catch(e){return 0;}}),0);
 assert.deepEqual(errors,[]);
 if(process.env.INCOMEOS_BRIEFING_SCREENSHOT)await page.locator("#briefing-panel").screenshot({path:process.env.INCOMEOS_BRIEFING_SCREENSHOT});
 await browser.close();server.close();

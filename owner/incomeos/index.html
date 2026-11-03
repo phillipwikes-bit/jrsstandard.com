@@ -50,6 +50,7 @@
 <script defer src="./recruiter-history.js"></script>
 <script defer src="./yield-compare.js"></script>
 <script defer src="./weekly-briefing.js"></script>
+<script defer src="./workspace-store.js"></script>
 <script defer src="./briefing-ui.js"></script>
 <script defer src="./vault-ui.js"></script>
 </head>
@@ -77,7 +78,10 @@
       <p class="muted">What needs you, what is verified, and whether the system is healthy. Load your private workspace file; it stays in this page's memory and is never stored or sent.</p>
       <label for="briefing-file">Private workspace file (JSON)</label>
       <input id="briefing-file" type="file" accept=".json,application/json">
-      <button id="briefing-load" class="smallbtn" type="button">Show my week</button>
+      <label for="briefing-passphrase">Passphrase (for an encrypted workspace, or to encrypt when saving)</label>
+      <input id="briefing-passphrase" type="password" autocomplete="off" minlength="16">
+      <div class="reportactions"><button id="briefing-load" class="smallbtn" type="button">Show my week</button>
+      <button id="briefing-save" class="smallbtn" type="button" hidden>Save updated workspace</button></div>
       <p id="briefing-status" role="status" aria-live="polite" class="muted"></p>
       <div id="briefing-output"></div>
     </section>

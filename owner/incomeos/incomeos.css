@@ -119,3 +119,6 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 .briefing-section p{font-size:13px;margin:4px 0}
 #briefing-output .tag-ok{color:#1d6b3a}
 #briefing-output .tag-hold{color:#8a4b00}
+.briefing-actions{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-end;margin:6px 0 10px}
+.briefing-actions > div{min-width:0;flex:1 1 140px}
+.briefing-actions p{flex-basis:100%}
