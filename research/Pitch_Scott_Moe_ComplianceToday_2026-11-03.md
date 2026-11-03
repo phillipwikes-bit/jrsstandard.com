@@ -10,7 +10,7 @@ I hope you're doing well.
 
 In July, you suggested we reconnect following publication of my article in Compliance & Ethics Professional. With "When the Record Cannot Speak for Itself" appearing in the November issue, I wanted to follow up and propose a separate article for Compliance Today.
 
-The proposed article, "Testing Employment Files Before They Become Evidence," is coauthored with Tanvi Pokhriyal, an organizational psychologist with more than 15 years of experience in human resources and organizational development.
+The proposed article, "Testing employment files before they become evidence: Lessons for healthcare," is coauthored with Tanvi Pokhriyal, an organizational psychologist with more than 15 years of experience in human resources and organizational development.
 
 The study is deliberately drawn from outside healthcare, and that is its value for your readers. Healthcare already holds clinical records to a demanding standard; workforce files are not always held to the same test. The forums that review hospital employment files, including EEOC charges, unemployment appeals, arbitration and the courts, ask the same questions of every sector: who saw it, when, under which policy, and after what warning. The article draws on an original study of 20 adjudicated employment matters from federal agencies, unemployment boards, courts and tribunals, which examined whether the documentation behind consequential workplace decisions could withstand independent scrutiny. In that exploratory pilot, six of eight records with material documentation gaps were associated with adverse findings, compared with two of twelve complete records.
 
