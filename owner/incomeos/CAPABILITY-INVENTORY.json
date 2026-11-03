@@ -600,6 +600,77 @@
       ],
       "requiredRemediation": "Owner lists former employers in the private profile",
       "acceptanceCriteria": "No ethics determination made by the software; notes contain only documented items and are never submitted"
+    },
+    {
+      "featureId": "RESEARCH-EHY",
+      "sourceFiles": [
+        "owner/incomeos/research-radar.js",
+        "owner/incomeos/research-ui.js",
+        "owner/incomeos/public-feed-adapter.js",
+        "owner/incomeos/workspace-store.js",
+        "owner/incomeos/briefing-ui.js"
+      ],
+      "purpose": "Effective hourly yield for paid research: advertised compensation over session, screener, preparation and follow-up time; EHY-first ranking with held studies last; per-component missing time named; confirmed versus unconfirmed zero; estimated versus verified time; payment form (cash, gift card, points, unknown); owner-entered times kept in the workspace file; research shown in This week",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Committed snapshot studies publish no preparation or follow-up time, so EHY needs owner-entered times",
+        "Research imports remain disabled by the staging interlock",
+        "Not deployed"
+      ],
+      "testCoverage": [
+        "tests/incomeos-research-ehy.mjs",
+        "tests/incomeos-research-ehy-browser.mjs",
+        "tests/incomeos-workspace-store.mjs"
+      ],
+      "requiredRemediation": "Hosting decision; sources that publish full time requirements",
+      "acceptanceCriteria": "No silent zero time; held studies never outrank open ones; CSV equals cards; rates shown to the cent"
+    },
+    {
+      "featureId": "SECURE-PROFILE",
+      "sourceFiles": [
+        "owner/incomeos/OWNER-PROFILE-SCHEMA.sql",
+        "owner/incomeos/profile-store.js",
+        "scripts/incomeos/verify-profile-rls.mjs"
+      ],
+      "purpose": "Authenticated, owner-only persistent application profile (name, application email, qualifications, LinkedIn) with row-level security, emailed-code sign-in for an existing user, memory-only session, confirmed save and delete",
+      "operationalState": "BLOCKED_BY_EXTERNAL_DEPENDENCY",
+      "externalDependencies": [
+        "Separate private Supabase project (owner authorization)",
+        "Sign-ups disabled and single owner enrolled",
+        "Schema exposure after verification"
+      ],
+      "securityClassification": "SECURITY_CONTROL",
+      "knownDefects": [
+        "Migration not applied; client not wired into the page",
+        "Client tested against a simulated backend only; real row-level security unverified",
+        "The only existing Supabase project is the JRS one and must not be used"
+      ],
+      "testCoverage": [
+        "tests/incomeos-profile-store.mjs"
+      ],
+      "requiredRemediation": "Owner authorizes and provisions the private project; run verify-profile-rls.mjs; manual checks for logs, analytics, exports and refresh",
+      "acceptanceCriteria": "Anonymous and other users denied; owner read, update and delete confirmed on the real database"
+    },
+    {
+      "featureId": "UI-START-HERE",
+      "sourceFiles": [
+        "owner/incomeos/getting-started.js",
+        "owner/incomeos/index.html"
+      ],
+      "purpose": "Start here checklist tracking setup steps from in-page events and pointing to the next step",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Progress resets on reload by design (no storage)"
+      ],
+      "testCoverage": [
+        "tests/incomeos-project-ui-browser.mjs"
+      ],
+      "requiredRemediation": "None for current scope",
+      "acceptanceCriteria": "Next step correct for draft profile and unsaved workspace"
     }
   ]
 }

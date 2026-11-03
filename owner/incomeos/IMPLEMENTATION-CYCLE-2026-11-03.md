@@ -101,3 +101,11 @@
 - DISC-001 is now **implemented and verified** for pull-request runs. The registry records the five verified boards and disables `lever-turing`; its identifier is not guessed further.
 - What this does NOT establish: that any listing is open to the owner, eligible, or well paid. These are unscreened public postings (most are company staff roles); eligibility requires the private profile with documented evidence.
 - `visual-snapshots` fails on this PR because the workflow added to `main` on 2026-11-02 checks out this branch head, which predates its script. Not caused by this PR; remedy (merging `main`) held for owner decision because it touches root `vercel.json`.
+
+## 10. Addendum: EHY handoff and later improvements (same day, evening)
+
+- **EHY (owner commits ec8ac8c..0f048ab):** the original test passed; review found four defects, each reproduced on the prior engine and fixed in `8ebe077`: warning buckets outranked EHY; a $100 fallback gross floor held the $75 / 40-minute example; missing components were unnamed and unconfirmed zeros counted; payment form was dropped. Extended unit tests (shown failing on the old sort) and an iPhone browser test now run in CI; the EHY unit test had not been in CI.
+- **Research usability:** owner-entered study times (estimated or confirmed) make EHY available for the committed snapshot, are kept in the workspace file and restored on reopen; "This week" lists open studies by EHY. A display defect (whole-dollar rates on cards versus cents in the CSV) was found by the browser test and fixed.
+- **Secure persistent profile:** prepared, not enabled. The only Supabase project is the JRS project; a separate private project needs owner authorization. Migration, client and real-database verifier are committed; database security is unverified.
+- **Start here checklist** added to guide first use.
+- **Deployment:** nothing is live. The Lovable app is unreachable from the development environment and is not updated by GitHub commits.
