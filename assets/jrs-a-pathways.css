@@ -159,19 +159,26 @@ body.jrs-institutional.jrs-resource-page .jrs-resource-first-use a:focus-visible
 /* Public-interest promise: readable, prominent typography without a marketing callout.
    The first primary record-check link remains ahead of this statement. */
 body.jrs-institutional.jrs-home .jr-platform-promise{
-  margin:0 0 18px!important;
-  padding:1px 0 1px 17px;
-  max-width:730px;
-  border-left:4px solid #8f6b33;
-  font:600 clamp(17px,1.55vw,20px)/1.53 Inter,Arial,sans-serif!important;
-  color:#193b50!important
+  margin:0 0 17px!important;
+  padding:2px 0 2px 16px;
+  max-width:68ch;
+  border-left:3px solid #8f6b33;
+  font:400 16px/1.6 Inter,Arial,sans-serif!important;
+  color:#193b50!important;
 }
 body.jrs-institutional.jrs-home .jr-platform-promise strong{
-  font-weight:600;color:inherit
+  display:block;
+  font:650 clamp(17px,1.5vw,19px)/1.49 Inter,Arial,sans-serif!important;
+  color:inherit;
 }
 @media(max-width:650px){
   body.jrs-institutional.jrs-home .jr-platform-promise{
-    font-size:17px!important;line-height:1.5!important;padding-left:12px
+    margin-bottom:15px!important;
+    padding-left:12px;
+  }
+  body.jrs-institutional.jrs-home .jr-platform-promise strong{
+    font-size:17px!important;
+    line-height:1.5!important;
   }
 }
 @media(forced-colors:active){
@@ -229,6 +236,127 @@ body.jrs-institutional.jrs-home .jr-expert-evidence a{
 @media(forced-colors:active){
   body.jrs-institutional.jrs-home .jr-expert-evidence,
   body.jrs-institutional.jrs-home .jr-expert-evidence strong{
+    color:CanvasText!important;
+  }
+}
+
+
+/* HOME EDITORIAL TYPOGRAPHY REVIEW 2026-11-03.
+   Scoping: homepage only. Keep method, research, guides, mobile navigation,
+   owner paths and the separately versioned PDF publications unchanged.
+   These are legibility and hierarchy repairs, not aesthetic certification. */
+body.jrs-institutional.jrs-home .jr-hero h1{
+  font-size:clamp(44px,4.2vw,58px)!important;
+  line-height:1.105!important;
+  letter-spacing:-.023em!important;
+  max-width:790px!important;
+  text-wrap:balance;
+}
+body.jrs-institutional.jrs-home .jr-firstline{
+  font-size:clamp(17px,1.43vw,18.5px)!important;
+  line-height:1.58!important;
+  max-width:67ch;
+  color:#354f63!important;
+}
+body.jrs-institutional.jrs-home .jr-actions a{
+  font-size:15.5px!important;
+  line-height:1.4!important;
+  font-weight:700!important;
+}
+body.jrs-institutional.jrs-home .jr-intro{
+  max-width:69ch!important;
+  font-size:16px!important;
+  line-height:1.62!important;
+  color:#354f63!important;
+  text-wrap:pretty;
+}
+body.jrs-institutional.jrs-home .jr-intro a{
+  text-decoration:underline!important;
+  text-underline-offset:3px!important;
+  text-decoration-thickness:1px;
+}
+body.jrs-institutional.jrs-home .jr-expert-evidence{
+  max-width:69ch;
+  font-size:15px!important;
+  line-height:1.6!important;
+}
+body.jrs-institutional.jrs-home .jr-hero-note{
+  max-width:70ch;
+  font-size:14.5px!important;
+  line-height:1.58!important;
+}
+body.jrs-institutional.jrs-home .jr-panel-head{
+  padding:17px 22px!important;
+  font-size:13px!important;
+  letter-spacing:.045em!important;
+}
+body.jrs-institutional.jrs-home .jr-fact-row{
+  padding:14px 22px!important;
+}
+body.jrs-institutional.jrs-home .jr-fact-row dt{
+  font-size:12px!important;
+  letter-spacing:.045em!important;
+}
+body.jrs-institutional.jrs-home .jr-fact-row dd{
+  font-size:15px!important;
+  line-height:1.53!important;
+}
+body.jrs-institutional.jrs-home .jrs-fast-chooser h2,
+body.jrs-institutional.jrs-home .jr-section-header h2{
+  text-wrap:balance;
+  line-height:1.23!important;
+}
+body.jrs-institutional.jrs-home .jr-section-header p{
+  max-width:72ch;
+  line-height:1.65!important;
+}
+body.jrs-institutional.jrs-home .jr-five span{
+  font-size:15px!important;
+  line-height:1.58!important;
+}
+body.jrs-institutional.jrs-home .jrs-task-context{
+  border-top:1px solid #dbe4e9;
+  padding-top:11px;
+  margin:11px 0 0;
+  max-width:84ch;
+  font-size:14.5px!important;
+  line-height:1.55!important;
+  color:#42576b!important;
+}
+@media(max-width:650px){
+  body.jrs-institutional.jrs-home .jr-hero h1{
+    font-size:clamp(34px,8.55vw,42px)!important;
+    line-height:1.14!important;
+  }
+  body.jrs-institutional.jrs-home .jr-firstline{
+    font-size:16.5px!important;
+    line-height:1.56!important;
+  }
+  body.jrs-institutional.jrs-home .jr-actions a{
+    font-size:15px!important;
+    min-height:46px!important;
+  }
+  body.jrs-institutional.jrs-home .jr-hero-note{
+    font-size:14px!important;
+  }
+  body.jrs-institutional.jrs-home .jr-expert-evidence{
+    font-size:15px!important;
+  }
+  body.jrs-institutional.jrs-home .jr-fact-row{
+    padding:13px 18px!important;
+  }
+  body.jrs-institutional.jrs-home .jr-panel-head{
+    padding:15px 18px!important;
+  }
+  body.jrs-institutional.jrs-home .jrs-task-context{
+    font-size:14px!important;
+  }
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-home .jr-intro,
+  body.jrs-institutional.jrs-home .jr-firstline,
+  body.jrs-institutional.jrs-home .jr-expert-evidence,
+  body.jrs-institutional.jrs-home .jrs-task-context{
     color:CanvasText!important;
   }
 }
