@@ -50,14 +50,14 @@ def verify(html, expected):
             raise ValueError("axe fixture did not complete with JSON evidence: " + value[:200]) from exc
         if not isinstance(data, dict):
             raise ValueError("invalid axe result schema")
-        if data.get("scans") != 16 or data.get("expectedScans") != 16:
+        if data.get("scans") != 40 or data.get("expectedScans") != 40:
             raise ValueError("incomplete browser test coverage: " + str(data.get("scans")))
         if data.get("status") != "PASS" or data.get("errors"):
             raise ValueError("WCAG-tagged automated rule violations: " +
                              json.dumps(data.get("errors", []), ensure_ascii=False)[:9000])
-        if len(data.get("reports", [])) != 16:
+        if len(data.get("reports", [])) != 40:
             raise ValueError("missing per-route axe audit records")
-        print("Axe WCAG-tagged preflight: 16/16 scans with zero automated violations.")
+        print("Axe WCAG-tagged preflight: 40/40 scans with zero automated violations.")
         print("Manual screen reader, zoom, PDF structure, and full WCAG acceptance remain separate.")
     else:
         raise ValueError("unknown fixture")
@@ -75,8 +75,8 @@ def self_test():
         pass
     else:
         raise ValueError("PASS-in-script false positive accepted")
-    sample = {"status": "PASS", "scans": 16, "expectedScans": 16,
-              "errors": [], "reports": [{} for _ in range(16)]}
+    sample = {"status": "PASS", "scans": 40, "expectedScans": 40,
+              "errors": [], "reports": [{} for _ in range(40)]}
     verify('<html><pre id="result">' + json.dumps(sample) + '</pre></html>', "axe")
     try:
         verify('<html><script>PASS</script><pre id="result">RUNNING</pre></html>', "axe")
