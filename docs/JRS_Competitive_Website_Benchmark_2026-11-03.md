@@ -120,7 +120,7 @@
 | Dimension | Established pattern | JRS state | Site action |
 | --- | --- | --- | --- |
 | First screen | Problem + explicit audience/job + one primary CTA | Strong headline, direct seven-point tool, role directory | Retain. Avoid another broad redesign |
-| Task architecture | Role/use-case and workflow stages | 16 searchable public resources, free training and three investigator supplements | Add a first-use procedure on existing workflow page |
+| Task architecture | Role/use-case and workflow stages | 16 searchable public resources, free training and three investigator supplements | Add a first-use procedure on the canonical Resources route, after its searchable directory |
 | Review artifact | Clear output: case, timeline, assessment, workpaper, evidence trail | JRS method explains conditions but first-use output is less explicitly visible | Name a reviewer-local observation, source trail and hold/correct/escalate decision, without promising a new software-generated artifact |
 | Proof | Product claims backed by examples or benchmarks | Research pages separate methods, limitations and public references | Maintain qualification; no fabricated testimonials, deployments or field results |
 | Trust | Source lineage, role accountability, visible policies | JRS edition distinctions, contact privacy and restricted Review Engine | Preserve controls, emphasize no case uploads |
@@ -131,9 +131,9 @@
 
 ## Prioritized corrective backlog
 
-1. **P0, implement now:** Explain a three-step manual reviewer procedure near the top of existing Workflow Fit page. Link the current record check and five-condition method. Include what remains in the organization's records and what is not transmitted to JRS.
-2. **P0, implement now:** Add a contextual link from homepage task chooser to the existing workflow guidance, without adding another global nav item or more cards.
-3. **P0, implement now:** Qualify overbroad claims such as "there is no practical intervention point after [record filing]" to acknowledge documented correction after entry, even though earlier review is preferable.
+1. **P0, implemented in candidate:** Explain a three-step manual reviewer procedure on the canonical Resources page immediately after its searchable directory. Link the current record check and five-condition method. Explain what remains in the organization's records and what is not transmitted to JRS.
+2. **P0, implemented in candidate:** Link from the homepage task chooser to `resources.html#jrs-first-use-title`, without adding a global nav item or more cards. Do not link to `workflow-fit.html`, which redirects to `resources.html` in the effective Vercel configuration.
+3. **P0, implemented in candidate:** State in the canonical first-use procedure that corrections discovered after filing still follow local amendment and retention procedures. An older redirected file contains broader historical language; do not restore that retired route or infer it is currently public.
 4. **P1:** In future versioned resources, create a controlled role-specific "review note" example. Do not issue a new publication edition without content review, sourcing and approval.
 5. **P1:** Improve accessible PDF supply through validated, edition-aware reissues, preserving the original nine locked identities. Independent reading-order and PDF/UA testing remain mandatory.
 6. **P1:** Resolve exact-commit protected preview and production release parity, before certifying or merging.
@@ -148,6 +148,10 @@
 - First-use guidance must offer distinct steps for input, reviewer action and disposition; remain accessible without JS; avoid case-record submission and proprietary-data capture.
 - Public web release remains **HOLD** until protected exact-head preview and final commit/alias verification. Full accessibility certification remains **NOT ESTABLISHED** until accessible PDF editions and independent assistive-technology acceptance.
 - Evaluate whether new guidance improves real task completion only after observing consented practitioner use; without those data, report it as an implemented information-architecture improvement, not a conversion lift.
+
+## Redirect resolution and scope
+
+The effective `vercel.json` maps `/workflow-fit.html` and `/workflow-fit` to `/resources.html`. The historical `workflow-fit.html` source file is not an effective public destination. A proposed homepage link to its fragment failed the existing 47-page link-integrity suite, which correctly resolves redirects before checking anchors. The approved corrective design places guidance **after the canonical 16-resource searchable directory** in `resources.html`, updates the homepage anchor, and preserves the redirect. Automated accessibility scope tests effective routes rather than treating a redirected legacy source file as a separately published route.
 
 ## Method and limitations
 
