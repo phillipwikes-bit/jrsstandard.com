@@ -25,7 +25,7 @@ def source_page_count(path):
                          timeout=30, check=False)
     if run.returncode:
         raise RuntimeError("Unable to inspect source PDF page count: " + path.name)
-    match = re.search(r"^Pages:\\s*(\\d+)\\s*$", run.stdout, re.MULTILINE)
+    match = re.search(r"^Pages:\s*(\d+)\s*$", run.stdout, re.MULTILINE)
     if not match or int(match.group(1)) < 1:
         raise RuntimeError("Source PDF page count unavailable: " + path.name)
     return int(match.group(1))
