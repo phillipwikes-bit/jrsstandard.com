@@ -35,6 +35,17 @@
   var boxes=[].slice.call(d.querySelectorAll('input.sa[type=checkbox]'));
   var output=d.querySelector('#sa-out'),live=d.querySelector('#sa-announcement');
   expect(boxes.length===7&&!!output,'seven choices and result region');
+  var group=d.querySelector('#sa-question-group');
+  expect(group&&group.getAttribute('role')==='group',
+    'seven questions expose a named assistive-technology group');
+  expect(group.getAttribute('aria-labelledby')==='sa-group-heading' &&
+    group.getAttribute('aria-describedby')==='sa-instructions' &&
+    !!d.querySelector('#sa-group-heading') &&
+    !!d.querySelector('#sa-instructions') &&
+    group.querySelectorAll('input.sa[type=checkbox]').length===7,
+    'review controls retain shared task name, instructions and exactly seven selections');
+  expect(d.querySelector('#sa-instructions').textContent.includes('not a finding or score'),
+    'mixed-format prompts explicitly describe the source-verification and non-scoring boundary');
   expect(!!live&&live.getAttribute('role')==='status','separate assistive status region');
   expect(live.getAttribute('aria-live')==='polite','polite live announcement');
   var sent=[];

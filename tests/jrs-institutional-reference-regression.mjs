@@ -542,3 +542,30 @@ console.log('PASS: seven-point aid has no invented two-item threshold, distingui
     'copy test must reject unrelated group-level research figures');
  console.log('PASS: record-specific exports separate findings from constructed-corpus evidence.');
 }
+
+// Mixed yes/no and either/or questions require explicit review-selection rules.
+// The grouped instructions must be reachable by assistive technologies, without
+// changing the seven mode names, benchmark, telemetry, or local-only answers.
+{
+ const check=read('check.html');
+ const required=[
+   'id="sa-group-heading"','id="sa-instructions"',
+   'id="sa-question-group" role="group" aria-labelledby="sa-group-heading" aria-describedby="sa-instructions"',
+   'if reasoning is assumed or the evidence supports only a weaker conclusion',
+   'A tick identifies a question for source verification, not a finding or score.'
+ ];
+ for(const token of required)assert.ok(check.includes(token),'seven-question review instruction missing: '+token);
+ assert.doesNotMatch(check,/Tick a box only where the answer is no or you are unsure\./,
+   'misleading binary-only guidance has returned');
+ const types=[...check.matchAll(/<label class="chk"><input type="checkbox" class="sa" data-mode="([^"]+)"/g)]
+   .map(match=>match[1]);
+ assert.deepEqual(types,[
+   'Fluent groundlessness','Basis substitution','Chronology collapse',
+   'Reasoning elision','Confident underspecification','Evidentiary overreach',
+   'Untraceable authority'
+ ],'all seven source review modes must remain present in order');
+ assert.match(read('tests/jrs-check-a11y-browser.html'),
+   /seven questions expose a named assistive-technology group/,
+   'automated browser witness must exercise the accessible question group');
+ console.log('PASS: mixed-format question selection and labelled group have explicit release regression coverage.');
+}
