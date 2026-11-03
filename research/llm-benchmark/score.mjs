@@ -40,6 +40,15 @@ export function scoreSynthetic(gold,reviews){
       requireThat(!gaps.has(gap.id),"duplicate gold gap ID in case");
       gaps.set(gap.id,gap);
     }
+    requireThat(Array.isArray(original.source_spans),"source span manifest missing");
+    const allowed=new Map();
+    for(const source of original.source_spans){
+      requireThat(id(source.source_id)&&Array.isArray(source.spans),"invalid source manifest");
+      requireThat(!allowed.has(source.source_id),"duplicate source in manifest");
+      unique(source.spans,"source span identifiers");
+      requireThat(source.spans.every(id),"invalid span identifier");
+      allowed.set(source.source_id,new Set(source.spans));
+    }
     let caseTP=0,caseFP=0,caseChecked=0,caseValid=0;
     const matched=new Set();
     unique(review.findings.map(x=>x.id),"finding IDs");
@@ -48,6 +57,8 @@ export function scoreSynthetic(gold,reviews){
       requireThat(Array.isArray(f.citations),"missing citation review");
       for(const c of f.citations){
         requireThat(id(c.source_id)&&id(c.span_id),"citation source/span identifier absent");
+        requireThat(allowed.get(c.source_id)?.has(c.span_id)===true,
+          "citation source or span outside this case manifest");
         // Do not let the evaluated model self-attest citation truth.
         requireThat(c.independently_verified===true||
           c.independently_verified===false||
