@@ -148,11 +148,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--self-test", action="store_true", help="Run extraction warning regression cases")
     parser.add_argument("--root", default=".", help="Checked-out repository root")
-    parser.add_argument("--out", required=True, help="Non-deployed artifact output directory")
+    parser.add_argument("--out", help="Non-deployed artifact output directory (required unless --self-test)")
     args = parser.parse_args()
     if args.self_test:
         self_test()
         return
+    if not args.out:
+        parser.error("--out is required unless --self-test is used")
     root = Path(args.root).resolve()
     out = Path(args.out).resolve()
     if out == root or root in out.parents:
