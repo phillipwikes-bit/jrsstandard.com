@@ -399,6 +399,147 @@
       "testCoverage": [],
       "requiredRemediation": "Owner authorizes repository separation or project root connection",
       "acceptanceCriteria": "Exact-commit protected preview verified by bytes"
+    },
+    {
+      "featureId": "ACCT-RULES",
+      "sourceFiles": [
+        "owner/incomeos/ledger-rules.js"
+      ],
+      "purpose": "Owner-approved categorization and split rules; proposals only; integer-cent splits; conflicts become exceptions; audited apply",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+      ],
+      "testCoverage": [
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Phase 1 protected storage, then dashboard review queue",
+      "acceptanceCriteria": "No entry changed without owner acceptance; splits sum exactly"
+    },
+    {
+      "featureId": "ACCT-NETWORTH",
+      "sourceFiles": [
+        "owner/incomeos/net-worth.js"
+      ],
+      "purpose": "Balance sheet and net worth from dated, sourced balances; stale and missing accounts disclosed; unrealized gains separate",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Balances are owner-supplied; no institution connection",
+        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+      ],
+      "testCoverage": [
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Authorized balance imports",
+      "acceptanceCriteria": "Report labelled PARTIAL whenever any listed account is missing or stale"
+    },
+    {
+      "featureId": "RECOVERY-CLAIMS",
+      "sourceFiles": [
+        "owner/incomeos/claims-tracker.js"
+      ],
+      "purpose": "Unclaimed property, refunds, rebates, billing errors, savings bonds, pensions: official sources, search schedule, claim lifecycle, deadlines, finder-fee warnings",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Treasury Hunt and PBGC addresses unconfirmed (labelled)",
+        "Billing-error deadline is an estimate to confirm with the issuer",
+        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+      ],
+      "testCoverage": [
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Owner confirms remaining source addresses",
+      "acceptanceCriteria": "Recovered funds counted only with a bank reference, once"
+    },
+    {
+      "featureId": "SAVINGS-RENEWALS",
+      "sourceFiles": [
+        "owner/incomeos/renewal-monitor.js"
+      ],
+      "purpose": "Renewal, notice-deadline, price-increase and unused-service review on top of recurring detection; necessary services never proposed for cancellation",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Renewal dates are estimates from payment history",
+        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+      ],
+      "testCoverage": [
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Owner notes per service",
+      "acceptanceCriteria": "No cancellation proposed for a service marked necessary"
+    },
+    {
+      "featureId": "RESEARCH-HISTORY",
+      "sourceFiles": [
+        "owner/incomeos/recruiter-history.js"
+      ],
+      "purpose": "Recruiter invitation and payment rates from the owner's own records, with a sample floor; pay per recorded hour from verified payments only",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "No history recorded yet",
+        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+      ],
+      "testCoverage": [
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Owner records application stages",
+      "acceptanceCriteria": "No rate shown below the sample floor"
+    },
+    {
+      "featureId": "CAPITAL-YIELD",
+      "sourceFiles": [
+        "owner/incomeos/yield-compare.js"
+      ],
+      "purpose": "After-tax cash, CD and Treasury comparison (state exemption for Treasuries), early-withdrawal penalties, insurance-limit flags, ladder planning",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "Offers are owner-entered; no live rate feed",
+        "Treasury market-price risk not modelled",
+        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+      ],
+      "testCoverage": [
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Use verified investable surplus from capital-readiness",
+      "acceptanceCriteria": "Stale or unsourced offers excluded; no purchase instruction"
+    },
+    {
+      "featureId": "OWNER-BRIEFING",
+      "sourceFiles": [
+        "owner/incomeos/weekly-briefing.js"
+      ],
+      "purpose": "Weekly one-screen briefing answering the five owner questions; notifies only when an item needs the owner",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
+      "knownDefects": [
+        "No delivery channel authorized",
+        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+      ],
+      "testCoverage": [
+        "tests/incomeos-plan-features.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Owner chooses a delivery channel",
+      "acceptanceCriteria": "Quiet weeks produce no notification; repeat items do not re-notify"
     }
   ]
 }
