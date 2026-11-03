@@ -44,6 +44,13 @@ ROUTES = (
 )
 WIDTHS = (390, 1440)
 
+STATES = (
+    "resource-filter", "resource-empty", "mobile-navigation-open",
+    "training-module-expanded", "training-optional-dialog",
+    "accessible-format-routing",
+)
+
+
 
 def verify(html, expected):
     parser = ResultParser()
@@ -76,9 +83,28 @@ def verify(html, expected):
             raise ValueError("axe report contains violations despite PASS summary")
         print("Axe WCAG-tagged preflight: 40/40 scans with zero automated violations.")
         print("Manual screen reader, zoom, PDF structure, and full WCAG acceptance remain separate.")
+    elif expected == "states":
+        try:
+            data = json.loads(value)
+        except ValueError as exc:
+            raise ValueError("interaction fixture not finished: " + value[:300]) from exc
+        expected_pairs = {(state, width) for state in STATES for width in WIDTHS}
+        reports = data.get("reports") if isinstance(data, dict) else None
+        if (not isinstance(reports, list) or
+                data.get("scans") != 12 or data.get("expectedScans") != 12):
+            raise ValueError("incomplete interaction-state coverage")
+        observed_pairs = {(r.get("state"), r.get("width")) for r in reports}
+        if observed_pairs != expected_pairs or len(reports) != 12:
+            raise ValueError("duplicate or missing interaction-state evidence")
+        if data.get("status") != "PASS" or data.get("errors") or any(
+                r.get("violations") for r in reports):
+            raise ValueError("interaction-state violations: " +
+                             json.dumps(data.get("errors", []), ensure_ascii=False)[:9000])
+        print("PASS: 12/12 dynamic interaction-state scans; WCAG-tagged automated rules report zero violations.")
+        print("No form was submitted and no personal data was supplied.")
     else:
         raise ValueError("unknown fixture")
-    return data if expected == "axe" else True
+    return data if expected in ("axe", "states") else True
 
 
 def self_test():
@@ -102,15 +128,28 @@ def self_test():
         pass
     else:
         raise ValueError("unexecuted axe fixture accepted")
-    print("PASS: parsed-result and source-literal false-positive regressions.")
+    active = {"status": "PASS", "scans": 12, "expectedScans": 12,
+              "errors": [], "reports": [
+                  {"state": state, "width": width, "violations": [], "incomplete": []}
+                  for state in STATES for width in WIDTHS]}
+    verify('<pre id="result">' + json.dumps(active) + '</pre>', "states")
+    duplicate = json.loads(json.dumps(active))
+    duplicate["reports"][0]["state"] = "resource-empty"
+    try:
+        verify('<pre id="result">' + json.dumps(duplicate) + '</pre>', "states")
+    except ValueError:
+        pass
+    else:
+        raise ValueError("duplicate interaction-state results accepted")
+    print("PASS: parsed-result, unique interaction states and source-literal false-positive regressions.")
 
 
 def main():
     if sys.argv[1:] == ["--self-test"]:
         self_test()
         return
-    if len(sys.argv) not in (3, 4) or (len(sys.argv) == 4 and sys.argv[2] != "axe"):
-        raise SystemExit("Usage: jrs-browser-gate-check.py OUTPUT_HTML responsive|axe [EVIDENCE_JSON]")
+    if len(sys.argv) not in (3, 4) or (len(sys.argv) == 4 and sys.argv[2] not in ("axe", "states")):
+        raise SystemExit("Usage: jrs-browser-gate-check.py OUTPUT_HTML responsive|axe|states [EVIDENCE_JSON]")
     try:
         result = verify(Path(sys.argv[1]).read_text(encoding="utf-8"), sys.argv[2])
         if len(sys.argv) == 4:
