@@ -47,6 +47,9 @@ EXIT CODES
 import argparse
 import concurrent.futures
 import hashlib
+import json
+import re
+from urllib.parse import urlsplit
 import os
 import subprocess
 import sys
@@ -80,7 +83,11 @@ NOT_DEPLOYED_SUFFIX = (".md", ".docx", ".csv", ".py", ".pyc", ".sh", ".sql")
 #   vercel.json       is the platform's own configuration. Vercel reads it and
 #                     never serves it, so its 404 is correct and permanent.
 NOT_DEPLOYED_EXACT = ("vercel.json", "supabase-ALL.sql", ".vercelignore",
-                      ".gitignore", "CLAUDE.md")
+                      ".gitignore", "CLAUDE.md", "package.json", "proxy.js")
+
+# These are protected runtime routes, not public static source artifacts.
+# Their correct production behavior is an unauthenticated sign-in response.
+PRIVATE_GATED_EXACT = ("programme-status-9872fb93cc94.html",)
 
 
 def git(*args):
@@ -146,6 +153,74 @@ def is_deployed(path):
     return True
 
 
+def declared_redirects(ref):
+    """Resolve literal redirects from the exact Git ref, never from a stale worktree.
+
+    Redirect-source files are not the bodies served at their public URLs.
+    The final destination must itself be a tracked deployable asset. This
+    makes canonical-path checks stronger than blindly skipping redirects.
+    """
+    r = git("show", "%s:vercel.json" % ref)
+    if r.returncode:
+        raise ValueError("Cannot read Vercel routing from reference")
+    try:
+        config = json.loads(r.stdout)
+        rules = config.get("redirects", [])
+        if not isinstance(rules, list):
+            raise ValueError("Invalid redirects structure")
+    except (ValueError, TypeError) as err:
+        raise ValueError("Invalid Vercel routing: %s" % err)
+    declared = {}
+    for item in rules:
+        source, destination = item.get("source"), item.get("destination")
+        if not isinstance(source, str) or not isinstance(destination, str):
+            raise ValueError("Invalid redirect rule")
+        if not source.startswith("/") or not destination.startswith("/"):
+            raise ValueError("Redirect must remain internal")
+        if any(character in source for character in (":", "*", "(", ")")):
+            continue  # Pattern routes cannot be identified by a single source file.
+        key = source.lstrip("/")
+        if key in declared:
+            raise ValueError("Duplicate redirect source " + key)
+        declared[key] = destination.split("?", 1)[0].lstrip("/")
+    return declared
+
+
+def resolve_public_target(path, redirects, tracked_set):
+    """Return the bytes that Vercel must serve at a literal source route.
+
+    Explicitly fail on a redirect to a nonexistent, private or ignored file.
+    """
+    target = redirects.get(path)
+    if target is None:
+        return path
+    if (target not in tracked_set or not is_deployed(target)
+            or target in PRIVATE_GATED_EXACT):
+        raise ValueError("Redirect source %s has unsafe/untracked destination %s" % (path, target))
+    return target
+
+
+def fetch_private_gate(path):
+    """An unauthenticated request must produce private sign-in, never dashboard data."""
+    req = urllib.request.Request(BASE + "/" + path, headers={
+        "User-Agent": "Mozilla/5.0 (compatible; jrs-preflight/1.0)",
+        "Cache-Control": "no-cache",
+    })
+    try:
+        with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
+            body = r.read(65536).decode("utf-8", "replace")
+            cache = r.headers.get("Cache-Control", "").lower()
+            robots = r.headers.get("X-Robots-Tag", "").lower()
+            return (r.status == 200 and "Private Owner Sign-In" in body
+                    and "private" in cache and "no-store" in cache
+                    and "noindex" in robots and "nofollow" in robots
+                    and "/owner-login" in body and
+                    "JRS Owner Dashboard" not in body)
+    except (urllib.error.HTTPError, OSError, ValueError):
+        return False
+
+
+
 def blob_sha(ref, path):
     r = subprocess.run(["git", "show", "%s:%s" % (ref, path)],
                        capture_output=True)
@@ -165,54 +240,80 @@ def fetch(path):
     try:
         with urllib.request.urlopen(req, timeout=TIMEOUT) as r:
             body = r.read()
-            return r.status, hashlib.sha256(body).hexdigest(), len(body)
+            return r.status, hashlib.sha256(body).hexdigest(), len(body), r.geturl()
     except urllib.error.HTTPError as e:
         try:
             e.read()
         except Exception:
             pass
-        return e.code, None, 0
+        return e.code, None, 0, url
     except Exception as e:
-        return None, None, 0
+        return None, None, 0, url
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--ref", default="origin/main", help="git ref production should match")
-    ap.add_argument("--all", action="store_true", help="check every deployed asset, not just HTML and XML")
-    ap.add_argument("--paths", nargs="*", help="check only these paths")
+    ap.add_argument("--all", action="store_true", help="verify every deployed asset, including redirected sources")
+    ap.add_argument("--paths", nargs="*", help="verify these exact paths")
     a = ap.parse_args()
 
-    if git("rev-parse", "--verify", a.ref).returncode != 0:
+    if git("rev-parse", "--verify", a.ref).returncode:
         print("cannot resolve ref %r. Run: git fetch origin" % a.ref)
         return 2
 
-    if a.paths:
-        paths = list(a.paths)
-    else:
-        paths = [p for p in tracked(a.ref) if is_deployed(p)]
-        if not a.all:
-            paths = [p for p in paths if p.endswith((".html", ".xml", ".txt"))]
+    tracked_set = set(tracked(a.ref))
+    try:
+        redirects = declared_redirects(a.ref)
+        if a.paths:
+            paths = list(a.paths)
+            for path in paths:
+                if path not in tracked_set:
+                    raise ValueError("Explicit path not tracked: " + path)
+        else:
+            paths = [p for p in sorted(tracked_set) if is_deployed(p)]
+            if not a.all:
+                paths = [p for p in paths if p.endswith((".html", ".xml", ".txt"))]
+        for path in paths:
+            if path not in PRIVATE_GATED_EXACT:
+                resolve_public_target(path, redirects, tracked_set)
+    except ValueError as err:
+        print("INVALID VERIFICATION CONFIGURATION: " + str(err))
+        return 2
 
     if not paths:
         print("nothing to check")
         return 2
 
     head = git("rev-parse", "--short", a.ref).stdout.strip()
-    print("Comparing %d deployed asset(s) on %s against %s (%s)\n"
+    print("Comparing %d served route(s) on %s against %s (%s)\n"
           % (len(paths), BASE, a.ref, head))
 
-    stale, missing, unreachable, ok = [], [], [], 0
+    stale, missing, unreachable, routing_errors, private_failures = [], [], [], [], []
+    direct_ok, redirects_ok, private_ok = 0, 0, 0
 
     def one(path):
-        want = blob_sha(a.ref, path)
-        status, got, size = fetch(path)
-        return path, want, status, got, size
+        if path in PRIVATE_GATED_EXACT:
+            return path, None, None, None, None, None, fetch_private_gate(path)
+        expected = resolve_public_target(path, redirects, tracked_set)
+        want = blob_sha(a.ref, expected)
+        status, got, size, final_url = fetch(path)
+        return path, expected, want, status, got, size, final_url
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=8) as ex:
-        for path, want, status, got, size in ex.map(one, paths):
+        for path, expected, want, status, got, size, final_url in ex.map(one, paths):
+            if expected is None:
+                if final_url is True:
+                    private_ok += 1
+                else:
+                    private_failures.append(path)
+                    print("  PRIVATE FAIL %s  (sign-in, no-store or noindex not established)" % path)
+                continue
+
             if want is None:
+                routing_errors.append(path)
+                print("  ROUTE ERROR  %s  (target missing from ref)" % path)
                 continue
             want_sha, want_len = want
             if status is None:
@@ -221,56 +322,47 @@ def main():
             elif status == 404:
                 missing.append(path)
                 print("  MISSING      %s  (in %s, 404 live)" % (path, a.ref))
+            elif status != 200:
+                routing_errors.append(path)
+                print("  ROUTE ERROR  %s  (unexpected HTTP %s)" % (path, status))
+            elif (path in redirects and
+                  urlsplit(final_url).path != "/" + expected):
+                routing_errors.append(path)
+                print("  ROUTE ERROR  %s  (expected redirect to /%s)" % (path, expected))
             elif got != want_sha:
                 stale.append(path)
                 print("  STALE        %s  (live %d b, ref %d b)" % (path, size, want_len))
+            elif path in redirects:
+                redirects_ok += 1
             else:
-                ok += 1
+                direct_ok += 1
 
-    print("\n%d byte-identical, %d stale, %d missing, %d unreachable"
-          % (ok, len(stale), len(missing), len(unreachable)))
+    print("\n%d direct assets byte-identical, %d redirects verified against canonical"
+          " bytes, %d private gates confirmed, %d stale, %d missing, %d routing failures,"
+          " %d private failures, %d unreachable"
+          % (direct_ok, redirects_ok, private_ok, len(stale), len(missing),
+             len(routing_errors), len(private_failures), len(unreachable)))
 
-    if stale or missing:
-        bad = set(stale) | set(missing)
-        # CLASSIFY, DO NOT JUST REPORT. A silent skip and a partial rollout look
-        # identical in a count of stale files, and they need opposite responses.
-        # The signature of a skip is that every stale file is one the newest
-        # commit touched: main moved, production did not. A partial rollout
-        # leaves stale files the commit never touched.
-        touched = set()
-        r = git("show", "--name-only", "--format=", a.ref)
-        if r.returncode == 0:
-            touched = {p for p in r.stdout.split("\n") if p.strip()}
-        skip_signature = bool(touched) and bad.issubset(touched)
-
-        print("\nPRODUCTION IS NOT SERVING %s." % a.ref)
-        if skip_signature:
-            print("\n  *** SILENT DEPLOYMENT SKIP ***")
-            print("  Every stale asset is a file the newest commit changed, and nothing")
-            print("  else is stale. Production is intact on the PREVIOUS build: the new")
-            print("  deployment never ran. This is the 13 September 2026 failure mode,")
-            print("  in which GitHub reported the merge green and every route returned")
-            print("  200 while the change was absent from production.")
-            print("\n  DO NOT REVERT. There is no bad deployment to undo, and a revert")
-            print("  would change nothing. RE-TRIGGER: push any commit to main, or")
-            print("  redeploy from the Vercel dashboard.")
-        else:
-            print("\n  *** PARTIAL OR UNRELATED STALENESS ***")
-            print("  Some stale assets are NOT files the newest commit touched, so this")
-            print("  is not a clean skip. Check whether a deployment is still rolling")
-            print("  out before acting, then re-run this check.")
-            extra = sorted(bad - touched)[:8]
-            if extra:
-                print("  Stale but untouched by %s: %s" % (a.ref, ", ".join(extra)))
-        print("\n  A green GitHub check and an HTTP 200 are not evidence of deployment")
-        print("  on this project. This byte comparison is.")
+    if stale or missing or routing_errors or private_failures:
+        print("\nPRODUCTION VERIFICATION FAILED for %s." % a.ref)
+        if stale or missing:
+            bad = set(stale) | set(missing)
+            touched = set()
+            r = git("show", "--name-only", "--format=", a.ref)
+            if r.returncode == 0:
+                touched = {p for p in r.stdout.split("\n") if p.strip()}
+            skip_signature = bool(touched) and bad.issubset(touched)
+            print("  *** %s ***" % ("POSSIBLE SILENT DEPLOYMENT SKIP" if skip_signature else "PARTIAL OR UNRELATED STALENESS"))
+            print("  Compare the exact deployment identity and affected assets; do not automatically deploy or revert.")
+        if routing_errors or private_failures:
+            print("  Redirect destination or owner authentication requirement was not met.")
         return 1
-
     if unreachable:
         print("\nSome assets could not be fetched. Network, not a deployment verdict.")
         return 1
 
-    print("\nPRODUCTION IS BYTE-IDENTICAL TO %s. Deployment verified." % a.ref)
+    print("\nPRODUCTION VERIFIED: direct assets match source bytes, redirects resolve"
+          " to expected destination bytes, and private gates fail closed.")
     return 0
 
 

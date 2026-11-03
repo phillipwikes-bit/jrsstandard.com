@@ -1,11 +1,11 @@
 /* Task selection and source-bound public guidance. No changes to public intake or owner access. */
 body.jrs-institutional .jrs-fast-chooser{margin:12px 0 34px;padding:22px;border:1px solid #cdd9e1;border-radius:12px;background:#fff;color:#193148}
 body.jrs-institutional .jrs-fast-chooser h2{font-family:Georgia,serif!important;font-size:clamp(25px,3vw,34px)!important;color:#17334e!important}
-body.jrs-institutional .jrs-fast-chooser p{font-size:15px!important;color:#42576b!important}
+body.jrs-institutional .jrs-fast-chooser p{font-size:16px!important;color:#42576b!important}
 body.jrs-institutional .jrs-task-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:17px}
 body.jrs-institutional .jrs-task-links a{display:block;min-height:94px;padding:16px;border:1px solid #cbd8e1;border-radius:8px;background:#f4f8fa;color:#193148!important;text-decoration:none!important}
 body.jrs-institutional .jrs-task-links a strong{display:block;font-size:16px;line-height:1.35}
-body.jrs-institutional .jrs-task-links a span{display:block;font-size:14px;line-height:1.5;color:#42576b}
+body.jrs-institutional .jrs-task-links a span{display:block;font-size:15px;line-height:1.5;color:#42576b}
 body.jrs-institutional .jrs-task-links a:hover{background:#fff8e9;border-color:#75551f}
 body.jrs-institutional .jrs-task-links a:focus-visible,body.jrs-institutional .jrs-task-extras a:focus-visible{outline:3px solid #75551f!important;outline-offset:3px!important}
 body.jrs-institutional .jrs-task-extras{border-top:1px solid #dbe4e9;padding-top:14px!important}
@@ -24,7 +24,7 @@ body.jrs-institutional.jrs-guide-page .jrs-guide-label{font-size:12px;letter-spa
 body.jrs-institutional.jrs-guide-page h1{font:500 clamp(32px,5vw,52px)/1.14 Georgia,serif;color:#17334e;margin:0 0 16px}
 body.jrs-institutional.jrs-guide-page h2{font:500 clamp(24px,3vw,33px)/1.25 Georgia,serif;color:#17334e;margin:0 0 12px}
 body.jrs-institutional.jrs-guide-page h3{font-size:18px;color:#17334e;margin:0 0 8px}
-body.jrs-institutional.jrs-guide-page p,body.jrs-institutional.jrs-guide-page li{font-size:15px;line-height:1.65;color:#344f63;overflow-wrap:anywhere}
+body.jrs-institutional.jrs-guide-page p,body.jrs-institutional.jrs-guide-page li{font-size:16px;line-height:1.65;color:#344f63;overflow-wrap:anywhere}
 body.jrs-institutional.jrs-guide-page .jrs-guide-lead{font-size:18px;max-width:850px}
 body.jrs-institutional.jrs-guide-page a{color:#24577b;text-underline-offset:3px}
 body.jrs-institutional.jrs-guide-page .jrs-guide-cta{display:flex;gap:10px;flex-wrap:wrap;margin:19px 0}
@@ -34,7 +34,7 @@ body.jrs-institutional.jrs-guide-page .jrs-guide-panel{border:1px solid #d4e0e7;
 body.jrs-institutional.jrs-guide-page .jrs-guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:12px 0 24px}
 body.jrs-institutional.jrs-guide-page .jrs-guide-grid article{border:1px solid #d4e0e7;background:#fff;border-radius:10px;padding:20px}
 body.jrs-institutional.jrs-guide-page .jrs-version-table{width:100%;border-collapse:collapse;text-align:left}
-body.jrs-institutional.jrs-guide-page .jrs-version-table th,body.jrs-institutional.jrs-guide-page .jrs-version-table td{padding:13px 11px;border-bottom:1px solid #d9e4eb;vertical-align:top;overflow-wrap:anywhere;font-size:14px}
+body.jrs-institutional.jrs-guide-page .jrs-version-table th,body.jrs-institutional.jrs-guide-page .jrs-version-table td{padding:13px 11px;border-bottom:1px solid #d9e4eb;vertical-align:top;overflow-wrap:anywhere;font-size:15px}
 body.jrs-institutional.jrs-guide-page .jrs-version-table th{background:#eaf1f5;color:#17334e}
 body.jrs-institutional.jrs-guide-page .jrs-version-table caption{text-align:left;margin-bottom:12px;font-size:14px;color:#42576b}
 body.jrs-institutional.jrs-guide-page .jrs-guide-note{border-left:4px solid #8a6b38;background:#fcf8ef;padding:12px 16px;margin:17px 0}
