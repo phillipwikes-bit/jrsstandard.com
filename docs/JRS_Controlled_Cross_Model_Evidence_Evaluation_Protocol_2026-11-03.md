@@ -1,7 +1,7 @@
 # JRS Controlled Cross-Model Evidence Evaluation Protocol
 
 **Working protocol:** 0.1, 3 November 2026  
-**Status:** Proposed design, not an executed test.  
+**Status:** Alternative controlled design, not an executed test. The separate 120-case feasibility protocol is a competing option. Neither size is approved.  
 **Authority:** Research only. No external model calls, private document transfer, expenditure, production change or Review Engine activation is authorized by this protocol.
 
 ## 1. Research question
@@ -12,9 +12,11 @@ Does bounded LLM assistance improve the detection, evidentiary traceability and 
 
 The unit is one **synthetic or separately authorized, deidentified record packet**: a draft consequential record, its versioned reference sources, a documented chronology, stable source/span identifiers, an annotation task and a human-adjudicated expected result. The unit is not a person, a legal claim or a litigation outcome. Keep all real case content out of public issue trackers, model API calls and website telemetry without separate explicit authorization.
 
+Before preregistration, reconcile this 20+80 eight-stratum option with the 120-case six-stratum alternative in JRS_LLM_Documentary_Review_Evaluation_Protocol_2026-11-03.md. These are not cumulative cohorts, and no model runs or expenditure are authorized.
+
 ## 2. Corpus and gold evidence
 
-**Proposed, not collected:** 20 calibration cases and 80 held-out cases, 10 in each of eight strata:
+**Proposed, not collected, option B:** 20 calibration cases and 80 held-out cases, 10 in each of eight strata:
 
 1. Adequately sourced complete control records;
 2. Unsupported generalizations;
