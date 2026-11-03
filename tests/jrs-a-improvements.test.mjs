@@ -54,7 +54,7 @@ new vm.Script(js,{filename:'assets/jrs-engagement.js'});
 function harness(pathname){
   const calls=[],events=[];
   const document={addEventListener:(name,fn)=>{(events[name]??=[]).push(fn)}};
-  vm.runInNewContext(js,{document,window:{gtag:(...args)=>calls.push(args)},location:{pathname,href:'https://www.jrsstandard.com'+pathname},URL,Set});
+  vm.runInNewContext(js,{document,window:{gtag:(...args)=>calls.push(args)},location:{pathname,origin:'https://www.jrsstandard.com',href:'https://www.jrsstandard.com'+pathname},URL,Set});
   return {calls,click:node=>events.click.forEach(fn=>fn({target:{closest:q=>q==='a[href]'?node:null}}))};
 }
 let h=harness('/index.html');
