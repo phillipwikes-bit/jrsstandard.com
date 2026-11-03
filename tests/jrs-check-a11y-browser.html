@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>JRS seven-point live status and telemetry test</title></head>
+<body><h1>Check interactive privacy boundaries</h1><pre id="result" role="status">RUNNING</pre>
+<script>
+(async function(){
+ var checks=[],errors=[],frame=document.createElement('iframe');
+ frame.title='Seven-point review fixture';
+ frame.style.cssText='position:fixed;left:0;top:0;width:390px;height:850px;border:0';
+ document.body.appendChild(frame);
+ function expect(ok,name){checks.push(name);if(!ok)throw Error(name);}
+ try{
+  await new Promise(function(resolve,reject){
+   frame.onload=resolve;
+   frame.onerror=function(){reject(Error('record check failed to load'))};
+   frame.src='/check.html?src=resources&name=not-an-analytics-field%40example.invalid';
+  });
+  var d=frame.contentDocument,w=frame.contentWindow;
+  expect(!!d&&!!d.querySelector('main'),'same-origin review loaded');
+  var boxes=[].slice.call(d.querySelectorAll('input.sa[type=checkbox]'));
+  var output=d.querySelector('#sa-out'),live=d.querySelector('#sa-announcement');
+  expect(boxes.length===7&&!!output,'seven choices and result region');
+  expect(!!live&&live.getAttribute('role')==='status','separate assistive status region');
+  expect(live.getAttribute('aria-live')==='polite','polite live announcement');
+  var sent=[];
+  // Capture only network activity created AFTER document initialization.
+  // Initial analytics/page view is deliberately outside this state-isolation probe.
+  w.navigator.sendBeacon=function(url,blob){sent.push({url:url,blob:blob});return true;};
+  w.fetch=function(url,opts){sent.push({url:url,opts:opts});return Promise.resolve({ok:true});};
+  boxes[0].checked=true;
+  boxes[0].dispatchEvent(new w.Event('change',{bubbles:true}));
+  expect(/One question selected for source verification/.test(live.textContent),
+   'single check triggers concise accessible update');
+  expect(/One checked question warrants review/.test(output.textContent),
+   'single selection requires verification, not judgment');
+  boxes[1].checked=true;
+  boxes[1].dispatchEvent(new w.Event('change',{bubbles:true}));
+  expect(/2 questions selected for source verification/.test(live.textContent),
+   'multiple checks announced');
+  expect(live.textContent.includes('not a score'),'count not represented as score');
+  boxes[0].checked=false;boxes[1].checked=false;
+  boxes[0].dispatchEvent(new w.Event('change',{bubbles:true}));
+  expect(/No review questions selected/.test(live.textContent),'clear selection announced');
+  expect(sent.length===0,'checkbox changes do not trigger fetch or beacon');
+  var link=d.querySelector('a[href="resources.html"]');
+  expect(!!link,'resources link exists');
+  var e=new w.MouseEvent('click',{bubbles:true,cancelable:true,metaKey:true,button:0});
+  link.dispatchEvent(e);
+  expect(!e.defaultPrevented,'link tracking preserves native modifier navigation');
+  expect(sent.length===1,'link click produces only one best-effort telemetry event');
+  var event=sent[0];
+  expect(event.url==='/api/telemetry','event sent to existing JRS telemetry route');
+  var payload=JSON.parse(event.blob?await event.blob.text():event.opts.body);
+  expect(payload.origin_url==='/check.html','source path excludes query string');
+  expect(payload.target_url==='/resources.html','destination path excludes query string');
+  expect(!JSON.stringify(payload).includes('not-an-analytics-field'),
+   'no arbitrary query parameter copied into event');
+  expect(!JSON.stringify(payload).includes('Fluent groundlessness'),
+   'no questionnaire answer copied into event');
+ }catch(err){errors.push(String(err&&err.message||err));}
+ finally{frame.remove();}
+ document.querySelector('#result').textContent=JSON.stringify({
+  status:errors.length?'FAIL':'PASS',
+  scans:1,expectedScans:1,checks:checks,errors:errors
+ });
+})();
+</script></body></html>

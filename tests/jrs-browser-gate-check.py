@@ -147,9 +147,20 @@ def verify(html, expected):
                              json.dumps(data.get("errors", []), ensure_ascii=False)[:9000])
         print("PASS: 14/14 dynamic interaction-state scans; WCAG-tagged automated rules report zero violations.")
         print("No form was submitted and no personal data was supplied.")
+    elif expected == "check":
+        try:
+            data = json.loads(value)
+        except ValueError as exc:
+            raise ValueError("seven-point interaction fixture did not complete: " + value[:500]) from exc
+        if not isinstance(data, dict) or data.get("scans") != 1 or data.get("expectedScans") != 1:
+            raise ValueError("seven-point interaction fixture did not execute exactly once")
+        if data.get("status") != "PASS" or data.get("errors") or len(data.get("checks", [])) < 12:
+            raise ValueError("seven-point privacy/accessibility behavior failed: " +
+                             json.dumps(data.get("errors", []), ensure_ascii=False)[:2500])
+        print("PASS: seven-point live status, browser-local answers and path-only click telemetry.")
     else:
         raise ValueError("unknown fixture")
-    return data if expected in ("axe", "states", "reflow") else True
+    return data if expected in ("axe", "states", "reflow", "check") else True
 
 
 def self_test():

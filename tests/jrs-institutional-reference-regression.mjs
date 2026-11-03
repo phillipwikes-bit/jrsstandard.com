@@ -439,3 +439,32 @@ assert.ok(checkLocalScript, 'local-only record check is missing');
 assert.doesNotMatch(checkLocalScript[0], /\b(?:fetch|sendBeacon)\s*\(|\blocalStorage\s*\./,
   'selected record-check answers must remain browser-local');
 console.log('PASS: seven-point aid has no invented two-item threshold, distinguishes detection from reliability, and preserves local-only review output.');
+
+// PR #117: ensure screen-reader result changes and analytics data minimization
+// survive later SEO, navigation and instrumentation edits.
+{
+  const check=read('check.html');
+  assert.match(check, /id="sa-announcement"[^>]*role="status"[^>]*aria-live="polite"/,
+    'seven-point check must provide an independent concise live status');
+  assert.match(check, /One question selected for source verification/,
+    'one selected question must have explicit accessible feedback');
+  assert.match(check, /The count is not a score/,
+    'multiple question feedback must not imply a validated diagnostic score');
+  assert.match(check, /page_location:window.location.origin\+window.location.pathname/,
+    'GA page location may not contain unchecked URL query parameters');
+  assert.doesNotMatch(check, /function trackClickAndNavigate|window.location.href = targetUrl/,
+    'telemetry must not hijack or delay native link navigation');
+  const tracking=check.split('Best-effort path-only click telemetry:')[1]?.split('</script>')[0];
+  assert.ok(tracking,'path-only click telemetry block absent');
+  assert.match(tracking, /origin_url:window.location.pathname/,
+    'click events should use origin path rather than full URL');
+  assert.doesNotMatch(tracking, /origin_url:window.location.href|event.preventDefault\(/,
+    'analytics must never include a full referer or block navigation');
+  assert.match(tracking, /link.pathname/,
+    'target analytics must strip both query string and fragment');
+  assert.match(check, /sourceCandidate.*toLowerCase\(\)/,
+    'referral categorization must be bounded');
+  assert.match(check, /These questions are not validated diagnostic tests/,
+    'SEO and public review claims must respect research limitations');
+  console.log('PASS: check result announcements, no navigation hijack and path-only analytics.');
+}
