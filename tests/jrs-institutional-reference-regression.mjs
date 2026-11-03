@@ -48,6 +48,22 @@ for(const path of ['index.html','resources.html','organization.html']){
   path+' must retain the exact longer non-purchase statement');
 }
 
+// Homepage A-target typography: the long nonpurchase explanation must remain
+// available, but not compete in the prominent introductory bold statement.
+const homeTypography=read('index.html');
+const homeDesign=read('assets/jrs-a-pathways.css');
+assert.ok(homeTypography.includes('<p class="jr-platform-promise"><strong>'+practicalPositioning+'</strong></p>'),
+ 'the homepage hero must feature only the concise core instrument proposition');
+assert.ok(homeTypography.includes('<p class="jrs-task-context">Organizations do not need to purchase or replace a software platform'),
+ 'the full no-purchase explanation must survive as normal-weight first-use guidance');
+assert.ok(homeDesign.includes('HOME EDITORIAL TYPOGRAPHY REVIEW 2026-11-03'),
+ 'homepage typography correction must remain scoped and source-reviewable');
+for(const s of ['text-wrap:balance','max-width:67ch','font-size:15px!important']){
+ assert.ok(homeDesign.includes(s),'homepage readability correction missing: '+s);
+}
+assert.ok(homeDesign.includes('body.jrs-institutional.jrs-home .jr-fact-row'),
+ 'reference panel needs compact, readable label hierarchy');
+
 // Guard international expert provenance and remove extraneous product-status copy.
 for(const page of ['index.html','about.html','research.html','research-summary.html','investigator-guides.html']){
  assert.match(read(page),/16 independent international experts from 11 countries across five continents/,
