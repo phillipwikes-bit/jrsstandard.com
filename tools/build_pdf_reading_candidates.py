@@ -20,6 +20,17 @@ def git_blob_sha(data):
     return hashlib.sha1(header + data).hexdigest()
 
 
+def source_page_count(path):
+    run = subprocess.run(["pdfinfo", str(path)], capture_output=True, text=True,
+                         timeout=30, check=False)
+    if run.returncode:
+        raise RuntimeError("Unable to inspect source PDF page count: " + path.name)
+    match = re.search(r"^Pages:\\s*(\\d+)\\s*$", run.stdout, re.MULTILINE)
+    if not match or int(match.group(1)) < 1:
+        raise RuntimeError("Source PDF page count unavailable: " + path.name)
+    return int(match.group(1))
+
+
 def pages_from_pdf(path, mode):
     command = ["pdftotext", "-enc", "UTF-8"]
     if mode == "layout":
@@ -132,6 +143,7 @@ def main():
         identity = git_blob_sha(data)
         if not data.startswith(b"%PDF-") or item.get("blob_sha") != identity or item.get("bytes") != len(data):
             raise SystemExit("Release hold: original PDF has changed or is not in the source manifest: " + filename)
+        source_pages = source_page_count(pdf_path)
         raw_pages = pages_from_pdf(pdf_path, "raw")
         layout_pages = pages_from_pdf(pdf_path, "layout")
         raw = "\n".join(raw_pages)
@@ -142,7 +154,7 @@ def main():
         # Expose page-level extraction risks for editorial review. Aggregate
         # token agreement can conceal omissions or page-order displacement.
         page_reviews = []
-        for page_index in range(max(len(raw_pages), len(layout_pages))):
+        for page_index in range(max(source_pages, len(raw_pages), len(layout_pages))):
             raw_page = raw_pages[page_index] if page_index < len(raw_pages) else ""
             layout_page = layout_pages[page_index] if page_index < len(layout_pages) else ""
             raw_tokens, layout_tokens = tokens(raw_page), tokens(layout_page)
@@ -167,7 +179,7 @@ def main():
                 "flags": flags,
                 "editorial_disposition": "NOT_ASSESSED",
             })
-        if len(raw_pages) != len(layout_pages):
+        if len(raw_pages) != source_pages or len(layout_pages) != source_pages:
             # Never silently associate the wrong layout transcript with a
             # source page. Preserve the candidates but flag this for review.
             for page in page_reviews:
@@ -176,7 +188,7 @@ def main():
         (out / stem).write_text(candidate_html(item, raw_pages, layout_pages, identity, page_reviews), encoding="utf-8")
         reports.append({
             "source_pdf": filename, "source_blob_sha": identity, "source_bytes": len(data),
-            "candidate_html": stem, "raw_pages": len(raw_pages), "layout_pages": len(layout_pages),
+            "candidate_html": stem, "source_pages": source_pages, "raw_pages": len(raw_pages), "layout_pages": len(layout_pages),
             "raw_character_count": len(raw), "raw_replacement_characters": raw.count("\ufffd"),
             "raw_layout_token_discrepancy": difference,
             "page_review": page_reviews,
@@ -199,7 +211,7 @@ def main():
         writer = csv.writer(handle)
         writer.writerow([
             "source_pdf", "source_blob_sha", "page", "extraction_flags",
-            "raw_characters", "layout_characters", "token_discrepancy", "order_agreement",
+            "source_pages", "raw_characters", "layout_characters", "token_discrepancy", "order_agreement",
             "reading_order_review", "heading_structure_review",
             "table_and_list_review", "link_and_reference_review",
             "figures_and_alt_text_review", "source_equivalence_review",
@@ -209,7 +221,7 @@ def main():
             for page in asset["page_review"]:
                 writer.writerow([
                     asset["source_pdf"], asset["source_blob_sha"], page["page"],
-                    ";".join(page["flags"]), page["raw_characters"],
+                    ";".join(page["flags"]), asset["source_pages"], page["raw_characters"],
                     page["layout_characters"], page["token_discrepancy"], page["order_agreement"],
                     "NOT_ASSESSED", "NOT_ASSESSED", "NOT_ASSESSED",
                     "NOT_ASSESSED", "NOT_ASSESSED", "NOT_ASSESSED",
