@@ -241,7 +241,8 @@ def main():
             for page in asset["page_review"]:
                 writer.writerow([
                     asset["source_pdf"], asset["source_blob_sha"], page["page"],
-                    ";".join(page["flags"]),\n                    ("Check extracted tokens against rendered source; " if "TOKEN_DISCREPANCY" in page["flags"] else "")\n                    + ("Check logical reading sequence against rendered source; " if "ORDER_DISAGREEMENT" in page["flags"] else "")\n                    + ("Check missing or undecodable text; " if any(flag in page["flags"] for flag in ("EMPTY_EXTRACTION", "REPLACEMENT_CHARACTER")) else "")\n                    + ("Check source/extraction page counts; " if "PAGE_COUNT_MISMATCH" in page["flags"] else "")\n                    + "Review semantics and source equivalence regardless of automatic flags",\n                    asset["source_pages"], page["raw_characters"],
+                    ";".join(page["flags"]),
+                    ("Check extracted tokens against rendered source; " if "TOKEN_DISCREPANCY" in page["flags"] else "")\n                    + ("Check logical reading sequence against rendered source; " if "ORDER_DISAGREEMENT" in page["flags"] else "")\n                    + ("Check missing or undecodable text; " if any(flag in page["flags"] for flag in ("EMPTY_EXTRACTION", "REPLACEMENT_CHARACTER")) else "")\n                    + ("Check source/extraction page counts; " if "PAGE_COUNT_MISMATCH" in page["flags"] else "")\n                    + "Review semantics and source equivalence regardless of automatic flags",\n                    asset["source_pages"], page["raw_characters"],
                     page["layout_characters"], page["token_discrepancy"], page["order_agreement"],
                     "NOT_ASSESSED", "NOT_ASSESSED", "NOT_ASSESSED",
                     "NOT_ASSESSED", "NOT_ASSESSED", "NOT_ASSESSED",
