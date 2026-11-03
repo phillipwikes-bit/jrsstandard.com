@@ -82,7 +82,10 @@ Every court and agency host is refused by this session's proxy (uiappeals.ny.gov
 
 ---
 
-## Owner decision on sequence (2026-11-03)
+## Owner attestation on approvals (2026-11-03, supersedes the sequence note below)
+Owner, verbatim: "Tanvi and Kyle have given me the authorization to find. Away to publish study in whatever format." Recorded as an **OWNER ATTESTATION**, not independent verification; no written authorization from either person is on file in `research/correspondence/` for this version. Items 2 and 3 are treated as satisfied by the owner's attestation. Recommended: save any written authorization to `research/correspondence/`.
+
+## Owner decision on sequence (2026-11-03, superseded)
 The owner will send the pitch first as a query without attachments, and will seek Tanvi's and Kyle's approvals only if Scott wants the manuscript. Items 2 and 3 therefore gate sending the **manuscript**, not the **query**.
 
 ## Suggested order (about two to three hours of owner time)
