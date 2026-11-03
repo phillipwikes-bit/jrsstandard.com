@@ -24,6 +24,14 @@ assert.match(css, /prefers-reduced-motion/);
 const edition = read('editions.html');
 assert.match(edition, /Published PDF tagging and reading order have not been independently certified/);
 assert.match(edition, /href="contact\.html\?category=accessibility"/);
+const resourceIndex = read('resources.html');
+assert.match(resourceIndex, /Accessibility of PDF publications:/);
+assert.match(resourceIndex, /href="contact\.html\?category=accessibility"/);
+assert.match(resourceIndex, /not a verified equivalent of the Standard PDF/);
+const researchSummary = read('research-summary.html');
+assert.match(researchSummary, /PDF accessibility and editions/);
+assert.match(researchSummary, /href="contact\.html\?category=accessibility"/);
+assert.match(researchSummary, /have not been independently verified for tagged reading order/);
 const contact = read('contact.html');
 const inquiry = read('api/site-inquiry.js');
 assert.match(contact, /<option value="accessibility">/);
@@ -47,3 +55,22 @@ console.log('PDF ACCESSIBILITY NOT CERTIFIED: ' + absent.length +
   ' of ' + manifest.assets.length + ' published PDFs lack a detected structure-tree marker. ' +
   'Tag presence alone would not establish correct reading order or WCAG conformance.');
 console.log('NOT ASSESSED: VoiceOver, PDF/UA, every WCAG criterion, full-site independent QA and protected-preview authentication.');
+
+const trainingCompletion = read('training.html');
+assert.match(trainingCompletion, /<canvas id="cert-canvas" aria-hidden="true"/);
+assert.match(trainingCompletion, /id="cert-accessible-summary" role="status" aria-live="polite" hidden/);
+assert.match(trainingCompletion, /summary\.textContent = 'JRS Reviewer Training, record of completion/);
+assert.match(trainingCompletion, /addEventListener\('input', invalidateCert\)/);
+assert.match(trainingCompletion, /requestedName\) return;/);
+const interactionCoverage = read('tests/jrs-interaction-a11y-browser.html');
+assert.match(interactionCoverage, /id:'training-completion-text'/);
+assert.match(interactionCoverage, /'wcag22a'/);
+for(const required of ['filter-reset-restored','menu-escape-focus-restored','module-collapse-restored','dialog-escape-focus-restored']){
+  assert.ok(interactionCoverage.includes(required),'dynamic-state keyboard dismissal assurance missing: '+required);
+}
+assert.match(read('tests/jrs-browser-gate-check.py'), /missing keyboard focus\/dismissal evidence/);
+
+const trainingPalette = read('assets/jrs-institutional-reference.css');
+const contrastActionSelector = /#cert-section button\[onclick="generateCert\(\)"\]\{[\s\S]*?background:#173d5b!important;color:#fff!important/;
+assert.match(trainingPalette, contrastActionSelector,
+  'the previously hidden completion action must have an explicit high-contrast appearance');

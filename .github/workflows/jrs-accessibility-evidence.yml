@@ -1,0 +1,82 @@
+name: JRS source accessibility evidence, not conformance certification
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Document PDF tagging gaps and enforce original byte identities
+        run: |
+          node tests/jrs-accessibility-acceptance.test.mjs
+          node tests/jrs-pdf-accessibility-inventory.mjs
+      - name: Check strict browser evidence parser
+        run: python3 tests/jrs-browser-gate-check.py --self-test
+      - name: Test 400-percent-equivalent reflow at two narrow widths
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8794 --bind 127.0.0.1 >/tmp/jrs-reflow-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8794/index.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8794/tests/jrs-400-percent-reflow-browser.html > /tmp/jrs-reflow-dom.txt 2>/tmp/jrs-reflow-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-reflow-dom.txt reflow /tmp/jrs-reflow-evidence.json
+      - name: Install pinned axe-core for CI only
+        run: |
+          npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund axe-core@4.10.3
+          test -s node_modules/axe-core/axe.min.js
+      - name: Scan 20 public routes at mobile and desktop widths
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8792 --bind 127.0.0.1 >/tmp/jrs-axe-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8792/index.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8792/tests/jrs-wcag-axe-browser.html > /tmp/jrs-axe-dom.txt 2>/tmp/jrs-axe-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-axe-dom.txt axe /tmp/jrs-axe-evidence.json
+      - name: Scan seven dynamic states at mobile and desktop widths
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8793 --bind 127.0.0.1 >/tmp/jrs-states-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8793/resources.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8793/tests/jrs-interaction-a11y-browser.html > /tmp/jrs-states-dom.txt 2>/tmp/jrs-states-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-states-dom.txt states /tmp/jrs-states-evidence.json
+      - name: Retain inspected test output
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-scoped-accessibility-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            /tmp/jrs-reflow-evidence.json
+            /tmp/jrs-axe-evidence.json
+            /tmp/jrs-states-evidence.json
+          if-no-files-found: warn
+          retention-days: 30
