@@ -139,6 +139,21 @@ try {
   assert.equal(response.status,403);
   assert.equal(sent.length,6,'cross-origin request cannot reach Neon');
 
+
+  // Exercise the JRS release candidate's separately approved preview alias.
+  const jrsPreview='https://jrsstandard-com-git-fix-jrs-train-decb75-phillip-wikes-projects.vercel.app';
+  process.env.VERCEL_ENV='preview';
+  process.env.VERCEL_GIT_COMMIT_REF='fix/jrs-training-mobile-a11y-quality-2026-11-02';
+  process.env.VERCEL_BRANCH_URL=jrsPreview.slice(8);
+  await handler(request('send'));
+  assert.equal(sent[6].origin,jrsPreview,'JRS release preview uses only its exact Neon-trusted alias');
+  process.env.VERCEL_BRANCH_URL='untrusted-branch.vercel.app';
+  await handler(request('send'));
+  assert.equal(sent[7].origin,origin,'contradictory branch alias must not be trusted');
+  process.env.VERCEL_ENV='production';
+  process.env.VERCEL_BRANCH_URL=jrsPreview.slice(8);
+  await handler(request('send'));
+  assert.equal(sent[8].origin,origin,'production may not use preview branch identity');
   console.log('PASS Neon preview origin: exact branch allowlist, send and verify, production isolation, anti-CSRF');
   console.log('PASS owner Neon OTP: safe diagnostic status, no PII, same-origin, retry and timeout');
 } finally {

@@ -10,6 +10,39 @@ const legacy=[
  'recheck.html','security.html','review-engine.html',
  'coauthor.html','honor.html','ai-records-arm-b.html','404.html','people.html'
 ];
+const requiredMobileNav=[
+ 'reviewer/evaluation.html','reviewer/completion.html','recheck.html',
+ 'security.html','ai-records-arm-b.html'
+];
+for(const path of requiredMobileNav){
+ const html=load(path);
+ assert.ok(html.includes('<script src="/assets/jrs-mobile-navigation.js" defer></script>'),
+   path+': shared keyboard-operated mobile navigation missing');
+ assert.equal((html.match(/<nav class="jrs-sitenav"/g)||[]).length,1,
+   path+': redundant competing navigation');
+ const navStart=html.indexOf('<nav class="jrs-sitenav"');
+ const navEnd=html.indexOf('</nav>',navStart);
+ const nav=navStart>=0 && navEnd>navStart ? html.slice(navStart,navEnd+6) : '';
+ assert.equal((nav.match(/<a href=/g)||[]).length,7,
+   path+': canonical seven-link mobile navigation missing');
+ assert.ok(!nav.includes('enterprise.html'),
+   path+': retired enterprise destination must not be promoted');
+}
+
+// Prevent the sitewide rendered browser audit from silently omitting an active
+// public/retained HTML route when the source inventory changes.
+const mobileAudit=load('tests/jrs-sitewide-mobile-browser-audit.html');
+const sourceInventory=load('tests/jrs-public-resource-integrity.mjs');
+const inventoryMatch=sourceInventory.match(/const pages=\[([\s\S]*?)\];/);
+const auditMatch=mobileAudit.match(/const paths=(\[[^\n;]*\]);/);
+assert.ok(inventoryMatch&&auditMatch,'sitewide browser inventory missing');
+const activeInventory=[...inventoryMatch[1].matchAll(/'([^']+)'/g)].map(x=>x[1]);
+const browserInventory=JSON.parse(auditMatch[1]);
+assert.equal(new Set(browserInventory).size,browserInventory.length,
+ 'sitewide browser audit must not duplicate routes');
+assert.deepEqual([...browserInventory].sort(),[...new Set([...activeInventory,...legacy])].sort(),
+ 'sitewide browser audit does not cover the current public and legacy route inventories');
+
 for(const path of legacy){
  const html=load(path);
  assert.match(html,/<body class="jrs-institutional jrs-legacy-public(?: [^"]+)?">/,path+': required opt-in missing');

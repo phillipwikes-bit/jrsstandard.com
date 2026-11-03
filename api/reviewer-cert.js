@@ -1,23 +1,12 @@
 export const config = { runtime: 'edge' };
 
-// Reviewer certificate rendering.
-//
-// Same pattern as api/honor-cert.js: a printable certificate served from the
-// edge, matching the layout of research/build_certificate.py, so nothing has to
-// be issued by hand.
-//
-// WHAT THE COMPLETION CODE IS AND IS NOT. It is a receipt, not a password. The
-// durable record of who completed what is the row written by /api/reviewer-eval
-// at submission time; this endpoint reprints from the values the holder supplies
-// and checks the code for shape only. That is deliberate: a certificate is not a
-// credential that grants access to anything, so protecting it like one would add
-// friction without protecting anything. The verifiable record is in the database
-// and is what anyone checking would be pointed at.
-//
-// EVERY RENDER IS LOGGED to interaction_events as source='reviewer-cert-render',
-// type='download', carrying the completion code and never a name. That is the
-// engagement signal: how many trained reviewers actually collected the artifact.
-
+// Historical reviewer evaluation receipt rendering.
+// A JRS-R- code is a reference to an issuer record, not proof of completed
+// training or demonstrated competence. A certificate may be rendered only when
+// a matching private reviewer-cert contact record is read successfully. Request
+// parameters cannot supply or modify the verified name, title or issuance date.
+// The underlying evaluation answers remain anonymous and are never fetched.
+ 
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 
 const SIGNER = 'Phillip Wikes';
@@ -58,14 +47,23 @@ function clean(v, n){ return (v == null ? '' : String(v)).trim().slice(0, n || 2
 
 const MONTHS = ['January','February','March','April','May','June',
                 'July','August','September','October','November','December'];
-function longDate(){
-  const d = new Date();
+function longDate(iso){
+  const d = new Date(iso);
+  if (!Number.isFinite(d.getTime())) return '';
   return MONTHS[d.getUTCMonth()] + ' ' + d.getUTCDate() + ', ' + d.getUTCFullYear();
+}
+function sameName(a,b){
+  const norm = v => String(v||'').normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase();
+  return !!norm(a) && norm(a) === norm(b);
 }
 
 function html(s, code){
   return new Response(s, { status: code || 200,
-    headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } });
+    headers: { 'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'private, no-store',
+      'Referrer-Policy': 'no-referrer',
+      'X-Robots-Tag': 'noindex, nofollow',
+      'X-Content-Type-Options': 'nosniff' } });
 }
 
 function badCode(){
@@ -74,7 +72,7 @@ function badCode(){
     + '<title>Completion code not recognised</title>'
     + '<style>body{background:#050505;color:#F2F2F2;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:60px 22px;text-align:center;line-height:1.6}'
     + 'a{color:#BE9447}</style></head><body>'
-    + '<p>That completion code is not in the expected form. It starts with JRS-R- and was shown '
+    + '<p>The submitted details could not be validated against an issued reviewer evaluation receipt. A historical reference starts with JRS-R-. It was shown '
     + 'when you submitted the reviewer evaluation.<br><br>'
     + '<a href="/reviewer/completion.html">Try again</a> or write to '
     + '<a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>.</p></body></html>', 400);
@@ -85,12 +83,12 @@ function page(o){
   return '<!DOCTYPE html>\n<html lang="en"><head><meta charset="utf-8">'
     + '<meta name="viewport" content="width=device-width, initial-scale=1">'
     + '<meta name="robots" content="noindex, nofollow">'
-    + '<title>' + esc(o.name) + ' · JRS Reviewer Certificate</title>'
+    + '<title>' + esc(o.name) + ' · JRS Reviewer Evaluation Receipt</title>'
     + '<style>'
     + '*{margin:0;padding:0;box-sizing:border-box}'
     + 'body{background:#3a3a3a;font-family:Georgia,"Times New Roman",Times,serif;padding:22px 14px 60px}'
     + '.bar{max-width:1000px;margin:0 auto 16px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}'
-    + '.bar button{font-family:"Courier New",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:#BE9447;color:#050505;border:none;padding:12px 22px;cursor:pointer}'
+    + '.bar button{font-family:"Courier New",monospace;font-size:14px;letter-spacing:.04em;background:#BE9447;color:#050505;border:none;padding:14px 22px;cursor:pointer;min-height:44px}'
     + '.cert{max-width:1000px;margin:0 auto;aspect-ratio:792/612;background:#FCFBF8;position:relative;padding:5.2% 6%;box-shadow:0 10px 40px rgba(0,0,0,.45)}'
     + '.cert::before{content:"";position:absolute;inset:3.5% 3.5%;border:2.2px solid #BE9447;pointer-events:none}'
     + '.cert::after{content:"";position:absolute;inset:4.6% 4.4%;border:.7px solid #BE9447;pointer-events:none}'
@@ -110,6 +108,23 @@ function page(o){
     + '.foot .sig{font-style:italic;font-size:2.2vw;color:#121212}'
     + '.foot .r{border-top:1px solid #999;padding-top:.6%;font-size:.9vw;color:#666}'
     + '.credit{position:absolute;bottom:2%;left:0;right:0;text-align:center;font-size:.78vw;color:#666}'
+    + '@media screen and (max-width:767px){'
+    + 'body{padding:14px 10px 36px}'
+    + '.cert{aspect-ratio:auto;min-height:620px;padding:36px 22px 28px}'
+    + '.cert::before{inset:12px}.cert::after{inset:17px}'
+    + '.inner{height:auto;min-height:540px}'
+    + '.mark{font-size:40px;margin-top:10px}'
+    + '.wordmark{font-size:12px;letter-spacing:.1em}'
+    + '.kind{font-size:27px;line-height:1.22;margin-top:28px}'
+    + '.certifies{font-size:16px;margin-top:15px}'
+    + '.name{font-size:28px;line-height:1.2;overflow-wrap:anywhere}'
+    + '.title-line{font-size:14px;line-height:1.5;max-width:100%}'
+    + '.body{font-size:16px;line-height:1.6;max-width:100%;margin-top:20px}'
+    + '.code{font-size:13px;letter-spacing:.02em;overflow-wrap:anywhere}'
+    + '.feet{position:static;display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:25px;padding:0}'
+    + '.foot{width:100%}.foot .v{font-size:16px}.foot .sig{font-size:26px}.foot .r{font-size:13px}'
+    + '.credit{position:static;margin-top:20px;font-size:12px}'
+    + '}'
     + '@media print{body{background:#fff;padding:0}.bar{display:none}'
     + '.cert{box-shadow:none;max-width:none;width:100%;aspect-ratio:792/612}'
     + '@page{size:letter landscape;margin:0}}'
@@ -118,13 +133,13 @@ function page(o){
     + '<div class="cert"><div class="inner">'
     + '<div class="mark">JRS</div>'
     + '<div class="wordmark">Justification Review Standard</div>'
-    + '<div class="kind">Certificate of Completion</div>'
-    + '<div class="certifies">This certifies that</div>'
+    + '<div class="kind">Reviewer evaluation receipt</div>'
+    + '<div class="certifies">Issuer record confirms</div>'
     + '<div class="name">' + esc(o.name) + '</div>'
     + '<div class="rule"></div>'
     + titleLine
     + '<div class="body">' + esc(BODY) + '</div>'
-    + '<div class="code">Completion code ' + esc(o.code) + '</div>'
+    + '<div class="code">Historical receipt code ' + esc(o.code) + '</div>'
     + '<div class="feet">'
     + '<div class="foot"><div class="v">' + esc(o.date) + '</div><div class="r">Date</div></div>'
     + '<div class="foot"><div class="sig">' + esc(SIGNER) + '</div><div class="r">' + esc(SIGN_LN) + '</div></div>'
@@ -134,17 +149,57 @@ function page(o){
 }
 
 export default async function handler(req){
-  if (req.method !== 'GET') return html('Method not allowed', 405);
+  if (req.method !== 'GET' && req.method !== 'POST') return html('Method not allowed', 405);
 
   const env = (typeof process !== 'undefined' && process.env) || {};
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
 
   const url = new URL(req.url);
-  const code  = clean(url.searchParams.get('code'), 40).toUpperCase().replace(/[^A-Z0-9-]/g, '');
-  const name  = clean(url.searchParams.get('name'), 200);
-  const title = clean(url.searchParams.get('title'), 300);
+  // POST avoids exposing new participant details in browser URLs and history.
+  // Read-only legacy GET links are retained for already issued historical copies.
+  let params=url.searchParams;
+  if (req.method==='POST'){
+    if (!/^application\/x-www-form-urlencoded(?:;|$)/i.test(req.headers.get('content-type')||'')) return badCode();
+    const raw=await req.text();
+    if (raw.length>2048) return badCode();
+    params=new URLSearchParams(raw);
+  }
+  const code  = clean(params.get('code'), 40).toUpperCase().replace(/[^A-Z0-9-]/g, '');
+  const name  = clean(params.get('name'), 200);
+  // Caller-supplied title is never authoritative. Print only the issuer record.
 
   if (!/^JRS-R-[A-Z0-9]{6,12}$/.test(code) || !name) return badCode();
+
+  // Fail closed: a formatted code or a user-supplied name cannot create an
+  // issuer-validated document. The only authority is pilot_contacts with the
+  // historical reviewer-cert source. No evaluation answers or emails are read.
+  if (!SERVICE) return html('Certificate verification is temporarily unavailable.', 503);
+  let issued = null;
+  try {
+    const q = SB + '/rest/v1/pilot_contacts?select=name,message,created_at'
+      + '&source=eq.reviewer-cert&message=ilike.*' + encodeURIComponent(code) + '*&limit=20';
+    const verification = await fetch(q,{
+      headers:{'apikey':SERVICE,'Authorization':'Bearer '+SERVICE,
+        'Accept':'application/json'}
+    });
+    if (!verification.ok) return html('Certificate verification is temporarily unavailable.', 503);
+    const rows = await verification.json();
+    if (!Array.isArray(rows)) return html('Certificate verification is temporarily unavailable.', 503);
+    for (const row of rows){
+      let m=null;
+      try{m=JSON.parse(row.message||'{}');}catch(e){continue;}
+      if (!m || m.kind!=='reviewer-cert' || m.completion_code!==code) continue;
+      const recordName=clean(m.printed_name||row.name,200);
+      if (!sameName(name,recordName)) continue;
+      issued={
+        code, name:recordName, title:clean(m.printed_title,300),
+        date:longDate(row.created_at||m.ts)
+      };
+      if (issued.date) break;
+      issued=null;
+    }
+  }catch(e){return html('Certificate verification is temporarily unavailable.', 503);}
+  if (!issued) return html('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Receipt not verified</title></head><body><main><h1>Receipt not verified</h1><p>The code and name could not be matched to an issued historical reviewer evaluation receipt. No certificate was produced.</p><p><a href="/reviewer/completion.html">Return to the verification form</a>.</p></main></body></html>',404);
 
   const tsrc = String(url.searchParams.get('src') || '').toLowerCase();
   const isCheck = tsrc === 'owner' || url.searchParams.get('owner') === '1'
@@ -169,5 +224,5 @@ export default async function handler(req){
     } catch (e) { /* a log write must never stop a certificate */ }
   }
 
-  return html(page({ name: name, title: title, code: code, date: longDate() }));
+  return html(page(issued));
 }

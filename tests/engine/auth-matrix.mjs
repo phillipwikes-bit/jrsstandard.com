@@ -17,10 +17,13 @@ async function check(route, apiVersion) {
     }));
     const body = await response.json();
     test(route + ' refuses input', response.status === 503 && body.error === 'controlled_review_unavailable');
+    const getResponse = await module.default(new Request('https://example.test/' + route));
+    const getBody = await getResponse.json();
+    test(route + ' does not invite closed-service submissions', getResponse.status === 405 && getBody.error === 'method_not_allowed' && /closed to public submissions/.test(getBody.detail) && !/Use POST/.test(getBody.detail));
     test(route + ' has no outbound call', networkCalls === 0);
     test(route + ' declares the expected API version', apiVersion ? body.api_version === 'v1' : !('api_version' in body));
     test(route + ' identifies the controlled boundary', body.implementation_status === 'controlled_local_development' && body.public_access === false && body.record_submission_accepted === false && body.human_review_required === true);
-    test(route + ' identifies every release gate', Array.isArray(body.release_gates) && body.release_gates.length === 4 && body.release_gates.includes('independent_labeled_and_adjudicated_holdout_evaluation') && body.release_gates.includes('operator_control_evidence') && body.release_gates.includes('counsel_review_of_real_data_flows_and_claims') && body.release_gates.includes('recorded_owner_release_authorization'));
+    test(route + ' identifies every release gate', Array.isArray(body.release_gates) && body.release_gates.length === 5 && body.release_gates.includes('independent_labeled_and_adjudicated_holdout_evaluation') && body.release_gates.includes('operator_control_evidence') && body.release_gates.includes('counsel_review_of_real_data_flows_and_claims') && body.release_gates.includes('recorded_owner_release_authorization') && body.release_gates.includes('independent_production_quality_assurance'));
   } finally {
     globalThis.fetch = originalFetch;
   }

@@ -18,6 +18,8 @@ jobs:
         run: node --version
       - name: Run institutional reference source gate
         run: node tests/jrs-institutional-reference-regression.mjs
+      - name: Enforce closed Review Engine, safe GET wording and independent production QA gate
+        run: node tests/engine/auth-matrix.mjs
       - name: Verify sitewide institutional palette, typography and legacy public routes
         run: node tests/jrs-public-type-palette.mjs
       - name: Lock nine published PDF identities including the JRS Standard v2.0

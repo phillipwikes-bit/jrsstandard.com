@@ -144,7 +144,7 @@ assert.ok(htmlTraining.includes('id="en-transfer"'),
 // Alternative-format requests must follow the existing privacy-controlled
 // contact path. Source checks do not certify PDF accessibility or delivery.
 const contact=read('contact.html'),guides=read('investigator-guides.html');
-for(const page of [read('resources.html'),guides]){
+for(const page of [read('index.html'),read('jrsstandard.html'),read('training.html'),read('resources.html'),guides]){
  assert.ok(page.includes('href="contact.html?category=accessibility"'),'Accessible-format link must preselect contact category');
 }
 assert.ok(contact.includes('<option value="accessibility">Accessibility, alternative document formats, or corrections</option>'),

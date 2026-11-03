@@ -1,7 +1,7 @@
 // JRS institutional reference release gate.
 // Source-only assertions. Not a substitute for rendered accessibility testing.
 import assert from 'node:assert/strict';
-import {readFileSync, existsSync} from 'node:fs';
+import {readFileSync, existsSync, readdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -82,6 +82,53 @@ for(const page of [...pages,...additionalPages]){
    page+' must not contain connector output truncation markers');
 }
 
+// Standard source restoration and semantic worked-example coverage.
+// The online document previously contained a literal middle-truncation
+// placeholder that removed 28,935 characters and one complete tab group.
+{
+  // Check the actual HTML publication surface, not only the 47 core pages.
+  // Include root-level and preserved reference/reviewer routes. Exclude test
+  // fixtures and nonpublished working documents from this source guard.
+  const publicHtml=[];
+  function collectHtml(dir){
+    for(const entry of readdirSync(join(root,dir),{withFileTypes:true})){
+      const path=dir?dir+'/'+entry.name:entry.name;
+      if(entry.isFile()&&entry.name.endsWith('.html'))publicHtml.push(path);
+      if(entry.isDirectory()&&
+        ((dir===''&&['reference','reviewer'].includes(entry.name))||
+          dir==='reference'||dir==='reviewer'))collectHtml(path);
+    }
+  }
+  collectHtml('');
+  assert.ok(publicHtml.length>=58,
+    'source truncation audit must cover all documented public and retained HTML routes');
+  for(const page of publicHtml){
+    assert.doesNotMatch(read(page), /\u2026\d+ tokens truncated\u2026|Warning: truncated output/i,
+      page+' contains an accidentally committed source truncation');
+  }
+  const standard=read('jrsstandard.html');
+  const groups=(standard.match(/class="scenario-tabs"/g)||[]).length;
+  const paneIds=[...standard.matchAll(/id="([^"]+)" class="scenario-pane(?: active)?"/g)]
+    .map(match=>match[1]);
+  const tabDestinations=[...standard.matchAll(/onclick="showScenarioPane\(this,'([^']+)'\)"/g)]
+    .map(match=>match[1]);
+  assert.equal(groups,5,'five worked-example tab groups must remain available');
+  assert.equal(paneIds.length,15,'all 15 worked-example panes must exist');
+  assert.equal(tabDestinations.length,15,'each worked-example pane needs a navigation button');
+  assert.equal(new Set(paneIds).size,15,'worked-example pane IDs must be unique');
+  assert.deepEqual(new Set(tabDestinations),new Set(paneIds),
+    'every panel must have exactly one corresponding navigation tab');
+  const enhancement=read('assets/jrs-keyboard-controls.js');
+  for(const token of [
+    "function enhanceScenarioTabs()", "setAttribute('role','tablist')",
+    "setAttribute('role','tab')", "setAttribute('role','tabpanel')",
+    "setAttribute('aria-selected'", "setAttribute('aria-controls'",
+    "setAttribute('aria-labelledby'", "'ArrowLeft','ArrowRight','Home','End'",
+    "pairs[next].button.click()"
+  ])assert.ok(enhancement.includes(token),'worked-example tabs missing '+token);
+  console.log('PASS: restored Standard examples retain 5 tab groups, 15 panels and accessible keyboard interaction.');
+}
+
 const main=read('index.html');
 for(const token of [
  '01 · Start here','02 · Use the method','03 · Examine the evidence','04 · Learn and practice',
@@ -107,6 +154,29 @@ assert.ok(standard.includes('toggleMobileNav()') &&
  standard.includes('aria-expanded="false"'),
  'Standard mobile menu control and expanded state must remain wired');
 assert.ok(standard.includes('showSection('),'Standard section interactions must remain intact');
+
+const standardMainOpen='<main id="main-content" tabindex="-1" aria-label="JRS online methodology">';
+assert.ok(standard.includes(standardMainOpen),'Standard must contain a stable main landmark');
+assert.equal((standard.match(/<main\b/g)||[]).length,1,'Standard must have exactly one main landmark');
+assert.equal((standard.match(/<\/main>/g)||[]).length,1,'Standard main landmark must close');
+assert.ok(standard.indexOf(standardMainOpen)<standard.indexOf('id="section-home"'),
+  'Main landmark must wrap all document sections, not only the overview');
+assert.ok(standard.indexOf('</main>')>standard.indexOf('id="section-kit"') &&
+  standard.indexOf('</main>')<standard.indexOf('<footer class="site-footer"'),
+  'Main landmark must enclose last document section and exclude footer');
+assert.ok(!standard.includes('role="main"'),'No second or hidden main landmark is allowed');
+
+// Access landing page must have a valid document/landmark boundary. Earlier
+// markup closed main inside the footer and browsers repaired the DOM implicitly.
+const accessMarkup=read('access.html');
+assert.equal((accessMarkup.match(/<main\b/g)||[]).length,1,'Access route must have one main landmark');
+assert.equal((accessMarkup.match(/<\/main>/g)||[]).length,1,'Access route must close the main landmark');
+assert.ok(accessMarkup.indexOf('</main>')<accessMarkup.indexOf('<footer>'),
+  'Access route footer must be a sibling of main, never nested inside main');
+assert.ok(accessMarkup.indexOf('<footer>')<accessMarkup.indexOf('</footer>'),
+  'Access route footer must close after it opens');
+
+
 assert.ok(standard.includes('<details>')&&standard.includes('jrs-publication-note-detail')&&
  standard.includes('Publication versions:')&&standard.includes('Archived implementation-kit inventory:'),
  'Version and retired-kit disclosures must remain available in accessible details');
@@ -188,3 +258,82 @@ for(const anchor of ['rc1','rc2','rc3','rc4','rc5'])
 assert.ok(read('research.html').includes('jrs-research-primary-links') &&
  read('research.html').includes('Read this first.'),
  'research quick paths must preserve evidence limitations');
+
+
+// Historical reviewer access must not leak a name or receipt code through
+// link-click telemetry or cross-origin referrer information. These source
+// checks supplement, but cannot replace, browser/network verification.
+{
+  const receipt = read('reviewer/completion.html');
+  assert.ok(receipt.includes('<meta name="referrer" content="no-referrer">'),
+    'historical receipt must suppress referer headers');
+  assert.ok(receipt.includes("params.delete('code')") &&
+    receipt.includes("params.delete('name')") &&
+    receipt.includes("history.replaceState("),
+    'legacy GET parameters must be cleared from the browser URL');
+  assert.ok(receipt.indexOf("history.replaceState(") <
+    receipt.indexOf('<link rel="preconnect" href="https://fonts.googleapis.com">'),
+    'legacy parameters must be stripped before third-party assets load');
+  assert.doesNotMatch(receipt, /\/api\/telemetry|trackClickAndNavigate|googletagmanager/i,
+    'receipt must not broadcast full navigation URLs or use analytics');
+  assert.ok(receipt.includes('method="post"'),
+    'new historical verification submissions must not use GET');
+  assert.ok(receipt.includes('name="code"') && receipt.includes('name="name"'),
+    'issuer record verification requires both historical code and recorded name');
+  console.log('PASS: historic reviewer receipt minimizes legacy-link exposure and prevents click telemetry leakage.');
+}
+
+// Regression: a Standard section nested inside an inactive predecessor remains
+// invisible even when the section navigation adds .active to the child.
+// Track actual source div nesting, excluding scripts, styles and comments.
+// This deliberately fails on unmatched containers and hidden nested sections.
+{
+  const standardMarkup=read('jrsstandard.html')
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi,'')
+    .replace(/<!--[\s\S]*?-->/g,'');
+  const stack=[],found=new Set(),nested=[],underflow=[];
+  let footerAncestors=null;
+  for(const match of standardMarkup.matchAll(/<\/?div\b[^>]*>|<footer\b[^>]*>/gi)){
+    const tag=match[0];
+    if(/^<\/div/i.test(tag)){
+      if(!stack.length)underflow.push(match.index);
+      else stack.pop();
+    }else if(/^<footer/i.test(tag)){
+      footerAncestors=stack.map(x=>x.id||x.className||'div');
+    }else{
+      const id=tag.match(/\bid=["']([^"']+)["']/i)?.[1]||null;
+      const className=tag.match(/\bclass=["']([^"']+)["']/i)?.[1]||'';
+      if(className.split(/\s+/).includes('page-section')){
+        found.add(id);
+        const prior=stack.filter(x=>x.className.split(/\s+/).includes('page-section'));
+        if(prior.length)nested.push({id,parents:prior.map(x=>x.id)});
+      }
+      stack.push({id,className});
+    }
+  }
+  assert.deepEqual(underflow,[],'Standard has orphan </div> closings');
+  assert.deepEqual(stack,[],'Standard has unclosed HTML div containers');
+  assert.deepEqual(nested,[],'Standard document sections must be siblings, never nested under another section');
+  assert.deepEqual(footerAncestors,[],'Standard footer must remain outside hidden document sections');
+  for(const id of ['section-home','section-doccond','section-tools','section-guidance',
+     'section-roles','section-maturity','section-ai','section-usecases',
+     'section-training','section-library']){
+    assert.ok(found.has(id),'Standard section unavailable: '+id);
+  }
+  // Every document navigation destination must resolve. The historical
+  // Review Examples control intentionally opens the existing Use Cases view.
+  const aliases={scenarios:'usecases'};
+  const targets=[...read('jrsstandard.html').matchAll(/onclick=["']showSection\('([a-z-]+)'\)/g)]
+    .map(match=>match[1]);
+  assert.ok(targets.length>=13,'Standard section-navigation regression check must exercise real actions');
+  for(const target of targets){
+    assert.ok(found.has('section-'+(aliases[target]||target)),
+      'Standard navigation has no visible section: '+target);
+  }
+  assert.ok(read('jrsstandard.html').includes("const contentId=id==='scenarios'?'usecases':id;"),
+    'Review Examples must resolve to the existing use-cases section');
+  assert.ok(read('jrsstandard.html').includes('if(!sec)return;'),
+    'Unknown section navigation must never blank the Standard');
+  console.log('PASS: Standard sections are independently addressable; no hidden nesting, orphan containers or footer containment.');
+}
