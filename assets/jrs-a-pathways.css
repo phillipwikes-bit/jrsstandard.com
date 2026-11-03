@@ -75,3 +75,27 @@ body.jrs-institutional.jrs-guide-page .jrs-version-table td::before{content:attr
 
 /* Preserve the original compact card typography after correcting heading semantics. */
 body.jrs-institutional.jrs-guide-page .jrs-guide-grid article h2{font:700 18px/1.4 Inter,Arial,sans-serif!important;margin:0 0 8px!important;color:#17334e!important}
+
+/* High-contrast and keyboard focus assurance for the two newer public guides.
+   Keep visual cards as named HTML headings and do not alter editorial text. */
+body.jrs-institutional.jrs-guide-page :where(
+ .jrs-guide-grid a,.jrs-guide-panel a,.jrs-guide-cta a,
+ .jrs-version-table a,.jrs-sitenav a
+):focus-visible{
+ outline:3px solid #75551f!important;
+ outline-offset:3px!important;
+}
+@media(forced-colors:active){
+ body.jrs-institutional.jrs-guide-page :where(
+  a,button,summary,input,select,textarea
+ ):focus-visible{
+  outline:3px solid Highlight!important;
+  outline-offset:3px!important;
+  box-shadow:none!important;
+ }
+ body.jrs-institutional.jrs-guide-page .jrs-guide-panel,
+ body.jrs-institutional.jrs-guide-page .jrs-guide-grid article{
+  border:1px solid CanvasText!important;
+  forced-color-adjust:auto;
+ }
+}
