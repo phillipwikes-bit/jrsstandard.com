@@ -1,6 +1,6 @@
 # JRS LLM-Assisted Documentary Review: Independent Evaluation Protocol
 
-**Protocol status:** Proposed, NOT STARTED  
+**Protocol status:** Alternative research design, NOT STARTED. The companion controlled protocol proposes a different sample. No corpus count or trial cadence has been authorized.  
 **Research date:** 3 November 2026  
 **Authority:** Method research only. Not permission to process personal case records, reopen the public Review Engine, buy API services, alter immutable PDF editions or publish an automated JRS rating.
 
@@ -25,7 +25,7 @@ Use synthetic documentation cases first. For any real case record, a separately 
 
 ## 3. Corpus and sampling design
 
-**Proposed feasibility corpus:** 120 constructed cases, each reviewed against a controlled source packet. This is a design target, **not an assembled or validated dataset**, and no statistical-power claim is made. Begin with a 20-case pilot to check the rubric and the source-mapping format.
+**Proposed feasibility corpus, option A:** 120 constructed cases, each reviewed against a controlled source packet. This is a design target, **not an assembled or validated dataset**, and no statistical-power claim is made. Begin with a 20-case pilot to check the rubric and the source-mapping format. An alternative **option B** in JRS_Controlled_Cross_Model_Evidence_Evaluation_Protocol_2026-11-03.md proposes 20 calibration and 80 held-out cases across eight strata with two trials per case. These are competing design options, not additive samples or completed work. Before any collection, select one design by preregistration, reconcile arms, adjudication and budget, and justify statistical precision.
 
 Recommended balanced strata, 20 cases each:
 
@@ -146,7 +146,7 @@ The human-facing report shall contain:
 
 - [Artificial Analysis Index v5](https://artificialanalysis.ai/articles/artificial-analysis-intelligence-index-v5) for model/effort comparison methodology.
 - [Evidence-based generation, EMNLP 2026](https://aclanthology.org/2026.findings-emnlp.2222/) and [Fact-grounding gap, EMNLP 2026](https://aclanthology.org/2026.emnlp-main.834/) for retrieval/extraction separation.
-- [OWASP LLM Top 10](https://genai.owasp.org/llm-top-10/) and [NIST GAI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) for structured risk review.
+- [OWASP LLM Top 10 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) and [NIST GAI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) for structured risk review.
 - [OpenAI agent guardrails](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals) and [LangGraph interrupts](https://github.com/langchain-ai/docs/blob/main/src/oss/langgraph/interrupts.mdx) for approval patterns.
 
 **No live experiment or empirically supported model rank on JRS tasks exists in this protocol.** It provides reproducibility and go/no-go controls for future authorization, not a completed benchmark or compliance certificate.
