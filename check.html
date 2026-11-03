@@ -225,7 +225,7 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
        which is what this page was before there was anything to sell. -->
   <h2>Take it further</h2>
 
-  <p>If two or more modes show up in the same file, that record probably cannot explain its own decision under challenge. The next step is a structured read of a small sample against the five conditions, returned as a written finding.</p>
+  <p>Each checked question identifies a matter for source verification, not a measured failure or a score. Review the underlying evidence, chronology and reasoning, record what is supported and what remains uncertain, and correct or escalate unresolved gaps through your authorized process. The number of checked items does not predict legal defensibility or establish a JRS finding. For broader quality review, apply the five conditions to a defined sample and retain your source references.</p>
 
   <p style="font-size:13.5px;color:var(--muted-soft);line-height:1.65;margin:0 0 30px">Individual record-review services are not being offered. JRS remains in operational validation. Enterprise evaluation, integration, licensing, and strategic inquiries are handled separately and do not establish production availability or validated effectiveness. For those inquiries, write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>.</p>
 
@@ -293,15 +293,15 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
     var list = '<b style="color:var(--text)">' + hit.join('</b>, <b style="color:var(--text)">') + '</b>';
     var head;
     if (hit.length === 1) {
-      head = 'One mode shows up in this record: ' + list + '.';
+      head = 'One checked question warrants review: ' + list + '.';
     } else {
-      head = hit.length + ' modes show up in this record: ' + list + '.';
+      head = hit.length + ' checked questions warrant review: ' + list + '.';
     }
     var tail;
     if (hit.length === 1) {
-      tail = ' A single mode is worth a second look, not an alarm. Read the same question against four more closed files before drawing any conclusion about your process.';
+      tail = ' Verify the underlying source and document what it supports. A single item may be material; do not dismiss it because of the count.';
     } else {
-      tail = ' <span style="color:var(--review-text)">Two or more modes in one file is the pattern that matters.</span> A record like this is likely to struggle to explain its own decision when challenged. Check four more files before concluding anything about the process rather than this record.';
+      tail = ' Verify each item against the source record and record corrections or escalation. A larger count does not establish a diagnostic category or predict the outcome of a challenge.';
     }
     // BENCHMARK FRAMING (R-4). Added 2026-09-13. A result with no reference
     // point does not tell a reader what it means. The comparison below is the
@@ -317,8 +317,8 @@ h2{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--te
       + 'returning <b>384 graded reads</b>. Mean reviewer accuracy was <b>83.9%</b> '
       + '(95% CI 72.7 to 95.1, n&nbsp;=&nbsp;16), sensitivity 87.0%, specificity 80.7%, '
       + 'against a threshold of 70% fixed before any data were seen. '
-      + '<b>Reviewer accuracy ranged from 37.5% to 100%, and the pre-registered '
-      + 'reliability criterion was not met.</b> Both are reported as findings. '
+      + '<b>Detection-panel reviewer accuracy ranged from 37.5% to 100%.</b> '
+      + 'Separately, a different reliability sample did not meet the pre-registered two-part criterion. '
       + 'Group-level detectability does not license individual-level reliance, and this '
       + 'page is a prompt for human review of one record, not a determination about it.'
       + '<div class="sa-src">Detection study, data lock 15 August 2026. Method and limits: '

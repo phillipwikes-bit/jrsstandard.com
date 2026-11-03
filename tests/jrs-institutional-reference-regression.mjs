@@ -415,3 +415,27 @@ assert.ok(read('research.html').includes('jrs-research-primary-links') &&
     'Unknown section navigation must never blank the Standard');
   console.log('PASS: Standard sections are independently addressable; no hidden nesting, orphan containers or footer containment.');
 }
+
+
+// Seven-point review aid: retain evidence discipline at the actual reader output.
+// Checked boxes may indicate uncertainty, not an adjudicated documentation failure.
+// The constructed-record studies did not validate a two-item legal-outcome cutoff.
+const sevenPointAid = read('check.html');
+for (const required of [
+  'Each checked question identifies a matter for source verification, not a measured failure or a score.',
+  'The number of checked items does not predict legal defensibility or establish a JRS finding.',
+  'One checked question warrants review:',
+  'checked questions warrant review:',
+  'A single item may be material; do not dismiss it because of the count.',
+  'A larger count does not establish a diagnostic category or predict the outcome of a challenge.',
+  'Separately, a different reliability sample did not meet the pre-registered two-part criterion.'
+]) assert.ok(sevenPointAid.includes(required), 'seven-point aid lost evidenced human-review framing: ' + required);
+assert.doesNotMatch(sevenPointAid, /two or more modes in one file is the pattern that matters|if two or more modes show up|likely to struggle to explain its own decision|probably cannot explain its own decision/i,
+  'unsupported two-item decision-prediction threshold returned');
+assert.match(sevenPointAid, /out\.innerHTML = head \+ tail \+ bench \+ stamp \+ actions/,
+  'local visible review summary and copy/print controls must remain');
+const checkLocalScript = sevenPointAid.match(/<script>\s*\(function\(\)\{\s*\/\/ Runs entirely in the browser\.[\s\S]*?<\/script>/);
+assert.ok(checkLocalScript, 'local-only record check is missing');
+assert.doesNotMatch(checkLocalScript[0], /\b(?:fetch|sendBeacon)\s*\(|\blocalStorage\s*\./,
+  'selected record-check answers must remain browser-local');
+console.log('PASS: seven-point aid has no invented two-item threshold, distinguishes detection from reliability, and preserves local-only review output.');
