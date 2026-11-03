@@ -57,25 +57,17 @@ assert.match(resources,/published PDFs have not been certified/i);
 assert.match(home,/Field effectiveness not established/);
 
 
-// The short, deliberate header cue must stay within the existing brand and must
-// never displace the detailed promise, working tools or edition-specific metadata.
-const motto='<span class="jrs-header-motto">Check the record. <strong>No new software required.</strong></span>';
-for(const filename of ['index.html','resources.html','investigator-guides.html','jrsstandard.html',
- 'research.html','about.html','codebook.html']){
+// Keep the original institutional headers. The no-new-software proposition
+// belongs in page content; the practitioner task remains the primary action.
+for(const filename of ['index.html','resources.html','investigator-guides.html',
+ 'jrsstandard.html','research.html','about.html','codebook.html']){
  const html=read(filename);
- const header=html.match(/<header\b[^>]*>[\s\S]*?<\/header>/i)?.[0];
- assert.ok(header,filename+': public page header exists');
- assert.equal(header.split(motto).length-1,1,
-  filename+': restrained single header motto must be present');
- assert.ok(header.includes('class="wordmark"'),
-  filename+': original JRS brand link remains intact');
+ const header=html.match(/<header\\b[^>]*>[\\s\\S]*?<\\/header>/i)?.[0];
+ assert.ok(header && header.includes('class="wordmark"'),filename+': retain JRS institutional wordmark');
+ assert.ok(!header.includes('jrs-header-motto'),filename+': no promotional motto in header');
 }
-const sharedHeaderCSS=read('assets/jrs-institutional-reference.css');
-assert.match(sharedHeaderCSS,/\.site-header-inner > \.jrs-header-motto/);
-assert.match(sharedHeaderCSS,/@media\(max-width:1020px\)/);
-assert.ok(home.includes('If it does not stand on its own') ||
- home.includes('Can the record explain the decision after its author is gone?'),
- 'original JRS governing narrative must remain visible');
+assert.ok(!read('assets/jrs-institutional-reference.css').includes('.jrs-header-motto'),
+ 'no retired motto-specific style rules');
 
 const redir=vercel.redirects.find(x=>x.source==='/workflow-fit.html');
 assert.ok(redir&&redir.destination==='/resources.html',
