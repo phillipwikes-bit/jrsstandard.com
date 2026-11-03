@@ -34,7 +34,8 @@ Labels follow the repository's evidence rules: **FACT** (inspected), **UNVERIFIE
 - **FACT.** ISACA Journal declined the article on 2026-10-27 (Abby Norton, Manager, Periodicals). The decision is transcribed in `research/correspondence/ISACA_Journal.md`. The pitch's statement is supported.
 - **Lesson carried forward.** ISACA's reviewers said the article lacked implementation guidance and specific, practical takeaways. The CT version's checkpoints, worked example, program section and 90-day plan respond directly to that.
 
-### 5a. Outcome labels may not match the article's definition (blocker B-019, opened 2026-11-03)
+### 5a. Outcome labels may not match the article's definition (blocker B-019): CLOSED BY DISCLOSURE 2026-11-03
+- **Owner decision:** "We ate not going to redo her work find an alternative." No recoding. The article now defines an adverse finding as the reviewer's code, and endnote 6 discloses the three matters and the p range (0.0044 to 0.1089). Guarded by `scripts/verify_ct_article.py`.
 - **Finding (INFERENCE).** SBA (71 FLRA No. 124) and Pentagon Force Protection (73 FLRA No. 77) carry adverse labels, although their notes describe the agency prevailing. McDonnell Douglas carries an adverse label for a remand. Detail is in `research/B-019_Evidence_2026-11-03.md`.
 - **Why it matters.** The headline figures could move either way: p = 0.0181 if two rows are recoded, 0.1089 if all three are, and 0.0044 if only FOP is. The six lessons do not depend on these rows.
 - **Steps.** Confirm with Tanvi what each label means, and decide whether the three rows are coded as intended.

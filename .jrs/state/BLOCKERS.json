@@ -466,11 +466,12 @@
       ],
       "required_action": "Owner and Tanvi Pokhriyal to confirm what each outcome label means and whether SBA, FOP and McDonnell Douglas are coded as intended. Sensitivity computed, not adopted: SBA and FOP recoded non-adverse gives 5/8 vs 1/12, p = 0.0181; adding McDonnell Douglas gives 4/8 vs 1/12, p = 0.1089; FOP alone gives p = 0.0044; SBA alone gives p = 0.0623. Reported figure as coded: p = 0.0194. No DB row was changed and no article figure was changed.",
       "owner": "OWNER",
-      "status": "OPEN",
+      "status": "OWNER-CONFIRMED / CLOSED BY DISCLOSURE 2026-11-03",
       "created": "2026-11-03",
       "note": "INFERENCE, not FACT: the reading of each outcome rests on the study's own notes; the decisions were not read. The six case lessons in the article do not depend on these three rows, so only the statistical figures and the supplement would change.",
-      "next_action_by": "OWNER",
-      "next_action_basis": "Outcome coding belongs to the study authors; Claude may not resolve a contradiction by guessing (CLAUDE.md s.5)."
+      "next_action_by": "NONE",
+      "next_action_basis": "Closed on the owner decision recorded in owner_decision; the disclosure is guarded by scripts/verify_ct_article.py.",
+      "owner_decision": "Owner, 2026-11-03, verbatim: \"We ate not going to redo her work find an alternative.\" No recoding. Alternative applied: the manuscript now defines an adverse finding as the reviewer's code (\"coded the matter as not surviving review or as drawing an adverse audit or compliance finding\"), and endnote 6 discloses that three coded-adverse matters describe a ruling for the employer or a remand, with the resulting p range 0.0044 to 0.1089. Takeaway 2 says \"coded adverse\"."
     }
   ],
   "_decisions_recorded_2026_09_15": {

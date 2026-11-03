@@ -1,6 +1,6 @@
 # Pitch to Scott Moe (Compliance Today), revised 2026-11-03
 
-*HOLD (2026-11-03, later): blocker B-019 questions how three study outcomes are labelled; the "six of eight / two of twelve" figures may change. Send once B-019 is decided. (B-018 remains closed by owner statement.)*
+*Hold lifted 2026-11-03: B-019 closed by owner decision (no recoding; the outcome-coding question is disclosed in the manuscript, endnote 6). Ready to send once checklist items 1 to 4 are complete.*
 
 **Send package (owner checks before sending):**
 - Attach `ComplianceToday_Supplement_Case_List_2026-11-03.docx` as well (the 20-case list for online publication).

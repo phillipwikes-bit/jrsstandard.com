@@ -86,6 +86,10 @@ for fig in ("Screened 22, analyzed 20", "12 Ready, 5 Needs work, 3 Gap",
             "p = 0.0291", "p = 0.0073", "40.9% to 92.9%", "4.7% to 44.8%"):
     check("figure present: %s" % fig, fig in flat)
 
+# ---- B-019 disclosure stays in (owner decision 2026-11-03: disclose, do not recode)
+check("adverse finding defined as the reviewer's code", "the reviewer coded the matter as not surviving review" in flat)
+check("outcome-coding sensitivity disclosed in an endnote", "between 0.0044 and 0.1089" in flat)
+
 # ---- supplement table reproduces the study totals
 rows = [[c.text.strip() for c in r.cells] for r in docx.Document(SUP).tables[0].rows][1:]
 reads = collections.Counter(r[2] for r in rows)
