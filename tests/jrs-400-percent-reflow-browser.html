@@ -34,7 +34,9 @@
       const root=doc.documentElement,body=doc.body;
       const scrollWidth=Math.max(root.scrollWidth,body.scrollWidth);
       const clientWidth=root.clientWidth;
-      const ok=clientWidth>=width-2 && clientWidth<=width+2 && scrollWidth<=width+2;
+      // A classic vertical scrollbar consumes about 15 CSS px of clientWidth.
+      // Compare actual content scrollWidth with clientWidth, not iframe width.
+      const ok=clientWidth>=width-20 && clientWidth<=width+2 && scrollWidth<=clientWidth+2;
       const row={route,width,clientWidth,scrollWidth,status:ok?'PASS':'FAIL'};
       reports.push(row);
       if(!ok)errors.push({...row,reason:'page-wide horizontal scroll or incorrect viewport'});
