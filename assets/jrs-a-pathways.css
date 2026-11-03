@@ -72,3 +72,33 @@ body.jrs-institutional.jrs-guide-page .jrs-version-table td::before{content:attr
  body.jrs-institutional.jrs-guide-page .jrs-guide-cta a{background:#fff!important;color:#193148!important;border-color:#999!important}
  body.jrs-institutional.jrs-guide-page :where(p,li){color:#182735!important}
 }
+
+/* 2026-11-03 accessibility refinement: semantic h2 card headings, consistent
+   keyboard focus, and native forced-colors handling. No content or PDF changes. */
+body.jrs-institutional.jrs-guide-page .jrs-guide-grid article h2{
+  font:600 18px/1.45 Inter,Arial,sans-serif!important;
+  letter-spacing:normal!important;
+  color:#17334e!important;
+  margin:0 0 8px!important;
+}
+body.jrs-institutional.jrs-guide-page :where(
+  .jrs-guide-grid a,.jrs-guide-panel a,.jrs-guide-cta a,
+  .jrs-version-table a,.jrs-sitenav a
+):focus-visible{
+  outline:3px solid #75551f!important;
+  outline-offset:3px!important;
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-guide-page :where(
+    a,button,summary,input,select,textarea
+  ):focus-visible{
+    outline:3px solid Highlight!important;
+    outline-offset:3px!important;
+    box-shadow:none!important;
+  }
+  body.jrs-institutional.jrs-guide-page .jrs-guide-panel,
+  body.jrs-institutional.jrs-guide-page .jrs-guide-grid article{
+    border:1px solid CanvasText!important;
+    forced-color-adjust:auto;
+  }
+}
