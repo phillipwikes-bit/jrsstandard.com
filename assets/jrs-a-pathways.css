@@ -202,3 +202,33 @@ body.jrs-institutional.jrs-resource-page .jrs-practitioner-promise strong{
     border-left-color:CanvasText;color:CanvasText!important;
   }
 }
+
+/* The expert panel is supporting evidence, never the header tagline or a
+   general claim that international experts certified organizational use. */
+body.jrs-institutional.jrs-home .jr-expert-evidence{
+  margin:0 0 17px;
+  max-width:730px;
+  font:400 15px/1.58 Inter,Arial,sans-serif;
+  color:#365267!important;
+}
+body.jrs-institutional.jrs-home .jr-expert-evidence strong{
+  font-weight:700;
+  color:#183e56!important;
+}
+body.jrs-institutional.jrs-home .jr-expert-evidence a{
+  font-weight:650;
+  text-decoration:underline!important;
+  text-underline-offset:3px;
+}
+@media(max-width:650px){
+  body.jrs-institutional.jrs-home .jr-expert-evidence{
+    font-size:14px!important;
+    line-height:1.58!important;
+  }
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-home .jr-expert-evidence,
+  body.jrs-institutional.jrs-home .jr-expert-evidence strong{
+    color:CanvasText!important;
+  }
+}
