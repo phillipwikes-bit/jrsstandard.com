@@ -26,7 +26,7 @@ CHECKS = {
     "/assets/jrs-resource-catalog.js": "assets/jrs-resource-catalog.js",
 }
 
-# These six public PDF routes must deliver their exact local file bytes. All
+# These nine public PDF routes must deliver their exact local file bytes. All
 # verification requests use src=verify to avoid contaminating download metrics.
 DOWNLOADS = {
     "standard": "JRS-Standard.pdf",
@@ -34,6 +34,9 @@ DOWNLOADS = {
     "employment": "JRS_Investigator_Field_Guide_Employment.pdf",
     "fairhousing": "JRS_Investigator_Field_Guide_FairHousing.pdf",
     "international": "JRS_Investigator_Field_Guide_International.pdf",
+    "drr": "DRR_Article.pdf",
+    "paper": "JRS_Research_Paper.pdf",
+    "accuracy": "JRS_Reliability_Accuracy.pdf",
 }
 REFERENCE_FILE = "JRS-Reference-9d4f2a7c.pdf"
 
@@ -76,6 +79,25 @@ class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
         return None
 
+def verified_request(url, parsed):
+    # Bypass header is strictly scoped to the immutable JRS HTTPS hostname.
+    # All calls use a no-redirect opener so it cannot follow external redirects.
+    target = urlparse(url)
+    if (target.scheme != "https" or target.netloc != parsed.netloc
+            or target.username or target.password or target.fragment):
+        fail("refusing to send protected-preview credential to another origin")
+    headers = {
+        "User-Agent": "JRS-publication-preview-verifier/1.0",
+        "Cache-Control": "no-cache",
+    }
+    secret = os.environ.get("JRS_VERCEL_PREVIEW_BYPASS", "")
+    if secret:
+        if not (32 <= len(secret) <= 256) or chr(13) in secret or chr(10) in secret:
+            fail("invalid CI preview-bypass credential format")
+        headers["x-vercel-protection-bypass"] = secret
+    return Request(url, headers=headers)
+
+
 def verify_downloads(base, parsed):
     from urllib.parse import urlencode
     requests = [(urlencode({"e": edition, "src": "verify"}), path)
@@ -84,10 +106,7 @@ def verify_downloads(base, parsed):
     no_redirect = build_opener(NoRedirect)
     for query, path in requests:
         url = base + "/api/dl?" + query
-        req = Request(url, headers={
-            "User-Agent": "JRS-publication-preview-verifier/1.0",
-            "Cache-Control": "no-cache",
-        })
+        req = verified_request(url, parsed)
         try:
             with no_redirect.open(req, timeout=20) as resp:
                 status = resp.status
@@ -105,10 +124,7 @@ def verify_downloads(base, parsed):
         if target.query or target.fragment:
             fail(path + ": redirect contains unexpected query or fragment")
         try:
-            with urlopen(Request(location, headers={
-                "User-Agent": "JRS-publication-preview-verifier/1.0",
-                "Cache-Control": "no-cache",
-            }), timeout=30) as resp:
+            with no_redirect.open(verified_request(location, parsed), timeout=30) as resp:
                 if resp.status != 200 or urlparse(resp.url).netloc != parsed.netloc:
                     fail(path + ": PDF file did not return HTTP 200 on same host")
                 data = resp.read(15_000_001)
@@ -137,8 +153,10 @@ def main():
         fail("expected preview URL argument")
     base = sys.argv[1].rstrip("/")
     parsed = urlparse(base)
-    if parsed.scheme != "https" or not parsed.netloc or parsed.username or parsed.password:
-        fail("preview must have a credential-free HTTPS URL")
+    if (parsed.scheme != "https" or not parsed.netloc or parsed.username or parsed.password
+            or parsed.path not in ("", "/") or parsed.query or parsed.fragment
+            or not re.fullmatch(r"jrsstandard(?:com)?-[a-z0-9-]+\.vercel\.app", parsed.hostname or "")):
+        fail("preview must have an immutable credential-free JRS Vercel HTTPS URL")
     expected_head = os.environ.get("JRS_EXPECTED_HEAD", "")
     actual_head = subprocess.check_output(
         ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
@@ -146,14 +164,12 @@ def main():
     if not expected_head or actual_head != expected_head:
         fail("checked-out source differs from the PR head: " + actual_head[:12])
     print("Candidate PR source:", actual_head)
+    no_redirect = build_opener(NoRedirect)
     for route, local in CHECKS.items():
         url = base + route
         try:
-            req = Request(url, headers={
-                "User-Agent": "JRS-publication-preview-verifier/1.0",
-                "Cache-Control": "no-cache",
-            })
-            with urlopen(req, timeout=20) as response:
+            req = verified_request(url, parsed)
+            with no_redirect.open(req, timeout=20) as response:
                 final = urlparse(response.url)
                 if response.status != 200 or final.netloc != parsed.netloc:
                     fail(local + ": preview redirected or did not return HTTP 200")
@@ -173,7 +189,7 @@ def main():
         print("PASS:", local, sha(expected)[:16])
     verify_downloads(base, parsed)
     print("PASS: sampled hosted static source matches the exact PR head.")
-    print("PASS: six tracked PDF routes redirect and deliver identical files.")
+    print("PASS: nine tracked PDF routes redirect and deliver identical files.")
     print("NOT CERTIFIED: screen reader testing, PDF tagging, runtime privacy, or production deployment.")
 
 if __name__ == "__main__":

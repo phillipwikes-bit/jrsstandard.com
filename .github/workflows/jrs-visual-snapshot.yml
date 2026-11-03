@@ -26,8 +26,15 @@ jobs:
             if command -v "$c" >/dev/null; then echo "JRS_BROWSER=$(command -v $c)" >> "$GITHUB_ENV"; "$c" --version; exit 0; fi
           done
           echo "Chrome not installed on runner" >&2; exit 1
+      - name: Set up Node 24 for authenticated hosted browser verification
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
       - name: Regression-check fail-closed deployment preview discovery
-        run: python3 tests/jrs-resolve-preview.py --self-test
+        run: |
+          python3 tests/jrs-resolve-preview.py --self-test
+          python3 tests/jrs-preview-static-verification.py --self-test
+          node tests/jrs-hosted-preview-capture.mjs --self-test
       - name: Serve locally for current branch comparison
         run: |
           nohup python3 -m http.server 8791 --bind 127.0.0.1 > /tmp/jrs-visual-local-server.log 2>&1 &
@@ -150,20 +157,20 @@ jobs:
       - name: Verify preview source identity before any release certification
         env:
           JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
         run: |
           # The resolver is fail-closed and never uses a branch alias. This
           # verifier still requires exact hosted source bytes and six PDFs.
           python3 tests/jrs-preview-static-verification.py "$JRS_PREVIEW_URL"
 
       - name: Capture verified exact-head preview screenshots
+        env:
+          JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
         run: |
-          # This step is reachable only after the preceding exact-commit,
-          # seven-static-file and six-tracked-PDF verification succeeds.
-          set -euo pipefail
-          verified_base="${JRS_PREVIEW_URL%/}"
-          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=5000 --window-size=1440,1200 --screenshot=/tmp/jrs-visual/verified-preview-home-desktop.png "$verified_base/" >/tmp/jrs-verified-preview-home.log 2>&1
-          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=5000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/verified-preview-home-mobile.png "$verified_base/" >/tmp/jrs-verified-preview-mobile.log 2>&1
-          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=5000 --window-size=1440,2000 --screenshot=/tmp/jrs-visual/verified-preview-resources-desktop.png "$verified_base/resources.html" >/tmp/jrs-verified-preview-resources.log 2>&1
+          # Chrome injects protected-preview access only on the exact JRS origin.
+          # A missing credential or a Vercel login screen fails the release gate.
+          # The original protected preview remains protected for other visitors.
+          node tests/jrs-hosted-preview-capture.mjs "$JRS_PREVIEW_URL" /tmp/jrs-visual
       - name: Preserve verified hosted preview evidence
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
