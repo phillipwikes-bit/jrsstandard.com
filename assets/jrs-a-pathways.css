@@ -179,3 +179,26 @@ body.jrs-institutional.jrs-home .jr-platform-promise strong{
     border-left-color:CanvasText;color:CanvasText!important
   }
 }
+
+/* Public practitioner promise is intentionally editorial, not an offer or sales card. */
+body.jrs-institutional.jrs-resource-page .jrs-practitioner-promise{
+  border-left:4px solid #8f6b33;
+  padding:2px 0 2px 15px;
+  margin:20px 0 16px;
+  max-width:780px;
+  font:600 clamp(16px,1.45vw,19px)/1.55 Inter,Arial,sans-serif;
+  color:#183b50;
+}
+body.jrs-institutional.jrs-resource-page .jrs-practitioner-promise strong{
+  font-weight:600;color:inherit;
+}
+@media(max-width:650px){
+  body.jrs-institutional.jrs-resource-page .jrs-practitioner-promise{
+    font-size:16px;padding-left:12px;
+  }
+}
+@media(forced-colors:active){
+  body.jrs-institutional.jrs-resource-page .jrs-practitioner-promise{
+    border-left-color:CanvasText;color:CanvasText!important;
+  }
+}
