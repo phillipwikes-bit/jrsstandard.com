@@ -32,7 +32,8 @@
       NO_SPECIFIC_ALLOCATION:"No specific allocation has been approved"
     };
     var list=element(result,"ul","","capital-control-list"),seen=new Set();
-    report.issues.forEach(function(x){
+    // Source-close codes (population, scope) arrive in sourceIssues, not issues.
+    report.issues.concat(report.sourceIssues||[]).forEach(function(x){
       if(seen.has(x.code))return;seen.add(x.code);
       if(titles[x.code])element(list,"li",titles[x.code]);
     });

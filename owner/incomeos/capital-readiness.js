@@ -24,7 +24,14 @@
     if(!Array.isArray(input.accountUse)||!Array.isArray(input.obligations))
       throw Error("Account usage and near-term obligation arrays are mandatory");
     if(input.accountUse.length>100||input.obligations.length>1000)throw Error("Review input exceeds bounded size");
-    var manifest=new Map(),states=new Map(),totalCash=0,restrictions=0,unsettled=0,obligations=0,refs=new Set();
+    var manifest=new Map(),states=new Map(),totalCash=0,restrictions=0,unsettled=0,obligations=0,liabilities=0,refs=new Set(),liabilityIds=new Set();
+    // Statement-close only flags malformed rows; read balances from well-formed rows only.
+    function current(accountId){
+      var matching=(Array.isArray(input.statementPackage.statements)?input.statementPackage.statements:[]).filter(function(s){
+        return s&&typeof s.institution==="string"&&typeof s.accountToken==="string"&&validDate(s.endDate)&&s.institution.trim()+"|"+s.accountToken===accountId;
+      }).sort(function(x,y){return x.endDate.localeCompare(y.endDate);});
+      return matching[matching.length-1];
+    }
     input.statementPackage.expectedAccounts.forEach(function(a){
       if(a&&typeof a.institution==="string"&&typeof a.accountToken==="string")
         manifest.set(a.institution.trim()+"|"+a.accountToken,a);
@@ -42,14 +49,19 @@
       if((a.kind==="liability")!==(declaration.balanceType==="liability")){
         issues.push(issue("ACCOUNT_TYPE_CONFLICT","Liability and asset designations must agree with statement coverage"));return;
       }
-      if(a.kind==="liability"||a.kind==="noncash")return;
+      if(a.kind==="noncash")return;
+      if(a.kind==="liability"){
+        // An outstanding balance owed reduces uncommitted cash, whether or not its bill is listed.
+        var owed=current(a.accountId);
+        if(!owed||owed.endDate!==asOf||!Number.isSafeInteger(owed.closingCents)){
+          issues.push(issue("LIABILITY_SOURCE_NOT_CURRENT","Liability balance needs a reconciled closing statement on assessment date"));return;
+        }
+        liabilities+=Math.max(0,owed.closingCents);liabilityIds.add(a.accountId);return;
+      }
       if(!cents(a.restrictedCents)||!cents(a.unsettledDebitCents)){
         issues.push(issue("UNKNOWN_LIQUIDITY_HOLDS","Restricted cash and unsettled debits must be explicitly quantified"));return;
       }
-      var matching=input.statementPackage.statements.filter(function(s){
-        return s.institution.trim()+"|"+s.accountToken===a.accountId;
-      }).sort(function(x,y){return x.endDate.localeCompare(y.endDate);});
-      var latest=matching[matching.length-1];
+      var latest=current(a.accountId);
       if(!latest||latest.endDate!==asOf||!Number.isSafeInteger(latest.closingCents)||latest.closingCents<0){
         issues.push(issue("CASH_SOURCE_NOT_CURRENT","Cash balance needs a reconciled, nonnegative closing statement on assessment date"));return;
       }
@@ -79,6 +91,11 @@
       if(coveredThrough&&o.dueDate>coveredThrough){
         issues.push(issue("OBLIGATION_OUTSIDE_HORIZON","Commitment exceeds declared coverage period"));return;
       }
+      // A payment toward a listed liability is already inside that liability's balance.
+      if(o.settlesAccountId!==undefined&&o.settlesAccountId!==null){
+        if(!liabilityIds.has(o.settlesAccountId)){issues.push(issue("OBLIGATION_SETTLES_UNKNOWN_LIABILITY","Obligation "+(i+1)+" names a liability that is not classified and current"));return;}
+        return;
+      }
       obligations+=o.amountCents;
     });
     if(input.obligationsReviewed!==true||!id(input.obligationCoverageEvidenceId))
@@ -89,20 +106,20 @@
       issues.push(issue("RESERVE_PLAN_NOT_REVIEWED","Documented emergency, tax and other reserves are mandatory"));
     if(!cents(input.proposedAllocationCents)||input.proposedAllocationCents===0)
       issues.push(issue("NO_SPECIFIC_ALLOCATION","A positive proposed investment allocation must be entered"));
-    var all=[totalCash,restrictions,unsettled,obligations,
+    var all=[totalCash,restrictions,unsettled,obligations,liabilities,
       reserves.emergencyCents,reserves.taxCents,reserves.otherCents,input.proposedAllocationCents];
     if(all.some(function(v){return !Number.isSafeInteger(v)||Math.abs(v)>MAX_CENTS}))
       issues.push(issue("UNSAFE_AGGREGATE","Calculated amounts exceed safe bounded integer-cent precision"));
     // Never publish a potentially misleading available-cash figure with missing sources.
     var ready=issues.length===0,sourceCash=ready?totalCash:null,
-      budget=ready?Math.max(0,totalCash-restrictions-unsettled-obligations
+      budget=ready?Math.max(0,totalCash-restrictions-unsettled-obligations-liabilities
         -reserves.emergencyCents-reserves.taxCents-reserves.otherCents):null;
     if(ready&&input.proposedAllocationCents>budget){
       issues.push(issue("PROPOSAL_EXCEEDS_PRELIMINARY_CAPACITY","Proposed investment exceeds modeled uncommitted cash"));
       ready=false;budget=null;sourceCash=null;
     }
     return {
-      asOf:asOf,modeledCashCents:sourceCash,preliminaryUncommittedCents:budget,
+      asOf:asOf,modeledCashCents:sourceCash,preliminaryUncommittedCents:budget,outstandingLiabilitiesCents:ready?liabilities:null,
       sourceCloseStatus:close.gate.status,sourceIssues:close.issues,
       accountCount:manifest.size,classifiedAccounts:states.size,reviewedObligations:refs.size,
       obligationHorizonThrough:coveredThrough,

@@ -46,7 +46,10 @@ const baseline={asOf:"2026-10-31",statementPackage,accountUse:use,obligations:[o
 let x=engine.assess(baseline);
 assert.equal(x.status,"READY_FOR_OWNER_CAPITAL_REVIEW_ONLY");
 assert.equal(x.modeledCashCents,1200000);
-assert.equal(x.preliminaryUncommittedCents,310000);
+// 2026-11-03 correction: the $700 card balance on the same reconciled statements was
+// previously ignored (310000). Outstanding liabilities now reduce uncommitted cash.
+assert.equal(x.outstandingLiabilitiesCents,70000);
+assert.equal(x.preliminaryUncommittedCents,240000);
 assert.equal(x.accountCount,3);
 assert.equal(x.classifiedAccounts,3);
 assert.equal(x.executable,false);
@@ -92,4 +95,14 @@ assert.match(ui,/IncomeOSCapitalReadiness\.assess\(evidence\)/);
 assert.match(ui,/scopeConfirmed:false/);
 assert.match(ui,/ownerReviewed:false/);
 assert.doesNotMatch(ui,/fetch\s*\(|localStorage|XMLHttpRequest|WebSocket|sendBeacon/);
+// R5-1: a malformed statement row yields HOLD, not a crash.
+{const r=engine.assess({...baseline,statementPackage:{...statementPackage,statements:[null,...statements]}});
+assert.equal(r.status,"HOLD");}
+// R5-4: a payment toward a listed liability is not counted twice; an unknown target holds.
+{const r=engine.assess({...baseline,obligations:[{...obligation,settlesAccountId:"Demo Card|masked-card-1002"}]});
+assert.equal(r.status,"READY_FOR_OWNER_CAPITAL_REVIEW_ONLY");assert.equal(r.preliminaryUncommittedCents,330000);
+const u=engine.assess({...baseline,obligations:[{...obligation,settlesAccountId:"Nobody|masked-none-0000"}]});
+assert.ok(u.issues.some(x=>x.code==="OBLIGATION_SETTLES_UNKNOWN_LIABILITY"));}
+// R5-8: the capital panel shows source-close codes (population, scope).
+assert.match(read("capital-review-ui.js"),/report\.issues\.concat\(report\.sourceIssues/);
 console.log("IncomeOS capital-readiness QA passed: cash-only capacity, liability exclusion, obligations/reserves, statement coverage, and non-executable hold gates.");

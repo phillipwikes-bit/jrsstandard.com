@@ -12,8 +12,8 @@
       throw Error("Missing or unsupported transfer evidence fields");
   }
   function dayGap(a,b){return Math.abs((Date.parse(a+"T00:00:00Z")-Date.parse(b+"T00:00:00Z"))/86400000);}
-  function bankId(row){return [row.institution,row.accountToken,row.transactionId].join("|");}
-  function accountId(row){return row.institution+"|"+row.accountToken;}
+  // Same identity as statement-close and capital-readiness: institution trimmed.
+  function accountId(row){return String(row.institution).trim()+"|"+row.accountToken;}
   function reviewed(postId,state,label){
     var post=state.posted.get(postId),types=state.classes.get(postId)||[],approvals=state.reconciled.get(postId)||[];
     return !!post&&types.length===1&&types[0].data.classification===label&&
@@ -108,7 +108,7 @@
         issues.push(problem("UNPAIRED_CLASSIFIED_TRANSFER","Source posting "+postId+" lacks a complete reviewed opposing entry"));
       }
     });
-    if(!input.pairs.length)issues.push(problem("NO_PAIR_EVIDENCE","No confirmed internal transfer or card-payment pairs supplied"));
+    if(!input.pairs.length&&activeTransfers.size)issues.push(problem("NO_PAIR_EVIDENCE","No confirmed internal transfer or card-payment pairs supplied"));
     var total=0,bankTransfer=0,cardPayment=0;
     matched.forEach(function(p){
       total+=p.amountCents;

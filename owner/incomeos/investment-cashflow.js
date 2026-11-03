@@ -38,9 +38,11 @@
       bankEventId:x.bankEventId,documentId:x.documentId,evidenceId:x.evidenceId};
   }
   function issue(code,transactionId){return {code:code,transactionId:transactionId};}
-  function sourceMatch(x,state){
+  var CLASSIFIED=Object.keys(KINDS).map(function(k){return KINDS[k].classification;});
+  function sourceMatch(x,state,asOf){
     var post=state.posted.get(x.bankEventId);
     if(!post)return "BANK_POSTING_NOT_ACTIVE";
+    if(!(post.data.postedDate<=asOf))return "BANK_POSTING_AFTER_ASSESSMENT_DATE";
     var expected=KINDS[x.kind];
     if(post.data.direction!==expected.direction||post.data.amountCents!==x.amountCents)
       return "BANK_AMOUNT_OR_DIRECTION_MISMATCH";
@@ -73,22 +75,29 @@
       if(postedIds.has(x.bankEventId)){
         issues.push(issue("BANK_POSTING_ALREADY_ATTRIBUTED",x.id));return;
       }
-      var problem=sourceMatch(x,check.state);
+      var problem=sourceMatch(x,check.state,asOf);
       if(problem){issues.push(issue(problem,x.id));return;}
       postedIds.add(x.bankEventId);accepted.set(x.id,x);
       cash[x.kind]=(cash[x.kind]||0)+x.amountCents;
     });
-    var linkedIncome=new Set(),linkedCapital=new Set(),linkedReinvestmentCents=0;
+    // Completeness: every owner-reviewed investment posting up to asOf must appear in the register.
+    check.state.posted.forEach(function(post,postId){
+      if(postedIds.has(postId)||!(post.data.postedDate<=asOf))return;
+      var types=check.state.classes.get(postId)||[],reviews=check.state.reconciled.get(postId)||[];
+      if(types.length===1&&CLASSIFIED.indexOf(types[0].data.classification)>=0&&reviews.length===1&&reviews[0].data.classificationEventId===types[0].id)
+        issues.push(issue("REVIEWED_INVESTMENT_POSTING_NOT_REGISTERED",postId));
+    });
+    var linkedIncome=new Set(),linkedCapital=new Set(),linkedReinvestmentCents=0,rejectedLinks=0;
     links.forEach(function(x){
       var d=accepted.get(x.distributionId),p=accepted.get(x.deploymentId);
       if(!d||!p||d.kind!=="DISTRIBUTION"||p.kind!=="CAPITAL_DEPLOYED"
         ||d.assetId!==x.assetId||p.assetId!==x.assetId
         ||p.amountCents!==d.amountCents||p.date<x.date||d.date>x.date
-        ||p.date<d.date||Math.abs((Date.parse(p.date+"T00:00:00Z")-Date.parse(d.date+"T00:00:00Z"))/86400000)>7){
-        issues.push(issue("REINVESTMENT_EVIDENCE_CONFLICT",x.id));return;
+        ||Math.abs((Date.parse(p.date+"T00:00:00Z")-Date.parse(d.date+"T00:00:00Z"))/86400000)>7){
+        issues.push(issue("REINVESTMENT_EVIDENCE_CONFLICT",x.id));rejectedLinks++;return;
       }
       if(linkedIncome.has(d.id)||linkedCapital.has(p.id)){
-        issues.push(issue("DUPLICATED_REINVESTMENT_LINK",x.id));return;
+        issues.push(issue("DUPLICATED_REINVESTMENT_LINK",x.id));rejectedLinks++;return;
       }
       linkedIncome.add(d.id);linkedCapital.add(p.id);
       linkedReinvestmentCents+=d.amountCents;
@@ -110,7 +119,8 @@
       if(a.saleProceedsCents>0)issues.push(issue("SALE_BASIS_AND_LOTS_NOT_ESTABLISHED",a.assetId));
       // A cost-basis or remaining-capital figure is not inferred from proceeds.
     });
-    var result={asOf:asOf,acceptedMovements:accepted.size,rejectedMovementCount:records.length-accepted.size-links.length,
+    if(!accepted.size)issues.push(issue("NO_SOURCE_LINKED_MOVEMENTS",null));
+    var result={asOf:asOf,acceptedMovements:accepted.size,rejectedMovementCount:records.length-accepted.size-links.length+rejectedLinks,
       journalHeadHash:check.headHash,
       ownerReviewedCashIncomeCents:cash.DISTRIBUTION||0,
       ownerReviewedCapitalDeployedCents:cash.CAPITAL_DEPLOYED||0,

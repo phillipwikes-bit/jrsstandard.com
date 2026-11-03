@@ -26,6 +26,7 @@ const acq=await post("asset.funded.001",5000,"capital_contribution");
 const dist=await post("asset.dividend.001",500,"investment_income");
 const redeploy=await post("asset.reinvest.001",500,"capital_contribution");
 const roc=await post("asset.roc.001",300,"returned_principal");
+const journalWithoutSale=journal; // Same journal before the sale posting existed.
 const sale=await post("asset.sale.001",1000,"sale_proceeds");
 const assetId="asset.synthetic.1001";
 const movement=(id,kind,amountCents,p)=>({id,kind,assetId,date:"2026-11-01",amountCents,
@@ -57,6 +58,9 @@ assert.equal(result.gate.providerReinvestmentVerified,false);
 assert.equal(result.gate.executable,false);
 assert.equal(result.gate.bankOrBrokerIndependentlyAuthenticated,false);
 result=await I.analyze(records.filter(x=>x.kind!=="SALE_PROCEEDS"),journal,"2026-11-01");
+assert.equal(result.gate.status,"HOLD","A reviewed sale posting left out of the register cannot pass as complete");
+assert.ok(result.issues.some(x=>x.code==="REVIEWED_INVESTMENT_POSTING_NOT_REGISTERED"));
+result=await I.analyze(records.filter(x=>x.kind!=="SALE_PROCEEDS"),journalWithoutSale,"2026-11-01");
 assert.equal(result.gate.status,"OWNER_SOURCE_LINKED_REVIEW_ONLY");
 assert.equal(result.ownerReviewedCashIncomeCents,500);
 assert.equal(result.ownerReviewedSaleProceedsCents,0);
@@ -86,5 +90,19 @@ await assert.rejects(I.analyze([{...records[0],bankPassword:"secret"}],journal,"
 await assert.rejects(I.analyze([{...records[1],amountCents:-2}],journal,"2026-11-01"),/Cash movement needs cents/);
 const damaged=JSON.parse(JSON.stringify(journal));damaged[0].data.amountCents=1;
 await assert.rejects(I.analyze(records,damaged,"2026-11-01"),/modified/);
+// R5-3: an empty register is a hold, not a clean review.
+result=await I.analyze([],[],"2026-11-01");
+assert.equal(result.gate.status,"HOLD");assert.ok(result.issues.some(x=>x.code==="NO_SOURCE_LINKED_MOVEMENTS"));
+// R5-5: a bank posting dated after the assessment date is not counted.
+{let late=[];const x=(id,type,data)=>({id,type,timestamp:"2026-11-06T10:00:00.000Z",data});
+late=await J.append(late,x("post.late.001","POSTED",{sourceId:"bank.late.001",postedDate:"2026-11-05",direction:"credit",amountCents:700,currency:"USD",evidenceId:"bank.statement.001"}));
+late=await J.append(late,x("class.late.001","CLASSIFIED",{postedEventId:"post.late.001",classification:"investment_income",evidenceId:"owner.classification.001"}));
+late=await J.append(late,x("doc.late.001","DOCUMENT_MATCHED",{postedEventId:"post.late.001",documentId:"document.late.001",amountCents:700}));
+late=await J.append(late,x("review.late.001","OWNER_RECONCILED",{postedEventId:"post.late.001",classificationEventId:"class.late.001",reviewEvidenceId:"owner.review.001"}));
+const r=await I.analyze([{id:"move.late.001",kind:"DISTRIBUTION",assetId,date:"2026-11-01",amountCents:700,bankEventId:"post.late.001",documentId:"document.late.001",evidenceId:"operator.source.001"}],late,"2026-11-01");
+assert.equal(r.ownerReviewedCashIncomeCents,0);assert.ok(r.issues.some(y=>y.code==="BANK_POSTING_AFTER_ASSESSMENT_DATE"));}
+// R5-9: refused reinvestment links count as rejected.
+result=await I.analyze(records.slice(0,5).concat([{...records[5],deploymentId:"move.funded.001"}]),journal,"2026-11-01");
+assert.equal(result.rejectedMovementCount,1);
 assert.doesNotMatch(read("investment-cashflow.js"),/fetch\s*\(|localStorage|XMLHttpRequest|sendBeacon|WebSocket/);
 console.log("IncomeOS investment-cashflow QA passed: source-linked distributions, ROC, capital, sale-basis holds, reinvestment linkage, and duplicate prevention.");

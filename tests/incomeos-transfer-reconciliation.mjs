@@ -118,4 +118,14 @@ assert.match(ui,/scopeConfirmed:false/);
 assert.match(ui,/journal:\[\]/);
 assert.match(ui,/bindings:\[\],pairs:\[\]/);
 assert.doesNotMatch(ui,/fetch\s*\(|localStorage|XMLHttpRequest|WebSocket|sendBeacon/);
+// R5-6: a manifest institution with surrounding spaces matches its trimmed bank rows.
+{const padded=accounts.map((a,i)=>i===0?{...a,institution:a.institution+" "}:a);
+const r=await T.assess({...input,statementPackage:{...pkg,expectedAccounts:padded}});
+assert.equal(r.sourceStatus,"READY_FOR_ACCOUNTANT_SOURCE_REVIEW");
+assert.equal(r.status,"READY_FOR_ACCOUNTANT_PAIR_REVIEW_ONLY",codes(r).join(","));}
+// R5-7: with no classified transfers, an empty pair list is not a permanent hold.
+{const r=await T.assess({journal:[],statementPackage:pkg,bindings:[],pairs:[]});
+assert.ok(!codes(r).includes("NO_PAIR_EVIDENCE"));assert.equal(r.status,"READY_FOR_ACCOUNTANT_PAIR_REVIEW_ONLY");}
+// R5-10: no unused second identity scheme.
+assert.doesNotMatch(read("transfer-reconciliation.js"),/function bankId/);
 console.log("IncomeOS transfer QA passed: posted transfer pair, card payment, account ownership, unique links, no duplicated expense/income, and fail-closed mismatches.");
