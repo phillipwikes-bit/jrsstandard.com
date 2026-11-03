@@ -1664,3 +1664,28 @@ body.jrs-institutional #main-content > p[style*="background:#1a1a1a"] a[href="re
   }
 }
 
+
+
+/* Practitioner-versus-product distinction, November 2026.
+   Keep JRS institutional titles and edition labels unchanged. The compact
+   desktop motto occupies previously unused header space, but the longer
+   public-interest statement remains available within each primary pathway. */
+body.jrs-institutional .site-header-inner > .jrs-header-motto{
+ display:block;flex:1 1 360px;min-width:0;margin:0;padding:0 9px;
+ font:600 17px/1.42 Inter,system-ui,sans-serif!important;
+ letter-spacing:0!important;text-transform:none!important;
+ color:#f3f7fa!important;text-align:center;white-space:normal;
+}
+body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
+ color:#f4d79b!important;font-weight:750;
+}
+/* Small-screen navigation and record-check access outrank a repeated motto. */
+@media(max-width:1020px){
+ body.jrs-institutional .site-header-inner > .jrs-header-motto{display:none!important}
+}
+@media(forced-colors:active){
+ body.jrs-institutional .site-header-inner > .jrs-header-motto,
+ body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
+  color:CanvasText!important
+ }
+}
