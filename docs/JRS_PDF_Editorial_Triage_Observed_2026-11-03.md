@@ -36,6 +36,19 @@ The following observations were checked against the actual raw-mode and layout-m
 
 These examples show that repeated headers, footers and metadata placement contribute to extraction-order disagreements. They **do not** establish that every flagged page has an incorrect PDF tag tree, nor that the source document itself contains a content error. Resolve each case by visual comparison, semantic reading-order inspection, and assistive-technology testing.
 
+## Verified extraction excerpts and editorial decisions still required
+
+The four examples below were rechecked directly in the retained candidate HTML artifact, with raw and layout transcripts inspected separately. They are evidence of **text-extraction behavior**, not a visual inspection of PDF tagging.
+
+| Source page | Raw-mode observation | Layout-mode observation | Required editorial decision |
+|---|---|---|---|
+| Standard, p. 2 | Running header begins `JRSTM Justification Review Standard Version 2.0` | Running header separates `JRS TM` before the same title | Verify trademark and heading semantics against the original page; distinguish running header from body content |
+| Employment/EEO guide, p. 1 | Page-1 footer appears between the top document identifier and `TECHNICAL SUPPLEMENT` | `TECHNICAL SUPPLEMENT` and document title precede the footer in the transcript | Determine whether header/footer artifacts should be excluded from the accessible reading sequence |
+| Employment/EEO guide, p. 2 | Page-2 footer precedes `Contents` | `Contents` and seven listed sections precede the footer | Confirm semantic contents-list structure and correct reading sequence |
+| Working research paper, p. 1 | Page number appears before the main title; working-paper status appears below the author line | Main title and author metadata appear before the page number | Preserve the working-paper qualification and verify reading sequence |
+
+**Editorial disposition for all four: NOT ASSESSED.** No finding above authorizes deletion, rewriting, retagging, or publication. A reviewer must inspect the original rendered PDF and its semantic structure before determining whether the difference is an extraction artifact or an actual defect.
+
 ## Review sequence
 
 1. Compare all six flagged Standard pages with the source PDF, including headings, running headers, defined terms and the five review conditions.
