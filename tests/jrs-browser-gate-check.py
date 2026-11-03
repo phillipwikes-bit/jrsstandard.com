@@ -49,7 +49,7 @@ ROUTES = (
 WIDTHS = (390, 1440)
 
 STATES = (
-    "resource-filter", "resource-empty", "mobile-navigation-open",
+    "resource-filter", "resource-empty", "resource-focus-recovery", "mobile-navigation-open",
     "training-module-expanded", "training-optional-dialog",
     "training-completion-text", "accessible-format-routing",
 )
