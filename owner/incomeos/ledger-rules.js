@@ -22,7 +22,8 @@
     if(r.kind!=="income"&&r.kind!=="outflow")p.push("RULE_KIND_INVALID");
     var cats=r.kind==="income"?INCOME:COST;
     var m=r.match||{};
-    if(!m.vendorContains&&!m.labelContains)p.push("RULE_MATCH_TOO_BROAD");
+    // A match term must still have letters or digits after normalization; "*" or "-" would match everything.
+    if(norm(m.vendorContains).length<2&&norm(m.labelContains).length<2)p.push("RULE_MATCH_TOO_BROAD");
     if(m.minUsd!=null&&!(Number(m.minUsd)>=0))p.push("RULE_MIN_INVALID");
     if(m.maxUsd!=null&&!(Number(m.maxUsd)>0))p.push("RULE_MAX_INVALID");
     if(!r.split&&cats.indexOf(r.category)<0)p.push("RULE_CATEGORY_UNKNOWN");
@@ -32,7 +33,8 @@
         if(r.split.some(function(s){return cats.indexOf(s.category)<0;}))p.push("SPLIT_CATEGORY_UNKNOWN");
         var pct=r.split.every(function(s){return s.percent!=null&&s.amountUsd==null;}),amt=r.split.every(function(s){return s.amountUsd!=null&&s.percent==null;});
         if(!pct&&!amt)p.push("SPLIT_MIXED_BASIS");
-        if(pct&&Math.round(r.split.reduce(function(a,s){return a+Number(s.percent);},0)*1000)!==100000)p.push("SPLIT_PERCENT_NOT_100");
+        // Exactly 100 to four decimal places; near-misses could allocate more or fewer cents than the entry.
+        if(pct&&Math.round(r.split.reduce(function(a,s){return a+Number(s.percent);},0)*10000)!==1000000)p.push("SPLIT_PERCENT_NOT_100");
         if(r.split.some(function(s){return (s.percent!=null&&!(Number(s.percent)>0))||(s.amountUsd!=null&&!(Number(s.amountUsd)>0));}))p.push("SPLIT_PART_NOT_POSITIVE");
       }
     }
@@ -58,6 +60,7 @@
     }
     var raw=split.map(function(s,i){var exact=total*Number(s.percent)/100;return {i:i,category:s.category,cents:Math.floor(exact),frac:exact-Math.floor(exact)};});
     var rem=total-raw.reduce(function(a,p){return a+p.cents;},0);
+    if(rem<0||rem>=raw.length)return {ok:false,reason:"SPLIT_PERCENT_NOT_EXACT"};
     raw.slice().sort(function(a,b){return b.frac-a.frac||a.i-b.i;}).slice(0,rem).forEach(function(p){raw[p.i].cents+=1;});
     return {ok:true,parts:raw.map(function(p){return {category:p.category,cents:p.cents};})};
   }

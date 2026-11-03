@@ -20,13 +20,14 @@
     var eligible=s?s.eligible.map(function(r){return {id:r.opportunity.opportunityId,title:r.opportunity.title,platform:r.opportunity.platform,effectiveHourlyUsd:r.economics.effectiveHourlyUsd,deadline:r.opportunity.deadline,sourceUrl:r.opportunity.sourceUrl,isNew:!seen[r.opportunity.opportunityId]};}):[];
     var top=eligible.filter(function(e){return e.effectiveHourlyUsd!=null;}).sort(function(a,b){return b.effectiveHourlyUsd-a.effectiveHourlyUsd;}).slice(0,3);
     eligible.filter(function(e){return e.isNew;}).forEach(function(e){attention.push({priority:2,area:"opportunities",text:"New eligible: "+e.title+" ("+e.platform+")"+(e.effectiveHourlyUsd!=null?", about "+money(e.effectiveHourlyUsd)+"/h before tax":"")});});
-    eligible.filter(function(e){return e.deadline&&(Date.parse(e.deadline)-Date.parse(asOf))/86400000<=7;}).forEach(function(e){attention.push({priority:1,area:"opportunities",text:"Deadline "+e.deadline+": "+e.title});});
+    eligible.filter(function(e){var d=e.deadline?(Date.parse(e.deadline)-Date.parse(asOf))/86400000:NaN;return d>=0&&d<=7;}).forEach(function(e){attention.push({priority:1,area:"opportunities",text:"Deadline "+e.deadline+": "+e.title});});
     if(s&&s.pending.length)attention.push({priority:3,area:"opportunities",text:s.pending.length+" listing(s) need you to confirm their requirements"});
     if(i.claims)i.claims.actions.forEach(function(a){attention.push({priority:a.priority,area:"recovery",text:a.code.replace(/_/g," ").toLowerCase()+" ("+a.claimId+")"+(a.deadline?" by "+a.deadline:"")});});
     if(i.claims)i.claims.warnings.forEach(function(w){attention.push({priority:1,area:"recovery",text:w.code.replace(/_/g," ").toLowerCase()+" ("+w.claimId+")"});});
     if(i.renewals)i.renewals.items.forEach(function(r){
       var urgent=r.flags.some(function(f){return /NOTICE_DEADLINE_SOON|PRICE_INCREASE/.test(f);});
-      attention.push({priority:urgent?1:3,area:"spending",text:r.vendor+": "+r.flags.filter(function(f){return !/^NO_OWNER_NOTE/.test(f);}).map(function(f){return f.replace(/_/g," ").toLowerCase();}).join(", ")+(r.annualizedIncreaseUsd?" (+"+money(r.annualizedIncreaseUsd)+"/yr)":"")});
+      var shown=r.flags.filter(function(f){return !/^NO_OWNER_NOTE/.test(f);}).map(function(f){return f.replace(/_/g," ").toLowerCase();});
+      attention.push({priority:urgent?1:3,area:"spending",text:r.vendor+": "+(shown.length?shown.join(", "):"add a note saying whether this service is necessary")+(r.annualizedIncreaseUsd?" (+"+money(r.annualizedIncreaseUsd)+"/yr)":"")});
     });
     if(i.rules&&(i.rules.proposals.length||i.rules.exceptions.length))attention.push({priority:3,area:"accounting",text:i.rules.proposals.length+" categorization proposal(s) to accept or reject"+(i.rules.exceptions.length?", "+i.rules.exceptions.length+" rule conflict(s)":"")});
     if(i.netWorth&&!i.netWorth.complete)attention.push({priority:3,area:"accounting",text:"Net worth is partial: "+(i.netWorth.gaps.length+i.netWorth.excluded.length)+" account balance(s) missing or stale"});

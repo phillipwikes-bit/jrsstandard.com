@@ -50,15 +50,21 @@
           var heldYears=Number(p.horizonMonths)/12,grossEarned=apy/100*heldYears,penalty=apy/100*pen/12;
           effective=heldYears>0?((grossEarned-penalty)/heldYears*100)*(1-taxRate/100):0;
           flags.push("EARLY_WITHDRAWAL_PENALTY_APPLIED");
+        }else if(o.product==="i_bond"){
+          // I bonds cannot be sold at market: 12-month minimum hold, then 3 months' interest forfeited before 5 years.
+          if(Number(p.horizonMonths)<12){excluded.push({id:o.id,provider:o.provider,reasons:["I_BOND_LOCKED_FOR_12_MONTHS"]});return;}
+          if(Number(p.horizonMonths)<60){var hy=Number(p.horizonMonths)/12;effective=((apy/100*hy-apy/100*3/12)/hy*100)*(1-taxRate/100);flags.push("I_BOND_3_MONTH_INTEREST_PENALTY_APPLIED");}
         }else flags.push("MUST_SELL_BEFORE_MATURITY: market price risk not modelled");
       }
       if(p.needLiquidity===true&&!kind.liquid)flags.push("NOT_LIQUID");
       if(o.insurance==="NONE")flags.push("NOT_GOVERNMENT_INSURED");
       if((o.insurance==="FDIC"||o.insurance==="NCUA")&&Number(p.amountUsd)>limit)flags.push("ABOVE_INSURANCE_LIMIT_AT_ONE_INSTITUTION");
-      if(o.product==="i_bond")flags.push("I_BOND_RULES: 12-month minimum hold, 3-month interest penalty before 5 years, annual purchase limit; check TreasuryDirect");
+      if(o.product==="i_bond")flags.push("I_BOND_RULES: annual purchase limit and current rate; check TreasuryDirect");
+      if(effective<0)flags.push("LOSES_MONEY_AT_THIS_HORIZON");
       var years=Number(p.horizonMonths)/12;
       rows.push({id:o.id,provider:o.provider,product:o.product,apyPct:apy,afterTaxYieldPct:r4(afterTax),effectiveAfterTaxPct:r4(effective),
-        estimatedAfterTaxEarningsUsd:r2(Number(p.amountUsd)*Math.max(effective,0)/100*years),
+        // Negative when penalties exceed interest: shown as a loss, never hidden as $0.
+        estimatedAfterTaxEarningsUsd:r2(Number(p.amountUsd)*effective/100*years),
         liquid:kind.liquid,termMonths:term||null,maturesOn:term?addMonths(asOf,term):null,flags:flags,sourceUrl:o.sourceUrl,checkedOn:o.checkedOn});
     });
     var eligible=rows.filter(function(r){return !(p.needLiquidity===true&&!r.liquid);});

@@ -36,7 +36,7 @@ assert.ok(!byE.e5);assert.equal(rp.exceptions[0].code,"RULES_CONFLICT","conflict
 assert.ok(rp.invalidRules.some(r=>r.ruleId==="bad"&&r.problems.includes("RULE_MATCH_TOO_BROAD")));
 assert.ok(rp.invalidRules.some(r=>r.ruleId==="unapproved"&&r.problems.includes("RULE_NOT_OWNER_APPROVED")));
 assert.ok(rp.proposals.every(p=>p.status==="PROPOSED_FOR_OWNER_REVIEW"));
-assert.deepEqual(plain(LR.validateRule({id:"split1",kind:"outflow",match:{vendorContains:"a"},split:[{category:"software",percent:50},{category:"other",percent:40}],approvedOn:"2026-11-01"})),["SPLIT_PERCENT_NOT_100"]);
+assert.deepEqual(plain(LR.validateRule({id:"split1",kind:"outflow",match:{vendorContains:"acme"},split:[{category:"software",percent:50},{category:"other",percent:40}],approvedOn:"2026-11-01"})),["SPLIT_PERCENT_NOT_100"]);
 let applied=LR.apply(entries[1],byE.e2,"2026-11-03");
 assert.equal(applied.entries.length,2);assert.equal(applied.entries[0].splitOf,"e2");assert.equal(applied.audit.after.splitInto.length,2);
 assert.throws(()=>LR.apply(entries[0],byE.e2,"2026-11-03"),/does not belong/);
@@ -171,4 +171,19 @@ assert.ok(busy.answers.systemHealth.some(h=>!h.ok));
 const repeat=WB.build({screen:{eligible:[{opportunity:{opportunityId:"o1",title:"t",platform:"p",deadline:null},economics:{effectiveHourlyUsd:50}}],pending:[]},discoveryReceipt:{finishedAt:"2026-11-03T00:00:00Z",summary:{ok:1,failed:0},connectors:[]},previousAlertIds:["o1"]},AS_OF);
 assert.equal(repeat.notify,false,"an already-reported opportunity does not re-notify");
 
+// ---------- Third review, 2026-11-03 (each shown failing on 88a5ec2) ----------
+{const T=AS_OF,CL2=CL,YC2=YC;const LR2=LR,NW2=NW,WB2=WB;
+const review3={
+ "split near-100% rejected":()=>LR2.validateRule({id:"sp1",kind:"outflow",match:{vendorContains:"acme"},split:[{category:"software",percent:33.3334},{category:"other",percent:33.3334},{category:"supplies",percent:33.3334}],approvedOn:T}).includes("SPLIT_PERCENT_NOT_100"),
+ "punctuation-only rule too broad":()=>LR2.validateRule({id:"star",kind:"outflow",match:{vendorContains:"*"},category:"software",approvedOn:T}).includes("RULE_MATCH_TOO_BROAD"),
+ "state search clears due item":()=>!CL2.searchesDue(["MD","PA"],[{sourceId:"state-PA",searchedOn:"2026-10-01"}],T,180).some(d=>d.sourceId==="state-PA"),
+ "net worth does not mutate input":()=>{const b=[{accountId:"a",asOf:"2026-11-01",balanceUsd:"1",source:"statement",sourceRef:"r"},{accountId:"a",asOf:"2026-11-01",balanceUsd:"2",source:"statement",sourceRef:"r2"}];NW2.report([{id:"a",type:"checking"}],b,T);return !("conflict" in b[0])&&!("conflict" in b[1]);},
+ "invalid cost basis not NaN":()=>{const r=NW2.report([{id:"b",type:"brokerage"}],[{accountId:"b",asOf:"2026-11-02",balanceUsd:"100",costBasisUsd:"n/a",source:"statement",sourceRef:"r"}],T);return r.lines[0].unrealizedUsd===null;},
+ "past deadline not urgent":()=>!WB2.build({screen:{eligible:[{opportunity:{opportunityId:"o",title:"Old",platform:"P",deadline:"2026-10-01"},economics:{effectiveHourlyUsd:50}}],pending:[]},previousAlertIds:["o"]},T).answers.needsYou.some(a=>/Deadline/.test(a.text)),
+ "finder fee on paid claim silent":()=>{let c=CL2.create({id:"c1",kind:"refund",openedOn:"2026-10-01",feeUsd:"50",feeCharger:"finder"});c=CL2.transition(c,{to:"CLAIM_FILED",on:"2026-10-02",evidenceRef:"x"}).claim;c=CL2.transition(c,{to:"APPROVED",on:"2026-10-03",evidenceRef:"x"}).claim;c=CL2.transition(c,{to:"PAID",on:"2026-10-04",evidenceRef:"x",amountUsd:"10",bankRef:"b"}).claim;return CL2.review([c],T).warnings.length===0;},
+ "I bond 12-month lock":()=>YC2.compare([{id:"ib",provider:"TD",product:"i_bond",apyPct:4,termMonths:360,insurance:"US_TREASURY",sourceUrl:"https://example.org/i",checkedOn:T}],{amountUsd:10000,horizonMonths:6,federalRatePct:22,stateRatePct:5},T).excluded.some(e=>e.reasons.includes("I_BOND_LOCKED_FOR_12_MONTHS")),
+ "I bond 3-month penalty":()=>{const r=YC2.compare([{id:"ib",provider:"TD",product:"i_bond",apyPct:4,termMonths:360,insurance:"US_TREASURY",sourceUrl:"https://example.org/i",checkedOn:T}],{amountUsd:10000,horizonMonths:24,federalRatePct:22,stateRatePct:5},T).ranked[0];return r&&r.flags.includes("I_BOND_3_MONTH_INTEREST_PENALTY_APPLIED")&&r.effectiveAfterTaxPct<r.afterTaxYieldPct;},
+ "CD loss shown as loss":()=>{const r=YC2.compare([{id:"cd",provider:"B",product:"cd",apyPct:4,termMonths:60,earlyPenaltyMonths:12,insurance:"FDIC",sourceUrl:"https://example.org/c",checkedOn:T}],{amountUsd:10000,horizonMonths:3,federalRatePct:22,stateRatePct:5},T).ranked[0];return r.estimatedAfterTaxEarningsUsd<0&&r.flags.includes("LOSES_MONEY_AT_THIS_HORIZON");},
+ "no blank renewal line":()=>!WB2.build({renewals:{items:[{vendor:"netflix",flags:["NO_OWNER_NOTE: mark whether this service is necessary"],annualizedIncreaseUsd:null}]}},T).answers.needsYou.some(a=>/^netflix: $/.test(a.text))};
+for(const [k,f] of Object.entries(review3))assert.equal(f(),true,"review 3: "+k);}
 console.log("IncomeOS plan-feature QA passed (synthetic data): rules and splits, net worth coverage, recovery claims, renewals, recruiter history, after-tax yields, weekly briefing");

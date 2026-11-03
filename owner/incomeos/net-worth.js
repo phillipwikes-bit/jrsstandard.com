@@ -31,21 +31,22 @@
       acct[a.id]=a;
     });
     // Latest balance per account at or before asOf.
-    var latest={};
+    var latest={},conflicted={};
     (Array.isArray(balances)?balances:[]).forEach(function(b){
       if(!b||!acct[b.accountId]){out.issues.push({code:"BALANCE_FOR_UNKNOWN_ACCOUNT",accountId:b&&b.accountId||null});return;}
       if(!isDate(b.asOf)||b.asOf>asOf){out.issues.push({code:"BALANCE_DATE_INVALID_OR_FUTURE",accountId:b.accountId});return;}
       if(!SOURCES[b.source]||typeof b.sourceRef!=="string"||!b.sourceRef.trim()){out.issues.push({code:"BALANCE_SOURCE_MISSING",accountId:b.accountId});return;}
       if(!Number.isFinite(c(b.balanceUsd))){out.issues.push({code:"BALANCE_AMOUNT_INVALID",accountId:b.accountId});return;}
       var cur=latest[b.accountId];
-      if(cur&&cur.asOf===b.asOf&&c(cur.balanceUsd)!==c(b.balanceUsd)){out.issues.push({code:"CONFLICTING_BALANCES_SAME_DATE",accountId:b.accountId});cur.conflict=true;return;}
+      if(cur&&cur.asOf===b.asOf&&c(cur.balanceUsd)!==c(b.balanceUsd)){out.issues.push({code:"CONFLICTING_BALANCES_SAME_DATE",accountId:b.accountId});conflicted[b.accountId+"|"+b.asOf]=1;return;}
+      // Never write onto the caller's records: conflicts are tracked here, not on the saved balances.
       if(!cur||b.asOf>cur.asOf)latest[b.accountId]=b;
     });
     var t={liquidCents:0,termCents:0,investedCents:0,restrictedCents:0,illiquidCents:0,receivableCents:0,liabilitiesCents:0,unrealizedCents:0,estimatedCents:0};
     Object.keys(acct).forEach(function(id){
       var a=acct[id],b=latest[id],klass=LIABILITY_TYPES[a.type]?"liability":ASSET_TYPES[a.type];
       if(!b){if(a.expected!==false)out.gaps.push({accountId:id,name:a.name||id,code:"NO_BALANCE_SUPPLIED"});return;}
-      if(b.conflict){out.excluded.push({accountId:id,code:"CONFLICTING_BALANCES"});return;}
+      if(conflicted[id+"|"+b.asOf]){out.excluded.push({accountId:id,code:"CONFLICTING_BALANCES"});return;}
       var limit=Number.isFinite(policy[klass+"StaleDays"])?policy[klass+"StaleDays"]:STALE_DAYS[klass];
       if(age(b.asOf,asOf)>limit){out.excluded.push({accountId:id,name:a.name||id,code:"BALANCE_STALE",balanceAsOf:b.asOf,limitDays:limit});return;}
       var amt=c(b.balanceUsd);
@@ -58,7 +59,7 @@
       }
       if(b.source==="owner_estimate")t.estimatedCents+=Math.abs(amt);
       out.lines.push({accountId:id,name:a.name||id,type:a.type,class:klass,balanceUsd:usd(amt),asOf:b.asOf,source:b.source,sourceRef:b.sourceRef.slice(0,120),
-        unrealizedUsd:klass==="invested"&&b.costBasisUsd!=null?usd(amt-c(b.costBasisUsd)):null});
+        unrealizedUsd:klass==="invested"&&b.costBasisUsd!=null&&Number.isFinite(c(b.costBasisUsd))?usd(amt-c(b.costBasisUsd)):null});
     });
     var assets=t.liquidCents+t.termCents+t.investedCents+t.restrictedCents+t.illiquidCents+t.receivableCents;
     out.totals={assetsUsd:usd(assets),liabilitiesUsd:usd(t.liabilitiesCents),netWorthUsd:usd(assets-t.liabilitiesCents),

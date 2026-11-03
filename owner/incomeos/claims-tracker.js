@@ -34,7 +34,9 @@
     });
     var covered=["MD"];
     states.filter(function(st){return covered.indexOf(st)<0;}).forEach(function(st){
-      due.push({sourceId:"state-"+st,name:st+" unclaimed property (via MissingMoney.com or the state's own site)",url:"https://www.missingmoney.com/",urlStatus:"multi-state portal; confirm the state participates",lastSearched:null,reason:"STATE_LIVED_IN"});
+      var sid="state-"+st,last=(history||[]).filter(function(h){return h.sourceId===sid&&isDate(h.searchedOn);}).map(function(h){return h.searchedOn;}).sort().pop();
+      if(last&&addDays(last,everyDays)>asOf)return;
+      due.push({sourceId:sid,name:st+" unclaimed property (via MissingMoney.com or the state's own site)",url:"https://www.missingmoney.com/",urlStatus:"multi-state portal; confirm the state participates",lastSearched:last||null,reason:last?"RE_SEARCH_INTERVAL":"STATE_LIVED_IN"});
     });
     return due;
   }
@@ -67,7 +69,8 @@
     if(!isDate(asOf))throw Error("asOf date required");
     var actions=[],recoveredCents=0,pendingCents=0,warnings=[],seenBank={};
     (claims||[]).forEach(function(cl){
-      if(cl.feeUsd>0&&cl.feeCharger!=="government")warnings.push({claimId:cl.id,code:"FINDER_FEE",detail:"Official unclaimed-property searches and claims are free; a paid finder is not required."});
+      var closed=["PAID","DENIED","ABANDONED"].indexOf(cl.state)>=0;
+      if(!closed&&cl.feeUsd>0&&cl.feeCharger!=="government")warnings.push({claimId:cl.id,code:"FINDER_FEE",detail:"Official unclaimed-property searches and claims are free; a paid finder is not required."});
       var deadline=cl.deadline;
       if(!deadline&&cl.kind==="billing_error"&&cl.statementDate)deadline=addDays(cl.statementDate,60);
       if(deadline&&["PAID","DENIED","ABANDONED"].indexOf(cl.state)<0){
