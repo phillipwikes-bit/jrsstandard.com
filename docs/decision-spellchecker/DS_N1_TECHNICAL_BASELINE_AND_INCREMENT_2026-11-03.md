@@ -253,3 +253,24 @@ The base suite (24 records) stayed PASS under every mutation, and with the 0.2.0
 **Next increment (F): reproducibility handoff.** A clean-room script that clones the branch at a given commit into an empty directory, runs every DS-N1 suite with no network and no install step, and writes a reproduction record comparing report hashes with the committed `RUN-*` and `STRESS-*` files.
 
 Acceptance: identical report hashes from an independent checkout, and a one-page `HANDOFF` file a second developer can follow without oral history.
+
+## 12. Increment F (appended 2026-11-03): reproducibility handoff
+
+* `tests/ds-n1/reproduce.mjs` makes a fresh `git clone` at a commit into an empty temporary directory. It then runs the suites there with no install step and an environment stripped to `PATH` and `HOME`:
+  * fixture regeneration, checked byte-identical against the committed files;
+  * unit tests;
+  * the base harness;
+  * the stress dev harness;
+  * a canonical report hash for all 40 fixtures.
+* The baseline `tests/ds-n1/REPRO_BASELINE.json` was written from a clean clone of `bd47c85b`. A later fresh-clone reproduction at `995481f3` was **identical on all 40 report hashes** (exit 0).
+* Tamper control: altering one hash in the baseline (`stress:X07`) made the reproduction report `identical: false` with that key named (exit 1). The file was then restored.
+* `docs/decision-spellchecker/DS_N1_HANDOFF.md` is the one-page guide for a second developer.
+* Limitation: the reproduction ran in this one environment (Node v22.23.4, linux). **A second machine or a second person has not reproduced it**, and that is what would turn this from a self-check into reproduction evidence.
+
+**Next increment proposal (owner choice):**
+
+* (a) Implement SP-15 PDF export and a reading-order test.
+* (b) Implement a minimal SP-18 reviewer-feedback capture, where the reviewer marks a finding as "useful" or "not useful" with a reason, stored in the event log for later ablation.
+* (c) Pause engineering until the blinded packet has been labelled by someone other than the developer, so that further rule work is guided by independent labels rather than the developer's own.
+
+Recommendation: **(c) in parallel with (b).** More rule tuning on developer-only labels has diminishing value.
