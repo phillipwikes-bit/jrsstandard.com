@@ -41,7 +41,7 @@ def verify(html, expected):
         raise ValueError("missing or duplicated rendered result element")
     value = parser.results[0]
     if expected == "responsive":
-        if value != "PASS 12/12 responsive route checks":
+        if value != "PASS 12/12 responsive route checks; guide headings, table associations and menu keyboard states verified":
             raise ValueError("responsive browser result not passing: " + value[:1800])
     elif expected == "axe":
         try:
@@ -65,10 +65,10 @@ def verify(html, expected):
 
 
 def self_test():
-    good = '<html><pre id="result">PASS 12/12 responsive route checks</pre></html>'
+    good = '<html><pre id="result">PASS 12/12 responsive route checks; guide headings, table associations and menu keyboard states verified</pre></html>'
     verify(good, "responsive")
     # Source-only PASS text must not satisfy the parser.
-    fake = '<html><script>const v="PASS 12/12 responsive route checks";</script><pre id="result">Running</pre></html>'
+    fake = '<html><script>const v="PASS 12/12 responsive route checks; guide headings, table associations and menu keyboard states verified";</script><pre id="result">Running</pre></html>'
     try:
         verify(fake, "responsive")
     except ValueError:
