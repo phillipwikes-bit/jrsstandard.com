@@ -24,6 +24,11 @@ assert.match(css, /prefers-reduced-motion/);
 const edition = read('editions.html');
 assert.match(edition, /Published PDF tagging and reading order have not been independently certified/);
 assert.match(edition, /href="contact\.html\?category=accessibility"/);
+const catalogScript = read('assets/jrs-resource-catalog.js');
+assert.match(catalogScript, /focusedEntry&&focusedEntry\.hidden\)query\.focus\(\)/,
+  'filter changes must recover keyboard focus when an active resource is hidden');
+assert.match(catalogScript, /count\.textContent=shown\+/,
+  'filtered resource count must remain exposed to assistive technology');
 const resourceIndex = read('resources.html');
 assert.match(resourceIndex, /Accessibility of PDF publications:/);
 assert.match(resourceIndex, /href="contact\.html\?category=accessibility"/);
