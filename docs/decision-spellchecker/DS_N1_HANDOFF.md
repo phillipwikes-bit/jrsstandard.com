@@ -30,6 +30,7 @@ A run that exits 0 with `"identical": true` means your clone reproduced the reco
 | `node tests/ds-n1/eval.mjs --no-write` | 24 base records against pre-registered expectations |
 | `node tests/ds-n1/eval-stress.mjs --split dev --no-write` | 10 stress records; 0 critical false-ready required |
 | `node tests/ds-n1/ui.browser.mjs` | 18 Chromium checks, desktop and iPhone 13 emulation |
+| `node tests/ds-n1/ablation.mjs [exports...]` | Rule ablation: NEVER_FIRED / REDUNDANT / DECISIVE per rule, plus reviewer feedback from exports |
 | `node lib/ds-n1/serve.mjs` | Reviewer UI at `http://127.0.0.1:4317/` (loopback only) |
 
 `eval-stress.mjs --split holdout` **will refuse to run**, because the holdout for this increment was used once (`results/STRESS-HOLDOUT-001.json`). A new increment needs new holdout cases.
@@ -58,4 +59,4 @@ A run that exits 0 with `"identical": true` means your clone reproduced the reco
 * All labels are the developer's own; nothing is independently verified.
 * The rules are lexical. A passage can pass every check and still not support a claim.
 * Not tested on a real iPhone or with assistive technology.
-* PDF export and SP-07, SP-13, SP-14 and SP-18 are not implemented.
+* PDF export and SP-07, SP-13 and SP-14 are not implemented. SP-18 (feedback and ablation) is implemented as of 0.3.0.

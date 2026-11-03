@@ -274,3 +274,41 @@ Acceptance: identical report hashes from an independent checkout, and a one-page
 * (c) Pause engineering until the blinded packet has been labelled by someone other than the developer, so that further rule work is guided by independent labels rather than the developer's own.
 
 Recommendation: **(c) in parallel with (b).** More rule tuning on developer-only labels has diminishing value.
+
+## 13. Increment G (appended 2026-11-03): SP-18 reviewer feedback and ablation
+
+Section 4 recorded SP-18 as NOT IMPLEMENTED. That row is left as written; this section supersedes it for DS-N1 `0.3.0-dev` (rules unchanged at `ds-n1.rules/0.2.0`).
+
+**SP-18 status: IMPLEMENTED, DEVELOPER VERIFIED.** No reviewer other than the developer has yet used it.
+
+* **Feedback.** A new `finding_feedback` event records `useful`, `not_useful` or `wrong`. A reason is required unless the rating is useful, and the reviewer identity is required as for every action.
+  * Feedback is hash-chained like every other event.
+  * It is allowed on superseded findings.
+  * By design it **never** changes a finding's status, the review status, or the staleness of a final disposition, because it is a judgment about the tool, not about the record.
+  * Report part 7 gains `reviewer_feedback_on_findings` only when feedback exists.
+  * The UI shows a feedback row on every finding card, separated from the decision actions.
+* **Ablation.** `deriveState(session, { suppress: [...] })` is research-only. The UI and reports never use it.
+  * `node tests/ds-n1/ablation.mjs [exports...]` removes each rule's findings in turn over the 34 base and stress-dev cases (the holdout is excluded). It counts false-ready results, released holds and touched cases.
+  * It folds in reviewer feedback from export packages, but only from packages the verifier finds internally consistent.
+* **Regression proof for the version bump.** All 40 reports are identical to the previous commit once the two version-derived fields (`generator.version`, and the genesis-derived `event_chain_head`) are normalised. The reproduction baseline was then regenerated from a clean clone of `7ac1ec50`, and a fresh-clone reproduction at `b061c3c3` was identical on 40/40.
+* **Tests.**
+  * Unit: 28/28 (3 new).
+  * Browser: 20/20 (1 new: feedback requires a reason, is recorded, and leaves the status unchanged).
+  * Mutations, all caught: M12 (feedback treated as a disposition), M13 (feedback stales a final disposition), M14 (reason no longer required).
+
+### 13.1 Ablation finding: the fixture set under-tests most rules
+
+The first version of the ablation tool reported 12 rules as having "no fixture evidence". **That was wrong.** It conflated a rule that never fires with a rule that fires but is masked by another. The corrected classification over 34 labelled cases:
+
+| Class | Rules |
+|---|---|
+| NEVER_FIRED (coverage gap) | `CLAIM_LOCATION_AMBIGUOUS`, `DATE_ROLE_UNVERIFIED` |
+| REDUNDANT (fires, but every case it fires on is also held by another rule) | `ACTOR_NOT_ESTABLISHED`, `DATE_MISMATCH`, `DATE_NOT_ESTABLISHED`, `EVENT_ROLE_CONFUSION`, `NEGATION_CONFLICT`, `QUOTE_NOT_FOUND`, `REASONING_NOT_TRACED`, `RELEVANCE_NOT_ESTABLISHED`, `SOURCE_MISSING`, `UNTRACEABLE_AUTHORITY` |
+| DECISIVE (removing it alone changes a status) | `CLAIM_NOT_IN_RECORD`, `CONTRARY_CLAUSE_OMITTED`, `INSTRUCTION_LIKE_CONTENT`, `QUALIFICATION_OMITTED`, `SUBJECT_MISMATCH`, `UNMAPPED_ASSERTION`, `UNSUPPORTED_CLAIM` |
+
+Meaning:
+* For 10 rules, including the negation and date checks, **no case shows that the rule alone prevents a false READY.**
+* The base harness's required-code checks and the unit tests still catch a regression in them at code level, but status-level evidence is absent.
+* This is a test-design gap, not evidence that those rules are unnecessary.
+
+**Next increment (H): isolation fixtures.** Add one constructed case per NEVER_FIRED or REDUNDANT rule, built so that rule is the only thing standing between the record and READY, with labels registered before the run. Accept when every rule classifies DECISIVE, and record any rule that cannot be isolated, with the reason.
