@@ -85,6 +85,18 @@ await page.waitForFunction(()=>/loaded/.test(document.getElementById("profile-st
 await page.locator("#radar-results article",{hasText:targetTitle}).getByRole("button",{name:"Prepare application notes"}).tap();
 const notes=await page.locator("#radar-results article",{hasText:targetTitle}).locator("pre.app-notes").textContent();
 assert.match(notes,/SYN Master of Science/);assert.doesNotMatch(notes,/undocumented BA/);assert.match(notes,/Nothing has been submitted/);
+// ---------- Times entered before a workspace exists are kept when one is opened ----------
+const preTitle=await page.$$eval("#radar-results article",els=>{const e=els.find(x=>!/HOLD/.test(x.querySelector(".radar-heading span").textContent));return e.querySelector("strong").textContent;});
+const pre=page.locator("#radar-results article",{hasText:preTitle});
+if(!(await pre.locator("details.radar-time").getAttribute("open")))await pre.locator("details.radar-time summary").tap();
+await pre.locator("input[id^=t-screen-]").fill("3");await pre.locator("input[id^=t-prep-]").fill("0");await pre.locator("input[id^=t-admin-]").fill("3");
+await pre.getByRole("button",{name:"Use these times"}).tap();
+await page.locator("#briefing-new").tap();
+assert.match(await page.locator("#radar-results article",{hasText:preTitle}).textContent(),/Effective hourly yield/,"times kept after opening a workspace");
+assert.match(await page.locator("#briefing-status").textContent(),/Study times added to your workspace/,"and recorded in it");
+// Undo removes them from the workspace and from the research card.
+await page.locator("#briefing-undo").tap();
+assert.match(await page.locator("#radar-results article",{hasText:preTitle}).textContent(),/EHY unavailable/,"undo resynchronizes the research card");
 // ---------- Times persist through the workspace file; "This week" lists research by EHY ----------
 await page.locator("#briefing-new").tap();
 // Use an open (not held) study: held studies are deliberately excluded from "This week".

@@ -13,6 +13,9 @@
 --     administratively, then insert that user id into allowed_owners.
 --  3. API: expose schema incomeos_private only after scripts/incomeos/verify-profile-rls.mjs passes.
 --  4. Keep the service-role key server-side only; the browser uses the publishable key.
+--  5. The app's Content-Security-Policy (owner/incomeos/vercel.json) allows only connect-src 'self';
+--     add exactly the private project origin when enabling. This is a security-boundary change
+--     and needs owner authorization; until then every profile-store call is blocked by the browser.
 --
 -- This migration contains no identities, keys or personal data.
 begin;

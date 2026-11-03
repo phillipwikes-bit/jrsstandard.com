@@ -32,7 +32,7 @@
     function on(name,fn){document.addEventListener(name,function(ev){fn(ev.detail);render();});}
     on("incomeos:profile",function(d){s.profile=d||null;});
     on("incomeos:profile-saved",function(d){if(d&&d.encrypted)s.profileSavedEncrypted=true;});
-    on("incomeos:workspace-loaded",function(d){s.workspace=!!d;s.workspaceDirty=false;});
+    on("incomeos:workspace-loaded",function(d){s.workspace=!!d;s.workspaceDirty=false;s.workspaceSavedEncrypted=false;});
     on("incomeos:workspace-changed",function(){s.workspaceDirty=true;});
     on("incomeos:workspace-saved",function(d){if(d&&d.encrypted){s.workspaceSavedEncrypted=true;s.workspaceDirty=false;}});
     on("incomeos:screened",function(){s.listings=true;});

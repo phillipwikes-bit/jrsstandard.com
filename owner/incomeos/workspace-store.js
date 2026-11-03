@@ -140,10 +140,11 @@
     var next=clone(validate(ws));
     if(!arr(next.accounts).some(function(a){return a.id===b.accountId;}))throw Error("Unknown account");
     if(!isDate(b.asOf))throw Error("Balance date required");
-    if(!Number.isFinite(Number(b.balanceUsd)))throw Error("Amount required");
+    var amt=String(b.balanceUsd==null?"":b.balanceUsd).trim();
+    if(!/^-?\d{1,12}(\.\d{1,2})?$/.test(amt))throw Error("Enter the balance amount, like 1200.00");
     if(["statement","institution_export","appraisal","owner_estimate"].indexOf(b.source)<0)throw Error("Source type required");
     if(typeof b.sourceRef!=="string"||!b.sourceRef.trim())throw Error("Say where the statement is kept");
-    next.balances=arr(next.balances).concat([{accountId:b.accountId,asOf:b.asOf,balanceUsd:String(b.balanceUsd),source:b.source,sourceRef:b.sourceRef.trim().slice(0,120)}]);
+    next.balances=arr(next.balances).concat([{accountId:b.accountId,asOf:b.asOf,balanceUsd:amt,source:b.source,sourceRef:b.sourceRef.trim().slice(0,120)}]);
     return log(next,"ADD_BALANCE",{accountId:b.accountId,asOf:b.asOf},b.asOf);
   }
   // Mark this week's eligible opportunities as already reported so they do not re-notify.

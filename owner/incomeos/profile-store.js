@@ -23,7 +23,10 @@
     if(email.length>254||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))throw err("INVALID_PROFILE","Enter a valid application email");
     if(li!==null&&!/^https:\/\/([a-z]{2,3}\.)?linkedin\.com\/in\/[A-Za-z0-9_-]{3,100}\/?$/.test(li))throw err("INVALID_PROFILE","LinkedIn must be an https://linkedin.com/in/... address");
     var q=Array.isArray(p.qualifications)?p.qualifications:String(p.qualifications||"").split(/\n/);
-    q=q.map(function(x){return String(x).trim();}).filter(Boolean).slice(0,40).map(function(x){return x.slice(0,300);});
+    // Cut by whole characters (never splitting an emoji) and stay well under the database's 16 KB limit.
+    q=q.map(function(x){return String(x).trim();}).filter(Boolean).slice(0,30).map(function(x){return Array.from(x).slice(0,200).join("");});
+    var bytes=typeof TextEncoder!=="undefined"?new TextEncoder().encode(JSON.stringify(q)).length:JSON.stringify(q).length*4;
+    if(bytes>12000)throw err("INVALID_PROFILE","Qualifications are too long; shorten some entries");
     return {full_name:name,application_email:email,qualifications:q,linkedin_url:li};
   }
   function fromRow(r){return r?{fullName:r.full_name,applicationEmail:r.application_email,qualifications:Array.isArray(r.qualifications)?r.qualifications:[],linkedinUrl:r.linkedin_url||"",updatedAt:r.updated_at||null}:null;}
@@ -60,12 +63,15 @@
       // Sends a code only to an existing user; never creates an account.
       requestCode:async function(email){
         if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(email||"")))throw err("INVALID_EMAIL","Enter your sign-in email");
-        await call("/auth/v1/otp",{method:"POST",body:{email:String(email).trim(),create_user:false}},false);
+        try{await call("/auth/v1/otp",{method:"POST",body:{email:String(email).trim(),create_user:false}},false);}
+        catch(e){if(e.code==="NETWORK"||e.code==="BACKEND_NOT_CONFIGURED")throw e;throw err("CODE_NOT_SENT","No code was sent. Use the email of the enrolled owner account; new accounts cannot be created here.");}
         return {sent:true};
       },
       verifyCode:async function(email,code){
         if(!/^\d{6,10}$/.test(String(code||"")))throw err("INVALID_CODE","Enter the code from the email");
-        var r=await call("/auth/v1/verify",{method:"POST",body:{type:"email",email:String(email).trim(),token:String(code)}},false);
+        var r;
+        try{r=await call("/auth/v1/verify",{method:"POST",body:{type:"email",email:String(email).trim(),token:String(code)}},false);}
+        catch(e){if(e.code==="NETWORK"||e.code==="BACKEND_NOT_CONFIGURED")throw e;throw err("INVALID_CODE","That code is wrong or has expired. Request a new code.");}
         if(!r||!r.access_token||!r.user||!r.user.id)throw err("SIGN_IN_FAILED","Sign-in was not confirmed.");
         session={accessToken:r.access_token,userId:r.user.id,expiresAt:Number(r.expires_at)||Math.floor(now()/1000)+Number(r.expires_in||3600)};
         return {userId:r.user.id};

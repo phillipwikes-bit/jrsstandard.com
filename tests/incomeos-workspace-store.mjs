@@ -38,6 +38,7 @@ assert.equal(w.claims[0].state,"CLAIM_FILED");
 // Balances need a known account, a date, an amount and a stated source.
 assert.throws(()=>WS.addBalance(w,{accountId:"ghost",asOf:"2026-11-01",balanceUsd:"1",source:"statement",sourceRef:"r"}),/Unknown account/);
 assert.throws(()=>WS.addBalance(w,{accountId:"chk",asOf:"2026-11-01",balanceUsd:"1",source:"statement",sourceRef:" "}),/where the statement/);
+for(const bad of ["",null,undefined,"abc","1.234"])assert.throws(()=>WS.addBalance(w,{accountId:"chk",asOf:"2026-11-01",balanceUsd:bad,source:"statement",sourceRef:"r"}),/balance amount/,"empty or malformed amount refused: "+bad);
 w=WS.addBalance(w,{accountId:"chk",asOf:"2026-11-01",balanceUsd:"2500",source:"statement",sourceRef:"Oct statement, filing cabinet"});
 assert.equal(w.balances.length,1);
 

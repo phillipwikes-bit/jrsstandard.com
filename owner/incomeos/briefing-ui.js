@@ -20,8 +20,8 @@
     function section(title){var s=el(out,"section",null,"briefing-section");el(s,"h4",title,"project-subhead");return s;}
     function arr(x){return Array.isArray(x)?x:[];}
     function act(fn,label){
-      try{var before=state.ws;state.ws=fn(state.ws);state.history.push(before);if(state.history.length>20)state.history.shift();state.dirty=true;
-        try{document.dispatchEvent(new CustomEvent("incomeos:workspace-changed"));}catch(e){}render();status.textContent=label+". Save the updated workspace to keep this change, or undo it.";}
+      try{var before=state.ws;state.ws=fn(state.ws);state.history.push(before);if(state.history.length>20)state.history.shift();state.dirty=true;clearTyped();
+        try{document.dispatchEvent(new CustomEvent("incomeos:workspace-changed"));}catch(e){}state.lastAct=label;render();status.textContent=label+". Save the updated workspace to keep this change, or undo it.";}
       catch(err){status.textContent="Not changed: "+err.message;}
     }
     function btn(p,text,onClick){var b=el(p,"button",text,"smallbtn");b.type="button";b.addEventListener("click",onClick);return b;}
@@ -37,6 +37,18 @@
       return {finishedAt:fin,summary:{ok:ok,failed:failed},connectors:screen.connectors};
     }
     function render(){
+      // Keep anything the owner has typed when a background event re-renders the panel.
+      var typed={};out.querySelectorAll("input[id],select[id]").forEach(function(e){if(e.type!=="file"&&e.type!=="password")typed[e.id]=e.value;});
+      var focused=document.activeElement&&out.contains(document.activeElement)?document.activeElement.id:null;
+      renderInner();
+      Object.keys(typed).forEach(function(id){var e=document.getElementById(id);if(e&&out.contains(e)&&e.value!==typed[id]&&typed[id]!==""){
+        if(e.tagName!=="SELECT"||Array.prototype.some.call(e.options,function(o){return o.value===typed[id];}))e.value=typed[id];}});
+      var kindSel=document.getElementById("add-kind");
+      if(kindSel&&kindSel.value==="income"){kindSel.dispatchEvent(new Event("change"));var cs=document.getElementById("add-cat");if(cs&&typed["add-cat"]&&Array.prototype.some.call(cs.options,function(o){return o.value===typed["add-cat"];}))cs.value=typed["add-cat"];}
+      if(focused){var f=document.getElementById(focused);if(f)f.focus();}
+    }
+    function clearTyped(){out.querySelectorAll("input[id]").forEach(function(e){if(e.type!=="file"&&e.type!=="password"&&e.type!=="date")e.value="";});}
+    function renderInner(){
       out.replaceChildren();
       var ws=state.ws||{schema:"incomeos.workspace.v1"},asOf=today(),r={};
       try{
@@ -110,7 +122,9 @@
         function select(p,id,label,opts){var w=el(p,"div");var l=el(w,"label",label);l.htmlFor=id;var x=el(w,"select");x.id=id;opts.forEach(function(o){var op=el(x,"option",o[1]);op.value=o[0];});return x;}
         var f1=el(s,"div",null,"briefing-actions");el(f1,"p","Income or expense");
         var lk=select(f1,"add-kind","Type",[["outflow","Expense"],["income","Income"]]),ld=field(f1,"add-date","Date","date",asOf),lp=field(f1,"add-payer","Payer or vendor"),
-          ll=field(f1,"add-label","Description"),la=field(f1,"add-amount","Amount (USD)","text"),lc=select(f1,"add-cat","Category",WS.COST_CATS.concat(WS.INCOME_CATS.filter(function(c){return WS.COST_CATS.indexOf(c)<0;})).map(function(c){return [c,c];}));
+          ll=field(f1,"add-label","Description"),la=field(f1,"add-amount","Amount (USD)","text"),lc=select(f1,"add-cat","Category",WS.COST_CATS.map(function(c){return [c,c];}));
+        // Only categories valid for the chosen type, so nothing is silently changed to "other".
+        lk.addEventListener("change",function(){var cats=lk.value==="income"?WS.INCOME_CATS:WS.COST_CATS;lc.replaceChildren();cats.forEach(function(c){var op=el(lc,"option",c);op.value=c;});});
         btn(f1,"Add entry",function(){act(function(w){return WS.addRecord(w,"ledger",{kind:lk.value,date:ld.value,payer:lp.value,label:ll.value,amountUsd:la.value,category:lc.value},asOf);},"Entry added");});
         var f2=el(s,"div",null,"briefing-actions");el(f2,"p","Account (for net worth)");
         var an=field(f2,"add-acct-name","Account name"),at=select(f2,"add-acct-type","Account type",WS.ACCOUNT_TYPES.map(function(t){return [t,t.replace(/_/g," ")];}));
@@ -139,15 +153,16 @@
       var f=input.files&&input.files[0];
       if(!f){status.textContent="Choose your workspace file first.";return;}
       if(f.size>5000000){status.textContent="Workspace file exceeds 5 MB.";return;}
-      try{var loaded=await WS.load(await f.text(),passInput&&passInput.value||"");if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");state.ws=loaded;announce();state.dirty=false;state.history=[];render();}
+      try{var text=await f.text(),loaded=await WS.load(text,passInput&&passInput.value||"");if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");state.ws=loaded;announce();if(WS.isEncrypted(text)){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}}state.dirty=false;state.history=[];render();}
       catch(err){status.textContent="Workspace rejected: "+err.message;}
       finally{input.value="";}
     });
     var newBtn=document.getElementById("briefing-new");
-    if(newBtn)newBtn.addEventListener("click",function(){state.ws=WS.newWorkspace(today());state.history=[];announce();state.dirty=true;render();status.textContent="New empty workspace. Add accounts and entries below, then save it encrypted.";});
+    if(newBtn)newBtn.addEventListener("click",function(){state.ws=WS.newWorkspace(today());state.history=[];state.dirty=true;state.lastAct=null;render();announce();
+      status.textContent="New empty workspace. Add accounts and entries below, then save it encrypted."+(state.lastAct?" "+state.lastAct+".":"");});
     if(undoBtn)undoBtn.addEventListener("click",function(){
       if(!state.history.length)return;
-      state.ws=state.history.pop();state.dirty=true;render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
+      state.ws=state.history.pop();state.dirty=true;clearTyped();try{document.dispatchEvent(new CustomEvent("incomeos:workspace-restored",{detail:state.ws}));}catch(e){}try{document.dispatchEvent(new CustomEvent("incomeos:workspace-changed"));}catch(e){}render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
     });
     if(saveBtn)saveBtn.addEventListener("click",async function(){
       if(!state.ws)return;

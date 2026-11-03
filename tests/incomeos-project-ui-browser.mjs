@@ -196,6 +196,18 @@ assert.match(await page.locator("#briefing-status").textContent(),/Not changed: 
 await page.locator("#add-amount").fill("85.00");
 await page.locator("#briefing-output").getByRole("button",{name:"Add entry"}).click();
 assert.match(await page.locator("#briefing-status").textContent(),/Entry added/);
+// Category choices follow the type; a half-typed field survives a background refresh.
+await page.locator("#add-kind").selectOption("income");
+const cats=await page.$$eval("#add-cat option",o=>o.map(x=>x.value));
+assert.ok(cats.includes("research")&&!cats.includes("software"),"income shows income categories only");
+await page.locator("#add-payer").fill("Half typed vendor");
+await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:research-screened",{detail:{asOf:"2026-11-03",results:[]}})));
+assert.equal(await page.locator("#add-payer").inputValue(),"Half typed vendor","typed text survives a re-render");
+assert.equal(await page.locator("#add-kind").inputValue(),"income");
+assert.ok((await page.$$eval("#add-cat option",o=>o.map(x=>x.value))).includes("research"),"category options still match income after re-render");
+// The checklist does not count a fresh workspace as saved.
+await page.locator("#briefing-new").click();
+assert.ok(!(await page.$$eval("#start-here-steps li",els=>els[4].textContent)).startsWith("Done:"),"new workspace is not saved");
 // By now: profile opened but not complete; workspace started and changed but not saved encrypted; listings screened.
 const steps=await page.$$eval("#start-here-steps li",els=>els.map(e=>e.textContent));
 assert.ok(steps[0].startsWith("Done: Open your qualification profile"));

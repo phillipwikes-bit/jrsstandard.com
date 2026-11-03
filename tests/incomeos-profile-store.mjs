@@ -47,8 +47,14 @@ await assert.rejects(store.save({fullName:"A",applicationEmail:"a@example.org"})
 // Sign-in never creates users; wrong code refused.
 await store.requestCode("owner@example.org");
 assert.equal(JSON.parse(calls.at(-1).opt.body).create_user,false);
-await assert.rejects(store.verifyCode("owner@example.org","000000"),e=>e.code==="SESSION_EXPIRED");
+await assert.rejects(store.verifyCode("owner@example.org","000000"),e=>e.code==="INVALID_CODE"&&/wrong or has expired/.test(e.message)&&!/not the enrolled owner/.test(e.message));
 await store.verifyCode("owner@example.org","123456");assert.equal(store.signedIn(),true);
+// Unknown account: no code, and a message that says why, without creating anything.
+const strict=PS.create(cfg,{fetch:async(u,o)=>u.includes("/auth/v1/otp")?{status:422,text:async()=>"{}"}:fakeFetch(u,o),now:()=>now});
+await assert.rejects(strict.requestCode("stranger@example.org"),e=>e.code==="CODE_NOT_SENT"&&/new accounts cannot be created/.test(e.message));
+// Qualifications: whole characters only, and too-long sets refused before the database would reject them.
+assert.equal(PS.validateProfile({fullName:"S",applicationEmail:"s@example.org",qualifications:["x".repeat(199)+"\u{1F600}"+"tail"]}).qualifications[0].length,201,"an emoji at the cut point is kept whole");
+assert.throws(()=>PS.validateProfile({fullName:"S",applicationEmail:"s@example.org",qualifications:Array(30).fill("\u00e9".repeat(200))}),/too long/);
 // Validation before any request.
 const before=calls.length;
 await assert.rejects(store.save({fullName:"",applicationEmail:"x"}),e=>e.code==="INVALID_PROFILE");

@@ -30,10 +30,21 @@
   var timeOverrides={},profileForNotes=null;
   document.addEventListener("incomeos:profile",function(ev){profileForNotes=ev.detail||null;if(latest)view();});
   // A loaded workspace restores saved study times; entries made here are sent to it.
+  function fromWorkspace(ws){
+    var t=ws&&ws.researchTimes,out={};
+    if(t&&typeof t==="object")Object.keys(t).forEach(function(id){var o=t[id];if(o&&typeof o==="object")out[id]={screenMinutes:o.screenMinutes,prepMinutes:o.prepMinutes,adminMinutes:o.adminMinutes,timeConfidence:o.timeConfidence==="verified"?"verified":"estimated"};});
+    return out;
+  }
+  // Undo: the cards mirror the restored workspace exactly.
+  document.addEventListener("incomeos:workspace-restored",function(ev){timeOverrides=fromWorkspace(ev.detail);if(latest)view();});
   document.addEventListener("incomeos:workspace-loaded",function(ev){
-    var t=ev.detail&&ev.detail.researchTimes;timeOverrides={};
+    var t=ev.detail&&ev.detail.researchTimes,prior=timeOverrides;timeOverrides={};
     if(t&&typeof t==="object")Object.keys(t).forEach(function(id){var o=t[id];if(o&&typeof o==="object")timeOverrides[id]={screenMinutes:o.screenMinutes,prepMinutes:o.prepMinutes,adminMinutes:o.adminMinutes,timeConfidence:o.timeConfidence==="verified"?"verified":"estimated"};});
+    // Times entered before this workspace was opened are kept and recorded in it, not discarded.
+    var carried=Object.keys(prior).filter(function(id){return !timeOverrides[id];});
+    carried.forEach(function(id){timeOverrides[id]=prior[id];});
     if(latest)view();
+    carried.forEach(function(id){emit("incomeos:research-time",{id:id,times:prior[id]});});
   });
   function emit(name,detail){if(name==="incomeos:research-screened")window.IncomeOSResearchLatest=detail;try{document.dispatchEvent(new CustomEvent(name,{detail:detail}));}catch(e){}}
   function combined(){
@@ -123,7 +134,7 @@
       var doc=JSON.parse(await f.text()),result=adapter.collect(doc);
       if(!result.accepted)throw new Error("No public opportunities passed intake verification ("+result.rejected.length+" rejected)");
       var parsed=result.items;
-      var existing=engine.dedupe(combined()).items,unique=engine.dedupe(existing.concat(parsed));
+      var existing=engine.dedupe(publicLeads.concat(db.leads)).items,unique=engine.dedupe(existing.concat(parsed));
       var incoming=unique.items.filter(function(x){return !publicLeads.some(function(p){return p.id===x.id;});});
       var added=incoming.filter(function(x){return !db.leads.some(function(e){return e.id===x.id;});}).length;
       if(!confirm("Review "+result.received+" public rows: "+result.accepted+" validated, "+result.rejected.length+" rejected, "+added+" new local candidates. Import validated records only? Availability and eligibility remain unconfirmed."))return;
