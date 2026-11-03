@@ -51,7 +51,7 @@ for(const page of [home,resources,organization]){
   assert.ok(!/request (?:a )?demo|start paid trial|buy a license/i.test(page),
    'practitioner pages must not become commercial funnels');
 }
-assert.match(training,/Six self-paced modules|six training modules|six modules/i);
+assert.match(training,/Six free modules|Six self-paced modules|six training modules|six modules/i);
 assert.match(guides,/Version 1\.1.*July 2026/);
 assert.match(resources,/published PDFs have not been certified/i);
 assert.match(home,/Field effectiveness not established/);
@@ -135,7 +135,7 @@ assert.ok(home.includes('href="#worked-record">See the three-step fictional exam
 assert.match(home,/Decision Reconstruction Risk \(DRR\)/);
 assert.match(resources,/Free JRS training and tools for practitioners/);
 assert.match(resources,/No platform purchase required/);
-assert.match(training,/Free, self-paced training for practitioners confronting Decision Reconstruction Risk \(DRR\)/);
+assert.match(training,/Six free modules to help practitioners examine Decision Reconstruction Risk \(DRR\)/);
 assert.match(guides,/For investigators doing the work/);
 assert.match(about,/Decision Reconstruction Risk \(DRR\)/);
 assert.match(organization,/does not offer organizational software, licensing, certification or validated operational effectiveness/i,
