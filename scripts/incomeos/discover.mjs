@@ -17,12 +17,18 @@ import {execFileSync} from "node:child_process";
 const require=createRequire(import.meta.url);
 const here=dirname(fileURLToPath(import.meta.url));
 const lib=join(here,"..","..","owner","incomeos");
-require(join(lib,"listing-requirements.js"));
-require(join(lib,"compensation.js"));
-const Opp=require(join(lib,"opportunity-normalizer.js"));
-require(join(lib,"eligibility-engine.js"));
-const Radar=require(join(lib,"project-radar.js"));
-const Discovery=require(join(lib,"discovery-connectors.js"));
+// The engines are browser scripts that also register on globalThis. If Node
+// treats them as ES modules (for example under a parent package.json with
+// "type":"module", as observed on a GitHub runner on 2026-11-03), module.exports
+// is never set, so read each engine from its global registration first.
+function load(file,globalName){const m=require(join(lib,file));const api=globalThis[globalName]||m;
+  if(!api||typeof api!=="object"||!Object.keys(api).length)throw Error("Engine failed to load: "+file);return api;}
+load("listing-requirements.js","IncomeOSRequirements");
+load("compensation.js","IncomeOSCompensation");
+const Opp=load("opportunity-normalizer.js","IncomeOSOpportunity");
+load("eligibility-engine.js","IncomeOSEligibility");
+const Radar=load("project-radar.js","IncomeOSProjectRadar");
+const Discovery=load("discovery-connectors.js","IncomeOSDiscovery");
 
 function arg(name){const i=process.argv.indexOf(name);return i>0?process.argv[i+1]:null;}
 const outDir=arg("--out")||"incomeos-discovery-out";
