@@ -54,6 +54,19 @@
              }).length;
              const title=(d.title||'').trim();
             const failures=[];
+            // A prior release contained the selected header wording in HTML
+            // but hid it with a mobile breakpoint. Require computed visibility
+            // at every audited viewport, including iPhone widths.
+            const motto=d.querySelector('.site-header-inner > .jrs-header-motto');
+            if(motto){
+              const label=motto.textContent.replace(/\\s+/g,' ').trim();
+              if(!label.includes('Check the record. No new software required.'))
+                failures.push('header-motto-wording');
+              if(!isVisible(w,motto))failures.push('header-motto-hidden');
+              const bounds=motto.getBoundingClientRect();
+              if(bounds.left < -1 || bounds.right > viewport + 1)
+                failures.push('header-motto-horizontal-overflow');
+            }
             // Exercise actual card semantics and a keyboard activation against
             // source-rendered Standard and Training routes.
             let keyboardCards=0;
