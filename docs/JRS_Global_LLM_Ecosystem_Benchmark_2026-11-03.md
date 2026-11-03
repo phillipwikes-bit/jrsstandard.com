@@ -2,7 +2,7 @@
 
 **Evidence date:** 3 November 2026  
 **Scope:** Frontier proprietary models, released and scheduled open-weight models, inference and orchestration frameworks, retrieval, governance, cost/latency, and user-interface patterns.  
-**Status:** External literature and vendor-documentation review. No new model has been tested on a JRS record corpus, no latency experiment performed, no independent platform accessibility audit conducted, and no implementation authorized by this report.
+**Status:** External literature and vendor-documentation review. No new model has been tested on a JRS record corpus, no latency experiment performed, no independent platform accessibility audit conducted, and no implementation authorized by this report. Source reconciliation is maintained in the [verification register](JRS_Global_LLM_Source_Verification_Register_2026-11-03.md), with a separate [controlled evaluation protocol](JRS_Controlled_Cross_Model_Evidence_Evaluation_Protocol_2026-11-03.md).
 
 ## Executive assessment
 
@@ -60,14 +60,15 @@ The total cost of an open-weight option includes hardware, quantization fidelity
 | --- | ---: |
 | GPT-6 Luna, $0.10 / $0.50 | **$3.00** |
 | DeepSeek V4.1 Flash 1017, $0.30 / $1.20 | **$8.40** |
-| Mistral Large 4, $0.70 / $2.10 | **$18.20** |
+| Mistral Large 4 launch/discounted $0.70 / $2.10 | **$18.20** |
+| Mistral Large 4 undiscounted documentation view $1.36 / $4.18 | **$35.56** |
 | GPT-6.1 Terra, $1 / $5 | **$30.00** |
 | GLM-5.3, $1.40 / $4.40 | **$36.80** |
 | GPT-6.1 Sol / Claude Sonnet 5.5 / Gemini 4 Argon introductory, $2 / $10 | **$60.00** |
 | Claude Opus 5.5, $4 / $20 | **$120.00** |
 | GPT-6 Astra, $10 / $50 | **$300.00** |
 
-Sources: [OpenAI](https://developers.openai.com/api/docs/models), [Anthropic Sonnet](https://platform.claude.com/docs/en/models/sonnet-5-5/overview), [Anthropic Opus](https://www.anthropic.com/claude-opus-5-5), [Google](https://ai.google.dev/gemini-api/docs/latest-model), [Mistral](https://docs.mistral.ai/models/mistral-large-4), [AA open-model comparison](https://artificialanalysis.ai/models/comparisons/deepseek-v4-1-flash-1017-vs-glm-5-3). For Gemini Argon the same illustrative workload would become **$120.00** at the announced December rates.
+Sources: [OpenAI](https://developers.openai.com/api/docs/models), [Anthropic Sonnet](https://platform.claude.com/docs/en/models/sonnet-5-5/overview), [Anthropic Opus](https://platform.claude.com/docs/en/about-claude/pricing), [Google](https://ai.google.dev/gemini-api/docs/latest-model), [Mistral launch price](https://mistral.ai/it/news/mistral-large-4-oss/), [Mistral model page](https://docs.mistral.ai/models/mistral-large-4-0), [AA open-model comparison](https://artificialanalysis.ai/models/comparisons/deepseek-v4-1-flash-1017-vs-glm-5-3). The Mistral sources display both discounted/launch and undiscounted values; a separate sale view reports $0.68/$2.09. This is a documented pricing discrepancy across official presentation states, **not** verified by an exact-endpoint procurement quote. For Gemini Argon the same illustrative workload would become **$120.00** at the announced December rates.
 
 **The price table is not a measured cost-performance Pareto frontier.** No model in it has been tested against a JRS gold dataset. Real processing may have hidden reasoning output, variable prompt length, cache effects, retries and human remediation cost.
 
@@ -91,7 +92,7 @@ A valid latency comparison must measure time to first token, time to first *answ
 
 ## 5. Safety, governance and alignment
 
-The [OWASP 2025 LLM risks](https://genai.owasp.org/llm-top-10/) include prompt injection, sensitive-data disclosure, poisoning, improper output handling, excessive agency and retrieval weaknesses. The [NIST AI RMF generative-AI profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) provides voluntary governance guidance, not a certification.
+The [OWASP LLM Top 10 for 2026](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) was published in August 2026 and is the current security reference. The earlier [2025 list](https://genai.owasp.org/llm-top-10/) addressed prompt injection, sensitive disclosure, poisoning, improper output handling, excessive agency and retrieval weaknesses; the earlier edition must not be presented as the current ranking. The [OWASP agentic guide](https://genai.owasp.org/2025/12/09/owasp-genai-security-project-releases-top-10-risks-and-mitigations-for-agentic-ai-security/) addresses additional agent action risks. The [NIST AI RMF generative-AI profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) provides voluntary governance guidance, not a certification.
 
 | Threat | Proposed system defense | Human acceptance condition |
 | --- | --- | --- |
@@ -139,7 +140,7 @@ The [OpenAI Agents tracing docs](https://openai.github.io/openai-agents-python/t
 - [DeepSeek 1017](https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017), [Mistral Large 4 weights](https://huggingface.co/blog/mistral-large4), [Meta models](https://dev.meta.ai/docs/models), [Reuters Kimi release schedule](https://www.reuters.com/technology/moonshot-curbs-hacking-ability-new-kimi-model-fears-grow-over-ai-powered-2026-10-24/). Open-weight availability/licensing.
 - [OpenAI agent safety](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals), [LangGraph interrupts](https://github.com/langchain-ai/docs/blob/main/src/oss/langgraph/interrupts.mdx), [LlamaIndex citation engine](https://developers.llamaindex.ai/python/framework-api-reference/query_engine/citation/), [vLLM](https://docs.vllm.cc/en/latest/index.html), [SGLang](https://sgl-project.github.io/). Implementation patterns, not operational validation.
 - [EMNLP evidence retrieval 2026](https://aclanthology.org/2026.findings-emnlp.2222/), [EMNLP extraction failures 2026](https://aclanthology.org/2026.emnlp-main.834/). Research limitations transferable as hypotheses.
-- [OWASP Top 10](https://genai.owasp.org/llm-top-10/) and [NIST GAI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence). Governance and threat categories.
+- [OWASP LLM Top 10 (current 2026)](https://genai.owasp.org/resource/owasp-genai-llm-top-10-2026/) and [NIST GAI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence). Governance and threat categories; neither certifies JRS.
 - [Open WebUI RAG](https://docs.openwebui.com/features/chat-conversations/rag/) and [Gemini Notebook source behavior](https://support.google.com/gemininotebook/answer/16262519?hl=en). UX reference patterns.
 
 **Excluded evidence:** Direct independent runtime benchmarks on one controlled JRS corpus; verified current commercial contracts; GPU TCO; live interactive tests of competing applications; model security penetration tests; latency under JRS concurrency; legal or accessibility certification. Public vendor capabilities must not be relabeled as completed JRS capabilities.
