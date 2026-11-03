@@ -314,3 +314,62 @@ test('suppression ablation is research-only: it changes derived status, never th
   assert.deepEqual(ab.suppressed_codes, ['SUBJECT_MISMATCH']);
   assert.equal(buildReport(s, { generated_at: T0 }).status, STATUS.HOLD, 'reports never apply suppression');
 });
+
+// ---- Owner review of PR #119 (2026-11-03): items 3, 4 and 5 ------------------
+test('READY reached by overriding a critical finding is conspicuous everywhere and never reads as support', () => {
+  let s = open('D02');
+  const f = findingOf(s, 'SUBJECT_MISMATCH');
+  s = act(s, { type: 'override', finding_id: f.finding_id, rationale: 'Trading name used on the portal; confirmed by phone, evidence to follow.' });
+  const st = deriveState(s);
+  assert.equal(st.status, STATUS.READY);
+  assert.equal(st.ready_by_override_of_critical, true);
+  assert.match(st.reasons[0], /^READY ONLY BY REVIEWER OVERRIDE/);
+  assert.match(st.reasons[0], /SUBJECT_MISMATCH/);
+  const c2 = st.claims.find((c) => c.claim_id === 'C2');
+  assert.equal(c2.support, 'CONTRADICTED_OR_CONFLICTING', 'an override is not evidence');
+  assert.equal(c2.sufficiency, 'NOT_ESTABLISHED');
+  const rep = buildReport(s, { generated_at: ts(2) });
+  assert.equal(rep.status_qualifier, 'READY_ONLY_BY_REVIEWER_OVERRIDE_OF_CRITICAL_FINDINGS');
+  const html = renderReportHtml(rep);
+  const q = html.indexOf('READY_ONLY_BY_REVIEWER_OVERRIDE_OF_CRITICAL_FINDINGS');
+  assert.ok(q > 0 && q < html.indexOf('<h2>1.'), 'qualifier appears before part 1, not only in part 7');
+  // A non-critical override does NOT produce the qualifier.
+  let s2 = open('D12');
+  const g = findingOf(s2, 'UNMAPPED_ASSERTION');
+  s2 = act(s2, { type: 'override', finding_id: g.finding_id, rationale: 'Background sentence; audit report is not a decision basis here.' });
+  assert.equal(deriveState(s2).ready_by_override_of_critical, false);
+  assert.equal(buildReport(s2, { generated_at: ts(2) }).status_qualifier, undefined);
+});
+
+test('data_classification is not trusted: identifier-like content is refused and never echoed', () => {
+  const cases = [
+    ['email', (r) => { r.sources[0].text += ' Contact dana.reyes@northwind-analytics.example for access.'; }, 'email address'],
+    ['national id', (r) => { r.text = r.text.replace('Dana Reyes approved', 'Dana Reyes (123-45-6789) approved'); r.claims[2].quote = r.claims[2].quote.replace('Dana Reyes approved', 'Dana Reyes (123-45-6789) approved'); }, 'national identifier'],
+    ['phone', (r) => { r.sources[2].text += ' Call +1 (555) 010-4477 to confirm.'; }, 'phone or account number'],
+    ['card-like number in a citation', (r) => { r.claims[0].citations[0].quote += ' 4111 1111 1111 1111'; }, 'phone or account number'],
+  ];
+  for (const [name, mutate, kind] of cases) {
+    const r = fx('P01'); mutate(r);
+    const v = validateRecord(r);
+    assert.equal(v.status, STATUS.REFUSED, name);
+    assert.equal(v.errors[0].code, 'PERSONAL_IDENTIFIER_PATTERN', name);
+    assert.match(v.errors[0].detail, new RegExp(kind));
+    assert.ok(!/@|123-45|555|4111/.test(JSON.stringify(v.errors)), `${name}: matched value must not be echoed`);
+  }
+  // Ordinary constructed content is not refused: ISO dates, document references.
+  assert.equal(validateRecord(fx('P01')).status, null);
+  // Classification must match exactly; near-misses are refused, not normalised.
+  for (const dc of ['Constructed_Fictional', 'constructed_fictional ', 'fictional', 'real_confidential', undefined]) {
+    const r = fx('P01'); r.data_classification = dc;
+    assert.equal(validateRecord(r).status, STATUS.REFUSED, String(dc));
+  }
+});
+
+test('authenticity limits are stated in reports and verifier output', () => {
+  const rep = buildReport(open('P01'), { generated_at: T0 });
+  assert.ok(rep.limitations.some((l) => /self-declared/.test(l) && /unsigned/.test(l) && /does not prove who performed/.test(l)));
+  assert.ok(rep.limitations.some((l) => /data_classification is declared/.test(l)));
+  const v = verifyExport(serializeExport(buildExport(open('P01'), { generated_at: T0 })));
+  assert.equal(v.verdict, VERDICT.CONSISTENT);
+  assert.match(v.meaning, /who performed the recorded actions/);
+});

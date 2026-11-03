@@ -31,6 +31,7 @@ mark.sel{background:var(--surface2);outline:1px solid var(--accent)}
 .s-READY_FOR_HUMAN_FINALIZATION{color:var(--ready-text)}
 .s-REVIEW_REQUIRED,.s-INCOMPLETE{color:var(--review-text)}
 .s-HOLD,.s-ERROR,.s-REFUSED_SCOPE{color:var(--stop-text)}
+.status.s-override{color:var(--stop-text);border-color:var(--stop)}
 ul{padding-left:18px;margin:4px 0}
 .finding{border:1px solid var(--rule);border-radius:4px;padding:8px;margin:6px 0;background:var(--surface2)}
 .finding[aria-current="true"]{border-color:var(--accent)}
@@ -54,7 +55,7 @@ body.pro .finding[aria-current="true"] .expl{display:block}
 <body>
 <header>
   <h1>DS-N1 Record Review</h1>
-  <span class="banner">New experimental candidate. Not the original Decision Spellchecker. Constructed fictional records only. Zero model calls.</span>
+  <span class="banner">New experimental candidate. Not the original Decision Spellchecker. Constructed fictional records only. Zero model calls. Reviewer names are self-declared and the log is unsigned: it does not prove who acted.</span>
 </header>
 <div class="row" style="padding:0 16px">
   <label for="fixture">Constructed record</label>

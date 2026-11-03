@@ -76,6 +76,8 @@ try {
       await card.locator('textarea').fill('Harbor Logistics is the trading name on the portal; confirmed with procurement.');
       await card.locator('button:text-is("Record action")').click();
       await page.waitForFunction(() => /critical finding\(s\) overridden/.test(document.getElementById('sumbody').textContent));
+      assert.match(await page.textContent('#statusbox'), /ONLY BY CRITICAL OVERRIDE/);
+      assert.match(await page.textContent('#sumbody'), /READY ONLY BY REVIEWER OVERRIDE/);
     });
 
     await check(`${label}: hostile record text is rendered inert`, async () => {
