@@ -122,3 +122,4 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 .briefing-actions{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-end;margin:6px 0 10px}
 .briefing-actions > div{min-width:0;flex:1 1 140px}
 .briefing-actions p{flex-basis:100%}
+.app-notes{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#f3f7f4;border:1px solid #d9e5de;border-radius:8px;padding:8px;max-width:100%}

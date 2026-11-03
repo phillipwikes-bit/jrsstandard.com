@@ -44,6 +44,9 @@
       var cur=p.conflicts&&Array.isArray(p.conflicts.organizations)?p.conflicts.organizations.join(", "):"";
       var orgs=field(cf,"cf-orgs","Organizations you must not work for (comma separated; leave empty if none)","text",cur);
       btn(cf,"I reviewed my conflicts today",function(){change(function(x){return PE.setConflicts(x,orgs.value,t,t);},"Conflict review recorded");});
+      var fe=el(root,"div",null,"briefing-actions");
+      var feIn=field(fe,"pf-former","Former employers (separate with semicolons; engagements mentioning them are flagged for your review)","text",Array.isArray(p.formerEmployers)?p.formerEmployers.join("; "):"");
+      btn(fe,"Save former employers",function(){change(function(x){return PE.setFormerEmployers(x,feIn.value);},"Former employers saved");});
       el(root,"h4","Hours, rate and focus","project-subhead");
       var pr=el(root,"div",null,"briefing-actions"),a=p.availability||{},pf=p.preferences||{};
       var hrs=field(pr,"pf-hours","Maximum hours per week","number",a.maxHoursPerWeek),rate=field(pr,"pf-rate","Minimum hourly rate (USD)","number",pf.minHourlyUsd);

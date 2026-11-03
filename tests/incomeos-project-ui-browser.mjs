@@ -164,6 +164,16 @@ assert.match(await page.locator("#profile-status").textContent(),/Marked documen
 assert.match(await page.locator("#project-status").textContent(),/^0 eligible/,"conflict review still missing");
 await page.locator("#profile-editor").getByRole("button",{name:"I reviewed my conflicts today"}).click();
 assert.match(await page.locator("#project-status").textContent(),/^2 eligible/,"documented profile restores eligibility without reloading");
+// Application notes on an eligible card use documented items only.
+const evalCard=page.locator("#project-results article",{hasText:"Remote AI Policy Evaluator"});
+await evalCard.getByRole("button",{name:"Prepare application notes"}).click();
+const notes=await evalCard.locator("pre.app-notes").textContent();
+assert.match(notes,/SYN MS/);assert.match(notes,/nothing has been submitted/);
+assert.match(await evalCard.textContent(),/Project work/,"engagement type shown");
+// Former employer named in a listing is flagged for the owner's review.
+await page.locator("#pf-former").fill("Synthetic Co");
+await page.locator("#profile-editor").getByRole("button",{name:"Save former employers"}).click();
+assert.match(await page.locator("#project-results").textContent(),/Needs your confidentiality review: mentions former employer: synthetic co/i);
 const [pdl]=await Promise.all([page.waitForEvent("download"),page.locator("#profile-save").click()]);
 assert.match(pdl.suggestedFilename(),/^incomeos-profile-\d{4}-\d{2}-\d{2}\.json$/);
 assert.match(await page.locator("#profile-status").textContent(),/WITHOUT encryption/);

@@ -78,6 +78,12 @@
     if(typeof x.focusKeywords==="string"){var f=x.focusKeywords.split(/[\n,;]/).map(function(s){return s.trim().toLowerCase();}).filter(Boolean).slice(0,60);if(f.length)next.preferences.focusKeywords=f;else delete next.preferences.focusKeywords;}
     return next;
   }
+  // Former employers: used only to flag engagements that touch them for the owner's own ethics review.
+  function setFormerEmployers(p,text){
+    var next=clone(check(p));
+    next.formerEmployers=String(text||"").split(/[\n;]/).map(function(s){return s.trim();}).filter(function(s){return s.length>=4;}).slice(0,50);
+    return next;
+  }
   // What still blocks eligibility, in plain words.
   function readiness(p){
     check(p);var gaps=[];
@@ -90,7 +96,7 @@
     if(!p.preferences||!Array.isArray(p.preferences.acceptedClassifications)||!p.preferences.acceptedClassifications.length)gaps.push("Accepted work types (contractor, part-time) not set");
     return {ready:gaps.length===0,gaps:gaps};
   }
-  var api=Object.freeze({SCHEMA:SCHEMA,items:items,markDocumented:markDocumented,undocument:undocument,setWorkAuthorization:setWorkAuthorization,setConflicts:setConflicts,setWorkPreferences:setWorkPreferences,readiness:readiness});
+  var api=Object.freeze({SCHEMA:SCHEMA,items:items,markDocumented:markDocumented,undocument:undocument,setWorkAuthorization:setWorkAuthorization,setConflicts:setConflicts,setWorkPreferences:setWorkPreferences,setFormerEmployers:setFormerEmployers,readiness:readiness});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSProfileEditor=api;
 }(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:null)));

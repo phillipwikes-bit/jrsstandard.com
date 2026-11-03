@@ -56,11 +56,31 @@
     function card(root,row,kind){
       var o=row.opportunity,c=el(root,"article",null,"radar-card");
       el(c,"strong",String(o.title).slice(0,140));
+      var EG=window.IncomeOSEngagement;
+      if(EG){
+        var txt=[o.title,o.descriptionExcerpt].join(". "),kindLabel={EXPERT_CONSULTATION:"Expert consultation",RESEARCH_STUDY:"Research study",EMPLOYMENT:"Employment",PROJECT_WORK:"Project work",UNCLASSIFIED:"Type unclear"}[EG.classify(txt)];
+        el(c,"p",kindLabel,"muted");
+        var risk=EG.confidentialityRisks([txt,o.employer,o.platform].join(". "),state.profile&&state.profile.formerEmployers);
+        if(risk.requiresOwnerReview){var rl=el(c,"p","Needs your confidentiality review: "+risk.flags.map(function(f){return f.replace(/_/g," ").toLowerCase();}).join("; ")+". "+risk.note,"tag-hold");}
+      }
       el(c,"p",String(o.platform||o.employer).slice(0,80)+" · "+(o.remoteMode||"remote unknown")+" · effective "+money(row.economics.effectiveHourlyUsd)+(row.economics.status!=="UNVERIFIED"?" ("+row.economics.status.toLowerCase().replace(/_/g," ")+", before taxes)":" ("+row.economics.reasons.join(", ").toLowerCase().replace(/_/g," ")+")"));
       el(c,"p","Deadline: "+(o.deadline||"none published")+" · last verified "+o.lastVerifiedOn+(row.duplicates.length?" · "+row.duplicates.length+" duplicate copies merged":""));
       if(kind==="eligible"){
         var ul=el(c,"ul");basis(row).forEach(function(b){el(ul,"li",b);});
         safeLink(c,o.applyUrl,"Open application (you decide whether to apply)");
+        if(window.IncomeOSEngagement){
+          var nb=el(c,"button","Prepare application notes");nb.type="button";nb.className="smallbtn";
+          nb.addEventListener("click",function(){
+            var notes;try{notes=window.IncomeOSEngagement.applicationNotes(o,row.decision,state.profile);}catch(err){el(c,"p",err.message,"tag-hold");return;}
+            var pre=el(c,"pre",notes.text,"app-notes");pre.tabIndex=0;
+            var cb=el(c,"button","Copy notes");cb.type="button";cb.className="smallbtn";
+            cb.addEventListener("click",function(){
+              function select(){var r=document.createRange();r.selectNodeContents(pre);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);}
+              try{navigator.clipboard.writeText(notes.text).then(function(){cb.textContent="Copied";},function(){select();cb.textContent="Selected: copy manually";});}catch(e){select();cb.textContent="Selected: copy manually";}
+            });
+            nb.disabled=true;
+          });
+        }
       }else{
         var ul2=el(c,"ul");row.decision.unresolved.slice(0,8).forEach(function(u){el(ul2,"li",u.replace(/^[^:]*:/,"").replace(/_/g," ").toLowerCase());});
         o.requirements.slice(0,6).forEach(function(r){el(c,"p","Source: “"+String(r.sourceText||"").slice(0,180)+"”"+(r.mandatory?"":" (optional)"));});
