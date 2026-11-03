@@ -253,6 +253,28 @@ def main():
                     "NOT_ASSESSED", "NOT_ASSESSED", "NOT_ASSESSED",
                     "", "", "", ""
                 ])
+    # Fail closed if the reviewer worksheet has shifted columns or lost a page.
+    with worksheet.open("r", encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        expected_columns = [
+            "source_pdf", "source_blob_sha", "page", "extraction_flags",
+            "automated_review_focus", "source_pages", "raw_characters",
+            "layout_characters", "token_discrepancy", "order_agreement",
+            "reading_order_review", "heading_structure_review",
+            "table_and_list_review", "link_and_reference_review",
+            "figures_and_alt_text_review", "source_equivalence_review",
+            "reviewer", "review_date", "issue_reference", "editorial_notes",
+        ]
+        if reader.fieldnames != expected_columns:
+            raise SystemExit("Release hold: PDF reviewer worksheet schema mismatch")
+        rows = list(reader)
+        if len(rows) != sum(len(asset["page_review"]) for asset in reports):
+            raise SystemExit("Release hold: PDF reviewer worksheet page count mismatch")
+        for row in rows:
+            if None in row or not row["automated_review_focus"] or row["source_equivalence_review"] != "NOT_ASSESSED":
+                raise SystemExit("Release hold: malformed or prematurely approved PDF review row")
+            if row["reviewer"] or row["review_date"] or row["issue_reference"]:
+                raise SystemExit("Release hold: automated worksheet must not impersonate human review")
     print(f"PASS: {len(reports)} locked public PDF sources extracted into unapproved editorial review candidates.")
     print("BLOCKED: PDF reading order, accessible reissues and screen-reader acceptance remain NOT ASSESSED.")
 
