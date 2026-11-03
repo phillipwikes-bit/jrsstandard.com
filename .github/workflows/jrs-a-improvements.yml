@@ -16,6 +16,8 @@ jobs:
           persist-credentials: false
       - name: Validate practitioner routes and non-sensitive events
         run: node tests/jrs-a-improvements.test.mjs
+      - name: Check guide heading order and PDF structure preflight without certification claims
+        run: node tests/jrs-accessibility-acceptance.test.mjs
       - name: Preserve existing homepage and resource directory contracts
         run: |
           node tests/jrs-practitioner-journey.mjs
