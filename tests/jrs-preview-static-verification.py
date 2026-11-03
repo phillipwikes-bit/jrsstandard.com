@@ -5,6 +5,7 @@ This verifies static publication bytes for the exact checked-out PR head. It doe
 not certify visual quality, authenticated APIs, privacy execution or production.
 A Vercel sign-in page, stale preview, HTTP error or missing URL is a release HOLD.
 """
+import ast
 import hashlib
 import json
 import os
@@ -13,7 +14,7 @@ from pathlib import Path
 import subprocess
 import sys
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -79,6 +80,8 @@ def self_test():
             fail("preview verifier regression: " + name)
         print("PASS: preview verifier", name)
     print("PASS: narrow Vercel feedback allowance, no arbitrary source modifications.")
+    assert len(sitewide_paths()) == 60
+    print("PASS: exact 60-route website source and redirect coverage.")
     locked = json.loads((ROOT / "docs/JRS_Published_PDF_Identity_Manifest.json").read_text("utf-8"))
     published = {a["file"] for a in locked["assets"]}
     checked = set(DOWNLOADS.values()) | set(REFERENCE_FILES)
@@ -210,6 +213,79 @@ def verify_downloads(base, parsed):
             fail(path + ": delivered PDF bytes differ from the release candidate")
         print("PASS: tracked download", path, sha(data)[:16])
 
+# The browser WCAG preflight is the authority for public HTML inventory. Do
+# not claim whole-site identity by checking only the seven headline routes.
+SITEWIDE_AUDIT = ROOT / "tests/jrs-wcag-axe-browser.html"
+CANONICAL_REDIRECTS = {"/privacy.html": "/privacy-notice.html"}
+
+def sitewide_paths():
+    match = re.search(r"const routes=(\\[[\\s\\S]*?\\]);", SITEWIDE_AUDIT.read_text("utf-8"))
+    if not match:
+        fail("source WCAG public-route inventory unavailable")
+    try:
+        paths = ast.literal_eval(match.group(1))
+    except (ValueError, SyntaxError):
+        fail("source WCAG route inventory malformed")
+    if (not isinstance(paths, list) or len(paths) != 60 or
+            len(set(paths)) != 60 or
+            any(not isinstance(p, str) or
+                not re.fullmatch(r"/(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+\\.html", p)
+                for p in paths)):
+        fail("expected exactly 60 safe, unique public HTML routes")
+    redirects = json.loads((ROOT / "vercel.json").read_text("utf-8")).get("redirects", [])
+    for alias, dest in CANONICAL_REDIRECTS.items():
+        if alias not in paths or dest not in paths:
+            fail("canonical privacy redirect omitted from sitewide scan")
+        valid = [r for r in redirects if r.get("source") == alias and
+                 r.get("destination") == dest and r.get("permanent") is False]
+        if len(valid) != 1:
+            fail("sitewide canonical redirect differs from deployed routing policy")
+    for path in paths:
+        source = CANONICAL_REDIRECTS.get(path, path)
+        if not (ROOT / source.lstrip("/")).is_file():
+            fail("public source page missing: " + source)
+    return paths
+
+def verify_sitewide(base, parsed):
+    no_redirect = build_opener(NoRedirect)
+    paths = sitewide_paths()
+    for route in paths:
+        req = verified_request(base + route, parsed)
+        try:
+            with no_redirect.open(req, timeout=20) as response:
+                code = response.status
+                received = response.read(3_000_001)
+                kind = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
+                served = urlparse(response.url)
+                location = response.headers.get("Location", "")
+        except HTTPError as exc:
+            code = exc.code
+            received = b""
+            kind = ""
+            served = urlparse(base + route)
+            location = exc.headers.get("Location", "")
+        except (URLError, TimeoutError, OSError) as error:
+            fail(route + ": sitewide preview unavailable (" + network_failure(error) + ")")
+        if route in CANONICAL_REDIRECTS:
+            # Vercel's declared 307/308 canonicalization must stay on the
+            # current origin. Never follow a redirect while holding credentials.
+            target = urlparse(urljoin(base + route, location))
+            if (code not in (307, 308) or target.scheme != "https" or
+                target.netloc != parsed.netloc or
+                target.path != CANONICAL_REDIRECTS[route] or
+                target.query or target.fragment):
+                fail(route + ": unexpected sitewide canonical redirect")
+            print("PASS: hosted alias", route, "->", target.path)
+            continue
+        if (code != 200 or kind != "text/html" or
+                served.netloc != parsed.netloc or len(received) > 3_000_000):
+            fail(route + ": not an exact-host public HTML response")
+        source = (ROOT / route.lstrip("/")).read_bytes()
+        if not matches_release_source(received, source, route):
+            fail(route + ": hosted public-page bytes differ from candidate")
+        print("PASS: hosted public route", route, sha(source)[:16])
+    print("PASS: complete 60-route protected public HTML source identity and canonical redirect policy.")
+
 def fail(reason):
     raise SystemExit("RELEASE HOLD: " + reason)
 
@@ -259,7 +335,8 @@ def main():
             print("INFO: exact Vercel Live footer verified for", local)
         print("PASS:", local, sha(expected)[:16])
     verify_downloads(base, parsed)
-    print("PASS: sampled hosted static source matches the exact PR head.")
+    verify_sitewide(base, parsed)
+    print("PASS: sampled and sitewide hosted static source match the exact PR head.")
     print("PASS: ten tracked PDF routes, including all nine locked originals, deliver identical files.")
     print("NOT CERTIFIED: screen reader testing, PDF tagging, runtime privacy, or production deployment.")
 
