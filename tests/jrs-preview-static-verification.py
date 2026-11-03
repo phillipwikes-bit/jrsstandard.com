@@ -6,6 +6,7 @@ not certify visual quality, authenticated APIs, privacy execution or production.
 A Vercel sign-in page, stale preview, HTTP error or missing URL is a release HOLD.
 """
 import hashlib
+import json
 import os
 import re
 from pathlib import Path
@@ -26,8 +27,9 @@ CHECKS = {
     "/assets/jrs-resource-catalog.js": "assets/jrs-resource-catalog.js",
 }
 
-# These nine public PDF routes must deliver their exact local file bytes. All
-# verification requests use src=verify to avoid contaminating download metrics.
+# Ten tracked public PDF routes must deliver their exact local file bytes:
+# all nine locked edition originals plus the separately tracked DRR article.
+# Verification uses src=verify to avoid contaminating download metrics.
 DOWNLOADS = {
     "standard": "JRS-Standard.pdf",
     "card": "JRS_Rapid_Review_Card.pdf",
@@ -38,7 +40,10 @@ DOWNLOADS = {
     "paper": "JRS_Research_Paper.pdf",
     "accuracy": "JRS_Reliability_Accuracy.pdf",
 }
-REFERENCE_FILE = "JRS-Reference-9d4f2a7c.pdf"
+REFERENCE_FILES = (
+    "JRS-Reference-9d4f2a7c.pdf",
+    "JRS_Investigator_Field_Guide.pdf",
+)
 
 # Vercel may append its own preview feedback script AFTER the published HTML.
 # Accept only this exact platform trailer, never changes to the JRS source.
@@ -74,12 +79,21 @@ def self_test():
             fail("preview verifier regression: " + name)
         print("PASS: preview verifier", name)
     print("PASS: narrow Vercel feedback allowance, no arbitrary source modifications.")
+    locked = json.loads((ROOT / "docs/JRS_Published_PDF_Identity_Manifest.json").read_text("utf-8"))
+    published = {a["file"] for a in locked["assets"]}
+    checked = set(DOWNLOADS.values()) | set(REFERENCE_FILES)
+    if len(locked["assets"]) != 9 or len(published) != 9 or not published.issubset(checked):
+        fail("tracked PDF route coverage does not include every locked published edition")
+    if len(checked) != 10:
+        fail("tracked PDF route inventory unexpectedly changed")
+    print("PASS: all nine locked original PDF editions covered by ten tracked routes.")
     # Diagnostics must not expose a response body, host or query token in
     # public CI logs. Do not infer which authorization layer rejected a 403.
     hidden = "private-token-do-not-print"
     for code, expected in [
         (401, "HTTP 401: access refused"),
         (403, "HTTP 403: access refused"),
+        (302, "HTTP 302: unexpected preview redirect"),
         (404, "HTTP 404: exact preview"),
         (402, "HTTP 402: deployment"),
         (429, "HTTP 429: request"),
@@ -107,6 +121,8 @@ def network_failure(error):
             return ("HTTP " + str(code) +
                     ": access refused; inspect Vercel preview authentication/"
                     "Trusted Sources and application authorization")
+        if code in (301, 302, 303, 307, 308):
+            return "HTTP " + str(code) + ": unexpected preview redirect; check authentication"
         if code == 404:
             return "HTTP 404: exact preview file or route unavailable"
         if code == 402:
@@ -154,7 +170,8 @@ def verify_downloads(base, parsed):
     from urllib.parse import urlencode
     requests = [(urlencode({"e": edition, "src": "verify"}), path)
                 for edition, path in DOWNLOADS.items()]
-    requests.append((urlencode({"f": REFERENCE_FILE, "src": "verify"}), REFERENCE_FILE))
+    requests.extend((urlencode({"f": path, "src": "verify"}), path)
+                    for path in REFERENCE_FILES)
     no_redirect = build_opener(NoRedirect)
     for query, path in requests:
         url = base + "/api/dl?" + query
@@ -243,7 +260,7 @@ def main():
         print("PASS:", local, sha(expected)[:16])
     verify_downloads(base, parsed)
     print("PASS: sampled hosted static source matches the exact PR head.")
-    print("PASS: nine tracked PDF routes redirect and deliver identical files.")
+    print("PASS: ten tracked PDF routes, including all nine locked originals, deliver identical files.")
     print("NOT CERTIFIED: screen reader testing, PDF tagging, runtime privacy, or production deployment.")
 
 if __name__ == "__main__":
