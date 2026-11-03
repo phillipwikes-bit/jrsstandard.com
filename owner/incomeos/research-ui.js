@@ -29,6 +29,13 @@
   // They fill gaps the source did not publish; a source value is never overwritten silently.
   var timeOverrides={},profileForNotes=null;
   document.addEventListener("incomeos:profile",function(ev){profileForNotes=ev.detail||null;if(latest)view();});
+  // A loaded workspace restores saved study times; entries made here are sent to it.
+  document.addEventListener("incomeos:workspace-loaded",function(ev){
+    var t=ev.detail&&ev.detail.researchTimes;timeOverrides={};
+    if(t&&typeof t==="object")Object.keys(t).forEach(function(id){var o=t[id];if(o&&typeof o==="object")timeOverrides[id]={screenMinutes:o.screenMinutes,prepMinutes:o.prepMinutes,adminMinutes:o.adminMinutes,timeConfidence:o.timeConfidence==="verified"?"verified":"estimated"};});
+    if(latest)view();
+  });
+  function emit(name,detail){if(name==="incomeos:research-screened")window.IncomeOSResearchLatest=detail;try{document.dispatchEvent(new CustomEvent(name,{detail:detail}));}catch(e){}}
   function combined(){
     return publicLeads.concat(db.leads).map(function(x){
       var o=timeOverrides[x.id];if(!o)return x;
@@ -38,6 +45,7 @@
   function view(){
     var root=$("radar-results");root.replaceChildren();
     latest=engine.digest(combined(),db.preferences,today());
+    emit("incomeos:research-screened",{asOf:latest.date,results:latest.results.map(function(v){return {id:v.candidate.id,title:v.candidate.title,provider:v.candidate.provider,priority:v.priority,effectiveHourlyYield:v.effectiveHourlyYield,paymentUsd:v.candidate.paymentUsd,paymentForm:v.paymentForm,deadline:v.deadline,url:v.candidate.url,timeConfidence:v.timeConfidence};})});
     $("radar-count").textContent=latest.scanned+" sourced candidates · "+latest.priority+" for preliminary review · "+latest.duplicateCount+" duplicate records suppressed";
     if(!latest.results.length){add(root,"p","muted","No sourced study candidates are loaded. Import reviewed public listings or check the existing dated research cards.");return;}
     var visible=latest.results.slice(0,60);
@@ -74,9 +82,10 @@
         function val(i){return i.value===""?null:Number(i.value);}
         var o={screenMinutes:val(tS),prepMinutes:val(tP),adminMinutes:val(tA),timeConfidence:tc.value};
         try{engine.candidate(Object.assign({},s,o));}catch(e){$("radar-status").textContent="Times not used: "+e.message;return;}
-        timeOverrides[s.id]=o;view();$("radar-status").textContent="Times applied in this session only for "+s.title+". EHY and ranking updated; nothing was stored.";
+        timeOverrides[s.id]=o;view();emit("incomeos:research-time",{id:s.id,times:o});
+        $("radar-status").textContent="Times applied for "+s.title+". EHY and ranking updated. To keep them, have a workspace open in \"This week\" and save it.";
       });
-      if(timeOverrides[s.id]){var tr=add(tdet,"button","textbtn","Clear my times");tr.type="button";tr.addEventListener("click",function(){delete timeOverrides[s.id];view();});}
+      if(timeOverrides[s.id]){var tr=add(tdet,"button","textbtn","Clear my times");tr.type="button";tr.addEventListener("click",function(){delete timeOverrides[s.id];view();emit("incomeos:research-time",{id:s.id,times:null});});}
       // Application notes from the loaded qualification profile (documented items only).
       var nb=add(controls,"button","textbtn","Prepare application notes");nb.type="button";
       nb.addEventListener("click",function(){

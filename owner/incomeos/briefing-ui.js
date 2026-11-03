@@ -11,7 +11,8 @@
       passInput=document.getElementById("briefing-passphrase"),saveBtn=document.getElementById("briefing-save"),undoBtn=document.getElementById("briefing-undo"),WS=window.IncomeOSWorkspace;
     var E={rules:window.IncomeOSLedgerRules,nw:window.IncomeOSNetWorth,claims:window.IncomeOSClaims,ren:window.IncomeOSRenewals,intel:window.IncomeOSIntelligence,rh:window.IncomeOSRecruiterHistory,yc:window.IncomeOSYieldCompare,wb:window.IncomeOSWeeklyBriefing,life:window.IncomeOSLifecycle};
     if(!input||!button||!status||!out||!WS||Object.keys(E).some(function(k){return !E[k];}))return;
-    var state={ws:null,screen:null,dirty:false,history:[]};
+    var state={ws:null,screen:null,dirty:false,history:[],research:window.IncomeOSResearchLatest||null};
+    function announce(){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:state.ws}));}catch(e){}}
     function today(){var d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,"0"),String(d.getDate()).padStart(2,"0")].join("-");}
     function el(p,tag,text,cls){var e=document.createElement(tag);if(text!=null)e.textContent=String(text);if(cls)e.className=cls;p.appendChild(e);return e;}
     function link(p,url,label){try{var u=new URL(url);if(u.protocol!=="https:")return;}catch(e){return;}var a=el(p,"a",label);a.href=url;a.target="_blank";a.rel="noopener noreferrer";a.referrerPolicy="no-referrer";}
@@ -56,6 +57,15 @@
       if(!a.needsYou.length)el(s,"p","Nothing needs you right now.","muted");
       else{var ul=el(s,"ul");a.needsYou.slice(0,25).forEach(function(x){el(ul,"li",(x.priority===1?"Urgent: ":"")+x.text,x.priority===1?"tag-hold":null);});}
       if(a.highestValue.length){s=section("Highest-value eligible work");var u2=el(s,"ul");a.highestValue.forEach(function(h){var li=el(u2,"li",h.title+" ("+h.platform+"), about "+money(h.effectiveHourlyUsd)+"/h before tax ");link(li,h.sourceUrl,"source");});}
+      if(state.research&&state.research.results.length){
+        var rOpen=state.research.results.filter(function(x){return x.priority!=="HOLD";});
+        s=section("Paid research by effective hourly yield");
+        var withEhy=rOpen.filter(function(x){return x.effectiveHourlyYield!==null;}).slice(0,3);
+        if(!withEhy.length)el(s,"p","No open study has complete time information yet. Enter screener, prep and follow-up time on a research card.","muted");
+        else{var ur=el(s,"ul");withEhy.forEach(function(x){var li=el(ur,"li",x.title+" ("+x.provider+"): "+money(x.effectiveHourlyYield)+"/hr effective, advertised "+money(x.paymentUsd)+(x.paymentForm!=="cash"?" ("+x.paymentForm.replace("_"," ")+")":"")+(x.timeConfidence==="estimated"?", time estimated":"")+" ");link(li,x.url,"application");});}
+        rOpen.filter(function(x){return x.deadline&&(Date.parse(x.deadline)-Date.parse(asOf))/86400000<=7&&x.deadline>=asOf;}).forEach(function(x){el(s,"p","Deadline "+x.deadline+": "+x.title,"tag-hold");});
+        el(s,"p",rOpen.length+" open studies; advertised pay is not earned income.","muted");
+      }
       s=section("Official searches due");
       if(!r.due.length)el(s,"p","No unclaimed-property searches due.","muted");
       else{var u3=el(s,"ul");r.due.forEach(function(d){var li=el(u3,"li",d.name+" ("+d.reason.replace(/_/g," ").toLowerCase()+"). "+(/^UNCONFIRMED|confirm the state/.test(d.urlStatus)?"Check the address first. ":""));link(li,d.url,"open");
@@ -128,12 +138,12 @@
       var f=input.files&&input.files[0];
       if(!f){status.textContent="Choose your workspace file first.";return;}
       if(f.size>5000000){status.textContent="Workspace file exceeds 5 MB.";return;}
-      try{var loaded=await WS.load(await f.text(),passInput&&passInput.value||"");if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");state.ws=loaded;state.dirty=false;state.history=[];render();}
+      try{var loaded=await WS.load(await f.text(),passInput&&passInput.value||"");if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");state.ws=loaded;announce();state.dirty=false;state.history=[];render();}
       catch(err){status.textContent="Workspace rejected: "+err.message;}
       finally{input.value="";}
     });
     var newBtn=document.getElementById("briefing-new");
-    if(newBtn)newBtn.addEventListener("click",function(){state.ws=WS.newWorkspace(today());state.history=[];state.dirty=true;render();status.textContent="New empty workspace. Add accounts and entries below, then save it encrypted.";});
+    if(newBtn)newBtn.addEventListener("click",function(){state.ws=WS.newWorkspace(today());state.history=[];announce();state.dirty=true;render();status.textContent="New empty workspace. Add accounts and entries below, then save it encrypted.";});
     if(undoBtn)undoBtn.addEventListener("click",function(){
       if(!state.history.length)return;
       state.ws=state.history.pop();state.dirty=true;render();status.textContent="Last change undone. Save to keep the workspace as it is now.";
@@ -148,6 +158,11 @@
       }catch(err){status.textContent="Not saved: "+err.message;}
     });
     window.addEventListener("beforeunload",function(e){if(state.dirty){e.preventDefault();e.returnValue="";}});
+    document.addEventListener("incomeos:research-screened",function(ev){state.research=ev.detail||null;render();});
+    document.addEventListener("incomeos:research-time",function(ev){
+      var d=ev.detail;if(!d||!state.ws)return;
+      act(function(w){return d.times?WS.setResearchTime(w,d.id,d.times,today()):WS.clearResearchTime(w,d.id,today());},d.times?"Study times added to your workspace":"Study times removed from your workspace");
+    });
     document.addEventListener("incomeos:screened",function(ev){state.screen=ev.detail||null;render();});
     render();
   }

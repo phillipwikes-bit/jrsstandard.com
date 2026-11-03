@@ -44,6 +44,14 @@ assert.equal(w.balances.length,1);
 w=WS.markAlerted(w,["o1","o2","o1"],"2026-11-03");assert.deepEqual(plain(w.previousAlertIds).sort(),["o1","o2"]);
 assert.deepEqual(plain(w.changeLog.map(c=>c.action)),["ACCEPT_CATEGORY_PROPOSAL","RECORD_SEARCH","RECORD_SEARCH","OPEN_CLAIM","ADVANCE_CLAIM","ADVANCE_CLAIM","ADD_BALANCE","MARK_ALERTED"]);
 
+// Study time entries: validated like the research engine, logged, removable.
+let rt=WS.setResearchTime(w,"study-abc1",{screenMinutes:"5",prepMinutes:0,adminMinutes:"",timeConfidence:"verified"},"2026-11-03");
+assert.deepEqual(plain(rt.researchTimes["study-abc1"]),{screenMinutes:5,prepMinutes:0,adminMinutes:null,timeConfidence:"verified",enteredOn:"2026-11-03"});
+assert.throws(()=>WS.setResearchTime(w,"study-abc1",{prepMinutes:-1},"2026-11-03"),/Invalid preparation/);
+assert.throws(()=>WS.setResearchTime(w,"x",{},"2026-11-03"),/Invalid study id/);
+assert.equal(WS.setResearchTime(w,"study-abc2",{timeConfidence:"anything"},"2026-11-03").researchTimes["study-abc2"].timeConfidence,"estimated","unknown confidence never upgrades to verified");
+rt=WS.clearResearchTime(rt,"study-abc1","2026-11-03");assert.equal(rt.researchTimes["study-abc1"],undefined);
+assert.equal(rt.changeLog.at(-1).action,"CLEAR_RESEARCH_TIME");
 // Unknown sections (for example a pasted password) are rejected.
 assert.throws(()=>WS.validate({schema:"incomeos.workspace.v1",password:"x"}),/Unrecognized sections: password/);
 

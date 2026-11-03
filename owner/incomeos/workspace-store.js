@@ -7,7 +7,7 @@
   // storage or the network: the owner saves the returned file themselves.
   // Encryption matches vault.js: PBKDF2-SHA256 (600,000 iterations) and AES-256-GCM.
   var FORMAT="incomeos-workspace",ITERATIONS=600000,SCHEMA="incomeos.workspace.v1";
-  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog"];
+  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes"];
   var dep=function(name,file){return root&&root[name]||(typeof require==="function"?require(file):null);};
   function isDate(x){return typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+"T00:00:00Z"));}
   function clone(x){return JSON.parse(JSON.stringify(x));}
@@ -28,7 +28,7 @@
   function newWorkspace(on){
     return {schema:SCHEMA,note:"Private IncomeOS workspace created "+(isDate(on)?on:"")+". Keep outside the repository; save encrypted.",
       ledger:[],rules:[],accounts:[],balances:[],claims:[],livedInStates:["MD"],searchHistory:[],serviceNotes:[],offers:[],
-      yieldParams:{amountUsd:0,horizonMonths:12,federalRatePct:0,stateRatePct:0,needLiquidity:true},researchStages:[],recruiterOf:{},verifiedPayments:{},lifecycle:[],previousAlertIds:[],changeLog:[]};
+      yieldParams:{amountUsd:0,horizonMonths:12,federalRatePct:0,stateRatePct:0,needLiquidity:true},researchStages:[],recruiterOf:{},verifiedPayments:{},lifecycle:[],previousAlertIds:[],changeLog:[],researchTimes:{}};
   }
   var ACCOUNT_TYPES=["checking","savings","money_market","cd","treasury","brokerage","retirement","hsa","real_estate","vehicle","receivable","other_asset","credit_card","mortgage","auto_loan","student_loan","personal_loan","tax_owed","other_liability"];
   var INCOME_CATS=["research","evaluation","business","royalty","rental","interest","dividend","investment","reward","recovery","employment","pension","retirement","socialsecurity","unemployment","other"];
@@ -66,6 +66,22 @@
     }else throw Error("Unknown section");
     next[section]=list.concat([rec]);
     return log(next,"ADD_"+section.toUpperCase(),{id:rec.id||rec.vendor},on);
+  }
+  // Owner-entered study time components, keyed by research study id. Same limits as the research engine.
+  function setResearchTime(ws,studyId,t,on){
+    if(!isDate(on))throw Error("Date required");
+    if(typeof studyId!=="string"||!/^[a-zA-Z0-9][a-zA-Z0-9_-]{3,89}$/.test(studyId))throw Error("Invalid study id");
+    function mins(v,name){if(v===null||v===undefined||v==="")return null;var n=Number(v);if(!Number.isFinite(n)||n<0||n>1440)throw Error("Invalid "+name+" minutes");return n;}
+    var rec={screenMinutes:mins(t.screenMinutes,"screener"),prepMinutes:mins(t.prepMinutes,"preparation"),adminMinutes:mins(t.adminMinutes,"follow-up"),
+      timeConfidence:t.timeConfidence==="verified"?"verified":"estimated",enteredOn:on};
+    var next=clone(validate(ws));next.researchTimes=Object.assign({},next.researchTimes&&typeof next.researchTimes==="object"&&!Array.isArray(next.researchTimes)?next.researchTimes:{});
+    next.researchTimes[studyId]=rec;
+    if(Object.keys(next.researchTimes).length>2000)throw Error("Too many study time entries");
+    return log(next,"SET_RESEARCH_TIME",{studyId:studyId,timeConfidence:rec.timeConfidence},on);
+  }
+  function clearResearchTime(ws,studyId,on){
+    var next=clone(validate(ws));if(next.researchTimes)delete next.researchTimes[studyId];
+    return log(next,"CLEAR_RESEARCH_TIME",{studyId:studyId},on);
   }
   function setYieldParams(ws,y,on){
     var next=clone(validate(ws)),p={amountUsd:Number(y.amountUsd),horizonMonths:Number(y.horizonMonths),federalRatePct:Number(y.federalRatePct),stateRatePct:Number(y.stateRatePct),needLiquidity:y.needLiquidity===true};
@@ -171,7 +187,7 @@
     if(isEncrypted(text)){if(!passphrase)throw Error("This workspace is encrypted. Enter its passphrase.");return decrypt(passphrase,text);}
     return validateDoc(JSON.parse(text));
   }
-  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
+  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
     addBalance:addBalance,markAlerted:markAlerted,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSWorkspace=api;
