@@ -178,7 +178,7 @@
       "sourceFiles": [
         "owner/incomeos/project-radar.js"
       ],
-      "purpose": "Screening pipeline: freshness, risk, problems, engine eligibility, economics, ranking, alerts",
+      "purpose": "Screening pipeline: freshness, risk, problems, engine eligibility, economics, ranking, alerts; focus-area relevance ordering with off-focus listings counted and revealable, never silently dropped",
       "operationalState": "IMPLEMENTED_AND_VERIFIED",
       "externalDependencies": [],
       "securityClassification": "PUBLIC_LOGIC",
@@ -410,11 +410,12 @@
       "externalDependencies": [],
       "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
       "knownDefects": [
-        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
       ],
       "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
         "tests/incomeos-plan-features.mjs",
-        "tests/incomeos-owner-profile.mjs"
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "requiredRemediation": "Phase 1 protected storage, then dashboard review queue",
       "acceptanceCriteria": "No entry changed without owner acceptance; splits sum exactly"
@@ -430,11 +431,12 @@
       "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
       "knownDefects": [
         "Balances are owner-supplied; no institution connection",
-        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
       ],
       "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
         "tests/incomeos-plan-features.mjs",
-        "tests/incomeos-owner-profile.mjs"
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "requiredRemediation": "Authorized balance imports",
       "acceptanceCriteria": "Report labelled PARTIAL whenever any listed account is missing or stale"
@@ -451,11 +453,12 @@
       "knownDefects": [
         "Treasury Hunt and PBGC addresses unconfirmed (labelled)",
         "Billing-error deadline is an estimate to confirm with the issuer",
-        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
       ],
       "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
         "tests/incomeos-plan-features.mjs",
-        "tests/incomeos-owner-profile.mjs"
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "requiredRemediation": "Owner confirms remaining source addresses",
       "acceptanceCriteria": "Recovered funds counted only with a bank reference, once"
@@ -471,11 +474,12 @@
       "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
       "knownDefects": [
         "Renewal dates are estimates from payment history",
-        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
       ],
       "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
         "tests/incomeos-plan-features.mjs",
-        "tests/incomeos-owner-profile.mjs"
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "requiredRemediation": "Owner notes per service",
       "acceptanceCriteria": "No cancellation proposed for a service marked necessary"
@@ -491,11 +495,12 @@
       "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
       "knownDefects": [
         "No history recorded yet",
-        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
       ],
       "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
         "tests/incomeos-plan-features.mjs",
-        "tests/incomeos-owner-profile.mjs"
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "requiredRemediation": "Owner records application stages",
       "acceptanceCriteria": "No rate shown below the sample floor"
@@ -512,11 +517,12 @@
       "knownDefects": [
         "Offers are owner-entered; no live rate feed",
         "Treasury market-price risk not modelled",
-        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
       ],
       "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
         "tests/incomeos-plan-features.mjs",
-        "tests/incomeos-owner-profile.mjs"
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "requiredRemediation": "Use verified investable surplus from capital-readiness",
       "acceptanceCriteria": "Stale or unsourced offers excluded; no purchase instruction"
@@ -532,14 +538,37 @@
       "securityClassification": "OWNER_PRIVATE_LOGIC_PUBLIC_CODE",
       "knownDefects": [
         "No delivery channel authorized",
-        "Not wired to the dashboard: persistent owner data is blocked by the staging interlock until protected storage exists"
+        "Shown read-only in the 'This week' panel from a memory-only workspace file; no persistence until Phase 1 protected storage"
       ],
       "testCoverage": [
+        "tests/incomeos-owner-profile.mjs",
         "tests/incomeos-plan-features.mjs",
-        "tests/incomeos-owner-profile.mjs"
+        "tests/incomeos-project-ui-browser.mjs"
       ],
       "requiredRemediation": "Owner chooses a delivery channel",
       "acceptanceCriteria": "Quiet weeks produce no notification; repeat items do not re-notify"
+    },
+    {
+      "featureId": "UI-002",
+      "sourceFiles": [
+        "owner/incomeos/briefing-ui.js",
+        "owner/incomeos/owner-workspace.template.json",
+        "owner/incomeos/index.html"
+      ],
+      "purpose": "'This week' panel: five owner questions, needs-you list, official searches due, net worth, renewals, yields, recruiter history, proposals, system health; memory-only workspace file",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Verified locally only (Playwright, iPhone 13 emulation, synthetic workspace); not deployed",
+        "Owner maintains the workspace file by hand or through ChatGPT until protected storage exists"
+      ],
+      "testCoverage": [
+        "tests/incomeos-project-ui-browser.mjs",
+        "tests/incomeos-owner-profile.mjs"
+      ],
+      "requiredRemediation": "Phase 1 protected hosting and storage",
+      "acceptanceCriteria": "No storage writes, unknown workspace sections rejected, only https links rendered, no horizontal scroll"
     }
   ]
 }
