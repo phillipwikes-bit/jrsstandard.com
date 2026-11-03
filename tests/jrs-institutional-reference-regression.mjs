@@ -70,6 +70,17 @@ assert.ok(css.includes('flex-wrap:wrap!important')&&
 assert.doesNotMatch(css,/\.jrs-header-motto\s*\{\s*display:\s*none\s*!important/,
   'responsive stylesheet must not hide the selected header on phones or tablets');
 
+// The logo and two deliberate text lines occupy the same header row.
+assert.match(css,/\.site-header-inner > \.jrs-header-motto strong\s*\{[\s\S]*?display:block!important/,
+ 'second slogan phrase must start its own line beside the JRS wordmark');
+assert.match(css,/@media\(max-width:1020px\)\{[\s\S]*?\.site-header-inner:has\(> \.jrs-header-motto\)\s*\{\s*flex-wrap:nowrap!important/,
+ 'standard phone and tablet widths must keep slogan next to JRS');
+assert.match(css,/@media\(max-width:650px\)\{[\s\S]*?\.site-header-inner > \.header-meta\s*\{\s*display:none!important/,
+ 'mobile header must give the slogan space instead of clipping it behind metadata');
+assert.match(css,/@media\(max-width:280px\)\{[\s\S]*?flex-wrap:wrap!important/,
+ 'extreme zoom must allow both slogan lines to wrap without clipping');
+
+
 const pages=[
  'index.html','resources.html','research.html','investigator-guides.html',
  'manifest.html','about.html','contact.html','jrsstandard.html','training.html',
