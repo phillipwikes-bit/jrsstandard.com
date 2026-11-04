@@ -147,3 +147,21 @@ This does not create a new JRS legal entity, certify JRS as an international sta
 References:
 - https://developers.google.com/search/docs/appearance/site-names
 - https://developers.google.com/search/docs/appearance/structured-data/breadcrumb
+
+## Problem-led internal links and source discovery audit (3 November 2026)
+
+Search behavior can be oriented to professional problems such as reconstructing an investigation record, source-less AI drafting and chronology gaps, rather than depending on the audience already knowing the JRS or DRR brand. We therefore added contextual links from three established public references:
+
+- The primary DRR definition now directs readers to a constructed source-note comparison, AI drafting failure-mode guidance and an institution-facing briefing. It makes explicit that a documentation gap does not prove the underlying decision was wrong.
+- The practitioner essay *Why Good Decisions Fail on Paper* directs readers to the DRR risk definition, the constructed challenge and the separate JRS/DRR terminology page, retaining the essay's independent narrative purpose.
+- The Decision Context Loss reference now identifies its relationship to DRR and the distinct JRS review method, with practical links to the source challenge and local seven-point questions. The three pages do not add personal-data collection, new analytics or new sales assertions.
+
+The source regression now requires discoverability paths, physically present destinations, HTTPS canonical tags, sitemap inclusion for priority references, and the continued absence of private owner and non-public engine pages from the sitemap. These checks are not a Search Console URL Inspection result or proof of indexing.
+
+**Known canonical discrepancy to investigate after protected-hosted access is available:** 17 sitemap `/reference/` directory entries use trailing slashes, while the corresponding HTML currently declares canonicals without trailing slashes. The sitemap and HTML source disagree on the preferred URL string. Changing all reference paths speculatively could produce unexpected redirects or duplicate URLs; a hosted HTTP redirect and Google-selected canonical audit is required before selecting the canonical spelling. Until then the regression accepts both forms on the 17 existing reference-directory paths but forbids missing priority pages or new host mismatches. Do not describe the site as having passed an exhaustive hosted canonical check.
+
+**Measurement:** Google Search Console connection returned no accessible properties in this session. No query impressions, rank growth, AI citations, organic traffic lifts, institutional conversions or external mentions can be attributed to these source changes. Once authorized access is available, use URL Inspection and finalized web Search Analytics by query/page (not full-page query cartesian grouping) to establish a baseline. Bing Webmaster Tools AI Performance and Topics Portfolio are optional supplemental sources and are not currently verified as connected.
+
+**Release:** All changes are candidate source on draft PR #121, dependent on PR #117. Do not merge, publish, issue IndexNow notifications, submit a sitemap or claim a search ranking change prior to owner authorization and successful exact-head hosted release gates.
+
+Official search sources: https://developers.google.com/search/docs/appearance/ai-features and https://developers.google.com/search/docs/fundamentals/ai-optimization-guide and https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/

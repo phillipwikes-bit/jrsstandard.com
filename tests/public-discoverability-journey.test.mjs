@@ -88,3 +88,67 @@ for(const term of ['select_content','jrs_link_copied','share sheet','supplementa
   assert.ok(privacy.includes(term),'privacy notice must describe '+term);
 }
 console.log('PASS: existing-tag GA4 reference selections, voluntary share/copy events, privacy scope and no new tracking tag.');
+
+
+// Non-branded discovery paths must resolve through real, canonically indexed public sources.
+// These are source-level tests only. They do not claim Google has indexed or ranked the page.
+const discoverable=[
+  ['decision-reconstruction-risk.html',[
+    'worked-example-ai-record.html#record-challenge',
+    '/reference/ai-assisted-record-failure-modes/',
+    'institutional-briefing.html'
+  ]],
+  ['why-good-decisions-fail.html',[
+    'decision-reconstruction-risk.html',
+    'worked-example-ai-record.html#record-challenge',
+    'terminology.html'
+  ]],
+  ['reference/decision-context-loss/index.html',[
+    '/decision-reconstruction-risk.html',
+    '/terminology.html',
+    '/worked-example-ai-record.html#record-challenge'
+  ]]
+];
+const priority=[
+  'decision-reconstruction-risk.html',
+  'why-good-decisions-fail.html',
+  'reference/ai-assisted-record-failure-modes/index.html',
+  'reference/decision-context-loss/index.html',
+  'terminology.html','worked-example-ai-record.html','institutional-briefing.html'
+];
+const rootUrl='https://www.jrsstandard.com/';
+const sitemap=read('sitemap.xml');
+assert.ok(read('robots.txt').includes('Sitemap: '+rootUrl+'sitemap.xml'),
+  'search bot discovery must use the actual published canonical sitemap');
+assert.ok(!sitemap.includes('programme-status-9872fb93cc94'),
+  'owner-only dashboard must never be included in public sitemap');
+assert.ok(!sitemap.includes('review-engine.html'),
+  'non-public engine must not be promoted in search sitemap');
+for(const path of priority){
+  const html=read(path);
+  const rel=path.endsWith('/index.html')?path.slice(0,-10):path;
+  const canonical=(html.match(/<link\b[^>]*rel="canonical"\s+href="([^"]+)"/)||[])[1];
+  assert.ok(canonical && canonical.startsWith(rootUrl),'missing HTTPS canonical for '+path);
+  // Directory reference URLs currently have a known trailing-slash mismatch
+  // between sitemap and canonical. Preserve host behavior pending hosted redirect audit.
+  const equivalents=new Set([canonical,canonical.endsWith('/')?canonical.slice(0,-1):canonical+'/']);
+  assert.ok(urls.some(u=>equivalents.has(u)),'priority page absent from sitemap: '+path);
+  assert.ok(!/<meta\b[^>]*name="robots"[^>]*noindex/i.test(html.slice(0,html.indexOf('</head>'))),
+    'priority public reference must not be noindex: '+path);
+}
+for(const [path,links] of discoverable){
+  const html=read(path);
+  for(const dest of links){
+    assert.ok(html.includes('href="'+dest+'"'),'missing contextual link from '+path+' to '+dest);
+    const absolute=new URL(dest,rootUrl+(path.endsWith('/index.html')?path:path)).pathname;
+    const target=absolute.endsWith('/')?absolute.slice(1)+'index.html':absolute.slice(1);
+    assert.ok(existsSync(join(root,target)),'dead contextual source destination '+dest);
+  }
+}
+const drrPage=read('decision-reconstruction-risk.html');
+assert.ok(drrPage.includes('A missing documented basis identifies a review limitation'),
+  'DRR must not equate missing documentation with an unproven underlying event');
+const worked=read('worked-example-ai-record.html');
+assert.ok(worked.includes('entirely')||worked.includes('constructed'),
+  'linked example must preserve its synthetic-data boundary');
+console.log('PASS: DRR and practitioner pages have verifiable internal paths, public canonicals and evidence boundaries.');
