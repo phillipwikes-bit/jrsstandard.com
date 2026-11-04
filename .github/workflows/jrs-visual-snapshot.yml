@@ -178,6 +178,59 @@ jobs:
             echo "RELEASE HOLD: invalid ephemeral CI identity" >&2; exit 1
           fi
           echo "::add-mask::$oidc"
+          # Validate expected public identity claims before presenting this
+          # token to Vercel. Parsing is not signature verification: Vercel
+          # validates the issuer signature and actual Trusted Sources policy.
+          JRS_EPHEMERAL_OIDC_TOKEN="$oidc" python3 - <<'PY'
+          import base64
+          import json
+          import os
+          import sys
+          import time
+
+          def refuse():
+              raise SystemExit("RELEASE HOLD: GitHub OIDC identity claims differ from CI release context")
+
+          try:
+              token = os.environ["JRS_EPHEMERAL_OIDC_TOKEN"]
+              fields = token.split(".")
+              if len(fields) != 3:
+                  refuse()
+              payload = fields[1]
+              decoded = base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4))
+              claims = json.loads(decoded)
+              if not isinstance(claims, dict):
+                  refuse()
+              repo = os.environ["GITHUB_REPOSITORY"]
+              owner = os.environ["GITHUB_REPOSITORY_OWNER"]
+              ref = os.environ["GITHUB_REF"]
+              workflow_ref = os.environ["GITHUB_WORKFLOW_REF"]
+              if os.environ["GITHUB_EVENT_NAME"] not in ("pull_request", "workflow_dispatch"):
+                  refuse()
+              expected = {
+                  "iss": "https://token.actions.githubusercontent.com",
+                  "repository": repo,
+                  "ref": ref,
+                  "workflow_ref": workflow_ref,
+              }
+              if any(claims.get(k) != v for k, v in expected.items()):
+                  refuse()
+              audience = claims.get("aud")
+              if isinstance(audience, str):
+                  audience = [audience]
+              if not isinstance(audience, list) or "https://github.com/" + owner not in audience:
+                  refuse()
+              now = int(time.time())
+              issued, expires = claims.get("iat"), claims.get("exp")
+              if not isinstance(issued, int) or not isinstance(expires, int):
+                  refuse()
+              if issued > now + 90 or expires <= now or expires > now + 3600:
+                  refuse()
+          except (ValueError, KeyError, TypeError, IndexError, OverflowError):
+              refuse()
+          print("PASS: ephemeral GitHub OIDC issuer, audience, repository, ref, workflow and expiry match this CI context")
+          print("INFO: Vercel Trusted Source requires GitHub Actions issuer, repository and default audience, restricted to Preview; signature and authorization remain Vercel's responsibility")
+          PY
           printf 'JRS_VERCEL_TRUSTED_OIDC_TOKEN=%s\n' "$oidc" >> "$GITHUB_ENV"
           echo "INFO: obtained masked, short-lived same-repo GitHub OIDC identity; Vercel trust still required"
 
