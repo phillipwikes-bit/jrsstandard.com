@@ -27,7 +27,12 @@
   function persist(){if(window.IncomeOSFinancialReadOnly===true){$("radar-status").textContent="Personal study tracking is disabled in unapproved staging.";return false;}try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){$("radar-status").textContent="Research changes could not be saved to local storage.";return false;}}
   // Owner-entered time components, held in page memory only (never stored).
   // They fill gaps the source did not publish; a source value is never overwritten silently.
-  var timeOverrides={},profileForNotes=null,wsOpen=false;
+  var timeOverrides={},profileForNotes=null,wsOpen=false,received={},receivedSig="";
+  // Amounts actually received for studies, from income records in the open workspace that carry the study reference.
+  function receivedFrom(ws){var out={};(ws&&Array.isArray(ws.ledger)?ws.ledger:[]).forEach(function(e){
+    if(e&&e.kind==="income"&&e.status==="paid"&&typeof e.reference==="string"&&e.reference.indexOf("study:")===0){var id=e.reference.slice(6),g=Number(e.grossUsd);if(Number.isFinite(g)&&g>0)out[id]=Math.round(((out[id]||0)+g)*100)/100;}});return out;}
+  function syncReceived(ws){var r=receivedFrom(ws),sig=JSON.stringify(r);received=r;if(sig!==receivedSig){receivedSig=sig;return true;}return false;}
+  document.addEventListener("incomeos:workspace-changed",function(ev){if(ev.detail&&typeof ev.detail==="object"&&syncReceived(ev.detail)&&latest)view();});
   // Study progress lives in the owner's workspace file when one is open (browser storage is blocked in staging).
   function progressFrom(ws){var out={},p=ws&&ws.researchProgress;if(p&&typeof p==="object"&&!Array.isArray(p))Object.keys(p).forEach(function(id){var st=p[id]&&p[id].status;if(statuses.includes(st))out[id]=st;});return out;}
   document.addEventListener("incomeos:profile",function(ev){profileForNotes=ev.detail||null;if(latest)view();});
@@ -38,9 +43,9 @@
     return out;
   }
   // Undo: the cards mirror the restored workspace exactly.
-  document.addEventListener("incomeos:workspace-restored",function(ev){timeOverrides=fromWorkspace(ev.detail);db.progress=progressFrom(ev.detail);if(latest)view();});
+  document.addEventListener("incomeos:workspace-restored",function(ev){timeOverrides=fromWorkspace(ev.detail);db.progress=progressFrom(ev.detail);syncReceived(ev.detail);if(latest)view();});
   document.addEventListener("incomeos:workspace-loaded",function(ev){
-    wsOpen=true;
+    wsOpen=true;syncReceived(ev.detail);
     // Progress marked before the workspace was opened is kept and recorded in it, not discarded.
     var priorProgress=db.progress||{},fromWs=progressFrom(ev.detail);db.progress=fromWs;
     Object.keys(priorProgress).forEach(function(id){if(!fromWs[id]&&statuses.includes(priorProgress[id])&&priorProgress[id]!=="New"){db.progress[id]=priorProgress[id];emit("incomeos:research-progress",{id:id,status:priorProgress[id]});}});
@@ -71,6 +76,11 @@
       add(heading,"strong","",s.title);add(heading,"span","",v.priority.replaceAll("_"," "));
       add(div,"p","muted",s.provider+" · "+s.mode+" · "+s.minutes+" minute session · advertised "+usd(s.paymentUsd)+" · "+(s.eventEnd?(s.dateType==="application-deadline"?"application deadline ":"last published session date ")+s.eventEnd:"no published application deadline"));
       add(div,"p","muted",v.effectiveHourlyYield===null?"EHY unavailable: "+(v.ehyMissing&&v.ehyMissing.length?"missing "+v.ehyMissing.join(", ")+" time.":"time not established."):("Effective hourly yield "+rate(v.effectiveHourlyYield)+"/hr · "+v.totalMinutes+" minutes total ("+s.minutes+" session + "+s.screenMinutes+" screener + "+s.prepMinutes+" prep + "+s.adminMinutes+" follow-up) · time "+v.timeConfidence));
+      // Realised yield: what was actually received, over the total time, once the payment is recorded in Income.
+      if(wsOpen&&received[s.id]){
+        var got=received[s.id],conf={verified:"confirmed times",estimated:"estimated times"}[v.timeConfidence]||"unconfirmed times";
+        add(div,"p","realised",v.totalMinutes?"Realised: received "+rate(got)+", about "+rate(got*60/v.totalMinutes)+"/hr over "+v.totalMinutes+" minutes ("+conf+").":"Realised: received "+rate(got)+". Hourly rate unavailable until all time components are entered.");
+      }
       add(div,"p","muted","Advertised "+usd(s.paymentUsd)+" ("+({cash:"cash",gift_card:"gift card",points:"points",unknown:"payment form not stated"}[v.paymentForm]||"payment form not stated")+"). Advertised pay is not earned income.");
       add(div,"p","muted","Session-only equivalent "+rate(v.sessionRate)+"/hr"+(v.sessionPlusScreenRate===null?" · screening effort unknown":" · including specified screening "+rate(v.sessionPlusScreenRate)+"/hr")+". Selection and payment are not guaranteed.");
       if(s.eligibility.length)add(div,"p","muted","Published requirements: "+s.eligibility.join("; "));

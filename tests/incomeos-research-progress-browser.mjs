@@ -60,6 +60,10 @@ await page.waitForFunction(()=>/Study progress saved in your workspace: Applied/
  assert.equal(await page.locator("#ledger-list .entry").count(),before+1,"saved once by the owner");
  assert.doesNotMatch(await page.locator("#briefing-output").textContent(),/Paid studies not yet in Income/,"gone once recorded");
  await nav("research");
+ // The card now shows what was actually received, and a realised hourly rate when all time components are known.
+ {const cardText=await page.locator("article.radar-card",{has:page.locator(`select[aria-label="${label}"]`)}).textContent();
+  assert.match(cardText,/Realised: received \$[\d,]+\.\d\d(, about \$[\d,]+\.\d\d\/hr over \d+ minutes \((confirmed|estimated|unconfirmed) times\)\.|\. Hourly rate unavailable until all time components are entered\.)/);
+  assert.equal(await page.locator("p.realised").count(),1,"only the recorded study shows a realised line");}
  await page.locator("article.radar-card",{has:page.locator(`select[aria-label="${label}"]`)}).getByRole("button",{name:"Record this payment in Income"}).click();
  assert.match(await page.locator("#receipt-editing").textContent(),/^Already recorded for this study\. Editing: /);
  assert.equal(await page.locator("#ledger-list .entry").count(),before+1,"no second record");
