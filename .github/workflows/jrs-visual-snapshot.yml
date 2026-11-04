@@ -14,6 +14,11 @@ permissions:
   id-token: write # short-lived trusted-source identity, never repository secret
 jobs:
   visual-snapshots:
+    # This job can mint a short-lived OIDC token. Never execute source from
+    # forked PRs in a token-enabled job, even if the later token step is skipped.
+    # A forked PR may alter browser fixtures or test scripts used before that
+    # step. The entire job must be excluded, not just the token request.
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact PR source
