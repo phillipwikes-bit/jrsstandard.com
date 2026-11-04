@@ -1,0 +1,102 @@
+{
+  "format": "JRS public source index",
+  "format_version": "1.0",
+  "as_of_date": "2026-11-04",
+  "site": "https://www.jrsstandard.com/",
+  "purpose": "Static public bibliography for human and machine-assisted source selection. This is not a standards edition, licensed data feed, application API, or evaluation service.",
+  "canonical_entity": {
+    "name": "Justification Review Standard",
+    "short_name": "JRS",
+    "related_term": "Decision Reconstruction Risk (DRR)",
+    "type": "pre-finalization documentation-review methodology",
+    "source": "https://www.jrsstandard.com/jrsstandard.html"
+  },
+  "review_conditions": [
+    {
+      "name": "Reconstructability",
+      "source": "https://www.jrsstandard.com/jrsstandard.html"
+    },
+    {
+      "name": "Basis Identification",
+      "source": "https://www.jrsstandard.com/jrsstandard.html"
+    },
+    {
+      "name": "Chronology",
+      "source": "https://www.jrsstandard.com/jrsstandard.html"
+    },
+    {
+      "name": "Decision-Process Traceability",
+      "source": "https://www.jrsstandard.com/jrsstandard.html"
+    },
+    {
+      "name": "Evidentiary Sufficiency",
+      "source": "https://www.jrsstandard.com/jrsstandard.html"
+    }
+  ],
+  "publication_distinction": "Online methodology v1.0 and published Standard PDF v2.0 are distinct references. Compare editions before citation; no equivalence is asserted.",
+  "sources": [
+    {
+      "id": "home",
+      "title": "JRS homepage",
+      "url": "https://www.jrsstandard.com/",
+      "scope": "overview and current boundaries"
+    },
+    {
+      "id": "methodology-online-v1",
+      "title": "Online JRS methodology v1.0",
+      "url": "https://www.jrsstandard.com/jrsstandard.html",
+      "scope": "five conditions and review procedure"
+    },
+    {
+      "id": "editions",
+      "title": "Publication edition comparison",
+      "url": "https://www.jrsstandard.com/editions.html",
+      "scope": "publication identifiers and edition distinctions"
+    },
+    {
+      "id": "resources",
+      "title": "Practitioner resource directory",
+      "url": "https://www.jrsstandard.com/resources.html",
+      "scope": "ungated review resources and field guides"
+    },
+    {
+      "id": "check",
+      "title": "Seven-point record check",
+      "url": "https://www.jrsstandard.com/check.html",
+      "scope": "browser-local non-scoring review aid"
+    },
+    {
+      "id": "training",
+      "title": "Reviewer training",
+      "url": "https://www.jrsstandard.com/training.html",
+      "scope": "self-paced instructional resources"
+    },
+    {
+      "id": "research",
+      "title": "Research and limitations",
+      "url": "https://www.jrsstandard.com/research.html",
+      "scope": "research methods and evidentiary boundaries"
+    },
+    {
+      "id": "research-summary",
+      "title": "Detection study summary",
+      "url": "https://www.jrsstandard.com/research-summary.html",
+      "scope": "constructed-record results and uncertainty"
+    },
+    {
+      "id": "manifest",
+      "title": "Decision Reconstruction Manifest",
+      "url": "https://www.jrsstandard.com/manifest.html",
+      "scope": "public specification and implementation limits"
+    },
+    {
+      "id": "privacy",
+      "title": "Website privacy notice",
+      "url": "https://www.jrsstandard.com/privacy-notice.html",
+      "scope": "public site data handling and submission boundaries"
+    }
+  ],
+  "evidence_boundary": "Results from constructed records and reviewer-agreement studies must not be generalized to validated real-record effectiveness. See the research pages.",
+  "public_access_boundary": "No public automated record processing, identifiable case-record intake, or autonomous consequential-decision service is offered.",
+  "citation_guidance": "Use the exact linked page, title, version if stated, and access date. Verify material claims against primary evidence rather than this index."
+}
