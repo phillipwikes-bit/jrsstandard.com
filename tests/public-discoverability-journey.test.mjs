@@ -129,10 +129,8 @@ for(const path of priority){
   const rel=path.endsWith('/index.html')?path.slice(0,-10):path;
   const canonical=(html.match(/<link\b[^>]*rel="canonical"\s+href="([^"]+)"/)||[])[1];
   assert.ok(canonical && canonical.startsWith(rootUrl),'missing HTTPS canonical for '+path);
-  // Directory reference URLs currently have a known trailing-slash mismatch
-  // between sitemap and canonical. Preserve host behavior pending hosted redirect audit.
-  const equivalents=new Set([canonical,canonical.endsWith('/')?canonical.slice(0,-1):canonical+'/']);
-  assert.ok(urls.some(u=>equivalents.has(u)),'priority page absent from sitemap: '+path);
+  assert.ok(urls.includes(canonical),
+    'sitemap must use the exact declared canonical, not a slash variant: '+path);
   assert.ok(!/<meta\b[^>]*name="robots"[^>]*noindex/i.test(html.slice(0,html.indexOf('</head>'))),
     'priority public reference must not be noindex: '+path);
 }
@@ -152,3 +150,25 @@ const worked=read('worked-example-ai-record.html');
 assert.ok(worked.includes('entirely')||worked.includes('constructed'),
   'linked example must preserve its synthetic-data boundary');
 console.log('PASS: DRR and practitioner pages have verifiable internal paths, public canonicals and evidence boundaries.');
+
+
+// Source-level search metadata control: do not assume HTTP routing or Google indexing.
+const referenceUrls=urls.filter(u=>u.startsWith(rootUrl+'reference'));
+assert.equal(referenceUrls.length,17,'Reference catalogue completeness guard');
+for(const url of referenceUrls){
+  const pathname=new URL(url).pathname;
+  assert.ok(!pathname.endsWith('/'),
+    'reference sitemap must retain the established slashless canonical: '+url);
+  const local=pathname.substring(1)+'/index.html';
+  assert.ok(existsSync(join(root,local)),
+    'reference sitemap URL must map to a source directory: '+local);
+  const html=read(local);
+  const declared=(html.match(/<link\b[^>]*rel="canonical"\s+href="([^"]+)"/)||[])[1];
+  assert.equal(declared,url,
+    'sitemap and HTML canonical must match exactly: '+local);
+  assert.ok(!/<meta\b[^>]*name="robots"[^>]*noindex/i.test(html.slice(0,html.indexOf('</head>'))),
+    'search reference must not be noindex: '+local);
+}
+assert.ok(urls.includes(rootUrl+'reference'),
+  'five-condition reference hub must stay in public sitemap');
+console.log('PASS: all 17 Reference sitemap URLs equal their declared canonicals.');

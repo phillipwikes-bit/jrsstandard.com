@@ -42,87 +42,87 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/</loc>
+    <loc>https://www.jrsstandard.com/reference</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/ai-assisted-record-failure-modes/</loc>
+    <loc>https://www.jrsstandard.com/reference/ai-assisted-record-failure-modes</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/ai-verification-controls/</loc>
+    <loc>https://www.jrsstandard.com/reference/ai-verification-controls</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/decision-context-loss/</loc>
+    <loc>https://www.jrsstandard.com/reference/decision-context-loss</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/deployment-models/</loc>
+    <loc>https://www.jrsstandard.com/reference/deployment-models</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/documentation-risk-tiers/</loc>
+    <loc>https://www.jrsstandard.com/reference/documentation-risk-tiers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/escalation-triggers/</loc>
+    <loc>https://www.jrsstandard.com/reference/escalation-triggers</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/field-conditions/</loc>
+    <loc>https://www.jrsstandard.com/reference/field-conditions</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/implementation-maturity-levels/</loc>
+    <loc>https://www.jrsstandard.com/reference/implementation-maturity-levels</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/later-review-failure-cascades/</loc>
+    <loc>https://www.jrsstandard.com/reference/later-review-failure-cascades</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/missing-chronology/</loc>
+    <loc>https://www.jrsstandard.com/reference/missing-chronology</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/record-survivability/</loc>
+    <loc>https://www.jrsstandard.com/reference/record-survivability</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/reviewer-responsibility-boundaries/</loc>
+    <loc>https://www.jrsstandard.com/reference/reviewer-responsibility-boundaries</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/reviewer-worksheet/</loc>
+    <loc>https://www.jrsstandard.com/reference/reviewer-worksheet</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/second-line-review-model/</loc>
+    <loc>https://www.jrsstandard.com/reference/second-line-review-model</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/traveler-test/</loc>
+    <loc>https://www.jrsstandard.com/reference/traveler-test</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.jrsstandard.com/reference/unsupported-generalization/</loc>
+    <loc>https://www.jrsstandard.com/reference/unsupported-generalization</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

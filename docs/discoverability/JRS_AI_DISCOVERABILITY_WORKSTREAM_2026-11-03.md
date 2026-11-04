@@ -165,3 +165,14 @@ The source regression now requires discoverability paths, physically present des
 **Release:** All changes are candidate source on draft PR #121, dependent on PR #117. Do not merge, publish, issue IndexNow notifications, submit a sitemap or claim a search ranking change prior to owner authorization and successful exact-head hosted release gates.
 
 Official search sources: https://developers.google.com/search/docs/appearance/ai-features and https://developers.google.com/search/docs/fundamentals/ai-optimization-guide and https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/
+
+
+## Reference canonical sitemap alignment (3 November 2026)
+
+Audited all 17 Reference directory pages. Their source HTML already declares slashless HTTPS canonical URLs; sitemap.xml listed slash-suffixed forms. The sitemap now uses the **existing declared canonicals** for all 17 entries. Total sitemap coverage remains 48 unique URLs. No route, redirect, page content, canonical tag, deployment configuration, or public link was changed.
+
+Source regression now validates that each Reference sitemap entry maps to an actual directory index file and matches that file's canonical exactly, with no public-page noindex directive. The previous either-slash exception was removed.
+
+**Hosted verification still outstanding.** This metadata correction does not prove HTTP 200 delivery, Vercel path rewrites, Google-selected canonicals, indexing or ranking. After release authorization and a protected-preview audit, inspect production URLs and Search Console URL Inspection before claiming indexing consistency. No sitemap submission or deployment occurred in this change.
+
+Search Console currently exposes no JRS property to the connected reporting interface. Separate owner-only measurement definitions are included in JRS_SEARCH_PERFORMANCE_MEASUREMENT_2026-11-03.md. Never treat missing property access as zero organic activity.
