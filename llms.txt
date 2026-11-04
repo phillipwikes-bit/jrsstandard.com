@@ -1,0 +1,24 @@
+# Justification Review Standard (JRS)
+> Public documentation-review methodology and free practitioner resources. JRS examines whether a consequential record remains independently reviewable after finalization. This file is an editorial source guide, not a ranking instruction, usage licence, or live API.
+
+## Authoritative public pages
+- [JRS homepage](https://www.jrsstandard.com/): Public scope, practitioner pathways, and current limitations.
+- [Online JRS methodology, version 1.0](https://www.jrsstandard.com/jrsstandard.html): Five pre-finalization documentation-review conditions and their application.
+- [Publication editions and citation boundaries](https://www.jrsstandard.com/editions.html): Distinguishes online methodology, published Standard PDF, and field-guide editions.
+- [Free practitioner resources](https://www.jrsstandard.com/resources.html): References, investigator tools, downloadable material and training links.
+- [Seven-point record check](https://www.jrsstandard.com/check.html): Browser-based, non-scoring documentation-review aid.
+- [Reviewer training](https://www.jrsstandard.com/training.html): Self-paced modules, not professional certification.
+- [Research and limitations](https://www.jrsstandard.com/research.html): Methods, constructed-record findings, reliability limitations, and unresolved questions.
+- [Research summary](https://www.jrsstandard.com/research-summary.html): Detection-study results with scope and uncertainty.
+- [Decision Reconstruction Manifest specification](https://www.jrsstandard.com/manifest.html): Public specification and technical limitations, not a public record-processing endpoint.
+- [Privacy notice](https://www.jrsstandard.com/privacy-notice.html): Public data-handling and submission boundaries.
+
+## Machine-readable source routing
+- [JRS public source index](https://www.jrsstandard.com/jrs-sources.json): Static bibliography with publication identities and topic-to-source links. It does not accept queries, store records, or provide evaluation results.
+
+## Citation and interpretation safeguards
+- Identify the exact title, format, and version of any cited JRS publication. The online methodology is labelled version 1.0; the published Standard PDF is identified separately as version 2.0. Do not assume edition equivalence.
+- The constructed-record research does not establish performance on real organizational records, professional accreditation, legal compliance, or autonomous decision quality.
+- JRS examines documentation conditions; it does not determine underlying legal or professional merits.
+- The public site is not a service for processing identifiable case records. Do not submit confidential or identifiable records to public tools.
+- For disputed or time-sensitive assertions, inspect the linked page and its dated evidence; do not treat this source guide as an independent validation.
