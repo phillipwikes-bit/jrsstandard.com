@@ -79,3 +79,17 @@ Dedicated synthetic tests check authentication, missing credentials, single-reco
 4. **Owner-only disclosure:** Buyer diligence requires separately authorized views. This diagnostics change does not expose contact names or establish commercial lead status.
 
 Draft PR remains open and unmerged. No production publication, new analytics, contact-form routing change or outbound email was performed.
+
+## Credential-independent, local-only Formspree CSV review (3 November 2026)
+
+While Formspree read API access remains unavailable, the private owner dashboard can now inspect a manually selected CSV entirely in the owner browser. This is deliberately a **different source** from provider-verified Formspree ingestion. The unverified imported rows are never incorporated into source-verified totals, historical research records, or buyer adoption measures.
+
+- Native file input reads local `.csv` or `text/csv` with `File.text()`. No server upload, network request, Google Analytics tag, clipboard use, localStorage, sessionStorage or IndexedDB persistence is made by the module.
+- Parser supports quoted commas, newlines and double quotes, and rejects malformed columns, duplicate header names, files exceeding 1 MB and more than 2,000 rows. An import must include `email` and `message` fields. A manually supplied CSV is not proof of unique contacts, delivery, permission or organizational uptake.
+- Up to 150 rows are visible; the owner can temporarily mark reply/review/closure states for local review. Such status changes are **not** stored in the Supabase follow-up table and are not verified against Gmail.
+- An explicit, confirmed private CSV export preserves every loaded row with temporary review status and mitigates CSV formula injection. The Clear control and page closure remove in-memory state. No data is uploaded or emailed.
+- Standalone synthetic tests in `tests/owner-local-inquiry-import.mjs` cover parsing, scope, formula protection, browser-only storage and data-source separation. They run inside the existing private owner dashboard workflow.
+
+This fallback does **not** provide automatic synchronization and it does not fix the Formspree Professional/Business submissions API requirement or the unapplied Supabase follow-up migration. It creates no storage of contact details in another system. The Formspree inbox remains authoritative and Gmail notifications remain the existing owner alert route. No change was made to the public contact form or existing contact-consent terms.
+
+Production, public contact systems and private buyer release permissions remain unchanged. This is source-only preparation under the existing draft release hold.

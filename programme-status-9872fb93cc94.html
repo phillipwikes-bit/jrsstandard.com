@@ -439,6 +439,26 @@ th{font-size:10px;letter-spacing:.055em}
     <p class="note">A status of “Reply marked sent” means the owner selected that state. It is not verified against Gmail. Named inquiry records and their contact consent do not confer publication, marketing, acquisition-diligence or successor-transfer rights.</p>
   </section>
 
+  <section id="local-inquiry-review" aria-label="Local private CSV review, separate unverified source" class="chart">
+    <h3 style="font-size:18px;margin:18px 0 10px">Local CSV review | Temporary owner-only fallback</h3>
+    <p class="note">When Formspree API retrieval is unavailable, you may inspect a CSV exported from your Formspree account in this browser only. This is a <strong>local, manually supplied file</strong>, not the live Formspree source. No CSV data is uploaded, synced to Supabase, sent to Gmail, recorded by analytics, or included in verified dashboard totals. Selection of follow-up states is temporary until you explicitly export a private copy.</p>
+    <div class="bar">
+      <label for="current-inquiry-local-csv">Choose a private contact CSV</label>
+      <input id="current-inquiry-local-csv" type="file" accept=".csv,text/csv" aria-describedby="current-inquiry-local-status">
+      <button type="button" class="btn" id="current-inquiry-local-export" disabled>Export locally reviewed CSV</button>
+      <button type="button" class="btn" id="current-inquiry-local-clear" disabled>Clear local file</button>
+    </div>
+    <p class="note" id="current-inquiry-local-status" role="status" aria-live="polite">No local CSV loaded. This option does not activate automatic Formspree synchronization.</p>
+    <div class="tablewrap">
+      <table id="current-inquiry-local-table">
+        <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding-bottom:8px">Unverified local preview, maximum 150 visible rows. The file remains in browser memory until cleared or the page closes.</caption>
+        <thead><tr><th>Source date</th><th>Category</th><th>Name</th><th>Email</th><th>Organization</th><th>Message</th><th>Contact consent, self-declared</th><th>Temporary follow-up</th></tr></thead>
+        <tbody id="current-inquiry-local-rows"><tr><td colspan="8">No local file loaded.</td></tr></tbody>
+      </table>
+    </div>
+    <p class="note">Imports require recognizable email and message columns and are limited to 1 MB and 2,000 rows. The original Formspree record remains the authority. Imported records are not evidence of verified unique people, qualified buyers or permission for commercial disclosure. Preserve any private export securely.</p>
+  </section>
+
   <p class="note" id="ld-source-coverage" role="status" aria-live="polite">Historical source coverage not yet verified.</p>
   <div class="tablewrap">
    <table>
@@ -2915,6 +2935,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  load();
 })();
 </script>
+<script type="module" src="/assets/jrs-owner-local-inquiries.mjs"></script>
 
 </body>
 </html>

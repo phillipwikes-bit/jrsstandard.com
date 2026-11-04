@@ -52,6 +52,8 @@ jobs:
         run: node tests/owner-inquiry-followup.mjs
       - name: Read-only inquiry provider readiness probes, privacy and account access
         run: node tests/owner-inquiry-readiness.mjs
+      - name: Local-only owner CSV contact review is safe and source-labelled
+        run: node tests/owner-local-inquiry-import.mjs
       - name: Historical owner inquiries and pay-screen sources must be complete
         run: node tests/owner-historical-inbox.mjs
       - name: Historical checkout aggregate sources must be complete
