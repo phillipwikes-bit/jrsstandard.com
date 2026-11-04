@@ -151,8 +151,15 @@ assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElemen
  const row=t=>page.locator("#ledger-list .entry",{hasText:t});
  await row("Synthetic study payout").getByRole("button",{name:"Edit"}).click();
  assert.equal(await active(),"receipt-label","Edit moves focus into the form");
+ // The form says which record is open, and warns when the current filter hides it.
+ assert.equal(await page.locator("#receipt-editing").textContent(),"Editing: Synthetic study payout, 2026-10-15, $150.00");
+ await page.locator("#ledger-filter").selectOption("pending");
+ assert.match(await page.locator("#receipt-editing").textContent(),/not shown in the list under the current year or filter\.$/);
+ await page.locator("#ledger-filter").selectOption("all");
+ assert.equal(await page.locator("#receipt-editing").textContent(),"Editing: Synthetic study payout, 2026-10-15, $150.00");
  await page.locator("#receipt-cancel").click();
  assert.match(await active(),/^Edit Synthetic study payout,/,"Cancel returns to the record");
+ assert.ok(await page.locator("#receipt-editing").isHidden(),"note cleared after cancel");
  await row("Synthetic study payout").getByRole("button",{name:"Edit"}).click();await page.locator("#receipt-save").click();
  assert.match(await active(),/^Edit Synthetic study payout,/,"saving an edit returns to the record");
  await page.locator("#receipt-label").fill("Synthetic focus probe");await page.locator("#receipt-amount").fill("1");await page.locator("#receipt-date").fill("2026-10-15");

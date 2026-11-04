@@ -274,6 +274,7 @@
   }
   function resetForm(formId,kind){
     clearErrors(formId);
+    var note=$(kind==="income"?"receipt-editing":"cost-editing");if(note){note.textContent="";note.hidden=true;}
     $(formId).reset();
     $(kind==="income"?"receipt-date":"cost-date").value=today();
     if(kind==="income"){$("receipt-fx").value="1";$("receipt-fees").value="0";$("receipt-cancel").hidden=true;$("receipt-save").textContent="Save income entry";editingIncome=null;}
@@ -348,8 +349,20 @@
       setValue("cost-payment-status",payStatus(e));setValue("cost-questions",e.accountantQuestions||"");setValue("cost-payment-account",e.paymentAccount||"");
       $("cost-save").textContent="Update outflow";$("cost-cancel").hidden=false;
     }
+    refreshEditingNotes();
     $(p+"-form-title").scrollIntoView({behavior:"smooth",block:"start"});
     $(p+"-label").focus({preventScroll:true});
+  }
+  // Say which record each form is editing, and whether the current year or filter hides it from the list.
+  function refreshEditingNotes(){
+    [["receipt",editingIncome],["cost",editingCost]].forEach(function(pair){
+      var note=$(pair[0]+"-editing");if(!note)return;
+      var e=pair[1]&&db.entries.find(function(x){return x.id===pair[1];});
+      if(!e){note.textContent="";note.hidden=true;return;}
+      var shown=!!document.querySelector('#ledger-list .entry[data-entry-id="'+String(e.id).replace(/["\\]/g,"")+'"]');
+      note.textContent="Editing: "+e.label+", "+e.date+", "+money(e.kind==="income"?e.grossUsd:e.amountUsd)+(shown?"":". This record is not shown in the list under the current year or filter.");
+      note.hidden=false;
+    });
   }
   // Keyboard and screen-reader users return to the record they acted on, never to the top of the page.
   function focusEntry(id){
@@ -486,7 +499,7 @@
       e.amount.toFixed(2),e.action]);});
     download(csv(rows),"IncomeOS-accountant-exceptions-"+review.year+".csv","text/csv;charset=utf-8");
   }
-  function render(){renderSummary();renderList();try{renderReview();}catch(_e){var rs=$("review-summary");if(rs)rs.textContent="Documentation review could not be shown.";}if(typeof window.dispatchEvent==="function" && typeof window.CustomEvent==="function")window.dispatchEvent(new window.CustomEvent("incomeos:ledger-updated"));}
+  function render(){renderSummary();renderList();refreshEditingNotes();try{renderReview();}catch(_e){var rs=$("review-summary");if(rs)rs.textContent="Documentation review could not be shown.";}if(typeof window.dispatchEvent==="function" && typeof window.CustomEvent==="function")window.dispatchEvent(new window.CustomEvent("incomeos:ledger-updated"));}
   function csvSafe(x){var s=String(x??"");if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
   function csv(arr){return arr.map(function(row){return row.map(csvSafe).join(",");}).join("\r\n")+"\r\n";}
   function download(text,name,type){
@@ -691,7 +704,7 @@
     $("receipt-cancel").addEventListener("click",function(){var was=editingIncome;resetForm("receipt-form","income");focusEntry(was);});
     $("cost-cancel").addEventListener("click",function(){var was=editingCost;resetForm("cost-form","outflow");focusEntry(was);});
     ["report-year","ledger-filter"].forEach(function(id){$(id).addEventListener("change",render);});
-    $("ledger-search").addEventListener("input",renderList);
+    $("ledger-search").addEventListener("input",function(){renderList();refreshEditingNotes();});
     $("refresh-accountant").addEventListener("click",render);
     $("export-ledger").addEventListener("click",exportDetail);
     $("export-review").addEventListener("click",exportReview);
