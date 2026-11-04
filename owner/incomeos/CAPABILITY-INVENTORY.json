@@ -759,6 +759,31 @@
       ],
       "requiredRemediation": "Owner-authenticated private hosting (Milestone A release gate); see ACCOUNTING-EDITOR-ACCEPTANCE.json",
       "acceptanceCriteria": "Every record in exactly one category group and one reconciliation class; refunds, unpaid bills and returned principal never counted as income or paid expense; full card or account numbers refused; reports fit 320 to 430 px"
+    },
+    {
+      "featureId": "PASSIVE-RADAR-INTAKE",
+      "sourceFiles": [
+        "owner/incomeos/passive-radar.js",
+        "owner/incomeos/passive-radar-ui.js",
+        "owner/incomeos/index.html",
+        "owner/incomeos/CHATGPT-INTAKE.md"
+      ],
+      "purpose": "Reviewed import of the ChatGPT Passive Opportunity Radar findings file (incomeos.passive-findings.v1): each finding shown with its source, found-on date, direct link and value type (new income, returned capital, savings, projection)",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [
+        "Owner's ChatGPT passive radar task producing the findings file"
+      ],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Tested with synthetic findings only; no real radar output has been loaded",
+        "Findings are not saved in the workspace and are not linked to recovery claims"
+      ],
+      "testCoverage": [
+        "tests/incomeos-passive-radar.mjs",
+        "tests/incomeos-passive-radar-browser.mjs"
+      ],
+      "requiredRemediation": "Load a real findings file from the radar task; decide whether accepted findings should open a recovery claim",
+      "acceptanceCriteria": "Missing source, date or direct link refused; projections never counted; received always zero; no fetch or browser storage; fits 320 px"
     }
   ]
 }

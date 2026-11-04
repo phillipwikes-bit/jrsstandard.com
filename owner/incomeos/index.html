@@ -47,6 +47,8 @@
 <script defer src="./opportunity-normalizer.js"></script>
 <script defer src="./opportunity-lifecycle.js"></script>
 <script defer src="./project-radar.js"></script>
+<script defer src="./passive-radar.js"></script>
+<script defer src="./passive-radar-ui.js"></script>
 <script defer src="./engagement-screen.js"></script>
 <script defer src="./project-ui.js"></script>
 <script defer src="./ledger-rules.js"></script>
@@ -181,6 +183,17 @@
   <section id="view-assets" class="view" aria-labelledby="assets-heading" hidden>
     <div class="sectionintro"><div><span class="kicker">02 / CAPITAL OPPORTUNITIES</span><h2 id="assets-heading">Unconventional assets</h2><p>Income-producing rights and operator-managed assets. No generic savings-account comparisons.</p></div></div>
     <div class="callout danger"><strong>Research only.</strong> No deal has passed full underwriting. Amounts shown are prior earnings or quoted prices, not promised income, and links may lead to a catalog rather than an individually verified active offer.</div>
+    <section id="passive-radar-panel" class="panel" aria-labelledby="passive-radar-heading">
+      <h3 id="passive-radar-heading">Passive opportunity findings</h3>
+      <p class="muted">Load the findings file from your ChatGPT passive radar task. Each finding must name its source, the date it was found and a direct link, or it is refused. Nothing is fetched, claimed or saved; findings are leads, not money.</p>
+      <div class="radar-import">
+        <label for="passive-import-file">Findings file (JSON)</label>
+        <input type="file" id="passive-import-file" accept=".json,application/json">
+        <div class="panelrow"><button type="button" class="smallbtn" id="passive-import">Review findings</button><button type="button" class="smallbtn" id="passive-template">Download sample format</button></div>
+      </div>
+      <p id="passive-status" role="status" aria-live="polite" class="muted"></p>
+      <div id="passive-results" class="radar-results"></div>
+    </section>
     <div id="asset-cards" class="stack"></div>
   </section>
   <section id="view-ledger" class="view" aria-labelledby="ledger-heading" hidden>

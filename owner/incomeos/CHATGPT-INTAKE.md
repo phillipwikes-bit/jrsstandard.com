@@ -40,3 +40,14 @@ ChatGPT gathers opportunities, including ones behind logins that only reach you 
 > Rules: copy amounts exactly as shown; never estimate or round. Skip anything that is not a completed charge or payment (quotes, carts, failed payments, marketing). Do not include card numbers, account numbers, addresses or passwords. If one email covers several charges, make one row per charge. After the JSON, list in plain text any email you could not read clearly.
 
 Paste the rows into the `ledger` array of your workspace file (keep the file outside this repository, ideally saved encrypted from the "This week" panel). IncomeOS then proposes categories from your approved rules, finds renewals and price increases, and flags possible duplicate charges. Emailed receipts are evidence of a charge, not proof it posted to your bank; reconcile against statements before treating totals as complete.
+
+## Third task: Passive Opportunity Radar findings (added 2026-11-04)
+
+> Every day, find public recovery, rebate, settlement, refund, unclaimed-property and savings opportunities that may apply to me, and output ONE JSON object, nothing else:
+> `{"schema":"incomeos.passive-findings.v1","findings":[ ... ]}`
+>
+> Each finding has exactly these fields: `id` (short unique text), `title`, `sourceName` (who published it), `sourceUrl` (https page where you found it), `directUrl` (https page where I would act, ideally the official site), `foundOn` (today, YYYY-MM-DD), `valueType` (one of `new_income`, `returned_capital`, `savings`, `projection`), `amountUsd` (number or null), `amountBasis` (`stated` only if the source states the amount; otherwise `estimated` or `unknown`), `deadline` (YYYY-MM-DD or null), `summary` and `eligibilityText` (copied from the source), `costToPursueUsd` (0 if free).
+>
+> Rules: use `projection` for any calculated or hypothetical gain (interest, yield, a rate comparison); it is never income. Use `returned_capital` for money that is already mine (refunds, unclaimed property, deposits). Do not invent amounts, deadlines or availability. Skip anything that asks for an upfront fee, a paid finder service, gift cards, crypto or contact through Telegram or WhatsApp. Do not include my personal data, account numbers, case numbers, passwords or codes. If nothing is new, output `{"schema":"incomeos.passive-findings.v1","findings":[]}`.
+
+Save the output as a `.json` file and open it in IncomeOS: Assets tab, "Passive opportunity findings", **Review findings**. A finding without a source, a found-on date within 14 days or a direct https link is refused and the reason is shown. Projections are listed last and never counted. Nothing is fetched, filed or saved; a finding becomes money only when you record the actual payment in Income.

@@ -231,3 +231,23 @@ The acceptance status of Milestone A against the directive's sixteen checks is r
 | this commit | Likely duplicates as a completeness gap; corrected-record count in the summary CSV | A repeat confirmed as separate is not counted |
 
 Milestone A status is unchanged: 11 SOURCE TESTED, 5 BLOCKED (see `ACCOUNTING-EDITOR-ACCEPTANCE.json`).
+
+Superseded 2026-11-04 (later the same day): the "11 SOURCE TESTED, 5 BLOCKED" counts above were correct when written. After hosting, A02 and A15 became PROTECTED PREVIEW VERIFIED and A01 became OWNER ACCEPTANCE PENDING; A14 and A16 remain BLOCKED. `ACCOUNTING-EDITOR-ACCEPTANCE.json` is the current record.
+
+## Paid Research increments, 2026-11-04 (live on the protected hosted app)
+
+| Commit | Delivered | Source-level acceptance |
+| --- | --- | --- |
+| 98a8798 | Start or open the workspace from the Income screen | Workspace buttons in the interlock banner |
+| 376b729 | Study progress stored in the owner workspace | Progress survives save and reopen; "New" clears the entry; browser test |
+| 09de029 | "Record this payment in Income" on paid studies | Prefills the income form with `study:<id>`; an already-recorded study opens the existing record instead of creating a duplicate |
+| 460a6a2 | This week lists paid studies not yet in Income | Each has a "Record in Income" button |
+| efe439d | Realised hourly yield on study cards | Uses only the received amount recorded in Income; says so when time is unconfirmed or missing |
+
+Advertised study compensation is never counted as received income; only an Income record counts.
+
+## Passive Opportunity Radar intake (Milestone B), 2026-11-04
+
+| Commit | Delivered | Source-level acceptance | Outstanding |
+| --- | --- | --- | --- |
+| this commit | `passive-radar.js`, `passive-radar-ui.js`; Assets tab "Passive opportunity findings"; ChatGPT task wording in `CHATGPT-INTAKE.md` | A finding without a source name, https source link, https direct link or a found-on date within 14 days is refused with a stated reason; scam, paid-finder and personal-data signs are refused; duplicates by id or link refused; types are new income, returned capital, savings or projection; projections and estimated amounts never enter potential totals; received is always $0; nothing fetched or stored (unit and 320 px browser tests) | Findings are not saved in the workspace and cannot yet become a tracked recovery claim; the ChatGPT task's real output has not been loaded |
