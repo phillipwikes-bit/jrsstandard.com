@@ -141,6 +141,34 @@
     return Object.keys(map).map(function(k){var r=map[k];r.groupLabel=(CAT_GROUPS[order.indexOf(r.group)]||[0,r.group])[1];return r;})
       .sort(function(a,b){return order.indexOf(a.group)-order.indexOf(b.group)||String(a.category).localeCompare(String(b.category));});
   }
+  // Reconciliation evidence: every record lands in exactly one class. These reflect the owner's recorded
+  // evidence only; no class is a software bank match, an audit, or a tax determination.
+  var RECON_CLASSES=[["verified","Document and payment record matched after owner review"],["amountdate","Document and bank record both held, linkage not resolved"],["bankonly","Bank or card record only, no supporting document"],["receiptonly","Receipt or document only, payment not confirmed"],["unverified","Unverified, no evidence recorded"],["refund","Refunds, credits and reversals (not netted, not income)"],["capital","Transfers, returned principal and capital movements (not income or expense)"],["unsettled","Not yet received or paid (outside reconciliation)"]];
+  function reconClass(e){
+    if(e.kind==="income"){
+      if(e.status==="refunded"||e.status==="cancelled")return "refund";
+      if(e.status!=="paid")return "unsettled";
+      if(e.scope!=="income")return "capital";
+      var doc=e.docStatus==="received"||e.docStatus==="reconciled";
+      return e.reconciled?(doc?"verified":"bankonly"):(doc?"receiptonly":"unverified");
+    }
+    if(e.type==="refund"||payStatus(e)==="refunded")return "refund";
+    if(!paidOut(e))return "unsettled";
+    if(e.type==="capital")return "capital";
+    var ev=e.evidenceStatus||"missing";
+    if(ev==="both")return e.reconciled?"verified":"amountdate";
+    return ev==="both-unverified"?"amountdate":ev==="bank"?"bankonly":ev==="email"?"receiptonly":"unverified";
+  }
+  function reconciliationSummary(entries){
+    var out=RECON_CLASSES.map(function(c){return {cls:c[0],label:c[1],count:0,usd:0};}),unsupported={count:0,usd:0};
+    entries.forEach(function(e){
+      var amt=e.kind==="income"?num(e.grossUsd):num(e.amountUsd),row=out.find(function(r){return r.cls===reconClass(e);});
+      row.count++;row.usd=round(row.usd+amt);
+      if(e.category==="other"){unsupported.count++;unsupported.usd=round(unsupported.usd+amt);}
+    });
+    return {classes:out,unsupported:unsupported,total:entries.length,
+      notice:"Classes reflect recorded evidence only. No bank matching, audit or tax determination has been performed."};
+  }
   function totals(entries){
     var income=entries.filter(function(e){return e.kind==="income"&&e.status==="paid"&&e.scope==="income";});
     var nonincome=entries.filter(function(e){return e.kind==="income"&&e.status==="paid"&&e.scope==="nonincome";});
@@ -282,6 +310,11 @@
     rows.forEach(function(e){if(e.kind==="income"&&e.taxForm&&e.taxForm!=="None / unknown")forms[e.taxForm]=(forms[e.taxForm]||0)+1;});
     place(box,"h4","","Recorded categories");
     categorySummary(rows).forEach(function(c){var row=place(box,"div","accountant-line");place(row,"span","",c.groupLabel+" · "+c.category+" ("+c.count+")");place(row,"strong","",money(c.usd));});
+    var rs=reconciliationSummary(rows);
+    place(box,"h4","","Reconciliation evidence");
+    rs.classes.forEach(function(c){if(!c.count)return;var row=place(box,"div","accountant-line");place(row,"span","",c.label+" ("+c.count+")");place(row,"strong","",money(c.usd));});
+    if(rs.unsupported.count){var ur=place(box,"div","accountant-line");place(ur,"span","","Classification not supported: category \"other\" ("+rs.unsupported.count+")");place(ur,"strong","",money(rs.unsupported.usd));}
+    place(box,"p","muted",rs.notice);
     place(box,"p","muted","Supporting form references: "+(Object.keys(forms).length?Object.keys(forms).map(function(k){return k+" ("+forms[k]+")";}).join(", "):"None recorded")+". No bank, tax authority or payer validation has been performed.");
   }
   function showEntry(e){
@@ -403,6 +436,9 @@
         if(review.counts[category.id])pairs.push(["Documentation: "+category.title,review.counts[category.id]]);
     }
     var cats=categorySummary(yearEntries()).map(function(c){return [c.groupLabel,c.category,c.count,c.usd];});
+    var rsum=reconciliationSummary(yearEntries());
+    cats=cats.concat([[],["Reconciliation evidence","","Records","USD"]],rsum.classes.map(function(c){return [c.label,"",c.count,c.usd];}),
+      [["Classification not supported (category other)","",rsum.unsupported.count,rsum.unsupported.usd],[rsum.notice]]);
     download(csv([["IncomeOS personal tax-year summary",currentYear()]].concat([["Category","Amount or count"]],pairs,[[],["By category: group","Category","Records","USD"]],cats)),"IncomeOS-accountant-summary-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
   function backup(){download(JSON.stringify({format:"incomeos-accountant",version:2,exportedAt:new Date().toISOString(),entries:db.entries},null,2),"IncomeOS-accountant-private-backup-"+today()+".json","application/json");}
@@ -422,6 +458,10 @@
     place(r,"h2","","By category");
     var ktab=place(r,"table"),kbody=place(ktab,"tbody");
     categorySummary(yearEntries()).forEach(function(c){var tr=place(kbody,"tr");[c.groupLabel,c.category,String(c.count),money(c.usd)].forEach(function(x){place(tr,"td","",x);});});
+    var rsp=reconciliationSummary(yearEntries());
+    place(r,"h2","","Reconciliation evidence");place(r,"p","",rsp.notice);
+    var rtab=place(r,"table"),rbody=place(rtab,"tbody");
+    rsp.classes.concat([{label:"Classification not supported (category other)",count:rsp.unsupported.count,usd:rsp.unsupported.usd}]).forEach(function(c){var tr=place(rbody,"tr");[c.label,String(c.count),money(c.usd)].forEach(function(x){place(tr,"td","",x);});});
     var review=annualReview();
     place(r,"h2","","Outstanding documentation review");
     if(!review||review.invalidYear)place(r,"p","","Review module unavailable or report year invalid. Source completeness not verified.");
@@ -601,5 +641,5 @@
       var pass=$("briefing-passphrase");if(pass){pass.scrollIntoView({block:"center"});pass.focus();}
     });
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,completeness:completeness,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,reconciliationSummary:reconciliationSummary,completeness:completeness,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();

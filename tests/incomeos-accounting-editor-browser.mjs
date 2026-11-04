@@ -54,7 +54,9 @@ await page.locator("#cost-save").tap();
  assert.match(row,/Scheduled, not paid/);assert.match(row,/Question for accountant: Business or personal\?/);}
 {const cats=await page.locator("#report-preview").textContent();
  assert.match(cats,/Outflows not paid \(scheduled, disputed or refunded\) · [a-z]+ \(1\)\$15\.00/,"scheduled bill listed apart from paid expenses");
- assert.match(cats,/Expenses paid · [a-z]+ \(1\)\$20\.00/,"paid expense total excludes the scheduled bill");}
+ assert.match(cats,/Expenses paid · [a-z]+ \(1\)\$20\.00/,"paid expense total excludes the scheduled bill");
+ assert.match(cats,/Reconciliation evidence/);assert.match(cats,/Not yet received or paid \(outside reconciliation\) \(1\)\$15\.00/,"scheduled bill outside reconciliation");
+ assert.match(cats,/No bank matching, audit or tax determination has been performed/);}
 // A full card number in "Paid from" is refused and nothing is saved; a short label is kept and shown.
 {const before=await page.locator("#ledger-list .entry").count();
  await page.locator("#cost-label").fill("Synthetic printer ink");await page.locator("#cost-amount").fill("12");await page.locator("#cost-date").fill("2026-10-19");

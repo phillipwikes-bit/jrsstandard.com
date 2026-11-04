@@ -83,3 +83,17 @@ assert.match(src,/"By category: group","Category","Records","USD"/,"summary CSV 
  assert.match(prompts.pop(),/Import 2 new records/);}
 assert.match(src,/"Payment account \(label\)"\]\]/,"detailed CSV carries the payment account label");
 assert.match(src,/Payment account removed on import: it looked like a full card or account number/);
+// Reconciliation evidence: each record in exactly one class, from recorded evidence only.
+{const inc=(o)=>({kind:"income",scope:"income",status:"paid",grossUsd:100,feesUsd:0,label:"x",date:"2026-10-01",category:"research",docStatus:"not-expected",reconciled:false,...o});
+ const ex=(o)=>({kind:"outflow",type:"expense",category:"software",amountUsd:10,businessUse:null,label:"x",date:"2026-10-01",evidenceStatus:"missing",reconciled:false,...o});
+ const recs=[inc({docStatus:"received",reconciled:true}),inc({reconciled:true}),inc({docStatus:"received"}),inc({}),inc({status:"invoiced"}),inc({status:"cancelled"}),inc({scope:"nonincome"}),
+   ex({evidenceStatus:"both",reconciled:true}),ex({evidenceStatus:"both"}),ex({evidenceStatus:"both-unverified"}),ex({evidenceStatus:"bank"}),ex({evidenceStatus:"email"}),ex({}),
+   ex({type:"refund"}),ex({paymentStatus:"refunded"}),ex({paymentStatus:"scheduled"}),ex({type:"capital"}),ex({category:"other"})];
+ const r=A.reconciliationSummary(recs),c=Object.fromEntries(r.classes.map(x=>[x.cls,x.count]));
+ assert.deepEqual(c,{verified:2,amountdate:2,bankonly:2,receiptonly:2,unverified:3,refund:3,capital:2,unsettled:2});
+ assert.equal(r.classes.reduce((n,x)=>n+x.count,0),recs.length,"every record in exactly one class");
+ assert.equal(r.classes.find(x=>x.cls==="verified").usd,110,"income gross plus matched expense");
+ assert.equal(r.classes.find(x=>x.cls==="unsettled").usd,110,"invoiced income and scheduled bill outside reconciliation");
+ assert.deepEqual([r.unsupported.count,r.unsupported.usd],[1,10]);
+ assert.match(r.notice,/No bank matching, audit or tax determination/);}
+assert.match(src,/\["Reconciliation evidence","","Records","USD"\]/,"summary CSV carries reconciliation evidence");
