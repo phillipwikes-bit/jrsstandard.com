@@ -50,6 +50,8 @@ jobs:
         run: node tests/owner-formspree-inbox.mjs
       - name: Owner-only inquiry follow-up storage rejects unauthorized changes
         run: node tests/owner-inquiry-followup.mjs
+      - name: Read-only inquiry provider readiness probes, privacy and account access
+        run: node tests/owner-inquiry-readiness.mjs
       - name: Historical owner inquiries and pay-screen sources must be complete
         run: node tests/owner-historical-inbox.mjs
       - name: Historical checkout aggregate sources must be complete

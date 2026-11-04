@@ -395,6 +395,7 @@ th{font-size:10px;letter-spacing:.055em}
     <p class="note"><strong>Routing:</strong> The redesigned public contact form delivers to Formspree and the designated email inbox. The dashboard independently reads Formspree through an owner-only, read-only API credential. Gmail notifications remain separate from dashboard retrieval. The historical Supabase participant register is a distinct source and is never automatically combined with current messages. Check Formspree's Over Limit folder separately if submissions are missing; it is not part of the nonspam API response until reprocessed.</p>
     <p class="note" id="current-formspree-status" role="status" aria-live="polite">Current Formspree source not checked. Unavailable is not zero.</p>
     <p class="note" id="current-formspree-followup-status" role="status" aria-live="polite">Owner follow-up storage not checked. A manual status is not proof that an email was sent or received.</p>
+    <p class="note" id="current-inquiry-diagnostic-status" role="status" aria-live="polite">Connection diagnostic not run. It checks service access only, not the contents of messages or delivery to Gmail.</p>
     <div class="cards" style="grid-template-columns:repeat(4,minmax(0,1fr))" aria-label="Current Formspree source counts">
       <div class="card"><div class="cv" id="current-formspree-total">·</div><div class="ck">Nonspam submissions retrieved</div></div>
       <div class="card"><div class="cv" id="current-formspree-marked">·</div><div class="ck">Current form markers (self-declared)</div></div>
@@ -403,6 +404,7 @@ th{font-size:10px;letter-spacing:.055em}
     </div>
     <div class="bar">
       <button type="button" class="btn" id="current-formspree-refresh">Refresh current inbox</button>
+      <button type="button" class="btn" id="current-inquiry-diagnostics">Check integration readiness</button>
       <button type="button" class="btn" id="current-formspree-export" disabled>Export all retrieved inquiries (private CSV)</button>
       <a class="btn" href="https://mail.google.com/mail/u/0/#search/from%3Aformspree.io+after%3A2026%2F10%2F29" target="_blank" rel="noopener noreferrer">Find recent JRS Formspree emails</a>
     </div>
@@ -2656,6 +2658,8 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  var followupStatus=document.getElementById('current-formspree-followup-status');
  var tbody=document.getElementById('current-formspree-rows');
  var button=document.getElementById('current-formspree-refresh');
+ var diagnosticButton=document.getElementById('current-inquiry-diagnostics');
+ var diagnosticStatus=document.getElementById('current-inquiry-diagnostic-status');
  var exportButton=document.getElementById('current-formspree-export');
  var categoryFilter=document.getElementById('current-formspree-category-filter');
  var followupFilter=document.getElementById('current-formspree-followup-filter');
@@ -2664,7 +2668,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
    marked:document.getElementById('current-formspree-marked'),
    unattributed:document.getElementById('current-formspree-unattributed'),
    review:document.getElementById('current-formspree-review')};
- if(!status||!followupStatus||!tbody||!button||!exportButton||!categoryFilter||!followupFilter||!visible)return;
+ if(!status||!followupStatus||!tbody||!button||!diagnosticButton||!diagnosticStatus||!exportButton||!categoryFilter||!followupFilter||!visible)return;
  var statuses={
   not_recorded:'Not recorded',
   needs_review:'Needs review',
@@ -2869,6 +2873,44 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  });
  categoryFilter.addEventListener('change',redraw);
  followupFilter.addEventListener('change',redraw);
+ // Readiness is deliberately owner-initiated. Each check inspects at most
+ // one provider response server-side and never returns source contact content.
+ diagnosticButton.addEventListener('click',async function(){
+   diagnosticButton.disabled=true;
+   diagnosticStatus.textContent='Checking private connections without retrieving contact details...';
+   try{
+     var response=await fetch('/api/owner-inquiry-readiness',{
+       method:'GET',credentials:'same-origin',cache:'no-store'
+     });
+     if(!response.ok)throw Error('readiness_denied');
+     var data=await response.json();
+     if(!data||data.audience!=='authenticated_owner_only'||data.release!=='hold'||
+        !data.formspree||!data.followup_store||!data.gmail)throw Error('readiness_unexpected');
+     var formStates={
+       missing_read_credential:'read credential missing (Gmail notifications remain separate)',
+       read_access_verified:'read access verified for a limited probe, not full inbox coverage',
+       invalid_read_credential:'read credential refused',
+       api_access_denied_or_plan:'API access denied; verify credential and provider plan',
+       form_unavailable:'Formspree form is unavailable to this credential',
+       provider_rate_limited:'Formspree rate limit prevented confirmation',
+       provider_unavailable:'provider connection unavailable',
+       unexpected_provider_response:'unexpected response; access not verified'
+     };
+     var tableStates={
+       missing_database_credential:'database service credential missing',
+       private_table_access_verified:'private table readable; writing not tested',
+       private_table_missing_or_not_exposed:'private table absent or not exposed',
+       private_table_access_denied:'database access denied',
+       database_unavailable:'database connection unavailable'
+     };
+     var f=formStates[data.formspree.state]||'unexpected status';
+     var t=tableStates[data.followup_store.state]||'unexpected status';
+     diagnosticStatus.textContent='Formspree: '+f+'. Follow-up storage: '+t+
+       '. Gmail delivery is not tested. Neither result authorizes a production release.';
+   }catch{
+     diagnosticStatus.textContent='Connection diagnostic unavailable. No provider readiness or message count is established.';
+   }finally{diagnosticButton.disabled=false;}
+ });
  button.addEventListener('click',load);
  load();
 })();

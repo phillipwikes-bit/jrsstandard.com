@@ -55,3 +55,27 @@ The dashboard distinguishes a missing Formspree submissions API credential from 
 **Verified blockers at this review:** The Vercel JRS project contains a Supabase service-role environment variable but no Formspree submissions read credential. The Formspree browser profile is not signed in, and no native Formspree connector is available. The connected Neon project search found no JRS database; Neon is not a replacement for the separate JRS Supabase project. The SQL migration remains not applied, and the provider account and exact-commit hosted preview remain unverified.
 
 **Unchanged:** Public form -> Formspree -> existing Gmail notifications. No new public analytics, provider account, contact record copies, automatic outreach, production publishing or buyer disclosures.
+
+## Owner-only connection diagnostics (3 November 2026)
+
+Added `/api/owner-inquiry-readiness`, which is protected by the existing signed owner session. Its explicit, voluntary dashboard action probes:
+- Formspree submissions access with a one-record maximum response processed and discarded on the server, returning only an access-state code. The API key is read from the server environment; it is never sent to the browser.
+- The private Supabase follow-up table using a zero-row HTTP HEAD request. This establishes only whether a table can be read using the configured service credential, **not** that follow-up status writes succeed.
+- Gmail delivery is labelled `delivery_not_verified_by_this_check` because neither a Formspree API probe nor a successful form submission confirms Gmail inbox receipt.
+
+The response has `Cache-Control: private, no-store`, excludes names, emails, message content and tokens, returns no count estimate, and states `release: hold`. Requests are bounded by short timeouts. All provider failures are explicitly `not verified`; no zero is inferred.
+
+Provider documentation confirms the Formspree submissions API and per-form read key require a Professional or Business plan. The form itself and existing Gmail notifications can continue without this API. No purchase, plan change, credential-generation or provider login has been performed. See:
+https://help.formspree.io/articles/the-forms-api/form-submissions-api
+https://help.formspree.io/articles/the-forms-api/api-keys
+
+Dedicated synthetic tests check authentication, missing credentials, single-record bounded Formspree probe, zero-row database probe, provider denials, malformed responses, transport failures and the absence of submitted data in diagnostics. The owner dashboard workflow runs these tests automatically.
+
+### Remaining, genuinely external blockers
+
+1. **Provider access:** `FORMSPREE_READ_API_KEY` is not configured in the JRS Vercel project. The JRS Formspree plan and ownership of an eligible read key remain unknown. No read API connection is claimed.
+2. **Database DDL:** The SQL migration `supabase-owner-inquiry-followup.sql` has not been applied. A configured service-role secret in Vercel is not proof of schema-install privileges or successful migration. The Supabase app is not connected in this ChatGPT session.
+3. **Exact-commit preview:** No verified Vercel deployment of the latest PR #122 commit was established, so independent hosted authentication, privacy, PDF/visual and mobile testing remain blocked. Do not request recurring manual preview builds under the deployment-quota restriction.
+4. **Owner-only disclosure:** Buyer diligence requires separately authorized views. This diagnostics change does not expose contact names or establish commercial lead status.
+
+Draft PR remains open and unmerged. No production publication, new analytics, contact-form routing change or outbound email was performed.
