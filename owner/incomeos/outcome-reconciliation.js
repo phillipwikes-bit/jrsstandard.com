@@ -3,9 +3,9 @@
   // Reconcile documented outcomes against independently identified statement entries.
   // This is a read-only control, never a transfer or investment instruction.
   function reconcile(outcomes,entries){
-    var issues=[],used=new Set(),totals={};
+    var issues=[],used=new Set(),totals={},currencies=new Set();
     if(!Array.isArray(outcomes)||!Array.isArray(entries))
-      return {status:"HOLD",issues:[{code:"INVALID_INPUT"}],matchedCents:null,transferAuthorized:false};
+      return {status:"HOLD",issues:[{code:"INVALID_INPUT"}],matchedCents:null,availableToInvestCents:null,transferAuthorized:false};
     if(!outcomes.length)issues.push({code:"NO_OUTCOMES"});
     if(!entries.length)issues.push({code:"NO_STATEMENT_ENTRIES"});
     var byId=new Map();
@@ -15,7 +15,8 @@
         e.posted!==true||e.sourceVerified!==true||
         typeof e.currency!=="string"||!e.currency.trim()||
         typeof e.institutionId!=="string"||!e.institutionId.trim()||
-        typeof e.postedDate!=="string"||!e.postedDate.trim()){
+        typeof e.postedDate!=="string"||!e.postedDate.trim()||
+        (e.direction!=="credit"&&e.direction!=="debit")){
         issues.push({code:"INVALID_STATEMENT_ENTRY",index:i});return;
       }
       byId.set(e.id.trim(),e);
@@ -37,18 +38,23 @@
         entry.currency!==o.currency||entry.institutionId!==o.institutionId||entry.postedDate!==o.postedDate){
         issues.push({code:"STATEMENT_MISMATCH",index:i});return;
       }
+      // Every reconcilable outcome is money received: a debit cannot reconcile as income or a refund.
+      if(entry.direction!=="credit"&&o.type!=="BILL_SAVINGS"){issues.push({code:"ENTRY_NOT_A_CREDIT",index:i});return;}
       if(o.type==="BILL_SAVINGS"){
         issues.push({code:"SAVINGS_NOT_CASH_DEPOSIT",index:i});return;
       }
       if(o.type!=="EARNED_INCOME"&&o.type!=="INVESTMENT_DISTRIBUTION"&&o.type!=="REFUND"&&o.type!=="RETURNED_PRINCIPAL"){
         issues.push({code:"UNKNOWN_OUTCOME_TYPE",index:i});return;
       }
+      // Totals are in one currency; mixed currencies are held rather than summed.
+      currencies.add(o.currency.trim());
+      if(currencies.size>1){issues.push({code:"MIXED_CURRENCIES",index:i});return;}
       var next=(totals[o.type]||0)+o.amountCents;
       if(!Number.isSafeInteger(next)){issues.push({code:"TOTAL_OVERFLOW",index:i});return;}
       totals[o.type]=next;
     });
     return {status:issues.length?"HOLD":"RECONCILED_REVIEW_ONLY",issues:issues,
-      matchedCents:issues.length?null:totals,availableToInvestCents:null,transferAuthorized:false};
+      matchedCents:issues.length?null:totals,currency:issues.length||!currencies.size?null:Array.from(currencies)[0],availableToInvestCents:null,transferAuthorized:false};
   }
   var api=Object.freeze({reconcile:reconcile});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;

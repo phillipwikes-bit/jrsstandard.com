@@ -18,7 +18,8 @@
       if(Object.keys(e).some(function(k){return !["id","studyId","stage","date","evidenceId","minutes","bankEventId","payoutDocumentId"].includes(k);}))throw Error("Unexpected research record fields");
       if(!isId(e.id)||!isId(e.studyId)||!STAGES.includes(e.stage)||!validDate(e.date)||!isId(e.evidenceId))throw Error("Invalid research stage identity");
       if(ids.has(e.id))throw Error("Duplicate research stage identity");ids.add(e.id);
-      var minutes=e.minutes==null?null:Number(e.minutes);
+      // Blank effort is unknown, never zero; only numbers or numeric strings count.
+      var minutes=e.minutes==null||(typeof e.minutes==="string"&&!e.minutes.trim())?null:(typeof e.minutes==="number"||typeof e.minutes==="string"?Number(e.minutes):NaN);
       if(minutes!==null&&(!Number.isInteger(minutes)||minutes<0||minutes>10080))throw Error("Invalid reported effort");
       if(e.stage==="PAID"&&(!isId(e.bankEventId)||!isId(e.payoutDocumentId)))throw Error("Bank payout requires source and matching payment evidence IDs");
       if(e.stage!=="PAID"&&(e.bankEventId!==undefined||e.payoutDocumentId!==undefined))throw Error("Bank source references are allowed only for payout stage");
@@ -26,7 +27,7 @@
         bankEventId:e.stage==="PAID"?e.bankEventId:null,payoutDocumentId:e.stage==="PAID"?e.payoutDocumentId:null};
     });
   }
-  function evaluateOne(studyId,events,state,paymentUse){
+  function evaluateOne(studyId,events,state,claims,asOf){
     var stages=events.map(function(e){return e.stage;}),has=function(s){return stages.includes(s);},
       all=events.slice().sort(function(a,b){return a.date.localeCompare(b.date);});
     var first=all[0],last=all[all.length-1],issues=[],effort=0,unknownEffort=false;
@@ -36,7 +37,7 @@
     if(paid.length>1)issues.push("MULTIPLE_PAYOUT_STAGES");
     if(paid.length&&(!has("APPLIED")||!has("COMPLETED")||!has("ACCEPTED")))issues.push("INCOMPLETE_PARTICIPATION_TRAIL");
     var needed=["APPLIED","COMPLETED","ACCEPTED","PAID"];
-    if(paid.length && needed.some(function(stage,i){return !stages.includes(stage)||(i>0&&stages.indexOf(stage)<=stages.indexOf(needed[i-1]));}))issues.push("INVALID_PARTICIPATION_ORDER");
+    if(paid.length && needed.every(function(s){return stages.includes(s);}) && needed.some(function(stage,i){return i>0&&stages.indexOf(stage)<=stages.indexOf(needed[i-1]);}))issues.push("INVALID_PARTICIPATION_ORDER");
     events.forEach(function(e){if(e.stage==="APPLIED"||e.stage==="COMPLETED"){
       if(e.minutes===null)unknownEffort=true;else effort+=e.minutes;
     }});
@@ -47,9 +48,14 @@
       var proper=post&&post.data.direction==="credit"&&cl.length===1&&cl[0].data.classification==="earned_income"
         &&reviews.length===1&&reviews[0].data.classificationEventId===cl[0].id
         &&matches.some(function(m){return m.data.documentId===p.payoutDocumentId&&m.data.amountCents===post.data.amountCents;});
+      var completed=events.filter(function(e){return e.stage==="COMPLETED";})[0];
       if(!proper)issues.push("PAYMENT_EVIDENCE_INCOMPLETE");
-      else if(paymentUse.has(p.bankEventId))issues.push("BANK_PAYMENT_ALREADY_ATTRIBUTED");
-      else {paymentUse.add(p.bankEventId);value=post.data.amountCents;}
+      // The posting must exist by the as-of date and come after the study was completed.
+      else if(post.data.postedDate>asOf)issues.push("PAYMENT_POSTED_AFTER_AS_OF");
+      else if(completed&&post.data.postedDate<completed.date)issues.push("PAYMENT_PRECEDES_PARTICIPATION");
+      // A posting claimed by more than one study is held for all of them, whatever the input order.
+      else if((claims.get(p.bankEventId)||0)>1)issues.push("BANK_PAYMENT_ALREADY_ATTRIBUTED");
+      else value=post.data.amountCents;
     }
     return {studyId:studyId,stages:stages,latestStage:last.stage,startDate:first.date,lastUpdate:last.date,
       ownerReviewedReceivedUsd:value/100,effortMinutes:unknownEffort?null:effort,
@@ -66,9 +72,10 @@
       if(!byStudy.has(e.studyId))byStudy.set(e.studyId,[]);
       byStudy.get(e.studyId).push(e);
     });
-    var paymentUse=new Set(),items=[],verifiedCents=0;
+    var claims=new Map(),items=[],verifiedCents=0;
+    normalized.forEach(function(e){if(e.stage==="PAID")claims.set(e.bankEventId,(claims.get(e.bankEventId)||0)+1);});
     byStudy.forEach(function(arr,study){
-      var r=evaluateOne(study,arr,verify.state,paymentUse);
+      var r=evaluateOne(study,arr,verify.state,claims,asOf);
       verifiedCents+=Math.round(r.ownerReviewedReceivedUsd*100);items.push(r);
     });
     var submitted=normalized.filter(function(e){return e.stage==="APPLIED";}).length;

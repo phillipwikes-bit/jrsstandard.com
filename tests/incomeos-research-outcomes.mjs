@@ -44,8 +44,10 @@ const inflated=events.concat([
   stage("stage.study2.paid","study.paid.002","PAID",0,{bankEventId:bank.id,payoutDocumentId:doc.data.documentId})
 ]);
 out=await O.analyze(inflated,history,"2026-11-01");
-assert.equal(out.ownerReviewedResearchReceiptsUsd,200,"One bank payment cannot fund two study claims");
-assert.ok(out.results[1].issues.includes("BANK_PAYMENT_ALREADY_ATTRIBUTED"));
+// 2026-11-04 correction: previously the first study in input order kept the $200 (200 expected here).
+// A payment claimed by two studies is now held for both, independent of order.
+assert.equal(out.ownerReviewedResearchReceiptsUsd,0,"One bank payment cannot fund two study claims");
+assert.ok(out.results.every(r=>r.issues.includes("BANK_PAYMENT_ALREADY_ATTRIBUTED")));
 out=await O.analyze(events.filter(e=>e.stage!=="COMPLETED"),history,"2026-11-01");
 assert.equal(out.ownerReviewedResearchReceiptsUsd,0,"Missing completed participation blocks payout");
 assert.ok(out.results[0].issues.includes("INCOMPLETE_PARTICIPATION_TRAIL"));

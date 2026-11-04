@@ -8,7 +8,9 @@
     return Number.isFinite(d.getTime()) && d.toISOString().slice(0,10) === value ? d.getTime() : NaN;
   }
   function number(value, lower, upper, label) {
-    if (value === "" || value === null || value === undefined) throw new RangeError(label + " is required");
+    // Blank-looking text and booleans are not numbers someone entered.
+    if (value === null || value === undefined || (typeof value === "string" && !value.trim())) throw new RangeError(label + " is required");
+    if (typeof value !== "number" && typeof value !== "string") throw new RangeError(label + " must be a number");
     var result = Number(value);
     if (!Number.isFinite(result) || result < lower || result > upper) throw new RangeError(label + " is out of range");
     return result;
@@ -20,14 +22,19 @@
     var reasons = [];
     var today = dateNumber(context.today);
     var reviewed = asset && dateNumber(asset.reviewed);
-    var maxAgeDays = context.maxAgeDays === undefined ? 7 : number(context.maxAgeDays, 0, 365, "Source age limit");
+    // An invalid limit holds the review (fail closed) instead of throwing out of it.
+    var maxAgeDays = 7;
+    if (context.maxAgeDays !== undefined) {
+      try { maxAgeDays = number(context.maxAgeDays, 0, 365, "Source age limit"); }
+      catch (_e) { maxAgeDays = NaN; reasons.push("The source age limit is invalid."); }
+    }
     if (!asset || typeof asset.id !== "string" || !asset.sourceUrl || !/^https:\/\//.test(asset.sourceUrl)) reasons.push("A traceable, HTTPS source for the individual opportunity is required.");
     if (!Number.isFinite(today)) reasons.push("Current review date is unavailable.");
     if (!Number.isFinite(reviewed)) reasons.push("Source review date is missing or invalid.");
     if (Number.isFinite(today) && Number.isFinite(reviewed)) {
       var age = Math.floor((today - reviewed) / 86400000);
       if (age < 0) reasons.push("The source review date is in the future.");
-      if (age > maxAgeDays) reasons.push("Source verification is stale (" + age + " days; limit " + maxAgeDays + ").");
+      if (Number.isFinite(maxAgeDays) && age > maxAgeDays) reasons.push("Source verification is stale (" + age + " days; limit " + maxAgeDays + ").");
     }
     if (!check.specificOffer) reasons.push("A live, individually identified offer has not been verified.");
     if (!check.eligibility) reasons.push("Owner eligibility and participation restrictions are unverified.");
