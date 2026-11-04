@@ -20,7 +20,6 @@
       if(evidenceSeen.has(evidenceKey)){
         issues.push({index:i,code:"DUPLICATE_EVIDENCE_REFERENCE"});return;
       }
-      evidenceSeen.add(evidenceKey);
       if(e.type==="BILL_SAVINGS"&&e.baselineVerified!==true){
         issues.push({index:i,code:"SAVINGS_BASELINE_MISSING"});return;
       }
@@ -30,6 +29,8 @@
       if(e.type==="RETURNED_PRINCIPAL"&&e.principalBasisVerified!==true){
         issues.push({index:i,code:"PRINCIPAL_BASIS_MISSING"});return;
       }
+      // Evidence counts as used only once its event is accepted, so a rejected event cannot block a valid one.
+      evidenceSeen.add(evidenceKey);
       if(!Number.isSafeInteger(totals[e.type]+e.amountCents)){
         issues.push({index:i,code:"TOTAL_OVERFLOW"});return;
       }

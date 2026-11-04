@@ -17,7 +17,7 @@
     if(!args||typeof args!=="object"||Array.isArray(args)||!validDate(args.asOf))throw Error("Explicit as-of date required");
     if(!window.IncomeOSEventJournal||!window.IncomeOSResearchOutcomes||!window.IncomeOSRecovery)throw Error("Financial evidence engines unavailable");
     if(!Array.isArray(args.journal)||!Array.isArray(args.studyStages)||!Array.isArray(args.paidBills))throw Error("Source evidence arrays required");
-    var j=await window.IncomeOSEventJournal.report(args.journal);
+    var j=await window.IncomeOSEventJournal.report(args.journal,args.asOf);
     var research=await window.IncomeOSResearchOutcomes.analyze(args.studyStages,args.journal,args.asOf);
     var savings=window.IncomeOSRecovery.savingReview(args.paidBills);
     var byClass=j.ownerReviewedByClass,earned=amount(byClass.earned_income||0),

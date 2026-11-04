@@ -156,9 +156,13 @@
     var next={...row,hash:await digest(JSON.stringify(row))};
     return history.concat([next]);
   }
-  async function report(events){
-    var v=await verify(events),state=v.state,summary={},unclassified=0,reviewed=0,pending=0,issues=[];
+  // Optional asOf limits the report to postings dated on or before it; the chain is still verified in full.
+  async function report(events,asOf){
+    if(asOf!==undefined&&!date(asOf))throw Error("Invalid as-of date");
+    var v=await verify(events),state=v.state,summary={},unclassified=0,reviewed=0,pending=0,issues=[],considered=0;
     state.posted.forEach(function(post,id){
+      if(asOf!==undefined&&post.data.postedDate>asOf)return;
+      considered++;
       var classes=state.classes.get(id)||[],recons=state.reconciled.get(id)||[];
       if(classes.length!==1){unclassified++;issues.push({code:"NOT_CLASSIFIED",postedEventId:id});return;}
       var cl=classes[0];
@@ -171,8 +175,8 @@
     });
     var totals={};Object.keys(summary).forEach(function(k){totals[k]=summary[k]/100;});
     function sum(){var c=0;for(var i=0;i<arguments.length;i++)c+=summary[arguments[i]]||0;return c/100;}
-    var outstanding=state.posted.size-reviewed;
-    return {count:v.count,hash:v.headHash,activePostings:state.posted.size,ownerReviewedPostings:reviewed,
+    var outstanding=considered-reviewed;
+    return {count:v.count,hash:v.headHash,activePostings:considered,ownerReviewedPostings:reviewed,
       nonReviewedPostings:outstanding,unclassified:unclassified,pendingReview:pending,ownerReviewedByClass:totals,
       earnedIncomeUsd:(totals.earned_income||0),investmentCashIncomeUsd:(totals.investment_income||0),
       // Summed in integer cents, then converted once.
