@@ -36,6 +36,32 @@ await firstSelect().waitFor();assert.ok(await firstSelect().isEnabled(),"enabled
 const label=await firstSelect().getAttribute("aria-label");
 await firstSelect().selectOption("Applied");
 await page.waitForFunction(()=>/Study progress saved in your workspace: Applied/.test(document.getElementById("briefing-status").textContent));
+// Marking it paid offers "Record this payment in Income": the Income form is filled for review, saved once, and a
+// second press opens the existing record instead of creating another.
+{const card=page.locator("article.radar-card",{has:page.locator(`select[aria-label="${label}"]`)});
+ assert.equal(await card.getByRole("button",{name:"Record this payment in Income"}).count(),0,"not offered before Paid");
+ await page.locator(`select[aria-label="${label}"]`).selectOption("Paid (self-reported)");
+ const rec=page.locator("article.radar-card",{has:page.locator(`select[aria-label="${label}"]`)}).getByRole("button",{name:"Record this payment in Income"});
+ await rec.click();
+ assert.ok(await page.locator("#view-ledger").isVisible(),"goes to Income");
+ const title=label.replace(/^Owner progress for /,"");
+ assert.equal(await page.locator("#receipt-label").inputValue(),title.slice(0,100));
+ assert.equal(await page.locator("#receipt-category").inputValue(),"research");
+ assert.equal(await page.locator("#receipt-state").inputValue(),"paid");
+ assert.match(await page.locator("#receipt-reference").inputValue(),/^study:/);
+ assert.ok(Number(await page.locator("#receipt-amount").inputValue())>0,"advertised amount filled as a starting value");
+ assert.equal(await page.evaluate(()=>document.activeElement.id),"receipt-amount","cursor on the amount to confirm");
+ assert.match(await page.locator("#receipt-editing").textContent(),/check the amount and date, then save/);
+ const before=await page.locator("#ledger-list .entry").count();
+ await page.locator("#receipt-date").fill("2026-10-30");await page.locator("#receipt-save").click();
+ assert.equal(await page.locator("#ledger-list .entry").count(),before+1,"saved once by the owner");
+ await nav("research");
+ await page.locator("article.radar-card",{has:page.locator(`select[aria-label="${label}"]`)}).getByRole("button",{name:"Record this payment in Income"}).click();
+ assert.match(await page.locator("#receipt-editing").textContent(),/^Already recorded for this study\. Editing: /);
+ assert.equal(await page.locator("#ledger-list .entry").count(),before+1,"no second record");
+ await page.locator("#receipt-cancel").click();
+ await nav("research");
+ await page.locator(`select[aria-label="${label}"]`).selectOption("Applied");}
 // Save encrypted, reload, reopen: the study is still marked Applied.
 await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
 const [dl]=await Promise.all([page.waitForEvent("download"),page.locator("#briefing-save").tap()]);

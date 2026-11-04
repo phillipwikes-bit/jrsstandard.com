@@ -819,6 +819,21 @@
   if(typeof document!=="undefined"&&document.addEventListener){
     ["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(function(n){document.addEventListener(n,onWorkspace);});
     document.addEventListener("incomeos:workspace-saved",function(){wsDirty=false;var go=$("ledger-save-now");if(go)go.hidden=true;modeNote();});
+    // A paid study is recorded once: an existing income record for the study is opened instead of a second one,
+    // otherwise the income form is filled for the owner to check (the amount actually received may differ) and save.
+    document.addEventListener("incomeos:record-study-payment",function(ev){
+      var d=ev.detail||{};if(typeof d.studyId!=="string"||!d.studyId)return;
+      var ref=("study:"+d.studyId).slice(0,120),nav=document.querySelector('.bottomnav button[data-view="ledger"]');if(nav)nav.click();
+      var existing=db.entries.find(function(e){return e.kind==="income"&&e.reference===ref;});
+      if(existing){startEdit(existing);var note=$("receipt-editing");if(note)note.textContent="Already recorded for this study. "+note.textContent;return;}
+      if(locked())return;
+      resetForm("receipt-form","income");
+      setValue("receipt-label",limit(d.title,100));setValue("receipt-payer",limit(d.provider,100));setValue("receipt-category","research");
+      var amt=Number(d.advertisedUsd);setValue("receipt-amount",Number.isFinite(amt)&&amt>0?amt:"");setValue("receipt-state","paid");setValue("receipt-reference",ref);
+      setValue("receipt-notes","Advertised amount filled in; change it to the amount actually received.");
+      var note=$("receipt-editing");if(note){note.textContent="New income from a paid study: check the amount and date, then save.";note.hidden=false;}
+      var amount=$("receipt-amount");if(amount){amount.scrollIntoView({block:"center"});amount.focus();}
+    });
     // Start or open a workspace from the Income screen itself, without hunting for the Research tab.
     document.addEventListener("click",function(ev){
       var id=ev.target&&ev.target.id;

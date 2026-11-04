@@ -85,7 +85,13 @@
       statuses.forEach(function(x){var o=add(sel,"option","",x);o.value=x;});
       sel.value=statuses.includes(db.progress[s.id])?db.progress[s.id]:"New";
       if(window.IncomeOSFinancialReadOnly===true&&!wsOpen){sel.disabled=true;sel.title="Open or start your workspace to track study progress";}
-      else sel.addEventListener("change",function(){db.progress[s.id]=sel.value;if(wsOpen)emit("incomeos:research-progress",{id:s.id,status:sel.value});else persist();});
+      else sel.addEventListener("change",function(){var was=db.progress[s.id];db.progress[s.id]=sel.value;if(wsOpen)emit("incomeos:research-progress",{id:s.id,status:sel.value});else persist();
+        if((was==="Paid (self-reported)")!==(sel.value==="Paid (self-reported)"))view();});
+      // A study the owner marked paid can be recorded as income once: the Income form is filled for review, never saved automatically.
+      if(wsOpen&&db.progress[s.id]==="Paid (self-reported)"){
+        var rec=add(controls,"button","smallbtn","Record this payment in Income");rec.type="button";
+        rec.addEventListener("click",function(){emit("incomeos:record-study-payment",{studyId:s.id,title:s.title,provider:s.provider,advertisedUsd:s.paymentUsd});});
+      }
       // Enter missing or corrected time components (memory only; labelled as owner-entered).
       var tdet=add(div,"details","radar-time");var tsum=add(tdet,"summary","",timeOverrides[s.id]?"Your time entries ("+timeOverrides[s.id].timeConfidence+")":"Enter screener, prep and follow-up time");
       var tgrid=add(tdet,"div","formgrid");
