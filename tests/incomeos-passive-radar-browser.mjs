@@ -96,6 +96,16 @@ assert.match(await page.locator("#passive-kept").textContent(),/Synthetic unclai
 await load();
 assert.equal(await page.locator(".passive-finding").count(),1,"dismissed finding still hidden after reopening");
 assert.equal(await decision("a").inputValue(),"Pursuing");
+// A returned-capital finding opens one recovery claim, shown in This week; projections offer no claim.
+assert.equal(await page.locator('.passive-finding[data-finding-id="b"] .passive-claim').count(),0);
+await page.locator('.passive-finding[data-finding-id="a"]').getByRole("button",{name:/Track .* as a recovery claim/}).tap();
+assert.match(await page.locator("#passive-status").textContent(),/Recovery claim opened.*Nothing is counted as received/);
+assert.match(await page.locator('.passive-finding[data-finding-id="a"] .passive-claim').textContent(),/Recovery claim open: search due/);
+assert.equal(await page.locator('.passive-finding[data-finding-id="a"] button').count(),0,"cannot open a second claim");
+assert.match(await page.locator("#passive-kept").textContent(),/Recovery claim: search due/);
+await nav("research");
+assert.match(await page.locator("#briefing-output").textContent(),/Synthetic unclaimed property match \(unclaimed property\): search due/);
+await nav("assets");
 // Terms the source did not state read "not stated".
 assert.match(await page.locator('.passive-finding[data-finding-id="a"] dl').textContent(),/Capital requirednot stated/);
 assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w,vw),"no horizontal page overflow with decisions shown");

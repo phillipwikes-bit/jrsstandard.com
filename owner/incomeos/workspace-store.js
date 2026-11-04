@@ -140,9 +140,35 @@
       next.passiveFindings[f.id]={status:status,on:on,title:text(f.title,200,"Title"),valueType:f.valueType,sourceName:text(f.sourceName,120,"Source"),
         sourceUrl:src,directUrl:direct,foundOn:f.foundOn,deadline:isDate(f.deadline)?f.deadline:null,
         amountUsd:typeof f.amountUsd==="number"&&isFinite(f.amountUsd)&&f.amountUsd>=0?f.amountUsd:null,amountBasis:["stated","estimated"].indexOf(f.amountBasis)>=0?f.amountBasis:"unknown"};
+      if(cur&&cur[f.id]&&cur[f.id].claimId)next.passiveFindings[f.id].claimId=cur[f.id].claimId;
     }
     if(Object.keys(next.passiveFindings).length>2000)throw Error("Too many kept findings");
     return log(next,"SET_PASSIVE_FINDING",{id:f.id,status:status},on);
+  }
+  // Open a recovery claim from a returned-capital finding. The claim starts where the claims tracker starts that kind
+  // (an unclaimed-property lead must still be searched on the official site) and carries the finding's links and date.
+  // One claim per finding; the finding is marked Pursuing. Nothing is counted as received: PAID still needs a bank reference.
+  function claimKindFor(f){
+    var t=String(f.title||"")+" "+String(f.summary||"");
+    if(/unclaimed|missing money|abandoned property/i.test(t))return "unclaimed_property";
+    if(/savings bond|treasury hunt/i.test(t))return "savings_bond";
+    if(/pension/i.test(t))return "pension";
+    if(/rebate/i.test(t))return "rebate";
+    if(/overcharge|overbill|billing error/i.test(t))return "billing_error";
+    return "refund";
+  }
+  function claimFromFinding(ws,f,on){
+    if(!f||f.valueType!=="returned_capital")throw Error("Only returned-capital findings open a recovery claim");
+    var id="claim-finding-"+slug(f.id);
+    if(arr(ws&&ws.claims).some(function(c){return c.id===id;}))throw Error("A claim is already open for this finding");
+    var next=setPassiveFinding(ws,f,"Pursuing",on);
+    var stated=typeof f.amountUsd==="number"&&f.amountBasis==="stated"&&f.amountUsd>0?f.amountUsd:undefined;
+    next=openClaim(next,{id:id,kind:claimKindFor(f),title:text(f.title,120,"Title"),counterparty:String((f.terms&&f.terms.provider)||f.sourceName||"").slice(0,120),
+      openedOn:on,deadline:f.deadline||undefined,estimatedUsd:stated,feeUsd:typeof f.costToPursueUsd==="number"&&f.costToPursueUsd>0?f.costToPursueUsd:undefined});
+    var c=next.claims[next.claims.length-1];
+    c.finding={id:f.id,sourceUrl:next.passiveFindings[f.id].sourceUrl,directUrl:next.passiveFindings[f.id].directUrl,foundOn:f.foundOn};
+    next.passiveFindings[f.id].claimId=id;
+    return next;
   }
   function clearResearchTime(ws,studyId,on){
     var next=clone(validate(ws));if(next.researchTimes)delete next.researchTimes[studyId];
@@ -253,7 +279,7 @@
     if(isEncrypted(text)){if(!passphrase)throw Error("This workspace is encrypted. Enter its passphrase.");return decrypt(passphrase,text);}
     return validateDoc(JSON.parse(text));
   }
-  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,setResearchProgress:setResearchProgress,PROGRESS:PROGRESS.slice(),setPassiveFinding:setPassiveFinding,PASSIVE_STATUS:PASSIVE_STATUS.slice(),clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
+  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,setResearchProgress:setResearchProgress,PROGRESS:PROGRESS.slice(),setPassiveFinding:setPassiveFinding,claimFromFinding:claimFromFinding,PASSIVE_STATUS:PASSIVE_STATUS.slice(),clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
     addBalance:addBalance,markAlerted:markAlerted,setDsProgram:setDsProgram,setLedger:setLedger,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSWorkspace=api;

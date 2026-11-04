@@ -768,9 +768,10 @@
         "owner/incomeos/index.html",
         "owner/incomeos/CHATGPT-INTAKE.md",
         "owner/incomeos/workspace-store.js",
-        "owner/incomeos/briefing-ui.js"
+        "owner/incomeos/briefing-ui.js",
+        "owner/incomeos/claims-tracker.js"
       ],
-      "purpose": "Reviewed import of the ChatGPT Passive Opportunity Radar findings file (incomeos.passive-findings.v1): each finding shown with its source, found-on date, direct link and value type (new income, returned capital, savings, projection); section 11 terms; owner decisions kept in the workspace",
+      "purpose": "Reviewed import of the ChatGPT Passive Opportunity Radar findings file (incomeos.passive-findings.v1): each finding shown with its source, found-on date, direct link and value type (new income, returned capital, savings, projection); section 11 terms; owner decisions kept in the workspace; returned-capital findings open a recovery claim",
       "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
       "externalDependencies": [
         "Owner's ChatGPT passive radar task producing the findings file"
@@ -778,7 +779,7 @@
       "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
       "knownDefects": [
         "Tested with synthetic findings only; no real radar output has been loaded",
-        "Returned-capital findings are not yet linked to recovery claims"
+        "Claim kind is inferred from the finding's wording; the owner cannot yet change it"
       ],
       "testCoverage": [
         "tests/incomeos-passive-radar.mjs",

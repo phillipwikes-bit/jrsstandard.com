@@ -22,6 +22,19 @@
     document.dispatchEvent(new CustomEvent("incomeos:passive-decision",{detail:{finding:f,status:status,done:function(r){res=r;}}}));
     if(!res||!res.ok){$("passive-status").textContent="Decision not saved: "+(res&&res.error||"open your workspace first")+".";if(sel)sel.value=(kept()[f.id]||{}).status||"New";}
   }
+  function claimFor(id){var cs=state.ws&&Array.isArray(state.ws.claims)?state.ws.claims:[],cid="claim-finding-"+String(id).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,40);
+    for(var i=0;i<cs.length;i++)if(cs[i].id===cid)return cs[i];return null;}
+  function claimControl(parent,f){
+    if(f.valueType!=="returned_capital"||!state.ws)return;
+    var c=claimFor(f.id),row=add(parent,"div",null,"cardalt passive-claim");
+    if(c){add(row,"span","Recovery claim open: "+c.state.replace(/_/g," ").toLowerCase()+". Record its steps in This week.","muted");return;}
+    var b=add(row,"button","Track as recovery claim","smallbtn");b.type="button";
+    b.setAttribute("aria-label","Track "+f.title+" as a recovery claim");
+    b.addEventListener("click",function(){
+      var res=null;document.dispatchEvent(new CustomEvent("incomeos:passive-claim",{detail:{finding:f,done:function(r){res=r;}}}));
+      $("passive-status").textContent=res&&res.ok?"Recovery claim opened for "+f.title+". Nothing is counted as received until you record the payment with its bank reference.":"Claim not opened: "+(res&&res.error||"open your workspace first")+".";
+    });
+  }
   function decisionControl(parent,f){
     var row=add(parent,"div",null,"cardalt");
     var lab=add(row,"label","Your decision ");var sel=add(lab,"select");
@@ -55,6 +68,7 @@
       add(d,"strong",x.title);
       add(d,"p",x.status+" since "+x.on+" · "+TYPE_LABEL[x.valueType]+(x.valueType==="projection"?" (not income)":"")+(x.deadline?" · deadline "+x.deadline:"")+" · "+x.sourceName+", found "+x.foundOn);
       var links=add(d,"p",null,"cardalt");anchor(links,x.directUrl,"Open direct link");anchor(links,x.sourceUrl,"Open source");
+      var c=claimFor(id);if(c)add(d,"p","Recovery claim: "+c.state.replace(/_/g," ").toLowerCase(),"muted");
     });
     add(box,"p","A finding becomes money only when you record the actual payment in Income.","muted");
   }
@@ -84,6 +98,7 @@
       terms(c,f.terms);
       var links=add(c,"p",null,"cardalt");anchor(links,f.directUrl,"Open direct link");anchor(links,f.sourceUrl,"Open source");
       decisionControl(c,f);
+      claimControl(c,f);
     });
     if(res.refused.length){
       add(out,"h4","Refused findings");

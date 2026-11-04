@@ -84,4 +84,28 @@ assert.equal((await WS.load(JSON.stringify(base),"")).schema,"incomeos.workspace
   const old=plain(WS.newWorkspace("2026-11-01"));delete old.passiveFindings;assert.doesNotThrow(()=>WS.validate(old));
   assert.ok(WS.setPassiveFinding(old,f,"Dismissed","2026-11-04").passiveFindings["pf-1"]);
 }
+// A returned-capital finding opens one recovery claim carrying its links; nothing is counted as received.
+{
+  let w=WS.newWorkspace("2026-11-04");
+  const f={id:"pf-cap",title:"Synthetic unclaimed property match",valueType:"returned_capital",sourceName:"Synthetic list",sourceUrl:"https://example.org/s",directUrl:"https://example.gov/claim",foundOn:"2026-11-03",amountUsd:80,amountBasis:"stated",deadline:"2026-12-31",terms:{provider:"Synthetic State Comptroller"}};
+  w=WS.claimFromFinding(w,f,"2026-11-04");
+  const c=w.claims.at(-1);
+  assert.deepEqual([c.id,c.kind,c.state,c.counterparty,c.estimatedUsd,c.deadline],["claim-finding-pf-cap","unclaimed_property","SEARCH_DUE","Synthetic State Comptroller",80,"2026-12-31"]);
+  assert.deepEqual(plain(c.finding),{id:"pf-cap",sourceUrl:"https://example.org/s",directUrl:"https://example.gov/claim",foundOn:"2026-11-03"});
+  assert.equal(w.passiveFindings["pf-cap"].status,"Pursuing");assert.equal(w.passiveFindings["pf-cap"].claimId,"claim-finding-pf-cap");
+  assert.throws(()=>WS.claimFromFinding(w,f,"2026-11-04"),/already open/,"one claim per finding");
+  assert.throws(()=>WS.claimFromFinding(w,{...f,id:"pf-p",valueType:"projection"},"2026-11-04"),/returned-capital/);
+  assert.equal(w.ledger.length,0,"no ledger entry");
+  const rev=ctx.window.IncomeOSClaims.review(w.claims,"2026-11-04");
+  assert.equal(rev.recoveredUsd,0,"not counted as recovered");
+  // Paid needs a bank reference, as for any claim.
+  w=WS.advanceClaim(w,c.id,{to:"MATCH_FOUND",on:"2026-11-05",evidenceRef:"search result"});
+  w=WS.advanceClaim(w,c.id,{to:"CLAIM_FILED",on:"2026-11-05",evidenceRef:"claim 1"});
+  w=WS.advanceClaim(w,c.id,{to:"APPROVED",on:"2026-11-06",evidenceRef:"letter"});
+  assert.throws(()=>WS.advanceClaim(w,c.id,{to:"PAID",on:"2026-11-07",evidenceRef:"x",amountUsd:"80"}),/BANK_REFERENCE/);
+  // Changing the decision keeps the claim link; an estimate is not used as the claim amount; a refund starts at MATCH_FOUND.
+  w=WS.setPassiveFinding(w,f,"Done","2026-11-08");assert.equal(w.passiveFindings["pf-cap"].claimId,"claim-finding-pf-cap");
+  w=WS.claimFromFinding(w,{...f,id:"pf-r",title:"Synthetic overpaid deposit refund",directUrl:"https://example.org/r",amountBasis:"estimated"},"2026-11-08");
+  assert.deepEqual([w.claims.at(-1).kind,w.claims.at(-1).state,w.claims.at(-1).estimatedUsd],["refund","MATCH_FOUND",null]);
+}
 console.log("IncomeOS workspace QA passed (synthetic data): engine-checked updates, append-only change log, AES-GCM round trip, wrong-passphrase and tamper rejection");
