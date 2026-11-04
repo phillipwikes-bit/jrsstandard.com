@@ -48,6 +48,8 @@ jobs:
         run: node tests/owner-readiness-mainline.mjs
       - name: Current public contact inbox is private and source-complete
         run: node tests/owner-formspree-inbox.mjs
+      - name: Owner-only inquiry follow-up storage rejects unauthorized changes
+        run: node tests/owner-inquiry-followup.mjs
       - name: Historical owner inquiries and pay-screen sources must be complete
         run: node tests/owner-historical-inbox.mjs
       - name: Historical checkout aggregate sources must be complete

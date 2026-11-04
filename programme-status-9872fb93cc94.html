@@ -390,23 +390,51 @@ th{font-size:10px;letter-spacing:.055em}
    <p class="note" id="ld-site-commercial">Loading separately classified commercial purposes...</p>
    <p class="note">These counts include only historical Supabase contact rows with source=site-inquiry. The redesigned public website sends its current contact form to Formspree, not to this Supabase table. Newer messages, including names and emails, remain with that independent recipient and are NOT in these counts or the Supabase participant register unless separately imported with provenance and lawful purpose. No unavailable source may be interpreted as zero. Research, resource and general questions are not evidence of commercial demand.</p>
   </section>
-  <section id="current-formspree-inquiries" aria-label="Current website contact messages, separate source" class="chart">
-    <h3 style="font-size:18px;margin:18px 0 10px">Current website inquiries | Formspree inbox</h3>
-    <p class="note">The redesigned public contact form delivers to Formspree and the designated email inbox. This is a separate source from the historical Supabase participant register. The owner may connect a Formspree read-only API key if the account supports the Forms API. This section never writes, transfers or republishes contact data.</p>
-    <p class="note" id="current-formspree-status" role="status" aria-live="polite">Current form inbox not yet checked. Unavailable is not zero.</p>
+  <section id="current-formspree-inquiries" aria-label="Current website contact messages and owner triage" class="chart">
+    <h3 style="font-size:18px;margin:18px 0 10px">Current website inquiries | Formspree + Gmail</h3>
+    <p class="note"><strong>Routing:</strong> Website contact form → Formspree submission inbox → owner Gmail notification. The dashboard independently reads Formspree through an owner-only, read-only API credential. Gmail notifications remain separate from dashboard retrieval. The historical Supabase inquiry register is a distinct source and is never automatically combined with current messages.</p>
+    <p class="note" id="current-formspree-status" role="status" aria-live="polite">Current Formspree source not checked. Unavailable is not zero.</p>
+    <p class="note" id="current-formspree-followup-status" role="status" aria-live="polite">Owner follow-up storage not checked. A manual status is not proof that an email was sent or received.</p>
+    <div class="cards" style="grid-template-columns:repeat(4,minmax(0,1fr))" aria-label="Current Formspree source counts">
+      <div class="card"><div class="cv" id="current-formspree-total">·</div><div class="ck">Nonspam submissions retrieved</div></div>
+      <div class="card"><div class="cv" id="current-formspree-marked">·</div><div class="ck">Current form markers (self-declared)</div></div>
+      <div class="card"><div class="cv" id="current-formspree-unattributed">·</div><div class="ck">Source not attributed</div></div>
+      <div class="card"><div class="cv" id="current-formspree-review">·</div><div class="ck">Owner flagged for review</div></div>
+    </div>
     <div class="bar">
-      <button type="button" class="btn" id="current-formspree-refresh">Check connected inbox</button>
-      <button type="button" class="btn" id="current-formspree-export" disabled>Export connected inbox CSV</button>
+      <button type="button" class="btn" id="current-formspree-refresh">Refresh current inbox</button>
+      <button type="button" class="btn" id="current-formspree-export" disabled>Export all retrieved inquiries (private CSV)</button>
       <a class="btn" href="https://mail.google.com/mail/u/0/#search/from%3Aformspree.io+after%3A2026%2F10%2F29" target="_blank" rel="noopener noreferrer">Find recent JRS Formspree emails</a>
     </div>
-    <p class="note">The Gmail link searches Formspree notifications since October 29, 2026, including messages whose subjects differ from the default inquiry title. It opens Gmail without transmitting any email content to this page. If direct Formspree read access is not configured, consult the existing Formspree and Gmail records. Check Formspree's Over Limit folder separately: the submission API does not return over-limit entries until they are reprocessed, and notification email may not have been sent. Do not copy names into a sales list without purpose-specific authorization.</p>
+    <div class="bar" aria-label="Filter current inquiries">
+      <label for="current-formspree-category-filter">Category</label>
+      <select id="current-formspree-category-filter" disabled>
+        <option value="all">All categories</option>
+        <option value="method">Method</option><option value="research">Research</option>
+        <option value="training">Training</option><option value="organization">Organization</option>
+        <option value="accessibility">Accessibility</option><option value="general">General</option>
+        <option value="other">Unclassified</option>
+      </select>
+      <label for="current-formspree-followup-filter">Owner follow-up</label>
+      <select id="current-formspree-followup-filter" disabled>
+        <option value="all">All states</option>
+        <option value="not_recorded">Not recorded</option>
+        <option value="needs_review">Needs review</option>
+        <option value="response_recorded">Reply marked sent</option>
+        <option value="closed">Closed</option>
+        <option value="not_relevant">Not relevant</option>
+      </select>
+    </div>
+    <p class="note" id="current-formspree-visible" role="status" aria-live="polite">No inbox data displayed.</p>
+    <p class="note">Only provider records actually retrieved appear here. Spam and unreprocessed over-limit messages are excluded from the Formspree API and may not generate Gmail notifications. Source markers and inquiry categories are self-declared. A contact inquiry is not evidence of a qualified buyer, organizational adoption or a transfer release. The optional owner follow-up status stores only an opaque Formspree record ID and manual classification, never a copy of the message. Only authorized owner access may update it.</p>
     <div class="tablewrap" style="margin-top:12px">
       <table id="current-formspree-table">
-        <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding-bottom:8px">Authenticated owner read only. Source records remain in Formspree.</caption>
-        <thead><tr><th>Date</th><th>Purpose</th><th>Name</th><th>Email</th><th>Organization</th><th>Message</th><th>Contact permission</th><th>Form marker</th></tr></thead>
-        <tbody id="current-formspree-rows"><tr><td colspan="8">Current source not yet connected. No zero asserted.</td></tr></tbody>
+        <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding-bottom:8px">Private owner register. Formspree remains the message source of record; owner follow-up state is independently stored when configured.</caption>
+        <thead><tr><th>Date (source)</th><th>Purpose</th><th>Name</th><th>Email</th><th>Organization</th><th>Message</th><th>Contact permission</th><th>Form marker</th><th>Owner follow-up</th></tr></thead>
+        <tbody id="current-formspree-rows"><tr><td colspan="9">Current source not connected. Unavailable is not zero.</td></tr></tbody>
       </table>
     </div>
+    <p class="note">A status of “Reply marked sent” means the owner selected that state. It is not verified against Gmail. Named inquiry records and their contact consent do not confer publication, marketing, acquisition-diligence or successor-transfer rights.</p>
   </section>
 
   <p class="note" id="ld-source-coverage" role="status" aria-live="polite">Historical source coverage not yet verified.</p>
@@ -2623,30 +2651,108 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <script>
 (function(){
  'use strict';
- var rows=[],status=document.getElementById('current-formspree-status');
+ var rows=[], states=new Map(), followupReady=false, sourceReady=false;
+ var status=document.getElementById('current-formspree-status');
+ var followupStatus=document.getElementById('current-formspree-followup-status');
  var tbody=document.getElementById('current-formspree-rows');
  var button=document.getElementById('current-formspree-refresh');
  var exportButton=document.getElementById('current-formspree-export');
- if(!status||!tbody||!button||!exportButton)return;
+ var categoryFilter=document.getElementById('current-formspree-category-filter');
+ var followupFilter=document.getElementById('current-formspree-followup-filter');
+ var visible=document.getElementById('current-formspree-visible');
+ var counters={total:document.getElementById('current-formspree-total'),
+   marked:document.getElementById('current-formspree-marked'),
+   unattributed:document.getElementById('current-formspree-unattributed'),
+   review:document.getElementById('current-formspree-review')};
+ if(!status||!followupStatus||!tbody||!button||!exportButton||!categoryFilter||!followupFilter||!visible)return;
+ var statuses={
+  not_recorded:'Not recorded',
+  needs_review:'Needs review',
+  response_recorded:'Reply marked sent',
+  closed:'Closed',
+  not_relevant:'Not relevant'
+ };
+ var categoryNames=new Set(['method','research','training','organization','accessibility','general']);
  function cell(tr,value){
    var td=document.createElement('td');td.textContent=String(value==null?'':value);
    tr.appendChild(td);return td;
  }
- function redraw(){
+ function rowState(r){
+   var id=String(r.source_record_id||'');
+   return states.has(id)?states.get(id).followup_status:'not_recorded';
+ }
+ function cleanDate(value){
+   var s=String(value||'');
+   if(!s)return 'Date unavailable';
+   var time=Date.parse(s);
+   return Number.isFinite(time)?new Date(time).toLocaleString():s;
+ }
+ function countState(name){
+   return rows.filter(function(r){return rowState(r)===name;}).length;
+ }
+ function setCounters(known,marked,unattributed){
+   counters.total.textContent=known?String(rows.length):'·';
+   counters.marked.textContent=known?String(marked):'·';
+   counters.unattributed.textContent=known?String(unattributed):'·';
+   counters.review.textContent=known&&followupReady?String(countState('needs_review')):'·';
+ }
+ function filtered(){
+   return rows.filter(function(r){
+     var cat=String(r.category||'').toLowerCase();
+     var wanted=categoryFilter.value;
+     if(wanted!=='all'&&(wanted==='other'?categoryNames.has(cat):cat!==wanted))return false;
+     return followupFilter.value==='all'||rowState(r)===followupFilter.value;
+   });
+ }
+ function emptyRow(message){
    tbody.textContent='';
-   if(!rows.length){
-     var tr=document.createElement('tr'),td=document.createElement('td');
-     td.colSpan=8;td.textContent='The connected Formspree source reported no nonspam submissions.';
-     tr.appendChild(td);tbody.appendChild(tr);return;
+   var tr=document.createElement('tr'),td=document.createElement('td');
+   td.colSpan=9;td.textContent=message;tr.appendChild(td);tbody.appendChild(tr);
+ }
+ async function setFollowup(r,selected,select){
+   var id=String(r.source_record_id||'');
+   if(!followupReady||!/^([A-Za-z0-9_-]{8,160})$/.test(id))return;
+   var previous=rowState(r);
+   if(selected===previous)return;
+   if(selected==='not_recorded'){select.value=previous;return;}
+   select.disabled=true;
+   followupStatus.textContent='Saving an owner-entered follow-up state...';
+   try{
+     var response=await fetch('/api/owner-inquiry-followup',{
+       method:'PUT',credentials:'same-origin',cache:'no-store',
+       headers:{'Content-Type':'application/json'},
+       body:JSON.stringify({source_record_id:id,followup_status:selected})
+     });
+     if(!response.ok)throw Error('not_saved');
+     var data=await response.json();
+     if(!data||data.saved!==true||data.source_record_id!==id||
+        data.followup_status!==selected||typeof data.updated_at!=='string')throw Error('unconfirmed');
+     states.set(id,{followup_status:selected,updated_at:data.updated_at});
+     followupStatus.textContent='Owner follow-up state saved. Gmail delivery was not checked.';
+     setCounters(sourceReady,rows.filter(x=>x.form_marker_status==='matches_current_contact_form_fields').length,
+       rows.filter(x=>x.form_marker_status!=='matches_current_contact_form_fields').length);
+     redraw();
+   }catch{
+     select.value=previous;select.disabled=false;
+     followupStatus.textContent='Follow-up state not saved. The previous state remains; retry after verifying the private connection.';
    }
-   rows.slice(0,250).forEach(function(r){
+ }
+ function redraw(){
+   if(!sourceReady){emptyRow('Current source unavailable. No zero asserted.');return;}
+   var shown=filtered();
+   visible.textContent='Showing '+Math.min(shown.length,250)+' of '+shown.length+
+     ' matching inquiries ('+rows.length+' source submissions retrieved).'+
+     (shown.length>250?' Export includes all source rows.':'');
+   tbody.textContent='';
+   if(!shown.length){emptyRow('No inquiries match these filters. The provider source remains unchanged.');return;}
+   shown.slice(0,250).forEach(function(r){
      var tr=document.createElement('tr');
-     cell(tr,r.date||'');
+     cell(tr,cleanDate(r.date));
      cell(tr,r.category||'Unclassified');
      cell(tr,r.name||'Not provided');
      var ec=cell(tr,'');
      var email=String(r.email||'');
-     if(/^[A-Za-z0-9._%+\\-]+@[A-Za-z0-9.\\-]+[.][A-Za-z]{2,}$/.test(email)){
+     if(/^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+[.][A-Za-z]{2,}$/.test(email)){
        var a=document.createElement('a');
        a.href='mailto:'+email;a.textContent=email;a.style.color='var(--accent)';
        ec.appendChild(a);
@@ -2656,21 +2762,55 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
      cell(tr,r.contact_permission||'not-recorded');
      cell(tr,r.form_marker_status==='matches_current_contact_form_fields'
        ?'Current form marker matches (self-declared)':'Source marker unattributed');
+     var td=cell(tr,'');
+     var sel=document.createElement('select');
+     sel.setAttribute('aria-label','Owner follow-up for '+(r.name||'source record'));
+     Object.keys(statuses).forEach(function(key){
+       var option=document.createElement('option');
+       option.value=key;option.textContent=statuses[key];sel.appendChild(option);
+     });
+     sel.value=rowState(r);
+     var id=String(r.source_record_id||'');
+     sel.disabled=!followupReady||!/^([A-Za-z0-9_-]{8,160})$/.test(id);
+     sel.addEventListener('change',function(){setFollowup(r,sel.value,sel);});
+     td.appendChild(sel);
      tbody.appendChild(tr);
    });
  }
+ async function fetchFollowup(){
+   followupReady=false;states.clear();
+   followupStatus.textContent='Checking private owner follow-up storage...';
+   try{
+     var response=await fetch('/api/owner-inquiry-followup',{credentials:'same-origin',cache:'no-store'});
+     if(!response.ok)throw Error('unavailable');
+     var d=await response.json();
+     if(!d||d.complete!==true||d.ready!==true||d.source!=='formspree-public-jrs-contact'||!Array.isArray(d.states))
+       throw Error('invalid');
+     for(const x of d.states){
+       if(!x||typeof x.source_record_id!=='string'||!Object.prototype.hasOwnProperty.call(statuses,x.followup_status))
+         throw Error('unexpected');
+       states.set(x.source_record_id,{followup_status:x.followup_status,updated_at:x.updated_at});
+     }
+     followupReady=true;
+     followupStatus.textContent='Owner follow-up register available. States are manually recorded; Gmail replies are not automatically verified.';
+   }catch{
+     states.clear();followupReady=false;
+     followupStatus.textContent='Owner follow-up register unavailable or private database table not installed. Source messages remain read-only; no state is claimed.';
+   }
+ }
  async function load(){
-   button.disabled=true;status.textContent='Checking the configured Formspree source...';
+   button.disabled=true;categoryFilter.disabled=true;followupFilter.disabled=true;
+   status.textContent='Checking the configured Formspree source...';
+   sourceReady=false;rows=[];states.clear();followupReady=false;
+   exportButton.disabled=true;setCounters(false);visible.textContent='Current source not yet verified.';
    try{
      var response=await fetch('/api/owner-formspree-inbox',{credentials:'same-origin',cache:'no-store'});
      if(!response.ok){
-       rows=[];exportButton.disabled=true;tbody.textContent='';
-       var tr=document.createElement('tr'),td=document.createElement('td');td.colSpan=8;
-       td.textContent='Source unavailable, not a zero count. Use the Formspree or Gmail inbox.';
-       tr.appendChild(td);tbody.appendChild(tr);
+       emptyRow('Source unavailable, not a zero count. Use the Formspree or Gmail inbox.');
        status.textContent=response.status===503
          ?'Direct Formspree source not configured or provider unavailable. Use the source inbox. No zero assumed.'
          :'Current inbox read failed (HTTP '+response.status+'). No incomplete records shown.';
+       followupStatus.textContent='Follow-up not inspected because source records are unavailable.';
        return;
      }
      var d=await response.json();
@@ -2678,18 +2818,21 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
         !Number.isInteger(d.current_form_marker_matches)||!Number.isInteger(d.unattributed_submissions)||
         d.current_form_marker_matches<0||d.unattributed_submissions<0||
         d.current_form_marker_matches+d.unattributed_submissions!==d.rows.length)throw Error('incomplete');
-     rows=d.rows;
-     exportButton.disabled=rows.length===0;
-     status.textContent='Complete nonspam Formspree read: '+rows.length+' source submissions; '+d.current_form_marker_matches+' matching current form markers and '+d.unattributed_submissions+' unattributed. Markers are self-declared, not independently verified. Spam and unreprocessed provider over-limit submissions excluded; submissions are not verified unique people or qualified leads. '
-       +(rows.length>250?'Showing 250; export includes all.':'Showing all.')+
-       ' No duplication into the historic Supabase register.';
+     rows=d.rows;sourceReady=true;exportButton.disabled=rows.length===0;
+     categoryFilter.disabled=false;followupFilter.disabled=false;
+     status.textContent='Complete nonspam Formspree read: '+rows.length+' source submissions; '+
+       d.current_form_marker_matches+' matching current form markers and '+d.unattributed_submissions+
+       ' unattributed. Markers are self-declared, not independently verified. Spam and unreprocessed provider over-limit submissions excluded; submissions are not verified unique people or qualified leads. '+
+       'Source checked '+new Date().toLocaleString()+'. No duplication into the historic Supabase register.';
+     await fetchFollowup();
+     setCounters(true,d.current_form_marker_matches,d.unattributed_submissions);
      redraw();
    }catch{
-     rows=[];exportButton.disabled=true;tbody.textContent='';
-     var tr=document.createElement('tr'),td=document.createElement('td');
-     td.colSpan=8;td.textContent='Connection unavailable. No source records loaded.';
-     tr.appendChild(td);tbody.appendChild(tr);
+     sourceReady=false;rows=[];states.clear();followupReady=false;exportButton.disabled=true;
+     categoryFilter.disabled=true;followupFilter.disabled=true;setCounters(false);
+     emptyRow('Connection unavailable. No source records loaded.');
      status.textContent='Unable to verify current source. Unavailable is not zero.';
+     followupStatus.textContent='Owner follow-up state not loaded.';
    }finally{button.disabled=false;}
  }
  function quote(v){
@@ -2698,19 +2841,29 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
    return '"'+s.replace(/"/g,'""')+'"';
  }
  exportButton.addEventListener('click',function(){
-   if(!rows.length)return;
+   if(!sourceReady||!rows.length)return;
    if(!window.confirm('Export '+rows.length+' Formspree contact records, including names and email addresses? Keep the file private.'))return;
-   var keys=['date','category','name','email','organization','message','contact_permission','form_marker_status','source','source_record_id'];
+   var keys=['date','category','name','email','organization','message','contact_permission',
+     'form_marker_status','source','source_record_id','followup_status','followup_updated_at'];
    var out=[keys.map(quote).join(',')];
-   rows.forEach(function(r){out.push(keys.map(function(k){return quote(r[k])}).join(','));});
+   rows.forEach(function(r){
+     var data=Object.assign({},r,{
+       followup_status:followupReady?rowState(r):'not_verified',
+       followup_updated_at:followupReady?(states.get(String(r.source_record_id||''))||{}).updated_at||'':''
+     });
+     out.push(keys.map(function(k){return quote(data[k])}).join(','));
+   });
    var blob=new Blob(['\uFEFF'+out.join('\r\n')],{type:'text/csv;charset=utf-8'});
    var url=URL.createObjectURL(blob),a=document.createElement('a');
    a.href=url;a.download='jrs-current-formspree-private-inquiries.csv';a.click();
    URL.revokeObjectURL(url);
  });
+ categoryFilter.addEventListener('change',redraw);
+ followupFilter.addEventListener('change',redraw);
  button.addEventListener('click',load);
  load();
 })();
 </script>
+
 </body>
 </html>
