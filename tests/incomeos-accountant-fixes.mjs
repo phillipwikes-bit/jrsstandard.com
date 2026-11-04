@@ -54,3 +54,20 @@ assert.match(src,/function importStatus\(x\)\{var s=String\(x\|\|""\)\.trim\(\)\
  assert.ok(c.gaps.some(g=>/scheduled, disputed or refunded/.test(g[0])&&g[1]===1));assert.ok(c.gaps.some(g=>/questions for the accountant/i.test(g[0])&&g[1]===1));}
 assert.match(src,/function importPayStatus\(x\)\{var s=String\(x\|\|""\)\.trim\(\)\.toLowerCase\(\);if\(!s\)return "paid";return PAY_STATUS\.indexOf\(s\)>=0\?s:"scheduled";\}/,"unrecognized CSV state is scheduled, never paid");
 console.log("IncomeOS accountant review checks passed.");
+// Category summary: returned principal, unpaid bills and unallocated credits never mix with income or paid expenses.
+{const inc=(scope,status,g)=>({kind:"income",scope,status,grossUsd:g,feesUsd:0,label:"x",date:"2026-10-01",category:"research"});
+ const out=(type,a,st)=>({kind:"outflow",type,category:"software",amountUsd:a,businessUse:null,label:"x",date:"2026-10-01",...(st?{paymentStatus:st}:{})});
+ const rows=A.categorySummary([inc("income","paid",100),inc("income","paid",50),inc("nonincome","paid",900),inc("income","invoiced",300),inc("income","cancelled",70),
+   out("expense",40),out("expense",25,"scheduled"),out("refund",15),out("taxpayment",200)]);
+ const get=(g,c)=>rows.find(r=>r.group===g&&r.category===c);
+ assert.deepEqual([get("income","research").usd,get("income","research").count],[150,2],"only received income in the income group");
+ assert.equal(get("nonincome","research").usd,900,"returned principal kept apart");
+ assert.equal(get("outstanding","research").usd,300);assert.equal(get("closed","research").usd,70);
+ assert.equal(get("expense","software").usd,40,"paid expense alone");
+ assert.equal(get("unpaid","software").usd,25,"scheduled bill kept apart");
+ assert.equal(get("refund","software").usd,15,"credit not netted against expenses");
+ assert.equal(get("taxpayment","software").usd,200);
+ assert.deepEqual(rows.map(r=>r.group),["income","nonincome","outstanding","closed","expense","taxpayment","unpaid","refund"],"fixed group order");
+ assert.equal(rows.reduce((n,r)=>n+r.count,0),9,"every record lands in exactly one group");}
+assert.doesNotMatch(src,/\(e\.kind==="income"\?"Income · ":"Outflow · "\)\+e\.category/,"old mixed grouping removed");
+assert.match(src,/"By category: group","Category","Records","USD"/,"summary CSV carries the category table");

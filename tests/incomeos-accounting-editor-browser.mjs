@@ -52,6 +52,9 @@ await page.locator("#cost-payment-status").selectOption("scheduled");await page.
 await page.locator("#cost-save").tap();
 {const row=await page.locator("#ledger-list .entry",{hasText:"Synthetic domain renewal"}).textContent();
  assert.match(row,/Scheduled, not paid/);assert.match(row,/Question for accountant: Business or personal\?/);}
+{const cats=await page.locator("#report-preview").textContent();
+ assert.match(cats,/Outflows not paid \(scheduled, disputed or refunded\) · [a-z]+ \(1\)\$15\.00/,"scheduled bill listed apart from paid expenses");
+ assert.match(cats,/Expenses paid · [a-z]+ \(1\)\$20\.00/,"paid expense total excludes the scheduled bill");}
 // An invoiced amount is recorded as outstanding, not received, and appears under the outstanding filter.
 await page.locator("#receipt-label").fill("Synthetic consulting invoice");await page.locator("#receipt-amount").fill("900");
 await page.locator("#receipt-date").fill("2026-10-20");await page.locator("#receipt-state").selectOption("invoiced");
