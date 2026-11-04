@@ -45,6 +45,9 @@ await page.locator("#report-year").fill("2026");await page.locator("#report-year
 let list=await page.locator("#ledger-list").textContent();
 assert.match(list,/Synthetic study payout/);assert.match(list,/Synthetic AI subscription/);
 assert.match(list,/Business use not determined/,"unknown business use stays unknown");
+// The Income view warns about unsaved changes and offers a route to the save control.
+assert.match(await page.locator("#ledger-mode").textContent(),/UNSAVED CHANGES/);
+assert.ok(await page.locator("#ledger-save-now").isVisible());
 // Edit then delete the expense.
 await page.locator("#ledger-list .entry",{hasText:"Synthetic AI subscription"}).getByRole("button",{name:"Edit"}).tap();
 await page.locator("#cost-amount").fill("25");await page.locator("#cost-save").tap();
@@ -58,6 +61,10 @@ const [dl]=await Promise.all([page.waitForEvent("download"),page.locator("#brief
 const saved=readFileSync(await dl.path(),"utf8");
 assert.doesNotMatch(saved,/Synthetic study payout/,"saved file is encrypted");
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,"nothing in browser storage");
+await nav("ledger");
+assert.doesNotMatch(await page.locator("#ledger-mode").textContent(),/UNSAVED CHANGES/,"saving clears the warning");
+assert.ok(!(await page.locator("#ledger-save-now").isVisible()));
+await page.locator("#ledger-mode").scrollIntoViewIfNeeded();
 await page.reload();await nav("ledger");
 assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic study payout/);
 assert.ok(await page.locator("#receipt-save").isDisabled(),"locked again without a workspace");

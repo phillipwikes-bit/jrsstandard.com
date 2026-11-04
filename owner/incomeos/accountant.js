@@ -126,6 +126,19 @@
       unreconciled:entries.filter(function(e){return !e.reconciled}).length
     };
   }
+  // What the year's records still lack. Any gap makes the report INCOMPLETE; a clean result is still
+  // only "no open gaps in the recorded entries", never accountant approval or tax-filing readiness.
+  function completeness(entries){
+    var t=totals(entries);
+    var missingEvidence=entries.filter(function(e){return e.kind==="outflow"&&e.type!=="refund"&&(e.evidenceStatus||"missing")==="missing";}).length;
+    var unallocatedRefunds=entries.filter(function(e){return e.kind==="outflow"&&e.type==="refund";}).length;
+    var gaps=[["Records not marked reconciled",t.unreconciled],["Expense business-use not determined",t.allocationPending],
+      ["Expenses without supporting evidence",missingEvidence],["Pending receipts (not counted as received)",t.pendingCount],
+      ["Refunds or credits not yet matched to a charge",unallocatedRefunds]];
+    var open=gaps.filter(function(g){return g[1]>0;});
+    return {status:entries.length===0?"NO RECORDS":open.length?"INCOMPLETE":"NO OPEN GAPS IN RECORDED ENTRIES",gaps:gaps,open:open.length,
+      notice:"Not reviewed or approved by an accountant and not ready for tax filing. Covers only entries recorded in IncomeOS; omitted accounts or receipts cannot be detected."};
+  }
   function paidTotal(){return totals(db.entries).gross;}
   function addOrUpdate(e,editId){
     if(locked())throw new Error("Financial entry is disabled in unapproved staging. Open or create a workspace in Research, This week, to keep records in your workspace file.");
@@ -325,6 +338,9 @@
       ["Asset sale proceeds, review basis",t.proceeds],["Estimated tax payments",t.taxPaid],
       ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],["Unallocated refunds / credits, not netted",t.refundCredits],
       ["Unreconciled record count",t.unreconciled],["Expense allocations not determined",t.allocationPending]];
+    var c=completeness(yearEntries());
+    pairs.unshift(["Report status",c.status+". "+c.notice]);
+    c.gaps.forEach(function(g){if(g[0]!=="Records not marked reconciled")pairs.push(["Completeness: "+g[0],g[1]]);});
     var review=annualReview();
     if(review&&!review.invalidYear){
       pairs.push(["Document flags requiring review",review.openIssueCount]);
@@ -341,6 +357,11 @@
     var r=$("print-report");r.replaceChildren();
     place(r,"h1","","IncomeOS | Accountant Annual Earnings & Expense Report");
     place(r,"p","","Tax year: "+currentYear()+" | Generated: "+today()+" | Self-reported records, not tax determinations");
+    var comp=completeness(yearEntries());
+    place(r,"h2","","Record completeness: "+comp.status);
+    place(r,"p","",comp.notice);
+    var ctab=place(r,"table"),cbody=place(ctab,"tbody");
+    comp.gaps.forEach(function(g){var row=place(cbody,"tr");place(row,"td","",g[0]);place(row,"td","",String(g[1]));});
     place(r,"h2","","Annual reconciliation");
     var table=place(r,"table");var body=place(table,"tbody");
     [["Received gross potential income",t.gross],["Withheld platform fees",t.fees],["Other recorded expense candidates",t.expenses],["Business-use estimate (not approved deduction)",t.possibleBusinessUse],["Recorded receipts less fees/expenses",round(t.gross-t.fees-t.expenses)],["Pending unpaid receipts",t.pending],["Possible nonincome / refunded principal",t.returned],["Asset sale proceeds, basis not determined",t.proceeds],["Estimated tax payments",t.taxPaid],["Capital contributions / asset costs",t.capital],["Unallocated refunds / credits, not netted",t.refundCredits],["Unreconciled records",t.unreconciled]].forEach(function(p){var tr=place(body,"tr");place(tr,"th","",p[0]);place(tr,"td","",typeof p[1]==="number"&&p[0]!=="Unreconciled records"?money(p[1]):p[1]);});
@@ -486,10 +507,11 @@
     });});
     render();
   }
+  var wsDirty=false;
   function modeNote(){
     var n=$("ledger-mode");if(!n)return;
     n.hidden=!wsMode;
-    n.textContent=wsMode?"Editing the ledger in your open workspace. Changes are kept only when you save the workspace (encrypted, with a passphrase) in Research, This week. Nothing is stored in this browser."+(wsForeign.length?" "+wsForeign.length+" row(s) from other panels are kept as they are and not shown here.":""):"";
+    n.textContent=wsMode?(wsDirty?"UNSAVED CHANGES. Save the workspace now (Research, This week) or they will be lost if this page closes. ":"")+"Editing the ledger in your open workspace. Changes are kept only when you save the workspace (encrypted, with a passphrase) in Research, This week. Nothing is stored in this browser."+(wsForeign.length?" "+wsForeign.length+" row(s) from other panels are kept as they are and not shown here.":""):"";
     var banner=$("financial-staging-interlock");if(banner&&window.IncomeOSFinancialReadOnly===true)banner.hidden=wsMode;
     // The staging lock disables these controls for browser storage; in workspace mode they edit the file instead.
     ["receipt-form","cost-form","import-trigger","import-csv-trigger","import-ledger","import-csv"].forEach(function(id){
@@ -501,11 +523,20 @@
   function onWorkspace(ev){
     var ws=ev&&ev.detail;if(!ws||typeof ws!=="object"||!Array.isArray(ws.ledger))return;
     wsMode=true;fromWorkspace(ws);
+    if(ev.type==="incomeos:workspace-loaded")wsDirty=false;else wsDirty=true;
+    var go=$("ledger-save-now");if(go)go.hidden=!wsDirty;
     if(typeof document!=="undefined"&&$("ledger-list"))render();
     modeNote();
   }
   if(typeof document!=="undefined"&&document.addEventListener){
     ["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(function(n){document.addEventListener(n,onWorkspace);});
+    document.addEventListener("incomeos:workspace-saved",function(){wsDirty=false;var go=$("ledger-save-now");if(go)go.hidden=true;modeNote();});
+    document.addEventListener("click",function(ev){
+      if(!ev.target||ev.target.id!=="ledger-save-now")return;
+      // Take the owner straight to the save control; saving itself stays a deliberate owner action.
+      var b=document.querySelector('.bottomnav button[data-view="research"]');if(b)b.click();
+      var pass=$("briefing-passphrase");if(pass){pass.scrollIntoView({block:"center"});pass.focus();}
+    });
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,completeness:completeness,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();

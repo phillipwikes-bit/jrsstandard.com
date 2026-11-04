@@ -26,4 +26,11 @@ assert.doesNotMatch(src,/window\.IncomeOSAccountantReview\.definitions/);
 assert.match(src,/An empty exception file would look like a clean year/);
 // R10-9: dead helper removed.
 assert.doesNotMatch(src,/function escapePrint/);
+// Completeness: any gap makes the year INCOMPLETE; the notice never implies approval or filing readiness.
+{const c=A.completeness([{kind:"income",status:"pending",scope:"income",reconciled:true},{kind:"outflow",type:"expense",businessUse:null,evidenceStatus:"missing",reconciled:false}]);
+ assert.equal(c.status,"INCOMPLETE");assert.ok(c.open>=3);assert.match(c.notice,/Not reviewed or approved by an accountant and not ready for tax filing/);
+ assert.equal(A.completeness([]).status,"NO RECORDS");
+ assert.equal(A.completeness([{kind:"outflow",type:"expense",businessUse:50,evidenceStatus:"both",reconciled:true}]).status,"NO OPEN GAPS IN RECORDED ENTRIES");}
+assert.match(src,/Record completeness: /,"printed report shows completeness");
+assert.match(src,/pairs\.unshift\(\["Report status"/,"summary CSV leads with the report status");
 console.log("IncomeOS accountant review checks passed.");
