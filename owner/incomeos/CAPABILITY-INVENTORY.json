@@ -749,13 +749,13 @@
       "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
       "knownDefects": [
         "Reconciliation classes reflect owner-recorded evidence; no bank feed is connected",
-        "JSON backup restore through the page not yet exercised end to end",
         "Not accountant-reviewed and not tax-filing ready; verified in simulated Chromium phone widths only"
       ],
       "testCoverage": [
         "tests/incomeos-accountant-fixes.mjs",
         "tests/incomeos-accounting-editor-browser.mjs",
-        "tests/incomeos-acceptance-record.mjs"
+        "tests/incomeos-acceptance-record.mjs",
+        "tests/incomeos-accounting-backup-browser.mjs"
       ],
       "requiredRemediation": "Owner-authenticated private hosting (Milestone A release gate); see ACCOUNTING-EDITOR-ACCEPTANCE.json",
       "acceptanceCriteria": "Every record in exactly one category group and one reconciliation class; refunds, unpaid bills and returned principal never counted as income or paid expense; full card or account numbers refused; reports fit 320 to 430 px"
