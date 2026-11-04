@@ -171,6 +171,24 @@ assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElemen
  assert.equal(await row("Synthetic focus probe").count(),0);
  assert.match(await active(),/^Edit /);
  assert.equal(await page.evaluate(()=>document.activeElement.closest(".entry")?.getAttribute("data-entry-id")),neighbour,"focus lands on the neighbouring record");}
+// Duplicate guard: an entry matching an existing record's kind, date, amount and payer asks first; refusing saves nothing,
+// confirming keeps a deliberate second charge, and editing a record never matches itself.
+{const row=t=>page.locator("#ledger-list .entry",{hasText:t});
+ const addCost=async(label,payee)=>{await page.locator("#cost-label").fill(label);await page.locator("#cost-payee").fill(payee);
+   await page.locator("#cost-amount").fill("9.99");await page.locator("#cost-date").fill("2026-10-24");await page.locator("#cost-save").click();};
+ await addCost("Synthetic dup first","Synthetic Shop");
+ const n0=dialogs.length;await row("Synthetic dup first").getByRole("button",{name:"Edit"}).click();await page.locator("#cost-save").click();
+ assert.equal(dialogs.length,n0,"editing a record does not match itself");
+ await page.evaluate(()=>{window.__realConfirm=window.confirm;window.confirm=()=>false;});
+ await addCost("Synthetic dup second","synthetic shop ");
+ assert.equal(await row("Synthetic dup second").count(),0,"refused duplicate not saved");
+ await page.evaluate(()=>{window.confirm=window.__realConfirm;});
+ await page.locator("#cost-save").click();
+ assert.match(dialogs.at(-1),/^Possible duplicate: "Synthetic dup first" on 2026-10-24 for \$9\.99 from Synthetic Shop is already recorded\./);
+ assert.equal(await row("Synthetic dup second").count(),1,"confirmed second charge saved");
+ const n1=dialogs.length;await addCost("Synthetic other payee","Another Shop");
+ assert.ok(!dialogs.slice(n1).some(m=>/^Possible duplicate/.test(m)),"a different payee is not a duplicate");
+ for(const t of ["Synthetic dup first","Synthetic dup second","Synthetic other payee"])await row(t).getByRole("button",{name:"Remove"}).click();}
 // Accessibility basics for the ledger view (automated checks only, not an accessibility certification).
 {const a11y=await page.evaluate(()=>{const v=document.getElementById("view-ledger"),out={unlabelled:[],unnamed:[],positiveTab:[],rowNames:[]};
    const vis=e=>!!(e.offsetWidth||e.offsetHeight||e.getClientRects().length);

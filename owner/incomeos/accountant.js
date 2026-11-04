@@ -243,6 +243,16 @@
       notice:"Not reviewed or approved by an accountant and not ready for tax filing. Covers only entries recorded in IncomeOS; omitted accounts or receipts cannot be detected."};
   }
   function paidTotal(){return totals(db.entries).gross;}
+  // A manual entry with the same kind, date, amount and payer as an existing record is probably a duplicate.
+  // The owner is asked before saving; a deliberate second charge can still be saved. A record never matches itself.
+  function possibleDuplicate(e,editId){
+    var amt=function(x){return round(x.kind==="income"?num(x.grossUsd):num(x.amountUsd));},who=function(x){return String(x.payer||"").trim().toLowerCase();};
+    return db.entries.find(function(x){return x.id!==editId&&x.kind===e.kind&&x.date===e.date&&amt(x)===amt(e)&&who(x)===who(e);})||null;
+  }
+  function confirmNotDuplicate(e,editId){
+    var d=possibleDuplicate(e,editId);if(!d)return true;
+    return confirm("Possible duplicate: \""+d.label+"\" on "+d.date+" for "+money(d.kind==="income"?d.grossUsd:d.amountUsd)+(d.payer?" from "+d.payer:"")+" is already recorded. Save this entry as well?");
+  }
   function addOrUpdate(e,editId){
     if(locked())throw new Error("Financial entry is disabled in unapproved staging. Open or create a workspace in Research, This week, to keep records in your workspace file.");
     var found=editId?db.entries.findIndex(function(x){return x.id===editId;}):-1;
@@ -699,8 +709,8 @@
     load();
     $("receipt-date").value=today();$("cost-date").value=today();$("report-year").value=String(new Date().getFullYear());
     // After an edit is saved or cancelled, focus returns to that record; after a new entry it stays in the form for the next one.
-    $("receipt-form").addEventListener("submit",function(ev){ev.preventDefault();var e=readIncome();if(!e)return;var was=editingIncome;addOrUpdate(e,was);resetForm("receipt-form","income");if(was)focusEntry(was);else $("receipt-label").focus();});
-    $("cost-form").addEventListener("submit",function(ev){ev.preventDefault();var e=readCost();if(!e)return;var was=editingCost;addOrUpdate(e,was);resetForm("cost-form","outflow");if(was)focusEntry(was);else $("cost-label").focus();});
+    $("receipt-form").addEventListener("submit",function(ev){ev.preventDefault();var e=readIncome();if(!e)return;var was=editingIncome;if(!confirmNotDuplicate(e,was))return;addOrUpdate(e,was);resetForm("receipt-form","income");if(was)focusEntry(was);else $("receipt-label").focus();});
+    $("cost-form").addEventListener("submit",function(ev){ev.preventDefault();var e=readCost();if(!e)return;var was=editingCost;if(!confirmNotDuplicate(e,was))return;addOrUpdate(e,was);resetForm("cost-form","outflow");if(was)focusEntry(was);else $("cost-label").focus();});
     $("receipt-cancel").addEventListener("click",function(){var was=editingIncome;resetForm("receipt-form","income");focusEntry(was);});
     $("cost-cancel").addEventListener("click",function(){var was=editingCost;resetForm("cost-form","outflow");focusEntry(was);});
     ["report-year","ledger-filter"].forEach(function(id){$(id).addEventListener("change",render);});
