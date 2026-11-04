@@ -71,3 +71,15 @@ console.log("IncomeOS accountant review checks passed.");
  assert.equal(rows.reduce((n,r)=>n+r.count,0),9,"every record lands in exactly one group");}
 assert.doesNotMatch(src,/\(e\.kind==="income"\?"Income · ":"Outflow · "\)\+e\.category/,"old mixed grouping removed");
 assert.match(src,/"By category: group","Category","Records","USD"/,"summary CSV carries the category table");
+// Payment account: a short owner label only; anything that could be a full card or account number is refused.
+{const ex={kind:"outflow",type:"expense",category:"software",amountUsd:10,businessUse:null,label:"x",date:"2026-10-01"};
+ assert.equal(A.validateEntry({...ex,paymentAccount:"Business card ending 1234"}),true);
+ assert.equal(A.validateEntry({...ex,paymentAccount:""}),true);
+ for(const bad of ["4111 1111 1111 1111","Acct 12345","x".repeat(41)])assert.equal(A.validateEntry({...ex,paymentAccount:bad}),false,bad);
+ assert.throws(()=>A.importJson(JSON.stringify({format:"incomeos-accountant",version:2,entries:[{...ex,id:"pa1",paymentAccount:"4111111111111111"}]})),"backup with a full number refused");
+ A.importCsv([header+",payment_account",
+   "expense,2026-10-05,Synthetic hosting,Host,software,9.00,paid,,R-1,n1,Card ending 4242",
+   "expense,2026-10-06,Synthetic email,Mail,software,6.00,paid,,R-2,n2,4111 1111 1111 1111"].join("\n"));
+ assert.match(prompts.pop(),/Import 2 new records/);}
+assert.match(src,/"Payment account \(label\)"\]\]/,"detailed CSV carries the payment account label");
+assert.match(src,/Payment account removed on import: it looked like a full card or account number/);

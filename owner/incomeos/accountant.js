@@ -49,8 +49,13 @@
     if(e.kind==="income")return CATEGORIES.includes(e.category) && num(e.grossUsd)>0 && num(e.grossUsd)<=1e10 && num(e.feesUsd)>=0 && num(e.feesUsd)<=num(e.grossUsd) && STATUS.includes(e.status) && SCOPES.includes(e.scope);
     return EXPENSE_TYPES.includes(e.type) && COST_CATEGORIES.includes(e.category) && num(e.amountUsd)>0 && num(e.amountUsd)<=1e10 && (e.businessUse===null || (num(e.businessUse)>=0 && num(e.businessUse)<=100))
       && (e.paymentStatus===undefined || PAY_STATUS.includes(e.paymentStatus))
-      && (e.accountantQuestions===undefined || (typeof e.accountantQuestions==="string" && e.accountantQuestions.length<=500));
+      && (e.accountantQuestions===undefined || (typeof e.accountantQuestions==="string" && e.accountantQuestions.length<=500))
+      && (e.paymentAccount===undefined || safeAccountRef(e.paymentAccount));
   }
+  // A payment account is recorded only as a short owner label (for example "Business card ending 1234").
+  // More than four digits could be a full card or account number, so it is refused rather than stored.
+  function safeAccountRef(x){return typeof x==="string" && x.length<=40 && (x.match(/[0-9]/g)||[]).length<=4;}
+  var ACCOUNT_REF_RULE="Payment account: enter a short label such as \"Business card ending 1234\" (at most 40 characters and 4 digits). Full card or account numbers are not stored.";
   // Workspace mode: when an owner workspace file is open, the ledger lives in that file (saved,
   // optionally encrypted, by the owner) instead of browser storage. The staging lock still blocks
   // every browser-storage write; it does not apply to the in-memory workspace.
@@ -220,7 +225,9 @@
       reference:limit($("cost-reference").value,120),notes:limit($("cost-notes").value,500),
       reconciled:$("cost-evidence-status").value==="both",importedFrom:"manual",
       paymentStatus:PAY_STATUS.indexOf($("cost-payment-status")&&$("cost-payment-status").value)>=0?$("cost-payment-status").value:"paid",
-      accountantQuestions:limit($("cost-questions")?$("cost-questions").value:"",500)};
+      accountantQuestions:limit($("cost-questions")?$("cost-questions").value:"",500),
+      paymentAccount:$("cost-payment-account")?$("cost-payment-account").value.trim():""};
+    if(!safeAccountRef(e.paymentAccount)){alert(ACCOUNT_REF_RULE);return null;}
     if(!Number.isFinite(amount)||amount<=0||(pct!==null&&(!Number.isFinite(pct)||pct<0||pct>100))||!validate(e)){alert("Please enter a valid expense description, date, positive amount and business-use percentage from 0 to 100.");return null;}
     return e;
   }
@@ -245,7 +252,7 @@
       setValue("cost-business-use",e.businessUse);
       setValue("cost-evidence-status",e.evidenceStatus||"missing");
       setValue("cost-reference",e.reference);setValue("cost-notes",e.notes);
-      setValue("cost-payment-status",payStatus(e));setValue("cost-questions",e.accountantQuestions||"");
+      setValue("cost-payment-status",payStatus(e));setValue("cost-questions",e.accountantQuestions||"");setValue("cost-payment-account",e.paymentAccount||"");
       $("cost-save").textContent="Update outflow";$("cost-cancel").hidden=false;
     }
     $(p+"-form-title").scrollIntoView({behavior:"smooth",block:"start"});
@@ -283,6 +290,7 @@
     place(left,"small","",e.date+" · "+(e.kind==="income"?"RECEIPT · "+e.category+" · "+(STATUS_LABEL[e.status]||"Not received"):(e.type==="refund"?"REFUND/CREDIT, UNALLOCATED · ":"OUTFLOW · ")+e.category+" · "+e.type));
     place(left,"small","",e.payer||"Source not identified");
     if(e.kind==="outflow"&&e.type!=="refund"&&!paidOut(e))place(left,"small","notice",PAY_LABEL[payStatus(e)]||payStatus(e));
+    if(e.paymentAccount)place(left,"small","","Paid from: "+e.paymentAccount);
     if(e.accountantQuestions)place(left,"small","","Question for accountant: "+e.accountantQuestions);
     if(e.kind==="outflow"&&e.type!=="refund")place(left,"small","","Business use "+(e.businessUse===null||e.businessUse===undefined?"not determined":String(e.businessUse)+"%")+" · Evidence "+(e.evidenceStatus||"missing"));
     if(!e.reconciled)place(left,"small","notice","Not reconciled to source evidence");
@@ -367,9 +375,9 @@
     setTimeout(function(){URL.revokeObjectURL(url);},2000);
   }
   function exportDetail(){
-    var rows=[["Date","Kind","Type / scope","Category","Description","Payer / payee","Original amount","Currency","USD per unit","Gross USD","Platform fees USD","Other paid outflows USD","Unallocated refund credit USD","Business-use %","Status","Tax form","Form status","Evidence status","Evidence reference","Reconciled","Notes","Entry ID","Expense payment status","Questions for accountant"]];
+    var rows=[["Date","Kind","Type / scope","Category","Description","Payer / payee","Original amount","Currency","USD per unit","Gross USD","Platform fees USD","Other paid outflows USD","Unallocated refund credit USD","Business-use %","Status","Tax form","Form status","Evidence status","Evidence reference","Reconciled","Notes","Entry ID","Expense payment status","Questions for accountant","Payment account (label)"]];
     yearEntries().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(e){
-      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"&&e.type!=="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type==="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type!=="refund"?(e.businessUse==null?"":e.businessUse):"",e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id,e.kind==="outflow"?payStatus(e):"",e.accountantQuestions??""]);
+      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"&&e.type!=="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type==="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type!=="refund"?(e.businessUse==null?"":e.businessUse):"",e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id,e.kind==="outflow"?payStatus(e):"",e.accountantQuestions??"",e.paymentAccount??""]);
     });
     download(csv(rows),"IncomeOS-accountant-detail-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
@@ -462,7 +470,7 @@
   function findImportFields(row){
     var h=row.map(function(x){return x.toLowerCase().trim().replace(/[\s\-]+/g,"_");});
     var expected=["kind","date","description","vendor","category","amount_usd","status","business_use_pct","evidence_ref","notes"];
-    var allowed=expected.concat(["evidence_status"]);
+    var allowed=expected.concat(["evidence_status","payment_status","accountant_questions","payment_account"]);
     if(expected.some(function(x){return !h.includes(x)})||h.some(function(x){return !allowed.includes(x)})||new Set(h).size!==h.length)
       throw new Error("CSV headers must match the IncomeOS import template without duplicate or unsupported fields");
     return h;
@@ -495,6 +503,9 @@
         e={kind:"outflow",type:kind==="expense"||kind==="outflow"?"expense":kind,label:label,payer:limit(get("vendor"),100),date:date,
         category:COST_CATEGORIES.includes(category)?category:"other",amountUsd:round(amount),businessUse:kind==="refund"?null:bus,
         evidenceStatus:EVIDENCE_STATUS.includes(get("evidence_status").toLowerCase())?get("evidence_status").toLowerCase():"missing",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv",paymentStatus:kind==="refund"?"paid":importPayStatus(get("payment_status")),accountantQuestions:limit(get("accountant_questions"),500)};
+        var acct=get("payment_account").trim();
+        if(safeAccountRef(acct))e.paymentAccount=acct;
+        else{e.paymentAccount="";e.notes=limit("Payment account removed on import: it looked like a full card or account number. "+e.notes,500);}
       }else{rejected++;continue;}
       if(!validate(e)){rejected++;continue;}
       var evidenceKey=fingerprint(e);
@@ -546,7 +557,7 @@
     $("backup-ledger").addEventListener("click",backup);
     $("print-accountant").addEventListener("click",printReport);
     $("download-template").addEventListener("click",function(){
-      download(csv([["kind","date","description","vendor","category","amount_usd","status","business_use_pct","evidence_ref","notes","evidence_status"],["expense","2026-01-01","Claude extra API usage","Anthropic","software","0.00","paid","","example only","Replace or delete example","missing"]]),"IncomeOS-import-template.csv","text/csv;charset=utf-8");
+      download(csv([["kind","date","description","vendor","category","amount_usd","status","business_use_pct","evidence_ref","notes","evidence_status","payment_status","accountant_questions","payment_account"],["expense","2026-01-01","Claude extra API usage","Anthropic","software","0.00","paid","","example only","Replace or delete example","missing","paid","","Card ending 0000"]]),"IncomeOS-import-template.csv","text/csv;charset=utf-8");
     });
     $("import-trigger").addEventListener("click",function(){$("import-ledger").click();});
     $("import-csv-trigger").addEventListener("click",function(){$("import-csv").click();});

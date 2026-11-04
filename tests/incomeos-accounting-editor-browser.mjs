@@ -55,6 +55,23 @@ await page.locator("#cost-save").tap();
 {const cats=await page.locator("#report-preview").textContent();
  assert.match(cats,/Outflows not paid \(scheduled, disputed or refunded\) · [a-z]+ \(1\)\$15\.00/,"scheduled bill listed apart from paid expenses");
  assert.match(cats,/Expenses paid · [a-z]+ \(1\)\$20\.00/,"paid expense total excludes the scheduled bill");}
+// A full card number in "Paid from" is refused and nothing is saved; a short label is kept and shown.
+{const before=await page.locator("#ledger-list .entry").count();
+ await page.locator("#cost-label").fill("Synthetic printer ink");await page.locator("#cost-amount").fill("12");await page.locator("#cost-date").fill("2026-10-19");
+ await page.locator("#cost-payment-account").fill("4111 1111 1111 1111");await page.locator("#cost-save").tap();
+ assert.match(dialogs.at(-1),/Full card or account numbers are not stored/);
+ assert.equal(await page.locator("#ledger-list .entry").count(),before,"refused entry not saved");
+ await page.locator("#cost-payment-account").fill("Card ending 4242");await page.locator("#cost-save").tap();
+ assert.match(await page.locator("#ledger-list .entry",{hasText:"Synthetic printer ink"}).textContent(),/Paid from: Card ending 4242/);
+ // CSV import carries payment status, the accountant question and a safe label; an unsafe number is dropped with a note.
+ const csvText=["kind,date,description,vendor,category,amount_usd,status,business_use_pct,evidence_ref,notes,payment_status,accountant_questions,payment_account",
+   "expense,2026-10-21,Synthetic hosting import,Host,software,9.00,paid,,R-1,n1,scheduled,Business or personal?,Card ending 5555",
+   "expense,2026-10-22,Synthetic mail import,Mail,software,6.00,paid,,R-2,n2,,,4111 1111 1111 1111"].join("\n");
+ await page.locator("#import-csv").setInputFiles({name:"i.csv",mimeType:"text/csv",buffer:Buffer.from(csvText)});
+ const hosting=page.locator("#ledger-list .entry",{hasText:"Synthetic hosting import"});await hosting.waitFor();
+ const ht=await hosting.textContent();assert.match(ht,/Scheduled, not paid/);assert.match(ht,/Paid from: Card ending 5555/);assert.match(ht,/Question for accountant: Business or personal\?/);
+ const mt=await page.locator("#ledger-list .entry",{hasText:"Synthetic mail import"}).textContent();
+ assert.doesNotMatch(mt,/4111/,"full number never displayed or stored");assert.doesNotMatch(mt,/Paid from/);}
 // An invoiced amount is recorded as outstanding, not received, and appears under the outstanding filter.
 await page.locator("#receipt-label").fill("Synthetic consulting invoice");await page.locator("#receipt-amount").fill("900");
 await page.locator("#receipt-date").fill("2026-10-20");await page.locator("#receipt-state").selectOption("invoiced");
