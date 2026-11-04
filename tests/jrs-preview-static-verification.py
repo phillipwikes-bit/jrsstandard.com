@@ -111,10 +111,17 @@ def self_test():
     # token. All such responses remain failures, including sign-in redirects.
     for destination, category in [
         ("https://vercel.com/login?token=" + hidden, "destination resembles Vercel sign-in"),
-        ("https://another.example/secret/" + hidden, "absolute redirect destination"),
+        ("https://vercel.com/sso-api?next=" + hidden, "destination resembles Vercel sign-in"),
+        ("https://www.vercel.com/api/auth/callback?state=" + hidden, "destination resembles Vercel sign-in"),
+        ("https://vercel.com/projects?token=" + hidden, "Vercel platform redirect destination"),
+        ("https://secret.example/elsewhere?" + hidden, "same-origin absolute redirect destination"),
+        ("https://another.example/secret/" + hidden, "external absolute redirect destination"),
+        ("http://outside.example/?token=" + hidden, "insecure absolute redirect destination"),
         ("/private/" + hidden, "relative redirect destination"),
         ("", "destination not supplied"),
-        ("//outside.example/" + hidden, "unclassified redirect destination"),
+        ("//outside.example/" + hidden, "protocol-relative redirect destination refused"),
+        ("https://[malformed?" + hidden, "malformed redirect destination refused"),
+        ("https://another.example/?user:pass@" + hidden, "external absolute redirect destination"),
     ]:
         error = HTTPError("https://secret.example/?"+hidden, 302, hidden,
                           {"Location": destination}, None)
@@ -128,27 +135,42 @@ def self_test():
 
 
 def classify_redirect_destination(error):
-    """Classify only a redirect destination's type, never print its URL.
+    """Classify redirects without printing their destinations.
 
-    A destination resembling Vercel sign-in is a diagnostic, not proof
-    of which trust or application rule rejected the caller.
+    These are routing clues, not proof that a particular access control
+    rejected the request. Never follow a redirect with Preview credentials.
     """
     location = error.headers.get("Location", "") if error.headers else ""
     if not isinstance(location, str) or not location:
         return "destination not supplied"
-    target = urlparse(location)
-    if target.username or target.password:
-        return "credential-bearing destination refused"
-    if target.scheme in ("http", "https") and target.netloc:
-        if (target.scheme == "https" and
-                target.hostname in ("vercel.com", "www.vercel.com") and
-                (target.path == "/login" or target.path.startswith("/login/") or
-                 target.path == "/sso" or target.path.startswith("/sso/"))):
-            return "destination resembles Vercel sign-in"
-        return "absolute redirect destination"
-    if location.startswith("/") and not location.startswith("//"):
-        return "relative redirect destination"
-    return "unclassified redirect destination"
+    # Bound parsing and do not include untrusted URL data in an exception.
+    if len(location) > 8192:
+        return "oversized redirect destination refused"
+    try:
+        target = urlparse(location)
+        if target.username or target.password:
+            return "credential-bearing destination refused"
+        if target.scheme in ("http", "https") and target.netloc:
+            if target.scheme != "https":
+                return "insecure absolute redirect destination"
+            host = (target.hostname or "").lower()
+            if host in ("vercel.com", "www.vercel.com"):
+                path = target.path.lower()
+                if any(path == prefix or path.startswith(prefix + "/")
+                       for prefix in ("/login", "/sso", "/sso-api", "/api/auth")):
+                    return "destination resembles Vercel sign-in"
+                return "Vercel platform redirect destination"
+            source_host = (urlparse(error.url).hostname or "").lower()
+            if host == source_host:
+                return "same-origin absolute redirect destination"
+            return "external absolute redirect destination"
+        if location.startswith("//"):
+            return "protocol-relative redirect destination refused"
+        if location.startswith("/"):
+            return "relative redirect destination"
+        return "unclassified redirect destination"
+    except (ValueError, TypeError):
+        return "malformed redirect destination refused"
 
 
 def network_failure(error):
