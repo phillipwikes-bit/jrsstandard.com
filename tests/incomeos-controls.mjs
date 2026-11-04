@@ -55,6 +55,10 @@ let tampered=JSON.parse(encrypted),data=tampered.data;
 tampered.data=(data[0]==="A"?"B":"A")+data.slice(1);
 await assert.rejects(()=>safe.decrypt(pass,JSON.stringify(tampered)));
 const newMap=new Map();
+// Fail closed: with the staging lock undefined (interlock missing or loaded late), restore is refused.
+assert.throws(()=>safe.restore({getItem:(k)=>newMap.get(k)??null,setItem:(k,v)=>newMap.set(k,v),removeItem:(k)=>newMap.delete(k)},decoded),/Restore disabled/);
+assert.equal(newMap.size,0);
+fake.window.IncomeOSFinancialReadOnly=false;
 safe.restore({getItem:(k)=>newMap.get(k)??null,setItem:(k,v)=>newMap.set(k,v),removeItem:(k)=>newMap.delete(k)},decoded);
 assert.equal(newMap.get("incomeos.owner.prototype.v1"),map.get("incomeos.owner.prototype.v1"));
 fake.window.IncomeOSFinancialReadOnly=true;

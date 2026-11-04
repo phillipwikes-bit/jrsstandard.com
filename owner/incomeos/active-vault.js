@@ -126,6 +126,8 @@
         permitted(); ensure();
         if (committing) throw new Error("An encrypted ledger save is already in progress.");
         validateData(next);
+        // Freeze what will be saved now, so later edits to the caller's object cannot diverge from storage.
+        const frozen = JSON.parse(JSON.stringify(next));
         if (storage.getItem(NAME) !== previousRaw)
           throw new Error("Encrypted ledger changed in another tab. Unlock the latest version before editing.");
         committing = true;
@@ -135,7 +137,7 @@
             permitted(); ensure();
             if (storage.getItem(NAME) !== expectedRaw)
               throw new Error("Encrypted ledger changed before save. Unlock the latest version before editing.");
-            const serialized = await seal(next, activeKey, activeSalt, rev + 1);
+            const serialized = await seal(frozen, activeKey, activeSalt, rev + 1);
             // The exclusive Web Lock spans encryption and the final storage write.
             permitted(); ensure();
             if (initialKey !== activeKey)
@@ -147,7 +149,7 @@
             // a trusted server-side compare-and-swap for shared ledgers.
             try { storage.setItem(NAME, serialized); }
             catch (_err) { throw new Error("Encrypted ledger could not be persisted. No entry was accepted."); }
-            previousRaw = serialized; current = JSON.parse(JSON.stringify(next)); rev += 1;
+            previousRaw = serialized; current = JSON.parse(JSON.stringify(frozen)); rev += 1;
             return rev;
           });
         } finally { committing = false; }

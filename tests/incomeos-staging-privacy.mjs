@@ -22,7 +22,7 @@ assert.match(accountant,/Financial changes are disabled in unapproved staging/);
 assert.match(accountant,/Financial import is disabled in unapproved staging/);
 assert.match(accountant,/Financial restoration is disabled in unapproved staging/);
 const vault=read("vault.js");
-assert.match(vault,/IncomeOSFinancialReadOnly===true\)throw new Error\("Restore disabled/);
+assert.match(vault,/IncomeOSFinancialReadOnly!==false\)throw new Error\("Restore disabled/,"vault restore fails closed unless the lock is explicitly released");
 const main=read("incomeos.js");
 assert.match(main,/function save\(\) \{\s*if\(window\.IncomeOSFinancialReadOnly===true\)return false/);
 assert.match(main,/state\.stages = window\.IncomeOSFinancialReadOnly===true \? \{\}/);

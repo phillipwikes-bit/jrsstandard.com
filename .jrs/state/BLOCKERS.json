@@ -445,6 +445,26 @@
       "note": "Not a data-loss or exposure risk: the effect is a false HOLD. Synthetic tests do not yet cover a cross-month pair.",
       "next_action_by": "OWNER",
       "next_action_basis": "Approve or reject the clearing-account proposal; Claude can then build and test it."
+    },
+    {
+      "blocker_id": "B-019",
+      "severity": "MEDIUM",
+      "category": "PRIVACY",
+      "description": "IncomeOS keeps the plaintext accountant ledger (localStorage key incomeos.accountant.v1) after it is migrated into the encrypted active ledger (incomeos.owner.encrypted.v1). encrypted-accountant-bridge.js returns legacyPreserved:true and never removes or archives the plaintext copy, so anyone with access to the browser profile can read the ledger in plaintext and the two copies drift apart. Found in the 2026-11-04 review of vault.js, active-vault.js and encrypted-accountant-bridge.js. Mitigated today by the staging interlock, which blocks financial writes in the deployed interface.",
+      "evidence_refs": [
+        "owner/incomeos/encrypted-accountant-bridge.js (createNew: legacyPreserved:true; storage.removeItem required but never called)",
+        "owner/incomeos/staging-interlock.js (IncomeOSFinancialReadOnly=true)"
+      ],
+      "affected_assets": [
+        "INCOMEOS-PROTOTYPE"
+      ],
+      "required_action": "OWNER DECISION. Removing the plaintext copy deletes financial data, which CLAUDE.md rule 12 reserves for explicit human confirmation. PROPOSAL: after migration, offer an explicit 'Remove plaintext copy' action that is enabled only once an encrypted backup containing the active ledger has been downloaded (vault.js now includes it) and the encrypted ledger has been unlocked and compared entry by entry; record the removal in the change log. Not implemented.",
+      "owner": "OWNER",
+      "status": "OPEN - OWNER DECISION REQUIRED",
+      "created": "2026-11-04",
+      "note": "Related: CLAUDE.md section 36.5 lists sanctioned browser-storage keys for the JRS site; the IncomeOS keys (incomeos.accountant.v1, incomeos.owner.prototype.v1, incomeos.spend.preferences.v1, incomeos.research.radar.v1, incomeos.owner.encrypted.v1) predate this review and are not on it. Whether that list governs owner/incomeos is also an owner decision; CLAUDE.md was not edited.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Approve or reject the removal proposal, and decide whether the CLAUDE.md storage-key list should cover IncomeOS."
     }
   ],
   "_decisions_recorded_2026_09_15": {
