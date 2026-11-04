@@ -26,7 +26,8 @@
   function merchant(s){return String(s||"Unspecified vendor").trim().replace(/\s+/g," ").slice(0,90);}
   function expenseEntries(entries){
     if(!Array.isArray(entries))return [];
-    return entries.filter(function(e){return e && e.kind==="outflow"&&e.type==="expense"&&validDate(e.date)&&Number.isFinite(Number(e.amountUsd))&&Number(e.amountUsd)>0;}).map(function(e){
+    // Scheduled, disputed or refunded charges are not spending yet (records without a state count as paid).
+    return entries.filter(function(e){return e && e.kind==="outflow"&&e.type==="expense"&&(!e.paymentStatus||e.paymentStatus==="paid")&&validDate(e.date)&&Number.isFinite(Number(e.amountUsd))&&Number(e.amountUsd)>0;}).map(function(e){
       return {id:String(e.id||""), date:e.date, month:e.date.slice(0,7), amount:usd(Number(e.amountUsd)), vendor:merchant(e.payer||e.label), category:CATEGORIES.includes(e.category)?e.category:"other", evidence:e.evidenceStatus||"missing", reconciled:e.reconciled===true, allocation:e.businessUse===null||e.businessUse===undefined?null:Number(e.businessUse)};
     });
   }

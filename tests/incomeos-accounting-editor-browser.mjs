@@ -45,6 +45,13 @@ await page.locator("#report-year").fill("2026");await page.locator("#report-year
 let list=await page.locator("#ledger-list").textContent();
 assert.match(list,/Synthetic study payout/);assert.match(list,/Synthetic AI subscription/);
 assert.match(list,/Business use not determined/,"unknown business use stays unknown");
+// A scheduled bill with a question for the accountant is shown as not paid and does not count yet.
+await page.locator("#cost-label").fill("Synthetic domain renewal");await page.locator("#cost-payee").fill("Synthetic Registrar");
+await page.locator("#cost-amount").fill("15");await page.locator("#cost-date").fill("2026-10-18");
+await page.locator("#cost-payment-status").selectOption("scheduled");await page.locator("#cost-questions").fill("Business or personal?");
+await page.locator("#cost-save").tap();
+{const row=await page.locator("#ledger-list .entry",{hasText:"Synthetic domain renewal"}).textContent();
+ assert.match(row,/Scheduled, not paid/);assert.match(row,/Question for accountant: Business or personal\?/);}
 // An invoiced amount is recorded as outstanding, not received, and appears under the outstanding filter.
 await page.locator("#receipt-label").fill("Synthetic consulting invoice");await page.locator("#receipt-amount").fill("900");
 await page.locator("#receipt-date").fill("2026-10-20");await page.locator("#receipt-state").selectOption("invoiced");

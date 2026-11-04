@@ -35,6 +35,8 @@ assert.equal(res.planned[0].nextDate,"2026-11-15");
 assert.equal(res.reviewQueue.filter(t=>t.type==="entry").length,3);
 assert.equal(x.budgetVsActual(series,{software:10},"2026-10-30")[0].over,true);
 assert.throws(()=>x.budgetVsActual(series,{software:-1},"2026-10-30"));
+// Scheduled, disputed or refunded expenses are not spending; records without a state are.
+assert.equal(x.expenseEntries([{...out("p1","2026-10-01",10),paymentStatus:"scheduled"},{...out("p2","2026-10-02",10),paymentStatus:"disputed"},out("p3","2026-10-03",10)]).length,1);
 const study={id:"research-eligible-103",title:"Participant experience interview",provider:"Example Research",paymentUsd:150,minutes:60,screenMinutes:8,mode:"online",eventEnd:"2026-11-12",reviewed:"2026-11-01",url:"https://example.org/apply/103",sourceUrl:"https://example.org/listing/103",eligibility:["US residents, eligibility unconfirmed"],status:"Screener accessible; seats unconfirmed",linkKind:"Direct screener",risk:[]};
 const p={minPay:100,maxScreenMinutes:15,remoteOnly:true};
 let a=R.assess(study,p,"2026-11-01");

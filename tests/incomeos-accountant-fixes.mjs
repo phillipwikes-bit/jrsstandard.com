@@ -43,4 +43,14 @@ assert.match(src,/pairs\.unshift\(\["Report status"/,"summary CSV leads with the
 A.importCsv([header,"income,2026-10-05,Study A,Rec,research,50.00,received,,REF-A,","income,2026-10-06,Study B,Rec,research,60.00,invoiced,,REF-B,","income,2026-10-07,Study C,Rec,research,70.00,maybe,,REF-C,"].join("\n"));
 assert.match(prompts.pop(),/Import 3 new records/);
 assert.match(src,/function importStatus\(x\)\{var s=String\(x\|\|""\)\.trim\(\)\.toLowerCase\(\);if\(s==="received"\)return "paid";return STATUS\.indexOf\(s\)>=0\?s:"expected";\}/);
+// Expense payment states: only paid expenses count; a record without a state counts as paid.
+{const ex=(st,a)=>({kind:"outflow",type:"expense",category:"software",amountUsd:a,businessUse:null,label:"x",date:"2026-10-01",...(st?{paymentStatus:st}:{})});
+ const t=A.totals([ex(null,10),ex("paid",20),ex("scheduled",300),ex("disputed",400),ex("refunded",500)]);
+ assert.equal(t.expenses,30,"only paid (or legacy) expenses count");assert.equal(t.unpaidOutflowCount,3);assert.equal(t.unpaidOutflowUsd,1200);
+ assert.equal(A.validateEntry(ex("bogus",1)),false);
+ assert.equal(A.validateEntry({...ex("paid",1),accountantQuestions:"Is this deductible?"}),true);
+ assert.equal(A.validateEntry({...ex("paid",1),accountantQuestions:"q".repeat(501)}),false);
+ const c=A.completeness([ex("scheduled",5),{...ex("paid",5),accountantQuestions:"q"}]);
+ assert.ok(c.gaps.some(g=>/scheduled, disputed or refunded/.test(g[0])&&g[1]===1));assert.ok(c.gaps.some(g=>/questions for the accountant/i.test(g[0])&&g[1]===1));}
+assert.match(src,/function importPayStatus\(x\)\{var s=String\(x\|\|""\)\.trim\(\)\.toLowerCase\(\);if\(!s\)return "paid";return PAY_STATUS\.indexOf\(s\)>=0\?s:"scheduled";\}/,"unrecognized CSV state is scheduled, never paid");
 console.log("IncomeOS accountant review checks passed.");
