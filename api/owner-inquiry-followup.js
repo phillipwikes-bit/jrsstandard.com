@@ -8,7 +8,8 @@ export const config = { runtime: 'edge' };
 const SB='https://pjzxkeviouofdseagvpf.supabase.co';
 const TABLE='jrs_inquiry_followups';
 const SOURCE='formspree-public-jrs-contact';
-const ALLOWED=new Set(['needs_review','response_recorded','closed','not_relevant']);
+const ALLOWED=new Set(['not_recorded','needs_review','response_recorded','closed','not_relevant']);
+const PERSISTED=new Set(['needs_review','response_recorded','closed','not_relevant']);
 const ID=/^[A-Za-z0-9_-]{8,160}$/;
 function json(value,status=200){
   return new Response(JSON.stringify(value),{status,headers:{
@@ -35,7 +36,7 @@ export default async function handler(req){
        +'&source=eq.'+SOURCE+'&order=updated_at.desc',h);
     if(!result.complete)return json({error:'followup_store_unavailable',ready:false},503);
     if(result.rows.some(r=>!r||!ID.test(String(r.source_record_id||''))||
-      !ALLOWED.has(r.followup_status)||typeof r.updated_at!=='string')){
+      !PERSISTED.has(r.followup_status)||typeof r.updated_at!=='string')){
       return json({error:'followup_store_invalid',ready:false},502);
     }
     return json({source:SOURCE,ready:true,complete:true,
@@ -64,6 +65,31 @@ export default async function handler(req){
   const id=body.source_record_id,status=body.followup_status;
   if(typeof id!=='string'||!ID.test(id)||!ALLOWED.has(status))
     return json({error:'invalid_state'},400);
+  // Reset clears only the owner-entered triage classification. The original
+  // Formspree message and Gmail notifications remain entirely untouched.
+  if(status==='not_recorded'){
+    let result;
+    try{
+      const endpoint=SB+'/rest/v1/'+TABLE
+        +'?source=eq.'+encodeURIComponent(SOURCE)
+        +'&source_record_id=eq.'+encodeURIComponent(id)
+        +'&select=source,source_record_id';
+      result=await fetch(endpoint,{
+        method:'DELETE',headers:{...h,Prefer:'return=representation'},
+        redirect:'error'
+      });
+    }catch{return json({error:'followup_reset_failed'},502);}
+    if(!result.ok)return json({error:'followup_reset_unavailable'},503);
+    let removed;
+    try{removed=await result.json()}
+    catch{return json({error:'followup_reset_unconfirmed'},502);}
+    if(!Array.isArray(removed)||removed.length>1||removed.some(r=>
+      !r||r.source!==SOURCE||r.source_record_id!==id)){
+      return json({error:'followup_reset_unconfirmed'},502);
+    }
+    return json({saved:true,source:SOURCE,source_record_id:id,
+      followup_status:'not_recorded',updated_at:null});
+  }
   let result;
   try{
     result=await fetch(SB+'/rest/v1/'+TABLE+'?on_conflict=source,source_record_id',{

@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS public.jrs_inquiry_followups (
 );
 ALTER TABLE public.jrs_inquiry_followups ENABLE ROW LEVEL SECURITY;
 REVOKE ALL ON TABLE public.jrs_inquiry_followups FROM PUBLIC, anon, authenticated;
-GRANT SELECT, INSERT, UPDATE ON TABLE public.jrs_inquiry_followups TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.jrs_inquiry_followups TO service_role;
 -- No public RLS policy is created; only a trusted server-side service role
 -- may access it. The dashboard API also requires a signed owner session.
 COMMENT ON TABLE public.jrs_inquiry_followups IS

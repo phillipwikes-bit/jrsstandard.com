@@ -45,3 +45,13 @@ The general inquiry form explicitly records contact-only permission and no trans
 Do not forward this dashboard or its private CSV to prospective buyers as a diligence package
 without an independently documented permission basis and role-specific access controls.
 Research participant releases do not automatically extend to unrelated contact submissions.
+
+## Reversible owner follow-up and provider connection status, 3 November 2026
+
+Owner status “Not recorded” now performs an explicit, owner-authenticated reset of the corresponding status row through the private server. It does not remove original contact messages, Formspree submissions or Gmail notifications. The database grant now covers service-role-only DELETE of these status rows. Missing rows can be treated as cleared, but upstream errors never report success.
+
+The dashboard distinguishes a missing Formspree submissions API credential from transport and provider availability failures. No external provider or database connection is invented.
+
+**Verified blockers at this review:** The Vercel JRS project contains a Supabase service-role environment variable but no Formspree submissions read credential. The Formspree browser profile is not signed in, and no native Formspree connector is available. The connected Neon project search found no JRS database; Neon is not a replacement for the separate JRS Supabase project. The SQL migration remains not applied, and the provider account and exact-commit hosted preview remain unverified.
+
+**Unchanged:** Public form -> Formspree -> existing Gmail notifications. No new public analytics, provider account, contact record copies, automatic outreach, production publishing or buyer disclosures.

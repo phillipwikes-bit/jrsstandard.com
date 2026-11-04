@@ -47,6 +47,11 @@ try{
     assert.equal((await handler(request('PUT',{source_record_id:id,followup_status:'qualified_buyer'}))).status,400);
     assert.equal((await handler(request('PUT',{source_record_id:'1',followup_status:'closed'}))).status,400);
   });
+  await check('cross-origin follow-up reset is refused before database access',async()=>{
+    const r=await handler(request('PUT',{
+      source_record_id:id,followup_status:'not_recorded'},secret,'https://untrusted.example'));
+    assert.equal(r.status,403);
+  });
   let calls=[];
   globalThis.fetch=async(url,opts)=>{
     calls.push({url:String(url),opts});
@@ -76,6 +81,45 @@ try{
     assert.equal(calls.find(c=>c.opts.method==='POST').opts.headers.Prefer,
       'resolution=merge-duplicates,return=representation');
   });
+  calls=[];
+  globalThis.fetch=async(url,opts)=>{
+    calls.push({url:String(url),opts});
+    if(opts.method==='DELETE')return Response.json([{
+      source:'formspree-public-jrs-contact',source_record_id:id
+    }]);
+    return Response.json([]);
+  };
+  await check('owner can clear one persisted status without touching Formspree',async()=>{
+    const r=await handler(request('PUT',{source_record_id:id,followup_status:'not_recorded'}));
+    assert.equal(r.status,200);
+    const d=await r.json();
+    assert.equal(d.saved,true);assert.equal(d.followup_status,'not_recorded');
+    assert.equal(d.updated_at,null);
+    assert.equal(calls.length,1);
+    assert.equal(calls[0].opts.method,'DELETE');
+    assert.ok(calls[0].url.includes('jrs_inquiry_followups'));
+    assert.ok(calls[0].url.includes(encodeURIComponent(id)));
+    assert.ok(!calls[0].url.includes('formspree.io'));
+    assert.equal(calls[0].opts.headers.Prefer,'return=representation');
+  });
+  globalThis.fetch=async()=>Response.json([]);
+  await check('clearing a missing state remains idempotent',async()=>{
+    const r=await handler(request('PUT',{source_record_id:id,followup_status:'not_recorded'}));
+    assert.equal(r.status,200);
+    assert.equal((await r.json()).followup_status,'not_recorded');
+  });
+  globalThis.fetch=async()=>new Response('unavailable',{status:503});
+  await check('failed database reset never claims success',async()=>{
+    const r=await handler(request('PUT',{source_record_id:id,followup_status:'not_recorded'}));
+    assert.equal(r.status,503);
+    const d=await r.json();assert.equal(d.error,'followup_reset_unavailable');
+    assert.equal(d.saved,undefined);
+  });
+  globalThis.fetch=async()=>Response.json([{source:'wrong-source',source_record_id:id}]);
+  await check('reset does not confirm removal of a mismatched source',async()=>{
+    const r=await handler(request('PUT',{source_record_id:id,followup_status:'not_recorded'}));
+    assert.equal(r.status,502);
+  });
   globalThis.fetch=async(url,opts)=>new Response(JSON.stringify({message:'table missing'}),{status:404});
   await check('uninstalled private table must not claim success',async()=>{
     assert.equal((await handler(request('PUT',{source_record_id:id,followup_status:'closed'}))).status,503);
@@ -86,7 +130,7 @@ try{
   await check('SQL private table has RLS and no public grant',async()=>{
     assert.match(sql,/ENABLE ROW LEVEL SECURITY/);
     assert.match(sql,/REVOKE ALL ON TABLE public\.jrs_inquiry_followups FROM PUBLIC, anon, authenticated/);
-    assert.match(sql,/GRANT SELECT, INSERT, UPDATE ON TABLE public\.jrs_inquiry_followups TO service_role/);
+    assert.match(sql,/GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public\.jrs_inquiry_followups TO service_role/);
     assert.doesNotMatch(sql,/email\s+text|name\s+text|message\s+text/i);
   });
   const html=readFileSync(new URL('../programme-status-9872fb93cc94.html',import.meta.url),'utf8');
@@ -98,6 +142,8 @@ try{
     assert.ok(html.includes('Formspree and the designated email inbox'));
     assert.ok(html.includes('Gmail notifications remain separate from dashboard retrieval'));
     assert.ok(html.includes('followup_status'));
+    assert.ok(html.includes('states.delete(id)'));
+    assert.ok(html.includes('formspree_read_api_not_configured'));
     assert.ok(html.includes('jrs-current-formspree-private-inquiries.csv'));
     assert.ok(html.includes('from%3Aformspree.io+after%3A2026%2F10%2F29'));
     assert.ok(!html.includes('googletagmanager.com/gtag/js'));

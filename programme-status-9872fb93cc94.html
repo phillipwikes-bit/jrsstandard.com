@@ -2714,7 +2714,6 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
    if(!followupReady||!/^([A-Za-z0-9_-]{8,160})$/.test(id))return;
    var previous=rowState(r);
    if(selected===previous)return;
-   if(selected==='not_recorded'){select.value=previous;return;}
    select.disabled=true;
    followupStatus.textContent='Saving an owner-entered follow-up state...';
    try{
@@ -2726,9 +2725,13 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
      if(!response.ok)throw Error('not_saved');
      var data=await response.json();
      if(!data||data.saved!==true||data.source_record_id!==id||
-        data.followup_status!==selected||typeof data.updated_at!=='string')throw Error('unconfirmed');
-     states.set(id,{followup_status:selected,updated_at:data.updated_at});
-     followupStatus.textContent='Owner follow-up state saved. Gmail delivery was not checked.';
+        data.followup_status!==selected||
+        (selected==='not_recorded'?data.updated_at!==null:typeof data.updated_at!=='string'))throw Error('unconfirmed');
+     if(selected==='not_recorded')states.delete(id);
+     else states.set(id,{followup_status:selected,updated_at:data.updated_at});
+     followupStatus.textContent=selected==='not_recorded'
+       ?'Owner follow-up classification cleared. The original inquiry remains in Formspree.'
+       :'Owner follow-up state saved. Gmail delivery was not checked.';
      setCounters(sourceReady,rows.filter(x=>x.form_marker_status==='matches_current_contact_form_fields').length,
        rows.filter(x=>x.form_marker_status!=='matches_current_contact_form_fields').length);
      redraw();
@@ -2807,9 +2810,15 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
      var response=await fetch('/api/owner-formspree-inbox',{credentials:'same-origin',cache:'no-store'});
      if(!response.ok){
        emptyRow('Source unavailable, not a zero count. Use the Formspree or Gmail inbox.');
-       status.textContent=response.status===503
-         ?'Direct Formspree source not configured or provider unavailable. Use the source inbox. No zero assumed.'
-         :'Current inbox read failed (HTTP '+response.status+'). No incomplete records shown.';
+       // A connection error must not be represented as a zero contact count.
+       // This branch does not read provider messages, tokens or credentials.
+       var issue=null;
+       try{issue=await response.json();}catch{}
+       status.textContent=issue&&issue.error==='formspree_read_api_not_configured'
+         ?'Formspree submissions API credential not configured. Gmail notifications and the provider inbox remain the sources; the dashboard cannot read these messages.'
+         :response.status===503
+           ?'Current Formspree reader unavailable. Provider access is not verified; no zero count is asserted.'
+           :'Current inbox read failed (HTTP '+response.status+'). No incomplete records shown.';
        followupStatus.textContent='Follow-up not inspected because source records are unavailable.';
        return;
      }
