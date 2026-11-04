@@ -115,7 +115,20 @@ await nav("ledger");await page.locator("#report-year").fill("2026");await page.l
 list=await page.locator("#ledger-list").textContent();
 assert.match(list,/Synthetic study payout/);assert.doesNotMatch(list,/Synthetic AI subscription/);
 // Phone layout, no storage, no errors.
-assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),"no horizontal scroll");
+assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElement.scrollWidth<=w+1,page.viewportSize().width),"no horizontal scroll");
+// The populated ledger view, including the long category and reconciliation labels, fits 320, 375 and 430 px widths.
+for(const width of [320,375,430]){
+  await page.setViewportSize({width,height:800});
+  assert.match(await page.locator("#report-preview").textContent(),/Reconciliation evidence/);
+  // Compare with the set width: phone emulation widens window.innerWidth to fit overflowing content.
+  const bad=await page.evaluate(w=>{const out=[];
+    if(window.innerWidth>w+1)out.push("layout viewport widened to "+window.innerWidth);
+    if(document.documentElement.scrollWidth>w+1)out.push("page scrolls sideways: "+document.documentElement.scrollWidth);
+    document.querySelectorAll("#view-ledger .accountant-line, #view-ledger .accountant-line > *, #view-ledger td, #view-ledger .entry, #view-ledger input, #view-ledger select, #view-ledger button, #view-ledger textarea").forEach(el=>{
+      const r=el.getBoundingClientRect();if(r.width&&(r.right>w+1||r.left<-1))out.push((el.id||el.className||el.tagName)+" right="+Math.round(r.right));});
+    return out;},width);
+  assert.deepEqual(bad,[],"ledger view overflows at "+width+"px");
+}
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
 assert.deepEqual(errors,[]);
 await browser.close();server.close();

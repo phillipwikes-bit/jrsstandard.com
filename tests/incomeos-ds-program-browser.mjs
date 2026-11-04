@@ -119,7 +119,8 @@ await page.waitForFunction(()=>/memory only/.test(document.getElementById("brief
 await page.locator('.bottomnav button[data-view="ds"]').click();
 assert.match(await page.locator("#ds-output").textContent(),/Total recorded program cost\$40\.00/,"reopened workspace restores the program");
 // Phone layout: no horizontal overflow; every Program input is labelled; no storage written; no page errors.
-assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),"no horizontal scroll");
+// Compare with the set width: phone emulation widens window.innerWidth to fit overflowing content.
+assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElement.scrollWidth<=w+1,page.viewportSize().width),"no horizontal scroll");
 const unlabeled=await page.$$eval("#view-ds input,#view-ds select",els=>els.filter(e=>!(e.labels&&e.labels.length)).map(e=>e.id));
 assert.deepEqual(unlabeled,[]);
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0);
