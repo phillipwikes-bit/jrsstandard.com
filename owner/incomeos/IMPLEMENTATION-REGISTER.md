@@ -203,3 +203,17 @@ The candidate expenses remain unverified; no new deductions, income, savings, re
 | CI | New 21st IncomeOS synthetic suite and separate JRS/owner-data isolation gates | Completed exact-head GitHub workflow checks where recorded | Protected Vercel preview, authenticated iPhone tests, bank integrations and financial audit |
 
 This is an incremental source-control improvement, not an operational wealth or investment service. No owner balances, receipts, refunds or interest earnings were verified by this module.
+
+## Accounting editor reporting increments, 2026-11-04
+
+| Commit | Delivered | Source-level acceptance | Outstanding dependency |
+| --- | --- | --- | --- |
+| 49e4496 | Expense payment status (paid, scheduled, disputed, refunded) and questions for the accountant | Only paid expenses count toward totals; unit and browser tests | Hosted owner sign-in |
+| 6fbe567 | Category totals in separate money groups | Refunds, unpaid bills and returned principal no longer mixed into income or expense totals | Same |
+| bf9f19c | "Paid from" label; CSV optional columns | Over four digits refused on entry, restore and import; `payment_status` and `accountant_questions` columns now import (previously rejected) | Same |
+| fefee7f | Reconciliation evidence classes | Every record in exactly one class; labelled as recorded evidence, not bank matching | Bank feed not connected |
+| 6271ab8 | Phone-width checks at 320, 375 and 430 px | Previous overflow check compared with a width that phone emulation widens, so it could not fail; corrected in two browser tests | Physical iPhone not tested |
+| 2b13e1d | Receipt-gap report | Paid outflows without a receipt listed once; a reference number alone no longer hides a gap | Same |
+| 8fcc7b3 | Unclassified-transactions report | Category or type "other" listed once with every reason; nothing reclassified automatically | Same |
+
+The acceptance status of Milestone A against the directive's sixteen checks is recorded in `ACCOUNTING-EDITOR-ACCEPTANCE.json` and guarded by `tests/incomeos-acceptance-record.mjs`: 11 SOURCE TESTED, 5 BLOCKED (owner authentication, denial of unauthorized access, hosted secure storage, release evidence, owner publication approval). The milestone is not complete.

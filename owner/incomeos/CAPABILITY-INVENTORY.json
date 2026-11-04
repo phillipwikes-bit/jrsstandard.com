@@ -736,6 +736,29 @@
       ],
       "requiredRemediation": "Owner-authenticated private hosting (Milestone A release gate)",
       "acceptanceCriteria": "Locked without a workspace; add, edit, delete and import in workspace mode; encrypted save; reopen restores entries; zero browser-storage writes"
+    },
+    {
+      "featureId": "ACCOUNTING-EDITOR-REPORTS",
+      "sourceFiles": [
+        "owner/incomeos/accountant.js",
+        "owner/incomeos/index.html"
+      ],
+      "purpose": "Accountant handoff reports from the owner's ledger: separated category totals, reconciliation evidence classes, receipt gaps, unclassified transactions, expense payment status, payment-account labels and questions for the accountant, on screen, in the summary and detailed CSVs and in the printed report",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Reconciliation classes reflect owner-recorded evidence; no bank feed is connected",
+        "JSON backup restore through the page not yet exercised end to end",
+        "Not accountant-reviewed and not tax-filing ready; verified in simulated Chromium phone widths only"
+      ],
+      "testCoverage": [
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-acceptance-record.mjs"
+      ],
+      "requiredRemediation": "Owner-authenticated private hosting (Milestone A release gate); see ACCOUNTING-EDITOR-ACCEPTANCE.json",
+      "acceptanceCriteria": "Every record in exactly one category group and one reconciliation class; refunds, unpaid bills and returned principal never counted as income or paid expense; full card or account numbers refused; reports fit 320 to 430 px"
     }
   ]
 }
