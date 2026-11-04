@@ -67,7 +67,8 @@
         }
         if(e.type==="refund")add(e,i,ID.refundReview);
       }else{
-        if(e.status==="pending")add(e,i,ID.pending);
+        // Expected, invoiced, pending and disputed amounts are all outstanding: flagged, never received.
+        if(["pending","expected","invoiced","disputed"].indexOf(e.status)>=0)add(e,i,ID.pending);
         if(e.scope==="proceeds")add(e,i,ID.proceedsBasis);
         if(e.scope==="nonincome")add(e,i,ID.capitalReview);
         if(e.docStatus==="expected")add(e,i,ID.expectedForm);

@@ -58,4 +58,8 @@ const codes=r=>r.issues.map(x=>x.code);
 {const oc={window:{}};runInNewContext(read("economic-outcomes.js"),oc);const O=oc.window.IncomeOSEconomicOutcomes;
  const r=O.review([{id:"e1",type:"REFUND",amountCents:100,posted:true,sourceVerified:true,evidenceId:"E1"},{id:"e2",type:"EARNED_INCOME",amountCents:200,posted:true,sourceVerified:true,evidenceId:"E1"}]);
  assert.deepEqual([...r.issues.map(i=>i.code)],["REFUND_LINK_MISSING"]);}
+// Payment states: every state other than received is NOT_RECEIVED, never an invalid record or income.
+for(const st of ["expected","invoiced","disputed","refunded","cancelled"]){
+ const r=E.analyze([income("s-"+st,"2026-10-05",40,0,st)],[],coverage);
+ assert.ok(!codes(r).includes("INVALID_LEDGER"),st);assert.equal(r.matches[0].state,"NOT_RECEIVED",st);}
 console.log("IncomeOS money controls review checks passed (10 findings).");

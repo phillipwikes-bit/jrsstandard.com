@@ -278,7 +278,7 @@
         </div>
         <div class="formgrid">
           <div><label for="receipt-fees">Platform fees withheld (USD)</label><input type="number" id="receipt-fees" name="fees" min="0" max="10000000" step="0.01" value="0" inputmode="decimal"></div>
-          <div><label for="receipt-state">Payment status</label><select id="receipt-state" name="status"><option value="pending">Expected, not received</option><option value="paid">Received (self-reported)</option></select></div>
+          <div><label for="receipt-state">Payment status</label><select id="receipt-state" name="status"><option value="expected">Expected, not received</option><option value="invoiced">Invoiced, not received</option><option value="pending">Pending, not received</option><option value="disputed">Disputed, not received</option><option value="paid">Received (self-reported)</option><option value="refunded">Refunded to payer (not income)</option><option value="cancelled">Cancelled (not income)</option></select></div>
         </div>
         <div class="formgrid">
           <div><label for="receipt-scope">Accounting treatment flag</label><select id="receipt-scope" name="scope"><option value="income">Potential income, review tax treatment</option><option value="nonincome">Possible non-income / refunded principal</option><option value="proceeds">Investment sale proceeds, basis review needed</option></select></div>
@@ -319,7 +319,7 @@
     </div>
     <div class="panel">
       <div class="panelrow"><h3>All recorded items</h3><span class="muted" id="ledger-count">0 items</span></div>
-      <div class="filterbar"><label class="sr-only" for="ledger-filter">Record filter</label><select id="ledger-filter"><option value="all">All entries</option><option value="income">Income / receipts</option><option value="outflow">Expenses / outflows</option><option value="pending">Pending payments</option><option value="refund">Unallocated refunds / credits</option></select><label class="sr-only" for="ledger-search">Search records</label><input id="ledger-search" type="search" placeholder="Search source / category"></div>
+      <div class="filterbar"><label class="sr-only" for="ledger-filter">Record filter</label><select id="ledger-filter"><option value="all">All entries</option><option value="income">Income / receipts</option><option value="outflow">Expenses / outflows</option><option value="pending">Outstanding, not received</option><option value="refund">Unallocated refunds / credits</option></select><label class="sr-only" for="ledger-search">Search records</label><input id="ledger-search" type="search" placeholder="Search source / category"></div>
       <div id="ledger-list" class="stack"></div>
     </div>
     <div class="panel">

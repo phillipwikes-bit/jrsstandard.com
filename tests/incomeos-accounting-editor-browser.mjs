@@ -45,6 +45,15 @@ await page.locator("#report-year").fill("2026");await page.locator("#report-year
 let list=await page.locator("#ledger-list").textContent();
 assert.match(list,/Synthetic study payout/);assert.match(list,/Synthetic AI subscription/);
 assert.match(list,/Business use not determined/,"unknown business use stays unknown");
+// An invoiced amount is recorded as outstanding, not received, and appears under the outstanding filter.
+await page.locator("#receipt-label").fill("Synthetic consulting invoice");await page.locator("#receipt-amount").fill("900");
+await page.locator("#receipt-date").fill("2026-10-20");await page.locator("#receipt-state").selectOption("invoiced");
+await page.locator("#receipt-save").tap();
+assert.match(await page.locator("#ledger-list .entry",{hasText:"Synthetic consulting invoice"}).textContent(),/Invoiced, not received/);
+await page.locator("#ledger-filter").selectOption("pending");
+assert.match(await page.locator("#ledger-list").textContent(),/Synthetic consulting invoice/);
+assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic study payout/);
+await page.locator("#ledger-filter").selectOption("all");
 // The Income view warns about unsaved changes and offers a route to the save control.
 assert.match(await page.locator("#ledger-mode").textContent(),/UNSAVED CHANGES/);
 assert.ok(await page.locator("#ledger-save-now").isVisible());

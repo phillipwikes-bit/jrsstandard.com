@@ -33,4 +33,14 @@ assert.doesNotMatch(src,/function escapePrint/);
  assert.equal(A.completeness([{kind:"outflow",type:"expense",businessUse:50,evidenceStatus:"both",reconciled:true}]).status,"NO OPEN GAPS IN RECORDED ENTRIES");}
 assert.match(src,/Record completeness: /,"printed report shows completeness");
 assert.match(src,/pairs\.unshift\(\["Report status"/,"summary CSV leads with the report status");
+// Payment states: only received ("paid") counts; outstanding and closed states never do.
+{const inc=(status,g)=>({kind:"income",scope:"income",status,grossUsd:g,feesUsd:0,label:"x",date:"2026-10-01",category:"research"});
+ const t=A.totals([inc("paid",100),inc("expected",200),inc("invoiced",300),inc("disputed",400),inc("pending",500),inc("refunded",60),inc("cancelled",70)]);
+ assert.equal(t.gross,100,"only received counts as income");assert.equal(t.pendingCount,4);assert.equal(t.closedCount,2);assert.equal(t.closedNotIncome,130);
+ for(const st of ["expected","invoiced","disputed","refunded","cancelled"])assert.equal(A.validateEntry({...inc(st,10)}),true,st);
+ assert.equal(A.validateEntry({...inc("received",10)}),false,"stored received state is 'paid'");}
+// CSV import: "received" means received; anything unrecognized becomes expected, never received.
+A.importCsv([header,"income,2026-10-05,Study A,Rec,research,50.00,received,,REF-A,","income,2026-10-06,Study B,Rec,research,60.00,invoiced,,REF-B,","income,2026-10-07,Study C,Rec,research,70.00,maybe,,REF-C,"].join("\n"));
+assert.match(prompts.pop(),/Import 3 new records/);
+assert.match(src,/function importStatus\(x\)\{var s=String\(x\|\|""\)\.trim\(\)\.toLowerCase\(\);if\(s==="received"\)return "paid";return STATUS\.indexOf\(s\)>=0\?s:"expected";\}/);
 console.log("IncomeOS accountant review checks passed.");

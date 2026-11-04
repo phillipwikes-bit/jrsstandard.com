@@ -43,7 +43,8 @@
   }
   function entryKind(e) {
     if(e.kind==="income"){
-      if(e.status==="pending")return "pending";
+      // Every state other than received (paid) is not received: outstanding or closed, never income.
+      if(["pending","expected","invoiced","disputed","refunded","cancelled"].indexOf(e.status)>=0)return "pending";
       if(e.status!=="paid")return "invalid";
       if(e.scope==="income")return ["interest","dividend","investment"].includes(e.category)?"investment-income":"earned-or-other-income";
       if(e.scope==="nonincome")return "recovery-or-return-of-principal";

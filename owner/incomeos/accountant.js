@@ -11,7 +11,14 @@
   var EXPENSE_TYPES = ["expense","taxpayment","capital","other","refund"];
   var SCOPES = ["income","nonincome","proceeds"];
   var TAX_FORMS = ["None / unknown","1099-NEC","1099-MISC","1099-K","1099-INT","1099-DIV","1099-B","Schedule K-1","W-2","1099-R","SSA-1099","1099-G","Other form"];
-  var STATUS = ["paid","pending"];
+  // Payment states. Only "paid" (received) ever counts as income. Outstanding states are amounts
+  // still owed; closed states were never received. "pending" stays for existing records.
+  var STATUS = ["paid","pending","expected","invoiced","disputed","refunded","cancelled"];
+  var OUTSTANDING = ["pending","expected","invoiced","disputed"];
+  var STATUS_LABEL = {paid:"Recorded received",pending:"Pending",expected:"Expected, not received",invoiced:"Invoiced, not received",
+    disputed:"Disputed, not received",refunded:"Refunded to payer, not income",cancelled:"Cancelled, not income"};
+  // CSV and backups may say "received"; anything unrecognized is treated as expected, never as received.
+  function importStatus(x){var s=String(x||"").trim().toLowerCase();if(s==="received")return "paid";return STATUS.indexOf(s)>=0?s:"expected";}
   var DOCSTATUS = ["not-expected","expected","received","reconciled"];
   var EVIDENCE_STATUS = ["missing","email","bank","both-unverified","both"];
   function node(tag, cls, text) { var e = document.createElement(tag); if(cls)e.className=cls; if(text!==undefined)e.textContent=String(text); return e; }
@@ -102,7 +109,8 @@
     var income=entries.filter(function(e){return e.kind==="income"&&e.status==="paid"&&e.scope==="income";});
     var nonincome=entries.filter(function(e){return e.kind==="income"&&e.status==="paid"&&e.scope==="nonincome";});
     var proceeds=entries.filter(function(e){return e.kind==="income"&&e.status==="paid"&&e.scope==="proceeds";});
-    var pending=entries.filter(function(e){return e.kind==="income"&&e.status==="pending";});
+    var pending=entries.filter(function(e){return e.kind==="income"&&OUTSTANDING.indexOf(e.status)>=0;});
+    var closed=entries.filter(function(e){return e.kind==="income"&&(e.status==="refunded"||e.status==="cancelled");});
     var expenses=entries.filter(function(e){return e.kind==="outflow"&&e.type==="expense";});
     var taxpayments=entries.filter(function(e){return e.kind==="outflow"&&e.type==="taxpayment";});
     var capital=entries.filter(function(e){return e.kind==="outflow"&&e.type==="capital";});
@@ -122,7 +130,7 @@
       proceeds:sum(proceeds,function(e){return e.grossUsd}),
       returned:sum(nonincome,function(e){return e.grossUsd}),
       pending:sum(pending,function(e){return e.grossUsd}),
-      incomeCount:income.length,pendingCount:pending.length,
+      incomeCount:income.length,pendingCount:pending.length,closedCount:closed.length,closedNotIncome:sum(closed,function(e){return e.grossUsd}),
       unreconciled:entries.filter(function(e){return !e.reconciled}).length
     };
   }
@@ -133,7 +141,7 @@
     var missingEvidence=entries.filter(function(e){return e.kind==="outflow"&&e.type!=="refund"&&(e.evidenceStatus||"missing")==="missing";}).length;
     var unallocatedRefunds=entries.filter(function(e){return e.kind==="outflow"&&e.type==="refund";}).length;
     var gaps=[["Records not marked reconciled",t.unreconciled],["Expense business-use not determined",t.allocationPending],
-      ["Expenses without supporting evidence",missingEvidence],["Pending receipts (not counted as received)",t.pendingCount],
+      ["Expenses without supporting evidence",missingEvidence],["Outstanding receipts: expected, invoiced, pending or disputed (not counted as received)",t.pendingCount],
       ["Refunds or credits not yet matched to a charge",unallocatedRefunds]];
     var open=gaps.filter(function(g){return g[1]>0;});
     return {status:entries.length===0?"NO RECORDS":open.length?"INCOMPLETE":"NO OPEN GAPS IN RECORDED ENTRIES",gaps:gaps,open:open.length,
@@ -238,12 +246,12 @@
   function showEntry(e){
     var out=place($("ledger-list"),"div","entry");var left=place(out,"div","entry-info");
     place(left,"strong","",e.label);
-    place(left,"small","",e.date+" · "+(e.kind==="income"?"RECEIPT · "+e.category+" · "+(e.status==="paid"?"Recorded received":"Pending"):(e.type==="refund"?"REFUND/CREDIT, UNALLOCATED · ":"OUTFLOW · ")+e.category+" · "+e.type));
+    place(left,"small","",e.date+" · "+(e.kind==="income"?"RECEIPT · "+e.category+" · "+(STATUS_LABEL[e.status]||"Not received"):(e.type==="refund"?"REFUND/CREDIT, UNALLOCATED · ":"OUTFLOW · ")+e.category+" · "+e.type));
     place(left,"small","",e.payer||"Source not identified");
     if(e.kind==="outflow"&&e.type!=="refund")place(left,"small","","Business use "+(e.businessUse===null||e.businessUse===undefined?"not determined":String(e.businessUse)+"%")+" · Evidence "+(e.evidenceStatus||"missing"));
     if(!e.reconciled)place(left,"small","notice","Not reconciled to source evidence");
     var right=place(out,"div","entry-actions");
-    place(right,"div","amt"+((e.status==="pending")?" pending":""),(e.kind==="outflow"&&e.type!=="refund"?"−":"+")+money(e.kind==="income"?e.grossUsd:e.amountUsd));
+    place(right,"div","amt"+(e.kind==="income"&&e.status!=="paid"?" pending":""),(e.kind==="outflow"&&e.type!=="refund"?"−":"+")+money(e.kind==="income"?e.grossUsd:e.amountUsd));
     var buttons=place(right,"div","entry-buttons"),ed=place(buttons,"button","","Edit"),del=place(buttons,"button","","Remove");
     ed.type="button";del.type="button";ed.addEventListener("click",function(){startEdit(e);});
     del.addEventListener("click",function(){
@@ -259,7 +267,7 @@
       if(filter==="income"&&e.kind!=="income")return false;
       if(filter==="outflow"&&!(e.kind==="outflow"&&e.type!=="refund"))return false;
       if(filter==="refund"&&!(e.kind==="outflow"&&e.type==="refund"))return false;
-      if(filter==="pending"&&!(e.kind==="income"&&e.status==="pending"))return false;
+      if(filter==="pending"&&!(e.kind==="income"&&OUTSTANDING.indexOf(e.status)>=0))return false;
       return !q || [e.label,e.category,e.payer,e.reference,e.notes].join(" ").toLowerCase().includes(q);
     }).sort(function(a,b){return b.date.localeCompare(a.date);});
     $("ledger-list").replaceChildren();
@@ -337,7 +345,8 @@
       ["Pending receipts",t.pending],["Recovered principal / refunds",t.returned],
       ["Asset sale proceeds, review basis",t.proceeds],["Estimated tax payments",t.taxPaid],
       ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],["Unallocated refunds / credits, not netted",t.refundCredits],
-      ["Unreconciled record count",t.unreconciled],["Expense allocations not determined",t.allocationPending]];
+      ["Unreconciled record count",t.unreconciled],["Expense allocations not determined",t.allocationPending],
+      ["Refunded or cancelled receipts, not income (count)",t.closedCount],["Refunded or cancelled receipts, not income (USD)",t.closedNotIncome]];
     var c=completeness(yearEntries());
     pairs.unshift(["Report status",c.status+". "+c.notice]);
     c.gaps.forEach(function(g){if(g[0]!=="Records not marked reconciled")pairs.push(["Completeness: "+g[0],g[1]]);});
@@ -437,7 +446,7 @@
       var e;
       if(kind==="income"){
         e={kind:"income",label:label,payer:limit(get("vendor"),100),date:date,category:CATEGORIES.includes(category)?category:"other",amountOriginal:amount,currency:"USD",fx:1,grossUsd:round(amount),feesUsd:0,
-        status:get("status")==="paid"?"paid":"pending",scope:"income",method:"Unknown",taxForm:"None / unknown",docStatus:"not-expected",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv"};
+        status:importStatus(get("status")),scope:"income",method:"Unknown",taxForm:"None / unknown",docStatus:"not-expected",reference:limit(get("evidence_ref"),120),notes:limit(get("notes"),500),reconciled:false,importedFrom:"csv"};
       }else if(["expense","outflow","taxpayment","capital","other","refund"].includes(kind)){
         var rawBusiness=get("business_use_pct").trim(),bus=rawBusiness===""?null:num(rawBusiness);if(bus!==null&&(!Number.isFinite(bus)||bus<0||bus>100)){rejected++;continue;}
         e={kind:"outflow",type:kind==="expense"||kind==="outflow"?"expense":kind,label:label,payer:limit(get("vendor"),100),date:date,
