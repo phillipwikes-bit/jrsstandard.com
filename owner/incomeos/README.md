@@ -2,6 +2,11 @@
 
 Status: STAGING ONLY. DO NOT MERGE TO PUBLIC PRODUCTION.
 
+## Current hosting and storage (2026-11-04)
+
+- Hosting: the separate Vercel project `incomeos-opportunity-desk` (not the public `jrsstandard-com` project), Root Directory `owner/incomeos`, production branch `feature/incomeos-owner-prototype-2026-11-01`, address `incomeos-opportunity-desk.vercel.app`. Vercel Authentication "Require Log In" covers All Deployments; no password, bypass secret, trusted IP or protection exception is configured (owner-supplied settings screenshots, 2026-11-04). Anonymous denial of the live address has not yet been independently tested from this repository's tooling.
+- Storage: `staging-interlock.js` loads before every module and blocks browser-storage writes. Financial records live only in the owner's workspace file, held in memory while open and saved by the owner, encrypted with a passphrase (AES-256-GCM). Nothing is kept on a server. Older statements below that describe localStorage persistence are marked as superseded.
+
 This single-user research and cash-flow decision interface is intended for the existing JRS technical infrastructure while preserving the institutional public website and the local-only JRS Review Engine. It does not create accounts, submit participant applications, execute investments or transmit owner data.
 
 ## Access and privacy
@@ -11,7 +16,7 @@ This single-user research and cash-flow decision interface is intended for the e
 - The current JRS Vercel deployment uses Vercel Authentication for protected previews. Test anonymous denial before using the prototype on a preview deployment.
 - Production release gate: server-side owner-only route protection, path-specific private/no-store headers, negative anonymous access tests, privacy review, and rollback. Do not switch public JRS production to whole-project authentication.
 - GitHub repository and source are public, even on an unreleased branch. Never commit identity records, secrets, application answers, balances or private notes.
-- Saved bookmarks, study status and earnings are stored only in browser localStorage, not encrypted, not backed up or synchronized. Do not use shared devices.
+- Superseded 2026-11-04 (see Current hosting and storage): "Saved bookmarks, study status and earnings are stored only in browser localStorage, not encrypted, not backed up or synchronized." With the staging interlock these writes are blocked; records are kept in the owner-saved workspace file. Do not use shared devices.
 
 ## Contents
 
@@ -40,7 +45,7 @@ This single-user research and cash-flow decision interface is intended for the e
 
 The owner can manually record income and expenses from any legitimate source, including records that were not discovered through IncomeOS. Income categories include research, AI evaluation, royalties, business receipts, dividends, employment, pension/annuity, retirement distributions and other receipts. Expense categories include ChatGPT/OpenAI, Anthropic/Claude, Grammarly, Namecheap domain/email, Sejda document software, home internet, cell phone, printer/ink, travel and other purchases. Quick-add vendor chips only prefill form fields; they do not insert unverified amounts or establish tax deductibility.
 
-- Entries are stored in localStorage under `incomeos.accountant.v1`. An earlier `incomeos.owner.prototype.v1` receipt list may be migrated on first use. No owner data is committed to GitHub.
+- Superseded 2026-11-04 (see Current hosting and storage): "Entries are stored in localStorage under `incomeos.accountant.v1`." That applies only when the staging interlock is absent; in the staged app the ledger is edited in the open workspace file and saved encrypted by the owner. An earlier `incomeos.owner.prototype.v1` receipt list may be migrated on first use outside staging. No owner data is committed to GitHub.
 - Payment status is self-reported; pending income, investment-sale proceeds awaiting cost basis, refunded principal, withholding/fees, outflows, estimated tax payments and capital investments are separated in accountant totals.
 - Outflow entries may carry a **user-estimated business-use percentage**, document reference and proof status. An estimate is not an approved deduction, and partial household use requires substantiation. Fees recorded on receipts should not be duplicated as separate expenses.
 - Tax-year filtering, source/category breakdown, editable entries, item deletion, detail CSV, summary CSV, browser Print/Save as PDF, and private JSON backup/restore are provided.
