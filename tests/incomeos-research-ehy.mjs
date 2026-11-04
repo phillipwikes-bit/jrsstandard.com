@@ -27,6 +27,10 @@ const screened=radar.assess(study("study-low",150,60,15,45,15),{...prefs,minEhy:
 assert.equal(screened.priority,"HOLD");
 assert.ok(screened.reasons.some(x=>x.includes("Effective hourly yield")));
 assert.throws(()=>radar.candidate(study("study-bad",100,60,5,-1,0)),/Invalid preparation minutes/);
+// A configured minimum yield is a hard eligibility gate, not a pass for missing data.
+const unknownWithFloor=radar.assess(study("unknown-with-floor",200,60,null,null,null,"unknown"),{...prefs,minEhy:75},asOf);
+assert.equal(unknownWithFloor.priority,"HOLD");
+assert.ok(unknownWithFloor.reasons.some(x=>x.includes("cannot be verified against")));
 // ---------- Extended regression scenarios (2026-11-03 review) ----------
 const plain=x=>JSON.parse(JSON.stringify(x));
 const S=(id,o={})=>({...study(id,100,60,10,10,10,"verified"),...o});
