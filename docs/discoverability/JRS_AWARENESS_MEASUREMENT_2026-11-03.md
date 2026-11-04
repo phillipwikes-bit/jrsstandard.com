@@ -71,3 +71,18 @@ The reference page gained one non-branded practitioner question and a source-che
 `tests/public-discoverability-journey.test.mjs` is now invoked by the existing method-first release gate; it checks search metadata, sitemap identity, share controls, static journey links, constructed-case disclaimers and no new analytics code on newly created reference pages. These are source tests, not hosted behavior, search indexing, social sharing or qualified adoption.
 
 No owner action, new account, outbound outreach, manual Vercel deployment, publication or release override is part of this change.
+
+## GA4 integration without expanding tagged-page coverage (3 November 2026)
+
+The homepage and Resources already include Google Analytics 4 measurement tag `G-NVYHJ7BJ92` and the site's allowlisted engagement script. We retain that pre-existing tag and do not load GA4 on the constructed-record example, institutional briefing or terminology pages.
+
+**Added, on existing tagged pages only:**
+- GA4-recommended `select_content` event when a visitor deliberately opens one of three public JRS references from Home or Resources. Fixed parameters: `content_type=jrs_public_reference`, `item_id` in `worked_example | institutional_briefing | jrs_drr_terms`, `source_surface` in `home | resources`. No URL string, case material, query text, visitor ID or custom cookie.
+- A visible Resources directory Share/Copy link control, using the pre-existing canonical public URL and the existing protected-preview guard. GA4's recommended `share` event fires only after the native share action returns successfully, with `method=native_share_sheet`; `jrs_link_copied` is a **different custom event** emitted only after a confirmed clipboard write, with `method=clipboard`. A copy is not counted as a completed share.
+- Updated `privacy-notice.html` with the named event types, fields and limitations. This does not waive the outstanding privacy and release reviews.
+
+**Not measurable from this code alone:** Untracked share actions on the three no-GA4 reference pages; their social recipients; search impressions; true downstream reader conversion; external citation or independent vocabulary adoption. Existing pageviews and static `src` links may support partial source-path analysis. These signals are aggregate and need dated provider evidence, not estimates.
+
+**Live data access:** The connected HYPD Google Analytics service reports that the user has a connection but has selected no reporting property. Accordingly *actual* GA4 traffic, share and referral figures are **NOT OBSERVED**, even though the code has a GA4 tag. No user action is required to prepare or maintain the PR. Production release remains on hold.
+
+See Google's recommended `share`/`select_content` events: https://developers.google.com/analytics/devguides/collection/ga4/reference/recommended-events

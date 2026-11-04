@@ -66,3 +66,25 @@ for(const [file] of pages){
   assert.ok(html.includes('aria-current="page"'));
 }
 console.log('PASS: WebSite site name and three visible, canonical breadcrumb paths.');
+
+const engagement=read('assets/jrs-engagement.js');
+new vm.Script(engagement,{filename:'assets/jrs-engagement.js'});
+assert.ok(engagement.includes("window.gtag('event','select_content'"),'GA4 select_content must be explicit on existing tagged pages');
+for(const item of ["worked_example","institutional_briefing","jrs_drr_terms"]){
+  assert.ok(engagement.includes("'"+item+"'"),'missing fixed public reference id: '+item);
+}
+assert.ok(engagement.includes("surface!=='home'&&surface!=='resources'"),'reference selection must be restricted to existing tagged surfaces');
+const resourcesPage=read('resources.html');
+assert.ok(resourcesPage.includes('jrs-resource-share-actions'),'Resources sharing surface missing');
+assert.ok(resourcesPage.includes('data-jrs-share="native" disabled')&&resourcesPage.includes('data-jrs-share="copy" disabled'));
+assert.ok(resourcesPage.includes('src="/assets/jrs-share.js" defer'),'sharing script missing on already tagged Resources');
+assert.ok(resourcesPage.includes('gtag/js?id=G-NVYHJ7BJ92'),'pre-existing GA4 tag not preserved on Resources');
+assert.ok(share.includes("recordConfirmedAction('share','native_share_sheet')"),'native share must be recorded only after awaited share');
+assert.ok(share.includes("recordConfirmedAction('jrs_link_copied','clipboard')"),'copy must be reported only after successful write');
+assert.ok(share.includes("typeof window.gtag!=='function'"),'share must be GA4-optional');
+assert.ok(!share.includes('ga4MeasurementId'),'share script must not initialize a new GA4 connection');
+const privacy=read('privacy-notice.html');
+for(const term of ['select_content','jrs_link_copied','share sheet','supplementary reference pages']){
+  assert.ok(privacy.includes(term),'privacy notice must describe '+term);
+}
+console.log('PASS: existing-tag GA4 reference selections, voluntary share/copy events, privacy scope and no new tracking tag.');

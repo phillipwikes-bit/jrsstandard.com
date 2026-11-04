@@ -19,3 +19,7 @@ Search indexing, impressions, cross-assistant citations, external shares, virali
 Google people-first content: https://developers.google.com/search/docs/fundamentals/creating-helpful-content
 Google Discover: https://developers.google.com/search/docs/appearance/google-discover
 Image previews: https://developers.google.com/search/docs/appearance/google-images
+
+## Subsequent, limited GA4 addition (3 November 2026)
+
+The original implementation introduced no sharing telemetry or analytics tags. A later request authorized examination of Google Analytics. The subsequent candidate now uses GA4 **only where the public site already loads it**, on Home and Resources. Resources gained voluntary share controls; native share-sheet handoff and confirmed clipboard copy are distinct events. The new public reference pages remain without GA4 tags and emit no sharing analytics of their own. The privacy notice documents the expanded event names and fixed fields. This supplementary addition does not supersede independent release or privacy testing.
