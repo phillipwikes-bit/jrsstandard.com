@@ -107,8 +107,48 @@ def self_test():
         message = network_failure(error)
         assert message.startswith(expected), (code, message)
         assert hidden not in message and "secret.example" not in message
+    # Redirect diagnostics reveal category only, never host, path, query or
+    # token. All such responses remain failures, including sign-in redirects.
+    for destination, category in [
+        ("https://vercel.com/login?token=" + hidden, "destination resembles Vercel sign-in"),
+        ("https://another.example/secret/" + hidden, "absolute redirect destination"),
+        ("/private/" + hidden, "relative redirect destination"),
+        ("", "destination not supplied"),
+        ("//outside.example/" + hidden, "unclassified redirect destination"),
+    ]:
+        error = HTTPError("https://secret.example/?"+hidden, 302, hidden,
+                          {"Location": destination}, None)
+        message = network_failure(error)
+        assert message.startswith("HTTP 302: unexpected preview redirect")
+        assert category in message and hidden not in message
+        assert "another.example" not in message and "outside.example" not in message
+        assert "secret.example" not in message
     assert network_failure(TimeoutError(hidden)) == "TimeoutError"
     print("PASS: hosted network errors report status without exposing credentials or response data.")
+
+
+def classify_redirect_destination(error):
+    """Classify only a redirect destination's type, never print its URL.
+
+    A destination resembling Vercel sign-in is a diagnostic, not proof
+    of which trust or application rule rejected the caller.
+    """
+    location = error.headers.get("Location", "") if error.headers else ""
+    if not isinstance(location, str) or not location:
+        return "destination not supplied"
+    target = urlparse(location)
+    if target.username or target.password:
+        return "credential-bearing destination refused"
+    if target.scheme in ("http", "https") and target.netloc:
+        if (target.scheme == "https" and
+                target.hostname in ("vercel.com", "www.vercel.com") and
+                (target.path == "/login" or target.path.startswith("/login/") or
+                 target.path == "/sso" or target.path.startswith("/sso/"))):
+            return "destination resembles Vercel sign-in"
+        return "absolute redirect destination"
+    if location.startswith("/") and not location.startswith("//"):
+        return "relative redirect destination"
+    return "unclassified redirect destination"
 
 
 def network_failure(error):
@@ -125,7 +165,9 @@ def network_failure(error):
                     ": access refused; inspect Vercel preview authentication/"
                     "Trusted Sources and application authorization")
         if code in (301, 302, 303, 307, 308):
-            return "HTTP " + str(code) + ": unexpected preview redirect; check authentication"
+            return ("HTTP " + str(code) + ": unexpected preview redirect (" +
+                    classify_redirect_destination(error) +
+                    "); authentication or routing investigation required")
         if code == 404:
             return "HTTP 404: exact preview file or route unavailable"
         if code == 402:
