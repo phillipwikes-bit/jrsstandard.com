@@ -12,9 +12,8 @@
     p.textContent="Financial source verification: "+result.status+". Staging has no authenticated bank-source inventory. Available capital cannot be established.";
     target.prepend(p);
   }
+  // Called by capital-review-ui after every render, so the HOLD line survives any re-render.
+  window.IncomeOSSourceHealthUI=Object.freeze({show:show});
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",show);
   else show();
-  document.addEventListener("click",function(e){
-    if(e.target&&e.target.id==="capital-readiness-refresh")queueMicrotask(show);
-  });
 }());

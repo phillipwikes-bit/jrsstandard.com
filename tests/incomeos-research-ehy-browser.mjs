@@ -101,8 +101,9 @@ assert.match(await page.locator("#radar-results article",{hasText:preTitle}).tex
 // ---------- Times persist through the workspace file; "This week" lists research by EHY ----------
 await page.locator("#briefing-new").tap();
 // Use an open (not held) study: held studies are deliberately excluded from "This week".
-const openTitle=await page.$$eval("#radar-results article",els=>{const e=els.find(x=>!/HOLD/.test(x.querySelector(".radar-heading span").textContent));return e?e.querySelector("strong").textContent:null;});
-assert.ok(openTitle,"snapshot has at least one open study");
+// Since 6f2bc7b a configured minimum yield holds every study whose EHY is still unknown (and the settings
+// form is locked in staging), so use the study already shown above to open once its times are entered.
+const openTitle=preTitle;
 const card3=page.locator("#radar-results article",{hasText:openTitle});
 if(!(await card3.locator("details.radar-time").getAttribute("open")))await card3.locator("details.radar-time summary").tap();
 await card3.locator("input[id^=t-screen-]").fill("2");await card3.locator("input[id^=t-prep-]").fill("0");await card3.locator("input[id^=t-admin-]").fill("2");

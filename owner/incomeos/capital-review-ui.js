@@ -38,6 +38,7 @@
       if(titles[x.code])element(list,"li",titles[x.code]);
     });
     element(result,"p","Investment income, returned principal, sale proceeds and provider-reported reinvestment require protected statement evidence. This interface has no live trading or banking permissions.","muted");
+    if(window.IncomeOSSourceHealthUI)window.IncomeOSSourceHealthUI.show();
   }
   function init(){
     var button=$("capital-readiness-refresh");if(!button)return;

@@ -57,9 +57,16 @@
       sectionText(c, "span", warning, it.value);
     });
   }
+  // Feed links come from a file filled by intake: only http(s) addresses become links or copied URLs.
+  function safeUrl(url) {
+    try { var u = new URL(String(url || "")); return u.protocol === "https:" || u.protocol === "http:" ? u.href : null; }
+    catch (_e) { return null; }
+  }
   function link(url, label) {
+    var safe = safeUrl(url);
+    if (!safe) return node("span", "muted", "Link unavailable: the source address is not a web link");
     var a = node("a", "mainbtn", label);
-    a.href = url; a.target = "_blank"; a.rel = "noopener noreferrer"; a.referrerPolicy = "no-referrer";
+    a.href = safe; a.target = "_blank"; a.rel = "noopener noreferrer"; a.referrerPolicy = "no-referrer";
     return a;
   }
   function details(parent, label, value) {
@@ -115,11 +122,13 @@
     var foot = append(card, node("div", "cardfooter"));
     append(foot, link(s.url, "Open individual application ↗"));
     var controls = append(foot, node("div", "cardalt"));
-    var share = node("button", "", "Copy direct link");
-    share.type = "button"; share.addEventListener("click", function () {
+    var share = node("button", "", "Copy direct link"), safe = safeUrl(s.url);
+    share.type = "button"; share.disabled = !safe;
+    share.addEventListener("click", function () {
+      if (!safe) return;
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(s.url).then(function () { share.textContent = "Copied"; }).catch(function () { window.prompt("Copy this application URL:", s.url); });
-      } else window.prompt("Copy this application URL:", s.url);
+        navigator.clipboard.writeText(safe).then(function () { share.textContent = "Copied"; }).catch(function () { window.prompt("Copy this application URL:", safe); });
+      } else window.prompt("Copy this application URL:", safe);
     });
     append(controls, share);
     var label = append(controls, node("label"));
@@ -143,7 +152,7 @@
         if (past(s)) return false;
       }
       if (f === "online" && s.mode !== "online") return false;
-      if (f === "direct" && !s.linkKind.toLowerCase().includes("direct")) return false;
+      if (f === "direct" && !String(s.linkKind || "").toLowerCase().includes("direct")) return false;
       if (text && !(s.title + " " + s.provider + " " + (s.eligibility || []).join(" ")).toLowerCase().includes(text)) return false;
       return true;
     });
@@ -164,9 +173,10 @@
     var d = append(card, node("dl", "detail"));
     details(d, "Structure", a.terms);
     details(d, "Payout", a.payout);
-    if (a.historicalUsd !== null) {
-      details(d, "History", money0.format(a.historicalUsd) + " gross reported receipts over " + a.historicalMonths + " months");
-      details(d, "Comparison", "Historical receipts / quoted price: " + (a.historicalUsd / a.capitalUsd * 100).toFixed(1) + "%; NOT a projected investment return");
+    if (Number.isFinite(a.historicalUsd)) {
+      details(d, "History", money0.format(a.historicalUsd) + " gross reported receipts" + (Number.isFinite(a.historicalMonths) ? " over " + a.historicalMonths + " months" : " (period not stated)"));
+      if (Number.isFinite(a.capitalUsd) && a.capitalUsd > 0)
+        details(d, "Comparison", "Historical receipts / quoted price: " + (a.historicalUsd / a.capitalUsd * 100).toFixed(1) + "%; NOT a projected investment return");
     }
     chips(card, [{ value: a.status, warn: true }, { value: a.linkKind, warn: true }]);
     bullets(card, a.risks);
@@ -183,7 +193,11 @@
   function renderLedger() { if (window.IncomeOSAccountant) window.IncomeOSAccountant.render(); }
   function calculate() {
     var p = Number($("initial").value), m = Number($("monthly").value), annual = Number($("assumed-return").value), y = Number($("years").value);
-    if (!Number.isFinite(p) || !Number.isFinite(m) || !Number.isFinite(annual) || !Number.isFinite(y) || p < 0 || m < 0 || annual < -100 || annual > 40 || y < 1 || y > 30) return;
+    if (!Number.isFinite(p) || !Number.isFinite(m) || !Number.isFinite(annual) || !Number.isFinite(y) || p < 0 || m < 0 || annual < -100 || annual > 40 || y < 1 || y > 30) {
+      // Never leave an earlier result on screen next to inputs it was not calculated from.
+      ["future-value", "contributions", "growth"].forEach(function (id) { $(id).textContent = "Check inputs"; });
+      return;
+    }
     var n = y * 12, r = Math.pow(1 + annual / 100, 1 / 12) - 1, compound = Math.pow(1 + r, n);
     var fv = p * compound + (Math.abs(r) < 0.0000000001 ? m * n : m * (compound - 1) / r);
     var contribution = p + m * n;
@@ -192,6 +206,7 @@
     $("contributions").textContent = money0.format(contribution);
     $("growth").textContent = money0.format(fv - contribution);
   }
+  var deepLinkApplied = false;
   async function loadFeed() {
     var status = $("feed-status");
     try {
@@ -206,8 +221,9 @@
       status.classList.remove("error");
       status.textContent = "Reviewed source snapshot: " + feed.asOf + ". This file does not update automatically with ChatGPT alerts; verify availability before applying.";
       renderStudies(); renderAssets();
-      var deep = new URLSearchParams(location.search).get("study");
+      var deep = deepLinkApplied ? null : new URLSearchParams(location.search).get("study");
       if (deep) {
+        deepLinkApplied = true;
         $("research-filter").value = "all"; renderStudies(); show("research");
         var target = document.getElementById("study-" + deep);
         if (target) { target.scrollIntoView({ block: "center" }); target.style.outline = "2px solid #197b68"; }
@@ -229,9 +245,12 @@
     $("refresh").addEventListener("click", loadFeed);
     if (window.IncomeOSAccountant) window.IncomeOSAccountant.init();
     $("clear-local").addEventListener("click", function () {
+      if (window.IncomeOSFinancialReadOnly === true) { alert("Clearing records is disabled in unapproved staging."); return; }
       if (!confirm("Erase ALL locally saved IncomeOS bookmarks, application status and accountant records? Export a JSON backup first if needed.")) return;
-      try {localStorage.removeItem(STORE_KEY);}catch(_e){alert("Local owner records could not be erased. Verify browser storage permissions.");return;}
+      // Reset memory first, so a later save cannot write old receipts back to the legacy key.
+      state = { saved: [], stages: {}, receipts: [] };
       if (window.IncomeOSAccountant&&window.IncomeOSAccountant.clear()===false)return;
+      try {localStorage.removeItem(STORE_KEY);}catch(_e){alert("Local owner records could not be erased. Verify browser storage permissions.");return;}
       try { localStorage.removeItem("incomeos.spend.preferences.v1"); localStorage.removeItem("incomeos.research.radar.v1"); } catch (_e) { alert("Some local browser records could not be cleared. Verify device storage permissions."); return; }
       state = { saved: [], stages: {}, receipts: [] };
       alert("IncomeOS local records cleared. The page will reload to reset the research and spending views.");
