@@ -124,13 +124,39 @@
     if(PHASES.indexOf(p.phase)<0)throw Error("Unknown program phase");
     COLLECTIONS.concat(["identities","acceptance","gates","blockers","cycles","changeLog"]).forEach(function(c){if(!Array.isArray(p[c]))throw Error("Missing section: "+c);if(p[c].length>5000)throw Error(c+" has too many rows");});
     var all=ids(p);
-    function refs(list,what){arr(list).forEach(function(x){if(!all[x])throw Error(what+" references an unknown record: "+x);});}
-    p.tasks.forEach(function(t){refs(t.dependsOn,"Task "+t.id);refs(t.evidenceIds,"Task "+t.id);});
-    p.gates.forEach(function(g){refs(g.evidenceIds,"Gate "+g.id);});
-    p.acceptance.forEach(function(a){refs(a.evidenceIds,"Check "+a.id);});
-    p.findings.forEach(function(f){refs(f.evidenceIds,"Finding "+f.id);});
-    p.pipeline.forEach(function(e){refs(e.evidenceIds,"Pipeline "+e.id);if(e.contactId)refs([e.contactId],"Pipeline "+e.id);});
-    p.runs.forEach(function(r){refs([r.studyId],"Run "+r.id);refs(r.evidenceIds,"Run "+r.id);});
+    // References must point at the expected kind of record, not just any identifier.
+    function refs(list,kind,what){arr(list).forEach(function(x){if(all[x]!==kind)throw Error(what+" references an unknown "+kind+" record: "+x);});}
+    p.tasks.forEach(function(t){refs(t.dependsOn,"tasks","Task "+t.id);refs(t.evidenceIds,"evidence","Task "+t.id);});
+    p.gates.forEach(function(g){refs(g.evidenceIds,"evidence","Gate "+g.id);});
+    p.acceptance.forEach(function(a){refs(a.evidenceIds,"evidence","Check "+a.id);});
+    p.findings.forEach(function(f){refs(f.evidenceIds,"evidence","Finding "+f.id);});
+    p.pipeline.forEach(function(e){refs(e.evidenceIds,"evidence","Pipeline "+e.id);if(e.contactId)refs([e.contactId],"contacts","Pipeline "+e.id);});
+    p.runs.forEach(function(r){refs([r.studyId],"studies","Run "+r.id);refs(r.evidenceIds,"evidence","Run "+r.id);});
+    p.rights.forEach(function(r){refs(r.evidenceIds,"evidence","Component "+r.id);});
+    function level(id){var e=byId(p,"evidence",id);return e?e.level:99;}
+    // A loaded file is held to the same rules as the API: approvals, grants and stages need their records.
+    p.gates.forEach(function(g){
+      var def=GATES.filter(function(x){return x.id===g.id;})[0];
+      if(!def||g.approver!==def.approver||g.mandatory!==true)throw Error("Gate "+g.id+" does not match its definition");
+      if(!g.approval)return;
+      if(g.approval.by!==def.approver||!isDate(g.approval.on)||!g.approval.ref||!g.evidenceIds.length||g.evidenceIds.some(function(e){return level(e)>2;}))
+        throw Error("Gate "+g.id+" approval lacks its approver, date, reference or primary evidence");
+      if(g.id==="G2"&&p.acceptance.some(function(x){return x.status!=="ACCEPTED";}))throw Error("Gate G2 is approved while SP checks remain unaccepted");
+      if(g.id==="G3"&&(!p.rights.length||p.rights.some(function(r){return r.grantSpecificTransferAuthorization!==true;})))throw Error("Gate G3 is approved while rights authorizations are missing");
+    });
+    if(p.gates.length!==GATES.length)throw Error("All eight mandatory gates must be present");
+    p.authorizations.forEach(function(a){
+      if(!ACTIONS[a.action]||a.grantedBy!=="OWNER"||!isDate(a.grantedOn)||!a.ref)throw Error("Authorization "+a.id+" lacks a known action, owner grant, date or reference");
+    });
+    p.rights.forEach(function(r){
+      if(r.grantSpecificTransferAuthorization===true&&!r.evidenceIds.some(function(e){return level(e)===1;}))throw Error("Component "+r.id+" claims a transfer authorization without an executed instrument");
+    });
+    p.pipeline.forEach(function(e){
+      var h=arr(e.history).map(function(x){return x.stage;});
+      if(STAGES.indexOf(e.stage)<0||h.join()!==STAGES.slice(0,STAGES.indexOf(e.stage)+1).join())throw Error("Pipeline "+e.id+" stage history is not sequential");
+      if(e.stage!=="IDENTIFIED"&&STAGES.indexOf(e.stage)>=1&&!e.contactId)throw Error("Pipeline "+e.id+" passed CONTACTED without a contact");
+      if(e.stage==="EXECUTED_AGREEMENT"&&(!e.agreementRef||e.nonbinding!==false||!e.evidenceIds.some(function(x){return level(x)===1;})))throw Error("Pipeline "+e.id+" is executed without an executed instrument");
+    });
     // A new-module (DS-C) result can never satisfy an acceptance check of the original (DS-A).
     p.acceptance.forEach(function(a){
       if(a.identity!=="DS-A")throw Error("SP checks apply to the original DS-A only");
@@ -202,9 +228,12 @@
     }else if(collection==="messages"){
       rec={id:id,text:txt(x.text,4000,"Message"),approvedBy:x.approvedBy==="OWNER"?"OWNER":null,approvedOn:x.approvedBy==="OWNER"?on:null};
     }else if(collection==="contacts"){
-      if(FORBIDDEN_ORIGINS.indexOf(x.origin)>=0)throw Error("JRS visitors, resource users, research participants and training recipients cannot become Decision Spellchecker leads");
+      var origin=String(x.origin==null?"":x.origin).toLowerCase().replace(/[^a-z0-9]+/g,"_").replace(/^_|_$/g,"");
+      // Normalized, and also refused when the wording names a JRS audience in other words.
+      if(FORBIDDEN_ORIGINS.indexOf(origin)>=0||/(^|_)jrs(_|$)/.test(origin)||/participant|training|trainee|resource_user|website_visitor/.test(origin))
+        throw Error("JRS visitors, resource users, research participants and training recipients cannot become Decision Spellchecker leads");
       if(BASES.indexOf(x.lawfulBasis)<0)throw Error("Record the lawful contact basis");
-      rec={id:id,organization:txt(x.organization,120,"Organization"),role:txt(x.role,120,"Role"),origin:txt(x.origin,60,"Where the contact came from"),lawfulBasis:x.lawfulBasis,
+      rec={id:id,organization:txt(x.organization,120,"Organization"),role:txt(x.role,120,"Role"),origin:txt(origin,60,"Where the contact came from"),lawfulBasis:x.lawfulBasis,
         basisNote:txt(x.basisNote,300,"Basis detail"),channel:opt(x.channel,40),approvedMessageId:null,contactedOn:null,response:null,suppressed:x.suppressed===true};
     }else if(collection==="pipeline"){
       rec={id:id,organization:txt(x.organization,120,"Organization"),stage:"IDENTIFIED",evidenceIds:ev(x.evidenceIds,false),contactId:null,agreementRef:null,history:[{stage:"IDENTIFIED",on:on}],nonbinding:true};
@@ -248,11 +277,13 @@
     return validate(log(p,"GATE_APPROVED",{gate:gateId,by:a.by,ref:ref},on));
   }
   function acceptCheck(p0,checkId,on){
+    if(!isDate(on))throw Error("Date required");
     var p=clone(validate(p0)),a=byId(p,"acceptance",checkId);if(!a)throw Error("Unknown check");
     if(!acceptable(p,a))throw Error("Acceptance needs independent primary evidence about the original DS-A; new-module test passes do not qualify");
     a.status="ACCEPTED";return validate(log(p,"SP_ACCEPTED",{id:checkId},on));
   }
   function recordRightsAuthorization(p0,componentId,evidenceId,on){
+    if(!isDate(on))throw Error("Date required");
     var p=clone(validate(p0)),r=byId(p,"rights",componentId),e=byId(p,"evidence",evidenceId);
     if(!r||!e)throw Error("Unknown component or evidence");
     if(e.level>1)throw Error("A transfer authorization must be an executed instrument (level 1)");
@@ -276,6 +307,7 @@
     return validate(log(p,"AUTHORIZED",{action:action,ref:x.ref},on));
   }
   function approveMessage(p0,id,on){
+    if(!isDate(on))throw Error("Date required");
     var p=clone(validate(p0)),m=byId(p,"messages",id);if(!m)throw Error("Unknown message");
     m.approvedBy="OWNER";m.approvedOn=on;return validate(log(p,"MESSAGE_APPROVED",{id:id},on));
   }
@@ -290,6 +322,7 @@
     return validate(log(p,"CONTACT_RECORDED",{id:contactId},on));
   }
   function suppress(p0,contactId,on){
+    if(!isDate(on))throw Error("Date required");
     var p=clone(validate(p0)),c=byId(p,"contacts",contactId);if(!c)throw Error("Unknown contact");
     c.suppressed=true;return validate(log(p,"CONTACT_SUPPRESSED",{id:contactId},on));
   }
@@ -315,6 +348,7 @@
     return validate(log(p,"PIPELINE_ADVANCED",{id:pipelineId,stage:next},on));
   }
   function setPhase(p0,phase,on){
+    if(!isDate(on))throw Error("Date required");
     if(PHASES.indexOf(phase)<0)throw Error("Unknown phase");
     var p=clone(validate(p0));p.phase=phase;return validate(log(p,"PHASE_SET",{phase:phase},on));
   }
@@ -326,7 +360,7 @@
       var waiting=t.dependsOn.filter(function(d){return !done[d];}),restricted=t.restrictedAction?authorized(p,t.restrictedAction):null;
       var state=waiting.length?"BLOCKED_BY_DEPENDENCY":restricted&&!restricted.allowed?"NOT_AUTHORIZED":t.state==="BLOCKED"?"BLOCKED":"READY";
       // Expected decision value against cost and risk, on the owner's own 1 to 5 scales.
-      return {id:t.id,title:t.title,module:t.module,state:state,score:t.value*2-t.cost-t.risk,waitingOn:waiting,missing:restricted?restricted.missing:[]};
+      return {id:t.id,title:t.title,module:t.module,state:state,taskState:t.state,evidence:t.evidenceIds.length,score:t.value*2-t.cost-t.risk,waitingOn:waiting,missing:restricted?restricted.missing:[]};
     }).sort(function(a,b){var o={READY:0,BLOCKED:1,BLOCKED_BY_DEPENDENCY:2,NOT_AUTHORIZED:3};return o[a.state]-o[b.state]||b.score-a.score||(a.id<b.id?-1:1);});
   }
   function comparisons(p){
@@ -359,9 +393,11 @@
         byDim[r.dsDimension]+=c;
       }else{
         if(COST_DIMS.indexOf(r.dsDimension)<0){issues.push({code:"COST_IN_REVENUE_DIMENSION",id:r.id});return;}
-        if(r.dsDimension==="reinvestment"&&!authorized(p,"reinvestment").allowed)issues.push({code:"REINVESTMENT_NOT_AUTHORIZED",id:r.id});
-        byDim[r.dsDimension]+=c;
-        if(monthKey(r.date)===lastMonth)monthCost+=c;
+        if(r.dsDimension==="reinvestment"&&r.type!=="refund"&&!authorized(p,"reinvestment").allowed)issues.push({code:"REINVESTMENT_NOT_AUTHORIZED",id:r.id});
+        // A refund row returns money: it reduces the dimension's cost instead of adding to it.
+        var signed=r.type==="refund"?-c:c;
+        byDim[r.dsDimension]+=signed;
+        if(monthKey(r.date)===lastMonth)monthCost+=signed;
       }
     });
     var totalCost=COST_DIMS.reduce(function(s,d){return s+byDim[d];},0);
@@ -416,7 +452,8 @@
     var p=clone(validate(p0)),c=command(p,ws,asOf);
     var stale=p.findings.filter(function(f){return (Date.parse(asOf)-Date.parse(f.date))/86400000>90;}).map(function(f){return f.id;});
     var weak=p.findings.filter(function(f){return f.confidence==="low";}).map(function(f){return f.id;});
-    var rec={id:"CYCLE-"+(p.cycles.length+1),ranOn:asOf,
+    // Numbered from the change log, which is never trimmed, so IDs stay unique after old cycles roll off.
+    var rec={id:"CYCLE-"+(p.changeLog.length+1),ranOn:asOf,
       discover:{staleFindings:stale,note:"Discovery is manual: no source is fetched by this cycle."},
       evaluate:{lowConfidenceFindings:weak},
       prioritize:{ready:c.nextActions.map(function(t){return t.id;}),notAuthorized:c.queue.filter(function(t){return t.state==="NOT_AUTHORIZED";}).map(function(t){return t.id;})},

@@ -76,12 +76,12 @@
     return log(next,"ADD_"+section.toUpperCase(),{id:rec.id||rec.vendor},on);
   }
   // Replace the Decision Spellchecker program record after the program engine validated it.
-  function setDsProgram(ws,program,on,action){
+  function setDsProgram(ws,program,on){
     if(!isDate(on))throw Error("Date required");
     var DS=dep("IncomeOSDSProgram","./ds-program.js");if(!DS)throw Error("Decision Spellchecker engine unavailable");
     var next=clone(validate(ws));next.dsProgram=DS.validate(clone(program));
     var last=next.dsProgram.changeLog[next.dsProgram.changeLog.length-1];
-    return log(next,"DS_PROGRAM_"+(action||"UPDATED"),{programAction:last?last.action:null,programSeq:last?last.seq:null},on);
+    return log(next,"DS_PROGRAM_UPDATED",{programAction:last?last.action:null,programSeq:last?last.seq:null},on);
   }
   // Owner-entered study time components, keyed by research study id. Same limits as the research engine.
   function setResearchTime(ws,studyId,t,on){

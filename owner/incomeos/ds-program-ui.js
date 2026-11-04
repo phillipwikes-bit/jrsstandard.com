@@ -13,11 +13,21 @@
   var CHIP={VERIFIED:"chip",IN_PROGRESS:"chip ds-progress",UNVERIFIED:"chip gray",BLOCKED:"chip warn",NOT_AUTHORIZED:"chip warn"};
   function chip(p,s){return el(p,"span",String(s).replace(/_/g," ").toLowerCase(),CHIP[s]||"chip gray");}
   function program(){return state.ws&&state.ws.dsProgram?state.ws.dsProgram:null;}
-  function send(next,label){try{document.dispatchEvent(new CustomEvent("incomeos:ds-update",{detail:{program:next,label:label}}));}catch(e){}}
+  // Dispatch to the workspace owner and report only what it actually applied.
+  function dispatch(name,detail,label){
+    var result=null;detail.done=function(r){result=r;};
+    try{document.dispatchEvent(new CustomEvent(name,{detail:detail}));}catch(e){result={ok:false,error:e.message};}
+    if(!result)msg("Not applied: the workspace panel did not respond.",true);
+    else if(!result.ok)msg("Not applied: "+result.error,true);
+    else msg(label+". Save the workspace to keep it.");
+    return !!(result&&result.ok);
+  }
+  function send(next,label){return dispatch("incomeos:ds-update",{program:next,label:label},label);}
   function msg(text,bad){var s=$("ds-status");if(s){s.textContent=text;s.className=bad?"status error":"status";}}
   function attempt(fn,label){
     var p=program();if(!p){msg("Load or create your workspace in Research, This week, first.",true);return;}
-    try{send(fn(p),label);msg(label+". Save the workspace to keep it.");}catch(e){msg(e.message,true);}
+    var next;try{next=fn(p);}catch(e){msg(e.message,true);return;}
+    send(next,label);
   }
   // Compact form builder: fields [name,label,type,options].
   function form(parent,title,fields,submit,label){
@@ -61,8 +71,12 @@
 
     var na=el(out,"section",null,"panel");el(na,"h3","Next authorized actions");
     if(!c.nextActions.length)el(na,"p","No ready tasks. Add tasks below; tasks that need a restricted action stay blocked until authorized.","muted");
-    c.nextActions.forEach(function(t){var row=el(na,"div",null,"entry");var tt=el(row,"div");el(tt,"strong",t.id+" · "+t.title);el(tt,"small",t.module+" · score "+t.score);
-      if(p){var b=el(row,"button","Start","smallbtn");b.type="button";b.addEventListener("click",function(){attempt(function(x){return DS.setTaskState(x,t.id,"IN_PROGRESS",asOf);},"Task started");});}});
+    c.nextActions.forEach(function(t){var row=el(na,"div",null,"entry");var tt=el(row,"div");el(tt,"strong",t.id+" · "+t.title);
+      el(tt,"small",t.module+" · "+t.taskState.replace(/_/g," ").toLowerCase()+" · score "+t.score+" · evidence "+t.evidence);
+      if(!p)return;
+      // Start a task that has not begun; finish one in progress (finishing needs linked evidence).
+      var started=t.taskState==="IN_PROGRESS",b=el(row,"button",started?"Done":"Start","smallbtn");b.type="button";
+      b.addEventListener("click",function(){attempt(function(x){return DS.setTaskState(x,t.id,started?"DONE":"IN_PROGRESS",asOf);},started?"Task done":"Task started");});});
     var held=c.queue.filter(function(t){return t.state!=="READY";});
     if(held.length)el(na,"p",held.length+" task(s) waiting on dependencies or authorization.","muted");
 
@@ -114,14 +128,57 @@
       ["priceUsd","Price per unit (USD)","text"],["unitsPerMonth","Units per month","number"],["variableCostUsd","Variable cost per unit (USD)","text"],["fixedMonthlyUsd","Fixed monthly cost (USD)","text"],
       ["investmentUsd","Investment to recover (USD)","text"],["evidenceIds","Price evidence identifiers (optional)","text"],["assumptions","Assumptions","text"]],
       function(v){attempt(function(x){return DS.add(x,"pricing",{id:v.id,label:v.label,model:v.model,priceUsd:v.priceUsd,unitsPerMonth:Number(v.unitsPerMonth),variableCostUsd:v.variableCostUsd||"0",fixedMonthlyUsd:v.fixedMonthlyUsd||"0",investmentUsd:v.investmentUsd||"0",evidenceIds:list(v.evidenceIds),assumptions:v.assumptions},asOf);},"Pricing scenario added");});
-    form(s,"Contact ledger entry",[["id","Identifier","text"],["organization","Organization","text"],["role","Role","text"],["origin","Where the contact came from","text"],
+    form(s,"Contact ledger entry",[["id","Identifier","text"],["organization","Organization","text"],["role","Role","text"],
+      ["origin","Where the contact came from","select",[["conference","Conference or event"],["published_directory","Published business directory"],["existing_relationship","Existing professional relationship"],["inbound_inquiry","Inbound inquiry about Decision Spellchecker"],["referral","Referral with consent"],["other","Other (explain in basis detail)"]]],
       ["lawfulBasis","Lawful contact basis","select",DS.BASES.map(function(b){return [b,b.replace(/_/g," ")];})],["basisNote","Basis detail","text"]],
       function(v){attempt(function(x){return DS.add(x,"contacts",v,asOf);},"Contact recorded (not contacted)");});
     form(s,"Pipeline prospect",[["id","Identifier","text"],["organization","Organization","text"]],
       function(v){attempt(function(x){return DS.add(x,"pipeline",v,asOf);},"Prospect identified");});
     var costDims=DS.COST_DIMS.map(function(d){return [d,d.replace(/_/g," ")];});
     form(s,"Program cost (adds a ledger row)",[["date","Date","date"],["payer","Vendor","text"],["amountUsd","Amount (USD)","text"],["dsDimension","Dimension","select",costDims]],
-      function(v){try{document.dispatchEvent(new CustomEvent("incomeos:ds-ledger",{detail:{kind:"outflow",date:v.date,payer:v.payer,amountUsd:v.amountUsd,category:"software",dsDimension:v.dsDimension}}));msg("Cost sent to the workspace ledger. Save the workspace to keep it.");}catch(e){msg(e.message,true);}},"Add cost");
+      function(v){dispatch("incomeos:ds-ledger",{entry:{kind:"outflow",date:v.date,payer:v.payer,amountUsd:v.amountUsd,category:"software",dsDimension:v.dsDimension}},"Program cost added to the workspace ledger");},"Add cost");
+    actions(out,p,asOf);
+  }
+  // Phase 3 and 4 records and the owner's own controlled actions. Each goes through the engine's rules.
+  function actions(out,p,asOf){
+    var s=el(out,"section",null,"panel");el(s,"h3","Engineering, validation and rights");
+    var ids=["DS-A","DS-B","DS-C"].map(function(i){return [i,i];});
+    form(s,"Requirement",[["id","Identifier","text"],["text","Requirement","text"],["version","Version","number"],["identity","Product identity","select",[["DS-C","DS-C"],["DS-A","DS-A"],["DS-B","DS-B"]]],["evidenceIds","Evidence identifiers (optional)","text"]],
+      function(v){attempt(function(x){return DS.add(x,"requirements",{id:v.id,text:v.text,version:v.version||1,identity:v.identity,evidenceIds:list(v.evidenceIds)},asOf);},"Requirement added");});
+    form(s,"Defect",[["id","Identifier","text"],["title","Defect","text"],["severity","Severity","select",[["CRITICAL","Critical"],["HIGH","High"],["MEDIUM","Medium"],["LOW","Low"]]],["identity","Product identity","select",ids]],
+      function(v){attempt(function(x){return DS.add(x,"defects",v,asOf);},"Defect recorded");});
+    form(s,"Release candidate",[["id","Identifier","text"],["version","Version","text"],["identity","Product identity","select",[["DS-C","DS-C"],["DS-A","DS-A"]]],["rollbackPlan","Rollback plan","text"]],
+      function(v){attempt(function(x){return DS.add(x,"releases",v,asOf);},"Release candidate recorded (not released)");});
+    form(s,"Study",[["id","Identifier","text"],["title","Study","text"],["kind","Kind","select",[["synthetic","Synthetic development test"],["independent","Independent empirical validation"]]],
+      ["arms","Arms (comma separated: H0, H1, H2, H3)","text"],["minimumN","Minimum sample size","number"],["note","Note","text"]],
+      function(v){attempt(function(x){return DS.add(x,"studies",{id:v.id,title:v.title,kind:v.kind,arms:list(v.arms),minimumN:v.minimumN||1,note:v.note},asOf);},"Study recorded (planned)");});
+    form(s,"Study run",[["id","Identifier","text"],["studyId","Study","select",p.studies.map(function(x){return [x.id,x.id+" · "+x.kind];})],["arm","Arm","select",[["H0","H0 routine"],["H1","H1 manual JRS"],["H2","H2 general AI"],["H3","H3 authenticated DS-A"]]],
+      ["identity","Product identity (H3 must be DS-A)","select",[["","None"]].concat(ids)],["tp","True positives","number"],["fp","False positives","number"],["fn","False negatives","number"],["tn","True negatives","number"],["minutes","Reviewer minutes","number"],["evidenceIds","Evidence identifiers","text"]],
+      function(v){attempt(function(x){var st=DS.add(x,"runs",{id:v.id,studyId:v.studyId,arm:v.arm,kind:(x.studies.filter(function(y){return y.id===v.studyId;})[0]||{}).kind,identity:v.identity||null,
+        metrics:{tp:v.tp||0,fp:v.fp||0,fn:v.fn||0,tn:v.tn||0,minutes:v.minutes===""?null:v.minutes},evidenceIds:list(v.evidenceIds)},asOf);return st;},"Run recorded");});
+    form(s,"Rights component",[["id","Identifier","text"],["component","Component","text"],["kind","Kind","select",[["original_source","Original source"],["new_code","New code"],["third_party_dependency","Third-party dependency"],["research_material","Research material"],["contributor_work","Contributor work"],["documentation","Documentation"]]],
+      ["possibleExclusion","Possible licensing exclusion","text"],["evidenceIds","Evidence identifiers (optional)","text"]],
+      function(v){attempt(function(x){return DS.add(x,"rights",{id:v.id,component:v.component,kind:v.kind,possibleExclusion:v.possibleExclusion,evidenceIds:list(v.evidenceIds)},asOf);},"Component recorded (unresolved)");});
+    var linkable=[["tasks","Task"],["gates","Gate"],["acceptance","SP check"],["findings","Finding"],["pipeline","Pipeline entry"],["runs","Study run"],["requirements","Requirement"],["rights","Rights component"]];
+    form(s,"Link evidence",[["collection","Record kind","select",linkable],["id","Record identifier","text"],["evidenceId","Evidence identifier","text"]],
+      function(v){attempt(function(x){return DS.linkEvidence(x,v.collection,v.id,v.evidenceId,asOf);},"Evidence linked");},"Link");
+
+    var o=el(out,"section",null,"panel");el(o,"h3","Owner controls");
+    el(o,"p","Recording an approval or authorization does not perform anything. Each is checked against its gate rules and kept in the change log.","muted");
+    form(o,"Message for approval",[["id","Identifier","text"],["text","Message text","text"]],function(v){attempt(function(x){return DS.add(x,"messages",v,asOf);},"Message drafted (not approved, not sent)");});
+    form(o,"Approve message",[["id","Message","select",p.messages.map(function(m){return [m.id,m.id+(m.approvedBy?" · approved":"")];})]],function(v){attempt(function(x){return DS.approveMessage(x,v.id,asOf);},"Message approved");},"Approve");
+    form(o,"Record a contact you made",[["contactId","Contact","select",p.contacts.map(function(c){return [c.id,c.id+" · "+c.organization];})],["messageId","Approved message","select",p.messages.filter(function(m){return m.approvedBy;}).map(function(m){return [m.id,m.id];})],
+      ["channel","Channel","text"],["response","Response, if any","text"]],
+      function(v){attempt(function(x){return DS.recordContact(x,v.contactId,{messageId:v.messageId,channel:v.channel,response:v.response},asOf);},"Contact recorded");},"Record");
+    form(o,"Suppress a contact",[["contactId","Contact","select",p.contacts.map(function(c){return [c.id,c.id+" · "+c.organization];})]],function(v){attempt(function(x){return DS.suppress(x,v.contactId,asOf);},"Contact suppressed");},"Suppress");
+    form(o,"Advance pipeline",[["id","Prospect","select",p.pipeline.map(function(e){return [e.id,e.id+" · "+e.organization+" · "+e.stage.replace(/_/g," ").toLowerCase()];})],
+      ["contactId","Contact (for contacted)","text"],["evidenceIds","Evidence identifiers","text"],["agreementRef","Agreement reference (executed only)","text"]],
+      function(v){attempt(function(x){return DS.advance(x,v.id,{contactId:v.contactId,evidenceIds:list(v.evidenceIds),agreementRef:v.agreementRef},asOf);},"Pipeline advanced");},"Advance");
+    form(o,"Owner authorization",[["action","Restricted action","select",DS.ACTIONS.map(function(a){return [a,a.replace(/_/g," ")];})],["ref","Your authorization record reference","text"],["scope","Scope","text"]],
+      function(v){attempt(function(x){return DS.authorize(x,v.action,{grantedBy:"OWNER",ref:v.ref,scope:v.scope},asOf);},"Authorization recorded");},"Record");
+    form(o,"Gate approval",[["gate","Gate","select",p.gates.map(function(g){return [g.id,g.id+" · approved by "+g.approver.toLowerCase()];})],["ref","Approval record reference","text"]],
+      function(v){attempt(function(x){var g=x.gates.filter(function(y){return y.id===v.gate;})[0];return DS.approveGate(x,v.gate,{by:g&&g.approver,ref:v.ref},asOf);},"Gate approval recorded");},"Record");
+    form(o,"Program phase",[["phase","Phase","select",DS.PHASES.map(function(x){return [x,x.replace(/_/g," ").toLowerCase()];})]],function(v){attempt(function(x){return DS.setPhase(x,v.phase,asOf);},"Phase set");},"Set");
   }
   function init(){
     if(!DS||!$("ds-output"))return;

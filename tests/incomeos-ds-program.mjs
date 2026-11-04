@@ -112,19 +112,48 @@ ws=W.addRecord(ws,"ledger",{kind:"outflow",date:"2026-10-28",payer:"Broker",amou
 assert.ok(D.finance(p,ws,on).issues.some(i=>i.code==="REINVESTMENT_NOT_AUTHORIZED"));
 
 // Workspace integration: stored, validated and logged in the workspace change log.
-ws=W.setDsProgram(ws,p,on,"UPDATED");
+ws=W.setDsProgram(ws,p,on);
 assert.equal(ws.dsProgram.programId,"DSP");
 assert.equal(ws.changeLog[ws.changeLog.length-1].action,"DS_PROGRAM_UPDATED");
 const bad=plain(p);bad.tasks[0].dependsOn=["NOPE"];
-assert.throws(()=>W.setDsProgram(ws,bad,on),/unknown record/);
+assert.throws(()=>W.setDsProgram(ws,bad,on),/unknown tasks record/);
 assert.equal(W.validate(W.newWorkspace(on)).dsProgram,undefined,"Older workspaces without the program still load");
 
 // Operating cycle is owner-run, fetches nothing, and records what it reviewed.
 const run=D.runCycle(p,ws,on);
-assert.equal(run.cycle.id,"CYCLE-1");assert.deepEqual(plain(run.cycle.prioritize.ready),["T-1"]);
+assert.match(run.cycle.id,/^CYCLE-\d+$/);assert.deepEqual(plain(run.cycle.prioritize.ready),["T-1"]);
 assert.equal(D.command(run.program,ws,on).autonomy.configured,false);
 assert.ok(run.program.changeLog.length>p.changeLog.length);
 
+
+// ---------- Review of 2026-11-04 (R8): each check fails on 8864b65 ----------
+// R8-1: free-text wording of a JRS audience is refused, not just the exact token.
+for(const origin of ["JRS website visitor","Research participant","jrs training","Website-Visitor"])
+ assert.throws(()=>D.add(p,"contacts",{id:"C-W-"+origin.length,organization:"Org",role:"r",origin,lawfulBasis:"inbound_request",basisNote:"n"},on),/cannot become/,origin);
+// R8-2: a hand-edited file cannot claim approvals, grants or stages without their records.
+{const t=plain(p);t.gates[6].approval={by:"OWNER"};assert.throws(()=>D.validate(t),/approval lacks/);}
+{const t=plain(p);t.authorizations.push({id:"AUTH-x",action:"payment_collection",grantedBy:"OWNER"});assert.throws(()=>D.validate(t),/lacks a known action/);}
+{const t=plain(p);t.pipeline[0].stage="EXECUTED_AGREEMENT";assert.throws(()=>D.validate(t),/not sequential/);}
+{const t=plain(D.add(p,"rights",{id:"RC-1",component:"core",kind:"original_source"},on));t.rights[0].grantSpecificTransferAuthorization=true;assert.throws(()=>D.validate(t),/executed instrument/);}
+// R8-5: cycle IDs stay unique after old cycles roll off.
+{let q=p;const seen=new Set();for(let i=0;i<205;i++){const r=D.runCycle(q,null,on);q=r.program;assert.ok(!seen.has(r.cycle.id),"duplicate "+r.cycle.id);seen.add(r.cycle.id);}}
+// R8-6: prioritize exposes each task's own state so the view can offer Done for started work.
+{const q=D.setTaskState(p,"T-1","IN_PROGRESS",on);assert.equal(D.prioritize(q).find(t=>t.id==="T-1").taskState,"IN_PROGRESS");}
+// R8-7: a refund row reduces program cost.
+{let w2=W.newWorkspace(on);
+ w2=W.addRecord(w2,"ledger",{kind:"outflow",date:"2026-10-12",payer:"API provider",amountUsd:"40.00",category:"software",dsDimension:"software_api"},on);
+ w2.ledger.push({...w2.ledger[0],id:"refund-1",type:"refund",amountUsd:"10.00"});
+ assert.equal(D.finance(p,w2,on).actual.totalCostUsd,30);}
+// R8-8: every mutator requires a date.
+assert.throws(()=>D.approveMessage(p,"M-001"),/Date required/);
+assert.throws(()=>D.suppress(p,"C-003"),/Date required/);
+assert.throws(()=>D.setPhase(p,"P2_COMMAND_CENTER"),/Date required/);
+assert.throws(()=>D.acceptCheck(p,"SP-01"),/Date required/);
+// R8-9: references must name the right kind of record.
+{const t=plain(p);t.tasks[1].dependsOn=["E-SYN-001"];assert.throws(()=>D.validate(t),/unknown tasks record/);}
+{const t=plain(p);t.gates[0].evidenceIds=["T-1"];assert.throws(()=>D.validate(t),/unknown evidence record/);}
+// R8-10: the workspace store has no unused action parameter.
+assert.doesNotMatch(read("workspace-store.js"),/function setDsProgram\(ws,program,on,action\)/);
 // No network, storage or messaging in the engine.
 assert.doesNotMatch(read("ds-program.js"),/fetch\s*\(|localStorage|sessionStorage|XMLHttpRequest|sendBeacon|WebSocket|mailto:/);
 console.log("IncomeOS Decision Spellchecker program QA passed: honest seed, shared identifiers, SP and gate controls, lead and contact rules, staged pipeline, validation separation, prioritization, actual-versus-projected finance, workspace integration and owner-run cycle.");

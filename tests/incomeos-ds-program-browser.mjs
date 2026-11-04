@@ -69,7 +69,34 @@ await cost.getByRole("button",{name:"Add cost"}).tap();
 await page.locator("#ds-output").getByRole("button",{name:"Run cycle"}).tap();
 text=await page.locator("#ds-output").textContent();
 assert.match(text,/Total recorded program cost\$40\.00/);
-assert.match(text,/Last cycle CYCLE-1/);
+assert.match(text,/Last cycle CYCLE-\d+/);
+// R8-6: Start becomes Done; Done without linked evidence is refused and says so; after linking it completes.
+await page.locator("#ds-output .entry",{hasText:"T-UI-1"}).getByRole("button",{name:"Start"}).tap();
+assert.match(await page.locator("#ds-status").textContent(),/Task started/);
+await page.locator("#ds-output .entry",{hasText:"T-UI-1"}).getByRole("button",{name:"Done"}).tap();
+assert.match(await page.locator("#ds-status").textContent(),/Link evidence/);
+const lk=page.locator("details.ds-form",{hasText:"Link evidence"}).first();await lk.locator("summary").tap();
+await lk.getByLabel("Record kind").selectOption("tasks");await lk.getByLabel("Record identifier").fill("T-UI-1");await lk.getByLabel("Evidence identifier").fill("E-UI-001");
+await lk.getByRole("button",{name:"Link"}).tap();
+await page.locator("#ds-output .entry",{hasText:"T-UI-1"}).getByRole("button",{name:"Done"}).tap();
+assert.match(await page.locator("#ds-status").textContent(),/Task done/);
+// R8-3: an invalid cost is reported as not applied, never as added.
+const bad=page.locator("details.ds-form",{hasText:"Program cost"}).first();if(!(await bad.getAttribute("open")))await bad.locator("summary").tap();
+await bad.getByLabel("Date",{exact:true}).fill("2026-10-16");await bad.getByLabel("Vendor").fill("Bad");await bad.getByLabel("Amount (USD)").fill("abc");
+await bad.getByRole("button",{name:"Add cost"}).tap();
+assert.match(await page.locator("#ds-status").textContent(),/^Not applied/);
+// Owner controls: a gate approval without primary evidence is refused; a drafted message can be approved.
+const ga=page.locator("details.ds-form",{hasText:"Gate approval"}).first();await ga.locator("summary").tap();
+await ga.getByLabel("Gate").selectOption("G7");await ga.getByLabel("Approval record reference").fill("owner note 1");
+await ga.getByRole("button",{name:"Record"}).tap();
+assert.match(await page.locator("#ds-status").textContent(),/primary evidence/);
+assert.match(await page.locator("#ds-output").textContent(),/0 of 8 mandatory gates met/);
+const dm=page.locator("details.ds-form",{hasText:"Message for approval"}).first();await dm.locator("summary").tap();
+await dm.getByLabel("Identifier",{exact:true}).fill("M-UI-1");await dm.getByLabel("Message text").fill("Discovery interview request");
+await dm.getByRole("button",{name:"Add"}).tap();
+const am=page.locator("details.ds-form",{hasText:"Approve message"}).first();await am.locator("summary").tap();
+await am.getByLabel("Message").selectOption("M-UI-1");await am.getByRole("button",{name:"Approve"}).tap();
+assert.match(await page.locator("#ds-status").textContent(),/Message approved/);
 // Save through the workspace, reopen, and the program comes back.
 await page.locator('.bottomnav button[data-view="research"]').click();
 const [dl]=await Promise.all([page.waitForEvent("download"),page.locator("#briefing-save").tap()]);
@@ -85,7 +112,7 @@ await page.locator("#briefing-file").setInputFiles({name:"w.json",mimeType:"appl
 await page.locator("#briefing-load").tap();
 await page.waitForFunction(()=>/memory only/.test(document.getElementById("briefing-status").textContent),null,{timeout:30000});
 await page.locator('.bottomnav button[data-view="ds"]').click();
-assert.match(await page.locator("#ds-output").textContent(),/T-UI-1 · Recover DS-A source/);
+assert.match(await page.locator("#ds-output").textContent(),/Total recorded program cost\$40\.00/,"reopened workspace restores the program");
 // Phone layout: no horizontal overflow; every Program input is labelled; no storage written; no page errors.
 assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),"no horizontal scroll");
 const unlabeled=await page.$$eval("#view-ds input,#view-ds select",els=>els.filter(e=>!(e.labels&&e.labels.length)).map(e=>e.id));

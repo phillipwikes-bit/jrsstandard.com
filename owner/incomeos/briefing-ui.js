@@ -21,8 +21,8 @@
     function arr(x){return Array.isArray(x)?x:[];}
     function act(fn,label){
       try{var before=state.ws;state.ws=fn(state.ws);state.history.push(before);if(state.history.length>20)state.history.shift();state.dirty=true;clearTyped();
-        try{document.dispatchEvent(new CustomEvent("incomeos:workspace-changed",{detail:state.ws}));}catch(e){}state.lastAct=label;render();status.textContent=label+". Save the updated workspace to keep this change, or undo it.";}
-      catch(err){status.textContent="Not changed: "+err.message;}
+        try{document.dispatchEvent(new CustomEvent("incomeos:workspace-changed",{detail:state.ws}));}catch(e){}state.lastAct=label;render();status.textContent=label+". Save the updated workspace to keep this change, or undo it.";return {ok:true};}
+      catch(err){status.textContent="Not changed: "+err.message;return {ok:false,error:err.message};}
     }
     function btn(p,text,onClick){var b=el(p,"button",text,"smallbtn");b.type="button";b.addEventListener("click",onClick);return b;}
     function field(p,id,label,type,value){var w=el(p,"div");var l=el(w,"label",label);l.htmlFor=id;var i=el(w,"input");i.id=id;i.type=type||"text";if(value!=null&&value!=="")i.value=value;i.autocomplete="off";return i;}
@@ -182,8 +182,12 @@
     });
     document.addEventListener("incomeos:screened",function(ev){state.screen=ev.detail||null;render();});
     // Decision Spellchecker program changes and program-tagged ledger rows arrive from the Program view.
-    document.addEventListener("incomeos:ds-update",function(ev){var d=ev.detail;if(!d||!d.program||!state.ws)return;act(function(w){return WS.setDsProgram(w,d.program,today());},d.label||"Program record updated");});
-    document.addEventListener("incomeos:ds-ledger",function(ev){var d=ev.detail;if(!d||!state.ws)return;act(function(w){return WS.addRecord(w,"ledger",d,today());},"Program cost added to your workspace ledger");});
+    // Each reports the outcome back through detail.done so the Program view never claims an unapplied change.
+    function reply(d,r){if(d&&typeof d.done==="function")d.done(r);}
+    document.addEventListener("incomeos:ds-update",function(ev){var d=ev.detail;if(!d||!d.program)return;if(!state.ws){reply(d,{ok:false,error:"No workspace is loaded"});return;}
+      reply(d,act(function(w){return WS.setDsProgram(w,d.program,today());},d.label||"Program record updated"));});
+    document.addEventListener("incomeos:ds-ledger",function(ev){var d=ev.detail;if(!d||!d.entry)return;if(!state.ws){reply(d,{ok:false,error:"No workspace is loaded"});return;}
+      reply(d,act(function(w){return WS.addRecord(w,"ledger",d.entry,today());},"Program cost added to your workspace ledger"));});
     render();
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
