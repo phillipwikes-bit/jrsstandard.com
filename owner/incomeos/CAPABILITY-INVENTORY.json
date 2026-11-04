@@ -309,7 +309,7 @@
       "knownDefects": [
         "All logic tested with synthetic data only",
         "Writes blocked by unconditional staging interlock",
-        "No authenticated source; client-side flags cannot prove authenticity (release-gate enforces this)"
+        "No authenticated source; client-side flags cannot prove authenticity (release-gate.js encodes this rule; it is not yet wired into any page or service)"
       ],
       "testCoverage": [
         "30 existing tests/incomeos-*.mjs suites, all passing"

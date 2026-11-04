@@ -5,7 +5,7 @@ import {readFileSync} from "node:fs";
 import {resolve} from "node:path";
 import {Script,runInNewContext} from "node:vm";
 const read=p=>readFileSync(resolve("owner/incomeos",p),"utf8");
-const ctx={window:{},crypto:webcrypto,Date,TextEncoder,Uint8Array,Number,String,Array,Map,Set,Object,JSON,Math,Error};
+const ctx={window:{},crypto:webcrypto,Date,TextEncoder,Uint8Array,Number,String,Array,Map,Set,Object,JSON,Math,Error,URL};
 for(const file of ["financial-event-journal.js","private-append-handler.js"]){let c=read(file);new Script(c);runInNewContext(c,ctx);}
 const J=ctx.window.IncomeOSEventJournal,H=ctx.window.IncomeOSServerAppend;
 const origin="https://incomeos-staging.example.org",subject="synthetic-owner-0001";

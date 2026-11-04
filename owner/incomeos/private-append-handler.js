@@ -1,5 +1,5 @@
 "use strict";
-(function () {
+(function (root) {
   // Unrouted adapter contract for a FUTURE private server. There is no deployed
   // financial endpoint. All authorization and persistence dependencies must be
   // trusted server-side implementations, never fields read from a browser body.
@@ -10,17 +10,23 @@
       "Content-Type":"application/json; charset=utf-8","X-Content-Type-Options":"nosniff",
       "Referrer-Policy":"no-referrer"},body:body};
   }
-  function create(config) {
-    if(!config||typeof config!=="object"||!/^https:\/\//.test(config.allowedOrigin||""))
-      throw Error("A specific protected HTTPS origin is required");
+  // An exact origin (scheme, host, optional port), as a browser sends it in the Origin header.
+  function exactOrigin(x){try{var u=new URL(x);return u.protocol==="https:"&&u.origin===x?x:null;}catch(_e){return null;}}
+  function create(input) {
+    if(!input||typeof input!=="object")throw Error("A specific protected HTTPS origin is required");
+    // Copy the configuration so a later change to the caller's object cannot alter the validated policy.
+    var config=Object.freeze(Object.assign({},input));
+    if(!exactOrigin(config.allowedOrigin))throw Error("A specific protected HTTPS origin is required (for example https://owner.example.com, no path or trailing slash)");
     var services=["authenticate","approvedOwner","verifyCsrf","loadEvents","appendAtomic"];
     if(services.some(function(s){return typeof config[s]!=="function";}))throw Error("All security dependencies must be implemented server-side");
-    if(!window.IncomeOSEventJournal)throw Error("Verified journal validation module required");
-    var journal=window.IncomeOSEventJournal;
+    // On a server, pass the journal module as config.journal; in a browser test it is found on the global.
+    var journal=config.journal||(root&&root.IncomeOSEventJournal);
+    if(!journal||typeof journal.verify!=="function"||typeof journal.append!=="function")throw Error("Verified journal validation module required");
     return async function handle(req){
       if(!req||req.method!=="POST")return response(405,{status:"DENIED",reason:"METHOD_NOT_ALLOWED"});
       if(req.origin!==config.allowedOrigin)return response(403,{status:"DENIED",reason:"ORIGIN_NOT_ALLOWED"});
-      if(req.contentType!=="application/json")return response(415,{status:"DENIED",reason:"UNSUPPORTED_CONTENT_TYPE"});
+      // Media type only; parameters such as charset are allowed.
+      if(String(req.contentType||"").split(";")[0].trim().toLowerCase()!=="application/json")return response(415,{status:"DENIED",reason:"UNSUPPORTED_CONTENT_TYPE"});
       var principal;
       try{principal=await config.authenticate(req);}catch(_e){return response(401,{status:"DENIED",reason:"AUTHENTICATION_REQUIRED"});}
       if(!principal||principal.verified!==true||typeof principal.subject!=="string"||principal.subject.length<8)
@@ -66,5 +72,7 @@
         independentlyBankVerified:false,readyForTaxFiling:false});
     };
   }
-  window.IncomeOSServerAppend=Object.freeze({create:create});
-}());
+  var api=Object.freeze({create:create});
+  if(typeof module!=="undefined"&&module.exports)module.exports=api;
+  if(root)root.IncomeOSServerAppend=api;
+}(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:null)));

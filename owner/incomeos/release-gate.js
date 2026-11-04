@@ -3,7 +3,7 @@
   // Conservative review-only release gate; no client-supplied flag constitutes source authentication.
   function assess(input){
     var failures=[];
-    if(!input||typeof input!=="object"||Array.isArray(input))return {status:"HOLD",failures:["INVALID_INPUT"],incomeCents:null,transferAuthorized:false};
+    if(!input||typeof input!=="object"||Array.isArray(input))return {status:"HOLD",failures:["INVALID_INPUT"],incomeCents:null,availableToInvestCents:null,transferAuthorized:false,investmentExecutionEnabled:false};
     if(!Array.isArray(input.events)||input.events.length===0)failures.push("NO_EVENTS");
     if(!Array.isArray(input.statementEntries)||input.statementEntries.length===0)failures.push("NO_STATEMENTS");
     if(input.serverAuthenticated!==true)failures.push("NO_TRUSTED_SERVER_ATTESTATION");
