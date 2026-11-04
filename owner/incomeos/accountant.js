@@ -51,6 +51,7 @@
       && (e.paymentStatus===undefined || PAY_STATUS.includes(e.paymentStatus))
       && (e.accountantQuestions===undefined || (typeof e.accountantQuestions==="string" && e.accountantQuestions.length<=500))
       && (e.paymentAccount===undefined || safeAccountRef(e.paymentAccount))
+      && (e.duplicateConfirmed===undefined || typeof e.duplicateConfirmed==="boolean")
       && (e.corrections===undefined || (Array.isArray(e.corrections) && e.corrections.length<=100 && e.corrections.every(function(c){return c&&typeof c.at==="string"&&Array.isArray(c.changes)&&c.changes.length<=TRACKED.length;})));
   }
   // A payment account is recorded only as a short owner label (for example "Business card ending 1234").
@@ -238,7 +239,8 @@
     var gaps=[["Records not marked reconciled",t.unreconciled],["Expense business-use not determined",t.allocationPending],
       ["Expenses without supporting evidence",missingEvidence],["Outstanding receipts: expected, invoiced, pending or disputed (not counted as received)",t.pendingCount],
       ["Refunds or credits not yet matched to a charge",unallocatedRefunds],
-      ["Expenses scheduled, disputed or refunded (not counted)",t.unpaidOutflowCount],["Open questions for the accountant",t.questionCount]];
+      ["Expenses scheduled, disputed or refunded (not counted)",t.unpaidOutflowCount],["Open questions for the accountant",t.questionCount],
+      ["Likely duplicate records (same kind, date, amount and payer; not confirmed as separate)",likelyDuplicates(entries)]];
     var open=gaps.filter(function(g){return g[1]>0;});
     return {status:entries.length===0?"NO RECORDS":open.length?"INCOMPLETE":"NO OPEN GAPS IN RECORDED ENTRIES",gaps:gaps,open:open.length,
       notice:"Not reviewed or approved by an accountant and not ready for tax filing. Covers only entries recorded in IncomeOS; omitted accounts or receipts cannot be detected."};
@@ -246,13 +248,23 @@
   function paidTotal(){return totals(db.entries).gross;}
   // A manual entry with the same kind, date, amount and payer as an existing record is probably a duplicate.
   // The owner is asked before saving; a deliberate second charge can still be saved. A record never matches itself.
+  // Records beyond the first in each group sharing kind, date, amount and payer, unless the owner confirmed
+  // when saving that the repeat is a separate charge or receipt.
+  function dupKey(x){return [x.kind,x.date,round(x.kind==="income"?num(x.grossUsd):num(x.amountUsd)),String(x.payer||"").trim().toLowerCase()].join("|");}
+  function likelyDuplicates(entries){
+    var seen={},n=0;
+    entries.forEach(function(x){var k=dupKey(x);if(seen[k]&&!x.duplicateConfirmed)n++;seen[k]=true;});
+    return n;
+  }
   function possibleDuplicate(e,editId){
     var amt=function(x){return round(x.kind==="income"?num(x.grossUsd):num(x.amountUsd));},who=function(x){return String(x.payer||"").trim().toLowerCase();};
     return db.entries.find(function(x){return x.id!==editId&&x.kind===e.kind&&x.date===e.date&&amt(x)===amt(e)&&who(x)===who(e);})||null;
   }
   function confirmNotDuplicate(e,editId){
     var d=possibleDuplicate(e,editId);if(!d)return true;
-    return confirm("Possible duplicate: \""+d.label+"\" on "+d.date+" for "+money(d.kind==="income"?d.grossUsd:d.amountUsd)+(d.payer?" from "+d.payer:"")+" is already recorded. Save this entry as well?");
+    var ok=confirm("Possible duplicate: \""+d.label+"\" on "+d.date+" for "+money(d.kind==="income"?d.grossUsd:d.amountUsd)+(d.payer?" from "+d.payer:"")+" is already recorded. Save this entry as well?");
+    if(ok)e.duplicateConfirmed=true;
+    return ok;
   }
   // Corrections are preserved: an edit records each changed field's previous and new value with the time,
   // so an evidence reference, amount or classification that was corrected can still be traced. The record's
@@ -276,7 +288,8 @@
     if(found>=0){
       var old=db.entries[found],at=new Date().toISOString(),log=correctionLog(old,e,at);
       next[found]=Object.assign({},e,{id:editId,createdAt:old.createdAt,updatedAt:at,
-        importedFrom:old.importedFrom||e.importedFrom,corrections:log});
+        importedFrom:old.importedFrom||e.importedFrom,corrections:log,duplicateConfirmed:e.duplicateConfirmed||old.duplicateConfirmed});
+      if(next[found].duplicateConfirmed===undefined)delete next[found].duplicateConfirmed;
       if(!log.length)delete next[found].corrections;
     }
     else next.push(Object.assign({},e,{id:uid(),createdAt:new Date().toISOString()}));
@@ -555,7 +568,8 @@
       ["Asset sale proceeds, review basis",t.proceeds],["Estimated tax payments",t.taxPaid],
       ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],["Unallocated refunds / credits, not netted",t.refundCredits],
       ["Unreconciled record count",t.unreconciled],["Expense allocations not determined",t.allocationPending],
-      ["Refunded or cancelled receipts, not income (count)",t.closedCount],["Refunded or cancelled receipts, not income (USD)",t.closedNotIncome]];
+      ["Refunded or cancelled receipts, not income (count)",t.closedCount],["Refunded or cancelled receipts, not income (USD)",t.closedNotIncome],
+      ["Records corrected after entry (earlier values in the detailed CSV)",yearEntries().filter(function(e){return e.corrections&&e.corrections.length;}).length]];
     var c=completeness(yearEntries());
     pairs.unshift(["Report status",c.status+". "+c.notice]);
     c.gaps.forEach(function(g){if(g[0]!=="Records not marked reconciled")pairs.push(["Completeness: "+g[0],g[1]]);});
@@ -794,5 +808,5 @@
       var pass=$("briefing-passphrase");if(pass){pass.scrollIntoView({block:"center"});pass.focus();}
     });
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,reconciliationSummary:reconciliationSummary,receiptGaps:receiptGaps,unclassified:unclassified,completeness:completeness,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,reconciliationSummary:reconciliationSummary,receiptGaps:receiptGaps,unclassified:unclassified,completeness:completeness,likelyDuplicates:likelyDuplicates,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();

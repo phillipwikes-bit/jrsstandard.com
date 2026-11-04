@@ -2,50 +2,165 @@
   "schema": "incomeos.acceptance.v1",
   "milestone": "A: accounting editor",
   "recordedOn": "2026-11-04",
-  "statusVocabulary": ["NOT IMPLEMENTED", "IN DEVELOPMENT", "SOURCE TESTED", "PROTECTED PREVIEW VERIFIED", "OWNER ACCEPTANCE PENDING", "PRODUCTION VERIFIED", "BLOCKED"],
+  "statusVocabulary": [
+    "NOT IMPLEMENTED",
+    "IN DEVELOPMENT",
+    "SOURCE TESTED",
+    "PROTECTED PREVIEW VERIFIED",
+    "OWNER ACCEPTANCE PENDING",
+    "PRODUCTION VERIFIED",
+    "BLOCKED"
+  ],
   "notice": "SOURCE TESTED means synthetic tests in this repository pass against the source. It is not a deployment, not physical iPhone testing and not owner acceptance. The milestone is complete only when every item is PRODUCTION VERIFIED.",
   "milestoneComplete": false,
   "items": [
-    {"id": "A01", "requirement": "Private owner authentication", "status": "BLOCKED",
-     "evidence": [], "blockedBy": "Owner decision on private hosting with owner sign-in; no hosted deployment exists",
-     "limitation": "The page has no server and no sign-in; the staging interlock only blocks browser-storage writes"},
-    {"id": "A02", "requirement": "Denial of unauthorized access", "status": "BLOCKED",
-     "evidence": [], "blockedBy": "Same as A01; server-enforced denial cannot be tested without a host",
-     "limitation": "Encrypted workspace files cannot be opened without the passphrase, which is not access control for a hosted app"},
-    {"id": "A03", "requirement": "Reliable manual income entry", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accounting-editor-browser.mjs", "tests/incomeos-accountant-fixes.mjs"]},
-    {"id": "A04", "requirement": "Reliable expense entry", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accounting-editor-browser.mjs", "tests/incomeos-accountant-fixes.mjs"]},
-    {"id": "A05", "requirement": "Correct editing and deletion behavior", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accounting-editor-browser.mjs"]},
-    {"id": "A06", "requirement": "Reliable data preservation and retrieval", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accounting-editor-browser.mjs", "tests/incomeos-controls.mjs"],
-     "limitation": "Preservation is the owner-saved workspace file; there is no hosted persistence or cross-device sync"},
-    {"id": "A07", "requirement": "Verified backup and restoration", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accounting-editor-browser.mjs", "tests/incomeos-accounting-backup-browser.mjs", "tests/incomeos-accountant-fixes.mjs"],
-     "limitation": "Encrypted workspace save and reopen, and JSON backup download, reload and restore through the page, are tested end to end with synthetic records in simulated Chromium; tampered backups are refused without changing the ledger"},
-    {"id": "A08", "requirement": "Accurate synthetic financial calculations", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accountant-fixes.mjs", "tests/incomeos-money-controls-review.mjs", "tests/incomeos-accounting-controls.mjs"]},
-    {"id": "A09", "requirement": "No duplicate transaction recognition", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accountant-fixes.mjs", "tests/incomeos-accounting-controls.mjs"]},
-    {"id": "A10", "requirement": "Correct reconciliation and uncertainty classifications", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accountant-fixes.mjs", "tests/incomeos-money-controls-review.mjs"],
-     "limitation": "Classes reflect owner-recorded evidence; no bank feed is connected"},
-    {"id": "A11", "requirement": "Functional accountant reporting", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accounting-editor-browser.mjs", "tests/incomeos-accountant-fixes.mjs"],
-     "limitation": "Reports are not accountant-reviewed and not tax-filing ready"},
-    {"id": "A12", "requirement": "iPhone-compatible controls and display", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-accounting-editor-browser.mjs"],
-     "limitation": "Simulated in Chromium at 320, 375, 390 and 430 px; not tested on a physical iPhone or iOS Safari"},
-    {"id": "A13", "requirement": "No prohibited transmission of private data", "status": "SOURCE TESTED",
-     "evidence": ["tests/incomeos-controls.mjs", "tests/incomeos-staging-privacy.mjs"],
-     "limitation": "Source has no outbound network call and CSP connect-src is self; hosted response headers not yet verified"},
-    {"id": "A14", "requirement": "Secure storage and recovery", "status": "BLOCKED",
-     "evidence": ["tests/incomeos-accounting-editor-browser.mjs"], "blockedBy": "Private database not provisioned (Supabase project and CSP change await owner authorization)",
-     "limitation": "Only the AES-256-GCM encrypted owner file is tested; server-side storage is a prepared, unapplied schema"},
-    {"id": "A15", "requirement": "Verified release evidence and rollback readiness", "status": "BLOCKED",
-     "evidence": [], "blockedBy": "No protected deployment of the accounting editor exists"},
-    {"id": "A16", "requirement": "Required owner publication approval", "status": "BLOCKED",
-     "evidence": [], "blockedBy": "Requires the owner's explicit approval after A01, A02, A14 and A15"}
+    {
+      "id": "A01",
+      "requirement": "Private owner authentication",
+      "status": "BLOCKED",
+      "evidence": [],
+      "blockedBy": "Owner decision on private hosting with owner sign-in; no hosted deployment exists",
+      "limitation": "The page has no server and no sign-in; the staging interlock only blocks browser-storage writes"
+    },
+    {
+      "id": "A02",
+      "requirement": "Denial of unauthorized access",
+      "status": "BLOCKED",
+      "evidence": [],
+      "blockedBy": "Same as A01; server-enforced denial cannot be tested without a host",
+      "limitation": "Encrypted workspace files cannot be opened without the passphrase, which is not access control for a hosted app"
+    },
+    {
+      "id": "A03",
+      "requirement": "Reliable manual income entry",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-accountant-fixes.mjs"
+      ]
+    },
+    {
+      "id": "A04",
+      "requirement": "Reliable expense entry",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-accountant-fixes.mjs"
+      ]
+    },
+    {
+      "id": "A05",
+      "requirement": "Correct editing and deletion behavior",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accounting-editor-browser.mjs"
+      ],
+      "limitation": "Edits keep a correction history (earlier values and source); browser-tested with synthetic records"
+    },
+    {
+      "id": "A06",
+      "requirement": "Reliable data preservation and retrieval",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-controls.mjs"
+      ],
+      "limitation": "Preservation is the owner-saved workspace file; there is no hosted persistence or cross-device sync"
+    },
+    {
+      "id": "A07",
+      "requirement": "Verified backup and restoration",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-accounting-backup-browser.mjs",
+        "tests/incomeos-accountant-fixes.mjs"
+      ],
+      "limitation": "Encrypted workspace save and reopen, and JSON backup download, reload and restore through the page, are tested end to end with synthetic records in simulated Chromium; tampered backups are refused without changing the ledger"
+    },
+    {
+      "id": "A08",
+      "requirement": "Accurate synthetic financial calculations",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-money-controls-review.mjs",
+        "tests/incomeos-accounting-controls.mjs"
+      ]
+    },
+    {
+      "id": "A09",
+      "requirement": "No duplicate transaction recognition",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-accounting-controls.mjs",
+        "tests/incomeos-accounting-editor-browser.mjs"
+      ],
+      "limitation": "CSV import skips duplicates; a manual entry matching an existing record's kind, date, amount and payer asks first, and unconfirmed repeats are reported as a completeness gap. Duplicates across different payees or amounts are not detected"
+    },
+    {
+      "id": "A10",
+      "requirement": "Correct reconciliation and uncertainty classifications",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accountant-fixes.mjs",
+        "tests/incomeos-money-controls-review.mjs"
+      ],
+      "limitation": "Classes reflect owner-recorded evidence; no bank feed is connected"
+    },
+    {
+      "id": "A11",
+      "requirement": "Functional accountant reporting",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-accountant-fixes.mjs"
+      ],
+      "limitation": "Reports are not accountant-reviewed and not tax-filing ready"
+    },
+    {
+      "id": "A12",
+      "requirement": "iPhone-compatible controls and display",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-accounting-editor-browser.mjs"
+      ],
+      "limitation": "Simulated in Chromium at 320, 375, 390 and 430 px; not tested on a physical iPhone or iOS Safari"
+    },
+    {
+      "id": "A13",
+      "requirement": "No prohibited transmission of private data",
+      "status": "SOURCE TESTED",
+      "evidence": [
+        "tests/incomeos-controls.mjs",
+        "tests/incomeos-staging-privacy.mjs"
+      ],
+      "limitation": "Source has no outbound network call and CSP connect-src is self; hosted response headers not yet verified"
+    },
+    {
+      "id": "A14",
+      "requirement": "Secure storage and recovery",
+      "status": "BLOCKED",
+      "evidence": [
+        "tests/incomeos-accounting-editor-browser.mjs"
+      ],
+      "blockedBy": "Private database not provisioned (Supabase project and CSP change await owner authorization)",
+      "limitation": "Only the AES-256-GCM encrypted owner file is tested; server-side storage is a prepared, unapplied schema"
+    },
+    {
+      "id": "A15",
+      "requirement": "Verified release evidence and rollback readiness",
+      "status": "BLOCKED",
+      "evidence": [],
+      "blockedBy": "No protected deployment of the accounting editor exists"
+    },
+    {
+      "id": "A16",
+      "requirement": "Required owner publication approval",
+      "status": "BLOCKED",
+      "evidence": [],
+      "blockedBy": "Requires the owner's explicit approval after A01, A02, A14 and A15"
+    }
   ]
 }

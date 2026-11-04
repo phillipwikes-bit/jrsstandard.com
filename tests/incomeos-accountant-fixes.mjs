@@ -122,3 +122,12 @@ assert.match(src,/\["Unclassified: date","Description","Kind","USD","Reason"\]/,
  assert.equal(A.validateEntry({...ex,corrections:"edited"}),false);
  assert.equal(A.validateEntry({...ex,corrections:[{changes:[]}]}),false);}
 assert.match(src,/"Source","Corrections \(earlier values\)"\]\]/);
+// Likely duplicates: counted as an open completeness gap unless the owner confirmed the repeat as separate.
+{const ex=(o)=>({kind:"outflow",type:"expense",category:"software",amountUsd:9.99,businessUse:50,evidenceStatus:"both",reconciled:true,label:"x",date:"2026-10-24",payer:"Shop",...o});
+ assert.equal(A.likelyDuplicates([ex({}),ex({payer:" shop "}),ex({amountUsd:5})]),1);
+ assert.equal(A.likelyDuplicates([ex({}),ex({duplicateConfirmed:true})]),0,"a confirmed repeat is not counted");
+ const c=A.completeness([ex({}),ex({})]);assert.equal(c.status,"INCOMPLETE");
+ assert.ok(c.gaps.some(g=>/Likely duplicate records/.test(g[0])&&g[1]===1));
+ assert.equal(A.completeness([ex({}),ex({duplicateConfirmed:true})]).status,"NO OPEN GAPS IN RECORDED ENTRIES");
+ assert.equal(A.validateEntry(ex({duplicateConfirmed:"yes"})),false);}
+assert.match(src,/Records corrected after entry \(earlier values in the detailed CSV\)/);

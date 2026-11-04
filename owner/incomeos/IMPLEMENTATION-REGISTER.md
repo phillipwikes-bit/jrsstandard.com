@@ -217,3 +217,17 @@ This is an incremental source-control improvement, not an operational wealth or 
 | 8fcc7b3 | Unclassified-transactions report | Category or type "other" listed once with every reason; nothing reclassified automatically | Same |
 
 The acceptance status of Milestone A against the directive's sixteen checks is recorded in `ACCOUNTING-EDITOR-ACCEPTANCE.json` and guarded by `tests/incomeos-acceptance-record.mjs`: 11 SOURCE TESTED, 5 BLOCKED (owner authentication, denial of unauthorized access, hosted secure storage, release evidence, owner publication approval). The milestone is not complete.
+
+### Later 2026-11-04 accounting editor increments
+
+| Commit | Delivered | Source-level acceptance |
+| --- | --- | --- |
+| 992972a | JSON backup round trip through the page | Backup, reload, refused tampered backups, identical restore, repeated restore adds nothing |
+| 834637b, b26cf02 | Row buttons name their record; help notes linked to fields | Labels, names, Tab order through both forms, visible focus (automated checks only) |
+| 4deffda | Validation errors beside each field | aria-invalid, linked message, announced summary, focus on first problem, nothing saved |
+| ceb963b, e7127ce | Focus follows edit, save, cancel and remove; "Editing:" note | Focus lands on the acted-on record or a neighbour; note warns when the filter hides the record |
+| 9204e12 | Duplicate guard for manual entries | Same kind, date, amount and payer asks first; self-edit never matches |
+| b90376f, be0363c | Correction history | Earlier values and source kept per record, shown in the detailed CSV and printed report |
+| this commit | Likely duplicates as a completeness gap; corrected-record count in the summary CSV | A repeat confirmed as separate is not counted |
+
+Milestone A status is unchanged: 11 SOURCE TESTED, 5 BLOCKED (see `ACCOUNTING-EDITOR-ACCEPTANCE.json`).

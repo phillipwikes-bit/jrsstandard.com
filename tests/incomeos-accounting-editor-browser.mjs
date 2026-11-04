@@ -196,6 +196,9 @@ assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElemen
  await page.locator("#cost-save").click();
  assert.match(dialogs.at(-1),/^Possible duplicate: "Synthetic dup first" on 2026-10-24 for \$9\.99 from Synthetic Shop is already recorded\./);
  assert.equal(await row("Synthetic dup second").count(),1,"confirmed second charge saved");
+ // A repeat the owner confirmed as separate is not reported as a likely duplicate.
+ await page.evaluate(()=>{window.print=()=>{};});await page.locator("#print-accountant").click();
+ assert.match(await page.locator("#print-report").textContent(),/Likely duplicate records \(same kind, date, amount and payer; not confirmed as separate\)0/);
  const n1=dialogs.length;await addCost("Synthetic other payee","Another Shop");
  assert.ok(!dialogs.slice(n1).some(m=>/^Possible duplicate/.test(m)),"a different payee is not a duplicate");
  for(const t of ["Synthetic dup first","Synthetic dup second","Synthetic other payee"])await row(t).getByRole("button",{name:"Remove"}).click();}
