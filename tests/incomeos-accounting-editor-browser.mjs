@@ -146,6 +146,24 @@ assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElemen
  assert.equal(await page.locator("#receipt-amount").getAttribute("aria-invalid"),null);
  await page.locator("#ledger-list .entry",{hasText:"Synthetic corrected entry"}).getByRole("button",{name:"Remove"}).tap();
  assert.equal(await page.locator("#ledger-list .entry").count(),before);}
+// Focus follows the action: Edit moves to the form; saving or cancelling an edit returns to that record; removing moves to a neighbour.
+{const active=()=>page.evaluate(()=>document.activeElement.getAttribute("aria-label")||document.activeElement.id);
+ const row=t=>page.locator("#ledger-list .entry",{hasText:t});
+ await row("Synthetic study payout").getByRole("button",{name:"Edit"}).click();
+ assert.equal(await active(),"receipt-label","Edit moves focus into the form");
+ await page.locator("#receipt-cancel").click();
+ assert.match(await active(),/^Edit Synthetic study payout,/,"Cancel returns to the record");
+ await row("Synthetic study payout").getByRole("button",{name:"Edit"}).click();await page.locator("#receipt-save").click();
+ assert.match(await active(),/^Edit Synthetic study payout,/,"saving an edit returns to the record");
+ await page.locator("#receipt-label").fill("Synthetic focus probe");await page.locator("#receipt-amount").fill("1");await page.locator("#receipt-date").fill("2026-10-15");
+ await page.locator("#receipt-save").click();
+ assert.equal(await active(),"receipt-label","after a new entry focus stays in the form for the next one");
+ const rows=await page.evaluate(()=>[...document.querySelectorAll("#ledger-list .entry")].map(n=>[n.getAttribute("data-entry-id"),n.textContent]));
+ const at=rows.findIndex(r=>/Synthetic focus probe/.test(r[1])),neighbour=(rows[at+1]||rows[at-1])[0];
+ await row("Synthetic focus probe").getByRole("button",{name:"Remove"}).click();
+ assert.equal(await row("Synthetic focus probe").count(),0);
+ assert.match(await active(),/^Edit /);
+ assert.equal(await page.evaluate(()=>document.activeElement.closest(".entry")?.getAttribute("data-entry-id")),neighbour,"focus lands on the neighbouring record");}
 // Accessibility basics for the ledger view (automated checks only, not an accessibility certification).
 {const a11y=await page.evaluate(()=>{const v=document.getElementById("view-ledger"),out={unlabelled:[],unnamed:[],positiveTab:[],rowNames:[]};
    const vis=e=>!!(e.offsetWidth||e.offsetHeight||e.getClientRects().length);

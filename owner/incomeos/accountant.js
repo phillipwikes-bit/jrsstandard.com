@@ -349,6 +349,14 @@
       $("cost-save").textContent="Update outflow";$("cost-cancel").hidden=false;
     }
     $(p+"-form-title").scrollIntoView({behavior:"smooth",block:"start"});
+    $(p+"-label").focus({preventScroll:true});
+  }
+  // Keyboard and screen-reader users return to the record they acted on, never to the top of the page.
+  function focusEntry(id){
+    var row=id&&document.querySelector('#ledger-list .entry[data-entry-id="'+String(id).replace(/["\\]/g,"")+'"] button');
+    if(row){row.focus();return true;}
+    var list=$("ledger-list");if(list){list.setAttribute("tabindex","-1");list.focus();}
+    return false;
   }
   function renderSummary(){
     var rows=yearEntries(),t=totals(rows);
@@ -392,7 +400,7 @@
     place(box,"p","muted","Supporting form references: "+(Object.keys(forms).length?Object.keys(forms).map(function(k){return k+" ("+forms[k]+")";}).join(", "):"None recorded")+". No bank, tax authority or payer validation has been performed.");
   }
   function showEntry(e){
-    var out=place($("ledger-list"),"div","entry");var left=place(out,"div","entry-info");
+    var out=place($("ledger-list"),"div","entry");out.setAttribute("data-entry-id",e.id);var left=place(out,"div","entry-info");
     place(left,"strong","",e.label);
     place(left,"small","",e.date+" · "+(e.kind==="income"?"RECEIPT · "+e.category+" · "+(STATUS_LABEL[e.status]||"Not received"):(e.type==="refund"?"REFUND/CREDIT, UNALLOCATED · ":"OUTFLOW · ")+e.category+" · "+e.type));
     place(left,"small","",e.payer||"Source not identified");
@@ -411,7 +419,9 @@
     del.addEventListener("click",function(){
       if(locked())return;
       if(!confirm("Delete this local record? This cannot be undone without a backup."))return;
-      try{commitEntries(db.entries.filter(function(x){return x.id!==e.id;}));render();}
+      // Focus moves to the next record shown (or the previous one when the last is removed).
+      var shown=[].map.call(document.querySelectorAll("#ledger-list .entry"),function(n){return n.getAttribute("data-entry-id");}),at=shown.indexOf(e.id),after=shown[at+1]||shown[at-1]||null;
+      try{commitEntries(db.entries.filter(function(x){return x.id!==e.id;}));render();focusEntry(after);}
       catch(err){alert(err.message);}
     });
   }
@@ -675,10 +685,11 @@
   function init(){
     load();
     $("receipt-date").value=today();$("cost-date").value=today();$("report-year").value=String(new Date().getFullYear());
-    $("receipt-form").addEventListener("submit",function(ev){ev.preventDefault();var e=readIncome();if(!e)return;addOrUpdate(e,editingIncome);resetForm("receipt-form","income");});
-    $("cost-form").addEventListener("submit",function(ev){ev.preventDefault();var e=readCost();if(!e)return;addOrUpdate(e,editingCost);resetForm("cost-form","outflow");});
-    $("receipt-cancel").addEventListener("click",function(){resetForm("receipt-form","income");});
-    $("cost-cancel").addEventListener("click",function(){resetForm("cost-form","outflow");});
+    // After an edit is saved or cancelled, focus returns to that record; after a new entry it stays in the form for the next one.
+    $("receipt-form").addEventListener("submit",function(ev){ev.preventDefault();var e=readIncome();if(!e)return;var was=editingIncome;addOrUpdate(e,was);resetForm("receipt-form","income");if(was)focusEntry(was);else $("receipt-label").focus();});
+    $("cost-form").addEventListener("submit",function(ev){ev.preventDefault();var e=readCost();if(!e)return;var was=editingCost;addOrUpdate(e,was);resetForm("cost-form","outflow");if(was)focusEntry(was);else $("cost-label").focus();});
+    $("receipt-cancel").addEventListener("click",function(){var was=editingIncome;resetForm("receipt-form","income");focusEntry(was);});
+    $("cost-cancel").addEventListener("click",function(){var was=editingCost;resetForm("cost-form","outflow");focusEntry(was);});
     ["report-year","ledger-filter"].forEach(function(id){$(id).addEventListener("change",render);});
     $("ledger-search").addEventListener("input",renderList);
     $("refresh-accountant").addEventListener("click",render);
