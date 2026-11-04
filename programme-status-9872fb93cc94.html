@@ -392,7 +392,7 @@ th{font-size:10px;letter-spacing:.055em}
   </section>
   <section id="current-formspree-inquiries" aria-label="Current website contact messages and owner triage" class="chart">
     <h3 style="font-size:18px;margin:18px 0 10px">Current website inquiries | Formspree + Gmail</h3>
-    <p class="note"><strong>Routing:</strong> Website contact form → Formspree submission inbox → owner Gmail notification. The dashboard independently reads Formspree through an owner-only, read-only API credential. Gmail notifications remain separate from dashboard retrieval. The historical Supabase inquiry register is a distinct source and is never automatically combined with current messages.</p>
+    <p class="note"><strong>Routing:</strong> The redesigned public contact form delivers to Formspree and the designated email inbox. The dashboard independently reads Formspree through an owner-only, read-only API credential. Gmail notifications remain separate from dashboard retrieval. The historical Supabase participant register is a distinct source and is never automatically combined with current messages. Check Formspree's Over Limit folder separately if submissions are missing; it is not part of the nonspam API response until reprocessed.</p>
     <p class="note" id="current-formspree-status" role="status" aria-live="polite">Current Formspree source not checked. Unavailable is not zero.</p>
     <p class="note" id="current-formspree-followup-status" role="status" aria-live="polite">Owner follow-up storage not checked. A manual status is not proof that an email was sent or received.</p>
     <div class="cards" style="grid-template-columns:repeat(4,minmax(0,1fr))" aria-label="Current Formspree source counts">
