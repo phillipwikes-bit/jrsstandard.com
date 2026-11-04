@@ -97,6 +97,11 @@ await dm.getByRole("button",{name:"Add"}).tap();
 const am=page.locator("details.ds-form",{hasText:"Approve message"}).first();await am.locator("summary").tap();
 await am.getByLabel("Message").selectOption("M-UI-1");await am.getByRole("button",{name:"Approve"}).tap();
 assert.match(await page.locator("#ds-status").textContent(),/Message approved/);
+// The program report downloads as a local confidential file with the diligence map.
+const [rep]=await Promise.all([page.waitForEvent("download"),page.locator("#ds-report").tap()]);
+assert.match(rep.suggestedFilename(),/^ds-program-report-\d{4}-\d{2}-\d{2}\.md$/);
+const repText=readFileSync(await rep.path(),"utf8");
+assert.match(repText,/CONFIDENTIAL: owner and counsel only/);assert.match(repText,/\| Technology \| .* \| NOT ESTABLISHED \|/);
 // Save through the workspace, reopen, and the program comes back.
 await page.locator('.bottomnav button[data-view="research"]').click();
 const [dl]=await Promise.all([page.waitForEvent("download"),page.locator("#briefing-save").tap()]);

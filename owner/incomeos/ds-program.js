@@ -463,11 +463,58 @@
     p.cycles=p.cycles.concat([rec]).slice(-200);
     return {program:validate(log(p,"CYCLE_RUN",{id:rec.id},asOf)),cycle:rec};
   }
+  // Owner report: a diligence map built only from recorded evidence (CLAUDE.md section 25: what, who,
+  // how, evidence, rights, technology, limitations, commercial value). Contacts and prospects appear
+  // as counts only. It is a file for the owner and counsel, never an offer or external disclosure.
+  function report(p0,ws,asOf){
+    var p=validate(p0),c=command(p,ws,asOf);
+    function strongest(ids){var l=arr(ids).map(function(i){var e=byId(p,"evidence",i);return e?e.level:99;});return l.length?Math.min.apply(null,l):99;}
+    function rate(n,ok){return n===0?"NOT ESTABLISHED":ok?"ESTABLISHED":"PARTIAL";}
+    var lv={};p.evidence.forEach(function(e){lv[e.level]=(lv[e.level]||0)+1;});
+    var reqs=p.requirements.length,openDefects=p.defects.filter(function(d){return d.status==="OPEN";}).length;
+    var rightsAuth=p.rights.filter(function(r){return r.grantSpecificTransferAuthorization;}).length;
+    var sourcedFindings=p.findings.filter(function(f){return strongest(f.evidenceIds)<=5;}).length;
+    var items=[
+      {area:"What",question:"What exactly is the asset, by product identity?",status:rate(p.identities.filter(function(i){return i.status==="VERIFIED";}).length,true),
+        basis:p.identities.map(function(i){return i.id+" "+i.status.toLowerCase();}).join("; ")},
+      {area:"Who",question:"Who created each component, and under what terms?",status:rate(p.rights.length,rightsAuth===p.rights.length&&p.rights.length>0),
+        basis:p.rights.length+" component(s) recorded; "+rightsAuth+" with a grant-specific transfer authorization"},
+      {area:"How",question:"How is it specified, built, released and rolled back?",status:rate(reqs+p.releases.length,reqs>0&&p.releases.length>0&&p.releases.every(function(r){return !!r.rollbackPlan;})),
+        basis:reqs+" requirement(s), "+p.releases.length+" release candidate(s), none released"},
+      {area:"Evidence",question:"What primary evidence supports the program record?",status:rate(p.evidence.length,(lv[1]||0)+(lv[2]||0)>0),
+        basis:Object.keys(LEVELS).map(function(k){return "level "+k+": "+(lv[k]||0);}).join(", ")+"; "+p.assertions.length+" owner assertion(s) whose sources are not in the repository"},
+      {area:"Rights",question:"Can the rights be transferred or licensed?",status:c.gates.filter(function(g){return g.id==="G3";})[0].status==="VERIFIED"?"ESTABLISHED":"NOT ESTABLISHED",
+        basis:"Gate G3 "+(c.gates.filter(function(g){return g.id==="G3";})[0].status==="VERIFIED"?"approved":"open")+"; owner-asserted prior inventory 0 of 32"},
+      {area:"Technology",question:"Does the original product work as specified?",status:c.acceptance.accepted===c.acceptance.total?"ESTABLISHED":c.acceptance.accepted?"PARTIAL":"NOT ESTABLISHED",
+        basis:c.acceptance.accepted+" of "+c.acceptance.total+" SP checks accepted for DS-A; "+openDefects+" open defect(s)"},
+      {area:"Validation",question:"Is performance independently validated?",status:c.comparisons.some(function(x){return x.status!=="NOT_ESTABLISHED";})?"PARTIAL":"NOT ESTABLISHED",
+        basis:p.studies.filter(function(s){return s.status==="COMPLETE";}).length+" of "+p.studies.length+" studies complete; every comparative claim "+(c.comparisons.every(function(x){return x.status==="NOT_ESTABLISHED";})?"not established":"under review")},
+      {area:"Limitations",question:"What is known to be missing or blocked?",status:"ESTABLISHED",
+        basis:c.blockers.length+" blocker(s) and open gate(s) listed below"},
+      {area:"Commercial value",question:"What market evidence and revenue exist?",status:rate(sourcedFindings+c.finance.actual.revenueReceivedUsd,false),
+        basis:sourcedFindings+" sourced finding(s); "+p.pricing.length+" pricing scenario(s), all projections; pipeline "+STAGES.map(function(s){return s.toLowerCase().replace(/_/g," ")+" "+p.pipeline.filter(function(e){return e.stage===s;}).length;}).join(", ")+"; revenue received "+c.finance.actual.revenueReceivedUsd.toFixed(2)+" USD"}
+    ];
+    var md=["# Decision Spellchecker program report","",
+      "CONFIDENTIAL: owner and counsel only. Not an offer, listing, valuation or claim of readiness. Generated "+asOf+" from the owner's program record.","",
+      "Governing program: "+p.governing.reference+(p.governing.inRepository?"":" (document not in the repository)"),"",
+      "Phase "+c.phaseIndex+" of "+c.phaseCount+": "+c.phase.replace(/^P\d_/,"").replace(/_/g," ").toLowerCase()+". Mandatory gates met: "+c.readiness.mandatoryGatesMet+" of "+c.readiness.mandatoryGatesTotal+".","",
+      "## Diligence map","","| Area | Question | Status | Basis in the record |","|---|---|---|---|"];
+    items.forEach(function(i){md.push("| "+i.area+" | "+i.question+" | "+i.status+" | "+i.basis.replace(/\|/g,"/")+" |");});
+    md.push("","## Gates","","| Gate | Approver | Status |","|---|---|---|");
+    c.gates.forEach(function(g){md.push("| "+g.id+" "+g.title+" | "+g.approver.toLowerCase()+" | "+g.status.replace(/_/g," ").toLowerCase()+" |");});
+    md.push("","## Blockers","");c.blockers.forEach(function(b){md.push("- "+b.id+": "+b.title+" (next step: "+b.nextActionBy.toLowerCase()+")");});
+    md.push("","## Owner assertions (sources not in the repository)","");p.assertions.forEach(function(a){md.push("- "+a.statement+" Source: "+a.source+".");});
+    md.push("","## Finance","","- Recorded program cost: "+c.finance.actual.totalCostUsd.toFixed(2)+" USD","- Revenue received (bank-matched, executed agreement): "+c.finance.actual.revenueReceivedUsd.toFixed(2)+" USD",
+      "- Pricing scenarios: "+p.pricing.length+", all projections, none counted as revenue");
+    md.push("","## Restricted actions","");c.restrictedActions.forEach(function(a){md.push("- "+a.label+": "+a.status.replace(/_/g," ").toLowerCase());});
+    md.push("","Contacts and prospects are reported as counts only: "+p.contacts.length+" contact(s), "+p.pipeline.length+" prospect(s).","");
+    return {asOf:asOf,items:items,markdown:md.join("\n")};
+  }
   var api=Object.freeze({SCHEMA:SCHEMA,MODULES:MODULES.slice(),STATUS:STATUS.slice(),LEVELS:LEVELS,PHASES:PHASES.slice(),STAGES:STAGES.slice(),BASES:BASES.slice(),
     FORBIDDEN_ORIGINS:FORBIDDEN_ORIGINS.slice(),COST_DIMS:COST_DIMS.slice(),REVENUE_DIMS:REVENUE_DIMS.slice(),DIMS:DIMS.slice(),ACTIONS:Object.keys(ACTIONS),
     newProgram:newProgram,validate:validate,add:add,setTaskState:setTaskState,linkEvidence:linkEvidence,approveGate:approveGate,acceptCheck:acceptCheck,
     recordRightsAuthorization:recordRightsAuthorization,authorized:authorized,authorize:authorize,approveMessage:approveMessage,recordContact:recordContact,suppress:suppress,
-    advance:advance,setPhase:setPhase,prioritize:prioritize,comparisons:comparisons,runMetrics:runMetrics,finance:finance,command:command,runCycle:runCycle});
+    advance:advance,setPhase:setPhase,prioritize:prioritize,comparisons:comparisons,runMetrics:runMetrics,finance:finance,command:command,runCycle:runCycle,report:report});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSDSProgram=api;
 }(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:null)));

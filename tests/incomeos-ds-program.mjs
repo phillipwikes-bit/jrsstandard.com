@@ -154,6 +154,18 @@ assert.throws(()=>D.acceptCheck(p,"SP-01"),/Date required/);
 {const t=plain(p);t.gates[0].evidenceIds=["T-1"];assert.throws(()=>D.validate(t),/unknown evidence record/);}
 // R8-10: the workspace store has no unused action parameter.
 assert.doesNotMatch(read("workspace-store.js"),/function setDsProgram\(ws,program,on,action\)/);
+// Owner report: statuses come only from the record; contacts and prospects appear as counts only.
+{const seed=plain(D.report(D.newProgram(on),null,on));
+ const st=Object.fromEntries(seed.items.map(i=>[i.area,i.status]));
+ assert.equal(st.What,"NOT ESTABLISHED");assert.equal(st.Rights,"NOT ESTABLISHED");assert.equal(st.Technology,"NOT ESTABLISHED");
+ assert.equal(st.Validation,"NOT ESTABLISHED");assert.equal(st.Evidence,"PARTIAL","repository records exist but none primary");
+ assert.match(seed.markdown,/^# Decision Spellchecker program report\n\nCONFIDENTIAL/);
+ assert.match(seed.markdown,/document not in the repository/);
+ const full=D.report(p,ws,on).markdown;
+ assert.ok(!full.includes("Example Org")&&!full.includes("Head of Investigations"),"no buyer or contact names in the report");
+ assert.match(full,/1 contact\(s\), 1 prospect\(s\)/);
+ assert.doesNotMatch(full,/\d\s?%|—/,"no percentages or em-dashes");
+ assert.notEqual(D.report(p,ws,on).items.find(i=>i.area==="Commercial value").status,"ESTABLISHED","commercial value is never established from records alone");}
 // No network, storage or messaging in the engine.
 assert.doesNotMatch(read("ds-program.js"),/fetch\s*\(|localStorage|sessionStorage|XMLHttpRequest|sendBeacon|WebSocket|mailto:/);
 console.log("IncomeOS Decision Spellchecker program QA passed: honest seed, shared identifiers, SP and gate controls, lead and contact rules, staged pipeline, validation separation, prioritization, actual-versus-projected finance, workspace integration and owner-run cycle.");

@@ -104,6 +104,14 @@
     var au=el(out,"section",null,"panel");el(au,"h3","Operating cycle");el(au,"p",c.autonomy.note,"muted");
     if(c.autonomy.lastCycle)el(au,"p","Last cycle "+c.autonomy.lastCycle.id+" on "+c.autonomy.lastCycle.ranOn+": "+c.autonomy.lastCycle.prioritize.ready.length+" ready task(s), "+c.autonomy.lastCycle.report.openGates+" open gate(s).");
     if(p){var rb=el(au,"button","Run cycle","smallbtn");rb.type="button";rb.addEventListener("click",function(){attempt(function(x){return DS.runCycle(x,state.ws,asOf).program;},"Cycle recorded");});}
+    // Owner report: a local file download; nothing is sent.
+    var dl=el(au,"button","Download program report","smallbtn");dl.type="button";dl.id="ds-report";
+    dl.addEventListener("click",function(){
+      try{var r=DS.report(p||DS.newProgram(asOf),state.ws,asOf),blob=new Blob([r.markdown],{type:"text/markdown"}),a=document.createElement("a");
+        a.href=URL.createObjectURL(blob);a.download="ds-program-report-"+asOf+".md";document.body.appendChild(a);a.click();
+        setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},0);msg("Program report downloaded. It is confidential: keep it with your private files.");}
+      catch(e){msg("Report not created: "+e.message,true);}
+    });
 
     if(p)forms(out,p,asOf);
   }
