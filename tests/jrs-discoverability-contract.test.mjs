@@ -45,3 +45,17 @@ test('machine-readable index routes to official sitemap HTML pages with stable u
   assert.match(guide, /Do not submit confidential or identifiable records/);
   assert.match(bibliography.public_access_boundary, /No public automated record processing/);
 });
+
+test('sitemap excludes configured Vercel redirect-source URLs', () => {
+  const redirects = JSON.parse(read('vercel.json')).redirects;
+  const redirectSources = new Set(redirects.map(r => host + r.source));
+  for (const url of locations) {
+    assert.ok(!redirectSources.has(url), url + ' is a redirect source');
+  }
+});
+
+test('reviewer entry resolves to declared canonical target rather than an alias', () => {
+  assert.ok(locations.includes(host + '/reviewer/index.html'));
+  assert.ok(!locations.includes(host + '/reviewer/'));
+  assert.match(read('reviewer/index.html'), /<link rel="canonical" href="https:\/\/www\.jrsstandard\.com\/reviewer\/index\.html"/);
+});

@@ -31,3 +31,7 @@ Increase the probability that a practitioner or search/retrieval system reaches 
 
 ## Release and rollback
 Keep PR #117's verified exact-commit evidence unchanged and retain its independent release hold. Land this work only through a separate reviewed change. The baseline remains main commit pinned at implementation. Inspect any subsequent merge-base drift before final approval. Do not merge, publish, alter Vercel protection or announce conformance without the owner's dated authorization and the applicable human acceptance evidence.
+
+## November 4 integration checkpoint
+
+PR #117 independently corrected canonical sitemap and reviewer routing with exact-commit hosted verification. This separate draft PR #123 now uses PR #117's corrected 45-entry sitemap as its source baseline and adds only the separately canonical online-methodology page as entry 46. It also introduces public AI source routing and regression tests, including explicit redirect-source rejection. The application of these changes to production remains unapproved. PR #117 and PR #123 are not merged; merge order and any final reconciliation must be checked before release. No increased indexing, citation rate or traffic is claimed.
