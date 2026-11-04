@@ -86,6 +86,36 @@ assert.ok(maturityResearch.includes('id="professional-articles"') &&
  maturityResearch.includes('corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/'),
  'publisher commentary must remain available outside research validation claims');
 
+// Source-only assurance for the voluntary, locally retained evaluation worksheet.
+// It is a public blank template, not a case-record submission channel or a completed study.
+const worksheetPath='assets/jrs-practitioner-evaluation-worksheet.txt';
+assert.ok(existsSync(join(root,worksheetPath)), 'blank practitioner evaluation worksheet must exist');
+const worksheet=read(worksheetPath);
+for(const phrase of [
+ 'Status: Blank evaluation aid',
+ 'not an online research enrollment or upload mechanism',
+ 'Standard PDF v2.0 (2026) and online methodology v1.0 (May 2026)',
+ 'Ordinary review completed before JRS review?',
+ 'Independent review/adjudication',
+ 'Paired records with JRS-only concerns',
+ 'Records corrected, escalated, unresolved',
+ 'Negative or contrary findings',
+ 'NOT ASSESSED'
+])assert.ok(worksheet.includes(phrase),'evaluation worksheet claim or evidence field missing: '+phrase);
+for(const path of ['research.html','organization.html']){
+ const page=read(path);
+ assert.ok(page.includes('href="'+worksheetPath+'"'),path+' must link directly to the local evaluation template');
+ assert.ok(page.includes('download="JRS_Practitioner_Evaluation_Worksheet_v0.1.txt"'),
+  path+' must offer a local copy rather than an upload form');
+}
+assert.ok(read('organization.html').includes('not submitted to this website'),
+ 'organizational evidence worksheet must not suggest public record collection');
+assert.doesNotMatch(worksheet,/<form|<script|fetch\(|formspree|sendBeacon\(/i,
+ 'blank worksheet must contain no executable submission or tracking logic');
+assert.ok(!read('.vercelignore').split('\n').some(x=>/^\s*assets\/\s*$/.test(x)),
+ 'published resources should not be excluded as an entire assets directory');
+console.log('PASS: blank local worksheet preserves evidence, scope, edition and privacy boundaries.');
+
 // Guard international expert provenance and remove extraneous product-status copy.
 for(const page of ['index.html','about.html','research.html','research-summary.html','investigator-guides.html']){
  assert.match(read(page),/16 independent international experts from 11 countries across five continents/,
