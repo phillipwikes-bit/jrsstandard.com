@@ -449,14 +449,32 @@ th{font-size:10px;letter-spacing:.055em}
       <button type="button" class="btn" id="current-inquiry-local-clear" disabled>Clear local file</button>
     </div>
     <p class="note" id="current-inquiry-local-status" role="status" aria-live="polite">No local CSV loaded. This option does not activate automatic Formspree synchronization.</p>
+    <div class="bar" aria-label="Local inquiry review filters">
+      <label for="current-inquiry-local-search">Search imported inquiries</label>
+      <input id="current-inquiry-local-search" type="search" maxlength="120" placeholder="Name, email, category, message" disabled>
+      <label for="current-inquiry-local-filter">Temporary follow-up</label>
+      <select id="current-inquiry-local-filter" disabled>
+        <option value="all">All statuses</option>
+        <option value="not_recorded">Not recorded</option>
+        <option value="needs_review">Needs review</option>
+        <option value="response_recorded">Reply marked sent</option>
+        <option value="closed">Closed</option>
+        <option value="not_relevant">Not relevant</option>
+      </select>
+    </div>
+    <div class="bar">
+      <button type="button" class="btn" id="current-inquiry-local-prev" disabled>Previous 50</button>
+      <button type="button" class="btn" id="current-inquiry-local-next" disabled>Next 50</button>
+      <p class="note" id="current-inquiry-local-page" role="status" aria-live="polite">No local rows to review.</p>
+    </div>
     <div class="tablewrap">
       <table id="current-inquiry-local-table">
-        <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding-bottom:8px">Unverified local preview, maximum 150 visible rows. The file remains in browser memory until cleared or the page closes.</caption>
+        <caption style="caption-side:top;text-align:left;font-size:12px;color:var(--muted-soft);padding-bottom:8px">Unverified local preview, 50 rows per page. All imported rows can be reviewed. The file remains in browser memory until cleared or the page closes.</caption>
         <thead><tr><th>Source date</th><th>Category</th><th>Name</th><th>Email</th><th>Organization</th><th>Message</th><th>Contact consent, self-declared</th><th>Temporary follow-up</th></tr></thead>
         <tbody id="current-inquiry-local-rows"><tr><td colspan="8">No local file loaded.</td></tr></tbody>
       </table>
     </div>
-    <p class="note">Imports require recognizable email and message columns and are limited to 1 MB and 2,000 rows. The original Formspree record remains the authority. Imported records are not evidence of verified unique people, qualified buyers or permission for commercial disclosure. Preserve any private export securely.</p>
+    <p class="note">Imports require recognizable email and message columns and are limited to 1 MB and 2,000 rows. Search, filter, and review all imported rows. Save an explicitly exported <strong>local owner review CSV</strong> and re-import it to restore manual follow-up decisions. The original Formspree file remains the authoritative source; the reviewed CSV is a working copy with source fields escaped for spreadsheet safety. Neither file establishes verified unique people, qualified buyers or permission for commercial disclosure. Preserve any private export securely.</p>
   </section>
 
   <p class="note" id="ld-source-coverage" role="status" aria-live="polite">Historical source coverage not yet verified.</p>

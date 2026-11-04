@@ -93,3 +93,26 @@ While Formspree read API access remains unavailable, the private owner dashboard
 This fallback does **not** provide automatic synchronization and it does not fix the Formspree Professional/Business submissions API requirement or the unapplied Supabase follow-up migration. It creates no storage of contact details in another system. The Formspree inbox remains authoritative and Gmail notifications remain the existing owner alert route. No change was made to the public contact form or existing contact-consent terms.
 
 Production, public contact systems and private buyer release permissions remain unchanged. This is source-only preparation under the existing draft release hold.
+
+## Corrected local review continuity and full-row navigation, 3 November 2026
+
+The original fallback lost temporary owner follow-up decisions whenever a reviewed CSV was reimported. That defect is corrected in the source candidate.
+
+- JRS-reviewed CSV exports include a fixed `jrs_owner_local_review_v1` marker, an allowlisted owner status and an ISO-8601 `reviewed_at` timestamp per row. Reimport restores these self-described manual states. Files lacking the review marker are treated as unreviewed provider exports, even if they contain a field named `status`. A mismatched marker, unsupported status or malformed timestamp is rejected instead of silently accepted.
+- Contact consent remains **self-declared** on export and reimport, and is never converted into a verified research, publication, buyer-diligence or successor-transfer release. The review marker is not an authenticated signature or proof of provenance; the original Formspree export remains the authority.
+- All up to 2,000 imported rows are now reachable through 50-row pages, local text search and a local follow-up-status filter. The first 150-row-only interface could not mark every record before, although it would export them. The pure `selectLocalPage` helper and its synthetic regression prove access to row 151 and row 2,000.
+- CSV exports mitigate spreadsheet formula interpretation by prefixing potentially dangerous cell values. That escaping means the reviewed CSV is a **working copy**, not a byte-for-byte archival preservation of the original Formspree file. Preserve originals separately and do not claim that a reimported reviewed CSV is independent evidence of provider receipt.
+- All local imports and manual state changes remain exclusively in browser memory until the owner explicitly exports a local file. No automatic Gmail read, new database table, marketing workflow, Formspree API connection or new analytics is introduced.
+
+Formspree's published documentation states that CSV/JSON submission export is available on Personal, Professional and Business plans. The user's actual plan remains unverified. Do not claim the manual export fallback is accessible on an unverified Free plan.
+Reference: https://help.formspree.io/articles/form-and-project-settings/exporting-submissions/
+
+## Fail-closed protected preview diagnosis
+
+The separate hosted verifier now reports an HTTP 401/403 access denial as an **access verification blocker**, not a source-code regression, and continues to fail. It never logs the bypass token, private host URL with credentials, or response body. Source-identity and nine PDF checks remain unchanged.
+
+Vercel project configuration was verified: Vercel Authentication enabled for all deployments except custom domains. Exact-commit Vercel deployment `dpl_2YMvtm1PuEXBAG4v3qmjxd4bp7HC` is READY for `edfbe6aba302938bd968bb867cc5029fb5b975ea`, but hosted verification failed with an HTTPError during `index.html` access. Project deployment protection must remain on. No new automation bypass secret, shareable URL, production merge, deployment or public exposure was requested.
+
+Reference: https://vercel.com/docs/deployment-protection/methods-to-bypass-deployment-protection/protection-bypass-automation
+
+**Current release disposition:** Draft-only, private owner dashboard candidate. Independent protected-preview access, source/PDF delivery, privacy and owner authorization remain outstanding. Formspree submissions API and Supabase follow-up persistence still require external provider access.

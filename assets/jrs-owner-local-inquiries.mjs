@@ -2,6 +2,8 @@
 // browser session, do not enter the provider inbox, and are not source-verified.
 const MAX_FILE_BYTES=1024*1024, MAX_ROWS=2000, MAX_COLS=40, MAX_CELL=5000;
 const statuses=['not_recorded','needs_review','response_recorded','closed','not_relevant'];
+const REVIEW_SCHEMA='jrs_owner_local_review_v1';
+const PAGE_SIZE=50;
 const labels={
   not_recorded:'Not recorded',needs_review:'Needs review',
   response_recorded:'Reply marked sent (unverified)',closed:'Closed (manual)',
@@ -58,11 +60,22 @@ export function normalizeInquiries(text){
     }
     return '';
   };
+  // Only a document bearing this local-review schema can restore manual states.
+  // Arbitrary provider fields called "status" never become owner classifications.
+  const fromLocalReview=headers.includes('local_review_schema');
   const out=records.map((r,i)=>{
-    const choice=col(r,'consent_to_contact','contact_permission','consent').toLowerCase();
-    const contact=choice==='true'||choice==='yes'||choice==='on'||choice==='recorded-yes'
-      ?'self-declared yes':choice==='false'||choice==='no'||choice==='recorded-no'
+    if(fromLocalReview&&col(r,'local_review_schema')!==REVIEW_SCHEMA)
+      throw Error('csv_review_schema_invalid');
+    const choice=col(r,'consent_to_contact','contact_permission','consent','contact').toLowerCase();
+    const contact=choice==='true'||choice==='yes'||choice==='on'||choice==='recorded-yes'||choice==='self-declared yes'
+      ?'self-declared yes':choice==='false'||choice==='no'||choice==='recorded-no'||choice==='self-declared no'
         ?'self-declared no':'not recorded';
+    const status=fromLocalReview?col(r,'status'):'not_recorded';
+    if(!statuses.includes(status))throw Error('csv_review_status_invalid');
+    const reviewedAt=fromLocalReview?col(r,'reviewed_at'):'';
+    if(reviewedAt&&(!/^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}[.][0-9]{3}Z$/.test(reviewedAt)
+       ||Number.isNaN(Date.parse(reviewedAt))))
+      throw Error('csv_review_date_invalid');
     return {
       row:i+2,
       date:col(r,'date','_date','submitted_at','submitted','created_at'),
@@ -73,10 +86,29 @@ export function normalizeInquiries(text){
       message:col(r,'message'),
       contact,
       source_record_id:col(r,'source_record_id','_id','id'),
-      status:'not_recorded'
+      status,
+      reviewed_at:reviewedAt,
+      local_review_source:fromLocalReview?'reimported_local_review':'unreviewed_provider_export'
     };
   });
   return out;
+}
+export function selectLocalPage(records,searchTerm='',followup='all',requestedPage=0){
+  // Deterministic page selection keeps every imported row reachable for review.
+  // Search and filtering run only in browser memory, never against a remote API.
+  const term=String(searchTerm||'').trim().toLocaleLowerCase();
+  const wanted=String(followup||'all');
+  const matching=records.filter(r=>
+    (wanted==='all'||r.status===wanted) &&
+    (!term||[r.name,r.email,r.organization,r.category,r.message]
+      .some(value=>String(value||'').toLocaleLowerCase().includes(term)))
+  );
+  const pages=Math.max(1,Math.ceil(matching.length/PAGE_SIZE));
+  const page=Number.isInteger(requestedPage)&&requestedPage>0
+    ?Math.min(requestedPage,pages-1):0;
+  const start=page*PAGE_SIZE;
+  return {items:matching.slice(start,start+PAGE_SIZE),total:matching.length,
+    pages,page,start,imported:records.length};
 }
 function protectCsv(value){
   let v=String(value??'');
@@ -85,10 +117,11 @@ function protectCsv(value){
 }
 export function exportInquiries(rows){
   const keys=['date','category','name','email','organization','message','contact',
-    'source_record_id','status','row'];
+    'source_record_id','status','reviewed_at','local_review_schema','row'];
   const cells=[keys.map(protectCsv).join(',')];
   for(const r of rows){
-    cells.push(keys.map(k=>protectCsv(r[k])).join(','));
+    const record={...r,local_review_schema:REVIEW_SCHEMA};
+    cells.push(keys.map(k=>protectCsv(record[k])).join(','));
   }
   return '\uFEFF'+cells.join('\r\n');
 }
@@ -98,8 +131,13 @@ function setup(){
   const table=document.getElementById('current-inquiry-local-rows');
   const exportBtn=document.getElementById('current-inquiry-local-export');
   const clearBtn=document.getElementById('current-inquiry-local-clear');
-  if(!input||!state||!table||!exportBtn||!clearBtn)return;
-  let records=[];
+  const search=document.getElementById('current-inquiry-local-search');
+  const filter=document.getElementById('current-inquiry-local-filter');
+  const prev=document.getElementById('current-inquiry-local-prev');
+  const next=document.getElementById('current-inquiry-local-next');
+  const pageStatus=document.getElementById('current-inquiry-local-page');
+  if(!input||!state||!table||!exportBtn||!clearBtn||!search||!filter||!prev||!next||!pageStatus)return;
+  let records=[],page=0;
   const cell=(tr,v)=>{
     const td=document.createElement('td');
     td.textContent=String(v??'');tr.appendChild(td);return td;
@@ -108,11 +146,23 @@ function setup(){
     table.textContent='';
     exportBtn.disabled=records.length===0;
     clearBtn.disabled=records.length===0;
+    search.disabled=records.length===0;filter.disabled=records.length===0;
     if(!records.length){
+      prev.disabled=true;next.disabled=true;pageStatus.textContent='No local rows to review.';
       const tr=document.createElement('tr'),td=cell(tr,'No local file loaded.');
       td.colSpan=8;table.appendChild(tr);return;
     }
-    for(const r of records.slice(0,150)){
+    const view=selectLocalPage(records,search.value,filter.value,page);
+    page=view.page;
+    prev.disabled=page===0;next.disabled=page>=view.pages-1;
+    pageStatus.textContent='Page '+(page+1)+' of '+view.pages+'. Showing '+
+      (view.total?view.start+1:0)+'–'+Math.min(view.start+PAGE_SIZE,view.total)+
+      ' of '+view.total+' matching rows ('+view.imported+' imported).';
+    if(!view.items.length){
+      const tr=document.createElement('tr'),td=cell(tr,'No imported rows match the local search and status filter.');
+      td.colSpan=8;table.appendChild(tr);return;
+    }
+    for(const r of view.items){
       const tr=document.createElement('tr');
       cell(tr,r.date||'Not supplied');cell(tr,r.category||'Unclassified');
       cell(tr,r.name||'Not supplied');cell(tr,r.email||'Not supplied');
@@ -127,13 +177,15 @@ function setup(){
       select.value=r.status;
       select.addEventListener('change',()=>{
         r.status=select.value;
-        state.textContent=records.length+' locally imported rows. Follow-up changes are temporary until exported. No database or Gmail changes were made.';
+        r.reviewed_at=r.status==='not_recorded'?'':new Date().toISOString();
+        state.textContent='Owner-entered status changed in browser memory. Export a reviewed CSV to retain it across sessions; no database or Gmail changes were made.';
+        if(filter.value!=='all')redraw();
       });
       td.appendChild(select);table.appendChild(tr);
     }
   }
   function clear(){
-    records=[];input.value='';
+    records=[];page=0;input.value='';search.value='';filter.value='all';
     state.textContent='No file loaded. Nothing was saved to the server.';
     redraw();
   }
@@ -148,9 +200,12 @@ function setup(){
     try{
       const content=await file.text();
       const parsed=normalizeInquiries(content);
-      records=parsed;
-      state.textContent=records.length+' unverified rows loaded in browser memory only. Showing first '+
-        Math.min(records.length,150)+'. CSV content is not submitted to JRS, Formspree or Google Analytics.';
+      records=parsed;page=0;search.value='';filter.value='all';
+      const restored=records.filter(r=>r.local_review_source==='reimported_local_review').length;
+      state.textContent=records.length+' unverified rows loaded in browser memory only. '+
+        (restored?'Restored local owner classifications from a previously reviewed CSV. ':
+          'New provider-export rows have no verified follow-up status. ')+
+        'Search or page through every row. No CSV content was submitted to JRS, Formspree or Google Analytics.';
       redraw();
     }catch{
       records=[];input.value='';
@@ -164,10 +219,14 @@ function setup(){
     const blob=new Blob([exportInquiries(records)],{type:'text/csv;charset=utf-8'});
     const url=URL.createObjectURL(blob);
     const a=document.createElement('a');
-    a.href=url;a.download='jrs-private-local-inquiry-review.csv';a.click();
+    a.href=url;a.download='jrs-private-local-inquiry-review-v1.csv';a.click();
     setTimeout(()=>URL.revokeObjectURL(url),1000);
     state.textContent='Private CSV download initiated. No permanent dashboard follow-up storage was created.';
   });
+  search.addEventListener('input',()=>{page=0;redraw();});
+  filter.addEventListener('change',()=>{page=0;redraw();});
+  prev.addEventListener('click',()=>{if(page>0){page--;redraw();}});
+  next.addEventListener('click',()=>{page++;redraw();});
   clearBtn.addEventListener('click',clear);
   redraw();
 }
