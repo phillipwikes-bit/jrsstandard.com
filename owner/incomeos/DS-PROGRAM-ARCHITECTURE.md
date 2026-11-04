@@ -1,6 +1,6 @@
 # Decision Spellchecker in IncomeOS: inventory, architecture and implementation report
 
-**Date:** 2026-11-04 · **Branch:** `feature/incomeos-owner-prototype-2026-11-01` (draft PR #91, not for merge) · **Directive:** owner "Claude Code Master Directive: IncomeOS: Decision Spellchecker Commercial Operating System", 2026-11-04.
+**Date:** 2026-11-04 (updated after review commit `df77f18` and report commit `4d0989f`) · **Branch:** `feature/incomeos-owner-prototype-2026-11-01` (draft PR #91, not for merge) · **Directive:** owner "Claude Code Master Directive: IncomeOS: Decision Spellchecker Commercial Operating System", 2026-11-04.
 **Status:** development and planning only. Nothing is deployed, released, sold, sent or paid.
 
 ## 1. Evidence inspected and what is missing
@@ -65,6 +65,10 @@ Events: `incomeos:ds-update` (program changes) and `incomeos:ds-ledger` (program
 - **Finance:** ten accounting dimensions; actuals only from tagged ledger rows; revenue counts as received only when bank-matched and tied to an executed agreement; reinvestment without authorization is flagged; pricing scenarios are labelled PROJECTION with break-even and a 12-month cumulative cash flow.
 - **Operating cycle:** owner-run only. It reviews stale and low-confidence findings, ranks tasks by the owner's value, cost and risk scores, and records what it reviewed. It fetches nothing and contacts no one. The dashboard states that no autonomous process is configured.
 
+- **Integrity of loaded files:** a workspace file edited by hand is held to the same rules as the app: gate approvals need their approver, date, reference and primary evidence; owner authorizations need a known action, date and reference; rights grants need an executed instrument; pipeline history must be sequential. References must name the expected kind of record.
+- **Honest feedback:** the Program view reports a change only after the workspace applied it; otherwise it says "Not applied" with the reason.
+- **Program report:** a confidential owner and counsel Markdown file with a diligence map (what, who, how, evidence, rights, technology, validation, limitations, commercial value) rated only from recorded evidence, plus gates, blockers, assertions, finance and restricted actions. Contacts and prospects appear as counts only. Downloaded locally; never sent.
+
 ## 5. Security status
 
 - No change to the CSP (`connect-src 'self'`), no new network call, no browser storage.
@@ -77,8 +81,8 @@ Events: `incomeos:ds-update` (program changes) and `incomeos:ds-ledger` (program
 |---|---|
 | 1 Architecture and evidence recovery | Inventory and architecture done (this file). Evidence recovery **blocked**: controlling documents and source-aligned files are not available. |
 | 2 Command Center | Implemented: Program is the first navigation item and default view, backed by the persistent program record. |
-| 3 Research and engineering | Data model and forms for evidence, findings, tasks; requirements, defects, releases and runs supported in the engine. No source-backed research has been entered. |
-| 4 Commercial infrastructure | Contact ledger, pipeline, pricing scenarios and finance integration implemented. Licensing templates, dossiers and agreements **not drafted** (they need the controlling documents and counsel). |
+| 3 Research and engineering | Forms for evidence, findings, tasks (start and done), requirements, defects, release candidates, studies, runs, rights components and evidence links. No source-backed research has been entered. |
+| 4 Commercial infrastructure | Contact ledger, message approval, recorded contacts, suppression, pipeline advance, owner authorization and gate approval records, pricing scenarios, finance integration and the confidential program report implemented. Licensing templates, dossiers and agreements **not drafted** (they need the controlling documents and counsel). |
 | 5 Operational verification | Engine, browser, layout and regression suites pass locally; database access controls cannot be verified until provisioned. |
 | 6 Controlled commercialization | Not started; every external action is gated and not authorized. |
 
