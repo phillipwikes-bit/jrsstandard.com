@@ -48,6 +48,17 @@
       if(focused){var f=document.getElementById(focused);if(f)f.focus();}
     }
     function clearTyped(){out.querySelectorAll("input[id]").forEach(function(e){if(e.type!=="file"&&e.type!=="password"&&e.type!=="date")e.value="";});}
+    function unrecordedPaidStudies(ws){
+      var p=ws&&ws.researchProgress,refs={},known={},out2=[];
+      if(!p||typeof p!=="object"||Array.isArray(p))return out2;
+      arr(ws.ledger).forEach(function(e){if(e&&e.kind==="income"&&typeof e.reference==="string")refs[e.reference]=true;});
+      var latest=window.IncomeOSResearchLatest;(latest&&Array.isArray(latest.results)?latest.results:[]).forEach(function(r){known[r.id]=r;});
+      Object.keys(p).sort().forEach(function(id){
+        if(!p[id]||p[id].status!=="Paid (self-reported)"||refs[("study:"+id).slice(0,120)])return;
+        var k=known[id]||{};out2.push({id:id,title:k.title||("Study "+id),provider:k.provider||"",advertisedUsd:k.paymentUsd});
+      });
+      return out2;
+    }
     function renderInner(){
       out.replaceChildren();
       var ws=state.ws||{schema:"incomeos.workspace.v1"},asOf=today(),r={};
@@ -69,6 +80,13 @@
       var s=section("Needs you");
       if(!a.needsYou.length)el(s,"p","Nothing needs you right now.","muted");
       else{var ul=el(s,"ul");a.needsYou.slice(0,25).forEach(function(x){el(ul,"li",(x.priority===1?"Urgent: ":"")+x.text,x.priority===1?"tag-hold":null);});}
+      // Studies the owner marked paid that have no income record yet, so a payment is never forgotten.
+      var paidOpen=unrecordedPaidStudies(ws);
+      if(paidOpen.length){s=section("Paid studies not yet in Income");
+        el(s,"p","You marked these studies paid. Record each payment once in Income; nothing is recorded until you save it there.","muted");
+        var up=el(s,"ul");paidOpen.forEach(function(x){var li=el(up,"li",x.title+(x.provider?" ("+x.provider+")":"")+" ");
+          var b=el(li,"button","Record in Income","textbtn");b.type="button";
+          b.addEventListener("click",function(){try{document.dispatchEvent(new CustomEvent("incomeos:record-study-payment",{detail:{studyId:x.id,title:x.title,provider:x.provider,advertisedUsd:x.advertisedUsd}}));}catch(e){}});});}
       if(a.highestValue.length){s=section("Highest-value eligible work");var u2=el(s,"ul");a.highestValue.forEach(function(h){var li=el(u2,"li",h.title+" ("+h.platform+"), about "+money(h.effectiveHourlyUsd)+"/h before tax ");link(li,h.sourceUrl,"source");});}
       if(state.research&&state.research.results.length){
         var rOpen=state.research.results.filter(function(x){return x.priority!=="HOLD";});

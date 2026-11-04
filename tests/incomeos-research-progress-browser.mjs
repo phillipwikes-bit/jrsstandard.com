@@ -41,6 +41,9 @@ await page.waitForFunction(()=>/Study progress saved in your workspace: Applied/
 {const card=page.locator("article.radar-card",{has:page.locator(`select[aria-label="${label}"]`)});
  assert.equal(await card.getByRole("button",{name:"Record this payment in Income"}).count(),0,"not offered before Paid");
  await page.locator(`select[aria-label="${label}"]`).selectOption("Paid (self-reported)");
+ // "This week" lists the paid study until its income record exists.
+ const title0=label.replace(/^Owner progress for /,"");
+ await page.waitForFunction(t=>{const o=document.getElementById("briefing-output");return o&&o.textContent.includes("Paid studies not yet in Income")&&o.textContent.includes(t);},title0);
  const rec=page.locator("article.radar-card",{has:page.locator(`select[aria-label="${label}"]`)}).getByRole("button",{name:"Record this payment in Income"});
  await rec.click();
  assert.ok(await page.locator("#view-ledger").isVisible(),"goes to Income");
@@ -55,6 +58,7 @@ await page.waitForFunction(()=>/Study progress saved in your workspace: Applied/
  const before=await page.locator("#ledger-list .entry").count();
  await page.locator("#receipt-date").fill("2026-10-30");await page.locator("#receipt-save").click();
  assert.equal(await page.locator("#ledger-list .entry").count(),before+1,"saved once by the owner");
+ assert.doesNotMatch(await page.locator("#briefing-output").textContent(),/Paid studies not yet in Income/,"gone once recorded");
  await nav("research");
  await page.locator("article.radar-card",{has:page.locator(`select[aria-label="${label}"]`)}).getByRole("button",{name:"Record this payment in Income"}).click();
  assert.match(await page.locator("#receipt-editing").textContent(),/^Already recorded for this study\. Editing: /);
