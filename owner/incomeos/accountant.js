@@ -169,6 +169,20 @@
     return {classes:out,unsupported:unsupported,total:entries.length,
       notice:"Classes reflect recorded evidence only. No bank matching, audit or tax determination has been performed."};
   }
+  // Receipt gaps: money actually paid out with no receipt or invoice on file ("Receipt not located" or
+  // "Bank/card statement only"), grouped by payee and month. Refunds, unpaid bills and income are excluded.
+  function receiptGaps(entries){
+    var items=entries.filter(function(e){return e.kind==="outflow"&&e.type!=="refund"&&paidOut(e)&&["missing","bank"].indexOf(e.evidenceStatus||"missing")>=0;});
+    var map={};
+    items.forEach(function(e){
+      var payee=e.payer||"(payee not recorded)",month=String(e.date).slice(0,7),k=payee+"\u0000"+month;
+      if(!map[k])map[k]={payee:payee,month:month,count:0,usd:0,statementOnly:0};
+      map[k].count++;map[k].usd=round(map[k].usd+num(e.amountUsd));if(e.evidenceStatus==="bank")map[k].statementOnly++;
+    });
+    var groups=Object.keys(map).map(function(k){return map[k];}).sort(function(a,b){return a.month.localeCompare(b.month)||a.payee.localeCompare(b.payee);});
+    return {count:items.length,usd:round(items.reduce(function(n,e){return n+num(e.amountUsd);},0)),groups:groups,
+      items:items.slice().sort(function(a,b){return String(a.date).localeCompare(String(b.date));})};
+  }
   function totals(entries){
     var income=entries.filter(function(e){return e.kind==="income"&&e.status==="paid"&&e.scope==="income";});
     var nonincome=entries.filter(function(e){return e.kind==="income"&&e.status==="paid"&&e.scope==="nonincome";});
@@ -315,6 +329,11 @@
     rs.classes.forEach(function(c){if(!c.count)return;var row=place(box,"div","accountant-line");place(row,"span","",c.label+" ("+c.count+")");place(row,"strong","",money(c.usd));});
     if(rs.unsupported.count){var ur=place(box,"div","accountant-line");place(ur,"span","","Classification not supported: category \"other\" ("+rs.unsupported.count+")");place(ur,"strong","",money(rs.unsupported.usd));}
     place(box,"p","muted",rs.notice);
+    var gaps=receiptGaps(rows);
+    place(box,"h4","","Receipt gaps");
+    if(!gaps.count)place(box,"p","muted","No paid outflow is marked as missing a receipt.");
+    else{gaps.groups.forEach(function(g){var row=place(box,"div","accountant-line");place(row,"span","",g.month+" · "+g.payee+" ("+g.count+(g.statementOnly?", "+g.statementOnly+" statement only":"")+")");place(row,"strong","",money(g.usd));});
+      place(box,"p","muted",gaps.count+" paid outflow(s), "+money(gaps.usd)+", have no receipt or invoice on file. A bank or card statement shows payment, not what was bought.");}
     place(box,"p","muted","Supporting form references: "+(Object.keys(forms).length?Object.keys(forms).map(function(k){return k+" ("+forms[k]+")";}).join(", "):"None recorded")+". No bank, tax authority or payer validation has been performed.");
   }
   function showEntry(e){
@@ -439,6 +458,8 @@
     var rsum=reconciliationSummary(yearEntries());
     cats=cats.concat([[],["Reconciliation evidence","","Records","USD"]],rsum.classes.map(function(c){return [c.label,"",c.count,c.usd];}),
       [["Classification not supported (category other)","",rsum.unsupported.count,rsum.unsupported.usd],[rsum.notice]]);
+    var rg=receiptGaps(yearEntries());
+    cats=cats.concat([[],["Receipt gaps: month","Payee","Records","USD","Statement only"]],rg.groups.map(function(g){return [g.month,g.payee,g.count,g.usd,g.statementOnly];}),[["Receipt gaps total","",rg.count,rg.usd]]);
     download(csv([["IncomeOS personal tax-year summary",currentYear()]].concat([["Category","Amount or count"]],pairs,[[],["By category: group","Category","Records","USD"]],cats)),"IncomeOS-accountant-summary-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
   function backup(){download(JSON.stringify({format:"incomeos-accountant",version:2,exportedAt:new Date().toISOString(),entries:db.entries},null,2),"IncomeOS-accountant-private-backup-"+today()+".json","application/json");}
@@ -462,6 +483,11 @@
     place(r,"h2","","Reconciliation evidence");place(r,"p","",rsp.notice);
     var rtab=place(r,"table"),rbody=place(rtab,"tbody");
     rsp.classes.concat([{label:"Classification not supported (category other)",count:rsp.unsupported.count,usd:rsp.unsupported.usd}]).forEach(function(c){var tr=place(rbody,"tr");[c.label,String(c.count),money(c.usd)].forEach(function(x){place(tr,"td","",x);});});
+    var rgp=receiptGaps(yearEntries());
+    place(r,"h2","","Receipt gaps: "+rgp.count+" paid outflow(s), "+money(rgp.usd));
+    if(!rgp.count)place(r,"p","","No paid outflow is marked as missing a receipt.");
+    else{var gtab=place(r,"table"),gbody=place(gtab,"tbody");
+      rgp.items.forEach(function(e){var tr=place(gbody,"tr");[e.date,e.payer||"(payee not recorded)",e.label,e.evidenceStatus==="bank"?"Statement only":"Receipt not located",money(e.amountUsd)].forEach(function(x){place(tr,"td","",x);});});}
     var review=annualReview();
     place(r,"h2","","Outstanding documentation review");
     if(!review||review.invalidYear)place(r,"p","","Review module unavailable or report year invalid. Source completeness not verified.");
@@ -641,5 +667,5 @@
       var pass=$("briefing-passphrase");if(pass){pass.scrollIntoView({block:"center"});pass.focus();}
     });
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,reconciliationSummary:reconciliationSummary,completeness:completeness,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,reconciliationSummary:reconciliationSummary,receiptGaps:receiptGaps,completeness:completeness,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();

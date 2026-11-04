@@ -97,3 +97,13 @@ assert.match(src,/Payment account removed on import: it looked like a full card 
  assert.deepEqual([r.unsupported.count,r.unsupported.usd],[1,10]);
  assert.match(r.notice,/No bank matching, audit or tax determination/);}
 assert.match(src,/\["Reconciliation evidence","","Records","USD"\]/,"summary CSV carries reconciliation evidence");
+// Receipt gaps: paid outflows with no receipt on file, once each; refunds, unpaid bills, income and receipted items excluded.
+{const ex=(o)=>({kind:"outflow",type:"expense",category:"software",amountUsd:10,businessUse:null,label:"x",date:"2026-10-03",payer:"Vendor A",evidenceStatus:"missing",reference:"INV-9",...o});
+ const g=A.receiptGaps([ex({}),ex({evidenceStatus:"bank",amountUsd:5}),ex({payer:"Vendor B",date:"2026-11-01"}),ex({payer:""}),
+   ex({evidenceStatus:"email"}),ex({evidenceStatus:"both"}),ex({evidenceStatus:"both-unverified"}),ex({type:"refund"}),ex({paymentStatus:"scheduled"}),ex({paymentStatus:"disputed"}),
+   ex({type:"taxpayment",amountUsd:200}),{kind:"income",scope:"income",status:"paid",grossUsd:50,label:"i",date:"2026-10-03"}]);
+ assert.equal(g.count,5,"a reference number alone is not a receipt");assert.equal(g.usd,235);
+ assert.deepEqual(g.groups.map(x=>[x.month,x.payee,x.count,x.usd,x.statementOnly]),
+   [["2026-10","(payee not recorded)",1,10,0],["2026-10","Vendor A",3,215,1],["2026-11","Vendor B",1,10,0]]);
+ assert.equal(A.receiptGaps([]).count,0);}
+assert.match(src,/\["Receipt gaps: month","Payee","Records","USD","Statement only"\]/,"summary CSV carries receipt gaps");
