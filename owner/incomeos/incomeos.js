@@ -3,7 +3,7 @@
   var STORE_KEY = "incomeos.owner.prototype.v1";
   var state = { saved: [], stages: {}, receipts: [] };
   var feed = { studies: [], assets: [], asOf: "" };
-  var views = ["research", "assets", "ledger", "compound", "about"];
+  var views = ["ds", "research", "assets", "ledger", "compound", "about"];
   var stages = ["New", "Screening", "Applied", "Invited", "Completed", "Paid", "Declined"];
   var money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
   var money0 = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });

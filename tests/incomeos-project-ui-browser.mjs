@@ -40,6 +40,7 @@ const page=await ctx.newPage();
 const errors=[];page.on("pageerror",e=>errors.push(String(e)));
 await page.addInitScript(()=>{window.__writes=0;const o=Storage.prototype.setItem;Storage.prototype.setItem=function(k,v){if(String(k).startsWith("incomeos.project")||String(k).startsWith("incomeos.workspace")||String(k).startsWith("incomeos.briefing"))window.__writes++;return o.call(this,k,v);};});
 await page.goto(base);
+await page.locator('.bottomnav button[data-view="research"]').click(); // Program is the default view; research panels live under Research.
 // "Start here" opens on the first step and points to it.
 assert.match(await page.locator("#start-here-next").textContent(),/^Next: Open your qualification profile\./);
 assert.equal(await page.locator("#start-here-steps li").count(),6);

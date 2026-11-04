@@ -7,7 +7,7 @@
   // storage or the network: the owner saves the returned file themselves.
   // Encryption matches vault.js: PBKDF2-SHA256 (600,000 iterations) and AES-256-GCM.
   var FORMAT="incomeos-workspace",ITERATIONS=600000,SCHEMA="incomeos.workspace.v1";
-  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes"];
+  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes","dsProgram"];
   var dep=function(name,file){return root&&root[name]||(typeof require==="function"?require(file):null);};
   function isDate(x){return typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+"T00:00:00Z"));}
   function clone(x){return JSON.parse(JSON.stringify(x));}
@@ -51,6 +51,14 @@
       var cats=x.kind==="income"?INCOME_CATS:COST_CATS,cat=cats.indexOf(x.category)>=0?x.category:"other";
       rec={id:"m-"+x.date+"-"+slug(x.payer)+"-"+(list.length+1),kind:x.kind,date:x.date,payer:text(x.payer,100,"Payer or vendor"),label:text(x.label||x.payer,100,"Description"),category:cat,evidenceStatus:"missing",source:"manual"};
       if(x.kind==="income"){rec.grossUsd=money(x.amountUsd);rec.feesUsd="0.00";}else{rec.type="expense";rec.amountUsd=money(x.amountUsd);}
+      // Optional Decision Spellchecker accounting dimension: links the row to the program's financial engine.
+      if(x.dsDimension){
+        var DS=dep("IncomeOSDSProgram","./ds-program.js");if(!DS)throw Error("Decision Spellchecker engine unavailable");
+        var dims=x.kind==="income"?DS.REVENUE_DIMS:DS.COST_DIMS;
+        if(dims.indexOf(x.dsDimension)<0)throw Error("Choose a Decision Spellchecker "+(x.kind==="income"?"revenue":"cost")+" dimension");
+        rec.program="decision-spellchecker";rec.dsDimension=x.dsDimension;
+        if(x.kind==="income"&&x.dsAgreementId)rec.dsAgreementId=String(x.dsAgreementId).slice(0,80);
+      }
     }else if(section==="serviceNotes"){
       var v=text(x.vendor,100,"Vendor");
       list=list.filter(function(n){return String(n.vendor).toLowerCase()!==v.toLowerCase();});
@@ -66,6 +74,14 @@
     }else throw Error("Unknown section");
     next[section]=list.concat([rec]);
     return log(next,"ADD_"+section.toUpperCase(),{id:rec.id||rec.vendor},on);
+  }
+  // Replace the Decision Spellchecker program record after the program engine validated it.
+  function setDsProgram(ws,program,on,action){
+    if(!isDate(on))throw Error("Date required");
+    var DS=dep("IncomeOSDSProgram","./ds-program.js");if(!DS)throw Error("Decision Spellchecker engine unavailable");
+    var next=clone(validate(ws));next.dsProgram=DS.validate(clone(program));
+    var last=next.dsProgram.changeLog[next.dsProgram.changeLog.length-1];
+    return log(next,"DS_PROGRAM_"+(action||"UPDATED"),{programAction:last?last.action:null,programSeq:last?last.seq:null},on);
   }
   // Owner-entered study time components, keyed by research study id. Same limits as the research engine.
   function setResearchTime(ws,studyId,t,on){
@@ -189,7 +205,7 @@
     return validateDoc(JSON.parse(text));
   }
   var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
-    addBalance:addBalance,markAlerted:markAlerted,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
+    addBalance:addBalance,markAlerted:markAlerted,setDsProgram:setDsProgram,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSWorkspace=api;
 }(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:null)));

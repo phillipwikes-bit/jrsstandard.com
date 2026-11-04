@@ -671,6 +671,47 @@
       ],
       "requiredRemediation": "None for current scope",
       "acceptanceCriteria": "Next step correct for draft profile and unsaved workspace"
+    },
+    {
+      "featureId": "DS-PROGRAM-ENGINE",
+      "sourceFiles": [
+        "owner/incomeos/ds-program.js",
+        "owner/incomeos/workspace-store.js"
+      ],
+      "purpose": "Decision Spellchecker program record: shared evidence, identities, SP-01 to SP-18 slots, gates, tasks, validation, contact ledger, pipeline, rights, authorizations and finance in one document",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Controlling documents (Master Program O3, SP criteria, SAL packages, rights inventory, study designs) are not in the repository; their facts are owner assertions only",
+        "Database-enforced access not provisioned (DS-PROGRAM-SCHEMA.sql not applied)"
+      ],
+      "testCoverage": [
+        "tests/incomeos-ds-program.mjs"
+      ],
+      "requiredRemediation": "Owner supplies controlling documents; private database provisioned and verified",
+      "acceptanceCriteria": "No gate, SP check, pipeline stage or restricted action can advance without its evidence and authority; actual finance never includes projections"
+    },
+    {
+      "featureId": "UI-DS-COMMAND-CENTER",
+      "sourceFiles": [
+        "owner/incomeos/ds-program-ui.js",
+        "owner/incomeos/index.html",
+        "owner/incomeos/briefing-ui.js",
+        "owner/incomeos/incomeos.js"
+      ],
+      "purpose": "Program view: first and default IncomeOS view with status, gates, blockers, next actions, restricted actions, finance, validation claims, owner assertions, owner-run cycle and record forms",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Changes persist only when the owner saves the workspace file"
+      ],
+      "testCoverage": [
+        "tests/incomeos-ds-program-browser.mjs"
+      ],
+      "requiredRemediation": "None for current scope",
+      "acceptanceCriteria": "Honest seeded state at load, record and save round trip, no storage, no overflow at phone width"
     }
   ]
 }

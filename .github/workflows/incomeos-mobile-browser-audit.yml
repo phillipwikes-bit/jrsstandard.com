@@ -7,6 +7,7 @@ on:
       - 'tests/incomeos-browser-audit-check.py'
       - 'tests/incomeos-project-ui-browser.mjs'
       - 'tests/incomeos-research-ehy-browser.mjs'
+      - 'tests/incomeos-ds-program-browser.mjs'
       - '.github/workflows/incomeos-mobile-browser-audit.yml'
   workflow_dispatch:
 permissions:
@@ -55,4 +56,4 @@ jobs:
       - name: Verify owner panels at iPhone width (screening, This week, actions, encrypted save)
         env:
           CI: "true"
-        run: node tests/incomeos-project-ui-browser.mjs && node tests/incomeos-research-ehy-browser.mjs
+        run: node tests/incomeos-project-ui-browser.mjs && node tests/incomeos-research-ehy-browser.mjs && node tests/incomeos-ds-program-browser.mjs

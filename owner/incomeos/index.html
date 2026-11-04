@@ -56,12 +56,14 @@
 <script defer src="./recruiter-history.js"></script>
 <script defer src="./yield-compare.js"></script>
 <script defer src="./weekly-briefing.js"></script>
+<script defer src="./ds-program.js"></script>
 <script defer src="./workspace-store.js"></script>
 <script defer src="./briefing-ui.js"></script>
 <script defer src="./profile-editor.js"></script>
 <script defer src="./profile-ui.js"></script>
 <script defer src="./getting-started.js"></script>
 <script defer src="./vault-ui.js"></script>
+<script defer src="./ds-program-ui.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to dashboard</a>
@@ -87,7 +89,13 @@
     <div class="metric"><span>STUDIES TO REVIEW</span><strong id="metric-study">0</strong></div>
     <div class="metric"><span>ASSETS WATCHED</span><strong id="metric-asset">0</strong></div>
   </div>
-  <section id="view-research" class="view active" aria-labelledby="research-heading">
+  <section id="view-ds" class="view active" aria-labelledby="ds-heading">
+    <div class="sectionintro"><div><p class="kicker">PRIMARY PROGRAM</p><h2 id="ds-heading">Decision Spellchecker</h2><p>Evidence, engineering, validation, commercial and finance records in one place. Nothing here is released, sold or sent.</p></div></div>
+    <p id="ds-status" class="status" role="status" aria-live="polite">Program record shown from memory only.</p>
+    <button id="ds-start" class="smallbtn" type="button" hidden>Start the program record in this workspace</button>
+    <div id="ds-output"></div>
+  </section>
+  <section id="view-research" class="view" aria-labelledby="research-heading" hidden>
     <section id="start-here" class="panel" aria-labelledby="start-here-heading">
       <h3 id="start-here-heading">Start here</h3>
       <ol id="start-here-steps"></ol>
@@ -411,7 +419,8 @@
   </section>
 </main>
 <nav class="bottomnav" aria-label="IncomeOS main navigation">
-<button data-view="research" class="selected" aria-current="page"><span class="navicon">⌕</span>Research</button>
+<button data-view="ds" class="selected" aria-current="page"><span class="navicon">✓</span>Program</button>
+<button data-view="research"><span class="navicon">⌕</span>Research</button>
 <button data-view="assets"><span class="navicon">◇</span>Assets</button>
 <button data-view="ledger"><span class="navicon">▤</span>Income</button>
 <button data-view="compound"><span class="navicon">↗</span>Compound</button>

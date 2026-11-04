@@ -22,6 +22,7 @@ const browser=await chromium.launch(launchOptions);
 const ctx=await browser.newContext({...devices["iPhone 13"],acceptDownloads:true});
 const page=await ctx.newPage();const errors=[];page.on("pageerror",e=>errors.push(String(e)));
 await page.goto(`http://127.0.0.1:${server.address().port}/index.html`);
+await page.locator('.bottomnav button[data-view="research"]').click(); // Program is the default view; research panels live under Research.
 await page.waitForFunction(()=>document.querySelectorAll("#radar-results article").length>0,null,{timeout:15000});
 const cards=await page.$$eval("#radar-results article",els=>els.map(e=>e.textContent));
 assert.ok(cards.length>=1,"research cards rendered");
@@ -113,7 +114,7 @@ const ehyBefore=(await page.locator("#radar-results article",{hasText:openTitle}
 await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
 const [wdl]=await Promise.all([page.waitForEvent("download"),page.locator("#briefing-save").tap()]);
 const savedWs=readFileSync(await wdl.path(),"utf8");
-await page.reload();await page.waitForFunction(()=>document.querySelectorAll("#radar-results article").length>0);
+await page.reload();await page.locator('.bottomnav button[data-view="research"]').click();await page.waitForFunction(()=>document.querySelectorAll("#radar-results article").length>0);
 assert.match(await page.locator("#radar-results article",{hasText:openTitle}).textContent(),/EHY unavailable/,"times are gone after reload until the workspace is opened");
 await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
 await page.locator("#briefing-file").setInputFiles({name:"w.json",mimeType:"application/json",buffer:Buffer.from(savedWs)});
