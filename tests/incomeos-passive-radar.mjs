@@ -50,6 +50,14 @@ assert.ok(run([ok({costToPursueUsd:25})]).accepted[0].warnings.includes("COSTS_M
 assert.throws(()=>R.importFindings({schema:"other",findings:[]},asOf),/Not an incomeos.passive-findings.v1/);
 assert.throws(()=>R.importFindings({schema:R.SCHEMA,findings:Array(501).fill(ok())},asOf),/At most 500/);
 assert.throws(()=>R.importFindings({schema:R.SCHEMA,findings:[]},"bad"),/review date/);
+// Section 11 terms are carried when stated and shown as unknown when not; capital at risk is flagged.
+r=run([ok({provider:"Synthetic Fund",requiredCapitalUsd:1000,adminBurden:"low",counterpartyRisk:"high",lockupDays:90,liquidity:"Quarterly",taxNote:"Interest is taxable",requiredAction:"Open the offer page"})]);
+assert.deepEqual(r.accepted[0].terms,{provider:"Synthetic Fund",requiredCapitalUsd:1000,adminBurden:"low",counterpartyRisk:"high",defaultRisk:"unknown",liquidity:"Quarterly",lockupDays:90,taxNote:"Interest is taxable",requiredAction:"Open the offer page"});
+assert.ok(r.accepted[0].warnings.includes("REQUIRES_CAPITAL"));
+assert.deepEqual(run([ok()]).accepted[0].terms.requiredCapitalUsd,null);
+for(const [o,code] of [[{adminBurden:"trivial"},"LEVEL_INVALID:adminBurden"],[{lockupDays:1.5},"LOCKUP_INVALID"],[{requiredCapitalUsd:-1},"CAPITAL_INVALID"],
+  [{requiredAction:""},"TEXT_INVALID:requiredAction"],[{taxNote:"Tax-free, guaranteed return"},"RISK_SIGNAL"]])
+  assert.ok(run([ok(o)]).refused[0].reasons.includes(code),code);
 // The sample format passes its own check.
 assert.equal(R.importFindings(R.template(asOf),asOf).accepted.length,2);
 console.log("IncomeOS passive radar intake checks passed: source, date and direct link required; projections never income; nothing received.");

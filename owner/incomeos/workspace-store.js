@@ -7,7 +7,7 @@
   // storage or the network: the owner saves the returned file themselves.
   // Encryption matches vault.js: PBKDF2-SHA256 (600,000 iterations) and AES-256-GCM.
   var FORMAT="incomeos-workspace",ITERATIONS=600000,SCHEMA="incomeos.workspace.v1";
-  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes","dsProgram","researchProgress"];
+  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes","dsProgram","researchProgress","passiveFindings"];
   var dep=function(name,file){return root&&root[name]||(typeof require==="function"?require(file):null);};
   function isDate(x){return typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+"T00:00:00Z"));}
   function clone(x){return JSON.parse(JSON.stringify(x));}
@@ -28,7 +28,7 @@
   function newWorkspace(on){
     return {schema:SCHEMA,note:"Private IncomeOS workspace created "+(isDate(on)?on:"")+". Keep outside the repository; save encrypted.",
       ledger:[],rules:[],accounts:[],balances:[],claims:[],livedInStates:["MD"],searchHistory:[],serviceNotes:[],offers:[],
-      yieldParams:{amountUsd:0,horizonMonths:12,federalRatePct:0,stateRatePct:0,needLiquidity:true},researchStages:[],recruiterOf:{},verifiedPayments:{},lifecycle:[],previousAlertIds:[],changeLog:[],researchTimes:{},researchProgress:{}};
+      yieldParams:{amountUsd:0,horizonMonths:12,federalRatePct:0,stateRatePct:0,needLiquidity:true},researchStages:[],recruiterOf:{},verifiedPayments:{},lifecycle:[],previousAlertIds:[],changeLog:[],researchTimes:{},researchProgress:{},passiveFindings:{}};
   }
   var ACCOUNT_TYPES=["checking","savings","money_market","cd","treasury","brokerage","retirement","hsa","real_estate","vehicle","receivable","other_asset","credit_card","mortgage","auto_loan","student_loan","personal_loan","tax_owed","other_liability"];
   var INCOME_CATS=["research","evaluation","business","royalty","rental","interest","dividend","investment","reward","recovery","employment","pension","retirement","socialsecurity","unemployment","other"];
@@ -120,6 +120,29 @@
     if(status==="New")delete next.researchProgress[studyId];else next.researchProgress[studyId]={status:status,on:on};
     if(Object.keys(next.researchProgress).length>2000)throw Error("Too many study progress entries");
     return log(next,"SET_RESEARCH_PROGRESS",{studyId:studyId,status:status},on);
+  }
+  // Owner's decision on a passive-radar finding, with a copy of the finding's identifying details so the kept list
+  // survives without re-importing. A decision is never money: nothing here touches the ledger. "New" removes the entry.
+  var PASSIVE_STATUS=["New","Pursuing","Done","Dismissed"],PASSIVE_TYPES=["new_income","returned_capital","savings","projection"];
+  function httpsUrl(x){try{var u=new URL(x);return u.protocol==="https:"&&!u.username&&!u.password?u.href:null;}catch(e){return null;}}
+  function setPassiveFinding(ws,f,status,on){
+    if(!isDate(on))throw Error("Date required");
+    if(!f||typeof f!=="object"||typeof f.id!=="string"||!/^[^\u0000-\u001f]{1,120}$/.test(f.id))throw Error("Invalid finding id");
+    if(PASSIVE_STATUS.indexOf(status)<0)throw Error("Invalid finding decision");
+    var next=clone(validate(ws)),cur=next.passiveFindings;
+    next.passiveFindings=Object.assign({},cur&&typeof cur==="object"&&!Array.isArray(cur)?cur:{});
+    if(status==="New")delete next.passiveFindings[f.id];
+    else{
+      var src=httpsUrl(f.sourceUrl),direct=httpsUrl(f.directUrl);
+      if(!src||!direct)throw Error("A kept finding needs its https source and direct links");
+      if(PASSIVE_TYPES.indexOf(f.valueType)<0)throw Error("Invalid finding type");
+      if(!isDate(f.foundOn))throw Error("A kept finding needs its found-on date");
+      next.passiveFindings[f.id]={status:status,on:on,title:text(f.title,200,"Title"),valueType:f.valueType,sourceName:text(f.sourceName,120,"Source"),
+        sourceUrl:src,directUrl:direct,foundOn:f.foundOn,deadline:isDate(f.deadline)?f.deadline:null,
+        amountUsd:typeof f.amountUsd==="number"&&isFinite(f.amountUsd)&&f.amountUsd>=0?f.amountUsd:null,amountBasis:["stated","estimated"].indexOf(f.amountBasis)>=0?f.amountBasis:"unknown"};
+    }
+    if(Object.keys(next.passiveFindings).length>2000)throw Error("Too many kept findings");
+    return log(next,"SET_PASSIVE_FINDING",{id:f.id,status:status},on);
   }
   function clearResearchTime(ws,studyId,on){
     var next=clone(validate(ws));if(next.researchTimes)delete next.researchTimes[studyId];
@@ -230,7 +253,7 @@
     if(isEncrypted(text)){if(!passphrase)throw Error("This workspace is encrypted. Enter its passphrase.");return decrypt(passphrase,text);}
     return validateDoc(JSON.parse(text));
   }
-  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,setResearchProgress:setResearchProgress,PROGRESS:PROGRESS.slice(),clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
+  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,setResearchProgress:setResearchProgress,PROGRESS:PROGRESS.slice(),setPassiveFinding:setPassiveFinding,PASSIVE_STATUS:PASSIVE_STATUS.slice(),clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
     addBalance:addBalance,markAlerted:markAlerted,setDsProgram:setDsProgram,setLedger:setLedger,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSWorkspace=api;

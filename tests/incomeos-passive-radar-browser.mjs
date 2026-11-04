@@ -60,6 +60,45 @@ assert.equal(await page.locator(".passive-finding").count(),0);
 // The sample format downloads.
 const [dl]=await Promise.all([page.waitForEvent("download"),page.locator("#passive-template").tap()]);
 assert.equal(JSON.parse(readFileSync(await dl.path(),"utf8")).schema,"incomeos.passive-findings.v1");
+// Decisions: disabled until a workspace is open; then Pursuing keeps a finding, Dismissed hides it in later files,
+// and both survive an encrypted save, page reload and reopen.
+const nav=v=>page.locator(`.bottomnav button[data-view="${v}"]`).click();
+const load=async()=>{await page.locator("#passive-import-file").setInputFiles({name:"f.json",mimeType:"application/json",buffer:Buffer.from(JSON.stringify(file))});
+  await page.locator("#passive-import").tap();await page.locator(".passive-finding").first().waitFor();};
+await load();
+const decision=id=>page.locator(`.passive-finding[data-finding-id="${id}"] select`);
+assert.ok(await decision("a").isDisabled(),"no decision without a workspace");
+assert.match(await page.locator("#passive-kept").textContent(),/Open your workspace/);
+await nav("research");await page.locator("#briefing-new").tap();await nav("assets");
+assert.ok(!(await decision("a").isDisabled()),"enabled once a workspace is open");
+await decision("a").selectOption("Pursuing");
+await decision("b").selectOption("Dismissed");
+assert.match(await page.locator("#passive-status").textContent(),/1 dismissed earlier and hidden/);
+assert.equal(await page.locator(".passive-finding").count(),1,"dismissed finding hidden");
+const keptText=await page.locator("#passive-kept").textContent();
+assert.match(keptText,/Synthetic unclaimed property match/);assert.match(keptText,/Pursuing since/);assert.match(keptText,/Returned capital/);
+assert.doesNotMatch(keptText,/Synthetic yield projection/,"dismissed findings are not in the kept list");
+assert.equal(await page.locator('#passive-kept a').first().getAttribute("href"),"https://example.gov/claim");
+await nav("research");
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+const [saveDl]=await Promise.all([page.waitForEvent("download"),page.locator("#briefing-save").tap()]);
+const saved=readFileSync(await saveDl.path(),"utf8");
+assert.doesNotMatch(saved,/Synthetic unclaimed property/,"saved workspace is encrypted");
+await page.reload();await nav("assets");
+assert.match(await page.locator("#passive-kept").textContent(),/Open your workspace/,"nothing kept in the page after reload");
+await nav("research");
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+await page.locator("#briefing-file").setInputFiles({name:"w.json",mimeType:"application/json",buffer:Buffer.from(saved)});
+await page.locator("#briefing-load").tap();
+await page.waitForFunction(()=>/memory only/.test(document.getElementById("briefing-status").textContent),null,{timeout:30000});
+await nav("assets");
+assert.match(await page.locator("#passive-kept").textContent(),/Synthetic unclaimed property match/,"kept finding back after reopening");
+await load();
+assert.equal(await page.locator(".passive-finding").count(),1,"dismissed finding still hidden after reopening");
+assert.equal(await decision("a").inputValue(),"Pursuing");
+// Terms the source did not state read "not stated".
+assert.match(await page.locator('.passive-finding[data-finding-id="a"] dl').textContent(),/Capital requirednot stated/);
+assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w,vw),"no horizontal page overflow with decisions shown");
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,"nothing in browser storage");
 assert.deepEqual(external,[],"nothing fetched from outside the page");
 assert.deepEqual(errors,[]);

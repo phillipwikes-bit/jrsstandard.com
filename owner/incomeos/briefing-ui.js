@@ -202,6 +202,10 @@
       var d=ev.detail;if(!d||!state.ws)return;
       act(function(w){return WS.setResearchProgress(w,d.id,d.status,today());},"Study progress saved in your workspace: "+d.status);
     });
+    document.addEventListener("incomeos:passive-decision",function(ev){
+      var d=ev.detail;if(!d||!d.finding)return;if(!state.ws){reply(d,{ok:false,error:"No workspace is open"});return;}
+      reply(d,act(function(w){return WS.setPassiveFinding(w,d.finding,d.status,today());},"Finding decision saved in your workspace: "+d.status));
+    });
     document.addEventListener("incomeos:screened",function(ev){state.screen=ev.detail||null;render();});
     // Decision Spellchecker program changes and program-tagged ledger rows arrive from the Program view.
     // Each reports the outcome back through detail.done so the Program view never claims an unapplied change.

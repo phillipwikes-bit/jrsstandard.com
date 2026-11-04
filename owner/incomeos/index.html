@@ -185,12 +185,14 @@
     <div class="callout danger"><strong>Research only.</strong> No deal has passed full underwriting. Amounts shown are prior earnings or quoted prices, not promised income, and links may lead to a catalog rather than an individually verified active offer.</div>
     <section id="passive-radar-panel" class="panel" aria-labelledby="passive-radar-heading">
       <h3 id="passive-radar-heading">Passive opportunity findings</h3>
-      <p class="muted">Load the findings file from your ChatGPT passive radar task. Each finding must name its source, the date it was found and a direct link, or it is refused. Nothing is fetched, claimed or saved; findings are leads, not money.</p>
+      <p class="muted">Load the findings file from your ChatGPT passive radar task. Each finding must name its source, the date it was found and a direct link, or it is refused. Nothing is fetched or claimed. Your decision on a finding is saved only in your open workspace; findings are leads, not money.</p>
       <div class="radar-import">
         <label for="passive-import-file">Findings file (JSON)</label>
         <input type="file" id="passive-import-file" accept=".json,application/json">
         <div class="panelrow"><button type="button" class="smallbtn" id="passive-import">Review findings</button><button type="button" class="smallbtn" id="passive-template">Download sample format</button></div>
       </div>
+      <h4 class="project-subhead">Kept in your workspace</h4>
+      <div id="passive-kept"></div>
       <p id="passive-status" role="status" aria-live="polite" class="muted"></p>
       <div id="passive-results" class="radar-results"></div>
     </section>

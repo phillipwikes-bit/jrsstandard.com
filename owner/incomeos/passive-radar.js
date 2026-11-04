@@ -8,7 +8,9 @@
   var TYPES={new_income:"New income",returned_capital:"Returned capital",savings:"Savings",projection:"Projection"};
   var BASIS=["stated","estimated","unknown"];
   var MAX=500,MAX_AGE_DAYS=14;
-  var FIELDS=["id","title","sourceName","sourceUrl","directUrl","foundOn","valueType","amountUsd","amountBasis","deadline","summary","eligibilityText","costToPursueUsd"];
+  var FIELDS=["id","title","sourceName","sourceUrl","directUrl","foundOn","valueType","amountUsd","amountBasis","deadline","summary","eligibilityText","costToPursueUsd",
+    "provider","requiredCapitalUsd","adminBurden","counterpartyRisk","defaultRisk","liquidity","lockupDays","taxNote","requiredAction"];
+  var LEVELS=["low","medium","high","unknown"];
   // Phrases that mark a finding as a likely scam or a paid finder service; official searches are free.
   var RISK=[/up-?front (fee|payment)/i,/processing fee/i,/gift ?cards?/i,/crypto|bitcoin|usdt/i,/wire (the|a|your)? ?(fee|money|payment)/i,/telegram|whatsapp/i,/finder('?s)? fee|recovery service fee/i,/guaranteed (return|payout|income)/i,/risk-?free return/i];
   var SENSITIVE=[/\b\d{3}-\d{2}-\d{4}\b/,/\b\d{9,19}\b/,/password|passcode|verification code|one-time code/i];
@@ -33,10 +35,15 @@
     if(f.amountUsd!=null&&!(typeof f.amountUsd==="number"&&Number.isFinite(f.amountUsd)&&f.amountUsd>=0&&f.amountUsd<=1e9))reasons.push("AMOUNT_INVALID");
     if(f.costToPursueUsd!=null&&!(typeof f.costToPursueUsd==="number"&&Number.isFinite(f.costToPursueUsd)&&f.costToPursueUsd>=0))reasons.push("COST_INVALID");
     if(f.amountBasis!=null&&BASIS.indexOf(f.amountBasis)<0)reasons.push("AMOUNT_BASIS_UNKNOWN");
-    var blob=[f.title,f.summary,f.eligibilityText,f.sourceName].filter(function(x){return typeof x==="string";}).join(" ");
+    if(f.requiredCapitalUsd!=null&&!(typeof f.requiredCapitalUsd==="number"&&Number.isFinite(f.requiredCapitalUsd)&&f.requiredCapitalUsd>=0))reasons.push("CAPITAL_INVALID");
+    if(f.lockupDays!=null&&!(Number.isInteger(f.lockupDays)&&f.lockupDays>=0&&f.lockupDays<=36500))reasons.push("LOCKUP_INVALID");
+    ["adminBurden","counterpartyRisk","defaultRisk"].forEach(function(k){if(f[k]!=null&&LEVELS.indexOf(f[k])<0)reasons.push("LEVEL_INVALID:"+k);});
+    ["provider","liquidity","taxNote","requiredAction"].forEach(function(k){if(f[k]!=null&&!text(f[k],500))reasons.push("TEXT_INVALID:"+k);});
+    var blob=[f.title,f.summary,f.eligibilityText,f.sourceName,f.provider,f.liquidity,f.taxNote,f.requiredAction].filter(function(x){return typeof x==="string";}).join(" ");
     if(RISK.some(function(r){return r.test(blob);}))reasons.push("RISK_SIGNAL");
     if(SENSITIVE.some(function(r){return r.test(blob);}))reasons.push("SENSITIVE_DATA");
     if(typeof f.costToPursueUsd==="number"&&f.costToPursueUsd>0)warnings.push("COSTS_MONEY_TO_PURSUE");
+    if(typeof f.requiredCapitalUsd==="number"&&f.requiredCapitalUsd>0)warnings.push("REQUIRES_CAPITAL");
     var extra=Object.keys(f).filter(function(k){return FIELDS.indexOf(k)<0;});
     if(extra.length)warnings.push("FIELDS_IGNORED:"+extra.slice(0,5).join(","));
     if(f.amountUsd==null||f.amountBasis!=="stated")warnings.push("AMOUNT_NOT_STATED_BY_SOURCE");
@@ -56,6 +63,9 @@
         official:/\.gov$/i.test(r.direct.hostname),foundOn:f.foundOn,ageDays:days(f.foundOn,asOf),deadline:f.deadline||null,
         amountUsd:typeof f.amountUsd==="number"?f.amountUsd:null,amountBasis:f.amountBasis||"unknown",costToPursueUsd:typeof f.costToPursueUsd==="number"?f.costToPursueUsd:0,
         summary:text(f.summary,2000),eligibilityText:text(f.eligibilityText,2000),warnings:r.warnings,
+        terms:{provider:text(f.provider,500),requiredCapitalUsd:typeof f.requiredCapitalUsd==="number"?f.requiredCapitalUsd:null,adminBurden:f.adminBurden||"unknown",
+          counterpartyRisk:f.counterpartyRisk||"unknown",defaultRisk:f.defaultRisk||"unknown",liquidity:text(f.liquidity,500),lockupDays:Number.isInteger(f.lockupDays)?f.lockupDays:null,
+          taxNote:text(f.taxNote,500),requiredAction:text(f.requiredAction,500)},
         countsAsIncome:false,received:false};
       // Only source-stated amounts of non-projection findings enter the potential totals, and those totals are not income.
       if(f.valueType!=="projection"&&out.amountUsd!==null&&out.amountBasis==="stated")potential[f.valueType]+=Math.round(out.amountUsd*100);
@@ -71,7 +81,7 @@
   }
   function template(asOf){
     return {schema:SCHEMA,note:"Synthetic example. Replace with findings that each have a real source page and a direct link.",findings:[
-      {id:"example-rebate-1",title:"Example utility rebate for a smart thermostat",sourceName:"Example utility rebates page",sourceUrl:"https://example.org/rebates",directUrl:"https://example.org/rebates/thermostat",foundOn:asOf,valueType:"savings",amountUsd:75,amountBasis:"stated",deadline:null,summary:"Copied description from the source.",eligibilityText:"Copied eligibility text from the source."},
+      {id:"example-rebate-1",title:"Example utility rebate for a smart thermostat",sourceName:"Example utility rebates page",sourceUrl:"https://example.org/rebates",directUrl:"https://example.org/rebates/thermostat",foundOn:asOf,valueType:"savings",amountUsd:75,amountBasis:"stated",deadline:null,summary:"Copied description from the source.",eligibilityText:"Copied eligibility text from the source.",provider:"Example utility",requiredCapitalUsd:0,adminBurden:"low",counterpartyRisk:"low",defaultRisk:"unknown",liquidity:"Paid as a bill credit",lockupDays:0,taxNote:"Utility rebates are often not taxable; confirm with your accountant",requiredAction:"Submit the rebate form with the receipt"},
       {id:"example-projection-1",title:"Example: higher savings yield if cash were moved",sourceName:"Example bank rate page",sourceUrl:"https://example.org/rates",directUrl:"https://example.org/rates/savings",foundOn:asOf,valueType:"projection",amountUsd:null,amountBasis:"unknown",deadline:null,summary:"A projection is a calculation, not income."}]};
   }
   var api=Object.freeze({SCHEMA:SCHEMA,TYPES:Object.freeze(Object.assign({},TYPES)),MAX_AGE_DAYS:MAX_AGE_DAYS,importFindings:importFindings,template:template});

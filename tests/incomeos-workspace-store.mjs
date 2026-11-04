@@ -67,4 +67,21 @@ await assert.rejects(WS.encrypt("short",w),/16 characters/);
 const o=JSON.parse(sealed);const d=Buffer.from(o.data,"base64");d[5]^=1;o.data=d.toString("base64");
 await assert.rejects(WS.load(JSON.stringify(o),P),/Wrong passphrase or damaged/);
 assert.equal((await WS.load(JSON.stringify(base),"")).schema,"incomeos.workspace.v1","plain files still load");
+// Passive-radar decisions: saved with the finding's links and date, removable, never touching the ledger.
+{
+  let w=WS.newWorkspace("2026-11-04");const led=JSON.stringify(w.ledger);
+  const f={id:"pf-1",title:"Synthetic rebate",valueType:"savings",sourceName:"Synthetic",sourceUrl:"https://example.org/s",directUrl:"https://example.gov/d",foundOn:"2026-11-03",amountUsd:40,amountBasis:"stated"};
+  w=WS.setPassiveFinding(w,f,"Pursuing","2026-11-04");
+  assert.deepEqual(plain(w.passiveFindings["pf-1"]),{status:"Pursuing",on:"2026-11-04",title:"Synthetic rebate",valueType:"savings",sourceName:"Synthetic",sourceUrl:"https://example.org/s",directUrl:"https://example.gov/d",foundOn:"2026-11-03",deadline:null,amountUsd:40,amountBasis:"stated"});
+  assert.equal(JSON.stringify(w.ledger),led,"a decision never changes the ledger");
+  assert.equal(w.changeLog.at(-1).action,"SET_PASSIVE_FINDING");
+  assert.throws(()=>WS.setPassiveFinding(w,{...f,directUrl:"http://example.gov/d"},"Pursuing","2026-11-04"),/https/);
+  assert.throws(()=>WS.setPassiveFinding(w,{...f,valueType:"income"},"Pursuing","2026-11-04"),/type/);
+  assert.throws(()=>WS.setPassiveFinding(w,f,"Claimed","2026-11-04"),/decision/);
+  assert.throws(()=>WS.setPassiveFinding(w,{...f,foundOn:"bad"},"Done","2026-11-04"),/found-on/);
+  w=WS.setPassiveFinding(w,f,"New","2026-11-05");assert.equal(w.passiveFindings["pf-1"],undefined);
+  // A workspace saved before this section existed still loads.
+  const old=plain(WS.newWorkspace("2026-11-01"));delete old.passiveFindings;assert.doesNotThrow(()=>WS.validate(old));
+  assert.ok(WS.setPassiveFinding(old,f,"Dismissed","2026-11-04").passiveFindings["pf-1"]);
+}
 console.log("IncomeOS workspace QA passed (synthetic data): engine-checked updates, append-only change log, AES-GCM round trip, wrong-passphrase and tamper rejection");
