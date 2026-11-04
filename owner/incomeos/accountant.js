@@ -819,6 +819,14 @@
   if(typeof document!=="undefined"&&document.addEventListener){
     ["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(function(n){document.addEventListener(n,onWorkspace);});
     document.addEventListener("incomeos:workspace-saved",function(){wsDirty=false;var go=$("ledger-save-now");if(go)go.hidden=true;modeNote();});
+    // Start or open a workspace from the Income screen itself, without hunting for the Research tab.
+    document.addEventListener("click",function(ev){
+      var id=ev.target&&ev.target.id;
+      if(id==="ledger-ws-new"){var nw=$("briefing-new");if(nw)nw.click();var first=$("receipt-label");if(first&&!locked())first.focus();return;}
+      if(id!=="ledger-ws-open")return;
+      var b=document.querySelector('.bottomnav button[data-view="research"]');if(b)b.click();
+      var f=$("briefing-file");if(f){f.scrollIntoView({block:"center"});f.focus();}
+    });
     document.addEventListener("click",function(ev){
       if(!ev.target||ev.target.id!=="ledger-save-now")return;
       // Take the owner straight to the save control; saving itself stays a deliberate owner action.

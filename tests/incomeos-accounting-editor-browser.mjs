@@ -28,9 +28,16 @@ const nav=v=>page.locator(`.bottomnav button[data-view="${v}"]`).click();
 await nav("ledger");
 assert.ok(await page.locator("#financial-staging-interlock").isVisible());
 assert.ok(await page.locator("#receipt-save").isDisabled());
-// Create a workspace; the editor unlocks and says where records are kept.
-await nav("research");await page.locator("#briefing-new").tap();
+// The locked Income screen offers its own workspace buttons, so the owner never has to find the Research tab.
+assert.ok(await page.locator("#ledger-ws-new").isVisible());assert.ok(await page.locator("#ledger-ws-open").isVisible());
+await page.locator("#ledger-ws-open").tap();
+assert.ok(await page.locator("#view-research").isVisible(),"Open goes to the workspace file picker");
+assert.equal(await page.evaluate(()=>document.activeElement.id),"briefing-file");
 await nav("ledger");
+// Create a workspace from the Income screen; the editor unlocks in place and says where records are kept.
+await page.locator("#ledger-ws-new").tap();
+assert.ok(await page.locator("#view-ledger").isVisible(),"stays on the Income screen");
+assert.equal(await page.evaluate(()=>document.activeElement.id),"receipt-label","ready to type the first record");
 assert.ok(!(await page.locator("#financial-staging-interlock").isVisible()));
 assert.match(await page.locator("#ledger-mode").textContent(),/Editing the ledger in your open workspace/);
 // Add a received research payment and an expense with unknown business use.
