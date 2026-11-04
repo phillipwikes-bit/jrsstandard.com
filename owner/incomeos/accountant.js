@@ -34,6 +34,17 @@
     if(e.kind==="income")return CATEGORIES.includes(e.category) && num(e.grossUsd)>0 && num(e.grossUsd)<=1e10 && num(e.feesUsd)>=0 && num(e.feesUsd)<=num(e.grossUsd) && STATUS.includes(e.status) && SCOPES.includes(e.scope);
     return EXPENSE_TYPES.includes(e.type) && COST_CATEGORIES.includes(e.category) && num(e.amountUsd)>0 && num(e.amountUsd)<=1e10 && (e.businessUse===null || (num(e.businessUse)>=0 && num(e.businessUse)<=100));
   }
+  // Workspace mode: when an owner workspace file is open, the ledger lives in that file (saved,
+  // optionally encrypted, by the owner) instead of browser storage. The staging lock still blocks
+  // every browser-storage write; it does not apply to the in-memory workspace.
+  var wsMode=false,wsForeign=[];
+  function locked(){return window.IncomeOSFinancialReadOnly===true&&!wsMode;}
+  function fromWorkspace(ws){
+    var rows=ws&&Array.isArray(ws.ledger)?ws.ledger:[];
+    db={version:2,entries:rows.filter(validate).slice(0,15000)};
+    // Rows other panels wrote in a different shape are preserved untouched on every save.
+    wsForeign=rows.filter(function(x){return !validate(x);});
+  }
   function write(){
     if(window.IncomeOSFinancialReadOnly===true)return false;
     try{localStorage.setItem(KEY,JSON.stringify(db));return true;}
@@ -42,9 +53,17 @@
   // Persist first, then update the current ledger. An interrupted storage write
   // must never appear as an accepted accounting record in the running interface.
   function commitEntries(entries){
-    if(window.IncomeOSFinancialReadOnly===true)throw new Error("Financial changes are disabled in unapproved staging");
+    if(locked())throw new Error("Financial changes are disabled in unapproved staging");
     if(!Array.isArray(entries)||entries.length>15000||entries.some(function(x){return !validate(x);}))
       throw new Error("Financial records are invalid or exceed the ledger limit");
+    if(wsMode){
+      // The workspace owner applies the change and reports back; nothing is accepted unless it did.
+      var result=null;
+      try{document.dispatchEvent(new CustomEvent("incomeos:ledger-replace",{detail:{entries:entries.concat(wsForeign),done:function(r){result=r;}}}));}catch(_e){}
+      if(!result||!result.ok)throw new Error("Workspace ledger was not updated"+(result&&result.error?": "+result.error:"")+". No change was accepted.");
+      db={version:2,entries:entries};
+      return true;
+    }
     var next={version:2,entries:entries};
     try{localStorage.setItem(KEY,JSON.stringify(next));}
     catch(_e){throw new Error("Financial records could not be saved. No ledger update was accepted.");}
@@ -52,7 +71,7 @@
     return true;
   }
   function migrateLegacy(){
-    if(window.IncomeOSFinancialReadOnly===true)return;
+    if(window.IncomeOSFinancialReadOnly===true||wsMode)return;
     try {
       if(localStorage.getItem(KEY)!==null)return;
       var raw=JSON.parse(localStorage.getItem(LEGACY_KEY)||"{}");
@@ -109,7 +128,7 @@
   }
   function paidTotal(){return totals(db.entries).gross;}
   function addOrUpdate(e,editId){
-    if(window.IncomeOSFinancialReadOnly===true)throw new Error("Financial entry is disabled in unapproved staging");
+    if(locked())throw new Error("Financial entry is disabled in unapproved staging. Open or create a workspace in Research, This week, to keep records in your workspace file.");
     var found=editId?db.entries.findIndex(function(x){return x.id===editId;}):-1;
     var next=db.entries.slice();
     if(found>=0)next[found]=Object.assign({},e,{id:editId,createdAt:db.entries[found].createdAt,updatedAt:new Date().toISOString()});
@@ -149,7 +168,7 @@
   }
   function setValue(id,value){if($(id))$(id).value=value==null?"":String(value);}
   function startEdit(e){
-    if(window.IncomeOSFinancialReadOnly===true)return;
+    if(locked())return;
     var isIncome=e.kind==="income";var p=isIncome?"receipt":"cost";
     if(isIncome){
       editingIncome=e.id;editingCost=null;
@@ -209,13 +228,13 @@
     place(left,"small","",e.date+" · "+(e.kind==="income"?"RECEIPT · "+e.category+" · "+(e.status==="paid"?"Recorded received":"Pending"):(e.type==="refund"?"REFUND/CREDIT, UNALLOCATED · ":"OUTFLOW · ")+e.category+" · "+e.type));
     place(left,"small","",e.payer||"Source not identified");
     if(e.kind==="outflow"&&e.type!=="refund")place(left,"small","","Business use "+(e.businessUse===null||e.businessUse===undefined?"not determined":String(e.businessUse)+"%")+" · Evidence "+(e.evidenceStatus||"missing"));
-    if(!e.reconciled)place(left,"small notice","Not reconciled to source evidence");
+    if(!e.reconciled)place(left,"small","notice","Not reconciled to source evidence");
     var right=place(out,"div","entry-actions");
     place(right,"div","amt"+((e.status==="pending")?" pending":""),(e.kind==="outflow"&&e.type!=="refund"?"−":"+")+money(e.kind==="income"?e.grossUsd:e.amountUsd));
     var buttons=place(right,"div","entry-buttons"),ed=place(buttons,"button","","Edit"),del=place(buttons,"button","","Remove");
     ed.type="button";del.type="button";ed.addEventListener("click",function(){startEdit(e);});
     del.addEventListener("click",function(){
-      if(window.IncomeOSFinancialReadOnly===true)return;
+      if(locked())return;
       if(!confirm("Delete this local record? This cannot be undone without a backup."))return;
       try{commitEntries(db.entries.filter(function(x){return x.id!==e.id;}));render();}
       catch(err){alert(err.message);}
@@ -376,7 +395,7 @@
     return h;
   }
   function importCsv(text){
-    if(window.IncomeOSFinancialReadOnly===true)throw new Error("Financial import is disabled in unapproved staging");
+    if(locked())throw new Error("Financial import is disabled in unapproved staging. Open or create a workspace first.");
     var rows=splitCsv(text);if(rows.length<2)throw new Error("No data rows found");
     if(rows.length>5001)throw new Error("Import limit is 5,000 rows per file");
     var h=findImportFields(rows[0]),idx=function(k){return h.indexOf(k);};
@@ -415,7 +434,7 @@
     return {accepted:accepted.length,skipped:skipped,rejected:rejected};
   }
   function importJson(text){
-    if(window.IncomeOSFinancialReadOnly===true)throw new Error("Financial restoration is disabled in unapproved staging");
+    if(locked())throw new Error("Financial restoration is disabled in unapproved staging. Open or create a workspace first.");
     var parsed=JSON.parse(text);
     if(!parsed||parsed.format!=="incomeos-accountant"||!Array.isArray(parsed.entries)||parsed.entries.length>15000)throw new Error("Not a supported IncomeOS accountant backup");
     var entries=parsed.entries.filter(validate);
@@ -466,6 +485,27 @@
       $("cost-label").scrollIntoView({behavior:"smooth",block:"center"});
     });});
     render();
+  }
+  function modeNote(){
+    var n=$("ledger-mode");if(!n)return;
+    n.hidden=!wsMode;
+    n.textContent=wsMode?"Editing the ledger in your open workspace. Changes are kept only when you save the workspace (encrypted, with a passphrase) in Research, This week. Nothing is stored in this browser."+(wsForeign.length?" "+wsForeign.length+" row(s) from other panels are kept as they are and not shown here.":""):"";
+    var banner=$("financial-staging-interlock");if(banner&&window.IncomeOSFinancialReadOnly===true)banner.hidden=wsMode;
+    // The staging lock disables these controls for browser storage; in workspace mode they edit the file instead.
+    ["receipt-form","cost-form","import-trigger","import-csv-trigger","import-ledger","import-csv"].forEach(function(id){
+      var el=$(id);if(!el||window.IncomeOSFinancialReadOnly!==true)return;
+      var targets=el.tagName==="FORM"?el.querySelectorAll("input,select,textarea,button"):[el];
+      Array.prototype.forEach.call(targets,function(c){c.disabled=!wsMode;if(wsMode)c.removeAttribute("aria-disabled");else c.setAttribute("aria-disabled","true");});
+    });
+  }
+  function onWorkspace(ev){
+    var ws=ev&&ev.detail;if(!ws||typeof ws!=="object"||!Array.isArray(ws.ledger))return;
+    wsMode=true;fromWorkspace(ws);
+    if(typeof document!=="undefined"&&$("ledger-list"))render();
+    modeNote();
+  }
+  if(typeof document!=="undefined"&&document.addEventListener){
+    ["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(function(n){document.addEventListener(n,onWorkspace);});
   }
   window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();

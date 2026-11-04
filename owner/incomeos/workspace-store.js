@@ -75,6 +75,19 @@
     next[section]=list.concat([rec]);
     return log(next,"ADD_"+section.toUpperCase(),{id:rec.id||rec.vendor},on);
   }
+  // Replace the ledger with the accountant editor's validated entries (the editor validates each record).
+  function setLedger(ws,entries,on){
+    if(!isDate(on))throw Error("Date required");
+    if(!Array.isArray(entries)||entries.length>15000)throw Error("Ledger is missing or exceeds 15,000 rows");
+    var ids={};
+    entries.forEach(function(e){
+      if(!e||typeof e!=="object"||Array.isArray(e)||(e.kind!=="income"&&e.kind!=="outflow"))throw Error("Invalid ledger row");
+      if(typeof e.id!=="string"||!e.id.trim()||ids[e.id])throw Error("Every ledger row needs a unique id");ids[e.id]=1;
+    });
+    var next=clone(validate(ws)),before=arr(next.ledger).length;
+    next.ledger=clone(entries);
+    return log(next,"LEDGER_EDITED",{rowsBefore:before,rowsAfter:entries.length},on);
+  }
   // Replace the Decision Spellchecker program record after the program engine validated it.
   function setDsProgram(ws,program,on){
     if(!isDate(on))throw Error("Date required");
@@ -205,7 +218,7 @@
     return validateDoc(JSON.parse(text));
   }
   var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
-    addBalance:addBalance,markAlerted:markAlerted,setDsProgram:setDsProgram,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
+    addBalance:addBalance,markAlerted:markAlerted,setDsProgram:setDsProgram,setLedger:setLedger,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSWorkspace=api;
 }(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:null)));

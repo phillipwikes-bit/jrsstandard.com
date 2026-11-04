@@ -186,6 +186,8 @@
     function reply(d,r){if(d&&typeof d.done==="function")d.done(r);}
     document.addEventListener("incomeos:ds-update",function(ev){var d=ev.detail;if(!d||!d.program)return;if(!state.ws){reply(d,{ok:false,error:"No workspace is loaded"});return;}
       reply(d,act(function(w){return WS.setDsProgram(w,d.program,today());},d.label||"Program record updated"));});
+    document.addEventListener("incomeos:ledger-replace",function(ev){var d=ev.detail;if(!d||!Array.isArray(d.entries))return;if(!state.ws){reply(d,{ok:false,error:"No workspace is loaded"});return;}
+      reply(d,act(function(w){return WS.setLedger(w,d.entries,today());},"Income and expense records updated in your workspace"));});
     document.addEventListener("incomeos:ds-ledger",function(ev){var d=ev.detail;if(!d||!d.entry)return;if(!state.ws){reply(d,{ok:false,error:"No workspace is loaded"});return;}
       reply(d,act(function(w){return WS.addRecord(w,"ledger",d.entry,today());},"Program cost added to your workspace ledger"));});
     render();

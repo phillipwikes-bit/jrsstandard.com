@@ -712,6 +712,30 @@
       ],
       "requiredRemediation": "None for current scope",
       "acceptanceCriteria": "Honest seeded state at load, record and save round trip, no storage, no overflow at phone width"
+    },
+    {
+      "featureId": "ACCOUNTING-EDITOR-WORKSPACE-MODE",
+      "sourceFiles": [
+        "owner/incomeos/accountant.js",
+        "owner/incomeos/workspace-store.js",
+        "owner/incomeos/briefing-ui.js",
+        "owner/incomeos/index.html"
+      ],
+      "purpose": "Income and expense entry, editing, deletion, CSV/JSON import and accountant reports on the ledger of the owner's open workspace file, which the owner saves (AES-256-GCM with a passphrase); nothing is written to browser storage",
+      "operationalState": "IMPLEMENTED_AND_VERIFIED",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Hosted owner authentication not verified: the private hosting decision and owner sign-in are pending owner action",
+        "Records persist only when the owner saves the workspace file; no automatic sync across devices",
+        "Verified in simulated iPhone 13 Chromium, not on a physical iPhone"
+      ],
+      "testCoverage": [
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-controls.mjs"
+      ],
+      "requiredRemediation": "Owner-authenticated private hosting (Milestone A release gate)",
+      "acceptanceCriteria": "Locked without a workspace; add, edit, delete and import in workspace mode; encrypted save; reopen restores entries; zero browser-storage writes"
     }
   ]
 }
