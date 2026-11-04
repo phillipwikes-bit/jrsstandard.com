@@ -1,0 +1,237 @@
+name: JRS source accessibility evidence, not conformance certification
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Confirm exact candidate checkout
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          if [[ "$actual" != "$EXPECTED_SHA" ]]; then
+            echo 'RELEASE HOLD: accessibility checkout is not the exact requested revision' >&2
+            exit 1
+          fi
+          echo "PASS: source accessibility tests pinned to exact commit $actual"
+      - name: Check accessible-edition register against nine locked original identities
+        run: python3 tests/jrs-pdf-remediation-register-check.py
+      - name: Document PDF tagging gaps and enforce original byte identities
+        run: |
+          node tests/jrs-accessibility-acceptance.test.mjs
+          node tests/jrs-pdf-accessibility-inventory.mjs
+      - name: Prepare nine unapproved PDF reading-order editorial candidates
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v pdftotext >/dev/null; then
+            sudo apt-get update -qq
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends poppler-utils
+          fi
+          python3 tools/build_pdf_reading_candidates.py --self-test
+          python3 tools/build_pdf_reading_candidates.py --out /tmp/jrs-pdf-reading-candidates
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          out=Path('/tmp/jrs-pdf-reading-candidates')
+          report=json.loads((out/'candidate-inventory.json').read_text('utf-8'))
+          assert len(report['assets']) == 9
+          assert report['status'] == 'EXTRACTION_ONLY_NOT_CERTIFIED'
+          assert all(not item['public_release_approved'] and item['manual_reading_order'] == 'NOT_ASSESSED' for item in report['assets'])
+          assert all((out/item['candidate_html']).is_file() for item in report['assets'])
+          # Validate generated editorial navigation and page warnings, not
+          # merely the presence of HTML files.
+          from html.parser import HTMLParser
+          class CandidateParser(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.ids=set()
+                  self.targets=[]
+                  self.text=[]
+              def handle_starttag(self, tag, attrs):
+                  attrs=dict(attrs)
+                  if 'id' in attrs:
+                      assert attrs['id'] not in self.ids, ('duplicate id',attrs['id'])
+                      self.ids.add(attrs['id'])
+                  if tag=='a' and attrs.get('href','').startswith('#'):
+                      self.targets.append(attrs['href'][1:])
+              def handle_data(self, data):
+                  self.text.append(data)
+          for asset in report['assets']:
+              candidate=CandidateParser()
+              candidate.feed((out/asset['candidate_html']).read_text('utf-8'))
+              assert all(target in candidate.ids for target in candidate.targets), asset['source_pdf']
+              assert {f"page-{p['page']}" for p in asset['page_review']} <= candidate.ids
+              assert 'source-page-navigation' in candidate.ids
+              assert 'NOT AN APPROVED ACCESSIBLE EDITION' in ''.join(candidate.text)
+              assert 'NOT ASSESSED' in ''.join(candidate.text)
+              for page in asset['page_review']:
+                  for flag in page['flags']:
+                      assert flag in ''.join(candidate.text), (asset['source_pdf'],page['page'],flag)
+          import csv
+          with (out/'page-editorial-review-worksheet.csv').open(newline='',encoding='utf-8') as handle:
+              rows=list(csv.DictReader(handle))
+          expected=sum(max(a['source_pages'],a['raw_pages'],a['layout_pages']) for a in report['assets'])
+          assert len(rows)==expected, (len(rows),expected)
+          assert all(row['reading_order_review']=='NOT_ASSESSED'
+                     and row['source_equivalence_review']=='NOT_ASSESSED'
+                     and not row['reviewer'] and not row['review_date']
+                     for row in rows)
+          assert {(row['source_pdf'],row['source_blob_sha'],int(row['page']))
+                  for row in rows}=={
+                      (asset['source_pdf'],asset['source_blob_sha'],page['page'])
+                      for asset in report['assets'] for page in asset['page_review']
+                  }
+          # Page-level extraction observations must be complete, typed and
+          # explicitly unreviewed; a zero flag count is not human acceptance.
+          for item in report['assets']:
+              pages=item['page_review']
+              assert len(pages)==max(item['source_pages'],item['raw_pages'],item['layout_pages'])
+              assert [p['page'] for p in pages]==list(range(1,len(pages)+1))
+              assert all(p['editorial_disposition']=='NOT_ASSESSED' for p in pages)
+              assert all(isinstance(p['token_discrepancy'],int) and p['token_discrepancy']>=0 for p in pages)
+              assert all(isinstance(p['flags'],list) and set(p['flags'])<={
+                  'EMPTY_EXTRACTION','TOKEN_DISCREPANCY','ORDER_DISAGREEMENT','REPLACEMENT_CHARACTER','PAGE_COUNT_MISMATCH'
+              } for p in pages)
+              assert item['pages_flagged_for_editorial_review']==sum(bool(p['flags']) for p in pages)
+              assert all(isinstance(p['order_agreement'],bool) for p in pages)
+              assert all('ORDER_DISAGREEMENT' not in p['flags'] or not p['order_agreement'] for p in pages)
+              assert sum(p['token_discrepancy'] for p in pages)>=0
+          print('PASS: nine candidate files retained for editorial review, with release state NOT ASSESSED.')
+          PY
+      - name: Preserve non-deployed PDF extraction and review inventory
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-pdf-editorial-candidates-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-pdf-reading-candidates/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Check strict browser evidence parser
+        run: python3 tests/jrs-browser-gate-check.py --self-test
+      - name: Test 400-percent-equivalent reflow at two narrow widths
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8794 --bind 127.0.0.1 >/tmp/jrs-reflow-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8794/index.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=600000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8794/tests/jrs-400-percent-reflow-browser.html > /tmp/jrs-reflow-dom.txt 2>/tmp/jrs-reflow-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-reflow-dom.txt reflow /tmp/jrs-reflow-evidence.json
+      - name: Install pinned axe-core for CI only
+        run: |
+          npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund axe-core@4.10.3
+          test -s node_modules/axe-core/axe.min.js
+      - name: Scan 60 public routes at mobile and desktop widths
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8792 --bind 127.0.0.1 >/tmp/jrs-axe-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8792/index.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=600000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8792/tests/jrs-wcag-axe-browser.html > /tmp/jrs-axe-dom.txt 2>/tmp/jrs-axe-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-axe-dom.txt axe /tmp/jrs-axe-evidence.json
+      - name: Scan seven dynamic states at mobile and desktop widths
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8793 --bind 127.0.0.1 >/tmp/jrs-states-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8793/resources.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-background-timer-throttling --virtual-time-budget=180000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8793/tests/jrs-interaction-a11y-browser.html > /tmp/jrs-states-dom.txt 2>/tmp/jrs-states-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-states-dom.txt states /tmp/jrs-states-evidence.json
+      - name: Verify seven-point screen-reader announcements and click privacy in Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8795 --bind 127.0.0.1 >/tmp/jrs-check-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8795/check.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=60000 --window-size=1440,1100 --dump-dom http://127.0.0.1:8795/tests/jrs-check-a11y-browser.html > /tmp/jrs-check-a11y-dom.txt 2>/tmp/jrs-check-a11y-errors.log
+          python3 tests/jrs-browser-gate-check.py /tmp/jrs-check-a11y-dom.txt check /tmp/jrs-check-a11y-evidence.json
+      - name: Verify printable reading aid excludes navigation and study body
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8796 --bind 127.0.0.1 >/tmp/jrs-check-print-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8796/check.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          test -n "$browser"
+          if ! command -v pdftotext >/dev/null; then
+            # CI-only text extraction, never added to deployed JRS assets.
+            sudo apt-get update -qq
+            sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends poppler-utils
+          fi
+          command -v pdftotext >/dev/null || { echo 'RELEASE HOLD: PDF text checker unavailable'; exit 1; }
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage \
+            --virtual-time-budget=12000 --no-pdf-header-footer \
+            --print-to-pdf=/tmp/jrs-check-summary-preflight.pdf \
+            http://127.0.0.1:8796/check.html >/tmp/jrs-check-print-chrome.log 2>&1
+          test -s /tmp/jrs-check-summary-preflight.pdf
+          pdftotext -layout /tmp/jrs-check-summary-preflight.pdf /tmp/jrs-check-print-text.txt
+          # The shared inspector below validates both actual PDF text outputs.
+          # Do not accept a navigation-free but empty report.
+          export JRS_BROWSER="$browser"
+          node tests/jrs-check-selected-print.mjs \
+            http://127.0.0.1:8796/check.html /tmp/jrs-check-selected-preflight.pdf
+          test -s /tmp/jrs-check-selected-preflight.pdf
+          pdftotext -layout /tmp/jrs-check-selected-preflight.pdf /tmp/jrs-check-selected-text.txt
+          python3 tests/jrs-check-print-evidence.py \
+            /tmp/jrs-check-print-text.txt /tmp/jrs-check-selected-text.txt
+      - name: Retain inspected test output
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-scoped-accessibility-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            /tmp/jrs-reflow-evidence.json
+            /tmp/jrs-axe-evidence.json
+            /tmp/jrs-states-evidence.json
+            /tmp/jrs-check-a11y-evidence.json
+            /tmp/jrs-check-summary-preflight.pdf
+            /tmp/jrs-check-print-text.txt
+            /tmp/jrs-check-selected-preflight.pdf
+            /tmp/jrs-check-selected-text.txt
+          if-no-files-found: warn
+          retention-days: 30

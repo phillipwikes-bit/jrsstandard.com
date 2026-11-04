@@ -55,6 +55,19 @@ assert.ok(html.indexOf('id="resource-catalog"') < html.indexOf('id="quick-review
   'searchable resource directory must precede duplicate quick-use cards');
 assert.ok(html.indexOf('id="resource-catalog"') < html.indexOf('class="jrs-resource-secondary"'),
   'resource discovery must precede longer role-specific orientation');
+assert.ok(html.indexOf('id="resource-catalog"') <
+  html.indexOf('class="jrs-resource-next-steps"'),
+  'Searchable resource list must precede repetitive orientation and edition-navigation copy');
+assert.ok(html.indexOf('Accessibility of PDF publications:') <
+  html.indexOf('id="resource-catalog"'),
+  'PDF accessibility limitations must still be disclosed before PDF directory entries');
+assert.equal((html.match(/class="jrs-resource-next-steps"/g)||[]).length,1,
+  'Secondary reference pathways should appear exactly once');
+for(const text of ['Free resources you can use today:', 'Different publication versions?', 'First time using JRS?']){
+ assert.ok(html.indexOf(text)>html.indexOf('id="resource-catalog"'),
+  'Supplementary navigation must follow the primary resource list: '+text);
+}
+
 
 assert.ok(html.includes('id="resource-catalog"') && html.includes('aria-labelledby="jrs-catalog-heading"'));
 for(const id of ['jrs-resource-query','jrs-resource-role','jrs-resource-format']){

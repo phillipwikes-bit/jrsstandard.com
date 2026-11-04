@@ -64,6 +64,58 @@ for(const s of ['text-wrap:balance','max-width:67ch','font-size:15px!important']
 assert.ok(homeDesign.includes('body.jrs-institutional.jrs-home .jr-fact-row'),
  'reference panel needs compact, readable label hierarchy');
 
+// Research maturity claims must remain distinct from demonstrations and publisher commentary.
+// An authored article is not a real-workflow effectiveness result.
+const evidenceHome=read('index.html');
+const maturityResearch=read('research.html');
+assert.ok(evidenceHome.includes('href="research.html#evidence-maturity"'),
+ 'homepage must route readers from research claims to evidence maturity and field limits');
+for(const required of [
+ 'id="evidence-maturity"','id="practitioner-evidence-protocol"',
+ '01 · Measured on constructed records','02 · Application to existing records',
+ '03 · Operational validation not established',
+ 'The separate reliability analysis did not meet its prespecified confidence-bound criterion',
+ 'No independently established operational outcome from a real-record study is claimed',
+ 'Distinguish what ordinary review identified from what JRS-assisted review identified',
+ 'Unpublished manuscripts, submissions and accepted commentary are not counted as operational validation',
+ 'Keep identifiable records in the organization'
+])assert.ok(maturityResearch.includes(required),'evidence-maturity boundary missing: '+required);
+assert.equal((maturityResearch.match(/class="card-k">0[123] · (?:Measured on constructed records|Application to existing records|Operational validation not established)/g)||[]).length,3,
+ 'research evidence maturity must retain three distinct levels');
+assert.ok(maturityResearch.includes('id="professional-articles"') &&
+ maturityResearch.includes('corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/'),
+ 'publisher commentary must remain available outside research validation claims');
+
+// Source-only assurance for the voluntary, locally retained evaluation worksheet.
+// It is a public blank template, not a case-record submission channel or a completed study.
+const worksheetPath='assets/jrs-practitioner-evaluation-worksheet.txt';
+assert.ok(existsSync(join(root,worksheetPath)), 'blank practitioner evaluation worksheet must exist');
+const worksheet=read(worksheetPath);
+for(const phrase of [
+ 'Status: Blank evaluation aid',
+ 'not an online research enrollment or upload mechanism',
+ 'Standard PDF v2.0 (2026) and online methodology v1.0 (May 2026)',
+ 'Ordinary review completed before JRS review?',
+ 'Independent review/adjudication',
+ 'Paired records with JRS-only concerns',
+ 'Records corrected, escalated, unresolved',
+ 'Negative or contrary findings',
+ 'NOT ASSESSED'
+])assert.ok(worksheet.includes(phrase),'evaluation worksheet claim or evidence field missing: '+phrase);
+for(const path of ['research.html','organization.html']){
+ const page=read(path);
+ assert.ok(page.includes('href="'+worksheetPath+'"'),path+' must link directly to the local evaluation template');
+ assert.ok(page.includes('download="JRS_Practitioner_Evaluation_Worksheet_v0.1.txt"'),
+  path+' must offer a local copy rather than an upload form');
+}
+assert.ok(read('organization.html').includes('not submitted to this website'),
+ 'organizational evidence worksheet must not suggest public record collection');
+assert.doesNotMatch(worksheet,/<form|<script|fetch\(|formspree|sendBeacon\(/i,
+ 'blank worksheet must contain no executable submission or tracking logic');
+assert.ok(!read('.vercelignore').split('\n').some(x=>/^\s*assets\/\s*$/.test(x)),
+ 'published resources should not be excluded as an entire assets directory');
+console.log('PASS: blank local worksheet preserves evidence, scope, edition and privacy boundaries.');
+
 // Guard international expert provenance and remove extraneous product-status copy.
 for(const page of ['index.html','about.html','research.html','research-summary.html','investigator-guides.html']){
  assert.match(read(page),/16 independent international experts from 11 countries across five continents/,
@@ -414,4 +466,177 @@ assert.ok(read('research.html').includes('jrs-research-primary-links') &&
   assert.ok(read('jrsstandard.html').includes('if(!sec)return;'),
     'Unknown section navigation must never blank the Standard');
   console.log('PASS: Standard sections are independently addressable; no hidden nesting, orphan containers or footer containment.');
+}
+
+
+// Seven-point review aid: retain evidence discipline at the actual reader output.
+// Checked boxes may indicate uncertainty, not an adjudicated documentation failure.
+// The constructed-record studies did not validate a two-item legal-outcome cutoff.
+const sevenPointAid = read('check.html');
+for (const required of [
+  'Each checked question identifies a matter for source verification, not a measured failure or a score.',
+  'The number of checked items does not predict legal defensibility or establish a JRS finding.',
+  'One checked question warrants review:',
+  'checked questions warrant review:',
+  'A single item may be material; do not dismiss it because of the count.',
+  'A larger count does not establish a diagnostic category or predict the outcome of a challenge.',
+  'Separately, a different reliability sample did not meet the pre-registered two-part criterion.'
+]) assert.ok(sevenPointAid.includes(required), 'seven-point aid lost evidenced human-review framing: ' + required);
+assert.doesNotMatch(sevenPointAid, /two or more modes in one file is the pattern that matters|if two or more modes show up|likely to struggle to explain its own decision|probably cannot explain its own decision/i,
+  'unsupported two-item decision-prediction threshold returned');
+assert.match(sevenPointAid, /out\.innerHTML = summary \+ bench \+ actions/,
+  'review summary and separate on-screen research benchmark must remain');
+const checkLocalScript = sevenPointAid.match(/<script>\s*\(function\(\)\{\s*\/\/ Runs entirely in the browser\.[\s\S]*?<\/script>/);
+assert.ok(checkLocalScript, 'local-only record check is missing');
+assert.doesNotMatch(checkLocalScript[0], /\b(?:fetch|sendBeacon)\s*\(|\blocalStorage\s*\./,
+  'selected record-check answers must remain browser-local');
+console.log('PASS: seven-point aid has no invented two-item threshold, distinguishes detection from reliability, and preserves local-only review output.');
+
+// PR #117: ensure screen-reader result changes and analytics data minimization
+// survive later SEO, navigation and instrumentation edits.
+{
+  const check=read('check.html');
+  assert.match(check, /id="sa-announcement"[^>]*role="status"[^>]*aria-live="polite"/,
+    'seven-point check must provide an independent concise live status');
+  assert.match(check, /One question selected for source verification/,
+    'one selected question must have explicit accessible feedback');
+  assert.match(check, /The count is not a score/,
+    'multiple question feedback must not imply a validated diagnostic score');
+  assert.match(check, /page_location:window.location.origin\+window.location.pathname/,
+    'GA page location may not contain unchecked URL query parameters');
+  assert.doesNotMatch(check, /function trackClickAndNavigate|window.location.href = targetUrl/,
+    'telemetry must not hijack or delay native link navigation');
+  const tracking=check.split('Best-effort path-only click telemetry:')[1]?.split('</script>')[0];
+  assert.ok(tracking,'path-only click telemetry block absent');
+  assert.match(tracking, /origin_url:window.location.pathname/,
+    'click events should use origin path rather than full URL');
+  assert.doesNotMatch(tracking, /origin_url:window.location.href|event.preventDefault\(/,
+    'analytics must never include a full referer or block navigation');
+  assert.match(tracking, /link.pathname/,
+    'target analytics must strip both query string and fragment');
+  assert.match(check, /sourceCandidate.*toLowerCase\(\)/,
+    'referral categorization must be bounded');
+  assert.match(check, /These questions are not validated diagnostic tests/,
+    'SEO and public review claims must respect research limitations');
+  console.log('PASS: check result announcements, no navigation hijack and path-only analytics.');
+}
+
+// Print and copy contract: printing only the current reading-aid result, never
+// dumping unrelated web navigation or silently claiming clipboard success.
+{
+  const page=read('check.html');
+  assert.match(page, /body\.jrs-institutional > :not\(main\)\{display:none!important\}/,
+    'print must exclude top-level site chrome');
+  assert.match(page, /#main-content > article > :not\(#sa-out\)/,
+    'print must exclude seven question prompts and research page furniture');
+  assert.match(page, /#sa-out \.sa-actions\{display:none!important\}/,
+    'action buttons and policy links must not be printed');
+  assert.match(page, /#sa-out::before\{/,
+    'printed one-record summary must identify itself');
+  assert.match(page, /id="sa-summary"/,
+    'copy must isolate the review summary from its UI action buttons');
+  assert.match(page, /out\.querySelector\('#sa-summary'\)/,
+    'copy source must target only the written summary');
+  assert.match(page, /document\.execCommand\('copy'\) !== true/,
+    'clipboard fallback must check actual copy return value before reporting success');
+  assert.match(page, /if \(ta\.parentNode\) ta\.parentNode\.removeChild\(ta\)/,
+    'temporary clipboard focus target must always be removed');
+  assert.match(page, /if \(prior && typeof prior\.focus === 'function'\) prior\.focus\(\)/,
+    'keyboard focus must return after clipboard fallback');
+  console.log('PASS: print scope and truthful clipboard fallback with keyboard focus restoration.');
+}
+
+// Specificity regression: the mobile navigation script inserts a sibling button
+// whose later shared stylesheet declares !important display:flex. A generic
+// body > :not(main) print rule is insufficient to suppress that control.
+{
+  const page=read('check.html');
+  assert.match(page, /body\.jrs-institutional\.jrs-nav-ready > button\.jrs-global-nav-toggle/,
+    'mobile disclosure button must be suppressed at print-specific specificity');
+  assert.match(page, /body\.jrs-institutional\.jrs-nav-ready > nav\.jrs-sitenav\[data-open\]/,
+    'expanded mobile navigation must also be absent from review printouts');
+  const witness=read('tests/jrs-check-print-evidence.py');
+  assert.ok(witness.includes('"Site menu", "Close site menu"'),
+    'printed text verification must explicitly reject mobile navigation labels');
+  console.log('PASS: mobile menu and expanded disclosure cannot be printed alongside a review summary.');
+}
+
+// Validate the selected-state print witness remains wired into exact-head CI.
+{
+ const script=read('tests/jrs-check-selected-print.mjs');
+ const workflow=read('.github/workflows/jrs-accessibility-evidence.yml');
+ assert.match(script,/Page.printToPDF/,'selected-state output must use actual Chromium PDF rendering');
+ assert.match(script,/boxes\[0\]\.checked=true/,'first synthetic review selection must execute');
+ assert.match(script,/boxes\[2\]\.checked=true/,'second distinct selection must execute');
+ assert.match(script,/The count is not a score/,'selected review must state that count is not diagnostic');
+ assert.ok(workflow.includes('jrs-check-selected-print.mjs')&&
+    workflow.includes('jrs-check-selected-preflight.pdf')&&
+    workflow.includes('jrs-check-selected-text.txt'),
+   'selected PDF witness must run and archive output');
+ assert.ok(read('tests/jrs-check-a11y-browser.html').includes('failed clipboard command never reports success'),
+   'browser must fail when copy fallback claims success without confirmation');
+ console.log('PASS: synthetic populated print and clipboard denial witnesses remain in CI.');
+}
+
+// Research evidence must not be copied or printed as though measured on the
+// particular record. Preserve source research on screen, but export only
+// the review note, its limitations and provenance.
+{
+ const check=read('check.html');
+ assert.match(check, /\+ head \+ tail \+ stamp \+ '<\/section>'/,
+    'record-specific summary must exclude constructed-corpus accuracy evidence');
+ assert.match(check, /out\.innerHTML = summary \+ bench \+ actions/,
+    'the benchmark must remain visible in the page as separate research context');
+ assert.match(check, /#sa-out > \.sa-bench\{display:none!important\}/,
+    'print must exclude the group-level benchmark independently of the record summary');
+ const fixture=read('tests/jrs-check-a11y-browser.html');
+ assert.match(fixture, /portable note does not incorporate group-level research benchmarks/,
+    'copy test must reject unrelated group-level research figures');
+ console.log('PASS: record-specific exports separate findings from constructed-corpus evidence.');
+}
+
+// Mixed yes/no and either/or questions require explicit review-selection rules.
+// The grouped instructions must be reachable by assistive technologies, without
+// changing the seven mode names, benchmark, telemetry, or local-only answers.
+{
+ const check=read('check.html');
+ const required=[
+   'id="sa-group-heading"','id="sa-instructions"',
+   'id="sa-question-group" role="group" aria-labelledby="sa-group-heading" aria-describedby="sa-instructions"',
+   'if reasoning is assumed or the evidence supports only a weaker conclusion',
+   'A tick identifies a question for source verification, not a finding or score.'
+ ];
+ for(const token of required)assert.ok(check.includes(token),'seven-question review instruction missing: '+token);
+ assert.doesNotMatch(check,/Tick a box only where the answer is no or you are unsure\./,
+   'misleading binary-only guidance has returned');
+ const types=[...check.matchAll(/<label class="chk"><input type="checkbox" class="sa" data-mode="([^"]+)"/g)]
+   .map(match=>match[1]);
+ assert.deepEqual(types,[
+   'Fluent groundlessness','Basis substitution','Chronology collapse',
+   'Reasoning elision','Confident underspecification','Evidentiary overreach',
+   'Untraceable authority'
+ ],'all seven source review modes must remain present in order');
+ assert.match(read('tests/jrs-check-a11y-browser.html'),
+   /seven questions expose a named assistive-technology group/,
+   'automated browser witness must exercise the accessible question group');
+ console.log('PASS: mixed-format question selection and labelled group have explicit release regression coverage.');
+}
+
+// The review is the primary practitioner task. Research figures and explanatory
+// patterns remain on the page, but must not block access to the actual tool.
+{
+ const html=read('check.html');
+ const action=html.indexOf('id="sa-group-heading"');
+ const evidence=html.indexOf('class="evidence-strip"');
+ const patterns=html.indexOf('>Seven documentation-risk patterns</h2>');
+ const conditions=html.indexOf('>The five conditions behind the check</h2>');
+ assert.ok(action>0 && evidence>action && patterns>evidence && conditions>patterns,
+   'interactive review must precede group-level research evidence and explanations');
+ assert.equal((html.match(/id="sa-out"/g)||[]).length,1,
+   'moving the tool must not duplicate the record-specific summary');
+ assert.equal((html.match(/class="evidence-strip"/g)||[]).length,1,
+   'moving the tool must preserve the separately scoped research statistics');
+ assert.match(html,/id="sa-question-group" role="group"/,
+   'primary interaction must keep its accessible group');
+ console.log('PASS: record-first review journey retains separate research and all reference content.');
 }

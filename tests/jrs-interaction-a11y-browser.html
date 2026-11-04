@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>JRS interaction-state accessibility acceptance preflight</title></head>
+<body><h1>JRS dynamic-state accessibility audit</h1>
+<pre id="result" role="status">RUNNING</pre>
+<script>
+(async function(){
+ const cases=[
+   {id:'resource-filter',url:'/resources.html'},
+   {id:'resource-empty',url:'/resources.html'},
+   {id:'resource-focus-recovery',url:'/resources.html'},
+   {id:'mobile-navigation-open',url:'/editions.html'},
+   {id:'training-module-expanded',url:'/training.html'},
+   {id:'training-optional-dialog',url:'/training.html'},
+   {id:'training-completion-text',url:'/training.html'},
+   {id:'accessible-format-routing',url:'/contact.html?category=accessibility'}
+ ];
+ const widths=[390,1440],reports=[],errors=[];
+ async function load(url,width){
+   const frame=document.createElement('iframe');
+   frame.title='Interaction audit '+url;
+   frame.style.cssText='position:fixed;top:0;left:0;width:'+width+'px;height:900px;border:0;background:#fff;z-index:99';
+   frame.width=width;frame.height=900;
+   document.body.appendChild(frame);
+   await new Promise(function(resolve,reject){
+     frame.onload=resolve;
+     frame.onerror=()=>reject(Error('iframe failed: '+url));
+     frame.src=url;
+   });
+   return frame;
+ }
+ function expect(ok,description){
+   if(!ok)throw Error(description);
+ }
+ async function changeState(id,doc,win){
+   if(id==='resource-filter'||id==='resource-empty'){
+     const query=doc.querySelector('#jrs-resource-query');
+     const articles=[...doc.querySelectorAll('#jrs-resource-results article.jrs-resource-entry')];
+     const status=doc.querySelector('#jrs-resource-count');
+     expect(query&&articles.length===16&&status,'resource search not initialized');
+     query.value=id==='resource-empty'?'zzjrsnomatch2026':'rapid review card';
+     query.dispatchEvent(new win.Event('input',{bubbles:true}));
+     const shown=articles.filter(a=>!a.hidden);
+     expect(id==='resource-empty'?shown.length===0:shown.length===1,
+       'resource search filtering not effective');
+     expect(status.getAttribute('role')==='status'&&status.getAttribute('aria-live')==='polite',
+       'resource status is not announced');
+     if(id==='resource-empty')
+       expect(doc.querySelector('#jrs-resource-empty')?.hidden===false,'no-result message absent');
+     return {shown:shown.length};
+   }
+   if(id==='resource-focus-recovery'){
+     const query=doc.querySelector('#jrs-resource-query');
+     const articles=[...doc.querySelectorAll('#jrs-resource-results article.jrs-resource-entry')];
+     const link=articles[0]?.querySelector('a[href]');
+     const status=doc.querySelector('#jrs-resource-count');
+     expect(query&&link&&status&&articles.length===16,'resource focus fixture unavailable');
+     link.focus();
+     expect(doc.activeElement===link,'resource link could not receive keyboard focus');
+     query.value='zzjrsnomatch2026';
+     query.dispatchEvent(new win.Event('input',{bubbles:true}));
+     expect(articles.every(a=>a.hidden),'filter did not hide focused result');
+     expect(doc.activeElement===query,'focus stranded inside hidden result');
+     expect(status.textContent.includes('0 of 16'),'result count not updated');
+     return {hiddenResultFocusRecovered:true};
+   }
+   if(id==='mobile-navigation-open'){
+     const button=doc.querySelector('.jrs-global-nav-toggle');
+     const nav=doc.querySelector('nav.jrs-sitenav');
+     expect(button&&nav,'shared menu missing');
+     expect(button.getAttribute('aria-expanded')==='false','menu not initially collapsed');
+     if(win.innerWidth>760){
+       expect(win.getComputedStyle(button).display==='none',
+         'desktop menu toggle unexpectedly visible');
+       expect(win.getComputedStyle(nav).display!=='none'&&nav.querySelectorAll('a').length>=7,
+         'desktop navigation must remain visible without an expanded mobile menu');
+       return {layout:'desktop-visible'};
+     }
+     expect(win.getComputedStyle(button).display!=='none','mobile menu toggle hidden');
+     button.focus();button.click();
+     expect(button.getAttribute('aria-expanded')==='true'&&nav.getAttribute('data-open')==='true',
+       'mobile menu open state not announced');
+     return {expanded:true,layout:'mobile-open'};
+   }
+   if(id==='training-module-expanded'){
+     const button=doc.querySelector('#module-btn-0');
+     const panel=doc.querySelector('#module-panel-0');
+     expect(button&&panel,'training module absent');
+     button.focus();button.click();
+     expect(button.getAttribute('aria-expanded')==='true'&&panel.classList.contains('open'),
+       'training expansion state mismatch');
+     return {expanded:true};
+   }
+   if(id==='training-optional-dialog'){
+     const button=doc.querySelector('#jrs-named-record-open');
+     const overlay=doc.querySelector('#enroll-overlay');
+     expect(button&&overlay,'optional dialog missing');
+     button.focus();button.click();
+     expect(win.getComputedStyle(overlay).display!=='none'&&
+       overlay.getAttribute('aria-modal')==='true','optional dialog did not open');
+     expect(doc.activeElement===doc.querySelector('#en-name')||doc.activeElement===overlay,
+       'dialog initial keyboard focus not established');
+     return {dialogOpen:true};
+   }
+   if(id==='training-completion-text'){
+     const section=doc.querySelector('#cert-section'),input=doc.querySelector('#cert-name');
+     const canvas=doc.querySelector('#cert-canvas'),summary=doc.querySelector('#cert-accessible-summary');
+     const actions=doc.querySelector('#cert-actions');
+     expect(section&&input&&canvas&&summary&&actions,'completion controls missing');
+     // Open the completion-only state with synthetic data. No enrollment is sent.
+     section.style.display='block';
+     input.value='Sample Reviewer';
+     expect(typeof win.generateCert==='function','local generator missing');
+     await win.generateCert();
+     expect(!summary.hidden&&summary.getAttribute('role')==='status'&&
+       summary.getAttribute('aria-live')==='polite','accessible completion status missing');
+     expect(summary.textContent.includes('Sample Reviewer')&&
+       summary.textContent.includes('all six learning modules')&&
+       summary.textContent.includes('Not professional certification'),
+       'on-page text is not equivalent to the PNG');
+     expect(canvas.getAttribute('aria-hidden')==='true'&&
+       canvas.dataset.issuedName==='Sample Reviewer','canvas name not synchronized');
+     input.value='Revised Name';
+     input.dispatchEvent(new win.Event('input',{bubbles:true}));
+     expect(summary.hidden&&summary.textContent===''&&
+       !canvas.dataset.issuedName&&actions.style.display==='none',
+       'stale record was not invalidated');
+     input.value='Sample Reviewer';
+     await win.generateCert();
+     expect(!summary.hidden,'regeneration did not restore readable text');
+     return {localText:true,staleNameRejected:true};
+   }
+   if(id==='accessible-format-routing'){
+     const select=doc.querySelector('#contact-category');
+     const status=doc.querySelector('#contact-status');
+     expect(select?.value==='accessibility','accessible format category not preselected');
+     expect(status?.getAttribute('aria-live')==='polite','contact status not announced');
+     return {category:select.value};
+   }
+   throw Error('unsupported test state '+id);
+ }
+ function finishState(id,doc,win,width){
+   if(id==='resource-empty'){
+     const reset=doc.querySelector('#jrs-resource-reset');
+     const query=doc.querySelector('#jrs-resource-query');
+     const articles=[...doc.querySelectorAll('#jrs-resource-results article.jrs-resource-entry')];
+     expect(reset&&query,'resource reset unavailable');
+     reset.click();
+     expect(query.value===''&&articles.length===16&&articles.every(a=>!a.hidden),
+       'resource clear did not restore all resource links');
+     expect(doc.activeElement===query,'resource clear did not return focus to search');
+     return 'filter-reset-restored';
+   }
+   if(id==='mobile-navigation-open'){
+     if(width>760)return 'desktop-navigation-visible';
+     const button=doc.querySelector('.jrs-global-nav-toggle');
+     const nav=doc.querySelector('nav.jrs-sitenav');
+     doc.dispatchEvent(new win.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+     expect(button.getAttribute('aria-expanded')==='false'&&nav.getAttribute('data-open')==='false',
+       'Escape did not collapse the mobile navigation');
+     expect(doc.activeElement===button,'Escape did not restore focus to mobile menu button');
+     return 'menu-escape-focus-restored';
+   }
+   if(id==='training-module-expanded'){
+     const button=doc.querySelector('#module-btn-0'),panel=doc.querySelector('#module-panel-0');
+     button.click();
+     expect(button.getAttribute('aria-expanded')==='false'&&!panel.classList.contains('open'),
+       'training module could not be collapsed');
+     return 'module-collapse-restored';
+   }
+   if(id==='training-optional-dialog'){
+     const opener=doc.querySelector('#jrs-named-record-open');
+     const dialog=doc.querySelector('#enroll-overlay');
+     doc.dispatchEvent(new win.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+     expect(dialog.style.display==='none'&&!doc.body.classList.contains('jrs-training-dialog-open'),
+       'Escape did not dismiss optional training dialog');
+     expect(doc.activeElement===opener,'dismissed dialog did not return focus to initiator');
+     return 'dialog-escape-focus-restored';
+   }
+   return 'not-applicable';
+ }
+ for(const item of cases)for(const width of widths){
+   let frame;
+   try{
+     frame=await load(item.url,width);
+     const doc=frame.contentDocument,win=frame.contentWindow;
+     expect(doc&&doc.querySelector('main'),'page or main missing');
+     const state=await changeState(item.id,doc,win);
+     await new Promise(function(resolve,reject){
+       const script=doc.createElement('script');
+       script.src='/node_modules/axe-core/axe.min.js';
+       script.onload=resolve;
+       script.onerror=()=>reject(Error('pinned axe unavailable'));
+       doc.head.appendChild(script);
+     });
+     expect(typeof win.axe?.run==='function','axe-core not loaded');
+     const scan=await win.axe.run(doc,{
+       runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22a','wcag22aa']},
+       resultTypes:['violations','incomplete']
+     });
+     const violations=scan.violations.map(x=>({
+       id:x.id,impact:x.impact,count:x.nodes.length,
+       targets:x.nodes.slice(0,4).map(n=>n.target.join(' '))
+     }));
+     const incomplete=scan.incomplete.map(x=>({id:x.id,count:x.nodes.length}));
+     const postCondition=finishState(item.id,doc,win,width);
+     reports.push({state:item.id,route:item.url,width,observed:state,postCondition,violations,incomplete});
+     if(violations.length)errors.push({state:item.id,width,violations});
+   }catch(e){errors.push({state:item.id,width,reason:String(e&&e.message||e)})}
+   finally{if(frame)frame.remove()}
+ }
+ document.querySelector('#result').textContent=JSON.stringify({
+   status:errors.length?'FAIL':'PASS',scans:reports.length,
+   expectedScans:cases.length*widths.length,errors,reports
+ });
+})();
+</script></body></html>

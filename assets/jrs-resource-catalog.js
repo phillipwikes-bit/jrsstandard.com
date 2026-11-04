@@ -27,6 +27,9 @@
         .replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
     }
     function update(){
+      // Filtering must not strand keyboard focus inside a newly hidden card.
+      var focusedEntry=document.activeElement&&document.activeElement.closest
+        ?document.activeElement.closest('.jrs-resource-entry'):null;
       var terms=normalize(query.value).split(' ').filter(Boolean);
       var chosenRole=role.value,chosenFormat=format.value;
       var shown=0;
@@ -38,6 +41,7 @@
         item.node.hidden=!visible;
         if(visible)shown++;
       });
+      if(focusedEntry&&focusedEntry.hidden)query.focus();
       count.textContent=shown+' of '+entries.length+' resources shown.';
       empty.hidden=shown!==0;
     }

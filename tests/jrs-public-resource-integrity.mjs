@@ -5,7 +5,7 @@ import {resolve,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=resolve(fileURLToPath(new URL('../',import.meta.url)));
 const read=p=>readFileSync(join(root,p),'utf8');
-const pages=['index.html','resources.html','research.html','investigator-guides.html',
+const pages=['index.html','resources.html','editions.html','organization.html','research.html','investigator-guides.html',
 'manifest.html','about.html','contact.html','jrsstandard.html','training.html',
 'check.html','simulations.html','decision-reconstruction-risk.html',
 'research-summary.html','methodology.html','evidence-ledger.html','questions.html',
@@ -23,6 +23,35 @@ const pages=['index.html','resources.html','research.html','investigator-guides.
 'reviewer/index.html','ai-governance-record.html','compliance.html','datasets.html',
 'finding.html','results.html','why-good-decisions-fail.html','privacy-notice.html'];
 const redirs=new Map(JSON.parse(read('vercel.json')).redirects.map(x=>[x.source,x.destination]));
+
+ 
+// Canonical public discovery contract: avoid sitemap URL redirects, and
+// align sitemap, robots and the reviewed pages' canonical declarations.
+const sitemapLocations=[...read('sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+const canonicalOrigin='https://www.jrsstandard.com';
+assert.ok(sitemapLocations.length>=40, 'public sitemap unexpectedly sparse');
+assert.equal(new Set(sitemapLocations).size,sitemapLocations.length,
+ 'public sitemap must not contain duplicate locations');
+for(const loc of sitemapLocations){
+ assert.ok(loc.startsWith(canonicalOrigin+'/'),'off-canonical sitemap host: '+loc);
+ const route=loc.slice(canonicalOrigin.length);
+ assert.ok(!redirs.has(route),'sitemap route must not redirect: '+route);
+}
+for(const route of ['/privacy-notice.html','/reviewer/index.html']){
+ assert.ok(sitemapLocations.includes(canonicalOrigin+route),
+  'missing final canonical sitemap destination: '+route);
+}
+assert.ok(read('robots.txt').split(/\r?\n/).includes(
+ 'Sitemap: https://www.jrsstandard.com/sitemap.xml'),
+ 'robots sitemap directive must match the canonical host');
+assert.ok(read('reviewer/index.html').includes(
+ '<link rel="canonical" href="https://www.jrsstandard.com/reviewer/index.html" />'),
+ 'reviewer page canonical must not point at a redirect');
+assert.ok(read('privacy-notice.html').includes(
+ '<link rel="canonical" href="https://www.jrsstandard.com/privacy-notice.html">'),
+ 'privacy notice and sitemap must agree on the final route');
+console.log('PASS: public robots, sitemap, redirect and canonical discovery consistency.');
+
 const docs={employment:'JRS_Investigator_Field_Guide_Employment.pdf',
 fairhousing:'JRS_Investigator_Field_Guide_FairHousing.pdf',
 international:'JRS_Investigator_Field_Guide_International.pdf',

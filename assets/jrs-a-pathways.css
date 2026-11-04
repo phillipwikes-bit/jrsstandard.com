@@ -360,3 +360,15 @@ body.jrs-institutional.jrs-home .jrs-task-context{
     color:CanvasText!important;
   }
 }
+
+/* JRS A-target: secondary orientation follows the searchable resource directory so it does not displace first-use tools on small screens. */
+body.jrs-institutional.jrs-resource-page .jrs-resource-next-steps{
+  border-top:1px solid #b4c5d0;margin:18px 0 14px;padding-top:15px
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-next-steps h3{
+  font:650 18px/1.4 Inter,Arial,sans-serif;color:#17364f;margin:0 0 9px
+}
+body.jrs-institutional.jrs-resource-page .jrs-resource-next-steps .jrs-journey-bridge{
+  font-size:15px!important;line-height:1.65!important;margin:10px 0!important;
+  max-width:85ch
+}

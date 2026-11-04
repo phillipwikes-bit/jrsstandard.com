@@ -5,14 +5,16 @@ This verifies static publication bytes for the exact checked-out PR head. It doe
 not certify visual quality, authenticated APIs, privacy execution or production.
 A Vercel sign-in page, stale preview, HTTP error or missing URL is a release HOLD.
 """
+import ast
 import hashlib
+import json
 import os
 import re
 from pathlib import Path
 import subprocess
 import sys
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,8 +28,9 @@ CHECKS = {
     "/assets/jrs-resource-catalog.js": "assets/jrs-resource-catalog.js",
 }
 
-# These nine public PDF routes must deliver their exact local file bytes. All
-# verification requests use src=verify to avoid contaminating download metrics.
+# Ten tracked public PDF routes must deliver their exact local file bytes:
+# all nine locked edition originals plus the separately tracked DRR article.
+# Verification uses src=verify to avoid contaminating download metrics.
 DOWNLOADS = {
     "standard": "JRS-Standard.pdf",
     "card": "JRS_Rapid_Review_Card.pdf",
@@ -38,7 +41,10 @@ DOWNLOADS = {
     "paper": "JRS_Research_Paper.pdf",
     "accuracy": "JRS_Reliability_Accuracy.pdf",
 }
-REFERENCE_FILE = "JRS-Reference-9d4f2a7c.pdf"
+REFERENCE_FILES = (
+    "JRS-Reference-9d4f2a7c.pdf",
+    "JRS_Investigator_Field_Guide.pdf",
+)
 
 # Vercel may append its own preview feedback script AFTER the published HTML.
 # Accept only this exact platform trailer, never changes to the JRS source.
@@ -74,6 +80,127 @@ def self_test():
             fail("preview verifier regression: " + name)
         print("PASS: preview verifier", name)
     print("PASS: narrow Vercel feedback allowance, no arbitrary source modifications.")
+    assert len(sitewide_paths()) == 60
+    print("PASS: exact 60-route website source and redirect coverage.")
+    locked = json.loads((ROOT / "docs/JRS_Published_PDF_Identity_Manifest.json").read_text("utf-8"))
+    published = {a["file"] for a in locked["assets"]}
+    checked = set(DOWNLOADS.values()) | set(REFERENCE_FILES)
+    if len(locked["assets"]) != 9 or len(published) != 9 or not published.issubset(checked):
+        fail("tracked PDF route coverage does not include every locked published edition")
+    if len(checked) != 10:
+        fail("tracked PDF route inventory unexpectedly changed")
+    print("PASS: all nine locked original PDF editions covered by ten tracked routes.")
+    # Diagnostics must not expose a response body, host or query token in
+    # public CI logs. Do not infer which authorization layer rejected a 403.
+    hidden = "private-token-do-not-print"
+    for code, expected in [
+        (401, "HTTP 401: access refused"),
+        (403, "HTTP 403: access refused"),
+        (302, "HTTP 302: unexpected preview redirect"),
+        (404, "HTTP 404: exact preview"),
+        (402, "HTTP 402: deployment"),
+        (429, "HTTP 429: request"),
+        (503, "HTTP 503: preview")
+    ]:
+        error = HTTPError("https://secret.example/path?" + hidden,
+                          code, hidden, {"x-secret": hidden}, None)
+        message = network_failure(error)
+        assert message.startswith(expected), (code, message)
+        assert hidden not in message and "secret.example" not in message
+    # Redirect diagnostics reveal category only, never host, path, query or
+    # token. All such responses remain failures, including sign-in redirects.
+    for destination, category in [
+        ("https://vercel.com/login?token=" + hidden, "destination resembles Vercel sign-in"),
+        ("https://vercel.com/sso-api?next=" + hidden, "destination resembles Vercel sign-in"),
+        ("https://www.vercel.com/api/auth/callback?state=" + hidden, "destination resembles Vercel sign-in"),
+        ("https://vercel.com/projects?token=" + hidden, "Vercel platform redirect destination"),
+        ("https://secret.example/elsewhere?" + hidden, "same-origin absolute redirect destination"),
+        ("https://another.example/secret/" + hidden, "external absolute redirect destination"),
+        ("http://outside.example/?token=" + hidden, "insecure absolute redirect destination"),
+        ("/private/" + hidden, "relative redirect destination"),
+        ("", "destination not supplied"),
+        ("//outside.example/" + hidden, "protocol-relative redirect destination refused"),
+        ("https://[malformed?" + hidden, "malformed redirect destination refused"),
+        ("https://another.example/?user:pass@" + hidden, "external absolute redirect destination"),
+    ]:
+        error = HTTPError("https://secret.example/?"+hidden, 302, hidden,
+                          {"Location": destination}, None)
+        message = network_failure(error)
+        assert message.startswith("HTTP 302: unexpected preview redirect")
+        assert category in message and hidden not in message
+        assert "another.example" not in message and "outside.example" not in message
+        assert "secret.example" not in message
+    assert network_failure(TimeoutError(hidden)) == "TimeoutError"
+    print("PASS: hosted network errors report status without exposing credentials or response data.")
+
+
+def classify_redirect_destination(error):
+    """Classify redirects without printing their destinations.
+
+    These are routing clues, not proof that a particular access control
+    rejected the request. Never follow a redirect with Preview credentials.
+    """
+    location = error.headers.get("Location", "") if error.headers else ""
+    if not isinstance(location, str) or not location:
+        return "destination not supplied"
+    # Bound parsing and do not include untrusted URL data in an exception.
+    if len(location) > 8192:
+        return "oversized redirect destination refused"
+    try:
+        target = urlparse(location)
+        if target.username or target.password:
+            return "credential-bearing destination refused"
+        if target.scheme in ("http", "https") and target.netloc:
+            if target.scheme != "https":
+                return "insecure absolute redirect destination"
+            host = (target.hostname or "").lower()
+            if host in ("vercel.com", "www.vercel.com"):
+                path = target.path.lower()
+                if any(path == prefix or path.startswith(prefix + "/")
+                       for prefix in ("/login", "/sso", "/sso-api", "/api/auth")):
+                    return "destination resembles Vercel sign-in"
+                return "Vercel platform redirect destination"
+            source_host = (urlparse(error.url).hostname or "").lower()
+            if host == source_host:
+                return "same-origin absolute redirect destination"
+            return "external absolute redirect destination"
+        if location.startswith("//"):
+            return "protocol-relative redirect destination refused"
+        if location.startswith("/"):
+            return "relative redirect destination"
+        return "unclassified redirect destination"
+    except (ValueError, TypeError):
+        return "malformed redirect destination refused"
+
+
+def network_failure(error):
+    """Return a bounded public CI diagnostic, never raw URL, body or headers.
+
+    HTTP errors can be Vercel SSO/Trusted Sources denials, application denials,
+    missing resources or rate limits. A numeric status is useful evidence but
+    does not by itself establish the responsible security control.
+    """
+    if isinstance(error, HTTPError):
+        code = error.code
+        if code in (401, 403):
+            return ("HTTP " + str(code) +
+                    ": access refused; inspect Vercel preview authentication/"
+                    "Trusted Sources and application authorization")
+        if code in (301, 302, 303, 307, 308):
+            return ("HTTP " + str(code) + ": unexpected preview redirect (" +
+                    classify_redirect_destination(error) +
+                    "); authentication or routing investigation required")
+        if code == 404:
+            return "HTTP 404: exact preview file or route unavailable"
+        if code == 402:
+            return "HTTP 402: deployment or account limit may apply"
+        if code == 429:
+            return "HTTP 429: request rate limited"
+        if isinstance(code, int) and 500 <= code <= 599:
+            return "HTTP " + str(code) + ": preview server error"
+        return "HTTP " + str(code) if isinstance(code, int) else "HTTP error"
+    return type(error).__name__
+
 
 class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):
@@ -90,8 +217,16 @@ def verified_request(url, parsed):
         "User-Agent": "JRS-publication-preview-verifier/1.0",
         "Cache-Control": "no-cache",
     }
+    oidc = os.environ.get("JRS_VERCEL_TRUSTED_OIDC_TOKEN", "")
     secret = os.environ.get("JRS_VERCEL_PREVIEW_BYPASS", "")
-    if secret:
+    if oidc and secret:
+        fail("ambiguous CI preview credentials")
+    if oidc:
+        if not (128 <= len(oidc) <= 8192) or not re.fullmatch(
+                r"[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+", oidc):
+            fail("invalid short-lived CI identity format")
+        headers["x-vercel-trusted-oidc-idp-token"] = oidc
+    elif secret:
         if not (32 <= len(secret) <= 256) or chr(13) in secret or chr(10) in secret:
             fail("invalid CI preview-bypass credential format")
         headers["x-vercel-protection-bypass"] = secret
@@ -102,7 +237,8 @@ def verify_downloads(base, parsed):
     from urllib.parse import urlencode
     requests = [(urlencode({"e": edition, "src": "verify"}), path)
                 for edition, path in DOWNLOADS.items()]
-    requests.append((urlencode({"f": REFERENCE_FILE, "src": "verify"}), REFERENCE_FILE))
+    requests.extend((urlencode({"f": path, "src": "verify"}), path)
+                    for path in REFERENCE_FILES)
     no_redirect = build_opener(NoRedirect)
     for query, path in requests:
         url = base + "/api/dl?" + query
@@ -116,11 +252,13 @@ def verify_downloads(base, parsed):
             location = exc.headers.get("Location", "")
         except (URLError, TimeoutError, OSError) as error:
             fail(path + ": tracked download did not respond (" +
-                 type(error).__name__ + ")")
+                 network_failure(error) + ")")
         expected_target = "/" + path
         target = urlparse(location)
         if status != 302 or target.scheme != "https" or target.netloc != parsed.netloc or target.path != expected_target:
-            fail(path + ": tracked route did not issue an exact-file 302 redirect")
+            detail = ("HTTP " + str(status) + ": " if status != 302 else "")
+            fail(path + ": tracked route did not issue an exact-file 302 redirect (" +
+                 detail + "source/host/target mismatch)")
         if target.query or target.fragment:
             fail(path + ": redirect contains unexpected query or fragment")
         try:
@@ -131,13 +269,86 @@ def verify_downloads(base, parsed):
                 kind = resp.headers.get("Content-Type", "").split(";")[0].lower().strip()
         except (HTTPError, URLError, TimeoutError, OSError) as error:
             fail(path + ": PDF could not be downloaded (" +
-                 type(error).__name__ + ")")
+                 network_failure(error) + ")")
         if not data.startswith(b"%PDF-") or kind != "application/pdf":
             fail(path + ": download is not served as a PDF")
         expected = (ROOT / path).read_bytes()
         if len(data) > 15_000_000 or data != expected:
             fail(path + ": delivered PDF bytes differ from the release candidate")
         print("PASS: tracked download", path, sha(data)[:16])
+
+# The browser WCAG preflight is the authority for public HTML inventory. Do
+# not claim whole-site identity by checking only the seven headline routes.
+SITEWIDE_AUDIT = ROOT / "tests/jrs-wcag-axe-browser.html"
+CANONICAL_REDIRECTS = {"/privacy.html": "/privacy-notice.html"}
+
+def sitewide_paths():
+    match = re.search(r"const routes=(\[[\s\S]*?\]);", SITEWIDE_AUDIT.read_text("utf-8"))
+    if not match:
+        fail("source WCAG public-route inventory unavailable")
+    try:
+        paths = ast.literal_eval(match.group(1))
+    except (ValueError, SyntaxError):
+        fail("source WCAG route inventory malformed")
+    if (not isinstance(paths, list) or len(paths) != 60 or
+            len(set(paths)) != 60 or
+            any(not isinstance(p, str) or
+                not re.fullmatch(r"/(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+\.html", p)
+                for p in paths)):
+        fail("expected exactly 60 safe, unique public HTML routes")
+    redirects = json.loads((ROOT / "vercel.json").read_text("utf-8")).get("redirects", [])
+    for alias, dest in CANONICAL_REDIRECTS.items():
+        if alias not in paths or dest not in paths:
+            fail("canonical privacy redirect omitted from sitewide scan")
+        valid = [r for r in redirects if r.get("source") == alias and
+                 r.get("destination") == dest and r.get("permanent") is False]
+        if len(valid) != 1:
+            fail("sitewide canonical redirect differs from deployed routing policy")
+    for path in paths:
+        source = CANONICAL_REDIRECTS.get(path, path)
+        if not (ROOT / source.lstrip("/")).is_file():
+            fail("public source page missing: " + source)
+    return paths
+
+def verify_sitewide(base, parsed):
+    no_redirect = build_opener(NoRedirect)
+    paths = sitewide_paths()
+    for route in paths:
+        req = verified_request(base + route, parsed)
+        try:
+            with no_redirect.open(req, timeout=20) as response:
+                code = response.status
+                received = response.read(3_000_001)
+                kind = response.headers.get("Content-Type", "").split(";")[0].strip().lower()
+                served = urlparse(response.url)
+                location = response.headers.get("Location", "")
+        except HTTPError as exc:
+            code = exc.code
+            received = b""
+            kind = ""
+            served = urlparse(base + route)
+            location = exc.headers.get("Location", "")
+        except (URLError, TimeoutError, OSError) as error:
+            fail(route + ": sitewide preview unavailable (" + network_failure(error) + ")")
+        if route in CANONICAL_REDIRECTS:
+            # Vercel's declared 307/308 canonicalization must stay on the
+            # current origin. Never follow a redirect while holding credentials.
+            target = urlparse(urljoin(base + route, location))
+            if (code not in (307, 308) or target.scheme != "https" or
+                target.netloc != parsed.netloc or
+                target.path != CANONICAL_REDIRECTS[route] or
+                target.query or target.fragment):
+                fail(route + ": unexpected sitewide canonical redirect")
+            print("PASS: hosted alias", route, "->", target.path)
+            continue
+        if (code != 200 or kind != "text/html" or
+                served.netloc != parsed.netloc or len(received) > 3_000_000):
+            fail(route + ": not an exact-host public HTML response")
+        source = (ROOT / route.lstrip("/")).read_bytes()
+        if not matches_release_source(received, source, route):
+            fail(route + ": hosted public-page bytes differ from candidate")
+        print("PASS: hosted public route", route, sha(source)[:16])
+    print("PASS: complete 60-route protected public HTML source identity and canonical redirect policy.")
 
 def fail(reason):
     raise SystemExit("RELEASE HOLD: " + reason)
@@ -175,7 +386,7 @@ def main():
                     fail(local + ": preview redirected or did not return HTTP 200")
                 received = response.read(3_000_001)
         except (HTTPError, URLError, TimeoutError, OSError) as error:
-            fail(local + ": preview unavailable (" + type(error).__name__ + ")")
+            fail(local + ": preview unavailable (" + network_failure(error) + ")")
         if len(received) > 3_000_000:
             fail(local + ": unexpectedly large preview response")
         if b"Log in to Vercel" in received or b"Vercel Authentication" in received:
@@ -188,8 +399,9 @@ def main():
             print("INFO: exact Vercel Live footer verified for", local)
         print("PASS:", local, sha(expected)[:16])
     verify_downloads(base, parsed)
-    print("PASS: sampled hosted static source matches the exact PR head.")
-    print("PASS: nine tracked PDF routes redirect and deliver identical files.")
+    verify_sitewide(base, parsed)
+    print("PASS: sampled and sitewide hosted static source match the exact PR head.")
+    print("PASS: ten tracked PDF routes, including all nine locked originals, deliver identical files.")
     print("NOT CERTIFIED: screen reader testing, PDF tagging, runtime privacy, or production deployment.")
 
 if __name__ == "__main__":

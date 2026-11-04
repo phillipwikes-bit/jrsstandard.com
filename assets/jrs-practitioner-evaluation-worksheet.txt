@@ -1,0 +1,90 @@
+JRS | PRACTITIONER EVALUATION WORKSHEET
+Version 0.1 | 3 November 2026
+Status: Blank evaluation aid. Not research results, certification, or proof of operational effectiveness.
+
+PURPOSE
+Document whether application of the Justification Review Standard (JRS) identifies record-quality issues not identified by an organization's ordinary review. Use within an authorized workflow and keep the completed worksheet in the organization's own controlled records system.
+
+BOUNDARIES
+- This is a local working template, not an online research enrollment or upload mechanism.
+- Do not transmit confidential records, names, protected information, credentials, privileged content, or source documents to the public JRS website or public contact form.
+- Human reviewers retain authority for findings, correction, escalation and finalization.
+- A record-quality finding does not determine the legality or merits of the underlying decision.
+- Record the exact publication used. The Standard PDF v2.0 (2026) and online methodology v1.0 (May 2026) are distinct publications and are not established as equivalent.
+- Use a workflow approved by the organization. General-purpose real-record effectiveness and software-engine performance have not been established.
+
+1. EVALUATION AUTHORITY AND SCOPE
+Evaluation reference (internal, non-identifying):
+Organization/unit (internal only):
+Authorized evaluator / reviewer role (internal only):
+Approved record type and selection criteria:
+Review dates and evaluation period:
+JRS title, edition, date and retained source:
+Ordinary-review policy or checklist edition:
+Record selection method and number selected:
+Permissions / confidentiality / retention approval location (internal only):
+Excluded record classes and reasons:
+
+2. COMPARISON DESIGN
+Ordinary review completed before JRS review? Yes / No / Not assessable
+Was ordinary review documented without exposure to JRS findings? Yes / No / Not assessable
+Was JRS review independently performed or adjudicated? Yes / No / Not assessable
+Were reviewer roles, order and any blinding documented? Yes / No / Not assessable
+Is the comparison paired on the same records? Yes / No / Not assessable
+Limitations, missing baseline evidence and potential reviewer effects:
+
+3. RECORD-LEVEL LOG (REPEAT FOR EACH AUTHORIZED RECORD)
+Internal coded reference (do not include identifiers in shared summaries):
+Record type / finalization stage:
+JRS publication and condition definitions used:
+Ordinary review: finding(s) and disposition, or "not documented":
+JRS review: reconstructability:
+JRS review: identifiable basis:
+JRS review: chronology integrity:
+JRS review: reasoning trace:
+JRS review: evidentiary sufficiency:
+For every concern, identify the relevant source or the source that could not be verified.
+Sources should be cited using identifiers held only in the organization's authorized records.
+Difference from ordinary-review finding(s):
+Human verification / adjudication and reason for any disagreement:
+Disposition: no action / correction / further review / escalation / unresolved
+Evidence added or corrected (if any), with source verification:
+Date, review role and approval record retained internally:
+Was the issue observed before finalization? Yes / No / Unknown
+Limitations or reasons the record could not be assessed:
+
+4. AGGREGATE REPORTING (DO NOT FILL WITH ESTIMATES)
+Records selected:
+Records eligible and actually reviewed:
+Records excluded, with reasons:
+Records with ordinary-review findings:
+Records with JRS review concerns:
+Paired records with JRS-only concerns:
+Paired records with ordinary-review-only concerns:
+Paired records with both:
+Paired records with neither:
+Records corrected, escalated, unresolved:
+Independent adjudications / disagreements (if assessed):
+Missing baseline records or incomplete source access:
+Negative or contrary findings:
+Uncertainty, sample-selection bias, generalizability limits:
+Whether source verification established support for each proposed correction:
+Interpretation supported by the actual observations:
+Claims NOT supported by these observations:
+
+5. REVIEW AND DISCLOSURE
+Report prepared by (internal):
+Independent review/adjudication (if completed, otherwise "not performed"):
+Date, exact worksheet version and source:
+Data-use permission for any external summary (if any):
+Approved summary scope, if any:
+Confidential supporting evidence location (internal only):
+Open questions and planned re-check:
+
+RESTRICTIONS ON CONCLUSIONS
+Do not label the instrument validated or reliable, report a detection improvement, infer legally defensible outcomes, or claim independent verification from an unpaired, unblinded, non-representative or creator-only exercise. If appropriate comparison or independent evidence is missing, report it as NOT ASSESSED.
+
+Related JRS public references:
+https://www.jrsstandard.com/research.html#evidence-maturity
+https://www.jrsstandard.com/editions.html
+https://www.jrsstandard.com/organization.html

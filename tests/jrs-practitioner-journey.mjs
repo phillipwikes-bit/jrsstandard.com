@@ -44,3 +44,29 @@ for(const value of ['repeat(3,minmax(0,1fr))','@media(max-width:900px)','grid-te
  assert.ok(styles.includes(value),'Missing responsive/keyboard safeguard: '+value);
 assert.ok(!home.includes('upload your case record'),'No new upload instructions');
 console.log('PASS: fictional 3-stage example, separated detection/reliability/field boundaries, source links and shared responsive public styling.');
+
+
+// The homepage's fast-task entry uses ?src=quick. Its arrival must not be
+// silently grouped as 'other' in the path-only, bounded check-view telemetry.
+// Source labels are finite categories, not arbitrary URL query data.
+{
+ const quickHref='href="check.html?src=quick"';
+ assert.ok(home.includes(quickHref),'Homepage fast-task check entry must remain present');
+ const allowlist=check.match(/src\s*=\s*\/\^\(([^)]+)\)\$\/\.test\(sourceCandidate\)/);
+ assert.ok(allowlist,'Check-view telemetry must retain a bounded source allowlist');
+ const accepted=new RegExp('^(?:'+allowlist[1]+')$');
+ for(const sourcePage of ['index.html','resources.html','about.html','organization.html']){
+  const content=read(sourcePage);
+  const sourceTags=[...content.matchAll(/href="check\.html\?src=([^"&]+)"/g)].map(m=>m[1]);
+  assert.ok(sourceTags.length>0,'Expected first-party check links on '+sourcePage);
+  for(const tag of sourceTags)
+   assert.ok(accepted.test(tag),sourcePage+' uses a source category that would be misclassified: '+tag);
+ }
+ for(const category of ['home','quick','about','organization','resources','training'])
+  assert.ok(accepted.test(category),'First-party check-view source must be attributable: '+category);
+ for(const untrusted of ['quick%26person%3DA','quick&person=A','someone@example.com','case-123',''])
+  assert.ok(!accepted.test(untrusted),'Arbitrary URL source must not enter telemetry: '+untrusted);
+ assert.match(check,/origin_url:\s*window\.location\.pathname/,
+   'Check-view logging must retain a path-only page source');
+ console.log('PASS: homepage quick check entry is attributed without accepting arbitrary source identifiers.');
+}

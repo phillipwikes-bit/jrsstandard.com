@@ -1743,3 +1743,21 @@ body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
   padding-top:30px!important;
  }
 }
+
+/* 2026-11-03 A-target correction: reference breadcrumbs must remain
+   distinguishable without color perception in the institutional theme. */
+body.jrs-institutional main .crumb a[href]{
+  text-decoration:underline!important;text-underline-offset:.16em;
+  text-decoration-thickness:1px
+}
+
+/* 2026-11-03 A-grade correction: readable error-page navigation.
+   Do not enlarge every footer link; that caused 320px page overflow. */
+body.jrs-institutional.jrs-error-route footer.site-footer a[href]{
+  color:#173d5b!important;background:transparent!important;
+  text-decoration:underline!important;text-underline-offset:.16em
+}
+/* One former Home link, rather than the entire footer, lacked target width. */
+body.jrs-institutional.jrs-error-route footer.site-footer a[href="index.html"]{
+  min-width:44px!important
+}

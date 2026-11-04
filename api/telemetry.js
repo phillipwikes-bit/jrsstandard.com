@@ -39,6 +39,15 @@ const TEST_SRC = ['verify', 'test', 'selftest'];
 // That promise is the constraint on this endpoint, not a comment about it.
 const VIEW_EVENTS = ['check-view'];
 
+// Keep check-page source categories bounded at the write boundary, not only
+// in the visitor's JavaScript. Do not store arbitrary values in view metadata.
+const CHECK_VIEW_SOURCES = new Set([
+  'home','homepage','quick','about','organization','resources','training',
+  'standard','research','footer','header','nav','menu','direct','email',
+  'check','guide','investigator-guides','search','article','qr','social',
+  'dashboard','other'
+]);
+
 // Non-browser agents do not click links. Same regex as /api/support, which was
 // added after four rounds of self-inflicted analytics pollution.
 const NOT_A_PERSON = /googlebot|bingbot|baiduspider|yandexbot|duckduckbot|applebot|GoogleOther|facebookexternalhit|bot|spider|crawl|slurp|preview|headless|curl|wget|python-requests|libwww|okhttp|java\/|go-http/i;
@@ -93,6 +102,11 @@ export default async function handler(req){
   // rows written as 'page-view' are invisible to the click and programme counts.
   const evt = tag(meta.event, 40);
   const isView = VIEW_EVENTS.indexOf(evt) !== -1;
+  // A page-view is an observation of the public check page, not a generic
+  // caller-supplied path. This reduces accidental analytics misclassification.
+  if (isView && b.origin_url !== '/check.html')
+    return json({ ok: true, recorded: false, reason: 'invalid_view_origin' });
+  const viewSrc = isView ? (CHECK_VIEW_SOURCES.has(src) ? src : 'other') : null;
   if (src && TEST_SRC.indexOf(src) !== -1) return json({ ok: true, recorded: false, reason: 'deploy_check' });
   if (src.indexOf('deploytest') === 0) return json({ ok: true, recorded: false, reason: 'deploy_check' });
 
@@ -122,8 +136,8 @@ export default async function handler(req){
           origin: safePath(b.origin_url),
           target: isView ? evt : safePath(b.target_url),
           event: isView ? evt : null,
-          label: tag(meta.label, 80),
-          src: src || 'none',
+          label: isView ? '' : tag(meta.label, 80),
+          src: isView ? viewSrc : (src || 'none'),
           country: country,
           user_agent: ua.slice(0, 300)
         }

@@ -11,8 +11,14 @@ on:
 permissions:
   contents: read
   deployments: read
+  id-token: write # short-lived trusted-source identity, never repository secret
 jobs:
   visual-snapshots:
+    # This job can mint a short-lived OIDC token. Never execute source from
+    # forked PRs in a token-enabled job, even if the later token step is skipped.
+    # A forked PR may alter browser fixtures or test scripts used before that
+    # step. The entire job must be excluded, not just the token request.
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact PR source
@@ -49,7 +55,7 @@ jobs:
         run: |
           "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=45000 --window-size=1440,1200 --dump-dom 'http://127.0.0.1:8791/tests/jrs-public-palette-browser-audit.html' > /tmp/jrs-public-palette-audit.html 2> /tmp/jrs-public-palette-errors.log
           python3 tests/jrs-public-palette-check.py /tmp/jrs-public-palette-audit.html
-      - name: Audit 58 public routes at 320px, 390px, 768px and 1440px
+      - name: Audit 60 public routes at 320px, 390px, 768px and 1440px
         run: |
           "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=120000 --window-size=1440,1200 --dump-dom 'http://127.0.0.1:8791/tests/jrs-sitewide-mobile-browser-audit.html' > /tmp/jrs-sitewide-mobile-audit-output.html 2> /tmp/jrs-sitewide-mobile-errors.log
           python3 tests/jrs-sitewide-mobile-browser-check.py /tmp/jrs-sitewide-mobile-audit-output.html
@@ -154,13 +160,118 @@ jobs:
         run: |
           python3 tests/jrs-resolve-preview.py "$GITHUB_ENV"
 
+      - name: Request short-lived GitHub identity for protected preview
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        shell: bash
+        env:
+          JRS_EXISTING_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
+        run: |
+          set -euo pipefail
+          # Only same-repository reviews may request an OIDC token. A Vercel
+          # Trusted Source must separately authorize this exact GitHub
+          # repository and PREVIEW environment. A token alone grants nothing.
+          if [[ -n "$JRS_EXISTING_BYPASS" ]]; then
+            echo "INFO: dedicated Actions bypass already configured"
+            exit 0
+          fi
+          test -n "${ACTIONS_ID_TOKEN_REQUEST_URL:-}"
+          test -n "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}"
+          oidc="$(curl -fsS --max-time 15 \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL" | python3 -c 'import json,sys; print(json.load(sys.stdin)["value"])')"
+          if ! [[ "$oidc" =~ ^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$ ]] || (( ${#oidc} < 128 || ${#oidc} > 8192 )); then
+            echo "RELEASE HOLD: invalid ephemeral CI identity" >&2; exit 1
+          fi
+          echo "::add-mask::$oidc"
+          # Validate expected public identity claims before presenting this
+          # token to Vercel. Parsing is not signature verification: Vercel
+          # validates the issuer signature and actual Trusted Sources policy.
+          JRS_EPHEMERAL_OIDC_TOKEN="$oidc" python3 - <<'PY'
+          import base64
+          import json
+          import os
+          import sys
+          import time
+
+          def refuse():
+              raise SystemExit("RELEASE HOLD: GitHub OIDC identity claims differ from CI release context")
+
+          try:
+              token = os.environ["JRS_EPHEMERAL_OIDC_TOKEN"]
+              fields = token.split(".")
+              if len(fields) != 3:
+                  refuse()
+              payload = fields[1]
+              decoded = base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4))
+              claims = json.loads(decoded)
+              if not isinstance(claims, dict):
+                  refuse()
+              repo = os.environ["GITHUB_REPOSITORY"]
+              owner = os.environ["GITHUB_REPOSITORY_OWNER"]
+              ref = os.environ["GITHUB_REF"]
+              workflow_ref = os.environ["GITHUB_WORKFLOW_REF"]
+              if os.environ["GITHUB_EVENT_NAME"] not in ("pull_request", "workflow_dispatch"):
+                  refuse()
+              expected = {
+                  "iss": "https://token.actions.githubusercontent.com",
+                  "repository": repo,
+                  "ref": ref,
+                  "workflow_ref": workflow_ref,
+              }
+              if any(claims.get(k) != v for k, v in expected.items()):
+                  refuse()
+              # Prefer immutable repository identifiers over names when
+              # diagnosing OIDC trust: GitHub supports both legacy and
+              # ID-qualified subjects. Never log raw claims or the JWT.
+              repo_id = os.environ["GITHUB_REPOSITORY_ID"]
+              owner_id = os.environ["GITHUB_REPOSITORY_OWNER_ID"]
+              if not repo_id.isdecimal() or not owner_id.isdecimal():
+                  refuse()
+              if (str(claims.get("repository_id")) != repo_id or
+                      str(claims.get("repository_owner_id")) != owner_id or
+                      claims.get("event_name") != os.environ["GITHUB_EVENT_NAME"]):
+                  refuse()
+              suffix = (":pull_request" if os.environ["GITHUB_EVENT_NAME"] == "pull_request"
+                        else ":ref:" + ref)
+              legacy_subject = "repo:" + repo + suffix
+              immutable_subject = ("repo:" + owner + "@" + owner_id +
+                                   "/" + repo.split("/", 1)[1] + "@" + repo_id + suffix)
+              subject = claims.get("sub")
+              if subject == legacy_subject:
+                  subject_profile = "legacy"
+              elif subject == immutable_subject:
+                  subject_profile = "immutable"
+              else:
+                  # A configured custom GitHub subject may be valid; do not
+                  # guess a trust policy from an unrecognized format.
+                  subject_profile = "custom-or-unrecognized"
+              audience = claims.get("aud")
+              if isinstance(audience, str):
+                  audience = [audience]
+              if not isinstance(audience, list) or "https://github.com/" + owner not in audience:
+                  refuse()
+              now = int(time.time())
+              issued, expires = claims.get("iat"), claims.get("exp")
+              if not isinstance(issued, int) or not isinstance(expires, int):
+                  refuse()
+              if issued > now + 90 or expires <= now or expires > now + 3600:
+                  refuse()
+          except (ValueError, KeyError, TypeError, IndexError, OverflowError):
+              refuse()
+          print("PASS: ephemeral GitHub OIDC issuer, audience, stable repository IDs, event, ref, workflow and expiry match CI")
+          print("INFO: GitHub OIDC subject format:", subject_profile, "(claim contents not logged)")
+          print("INFO: Vercel Trusted Source must bind GitHub Actions issuer, audience, repository IDs, workflow and Preview; signature and authorization remain Vercel's responsibility")
+          PY
+          printf 'JRS_VERCEL_TRUSTED_OIDC_TOKEN=%s\n' "$oidc" >> "$GITHUB_ENV"
+          echo "INFO: obtained masked, short-lived same-repo GitHub OIDC identity; Vercel trust still required"
+
       - name: Verify preview source identity before any release certification
         env:
           JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
           JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
         run: |
           # The resolver is fail-closed and never uses a branch alias. This
-          # verifier still requires exact hosted source bytes and six PDFs.
+          # verifier still requires exact hosted source bytes and nine PDFs.
           python3 tests/jrs-preview-static-verification.py "$JRS_PREVIEW_URL"
 
       - name: Capture verified exact-head preview screenshots
