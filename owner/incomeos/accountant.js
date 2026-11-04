@@ -367,6 +367,9 @@
     place(right,"div","amt"+(e.kind==="income"&&e.status!=="paid"?" pending":""),(e.kind==="outflow"&&e.type!=="refund"?"−":"+")+money(e.kind==="income"?e.grossUsd:e.amountUsd));
     var buttons=place(right,"div","entry-buttons"),ed=place(buttons,"button","","Edit"),del=place(buttons,"button","","Remove");
     ed.type="button";del.type="button";ed.addEventListener("click",function(){startEdit(e);});
+    // Screen readers announce which record each button acts on, not just "Edit" and "Remove".
+    var which=e.label+", "+e.date+", "+money(e.kind==="income"?e.grossUsd:e.amountUsd);
+    ed.setAttribute("aria-label","Edit "+which);del.setAttribute("aria-label","Remove "+which);
     del.addEventListener("click",function(){
       if(locked())return;
       if(!confirm("Delete this local record? This cannot be undone without a backup."))return;

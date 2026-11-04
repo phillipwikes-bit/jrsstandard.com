@@ -126,6 +126,26 @@ list=await page.locator("#ledger-list").textContent();
 assert.match(list,/Synthetic study payout/);assert.doesNotMatch(list,/Synthetic AI subscription/);
 // Phone layout, no storage, no errors.
 assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElement.scrollWidth<=w+1,page.viewportSize().width),"no horizontal scroll");
+// Accessibility basics for the ledger view (automated checks only, not an accessibility certification).
+{const a11y=await page.evaluate(()=>{const v=document.getElementById("view-ledger"),out={unlabelled:[],unnamed:[],positiveTab:[],rowNames:[]};
+   const vis=e=>!!(e.offsetWidth||e.offsetHeight||e.getClientRects().length);
+   v.querySelectorAll("input,select,textarea").forEach(e=>{if(e.type!=="hidden"&&vis(e)&&!((e.labels&&e.labels.length)||e.getAttribute("aria-label")||e.getAttribute("aria-labelledby")))out.unlabelled.push(e.id||e.name);});
+   v.querySelectorAll("button").forEach(e=>{if(vis(e)&&!(e.getAttribute("aria-label")||e.textContent).trim())out.unnamed.push(e.id||e.outerHTML.slice(0,60));});
+   document.querySelectorAll("[tabindex]").forEach(e=>{if(+e.getAttribute("tabindex")>0)out.positiveTab.push(e.id);});
+   v.querySelectorAll("#ledger-list .entry button").forEach(e=>out.rowNames.push(e.getAttribute("aria-label")||e.textContent));
+   return out;});
+ assert.deepEqual([a11y.unlabelled,a11y.unnamed,a11y.positiveTab],[[],[],[]],"every field labelled, every button named, no forced tab order");
+ assert.ok(a11y.rowNames.length>=4);assert.equal(new Set(a11y.rowNames).size,a11y.rowNames.length,"each row's Edit and Remove buttons name their record");
+ assert.ok(a11y.rowNames.some(n=>/^Edit Synthetic study payout, 2026-10-15, \$150\.00$/.test(n)),"names give description, date and amount");
+ // Keyboard: Tab moves through the income form in document order, and the focused field shows an outline.
+ const order=await page.evaluate(()=>[...document.querySelectorAll("#receipt-form input,#receipt-form select,#receipt-form textarea,#receipt-form button")].filter(e=>!e.disabled&&!e.hidden&&(e.offsetWidth||e.offsetHeight)).map(e=>e.id));
+ await page.locator("#"+order[0]).focus();const seen=[order[0]];
+ // A date field takes one Tab per part (month, day, year), so repeats of the same field are collapsed.
+ for(let i=0;i<order.length*4&&seen.at(-1)!==order.at(-1);i++){await page.keyboard.press("Tab");const id=await page.evaluate(()=>document.activeElement.id);if(id!==seen.at(-1))seen.push(id);}
+ assert.deepEqual(seen,order,"tab order follows the form");
+ await page.locator("#receipt-label").focus();await page.keyboard.press("Shift+Tab");await page.keyboard.press("Tab");
+ const ring=await page.evaluate(()=>{const c=getComputedStyle(document.activeElement);return [document.activeElement.id,c.outlineStyle,parseFloat(c.outlineWidth)];});
+ assert.equal(ring[0],"receipt-label");assert.notEqual(ring[1],"none","keyboard focus is visible");assert.ok(ring[2]>=2);}
 // The populated ledger view, including the long category and reconciliation labels, fits 320, 375 and 430 px widths.
 for(const width of [320,375,430]){
   await page.setViewportSize({width,height:800});
