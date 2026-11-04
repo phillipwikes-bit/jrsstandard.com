@@ -143,6 +143,15 @@ assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElemen
  // A date field takes one Tab per part (month, day, year), so repeats of the same field are collapsed.
  for(let i=0;i<order.length*4&&seen.at(-1)!==order.at(-1);i++){await page.keyboard.press("Tab");const id=await page.evaluate(()=>document.activeElement.id);if(id!==seen.at(-1))seen.push(id);}
  assert.deepEqual(seen,order,"tab order follows the form");
+ // The expense form too, and its help notes are read with their fields.
+ const corder=await page.evaluate(()=>[...document.querySelectorAll("#cost-form input,#cost-form select,#cost-form textarea,#cost-form button")].filter(e=>!e.disabled&&!e.hidden&&(e.offsetWidth||e.offsetHeight)).map(e=>e.id));
+ await page.locator("#"+corder[0]).focus();const cseen=[corder[0]];
+ for(let i=0;i<corder.length*4&&cseen.at(-1)!==corder.at(-1);i++){await page.keyboard.press("Tab");const id=await page.evaluate(()=>document.activeElement.id);if(id!==cseen.at(-1))cseen.push(id);}
+ assert.deepEqual(cseen,corder,"tab order follows the expense form");
+ const help=await page.evaluate(()=>["cost-business-use","cost-payment-account"].map(id=>{const d=document.getElementById(id).getAttribute("aria-describedby");return d&&document.getElementById(d)?document.getElementById(d).textContent:"";}));
+ assert.match(help[0],/A blank is unknown, not 0%/);assert.match(help[1],/Never enter a full card or account number/);
+ const orphanHelp=await page.evaluate(()=>[...document.querySelectorAll("#view-ledger form p.muted")].filter(p=>!p.id||!document.querySelector('[aria-describedby~="'+p.id+'"]')).map(p=>p.textContent.slice(0,40)));
+ assert.deepEqual(orphanHelp,[],"every help note in a ledger form is linked to its field");
  await page.locator("#receipt-label").focus();await page.keyboard.press("Shift+Tab");await page.keyboard.press("Tab");
  const ring=await page.evaluate(()=>{const c=getComputedStyle(document.activeElement);return [document.activeElement.id,c.outlineStyle,parseFloat(c.outlineWidth)];});
  assert.equal(ring[0],"receipt-label");assert.notEqual(ring[1],"none","keyboard focus is visible");assert.ok(ring[2]>=2);}
