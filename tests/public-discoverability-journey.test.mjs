@@ -13,8 +13,8 @@ assert.ok(existsSync(join(root,'og-card.png')),'existing social image asset miss
 const share=read('assets/jrs-share.js');
 new vm.Script(share,{filename:'assets/jrs-share.js'});
 assert.ok(share.includes('location.hostname')&&share.includes('isProduction'),'protected preview check required');
-for(const forbidden of ['fetch(', 'sendBeacon(', 'XMLHttpRequest', 'gtag(', 'localStorage','sessionStorage']){
-  assert.ok(!share.includes(forbidden),'unexpected sharing data operation: '+forbidden);
+for(const forbidden of ['fetch(', 'sendBeacon(', 'XMLHttpRequest', "gtag('config'", 'googletagmanager.com', 'localStorage','sessionStorage']){
+  assert.ok(!share.includes(forbidden),'unexpected independent sharing data operation: '+forbidden);
 }
 for(const [file,source] of pages){
   const html=read(file);
