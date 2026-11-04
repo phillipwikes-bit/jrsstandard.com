@@ -2,6 +2,9 @@ name: IncomeOS anonymous access probe
 # Manually run. Fetches the IncomeOS hosted address with no credentials, as a stranger would, and fails
 # if the app itself is served instead of the Vercel login. Read-only: it changes nothing and sends no data.
 on:
+  pull_request:
+    paths:
+      - '.github/workflows/incomeos-anonymous-access-probe.yml'
   workflow_dispatch:
     inputs:
       host:
@@ -17,7 +20,7 @@ jobs:
     steps:
       - name: Probe without credentials
         env:
-          HOST: ${{ inputs.host }}
+          HOST: ${{ inputs.host || 'incomeos-opportunity-desk.vercel.app' }}
         run: |
           set -u
           case "$HOST" in incomeos-opportunity-desk*.vercel.app) ;; *) echo "Refusing host outside the IncomeOS project: $HOST"; exit 2;; esac
