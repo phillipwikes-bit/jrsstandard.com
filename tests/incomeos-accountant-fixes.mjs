@@ -81,7 +81,7 @@ assert.match(src,/"By category: group","Category","Records","USD"/,"summary CSV 
    "expense,2026-10-05,Synthetic hosting,Host,software,9.00,paid,,R-1,n1,Card ending 4242",
    "expense,2026-10-06,Synthetic email,Mail,software,6.00,paid,,R-2,n2,4111 1111 1111 1111"].join("\n"));
  assert.match(prompts.pop(),/Import 2 new records/);}
-assert.match(src,/"Payment account \(label\)"\]\]/,"detailed CSV carries the payment account label");
+assert.match(src,/"Payment account \(label\)","Source"/,"detailed CSV carries the payment account label");
 assert.match(src,/Payment account removed on import: it looked like a full card or account number/);
 // Reconciliation evidence: each record in exactly one class, from recorded evidence only.
 {const inc=(o)=>({kind:"income",scope:"income",status:"paid",grossUsd:100,feesUsd:0,label:"x",date:"2026-10-01",category:"research",docStatus:"not-expected",reconciled:false,...o});
@@ -115,3 +115,10 @@ assert.match(src,/\["Receipt gaps: month","Payee","Records","USD","Statement onl
  assert.deepEqual(JSON.parse(JSON.stringify(u.items.map(x=>[x.label,x.reasons.length]))),[["d",1],["a",1],["b",1],["c",2]]);
  assert.match(u.items[0].reasons[0],/Income source not classified/);}
 assert.match(src,/\["Unclassified: date","Description","Kind","USD","Reason"\]/,"summary CSV carries unclassified transactions");
+// Corrections history: a backup with an oversized or malformed history is refused.
+{const ex={kind:"outflow",type:"expense",category:"software",amountUsd:10,businessUse:null,label:"x",date:"2026-10-01"};
+ assert.equal(A.validateEntry({...ex,corrections:[{at:"2026-11-04T00:00:00Z",changes:[{field:"amountUsd",from:9,to:10}]}]}),true);
+ assert.equal(A.validateEntry({...ex,corrections:Array.from({length:101},()=>({at:"2026-11-04",changes:[]}))}),false);
+ assert.equal(A.validateEntry({...ex,corrections:"edited"}),false);
+ assert.equal(A.validateEntry({...ex,corrections:[{changes:[]}]}),false);}
+assert.match(src,/"Source","Corrections \(earlier values\)"\]\]/);

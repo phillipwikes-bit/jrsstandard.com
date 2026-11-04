@@ -102,6 +102,11 @@ assert.ok(await page.locator("#ledger-save-now").isVisible());
 await page.locator("#ledger-list .entry",{hasText:"Synthetic AI subscription"}).getByRole("button",{name:"Edit"}).tap();
 await page.locator("#cost-amount").fill("25");await page.locator("#cost-save").tap();
 assert.match(await page.locator("#ledger-list").textContent(),/\$25\.00/);
+// The correction is kept: the row says so, and the detailed CSV keeps the earlier value and the record's source.
+assert.match(await page.locator("#ledger-list .entry",{hasText:"Synthetic AI subscription"}).textContent(),/Corrected 1 time\(s\), last \d{4}-\d\d-\d\d/);
+{const [d]=await Promise.all([page.waitForEvent("download"),page.locator("#export-ledger").tap()]);
+ const line=readFileSync(await d.path(),"utf8").split("\r\n").find(l=>l.includes("Synthetic AI subscription"));
+ assert.match(line,/"manual","\d{4}-\d\d-\d\d: amountUsd 20 to 25"$/,"earlier amount kept in the detailed CSV");}
 await page.locator("#ledger-list .entry",{hasText:"Synthetic AI subscription"}).getByRole("button",{name:"Remove"}).tap();
 assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic AI subscription/);
 // Save the workspace encrypted, reload, and the ledger is gone from the page until the file is reopened.

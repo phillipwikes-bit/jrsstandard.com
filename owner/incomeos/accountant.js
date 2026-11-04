@@ -50,7 +50,8 @@
     return EXPENSE_TYPES.includes(e.type) && COST_CATEGORIES.includes(e.category) && num(e.amountUsd)>0 && num(e.amountUsd)<=1e10 && (e.businessUse===null || (num(e.businessUse)>=0 && num(e.businessUse)<=100))
       && (e.paymentStatus===undefined || PAY_STATUS.includes(e.paymentStatus))
       && (e.accountantQuestions===undefined || (typeof e.accountantQuestions==="string" && e.accountantQuestions.length<=500))
-      && (e.paymentAccount===undefined || safeAccountRef(e.paymentAccount));
+      && (e.paymentAccount===undefined || safeAccountRef(e.paymentAccount))
+      && (e.corrections===undefined || (Array.isArray(e.corrections) && e.corrections.length<=100 && e.corrections.every(function(c){return c&&typeof c.at==="string"&&Array.isArray(c.changes)&&c.changes.length<=TRACKED.length;})));
   }
   // A payment account is recorded only as a short owner label (for example "Business card ending 1234").
   // More than four digits could be a full card or account number, so it is refused rather than stored.
@@ -253,11 +254,31 @@
     var d=possibleDuplicate(e,editId);if(!d)return true;
     return confirm("Possible duplicate: \""+d.label+"\" on "+d.date+" for "+money(d.kind==="income"?d.grossUsd:d.amountUsd)+(d.payer?" from "+d.payer:"")+" is already recorded. Save this entry as well?");
   }
+  // Corrections are preserved: an edit records each changed field's previous and new value with the time,
+  // so an evidence reference, amount or classification that was corrected can still be traced. The record's
+  // original source (manual, CSV or legacy import) is kept. At most 100 corrections are retained per record.
+  var TRACKED=["label","payer","category","date","type","scope","status","paymentStatus","amountOriginal","currency","fx","grossUsd","feesUsd","amountUsd","businessUse","evidenceStatus","docStatus","taxForm","method","reference","reconciled","notes","accountantQuestions","paymentAccount"];
+  function correctionLog(old,e,at){
+    var log=Array.isArray(old.corrections)?old.corrections.slice():[],changes=[];
+    TRACKED.forEach(function(k){var a=old[k],b=e[k];
+      if(a===undefined&&(b===""||b===null||b===undefined))return;
+      if(JSON.stringify(a===undefined?null:a)!==JSON.stringify(b===undefined?null:b))changes.push({field:k,from:a===undefined?null:a,to:b===undefined?null:b});});
+    if(changes.length)log.push({at:at,changes:changes});
+    return log.slice(-100);
+  }
+  function correctionText(e){
+    return (e.corrections||[]).map(function(c){return String(c.at).slice(0,10)+": "+c.changes.map(function(x){return x.field+" "+JSON.stringify(x.from)+" to "+JSON.stringify(x.to);}).join("; ");}).join(" | ");
+  }
   function addOrUpdate(e,editId){
     if(locked())throw new Error("Financial entry is disabled in unapproved staging. Open or create a workspace in Research, This week, to keep records in your workspace file.");
     var found=editId?db.entries.findIndex(function(x){return x.id===editId;}):-1;
     var next=db.entries.slice();
-    if(found>=0)next[found]=Object.assign({},e,{id:editId,createdAt:db.entries[found].createdAt,updatedAt:new Date().toISOString()});
+    if(found>=0){
+      var old=db.entries[found],at=new Date().toISOString(),log=correctionLog(old,e,at);
+      next[found]=Object.assign({},e,{id:editId,createdAt:old.createdAt,updatedAt:at,
+        importedFrom:old.importedFrom||e.importedFrom,corrections:log});
+      if(!log.length)delete next[found].corrections;
+    }
     else next.push(Object.assign({},e,{id:uid(),createdAt:new Date().toISOString()}));
     commitEntries(next);render();
   }
@@ -429,6 +450,7 @@
     place(left,"small","",e.payer||"Source not identified");
     if(e.kind==="outflow"&&e.type!=="refund"&&!paidOut(e))place(left,"small","notice",PAY_LABEL[payStatus(e)]||payStatus(e));
     if(e.paymentAccount)place(left,"small","","Paid from: "+e.paymentAccount);
+    if(e.corrections&&e.corrections.length)place(left,"small","","Corrected "+e.corrections.length+" time(s), last "+String(e.corrections[e.corrections.length-1].at).slice(0,10)+"; earlier values kept in the detailed CSV and backup");
     if(e.accountantQuestions)place(left,"small","","Question for accountant: "+e.accountantQuestions);
     if(e.kind==="outflow"&&e.type!=="refund")place(left,"small","","Business use "+(e.businessUse===null||e.businessUse===undefined?"not determined":String(e.businessUse)+"%")+" · Evidence "+(e.evidenceStatus||"missing"));
     if(!e.reconciled)place(left,"small","notice","Not reconciled to source evidence");
@@ -518,9 +540,9 @@
     setTimeout(function(){URL.revokeObjectURL(url);},2000);
   }
   function exportDetail(){
-    var rows=[["Date","Kind","Type / scope","Category","Description","Payer / payee","Original amount","Currency","USD per unit","Gross USD","Platform fees USD","Other paid outflows USD","Unallocated refund credit USD","Business-use %","Status","Tax form","Form status","Evidence status","Evidence reference","Reconciled","Notes","Entry ID","Expense payment status","Questions for accountant","Payment account (label)"]];
+    var rows=[["Date","Kind","Type / scope","Category","Description","Payer / payee","Original amount","Currency","USD per unit","Gross USD","Platform fees USD","Other paid outflows USD","Unallocated refund credit USD","Business-use %","Status","Tax form","Form status","Evidence status","Evidence reference","Reconciled","Notes","Entry ID","Expense payment status","Questions for accountant","Payment account (label)","Source","Corrections (earlier values)"]];
     yearEntries().sort(function(a,b){return a.date.localeCompare(b.date);}).forEach(function(e){
-      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"&&e.type!=="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type==="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type!=="refund"?(e.businessUse==null?"":e.businessUse):"",e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id,e.kind==="outflow"?payStatus(e):"",e.accountantQuestions??"",e.paymentAccount??""]);
+      rows.push([e.date,e.kind,e.kind==="income"?e.scope:e.type,e.category,e.label,e.payer||"",e.amountOriginal??"",e.currency??"USD",e.fx??1,e.kind==="income"?e.grossUsd:"",e.feesUsd??0,e.kind==="outflow"&&e.type!=="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type==="refund"?e.amountUsd:"",e.kind==="outflow"&&e.type!=="refund"?(e.businessUse==null?"":e.businessUse):"",e.status??"paid",e.taxForm??"",e.docStatus??"",e.evidenceStatus??"",e.reference??"",e.reconciled?"yes":"no",e.notes??"",e.id,e.kind==="outflow"?payStatus(e):"",e.accountantQuestions??"",e.paymentAccount??"",e.importedFrom??"",correctionText(e)]);
     });
     download(csv(rows),"IncomeOS-accountant-detail-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
