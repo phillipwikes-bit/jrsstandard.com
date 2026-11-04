@@ -72,7 +72,10 @@
     if(x.paymentForm!=="cash")warnings.push(x.paymentForm==="unknown"?"Payment form not stated (cash or gift card)":"Paid as "+x.paymentForm.replace("_"," ")+", not cash");
     if(prefs.cashOnly===true&&x.paymentForm!=="cash")reasons.push("Cash payment required by your settings");
     var minEhy=Number(prefs.minEhy);
-    if(Number.isFinite(minEhy)&&minEhy>0&&ehy!==null&&ehy<minEhy)reasons.push("Effective hourly yield below configured threshold");
+    if(Number.isFinite(minEhy)&&minEhy>0){
+      if(ehy===null)reasons.push("Effective hourly yield cannot be verified against the configured threshold");
+      else if(ehy<minEhy)reasons.push("Effective hourly yield below configured threshold");
+    }
     var wholeTime=x.screenMinutes===null?null:x.minutes+x.screenMinutes;
     var fullRate=wholeTime===null?null:Math.round(x.paymentUsd*60/wholeTime*100)/100;
     return {candidate:x,priority:reasons.length?"HOLD":warnings.length?"PRIORITY_TO_SCREEN":"REVIEW_CANDIDATE",reasons:reasons,warnings:warnings,
