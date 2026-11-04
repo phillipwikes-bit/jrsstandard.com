@@ -21,6 +21,7 @@ for(const id of ["A01","A02","A14","A15","A16"])
   assert.ok(!["SOURCE TESTED","IN DEVELOPMENT","NOT IMPLEMENTED"].includes(r.items.find(x=>x.id===id).status),id+" is not satisfied by source tests");
 assert.equal(r.milestoneComplete,r.items.every(x=>x.status==="PRODUCTION VERIFIED"),"milestone complete only when every item is production verified");
 // Physical-device and accountant claims stay qualified.
-assert.match(r.items.find(x=>x.id==="A12").limitation,/not tested on a physical iPhone/);
+// Device testing stays qualified: either untested on a physical iPhone, or form entry on the device not yet observed.
+assert.match(r.items.find(x=>x.id==="A12").limitation,/not tested on a physical iPhone|form entry on the device has not been observed/);
 assert.match(r.items.find(x=>x.id==="A11").limitation,/not accountant-reviewed and not tax-filing ready/);
 console.log("IncomeOS acceptance record checks passed: "+r.items.filter(x=>x.status==="SOURCE TESTED").length+" source tested, "+r.items.filter(x=>x.status==="BLOCKED").length+" blocked, milestone complete: "+r.milestoneComplete);

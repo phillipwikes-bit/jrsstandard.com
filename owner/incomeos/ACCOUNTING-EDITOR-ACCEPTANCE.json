@@ -140,7 +140,7 @@
       "evidence": [
         "tests/incomeos-accounting-editor-browser.mjs"
       ],
-      "limitation": "Simulated in Chromium at 320, 375, 390 and 430 px; not tested on a physical iPhone or iOS Safari"
+      "limitation": "Simulated in Chromium at 320, 375, 390 and 430 px; the hosted app has rendered on the owner's physical iPhone in Safari (screenshots, 2026-11-04), but form entry on the device has not been observed"
     },
     {
       "id": "A13",
@@ -165,9 +165,23 @@
     {
       "id": "A15",
       "requirement": "Verified release evidence and rollback readiness",
-      "status": "BLOCKED",
-      "evidence": [],
-      "blockedBy": "No protected deployment of the accounting editor exists"
+      "status": "PROTECTED PREVIEW VERIFIED",
+      "evidence": [
+        "owner/incomeos/RELEASE-RECORD-2026-11-04.md",
+        ".github/workflows/incomeos-anonymous-access-probe.yml"
+      ],
+      "deploymentEvidence": {
+        "commit": "79e1e241a0e10e6a184458c758cf99d98e96f2ef",
+        "url": "https://incomeos-opportunity-desk.vercel.app",
+        "deployment": "9ySYE6EBXFWV3jSouP9YcMJWkWUV",
+        "rollbackTargets": [
+          "7yAwLW7wdUi3JkUEcZtcphfZcf9h",
+          "6bjRuUZFzJJusMGinEEru5pzenpM",
+          "DL6bNJ23uxNMKj1eZkupFbBR1BED"
+        ],
+        "date": "2026-11-04"
+      },
+      "limitation": "Exact deployed commit is provider-reported and earlier Ready deployments are available for Instant Rollback; rollback has not been exercised. The app keeps no server data, so a code rollback cannot affect records"
     },
     {
       "id": "A16",

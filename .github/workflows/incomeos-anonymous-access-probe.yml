@@ -1,10 +1,11 @@
 name: IncomeOS anonymous access probe
-# Manually run. Fetches the IncomeOS hosted address with no credentials, as a stranger would, and fails
+# Runs on every IncomeOS change and manually. Fetches the IncomeOS hosted address with no credentials, as a stranger would, and fails
 # if the app itself is served instead of the Vercel login. Read-only: it changes nothing and sends no data.
 on:
   pull_request:
     paths:
       - '.github/workflows/incomeos-anonymous-access-probe.yml'
+      - 'owner/incomeos/**'
   workflow_dispatch:
     inputs:
       host:
