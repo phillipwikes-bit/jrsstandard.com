@@ -107,3 +107,11 @@ assert.match(src,/\["Reconciliation evidence","","Records","USD"\]/,"summary CSV
    [["2026-10","(payee not recorded)",1,10,0],["2026-10","Vendor A",3,215,1],["2026-11","Vendor B",1,10,0]]);
  assert.equal(A.receiptGaps([]).count,0);}
 assert.match(src,/\["Receipt gaps: month","Payee","Records","USD","Statement only"\]/,"summary CSV carries receipt gaps");
+// Unclassified: category "other" or outflow type "other", each record once with every reason; classified records never listed.
+{const ex=(o)=>({id:"u"+Math.random(),kind:"outflow",type:"expense",category:"software",amountUsd:10,businessUse:null,label:"x",date:"2026-10-03",...o});
+ const u=A.unclassified([ex({}),ex({category:"other",label:"a"}),ex({type:"other",label:"b"}),ex({type:"other",category:"other",label:"c",amountUsd:5}),
+   {kind:"income",scope:"income",status:"paid",category:"other",grossUsd:40,label:"d",date:"2026-10-01"},{kind:"income",scope:"income",status:"paid",category:"research",grossUsd:40,label:"e",date:"2026-10-01"}]);
+ assert.equal(u.count,4);assert.equal(u.usd,65);
+ assert.deepEqual(JSON.parse(JSON.stringify(u.items.map(x=>[x.label,x.reasons.length]))),[["d",1],["a",1],["b",1],["c",2]]);
+ assert.match(u.items[0].reasons[0],/Income source not classified/);}
+assert.match(src,/\["Unclassified: date","Description","Kind","USD","Reason"\]/,"summary CSV carries unclassified transactions");

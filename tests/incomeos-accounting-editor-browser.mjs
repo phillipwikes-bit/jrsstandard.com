@@ -57,11 +57,12 @@ await page.locator("#cost-save").tap();
  assert.match(cats,/Expenses paid · [a-z]+ \(1\)\$20\.00/,"paid expense total excludes the scheduled bill");
  assert.match(cats,/Reconciliation evidence/);assert.match(cats,/Not yet received or paid \(outside reconciliation\) \(1\)\$15\.00/,"scheduled bill outside reconciliation");
  assert.match(cats,/No bank matching, audit or tax determination has been performed/);
- assert.match(cats,/Receipt gaps/);assert.match(cats,/1 paid outflow\(s\), \$20\.00, have no receipt or invoice on file/,"scheduled bill is not a receipt gap");}
+ assert.match(cats,/Receipt gaps/);assert.match(cats,/1 paid outflow\(s\), \$20\.00, have no receipt or invoice on file/,"scheduled bill is not a receipt gap");
+ assert.match(cats,/Unclassified transactions/);assert.match(cats,/Every record has a specific category and type\./);}
 // The printed accountant report renders every section, including category, reconciliation and receipt-gap tables.
 {await page.evaluate(()=>{window.print=()=>{};});await page.locator("#print-accountant").click();
  const pr=await page.locator("#print-report").textContent();
- for(const h of [/Record completeness: INCOMPLETE/,/By category/,/Reconciliation evidence/,/Receipt gaps: 1 paid outflow\(s\), \$20\.00/,/Receipt not located/])assert.match(pr,h);
+ for(const h of [/Record completeness: INCOMPLETE/,/By category/,/Reconciliation evidence/,/Receipt gaps: 1 paid outflow\(s\), \$20\.00/,/Receipt not located/,/Unclassified transactions: 0, \$0\.00/])assert.match(pr,h);
  assert.doesNotMatch(pr,/Receipt gaps[^]*Synthetic domain renewal[^]*Outstanding documentation review/,"scheduled bill not listed as a receipt gap");}
 // A full card number in "Paid from" is refused and nothing is saved; a short label is kept and shown.
 {const before=await page.locator("#ledger-list .entry").count();
@@ -74,12 +75,15 @@ await page.locator("#cost-save").tap();
  // CSV import carries payment status, the accountant question and a safe label; an unsafe number is dropped with a note.
  const csvText=["kind,date,description,vendor,category,amount_usd,status,business_use_pct,evidence_ref,notes,payment_status,accountant_questions,payment_account",
    "expense,2026-10-21,Synthetic hosting import,Host,software,9.00,paid,,R-1,n1,scheduled,Business or personal?,Card ending 5555",
-   "expense,2026-10-22,Synthetic mail import,Mail,software,6.00,paid,,R-2,n2,,,4111 1111 1111 1111"].join("\n");
+   "expense,2026-10-22,Synthetic mail import,Mail,software,6.00,paid,,R-2,n2,,,4111 1111 1111 1111",
+   "expense,2026-10-23,Synthetic unsorted import,Shop,misc,7.00,paid,,R-3,n3,,,"].join("\n");
  await page.locator("#import-csv").setInputFiles({name:"i.csv",mimeType:"text/csv",buffer:Buffer.from(csvText)});
  const hosting=page.locator("#ledger-list .entry",{hasText:"Synthetic hosting import"});await hosting.waitFor();
  const ht=await hosting.textContent();assert.match(ht,/Scheduled, not paid/);assert.match(ht,/Paid from: Card ending 5555/);assert.match(ht,/Question for accountant: Business or personal\?/);
  const mt=await page.locator("#ledger-list .entry",{hasText:"Synthetic mail import"}).textContent();
- assert.doesNotMatch(mt,/4111/,"full number never displayed or stored");assert.doesNotMatch(mt,/Paid from/);}
+ assert.doesNotMatch(mt,/4111/,"full number never displayed or stored");assert.doesNotMatch(mt,/Paid from/);
+ // An unknown imported category becomes "other" and is listed as unclassified, with its next action.
+ assert.match(await page.locator("#report-preview").textContent(),/2026-10-23 · Synthetic unsorted import · Cost category not chosen \(other\): choose a specific category\$7\.00/);}
 // An invoiced amount is recorded as outstanding, not received, and appears under the outstanding filter.
 await page.locator("#receipt-label").fill("Synthetic consulting invoice");await page.locator("#receipt-amount").fill("900");
 await page.locator("#receipt-date").fill("2026-10-20");await page.locator("#receipt-state").selectOption("invoiced");

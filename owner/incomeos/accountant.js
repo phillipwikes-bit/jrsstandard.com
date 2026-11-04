@@ -183,6 +183,19 @@
     return {count:items.length,usd:round(items.reduce(function(n,e){return n+num(e.amountUsd);},0)),groups:groups,
       items:items.slice().sort(function(a,b){return String(a.date).localeCompare(String(b.date));})};
   }
+  // Unclassified: a record whose category is "other" or whose outflow type is "Other outflow, review".
+  // Each record is listed once, with every reason and the next action; nothing is reclassified automatically.
+  function unclassified(entries){
+    var items=[];
+    entries.forEach(function(e){
+      var reasons=[];
+      if(e.category==="other")reasons.push(e.kind==="income"?"Income source not classified (category other): choose the specific income type":"Cost category not chosen (other): choose a specific category");
+      if(e.kind==="outflow"&&e.type==="other")reasons.push("Outflow type not decided: expense, tax payment, capital or refund");
+      if(reasons.length)items.push({id:e.id,date:e.date,label:e.label,payee:e.payer||"",kind:e.kind,usd:e.kind==="income"?num(e.grossUsd):num(e.amountUsd),reasons:reasons});
+    });
+    items.sort(function(a,b){return String(a.date).localeCompare(String(b.date));});
+    return {count:items.length,usd:round(items.reduce(function(n,x){return n+x.usd;},0)),items:items};
+  }
   function totals(entries){
     var income=entries.filter(function(e){return e.kind==="income"&&e.status==="paid"&&e.scope==="income";});
     var nonincome=entries.filter(function(e){return e.kind==="income"&&e.status==="paid"&&e.scope==="nonincome";});
@@ -334,6 +347,10 @@
     if(!gaps.count)place(box,"p","muted","No paid outflow is marked as missing a receipt.");
     else{gaps.groups.forEach(function(g){var row=place(box,"div","accountant-line");place(row,"span","",g.month+" · "+g.payee+" ("+g.count+(g.statementOnly?", "+g.statementOnly+" statement only":"")+")");place(row,"strong","",money(g.usd));});
       place(box,"p","muted",gaps.count+" paid outflow(s), "+money(gaps.usd)+", have no receipt or invoice on file. A bank or card statement shows payment, not what was bought.");}
+    var unc=unclassified(rows);
+    place(box,"h4","","Unclassified transactions");
+    if(!unc.count)place(box,"p","muted","Every record has a specific category and type.");
+    else unc.items.forEach(function(x){var row=place(box,"div","accountant-line");place(row,"span","",x.date+" · "+x.label+" · "+x.reasons.join("; "));place(row,"strong","",money(x.usd));});
     place(box,"p","muted","Supporting form references: "+(Object.keys(forms).length?Object.keys(forms).map(function(k){return k+" ("+forms[k]+")";}).join(", "):"None recorded")+". No bank, tax authority or payer validation has been performed.");
   }
   function showEntry(e){
@@ -460,6 +477,8 @@
       [["Classification not supported (category other)","",rsum.unsupported.count,rsum.unsupported.usd],[rsum.notice]]);
     var rg=receiptGaps(yearEntries());
     cats=cats.concat([[],["Receipt gaps: month","Payee","Records","USD","Statement only"]],rg.groups.map(function(g){return [g.month,g.payee,g.count,g.usd,g.statementOnly];}),[["Receipt gaps total","",rg.count,rg.usd]]);
+    var un=unclassified(yearEntries());
+    cats=cats.concat([[],["Unclassified: date","Description","Kind","USD","Reason"]],un.items.map(function(x){return [x.date,x.label,x.kind,x.usd,x.reasons.join("; ")];}),[["Unclassified total","",un.count,un.usd]]);
     download(csv([["IncomeOS personal tax-year summary",currentYear()]].concat([["Category","Amount or count"]],pairs,[[],["By category: group","Category","Records","USD"]],cats)),"IncomeOS-accountant-summary-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
   function backup(){download(JSON.stringify({format:"incomeos-accountant",version:2,exportedAt:new Date().toISOString(),entries:db.entries},null,2),"IncomeOS-accountant-private-backup-"+today()+".json","application/json");}
@@ -488,6 +507,11 @@
     if(!rgp.count)place(r,"p","","No paid outflow is marked as missing a receipt.");
     else{var gtab=place(r,"table"),gbody=place(gtab,"tbody");
       rgp.items.forEach(function(e){var tr=place(gbody,"tr");[e.date,e.payer||"(payee not recorded)",e.label,e.evidenceStatus==="bank"?"Statement only":"Receipt not located",money(e.amountUsd)].forEach(function(x){place(tr,"td","",x);});});}
+    var unp=unclassified(yearEntries());
+    place(r,"h2","","Unclassified transactions: "+unp.count+", "+money(unp.usd));
+    if(!unp.count)place(r,"p","","Every record has a specific category and type.");
+    else{var utab=place(r,"table"),ubody=place(utab,"tbody");
+      unp.items.forEach(function(x){var tr=place(ubody,"tr");[x.date,x.label,x.reasons.join("; "),money(x.usd)].forEach(function(v){place(tr,"td","",v);});});}
     var review=annualReview();
     place(r,"h2","","Outstanding documentation review");
     if(!review||review.invalidYear)place(r,"p","","Review module unavailable or report year invalid. Source completeness not verified.");
@@ -667,5 +691,5 @@
       var pass=$("briefing-passphrase");if(pass){pass.scrollIntoView({block:"center"});pass.focus();}
     });
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,reconciliationSummary:reconciliationSummary,receiptGaps:receiptGaps,completeness:completeness,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,reconciliationSummary:reconciliationSummary,receiptGaps:receiptGaps,unclassified:unclassified,completeness:completeness,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();
