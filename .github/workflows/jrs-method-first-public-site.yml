@@ -8,6 +8,9 @@ on:
       - 'tests/public-method-first-release.mjs'
       - 'tests/public-reference-navigation.mjs'
       - 'tests/public-research-accessibility.test.mjs'
+      - 'tests/public-discoverability-journey.test.mjs'
+      - 'assets/jrs-share.js'
+      - 'assets/jrs-engagement.js'
       - '.github/workflows/jrs-method-first-public-site.yml'
   push:
     branches:
@@ -19,6 +22,9 @@ on:
       - 'tests/public-method-first-release.mjs'
       - 'tests/public-reference-navigation.mjs'
       - 'tests/public-research-accessibility.test.mjs'
+      - 'tests/public-discoverability-journey.test.mjs'
+      - 'assets/jrs-share.js'
+      - 'assets/jrs-engagement.js'
       - '.github/workflows/jrs-method-first-public-site.yml'
 permissions:
   contents: read
@@ -33,3 +39,5 @@ jobs:
       - run: node tests/public-method-first-release.mjs
       - run: node tests/public-reference-navigation.mjs
       - run: node --test tests/public-research-accessibility.test.mjs
+      - name: Verify canonical sitemap, public discovery and sharing boundaries
+        run: node tests/public-discoverability-journey.test.mjs

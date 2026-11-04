@@ -176,3 +176,11 @@ Source regression now validates that each Reference sitemap entry maps to an act
 **Hosted verification still outstanding.** This metadata correction does not prove HTTP 200 delivery, Vercel path rewrites, Google-selected canonicals, indexing or ranking. After release authorization and a protected-preview audit, inspect production URLs and Search Console URL Inspection before claiming indexing consistency. No sitemap submission or deployment occurred in this change.
 
 Search Console currently exposes no JRS property to the connected reporting interface. Separate owner-only measurement definitions are included in JRS_SEARCH_PERFORMANCE_MEASUREMENT_2026-11-03.md. Never treat missing property access as zero organic activity.
+
+## Executable discoverability regression wiring (3 November 2026)
+
+During the source review, `tests/public-discoverability-journey.test.mjs` was found to exist without being invoked from the active GitHub workflow. Earlier five-of-five workflow passes therefore did **not** establish that the new 17-reference canonical assertions had actually executed.
+
+The `.github/workflows/jrs-method-first-public-site.yml` gate now runs this test explicitly. Its path triggers include the discoverability test and the existing share/engagement modules, so the test cannot silently go stale when those modules change. A successful workflow run must demonstrate that the script ran and passed as a named step; other green jobs do not substitute for this evidence.
+
+The explicit regression covers source sitemap/canonical equality, internal links, static public reference pages, and preservation of controlled analytics boundaries. It does not establish hosted access, actual Google indexing, accessibility conformance, buyer demand, or a release authorization.
