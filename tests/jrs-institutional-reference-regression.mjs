@@ -64,6 +64,28 @@ for(const s of ['text-wrap:balance','max-width:67ch','font-size:15px!important']
 assert.ok(homeDesign.includes('body.jrs-institutional.jrs-home .jr-fact-row'),
  'reference panel needs compact, readable label hierarchy');
 
+// Research maturity claims must remain distinct from demonstrations and publisher commentary.
+// An authored article is not a real-workflow effectiveness result.
+const evidenceHome=read('index.html');
+const maturityResearch=read('research.html');
+assert.ok(evidenceHome.includes('href="research.html#evidence-maturity"'),
+ 'homepage must route readers from research claims to evidence maturity and field limits');
+for(const required of [
+ 'id="evidence-maturity"','id="practitioner-evidence-protocol"',
+ '01 · Measured on constructed records','02 · Application to existing records',
+ '03 · Operational validation not established',
+ 'The separate reliability analysis did not meet its prespecified confidence-bound criterion',
+ 'No independently established operational outcome from a real-record study is claimed',
+ 'Distinguish what ordinary review identified from what JRS-assisted review identified',
+ 'Unpublished manuscripts, submissions and accepted commentary are not counted as operational validation',
+ 'Keep identifiable records in the organization'
+])assert.ok(maturityResearch.includes(required),'evidence-maturity boundary missing: '+required);
+assert.equal((maturityResearch.match(/class="card-k">0[123] · (?:Measured on constructed records|Application to existing records|Operational validation not established)/g)||[]).length,3,
+ 'research evidence maturity must retain three distinct levels');
+assert.ok(maturityResearch.includes('id="professional-articles"') &&
+ maturityResearch.includes('corporatecomplianceinsights.com/that-ai-drafted-termination-memo-could-become-evidence/'),
+ 'publisher commentary must remain available outside research validation claims');
+
 // Guard international expert provenance and remove extraneous product-status copy.
 for(const page of ['index.html','about.html','research.html','research-summary.html','investigator-guides.html']){
  assert.match(read(page),/16 independent international experts from 11 countries across five continents/,
