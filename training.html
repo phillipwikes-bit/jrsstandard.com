@@ -506,20 +506,23 @@ a:hover{text-decoration:underline}
 }
 /* Focus mode: a clean, training-only view (six modules + Reviewer Reference + certificate). Triggered by ?focus=1 in the link. Hides the hero, role paths, simulations, kit docs, survey, and navigation so there is exactly one path. */
 body.focus-mode > *:not(#training-modules):not(#cert-section):not(footer):not(#enroll-overlay):not(script):not(.skip-link){display:none !important}
-body.focus-mode #module-list ~ *{display:none !important}
+body.focus-mode #module-list ~ *:not(#preview-banner){display:none !important}
 body.focus-mode #participation-survey{display:none !important}
 body.focus-mode #training-modules{border-top:none;padding-top:34px}
 </style>
 <link rel="stylesheet" href="public-experience.css">
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
+<link rel="stylesheet" href="/assets/jrs-practitioner-journey.css">
+<link rel="stylesheet" href="/assets/jrs-a-pathways.css">
 </head>
-<body>
+<body class="jrs-institutional jrs-longform jrs-training-page">
 <script>(function(){try{var q=new URLSearchParams(location.search);if(q.get('focus')==='1'||q.get('focus')==='true'){document.body.classList.add('focus-mode');}}catch(e){}})();</script>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="site-header">
   <div class="site-header-inner">
-    <span class="wordmark">JRS<span style="font-size:7px;vertical-align:super;position:relative;top:-2px;letter-spacing:0;color:var(--accent);">&#8482;</span></span>
+    <a href="index.html" class="wordmark" aria-label="JRS home">JRS<span style="font-size:7px;vertical-align:super;position:relative;top:-2px;letter-spacing:0;color:var(--accent);">&#8482;</span></a>
     <div class="site-header-title">Reviewer Training and Simulation Environment</div>
     <div class="site-header-meta">Reviewer Training and Reference Materials &nbsp;|&nbsp; Version 1.0 &nbsp;|&nbsp; May 2026 &nbsp;|&nbsp; jrsstandard.com</div>
     <a href="index.html" class="back-to-site">&#8592; Return to Home</a>
@@ -529,7 +532,19 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
 
 <!-- ═══ STICKY NAV ════════════════════════════════════════ -->
-<nav class="sticky-nav" aria-label="Quick navigation">
+<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<nav class="jrs-sitenav" aria-label="Site">
+ <a href="investigator-guides.html">Guides</a>
+ <a href="training.html">Training</a>
+ <a href="resources.html">References</a>
+ <a href="jrsstandard.html">The Standard</a>
+ <a href="research.html">Research</a>
+ <a href="about.html">About</a>
+ <a href="contact.html">Contact</a>
+</nav>
+<!-- /JRS SITE NAV v1 -->
+
+<nav class="sticky-nav" aria-label="Training sections">
   <a href="index.html" class="sticky-nav-link">Home</a>
   <a href="#training-modules" class="sticky-nav-link">Modules</a>
   <a href="#start-here" class="sticky-nav-link">Start Here</a>
@@ -537,7 +552,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
   <a href="#simulator" class="sticky-nav-link">Simulations</a>
   <a href="#toolkit" class="sticky-nav-link">Kit Docs</a>
   <a href="#participation-survey" class="sticky-nav-link">Survey</a>
-  <a href="pilot.html" class="sticky-nav-link">Pilot Program</a>
+  <a href="research.html" class="sticky-nav-link">Research and validation</a>
   <a href="#simulator" onclick="showSimTab(0)" class="sticky-nav-cta">&#9654; Run a Simulation</a>
 </nav>
 
@@ -546,19 +561,21 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
   <div class="hero-inner">
     <div class="hero-eyebrow">JRS Reviewer Training Program &nbsp;&middot;&nbsp; Decision Defensibility</div>
     <h1 class="hero-h1">Calibrate for Decision Defensibility<br>Before Records Are Finalized</h1>
-    <p class="hero-sub">When a consequential decision is questioned long after it is made, the record becomes the only witness. JRS provides simulation-based calibration exercises that examine decision reconstruction risk across the four AI functions this training addresses in workplace documentation: summarization, recommendation, analysis, and narrative drafting. Each exercise examines whether a record can explain why a decision was made and produces a structured finding that reflects what the JRS pilot program is designed to collect.</p>
-
+    <p class="jrs-training-lead">Six free modules to help practitioners examine Decision Reconstruction Risk (DRR) through constructed records. No registration or new software required.</p>
     <div class="hero-ctas">
       <a href="#training-modules" class="btn-hero-primary">&#9654; Start the Six Modules</a>
       <a href="#simulator" onclick="showSimTab(0)" class="btn-hero-secondary">Explore Simulation Exercises</a>
-      <a href="#roles" class="btn-hero-ghost">Explore by Role</a>
+      <a href="index.html#worked-record" class="btn-hero-ghost">See a worked example</a>
       <a href="#practice-guidance" class="btn-hero-ghost">Reviewer practice guidance</a>
     </div>
-    <div class="hero-tags">
+    <details class="jrs-training-context"><summary>About the reviewer exercises</summary>
+    <p class="hero-sub">When a consequential decision is questioned long after it is made, the record becomes the only witness. JRS provides simulation-based calibration exercises that examine decision reconstruction risk across the four AI functions this training addresses in workplace documentation: summarization, recommendation, analysis, and narrative drafting. Each exercise examines whether a record can explain why a decision was made and produces a structured finding that reflects what the JRS pilot program is designed to collect.</p>
+     <div class="hero-tags" aria-label="Training scope and access">
       <span class="hero-tag">No registration required</span>
       <span class="hero-tag">Operates within existing workflows</span>
       <span class="hero-tag">HR &middot; Compliance &middot; Investigations &middot; ER</span>
-    </div>
+     </div>
+    </details>
   </div>
 </section>
 
@@ -567,31 +584,33 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
   <div style="max-width:960px;margin:0 auto">
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Reviewer Training</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:10px">Training Modules</h2>
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:20px">Six modules covering the core JRS documentation review methodology. Work through each at your own pace. Progress is saved automatically.</p>
+
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:680px;margin-bottom:20px">Six modules covering the core JRS documentation review methodology. Work at your own pace. Selecting Mark Complete is a self-reported acknowledgment, not a graded competency assessment. Progress is saved in this browser when storage is available; it does not sync across devices.</p>
+    <details class="jrs-training-desk-reference">
+      <summary>Optional reviewer desk reference (Version 1.0)</summary>
+    <p class="jrs-training-edition-note">Using these exercises with a published reference? <a href="editions.html">Check the separate publication and training editions</a>. Completion is formative and not professional certification.</p>
+      <div class="jrs-training-desk-reference-body">
     <div style="border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin-bottom:22px;border-left:3px solid var(--accent)">
       <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:6px">Reviewer Desk Reference</div>
-      <div style="font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:10px">Download the nineteen-page JRS Reviewer Reference and keep it open as you work through the modules. It covers all five review conditions, submission readiness, escalation triggers, and maturity levels, and stays on your desk as the reference you work from afterwards.</div>
+      <div style="font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:10px">Download the nineteen-page JRS Reviewer Reference (Version 1.0, May 2026) for historical reviewer guidance on the five conditions, submission readiness, escalation triggers and maturity levels. The separately published Standard PDF is Version 2.0 (2026). Their requirements must not be assumed identical across editions; cite the actual document used for each review.</div>
       <a href="/api/dl?f=JRS-Reference-9d4f2a7c.pdf&amp;src=training-kit" class="btn-download">Desk Reference (PDF, 19 pages)</a>
+       <p style="font-size:14px;color:var(--muted);line-height:1.6;margin:12px 0 0">Need a different document format? <a href="contact.html?category=accessibility">Request an accessible version</a>, identifying the document title and edition.</p>
     </div>
+
+      </div>
+    </details>
     <div class="progress-block">
       <div class="progress-label-row">
         <span class="progress-section-label">Progress</span>
-        <span class="progress-count" id="progress-display">Step 1 of 6 &middot; Ready to start</span>
+        <span class="progress-count" id="progress-display" aria-live="polite" aria-atomic="true">Step 1 of 6 &middot; Ready to start</span>
       </div>
-      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="progress-bar" id="progress-bar" role="progressbar" aria-label="Completed training modules" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" aria-valuetext="0 of 6 modules complete"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
-  <div id="preview-banner" style="display:none;background:var(--surface2);border:1px solid var(--accent-dim);border-left:3px solid var(--accent);padding:14px 16px;margin-bottom:16px">
-    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px">Open access</div>
-    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
-      <span style="font-size:12.5px;color:var(--muted);line-height:1.5;flex:1 1 260px">All six modules are open to read right now. Add your name only when you want the certificate issued in it.</span>
-      <button onclick="openEnroll()" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:11px 18px;cursor:pointer;flex:0 0 auto">Name my certificate</button>
-    </div>
-  </div>
   <div class="module-list" id="module-list">
 
     <div class="module-row" id="module-row-0">
       <div class="module-num" id="module-num-0">01</div>
-      <div class="module-body" onclick="toggleModule(0)">
+      <div class="module-body">
         <div class="module-title">JRS Review Conditions</div>
         <div class="module-outcome">By the end you can test any record against the five conditions and say which one it fails.</div>
         <div class="module-status" id="module-status-0">Not Started</div>
@@ -637,7 +656,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
     <div class="module-row" id="module-row-1">
       <div class="module-num" id="module-num-1">02</div>
-      <div class="module-body" onclick="toggleModule(1)">
+      <div class="module-body">
         <div class="module-title">Common Documentation Conditions</div>
         <div class="module-outcome">By the end you can recognise the documentation failures that show up most often in real files.</div>
         <div class="module-status" id="module-status-1">Not Started</div>
@@ -693,7 +712,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
     <div class="module-row" id="module-row-2">
       <div class="module-num" id="module-num-2">03</div>
-      <div class="module-body" onclick="toggleModule(2)">
+      <div class="module-body">
         <div class="module-title">Secondary Review and Escalation</div>
         <div class="module-outcome">By the end you know when a record goes to secondary review and when it escalates.</div>
         <div class="module-status" id="module-status-2">Not Started</div>
@@ -773,7 +792,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
     <div class="module-row" id="module-row-3">
       <div class="module-num" id="module-num-3">04</div>
-      <div class="module-body" onclick="toggleModule(3)">
+      <div class="module-body">
         <div class="module-title">AI-Assisted Record Review</div>
         <div class="module-outcome">By the end you can review an AI-assisted record without guessing what the tool contributed.</div>
         <div class="module-status" id="module-status-3">Not Started</div>
@@ -839,7 +858,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
     <div class="module-row" id="module-row-4">
       <div class="module-num" id="module-num-4">05</div>
-      <div class="module-body" onclick="toggleModule(4)">
+      <div class="module-body">
         <div class="module-title">Investigation Review</div>
         <div class="module-outcome">By the end you can apply the method to an investigative file from intake to finalization.</div>
         <div class="module-status" id="module-status-4">Not Started</div>
@@ -880,7 +899,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
     <div class="module-row" id="module-row-5">
       <div class="module-num" id="module-num-5">06</div>
-      <div class="module-body" onclick="toggleModule(5)">
+      <div class="module-body">
         <div class="module-title">Implementation Sequence</div>
         <div class="module-outcome">By the end you have an order of operations for putting JRS into a team's workflow.</div>
         <div class="module-status" id="module-status-5">Not Started</div>
@@ -897,11 +916,11 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
         </div>
         <p style="font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:20px">The implementation sequence supports phased rollout within existing workflows. Each step can be applied independently. Organizations may begin with the forms and refer back to reviewer materials as questions arise, or proceed through the full sequence before deployment.</p>
         <div class="sampling-list">
-          <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with KIT-F1. Establish it as the baseline reference for the five JRS review conditions.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Complete Reviewer Onboarding</div><div class="sampling-desc">Work through KIT-B1 with new and returning reviewers. Establish risk-level routing expectations before the first review cycle.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">Apply the Pre-Finalization Worksheet</div><div class="sampling-desc">Use KIT-A1 for all records in scope. Begin with elevated-risk categories if phased rollout is required.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Establish Escalation Routing</div><div class="sampling-desc">Identify secondary reviewer contacts. Distribute KIT-A2 and KIT-E1A to routing decision-makers. Document any local variance from the reference routing conditions.</div></div></div>
-          <div class="sampling-item"><div class="sampling-num">5</div><div class="sampling-body"><div class="sampling-title">Complete AI Documentation Integration</div><div class="sampling-desc">Apply KIT-C1 to all AI-assisted records. Establish human confirmation as a required step before system entry.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">1</div><div class="sampling-body"><div class="sampling-title">Distribute the Rapid Review Card</div><div class="sampling-desc">Provide all primary reviewers with the publicly available Rapid Review Card (KIT-F1). Use it as a concise reference for the five review conditions.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">2</div><div class="sampling-body"><div class="sampling-title">Complete Reviewer Onboarding</div><div class="sampling-desc">Complete the free reviewer training modules and consult the publicly available Version 1.0 Reviewer Reference PDF alongside the separately versioned Standard PDF. Establish local escalation expectations before the first review cycle. The historical KIT-B1 PDF is not publicly distributed.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">3</div><div class="sampling-body"><div class="sampling-title">Apply the Pre-Finalization Worksheet</div><div class="sampling-desc">Use the pre-finalization worksheet on this training page, or an approved equivalent in the organization's existing workflow. The historical KIT-A1 PDF is not a current public download.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">4</div><div class="sampling-body"><div class="sampling-title">Establish Escalation Routing</div><div class="sampling-desc">Identify secondary reviewer contacts and document local escalation triggers using current review references. KIT-A2 and KIT-E1A are historical identifiers, not currently distributed standalone PDFs.</div></div></div>
+          <div class="sampling-item"><div class="sampling-num">5</div><div class="sampling-body"><div class="sampling-title">Complete AI Documentation Integration</div><div class="sampling-desc">Apply the five JRS review conditions and public AI-assisted documentation guidance. Require a responsible human to check source support before finalization; the historical KIT-C1 PDF is retired.</div></div></div>
           <div class="sampling-item"><div class="sampling-num">6</div><div class="sampling-body"><div class="sampling-title">Initiate Periodic Sampling</div><div class="sampling-desc">Establish a review sampling schedule. See the Periodic Review Sampling reference section below for sampling categories and scope guidance.</div></div></div>
           <div class="sampling-item"><div class="sampling-num">7</div><div class="sampling-body"><div class="sampling-title">Document Variances</div><div class="sampling-desc">Where local workflow differs from a reference condition, document the basis. Variance documentation supports later review and reduces audit exposure.</div></div></div>
         </div>
@@ -923,6 +942,34 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
     </div>
 
   </div>
+
+  
+<section id="jrs-practice-calibration" aria-labelledby="jrs-practice-heading">
+  <details>
+    <summary id="jrs-practice-heading">Optional six-question documentation review self-check</summary>
+    <p>Practice applying the five JRS conditions and source verification. This local knowledge check does not send, store or certify answers, and does not affect completion of the six open modules. A practice score is not an independent competence assessment.</p>
+    <form id="jrs-practice-form" autocomplete="off">
+      <fieldset data-correct="2" data-reason="Reconstructability requires the retained record to explain the path without the author's memory."><legend><strong>1. A later reviewer cannot reconstruct why a documented conclusion was reached without asking the original author. What is missing?</strong></legend><label><input type="radio" name="jrs-practice-q1" value="1"> <span>A more polished summary</span></label><label><input type="radio" name="jrs-practice-q1" value="2"> <span>A retained evidence-to-conclusion path</span></label><label><input type="radio" name="jrs-practice-q1" value="3"> <span>An additional signature</span></label></fieldset>
+<fieldset data-correct="1" data-reason="Basis identification requires traceable support for material characterizations, not unsupported labels."><legend><strong>2. A record describes an employee as repeatedly uncooperative but does not identify the incidents or reports behind the description. What should the reviewer request?</strong></legend><label><input type="radio" name="jrs-practice-q2" value="1"> <span>Identifiable source support for the characterization</span></label><label><input type="radio" name="jrs-practice-q2" value="2"> <span>Stronger language to signal seriousness</span></label><label><input type="radio" name="jrs-practice-q2" value="3"> <span>Removal of every adverse observation</span></label></fieldset>
+<fieldset data-correct="1" data-reason="Chronology requires a discernible sequence of material events and investigative steps."><legend><strong>3. A finding refers to several interviews but omits their dates and sequence. Which condition is most directly implicated?</strong></legend><label><input type="radio" name="jrs-practice-q3" value="1"> <span>Chronology</span></label><label><input type="radio" name="jrs-practice-q3" value="2"> <span>Visual consistency</span></label><label><input type="radio" name="jrs-practice-q3" value="3"> <span>Public attribution</span></label></fieldset>
+<fieldset data-correct="2" data-reason="Reasoning trace makes the connection between retained source facts and the actual decision reviewable."><legend><strong>4. The source evidence is present, but the record does not explain how it supports the selected outcome. What should be documented?</strong></legend><label><input type="radio" name="jrs-practice-q4" value="1"> <span>A conclusion with greater confidence</span></label><label><input type="radio" name="jrs-practice-q4" value="2"> <span>The reasoning connecting the evidence to the outcome</span></label><label><input type="radio" name="jrs-practice-q4" value="3"> <span>A new unrelated source</span></label></fieldset>
+<fieldset data-correct="2" data-reason="Sufficiency requires the file to contain or account for the material necessary for later independent review."><legend><strong>5. A consequential determination relies on attachments that are referenced but absent from the retained file. What should happen before finalization?</strong></legend><label><input type="radio" name="jrs-practice-q5" value="1"> <span>Treat the document as complete because attachments are named</span></label><label><input type="radio" name="jrs-practice-q5" value="2"> <span>Record the deficiency and obtain or clearly account for the missing material</span></label><label><input type="radio" name="jrs-practice-q5" value="3"> <span>Ask the reviewer to rely on recollection</span></label></fieldset>
+<fieldset data-correct="3" data-reason="AI-assisted drafting must not convert uncertainty into unsupported certainty or erase source traceability."><legend><strong>6. An AI-generated summary states a disputed allegation as established fact, while the source notes preserve uncertainty. Which response is appropriate?</strong></legend><label><input type="radio" name="jrs-practice-q6" value="1"> <span>Keep the summary because it is fluent</span></label><label><input type="radio" name="jrs-practice-q6" value="2"> <span>Delete the source notes</span></label><label><input type="radio" name="jrs-practice-q6" value="3"> <span>Reconcile the summary against source materials and retain the uncertainty</span></label></fieldset>
+      <button type="button" id="jrs-practice-score">Review my practice answers</button>
+      <div id="jrs-practice-result" role="status" aria-live="polite" aria-atomic="true"></div>
+    </form>
+  </details>
+</section>
+
+<!-- Optional certificate naming follows open module access. -->
+  <div id="preview-banner" style="display:none;background:var(--surface2);border:1px solid var(--accent-dim);border-left:3px solid var(--accent);padding:14px 16px;margin-bottom:16px">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:5px">Open access</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between">
+      <span style="font-size:12.5px;color:var(--muted);line-height:1.5;flex:1 1 260px">All six modules are free without registration. A personal completion image is optional and records self-reported participation, not assessed competence.</span>
+      <button id="jrs-named-record-open" onclick="openEnroll()" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:11px 18px;cursor:pointer;flex:0 0 auto">Optional named participation record</button>
+    </div>
+  </div>
+
 
   
 
@@ -1313,7 +1360,7 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
     <p style="font-size:12px;color:var(--muted-soft);line-height:1.55;max-width:540px;margin:0 auto 20px;">This training environment is part of the JRS Operational Pilot Program validation phase. Participation is available at no cost during the validation phase.</p>
     <div style="margin-bottom:16px;display:flex;flex-direction:column;gap:6px;max-width:620px;margin-left:auto;margin-right:auto">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;text-align:left">Start by AI function</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+      <div id="jrs-ai-function-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
         <a href="#simulator" onclick="showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(190,148,71,.4);color:var(--accent);padding:11px 14px;text-decoration:none;text-align:left">Summarization &#8594;</a>
         <a href="#simulator" onclick="showSimTab(1)" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--rule);color:var(--muted-soft);padding:11px 14px;text-decoration:none;text-align:left">Recommendation &#8594;</a>
         <a href="#simulator" onclick="showSimTab(0)" style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--rule);color:var(--muted-soft);padding:11px 14px;text-decoration:none;text-align:left">Analysis &#8594;</a>
@@ -1586,10 +1633,10 @@ body.focus-mode #training-modules{border-top:none;padding-top:34px}
 
   <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:24px;line-height:1.7"><strong style="color:var(--text)">Reviewer Judgment Required</strong>: Outputs are intended to support reviewer analysis and do not replace organizational judgment, investigative review, legal review, or escalation procedures.</div>
 
-  <div style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
-    <button class="sim-tab active" id="sim-tab-0" onclick="showSimTab(0)">1. Document Review</button>
-    <button class="sim-tab" id="sim-tab-1" onclick="showSimTab(1)">2. Routing Decisions</button>
-    <button class="sim-tab" id="sim-tab-2" onclick="showSimTab(2)">3. Review Instability ID</button>
+  <div id="jrs-simulation-tabs" role="group" aria-label="Simulation exercise categories" style="display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0">
+    <button type="button" class="sim-tab active" id="sim-tab-0" aria-controls="sim-panel-0" aria-pressed="true" onclick="showSimTab(0)">1. Document Review</button>
+    <button type="button" class="sim-tab" id="sim-tab-1" aria-controls="sim-panel-1" aria-pressed="false" onclick="showSimTab(1)">2. Routing Decisions</button>
+    <button type="button" class="sim-tab" id="sim-tab-2" aria-controls="sim-panel-2" aria-pressed="false" onclick="showSimTab(2)">3. Review Instability ID</button>
   </div>
 
   
@@ -1849,7 +1896,7 @@ var fmState = { answered:{}, scores:[] };
 
 // ── TAB SWITCHING ──────────────────────────────────
 function showSimTab(idx) {
-  document.querySelectorAll('.sim-tab').forEach(function(t,i){t.classList.toggle('active',i===idx);});
+  document.querySelectorAll('.sim-tab').forEach(function(t,i){t.classList.toggle('active',i===idx);t.setAttribute('aria-pressed',String(i===idx));});
   document.querySelectorAll('.sim-panel').forEach(function(p,i){p.style.display=i===idx?'block':'none';});
 }
 
@@ -2080,7 +2127,8 @@ renderFM();
   <div style="max-width:820px;margin:0 auto">
     <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:10px">Reviewer Calibration</div>
     <h2 style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:12px">Participation Observation</h2>
-    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:24px">Read the record excerpt below. Select the response that best reflects how you would handle this record as a JRS reviewer.</p>
+    <p style="font-size:14px;color:var(--muted);line-height:1.7;max-width:640px;margin-bottom:10px">Read the record excerpt below. Select the response that best reflects how you would handle this record as a JRS reviewer.</p>
+    <p class="jrs-poll-local-disclosure" style="font-size:14px;color:var(--muted);line-height:1.65;max-width:700px;margin-bottom:24px"><strong>Local practice only.</strong> This activity reveals illustrative reviewer guidance. The observation field is not submitted, retained or analyzed by JRS. Do not enter personal or confidential case information.</p>
 
     <div style="border:1px solid var(--rule);background:var(--surface);padding:16px 20px;margin-bottom:24px;max-width:700px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:8px">Record Excerpt: JRS Review</div>
@@ -2089,20 +2137,20 @@ renderFM();
 
     <div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:14px">What is your next step as a JRS reviewer?</div>
     <div id="poll-options" style="display:flex;flex-direction:column;gap:6px;max-width:700px;margin-bottom:20px">
-      <button class="poll-btn" onclick="selectPoll(this,'A')">A: The record is sufficient. Finalize as written.</button>
-      <button class="poll-btn" onclick="selectPoll(this,'B')">B: Return to drafter: specific dates and source documentation are missing.</button>
-      <button class="poll-btn" onclick="selectPoll(this,'C')">C: Return to drafter: the employee's account is not preserved.</button>
-      <button class="poll-btn" onclick="selectPoll(this,'D')">D: Escalate: "hostile work environment" characterization requires legal review before finalization.</button>
-      <button class="poll-btn" onclick="selectPoll(this,'E')">E: Return for multiple gaps: source documentation, account preservation, and prior interventions are all unverifiable.</button>
+      <button type="button" class="poll-btn" aria-pressed="false" onclick="selectPoll(this,'A')">A: The record is sufficient. Finalize as written.</button>
+      <button type="button" class="poll-btn" aria-pressed="false" onclick="selectPoll(this,'B')">B: Return to drafter: specific dates and source documentation are missing.</button>
+      <button type="button" class="poll-btn" aria-pressed="false" onclick="selectPoll(this,'C')">C: Return to drafter: the employee's account is not preserved.</button>
+      <button type="button" class="poll-btn" aria-pressed="false" onclick="selectPoll(this,'D')">D: Escalate: "hostile work environment" characterization requires legal review before finalization.</button>
+      <button type="button" class="poll-btn" aria-pressed="false" onclick="selectPoll(this,'E')">E: Return for multiple gaps: source documentation, account preservation, and prior interventions are all unverifiable.</button>
     </div>
 
     <div style="margin-bottom:16px;max-width:700px">
-      <label style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:6px">Observation (Optional)</label>
+      <label for="poll-comment" style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);display:block;margin-bottom:6px">Private reflection (optional; not saved or submitted)</label>
       <textarea id="poll-comment" aria-label="Participation observation" placeholder="Describe what you noticed about this record or your reasoning..." style="width:100%;background:#121212;border:1px solid var(--rule);color:var(--muted);font-family:'Inter',sans-serif;font-size:13px;line-height:1.65;padding:12px 14px;resize:vertical;min-height:60px;box-sizing:border-box"></textarea>
     </div>
-    <button id="poll-submit-btn" onclick="submitPoll()" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 24px;cursor:pointer;opacity:.4;pointer-events:none">Submit Observation</button>
+    <button type="button" id="poll-submit-btn" onclick="submitPoll()" disabled style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:12px 24px;cursor:pointer;opacity:.4;pointer-events:none">Reveal reviewer analysis</button>
 
-    <div id="poll-result" style="display:none;margin-top:20px;max-width:700px;border:1px solid var(--rule);background:var(--surface);padding:18px 20px">
+    <div id="poll-result" role="region" tabindex="-1" aria-label="Illustrative reviewer analysis" style="display:none;margin-top:20px;max-width:700px;border:1px solid var(--rule);background:var(--surface);padding:18px 20px">
       <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Reviewer Analysis</div>
       <p style="font-size:13.5px;color:var(--text);font-weight:600;margin-bottom:8px">The defensible answer is E. D may also warrant independent attention.</p>
       <p style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:10px">This record contains multiple documentation gaps. "Repeated concerns" and "prior interventions" are escalation language without a verifiable counseling trail. "Multiple team members" are not identified or documented. The employee account is absent. "Hostile work environment" is a legal characterization that requires independent confirmation before the record is finalized. This record, as written, is not independently reconstructable.</p>
@@ -2277,25 +2325,25 @@ renderFM();
           <div class="kit-doc-type">Quick Reference</div>
           <div class="kit-doc-meta">KIT-F1 &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; May 2026</div>
           <div class="kit-doc-title">Rapid Review Card</div>
-          <div class="kit-doc-desc">One-page reviewer reference. Five JRS review conditions, submission readiness key, secondary review triggers.</div>
+          <div class="kit-doc-desc">Two-page reviewer reference. Five JRS review conditions, submission readiness key, secondary review triggers.</div>
         </div>
         <a href="/api/dl?e=card&amp;src=training" class="btn-download">Download PDF</a>
       </div>
       <div class="kit-doc-row">
         <div>
           <div class="kit-doc-type">Investigator Guide</div>
-          <div class="kit-doc-meta">KIT-G1 &nbsp;|&nbsp; Combined edition &nbsp;|&nbsp; May 2026</div>
-          <div class="kit-doc-title">Investigator Guide (Combined Overview)</div>
-          <div class="kit-doc-desc">Investigator Guide for investigation review workflows. May be applied alongside existing investigation protocols.</div>
+          <div class="kit-doc-meta">Current three discipline editions &nbsp;|&nbsp; v1.1</div>
+          <div class="kit-doc-title">Investigator Guides: Employment, Fair Housing and International</div>
+          <div class="kit-doc-desc">Use the three current, individually identified field editions. The earlier combined reference remains a separate historical document.</div>
         </div>
-        <a href="/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=training-kit" class="btn-download">Download PDF</a>
+        <a href="investigator-guides.html" class="btn-download">View three current guides</a>
       </div>
       <div class="kit-doc-row">
         <div>
           <div class="kit-doc-type">Full Standard</div>
-          <div class="kit-doc-meta">JRS-STD &nbsp;|&nbsp; V1.0 &nbsp;|&nbsp; May 2026</div>
-          <div class="kit-doc-title">JRS Standard Document</div>
-          <div class="kit-doc-desc">Complete JRS framework documentation including all five review conditions, routing framework, and implementation guidance.</div>
+          <div class="kit-doc-meta">JRS-STD &nbsp;|&nbsp; PDF Version 2.0 &nbsp;|&nbsp; 2026</div>
+          <div class="kit-doc-title">Published JRS Standard PDF, Version 2.0</div>
+          <div class="kit-doc-desc">Version 2.0 PDF states the five core review requirements. The separately versioned online methodology is v1.0 (May 2026), and the two references must not be treated as an identical edition.</div>
         </div>
         <a href="/api/dl?e=standard&amp;src=training" class="btn-download">Download PDF</a>
       </div>
@@ -2433,8 +2481,8 @@ renderFM();
 <div id="cert-section" style="display:none;max-width:960px;margin:0 auto;padding:0 24px 48px">
   <div style="border:1px solid rgba(190,148,71,.4);background:rgba(190,148,71,.05);padding:28px 28px 24px">
     <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:10px">Course Complete</div>
-    <div style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:8px">All six modules completed.</div>
-    <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Enter your name to generate a module completion record. Completion reflects participation in the training modules only and does not constitute certification, accreditation, or a professional credential.</p>
+    <h2 id="cert-heading" tabindex="-1" style="font-family:'Bodoni Moda',serif;font-size:22px;font-weight:500;color:var(--text);margin-bottom:8px">All six modules completed.</h2>
+    <p style="font-size:13.5px;color:var(--muted);margin-bottom:20px;line-height:1.65">Enter your name to generate a module completion record. The PNG is generated locally without enrollment and is not automatically a server-held completion record. Completion reflects participation in the modules only, not certification, accreditation, or a professional credential.</p>
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px">
       <input type="text" id="cert-name" aria-label="Name for completion record" placeholder="Your full name" autocomplete="name"
         style="flex:1;min-width:200px;background:var(--surface2);border:1px solid var(--rule);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;padding:11px 14px;outline:none">
@@ -2443,7 +2491,8 @@ renderFM();
         Generate Completion Record
       </button>
     </div>
-    <canvas id="cert-canvas" style="display:none;max-width:100%;border:1px solid var(--rule);margin-bottom:12px"></canvas>
+    <canvas id="cert-canvas" aria-hidden="true" style="display:none;max-width:100%;border:1px solid var(--rule);margin-bottom:12px"></canvas>
+    <p id="cert-accessible-summary" role="status" aria-live="polite" hidden style="font-size:15px;line-height:1.65;color:var(--text);margin:12px 0"></p>
     <div id="cert-actions" style="display:none;gap:12px;flex-wrap:wrap">
       <button onclick="downloadCert()"
         style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:none;border:1px solid rgba(190,148,71,.4);padding:9px 18px;cursor:pointer">
@@ -2462,7 +2511,7 @@ renderFM();
   <div style="max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;">
     <div style="display:flex;flex-wrap:wrap;gap:16px;">
       <a href="index.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Home</a>
-      <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Pilot Program</a>
+      <a href="research.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Research and validation</a>
       <a href="training.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Simulation Training</a>
       <a href="/api/dl?e=standard&amp;src=training" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Review Controls PDF</a>
       <a href="mailto:info@jrsstandard.com" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;">Contact</a>
@@ -2498,6 +2547,8 @@ function updateProgressDisplay() {
     : (done === 0 ? 'Step 1 of 6 · Ready to start'
                   : 'Step ' + (done + 1) + ' of 6 · ' + done + ' complete');
   document.getElementById('progress-fill').style.width = (done / 6 * 100) + '%';
+  var progressBar=document.getElementById('progress-bar');
+  if(progressBar){progressBar.setAttribute('aria-valuenow',String(done));progressBar.setAttribute('aria-valuetext',done+' of 6 modules complete');}
   // Update module statuses
   for (var i = 0; i < 6; i++) {
     var statusEl = document.getElementById('module-status-' + i);
@@ -2522,9 +2573,10 @@ function toggleModule(idx) {
   var isOpen = panel.classList.contains('open');
   // Close all panels
   document.querySelectorAll('.module-panel').forEach(function(p) { p.classList.remove('open'); });
-  document.querySelectorAll('.btn-open:not(.done)').forEach(function(b) {
-    b.textContent = '► Open';
+  document.querySelectorAll('.btn-open').forEach(function(b) {
+    // A completed module can still be reopened; closed state must be accurate.
     b.setAttribute('aria-expanded', 'false');
+    if (!b.classList.contains('done')) b.textContent = '► Open';
   });
   if (!isOpen) {
     panel.classList.add('open');
@@ -2542,39 +2594,52 @@ function toggleModule(idx) {
 
 function markComplete(idx) {
   progress[idx] = true;
-  localStorage.setItem('jrs-training-progress', JSON.stringify(progress));
+  try { localStorage.setItem('jrs-training-progress', JSON.stringify(progress)); } catch(e) { /* modules remain usable if storage is unavailable */ }
   try{ jrsRec('module_complete',{module:idx,role:(progress&&progress.role)||null}); }catch(e){}
   var panel = document.getElementById('module-panel-' + idx);
   if (panel) panel.classList.remove('open');
   updateProgressDisplay();
+  var moduleTrigger=document.getElementById('module-btn-' + idx);
+  if(moduleTrigger){ moduleTrigger.setAttribute('aria-expanded','false'); moduleTrigger.focus(); }
   // Show certificate section when all six modules are done. Ask for the email
   // here too (not only at certificate download): a completer on a different
   // device, or with cleared storage, has no saved enrollment email, and without
   // this prompt their completion would never reach the server.
   if (jrsModulesDone() === 6) {
     var certSec = document.getElementById('cert-section');
-    if (certSec) { certSec.style.display = 'block'; certSec.scrollIntoView({behavior:'smooth'}); }
-    recordCompletion(true);
+    if (certSec) {
+      certSec.style.display = 'block'; certSec.scrollIntoView({behavior:'smooth'});
+      var heading=document.getElementById('cert-heading');
+      if(heading) heading.focus({preventScroll:true});
+    }
+    recordCompletion();
   }
 }
 
-// Record training completion once, server-side, keyed by the enrollee email.
-// Uses the email captured at enrollment; if it is missing (enrolled before that
-// shipped, or a different browser), pass promptIfMissing=true to ask for it.
-function recordCompletion(promptIfMissing) {
+// Named server-side completion is optional and follows successful enrollment.
+// Reading the six free modules or generating a local PNG does not request an email.
+// Failed completion writes must remain eligible for a later, nonintrusive retry.
+var jrsCompletionPending = false;
+function recordCompletion() {
   try {
-    if (localStorage.getItem('jrs-training-completed-sent')) return;
-    if (jrsModulesDone() !== 6) return;
-    var em = localStorage.getItem('jrs-training-email') || '';
-    if (!em && promptIfMissing) {
-      em = ((window.prompt('Enter the email you registered with, so your completion is recorded:') || '').trim());
-      if (em) { try { localStorage.setItem('jrs-training-email', em); } catch(e){} }
-    }
+    if (jrsCompletionPending || jrsModulesDone() !== 6) return;
+    if (localStorage.getItem('jrs-training-enrolled') !== '1') return;
+    if (localStorage.getItem('jrs-training-completed-sent') === '1') return;
+    var em = (localStorage.getItem('jrs-training-email') || '').trim();
     if (!em || em.indexOf('@') < 1 || em.indexOf('.') < 0) return;
-    fetch('/api/complete', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ email: em }) })
-      .then(function(){ try{ localStorage.setItem('jrs-training-completed-sent','1'); }catch(e){} })
-      .catch(function(){});
-  } catch(e){}
+    jrsCompletionPending = true;
+    fetch('/api/complete', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:em})
+    }).then(function(response){
+      if (!response.ok) throw new Error('Completion service did not accept the request');
+      return response.json();
+    }).then(function(result){
+      if (!result || result.ok !== true) throw new Error('Completion not confirmed');
+      try { localStorage.setItem('jrs-training-completed-sent','1'); } catch(e) {}
+    }).catch(function(){ /* do not claim completion or block the local PNG */ })
+      .finally(function(){ jrsCompletionPending = false; });
+  } catch(e) { jrsCompletionPending = false; }
 }
 
 function jrsSanitizeCheck(text) {
@@ -2591,90 +2656,148 @@ function jrsSanitizeCheck(text) {
   }
   return true;
 }
-function generateCert() {
-  if (!jrsSanitizeCheck(document.getElementById('cert-name').value || '')) return;
-  var name = (document.getElementById('cert-name').value.trim()) || 'Reviewer';
+async function generateCert() {
+  var requestedName = document.getElementById('cert-name').value || '';
+  if (!jrsSanitizeCheck(requestedName)) return;
+  var name = requestedName.replace(/\s+/g, ' ').trim() || 'Reviewer';
+  // Wait for the site's web font to become available before rasterizing.
+  // The same source remains usable when the font request is blocked.
+  if (document.fonts && document.fonts.ready) {
+    try { await document.fonts.ready; } catch(e) { /* use system fallback */ }
+  }
+  // A name change during font loading must not leave an obsolete record.
+  if ((document.getElementById('cert-name').value || '') !== requestedName) return;
   var canvas = document.getElementById('cert-canvas');
-  var W = 900, H = 636;
+  var W = 900, H = 636, B = 28;
   canvas.width = W; canvas.height = H;
   var ctx = canvas.getContext('2d');
-  // Background
-  ctx.fillStyle = '#0A0A0A'; ctx.fillRect(0,0,W,H);
-  // Border
-  var B = 28;
-  ctx.strokeStyle = '#BE9447'; ctx.lineWidth = 1.5;
-  ctx.strokeRect(B,B,W-B*2,H-B*2);
-  ctx.strokeStyle = 'rgba(190,148,71,.3)'; ctx.lineWidth = 0.5;
-  ctx.strokeRect(B+7,B+7,W-B*2-14,H-B*2-14);
-  // Top label
-  ctx.fillStyle = '#BE9447';
-  ctx.font = '500 11px "JetBrains Mono",monospace';
-  ctx.textAlign = 'center';
-  ctx.letterSpacing = '0.2em';
-  ctx.fillText('JRS™  JUSTIFICATION REVIEW STANDARD', W/2, 90);
-  // Title
-  ctx.fillStyle = '#E8E0CC';
-  ctx.font = '400 13px "JetBrains Mono",monospace';
-  ctx.fillText('REVIEWER TRAINING · CERTIFICATE OF COMPLETION', W/2, 118);
-  // Divider
-  ctx.strokeStyle = 'rgba(190,148,71,.4)'; ctx.lineWidth = 0.7;
-  ctx.beginPath(); ctx.moveTo(B+40,138); ctx.lineTo(W-B-40,138); ctx.stroke();
-  // Presented to
-  ctx.fillStyle = '#8A8A8A';
-  ctx.font = 'italic 15px "Bodoni Moda","Georgia",serif';
-  ctx.fillText('This confirms that', W/2, 185);
-  // Name
-  ctx.fillStyle = '#F2F2F2';
-  ctx.font = '500 38px "Bodoni Moda","Georgia",serif';
-  ctx.fillText(name, W/2, 245);
-  // Underline name
-  var nm = ctx.measureText(name); var nw = Math.min(nm.width+40, W-B*2-60);
-  ctx.strokeStyle = 'rgba(190,148,71,.5)'; ctx.lineWidth = 0.8;
-  ctx.beginPath(); ctx.moveTo(W/2-nw/2,256); ctx.lineTo(W/2+nw/2,256); ctx.stroke();
-  // Has completed
-  ctx.fillStyle = '#8A8A8A';
-  ctx.font = 'italic 15px "Bodoni Moda","Georgia",serif';
-  ctx.fillText('has completed all six modules of', W/2, 296);
-  // Course name
-  ctx.fillStyle = '#BE9447';
-  ctx.font = '600 17px "Inter","Helvetica Neue",sans-serif';
-  ctx.fillText('JRS™ REVIEWER TRAINING — COMPLETED', W/2, 330);
-  ctx.fillStyle = '#666';
-  ctx.font = '400 11px "Inter",sans-serif';
-  ctx.fillText('DEPLOYMENT KIT  ·  VERSION 1.0  ·  INTERNAL DISTRIBUTION', W/2, 353);
-  // Date
-  ctx.fillStyle = '#6A6A6A';
-  ctx.font = '400 12px "Inter",sans-serif';
-  ctx.fillText('Completed ' + new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}), W/2, 395);
-  // Disclaimer
-  ctx.fillStyle = '#505050';
-  ctx.font = '400 10px "Inter",sans-serif';
-  ctx.fillText('Educational material. Does not constitute professional certification, legal qualification, or compliance accreditation.', W/2, 435);
-  // Bottom divider
-  ctx.strokeStyle = 'rgba(190,148,71,.3)'; ctx.lineWidth = 0.7;
-  ctx.beginPath(); ctx.moveTo(B+40,460); ctx.lineTo(W-B-40,460); ctx.stroke();
-  // Footer
-  ctx.fillStyle = '#8A6E2A';
-  ctx.font = '400 18px "Bodoni Moda","Georgia",serif';
-  ctx.fillText('JRS™', W/2, 500);
-  ctx.fillStyle = '#555';
-  ctx.font = '400 9px "JetBrains Mono",monospace';
-  ctx.fillText('JUSTIFICATION REVIEW STANDARD  ·  JRSSTANDARD.COM', W/2, 518);
-  ctx.fillStyle = '#3A3A3A';
-  ctx.font = '400 10px "Inter",sans-serif';
-  ctx.fillText('JRS™ is a mark used by Phillip Wikes.  ©2026 Phillip Wikes', W/2, 580);
-  // Bottom accent line
-  ctx.fillStyle = '#8A6E2A'; ctx.fillRect(B+1,H-B-3,W-B*2-2,1.5);
 
+  // Published-site institutional presentation. This image is a record of
+  // training completion, not professional accreditation or JRS conformance.
+  ctx.fillStyle = '#F5F7F8'; ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = '#FFFFFF'; ctx.fillRect(B, B, W - B*2, H - B*2);
+  ctx.strokeStyle = '#A27A39'; ctx.lineWidth = 2;
+  ctx.strokeRect(B, B, W - B*2, H - B*2);
+  ctx.strokeStyle = '#D8E1E7'; ctx.lineWidth = 1;
+  ctx.strokeRect(B+9, B+9, W-B*2-18, H-B*2-18);
+  ctx.fillStyle = '#17364F'; ctx.fillRect(B, B, W-B*2, 10);
+  ctx.textAlign = 'center';
+
+  ctx.fillStyle = '#17364F';
+  ctx.font = '700 19px Inter,system-ui,sans-serif';
+  ctx.fillText('JRS™  JUSTIFICATION REVIEW STANDARD', W/2, 95);
+  ctx.fillStyle = '#7F5E26';
+  ctx.font = '700 13px Inter,system-ui,sans-serif';
+  ctx.fillText('REVIEWER TRAINING  ·  RECORD OF COMPLETION', W/2, 128);
+
+  ctx.strokeStyle = '#D8E1E7'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(B+58, 150); ctx.lineTo(W-B-58, 150); ctx.stroke();
+  ctx.fillStyle = '#42576B';
+  ctx.font = 'italic 20px Georgia,serif';
+  ctx.fillText('This records that', W/2, 197);
+
+  // Fit the recipient without cropping, silently changing or discarding
+  // words. Unusually long names can use two or three lines. If no legible
+  // layout fits, leave the record hidden and let the reviewer revise the input.
+  ctx.fillStyle = '#193148';
+  var maxWidth = W - (B+68)*2;
+  var words = name.split(' ');
+  function nameLines(size) {
+    ctx.font = 'normal '+size+'px Georgia,serif';
+    var lines = [], line = '';
+    for (var wi=0; wi<words.length; wi++) {
+      if (ctx.measureText(words[wi]).width > maxWidth) return null;
+      var candidate = (line ? line+' ' : '') + words[wi];
+      if (ctx.measureText(candidate).width <= maxWidth) line = candidate;
+      else { if (line) lines.push(line); line = words[wi]; }
+    }
+    if (line) lines.push(line);
+    return lines.length <= 3 ? lines : null;
+  }
+  var nameSize = 43, lines = null;
+  while (nameSize >= 18) {
+    lines = nameLines(nameSize);
+    if (lines) break;
+    nameSize--;
+  }
+  if (!lines) {
+    invalidateCert();
+    alert('The name is too long to fit on the completion record. Please use a shorter display name.');
+    return;
+  }
+  ctx.font = 'normal '+nameSize+'px Georgia,serif';
+  var positions = lines.length === 1 ? [247] : lines.length === 2 ? [235,264] : [218,239,260];
+  for (var ni=0; ni<lines.length; ni++) ctx.fillText(lines[ni], W/2, positions[ni]);
+
+  ctx.strokeStyle = '#A27A39'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(B+160, 279); ctx.lineTo(W-B-160, 279); ctx.stroke();
+  ctx.fillStyle = '#42576B';
+  ctx.font = 'italic 18px Georgia,serif';
+  ctx.fillText('has completed all six learning modules of', W/2, 315);
+  ctx.fillStyle = '#17364F';
+  ctx.font = '700 18px Inter,system-ui,sans-serif';
+  ctx.fillText('JRS REVIEWER TRAINING', W/2, 349);
+  ctx.fillStyle = '#526778';
+  ctx.font = '400 15px Inter,system-ui,sans-serif';
+  var completionDate = new Date().toLocaleDateString('en-US',{
+    year:'numeric',month:'long',day:'numeric'
+  });
+  ctx.fillText('Completed '+completionDate, W/2, 391);
+
+  ctx.fillStyle = '#42576B';
+  ctx.font = '400 13px Inter,system-ui,sans-serif';
+  ctx.fillText('Educational completion record only. Not professional certification,', W/2, 436);
+  ctx.fillText('legal qualification, or compliance accreditation.', W/2, 457);
+  ctx.strokeStyle = '#D8E1E7';
+  ctx.beginPath(); ctx.moveTo(B+58, 488); ctx.lineTo(W-B-58, 488); ctx.stroke();
+
+  ctx.fillStyle = '#7F5E26';
+  ctx.font = 'normal 25px Georgia,serif';
+  ctx.fillText('JRS™', W/2, 530);
+  ctx.fillStyle = '#42576B';
+  ctx.font = '600 13px Inter,system-ui,sans-serif';
+  ctx.fillText('JUSTIFICATION REVIEW STANDARD  ·  JRSSTANDARD.COM', W/2, 550);
+  ctx.fillStyle = '#526778';
+  ctx.font = '400 12px Inter,system-ui,sans-serif';
+  ctx.fillText('© 2026 Phillip Wikes', W/2, 581);
+
+  canvas.dataset.issuedName = name;
   canvas.style.display = 'block';
+  var summary = document.getElementById('cert-accessible-summary');
+  summary.textContent = 'JRS Reviewer Training, record of completion. ' + name +
+    ' completed all six learning modules on ' + completionDate +
+    '. Educational completion record only. Not professional certification, legal qualification, or compliance accreditation. Generated locally in this browser.';
+  summary.hidden = false;
   document.getElementById('cert-actions').style.display = 'flex';
 }
-
+// Recipient edits invalidate both the PNG and its equivalent on-page text.
+function invalidateCert() {
+  var canvas = document.getElementById('cert-canvas');
+  delete canvas.dataset.issuedName;
+  canvas.style.display = 'none';
+  var summary = document.getElementById('cert-accessible-summary');
+  summary.textContent = '';
+  summary.hidden = true;
+  document.getElementById('cert-actions').style.display = 'none';
+}
+document.getElementById('cert-name').addEventListener('input', invalidateCert);
 function downloadCert() {
-  recordCompletion(true);
-  var name = (document.getElementById('cert-name').value.trim().replace(/\s+/g,'-')) || 'JRS-Reviewer';
+  var canvas = document.getElementById('cert-canvas');
+  var name = (document.getElementById('cert-name').value || '').replace(/\s+/g,' ').trim() || 'Reviewer';
+  // Never issue a PNG under a filename naming someone other than the person
+  // actually drawn on its face. Regenerate after any recipient-name change.
+  if (!canvas.dataset.issuedName || canvas.dataset.issuedName !== name) {
+    alert('The name has changed. Generate the completion record again before downloading.');
+    return;
+  }
+  recordCompletion();
+  // Preserve international reviewer names in filenames while excluding
+  // file-system control characters and punctuation. The image keeps the
+  // complete recipient spelling entered by the reviewer.
+  var safeName = name.normalize('NFKC')
+    .replace(/[^\p{L}\p{M}\p{N}._ -]+/gu,'').trim().replace(/\s+/g,'-') || 'Reviewer';
   var a = document.createElement('a');
-  a.download = 'JRS-Completion-' + name + '.png';
+  a.download = 'JRS-Completion-' + safeName + '.png';
   a.href = document.getElementById('cert-canvas').toDataURL('image/png');
   a.click();
 }
@@ -2700,13 +2823,12 @@ setTimeout(function() {
   if (progress.role && typeof ROLE_PATHS !== 'undefined'
       && ROLE_PATHS[progress.role]) selectRole(progress.role);
 }, 0);
-// Show cert section if already all complete. Prompt-if-missing here too, so a
-// completer whose earlier record never posted (dismissed prompt, other device)
-// is asked again on the next visit until the completion reaches the server.
+// Show the local completion section if all modules are complete. Record server-
+// side completion only where successful named enrollment is already stored.
 if (jrsModulesDone() === 6) {
   var cs = document.getElementById('cert-section');
   if (cs) cs.style.display = 'block';
-  recordCompletion(true);
+  recordCompletion();
 }
 
 // ── MODULE OBSERVATION ─────────────────────────────────────
@@ -2799,7 +2921,9 @@ var ROLE_PATHS = {
     simTab: 0, simLabel: 'Document Reconstruction Review',
     modules: ['03: Secondary Review and Escalation', '05: Investigation Review', '02: Common Documentation Conditions'],
     kits: [
-      {code:'KIT-INV', name:'Investigator Guide (Combined Overview)', href:'JRS_Investigator_Field_Guide.pdf'},
+      {code:'001-INV-E', name:'Employment / EEO Field Guide (v1.1)', edition:'employment'},
+      {code:'001-INV-H', name:'Fair Housing Field Guide (v1.1)', edition:'fairhousing'},
+      {code:'001-INV-INT', name:'International Field Guide (v1.1)', edition:'international'},
       {code:'REF', name:'JRS Reviewer Reference', href:'JRS-Reference-9d4f2a7c.pdf'},
       {code:'KIT-F1', name:'Rapid Review Card', href:'JRS_Rapid_Review_Card.pdf'}
     ]
@@ -2870,7 +2994,7 @@ function selectRole(key) {
   data.kits.forEach(function(k){
     col3 += '<div style="margin-bottom:10px">'
       + '<div style="font-family:\'JetBrains Mono\',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:2px">'+k.code+'</div>'
-      + '<a href="/api/dl?f='+encodeURIComponent(k.href)+'&src=training-role" style="font-size:12.5px;color:var(--text);text-decoration:none;display:block">'+k.name+' <span style="color:var(--accent)">&#8595;</span></a>'
+      + '<a href="'+(k.edition?'/api/dl?e='+encodeURIComponent(k.edition):'/api/dl?f='+encodeURIComponent(k.href))+'&src=training-role" style="font-size:12.5px;color:var(--text);text-decoration:none;display:block">'+k.name+' <span style="color:var(--accent)">&#8595;</span></a>'
       + '</div>';
   });
   col3 += '</div>';
@@ -2883,10 +3007,11 @@ function selectRole(key) {
 
 // ── PARTICIPATION POLL ────────────────────────────────────
 function selectPoll(btn, answer) {
-  document.querySelectorAll('.poll-btn').forEach(function(b){ b.classList.remove('poll-selected'); });
+  document.querySelectorAll('.poll-btn').forEach(function(b){ b.classList.remove('poll-selected'); b.setAttribute('aria-pressed','false'); });
   btn.classList.add('poll-selected');
+  btn.setAttribute('aria-pressed','true');
   var submitBtn = document.getElementById('poll-submit-btn');
-  if (submitBtn) { submitBtn.style.opacity='1'; submitBtn.style.pointerEvents='auto'; }
+  if (submitBtn) { submitBtn.disabled=false; submitBtn.style.opacity='1'; submitBtn.style.pointerEvents='auto'; }
   window._pollAnswer = answer;
 }
 function submitPoll() {
@@ -2895,15 +3020,16 @@ function submitPoll() {
   var sb = document.getElementById('poll-submit-btn');
   if (sb) sb.style.display='none';
   var result = document.getElementById('poll-result');
-  if (result) { result.style.display='block'; result.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+  if (result) { result.style.display='block'; result.focus({preventScroll:true}); result.scrollIntoView({behavior:'smooth',block:'nearest'}); }
 }
 </script>
-<div id="enroll-overlay" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
+<div id="enroll-overlay" role="dialog" aria-modal="true" aria-labelledby="en-dialog-title" aria-describedby="en-dialog-description" tabindex="-1" style="display:none;position:fixed;inset:0;background:rgba(5,5,5,.94);z-index:99999;align-items:flex-start;justify-content:center;padding:24px;overflow:auto;font-family:'Inter',sans-serif">
   <div style="max-width:460px;width:100%;background:var(--surface);border:1px solid var(--accent);padding:26px 24px;margin:24px 0">
+    <button type="button" id="en-close" class="jrs-enroll-close" onclick="dismissEnroll()" aria-label="Close registration and return to training">Close</button>
     <div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">JRS Reviewer Training Program</div>
-    <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Start the JRS Reviewer Training Program</h2>
-    <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">The six modules are already open and stay open without registration. Your name and work email are requested only if you choose a named certificate and consent to project updates. Free for practitioners.</p>
-    <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:10px;margin:0 0 16px">Written by <b style="color:var(--muted);font-weight:500">Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. Every reviewer who has started this training has finished it. <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b> have graded records for this work, including <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b> who each completed a full 24-record set.</p>
+    <h2 style="font-family:'Bodoni Moda',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px" id="en-dialog-title">Start the JRS Reviewer Training Program</h2>
+    <p id="en-dialog-description" style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 10px">All six training modules are freely available without registration. Enter your name and email only if you choose an optional named completion record. Consent covers only that record and related enrollment inquiries, not unrelated marketing or project updates.</p>
+    <p style="font-size:11.5px;color:var(--muted-soft);line-height:1.6;border-left:2px solid var(--accent-dim);padding-left:10px;margin:0 0 16px">Written by <b style="color:var(--muted);font-weight:500">Phillip Wikes</b>, former Lead Civil Rights Officer, Maryland Commission on Civil Rights. <b><span data-panel="reviewers_all">58</span> international reviewers across three studies</b> have graded records for this work, including <b><span data-panel="completers_all">36</span> independent experts across <span data-panel="countries_all">16</span> countries</b> who each completed a full 24-record set.</p>
     <input id="en-name" type="text" aria-label="Full name" placeholder="Full name" autocomplete="name" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:9px">
     <input id="en-email" type="email" aria-label="Work email" placeholder="Work email" autocomplete="email" style="width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:14px">
     <input id="en-org" type="hidden" value="">
@@ -2920,13 +3046,14 @@ function submitPoll() {
      <option value="vendor">Yes, we build or sell a platform</option>
     </select>
 
-    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I agree to receive my certificate and updates on the JRS standard, and to my details being stored securely under the <a href="privacy.html#consent" id="en-terms-link" style="color:var(--accent);text-decoration:underline">registration terms</a>. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
-    <div id="en-terms" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 12px;font-size:12px;color:var(--muted);line-height:1.6">Ticking the box means three things and no more: contact me about the JRS project, store my details securely, and allow that record to travel with the project if the JRS assets are ever transferred to a successor. It does <b style="color:var(--text)">not</b> publish your name. Being listed in the public Registry is a separate, optional choice offered after your certificate is issued. Full detail in the <a href="privacy.html#consent" style="color:var(--accent)">Privacy Policy</a>.</div>
-    <div id="en-msg" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
-    <button id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Start module 1 now</button>
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:11.5px;color:var(--muted);line-height:1.5;border:1px solid var(--accent-dim);background:var(--surface2);padding:12px 13px;margin-bottom:12px;cursor:pointer"><input type="checkbox" id="en-registry" style="width:auto;margin:2px 0 0;flex:0 0 auto"><span>I consent to JRS storing my optional enrollment information and contacting me about the requested named training completion record and related registration inquiries. This is not consent for marketing or unrelated project updates. See the <a href="privacy-notice.html#training-enrollment" id="en-terms-link" aria-controls="en-terms" aria-expanded="false" style="color:var(--accent);text-decoration:underline">registration privacy notice</a>. <span style="color:var(--text)">Your name is <b style="color:var(--ready-text);font-weight:600">not published</b> by ticking this.</span></span></label>
+    <label style="display:flex;gap:9px;align-items:flex-start;font-size:12px;line-height:1.55;color:var(--text);margin:0 0 12px"><input type="checkbox" id="en-transfer" style="width:auto;flex:0 0 auto;margin-top:3px"><span>Optional: I consent to my enrollment record being transferred with the JRS project to an authorized successor, subject to applicable obligations. This choice is not required for training or a completion record.</span></label>
+<div id="en-terms" role="region" aria-label="Registration privacy details" style="display:none;border:1px solid var(--accent-dim);background:var(--surface2);padding:13px 14px;margin:0 0 12px;font-size:12px;color:var(--muted);line-height:1.6">The required enrollment checkbox allows JRS to retain the name and contact details you submit and communicate about the requested completion record and registration-related inquiries. It does not authorize marketing or unrelated project updates. Transfer of the enrollment record with the project to a successor is a separate, optional choice below. Enrollment does <b style="color:var(--text)">not</b> publish your name. See the <a href="privacy-notice.html#training-enrollment" style="color:var(--accent)">current privacy notice</a>.</div>
+    <div id="en-msg" role="status" aria-live="polite" aria-atomic="true" style="font-size:12px;color:var(--review-text);min-height:16px;margin-bottom:8px"></div>
+    <button type="button" id="en-go" onclick="enrollSubmit()" style="width:100%;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer">Register for a named completion record</button>
     <p style="font-size:11px;color:var(--ready-text);text-align:center;margin:9px 0 0">Free &middot; No credit card &middot; The training is already open below</p>
-    <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><a href="#" onclick="dismissEnroll();return false;" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none">Back to the training</a></div>
-    <p style="font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin:12px 0 0">Your details are stored securely and used only for the JRS project. Request access or deletion any time at info@jrsstandard.com. See the <a href="privacy.html" style="color:var(--accent-dim)">Privacy Policy</a>.</p>
+    <div id="en-dismiss" style="display:none;text-align:center;margin-top:12px"><button type="button" onclick="dismissEnroll()" class="jrs-enroll-dismiss">Back to the training</button></div>
+    <p style="font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin:12px 0 0">Optional enrollment details are handled as described in the <a href="privacy-notice.html#training-enrollment" style="color:var(--accent-dim)">current registration notice</a>. Request access or deletion at info@jrsstandard.com.</p>
   </div>
 </div>
 <script>
@@ -2991,18 +3118,68 @@ function jrsAccessClean(s){ return (s||'').toLowerCase().replace(/[^a-z0-9_-]/g,
     }
   } catch(e){}
 })();
+var jrsEnrollReturnFocus = null;
+var jrsEnrollInertStates = [];
+function jrsSetEnrollmentInert(open){
+  var overlay=document.getElementById('enroll-overlay');
+  if(open){
+    jrsEnrollInertStates=[];
+    Array.prototype.forEach.call(document.body.children,function(el){
+      if(el===overlay) return;
+      jrsEnrollInertStates.push({element:el,wasInert:el.inert});
+      el.inert=true;
+    });
+  }else{
+    jrsEnrollInertStates.forEach(function(item){
+      if(item.element.isConnected) item.element.inert=item.wasInert;
+    });
+    jrsEnrollInertStates=[];
+  }
+}
 function openEnroll(){
   var o = document.getElementById('enroll-overlay');
-  if (o) o.style.display = 'flex';
-  // Always offered, never forced. This overlay is now only ever opened by the
-  // reader pressing a button, so it must always carry a way back out.
+  if (!o) return;
+  // Preserve the initiating control so keyboard users return to their place.
+  jrsEnrollReturnFocus = document.activeElement;
+  o.style.display = 'flex';
+  document.body.classList.add('jrs-training-dialog-open');
+  jrsSetEnrollmentInert(true);
   var dl = document.getElementById('en-dismiss');
   if (dl) dl.style.display = 'block';
+  var input = document.getElementById('en-name');
+  (input || o).focus();
 }
 function dismissEnroll(){
   var o = document.getElementById('enroll-overlay');
   if (o) o.style.display = 'none';
+  document.body.classList.remove('jrs-training-dialog-open');
+  jrsSetEnrollmentInert(false);
+  var restoreFocus = jrsEnrollReturnFocus;
+  if (!restoreFocus || !document.contains(restoreFocus) ||
+      !restoreFocus.getClientRects || restoreFocus.getClientRects().length === 0) {
+    restoreFocus = document.getElementById('module-btn-0');
+  }
+  if (restoreFocus && typeof restoreFocus.focus === 'function') restoreFocus.focus();
+  jrsEnrollReturnFocus = null;
 }
+// Modal focus containment is active only while optional enrollment is visible.
+document.addEventListener('keydown', function(e){
+  var o = document.getElementById('enroll-overlay');
+  if (!o || o.style.display === 'none') return;
+  if (e.key === 'Escape') { e.preventDefault(); dismissEnroll(); return; }
+  if (e.key !== 'Tab') return;
+  var nodes = Array.prototype.filter.call(
+    o.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'),
+    function(el){ return el.getClientRects().length > 0; }
+  );
+  if (!nodes.length) { e.preventDefault(); o.focus(); return; }
+  var first = nodes[0], last = nodes[nodes.length-1], active = document.activeElement;
+  if (e.shiftKey && (active === first || !o.contains(active))) {
+    e.preventDefault(); last.focus();
+  } else if (!e.shiftKey && (active === last || !o.contains(active))) {
+    e.preventDefault(); first.focus();
+  }
+});
 
 // The terms link sits inside the consent label, so a bare anchor does two wrong
 // things: the label swallows the tap and toggles the box, and target="_blank" is
@@ -3021,6 +3198,7 @@ function dismissEnroll(){
     // The panel opens below the tick box, which on a phone is usually below the
     // fold. Without this the tap produces no visible change and reads as dead.
     tl.textContent = open ? 'hide the details' : 'registration terms';
+    tl.setAttribute('aria-expanded', String(open));
     if (open && p.scrollIntoView) p.scrollIntoView({ behavior:'smooth', block:'nearest' });
   });
 })();
@@ -3036,8 +3214,8 @@ function enrollSubmit(){
   // optionally, on the release panel below, after the training is unlocked.
   var regEl0 = document.getElementById('en-registry');
   var c1 = !!(regEl0 && regEl0.checked);
-  var regEl = document.getElementById('en-registry');
-  var c2 = !!(regEl && regEl.checked);
+  var transferEl = document.getElementById('en-transfer');
+  var c2 = !!(transferEl && transferEl.checked);
   var c3 = false;
   if (!name){ msg.textContent = 'Please enter your name.'; return; }
   if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0){ msg.textContent = 'Please enter a valid email.'; return; }
@@ -3051,23 +3229,26 @@ function enrollSubmit(){
   var btn = document.getElementById('en-go'); btn.disabled = true; msg.style.color = 'var(--muted-soft)'; msg.textContent = 'Submitting...';
   fetch('/api/enroll', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ name:name, organization:org, title:title, email:email, audience:aud, builds_software:builds, source:enrollSource, consent_contact:c1, consent_transfer:c2, consent_named:c3 }) })
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
-    .then(function(){
+    .then(function(result){
+      if (!result || result.ok !== true) throw new Error('Enrollment not confirmed');
       try{ localStorage.setItem('jrs-training-enrolled','1'); localStorage.setItem('jrs-training-email', email); }catch(e){}
+      recordCompletion(); // when named enrollment follows six already-completed modules
       window._jrsPreview = false;
       var pb = document.getElementById('preview-banner'); if (pb) pb.style.display = 'none';
       // Release panel: the training is unlocked either way, and the diagnostic
       // is offered here because this is the moment the registration is fresh.
       var ov = document.getElementById('enroll-overlay');
       var inner = ov ? ov.firstElementChild : null;
-      if (!inner) { if (ov) ov.style.display = 'none'; return; }
-      var q = '?src=training&org=' + encodeURIComponent(org) + '&name=' + encodeURIComponent(name)
-            + '&title=' + encodeURIComponent(title) + '&email=' + encodeURIComponent(email);
+      if (!inner) { dismissEnroll(); return; }
+      // Never include the enrollee's name, email, title or organization in links.
       inner.innerHTML =
         '<div style="font-family:\'JetBrains Mono\',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:10px">Registered</div>'
-      + '<h2 style="font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">You are in</h2>'
-      + '<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">Your certificate will be issued in that name. Finish all six modules and it records completion of the JRS reviewer training. <b style="color:var(--text)">It is a certificate of completion, not professional certification, accreditation, licensure, or a regulatory credential.</b></p>'
-      + '<a href="org-pilot.html' + q + '" style="text-decoration:none"><button type="button" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:13px;cursor:pointer;margin-bottom:10px">Run the diagnostic on my records</button></a>'
-      + '<button type="button" onclick="document.getElementById(\'enroll-overlay\').style.display=\'none\'" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Start the training</button>';
+      + '<h2 id="en-dialog-title" style="font-family:\'Bodoni Moda\',serif;font-weight:400;font-size:23px;color:var(--text);margin:0 0 8px">Registration received</h2>'
+      + '<p id="en-dialog-description" style="font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 14px">Enrollment has been recorded in the name you supplied. After all six modules, you may generate a personal completion image. <b style="color:var(--text)">It records self-attested participation, not assessed competence, independent certification, accreditation, licensure, or a professional credential.</b></p>'
+      + '<a href="resources.html" class="jrs-enroll-resources-link">Explore free review resources</a>'
+      + '<button type="button" onclick="dismissEnroll()" style="width:100%;font-family:\'JetBrains Mono\',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:13px;cursor:pointer">Return to training</button>';
+      var successTitle = inner.querySelector('h2');
+      if (successTitle) { successTitle.setAttribute('tabindex','-1'); successTitle.focus(); }
     })
     .catch(function(){ msg.style.color = 'var(--review-text)'; msg.textContent = 'Could not register just now. Please try again, or email info@jrsstandard.com.'; btn.disabled = false; });
 }
@@ -3288,5 +3469,42 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 </script>
 <!-- /JRS PANEL BINDER v2 -->
 <script defer src="/assets/jrs-keyboard-controls.js"></script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
+
+<script>
+(function(){
+  'use strict';
+  var form=document.getElementById('jrs-practice-form');
+  var button=document.getElementById('jrs-practice-score');
+  var result=document.getElementById('jrs-practice-result');
+  if(!form||!button||!result)return;
+  button.addEventListener('click',function(){
+    var items=[...form.querySelectorAll('fieldset[data-correct]')];
+    var missing=items.find(function(field){return !field.querySelector('input[type="radio"]:checked');});
+    if(missing){
+      result.textContent='Answer all six practice questions before reviewing your responses.';
+      var first=missing.querySelector('input[type="radio"]');
+      if(first)first.focus();
+      return;
+    }
+    var correct=0;
+    var explanations=document.createElement('ol');
+    items.forEach(function(field,i){
+      var choice=field.querySelector('input[type="radio"]:checked');
+      var passed=Number(choice.value)===Number(field.getAttribute('data-correct'));
+      if(passed)correct++;
+      var li=document.createElement('li');
+      li.textContent='Question '+(i+1)+': '+(passed?'Correct. ':'Review needed. ')
+        +field.getAttribute('data-reason');
+      explanations.appendChild(li);
+    });
+    var header=document.createElement('p');
+    header.textContent='Practice result: '+correct+' of '+items.length
+      +' responses aligned with the stated review conditions. This is formative feedback, not a professional credential.';
+    result.replaceChildren(header,explanations);
+  });
+})();
+</script>
+<script src="/assets/jrs-engagement.js" defer></script>
 </body>
 </html>

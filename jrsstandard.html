@@ -1,6 +1,3 @@
-Warning: truncated output (original token count: 127217)
-Total output lines: 4316
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -664,28 +661,42 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 </style>
 <link rel="stylesheet" href="public-experience.css">
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
+<link rel="stylesheet" href="/assets/jrs-practitioner-journey.css">
+<link rel="stylesheet" href="/assets/jrs-a-pathways.css">
 </head>
-<body>
+<body class="jrs-institutional jrs-longform jrs-standard-page">
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="site-header" role="banner">
  <div class="site-header-inner">
  <a href="index.html" class="wordmark" aria-label="JRS home page">JRS<span style="font-size:11px;vertical-align:super;position:relative;top:-3px;letter-spacing:0;color:var(--accent);">&#8482;</span></a>
+ <span class="jrs-header-motto">Check the record. <strong>No new software required.</strong></span>
  <div class="header-meta">Documentation Review Methodology<br>v1.0 &middot; May 2026</div>
  </div>
 </header>
 
-<nav class="primary-nav" aria-label="Site navigation">
+<!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
+<nav class="jrs-sitenav" aria-label="Site">
+ <a href="investigator-guides.html">Guides</a>
+ <a href="training.html">Training</a>
+ <a href="resources.html">References</a>
+ <a href="jrsstandard.html">The Standard</a>
+ <a href="research.html">Research</a>
+ <a href="about.html">About</a>
+ <a href="contact.html">Contact</a>
+</nav>
+<!-- /JRS SITE NAV v1 -->
+
+<nav class="primary-nav" aria-label="Standard sections">
  <div class="primary-nav-mobile-bar">
-  <span class="nav-current-section">Standard</span>
-  <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle navigation" aria-expanded="false">
-   <span class="nav-hamburger-icon">&#9776;</span> Menu
+  <span class="nav-current-section">Within this document</span>
+  <button type="button" class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileNav()" aria-label="Toggle Standard sections" aria-controls="primary-nav-items" aria-expanded="false">
+   <span class="nav-hamburger-icon">&#9776;</span> Sections
   </button>
  </div>
  <div class="primary-nav-inner" id="primary-nav-items">
- <a href="index.html" class="nav-item" style="text-decoration:none;">Home</a>
- <a href="investigator-guides.html" class="nav-item" style="text-decoration:none;">Investigator Guides &#8599;</a>
- <button class="nav-item active" onclick="showSection('home')">Overview</button>
+ <button class="nav-item active" aria-current="location" onclick="showSection('home')">Overview</button>
  <button class="nav-item" onclick="showSection('doccond')">Documentation Conditions</button>
  <button class="nav-item" onclick="showSection('tools')">Field References</button>
  <button class="nav-item" onclick="showSection('scenarios')">Review Examples</button>
@@ -704,72 +715,61 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 <div class="util-bar">
  <div class="util-bar-inner">
   <span class="util-label">Review Standard</span>
-  <a href="/api/dl?e=standard&amp;src=jrsstandard" class="util-link accent-link">View Standard</a>
+  <a href="/api/dl?e=standard&amp;src=jrsstandard" class="util-link accent-link">PDF Standard v2.0</a>
   <a href="/api/dl?e=card&amp;src=jrsstandard" class="util-link">Rapid Review Card</a>
-  <a href="/api/dl?f=JRS_Investigator_Field_Guide.pdf&amp;src=jrsstandard" class="util-link">Investigator Guide (Combined Overview)</a>
-  <a href="pilot.html" class="util-link accent-link">Pilot Program</a>
+  <a href="investigator-guides.html" class="util-link">Current v1.1 Investigator Guides</a>
+  <a href="research.html" class="util-link accent-link">Research status</a>
   <a href="check.html" class="util-link">Record Defensibility Check</a>
   <a href="#" onclick="showSection('kit');return false;" class="util-link" style="color:var(--accent-dim);">Operational References</a>
  </div>
 </div>
 
+
+<main id="main-content" tabindex="-1" aria-label="JRS online methodology">
+
 <div id="section-home" class="page-section active">
 
-<div class="onboarding-strip">
- <div class="onboarding-inner">
- <div class="ob-step"><div class="ob-num">A</div><div class="ob-label">What JRS Is</div><div class="ob-text">A pre-finalization documentation review structure for organizational records.</div></div>
- <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are read later by people who were not there. Most hold up or fail at that point, not at drafting.</div></div>
- <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five questions applied before the record enters the system. Most organizations start with one record type. The gaps appear quickly.</div></div>
- <div class="ob-step"><div class="ob-num">D</div><div class="ob-label">Where It Fits</div><div class="ob-text">HR, compliance, investigations, administrative review. Works inside existing workflows, including ones that have been running for years without a formal review step.</div></div>
- <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Deployment Kit</div><div class="ob-text">Reviewer onboarding, training materials, and operational forms. Available on the Operational References page.</div></div>
- </div>
-</div>
+<div class="container">
 
-<div class="visitor-orient">
- <div class="visitor-orient-grid">
-  <div class="visitor-orient-cell" onclick="showSection('home')">
-   <div class="visitor-orient-label">Framework Overview</div>
-   <div class="visitor-orient-title">Standard</div>
-   <div class="visitor-orient-text">What JRS is, the five conditions, and how review works.</div>
-  </div>
-  <div class="visitor-orient-cell" onclick="showSection('tools')">
-   <div class="visitor-orient-label">Pre-Submission Tools</div>
-   <div class="visitor-orient-title">Field References</div>
-   <div class="visitor-orient-text">Worksheets and rapid review tools.</div>
-  </div>
-  <div class="visitor-orient-cell" onclick="showSection('guidance')">
-   <div class="visitor-orient-label">Implementation Guidance</div>
-   <div class="visitor-orient-title">Implementation</div>
-   <div class="visitor-orient-text">Deployment models and rollout guidance.</div>
-  </div>
-  <div class="visitor-orient-cell" onclick="showSection('kit')">
-   <div class="visitor-orient-label">Operational Resources</div>
-   <div class="visitor-orient-title">References</div>
-   <div class="visitor-orient-text">Review Reference, Reviewer Reference, and Implementation Kit.</div>
-  </div>
- </div>
-</div>
-
-<div class="container" id="main-content" role="main">
-
-<div class="page-eyebrow">Justification Review Standard</div>
+<div class="page-eyebrow">Online methodology · Version 1.0 (May 2026)</div>
 <h1 class="page-title">JRS Decision Defensibility Methodology</h1>
+<p class="jrs-edition-note"><strong>Separate publication:</strong> JRS Standard PDF Version 2.0 (2026). Edition equivalence has not been established.</p>
+<div class="jrs-standard-entry-actions" aria-label="Start reading the Standard">
+ <button type="button" onclick="showSection('doccond')">Read the five review conditions</button>
+ <a href="index.html#worked-record">View a fictional worked-record example</a>
+ <a href="/api/dl?e=standard&amp;src=jrsstandard">Download Standard PDF v2.0</a>
+</div>
+<div class="core-principle">
+ <div class="core-principle-label">Core principle</div>
+ <div class="core-principle-text">A later reviewer with no prior knowledge of the matter should be able to identify what happened, what information existed at the time, and what reasoning produced the conclusion, from the record alone, without access to the original author or institutional context that no longer exists in the file. This is the review condition applied to organizational records in the JRS methodology.</div>
+</div>
+<section class="jrs-publication-notes" aria-label="Publication status and version controls">
+<details>
+ <summary>Publication controls: web v1.0, Standard PDF v2.0 and retired implementation kits</summary>
+ <div class="jrs-publication-note-detail">
+<div role="note" class="jrs-version-disclosure" style="max-width:1100px;margin:20px auto;padding:17px 24px;border-left:4px solid #a88043;background:#edf3f6;color:#254257;font:15px/1.7 Inter,system-ui,sans-serif"><strong>Publication versions:</strong> This online methodology identifies v1.0 (May 2026). Its linked <a href="/api/dl?e=standard&amp;src=web-version-note">Standard PDF</a> is labeled Version 2.0 (2026). The Manifest schema 1.0.1 accepts Standard v1.0 identifiers only. The two editions must not be treated as identical or as automatically compatible. <a href="manifest.html">See Manifest limits.</a> For a document format suited to your access needs, <a href="contact.html?category=accessibility">request an accessible document format</a>.</div>
+<div role="note" class="jrs-version-disclosure" style="max-width:1100px;margin:12px auto 20px;padding:16px 24px;border-left:4px solid #b9a183;background:#edf3f6;color:#254257;font:15px/1.7 Inter,system-ui,sans-serif"><strong>Archived implementation-kit inventory:</strong> KIT-A1, KIT-A2, KIT-A3, KIT-B1, KIT-C1, KIT-D1, KIT-E1 and KIT-E1A are preserved as historical reference identifiers. Their standalone PDFs are retired from public distribution. For currently available review aids, use the <a href="resources.html">resource library</a>, <a href="investigator-guides.html">three field-guide editions</a> and <a href="training.html">open training materials</a>. The historical inventory is not a current public download catalog.</div>
+
+ </div>
+</details>
+</section>
+
+<p class="page-subtitle">A pre-finalization review of whether a consequential record explains why a decision was made.</p>
+<details class="jrs-standard-context">
+ <summary>Method, application and limits</summary>
+ <div class="jrs-standard-context-body">
 <p class="page-subtitle">When a consequential decision is questioned long after it is made, the record becomes the only witness. This is a pre-finalization standard that evaluates whether a record can explain why a decision was made, before the record is finalized.</p>
 
-<!-- IP HIERARCHY. Added 2026-09-05. This page carried the standard in full
-and never named the Review Engine, so a reader here could not tell the
-methodology from the technology. Same two sentences as index.html, stated
-once, near the top, so the distinction is made before the standard begins. -->
+<!-- Editorial note: preserve the methodology's distinct human-review purpose and publication-edition boundaries. -->
 <div style="margin:0 0 28px;border-left:2px solid var(--accent-dim);padding:2px 0 2px 16px;max-width:660px;">
  <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-dim);margin-bottom:7px;">A human-applied review standard</div>
  <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0 0 7px;"><b style="color:var(--text);">JRS, the Justification Review Standard, is the methodology.</b> It is a set of review conditions applied to a record by a person, on paper or inside whatever workflow an organisation already runs. It is not software and it needs none.</p>
  <p style="font-size:13px;color:var(--muted);line-height:1.7;margin:0;"><b style="color:var(--text);">Use JRS in the review process you already have.</b> The five conditions guide a documented human review and do not replace professional evidence assessment, investigative judgment, or applicable organizational controls. No case-record submission or automated assessment is provided through this website.</p>
 </div>
 
-<div class="core-principle">
- <div class="core-principle-label">Core principle</div>
- <div class="core-principle-text">A later reviewer with no prior knowledge of the matter should be able to identify what happened, what information existed at the time, and what reasoning produced the conclusion, from the record alone, without access to the original author or institutional context that no longer exists in the file. This is the review condition applied to organizational records in the JRS methodology.</div>
-</div>
+
+ </div>
+</details>
 
 <div class="core-principle">
  <div class="core-principle-label">Substrate neutrality</div>
@@ -799,6 +799,43 @@ once, near the top, so the distinction is made before the standard begins. -->
  <p class="body-text">Review is applied at the drafting stage, before records enter formal systems. The review checks whether conclusions are understandable, supportable, and reconstructable from the file alone.</p>
  <p class="body-text">Most organizations start with one record type. Termination records are a common starting point, as documentation gaps tend to become visible there first. The review tends to expand from there without being announced.</p>
 <p class="body-text">No software required. Works inside existing workflows. Can be introduced incrementally without structural change.</p>
+<details class="jrs-standard-orientation" style="margin:20px 0"><summary style="cursor:pointer;min-height:44px;padding:10px 12px;background:#eaf0f4;color:#183d58;font-weight:700">Optional reading guide and section shortcuts</summary><div class="onboarding-strip">
+ <div class="onboarding-inner">
+ <div class="ob-step"><div class="ob-num">A</div><div class="ob-label">What JRS Is</div><div class="ob-text">A pre-finalization documentation review structure for organizational records.</div></div>
+ <div class="ob-step"><div class="ob-num">B</div><div class="ob-label">The Problem</div><div class="ob-text">Records are read later by people who were not there. Most hold up or fail at that point, not at drafting.</div></div>
+ <div class="ob-step"><div class="ob-num">C</div><div class="ob-label">How Review Works</div><div class="ob-text">Five questions applied before the record enters the system. Most organizations start with one record type. The gaps appear quickly.</div></div>
+ <div class="ob-step"><div class="ob-num">D</div><div class="ob-label">Where It Fits</div><div class="ob-text">HR, compliance, investigations, administrative review. Works inside existing workflows, including ones that have been running for years without a formal review step.</div></div>
+ <div class="ob-step"><div class="ob-num">E</div><div class="ob-label">Current Resources</div><div class="ob-text">Free field guides, reviewer training, and rapid review aids are available. Historical standalone kit PDFs are retired.</div></div>
+ </div>
+</div>
+
+<div class="visitor-orient">
+ <div class="visitor-orient-grid">
+  <div class="visitor-orient-cell" onclick="showSection('home')">
+   <div class="visitor-orient-label">Framework Overview</div>
+   <div class="visitor-orient-title">Standard</div>
+   <div class="visitor-orient-text">What JRS is, the five conditions, and how review works.</div>
+  </div>
+  <div class="visitor-orient-cell" onclick="showSection('tools')">
+   <div class="visitor-orient-label">Pre-Submission Tools</div>
+   <div class="visitor-orient-title">Field References</div>
+   <div class="visitor-orient-text">Worksheets and rapid review tools.</div>
+  </div>
+  <div class="visitor-orient-cell" onclick="showSection('guidance')">
+   <div class="visitor-orient-label">Implementation Guidance</div>
+   <div class="visitor-orient-title">Implementation</div>
+   <div class="visitor-orient-text">Deployment models and rollout guidance.</div>
+  </div>
+  <div class="visitor-orient-cell" onclick="showSection('kit')">
+   <div class="visitor-orient-label">Operational Resources</div>
+   <div class="visitor-orient-title">References</div>
+   <div class="visitor-orient-text">Rapid Review Card, current investigator guides and free reviewer training. Older implementation kits are archived.</div>
+  </div>
+ </div>
+</div>
+
+</details>
+
 <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;">
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">No dedicated platform required</span>
  <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:5px 10px;">Existing workflow compatible</span>
@@ -995,7 +1032,7 @@ once, near the top, so the distinction is made before the standard begins. -->
   </div>
   <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">F1</div>
-      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">Rapid Review Card</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">One-page reviewer quick reference. Five questions, submission readiness key, and secondary review triggers. Print-ready PDF.</div><div style="margin-top:6px;"><a href="/api/dl?e=card&amp;src=jrsstandard" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Download PDF</a></div></div>
+      <div><div style="font-size:14px;font-weight:600;margin-bottom:3px;color:var(--text);">Rapid Review Card</div><div style="font-size:13px;color:var(--muted);line-height:1.5;">Two-page reviewer quick reference. Five questions, submission readiness key, and secondary review triggers. Print-ready PDF.</div><div style="margin-top:6px;"><a href="/api/dl?e=card&amp;src=jrsstandard" style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Download PDF</a></div></div>
   </div>
   <div style="display:grid;grid-template-columns:52px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule);">
    <div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-dim);padding-top:3px;">CPL</div>
@@ -1393,56 +1430,56 @@ once, near the top, so the distinction is made before the standard begins. -->
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Secondary Review Escalation Form</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A2</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Reviewer Signoff Template</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A3</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Reviewer Onboarding Guide</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-B1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">AI Verification Checklist</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-C1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Redlined Examples</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-D1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Implementation Playbook</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-E1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Secondary Review Trigger Reference</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-E1A</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;padding:7px 12px;background:rgba(255,255,255,.01);">
       <div style="font-size:12px;color:var(--muted-soft);font-style:italic;">HR Documentation Review Guide</div>
@@ -1512,7 +1549,7 @@ once, near the top, so the distinction is made before the standard begins. -->
  <div class="btn-row">
  <a href="/api/dl?e=standard&amp;src=jrsstandard" class="btn btn-primary">View Standard</a>
  <button class="btn btn-ghost" onclick="showSection('kit')">Operational References</button>
- <a href="pilot.html" class="btn btn-ghost">Pilot Program &rarr;</a>
+ <a href="research.html" class="btn btn-ghost">Research status &rarr;</a>
  </div>
 </div>
 
@@ -2051,7 +2088,7 @@ once, near the top, so the distinction is made before the standard begins. -->
  <div class="kit-purchase-label">JRS Deployment Kit</div>
  <div class="kit-purchase-title">Operational Implementation Package</div>
  <div class="kit-purchase-sub">Downloadable PDF package. Operational forms, reviewer training, and workflow guidance for applying JRS within existing documentation environments.</div><div style="font-size:12px;color:var(--muted-soft);line-height:1.5;margin-bottom:16px;padding:8px 10px;border-left:1px solid rgba(190,148,71,.25);">Operational implementation layer for the JRS Documentation Review Reference. Includes onboarding, training, and deployment materials.</div>
- <a href="pilot.html" class="kit-cta">Request Pilot Participation →</a>
+ <a href="research.html" class="kit-cta">Review research status →</a>
  <span class="kit-cta-note">Contact: info@jrsstandard.com</span>
  <div class="kit-includes">
  <div class="kit-includes-label">Included in this package</div>
@@ -2197,7 +2234,7 @@ once, near the top, so the distinction is made before the standard begins. -->
 <div class="kit-section" style="border-bottom:none;">
  <div class="kit-section-inner">
  <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;">
- <a href="pilot.html" class="btn btn-accent" style="font-size:13px;padding:13px 28px;">Request Pilot Participation →</a>
+ <a href="research.html" class="btn btn-accent" style="font-size:13px;padding:13px 28px;">Review research status →</a>
  <a href="/api/dl?e=standard&amp;src=jrsstandard" class="btn btn-ghost">View Standard</a>
  <button class="btn btn-ghost" onclick="showSection('tools')">Review Tools &rarr;</button>
  </div>
@@ -2255,7 +2292,216 @@ once, near the top, so the distinction is made before the standard begins. -->
  <div class="ws-section"><div class="ws-section-label">Language Check</div>
  <div class="ws-item"><input type="checkbox" class="ws-check"><span>Are evaluative adjectives (difficult, unprofessional, combative, poor) accompanied by behavioral anchors?</span></div>
  <div class="ws-item"><input type="checkbox" class="ws-check"><span>Does pattern language ("repeatedly," "consistently") have specific dated instances?</span></div>
- <div class="ws-item"><input type="checkbox" class="ws-check…7217 tokens truncated… </div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Do escalation conclusions reference prior documented warnings or counseling?</span></div>
+ </div>
+ <div class="ws-section"><div class="ws-section-label">AI-Assisted Content</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>If AI-assisted drafting was used, have conclusions been verified against identifiable source material?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Has a human reviewer confirmed no unverified characterizations were introduced?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Does the record reflect contested or incomplete source information, rather than smoothing it over?</span></div>
+ <div class="ws-note">Referenced attachment unavailable? Note it. Timeline unclear between two dates? Flag it. Support for conclusion not visible in attached records? Return to drafter.</div>
+ </div>
+ <div class="readiness-grid">
+ <div class="readiness-row"><div class="readiness-badge stop">STOP</div><div class="readiness-desc"><strong>Return to Drafter</strong>Evaluative language without anchors. Timeline or policy basis absent. Do not submit.</div></div>
+ <div class="readiness-row"><div class="readiness-badge review">REVIEW</div><div class="readiness-desc"><strong>Clarification Required</strong>Conclusion may be accurate but basis is not visible in the record. Clarify before submission.</div></div>
+ <div class="readiness-row"><div class="readiness-badge ready">READY</div><div class="readiness-desc"><strong>Self-Contained</strong>Evidence identifiable. Reasoning traceable. Basis holds without explanation from the author.</div></div>
+ </div>
+ </div>
+</div>
+
+<div class="worksheet">
+ <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">02 / Timeline Anchor Review Checklist</span><span class="worksheet-toggle">Expand &#8595;</span></div>
+ <div class="worksheet-body">
+ <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">Timeline deficiency is the documentation failure this checklist is built to catch. Apply before submitting any record involving pattern conduct, progressive discipline, or multi-event conclusions.</div></div>
+ <div class="ws-section"><div class="ws-section-label">Timeline Checks</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Each described incident has a specific date or date range</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Pattern conduct claims are supported by at least two or three dated instances</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Dates in the record are consistent with formal record system dates</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Frequency claims ("repeatedly," "consistently") are supported by specific dated examples</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Prior notice or warnings are dated and referenced, not just mentioned</span></div>
+ <div class="ws-note">Most timeline problems are discovered after escalation, not before. The date is often simply missing from a record that otherwise looks complete. Timeline unclear between March 14 and April 2? Flag it before submission.</div>
+ </div>
+ </div>
+</div>
+
+<div class="worksheet">
+ <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">03 / AI-Assisted Draft Verification Worksheet</span><span class="worksheet-toggle">Expand &#8595;</span></div>
+ <div class="worksheet-body">
+ <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">Apply before any AI-assisted documentation enters an official system. Confirms source traceability, absence of unverified characterizations, and human reviewer completion.</div></div>
+ <div class="ws-section"><div class="ws-section-label">Source Verification</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Source records reviewed before generating the summary are identified in or alongside the record</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Each substantive conclusion traces to an identifiable source record</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>No characterizations have been introduced that were not present in the source material</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Contested or incomplete information in source notes is reflected, not resolved or omitted</span></div>
+ </div>
+ <div class="ws-section"><div class="ws-section-label">Human Reviewer Confirmation</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Human reviewer has reviewed the AI-assisted draft against source records</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Human reviewer can attest to accuracy and completeness</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Human reviewer is identified before the record enters the official system</span></div>
+ <div class="ws-note">Example attestation: "I reviewed this AI-assisted draft against the source material available to me and confirmed that substantive conclusions remain traceable to documented information in the file." Do not attest if source records were not actually reviewed.</div>
+ </div>
+ </div>
+</div>
+
+<div class="worksheet">
+ <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">04 / Escalation Documentation Review Aid</span><span class="worksheet-toggle">Expand &#8595;</span></div>
+ <div class="worksheet-body">
+ <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">Apply before formal disciplinary action, performance improvement plans, or termination documentation enters the official system.</div></div>
+ <div class="ws-section"><div class="ws-section-label">Prior Documentation Check</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Prior warnings or counseling records are referenced and on file</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Dates and outcomes of prior documented steps are identifiable</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Employee notification of expectations or policy violations is documented</span></div>
+ </div>
+ <div class="ws-section"><div class="ws-section-label">Secondary Review Requirement</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Termination: HR secondary review plus legal/compliance consultation completed</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Formal discipline: traceability review confirms specific conduct dates and policy references</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Accommodation disputes: legal or compliance review of interactive process documentation</span></div>
+ <div class="ws-note">Escalation language exceeds available support? Reviewer unable to verify referenced discussion? Pattern claim unsupported? Return to drafter do not approve and note.</div>
+ </div>
+ </div>
+</div>
+
+<div class="worksheet">
+ <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">05 / Manager Self-Review Prompt Sheet</span><span class="worksheet-toggle">Expand &#8595;</span></div>
+ <div class="worksheet-body">
+ <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">For manager self-application before submitting documentation into HR or compliance systems.</div></div>
+ <div class="ws-section"><div class="ws-section-label">Before Submitting, Ask</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>If I were not available, could someone else read this and understand what happened and why?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Have I included specific dates for every behavioral claim?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Have I referenced the relevant policy or performance standard?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Are my descriptive words ("review-oriented," "uncooperative") explained by specific observable events?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Did I document what was communicated to the employee and when?</span></div>
+ </div>
+ <div class="ws-section"><div class="ws-section-label">If Using AI-Assisted Drafting</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Have I reviewed the AI output against my actual notes and observations?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Has the AI added characterizations that weren't in my original notes?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Can I confirm each conclusion reflects what I actually documented?</span></div>
+ </div>
+ </div>
+</div>
+
+<div class="worksheet">
+ <div class="worksheet-header" onclick="toggleWS(this)"><span class="worksheet-title">06 / Investigation Reconstruction Worksheet</span><span class="worksheet-toggle">Expand &#8595;</span></div>
+ <div class="worksheet-body">
+ <div class="ws-section"><div class="ws-section-label">Purpose</div><div class="muted-text">Apply to investigation summaries, witness accounts, and incident records. Investigation conclusions must trace to identified source material and acknowledge gaps or conflicting accounts.</div></div>
+ <div class="ws-section"><div class="ws-section-label">Source Material Identification</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Source materials reviewed during investigation are identified in the record</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Witness accounts, relevant dates, and referenced evidence are identified</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Conflicting accounts or gaps in evidence are acknowledged rather than omitted</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Investigation conclusions trace to specific identified evidence</span></div>
+ </div>
+ <div class="ws-section"><div class="ws-section-label">Reconstruction Check</div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Does the file explain itself, or does understanding it require outside knowledge?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Are limits of what the evidence shows acknowledged in the conclusion?</span></div>
+ <div class="ws-item"><input type="checkbox" class="ws-check"><span>Can the investigative reasoning be traced without access to the original investigator?</span></div>
+ <div class="ws-note">Reviewer unable to verify referenced discussion? Source X unavailable? Note it and document the gap. Secondary review recommended where source material is incomplete.</div>
+ </div>
+ </div>
+</div>
+
+<div style="border:1px solid var(--rule);margin-top:24px;">
+ <div style="padding:11px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Sample / Known Limitation Notice</div>
+ <div style="padding:16px;">
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+ <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Description of Gap</div><div style="font-size:13px;color:var(--muted);font-style:italic;">Source X unavailable as of review date. Referenced counseling note not located in file.</div></div>
+ <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Impact on Conclusions</div><div style="font-size:13px;color:var(--muted);font-style:italic;">Pattern claim partially supported. Alternative support referenced in Tab Y. Proceed with secondary review.</div></div>
+ <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Mitigation Steps</div><div style="font-size:13px;color:var(--muted);">Requested missing record from drafter. HRIS search completed. Gap documented.</div></div>
+ <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px;">Reviewer</div><div style="font-size:13px;color:var(--muted);">Initials: AJL &nbsp;&nbsp; Date: 5/14/26</div></div>
+ </div>
+ <div style="margin-top:10px;font-size:11.5px;color:var(--muted-soft);font-style:italic;">Illustrative example. Format may be adapted to organizational workflow.</div>
+ </div>
+</div>
+<div class="callout" style="margin-top:14px;">
+ <div class="callout-label">Operational References</div>
+ <p>Print-ready versions of all worksheets, operational forms, escalation templates, and reviewer training resources. <button onclick="showSection('kit')" style="background:none;border:none;color:var(--accent);font-size:inherit;cursor:pointer;font-family:inherit;text-decoration:underline;padding:0;">View Operational References</button></p>
+</div>
+
+<hr class="section-rule">
+
+<div style="margin-bottom:44px;">
+  <h2 class="section-head">Administrative Intake Conditions</h2>
+  <p class="body-text" style="max-width:620px;">Conditions that can be present at intake review that affect the completeness and reconstructability of records entering the review structure. These conditions are routine rather than exceptional. They reflect the practical environment in which most intake review occurs.</p>
+  <div class="reviewer-note" style="margin-bottom:10px;"><div class="reviewer-note-label">Intake note</div>Escalation chronology partially reconstructed from available records. Intake characterization retained from prior summary. Underlying intake notes not preserved at secondary review stage.</div>
+  <div class="cond-grid">
+    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">A</div><div><div class="cond-title">Unresolved Witness Chronology</div><div class="cond-badge">Chronology</div><div class="cond-text">Witness accounts collected at different points during an intake process reflect different chronologies that have not been reconciled. The intake summary presents one sequence. The underlying accounts reflect another. The reviewer cannot determine from the intake record which chronology was applied.</div></div></div>
+    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">B</div><div><div class="cond-title">Threshold Verification Uncertainty</div><div class="cond-badge">Jurisdiction</div><div class="cond-text">Whether the matter met the threshold for intake was not documented at the time intake occurred. The record reflects that intake proceeded. It does not reflect what standard was applied or whether jurisdictional requirements were confirmed before the intake decision was made.</div></div></div>
+    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">C</div><div><div class="cond-title">Intake Characterization Drift</div><div class="cond-badge">Language</div><div class="cond-text">The characterization applied at intake does not match the characterization reflected in later stages of the same record. The record does not explain the change. A later reviewer reads both characterizations without context for how or when the shift occurred.</div></div></div>
+    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">D</div><div><div class="cond-title">Escalation Prior to Complete Review</div><div class="cond-badge">Routing</div><div class="cond-text">An escalation recommendation was made before the intake record was complete. Supporting materials referenced in the escalation recommendation were not yet verified. The escalation record does not reflect that the underlying intake review was still open at the time the escalation was documented.</div></div></div>
+    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">E</div><div><div class="cond-title">Conflicting Account Compression</div><div class="cond-badge">Reconstruction</div><div class="cond-text">Conflicting accounts from multiple parties were present at intake but were combined into a single intake narrative before being filed. The conflicting information is not reflected in the intake record. A later reviewer reads a unified account and does not have visibility into what was contested at the time the matter was received.</div></div></div>
+    <div class="cond-row"><div class="cond-num" style="font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);padding-top:4px;">F</div><div><div class="cond-title">Summary Language Exceeding Intake Support</div><div class="cond-badge">Language</div><div class="cond-text">The intake summary uses language that reflects a stronger conclusion than the underlying intake materials support. The summary was written after the intake review was complete. It reflects the reviewer's interpretation rather than the source documentation. A later reviewer reading the summary as a primary source will draw conclusions from characterization rather than evidence.</div></div></div>
+  </div>
+  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Implementation variability</div>Review depth at intake varies by staffing structure and matter volume. Escalation thresholds differ across organizational contexts. These conditions are documented here as observed intake phenomena, not corrective requirements. Organizations may apply selective review based on matter type and risk level.</div>
+</div>
+
+<div style="margin-bottom:44px;">
+  <h2 class="section-head">Investigator Review Limitations</h2>
+  <p class="body-text" style="max-width:620px;">Conditions that affect the completeness of investigative records at the point of secondary or later review. These limitations are observed in investigation review environments. They do not indicate procedural failure. They reflect conditions under which investigative records can be assembled and later examined.</p>
+  <div class="reviewer-note" style="margin-bottom:10px;"><div class="reviewer-note-label">Secondary review note</div>Underlying intake notes unavailable during secondary review. Chronology reconstructed from separate interview summaries. Witness terminology inconsistently summarized across accounts. Escalation rationale partially inferred from later notes. Supporting attachments unavailable at this stage of review.</div>
+  <div style="border-top:1px solid var(--rule);margin-top:12px;">
+    <div style="padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:14px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">01</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Underlying intake notes unavailable</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">The investigative record references intake notes that were not transferred to the investigation file. The investigator may have worked from those notes. They are not present at secondary review.</div></div>
+    </div>
+    <div style="padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:14px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">02</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Chronology reconstructed from separate interviews</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">The sequence of events was assembled by the investigator from separate interview accounts conducted at different times. The assembled chronology reflects investigator judgment about how accounts fit together. That judgment is not documented in the record.</div></div>
+    </div>
+    <div style="padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:14px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">03</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Witness terminology inconsistently summarized</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">Different witnesses used different terms to describe the same events. The investigation summary applies uniform terminology. A later reviewer reading the summary cannot identify which characterization originated with which witness or whether the summarized term reflects what any witness actually said.</div></div>
+    </div>
+    <div style="padding:14px 0;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:44px 1fr;gap:14px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">04</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Escalation rationale partially inferred from later notes</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">The rationale for the escalation decision is not stated at the point of escalation. It is inferable from notes written after the escalation occurred. A secondary reviewer reconstructing the escalation path works from inference rather than contemporaneous documentation.</div></div>
+    </div>
+    <div style="padding:14px 0;display:grid;grid-template-columns:44px 1fr;gap:14px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);padding-top:2px;">05</div>
+      <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Supporting attachments unavailable during secondary review</div><div style="font-size:13.5px;color:var(--muted);line-height:1.65;">Documents referenced in the investigation summary were available during the investigation but are not present in the file at the point of secondary review. The gap may be due to system migration, retention policy, or incomplete file assembly. The secondary reviewer works from the summary as a primary source.</div></div>
+    </div>
+  </div>
+  <div class="reviewer-note" style="margin-top:10px;"><div class="reviewer-note-label">Partial recoverability</div>Some source-path components survive where others do not. Metadata survives but the attachment is gone. The narrative survives without the source notes it was drawn from. The archived export is missing the revision history. Secondary review proceeds on what is available. The limitations should be documented, not resolved by assumption.</div>
+</div>
+
+</div>
+</div>
+
+<div id="section-scenarios" class="page-section">
+<div class="container">
+<div class="page-eyebrow">Review Examples</div>
+<h2 class="page-title h1-look">Review Examples</h2>
+<p class="page-subtitle">Records as they arrive for review. Each scenario shows the original record, the reviewer analysis identifying gaps, and a supported revision.</p>
+<div class="callout"><div class="callout-label">How to Use</div><p>Select the record type. Use the tabs to move between the original record, the review analysis, and the supported revision.</p></div>
+
+<div style="border:1px solid var(--rule);margin-top:20px;margin-bottom:10px;background:var(--surface);">
+  <div style="padding:10px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Gray Zone / Partially Supportable Record</div>
+  <div style="padding:14px 16px;">
+    <div style="font-size:13px;color:var(--muted);line-height:1.7;font-style:italic;margin-bottom:10px;">"Employee missed several deadlines during Q3 and Q4 and received feedback from the manager on multiple occasions. Performance improvement was discussed. Employee acknowledged the concerns."</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+      <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--review-text);margin-bottom:4px;">What exists</div><div style="font-size:12.5px;color:var(--muted);">General timeframe (Q3/Q4). Acknowledgment documented. Manager feedback referenced.</div></div>
+      <div><div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--stop-text);margin-bottom:4px;">What is missing</div><div style="font-size:12.5px;color:var(--muted);">Specific deadline dates. Number of misses. Standard applied. Coaching notes on file.</div></div>
+    </div>
+    <div class="reviewer-note" style="margin-top:0;"><div class="reviewer-note-label">Disposition</div>REVIEW REQUIRED. Basis partially visible. General timeframe present but specific instances not identified. Return for anchoring or document the gap explicitly before submission.</div>
+  </div>
+</div>
+<div style="border:1px solid var(--rule);margin-top:0;margin-bottom:8px;">
+ <div style="padding:10px 15px;border-bottom:1px solid var(--rule);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-soft);">Sample / Secondary Review Routing Sheet</div>
+ <div style="padding:14px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Record Type</div><div style="font-size:13px;color:var(--muted);">Performance Evaluation</div></div>
+  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Risk Level</div><div style="font-size:13px;color:var(--review-text);">Elevated</div></div>
+  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Status</div><div style="font-size:13px;color:var(--stop-text);">Returned to Drafter</div></div>
+  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Gap Identified</div><div style="font-size:13px;color:var(--muted);font-style:italic;">Evaluative language without behavioral anchors. No dates identified.</div></div>
+  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Action Required</div><div style="font-size:13px;color:var(--muted);">Anchor each claim to specific dated conduct before resubmission.</div></div>
+  <div><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:4px;">Reviewer</div><div style="font-size:13px;color:var(--muted);">Initials: AJL &nbsp; Date: 4/18/26</div></div>
+ </div>
+ <div style="padding:8px 16px;border-top:1px solid var(--rule);font-size:11.5px;color:var(--muted-soft);font-style:italic;">Illustrative example. Format may be adapted to organizational workflow.</div>
+</div>
+
+<div class="scenario-block" style="margin-top:28px;">
+ <div class="scenario-header"><div><div class="scenario-label">Scenario 01 / Performance Documentation</div><div class="scenario-title">Annual Performance Review with Unsupported Conclusions</div></div></div>
+ <div class="scenario-tabs">
+ <button class="scenario-tab active" onclick="showScenarioPane(this,'sc1-record')">Original Record</button>
+ <button class="scenario-tab" onclick="showScenarioPane(this,'sc1-analysis')">Review Analysis</button>
+ <button class="scenario-tab" onclick="showScenarioPane(this,'sc1-revision')">Supported Revision</button>
+ </div>
  <div id="sc1-record" class="scenario-pane active">
  <div class="record-text">"Employee demonstrates a consistently poor attitude toward supervisors and colleagues. Performance has been below expectations throughout the review period. Employee does not take initiative and has struggled to complete assignments on time. Communication style is frequently unprofessional."</div>
  </div>
@@ -3332,7 +3578,7 @@ once, near the top, so the distinction is made before the standard begins. -->
 
   <div style="padding:20px 24px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
     <div style="font-size:13px;color:var(--muted);">All six modules included in the Deployment Kit as downloadable PDF references.</div>
-    <a href="pilot.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--black);background:var(--accent);padding:10px 20px;text-decoration:none;white-space:nowrap;">Pilot Program →</a>
+    <a href="research.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--black);background:var(--accent);padding:10px 20px;text-decoration:none;white-space:nowrap;">Research and validation →</a>
   </div>
 </div>
 
@@ -3360,7 +3606,7 @@ once, near the top, so the distinction is made before the standard begins. -->
       <div style="font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);">Access</div>
     </div>
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);padding:12px 14px;align-items:center;">
-      <div><div style="font-size:13px;font-weight:600;color:var(--text);">JRS Review Reference</div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted-soft);margin-top:2px;">v1.0 &middot; May 2026</div></div>
+      <div><div style="font-size:13px;font-weight:600;color:var(--text);">JRS Review Reference</div><div style="font-family:'Inter',sans-serif;font-size:13px;color:var(--muted);margin-top:2px;">PDF Version 2.0 &middot; 2026</div></div>
       <div style="font-size:13px;color:var(--muted);line-height:1.6;padding-right:16px;">Five review conditions, reviewer lens, submission readiness criteria, and failure-mode catalog. Primary reference document for the review methodology.</div>
       <div><a href="/api/dl?e=standard&amp;src=jrsstandard" class="lib-btn primary">View PDF</a></div>
     </div>
@@ -3379,7 +3625,7 @@ once, near the top, so the distinction is made before the standard begins. -->
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);padding:12px 14px;align-items:center;">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);">JRS Reviewer Reference</div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted-soft);margin-top:2px;">Operational</div></div>
       <div style="font-size:13px;color:var(--muted);line-height:1.6;padding-right:16px;">Reconstruction-focused review principles, documentation insufficiency patterns, and source-path visibility reference for practitioners applying the review structure within existing workflows.</div>
-      <div><a href="pilot.html" class="lib-btn">Pilot</a></div>
+      <div><a href="research.html" class="lib-btn">Research status</a></div>
     </div>
     <div style="display:grid;grid-template-columns:140px 1fr 80px;border-bottom:1px solid var(--rule);padding:12px 14px;align-items:center;">
       <div><div style="font-size:13px;font-weight:600;color:var(--text);">Investigator Guide (Combined Overview)</div><div style="font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted-soft);margin-top:2px;">001-INV &middot; Combined edition &middot; Free</div></div>
@@ -3627,14 +3873,14 @@ once, near the top, so the distinction is made before the standard begins. -->
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-A1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;">
       <div style="font-size:12px;color:var(--text);">Implementation Package</div>
       <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted-soft);">KIT-E1</div>
       <div style="font-size:11.5px;color:var(--muted);">v1.0</div>
       <div style="font-size:11.5px;color:var(--muted);">May 2026</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Active</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#5DBF82;">Retired</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 76px 80px 88px 80px;border-bottom:1px solid var(--rule);padding:7px 12px;background:rgba(255,255,255,.01);">
       <div style="font-size:12px;color:var(--muted-soft);font-style:italic;">HR Documentation Review Guide</div>
@@ -3662,8 +3908,6 @@ once, near the top, so the distinction is made before the standard begins. -->
   </div>
 </div>
 
-     opened inside them, nesting every later section one level deeper. Fixed 2026-08-14. -->
-<!-- section-library and its .container were never closed; the next page-section
 </div>
 </div>
 <div id="section-about" class="page-section">
@@ -3763,9 +4007,12 @@ once, near the top, so the distinction is made before the standard begins. -->
  <p style="font-size:13.5px;color:var(--muted);line-height:1.65;max-width:620px;margin:0 0 12px;">The published JRS materials remain available for individual professional evaluation, learning, and citation without mandatory registration. Apply the method within existing workflow and record-keeping controls. This website does not accept case records or provide an automated assessment API, and publication does not authorize commercial integration or licensing.</p>
  <div style="display:flex;flex-wrap:wrap;gap:10px;">
   <a href="resources.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:9px 14px;text-decoration:none;">Reviewer tools &rarr;</a>
+  <a href="editions.html" style="font-family:Inter,Arial,sans-serif;font-size:14px;color:var(--accent);border:1px solid var(--accent);padding:10px 14px;text-decoration:none;">Compare publication editions &rarr;</a>
   <a href="contact.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft);border:1px solid var(--rule);padding:9px 14px;text-decoration:none;">Method information &rarr;</a>
  </div>
 </div>
+</div>
+</main>
 <footer class="site-footer" role="contentinfo">
  <div class="site-footer-inner">
  <div style="margin-bottom:10px;"><span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-dim);">Research participation:</span> <a href="/reviewer/evaluation.html?src=footer" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Pressure-test the standard</a> &middot; <a href="resources.html" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;">Use free resources</a></div>
@@ -3776,20 +4023,37 @@ once, near the top, so the distinction is made before the standard begins. -->
  </div>
 </footer>
 
-  </div>
-
 <script>
 
 // ── NAVIGATION ────────────────────────────────────
 function showSection(id){
+ // Review Examples uses the existing worked Use Cases collection rather
+ // than a non-existent section. Unknown destinations never blank the page.
+ const contentId=id==='scenarios'?'usecases':id;
+ const sec=document.getElementById('section-'+contentId);
+ if(!sec)return;
  document.querySelectorAll('.page-section').forEach(s=>s.classList.remove('active'));
- document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
- const sec=document.getElementById('section-'+id);
- if(sec)sec.classList.add('active');
- if(id==='roles'&&typeof showRoleEnv==='function'){setTimeout(()=>showRoleEnv('hr'),30);}
+ document.querySelectorAll('.primary-nav-inner button.nav-item').forEach(n=>{n.classList.remove('active');n.removeAttribute('aria-current');});
+ sec.classList.add('active');
+ if(id==='roles'&&typeof showRoleEnv==='function'){
+   // Render default context synchronously, without stealing focus from the
+   // section navigation that brought the reader here.
+   showRoleEnv('hr', false);
+ }
  const sectionMap={'home':0,'doccond':1,'tools':2,'scenarios':3,'guidance':4,'roles':5,'maturity':6,'ai':7,'usecases':8,'training':9,'about':10,'library':11,'kit':12};
- const navItems=document.querySelectorAll('.nav-item');
- if(sectionMap[id]!==undefined&&navItems[sectionMap[id]])navItems[sectionMap[id]].classList.add('active');
+ const navItems=document.querySelectorAll('.primary-nav-inner button.nav-item');
+ if(sectionMap[id]!==undefined&&navItems[sectionMap[id]]){navItems[sectionMap[id]].classList.add('active');navItems[sectionMap[id]].setAttribute('aria-current','location');}
+ var sectionMenu=document.getElementById('primary-nav-items');
+ var sectionToggle=document.getElementById('nav-hamburger');
+ if(sectionMenu)sectionMenu.classList.remove('nav-open');
+ if(sectionToggle){sectionToggle.setAttribute('aria-expanded','false');sectionToggle.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Sections';}
+ // Move keyboard and screen-reader focus into the newly displayed document
+ // section. Without this, selecting a collapsed index item leaves focus hidden.
+ if(sec){
+   var nextHeading=sec.querySelector('h1,h2,[role="heading"]')||sec;
+   if(!nextHeading.hasAttribute('tabindex'))nextHeading.setAttribute('tabindex','-1');
+   nextHeading.focus({preventScroll:true});
+ }
  window.scrollTo(0,0);
 }
 
@@ -3913,15 +4177,29 @@ const ROLE_ENVS={
  `}
 };
 
-function showRoleEnv(id){
+var jrsSelectedRoleEnv='hr';
+function showRoleEnv(id, moveFocus){
  const env=ROLE_ENVS[id];if(!env)return;
+ jrsSelectedRoleEnv=id;
  document.getElementById('roles-menu').style.display='none';
  document.getElementById('role-env-container').style.display='block';
  document.getElementById('role-env-content').innerHTML=`<div style="margin-bottom:28px;"><div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;">${env.sub}</div><h2 style="font-family:'Bodoni Moda',serif;font-size:28px;font-weight:400;line-height:1.15;margin-bottom:20px;">${env.title}</h2></div>${env.content}`;
+ // The selected role card disappears. Transfer focus to the new content
+ // rather than leaving keyboard focus in a hidden subtree.
+ const title=document.querySelector('#role-env-content h2');
+ if(title){
+   title.setAttribute('tabindex','-1');
+   if(moveFocus!==false)title.focus({preventScroll:true});
+ }
 }
 function showRolesMenu(){
  document.getElementById('roles-menu').style.display='block';
  document.getElementById('role-env-container').style.display='none';
+ // The return action hides the Back button. Restore focus to the role
+ // originally selected so keyboard users can make another choice.
+ const selected=document.querySelector('.role-card[onclick="showRoleEnv(\''+jrsSelectedRoleEnv+'\')"]')
+   ||document.querySelector('#roles-menu .role-card');
+ if(selected&&typeof selected.focus==='function')selected.focus({preventScroll:true});
 }
 
 // ── TRAINING MODULES ──────────────────────────────
@@ -3996,9 +4274,22 @@ function toggleMobileNav(){
   hamburger.classList.toggle('open');
   hamburger.setAttribute('aria-expanded',String(!isOpen));
   hamburger.innerHTML=isOpen
-    ?'<span class="nav-hamburger-icon">&#9776;</span> Menu'
-    :'<span class="nav-hamburger-icon">&#10005;</span> Close';
+    ?'<span class="nav-hamburger-icon">&#9776;</span> Sections'
+    :'<span class="nav-hamburger-icon">&#10005;</span> Close sections';
 }
+// Close the document index with Escape and return keyboard focus to its control.
+document.addEventListener('keydown',function(event){
+  if(event.key!=='Escape')return;
+  const menu=document.getElementById('primary-nav-items');
+  const toggle=document.getElementById('nav-hamburger');
+  if(menu&&toggle&&menu.classList.contains('nav-open')){
+    menu.classList.remove('nav-open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+    toggle.innerHTML='<span class="nav-hamburger-icon">&#9776;</span> Sections';
+    toggle.focus();
+  }
+});
 </script>
 <script>
 /* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
@@ -4108,5 +4399,7 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
 })();
 </script>
 <script defer src="/assets/jrs-keyboard-controls.js"></script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
+<script src="/assets/jrs-engagement.js" defer></script>
 </body>
 </html>

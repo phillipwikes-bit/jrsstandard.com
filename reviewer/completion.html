@@ -3,16 +3,38 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reviewer Certificate | JRS&#8482; Justification Review Standard</title>
-<meta name="description" content="Your JRS Reviewer certificate, with a LinkedIn entry you can add to your profile.">
+<title>Historical Reviewer Evaluation Receipt | JRS&#8482; Justification Review Standard</title>
+<meta name="description" content="Verify a previously issued JRS reviewer evaluation receipt against its issuer record. No professional certification is conveyed.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://www.jrsstandard.com/reviewer/completion.html" />
+<meta name="referrer" content="no-referrer">
+<script>
+/* Retained historical links may contain a name and issuer code in the URL.
+   Remove both from the visible address before loading external resources.
+   Prefill only; no verification, issuance or telemetry occurs without a
+   deliberate form submission. Original incoming server logs are outside
+   this browser-level protection. */
+(function(){
+  var params = new URLSearchParams(location.search);
+  var code = (params.get('code') || '').toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 40);
+  var name = (params.get('name') || '').slice(0, 200);
+  if (params.has('code') || params.has('name')) {
+    params.delete('code');
+    params.delete('name');
+    var remaining = params.toString();
+    var cleanUrl = location.pathname + (remaining ? '?' + remaining : '') + location.hash;
+    try { history.replaceState(null, '', cleanUrl); } catch (_) {}
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    if (code) document.getElementById('f-code').value = code;
+    if (name) document.getElementById('f-name').value = name;
+  }, {once:true});
+})();
+</script>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NVYHJ7BJ92"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-NVYHJ7BJ92');</script>
 <style>
 :root{
   --bg:#050505; --surface:#121212; --surface2:#1A1A1A;
@@ -27,17 +49,17 @@ a{color:var(--accent)}
 .site-header{border-bottom:1px solid var(--rule);padding:0 22px}
 .site-header-inner{max-width:720px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;flex-wrap:wrap}
 .wordmark{font-family:'Bodoni Moda',serif;font-size:22px;color:var(--accent);text-decoration:none}
-.header-meta{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
-.eyebrow{font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:34px 0 12px}
+.header-meta{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);text-align:right}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:34px 0 12px}
 h1{font-family:'Bodoni Moda',serif;font-size:30px;font-weight:400;line-height:1.18;margin-bottom:12px}
 h2{font-family:'Bodoni Moda',serif;font-size:20px;font-weight:400;line-height:1.25;margin-bottom:10px}
 .sub{font-size:14.5px;color:var(--muted);line-height:1.68;margin-bottom:16px}
 .card{border:1px solid var(--rule);background:var(--surface);padding:22px 24px;margin:16px 0}
 .card.gold{border-color:var(--accent)}
-label.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
+label.fl{display:block;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:6px}
 input{width:100%;background:var(--surface2);border:1px solid var(--rule);color:var(--text);padding:11px 12px;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:12px}
-input:focus{outline:none;border-color:var(--accent-dim)}
-button{width:100%;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:15px;cursor:pointer;font-weight:600}
+input:focus{outline:3px solid #0b679c;outline-offset:2px;border-color:var(--accent-dim)}
+button{width:100%;font-family:'JetBrains Mono',monospace;font-size:14px;letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:#050505;border:none;padding:15px;cursor:pointer;font-weight:600}
 button.ghost{background:none;color:var(--accent);border:1px solid var(--accent);margin-top:10px}
 .codebox{border:1px solid var(--accent-dim);background:var(--surface2);padding:15px 17px;margin:0 0 16px;text-align:center}
 .codebox .k{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);margin-bottom:7px}
@@ -50,10 +72,10 @@ button.ghost{background:none;color:var(--accent);border:1px solid var(--accent);
 .copybtn{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;background:none;color:var(--accent);border:1px solid var(--accent);padding:10px 16px;cursor:pointer;width:auto;margin-top:11px}
 .snippet{background:var(--bg);border:1px solid var(--rule);padding:13px 14px;font-size:12.5px;color:var(--muted);line-height:1.6;margin-top:10px;white-space:pre-wrap;word-break:break-word}
 .boundary{border-left:3px solid var(--review-text);background:var(--surface2);padding:14px 16px;margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.6}
-.fine{font-size:10.5px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
+.fine{font-size:14px;color:var(--muted-soft);line-height:1.55;margin-top:12px}
 #msg{font-size:12.5px;min-height:18px;margin:8px 0;color:var(--review-text)}
 .site-footer{border-top:1px solid var(--rule);padding:22px;text-align:center}
-.fc{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
+.fc{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-soft)}
 .fc a{color:inherit;text-decoration:none}
 .hidden{display:none}
 @media(max-width:600px){h1{font-size:25px}.li .row{flex-direction:column;gap:2px}.li .row b{text-align:left}}
@@ -82,329 +104,61 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 /* JRS SITE NAV v1 */
 .jrs-sitenav{display:flex;align-items:stretch;background:var(--bg);border-bottom:1px solid var(--rule);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .jrs-sitenav::-webkit-scrollbar{display:none}
-.jrs-sitenav a{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:13px 16px;border-right:1px solid var(--rule);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;min-height:44px}
+.jrs-sitenav a{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-soft);text-decoration:none;padding:13px 16px;border-right:1px solid var(--rule);white-space:nowrap;flex-shrink:0;display:flex;align-items:center;min-height:44px}
 .jrs-sitenav a:hover{color:var(--accent);background:rgba(190,148,71,.05)}
-@media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:7.5px} }
+@media(max-width:640px){ .jrs-sitenav a{padding:12px 13px;font-size:12px} }
 /* /JRS SITE NAV v1 */
+a:focus-visible,button:focus-visible{outline:3px solid #0b679c;outline-offset:3px}
 </style>
+
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
+<link rel="stylesheet" href="/assets/jrs-legacy-public-alignment.css">
 </head>
-<body>
+<body class="jrs-institutional jrs-legacy-public">
 <a href="#main-content" class="skip-link">Skip to content</a>
 
 <header class="site-header" role="banner">
   <div class="site-header-inner">
     <a href="/index.html" class="wordmark">JRS<span style="font-size:10px;vertical-align:super;position:relative;top:-3px;">&#8482;</span></a>
-    <div class="header-meta">Justification Review Standard<br>Reviewer Certificate</div>
+    <div class="header-meta">Justification Review Standard<br>Historical evaluation receipt</div>
   </div>
 </header>
 <!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
 <nav class="jrs-sitenav" aria-label="Site">
- <a href="../jrsstandard.html">The Standard</a>
- <a href="../resources.html">Free Resources</a>
- <a href="../research.html">Research</a>
- <a href="../training.html">Training</a>
- <a href="../manifest.html">Manifest</a>
- <a href="../enterprise.html">Enterprise</a>
- <a href="../about.html">About</a>
+  <a href="../investigator-guides.html">Guides</a>
+  <a href="../training.html">Training</a>
+  <a href="../resources.html">References</a>
+  <a href="../jrsstandard.html">The Standard</a>
+  <a href="../research.html">Research</a>
+  <a href="../about.html">About</a>
+  <a href="../contact.html">Contact</a>
 </nav>
 <!-- /JRS SITE NAV v1 -->
 
 <main id="main-content">
-
   <section id="claim">
-    <div class="eyebrow">Step 5 of 5 &middot; Certificate</div>
-    <h1>Your reviewer certificate</h1>
-    <p class="sub" id="claim-lede">Enter the completion code you were given when you submitted the evaluation.</p>
-    <div class="card">
-      <label class="fl" for="f-code">Completion code</label>
-      <input id="f-code" type="text" placeholder="JRS-R-XXXXXXX" autocapitalize="characters">
-      <label class="fl" for="f-name">Name, exactly as it should be printed</label>
-      <input id="f-name" type="text" placeholder="Full name">
-      <label class="fl" for="f-title">Title, exactly as it should be printed (optional)</label>
-      <input id="f-title" type="text" placeholder="Leave blank to print your name alone">
-      <div id="msg"></div>
-      <button id="go" type="button">Open my certificate &rarr;</button>
-      <p class="fine">The code is issued at the end of the evaluation. If you have lost it, write to <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a> from the address you registered with.</p>
-    </div>
+    <div class="eyebrow">Historical evaluation receipt</div>
+    <h1>Retrieve an issued reviewer evaluation receipt</h1>
+    <p class="sub">This page serves historical JRS reviewer evaluation receipts. It does not issue a new certificate, establish completion of the six training modules, or assess professional competence.</p>
+    <form class="card" action="/api/reviewer-cert" method="post" target="_blank" rel="noopener">
+      <label class="fl" for="f-code">Issued receipt code</label>
+      <input id="f-code" name="code" type="text" placeholder="JRS-R-XXXXXXXX" autocomplete="off" autocapitalize="characters" maxlength="40" required>
+      <label class="fl" for="f-name">Name on the original issuer record</label>
+      <input id="f-name" name="name" type="text" placeholder="Full name as originally recorded" autocomplete="name" maxlength="200" required>
+      <p class="fine">The issuing system must find both the code and the name in its private historical record before rendering a receipt. A correctly formatted code by itself is insufficient. The issuer-record date and title, if any, cannot be changed here.</p>
+      <button id="go" type="submit">Verify and open my receipt</button>
+      <p class="fine">If an older link cannot be verified, contact <a href="mailto:info@jrsstandard.com">info@jrsstandard.com</a>. No training accreditation or professional certification is provided through this route.</p>
+    </form>
+    <p class="sub">For current free training and its separately described self-reported participation record, visit <a href="/training.html">JRS Reviewer Training</a>.</p>
   </section>
-
-  <section id="issued" class="hidden">
-    <div class="eyebrow">Complete &middot; 6 of 6</div>
-    <h2 id="issued-head" class="h1-look">Certificate issued</h2>
-    <p class="sub" id="issued-lede"></p>
-
-    <div class="codebox">
-      <div class="k">Completion code</div>
-      <div class="v" id="out-code"></div>
-    </div>
-
-    <div class="card gold">
-      <h2>Your certificate</h2>
-      <p class="sub" style="font-size:13.5px">It opens as a printable page. Use your browser&#39;s print option to save it as a PDF. The link keeps working, so you do not have to do it now.</p>
-      <a id="cert-link" href="#" target="_blank" rel="noopener" style="text-decoration:none"><button type="button">Open the certificate &rarr;</button></a>
-    </div>
-
-    <div class="card">
-      <h2>Add it to LinkedIn</h2>
-      <p class="sub" style="font-size:13.5px">The button below opens LinkedIn&#39;s own <b style="color:var(--text)">Add to profile</b> flow with the fields already filled in. It creates a Licenses and Certifications entry on your profile.</p>
-
-      <div class="li">
-        <div class="k">What LinkedIn will show</div>
-        <div class="row"><span>Name</span><b>JRS Reviewer Training and Certificate</b></div>
-        <div class="row"><span>Issuing organization</span><b>Justification Review Standard (JRS)</b></div>
-        <div class="row"><span>Issue date</span><b id="out-date"></b></div>
-        <div class="row"><span>Credential ID</span><b id="out-cred"></b></div>
-        <div class="row"><span>Credential URL</span><b>jrsstandard.com/reviewer</b></div>
-      </div>
-
-      <a id="li-link" href="#" target="_blank" rel="noopener" style="text-decoration:none"><button type="button">Add to my LinkedIn profile &rarr;</button></a>
-
-      <p class="sub" style="font-size:12.5px;margin:16px 0 6px"><b style="color:var(--text)">Or post it.</b> A short line for your feed, if you want one. Nothing is posted for you.</p>
-      <div class="snippet" id="snippet"></div>
-      <button type="button" class="copybtn" id="copy-post">Copy the post</button>
-
-      <p class="sub" style="font-size:12.5px;margin:16px 0 6px"><b style="color:var(--text)">Skills to add.</b> LinkedIn does not let a third party endorse a skill on your behalf, so these are simply the skills this training covers, for you to add yourself if they fit.</p>
-      <div class="snippet" id="skills"></div>
-      <button type="button" class="copybtn" id="copy-skills">Copy the skills</button>
-
-      <div class="boundary">
-        This is an open educational standard, not a licence or an accreditation. The certificate records that you completed the six modules and submitted the reviewer evaluation. It is issued by this research programme and not by a university, a government body or a professional association. Say that plainly if anyone asks, because it is the accurate description and it holds up.
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>What happens next</h2>
-      <p class="sub" style="font-size:13.5px;margin-bottom:0">Your evaluation answers are now part of the anonymized baseline reported on the <a href="/research.html">research page</a>. They carry no name and are never published individually. Your certificate record is held separately and does not contain your answers.</p>
-      <a href="/pilot?src=reviewer-complete" style="text-decoration:none"><button type="button" class="ghost">Run the five conditions on your own records</button></a>
-    </div>
-  </section>
-
 </main>
 
 <footer class="site-footer">
   <div class="fc">&#169; 2026 JRS&#8482; &middot; Justification Review Standard &nbsp;&middot;&nbsp; Phillip Wikes, principal &nbsp;&middot;&nbsp; <a href="/privacy.html">Privacy</a> &nbsp;&middot;&nbsp; <a href="/check.html" style="color:inherit">Record Defensibility Check</a> &nbsp;&middot;&nbsp; <a href="/reviewer/">Training</a> &nbsp;&middot;&nbsp; <a href="/investigator-guides.html">Investigator Guides</a></div>
 </footer>
 
-<script>
-(function(){
-  var el = function(id){ return document.getElementById(id); };
-  var esc = function(x){ return String(x==null?'':x).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); };
-  function qp(k){ try { return (new URLSearchParams(location.search)).get(k) || ''; } catch(e){ return ''; } }
-  function ls(k){ try { return localStorage.getItem(k) || ''; } catch(e){ return ''; } }
 
-  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
-  // Prefill from the URL first, then from the browser, so someone returning to
-  // this page days later still lands on their own certificate.
-  var code  = (qp('code') || ls('jrs-reviewer-code')).toUpperCase().replace(/[^A-Z0-9-]/g, '');
-  var name  = qp('name')  || ls('jrs-reviewer-name');
-  var title = qp('title') || ls('jrs-reviewer-title');
-
-  if (code) el('f-code').value = code;
-  if (name) el('f-name').value = name;
-  if (title) el('f-title').value = title;
-
-  if (code && name) { issue(code, name, title); }
-
-  el('go').addEventListener('click', function(){
-    var m = el('msg');
-    var c = (el('f-code').value || '').toUpperCase().replace(/[^A-Z0-9-]/g, '');
-    var n = (el('f-name').value || '').trim();
-    var t = (el('f-title').value || '').trim();
-    m.style.color = 'var(--review-text)';
-    // The code is a receipt, not a password: it is checked for shape only. The
-    // durable record of who completed what is the row written at submission, and
-    // this page reprints from it rather than granting anything.
-    if (!/^JRS-R-[A-Z0-9]{6,12}$/.test(c)) {
-      m.textContent = 'That code does not look right. It starts with JRS-R- and was shown when you submitted the evaluation.';
-      return;
-    }
-    if (!n) { m.textContent = 'Please enter the name to print on the certificate.'; return; }
-    try {
-      localStorage.setItem('jrs-reviewer-code', c);
-      localStorage.setItem('jrs-reviewer-name', n);
-      localStorage.setItem('jrs-reviewer-title', t);
-    } catch(e){}
-    issue(c, n, t);
-  });
-
-  function issue(c, n, t){
-    var now = new Date();
-    var issueMonth = now.getMonth() + 1;
-    var issueYear = now.getFullYear();
-
-    el('claim').classList.add('hidden');
-    el('issued').classList.remove('hidden');
-    el('issued-head').textContent = 'Certificate issued to ' + n;
-    el('issued-lede').textContent = 'Six modules complete and the reviewer evaluation submitted. '
-      + 'The certificate below is yours to keep, print, or attach to a profile.';
-    el('out-code').textContent = c;
-    el('out-cred').textContent = c;
-    el('out-date').textContent = MONTHS[now.getMonth()] + ' ' + issueYear;
-
-    el('cert-link').href = '/api/reviewer-cert?code=' + encodeURIComponent(c)
-      + '&name=' + encodeURIComponent(n) + '&title=' + encodeURIComponent(t || '');
-
-    // LinkedIn's documented Add to Profile parameters. This is the real feature:
-    // it prefills the Licenses and Certifications form. LinkedIn has no interface
-    // that lets a third party verify a credential or endorse a skill on someone
-    // else's behalf, so nothing here claims either.
-    var li = 'https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME'
-      + '&name=' + encodeURIComponent('JRS Reviewer Training and Certificate')
-      + '&organizationName=' + encodeURIComponent('Justification Review Standard (JRS)')
-      + '&issueYear=' + issueYear
-      + '&issueMonth=' + issueMonth
-      + '&certId=' + encodeURIComponent(c)
-      + '&certUrl=' + encodeURIComponent('https://jrsstandard.com/reviewer');
-    el('li-link').href = li;
-
-    el('snippet').textContent =
-      'I submitted the JRS reviewer evaluation: a baseline on how consequential records are '
-    + 'actually reviewed in practice, built around whether a record can still explain its own '
-    + 'conclusion after the fact.\n\n'
-    + 'The part that stayed with me is the test itself. Could a reviewer with no access to the '
-    + 'author, no institutional memory and no added explanation identify the basis for each '
-    + 'conclusion from the file alone? A great many records that read as finished do not pass it, '
-    + 'and AI-assisted drafting makes that harder to spot rather than easier.\n\n'
-    + 'The training is free and open: jrsstandard.com/reviewer';
-
-    el('skills').textContent =
-      'Records governance\nDocumentation quality review\nAI governance\n'
-    + 'Evidentiary sufficiency\nAudit readiness\nCompliance documentation';
-
-    wireCopy('copy-post', 'snippet');
-    wireCopy('copy-skills', 'skills');
-    window.scrollTo(0,0);
-  }
-
-  function wireCopy(btnId, srcId){
-    var b = el(btnId);
-    if (!b || b.dataset.wired) return;
-    b.dataset.wired = '1';
-    b.addEventListener('click', function(){
-      var text = el(srcId).textContent;
-      var done = function(){ b.textContent = 'Copied'; setTimeout(function(){ b.textContent = b.id === 'copy-post' ? 'Copy the post' : 'Copy the skills'; }, 1800); };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done).catch(fallback);
-      } else { fallback(); }
-      function fallback(){
-        try {
-          var ta = document.createElement('textarea');
-          ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-          document.body.appendChild(ta); ta.select();
-          document.execCommand('copy'); document.body.removeChild(ta); done();
-        } catch(e) { b.textContent = 'Select and copy'; }
-      }
-    });
-  }
-})();
-</script>
-<script>
-/* JRS LINK-CLICK TELEMETRY. Added 2026-08-13. Token-less, no dependencies.
-   Posts to /api/telemetry, which is a real endpoint in this repository. */
-/**
- * Zero-Drift Telemetry Dispatcher
- * Guarantees event delivery without delaying navigation or blocking the main thread.
- */
-function trackClickAndNavigate(event, targetUrl, eventMetaData) {
-  eventMetaData = eventMetaData || {};
-  // 1. Prevent default immediate navigation
-  if (event && typeof event.preventDefault === 'function') {
-    event.preventDefault();
-  }
-
-  // 2. Construct immutable telemetry payload
-  var payload = JSON.stringify({
-    timestamp: new Date().toISOString(),
-    origin_url: window.location.href,
-    target_url: targetUrl,
-    meta: eventMetaData
-  });
-
-  // 3. Primary Dispatch: Non-blocking navigator.sendBeacon
-  var isDispatched = false;
-  if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
-    var blob = new Blob([payload], { type: 'application/json' });
-    isDispatched = navigator.sendBeacon('/api/telemetry', blob);
-  }
-
-  // 4. Secondary Dispatch: Fetch API with keepalive flag
-  if (!isDispatched && typeof fetch === 'function') {
-    fetch('/api/telemetry', {
-      method: 'POST',
-      body: payload,
-      headers: { 'Content-Type': 'application/json' },
-      keepalive: true
-    }).catch(function() {
-      /* Swallowing non-critical network drops to prioritize UX */
-    });
-  }
-
-  // 5. Deterministic Fail-safe Navigation Fallback (150ms timeout)
-  setTimeout(function() {
-    window.location.href = targetUrl;
-  }, 150);
-}
-
-/* DELEGATION LAYER.
-   One document-level listener, so links rendered by JavaScript after load are
-   captured too and no per-link handler is needed anywhere.
-
-   It decides WHEN to call the dispatcher. It does not alter it.
-
-   Three classes of link are deliberately NOT routed through the dispatcher:
-     - /api/dl and /api/support already count inside their own 302. A redirect
-       cannot be blocked or raced, so it is strictly stronger than a beacon and
-       routing them here would double-count.
-     - mailto, tel, in-page anchors and downloads are not navigations to count.
-     - modifier and middle clicks. preventDefault on those would break "open in
-       new tab", so the beacon is sent WITHOUT preventDefault and the browser is
-       left to do what the reader asked for. */
-(function(){
-  var COUNTED_SERVER_SIDE = /^\/api\/(dl|support)\b/;
-  function beacon(target, meta){
-    try {
-      var payload = JSON.stringify({
-        timestamp: new Date().toISOString(),
-        origin_url: window.location.href,
-        target_url: target,
-        meta: meta || {}
-      });
-      var sent = false;
-      if (navigator.sendBeacon) {
-        sent = navigator.sendBeacon('/api/telemetry', new Blob([payload], { type: 'application/json' }));
-      }
-      if (!sent && typeof fetch === 'function') {
-        fetch('/api/telemetry', { method: 'POST', body: payload,
-          headers: { 'Content-Type': 'application/json' }, keepalive: true }).catch(function(){});
-      }
-    } catch (e) { /* never let telemetry break a click */ }
-  }
-  document.addEventListener('click', function(ev){
-    try {
-      var a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
-      if (!a) return;
-      var href = a.getAttribute('href') || '';
-      if (!href || href.charAt(0) === '#') return;
-      if (/^(mailto:|tel:|javascript:)/i.test(href)) return;
-      if (a.hasAttribute('download')) return;
-      if (COUNTED_SERVER_SIDE.test(href)) return;
-
-      var label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80);
-      var meta = { label: label, src: 'link' };
-
-      // Modifier or middle click: the reader wants a new tab. Record it, do not
-      // hijack it.
-      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) {
-        beacon(a.href, meta);
-        return;
-      }
-      if (a.target && a.target !== '_self') { beacon(a.href, meta); return; }
-
-      trackClickAndNavigate(ev, a.href, meta);
-    } catch (e) { /* a telemetry fault must never block navigation */ }
-  }, true);
-})();
-</script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body>
 </html>

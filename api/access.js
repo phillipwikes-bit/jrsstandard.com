@@ -35,7 +35,7 @@ const FILES = {
 function json(o, s){
   return new Response(JSON.stringify(o), {
     status: s || 200,
-    headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*' }
+    headers: { 'Content-Type':'application/json', 'Access-Control-Allow-Origin':'*', 'Cache-Control':'no-store' }
   });
 }
 function clean(v, n){ return (v == null ? '' : String(v)).trim().slice(0, n || 200); }
@@ -56,34 +56,15 @@ function normCampaign(c){
   return 'general';
 }
 
-// Deploy and smoke-check tags. Registrations carrying one of these are never
-// stored, and any that already exist are physically deleted on the next request,
-// so the consented-contact counts stay clean with no manual database work. Same
-// self-healing pattern already used by /api/dl and /api/support.
+// Synthetic verification tags never create registration records.
+// Historical cleanup, if needed, is a separately authorized maintenance task.
+// Public requests must not trigger deletes of participant data.
 const TEST_SRC = ['verify', 'test', 'selftest', 'deploytest'];
 function isTestTag(s){
   s = String(s || '');
   if (!s) return false;
   if (TEST_SRC.indexOf(s) !== -1) return true;
   return s.indexOf('deploytest') === 0;
-}
-
-async function purgeTestRows(H){
-  // Delete any registration rows written by a deploy check.
-  //
-  // pilot_contacts.message is a TEXT column holding serialized JSON, not jsonb,
-  // so a `message->>page_source` filter matches nothing. Match the serialized
-  // payload as text instead, one exact tag at a time, so the pattern stays
-  // precise and cannot catch a real registration by accident.
-  for (let i = 0; i < TEST_SRC.length; i++){
-    const pat = '*' + encodeURIComponent('"page_source":"' + TEST_SRC[i]) + '*';
-    try {
-      await fetch(SB + '/rest/v1/pilot_contacts'
-        + '?source=in.(guide-register,support-register)'
-        + '&message=like.' + pat,
-        { method: 'DELETE', headers: H });
-    } catch (e) { /* best-effort */ }
-  }
 }
 
 export default async function handler(req){
@@ -99,20 +80,27 @@ export default async function handler(req){
   const SERVICE = env.SUPABASE_SERVICE_ROLE_KEY || '';
 
   if (req.method === 'GET') {
-    // A plain GET is the health check, and it also runs the self-healing purge
-    // so a deploy-test registration never lingers in the contact counts.
-    if (SERVICE) {
-      await purgeTestRows({
-        'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
-        'Content-Type': 'application/json', 'Prefer': 'return=minimal'
-      });
-    }
-    return json({ ok:true, serviceKey: !!SERVICE });
+    // Public health checks are read-only. Never reveal private service-key
+    // configuration or trigger a database read, write or deletion.
+    return json({ ok: true });
   }
   if (req.method !== 'POST') return json({ error:'method_not_allowed' }, 405);
-  if (!SERVICE) return json({ error:'service_key_missing' }, 503);
+  const origin = req.headers.get('origin');
+  if (origin && origin !== new URL(req.url).origin)
+    return json({ error:'origin_not_allowed' }, 403);
+  if (!SERVICE) return json({ error:'service_unavailable' }, 503);
 
-  let b; try { b = await req.json(); } catch(e){ return json({ error:'invalid_json' }, 400); }
+  // Named access requests must remain small and must be JSON objects.
+  const suppliedLength = Number(req.headers.get('content-length') || '0');
+  if (suppliedLength > 8192) return json({ error:'request_too_large' }, 413);
+  let b;
+  try {
+    const raw = await req.text();
+    if (raw.length > 8192) return json({ error:'request_too_large' }, 413);
+    b = JSON.parse(raw);
+    if (!b || typeof b !== 'object' || Array.isArray(b))
+      return json({ error:'invalid_json' }, 400);
+  } catch(e) { return json({ error:'invalid_json' }, 400); }
 
   const mode     = (clean(b.mode, 20) === 'support') ? 'support' : 'guide';
 
@@ -146,8 +134,9 @@ export default async function handler(req){
   // engaged" and "started and left". Writes an event row only.
   if (String(b.event || '') === 'field_touched') {
     if (gateCheck) return json({ ok: true, field_touched: true, recorded: false, check: true, is_mobile: isMobile });
+    let accepted = false;
     try {
-      await fetch(SB + '/rest/v1/interaction_events', {
+      const upstream = await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
@@ -163,8 +152,9 @@ export default async function handler(req){
           is_mobile: isMobile
         }})
       });
+      accepted = upstream.ok;
     } catch (e) { /* a telemetry ping must never block the form */ }
-    return json({ ok: true, field_touched: true });
+    return json({ ok: true, field_touched: true, recorded: accepted });
   }
 
   // FALLBACK ENDORSEMENT WRITE, for readers who reach the campaign screen
@@ -186,8 +176,9 @@ export default async function handler(req){
     if (gateCheck || isCrawler) {
       return json({ ok: true, endorse: true, recorded: false, check: true });
     }
+    let accepted = false;
     try {
-      await fetch(SB + '/rest/v1/interaction_events', {
+      const upstream = await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
@@ -198,8 +189,9 @@ export default async function handler(req){
             .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || null
         }})
       });
+      accepted = upstream.ok;
     } catch (e) { /* never block the page */ }
-    return json({ ok: true, endorse: true, recorded: true });
+    return json({ ok: true, endorse: accepted, recorded: accepted });
   }
 
   if (String(b.event || '') === 'view') {
@@ -215,13 +207,18 @@ export default async function handler(req){
     // source='gate-view' as a campaign form open, is untouched by the change.
     const PAGE_SOURCE = { reviewer: 'reviewer-view', training: 'train-view' };
     const viewSource = PAGE_SOURCE[String(b.page || '')] || 'gate-view';
+    // Keep guide-directory arrivals distinct from registration-form openings.
+    // gate-stats explicitly treats mode=guidespage as page traffic, not a
+    // conversion denominator; normalizing it to guide corrupted the funnel.
+    const viewMode = String(b.mode || '') === 'guidespage' ? 'guidespage' : mode;
+    let accepted = false;
     try {
-      await fetch(SB + '/rest/v1/interaction_events', {
+      const upstream = await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
         body: JSON.stringify({ source: viewSource, type: 'view', payload: {
-          mode: mode,
+          mode: viewMode,
           edition: normEdition(b.edition) || '',
           campaign: b.campaign ? normCampaign(b.campaign) : '',
           src: tag(b.src, 40) || '',
@@ -231,49 +228,17 @@ export default async function handler(req){
           is_mobile: isMobile
         }})
       });
+      accepted = upstream.ok;
     } catch (e) { /* a view ping must never block the form */ }
-    return json({ ok: true, view: true });
+    return json({ ok: true, view: true, recorded: accepted });
   }
 
-  // Public-listing opt-in, taken AFTER the guide has been delivered rather than
-  // as the price of delivery. The gate now asks only for contact, storage and
-  // transfer, which is the combination that has to survive an acquisition. Being
-  // named in public is a separate professional decision, so it is a separate
-  // click, made once the reader already has what they came for.
-  //
-  // pilot_contacts.message is TEXT holding serialized JSON, so there is no
-  // server-side JSON patch available: read the newest row for this address,
-  // rewrite the payload, write it back by id.
+  // Historical listing action accepted an email address alone and then
+  // rewrote a private contact's consent flags. Email knowledge is not proof
+  // of authorization. Do not read or change an issuer/contact record until
+  // a separate, verified-consent workflow exists.
   if (String(b.event || '') === 'listing') {
-    const lem = clean(b.email, 200);
-    if (!lem || lem.indexOf('@') < 1) return json({ error:'valid_email_required' }, 400);
-    const LH = { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
-                 'Content-Type': 'application/json' };
-    try {
-      const q = SB + '/rest/v1/pilot_contacts'
-        + '?email=eq.' + encodeURIComponent(lem)
-        + '&source=in.(guide-register,support-register,training-enroll,org-pilot)'
-        + '&select=id,message&order=created_at.desc&limit=1';
-      const lr = await fetch(q, { headers: LH });
-      if (!lr.ok) return json({ error:'lookup_failed', status: lr.status }, 502);
-      const rows = await lr.json();
-      if (!rows.length) return json({ error:'no_registration' }, 404);
-      let p = {};
-      try { p = JSON.parse(rows[0].message || '{}'); } catch(e){ p = {}; }
-      p.consent_named = true;
-      p.consent_public_list = true;
-      // org-pilot rows carry the organization-level flag under its own key, and
-      // gate-stats counts named organizations from that key, so set it too.
-      p.consent_named_org = true;
-      p.listing_ts = new Date().toISOString();
-      const ur = await fetch(SB + '/rest/v1/pilot_contacts?id=eq.' + encodeURIComponent(rows[0].id), {
-        method: 'PATCH',
-        headers: Object.assign({ 'Prefer':'return=minimal' }, LH),
-        body: JSON.stringify({ message: JSON.stringify(p) })
-      });
-      if (!ur.ok) return json({ error:'listing_update_failed', status: ur.status }, 502);
-    } catch(e){ return json({ error:'listing_failed' }, 502); }
-    return json({ ok:true, listed:true });
+    return json({ error:'verified_consent_required' }, 403);
   }
 
   const name     = clean(b.name, 200);
@@ -322,9 +287,6 @@ export default async function handler(req){
     'Prefer': 'return=minimal'
   };
 
-  // Self-healing purge of any deploy-test rows already stored.
-  await purgeTestRows(H);
-
   // A deploy check never creates a contact row or a counter row, but still
   // resolves normally so the smoke test can confirm the whole path works.
   if (isTestTag(src)) {
@@ -335,12 +297,15 @@ export default async function handler(req){
   // The consented contact record is the point of this endpoint. If it fails the
   // request fails: no file is released and no support is recorded, so a stored
   // aggregate can never exist without the identity behind it.
-  const res = await fetch(SB + '/rest/v1/pilot_contacts', {
-    method: 'POST', headers: H, body: JSON.stringify(row)
-  });
-  if (!res.ok) {
-    const t = await res.text();
-    return json({ error:'db_insert_failed', status:res.status, detail:String(t).slice(0,300) }, 502);
+  try {
+    const res = await fetch(SB + '/rest/v1/pilot_contacts', {
+      method: 'POST', headers: H, body: JSON.stringify(row)
+    });
+    if (!res.ok) return json({ error:'registration_unavailable' }, 502);
+  } catch (e) {
+    // Transport failures are indistinguishable from provider rejections to
+    // the caller. Do not release files, count support or expose diagnostics.
+    return json({ error:'registration_unavailable' }, 502);
   }
 
   // Keep the existing public aggregate counters populated so the dashboard,

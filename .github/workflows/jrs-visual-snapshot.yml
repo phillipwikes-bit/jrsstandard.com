@@ -1,0 +1,180 @@
+name: JRS Visual Reference Snapshots
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      preview_url:
+        description: Exact-commit Vercel preview URL (must serve JRS, not login)
+        required: true
+        type: string
+permissions:
+  contents: read
+  deployments: read
+jobs:
+  visual-snapshots:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - name: Select browser
+        run: |
+          for c in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "$c" >/dev/null; then echo "JRS_BROWSER=$(command -v $c)" >> "$GITHUB_ENV"; "$c" --version; exit 0; fi
+          done
+          echo "Chrome not installed on runner" >&2; exit 1
+      - name: Set up Node 24 for authenticated hosted browser verification
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
+      - name: Regression-check fail-closed deployment preview discovery
+        run: |
+          python3 tests/jrs-resolve-preview.py --self-test
+          python3 tests/jrs-preview-static-verification.py --self-test
+          node tests/jrs-hosted-preview-capture.mjs --self-test
+      - name: Serve locally for current branch comparison
+        run: |
+          nohup python3 -m http.server 8791 --bind 127.0.0.1 > /tmp/jrs-visual-local-server.log 2>&1 &
+          echo $! > /tmp/jrs-server.pid
+          sleep 2
+          curl -fIs http://127.0.0.1:8791/ | head -5
+      - name: Verify mobile and desktop layout in a real browser
+        run: |
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=17000 --window-size=1440,1200 --dump-dom 'http://127.0.0.1:8791/tests/jrs-layout-audit.html' > /tmp/jrs-layout-audit-output.html 2> /tmp/jrs-layout-audit-errors.log
+          python3 tests/jrs-layout-audit-check.py /tmp/jrs-layout-audit-output.html
+      - name: Check computed palette and typography on Standard, Training and legacy pages
+        run: |
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=45000 --window-size=1440,1200 --dump-dom 'http://127.0.0.1:8791/tests/jrs-public-palette-browser-audit.html' > /tmp/jrs-public-palette-audit.html 2> /tmp/jrs-public-palette-errors.log
+          python3 tests/jrs-public-palette-check.py /tmp/jrs-public-palette-audit.html
+      - name: Audit 58 public routes at 320px, 390px, 768px and 1440px
+        run: |
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=120000 --window-size=1440,1200 --dump-dom 'http://127.0.0.1:8791/tests/jrs-sitewide-mobile-browser-audit.html' > /tmp/jrs-sitewide-mobile-audit-output.html 2> /tmp/jrs-sitewide-mobile-errors.log
+          python3 tests/jrs-sitewide-mobile-browser-check.py /tmp/jrs-sitewide-mobile-audit-output.html
+      - name: Capture desktop and mobile viewport screenshots
+        run: |
+          mkdir -p /tmp/jrs-visual
+          set +e
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=1440,1200 --screenshot=/tmp/jrs-visual/pr-desktop.png 'http://127.0.0.1:8791/' > /tmp/chrome1.log 2>&1
+          a=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-mobile.png 'http://127.0.0.1:8791/' > /tmp/chrome2.log 2>&1
+          b=$?
+          # Never capture a hardcoded historical preview: it might be stale or protected.
+          # Verified hosted screenshots are captured only after exact-head byte checks.
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=1440,1200 --screenshot=/tmp/jrs-visual/pr-standard-desktop.png 'http://127.0.0.1:8791/jrsstandard.html' > /tmp/chrome5.log 2>&1
+          e=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-standard-mobile.png 'http://127.0.0.1:8791/jrsstandard.html' > /tmp/chrome6.log 2>&1
+          f=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-resources-mobile.png 'http://127.0.0.1:8791/resources.html' > /tmp/chrome7.log 2>&1
+          g=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-training-mobile.png 'http://127.0.0.1:8791/training.html' > /tmp/chrome8.log 2>&1
+          h=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-guides-mobile.png 'http://127.0.0.1:8791/investigator-guides.html' > /tmp/chrome11.log 2>&1
+          k=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-research-mobile.png 'http://127.0.0.1:8791/research.html' > /tmp/chrome12.log 2>&1
+          l=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-reference-mobile.png 'http://127.0.0.1:8791/reference/index.html' > /tmp/chrome13.log 2>&1
+          m=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3000 --window-size=390,1100 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-codebook-mobile.png 'http://127.0.0.1:8791/codebook.html' > /tmp/chrome14.log 2>&1
+          n=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3500 --window-size=1440,1200 --screenshot=/tmp/jrs-visual/peer-nist-desktop.png 'https://airc.nist.gov/' > /tmp/chrome9.log 2>&1
+          i=$?
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=3500 --window-size=1440,1200 --screenshot=/tmp/jrs-visual/peer-ansi-desktop.png 'https://ansi.org/resource-center' > /tmp/chrome10.log 2>&1
+          j=$?
+          echo "EXTRA_CAPTURE_EXIT=$e,$f,$g,$h,$i,$j"
+          echo "CHROME_EXIT=$a,$b"
+          ls -lh /tmp/jrs-visual || true
+          if [ "$a" -ne 0 ] || [ "$b" -ne 0 ] || [ "$e" -ne 0 ] || [ "$f" -ne 0 ] || [ "$g" -ne 0 ] || [ "$h" -ne 0 ] || [ "$k" -ne 0 ] || [ "$l" -ne 0 ] || [ "$m" -ne 0 ] || [ "$n" -ne 0 ]; then tail -15 /tmp/chrome1.log /tmp/chrome2.log /tmp/chrome5.log /tmp/chrome6.log /tmp/chrome7.log /tmp/chrome8.log; exit 1; fi
+      - name: Capture source resources page including the searchable directory
+        run: |
+          # Use a tall viewport from the top; anchor-based Chrome screenshots
+          # produced black off-screen regions and are not suitable visual evidence.
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=5000 --window-size=1440,2400 --screenshot=/tmp/jrs-visual/pr-catalog-desktop.png 'http://127.0.0.1:8791/resources.html' > /tmp/jrs-catalog-desktop.log 2>&1
+          "$JRS_BROWSER" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --hide-scrollbars --virtual-time-budget=5000 --window-size=390,3500 --force-device-scale-factor=1 --screenshot=/tmp/jrs-visual/pr-catalog-mobile.png 'http://127.0.0.1:8791/resources.html' > /tmp/jrs-catalog-mobile.log 2>&1
+      - name: Preserve source-rendered screenshots and measurements
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-local-visual-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            /tmp/jrs-visual/pr-*.png
+            /tmp/jrs-layout-audit-output.html
+          if-no-files-found: error
+          retention-days: 14
+      - name: Inventory local visual evidence without embedding screenshots in logs
+        run: |
+          # The PNG artifacts above are the evidence. Do not duplicate their
+          # Base64 content in a public Actions log or mislabel source renders as
+          # hosted visual certification.
+          python3 - <<'PY'
+          import hashlib
+          import struct
+          from pathlib import Path
+          root = Path('/tmp/jrs-visual')
+          expected = (
+              'pr-desktop', 'pr-mobile', 'pr-standard-desktop',
+              'pr-standard-mobile', 'pr-resources-mobile',
+              'pr-training-mobile', 'pr-guides-mobile',
+              'pr-research-mobile', 'pr-reference-mobile',
+              'pr-codebook-mobile', 'pr-catalog-desktop',
+              'pr-catalog-mobile',
+          )
+          manifest = []
+          for stem in expected:
+              path = root / (stem + '.png')
+              data = path.read_bytes()
+              if data[:8] != bytes((137,80,78,71,13,10,26,10)) or len(data) < 24:
+                  raise SystemExit('Invalid source screenshot: ' + stem)
+              width, height = struct.unpack('>II', data[16:24])
+              if not width or not height or width > 10000 or height > 10000:
+                  raise SystemExit('Invalid PNG dimensions: ' + stem)
+              digest = hashlib.sha256(data).hexdigest()
+              manifest.append(f'{stem}: {width}x{height}, {len(data)} bytes, sha256={digest}')
+          target = root / 'jrs-source-screenshot-manifest.txt'
+          target.write_text('Source-rendered PNG inventory; not hosted or accessibility certification.' + chr(10)
+                            + chr(10).join(manifest) + chr(10))
+          print(f'PASS: {len(manifest)} local screenshot PNGs validated and inventoried.')
+          print('Screenshot bytes remain in the uploaded artifact, not the workflow log.')
+          PY
+      - name: Preserve local screenshot inventory
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-local-visual-manifest-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-visual/jrs-source-screenshot-manifest.txt
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Resolve exact-head preview through owner input or read-only GitHub deployment status
+        env:
+          JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          JRS_PREVIEW_URL_INPUT: ${{ inputs.preview_url || vars.JRS_VERIFIED_PREVIEW_URL }}
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 tests/jrs-resolve-preview.py "$GITHUB_ENV"
+
+      - name: Verify preview source identity before any release certification
+        env:
+          JRS_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
+        run: |
+          # The resolver is fail-closed and never uses a branch alias. This
+          # verifier still requires exact hosted source bytes and six PDFs.
+          python3 tests/jrs-preview-static-verification.py "$JRS_PREVIEW_URL"
+
+      - name: Capture verified exact-head preview screenshots
+        env:
+          JRS_VERCEL_PREVIEW_BYPASS: ${{ secrets.JRS_VERCEL_PREVIEW_BYPASS }}
+        run: |
+          # Chrome injects protected-preview access only on the exact JRS origin.
+          # A missing credential or a Vercel login screen fails the release gate.
+          # The original protected preview remains protected for other visitors.
+          node tests/jrs-hosted-preview-capture.mjs "$JRS_PREVIEW_URL" /tmp/jrs-visual
+      - name: Preserve verified hosted preview evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: jrs-verified-preview-${{ github.event.pull_request.head.sha || github.sha }}
+          path: /tmp/jrs-visual/verified-preview-*.png
+          if-no-files-found: error
+          retention-days: 14

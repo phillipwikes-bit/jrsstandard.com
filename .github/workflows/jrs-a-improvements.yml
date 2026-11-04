@@ -1,0 +1,42 @@
+name: JRS A-grade practitioner routes, editions and analytics safety
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  practitioner-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Validate practitioner routes and non-sensitive events
+        run: node tests/jrs-a-improvements.test.mjs
+      - name: Check guide heading order and PDF structure preflight without certification claims
+        run: node tests/jrs-accessibility-acceptance.test.mjs
+      - name: Preserve existing homepage and resource directory contracts
+        run: |
+          node tests/jrs-practitioner-journey.mjs
+          node tests/jrs-resource-directory.mjs
+      - name: Validate responsive HTML in local Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server 8791 --bind 127.0.0.1 >/tmp/jrs-a-grade-http.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for attempt in {1..40}; do
+            if curl -fsS http://127.0.0.1:8791/editions.html >/dev/null; then break; fi
+            sleep 0.25
+          done
+          browser="$(command -v chromium || command -v chromium-browser || command -v google-chrome || true)"
+          if [[ -z "$browser" ]]; then echo 'Chromium is unavailable; release check cannot pass'; exit 1; fi
+          "$browser" --headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage --virtual-time-budget=60000 --window-size=1440,1200 --dump-dom http://127.0.0.1:8791/tests/jrs-a-improvements-browser.html > /tmp/jrs-a-grade-dom.txt
+          if ! grep -q 'PASS 12/12 responsive route checks' /tmp/jrs-a-grade-dom.txt; then
+            grep 'FAIL' /tmp/jrs-a-grade-dom.txt || true
+            exit 1
+          fi

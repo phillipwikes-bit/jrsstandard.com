@@ -107,7 +107,7 @@ export default async function handler(req){
     .toUpperCase().replace(/[^A-Z]/g, '').slice(0, 2) || null;
 
   try {
-    await fetch(SB + '/rest/v1/interaction_events', {
+    const stored = await fetch(SB + '/rest/v1/interaction_events', {
       method: 'POST',
       headers: {
         'apikey': SERVICE,
@@ -129,6 +129,9 @@ export default async function handler(req){
         }
       })
     });
+    // A successful network exchange is not proof that Supabase stored the row.
+    // Do not increment claimed delivery when the upstream rejects the insert.
+    if (!stored.ok) return json({ ok: true, recorded: false, reason: 'write_failed' });
   } catch (e) {
     // A telemetry write must never surface to the reader.
     return json({ ok: true, recorded: false, reason: 'write_failed' });

@@ -156,7 +156,7 @@ html,body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;
  .primary-nav-inner{padding:0 14px}
  /* The util bar used to be a horizontal scroll strip on phones
  (overflow-x:auto). At 390px that put two of pilot's three links, and
- one of enterprise's and review-engine's, entirely past the right edge
+ one of the former technical route's links, entirely past the right edge
  with no scrollbar for a phone to draw. It did not read as "drag me",
  it read as clipped text. jrsstandard.html already wraps this bar;
  these three now match it, so every link is on screen. */
@@ -236,8 +236,11 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
   .wrap,.container,.container-wide{padding-left:16px;padding-right:16px}
 }
 </style>
+
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
+<link rel="stylesheet" href="/assets/jrs-legacy-public-alignment.css">
 </head>
-<body>
+<body class="jrs-institutional jrs-legacy-public">
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <header class="site-header" role="banner">
@@ -249,13 +252,13 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
 
 <!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
 <nav class="jrs-sitenav" aria-label="Site">
- <a href="investigator-guides.html">Guides</a>
- <a href="training.html">Training</a>
- <a href="resources.html">References</a>
- <a href="jrsstandard.html">The Standard</a>
- <a href="research.html">Research</a>
- <a href="about.html">About</a>
- <a href="contact.html">Contact</a>
+  <a href="investigator-guides.html">Guides</a>
+  <a href="training.html">Training</a>
+  <a href="resources.html">References</a>
+  <a href="jrsstandard.html">The Standard</a>
+  <a href="research.html">Research</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
 </nav>
 <!-- /JRS SITE NAV v1 -->
 
@@ -277,7 +280,7 @@ button,.btn,.cta-primary,input[type=submit]{min-height:44px}
  <h2 class="section-head">The short version</h2>
  <div class="callout callout-gold">
   <div class="callout-label">What a reviewer usually needs in one paragraph</div>
-  <div class="callout-body">Record text is sent over TLS to this endpoint and from there to <b>Anthropic</b>, the model provider, which is a third party. <b>Your record text is not written to any table, not echoed back in the response, and not logged.</b> What the model writes <i>about</i> the record on the versioned route <b>is</b> stored: a short note against each of the five conditions, and a suggested rewritten version of the passage. That is model output about your record rather than the record. <b>It is kept for 90 days and then removed.</b> The evaluation record itself is kept: the date, the five condition statuses, the routing outcome, the run count, the consistency figure and the engine version. <b>The raw record text you submitted is never stored at all by JRS.</b> There is therefore a store, and the retention and residency questions are real ones for your organisation to answer rather than ones we can answer for you.</div>
+  <div class="callout-body">Record text is sent over TLS to this endpoint and from there to <b>Anthropic</b>, the model provider, which is a third party. <b>Your record text is not written to any table, not echoed back in the response, and not logged.</b> What the model writes <i>about</i> the record on the versioned route <b>is</b> stored: a short note against each of the five conditions, and a suggested rewritten version of the passage. That is model output about your record rather than the record. <b>It is kept for 90 days and then removed.</b> The evaluation record itself is kept: the date, the five condition statuses, the routing outcome, the run count, the consistency figure and the implementation version. <b>The raw record text you submitted is never stored at all by JRS.</b> There is therefore a store, and the retention and residency questions are real ones for your organisation to answer rather than ones we can answer for you.</div>
  </div>
 </div>
 
@@ -328,7 +331,7 @@ Content-Type: application/json</pre>
  <h2 class="section-head">What this does not claim</h2>
  <div class="callout callout-gold">
   <div class="callout-label">Read this before mapping it to a control</div>
-  <div class="callout-body"><b>JRS is not a certification, an accreditation, or an audit opinion, and it does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework.</b> The engine is unvalidated and single-model, in operational validation. Reproducibility is disclosed rather than hidden, and <b>reproducibility is not accuracy and not validation</b>. No effectiveness claim is made. Every API response repeats this in its own payload, so a reviewer reading a raw response sees the same disclosure that appears here.</div>
+  <div class="callout-body"><b>JRS is not a certification, an accreditation, or an audit opinion, and it does not establish compliance with ISO/IEC 42001, the NIST AI RMF, the EU AI Act, or any other framework.</b> The historical automated evaluation approach was unvalidated and single-model; no claim of operational validity is established. Reproducibility is disclosed rather than hidden, and <b>reproducibility is not accuracy and not validation</b>. No effectiveness claim is made. Every API response repeats this in its own payload, so a reviewer reading a raw response sees the same disclosure that appears here.</div>
  </div>
  <p class="body-text">A security review of this endpoint is a review of data handling. It is not, and should not be presented internally as, evidence that the determinations are correct.</p>
 </div>
@@ -350,7 +353,7 @@ Content-Type: application/json</pre>
  <div class="site-footer-inner">
   <div class="footer-links">
    <a href="index.html" class="footer-link">Home</a>
-   <a href="enterprise.html" class="footer-link">Enterprise</a>
+   <a href="resources.html" class="footer-link">Practitioner resources</a>
    <a href="training.html" class="footer-link">Simulation Training</a>
    <a href="/api/dl?e=standard&amp;src=enterprise" class="footer-link">Review Controls PDF</a>
    <a href="mailto:info@jrsstandard.com" class="footer-link">Contact</a>
@@ -530,5 +533,6 @@ function trackClickAndNavigate(event, targetUrl, eventMetaData) {
   });
 })();
 </script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body>
 </html>

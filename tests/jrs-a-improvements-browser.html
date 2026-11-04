@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>JRS public guide accessibility smoke</title></head>
+<body><h1>JRS responsive and semantic smoke check</h1><pre id="result" role="status">Running</pre>
+<script>
+(async function(){
+  const pages=['/editions.html','/organization.html','/index.html'];
+  const widths=[320,390,768,1440];
+  const errors=[];
+  let count=0;
+  for(const page of pages)for(const width of widths){
+    const f=document.createElement('iframe');
+    f.title='Accessibility fixture '+page+' at '+width+'px';
+    f.style.width=width+'px'; f.style.height='700px'; f.style.border='0';
+    document.body.appendChild(f);
+    await new Promise(function(resolve,reject){
+      f.onload=resolve; f.onerror=()=>reject(Error('iframe load failed'));
+      f.src=page;
+    });
+    const d=f.contentDocument, w=f.contentWindow;
+    const root=d.documentElement;
+    const main=d.querySelector('main#main-content');
+    const title=d.querySelector('h1');
+    const nav=d.querySelector('nav[aria-label="Site"]');
+    const failure=[];
+    if(!main||!title||!nav)failure.push('landmarks');
+    if(root.scrollWidth>width+2)failure.push('horizontal overflow '+root.scrollWidth);
+    if(page!=='/index.html'){
+      const skip=d.querySelector('a.skip-link[href="#main-content"]');
+      const cards=[...d.querySelectorAll('.jrs-guide-grid article')];
+      const headings=cards.map(card=>card.querySelector(':scope > h2'));
+      if(!skip)failure.push('skip-link');
+      if(cards.length!==4||headings.some(h=>!h))failure.push('semantic card headings');
+      if(headings.some(h=>parseFloat(w.getComputedStyle(h).fontSize)<16))
+        failure.push('card heading readability');
+      if([...d.querySelectorAll('main h3')].length)failure.push('skipped heading hierarchy');
+      if(page==='/editions.html'){
+        const table=d.querySelector('table.jrs-version-table');
+        if(!table?.querySelector('caption')||
+            table.querySelectorAll('thead th[scope="col"]').length!==4)
+          failure.push('table caption or header associations');
+      }
+      const toggle=d.querySelector('button.jrs-global-nav-toggle');
+      if(!toggle || toggle.getAttribute('aria-controls')!==nav.id ||
+          toggle.getAttribute('aria-expanded')!=='false')
+        failure.push('mobile disclosure state');
+      else {
+        toggle.click();
+        if(toggle.getAttribute('aria-expanded')!=='true')
+          failure.push('disclosure open state');
+        d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+        if(toggle.getAttribute('aria-expanded')!=='false')
+          failure.push('Escape dismissal');
+      }
+    }
+    if(failure.length)errors.push({page,width,failure});
+    count++; f.remove();
+  }
+  document.getElementById('result').textContent=errors.length?
+    'FAIL '+JSON.stringify(errors):
+    'PASS '+count+'/'+count+' responsive route checks; guide headings, table associations and menu keyboard states verified';
+})();
+</script></body></html>

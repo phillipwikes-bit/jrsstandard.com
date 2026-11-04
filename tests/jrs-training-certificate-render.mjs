@@ -1,0 +1,142 @@
+// Behavioral regression of the local Training PNG certificate rendering.
+// Runs the actual production drawing function with a fake canvas. No calls
+// to participant, certificate issuance, or completion endpoints occur.
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+
+const html=readFileSync(new URL('../training.html',import.meta.url),'utf8');
+const start=html.indexOf('async function generateCert() {');
+const end=html.indexOf('\nfunction downloadCert() {',start);
+assert.ok(start>=0 && end>start,'training completion renderer missing');
+const code=html.slice(start,end);
+const downloadStart=html.indexOf('function downloadCert() {',end);
+const downloadEnd=html.indexOf('\nupdateProgressDisplay();',downloadStart);
+assert.ok(downloadStart>=0 && downloadEnd>downloadStart,'training PNG download function missing');
+const downloadCode=html.slice(downloadStart,downloadEnd);
+function fixture(value,ready=Promise.resolve()){
+  const drawn=[],colors=[],alerts=[],downloads=[],actions={style:{display:'none'}};
+  let completionCalls=0;
+  const input={
+    value,
+    addEventListener(type,handler){
+      assert.equal(type,'input');
+      this.inputHandler=handler;
+    },
+    changeTo(next){
+      this.value=next;
+      if(typeof this.inputHandler==='function')this.inputHandler();
+    }
+  };
+  const summary={hidden:true,textContent:''};
+  const context={
+    font:'normal 16px Georgia,serif',
+    fillRect(){},strokeRect(){},beginPath(){},moveTo(){},lineTo(){},stroke(){},
+    fillText(text,x,y){drawn.push({text,x,y,font:this.font,color:this.fillStyle})},
+    measureText(text){
+      const size=Number(this.font.match(/(\d+)px/)?.[1]||16);
+      return {width:String(text).length*size*.58};
+    },
+    set fillStyle(value){this._fillStyle=value;colors.push(value)},
+    get fillStyle(){return this._fillStyle},
+    lineWidth:0,strokeStyle:'',textAlign:'left'
+  };
+  const canvas={style:{display:'none'},dataset:{},getContext(){return context},
+    toDataURL(){return 'data:image/png;base64,dGVzdA=='}};
+  const byId={'cert-name':input,'cert-canvas':canvas,'cert-actions':actions,
+    'cert-accessible-summary':summary};
+  const env=vm.createContext({
+    document:{fonts:{ready},getElementById(id){return byId[id]},
+      createElement(tag){
+        assert.equal(tag,'a');
+        const a={download:'',href:'',click(){downloads.push({name:a.download,url:a.href})}};
+        return a;
+      }},
+    jrsSanitizeCheck(){return true},
+    recordCompletion(){completionCalls++},
+    alert(message){alerts.push(message)},
+    Date,Promise
+  });
+  vm.runInContext(code+'\n'+downloadCode+
+    '\nthis.generateCert=generateCert;this.downloadCert=downloadCert;',env,{timeout:500});
+  return {input,summary,drawn,colors,alerts,downloads,actions,canvas,
+    run:()=>env.generateCert(),download:()=>env.downloadCert(),
+    completions:()=>completionCalls};
+}
+
+const regular=fixture('  Jordan    Example  ');
+await regular.run();
+assert.equal(regular.alerts.length,0);
+assert.ok(regular.drawn.some(x=>x.text==='Jordan Example'),'name must be normalized, not dropped');
+assert.equal(regular.canvas.style.display,'block');
+assert.equal(regular.actions.style.display,'flex');
+assert.equal(regular.canvas.dataset.issuedName,'Jordan Example');
+assert.equal(regular.summary.hidden,false,'locally generated completion must have readable text');
+assert.match(regular.summary.textContent,/Jordan Example completed all six learning modules/);
+assert.match(regular.summary.textContent,/Not professional certification/);
+regular.download();
+assert.equal(regular.downloads.length,1);
+assert.equal(regular.downloads[0].name,'JRS-Completion-Jordan-Example.png');
+assert.equal(regular.completions(),1);
+regular.input.changeTo('Taylor Example');
+assert.equal(regular.summary.hidden,true,'recipient edit must hide stale readable record');
+assert.equal(regular.summary.textContent,'','recipient edit must clear stale readable record');
+assert.equal(regular.canvas.style.display,'none','recipient edit must hide stale visual record');
+assert.equal(regular.actions.style.display,'none','stale PNG download must be hidden');
+assert.equal(regular.canvas.dataset.issuedName,undefined,'old issued name must be invalidated');
+regular.download();
+assert.equal(regular.downloads.length,1,'stale recipient name must not produce misleading download');
+assert.equal(regular.completions(),1,'stale recipient should not record completion');
+assert.match(regular.alerts.at(-1),/name has changed/i);
+assert.ok(regular.colors.includes('#F5F7F8')&&regular.colors.includes('#17364F'));
+assert.ok(regular.drawn.some(x=>/RECORD OF COMPLETION/.test(x.text)));
+assert.ok(regular.drawn.some(x=>/not professional certification/i.test(x.text)));
+assert.ok(!regular.drawn.some(x=>/internal distribution/i.test(x.text)));
+
+const international=fixture('José María García');
+await international.run();
+international.download();
+assert.equal(international.downloads[0].name,'JRS-Completion-José-María-García.png',
+ 'international recipient names must not lose diacritics in the download');
+assert.ok(international.drawn.some(x=>x.text==='José María García'),
+ 'full international recipient name must remain on the certificate');
+
+const long='Alexandria Elizabeth-Margaret Jordan-James Montgomery Spencer Alexandra James';
+const wrapped=fixture(long);
+await wrapped.run();
+assert.equal(wrapped.alerts.length,0);
+const nameDraws=wrapped.drawn.filter(x=>x.font.includes('Georgia') && x.y>=218&&x.y<=264);
+assert.ok(nameDraws.length>=2&&nameDraws.length<=3,'long names must wrap legibly');
+assert.equal(nameDraws.map(x=>x.text).join(' '),long,'all name words must appear in order');
+assert.ok(nameDraws.every(x=>x.text.length*Number(x.font.match(/(\d+)px/)[1])*.58<=708),
+ 'name lines must fit canvas content width');
+
+const impossible=fixture('X'.repeat(240));
+await impossible.run();
+assert.equal(impossible.alerts.length,1,'unrenderable name must be disclosed');
+assert.equal(impossible.canvas.style.display,'none');
+assert.equal(impossible.actions.style.display,'none');
+assert.equal(impossible.summary.hidden,true,'unrenderable name must not show an accessible record');
+
+let releaseFont;
+const deferred=new Promise(resolve=>releaseFont=resolve);
+const delayed=fixture('Casey Reviewer',deferred);
+const drawing=delayed.run();
+assert.equal(delayed.drawn.length,0,'must wait for webfonts');
+releaseFont();
+await drawing;
+assert.ok(delayed.drawn.length>0);
+
+let releaseEdited;
+const waitingOnFonts=new Promise(resolve=>releaseEdited=resolve);
+const edited=fixture('Original Reviewer',waitingOnFonts);
+const staleGeneration=edited.run();
+edited.input.changeTo('Updated Reviewer');
+releaseEdited();
+await staleGeneration;
+assert.equal(edited.drawn.length,0,
+  'recipient edit during webfont loading must cancel obsolete rendering');
+assert.equal(edited.summary.hidden,true,
+  'cancelled generation must not issue an obsolete readable record');
+
+console.log('PASS: Training completion PNG uses institutional colors, waits for fonts, preserves wrapped names, prevents stale identities and fails without clipping.');

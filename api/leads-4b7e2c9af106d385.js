@@ -1,4 +1,6 @@
 import { ownerAccess } from './_owner-auth.js';
+import { fetchAll } from './_sb-fetch.js';
+import { OFFERS } from './_offer-config.js';
 export const config = { runtime: 'edge' };
 
 // OWNER-ONLY COMMERCIAL INBOX. Every lead, in full, newest first.
@@ -12,7 +14,7 @@ export const config = { runtime: 'edge' };
 //
 // Historical rationale below is superseded: this path appears in public source.
 // Owner bearer authentication now gates this route before DB use.
-// SECURED BY THIS OPAQUE, UNLINKED, NOINDEX URL. NO TOKEN.
+// The public path is not a control; ownerAccess() now gates all reads.
 // Same model as api/people-9dd1ecdf6f8cdfd4.js and
 // api/roster-8c3f1a9e7b2d6045.js, and the same rotation rule: if this slug ever
 // leaks, rename this file and update the one page that calls it.
@@ -38,6 +40,7 @@ const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 const LEAD_SOURCES = [
   'checkout-fallback',
   'enterprise-inquiry',
+  'site-inquiry',
   'org-pilot',
   'pilot'
 ];
@@ -47,6 +50,7 @@ const LEAD_SOURCES = [
 const LABEL = {
   'checkout-fallback': 'Checkout lead',
   'enterprise-inquiry': 'Enterprise inquiry',
+  'site-inquiry': 'Website inquiry',
   'org-pilot': 'Organisation pilot',
   'pilot': 'Direct contact'
 };
@@ -69,21 +73,15 @@ function str(v, n) {
   return String(v == null ? '' : v).slice(0, n || 300);
 }
 
-// TEST AND OWNER ROWS NEVER APPEAR IN THE INBOX.
+// HISTORICAL TEST MARKERS ARE HEURISTIC, NOT EVIDENCE.
 //
-// Three rows landed in the live inbox on 2026-08-25 from the repository audit's
-// end-to-end capture test. They were correctly stored, because the capture path
-// worked exactly as designed, and that is the point: this endpoint cannot tell a
-// real buyer from a self-test by looking at the write path, so it filters on the
-// content the test itself stamps.
-//
-// Filtering here is deliberate and is NOT a substitute for deleting the rows.
-// The dashboard is a queue of people waiting for a reply, and a test row in that
-// queue is noise that trains the reader to skim. Deletion needs the service key
-// and is the owner's action; this makes the queue correct in the meantime.
+// Earlier versions omitted records if names, emails or organization text
+// resembled smoke tests. That suppresses genuine inquiries as readily as tests
+// and makes the source population unreconstructable. Preserve every record,
+// report suspected fixtures as a separate count, and require human review
+// before treating a marker match as a verified test or deleting any row.
 const TEST_MARKERS = [
   'audit test',
-  'do not contact',
   'safe to delete',
   'selftest',
   'deploytest',
@@ -100,9 +98,9 @@ function isTestRow(row) {
   return false;
 }
 
-export default async function handler(req){
-  const denied = await ownerAccess(req);
-  if (denied) return denied;
+export default async function handler(req) {
+  const denied=await ownerAccess(req);
+  if(denied)return denied;
   if (req.method !== 'GET') return json({ error: 'method_not_allowed' }, 405);
 
   const env = (typeof process !== 'undefined' && process.env) || {};
@@ -114,33 +112,27 @@ export default async function handler(req){
     'Content-Type': 'application/json'
   };
 
-  const url = new URL(req.url);
-  const limit = Math.min(Math.max(parseInt(url.searchParams.get('limit') || '100', 10) || 100, 1), 500);
+  // Preserve complete source populations, not just the first 100/500 rows.
+  // Do not accept a user-supplied limit as authority to report partial totals.
 
   // ---- identified leads ----------------------------------------------------
   const inList = LEAD_SOURCES.map(function (s) { return '"' + s + '"'; }).join(',');
-  let rows = [];
-  try {
-    const r = await fetch(SB + '/rest/v1/pilot_contacts'
-      + '?select=created_at,name,email,organization,source,message'
+  const leadRead = await fetchAll(SB,
+    'pilot_contacts?select=created_at,name,email,organization,source,message'
       + '&source=in.(' + inList + ')'
-      + '&order=created_at.desc&limit=' + limit, { headers: H });
-    if (!r.ok) {
-      const t = await r.text();
-      return json({ error: 'db_read_failed', status: r.status,
-                    detail: String(t).slice(0, 300) }, 502);
-    }
-    rows = await r.json();
-  } catch (e) {
-    return json({ error: 'db_unreachable' }, 502);
-  }
-  if (!Array.isArray(rows)) rows = [];
+      + '&order=created_at.desc', H);
+  // The paginated reader returns partial rows on a failed later page.
+  // Those rows must never be displayed as a complete private inbox.
+  if (!leadRead.complete || !Array.isArray(leadRead.rows))
+    return json({error:'historical_leads_source_incomplete',complete:false},502);
+  const rows = leadRead.rows;
 
   const leads = [];
-  let suppressed = 0;
+  let possibleTestRows = 0;
   for (let i = 0; i < rows.length; i++) {
     const r = rows[i] || {};
-    if (isTestRow(r)) { suppressed++; continue; }
+    const possibleTest = isTestRow(r);
+    if (possibleTest) possibleTestRows++;
     let p = {};
     try { p = JSON.parse(r.message || '{}') || {}; } catch (e) { p = {}; }
     const src = str(r.source, 40);
@@ -154,6 +146,7 @@ export default async function handler(req){
     if (p.volume) detail.push(str(p.volume, 60));
     if (p.role) detail.push(str(p.role, 120));
     if (p.interest) detail.push(str(p.interest, 40));
+    if (p.category) detail.push(str(p.category, 40));
     if (p.platform) detail.push(str(p.platform, 160));
     if (p.scale) detail.push(str(p.scale, 40) + '/yr');
     if (p.timeline) detail.push(str(p.timeline, 40));
@@ -164,6 +157,7 @@ export default async function handler(req){
       at: r.created_at || null,
       source: src,
       label: LABEL[src] || src,
+      possible_test_marker: possibleTest,
       name: str(r.name, 120),
       email: str(r.email, 160),
       organization: str(r.organization, 160),
@@ -176,25 +170,31 @@ export default async function handler(req){
   // ---- anonymous pay-screen arrivals --------------------------------------
   // Kept apart from leads on purpose. These have no identity and must never be
   // shown in a way that suggests one is attached.
-  let arrivals = [];
-  try {
-    const r = await fetch(SB + '/rest/v1/interaction_events'
-      + '?select=created_at,payload&source=eq.checkout-click'
-      + '&order=created_at.desc&limit=' + limit, { headers: H });
-    arrivals = r.ok ? await r.json() : [];
-  } catch (e) {
-    arrivals = [];
-  }
-  if (!Array.isArray(arrivals)) arrivals = [];
+  const attemptRead = await fetchAll(SB,
+    'interaction_events?select=created_at,payload&source=eq.checkout-click'
+      + '&order=created_at.desc', H);
+  if (!attemptRead.complete || !Array.isArray(attemptRead.rows))
+    return json({error:'historical_attempts_source_incomplete',complete:false},502);
+  const arrivals = attemptRead.rows;
 
   const attempts = arrivals.map(function (a) {
     const p = (a || {}).payload || {};
+    const offer = str(p.offer, 40);
+    // Historical checkout offers are retired and deliberately hidden from the
+    // public pricing API. Resolve their archived face value here instead.
+    // A click is not a purchase, purchaser commitment or lost revenue.
+    const historic=Object.hasOwn(OFFERS,offer)?OFFERS[offer]:null;
+    const cataloguePrice=historic && typeof historic.price_usd==='number'
+      && Number.isFinite(historic.price_usd) && historic.price_usd>=0
+      ? historic.price_usd:null;
     return {
       at: a.created_at || null,
-      offer: str(p.offer, 40),
+      offer: offer,
       state: str(p.state, 40),
       from: str(p.src, 60),
-      country: str(p.country, 2)
+      country: str(p.country, 2),
+      historical_catalogue_price_usd: cataloguePrice,
+      offer_retired: !!(historic && historic.retired === true)
     };
   });
 
@@ -202,17 +202,22 @@ export default async function handler(req){
 
   return json({
     generated_at: new Date().toISOString(),
+    complete: true,
+    sources: ['pilot_contacts', 'interaction_events'],
     leads: leads,
     lead_count: leads.length,
-    // Reported rather than hidden. A count that silently drops rows is the same
-    // defect this programme measures, so the number of suppressed rows is shown
-    // and the owner can see that suppression is happening at all.
-    suppressed_test_rows: suppressed,
+    // No records omitted based on free-text patterns; test marker matches may
+    // be genuine inquiries and must be assessed by the owner.
+    source_row_count: rows.length,
+    possible_test_rows: possibleTestRows,
+    test_marker_basis: 'Heuristic match in name, email or organization; not confirmed synthetic',
+    retained_source_rows: leads.length,
     attempts: attempts,
     attempt_count: attempts.length,
     attempts_unconfigured: unconfigured,
-    note: 'Owner-only. Carries names, emails and organisations. Secured by an '
-        + 'opaque unlinked URL with no token, matching the other owner surfaces. '
+    attempt_price_basis: 'Archived listed offer prices, not purchase commitments or lost revenue',
+    note: 'Owner-only. Carries all source names, emails and organisations including possible test-marker matches; no text-based omission. Secured by an '
+        + 'server owner authentication. '
         + 'Pay-screen attempts are anonymous by definition and are listed '
         + 'separately from identified leads.'
   });

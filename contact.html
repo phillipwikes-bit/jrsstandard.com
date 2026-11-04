@@ -36,8 +36,9 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
 @media(max-width:650px){.form-fields{grid-template-columns:1fr}.form-fields .wide{grid-column:auto}}
 </style>
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
+<link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
 </head>
-<body>
+<body class="jrs-institutional">
 <a class="skip" href="#main">Skip to content</a>
 <header><a href="/">JRS™</a></header>
 <!-- JRS SITE NAV v1 :: CANONICAL BLOCK. Byte-identical on every page that carries it. -->
@@ -58,6 +59,7 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
  <section class="card" aria-labelledby="inquiry-title">
   <h2 id="inquiry-title">Send an inquiry</h2>
   <p>Complete the fields and select Submit inquiry. JRS uses its existing Formspree submission service to receive the message and send a notification to the designated JRS Gmail inbox. No email application is required. Do not include case records, confidential documents or personal information about other people.</p>
+  <p class="small">For an accessible-format request, select the accessibility category and identify the document title, edition and format needed. This is a request for assistance, not a representation that any PDF has passed an accessibility audit or that a replacement format is already available.</p>
   <form id="jrs-inquiry" action="https://formspree.io/f/mreddwdg" method="POST">
    <div class="form-fields">
     <div><label for="contact-name">Name *</label><input id="contact-name" name="name" autocomplete="name" required minlength="2" maxlength="120"></div>
@@ -69,7 +71,7 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
      <option value="research">Research and collaboration</option>
      <option value="training">Free guides, training and references</option>
      <option value="organization">Organizational practitioner use</option>
-     <option value="accessibility">Accessibility or corrections</option>
+     <option value="accessibility">Accessibility, alternative document formats, or corrections</option>
      <option value="general">Other professional inquiry</option>
     </select></div>
     <div class="wide"><label for="contact-message">Message (12 to 1,200 characters) *</label><textarea id="contact-message" name="message" required minlength="12" maxlength="1200" rows="6" placeholder="Describe the general question. Do not include records or personal details about third parties."></textarea></div>
@@ -130,4 +132,5 @@ p{max-width:780px;color:var(--muted)}.card{background:var(--panel);border:1px so
   });
 })();
 </script>
+<script src="/assets/jrs-mobile-navigation.js" defer></script>
 </body></html>

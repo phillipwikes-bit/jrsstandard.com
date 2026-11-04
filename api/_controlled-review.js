@@ -10,7 +10,8 @@ const PUBLIC_STATUS = Object.freeze({
     'independent_labeled_and_adjudicated_holdout_evaluation',
     'operator_control_evidence',
     'counsel_review_of_real_data_flows_and_claims',
-    'recorded_owner_release_authorization'
+    'recorded_owner_release_authorization',
+    'independent_production_quality_assurance'
   ]
 });
 
@@ -34,7 +35,7 @@ export function unavailable(req, options = {}, maybeOptions) {
     });
   }
   if (!methods.includes(req.method)) {
-    const body = { error: 'method_not_allowed', detail: 'Use ' + methods.join(' or ') + '.' };
+    const body = { error: 'method_not_allowed', detail: 'The JRS Review Engine is closed to public submissions. Do not submit record text.' };
     if (options.apiVersion) body.api_version = 'v1';
     return respond(res, 405, body, headers);
   }

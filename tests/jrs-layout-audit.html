@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><title>JRS local viewport audit</title></head>
+<body><h1>JRS structural rendering audit (local source)</h1><pre id="results">Pending</pre>
+<script>
+(async function(){
+ const checks=[
+  {page:'index.html',width:390,selector:'.jr-action-main',maxTop:740},
+  {page:'resources.html',width:390,selector:'.jrs-resource-primary-actions a',maxTop:660},
+  {page:'jrsstandard.html',width:390,selector:'.core-principle-text',maxTop:1050},
+  {page:'training.html',width:390,selector:'.hero-ctas a',maxTop:790},
+  {page:'training.html',width:390,selector:'#training-modules h2',maxTop:990},
+  {page:'index.html',width:320,selector:'.jr-action-main',maxTop:890},
+  {page:'resources.html',width:320,selector:'.jrs-resource-primary-actions a',maxTop:780},
+  {page:'resources.html',width:1440,selector:'.jrs-resource-primary-actions a',maxTop:520},
+  {page:'jrsstandard.html',width:1440,selector:'.page-title',maxTop:560},
+  {page:'training.html',width:1440,selector:'.hero-ctas a',maxTop:580},
+  {page:'investigator-guides.html',width:390,selector:'main h1',maxTop:720},
+  {page:'research.html',width:390,selector:'main h1',maxTop:720},
+  {page:'reference/index.html',width:390,selector:'main h1',maxTop:720},
+  {page:'check.html',width:390,selector:'main h1',maxTop:720},
+  {page:'simulations.html',width:390,selector:'main h1',maxTop:720},
+  {page:'codebook.html',width:390,selector:'main h1',maxTop:720},
+  {page:'research-summary.html',width:390,selector:'main h1',maxTop:720},
+  {page:'reviewer/index.html',width:390,selector:'main h1',maxTop:720},
+  {page:'investigator-guides.html',width:390,selector:'.jrs-guide-quick-actions a',maxTop:610},
+  {page:'research.html',width:390,selector:'.jrs-research-primary-links a',maxTop:760},
+  {page:'codebook.html',width:390,selector:'.jrs-codebook-quick a',maxTop:690}
+ ];
+ const records=[];
+ for(const item of checks){
+  const f=document.createElement('iframe');
+  f.width=item.width;
+  f.height=1100;
+  f.style.cssText='width:'+item.width+'px;height:1100px;border:0;display:block';
+  f.title=item.page+' '+item.width;
+  const loaded=new Promise((resolve,reject)=>{
+   f.addEventListener('load',resolve,{once:true});
+   f.addEventListener('error',()=>reject(Error('load failed')),{once:true});
+  });
+  // Navigate before inserting the frame so its first load event is for the target.
+  f.src='/'+item.page;
+  document.body.appendChild(f);
+  try{
+   await loaded;
+   // A load event is not a stable render boundary. Wait for the page action
+   // and deferred shared menu before measuring either geometry or accessibility.
+   for(let attempts=0;attempts<24;attempts++){
+     if(f.contentDocument?.querySelector(item.selector) &&
+        f.contentDocument?.querySelector('.jrs-global-nav-toggle'))break;
+     await new Promise(resolve=>setTimeout(resolve,90));
+   }
+   await new Promise(resolve=>setTimeout(resolve,100));
+   const d=f.contentDocument,w=f.contentWindow;
+   const action=d.querySelector(item.selector);
+   const nav=d.querySelector('nav.jrs-sitenav');
+   const toggle=d.querySelector('.jrs-global-nav-toggle');
+   const narrow=item.width<=760;
+   const before=nav? w.getComputedStyle(nav).display:null;
+   const buttonDisplay=toggle? w.getComputedStyle(toggle).display:null;
+   let opened=false,closed=false;
+   if(narrow && toggle && nav){
+    toggle.click();
+    opened=toggle.getAttribute('aria-expanded')==='true' && w.getComputedStyle(nav).display!=='none';
+    toggle.click();
+    closed=toggle.getAttribute('aria-expanded')==='false' && w.getComputedStyle(nav).display==='none';
+   }
+   const top=action? Math.round(action.getBoundingClientRect().top):null;
+   const scrollWidth=d.documentElement.scrollWidth;
+   const vw=w.innerWidth;
+   // At desktop widths the Standard's long-form document must use balanced
+   // outer gutters. A max-width alone previously left the reading pane
+   // anchored at x=0 with hundreds of pixels unused on the right.
+   let documentCenteredValid=true;
+   if(item.page==='jrsstandard.html' && item.width>=1200){
+     const surface=d.querySelector('main#main-content');
+     const rect=surface?.getBoundingClientRect();
+     const usable=d.documentElement.clientWidth;
+     documentCenteredValid=!!rect && rect.width>=900 &&
+       Math.abs(rect.left-(usable-rect.right))<=20;
+   }
+   const title=d.title;
+   const controlsValid=!!toggle && toggle.getAttribute('aria-controls')===nav?.id;
+   let escapeClosed=true;
+   if(narrow && toggle && nav){
+     toggle.click();
+     d.dispatchEvent(new w.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
+     escapeClosed=toggle.getAttribute('aria-expanded')==='false' &&
+       w.getComputedStyle(nav).display==='none' && d.activeElement===toggle;
+   }
+   // Expanded mobile navigation must also close when keyboard focus moves to
+   // a different landmark, not only on pointer clicks or Escape.
+   let focusLeaveClosed=true;
+   if(narrow && toggle && nav){
+     const external=d.querySelector('.wordmark')?.closest('a[href]')||d.querySelector('a[href]');
+     focusLeaveClosed=!!external && !nav.contains(external);
+     if(focusLeaveClosed){
+       toggle.click();
+       external.focus();
+       focusLeaveClosed=toggle.getAttribute('aria-expanded')==='false' &&
+         w.getComputedStyle(nav).display==='none';
+     }
+   }
+   // No horizontal overflow tolerance: one pixel is a failure, not a rounding allowance.
+   const overflowElements=scrollWidth>vw ? [...d.body.querySelectorAll('*')]
+     .filter(e=>{const rect=e.getBoundingClientRect();return rect.width>0 && rect.right>vw+0.5;})
+     .slice(0,8).map(e=>({element:e.tagName.toLowerCase(),
+       selector:e.id?'#'+e.id:(e.className&&typeof e.className==='string'?'.'+e.className.trim().split(/\\s+/).slice(0,2).join('.'):e.tagName.toLowerCase()),
+       right:Math.round(e.getBoundingClientRect().right)})) : [];
+   // Verify that the secondary Standard document index is actually functional,
+   // closed initially at both viewport sizes, and closes after selecting a section.
+   let documentIndexValid=true;
+   if(item.page==='jrsstandard.html'){
+     const sectionToggle=d.getElementById('nav-hamburger');
+     const sectionMenu=d.getElementById('primary-nav-items');
+     const selectConditions=sectionMenu?.querySelector('button[onclick="showSection(\'doccond\')"]');
+     documentIndexValid=!!sectionToggle && !!sectionMenu && !!selectConditions &&
+       sectionToggle.getAttribute('aria-controls')==='primary-nav-items' &&
+       w.getComputedStyle(sectionMenu).display==='none';
+     if(documentIndexValid){
+       sectionToggle.click();
+       documentIndexValid=sectionToggle.getAttribute('aria-expanded')==='true' &&
+         w.getComputedStyle(sectionMenu).display!=='none';
+       selectConditions.click();
+       documentIndexValid=documentIndexValid &&
+         sectionToggle.getAttribute('aria-expanded')==='false' &&
+         w.getComputedStyle(sectionMenu).display==='none' &&
+         !!d.querySelector('#section-doccond.page-section.active') &&
+         d.getElementById('section-doccond').contains(d.activeElement);
+     }
+   }
+   // Moving between an interactive role card and its detail panel must not
+   // abandon keyboard focus in the hidden role-selection subtree.
+   let roleFocusValid=true,roleFocusIssue='';
+   if(item.page==='jrsstandard.html'){
+     roleFocusValid=typeof w.showSection==='function' &&
+       typeof w.showRoleEnv==='function' && typeof w.showRolesMenu==='function';
+     if(roleFocusValid){
+       w.showSection('roles');
+       w.showRolesMenu();
+       const selectedRole=d.querySelector('#roles-menu .role-card[onclick]');
+       roleFocusValid=!!selectedRole;
+       if(selectedRole){
+         selectedRole.focus();
+         const focusBeforeClick=d.activeElement===selectedRole;
+         const rolesSection=d.getElementById('section-roles');
+         const roleSectionActive=!!rolesSection && rolesSection.classList.contains('active');
+         const roleSectionDisplay=rolesSection?w.getComputedStyle(rolesSection).display:null;
+         selectedRole.click();
+         const roleTitle=d.querySelector('#role-env-content h2');
+         const focusAfterClick=!!roleTitle && d.activeElement===roleTitle;
+         const roleMenuHidden=w.getComputedStyle(d.getElementById('roles-menu')).display==='none';
+         roleFocusValid=roleFocusValid && !!roleTitle && focusAfterClick && roleMenuHidden;
+         w.showRolesMenu();
+         const returnFocus=d.activeElement===selectedRole;
+         const returnMenu=w.getComputedStyle(d.getElementById('roles-menu')).display!=='none';
+         roleFocusValid=roleFocusValid && returnFocus && returnMenu;
+         if(!roleFocusValid)roleFocusIssue=JSON.stringify({
+           focusBeforeClick,roleSectionActive,roleSectionDisplay,
+           focusAfterClick,roleMenuHidden,
+           currentActive:d.activeElement?.outerHTML?.slice(0,150),
+           returnFocus,returnMenu,roleTabIndex:selectedRole.getAttribute('tabindex'),
+           roleSelected:w.jrsSelectedRoleEnv||null,
+           focusChain:(function(){
+             var chain=[],el=selectedRole;
+             while(el && chain.length<14){
+               var computed=w.getComputedStyle(el);
+               chain.push({
+                 id:el.id||null,cls:String(el.className||'').slice(0,60),
+                 display:computed.display,visibility:computed.visibility,
+                 inert:!!el.inert,hidden:!!el.hidden,
+                 rects:el.getClientRects().length
+               });
+               el=el.parentElement;
+             }
+             return chain;
+           })()
+         });
+       }
+     }
+   }
+   // Review Examples had a navigation control but no corresponding DOM
+   // section. It now resolves to the published Use Cases collection and
+   // rejects unknown destinations without blanking existing content.
+   let scenarioNavValid=true;
+   if(item.page==='jrsstandard.html'){
+     w.showSection('scenarios');
+     const cases=d.getElementById('section-usecases');
+     scenarioNavValid=!!cases && cases.classList.contains('active') &&
+       w.getComputedStyle(cases).display!=='none' && cases.contains(d.activeElement);
+     if(scenarioNavValid){
+       w.showSection('missing-destination');
+       scenarioNavValid=cases.classList.contains('active') &&
+         w.getComputedStyle(cases).display!=='none';
+     }
+   }
+   // The restored Standard worked examples must expose all five tab
+   // groups and fifteen panels, with keyboard navigation that actually
+   // changes the visible content and announced selected state.
+   let workedExampleTabsValid=true;
+   if(item.page==='jrsstandard.html'){
+     const groups=[...d.querySelectorAll('.scenario-block .scenario-tabs')];
+     workedExampleTabsValid=groups.length===5 && groups.every(group=>{
+       const tabs=[...group.querySelectorAll('button[role="tab"]')];
+       return group.getAttribute('role')==='tablist' &&
+         !!group.getAttribute('aria-label') && tabs.length===3 &&
+         tabs.filter(tab=>tab.getAttribute('aria-selected')==='true').length===1 &&
+         tabs.every(tab=>{
+           const panel=d.getElementById(tab.getAttribute('aria-controls')||'');
+           return !!panel && group.closest('.scenario-block').contains(panel) &&
+             panel.getAttribute('role')==='tabpanel' &&
+             panel.getAttribute('aria-labelledby')===tab.id &&
+             (panel.hidden===(tab.getAttribute('aria-selected')!=='true'));
+         });
+     });
+     if(workedExampleTabsValid){
+       const group=groups.find(group=>group.querySelector('[aria-controls="uc1-context"]'));
+       const tabs=group?[...group.querySelectorAll('button[role="tab"]')]:[];
+       workedExampleTabsValid=tabs.length===3;
+       if(workedExampleTabsValid){
+         tabs[0].focus();
+         tabs[0].dispatchEvent(new w.KeyboardEvent('keydown',{
+           key:'ArrowRight',bubbles:true,cancelable:true
+         }));
+         const selected=d.getElementById('uc1-review');
+         const previous=d.getElementById('uc1-context');
+         workedExampleTabsValid=d.activeElement===tabs[1] &&
+           tabs[1].getAttribute('aria-selected')==='true' &&
+           tabs[1].tabIndex===0 && tabs[0].tabIndex===-1 &&
+           !selected.hidden && previous.hidden &&
+           w.getComputedStyle(selected).display!=='none';
+         tabs[0].click();
+       }
+     }
+   }
+   // The mobile simulation choices must remain usable after being stacked.
+   let simulationControlsValid=true;
+   if(item.page==='training.html' && narrow){
+     const second=d.getElementById('sim-tab-1');
+     const first=d.getElementById('sim-tab-0');
+     simulationControlsValid=!!second && !!first && !!w.showSimTab;
+     if(simulationControlsValid){
+       second.click();
+       simulationControlsValid=second.getAttribute('aria-pressed')==='true' &&
+         first.getAttribute('aria-pressed')==='false' &&
+         w.getComputedStyle(d.getElementById('sim-panel-1')).display!=='none';
+       first.click();
+       simulationControlsValid=simulationControlsValid && first.getAttribute('aria-pressed')==='true';
+     }
+   }
+   // Optional training enrollment must behave as a keyboard-operable dialog.
+   // No consent, registration, completion or external write is submitted here.
+   let enrollmentDialogValid=true, enrollmentDialogIssue='';
+   let moduleDisclosureValid=true;
+   if(item.page==='training.html' && narrow){
+     const dialog=d.getElementById('enroll-overlay');
+     const trigger=d.querySelector('button[onclick="openEnroll()"]');
+     const nameInput=d.getElementById('en-name');
+     const moduleButton=d.getElementById('module-btn-0');
+     const modulePanel=d.getElementById('module-panel-0');
+     moduleDisclosureValid=!!moduleButton && !!modulePanel;
+     if(moduleDisclosureValid){
+       moduleButton.click();
+       moduleDisclosureValid=moduleButton.getAttribute('aria-expanded')==='true' &&
+         w.getComputedStyle(modulePanel).display!=='none';
+       moduleButton.click();
+       moduleDisclosureValid=moduleDisclosureValid &&
+         moduleButton.getAttribute('aria-expanded')==='false' &&
+         w.getComputedStyle(modulePanel).display==='none';
+     }
+     enrollmentDialogValid=!!dialog && !!trigger && !!nameInput &&
+       typeof w.openEnroll==='function' && typeof w.dismissEnroll==='function';
+     if(enrollmentDialogValid){
+       const background=[...d.body.children].find(el=>el!==dialog && el.tagName!=='SCRIPT');
+       const priorInert=background ? background.inert : false;
+       const visibleClose=d.getElementById('en-close');
+       trigger.focus();
+       w.openEnroll();
+       enrollmentDialogValid=dialog.getAttribute('role')==='dialog' &&
+         dialog.getAttribute('aria-modal')==='true' &&
+         dialog.getAttribute('aria-labelledby')==='en-dialog-title' &&
+         d.activeElement===nameInput &&
+         !!visibleClose && w.getComputedStyle(visibleClose).display!=='none' &&
+         !!background && background.inert===true &&
+         w.getComputedStyle(dialog).display!=='none';
+       const focusables=[...dialog.querySelectorAll(
+         'a[href],button:not([disabled]),input:not([disabled]):not([type="hidden"]),select:not([disabled]),textarea:not([disabled])'
+       )].filter(el=>el.getClientRects().length>0);
+       const first=focusables[0],last=focusables.at(-1);
+       if(enrollmentDialogValid && first && last){
+         first.focus();
+         first.dispatchEvent(new w.KeyboardEvent('keydown',
+           {key:'Tab',shiftKey:true,bubbles:true,cancelable:true}));
+         enrollmentDialogValid=d.activeElement===last;
+         last.dispatchEvent(new w.KeyboardEvent('keydown',
+           {key:'Tab',bubbles:true,cancelable:true}));
+         enrollmentDialogValid=enrollmentDialogValid && d.activeElement===first;
+       }else enrollmentDialogValid=false;
+       d.dispatchEvent(new w.KeyboardEvent('keydown',
+         {key:'Escape',bubbles:true,cancelable:true}));
+       enrollmentDialogValid=enrollmentDialogValid &&
+         w.getComputedStyle(dialog).display==='none' &&
+         background.inert===priorInert &&
+         d.activeElement===trigger &&
+         !d.body.classList.contains('jrs-training-dialog-open');
+     }
+     if(!enrollmentDialogValid) enrollmentDialogIssue='Dialog labeling, focus trap, Escape or focus restoration failed';
+   }
+   // Complete the six-module local training journey without registration or
+   // live participant writes. Restore state so this audit is non-persistent.
+   let trainingJourneyValid=true, trainingJourneyIssue='';
+   if(item.page==='training.html' && narrow){
+     const originalProgress=w.progress;
+     const keys=['jrs-training-progress','jrs-training-enrolled',
+                 'jrs-training-email','jrs-training-completed-sent'];
+     const saved={};
+     const originalRecorder=w.jrsRec;
+     try {
+       for(const key of keys) saved[key]=w.localStorage.getItem(key);
+       w.progress={};
+       for(const key of keys) w.localStorage.removeItem(key);
+       // This browser test is not a participant. Do not record training analytics.
+       w.jrsRec=function(){};
+       for(let module=0;module<6;module++) w.markComplete(module);
+       const progress=d.getElementById('progress-display');
+       const bar=d.getElementById('progress-bar');
+       const section=d.getElementById('cert-section');
+       const heading=d.getElementById('cert-heading');
+       const stored=JSON.parse(w.localStorage.getItem('jrs-training-progress')||'{}');
+       trainingJourneyValid=!!progress && progress.getAttribute('aria-live')==='polite' &&
+         /Complete.*6 of 6/.test(progress.textContent) &&
+         !!bar && bar.getAttribute('role')==='progressbar' &&
+         bar.getAttribute('aria-valuenow')==='6' &&
+         !!section && w.getComputedStyle(section).display!=='none' &&
+         !!heading && d.activeElement===heading &&
+         [0,1,2,3,4,5].every(i=>stored[i]===true) &&
+         !w.localStorage.getItem('jrs-training-completed-sent');
+       // Generate the actual browser canvas (not the VM fake) without requesting
+       // a registration, a contact record or a server-issued credential.
+       if(trainingJourneyValid){
+         const recipient=d.getElementById('cert-name');
+         const canvas=d.getElementById('cert-canvas');
+         const actions=d.getElementById('cert-actions');
+         if(recipient && canvas && actions && typeof w.generateCert==='function'){
+           recipient.value='Browser Audit Reviewer';
+           await w.generateCert();
+           const png=canvas.toDataURL('image/png');
+           trainingJourneyValid=canvas.dataset.issuedName==='Browser Audit Reviewer' &&
+             canvas.width===900 && canvas.height===636 &&
+             w.getComputedStyle(canvas).display!=='none' &&
+             w.getComputedStyle(actions).display!=='none' &&
+             png.startsWith('data:image/png;base64,') && png.length>1500;
+           if(trainingJourneyValid){
+             // Completed modules remain readable and must not announce
+             // an expanded state after a different module closes them.
+             const btn0=d.getElementById('module-btn-0');
+             const btn1=d.getElementById('module-btn-1');
+             w.toggleModule(0);
+             const firstOpen=btn0.getAttribute('aria-expanded')==='true';
+             w.toggleModule(1);
+             trainingJourneyValid=firstOpen &&
+               btn0.getAttribute('aria-expanded')==='false' &&
+               btn1.getAttribute('aria-expanded')==='true' &&
+               w.getComputedStyle(d.getElementById('module-panel-0')).display==='none';
+             w.toggleModule(1);
+             trainingJourneyValid=trainingJourneyValid &&
+               btn1.getAttribute('aria-expanded')==='false';
+           }
+         }else trainingJourneyValid=false;
+       }
+     }catch(e){
+       trainingJourneyValid=false;
+       trainingJourneyIssue=String(e);
+     }finally{
+       w.progress=originalProgress;
+       w.jrsRec=originalRecorder;
+       for(const key of keys){
+         if(saved[key]===undefined) continue;
+         try{
+           if(saved[key]===null) w.localStorage.removeItem(key);
+           else w.localStorage.setItem(key,saved[key]);
+         }catch(e){}
+       }
+     }
+     if(!trainingJourneyValid && !trainingJourneyIssue)
+       trainingJourneyIssue='Six modules failed local completion/progress/certificate gate';
+   }
+   // Full resource-finder interaction: progressively enhanced search, format,
+   // responsibility filters, no-match announcement and keyboard-focused reset.
+   let catalogValid=true;
+   let catalogIssue='';
+   if(item.page==='resources.html'){
+     const search=d.getElementById('jrs-resource-search');
+     const query=d.getElementById('jrs-resource-query');
+     const role=d.getElementById('jrs-resource-role');
+     const format=d.getElementById('jrs-resource-format');
+     const clear=d.getElementById('jrs-resource-reset');
+     const count=d.getElementById('jrs-resource-count');
+     const empty=d.getElementById('jrs-resource-empty');
+     const grid=d.getElementById('jrs-resource-results');
+     const items=grid?[...grid.querySelectorAll('.jrs-resource-entry')]:[];
+     const visible=()=>items.filter(e=>!e.hidden).length;
+     const shown=()=>items.filter(e=>!e.hidden && w.getComputedStyle(e).display!=='none').length;
+     catalogValid=!!search && !search.hidden && !!query && !!role &&
+       !!format && !!clear && !!count && !!empty && items.length===16 &&
+       visible()===16 && shown()===16 &&
+       count.getAttribute('aria-live')==='polite';
+     if(catalogValid){
+       query.value='housing';query.dispatchEvent(new w.Event('input',{bubbles:true}));
+       catalogValid=visible()===1 && shown()===1 && /1 of 16/.test(count.textContent);
+       query.value='';query.dispatchEvent(new w.Event('input',{bubbles:true}));
+       format.value='PDF';format.dispatchEvent(new w.Event('change',{bubbles:true}));
+       catalogValid=catalogValid && visible()===6 && shown()===6;
+       role.value='training';role.dispatchEvent(new w.Event('change',{bubbles:true}));
+       catalogValid=catalogValid && visible()===1 && shown()===1;
+       query.value='zz-no-match-zz';query.dispatchEvent(new w.Event('input',{bubbles:true}));
+       catalogValid=catalogValid && visible()===0 && !empty.hidden &&
+         /0 of 16/.test(count.textContent);
+       clear.click();
+       catalogValid=catalogValid && visible()===16 && shown()===16 &&
+         empty.hidden && role.value==='all' && format.value==='all' &&
+         query.value==='' && d.activeElement===query;
+     }
+     if(!catalogValid)catalogIssue='Search/filter/zero-state/keyboard reset or 16-item catalog failed';
+   }
+   // Measured visual contrast and publication-metadata readability.
+   // A current-page link must not regress to pale gold on a light background.
+   const colorRGB=value=>{const m=value.match(/rgba?\(([^)]+)\)/);
+     return m?m[1].split(',').slice(0,3).map(Number):null;};
+   const relativeLuminance=rgb=>rgb.map(v=>v/255)
+     .map(v=>v<=0.04045?v/12.92:Math.pow((v+0.055)/1.055,2.4))
+     .reduce((sum,v,i)=>sum+v*[.2126,.7152,.0722][i],0);
+   const wcagContrast=(fg,bg)=>{
+     const a=colorRGB(fg),b=colorRGB(bg);
+     if(!a||!b)return 0;
+     const A=relativeLuminance(a),B=relativeLuminance(b);
+     return (Math.max(A,B)+0.05)/(Math.min(A,B)+0.05);
+   };
+   // Resource controls must have perceptible borders on their white surfaces
+   // even without keyboard focus. WCAG non-text boundary target: >=3:1.
+   const searchControlBorderContrast=item.page==='resources.html' ?
+     ['jrs-resource-query','jrs-resource-role','jrs-resource-format']
+       .map(id=>d.getElementById(id))
+       .map(el=>el?wcagContrast(w.getComputedStyle(el).borderTopColor,
+         w.getComputedStyle(el).backgroundColor):0) : [];
+   const searchControlBordersValid=searchControlBorderContrast.every(x=>x>=3);
+   // Composite translucent/transparent backgrounds over their actual parents.
+   // Transparent CSS cannot be treated as black: doing so falsely fails
+   // dark text on the white site-navigation surface.
+   const effectiveBackground=element=>{
+     const parents=[];
+     for(let e=element;e;e=e.parentElement)parents.unshift(e);
+     let behind=[255,255,255];
+     parents.forEach(e=>{
+       const raw=w.getComputedStyle(e).backgroundColor;
+       const match=raw.match(/rgba?\(([^)]+)\)/);
+       if(!match)return;
+       const parts=match[1].split(',').map(Number);
+       if(parts.length<3||parts.slice(0,3).some(v=>!Number.isFinite(v)))return;
+       const alpha=parts.length>3&&Number.isFinite(parts[3])?Math.max(0,Math.min(1,parts[3])):1;
+       behind=behind.map((under,i)=>parts[i]*alpha+under*(1-alpha));
+     });
+     return 'rgb('+behind.map(x=>Math.round(x)).join(', ')+')';
+   };
+   const activeLink=d.querySelector('nav.jrs-sitenav a[aria-current="page"]');
+   const activeForeground=activeLink?w.getComputedStyle(activeLink).color:null;
+   const activeRawBackground=activeLink?w.getComputedStyle(activeLink).backgroundColor:null;
+   const activeBackground=activeLink?effectiveBackground(activeLink):null;
+   const activeContrast=activeLink?wcagContrast(activeForeground,activeBackground):null;
+   const contrastValid=item.page==='jrsstandard.html' ?
+     activeContrast!==null && activeContrast>=4.5 : activeContrast===null || activeContrast>=4.5;
+   const meta=d.querySelector('.meta-line');
+   const metaFontSize=meta?Number.parseFloat(w.getComputedStyle(meta).fontSize):null;
+   const metadataValid=!meta || metaFontSize>=12;
+   // Editorial A-gate: distinguish publication editions, preserve expandable
+   // explanatory material, and avoid hiding the training or evidence boundary.
+   let editorialValid=true;
+   let editorialIssue='';
+   if(item.page==='jrsstandard.html'){
+     const eyebrow=d.querySelector('#section-home .page-eyebrow');
+     const edition=d.querySelector('#section-home .jrs-edition-note');
+     const context=d.querySelector('#section-home .jrs-standard-context');
+     const controls=d.querySelector('#section-home .jrs-publication-notes details');
+     editorialValid=!!eyebrow && /online methodology/i.test(eyebrow.textContent) &&
+       /Version 1\.0/i.test(eyebrow.textContent) &&
+       !!edition && /Separate publication/i.test(edition.textContent) &&
+       /Version 2\.0/i.test(edition.textContent) &&
+       /equivalence has not been established/i.test(edition.textContent) &&
+       !!context && !context.open && !!controls &&
+       /not software/i.test(context.textContent);
+     if(editorialValid){
+       w.showSection('home');
+       context.querySelector('summary').click();
+       editorialValid=context.open &&
+         /No case-record submission/.test(context.textContent);
+       context.querySelector('summary').click();
+       editorialValid=editorialValid && !context.open;
+     }else editorialIssue='Standard edition identity or preserved context unavailable';
+   }
+   if(item.page==='training.html'){
+     const info=d.querySelector('.jrs-training-context');
+     const desk=d.querySelector('.jrs-training-desk-reference');
+     const firstModule=d.getElementById('module-row-0');
+     const firstModuleTop=firstModule?Math.round(firstModule.getBoundingClientRect().top):null;
+     const status=d.querySelector('.module-status');
+     const outcome=d.querySelector('.module-outcome');
+     const moduleTextValid=!!status && !!outcome &&
+       parseFloat(w.getComputedStyle(status).fontSize)>=12 &&
+       parseFloat(w.getComputedStyle(outcome).fontSize)>=14;
+     editorialValid=editorialValid && moduleTextValid && !!info && !info.open &&
+       !!info.querySelector('.hero-tags') &&
+       /Operates within existing workflows/.test(info.textContent) &&
+       !!desk && !desk.open && !!firstModule &&
+       (item.width>760 || firstModuleTop<=1100) &&
+       /Standard PDF is Version 2\.0/.test(desk.textContent);
+     if(editorialValid){
+       desk.querySelector('summary').click();
+       editorialValid=desk.open && !!desk.querySelector('a[href*="api/dl"]');
+       desk.querySelector('summary').click();
+       editorialValid=editorialValid && !desk.open;
+     }
+     if(!editorialValid)editorialIssue=JSON.stringify({
+       info:!!info,infoClosed:!!info&&!info.open,tags:!!info?.querySelector('.hero-tags'),
+       desk:!!desk,deskClosed:!!desk&&!desk.open,firstModule:!!firstModule,firstModuleTop,
+       statusFont:status?parseFloat(w.getComputedStyle(status).fontSize):null,
+       outcomeFont:outcome?parseFloat(w.getComputedStyle(outcome).fontSize):null,
+       oldEdition:!!desk && /Standard PDF is Version 2\\.0/.test(desk.textContent),
+       moduleTextValid
+     });
+   }
+   if(item.page==='research.html'){
+     const boundary=d.querySelector('.boundary');
+     const tm=d.querySelector('.wordmark .jrs-trademark');
+     editorialValid=editorialValid && !!boundary &&
+       /constructed/.test(boundary.textContent) &&
+       /do not establish effectiveness/i.test(boundary.textContent) &&
+       !!tm && parseFloat(w.getComputedStyle(tm).fontSize)<=12 &&
+       w.getComputedStyle(tm).verticalAlign==='super';
+     if(!editorialValid)editorialIssue='Research limitations unavailable';
+   }
+   if(item.page==='index.html'){
+     const privacy=d.querySelector('.jr-hero-note');
+     editorialValid=editorialValid && !!privacy &&
+       /Do not submit identifiable case records/.test(privacy.textContent) &&
+       !!d.querySelector('.jr-actions .jr-action-main');
+     if(!editorialValid)editorialIssue='Visible privacy or primary tool action missing';
+   }
+   const eye=d.querySelector('.page-eyebrow,.jr-overline,.hero-eyebrow,.eyebrow');
+   const eyeSize=eye?parseFloat(w.getComputedStyle(eye).fontSize):null;
+   const readingScaleValid=eyeSize===null || eyeSize>=12;
+   const siteMenuLabel=toggle?.textContent?.replace(/\\s+/g,' ').trim()||'';
+   const siteMenuGrouped=!narrow ||
+     (w.getComputedStyle(toggle).justifyContent==='flex-end' &&
+      /site menu/i.test(siteMenuLabel));
+   const ok=!!action && top>=0 && top<=item.maxTop && scrollWidth<=vw &&
+      controlsValid && documentCenteredValid && documentIndexValid && roleFocusValid && scenarioNavValid && workedExampleTabsValid && simulationControlsValid && moduleDisclosureValid && enrollmentDialogValid && trainingJourneyValid && catalogValid && searchControlBordersValid && contrastValid && metadataValid && editorialValid && readingScaleValid && siteMenuGrouped && (narrow? (buttonDisplay!=='none' && before==='none' && opened && closed && escapeClosed && focusLeaveClosed): buttonDisplay==='none');
+   records.push({page:item.page,width:item.width,top,limit:item.maxTop,scrollWidth,viewport:vw,
+     menuPresent:!!toggle,menuInitially:before,menuOpened:opened,menuClosed:closed,
+     escapeClosed,focusLeaveClosed,controlsValid,documentCenteredValid,documentIndexValid,roleFocusValid,roleFocusIssue,scenarioNavValid,workedExampleTabsValid,simulationControlsValid,moduleDisclosureValid,enrollmentDialogValid,enrollmentDialogIssue,trainingJourneyValid,trainingJourneyIssue,catalogValid,catalogIssue,searchControlBorderContrast,searchControlBordersValid,activeForeground,activeRawBackground,activeBackground,activeContrast,contrastValid,metaFontSize,metadataValid,editorialValid,editorialIssue,eyeSize,readingScaleValid,siteMenuLabel,siteMenuGrouped,overflowElements,
+     menuButtonDisplay:buttonDisplay,title,pass:ok});
+  }catch(e){records.push({page:item.page,width:item.width,pass:false,error:String(e)});}
+  f.remove();
+ }
+ const marker='JRS_'+'AUDIT_JSON_';
+ document.getElementById('results').textContent=marker+'BEGIN'+JSON.stringify(records)+marker+'END';
+ document.body.setAttribute('data-audit-complete','true');
+})();
+</script>
+</body></html>

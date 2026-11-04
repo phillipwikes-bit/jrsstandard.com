@@ -1,0 +1,66 @@
+name: Owner dashboard mainline integration safety
+on:
+  pull_request:
+    paths:
+      - 'programme-status-9872fb93cc94.html'
+      - 'owner-login.html'
+      - 'proxy.js'
+      - 'package.json'
+      - 'vercel.json'
+      - 'api/_owner-auth.js'
+      - 'api/_owner-record-groups.js'
+      - 'api/owner-*.js'
+      - 'api/site-inquiry-stats.js'
+      - 'api/people-9dd1ecdf6f8cdfd4.js'
+      - 'api/leads-4b7e2c9af106d385.js'
+      - 'api/checkout-stats.js'
+      - 'api/_sb-fetch.js'
+      - 'api/_offer-config.js'
+      - 'tests/owner-*.mjs'
+      - 'tests/owner-*.test.mjs'
+      - '.github/workflows/owner-dashboard-mainline.yml'
+permissions:
+  contents: read
+jobs:
+  private-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned owner-router dependency
+        run: npm install --ignore-scripts --no-audit --no-fund
+      - name: Existing owner-data fail-closed checks
+        run: node tests/owner-data-fail-closed.mjs
+      - name: Server-side private static route and owner cookies
+        run: node tests/owner-router.mjs
+      - name: All private reader access paths
+        run: node tests/owner-access.mjs
+      - name: Session issuance, expiry and sign-out
+        run: node --test tests/owner-session-lifecycle.test.mjs
+      - name: Verify sign-out browser session confirmation and failure handling
+        run: node tests/owner-logout-interface.mjs
+      - name: Neon OTP failure handling, no real email
+        run: node tests/owner-neon-otp-failures.test.mjs
+      - name: Owner readiness inventory and release-hold requirements
+        run: node tests/owner-readiness-mainline.mjs
+      - name: Current public contact inbox is private and source-complete
+        run: node tests/owner-formspree-inbox.mjs
+      - name: Historical owner inquiries and pay-screen sources must be complete
+        run: node tests/owner-historical-inbox.mjs
+      - name: Historical checkout aggregate sources must be complete
+        run: node tests/owner-checkout-completeness.mjs
+      - name: Reject partial participant directory reads
+        run: node tests/owner-participant-completeness.mjs
+      - name: JRS programme model, consent and browser JS
+        run: node tests/owner-programme-issue36.mjs
+      - name: Verify private IP asset-sale dashboard content and boundaries
+        run: node tests/owner-ip-sale-dashboard.mjs
+      - name: Complete historical download quality reconciliation
+        run: node tests/download-traffic-quality.mjs
+      - name: Public contact continuity
+        run: node --test tests/public-site-inquiry.test.mjs
+      - name: Free public resources remain navigable
+        run: node tests/public-reference-navigation.mjs

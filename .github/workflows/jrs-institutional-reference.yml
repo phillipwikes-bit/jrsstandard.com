@@ -1,0 +1,44 @@
+name: JRS Institutional Reference Release Gate
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  institutional-reference:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout reviewed source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Confirm Node
+        run: node --version
+      - name: Run institutional reference source gate
+        run: node tests/jrs-institutional-reference-regression.mjs
+      - name: Enforce closed Review Engine, safe GET wording and independent production QA gate
+        run: node tests/engine/auth-matrix.mjs
+      - name: Verify sitewide institutional palette, typography and legacy public routes
+        run: node tests/jrs-public-type-palette.mjs
+      - name: Lock nine published PDF identities including the JRS Standard v2.0
+        run: node tests/jrs-published-pdf-identity.mjs
+      - name: Verify public resources, downloads, anchors and evidence boundaries
+        run: node tests/jrs-public-resource-integrity.mjs
+      - name: Verify external professional publications and evidentiary separation
+        run: node tests/jrs-professional-publications.mjs
+      - name: Prevent destructive reads on public PDF download routes
+        run: node tests/jrs-download-read-safety.mjs
+      - name: Verify searchable resource directory, accessibility structure and PDF inventory
+        run: node tests/jrs-resource-directory.mjs
+      - name: Verify Standard and Training readability and disabled poll states
+        run: node tests/jrs-contrast-guards.mjs
+      - name: Exercise consented training-completion and retry behavior
+        run: node tests/jrs-training-completion-behavior.mjs
+      - name: Exercise actual Training PNG certificate drawing with named and long recipients
+        run: node tests/jrs-training-certificate-render.mjs
+      - name: Verify worked-record journey and distinct research evidence
+        run: node tests/jrs-practitioner-journey.mjs
+      - name: Regression-check exact-preview source verification
+        run: python3 tests/jrs-preview-static-verification.py --self-test
