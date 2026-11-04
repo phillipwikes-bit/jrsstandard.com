@@ -17,18 +17,32 @@
     {
       "id": "A01",
       "requirement": "Private owner authentication",
-      "status": "BLOCKED",
-      "evidence": [],
-      "blockedBy": "Owner decision on private hosting with owner sign-in; no hosted deployment exists",
-      "limitation": "The page has no server and no sign-in; the staging interlock only blocks browser-storage writes"
+      "status": "OWNER ACCEPTANCE PENDING",
+      "evidence": [
+        ".github/workflows/incomeos-anonymous-access-probe.yml"
+      ],
+      "limitation": "The owner reached the app while signed in to Vercel (iPhone Safari screenshot, 2026-11-04); sign-in is Vercel account login. Owner confirmation that only the owner's Vercel account has access is pending",
+      "deploymentEvidence": {
+        "commit": "43651b9086640406ce2fe58cdfc12fe1c5d86434",
+        "url": "https://incomeos-opportunity-desk.vercel.app",
+        "probe": "GitHub Actions run 41917521403 (workflow incomeos-anonymous-access-probe.yml, commit 9ae99b1): /, /index.html, /accountant.js and /manifest.webmanifest each returned HTTP 302 to vercel.com/sso-api with no app content",
+        "date": "2026-11-04"
+      }
     },
     {
       "id": "A02",
       "requirement": "Denial of unauthorized access",
-      "status": "BLOCKED",
-      "evidence": [],
-      "blockedBy": "Same as A01; server-enforced denial cannot be tested without a host",
-      "limitation": "Encrypted workspace files cannot be opened without the passphrase, which is not access control for a hosted app"
+      "status": "PROTECTED PREVIEW VERIFIED",
+      "evidence": [
+        ".github/workflows/incomeos-anonymous-access-probe.yml"
+      ],
+      "limitation": "Vercel Authentication (All Deployments) on the separate incomeos-opportunity-desk project denies anonymous visitors. Access control is Vercel's team login, not an app-level owner account; anyone added to the Vercel team could open it",
+      "deploymentEvidence": {
+        "commit": "43651b9086640406ce2fe58cdfc12fe1c5d86434",
+        "url": "https://incomeos-opportunity-desk.vercel.app",
+        "probe": "GitHub Actions run 41917521403 (workflow incomeos-anonymous-access-probe.yml, commit 9ae99b1): /, /index.html, /accountant.js and /manifest.webmanifest each returned HTTP 302 to vercel.com/sso-api with no app content",
+        "date": "2026-11-04"
+      }
     },
     {
       "id": "A03",

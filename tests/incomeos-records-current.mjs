@@ -6,7 +6,7 @@ const readme=readFileSync("owner/incomeos/README.md","utf8"),html=readFileSync("
 const cur=readme.split("## Current hosting and storage")[1];
 assert.ok(cur,"README states the current hosting and storage model");
 assert.match(cur,/incomeos-opportunity-desk/);assert.match(cur,/All Deployments/);assert.match(cur,/workspace file/);
-assert.match(cur,/not yet been independently tested/,"live access denial stays unverified until tested");
+assert.match(cur,/incomeos-anonymous-access-probe\.yml/,"live access denial cites the probe that tested it");
 // Every statement that records live in browser localStorage must be marked superseded.
 for(const line of readme.split("\n").filter(l=>/stored (only )?in (browser )?localStorage/i.test(l)))
   assert.match(line,/^- Superseded \d{4}-\d\d-\d\d/,"stale storage claim not marked: "+line.slice(0,80));
