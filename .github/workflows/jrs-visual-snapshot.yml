@@ -220,6 +220,31 @@ jobs:
               }
               if any(claims.get(k) != v for k, v in expected.items()):
                   refuse()
+              # Prefer immutable repository identifiers over names when
+              # diagnosing OIDC trust: GitHub supports both legacy and
+              # ID-qualified subjects. Never log raw claims or the JWT.
+              repo_id = os.environ["GITHUB_REPOSITORY_ID"]
+              owner_id = os.environ["GITHUB_REPOSITORY_OWNER_ID"]
+              if not repo_id.isdecimal() or not owner_id.isdecimal():
+                  refuse()
+              if (str(claims.get("repository_id")) != repo_id or
+                      str(claims.get("repository_owner_id")) != owner_id or
+                      claims.get("event_name") != os.environ["GITHUB_EVENT_NAME"]):
+                  refuse()
+              suffix = (":pull_request" if os.environ["GITHUB_EVENT_NAME"] == "pull_request"
+                        else ":ref:" + ref)
+              legacy_subject = "repo:" + repo + suffix
+              immutable_subject = ("repo:" + owner + "@" + owner_id +
+                                   "/" + repo.split("/", 1)[1] + "@" + repo_id + suffix)
+              subject = claims.get("sub")
+              if subject == legacy_subject:
+                  subject_profile = "legacy"
+              elif subject == immutable_subject:
+                  subject_profile = "immutable"
+              else:
+                  # A configured custom GitHub subject may be valid; do not
+                  # guess a trust policy from an unrecognized format.
+                  subject_profile = "custom-or-unrecognized"
               audience = claims.get("aud")
               if isinstance(audience, str):
                   audience = [audience]
@@ -233,8 +258,9 @@ jobs:
                   refuse()
           except (ValueError, KeyError, TypeError, IndexError, OverflowError):
               refuse()
-          print("PASS: ephemeral GitHub OIDC issuer, audience, repository, ref, workflow and expiry match this CI context")
-          print("INFO: Vercel Trusted Source requires GitHub Actions issuer, repository and default audience, restricted to Preview; signature and authorization remain Vercel's responsibility")
+          print("PASS: ephemeral GitHub OIDC issuer, audience, stable repository IDs, event, ref, workflow and expiry match CI")
+          print("INFO: GitHub OIDC subject format:", subject_profile, "(claim contents not logged)")
+          print("INFO: Vercel Trusted Source must bind GitHub Actions issuer, audience, repository IDs, workflow and Preview; signature and authorization remain Vercel's responsibility")
           PY
           printf 'JRS_VERCEL_TRUSTED_OIDC_TOKEN=%s\n' "$oidc" >> "$GITHUB_ENV"
           echo "INFO: obtained masked, short-lived same-repo GitHub OIDC identity; Vercel trust still required"
