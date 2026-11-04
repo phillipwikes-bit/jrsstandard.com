@@ -234,10 +234,12 @@
     if(!rows.length)place($("ledger-list"),"div","empty","No records in this year/filter. You can enter income or expenses from any source.");
     else rows.forEach(showEntry);
   }
+  function reviewApi(){var api=window.IncomeOSAccountantReview;return api&&typeof api.inspect==="function"?api:null;}
+  // A half-typed or invalid report year must not stop rendering or the ledger-updated event.
   function annualReview(){
-    var api=window.IncomeOSAccountantReview;
-    if(!api||typeof api.inspect!=="function")return null;
-    return api.inspect(yearEntries(),currentYear());
+    var api=reviewApi();if(!api)return null;
+    if(!/^\d{4}$/.test(currentYear()))return {invalidYear:true};
+    try{return api.inspect(yearEntries(),currentYear());}catch(_e){return null;}
   }
   function renderReview(){
     var root=$("review-list"),status=$("review-summary");
@@ -248,6 +250,7 @@
       status.textContent="Documentation review unavailable. No completeness assertion can be made.";
       return;
     }
+    if(review.invalidYear){status.textContent="Enter a four-digit report year to run the documentation review.";return;}
     if(review.recordCount===0){
       status.textContent="No records entered for "+currentYear()+". No evidence coverage can be established.";
       return;
@@ -258,29 +261,28 @@
       place(root,"p","muted","No predefined evidence flags were detected in the recorded entries. This does not certify full account coverage, tax accuracy, or that every receipt is present.");
       return;
     }
-    var grouped=new Map();
-    review.issues.forEach(function(issue){
-      if(!grouped.has(issue.id))grouped.set(issue.id,{issue:issue,count:0});
-      grouped.get(issue.id).count++;
-    });
-    grouped.forEach(function(group){
+    // Same order and counts as the summary CSV and printed report.
+    (reviewApi().definitions||[]).forEach(function(def){
+      var count=review.counts&&review.counts[def.id];if(!count)return;
       var row=place(root,"div","review-issue");
       var head=place(row,"div","panelrow");
-      place(head,"strong","",group.issue.title);
-      place(head,"span","review-count",group.count+" flag"+(group.count===1?"":"s"));
-      place(row,"p","muted",group.issue.action);
+      place(head,"strong","",def.title);
+      place(head,"span","review-count",count+" flag"+(count===1?"":"s"));
+      place(row,"p","muted",def.next);
     });
     place(root,"p","muted","Flags are for review only. A record with several flags appears more than once in the detailed exception CSV.");
   }
   function exportReview(){
     var review=annualReview();
     if(!review){alert("Documentation review module is unavailable; cannot export exceptions.");return;}
+    if(review.invalidYear){alert("Enter a four-digit report year first.");return;}
+    if(!review.recordCount){alert("No records for "+review.year+". An empty exception file would look like a clean year, so none was created.");return;}
     var rows=[["Tax year","Severity","Issue code","Issue","Record ID","Date","Description","Kind","Amount USD","Review action"]];
     review.issues.forEach(function(e){rows.push([review.year,e.severity,e.id,e.title,e.recordId,e.date,e.description,e.kind,
       e.amount.toFixed(2),e.action]);});
     download(csv(rows),"IncomeOS-accountant-exceptions-"+review.year+".csv","text/csv;charset=utf-8");
   }
-  function render(){renderSummary();renderList();renderReview();if(typeof window.dispatchEvent==="function" && typeof window.CustomEvent==="function")window.dispatchEvent(new window.CustomEvent("incomeos:ledger-updated"));}
+  function render(){renderSummary();renderList();try{renderReview();}catch(_e){var rs=$("review-summary");if(rs)rs.textContent="Documentation review could not be shown.";}if(typeof window.dispatchEvent==="function" && typeof window.CustomEvent==="function")window.dispatchEvent(new window.CustomEvent("incomeos:ledger-updated"));}
   function csvSafe(x){var s=String(x??"");if(/^[=+\-@\t\r]/.test(s))s="'"+s;return '"'+s.replace(/"/g,'""')+'"';}
   function csv(arr){return arr.map(function(row){return row.map(csvSafe).join(",");}).join("\r\n")+"\r\n";}
   function download(text,name,type){
@@ -305,17 +307,16 @@
       ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],["Unallocated refunds / credits, not netted",t.refundCredits],
       ["Unreconciled record count",t.unreconciled],["Expense allocations not determined",t.allocationPending]];
     var review=annualReview();
-    if(review){
+    if(review&&!review.invalidYear){
       pairs.push(["Document flags requiring review",review.openIssueCount]);
       pairs.push(["High-priority documentation flags",review.highCount]);
       pairs.push(["Affected ledger records",review.recordsAffected]);
-      for(var category of window.IncomeOSAccountantReview.definitions)
+      for(var category of (reviewApi()&&reviewApi().definitions||[]))
         if(review.counts[category.id])pairs.push(["Documentation: "+category.title,review.counts[category.id]]);
     }
     download(csv([["IncomeOS personal tax-year summary",currentYear()]].concat([["Category","Amount or count"]],pairs)),"IncomeOS-accountant-summary-"+currentYear()+".csv","text/csv;charset=utf-8");
   }
   function backup(){download(JSON.stringify({format:"incomeos-accountant",version:2,exportedAt:new Date().toISOString(),entries:db.entries},null,2),"IncomeOS-accountant-private-backup-"+today()+".json","application/json");}
-  function escapePrint(text){return String(text??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
   function printReport(){
     var t=totals(yearEntries());
     var r=$("print-report");r.replaceChildren();
@@ -326,14 +327,14 @@
     [["Received gross potential income",t.gross],["Withheld platform fees",t.fees],["Other recorded expense candidates",t.expenses],["Business-use estimate (not approved deduction)",t.possibleBusinessUse],["Recorded receipts less fees/expenses",round(t.gross-t.fees-t.expenses)],["Pending unpaid receipts",t.pending],["Possible nonincome / refunded principal",t.returned],["Asset sale proceeds, basis not determined",t.proceeds],["Estimated tax payments",t.taxPaid],["Capital contributions / asset costs",t.capital],["Unallocated refunds / credits, not netted",t.refundCredits],["Unreconciled records",t.unreconciled]].forEach(function(p){var tr=place(body,"tr");place(tr,"th","",p[0]);place(tr,"td","",typeof p[1]==="number"&&p[0]!=="Unreconciled records"?money(p[1]):p[1]);});
     var review=annualReview();
     place(r,"h2","","Outstanding documentation review");
-    if(!review)place(r,"p","","Review module unavailable. Source completeness not verified.");
+    if(!review||review.invalidYear)place(r,"p","","Review module unavailable or report year invalid. Source completeness not verified.");
     else{
       place(r,"p","",review.openIssueCount+" unresolved documentation flags, "+review.highCount+
         " high priority, affecting "+review.recordsAffected+" of "+review.recordCount+" recorded entries.");
       var issueTable=place(r,"table"),issueHead=place(issueTable,"thead"),issueHeader=place(issueHead,"tr");
       ["Evidence issue","Count","Required review"].forEach(function(x){place(issueHeader,"th","",x);});
       var issueBody=place(issueTable,"tbody");
-      window.IncomeOSAccountantReview.definitions.forEach(function(def){
+      (reviewApi().definitions||[]).forEach(function(def){
         if(!review.counts[def.id])return;
         var row=place(issueBody,"tr");
         [def.title,review.counts[def.id],def.next].forEach(function(v){place(row,"td","",v);});
@@ -384,7 +385,8 @@
     // two valid API charges can share the same day, vendor and dollar amount.
     function fingerprint(e) {
       var ref=String(e.reference||"").trim().toLowerCase(),amount=e.kind==="income"?e.grossUsd:e.amountUsd;
-      return ref ? [e.kind,"ref",ref].join("|") :
+      // Line items of one invoice share its reference: date and amount keep them apart.
+      return ref ? [e.kind,"ref",ref,e.date,Number(amount).toFixed(2)].join("|") :
         [e.kind,"legacy",e.date,e.label.toLowerCase(),Number(amount).toFixed(2)].join("|");
     }
     var fingerprints=new Set(db.entries.map(fingerprint));
@@ -418,6 +420,9 @@
     if(!parsed||parsed.format!=="incomeos-accountant"||!Array.isArray(parsed.entries)||parsed.entries.length>15000)throw new Error("Not a supported IncomeOS accountant backup");
     var entries=parsed.entries.filter(validate);
     if(entries.length!==parsed.entries.length)throw new Error("Backup contains invalid or incomplete financial records");
+    // Edit and Remove match records by id, so every restored record needs its own.
+    var seen=new Set();
+    entries.forEach(function(e){if(typeof e.id!=="string"||!e.id.trim()||seen.has(e.id))throw new Error("Backup contains records without a unique identifier");seen.add(e.id);});
     var ids=new Set(db.entries.map(function(e){return e.id;})),accepted=[];
     entries.forEach(function(e){if(!ids.has(e.id)){accepted.push(e);ids.add(e.id);}});
     if(!accepted.length)return {accepted:0,skipped:entries.length};
@@ -462,5 +467,5 @@
     });});
     render();
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,validateEntry:validate,importCsv:importCsv,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();
