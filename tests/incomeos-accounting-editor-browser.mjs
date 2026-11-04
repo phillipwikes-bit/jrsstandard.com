@@ -199,6 +199,13 @@ assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElemen
  // A repeat the owner confirmed as separate is not reported as a likely duplicate.
  await page.evaluate(()=>{window.print=()=>{};});await page.locator("#print-accountant").click();
  assert.match(await page.locator("#print-report").textContent(),/Likely duplicate records \(same kind, date, amount and payer; not confirmed as separate\)0/);
+ await page.locator("#cost-label").fill("Synthetic dup settle");await page.locator("#cost-payee").fill("Synthetic Shop");
+ await page.locator("#cost-amount").fill("9.99");await page.locator("#cost-date").fill("2026-10-26");await page.locator("#cost-save").click();
+ await page.locator("#print-accountant").click();
+ {const pr=await page.locator("#print-report").textContent();
+  assert.match(pr,/Possible near-duplicates to review: 2/);assert.match(pr,/2026-10-24 Synthetic dup (first|second)2026-10-26 Synthetic dup settleSynthetic Shop2 day\(s\) apart\$9\.99/);
+  assert.match(pr,/nothing has been merged or removed/);}
+ await row("Synthetic dup settle").getByRole("button",{name:"Remove"}).click();
  const n1=dialogs.length;await addCost("Synthetic other payee","Another Shop");
  assert.ok(!dialogs.slice(n1).some(m=>/^Possible duplicate/.test(m)),"a different payee is not a duplicate");
  for(const t of ["Synthetic dup first","Synthetic dup second","Synthetic other payee"])await row(t).getByRole("button",{name:"Remove"}).click();}

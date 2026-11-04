@@ -256,6 +256,17 @@
     entries.forEach(function(x){var k=dupKey(x);if(seen[k]&&!x.duplicateConfirmed)n++;seen[k]=true;});
     return n;
   }
+  // Near-duplicates: same kind, payer and amount on dates 1 to 3 days apart (for example a card authorisation and
+  // its settlement entered separately). A review list only; nothing is merged, removed or counted as a gap.
+  function nearDuplicates(entries){
+    var day=function(d){return Date.parse(d+"T00:00:00Z")/86400000;},amt=function(x){return round(x.kind==="income"?num(x.grossUsd):num(x.amountUsd));};
+    var sorted=entries.slice().sort(function(a,b){return String(a.date).localeCompare(String(b.date));}),pairs=[];
+    for(var i=0;i<sorted.length;i++)for(var j=i+1;j<sorted.length;j++){
+      var a=sorted[i],b=sorted[j],gap=day(b.date)-day(a.date);if(gap>3)break;
+      if(gap>=1&&a.kind===b.kind&&amt(a)===amt(b)&&String(a.payer||"").trim().toLowerCase()===String(b.payer||"").trim().toLowerCase()&&!b.duplicateConfirmed)pairs.push({first:a,second:b,days:gap,usd:amt(a)});
+    }
+    return pairs;
+  }
   function possibleDuplicate(e,editId){
     var amt=function(x){return round(x.kind==="income"?num(x.grossUsd):num(x.amountUsd));},who=function(x){return String(x.payer||"").trim().toLowerCase();};
     return db.entries.find(function(x){return x.id!==editId&&x.kind===e.kind&&x.date===e.date&&amt(x)===amt(e)&&who(x)===who(e);})||null;
@@ -569,6 +580,7 @@
       ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],["Unallocated refunds / credits, not netted",t.refundCredits],
       ["Unreconciled record count",t.unreconciled],["Expense allocations not determined",t.allocationPending],
       ["Refunded or cancelled receipts, not income (count)",t.closedCount],["Refunded or cancelled receipts, not income (USD)",t.closedNotIncome],
+      ["Possible near-duplicates (same payer and amount within 3 days; review only)",nearDuplicates(yearEntries()).length],
       ["Records corrected after entry (earlier values in the detailed CSV)",yearEntries().filter(function(e){return e.corrections&&e.corrections.length;}).length]];
     var c=completeness(yearEntries());
     pairs.unshift(["Report status",c.status+". "+c.notice]);
@@ -622,6 +634,12 @@
     if(!unp.count)place(r,"p","","Every record has a specific category and type.");
     else{var utab=place(r,"table"),ubody=place(utab,"tbody");
       unp.items.forEach(function(x){var tr=place(ubody,"tr");[x.date,x.label,x.reasons.join("; "),money(x.usd)].forEach(function(v){place(tr,"td","",v);});});}
+    var near=nearDuplicates(yearEntries());
+    place(r,"h2","","Possible near-duplicates to review: "+near.length);
+    if(!near.length)place(r,"p","","No two records share a payer and amount within 3 days.");
+    else{var ntb=place(r,"table"),ntbody=place(ntb,"tbody");
+      near.forEach(function(p){var tr=place(ntbody,"tr");[p.first.date+" "+p.first.label,p.second.date+" "+p.second.label,(p.first.payer||"(payee not recorded)"),p.days+" day(s) apart",money(p.usd)].forEach(function(v){place(tr,"td","",v);});});
+      place(r,"p","","Listed for review only. They may be separate charges; nothing has been merged or removed.");}
     // Corrected records: what changed and what it was before, so the accountant sees edits without the CSV.
     var corrected=yearEntries().filter(function(e){return e.corrections&&e.corrections.length;});
     place(r,"h2","","Corrected records: "+corrected.length);
@@ -808,5 +826,5 @@
       var pass=$("briefing-passphrase");if(pass){pass.scrollIntoView({block:"center"});pass.focus();}
     });
   }
-  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,reconciliationSummary:reconciliationSummary,receiptGaps:receiptGaps,unclassified:unclassified,completeness:completeness,likelyDuplicates:likelyDuplicates,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
+  window.IncomeOSAccountant={init:init,render:render,paidTotal:paidTotal,clear:function(){try{localStorage.removeItem(KEY);localStorage.removeItem(LEGACY_KEY);db={version:2,entries:[]};render();return true;}catch(_e){alert("Some locally stored accounting records could not be erased.");return false;}},totals:totals,categorySummary:categorySummary,reconciliationSummary:reconciliationSummary,receiptGaps:receiptGaps,unclassified:unclassified,completeness:completeness,likelyDuplicates:likelyDuplicates,nearDuplicates:nearDuplicates,validateEntry:validate,importCsv:importCsv,importJson:importJson,parseCsv:splitCsv,entriesForAnalysis:function(){return db.entries.map(function(e){return Object.assign({},e);});}};
 })();

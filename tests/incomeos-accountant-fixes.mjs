@@ -131,3 +131,11 @@ assert.match(src,/"Source","Corrections \(earlier values\)"\]\]/);
  assert.equal(A.completeness([ex({}),ex({duplicateConfirmed:true})]).status,"NO OPEN GAPS IN RECORDED ENTRIES");
  assert.equal(A.validateEntry(ex({duplicateConfirmed:"yes"})),false);}
 assert.match(src,/Records corrected after entry \(earlier values in the detailed CSV\)/);
+// Near-duplicates: same kind, payer and amount 1 to 3 days apart; exact same-day matches and confirmed repeats excluded.
+{const ex=(o)=>({kind:"outflow",type:"expense",category:"software",amountUsd:20,businessUse:null,label:"x",date:"2026-10-10",payer:"Shop",...o});
+ const p=A.nearDuplicates([ex({label:"auth"}),ex({label:"settle",date:"2026-10-12",payer:" shop"}),ex({label:"late",date:"2026-10-20"}),ex({label:"same day"}),
+   ex({label:"other amount",date:"2026-10-11",amountUsd:21}),ex({label:"confirmed",date:"2026-10-11",duplicateConfirmed:true}),
+   {kind:"income",scope:"income",status:"paid",grossUsd:20,label:"income",date:"2026-10-11",payer:"Shop",category:"research"}]);
+ assert.deepEqual(JSON.parse(JSON.stringify(p.map(x=>[x.second.label,x.days]))).sort(),[["settle",1],["settle",2],["settle",2]].sort(),"auth, same-day and the 10-11 record each pair with settle; the confirmed repeat is not paired as the later record");
+ assert.equal(A.nearDuplicates([ex({}),ex({date:"2026-10-11",duplicateConfirmed:true})]).length,0,"a repeat confirmed as separate is not listed");}
+assert.match(src,/Possible near-duplicates \(same payer and amount within 3 days; review only\)/);
