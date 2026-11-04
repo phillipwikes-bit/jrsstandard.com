@@ -149,4 +149,11 @@
   <url><loc>https://www.jrsstandard.com/contact.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.jrsstandard.com/editions.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.jrsstandard.com/organization.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.jrsstandard.com/practitioner-questions.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.jrsstandard.com/cite-jrs.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.jrsstandard.com/field-evidence-status.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.jrsstandard.com/investigation-report-evidence-check.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.jrsstandard.com/ai-drafted-record-source-verification.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.jrsstandard.com/decision-record-chronology-review.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.jrsstandard.com/supplier-access-exception-documentation.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
