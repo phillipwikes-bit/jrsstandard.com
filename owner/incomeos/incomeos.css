@@ -125,3 +125,4 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 .app-notes{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#f3f7f4;border:1px solid #d9e5de;border-radius:8px;padding:8px;max-width:100%}
 #view-ds .ds-form{border-top:1px solid var(--border);padding:10px 0}#view-ds .ds-form summary{cursor:pointer;font-weight:700;font-size:13px;color:var(--green)}#view-ds .ds-form form{margin-top:6px}#view-ds .entry .chip{flex:0 0 auto}#ds-start{margin:0 0 12px}
 #view-ds .chip.ds-progress{background:var(--white);border:1px solid var(--green);color:var(--green)}
+.field-error{color:#8d3a2c;font-size:12px;font-weight:700;margin:5px 0 0}.form-errors{background:#fff3e5;border:1px solid #efdeba;color:#7a3e22;border-radius:10px;padding:10px 12px;font-size:12px;margin:14px 0 0}input[aria-invalid=true],select[aria-invalid=true],textarea[aria-invalid=true]{border-color:#b5513f!important;box-shadow:0 0 0 1px #b5513f}

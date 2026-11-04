@@ -255,7 +255,7 @@
     <div class="panel">
       <h3 id="receipt-form-title">Record any income or receipt</h3>
       <p class="muted">Include studies completed elsewhere. Enter the gross amount before platform fees, not merely the money deposited. Mark principal recoveries and investment-sale proceeds for tax review instead of automatically treating them as earnings.</p>
-      <form id="receipt-form">
+      <form id="receipt-form" novalidate>
         <label for="receipt-label">Description / opportunity</label><input id="receipt-label" name="label" required maxlength="100" placeholder="e.g., Research interview, royalties" autocomplete="off">
         <div class="formgrid">
           <div><label for="receipt-payer">Payer / source</label><input id="receipt-payer" name="payer" maxlength="100" placeholder="Recruiter, platform, or company" autocomplete="off"></div>
@@ -291,6 +291,7 @@
         <label for="receipt-reference">Evidence reference (no account numbers)</label><input id="receipt-reference" name="reference" maxlength="120" placeholder="e.g., receipt date, confirmation ID fragment" autocomplete="off">
         <label for="receipt-notes">Accountant notes (optional)</label><textarea id="receipt-notes" name="notes" maxlength="500" rows="2" placeholder="e.g., payment partly returned principal, W-9 supplied"></textarea>
         <label class="checkline"><input type="checkbox" id="receipt-reconciled" name="reconciled"> I personally matched this receipt to a payment record</label>
+        <p class="form-errors" id="receipt-errors" role="alert" hidden></p>
         <div class="formbuttons"><button class="mainbtn" type="submit" id="receipt-save">Save income entry</button><button class="smallbtn" type="button" id="receipt-cancel" hidden>Cancel edit</button></div>
       </form>
     </div>
@@ -298,7 +299,7 @@
       <h3 id="cost-form-title">Record expenses, tax payments and refunds</h3>
       <p class="muted">Expenses and withheld fees are separate from estimated tax payments and capital contributions. Record platform fees withheld on an income entry only once.</p>
       <div class="quickvendors" aria-label="Expense examples"><span class="muted">Quick add:</span><button type="button" data-vendor="ChatGPT" data-cost-category="software">ChatGPT</button><button type="button" data-vendor="Claude / Anthropic" data-cost-category="software">Claude</button><button type="button" data-vendor="OpenAI API" data-cost-category="software">OpenAI API</button><button type="button" data-vendor="Grammarly" data-cost-category="software">Grammarly</button><button type="button" data-vendor="Namecheap domain" data-cost-category="software">Domain</button><button type="button" data-vendor="Namecheap email" data-cost-category="software">JRS email</button><button type="button" data-vendor="Sejda PDF" data-cost-category="software">Sejda</button><button type="button" data-vendor="Home internet" data-cost-category="internet">Internet</button><button type="button" data-vendor="Mobile phone" data-cost-category="internet">Cell phone</button><button type="button" data-vendor="Printer and ink" data-cost-category="equipment">Printer</button></div>
-      <form id="cost-form">
+      <form id="cost-form" novalidate>
         <label for="cost-label">Description</label><input id="cost-label" name="label" required maxlength="100" placeholder="e.g., subscription, travel, estimated tax" autocomplete="off">
         <div class="formgrid">
           <div><label for="cost-payee">Payee / provider</label><input id="cost-payee" name="payee" maxlength="100" autocomplete="off"></div>
@@ -317,6 +318,7 @@
         <label for="cost-payment-account">Paid from (optional label)</label><input id="cost-payment-account" aria-describedby="cost-payment-account-help" name="paymentAccount" type="text" maxlength="40" autocomplete="off" placeholder="e.g. Business card ending 1234"><p class="muted" id="cost-payment-account-help">A short label only. Never enter a full card or account number; more than four digits is refused.</p>
         <label for="cost-notes">Accountant notes (optional)</label><textarea id="cost-notes" name="notes" rows="2" maxlength="500"></textarea>
         <label for="cost-questions">Questions for the accountant (optional)</label><textarea id="cost-questions" name="accountantQuestions" rows="2" maxlength="500"></textarea>
+        <p class="form-errors" id="cost-errors" role="alert" hidden></p>
         <div class="formbuttons"><button class="mainbtn" type="submit" id="cost-save">Save outflow</button><button class="smallbtn" type="button" id="cost-cancel" hidden>Cancel edit</button></div>
       </form>
     </div>

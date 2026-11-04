@@ -251,7 +251,29 @@
     else next.push(Object.assign({},e,{id:uid(),createdAt:new Date().toISOString()}));
     commitEntries(next);render();
   }
+  // Validation errors are shown beside each field (marked aria-invalid and linked with aria-describedby),
+  // summarised in the form's alert region, and focus moves to the first problem. Nothing is saved.
+  function clearErrors(formId){
+    var f=$(formId);if(!f)return;
+    f.querySelectorAll(".field-error").forEach(function(p){p.remove();});
+    f.querySelectorAll("[aria-invalid]").forEach(function(el){el.removeAttribute("aria-invalid");
+      var base=el.getAttribute("data-describedby-base");if(base)el.setAttribute("aria-describedby",base);else el.removeAttribute("aria-describedby");el.removeAttribute("data-describedby-base");});
+    var sum=$(formId==="receipt-form"?"receipt-errors":"cost-errors");if(sum){sum.textContent="";sum.hidden=true;}
+  }
+  function showErrors(formId,errs){
+    clearErrors(formId);
+    errs.forEach(function(x){
+      var el=$(x.id);if(!el)return;
+      var p=document.createElement("p");p.className="field-error";p.id=x.id+"-error";p.textContent=x.msg;el.insertAdjacentElement("afterend",p);
+      var base=el.getAttribute("aria-describedby")||"";el.setAttribute("data-describedby-base",base);
+      el.setAttribute("aria-describedby",(base?base+" ":"")+p.id);el.setAttribute("aria-invalid","true");
+    });
+    var sum=$(formId==="receipt-form"?"receipt-errors":"cost-errors");
+    if(sum){sum.textContent="Not saved. "+errs.map(function(x){return x.msg;}).join(" ");sum.hidden=false;}
+    if(errs.length&&$(errs[0].id))$(errs[0].id).focus();
+  }
   function resetForm(formId,kind){
+    clearErrors(formId);
     $(formId).reset();
     $(kind==="income"?"receipt-date":"cost-date").value=today();
     if(kind==="income"){$("receipt-fx").value="1";$("receipt-fees").value="0";$("receipt-cancel").hidden=true;$("receipt-save").textContent="Save income entry";editingIncome=null;}
@@ -269,7 +291,16 @@
       reference:limit($("receipt-reference").value,120),notes:limit($("receipt-notes").value,500),
       reconciled:$("receipt-reconciled").checked,importedFrom:"manual"
     };
-    if(!Number.isFinite(amount)||amount<=0||!Number.isFinite(fx)||fx<=0||fx>1e6||!Number.isFinite(fees)||fees<0||e.feesUsd>e.grossUsd||!validate(e)){alert("Please enter a valid description, date, gross amount, exchange rate and fee. Fees cannot exceed gross receipts.");return null;}
+    var errs=[];
+    if(!String(e.label).trim())errs.push({id:"receipt-label",msg:"Enter a description."});
+    if(!datesMatch(e))errs.push({id:"receipt-date",msg:"Enter a valid date (year 2000 or later)."});
+    if(!(amount>0&&amount<=1e7))errs.push({id:"receipt-amount",msg:"Enter an amount greater than 0 and at most 10,000,000."});
+    if(!(fx>0&&fx<=1e6))errs.push({id:"receipt-fx",msg:"Enter an exchange rate greater than 0."});
+    if(!(fees>=0))errs.push({id:"receipt-fees",msg:"Fees cannot be negative."});
+    else if(amount>0&&e.feesUsd>e.grossUsd)errs.push({id:"receipt-fees",msg:"Fees cannot exceed the gross amount."});
+    if(!errs.length&&!validate(e))errs.push({id:"receipt-label",msg:"This entry could not be validated. Check every field."});
+    if(errs.length){showErrors("receipt-form",errs);return null;}
+    clearErrors("receipt-form");
     return e;
   }
   function readCost(){
@@ -282,8 +313,15 @@
       paymentStatus:PAY_STATUS.indexOf($("cost-payment-status")&&$("cost-payment-status").value)>=0?$("cost-payment-status").value:"paid",
       accountantQuestions:limit($("cost-questions")?$("cost-questions").value:"",500),
       paymentAccount:$("cost-payment-account")?$("cost-payment-account").value.trim():""};
-    if(!safeAccountRef(e.paymentAccount)){alert(ACCOUNT_REF_RULE);return null;}
-    if(!Number.isFinite(amount)||amount<=0||(pct!==null&&(!Number.isFinite(pct)||pct<0||pct>100))||!validate(e)){alert("Please enter a valid expense description, date, positive amount and business-use percentage from 0 to 100.");return null;}
+    var errs=[];
+    if(!String(e.label).trim())errs.push({id:"cost-label",msg:"Enter a description."});
+    if(!datesMatch(e))errs.push({id:"cost-date",msg:"Enter a valid date (year 2000 or later)."});
+    if(!(amount>0&&amount<=1e7))errs.push({id:"cost-amount",msg:"Enter an amount greater than 0 and at most 10,000,000."});
+    if(pct!==null&&!(pct>=0&&pct<=100))errs.push({id:"cost-business-use",msg:"Enter a share from 0 to 100, or leave it blank if unknown."});
+    if(!safeAccountRef(e.paymentAccount))errs.push({id:"cost-payment-account",msg:ACCOUNT_REF_RULE});
+    if(!errs.length&&!validate(e))errs.push({id:"cost-label",msg:"This entry could not be validated. Check every field."});
+    if(errs.length){showErrors("cost-form",errs);return null;}
+    clearErrors("cost-form");
     return e;
   }
   function setValue(id,value){if($(id))$(id).value=value==null?"":String(value);}

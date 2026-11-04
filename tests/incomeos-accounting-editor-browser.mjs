@@ -68,7 +68,9 @@ await page.locator("#cost-save").tap();
 {const before=await page.locator("#ledger-list .entry").count();
  await page.locator("#cost-label").fill("Synthetic printer ink");await page.locator("#cost-amount").fill("12");await page.locator("#cost-date").fill("2026-10-19");
  await page.locator("#cost-payment-account").fill("4111 1111 1111 1111");await page.locator("#cost-save").tap();
- assert.match(dialogs.at(-1),/Full card or account numbers are not stored/);
+ assert.match(await page.locator("#cost-payment-account-error").textContent(),/Full card or account numbers are not stored/);
+ assert.equal(await page.locator("#cost-payment-account").getAttribute("aria-invalid"),"true");
+ assert.equal(await page.evaluate(()=>document.activeElement.id),"cost-payment-account","focus moves to the field to fix");
  assert.equal(await page.locator("#ledger-list .entry").count(),before,"refused entry not saved");
  await page.locator("#cost-payment-account").fill("Card ending 4242");await page.locator("#cost-save").tap();
  assert.match(await page.locator("#ledger-list .entry",{hasText:"Synthetic printer ink"}).textContent(),/Paid from: Card ending 4242/);
@@ -126,6 +128,24 @@ list=await page.locator("#ledger-list").textContent();
 assert.match(list,/Synthetic study payout/);assert.doesNotMatch(list,/Synthetic AI subscription/);
 // Phone layout, no storage, no errors.
 assert.ok(await page.evaluate(w=>window.innerWidth<=w+1&&document.documentElement.scrollWidth<=w+1,page.viewportSize().width),"no horizontal scroll");
+// Invalid entries show a message beside each field, are announced, take focus and save nothing; fixing them clears the errors.
+{const before=await page.locator("#ledger-list .entry").count();
+ await page.locator("#receipt-label").fill("");await page.locator("#receipt-amount").fill("0");await page.locator("#receipt-fees").fill("-1");
+ await page.locator("#receipt-save").tap();
+ assert.equal(await page.locator("#ledger-list .entry").count(),before,"nothing saved");
+ assert.match(await page.locator("#receipt-label-error").textContent(),/Enter a description/);
+ assert.match(await page.locator("#receipt-amount-error").textContent(),/greater than 0/);
+ assert.match(await page.locator("#receipt-fees-error").textContent(),/cannot be negative/);
+ assert.equal(await page.locator("#receipt-errors").getAttribute("role"),"alert");assert.match(await page.locator("#receipt-errors").textContent(),/^Not saved\./);
+ assert.equal(await page.evaluate(()=>document.activeElement.id),"receipt-label","focus on the first problem");
+ assert.match(await page.locator("#receipt-amount").getAttribute("aria-describedby"),/receipt-amount-error/);
+ await page.locator("#receipt-label").fill("Synthetic corrected entry");await page.locator("#receipt-amount").fill("10");await page.locator("#receipt-fees").fill("0");
+ await page.locator("#receipt-date").fill("2026-10-21");await page.locator("#receipt-save").tap();
+ assert.equal(await page.locator("#ledger-list .entry").count(),before+1,"corrected entry saved");
+ assert.equal(await page.locator("#view-ledger .field-error").count(),0,"errors cleared");assert.ok(await page.locator("#receipt-errors").isHidden());
+ assert.equal(await page.locator("#receipt-amount").getAttribute("aria-invalid"),null);
+ await page.locator("#ledger-list .entry",{hasText:"Synthetic corrected entry"}).getByRole("button",{name:"Remove"}).tap();
+ assert.equal(await page.locator("#ledger-list .entry").count(),before);}
 // Accessibility basics for the ledger view (automated checks only, not an accessibility certification).
 {const a11y=await page.evaluate(()=>{const v=document.getElementById("view-ledger"),out={unlabelled:[],unnamed:[],positiveTab:[],rowNames:[]};
    const vis=e=>!!(e.offsetWidth||e.offsetHeight||e.getClientRects().length);
