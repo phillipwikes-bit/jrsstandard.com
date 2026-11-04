@@ -60,7 +60,7 @@
     input.sourceBindings.forEach(function(b,i){
       try{
         exact(b,["postedEventId","bankSourceId","journalSourceId","evidenceId","ledgerEntryId"]);
-        if(!id(b.postedEventId)||!id(b.journalSourceId)||!id(b.evidenceId)||!id(b.ledgerEntryId)||
+        if(!/^[a-z0-9][a-z0-9._:-]{3,119}$/i.test(String(b.postedEventId))||!id(b.journalSourceId)||!id(b.evidenceId)||!id(b.ledgerEntryId)||
           typeof b.bankSourceId!=="string"||!bank.has(b.bankSourceId)||
           usedPost.has(b.postedEventId)||usedBank.has(b.bankSourceId))
           throw Error("Source reuse, unrecognized bank posting, or invalid identity");
@@ -132,6 +132,8 @@
     return {asOf:input.asOf,status:passed?"READY_FOR_ACCOUNTANT_SOURCE_REVIEW_ONLY":"HOLD",
       issues:issues,statementIssues:statement.issues,doubleEntryIssues:double.unresolved,
       sourceJournalHeadHash:v.headHash,
+      // Exposed so the rollforward reuses this month's double-entry run instead of repeating it.
+      doubleEntryStatus:double.status,movementTrialBalance:double.movementTrialBalance,
       matchedBankPostings:passed?evidence.matched:null,
       balancedEntries:passed?double.reviewedEntries:null,
       movementDebitsCents:passed?double.movementDebitsCents:null,

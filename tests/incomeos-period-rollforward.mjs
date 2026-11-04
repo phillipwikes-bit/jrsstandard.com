@@ -132,5 +132,35 @@ await assert.rejects(R.assess({periods:[sept],initialOpeningReviewed:true,initia
 await assert.rejects(R.assess({...input,providerApproved:true}),/2 to 24/);
 const tampered=JSON.parse(JSON.stringify(oct));tampered.journal[0].data.amountCents=999;
 await assert.rejects(R.assess({...input,periods:[sept,tampered]}),/modified/);
+// R7-2: a document matched, reversed and rematched is not a reuse.
+{const ts=e=>e.journal[e.journal.length-1].timestamp;
+let sj=sept.journal;
+sj=await J.append(sj,{id:"doc.match.wrong",type:"DOCUMENT_MATCHED",timestamp:ts(sept),data:{postedEventId:sept.journal[0].id,documentId:"document.receipt.001",amountCents:sept.journal[0].data.amountCents}});
+sj=await J.append(sj,{id:"doc.match.undo",type:"REVERSED",timestamp:ts(sept),data:{targetEventId:"doc.match.wrong",reasonEvidenceId:"owner.correction.001"}});
+let oj=await J.append(oct.journal,{id:"doc.match.right",type:"DOCUMENT_MATCHED",timestamp:ts(oct),data:{postedEventId:oct.journal[0].id,documentId:"document.receipt.001",amountCents:oct.journal[0].data.amountCents}});
+const r=await R.assess({...input,periods:[{...sept,journal:sj},{...oct,journal:oj}]});
+assert.ok(!r.issues.some(i=>i.code==="REUSED_PAYMENT_DOCUMENT"),JSON.stringify(r.issues));}
+// R7-4: the same bank transaction with stray spaces is still a reuse.
+{const p=JSON.parse(JSON.stringify(oct));const first=sept.statementPackage.bankRows[0];
+p.statementPackage.bankRows[0].transactionId=first.transactionId+" ";
+const key=[first.institution,first.accountToken,first.transactionId].join("|");
+p.statementPackage.accountingMatches[0].bankId=key;p.sourceBindings[0].bankSourceId=key;
+const r=await R.assess({...input,periods:[sept,p]});
+assert.ok(r.issues.some(i=>i.code==="REUSED_BANK_TRANSACTION"),JSON.stringify(r.issues));}
+// R7-5: a statement missing its start date holds instead of throwing.
+{const p=JSON.parse(JSON.stringify(oct));const extra={...p.statementPackage.statements[0],statementId:"stmt.extra.0001"};delete extra.startDate;p.statementPackage.statements.push(extra);
+const r=await R.assess({...input,periods:[sept,p]});assert.equal(r.status,"HOLD");}
+// R7-7: a raw account number is not accepted as opening evidence.
+{const r=await R.assess({...input,initialOpeningEvidenceId:"123456789012"});
+assert.ok(r.issues.some(i=>i.code==="INITIAL_OPENING_NOT_ATTESTED"));}
+// R7-8: double entry runs once per month, not twice.
+{const real=ctx.window.IncomeOSDoubleEntry;let calls=0;
+ctx.window.IncomeOSDoubleEntry={...real,assess:a=>{calls++;return real.assess(a);}};
+try{await R.assess(input);}finally{ctx.window.IncomeOSDoubleEntry=real;}
+assert.equal(calls,2);}
+// R7-9: a month whose ledger is on hold does not add spurious balance mismatches.
+{const r=await R.assess({...input,periods:[sept,{...oct,entries:[{...oct.entries[0],date:"2026-09-30"},...oct.entries.slice(1)]}]});
+assert.ok(r.issues.some(i=>i.code==="MONTH_CLOSE_NOT_ACCEPTED"));
+assert.ok(!r.issues.some(i=>i.code==="LEDGER_TO_BANK_BALANCE_MISMATCH"),JSON.stringify(r.issues));}
 assert.doesNotMatch(read("period-rollforward.js"),/fetch\s*\(|localStorage|XMLHttpRequest|WebSocket|sendBeacon/);
 console.log("IncomeOS period rollforward QA passed: two full periods, ledger/bank delta, opening continuity, source identity, gaps, data-quality HOLD and no authenticated-balance claim.");

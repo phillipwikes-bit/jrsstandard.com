@@ -11,7 +11,7 @@
     return Number.isFinite(t)&&new Date(t).toISOString().slice(0,10)===x;
   }
   function nextDay(x){return new Date(Date.parse(x+"T00:00:00Z")+86400000).toISOString().slice(0,10);}
-  function id(x){return typeof x==="string"&&/^[a-z0-9][a-z0-9._:-]{3,119}$/i.test(x);}
+  function id(x){return typeof x==="string"&&/^[a-z0-9][a-z0-9._:-]{3,119}$/i.test(x)&&!/^\d{9,}$/.test(x);}
   function issue(code,month,reference){return {code:code,month:month||null,reference:reference||null};}
   function amount(x){return Number.isSafeInteger(x)&&Math.abs(x)<=LIMIT;}
   function sourceId(x){return x.institution.trim()+"|"+x.accountToken;}
@@ -32,7 +32,7 @@
       accounts.set(key,a);
     });
     pkg.statements.forEach(function(s){
-      if(!obj(s)||typeof s.institution!=="string"||typeof s.accountToken!=="string"){
+      if(!obj(s)||typeof s.institution!=="string"||typeof s.accountToken!=="string"||!date(s.startDate)||!date(s.endDate)){
         issues.push(issue("INVALID_STATEMENT",month));return;
       }
       var key=sourceId(s);
@@ -76,13 +76,10 @@
         issues.push(issue("NONCONSECUTIVE_PERIODS",month));
       if(!date(from)||!date(to)||p.asOf!==to)
         issues.push(issue("INVALID_PERIOD_BOUNDARY",month));
+      // Monthly close already verified the journal and ran double entry; reuse its results.
       var close=await window.IncomeOSMonthlyClose.assess(p);
-      var double=await window.IncomeOSDoubleEntry.assess({
-        journal:p.journal,accounts:p.chart,entries:p.entries,asOf:p.asOf
-      });
-      var verified=await window.IncomeOSEventJournal.verify(p.journal);
-      if(close.status!=="READY_FOR_ACCOUNTANT_SOURCE_REVIEW_ONLY"||
-         double.status!=="BALANCED_OWNER_REVIEW_ONLY")
+      var balanced=close.doubleEntryStatus==="BALANCED_OWNER_REVIEW_ONLY";
+      if(close.status!=="READY_FOR_ACCOUNTANT_SOURCE_REVIEW_ONLY"||!balanced)
         issues.push(issue("MONTH_CLOSE_NOT_ACCEPTED",month));
       if(i===0) {
         if(input.initialOpeningReviewed!==true||!id(input.initialOpeningEvidenceId))
@@ -127,8 +124,9 @@
             issues.push(issue("BALANCE_CARRYFORWARD_MISMATCH",month,key));
         });
       }
-      var trial=new Map((double.movementTrialBalance||[]).map(function(t){return [t.accountId,t];}));
-      p.sourceAccountMap.forEach(function(m){
+      var trial=new Map((close.movementTrialBalance||[]).map(function(t){return [t.accountId,t];}));
+      // Without a balanced ledger there is no movement to compare; the month already holds.
+      if(balanced)p.sourceAccountMap.forEach(function(m){
         if(!obj(m)||typeof m.bankAccountId!=="string")return;
         var balance=statements.get(m.bankAccountId),t=trial.get(m.accountId),
           kind=chart.get(m.accountId);
@@ -137,6 +135,7 @@
         if(change===null||!amount(delta)||delta!==change)
           issues.push(issue("LEDGER_TO_BANK_BALANCE_MISMATCH",month,m.accountId));
       });
+      var reversedIds=new Set(p.journal.filter(function(e){return obj(e)&&e.type==="REVERSED"&&obj(e.data);}).map(function(e){return e.data.targetEventId;}));
       p.journal.forEach(function(e){
         if(seenEventIds.has(e.id))issues.push(issue("REUSED_JOURNAL_EVENT_ID",month,e.id));
         seenEventIds.add(e.id);
@@ -146,7 +145,8 @@
           if(e.data.postedDate<from||e.data.postedDate>to)
             issues.push(issue("OUT_OF_PERIOD_POSTING",month,e.id));
         }
-        if(e.type==="DOCUMENT_MATCHED"){
+        // A match that was later reversed frees the document for a corrected match.
+        if(e.type==="DOCUMENT_MATCHED"&&!reversedIds.has(e.id)){
           if(seenDocumentIds.has(e.data.documentId))
             issues.push(issue("REUSED_PAYMENT_DOCUMENT",month,e.data.documentId));
           seenDocumentIds.add(e.data.documentId);
@@ -155,7 +155,7 @@
       p.statementPackage.bankRows.forEach(function(b){
         if(!obj(b)||typeof b.institution!=="string"||typeof b.accountToken!=="string"||
            typeof b.transactionId!=="string")return;
-        var key=b.institution+"|"+b.accountToken+"|"+b.transactionId;
+        var key=b.institution.trim()+"|"+b.accountToken.trim()+"|"+b.transactionId.trim();
         if(seenBankIds.has(key))issues.push(issue("REUSED_BANK_TRANSACTION",month,key));
         seenBankIds.add(key);
       });
@@ -168,7 +168,7 @@
           issues.push(issue("CROSS_PERIOD_REFUND_REQUIRES_LINKED_HISTORICAL_EVIDENCE",month,e.id));
       });
       processed.push({month:month,from:from,to:to,closeStatus:close.status,
-        sourceHeadHash:verified.headHash,statementAccountCount:statements.size,
+        sourceHeadHash:close.sourceJournalHeadHash,statementAccountCount:statements.size,
         balancedEntries:close.balancedEntries,verifiedOwnerOnly:true});
       lastMonth=to;lastStatements=statements;
     }

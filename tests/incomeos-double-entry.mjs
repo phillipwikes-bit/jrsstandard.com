@@ -108,5 +108,18 @@ assert.throws(()=>D.validateAccount({...chart[0],accountNumber:"12345678901"}),/
 assert.throws(()=>D.validateEntry({...entries[0],accountSecret:"shh"}),/unsupported accounting fields/i);
 assert.throws(()=>D.validateEntry({...entries[0],sourceEventIds:[refs.earned,refs.earned]}),/Invalid accounting entry/);
 assert.throws(()=>D.validateEntry({...entries[0],lines:lines("cash.checking","cash.checking",15000)}),/balance exactly/);
+// R7-3: an unbooked sale-proceeds posting names the missing cost basis.
+{let j=journal;
+for(const e of [x("post.sale.0001","POSTED",{sourceId:"bank.sale.0001",postedDate:sourceDate,direction:"credit",amountCents:700,currency:"USD",evidenceId:"bank.statement.001"}),
+ x("class.sale.0001","CLASSIFIED",{postedEventId:"post.sale.0001",classification:"sale_proceeds",evidenceId:"owner.class.001"})])j=await J.append(j,e);
+const r=await D.assess({...args,journal:j});
+assert.ok(r.unresolved.some(u=>u.code==="SALE_PROCEEDS_REQUIRE_COST_BASIS"&&u.entryId==="post.sale.0001"),JSON.stringify(r.unresolved));}
+// R7-6: a journal event ID the journal accepts (all digits) can be referenced by an entry.
+{let j=journal;
+for(const e of [x("100000001","POSTED",{sourceId:"bank.numeric.0001",postedDate:sourceDate,direction:"credit",amountCents:900,currency:"USD",evidenceId:"bank.statement.001"}),
+ x("class.numeric.0001","CLASSIFIED",{postedEventId:"100000001",classification:"earned_income",evidenceId:"owner.class.001"}),
+ x("review.numeric.0001","OWNER_RECONCILED",{postedEventId:"100000001",classificationEventId:"class.numeric.0001",reviewEvidenceId:"owner.review.001"})])j=await J.append(j,e);
+const r=await D.assess({...args,journal:j,entries:entries.concat(entry("entry.numeric","EARNED_INCOME",["100000001"],"cash.checking","revenue.earned",900))});
+assert.equal(r.status,"BALANCED_OWNER_REVIEW_ONLY",JSON.stringify(r.unresolved));}
 assert.doesNotMatch(read("double-entry.js"),/fetch\s*\(|localStorage|XMLHttpRequest|sendBeacon|WebSocket|document\.cookie/);
 console.log("IncomeOS double-entry QA passed: source-bound debits=credits, classification routing, fund transfer, card payments, refunds, principal, source exhaustion and nonproduction holds.");

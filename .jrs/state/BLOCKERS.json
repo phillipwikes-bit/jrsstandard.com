@@ -425,6 +425,26 @@
       "note": "WHAT IS ESTABLISHED AND WHAT IS NOT. ESTABLISHED FROM REPOSITORY EVIDENCE: the promise, the grant, and the published export link all exist and contradict each other. NOT ESTABLISHED: whether any response rows exist and are actually retrievable by an anonymous caller. A direct read of the production table was attempted and correctly DENIED by the execution environment's production-read control, so the live row count is PRODUCTION VERIFICATION REQUIRED and is not inferred. The remediation does not depend on the count: a privacy promise contradicted by a grant is a defect whether or not anyone has yet typed into the box. SCOPE NOTE, so this is not over-read: interaction_events was examined in the same pass and is a WEAKER case, not this one. Its collecting pages promise 'No free text and no identifying information are collected' and 'aggregated without individual attribution', and select=* over a payload jsonb is consistent with that promise. The enforcement of 'no free text' lives in the client code that builds the payload rather than in the schema, which is a separate and lesser matter recorded as X-1 rather than folded in here.",
       "next_action_by": "OWNER",
       "next_action_basis": "The anon SELECT grant on public.finding_responses must be revoked in the production console. Nothing here can perform or verify it."
+    },
+    {
+      "blocker_id": "B-018",
+      "severity": "MEDIUM",
+      "category": "ACCOUNTING_DESIGN",
+      "description": "IncomeOS monthly close cannot close a month in which an internal transfer or card payment leaves one account on the last day(s) of a month and posts to the other account in the next month. double-entry.js requires the entry date to be on or after both posted dates (PREMATURE_BOOKING); monthly-close.js requires the entry date and both postings inside the calendar month (ENTRY_OUTSIDE_CLOSE_WINDOW and the source-window check). Both months therefore HOLD and the period rollforward can never be accepted for them. Found in the 2026-11-04 review of double-entry.js, monthly-close.js and period-rollforward.js.",
+      "evidence_refs": [
+        "owner/incomeos/double-entry.js (PREMATURE_BOOKING; INTERNAL_TRANSFER and CREDIT_CARD_PAYMENT require both legs in one entry)",
+        "owner/incomeos/monthly-close.js (ENTRY_OUTSIDE_CLOSE_WINDOW; source window check in assessSources)"
+      ],
+      "affected_assets": [
+        "INCOMEOS-PROTOTYPE"
+      ],
+      "required_action": "PROPOSAL, not implemented: book each leg separately against a 'transfer in transit' clearing account (new account kind), so the outgoing leg closes in month one and the incoming leg in month two, with the clearing balance required to be zero once both legs are reviewed. This changes the chart-of-accounts model and how transfers are evidenced, so it needs an owner (and preferably accountant) decision before it is built. Until then such months stay on HOLD, which is fail-closed.",
+      "owner": "OWNER",
+      "status": "OPEN - DESIGN DECISION REQUIRED",
+      "created": "2026-11-04",
+      "note": "Not a data-loss or exposure risk: the effect is a false HOLD. Synthetic tests do not yet cover a cross-month pair.",
+      "next_action_by": "OWNER",
+      "next_action_basis": "Approve or reject the clearing-account proposal; Claude can then build and test it."
     }
   ],
   "_decisions_recorded_2026_09_15": {

@@ -21,6 +21,8 @@
       throw Error("Missing or unsupported accounting fields");
   }
   function id(x){return typeof x==="string"&&/^[a-z0-9][a-z0-9._:-]{3,119}$/i.test(x)&&!/^\d{9,}$/.test(x);}
+  // Journal event IDs follow the journal's own rule; the raw-identifier guard applies to owner-entered IDs.
+  function eventId(x){return typeof x==="string"&&/^[a-z0-9][a-z0-9._:-]{3,119}$/i.test(x);}
   function date(x){
     if(typeof x!=="string"||!/^20\d\d-\d\d-\d\d$/.test(x))return false;
     var t=Date.parse(x+"T00:00:00Z");
@@ -39,10 +41,10 @@
     if(!id(x.id)||!date(x.date)||!TYPES.includes(x.kind)||!id(x.evidenceId)||
       !Array.isArray(x.sourceEventIds)||!Array.isArray(x.lines)||x.lines.length!==2||
       x.sourceEventIds.length!==(x.kind==="INTERNAL_TRANSFER"||x.kind==="CREDIT_CARD_PAYMENT"?2:1)||
-      x.sourceEventIds.some(function(s){return !id(s);})||
+      x.sourceEventIds.some(function(s){return !eventId(s);})||
       new Set(x.sourceEventIds).size!==x.sourceEventIds.length)
       throw Error("Invalid accounting entry identity or source structure");
-    if(x.kind==="REFUND"?!id(x.originalExpenseEventId):Object.prototype.hasOwnProperty.call(x,"originalExpenseEventId"))
+    if(x.kind==="REFUND"?!eventId(x.originalExpenseEventId):Object.prototype.hasOwnProperty.call(x,"originalExpenseEventId"))
       throw Error("Refund requires the original documented expense, other entries cannot claim it");
     var lines=x.lines.map(function(l){
       exact(l,["accountId","side","amountCents"],["accountId","side","amountCents"]);
@@ -145,7 +147,10 @@
       entries.push(e);
     });
     state.posted.forEach(function(_,id){
-      if(!usedSources.has(id))issues.push(problem("UNMAPPED_POSTED_SOURCE",id));
+      if(usedSources.has(id))return;
+      // Sale proceeds cannot be booked until cost basis and lots are imported; say so specifically.
+      var c=state.classes.get(id)||[];
+      issues.push(problem(c.length===1&&c[0].data.classification==="sale_proceeds"?"SALE_PROCEEDS_REQUIRE_COST_BASIS":"UNMAPPED_POSTED_SOURCE",id));
     });
     var entryBySource=new Map();
     entries.forEach(function(e){e.sourceEventIds.forEach(function(id){entryBySource.set(id,e);});});
