@@ -107,6 +107,11 @@ assert.match(await page.locator("#ledger-list .entry",{hasText:"Synthetic AI sub
 {const [d]=await Promise.all([page.waitForEvent("download"),page.locator("#export-ledger").tap()]);
  const line=readFileSync(await d.path(),"utf8").split("\r\n").find(l=>l.includes("Synthetic AI subscription"));
  assert.match(line,/"manual","\d{4}-\d\d-\d\d: amountUsd 20 to 25"$/,"earlier amount kept in the detailed CSV");}
+// The printed report lists corrected records with their earlier values; unedited records are not listed there.
+{await page.evaluate(()=>{window.print=()=>{};});await page.locator("#print-accountant").click();
+ const pr=await page.locator("#print-report").textContent();
+ assert.match(pr,/Corrected records: 1/);assert.match(pr,/Synthetic AI subscriptionmanual\d{4}-\d\d-\d\d: amountUsd 20 to 25/);
+ assert.doesNotMatch(pr,/Corrected records: 1[^]*Synthetic study payout[^]*Outstanding documentation review/,"unedited record not listed as corrected");}
 await page.locator("#ledger-list .entry",{hasText:"Synthetic AI subscription"}).getByRole("button",{name:"Remove"}).tap();
 assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic AI subscription/);
 // Save the workspace encrypted, reload, and the ledger is gone from the page until the file is reopened.

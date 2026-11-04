@@ -608,6 +608,12 @@
     if(!unp.count)place(r,"p","","Every record has a specific category and type.");
     else{var utab=place(r,"table"),ubody=place(utab,"tbody");
       unp.items.forEach(function(x){var tr=place(ubody,"tr");[x.date,x.label,x.reasons.join("; "),money(x.usd)].forEach(function(v){place(tr,"td","",v);});});}
+    // Corrected records: what changed and what it was before, so the accountant sees edits without the CSV.
+    var corrected=yearEntries().filter(function(e){return e.corrections&&e.corrections.length;});
+    place(r,"h2","","Corrected records: "+corrected.length);
+    if(!corrected.length)place(r,"p","","No record in this year has been corrected after entry.");
+    else{var ctb=place(r,"table"),ctbody=place(ctb,"tbody");
+      corrected.forEach(function(e){var tr=place(ctbody,"tr");[e.date,e.label,(e.importedFrom||"")+"",correctionText(e)].forEach(function(v){place(tr,"td","",v);});});}
     var review=annualReview();
     place(r,"h2","","Outstanding documentation review");
     if(!review||review.invalidYear)place(r,"p","","Review module unavailable or report year invalid. Source completeness not verified.");
