@@ -27,7 +27,9 @@
   function persist(){if(window.IncomeOSFinancialReadOnly===true){$("radar-status").textContent="Personal study tracking is disabled in unapproved staging.";return false;}try{localStorage.setItem(KEY,JSON.stringify(db));return true;}catch(e){$("radar-status").textContent="Research changes could not be saved to local storage.";return false;}}
   // Owner-entered time components, held in page memory only (never stored).
   // They fill gaps the source did not publish; a source value is never overwritten silently.
-  var timeOverrides={},profileForNotes=null;
+  var timeOverrides={},profileForNotes=null,wsOpen=false;
+  // Study progress lives in the owner's workspace file when one is open (browser storage is blocked in staging).
+  function progressFrom(ws){var out={},p=ws&&ws.researchProgress;if(p&&typeof p==="object"&&!Array.isArray(p))Object.keys(p).forEach(function(id){var st=p[id]&&p[id].status;if(statuses.includes(st))out[id]=st;});return out;}
   document.addEventListener("incomeos:profile",function(ev){profileForNotes=ev.detail||null;if(latest)view();});
   // A loaded workspace restores saved study times; entries made here are sent to it.
   function fromWorkspace(ws){
@@ -36,8 +38,12 @@
     return out;
   }
   // Undo: the cards mirror the restored workspace exactly.
-  document.addEventListener("incomeos:workspace-restored",function(ev){timeOverrides=fromWorkspace(ev.detail);if(latest)view();});
+  document.addEventListener("incomeos:workspace-restored",function(ev){timeOverrides=fromWorkspace(ev.detail);db.progress=progressFrom(ev.detail);if(latest)view();});
   document.addEventListener("incomeos:workspace-loaded",function(ev){
+    wsOpen=true;
+    // Progress marked before the workspace was opened is kept and recorded in it, not discarded.
+    var priorProgress=db.progress||{},fromWs=progressFrom(ev.detail);db.progress=fromWs;
+    Object.keys(priorProgress).forEach(function(id){if(!fromWs[id]&&statuses.includes(priorProgress[id])&&priorProgress[id]!=="New"){db.progress[id]=priorProgress[id];emit("incomeos:research-progress",{id:id,status:priorProgress[id]});}});
     var t=ev.detail&&ev.detail.researchTimes,prior=timeOverrides;timeOverrides={};
     if(t&&typeof t==="object")Object.keys(t).forEach(function(id){var o=t[id];if(o&&typeof o==="object")timeOverrides[id]={screenMinutes:o.screenMinutes,prepMinutes:o.prepMinutes,adminMinutes:o.adminMinutes,timeConfidence:o.timeConfidence==="verified"?"verified":"estimated"};});
     // Times entered before this workspace was opened are kept and recorded in it, not discarded.
@@ -78,8 +84,8 @@
       sel.setAttribute("aria-label","Owner progress for "+s.title);
       statuses.forEach(function(x){var o=add(sel,"option","",x);o.value=x;});
       sel.value=statuses.includes(db.progress[s.id])?db.progress[s.id]:"New";
-      if(window.IncomeOSFinancialReadOnly===true){sel.disabled=true;sel.title="Private study tracking requires secured owner storage";}
-      else sel.addEventListener("change",function(){db.progress[s.id]=sel.value;persist();});
+      if(window.IncomeOSFinancialReadOnly===true&&!wsOpen){sel.disabled=true;sel.title="Open or start your workspace to track study progress";}
+      else sel.addEventListener("change",function(){db.progress[s.id]=sel.value;if(wsOpen)emit("incomeos:research-progress",{id:s.id,status:sel.value});else persist();});
       // Enter missing or corrected time components (memory only; labelled as owner-entered).
       var tdet=add(div,"details","radar-time");var tsum=add(tdet,"summary","",timeOverrides[s.id]?"Your time entries ("+timeOverrides[s.id].timeConfidence+")":"Enter screener, prep and follow-up time");
       var tgrid=add(tdet,"div","formgrid");

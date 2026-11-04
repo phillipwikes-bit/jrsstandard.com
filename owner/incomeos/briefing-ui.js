@@ -180,6 +180,10 @@
       var d=ev.detail;if(!d||!state.ws)return;
       act(function(w){return d.times?WS.setResearchTime(w,d.id,d.times,today()):WS.clearResearchTime(w,d.id,today());},d.times?"Study times added to your workspace":"Study times removed from your workspace");
     });
+    document.addEventListener("incomeos:research-progress",function(ev){
+      var d=ev.detail;if(!d||!state.ws)return;
+      act(function(w){return WS.setResearchProgress(w,d.id,d.status,today());},"Study progress saved in your workspace: "+d.status);
+    });
     document.addEventListener("incomeos:screened",function(ev){state.screen=ev.detail||null;render();});
     // Decision Spellchecker program changes and program-tagged ledger rows arrive from the Program view.
     // Each reports the outcome back through detail.done so the Program view never claims an unapplied change.

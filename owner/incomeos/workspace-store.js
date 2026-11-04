@@ -7,7 +7,7 @@
   // storage or the network: the owner saves the returned file themselves.
   // Encryption matches vault.js: PBKDF2-SHA256 (600,000 iterations) and AES-256-GCM.
   var FORMAT="incomeos-workspace",ITERATIONS=600000,SCHEMA="incomeos.workspace.v1";
-  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes","dsProgram"];
+  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes","dsProgram","researchProgress"];
   var dep=function(name,file){return root&&root[name]||(typeof require==="function"?require(file):null);};
   function isDate(x){return typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+"T00:00:00Z"));}
   function clone(x){return JSON.parse(JSON.stringify(x));}
@@ -28,7 +28,7 @@
   function newWorkspace(on){
     return {schema:SCHEMA,note:"Private IncomeOS workspace created "+(isDate(on)?on:"")+". Keep outside the repository; save encrypted.",
       ledger:[],rules:[],accounts:[],balances:[],claims:[],livedInStates:["MD"],searchHistory:[],serviceNotes:[],offers:[],
-      yieldParams:{amountUsd:0,horizonMonths:12,federalRatePct:0,stateRatePct:0,needLiquidity:true},researchStages:[],recruiterOf:{},verifiedPayments:{},lifecycle:[],previousAlertIds:[],changeLog:[],researchTimes:{}};
+      yieldParams:{amountUsd:0,horizonMonths:12,federalRatePct:0,stateRatePct:0,needLiquidity:true},researchStages:[],recruiterOf:{},verifiedPayments:{},lifecycle:[],previousAlertIds:[],changeLog:[],researchTimes:{},researchProgress:{}};
   }
   var ACCOUNT_TYPES=["checking","savings","money_market","cd","treasury","brokerage","retirement","hsa","real_estate","vehicle","receivable","other_asset","credit_card","mortgage","auto_loan","student_loan","personal_loan","tax_owed","other_liability"];
   var INCOME_CATS=["research","evaluation","business","royalty","rental","interest","dividend","investment","reward","recovery","employment","pension","retirement","socialsecurity","unemployment","other"];
@@ -107,6 +107,19 @@
     next.researchTimes[studyId]=rec;
     if(Object.keys(next.researchTimes).length>2000)throw Error("Too many study time entries");
     return log(next,"SET_RESEARCH_TIME",{studyId:studyId,timeConfidence:rec.timeConfidence},on);
+  }
+  // Owner's own progress on a study (applied, completed, paid...). Self-reported, so it never counts as income by
+  // itself; "New" removes the entry. Kept separate from researchStages, whose PAID stage needs bank evidence.
+  var PROGRESS=["New","Reviewing","Applied","Invited","Completed","Paid (self-reported)","Declined","Not eligible"];
+  function setResearchProgress(ws,studyId,status,on){
+    if(!isDate(on))throw Error("Date required");
+    if(typeof studyId!=="string"||!/^[a-zA-Z0-9][a-zA-Z0-9_-]{3,89}$/.test(studyId))throw Error("Invalid study id");
+    if(PROGRESS.indexOf(status)<0)throw Error("Invalid study progress");
+    var next=clone(validate(ws)),cur=next.researchProgress;
+    next.researchProgress=Object.assign({},cur&&typeof cur==="object"&&!Array.isArray(cur)?cur:{});
+    if(status==="New")delete next.researchProgress[studyId];else next.researchProgress[studyId]={status:status,on:on};
+    if(Object.keys(next.researchProgress).length>2000)throw Error("Too many study progress entries");
+    return log(next,"SET_RESEARCH_PROGRESS",{studyId:studyId,status:status},on);
   }
   function clearResearchTime(ws,studyId,on){
     var next=clone(validate(ws));if(next.researchTimes)delete next.researchTimes[studyId];
@@ -217,7 +230,7 @@
     if(isEncrypted(text)){if(!passphrase)throw Error("This workspace is encrypted. Enter its passphrase.");return decrypt(passphrase,text);}
     return validateDoc(JSON.parse(text));
   }
-  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
+  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,setResearchProgress:setResearchProgress,PROGRESS:PROGRESS.slice(),clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
     addBalance:addBalance,markAlerted:markAlerted,setDsProgram:setDsProgram,setLedger:setLedger,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSWorkspace=api;
