@@ -5,14 +5,26 @@ import {execFileSync} from "node:child_process";
 import {readFileSync} from "node:fs";
 const paths=execFileSync("git",["ls-files","-z","owner/incomeos"],{encoding:"utf8"}).split("\0").filter(Boolean);
 const extensions=new Set(["html","js","css","json","svg","webmanifest","md","sql","vercelignore"]);
+// Explicitly permit only reviewed JavaScript ESM modules in this PUBLIC tree.
+// .mjs is executable source, not a private financial document; do not allow
+// arbitrary future .mjs files to bypass the public-source review gate.
+const reviewedESM=new Set(["ds-product-panel.mjs","ds-runtime-bridge.mjs"]);
 assert.ok(paths.length>=12,"Expected reviewed IncomeOS source tree");
 for(const path of paths){
   assert.match(path,/^owner\/incomeos\/[A-Za-z0-9_.-]+$/,"No arbitrary paths inside publicly readable owner subtree");
   const filename=path.split("/").at(-1),extension=filename.split(".").at(-1);
   if(filename.startsWith("."))assert.equal(filename,".vercelignore","Unexpected owner dotfile: "+path);
-  assert.ok(extensions.has(extension),"Potential financial document or secret file in public repo: "+path);
+  if(extension==="mjs"){
+    assert.ok(reviewedESM.has(filename),"Unreviewed owner ESM source in public repo: "+path);
+  }else{
+    assert.ok(extensions.has(extension),"Potential financial document or secret file in public repo: "+path);
+  }
   assert.doesNotMatch(filename,/(bank.statement|invoice|receipt[0-9]|financial.records|private.key|token|credentials|secret|\.env)/i,
     "Private data/secret-shaped file name must not be committed: "+path);
+}
+for(const filename of reviewedESM){
+  assert.ok(paths.includes("owner/incomeos/"+filename),
+    "Reviewed owner ESM module missing: "+filename);
 }
 // Public JRS previews must not package or serve the owner-only workspace.
 // The separate IncomeOS project can use its own project-level ignore file.
