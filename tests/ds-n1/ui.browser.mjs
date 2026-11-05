@@ -69,6 +69,27 @@ try {
       assert.equal(await page.textContent('#statusbox'), before);
     });
 
+    await check(`${label}: cognitive source trace shows actual record passage without claiming support`, async () => {
+      await page.selectOption('#fixture', 'D02');
+      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
+      await page.click('mark[aria-label="Claim C2"]');
+      const before = await page.textContent('#statusbox');
+      const card = page.locator('#cogbody > details').first();
+      assert.ok(await card.count(), 'a cognitive review finding should be visible');
+      await card.locator('summary').first().click();
+      const trace = card.locator('.cognitive-trace');
+      assert.ok(await trace.count(), 'cited source metadata must exist');
+      await trace.locator('summary').click();
+      assert.match(await trace.textContent(), /Source S2/);
+      assert.match(await trace.textContent(), /quote exact/);
+      assert.match(await trace.textContent(), /Northwind Analytics completed the vendor security assessment/);
+      assert.match(await trace.textContent(), /do not establish evidentiary support/);
+      const learning = card.locator('.cognitive-learning');
+      await learning.locator('summary').click();
+      assert.match(await learning.textContent(), /Finding-specific issue/);
+      assert.equal(await page.textContent('#statusbox'), before);
+      assert.equal(await page.locator('#cogbody .cognitive-trace img').count(), 0);
+    });
     await check(`${label}: defective record holds; correction flow reaches READY`, async () => {
       await page.selectOption('#fixture', 'D06');
       await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
