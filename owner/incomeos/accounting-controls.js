@@ -22,8 +22,12 @@
   }
   function clean(x,len) { return String(x==null?"":x).trim().slice(0,len); }
   function sourceId(x) {
-    var parts=[x.institution,x.accountToken,x.transactionId].map(function(v){return clean(v,100);});
-    if (parts.some(function(s){return !s || s.includes("|");})) throw new Error("Source requires institution, masked account token and immutable transaction id");
+    // Identity fields may not be silently truncated: distinct bank postings must not alias.
+    var parts=[x.institution,x.accountToken,x.transactionId].map(function(v){
+      if(typeof v!=="string" || !v.trim() || v.trim().length>100 || v.includes("|"))
+        throw new Error("Source identity requires nonempty strings of at most 100 characters without separators");
+      return v.trim();
+    });
     // Tokens must be opaque reference labels, not raw payment or account identifiers.
     if (/^\d{9,}$/.test(parts[1]) || /@/.test(parts[1])) throw new Error("Raw account identifiers must not be imported");
     return parts.join("|");
@@ -98,8 +102,11 @@
     items.forEach(function(x,i){
       try{
         if(!x || typeof x!=="object")throw new Error("Invalid account coverage");
-        var token=clean(x.institution,100)+"|"+clean(x.accountToken,100);
-        if(!clean(x.institution,100)||!clean(x.accountToken,100)||ids.has(token))throw new Error("Missing or repeated institution/account coverage");
+        var fields=[x.institution,x.accountToken];
+        if(fields.some(function(v){return typeof v!=="string" || !v.trim() || v.trim().length>100 || v.includes("|");}))
+          throw new Error("Invalid or overlength institution/account coverage identity");
+        var token=fields.map(function(v){return v.trim();}).join("|");
+        if(ids.has(token))throw new Error("Repeated institution/account coverage");
         ids.add(token);
         if(!validDate(x.from)||!validDate(x.through)||x.from>x.through)throw new Error("Invalid coverage interval");
         if(x.complete!==true || x.sourceVerified!==true)throw new Error("Coverage not independently verified");
