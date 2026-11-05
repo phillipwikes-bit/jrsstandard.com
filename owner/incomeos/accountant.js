@@ -52,6 +52,8 @@
       && (e.accountantQuestions===undefined || (typeof e.accountantQuestions==="string" && e.accountantQuestions.length<=500))
       && (e.paymentAccount===undefined || safeAccountRef(e.paymentAccount))
       && (e.duplicateConfirmed===undefined || typeof e.duplicateConfirmed==="boolean")
+      && (e.reinvestedUsd===undefined || (e.type==="capital" && typeof e.reinvestedUsd==="number" && e.reinvestedUsd>=0 && e.reinvestedUsd<=num(e.amountUsd)))
+      && (e.reinvestedFrom===undefined || (typeof e.reinvestedFrom==="string" && e.reinvestedFrom.length<=100))
       && (e.corrections===undefined || (Array.isArray(e.corrections) && e.corrections.length<=100 && e.corrections.every(function(c){return c&&typeof c.at==="string"&&Array.isArray(c.changes)&&c.changes.length<=TRACKED.length;})));
   }
   // A payment account is recorded only as a short owner label (for example "Business card ending 1234").
@@ -280,7 +282,7 @@
   // Corrections are preserved: an edit records each changed field's previous and new value with the time,
   // so an evidence reference, amount or classification that was corrected can still be traced. The record's
   // original source (manual, CSV or legacy import) is kept. At most 100 corrections are retained per record.
-  var TRACKED=["label","payer","category","date","type","scope","status","paymentStatus","amountOriginal","currency","fx","grossUsd","feesUsd","amountUsd","businessUse","evidenceStatus","docStatus","taxForm","method","reference","reconciled","notes","accountantQuestions","paymentAccount"];
+  var TRACKED=["label","payer","category","date","type","scope","status","paymentStatus","amountOriginal","currency","fx","grossUsd","feesUsd","amountUsd","businessUse","evidenceStatus","docStatus","taxForm","method","reference","reconciled","notes","accountantQuestions","paymentAccount","reinvestedUsd","reinvestedFrom"];
   function correctionLog(old,e,at){
     var log=Array.isArray(old.corrections)?old.corrections.slice():[],changes=[];
     TRACKED.forEach(function(k){var a=old[k],b=e[k];
@@ -375,6 +377,15 @@
     if(!(amount>0&&amount<=1e7))errs.push({id:"cost-amount",msg:"Enter an amount greater than 0 and at most 10,000,000."});
     if(pct!==null&&!(pct>=0&&pct<=100))errs.push({id:"cost-business-use",msg:"Enter a share from 0 to 100, or leave it blank if unknown."});
     if(!safeAccountRef(e.paymentAccount))errs.push({id:"cost-payment-account",msg:ACCOUNT_REF_RULE});
+    // Reinvestment: part of an asset purchase paid with earnings received from a named holding.
+    var rawRe=$("cost-reinvested")?$("cost-reinvested").value.trim():"",reFrom=$("cost-reinvested-from")?limit($("cost-reinvested-from").value.trim(),100):"";
+    if(rawRe!==""||reFrom){
+      var re=rawRe===""?NaN:num(rawRe);
+      if(e.type!=="capital")errs.push({id:"cost-reinvested",msg:"Only an asset purchase or capital contribution can be recorded as reinvested earnings."});
+      else if(!(re>=0&&re<=amount))errs.push({id:"cost-reinvested",msg:"Enter reinvested earnings from 0 up to the amount paid."});
+      else if(re>0&&!reFrom)errs.push({id:"cost-reinvested-from",msg:"Name the holding whose earnings paid for this."});
+      else{e.reinvestedUsd=round(re);if(reFrom)e.reinvestedFrom=reFrom;}
+    }
     if(!errs.length&&!validate(e))errs.push({id:"cost-label",msg:"This entry could not be validated. Check every field."});
     if(errs.length){showErrors("cost-form",errs);return null;}
     clearErrors("cost-form");
@@ -398,6 +409,7 @@
       editingCost=e.id;editingIncome=null;
       setValue("cost-label",e.label);setValue("cost-payee",e.payer);setValue("cost-category",e.category);
       setValue("cost-date",e.date);setValue("cost-amount",e.amountUsd);setValue("cost-type",e.type);
+      setValue("cost-reinvested",e.reinvestedUsd);setValue("cost-reinvested-from",e.reinvestedFrom);
       setValue("cost-business-use",e.businessUse);
       setValue("cost-evidence-status",e.evidenceStatus||"missing");
       setValue("cost-reference",e.reference);setValue("cost-notes",e.notes);

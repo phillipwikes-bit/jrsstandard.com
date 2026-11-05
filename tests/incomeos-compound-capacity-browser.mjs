@@ -79,6 +79,25 @@ await holding.waitFor();
 const ht=await holding.textContent();
 assert.match(ht,/Money put in\$1,000\.00/);assert.match(ht,/Income received\$60\.00/);assert.match(ht,/\$1,000\.00 of your money is still in it/);
 assert.match(ht,/Income on money put in \(not annualised\)6%/);
+// Reinvestment through the form: a second purchase paid partly with that $60 of interest.
+await nav("ledger");
+await page.locator("#cost-label").fill("Synthetic second note");await page.locator("#cost-payee").fill("Synthetic Notes Fund");
+await page.locator("#cost-amount").fill("200");await page.locator("#cost-date").fill(Y+"-07-01");await page.locator("#cost-type").selectOption("capital");
+await page.locator("#cost-payment-status").selectOption("paid");
+await page.locator("#cost-reinvested").fill("80");await page.locator("#cost-save").tap();
+assert.match(await page.locator("#cost-reinvested-from").getAttribute("aria-invalid")||"",/true/,"a reinvested amount needs its source holding");
+await page.locator("#cost-reinvested-from").fill("Synthetic Notes Fund");await page.locator("#cost-save").tap();
+await page.waitForFunction(()=>!document.getElementById("cost-label").value);
+// An expense cannot carry reinvested earnings.
+await page.locator("#cost-label").fill("Synthetic fee");await page.locator("#cost-payee").fill("Synthetic Bank");await page.locator("#cost-amount").fill("5");
+await page.locator("#cost-date").fill(Y+"-07-02");await page.locator("#cost-type").selectOption("expense");await page.locator("#cost-reinvested").fill("5");
+await page.locator("#cost-reinvested-from").fill("Synthetic Notes Fund");await page.locator("#cost-save").tap();
+assert.match(await page.locator("#cost-errors").textContent(),/Only an asset purchase or capital contribution/);
+await page.locator("#cost-reinvested").fill("");await page.locator("#cost-reinvested-from").fill("");await page.locator("#cost-label").fill("");
+await nav("compound");
+{const t=await page.locator('#ch-result .holding[data-holding="Synthetic Notes Fund"]').textContent();
+ assert.match(t,/Money put in\$1,200\.00/);assert.match(t,/of which reinvested earnings\$60\.00/);assert.match(t,/of which new money\$1,140\.00/);
+ assert.match(t,/\$20\.00 recorded as reinvested from Synthetic Notes Fund exceeds the income received from it/);}
 for(const w of [320,375,430]){await page.setViewportSize({width:w,height:800});
   assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w,w),"no horizontal overflow at "+w);}
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,"nothing in browser storage");

@@ -59,13 +59,28 @@
       var h=map[key];h[role]=r2(h[role]+amt);h.records++;if(!e.reconciled)h.unreconciled++;
       if(e.date<h.first)h.first=e.date;if(e.date>h.last)h.last=e.date;
     });
+    // Reinvestment: a contribution may say part of it was paid with earnings received from a named holding.
+    // Earnings are capped at that holding's income actually received, used in date order; anything beyond the
+    // cap, or naming a holding with no received income, counts as new money. Principal is never earnings.
+    var spent={},links=[];
+    entries.filter(function(e){return e&&e.kind==="outflow"&&e.type==="capital"&&(e.paymentStatus||"paid")==="paid"&&n(e.reinvestedUsd)>0;})
+      .sort(function(a,b){return String(a.date).localeCompare(String(b.date));})
+      .forEach(function(e){
+        var to=String(e.payer||"").trim().toLowerCase()||"(unnamed)",from=String(e.reinvestedFrom||"").trim().toLowerCase(),want=r2(n(e.reinvestedUsd));
+        var avail=map[from]?r2(map[from].income-(spent[from]||0)):0,used=r2(Math.max(0,Math.min(want,avail)));
+        if(used>0)spent[from]=r2((spent[from]||0)+used);
+        links.push({to:to,from:from,fromName:map[from]?map[from].name:String(e.reinvestedFrom||""),claimed:want,used:used});
+      });
     var rows=order.map(function(k){
       var h=map[k],back=r2(h.returned+h.proceeds),flags=[];
+      var inLinks=links.filter(function(l){return l.to===k;}),reinv=r2(inLinks.reduce(function(a,l){return a+l.used;},0));
+      inLinks.forEach(function(l){if(l.used<l.claimed)flags.push("$"+r2(l.claimed-l.used).toFixed(2)+" recorded as reinvested from "+(l.fromName||"an unnamed holding")+" exceeds the income received from it; counted as new money.");});
       if(!(h.contributed>0))flags.push("No money put in is recorded for this holding; results cannot be judged.");
       if(h.proceeds>0)flags.push("Sale proceeds have no cost basis recorded; the gain or loss is unknown.");
       if(h.unreconciled)flags.push(h.unreconciled+" record(s) not reconciled to a statement.");
       if(k==="(unnamed)")flags.push("Records without a payer or payee name are grouped here.");
       return {name:h.name,contributed:h.contributed,incomeReceived:h.income,principalReturned:h.returned,saleProceeds:h.proceeds,
+        reinvestedEarnings:reinv,newMoney:r2(Math.max(0,h.contributed-reinv)),earningsReinvestedElsewhere:r2(spent[k]||0),
         capitalBack:back,netCashSoFar:r2(h.income+back-h.contributed),stillInvested:r2(Math.max(0,h.contributed-back)),
         status:h.contributed>0&&back>=h.contributed?"CAPITAL_RETURNED":h.contributed>0?"CAPITAL_STILL_OUT":"NO_CONTRIBUTION_RECORDED",
         incomeOnCapitalPct:h.contributed>0?r2(h.income/h.contributed*100):null,from:h.first,to:h.last,records:h.records,flags:flags};

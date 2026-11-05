@@ -47,4 +47,20 @@ assert.equal(H[1].status,"CAPITAL_RETURNED");assert.equal(H[1].incomeReceived,0,
 assert.ok(H[1].flags.some(f=>/cost basis/.test(f)));
 assert.equal(H[2].status,"NO_CONTRIBUTION_RECORDED");assert.equal(H[2].incomeOnCapitalPct,null);
 assert.throws(()=>C.holdings(null),/Entries required/);
+// Reinvestment: earnings capped at income actually received from the named holding, in date order; principal never counts.
+{const R=[
+  {kind:"outflow",type:"capital",payer:"Synthetic Notes Fund",amountUsd:1000,date:"2026-01-05",reconciled:true},
+  {kind:"income",status:"paid",scope:"income",category:"interest",payer:"Synthetic Notes Fund",grossUsd:120,feesUsd:0,date:"2026-06-30",reconciled:true},
+  {kind:"income",status:"paid",scope:"nonincome",payer:"Synthetic Notes Fund",grossUsd:500,date:"2026-07-01",reconciled:true},
+  {kind:"income",status:"expected",scope:"income",category:"interest",payer:"Synthetic Notes Fund",grossUsd:900,date:"2026-12-31"},
+  {kind:"outflow",type:"capital",payer:"Synthetic Land Co",amountUsd:300,date:"2026-08-01",reinvestedUsd:100,reinvestedFrom:"synthetic notes fund",reconciled:true},
+  {kind:"outflow",type:"capital",payer:"Synthetic Land Co",amountUsd:200,date:"2026-09-01",reinvestedUsd:150,reinvestedFrom:"Synthetic Notes Fund",reconciled:true},
+  {kind:"outflow",type:"capital",payer:"Synthetic Art LLC",amountUsd:50,date:"2026-09-02",reinvestedUsd:50,reinvestedFrom:"Nobody Known",reconciled:true}];
+ const by=Object.fromEntries(JSON.parse(JSON.stringify(C.holdings(R))).holdings.map(h=>[h.name,h]));
+ const land=by["Synthetic Land Co"],notes=by["Synthetic Notes Fund"],art=by["Synthetic Art LLC"];
+ assert.deepEqual([land.contributed,land.reinvestedEarnings,land.newMoney],[500,120,380],"only the $120 received counts; expected interest and $500 principal do not");
+ assert.ok(land.flags.some(f=>/\$130\.00 recorded as reinvested from Synthetic Notes Fund exceeds the income received/.test(f)));
+ assert.equal(notes.earningsReinvestedElsewhere,120);assert.equal(notes.reinvestedEarnings,0);
+ assert.deepEqual([art.reinvestedEarnings,art.newMoney],[0,50],"an unknown source counts as new money");
+ assert.ok(art.flags.some(f=>/from Nobody Known exceeds/.test(f)));}
 console.log("IncomeOS available-to-compound checks passed: received income only, principal kept separate, reserve and bills deducted, never negative.");

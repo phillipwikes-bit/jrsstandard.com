@@ -40,7 +40,7 @@
       add(c,"strong",h.name);
       add(c,"p",{CAPITAL_RETURNED:"All money put in has come back.",CAPITAL_STILL_OUT:usd.format(h.stillInvested)+" of your money is still in it.",NO_CONTRIBUTION_RECORDED:"No money put in is recorded."}[h.status],"muted");
       var dl=add(c,"dl",null,"detail");
-      [["Money put in",h.contributed],["Income received",h.incomeReceived],["Principal returned (not earnings)",h.principalReturned],["Sale proceeds (not earnings)",h.saleProceeds],["Net cash so far",h.netCashSoFar]].forEach(function(p){
+      [["Money put in",h.contributed],["of which reinvested earnings",h.reinvestedEarnings],["of which new money",h.newMoney],["Income received",h.incomeReceived],["Earnings reinvested in other holdings",h.earningsReinvestedElsewhere],["Principal returned (not earnings)",h.principalReturned],["Sale proceeds (not earnings)",h.saleProceeds],["Net cash so far",h.netCashSoFar]].forEach(function(p){
         var d=add(dl,"div",null,"line");add(d,"dt",p[0]);add(d,"dd",usd.format(p[1]));});
       if(h.incomeOnCapitalPct!=null){var d=add(dl,"div",null,"line");add(d,"dt","Income on money put in (not annualised)");add(d,"dd",h.incomeOnCapitalPct+"%");}
       if(h.flags.length){var ul=add(c,"ul",null,"bullets");h.flags.forEach(function(f){add(ul,"li",f);});}
