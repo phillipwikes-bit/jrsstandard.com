@@ -48,6 +48,20 @@ try {
     // disclosing case/source contents or treating DS-N1 results as DS-A.
     const spDetails = page.locator('#ds-product-runtime details');
     assert.equal(await spDetails.count(),1);
+    const geometry = await page.evaluate(() => {
+      const summary = document.querySelector('#ds-product-runtime details summary');
+      const details = summary.closest('details');
+      const previous = details.previousElementSibling;
+      const rect = element => {
+        const b = element.getBoundingClientRect();
+        return { top:b.top, bottom:b.bottom, left:b.left, right:b.right, width:b.width, height:b.height };
+      };
+      const b = rect(summary);
+      return { scrollY:window.scrollY, innerHeight:window.innerHeight,
+        summary: b, details:rect(details), previous:rect(previous),
+        atCenter:document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2)?.tagName };
+    });
+    console.log('SP disclosure geometry at '+width+'px:', JSON.stringify(geometry));
     await spDetails.locator('summary').click();
     const spRows = spDetails.locator('li');
     assert.equal(await spRows.count(),18);
