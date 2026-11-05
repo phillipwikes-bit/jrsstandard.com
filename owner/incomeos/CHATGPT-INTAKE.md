@@ -51,3 +51,16 @@ Paste the rows into the `ledger` array of your workspace file (keep the file out
 > Rules: use `projection` for any calculated or hypothetical gain (interest, yield, a rate comparison); it is never income. Use `returned_capital` for money that is already mine (refunds, unclaimed property, deposits). Do not invent amounts, deadlines or availability. Skip anything that asks for an upfront fee, a paid finder service, gift cards, crypto or contact through Telegram or WhatsApp. Do not include my personal data, account numbers, case numbers, passwords or codes. If nothing is new, output `{"schema":"incomeos.passive-findings.v1","findings":[]}`.
 
 Save the output as a `.json` file and open it in IncomeOS: Assets tab, "Passive opportunity findings", **Review findings**. A finding without a source, a found-on date within 14 days or a direct https link is refused and the reason is shown. Projections are listed last and never counted. Nothing is fetched or filed. With your workspace open you can mark a finding Pursuing, Done or Dismissed; that decision is saved in the workspace, and dismissed findings stay hidden in later files; a finding becomes money only when you record the actual payment in Income.
+
+## Fourth task: paid study alerts as a study file (added 2026-11-05)
+
+The built-in study list is a dated snapshot and goes on hold after three days. Add this to the hourly IncomeOS Paid Study Alerts task so its findings can be loaded into the Research tab:
+
+> At the end of each run, also output ONE JSON object, nothing else, in this exact shape:
+> `{"asOf":"YYYY-MM-DD","studies":[ ... ]}`
+>
+> Each study has only these fields: `id` (letters, digits, `-` or `_`, 4 to 90 characters, e.g. recruiter plus study number), `title`, `provider` (the recruiter), `paymentUsd` (number), `paymentMethod` (as stated, e.g. "PayPal", "Amazon gift card"), `minutes` (session length), `screenMinutes`, `prepMinutes`, `adminMinutes` (each a number or null when not stated), `timeConfidence` (`verified` only if the posting states every time, otherwise `estimated` or `unknown`), `mode` (`online`, `hybrid` or `in-person`), `eventEnd` (YYYY-MM-DD or null), `dateType` (`application-deadline` or `published-session-end`), `reviewed` (today, YYYY-MM-DD), `url` (the https page where I apply to this study), `sourceUrl` (the https page where you found it), `dates` (participation dates as text), `linkKind` (`Direct screener`, `Study-specific registration` or `Application details unconfirmed`), `eligibility` (list of requirements copied from the posting), `risk` (list of concerns), `status` (availability as stated).
+>
+> Rules: never invent pay, times, dates or availability; use null when the posting does not say. Do not add fields. Do not include my personal data, screening answers, account details or codes.
+
+Save it as a `.json` file and, in IncomeOS, open Research → "Paid research opportunity radar" → choose the file → **Import and analyze leads**. On the hosted app the studies are held for that visit only (browser storage stays blocked); nothing is stored, and reloading clears them. Any field outside the list above makes the whole study be refused.

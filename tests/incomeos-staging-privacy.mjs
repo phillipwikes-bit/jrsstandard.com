@@ -35,7 +35,10 @@ const radar=read("research-ui.js");
 assert.match(radar,/function load\(\)\{\s*if\(window\.IncomeOSFinancialReadOnly===true\)return/);
 assert.match(radar,/function persist\(\)\{if\(window\.IncomeOSFinancialReadOnly===true\)/);
 assert.match(radar,/sel\.disabled=true/);
-assert.match(radar,/Local imports require secured owner storage/);
+// Changed 2026-11-05: public study files may be loaded into page memory while storage is blocked. The import's
+// memory-only branch must return before persist(), so nothing reaches browser storage; a browser test confirms it.
+assert.match(radar,/var memoryOnly=window\.IncomeOSFinancialReadOnly===true;/);
+assert.match(radar,/if\(memoryOnly\)\{view\(\);notice\.textContent="Studies loaded for this visit only:[^}]*Nothing was stored[^}]*;return;\}\s*if\(persist\(\)\)/);
 const spend=read("spend-ui.js");
 assert.match(spend,/function load\(\)\{\s*if\(window\.IncomeOSFinancialReadOnly===true\)return/);
 assert.match(spend,/function save\(\)\{if\(window\.IncomeOSFinancialReadOnly===true\)/);

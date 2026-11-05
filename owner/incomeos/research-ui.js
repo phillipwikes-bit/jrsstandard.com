@@ -148,7 +148,8 @@
     download(rows.map(function(x){return x.map(quote).join(",");}).join("\r\n")+"\r\n","IncomeOS-research-radar-"+today()+".csv","text/csv;charset=utf-8");
   }
   async function importLeads(){
-    if(window.IncomeOSFinancialReadOnly===true){$("radar-status").textContent="Local imports require secured owner storage.";return;}
+    // With browser storage blocked, reviewed public study files are held in page memory only and are never written.
+    var memoryOnly=window.IncomeOSFinancialReadOnly===true;
     var f=$("radar-import-file").files?.[0],notice=$("radar-status");
     if(!f){notice.textContent="Select a JSON file containing reviewed public research candidates.";return;}
     if(f.size>250000){notice.textContent="The research file exceeds the 250 KB limit.";return;}
@@ -161,6 +162,7 @@
       var added=incoming.filter(function(x){return !db.leads.some(function(e){return e.id===x.id;});}).length;
       if(!confirm("Review "+result.received+" public rows: "+result.accepted+" validated, "+result.rejected.length+" rejected, "+added+" new local candidates. Import validated records only? Availability and eligibility remain unconfirmed."))return;
       db.leads=incoming.slice(0,200);
+      if(memoryOnly){view();notice.textContent="Studies loaded for this visit only: "+result.accepted+" accepted, "+result.rejected.length+" rejected, "+unique.skipped+" duplicate(s) suppressed. Nothing was stored; reloading the page clears them. No recruiter was contacted.";return;}
       if(persist()){view();notice.textContent="Public-source intake complete: "+result.accepted+" accepted, "+result.rejected.length+" rejected, "+unique.skipped+" duplicate(s) suppressed. No recruiter was contacted."; }
     }catch(e){notice.textContent="No research candidates imported: "+e.message;}finally{$("radar-import-file").value="";}
   }
@@ -180,18 +182,21 @@
       var result=adapter.collect(data);
       publicLeads=result.items;
       view();
-      $("radar-status").textContent="Dated, local public snapshot: "+result.accepted+" verified-format records accepted, "+result.rejected.length+" rejected. Not a live recruiter or financial account connection.";
+      var age=typeof data.asOf==="string"?Math.floor((Date.parse(today()+"T00:00:00Z")-Date.parse(data.asOf+"T00:00:00Z"))/86400000):NaN;
+      $("radar-status").textContent=(Number.isFinite(age)&&age>3?"The built-in study snapshot is from "+data.asOf+", "+age+" days ago, so every study in it is on hold as out of date. Load a fresh study file from your hourly study alerts below. ":"")+
+        "Dated, local public snapshot: "+result.accepted+" verified-format records accepted, "+result.rejected.length+" rejected. Not a live recruiter or financial account connection.";
     }catch(e){$("radar-status").textContent="Public research snapshot unavailable. Only previously imported local candidates are shown.";view();}
   }
   function init(){
     if(!$("radar-results")||!engine||!adapter)return;
     load();
-    if(window.IncomeOSFinancialReadOnly===true){$("radar-import").disabled=true;$("radar-import-file").disabled=true;$("radar-preferences").querySelectorAll("input,button").forEach(function(e){e.disabled=true;});}
+    // Preferences and study files work in page memory when browser storage is blocked; nothing is written.
     $("radar-min-pay").value=db.preferences.minPay;$("radar-min-ehy").value=db.preferences.minEhy;$("radar-max-screen").value=db.preferences.maxScreenMinutes;$("radar-remote").checked=db.preferences.remoteOnly;
     $("radar-preferences").addEventListener("submit",function(e){
       e.preventDefault();var pay=Number($("radar-min-pay").value),ehy=Number($("radar-min-ehy").value),screen=Number($("radar-max-screen").value);
       if(!Number.isFinite(pay)||pay<0||pay>100000||!Number.isFinite(ehy)||ehy<0||ehy>100000||!Number.isFinite(screen)||screen<0||screen>720){$("radar-status").textContent="Enter valid payment and screening thresholds.";return;}
       db.preferences={minPay:pay,minEhy:ehy,maxScreenMinutes:screen,remoteOnly:$("radar-remote").checked};
+      if(window.IncomeOSFinancialReadOnly===true){view();$("radar-status").textContent="Thresholds applied for this visit only; nothing was stored.";return;}
       if(persist())view();
     });
     $("radar-import").addEventListener("click",importLeads);
