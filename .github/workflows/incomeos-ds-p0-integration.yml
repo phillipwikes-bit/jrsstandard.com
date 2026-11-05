@@ -1,0 +1,31 @@
+name: IncomeOS Decision Spellchecker P0 integration tests
+on:
+  push:
+    branches:
+      - chatgpt/incomeos-v23-product-integration-20261105
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: incomeos-ds-p0-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-level-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Contract syntax and direct real-engine integration tests
+        run: |
+          node --check owner/incomeos/ds-runtime-bridge.mjs
+          node --test tests/incomeos-ds-runtime-bridge.mjs
+      - name: Existing DS-N1 cognitive and source-trace regressions
+        run: |
+          node --test tests/ds-n1/cognitive-controls.test.mjs tests/ds-n1/cognitive-source-trace.test.mjs tests/ds-n1/reflective-guidance.test.mjs
+      - name: IncomeOS existing programme integrity
+        run: node tests/incomeos-ds-program.mjs
