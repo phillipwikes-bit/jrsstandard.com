@@ -103,6 +103,23 @@ await page.locator("#cloud-vault-restore").tap();
 await page.waitForFunction(()=>/Opened the vault copy saved 2026-11-05 12:00/.test(document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
 await nav("ledger");await page.locator("#report-year").fill("2026");await page.locator("#report-year").dispatchEvent("change");
 assert.match(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,"record restored from the vault");
+// A pending encrypted restore must never replace an owner workspace created
+// while decryption is in flight. Dispatch then create synchronously in the same
+// browser turn so the race is reproducible, not dependent on crypto timing.
+const staleRestore=await page.evaluate(async encrypted=>{
+  const done=new Promise(resolve=>{
+    document.dispatchEvent(new CustomEvent("incomeos:vault-open",{detail:{text:encrypted,done:resolve}}));
+  });
+  document.getElementById("briefing-new").click();
+  return done;
+},rows[0].ciphertext);
+assert.equal(staleRestore.ok,false,"outdated restore must be refused");
+assert.match(staleRestore.error,/Workspace changed during file restore/);
+await nav("ledger");
+assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,
+  "new workspace must not be overwritten by a stale decrypted vault copy");
+assert.match(await page.locator("#briefing-status").textContent(),/New empty workspace/);
+
 // A tampered vault copy is refused.
 rows[0].ciphertext=rows[0].ciphertext.replace(/"data":"(.)/,(m,c)=>'"data":"'+(c==="A"?"B":"A"));
 await vault();await page.locator("#cloud-vault-restore").tap();

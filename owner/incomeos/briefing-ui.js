@@ -168,7 +168,14 @@
       status.textContent=state.ws?(state.dirty?"Unsaved changes. Save the updated workspace to keep them.":"Workspace loaded in memory only. Nothing is stored or sent."):"Showing system health only. Load your workspace file to see your finances.";
     }
     async function openText(text){
-      var loaded=await WS.load(text,passInput&&passInput.value||"");if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");state.ws=loaded;announce();if(WS.isEncrypted(text)){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}}state.dirty=false;state.history=[];render();
+      // Decryption is asynchronous. A newly created, edited, or replaced workspace
+      // must not be overwritten by an older restore that finishes afterward.
+      var beforeWs=state.ws,beforeDirty=state.dirty,beforeSnapshot=beforeWs?JSON.stringify(beforeWs):null;
+      var loaded=await WS.load(text,passInput&&passInput.value||"");
+      if(state.ws!==beforeWs||state.dirty!==beforeDirty||(beforeWs&&JSON.stringify(state.ws)!==beforeSnapshot))
+        throw Error("Workspace changed during file restore. The newer workspace was preserved.");
+      if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");
+      state.ws=loaded;announce();if(WS.isEncrypted(text)){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}}state.dirty=false;state.history=[];render();
     }
     // Private vault: the vault panel receives only the workspace already encrypted here with the passphrase, and
     // only hands back an encrypted save to open. Nothing unencrypted ever leaves this panel.
