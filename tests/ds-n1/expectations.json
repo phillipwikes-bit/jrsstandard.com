@@ -1,0 +1,40 @@
+{
+  "expectation_set": "ds-n1.expectations/0.1.0",
+  "registered": "2026-11-03",
+  "registered_before_first_harness_run": true,
+  "author": "AI development agent (Claude Code), developer-authored; NOT creator-reviewed and NOT independent",
+  "acceptance_criteria": {
+    "critical_false_ready": "MUST equal 0: no fixture with must_not_be_ready=true may reach READY_FOR_HUMAN_FINALIZATION",
+    "status_agreement": "each fixture's machine status must equal expected_status exactly",
+    "required_codes": "every code in required_codes must appear among the fixture's active findings",
+    "control_cleanliness": "supported controls (P*) must produce zero active findings",
+    "repeatability": "3 executions per fixture must produce byte-identical canonical reports",
+    "scope_of_claim": "Passing these criteria establishes DEVELOPER VERIFIED behaviour on this fixture set only. It is not a performance, accuracy or validation claim."
+  },
+  "fixtures": {
+    "P01": { "expected_status": "READY_FOR_HUMAN_FINALIZATION", "required_codes": [], "must_not_be_ready": false },
+    "P02": { "expected_status": "READY_FOR_HUMAN_FINALIZATION", "required_codes": [], "must_not_be_ready": false },
+    "P03": { "expected_status": "READY_FOR_HUMAN_FINALIZATION", "required_codes": [], "must_not_be_ready": false },
+    "P04": { "expected_status": "READY_FOR_HUMAN_FINALIZATION", "required_codes": [], "must_not_be_ready": false },
+    "P05": { "expected_status": "READY_FOR_HUMAN_FINALIZATION", "required_codes": [], "must_not_be_ready": false },
+    "D01": { "expected_status": "HOLD", "required_codes": ["RELEVANCE_NOT_ESTABLISHED", "UNSUPPORTED_CLAIM"], "must_not_be_ready": true },
+    "D02": { "expected_status": "HOLD", "required_codes": ["SUBJECT_MISMATCH"], "must_not_be_ready": true },
+    "D03": { "expected_status": "HOLD", "required_codes": ["DATE_MISMATCH"], "must_not_be_ready": true },
+    "D04": { "expected_status": "HOLD", "required_codes": ["EVENT_ROLE_CONFUSION"], "must_not_be_ready": true },
+    "D05": { "expected_status": "HOLD", "required_codes": ["NEGATION_CONFLICT"], "must_not_be_ready": true },
+    "D06": { "expected_status": "HOLD", "required_codes": ["UNSUPPORTED_CLAIM"], "must_not_be_ready": true },
+    "D07": { "expected_status": "HOLD", "required_codes": ["SOURCE_MISSING", "UNTRACEABLE_AUTHORITY"], "must_not_be_ready": true },
+    "D08": { "expected_status": "REVIEW_REQUIRED", "required_codes": ["INSTRUCTION_LIKE_CONTENT"], "must_not_be_ready": true },
+    "D09": { "expected_status": "HOLD", "required_codes": ["INSTRUCTION_LIKE_CONTENT", "UNSUPPORTED_CLAIM"], "must_not_be_ready": true },
+    "D10": { "expected_status": "HOLD", "required_codes": ["QUOTE_NOT_FOUND"], "must_not_be_ready": true },
+    "D11": { "expected_status": "REVIEW_REQUIRED", "required_codes": ["QUALIFICATION_OMITTED"], "must_not_be_ready": true },
+    "D12": { "expected_status": "REVIEW_REQUIRED", "required_codes": ["UNMAPPED_ASSERTION"], "must_not_be_ready": true },
+    "D13": { "expected_status": "HOLD", "required_codes": ["REASONING_NOT_TRACED", "UNSUPPORTED_CLAIM"], "must_not_be_ready": true },
+    "D14": { "expected_status": "INCOMPLETE", "required_codes": ["CLAIM_NOT_IN_RECORD"], "must_not_be_ready": true },
+    "D15": { "expected_status": "REFUSED_SCOPE", "required_codes": [], "must_not_be_ready": true },
+    "D16": { "expected_status": "REFUSED_SCOPE", "required_codes": [], "must_not_be_ready": true },
+    "D17": { "expected_status": "ERROR", "required_codes": [], "must_not_be_ready": true },
+    "D18": { "expected_status": "ERROR", "required_codes": [], "must_not_be_ready": true },
+    "D19": { "expected_status": "ERROR", "required_codes": [], "must_not_be_ready": true }
+  }
+}

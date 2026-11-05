@@ -1,0 +1,110 @@
+{
+  "schema": "ds-n1.record/1.0",
+  "record_id": "VPN-2207-H03",
+  "record_version": "1",
+  "record_class": "supplier_access_exception",
+  "data_classification": "constructed_fictional",
+  "title": "Remote access exception VPN-2207 (fictional)",
+  "text": "Kestrel Freight requested remote VPN access to the dispatch system on 2026-07-14. Ines Moreau approved the remote access exception on 2026-07-22. Access is limited to read-only dispatch screens for thirty days.",
+  "entities": [
+    {
+      "entity_id": "K1",
+      "name": "Kestrel Freight",
+      "aliases": [
+        "Kestrel"
+      ]
+    },
+    {
+      "entity_id": "K2",
+      "name": "Ines Moreau"
+    },
+    {
+      "entity_id": "K3",
+      "name": "Tomas Ruiz"
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "T1",
+      "title": "Service desk ticket SD-8841",
+      "version": "r2",
+      "text": "Ticket SD-8841. On 2026-07-14 Kestrel Freight requested remote VPN access to the dispatch system for route planning.",
+      "events": [
+        {
+          "role": "request",
+          "date": "2026-07-14",
+          "actor": "K1"
+        }
+      ]
+    },
+    {
+      "source_id": "T2",
+      "title": "Risk acceptance memo RA-31",
+      "version": "r1",
+      "text": "Risk acceptance memo RA-31. On 2026-07-21 Ines Moreau approved the remote access exception for Kestrel Freight. Access is limited to read-only dispatch screens for thirty days.",
+      "events": [
+        {
+          "role": "approval",
+          "date": "2026-07-21",
+          "actor": "K2"
+        }
+      ]
+    },
+    {
+      "source_id": "T3",
+      "title": "VPN configuration log CL-5",
+      "version": "r4",
+      "text": "Configuration log CL-5. A VPN profile for Kestrel Freight was created on 2026-07-22 with read-only dispatch permissions.",
+      "events": [
+        {
+          "role": "provisioned",
+          "date": "2026-07-22"
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "kind": "chronology",
+      "quote": "Kestrel Freight requested remote VPN access to the dispatch system on 2026-07-14.",
+      "event": {
+        "role": "request",
+        "date": "2026-07-14"
+      },
+      "citations": [
+        {
+          "source_id": "T1",
+          "quote": "requested remote VPN access to the dispatch system"
+        }
+      ]
+    },
+    {
+      "claim_id": "C2",
+      "kind": "authority",
+      "quote": "Ines Moreau approved the remote access exception on 2026-07-22.",
+      "actor": "K2",
+      "event": {
+        "role": "approval",
+        "date": "2026-07-22"
+      },
+      "citations": [
+        {
+          "source_id": "T2",
+          "quote": "approved the remote access exception for Kestrel Freight"
+        }
+      ]
+    },
+    {
+      "claim_id": "C3",
+      "kind": "fact",
+      "quote": "Access is limited to read-only dispatch screens for thirty days.",
+      "citations": [
+        {
+          "source_id": "T2",
+          "quote": "Access is limited to read-only dispatch screens for thirty days."
+        }
+      ]
+    }
+  ]
+}

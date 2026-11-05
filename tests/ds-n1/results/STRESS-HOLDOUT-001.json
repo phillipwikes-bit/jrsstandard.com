@@ -1,0 +1,107 @@
+{
+  "run_schema": "ds-n1.stress-run/1.0",
+  "split": "holdout",
+  "executed_at": "2026-11-03T16:48:35.056Z",
+  "application": {
+    "candidate_id": "DS-N1",
+    "version": "0.2.0-dev",
+    "rule_version": "ds-n1.rules/0.2.0"
+  },
+  "source_commit": "50f6f73ee189800e1ce1f3af1e38002963a2ccaa",
+  "engine_source_dirty": false,
+  "model": "none",
+  "provider": "none",
+  "dataset": {
+    "id": "ds-n1.stress/0.1.0",
+    "manifest_sha256": "614ee6fd0540cf0b8ba56eefe2e5e076c732ebbdaf89b8902e4db2e61b77e522",
+    "records": 6
+  },
+  "expectations": {
+    "id": "ds-n1.stress-expectations/0.1.0",
+    "sha256": "69d06384183ffd3cfc707373875380fe75e49770867bc2a85891a9e755d81b12",
+    "label_type": "REFERENCE: what a careful human reviewer should conclude. NOT the engine's current behaviour."
+  },
+  "executions_per_record": 3,
+  "retries": 0,
+  "exclusions": [],
+  "summary": {
+    "records": 6,
+    "critical_false_ready": 0,
+    "false_hold": 0,
+    "reference_status_agreement": "5/6",
+    "repeatable": "6/6",
+    "acceptance": "PASS on the mandatory criterion (0 critical false-ready); other figures descriptive"
+  },
+  "limitations": [
+    "Developer-authored records and reference labels; not independent.",
+    "Small constructed set; figures are counts, not rates with any population meaning."
+  ],
+  "records": [
+    {
+      "id": "X03",
+      "mutation": "date written as \"15 September 2026\"",
+      "fixture_digest_ok": true,
+      "reference_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": []
+    },
+    {
+      "id": "X05",
+      "mutation": "supplier referred to by its alias \"Northwind\"",
+      "fixture_digest_ok": true,
+      "reference_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": []
+    },
+    {
+      "id": "X09",
+      "mutation": "approval recorded as given by a different person",
+      "fixture_digest_ok": true,
+      "reference_status": "HOLD",
+      "observed_status": "HOLD",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": [
+        "SUBJECT_MISMATCH",
+        "UNTRACEABLE_AUTHORITY"
+      ]
+    },
+    {
+      "id": "X11",
+      "mutation": "cited quote differs from the source by one character (plural)",
+      "fixture_digest_ok": true,
+      "reference_status": "REVIEW_REQUIRED",
+      "observed_status": "HOLD",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": [
+        "QUOTE_NOT_FOUND",
+        "UNSUPPORTED_CLAIM"
+      ]
+    },
+    {
+      "id": "X13",
+      "mutation": "negative claim supported by \"never\" in a reordered source sentence",
+      "fixture_digest_ok": true,
+      "reference_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": []
+    },
+    {
+      "id": "X15",
+      "mutation": "clean control: three-event chronology across three sources",
+      "fixture_digest_ok": true,
+      "reference_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "critical_false_ready": false,
+      "false_hold": false,
+      "observed_codes": []
+    }
+  ]
+}

@@ -1,0 +1,457 @@
+{
+  "run_schema": "ds-n1.eval-run/1.0",
+  "label": "clean-tree run at committed HEAD",
+  "executed_at": "2026-11-03T16:39:49.165Z",
+  "application": {
+    "candidate_id": "DS-N1",
+    "version": "0.1.0-dev",
+    "rule_version": "ds-n1.rules/0.1.0"
+  },
+  "source_commit": "6a40507804b6695d7bb39cd154504545027d8e5c",
+  "working_tree_dirty_in_scope": false,
+  "model": "none (zero model calls)",
+  "provider": "none",
+  "codebook_version": "NOT APPLICABLE: provisional RC1-RC5 grouping, no Codebook correspondence",
+  "environment": {
+    "node": "v22.23.4",
+    "platform": "linux"
+  },
+  "dataset": {
+    "id": "ds-n1.fixtures/0.1.0",
+    "manifest_sha256": "015acdd43b2a6d21c333d428ad2d385facc57a6606315d10ebfea9ee6aabf518",
+    "unique_records": 24,
+    "classification": "DEVELOPER FIXTURES, constructed fictional, not independent labels"
+  },
+  "expectations": {
+    "id": "ds-n1.expectations/0.1.0",
+    "sha256": "268e3474a0c652416dbcb34688c1d99c5771a17e93c895c3fcaa40724543387e"
+  },
+  "executions_per_record": 3,
+  "retries": 0,
+  "exclusions": [],
+  "summary": {
+    "records": 24,
+    "critical_false_ready": 0,
+    "status_agreement": "24/24",
+    "required_codes_present": "24/24",
+    "controls_with_zero_findings": "5/5",
+    "repeatable_records": "24/24",
+    "missing_expectations": 0,
+    "acceptance": "PASS (developer fixtures only)"
+  },
+  "limitations": [
+    "Developer-authored fictional fixtures and developer-authored expectations; no creator review, no independent labels.",
+    "Each defect fixture isolates one mutation; real records combine defects and paraphrase. Results do not estimate field performance.",
+    "Human burden and reconstructability by an independent reviewer are NOT measured by this harness."
+  ],
+  "records": [
+    {
+      "id": "P01",
+      "mutation": "none: supported base record",
+      "fixture_digest_ok": true,
+      "expected_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "a5d5f5abab9f6fff65cfb1fd2614847160cfaddf7fd01c53ee60ad597d20f1ad"
+    },
+    {
+      "id": "P02",
+      "mutation": "Unicode control: NFD names, curly apostrophe in quote, emoji in record",
+      "fixture_digest_ok": true,
+      "expected_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "7f5c383547bc6056cc3770b7ec384f3de64746a99930543f73d54019b3b17921"
+    },
+    {
+      "id": "P03",
+      "mutation": "second supported scenario, different supplier and sources",
+      "fixture_digest_ok": true,
+      "expected_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "8bc66e1fae659b4a0a30fad5af3809c3fb1647f62f8c084be20aef6fce8a4f04"
+    },
+    {
+      "id": "P04",
+      "mutation": "negative claim correctly supported by a negative source (negation false-positive control)",
+      "fixture_digest_ok": true,
+      "expected_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "d715537dec43ebc7f3d1dff8f2d7ff4fa6976074c730917d0449f2943895524d"
+    },
+    {
+      "id": "P05",
+      "mutation": "qualification present in source and preserved in claim",
+      "fixture_digest_ok": true,
+      "expected_status": "READY_FOR_HUMAN_FINALIZATION",
+      "observed_status": "READY_FOR_HUMAN_FINALIZATION",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "83d4e3a03f40f09b16db24b21c10bd246dd50523721badb563dc0685666fe4cc"
+    },
+    {
+      "id": "D01",
+      "mutation": "irrelevant citation: C2 cites the access request instead of the assessment",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM"
+      ],
+      "observed_codes": [
+        "DATE_NOT_ESTABLISHED",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNSUPPORTED_CLAIM"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "15335e9b03d6f9585e296ef88c11815402cec1bebd7f55c5decaaac22e1f0f39"
+    },
+    {
+      "id": "D02",
+      "mutation": "conflicting actor: C2 attributes the assessment to Harbor Logistics",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "SUBJECT_MISMATCH"
+      ],
+      "observed_codes": [
+        "SUBJECT_MISMATCH"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "e5c8c81befd5392754ea4361a9e86277030a459328a4b5cd9c42bbf8920f4808"
+    },
+    {
+      "id": "D03",
+      "mutation": "incorrect event date: approval dated 2026-09-20",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "DATE_MISMATCH"
+      ],
+      "observed_codes": [
+        "DATE_MISMATCH",
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "0b8a4e9c405e7b3d2970f8fc9231269d1143534bd29ed3702f0ea8e3b1b80e2b"
+    },
+    {
+      "id": "D04",
+      "mutation": "event-role confusion: submission-for-approval date presented as the approval date",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "EVENT_ROLE_CONFUSION"
+      ],
+      "observed_codes": [
+        "ACTOR_NOT_ESTABLISHED",
+        "EVENT_ROLE_CONFUSION",
+        "RELEVANCE_NOT_ESTABLISHED",
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "8f81564744b68e062cb5cb924f4d3758c951bf0890e588762ef092303ba81df3"
+    },
+    {
+      "id": "D05",
+      "mutation": "negated source passage: source says the assessment was NOT completed",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "NEGATION_CONFLICT"
+      ],
+      "observed_codes": [
+        "EVENT_ROLE_CONFUSION",
+        "NEGATION_CONFLICT"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "74b5dc423b227f381dec2db68d9a19d39d8c2ad38c0c30773f2430e8471af1f6"
+    },
+    {
+      "id": "D06",
+      "mutation": "missing evidence: C2 has no citation",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "UNSUPPORTED_CLAIM"
+      ],
+      "observed_codes": [
+        "UNSUPPORTED_CLAIM"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "61cb32c0837397d8c9d41063c079834b9076258fe5ac5c86ef6ebc053a1db086"
+    },
+    {
+      "id": "D07",
+      "mutation": "fabricated authority: approval cites a source that is not in the record",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "SOURCE_MISSING",
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "observed_codes": [
+        "SOURCE_MISSING",
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "54a4a277e1f3293f60695647a6627d83aa77b8340b8f4bacae0a329397616b73"
+    },
+    {
+      "id": "D08",
+      "mutation": "prompt injection in a source, record otherwise supported",
+      "fixture_digest_ok": true,
+      "expected_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "status_match": true,
+      "required_codes": [
+        "INSTRUCTION_LIKE_CONTENT"
+      ],
+      "observed_codes": [
+        "INSTRUCTION_LIKE_CONTENT"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "d7cf72a3016ef02b9b27aac7f3af88c49f7a16cb705d12e212a9f33356337f2d"
+    },
+    {
+      "id": "D09",
+      "mutation": "prompt injection in a source AND missing evidence (injection must not lift the hold)",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "INSTRUCTION_LIKE_CONTENT",
+        "UNSUPPORTED_CLAIM"
+      ],
+      "observed_codes": [
+        "INSTRUCTION_LIKE_CONTENT",
+        "UNSUPPORTED_CLAIM"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "283300d899eda1794decc6a4364f97e566834f3e4a1a241f400af87f511fb767"
+    },
+    {
+      "id": "D10",
+      "mutation": "misattributed quote: approval passage cited to the assessment summary",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "QUOTE_NOT_FOUND"
+      ],
+      "observed_codes": [
+        "QUOTE_NOT_FOUND",
+        "UNTRACEABLE_AUTHORITY"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "78caa12aeb3cde5ef8d723430be2faea1378e5e9df559c475f1ca79cd6a88737"
+    },
+    {
+      "id": "D11",
+      "mutation": "omitted qualification: source approval is conditional, claim is not",
+      "fixture_digest_ok": true,
+      "expected_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "status_match": true,
+      "required_codes": [
+        "QUALIFICATION_OMITTED"
+      ],
+      "observed_codes": [
+        "QUALIFICATION_OMITTED"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "8d7f5c11758a33f3b370161bd45801b2cea42166e4342ba1ffc38116b814b44a"
+    },
+    {
+      "id": "D12",
+      "mutation": "unmapped assertion: an unsourced verification sentence in the record",
+      "fixture_digest_ok": true,
+      "expected_status": "REVIEW_REQUIRED",
+      "observed_status": "REVIEW_REQUIRED",
+      "status_match": true,
+      "required_codes": [
+        "UNMAPPED_ASSERTION"
+      ],
+      "observed_codes": [
+        "UNMAPPED_ASSERTION"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "36e68a05ebb28d1be85859fc07daf4942e73b4e1082487a7007a1c58e9dce538"
+    },
+    {
+      "id": "D13",
+      "mutation": "conclusion without reasoning or support",
+      "fixture_digest_ok": true,
+      "expected_status": "HOLD",
+      "observed_status": "HOLD",
+      "status_match": true,
+      "required_codes": [
+        "REASONING_NOT_TRACED",
+        "UNSUPPORTED_CLAIM"
+      ],
+      "observed_codes": [
+        "REASONING_NOT_TRACED",
+        "UNSUPPORTED_CLAIM"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "b646b25f86c857db8581da43dd13ce23ed2b786907e947e98feacce9b5bfa16f"
+    },
+    {
+      "id": "D14",
+      "mutation": "claim text not present in record",
+      "fixture_digest_ok": true,
+      "expected_status": "INCOMPLETE",
+      "observed_status": "INCOMPLETE",
+      "status_match": true,
+      "required_codes": [
+        "CLAIM_NOT_IN_RECORD"
+      ],
+      "observed_codes": [
+        "CLAIM_NOT_IN_RECORD",
+        "UNMAPPED_ASSERTION"
+      ],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "cc59e1b716186448ebaeca82dbe31ad7daf68433e8242cf2d8ed2c1661a22f81"
+    },
+    {
+      "id": "D15",
+      "mutation": "unsupported record class (employment)",
+      "fixture_digest_ok": true,
+      "expected_status": "REFUSED_SCOPE",
+      "observed_status": "REFUSED_SCOPE",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "9a8605f634efb69e2eef4bb8907bdd1202ece806127bde510dc8bb41f104dcb8"
+    },
+    {
+      "id": "D16",
+      "mutation": "real-data classification not permitted",
+      "fixture_digest_ok": true,
+      "expected_status": "REFUSED_SCOPE",
+      "observed_status": "REFUSED_SCOPE",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "cb5005e573921e137232d1064ddee7b88b619fdf90dfe929253da64d0a5fae8a"
+    },
+    {
+      "id": "D17",
+      "mutation": "malformed input: claims is not an array",
+      "fixture_digest_ok": true,
+      "expected_status": "ERROR",
+      "observed_status": "ERROR",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "a47ee18992b2bbe23b24b24a2e8d1fae8de4f11359e241301e8c033885c0c2f9"
+    },
+    {
+      "id": "D18",
+      "mutation": "duplicate source identifiers",
+      "fixture_digest_ok": true,
+      "expected_status": "ERROR",
+      "observed_status": "ERROR",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "ae358ed03c3db65ff95030499973e4059e880936110d7c044a630396575cbd08"
+    },
+    {
+      "id": "D19",
+      "mutation": "unsupported schema version",
+      "fixture_digest_ok": true,
+      "expected_status": "ERROR",
+      "observed_status": "ERROR",
+      "status_match": true,
+      "required_codes": [],
+      "observed_codes": [],
+      "missing_codes": [],
+      "critical_false_ready": false,
+      "repeatable": true,
+      "report_sha256": "a6f6d5d403b43adf8b1b4b63c8378194c1e2db990151778bff58f313a6e307ef"
+    }
+  ]
+}
