@@ -13,15 +13,16 @@ import { buildReflectiveGuidance, REFLECTIVE_GUIDANCE_VERSION } from '../../lib/
 export const CONTRACT_VERSION = 'incomeos.ds-runtime-bridge/1.0.1-dev';
 export const INTEGRATION_STATUS = 'INTEGRATION_IN_PROGRESS';
 
-// Development-only provenance guard. This is an ephemeral set of bridge-issued
-// sessions, not an independent programme, ledger, durable review store or
+// Development-only provenance guard. This ephemeral map binds each issued
+// synthetic session to the exact validated owner programme that opened it.
+// It is not an independent programme, ledger, durable review store or
 // authentication mechanism. Persisted/reopened sessions require a separately
 // verified, authenticated owner workflow before this boundary can be relaxed.
-const issuedSessions = new WeakSet();
+const issuedSessions = new WeakMap();
 
-function requireSyntheticSession(session) {
+function requireSyntheticSession(program, session) {
   if (!session || typeof session !== 'object' ||
-      !issuedSessions.has(session) || !Array.isArray(session.events)) {
+      issuedSessions.get(session) !== program || !Array.isArray(session.events)) {
     throw new TypeError('Only bridge-issued constructed fictional review sessions are permitted');
   }
   const input = session.input;
@@ -122,13 +123,13 @@ export function startSyntheticReview(program, input, at) {
     return Object.freeze({ accepted: false, status: validation.status, errors: validation.errors });
   }
   const session = openReview(structuredClone(input), { at });
-  issuedSessions.add(session);
+  issuedSessions.set(session, program);
   return Object.freeze({ accepted: true, session });
 }
 
 export function reviewerSnapshot(program, session) {
   checkProgram(program);
-  requireSyntheticSession(session);
+  requireSyntheticSession(program, session);
   const state = deriveState(session);
   const controls = buildCognitiveControls(state);
   return {
@@ -150,14 +151,14 @@ export function reviewerSnapshot(program, session) {
 // original DS-N1 human action engine, preserving its validation and event log.
 export function applyReviewerAction(program, session, action) {
   checkProgram(program);
-  requireSyntheticSession(session);
+  requireSyntheticSession(program, session);
   const next = applyAction(session, action);
-  issuedSessions.add(next);
+  issuedSessions.set(next, program);
   return next;
 }
 
 export function syntheticReport(program, session, generatedAt) {
   checkProgram(program);
-  requireSyntheticSession(session);
+  requireSyntheticSession(program, session);
   return buildReport(session, { generated_at: generatedAt });
 }
