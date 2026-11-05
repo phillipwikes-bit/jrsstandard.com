@@ -10,6 +10,8 @@ import {
   applyReviewerAction, syntheticReport, CONTRACT_VERSION,
 } from '../owner/incomeos/ds-runtime-bridge.mjs';
 
+import { openReview } from '../lib/ds-n1/index.mjs';
+
 await import('../owner/incomeos/ds-program.js');
 const DS = globalThis.IncomeOSDSProgram;
 const base = dirname(fileURLToPath(import.meta.url));
@@ -116,4 +118,55 @@ test('delegated human action preserves DS-N1 disposition and report logic', () =
   assert.equal(after.authenticity, 'UNSIGNED_INTERNAL_HASH_CHAIN_ONLY');
   const report = syntheticReport(p, next, '2026-11-05T13:32:00Z');
   assert.ok(report && typeof report === 'object');
+});
+
+
+test('direct DS-N1 sessions cannot bypass the IncomeOS constructed-fictional review boundary', () => {
+  const p = program();
+  const external = openReview(fixture('D06'), { at:T0 });
+  const fakeAction = {
+    type:'request_evidence', finding_id:'SYN-NOT-ISSUED',
+    at:'2026-11-05T13:31:00Z', reviewer:{reviewer_id:'rev-test-01',name:'Fictional Test Reviewer'},
+    request:'Check the constructed record.',
+  };
+  assert.throws(() => reviewerSnapshot(p, external), /bridge-issued constructed fictional/);
+  assert.throws(() => applyReviewerAction(p, external, fakeAction), /bridge-issued constructed fictional/);
+  assert.throws(() => syntheticReport(p, external, '2026-11-05T13:32:00Z'), /bridge-issued constructed fictional/);
+  // A JSON copy is not automatically an authorized resumed session. There is
+  // currently no authenticated, durable reviewer-session restoration contract.
+  const issued = startSyntheticReview(p, fixture('D06'), T0).session;
+  assert.throws(() => reviewerSnapshot(p, structuredClone(issued)), /bridge-issued constructed fictional/);
+});
+
+test('all three bridge operations recheck synthetic scope and original history', () => {
+  const p = program();
+  const fakeAction = {
+    type:'request_evidence', finding_id:'SYN-NOT-ACTIONABLE',
+    at:'2026-11-05T13:31:00Z', reviewer:{reviewer_id:'rev-test-01',name:'Fictional Test Reviewer'},
+    request:'Check the constructed record.',
+  };
+  const input = fixture('D06');
+  const opened = startSyntheticReview(p, input, T0);
+  input.data_classification = 'confidential';
+  assert.equal(reviewerSnapshot(p, opened.session).reviewStatus, 'HOLD',
+    'initial input is copied; later caller changes must not alter an issued session');
+
+  opened.session.input.data_classification = 'confidential';
+  for (const operation of [
+    () => reviewerSnapshot(p, opened.session),
+    () => applyReviewerAction(p, opened.session, fakeAction),
+    () => syntheticReport(p, opened.session, '2026-11-05T13:32:00Z'),
+  ]) assert.throws(operation, /constructed fictional/);
+
+  const corrupted = startSyntheticReview(p, fixture('D06'), T0).session;
+  corrupted.events[0].record_digest = 'forged';
+  for (const operation of [
+    () => reviewerSnapshot(p, corrupted),
+    () => applyReviewerAction(p, corrupted, fakeAction),
+    () => syntheticReport(p, corrupted, '2026-11-05T13:32:00Z'),
+  ]) assert.throws(operation, /integrity check failed/);
+
+  const changed = startSyntheticReview(p, fixture('D06'), T0).session;
+  changed.input.record_version = 'tampered-version';
+  assert.throws(() => reviewerSnapshot(p, changed), /integrity check failed/);
 });
