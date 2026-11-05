@@ -64,6 +64,19 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
 @media(max-width:680px){h1{font-size:30px}.cards,.start-grid{grid-template-columns:1fr}.card{min-height:0}.jrs-sitenav a{padding:12px 13px;font-size:7.5px}}
 /* Public experience modernization v2026.10 */
 :root{--bg:#070706;--surface:#121210;--surface2:#1a1a17;--rule:#302f2a;--text:#f5f3ed;--muted:#bbb7ad;--muted-soft:#928d82;--accent:#d3ad64;--accent-dim:#ac823b;--ready:#7bc49b;--focus:#f4d18b}html,body{background:radial-gradient(900px 500px at 96% -150px,rgba(211,173,100,.12),transparent 66%),var(--bg)}a:focus-visible{outline:2px solid var(--focus);outline-offset:3px}.site-header{background:rgba(7,7,6,.88);backdrop-filter:blur(12px)}.wordmark{font-size:27px;letter-spacing:-.025em}.jrs-sitenav a:hover,.jrs-sitenav a[aria-current="page"]{background:rgba(211,173,100,.08)}.hero{padding:60px 0 38px}h1{font-size:42px;letter-spacing:-.03em;line-height:1.12}.start-grid{margin-top:26px}.start-link{background:linear-gradient(135deg,rgba(255,255,255,.02),transparent 70%),var(--surface);padding:15px;min-height:94px;transition:transform .18s ease,border-color .18s ease,background .18s ease}.start-link:hover,.start-link:focus{transform:translateY(-2px);border-color:var(--accent);background:linear-gradient(135deg,rgba(211,173,100,.08),transparent 70%),var(--surface)}.start-v{font-size:17px}.card{background:linear-gradient(135deg,rgba(255,255,255,.02),transparent 66%),var(--surface);padding:23px;transition:transform .2s ease,border-color .2s ease}.card:hover{transform:translateY(-3px);border-color:rgba(211,173,100,.62)}.card.primary{border-color:rgba(211,173,100,.55);background:linear-gradient(145deg,rgba(211,173,100,.1),var(--surface) 58%)}.card-link{transition:transform .18s ease,background .18s ease}.card-link:hover{transform:translateY(-1px);background:#e0bc76}.boundary{background:linear-gradient(135deg,rgba(211,173,100,.045),transparent 50%),var(--surface2);padding:20px 21px;margin:34px 0 48px}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}@media(max-width:680px){h1{font-size:33px}}
+
+/* Resources sharing uses existing site styles and existing GA4 only. */
+.jrs-resource-share{margin:20px 0 30px;padding:20px 22px;background:var(--surface2);border:1px solid var(--rule);border-radius:6px}
+.jrs-resource-share h2{font-size:20px;line-height:1.35;margin:0 0 8px}
+.jrs-resource-share p{margin:8px 0 14px}
+.jrs-resource-share-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.jrs-resource-share-actions button{min-height:44px;padding:10px 16px;background:var(--accent);color:var(--bg);border:1px solid var(--accent);border-radius:3px;font:600 14px/1.4 Inter,system-ui,sans-serif;cursor:pointer}
+.jrs-resource-share-actions button:disabled{opacity:.65;cursor:not-allowed}
+.jrs-resource-share-actions button:focus-visible{outline:3px solid #0b679c;outline-offset:3px}
+.jrs-resource-share-actions a{font-weight:650}
+.jrs-resource-share [data-jrs-share-status]{font-size:13px;line-height:1.6}
+@media(max-width:640px){.jrs-resource-share{padding:15px}.jrs-resource-share-actions button{width:100%}}
+@media print{.jrs-resource-share{display:none}}
 </style>
 <link rel="stylesheet" href="/assets/jrs-professional-accessibility.css">
 <link rel="stylesheet" href="/assets/jrs-institutional-reference.css">
@@ -104,10 +117,22 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
    </div>
    <p class="jrs-practitioner-promise"><strong>JRS is a practical review instrument that practitioners can use within existing workflows, not a software platform they must acquire.</strong> Organizations do not need to purchase or replace a software platform to begin examining whether their decision records preserve sufficient evidence, chronology and reasoning for later independent review.</p>
    <p class="jrs-resource-directory-link"><a href="#resource-catalog">Search all 16 resources by topic, role or format</a></p>
+   <p class="jrs-resource-directory-link">Reviewing an AI-drafted report? <a href="/reference/ai-assisted-record-failure-modes/">Read the AI-assisted record failure modes and review questions</a>.</p>
    <p class="jrs-journey-bridge"><strong>Accessibility of PDF publications:</strong> The published PDFs have not been certified for tagging or screen-reader reading order. <a href="contact.html?category=accessibility">Request an alternative format</a> by identifying the exact document title and edition. The separately versioned online method is not a verified equivalent of the Standard PDF.</p>
 
 
   </section>
+
+  <aside class="jrs-share-box jrs-resource-share" aria-label="Share free JRS practitioner resources">
+   <h2 id="share-jrs-resources">Share these free reviewer resources</h2>
+   <p>Know a practitioner who reviews AI-assisted records? Send the public directory. No account or case-record upload is required.</p>
+   <div class="jrs-resource-share-actions">
+    <button type="button" data-jrs-share="native" disabled>Share resources</button>
+    <button type="button" data-jrs-share="copy" disabled>Copy directory link</button>
+    <a href="https://www.jrsstandard.com/resources.html">Permanent resources link</a>
+   </div>
+   <p data-jrs-share-status role="status" aria-live="polite">Link sharing becomes available on the published website.</p>
+  </aside>
 
   <section class="jrs-resource-catalog" id="resource-catalog" tabindex="-1" aria-labelledby="jrs-catalog-heading">
    <div class="jrs-resource-catalog-heading">
@@ -248,6 +273,17 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
    <p class="jrs-resource-empty" id="jrs-resource-empty" hidden>No resources match these filters. Clear filters to see all available materials.</p>
    <p class="jrs-resource-catalog-note"><strong>Accessible-format requests.</strong> PDF downloads remain free, but the PDFs have not been independently certified as accessible. If you need assistance obtaining a document in an alternative accessible format, <a href="contact.html?category=accessibility">request assistance through the Contact page</a> and identify the document title and edition. Do not send a case record or confidential material. The online methodology and separately published Standard PDF are different editions and must not be treated as interchangeable. <a href="privacy-notice.html">Privacy and data handling</a>.</p>
 
+  </section>
+
+  <section class="jrs-resource-first-use" id="additional-awareness-references" aria-labelledby="additional-awareness-title">
+   <p class="jrs-resource-first-use-kicker">Additional public reference pages · Web format</p>
+   <h2 id="additional-awareness-title">See the review problem, then examine the method.</h2>
+   <p class="jrs-resource-first-use-intro">These three explanatory pages supplement the 16 separately cataloged practitioner resources. They do not replace the Standard, the existing research or the investigator guide editions.</p>
+   <ol class="jrs-resource-first-use-steps">
+    <li><h3>JRS and DRR terminology reference</h3><p>Concise, citable definitions of Decision Reconstruction Risk and the Justification Review Standard, with example usage, acronym distinctions and research boundaries.</p><p><a href="terminology.html">Read the definitions and usage reference</a>.</p></li>
+    <li><h3>Constructed AI-assisted record example</h3><p>A fictional supplier-access summary is compared with its source notes to show unsupported approval, chronology and closure assertions. The example demonstrates reviewer questions, not measured effectiveness.</p><p><a href="worked-example-ai-record.html#record-challenge">Try the short evidence challenge and review the source notes</a>.</p></li>
+    <li><h3>Institutional documentation-review briefing</h3><p>A short shareable reference for investigation, audit, legal, compliance and governance reviewers. Includes existing-workflow steps and the limits of the JRS research.</p><p><a href="institutional-briefing.html">Read the institutional briefing</a>.</p></li>
+   </ol>
   </section>
 
   <section class="jrs-resource-first-use" aria-labelledby="jrs-first-use-title">
@@ -392,5 +428,6 @@ h1{font-family:'Bodoni Moda',serif;font-size:38px;font-weight:400;line-height:1.
 <script src="/assets/jrs-resource-catalog.js" defer></script>
 <script src="/assets/jrs-mobile-navigation.js" defer></script>
 <script src="/assets/jrs-engagement.js" defer></script>
+<script src="/assets/jrs-share.js" defer></script>
 </body>
 </html>
