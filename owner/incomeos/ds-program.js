@@ -381,7 +381,7 @@
   // Actual figures come only from the workspace ledger rows tagged to the program; projections never mix in.
   function finance(p,ws,asOf){
     var rows=arr(ws&&ws.ledger).filter(function(r){return r&&r.program==="decision-spellchecker"&&DIMS.indexOf(r.dsDimension)>=0;});
-    var byDim={},issues=[],lastMonth=prevMonth(asOf),monthCost=0,received=0,recordedUnverified=0;
+    var byDim={},issues=[],lastMonth=prevMonth(asOf),monthCost=0,received=0,recordedUnverified=0,unallocatedRefund=0;
     DIMS.forEach(function(d){byDim[d]=0;});
     rows.forEach(function(r){
       var c=Math.round(Number(r.kind==="income"?r.grossUsd:r.amountUsd)*100);if(!Number.isSafeInteger(c)||c<=0){issues.push({code:"AMOUNT_INVALID",id:r.id});return;}
@@ -402,11 +402,18 @@
         byDim[r.dsDimension]+=c;
       }else{
         if(COST_DIMS.indexOf(r.dsDimension)<0){issues.push({code:"COST_IN_REVENUE_DIMENSION",id:r.id});return;}
-        if(r.dsDimension==="reinvestment"&&r.type!=="refund"&&!authorized(p,"reinvestment").allowed)issues.push({code:"REINVESTMENT_NOT_AUTHORIZED",id:r.id});
-        // A refund row returns money: it reduces the dimension's cost instead of adding to it.
-        var signed=r.type==="refund"?-c:c;
-        byDim[r.dsDimension]+=signed;
-        if(monthKey(r.date)===lastMonth)monthCost+=signed;
+        // The accountant ledger treats refunds as unallocated pending evidence
+        // of the exact original charge and owner review. The programme cannot
+        // establish that linkage from amount, merchant or a bare reference.
+        // Never silently reduce product cost, including a prior-period charge.
+        if(r.type==="refund"){
+          unallocatedRefund+=c;
+          issues.push({code:"REFUND_UNALLOCATED_NOT_NETTED",id:r.id});
+          return;
+        }
+        if(r.dsDimension==="reinvestment"&&!authorized(p,"reinvestment").allowed)issues.push({code:"REINVESTMENT_NOT_AUTHORIZED",id:r.id});
+        byDim[r.dsDimension]+=c;
+        if(monthKey(r.date)===lastMonth)monthCost+=c;
       }
     });
     var totalCost=COST_DIMS.reduce(function(s,d){return s+byDim[d];},0);
@@ -420,9 +427,10 @@
         breakEvenMonths:months,cashFlow12:flow,priceBasis:sourced?"SOURCE_BACKED":"ASSUMPTION",assumptions:s.assumptions};
     });
     return {actual:{costsByDimensionUsd:dims,totalCostUsd:cents(totalCost),lastMonth:lastMonth,lastMonthOperatingCostUsd:cents(monthCost),
-        revenueReceivedUsd:cents(received),revenueRecordedNotVerifiedUsd:cents(recordedUnverified),rows:rows.length},
+        revenueReceivedUsd:cents(received),revenueRecordedNotVerifiedUsd:cents(recordedUnverified),
+        refundCreditsUnallocatedUsd:cents(unallocatedRefund),rows:rows.length},
       projections:scenarios,issues:issues,
-      notice:"Actual figures are ledger rows tagged to the program. Revenue is recorded as received only if paid income, owner-reconciled matching document and bank evidence, and an executed agreement are all recorded. These owner-recorded classifications are not independent bank verification. Scenarios are projections, never earned revenue."};
+      notice:"Actual figures are ledger rows tagged to the program. Refund credits remain unallocated and do not reduce costs without exact original-charge linkage and owner review, which this programme does not yet provide. Revenue is recorded as received only if paid income, owner-reconciled matching document and bank evidence, and an executed agreement are all recorded. These owner-recorded classifications are not independent bank verification. Scenarios are projections, never earned revenue."};
   }
   function command(p0,ws,asOf){
     if(!isDate(asOf))throw Error("Date required");
