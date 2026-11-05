@@ -54,6 +54,26 @@ test('malformed and real-claimed input fails closed without opening a review', (
   assert.throws(() => inspectProduct({schema:'incomeos.ds-program.v1',acceptance:[],gates:[]}), /validated/);
 });
 
+
+test('forged status claims cannot bypass the authoritative owner programme validator', () => {
+  const p = program();
+  p.acceptance[0].status = 'ACCEPTED';
+  assert.throws(() => inspectProduct(p), /SP-01|accepted|evidence/i);
+  assert.throws(() => startSyntheticReview(p, fixture('P01'), T0), /SP-01|accepted|evidence/i);
+});
+
+test('unsupported gate approval cannot be misrepresented as authorized product access', () => {
+  const p = program();
+  p.gates[0].approval = { by: 'OWNER', on: '2026-11-05', ref: 'unsupported-self-assertion' };
+  assert.throws(() => inspectProduct(p), /Gate G1|approval|evidence/i);
+});
+
+test('broken programme evidence links cannot be laundered through the product runtime', () => {
+  const p = program();
+  p.acceptance[0].evidenceIds = ['E-NOT-PRESENT'];
+  assert.throws(() => inspectProduct(p), /unknown evidence|references/i);
+});
+
 test('delegated human action preserves DS-N1 disposition and report logic', () => {
   const p = program();
   const opened = startSyntheticReview(p, fixture('D06'), T0);
