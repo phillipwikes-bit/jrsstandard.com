@@ -3,7 +3,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -11,8 +10,8 @@ import {
   applyReviewerAction, syntheticReport, CONTRACT_VERSION,
 } from '../owner/incomeos/ds-runtime-bridge.mjs';
 
-const require = createRequire(import.meta.url);
-const DS = require('../owner/incomeos/ds-program.js');
+await import('../owner/incomeos/ds-program.js');
+const DS = globalThis.IncomeOSDSProgram;
 const base = dirname(fileURLToPath(import.meta.url));
 const fixture = id => JSON.parse(readFileSync(join(base, 'ds-n1', 'fixtures', id + '.json'), 'utf8'));
 const T0 = '2026-11-05T13:30:00Z';
