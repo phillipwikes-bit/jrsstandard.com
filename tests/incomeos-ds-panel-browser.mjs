@@ -61,7 +61,15 @@ try {
         (rect.top + rect.bottom)/2);
       return hit === el || el.contains(hit);
     });
-    await spDetails.locator('summary').click();
+    // Use a real mobile touch point after verifying it targets the summary.
+    // Locator.click() auto-scrolls again and can re-place this element beneath
+    // the fixed navigation overlay in Chromium's mobile viewport emulator.
+    const tap = await spDetails.locator('summary').evaluate(element => {
+      const b = element.getBoundingClientRect();
+      return { x:(b.left + b.right)/2, y:(b.top + b.bottom)/2 };
+    });
+    await page.touchscreen.tap(tap.x, tap.y);
+    await page.waitForFunction(() => document.querySelector('#ds-product-runtime details')?.open === true);
     const spRows = spDetails.locator('li');
     assert.equal(await spRows.count(),18);
     assert.match(await spRows.first().textContent(),/SP-01: NOT_ACCEPTED/);
