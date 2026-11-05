@@ -47,9 +47,11 @@ The table is a **development gap index**. “Candidate exists” means source is
 - Existing proprietary source identities and the five JRS review conditions remain unchanged.
 - No live record processing, external model calls, financial transactions, public publication, customer outreach, or commercial releases.
 
-**Observed local verification:** The two isolated cognitive/reflective Node test files yield 12 passed / 0 failed, and their syntax checks passed. The two candidate modules were tested together in a local minimal source replica. This is not a full DS-N1 checkout validation.
+**Observed local verification:** Three isolated cognitive, reflective and source-trace Node test files yield 21 passed / 0 failed; syntax checks of the modified local modules and test files passed. This is not a clean checkout or full DS-N1 regression result. The initial trace-test run found 1 failure caused by an inconsistent synthetic quote fixture; the fixture was corrected and the 21-case suite then passed. Do not omit that repair when assessing test provenance.
 
 **Not executed:** Full DS-N1 regression, Playwright browser checks, independent holdout, real iPhone Safari, assistive technology, authentication/security negative paths and release testing.
+
+**Additional source trace:** The candidate projects the inventory entry, version, digest, source span and located excerpt from existing assessed citations. For exact quotes, the candidate checks that the literal quoted text matches the indicated source span and that the source identity agrees. A missing or mismatched version is not shown as a verified quote. Normalised matches still rely on the existing DS-N1 assessment and are not independently reclassified as supporting evidence. A citation being present or a quote matching is not proof of relevance or sufficiency.
 
 **Browser assertions newly authored:** Candidate UI guidance and navigation, preserved status/summary, existing action controls without opening optional guidance, and parity between Guided/Professional modes, exercised by the existing test harness on desktop and iPhone 13 emulation **when that harness is next executed**.
 
