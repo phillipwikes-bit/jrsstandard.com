@@ -216,6 +216,42 @@ for(const origin of ["JRS website visitor","Research participant","jrs training"
  assert.match(read("ds-program-ui.js"),/Recorded transfers \(not operating costs\)/);
 }
 
+// Product finance must respect the accountant editor's payment status and
+// expense-type classifications. All cases use constructed workspace records.
+{
+ let wStatus=W.newWorkspace(on);
+ const add=(amount,paymentStatus,type,date="2026-10-15")=>{
+   wStatus=W.addRecord(wStatus,"ledger",{
+     kind:"outflow",date,payer:"Synthetic vendor "+amount,
+     amountUsd:amount,category:"software",dsDimension:"software_api"
+   },on);
+   const row=wStatus.ledger[wStatus.ledger.length-1];
+   row.type=type;
+   if(paymentStatus!=="legacy")row.paymentStatus=paymentStatus;
+ };
+ add("12.00","paid","expense");
+ add("7.00","legacy","expense"); // existing accountant treats missing status as paid
+ add("100.00","scheduled","expense");
+ add("20.00","disputed","expense");
+ add("40.00","refunded","expense");
+ add("30.00","paid","taxpayment");
+ add("15.00","paid","other");
+ add("9.00","paid","expense","2026-11-02");
+ const before=plain(wStatus.ledger);
+ const result=D.finance(p,wStatus,on);
+ assert.equal(result.actual.totalCostUsd,28,"Only paid expenses and legacy paid-default entries are operating costs");
+ assert.equal(result.actual.lastMonthOperatingCostUsd,19,"Unpaid and tax movements cannot inflate prior-month cost");
+ assert.equal(result.actual.costsByDimensionUsd.software_api,28);
+ assert.equal(result.actual.unpaidOrReversedCostsNotCountedUsd,160);
+ assert.equal(result.actual.nonOperatingOutflowsNotCostUsd,45);
+ assert.equal(result.issues.filter(x=>x.code==="UNPAID_OR_REVERSED_COST_EXCLUDED").length,3);
+ assert.equal(result.issues.filter(x=>x.code==="NONOPERATING_OUTFLOW_EXCLUDED_FROM_COST").length,2);
+ assert.deepEqual(plain(wStatus.ledger),before,"Product projection never changes the authoritative ledger");
+ assert.match(read("ds-program-ui.js"),/Scheduled, disputed or reversed costs \(excluded\)/);
+ assert.match(read("ds-program-ui.js"),/Tax or unclassified outflows \(not operating costs\)/);
+ assert.match(result.notice,/accountant editor's paid default/);
+}
+
 // R8-8: every mutator requires a date.
 assert.throws(()=>D.approveMessage(p,"M-001"),/Date required/);
 assert.throws(()=>D.suppress(p,"C-003"),/Date required/);
