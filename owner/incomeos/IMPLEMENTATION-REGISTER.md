@@ -1,5 +1,7 @@
 # IncomeOS Master Implementation Register
 
+> **Controlling amendment, 2026-11-05 (Version 2.3):** This is the existing authoritative engineering implementation register, not a second roadmap. The November 1 baseline and earlier no-commercial-product language below are retained as historical statements. Version 2.3 now authorizes private Decision Spellchecker engineering, verification and commercial preparation, but does not authorize sales, outreach, customer access, payments, production releases, restricted-source disclosure or intellectual-property transfers. The authoritative development source is `owner/incomeos/` on `chatgpt/incomeos-v23-product-integration-20261105`. Public JRS and any customer delivery environment remain separate security domains.
+
 **Owner-only personal financial operating system**
 **Baseline:** 2026-11-01
 **Status:** Controlled staging. No production owner data entry or financial execution authorized.
@@ -335,3 +337,31 @@ Guard change, 2026-11-05 (second): the memory-only assertion in `tests/incomeos-
 - **Exact-source verification:** On PR head `8304ddd0a288aa3f66d5b1d688650ff4e9563d2e`, [P0 integration run 42047495126](https://github.com/phillipwikes-bit/jrsstandard.com/actions/runs/42047495126) passed 10 bridge, 21 cognitive/source-trace and 35 DS-N1 native synthetic tests with 0 reported failures or skips. The programme-integrity script and 320/375/430px Chromium product-view checks passed. [Private-prototype run 42047495068](https://github.com/phillipwikes-bit/jrsstandard.com/actions/runs/42047495068), [anonymous-access probe 42047495050](https://github.com/phillipwikes-bit/jrsstandard.com/actions/runs/42047495050), and [mobile browser audit 42047494916](https://github.com/phillipwikes-bit/jrsstandard.com/actions/runs/42047494916) passed. All tests use synthetic records; sealed HOLDOUT-2 was not opened.
 - **Security and release:** `INTEGRATION_IN_PROGRESS`; source changes are developer-tested only, not a private authentication service or customer delivery interface. DS-A `AUTHENTIC_SOURCE_NOT_RECOVERED`; original SP acceptance 0/18; customer, production and commercial gates remain closed. No owner records, live customer input, external contact, payment or public JRS production update.
 - **Next executable correction:** Review PR #133 exact-head results and integrate into the existing development branch if preserved. Continue accounting acceptance A01 (verified sole-owner access), A14 (authenticated encrypted vault save/restore), and A16 (separate owner release approval), with fail-closed negative tests. Do not enable a customer reviewer route or relax the constructed-fictional boundary to bypass security controls.
+
+## IncomeOS V2.3 executable integration and accounting checkpoint, 2026-11-05
+
+This section records actual source and executed checks within the existing programme. It does not replace the `dsProgram` workspace record, independent software acceptance evidence, or a production release decision.
+
+### P0 Decision Spellchecker integration, development branch
+
+- **Destination:** `owner/incomeos/`, existing Decision Spellchecker programme and product panel. Contract `incomeos.ds-runtime-bridge/1.0.1-dev`; authoritative programme `incomeos.ds-program.v1`.
+- **Source:** `chatgpt/incomeos-v23-product-integration-20261105` advanced by a non-force, exact-base-SHA fast-forward from `a9a92a3cbc08995e768c667027edd6bb2f4a36b2` to `25f0650703014dc5eefb7bb7dde252ada84c9e20`, preserving both PR #134 (programme-scoped synthetic sessions) and PR #135 (read-only SP-01 through SP-18 original acceptance disclosure), assembled in draft PR #136. The public `main` branch was not changed.
+- **Source files:** `ds-runtime-bridge.mjs`, `ds-product-panel.mjs`, `incomeos.css`; matching tests `incomeos-ds-runtime-bridge.mjs` and `incomeos-ds-panel-browser.mjs`.
+- **Acceptance demonstrated:** imported DS-N1 engine and cognitive controls; programme record validator; constructed-fictional review and human actions through the development bridge; negative scope tests; mobile product-view disclosure and blocked unauthenticated reviewer. Neither financial records nor customer routes are exposed by the bridge.
+- **Executed exact-head evidence:** P0 GitHub Actions run `42057003775` PASS; private-prototype source QA `42057003691` PASS; anonymous access probe `42057003689` PASS; general mobile staging audit `42057004002` PASS. Chromium is emulated at 320/375/430px; no physical iPhone Safari or independent product acceptance.
+- **Release hold:** overall `INTEGRATION_IN_PROGRESS`, despite this development scope being `INTEGRATION TESTED`. DS-A `AUTHENTIC_SOURCE_NOT_RECOVERED`; original SP-01..18 acceptance 0/18. GitHub test results are not a live CI data feed into the product view; the view explicitly reports `NOT_CONNECTED`. No private production deployment or commercial release.
+
+### Accounting save-integrity correction
+
+- **Destination and ownership:** existing owner workspace persistence and cloud-vault workflow; draft PR #137, branch `chatgpt/incomeos-v23-vault-save-race-20261105` based on `25f0650703014dc5eefb7bb7dde252ada84c9e20`. ChatGPT wrote nonoverlapping `briefing-ui.js`, `vault-cloud.js` and `tests/incomeos-vault-cloud-browser.mjs`; Claude Code's separate owner source and original history remain intact.
+- **Defect:** a successful encrypted upload or local file download could clear the dirty flag after the in-memory workspace changed during the asynchronous save, thereby concealing unsaved financial records.
+- **Correction:** snapshot immutable workspace content before encryption; correlate each cloud completion with its initiating snapshot ID; clear the dirty state only for unchanged content; warn when a later workspace version was not included; prevent overlapping uploads; apply equivalent snapshot-preservation rules to local downloads. The existing ledger, owner workspace schema, engine, vault database policies and public website are unchanged.
+- **Executed verification at commit `a13c9e2477166580309a85528a7f646e561f5b2a`:** source QA run `42059147245` PASS, anonymous access probe `42059147272` PASS, DS-N1 P0 integration run `42059147282` PASS, general mobile browser run `42059147150` PASS. The browser test holds a fake vault upload, changes the workspace, releases the older upload and confirms the newer workspace is not reported saved. Synthetic test data only; no live Supabase owner save or authentication round trip.
+- **Status:** `SOURCE TESTED` and browser regression tested on a draft branch, **not** merged into authoritative development branch at this checkpoint. No production release or owner-data entry authorized.
+- **Open gates:** accounting A01 owner-only access approval, A14 authenticated encrypted-vault owner save/recovery, A16 owner production approval. Vercel SSO anonymous denial does not independently verify exclusive owner access. The current hosted app has not been tested with this branch.
+- **Rollback:** retain the parent integration commit `25f0650703014dc5eefb7bb7dde252ada84c9e20`; PR #137 is not deployed or merged into public production.
+- **Next executable engineering:** review and reconcile PR #137 with the authoritative development branch under the single-writer rule; pursue the authenticated accounting vault round trip only after the owner account is created and allow-listed. Continue unrelated safe source and negative-security tests without entering private financial data.
+
+### Release classifications unchanged
+
+Private IncomeOS `OWNER ACCEPTANCE PENDING / BLOCKED`; Decision Spellchecker `DEVELOPER VERIFIED` for the stated synthetic development scope, `INDEPENDENTLY VERIFIED` not established; customer delivery `NOT AUTHORIZED`; commercial release `NOT AUTHORIZED`. No source or CI evidence in this checkpoint establishes IncomeOS-generated receipts, product sales, financing transactions, or reinvestment.
