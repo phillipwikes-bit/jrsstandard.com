@@ -29,3 +29,19 @@ jobs:
           node --test tests/ds-n1/cognitive-controls.test.mjs tests/ds-n1/cognitive-source-trace.test.mjs tests/ds-n1/reflective-guidance.test.mjs
       - name: IncomeOS existing programme integrity
         run: node tests/incomeos-ds-program.mjs
+      - name: Locate available system browser
+        run: |
+          for cmd in google-chrome google-chrome-stable chromium chromium-browser; do
+            if command -v "$cmd" >/dev/null 2>&1; then
+              echo "INCOMEOS_BROWSER=$(command -v "$cmd")" >> "$GITHUB_ENV"
+              exit 0
+            fi
+          done
+          echo "No system browser found" >&2
+          exit 1
+      - name: Install Playwright driver without browser downloads or scripts
+        run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund playwright-core@1.63.0
+      - name: Mobile browser product view, source identity and blocked reviewer
+        env:
+          CI: "true"
+        run: node tests/incomeos-ds-panel-browser.mjs
