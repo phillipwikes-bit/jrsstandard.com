@@ -128,3 +128,5 @@ textarea{display:block;width:100%;min-height:60px;resize:vertical;background:whi
 .field-error{color:#8d3a2c;font-size:12px;font-weight:700;margin:5px 0 0}.form-errors{background:#fff3e5;border:1px solid #efdeba;color:#7a3e22;border-radius:10px;padding:10px 12px;font-size:12px;margin:14px 0 0}input[aria-invalid=true],select[aria-invalid=true],textarea[aria-invalid=true]{border-color:#b5513f!important;box-shadow:0 0 0 1px #b5513f}
 #passive-radar-panel .panelrow{flex-wrap:wrap;gap:8px;justify-content:flex-start}.passive-finding .cardalt a{font-size:12px;font-weight:700}
 .vault-panel{margin-top:12px;border-top:1px solid var(--border);padding-top:10px}.vault-panel summary{font-weight:700;font-size:13px;cursor:pointer;min-height:44px;display:flex;align-items:center}.vault-buttons{flex-wrap:wrap;gap:8px;justify-content:flex-start;margin-top:10px}
+/* Keyboard-visible disclosure in the existing DS product integration panel. */
+#ds-product-runtime details > summary:focus-visible{outline:3px solid #40b79d;outline-offset:3px;border-radius:4px}
