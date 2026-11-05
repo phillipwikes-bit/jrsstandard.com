@@ -196,6 +196,26 @@ for(const origin of ["JRS website visitor","Research participant","jrs training"
  assert.equal(f.actual.refundCreditsUnallocatedUsd,47);
  assert.equal(f.issues.filter(i=>i.code==="REFUND_UNALLOCATED_NOT_NETTED").length,2);
 }
+// Financial classification: transfers and invested principal must not inflate
+// recorded product operating cost, even when a product dimension is supplied.
+{
+ let wMove=W.newWorkspace(on);
+ wMove=W.addRecord(wMove,"ledger",{kind:"outflow",date:"2026-10-12",payer:"Software vendor",amountUsd:"12.00",category:"software",dsDimension:"software_api"},on);
+ wMove=W.addRecord(wMove,"ledger",{kind:"outflow",date:"2026-10-13",payer:"Investment custodian",amountUsd:"500.00",category:"investing",dsDimension:"reinvestment"},on);
+ wMove=W.addRecord(wMove,"ledger",{kind:"outflow",date:"2026-10-14",payer:"Internal account",amountUsd:"75.00",category:"software",dsDimension:"software_api"},on);
+ wMove.ledger[1].type="capital";
+ wMove.ledger[2].type="transfer";
+ const fm=D.finance(p,wMove,on);
+ assert.equal(fm.actual.totalCostUsd,12,"Only the actual operating expense is counted");
+ assert.equal(fm.actual.capitalMovedNotCostUsd,500,"Capital is disclosed separately");
+ assert.equal(fm.actual.transfersNotCostUsd,75,"Transfers are disclosed separately");
+ assert.equal(fm.actual.costsByDimensionUsd.reinvestment,0,"Principal is not a product expense");
+ assert.equal(fm.issues.filter(x=>x.code==="NONEXPENSE_MOVEMENT_EXCLUDED_FROM_COST").length,2);
+ assert.ok(fm.issues.some(x=>x.code==="REINVESTMENT_NOT_AUTHORIZED"),"Capital movement cannot bypass authorization review");
+ assert.match(read("ds-program-ui.js"),/Recorded capital movements \(not operating costs\)/);
+ assert.match(read("ds-program-ui.js"),/Recorded transfers \(not operating costs\)/);
+}
+
 // R8-8: every mutator requires a date.
 assert.throws(()=>D.approveMessage(p,"M-001"),/Date required/);
 assert.throws(()=>D.suppress(p,"C-003"),/Date required/);
