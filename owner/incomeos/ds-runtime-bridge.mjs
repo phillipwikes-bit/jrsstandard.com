@@ -18,6 +18,14 @@ function checkProgram(program) {
       !Array.isArray(program.gates)) {
     throw new TypeError('A validated IncomeOS dsProgram v1 is required');
   }
+  // Do not let a hand-edited workspace promote SP acceptance or a release gate.
+  // Reuse the authoritative owner-programme validator instead of duplicating
+  // evidence and authorization policy in this integration adapter.
+  const controller = globalThis.IncomeOSDSProgram;
+  if (!controller || typeof controller.validate !== 'function') {
+    throw new TypeError('Authoritative IncomeOS programme validation is unavailable');
+  }
+  controller.validate(program);
   for (let i = 1; i <= 18; i++) {
     const id = 'SP-' + String(i).padStart(2, '0');
     const item = program.acceptance.find(x => x?.id === id);

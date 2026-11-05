@@ -54,6 +54,19 @@ test('malformed and real-claimed input fails closed without opening a review', (
   assert.throws(() => inspectProduct({schema:'incomeos.ds-program.v1',acceptance:[],gates:[]}), /validated/);
 });
 
+test('forged SP acceptance or unsupported gate approval is rejected across product entrypoints', () => {
+  const p = program();
+  const falseAcceptance = structuredClone(p);
+  falseAcceptance.acceptance[0].status = 'ACCEPTED';
+  assert.throws(() => inspectProduct(falseAcceptance), /without qualifying independent evidence/);
+  assert.throws(() => startSyntheticReview(falseAcceptance, fixture('P01'), T0), /without qualifying independent evidence/);
+
+  const falseApproval = structuredClone(p);
+  falseApproval.gates[0].approval = {by:'OWNER', on:'2026-11-05', ref:'unverified assertion'};
+  assert.throws(() => inspectProduct(falseApproval), /approval lacks.*primary evidence/);
+  assert.deepEqual(p.acceptance.map(x => x.status), Array(18).fill('NOT_ACCEPTED'));
+});
+
 test('delegated human action preserves DS-N1 disposition and report logic', () => {
   const p = program();
   const opened = startSyntheticReview(p, fixture('D06'), T0);

@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - chatgpt/incomeos-v23-product-integration-20261105
+      - chatgpt/incomeos-v23-program-gate-integrity-20261105
   workflow_dispatch:
 permissions:
   contents: read
