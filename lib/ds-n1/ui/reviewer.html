@@ -48,7 +48,7 @@ body.pro .finding[aria-current="true"] .expl{display:block}
 .fb button{min-height:32px;font-size:.85rem}
 .src{white-space:pre-wrap;font-size:.9rem;border-left:2px solid var(--rule);padding-left:8px;margin:6px 0}
 .src b{color:var(--accent)}
-#summary{grid-column:1/-1}
+#cognitive-section,#summary{grid-column:1/-1}
 @media (max-width:900px){main{grid-template-columns:1fr}}
 </style>
 </head>
@@ -77,6 +77,7 @@ body.pro .finding[aria-current="true"] .expl{display:block}
     <div id="record"></div></section>
   <section aria-labelledby="h-evidence"><h2 id="h-evidence">Evidence</h2><div id="evidence"><p class="muted">Select a claim.</p></div></section>
   <section aria-labelledby="h-findings"><h2 id="h-findings">Findings and actions</h2><div id="findings"><p class="muted">Select a claim.</p></div></section>
+  <section id="cognitive-section" aria-labelledby="h-cognitive"><h2 id="h-cognitive">Cognitive review support (experimental)</h2><div id="cognitive"><p class="muted">Source-linked review questions will appear here.</p></div></section>
   <section id="summary" aria-labelledby="h-summary"><h2 id="h-summary">Review summary and export</h2><div id="sumbody"></div>
     <div class="row"><button id="exp-json" type="button">Download evidence package (JSON)</button><button id="exp-html" type="button">Download report (HTML)</button></div></section>
 </main>
