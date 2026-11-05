@@ -21,6 +21,7 @@ const origin=`http://127.0.0.1:${server.address().port}`,VAULT="https://pmvqxdgv
 const browser=await chromium.launch(launchOptions);
 const ctx=await browser.newContext({...devices["iPhone SE"]});
 const sent=[],rows=[],external=[];
+let holdNextUpload=false,releaseHeldUpload=null;
 const cors={"access-control-allow-origin":origin,"access-control-allow-headers":"apikey,authorization,content-type,prefer","access-control-allow-methods":"GET,POST,OPTIONS","content-type":"application/json"};
 await ctx.route(VAULT+"/**",async route=>{
   const r=route.request(),u=new URL(r.url());
@@ -29,7 +30,15 @@ await ctx.route(VAULT+"/**",async route=>{
   if(u.pathname==="/auth/v1/token"){const b=JSON.parse(r.postData());
     return route.fulfill({status:b.password==="synthetic vault pw"?200:400,headers:cors,body:JSON.stringify(b.password==="synthetic vault pw"?{access_token:"tok",user:{id:"u-1",email:b.email}}:{error_description:"Invalid login credentials"})});}
   if(u.pathname==="/rest/v1/incomeos_vault"){
-    if(r.method()==="POST"){rows.unshift({id:rows.length+1,...JSON.parse(r.postData()),saved_at:"2026-11-05T12:00:00Z"});return route.fulfill({status:201,headers:cors,body:""});}
+    if(r.method()==="POST"){
+      rows.unshift({id:rows.length+1,...JSON.parse(r.postData()),saved_at:"2026-11-05T12:00:00Z"});
+      if(holdNextUpload){
+        holdNextUpload=false;
+        releaseHeldUpload=()=>route.fulfill({status:201,headers:cors,body:""});
+        return;
+      }
+      return route.fulfill({status:201,headers:cors,body:""});
+    }
     return route.fulfill({status:200,headers:cors,body:JSON.stringify(rows.slice(0,1))});}
   return route.fulfill({status:404,headers:cors,body:"{}"});
 });
@@ -62,6 +71,26 @@ const up=sent.find(s=>s.path==="/rest/v1/incomeos_vault"&&s.body);
 assert.ok(up,"an upload happened");
 for(const s of sent)assert.doesNotMatch(s.body,/Synthetic vault payout|synthetic passphrase/,"no readable record or passphrase leaves the page");
 assert.deepEqual(Object.keys(JSON.parse(up.body)).sort(),["ciphertext","format","sha256"]);
+// Regression: an upload can complete AFTER the owner replaces the workspace.
+// The old successful upload must not clear the new workspace's unsaved state.
+holdNextUpload=true;
+await page.locator("#briefing-passphrase").fill("synthetic passphrase for tests");
+await page.locator("#cloud-vault-save").tap();
+await page.waitForFunction(()=>/Saving encrypted copy/.test(document.getElementById("cloud-vault-status").textContent),null,{timeout:30000});
+for(let i=0;i<60&&!releaseHeldUpload;i++)await new Promise(resolve=>setTimeout(resolve,100));
+assert.ok(releaseHeldUpload,"the fake vault upload is paused after encryption");
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),true,"overlapping vault uploads must be disabled");
+await nav("research");
+await page.locator("#briefing-new").tap();
+assert.match(await page.locator("#briefing-status").textContent(),/New empty workspace/);
+await releaseHeldUpload();
+await page.waitForFunction(()=>/earlier workspace version was saved to the vault/.test(document.getElementById("briefing-status").textContent),null,{timeout:30000});
+assert.match(await page.locator("#briefing-status").textContent(),/Changes made during that save are not included/);
+assert.equal(await page.locator("#cloud-vault-save").isDisabled(),false,"save is available again after the upload");
+assert.ok(sent.filter(s=>s.path==="/rest/v1/incomeos_vault"&&s.body).length===2,"the in-flight request remained a single upload");
+// A new local workspace was NOT inadvertently declared saved; a reload may
+// still retrieve the earlier encrypted snapshot from the fake vault.
+
 // Reload: nothing remains in the page; sign in again and restore.
 await page.reload();
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,"nothing in browser storage");

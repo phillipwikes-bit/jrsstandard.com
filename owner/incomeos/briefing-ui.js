@@ -172,10 +172,30 @@
     }
     // Private vault: the vault panel receives only the workspace already encrypted here with the passphrase, and
     // only hands back an encrypted save to open. Nothing unencrypted ever leaves this panel.
+    // An upload can finish after the owner edits or replaces the in-memory
+    // workspace. Only the exact encrypted snapshot may clear its dirty flag.
+    var vaultSaveSequence=0,pendingVaultSave=null;
     document.addEventListener("incomeos:vault-encrypt",async function(ev){var d=ev.detail;if(!d||typeof d.done!=="function")return;
       try{if(!state.ws)throw Error("Open or start a workspace first");var p=passInput&&passInput.value||"";if(p.length<16)throw Error("Enter a passphrase of at least 16 characters; the vault only accepts encrypted saves");
-        d.done({ok:true,text:await WS.encrypt(p,state.ws)});}catch(err){d.done({ok:false,error:err.message});}});
-    document.addEventListener("incomeos:vault-saved",function(){state.dirty=false;try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}render();status.textContent="Encrypted workspace saved to your private vault. Keep the passphrase somewhere safe; it cannot be recovered.";});
+        var snapshot=JSON.stringify(state.ws),saveId=++vaultSaveSequence;
+        var encrypted=await WS.encrypt(p,JSON.parse(snapshot));
+        pendingVaultSave={saveId:saveId,snapshot:snapshot};
+        d.done({ok:true,text:encrypted,saveId:saveId});
+      }catch(err){d.done({ok:false,error:err.message});}});
+    document.addEventListener("incomeos:vault-saved",function(ev){
+      var receipt=ev.detail||{},pending=pendingVaultSave;
+      if(!pending||receipt.saveId!==pending.saveId)return;
+      pendingVaultSave=null;
+      if(state.ws&&JSON.stringify(state.ws)===pending.snapshot){
+        state.dirty=false;
+        try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}
+        render();status.textContent="Encrypted workspace saved to your private vault. Keep the passphrase somewhere safe; it cannot be recovered.";
+      }else{
+        // The upload succeeded for the older snapshot; do not mark current
+        // edits saved or suppress the beforeunload warning.
+        render();status.textContent="An earlier workspace version was saved to the vault. Changes made during that save are not included. Save the current workspace again.";
+      }
+    });
     document.addEventListener("incomeos:vault-open",async function(ev){var d=ev.detail;if(!d||typeof d.done!=="function")return;
       try{if(typeof d.text!=="string"||!WS.isEncrypted(d.text))throw Error("The vault returned something that is not an encrypted workspace");
         if(state.dirty&&!confirm("Replace the unsaved workspace on screen with the vault copy?"))return d.done({ok:false,error:"Cancelled"});
@@ -197,12 +217,17 @@
     });
     if(saveBtn)saveBtn.addEventListener("click",async function(){
       if(!state.ws)return;
-      var p=passInput&&passInput.value||"",stamp=today();
+      var p=passInput&&passInput.value||"",stamp=today(),snapshot=JSON.stringify(state.ws);
       try{
-        if(p){download(await WS.encrypt(p,state.ws),"incomeos-workspace-"+stamp+".encrypted.json");status.textContent="Encrypted workspace saved. Keep the passphrase somewhere safe; it cannot be recovered.";}
-        else{download(JSON.stringify(state.ws,null,1),"incomeos-workspace-"+stamp+".json");status.textContent="Saved WITHOUT encryption. Enter a passphrase of 16+ characters and save again to protect it.";}
-        state.dirty=false;
-        try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:!!p}}));}catch(e){}
+        if(p){download(await WS.encrypt(p,JSON.parse(snapshot)),"incomeos-workspace-"+stamp+".encrypted.json");}
+        else{download(JSON.stringify(JSON.parse(snapshot),null,1),"incomeos-workspace-"+stamp+".json");}
+        if(state.ws&&JSON.stringify(state.ws)===snapshot){
+          state.dirty=false;
+          try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:!!p}}));}catch(e){}
+          status.textContent=p?"Encrypted workspace saved. Keep the passphrase somewhere safe; it cannot be recovered.":"Saved WITHOUT encryption. Enter a passphrase of 16+ characters and save again to protect it.";
+        }else{
+          status.textContent="An earlier workspace version was downloaded. Changes made during that save are not included. Save the current workspace again.";
+        }
       }catch(err){status.textContent="Not saved: "+err.message;}
     });
     window.addEventListener("beforeunload",function(e){if(state.dirty){e.preventDefault();e.returnValue="";}});

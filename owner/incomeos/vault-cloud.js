@@ -65,14 +65,24 @@
   function init(){
     var st=$("cloud-vault-status");if(!st)return;
     function say(t){st.textContent=t;}
-    function refresh(){var on=signedIn();$("cloud-vault-signin").hidden=on;$("cloud-vault-signup").hidden=on;$("cloud-vault-signout").hidden=!on;$("cloud-vault-save").disabled=!on;$("cloud-vault-restore").disabled=!on;$("cloud-vault-password").value=on?"":$("cloud-vault-password").value;}
+    var saving=false;
+    function refresh(){var on=signedIn();$("cloud-vault-signin").hidden=on;$("cloud-vault-signup").hidden=on;$("cloud-vault-signout").hidden=!on;$("cloud-vault-save").disabled=!on||saving;$("cloud-vault-restore").disabled=!on||saving;$("cloud-vault-password").value=on?"":$("cloud-vault-password").value;}
     async function guard(fn){try{await fn();}catch(e){say("Vault: "+e.message);}refresh();}
     $("cloud-vault-signin").addEventListener("click",function(){guard(async function(){say("Signing in…");await signIn($("cloud-vault-email").value,$("cloud-vault-password").value);say("Signed in to your private vault for this visit only.");});});
     $("cloud-vault-signup").addEventListener("click",function(){guard(async function(){await signUp($("cloud-vault-email").value,$("cloud-vault-password").value);say("Account requested. Confirm it from the email Supabase sends, then sign in. The vault opens only after the owner account is approved.");});});
     $("cloud-vault-signout").addEventListener("click",function(){signOut();say("Signed out.");refresh();});
-    $("cloud-vault-save").addEventListener("click",function(){guard(async function(){
-      var r=await ask("incomeos:vault-encrypt",{});if(!r.ok)throw Error(r.error);
-      say("Saving encrypted copy…");await save(r.text);document.dispatchEvent(new CustomEvent("incomeos:vault-saved"));say("Encrypted copy saved to your private vault.");});});
+    $("cloud-vault-save").addEventListener("click",function(){
+      // A second upload cannot overtake an earlier encrypted snapshot and
+      // make the latest vault copy older than the owner's last save.
+      if(saving)return;
+      saving=true;refresh();
+      guard(async function(){
+        var r=await ask("incomeos:vault-encrypt",{});if(!r.ok)throw Error(r.error);
+        say("Saving encrypted copy…");await save(r.text);
+        document.dispatchEvent(new CustomEvent("incomeos:vault-saved",{detail:{saveId:r.saveId}}));
+        say("Encrypted copy saved to your private vault.");
+      }).finally(function(){saving=false;refresh();});
+    });
     $("cloud-vault-restore").addEventListener("click",function(){guard(async function(){
       say("Fetching your latest encrypted save…");var v=await latest();if(!v){say("Your vault has no saves yet.");return;}
       var r=await ask("incomeos:vault-open",{text:v.text});if(!r.ok)throw Error(r.error);say("Opened the vault copy saved "+String(v.savedAt).slice(0,16).replace("T"," ")+" UTC.");});});
