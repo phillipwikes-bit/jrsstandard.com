@@ -91,6 +91,8 @@
     line("Unallocated refund credits (not netted)",usd(fin.actual.refundCreditsUnallocatedUsd));
     line("Recorded capital movements (not operating costs)",usd(fin.actual.capitalMovedNotCostUsd));
     line("Recorded transfers (not operating costs)",usd(fin.actual.transfersNotCostUsd));
+    line("Scheduled, disputed or reversed costs (excluded)",usd(fin.actual.unpaidOrReversedCostsNotCountedUsd));
+    line("Tax or unclassified outflows (not operating costs)",usd(fin.actual.nonOperatingOutflowsNotCostUsd));
     line("Revenue received (bank-matched, executed agreement)",usd(fin.actual.revenueReceivedUsd));
     line("Revenue recorded, not verified",usd(fin.actual.revenueRecordedNotVerifiedUsd));
     el(fs,"p","Projections (never revenue)","kicker");

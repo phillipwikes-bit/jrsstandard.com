@@ -85,6 +85,16 @@ try {
         amountUsd:'29.50',category:'software',dsDimension:'software_api'
       }, '2026-11-05');
       w = W.addRecord(w, 'ledger', {
+        kind:'outflow',date:'2026-11-05',payer:'PRIVATE-UNPAID-DO-NOT-RENDER',
+        amountUsd:'80.00',category:'software',dsDimension:'software_api'
+      }, '2026-11-05');
+      w.ledger[w.ledger.length-1].paymentStatus='scheduled';
+      w = W.addRecord(w, 'ledger', {
+        kind:'outflow',date:'2026-11-05',payer:'PRIVATE-TAX-DO-NOT-RENDER',
+        amountUsd:'40.00',category:'tax',dsDimension:'testing_security'
+      }, '2026-11-05');
+      w.ledger[w.ledger.length-1].type='taxpayment';
+      w = W.addRecord(w, 'ledger', {
         kind:'income',date:'2026-11-05',payer:'PRIVATE-PAYER-DO-NOT-RENDER',
         amountUsd:'150.00',category:'business',dsDimension:'licensing_revenue'
       }, '2026-11-05');
@@ -92,12 +102,15 @@ try {
     });
     const financial=page.locator('#ds-product-runtime section[aria-label="Decision Spellchecker product finance"]');
     const financialText=await financial.textContent();
-    assert.match(financialText,/Product-tagged ledger rows2/);
+    assert.match(financialText,/Product-tagged ledger rows4/);
     assert.match(financialText,/Recorded operating costs \(owner ledger\)\$29\.50/);
     assert.match(financialText,/Reported received revenue \(owner-reconciled\)\$0\.00/);
     assert.match(financialText,/Revenue recorded but not verified received\$150\.00/);
+    assert.match(financialText,/Scheduled, disputed or reversed costs \(excluded\)\$80\.00/);
+    assert.match(financialText,/Tax or unclassified outflows \(not operating costs\)\$40\.00/);
+    assert.match(financialText,/Product accounting exceptions/);
     assert.match(financialText,/Owner-entered classifications and reconciliations are not independent bank verification/);
-    assert.doesNotMatch(await page.locator('#ds-product-runtime').textContent(),/PRIVATE-VENDOR-DO-NOT-RENDER|PRIVATE-PAYER-DO-NOT-RENDER/);
+    assert.doesNotMatch(await page.locator('#ds-product-runtime').textContent(),/PRIVATE-VENDOR-DO-NOT-RENDER|PRIVATE-PAYER-DO-NOT-RENDER|PRIVATE-UNPAID-DO-NOT-RENDER|PRIVATE-TAX-DO-NOT-RENDER/);
     await page.evaluate(() => {
       const D=window.IncomeOSDSProgram, p=D.newProgram('2026-11-05');
       document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{

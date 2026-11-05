@@ -44,6 +44,10 @@ function renderProductFinance(root, workspace, program) {
     ['Unallocated refund credits (not netted)', money(actual.refundCreditsUnallocatedUsd)],
     ['Capital and transfers (not operating costs)',
       money(actual.capitalMovedNotCostUsd + actual.transfersNotCostUsd)],
+    ['Scheduled, disputed or reversed costs (excluded)',
+      money(actual.unpaidOrReversedCostsNotCountedUsd)],
+    ['Tax or unclassified outflows (not operating costs)',
+      money(actual.nonOperatingOutflowsNotCostUsd)],
     ['Product accounting exceptions', report.issues.length],
   ];
   const list = add(finance, 'dl');
