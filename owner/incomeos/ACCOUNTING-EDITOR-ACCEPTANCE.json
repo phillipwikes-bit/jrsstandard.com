@@ -157,10 +157,13 @@
       "requirement": "Secure storage and recovery",
       "status": "BLOCKED",
       "evidence": [
-        "tests/incomeos-accounting-editor-browser.mjs"
+        "tests/incomeos-accounting-editor-browser.mjs",
+        "tests/incomeos-vault-cloud.mjs",
+        "tests/incomeos-vault-cloud-browser.mjs",
+        "owner/incomeos/VAULT-SCHEMA.sql"
       ],
-      "blockedBy": "Private database not provisioned (Supabase project and CSP change await owner authorization)",
-      "limitation": "Only the AES-256-GCM encrypted owner file is tested; server-side storage is a prepared, unapplied schema"
+      "blockedBy": "Owner vault account not yet created and allow-listed; the hosted save-and-restore round trip has not been performed",
+      "limitation": "Superseded 2026-11-05: earlier text said server-side storage was a prepared, unapplied schema. Now: a separate free Supabase project (incomeos-private) holds only device-encrypted workspaces, append-only, readable only by an allow-listed owner; access rules verified in the database with anonymous and non-owner roles; client round trip tested against a fake service only. Free plan pauses after a week unused and has no automatic backups; the owner keeps file saves as backup"
     },
     {
       "id": "A15",

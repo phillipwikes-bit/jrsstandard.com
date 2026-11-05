@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow,noarchive">
 <meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://pmvqxdgvnwhckzxojioa.supabase.co; script-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="theme-color" content="#11292b">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -62,6 +62,7 @@
 <script defer src="./weekly-briefing.js"></script>
 <script defer src="./ds-program.js"></script>
 <script defer src="./workspace-store.js"></script>
+<script defer src="./vault-cloud.js"></script>
 <script defer src="./briefing-ui.js"></script>
 <script defer src="./profile-editor.js"></script>
 <script defer src="./profile-ui.js"></script>
@@ -117,6 +118,15 @@
       <button id="briefing-undo" class="smallbtn" type="button" hidden>Undo last change</button>
       <button id="briefing-save" class="smallbtn" type="button" hidden>Save updated workspace</button></div>
       <p id="briefing-status" role="status" aria-live="polite" class="muted"></p>
+      <details id="cloud-vault-panel" class="vault-panel">
+        <summary>Private vault (encrypted online copy)</summary>
+        <p class="muted">Saves the workspace already encrypted on this phone with the passphrase above. The vault never receives the passphrase or readable records. Sign-in lasts for this visit only.</p>
+        <div class="formgrid"><div><label for="cloud-vault-email">Vault email</label><input id="cloud-vault-email" type="email" autocomplete="username" inputmode="email"></div>
+          <div><label for="cloud-vault-password">Vault password</label><input id="cloud-vault-password" type="password" autocomplete="current-password" minlength="12"></div></div>
+        <div class="panelrow vault-buttons"><button id="cloud-vault-signin" class="smallbtn" type="button">Sign in</button><button id="cloud-vault-signup" class="smallbtn" type="button">Create owner account</button><button id="cloud-vault-signout" class="smallbtn" type="button" hidden>Sign out</button>
+          <button id="cloud-vault-save" class="smallbtn" type="button" disabled>Save to vault</button><button id="cloud-vault-restore" class="smallbtn" type="button" disabled>Restore latest</button></div>
+        <p id="cloud-vault-status" role="status" aria-live="polite" class="muted"></p>
+      </details>
       <div id="briefing-output"></div>
     </section>
     <div class="sectionintro"><div><span class="kicker">01 / INCOME DISCOVERY</span><h2 id="research-heading">Paid research</h2><p>Specific recruiter applications, not marketplace search pages.</p></div><button type="button" class="smallbtn" id="refresh" aria-label="Refresh reviewed opportunity file">Refresh</button></div>

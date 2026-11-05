@@ -9,6 +9,8 @@ Status: STAGING ONLY. DO NOT MERGE TO PUBLIC PRODUCTION.
 
 This single-user research and cash-flow decision interface is intended for the existing JRS technical infrastructure while preserving the institutional public website and the local-only JRS Review Engine. It does not create accounts, submit participant applications, execute investments or transmit owner data.
 
+- Private vault (added 2026-11-05): a separate free Supabase project, `incomeos-private`, can hold copies of the workspace that were already encrypted on the device. It never receives the passphrase or readable records, keeps every save (no overwrite or delete through the API), and only an allow-listed owner account can read or add saves. Sign-in lasts for the visit only. The app's CSP allows this one address in addition to its own. Schema: `VAULT-SCHEMA.sql`. The free plan pauses after a week unused and has no automatic backups, so the encrypted workspace file remains the owner's own backup.
+
 ## Access and privacy
 
 - Candidate route: /owner/incomeos/.

@@ -167,11 +167,24 @@
       if(undoBtn)undoBtn.hidden=!state.history.length;
       status.textContent=state.ws?(state.dirty?"Unsaved changes. Save the updated workspace to keep them.":"Workspace loaded in memory only. Nothing is stored or sent."):"Showing system health only. Load your workspace file to see your finances.";
     }
+    async function openText(text){
+      var loaded=await WS.load(text,passInput&&passInput.value||"");if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");state.ws=loaded;announce();if(WS.isEncrypted(text)){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}}state.dirty=false;state.history=[];render();
+    }
+    // Private vault: the vault panel receives only the workspace already encrypted here with the passphrase, and
+    // only hands back an encrypted save to open. Nothing unencrypted ever leaves this panel.
+    document.addEventListener("incomeos:vault-encrypt",async function(ev){var d=ev.detail;if(!d||typeof d.done!=="function")return;
+      try{if(!state.ws)throw Error("Open or start a workspace first");var p=passInput&&passInput.value||"";if(p.length<16)throw Error("Enter a passphrase of at least 16 characters; the vault only accepts encrypted saves");
+        d.done({ok:true,text:await WS.encrypt(p,state.ws)});}catch(err){d.done({ok:false,error:err.message});}});
+    document.addEventListener("incomeos:vault-saved",function(){state.dirty=false;try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}render();status.textContent="Encrypted workspace saved to your private vault. Keep the passphrase somewhere safe; it cannot be recovered.";});
+    document.addEventListener("incomeos:vault-open",async function(ev){var d=ev.detail;if(!d||typeof d.done!=="function")return;
+      try{if(typeof d.text!=="string"||!WS.isEncrypted(d.text))throw Error("The vault returned something that is not an encrypted workspace");
+        if(state.dirty&&!confirm("Replace the unsaved workspace on screen with the vault copy?"))return d.done({ok:false,error:"Cancelled"});
+        await openText(d.text);d.done({ok:true});}catch(err){d.done({ok:false,error:err.message});}});
     button.addEventListener("click",async function(){
       var f=input.files&&input.files[0];
       if(!f){status.textContent="Choose your workspace file first.";return;}
       if(f.size>5000000){status.textContent="Workspace file exceeds 5 MB.";return;}
-      try{var text=await f.text(),loaded=await WS.load(text,passInput&&passInput.value||"");if(loaded.schema!==WS.SCHEMA)throw Error("That is a profile, not a workspace. Open it in the opportunities panel.");state.ws=loaded;announce();if(WS.isEncrypted(text)){try{document.dispatchEvent(new CustomEvent("incomeos:workspace-saved",{detail:{encrypted:true}}));}catch(e){}}state.dirty=false;state.history=[];render();}
+      try{await openText(await f.text());}
       catch(err){status.textContent="Workspace rejected: "+err.message;}
       finally{input.value="";}
     });
