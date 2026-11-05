@@ -138,6 +138,32 @@ test('direct DS-N1 sessions cannot bypass the IncomeOS constructed-fictional rev
   assert.throws(() => reviewerSnapshot(p, structuredClone(issued)), /bridge-issued constructed fictional/);
 });
 
+test('issued synthetic session stays scoped to its originating IncomeOS programme', () => {
+  const issuingProgramme = program();
+  const unrelatedProgramme = program();
+  const opened = startSyntheticReview(issuingProgramme, fixture('D06'), T0);
+  assert.equal(opened.accepted, true);
+
+  // A second, structurally valid owner programme must not take over a
+  // session merely because it passes the shared programme validator.
+  // JSON copying also must not grant access to a different workspace.
+  const copiedProgramme = structuredClone(issuingProgramme);
+  for (const foreign of [unrelatedProgramme, copiedProgramme]) {
+    assert.throws(() => reviewerSnapshot(foreign, opened.session),
+      /bridge-issued constructed fictional/);
+    assert.throws(() => syntheticReport(foreign, opened.session, '2026-11-05T13:32:00Z'),
+      /bridge-issued constructed fictional/);
+    assert.throws(() => applyReviewerAction(foreign, opened.session, {
+      type: 'request_evidence', finding_id: 'SYN-UNAUTHORIZED',
+      at: '2026-11-05T13:31:00Z',
+      reviewer: { reviewer_id: 'rev-synthetic', name: 'Fictional Test Reviewer' },
+      request: 'Do not act in a different programme context.',
+    }), /bridge-issued constructed fictional/);
+  }
+  // Issuing programme still performs the same deterministic review.
+  assert.equal(reviewerSnapshot(issuingProgramme, opened.session).reviewStatus, 'HOLD');
+});
+
 test('all three bridge operations recheck synthetic scope and original history', () => {
   const p = program();
   const fakeAction = {
