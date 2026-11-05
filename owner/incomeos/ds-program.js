@@ -381,7 +381,7 @@
   // Actual figures come only from the workspace ledger rows tagged to the program; projections never mix in.
   function finance(p,ws,asOf){
     var rows=arr(ws&&ws.ledger).filter(function(r){return r&&r.program==="decision-spellchecker"&&DIMS.indexOf(r.dsDimension)>=0;});
-    var byDim={},issues=[],lastMonth=prevMonth(asOf),monthCost=0,received=0,recordedUnverified=0,unallocatedRefund=0;
+    var byDim={},issues=[],lastMonth=prevMonth(asOf),monthCost=0,received=0,recordedUnverified=0,unallocatedRefund=0,capitalMoved=0,transfersRecorded=0;
     DIMS.forEach(function(d){byDim[d]=0;});
     rows.forEach(function(r){
       var c=Math.round(Number(r.kind==="income"?r.grossUsd:r.amountUsd)*100);if(!Number.isSafeInteger(c)||c<=0){issues.push({code:"AMOUNT_INVALID",id:r.id});return;}
@@ -411,6 +411,15 @@
           issues.push({code:"REFUND_UNALLOCATED_NOT_NETTED",id:r.id});
           return;
         }
+        // Investment principal and transfers are movements of funds, not
+        // operating expenses. Keep their recorded amounts visible separately.
+        if(r.type==="capital"||r.type==="transfer"){
+          if(r.type==="capital")capitalMoved+=c;else transfersRecorded+=c;
+          issues.push({code:"NONEXPENSE_MOVEMENT_EXCLUDED_FROM_COST",id:r.id});
+          if(r.dsDimension==="reinvestment"&&!authorized(p,"reinvestment").allowed)
+            issues.push({code:"REINVESTMENT_NOT_AUTHORIZED",id:r.id});
+          return;
+        }
         if(r.dsDimension==="reinvestment"&&!authorized(p,"reinvestment").allowed)issues.push({code:"REINVESTMENT_NOT_AUTHORIZED",id:r.id});
         byDim[r.dsDimension]+=c;
         if(monthKey(r.date)===lastMonth)monthCost+=c;
@@ -428,9 +437,9 @@
     });
     return {actual:{costsByDimensionUsd:dims,totalCostUsd:cents(totalCost),lastMonth:lastMonth,lastMonthOperatingCostUsd:cents(monthCost),
         revenueReceivedUsd:cents(received),revenueRecordedNotVerifiedUsd:cents(recordedUnverified),
-        refundCreditsUnallocatedUsd:cents(unallocatedRefund),rows:rows.length},
+        refundCreditsUnallocatedUsd:cents(unallocatedRefund),capitalMovedNotCostUsd:cents(capitalMoved),transfersNotCostUsd:cents(transfersRecorded),rows:rows.length},
       projections:scenarios,issues:issues,
-      notice:"Actual figures are ledger rows tagged to the program. Refund credits remain unallocated and do not reduce costs without exact original-charge linkage and owner review, which this programme does not yet provide. Revenue is recorded as received only if paid income, owner-reconciled matching document and bank evidence, and an executed agreement are all recorded. These owner-recorded classifications are not independent bank verification. Scenarios are projections, never earned revenue."};
+      notice:"Actual figures are ledger rows tagged to the program. Capital movements and transfers remain separate from operating costs. Refund credits remain unallocated and do not reduce costs without exact original-charge linkage and owner review, which this programme does not yet provide. Revenue is recorded as received only if paid income, owner-reconciled matching document and bank evidence, and an executed agreement are all recorded. These owner-recorded classifications are not independent bank verification. Scenarios are projections, never earned revenue."};
   }
   function command(p0,ws,asOf){
     if(!isDate(asOf))throw Error("Date required");
