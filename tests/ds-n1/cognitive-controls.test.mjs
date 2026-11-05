@@ -55,3 +55,18 @@ test('refused, incomplete and invalid review states do not yield usable prompts'
   const s = base(); s.findings = [];
   assert.equal(buildCognitivePanel(s).items.length, 0);
 });
+
+test('SP-13 educational note is limited to the existing condition and cannot claim calibration', () => {
+  const item = buildCognitivePanel(base()).items[0];
+  assert.equal(item.condition, 'RC2');
+  assert.match(item.learning_note, /identifiable basis/i);
+  assert.doesNotMatch(item.learning_note, /certif|validated|bias reduction/i);
+});
+
+test('SP-14 reflection has four bounded stages and no release authorization', () => {
+  const a = buildCognitivePanel(base()).items[0];
+  assert.deepEqual(a.reflection.map((step) => step.stage), ['Restrain', 'Reframe', 'Recalibrate', 'Release']);
+  assert.equal(a.reflection[1].prompt, a.question);
+  assert.match(a.reflection[3].prompt, /does not approve/);
+  assert.equal(Object.keys(a).includes('approval'), false);
+});
