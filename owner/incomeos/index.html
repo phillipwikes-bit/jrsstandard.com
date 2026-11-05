@@ -69,6 +69,7 @@
 <script defer src="./getting-started.js"></script>
 <script defer src="./vault-ui.js"></script>
 <script defer src="./ds-program-ui.js"></script>
+<script type="module" src="./ds-product-panel.mjs"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to dashboard</a>
@@ -98,6 +99,7 @@
     <div class="sectionintro"><div><p class="kicker">PRIMARY PROGRAM</p><h2 id="ds-heading">Decision Spellchecker</h2><p>Evidence, engineering, validation, commercial and finance records in one place. Nothing here is released, sold or sent.</p></div></div>
     <p id="ds-status" class="status" role="status" aria-live="polite">Program record shown from memory only.</p>
     <button id="ds-start" class="smallbtn" type="button" hidden>Start the program record in this workspace</button>
+    <section id="ds-product-runtime" class="panel" aria-label="Decision Spellchecker source integration" aria-live="polite"><p class="muted">Development source integration is loading.</p></section>
     <div id="ds-output"></div>
   </section>
   <section id="view-research" class="view" aria-labelledby="research-heading" hidden>
