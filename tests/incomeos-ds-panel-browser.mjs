@@ -44,6 +44,33 @@ try {
     assert.match(t,/Live GitHub CI connectionNOT_CONNECTED/);
     assert.match(t,/Recorded study runs, synthetic \/ independent0 \/ 0/);
     assert.match(t,/NOT_AUTHORIZED/);
+    // Every original acceptance status is visible on demand, without
+    // disclosing case/source contents or treating DS-N1 results as DS-A.
+    const spDetails = page.locator('#ds-product-runtime details');
+    assert.equal(await spDetails.count(),1);
+    // The disclosure is near the top of the product card, clear of the
+    // fixed bottom navigation, and has a mobile-sized native summary target.
+    const spSummary = spDetails.locator('summary');
+    assert.ok(await spSummary.evaluate(el => el.getBoundingClientRect().height >= 44),
+      'SP disclosure must have a 44px tap target at '+width+'px');
+    await spSummary.click();
+    assert.equal(await spDetails.evaluate(el => el.open),true);
+    const spRows = spDetails.locator('li');
+    assert.equal(await spRows.count(),18);
+    assert.match(await spRows.first().textContent(),/SP-01: NOT_ACCEPTED/);
+    assert.match(await spRows.first().textContent(),/source: not available in repository/);
+    assert.match(await spRows.first().textContent(),/linked evidence records: 0/);
+    assert.match(await spRows.last().textContent(),/SP-18: NOT_ACCEPTED/);
+    assert.equal(await spDetails.evaluate(el => el.open),true);
+    await spDetails.locator('summary').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await spDetails.evaluate(el => el.open),false,
+      'keyboard Enter should close the disclosure');
+    await page.keyboard.press('Enter');
+    assert.equal(await spDetails.evaluate(el => el.open),true,
+      'keyboard Enter should reopen the disclosure');
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),
+      'SP acceptance detail must not overflow at '+width+'px');
     assert.equal(await page.locator('#ds-product-runtime button').isDisabled(),true);
     // The product view must follow the SAME workspace's changed programme record.
     await page.evaluate(() => {
