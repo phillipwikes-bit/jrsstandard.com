@@ -21,7 +21,12 @@ function ownerProductFinance(workspace, program) {
   const d = new Date();
   const today = [d.getFullYear(), String(d.getMonth() + 1).padStart(2, '0'),
     String(d.getDate()).padStart(2, '0')].join('-');
-  return DS.finance(program, workspace, today);
+  const projection = DS.finance(program, workspace, today);
+  // The programme engine identifies malformed tagged records. A partial
+  // financial total is not a safe summary of an invalid owner ledger.
+  if (projection.issues.some(issue => issue.code === 'PROGRAM_LEDGER_ROW_INVALID' ||
+      issue.code === 'AMOUNT_INVALID')) return null;
+  return projection;
 }
 function renderProductFinance(root, workspace, program) {
   const finance = add(root, 'section');

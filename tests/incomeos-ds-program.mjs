@@ -252,6 +252,28 @@ for(const origin of ["JRS website visitor","Research participant","jrs training"
  assert.match(result.notice,/accountant editor's paid default/);
 }
 
+// A malformed or unknown-dimension product-tagged row must be reported, never
+// silently omitted or converted into a product cost. The browser overview
+// refuses these incomplete financial projections rather than showing totals.
+{
+ const wBad=W.newWorkspace(on);
+ wBad.ledger=[
+   {id:"bad-date-1",kind:"outflow",type:"taxpayment",program:"decision-spellchecker",
+     dsDimension:"testing_security",amountUsd:"9999.99"},
+   {id:"bad-dimension-1",kind:"outflow",type:"expense",date:"2026-10-15",
+     program:"decision-spellchecker",dsDimension:"unknown-expense",amountUsd:"25.00"},
+   {id:"valid-1",kind:"outflow",type:"expense",date:"2026-10-15",
+     program:"decision-spellchecker",dsDimension:"software_api",amountUsd:"12.00"}
+ ];
+ const original=plain(wBad);
+ const fbad=D.finance(p,wBad,on);
+ assert.equal(fbad.actual.totalCostUsd,12,"Malformed tagged outflows never count as operating cost");
+ assert.equal(fbad.actual.nonOperatingOutflowsNotCostUsd,0,"Malformed dates never enter nonoperating totals");
+ assert.equal(fbad.actual.rows,3,"Invalid product-tagged rows remain within scope for exception reporting");
+ assert.equal(fbad.issues.filter(x=>x.code==="PROGRAM_LEDGER_ROW_INVALID").length,2);
+ assert.deepEqual(plain(wBad),original,"Invalid records are neither mutated nor silently repaired");
+}
+
 // R8-8: every mutator requires a date.
 assert.throws(()=>D.approveMessage(p,"M-001"),/Date required/);
 assert.throws(()=>D.suppress(p,"C-003"),/Date required/);

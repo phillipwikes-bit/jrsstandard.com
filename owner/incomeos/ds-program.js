@@ -380,10 +380,19 @@
   function prevMonth(asOf){var y=Number(asOf.slice(0,4)),m=Number(asOf.slice(5,7))-1;if(m===0){y--;m=12;}return y+"-"+(m<10?"0":"")+m;}
   // Actual figures come only from the workspace ledger rows tagged to the program; projections never mix in.
   function finance(p,ws,asOf){
-    var rows=arr(ws&&ws.ledger).filter(function(r){return r&&r.program==="decision-spellchecker"&&DIMS.indexOf(r.dsDimension)>=0;});
+    // Every row explicitly tagged to this product is within review scope,
+    // including malformed or unrecognized dimensions. Silently filtering a
+    // tagged row can conceal a financial integrity defect.
+    var rows=arr(ws&&ws.ledger).filter(function(r){return r&&r.program==="decision-spellchecker";});
     var byDim={},issues=[],lastMonth=prevMonth(asOf),monthCost=0,received=0,recordedUnverified=0,unallocatedRefund=0,capitalMoved=0,transfersRecorded=0,nonOperatingOutflows=0,unpaidOrReversedCost=0;
     DIMS.forEach(function(d){byDim[d]=0;});
     rows.forEach(function(r){
+      if(typeof r.id!=="string"||!r.id.trim()||r.id.length>200||
+         (r.kind!=="income"&&r.kind!=="outflow")||!isDate(r.date)||
+         DIMS.indexOf(r.dsDimension)<0){
+        issues.push({code:"PROGRAM_LEDGER_ROW_INVALID",id:r.id||null});
+        return;
+      }
       var c=Math.round(Number(r.kind==="income"?r.grossUsd:r.amountUsd)*100);if(!Number.isSafeInteger(c)||c<=0){issues.push({code:"AMOUNT_INVALID",id:r.id});return;}
       if(r.kind==="income"){
         if(REVENUE_DIMS.indexOf(r.dsDimension)<0){issues.push({code:"INCOME_IN_COST_DIMENSION",id:r.id});return;}
