@@ -88,6 +88,7 @@
     var line=function(k,v){var r=el(fs,"div",null,"accountant-line");el(r,"span",k);el(r,"strong",v);};
     line("Last month operating cost ("+fin.actual.lastMonth+")",usd(fin.actual.lastMonthOperatingCostUsd));
     line("Total recorded program cost",usd(fin.actual.totalCostUsd));
+    line("Unallocated refund credits (not netted)",usd(fin.actual.refundCreditsUnallocatedUsd));
     line("Revenue received (bank-matched, executed agreement)",usd(fin.actual.revenueReceivedUsd));
     line("Revenue recorded, not verified",usd(fin.actual.revenueRecordedNotVerifiedUsd));
     el(fs,"p","Projections (never revenue)","kicker");

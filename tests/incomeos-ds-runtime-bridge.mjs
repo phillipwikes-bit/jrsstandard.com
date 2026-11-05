@@ -32,6 +32,31 @@ test('owner programme remains authoritative and original acceptance/release hold
   assert.deepEqual(p, before, 'inspection cannot mutate the owner source of truth');
 });
 
+test('one programme supplies open defects, next engineering task and evidence counts without another store', () => {
+  const seeded = program();
+  let p = DS.add(seeded, 'defects', {
+    id:'BUG-DS-SYN-01', title:'Constructed provenance edge case',
+    severity:'HIGH', identity:'DS-C',
+  }, '2026-11-05');
+  p = DS.add(p, 'tasks', {
+    id:'TASK-DS-SYN-01', title:'Check the constructed provenance fixture',
+    module:'engineering', dependsOn:[], value:5, cost:1, risk:1,
+  }, '2026-11-05');
+  const original = structuredClone(p);
+  const v = inspectProduct(p);
+  assert.deepEqual(v.openDefects, [{id:'BUG-DS-SYN-01', title:'Constructed provenance edge case',
+    severity:'HIGH', identity:'DS-C'}]);
+  assert.equal(v.nextExecutableEngineeringTask.id,'TASK-DS-SYN-01');
+  assert.equal(v.nextExecutableEngineeringTask.evidenceLinked,false);
+  assert.equal(v.unresolvedEngineeringTasks,1);
+  assert.deepEqual(v.programmeStudyRuns,{synthetic:0,independent:0});
+  assert.equal(v.programmeEvidenceEntries,p.evidence.length);
+  assert.equal(v.githubCIStatus,'NOT_CONNECTED');
+  assert.equal(v.release,'NOT_AUTHORIZED');
+  assert.ok(!('ledger' in v), 'private owner accounting data never enters the reviewer bridge');
+  assert.deepEqual(p,original,'projection is read-only');
+});
+
 test('synthetic review invokes existing DS-N1 engine and optional cognitive controls', () => {
   const p = program();
   const before = structuredClone(p);

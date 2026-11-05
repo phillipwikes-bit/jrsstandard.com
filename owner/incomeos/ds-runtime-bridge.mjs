@@ -43,6 +43,16 @@ function checkProgram(program) {
 export function inspectProduct(program) {
   const p = checkProgram(program);
   const accepted = p.acceptance.filter(x => x.status === 'ACCEPTED').length;
+  // The owner programme remains the only mutable source for defects, tasks,
+  // research evidence and experimental study run records.
+  const ranked = globalThis.IncomeOSDSProgram.prioritize(p);
+  const ready = ranked.find(x => x.module === 'engineering' && x.state === 'READY');
+  const openDefects = p.defects.filter(x => x.status === 'OPEN')
+    .map(x => ({ id: x.id, title: x.title, severity: x.severity, identity: x.identity }));
+  const studyRuns = {
+    synthetic: p.runs.filter(x => x.kind === 'synthetic').length,
+    independent: p.runs.filter(x => x.kind === 'independent').length,
+  };
   return Object.freeze({
     contract: CONTRACT_VERSION,
     integration: INTEGRATION_STATUS,
@@ -55,6 +65,16 @@ export function inspectProduct(program) {
     originalSource: 'AUTHENTIC_SOURCE_NOT_RECOVERED',
     originalAcceptance: { accepted, total: 18 },
     openGates: p.gates.filter(x => !x.approval).map(x => x.id),
+    // Programme counts are not a GitHub CI query or independent acceptance.
+    programmeEvidenceEntries: p.evidence.length,
+    programmeRequirementsRecorded: p.requirements.length,
+    programmeStudyRuns: studyRuns,
+    openDefects,
+    unresolvedEngineeringTasks: ranked.filter(x => x.module === 'engineering').length,
+    nextExecutableEngineeringTask: ready
+      ? { id: ready.id, title: ready.title, evidenceLinked: ready.evidence > 0 }
+      : null,
+    githubCIStatus: 'NOT_CONNECTED',
     release: 'NOT_AUTHORIZED',
     customerAccess: 'NOT_AUTHORIZED',
     scope: 'DEVELOPMENT_ONLY_CONSTRUCTED_FICTIONAL',

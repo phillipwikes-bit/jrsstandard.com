@@ -111,6 +111,40 @@ assert.equal(f.projections[0].monthlyContributionUsd,1500);assert.equal(f.projec
 ws=W.addRecord(ws,"ledger",{kind:"outflow",date:"2026-10-28",payer:"Broker",amountUsd:"10.00",category:"investing",dsDimension:"reinvestment"},on);
 assert.ok(D.finance(p,ws,on).issues.some(i=>i.code==="REINVESTMENT_NOT_AUTHORIZED"));
 
+// Financial integrity: neither an agreement stage nor a "both" evidence label
+// makes expected, unpaid, disputed, refunded, cancelled, or capital receipts paid.
+// The forced executed stage below is a SYNTHETIC PURE-FUNCTION TEST FIXTURE;
+// it does not validate as an authorized programme and cannot pass release gates.
+{
+ const staged=plain(p);
+ staged.pipeline.find(x=>x.id==="PL-001").stage="EXECUTED_AGREEMENT";
+ assert.throws(()=>D.validate(staged),/not sequential/);
+ const invoice=(status,scope="income",reconciled=true,evidenceStatus="both")=>({
+   ledger:[{id:"SYN-FIN-01",kind:"income",date:on,program:"decision-spellchecker",
+     dsDimension:"licensing_revenue",dsAgreementId:"PL-001",grossUsd:"625.00",
+     status,scope,evidenceStatus,reconciled}]});
+ for(const status of ["expected","invoiced","pending","disputed","refunded","cancelled",undefined]){
+   const report=D.finance(staged,invoice(status),on);
+   assert.equal(report.actual.revenueReceivedUsd,0,"Unpaid "+String(status)+" cannot become revenue");
+   assert.equal(report.actual.revenueRecordedNotVerifiedUsd,625);
+   assert.ok(report.issues.some(x=>x.code==="REVENUE_NOT_RECEIVED"));
+ }
+ for(const scope of ["nonincome","proceeds",null]){
+   const report=D.finance(staged,invoice("paid",scope),on);
+   assert.equal(report.actual.revenueReceivedUsd,0,"Capital scope "+String(scope)+" is not earned revenue");
+   assert.ok(report.issues.some(x=>x.code==="REVENUE_NOT_INCOME_SCOPE"));
+ }
+ const unspecified=invoice("paid");delete unspecified.ledger[0].scope;
+ assert.equal(D.finance(staged,unspecified,on).actual.revenueReceivedUsd,0,
+   "Missing scope must not be implicitly promoted to income");
+ const unresolved=D.finance(staged,invoice("paid","income",false),on);
+ assert.equal(unresolved.actual.revenueReceivedUsd,0);
+ assert.ok(unresolved.issues.some(x=>x.code==="REVENUE_MATCH_NOT_RECONCILED"));
+ assert.equal(D.finance(staged,invoice("paid","income",true,"both-unverified"),on).actual.revenueReceivedUsd,0);
+ const accepted=D.finance(staged,invoice("paid","income",true),on);
+ assert.equal(accepted.actual.revenueReceivedUsd,625,"Positive result exists only for fully recorded paid owner-reconciled entry");
+ assert.equal(accepted.actual.revenueRecordedNotVerifiedUsd,0);
+}
 // Workspace integration: stored, validated and logged in the workspace change log.
 ws=W.setDsProgram(ws,p,on);
 assert.equal(ws.dsProgram.programId,"DSP");
@@ -139,11 +173,29 @@ for(const origin of ["JRS website visitor","Research participant","jrs training"
 {let q=p;const seen=new Set();for(let i=0;i<205;i++){const r=D.runCycle(q,null,on);q=r.program;assert.ok(!seen.has(r.cycle.id),"duplicate "+r.cycle.id);seen.add(r.cycle.id);}}
 // R8-6: prioritize exposes each task's own state so the view can offer Done for started work.
 {const q=D.setTaskState(p,"T-1","IN_PROGRESS",on);assert.equal(D.prioritize(q).find(t=>t.id==="T-1").taskState,"IN_PROGRESS");}
-// R8-7: a refund row reduces program cost.
+// Financial evidence correction: do not net an unattributed refund against an
+// original programme charge, even with identical merchant, amount or reference.
 {let w2=W.newWorkspace(on);
  w2=W.addRecord(w2,"ledger",{kind:"outflow",date:"2026-10-12",payer:"API provider",amountUsd:"40.00",category:"software",dsDimension:"software_api"},on);
- w2.ledger.push({...w2.ledger[0],id:"refund-1",type:"refund",amountUsd:"10.00"});
- assert.equal(D.finance(p,w2,on).actual.totalCostUsd,30);}
+ w2.ledger[0].reference="ORDER-TEST-09";
+ w2.ledger.push({...w2.ledger[0],id:"refund-1",type:"refund",date:"2026-11-02",amountUsd:"10.00"});
+ let f=D.finance(p,w2,on);
+ assert.equal(f.actual.totalCostUsd,40,"Unallocated credit may not reduce recorded cost");
+ assert.equal(f.actual.lastMonthOperatingCostUsd,40,"A current-month credit cannot change a prior-month cost without linkage");
+ assert.equal(f.actual.refundCreditsUnallocatedUsd,10);
+ assert.ok(f.issues.some(i=>i.code==="REFUND_UNALLOCATED_NOT_NETTED"&&i.id==="refund-1"));
+ assert.ok(f.notice.includes("exact original-charge linkage"));
+ assert.match(read("ds-program-ui.js"),/Unallocated refund credits \(not netted\)/);
+ w2.ledger[1].amountUsd="40.00"; // exact amount, same merchant and reference still not verified linkage
+ f=D.finance(p,w2,on);
+ assert.equal(f.actual.totalCostUsd,40);
+ assert.equal(f.actual.refundCreditsUnallocatedUsd,40);
+ w2.ledger.push({...w2.ledger[1],id:"refund-2",amountUsd:"7.00",payer:"Unknown credit",reference:"NO-SOURCE",evidenceStatus:"missing"});
+ f=D.finance(p,w2,on);
+ assert.equal(f.actual.totalCostUsd,40);
+ assert.equal(f.actual.refundCreditsUnallocatedUsd,47);
+ assert.equal(f.issues.filter(i=>i.code==="REFUND_UNALLOCATED_NOT_NETTED").length,2);
+}
 // R8-8: every mutator requires a date.
 assert.throws(()=>D.approveMessage(p,"M-001"),/Date required/);
 assert.throws(()=>D.suppress(p,"C-003"),/Date required/);
