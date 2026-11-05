@@ -55,7 +55,10 @@ function init() {
     // by inspectProduct. This is not another requirement register or a claim
     // that an original DS-A acceptance clause has been authenticated.
     const original = add(root, 'details');
-    add(original, 'summary', 'Inspect original SP-01 through SP-18 acceptance statuses');
+    const originalSummary = add(original, 'summary', 'Inspect original SP-01 through SP-18 acceptance statuses');
+    originalSummary.style.minHeight = '44px';
+    originalSummary.style.padding = '10px 0';
+    originalSummary.style.cursor = 'pointer';
     add(original, 'p', 'Original DS-A requirement acceptance only. Synthetic DS-N1 tests do not satisfy original acceptance. Source text and evidence identifiers are withheld in this development-only view.', 'muted');
     const spList = add(original, 'ul');
     for (let n = 1; n <= 18; n++) {
