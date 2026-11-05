@@ -28,6 +28,8 @@ jobs:
         run: |
           node --check owner/incomeos/ds-runtime-bridge.mjs
           node --test tests/incomeos-ds-runtime-bridge.mjs
+      - name: DS-N1 local server fixture-exposure and path authorization
+        run: node --test tests/incomeos-ds-local-server-boundary.mjs
       - name: Existing DS-N1 cognitive and source-trace regressions
         run: |
           node --test tests/ds-n1/cognitive-controls.test.mjs tests/ds-n1/cognitive-source-trace.test.mjs tests/ds-n1/reflective-guidance.test.mjs
