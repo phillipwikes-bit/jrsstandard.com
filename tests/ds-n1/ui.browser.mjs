@@ -38,6 +38,37 @@ try {
     });
     if (shots) await page.screenshot({ path: `${shots}/ds-n1-${label}-P01.png`, fullPage: true });
 
+    await check(`${label}: SP-07/13/14 guidance is optional, source-linked and does not change outcomes`, async () => {
+      await page.selectOption('#fixture', 'D06');
+      await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
+      await page.click('mark[aria-label="Claim C2"]');
+      const before = await page.textContent('#statusbox');
+      const summary = await page.textContent('#sumbody');
+      const findingAction = page.locator('#findings button:text-is("Record action")').first();
+      assert.equal(await findingAction.isVisible(), true, 'action controls must be reachable without opening cognitive details');
+      const card = page.locator('#cogbody > details').first();
+      assert.ok(await card.count(), 'a grounded cognitive prompt should exist');
+      await card.locator('summary').first().click();
+      assert.match(await card.textContent(), /Which part of the conclusion is directly established/);
+      await card.locator('.cognitive-learning summary').click();
+      assert.match(await card.locator('.cognitive-learning').textContent(), /Basis identification/);
+      await card.locator('.cognitive-reflection summary').click();
+      assert.match(await card.locator('.cognitive-reflection').textContent(), /Restrain/);
+      assert.match(await card.locator('.cognitive-reflection').textContent(), /Reframe/);
+      assert.match(await card.locator('.cognitive-reflection').textContent(), /Recalibrate/);
+      assert.match(await card.locator('.cognitive-reflection').textContent(), /Release/);
+      assert.equal(await page.textContent('#statusbox'), before);
+      assert.equal(await page.textContent('#sumbody'), summary);
+      await page.selectOption('#mode', 'pro');
+      assert.equal(await page.textContent('#statusbox'), before);
+      assert.equal(await page.textContent('#sumbody'), summary);
+      await page.selectOption('#mode', 'guided');
+      await card.locator('button:text-is("Review finding and record action")').click();
+      assert.match(await page.textContent('#findings'), /UNSUPPORTED_CLAIM/);
+      assert.equal(await page.evaluate(() => document.activeElement?.classList.contains('finding')), true);
+      assert.equal(await page.textContent('#statusbox'), before);
+    });
+
     await check(`${label}: defective record holds; correction flow reaches READY`, async () => {
       await page.selectOption('#fixture', 'D06');
       await page.waitForFunction(() => document.getElementById('statusbox').textContent === 'HOLD');
