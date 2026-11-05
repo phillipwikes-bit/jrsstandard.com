@@ -89,6 +89,8 @@
     line("Last month operating cost ("+fin.actual.lastMonth+")",usd(fin.actual.lastMonthOperatingCostUsd));
     line("Total recorded program cost",usd(fin.actual.totalCostUsd));
     line("Unallocated refund credits (not netted)",usd(fin.actual.refundCreditsUnallocatedUsd));
+    line("Recorded capital movements (not operating costs)",usd(fin.actual.capitalMovedNotCostUsd));
+    line("Recorded transfers (not operating costs)",usd(fin.actual.transfersNotCostUsd));
     line("Revenue received (bank-matched, executed agreement)",usd(fin.actual.revenueReceivedUsd));
     line("Revenue recorded, not verified",usd(fin.actual.revenueRecordedNotVerifiedUsd));
     el(fs,"p","Projections (never revenue)","kicker");
