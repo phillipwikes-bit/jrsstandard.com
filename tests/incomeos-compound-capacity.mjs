@@ -22,6 +22,9 @@ r=C.estimate(t,{reserveUsd:10000});assert.equal(r.availableToCompound,0);assert.
 r=C.estimate({...t,unreconciled:3},{});assert.equal(r.status,"ESTIMATE_NOT_RECONCILED");assert.ok(r.issues.some(i=>/3 record\(s\) not reconciled/.test(i)));
 assert.ok(r.issues.some(i=>/No reserve set/.test(i)));
 assert.throws(()=>C.estimate(t,{reserveUsd:-1}),/negative/);
+// Transfers between own accounts are disclosed and never reduce the figure.
+{const a=C.estimate({...t,transfers:0},{}).availableToCompound,b=C.estimate({...t,transfers:900},{});
+ assert.equal(b.availableToCompound,a);assert.ok(b.issues.some(i=>/\$900\.00 moved between your own accounts is not counted/.test(i)));}
 assert.throws(()=>C.estimate(null),/totals required/);
 // Downside check.
 assert.deepEqual(JSON.parse(JSON.stringify(C.downside(1000,20,1))),{amount:1000,loss:200,fee:10,remaining:790});

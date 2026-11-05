@@ -24,6 +24,7 @@
     if(n(t.unreconciled)>0)issues.push(t.unreconciled+" record(s) not reconciled to a bank or card statement.");
     if(n(t.refundCount)>0)issues.push(t.refundCount+" refund or credit record(s) are not netted.");
     if(n(t.proceeds)>0)issues.push("Sale proceeds have no cost basis recorded; the gain or loss is unknown.");
+    if(n(t.transfers)>0)issues.push("$"+n(t.transfers).toFixed(2)+" moved between your own accounts is not counted as spending or income.");
     if(!(reserve>0))issues.push("No reserve set for emergencies and taxes.");
     if(cash-scheduled-reserve<0)issues.push("Obligations and reserve exceed the cash generated; nothing is available.");
     return {netIncomeReceived:netIncome,spendingPaid:spending,operatingCashFlow:operating,capitalReturned:capitalBack,

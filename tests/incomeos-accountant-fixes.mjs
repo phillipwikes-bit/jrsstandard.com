@@ -53,6 +53,20 @@ assert.match(src,/function importStatus\(x\)\{var s=String\(x\|\|""\)\.trim\(\)\
  const c=A.completeness([ex("scheduled",5),{...ex("paid",5),accountantQuestions:"q"}]);
  assert.ok(c.gaps.some(g=>/scheduled, disputed or refunded/.test(g[0])&&g[1]===1));assert.ok(c.gaps.some(g=>/questions for the accountant/i.test(g[0])&&g[1]===1));}
 assert.match(src,/function importPayStatus\(x\)\{var s=String\(x\|\|""\)\.trim\(\)\.toLowerCase\(\);if\(!s\)return "paid";return PAY_STATUS\.indexOf\(s\)>=0\?s:"scheduled";\}/,"unrecognized CSV state is scheduled, never paid");
+// Transfers between the owner's own accounts are neither income nor spending, need no receipt, and sit with capital movements.
+{const tr={id:"tr1",kind:"outflow",type:"transfer",label:"Synthetic move to savings",date:"2026-10-05",category:"other",amountUsd:500,businessUse:null,paymentStatus:"paid",reconciled:true,evidenceStatus:"bank"};
+ const ex={id:"ex1",kind:"outflow",type:"expense",label:"Synthetic hosting",date:"2026-10-05",category:"software",amountUsd:20,businessUse:100,paymentStatus:"paid",evidenceStatus:"missing"};
+ const ot={id:"ot1",kind:"outflow",type:"other",label:"Synthetic unknown",date:"2026-10-06",category:"software",amountUsd:7,businessUse:null,paymentStatus:"paid",evidenceStatus:"missing"};
+ assert.equal(A.validateEntry(tr),true,"transfer is a valid outflow type");
+ const t=JSON.parse(JSON.stringify(A.totals([tr,ex,ot])));
+ assert.deepEqual([t.expenses,t.otherOutflow,t.capital,t.transfers,t.transferCount],[20,7,0,500,1],"a transfer is not an expense, other outflow or capital");
+ assert.equal(JSON.parse(JSON.stringify(A.receiptGaps([tr,ex]))).count,1,"a transfer is not a receipt gap");
+ assert.deepEqual(JSON.parse(JSON.stringify(A.unclassified([tr,ot]))).items.map(x=>x.id),["ot1"],"a transfer's cost category is not flagged as unclassified");
+ assert.match(JSON.stringify(A.unclassified([ot])),/capital, transfer or refund/);
+ const groups=JSON.parse(JSON.stringify(A.categorySummary([tr])));
+ assert.equal(groups[0].groupLabel,"Transfers between own accounts (not income or spending)");
+ const rec=JSON.parse(JSON.stringify(A.reconciliationSummary([tr])));
+ assert.match(JSON.stringify(rec),/Transfers, returned principal and capital movements/);}
 console.log("IncomeOS accountant review checks passed.");
 // Category summary: returned principal, unpaid bills and unallocated credits never mix with income or paid expenses.
 {const inc=(scope,status,g)=>({kind:"income",scope,status,grossUsd:g,feesUsd:0,label:"x",date:"2026-10-01",category:"research"});

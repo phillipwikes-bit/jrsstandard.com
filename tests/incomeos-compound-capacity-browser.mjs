@@ -98,6 +98,17 @@ await nav("compound");
 {const t=await page.locator('#ch-result .holding[data-holding="Synthetic Notes Fund"]').textContent();
  assert.match(t,/Money put in\$1,200\.00/);assert.match(t,/of which reinvested earnings\$60\.00/);assert.match(t,/of which new money\$1,140\.00/);
  assert.match(t,/\$20\.00 recorded as reinvested from Synthetic Notes Fund exceeds the income received from it/);}
+// A transfer between own accounts, entered through the form, changes nothing and is disclosed.
+await page.locator("#cc-year").fill("");await page.locator("#cc-reserve").fill("0");
+const beforeTransfer=await page.locator("#cc-available").textContent();
+await nav("ledger");
+await page.locator("#cost-label").fill("Synthetic move to savings");await page.locator("#cost-payee").fill("Synthetic Savings");
+await page.locator("#cost-amount").fill("250");await page.locator("#cost-date").fill(Y+"-08-01");await page.locator("#cost-type").selectOption("transfer");
+await page.locator("#cost-payment-status").selectOption("paid");await page.locator("#cost-save").tap();
+await page.waitForFunction(()=>!document.getElementById("cost-label").value);
+await nav("compound");
+assert.equal(await page.locator("#cc-available").textContent(),beforeTransfer,"a transfer does not reduce what is available");
+assert.match(await page.locator("#cc-result").textContent(),/\$250\.00 moved between your own accounts is not counted/);
 for(const w of [320,375,430]){await page.setViewportSize({width:w,height:800});
   assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w,w),"no horizontal overflow at "+w);}
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,"nothing in browser storage");

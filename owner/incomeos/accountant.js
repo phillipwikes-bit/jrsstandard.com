@@ -8,7 +8,7 @@
   var usd = new Intl.NumberFormat("en-US", { style:"currency", currency:"USD", minimumFractionDigits:2, maximumFractionDigits:2 });
   var CATEGORIES = ["research","evaluation","business","royalty","rental","interest","dividend","investment","reward","recovery","employment","pension","retirement","socialsecurity","unemployment","other"];
   var COST_CATEGORIES = ["platform","software","equipment","internet","travel","training","professional","supplies","investing","tax","homeoffice","advertising","other"];
-  var EXPENSE_TYPES = ["expense","taxpayment","capital","other","refund"];
+  var EXPENSE_TYPES = ["expense","taxpayment","capital","other","refund","transfer"];
   var SCOPES = ["income","nonincome","proceeds"];
   var TAX_FORMS = ["None / unknown","1099-NEC","1099-MISC","1099-K","1099-INT","1099-DIV","1099-B","Schedule K-1","W-2","1099-R","SSA-1099","1099-G","Other form"];
   // Payment states. Only "paid" (received) ever counts as income. Outstanding states are amounts
@@ -125,7 +125,7 @@
   function yearEntries(){var year=currentYear();return db.entries.filter(function(x){return x.date.slice(0,4)===year;});}
   function sum(items,get){return round(items.reduce(function(t,e){return t+(Number(get(e))||0);},0));}
   // Category totals kept in separate groups so returned principal, unpaid bills and unallocated credits never mix with income or paid expenses.
-  var CAT_GROUPS=[["income","Income received"],["nonincome","Receipts not income (returned principal, refunds)"],["proceeds","Asset sale proceeds, basis not determined"],["outstanding","Income not received"],["closed","Receipts refunded or cancelled, not income"],["expense","Expenses paid"],["taxpayment","Estimated tax payments paid"],["capital","Asset purchases / contributions paid"],["other","Other outflows paid"],["unpaid","Outflows not paid (scheduled, disputed or refunded)"],["refund","Refunds / credits, unallocated, not netted"]];
+  var CAT_GROUPS=[["income","Income received"],["nonincome","Receipts not income (returned principal, refunds)"],["proceeds","Asset sale proceeds, basis not determined"],["outstanding","Income not received"],["closed","Receipts refunded or cancelled, not income"],["expense","Expenses paid"],["taxpayment","Estimated tax payments paid"],["capital","Asset purchases / contributions paid"],["transfer","Transfers between own accounts (not income or spending)"],["other","Other outflows paid"],["unpaid","Outflows not paid (scheduled, disputed or refunded)"],["refund","Refunds / credits, unallocated, not netted"]];
   function catGroup(e){
     if(e.kind==="income"){
       if(e.status==="paid")return SCOPES.indexOf(e.scope)>=0?e.scope:"income";
@@ -158,7 +158,7 @@
     }
     if(e.type==="refund"||payStatus(e)==="refunded")return "refund";
     if(!paidOut(e))return "unsettled";
-    if(e.type==="capital")return "capital";
+    if(e.type==="capital"||e.type==="transfer")return "capital";
     var ev=e.evidenceStatus||"missing";
     if(ev==="both")return e.reconciled?"verified":"amountdate";
     return ev==="both-unverified"?"amountdate":ev==="bank"?"bankonly":ev==="email"?"receiptonly":"unverified";
@@ -176,7 +176,7 @@
   // Receipt gaps: money actually paid out with no receipt or invoice on file ("Receipt not located" or
   // "Bank/card statement only"), grouped by payee and month. Refunds, unpaid bills and income are excluded.
   function receiptGaps(entries){
-    var items=entries.filter(function(e){return e.kind==="outflow"&&e.type!=="refund"&&paidOut(e)&&["missing","bank"].indexOf(e.evidenceStatus||"missing")>=0;});
+    var items=entries.filter(function(e){return e.kind==="outflow"&&e.type!=="refund"&&e.type!=="transfer"&&paidOut(e)&&["missing","bank"].indexOf(e.evidenceStatus||"missing")>=0;});
     var map={};
     items.forEach(function(e){
       var payee=e.payer||"(payee not recorded)",month=String(e.date).slice(0,7),k=payee+"\u0000"+month;
@@ -193,8 +193,8 @@
     var items=[];
     entries.forEach(function(e){
       var reasons=[];
-      if(e.category==="other")reasons.push(e.kind==="income"?"Income source not classified (category other): choose the specific income type":"Cost category not chosen (other): choose a specific category");
-      if(e.kind==="outflow"&&e.type==="other")reasons.push("Outflow type not decided: expense, tax payment, capital or refund");
+      if(e.category==="other"&&e.type!=="transfer")reasons.push(e.kind==="income"?"Income source not classified (category other): choose the specific income type":"Cost category not chosen (other): choose a specific category");
+      if(e.kind==="outflow"&&e.type==="other")reasons.push("Outflow type not decided: expense, tax payment, capital, transfer or refund");
       if(reasons.length)items.push({id:e.id,date:e.date,label:e.label,payee:e.payer||"",kind:e.kind,usd:e.kind==="income"?num(e.grossUsd):num(e.amountUsd),reasons:reasons});
     });
     items.sort(function(a,b){return String(a.date).localeCompare(String(b.date));});
@@ -210,6 +210,7 @@
     var taxpayments=entries.filter(function(e){return e.kind==="outflow"&&e.type==="taxpayment"&&paidOut(e);});
     var capital=entries.filter(function(e){return e.kind==="outflow"&&e.type==="capital"&&paidOut(e);});
     var other=entries.filter(function(e){return e.kind==="outflow"&&e.type==="other"&&paidOut(e);});
+    var transfers=entries.filter(function(e){return e.kind==="outflow"&&e.type==="transfer"&&paidOut(e);});
     var unpaidOut=entries.filter(function(e){return e.kind==="outflow"&&e.type!=="refund"&&!paidOut(e);});
     var refunds=entries.filter(function(e){return e.kind==="outflow"&&e.type==="refund";});
     return {
@@ -221,6 +222,7 @@
       taxPaid:sum(taxpayments,function(e){return e.amountUsd}),
       capital:sum(capital,function(e){return e.amountUsd}),
       otherOutflow:sum(other,function(e){return e.amountUsd}),
+      transfers:sum(transfers,function(e){return e.amountUsd}),transferCount:transfers.length,
       refundCredits:sum(refunds,function(e){return e.amountUsd}),
       refundCount:refunds.length,
       proceeds:sum(proceeds,function(e){return e.grossUsd}),
@@ -365,7 +367,7 @@
     var amount=num($("cost-amount").value),rawPct=$("cost-business-use").value.trim(),pct=rawPct===""?null:num(rawPct);
     var e={kind:"outflow",label:limit($("cost-label").value,100),payer:limit($("cost-payee").value,100),
       category:$("cost-category").value,date:$("cost-date").value,type:$("cost-type").value,
-      amountUsd:round(amount),businessUse:$("cost-type").value==="refund"?null:pct,evidenceStatus:$("cost-evidence-status").value,
+      amountUsd:round(amount),businessUse:$("cost-type").value==="refund"||$("cost-type").value==="transfer"?null:pct,evidenceStatus:$("cost-evidence-status").value,
       reference:limit($("cost-reference").value,120),notes:limit($("cost-notes").value,500),
       reconciled:$("cost-evidence-status").value==="both",importedFrom:"manual",
       paymentStatus:PAY_STATUS.indexOf($("cost-payment-status")&&$("cost-payment-status").value)>=0?$("cost-payment-status").value:"paid",
@@ -454,7 +456,7 @@
       ["Cash after recorded fees and other paid expenses",round(t.gross-t.fees-t.expenses)],
       ["Pending / unpaid incentives",t.pending],["Possible returned principal / refunds",t.returned],
       ["Asset sale proceeds, cost basis not resolved",t.proceeds],["Estimated tax payments, not an expense",t.taxPaid],
-      ["Asset purchases / contributions, not an expense",t.capital],["Other recorded outflows",t.otherOutflow]
+      ["Asset purchases / contributions, not an expense",t.capital],["Other recorded outflows",t.otherOutflow],["Transfers between own accounts, not spending",t.transfers]
     ];
     data.forEach(function(pair){var row=place(box,"div","accountant-line");place(row,"span","",pair[0]);place(row,"strong","",money(pair[1]));});
     var note=place(box,"p","muted","Refunds/credits are not counted as earnings or netted against expenses until supported by original-charge evidence and reviewed. "+t.unreconciled+" item(s) not marked reconciled. "+t.allocationPending+" expense allocation(s) not determined. "+t.pendingCount+" pending receipt(s). A blank allocation is unknown, not 0% or 100%. Tax form classification, deductible percentages, capital gains and tax treatment require accountant review.");
@@ -589,7 +591,7 @@
       ["Recorded cash after fees and expenses, not taxable profit",round(t.gross-t.fees-t.expenses)],
       ["Pending receipts",t.pending],["Recovered principal / refunds",t.returned],
       ["Asset sale proceeds, review basis",t.proceeds],["Estimated tax payments",t.taxPaid],
-      ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],["Unallocated refunds / credits, not netted",t.refundCredits],
+      ["Asset purchases / capital contributions",t.capital],["Other outflows",t.otherOutflow],["Transfers between own accounts (not spending)",t.transfers],["Unallocated refunds / credits, not netted",t.refundCredits],
       ["Unreconciled record count",t.unreconciled],["Expense allocations not determined",t.allocationPending],
       ["Refunded or cancelled receipts, not income (count)",t.closedCount],["Refunded or cancelled receipts, not income (USD)",t.closedNotIncome],
       ["Possible near-duplicates (same payer and amount within 3 days; review only)",nearDuplicates(yearEntries()).length],

@@ -333,7 +333,7 @@
         <label for="cost-label">Description</label><input id="cost-label" name="label" required maxlength="100" placeholder="e.g., subscription, travel, estimated tax" autocomplete="off">
         <div class="formgrid">
           <div><label for="cost-payee">Payee / provider</label><input id="cost-payee" name="payee" maxlength="100" autocomplete="off"></div>
-          <div><label for="cost-type">Type</label><select id="cost-type" name="type"><option value="expense">Possible business / investment expense</option><option value="taxpayment">Estimated tax payment (not an expense deduction)</option><option value="capital">Asset purchase / capital contribution (not an expense deduction)</option><option value="other">Other outflow, review</option><option value="refund">Refund / credit received (requires original-charge match)</option></select></div>
+          <div><label for="cost-type">Type</label><select id="cost-type" name="type"><option value="expense">Possible business / investment expense</option><option value="taxpayment">Estimated tax payment (not an expense deduction)</option><option value="capital">Asset purchase / capital contribution (not an expense deduction)</option><option value="transfer">Transfer between my own accounts (not spending)</option><option value="other">Other outflow, review</option><option value="refund">Refund / credit received (requires original-charge match)</option></select></div>
         </div>
         <div class="formgrid">
           <div><label for="cost-amount">Amount (USD, use positive amount for refunds)</label><input id="cost-amount" name="amount" type="number" min="0.01" max="10000000" step="0.01" inputmode="decimal" required></div>
