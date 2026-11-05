@@ -38,3 +38,24 @@ test('invalid/unreviewable states fail safely without a favorable result', () =>
  assert.throws(()=>buildCognitiveControls(null),TypeError);
  assert.deepEqual(buildCognitiveControls({record:null,claims:[],findings:[]}),[]);
 });
+
+test('all current DS-N1 rule codes map to bounded prompts without inventing case facts', () => {
+  const codes = ['CLAIM_NOT_IN_RECORD','CLAIM_LOCATION_AMBIGUOUS','UNSUPPORTED_CLAIM',
+    'UNTRACEABLE_AUTHORITY','SOURCE_MISSING','QUOTE_NOT_FOUND','NEGATION_CONFLICT',
+    'SUBJECT_MISMATCH','RELEVANCE_NOT_ESTABLISHED','ACTOR_NOT_ESTABLISHED',
+    'QUALIFICATION_OMITTED','CONTRARY_CLAUSE_OMITTED','EVENT_ROLE_CONFUSION',
+    'DATE_MISMATCH','DATE_NOT_ESTABLISHED','DATE_ROLE_UNVERIFIED',
+    'REASONING_NOT_TRACED','UNMAPPED_ASSERTION','INSTRUCTION_LIKE_CONTENT'];
+  const s = state();
+  s.findings = codes.map((code,i) => ({finding_id:'X'+i, claim_id:'C1', condition:'RC1',
+    code, status:'OPEN', severity:'review'}));
+  const results = buildCognitiveControls(s);
+  assert.equal(results.length, codes.length);
+  assert.deepEqual(new Set(results.map(c=>c.finding_id)).size, codes.length);
+  assert.ok(results.every(c => c.action_surface === 'existing_findings_and_actions'));
+  assert.ok(results.every(c => c.question.endsWith('?')));
+});
+test('corrupt or refused review state cannot present actionable cognitive findings', () => {
+  const s = state(); s.status = 'ERROR'; assert.deepEqual(buildCognitiveControls(s), []);
+  s.status = 'REFUSED_SCOPE'; assert.deepEqual(buildCognitiveControls(s), []);
+});
