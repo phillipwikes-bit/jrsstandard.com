@@ -788,6 +788,28 @@
       ],
       "requiredRemediation": "Load a real findings file from the radar task; decide whether accepted findings should open a recovery claim",
       "acceptanceCriteria": "Missing source, date or direct link refused; projections never counted; received always zero; no fetch or browser storage; fits 320 px"
+    },
+    {
+      "featureId": "AVAILABLE-TO-COMPOUND",
+      "sourceFiles": [
+        "owner/incomeos/compound-capacity.js",
+        "owner/incomeos/compound-capacity-ui.js",
+        "owner/incomeos/index.html"
+      ],
+      "purpose": "Available-to-compound estimate from received income, paid outflows, capital returned and contributed, scheduled bills and an owner reserve, with a downside loss check",
+      "operationalState": "SIMULATED_OR_SYNTHETIC_ONLY",
+      "externalDependencies": [],
+      "securityClassification": "OWNER_PRIVATE_IN_MEMORY",
+      "knownDefects": [
+        "Built from recorded entries, not reconciled bank balances",
+        "No actual investment performance reporting"
+      ],
+      "testCoverage": [
+        "tests/incomeos-compound-capacity.mjs",
+        "tests/incomeos-compound-capacity-browser.mjs"
+      ],
+      "requiredRemediation": "Reconcile against statement balances; add realised performance per holding",
+      "acceptanceCriteria": "Expected income never counted; returned principal never shown as earnings; never negative; fits 320 to 430 px"
     }
   ]
 }

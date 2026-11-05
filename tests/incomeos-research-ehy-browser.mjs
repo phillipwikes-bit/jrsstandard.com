@@ -21,6 +21,10 @@ await new Promise(r=>server.once("listening",r));
 const browser=await chromium.launch(launchOptions);
 const ctx=await browser.newContext({...devices["iPhone 13"],acceptDownloads:true});
 const page=await ctx.newPage();const errors=[];page.on("pageerror",e=>errors.push(String(e)));
+// The app holds any source reviewed more than three days ago, so the page's clock is pinned to the day after the
+// committed snapshot's review date. Without this the test fails once the real date passes the snapshot's freshness window.
+const snapshotAsOf=JSON.parse(readFileSync(join(root,"opportunities.json"),"utf8")).asOf;
+await page.clock.setFixedTime(new Date(Date.parse(snapshotAsOf+"T12:00:00")+86400000));
 await page.goto(`http://127.0.0.1:${server.address().port}/index.html`);
 await page.locator('.bottomnav button[data-view="research"]').click(); // Program is the default view; research panels live under Research.
 await page.waitForFunction(()=>document.querySelectorAll("#radar-results article").length>0,null,{timeout:15000});

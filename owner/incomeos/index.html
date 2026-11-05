@@ -26,6 +26,8 @@
 <script defer src="./transfer-reconciliation.js"></script>
 <script defer src="./transfer-review-ui.js"></script>
 <script defer src="./capital-readiness.js"></script>
+<script defer src="./compound-capacity.js"></script>
+<script defer src="./compound-capacity-ui.js"></script>
 <script defer src="./source-health.js"></script>
 <script defer src="./capital-review-ui.js"></script>
 <script defer src="./source-health-ui.js"></script>
@@ -367,6 +369,16 @@
       <label for="years">Period: <span id="years-text">10 years</span></label><input type="range" id="years" min="1" max="30" value="10" step="1">
       <div class="projection"><span>Illustrative future value</span><strong id="future-value">$0</strong><div><span>Contributions <b id="contributions">$0</b></span><span>Illustrative change <b id="growth">$0</b></span></div></div>
       <p class="muted">Monthly contributions occur at month end. Return is an assumption, not an expected or guaranteed yield. Positive projections omit fees and taxes; negative returns and asset write-downs are possible.</p>
+    </div>
+    <div class="panel" id="cc-panel" style="margin-top:14px">
+      <h3>Available to compound</h3>
+      <p class="muted">Worked out from your recorded entries: income actually received, minus what you paid, plus capital that came back, minus scheduled bills and your reserve. Expected or invoiced income is never counted.</p>
+      <div class="formgrid">
+        <div><label for="cc-year">Year (empty for all years)</label><input type="text" id="cc-year" inputmode="numeric" maxlength="4" autocomplete="off"></div>
+        <div><label for="cc-reserve">Reserve to keep ($)</label><input type="number" id="cc-reserve" min="0" step="100" value="0" inputmode="decimal"></div>
+      </div>
+      <label for="cc-loss">Downside check: loss to test (%)</label><input type="number" id="cc-loss" min="0" max="100" step="5" value="20" inputmode="decimal">
+      <div id="cc-result" role="status" aria-live="polite"></div>
     </div>
     <div class="panel" style="margin-top:14px"><h3>Recorded received income, all years</h3><p><strong id="cash-assessed">$0.00</strong> in manually recorded, received potential income. This is not an investable balance; deduct fees, costs, taxes, withdrawals, and reserves before making any allocation.</p></div>
     <div class="panel" id="capital-readiness-panel">

@@ -13,6 +13,7 @@ on:
       - 'tests/incomeos-accounting-editor-browser.mjs'
       - 'tests/incomeos-accounting-backup-browser.mjs'
       - 'tests/incomeos-passive-radar-browser.mjs'
+      - 'tests/incomeos-compound-capacity-browser.mjs'
       - 'tests/incomeos-research-progress-browser.mjs'
       - '.github/workflows/incomeos-mobile-browser-audit.yml'
   workflow_dispatch:
@@ -62,4 +63,4 @@ jobs:
       - name: Verify owner panels at iPhone width (screening, This week, actions, encrypted save)
         env:
           CI: "true"
-        run: node tests/incomeos-project-ui-browser.mjs && node tests/incomeos-research-ehy-browser.mjs && node tests/incomeos-ds-program-browser.mjs && node tests/incomeos-accountant-fixes-browser.mjs && node tests/incomeos-main-fixes-browser.mjs && node tests/incomeos-accounting-editor-browser.mjs && node tests/incomeos-accounting-backup-browser.mjs && node tests/incomeos-research-progress-browser.mjs && node tests/incomeos-passive-radar-browser.mjs
+        run: node tests/incomeos-project-ui-browser.mjs && node tests/incomeos-research-ehy-browser.mjs && node tests/incomeos-ds-program-browser.mjs && node tests/incomeos-accountant-fixes-browser.mjs && node tests/incomeos-main-fixes-browser.mjs && node tests/incomeos-accounting-editor-browser.mjs && node tests/incomeos-accounting-backup-browser.mjs && node tests/incomeos-research-progress-browser.mjs && node tests/incomeos-passive-radar-browser.mjs && node tests/incomeos-compound-capacity-browser.mjs
