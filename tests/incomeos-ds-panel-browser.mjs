@@ -44,6 +44,9 @@ try {
     assert.match(t,/Live GitHub CI connectionNOT_CONNECTED/);
     assert.match(t,/Recorded study runs, synthetic \/ independent0 \/ 0/);
     assert.match(t,/NOT_AUTHORIZED/);
+    assert.match(t,/Product revenue and costs/);
+    assert.match(t,/Product-tagged ledger rows0/);
+    assert.match(t,/Recorded operating costs \(owner ledger\)\$0\.00/);
     // Every original acceptance status is visible on demand, without
     // disclosing case/source contents or treating DS-N1 results as DS-A.
     const spDetails = page.locator('#ds-product-runtime details');
@@ -72,6 +75,37 @@ try {
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),
       'SP acceptance detail must not overflow at '+width+'px');
     assert.equal(await page.locator('#ds-product-runtime button').isDisabled(),true);
+    // Owner product finance uses the SAME workspace ledger, never the reviewer.
+    await page.evaluate(() => {
+      const W = window.IncomeOSWorkspace, D = window.IncomeOSDSProgram;
+      let w = W.newWorkspace('2026-11-05');
+      w.dsProgram = D.newProgram('2026-11-05');
+      w = W.addRecord(w, 'ledger', {
+        kind:'outflow',date:'2026-11-05',payer:'PRIVATE-VENDOR-DO-NOT-RENDER',
+        amountUsd:'29.50',category:'software',dsDimension:'software_api'
+      }, '2026-11-05');
+      w = W.addRecord(w, 'ledger', {
+        kind:'income',date:'2026-11-05',payer:'PRIVATE-PAYER-DO-NOT-RENDER',
+        amountUsd:'150.00',category:'business',dsDimension:'licensing_revenue'
+      }, '2026-11-05');
+      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:w}));
+    });
+    const financial=page.locator('#ds-product-runtime section[aria-label="Decision Spellchecker product finance"]');
+    const financialText=await financial.textContent();
+    assert.match(financialText,/Product-tagged ledger rows2/);
+    assert.match(financialText,/Recorded operating costs \(owner ledger\)\$29\.50/);
+    assert.match(financialText,/Reported received revenue \(owner-reconciled\)\$0\.00/);
+    assert.match(financialText,/Revenue recorded but not verified received\$150\.00/);
+    assert.match(financialText,/Owner-entered classifications and reconciliations are not independent bank verification/);
+    assert.doesNotMatch(await page.locator('#ds-product-runtime').textContent(),/PRIVATE-VENDOR-DO-NOT-RENDER|PRIVATE-PAYER-DO-NOT-RENDER/);
+    await page.evaluate(() => {
+      const D=window.IncomeOSDSProgram, p=D.newProgram('2026-11-05');
+      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{
+        detail:{schema:'incomeos.workspace.v1',dsProgram:p,
+          ledger:[{kind:'outflow',program:'decision-spellchecker',amountUsd:'9999.99',dsDimension:'software_api'}]}
+      }));
+    });
+    assert.match(await financial.textContent(),/Product accounting unavailable/);
     // The product view must follow the SAME workspace's changed programme record.
     await page.evaluate(() => {
       let p = window.IncomeOSDSProgram.newProgram('2026-11-05');

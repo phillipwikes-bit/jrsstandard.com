@@ -9,6 +9,52 @@ function add(parent, tag, value, className) {
   parent.appendChild(el);
   return el;
 }
+// This uses the authoritative owner workspace and DS programme. The
+// experimental reviewer bridge never receives an owner ledger or its rows.
+function ownerProductFinance(workspace, program) {
+  if (!workspace || workspace.schema !== 'incomeos.workspace.v1' ||
+      workspace.dsProgram !== program || !Array.isArray(workspace.ledger)) return null;
+  const WS = window.IncomeOSWorkspace;
+  const DS = window.IncomeOSDSProgram;
+  if (!WS || !DS || typeof WS.validate !== 'function' || typeof DS.finance !== 'function') return null;
+  WS.validate(workspace);
+  const d = new Date();
+  const today = [d.getFullYear(), String(d.getMonth() + 1).padStart(2, '0'),
+    String(d.getDate()).padStart(2, '0')].join('-');
+  return DS.finance(program, workspace, today);
+}
+function renderProductFinance(root, workspace, program) {
+  const finance = add(root, 'section');
+  finance.setAttribute('aria-label', 'Decision Spellchecker product finance');
+  add(finance, 'h4', 'Product revenue and costs');
+  let report;
+  try { report = ownerProductFinance(workspace, program); }
+  catch (_) { report = null; }
+  if (!report) {
+    add(finance, 'p', 'Product accounting unavailable. A valid, complete owner workspace is required. No amount is inferred.', 'muted');
+    return;
+  }
+  const actual = report.actual;
+  const money = amount => '$' + Number(amount).toFixed(2);
+  const rows = [
+    ['Product-tagged ledger rows', actual.rows],
+    ['Recorded operating costs (owner ledger)', money(actual.totalCostUsd)],
+    ['Reported received revenue (owner-reconciled)', money(actual.revenueReceivedUsd)],
+    ['Revenue recorded but not verified received', money(actual.revenueRecordedNotVerifiedUsd)],
+    ['Unallocated refund credits (not netted)', money(actual.refundCreditsUnallocatedUsd)],
+    ['Capital and transfers (not operating costs)',
+      money(actual.capitalMovedNotCostUsd + actual.transfersNotCostUsd)],
+    ['Product accounting exceptions', report.issues.length],
+  ];
+  const list = add(finance, 'dl');
+  for (const [label, value] of rows) {
+    add(list, 'dt', label);
+    add(list, 'dd', value);
+  }
+  // Only aggregates are rendered; row-level owner financial information and
+  // issue identifiers remain in the same existing owner workspace.
+  add(finance, 'p', 'Amounts are derived only from this workspace ledger. Owner-entered classifications and reconciliations are not independent bank verification. Unpaid income, projections and unallocated credits are not counted as received revenue.', 'muted');
+}
 function init() {
   const root = document.getElementById('ds-product-runtime');
   if (!root) return;
@@ -85,6 +131,7 @@ function init() {
       if (view.openDefects.length > 5) add(section, 'p', (view.openDefects.length - 5) + ' additional defect records are in the programme.', 'muted');
     }
     add(root, 'p', 'Version identity is read from the imported DS-N1 source. Defects, tasks, evidence counts, study-run counts and gate status are read from the same IncomeOS programme record. A recorded study run is not a CI pass or independent acceptance. Live GitHub CI, browser validation and deployment status are not connected.', 'muted');
+    renderProductFinance(root, workspace, workspace.dsProgram);
     const blocked = add(root, 'button', 'Synthetic reviewer unavailable until server-enforced owner access and isolated product delivery are verified.', 'smallbtn');
     blocked.type = 'button';
     blocked.disabled = true;
