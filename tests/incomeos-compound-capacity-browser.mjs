@@ -60,6 +60,25 @@ await page.waitForFunction(()=>/1,410\.00/.test(document.getElementById("cc-avai
 await page.locator("#cc-reserve").fill("100000");
 await page.waitForFunction(()=>/\$0\.00/.test(document.getElementById("cc-available").textContent));
 assert.match(await page.locator("#cc-result").textContent(),/nothing is available/);
+// Actual results by holding: one capital contribution and its interest under the same name.
+// The principal returned earlier carries no payer name, so it is grouped and flagged rather than hidden.
+{const t=await page.locator("#ch-result").textContent();
+ assert.match(t,/Unnamed holdingNo money put in is recorded\./);assert.match(t,/Principal returned \(not earnings\)\$300\.00/);
+ assert.match(t,/Records without a payer or payee name are grouped here/);}
+await nav("ledger");
+await page.locator("#cost-label").fill("Synthetic note purchase");await page.locator("#cost-payee").fill("Synthetic Notes Fund");
+await page.locator("#cost-amount").fill("1000");await page.locator("#cost-date").fill(Y+"-01-10");await page.locator("#cost-type").selectOption("capital");
+await page.locator("#cost-payment-status").selectOption("paid");await page.locator("#cost-save").tap();
+await page.locator("#receipt-label").fill("Synthetic note interest");await page.locator("#receipt-payer").fill("Synthetic Notes Fund");
+await page.locator("#receipt-amount").fill("60");await page.locator("#receipt-fees").fill("0");await page.locator("#receipt-date").fill(Y+"-06-30");
+await page.locator("#receipt-state").selectOption("paid");await page.locator("#receipt-scope").selectOption("income");await page.locator("#receipt-category").selectOption("interest");
+await page.locator("#receipt-save").tap();
+await nav("compound");
+const holding=page.locator('#ch-result .holding[data-holding="Synthetic Notes Fund"]');
+await holding.waitFor();
+const ht=await holding.textContent();
+assert.match(ht,/Money put in\$1,000\.00/);assert.match(ht,/Income received\$60\.00/);assert.match(ht,/\$1,000\.00 of your money is still in it/);
+assert.match(ht,/Income on money put in \(not annualised\)6%/);
 for(const w of [320,375,430]){await page.setViewportSize({width:w,height:800});
   assert.ok(await page.evaluate(w=>document.documentElement.scrollWidth<=w,w),"no horizontal overflow at "+w);}
 assert.equal(await page.evaluate(()=>localStorage.length+sessionStorage.length),0,"nothing in browser storage");

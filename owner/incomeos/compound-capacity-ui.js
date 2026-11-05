@@ -31,12 +31,29 @@
     if(r.issues.length){var ul=add(out,"ul",null,"bullets");r.issues.forEach(function(i){add(ul,"li",i);});}
     add(out,"p",r.notice,"muted");
   }
+  function renderHoldings(){
+    var out=$("ch-result");if(!out||!window.IncomeOSAccountant||!window.IncomeOSCompoundCapacity)return;out.replaceChildren();
+    var r=window.IncomeOSCompoundCapacity.holdings(window.IncomeOSAccountant.entriesForAnalysis());
+    if(!r.holdings.length){add(out,"p","No investment records yet. Record money you put in as an outflow of type \"Asset purchase / capital contribution\", and interest, dividends or principal back as income from the same payer name.","muted");return;}
+    r.holdings.forEach(function(h){
+      var c=add(out,"div",null,"spend-issue holding");c.setAttribute("data-holding",h.name);
+      add(c,"strong",h.name);
+      add(c,"p",{CAPITAL_RETURNED:"All money put in has come back.",CAPITAL_STILL_OUT:usd.format(h.stillInvested)+" of your money is still in it.",NO_CONTRIBUTION_RECORDED:"No money put in is recorded."}[h.status],"muted");
+      var dl=add(c,"dl",null,"detail");
+      [["Money put in",h.contributed],["Income received",h.incomeReceived],["Principal returned (not earnings)",h.principalReturned],["Sale proceeds (not earnings)",h.saleProceeds],["Net cash so far",h.netCashSoFar]].forEach(function(p){
+        var d=add(dl,"div",null,"line");add(d,"dt",p[0]);add(d,"dd",usd.format(p[1]));});
+      if(h.incomeOnCapitalPct!=null){var d=add(dl,"div",null,"line");add(d,"dt","Income on money put in (not annualised)");add(d,"dd",h.incomeOnCapitalPct+"%");}
+      if(h.flags.length){var ul=add(c,"ul",null,"bullets");h.flags.forEach(function(f){add(ul,"li",f);});}
+    });
+    add(out,"p",r.notice,"muted");
+  }
   function init(){
     if(!$("cc-panel"))return;
     ["cc-year","cc-reserve","cc-loss"].forEach(function(id){$(id).addEventListener("input",render);});
     window.addEventListener("incomeos:ledger-updated",render);
+    window.addEventListener("incomeos:ledger-updated",renderHoldings);
     $("cc-year").value=String(new Date().getFullYear());
-    render();
+    render();renderHoldings();
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 }());

@@ -380,6 +380,11 @@
       <label for="cc-loss">Downside check: loss to test (%)</label><input type="number" id="cc-loss" min="0" max="100" step="5" value="20" inputmode="decimal">
       <div id="cc-result" role="status" aria-live="polite"></div>
     </div>
+    <div class="panel" id="ch-panel">
+      <h3>Actual results by holding</h3>
+      <p class="muted">Money you put in and what came back, grouped by the payer or payee name on your records. Only paid and received amounts count.</p>
+      <div id="ch-result" role="status" aria-live="polite"></div>
+    </div>
     <div class="panel" style="margin-top:14px"><h3>Recorded received income, all years</h3><p><strong id="cash-assessed">$0.00</strong> in manually recorded, received potential income. This is not an investable balance; deduct fees, costs, taxes, withdrawals, and reserves before making any allocation.</p></div>
     <div class="panel" id="capital-readiness-panel">
       <div class="panelrow"><h3>Capital readiness and investment evidence</h3><button type="button" class="smallbtn" id="capital-readiness-refresh">Review controls</button></div>

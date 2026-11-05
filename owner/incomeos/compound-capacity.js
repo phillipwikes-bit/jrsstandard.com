@@ -37,7 +37,43 @@
     if(a<0||l<0||l>100||f<0||f>100)throw Error("Amount, loss and fee must be valid");
     return {amount:r2(a),loss:r2(a*l/100),fee:r2(a*f/100),remaining:r2(Math.max(0,a-a*l/100-a*f/100))};
   }
-  var api=Object.freeze({estimate:estimate,downside:downside});
+  // Actual results by holding, from ledger records named for the same payer or payee. Cash only: money put in
+  // (paid capital outflows), income received (paid investment-type income after fees), principal returned and
+  // sale proceeds. Principal and proceeds are capital coming back, never income; nothing projected is used.
+  var INVEST_CATS=["interest","dividend","investment","rental","royalty"];
+  function holdings(entries){
+    if(!Array.isArray(entries))throw Error("Entries required");
+    var map={},order=[];
+    entries.forEach(function(e){
+      if(!e||typeof e!=="object")return;
+      var role=null,amt=0;
+      if(e.kind==="outflow"&&e.type==="capital"&&(e.paymentStatus||"paid")==="paid"){role="contributed";amt=n(e.amountUsd);}
+      else if(e.kind==="income"&&e.status==="paid"){
+        if(e.scope==="nonincome"){role="returned";amt=n(e.grossUsd);}
+        else if(e.scope==="proceeds"){role="proceeds";amt=n(e.grossUsd);}
+        else if(INVEST_CATS.indexOf(e.category)>=0){role="income";amt=r2(n(e.grossUsd)-n(e.feesUsd));}
+      }
+      if(!role)return;
+      var name=String(e.payer||"").trim(),key=name.toLowerCase()||"(unnamed)";
+      if(!map[key]){map[key]={name:name||"Unnamed holding",contributed:0,income:0,returned:0,proceeds:0,records:0,unreconciled:0,first:e.date,last:e.date};order.push(key);}
+      var h=map[key];h[role]=r2(h[role]+amt);h.records++;if(!e.reconciled)h.unreconciled++;
+      if(e.date<h.first)h.first=e.date;if(e.date>h.last)h.last=e.date;
+    });
+    var rows=order.map(function(k){
+      var h=map[k],back=r2(h.returned+h.proceeds),flags=[];
+      if(!(h.contributed>0))flags.push("No money put in is recorded for this holding; results cannot be judged.");
+      if(h.proceeds>0)flags.push("Sale proceeds have no cost basis recorded; the gain or loss is unknown.");
+      if(h.unreconciled)flags.push(h.unreconciled+" record(s) not reconciled to a statement.");
+      if(k==="(unnamed)")flags.push("Records without a payer or payee name are grouped here.");
+      return {name:h.name,contributed:h.contributed,incomeReceived:h.income,principalReturned:h.returned,saleProceeds:h.proceeds,
+        capitalBack:back,netCashSoFar:r2(h.income+back-h.contributed),stillInvested:r2(Math.max(0,h.contributed-back)),
+        status:h.contributed>0&&back>=h.contributed?"CAPITAL_RETURNED":h.contributed>0?"CAPITAL_STILL_OUT":"NO_CONTRIBUTION_RECORDED",
+        incomeOnCapitalPct:h.contributed>0?r2(h.income/h.contributed*100):null,from:h.first,to:h.last,records:h.records,flags:flags};
+    });
+    rows.sort(function(a,b){return b.contributed-a.contributed||a.name.localeCompare(b.name);});
+    return {holdings:rows,notice:"Cash results from your recorded entries only. Principal returned and sale proceeds are your own money coming back, not earnings. Income on capital is not annualised and is not a return forecast."};
+  }
+  var api=Object.freeze({estimate:estimate,downside:downside,holdings:holdings});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSCompoundCapacity=api;
 }(typeof window!=="undefined"?window:(typeof globalThis!=="undefined"?globalThis:null)));

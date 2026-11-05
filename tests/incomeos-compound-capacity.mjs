@@ -26,4 +26,25 @@ assert.throws(()=>C.estimate(null),/totals required/);
 // Downside check.
 assert.deepEqual(JSON.parse(JSON.stringify(C.downside(1000,20,1))),{amount:1000,loss:200,fee:10,remaining:790});
 assert.throws(()=>C.downside(1000,120,0),/valid/);
+// Actual results by holding.
+const E=[
+  {kind:"outflow",type:"capital",payer:"Synthetic Notes Fund",amountUsd:1000,date:"2026-01-05",reconciled:true},
+  {kind:"income",status:"paid",scope:"income",category:"interest",payer:"Synthetic Notes Fund",grossUsd:60,feesUsd:5,date:"2026-06-30",reconciled:true},
+  {kind:"income",status:"paid",scope:"nonincome",payer:"synthetic notes fund",grossUsd:400,feesUsd:0,date:"2026-07-01",reconciled:false},
+  {kind:"income",status:"expected",scope:"income",category:"interest",payer:"Synthetic Notes Fund",grossUsd:999,date:"2026-12-31"},
+  {kind:"outflow",type:"capital",payer:"Synthetic Notes Fund",amountUsd:500,date:"2026-02-01",paymentStatus:"scheduled"},
+  {kind:"outflow",type:"capital",payer:"Synthetic Land Co",amountUsd:300,date:"2026-02-01",reconciled:true},
+  {kind:"income",status:"paid",scope:"proceeds",payer:"Synthetic Land Co",grossUsd:350,date:"2026-09-01",reconciled:true},
+  {kind:"income",status:"paid",scope:"income",category:"dividend",payer:"Synthetic Orphan",grossUsd:20,date:"2026-03-01",reconciled:true},
+  {kind:"income",status:"paid",scope:"income",category:"research",payer:"Synthetic Recruiter",grossUsd:100,date:"2026-03-01"}];
+const H=JSON.parse(JSON.stringify(C.holdings(E))).holdings;
+assert.deepEqual(H.map(h=>h.name),["Synthetic Notes Fund","Synthetic Land Co","Synthetic Orphan"],"research pay is not a holding; names grouped case-insensitively");
+const nf=H[0];
+assert.deepEqual([nf.contributed,nf.incomeReceived,nf.principalReturned,nf.netCashSoFar,nf.stillInvested,nf.status,nf.incomeOnCapitalPct],[1000,55,400,-545,600,"CAPITAL_STILL_OUT",5.5],
+  "expected income and a scheduled contribution are not counted; principal is capital back, not income");
+assert.ok(nf.flags.some(f=>/1 record\(s\) not reconciled/.test(f)));
+assert.equal(H[1].status,"CAPITAL_RETURNED");assert.equal(H[1].incomeReceived,0,"sale proceeds are not income");
+assert.ok(H[1].flags.some(f=>/cost basis/.test(f)));
+assert.equal(H[2].status,"NO_CONTRIBUTION_RECORDED");assert.equal(H[2].incomeOnCapitalPct,null);
+assert.throws(()=>C.holdings(null),/Entries required/);
 console.log("IncomeOS available-to-compound checks passed: received income only, principal kept separate, reserve and bills deducted, never negative.");
