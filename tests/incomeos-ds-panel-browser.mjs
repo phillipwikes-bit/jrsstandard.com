@@ -41,8 +41,34 @@ try {
     assert.match(t,/Original SP acceptance0 of 18/);
     assert.match(t,/AUTHENTIC_SOURCE_NOT_RECOVERED/);
     assert.match(t,/INTEGRATION_IN_PROGRESS/);
+    assert.match(t,/Live GitHub CI connectionNOT_CONNECTED/);
+    assert.match(t,/Recorded study runs, synthetic \/ independent0 \/ 0/);
     assert.match(t,/NOT_AUTHORIZED/);
     assert.equal(await page.locator('#ds-product-runtime button').isDisabled(),true);
+    // The product view must follow the SAME workspace's changed programme record.
+    await page.evaluate(() => {
+      let p = window.IncomeOSDSProgram.newProgram('2026-11-05');
+      p = window.IncomeOSDSProgram.add(p,'defects',{
+        id:'BUG-SYN-01',title:'Constructed source mismatch',
+        severity:'HIGH',identity:'DS-C'
+      },'2026-11-05');
+      p = window.IncomeOSDSProgram.add(p,'tasks',{
+        id:'TASK-SYN-01',title:'Inspect synthetic evidence reference',
+        module:'engineering',dependsOn:[],value:5,cost:1,risk:1
+      },'2026-11-05');
+      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{dsProgram:p}}));
+    });
+    const updated=await page.locator('#ds-product-runtime').textContent();
+    assert.match(updated,/BUG-SYN-01: Constructed source mismatch/);
+    assert.match(updated,/TASK-SYN-01: Inspect synthetic evidence reference/);
+    assert.match(updated,/NOT_AUTHORIZED/);
+    await page.evaluate(() => {
+      let p = window.IncomeOSDSProgram.newProgram('2026-11-05');
+      p.acceptance[0].status='ACCEPTED';
+      document.dispatchEvent(new CustomEvent('incomeos:workspace-changed',{detail:{dsProgram:p}}));
+    });
+    assert.match(await page.locator('#ds-product-runtime').textContent(),/Programme record cannot be verified/);
+
     assert.deepEqual(errors,[], 'page errors at '+width+'px');
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),'no horizontal overflow at '+width+'px');
     await ctx.close();
