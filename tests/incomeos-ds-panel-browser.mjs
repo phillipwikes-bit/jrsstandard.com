@@ -48,28 +48,13 @@ try {
     // disclosing case/source contents or treating DS-N1 results as DS-A.
     const spDetails = page.locator('#ds-product-runtime details');
     assert.equal(await spDetails.count(),1);
-    // The fixed mobile bottom navigation may cover a summary that is
-    // technically in the viewport. Deliberately bring it above that overlay,
-    // as a touch user would by scrolling, then verify real hit testing.
-    await spDetails.locator('summary').evaluate(element => {
-      element.scrollIntoView({block:'center', behavior:'instant'});
-    });
-    await page.waitForFunction(() => {
-      const el = document.querySelector('#ds-product-runtime details summary');
-      const rect = el.getBoundingClientRect();
-      const hit = document.elementFromPoint((rect.left + rect.right)/2,
-        (rect.top + rect.bottom)/2);
-      return hit === el || el.contains(hit);
-    });
-    // Use a real mobile touch point after verifying it targets the summary.
-    // Locator.click() auto-scrolls again and can re-place this element beneath
-    // the fixed navigation overlay in Chromium's mobile viewport emulator.
-    const tap = await spDetails.locator('summary').evaluate(element => {
-      const b = element.getBoundingClientRect();
-      return { x:(b.left + b.right)/2, y:(b.top + b.bottom)/2 };
-    });
-    await page.touchscreen.tap(tap.x, tap.y);
-    await page.waitForFunction(() => document.querySelector('#ds-product-runtime details')?.open === true);
+    // The disclosure is near the top of the product card, clear of the
+    // fixed bottom navigation, and has a mobile-sized native summary target.
+    const spSummary = spDetails.locator('summary');
+    assert.ok(await spSummary.evaluate(el => el.getBoundingClientRect().height >= 44),
+      'SP disclosure must have a 44px tap target at '+width+'px');
+    await spSummary.click();
+    assert.equal(await spDetails.evaluate(el => el.open),true);
     const spRows = spDetails.locator('li');
     assert.equal(await spRows.count(),18);
     assert.match(await spRows.first().textContent(),/SP-01: NOT_ACCEPTED/);
