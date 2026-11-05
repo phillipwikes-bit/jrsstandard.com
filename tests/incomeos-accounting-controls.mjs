@@ -23,6 +23,22 @@ const cost=(id,date,amountUsd,sourceId="source-"+id)=>({id,kind:"outflow",type:"
   date,amountUsd,businessUse:null,payer:"Synthetic Software",evidenceStatus:"both",reconciled:true,
   bankSource:ref(sourceId),reference:"inv-"+id});
 const coverage=[{institution:"Demo Bank",accountToken:"card-last4-3321",from:"2026-01-01",through:"2026-11-30",complete:true,sourceVerified:true}];
+// Source IDs are identity fields. Overlength input must fail rather than collapse two references.
+const tooLong="Z".repeat(101);
+for(const field of ["institution","accountToken","transactionId"]){
+  assert.throws(()=>engine.normalizedBank({...bank("valid","2026-10-06",20),[field]:tooLong}),/100 characters/);
+  assert.throws(()=>engine.ledgerEntry({...cost("checked","2026-10-06",20),bankSource:{...ref("valid"),[field]:tooLong}}),/100 characters/);
+}
+assert.throws(()=>engine.normalizedBank({...bank("valid","2026-10-06",20),transactionId:42}),/Source identity/);
+const overlengthCoverage=engine.coverageCheck([{...coverage[0],accountToken:tooLong}]);
+assert.equal(overlengthCoverage.complete,false,"overlength coverage cannot silently match a shortened bank token");
+assert.match(overlengthCoverage.issues.join(" "),/overlength/);
+const sourceA="z".repeat(99)+"A",sourceB="z".repeat(99)+"B";
+const distinct=engine.analyze([cost("distinctA","2026-10-06",20,sourceA),cost("distinctB","2026-10-06",20,sourceB)],
+  [bank(sourceA,"2026-10-06",20),bank(sourceB,"2026-10-06",20)],coverage);
+assert.equal(distinct.bank.distinct,2,"different valid 100-character IDs remain distinct");
+assert.equal(distinct.ledger.ownerReviewedBankMatches,2,"no valid bank link is lost");
+
 const ledger=[income("paid1","2026-10-05",120,5),cost("cost1","2026-10-06",20),income("pending1","2026-10-06",300,0,"research","pending")];
 const banks=[bank("source-paid1","2026-10-06",115,"credit"),bank("source-cost1","2026-10-06",20)];
 let r=engine.analyze(ledger,banks,coverage);
