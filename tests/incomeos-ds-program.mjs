@@ -129,11 +129,14 @@ assert.ok(D.finance(p,ws,on).issues.some(i=>i.code==="REINVESTMENT_NOT_AUTHORIZE
    assert.equal(report.actual.revenueRecordedNotVerifiedUsd,625);
    assert.ok(report.issues.some(x=>x.code==="REVENUE_NOT_RECEIVED"));
  }
- for(const scope of ["nonincome","proceeds",undefined]){
+ for(const scope of ["nonincome","proceeds",null]){
    const report=D.finance(staged,invoice("paid",scope),on);
    assert.equal(report.actual.revenueReceivedUsd,0,"Capital scope "+String(scope)+" is not earned revenue");
    assert.ok(report.issues.some(x=>x.code==="REVENUE_NOT_INCOME_SCOPE"));
  }
+ const unspecified=invoice("paid");delete unspecified.ledger[0].scope;
+ assert.equal(D.finance(staged,unspecified,on).actual.revenueReceivedUsd,0,
+   "Missing scope must not be implicitly promoted to income");
  const unresolved=D.finance(staged,invoice("paid","income",false),on);
  assert.equal(unresolved.actual.revenueReceivedUsd,0);
  assert.ok(unresolved.issues.some(x=>x.code==="REVENUE_MATCH_NOT_RECONCILED"));
