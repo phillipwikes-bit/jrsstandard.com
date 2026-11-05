@@ -27,6 +27,8 @@ jobs:
       - name: Existing DS-N1 cognitive and source-trace regressions
         run: |
           node --test tests/ds-n1/cognitive-controls.test.mjs tests/ds-n1/cognitive-source-trace.test.mjs tests/ds-n1/reflective-guidance.test.mjs
+      - name: Run full DS-N1 native synthetic regression suite without sealed holdouts
+        run: node --test tests/ds-n1/ds-n1.test.mjs
       - name: IncomeOS existing programme integrity
         run: node tests/incomeos-ds-program.mjs
       - name: Locate available system browser
