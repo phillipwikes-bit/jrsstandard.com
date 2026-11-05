@@ -48,20 +48,19 @@ try {
     // disclosing case/source contents or treating DS-N1 results as DS-A.
     const spDetails = page.locator('#ds-product-runtime details');
     assert.equal(await spDetails.count(),1);
-    const geometry = await page.evaluate(() => {
-      const summary = document.querySelector('#ds-product-runtime details summary');
-      const details = summary.closest('details');
-      const previous = details.previousElementSibling;
-      const rect = element => {
-        const b = element.getBoundingClientRect();
-        return { top:b.top, bottom:b.bottom, left:b.left, right:b.right, width:b.width, height:b.height };
-      };
-      const b = rect(summary);
-      return { scrollY:window.scrollY, innerHeight:window.innerHeight,
-        summary: b, details:rect(details), previous:rect(previous),
-        atCenter:document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2)?.tagName };
+    // The fixed mobile bottom navigation may cover a summary that is
+    // technically in the viewport. Deliberately bring it above that overlay,
+    // as a touch user would by scrolling, then verify real hit testing.
+    await spDetails.locator('summary').evaluate(element => {
+      element.scrollIntoView({block:'center', behavior:'instant'});
     });
-    console.log('SP disclosure geometry at '+width+'px:', JSON.stringify(geometry));
+    await page.waitForFunction(() => {
+      const el = document.querySelector('#ds-product-runtime details summary');
+      const rect = el.getBoundingClientRect();
+      const hit = document.elementFromPoint((rect.left + rect.right)/2,
+        (rect.top + rect.bottom)/2);
+      return hit === el || el.contains(hit);
+    });
     await spDetails.locator('summary').click();
     const spRows = spDetails.locator('li');
     assert.equal(await spRows.count(),18);
@@ -69,6 +68,14 @@ try {
     assert.match(await spRows.first().textContent(),/source: not available in repository/);
     assert.match(await spRows.first().textContent(),/linked evidence records: 0/);
     assert.match(await spRows.last().textContent(),/SP-18: NOT_ACCEPTED/);
+    assert.equal(await spDetails.evaluate(el => el.open),true);
+    await spDetails.locator('summary').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await spDetails.evaluate(el => el.open),false,
+      'keyboard Enter should close the disclosure');
+    await page.keyboard.press('Enter');
+    assert.equal(await spDetails.evaluate(el => el.open),true,
+      'keyboard Enter should reopen the disclosure');
     assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth+1),
       'SP acceptance detail must not overflow at '+width+'px');
     assert.equal(await page.locator('#ds-product-runtime button').isDisabled(),true);
