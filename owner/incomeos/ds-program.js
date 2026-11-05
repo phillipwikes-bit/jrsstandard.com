@@ -389,7 +389,16 @@
         if(REVENUE_DIMS.indexOf(r.dsDimension)<0){issues.push({code:"INCOME_IN_COST_DIMENSION",id:r.id});return;}
         var deal=byId(p,"pipeline",r.dsAgreementId);
         if(!deal||deal.stage!=="EXECUTED_AGREEMENT")issues.push({code:"REVENUE_WITHOUT_EXECUTED_AGREEMENT",id:r.id});
-        if(r.evidenceStatus==="both"&&deal&&deal.stage==="EXECUTED_AGREEMENT")received+=c;else recordedUnverified+=c;
+        // A recorded contract or reconciled evidence cannot convert expected,
+        // disputed, refunded, cancelled or capital receipts into paid revenue.
+        // These flags come from the existing accountant ledger, not a new store.
+        if(r.status!=="paid")issues.push({code:"REVENUE_NOT_RECEIVED",id:r.id});
+        if(r.scope!=="income")issues.push({code:"REVENUE_NOT_INCOME_SCOPE",id:r.id});
+        if(r.status==="paid"&&r.scope==="income"&&r.evidenceStatus==="both"&&r.reconciled!==true)
+          issues.push({code:"REVENUE_MATCH_NOT_RECONCILED",id:r.id});
+        if(r.status==="paid"&&r.scope==="income"&&r.evidenceStatus==="both"&&r.reconciled===true&&
+            deal&&deal.stage==="EXECUTED_AGREEMENT")received+=c;
+        else recordedUnverified+=c;
         byDim[r.dsDimension]+=c;
       }else{
         if(COST_DIMS.indexOf(r.dsDimension)<0){issues.push({code:"COST_IN_REVENUE_DIMENSION",id:r.id});return;}
@@ -413,7 +422,7 @@
     return {actual:{costsByDimensionUsd:dims,totalCostUsd:cents(totalCost),lastMonth:lastMonth,lastMonthOperatingCostUsd:cents(monthCost),
         revenueReceivedUsd:cents(received),revenueRecordedNotVerifiedUsd:cents(recordedUnverified),rows:rows.length},
       projections:scenarios,issues:issues,
-      notice:"Actual figures are ledger rows tagged to the program. Revenue counts as received only when bank-matched and tied to an executed agreement. Scenarios are projections, never earned revenue."};
+      notice:"Actual figures are ledger rows tagged to the program. Revenue is recorded as received only if paid income, owner-reconciled matching document and bank evidence, and an executed agreement are all recorded. These owner-recorded classifications are not independent bank verification. Scenarios are projections, never earned revenue."};
   }
   function command(p0,ws,asOf){
     if(!isDate(asOf))throw Error("Date required");
