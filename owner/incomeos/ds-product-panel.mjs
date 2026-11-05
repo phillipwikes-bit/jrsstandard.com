@@ -1,0 +1,60 @@
+// Read-only view inside the EXISTING IncomeOS Decision Spellchecker programme.
+// This does not create another store, another dashboard or customer access.
+import { inspectProduct } from './ds-runtime-bridge.mjs';
+
+function add(parent, tag, value, className) {
+  const el = document.createElement(tag);
+  if (value !== undefined) el.textContent = String(value);
+  if (className) el.className = className;
+  parent.appendChild(el);
+  return el;
+}
+function init() {
+  const root = document.getElementById('ds-product-runtime');
+  if (!root) return;
+  let workspace = null;
+  function render() {
+    root.replaceChildren();
+    add(root, 'h3', 'Decision Spellchecker development source');
+    if (!workspace?.dsProgram) {
+      add(root, 'p', 'Load an IncomeOS owner workspace to inspect its authoritative programme record. No reviewer is available without verified private access.', 'muted');
+      return;
+    }
+    let view;
+    try { view = inspectProduct(workspace.dsProgram); }
+    catch (_) {
+      add(root, 'p', 'Programme record cannot be verified. Product integration remains blocked.', 'muted');
+      return;
+    }
+    const list = add(root, 'dl');
+    for (const [label, value] of [
+      ['Candidate source', view.candidate + ' ' + view.candidateVersion],
+      ['Rules', view.rulesVersion],
+      ['Cognitive controls', view.cognitiveVersion],
+      ['Reflective guidance', view.reflectiveVersion],
+      ['Original SP acceptance', view.originalAcceptance.accepted + ' of ' + view.originalAcceptance.total],
+      ['Original source', view.originalSource],
+      ['Open programme gates', view.openGates.join(', ') || 'None recorded open'],
+      ['Integration', view.integration],
+      ['Customer access', view.customerAccess],
+      ['Release', view.release],
+    ]) {
+      add(list, 'dt', label);
+      add(list, 'dd', value);
+    }
+    add(root, 'p', 'Version identity is read from the imported DS-N1 source. Requirements and gate status are read from the single IncomeOS workspace record. This is not a live GitHub, browser-validation or deployment check.', 'muted');
+    const blocked = add(root, 'button', 'Synthetic reviewer unavailable until server-enforced owner access and isolated product delivery are verified.', 'smallbtn');
+    blocked.type = 'button';
+    blocked.disabled = true;
+    blocked.setAttribute('aria-disabled', 'true');
+  }
+  for (const eventName of ['incomeos:workspace-loaded','incomeos:workspace-changed','incomeos:workspace-restored']) {
+    document.addEventListener(eventName, ev => {
+      if (ev.detail && typeof ev.detail === 'object') workspace = ev.detail;
+      render();
+    });
+  }
+  render();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+else init();
