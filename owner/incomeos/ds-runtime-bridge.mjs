@@ -2,6 +2,7 @@
 // It must not be exposed as a customer route or production API. Neither a
 // client-side flag nor a local source build is proof of owner authentication.
 // The one authoritative program remains the IncomeOS workspace's dsProgram.
+import './ds-program.js';
 import {
   CANDIDATE, RECORD_SCHEMA, validateRecord, openReview, deriveState,
   applyAction, buildReport,
@@ -26,6 +27,15 @@ function checkProgram(program) {
       throw new TypeError('Missing or malformed original acceptance item ' + id);
     }
   }
+  // The structural check above is not acceptance verification. Apply the
+  // existing authoritative programme validator before reading any status.
+  // This refuses forged ACCEPTED checks, unsupported gate approvals, broken
+  // evidence links and malformed rights records even if the shape looks valid.
+  const owner = globalThis.IncomeOSDSProgram;
+  if (!owner || typeof owner.validate !== 'function' || owner.SCHEMA !== program.schema) {
+    throw new TypeError('Authoritative IncomeOS programme validator unavailable');
+  }
+  owner.validate(program);
   return program;
 }
 
