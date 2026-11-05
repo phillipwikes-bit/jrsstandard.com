@@ -51,6 +51,26 @@ function init() {
       add(list, 'dt', label);
       add(list, 'dd', value);
     }
+    // SP acceptance is projected from the SAME programme already validated
+    // by inspectProduct. This is not another requirement register or a claim
+    // that an original DS-A acceptance clause has been authenticated.
+    const original = add(root, 'details');
+    add(original, 'summary', 'Inspect original SP-01 through SP-18 acceptance statuses');
+    add(original, 'p', 'Original DS-A requirement acceptance only. Synthetic DS-N1 tests do not satisfy original acceptance. Source text and evidence identifiers are withheld in this development-only view.', 'muted');
+    const spList = add(original, 'ul');
+    for (let n = 1; n <= 18; n++) {
+      const id = 'SP-' + String(n).padStart(2, '0');
+      const item = workspace.dsProgram.acceptance.find(entry => entry.id === id);
+      const line = add(spList, 'li');
+      line.style.overflowWrap = 'anywhere';
+      add(line, 'strong', id + ': ' + item.status);
+      const clause = typeof item.criterion === 'string' && item.criterion.trim()
+        ? 'recorded, not authenticated by this view' : 'not recorded';
+      const source = item.criterionSource === 'NOT IN REPOSITORY'
+        ? 'not available in repository' : 'reference recorded, not authenticated by this view';
+      add(line, 'p', 'Original clause: ' + clause + '; source: ' + source +
+        '; linked evidence records: ' + item.evidenceIds.length, 'muted');
+    }
     if (view.openDefects.length) {
       const section = add(root, 'section');
       add(section, 'h4', 'Open defects in the owner programme');
