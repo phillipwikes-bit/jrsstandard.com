@@ -7,7 +7,7 @@
   // storage or the network: the owner saves the returned file themselves.
   // Encryption matches vault.js: PBKDF2-SHA256 (600,000 iterations) and AES-256-GCM.
   var FORMAT="incomeos-workspace",ITERATIONS=600000,SCHEMA="incomeos.workspace.v1";
-  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes","dsProgram","researchProgress","passiveFindings"];
+  var KEYS=["schema","note","ledger","rules","accounts","balances","claims","livedInStates","searchHistory","serviceNotes","offers","yieldParams","researchStages","recruiterOf","verifiedPayments","lifecycle","previousAlertIds","changeLog","researchTimes","dsProgram","researchProgress","passiveFindings","researchStudies"];
   var dep=function(name,file){return root&&root[name]||(typeof require==="function"?require(file):null);};
   function isDate(x){return typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+"T00:00:00Z"));}
   function clone(x){return JSON.parse(JSON.stringify(x));}
@@ -28,7 +28,7 @@
   function newWorkspace(on){
     return {schema:SCHEMA,note:"Private IncomeOS workspace created "+(isDate(on)?on:"")+". Keep outside the repository; save encrypted.",
       ledger:[],rules:[],accounts:[],balances:[],claims:[],livedInStates:["MD"],searchHistory:[],serviceNotes:[],offers:[],
-      yieldParams:{amountUsd:0,horizonMonths:12,federalRatePct:0,stateRatePct:0,needLiquidity:true},researchStages:[],recruiterOf:{},verifiedPayments:{},lifecycle:[],previousAlertIds:[],changeLog:[],researchTimes:{},researchProgress:{},passiveFindings:{}};
+      yieldParams:{amountUsd:0,horizonMonths:12,federalRatePct:0,stateRatePct:0,needLiquidity:true},researchStages:[],recruiterOf:{},verifiedPayments:{},lifecycle:[],previousAlertIds:[],changeLog:[],researchTimes:{},researchProgress:{},passiveFindings:{},researchStudies:[]};
   }
   var ACCOUNT_TYPES=["checking","savings","money_market","cd","treasury","brokerage","retirement","hsa","real_estate","vehicle","receivable","other_asset","credit_card","mortgage","auto_loan","student_loan","personal_loan","tax_owed","other_liability"];
   var INCOME_CATS=["research","evaluation","business","royalty","rental","interest","dividend","investment","reward","recovery","employment","pension","retirement","socialsecurity","unemployment","other"];
@@ -170,6 +170,19 @@
     next.passiveFindings[f.id].claimId=id;
     return next;
   }
+  // Public study listings the owner loaded, kept so they return when the workspace is reopened. Each is re-checked
+  // by the study screener (links, dates, pay, time); a record that fails is refused, never stored. At most 200,
+  // newest review date first. Freshness is judged when shown, so an old study still appears as on hold.
+  function setResearchStudies(ws,studies,on){
+    if(!isDate(on))throw Error("Date required");
+    var R=root&&root.IncomeOSResearchRadar;if(!R||typeof R.candidate!=="function")throw Error("Study checker unavailable");
+    if(!Array.isArray(studies))throw Error("Studies must be a list");
+    var seen={},out=[];
+    studies.forEach(function(x){var c=R.candidate(x);if(seen[c.id])return;seen[c.id]=1;out.push(c);});
+    out.sort(function(a,b){return String(b.reviewed).localeCompare(String(a.reviewed));});
+    var next=clone(validate(ws));next.researchStudies=clone(out.slice(0,200));
+    return log(next,"SET_RESEARCH_STUDIES",{count:next.researchStudies.length},on);
+  }
   function clearResearchTime(ws,studyId,on){
     var next=clone(validate(ws));if(next.researchTimes)delete next.researchTimes[studyId];
     return log(next,"CLEAR_RESEARCH_TIME",{studyId:studyId},on);
@@ -279,7 +292,7 @@
     if(isEncrypted(text)){if(!passphrase)throw Error("This workspace is encrypted. Enter its passphrase.");return decrypt(passphrase,text);}
     return validateDoc(JSON.parse(text));
   }
-  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,setResearchProgress:setResearchProgress,PROGRESS:PROGRESS.slice(),setPassiveFinding:setPassiveFinding,claimFromFinding:claimFromFinding,PASSIVE_STATUS:PASSIVE_STATUS.slice(),clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
+  var api=Object.freeze({SCHEMA:SCHEMA,KEYS:KEYS.slice(),validate:validate,newWorkspace:newWorkspace,addRecord:addRecord,setYieldParams:setYieldParams,setResearchTime:setResearchTime,setResearchProgress:setResearchProgress,PROGRESS:PROGRESS.slice(),setPassiveFinding:setPassiveFinding,setResearchStudies:setResearchStudies,claimFromFinding:claimFromFinding,PASSIVE_STATUS:PASSIVE_STATUS.slice(),clearResearchTime:clearResearchTime,ACCOUNT_TYPES:ACCOUNT_TYPES.slice(),INCOME_CATS:INCOME_CATS.slice(),COST_CATS:COST_CATS.slice(),acceptProposal:acceptProposal,advanceClaim:advanceClaim,openClaim:openClaim,recordSearch:recordSearch,
     addBalance:addBalance,markAlerted:markAlerted,setDsProgram:setDsProgram,setLedger:setLedger,encrypt:encrypt,decrypt:decrypt,isEncrypted:isEncrypted,load:load});
   if(typeof module!=="undefined"&&module.exports)module.exports=api;
   if(root)root.IncomeOSWorkspace=api;

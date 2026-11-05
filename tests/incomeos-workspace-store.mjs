@@ -108,4 +108,19 @@ assert.equal((await WS.load(JSON.stringify(base),"")).schema,"incomeos.workspace
   w=WS.claimFromFinding(w,{...f,id:"pf-r",title:"Synthetic overpaid deposit refund",directUrl:"https://example.org/r",amountBasis:"estimated"},"2026-11-08");
   assert.deepEqual([w.claims.at(-1).kind,w.claims.at(-1).state,w.claims.at(-1).estimatedUsd],["refund","MATCH_FOUND",null]);
 }
+// Loaded study listings: re-checked by the study screener, deduplicated, capped and newest first; bad records refused.
+{
+  const sctx={window:{},URL};vm.runInNewContext(readFileSync(new URL("../owner/incomeos/research-radar.js",import.meta.url),"utf8"),sctx);
+  ctx.window.IncomeOSResearchRadar=sctx.window.IncomeOSResearchRadar;
+  const st=(id,reviewed)=>({id,title:"Synthetic study "+id,provider:"Synthetic Recruiter",paymentUsd:100,minutes:30,screenMinutes:5,mode:"online",reviewed,eventEnd:null,url:"https://example.org/a/"+id,sourceUrl:"https://example.org/s/"+id,status:"Open"});
+  let w=WS.newWorkspace("2026-11-05");
+  w=WS.setResearchStudies(w,[st("syn-a-0001","2026-11-01"),st("syn-b-0002","2026-11-05"),st("syn-a-0001","2026-11-01")],"2026-11-05");
+  assert.deepEqual(plain(w.researchStudies.map(x=>x.id)),["syn-b-0002","syn-a-0001"],"deduplicated, newest first");
+  assert.equal(w.changeLog.at(-1).action,"SET_RESEARCH_STUDIES");
+  assert.throws(()=>WS.setResearchStudies(w,[{...st("syn-c-0003","2026-11-05"),url:"http://example.org/x"}],"2026-11-05"),/HTTPS/);
+  assert.equal(WS.setResearchStudies(w,Array.from({length:250},(_,k)=>st("syn-n-"+String(k).padStart(4,"0"),"2026-11-05")),"2026-11-05").researchStudies.length,200);
+  assert.equal(w.ledger.length,0,"studies never touch the ledger");
+  delete ctx.window.IncomeOSResearchRadar;
+  assert.throws(()=>WS.setResearchStudies(w,[],"2026-11-05"),/unavailable/,"fails closed without the checker");
+}
 console.log("IncomeOS workspace QA passed (synthetic data): engine-checked updates, append-only change log, AES-GCM round trip, wrong-passphrase and tamper rejection");

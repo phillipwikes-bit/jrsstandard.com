@@ -38,7 +38,10 @@ assert.match(radar,/sel\.disabled=true/);
 // Changed 2026-11-05: public study files may be loaded into page memory while storage is blocked. The import's
 // memory-only branch must return before persist(), so nothing reaches browser storage; a browser test confirms it.
 assert.match(radar,/var memoryOnly=window\.IncomeOSFinancialReadOnly===true;/);
-assert.match(radar,/if\(memoryOnly\)\{view\(\);notice\.textContent="Studies loaded for this visit only:[^}]*Nothing was stored[^}]*;return;\}\s*if\(persist\(\)\)/);
+{const i=radar.indexOf("if(memoryOnly){"),j=radar.indexOf("return;}",i),branch=radar.slice(i,j);
+ assert.ok(i>0&&j>i&&radar.indexOf("if(persist())",j)>j,"memory-only branch returns before persist()");
+ assert.doesNotMatch(branch,/persist\(|localStorage|sessionStorage|indexedDB/,"memory-only branch never writes browser storage");
+ assert.match(branch,/nothing was stored/);}
 const spend=read("spend-ui.js");
 assert.match(spend,/function load\(\)\{\s*if\(window\.IncomeOSFinancialReadOnly===true\)return/);
 assert.match(spend,/function save\(\)\{if\(window\.IncomeOSFinancialReadOnly===true\)/);

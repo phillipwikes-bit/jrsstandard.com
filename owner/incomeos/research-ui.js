@@ -43,9 +43,12 @@
     return out;
   }
   // Undo: the cards mirror the restored workspace exactly.
-  document.addEventListener("incomeos:workspace-restored",function(ev){timeOverrides=fromWorkspace(ev.detail);db.progress=progressFrom(ev.detail);syncReceived(ev.detail);if(latest)view();});
+  document.addEventListener("incomeos:workspace-restored",function(ev){db.leads=studiesFrom(ev.detail);timeOverrides=fromWorkspace(ev.detail);db.progress=progressFrom(ev.detail);syncReceived(ev.detail);if(latest)view();});
   document.addEventListener("incomeos:workspace-loaded",function(ev){
     wsOpen=true;syncReceived(ev.detail);
+    var saved=studiesFrom(ev.detail),unsaved=db.leads.filter(function(x){return !saved.some(function(s){return s.id===x.id;});});
+    db.leads=saved.concat(unsaved).slice(0,200);
+    if(unsaved.length)setTimeout(keepStudies,0);
     // Progress marked before the workspace was opened is kept and recorded in it, not discarded.
     var priorProgress=db.progress||{},fromWs=progressFrom(ev.detail);db.progress=fromWs;
     Object.keys(priorProgress).forEach(function(id){if(!fromWs[id]&&statuses.includes(priorProgress[id])&&priorProgress[id]!=="New"){db.progress[id]=priorProgress[id];emit("incomeos:research-progress",{id:id,status:priorProgress[id]});}});
@@ -57,6 +60,9 @@
     if(latest)view();
     carried.forEach(function(id){emit("incomeos:research-time",{id:id,times:prior[id]});});
   });
+  // Loaded studies go into the open workspace so they return when it is reopened; without a workspace they last this visit.
+  function keepStudies(){var res=null;emit("incomeos:research-studies",{studies:db.leads,done:function(r){res=r;}});return !!(res&&res.ok);}
+  function studiesFrom(ws){var out=[];(ws&&Array.isArray(ws.researchStudies)?ws.researchStudies:[]).forEach(function(x){try{out.push(engine.candidate(x));}catch(e){}});return out;}
   function emit(name,detail){if(name==="incomeos:research-screened")window.IncomeOSResearchLatest=detail;try{document.dispatchEvent(new CustomEvent(name,{detail:detail}));}catch(e){}}
   function combined(){
     return publicLeads.concat(db.leads).map(function(x){
@@ -162,7 +168,9 @@
       var added=incoming.filter(function(x){return !db.leads.some(function(e){return e.id===x.id;});}).length;
       if(!confirm("Review "+result.received+" public rows: "+result.accepted+" validated, "+result.rejected.length+" rejected, "+added+" new local candidates. Import validated records only? Availability and eligibility remain unconfirmed."))return;
       db.leads=incoming.slice(0,200);
-      if(memoryOnly){view();notice.textContent="Studies loaded for this visit only: "+result.accepted+" accepted, "+result.rejected.length+" rejected, "+unique.skipped+" duplicate(s) suppressed. Nothing was stored; reloading the page clears them. No recruiter was contacted.";return;}
+      if(memoryOnly){view();var kept=wsOpen&&keepStudies();
+        notice.textContent="Studies loaded: "+result.accepted+" accepted, "+result.rejected.length+" rejected, "+unique.skipped+" duplicate(s) suppressed. "+
+          (kept?"Kept in your open workspace; save it to keep them. ":"For this visit only: nothing was stored, and reloading the page clears them. Open your workspace to keep them. ")+"No recruiter was contacted.";return;}
       if(persist()){view();notice.textContent="Public-source intake complete: "+result.accepted+" accepted, "+result.rejected.length+" rejected, "+unique.skipped+" duplicate(s) suppressed. No recruiter was contacted."; }
     }catch(e){notice.textContent="No research candidates imported: "+e.message;}finally{$("radar-import-file").value="";}
   }
