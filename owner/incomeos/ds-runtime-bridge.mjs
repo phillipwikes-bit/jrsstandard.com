@@ -5,13 +5,40 @@
 import './ds-program.js';
 import {
   CANDIDATE, RECORD_SCHEMA, validateRecord, openReview, deriveState,
-  applyAction, buildReport,
+  applyAction, buildReport, verifyChain,
 } from '../../lib/ds-n1/index.mjs';
 import { buildCognitiveControls, COGNITIVE_CONTROL_VERSION } from '../../lib/ds-n1/cognitive-controls.mjs';
 import { buildReflectiveGuidance, REFLECTIVE_GUIDANCE_VERSION } from '../../lib/ds-n1/reflective-guidance.mjs';
 
-export const CONTRACT_VERSION = 'incomeos.ds-runtime-bridge/1.0.0-dev';
+export const CONTRACT_VERSION = 'incomeos.ds-runtime-bridge/1.0.1-dev';
 export const INTEGRATION_STATUS = 'INTEGRATION_IN_PROGRESS';
+
+// Development-only provenance guard. This is an ephemeral set of bridge-issued
+// sessions, not an independent programme, ledger, durable review store or
+// authentication mechanism. Persisted/reopened sessions require a separately
+// verified, authenticated owner workflow before this boundary can be relaxed.
+const issuedSessions = new WeakSet();
+
+function requireSyntheticSession(session) {
+  if (!session || typeof session !== 'object' ||
+      !issuedSessions.has(session) || !Array.isArray(session.events)) {
+    throw new TypeError('Only bridge-issued constructed fictional review sessions are permitted');
+  }
+  const input = session.input;
+  if (!input || input.schema !== RECORD_SCHEMA ||
+      input.data_classification !== 'constructed_fictional') {
+    throw new TypeError('Only constructed fictional review sessions are permitted');
+  }
+  const validation = validateRecord(input);
+  if (validation.status !== null || !validation.record) {
+    throw new TypeError('Review session no longer satisfies constructed fictional scope');
+  }
+  // Original DS-N1 checks the internal event chain. This verifies only
+  // consistency, not reviewer identity, legal authenticity or authorization.
+  if (!verifyChain(session.events, validation.record.record_digest).ok) {
+    throw new TypeError('Review session integrity check failed');
+  }
+}
 
 function checkProgram(program) {
   if (!program || program.schema !== 'incomeos.ds-program.v1' ||
@@ -94,12 +121,14 @@ export function startSyntheticReview(program, input, at) {
   if (validation.status !== null) {
     return Object.freeze({ accepted: false, status: validation.status, errors: validation.errors });
   }
-  return Object.freeze({ accepted: true, session: openReview(input, { at }) });
+  const session = openReview(structuredClone(input), { at });
+  issuedSessions.add(session);
+  return Object.freeze({ accepted: true, session });
 }
 
 export function reviewerSnapshot(program, session) {
   checkProgram(program);
-  if (!session || !Array.isArray(session.events)) throw new TypeError('DS-N1 session required');
+  requireSyntheticSession(session);
   const state = deriveState(session);
   const controls = buildCognitiveControls(state);
   return {
@@ -121,10 +150,14 @@ export function reviewerSnapshot(program, session) {
 // original DS-N1 human action engine, preserving its validation and event log.
 export function applyReviewerAction(program, session, action) {
   checkProgram(program);
-  return applyAction(session, action);
+  requireSyntheticSession(session);
+  const next = applyAction(session, action);
+  issuedSessions.add(next);
+  return next;
 }
 
 export function syntheticReport(program, session, generatedAt) {
   checkProgram(program);
+  requireSyntheticSession(session);
   return buildReport(session, { generated_at: generatedAt });
 }
