@@ -31,6 +31,28 @@ import { isNotAClick } from './_not-a-click.js';
 const SB = 'https://pjzxkeviouofdseagvpf.supabase.co';
 const TEST_SRC = ['verify', 'test', 'selftest'];
 
+// New campaign-page forms use POST, not GET, so link previews cannot create an endorsement.
+// This response is rendered by the server and reflects actual write/cookie state,
+// rather than trusting a query parameter to claim success.
+function supportFormResult(campaign, state, cookie){
+  const label = campaign === 'rtkw' ? 'The Right to Know Why' : 'The Decisions You Can Defend';
+  const back = campaign === 'rtkw' ? '/right-to-know-why.html' : '/decisions-you-can-defend.html';
+  const title = state === 'recorded' ? 'Support recorded' : state === 'previously' ? 'Support already recorded in this browser' : 'Support could not be confirmed';
+  const detail = state === 'recorded'
+    ? 'The existing JRS initiative ledger accepted your expression of support.'
+    : state === 'previously'
+    ? 'This browser already has a counted-support marker for the initiative. No additional endorsement was added.'
+    : 'The service could not confirm a recorded endorsement. Please do not assume this click was counted.';
+  const html = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+title+' | JRS</title>'
+    +'<style>body{background:#050505;color:#f2f2f2;font:17px/1.65 -apple-system,BlinkMacSystemFont,Arial,sans-serif;margin:0}main{max-width:680px;margin:9vh auto;padding:24px}h1{font:normal 35px/1.2 Georgia,serif}a{color:#caa35d}a:focus-visible{outline:3px solid #caa35d;outline-offset:4px}.note{border-left:3px solid #caa35d;background:#151515;padding:16px;margin-top:25px}</style></head>'
+    +'<body><main><p>JRS · '+label+'</p><h1>'+title+'</h1><p>'+detail+'</p><p><a href="'+back+'">Return to the initiative</a> · <a href="/resources.html">Explore free JRS resources</a></p>'
+    +'<div class="note">A browser-based expression of support is not an institutional endorsement, a verified unique person, adoption of JRS or proof of record-review effectiveness. No contact details were collected.</div></main></body></html>';
+  const headers={'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"};
+  if(cookie)headers['Set-Cookie']=cookie;
+  return new Response(html,{status:state==='unavailable'?503:200,headers});
+}
+
+
 function normCampaign(c){
   c = String(c || '').toLowerCase().replace(/[^a-z]/g, '');
   if (c === 'rtkw' || c === 'rights' || c === 'righttoknowwhy') return 'rtkw';
@@ -42,6 +64,16 @@ export default async function handler(req){
   const url = new URL(req.url);
   const campaign = normCampaign(url.searchParams.get('c'));
   const src = String(url.searchParams.get('src') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || '';
+  const isCampaignForm = req.method === 'POST' && url.searchParams.get('next') === 'confirmation';
+  if(req.method !== 'GET' && !isCampaignForm)return new Response('Method not allowed',{status:405,headers:{Allow:'GET, POST'}});
+  if(isCampaignForm){
+    if(campaign !== 'rtkw' && campaign !== 'defend')return new Response('Campaign unavailable',{status:400});
+    if(src !== 'campaign_page')return new Response('Invalid campaign source',{status:400});
+    const origin = req.headers.get('origin') || '';
+    const site = req.headers.get('sec-fetch-site') || '';
+    if((origin && origin !== url.origin) || (site && site !== 'same-origin' && site !== 'none'))
+      return new Response('Cross-site submission not accepted',{status:403});
+  }
 
   // Deploy and smoke checks bypass everything and record nothing.
   const isCheck = (src && TEST_SRC.indexOf(src) !== -1)
@@ -49,6 +81,7 @@ export default async function handler(req){
                || src === 'owner'
                || url.searchParams.get('owner') === '1';
   if (isCheck) {
+    if(isCampaignForm)return supportFormResult(campaign,'unavailable',null);
     return Response.redirect(url.origin + '/supported.html?c=' + encodeURIComponent(campaign), 302);
   }
 
@@ -104,7 +137,7 @@ export default async function handler(req){
       // series and the country breakdown stay one continuous history rather
       // than two incompatible halves. No `registered` flag: nobody registered,
       // and gate-stats uses that flag to tell a registration from a click.
-      await fetch(SB + '/rest/v1/interaction_events', {
+      const writeResponse = await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
@@ -123,8 +156,9 @@ export default async function handler(req){
           user_agent: ua.slice(0, 300)
         }})
       });
-      wrote = true;
-    } catch (e) { /* never block the redirect */ }
+      // A resolved fetch can still be a 4xx/5xx rejection; this must not count as success.
+      wrote = writeResponse.ok === true;
+    } catch (e) { /* never block navigation or the confirmation response */ }
   }
 
   // r=1 tells the campaign screen the endorsement is already on record, so it
@@ -139,6 +173,10 @@ export default async function handler(req){
   // screen's fallback write, which would reintroduce the double count through
   // the other door.
   const onRecord = wrote || alreadyCounted;
+  if(isCampaignForm){
+    const marker = wrote ? COOKIE+'=1; Path=/; Max-Age=31536000; SameSite=Lax; Secure; HttpOnly' : null;
+    return supportFormResult(campaign, wrote ? 'recorded' : alreadyCounted ? 'previously' : 'unavailable',marker);
+  }
   const q = '?c=' + encodeURIComponent(campaign)
           + (src ? '&src=' + encodeURIComponent(src) : '')
           + (onRecord ? '&r=1' : '');
