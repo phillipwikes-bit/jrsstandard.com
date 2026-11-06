@@ -37,6 +37,11 @@
     return String(d.getFullYear()) + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
   }
   function past(s) { return !!s.eventEnd && s.eventEnd < localDate(); }
+  function stale(s) {
+    if (typeof s.reviewed !== "string" || !/^\\d{4}-\\d{2}-\\d{2}$/.test(s.reviewed)) return true;
+    var checked=Date.parse(s.reviewed+"T00:00:00Z"),now=Date.parse(localDate()+"T00:00:00Z");
+    return !Number.isFinite(checked) || new Date(checked).toISOString().slice(0,10)!==s.reviewed || checked>now || now-checked>3*86400000;
+  }
   function show(view) {
     views.forEach(function (v) {
       var active = v === view, pane = $("view-" + v);
@@ -112,8 +117,8 @@
     sectionText(left, "span", "", s.paymentMethod || "Confirm payment method");
     sectionText(right, "strong", "rate", rate(s) === null ? "Unspecified" : money0.format(rate(s)) + "/hr");
     sectionText(right, "span", "", "Session-only rate");
-    var status = past(s) ? "Event dates passed. Verify reopening" : s.status;
-    chips(card, [{ value: status, warn: past(s) }, { value: s.mode === "online" ? "Remote" : "Requires in-person", warn: s.mode !== "online" }, { value: s.linkKind || "Study application" }]);
+    var status = past(s) ? "Event dates passed. Verify reopening" : stale(s) ? "Source review stale. Reverify before applying" : s.status;
+    chips(card, [{ value: status, warn: past(s)||stale(s) }, { value: s.mode === "online" ? "Remote" : "Requires in-person", warn: s.mode !== "online" }, { value: s.linkKind || "Study application" }]);
     var dl = append(card, node("dl", "detail"));
     details(dl, "Session", String(s.minutes) + " minutes; " + s.dates);
     details(dl, "Eligibility", (s.eligibility || []).join("; "));
@@ -150,7 +155,7 @@
     var f = $("research-filter").value, text = $("research-search").value.trim().toLowerCase();
     var list = feed.studies.filter(function (s) {
       if (f === "current" || f === "online" || f === "direct" || f === "highpay") {
-        if (past(s)) return false;
+        if (past(s)||stale(s)) return false;
       }
       if (f === "online" && s.mode !== "online") return false;
       if (f === "direct" && !String(s.linkKind || "").toLowerCase().includes("direct")) return false;
@@ -232,11 +237,11 @@
         if(!ok)rejectedAssets++;return ok;
       });
       feed = data;
-      $("metric-study").textContent = String(feed.studies.filter(function (x) { return !past(x); }).length);
+      $("metric-study").textContent = String(feed.studies.filter(function (x) { return !past(x)&&!stale(x); }).length);
       $("metric-asset").textContent = String(feed.assets.length);
       $("review-date").textContent = new Date(feed.asOf + "T12:00:00").toLocaleDateString("en-US", { dateStyle: "long" });
       status.classList.remove("error");
-      status.textContent = "Reviewed source snapshot: " + feed.asOf + ". This file does not update automatically with ChatGPT alerts; verify availability before applying." + (rejectedStudies+rejectedAssets ? " Excluded "+rejectedStudies+" malformed study and "+rejectedAssets+" malformed asset records." : "");
+      status.textContent = "Reviewed source snapshot: " + feed.asOf + ". Current counts exclude studies with reviews older than three days. This file does not update automatically with ChatGPT alerts; verify availability before applying." + (rejectedStudies+rejectedAssets ? " Excluded "+rejectedStudies+" malformed study and "+rejectedAssets+" malformed asset records." : "");
       renderStudies(); renderAssets();
       var deep = deepLinkApplied ? null : new URLSearchParams(location.search).get("study");
       if (deep) {
