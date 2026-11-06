@@ -26,5 +26,5 @@ jobs:
         run: npx playwright-core install --with-deps chromium
       - name: Verify accounting editor and encrypted vault in simulated iPhone browsers
         run: |
-          node tests/incomeos-accounting-editor-browser.mjs
-          node tests/incomeos-vault-cloud-browser.mjs
+          timeout --signal=TERM --kill-after=10s 120s node tests/incomeos-accounting-editor-browser.mjs
+          timeout --signal=TERM --kill-after=10s 120s node tests/incomeos-vault-cloud-browser.mjs
