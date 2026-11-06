@@ -141,7 +141,7 @@ html{scroll-padding-top:3.5rem}
  :where(main,article,section) video {max-width:100%;height:auto}
  :where(main,article,section) :is(pre,table) {max-width:100%;overflow-x:auto}
  :where(main,article,section) :is(button,[role="button"],.btn,.dl,.card-link,.start-link) {min-height:44px}
- :where(main,article,section) :is(p,li,dd) {line-height:max(1.55em,1.55)}
+ :where(main,article,section) :is(p,li,dd) {line-height:1.55}
  :where(main,article,section) :is(.muted,.secondary,.subtle,.fine-print,.caption) {opacity:1}
  :where(main,article,section) a:focus-visible {outline-offset:3px}
 }
