@@ -51,7 +51,7 @@
     function unrecordedPaidStudies(ws){
       var p=ws&&ws.researchProgress,refs={},known={},out2=[];
       if(!p||typeof p!=="object"||Array.isArray(p))return out2;
-      arr(ws.ledger).forEach(function(e){if(e&&e.kind==="income"&&typeof e.reference==="string")refs[e.reference]=true;});
+      arr(ws.ledger).forEach(function(e){if(e&&e.kind==="income"&&e.scope==="income"&&e.status==="paid"&&typeof e.reference==="string")refs[e.reference]=true;});
       var latest=window.IncomeOSResearchLatest;(latest&&Array.isArray(latest.results)?latest.results:[]).forEach(function(r){known[r.id]=r;});
       Object.keys(p).sort().forEach(function(id){
         if(!p[id]||p[id].status!=="Paid (self-reported)"||refs[("study:"+id).slice(0,120)])return;
