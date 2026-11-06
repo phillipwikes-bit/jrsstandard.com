@@ -48,3 +48,18 @@ Method: independent public URL content retrieval and final-URL inspection. This 
 
 A3 source correction: training.html primary CTA now calls the existing toggleModule(0) function when Module 1 is closed. Source inspection confirms function exists; rendered browser behavior remains unverified.
 A4 remains OPEN pending edition identity inspection, MIME and byte checks, all remaining advertised documents, and physical-device verification.
+
+
+## Verification evidence, 2026-11-06: additional public download routes
+Method: public document-content retrieval and final destination inspection. All six requests returned readable document content; this is not a MIME/header, iPhone, or binary integrity test.
+
+| Requested path | Final path | Observation |
+| --- | --- | --- |
+| /api/dl?f=JRS-Reference-9d4f2a7c.pdf&src=resources | /JRS-Reference-9d4f2a7c.pdf | Reviewer Reference v1.0 text retrieved |
+| /api/dl?f=JRS-Reference-9d4f2a7c.pdf&src=training-kit | /JRS-Reference-9d4f2a7c.pdf | Reviewer Reference v1.0 text retrieved |
+| /api/dl?e=standard&src=editions | /JRS-Standard.pdf | Standard text retrieved |
+| /api/dl?e=card&src=training | /JRS_Rapid_Review_Card.pdf | Rapid Review Card text retrieved |
+| /JRS_Investigator_Field_Guide_FairHousing.pdf | same | Fair Housing guide text retrieved |
+| /JRS_Investigator_Field_Guide_International.pdf | same | International guide text retrieved |
+
+12/12 targeted public PDF URL retrieval checks succeeded across the two test batches. This is a sample of advertised routes, not proof that every PDF and every device passes A4.
