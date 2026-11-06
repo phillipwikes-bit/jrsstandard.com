@@ -21,7 +21,7 @@
     label(output,"p",result.disclaimer);
     if(result.reasons.length){var ul=document.createElement("ul");result.reasons.forEach(function(s){label(ul,"li",s);});output.appendChild(ul);}
     var source=asset&&asset.sourceUrl;
-    if(source){var a=label(output,"a","View public source");a.href=source;a.rel="noopener noreferrer";a.referrerPolicy="no-referrer";a.target="_blank";}
+    if(source){try{var u=new URL(source);if(u.protocol==="https:"&&!u.username&&!u.password){var a=label(output,"a","View public source");a.href=u.href;a.rel="noopener noreferrer";a.referrerPolicy="no-referrer";a.target="_blank";}}catch(_e){}}
     output.hidden=false;
   }
   fetch("./opportunities.json",{cache:"no-store",credentials:"same-origin"}).then(function(response){
@@ -35,6 +35,9 @@
     renderReview();
   }).catch(function(){output.hidden=false;output.textContent="The dated opportunity feed is unavailable. No investment review may proceed.";});
   form.addEventListener("submit",renderReview);
+  // A previous readiness result cannot remain displayed after the evidence changes.
+  form.addEventListener("input",function(){output.hidden=true;output.replaceChildren();});
+  form.addEventListener("change",function(){output.hidden=true;output.replaceChildren();});
   select.addEventListener("change",function(){form.reset();renderReview();});
   var scenario=$("net-scenario-form");
   if(scenario)scenario.addEventListener("submit",function(event){
