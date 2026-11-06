@@ -30,7 +30,11 @@ jobs:
           HOST: ${{ inputs.host || 'incomeos-opportunity-desk.vercel.app' }}
         run: |
           set -eu
-          case "$HOST" in incomeos-opportunity-desk*.vercel.app) ;; *) echo "Refusing host outside the IncomeOS project: $HOST"; exit 2;; esac
+          case "$HOST" in
+            incomeos-opportunity-desk.vercel.app) ;;
+            incomeos-opportunity-desk-*-phillip-wikes-projects.vercel.app) ;;
+            *) echo "Refusing host outside the known IncomeOS project namespace: $HOST"; exit 2 ;;
+          esac
           for path in / /index.html /accountant.js /manifest.webmanifest; do
             # An HTTP error, missing challenge, or unexpected redirect is NOT
             # evidence of authentication. Do not follow redirects or send cookies.
