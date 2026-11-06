@@ -38,7 +38,7 @@
   // A previous readiness result cannot remain displayed after the evidence changes.
   form.addEventListener("input",function(){output.hidden=true;output.replaceChildren();});
   form.addEventListener("change",function(){output.hidden=true;output.replaceChildren();});
-  select.addEventListener("change",function(){form.reset();renderReview();});
+  select.addEventListener("change",function(){var chosen=select.value;form.reset();select.value=chosen;renderReview();});
   var scenario=$("net-scenario-form");
   if(scenario)scenario.addEventListener("submit",function(event){
     event.preventDefault();
