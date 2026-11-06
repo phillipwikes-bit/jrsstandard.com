@@ -1,6 +1,12 @@
 name: JRS 55-page mobile acceptance smoke audit
 
 on:
+  push:
+    branches:
+      - jrs-first-visit-message-clarity-20261106
+    paths:
+      - 'scripts/jrs-55-page-mobile-audit.mjs'
+      - '.github/workflows/jrs-55-page-mobile-audit.yml'
   workflow_dispatch:
     inputs:
       base_url:
@@ -27,7 +33,7 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Run 55-page mobile audit
         env:
-          JRS_BASE_URL: ${{ inputs.base_url }}
+          JRS_BASE_URL: ${{ inputs.base_url || 'https://www.jrsstandard.com' }}
         run: node scripts/jrs-55-page-mobile-audit.mjs
       - name: Preserve evidence regardless of failures
         if: always()
