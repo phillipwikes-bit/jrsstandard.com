@@ -71,3 +71,17 @@ Source inspection confirms results.html and datasets.html request `results.json?
 questions.html and finding.html use client-side dynamic rendering. Their static HTML contains loading placeholders, which alone do not prove a rendered-browser defect. A direct browser test with scripting enabled, including network and error inspection, is required before closing A6. Do not treat guessed JSON paths as expected production endpoints.
 
 Workflow evidence: a query for pull-request-triggered GitHub Actions runs at commit 4dffa5c75daf6512d65a9dc283ed0f74f5b9a908 returned no runs at the time checked. This is not proof of passing or failing CI; check the PR's actual required statuses before merge.
+
+
+## Live browser dynamic-rendering verification, 2026-11-06
+Browser run: https://agent.tinyfish.ai/runs/a6c378e9-7979-476e-a2f5-63d2a88f7b52
+Scope: public results.html, datasets.html, questions.html, finding.html; JavaScript enabled. Browser completed 10 steps in 62 seconds. No forms submitted.
+
+| Page | Browser observation | Status of loading-state check |
+| --- | --- | --- |
+| results.html | Populated research content; no persistent loading message or visible error | PASS |
+| datasets.html | Populated aggregate data and JSON/CSV actions; no persistent loading message or visible error | PASS |
+| questions.html | Five study questions with statuses displayed; no persistent loading message or visible error | PASS |
+| finding.html | Emerging-pattern finding, supporting data and discussion controls displayed; no persistent loading message or visible error | PASS |
+
+The browser reported live challenge aggregate 10 participants, source updated 2026-11-06, on datasets.html, while static /results.json is dated 2026-06-03 with one participant. This is an intentional source distinction to investigate for provenance, not a basis to replace any published figure. Browser content check does not verify poll submission, export download, mobile viewport, WCAG conformance, or correctness of research claims. The dynamic-loading concern is closed only for these four pages under this browser session; A5 and A6 remain OPEN.
