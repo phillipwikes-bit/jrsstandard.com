@@ -25,9 +25,16 @@ jobs:
           node-version: '22'
       - name: Install isolated browser test dependency
         run: npm install --no-save --ignore-scripts --package-lock=false playwright-core@1.56.1 playwright@1.56.1
+      - name: Cache Playwright browser binaries
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-linux-1.56.1
       - name: Install Chromium for browser validation
         timeout-minutes: 7
-        run: timeout --signal=TERM --kill-after=10s 360s npx playwright-core install --with-deps chromium
+        run: |
+          timeout --signal=TERM --kill-after=10s 180s npx playwright-core install-deps chromium
+          timeout --signal=TERM --kill-after=10s 180s npx playwright-core install chromium
       - name: Verify accounting editor and encrypted vault in simulated iPhone browsers
         run: |
           timeout --signal=TERM --kill-after=10s 120s node tests/incomeos-accounting-editor-browser.mjs
