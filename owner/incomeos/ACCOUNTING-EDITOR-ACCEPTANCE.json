@@ -36,12 +36,13 @@
       "evidence": [
         ".github/workflows/incomeos-anonymous-access-probe.yml"
       ],
-      "limitation": "Vercel Authentication (All Deployments) on the separate incomeos-opportunity-desk project denies anonymous visitors. Access control is Vercel's team login, not an app-level owner account; anyone added to the Vercel team could open it",
+      "limitation": "Vercel Authentication (All Deployments) on the separate incomeos-opportunity-desk project denies anonymous visitors. Access control is Vercel's team login, not an app-level owner account; anyone added to the Vercel team could open it; follow-up seven-path SSO probe passed 2026-11-06, but exclusive owner team membership remains unverified",
       "deploymentEvidence": {
         "commit": "43651b9086640406ce2fe58cdfc12fe1c5d86434",
         "url": "https://incomeos-opportunity-desk.vercel.app",
         "probe": "GitHub Actions run 41917521403 (workflow incomeos-anonymous-access-probe.yml, commit 9ae99b1): /, /index.html, /accountant.js and /manifest.webmanifest each returned HTTP 302 to vercel.com/sso-api with no app content",
-        "date": "2026-11-04"
+        "date": "2026-11-04",
+        "followupProbe": "2026-11-06: GitHub Actions run 42233563487 passed anonymous Vercel SSO checks on seven canonical-host paths, including workspace-store.js, vault-cloud.js and active-vault.js. Vercel project metadata reports ssoProtection.enabled=true, deploymentType=all. This does not establish exclusive owner team membership or authenticated restore."
       }
     },
     {
