@@ -11,6 +11,7 @@
     format:"incomeos-workspace-encrypted-v1"
   });
   var session=null;
+  var sessionEpoch=0;
   function hex(buf){return Array.prototype.map.call(new Uint8Array(buf),function(b){return ("0"+b.toString(16)).slice(-2);}).join("");}
   async function sha256(text){return hex(await root.crypto.subtle.digest("SHA-256",new TextEncoder().encode(text)));}
   // The only shape accepted for upload: the workspace store's encrypted envelope with no readable workspace fields.
@@ -36,11 +37,13 @@
   async function signIn(e,p){
     // A failed or interrupted sign-in must not retain an earlier owner session.
     session=null;
+    var epoch=++sessionEpoch;
     var d=await call("/auth/v1/token?grant_type=password",{method:"POST",body:{email:email(e),password:password(p)}});
+    if(epoch!==sessionEpoch)throw Error("Sign-in was cancelled");
     if(!d||typeof d.access_token!=="string"||!d.user||typeof d.user.id!=="string")throw Error("Sign-in did not return a session");
     session={access_token:d.access_token,userId:d.user.id,email:d.user.email||""};return {ok:true,userId:session.userId};
   }
-  function signOut(){session=null;}
+  function signOut(){sessionEpoch++;session=null;}
   function signedIn(){return !!session;}
   async function save(text){
     assertEncrypted(text);
