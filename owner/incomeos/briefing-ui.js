@@ -54,7 +54,7 @@
       arr(ws.ledger).forEach(function(e){if(e&&e.kind==="income"&&e.scope==="income"&&e.status==="paid"&&typeof e.reference==="string")refs[e.reference]=true;});
       var latest=window.IncomeOSResearchLatest;(latest&&Array.isArray(latest.results)?latest.results:[]).forEach(function(r){known[r.id]=r;});
       Object.keys(p).sort().forEach(function(id){
-        if(!p[id]||p[id].status!=="Paid (self-reported)"||refs[("study:"+id).slice(0,120)])return;
+        if(!p[id]||p[id].status!=="Paid (self-reported)"||refs["study:"+id])return;
         var k=known[id]||{};out2.push({id:id,title:k.title||("Study "+id),provider:k.provider||"",advertisedUsd:k.paymentUsd});
       });
       return out2;
