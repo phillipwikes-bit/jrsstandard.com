@@ -32,3 +32,19 @@ Verify on mobile and desktop: homepage to seven-point check; homepage to constru
 | A6 | Acceptance journeys defined | Not completed | Not completed | OPEN |
 
 Release decision: HOLD until the above gates are evidenced and authorized. Do not infer production publication from a GitHub commit.
+
+
+## Verification evidence, 2026-11-06: live document retrieval
+Method: independent public URL content retrieval and final-URL inspection. This verifies that readable document content is returned; it does not verify iPhone Safari rendering, response MIME headers, or downloaded-byte integrity.
+
+| Advertised URL | Resolved destination | Observation |
+| --- | --- | --- |
+| /api/dl?e=standard&src=acceptance-audit | /JRS-Standard.pdf | Readable JRS Standard content retrieved |
+| /api/dl?e=card&src=acceptance-audit | /JRS_Rapid_Review_Card.pdf | Readable Rapid Review Card content retrieved |
+| /api/dl?e=employment&src=acceptance-audit | /JRS_Investigator_Field_Guide_Employment.pdf | Readable employment/EEO guide retrieved |
+| /api/dl?e=fairhousing&src=acceptance-audit | /JRS_Investigator_Field_Guide_FairHousing.pdf | Readable fair-housing guide retrieved |
+| /api/dl?e=international&src=acceptance-audit | /JRS_Investigator_Field_Guide_International.pdf | Readable international guide retrieved |
+| /JRS_Investigator_Field_Guide_Employment.pdf | Same direct PDF path | Readable content retrieved |
+
+A3 source correction: training.html primary CTA now calls the existing toggleModule(0) function when Module 1 is closed. Source inspection confirms function exists; rendered browser behavior remains unverified.
+A4 remains OPEN pending edition identity inspection, MIME and byte checks, all remaining advertised documents, and physical-device verification.
