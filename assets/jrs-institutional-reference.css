@@ -1743,3 +1743,16 @@ body.jrs-institutional .site-header-inner > .jrs-header-motto strong{
   padding-top:30px!important;
  }
 }
+
+
+/* Shared mobile reference-page readability and overflow safeguards.
+   Retains page-specific design and the governed reference terminology. */
+@media (max-width:767px) {
+ html,body {max-width:100%;overflow-x:clip}
+ body.jrs-institutional :is(main,article,section,.container,.wrap,.card) {min-width:0}
+ body.jrs-institutional :is(main,article,section) :is(p,li,dd,a,h1,h2,h3) {overflow-wrap:break-word}
+ body.jrs-institutional :is(main,article,section) :is(img,svg,video) {max-width:100%;height:auto}
+ body.jrs-institutional :is(main,article,section) :is(pre,table) {max-width:100%;overflow-x:auto}
+ body.jrs-institutional :is(main,article,section) :is(button,[role="button"]) {min-height:44px}
+ body.jrs-institutional :is(.jrs-sitenav a,.jrs-journey-actions a) {min-height:44px}
+}
