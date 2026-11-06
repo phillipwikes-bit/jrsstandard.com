@@ -8,7 +8,7 @@ const extensions=new Set(["html","js","css","json","svg","webmanifest","md","sql
 // Explicitly permit only reviewed JavaScript ESM modules in this PUBLIC tree.
 // .mjs is executable source, not a private financial document; do not allow
 // arbitrary future .mjs files to bypass the public-source review gate.
-const reviewedESM=new Set(["ds-product-panel.mjs","ds-runtime-bridge.mjs"]);
+const reviewedESM=new Set(["ds-product-panel.mjs","ds-runtime-bridge.mjs","ds-local-review.mjs"]);
 assert.ok(paths.length>=12,"Expected reviewed IncomeOS source tree");
 for(const path of paths){
   assert.match(path,/^owner\/incomeos\/[A-Za-z0-9_.-]+$/,"No arbitrary paths inside publicly readable owner subtree");
