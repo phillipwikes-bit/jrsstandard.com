@@ -33,7 +33,8 @@ jobs:
       - name: Install Chromium for browser validation
         timeout-minutes: 7
         run: |
-          timeout --signal=TERM --kill-after=10s 180s npx playwright-core install-deps chromium
+          # Avoid apt font downloads: the hosted runner already includes Chromium system libraries.
+          # Network-bound install-deps previously timed out before any browser test executed.
           timeout --signal=TERM --kill-after=10s 180s npx playwright-core install chromium
       - name: Verify accounting editor and encrypted vault in simulated iPhone browsers
         run: |
