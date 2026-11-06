@@ -15,6 +15,6 @@ test('fictional DS-N1 review produces a consistent evidence export', () => {
   assert.equal(result.accepted, true);
   assert.equal(result.scope, 'DEVELOPMENT_ONLY_CONSTRUCTED_FICTIONAL');
   assert.equal(result.customerAccess, false);
-  const bundle = buildExport(result.session, { generated_at: result.report.header.generated_at });
+  const bundle = buildExport(result.session, { generated_at: at });
   assert.equal(verifyExport(bundle).verdict, VERDICT.CONSISTENT);
 });
