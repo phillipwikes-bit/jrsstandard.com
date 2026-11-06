@@ -16,10 +16,11 @@ import { isNotAClick } from './_not-a-click.js';
 // reader "Your support is recorded" and recorded nothing. This restores the
 // count.
 //
-// What is recorded is a count and nothing else: campaign, referral tag, and the
-// two-letter country from the edge header. No name, no email, no IP, no user
-// agent, no identifier of any kind, and nothing that could be joined back to a
-// person. The reader is asked for nothing and gives nothing.
+// An accepted endorsement writes source and event type, campaign, referral tag,
+// optional two-letter country, capped user-agent value and event timestamp to
+// the existing interaction ledger. No name, email or IP address is submitted in
+// the endorsement payload. A first-party per-campaign cookie reduces repeat
+// browser counts but cannot verify a unique person. See the privacy notice.
 //
 // Every existing link keeps working. The support URLs already distributed in
 // emails, signatures, LinkedIn posts and across the site all point here.
