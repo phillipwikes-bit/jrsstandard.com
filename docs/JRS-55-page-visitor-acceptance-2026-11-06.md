@@ -94,3 +94,12 @@ Scope: homepage, resources.html, training.html and check.html. Completed 20 step
 The agent flagged small training Likert-scale controls. Source inspection confirmed `.survey-scale-btn` used 8.5px type and 9px vertical padding. This was corrected on the PR branch to 11-13px responsive type, min-height 44px and stronger text color. The agent also reported a cursor SVG without alternative text on resources.html; repository source inspection did not locate that asset in the page source, so this remains an unconfirmed accessibility lead rather than a verified defect.
 
 Limitations: no explicit pixel-viewport screenshots, no device-level Safari, no measured contrast ratios, no measured tap target geometry, and no complete 55-page coverage. A1/A5/A6 remain OPEN.
+
+
+## Live resource and training interaction test, 2026-11-06
+Browser evidence: https://agent.tinyfish.ai/runs/ddeaf2c9-dd1a-46c9-a180-48924c4acebb
+Read-only browser run completed 17 steps in 91 seconds. Six interactions passed: role/format filtering, text search for training, Clear filters restoring 16 cards, Rapid Review Card link navigation to /api/dl?e=card&src=resources, Module 1 expansion with aria-expanded=true, and Module 1 collapse with aria-expanded=false. The PDF endpoint is separately covered by readable-content retrieval; this browser test alone does not confirm iPhone PDF rendering.
+
+Source changes in this work cycle: professional-accessibility.css changed mobile paragraph/list/description line-height from invalid mixed-unit max() expression to unitless 1.55; training.html increased mobile .btn-open text size from 9px to 12px, adjusted line-height and letter spacing while retaining 44px minimum height. These changes are on the PR branch, not verified in production.
+
+A3 and A6 remain OPEN pending the complete primary-action inventory, device testing and severity-based defect review.
