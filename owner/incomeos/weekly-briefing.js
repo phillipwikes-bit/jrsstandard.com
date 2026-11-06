@@ -34,10 +34,15 @@
     // System health from the discovery receipt.
     var r=i.discoveryReceipt;
     if(!r)health.push({ok:false,text:"No discovery receipt this week"});
-    else{
-      var ageDays=(Date.parse(asOf)-Date.parse(String(r.finishedAt).slice(0,10)))/86400000;
+    else if(!r.summary||!Number.isFinite(r.summary.ok)||!Number.isFinite(r.summary.failed)||!Array.isArray(r.connectors)){
+      health.push({ok:false,text:"Discovery receipt is incomplete or invalid"});
+      attention.push({priority:1,area:"system",text:"Discovery evidence is malformed; verify the source run"});
+    }else{
+      var stamp=typeof r.finishedAt==="string"?r.finishedAt:"";
+      var completed=stamp.slice(0,10);
+      var ageDays=isDate(completed)?(Date.parse(asOf)-Date.parse(completed))/86400000:NaN;
       var fresh=Number.isFinite(ageDays)&&ageDays>=0&&ageDays<=2;
-      health.push({ok:fresh&&r.summary.ok>0&&r.summary.failed===0,text:"Discovery: "+r.summary.ok+" source(s) ok, "+r.summary.failed+" failed, last run "+String(r.finishedAt).slice(0,10)});
+      health.push({ok:fresh&&r.summary.ok>0&&r.summary.failed===0,text:"Discovery: "+r.summary.ok+" source(s) ok, "+r.summary.failed+" failed, last run "+completed});
       (r.connectors||[]).filter(function(c){return c.status==="error";}).forEach(function(c){health.push({ok:false,text:c.sourceId+": "+c.error});});
       if(!fresh||r.summary.ok===0)attention.push({priority:1,area:"system",text:"Discovery has no trustworthy recent completion date or successful source"});
       if(r.summary.failed>0)attention.push({priority:2,area:"system",text:r.summary.failed+" discovery source(s) failed; review coverage before relying on results"});
