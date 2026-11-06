@@ -1,4 +1,4 @@
-name: IncomeOS accounting iPhone-width browser validation
+name: IncomeOS accounting and DS-N1 browser validation
 on:
   push:
     branches:
@@ -9,6 +9,8 @@ on:
       - 'tests/incomeos-accounting-editor-browser.mjs'
       - 'tests/incomeos-accounting-backup-browser.mjs'
       - 'tests/incomeos-vault-cloud-browser.mjs'
+      - 'lib/ds-n1/**'
+      - 'tests/ds-n1/author.browser.mjs'
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,7 +24,7 @@ jobs:
         with:
           node-version: '22'
       - name: Install isolated browser test dependency
-        run: npm install --no-save --ignore-scripts --package-lock=false playwright-core@1.56.1
+        run: npm install --no-save --ignore-scripts --package-lock=false playwright-core@1.56.1 playwright@1.56.1
       - name: Install Chromium for browser validation
         timeout-minutes: 4
         run: timeout --signal=TERM --kill-after=10s 180s npx playwright-core install --with-deps chromium
@@ -31,3 +33,4 @@ jobs:
           timeout --signal=TERM --kill-after=10s 120s node tests/incomeos-accounting-editor-browser.mjs
           timeout --signal=TERM --kill-after=10s 120s node tests/incomeos-accounting-backup-browser.mjs
           timeout --signal=TERM --kill-after=10s 120s node tests/incomeos-vault-cloud-browser.mjs
+          timeout --signal=TERM --kill-after=10s 120s node tests/ds-n1/author.browser.mjs
