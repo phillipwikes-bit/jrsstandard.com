@@ -35,7 +35,7 @@ jobs:
             incomeos-opportunity-desk-*-phillip-wikes-projects.vercel.app) ;;
             *) echo "Refusing host outside the known IncomeOS project namespace: $HOST"; exit 2 ;;
           esac
-          for path in / /index.html /accountant.js /manifest.webmanifest; do
+          for path in / /index.html /accountant.js /workspace-store.js /vault-cloud.js /active-vault.js /manifest.webmanifest; do
             # An HTTP error, missing challenge, or unexpected redirect is NOT
             # evidence of authentication. Do not follow redirects or send cookies.
             code=$(curl -sS --max-time 20 -o body.txt -D headers.txt -w '%{http_code}' "https://$HOST$path") || {
@@ -53,5 +53,5 @@ jobs:
             esac
             echo "PASS: $path returned HTTP $code with the expected Vercel SSO challenge"
           done
-          echo "PASS: Vercel SSO challenge observed for the four tested paths on $HOST."
+          echo "PASS: Vercel SSO challenge observed for all seven tested paths on $HOST."
           echo "LIMITATION: This does not establish owner-only team authorization or protection of a different deployment SHA."
