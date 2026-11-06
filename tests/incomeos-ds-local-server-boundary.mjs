@@ -37,6 +37,20 @@ test('sealed and non-demonstration evaluation locations never become web-readabl
     assert.equal((await probe(path)).status, 404, 'Evaluation route must be denied: '+path);
   }
 });
+test('unexpected Host headers are denied before serving files', async () => {
+  const port = server.address().port;
+  for (const host of ['outside.example', 'outside.example:' + port, '127.0.0.1.evil.example']) {
+    const status = await new Promise((resolve, reject) => {
+      const req = request({ hostname: '127.0.0.1', port, path: '/', headers: { Host: host } }, res => {
+        res.resume();
+        res.on('end', () => resolve(res.statusCode));
+      });
+      req.on('error', reject);
+      req.end();
+    });
+    assert.equal(status, 403);
+  }
+});
 test('unsafe methods and malformed escaped paths fail closed', async () => {
   assert.equal((await probe('/fixtures/D06.json', 'POST')).status, 405);
   assert.equal((await probe('/fixtures/%ZZ.json')).status, 400);
