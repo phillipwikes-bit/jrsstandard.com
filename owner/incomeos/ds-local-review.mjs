@@ -26,7 +26,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
       const actions = actionsPath ? loadJson(actionsPath) : [];
       const result = runLocalReview(program, input, actions, new Date().toISOString().replace(/\.\d{3}Z$/, 'Z'));
       if (exportPath && result.accepted) {
-        const bundle = buildExport(result.session, { generated_at: result.report.header.generated_at });
+        const bundle = buildExport(result.session, { generated_at: new Date().toISOString().replace(/\.\d{3}Z$/, 'Z') });
         const verdict = verifyExport(bundle);
         if (verdict.verdict !== VERDICT.CONSISTENT) throw new Error('Internal export consistency verification failed');
         // Exclusive create prevents accidental overwrite. File permissions are
