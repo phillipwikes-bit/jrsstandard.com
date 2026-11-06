@@ -7,7 +7,7 @@
   // is justified; a quiet week returns notify:false with a one-line summary.
   // It reads engine outputs only and computes no new financial facts.
   var VERSION="incomeos.weekly-briefing.v1";
-  function isDate(x){return typeof x==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(x)&&Number.isFinite(Date.parse(x+"T00:00:00Z"));}
+  function isDate(x){if(typeof x!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(x))return false;var n=Date.parse(x+"T00:00:00Z");return Number.isFinite(n)&&new Date(n).toISOString().slice(0,10)===x;}
   function money(x){return "$"+Number(x).toFixed(2);}
 
   // inputs: {screen (project-radar.screen), claims (claims-tracker.review), renewals (renewal-monitor.review),
@@ -36,9 +36,11 @@
     if(!r)health.push({ok:false,text:"No discovery receipt this week"});
     else{
       var ageDays=(Date.parse(asOf)-Date.parse(String(r.finishedAt).slice(0,10)))/86400000;
-      health.push({ok:r.summary.ok>0&&ageDays<=2,text:"Discovery: "+r.summary.ok+" source(s) ok, "+r.summary.failed+" failed, last run "+String(r.finishedAt).slice(0,10)});
+      var fresh=Number.isFinite(ageDays)&&ageDays>=0&&ageDays<=2;
+      health.push({ok:fresh&&r.summary.ok>0&&r.summary.failed===0,text:"Discovery: "+r.summary.ok+" source(s) ok, "+r.summary.failed+" failed, last run "+String(r.finishedAt).slice(0,10)});
       (r.connectors||[]).filter(function(c){return c.status==="error";}).forEach(function(c){health.push({ok:false,text:c.sourceId+": "+c.error});});
-      if(ageDays>2||r.summary.ok===0)attention.push({priority:1,area:"system",text:"Discovery has not produced live data recently"});
+      if(!fresh||r.summary.ok===0)attention.push({priority:1,area:"system",text:"Discovery has no trustworthy recent completion date or successful source"});
+      if(r.summary.failed>0)attention.push({priority:2,area:"system",text:r.summary.failed+" discovery source(s) failed; review coverage before relying on results"});
     }
     attention.sort(function(a,b){return a.priority-b.priority;});
     var income=i.income?i.income.verifiedUsd:null,recovered=i.claims?i.claims.recoveredUsd:null;
