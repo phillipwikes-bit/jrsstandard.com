@@ -111,6 +111,16 @@ try {
       assert.equal(await statusText(page), 'READY_FOR_HUMAN_FINALIZATION');
     });
 
+    await check(`${label}: invalid imports preserve the current record`, async () => {
+      const originalText = await page.inputValue('#rec-text');
+      const bad = { ...downloaded, record_id: 'invalid/id' };
+      await page.setInputFiles('#load', { name: 'bad-record.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(bad)) });
+      await page.waitForFunction(() => document.getElementById('msg').textContent.includes('Record rejected'));
+      assert.equal(await page.inputValue('#rec-text'), originalText);
+      assert.equal(await page.isChecked('#rec-fictional'), true);
+      assert.equal(await page.inputValue('#load'), '');
+    });
+
     await check(`${label}: hostile text in the record is rendered inert`, async () => {
       await page.fill('#rec-text', RECORD + ' <img src=x onerror="window.__pwned=1">');
       await select(page, '#rec-text', '<img src=x onerror="window.__pwned=1">');
