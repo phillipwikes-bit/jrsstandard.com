@@ -53,6 +53,19 @@ assert.equal(V.signedIn(),false,"failed reauthentication must not preserve the p
 await assert.rejects(V.latest(),/Sign in/);
 await V.signIn("owner@example.org","right password 12");
 assert.equal(V.signedIn(),true);
+// A delayed authentication response must never reopen a session after explicit sign-out.
+let releaseLogin;
+const delayedFetch=(url,opt)=>url.includes("/auth/v1/token")?
+  new Promise(resolve=>{releaseLogin=()=>resolve({ok:true,status:200,text:async()=>JSON.stringify({access_token:"delayed-token",user:{id:"u-1",email:"owner@example.org"}})});}):
+  fakeFetch(url,opt);
+const delayedCtx={window:{crypto:webcrypto,fetch:delayedFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+vm.runInNewContext(src,delayedCtx);
+const delayedVault=delayedCtx.window.IncomeOSVaultCloud;
+const pendingLogin=delayedVault.signIn("owner@example.org","right password 12");
+delayedVault.signOut();
+releaseLogin();
+await assert.rejects(pendingLogin,/cancelled/);
+assert.equal(delayedVault.signedIn(),false,"sign-out cannot be reversed by delayed authentication");
 // Save sends only the envelope, its format tag and hash.
 await V.save(envelope);
 const post=calls.find(c=>c.opt.method==="POST"&&c.url.endsWith("/rest/v1/incomeos_vault"));
