@@ -85,3 +85,12 @@ Scope: public results.html, datasets.html, questions.html, finding.html; JavaScr
 | finding.html | Emerging-pattern finding, supporting data and discussion controls displayed; no persistent loading message or visible error | PASS |
 
 The browser reported live challenge aggregate 10 participants, source updated 2026-11-06, on datasets.html, while static /results.json is dated 2026-06-03 with one participant. This is an intentional source distinction to investigate for provenance, not a basis to replace any published figure. Browser content check does not verify poll submission, export download, mobile viewport, WCAG conformance, or correctness of research claims. The dynamic-loading concern is closed only for these four pages under this browser session; A5 and A6 remain OPEN.
+
+
+## Browser-assisted mobile usability review, 2026-11-06
+Run: https://agent.tinyfish.ai/runs/d697b886-8116-4117-b5f6-ed4505046db0
+Scope: homepage, resources.html, training.html and check.html. Completed 20 steps, 97 seconds. Browser agent reported no horizontal overflow in its tested view, readable text, responsive navigation, and reachable principal actions. The live training CTA linked to the module list, but did not directly expand Module 1; the source-branch correction to open Module 1 is not yet deployed.
+
+The agent flagged small training Likert-scale controls. Source inspection confirmed `.survey-scale-btn` used 8.5px type and 9px vertical padding. This was corrected on the PR branch to 11-13px responsive type, min-height 44px and stronger text color. The agent also reported a cursor SVG without alternative text on resources.html; repository source inspection did not locate that asset in the page source, so this remains an unconfirmed accessibility lead rather than a verified defect.
+
+Limitations: no explicit pixel-viewport screenshots, no device-level Safari, no measured contrast ratios, no measured tap target geometry, and no complete 55-page coverage. A1/A5/A6 remain OPEN.
