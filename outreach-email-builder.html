@@ -31,11 +31,39 @@ const norm=(x,max)=>String(x==null?"":x).replace(/[\r\n\t]+/g," ").replace(/\s+/
 const campaign=["association","professional","rights"].includes(d.campaign)?d.campaign:"association";
 const sender=norm(d.sender,90),recipient=norm(d.recipient,90),org=norm(d.organization,120),context=norm(d.context,220);
 const hello=recipient?"Hello "+recipient+",":"Hello,";
-const relevance=context?"\n\nI thought this could be relevant given "+context+".":org?"\n\nI thought these resources might be useful to "+org+".":"";
+const relevance=context?"\n\nI thought this might be relevant because of "+context.replace(/[.!?]+$/,"")+".":org?"\n\nI thought this might be relevant to "+org+".":"";
 const finish="\n\nRegards,\n"+(sender||"[Your name]");
-if(campaign==="rights")return {subject:"The Right to Know Why: free public-interest resources",body:hello+"\n\nI wanted to share the Right to Know Why Initiative, a public-interest effort focused on whether people affected by consequential decisions can understand the reasons recorded for them.\n\nA decision record may preserve a conclusion without clearly showing the evidence, chronology or reasoning behind it. The initiative examines this concern through Decision Reconstruction Risk (DRR).\n\nThe Justification Review Standard (JRS) provides free educational materials and constructed examples. The initiative does not assert a new legal right or universal disclosure entitlement."+relevance+"\n\nhttps://www.jrsstandard.com/right-to-know-why.html"+finish};
-if(campaign==="professional")return {subject:"Decisions You Can Defend: free documentation-review tools",body:hello+"\n\nI wanted to share the Decisions You Can Defend Initiative, which addresses a practical question for HR, compliance, investigations, audit and governance: can a retained record independently show the evidence, chronology and reasoning behind a consequential decision?\n\nJRS provides free human-applied reviewer training, constructed examples and a seven-point documentation check for use within authorized workflows. No software purchase or mandatory registration is required.\n\nThe materials do not establish legal defensibility or validated operational effectiveness."+relevance+"\n\nhttps://www.jrsstandard.com/decisions-you-can-defend.html"+finish};
-return {subject:"Free documentation-review resources for your professional community",body:hello+"\n\nI wanted to share a free professional development resource that may be useful to your members and candidates.\n\nThe Decisions You Can Defend Initiative focuses on a recurring documentation problem: a decision may appear complete while the retained record does not adequately preserve the evidence, chronology, or reasoning behind it.\n\nThe Justification Review Standard (JRS) provides free reviewer training, constructed examples, and practical tools that professionals can use to examine these gaps within existing workflows.\n\nThe materials are relevant to HR, compliance, investigations, audit, and AI governance. There is no software purchase, mandatory registration, or organizational commitment. Professional networks may share direct links to the public resources."+relevance+"\n\nhttps://www.jrsstandard.com/resources.html#professional-communities\n\nI thought the materials might be appropriate for a professional resource library or member communications."+finish};
+if(campaign==="rights"){
+return {
+subject:"A free resource on understanding consequential decisions",
+body:hello+
+"\n\nWhen a consequential decision affects someone, the record may preserve the outcome without showing the evidence, chronology or reasoning behind it. That is the concern behind the Right to Know Why Initiative."+
+relevance+
+"\n\nThe Justification Review Standard (JRS) provides a human-applied method for examining whether decision records can be independently reviewed. This short explanation of Decision Reconstruction Risk is free to read and share by link:"+
+"\n\nhttps://www.jrsstandard.com/decision-reconstruction-risk.html"+
+"\n\nWould you consider sharing it if it fits your organization's public education resources? The initiative does not establish a new legal right or universal disclosure obligation."+
+finish};
+}
+if(campaign==="professional"){
+return {
+subject:"A free documentation check for professional reviewers",
+body:hello+
+"\n\nAn investigation or compliance record can read as complete while leaving a later reviewer unable to trace the evidence, chronology or reasoning behind its conclusion. The Decisions You Can Defend Initiative examines that gap."+
+relevance+
+"\n\nJRS offers a free seven-point review aid, constructed examples and self-paced training that practitioners can explore within existing authorized workflows:"+
+"\n\nhttps://www.jrsstandard.com/resources.html#professional-communities"+
+"\n\nWould you consider reviewing these resources for your team's professional learning? No software purchase or mandatory registration is required. JRS does not certify legal defensibility or claim proven effectiveness in live organizational records."+
+finish};
+}
+return {
+subject:"Free record-review resources for your professional community",
+body:hello+
+"\n\nWhen a decision record states a conclusion but does not preserve its evidence, chronology or reasoning, a later independent reviewer may be unable to reconstruct the basis. This is a practical concern for professionals who prepare or examine consequential records."+
+relevance+
+"\n\nThe Decisions You Can Defend Initiative is supported by JRS, a human-applied documentation-review method. Members and candidates can explore free constructed examples, a seven-point check and self-paced training without software purchase or mandatory registration:"+
+"\n\nhttps://www.jrsstandard.com/resources.html#professional-communities"+
+"\n\nWould you consider adding this link to your member resources if it fits your educational program? Sharing the link requires no organizational commitment and does not imply endorsement or established operational effectiveness."+
+finish};
 }
 const byId=id=>document.getElementById(id);
 function values(){return {campaign:byId("campaign").value,sender:byId("sender").value,recipient:byId("recipient").value,organization:byId("organization").value,context:byId("context").value};}
