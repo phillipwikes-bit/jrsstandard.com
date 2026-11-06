@@ -8,3 +8,6 @@ test("rejects unsupported pass without execution evidence",()=>assert.throws(()=
 test("rejects original acceptance claims",()=>assert.throws(()=>a.validate({...input,requirements:[{id:"SP-07",originalAccepted:true,candidateStatus:"DONE"}]})));
 test("rejects wrong programme",()=>assert.throws(()=>a.summarize(input,{schema:"other",programId:"DSP"})));
 test("rejects unknown source identity",()=>assert.throws(()=>a.validate({...input,identity:"DS-C"})));
+
+test("rejects duplicate test identifiers",()=>assert.throws(()=>a.validate({...input,tests:[{id:"unit",status:"NOT_EXECUTED"},{id:"unit",status:"SKIPPED"}]}),/duplicate test id/));
+test("rejects duplicate requirement identifiers",()=>assert.throws(()=>a.validate({...input,requirements:[input.requirements[0],input.requirements[0]]}),/duplicate requirement id/));
