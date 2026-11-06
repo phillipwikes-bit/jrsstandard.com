@@ -220,12 +220,23 @@
       if (!response.ok) throw new Error("HTTP " + response.status);
       var data = await response.json();
       if (!data || !Array.isArray(data.studies) || !Array.isArray(data.assets)) throw new Error("Invalid opportunity data");
+      // Quarantine malformed public-feed rows instead of allowing one bad listing
+      // to break the owner research and asset views.
+      var rejectedStudies=0,rejectedAssets=0;
+      data.studies=data.studies.filter(function(x){
+        var ok=x&&typeof x.id==="string"&&x.id.length>0&&typeof x.title==="string"&&typeof x.provider==="string"&&Array.isArray(x.eligibility)&&x.eligibility.every(function(v){return typeof v==="string";});
+        if(!ok)rejectedStudies++;return ok;
+      });
+      data.assets=data.assets.filter(function(x){
+        var ok=x&&typeof x.id==="string"&&x.id.length>0&&typeof x.title==="string"&&typeof x.provider==="string"&&Array.isArray(x.risks)&&x.risks.every(function(v){return typeof v==="string";});
+        if(!ok)rejectedAssets++;return ok;
+      });
       feed = data;
       $("metric-study").textContent = String(feed.studies.filter(function (x) { return !past(x); }).length);
       $("metric-asset").textContent = String(feed.assets.length);
       $("review-date").textContent = new Date(feed.asOf + "T12:00:00").toLocaleDateString("en-US", { dateStyle: "long" });
       status.classList.remove("error");
-      status.textContent = "Reviewed source snapshot: " + feed.asOf + ". This file does not update automatically with ChatGPT alerts; verify availability before applying.";
+      status.textContent = "Reviewed source snapshot: " + feed.asOf + ". This file does not update automatically with ChatGPT alerts; verify availability before applying." + (rejectedStudies+rejectedAssets ? " Excluded "+rejectedStudies+" malformed study and "+rejectedAssets+" malformed asset records." : "");
       renderStudies(); renderAssets();
       var deep = deepLinkApplied ? null : new URLSearchParams(location.search).get("study");
       if (deep) {
