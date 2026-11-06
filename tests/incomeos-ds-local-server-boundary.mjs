@@ -39,7 +39,7 @@ test('sealed and non-demonstration evaluation locations never become web-readabl
 });
 test('unexpected Host headers are denied before serving files', async () => {
   const port = server.address().port;
-  for (const host of ['outside.example', 'outside.example:' + port, '127.0.0.1.evil.example']) {
+  for (const host of ['outside.example', 'outside.example:' + port, '127.0.0.1.evil.example', '127.0.0.1:12345', 'localhost:12345']) {
     const status = await new Promise((resolve, reject) => {
       const req = request({ hostname: '127.0.0.1', port, path: '/', headers: { Host: host } }, res => {
         res.resume();
