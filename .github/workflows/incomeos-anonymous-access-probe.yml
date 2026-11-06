@@ -2,6 +2,12 @@ name: IncomeOS anonymous access probe
 # Runs on every IncomeOS change and manually. Fetches the IncomeOS hosted address with no credentials, as a stranger would, and fails
 # if the app itself is served instead of the Vercel login. Read-only: it changes nothing and sends no data.
 on:
+  push:
+    branches:
+      - chatgpt/incomeos-v25-synthetic-review-sequence-20261106
+    paths:
+      - '.github/workflows/incomeos-anonymous-access-probe.yml'
+      - 'owner/incomeos/**'
   pull_request:
     paths:
       - '.github/workflows/incomeos-anonymous-access-probe.yml'
