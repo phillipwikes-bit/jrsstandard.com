@@ -115,3 +115,7 @@ Limitations: browser geometry smoke test only; overflow clipping can conceal ina
 The scripted audit now records viewport meta presence and potential clipped-content candidates (elements extending beyond the viewport even when overflow-x clipping suppresses document scrolling). These are medium-severity review leads, not automatically confirmed accessibility defects.
 
 Execution boundary: no GitHub workflow-dispatch action is available in the connected GitHub tools; the newly added workflow exists only on the PR branch and cannot yet be treated as an executed CI run. The local execution environment has Node.js but no Playwright package and cannot resolve the public site DNS. Therefore the 275 browser checks remain NOT RUN. Do not claim a test pass or a production release based on the presence of the workflow alone.
+
+
+## Automated audit execution trigger, 2026-11-06
+The branch-only GitHub Actions workflow now includes a `push` trigger scoped to `jrs-first-visit-message-clarity-20261106` and changes to the audit script or workflow configuration. This avoids dependence on the unavailable workflow-dispatch connector action. Its base URL defaults to the public production site when no manual input is supplied. Trigger configuration is committed, but successful execution and artifact retrieval are NOT YET CONFIRMED. This is read-only testing and does not deploy the branch. Any production findings must be distinguished from branch-only fixes.
