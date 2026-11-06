@@ -12,5 +12,8 @@ for(const r of [receipt("2026-11-07T12:00:00Z",2,0),receipt("2026-11-03T12:00:00
  assert.equal(result.answers.systemHealth[0].ok,false);
  assert.equal(result.notify,true);
 }
+for(const malformed of [{finishedAt:null},{summary:{ok:2,failed:0}},{finishedAt:"2026-11-06",summary:{ok:2,failed:0},connectors:null}]){
+ const result=run(malformed);assert.equal(result.answers.systemHealth[0].ok,false);assert.equal(result.notify,true);
+}
 assert.throws(()=>build({},"2026-02-30"));
 console.log("Weekly discovery health rejects future, stale, invalid and partially failed runs.");
