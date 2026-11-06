@@ -109,3 +109,9 @@ A3 and A6 remain OPEN pending the complete primary-action inventory, device test
 Files: `scripts/jrs-55-page-mobile-audit.mjs` and `.github/workflows/jrs-55-page-mobile-audit.yml`. The manual GitHub Actions workflow accepts a base URL, installs Chromium/Playwright, reads `sitemap.xml`, expects 55 same-origin URLs, and visits each at 320, 375, 390, 430 and 768 CSS pixels. It captures HTTP errors, navigation exceptions, missing document titles, main/nav landmarks and document scroll-width overflow. It writes JSON and Markdown defect evidence as downloadable CI artifacts. High-severity results cause a failing exit status. The workflow has been committed but not executed or validated in CI; it must not be counted as a completed 275-check acceptance run.
 
 Limitations: browser geometry smoke test only; overflow clipping can conceal inaccessible content, and this script does not prove keyboard navigation, color contrast, WCAG 2.2 AA, correct edition labeling, human comprehension, mobile Safari behavior, or primary-action completion. Audit preview deployments before merging, then production after release.
+
+
+## Mobile audit hardening and execution constraint, 2026-11-06
+The scripted audit now records viewport meta presence and potential clipped-content candidates (elements extending beyond the viewport even when overflow-x clipping suppresses document scrolling). These are medium-severity review leads, not automatically confirmed accessibility defects.
+
+Execution boundary: no GitHub workflow-dispatch action is available in the connected GitHub tools; the newly added workflow exists only on the PR branch and cannot yet be treated as an executed CI run. The local execution environment has Node.js but no Playwright package and cannot resolve the public site DNS. Therefore the 275 browser checks remain NOT RUN. Do not claim a test pass or a production release based on the presence of the workflow alone.
