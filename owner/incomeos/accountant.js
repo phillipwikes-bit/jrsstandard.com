@@ -67,7 +67,7 @@
   function locked(){return window.IncomeOSFinancialReadOnly===true&&!wsMode;}
   function fromWorkspace(ws){
     var rows=ws&&Array.isArray(ws.ledger)?ws.ledger:[];
-    db={version:2,entries:rows.filter(validate).slice(0,15000)};
+    db={version:2,entries:rows.filter(validate)};
     // Rows other panels wrote in a different shape are preserved untouched on every save.
     wsForeign=rows.filter(function(x){return !validate(x);});
   }
