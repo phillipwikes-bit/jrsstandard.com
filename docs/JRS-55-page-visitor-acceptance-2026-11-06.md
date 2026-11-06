@@ -119,3 +119,17 @@ Execution boundary: no GitHub workflow-dispatch action is available in the conne
 
 ## Automated audit execution trigger, 2026-11-06
 The branch-only GitHub Actions workflow now includes a `push` trigger scoped to `jrs-first-visit-message-clarity-20261106` and changes to the audit script or workflow configuration. This avoids dependence on the unavailable workflow-dispatch connector action. Its base URL defaults to the public production site when no manual input is supplied. Trigger configuration is committed, but successful execution and artifact retrieval are NOT YET CONFIRMED. This is read-only testing and does not deploy the branch. Any production findings must be distinguished from branch-only fixes.
+
+
+## Existing GitHub quality-gate evidence, 2026-11-06
+Commit 1083137f90673c546a8172904a11a1d6e68ab748, pull-request-triggered workflow runs:
+- PASS: A-grade practitioner routes, editions and analytics safety (run 42262258445).
+- PASS: Public research and accessibility integrity (run 42262258430).
+- PASS: JRS Published PDF Content Audit (run 42262258421).
+- FAIL: JRS Visual Reference Snapshots (run 42262258442; job 128044963034, real-browser structural gate failed; no overflow elements in sampled output).
+- FAIL: JRS Institutional Reference Release Gate (run 42262258911; job 128044964673, assertion: index.html approved practitioner-first proposition expected once, actual zero).
+- FAIL: JRS method-first public site release gate (run 42262258453; job 128044962804, ENOENT review-engine.html).
+- FAIL: JRS professional public reference (run 42262258327; job 128044962269, ENOENT api/review.js).
+- FAIL: JRS public navigation regression (run 42262258437; job 128044962865, ENOENT review-engine.html).
+
+The missing-file failures may reflect stale test expectations or unintended deletions; neither interpretation has been established. The method-first test explicitly documents review-engine.html as a deliberately retained historical route, so do not remove the expectation without tracing the intended archival contract. These failures are release-blocking until root causes are determined and the required gates pass. The newly added 55-page mobile workflow is not among these reported PR-triggered runs; its execution remains unverified.
