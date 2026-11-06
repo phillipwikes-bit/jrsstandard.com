@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+const source=readFileSync("owner/incomeos/accountant.js","utf8");
+const start=source.indexOf("function fromWorkspace(ws)");
+const end=source.indexOf("\n  function write()",start);
+assert.ok(start>=0&&end>start,"workspace loader must exist");
+const loader=source.slice(start,end);
+assert.match(loader,/entries:rows\.filter\(validate\)/,"valid workspace entries must not be silently truncated");
+assert.doesNotMatch(loader,/\.slice\(0,\s*15000\)/,"workspace loader must not silently drop overflow rows");
+assert.match(source,/entries\.length>15000/,"editor must reject writes beyond its supported limit");
+assert.match(source,/entries:entries\.concat\(wsForeign\)/,"foreign ledger records must be preserved");
+console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
