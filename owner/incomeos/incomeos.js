@@ -97,7 +97,8 @@
     return b;
   }
   function rate(s) {
-    return (Number(s.paymentUsd) > 0 && Number(s.minutes) > 0) ? Number(s.paymentUsd) * 60 / Number(s.minutes) : null;
+    var pay=Number(s.paymentUsd),minutes=Number(s.minutes);
+    return Number.isFinite(pay)&&Number.isFinite(minutes)&&pay>0&&minutes>0&&Number.isFinite(pay*60/minutes) ? pay*60/minutes : null;
   }
   function studyCard(s) {
     var card = node("article", "card");
@@ -157,7 +158,12 @@
       return true;
     });
     list.sort(function (a, b) {
-      if (f === "highpay") return rate(b) - rate(a);
+      if (f === "highpay") {
+        var ra=rate(a),rb=rate(b);
+        if (ra===null) return rb===null?0:1;
+        if (rb===null) return -1;
+        return rb-ra;
+      }
       return String(a.eventEnd || "").localeCompare(String(b.eventEnd || ""));
     });
     if (!list.length) sectionText(root, "div", "empty", "No research leads match this filter. Published dates may have passed; the source file is not a live availability guarantee.");
