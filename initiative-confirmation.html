@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Initiative Response | JRS™</title><meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Status of a voluntary JRS initiative support request.">
+<link rel="canonical" href="https://www.jrsstandard.com/initiative-confirmation.html">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>:root{--bg:#050505;--surface:#121212;--rule:#303030;--text:#f2f2f2;--muted:#bdbdbd;--accent:#c59b50}*{box-sizing:border-box}body{background:var(--bg);color:var(--text);margin:0;font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}a{color:var(--accent)}a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.skip{position:absolute;left:-10000px;top:0;background:var(--accent);color:#050505;padding:12px}.skip:focus{left:8px}.wrap{max-width:720px;margin:0 auto;padding:38px 22px}.wordmark{font:26px Georgia,serif;text-decoration:none}.eyebrow{color:var(--accent);font:12px monospace;letter-spacing:.07em;text-transform:uppercase;margin:32px 0 12px}h1,h2{font-family:Georgia,serif;font-weight:400;line-height:1.2}h1{font-size:clamp(30px,5vw,42px)}.card{background:var(--surface);border:1px solid var(--rule);padding:22px;margin:24px 0}.small{color:var(--muted);font-size:13px}.button{display:inline-block;border:1px solid var(--accent);padding:10px 15px;border-radius:4px;text-decoration:none;margin:6px 8px 6px 0;min-height:44px}footer{border-top:1px solid var(--rule);padding:15px 0;margin-top:35px}</style>
+</head>
+<body><a class="skip" href="#main-content">Skip to content</a>
+<header class="wrap"><a class="wordmark" href="index.html">JRS™</a></header>
+<main id="main-content" class="wrap">
+<p class="eyebrow">Voluntary initiative support</p>
+<h1 id="status-heading">Review your initiative response</h1>
+<p id="status-text" role="status" aria-live="polite">A support status has not been verified from this page.</p>
+<div class="card">
+<h2 id="initiative-title">JRS public initiatives</h2>
+<p id="initiative-description">A record's explanation and independent reviewability are matters for public and professional examination.</p>
+<p class="small">An initiative click is an expression of support for a documentation principle. It is not registration, a legal entitlement, a JRS certification, organizational adoption, demonstrated effectiveness or permission to disclose confidential material. The support counter attempts one record per browser per initiative, not one verified individual.</p>
+<a id="initiative-link" class="button" href="resources.html">Read free JRS resources</a>
+<a class="button" href="index.html#public-initiatives">Compare both initiatives</a>
+</div>
+<p class="small">No name, email address or case record is required for this response. You can explore the public resources without supporting either initiative.</p>
+</main>
+<footer class="wrap"><a href="privacy-notice.html">Privacy notice</a> · <a href="research-summary.html">Evidence limits</a></footer>
+<script>
+(function(){
+'use strict';
+var q=new URLSearchParams(window.location.search);
+var c=q.get('c'),status=q.get('status');
+var map={rtkw:{name:'The Right to Know Why',description:'People affected by consequential decisions should be able to understand the reasons recorded for them.',url:'right-to-know-why.html'},
+defend:{name:'The Decisions You Can Defend',description:'Organizations should preserve evidence, chronology and reasoning for later independent examination.',url:'decisions-you-can-defend.html'}};
+var m=map[c]||null;
+if(m){
+ document.getElementById('initiative-title').textContent=m.name;
+ document.getElementById('initiative-description').textContent=m.description;
+ var link=document.getElementById('initiative-link');link.href=m.url;link.textContent='Return to '+m.name;
+}
+var messages={
+recorded:['Support request accepted','The recording service accepted a new support record for this initiative. This is a browser-level expression of support, not verified individual or institutional adoption.'],
+previous:['Previous browser support marker','This browser has previously submitted support for this initiative. No additional endorsement was recorded on this visit. The browser marker is not evidence of a unique person.'],
+unverified:['Support record not verified','Your selection opened this page, but a new endorsement record could not be confirmed. JRS is not claiming that your support was counted. The free resources remain available.']};
+var msg=m&&Object.prototype.hasOwnProperty.call(messages,status)?messages[status]:null;
+if(msg){document.getElementById('status-heading').textContent=msg[0];document.getElementById('status-text').textContent=msg[1];}
+})();
+</script>
+</body></html>

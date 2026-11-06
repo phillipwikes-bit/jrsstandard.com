@@ -104,7 +104,7 @@ export default async function handler(req){
       // series and the country breakdown stay one continuous history rather
       // than two incompatible halves. No `registered` flag: nobody registered,
       // and gate-stats uses that flag to tell a registration from a click.
-      await fetch(SB + '/rest/v1/interaction_events', {
+      const response = await fetch(SB + '/rest/v1/interaction_events', {
         method: 'POST',
         headers: { 'apikey': SERVICE, 'Authorization': 'Bearer ' + SERVICE,
                    'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
@@ -123,7 +123,7 @@ export default async function handler(req){
           user_agent: ua.slice(0, 300)
         }})
       });
-      wrote = true;
+      wrote = response.ok; // An HTTP error is not a recorded endorsement.
     } catch (e) { /* never block the redirect */ }
   }
 
@@ -145,7 +145,16 @@ export default async function handler(req){
 
   // Set the marker only when a row was actually written, so a failed write is
   // retried on the next visit rather than being silently suppressed forever.
-  const headers = { 'Location': url.origin + '/access.html' + q };
+  // New initiative-page endorsements use a plain confirmation path. Keep
+  // historical link sources on the original access route and data grain.
+  // Do not redirect campaign pages to the obsolete named-registration or
+  // record-submission flow.
+  const campaignPage = src === 'campaignpage' && (campaign === 'rtkw' || campaign === 'defend');
+  const state = wrote ? 'recorded' : alreadyCounted ? 'previous' : 'unverified';
+  const destination = campaignPage
+    ? '/initiative-confirmation.html' + q + '&status=' + state
+    : '/access.html' + q;
+  const headers = { 'Location': url.origin + destination };
   if (wrote) {
     headers['Set-Cookie'] = COOKIE + '=1; Path=/; Max-Age=31536000; SameSite=Lax; Secure; HttpOnly';
   }

@@ -52,3 +52,37 @@ All reports must include the date range and time zone, source, exact query and f
 7. Separate source tests, hosted verification, third-party analytics verification and independent production QA. Unmet checks remain a release hold.
 
 No current conversion rate, adoption result, repeat visitor estimate, measurement gain, performance result, accessibility certification or commercial-readiness claim is asserted.
+
+## Public initiative activation extension (5 November 2026)
+
+Campaign pages: `right-to-know-why.html` and `decisions-you-can-defend.html`. Both use existing GA4 settings and the existing public engagement dispatcher. The event allowlist is extended, not replaced. GA4 data is a directional interaction signal, not a unique-person register.
+
+| Event | `resource_id` | `source_surface` | Meaning |
+|---|---|---|---|
+| `jrs_campaign_entry` | `rights_initiative` or `professional_initiative` | `home` | Clicking a homepage initiative link, not a confirmed landing or support |
+| `jrs_campaign_drr_open` | `drr_explainer` | `campaign_rights` | Clicking from the rights page to the DRR explanation, not evidence of comprehension |
+| `jrs_tool_open` | `record_check` | `campaign_professional` | Clicking through to the free check, not completion or verified practitioner use |
+
+The campaign pages also have ordinary GA4 page views, subject to usual collection blockers. No custom campaign visitor ID, form data, URL, email, case information, full referrer or independently collected telemetry is added. Do not infer unique visitors or adoption.
+
+### Reuse of historic one-click endorsement counting
+
+The established `/api/support?c=rtkw|defend` endpoint remains the sole writing mechanism for an initiative's voluntary one-click support. New campaign-page links use `src=campaignpage` and route to `initiative-confirmation.html` after server processing. Legacy referral tags and access-screen navigation remain intact. The owner dashboard and `/api/support-stats` continue to read the existing `interaction_events` source; do not create a second counter, sum GA4 clicks with support records, or migrate historic rows. A non-2xx database response must not set the recording cookie or be represented as successful.
+
+A browser marker limits repeat counting; it does not establish a unique person. The August 2026 change in deduplication means historical counts cannot be treated as a homogeneous series of unique supporters. Some clicks in the August 11 outage were not written; do not invent missing rows. Bot/prefetch and smoke-test exclusions are retained. The new campaign confirmation has `recorded`, `previous`, and `unverified` messages, with no case intake and no requirement to register or submit evidence. An expression of support is not organizational adoption, completed training, evidence of JRS effectiveness, or a new legal right.
+
+### Dashboard reconciliation
+
+Retain the historical owner-dashboard categories separately: campaign screen arrivals, endorsements by initiative/source/day/country, reviewer arrivals, evaluation opens and submissions, guide requests, training entry and verified completion where available, pilot participation and record-level research. Legacy campaign screen arrivals measure the former access/gate route. New initiative-page visits are observed through GA4 page-view signals and **must not be appended to the historical arrival count or silently treated as an equivalent denominator**. A source-specific report can display both in separate labeled series.
+
+Qualitative campaign assessment: LinkedIn's “Different Minds. Fewer Blind Spots. Stronger Evidence.” provides a discussion prompt only. Diversity of experience can surface questions; it is not a measured JRS improvement in evidence quality. Share counts and reactions are not verified professional adoption. Verified external sharing and observed practitioner use must be supported by their own sources.
+
+### Release acceptance (extension)
+
+- Confirm current `main` SHA and review the exact source changes; preserve the existing owner dashboard and support stats response shape.
+- Verify that the new GET support link only records upon an intentional human activation and is never fetched in a test that could create an actual endorsement. Use isolated mocks for write and deduplication checks.
+- Confirm successful database writes are distinguished from HTTP errors, existing browser markers and missing configuration.
+- Check mobile/keyboard navigation, constructed-example readability, two audience paths, and same-origin live links.
+- Verify the new confirmation page has no email collection, registry intake, record upload or unsupported "support counted" claim.
+- Verify analytics events in a non-sensitive GA4 DebugView fixture, and check the historical owner-dashboard support breakdown without modifying it.
+- A READY preview, static source review, and successful origin publication are distinct release states. Do not claim live functionality without live verification.

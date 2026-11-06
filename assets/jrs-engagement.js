@@ -2,9 +2,9 @@
    query strings, personal data, search terms or independent telemetry endpoint. */
 (function(){
   'use strict';
-  var events=new Set(['tool_open','guide_open','training_entry','training_start','edition_compare','organization_info']);
-  var resources=new Set(['record_check','investigator_guides','reviewer_training','module_0','module_1','module_2','module_3','module_4','module_5','edition_guide','organization_path']);
-  var surfaces={'/':'home','/index.html':'home','/resources.html':'resources','/training.html':'training','/editions.html':'editions','/organization.html':'organization'};
+  var events=new Set(['tool_open','guide_open','training_entry','training_start','edition_compare','organization_info','campaign_entry','campaign_drr_open']);
+  var resources=new Set(['record_check','investigator_guides','reviewer_training','module_0','module_1','module_2','module_3','module_4','module_5','edition_guide','organization_path','rights_initiative','professional_initiative','drr_explainer']);
+  var surfaces={'/':'home','/index.html':'home','/resources.html':'resources','/training.html':'training','/editions.html':'editions','/organization.html':'organization','/right-to-know-why.html':'campaign_rights','/decisions-you-can-defend.html':'campaign_professional'};
   var surface=surfaces[location.pathname];
   if(!surface)return;
   function emit(name,id){
