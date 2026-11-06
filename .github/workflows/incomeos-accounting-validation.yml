@@ -26,6 +26,9 @@ on:
       - 'tests/owner-access.mjs'
       - 'tests/owner-data-fail-closed.mjs'
       - 'tests/owner-logout-interface.mjs'
+      - 'tests/incomeos-acceptance-record.mjs'
+      - 'tests/incomeos-gate-review.mjs'
+      - 'tests/incomeos-source-boundary.mjs'
   workflow_dispatch:
 permissions:
   contents: read
@@ -39,4 +42,4 @@ jobs:
         with:
           node-version: '22'
       - name: Validate accounting controls, persistence, review and corrections
-        run: node --test tests/incomeos-accounting-controls.mjs tests/incomeos-accountant-persistence.mjs tests/incomeos-accountant-review.mjs tests/incomeos-accountant-fixes.mjs tests/incomeos-encrypted-accountant-bridge.mjs tests/incomeos-vault-cloud.mjs tests/incomeos-double-entry.mjs tests/incomeos-transfer-reconciliation.mjs tests/incomeos-release-gate.mjs tests/incomeos-recovery.mjs tests/incomeos-active-vault.mjs tests/incomeos-workspace-store.mjs tests/incomeos-staging-privacy.mjs tests/incomeos-vault-review.mjs tests/owner-session-lifecycle.test.mjs tests/owner-neon-otp-failures.test.mjs tests/owner-release-readiness.mjs tests/owner-readiness-mainline.mjs tests/owner-access.mjs tests/owner-data-fail-closed.mjs tests/owner-logout-interface.mjs
+        run: node --test tests/incomeos-accounting-controls.mjs tests/incomeos-accountant-persistence.mjs tests/incomeos-accountant-review.mjs tests/incomeos-accountant-fixes.mjs tests/incomeos-encrypted-accountant-bridge.mjs tests/incomeos-vault-cloud.mjs tests/incomeos-double-entry.mjs tests/incomeos-transfer-reconciliation.mjs tests/incomeos-release-gate.mjs tests/incomeos-recovery.mjs tests/incomeos-active-vault.mjs tests/incomeos-workspace-store.mjs tests/incomeos-staging-privacy.mjs tests/incomeos-vault-review.mjs tests/owner-session-lifecycle.test.mjs tests/owner-neon-otp-failures.test.mjs tests/owner-release-readiness.mjs tests/owner-readiness-mainline.mjs tests/owner-access.mjs tests/owner-data-fail-closed.mjs tests/owner-logout-interface.mjs tests/incomeos-acceptance-record.mjs tests/incomeos-gate-review.mjs tests/incomeos-source-boundary.mjs
