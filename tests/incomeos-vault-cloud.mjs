@@ -47,6 +47,12 @@ await assert.rejects(V.signIn("owner@example.org","short"),/12 characters/);
 await assert.rejects(V.signIn("owner@example.org","wrong password 1"),/Invalid login credentials/);
 assert.equal(V.signedIn(),false);
 await V.signIn("owner@example.org","right password 12");assert.equal(V.signedIn(),true);
+// Reauthentication failure must revoke the prior in-memory session.
+await assert.rejects(V.signIn("owner@example.org","wrong password 1"),/Invalid login credentials/);
+assert.equal(V.signedIn(),false,"failed reauthentication must not preserve the previous token");
+await assert.rejects(V.latest(),/Sign in/);
+await V.signIn("owner@example.org","right password 12");
+assert.equal(V.signedIn(),true);
 // Save sends only the envelope, its format tag and hash.
 await V.save(envelope);
 const post=calls.find(c=>c.opt.method==="POST"&&c.url.endsWith("/rest/v1/incomeos_vault"));
