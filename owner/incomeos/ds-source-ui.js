@@ -6,7 +6,7 @@ function $(id){return document.getElementById(id);}
 function show(s){var o=$("ds-source-result");if(o)o.textContent=s;}
 function init(){
 var input=$("ds-source-file");if(!input||!A)return;
-["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(function(n){document.addEventListener(n,function(ev){workspace=ev.detail;});});
+["incomeos:workspace-loaded","incomeos:workspace-changed","incomeos:workspace-restored"].forEach(function(n){document.addEventListener(n,function(ev){if(ev.detail&&typeof ev.detail==="object")workspace=ev.detail;});});
 input.addEventListener("change",async function(){
 show("No source evidence verified.");
 if(!workspace||!workspace.dsProgram){show("Load the authoritative IncomeOS workspace before inspecting source evidence.");input.value="";return;}
