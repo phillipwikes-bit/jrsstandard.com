@@ -28,7 +28,9 @@
       try { maxAgeDays = number(context.maxAgeDays, 0, 365, "Source age limit"); }
       catch (_e) { maxAgeDays = NaN; reasons.push("The source age limit is invalid."); }
     }
-    if (!asset || typeof asset.id !== "string" || !asset.sourceUrl || !/^https:\/\//.test(asset.sourceUrl)) reasons.push("A traceable, HTTPS source for the individual opportunity is required.");
+    var validSource = false;
+    try { var source = new URL(asset && asset.sourceUrl); validSource = source.protocol === "https:" && !!source.hostname && !source.username && !source.password; } catch (_e) {}
+    if (!asset || typeof asset.id !== "string" || !asset.id.trim() || !validSource) reasons.push("A traceable, HTTPS source for the individual opportunity is required.");
     if (!Number.isFinite(today)) reasons.push("Current review date is unavailable.");
     if (!Number.isFinite(reviewed)) reasons.push("Source review date is missing or invalid.");
     if (Number.isFinite(today) && Number.isFinite(reviewed)) {
@@ -36,20 +38,20 @@
       if (age < 0) reasons.push("The source review date is in the future.");
       if (Number.isFinite(maxAgeDays) && age > maxAgeDays) reasons.push("Source verification is stale (" + age + " days; limit " + maxAgeDays + ").");
     }
-    if (!check.specificOffer) reasons.push("A live, individually identified offer has not been verified.");
-    if (!check.eligibility) reasons.push("Owner eligibility and participation restrictions are unverified.");
-    if (!check.counterparty) reasons.push("Counterparty identity, ownership and legal terms are unverified.");
-    if (!check.cashflow) reasons.push("Cash-flow evidence, source payments and financial assumptions are unverified.");
-    if (!check.fees) reasons.push("Fees, taxes and complete acquisition costs are unverified.");
-    if (!check.liquidity) reasons.push("Loss exposure, exit restrictions and liquidity have not been reviewed.");
-    if (!check.reserve) reasons.push("Available investable cash, emergency reserves and commitments are unconfirmed.");
-    var proposed = Number(check.proposedCapital);
-    var limit = Number(check.confirmedCapacity);
+    if (check.specificOffer !== true) reasons.push("A live, individually identified offer has not been verified.");
+    if (check.eligibility !== true) reasons.push("Owner eligibility and participation restrictions are unverified.");
+    if (check.counterparty !== true) reasons.push("Counterparty identity, ownership and legal terms are unverified.");
+    if (check.cashflow !== true) reasons.push("Cash-flow evidence, source payments and financial assumptions are unverified.");
+    if (check.fees !== true) reasons.push("Fees, taxes and complete acquisition costs are unverified.");
+    if (check.liquidity !== true) reasons.push("Loss exposure, exit restrictions and liquidity have not been reviewed.");
+    if (check.reserve !== true) reasons.push("Available investable cash, emergency reserves and commitments are unconfirmed.");
+    var proposed = check.proposedCapital === null || check.proposedCapital === undefined || String(check.proposedCapital).trim() === "" ? NaN : Number(check.proposedCapital);
+    var limit = check.confirmedCapacity === null || check.confirmedCapacity === undefined || String(check.confirmedCapacity).trim() === "" ? NaN : Number(check.confirmedCapacity);
     if (!Number.isFinite(proposed) || proposed <= 0) reasons.push("No positive, specific proposed allocation is entered.");
     if (!Number.isFinite(limit) || limit <= 0) reasons.push("No verified, uncommitted capital limit is entered.");
     if (Number.isFinite(proposed) && Number.isFinite(limit) && proposed > limit) reasons.push("Proposed capital exceeds the confirmed uncommitted limit.");
     if (asset && Number.isFinite(Number(asset.capitalUsd)) && Number(asset.capitalUsd) > proposed) reasons.push("Proposed allocation is below the listed entry amount.");
-    if (!check.ownerDecision) reasons.push("Owner has not explicitly approved this individual review.");
+    if (check.ownerDecision !== true) reasons.push("Owner has not explicitly approved this individual review.");
     return {
       status: reasons.length ? "HOLD" : "READY_FOR_MANUAL_REVIEW",
       reasons: reasons,
