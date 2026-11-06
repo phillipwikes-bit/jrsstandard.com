@@ -2,6 +2,8 @@
 (function(root){
   // Reconcile documented outcomes against independently identified statement entries.
   // This is a read-only control, never a transfer or investment instruction.
+  function validDate(x){if(typeof x!=="string"||!/^\d{4}-\d{2}-\d{2}$/.test(x))return false;var d=new Date(x+"T00:00:00Z");return Number.isFinite(d.getTime())&&d.toISOString().slice(0,10)===x;}
+  function validCurrency(x){return typeof x==="string"&&/^[A-Z]{3}$/.test(x);}
   function reconcile(outcomes,entries){
     var issues=[],used=new Set(),totals={},currencies=new Set();
     if(!Array.isArray(outcomes)||!Array.isArray(entries))
@@ -11,11 +13,11 @@
     var byId=new Map();
     entries.forEach(function(e,i){
       if(!e||typeof e.id!=="string"||!e.id.trim()||byId.has(e.id.trim())||
-        !Number.isSafeInteger(e.amountCents)||typeof e.accountId!=="string"||!e.accountId.trim()||
+        (!Number.isSafeInteger(e.amountCents)||e.amountCents<=0)||typeof e.accountId!=="string"||!e.accountId.trim()||
         e.posted!==true||e.sourceVerified!==true||
-        typeof e.currency!=="string"||!e.currency.trim()||
+        !validCurrency(e.currency)||
         typeof e.institutionId!=="string"||!e.institutionId.trim()||
-        typeof e.postedDate!=="string"||!e.postedDate.trim()||
+        !validDate(e.postedDate)||
         (e.direction!=="credit"&&e.direction!=="debit")){
         issues.push({code:"INVALID_STATEMENT_ENTRY",index:i});return;
       }
@@ -25,9 +27,9 @@
       if(!o||typeof o.statementEntryId!=="string"||!o.statementEntryId.trim()||
         typeof o.accountId!=="string"||!o.accountId.trim()||
         !Number.isSafeInteger(o.amountCents)||o.amountCents<=0||
-        typeof o.currency!=="string"||!o.currency.trim()||
+        !validCurrency(o.currency)||
         typeof o.institutionId!=="string"||!o.institutionId.trim()||
-        typeof o.postedDate!=="string"||!o.postedDate.trim()){
+        !validDate(o.postedDate)){
         issues.push({code:"INVALID_OUTCOME",index:i});return;
       }
       var id=o.statementEntryId.trim(),entry=byId.get(id);
