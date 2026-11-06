@@ -17,7 +17,7 @@
 <div class="card"><label for="recipient">Recipient name (optional)</label><input id="recipient" type="text" maxlength="90" autocomplete="off" placeholder="Contact name"></div>
 <div class="card"><label for="organization">Organization name (optional)</label><input id="organization" type="text" maxlength="120" autocomplete="off" placeholder="Recipient organization"></div>
 <div class="card"><label for="email-address">Recipient email (optional, one address)</label><input id="email-address" type="email" maxlength="254" autocomplete="off" placeholder="person@example.org"></div>
-<div class="card"><label for="context">Verified reason for relevance (optional)</label><textarea id="context" rows="3" maxlength="220" placeholder="For example, the recipient's published professional development focus. Include no confidential or case-record details."></textarea></div>
+<div class="card"><label for="context">Verified public program topic (optional)</label><textarea id="context" rows="3" maxlength="160" placeholder="Short topic phrase, for example: workplace investigation training. Verify it on the recipient’s official website. No confidential information."></textarea></div>
 </div></section>
 <section class="section" aria-labelledby="builder-preview"><h2 id="builder-preview">2. Review the automatically prepared draft</h2><div class="card"><label for="draft-subject">Subject</label><input id="draft-subject" type="text" readonly><label for="draft-body">Email body</label><textarea id="draft-body" rows="17" readonly></textarea>
 <p class="small">Review factual relevance and the recipient's preferences before sending. No partnership, certification, verified operational outcome or legal right is implied.</p>
@@ -29,40 +29,37 @@
 function composeJrsDraft(d={}){
 const norm=(x,max)=>String(x==null?"":x).replace(/[\r\n\t]+/g," ").replace(/\s+/g," ").trim().slice(0,max);
 const campaign=["association","professional","rights"].includes(d.campaign)?d.campaign:"association";
-const sender=norm(d.sender,90),recipient=norm(d.recipient,90),org=norm(d.organization,120),context=norm(d.context,220);
+const sender=norm(d.sender,90),recipient=norm(d.recipient,90),org=norm(d.organization,120);
+const topic=norm(d.context,160).replace(/^[\s,.;:]+|[\s,.;:]+$/g,"");
 const hello=recipient?"Hello "+recipient+",":"Hello,";
-const relevance=context?"\n\nI thought this might be relevant because of "+context.replace(/[.!?]+$/,"")+".":org?"\n\nI thought this might be relevant to "+org+".":"";
+const relevance=topic?"\n\nYour organization's published work on "+topic+" is why I thought this might be relevant.":org?"\n\nI thought this resource might be relevant to "+org+".":"";
 const finish="\n\nRegards,\n"+(sender||"[Your name]");
-if(campaign==="rights"){
-return {
-subject:"A free resource on understanding consequential decisions",
+if(campaign==="rights")return {
+subject:"Decision transparency: a free documentation resource",
 body:hello+
-"\n\nWhen a consequential decision affects someone, the record may preserve the outcome without showing the evidence, chronology or reasoning behind it. That is the concern behind the Right to Know Why Initiative."+
+"\n\nWhen a consequential decision affects someone, its record may preserve the outcome without enough evidence or reasoning to explain it. The Right to Know Why Initiative focuses on that documentation concern."+
 relevance+
-"\n\nThe Justification Review Standard (JRS) provides a human-applied method for examining whether decision records can be independently reviewed. This short explanation of Decision Reconstruction Risk is free to read and share by link:"+
+"\n\nThe Justification Review Standard (JRS), developed by Phillip Wikes from investigative documentation-review experience, offers a free explanation of Decision Reconstruction Risk (DRR):"+
 "\n\nhttps://www.jrsstandard.com/decision-reconstruction-risk.html"+
-"\n\nWould you consider sharing it if it fits your organization's public education resources? The initiative does not establish a new legal right or universal disclosure obligation."+
+"\n\nWould you be willing to take a brief look and decide whether the explanation is relevant to your public education work? The initiative does not establish a new legal right or universal disclosure obligation."+
 finish};
-}
-if(campaign==="professional"){
-return {
-subject:"A free documentation check for professional reviewers",
+if(campaign==="professional")return {
+subject:"A free seven-point check for decision records",
 body:hello+
-"\n\nAn investigation or compliance record can read as complete while leaving a later reviewer unable to trace the evidence, chronology or reasoning behind its conclusion. The Decisions You Can Defend Initiative examines that gap."+
+"\n\nA completed investigation or compliance record may still leave a later reviewer unable to trace its evidence, chronology or reasoning. The Decisions You Can Defend Initiative examines that documentation gap."+
 relevance+
-"\n\nJRS offers a free seven-point review aid, constructed examples and self-paced training that practitioners can explore within existing authorized workflows:"+
-"\n\nhttps://www.jrsstandard.com/resources.html#professional-communities"+
-"\n\nWould you consider reviewing these resources for your team's professional learning? No software purchase or mandatory registration is required. JRS does not certify legal defensibility or claim proven effectiveness in live organizational records."+
+"\n\nJRS is a human-applied review method developed by Phillip Wikes from investigative documentation-review experience. Its free seven-point record check can be examined within an existing authorized workflow:"+
+"\n\nhttps://www.jrsstandard.com/check.html"+
+"\n\nWould you be willing to review the check and decide whether it is useful for your team's professional learning? No software purchase or mandatory registration is required. JRS does not certify legal defensibility or claim proven workplace effectiveness."+
 finish};
-}
 return {
-subject:"Free record-review resources for your professional community",
+subject:"Free documentation-review resources for your members",
 body:hello+
-"\n\nWhen a decision record states a conclusion but does not preserve its evidence, chronology or reasoning, a later independent reviewer may be unable to reconstruct the basis. This is a practical concern for professionals who prepare or examine consequential records."+
+"\n\nA decision record can state a conclusion without preserving the evidence, chronology or reasoning a later independent reviewer needs. The Decisions You Can Defend Initiative addresses that gap for practitioners who prepare or assess consequential records."+
 relevance+
-"\n\nThe Decisions You Can Defend Initiative is supported by JRS, a human-applied documentation-review method. Members and candidates can explore free constructed examples, a seven-point check and self-paced training without software purchase or mandatory registration:"+
+"\n\nThe Justification Review Standard (JRS), developed by Phillip Wikes from investigative documentation-review experience, offers free constructed examples, a seven-point check and self-paced training:"+
 "\n\nhttps://www.jrsstandard.com/resources.html#professional-communities"+
-"\n\nWould you consider adding this link to your member resources if it fits your educational program? Sharing the link requires no organizational commitment and does not imply endorsement or established operational effectiveness."+
+"\n\nWould you be willing to take a brief look and decide whether these resources are suitable for your members? There is no software purchase, mandatory registration or organizational commitment. Link sharing does not imply endorsement or validated operational effectiveness."+
 finish};
 }
 const byId=id=>document.getElementById(id);
