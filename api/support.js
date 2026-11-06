@@ -65,6 +65,10 @@ export default async function handler(req){
   const campaign = normCampaign(url.searchParams.get('c'));
   const src = String(url.searchParams.get('src') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || '';
   const isCampaignForm = req.method === 'POST' && url.searchParams.get('next') === 'confirmation';
+  // Reserve the new campaign_page source for explicit first-party form submissions.
+  // The historical GET support links keep their existing source tags and behavior.
+  if(req.method === 'GET' && src === 'campaign_page')
+    return new Response('Use the initiative support button',{status:405,headers:{Allow:'POST'}});
   if(req.method !== 'GET' && !isCampaignForm)return new Response('Method not allowed',{status:405,headers:{Allow:'GET, POST'}});
   if(isCampaignForm){
     if(campaign !== 'rtkw' && campaign !== 'defend')return new Response('Campaign unavailable',{status:400});
