@@ -30,7 +30,7 @@
   var timeOverrides={},profileForNotes=null,wsOpen=false,received={},receivedSig="";
   // Amounts actually received for studies, from income records in the open workspace that carry the study reference.
   function receivedFrom(ws){var out={};(ws&&Array.isArray(ws.ledger)?ws.ledger:[]).forEach(function(e){
-    if(e&&e.kind==="income"&&e.status==="paid"&&typeof e.reference==="string"&&e.reference.indexOf("study:")===0){var id=e.reference.slice(6),g=Number(e.grossUsd);if(Number.isFinite(g)&&g>0)out[id]=Math.round(((out[id]||0)+g)*100)/100;}});return out;}
+    if(e&&e.kind==="income"&&e.scope==="income"&&e.status==="paid"&&typeof e.reference==="string"&&e.reference.indexOf("study:")===0){var id=e.reference.slice(6),g=Number(e.grossUsd);if(Number.isFinite(g)&&g>0)out[id]=Math.round(((out[id]||0)+g)*100)/100;}});return out;}
   function syncReceived(ws){var r=receivedFrom(ws),sig=JSON.stringify(r);received=r;if(sig!==receivedSig){receivedSig=sig;return true;}return false;}
   document.addEventListener("incomeos:workspace-changed",function(ev){if(ev.detail&&typeof ev.detail==="object"&&syncReceived(ev.detail)&&latest)view();});
   // Study progress lives in the owner's workspace file when one is open (browser storage is blocked in staging).
