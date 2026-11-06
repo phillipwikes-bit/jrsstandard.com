@@ -1,7 +1,9 @@
 import assert from "node:assert/strict";
-import {createRequire} from "node:module";
-const require=createRequire(import.meta.url);
-const {reconcile}=require("../owner/incomeos/outcome-reconciliation.js");
+import {readFileSync} from "node:fs";
+import {runInNewContext} from "node:vm";
+const ctx={window:{},Date,Number,String,Array,Object,Set,Map};
+runInNewContext(readFileSync("owner/incomeos/outcome-reconciliation.js","utf8"),ctx);
+const {reconcile}=ctx.window.IncomeOSOutcomeReconciliation;
 const entry={id:"bank-1",amountCents:12500,accountId:"account-1",posted:true,sourceVerified:true,currency:"USD",institutionId:"institution-1",postedDate:"2026-11-06",direction:"credit"};
 const outcome={statementEntryId:"bank-1",amountCents:12500,accountId:"account-1",currency:"USD",institutionId:"institution-1",postedDate:"2026-11-06",type:"EARNED_INCOME"};
 assert.equal(reconcile([outcome],[entry]).status,"RECONCILED_REVIEW_ONLY");
