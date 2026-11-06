@@ -26,10 +26,13 @@
   function password(x){x=String(x||"");if(x.length<12)throw Error("Use a password of at least 12 characters");return x;}
   async function call(path,opts){
     opts=opts||{};
+    var requestEpoch=sessionEpoch;
     var headers={"apikey":CONFIG.key,"Content-Type":"application/json"};
     if(opts.auth){if(!session)throw Error("Sign in to your vault first");headers.Authorization="Bearer "+session.access_token;}
     var res=await root.fetch(CONFIG.url+path,{method:opts.method||"GET",headers:headers,body:opts.body?JSON.stringify(opts.body):undefined,credentials:"omit",cache:"no-store",referrerPolicy:"no-referrer"});
-    var text=await res.text(),data=null;try{data=text?JSON.parse(text):null;}catch(e){}
+    var text=await res.text(),data=null;
+    if(opts.auth&&requestEpoch!==sessionEpoch)throw Error("Vault session changed during request");
+    try{data=text?JSON.parse(text):null;}catch(e){}
     if(!res.ok){var msg=data&&(data.msg||data.message||data.error_description||data.error)||("HTTP "+res.status);throw Error(String(msg).slice(0,200));}
     return data;
   }
