@@ -62,3 +62,22 @@
  .jrs-scenario:not([open]){display:none}
  .jrs-story-paths{display:none}
 }
+/* Homepage first-action priority. Scoped to mobile and limited to the hero.
+   Keeps the original primary seven-point action before secondary explanation. */
+@media(max-width:650px){
+ body.jrs-institutional.jrs-home .jr-hero{padding-top:16px!important}
+ body.jrs-institutional.jrs-home .jr-hero-grid{gap:14px!important}
+ body.jrs-institutional.jrs-home .jr-hero h1{font-size:clamp(31px,8vw,37px)!important;line-height:1.11!important;margin-bottom:10px!important}
+ body.jrs-institutional.jrs-home .jr-firstline{font-size:15.5px!important;line-height:1.46!important;margin-bottom:10px!important}
+ body.jrs-institutional.jrs-home .jr-actions{margin-top:12px!important;margin-bottom:12px!important;gap:8px!important}
+ body.jrs-institutional.jrs-home .jr-actions a{min-height:46px!important}
+ body.jrs-institutional.jrs-home .jr-intro{font-size:14.5px!important;line-height:1.5!important}
+ body.jrs-institutional.jrs-home .jr-platform-promise{margin-top:10px!important}
+ .jrs-human-stories{margin-top:16px}
+ .jrs-human-stories .jr-section-header h2{font-size:clamp(25px,6vw,32px)!important}
+}
+@media(max-width:360px){
+ body.jrs-institutional.jrs-home .jr-hero{padding-top:10px!important}
+ body.jrs-institutional.jrs-home .jr-hero h1{font-size:30px!important}
+ body.jrs-institutional.jrs-home .jr-firstline{font-size:15px!important;line-height:1.43!important}
+}
