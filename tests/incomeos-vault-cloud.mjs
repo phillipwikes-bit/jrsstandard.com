@@ -66,6 +66,20 @@ delayedVault.signOut();
 releaseLogin();
 await assert.rejects(pendingLogin,/cancelled/);
 assert.equal(delayedVault.signedIn(),false,"sign-out cannot be reversed by delayed authentication");
+// A vault read already in flight must not expose data after sign-out.
+let releaseRead;
+const delayedReadFetch=(url,opt)=>url.includes("/rest/v1/incomeos_vault")?
+  new Promise(resolve=>{releaseRead=()=>resolve({ok:true,status:200,text:async()=>JSON.stringify([{id:9,ciphertext:envelope,sha256:createHash("sha256").update(envelope).digest("hex"),saved_at:"2026-11-06T00:00:00Z"}])});}):
+  fakeFetch(url,opt);
+const readCtx={window:{crypto:webcrypto,fetch:delayedReadFetch},TextEncoder,JSON,URL,Promise,Error,setTimeout};
+vm.runInNewContext(src,readCtx);
+const readVault=readCtx.window.IncomeOSVaultCloud;
+await readVault.signIn("owner@example.org","right password 12");
+const pendingRead=readVault.latest();
+readVault.signOut();
+releaseRead();
+await assert.rejects(pendingRead,/session changed/);
+assert.equal(readVault.signedIn(),false);
 // Save sends only the envelope, its format tag and hash.
 await V.save(envelope);
 const post=calls.find(c=>c.opt.method==="POST"&&c.url.endsWith("/rest/v1/incomeos_vault"));
