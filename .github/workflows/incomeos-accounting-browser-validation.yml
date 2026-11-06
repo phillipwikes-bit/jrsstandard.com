@@ -1,0 +1,30 @@
+name: IncomeOS accounting iPhone-width browser validation
+on:
+  push:
+    branches:
+      - chatgpt/incomeos-v25-synthetic-review-sequence-20261106
+    paths:
+      - '.github/workflows/incomeos-accounting-browser-validation.yml'
+      - 'owner/incomeos/**'
+      - 'tests/incomeos-accounting-editor-browser.mjs'
+      - 'tests/incomeos-vault-cloud-browser.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  simulated-iphone-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Install isolated browser test dependency
+        run: npm install --no-save --ignore-scripts --package-lock=false playwright-core@1.56.1
+      - name: Install Chromium for browser validation
+        run: npx playwright-core install --with-deps chromium
+      - name: Verify accounting editor and encrypted vault in simulated iPhone browsers
+        run: |
+          node tests/incomeos-accounting-editor-browser.mjs
+          node tests/incomeos-vault-cloud-browser.mjs
