@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="320" viewBox="0 0 560 320" role="img" aria-label="Illustration of a job applicant looking at a selection letter with missing reasons">
+ <defs><linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fffdf6"/><stop offset="1" stop-color="#e6e0d2"/></linearGradient><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#23221e"/><stop offset="1" stop-color="#111211"/></linearGradient></defs>
+ <rect width="560" height="320" rx="22" fill="url(#bg)"/><circle cx="44" cy="42" r="112" fill="#c89c4d" opacity=".10"/><circle cx="535" cy="285" r="120" fill="#c89c4d" opacity=".08"/>
+ <path d="M38 284H522" stroke="#494135" stroke-width="2"/><g font-family="Arial,Helvetica,sans-serif">
+  <circle cx="131" cy="101" r="43" fill="#bd9671"/><path d="M88 83c6-45 72-53 87-7-20-9-36-9-49-4-12 5-25 9-38 11Z" fill="#332a27"/>
+  <path d="M56 256c0-57 32-91 76-91 50 0 79 33 79 91" fill="#6a8091"/><path d="M109 171l23 30 22-30" fill="none" stroke="#e2d8c8" stroke-width="9"/>
+  <path d="M89 122q8 7 16 0M145 122q8 7 16 0" stroke="#4a3329" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <rect x="250" y="39" width="245" height="236" rx="9" fill="#111" opacity=".26"/><rect x="240" y="32" width="245" height="236" rx="9" fill="url(#paper)"/>
+  <rect x="259" y="53" width="103" height="8" rx="4" fill="#9b9382"/><rect x="259" y="73" width="182" height="6" rx="3" fill="#c8c2b7"/>
+  <text x="259" y="125" font-size="19" font-weight="bold" fill="#403930">APPLICATION</text>
+  <rect x="258" y="141" width="195" height="45" rx="5" fill="#f1dbb7"/>
+  <text x="273" y="170" font-size="18" font-weight="bold" fill="#6d4514">NOT SELECTED</text>
+  <rect x="259" y="204" width="170" height="7" rx="3" fill="#b6b0a6"/><rect x="259" y="223" width="125" height="7" rx="3" fill="#cbc5bc"/>
+  <circle cx="470" cy="54" r="30" fill="#c89c4d"/><text x="470" y="66" text-anchor="middle" font-size="36" font-weight="bold" fill="#1b1710">?</text></g>
+ </svg>
