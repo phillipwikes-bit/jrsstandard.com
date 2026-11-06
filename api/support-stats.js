@@ -216,10 +216,13 @@ export default async function handler(){
             + 'so an arrival there is not a lost endorsement: the reader saw a '
             + 'form and chose not to complete it.'
       },
-      day_note: 'One row is one endorsement click, counted by UTC calendar day. The '
-              + 'endorsement is a bare GET with no form behind it, so no deduplication '
-              + 'is applied and none is needed. Days with no endorsements are present '
-              + 'with a zero rather than omitted.' });
+      day_note: 'One row is one recorded endorsement event, grouped by UTC day. '
+              + 'Historical GET links and explicit POST campaign-page buttons use the '
+              + 'same existing support ledger. From 13 August 2026, a first-party browser '
+              + 'marker ordinarily prevents repeat counts per initiative; earlier rows '
+              + 'are raw events and cannot be retroactively deduplicated. Browser counts '
+              + 'are not unique people or verified organizations. Days with no recorded '
+              + 'events are present as zero, not omitted.' });
   } catch (e) {
     return json({ total: 0, countries: 0, by_country: [], by_campaign: [], campaigns: [] });
   }

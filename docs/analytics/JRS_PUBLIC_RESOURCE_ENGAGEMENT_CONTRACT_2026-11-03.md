@@ -52,3 +52,15 @@ All reports must include the date range and time zone, source, exact query and f
 7. Separate source tests, hosted verification, third-party analytics verification and independent production QA. Unmet checks remain a release hold.
 
 No current conversion rate, adoption result, repeat visitor estimate, measurement gain, performance result, accessibility certification or commercial-readiness claim is asserted.
+
+## Initiative campaign activation and endorsement boundaries (5 November 2026)
+
+The two established initiatives have separate public pages and exactly one explicit browser form button each. A button sends a POST to the existing /api/support ledger with fixed c=rtkw or c=defend and src=campaign_page. The endpoint must never assert a successful write merely because fetch resolved: only an HTTP-successful database response or an existing counted-browser marker supports the confirmation state. Unavailable storage reports an unconfirmed action, never a false endorsement.
+
+No new database or parallel dashboard is authorized. The existing /api/support-stats report supplies counts by initiative, day, country and source. This does not identify a person or prove organizational authorization. Browser marker deduplication began 13 August 2026; earlier historical events are raw clicks. Repeated support from different browsers may still count more than once. The owner dashboard retains the historical campaign-screen-arrival metric, which is distinct from GA4 page views of the dedicated initiative pages. Do not combine the two as one denominator.
+
+One-click support is different from recipient awareness, confirmed resource review, resource redistribution, practical tool application and verified field effectiveness. The private outreach register and Gmail drafts maintain verified contact and review/reply evidence without leaking recipient information to public analytics. Reaching a campaign page or clicking its button is not a proxy for an organization's endorsement or JRS adoption.
+
+The two LinkedIn campaign narratives may use “Different Minds. Fewer Blind Spots. Stronger Evidence.” as an aspirational editorial statement only. Multiple professional, cultural or investigative perspectives can expose questions, but do not themselves establish stronger evidentiary support or validated JRS results.
+
+Acceptance checks: (1) no anonymous GET campaign-page endorsement links; (2) both forms POST with explicit source and canonical initiative; (3) cross-site requests and link-preview/prefetch traffic cannot record the new button action; (4) server response distinguishes recorded, previously marked and unavailable; (5) no separate ledger, confidential form or new identifier; (6) private dashboard unchanged in access control and telemetry; (7) existing Gmail drafts, outreach approval and no-sending behavior preserved; (8) hosted validation must not manufacture real endorsement rows. Never test a live production endorsement button using a real source label merely to verify it.
