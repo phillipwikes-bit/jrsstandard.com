@@ -1,0 +1,20 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { buildExport, verifyExport, VERDICT } from '../lib/ds-n1/index.mjs';
+import { runLocalReview } from '../owner/incomeos/ds-local-review.mjs';
+import '../owner/incomeos/ds-program.js';
+const base = dirname(fileURLToPath(import.meta.url));
+const fixture = JSON.parse(readFileSync(join(base, 'ds-n1/fixtures/D06.json'), 'utf8'));
+const at = '2026-11-05T13:30:00Z';
+test('fictional DS-N1 review produces a consistent evidence export', () => {
+  const program = globalThis.IncomeOSDSProgram.newProgram('2026-11-05');
+  const result = runLocalReview(program, fixture, [], at);
+  assert.equal(result.accepted, true);
+  assert.equal(result.scope, 'DEVELOPMENT_ONLY_CONSTRUCTED_FICTIONAL');
+  assert.equal(result.customerAccess, false);
+  const bundle = buildExport(result.session, { generated_at: result.report.header.generated_at });
+  assert.equal(verifyExport(bundle).verdict, VERDICT.CONSISTENT);
+});
