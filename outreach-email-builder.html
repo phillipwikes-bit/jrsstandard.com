@@ -32,14 +32,14 @@ const campaign=["association","professional","rights"].includes(d.campaign)?d.ca
 const sender=norm(d.sender,90),recipient=norm(d.recipient,90),org=norm(d.organization,120),context=norm(d.context,220);
 const hello=recipient?"Hello "+recipient+",":"Hello,";
 const relevance=context?"\n\nI thought this might be relevant because of "+context.replace(/[.!?]+$/,"")+".":org?"\n\nI thought this might be relevant to "+org+".":"";
-const finish="\n\nRegards,\n"+(sender||"[Your name]")+"\nCreator, Justification Review Standard";
+const finish="\n\nRegards,\n"+(sender||"[Your name]");
 if(campaign==="rights"){
 return {
 subject:"A free resource on understanding consequential decisions",
 body:hello+
 "\n\nWhen a consequential decision affects someone, the record may preserve the outcome without showing the evidence, chronology or reasoning behind it. That is the concern behind the Right to Know Why Initiative."+
 relevance+
-"\n\nI developed the Justification Review Standard (JRS) as a human-applied method for examining whether decision records can be independently reviewed. This short explanation of Decision Reconstruction Risk is free to read and share by link:"+
+"\n\nThe Justification Review Standard (JRS) provides a human-applied method for examining whether decision records can be independently reviewed. This short explanation of Decision Reconstruction Risk is free to read and share by link:"+
 "\n\nhttps://www.jrsstandard.com/decision-reconstruction-risk.html"+
 "\n\nWould you consider sharing it if it fits your organization's public education resources? The initiative does not establish a new legal right or universal disclosure obligation."+
 finish};
