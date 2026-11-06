@@ -162,3 +162,37 @@ export function syntheticReport(program, session, generatedAt) {
   requireSyntheticSession(program, session);
   return buildReport(session, { generated_at: generatedAt });
 }
+
+
+// Bounded development-only orchestration. The caller must supply an existing
+// validated dsProgram and constructed fictional input. This function creates
+// no reviewer identity or action: every action must be supplied by a human
+// through the original DS-N1 action contract. It does not persist or transmit
+// owner records, authorize a browser route, or establish authentication.
+export function runSyntheticReviewSequence(program, input, at, humanActions = [], generatedAt = at) {
+  if (!Array.isArray(humanActions)) throw new TypeError('Human actions must be an array');
+  if (humanActions.length > 100) throw new RangeError('Too many human actions');
+  const opened = startSyntheticReview(program, input, at);
+  if (!opened.accepted) return opened;
+  let session = opened.session;
+  for (const action of humanActions) {
+    if (!action || typeof action !== 'object' || Array.isArray(action)) {
+      throw new TypeError('Each human action must be an object');
+    }
+    session = applyReviewerAction(program, session, action);
+  }
+  const snapshot = reviewerSnapshot(program, session);
+  const report = syntheticReport(program, session, generatedAt);
+  return Object.freeze({
+    accepted: true,
+    contract: CONTRACT_VERSION,
+    scope: 'DEVELOPMENT_ONLY_CONSTRUCTED_FICTIONAL',
+    integrationStatus: INTEGRATION_STATUS,
+    session,
+    snapshot,
+    report,
+    authenticity: 'UNSIGNED_INTERNAL_HASH_CHAIN_ONLY',
+    customerAccess: false,
+    commercialRelease: false,
+  });
+}
