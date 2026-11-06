@@ -51,6 +51,20 @@ test('unexpected Host headers are denied before serving files', async () => {
     assert.equal(status, 403);
   }
 });
+test('cross-origin browser requests to the local reviewer are denied', async () => {
+  const port = server.address().port;
+  for (const origin of ['https://foreign.example', 'null', 'http://localhost:12345']) {
+    const status = await new Promise((resolve, reject) => {
+      const req = request({ hostname: '127.0.0.1', port, path: '/', headers: { Origin: origin } }, res => {
+        res.resume();
+        res.on('end', () => resolve(res.statusCode));
+      });
+      req.on('error', reject);
+      req.end();
+    });
+    assert.equal(status, 403);
+  }
+});
 test('unsafe methods and malformed escaped paths fail closed', async () => {
   assert.equal((await probe('/fixtures/D06.json', 'POST')).status, 405);
   assert.equal((await probe('/fixtures/%ZZ.json')).status, 400);
