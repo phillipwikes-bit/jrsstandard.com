@@ -103,7 +103,7 @@ try {
 
     await check(`${label}: reopening a file never inherits the fictional confirmation`, async () => {
       await page.setInputFiles('#load', { name: 'authored.json', mimeType: 'application/json', buffer: Buffer.from(JSON.stringify(downloaded)) });
-      await page.waitForFunction(() => document.getElementById('rec-text').value.length > 0);
+      await page.waitForFunction(() => document.getElementById('rec-fictional').checked === false);
       assert.equal(await page.isChecked('#rec-fictional'), false);
       assert.equal(await statusText(page), 'REFUSED_SCOPE');
       await page.check('#rec-fictional');
