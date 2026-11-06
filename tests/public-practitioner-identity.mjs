@@ -50,8 +50,13 @@ for(const r of redirects){
 assert.equal(redirects.find(r=>r.source==='/openapi')?.destination,'/manifest.html');
 assert.equal(redirects.find(r=>r.source==='/submit-record.html')?.destination,'/resources.html');
 assert.equal(redirects.find(r=>r.source==='/sandbox')?.destination,'/resources.html');
-assert.ok(read('manifest.html').includes('jrs-decision-reconstruction-manifest-v1.0.1.schema.json'),
- 'technical specification did not survive as direct public reference');
+const manifestReference=read('manifest.html');
+assert.match(manifestReference,/conceptual reference for documentation traceability/i,
+ 'Manifest must disclose its conceptual publication scope');
+assert.match(manifestReference,/does not offer a machine-readable service/i,
+ 'Manifest must not advertise an unavailable technical service');
+assert.match(manifestReference,/No confidential records should be provided/i,
+ 'Manifest must retain the no-submission boundary');
 assert.ok(existsSync(new URL('../review-engine.html',import.meta.url)),'archival technical evidence removed');
 assert.match(read('review-engine.html'),/name="robots" content="noindex,nofollow,noarchive"/);
 assert.doesNotMatch(read('sitemap.xml'),/\/(?:review-engine|pilot|platform-evaluation-001)\.html/);
