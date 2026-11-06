@@ -63,3 +63,11 @@ Method: public document-content retrieval and final destination inspection. All 
 | /JRS_Investigator_Field_Guide_International.pdf | same | International guide text retrieved |
 
 12/12 targeted public PDF URL retrieval checks succeeded across the two test batches. This is a sample of advertised routes, not proof that every PDF and every device passes A4.
+
+
+## Research page data-source inspection, 2026-11-06
+Source inspection confirms results.html and datasets.html request `results.json?ts=...`. The live `/results.json` endpoint returned readable JSON with `updated: 2026-06-03`, `participants: 1`, and `reviews_completed: 1`. This is a historical challenge aggregate and must not be conflated with the separate 16-reviewer constructed-record detection study. Do not replace these figures with the research summary metrics.
+
+questions.html and finding.html use client-side dynamic rendering. Their static HTML contains loading placeholders, which alone do not prove a rendered-browser defect. A direct browser test with scripting enabled, including network and error inspection, is required before closing A6. Do not treat guessed JSON paths as expected production endpoints.
+
+Workflow evidence: a query for pull-request-triggered GitHub Actions runs at commit 4dffa5c75daf6512d65a9dc283ed0f74f5b9a908 returned no runs at the time checked. This is not proof of passing or failing CI; check the PR's actual required statuses before merge.
