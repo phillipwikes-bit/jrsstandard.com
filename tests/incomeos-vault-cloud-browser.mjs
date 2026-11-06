@@ -120,6 +120,16 @@ assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic 
   "new workspace must not be overwritten by a stale decrypted vault copy");
 assert.match(await page.locator("#briefing-status").textContent(),/New empty workspace/);
 
+// A hostile or corrupted hosted response larger than the accepted encrypted-workspace limit
+// must be refused before hashing, decrypting, or replacing the current workspace.
+rows[0].ciphertext="x".repeat(5000001);
+await vault();await page.locator("#cloud-vault-restore").tap();
+await page.waitForFunction(()=>/exceeds the 5 MB encrypted workspace limit/.test(document.getElementById("cloud-vault-status").textContent));
+await nav("ledger");
+assert.doesNotMatch(await page.locator("#ledger-list").textContent(),/Synthetic vault payout/,"oversized hosted response must not replace workspace");
+// Restore the last legitimate ciphertext before testing tamper detection.
+rows[0].ciphertext=JSON.parse(up.body).ciphertext;
+
 // A tampered vault copy is refused.
 rows[0].ciphertext=rows[0].ciphertext.replace(/"data":"(.)/,(m,c)=>'"data":"'+(c==="A"?"B":"A"));
 await vault();await page.locator("#cloud-vault-restore").tap();
