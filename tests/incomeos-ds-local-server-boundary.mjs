@@ -65,6 +65,21 @@ test('cross-origin browser requests to the local reviewer are denied', async () 
     assert.equal(status, 403);
   }
 });
+test('same-origin browser requests remain usable', async () => {
+  const port = server.address().port;
+  for (const hostname of ['127.0.0.1', 'localhost']) {
+    const status = await new Promise((resolve, reject) => {
+      const req = request({ hostname: '127.0.0.1', port, path: '/author',
+        headers: { Host: hostname + ':' + port, Origin: 'http://' + hostname + ':' + port } }, res => {
+        res.resume();
+        res.on('end', () => resolve(res.statusCode));
+      });
+      req.on('error', reject);
+      req.end();
+    });
+    assert.equal(status, 200);
+  }
+});
 test('unsafe methods and malformed escaped paths fail closed', async () => {
   assert.equal((await probe('/fixtures/D06.json', 'POST')).status, 405);
   assert.equal((await probe('/fixtures/%ZZ.json')).status, 400);
