@@ -8,6 +8,7 @@ on:
       - 'owner/incomeos/**'
       - 'tests/incomeos-accounting-*.mjs'
       - 'tests/incomeos-accountant-*.mjs'
+      - 'tests/incomeos-vault-cloud.mjs'
   workflow_dispatch:
 permissions:
   contents: read
