@@ -38,7 +38,7 @@
   }
   function past(s) { return !!s.eventEnd && s.eventEnd < localDate(); }
   function stale(s) {
-    if (typeof s.reviewed !== "string" || !/^\\d{4}-\\d{2}-\\d{2}$/.test(s.reviewed)) return true;
+    if (typeof s.reviewed !== "string" || !/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(s.reviewed)) return true;
     var checked=Date.parse(s.reviewed+"T00:00:00Z"),now=Date.parse(localDate()+"T00:00:00Z");
     return !Number.isFinite(checked) || new Date(checked).toISOString().slice(0,10)!==s.reviewed || checked>now || now-checked>3*86400000;
   }
@@ -64,7 +64,7 @@
   }
   // Feed links come from a file filled by intake: only http(s) addresses become links or copied URLs.
   function safeUrl(url) {
-    try { var u = new URL(String(url || "")); return u.protocol === "https:" || u.protocol === "http:" ? u.href : null; }
+    try { var u = new URL(String(url || "")); return u.protocol === "https:" && !u.username && !u.password && !!u.hostname ? u.href : null; }
     catch (_e) { return null; }
   }
   function link(url, label) {
