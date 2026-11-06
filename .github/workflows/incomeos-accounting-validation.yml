@@ -1,0 +1,24 @@
+name: IncomeOS accounting editor source validation
+on:
+  push:
+    branches:
+      - chatgpt/incomeos-v25-synthetic-review-sequence-20261106
+    paths:
+      - '.github/workflows/incomeos-accounting-validation.yml'
+      - 'owner/incomeos/**'
+      - 'tests/incomeos-accounting-*.mjs'
+      - 'tests/incomeos-accountant-*.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  accounting-source-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Validate accounting controls, persistence, review and corrections
+        run: node --test tests/incomeos-accounting-controls.mjs tests/incomeos-accountant-persistence.mjs tests/incomeos-accountant-review.mjs tests/incomeos-accountant-fixes.mjs
