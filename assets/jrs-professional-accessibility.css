@@ -128,3 +128,20 @@ html{scroll-padding-top:3.5rem}
  }
  body.jrs-home .hero::after {opacity:.08!important;pointer-events:none}
 }
+
+
+/* JRS mobile-first acceptance controls: shared public pages.
+   Applies to existing public layouts without changing approved content. */
+@media (max-width: 767px) {
+ html,body {max-width:100%;overflow-x:clip}
+ :where(main,article,section,.wrap,.container,.content,.card,.grid,.panel) {min-width:0}
+ :where(main,article,section) :is(p,li,dd,blockquote,a,h1,h2,h3) {overflow-wrap:break-word}
+ :where(main,article,section) img,
+ :where(main,article,section) svg,
+ :where(main,article,section) video {max-width:100%;height:auto}
+ :where(main,article,section) :is(pre,table) {max-width:100%;overflow-x:auto}
+ :where(main,article,section) :is(button,[role="button"],.btn,.dl,.card-link,.start-link) {min-height:44px}
+ :where(main,article,section) :is(p,li,dd) {line-height:max(1.55em,1.55)}
+ :where(main,article,section) :is(.muted,.secondary,.subtle,.fine-print,.caption) {opacity:1}
+ :where(main,article,section) a:focus-visible {outline-offset:3px}
+}
