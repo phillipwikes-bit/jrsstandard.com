@@ -337,6 +337,6 @@ State intent and impact in a sentence each; execute rather than narrate; validat
 
 ## IncomeOS scoped engineering directive (2026-11-06)
 
-For authorized IncomeOS Owner Desk, accounting-editor, or Decision Spellchecker engineering assignments, read `docs/INCOMEOS_MASTER_DIRECTIVE.md` (Version 10.2) before acting. Apply its continuous execution and bounded recovery provisions only to IncomeOS Mode A (Engineering Execution) and Mode D (Recovery). Do not impose those requirements on analysis-only or prompt-optimization requests.
+For authorized IncomeOS Owner Desk, accounting-editor, or Decision Spellchecker engineering assignments, read `docs/INCOMEOS_MASTER_DIRECTIVE.md` (Version 10.3) before acting. Apply its continuous execution and bounded recovery provisions only to IncomeOS Mode A (Engineering Execution) and Mode D (Recovery). Do not impose those requirements on analysis-only or prompt-optimization requests.
 
 This reference does not replace the JRS-specific requirements in this file or the current JRS architecture handoff. Preserve applicable JRS security, privacy, intellectual-property, release, and evidence controls. Resolve conflicts using applicable higher-priority authorization and protected policies; do not interpret this reference as permission for deployment, financial transactions, or other consequential external actions.
