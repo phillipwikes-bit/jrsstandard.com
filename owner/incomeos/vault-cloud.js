@@ -34,6 +34,8 @@
   }
   async function signUp(e,p){await call("/auth/v1/signup",{method:"POST",body:{email:email(e),password:password(p)}});return {ok:true};}
   async function signIn(e,p){
+    // A failed or interrupted sign-in must not retain an earlier owner session.
+    session=null;
     var d=await call("/auth/v1/token?grant_type=password",{method:"POST",body:{email:email(e),password:password(p)}});
     if(!d||typeof d.access_token!=="string"||!d.user||typeof d.user.id!=="string")throw Error("Sign-in did not return a session");
     session={access_token:d.access_token,userId:d.user.id,email:d.user.email||""};return {ok:true,userId:session.userId};
