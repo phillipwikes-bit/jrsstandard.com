@@ -880,9 +880,12 @@
     n.textContent=wsMode?(workspaceLoadUnsafe?"WORKSPACE LEDGER QUARANTINED. Accounting records failed integrity checks. Do not save or import this workspace as verified financial evidence. Preserve the original encrypted workspace file. ":(wsDirty?"UNSAVED CHANGES. Save the workspace now (Research, This week) or they will be lost if this page closes. ":"")+"Editing the ledger in your open workspace. Changes are kept only when you save the workspace (encrypted, with a passphrase) in Research, This week. Nothing is stored in this browser."+(wsForeign.length?" "+wsForeign.length+" row(s) from other panels are kept as they are and not shown here.":"")):"";}
     var banner=$("financial-staging-interlock");if(banner){
       var quarantined=workspaceLoadUnsafe||(localLoadUnsafe&&!wsMode);
-      if(!banner.hasAttribute("data-original-warning"))banner.setAttribute("data-original-warning",banner.textContent);
       banner.hidden=!quarantined&&(window.IncomeOSFinancialReadOnly!==true||wsMode);
-      banner.textContent=quarantined?"ACCOUNTING LEDGER QUARANTINED. Stored records failed integrity checks. Editing and imports are disabled. Preserve the original records for recovery.":banner.getAttribute("data-original-warning");
+      var heading=banner.querySelector("strong");
+      if(heading){
+        if(!heading.hasAttribute("data-original-warning"))heading.setAttribute("data-original-warning",heading.textContent);
+        heading.textContent=quarantined?"ACCOUNTING LEDGER QUARANTINED. Editing and imports are disabled. Preserve the original records for recovery.":heading.getAttribute("data-original-warning");
+      }
     }
     // The staging lock disables these controls for browser storage; in workspace mode they edit the file instead.
     ["receipt-form","cost-form","import-trigger","import-csv-trigger","import-ledger","import-csv"].forEach(function(id){
