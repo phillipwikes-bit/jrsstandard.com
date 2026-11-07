@@ -281,6 +281,12 @@ assert.match(await page.locator("#financial-staging-interlock strong").textConte
 assert.equal(await page.locator("#ledger-ws-new").count(),1,"New-workspace action survives warning updates");
 assert.equal(await page.locator("#ledger-ws-open").count(),1,"Open-workspace action survives warning updates");
 assert.ok(await page.locator("#receipt-save").isDisabled(),"Quarantine blocks editing");
+const beforeRejectedSubmissions=dialogs.length;
+for(const formId of ["receipt-form","cost-form"]){
+  await page.locator("#"+formId).evaluate(form=>form.requestSubmit());
+}
+assert.equal(dialogs.length,beforeRejectedSubmissions+2,"Both locked forms must reject submissions with a dialog");
+assert.deepEqual(errors,[],"Rejected submissions must not raise uncaught errors");
 
 await page.evaluate(()=>document.dispatchEvent(new CustomEvent("incomeos:workspace-loaded",{detail:{ledger:[]}})));
 assert.ok(await page.locator("#financial-staging-interlock").isHidden(),"Valid restored workspace clears quarantine banner");
