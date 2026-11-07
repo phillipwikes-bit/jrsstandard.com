@@ -19,5 +19,5 @@ assert.equal(uniqueEntryIds([{id:"a"},{id:"a"}]),false);
 assert.equal(uniqueEntryIds([{id:"a"},{id:" a "}]),false);
 assert.equal(uniqueEntryIds([{id:""}]),false);
 assert.equal(uniqueEntryIds([{id:42}]),false);
-assert.match(source,/!uniqueEntryIds\\(entries\\)/,"commit gate must enforce unique IDs");
+assert.ok(source.includes("!uniqueEntryIds(entries)"),"commit gate must enforce unique IDs");
 console.log("Accounting workspace preserves all imported valid rows and refuses over-limit edits.");
