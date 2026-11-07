@@ -77,6 +77,8 @@
     if(!uniqueEntryIds(rows))workspaceLoadUnsafe=true;
     // Accounting-shaped rows with invalid evidence or amounts are not foreign panel records.
     if(rows.some(function(e){return e&&typeof e==="object"&&(e.kind==="income"||e.kind==="outflow")&&!validate(e);}))workspaceLoadUnsafe=true;
+    // Do not present partial financial totals from a workspace that cannot be safely reconstructed.
+    if(workspaceLoadUnsafe)db.entries=[];
   }
   function write(){
     if(window.IncomeOSFinancialReadOnly===true)return false;
@@ -148,7 +150,7 @@
       if(saved && Array.isArray(saved.entries)){
         if(saved.entries.some(function(e){return !validate(e);})||!uniqueEntryIds(saved.entries)){
           localLoadUnsafe=true;
-          db.entries=saved.entries.filter(validate);
+          db.entries=[]; // Partial totals could be mistaken for complete accounting evidence.
         }else db.entries=saved.entries;
       }
     }catch(_e){localLoadUnsafe=true;db.entries=[];}
