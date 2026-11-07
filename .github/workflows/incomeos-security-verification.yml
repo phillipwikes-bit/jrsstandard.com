@@ -6,6 +6,9 @@ on:
       - 'owner/incomeos/workspace-revision-protocol.js'
       - 'owner/incomeos/revision-store.js'
       - 'owner/incomeos/revision-supabase-transport.js'
+      - 'engineering/incomeos/workspace-revision-staging.sql'
+      - 'engineering/incomeos/workspace-revision-rpc-staging.sql'
+      - 'tests/incomeos-revision-staging-sql.test.cjs'
       - 'tests/incomeos-browser-script-loader.cjs'
       - 'tests/incomeos-vault-envelope.test.cjs'
       - 'tests/incomeos-workspace-revision-protocol.test.cjs'
@@ -37,3 +40,4 @@ jobs:
           node tests/incomeos-workspace-revision-protocol.test.cjs
           node tests/incomeos-revision-store.test.cjs
           node tests/incomeos-revision-supabase-transport.test.cjs
+          node tests/incomeos-revision-staging-sql.test.cjs
